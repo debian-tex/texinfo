@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+if [ "$1" = "configure" -a -z "$2" ] ; then
+  if test -x /usr/bin/mktexlsr ; then
+     mktexlsr /usr/share/texmf >/dev/null
+  fi
+  update-fmtutil
+fi
+
+
+#DEBHELPER#

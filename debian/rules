@@ -1,0 +1,91 @@
+#!/usr/bin/make -f
+# Derived from debhelper/dh_make example and previous hello-based rules file.
+
+#export DH_VERBOSE=1
+export DH_COMPAT=4
+export DH_OPTIONS
+
+include /usr/share/dpatch/dpatch.make
+
+CFLAGS := -g -Wall
+ifneq "$(findstring noopt,$(DEB_BUILD_OPTIONS))" ""
+CFLAGS += -O0
+else
+CFLAGS += -O2
+endif
+
+texinfo := $(CURDIR)/debian/texinfo
+tmpdir := $(CURDIR)/debian/tmp
+
+build: build-stamp
+build-stamp: patch-stamp
+	dh_testdir
+	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr \
+          --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man'
+	$(MAKE)
+	(cd doc; $(MAKE) texinfo.html)
+	touch $@
+
+clean: unpatch
+	dh_testdir
+	dh_testroot
+	[ ! -f Makefile ] || $(MAKE) distclean
+	dh_clean install-stamp build-stamp intl/libintl.h config.log
+
+install: install-stamp
+
+install-stamp: DH_OPTIONS=
+install-stamp: build-stamp
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+	$(MAKE) install install-tex prefix=$(tmpdir)/usr \
+                                    TEXMF=$(tmpdir)/usr/share/texmf
+	find $(tmpdir) -type f -name dir | xargs rm -f
+	# pdfcolor and epsf.tex are in tetex and texlive
+	rm -rf $(tmpdir)/usr/share/texmf/tex/plain
+	rm -rf $(tmpdir)/usr/share/texmf/tex/generic
+	#mkdir -p $(tmpdir)/usr/share/texmf/tex/texinfo/base
+	#mv $(tmpdir)/usr/share/texmf/tex/texinfo/*.tex $(tmpdir)/usr/share/texmf/tex/texinfo/base
+	dh_install --list-missing --sourcedir=debian/tmp -X share/info
+	dh_installinfo
+	# do not install texinfo and pdftexinfo links
+	#dh_link
+	cp -a doc/texinfo.html $(texinfo)/usr/share/doc/texinfo/html
+	mv $(texinfo)/usr/bin/install-info $(texinfo)/usr/bin/ginstall-info
+	sed -e "s/install-info/g&/g" \
+		< $(texinfo)/usr/share/man/man1/install-info.1 \
+		> $(texinfo)/usr/share/man/man1/ginstall-info.1
+	rm -f $(texinfo)/usr/share/man/man1/install-info.1
+	mkdir -p $(texinfo)/etc/texmf/fmt.d
+	cp debian/conf/50texinfo.cnf $(texinfo)/etc/texmf/fmt.d
+	mkdir -p $(texinfo)/var/lib/tex-common/fmtutil-cnf
+	cp debian/conf/texinfo.list $(texinfo)/var/lib/tex-common/fmtutil-cnf
+	mkdir -p $(texinfo)/usr/share/texmf/tex/texinfo/config
+	cp debian/conf/texinfo.ini $(texinfo)/usr/share/texmf/tex/texinfo/
+	touch install-stamp
+
+binary-indep:
+# There aren't any architecture independent packages here.
+
+binary-arch: DH_OPTIONS=-a
+binary-arch: install
+	dh_testdir
+	dh_testroot
+	dh_installdocs AUTHORS INTRODUCTION README NEWS TODO
+	dh_installmenu
+	dh_installchangelogs ChangeLog
+ifeq "$(findstring nostrip,$(DEB_BUILD_OPTIONS))" ""
+	dh_strip
+endif
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install

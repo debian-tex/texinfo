@@ -1,0 +1,4 @@
+# watch control file for uscan
+# Site		Directory		Pattern			Version Script
+texinfo.org	/texinfo/pretests	texinfo-(.*)\.tar\.gz	debian	uupdate
+alpha.gnu.org	/gnu			texinfo-(.*)\.tar\.gz	debian	uupdate

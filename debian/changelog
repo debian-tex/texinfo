@@ -1,0 +1,450 @@
+texinfo (4.8-0.1) unstable; urgency=low
+
+  * NMU to address a series of bugs, especially Bug #320413
+  * new upstream release 
+    - provides texi2pdf (Closes: #320413)
+    - fixes loss of pipe character in TeX verbatim mode (Closes: #181793)
+    - fixes incorrect html output (Closes: #204202, #205022)
+    - output correct XML (Closes: #221988)
+    - adds commands for serif fonts (Closes: #277754)
+  * install texinfo HTML documentation (Closes: #277921)
+  * include changes by Pierre Machard for Replaces (Closes: #261742)
+  * make postinst script POSIX-compliant, don't use command (Closes: #293053)
+  * fix de.po, thanks Jens Seidel (Closes: #313844)
+  * uses new tex-common and install fmtutil-config files,
+    but disables fmt file building as suggested by Karl Berry and
+    Thomas Esser. Also do not install symlinks, but mention in the fmt.d
+    config file that symlinks have to be created in case the user wants
+    to activate these formats (Closes: #253124)
+  * install install-info as ginstall-info (Closes: #285983)
+  * bumped Standards-Version to 3.6.2.1 (no changes necessary)
+  * change debian compat version to 4
+  * dump most patches from previous versions as they are incorporated 
+    upstream, and change to dpatch system, adding Build-Depends on dpatch
+
+ -- Norbert Preining <preining@logic.at>  Thu, 18 Aug 2005 18:52:55 +0200
+
+texinfo (4.7-2.2) unstable; urgency=high
+
+  * NMU with maintainer's blessing
+  * Urgency=high because this fixes FTBFS in other packages
+  * Apply patch from upstream CVS to fix "Bad address" errors
+    (Closes: #267497)
+  * Move the Replaces: from the last upload to the right binary
+    package, d'oh!
+  
+ -- Frank Lichtenheld <djpig@debian.org>  Sun, 26 Sep 2004 03:40:48 +0200
+
+texinfo (4.7-2.1) unstable; urgency=high
+
+  * NMU
+  * Set Urgency to high because of the base freeze
+  * Add Replaces: texinfo (<< 4.7-2) (closes: #259280)
+
+ -- Pierre Machard <pmachard@debian.org>  Tue, 27 Jul 2004 23:42:00 +0200
+
+texinfo (4.7-2) unstable; urgency=medium
+
+  * Move infokey(1) together with infokey binary into the info package,
+    closes: #258945.
+
+ -- Josip Rodin <joy-packages@debian.org>  Tue, 13 Jul 2004 14:43:36 +0200
+
+texinfo (4.7-1) unstable; urgency=low
+
+  * New upstream version, closes: #243312.
+  * Ditched now redundant debian/infokey.1.
+  * Would no longer install /usr/share/info/dir.*, closes: #218976.
+  * Supports GNU/K(Free|Net)BSD due to a new set of config.*, closes: #221726.
+
+ -- Josip Rodin <joy-packages@debian.org>  Sat, 10 Jul 2004 19:02:24 +0200
+
+texinfo (4.6-1) unstable; urgency=low
+
+  * New upstream version.
+  * Wrote a manual page infokey(1) using `info infokey` stuff. (Silly, really.)
+
+ -- Josip Rodin <joy-packages@debian.org>  Sat, 12 Jul 2003 14:12:36 +0200
+
+texinfo (4.3-1) unstable; urgency=low
+
+  * New upstream version, closes: #173029.
+  * Includes the fix for the makeinfo segfault on \def\x{}, closes: #168689.
+  * Fixed documentation errors noticed by Jesse Alama, first one by me,
+    and the others by the upstream, closes: #152936, #152938, #152939.
+  * The key binding help in info is fixed, closes: #149965.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Sun, 15 Dec 2002 16:09:55 +0100
+
+texinfo (4.2-1) unstable; urgency=low
+
+  * New upstream version, closes: #144939.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Mon, 24 Jun 2002 16:38:46 +0200
+
+texinfo (4.1-2) unstable; urgency=high
+
+  * Removed broken /usr/share/texmf/pdftex/plain/misc/epsf.tex,
+    closes: #133601.
+  * Added Conflicts: ja-trans (<= 0.7-3.1), closes: #138233.
+  * Included a po/ru.po recoded from windows-1251 to koi8-r, kindly
+    provided by Nikita V. Youshchenko <yoush@cs.msu.su>, closes: #132943.
+  * Reverted to "parsable" which is in fact correct, closes: #124757.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Thu, 28 Mar 2002 13:53:23 +0100
+
+texinfo (4.1-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Thu,  7 Mar 2002 20:17:09 +0100
+
+texinfo (4.0f-1) unstable; urgency=high
+
+  * New upstream version.
+  * Includes a newer, changed texinfo.tex that seems fix the PDF links,
+    closes: #111563.
+  * Eli Zaretskii's patches to info/echo-area.c for case (in)sensitivity
+    in indices are applied upstream, closes: #122594 and the patch for
+    cross-references on the second line, too, closes: #122600.
+  * Fixed the thinko in makeinfo/insertion.c comment, ignored the non-issue
+    with harmless extra <br>s, closes: #77885.
+  * Applied Eli Zaretskii's patch to info/infodoc.c (slightly modified
+    because of the new infokey code in there etc, hope it works :) to fix
+    the "info --vi-keys libc:exit" segfault, closes: #79091.
+  * Applied Colin Watson's patch to info/infomap.c for h<->l in vikeys,
+    from #79091.
+  * Fixed the spelling error (though not overly convinced), closes: #124757.
+  * Patched doc/Makefile* to install the missing directory, and to distclean
+    the info files. Feh! Hopefully automakeisms don't shit themselves all
+    over the place in the buildd trees and cause the package not to build.
+  * Leave our first epsf.tex in place, it's almost the same as the
+    tetex-base one but there must be some reason why it exists. <ponder>
+  * Put infokey into the info package.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Sun, 27 Jan 2002 11:08:20 +0100
+
+texinfo (4.0b-2) unstable; urgency=low
+
+  * Added Replaces: tetex-base (<< 1.0.2+20000804-9) because of the
+    .txi files.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Fri, 20 Jul 2001 15:59:32 +0200
+
+texinfo (4.0b-1) unstable; urgency=low
+
+  * New upstream version, includes majority of our old patches. It also
+    includes support for splitting HTML output files, which closes: #41403.
+  * Removed epsf.tex from this package because tetex already ships it,
+    closes: #84426. The duplicate file problem didn't appear before because
+    previous versions put the file in a different location. Maybe we're
+    just making a mess of this.
+  * Added willy's patch to fix (not) printing --speech-friendly when printf
+    is a macro like with the new gcc, closes: #91350.
+  * Packaging polishing.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Sat, 14 Jul 2001 20:03:11 +0200
+
+texinfo (4.0-5) unstable; urgency=low
+
+  * Home and End keys move to start/end of page, and the Delete key
+    does what PgUp does, closes: #37752. Thanks to Yoshiki Hayashi
+    <t90553@mail.ecc.u-tokyo.ac.jp> for the patch.
+  * Fixed terminal hanging when pressing C-s too soon in info,
+    closes: #52517. Thanks to Kevin Ryde <user42@zip.com.au> for the patch.
+  * Fixed segfault with gzipped manpage.1, closes: #63608.
+  * Fixed displaying of repeated items in info, closes: #68936.
+  * Fixed info stucking with '(.)any', closes: #68937.
+  * Fixed segfault on trying to follow `SEE ALSO' etc, closes: #74278.
+  * Thanks to Eli Zaretskii <eliz@is.elta.co.il> for the patches to fix
+    the above four bugs.
+  * Run 'mktexlsr /usr/share/texmf >/dev/null' (conditionally and only on
+    new installations) in texinfo's postinst, because we place files in that
+    directory that need to be added to the ls-R file, closes: #71325.
+  * Policy 3.2.1 compliant.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Mon,  9 Oct 2000 18:53:04 +0200
+
+texinfo (4.0-4) frozen unstable; urgency=low
+
+  * Fixed info's prerm script, s./usr/bin/infobrowser.infobrowser.,
+    otherwise the package could not be removed, closes: #59254.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Tue, 29 Feb 2000 12:58:42 +0100
+
+texinfo (4.0-3) frozen unstable; urgency=low
+
+  * Applied upstream patch for closes: #56992.
+  * Install infobrowser alternative for info (doh!).
+  * Recompiled with ncurses 5.0 (info is a Priority: important package).
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Fri, 10 Dec 1999 23:40:36 +0100
+
+texinfo (4.0-2) unstable; urgency=low
+
+  * Another, even more nifty configure option to make it install in FHS
+    compliant directories (this time borrowed from nasm's rules file :)
+  * Standards-Version: 3.1.1. Added Build-Depends:.
+  * Removed --with-included-gettext from configure flags, useless.
+  * Removed --description and --section from all install-info arguments,
+    to have install-info pick-up the INFO-DIR-ENTRY from the info files
+    themselves. This way, all the sub-apps have entries, which closes: #51425.
+  * Install 'info.info', too (why that wasn't done before, is beyond me).
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Sun, 28 Nov 1999 15:00:53 +0100
+
+texinfo (4.0-1) unstable; urgency=low
+
+  * New upstream version. At last, final 4.0!
+  * Removed README-alpha mentionings, and added #DEBHELPER# in p* scripts
+    where it was missing.
+  * Used nifty configure options to make it install in FHS compliant
+    directories (after seeing how it's done in libmikmod2's rules file :)
+  * Removed explicit debhelper 2.0.40 dependency, and changed
+    debian/{info.files,rules} to match the new state.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Sun, 12 Sep 1999 23:44:24 +0200
+
+texinfo (3.12s-2) unstable; urgency=low
+
+  * Conforms to policy 3.x, which includes move to FHS etc. Required
+    using debhelper 2.0.40, and some other changes to debian/* .
+  * Added "-e" to /bin/sh in all maintainer scripts.
+  * Replaced "Replaces:" with "Conflicts:" for tetex-{base,bin} in
+    texinfo, because the new package has some files in locations that
+    don't work well with those old versions of teTeX. Thanks to Lalo
+    Martins for noticing this.
+  * Removed DEFAULT_INFOPATH defining from the rules file, it's pointless
+    (and it didn't work, either :). The one in filesys.h is good enough.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Tue,  7 Sep 1999 00:55:17 +0200
+
+texinfo (3.12s-1) unstable; urgency=low
+
+  * New upstream version.
+  * Upstream fixes to info/terminal.c, so I removed our patch for
+    alpha compile, it's not needed anymore.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Sun, 22 Aug 1999 14:45:09 +0200
+
+texinfo (3.12n-2) unstable; urgency=low
+
+  * Added Replaces: tetex-base (<< 1.0-3), closes: #42264 .
+  * Added a nifty debian/watch file.
+  * Minor changes to copyright and *prerm files.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Sun,  1 Aug 1999 17:05:07 +0200
+
+texinfo (3.12n-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Tue, 20 Jul 1999 02:12:51 +0200
+
+texinfo (3.12k-1) unstable; urgency=low
+
+  * New upstream version.
+  * Some changes to debian/copyright and debian/info.menu.
+  * Conditionalized $1 in debian/*{postinst,prerm}.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Sun, 11 Jul 1999 21:55:13 +0200
+
+texinfo (3.12j-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Thu,  8 Jul 1999 00:22:32 +0200
+
+texinfo (3.12i-4) unstable; urgency=low
+
+  * Got an upstream patch to fix the non-existant argument bug. Fixes #38063.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Wed,  7 Jul 1999 18:59:29 +0200
+
+texinfo (3.12i-3) unstable; urgency=low
+
+  * Now included C's patch to compile on Alpha, fixes #39247 and #40076.
+  * Fixed texinfo's postinst, to include missing backslashes.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Mon,  5 Jul 1999 03:41:56 +0200
+
+texinfo (3.12i-2) unstable; urgency=low
+
+  * After some discussion with Christoph Martin, the teTeX maintainer,
+    and other people from the debian-devel list, we decided to start
+    providing all texinfo binaries from this source package.
+  * Added new binary package, texinfo, which Replaces: tetex-bin (<< 1.0)
+    and Suggests: tetex-bin (because of texi2dvi). For that reason,
+    patched util/texi2dvi to exit if no tex found, with an explanation.
+  * Removed install-info* and dir files from binary packages.
+  * Removed obsolete README.Debian, added other upstream documentation.
+  * Updated debian/copyright with additional licence/copyright info.
+  * Added a menu entry for info, since it can be invoked argumentless.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Mon, 21 Jun 1999 16:30:38 +0200
+
+texinfo (3.12i-1) unstable; urgency=low
+
+  * New upstream version, includes fix for #14787 .
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Sat, 12 Jun 1999 15:05:41 +0200
+
+texinfo (3.12h-1) unstable; urgency=low
+
+  * New maintainer
+  * New upstream version, pristine source from alpha.gnu.org.
+  * Completely redid the packaging, using debhelper.
+
+ -- Josip Rodin <jrodin@jagor.srce.hr>  Sat, 10 Apr 1999 22:01:15 +0200
+
+texinfo (3.12-0.1) unstable; urgency=low
+
+  * Upgraded from 3.9 to new upstream release 3.12 
+  * Non-maintainer release, this time with a proper -0.1 version.
+  * This does not use the patches against the files info/infomap.c,
+    info/session.c and util/texi2dvi from the previous Debian version.
+    According to James Troup, their functionality has been integrated into
+    the upstream source so that the patches are indeed obsolete.    
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Fri, 17 Apr 1998 18:26:24 -0400
+
+texinfo (3.9-5) unstable; urgency=low
+
+  * Put /usr/info/info.info back in package (fixes #10115)
+  * Built with libc6 and ncurses3.4
+
+ -- Galen Hazelwood <galenh@micron.net>  Thu, 12 Jun 1997 13:59:28 -0600
+
+texinfo (3.9-4) unstable; urgency=low
+
+  * Patched info to work with cursor keys (fixes bug #889)
+
+ -- Galen Hazelwood <galenh@micron.net>  Thu, 6 Mar 1997 14:07:10 -0700
+
+texinfo (3.9-3) unstable; urgency=low
+
+  * Removed everything but info package from texinfo
+
+ -- Galen Hazelwood <galenh@micron.net>  Tue, 18 Feb 1997 21:45:44 -0700
+
+texinfo (3.9-2) unstable; urgency=low
+
+  * /usr/doc/info/changelog.Debian is now the correct file
+  * Added minor texi2dvi patch from upstream maintainer
+  * Added manpage for makeinfo, texi2dvi, texindex (fixes bug #6353)
+  * Put info documentation under appropriate headers
+
+ -- Galen Hazelwood <galenh@micron.net>  Sun, 5 Jan 1997 14:23:47 -0700
+
+texinfo (3.9-1) unstable; urgency=low
+
+  * New maintainer.
+  * New upstream version.
+  * Updated to Standards-Version: 2.1.2.2
+  * Removed bogus libc5 dependency in texidoc.
+
+ -- Galen Hazelwood <galenh@micron.net>  Sat, 14 Dec 1996 23:15:23 -0700
+
+texinfo (3.7-1); priority=LOW
+
+  * Added architecture fields 
+
+ -- Erick Branderhorst <branderhorst@heel.fgg.eur.nl>  Tue Mar 12 16:26:41 MET 1996
+
+texinfo (3.7-0); priority=LOW
+
+  * Texinfo no longer recommends texidoc, it is suggested now (Bug#1692).
+  * Upgraded to latest FSF version, texinfo 3.7 (Bug#2467).
+  * Version and Revision fields -> one Version field in all control files.
+  * New maintainer: Erick Branderhorst.
+
+ -- Erick Branderhorst <branderhorst@heel.fgg.eur.nl>  Fri, 8 Mar 1996 10:13:49
+
+texinfo (3.6-11); priority=MEDIUM
+
+  * converted to ELF,
+
+ -- David Engel <david@ods.com>  Tue, 16 Jan 1996 20:00:00 -0500
+
+texinfo (3.6-5); priority=MEDIUM
+
+  * serious problem in texinfo.tex fixed (reported by Nils Rennebarth
+    and Bill Mitchell, patch supplied by Richard Stallman).
+
+ -- Ian Jackson <iwj10@cus.cam.ac.uk>  Fri, 13 Oct 1995 02:04:44 +0100
+
+texinfo (3.6-4); priority=LOW
+
+  * texidoc's info dir entry for /usr/info/texinfo fixed (Bug#1514).
+
+ -- Ian Jackson <iwj10@cus.cam.ac.uk>  Sat, 30 Sep 1995 18:23:31 +0100
+
+texinfo (3.6-3); priority=MEDIUM
+
+  * Fix null pointer dereference in makeinfo (Bug#1493).
+  * `info-browser' virtual package name used in control files
+    (Bug#1427, Bug#1434, Bug#1469)
+
+ -- Ian Jackson <iwj10@cus.cam.ac.uk>  Thu, 28 Sep 1995 02:23:54 +0100
+
+texinfo (3.6-2); priority=LOW
+
+  * Do not build *.elc files, rather than building them, putting them
+    in debian-tmp, and then deleting them before package construction.
+    Now you can build the package without emacs.
+
+  * Added `Source: texinfo' to binary package control files.
+
+ -- Ian Jackson <iwj10@cus.cam.ac.uk>  Sun, 16 Jul 1995 15:03:53 +0100
+
+texinfo (3.6-1); priority=HIGH
+
+  * Upgraded to latest FSF version, texinfo 3.6.  Notable changes
+    alleged are many bugfixes and general improvements, and the
+    capability in `info' to display man pages.  The Emacs Lisp files
+    for formatting Texinfo documents are *not* included, as they
+    are in Debian's Emacs package.
+
+ -- Ian Jackson <iwj10@cus.cam.ac.uk>  Thu, 13 Jul 1995 03:21:32 +0100
+
+texinfo (3.1-7); priority=LOW
+
+  * Default INFOPATH for standalone info browser is now
+    `/usr/info:/usr/local/info:.' (Bug#889, 2nd point).
+  * Extended descriptions provided for all three binary packages.
+
+ -- Ian Jackson <iwj10@cus.cam.ac.uk>  Thu, 18 May 1995 01:39:27 +0100
+
+Texinfo 3.1 Debian 6 - iwj
+
+* Install texinfo.tex in /usr/lib/texmf/tex/misc/ instead.
+
+Texinfo 3.1 Debian 5 - iwj
+
+* Move cursor to bottom of screen before exiting `info'.
+* Install texinfo.tex in /usr/lib/tex/inputs/.
+
+Texinfo 3.1 Debian 4 - iwj
+
+* Added Package_Revision field to `control' files.
+
+Texinfo 3.1 Debian 3 - iwj
+
+* Arrange for `h' to give (Info-stnd)Top instead if (Info)Help or
+  (Info)Help-Small-Screen isn't available.
+* Added this Changelog.
+* Fixed typo in debian.README (= /usr/doc/copyright/texinfo).
+* Fixed invocations of install-info, and added --quiet option.
+* Specified version numbering scheme, version number now in filenames.
+
+Texinfo 3.1 Debian 2 - iwj
+
+* Fixed bug that prevents `info' from recognising .gz as a gzipped file.
+* Split into three packages, texidoc, texinfo and info.
+
+Texinfo 3.1 Debian 1 - iwj
+Initial release, completely untested.
+
+Local variables:
+mode: debian-changelog
+End:

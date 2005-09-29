@@ -6,6 +6,12 @@ texinfo (4.8-1) unstable; urgency=low
     - fixes incorrect html output (Closes: #204202, #205022)
     - output correct XML (Closes: #221988)
     - adds commands for serif fonts (Closes: #277754)
+    - fixes crash on first backspace (Closes: #259561)
+    - fixes buffer overflow in 'Follow xref' (Closes: #263853)
+    - fixes various navigation crashes (Closes: #265605, #293337, #308280, 
+      #314513)
+    - fixes segfault with --xml and -D (Closes: #330219)
+    - fixes segfault with -f'*manpages*' (Closes: #193856)
   * install texinfo HTML documentation (Closes: #277921)
   * include changes by Pierre Machard for Replaces (Closes: #261742)
   * make postinst script POSIX-compliant, don't use command (Closes: #293053)

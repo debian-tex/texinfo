@@ -1,6 +1,5 @@
-texinfo (4.8-0.1) unstable; urgency=low
+texinfo (4.8-1) unstable; urgency=low
 
-  * NMU to address a series of bugs, especially Bug #320413
   * new upstream release 
     - provides texi2pdf (Closes: #320413)
     - fixes loss of pipe character in TeX verbatim mode (Closes: #181793)
@@ -11,18 +10,15 @@ texinfo (4.8-0.1) unstable; urgency=low
   * include changes by Pierre Machard for Replaces (Closes: #261742)
   * make postinst script POSIX-compliant, don't use command (Closes: #293053)
   * fix de.po, thanks Jens Seidel (Closes: #313844)
-  * uses new tex-common and install fmtutil-config files,
-    but disables fmt file building as suggested by Karl Berry and
-    Thomas Esser. Also do not install symlinks, but mention in the fmt.d
-    config file that symlinks have to be created in case the user wants
-    to activate these formats (Closes: #253124)
   * install install-info as ginstall-info (Closes: #285983)
   * bumped Standards-Version to 3.6.2.1 (no changes necessary)
   * change debian compat version to 4
   * dump most patches from previous versions as they are incorporated 
     upstream, and change to dpatch system, adding Build-Depends on dpatch
+  * fixes to bashism in postinst scripts, fix wrong adress of FSF
+  * add manpage for texi2pdf from teTeX 2.0.2
 
- -- Norbert Preining <preining@logic.at>  Thu, 18 Aug 2005 18:52:55 +0200
+ -- Norbert Preining <preining@logic.at>  Thu, 29 Sep 2005 14:06:21 +0200
 
 texinfo (4.7-2.2) unstable; urgency=high
 

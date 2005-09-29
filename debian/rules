@@ -50,6 +50,7 @@ install-stamp: build-stamp
 	#mv $(tmpdir)/usr/share/texmf/tex/texinfo/*.tex $(tmpdir)/usr/share/texmf/tex/texinfo/base
 	dh_install --list-missing --sourcedir=debian/tmp -X share/info
 	dh_installinfo
+	cp debian/texi2pdf.man $(texinfo)/usr/share/man/man1/texi2pdf.1
 	# do not install texinfo and pdftexinfo links
 	#dh_link
 	cp -a doc/texinfo.html $(texinfo)/usr/share/doc/texinfo/html
@@ -58,12 +59,12 @@ install-stamp: build-stamp
 		< $(texinfo)/usr/share/man/man1/install-info.1 \
 		> $(texinfo)/usr/share/man/man1/ginstall-info.1
 	rm -f $(texinfo)/usr/share/man/man1/install-info.1
-	mkdir -p $(texinfo)/etc/texmf/fmt.d
-	cp debian/conf/50texinfo.cnf $(texinfo)/etc/texmf/fmt.d
-	mkdir -p $(texinfo)/var/lib/tex-common/fmtutil-cnf
-	cp debian/conf/texinfo.list $(texinfo)/var/lib/tex-common/fmtutil-cnf
-	mkdir -p $(texinfo)/usr/share/texmf/tex/texinfo/config
-	cp debian/conf/texinfo.ini $(texinfo)/usr/share/texmf/tex/texinfo/
+	# mkdir -p $(texinfo)/etc/texmf/fmt.d
+	# cp debian/conf/50texinfo.cnf $(texinfo)/etc/texmf/fmt.d
+	# mkdir -p $(texinfo)/var/lib/tex-common/fmtutil-cnf
+	# cp debian/conf/texinfo.list $(texinfo)/var/lib/tex-common/fmtutil-cnf
+	# mkdir -p $(texinfo)/usr/share/texmf/tex/texinfo/config
+	# cp debian/conf/texinfo.ini $(texinfo)/usr/share/texmf/tex/texinfo/
 	touch install-stamp
 
 binary-indep:

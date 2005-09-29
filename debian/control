@@ -1,7 +1,7 @@
 Source: texinfo
 Section: doc
 Priority: standard
-Maintainer: Josip Rodin <joy-packages@debian.org>
+Maintainer: Norbert Preining <preining@logic.at>
 Build-Depends: debhelper (>= 4), dpatch, libncurses5-dev | libncurses-dev, gettext
 Standards-Version: 3.6.2.1
 

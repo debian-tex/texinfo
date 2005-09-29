@@ -1,8 +1,8 @@
 This is the Debian package of Texinfo, the GNU documentation system.
 
 This package was previously maintained by Ian Jackson, Erick
-Branderhorst, and Galen Hazelwood. Today, it is maintained by
-Josip Rodin <joy-packages@debian.org>.
+Branderhorst, Galen Hazelwood, and Josip Rodin. Today, it is 
+maintained by Norbert Preining <preining@logic.at>.
 
 The original source can be found at: http://ftp.gnu.org/gnu/texinfo/
 

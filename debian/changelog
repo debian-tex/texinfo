@@ -23,8 +23,10 @@ texinfo (4.8-1) unstable; urgency=low
     upstream, and change to dpatch system, adding Build-Depends on dpatch
   * fixes to bashism in postinst scripts, fix wrong adress of FSF
   * add manpage for texi2pdf from teTeX 2.0.2
+  * changed dependency to tex-common | tetex-bin (<< 3.0) to be installable
+    on current sid.
 
- -- Norbert Preining <preining@logic.at>  Thu, 29 Sep 2005 14:06:21 +0200
+ -- Norbert Preining <preining@logic.at>  Fri, 30 Sep 2005 11:25:53 +0200
 
 texinfo (4.7-2.2) unstable; urgency=high
 

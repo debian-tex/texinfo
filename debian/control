@@ -9,7 +9,7 @@ Package: texinfo
 Section: text
 Priority: standard
 Architecture: any
-Depends: ${shlibs:Depends}, tex-common
+Depends: ${shlibs:Depends}, tex-common | tetex-bin (<< 3.0)
 Suggests: tetex-bin | texlive-basic
 Conflicts: tetex-bin (<< 1.0), tetex-base (<< 1.0-3), ja-trans (<= 0.7-3.1)
 Replaces: tetex-base (<< 1.0.2+20000804-9), tetex-bin (<< 3.0)

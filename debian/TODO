@@ -1,5 +1,6 @@
 TODO for texinfo Debian package
 -------------------------------
 * fix for CAN-2005-3011 (temp file race, see debian bug #328365)
+  test fix by Henry Jensen
 * go through the bugs on bugs.debian.org and check wether they are
   still present or fixed already (by upstream).

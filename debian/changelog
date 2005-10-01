@@ -1,5 +1,8 @@
 texinfo (4.8-1) unstable; urgency=low
 
+  * New maintainer: Taking over from Josip Rodin <joy-packages@debian.org>
+    as he seems to have abandoned texinfo. 
+  * Acknowledge previous NMU (Closes: #267497, #259280)
   * new upstream release 
     - provides texi2pdf (Closes: #320413)
     - fixes loss of pipe character in TeX verbatim mode (Closes: #181793)
@@ -23,10 +26,9 @@ texinfo (4.8-1) unstable; urgency=low
     upstream, and change to dpatch system, adding Build-Depends on dpatch
   * fixes to bashism in postinst scripts, fix wrong adress of FSF
   * add manpage for texi2pdf from teTeX 2.0.2
-  * changed dependency to tex-common | tetex-bin (<< 3.0) to be installable
-    on current sid.
+  * Now depends on tex-common, or tetex-bin until teTeX-3.0 is in unstable.
 
- -- Norbert Preining <preining@logic.at>  Fri, 30 Sep 2005 11:25:53 +0200
+ -- Norbert Preining <preining@logic.at>  Sat,  1 Oct 2005 08:49:38 +0200
 
 texinfo (4.7-2.2) unstable; urgency=high
 

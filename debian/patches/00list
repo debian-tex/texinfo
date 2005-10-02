@@ -1,2 +1,3 @@
 10_po_fixes.dpatch
 20_warn_missing_tex.dpatch
+30_texindex_racecondition.dpatch

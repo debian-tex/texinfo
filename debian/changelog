@@ -27,8 +27,10 @@ texinfo (4.8-1) unstable; urgency=low
   * fixes to bashism in postinst scripts, fix wrong adress of FSF
   * add manpage for texi2pdf from teTeX 2.0.2
   * Now depends on tex-common, or tetex-bin until teTeX-3.0 is in unstable.
+  * Include a tempfile race fix by Henry Jensen (CAN-2005-3011) 
+    (Closes: #328365)
 
- -- Norbert Preining <preining@logic.at>  Sat,  1 Oct 2005 08:49:38 +0200
+ -- Norbert Preining <preining@logic.at>  Sun,  2 Oct 2005 13:24:47 +0200
 
 texinfo (4.7-2.2) unstable; urgency=high
 

@@ -1,73 +1,33 @@
 #! /bin/sh /usr/share/dpatch/dpatch-run
 ## 30_texindex_racecondition.dpatch by Henry Jensen <jensen@scan-plus.de>
+## and Norbert Preining <preining@logic.at>
 ##
 ## All lines beginning with `## DP:' are a description of the patch.
 ## DP: No description.
 
 @DPATCH@
-diff -urN texinfo-4.7-DEB/util/texindex.c texinfo-4.7/util/texindex.c
---- texinfo-4.7/util/texindex.c	2004-03-18 23:26:53.000000000 +0100
-+++ texinfo-4.7/util/texindex.c	2005-09-30 11:46:41.000000000 +0200
-@@ -37,7 +37,7 @@
- #define memset(ptr, ignore, count) bzero (ptr, count)
- #endif
- 
--char *mktemp (char *);
-+char *mktemp ();
- 
- #if !defined (SEEK_SET)
- #  define SEEK_SET 0
-@@ -45,8 +45,6 @@
- #  define SEEK_END 2
- #endif /* !SEEK_SET */
- 
--struct linebuffer;
--
- /* When sorting in core, this structure describes one line
-    and the position and length of its first keyfield.  */
- struct lineinfo
-@@ -99,6 +97,9 @@
+--- /src/debian-tex/pkg-texlive/texinfo/branches/upstream/4.8/util/texindex.c	2004-04-11 19:56:47.000000000 +0200
++++ ./util/texindex.c	2005-10-02 23:47:05.000000000 +0200
+@@ -99,6 +99,9 @@
  /* Directory to use for temporary files.  On Unix, it ends with a slash.  */
  char *tempdir;
  
 +/* Start of filename to use for temporary files.  */
-+char *tempbase; 
++char *tempbase;
 +
  /* Number of last temporary file.  */
  int tempcount;
  
-@@ -110,13 +111,6 @@
-    which contains all the lines of data.  */
- char *text_base;
- 
--/* Initially 0; changed to 1 if we want initials in this index.  */
--int need_initials;
--
--/* Remembers the first initial letter seen in this index, so we can
--   determine whether we need initials in the sorted form.  */
--char first_initial;
--
- /* Additional command switches .*/
- 
- /* Nonzero means do not delete tempfiles -- for debugging. */
-@@ -137,14 +131,14 @@
-                    long int length1, long int pos1, char *start2,
-                    long int length2, long int pos2);
- int compare_full (const void *, const void *);
--long readline (struct linebuffer *linebuffer, FILE *stream);
-+long readline ();
- int merge_files (char **infiles, int nfiles, char *outfile);
- int merge_direct (char **infiles, int nfiles, char *outfile);
- void pfatal_with_name (const char *name);
+@@ -144,7 +147,7 @@
  void fatal (const char *format, const char *arg);
  void error (const char *format, const char *arg);
  void *xmalloc (), *xrealloc ();
 -char *concat (char *s1, char *s2);
-+char *concat ();
++char *concat (char *s1, char *s2, char *s3);
  void flush_tempfiles (int to_count);
  
  #define MAX_IN_CORE_SORT 500000
-@@ -190,6 +184,12 @@
+@@ -190,6 +193,11 @@
  
    decode_command (argc, argv);
  
@@ -76,36 +36,28 @@ diff -urN texinfo-4.7-DEB/util/texindex.c texinfo-4.7/util/texindex.c
 +   */
 +  tempbase = mktemp (concat ("txiXXXXXX", "", ""));
 +
-+
    /* Process input files completely, one by one.  */
  
    for (i = 0; i < num_infiles; i++)
-@@ -220,10 +220,9 @@
+@@ -220,7 +228,7 @@
  
        outfile = outfiles[i];
        if (!outfile)
 -        outfile = concat (infiles[i], "s");
--
--      need_initials = 0;
--      first_initial = '\0';
-+        {
-+          outfile = concat (infiles[i], "s", "");
-+        }
++        outfile = concat (infiles[i], "s", "");
  
-       if (ptr < MAX_IN_CORE_SORT)
-         /* Sort a small amount of data. */
-@@ -318,8 +317,8 @@
+       need_initials = 0;
+       first_initial = '\0';
+@@ -318,7 +326,7 @@
    if (tempdir == NULL)
      tempdir = DEFAULT_TMPDIR;
    else
 -    tempdir = concat (tempdir, "/");
--
 +    tempdir = concat (tempdir, "/", "");
-+    
+ 
    keep_tempfiles = 0;
  
-   /* Allocate ARGC input files, which must be enough.  */
-@@ -384,26 +383,28 @@
+@@ -384,26 +392,25 @@
      usage (1);
  }
  
@@ -113,10 +65,7 @@ diff -urN texinfo-4.7-DEB/util/texindex.c texinfo-4.7/util/texindex.c
 +/* Return a name for a temporary file. */
  
  static char *
--maketempname (int count)
-+maketempname (count)
-+     int count;
-+
+ maketempname (int count)
  {
 -  static char *tempbase = NULL;
    char tempsuffix[10];
@@ -124,22 +73,21 @@ diff -urN texinfo-4.7-DEB/util/texindex.c texinfo-4.7/util/texindex.c
 +  int fd;
  
 -  if (!tempbase)
--    {
--      int fd;
--      tempbase = concat (tempdir, "txidxXXXXXX");
 +  sprintf (tempsuffix, ".%d", count);
 +  name =  concat (tempdir, tempbase, tempsuffix);
- 
--      fd = mkstemp (tempbase);
--      if (fd == -1)
--        pfatal_with_name (tempbase);
 +  fd = open (name, O_CREAT|O_EXCL|O_WRONLY, 0666);
 +  if (fd == -1)
 +    return NULL;
 +  else
-+    {
+     {
+-      int fd;
+-      tempbase = concat (tempdir, "txidxXXXXXX");
+-
+-      fd = mkstemp (tempbase);
+-      if (fd == -1)
+-        pfatal_with_name (tempbase);
 +      close(fd);
-+      return name;
++      return(name);
      }
 -
 -  sprintf (tempsuffix, ".%d", count);
@@ -147,258 +95,30 @@ diff -urN texinfo-4.7-DEB/util/texindex.c texinfo-4.7/util/texindex.c
  }
  
  
-@@ -455,11 +456,11 @@
-    in which the first keyfield is identified in advance.
-    For positional sorting, assumes that the order of the lines in core
-    reflects their nominal order.  */
-+
- int
--compare_prepared (const void *p1, const void *p2)
-+compare_prepared (line1, line2)
-+     struct lineinfo *line1, *line2;
- {
--  struct lineinfo *line1 = (struct lineinfo *) p1;
--  struct lineinfo *line2 = (struct lineinfo *) p2;
-   int i;
-   int tem;
-   char *text1, *text2;
-@@ -516,7 +517,10 @@
-    the two lines in the input.  */
- 
- int
--compare_general (char *str1, char *str2, long int pos1, long int pos2, int use_keyfields)
-+compare_general (str1, str2, pos1, pos2, use_keyfields)
-+     char *str1, *str2;
-+     long pos1, pos2;
-+     int use_keyfields;
- {
-   int i;
- 
-@@ -708,7 +712,7 @@
- int char_order[256];
- 
- void
--init_char_order (void)
-+init_char_order ()
- {
-   int i;
-   for (i = 1; i < 256; i++)
-@@ -814,7 +818,8 @@
- /* Initialize LINEBUFFER for use. */
- 
- void
--initbuffer (struct linebuffer *linebuffer)
-+initbuffer (linebuffer)
-+     struct linebuffer *linebuffer;
- {
-   linebuffer->size = 200;
-   linebuffer->buffer = (char *) xmalloc (200);
-@@ -824,7 +829,9 @@
-    Return the length of the line.  */
- 
- long
--readline (struct linebuffer *linebuffer, FILE *stream)
-+readline (linebuffer, stream)
-+     struct linebuffer *linebuffer;
-+     FILE *stream;
- {
-   char *buffer = linebuffer->buffer;
-   char *p = linebuffer->buffer;
-@@ -883,10 +890,13 @@
+@@ -931,6 +938,8 @@
    for (i = 0; i < ntemps; i++)
      {
-       char *outname = maketempname (++tempcount);
--      FILE *ostream = fopen (outname, "w");
-+      FILE *ostream;
-       long tempsize = 0;
- 
--      if (!ostream)
-+      if (!outname)
-+        pfatal_with_name("temporary file");
-+      ostream = fopen (outname, "w");
-+      if (!outname || !ostream)
-         pfatal_with_name (outname);
-       tempfiles[i] = outname;
- 
-@@ -1018,7 +1028,7 @@
-      Make a `struct lineinfo' for each line, which records the keyfield
-      as well as the line, and sort them.  */
- 
--  lineinfo = malloc ((nextline - linearray) * sizeof (struct lineinfo));
-+  lineinfo = (struct lineinfo *) malloc ((nextline - linearray) * sizeof (struct lineinfo));
- 
-   if (lineinfo)
-     {
-@@ -1083,23 +1093,6 @@
-         return 0;
- 
-       *line = p;
--
--      /* Find the first letter of the first field of this line.  If it
--         is different from the first letter of the first field of the
--         first line, we need initial headers in the output index.  */
--      while (*p && *p != '{')
--        p++;
--      if (p == end)
--        return 0;
--      p++;
--      if (first_initial)
--        {
--          if (first_initial != toupper (*p))
--            need_initials = 1;
--        }
--      else
--        first_initial = toupper (*p);
--
-       while (*p && *p != '\n')
-         p++;
-       if (p != end)
-@@ -1109,7 +1102,7 @@
-       if (line == linearray + nlines)
-         {
-           char **old = linearray;
--          linearray = xrealloc (linearray, sizeof (char *) * (nlines *= 4));
-+          linearray = (char **) xrealloc (linearray, sizeof (char *) * (nlines *= 4));
-           line += linearray - old;
-         }
-     }
-@@ -1165,7 +1158,7 @@
- /* Initialize static storage for writing an index. */
- 
- void
--init_index (void)
-+init_index ()
- {
-   pending = 0;
-   lastinitial = lastinitial1;
-@@ -1184,7 +1177,9 @@
-    insert headers for each initial character, etc.  */
- 
- void
--indexify (char *line, FILE *ostream)
-+indexify (line, ostream)
-+     char *line;
-+     FILE *ostream;
- {
-   char *primary, *secondary, *pagenumber;
-   int primarylength, secondarylength = 0, pagelength;
-@@ -1207,9 +1202,12 @@
-   else
-     {
-       initial = initial1;
--      initial1[0] = toupper (*p);
-+      initial1[0] = *p;
-       initial1[1] = 0;
-       initiallength = 1;
-+
-+      if (initial1[0] >= 'a' && initial1[0] <= 'z')
-+        initial1[0] -= 040;
-     }
- 
-   pagenumber = find_braced_pos (line, 1, 0, 0);
-@@ -1237,9 +1235,8 @@
- 
-       /* If this primary has a different initial, include an entry for
-          the initial. */
--      if (need_initials &&
--          (initiallength != lastinitiallength ||
--           strncmp (initial, lastinitial, initiallength)))
-+      if (initiallength != lastinitiallength ||
-+          strncmp (initial, lastinitial, initiallength))
-         {
-           fprintf (ostream, "\\initial {");
-           fwrite (initial, 1, initiallength, ostream);
-@@ -1284,8 +1281,7 @@
-       lastsecondary[0] = 0;
-     }
- 
--  /* Should not have an entry with no subtopic following one with a
--     subtopic. */
-+  /* Should not have an entry with no subtopic following one with a subtopic. */
- 
-   if (nosecondary && *lastsecondary)
-     error (_("entry %s follows an entry with a secondary name"), line);
-@@ -1318,14 +1314,15 @@
- 
-   /* Here to add one more page number to the current entry. */
-   if (pending++ != 1)
--    fputs (", ", ostream);  /* Punctuate first, if this is not the first. */
-+    fputs (", ", ostream);      /* Punctuate first, if this is not the first. */
-   fwrite (pagenumber, pagelength, 1, ostream);
- }
- 
- /* Close out any unfinished output entry. */
- 
- void
--finish_index (FILE *ostream)
-+finish_index (ostream)
-+     FILE *ostream;
- {
-   if (pending)
-     fputs ("}\n", ostream);
-@@ -1348,13 +1345,11 @@
- 
-   for (next_line = linearray; next_line != stop_line; next_line++)
-     {
--      /* If -u was specified, output the line only if distinct from
--         previous one.  */
-+      /* If -u was specified, output the line only if distinct from previous one.  */
-       if (next_line == linearray
-       /* Compare previous line with this one, using only the
-          explicitly specd keyfields. */
--          || compare_general (*(next_line - 1), *next_line, 0L, 0L,
--                              num_keyfields - 1))
-+          || compare_general (*(next_line - 1), *next_line, 0L, 0L, num_keyfields - 1))
-         {
-           char *p = *next_line;
-           char c;
-@@ -1401,6 +1396,8 @@
+       char *newtemp = maketempname (++tempcount);
++      if (!newtemp)
++        pfatal_with_name("temp file");
+       sort_in_core (tempfiles[i], MAX_IN_CORE_SORT, newtemp);
+       if (!keep_tempfiles)
+         unlink (tempfiles[i]);
+@@ -1401,6 +1410,8 @@
        if (i + 1 == ntemps)
          nf = nfiles - i * MAX_DIRECT_MERGE;
        tempfiles[i] = maketempname (++tempcount);
 +      if (!tempfiles[i])
-+        pfatal_with_name("temp file");
++	pfatal_with_name("temp file");
        value |= merge_direct (&infiles[i * MAX_DIRECT_MERGE], nf, tempfiles[i]);
      }
  
-@@ -1598,31 +1595,57 @@
- }
- 
- void
--perror_with_name (const char *name)
-+perror_with_name (name)
-+     char *name;
- {
--  fprintf (stderr, "%s: ", program_name);
--  perror (name);
-+  char *s;
-+
-+  s = strerror (errno);
-+  printf ("%s: ", program_name);
-+  printf ("%s; for file `%s'.\n", s, name);
- }
- 
- void
- pfatal_with_name (const char *name)
- {
--  perror_with_name (name);
-+  char *s;
-+
-+  s = strerror (errno);
-+  printf ("%s: ", program_name);
-+  printf (_("%s; for file `%s'.\n"), s, name);
-   xexit (1);
- }
- 
--
--/* Return a newly-allocated string concatenating S1 and S2.  */
-+/* Return a newly-allocated string whose contents concatenate those of
-+   S1, S2, S3.  */
+@@ -1615,14 +1626,15 @@
+ /* Return a newly-allocated string concatenating S1 and S2.  */
  
  char *
 -concat (char *s1, char *s2)
-+concat (s1, s2, s3)
-+     char *s1, *s2, *s3;
++concat (char *s1, char *s2, char *s3)
  {
 -  int len1 = strlen (s1), len2 = strlen (s2);
 -  char *result = (char *) xmalloc (len1 + len2 + 1);
@@ -413,19 +133,3 @@ diff -urN texinfo-4.7-DEB/util/texindex.c texinfo-4.7/util/texindex.c
  
    return result;
  }
-+                                                                                                                                                                      
-+#if !defined (HAVE_STRCHR)
-+char *
-+strrchr (string, character)
-+     char *string;
-+     int character;
-+{
-+  register int i;
-+
-+  for (i = strlen (string) - 1; i > -1; i--)
-+    if (string[i] == character)
-+      return (string + i);
-+
-+  return ((char *)NULL);
-+}
-+#endif /* HAVE_STRCHR */

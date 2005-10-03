@@ -33,7 +33,7 @@ texinfo (4.8-1) unstable; urgency=low
   * Include a tempfile race fix based on the one by Henry Jensen 
     (CAN-2005-3011) (Closes: #328365)
 
- -- Norbert Preining <preining@logic.at>  Mon,  3 Oct 2005 00:25:58 +0200
+ -- Norbert Preining <preining@logic.at>  Mon,  3 Oct 2005 13:01:02 +0200
 
 texinfo (4.7-2.2) unstable; urgency=high
 

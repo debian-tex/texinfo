@@ -8,7 +8,7 @@ texinfo (4.8-1) unstable; urgency=low
     - fixes loss of pipe character in TeX verbatim mode (Closes: #181793)
     - fixes incorrect html output (Closes: #204202, #205022)
     - output correct XML (Closes: #221988)
-    - adds commands for serif fonts (Closes: #277754)
+    - adds commands for sans serif fonts (Closes: #277754)
     - fixes crash on first backspace (Closes: #259561)
     - fixes buffer overflow in 'Follow xref' (Closes: #263853)
     - fixes various navigation crashes (Closes: #265605, #293337, #308280, 
@@ -30,8 +30,9 @@ texinfo (4.8-1) unstable; urgency=low
   * texinfo formats are not necessary anymore, since texi2* do not use
     the formats, and the new teTeX will not need to generate texinfo formats.
     Thus bug #253124 will not be fixed. (Closes: #253124)
-  * Include a tempfile race fix based on the one by Henry Jensen 
+  * Include a tempfile race fix based on the patch by Henry Jensen 
     (CAN-2005-3011) (Closes: #328365)
+  * Upload sponsored by Frank Küster <frank@debian.org>
 
  -- Norbert Preining <preining@logic.at>  Mon,  3 Oct 2005 13:01:02 +0200
 
@@ -456,6 +457,3 @@ Texinfo 3.1 Debian 2 - iwj
 Texinfo 3.1 Debian 1 - iwj
 Initial release, completely untested.
 
-Local variables:
-mode: debian-changelog
-End:

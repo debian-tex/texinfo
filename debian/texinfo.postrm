@@ -3,6 +3,5 @@
 if test -x /usr/bin/mktexlsr; then
    mktexlsr /usr/share/texmf >/dev/null
 fi
-update-fmtutil
 
 #DEBHELPER#

@@ -34,7 +34,7 @@ texinfo (4.8-1) unstable; urgency=low
     (CAN-2005-3011) (Closes: #328365)
   * Upload sponsored by Frank Küster <frank@debian.org>
 
- -- Norbert Preining <preining@logic.at>  Mon,  3 Oct 2005 22:51:45 +0200
+ -- Norbert Preining <preining@logic.at>  Mon,  3 Oct 2005 23:14:22 +0200
 
 texinfo (4.7-2.2) unstable; urgency=high
 

@@ -27,6 +27,9 @@ texinfo (4.8-1) unstable; urgency=low
   * fixes to bashism in postinst scripts, fix wrong adress of FSF
   * add manpage for texi2pdf from teTeX 2.0.2
   * Now depends on tex-common, or tetex-bin until teTeX-3.0 is in unstable.
+  * texinfo formats are not necessary anymore, since texi2* do not use
+    the formats, and the new teTeX will not need to generate texinfo formats.
+    Thus bug #253124 will not be fixed. (Closes: #253124)
   * Include a tempfile race fix based on the one by Henry Jensen 
     (CAN-2005-3011) (Closes: #328365)
 

@@ -1,13 +1,14 @@
 #! /bin/sh /usr/share/dpatch/dpatch-run
 ## 30_texindex_racecondition.dpatch by Henry Jensen <jensen@scan-plus.de>
 ## and Norbert Preining <preining@logic.at>
+## backport of cvs fixes
 ##
 ## All lines beginning with `## DP:' are a description of the patch.
 ## DP: No description.
 
 @DPATCH@
---- /src/debian-tex/pkg-texlive/texinfo/branches/upstream/4.8/util/texindex.c	2004-04-11 19:56:47.000000000 +0200
-+++ ./util/texindex.c	2005-10-02 23:47:05.000000000 +0200
+--- branches/upstream/current/util/texindex.c	2005-09-30 11:28:05.000000000 +0200
++++ texinfo-cvs/util/texindex.c	2005-10-06 08:35:26.000000000 +0200
 @@ -99,6 +99,9 @@
  /* Directory to use for temporary files.  On Unix, it ends with a slash.  */
  char *tempdir;
@@ -23,7 +24,7 @@
  void error (const char *format, const char *arg);
  void *xmalloc (), *xrealloc ();
 -char *concat (char *s1, char *s2);
-+char *concat (char *s1, char *s2, char *s3);
++static char *concat3 (const char *, const char *, const char *);
  void flush_tempfiles (int to_count);
  
  #define MAX_IN_CORE_SORT 500000
@@ -34,7 +35,7 @@
 +  /* XXX mkstemp not appropriate, as we need to have somewhat predictable
 +   * names. But race condition was fixed, see maketempname.
 +   */
-+  tempbase = mktemp (concat ("txiXXXXXX", "", ""));
++  tempbase = mktemp (concat3 ("txiXXXXXX", "", ""));
 +
    /* Process input files completely, one by one.  */
  
@@ -44,7 +45,7 @@
        outfile = outfiles[i];
        if (!outfile)
 -        outfile = concat (infiles[i], "s");
-+        outfile = concat (infiles[i], "s", "");
++        outfile = concat3 (infiles[i], "s", "");
  
        need_initials = 0;
        first_initial = '\0';
@@ -53,16 +54,16 @@
      tempdir = DEFAULT_TMPDIR;
    else
 -    tempdir = concat (tempdir, "/");
-+    tempdir = concat (tempdir, "/", "");
++    tempdir = concat3 (tempdir, "/", "");
  
    keep_tempfiles = 0;
  
-@@ -384,26 +392,25 @@
+@@ -384,26 +395,25 @@
      usage (1);
  }
  
 -/* Return a name for temporary file COUNT. */
-+/* Return a name for a temporary file. */
++/* Return a name for temporary file COUNT, or NULL if failure. */
  
  static char *
  maketempname (int count)
@@ -74,8 +75,8 @@
  
 -  if (!tempbase)
 +  sprintf (tempsuffix, ".%d", count);
-+  name =  concat (tempdir, tempbase, tempsuffix);
-+  fd = open (name, O_CREAT|O_EXCL|O_WRONLY, 0666);
++  name =  concat3 (tempdir, tempbase, tempsuffix);
++  fd = open (name, O_CREAT|O_EXCL|O_WRONLY, 0600);
 +  if (fd == -1)
 +    return NULL;
 +  else
@@ -95,7 +96,7 @@
  }
  
  
-@@ -931,6 +938,8 @@
+@@ -931,6 +941,8 @@
    for (i = 0; i < ntemps; i++)
      {
        char *newtemp = maketempname (++tempcount);
@@ -104,7 +105,7 @@
        sort_in_core (tempfiles[i], MAX_IN_CORE_SORT, newtemp);
        if (!keep_tempfiles)
          unlink (tempfiles[i]);
-@@ -1401,6 +1410,8 @@
+@@ -1401,6 +1413,8 @@
        if (i + 1 == ntemps)
          nf = nfiles - i * MAX_DIRECT_MERGE;
        tempfiles[i] = maketempname (++tempcount);
@@ -113,12 +114,17 @@
        value |= merge_direct (&infiles[i * MAX_DIRECT_MERGE], nf, tempfiles[i]);
      }
  
-@@ -1615,14 +1626,15 @@
- /* Return a newly-allocated string concatenating S1 and S2.  */
+@@ -1612,17 +1626,18 @@
+ }
  
- char *
+ 
+-/* Return a newly-allocated string concatenating S1 and S2.  */
++/* Return a newly-allocated string concatenating S1, S2, and S3.  */
+ 
+-char *
 -concat (char *s1, char *s2)
-+concat (char *s1, char *s2, char *s3)
++static char *
++concat3 (const char *s1, const char *s2, const char *s3)
  {
 -  int len1 = strlen (s1), len2 = strlen (s2);
 -  char *result = (char *) xmalloc (len1 + len2 + 1);

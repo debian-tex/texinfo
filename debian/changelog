@@ -32,7 +32,7 @@ texinfo (4.8-1) unstable; urgency=low
     Thus bug #253124 will not be fixed. (Closes: #253124)
   * Include a tempfile race fix based on the patch by Henry Jensen 
     (CAN-2005-3011) (Closes: #328365)
-  * Upload sponsored by Frank Küster <frank@debian.org>
+  * Upload sponsored by Frank KÃ¼ster <frank@debian.org>
 
  -- Norbert Preining <preining@logic.at>  Thu,  6 Oct 2005 08:40:55 +0200
 

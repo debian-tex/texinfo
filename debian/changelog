@@ -1,3 +1,9 @@
+texinfo (4.8-2) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Norbert Preining <preining@logic.at>  Wed, 12 Oct 2005 10:26:34 +0200
+
 texinfo (4.8-1) unstable; urgency=medium
 
   * Urgency medium because we fix security bug #328365, see second last

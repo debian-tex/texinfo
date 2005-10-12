@@ -1,5 +1,7 @@
-texinfo (4.8-1) unstable; urgency=low
+texinfo (4.8-1) unstable; urgency=medium
 
+  * Urgency medium because we fix security bug #328365, see second last
+    item.
   * New maintainer: Taking over from Josip Rodin <joy-packages@debian.org>
     as he seems to have abandoned texinfo. 
   * Acknowledge previous NMU (Closes: #267497, #259280)

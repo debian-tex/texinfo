@@ -80,8 +80,8 @@ DONE 256287: XSI:isms in several scripts
 308063 @xref in man pages can expand to nothing
 	not checked
 
-316066 bash-doc: bash.info has incorrect and broken links in pinfo
-	what the hell, assigning this stuff to me?
+DONE 316066 bash-doc: bash.info has incorrect and broken links in pinfo
+	fixed in svn
 
 DONE 333630: texinfo: Changelog is iso8859-1, not utf-8
 	fixed in svn

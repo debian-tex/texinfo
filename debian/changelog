@@ -1,7 +1,7 @@
 texinfo (4.8-2) UNRELEASED; urgency=low
 
   * Save debian/changelog in utf8 encoding (Closes: #333630)
-  * Close bugs which are closed by new upstream
+  * Close bugs which are closed by upstream but haven't been closed in -1
     - vi-keys do work (Closes: #199922, #78504)
     - depend on some kind of TeX system (Closes: #212206)
     - another instance of the crash on first backspace 
@@ -12,10 +12,12 @@ texinfo (4.8-2) UNRELEASED; urgency=low
     - html generation error fixed (Closes: #146025)
     - texi2dev accepts -c (Closes: #147527)
     - fixed mangled no.po (Closes: #201031)
+    - fix broken tag table generation (occurs in bashref) (Closes: #316066)
   * replace egrep and fgrep and numerical signals (Closes: #256287)
   * include patch to info translations to fix crash on Ctrl-h, and
     regenerate the gmo files on build (Closes: #150710, #199615)
   * include documentation into the info package, too (Closes: #261539)
+  * Upload sponsored by Frank Küster <frank@debian.org>
 
  -- Norbert Preining <preining@logic.at>  Wed, 12 Oct 2005 10:26:34 +0200
 

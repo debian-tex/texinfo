@@ -12,7 +12,8 @@ texinfo (4.8-2) UNRELEASED; urgency=low
     - html generation error fixed (Closes: #146025)
     - texi2dev accepts -c (Closes: #147527)
     - fixed mangled no.po (Closes: #201031)
-    - fix broken tag table generation (occurs in bashref) (Closes: #316066)
+    - fix broken tag table generation (occurs in bashref) 
+      (refer to #316066 for explanation)
   * replace egrep and fgrep and numerical signals (Closes: #256287)
   * include patch to info translations to fix crash on Ctrl-h, and
     regenerate the gmo files on build (Closes: #150710, #199615)

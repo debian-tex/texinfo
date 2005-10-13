@@ -9,8 +9,8 @@ texinfo (4.8-2) UNRELEASED; urgency=low
     - i RET visits the Name index in emacs and info (Closes: #267357)
     - follow does now correctly print the list of xrefs (Closes: #202090)
   * replace egrep and fgrep and numerical signals (Closes: #256287)
-  * include patch to info translations to fix crash on Ctrl-h
-    (Closes: #150710, #199615)
+  * include patch to info translations to fix crash on Ctrl-h, and
+    regenerate the gmo files on build (Closes: #150710, #199615)
 
  -- Norbert Preining <preining@logic.at>  Wed, 12 Oct 2005 10:26:34 +0200
 

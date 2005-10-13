@@ -1,47 +1,158 @@
 List of open Bugs and comments:
 
-307264 info bash has too many blank lines
-	this is a bash bug, the texi of bashref has the lines broken
-	at 73 cols, and the extra empty lines. makeinfo will not make
-	a reformatting of the input!
+texinfo:
+--------
+DONE 37515: tetex-extra: texi2pdf: clicking bookmarks lands past spot wanted
+	forwarded upstream, 6 years old, need check!
+	fixed in svn
 
-	should be reassigned to bash not texinfo
+81261: texinfo: texi2dvi crashes on @cindex
+	forwarded upstream, version 4.0, need check!
+	still present in upstream, strange
+	is this a misuse?
 
-151850 Matching vs. Searching
-146133 Matching vs. Searching
-	still present in 4.8, cvs I don't know
+95084: No hierarchy in PDF bookmarks for appendix
+	forwarded upstream, version 4.0, need check!
 
+113988: makeinfo: locale settings should not influence output files
+	forwarded upstream, version 4.0, need check!
+	long discussion on the bug, but no conclusion
+
+115503: texi2dvi: source file directory included in search path
+	forwarded upstream, version 4.0, need check!
+	upstream: wontfix. How to deal with bugs like this?
+
+129405: texi2pdf and deftypefun parsing
+	forwarded upstream, 3 years old, need check!
+	entry format error I would guess.
+
+142113 FTBFS: Build failure of nco on i386
+	cannot reproduce this, sent email to submitter
+
+DONE 146025: texinfo --html --no-split --no-headers generates bad output
+	forwarded upstream, version 4.1, need check!
+	fixed in svn
+
+DONE 147527: texi2dvi: -c does not work with relative paths in -I
+	forwarded upstream, version 4.1, need check!
+	fixed in svn
+
+147483: texinfo: wrong PDF bookmarks are generated
+	cannot reporduce this, sent email to submitter
+
+DONE 201031: texinfo: no.po is mangled.
+	forwarded upstream, version 4.6, need check!
+	fixed in svn
 
 204117 texinfo: texinfo.dtd poorly installed
 	have to read up about this
 
-212549 info should support the "coding" local variable and output correct characters
-	no idea what it means
+DONE 212206: The user is not told at installation time that texinfo needs a working TeX.
+	fixed in svn
 
-234848 info: Unexpected behaviour when trying to (incorrectly) open a file
-	this is true, it shows the man page of top, which is rubbish
-
-276000 texinfo: Wrong page number in table of contents
-	still present
-
-308063 @xref in man pages can expand to nothing
-	not checked
-
-245673 info: return the first non-exact match instead of the last
-	email sent to submitter
-
-269413 [INTL:da] Updated program translation
-	should be done upstream, is it already there?
+214729: makeinfo --html should generate valid HTML
+	correct, the DOCTYPE is missing, should be sent upstream
 
 228606 makeinfo --html: split by chapter
 	wish list, I cannot do anything with it
 
+DONE 256287: XSI:isms in several scripts
+	fixed in svn
+
+269413 [INTL:da] Updated program translation
+	should be done upstream, is it already there?
+
+276000 texinfo: Wrong page number in table of contents
+	still present, should be sent upstream
+
+276006: bogus error message when $TEXINPUTS contains nonexistent directory
+	true, fix in bug report, should be sent upstream
+
+276547: texinfo: @samp{} text should change - to \- in man pages
+	no idea what this should do
+
+307264 info bash has too many blank lines
+	this is a bash bug, the texi of bashref has the lines broken
+	at 73 cols, and the extra empty lines. makeinfo will not make
+	a reformatting of the input!
+	should be reassigned to bash not texinfo
+
+308063 @xref in man pages can expand to nothing
+	not checked
+
+316066 bash-doc: bash.info has incorrect and broken links in pinfo
+	what the hell, assigning this stuff to me?
+
+DONE 333630: texinfo: Changelog is iso8859-1, not utf-8
+	fixed in svn
+
+
+info:
+-----
+31464: info: regex searching
+	forwarded upstream, version 3.1, need check!
+
+53221: info does not care position parameter in format string
+	forwarded upstream, version 4.0, need check!
+
+DONE 78504: info: default scrolling methods differ from other programs
+	forwarded upstream, version 4.0, need check!
+	fix with fixing --vi-keys
+	fixed in svn
+
+DONE 150710 crashes on various locales when pressing Ctrl-h
+DONE 199615: info: unexpected death on pressing `?' key
+	patch included, should be sent upstream
+	fixed in svn
+
+146133 Matching vs. Searching
+151850 Matching vs. Searching
+	still present in 4.8, cvs I don't know
+
+DONE 199922: info: vi keys don't work
+	fixed in svn
+
+DONE 202090: info: Tutorial recommends to try "f?", but it doesn't work
+	fixed in svn
+
+212549 info should support the "coding" local variable and output correct characters
+	no idea what it means
+
+218557: dies with "Cannot find node `Top'"
+	still present, quite interesting, zeros in dir file. Should be
+	taken a look at
+
+226898: info: documentation typo
+	info.texi contains a typo, true, should be sent upstream
+
+234848 info: Unexpected behaviour when trying to (incorrectly) open a file
+	this is true, it shows the man page of top, which is rubbish
+
+245673 info: return the first non-exact match instead of the last
+	email sent to submitter
+
 244506 info: menu lacks icon
 	umpf, maybe once
 
-261539 please include some references in /usr/share/doc/info/
-	should be done, soon
+DONE 261539 please include some references in /usr/share/doc/info/
+	fixed in svn
 
-150710 crashes on various locales when pressing Ctrl-h
-	patch included, should be sent upstream
+DONE 265880: info: apparent faulty link in tutorial causes segmentation fault
+	fixed in svn
+
+DONE 267357: make Info index: Name Index vs. Concept Index
+	fixed in svn
+
+DONE 280510: info: previous-node ([) segmentation faults
+	fixed in svn
+
+280581: info: segv when resizing window and 'regenerating PO file'
+	cannot reproduce, send email to submitter
+
+282643: segv when pressing / and up under locale zh_CN.GBK
+	no idea
+
+DONE 298268: segfault in `info makeinfo'
+	fixed in svn
+
 

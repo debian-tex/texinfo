@@ -75,7 +75,7 @@ binary-arch: DH_OPTIONS=-a
 binary-arch: install
 	dh_testdir
 	dh_testroot
-	dh_installdocs AUTHORS INTRODUCTION README NEWS TODO
+	dh_installdocs -A AUTHORS INTRODUCTION README NEWS TODO
 	dh_installmenu
 	dh_installchangelogs ChangeLog
 ifeq "$(findstring nostrip,$(DEB_BUILD_OPTIONS))" ""

@@ -1,0 +1,43 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 50_info_universal_argument.dpatch by Peter De Wachter <pdewacht@vub.ac.be>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: fix crash in info under nl locale
+
+@DPATCH@
+diff -ur texinfo-4.7/po/nl.po texinfo-pdw/po/nl.po
+--- texinfo-4.7/po/nl.po	2004-04-09 23:31:09.000000000 +0200
++++ texinfo-pdw/po/nl.po	2005-03-07 06:43:14.000000000 +0100
+@@ -1603,7 +1603,7 @@
+ 
+ #: info/session.c:4733
+ msgid "Internally used by \\[universal-argument]"
+-msgstr "Intern gebruikt door \\[universeel-argument]"
++msgstr "Intern gebruikt door \\[universal-argument]"
+ 
+ #: info/tilde.c:338
+ #, c-format
+diff -ur texinfo-4.7/po/ro.po texinfo-pdw/po/ro.po
+--- texinfo-4.7/po/ro.po	2004-04-09 23:31:10.000000000 +0200
++++ texinfo-pdw/po/ro.po	2005-03-07 06:43:14.000000000 +0100
+@@ -1628,7 +1628,7 @@
+ 
+ #: info/session.c:4733
+ msgid "Internally used by \\[universal-argument]"
+-msgstr "Folosit intern de \\[argument-universal]"
++msgstr "Folosit intern de \\[universal-argument]"
+ 
+ #: info/tilde.c:338
+ #, c-format
+diff -ur texinfo-4.7/po/tr.po texinfo-pdw/po/tr.po
+--- texinfo-4.7/po/tr.po	2004-04-09 23:31:11.000000000 +0200
++++ texinfo-pdw/po/tr.po	2005-03-07 06:43:14.000000000 +0100
+@@ -1607,7 +1607,7 @@
+ 
+ #: info/session.c:4733
+ msgid "Internally used by \\[universal-argument]"
+-msgstr "Dahili olarak \\[universal argument] tarafýndan kullanýlýyor"
++msgstr "Dahili olarak \\[universal-argument] tarafýndan kullanýlýyor"
+ 
+ #: info/tilde.c:338
+ #, c-format

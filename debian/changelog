@@ -1,6 +1,16 @@
 texinfo (4.8-2) UNRELEASED; urgency=low
 
-  * NOT RELEASED YET
+  * Save debian/changelog in utf8 encoding (Closes: #333630)
+  * Close bugs which are closed by new upstream
+    - vi-keys do work (Closes: #199922)
+    - depend on some kind of TeX system (Closes: #212206)
+    - another instance of the crash on first backspace 
+      (Closes: #265880, #280510, #298268)
+    - i RET visits the Name index in emacs and info (Closes: #267357)
+    - follow does now correctly print the list of xrefs (Closes: #202090)
+  * replace egrep and fgrep and numerical signals (Closes: #256287)
+  * include patch to info translations to fix crash on Ctrl-h
+    (Closes: #150710, #199615)
 
  -- Norbert Preining <preining@logic.at>  Wed, 12 Oct 2005 10:26:34 +0200
 

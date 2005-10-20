@@ -1,0 +1,20 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+# 52_missing_dir_in_texinputs.dpatch by Frank Küster
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: fix warning on missing dir in texinfputs
+
+@DPATCH@
+--- ./util/texi2dvi	Mon Oct 11 14:41:33 2004
++++ ./util/texi2dvi	Mon Oct 11 14:51:46 2004
+@@ -454,7 +454,7 @@
+         TEXINPUTS=$TEXINPUTS$path_sep$dir
+         ;;
+       *)
+-        abs=`cd "$dir" && pwd` && TEXINPUTS=$TEXINPUTS$path_sep$abs
++        abs=`cd "$dir" 2>/dev/null && pwd` && TEXINPUTS=$TEXINPUTS$path_sep$abs
+         ;;
+     esac
+   done
+
+

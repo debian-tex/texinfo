@@ -1,26 +1,37 @@
-texinfo (4.8-2) UNRELEASED; urgency=low
+texinfo (4.8-2) unstable; urgency=low
 
   * Save debian/changelog in utf8 encoding (Closes: #333630)
   * Close bugs which are closed by upstream but haven't been closed in -1
-    - vi-keys do work (Closes: #199922, #78504)
-    - depend on some kind of TeX system (Closes: #212206)
-    - another instance of the crash on first backspace 
-      (Closes: #265880, #280510, #298268)
-    - i RET visits the Name index in emacs and info (Closes: #267357)
-    - follow does now correctly print the list of xrefs (Closes: #202090)
     - bookmarks target miscalculation fixed (Closes: #37515)
+    - info cares for position parameter (Closes: #53221)
+    - vi-keys do work (Closes: #78504, #199922)
+    - fix missing hierachy in bookmarks of the appendix (Closes: #95084)
     - html generation error fixed (Closes: #146025)
+    - PDF bookmarks are ok even with subsubsection without subsection
+      (Closes: #147483)
     - texi2dev accepts -c (Closes: #147527)
     - fixed mangled no.po (Closes: #201031)
-    - fix broken tag table generation (occurs in bashref) 
+    - follow does now correctly print the list of xrefs (Closes: #202090)
+    - depend on some kind of TeX system (Closes: #212206)
+    - another instance of the crash on first backspace
+      (Closes: #265880, #280510, #298268)
+    - i RET visits the Name index in emacs and info (Closes: #267357)
+    - fix broken tag table generation (occurs in bashref)
       (refer to #316066 for explanation)
+    - fix segv when resizing window (Closes: #280581)
+  * close bogus bugs which stem from malformed input (Closes: #81261, #129405)
+    The texinfo.info document states explicitely that the directive
+    @setfilename is necessary. And deftypedefun needs a space after the type.
   * replace egrep and fgrep and numerical signals (Closes: #256287)
   * include patch to info translations to fix crash on Ctrl-h, and
     regenerate the gmo files on build (Closes: #150710, #199615)
   * include documentation into the info package, too (Closes: #261539)
+  * fix a typo in texinfo.info (Closes: #226898)
+  * fix a warning of texi2dvi if TEXINPUTS contains a non existent dir
+    (Closes: #276006)
   * Upload sponsored by Frank Küster <frank@debian.org>
 
- -- Norbert Preining <preining@logic.at>  Wed, 12 Oct 2005 10:26:34 +0200
+ -- Norbert Preining <preining@logic.at>  Thu, 20 Oct 2005 16:05:21 +0200
 
 texinfo (4.8-1) unstable; urgency=medium
 

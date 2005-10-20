@@ -2,3 +2,9 @@ TODO for texinfo Debian package
 -------------------------------
 * go through the bugs on bugs.debian.org and check wether they are
   still present or fixed already (by upstream).
+* check on suggests: 
+	texlive:	-langcyrillic
+			-basic(bin)?
+	tetex:		-base
+			-extra?
+

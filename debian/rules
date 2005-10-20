@@ -60,10 +60,8 @@ install-stamp: build-stamp
 		< $(texinfo)/usr/share/man/man1/install-info.1 \
 		> $(texinfo)/usr/share/man/man1/ginstall-info.1
 	rm -f $(texinfo)/usr/share/man/man1/install-info.1
-	# mkdir -p $(texinfo)/etc/texmf/fmt.d
-	# cp debian/conf/50texinfo.cnf $(texinfo)/etc/texmf/fmt.d
-	# mkdir -p $(texinfo)/var/lib/tex-common/fmtutil-cnf
-	# cp debian/conf/texinfo.list $(texinfo)/var/lib/tex-common/fmtutil-cnf
+	cp debian/conf/50cyrtexinfo.cnf $(texinfo)/etc/texmf/fmt.d
+	echo "50cyrtexinfo" > $(texinfo)/var/lib/tex-common/fmtutil-cnf/texinfo.list
 	# mkdir -p $(texinfo)/usr/share/texmf/tex/texinfo/config
 	# cp debian/conf/texinfo.ini $(texinfo)/usr/share/texmf/tex/texinfo/
 	touch install-stamp
@@ -76,6 +74,7 @@ binary-arch: install
 	dh_testdir
 	dh_testroot
 	dh_installdocs -A AUTHORS INTRODUCTION README NEWS TODO
+	dh_installdocs debian/README.cyrtexinfo
 	dh_installmenu
 	dh_installchangelogs ChangeLog
 ifeq "$(findstring nostrip,$(DEB_BUILD_OPTIONS))" ""

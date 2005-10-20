@@ -29,6 +29,8 @@ texinfo (4.8-2) unstable; urgency=low
   * fix a typo in texinfo.info (Closes: #226898)
   * fix a warning of texi2dvi if TEXINPUTS contains a non existent dir
     (Closes: #276006)
+  * add 50cyrtexinfo.cnf to fmt.d, and write a README.cyrtexinfo how to
+    create a cyrillic texinfo format (Closes: #253124)
   * Upload sponsored by Frank Küster <frank@debian.org>
 
  -- Norbert Preining <preining@logic.at>  Thu, 20 Oct 2005 16:05:21 +0200

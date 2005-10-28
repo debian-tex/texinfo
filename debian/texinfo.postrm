@@ -1,7 +1,14 @@
 #!/bin/sh -e
 
-if which mktexlsr  > /dev/null 2>&1 ; then
-   mktexlsr /usr/share/texmf >/dev/null
-fi
+#
+# do the following commands as soon as they are present
+#
+if which update-fmtutil > /dev/null ; then update-fmtutil ; fi
+if which mktexlsr >/dev/null; then mktexlsr; fi
+
+#
+# remove the cyrtexinfo format files in case they have been created
+#
+rm -f /var/lib/texmf/web2c/cyrtexinfo.fmt /var/lib/texmf/web2c/cyrtexinfo.log
 
 #DEBHELPER#

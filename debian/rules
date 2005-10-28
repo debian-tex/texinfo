@@ -52,8 +52,7 @@ install-stamp: build-stamp
 	dh_install --list-missing --sourcedir=debian/tmp -X share/info
 	dh_installinfo
 	cp debian/texi2pdf.man $(texinfo)/usr/share/man/man1/texi2pdf.1
-	# do not install texinfo and pdftexinfo links
-	#dh_link
+	dh_link
 	cp -a doc/texinfo.html $(texinfo)/usr/share/doc/texinfo/html
 	mv $(texinfo)/usr/bin/install-info $(texinfo)/usr/bin/ginstall-info
 	sed -e "s/install-info/g&/g" \
@@ -62,8 +61,6 @@ install-stamp: build-stamp
 	rm -f $(texinfo)/usr/share/man/man1/install-info.1
 	cp debian/conf/50cyrtexinfo.cnf $(texinfo)/etc/texmf/fmt.d
 	echo "50cyrtexinfo" > $(texinfo)/var/lib/tex-common/fmtutil-cnf/texinfo.list
-	# mkdir -p $(texinfo)/usr/share/texmf/tex/texinfo/config
-	# cp debian/conf/texinfo.ini $(texinfo)/usr/share/texmf/tex/texinfo/
 	touch install-stamp
 
 binary-indep:
@@ -74,7 +71,7 @@ binary-arch: install
 	dh_testdir
 	dh_testroot
 	dh_installdocs -A AUTHORS INTRODUCTION README NEWS TODO
-	dh_installdocs debian/README.cyrtexinfo
+	dh_installdocs -p texinfo debian/README.cyrtexinfo
 	dh_installmenu
 	dh_installchangelogs ChangeLog
 ifeq "$(findstring nostrip,$(DEB_BUILD_OPTIONS))" ""

@@ -1,18 +1,15 @@
 List of open Bugs and comments:
 
-texinfo:
---------
-DONE 37515: tetex-extra: texi2pdf: clicking bookmarks lands past spot wanted
-	fixed upstream
-	fixed in svn
+31464: info: regex searching
+	forwarded upstream, version 3.1, need check!
+	wishlist
 
-DONE 81261: texinfo: texi2dvi crashes on @cindex
-	misuse
-	fixed in svn
+37515: texi2pdf retitled, bookmarks in appendices are wrong
+	bookmarks are done, but in the appendix do not jump to the right
+	place
+	RELATED to 147483 subsubsection without subsection
 
-DONE 95084: No hierarchy in PDF bookmarks for appendix
-	fixed upstream
-	fixed in svn
+78504:	wishlist on movement
 
 113988: makeinfo: locale settings should not influence output files
 	forwarded upstream, version 4.0, need check!
@@ -21,154 +18,118 @@ DONE 95084: No hierarchy in PDF bookmarks for appendix
 115503: texi2dvi: source file directory included in search path
 	forwarded upstream, version 4.0, need check!
 	upstream: wontfix. How to deal with bugs like this?
+	there is already a wontfix and a upstream tag
+	TODO: write email to submitter whether he considers this still
+	a bug or whether I can close the bug?
 
-DONE 129405: texi2pdf and deftypefun parsing
-	forwarded upstream, 3 years old, need check!
-	This is an input format error, as the SPACE between the type 
-	and the argument is missing. foo3 comes out right, as do
-	foo and foo2 if there is a space.
-	done in svn
+146133 Matching vs. Searching
+151850 Matching vs. Searching
+	still present in 4.8, cvs I don't know
 
-142113 FTBFS: Build failure of nco on i386
-	cannot reproduce this, sent email to submitter
+147483: texinfo: wrong PDF bookmarks are generated
+	yes. subsubsection without subsection within a section does two
+	things: it is not displayed in the right order
+	and it does no jump to the right place in the file for the subsubsect
+	bookmark in html
 
-DONE 146025: texinfo --html --no-split --no-headers generates bad output
-	fixed upstream
-	fixed in svn
-
-DONE 147527: texi2dvi: -c does not work with relative paths in -I
-	fixed upstream
-	fixed in svn
-
-DONE 147483: texinfo: wrong PDF bookmarks are generated
-	fixed upstream
-	fixed in svn
-
-DONE 201031: texinfo: no.po is mangled.
-	fixed upstream
-	fixed in svn
+DONE 150710 crashes on various locales when pressing Ctrl-h
+DONE 199615: info: unexpected death on pressing `?' key
+	fixed by regeneration of po files
+	done for 4.8-2
 
 204117 texinfo: texinfo.dtd poorly installed
 	have to read up about this
 
-DONE 212206: The user is not told at installation time that texinfo needs a working TeX.
-	fixed in svn
+212549 info should support the "coding" local variable and output correct characters
+	no idea what it means
 
 214729: makeinfo --html should generate valid HTML
 	correct, the DOCTYPE is missing, should be sent upstream
 
+218557: dies with "Cannot find node `Top'"
+	still present, quite interesting, zeros in dir file. Should be
+	taken a look at
+	[1] I think this could be in build_tags_and_nodes(), in info/nodes.c,
+	where the file is already in memory and is parsed for expected
+	structures.  There we could stuff some error returning code, the
+	function simply doesn't update any error flag.
+	I have gdbed a run through the function, and while parsing
+	/usr/share/info/dir, it simply did not find the end of the TAGS_TABLE
+	(at line 402), and called get_nodes_of_info_file().
+	  This get_nodes_of_info_file() function has the same problem, it
+	doesn't return an useful error but aborts at the first while loop since
+	find_node_separator() fails (scans the whole file to find a "node
+	start").
+	  End result: build_tags_and_nodes parses for tags, but does not report
+	problems, and build_tags_and_nodes parses for nodes (by calling a
+	helper), but doesn't report problems encountered there neither.
+
+	[2] For example, with my corrupted file still in place:
+	bee# install-info --quiet --section "Disk Management" "Disk Management" /usr/share/info/parted.info.gz && echo success success
+	bee# info parted
+        info: Cannot find node `Top'.
+	-------------------------------------------------------------------
+	Concerning [1]: This could also fix the problem of bug 234848 where
+	the man page of top is shown instead of the TOP (dir)
+	Concerning [2]: Bug should be cloned and reassigned to the program
+	providing install-info, i.e. dpkg.
+
+	
+
+DONE 226898: info: documentation typo
+	info.texi contains a typo
+	fixed in texinfo-cvs
+	done for 4.8-2
+
 228606 makeinfo --html: split by chapter
 	wish list, I cannot do anything with it
 
+234848 info: Unexpected behaviour when trying to (incorrectly) open a file
+	this is true, it shows the man page of top, which is rubbish
+
+244506 info: menu lacks icon
+	umpf, maybe once
+
+245673 info: return the first non-exact match instead of the last
+	email sent to submitter
+	patch available, does it work?
+
+DONE 253124	formats using texinfo
+	done for 4.8-2
+
 DONE 256287: XSI:isms in several scripts
-	fixed in svn
+	done for 4.8-2
+
+DONE 261539 please include some references in /usr/share/doc/info/
+	done for 4.8-2
 
 269413 [INTL:da] Updated program translation
 	should be done upstream, is it already there?
 	no, should be sent upstream
+
+267357: make Info index: Name Index vs. Concept Index
+	Still present, check?
 
 276000 texinfo: Wrong page number in table of contents
 	still present, should be sent upstream
 
 DONE 276006: bogus error message when $TEXINPUTS contains nonexistent directory
 	true, fix in bug report, should be sent upstream
-	fix in svn
+	done for 4.8-2
 
 276547: texinfo: @samp{} text should change - to \- in man pages
 	no idea what this should do
 
-DONE 307264 info bash has too many blank lines
-	this is a bash bug, the texi of bashref has the lines broken
-	at 73 cols, and the extra empty lines. makeinfo will not make
-	a reformatting of the input!
-	should be reassigned to bash not texinfo
-	reassigned to bash
+282643: segv when pressing / and up under locale zh_CN.GBK
+	no idea
 
 308063 @xref in man pages can expand to nothing
 	not checked
 
-DONE 316066 bash-doc: bash.info has incorrect and broken links in pinfo
-	reassigned to bash
+335016	makeinfo --xml generates a document with an invalid DTD
+	TODO
 
 DONE 333630: texinfo: Changelog is iso8859-1, not utf-8
-	fixed in svn
-
-
-info:
------
-31464: info: regex searching
-	forwarded upstream, version 3.1, need check!
-
-DONE 53221: info does not care position parameter in format string
-	fixed upstream
-	fixed in svn
-
-DONE 78504: info: default scrolling methods differ from other programs
-	fixed upstream
-	fixed in svn
-
-DONE 150710 crashes on various locales when pressing Ctrl-h
-DONE 199615: info: unexpected death on pressing `?' key
-	patch included, should be sent upstream
-	fixed in svn
-
-146133 Matching vs. Searching
-151850 Matching vs. Searching
-	still present in 4.8, cvs I don't know
-
-DONE 199922: info: vi keys don't work
-	fixed upstream
-	fixed in svn
-
-DONE 202090: info: Tutorial recommends to try "f?", but it doesn't work
-	fixed upstream
-	fixed in svn
-
-212549 info should support the "coding" local variable and output correct characters
-	no idea what it means
-
-218557: dies with "Cannot find node `Top'"
-	still present, quite interesting, zeros in dir file. Should be
-	taken a look at
-
-DONE 226898: info: documentation typo
-	info.texi contains a typo
-	fixed in texinfo-cvs
-	fixed in svn
-
-234848 info: Unexpected behaviour when trying to (incorrectly) open a file
-	this is true, it shows the man page of top, which is rubbish
-
-245673 info: return the first non-exact match instead of the last
-	email sent to submitter
-
-244506 info: menu lacks icon
-	umpf, maybe once
-
-DONE 261539 please include some references in /usr/share/doc/info/
-	fixed in svn
-
-DONE 265880: info: apparent faulty link in tutorial causes segmentation fault
-	fixed upstream
-	fixed in svn
-
-DONE 267357: make Info index: Name Index vs. Concept Index
-	fixed upstream
-	fixed in svn
-
-DONE 280510: info: previous-node ([) segmentation faults
-	fixed upstream
-	fixed in svn
-
-DONE 280581: info: segv when resizing window and 'regenerating PO file'
-	fixed upstream
-	fixed in svn
-
-282643: segv when pressing / and up under locale zh_CN.GBK
-	no idea
-
-DONE 298268: segfault in `info makeinfo'
-	fixed upstream
-	fixed in svn
+	done for 4.8-2
 
 

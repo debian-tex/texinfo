@@ -1,10 +1,10 @@
 #!/bin/sh -e
 
-if [ "$1" = "configure" ] && [ -z "$2" ] ; then
-  if which mktexlsr  > /dev/null 2>&1 ; then
-     mktexlsr /usr/share/texmf >/dev/null
-  fi
-fi
-
+#
+# do the following commands as soon as they are present
+#
+if which update-fmtutil > /dev/null ; then update-fmtutil ; fi
+if which mktexlsr >/dev/null; then mktexlsr; fi
+if which fmtutil-sys > /dev/null ; then fmtutil-sys --missing ; fi
 
 #DEBHELPER#

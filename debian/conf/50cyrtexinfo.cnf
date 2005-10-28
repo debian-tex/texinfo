@@ -10,7 +10,8 @@
 # to do the following steps (all as root)
 # . install either tetex-base and tetex-extra, or texlive-langcyrillic
 # . comment out the format line in this file
-# . create a link from pdfetex to cyrtexinfo in /usr/bin
+# . create a link
+#	/usr/local/bin/cyrtexinfo -> ../../bin/pdfetex
 # . call update-fmtutil
 # . call fmtutil-sys --missing (or --all)
 #

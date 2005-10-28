@@ -1,39 +1,20 @@
 texinfo (4.8-2) unstable; urgency=low
 
   * Save debian/changelog in utf8 encoding (Closes: #333630)
-  * Close bugs which are closed by upstream but haven't been closed in -1
-    - bookmarks target miscalculation fixed (Closes: #37515)
-    - info cares for position parameter (Closes: #53221)
-    - vi-keys do work (Closes: #78504, #199922)
-    - fix missing hierachy in bookmarks of the appendix (Closes: #95084)
-    - html generation error fixed (Closes: #146025)
-    - PDF bookmarks are ok even with subsubsection without subsection
-      (Closes: #147483)
-    - texi2dev accepts -c (Closes: #147527)
-    - fixed mangled no.po (Closes: #201031)
-    - follow does now correctly print the list of xrefs (Closes: #202090)
-    - depend on some kind of TeX system (Closes: #212206)
-    - another instance of the crash on first backspace
-      (Closes: #265880, #280510, #298268)
-    - i RET visits the Name index in emacs and info (Closes: #267357)
-    - fix broken tag table generation (occurs in bashref)
-      (refer to #316066 for explanation)
-    - fix segv when resizing window (Closes: #280581)
-  * close bogus bugs which stem from malformed input (Closes: #81261, #129405)
-    The texinfo.info document states explicitely that the directive
-    @setfilename is necessary. And deftypedefun needs a space after the type.
+  * Edit the changelog entry for 4.8-1 to include fixes for bugs that
+    have been later closed via the email interface.
   * replace egrep and fgrep and numerical signals (Closes: #256287)
   * include patch to info translations to fix crash on Ctrl-h, and
     regenerate the gmo files on build (Closes: #150710, #199615)
   * include documentation into the info package, too (Closes: #261539)
   * fix a typo in texinfo.info (Closes: #226898)
-  * fix a warning of texi2dvi if TEXINPUTS contains a non existent dir
+  * fix a warning of texi2dvi if TEXINPUTS contains a not existent dir
     (Closes: #276006)
   * add 50cyrtexinfo.cnf to fmt.d, and write a README.cyrtexinfo how to
     create a cyrillic texinfo format (Closes: #253124)
   * Upload sponsored by Frank Küster <frank@debian.org>
 
- -- Norbert Preining <preining@logic.at>  Thu, 20 Oct 2005 16:05:21 +0200
+ -- Norbert Preining <preining@logic.at>  Thu, 27 Oct 2005 14:10:30 +0200
 
 texinfo (4.8-1) unstable; urgency=medium
 
@@ -42,7 +23,9 @@ texinfo (4.8-1) unstable; urgency=medium
   * New maintainer: Taking over from Josip Rodin <joy-packages@debian.org>
     as he seems to have abandoned texinfo. 
   * Acknowledge previous NMU (Closes: #267497, #259280)
-  * new upstream release 
+  * new upstream release, fixing several bugs. Some of these bugs may
+    already be fixed by previous versions, but we include it here for
+    completeness:
     - provides texi2pdf (Closes: #320413)
     - fixes loss of pipe character in TeX verbatim mode (Closes: #181793)
     - fixes incorrect html output (Closes: #204202, #205022)
@@ -54,6 +37,17 @@ texinfo (4.8-1) unstable; urgency=medium
       #314513)
     - fixes segfault with --xml and -D (Closes: #330219)
     - fixes segfault with -f'*manpages*' (Closes: #193856)
+    - combination of -c and -I for relative pathes work (Closes: #147527)
+    - makeinfo produces incorrect html code (Closes: #146025)
+    - another instance of the crash on first backspace
+      (Closes: #265880, #280510, #298268)
+    - info cares for position parameter (Closes: #53221)
+    - vi-keys do work (Closes: #199922)
+    - fix segv when resizing window (Closes: #280581)
+    - fix missing hierachy in bookmarks of the appendix (Closes: #95084)
+    - fixed mangled no.po (Closes: #201031)
+    - follow does now correctly print the list of xrefs (Closes: #202090)
+    - fix FTBFS of nco documentation (Closes: #142113)
   * install texinfo HTML documentation (Closes: #277921)
   * include changes by Pierre Machard for Replaces (Closes: #261742)
   * make postinst script POSIX-compliant, don't use command (Closes: #293053)
@@ -71,6 +65,7 @@ texinfo (4.8-1) unstable; urgency=medium
     Thus bug #253124 will not be fixed. (Closes: #253124)
   * Include a tempfile race fix based on the patch by Henry Jensen 
     (CAN-2005-3011) (Closes: #328365)
+  * Warns user of no TeX system is installed (Closes: #212206)
   * Upload sponsored by Frank Küster <frank@debian.org>
 
  -- Norbert Preining <preining@logic.at>  Thu,  6 Oct 2005 08:40:55 +0200

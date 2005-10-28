@@ -7,7 +7,8 @@ List of open Bugs and comments:
 37515: texi2pdf retitled, bookmarks in appendices are wrong
 	bookmarks are done, but in the appendix do not jump to the right
 	place
-	RELATED to 147483 subsubsection without subsection
+	RELATED to 147483 subsubsection without subsection ???
+	also present in cvs!
 
 78504:	wishlist on movement
 
@@ -132,4 +133,6 @@ DONE 276006: bogus error message when $TEXINPUTS contains nonexistent directory
 DONE 333630: texinfo: Changelog is iso8859-1, not utf-8
 	done for 4.8-2
 
+335016	makeinfo --xml generates a document with an invalid DTD
+	
 

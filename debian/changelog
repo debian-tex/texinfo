@@ -1,3 +1,9 @@
+texinfo (4.8-3) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Norbert Preining <preining@logic.at>  Tue,  1 Nov 2005 20:19:28 +0100
+
 texinfo (4.8-2) unstable; urgency=low
 
   * Edit the changelog entry for 4.8-1 to include fixes for bugs that

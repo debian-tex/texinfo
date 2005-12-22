@@ -7,4 +7,5 @@ TODO for texinfo Debian package
 			-basic(bin)?
 	tetex:		-base
 			-extra?
-
+* fix postinst scripts, do not call --missing ?? What did break at
+  texlive install-remove-install cycle?

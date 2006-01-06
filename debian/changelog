@@ -1,3 +1,9 @@
+texinfo (4.8-5) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Norbert Preining <preining@logic.at>  Fri,  6 Jan 2006 22:22:33 +0100
+
 texinfo (4.8-4) unstable; urgency=high
 
   * fixes typo in postinst script (closes: #346276)

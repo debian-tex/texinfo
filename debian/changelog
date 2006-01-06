@@ -1,3 +1,11 @@
+texinfo (4.8-4) unstable; urgency=high
+
+  * fixes typo in postinst script (closes: #346276)
+  * use cat fmtutil.cnf file instead of fmtutil-sys --listcfg, which is
+    awfully slow
+
+ -- Norbert Preining <preining@logic.at>  Fri,  6 Jan 2006 21:52:56 +0100
+
 texinfo (4.8-3) unstable; urgency=low
 
   * change texlive name to texlive-base

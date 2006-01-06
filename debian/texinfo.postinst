@@ -2,7 +2,13 @@
 
 build_format_if_format_exists ()
 {
-    X=`fmtutil-sys --listcfg | grep "^$2[[:space:]]" || true`
+    v=`kpsewhich -var-value TEXMFSYSVAR`
+    c=`kpsewhich -var-value TEXMFSYSCONFIG`
+    TEXMFVAR="$v"
+    TEXMFCONFIG="$c"
+    export TEXMFVAR TEXMFCONFIG
+    fmtcnffile=`kpsewhich --format='web2c files' fmtutil.cnf`
+    X=`cat $fmtcnffile | grep "^$2[[:space:]]" || true`
     if [ ! "X$X" = "X" ] ; then
         if [ "X$1" = "X--byhyphen" ] ; then
 	    build_format --byhyphen $3
@@ -53,7 +59,7 @@ case "$1" in
 	# do the following commands as soon as they are present
 	#
 	if which update-fmtutil > /dev/null ; then update-fmtutil ; fi
-	if which mktexlsr >/dev/null; then update_ls_files; fi
+	if which mktexlsr >/dev/null; then update_lsr_files; fi
 	if which fmtutil-sys > /dev/null ; then 
 	    build_format_if_format_exists --byfmt texinfo
 	    build_format_if_format_exists --byfmt cyrtexinfo

@@ -2,3 +2,5 @@ TODO for texinfo Debian package
 -------------------------------
 * go through the bugs on bugs.debian.org and check wether they are
   still present or fixed already (by upstream).
+* dh_install: debian/tmp/usr/share/texmf/pdftex/plain/misc/pdfcolor.tex exists in debian/tmp but is not installed to anywhere
+

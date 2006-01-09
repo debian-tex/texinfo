@@ -1,8 +1,11 @@
 texinfo (4.8-5) UNRELEASED; urgency=low
 
-  * NOT RELEASED YET
+  * Fix segfault when resizing the terminal rapidly by checking more 
+    carefully whether the display line is set prior to refering to it.
+    [info/display.c:display_update_one_window] (closes partly #345739)
+    (Thanks to Loïc Minier <lool@dooz.org>)
 
- -- Norbert Preining <preining@logic.at>  Fri,  6 Jan 2006 22:22:33 +0100
+ -- Norbert Preining <preining@logic.at>  Mon,  9 Jan 2006 11:53:23 +0100
 
 texinfo (4.8-4) unstable; urgency=high
 

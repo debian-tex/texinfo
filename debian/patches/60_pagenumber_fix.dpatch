@@ -1,0 +1,23 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+# 60_pagenumber_fix by Karl Berry
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: fix off by one error in TOC
+
+@DPATCH@
+--- ./doc/texinfo.tex	2006-01-06 22:08:20.000000000 +0100
++++ ./doc/texinfo.tex	2006-01-28 22:01:31.000000000 +0100
+@@ -4423,6 +4423,13 @@
+     % Write the node reference (= pdf destination for pdftex).
+     % Again, see comments in \chfplain.
+     \donoderef{#3}%
++    % Interline glue will be inserted when the vbox is completed.
++    % That glue will be a valid breakpoint for the page, since it'll be
++    % preceded by a whatsit (usually from the \donoderef, or from the
++    % \writetocentry if there was no node).  We don't want to allow that
++    % break, since then the whatsits could end up on page n while the
++    % section is on page n+1, thus toc/etc. are wrong.  Debian bug 276000.
++    \nobreak
+     %
+     % Output the actual section heading.
+     \vbox{\hyphenpenalty=10000 \tolerance=5000 \parindent=0pt \raggedright

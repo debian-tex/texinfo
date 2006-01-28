@@ -26,17 +26,16 @@ List of open Bugs and comments:
 146133 Matching vs. Searching
 151850 Matching vs. Searching
 	still present in 4.8, cvs I don't know
+	this is a wishlist, as the texinfo documentation 6.3.2 explicitely
+	states that node names must not contain dots.
+	splitted into two, one reassigned back to python2.1-doc, one
+	downgraded to wishlish
 
 147483: texinfo: wrong PDF bookmarks are generated
 	yes. subsubsection without subsection within a section does two
 	things: it is not displayed in the right order
 	and it does no jump to the right place in the file for the subsubsect
 	bookmark in html
-
-DONE 150710 crashes on various locales when pressing Ctrl-h
-DONE 199615: info: unexpected death on pressing `?' key
-	fixed by regeneration of po files
-	done for 4.8-2
 
 204117 texinfo: texinfo.dtd poorly installed
 	have to read up about this
@@ -75,18 +74,21 @@ DONE 199615: info: unexpected death on pressing `?' key
 	Concerning [2]: Bug should be cloned and reassigned to the program
 	providing install-info, i.e. dpkg.
 
-	
-
-DONE 226898: info: documentation typo
-	info.texi contains a typo
-	fixed in texinfo-cvs
-	done for 4.8-2
-
 228606 makeinfo --html: split by chapter
 	wish list, I cannot do anything with it
 
 234848 info: Unexpected behaviour when trying to (incorrectly) open a file
 	this is true, it shows the man page of top, which is rubbish
+	Karl wrote:
+	> Isn't it wonderful behavior?  Explanation:
+	> - info tries to find the top node to search for notexistingfile;
+	> - then that search fails;
+	> - there is no info page for top;
+	> - so it falls back to searching for the man page for top.
+	> 
+	> Yes, this is a silly bug.  I've never mustered enough interest to fix it.
+	> Shame on me.
+
 
 244506 info: menu lacks icon
 	umpf, maybe once
@@ -94,15 +96,6 @@ DONE 226898: info: documentation typo
 245673 info: return the first non-exact match instead of the last
 	email sent to submitter
 	patch available, does it work?
-
-DONE 253124	formats using texinfo
-	done for 4.8-2
-
-DONE 256287: XSI:isms in several scripts
-	done for 4.8-2
-
-DONE 261539 please include some references in /usr/share/doc/info/
-	done for 4.8-2
 
 269413 [INTL:da] Updated program translation
 	should be done upstream, is it already there?
@@ -113,10 +106,8 @@ DONE 261539 please include some references in /usr/share/doc/info/
 
 276000 texinfo: Wrong page number in table of contents
 	still present, should be sent upstream
-
-DONE 276006: bogus error message when $TEXINPUTS contains nonexistent directory
-	true, fix in bug report, should be sent upstream
-	done for 4.8-2
+	fixed upstream
+	done for 4.8-5
 
 276547: texinfo: @samp{} text should change - to \- in man pages
 	no idea what this should do
@@ -129,9 +120,6 @@ DONE 276006: bogus error message when $TEXINPUTS contains nonexistent directory
 
 335016	makeinfo --xml generates a document with an invalid DTD
 	TODO
-
-DONE 333630: texinfo: Changelog is iso8859-1, not utf-8
-	done for 4.8-2
 
 335016	makeinfo --xml generates a document with an invalid DTD
 	

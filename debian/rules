@@ -22,7 +22,8 @@ build-stamp: patch-stamp
 	dh_testdir
 	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr \
           --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man'
-	rm po/stamp-po
+	#rm po/stamp-po
+	touch po/texinfo.pot
 	$(MAKE)
 	(cd doc; $(MAKE) texinfo.html)
 	touch $@
@@ -50,6 +51,9 @@ install-stamp: build-stamp
 	#mkdir -p $(tmpdir)/usr/share/texmf/tex/texinfo/base
 	#mv $(tmpdir)/usr/share/texmf/tex/texinfo/*.tex $(tmpdir)/usr/share/texmf/tex/texinfo/base
 	dh_install --list-missing --sourcedir=debian/tmp -X share/info
+	#
+	# install updated texinfo.tex
+	cp debian/texinfo.tex $(texinfo)/usr/share/texmf/tex/texinfo/texinfo.tex
 	dh_installinfo
 	cp debian/texi2pdf.man $(texinfo)/usr/share/man/man1/texi2pdf.1
 	dh_link
@@ -86,4 +90,9 @@ endif
 	dh_builddeb
 
 binary: binary-indep binary-arch
+
+# other targets
+update-texinfo.tex:
+	wget -O $(CURDIR)/debian/texinfo.tex ftp://tug.org/tex/texinfo.tex
+
 .PHONY: build clean binary-indep binary-arch binary install

@@ -4,11 +4,48 @@ List of open Bugs and comments:
 	forwarded upstream, version 3.1, need check!
 	wishlist
 
+Bookmark bugs
+=============
 37515: texi2pdf retitled, bookmarks in appendices are wrong
 	bookmarks are done, but in the appendix do not jump to the right
 	place
 	RELATED to 147483 subsubsection without subsection ???
 	also present in cvs!
+
+In the testfile we have the following bookmarks:
+appendix A: first appendix
+A.1	first section of appendix
+A.1.1	subsection
+A.2	second section of appendix
+A.3	third section of appendix.
+Unfortunately the jumping of bookmarks is simple, but wrong. It ALWAYS jumps
+to the top of the (right) page. So at least the page is correct ;-)
+(even with current cvs texinfo.tex)
+
+147483: texinfo: wrong PDF bookmarks are generated
+	yes. subsubsection without subsection within a section does two
+	things: it is not displayed in the right order
+	and it does no jump to the right place in the file for the subsubsect
+	bookmark in html
+
+The attached texi files generates together with the texinfo.tex from current
+cvs several errors:
+(bug 147483) subsubsection without subsection within a section
+We have 
+	chapter 2	Command reference
+	section 2.1	Commands from libxmms
+	subsubsection 2.1.0.1	subsubsection without subsection
+Now in the Table of contents this is ok
+But the pdf bookmarks in acroread/xpdf are wrong, namely the show
+subsubsection 2.1.0.1 on the same level as section 2.1, as direct children
+of chapter 2.
+
+Forthermore, clicking on the bookmarks of section 2.1 brings the respective
+line properly to the top of the reader windows. But clicking on the
+bookmark of subsubsection 2.1.0.1 "subsection without section" brings
+me to the top of the page (or to the same place as Chapter 2?)
+
+================
 
 78504:	wishlist on movement
 
@@ -25,20 +62,35 @@ List of open Bugs and comments:
 
 146133 Matching vs. Searching
 151850 Matching vs. Searching
-	still present in 4.8, cvs I don't know
+	TODO:
+	- unmerge the two bugs
+	- reassign one (probably 151850) to python2.1-doc
+	- retitle this one: node names must not contain dots
+	- retitle the other: would be nice to use dots in nodenames
+	- severity of the other: wishlist
 	this is a wishlist, as the texinfo documentation 6.3.2 explicitely
 	states that node names must not contain dots.
 	splitted into two, one reassigned back to python2.1-doc, one
 	downgraded to wishlish
 
-147483: texinfo: wrong PDF bookmarks are generated
-	yes. subsubsection without subsection within a section does two
-	things: it is not displayed in the right order
-	and it does no jump to the right place in the file for the subsubsect
-	bookmark in html
+	The proposed bug fix generates problems: In the dir file and other
+	places the final . is sometimes included in the node name, what
+	shouldn' happen, eg (cvs.info)Index
+		* -j (merging branches), and keyword substitution: Merging and keywords.
+                                                            (line   6)
+	produces
+	Knoten »Merging and keywords.« nicht gefunden.
+	So, forget this one. Basta. 
+	won't fix I guess
 
 204117 texinfo: texinfo.dtd poorly installed
 	have to read up about this
+	use dh_installxmlcatalog and check the rules file for
+	libglade2-0: /usr/share/xml/libglade/glade-2.0.dtd
+	sgml-data: /usr/share/xml/qaml/qaml-xml.dtd
+	on how to install this one
+	Debian SGML/XML HOWTO http://www.debian.org/doc/misc-manuals#sgml-howto
+	Debian XML Policy (if already exists)
 
 212549 info should support the "coding" local variable and output correct characters
 	no idea what it means
@@ -104,7 +156,7 @@ List of open Bugs and comments:
 267357: make Info index: Name Index vs. Concept Index
 	Still present, check?
 
-276000 texinfo: Wrong page number in table of contents
+DONE 276000 texinfo: Wrong page number in table of contents
 	still present, should be sent upstream
 	fixed upstream
 	done for 4.8-5
@@ -120,7 +172,4 @@ List of open Bugs and comments:
 
 335016	makeinfo --xml generates a document with an invalid DTD
 	TODO
-
-335016	makeinfo --xml generates a document with an invalid DTD
-	
 

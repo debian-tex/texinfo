@@ -1,54 +1,5 @@
 List of open Bugs and comments:
 
-31464: info: regex searching
-	forwarded upstream, version 3.1, need check!
-	wishlist
-
-Bookmark bugs
-=============
-37515: texi2pdf retitled, bookmarks in appendices are wrong
-	bookmarks are done, but in the appendix do not jump to the right
-	place
-	RELATED to 147483 subsubsection without subsection ???
-	also present in cvs!
-
-In the testfile we have the following bookmarks:
-appendix A: first appendix
-A.1	first section of appendix
-A.1.1	subsection
-A.2	second section of appendix
-A.3	third section of appendix.
-Unfortunately the jumping of bookmarks is simple, but wrong. It ALWAYS jumps
-to the top of the (right) page. So at least the page is correct ;-)
-(even with current cvs texinfo.tex)
-
-147483: texinfo: wrong PDF bookmarks are generated
-	yes. subsubsection without subsection within a section does two
-	things: it is not displayed in the right order
-	and it does no jump to the right place in the file for the subsubsect
-	bookmark in html
-
-The attached texi files generates together with the texinfo.tex from current
-cvs several errors:
-(bug 147483) subsubsection without subsection within a section
-We have 
-	chapter 2	Command reference
-	section 2.1	Commands from libxmms
-	subsubsection 2.1.0.1	subsubsection without subsection
-Now in the Table of contents this is ok
-But the pdf bookmarks in acroread/xpdf are wrong, namely the show
-subsubsection 2.1.0.1 on the same level as section 2.1, as direct children
-of chapter 2.
-
-Forthermore, clicking on the bookmarks of section 2.1 brings the respective
-line properly to the top of the reader windows. But clicking on the
-bookmark of subsubsection 2.1.0.1 "subsection without section" brings
-me to the top of the page (or to the same place as Chapter 2?)
-
-================
-
-78504:	wishlist on movement
-
 113988: makeinfo: locale settings should not influence output files
 	forwarded upstream, version 4.0, need check!
 	long discussion on the bug, but no conclusion
@@ -59,29 +10,6 @@ me to the top of the page (or to the same place as Chapter 2?)
 	there is already a wontfix and a upstream tag
 	TODO: write email to submitter whether he considers this still
 	a bug or whether I can close the bug?
-
-146133 Matching vs. Searching
-151850 Matching vs. Searching
-	TODO:
-	- unmerge the two bugs
-	- reassign one (probably 151850) to python2.1-doc
-	- retitle this one: node names must not contain dots
-	- retitle the other: would be nice to use dots in nodenames
-	- severity of the other: wishlist
-	this is a wishlist, as the texinfo documentation 6.3.2 explicitely
-	states that node names must not contain dots.
-	splitted into two, one reassigned back to python2.1-doc, one
-	downgraded to wishlish
-
-	The proposed bug fix generates problems: In the dir file and other
-	places the final . is sometimes included in the node name, what
-	shouldn' happen, eg (cvs.info)Index
-		* -j (merging branches), and keyword substitution: Merging and keywords.
-                                                            (line   6)
-	produces
-	Knoten »Merging and keywords.« nicht gefunden.
-	So, forget this one. Basta. 
-	won't fix I guess
 
 204117 texinfo: texinfo.dtd poorly installed
 	have to read up about this
@@ -96,7 +24,7 @@ me to the top of the page (or to the same place as Chapter 2?)
 	no idea what it means
 
 214729: makeinfo --html should generate valid HTML
-	correct, the DOCTYPE is missing, should be sent upstream
+	wait response from Karl
 
 218557: dies with "Cannot find node `Top'"
 	still present, quite interesting, zeros in dir file. Should be
@@ -126,21 +54,8 @@ me to the top of the page (or to the same place as Chapter 2?)
 	Concerning [2]: Bug should be cloned and reassigned to the program
 	providing install-info, i.e. dpkg.
 
-228606 makeinfo --html: split by chapter
-	wish list, I cannot do anything with it
-
 234848 info: Unexpected behaviour when trying to (incorrectly) open a file
 	this is true, it shows the man page of top, which is rubbish
-	Karl wrote:
-	> Isn't it wonderful behavior?  Explanation:
-	> - info tries to find the top node to search for notexistingfile;
-	> - then that search fails;
-	> - there is no info page for top;
-	> - so it falls back to searching for the man page for top.
-	> 
-	> Yes, this is a silly bug.  I've never mustered enough interest to fix it.
-	> Shame on me.
-
 
 244506 info: menu lacks icon
 	umpf, maybe once
@@ -156,11 +71,6 @@ me to the top of the page (or to the same place as Chapter 2?)
 267357: make Info index: Name Index vs. Concept Index
 	Still present, check?
 
-DONE 276000 texinfo: Wrong page number in table of contents
-	still present, should be sent upstream
-	fixed upstream
-	done for 4.8-5
-
 276547: texinfo: @samp{} text should change - to \- in man pages
 	no idea what this should do
 
@@ -171,5 +81,7 @@ DONE 276000 texinfo: Wrong page number in table of contents
 	not checked
 
 335016	makeinfo --xml generates a document with an invalid DTD
-	TODO
+	has to be checked, Karl installed a new DTD which hopefully fixes
+	this problem
+	Still work to do
 

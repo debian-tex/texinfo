@@ -9,6 +9,7 @@ texinfo (4.8-5) UNRELEASED; urgency=low
     it. This also fixes the Priority failure of texinfo=standard depending
     on tex-common=optional.
   * Include texinfo.tex version 2006-01-27.14 (Closes: #276000)
+  * Edit Changelog entry for 4.8-1 for bug #282643.
 
  -- Norbert Preining <preining@logic.at>  Tue, 31 Jan 2006 16:54:34 +0100
 
@@ -78,6 +79,7 @@ texinfo (4.8-1) unstable; urgency=medium
     - fixed mangled no.po (Closes: #201031)
     - follow does now correctly print the list of xrefs (Closes: #202090)
     - fix FTBFS of nco documentation (Closes: #142113)
+    - fixes segv under locale zh_CN.GBK (Closes: #282643)
   * install texinfo HTML documentation (Closes: #277921)
   * include changes by Pierre Machard for Replaces (Closes: #261742)
   * make postinst script POSIX-compliant, don't use command (Closes: #293053)

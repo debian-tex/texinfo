@@ -525,3 +525,8 @@ Texinfo 3.1 Debian 2 - iwj
 Texinfo 3.1 Debian 1 - iwj
 Initial release, completely untested.
 
+# vim:set termencoding=iso8859-15 encoding=utf-8 fileencoding=utf-8: #
+Local Variables:
+coding: utf-8
+mode: debian-changelog
+End:

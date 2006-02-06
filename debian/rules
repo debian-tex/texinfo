@@ -48,6 +48,7 @@ install-stamp: build-stamp
 	# pdfcolor and epsf.tex are in tetex and texlive
 	rm -rf $(tmpdir)/usr/share/texmf/tex/plain
 	rm -rf $(tmpdir)/usr/share/texmf/tex/generic
+	rm -rf $(tmpdir)/usr/share/texmf/pdftex/plain/misc/pdfcolor.tex
 	#mkdir -p $(tmpdir)/usr/share/texmf/tex/texinfo/base
 	#mv $(tmpdir)/usr/share/texmf/tex/texinfo/*.tex $(tmpdir)/usr/share/texmf/tex/texinfo/base
 	dh_install --list-missing --sourcedir=debian/tmp -X share/info

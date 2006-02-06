@@ -10,8 +10,10 @@ texinfo (4.8-5) UNRELEASED; urgency=low
     on tex-common=optional.
   * Include texinfo.tex version 2006-01-27.14 (Closes: #276000)
   * Edit Changelog entry for 4.8-1 for bug #282643.
+  * Remove texmf/pdftex/plain/misc/pdfcolor.tex in tmpdir to make
+    dh_install shut up, this file is already installed by tetex/texlive.
 
- -- Norbert Preining <preining@logic.at>  Tue, 31 Jan 2006 16:54:34 +0100
+ -- Norbert Preining <preining@logic.at>  Mon,  6 Feb 2006 12:42:28 +0100
 
 texinfo (4.8-4) unstable; urgency=high
 

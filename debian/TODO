@@ -1,4 +1,6 @@
 TODO for texinfo Debian package
 -------------------------------
+* `merge' Debian install-info and GNU install-info, it is a pain in the a.
+
 * go through the bugs on bugs.debian.org and check wether they are
   still present or fixed already (by upstream).

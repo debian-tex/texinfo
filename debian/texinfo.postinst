@@ -60,7 +60,10 @@ case "$1" in
 	#
 	if which update-fmtutil > /dev/null ; then update-fmtutil ; fi
 	if which mktexlsr >/dev/null; then update_lsr_files; fi
-	if which fmtutil-sys > /dev/null ; then 
+	# tetex might be unpacked but not configured, we have to check
+	# wether kpsewhich can be run!
+	#if which fmtutil-sys > /dev/null ; then 
+	if kpsewhich --version > /dev/null 2>&1 ; then 
 	    build_format_if_format_exists --byfmt texinfo
 	    build_format_if_format_exists --byfmt cyrtexinfo
 	fi

@@ -4,3 +4,10 @@ TODO for texinfo Debian package
 
 * go through the bugs on bugs.debian.org and check wether they are
   still present or fixed already (by upstream).
+
+DONE
+----
+* Bug 352630: we have to check wether tetex|texlive is already configured,
+  the which fmtutil-sys test is not good enough, as the kpsewhich might
+  not run since the libkpathsea is not configured and useable.
+

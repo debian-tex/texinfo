@@ -1,4 +1,4 @@
-texinfo (4.8-5) UNRELEASED; urgency=low
+texinfo (4.8-5) unstable; urgency=low
 
   * Fix segfault when resizing the terminal rapidly by checking more
     carefully whether the display line is set prior to refering to it.
@@ -12,12 +12,12 @@ texinfo (4.8-5) UNRELEASED; urgency=low
   * Edit Changelog entry for 4.8-1 for bug #282643.
   * Remove texmf/pdftex/plain/misc/pdfcolor.tex in tmpdir to make
     dh_install shut up, this file is already installed by tetex/texlive.
-  * change test in postinst script from which fmtutil-sys to 
+  * change test in postinst script from which fmtutil-sys to
     kpsewhich --version. If it is present *and* can be run (i.e. tetex
     and libkpathsea is unpacked and configured), only then call the rest
     of the script. (Closes: #352630)
 
- -- Norbert Preining <preining@logic.at>  Mon, 13 Feb 2006 11:53:00 +0100
+ -- Norbert Preining <preining@logic.at>  Fri, 24 Feb 2006 12:35:27 +0100
 
 texinfo (4.8-4) unstable; urgency=high
 

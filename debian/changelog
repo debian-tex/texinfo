@@ -1,3 +1,10 @@
+texinfo (4.8-6) UNRELEASED; urgency=low
+
+  * edit the changelog entry for -5 on the texinfo.tex inclusion to be
+    useful, thanks Frank Küster for mentioning this.
+
+ -- Norbert Preining <preining@logic.at>  Fri, 24 Feb 2006 16:53:59 +0100
+
 texinfo (4.8-5) unstable; urgency=low
 
   * Fix segfault when resizing the terminal rapidly by checking more
@@ -8,7 +15,8 @@ texinfo (4.8-5) unstable; urgency=low
   * Remove the dependency on tetex-bin | tex-common, we can live without
     it. This also fixes the Priority failure of texinfo=standard depending
     on tex-common=optional.
-  * Include texinfo.tex version 2006-01-27.14 (Closes: #276000)
+  * Include texinfo.tex version 2006-01-27.14 from upstream in order to
+    produce correct page numbers in the table of contents. (Closes: #276000)
   * Edit Changelog entry for 4.8-1 for bug #282643.
   * Remove texmf/pdftex/plain/misc/pdfcolor.tex in tmpdir to make
     dh_install shut up, this file is already installed by tetex/texlive.

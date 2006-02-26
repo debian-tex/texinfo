@@ -2,8 +2,10 @@ texinfo (4.8-6) UNRELEASED; urgency=low
 
   * edit the changelog entry for -5 on the texinfo.tex inclusion to be
     useful, thanks Frank Küster for mentioning this.
+  * Conflict with tetex << 3 which has a kpsewhich with different
+    cmd-line options. (Closes: #354351)
 
- -- Norbert Preining <preining@logic.at>  Fri, 24 Feb 2006 16:53:59 +0100
+ -- Norbert Preining <preining@logic.at>  Sun, 26 Feb 2006 18:43:04 +0100
 
 texinfo (4.8-5) unstable; urgency=low
 

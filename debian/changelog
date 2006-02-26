@@ -4,8 +4,12 @@ texinfo (4.8-6) UNRELEASED; urgency=low
     useful, thanks Frank Küster for mentioning this.
   * Conflict with tetex << 3 which has a kpsewhich with different
     cmd-line options. (Closes: #354351)
+  * add a check for the existence of fmt.d/00tex.cnf to the texinfo.postinst
+    as update-fmtutil may already be present, but not this file, as we
+    do not depend on tex-common anymore and tex-common may be configured
+    later than texinfo.
 
- -- Norbert Preining <preining@logic.at>  Sun, 26 Feb 2006 18:43:04 +0100
+ -- Norbert Preining <preining@logic.at>  Sun, 26 Feb 2006 19:20:17 +0100
 
 texinfo (4.8-5) unstable; urgency=low
 

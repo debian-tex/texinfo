@@ -56,9 +56,14 @@ update_lsr_files ()
 case "$1" in
     configure|abort-upgrade|abort-remove|abort-deconfigure)
 	#
-	# do the following commands as soon as they are present
-	#
-	if which update-fmtutil > /dev/null ; then update-fmtutil ; fi
+	# update-fmtutil checks for /etc/texmf/fmt.d/00tex.cnf which
+	# may not be present, also the update-fmtutil is already
+	# present (config files are installed at config time!)
+	# So we have to check for the existence of this file
+	# before we can call update-fmtutil
+	if [ -r /etc/texmf/fmt.d/00tex.cnf ] ; then
+	    if which update-fmtutil > /dev/null ; then update-fmtutil ; fi
+	fi
 	if which mktexlsr >/dev/null; then update_lsr_files; fi
 	# tetex might be unpacked but not configured, we have to check
 	# wether kpsewhich can be run!

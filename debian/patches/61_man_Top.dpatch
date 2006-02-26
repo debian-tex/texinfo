@@ -5,25 +5,44 @@
 ## DP: fix display of man top when called with not existing file
 
 @DPATCH@
---- ./info/nodes.c.~1.6.~	2006-02-23 16:29:45.000000000 -0800
-+++ ./info/nodes.c	2006-02-25 15:04:41.000000000 -0800
-@@ -141,4 +141,5 @@
+--- ./info/nodes.c	2006-02-16 13:03:16.000000000 +0100
++++ ./info/nodes.c	2006-02-27 00:24:11.000000000 +0100
+@@ -116,8 +116,11 @@
+   /* Look for the node.  */
+   node = info_get_node_of_file_buffer (nodename, file_buffer);
+ 
+-  /* If the node not found was "Top", try again with different case.  */
+-  if (!node && (nodename == NULL || strcasecmp (nodename, "Top") == 0))
++  /* If the node not found was "Top", try again with different case,
++     unless this was a man page.  */
++  if (!node
++      && strcasecmp (filename, MANPAGE_FILE_BUFFER_NAME) != 0
++      && (nodename == NULL || strcasecmp (nodename, "Top") == 0))
+     {
+       node = info_get_node_of_file_buffer ("Top", file_buffer);
+       if (!node)
+@@ -137,6 +140,7 @@
+ info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
  {
    NODE *node = NULL;
 +  int implicit_nodename = 0;
  
    /* If we are unable to find the file, we have to give up.  There isn't
-@@ -153,5 +154,8 @@
+      anything else we can do. */
+@@ -149,7 +153,10 @@
+ 
    /* If NODENAME is not specified, it defaults to "Top". */
    if (!nodename)
 -    nodename = "Top";
 +    {
 +      nodename = "Top";
-+      implicit_nodename = 1;
++      implicit_nodename = 1;  /* don't return man page for top */
 +    }
  
    /* If the name of the node that we wish to find is exactly "*", then the
-@@ -172,7 +176,7 @@
+      node body is the contents of the entire file.  Create and return such
+@@ -168,9 +175,9 @@
+ #if defined (HANDLE_MAN_PAGES)
    /* If the file buffer is the magic one associated with manpages, call
       the manpage node finding function instead. */
 -  else if (file_buffer->flags & N_IsManPage)
@@ -33,3 +52,4 @@
 +      node = get_manpage_node (file_buffer, nodename);
      }
  #endif /* HANDLE_MAN_PAGES */
+   /* If this is the "main" info file, it might contain a tags table.  Search

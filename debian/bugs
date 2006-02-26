@@ -1,5 +1,5 @@
 List of open Bugs and comments:
-last changed: 2006-02-13
+last changed: 2006-02-27
 
 113988: makeinfo: locale settings should not influence output files
 	forwarded upstream, version 4.0, need check!
@@ -49,7 +49,7 @@ last changed: 2006-02-13
 	Concerning [2]: Bug should be cloned and reassigned to the program
 	providing install-info, i.e. dpkg.
 
-234848 info: Unexpected behaviour when trying to (incorrectly) open a file
+DONE for -6 234848 info: Unexpected behaviour when trying to (incorrectly) open a file
 	this is true, it shows the man page of top, which is rubbish
 
 244506 info: menu lacks icon

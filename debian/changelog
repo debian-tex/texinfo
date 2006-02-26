@@ -8,8 +8,10 @@ texinfo (4.8-6) UNRELEASED; urgency=low
     as update-fmtutil may already be present, but not this file, as we
     do not depend on tex-common anymore and tex-common may be configured
     later than texinfo.
+  * fix the dreadful info shows top manpage when called with an inexistent
+    command line argument (Closes: #234848)
 
- -- Norbert Preining <preining@logic.at>  Sun, 26 Feb 2006 19:20:17 +0100
+ -- Norbert Preining <preining@logic.at>  Mon, 27 Feb 2006 00:32:26 +0100
 
 texinfo (4.8-5) unstable; urgency=low
 

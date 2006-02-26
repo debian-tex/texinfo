@@ -1,0 +1,35 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+# 61_man_Top.dpatch by Karl Berry
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: fix display of man top when called with not existing file
+
+@DPATCH@
+--- ./info/nodes.c.~1.6.~	2006-02-23 16:29:45.000000000 -0800
++++ ./info/nodes.c	2006-02-25 15:04:41.000000000 -0800
+@@ -141,4 +141,5 @@
+ {
+   NODE *node = NULL;
++  int implicit_nodename = 0;
+ 
+   /* If we are unable to find the file, we have to give up.  There isn't
+@@ -153,5 +154,8 @@
+   /* If NODENAME is not specified, it defaults to "Top". */
+   if (!nodename)
+-    nodename = "Top";
++    {
++      nodename = "Top";
++      implicit_nodename = 1;
++    }
+ 
+   /* If the name of the node that we wish to find is exactly "*", then the
+@@ -172,7 +176,7 @@
+   /* If the file buffer is the magic one associated with manpages, call
+      the manpage node finding function instead. */
+-  else if (file_buffer->flags & N_IsManPage)
++  else if (!implicit_nodename && file_buffer->flags & N_IsManPage)
+     {
+-        node = get_manpage_node (file_buffer, nodename);
++      node = get_manpage_node (file_buffer, nodename);
+     }
+ #endif /* HANDLE_MAN_PAGES */

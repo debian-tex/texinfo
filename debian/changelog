@@ -1,4 +1,4 @@
-texinfo (4.8-6) UNRELEASED; urgency=low
+texinfo (4.8-6) unstable; urgency=low
 
   * edit the changelog entry for -5 on the texinfo.tex inclusion to be
     useful, thanks Frank Küster for mentioning this.
@@ -11,7 +11,7 @@ texinfo (4.8-6) UNRELEASED; urgency=low
   * fix the dreadful info shows top manpage when called with an inexistent
     command line argument (Closes: #234848)
 
- -- Norbert Preining <preining@logic.at>  Mon, 27 Feb 2006 00:32:26 +0100
+ -- Norbert Preining <preining@logic.at>  Wed,  1 Mar 2006 03:07:29 +0100
 
 texinfo (4.8-5) unstable; urgency=low
 

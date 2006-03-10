@@ -7,3 +7,4 @@
 51_texinfo_info_typo_fix.dpatch
 52_missing_dir_in_texinputs.dpatch
 61_man_Top.dpatch
+62_localesettings.dpatch

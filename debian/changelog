@@ -1,9 +1,10 @@
 texinfo (4.8-7) UNRELEASED; urgency=low
 
   * include a patch that ensures that locale settings do not influence
-    output files (Closes: #113988)
+    output files (Closes: #113988). Also add a NEWS.Debian in the texinfo
+    package that explains the change of functionality in makeinfo.
 
- -- Norbert Preining <preining@logic.at>  Fri, 10 Mar 2006 02:10:48 +0100
+ -- Norbert Preining <preining@logic.at>  Sun, 12 Mar 2006 16:06:18 +0100
 
 texinfo (4.8-6) unstable; urgency=low
 

@@ -1,4 +1,4 @@
-texinfo (4.8-7) UNRELEASED; urgency=low
+texinfo (4.8-7) unstable; urgency=low
 
   * include a patch that ensures that locale settings do not influence
     output files (Closes: #113988). Also add a NEWS.Debian in the texinfo
@@ -8,7 +8,7 @@ texinfo (4.8-7) UNRELEASED; urgency=low
   * remove texmf-texlive from the arguments of mktexlsr in the postinst script
     of texinfo.
 
- -- Norbert Preining <preining@logic.at>  Tue, 14 Mar 2006 08:29:09 +0100
+ -- Norbert Preining <preining@logic.at>  Tue, 14 Mar 2006 10:22:24 +0100
 
 texinfo (4.8-6) unstable; urgency=low
 

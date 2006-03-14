@@ -1,13 +1,12 @@
 TODO for texinfo Debian package
 -------------------------------
+* fix the man page for makeinfo to include --document-language
+
+* fix the @documentlanguage callback function in makeinfo to change
+  the interface_language variable.
+
 * `merge' Debian install-info and GNU install-info, it is a pain in the a.
 
 * go through the bugs on bugs.debian.org and check wether they are
   still present or fixed already (by upstream).
-
-DONE
-----
-* Bug 352630: we have to check wether tetex|texlive is already configured,
-  the which fmtutil-sys test is not good enough, as the kpsewhich might
-  not run since the libkpathsea is not configured and useable.
 

@@ -1,6 +1,6 @@
 texinfo (4.8-7) unstable; urgency=low
 
-  * Please not that with release 4.8-7 the behaviour of makeinfo with respect
+  * Please note that with release 4.8-7 the behaviour of makeinfo with respect
     to locales has changed. Up to 4.8-6 the locale settings of the calling
     environment influenced the output of makeinfo as several strings which are
     put into the output file(s) of makeinfo were translated using the current

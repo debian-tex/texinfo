@@ -1,10 +1,12 @@
-texinfo (4.8-7) UNRELEASED; urgency=low
+texinfo (4.8-7) unstable; urgency=low
 
   * include a patch that ensures that locale settings do not influence
     output files (Closes: #113988). Also add a NEWS.Debian in the texinfo
     package that explains the change of functionality in makeinfo.
+  * adjust the texinfo.postinst script to really check whether tex-common
+    is configured by checking for /e/texmf/texmf.cnf (Closes: #356476).
 
- -- Norbert Preining <preining@logic.at>  Sun, 12 Mar 2006 16:06:18 +0100
+ -- Norbert Preining <preining@logic.at>  Tue, 14 Mar 2006 06:41:07 +0100
 
 texinfo (4.8-6) unstable; urgency=low
 

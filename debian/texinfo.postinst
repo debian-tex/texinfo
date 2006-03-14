@@ -66,9 +66,10 @@ case "$1" in
 	fi
 	if which mktexlsr >/dev/null; then update_lsr_files; fi
 	# tetex might be unpacked but not configured, we have to check
-	# wether kpsewhich can be run!
-	#if which fmtutil-sys > /dev/null ; then 
-	if kpsewhich --version > /dev/null 2>&1 ; then 
+	# whether /etc/texmf/texmf.cnf already exists. The following check
+	# does two things: 1) check whether libkpathsea is configured, and
+	# 2) whether tex-common is configured.
+	if kpsewhich texmf.cnf > /dev/null 2>&1 ; then 
 	    build_format_if_format_exists --byfmt texinfo
 	    build_format_if_format_exists --byfmt cyrtexinfo
 	fi

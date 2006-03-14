@@ -29,7 +29,7 @@ update_lsr_files ()
 {
     tempfile=`mktemp -p /tmp mktexlsr.XXXXXXXX`
     echo -n "Running mktexlsr. This may take some time. ..."
-    if mktexlsr /usr/share/texmf /usr/share/texmf-texlive /var/lib/texmf > $tempfile 2>&1 ; then
+    if mktexlsr /usr/share/texmf /var/lib/texmf > $tempfile 2>&1 ; then
          rm -f $tempfile
 	 echo " done."
     else

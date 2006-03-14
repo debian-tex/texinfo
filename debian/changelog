@@ -1,3 +1,10 @@
+texinfo (4.8-8) UNRELEASED; urgency=low
+
+  * remove texmf-texlive from the arguments of mktexlsr in the postinst script
+    of texinfo.
+
+ -- Norbert Preining <preining@logic.at>  Tue, 14 Mar 2006 08:29:09 +0100
+
 texinfo (4.8-7) unstable; urgency=low
 
   * include a patch that ensures that locale settings do not influence

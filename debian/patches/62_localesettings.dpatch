@@ -5,6 +5,17 @@
 ## DP: locales do not change output, use --document-language
 
 @DPATCH@
+--- old/makeinfo/cmds.c	2006-02-16 13:03:48.000000000 +0100
++++ ./makeinfo/cmds.c	2006-03-19 19:15:06.000000000 +0100
+@@ -589,7 +589,7 @@
+     {
+       time_t timer = time (0);
+       struct tm *ts = localtime (&timer);
+-      add_word_args ("%d %s %d", ts->tm_mday, _(months[ts->tm_mon]),
++      add_word_args ("%d %s %d", ts->tm_mday, __(months[ts->tm_mon]),
+                      ts->tm_year + 1900);
+     }
+ }
 --- old/makeinfo/defun.c	2006-02-16 13:03:48.000000000 +0100
 +++ ./makeinfo/defun.c	2006-03-08 01:23:34.000000000 +0100
 @@ -400,28 +400,28 @@

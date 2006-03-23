@@ -1,12 +1,11 @@
-texinfo (4.8-8) UNRELEASED; urgency=low
+texinfo (4.8-8) unstable; urgency=low
 
-  * NOT RELEASED YET
   * Include texinfo.tex version 2006-02-13.16 in order to fix the FTBFS of
     tramps where ifclear couldn't nest properly (Closes: #357009)
-  * Update the locale settings patch so that month names are not 
+  * Update the locale settings patch so that month names are not
     translated (Closes: #113988)
 
- -- Norbert Preining <preining@logic.at>  Sun, 19 Mar 2006 19:17:29 +0100
+ -- Norbert Preining <preining@logic.at>  Thu, 23 Mar 2006 18:31:49 +0100
 
 texinfo (4.8-7) unstable; urgency=low
 

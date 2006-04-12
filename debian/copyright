@@ -27,25 +27,3 @@ Upstream maintainer: Karl Berry <karl@cs.umb.edu>.
 On Debian GNU/Linux systems, the complete text of the GNU General
 Public License can be found in `/usr/share/common-licenses/GPL' file.
 
-  All manuals Copyright (C) 1988, 1990-1993, 1995-2003  Free Software
-  Foundation, Inc.
-
-  Permission is granted to copy, distribute and/or modify this document
-  under the terms of the GNU Free Documentation License, Version 1.1 or
-  any later version published by the Free Software Foundation; with no
-  Invariant Sections, with the Front-Cover texts being ``A GNU
-  Manual'', and with the Back-Cover Texts as in (a) below.  A copy of the
-  license is included in the section entitled ``GNU Free Documentation
-  License'' in the Emacs manual.
-
-  (a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
-  this GNU Manual, like GNU software.  Copies published by the Free
-  Software Foundation raise funds for GNU development.''
-
-  This document is part of a collection distributed under the GNU Free
-  Documentation License.  If you want to distribute this document
-  separately from the collection, you can do so by adding a copy of the
-  license to the document, as described in section 6 of the license.
-
-The full copy of the GNU Free Documentation License is provided in the node
-"Documentation Copying" of the Texinfo manual.

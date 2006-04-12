@@ -1,3 +1,12 @@
+texinfo (4.8.dfsg.1-1) unstable; urgency=low
+
+  * first version with split out GFDL licensed documentation into
+    texinfo-doc-nonfree (Closes: #356916)
+  * switch to debhelper level 5
+  * add a README.Debian file explaining where the documentation has gone.
+
+ -- Norbert Preining <preining@logic.at>  Wed, 12 Apr 2006 02:33:30 +0200
+
 texinfo (4.8-8) unstable; urgency=low
 
   * Include texinfo.tex version 2006-02-13.16 in order to fix the FTBFS of

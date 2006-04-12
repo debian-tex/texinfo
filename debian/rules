@@ -2,7 +2,7 @@
 # Derived from debhelper/dh_make example and previous hello-based rules file.
 
 #export DH_VERBOSE=1
-export DH_COMPAT=4
+export DH_COMPAT=5
 export DH_OPTIONS
 
 include /usr/share/dpatch/dpatch.make
@@ -55,10 +55,8 @@ install-stamp: build-stamp
 	#
 	# install updated texinfo.tex
 	cp debian/texinfo.tex $(texinfo)/usr/share/texmf/tex/texinfo/texinfo.tex
-	dh_installinfo
 	cp debian/texi2pdf.man $(texinfo)/usr/share/man/man1/texi2pdf.1
 	dh_link
-	cp -a doc/texinfo.html $(texinfo)/usr/share/doc/texinfo/html
 	mv $(texinfo)/usr/bin/install-info $(texinfo)/usr/bin/ginstall-info
 	sed -e "s/install-info/g&/g" \
 		< $(texinfo)/usr/share/man/man1/install-info.1 \

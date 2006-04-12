@@ -4,7 +4,7 @@
 31_segfault-when-resizing-terminal.dpatch
 40_replace_egrep_fgrep_sigs.dpatch
 50_info_universal_argument.dpatch
-51_texinfo_info_typo_fix.dpatch
 52_missing_dir_in_texinputs.dpatch
 61_man_Top.dpatch
 62_localesettings.dpatch
+70_dont_build_info.dpatch

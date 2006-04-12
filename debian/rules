@@ -22,10 +22,8 @@ build-stamp: patch-stamp
 	dh_testdir
 	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr \
           --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man'
-	#rm po/stamp-po
 	touch po/texinfo.pot
 	$(MAKE)
-	(cd doc; $(MAKE) texinfo.html)
 	touch $@
 
 clean: unpatch

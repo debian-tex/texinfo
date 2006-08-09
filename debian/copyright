@@ -27,3 +27,9 @@ Upstream maintainer: Karl Berry <karl@cs.umb.edu>.
 On Debian GNU/Linux systems, the complete text of the GNU General
 Public License can be found in `/usr/share/common-licenses/GPL' file.
 
+The file COPYING referred to in the ouput of info --version and in the
+man page of info contains the GPLv2 as found in 
+`/usr/share/common-licenses/GPL'. Although neither the output of
+info --version nor the man page mentions a specific version of the GPL, the
+GPLv2 applies to the whole package.
+

@@ -1,3 +1,9 @@
+texinfo (4.8.dfsg.1-3) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Norbert Preining <preining@logic.at>  Thu, 10 Aug 2006 11:33:43 +0200
+
 texinfo (4.8.dfsg.1-2) unstable; urgency=medium
 
   * standards version 3.7.2, no changes necessary

@@ -1,4 +1,4 @@
-texinfo (4.8.dfsg.1-2) UNRELEASED; urgency=medium
+texinfo (4.8.dfsg.1-2) unstable; urgency=medium
 
   * standards version 3.7.2, no changes necessary
   * fix a missing translation/locale fix (thanks Sven Joachim)
@@ -8,7 +8,7 @@ texinfo (4.8.dfsg.1-2) UNRELEASED; urgency=medium
     the file COPYING mentioned contains GPLv2. (Closes: #380128)
     (urgency set to medium as this is an RC bug present in testing)
 
- -- Norbert Preining <preining@logic.at>  Wed,  9 Aug 2006 11:50:44 +0200
+ -- Norbert Preining <preining@logic.at>  Thu, 10 Aug 2006 11:16:29 +0200
 
 texinfo (4.8.dfsg.1-1) unstable; urgency=low
 

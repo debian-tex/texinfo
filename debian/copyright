@@ -2,7 +2,7 @@ This is the Debian package of Texinfo, the GNU documentation system.
 
 This package was previously maintained by Ian Jackson, Erick
 Branderhorst, Galen Hazelwood, and Josip Rodin. Today, it is 
-maintained by Norbert Preining <preining@logic.at>.
+maintained by Norbert Preining <preining@debian.org>.
 
 The original source can be found at: http://ftp.gnu.org/gnu/texinfo/
 

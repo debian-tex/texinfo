@@ -2,8 +2,10 @@ texinfo (4.8.dfsg.1-3) UNRELEASED; urgency=low
 
   * NOT RELEASED YET
   * changed maintainer email address to preining@debian.org
+  * add a patch from Werner Koch to fix copying of @import in 
+    makeinfo/html.c (Closes: #388396)
 
- -- Norbert Preining <preining@debian.org>  Wed,  6 Sep 2006 11:16:14 +0200
+ -- Norbert Preining <preining@logic.at>  Wed, 27 Sep 2006 01:58:56 +0200
 
 texinfo (4.8.dfsg.1-2) unstable; urgency=medium
 

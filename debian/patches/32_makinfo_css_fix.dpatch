@@ -1,0 +1,17 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 32_makinfo_css_fix.dpatch by Werner Koch <wk@gnupg.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Fix an obvious bug in reading a css file
+
+@DPATCH@
+--- texinfo-4.8.dfsg.1/makeinfo/html.c~ 2006-09-20 10:58:05.000000000 +0200
++++ texinfo-4.8.dfsg.1/makeinfo/html.c  2006-09-20 10:44:20.000000000 +0200
+@@ -108,6 +108,7 @@ process_css_file (char *filename)
+               if (nextchar == 'i' || nextchar == 'c')
+                 {
+                   append_char (import_text, c);
++                  append_char (import_text, nextchar);
+                   state = import_state;
+                 }
+               else

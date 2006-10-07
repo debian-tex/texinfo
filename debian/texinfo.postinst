@@ -7,7 +7,11 @@ build_format_if_format_exists ()
     TEXMFVAR="$v"
     TEXMFCONFIG="$c"
     export TEXMFVAR TEXMFCONFIG
-    fmtcnffile=`kpsewhich --format='web2c files' fmtutil.cnf`
+    if kpsewhich --format='web2c files' fmtutil.cnf > /dev/null 2>&1 ; then
+    	fmtcnffile=`kpsewhich --format='web2c files' fmtutil.cnf`
+    else
+    	return 0
+    fi
     X=`cat $fmtcnffile | grep "^$2[[:space:]]" || true`
     if [ ! "X$X" = "X" ] ; then
         if [ "X$1" = "X--byhyphen" ] ; then

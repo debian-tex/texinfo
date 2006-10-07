@@ -2,8 +2,8 @@
 
 build_format_if_format_exists ()
 {
-    v=`kpsewhich -var-value TEXMFSYSVAR`
-    c=`kpsewhich -var-value TEXMFSYSCONFIG`
+    v=`kpsewhich -var-value TEXMFSYSVAR` || return 0
+    c=`kpsewhich -var-value TEXMFSYSCONFIG` || return 0
     TEXMFVAR="$v"
     TEXMFCONFIG="$c"
     export TEXMFVAR TEXMFCONFIG

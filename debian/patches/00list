@@ -3,6 +3,7 @@
 30_texindex_racecondition.dpatch
 31_segfault-when-resizing-terminal.dpatch
 32_makinfo_css_fix.dpatch
+33_texindex_CVE-2006-4810.dpatch
 40_replace_egrep_fgrep_sigs.dpatch
 50_info_universal_argument.dpatch
 52_missing_dir_in_texinputs.dpatch

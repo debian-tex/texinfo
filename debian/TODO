@@ -1,5 +1,9 @@
 TODO for texinfo Debian package
 -------------------------------
+* use libpaper/papersize to set /etc/texmf/tex/whatever/texinfo.cnf to
+  include @afourpaper in case that papersize=a4. Needs some checking
+  like a grep for % ___USE_PAPERSIZE___ in it...
+
 * fix the man page for makeinfo to include --document-language
 
 * fix the @documentlanguage callback function in makeinfo to change

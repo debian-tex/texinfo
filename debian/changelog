@@ -1,3 +1,9 @@
+texinfo (4.8.dfsg.1-5~1) unstable; urgency=low
+
+  * start thinking about /etc/papersize usage
+
+ -- Norbert Preining <preining@debian.org>  Wed, 25 Apr 2007 15:05:11 +0200
+
 texinfo (4.8.dfsg.1-4) unstable; urgency=high
 
   * Apply patch by Josh Bressers <bressers@redhat.com> to fix

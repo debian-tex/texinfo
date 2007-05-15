@@ -2,8 +2,11 @@ texinfo (4.8.dfsg.1-5) unstable; urgency=low
 
   * adjust suggests to include texlive-generic-recommended and remove
     tetex (Closes: #422518)
+  * lintian fixes:
+    - move dh compat setting from rules to debian/compat
+    - save control file in UTF8
 
- -- Norbert Preining <preining@debian.org>  Tue, 15 May 2007 13:50:35 +0200
+ -- Norbert Preining <preining@debian.org>  Tue, 15 May 2007 15:00:37 +0200
 
 texinfo (4.8.dfsg.1-4) unstable; urgency=high
 

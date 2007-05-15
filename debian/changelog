@@ -1,4 +1,4 @@
-texinfo (4.8.dfsg.1-5~1) unstable; urgency=low
+texinfo (4.8.dfsg.1-5) unstable; urgency=low
 
   * adjust suggests to include texlive-generic-recommended and remove
     tetex (Closes: #422518)

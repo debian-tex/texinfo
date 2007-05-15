@@ -11,7 +11,7 @@ Section: text
 Priority: standard
 Architecture: any
 Depends: ${shlibs:Depends}
-Suggests: tetex-bin | texlive-base
+Suggests: texlive-base, texlive-generic-recommended 
 Conflicts: tetex-bin (<< 3.0), tetex-base (<< 3.0), ja-trans (<= 0.7-3.1)
 Replaces: tetex-base (<< 1.0.2+20000804-9), tetex-bin (<< 3.0)
 Description: Documentation system for on-line information and printed output

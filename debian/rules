@@ -32,8 +32,7 @@ clean: unpatch
 	dh_testdir
 	dh_testroot
 	[ ! -f Makefile ] || $(MAKE) distclean
-	mv gmo-save/* po/
-	rmdir gmo-save
+	( mv gmo-save/* po/ ; rm -rf gmo-save )
 	dh_clean install-stamp build-stamp intl/libintl.h config.log
 
 install: install-stamp

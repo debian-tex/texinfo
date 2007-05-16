@@ -1,8 +1,8 @@
 Source: texinfo
 Section: doc
 Priority: standard
-Maintainer: Norbert Preining <preining@debian.org>
-Uploaders: Frank Küster <frank@debian.org>
+Maintainer: Debian TeX maintainers <debian-tex-maint@lists.debian.org>
+Uploaders: Norbert Preining <preining@debian.org>, Frank Küster <frank@debian.org>
 Build-Depends: debhelper (>= 5), dpatch, libncurses5-dev | libncurses-dev, gettext
 Standards-Version: 3.7.2
 

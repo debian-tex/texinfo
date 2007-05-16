@@ -5,6 +5,8 @@ export DH_OPTIONS
 
 include /usr/share/dpatch/dpatch.make
 
+SAVEDGMO="po/nl.gmo po/ro.gmo po/tr.gmo po/de.gmo"
+
 CFLAGS := -g -Wall
 ifneq "$(findstring noopt,$(DEB_BUILD_OPTIONS))" ""
 CFLAGS += -O0
@@ -21,6 +23,8 @@ build-stamp: patch-stamp
 	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr \
           --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man'
 	touch po/texinfo.pot
+	mkdir -p gmo-save
+	cp -a $(SAVEDGMO) gmo-save/
 	$(MAKE)
 	touch $@
 
@@ -28,6 +32,8 @@ clean: unpatch
 	dh_testdir
 	dh_testroot
 	[ ! -f Makefile ] || $(MAKE) distclean
+	mv gmo-save/* po/
+	rmdir gmo-save
 	dh_clean install-stamp build-stamp intl/libintl.h config.log
 
 install: install-stamp

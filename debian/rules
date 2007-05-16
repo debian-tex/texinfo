@@ -23,8 +23,6 @@ build-stamp: patch-stamp
 	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr \
           --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man'
 	touch po/texinfo.pot
-	mkdir -p gmo-save
-	cp -a $(SAVEDGMO) gmo-save/
 	$(MAKE)
 	touch $@
 
@@ -32,7 +30,8 @@ clean: unpatch
 	dh_testdir
 	dh_testroot
 	[ ! -f Makefile ] || $(MAKE) distclean
-	( mv gmo-save/* po/ ; rm -rf gmo-save )
+	# remove binary gmo files
+	rm -f po/*.gmo
 	dh_clean install-stamp build-stamp intl/libintl.h config.log
 
 install: install-stamp

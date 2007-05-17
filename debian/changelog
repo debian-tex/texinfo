@@ -1,13 +1,13 @@
-texinfo (4.8.dfsg.1-6~1) unstable; urgency=low
+texinfo (4.8.dfsg.1-6) unstable; urgency=low
 
   * add texlive-latex-base to the suggests (lcircle font)
   * add a remark in README.Debian that for building dvi/pdf you need the
     packages suggested by texinfo (Closes: #421192)
-  * remove po/*.gmo in the clean target to fix double build FTBFS 
+  * remove po/*.gmo in the clean target to fix double build FTBFS
     (Closes: #424218)
   * change maintainer to Debian TeX maintainers, put me in uploaders
 
- -- Norbert Preining <preining@debian.org>  Wed, 16 May 2007 14:42:57 +0200
+ -- Norbert Preining <preining@debian.org>  Thu, 17 May 2007 22:16:10 +0200
 
 texinfo (4.8.dfsg.1-5) unstable; urgency=low
 

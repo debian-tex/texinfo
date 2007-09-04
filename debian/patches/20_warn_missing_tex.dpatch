@@ -16,9 +16,9 @@ diff -urNad --exclude=CVS --exclude=.svn ./util/texi2dvi /tmp/dpep-work.19TjB7/t
 + cat <<%EOM%
 +You don't have a working TeX binary installed, but the texi2dvi script
 +can't proceed without it. If you want to use this script, you have to
-+install some kind of TeX, for example teTeX Debian packages. You can do
++install some kind of TeX, for example TeX Live Debian packages. You can do
 +that with this command:
-+       apt-get install tetex-bin
++       apt-get install texlive
 +%EOM%
 + exit 1
 +fi

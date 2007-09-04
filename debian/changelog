@@ -1,3 +1,10 @@
+texinfo (4.8.dfsg.1-7~1) unstable; urgency=low
+
+  * Recommend installing texlive instead of tetex-bin in texi2dvi
+    (Closes: #440796)
+
+ -- Norbert Preining <preining@debian.org>  Tue, 04 Sep 2007 11:36:42 +0200
+
 texinfo (4.8.dfsg.1-6) unstable; urgency=low
 
   * add texlive-latex-base to the suggests (lcircle font)

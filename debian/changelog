@@ -1,9 +1,11 @@
-texinfo (4.8.dfsg.1-7~1) unstable; urgency=low
+texinfo (4.9.91.dfsg.1-1~1) unstable; urgency=low
 
+  * new upstream (pre-)release:
+    - switch to GPLv3
   * Recommend installing texlive instead of tetex-bin in texi2dvi
     (Closes: #440796)
 
- -- Norbert Preining <preining@debian.org>  Tue, 04 Sep 2007 11:36:42 +0200
+ -- Norbert Preining <preining@debian.org>  Tue, 04 Sep 2007 11:46:45 +0200
 
 texinfo (4.8.dfsg.1-6) unstable; urgency=low
 

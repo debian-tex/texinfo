@@ -1,32 +1,36 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-# 70_dont_build_info.dpatch by Norbert Preining
-##
-## All lines beginning with `## DP:' are a description of the patch.
-## DP: dont build the info documentation, it has been removed
+70_dont_build_info.dpatch by Norbert Preining
 
-@DPATCH@
---- ./doc/Makefile.in.orig	2006-04-12 02:13:39.000000000 +0200
-+++ ./doc/Makefile.in	2006-04-12 02:14:38.000000000 +0200
-@@ -76,13 +76,15 @@
+dont build the info documentation, it has been removed
+
+---
+ doc/Makefile.in |   12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+Index: texinfo-4.11/doc/Makefile.in
+===================================================================
+--- texinfo-4.11.orig/doc/Makefile.in	2007-09-10 02:37:44.000000000 +0200
++++ texinfo-4.11/doc/Makefile.in	2007-10-30 08:39:46.000000000 +0100
+@@ -104,14 +104,16 @@
  CONFIG_CLEAN_FILES =
  SOURCES =
  DIST_SOURCES =
 -INFO_DEPS = texinfo info-stnd.info info.info
 +#INFO_DEPS = texinfo info-stnd.info info.info
 +INFO_DEPS = 
- am__TEXINFO_TEX_DIR = $(srcdir)
+ TEXINFO_TEX = $(top_srcdir)/build-aux/texinfo.tex
+ am__TEXINFO_TEX_DIR = $(top_srcdir)/build-aux
  DVIS = texinfo.dvi info-stnd.dvi info.dvi
  PDFS = texinfo.pdf info-stnd.pdf info.pdf
  PSS = texinfo.ps info-stnd.ps info.ps
  HTMLS = texinfo.html info-stnd.html info.html
 -TEXINFOS = texinfo.txi info-stnd.texi info.texi
 +#TEXINFOS = texinfo.txi info-stnd.texi info.texi
-+TEXINFOS = 
++TEXINFOS =
  TEXI2DVI = texi2dvi
  TEXI2PDF = $(TEXI2DVI) --pdf --batch
  MAKEINFOHTML = $(MAKEINFO) --html
-@@ -218,8 +220,10 @@
- target_alias = @target_alias@
+@@ -374,8 +376,10 @@
+ top_srcdir = @top_srcdir@
  
  # Put texinfo.txi first because that's the most important.
 -info_TEXINFOS = texinfo.txi info-stnd.texi info.texi

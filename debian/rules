@@ -3,7 +3,8 @@
 #export DH_VERBOSE=1
 export DH_OPTIONS
 
-include /usr/share/dpatch/dpatch.make
+# needed for quilt:
+export QUILT_PATCHES=./debian/patches
 
 SAVEDGMO=po/nl.gmo po/ro.gmo po/tr.gmo po/de.gmo
 
@@ -25,6 +26,15 @@ build-stamp: patch-stamp
 	touch po/texinfo.pot
 	$(MAKE)
 	touch $@
+
+patch-stamp:
+	quilt push -a
+	touch $@
+
+unpatch:
+	# unapply patches, not giving an error when quilt says "No patch removed"
+	quilt pop -a || [ $$? = 2 ]
+	rm -f patch-stamp
 
 clean: unpatch
 	dh_testdir

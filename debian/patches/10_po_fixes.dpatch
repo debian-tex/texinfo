@@ -1,14 +1,14 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## 10_po_fixes.dpatch by  <norbert@gandalf.localdomain>
-##
-## All lines beginning with `## DP:' are a description of the patch.
-## DP: No description.
+10_po_fixes.dpatch by  <preining@logic.at>
 
-@DPATCH@
-diff -urNad --exclude=CVS --exclude=.svn ./po/de.po /tmp/dpep-work.vo1izc/texinfo-4.8-texlive/po/de.po
---- ./po/de.po	2004-12-22 01:20:23.000000000 +0100
-+++ /tmp/dpep-work.vo1izc/texinfo-4.8-texlive/po/de.po	2005-08-18 12:27:55.000000000 +0200
-@@ -1038,7 +1038,7 @@
+---
+ po/de.po |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: texinfo-4.11/po/de.po
+===================================================================
+--- texinfo-4.11.orig/po/de.po	2007-09-03 14:23:11.000000000 +0200
++++ texinfo-4.11/po/de.po	2007-10-30 08:23:09.000000000 +0100
+@@ -1097,7 +1097,7 @@
  "  --help               display this help and exit.\n"
  "  --version            display version information and exit.\n"
  msgstr ""
@@ -17,12 +17,12 @@ diff -urNad --exclude=CVS --exclude=.svn ./po/de.po /tmp/dpep-work.vo1izc/texinf
  "\n"
  "Infokey-Quelldatei in Infokey-Datei kompilieren. Liest EINGABE-DATEI\n"
  "(Voreinstellung $HOME/.infokey) und schreibt kompilierte Tastaturdatei\n"
-@@ -2952,7 +2952,7 @@
- #: makeinfo/sectioning.c:639
+@@ -3015,7 +3015,7 @@
+ #: makeinfo/sectioning.c:640
  #, c-format
  msgid "Node with %ctop as a section already exists"
 -msgstr "Knoten mit %ctop als Abschnitt exisiert bereits"
 +msgstr "Knoten mit %ctop als Abschnitt existiert bereits"
  
- #: makeinfo/sectioning.c:647
+ #: makeinfo/sectioning.c:648
  #, c-format

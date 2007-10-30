@@ -64,7 +64,7 @@ install-stamp: build-stamp
 	dh_install --list-missing --sourcedir=debian/tmp -X share/info
 	#
 	# install updated texinfo.tex
-	cp debian/texinfo.tex $(texinfo)/usr/share/texmf/tex/texinfo/texinfo.tex
+	#cp debian/texinfo.tex $(texinfo)/usr/share/texmf/tex/texinfo/texinfo.tex
 	cp debian/texi2pdf.man $(texinfo)/usr/share/man/man1/texi2pdf.1
 	dh_link
 	mv $(texinfo)/usr/bin/install-info $(texinfo)/usr/bin/ginstall-info

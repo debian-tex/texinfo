@@ -1,4 +1,4 @@
-texinfo (4.11.dfsg.1-1~1) unstable; urgency=low
+texinfo (4.11.dfsg.1-1) unstable; urgency=low
 
   * new upstream release
   * Recommend installing texlive instead of tetex-bin in texi2dvi
@@ -15,7 +15,7 @@ texinfo (4.11.dfsg.1-1~1) unstable; urgency=low
     refresh the other patches
   * add build-dep on help2man
 
- -- Norbert Preining <preining@debian.org>  Tue, 30 Oct 2007 08:59:45 +0100
+ -- Norbert Preining <preining@debian.org>  Tue, 30 Oct 2007 09:04:19 +0100
 
 texinfo (4.8.dfsg.1-6) unstable; urgency=low
 

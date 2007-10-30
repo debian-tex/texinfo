@@ -1,6 +1,6 @@
 texinfo (4.11.dfsg.1-1) unstable; urgency=low
 
-  * new upstream release
+  * new upstream release (Closes: #376280, #435558, #439877, #335016, #345739)
   * Recommend installing texlive instead of tetex-bin in texi2dvi
     (Closes: #440796)
   * switch to quilt
@@ -14,9 +14,9 @@ texinfo (4.11.dfsg.1-1) unstable; urgency=low
     - 62_localesettings: upstream
     refresh the other patches
   * add build-dep on help2man
-  * suggest texinfo-doc-nonfree
+  * suggest texinfo-doc-nonfree (Closes: #428339)
 
- -- Norbert Preining <preining@debian.org>  Tue, 30 Oct 2007 09:09:18 +0100
+ -- Norbert Preining <preining@debian.org>  Tue, 30 Oct 2007 09:38:32 +0100
 
 texinfo (4.8.dfsg.1-6) unstable; urgency=low
 

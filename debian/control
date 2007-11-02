@@ -5,6 +5,8 @@ Maintainer: Debian TeX maintainers <debian-tex-maint@lists.debian.org>
 Uploaders: Norbert Preining <preining@debian.org>, Frank Küster <frank@debian.org>
 Build-Depends: debhelper (>= 5), quilt, help2man, libncurses5-dev | libncurses-dev, gettext
 Standards-Version: 3.7.2
+Vcs-Svn: svn://svn.debian.org/svn/debian-tex/texinfo/trunk
+Vcs-Browser: http://svn.debian.org/wsvn/debian-tex/texinfo/trunk/
 
 Package: texinfo
 Section: text

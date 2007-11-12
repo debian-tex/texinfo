@@ -1,3 +1,9 @@
+texinfo (4.11.dfsg.1-1~1) unstable; urgency=low
+
+  * unreleased
+
+ -- Norbert Preining <preining@debian.org>  Mon, 12 Nov 2007 12:41:13 +0100
+
 texinfo (4.11.dfsg.1-1) unstable; urgency=low
 
   * new upstream release (Closes: #376280, #435558, #439877, #335016, #345739)

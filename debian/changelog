@@ -1,12 +1,18 @@
 texinfo (4.11.dfsg.1-1~1) unstable; urgency=low
 
   * unreleased
+  * edit the changelog entry from 4.11.dfsg.1-1 to close the bugs in a 
+    more explicit way
 
- -- Norbert Preining <preining@debian.org>  Mon, 12 Nov 2007 12:41:13 +0100
+ -- Norbert Preining <preining@debian.org>  Tue, 13 Nov 2007 12:46:27 +0100
 
 texinfo (4.11.dfsg.1-1) unstable; urgency=low
 
-  * new upstream release (Closes: #376280, #435558, #439877, #335016, #345739)
+  * new upstream release (Closes: #435558)
+    - fixes race condition causing crashes when resizing (Closes: #345739)
+    - generates valid xml files (Closes: #335016)
+    - do not truncate command key listing (Closes: #376280)
+    - allow ~ in the file patch (Closes: #439877)
   * Recommend installing texlive instead of tetex-bin in texi2dvi
     (Closes: #440796)
   * switch to quilt

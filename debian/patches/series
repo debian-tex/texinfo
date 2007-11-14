@@ -17,3 +17,4 @@
 #upstream
 #62_localesettings.dpatch
 70_dont_build_info.dpatch
+fix-direntry

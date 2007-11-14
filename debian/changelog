@@ -1,10 +1,10 @@
-texinfo (4.11.dfsg.1-1~1) unstable; urgency=low
+texinfo (4.11.dfsg.1-2) unstable; urgency=low
 
-  * unreleased
-  * edit the changelog entry from 4.11.dfsg.1-1 to close the bugs in a 
+  * edit the changelog entry from 4.11.dfsg.1-1 to close the bugs in a
     more explicit way
+  * fix erronous direntries (Closes: #451268)
 
- -- Norbert Preining <preining@debian.org>  Tue, 13 Nov 2007 12:46:27 +0100
+ -- Norbert Preining <preining@debian.org>  Wed, 14 Nov 2007 18:52:13 +0100
 
 texinfo (4.11.dfsg.1-1) unstable; urgency=low
 

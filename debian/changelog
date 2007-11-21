@@ -13,6 +13,7 @@ texinfo (4.11.dfsg.1-1) unstable; urgency=low
     - generates valid xml files (Closes: #335016)
     - do not truncate command key listing (Closes: #376280)
     - allow ~ in the file path (Closes: #439877)
+    - ships new texinfo.tex (Closes: #446443)
   * Recommend installing texlive instead of tetex-bin in texi2dvi
     (Closes: #440796)
   * switch to quilt

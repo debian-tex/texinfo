@@ -3,6 +3,7 @@ texinfo (4.11.dfsg.1-2~1) unstable; urgency=low
   * do not trigger regeneration of texi2dvi.1 at build time, remove the
     B-D on help2man (Closes: #452582)
   * really fix the erronous direntries (Closes: #451268)
+    PATCH MUST BE APPROVED BY KARL FIRST
 
  -- Norbert Preining <preining@debian.org>  Wed, 19 Dec 2007 16:31:26 +0100
 

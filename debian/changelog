@@ -1,10 +1,11 @@
-texinfo (4.11.dfsg.1-2) unstable; urgency=low
+texinfo (4.11.dfsg.1-3) unstable; urgency=low
 
   * do not trigger regeneration of texi2dvi.1 at build time, remove the
     B-D on help2man (Closes: #452582)
   * really fix the erronous direntries (Closes: #451268)
+  * bump standards version to 3.7.3, no changes needed
 
- -- Norbert Preining <preining@debian.org>  Thu, 20 Dec 2007 07:36:55 +0100
+ -- Norbert Preining <preining@debian.org>  Thu, 20 Dec 2007 07:42:31 +0100
 
 texinfo (4.11.dfsg.1-2) unstable; urgency=low
 

@@ -1,3 +1,9 @@
+texinfo (4.11.dfsg.1-4~1) unstable; urgency=low
+
+  * .... nothing till now
+
+ -- Norbert Preining <preining@debian.org>  Thu, 20 Dec 2007 07:50:11 +0100
+
 texinfo (4.11.dfsg.1-3) unstable; urgency=low
 
   * do not trigger regeneration of texi2dvi.1 at build time, remove the

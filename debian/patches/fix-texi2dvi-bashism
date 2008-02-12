@@ -1,0 +1,17 @@
+---
+ util/texi2dvi |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: texinfo-4.11.dfsg.1/util/texi2dvi
+===================================================================
+--- texinfo-4.11.dfsg.1.orig/util/texi2dvi	2008-02-12 18:48:57.000000000 +0100
++++ texinfo-4.11.dfsg.1/util/texi2dvi	2008-02-12 18:49:23.000000000 +0100
+@@ -1048,7 +1048,7 @@
+ # main info output, the user asked to run TeX, not makeinfo.
+ run_makeinfo ()
+ {
+-  test $in_lang == texinfo ||
++  test $in_lang = texinfo ||
+     return 0
+ 
+   # Unless required by the user, makeinfo expansion is wanted only

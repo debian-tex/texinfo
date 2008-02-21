@@ -5,3 +5,4 @@ info_universal_argument
 dont_build_info
 fix-direntry
 fix-texi2dvi-bashism
+makeinfo-accept-leading-spaces

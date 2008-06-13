@@ -3,8 +3,9 @@ texinfo (4.12.dfsg.1-1~1) unstable; urgency=low
   * new upstream release:
     - fix (wrongly) added leading spaces in direntries (Closes: #457741)
     - disable the patche fix-direntry, included upstream
+  * update the list of files to be installed (new translations, pdftexi2dvi)
 
- -- Norbert Preining <preining@debian.org>  Fri, 13 Jun 2008 09:40:15 +0200
+ -- Norbert Preining <preining@debian.org>  Fri, 13 Jun 2008 09:52:31 +0200
 
 texinfo (4.11.dfsg.1-4) unstable; urgency=low
 

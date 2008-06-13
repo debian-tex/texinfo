@@ -20,10 +20,12 @@ tmpdir := $(CURDIR)/debian/tmp
 
 build: build-stamp
 build-stamp: patch-stamp
-	# texi2dvi has been touched by the patches, so the builder
+	# some man scripts have been touch by the patches, so the builder
 	# will try to rebuild the man page from texi2dvi but that
 	# spits out only a warning that no tex system is installed
 	touch doc/texi2dvi.1
+	touch doc/texi2pdf.1
+	touch doc/pdftexi2dvi.1
 	dh_testdir
 	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr \
           --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man'

@@ -2,5 +2,4 @@ warn_missing_tex
 replace_egrep_fgrep_sigs
 info_universal_argument
 dont_build_info
-#fix-direntry
 fix-texi2dvi-bashism

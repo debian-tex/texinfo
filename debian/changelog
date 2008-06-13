@@ -5,8 +5,10 @@ texinfo (4.12.dfsg.1-1~1) unstable; urgency=low
     - disable the patche fix-direntry, included upstream
   * update the list of files to be installed (new translations, pdftexi2dvi)
   * mange version in the watch file to remove the .dfsg.N part
+  * use quilt.make (first step in direction of source format 3.0, but that
+    is broken)
 
- -- Norbert Preining <preining@debian.org>  Fri, 13 Jun 2008 10:09:12 +0200
+ -- Norbert Preining <preining@debian.org>  Fri, 13 Jun 2008 10:22:51 +0200
 
 texinfo (4.11.dfsg.1-4) unstable; urgency=low
 

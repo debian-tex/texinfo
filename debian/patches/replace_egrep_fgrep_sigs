@@ -10,10 +10,10 @@ by signal names
  util/texi2dvi       |    2 +-
  4 files changed, 13 insertions(+), 13 deletions(-)
 
-Index: texinfo-4.11/makeinfo/tests/cond
+Index: texinfo-4.12.dfsg.1/makeinfo/tests/cond
 ===================================================================
---- texinfo-4.11.orig/makeinfo/tests/cond	2005-05-15 01:46:32.000000000 +0200
-+++ texinfo-4.11/makeinfo/tests/cond	2007-10-30 08:31:25.000000000 +0100
+--- texinfo-4.12.dfsg.1.orig/makeinfo/tests/cond	2005-05-15 01:46:32.000000000 +0200
++++ texinfo-4.12.dfsg.1/makeinfo/tests/cond	2008-06-13 09:28:00.000000000 +0200
 @@ -6,28 +6,28 @@
  
  # Default Info output.
@@ -51,10 +51,10 @@ Index: texinfo-4.11/makeinfo/tests/cond
 +test `grep -F -c ' text.' cond.out` -eq 5 || exit 3
  
  rm -f cond.out cond.info
-Index: texinfo-4.11/util/fixfonts
+Index: texinfo-4.12.dfsg.1/util/fixfonts
 ===================================================================
---- texinfo-4.11.orig/util/fixfonts	2005-05-15 01:46:35.000000000 +0200
-+++ texinfo-4.11/util/fixfonts	2007-10-30 08:30:30.000000000 +0100
+--- texinfo-4.12.dfsg.1.orig/util/fixfonts	2005-05-15 01:46:35.000000000 +0200
++++ texinfo-4.12.dfsg.1/util/fixfonts	2008-06-13 09:28:00.000000000 +0200
 @@ -33,7 +33,7 @@
  tempfile2="${TMPDIR}/circ2$$"
  
@@ -64,10 +64,10 @@ Index: texinfo-4.11/util/fixfonts
  
  # Find all the fonts with names that include `circle'.
  (cd "${texfontdir}"; find . -name '*circle*' -print > "${tempfile}")
-Index: texinfo-4.11/util/gen-dir-node
+Index: texinfo-4.12.dfsg.1/util/gen-dir-node
 ===================================================================
---- texinfo-4.11.orig/util/gen-dir-node	2005-05-15 01:46:35.000000000 +0200
-+++ texinfo-4.11/util/gen-dir-node	2007-10-30 08:30:30.000000000 +0100
+--- texinfo-4.12.dfsg.1.orig/util/gen-dir-node	2005-05-15 01:46:35.000000000 +0200
++++ texinfo-4.12.dfsg.1/util/gen-dir-node	2008-06-13 09:28:00.000000000 +0200
 @@ -79,7 +79,7 @@
  ### then generate entries for those in the same way, putting the info for 
  ### those at the end....
@@ -88,11 +88,11 @@ Index: texinfo-4.11/util/gen-dir-node
  	      sort -t: -k2 -k1 | tr ' ' '_')`
  for sectdata in ${filesectdata}; do
    file=`echo ${sectdata} | cut -d: -f1`
-Index: texinfo-4.11/util/texi2dvi
+Index: texinfo-4.12.dfsg.1/util/texi2dvi
 ===================================================================
---- texinfo-4.11.orig/util/texi2dvi	2007-10-30 08:23:49.000000000 +0100
-+++ texinfo-4.11/util/texi2dvi	2007-10-30 08:32:34.000000000 +0100
-@@ -1623,7 +1623,7 @@
+--- texinfo-4.12.dfsg.1.orig/util/texi2dvi	2008-06-13 09:26:41.000000000 +0200
++++ texinfo-4.12.dfsg.1/util/texi2dvi	2008-06-13 09:28:00.000000000 +0200
+@@ -1684,7 +1684,7 @@
  	     sed 's,/,!,g'`
    esac
    # Remove it at exit if clean mode.

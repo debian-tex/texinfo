@@ -4,10 +4,10 @@
  util/texi2dvi |   11 +++++++++++
  1 file changed, 11 insertions(+)
 
-Index: texinfo-4.11/util/texi2dvi
+Index: texinfo-4.12.dfsg.1/util/texi2dvi
 ===================================================================
---- texinfo-4.11.orig/util/texi2dvi	2007-09-10 02:36:30.000000000 +0200
-+++ texinfo-4.11/util/texi2dvi	2007-10-30 08:23:49.000000000 +0100
+--- texinfo-4.12.dfsg.1.orig/util/texi2dvi	2008-04-17 20:45:49.000000000 +0200
++++ texinfo-4.12.dfsg.1/util/texi2dvi	2008-06-13 09:26:41.000000000 +0200
 @@ -32,6 +32,17 @@
  # No failure shall remain unpunished.
  set -e
@@ -24,5 +24,5 @@ Index: texinfo-4.11/util/texi2dvi
 +fi
 +
  # This string is expanded by rcs automatically when this file is checked out.
- rcs_revision='$Revision: 1.104 $'
+ rcs_revision='$Revision: 1.122 $'
  rcs_version=`set - $rcs_revision; echo $2`

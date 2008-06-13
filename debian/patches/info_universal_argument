@@ -3,44 +3,30 @@
 fix crash in info under nl locale
 
 ---
- po/nl.po |    2 +-
  po/ro.po |    2 +-
  po/tr.po |    2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Index: texinfo-4.11/po/nl.po
+Index: texinfo-4.12.dfsg.1/po/ro.po
 ===================================================================
---- texinfo-4.11.orig/po/nl.po	2007-09-10 02:40:30.000000000 +0200
-+++ texinfo-4.11/po/nl.po	2007-10-30 08:33:13.000000000 +0100
-@@ -1719,7 +1719,7 @@
+--- texinfo-4.12.dfsg.1.orig/po/ro.po	2008-04-19 19:05:40.000000000 +0200
++++ texinfo-4.12.dfsg.1/po/ro.po	2008-06-13 09:29:05.000000000 +0200
+@@ -1673,7 +1673,7 @@
  
- #: info/session.c:4894
- msgid "Internally used by \\[universal-argument]"
--msgstr "Intern gebruikt door \\[universeel-argument]"
-+msgstr "Intern gebruikt door \\[universal-argument]"
- 
- #: info/tilde.c:336
- #, c-format
-Index: texinfo-4.11/po/ro.po
-===================================================================
---- texinfo-4.11.orig/po/ro.po	2007-09-03 14:23:14.000000000 +0200
-+++ texinfo-4.11/po/ro.po	2007-10-30 08:33:13.000000000 +0100
-@@ -1687,7 +1687,7 @@
- 
- #: info/session.c:4894
+ #: info/session.c:4974
  msgid "Internally used by \\[universal-argument]"
 -msgstr "Folosit intern de \\[argument-universal]"
 +msgstr "Folosit intern de \\[universal-argument]"
  
  #: info/tilde.c:336
  #, c-format
-Index: texinfo-4.11/po/tr.po
+Index: texinfo-4.12.dfsg.1/po/tr.po
 ===================================================================
---- texinfo-4.11.orig/po/tr.po	2007-09-03 14:23:15.000000000 +0200
-+++ texinfo-4.11/po/tr.po	2007-10-30 08:33:13.000000000 +0100
-@@ -1674,7 +1674,7 @@
+--- texinfo-4.12.dfsg.1.orig/po/tr.po	2008-04-19 19:05:41.000000000 +0200
++++ texinfo-4.12.dfsg.1/po/tr.po	2008-06-13 09:29:05.000000000 +0200
+@@ -1665,7 +1665,7 @@
  
- #: info/session.c:4894
+ #: info/session.c:4974
  msgid "Internally used by \\[universal-argument]"
 -msgstr "Dahili olarak \\[universal argument] tarafýndan kullanýlýyor"
 +msgstr "Dahili olarak \\[universal-argument] tarafýndan kullanýlýyor"

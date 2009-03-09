@@ -1,6 +1,6 @@
-texinfo (4.12.dfsg.1-1~1) unstable; urgency=low
+texinfo (4.13a.dfsg.1-1~1) unstable; urgency=low
 
-  * new upstream release:
+  * new upstream releases:
     - fix (wrongly) added leading spaces in direntries (Closes: #457741)
     - disable the patche fix-direntry, included upstream
   * update the list of files to be installed (new translations, pdftexi2dvi)
@@ -8,7 +8,7 @@ texinfo (4.12.dfsg.1-1~1) unstable; urgency=low
   * use quilt.make (first step in direction of source format 3.0, but that
     is broken)
 
- -- Norbert Preining <preining@debian.org>  Fri, 13 Jun 2008 10:22:51 +0200
+ -- Norbert Preining <preining@debian.org>  Mon, 09 Mar 2009 15:14:20 +0100
 
 texinfo (4.11.dfsg.1-4) unstable; urgency=low
 

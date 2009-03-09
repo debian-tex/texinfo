@@ -81,7 +81,8 @@ binary-arch: DH_OPTIONS=-a
 binary-arch: install
 	dh_testdir
 	dh_testroot
-	dh_installdocs -A AUTHORS INTRODUCTION README NEWS TODO
+	dh_installdocs -A AUTHORS INTRODUCTION README NEWS TODO \
+		debian/README.source
 	dh_installdocs -p texinfo debian/README.cyrtexinfo \
 		doc/refcard/txirefcard*.pdf
 		

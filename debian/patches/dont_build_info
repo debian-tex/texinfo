@@ -6,11 +6,11 @@ dont build the info documentation, it has been removed
  doc/Makefile.in |   12 ++++++++----
  1 file changed, 8 insertions(+), 4 deletions(-)
 
-Index: texinfo-4.12.dfsg.1/doc/Makefile.in
+Index: texinfo-4.13a.dfsg.1/doc/Makefile.in
 ===================================================================
---- texinfo-4.12.dfsg.1.orig/doc/Makefile.in	2008-04-18 09:34:57.000000000 +0200
-+++ texinfo-4.12.dfsg.1/doc/Makefile.in	2008-06-13 09:31:59.000000000 +0200
-@@ -112,14 +112,16 @@
+--- texinfo-4.13a.dfsg.1.orig/doc/Makefile.in	2008-09-18 20:46:24.000000000 +0200
++++ texinfo-4.13a.dfsg.1/doc/Makefile.in	2009-03-09 15:17:15.000000000 +0100
+@@ -121,14 +121,16 @@
  CONFIG_CLEAN_FILES =
  SOURCES =
  DIST_SOURCES =
@@ -29,7 +29,7 @@ Index: texinfo-4.12.dfsg.1/doc/Makefile.in
  TEXI2DVI = texi2dvi
  TEXI2PDF = $(TEXI2DVI) --pdf --batch
  MAKEINFOHTML = $(MAKEINFO) --html
-@@ -422,8 +424,10 @@
+@@ -435,8 +437,10 @@
  top_srcdir = @top_srcdir@
  
  # Put texinfo.txi first because that's the most important.

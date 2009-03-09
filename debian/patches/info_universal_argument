@@ -7,26 +7,26 @@ fix crash in info under nl locale
  po/tr.po |    2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-Index: texinfo-4.12.dfsg.1/po/ro.po
+Index: texinfo-4.13a.dfsg.1/po/ro.po
 ===================================================================
---- texinfo-4.12.dfsg.1.orig/po/ro.po	2008-04-19 19:05:40.000000000 +0200
-+++ texinfo-4.12.dfsg.1/po/ro.po	2008-06-13 09:29:05.000000000 +0200
-@@ -1673,7 +1673,7 @@
+--- texinfo-4.13a.dfsg.1.orig/po/ro.po	2008-09-18 20:38:32.000000000 +0200
++++ texinfo-4.13a.dfsg.1/po/ro.po	2009-03-09 15:17:06.000000000 +0100
+@@ -1681,7 +1681,7 @@
  
- #: info/session.c:4974
+ #: info/session.c:5149
  msgid "Internally used by \\[universal-argument]"
 -msgstr "Folosit intern de \\[argument-universal]"
 +msgstr "Folosit intern de \\[universal-argument]"
  
  #: info/tilde.c:336
  #, c-format
-Index: texinfo-4.12.dfsg.1/po/tr.po
+Index: texinfo-4.13a.dfsg.1/po/tr.po
 ===================================================================
---- texinfo-4.12.dfsg.1.orig/po/tr.po	2008-04-19 19:05:41.000000000 +0200
-+++ texinfo-4.12.dfsg.1/po/tr.po	2008-06-13 09:29:05.000000000 +0200
-@@ -1665,7 +1665,7 @@
+--- texinfo-4.13a.dfsg.1.orig/po/tr.po	2008-09-18 20:38:33.000000000 +0200
++++ texinfo-4.13a.dfsg.1/po/tr.po	2009-03-09 15:17:06.000000000 +0100
+@@ -1683,7 +1683,7 @@
  
- #: info/session.c:4974
+ #: info/session.c:5149
  msgid "Internally used by \\[universal-argument]"
 -msgstr "Dahili olarak \\[universal argument] tarafýndan kullanýlýyor"
 +msgstr "Dahili olarak \\[universal-argument] tarafýndan kullanýlýyor"

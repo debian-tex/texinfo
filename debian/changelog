@@ -7,8 +7,9 @@ texinfo (4.13a.dfsg.1-1~1) unstable; urgency=low
   * mange version in the watch file to remove the .dfsg.N part
   * use quilt.make (first step in direction of source format 3.0, but that
     is broken)
+  * update patches, disable fix-texi2dvi-bashism (applied upstream)
 
- -- Norbert Preining <preining@debian.org>  Mon, 09 Mar 2009 15:14:20 +0100
+ -- Norbert Preining <preining@debian.org>  Mon, 09 Mar 2009 15:19:45 +0100
 
 texinfo (4.11.dfsg.1-4) unstable; urgency=low
 

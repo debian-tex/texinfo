@@ -82,7 +82,9 @@ binary-arch: install
 	dh_testdir
 	dh_testroot
 	dh_installdocs -A AUTHORS INTRODUCTION README NEWS TODO
-	dh_installdocs -p texinfo debian/README.cyrtexinfo
+	dh_installdocs -p texinfo debian/README.cyrtexinfo \
+		doc/refcard/txirefcard*.pdf
+		
 	dh_installmenu
 	dh_installchangelogs ChangeLog
 ifeq "$(findstring nostrip,$(DEB_BUILD_OPTIONS))" ""

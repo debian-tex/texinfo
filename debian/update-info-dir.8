@@ -1,0 +1,29 @@
+.TH UPDATE-INFO-DIR 8
+.\" NAME should be all caps, SECTION should be 1-8, maybe w/ subsection
+.\" other parms are allowed: see man(7), man(1)
+.SH NAME
+update-info-dir \- (re-)create /usr/share/info/dir from all installed info files
+.SH SYNOPSIS
+.B update-info-dir
+.I "[options]"
+.br
+.SH DESCRIPTION
+This manual page documents briefly the
+.BR update-info-dir
+command.
+This manual page was written for the Debian GNU/Linux distribution
+because the original script was designed for Debian packaging system.
+.PP
+.B update-info-dir [info-directory]
+(re-)creates the index of available documentation in info format
+(the file /usr/share/info/dir) which is usually presented by info browsers
+on startup.
+.SH OPTIONS
+.TP
+.B info-directory
+If an argument is given update the dir file in the directory given, otherwise
+use /usr/share/info.
+.PP
+.SH AUTHOR
+This manual page was written by Norbert Preining <preining@logic.at>,
+for the Debian GNU/Linux system (but may be used by others).

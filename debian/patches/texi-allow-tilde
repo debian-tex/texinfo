@@ -1,0 +1,74 @@
+texi-allow-tilde patch by Karl Berry
+included upstream
+
+    calling texi2dvi /path/with~tilde/in/the/path.texi breaks 
+
+I installed the patch below (modulo documentation, etc.) to support tildes.  
+There's an undocumented -~ option to avoid all this madness in case it's
+totally broken.  Hope none of these literal tildes mess anything up.
+
+More special characters could be supported, but then we'd have to assume
+a matching texinfo.tex (then -~ could come in useful).  Plus, I've
+already spent too long on this for today.
+
+In any case, I advise using texi2dvi's tidy mode when special characters
+are a concern.  It will work with a wider range of characters in the
+directory portion, at least.  Besides being cleaner in general.
+
+---
+ util/texi2dvi |   26 +++++++++++++++++++++-----
+ 1 file changed, 21 insertions(+), 5 deletions(-)
+
+Index: texinfo-4.13a.dfsg.1/util/texi2dvi
+===================================================================
+--- texinfo-4.13a.dfsg.1.orig/util/texi2dvi	2009-03-18 14:40:08.000000000 +0100
++++ texinfo-4.13a.dfsg.1/util/texi2dvi	2009-03-18 14:40:18.000000000 +0100
+@@ -56,6 +56,7 @@
+ # Instead, assign them an empty value.
+ action=compile
+ batch=false     # true for batch mode
++catcode_special=true
+ debug=false
+ escape="\\"
+ expand=         # t for expansion via makeinfo
+@@ -938,12 +939,27 @@
+     # \batchmode does not show terminal output at all, so we don't
+     # want that.  And even in batch mode, TeX insists on having input
+     # from the user.  Close its stdin to make it impossible.
+-    cmd="$cmd </dev/null '${escape}nonstopmode' '${escape}input'"
++    cmd="$cmd </dev/null '${escape}nonstopmode'"
+   fi
+ 
+-  # we'd like to handle arbitrary input file names, such as a~b.tex.
+-  # This isn't a general way to do it :), though it does work, kind of.
+-  # cmd="$cmd '${escape}catcode126=12 \input '"
++  # we'd like to handle arbitrary input file names, especially
++  # foo~bar/a~b.tex, since Debian likes ~ characters.
++  if $catcode_special; then
++    # $normaltilde is just to reduce line length in this source file.
++    # The idea is to define \normaltilde as a catcode other ~ character,
++    # then make the active ~ be equivalent to that, instead of the plain
++    # TeX tie.  Then when the active ~ appears in the filename, it will
++    # be expanded to itself, as far as \input will see.  (This is the
++    # same thing that texinfo.tex does in general, BTW.)
++    normaltilde="${escape}catcode126=12 ${escape}def${escape}normaltilde{~}"
++    cmd="$cmd '$normaltilde${escape}catcode126=13 ${escape}let~\normaltilde '"
++  fi
++  # Other special (non-active) characters could be supported by
++  # resetting their catcodes to other on the command line and changing
++  # texinfo.tex to initialize everything to plain catcodes.  Maybe someday.
++  
++  # append the \input command.
++  cmd="$cmd '${escape}input'"
+ 
+   # TeX's \input does not (easily or reliably) support whitespace
+   # characters or other special characters in file names.  Our intensive
+@@ -958,7 +974,7 @@
+   # harm in making the link.
+   #
+   case $tidy:`func_dirname "$in_input"` in
+-    true:*["$space$tab$newline\"#\$%\\^_{}"]*)
++    true:*["$space$tab$newline\"#\$%\\^_{}~"]*)
+       _run_tex_file_name=`basename "$in_input"`
+       if test ! -f "$_run_tex_file_name"; then
+ 	# It might not be a file, clear it.

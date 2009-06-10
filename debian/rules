@@ -17,6 +17,7 @@ CFLAGS += -O2
 endif
 
 texinfo := $(CURDIR)/debian/texinfo
+ii := $(CURDIR)/debian/install-info
 tmpdir := $(CURDIR)/debian/tmp
 
 build: build-stamp
@@ -65,11 +66,16 @@ install-stamp: build-stamp
 	#cp debian/texinfo.tex $(texinfo)/usr/share/texmf/tex/texinfo/texinfo.tex
 	cp debian/texi2pdf.man $(texinfo)/usr/share/man/man1/texi2pdf.1
 	dh_link
-	mv $(texinfo)/usr/bin/install-info $(texinfo)/usr/bin/ginstall-info
+	mv $(ii)/usr/bin/install-info $(ii)/usr/bin/ginstall-info
 	sed -e "s/install-info/g&/g" \
-		< $(texinfo)/usr/share/man/man1/install-info.1 \
-		> $(texinfo)/usr/share/man/man1/ginstall-info.1
-	rm -f $(texinfo)/usr/share/man/man1/install-info.1
+		< $(ii)/usr/share/man/man1/install-info.1 \
+		> $(ii)/usr/share/man/man1/ginstall-info.1
+	rm -f $(ii)/usr/share/man/man1/install-info.1
+	install -m 0755 debian/install-info.sh $(ii)/usr/bin/install-info
+	install -m 0644 debian/install-info.1 $(ii)/usr/share/man/man1/install-info.1
+	install -m 0755 debian/update-info-dir $(ii)/usr/sbin/update-info-dir
+	mkdir -p $(ii)/usr/share/man/man8
+	install -m 0644 debian/update-info-dir.8 $(ii)/usr/share/man/man8/update-info-dir.8
 	cp debian/conf/50cyrtexinfo.cnf $(texinfo)/etc/texmf/fmt.d
 	echo "50cyrtexinfo" > $(texinfo)/var/lib/tex-common/fmtutil-cnf/texinfo.list
 	touch install-stamp

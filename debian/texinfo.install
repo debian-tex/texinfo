@@ -1,5 +1,4 @@
 usr/bin/makeinfo
-usr/bin/install-info
 usr/bin/texindex
 usr/bin/texi2dvi
 usr/bin/pdftexi2dvi
@@ -29,7 +28,6 @@ usr/share/locale/zh_TW/LC_MESSAGES/texinfo.mo
 usr/share/texinfo/texinfo.dtd
 usr/share/texinfo/texinfo.xsl
 usr/share/texinfo/texinfo.cat
-usr/share/man/man1/install-info.1
 usr/share/man/man1/makeinfo.1
 usr/share/man/man1/texindex.1
 usr/share/man/man1/texi2dvi.1

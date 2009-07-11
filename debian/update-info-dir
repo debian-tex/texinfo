@@ -8,6 +8,16 @@ INFODIR=/usr/share/info
 
 set -e
 
+#
+# since user's environment is taken over into root account when sudo-ing
+# we don't want that one's user LANGUAGE setting changes the messages in
+# the dir file. Unset LANGUAGE and reload /etc/environment to get
+# the system wide settings. See bug #536476
+unset LANGUAGE
+if [ -r /etc/environment ] ; then
+  . /etc/environment
+fi
+
 if [ -n "$1" ] ; then
   INFODIR="$1"
 fi

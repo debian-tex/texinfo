@@ -1,3 +1,12 @@
+texinfo (4.13a.dfsg.1-5) unstable; urgency=low
+
+  * UNRELEASED
+  * update-info-dir: reset $LANGUAGE to the system wide setting in 
+    /etc/environment making sure that the generated dir file does not 
+    contain strings in foreign language (Closes: #536476)
+
+ -- Norbert Preining <preining@debian.org>  Sat, 11 Jul 2009 02:18:10 +0200
+
 texinfo (4.13a.dfsg.1-4) unstable; urgency=low
 
   * upload to unstable

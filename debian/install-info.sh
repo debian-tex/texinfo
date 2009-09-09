@@ -18,7 +18,7 @@ else
   # since we have trigger support and people should rebuild their
   # package with new debhelper which does not add calls to install-info
   echo "Ignoring install-info called from maintainer script" >&2
-  echo "The package $DPKG_MAINTSCRIPT_PACKAGE should be rebuild with new debhelper to get trigger support" >&2
+  echo "The package $DPKG_MAINTSCRIPT_PACKAGE should be rebuilt with new debhelper to get trigger support" >&2
 fi
 
 

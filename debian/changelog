@@ -1,12 +1,14 @@
 texinfo (4.13a.dfsg.1-5) unstable; urgency=low
 
-  * UNRELEASED
   * update-info-dir: reset $LANGUAGE to the system wide setting in 
     /etc/environment making sure that the generated dir file does not 
     contain strings in foreign language (Closes: #536476)
   * corrected typo in install-info.sh (Closes: #545783)
+  * install-info.sh: do not warn on --remove and --remove-exactely, we
+    might be running from old maintainer scripts (Closes: #546165)
+    (Patch thanks to Sven Joachim)
 
- -- Norbert Preining <preining@debian.org>  Sat, 11 Jul 2009 02:18:10 +0200
+ -- Norbert Preining <preining@debian.org>  Thu, 24 Sep 2009 01:49:56 +0200
 
 texinfo (4.13a.dfsg.1-4) unstable; urgency=low
 

@@ -17,6 +17,9 @@ unset LANGUAGE
 if [ -r /etc/environment ] ; then
   . /etc/environment
 fi
+if [ -r /etc/default/locale ] ; then
+  . /etc/default/locale
+fi
 
 if [ -n "$1" ] ; then
   INFODIR="$1"

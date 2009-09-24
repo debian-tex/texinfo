@@ -1,3 +1,11 @@
+texinfo (4.13a.dfsg.1-6) unstable; urgency=low
+
+  * UNRELEASED
+  * load not only /etc/environment, but also /etc/default/locale for
+    correct setup of languages (Closes: #536476)
+
+ -- Norbert Preining <preining@debian.org>  Fri, 25 Sep 2009 00:29:15 +0200
+
 texinfo (4.13a.dfsg.1-5) unstable; urgency=low
 
   * update-info-dir: reset $LANGUAGE to the system wide setting in 

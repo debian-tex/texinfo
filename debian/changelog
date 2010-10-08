@@ -3,8 +3,10 @@ texinfo (4.13a.dfsg.1-6) unstable; urgency=low
   * UNRELEASED
   * load not only /etc/environment, but also /etc/default/locale for
     correct setup of languages (Closes: #536476)
+  * fix a segfault due to unchecked node computation in nodes.c, patch
+    included upstream (Closes: #598932)
 
- -- Norbert Preining <preining@debian.org>  Fri, 25 Sep 2009 00:29:15 +0200
+ -- Norbert Preining <preining@debian.org>  Fri, 08 Oct 2010 10:20:26 +0900
 
 texinfo (4.13a.dfsg.1-5) unstable; urgency=low
 
@@ -750,7 +752,7 @@ Texinfo 3.1 Debian 2 - iwj
 Texinfo 3.1 Debian 1 - iwj
 Initial release, completely untested.
 
-# vim:set termencoding=iso8859-15 encoding=utf-8 fileencoding=utf-8: #
+# vim:set fileencoding=utf-8: #
 Local Variables:
 coding: utf-8
 mode: debian-changelog

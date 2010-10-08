@@ -20,22 +20,3 @@ Index: texinfo-4.13a.dfsg.1/info/nodes.c
            NODE *node = xmalloc (sizeof (NODE));
            node->filename    = subfile->fullpath;
            node->parent      = NULL;
-@@ -997,10 +1000,16 @@
- 
-               min = max = DEFAULT_INFO_FUDGE;
- 
--              if (tag->nodestart < DEFAULT_INFO_FUDGE)
-+              if (strict_node_location_p)
-+                {
-+                  min = 0;
-+                  max = 2;
-+                }
-+
-+              if (tag->nodestart < min)
-                 min = tag->nodestart;
- 
--              if (DEFAULT_INFO_FUDGE >
-+              if (max >
-                   (subfile->filesize - tag->nodestart))
-                 max = subfile->filesize - tag->nodestart;
- 

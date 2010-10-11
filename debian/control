@@ -31,7 +31,6 @@ Priority: important
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, install-info
 Provides: info-browser
-Breaks: xemacs-support
 Suggests: texinfo-doc-nonfree
 Replaces: texinfo (<< 4.7-2)
 Description: Standalone GNU Info documentation browser

@@ -1,19 +1,24 @@
-texinfo (4.13a.dfsg.1-6) unstable; urgency=low
+texinfo (4.13a.dfsg.1-7_UNRELEASED) unstable; urgency=low
 
-  * load not only /etc/environment, but also /etc/default/locale for
-    correct setup of languages (Closes: #536476)
-  * fix a segfault due to unchecked node computation in nodes.c, patch
-    included upstream (Closes: #598932)
   * add option -h/--help to update-info-dir, and fix the man page according
     to it. Patch by Jari Aalto <jari.aalto@cante.net> (Closes: #541468)
-  * create /usr/share/info if not present (install-info.dirs), so that
-    Emdebian installation does not break (Closes: #599686)
   * fix lintian errors (missing misc:Depends deps in all packages)
   * remove conflicts on xemacs-support, it does not exist
   * bump standards version to 3.9.1: change conflicts to breaks as we
     are only moving files around
 
- -- Norbert Preining <preining@debian.org>  Mon, 11 Oct 2010 16:26:10 +0900
+ -- Norbert Preining <preining@debian.org>  Wen, 27 Oct 2010 09:00:00 +0900
+
+texinfo (4.13a.dfsg.1-6) unstable; urgency=low
+
+  * update-info-dir: load not only /etc/environment, but also 
+    /etc/default/locale for correct setup of languages (Closes: #536476)
+  * info: fix a segfault due to unchecked node computation in nodes.c, patch
+    included upstream (Closes: #598932)
+  * create /usr/share/info if not present (install-info.dirs), so that
+    Emdebian installation does not break (Closes: #599686)
+
+ -- Norbert Preining <preining@debian.org>  Thu, 14 Oct 2010 16:33:25 +0900
 
 texinfo (4.13a.dfsg.1-5) unstable; urgency=low
 

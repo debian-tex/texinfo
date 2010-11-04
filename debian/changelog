@@ -1,5 +1,6 @@
 texinfo (4.13a.dfsg.1-7_UNRELEASED) unstable; urgency=low
 
+  * "grep [A-z]" does not work in non-C locale (Closes: #584191)
   * add option -h/--help to update-info-dir, and fix the man page according
     to it. Patch by Jari Aalto <jari.aalto@cante.net> (Closes: #541468)
   * fix lintian errors (missing misc:Depends deps in all packages)

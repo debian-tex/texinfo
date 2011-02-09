@@ -7,6 +7,7 @@ texinfo (4.13a.dfsg.1-7_UNRELEASED) unstable; urgency=low
   * remove conflicts on xemacs-support, it does not exist
   * bump standards version to 3.9.1: change conflicts to breaks as we
     are only moving files around (Closes: #611104)
+  * info dumps core if # of window rows drops below 6 (Closes: #611151)
 
  -- Norbert Preining <preining@debian.org>  Wed, 26 Jan 2011 00:35:14 +0900
 

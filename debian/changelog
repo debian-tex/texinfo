@@ -11,6 +11,8 @@ texinfo (4.13a.dfsg.1-7_UNRELEASED) unstable; urgency=low
   * d/rules: depend build on $(QUILT_STAMPFN) instead of patch, this fixes
     an rare FTBFS caused by the build target having been run twice
     (Closes: #612502)
+  * Add texi2dvi-local-fallback-syntax.diff to make texinfo run on dash
+    (Closes: #619786)
 
  -- Norbert Preining <preining@debian.org>  Wed, 26 Jan 2011 00:35:14 +0900
 

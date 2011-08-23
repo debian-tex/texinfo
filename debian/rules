@@ -20,7 +20,10 @@ texinfo := $(CURDIR)/debian/texinfo
 ii := $(CURDIR)/debian/install-info
 tmpdir := $(CURDIR)/debian/tmp
 
-build: build-stamp
+build: build-arch build-indep
+build-arch: build-stamp
+build-indep: build-stamp
+
 build-stamp: $(QUILT_STAMPFN)
 	# some man scripts have been touch by the patches, so the builder
 	# will try to rebuild the man page from texi2dvi but that

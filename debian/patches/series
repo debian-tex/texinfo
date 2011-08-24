@@ -1,3 +1,6 @@
+# applied to upstream as of 4.13a
+# fix-direntry
+# fix-texi2dvi-bashism
 warn_missing_tex
 replace_egrep_fgrep_sigs
 info_universal_argument
@@ -5,4 +8,6 @@ dont_build_info
 texi-allow-tilde
 check-nodes-boundaries
 info_core_dump_small_window
+minor-buffer-size-fix
 texi2dvi-local-fallback-syntax.diff
+texi2dvi_non-C_locale

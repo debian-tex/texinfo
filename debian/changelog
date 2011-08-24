@@ -1,3 +1,11 @@
+texinfo (4.13a.dfsg.1-8_UNRELEASED) unstable; urgency=low
+
+  * Actually apply patch texi2dvi_non-C_locale, really (Closes: #584191)
+  * debian/patches/minor-buffer-size-fix: increase stack buffer size
+    for sprintf of numeric values (Closes: #639114).
+
+ -- Hilmar Preusse <hille42@web.de>  Wed, 24 Aug 2011 16:22:51 +0200
+
 texinfo (4.13a.dfsg.1-7) unstable; urgency=low
 
   * "grep [A-z]" does not work in non-C locale (Closes: #584191)

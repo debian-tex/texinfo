@@ -9,12 +9,7 @@ include /usr/share/quilt/quilt.make
 
 SAVEDGMO=po/nl.gmo po/ro.gmo po/tr.gmo po/de.gmo
 
-CFLAGS := -g -Wall
-ifneq "$(findstring noopt,$(DEB_BUILD_OPTIONS))" ""
-CFLAGS += -O0
-else
-CFLAGS += -O2
-endif
+DEB_CFLAGS_MAINT_APPEND=-Wall
 
 texinfo := $(CURDIR)/debian/texinfo
 ii := $(CURDIR)/debian/install-info
@@ -32,7 +27,7 @@ build-stamp: $(QUILT_STAMPFN)
 	touch doc/texi2pdf.1
 	touch doc/pdftexi2dvi.1
 	dh_testdir
-	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr \
+	./configure --prefix=/usr $(shell dpkg-buildflags --export=configure) \
           --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man'
 	touch po/texinfo.pot
 	$(MAKE)

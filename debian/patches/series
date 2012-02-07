@@ -11,3 +11,4 @@ info_core_dump_small_window
 minor-buffer-size-fix
 texi2dvi-local-fallback-syntax.diff
 texi2dvi_non-C_locale
+texi-allow-shell-escape.diff

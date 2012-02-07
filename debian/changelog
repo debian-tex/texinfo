@@ -6,6 +6,8 @@ texinfo (4.13a.dfsg.1-8) unstable; urgency=low
     for sprintf of numeric values (Closes: #639114).
   * Enabled hardened build flags, thanks to Moritz Mühlenhoff
     (Closes: #656659)
+  * Allow texi2dvi to pass the --shell-escape option to TeX
+    (already applied to upstream) (Closes: #658983)
 
  -- Norbert Preining <preining@debian.org>  Wed, 24 Aug 2011 23:56:17 +0900
 

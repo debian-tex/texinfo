@@ -1,0 +1,37 @@
+diff -urN texinfo-4.13a.dfsg.1_svn/util/texi2dvi texinfo-4.13a.dfsg.1/util/texi2dvi
+--- texinfo-4.13a.dfsg.1_svn/util/texi2dvi	2012-02-07 13:45:49.000000000 +0100
++++ texinfo-4.13a.dfsg.1/util/texi2dvi	2012-02-07 13:47:53.000000000 +0100
+@@ -69,6 +69,7 @@
+ recode=false
+ set_language=
+ src_specials=
++shell_escape=
+ textra=         # Extra TeX commands to insert in the input file.
+ txiprereq=19990129 # minimum texinfo.tex version with macro expansion
+ verb=false      # true for verbose mode
+@@ -331,6 +332,7 @@
+   -p, --pdf                  use pdftex or pdflatex for processing
+   -r, --recode               call recode before TeX to translate input
+       --recode-from=ENC      recode from ENC to the @documentencoding
++      --shell-escape         pass --shell-escape to TeX
+       --src-specials         pass --src-specials to TeX
+   -t, --command=CMD          insert CMD in copy of input file
+    or --texinfo=CMD          multiple values accumulate
+@@ -936,6 +938,9 @@
+   # source, given a sufficiently smart editor), if specifed.
+   test -n "$src_specials" && cmd="$cmd $src_specials"
+ 
++  # Tell TeX to allow running external executables
++  test -n "$shell_escape" && cmd="$cmd $shell_escape"
++
+   # Tell TeX to be batch if requested.
+   if $batch; then
+     # \batchmode does not show terminal output at all, so we don't
+@@ -1563,6 +1568,7 @@
+     -r | --recode) recode=true;;
+     --recode-from) shift; recode=true; recode_from="$1";;
+     --src-specials) src_specials=--src-specials;;
++    --shell-escape) shell_escape=--shell-escape;;
+     -t | --texinfo | --command ) shift; textra="$textra\\
+ "`echo "$1" | sed 's/\\\\/\\\\\\\\/g'`;;
+     --text) out_lang=text;;

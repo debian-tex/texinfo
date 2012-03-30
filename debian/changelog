@@ -1,3 +1,9 @@
+texinfo (4.13a.dfsg.1-10) unstable; urgency=low
+
+  * UNRELEASED
+
+ -- Norbert Preining <preining@debian.org>  Fri, 30 Mar 2012 09:40:21 +0900
+
 texinfo (4.13a.dfsg.1-9) unstable; urgency=low
 
   [ Norbert Preining ]

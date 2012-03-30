@@ -4,7 +4,7 @@ Priority: standard
 Maintainer: Debian TeX maintainers <debian-tex-maint@lists.debian.org>
 Uploaders: Norbert Preining <preining@debian.org>, Frank Küster <frank@debian.org>
 Build-Depends: debhelper (>= 5), quilt, libncurses5-dev | libncurses-dev, gettext
-Standards-Version: 3.9.2
+Standards-Version: 3.9.3
 Vcs-Svn: svn://svn.debian.org/svn/debian-tex/texinfo/trunk
 Vcs-Browser: http://svn.debian.org/wsvn/debian-tex/texinfo/trunk/
 

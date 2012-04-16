@@ -1,8 +1,8 @@
 texinfo (4.13a.dfsg.1-10) unstable; urgency=low
 
-  * UNRELEASED
+  * revert hardening - it breaks info (Closes: #669056)
 
- -- Norbert Preining <preining@debian.org>  Fri, 30 Mar 2012 09:40:21 +0900
+ -- Norbert Preining <preining@debian.org>  Tue, 17 Apr 2012 08:19:26 +0900
 
 texinfo (4.13a.dfsg.1-9) unstable; urgency=low
 

@@ -17,6 +17,8 @@ CFLAGS += -O2
 endif
 # hardening: but makes info unusable
 #DEB_CFLAGS_MAINT_APPEND=-Wall
+# needed for correct building of new texinfo
+#DEB_CFLAGS_MAINT_STRIP=-Werror=format-security
 
 texinfo := $(CURDIR)/debian/texinfo
 ii := $(CURDIR)/debian/install-info

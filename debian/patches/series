@@ -12,3 +12,4 @@ minor-buffer-size-fix
 texi2dvi-local-fallback-syntax.diff
 texi2dvi_non-C_locale
 texi-allow-shell-escape.diff
+int2size_t-fix-page-truncation

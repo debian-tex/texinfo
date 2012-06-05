@@ -1,0 +1,29 @@
+--- a/info/window.c
++++ b/info/window.c
+@@ -1587,7 +1587,7 @@
+       const char *carried_over_ptr;
+       size_t carried_over_len, carried_over_count;
+       const char *cur_ptr = mbi_cur_ptr (iter);
+-      int cur_len = mb_len (mbi_cur (iter));
++      size_t cur_len = mb_len (mbi_cur (iter));
+       int replen;
+       int delim = 0;
+       int rc;
+@@ -1760,7 +1760,7 @@
+        mbi_advance (iter))
+     {
+       const char *cur_ptr = mbi_cur_ptr (iter);
+-      int cur_len = mb_len (mbi_cur (iter));
++      size_t cur_len = mb_len (mbi_cur (iter));
+ 
+       if (cur_len == 1)
+ 	{
+@@ -1858,7 +1858,7 @@
+        mbi_advance (iter))
+     {
+       const char *cur_ptr = mbi_cur_ptr (iter);
+-      int cur_len = mb_len (mbi_cur (iter));
++      size_t cur_len = mb_len (mbi_cur (iter));
+       int replen;
+ 
+       if (cur_ptr >= endp)

@@ -1,3 +1,12 @@
+texinfo (4.13a.dfsg.1-11) UNRELEASED; urgency=low
+
+  * debian/patches/int2size_t-fix-page-truncation: Cherrypick upstream
+    variable size fix which manifested as info pages being truncated
+    on a tab character. (LP #394808)
+    (taken from the Ubuntu packages, thanks!)
+
+ -- Norbert Preining <preining@debian.org>  Tue, 05 Jun 2012 22:30:20 +0900
+
 texinfo (4.13a.dfsg.1-10) unstable; urgency=low
 
   * revert hardening - it breaks info (Closes: #669056)

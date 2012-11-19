@@ -25,18 +25,11 @@ build-arch: build-stamp
 build-indep: build-stamp
 
 build-stamp:
-	# some man scripts have been touch by the patches, so the builder
-	# will try to rebuild the man page from texi2dvi but that
-	# spits out only a warning that no tex system is installed
-	touch doc/texi2dvi.1
-	touch doc/texi2pdf.1
-	touch doc/pdftexi2dvi.1
 	dh_testdir
 	# hardening call, but makes info unusable
 	# ./configure --prefix=/usr $(shell dpkg-buildflags --export=configure) \
 	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr \
           --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man'
-	touch po/texinfo.pot
 	$(MAKE)
 	touch $@
 
@@ -44,8 +37,6 @@ clean:
 	dh_testdir
 	dh_testroot
 	[ ! -f Makefile ] || $(MAKE) distclean
-	# remove binary gmo files
-	rm -f po/*.gmo
 	dh_clean install-stamp build-stamp intl/libintl.h config.log
 
 install: install-stamp
@@ -59,17 +50,13 @@ install-stamp: build-stamp
 	$(MAKE) install install-tex prefix=$(tmpdir)/usr \
                                     TEXMF=$(tmpdir)/usr/share/texmf
 	find $(tmpdir) -type f -name dir | xargs rm -f
-	# pdfcolor and epsf.tex are in tetex and texlive
-	rm -rf $(tmpdir)/usr/share/texmf/tex/plain
+	# epsf.tex is in texlive
 	rm -rf $(tmpdir)/usr/share/texmf/tex/generic
-	rm -rf $(tmpdir)/usr/share/texmf/pdftex/plain/misc/pdfcolor.tex
-	#mkdir -p $(tmpdir)/usr/share/texmf/tex/texinfo/base
-	#mv $(tmpdir)/usr/share/texmf/tex/texinfo/*.tex $(tmpdir)/usr/share/texmf/tex/texinfo/base
+	# remove perl libraries that we depend on in debian/control
+	rm -rf $(tmpdir)/usr/share/texinfo/lib/Text-Unidecode
+	rm -rf $(tmpdir)/usr/share/texinfo/lib/libintl-perl
 	dh_install --list-missing --sourcedir=debian/tmp -X share/info
 	#
-	# install updated texinfo.tex
-	#cp debian/texinfo.tex $(texinfo)/usr/share/texmf/tex/texinfo/texinfo.tex
-	cp debian/texi2pdf.man $(texinfo)/usr/share/man/man1/texi2pdf.1
 	dh_link
 	mv $(ii)/usr/bin/install-info $(ii)/usr/bin/ginstall-info
 	sed -e "s/install-info/g&/g" \
@@ -92,8 +79,7 @@ binary-arch: DH_OPTIONS=-a
 binary-arch: install
 	dh_testdir
 	dh_testroot
-	dh_installdocs -A AUTHORS INTRODUCTION README NEWS TODO \
-		debian/README.source
+	dh_installdocs -A AUTHORS README NEWS TODO
 	dh_installdocs -p texinfo debian/README.cyrtexinfo \
 		doc/refcard/txirefcard*.pdf
 		

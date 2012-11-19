@@ -1,7 +1,8 @@
-$Id: INSTALL,v 1.8 2007/07/12 23:18:34 karl Exp $
+$Id: INSTALL,v 1.10 2011/10/16 23:14:08 karl Exp $
+INSTALL file for texinfo.
 
-     Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-     2001, 2002, 2003, 2004, 2005, 2006, 2007
+     Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
+     2001, 2002, 2003, 2004, 2005, 2006, 2007, 2010, 2011
      Free Software Foundation, Inc.
 
      Copying and distribution of this file, with or without modification,
@@ -20,16 +21,11 @@ Installation notes specific to Texinfo:
     make TEXMF=/your/texmf install-tex
   texinfo.tex is installed in ${TEXMF}/tex/texinfo/texinfo.tex, etc.
 
-* On the other hand, if you're maintaining a TeX distribution, you don't
-  want your users to see the installation warnings, because you already
-  have the files installed.  (And you're keeping them up to date, right?)
-  In this case, run configure --disable-install-warnings, or set
+* On the other hand, if you're maintaining a TeX distribution and
+  keeping the files up to date yourself, you may not want to see the
+  installation warnings.
+  For that, run configure --disable-install-warnings, or set
   enable_install_warnings=no in the environment.
-
-* On MacOSX, if configure fails with the error:
-	ac_cv_build='config.sub: invalid option -apple-darwin7.2.0
-this is probably because your uname -p is returning "unknown".  Use
-/usr/bin/uname instead.
 
 * For instructions on compiling this distribution with DJGPP tools
   for MS-DOS and MS-Windows, see the file djgpp/README.
@@ -43,7 +39,3 @@ this is probably because your uname -p is returning "unknown".  Use
   @afourpaper by default.  See the `Preparing for TeX' node in
   texinfo.txi for more details.  You don't have to create the file if
   you have nothing to put in it.
-
-* If your info files are not in $prefix/info, you may wish to add a line
-#define DEFAULT_INFOPATH "/mydir1:/mydir2:..."
-  to config.h after running configure.

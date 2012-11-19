@@ -1,0 +1,26 @@
+use strict;
+
+use vars qw($element_file_name);
+
+$element_file_name = \&test_misc_file_name;
+
+sub test_misc_file_name($$$)
+{
+  my $converter = shift;
+  my $element = shift;
+  my $filename = shift;
+
+  if ($converter->element_is_top($element)
+      or ($converter->{'elements'}->[2] 
+          and $converter->{'elements'}->[2] eq $element)) {
+    my $extension = $converter->get_conf('EXTENSION');
+    my $prefix = $converter->{'document_name'};
+    $filename = "${prefix}_abt"
+      . ((defined($extension)) ? ".$extension" : '');
+  }
+  return $filename;
+}
+
+set_from_init_file('DO_ABOUT', 1);
+
+1;

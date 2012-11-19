@@ -1,0 +1,9 @@
+# List of source files which contain translatable strings.
+
+tp/Texinfo/Common.pm
+tp/Texinfo/Parser.pm
+tp/Texinfo/Convert/Converter.pm
+tp/Texinfo/Convert/DocBook.pm
+tp/Texinfo/Convert/Info.pm
+tp/Texinfo/Convert/Plaintext.pm
+tp/Texinfo/Convert/HTML.pm

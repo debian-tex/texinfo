@@ -1,8 +1,8 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.17 2008/09/13 10:01:31 gray Exp $
+   $Id: window.c,v 1.25 2012/07/06 23:55:32 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008
-   Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008,
+   2011, 2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -923,7 +923,13 @@ window_line_of_point (WINDOW *window)
         break;
     }
 
-  return i - 1;
+  /* Something is wrong with the above logic as it allows a negative
+     index to be returned for small windows.  Until someone figures it
+     out, at least don&#39;t core dump. */
+  if (i > 0)
+    return i - 1;
+  else
+    return 0;
 }
 
 /* Get and return the goal column for this window. */
@@ -1118,7 +1124,7 @@ window_set_state (WINDOW *window, SEARCH_STATE *state)
 static NODE *echo_area_node = NULL;
 
 /* Make the node of the_echo_area be an empty one. */
-static void
+void
 free_echo_area (void)
 {
   if (echo_area_node)
@@ -1140,17 +1146,27 @@ window_clear_echo_area (void)
   display_update_one_window (the_echo_area);
 }
 
+void
+vwindow_message_in_echo_area (const char *format, va_list ap)
+{
+  free_echo_area ();
+  echo_area_node = build_message_node (format, ap);
+  window_set_node_of_window (the_echo_area, echo_area_node);
+  display_update_one_window (the_echo_area);
+}
+
 /* Make a message appear in the echo area, built from FORMAT, ARG1 and ARG2.
    The arguments are treated similar to printf () arguments, but not all of
    printf () hair is present.  The message appears immediately.  If there was
    already a message appearing in the echo area, it is removed. */
 void
-window_message_in_echo_area (const char *format, void *arg1, void *arg2)
+window_message_in_echo_area (const char *format, ...)
 {
-  free_echo_area ();
-  echo_area_node = build_message_node (format, arg1, arg2);
-  window_set_node_of_window (the_echo_area, echo_area_node);
-  display_update_one_window (the_echo_area);
+  va_list ap;
+  
+  va_start (ap, format);
+  vwindow_message_in_echo_area (format, ap);
+  va_end (ap);
 }
 
 /* Place a temporary message in the echo area built from FORMAT, ARG1
@@ -1162,8 +1178,10 @@ static int old_echo_area_nodes_index = 0;
 static int old_echo_area_nodes_slots = 0;
 
 void
-message_in_echo_area (const char *format, void *arg1, void *arg2)
+message_in_echo_area (const char *format, ...)
 {
+  va_list ap;
+  
   if (echo_area_node)
     {
       add_pointer_to_array (echo_area_node, old_echo_area_nodes_index,
@@ -1171,7 +1189,9 @@ message_in_echo_area (const char *format, void *arg1, void *arg2)
                             4, NODE *);
     }
   echo_area_node = NULL;
-  window_message_in_echo_area (format, arg1, arg2);
+  va_start (ap, format);
+  vwindow_message_in_echo_area (format, ap);
+  va_end (ap);
 }
 
 void
@@ -1187,192 +1207,44 @@ unmessage_in_echo_area (void)
 }
 
 /* A place to build a message. */
-static char *message_buffer = NULL;
-static int message_buffer_index = 0;
-static int message_buffer_size = 0;
-
-/* Ensure that there is enough space to stuff LENGTH characters into
-   MESSAGE_BUFFER. */
-static void
-message_buffer_resize (int length)
-{
-  if (!message_buffer)
-    {
-      message_buffer_size = length + 1;
-      message_buffer = xmalloc (message_buffer_size);
-      message_buffer_index = 0;
-    }
-
-  while (message_buffer_size <= message_buffer_index + length)
-    message_buffer = (char *)
-      xrealloc (message_buffer,
-                message_buffer_size += 100 + (2 * length));
-}
+static struct text_buffer message_buffer;
 
 /* Format MESSAGE_BUFFER with the results of printing FORMAT with ARG1 and
    ARG2. */
 static void
-build_message_buffer (const char *format, void *arg1, void *arg2, void *arg3)
+build_message_buffer (const char *format, va_list ap)
 {
-  register int i, len;
-  void *args[3];
-  int arg_index = 0;
-
-  args[0] = arg1;
-  args[1] = arg2;
-  args[2] = arg3;
-
-  len = strlen (format);
-
-  message_buffer_resize (len);
-
-  for (i = 0; format[i]; i++)
-    {
-      if (format[i] != '%')
-        {
-          message_buffer[message_buffer_index++] = format[i];
-          len--;
-        }
-      else
-        {
-          char c;
-          const char *fmt_start = format + i;
-          char *fmt;
-          int fmt_len, formatted_len;
-	  int paramed = 0;
-
-	format_again:
-          i++;
-          while (format[i] && strchr ("-. +0123456789", format[i]))
-            i++;
-          c = format[i];
-
-          if (c == '\0')
-            abort ();
-
-	  if (c == '$') {
-	    /* position parameter parameter */
-	    /* better to use bprintf from bfox's metahtml? */
-	    arg_index = atoi(fmt_start + 1) - 1;
-	    if (arg_index < 0)
-	      arg_index = 0;
-	    if (arg_index >= 2)
-	      arg_index = 1;
-	    paramed = 1;
-	    goto format_again;
-	  }
-
-          fmt_len = format + i - fmt_start + 1;
-          fmt = xmalloc (fmt_len + 1);
-          strncpy (fmt, fmt_start, fmt_len);
-          fmt[fmt_len] = '\0';
-
-	  if (paramed) {
-	    /* removed positioned parameter */
-	    char *p;
-	    for (p = fmt + 1; *p && *p != '$'; p++) {
-	      ;
-	    }
-	    strcpy(fmt + 1, p + 1);
-	  }
-
-          /* If we have "%-98s", maybe 98 calls for a longer string.  */
-          if (fmt_len > 2)
-            {
-              int j;
-
-              for (j = fmt_len - 2; j >= 0; j--)
-                if (isdigit (fmt[j]) || fmt[j] == '$')
-                  break;
-
-              formatted_len = atoi (fmt + j);
-            }
-          else
-            formatted_len = c == 's' ? 0 : 1; /* %s can produce empty string */
-
-          switch (c)
-            {
-            case '%':           /* Insert a percent sign. */
-              message_buffer_resize (len + formatted_len);
-              sprintf
-                (message_buffer + message_buffer_index, fmt, "%");
-              message_buffer_index += formatted_len;
-              break;
-
-            case 's':           /* Insert the current arg as a string. */
-              {
-                char *string;
-                int string_len;
-
-                string = (char *)args[arg_index++];
-                string_len = strlen (string);
-
-                if (formatted_len > string_len)
-                  string_len = formatted_len;
-                message_buffer_resize (len + string_len);
-                sprintf
-                  (message_buffer + message_buffer_index, fmt, string);
-                message_buffer_index += string_len;
-              }
-              break;
-
-            case 'd':           /* Insert the current arg as an integer. */
-              {
-                long long_val;
-                int integer;
-
-                long_val = (long)args[arg_index++];
-                integer = (int)long_val;
-
-                message_buffer_resize (len + formatted_len > 32
-                                       ? formatted_len : 32);
-                sprintf
-                  (message_buffer + message_buffer_index, fmt, integer);
-                message_buffer_index = strlen (message_buffer);
-              }
-              break;
-
-            case 'c':           /* Insert the current arg as a character. */
-              {
-                long long_val;
-                int character;
-
-                long_val = (long)args[arg_index++];
-                character = (int)long_val;
-
-                message_buffer_resize (len + formatted_len);
-                sprintf
-                  (message_buffer + message_buffer_index, fmt, character);
-                message_buffer_index += formatted_len;
-              }
-              break;
-
-            default:
-              abort ();
-            }
-          free (fmt);
-        }
-    }
-  message_buffer[message_buffer_index] = '\0';
+  text_buffer_vprintf (&message_buffer, format, ap);
 }
 
 /* Build a new node which has FORMAT printed with ARG1 and ARG2 as the
    contents. */
 NODE *
-build_message_node (const char *format, void *arg1, void *arg2)
+build_message_node (const char *format, va_list ap)
 {
   NODE *node;
 
-  message_buffer_index = 0;
-  build_message_buffer (format, arg1, arg2, 0);
+  initialize_message_buffer ();
+  build_message_buffer (format, ap);
 
   node = message_buffer_to_node ();
   return node;
 }
 
-/* Convert the contents of the message buffer to a node. */
 NODE *
-message_buffer_to_node (void)
+format_message_node (const char *format, ...)
+{
+  NODE *node;
+  va_list ap;
+  
+  va_start (ap, format);
+  node = build_message_node (format, ap);
+  va_end (ap);
+  return node;
+}
+
+NODE *
+string_to_node (char *contents)
 {
   NODE *node;
 
@@ -1384,9 +1256,28 @@ message_buffer_to_node (void)
   node->display_pos =0;
 
   /* Make sure that this buffer ends with a newline. */
-  node->nodelen = 1 + strlen (message_buffer);
+  node->nodelen = 1 + strlen (contents);
+  node->contents = contents;
+  return node;
+}
+
+/* Convert the contents of the message buffer to a node. */
+NODE *
+message_buffer_to_node (void)
+{
+  NODE *node;
+
+  node = xzalloc (sizeof (NODE));
+  node->filename = NULL;
+  node->parent = NULL;
+  node->nodename = NULL;
+  node->flags = 0;
+  node->display_pos =0;
+
+  /* Make sure that this buffer ends with a newline. */
+  node->nodelen = 1 + strlen (message_buffer.base);
   node->contents = xmalloc (1 + node->nodelen);
-  strcpy (node->contents, message_buffer);
+  strcpy (node->contents, message_buffer.base);
   node->contents[node->nodelen - 1] = '\n';
   node->contents[node->nodelen] = '\0';
   return node;
@@ -1396,14 +1287,19 @@ message_buffer_to_node (void)
 void
 initialize_message_buffer (void)
 {
-  message_buffer_index = 0;
+  message_buffer.off = 0;
 }
 
-/* Print FORMAT with ARG1,2 to the end of the current message buffer. */
+/* Print supplied arguments using FORMAT to the end of the current message
+   buffer. */
 void
-printf_to_message_buffer (const char *format, void *arg1, void *arg2, void *arg3)
+printf_to_message_buffer (const char *format, ...)
 {
-  build_message_buffer (format, arg1, arg2, arg3);
+  va_list ap;
+
+  va_start (ap, format);
+  build_message_buffer (format, ap);
+  va_end (ap);
 }
 
 /* Return the current horizontal position of the "cursor" on the most
@@ -1411,14 +1307,15 @@ printf_to_message_buffer (const char *format, void *arg1, void *arg2, void *arg3
 int
 message_buffer_length_this_line (void)
 {
-  register int i;
-
-  if (!message_buffer_index)
+  char *p;
+  
+  if (!message_buffer.base || !*message_buffer.base)
     return 0;
 
-  for (i = message_buffer_index; i && message_buffer[i - 1] != '\n'; i--);
-
-  return string_width (message_buffer + i, 0);
+  p = strrchr (message_buffer.base, '\n');
+  if (!p)
+    p = message_buffer.base;
+  return string_width (p, 0);
 }
 
 /* Pad STRING to COUNT characters by inserting blanks. */
@@ -1579,10 +1476,11 @@ process_node_text (WINDOW *win, char *start,
        mbi_advance (iter))
     {
       const char *carried_over_ptr;
-      size_t carried_over_len, carried_over_count;
+      size_t carried_over_len = 0;
+      size_t carried_over_count = 0;
       const char *cur_ptr = mbi_cur_ptr (iter);
-      int cur_len = mb_len (mbi_cur (iter));
-      int replen;
+      size_t cur_len = mb_len (mbi_cur (iter));
+      size_t replen = 0;
       int delim = 0;
       int rc;
 
@@ -1754,7 +1652,7 @@ clean_manpage (char *manpage)
        mbi_advance (iter))
     {
       const char *cur_ptr = mbi_cur_ptr (iter);
-      int cur_len = mb_len (mbi_cur (iter));
+      size_t cur_len = mb_len (mbi_cur (iter));
 
       if (cur_len == 1)
 	{
@@ -1831,7 +1729,7 @@ window_line_map_init (WINDOW *win)
  */
 int
 window_scan_line (WINDOW *win, int line, int phys,
-		  void (*fun) (void *closure, long cpos, int replen),
+		  void (*fun) (void *closure, long cpos, size_t replen),
 		  void *closure)
 {
   mbi_iterator_t iter;
@@ -1852,8 +1750,8 @@ window_scan_line (WINDOW *win, int line, int phys,
        mbi_advance (iter))
     {
       const char *cur_ptr = mbi_cur_ptr (iter);
-      int cur_len = mb_len (mbi_cur (iter));
-      int replen;
+      size_t cur_len = mb_len (mbi_cur (iter));
+      size_t replen;
 
       if (cur_ptr >= endp)
 	break;
@@ -1903,7 +1801,7 @@ window_scan_line (WINDOW *win, int line, int phys,
 }
 
 static void
-add_line_map (void *closure, long cpos, int replen)
+add_line_map (void *closure, long cpos, size_t replen)
 {
   WINDOW *win = closure;
 

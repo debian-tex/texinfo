@@ -1,0 +1,36 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename node_footnote.info
+
+@node Top
+
+@menu
+* @'a::
+* @^a::
+* chapter::
+* @`a::
+@end menu
+
+@node @'a
+
+node @'a,
+Footnote 1@footnote{foot 1 @'a}.
+
+@node @^a
+
+node @^a,
+Footnote 2@footnote{foot 2 @^a}.
+
+@node chapter
+@chapter chapter
+
+@menu
+* @`a::
+@end menu
+
+@node @`a
+
+node @`a,
+Footnote 3@footnote{foot 3 @`a}.
+
+@bye

@@ -1,7 +1,7 @@
 /* pcterm.c -- How to handle the PC terminal for Info under MS-DOS/MS-Windows.
-   $Id: pcterm.c,v 1.8 2008/06/11 09:55:42 gray Exp $
+   $Id: pcterm.c,v 1.9 2012/06/11 17:54:26 karl Exp $
 
-   Copyright (C) 1998, 1999, 2003, 2004, 2007, 2008
+   Copyright (C) 1998, 1999, 2003, 2004, 2007, 2008, 2012
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -684,7 +684,7 @@ kill (pid_t pid, int sig)
 	    getxkey ();
 #endif
 	  pc_write_chars (interrupted_msg, sizeof (interrupted_msg) - 1);
-	  xexit (1);
+	  exit (EXIT_FAILURE);
 	case SIGUSR1:
 	  /* Simulate SIGTSTP by invoking a subsidiary shell.  */
 	  pc_goto_xy (0, outside_info.screenheight - 1);

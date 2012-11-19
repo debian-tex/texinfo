@@ -1,0 +1,3 @@
+@setfilename included_file.info
+
+In included file.

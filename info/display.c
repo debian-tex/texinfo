@@ -1,5 +1,5 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c,v 1.16 2008/06/11 09:55:41 gray Exp $
+   $Id: display.c,v 1.17 2008/10/05 16:06:18 gray Exp $
 
    Copyright (C) 1993, 1997, 2003, 2004, 2006, 2007, 2008
    Free Software Foundation, Inc.
@@ -272,7 +272,7 @@ display_update_one_window (WINDOW *win)
       if (display_was_interrupted_p)
 	return;
     }
-  
+
   /* We have reached the end of the node or the end of the window.  If it
      is the end of the node, then clear the lines of the window from here
      to the end of the window. */
@@ -311,7 +311,6 @@ display_update_one_window (WINDOW *win)
           strcpy (display[line_index]->text, win->modeline);
           display[line_index]->inverse = 1;
           display[line_index]->textlen = strlen (win->modeline);
-          fflush (stdout);
         }
     }
 

@@ -1,0 +1,41 @@
+\input texinfo @c -*- coding: utf-8; mode: texinfo; -*-
+@documentencoding shift_jis
+@setfilename japanese_shift_jis.info
+@settitle GNU LilyPond -- Manuel d'initiation japanese
+
+@documentlanguage ja
+
+@node Top
+@top GNU LilyPond --- 学習マニュアル
+
+@copying
+Copyright @copyright{} 1999--2008 著作者一同
+
+@emph{The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.}
+
+@emph{以下は英語を話さない人々のための著作権についての注意書きです。しかしながら、
+英語で書かれた注意書きだけが法的に有効です。}
+@end copying
+
+
+これは GNU LilyPond バージョン 
+
+@menu
+* Preface::
+* Introduction::                   LilyPond とは何なのか、なぜ LilyPond を使うのか、どうやって LilyPond を使うのか
+@end menu
+
+@node Preface
+@chapter Preface
+
+それは 1995 年のある日の EJE (Eindhoven Youth Orchestra) のリハーサル中のできごとでした － ある変わり者のバイオリン奏者であるジャンは同じく変わり者のフレンチホルン奏者のハン-ウェンに彼がかかわっている新しい大きなプロジェクトのことを話しました。それは音楽を出版するための自動化されたシステムです (正確には、それは MPP － MusiXTeX のプリプロセッサです)。それを聞いてハン-ウェンはすぐに楽譜からいくつかの部分をプリントアウトしたいと思い、彼はそのためのソフトウェアを探し始め、すぐにその虜になってしまいました。それが MPP の終わりを決定付けました。多くの哲学的考察を含み白熱した email の交換の後、ハン-ウェンは 1996 年に LilyPond の製作を開始しました。この時、ジャンはハン-ウェンの新しいプロジェクトに引きずり込まれました。
+
+
+@node Introduction
+@chapter Introduction
+
+この章では読者に LilyPond とこのドキュメントについての紹介を行います。
+
+@bye

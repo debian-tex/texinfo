@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+<filename file="char_latin1_utf8_in_refs.xml"></filename>
+<preamble>\input texinfo
+
+</preamble><setfilename file="char_latin1_utf8_in_refs.info" spaces=" ">char_latin1_utf8_in_refs.info</setfilename>
+
+<documentencoding encoding="iso-8859-1" spaces=" ">iso-8859-1</documentencoding>
+
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">ä ë ï ö ü ÿ Ä Ë Ï Ö Ü</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
+
+<printindex value="cp" line=" cp"></printindex>
+
+<menu endspaces=" ">
+<menuentry leadingtext="* "><menunode separator="::">ä ë ï ö ü ÿ Ä Ë Ï Ö Ü</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">é</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">à è ù</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">â ê î ô û Â Ê Î Ô Û</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">ç</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
+
+</top>
+<node name="_00e4-_00eb-_00ef-_00f6-_00fc-_00ff-_00c4-_00cb-_00cf-_00d6-_00dc" spaces=" "><nodename>ä ë ï ö ü ÿ Ä Ë Ï Ö Ü</nodename><nodenext automatic="on">é</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>ä ë ï ö ü ÿ Ä Ë Ï Ö Ü</sectiontitle>
+
+</chapter>
+<node name="_00e9" spaces=" "><nodename>é</nodename><nodenext automatic="on">à è ù</nodenext><nodeprev automatic="on">ä ë ï ö ü ÿ Ä Ë Ï Ö Ü</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>é</sectiontitle>
+
+</chapter>
+<node name="_00e0-_00e8-_00f9" spaces=" "><nodename>à è ù</nodename><nodenext automatic="on">â ê î ô û Â Ê Î Ô Û</nodenext><nodeprev automatic="on">é</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>à è ù</sectiontitle>
+
+</chapter>
+<node name="_00e2-_00ea-_00ee-_00f4-_00fb-_00c2-_00ca-_00ce-_00d4-_00db" spaces=" "><nodename>â ê î ô û Â Ê Î Ô Û</nodename><nodenext automatic="on">ç</nodenext><nodeprev automatic="on">à è ù</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>â ê î ô û Â Ê Î Ô Û</sectiontitle>
+
+</chapter>
+<node name="_00e7" spaces=" "><nodename>ç</nodename><nodeprev automatic="on">â ê î ô û Â Ê Î Ô Û</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>ç</sectiontitle>
+
+<para><ref><xrefnodename>ä ë ï ö ü ÿ Ä Ë Ï Ö Ü</xrefnodename></ref>
+<ref><xrefnodename>é</xrefnodename></ref>
+<ref><xrefnodename>à è ù</xrefnodename></ref>
+<ref><xrefnodename>â ê î ô û Â Ê Î Ô Û</xrefnodename></ref>
+<ref><xrefnodename>ç</xrefnodename></ref>
+</para>
+<cindex index="cp" spaces=" "><indexterm index="cp">ä ë ï ö ü ÿ</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">Ä Ë Ï Ö Ü</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">é</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">è</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">â ê î ô û Â Ê Î Ô Û</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">ç</indexterm></cindex>
+
+</chapter>
+<bye></bye>
+</texinfo>

@@ -1,0 +1,360 @@
+\input texinfo @c -*-texinfo-*-
+
+@c value not expanded, by makeinfo nor by texi2html
+@c @setfilename nested_formats.info
+
+@ifset format_itemize
+@set format_command_begin @itemize
+@set format_command itemize
+@end ifset
+
+@ifset format_menu
+@set format_command_begin @menu
+@set format_command menu
+@end ifset
+
+@ifset format_float
+@set format_command_begin @float
+@set format_command float
+@end ifset
+
+@ifset format_table
+@set format_command_begin @table
+@set format_command table
+@end ifset
+
+@ifset format_flushright
+@set format_command_begin @flushright
+@set format_command flushright
+@end ifset
+
+@ifset format_multitable
+@set format_command_begin @multitable
+@set format_command multitable
+@end ifset
+
+@ifset format_cartouche
+@set format_command_begin @cartouche
+@set format_command cartouche
+@end ifset
+
+@ifset format_enumerate
+@set format_command_begin @enumerate
+@set format_command enumerate
+@end ifset
+
+@ifset format_deffn
+@set format_command_begin @deffn fun arg arg1
+@set format_command deffn
+@end ifset
+
+@ifset format_example
+@set format_command_begin @example
+@set format_command example
+@end ifset
+
+@ifset format_quotation
+@set format_command_begin @quotation
+@set format_command quotation
+@end ifset
+
+@ifclear format_command
+@set format_command_begin @group
+@set format_command group
+@end ifclear
+
+@c @setfilename @value{format_command}.info
+
+@node Top
+@top Test nested @value{format_command}
+
+@macro mymacro
+in macro
+
+@value{format_command_begin}
+@end @value{format_command}
+
+@value{format_command_begin}
+in format_command
+@end @value{format_command}
+
+Something
+@value{format_command_begin}
+@end @value{format_command}
+
+Something
+@value{format_command_begin}
+in group
+@end @value{format_command}
+
+Something2
+@value{format_command_begin}
+@end @value{format_command}
+After
+
+Something2
+@value{format_command_begin}
+in group
+@end @value{format_command}
+After
+
+
+@sp 2
+@value{format_command_begin}
+in group
+@end @value{format_command}
+
+@value{format_command_begin}
+@quotation 
+A quot---ation
+@end quotation
+@end @value{format_command}
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\\partial_t \\eta (t) = g(\\eta(t),\\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@value{format_command_begin}
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end @value{format_command}
+
+@end macro
+
+Call macro
+@mymacro{}
+
+Call macro in format_command
+@value{format_command_begin}
+@mymacro{}
+@end @value{format_command}
+
+Call macro in itemize at the beginning of an item
+@itemize a--n itemize line
+@item @mymacro{}
+@item item 1
+Call macro in itemize
+@mymacro{}
+@item item 2
+Call macro in itemize in format_command
+@value{format_command_begin}
+@mymacro{}
+@end @value{format_command}
+@end itemize
+
+Call macro in enumerate at the beginning of enumerate
+@enumerate
+@item @mymacro{}
+@item enumerate
+Call macro in enumerate
+@mymacro{}
+@item enumerate2
+Call macro in enumerate in format_command
+@value{format_command_begin}
+@mymacro{}
+@end @value{format_command}
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item multitable item @tab multitable tab. And after Call macro in mutitable
+after item
+@item @mymacro{}
+@item multitable item 2 @tab multitable tab 2
+Call macro in mutitable
+@mymacro{}
+@item lone multitable item
+Call macro in mutitable in format_command
+@value{format_command_begin}
+@mymacro{}
+@end @value{format_command}
+@end multitable
+
+call macro at the example beginning
+@example
+@mymacro{}
+example  some
+   text
+call macro in example
+@mymacro{}
+
+more example text
+call macro in example in format_command
+@value{format_command_begin}
+@mymacro{}
+@end @value{format_command}
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+deffn
+call macro in deffn 
+@mymacro{}
+deffn continues
+call macro in deffn in format_command
+@value{format_command_begin}
+@mymacro{}
+@end @value{format_command}
+@end deffn
+
+call macro in deffn at the beginning
+@deffn c--ategory2 d--effn_name2 a--rguments2...
+@mymacro{}
+@end deffn
+
+@table @bullet
+@item a line
+call macro in table
+@mymacro{}
+call macro in table at an item beginning
+@item a line
+@mymacro{}
+@item a line2
+call macro in table in format_command
+@value{format_command_begin}
+@mymacro{}
+@end @value{format_command}
+@end table
+
+call macro at cartouche begin
+@cartouche
+@mymacro{}
+cartouche
+call macro in cartouche
+@mymacro{}
+call macro in cartouche in format_command
+@value{format_command_begin}
+@mymacro{}
+@end @value{format_command}
+@end cartouche
+
+@flushleft
+call macro in flushleft
+@mymacro{}
+flushleft
+call macro in flushleft in format_command
+@value{format_command_begin}
+@mymacro{}
+@end @value{format_command}
+@end flushleft
+
+@flushright
+@mymacro{}
+flushright
+@value{format_command_begin}
+@mymacro{}
+@end @value{format_command}
+@end flushright
+
+@bye

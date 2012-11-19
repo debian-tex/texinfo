@@ -1,0 +1,24 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename more_nodes_than_sections.info
+
+@node Top
+@top top section
+Top node
+
+@menu
+* section node::
+@end menu
+
+@chapter Chapter
+
+In chapter
+
+@node section node,,,Top
+@section section
+
+section.
+
+@contents
+
+@bye

@@ -1,6 +1,7 @@
-# $Id: Makefile.am,v 1.5 2008/05/22 16:31:54 karl Exp $
-# Makefile.am for texinfo/util/tests/install-info.
-# Run automake in ../../../ to produce Makefile.in from this.
+# $Id: Makefile.am,v 1.6 2010/06/24 00:17:02 karl Exp $
+# Makefile.am for texinfo/install-info/tests.
+#
+# Copyright 2008, 2009, 2010 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without

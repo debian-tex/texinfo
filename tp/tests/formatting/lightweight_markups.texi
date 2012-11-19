@@ -1,0 +1,47 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename lightweight_markups.info
+
+@node Top
+@top Test lightweight formats markup escaping.
+
+@menu 
+* [[ @{@{template@}@} @}@}@}[ @verb{!:!} @code{''em '''strong ''''' em strong ''[[link]]''}::
+* Help@verb{!:!} something::
+* other chapter::
+* Simpler test ''' node::
+@end menu
+
+@node [[ @{@{template@}@} @}@}@}[ @verb{!:!} @code{''em '''strong ''''' em strong ''[[link]]''}
+@chapter [[ @{@{template@}@} @}@}@}[ @verb{!:!} @code{''em '''strong ''''' em strong ''[[link]]''}
+
+@anchor{anchor [[ @{@{}
+
+@float f1 [[ @{@{, f2 ]] @}@}
+Float
+@caption{Caption [[ @{@{}
+@end float
+
+@node Help@verb{!:!} something
+@chapter Help: something
+
+@table @asis
+@item Something : other thing
+@end table
+
+@ref{Simpler test ''' node}
+
+@ref{Help@verb{!:!} something}.
+
+@ref{[[ @{@{template@}@} @}@}@}[ @verb{!:!} @code{''em '''strong ''''' em strong ''[[link]]''}}
+
+@ref{anchor [[ @{@{}
+
+@node other chapter
+@chapter other chapter
+
+@node Simpler test ''' node
+@chapter Simpler test '''
+
+
+@bye

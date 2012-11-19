@@ -1,7 +1,7 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c,v 1.10 2008/06/11 09:55:43 gray Exp $
+   $Id: variables.c,v 1.13 2011/10/18 18:47:22 karl Exp $
 
-   Copyright (C) 1993, 1997, 2001, 2002, 2004, 2007, 2008
+   Copyright (C) 1993, 1997, 2001, 2002, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -82,6 +82,10 @@ VARIABLE_ALIST info_variables[] = {
        "last node"),
     &scroll_last_node, (char**)scroll_last_node_choices },
   
+  { "min-search-length",
+    N_("Minimal length of a search string"),
+    &min_search_length, NULL },
+
   { NULL }
 };
 
@@ -106,7 +110,7 @@ DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
     sprintf (description, "%s (%d): %s.",
 	     var->name, *(var->value), _(var->doc));
 
-  window_message_in_echo_area ("%s", description, NULL);
+  window_message_in_echo_area ("%s", description);
   free (description);
 }
 

@@ -1,112 +1,123 @@
-$Id: README,v 1.16 2004/12/13 13:36:32 karl Exp $
+$Id: README,v 1.25 2012/05/27 08:36:26 pertusus Exp $
 This is the README file for the GNU Texinfo distribution.  Texinfo is
 the preferred documentation format for GNU software.
 
-  Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-  2001, 2002, 2003, 2004 Free Software Foundation, Inc.
+  Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
+  2002, 2003, 2004, 2009, 2010, 2011, 2012
+  Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
-See ./INSTALL* for installation instructions.
-
-Primary distribution point: ftp://ftp.gnu.org/gnu/texinfo/
-  (list of mirrors at: http://www.gnu.org/prep/ftp.html)
-
 Home page: http://www.gnu.org/software/texinfo/
-  (list of mirrors at: http://www.gnu.org/server/list-mirrors.html)
   This page includes links to other Texinfo-related programs.
 
-Mailing lists and archives:
-- bug-texinfo@gnu.org for bug reports or enhancement suggestions,
-  archive: http://mail.gnu.org/pipermail/bug-texinfo
-- help-texinfo@gnu.org for authoring questions and general discussion, 
-  archive: http://mail.gnu.org/pipermail/help-texinfo
-- texinfo-pretest@texinfo.org for pretests of new releases,
-  archive: http://texinfo.org/ftp/texinfo-pretest-archive
+Primary distribution point: ftp://ftp.gnu.org/gnu/texinfo/
+  automatic mirror redirection: http://ftpmirror.gnu.org/texinfo/
+                   mirror list: http://www.gnu.org/prep/ftp.html
+
+Texinfo is a documentation system that uses a single source to produce
+many forms of output:
+- a PDF or DVI document (via the TeX typesetting system) with the normal
+  features of a book, including sectioning, cross references, indices, etc.
+- an Info file with analogous features to make documentation browsing easy.
+- a plain text (ASCII) file.
+- an HTML output file suitable for use with a web browser.
+- a Docbook file.
+- a XML file transliterating the source with a Texinfo DTD.
+
+See ./INSTALL* for installation instructions.
+
+To get started with Texinfo, best is to read the Texinfo manual.
+It is online at http://www.gnu.org/software/texinfo/manual/texinfo.
+If you don't have Internet access, you can read it locally:
+- first, build the distribution.
+- then, for HTML, run: make -C doc html
+  and you can start reading at doc/texinfo.html/index.html.
+- for PDF, if you have a working TeX, run: make -C doc pdf
+- for Info, you can read about the Info reader itself with:
+ ./info/ginfo doc/info
+  and then read the Texinfo manual:
+ ./info/ginfo doc/texinfo
+
+Texinfo mailing lists and archives:
+- http://lists.gnu.org/mailman/listinfo/bug-texinfo
+  for bug reports, enhancement suggestions, technical discussion.
+- http://lists.gnu.org/mailman/listinfo/help-texinfo
+  for authoring questions and general discussion.
 There are no corresponding newsgroups.
 
 Bug reports:
- please include enough information for the maintainers to reproduce the
- problem.  Generally speaking, that means:
-- the contents of any input files necessary to reproduce the bug (crucial!).
-- a description of the problem and any samples of the erroneous output.
+Please include enough information for the maintainers to reproduce the
+problem.  Generally speaking, that means:
+- the contents of all input files necessary to reproduce the bug (crucial!).
+- a statement of the problem and any samples of the erroneous output.
 - the version number of Texinfo and the program(s) involved (use --version).
-- hardware, operating system, and compiler versions (uname -a).
+- hardware and operating system information (uname -a).
 - unusual options you gave to configure, if any (see config.status).
-- anything else that you think would be helpful.
+- anything else that you think could be helpful.
 
 Patches are most welcome; if possible, please make them with diff -c and
 include ChangeLog entries.
 
-When sending email, please do not encode or split the messages in any
-way if at all possible; it's easier to deal with one large message than
-many small ones.  GNU shar (http://www.gnu.org/software/sharutils/) is a
-convenient way of packaging multiple and/or binary files for email.
-
-See README.dev for information on the Texinfo development environment --
-any interested parties are welcome.  If you're a programmer and wish to
-contribute, this should get you started.  And if you're not a
-programmer, you can still make significant contributions by writing test
-cases, checking the documentation against the implementation, etc.
+See README-hacking for information on the Texinfo development
+environment -- any interested parties are welcome.  If you're a
+programmer and wish to contribute, this should get you started.  If
+you're not a programmer, you can still make significant contributions by
+writing test cases, checking the documentation against the
+implementation, etc.
 
 This distribution includes the following files, among others:
-    README                      This file.
-    README.dev                  Texinfo developer information.
+    README                 This file.
+    README-hacking         Texinfo developer information.
 
-    INSTALL                     Texinfo-specific installation notes.
-    NEWS                        Summary of new features by release.
-    INTRODUCTION                Brief introduction to the system, and
-                                how to create readable files from the
-                                Texinfo source files in this distribution.
+    INSTALL                Texinfo-specific installation notes.
+    NEWS                   Summary of new features by release.
 
 Texinfo documentation files (in ./doc):
-    texinfo.txi                 Describes the Texinfo language and many
-                                of the associated tools.  It tells how
-                                to use Texinfo to write documentation,
-                                how to use Texinfo mode in GNU Emacs,
-                                TeX, makeinfo, and the Emacs Lisp
-                                Texinfo formatting commands.
+    texinfo.txi            Describes the Texinfo language and many
+                           of the associated tools.  It tells how to use
+                           Texinfo to write documentation, how to use
+                           Texinfo mode in GNU Emacs, TeX,
+                           texi2any/makeinfo, and much else.
 
-    info.texi                   This manual tells you how to use 
-                                Info.  This document also comes as part of
-                                GNU Emacs.  If you do not have Emacs,
-                                you can format this Texinfo source
-                                file with makeinfo or TeX and then
-                                read the resulting Info file with the
-                                standalone Info reader that is part of
-                                this distribution.
+    info.texi              Describes how to read manuals in Info.
+                           This document also comes as part of GNU Emacs.
 
-    info-stnd.texi              This manual tells you how to use
-                                the standalone GNU Info reader that is
-                                included in this distribution as C
-                                source (./info).
+    info-stnd.texi         How to use the standalone GNU Info reader that is
+                           included in this distribution (./info).
 
-Printing related files:
-    doc/texinfo.tex             This TeX definitions file tells
-                                the TeX program how to typeset a
-                                Texinfo file into a DVI file ready for
-                                printing.
+Printing-related files:
+    doc/texinfo.tex        This implements Texinfo in TeX, to typeset a
+                           Texinfo file into a DVI or PDF file.
 
-    util/texindex.c             This file contains the source for
-                                the `texindex' program that generates
-                                sorted indices used by TeX when
-                                typesetting a file for printing.
+    util/texindex.c        This file contains the source for
+                           the `texindex' program that generates
+                           sorted indices used by TeX when
+                           typesetting a file for printing.
 
-    util/texi2dvi               This is a shell script for
-                                producing an indexed DVI file using
-                                TeX and texindex. 
+    util/texi2dvi          This is a shell script for producing an
+                           indexed DVI file using TeX and texindex.
+    
+    util/texi2pdf          Generate PDF, otherwise like texi2dvi.
 
-Source files for standalone C programs: 
-  ./lib
-  ./makeinfo
-  ./info
+Source directories: 
+  djgpp/                   Support for compiling under DJGPP.
+  gnulib/                  Support files from Gnulib.
+  info/                    Standalone Info reader.
+  install-info/            Maintain the Info dir file.
+  tp/                      Texinfo Parser in Perl, includes texi2any/makeinfo.
 
-Installation files:
-    Makefile.am                 What Automake uses to make a Makefile.in.
-    Makefile.in                 What `configure' uses to make a Makefile,
-                                created by Automake.
-    configure.ac		What Autoconf uses to create `configure'.
-    configure                   Configuration script for local conditions,
-                                created by Autoconf.
+Translation support:
+  po                       Strings of the programs.
+  po_document              Strings in generated Texinfo documents.
+
+Installation support:
+  Makefile.am              Read by Automake to create a Makefile.in.
+  Makefile.in              Read by configure to make a Makefile,
+                             created by Automake.
+  configure.ac             Read by Autoconf to create `configure'.
+  configure                Configuration script for local conditions,
+                             created by Autoconf.
+  build-aux/               Common files.

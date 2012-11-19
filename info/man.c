@@ -1,8 +1,8 @@
 /*  man.c: How to read and format man files.
-    $Id: man.c,v 1.14 2008/06/28 08:09:32 gray Exp $
+    $Id: man.c,v 1.20 2012/06/11 17:54:26 karl Exp $
 
    Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
-   2007, 2008 Free Software Foundation, Inc.
+   2007, 2008, 2009, 2011, 2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -60,7 +60,8 @@ static char *get_manpage_contents (char *pagename);
 NODE *
 make_manpage_node (char *pagename)
 {
-  return info_get_node (MANPAGE_FILE_BUFFER_NAME, pagename);
+  return info_get_node (MANPAGE_FILE_BUFFER_NAME, pagename,
+                        PARSE_NODE_VERBATIM);
 }
 
 NODE *
@@ -104,7 +105,8 @@ get_manpage_node (FILE_BUFFER *file_buffer, char *pagename)
 	     the feet of info_windows[] array.  Therefore, all the
 	     nodes on that list which are showing man pages have their
 	     contents member pointing into the blue.  Undo that harm.  */
-	  if (old_contents && oldsize && old_contents != file_buffer->contents)
+	  if (old_contents && oldsize && old_contents != file_buffer->contents
+	      && info_windows)
 	    {
 	      int iw;
 	      INFO_WINDOW *info_win;
@@ -331,7 +333,7 @@ get_manpage_contents (char *pagename)
       /* If we get here, we couldn't exec, so close out the pipe and
          exit. */
       close (pipes[1]);
-      xexit (0);
+      exit (EXIT_SUCCESS);
     }
 #else  /* !PIPE_USE_FORK */
   /* Cannot fork/exec, but can popen/pclose.  */
@@ -401,6 +403,7 @@ manpage_node_of_file_buffer (FILE_BUFFER *file_buffer, char *pagename)
       node->parent   = NULL;
       node->flags = (N_HasTagsTable | N_IsManPage);
       node->contents += skip_node_separator (node->contents);
+      node->body_start = strcspn(node->contents, "\n");
     }
 
   return node;
@@ -499,8 +502,8 @@ find_reference_section (NODE *node)
 
   for (i = 0; reference_section_starters[i] != NULL; i++)
     {
-      position = search_forward (reference_section_starters[i], &frs_binding);
-      if (position != -1)
+      if (search_forward (reference_section_starters[i], &frs_binding,
+			  &position) == search_success)
         break;
     }
 
@@ -544,7 +547,7 @@ xrefs_of_manpage (NODE *node)
      within parenthesis. */
   reference_section->flags = 0;
 
-  while ((position = search_forward ("(", reference_section)) != -1)
+  while (search_forward ("(", reference_section, &position) == search_success)
     {
       register int start, end;
 

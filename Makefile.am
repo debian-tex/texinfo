@@ -1,6 +1,9 @@
+# $Id: Makefile.am,v 1.37 2012/06/11 17:54:26 karl Exp $
 # Makefile.am for texinfo.
-# $Id: Makefile.am,v 1.25 2008/07/05 13:37:39 karl Exp $
 # Process this file with automake to produce Makefile.in in all directories.
+#
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
+# Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -14,7 +17,8 @@
 ACLOCAL_AMFLAGS = -I gnulib/m4
 
 # Additional files to distribute.
-EXTRA_DIST = ChangeLog.46 INSTALL.generic INTRODUCTION README.dev system.h \
+EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
+  system.h \
   djgpp/README djgpp/config.bat djgpp/config.sed djgpp/config.site \
   gnulib/m4/gnulib-cache.m4
 
@@ -24,14 +28,15 @@ TEXINFO_TEX = doc/texinfo.tex
 
 if TOOLS_ONLY
   # Build native tools only.
-  SUBDIRS = lib info install-info makeinfo util
+  SUBDIRS = info install-info tp util
 else
   # All subdirectories.
   # Do libs first since the C programs depend on it.
-  # Do doc last so makeinfo will be built when we get there.
+  # Do doc and man last so makeinfo will be built when we get there.
   # Others are alphabetical.
-  SUBDIRS = $(native_tools) gnulib/lib lib \
-            install-info info makeinfo po util doc 
+  SUBDIRS = $(native_tools) gnulib/lib \
+            install-info info po po_document tp Pod-Simple-Texinfo util \
+	    doc man
 endif
 
 # One special target for installers to use by hand if desired.
@@ -40,6 +45,13 @@ install-tex:
 
 distclean-local:
 	-test -d "$(native_tools)" && rm -rf "$(native_tools)"
+
+dist-local:
+	cp -fpR $(srcdir)/po_document/*.po $(srcdir)/po_document/LINGUAS texi2html/po_document/
+	cp -fpR $(srcdir)/po/*.po $(srcdir)/po/LINGUAS texi2html/po_messages/
+
+#dist-hook:
+#	tar -C $(srcdir) -c -f - --exclude CVS tp | tar -C $(distdir) -x -f -
 
 # Don't install native tools for cross compile.
 if TOOLS_ONLY
@@ -50,24 +62,26 @@ endif
 # From coreutils.
 # Verify that all source files using _() are listed in po/POTFILES.in.
 # Run this before making pretests, as well as official releases, so that
-# translators will see changed string.
+# translators will see changed strings.
 po-check:
-	if test -f po/POTFILES.in; then					\
+	@if test -f po/POTFILES.in; then				\
 	  grep -E -v '^(#|$$)' po/POTFILES.in				\
 	    | grep -v '^src/false\.c$$' | sort > $@-1;			\
 	  files=;							\
-	  for file in $$($(CVS_LIST_EXCEPT)) `find [a-z]* -name '*.[ch]'`; do \
+	  for file in $$($(CVS_LIST_EXCEPT))				\
+	      `find [a-z]* -name '*.[ch]' -o -name '*.p[lm]'`; do	\
 	    case $$file in						\
-	    djgpp/* | man/*) continue;;					\
+	    djgpp/* | makeinfo/* | man/* | texi2html/* ) continue;;	\
+            tp/maintain/* ) continue;;					\
 	    esac;							\
 	    case $$file in						\
-	    *.[ch])							\
+	    *.[ch] | *.p[lm])						\
 	      base=`expr " $$file" : ' \(.*\)\..'`;			\
 	      { test -f $$base.l || test -f $$base.y; } && continue;;	\
 	    esac;							\
 	    files="$$files $$file";					\
 	  done;								\
-	  grep -E -l '\b(N?_|gettext *)\([^)"]*("|$$)' $$files		\
+	  grep -E -l '\b(N?__?|gdt|gettext *)\([^)"]*("|$$)' $$files	\
 	    | sort -u > $@-2;						\
 	  diff -u $@-1 $@-2 || exit 1;					\
 	  rm -f $@-1 $@-2;						\

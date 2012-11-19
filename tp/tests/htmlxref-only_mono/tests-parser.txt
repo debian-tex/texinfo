@@ -1,0 +1,2 @@
+htmlxref ../sectioning/test_refs.texi
+htmlxref_nodes ../sectioning/test_refs.texi --split node --set-customization-variable 'USE_NODES 1' --node-files

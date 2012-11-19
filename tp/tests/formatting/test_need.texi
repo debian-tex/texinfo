@@ -1,0 +1,13 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename test_need.info
+
+@node Top
+@top Test need
+
+@ifnottex
+@@need @need 0.1 on line following
+@end ifnottex
+@@need @need 0.1 
+
+
+@bye

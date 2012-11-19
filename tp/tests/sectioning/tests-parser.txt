@@ -1,0 +1,34 @@
+# formats :_html
+node_footnote_end node_footnote.texi --footnote-style=end
+node_footnote_use_node node_footnote.texi --set-customization-variable 'USE_NODES 1' --node-files --footnote-style=end --split node
+node_footnote_separated node_footnote.texi --footnote-style=separate
+test_two_include test_two_include.texi -I .@PATH_SEPARATOR@../coverage/@PATH_SEPARATOR@../formatting
+equivalent_nodes equivalent_nodes.texi --set-customization-variable 'USE_NODES 1'
+equivalent_nodes_no_node equivalent_nodes.texi
+equivalent_nodes_test_renamed_nodes equivalent_nodes.texi --init test_renamed_nodes.init
+nodes_after_top_before_chapter nodes_after_top_before_chapter.texi
+nodes_after_top_before_chapter_use_nodes_chapter nodes_after_top_before_chapter.texi --set-customization-variable 'USE_NODES 1' --split chapter
+nodes_after_top_before_section nodes_after_top_before_section.texi --split chapter
+nodes_after_top_before_section_use_nodes nodes_after_top_before_section.texi --set-customization-variable 'USE_NODES 1'
+nodes_after_top_before_section_use_nodes_chapter nodes_after_top_before_section.texi --set-customization-variable 'USE_NODES 1' --split chapter
+sectioning_directions sectioning.texi --init test_directions.init
+sectioning_frames sectioning.texi --split chapter --set-customization-variable 'FRAMES 1'
+# called sectioning_part_appendix in t/30sectioning
+no_node_chapter_split no_node.texi --split chapter
+# really different from what is in t/*?
+placed_things_before_element placed_things_before_element.texi
+# called nodes_no_node_top_explicit_directions in t/30sectioning
+no_section_no_top no_section_no_top.texi --set-customization-variable 'USE_NODES 1'
+no_section_no_top_no_node no_section_no_top.texi
+# called chapter_between_nodes in t/30sectioning
+more_nodes_than_sections more_nodes_than_sections.texi
+# called one_node_explicit_directions_anchor in t/30sectioning
+# is it really useful?
+one_node_no_node one_node.texi
+one_node one_node.texi --set-customization-variable 'USE_NODES 1'
+more_sections_than_nodes more_sections_than_nodes.texi
+two_footnotes_in_nodes two_footnotes_in_nodes.texi
+two_footnotes_in_nodes_separated two_footnotes_in_nodes.texi --footnote-style=separate
+
+# FIXME
+#empty_top_node_up ?.texi --set-customization-variable TOP_NODE_UP

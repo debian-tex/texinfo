@@ -1,0 +1,25 @@
+\input texinfo
+@setfilename cond.info
+
+@node Top
+
+@html
+This is html text.
+@end html
+
+This is ifhtml text.
+
+
+
+This is ifinfo text.
+
+
+
+@tex
+This is tex text.
+@end tex
+
+
+This is ifnottex text.
+
+@bye

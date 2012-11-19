@@ -1,0 +1,54 @@
+\input texinfo
+
+@anchor{An anchor}
+
+Ref to the anchor:
+@ref{An anchor}
+
+Ref to the anchor in footnote:
+@ref{Anchor in footnote}.
+
+@footnote{In footnote.
+
+@anchor{Anchor in footnote}
+
+Ref to main text anchor
+@ref{An anchor}
+}
+
+@float , float anchor
+In float
+@end float
+
+Ref to float
+@ref{float anchor}.
+
+@float Text, ta
+In float
+
+@caption{ta caption}
+@end float
+
+@contents
+
+@menu
+* An anchor::                menu entry pointing to the anchor.
+@end menu
+
+@cindex index entry
+
+@printindex cp
+
+@listoffloats Text
+
+@setfilename things_before_setfilename.info 
+
+@node Top
+@top top section
+
+Ref to anchor
+@ref{An anchor}
+
+Ref to footnote anchor
+@ref{Anchor in footnote}
+

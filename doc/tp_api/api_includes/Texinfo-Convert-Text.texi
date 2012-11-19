@@ -1,0 +1,143 @@
+@node Texinfo::Convert::Text
+@chapter Texinfo::Convert::Text
+
+@menu
+* Texinfo@asis{::}Convert@asis{::}Text NAME::
+* Texinfo@asis{::}Convert@asis{::}Text SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}Text DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}Text METHODS::
+* Texinfo@asis{::}Convert@asis{::}Text AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}Text COPYRIGHT AND LICENSE::
+@end menu
+
+@node Texinfo::Convert::Text NAME
+@section NAME
+
+Texinfo::Convert::Text - Convert Texinfo tree to simple text
+
+@node Texinfo::Convert::Text SYNOPSIS
+@section SYNOPSIS
+
+@verbatim
+  use Texinfo::Convert::Text qw(convert ascii_accent text_accents);
+
+  my $result = convert($tree);
+  my $result_encoded = convert($tree, 
+             {'enabled_encoding' => 'utf-8'});
+  my $result_converter = convert($tree,
+             {'converter' => $converter});
+
+  my $result_accent_text = ascii_accent('e', $accent_command);
+  my $accents_text = text_accents($accents, 'utf-8');
+@end verbatim
+
+@node Texinfo::Convert::Text DESCRIPTION
+@section DESCRIPTION
+
+Texinfo::Convert::Text is a simple backend that converts a Texinfo tree
+to simple text.  It is used for some command argument expansion in 
+@code{Texinfo::Parser}, for instance the file names, or encoding names.
+The converter is very simple, and, in the default case, cannot handle 
+output strings translation or error handling.
+
+@node Texinfo::Convert::Text METHODS
+@section METHODS
+
+@table @asis
+@item $result = convert($tree, $options)
+@anchor{Texinfo::Convert::Text $result = convert($tree@comma{} $options)}
+
+Convert a Texinfo tree to simple text.  @emph{$options} is a hash reference of 
+options.  The converter is very simple, and has no internal state besides
+the options.  It cannot handle as is output strings translation or error 
+storing.
+
+If the @emph{converter} option is set, some additional features may be available
+for the conversion of some @@-commands, like output strings translation or
+error reporting.
+
+The following options may be set:
+
+@table @asis
+@item enabled_encoding
+@anchor{Texinfo::Convert::Text enabled_encoding}
+
+If set, the value is considered to be the encoding name texinfo accented
+letters should be converted to.  This option corresponds to the 
+@code{--enable-encoding} option, or the @code{ENABLE_ENCODING} customization 
+variable.
+
+@item sc
+@anchor{Texinfo::Convert::Text sc}
+
+If set, the text is upper-cased.
+
+@item code
+@anchor{Texinfo::Convert::Text code}
+
+If set the text is in code style.  (mostly --, ---, '' and `` are kept as 
+is).
+
+@item NUMBER_SECTIONS
+@anchor{Texinfo::Convert::Text NUMBER_SECTIONS}
+
+If set, sections are numbered when output.
+
+@item sort_string
+@anchor{Texinfo::Convert::Text sort_string}
+
+A somehow internal option to convert to text more suitable for alphabetical
+sorting rather than presentation.
+
+@item converter
+@anchor{Texinfo::Convert::Text converter}
+
+If this converter object is passed to the function, some features of this
+object may be used during conversion.  Mostly error reporting and strings
+translation, as the converter object is also supposed to be a 
+@ref{Texinfo::Report NAME} objet.  See also @ref{Texinfo::Convert::Converter NAME}.
+
+@item expanded_formats_hash
+@anchor{Texinfo::Convert::Text expanded_formats_hash}
+
+A reference on a hash.  The keys should be format names (like @code{html}, 
+@code{tex}), and if thecorresponding  value is set, the format is expanded.
+
+@end table
+
+@item $result_accent_text = ascii_accent($text, $accent_command)
+@anchor{Texinfo::Convert::Text $result_accent_text = ascii_accent($text@comma{} $accent_command)}
+
+@emph{$text} is the text appearing within an accent command.  @emph{$accent_command}
+should be a Texinfo tree element corresponding to an accent command taking
+an argument.  The function returns a transliteration of the accented
+character.
+
+@item $accents_text = text_accents($accents, $encoding, $set_case)
+@anchor{Texinfo::Convert::Text $accents_text = text_accents($accents@comma{} $encoding@comma{} $set_case)}
+
+@emph{$accents} is an accent command that may contain other nested accent 
+commands.  The function will format the whole stack of nested accent 
+commands and the innermost text.  If @emph{$encoding} is set, the formatted
+text is converted to this encoding as much as possible instead of being
+converted as simple ascii.  If @emph{$set_case} is positive, the result
+is meant to be upper-cased, if it is negative, the result is to be 
+lower-cased.
+
+@end table
+
+@node Texinfo::Convert::Text AUTHOR
+@section AUTHOR
+
+Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo::Convert::Text COPYRIGHT AND LICENSE
+@section COPYRIGHT AND LICENSE
+
+Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License,
+or (at your option) any later version.
+

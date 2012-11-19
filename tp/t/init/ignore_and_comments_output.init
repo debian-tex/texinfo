@@ -1,0 +1,32 @@
+use strict;
+
+use vars qw(%commands_conversion);
+
+sub convert_comment_command($$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+
+  if ($command->{'args'} and $command->{'args'}->[0]) {
+    return $self->xml_comment($command->{'args'}->[0]->{'text'});
+  } else {
+    return '';
+  }
+}
+
+texinfo_register_command_formatting('c', \&convert_comment_command);
+texinfo_register_command_formatting('comment', \&convert_comment_command);
+
+sub convert_ignore_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $content = shift;
+
+  # FIXME should the spacing be set differently for raw commands?
+  return $self->xml_comment(" ".$content."\n");
+}
+
+texinfo_register_command_formatting('ignore', \&convert_ignore_command);

@@ -1,7 +1,8 @@
 /* doc.h -- Structures associating function pointers with documentation.
-   $Id: doc.h,v 1.7 2008/02/26 16:51:05 karl Exp $
+   $Id: doc.h,v 1.9 2011/10/18 18:47:19 karl Exp $
 
-   Copyright (C) 1993, 2001, 2004, 2007 Free Software Foundation, Inc.
+   Copyright (C) 1993, 2001, 2004, 2007, 2011
+   Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -92,7 +93,6 @@ extern InfoCommand *named_function (char *name);
 #endif /* NAMED_FUNCTIONS */
 
 extern char *function_documentation (InfoCommand *cmd);
-extern char *key_documentation (char key, Keymap map);
 extern char *pretty_keyname (unsigned char key);
 extern char *pretty_keyseq (char *keyseq);
 extern char *where_is (Keymap map, InfoCommand *cmd);

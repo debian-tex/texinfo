@@ -1,0 +1,41 @@
+This is double_contents.info, produced by texi2any version from
+double_contents.texi.
+
+
+File: double_contents.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+Double contents
+***************
+
+Double contents.
+
+* Menu:
+
+* chapter::
+
+
+File: double_contents.info,  Node: chapter,  Prev: Top,  Up: Top
+
+1 Chapter 1
+***********
+
+The chapter
+
+* Menu:
+
+* section::
+
+
+File: double_contents.info,  Node: section,  Up: chapter
+
+1.1 section with contents
+=========================
+
+
+
+Tag Table:
+Node: Top87
+Node: chapter230
+Node: section358
+
+End Tag Table

@@ -1,0 +1,52 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename same_doc_nr_split_index_and_element.info
+
+@node Top
+@top top element
+
+@cindex a entry
+@cindex b entry
+@cindex c entry
+@cindex d entry
+@cindex e entry
+@cindex f entry
+@cindex g entry
+@cindex h entry
+@cindex i entry
+@cindex j entry
+@cindex k entry
+@cindex l entry
+@cindex m entry
+@cindex n entry
+@cindex p entry
+@cindex q entry
+@cindex r entry
+@cindex s entry
+@cindex t entry
+@cindex u entry
+@cindex v entry
+@cindex w entry
+
+@menu
+* Node Chapter::
+* Node Indices::
+@end menu
+
+@node Node Chapter
+@chapter Chapter
+
+In chapter
+
+@section @c Section
+
+In section
+
+@node Node Indices
+@appendix Indices
+
+In appendix
+
+@printindex cp
+
+@bye

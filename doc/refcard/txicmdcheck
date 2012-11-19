@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
-# $Id: txicmdcheck,v 1.1 2008/09/07 22:47:47 karl Exp $
-# Copyright 2008 Free Software Foundation, Inc.
+# $Id: txicmdcheck,v 1.7 2012/09/21 17:40:45 karl Exp $
+# Copyright 2008, 2011, 2012 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,41 +17,52 @@
 #
 # Original author: Karl Berry.
 #
-# Kludge of a script to check command lists in refcard vs. refman
-# for consistency.  Would be nice to check makeinfo, too.
+# Kludge of a script to check command lists in refcard vs. refman vs.
+# tp for consistency. 
 
 exit (&main ());
 
-sub main
-{
-  my @cardcmds = &read_refcard ("txirefcard.tex");
-  my @mancmds = &read_refman ("../texinfo.txi");
-  my (%mancmds, %cardcmds);
-  @mancmds{@mancmds} = ();
-  @cardcmds{@cardcmds} = ();
+sub main {
+  my $no_common = $ARGV[0] eq "--no-common";
+
+  my @card_cmds = &read_refcard ("txirefcard.tex");
+  my @man_cmds = &read_refman ("../texinfo.txi");
+  my @tp_cmds = &read_tp ("../../util/txicmdlist");
+
+  my (%card_cmds, %man_cmds, %tp_cmds);
+  @card_cmds{@card_cmds} = ();
+  @man_cmds{@man_cmds} = ();
+  @tp_cmds{@tp_cmds} = ();
 
   my @found = ();
-  for my $cc (@cardcmds) {
-    if (exists $mancmds{$cc}) {
+  for my $cc (@card_cmds) {
+    if (exists $man_cmds{$cc} && exists $tp_cmds{$cc}) {
       push (@found, $cc);
-      delete $mancmds{$cc};
-      delete $cardcmds{$cc};
+      delete $man_cmds{$cc};
+      delete $card_cmds{$cc};
+      delete $tp_cmds{$cc};
     }
   }
-  printf "    common %d: @{[sort @found]}\n", @found + 0;
-  my @card_only = keys %cardcmds;
+  
+  printf ("    common %d: @{[sort @found]}\n", @found + 0)
+    unless $no_common;
+
+  my @card_only = keys %card_cmds;
   printf "refcard only %s: @{[sort @card_only]}\n", @card_only + 0;
-  my @man_only = keys %mancmds;
+
+  my @man_only = keys %man_cmds;
   printf "refman  only %s: @{[sort @man_only]}\n", @man_only + 0;
   
-  return @card_only + @man_only;
+  my @tp_only = keys %tp_cmds;
+  printf "tp      only %s: @{[sort @tp_only]}\n", @tp_only + 0;
+  
+  return @card_only + @man_only + @tp_only;
 }
 
 
-# Return command names given in the reference card.
+# Return command names from the reference card.
 # 
-sub read_refcard
-{
+sub read_refcard {
   my ($fname) = @_;
   my @ret = ();
 
@@ -66,8 +77,9 @@ sub read_refcard
     s/}{.*//;               # then the descriptions
     s/^\\txicmdx{// && ($xcmd = 1);  # used for the @def...x
     s/^\\txicmd{//;         # finally the markup cmd itself
+    s/\\ttbraced{}//g;      # quote cmd list
     
-    my (@cmds) = split (/, */, $_);  # a couple of times we combine cmds
+    my (@cmds) = split (/,? +/, $_);  # occasionally we combine cmds
     
     # we typeset these specially in TeX.
     if ("@cmds" eq "@#1footing") {
@@ -80,6 +92,7 @@ sub read_refcard
     for my $c (@cmds) {
 #warn "refcard $c\n";
 #warn "refcard $c{x}\n" if $xcmd;
+      next if $c eq "txicommandconditionals"; # variable not separate in manual
       if ($c eq '@\tildechar') { # TeX specialties, forcibly make them match
         $c = '@~';
       } elsif ($c eq '@\var{whitespace}') {
@@ -93,18 +106,18 @@ sub read_refcard
       push (@ret, "${c}x") if $xcmd;
     }
   }
-  push (@ret, '@,');  # our non-parsing above lost the comma
   push (@ret, '@end', '@uref', '@appendixsection');  # described in text
+  push (@ret, '@,');  # our non-parsing above lost these
+  push (@ret, qw(@atchar @lbracechar @rbracechar @backslashchar));
   close (FILE) || warn "close($FILE) failed: $!";
   return @ret;
 }
 
 
-# Return command names from the @-Command List summary node in the
-# reference manual.
+# Return command names from the @-Command List
+# node in the reference manual.
 # 
-sub read_refman
-{
+sub read_refman {
   my ($fname) = @_;
   my @ret = ();
 
@@ -118,7 +131,7 @@ sub read_refman
     last if /^\@end table/; # ignore again after the summary
     next unless s/^\@itemx? *\@//;  # only want item[x]s in the table
     chomp;
-    s/\@\{.*//;  # remove braced arguments
+    s/\@\{.+//;  # remove braced arguments (but not @{)
     s/ .*//;     # remove arguments following a space
     s/\@\@/@/g;  # @@ -> @
     next if $_ =~ /^\@(br|ctrl)$/;  # @ignore-d in text
@@ -127,5 +140,41 @@ sub read_refman
   push (@ret, '@{'); # our non-parsing above fails on this one
 
   close (FILE) || warn "close($FILE) failed: $!";
+  return @ret;
+}
+
+
+# Return command names implemented in the general parser.
+# The argument is the command to run to return the list.
+#
+sub read_tp {
+  my ($prog) = @_;
+  my @ret = ();
+  
+  local *FILE;
+  $FILE = "$prog |";
+  open (FILE) || die "open($FILE) failed: $!";
+  while (<FILE>) {
+    chomp;
+    # excise @<whitespace> commands from normal list.
+    next if $_ eq '@ ' || $_ eq "\@\t" || $_ eq "" || $_ eq '@';
+    
+    # obsolete and/or subsidiary commands we don't want to document as usual.
+    next if $_ =~ /allow-recursion
+                   |columnfractions
+                   |cropmarks
+                   |ctrl
+                   |(even|every|odd)(foot|head)ingmarks
+                   |quote-arg
+                   |rmacro
+                   |shorttitle$
+                   |\|
+                  /x;
+    push (@ret, $_);
+  }
+  close (FILE) || warn "close($FILE) failed: $!";  
+  
+  push (@ret, '@var{whitespace}');
+
   return @ret;
 }

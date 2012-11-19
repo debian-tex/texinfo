@@ -1,0 +1,11 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename math_no_closed.info
+
+@node Top
+
+@math{\delta + 2
+@chapter Chapter 
+
+@math{3\delta + 2
+@bye

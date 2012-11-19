@@ -1,0 +1,34 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename no_node
+
+Garbage
+
+@unnumbered unnumbered
+
+in unnumbered
+
+@top top section
+Top node
+
+
+@section second
+
+second node
+
+@chapter Chapter
+
+Text of chapter
+
+@section Section of chapter
+
+@subsection subsection 1
+
+@subsection subsection 2
+
+@chapter Chapter 2
+
+
+Text of chapter 2
+
+@bye

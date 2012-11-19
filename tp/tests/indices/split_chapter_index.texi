@@ -1,0 +1,55 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename split_chapter_index
+
+@node Top
+@top split indices
+@cindex entry a
+
+Text in top.
+
+
+@menu
+* first::
+@end menu
+
+@node first
+@chapter First chapter
+
+Text and then index entries
+@cindex entry in node
+@cindex ! entry in node
+@findex fun in node
+@cindex entry in node
+
+@printindex cp
+
+@cindex entry after printindex
+
+@findex a function
+@cindex a concept in first
+@findex somewhere
+
+@menu
+* section 1::
+@end menu
+
+@node section 1
+@section Section 1
+
+@menu
+*  subsection 1::
+@end menu
+
+@cindex something
+
+@cindex another
+
+@node subsection 1
+@subsection Subsection 1
+
+In subsection 1
+
+@cindex printindex subsection 2
+
+@bye

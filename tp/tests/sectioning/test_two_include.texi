@@ -1,0 +1,15 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename test_two_include.info
+
+@node Top
+
+Include version
+@include version.texi 
+
+include inc_file
+@include inc_file.texi
+
+After inclusion.
+
+@bye

@@ -1,0 +1,26 @@
+Most test files use a testing infrastructure from t/test_utils.pl.  In that
+case the references for the test of a test category $test_category.t file 
+are in  t/results/$test_category/.  They are regenerated with the -g option 
+given to the .t file, as in
+
+  perl -w t/60macro.t -g
+
+To regenerate a precise test reference file, the test name should be in
+argument, for example to regenerate the reference files for 
+arg_body_expansion_order:
+
+  perl -w t/60macro.t -g arg_body_expansion_order
+
+
+From the top directory, you can also create texinfo files corresponding with
+tests by running something along
+
+  perl -w t/60macro.t -c
+
+to create a file for each of the test in t/60macro.t, or for a specific
+test, here arg_body_expansion_order: 
+
+  perl -w t/60macro.t -c arg_body_expansion_order
+
+
+The output files will be created with -o, in t/output_files/$test_category/

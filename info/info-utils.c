@@ -1,7 +1,7 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.12 2008/06/11 09:55:42 gray Exp $
+   $Id: info-utils.c,v 1.19 2012/07/14 22:41:02 karl Exp $
 
-   Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008
+   Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -41,6 +41,9 @@ char *info_parsed_nodename = NULL;
    calling info_parse_xxx (). */
 int info_parsed_line_number = 0;
 
+static void save_string (char *string, char **string_p, int *string_size_p);
+static void saven_string (char *string, int len, char **string_p,
+    int *string_size_p);
 /* Functions to remember a filename or nodename for later return. */
 static void save_filename (char *filename);
 static void saven_filename (char *filename, int len);
@@ -53,11 +56,16 @@ static REFERENCE **info_references_internal (char *label,
 
 /* Parse the filename and nodename out of STRING.  If STRING doesn't
    contain a filename (i.e., it is NOT (FILENAME)NODENAME) then set
-   INFO_PARSED_FILENAME to NULL.  If second argument NEWLINES_OKAY is
-   non-zero, it says to allow the nodename specification to cross a
-   newline boundary (i.e., only `,', `.', or `TAB' can end the spec). */
+   INFO_PARSED_FILENAME to NULL.  The second argument is one of
+   the PARSE_NODE_* constants.  It specifies how to parse the node name:
+
+   PARSE_NODE_DFLT             Node name stops at LF, `,', `.', or `TAB'
+   PARSE_NODE_SKIP_NEWLINES    Node name stops at `,', `.', or `TAB'
+   PARSE_NODE_VERBATIM         Don't parse nodename
+*/ 
+   
 void
-info_parse_node (char *string, int newlines_okay)
+info_parse_node (char *string, int flag)
 {
   register int i = 0;
 
@@ -74,14 +82,34 @@ info_parse_node (char *string, int newlines_okay)
   /* Check for (FILENAME)NODENAME. */
   if (*string == '(')
     {
+      int bcnt;
+      int bfirst;
+      
       i = 0;
       /* Advance past the opening paren. */
       string++;
 
-      /* Find the closing paren. */
-      while (string[i] && string[i] != ')')
-        i++;
+      /* Find the closing paren. Handle nested parens correctly. */
+      for (bcnt = 0, bfirst = -1; string[i]; i++)
+	{
+	  if (string[i] == ')')
+	    {
+	      if (bcnt == 0)
+		{
+		  bfirst = -1;
+		  break;
+		}
+	      else if (!bfirst)
+		bfirst = i;
+	      bcnt--;
+	    } 
+	  else if (string[i] == '(')
+	    bcnt++;
+	}
 
+      if (bfirst >= 0)
+	i = bfirst;
+      
       /* Remember parsed filename. */
       saven_filename (string, i);
 
@@ -93,7 +121,7 @@ info_parse_node (char *string, int newlines_okay)
     }
 
   /* Parse out nodename. */
-  i = skip_node_characters (string, newlines_okay);
+  i = skip_node_characters (string, flag);
   saven_nodename (string, i);
   canonicalize_whitespace (info_parsed_nodename);
   if (info_parsed_nodename && !*info_parsed_nodename)
@@ -157,7 +185,7 @@ info_parse_label (char *label, NODE *node)
 
   nodeline += i;
   nodeline += skip_whitespace (nodeline);
-  info_parse_node (nodeline, DONT_SKIP_NEWLINES);
+  info_parse_node (nodeline, PARSE_NODE_DFLT);
 }
 
 /* **************************************************************** */
@@ -181,9 +209,8 @@ info_menu_of_node (NODE *node)
   tmp_search.flags = S_FoldCase;
 
   /* Find the start of the menu. */
-  position = search_forward (INFO_MENU_LABEL, &tmp_search);
-
-  if (position == -1)
+  if (search_forward (INFO_MENU_LABEL, &tmp_search, &position)
+      != search_success)
     return NULL;
 
   /* We have the start of the menu now.  Glean menu items from the rest
@@ -252,7 +279,7 @@ info_references_internal (char *label, SEARCH_BINDING *binding)
 
   searching_for_menu_items = (mbscasecmp (label, INFO_MENU_ENTRY_LABEL) == 0);
 
-  while ((position = search_forward (label, &tmp_search)) != -1)
+  while (search_forward (label, &tmp_search, &position) == search_success)
     {
       int offset, start;
       char *refdef;
@@ -310,9 +337,9 @@ info_references_internal (char *label, SEARCH_BINDING *binding)
           refdef += skip_whitespace_and_newlines (refdef);
 
           if (searching_for_menu_items)
-            info_parse_node (refdef, DONT_SKIP_NEWLINES);
+            info_parse_node (refdef, PARSE_NODE_DFLT);
           else
-            info_parse_node (refdef, SKIP_NEWLINES);
+            info_parse_node (refdef, PARSE_NODE_SKIP_NEWLINES);
 
           if (info_parsed_filename)
             entry->filename = xstrdup (info_parsed_filename);
@@ -485,10 +512,11 @@ static size_t the_rep_size;
 /* Return a pointer to a string which is the printed representation
    of CHARACTER if it were printed at HPOS. */
 char *
-printed_representation (const unsigned char *cp, size_t len, size_t hpos,
+printed_representation (const char *character, size_t len, size_t hpos,
 			/* Return: */
 			size_t *plen)
 {
+  const unsigned char *cp = (const unsigned char *) character;
   register int i = 0;
   int printable_limit = ISO_Latin_p ? 255 : 127;
 #define REPSPACE(s)                                            \
@@ -574,10 +602,6 @@ static int parsed_filename_size = 0;
 /* Amount of space allocated to INFO_PARSED_NODENAME via xmalloc (). */
 static int parsed_nodename_size = 0;
 
-static void save_string (char *string, char **string_p, int *string_size_p);
-static void saven_string (char *string, int len, char **string_p,
-    int *string_size_p);
-
 /* Remember FILENAME in PARSED_FILENAME.  An empty FILENAME is translated
    to a NULL pointer in PARSED_FILENAME. */
 static void
@@ -624,13 +648,18 @@ save_string (char *string, char **string_p, int *string_size_p)
       *string_p = NULL;
       *string_size_p = 0;
     }
-  else
+  else if (string_size_p)
     {
       if (strlen (string) >= (unsigned int) *string_size_p)
-        *string_p = xrealloc
-          (*string_p, (*string_size_p = 1 + strlen (string)));
+        *string_p = xrealloc (*string_p,
+			      (*string_size_p = 1 + strlen (string)));
 
       strcpy (*string_p, string);
+    }
+  else
+    {
+      free (*string_p);
+      *string_p = xstrdup (string);
     }
 }
 
@@ -646,11 +675,18 @@ saven_string (char *string, int len, char **string_p, int *string_size_p)
       *string_p = NULL;
       *string_size_p = 0;
     }
-  else
+  else 
     {
-      if (len >= *string_size_p)
-        *string_p = xrealloc (*string_p, (*string_size_p = 1 + len));
-
+      if (string_size_p)
+	{
+	  if (len >= *string_size_p)
+	    *string_p = xrealloc (*string_p, (*string_size_p = 1 + len));
+	}
+      else
+	{
+	  free (*string_p);
+	  *string_p = xmalloc (1 + len);
+	}
       strncpy (*string_p, string, len);
       (*string_p)[len] = '\0';
     }
@@ -726,4 +762,107 @@ get_window_of_node (NODE *node)
       break;
 
   return win;
+}
+
+/* Flexible Text Buffer */
+
+void
+text_buffer_init (struct text_buffer *buf)
+{
+  memset (buf, 0, sizeof *buf);
+}
+
+void
+text_buffer_free (struct text_buffer *buf)
+{
+  free (buf->base);
+}
+
+size_t
+text_buffer_vprintf (struct text_buffer *buf, const char *format, va_list ap)
+{
+  ssize_t n;
+  va_list ap_copy;
+
+  if (!buf->base)
+    {
+      if (buf->size == 0)
+	buf->size = 512; /* Initial allocation */
+      
+      buf->base = xmalloc (buf->size);
+    }
+  
+  for (;;)
+    {
+      va_copy (ap_copy, ap);
+      n = vsnprintf (buf->base + buf->off, buf->size - buf->off,
+		     format, ap_copy);
+      va_end (ap_copy);
+      if (n < 0 || buf->off + n >= buf->size ||
+	  !memchr (buf->base + buf->off, '\0', buf->size - buf->off + 1))
+	{
+	  size_t newlen = buf->size * 2;
+	  if (newlen < buf->size)
+	    xalloc_die ();
+	  buf->size = newlen;
+	  buf->base = xrealloc (buf->base, buf->size);
+	}
+      else
+	{
+	  buf->off += n;
+	  break;
+	}
+    }
+  return n;
+}
+
+size_t
+text_buffer_add_string (struct text_buffer *buf, const char *str, size_t len)
+{
+  if (buf->off + len > buf->size)
+    {
+      buf->size = buf->off + len;
+      buf->base = xrealloc (buf->base, buf->size);
+    }
+  memcpy (buf->base + buf->off, str, len);
+  buf->off += len;
+  return len;
+}
+
+size_t
+text_buffer_fill (struct text_buffer *buf, int c, size_t len)
+{
+  char *p;
+  int i;
+  
+  if (buf->off + len > buf->size)
+    {
+      buf->size = buf->off + len;
+      buf->base = xrealloc (buf->base, buf->size);
+    }
+
+  for (i = 0, p = buf->base + buf->off; i < len; i++)
+    *p++ = c;
+  buf->off += len;
+  
+  return len;
+}
+
+void
+text_buffer_add_char (struct text_buffer *buf, int c)
+{
+  char ch = c;
+  text_buffer_add_string (buf, &ch, 1);
+}
+
+size_t
+text_buffer_printf (struct text_buffer *buf, const char *format, ...)
+{
+  va_list ap;
+  size_t n;
+  
+  va_start (ap, format);
+  n = text_buffer_vprintf (buf, format, ap);
+  va_end (ap);
+  return n;
 }

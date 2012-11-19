@@ -1,0 +1,7 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/Pod-Simple-Texinfo.t
+lib/Pod/Simple/Texinfo.pm
+pod2texi

@@ -1,0 +1,11 @@
+\input texinfo
+@setfilename delcomment.info
+
+@c this tests both the del comment and a file without
+@c element.
+
+ this is a comment.
+
+This line is the only output.
+
+@bye

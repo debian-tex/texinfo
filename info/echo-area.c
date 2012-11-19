@@ -1,7 +1,7 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c,v 1.14 2008/06/11 09:55:41 gray Exp $
+   $Id: echo-area.c,v 1.18 2011/12/27 20:27:21 gray Exp $
 
-   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2004, 2007, 2008
+   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -814,7 +814,7 @@ info_read_completing_internal (WINDOW *window, const char *prompt,
 
   /* Initialize our local variables. */
   initialize_input_line (prompt);
-
+  
   /* Initialize the echo area for the first (but maybe not the last) time. */
   echo_area_initialize_node ();
 
@@ -828,6 +828,7 @@ info_read_completing_internal (WINDOW *window, const char *prompt,
 
   active_window = the_echo_area;
   echo_area_is_active++;
+  window_line_map_init (active_window);
 
   /* Read characters in the echo area. */
   while (1)
@@ -912,7 +913,9 @@ info_read_maybe_completing (WINDOW *window,
 
 DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
 {
-  if (!echo_area_completion_items)
+  if (!echo_area_completion_items
+      || (isprint (key)
+	  && ea_last_executed_command == (VFunction *) ea_possible_completions))
     {
       ea_insert (window, count, key);
       return;
@@ -935,11 +938,10 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
       int limit, iterations, max_label = 0;
 
       initialize_message_buffer ();
-      printf_to_message_buffer (completions_found_index == 1
-                                ? _("One completion:\n")
-                                : _("%d completions:\n"),
-				(void *) (long) completions_found_index,
-				NULL, NULL);
+      printf_to_message_buffer (ngettext ("%d completion:\n",
+					  "%d completions:\n",
+					  completions_found_index),
+				completions_found_index);
 
       /* Find the maximum length of a label. */
       for (i = 0; i < completions_found_index; i++)
@@ -985,17 +987,17 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
 
                   label = completions_found[l]->label;
                   printed_length = strlen (label);
-                  printf_to_message_buffer ("%s", label, NULL, NULL);
+                  printf_to_message_buffer ("%s", label);
 
                   if (j + 1 < limit)
                     {
                       for (k = 0; k < max_label - printed_length; k++)
-                        printf_to_message_buffer (" ", NULL, NULL, NULL);
+                        printf_to_message_buffer (" ");
                     }
                 }
               l += iterations;
             }
-          printf_to_message_buffer ("\n", NULL, NULL, NULL);
+          printf_to_message_buffer ("\n");
         }
 
       /* Make a new node to hold onto possible completions.  Don't destroy
@@ -1219,8 +1221,7 @@ build_completions (void)
       if (!informed_of_lengthy_job && completions_found_index > 100)
         {
           informed_of_lengthy_job = 1;
-          window_message_in_echo_area (_("Building completions..."),
-              NULL, NULL);
+          window_message_in_echo_area (_("Building completions..."));
         }
     }
 

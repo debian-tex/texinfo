@@ -1,0 +1,21 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename one_node
+
+Garbage
+
+@node one node,,,(dir)
+Top node
+
+anchor ref @anchor{ref}.
+
+@menu
+* (somemanual):: ref to some manual
+@end menu
+
+
+ref to ref @ref{ref}.
+
+Some text.
+
+@bye

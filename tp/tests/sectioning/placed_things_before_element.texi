@@ -1,0 +1,43 @@
+\input texinfo
+@setfilename placed_things_before_element.info
+@settitle before element test
+
+
+@anchor{An anchor}
+
+Ref to the anchor:
+@ref{An anchor}
+
+Ref to the anchor in footnote:
+@ref{Anchor in footnote}.
+
+@footnote{In footnote.
+
+@anchor{Anchor in footnote}
+
+Ref to main text anchor
+@ref{An anchor}
+}
+
+@float , float anchor
+In float
+@end float
+
+Ref to float
+@ref{float anchor}.
+
+@menu
+* An anchor::                menu entry pointing to the anchor.
+@end menu
+
+@cindex index entry
+
+@section section
+
+Ref to anchor
+@ref{An anchor}
+
+Ref to footnote anchor
+@ref{Anchor in footnote}
+
+@bye

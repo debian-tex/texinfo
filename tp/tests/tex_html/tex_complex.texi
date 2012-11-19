@@ -1,0 +1,44 @@
+\input texinfo @c -*-texinfo-*-
+
+@copying
+@tex
+$$\partial_{\eta} g(\eta(t),\varphi(t));
+$$
+@end tex
+
+Some @math{(I-D) \varphi(t)} math.
+@end copying
+
+@titlepage
+@title The title
+
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@node Top
+@top The title
+
+@insertcopying
+
+Tex:
+@tex
+$$
+ U w V^\dagger
+$$
+@end tex
+
+and math @math{\phi w V^t}.
+
+Now there is a footnote@footnote{
+@tex
+$$
+\omega = h ( \eta , \varphi) 
+$$
+@end tex
+
+and math @math{h \dot \psi^\phi}.
+}
+
+@bye

@@ -1,0 +1,26 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename ignore_and_comments.info
+
+Text line followed by a comment on the same line and another below @c comment
+@c comment
+Text line after the comment followed by a comment @comment c
+Text line after the text line followed by the comment.
+
+Comment at the end of the line @c comment
+
+Example with comments 2 lines
+@example 
+line @c comment
+second line @c comment
+@end example
+
+@ignore
+@@ @ on line following 
+@@ @ on line following 
+@@ @ on line following 
+@@ @ on line following 
+@end ignore
+
+@c no ref ignored because of novalidate
+
+@bye

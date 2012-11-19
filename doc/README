@@ -1,7 +1,7 @@
-$Id: README,v 1.5 2007/07/02 21:40:32 olegkat Exp $
+$Id: README,v 1.6 2011/10/16 23:14:08 karl Exp $
 texinfo/doc/README
 
-  Copyright (C) 2002 Free Software Foundation, Inc.
+  Copyright 2002, 2011 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -17,28 +17,20 @@ vary so widely.  Installing them in the wrong place would give a false
 sense of security.  So, you should simply cp *.tex to the appropriate
 place.  If your installation follows the TeX Directory Structure
 standard (http://tug.org/tds/), this will be the directory
-TEXMF/tex/texinfo/ for texinfo.tex, and TEXMF/tex/generic/dvips/ for
-epsf.tex.  If you use the default installation paths, TEXMF will be
-/usr/local/share/texmf.  On systems with TeX preinstalled, as most
-GNU/Linux distributions offer, TEXMF will often be something like
-/usr/share/texmf.
+TEXMF/tex/texinfo/ for texinfo.tex, and TEXMF/tex/generic/epsf/ for
+epsf.tex.
 
 It is also possible to put these .tex files in a `local' place instead
 of overwriting existing ones, but this is more complicated.  See your TeX
 documentation in general and the texmf.cnf file in particular for information.
 
 If you add files to your TeX installations, not just replace existing
-ones, you very likely have to update your ls-R file; do this with the
-mktexlsr command.  In older versions, this was named MakeTeXls-R.
+ones, you very likely have to update your ls-R file; do this by
+running the mktexlsr command.
 
 You can get the latest texinfo.tex from
 ftp://ftp.gnu.org/gnu/texinfo/texinfo.tex (and all GNU mirrors)
 ftp://tug.org/tex/texinfo.tex (and all CTAN mirrors)
-or on the FSF machines in /home/gd/gnu/doc/texinfo.tex.
-If you have problems with the version in this distribution, please check
+or from the gnulib project on Savannah (among other places).
+If you have problems with the texinfo.tex in this distribution, please check
 for a newer version.
-
-epsf.tex comes with dvips distributions, and you may already have it
-installed.  The version here is functionally identical but slightly
-nicer than the one in dvips574.  The changes have been sent to the
-epsf.tex maintainer.

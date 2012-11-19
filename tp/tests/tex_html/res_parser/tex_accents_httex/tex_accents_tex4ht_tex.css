@@ -1,0 +1,40 @@
+ 
+/* start css.sty */
+p.noindent { text-indent: 0em }
+td p.noindent { text-indent: 0em; margin-top:0em; }
+p.nopar { text-indent: 0em; }
+p.indent{ text-indent: 1.5em }
+@media print {div.crosslinks {visibility:hidden;}}
+a img { border-top: 0; border-left: 0; border-right: 0; }
+center { margin-top:1em; margin-bottom:1em; }
+td center { margin-top:0em; margin-bottom:0em; }
+.Canvas { position:relative; }
+img.math{vertical-align:middle;}
+.obeylines-h,.obeylines-v {white-space: nowrap; }
+div.obeylines-v p { margin-top:0; margin-bottom:0; }
+.overline{ text-decoration:overline; }
+.overline img{ border-top: 1px solid black; }
+td.displaylines {text-align:center; white-space:nowrap;}
+.centerline {text-align:center;}
+.rightline {text-align:right;}
+span.TEX {letter-spacing: -0.125em; }
+span.TEX span.E{ position:relative;top:0.5ex;left:-0.0417em;}
+a span.TEX span.E {text-decoration: none; }
+.underline{ text-decoration:underline; }
+.underline img{ border-bottom: 1px solid black; margin-bottom:1pt; }
+div.proclaim { margin-top: 1em; margin-bottom: 1em; }
+p.item {text-indent:-2em; margin-left:2em;}
+p.itemitem {text-indent:-2em; margin-left:4em;}
+span.item, span.itemitem {width:2em; margin-right:0.4em;}
+td.eqalign3 { text-align:right; margin-left:10em;}
+.eqalign td { white-space: nowrap; }
+div.eqalign {text-align:center;}
+td.eqalignno3, td.leqalignno3 { text-align:right; margin-left:10em;}
+.leqalignno td, .eqalignno td { white-space: nowrap; }
+.leqalignno td.noalign, .eqalignno td.noalign { width:5%; white-space: normal; }
+table.leqalignno, table.eqalignno {width:100%;}
+img.cdots{vertical-align:middle;}
+div.pmatrix {text-align:center;}
+table.pmatrix {width:100%;}
+/* end css.sty */
+

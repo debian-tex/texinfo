@@ -1,0 +1,37 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename direntry_dircategory.info
+
+@dircategory ``category---@var{th  ere}?''
+@direntry
+* foo: (foo).   ``hello---@var{there}?''
+@end direntry
+
+@dircategory cat2
+@direntry
+* aaa ::               aaaa
+                   bbbbb
+
+menutitle
+@end direntry
+
+
+@node Top
+@top Test dircategory and direntry
+
+Text
+@dircategory in text
+@direntry
+* in text: (in_text). in text
+@end direntry
+
+@menu
+* chapter::
+@end menu
+
+@node chapter
+@chapter chapter
+
+In chapter
+
+@bye

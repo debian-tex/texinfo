@@ -1,0 +1,107 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename block_EOL.info
+
+@node Top
+@top Test for end of lines and block commands
+
+@heading html
+
+@html
+Surrounded by empty lines.
+@end html
+
+Block commands on a line
+@html
+in block
+in block l2
+@end html
+end commands on a line.
+
+Block commands on a line. A dot in the end of the block
+@html
+in block
+in block l2.
+@end html
+end commands on a line, after the block with a dot.
+
+Before the opening command @html
+in block
+@end html
+end commands on a line.
+
+Before the opening command @html
+in block
+@end html after the closing command.
+
+Before the opening command @html
+in block
+@end html
+. A symbol on a line.
+
+Before the opening command @html
+in block
+@end html. A symbol after the closing command.
+
+@heading tex
+
+@tex
+Surrounded by empty lines.
+@end tex
+
+Block commands on a line
+@tex
+in block
+@end tex
+end commands on a line.
+
+Before the opening command @tex
+in block
+@end tex
+end commands on a line.
+
+Before the opening command @tex
+in block
+@end tex after the closing command.
+
+Before the opening command @tex
+in block
+@end tex
+. A symbol on a line.
+
+Before the opening command @tex
+in block
+@end tex. A symbol after the closing command.
+
+
+@heading verbatim
+
+@verbatim
+Surrounded by empty lines.
+@end verbatim
+
+Block commands on a line
+@verbatim
+in block
+@end verbatim
+end commands on a line.
+
+Before the opening command @verbatim
+in block
+@end verbatim
+end commands on a line.
+
+Before the opening command @verbatim
+in block
+@end verbatim after the closing command.
+
+Before the opening command @verbatim
+in block
+@end verbatim
+. A symbol on a line.
+
+Before the opening command @verbatim
+in block
+@end verbatim. A symbol after the closing command.
+
+@bye

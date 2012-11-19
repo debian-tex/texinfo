@@ -1,0 +1,193 @@
+\input texinfo
+@setfilename tp_api.info
+@documentencoding utf-8
+
+@settitle Texinfo perl module
+
+@shortcontents
+@contents
+
+@ifnottex
+@node Top
+@top Texinfo perl module
+@end ifnottex
+
+@menu
+* Texinfo@asis{::}Common::
+* Texinfo@asis{::}Parser::
+* Texinfo@asis{::}Structuring::
+* Texinfo@asis{::}Report::
+* Texinfo@asis{::}Encoding::
+* Texinfo@asis{::}Convert@asis{::}NodeNameNormalization::
+* Texinfo@asis{::}Convert@asis{::}Text::
+* Texinfo@asis{::}Convert@asis{::}Texinfo::
+* Texinfo@asis{::}Convert@asis{::}Converter::
+* Texinfo@asis{::}Convert@asis{::}Unicode::
+* Texinfo@asis{::}Convert@asis{::}Info::
+* Texinfo@asis{::}Convert@asis{::}DocBook::
+* Texinfo@asis{::}Convert@asis{::}XML::
+* Texinfo@asis{::}Convert@asis{::}Plaintext::
+* Texinfo@asis{::}Convert@asis{::}HTML::
+
+@detailmenu
+ --- The Detailed Node Listing ---
+
+Texinfo::Common
+
+* Texinfo@asis{::}Common NAME::
+* Texinfo@asis{::}Common SYNOPSIS::
+* Texinfo@asis{::}Common DESCRIPTION::
+* Texinfo@asis{::}Common COMMAND CLASSES::
+* Texinfo@asis{::}Common METHODS::
+* Texinfo@asis{::}Common SEE ALSO::
+* Texinfo@asis{::}Common AUTHOR::
+* Texinfo@asis{::}Common COPYRIGHT AND LICENSE::
+
+Texinfo::Parser
+
+* Texinfo@asis{::}Parser NAME::
+* Texinfo@asis{::}Parser SYNOPSIS::
+* Texinfo@asis{::}Parser DESCRIPTION::
+* Texinfo@asis{::}Parser METHODS::
+* Texinfo@asis{::}Parser TEXINFO TREE::
+* Texinfo@asis{::}Parser SEE ALSO::
+* Texinfo@asis{::}Parser AUTHOR::
+* Texinfo@asis{::}Parser COPYRIGHT AND LICENSE::
+
+Texinfo::Structuring
+
+* Texinfo@asis{::}Structuring NAME::
+* Texinfo@asis{::}Structuring SYNOPSIS::
+* Texinfo@asis{::}Structuring DESCRIPTION::
+* Texinfo@asis{::}Structuring METHODS::
+* Texinfo@asis{::}Structuring SEE ALSO::
+* Texinfo@asis{::}Structuring AUTHOR::
+* Texinfo@asis{::}Structuring COPYRIGHT AND LICENSE::
+
+Texinfo::Report
+
+* Texinfo@asis{::}Report NAME::
+* Texinfo@asis{::}Report SYNOPSIS::
+* Texinfo@asis{::}Report DESCRIPTION::
+* Texinfo@asis{::}Report METHODS::
+* Texinfo@asis{::}Report AUTHOR::
+* Texinfo@asis{::}Report COPYRIGHT AND LICENSE::
+
+Texinfo::Encoding
+
+* Texinfo@asis{::}Encoding NAME::
+* Texinfo@asis{::}Encoding SYNOPSIS::
+* Texinfo@asis{::}Encoding DESCRIPTION::
+* Texinfo@asis{::}Encoding METHODS::
+* Texinfo@asis{::}Encoding AUTHOR::
+* Texinfo@asis{::}Encoding COPYRIGHT AND LICENSE::
+
+Texinfo::Convert::NodeNameNormalization
+
+* Texinfo@asis{::}Convert@asis{::}NodeNameNormalization NAME::
+* Texinfo@asis{::}Convert@asis{::}NodeNameNormalization SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}NodeNameNormalization DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}NodeNameNormalization METHODS::
+* Texinfo@asis{::}Convert@asis{::}NodeNameNormalization AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}NodeNameNormalization COPYRIGHT AND LICENSE::
+
+Texinfo::Convert::Text
+
+* Texinfo@asis{::}Convert@asis{::}Text NAME::
+* Texinfo@asis{::}Convert@asis{::}Text SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}Text DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}Text METHODS::
+* Texinfo@asis{::}Convert@asis{::}Text AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}Text COPYRIGHT AND LICENSE::
+
+Texinfo::Convert::Texinfo
+
+* Texinfo@asis{::}Convert@asis{::}Texinfo NAME::
+* Texinfo@asis{::}Convert@asis{::}Texinfo SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}Texinfo DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}Texinfo METHODS::
+* Texinfo@asis{::}Convert@asis{::}Texinfo AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}Texinfo COPYRIGHT AND LICENSE::
+
+Texinfo::Convert::Converter
+
+* Texinfo@asis{::}Convert@asis{::}Converter NAME::
+* Texinfo@asis{::}Convert@asis{::}Converter SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}Converter DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}Converter METHODS::
+* Texinfo@asis{::}Convert@asis{::}Converter AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}Converter COPYRIGHT AND LICENSE::
+
+Texinfo::Convert::Unicode
+
+* Texinfo@asis{::}Convert@asis{::}Unicode NAME::
+* Texinfo@asis{::}Convert@asis{::}Unicode SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}Unicode DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}Unicode METHODS::
+* Texinfo@asis{::}Convert@asis{::}Unicode AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}Unicode COPYRIGHT AND LICENSE::
+
+Texinfo::Convert::Info
+
+* Texinfo@asis{::}Convert@asis{::}Info NAME::
+* Texinfo@asis{::}Convert@asis{::}Info SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}Info DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}Info METHODS::
+* Texinfo@asis{::}Convert@asis{::}Info AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}Info COPYRIGHT AND LICENSE::
+
+Texinfo::Convert::DocBook
+
+* Texinfo@asis{::}Convert@asis{::}DocBook NAME::
+* Texinfo@asis{::}Convert@asis{::}DocBook SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}DocBook DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}DocBook METHODS::
+* Texinfo@asis{::}Convert@asis{::}DocBook AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}DocBook COPYRIGHT AND LICENSE::
+
+Texinfo::Convert::XML
+
+* Texinfo@asis{::}Convert@asis{::}XML NAME::
+* Texinfo@asis{::}Convert@asis{::}XML SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}XML DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}XML METHODS::
+* Texinfo@asis{::}Convert@asis{::}XML AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}XML COPYRIGHT AND LICENSE::
+
+Texinfo::Convert::Plaintext
+
+* Texinfo@asis{::}Convert@asis{::}Plaintext NAME::
+* Texinfo@asis{::}Convert@asis{::}Plaintext SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}Plaintext DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}Plaintext METHODS::
+* Texinfo@asis{::}Convert@asis{::}Plaintext AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}Plaintext COPYRIGHT AND LICENSE::
+
+Texinfo::Convert::HTML
+
+* Texinfo@asis{::}Convert@asis{::}HTML NAME::
+* Texinfo@asis{::}Convert@asis{::}HTML SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}HTML DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}HTML METHODS::
+* Texinfo@asis{::}Convert@asis{::}HTML AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}HTML COPYRIGHT AND LICENSE::
+@end detailmenu
+@end menu
+
+@include api_includes/Texinfo-Common.texi
+@include api_includes/Texinfo-Parser.texi
+@include api_includes/Texinfo-Structuring.texi
+@include api_includes/Texinfo-Report.texi
+@include api_includes/Texinfo-Encoding.texi
+@include api_includes/Texinfo-Convert-NodeNameNormalization.texi
+@include api_includes/Texinfo-Convert-Text.texi
+@include api_includes/Texinfo-Convert-Texinfo.texi
+@include api_includes/Texinfo-Convert-Converter.texi
+@include api_includes/Texinfo-Convert-Unicode.texi
+@include api_includes/Texinfo-Convert-Info.texi
+@include api_includes/Texinfo-Convert-DocBook.texi
+@include api_includes/Texinfo-Convert-XML.texi
+@include api_includes/Texinfo-Convert-Plaintext.texi
+@include api_includes/Texinfo-Convert-HTML.texi
+
+@bye

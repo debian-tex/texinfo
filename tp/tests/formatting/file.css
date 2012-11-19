@@ -1,0 +1,10 @@
+/* a comment */
+@import "file2.css" tv
+;
+
+/* another comment
+@import 
+*/
+
+@import ("strange\" ;file") ;
+@media tv { h3 {text-align: left} }

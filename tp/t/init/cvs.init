@@ -1,0 +1,3 @@
+use vars qw($texinfo_code_types);
+
+$texinfo_code_types->{'menu_comment'} = 1;

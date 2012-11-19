@@ -1,0 +1,30 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename contents_in_middle_chapter.info
+
+
+@node Top
+@top Contents in chapter
+
+Content in chapter.
+
+@menu 
+* chapter::
+@end menu
+
+@node chapter
+@chapter Chapter 1
+
+The chapter with contents
+@contents
+
+@menu
+* section::
+@end menu
+
+@node section
+@section section
+
+Section.
+
+@bye

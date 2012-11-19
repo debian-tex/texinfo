@@ -1,0 +1,13 @@
+Revision history for Perl module Text::Unidecode
+                                        Time-stamp: "2001-07-14 02:28:13 MDT"
+
+2001-07-14  Sean M. Burke  sburke@cpan.org
+	
+	* Release 0.04 -- forgot to put TODO.txt in 0.03.  Now including
+	it.  That's the only change.
+	
+2001-07-14  Sean M. Burke  sburke@cpan.org
+	
+	* Release 0.03 -- first public release.
+
+[END OF CHANGELOG]

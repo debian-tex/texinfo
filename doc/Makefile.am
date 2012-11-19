@@ -1,6 +1,8 @@
-# $Id: Makefile.am,v 1.40 2008/09/08 13:39:17 karl Exp $
+# $Id: Makefile.am,v 1.53 2012/11/14 00:32:57 karl Exp $
 # Makefile.am for texinfo/doc.
-# Run automake in .. to produce Makefile.in from this.
+#
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
+# Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -10,24 +12,26 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
+SUBDIRS = tp_api
+
 # Put texinfo.txi first because that's the most important.
 info_TEXINFOS = texinfo.txi info-stnd.texi info.texi
 DISTCLEANFILES = texinfo texinfo-* info*.info*
 
-man_MANS = info.1 infokey.1 install-info.1 makeinfo.1 texindex.1  \
-           info.5 texinfo.5
-
 # Use the programs built in our distribution, taking account of possible
 # cross-compiling.
-MAKEINFO = $(top_builddir)/$(native_tools)/makeinfo/makeinfo
+tpdir = $(top_srcdir)/tp
+tplibdir = $(tpdir)/maintain/lib
+MAKEINFO = $(PERL) -I "$(tpdir)" -I "$(tplibdir)/libintl-perl/lib" -I "$(tplibdir)/Unicode-EastAsianWidth/lib" -I "$(tplibdir)/Text-Unidecode/lib" $(top_builddir)/tp/texi2any
 
 # We'd also like to use something like this, but Automake calls
 # "install-info" directly.
 # INSTALL_INFO = $(top_builddir)/$(native_tools)/util/ginstall-info
 
 TXI_XLATE = txi-cs.tex txi-de.tex txi-en.tex txi-es.tex txi-fr.tex \
-	    txi-it.tex txi-nl.tex txi-nb.tex txi-pl.tex txi-pt.tex \
-	    txi-ru.tex txi-sr.tex txi-tr.tex txi-uk.tex
+            txi-hu.tex txi-is.tex txi-it.tex txi-nb.tex txi-nl.tex \
+            txi-nn.tex txi-pl.tex txi-pt.tex txi-ru.tex txi-sr.tex \
+            txi-tr.tex txi-uk.tex
 
 refcard_files = refcard/Makefile refcard/txicmdcheck \
                 refcard/txirefcard-a4.pdf refcard/txirefcard.pdf \
@@ -36,7 +40,7 @@ refcard_files = refcard/Makefile refcard/txicmdcheck \
 # Include our texinfo.tex, not Automake's.
 EXTRA_DIST = epsf.tex texinfo.tex \
              fdl.texi \
-	     $(man_MANS) $(TXI_XLATE)
+	     $(man_MANS) $(TXI_XLATE) \
 	     $(refcard_files)
 
 if INSTALL_WARNINGS
@@ -65,68 +69,42 @@ install-tex:
 	for f in $(TXI_XLATE); do \
 	  $(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(texmf_texinfo)/$$f; done
 
-# The man pages depend on the --help strings and the version number.
-common_mandeps = $(top_srcdir)/configure.ac
-
-# Set up the variables:
-man_rule_0 = \
-	program=`expr '/$@' : '.*/\(.*\)\.1'` && \
-	case $$program in makeinfo) dir=makeinfo;; info*) dir=info;; \
-	        *install-info) dir=install-info;; *) dir=util;; esac && \
-	dir="$(top_builddir)/$(native_tools)/$$dir" && \
-	case $$program in info|install-info) program=g$$program;; \
-		esac
-
-# Update the manpage for a binary program; set up the variables,
-# make sure the binary is up-to-date and then generate the man page.
-man_rule_bin = echo "Updating man page $@" && \
-	$(man_rule_0) && \
-	echo cd "$$dir" '&&' $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT) && \
-	    (cd "$$dir"  &&  $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT)) && \
-	echo $(HELP2MAN) --name=\""$$name"\" "$$dir/$$program" -o '$@' && \
-	     $(HELP2MAN) --name="$$name"     "$$dir/$$program" -o '$@'
-
-$(srcdir)/info.1: $(top_srcdir)/info/info.c $(common_mandeps)
-	@name="read Info documents" && $(man_rule_bin)
-$(srcdir)/infokey.1: $(top_srcdir)/info/infokey.c $(common_mandeps)
-	@name="compile customizations for Info" && $(man_rule_bin)
-$(srcdir)/install-info.1: $(top_srcdir)/install-info/install-info.c $(common_mandeps)
-	@name="update info/dir entries" && $(man_rule_bin)
-
-# Here we need some postprocessing:
-$(srcdir)/makeinfo.1: $(top_srcdir)/makeinfo/makeinfo.c $(common_mandeps)
-	@name="translate Texinfo documents" && $(man_rule_bin)
-	mv $@ $@.tmp
-	sed '/^\.IP$$/N;/\nAlso/s/I//;/\nThe/s/I//' $@.tmp >$@
-	rm $@.tmp
-
-$(srcdir)/texindex.1: $(util_srcdir)/texindex.c $(common_mandeps)
-	@name="sort Texinfo index files" && $(man_rule_bin)
-
-
-## ---------- ##
-## texi2dvi.  ##
-## ---------- ##
-
-man_MANS += texi2dvi.1 texi2pdf.1 pdftexi2dvi.1
-util_srcdir = $(top_srcdir)/util
-
-# Do not depend on the current user's settings.
-# We need to include util_srcdir in PATH so texi2pdf can find texi2dvi.
-change_envvars = unset TEXI2DVI_BUILD_MODE; unset TEXI2DVI_BUILD_DIRECTORY; \
-  PATH="$(util_srcdir):$${PATH}"; export PATH
-
-common_texi2dvi_deps = $(common_mandeps) \
-                       $(util_srcdir)/texi2dvi $(util_srcdir)/texi2pdf
-
-$(srcdir)/texi2dvi.1: $(common_texi2dvi_deps)
-	$(change_envvars); $(HELP2MAN) --name="convert Texinfo documents to DVI" $(util_srcdir)/texi2dvi >$@
-
-$(srcdir)/texi2pdf.1: $(common_texi2dvi_deps)
-	$(change_envvars); $(HELP2MAN) --name="convert Texinfo documents to PDF" $(util_srcdir)/texi2pdf >$@
-
-$(srcdir)/pdftexi2dvi.1:  $(common_texi2dvi_deps)
-	$(change_envvars); $(HELP2MAN) --name="convert Texinfo documents to PDF" $(util_srcdir)/pdftexi2dvi >$@
-
 # Do not create info files for distribution.
 dist-info:
+
+# Rules for updating the online web pages for the documentation
+# using the gendocs.sh script; see
+# http://www.gnu.org/prep/maintain/html_node/Invoking-gendocs_002esh.html
+#
+gnulib = $(HOME)/gnu/src/gnulib
+gendocs = $(gnulib)/build-aux/gendocs.sh
+gendocs_templates = $(gnulib)/doc
+gendocs_envvars = GENDOCS_TEMPLATE_DIR=$(gendocs_templates)
+gendocs_email = bug-texinfo@gnu.org
+gendocs_invoke = env $(gendocs_envvars) $(gendocs) --email $(gendocs_email)
+#
+manual1 = info
+manual1_title = "GNU Info manual"
+#
+manual2 = info-stnd
+manual2_title = "GNU standalone info manual"
+#
+manual3 = texinfo
+manual3_title = "GNU Texinfo manual"
+#
+doctemp = wwwtemp
+www_target = $(HOME)/gnu/www/texinfo/manual
+#
+wwwdoc-build:
+	rm -rf $(doctemp) && mkdir $(doctemp)
+	cd $(doctemp) \
+	&& ln -s ../*.texi ../*.txi . \
+	&& $(gendocs_invoke) -o $(manual1) $(manual1) $(manual1_title) \
+	&& $(gendocs_invoke) -o $(manual2) $(manual2) $(manual2_title) \
+	&& $(gendocs_invoke) -o $(manual3) $(manual3) $(manual3_title)
+	@echo "Manuals for web distribution under: $(doctemp)/"
+wwwdoc-install:
+	cp -arf $(doctemp)/$(manual1) $(doctemp)/$(manual2) \
+	  $(doctemp)/$(manual3) $(www_target)
+	ls -ltu $(www_target)/*/html_node | tail  # cvs rm -f obsolete files
+# followed by cvs add of new files and cvs commit.

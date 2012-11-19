@@ -1,0 +1,21 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename nodes_after_top_before_chapter.info
+
+
+@node Top
+Top node
+@menu
+* second node::
+* third node::
+@end menu
+
+@node second node, third node,Top,Top
+
+second node
+
+@node third node,,second node,Top
+@chapter chapter
+
+
+@bye

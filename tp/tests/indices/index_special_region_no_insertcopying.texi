@@ -1,0 +1,82 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename index_special_region-no_insertcopying.info
+
+@copying 
+
+@cindex Copying this document
+@anchor{Copying information}
+
+This is a test manual, trivially and explicitly in the public
+domain@footnote{@anchor{Public domain reference} The public
+domain is something you should allready know
+
+@cindex Public domain
+}.
+
+@printindex cp
+
+@end copying
+
+@titlepage
+
+@cindex Titlepage index
+@anchor{Titlepage anchor}
+
+This is the titlepage@footnote{@anchor{Titlepage footnote anchor}
+This is a fine document.
+
+@cindex Titlepage footnote
+}
+
+@insertcopying
+@end titlepage
+
+@node Top
+@top Top
+@chapter Chapter
+
+@c @insertcopying
+
+This test demonstrates @@anchor and indices in @@copying
+and titlepage, and various wrong index entries.
+
+@findex findex entry
+
+@cindex
+@deffn{truc} { }
+@deffnx{truc}
+@deffnx{} {}
+@end deffn
+
+@ftable
+@item
+@item fun
+@end ftable
+
+@menu
+* Copying and indices::
+@end menu
+
+@node Copying and indices
+@appendix Copying and indices
+
+In the appendix, we print the indices and references.
+
+@findex another fun
+
+@cindex Copying appendix
+
+@ref{Copying information} for the copying information.
+@ref{Public domain reference} for reference on the licence.
+
+@ref{Titlepage anchor} for the titlepage.
+@ref{Titlepage footnote anchor} for reference on the titlepage.
+
+@c @insertcopying
+
+@printindex cp
+@printindex fn
+
+@contents
+@bye

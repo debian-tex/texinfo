@@ -1,0 +1,41 @@
+\input texinfo
+@setfilename tex_tex4ht_math.info
+@c Automatically generated
+@verbatim
+
+<!-- tex4ht_begin tex_tex4ht_math math 1 -->
+@end verbatim
+@math{{x^i}\over{\tan y}}
+@verbatim
+<!-- tex4ht_end tex_tex4ht_math math 1 -->
+
+@end verbatim
+@verbatim
+
+<!-- tex4ht_begin tex_tex4ht_math math 2 -->
+@end verbatim
+@math{a @\ b}
+@verbatim
+<!-- tex4ht_end tex_tex4ht_math math 2 -->
+
+@end verbatim
+@verbatim
+
+<!-- tex4ht_begin tex_tex4ht_math math 3 -->
+@end verbatim
+@math{@code{math code} a < b}
+@verbatim
+<!-- tex4ht_end tex_tex4ht_math math 3 -->
+
+@end verbatim
+@verbatim
+
+<!-- tex4ht_begin tex_tex4ht_math math 4 -->
+@end verbatim
+@math{ \underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}}
+@verbatim
+<!-- tex4ht_end tex_tex4ht_math math 4 -->
+
+@end verbatim
+
+@bye

@@ -1,0 +1,31 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename two_footnotes_in_nodes.info
+
+@node Top
+@top 2 footnotes in 2 nodes
+
+A@footnote{Footnote Top/1
+
+para2}
+
+B@footnote{Footnote Top/2
+
+para2}
+
+@menu
+* chapter::
+@end menu
+
+@node chapter
+@chapter chapter
+
+C@footnote{Footnote chapter/1
+
+para2}
+
+D@footnote{Footnote chapter/2
+
+para2}
+
+@bye

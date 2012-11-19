@@ -1,8 +1,8 @@
 /* dir.c -- how to build a special "dir" node from "localdir" files.
-   $Id: dir.c,v 1.8 2008/06/11 09:55:41 gray Exp $
+   $Id: dir.c,v 1.9 2009/01/23 09:37:40 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2004, 2007, 
-   2008 Free Software Foundation, Inc.
+   2008, 2009 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -180,11 +180,9 @@ add_menu_to_file_buffer (char *contents, long int size, FILE_BUFFER *fb)
   fb_binding.flags = S_FoldCase | S_SkipDest;
 
   /* Move to the start of the menus in CONTENTS and FB. */
-  contents_offset = search_forward (INFO_MENU_LABEL, &contents_binding);
-  fb_offset = search_forward (INFO_MENU_LABEL, &fb_binding);
-
-  /* If there is no menu in CONTENTS, quit now. */
-  if (contents_offset == -1)
+  if (search_forward (INFO_MENU_LABEL, &contents_binding, &contents_offset)
+      != search_success)
+    /* If there is no menu in CONTENTS, quit now. */
     return;
 
   /* There is a menu in CONTENTS, and contents_offset points to the first
@@ -193,7 +191,8 @@ add_menu_to_file_buffer (char *contents, long int size, FILE_BUFFER *fb)
   contents_offset += skip_whitespace_and_newlines (contents + contents_offset);
 
   /* If there is no menu in FB, make one. */
-  if (fb_offset == -1)
+  if (search_forward (INFO_MENU_LABEL, &fb_binding, &fb_offset)
+      != search_success)
     {
       /* Find the start of the second node in this file buffer.  If there
          is only one node, we will be adding the contents to the end of
@@ -224,8 +223,8 @@ add_menu_to_file_buffer (char *contents, long int size, FILE_BUFFER *fb)
       fb_binding.buffer = fb->contents;
       fb_binding.start = 0;
       fb_binding.end = fb->filesize;
-      fb_offset = search_forward (INFO_MENU_LABEL, &fb_binding);
-      if (fb_offset == -1)
+      if (search_forward (INFO_MENU_LABEL, &fb_binding, &fb_offset)
+	  != search_success)
         abort ();
     }
 

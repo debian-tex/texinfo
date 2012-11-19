@@ -1,0 +1,9 @@
+
+$renamed_nodes = {
+ 'old node' => 'node',
+ 'Top' => 'node',
+ 'ToP' => 'node',
+ 'old non existing' => 'non existing file',
+ '@strong{}' => 'node',
+};
+ 

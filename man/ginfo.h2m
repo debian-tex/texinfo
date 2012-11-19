@@ -1,0 +1,19 @@
+# $Id: ginfo.h2m,v 1.1 2011/10/21 18:42:36 karl Exp $
+# Additional section for the info man page.
+# Copyright 2011 Free Software Foundation, Inc.
+#
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
+# notice and this notice are preserved.
+
+[SEE ALSO]
+The full documentation for
+.B info
+is maintained as a Texinfo manual.  If the
+.B info
+program is properly installed at your site, the command
+.IP
+.B info info
+.PP
+should give you access to the complete manual.
+(Or, if you have Emacs, M-x info will lead to the manual.)

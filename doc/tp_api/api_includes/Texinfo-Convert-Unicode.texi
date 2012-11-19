@@ -1,0 +1,111 @@
+@node Texinfo::Convert::Unicode
+@chapter Texinfo::Convert::Unicode
+
+@menu
+* Texinfo@asis{::}Convert@asis{::}Unicode NAME::
+* Texinfo@asis{::}Convert@asis{::}Unicode SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}Unicode DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}Unicode METHODS::
+* Texinfo@asis{::}Convert@asis{::}Unicode AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}Unicode COPYRIGHT AND LICENSE::
+@end menu
+
+@node Texinfo::Convert::Unicode NAME
+@section NAME
+
+Texinfo::Convert::Unicode - Handle conversion to Unicode
+
+@node Texinfo::Convert::Unicode SYNOPSIS
+@section SYNOPSIS
+
+@verbatim
+  use Texinfo::Convert::Unicode qw(unicode_accent encoded_accents 
+                                   unicode_text);
+
+  my ($innermost_contents, $stack)
+      = Texinfo::Common::find_innermost_accent_contents($accent);
+  
+  my $formatted_accents = encoded_accents (convert($innermost_contents),
+                        $stack, $encoding, \&Texinfo::Text::ascii_accent);
+
+  my $accent_text = unicode_accent('e', $accent_command);
+@end verbatim
+
+@node Texinfo::Convert::Unicode DESCRIPTION
+@section DESCRIPTION
+
+Texinfo::Convert::Unicode provides methods that deals with unicode for
+converters. Unicode is important, because it is used internally in perl 
+for strings, therefore if converted to Unicode, a string could be output
+in other encodings as well when writting out the converted documents.
+
+When an encoding is given as argument of a method of the module, the 
+accented letters should only be converted to unicode if it is known that
+it will be possible to convert the unicode points to encoded charactes
+in the encoding character set.
+
+@node Texinfo::Convert::Unicode METHODS
+@section METHODS
+
+@table @asis
+@item $result = unicode_accent($text, $accent_command)
+@anchor{Texinfo::Convert::Unicode $result = unicode_accent($text@comma{} $accent_command)}
+
+@emph{$text} is the text appearing within an accent command.  @emph{$accent_command}
+should be a Texinfo tree element corresponding to an accent command taking
+an argument.  The function returns the unicode representation of the accented
+character.
+
+@item $result = encoded_accents ($text, $stack, $encoding, $format_accent, $set_case)
+@anchor{Texinfo::Convert::Unicode $result = encoded_accents ($text@comma{} $stack@comma{} $encoding@comma{} $format_accent@comma{} $set_case)}
+
+@emph{$text} is the text appearing within nested accent commands.  @emph{$stack} is
+an array reference holding the nested accents texinfo element trees.  For
+example, @emph{$text} could be the formatted content and @emph{$stack} the stack 
+returned by @code{Texinfo::Common::find_innermost_accent_contents}.  @emph{$encoding} 
+is the encoding the accented characters should be encoded to.  If 
+@emph{$encoding} not set the @emph{$result} is set to undef.  @emph{$format_accent} 
+is a function reference that is used to format the accent commands if 
+there is no encoded character available for the encoding @emph{$encoding}
+at some point of the conversion of the @emph{$stack}.  Last, if 
+@emph{$set_case} is positive, the result is upper-cased, while if it is negative, 
+the result is lower-cased.
+
+@item $result = unicode_text ($text, $in_code)
+@anchor{Texinfo::Convert::Unicode $result = unicode_text ($text@comma{} $in_code)}
+
+Return @emph{$text} with characters encoded in unicode.  If @emph{$in_code} 
+is set, the text is considered to be in code style.
+
+@item $result = unicode_for_brace_no_arg_command($command_name, $encoding)
+@anchor{Texinfo::Convert::Unicode $result = unicode_for_brace_no_arg_command($command_name@comma{} $encoding)}
+
+Return the unicode representing a command with brace and no argument
+@emph{$command_name} (like @code{@@bullet@{@}}, @code{@@aa@{@}} or @code{@@guilsinglleft@{@}}), 
+or undef if there is no available encoded character for encoding 
+@emph{$encoding}. 
+
+@item $width = string_width($string)
+@anchor{Texinfo::Convert::Unicode $width = string_width($string)}
+
+Return the string width, taking into account the fact that some characters
+have a zero width (like composing accents) while some have a width of 2
+(most chinese characters, for example).
+
+@end table
+
+@node Texinfo::Convert::Unicode AUTHOR
+@section AUTHOR
+
+Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo::Convert::Unicode COPYRIGHT AND LICENSE
+@section COPYRIGHT AND LICENSE
+
+Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License,
+or (at your option) any later version.
+

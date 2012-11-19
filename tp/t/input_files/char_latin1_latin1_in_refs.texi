@@ -1,0 +1,48 @@
+\input texinfo
+
+@setfilename char_latin1_utf8_in_refs.info
+
+@documentencoding iso-8859-1
+
+@node Top
+@top top
+
+@printindex cp
+
+@menu
+* ä ë ï ö ü ÿ Ä Ë Ï Ö Ü::
+* é::
+* à è ù::
+* â ê î ô û Â Ê Î Ô Û::
+* ç::
+@end menu
+
+@node ä ë ï ö ü ÿ Ä Ë Ï Ö Ü
+@chapter ä ë ï ö ü ÿ Ä Ë Ï Ö Ü
+
+@node é
+@chapter é
+
+@node à è ù
+@chapter à è ù
+
+@node â ê î ô û Â Ê Î Ô Û
+@chapter â ê î ô û Â Ê Î Ô Û
+
+@node ç
+@chapter ç
+
+@ref{ä ë ï ö ü ÿ Ä Ë Ï Ö Ü}
+@ref{é}
+@ref{à è ù}
+@ref{â ê î ô û Â Ê Î Ô Û}
+@ref{ç}
+
+@cindex ä ë ï ö ü ÿ
+@cindex Ä Ë Ï Ö Ü
+@cindex é
+@cindex è
+@cindex â ê î ô û Â Ê Î Ô Û
+@cindex ç
+
+@bye

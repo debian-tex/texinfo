@@ -1,8 +1,8 @@
 /* tilde.c -- tilde expansion code (~/foo := $HOME/foo).
-   $Id: tilde.c,v 1.8 2008/06/11 09:55:43 gray Exp $
+   $Id: tilde.c,v 1.9 2012/06/11 17:54:27 karl Exp $
 
    Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1998, 1999,
-   2002, 2004, 2006, 2007, 2008 Free Software Foundation, Inc.
+   2002, 2004, 2006, 2007, 2008, 2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -296,7 +296,7 @@ main (argc, argv)
       printf ("  --> %s\n", result);
       free (result);
     }
-  xexit (0);
+  exit (EXIT_SUCCESS);
 }
 
 static void memory_error_and_abort ();

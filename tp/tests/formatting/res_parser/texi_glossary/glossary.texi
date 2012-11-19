@@ -1,0 +1,83 @@
+\input texinfo.tex
+
+@setfilename glossary
+
+@macro glossarytext
+@table @asis
+@end macro
+
+@macro glossary
+@glossarytext
+@end table
+
+@end macro
+
+@macro gentry {id, name, text}
+@ifhtml
+@ref{\id\,\name\}
+@end ifhtml
+@ifnothtml
+\name\ (@pxref{\id\})
+@end ifnothtml
+@unmacro expandglossary
+@macro expandglossary{glossary}
+@unmacro glossarytext
+@macro glossarytext
+\\glossary\\
+@item \name\ @anchor{\id\}
+\text\
+@end macro
+@end macro
+@expandglossary {@glossarytext}
+
+@end macro
+
+@node Top
+@top Top
+
+@menu 
+* glossary::
+@end menu
+
+The @ref{id1,name1}
+@unmacro expandglossary
+@macro expandglossary{glossary}
+@unmacro glossarytext
+@macro glossarytext
+\glossary\
+@item name1 @anchor{id1}
+text1, arg1 
+@end macro
+@end macro
+@unmacro glossarytext
+@macro glossarytext
+@glossarytext
+@item name1 @anchor{id1}
+text1, arg1 
+@end macro
+ is used in many cases while
+@ref{id2,name2}
+@unmacro expandglossary
+@macro expandglossary{glossary}
+@unmacro glossarytext
+@macro glossarytext
+\glossary\
+@item name2 @anchor{id2}
+text2
+@end macro
+@end macro
+@unmacro glossarytext
+@macro glossarytext
+@glossarytext
+@item name2 @anchor{id2}
+text2
+@end macro
+ is quite specific
+
+@node glossary
+@chapter glossary
+
+ name2 @anchor{id2}
+text2
+
+

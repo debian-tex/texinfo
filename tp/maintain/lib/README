@@ -1,0 +1,12 @@
+We ship this version of libintl-perl to be sure that it is available, and
+also to have a consistent behaviour (different gettext implementations do
+things differently). This was downloaded from 
+http://search.cpan.org/CPAN/authors/id/G/GU/GUIDO/libintl-perl-1.20.tar.gz
+in November, 2009.
+
+Same with Unicode-EastAsianWidth. Downloaded from 
+http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/Unicode-EastAsianWidth-1.30.tar.gz
+in December, 2009.
+
+Text-Unidecode downloaded in March, 2011 from
+http://search.cpan.org/CPAN/authors/id/S/SB/SBURKE/Text-Unidecode-0.04.tar.gz

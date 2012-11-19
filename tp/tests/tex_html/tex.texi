@@ -1,0 +1,44 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top Tests
+
+@ifhtml
+Now tex on the same line @tex some
+
+$$ \chi^2 = \sum_{i=1}^N
+          \left(y_i - (a + b x_i)
+	  \over \sigma_i\right)^2 $$
+		    
+
+@end tex bidule
+Some text one the line following @@end tex
+@end ifhtml
+
+Now tex on the following line, valid fot tex (with @@end tex on a line).
+@tex some
+
+tex \TeX 
+@end tex
+
+Same that @@html (but empty following line not ignored).
+
+Test of @@math
+Here some @math{{x^i}\over{\tan y}}.
+
+Maths with protected \:
+@math{a @\ b}.
+
+Maths with code @@-command:
+
+@math{@code{math code} a < b}
+
+Maths with code @@-command and braces:
+
+@math{ \underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}}
+
+@@\ outside of math
+
+@\
+
+@bye

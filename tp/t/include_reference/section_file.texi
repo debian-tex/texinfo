@@ -1,0 +1,41 @@
+\input texinfo @c -*-texinfo-*-
+
+@ifclear do-top
+@node Top
+@top
+
+@menu
+* Chapter in included file::
+@end menu
+@end ifclear
+
+@node Chapter in included file
+@chapter Chapter in included file
+
+@menu
+* Section::
+@end menu
+
+@node Section
+@section Section
+
+@menu
+* Subsection::
+@end menu
+
+@node Subsection
+@subsection Subsection
+
+@ifset subsub
+@menu
+* Subsubsection::
+@end menu
+
+@node Subsubsection
+@subsubsection Subsubsection
+@end ifset
+
+@ifclear do-top
+@contents
+@bye
+@end ifclear

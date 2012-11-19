@@ -1,0 +1,61 @@
+@node Texinfo::Convert::Texinfo
+@chapter Texinfo::Convert::Texinfo
+
+@menu
+* Texinfo@asis{::}Convert@asis{::}Texinfo NAME::
+* Texinfo@asis{::}Convert@asis{::}Texinfo SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}Texinfo DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}Texinfo METHODS::
+* Texinfo@asis{::}Convert@asis{::}Texinfo AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}Texinfo COPYRIGHT AND LICENSE::
+@end menu
+
+@node Texinfo::Convert::Texinfo NAME
+@section NAME
+
+Texinfo::Convert::Texinfo - Convert a Texinfo tree to Texinfo code
+
+@node Texinfo::Convert::Texinfo SYNOPSIS
+@section SYNOPSIS
+
+@verbatim
+  use Texinfo::Convert::Texinfo qw(convert);
+  
+  my $texinfo_text = convert($tree);
+@end verbatim
+
+@node Texinfo::Convert::Texinfo DESCRIPTION
+@section DESCRIPTION
+
+Texinfo::Convert::Texinfo converts a Texinfo tree (described in 
+@ref{Texinfo::Parser NAME}) to Texinfo code.  If the Texinfo tree results from 
+parsing some Texinfo document, The converted Texinfo code should be
+exactly the same as the initial document, except that user defined @@-macros 
+and @code{@@value} are expanded, and some invalid code is discarded.
+
+@node Texinfo::Convert::Texinfo METHODS
+@section METHODS
+
+@table @asis
+@item $texinfo_text = convert($tree)
+@anchor{Texinfo::Convert::Texinfo $texinfo_text = convert($tree)}
+
+Converts the Texinfo tree @emph{$tree} to Texinfo code.
+
+@end table
+
+@node Texinfo::Convert::Texinfo AUTHOR
+@section AUTHOR
+
+Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo::Convert::Texinfo COPYRIGHT AND LICENSE
+@section COPYRIGHT AND LICENSE
+
+Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at 
+your option) any later version.
+

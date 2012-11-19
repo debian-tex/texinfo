@@ -1,4 +1,4 @@
-# Copyright (C) 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+# Copyright 2005, 2006, 2007, 2008, 2011, 2012 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -9,7 +9,6 @@
 gnulib/lib/error.c
 gnulib/lib/getopt.c
 gnulib/lib/xalloc-die.c
-gnulib/lib/xsetenv.c
 info/echo-area.c
 info/footnotes.c
 info/footnotes.h
@@ -27,21 +26,18 @@ info/tilde.c
 info/variables.c
 info/window.c
 install-info/install-info.c
-lib/xexit.c
-makeinfo/cmds.c
-makeinfo/defun.c
-makeinfo/files.c
-makeinfo/float.c
-makeinfo/footnote.c
-makeinfo/html.c
-makeinfo/index.c
-makeinfo/insertion.c
-makeinfo/lang.c
-makeinfo/macro.c
-makeinfo/makeinfo.c
-makeinfo/multi.c
-makeinfo/node.c
-makeinfo/sectioning.c
-makeinfo/xml.c
-makeinfo/xref.c
+tp/DebugTexinfo/DebugTree.pm
+tp/Texinfo/Common.pm
+tp/Texinfo/Convert/Converter.pm
+tp/Texinfo/Convert/DocBook.pm
+tp/Texinfo/Convert/HTML.pm
+tp/Texinfo/Convert/Info.pm
+tp/Texinfo/Convert/Plaintext.pm
+tp/Texinfo/Convert/XML.pm
+tp/Texinfo/Parser.pm
+tp/Texinfo/Report.pm
+tp/Texinfo/Structuring.pm
+tp/init/chm.pm
+tp/init/tex4ht.pm
+tp/texi2any.pl
 util/texindex.c

@@ -1,0 +1,10 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename contents_no_section.info
+
+@node Top
+
+@contents
+
+@bye
+

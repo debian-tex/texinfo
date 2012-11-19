@@ -1,0 +1,10 @@
+htfcss: cmmi font-style: italic;
+htfcss: cmmib font-style: italic; font-weight: bold;
+htfcss: cmtt font-family: monospace;
+File: tex_complex_tex4ht_math.html
+--- characters ---
+Font("cmmi","7","7","100")
+Font("cmr","10","10","109")
+Font("cmtt","10","10","109")
+Font("cmmi","10","10","109")
+Font("cmsy","10","10","109")

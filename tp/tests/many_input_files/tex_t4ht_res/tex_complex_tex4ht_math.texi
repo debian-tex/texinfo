@@ -1,0 +1,32 @@
+\input texinfo
+@setfilename tex_complex_tex4ht_math.info
+@c Automatically generated
+@verbatim
+
+<!-- tex4ht_begin tex_complex_tex4ht_math math 1 -->
+@end verbatim
+@math{(I-D) \varphi(t)}
+@verbatim
+<!-- tex4ht_end tex_complex_tex4ht_math math 1 -->
+
+@end verbatim
+@verbatim
+
+<!-- tex4ht_begin tex_complex_tex4ht_math math 2 -->
+@end verbatim
+@math{\phi w V^t}
+@verbatim
+<!-- tex4ht_end tex_complex_tex4ht_math math 2 -->
+
+@end verbatim
+@verbatim
+
+<!-- tex4ht_begin tex_complex_tex4ht_math math 3 -->
+@end verbatim
+@math{h \dot \psi^\phi}
+@verbatim
+<!-- tex4ht_end tex_complex_tex4ht_math math 3 -->
+
+@end verbatim
+
+@bye

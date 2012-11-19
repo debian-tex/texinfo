@@ -1,0 +1,10 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+
+texte
+
+@tex
+
+This is some \LaTeX{}
+

@@ -1,0 +1,3910 @@
+# Slovenian translation of texinfo.
+# Copyright (C) 2012 Free Software Foundation, Inc.
+# This file is distributed under the same license as the texinfo package.
+#
+# Damir Jerovšek <damir.jerovsek@gmail.com>, 2012.
+# Klemen Košir <klemen.kosir@gmx.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: texinfo 4.13\n"
+"Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
+"POT-Creation-Date: 2012-11-12 13:59-0800\n"
+"PO-Revision-Date: 2012-08-10 18:31+0100\n"
+"Last-Translator: Klemen Košir <klemen.kosir@gmx.com>\n"
+"Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: gnulib/lib/error.c:188
+msgid "Unknown system error"
+msgstr "Neznana sistemska napaka"
+
+#: gnulib/lib/getopt.c:547 gnulib/lib/getopt.c:576
+#, fuzzy, c-format
+msgid "%s: option '%s' is ambiguous; possibilities:"
+msgstr "%s: možnost `%s' je dvoumna\n"
+
+#: gnulib/lib/getopt.c:624 gnulib/lib/getopt.c:628
+#, fuzzy, c-format
+msgid "%s: option '--%s' doesn't allow an argument\n"
+msgstr "%s: možnost `--%s' ne dovoljuje argumenta\n"
+
+#: gnulib/lib/getopt.c:637 gnulib/lib/getopt.c:642
+#, fuzzy, c-format
+msgid "%s: option '%c%s' doesn't allow an argument\n"
+msgstr "%s: možnost `%c%s' ne dovoljuje argumenta\n"
+
+#: gnulib/lib/getopt.c:685 gnulib/lib/getopt.c:704
+#, fuzzy, c-format
+msgid "%s: option '--%s' requires an argument\n"
+msgstr "%s: možnost `%s' zahteva argument\n"
+
+#: gnulib/lib/getopt.c:742 gnulib/lib/getopt.c:745
+#, fuzzy, c-format
+msgid "%s: unrecognized option '--%s'\n"
+msgstr "%s: neprepoznana možnost `--%s'\n"
+
+#: gnulib/lib/getopt.c:753 gnulib/lib/getopt.c:756
+#, fuzzy, c-format
+msgid "%s: unrecognized option '%c%s'\n"
+msgstr "%s: neprepoznana možnost `%c%s'\n"
+
+#: gnulib/lib/getopt.c:805 gnulib/lib/getopt.c:808
+#, fuzzy, c-format
+msgid "%s: invalid option -- '%c'\n"
+msgstr "%s: neveljavna možnost -- %c\n"
+
+#: gnulib/lib/getopt.c:861 gnulib/lib/getopt.c:878 gnulib/lib/getopt.c:1088
+#: gnulib/lib/getopt.c:1106
+#, fuzzy, c-format
+msgid "%s: option requires an argument -- '%c'\n"
+msgstr "%s: možnost zahteva argument -- %c\n"
+
+#: gnulib/lib/getopt.c:934 gnulib/lib/getopt.c:950
+#, fuzzy, c-format
+msgid "%s: option '-W %s' is ambiguous\n"
+msgstr "%s: možnost `-W %s' je dvoumna\n"
+
+#: gnulib/lib/getopt.c:974 gnulib/lib/getopt.c:992
+#, fuzzy, c-format
+msgid "%s: option '-W %s' doesn't allow an argument\n"
+msgstr "%s: možnost `-W %s' ne dovoli argumenta\n"
+
+#: gnulib/lib/getopt.c:1013 gnulib/lib/getopt.c:1031
+#, fuzzy, c-format
+msgid "%s: option '-W %s' requires an argument\n"
+msgstr "%s: možnost `%s' zahteva argument\n"
+
+#: gnulib/lib/xalloc-die.c:34
+msgid "memory exhausted"
+msgstr "pomnilnik je izčrpan"
+
+#: info/echo-area.c:283 info/session.c:979
+msgid "Move forward a character"
+msgstr "Pomakni se naprej za en znak"
+
+#: info/echo-area.c:295 info/session.c:1006
+msgid "Move backward a character"
+msgstr "Pomakni se nazaj za en znak"
+
+#: info/echo-area.c:307
+msgid "Move to the start of this line"
+msgstr "Pomakni se na začetek te vrstice"
+
+#: info/echo-area.c:312
+msgid "Move to the end of this line"
+msgstr "Pomakni se na konec te vrstice"
+
+#: info/echo-area.c:320 info/session.c:1038
+msgid "Move forward a word"
+msgstr "Pomakni se naprej za eno besedo"
+
+#: info/echo-area.c:360 info/session.c:1062
+msgid "Move backward a word"
+msgstr "Pomakni se nazaj za eno besedo"
+
+#: info/echo-area.c:400
+msgid "Delete the character under the cursor"
+msgstr "Izbriši znak pod kazalko"
+
+#: info/echo-area.c:430
+msgid "Delete the character behind the cursor"
+msgstr "Izbriši znak za kazalko"
+
+#: info/echo-area.c:451
+msgid "Cancel or quit operation"
+msgstr "Prekliči ali končaj dejanje"
+
+#: info/echo-area.c:466
+msgid "Accept (or force completion of) this line"
+msgstr "Sprejmi (ali prisili dokončanje) to vrstico"
+
+#: info/echo-area.c:471
+msgid "Insert next character verbatim"
+msgstr "Vstavi naslednji dobesedni znak"
+
+#: info/echo-area.c:479
+msgid "Insert this character"
+msgstr "Vstavi ta znak"
+
+#: info/echo-area.c:498
+msgid "Insert a TAB character"
+msgstr "Vstavi znak TAB"
+
+#: info/echo-area.c:505
+msgid "Transpose characters at point"
+msgstr "Zamenjaj znake pri točki"
+
+#: info/echo-area.c:556
+msgid "Yank back the contents of the last kill"
+msgstr "Povleci nazaj vsebino zadnjega uničenja"
+
+#: info/echo-area.c:563
+msgid "Kill ring is empty"
+msgstr "Obroč uničenja je prazen"
+
+#: info/echo-area.c:576
+msgid "Yank back a previous kill"
+msgstr "Povleci nazaj predhodno uničenje"
+
+#: info/echo-area.c:609
+msgid "Kill to the end of the line"
+msgstr "Uniči do konca vrstice"
+
+#: info/echo-area.c:622
+msgid "Kill to the beginning of the line"
+msgstr "Uniči do začetka vrstice"
+
+#: info/echo-area.c:634
+msgid "Kill the word following the cursor"
+msgstr "Uniči besedo, ki sledi kazalki"
+
+#: info/echo-area.c:654
+msgid "Kill the word preceding the cursor"
+msgstr "Uniči besedo pred kazalko"
+
+#: info/echo-area.c:871 info/echo-area.c:929
+msgid "No completions"
+msgstr "Ni dopolnitev"
+
+#: info/echo-area.c:873
+msgid "Not complete"
+msgstr "Ni dopolnjeno"
+
+#: info/echo-area.c:914
+msgid "List possible completions"
+msgstr "Navedi možne dopolnitve"
+
+#: info/echo-area.c:933
+msgid "Sole completion"
+msgstr "Edina dopolnitev"
+
+#: info/echo-area.c:941
+#, fuzzy, c-format
+msgid "%d completion:\n"
+msgid_plural "%d completions:\n"
+msgstr[0] "%d dopolnitev:\n"
+msgstr[1] "%d dopolnitev:\n"
+
+#: info/echo-area.c:1089
+msgid "Insert completion"
+msgstr "Vstavi dopolnitev"
+
+#: info/echo-area.c:1224
+#, c-format
+msgid "Building completions..."
+msgstr "Izgradnja dopolnitev ..."
+
+#: info/echo-area.c:1343
+msgid "Scroll the completions window"
+msgstr "Pomikaj okno dopolnitev"
+
+#: info/footnotes.c:211
+msgid "Footnotes could not be displayed"
+msgstr "Sprotnih opomb ni bilo mogoče prikazati"
+
+#: info/footnotes.c:237
+msgid "Show the footnotes associated with this node in another window"
+msgstr "Prikaži sprotne opombe, ko so povezane s tem vozliščem v drugem oknu"
+
+#: info/footnotes.h:26
+msgid "---------- Footnotes ----------"
+msgstr "---------- Sprotne opombe ----------"
+
+#: info/indices.c:175
+msgid "Look up a string in the index for this file"
+msgstr "Poišči niz v kazalu za to datoteko"
+
+#: info/indices.c:203 info/indices.c:892
+#, c-format
+msgid "Finding index entries..."
+msgstr "Iskanje vnosov kazala ..."
+
+#: info/indices.c:210
+#, c-format
+msgid "No indices found."
+msgstr "Najdenega ni nobenega kazala."
+
+#: info/indices.c:220
+msgid "Index entry: "
+msgstr "Vnos kazala: "
+
+#: info/indices.c:254 info/indices.c:914 info/session.c:4127
+#, c-format
+msgid "Search string too short"
+msgstr ""
+
+#: info/indices.c:366
+msgid ""
+"Go to the next matching index item from the last `\\[index-search]' command"
+msgstr ""
+"Pojdi do naslednjega ujemajočega predmeta kazala iz zadnjega ukaza `\\[index-"
+"search]'"
+
+#: info/indices.c:377
+#, c-format
+msgid "No previous index search string."
+msgstr "Brez prejšnjega niza iskanja kazala"
+
+#: info/indices.c:384
+#, c-format
+msgid "No index entries."
+msgstr "Brez vnosov kazala."
+
+#: info/indices.c:432
+#, fuzzy, c-format
+msgid "No more index entries containing `%s'."
+msgstr "Brez vnosov %skazala, ki vsebuje `%s'."
+
+#: info/indices.c:433 info/indices.c:950
+#, fuzzy, c-format
+msgid "No index entries containing `%s'."
+msgstr "Brez vnosov %skazala, ki vsebuje `%s'."
+
+#: info/indices.c:445
+msgid "CAN'T SEE THIS"
+msgstr "TEGA NI MOGOČE VIDETI"
+
+#: info/indices.c:481
+#, c-format
+msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
+msgstr "Najdeno `%s' v %s. (`\\[next-index-match]' poskuša najti naslednjo.)"
+
+#: info/indices.c:611
+#, c-format
+msgid "Scanning indices of `%s'..."
+msgstr "Preiskovanje kazal od `%s' ..."
+
+#: info/indices.c:665
+#, c-format
+msgid "No available info files have `%s' in their indices."
+msgstr "Nobena razpoložljiva podatkovna datoteka nima `%s' v svojih kazalih."
+
+#: info/indices.c:691
+msgid "Grovel all known info file's indices for a string and build a menu"
+msgstr ""
+
+#: info/indices.c:695
+msgid "Index apropos: "
+msgstr ""
+
+#: info/indices.c:723
+#, c-format
+msgid ""
+"\n"
+"* Menu: Nodes whose indices contain `%s':\n"
+msgstr ""
+"\n"
+"* Meni: vozlišča, katerih kazala vsebujejo `%s':\n"
+
+#: info/indices.c:875
+msgid "List all matches of a string in the index"
+msgstr ""
+
+#: info/indices.c:898
+#, fuzzy, c-format
+msgid "No index"
+msgstr "Brez vnosov kazala."
+
+#: info/indices.c:902
+#, fuzzy
+msgid "Index topic: "
+msgstr "Vnos kazala: "
+
+#: info/indices.c:921
+#, fuzzy, c-format
+msgid "Index for `%s'"
+msgstr " za %s"
+
+#: info/info.c:280 info/infokey.c:893
+#, c-format
+msgid "Try --help for more information.\n"
+msgstr "Za več podrobnosti poskusite --help.\n"
+
+#: info/info.c:299 info/infokey.c:145 install-info/install-info.c:2133
+#: tp/texi2any.pl:692 util/texindex.c:295
+#, c-format, perl-format
+msgid ""
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
+msgstr ""
+"Avtorske pravice (C) %s Free Software Foundation, Inc.\n"
+"Dovoljenje GPLv3+: GNU GPL različica 3 ali kasnejše <http://gnu.org/licenses/"
+"gpl.html>\n"
+"To je prosta programska oprema; lahko jo spreminjate in razširjate.\n"
+"Je BREZ KAKRŠNEKOLI GARANCIJE, v obsegu, ki ga dovoljuje zakonodaja.\n"
+
+#: info/info.c:513
+#, c-format
+msgid "no index entries found for `%s'\n"
+msgstr "Za `%s' ni najdenih nobenih vnosov kazal\n"
+
+#: info/info.c:626
+#, c-format
+msgid ""
+"Usage: %s [OPTION]... [MENU-ITEM...]\n"
+"\n"
+"Read documentation in Info format.\n"
+msgstr ""
+"Uporaba: %s [MOŽNOST]... [PREDMET-MENIJA ...]\n"
+"\n"
+"Preberite dokumentacijo v obliki Info.\n"
+
+#: info/info.c:632
+msgid ""
+"Options:\n"
+"  -k, --apropos=STRING         look up STRING in all indices of all "
+"manuals.\n"
+"  -d, --directory=DIR          add DIR to INFOPATH.\n"
+"      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
+"  -f, --file=FILENAME          specify Info file to visit."
+msgstr ""
+"Možnosti:\n"
+"  -k, --apropos=NIZ poišči NIZ v vseh kazalih vseh priročnikov.\n"
+"  -d, --directory=MAPA dodaj MAPO  v POT_PODROBNOSTI.\n"
+"      --dribble=IME_DATOTEKE shrani poteze tipk uporabnika v "
+"IMENU_DATOTEKE.\n"
+"  -f, --file=IME_DATOTEKE določi datoteko podrobnosti za ogled."
+
+#: info/info.c:639
+msgid ""
+"  -h, --help                   display this help and exit.\n"
+"      --index-search=STRING    go to node pointed by index entry STRING.\n"
+"  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
+"  -o, --output=FILENAME        output selected nodes to FILENAME."
+msgstr ""
+"  -h, --help prikaži to pomoč in končaj\n"
+"      --index-search=NIZ pojdi do vozlišča, na katerega kaže NIZ vnosa "
+"kazala.\n"
+"  -n, --node=IME_VOZLIŠČA določi vozlišča v prvi obiskani datoteki Info .\n"
+"  -o, --output=IME_DATOTEKE izpiši izbrana vozlišča v IME_DATOTEKE."
+
+#: info/info.c:645
+msgid ""
+"  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
+"      --no-raw-escapes         output escapes as literal text.\n"
+"      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
+"  -O, --show-options, --usage  go to command-line options node."
+msgstr ""
+"  -R, --raw-escapes izpiši \"surove\" ubežne znake ANSI (privzeto).\n"
+"      --no-raw-escapes izpiši ubežne znake kot znakovno besedilo.\n"
+"      --restore=IME_DATOTEKE preberi začetne poteze tipk iz IMENA_DATOTEKE.\n"
+"  -O, --show-options, --usage pojdi do vozlišča možnosti ukazne vrstice."
+
+#: info/info.c:652
+msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
+msgstr "  -b, --speech-friendly bodi prijazen do sintetizatorjev govora."
+
+#: info/info.c:656
+#, fuzzy
+msgid ""
+"      --strict-node-location   (for debugging) use Info file pointers as-"
+"is.\n"
+"      --subnodes               recursively output menu items.\n"
+"      --vi-keys                use vi-like and less-like key bindings.\n"
+"      --version                display version information and exit.\n"
+"  -w, --where, --location      print physical location of Info file."
+msgstr ""
+"      --subnodes predmete menija izpiši rekurzivno.\n"
+"      --vi-keys uporabi tipkovne bližnjice, podobne vi in less.\n"
+"      --version prikaži podrobnosti različice in končaj.\n"
+"  -w, --where, --location izpiši fizično mesto datoteke Info."
+
+#: info/info.c:663
+msgid ""
+"\n"
+"The first non-option argument, if present, is the menu entry to start from;\n"
+"it is searched for in all `dir' files along INFOPATH.\n"
+"If it is not present, info merges all `dir' files and shows the result.\n"
+"Any remaining arguments are treated as the names of menu\n"
+"items relative to the initial node visited."
+msgstr ""
+"\n"
+"Če je prvi argument brez možnosti, je vnos menija za začetek;\n"
+"iskan je v vseh datotekah `map' vzdolž POTI INFO.\n"
+"Če ni prisoten, info združi vse datoteke `map' in prikaže rezultat.\n"
+"Vsi preostali argumenti so obravnavani kot imena predmetov menijiev,\n"
+"glede na začetno obiskano vozlišče."
+
+#: info/info.c:670
+msgid ""
+"\n"
+"For a summary of key bindings, type h within Info."
+msgstr ""
+"\n"
+"Za povzetek tipkovnih bližnjic, vnesite h znotraj Info."
+
+#: info/info.c:673
+msgid ""
+"\n"
+"Examples:\n"
+"  info                       show top-level dir menu\n"
+"  info info                  show the general manual for Info readers\n"
+"  info info-stnd             show the manual specific to this Info program\n"
+"  info emacs                 start at emacs node from top-level dir\n"
+"  info emacs buffers         start at buffers node within emacs manual\n"
+"  info --show-options emacs  start at node with emacs' command line options\n"
+"  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
+"  info -f ./foo.info         show file ./foo.info, not searching dir"
+msgstr ""
+"\n"
+"Primeri:\n"
+"  info prikaži meni map najvišje ravni\n"
+"  info info prikaži splošen priročnik za bralce Info\n"
+"  info info-stnd prikaži priročnik, določen za ta program Info\n"
+"  info emacs začni pri vozlišču emacs iz mape najvišje ravni\n"
+"  info emacs buffers začni pri vozlišču medpomnilnikov znotraj priročnika "
+"emacs\n"
+"  info --show-options emacs začni pri vozlišču z možnostmi ukazne vrstice "
+"emacs\n"
+"  info --subnodes -o out.txt emacs odloži izpis celotnega priročnika v out."
+"txt\n"
+"  info -f ./foo.info prikaži datoteko /foo.info brez iskanja mape"
+
+#: info/info.c:684 info/infokey.c:912 util/texindex.c:259
+msgid ""
+"\n"
+"Email bug reports to bug-texinfo@gnu.org,\n"
+"general questions and discussion to help-texinfo@gnu.org.\n"
+"Texinfo home page: http://www.gnu.org/software/texinfo/"
+msgstr ""
+"\n"
+"Poročila o hroščih pošljite z e-pošto na bug-texinfo@gnu.org,\n"
+"splošna vprašanja in razprave na help-texinfo@gnu.org.\n"
+"Domača stran texinfo: http://www.gnu.org/software/texinfo/"
+
+#: info/info.c:718
+#, c-format
+msgid "Cannot find node `%s'."
+msgstr "Ni mogoče najti vozlišča `%s'."
+
+#: info/info.c:719
+#, c-format
+msgid "Cannot find node `(%s)%s'."
+msgstr "Ni mogoče najti vozlišča `(%s)%s'."
+
+#: info/info.c:720
+msgid "Cannot find a window!"
+msgstr "Ni mogoče najti okna!"
+
+#: info/info.c:721
+msgid "Point doesn't appear within this window's node!"
+msgstr "Točka se ne prikaže znotraj vozlišča okna!"
+
+#: info/info.c:722
+msgid "Cannot delete the last window."
+msgstr "Zadnjega okna ni mogoče izbrisati."
+
+#: info/info.c:723
+msgid "No menu in this node."
+msgstr "V tem vozlišču ni menijev."
+
+#: info/info.c:724
+msgid "No footnotes in this node."
+msgstr "V tem vozlišču ni sprotnih opomb."
+
+#: info/info.c:725
+msgid "No cross references in this node."
+msgstr "V tem vozlišču ni navzkrižnih sklicev."
+
+#: info/info.c:726
+#, c-format
+msgid "No `%s' pointer for this node."
+msgstr "Za to vozlišče ni kazalcev `%s'."
+
+#: info/info.c:727
+#, c-format
+msgid "Unknown Info command `%c'; try `?' for help."
+msgstr "Neznan ukaz Info `%c'; za pomoč poskusite `?'."
+
+#: info/info.c:728
+#, c-format
+msgid "Terminal type `%s' is not smart enough to run Info."
+msgstr "Vrsta terminala `%s' ni dovolj napredna za zagon Info."
+
+#: info/info.c:729
+msgid "You are already at the last page of this node."
+msgstr "Ste že na zadnji strani tega vozlišča."
+
+#: info/info.c:730
+msgid "You are already at the first page of this node."
+msgstr "Ste že na prvi strani tega vozlišča."
+
+#: info/info.c:731
+msgid "Only one window."
+msgstr "Samo eno okno."
+
+#: info/info.c:732
+msgid "Resulting window would be too small."
+msgstr "Končno okno bi bilo premajhno."
+
+#: info/info.c:733
+msgid "Not enough room for a help window, please delete a window."
+msgstr "Za okno pomoči ni dovolj prostora, izbrišite okno."
+
+#: info/infodoc.c:46
+msgid "Basic Info command keys\n"
+msgstr "Osnovne ukazne tipke Info\n"
+
+#: info/infodoc.c:48
+msgid "\\%-10[quit-help]  Close this help window.\n"
+msgstr "\\%-10[quit-help] Zapri to okno pomoči.\n"
+
+#: info/infodoc.c:49
+msgid "\\%-10[quit]  Quit Info altogether.\n"
+msgstr "\\%-10[quit] Končaj Info v celoti.\n"
+
+#: info/infodoc.c:50
+msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
+msgstr "\\%-10[get-info-help-node] Pokliči vodnik Info\n"
+
+#: info/infodoc.c:52
+msgid "\\%-10[prev-line]  Move up one line.\n"
+msgstr "\\%-10[prev-line] Pomakni se gor za eno vrstico.\n"
+
+#: info/infodoc.c:53
+msgid "\\%-10[next-line]  Move down one line.\n"
+msgstr "\\%-10[next-line] Pomakni se dol za eno vrstico.\n"
+
+#: info/infodoc.c:54
+msgid "\\%-10[scroll-backward]  Scroll backward one screenful.\n"
+msgstr "\\%-10[scroll-backward] Podrsaj nazaj za en zaslon.\n"
+
+#: info/infodoc.c:55
+msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
+msgstr "\\%-10[scroll-forward] Podrsaj naprej za en zaslon.\n"
+
+#: info/infodoc.c:56
+msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
+msgstr "\\%-10[beginning-of-node] Pojdi na začetek tega vozlišča.\n"
+
+#: info/infodoc.c:57
+msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
+msgstr "\\%-10[end-of-node] Pojdi na konec tega vozlišča.\n"
+
+#: info/infodoc.c:59
+msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
+msgstr ""
+"\\%-10[move-to-next-xref] Preskoči na naslednjo hiperbesedilno povezavo.\n"
+
+#: info/infodoc.c:60
+msgid ""
+"\\%-10[select-reference-this-line]  Follow the hypertext link under the "
+"cursor.\n"
+msgstr ""
+"\\%-10[select-reference-this-line] Sledi hiperbesedilni povezavi pod "
+"kazalko.\n"
+
+#: info/infodoc.c:61
+msgid "\\%-10[history-node]  Go back to the last node seen in this window.\n"
+msgstr "\\%-10[history-node] Pojdi v zadnjo vozlišče, videno v tem oknu.\n"
+
+#: info/infodoc.c:63
+msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
+msgstr "\\%-10[global-prev-node] Pojdi v predhodno vozlišče v dokumentu.\n"
+
+#: info/infodoc.c:64
+msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
+msgstr "\\%-10[global-next-node] Pojdi v naslednje vozlišče v dokumentu.\n"
+
+#: info/infodoc.c:65
+msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
+msgstr "\\%-10[prev-node] Pojdi v predhodno vozlišče na tej ravni.\n"
+
+#: info/infodoc.c:66
+msgid "\\%-10[next-node]  Go to the next node on this level.\n"
+msgstr "\\%-10[next-node] Pojdi v naslednje vozlišče na tej ravni.\n"
+
+#: info/infodoc.c:67
+msgid "\\%-10[up-node]  Go up one level.\n"
+msgstr "\\%-10[up-node] Pojdi gor za eno raven.\n"
+
+#: info/infodoc.c:68
+msgid "\\%-10[top-node]  Go to the top node of this document.\n"
+msgstr "\\%-10[top-node] Pojdi v najvišje vozlišče tega dokumenta\n"
+
+#: info/infodoc.c:69
+msgid "\\%-10[dir-node]  Go to the main `directory' node.\n"
+msgstr "\\%-10[dir-node] Pojdi v glavno vozlišče `mape'.\n"
+
+#: info/infodoc.c:71
+msgid "1...9       Pick the first...ninth item in this node's menu.\n"
+msgstr "1 ... 9 Izberi prvi ... deveti predmet v tem meniju vozlišča.\n"
+
+#: info/infodoc.c:72
+msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
+msgstr "\\%-10[last-menu-item] Izberi zadnji predmet v tem meniju vozlišča.\n"
+
+#: info/infodoc.c:73
+msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
+msgstr "\\%-10[menu-item] Izberi predmet menija, podanega z imenom.\n"
+
+#: info/infodoc.c:74
+msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
+msgstr "\\%-10[xref-item] Sledi vzdolž sklica, podanega z imenom.\n"
+
+#: info/infodoc.c:75
+msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
+msgstr "\\%-10[goto-node]  Pojdi v vozlišče, podano z imenom.\n"
+
+#: info/infodoc.c:77
+msgid "\\%-10[search]  Search forward for a specified string.\n"
+msgstr "\\%-10[search] Išči naprej za podan niz.\n"
+
+#: info/infodoc.c:78
+msgid "\\%-10[search-previous]  Search for previous occurrence.\n"
+msgstr "\\%-10[search-previous] Išči predhodno pojavitev.\n"
+
+#: info/infodoc.c:79
+msgid "\\%-10[search-next]  Search for next occurrence.\n"
+msgstr "\\%-10[search-next] Išči naslednjo pojavitev.\n"
+
+#: info/infodoc.c:80
+msgid ""
+"\\%-10[index-search]  Search for a specified string in the index, and\n"
+"              select the node referenced by the first entry found.\n"
+msgstr ""
+"\\%-10[index-search] Išči podan niz v kazalu in izberi vozlišče, ki je\n"
+"              sklicevano s prvim najdenim vnosom.\n"
+
+#: info/infodoc.c:82
+msgid "\\%-10[virtual-index]  Synthesize menu of matching index entries.\n"
+msgstr ""
+
+#: info/infodoc.c:84
+msgid "\\%-10[abort-key]  Cancel the current operation.\n"
+msgstr "\\%-10[abort-key] Prekliči trenutno opravilo.\n"
+
+#: info/infodoc.c:92
+msgid ""
+"Basic Commands in Info Windows\n"
+"******************************\n"
+msgstr ""
+"Osnovni ukazi v Oknih Info\n"
+"******************************\n"
+
+#: info/infodoc.c:95
+#, c-format
+msgid "  %-10s  Quit this help.\n"
+msgstr "  %-10s Končaj to pomoč.\n"
+
+#: info/infodoc.c:96
+#, c-format
+msgid "  %-10s  Quit Info altogether.\n"
+msgstr "  %-10s Končaj Info v celoti.\n"
+
+#: info/infodoc.c:97
+#, c-format
+msgid "  %-10s  Invoke the Info tutorial.\n"
+msgstr "  %-10s Prikliči vodnik Info.\n"
+
+#: info/infodoc.c:101
+#, c-format
+msgid "  %-10s  Move to the `next' node of this node.\n"
+msgstr "  %-10s Pomakni se v `naslednje' vozlišče tega vozlišča.\n"
+
+#: info/infodoc.c:102
+#, c-format
+msgid "  %-10s  Move to the `previous' node of this node.\n"
+msgstr "  %-10s Pomakni se v `predhodno' vozlišče tega vozlišča.\n"
+
+#: info/infodoc.c:103
+#, c-format
+msgid "  %-10s  Move `up' from this node.\n"
+msgstr "  %-10s Pomakni se `gor' iz tega vozlišča.\n"
+
+#: info/infodoc.c:104
+#, c-format
+msgid ""
+"  %-10s  Pick menu item specified by name.\n"
+"              Picking a menu item causes another node to be selected.\n"
+msgstr ""
+"  %-10s Izberi predmet menija, podanega z imenom.\n"
+"              Izbira predmeta menija povzroči, da je izbrano drugo "
+"vozlišče.\n"
+
+#: info/infodoc.c:106
+#, c-format
+msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
+msgstr "  %-10s Sledi navzkrižni sklic. Prebere ime sklica.\n"
+
+#: info/infodoc.c:107
+#, c-format
+msgid "  %-10s  Move to the last node seen in this window.\n"
+msgstr "  %-10s  Pomakni se v zadnje videno vozlišče v tem oknu\n"
+
+#: info/infodoc.c:108
+#, c-format
+msgid "  %-10s  Skip to next hypertext link within this node.\n"
+msgstr ""
+"  %-10s Preskoči na naslednjo hiperbesedilno povezavo v tem vozlišču.\n"
+
+#: info/infodoc.c:109
+#, c-format
+msgid "  %-10s  Follow the hypertext link under cursor.\n"
+msgstr "  %-10s Sledi hiperbesedilni povezavi pod kazalko.\n"
+
+#: info/infodoc.c:110
+#, c-format
+msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
+msgstr "  %-10s Pomakni se v vozlišče `map'. Enakovredno `g (DIR)'.\n"
+
+#: info/infodoc.c:111
+#, c-format
+msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
+msgstr "  %-10s Premakni se v Najvišje vozlišče.  Enakovredno `g Top'.\n"
+
+#: info/infodoc.c:113
+msgid ""
+"Moving within a node:\n"
+"---------------------\n"
+msgstr ""
+"Premikanje znotraj vozlišča:\n"
+"---------------------\n"
+
+#: info/infodoc.c:115
+#, c-format
+msgid "  %-10s  Scroll forward a page.\n"
+msgstr "  %-10s Pomakni se naprej za eno stran.\n"
+
+#: info/infodoc.c:116
+#, c-format
+msgid "  %-10s  Scroll backward a page.\n"
+msgstr "  %-10s Pomakni se nazaj za eno stran.\n"
+
+#: info/infodoc.c:117
+#, c-format
+msgid "  %-10s  Go to the beginning of this node.\n"
+msgstr "  %-10s Pojdi na začetek tega vozlišča\n"
+
+#: info/infodoc.c:118
+#, c-format
+msgid "  %-10s  Go to the end of this node.\n"
+msgstr "  %-10s Pojdi na konec tega vozlišča\n"
+
+#: info/infodoc.c:119
+#, c-format
+msgid "  %-10s  Scroll forward 1 line.\n"
+msgstr "  %-10s Pomakni se naprej za 1 vrstico.\n"
+
+#: info/infodoc.c:120
+#, c-format
+msgid "  %-10s  Scroll backward 1 line.\n"
+msgstr "  %-10s Pomakni se nazaj za 1 vrstico.\n"
+
+#: info/infodoc.c:122
+msgid ""
+"Other commands:\n"
+"---------------\n"
+msgstr ""
+"Drugi ukazi:\n"
+"---------------\n"
+
+#: info/infodoc.c:124
+#, c-format
+msgid "  %-10s  Pick first...ninth item in node's menu.\n"
+msgstr "  %-10s Izberi prvi ... deveti predmet v meniju vozlišča.\n"
+
+#: info/infodoc.c:125
+#, c-format
+msgid "  %-10s  Pick last item in node's menu.\n"
+msgstr "  %-10s Izberi zadnji predmet v meniju vozlišča.\n"
+
+#: info/infodoc.c:128
+#, c-format
+msgid ""
+"  %-10s  Search for a specified string in the index entries of this Info\n"
+"              file, and select the node referenced by the first entry "
+"found.\n"
+msgstr ""
+"  %-10s Poišči določen niz v vnosih kazala te datoteke Info in izberi\n"
+"              vozlišče, sklicevano s prvim najdenim vnosom.\n"
+
+#: info/infodoc.c:130
+#, c-format
+msgid ""
+"  %-10s  Move to node specified by name.\n"
+"              You may include a filename as well, as in (FILENAME)NODENAME.\n"
+msgstr ""
+"  %-10s Premakni se v vozlišče, podano z imenom.\n"
+"              Vključite lahko tudi ime datoteke na način (IME_DATOTEKE)"
+"IME_VOZLIŠČA.\n"
+
+#: info/infodoc.c:132
+#, c-format
+msgid ""
+"  %-10s  Search forward for a specified string,\n"
+"              and select the node in which the next occurrence is found.\n"
+msgstr ""
+"  %-10s  Išči naprej za podan niz\n"
+"              in izberi vozlišče, v katerem je najdena naslednja pojavitev.\n"
+
+#: info/infodoc.c:134
+#, c-format
+msgid ""
+"  %-10s  Search backward for a specified string,\n"
+"              and select the node in which the next occurrence is found.\n"
+msgstr ""
+"  %-10s  Išči nazaj za podan niz\n"
+"              in izberi vozlišče, v katerem je najdena naslednja pojavitev.\n"
+
+#: info/infodoc.c:312
+#, c-format
+msgid "The current search path is:\n"
+msgstr "Trenutna pot iskanja je:\n"
+
+#: info/infodoc.c:315
+#, c-format
+msgid ""
+"Commands available in Info windows:\n"
+"\n"
+msgstr ""
+"Ukazi, ki so na voljo v oknih Info:\n"
+"\n"
+
+#: info/infodoc.c:318
+#, c-format
+msgid ""
+"Commands available in the echo area:\n"
+"\n"
+msgstr ""
+"Ukazi, ki so na voljo na področju echo:\n"
+"\n"
+
+#: info/infodoc.c:339
+#, c-format
+msgid ""
+"The following commands can only be invoked via %s:\n"
+"\n"
+msgstr ""
+"Naslednje ukaze je moč priklicati samo s pomočjo %s:\n"
+"\n"
+
+#: info/infodoc.c:343
+#, c-format
+msgid ""
+"The following commands cannot be invoked at all:\n"
+"\n"
+msgstr ""
+"Naslednjih ukazov sploh ni mogoče priklicati:\n"
+"\n"
+
+#: info/infodoc.c:469
+msgid "Display help message"
+msgstr "Prikaži sporočilo pomoči"
+
+#: info/infodoc.c:487
+msgid "Visit Info node `(info)Help'"
+msgstr "Obiščite vozlišče Info `(info)Help'"
+
+#: info/infodoc.c:613
+msgid "Print documentation for KEY"
+msgstr "Prikaži dokumentacijo za TIPKO"
+
+#: info/infodoc.c:625
+#, c-format
+msgid "Describe key: %s"
+msgstr "Opiši tipko: %s"
+
+#: info/infodoc.c:635
+#, c-format
+msgid "ESC %s is undefined."
+msgstr "ESC %s je nedoločen."
+
+#: info/infodoc.c:651 info/infodoc.c:679
+#, c-format
+msgid "%s is undefined."
+msgstr "%s je nedoločen."
+
+#: info/infodoc.c:700
+#, c-format
+msgid "%s is defined to %s."
+msgstr "%s je določen k %s."
+
+#: info/infodoc.c:1124
+msgid "Show what to type to execute a given command"
+msgstr "Prikaži, kaj je potrebno natipkati za izvedbo danega ukaza"
+
+#: info/infodoc.c:1128
+msgid "Where is command: "
+msgstr "Kje je ukaz: "
+
+#: info/infodoc.c:1150
+#, c-format
+msgid "`%s' is not on any keys"
+msgstr "`%s' ni na nobeni tipki"
+
+#: info/infodoc.c:1156
+#, c-format
+msgid "%s can only be invoked via %s."
+msgstr "%s je lahko priklican samo s %s."
+
+#: info/infodoc.c:1160
+#, c-format
+msgid "%s can be invoked via %s."
+msgstr "%s je lahko priklican s %s."
+
+#: info/infodoc.c:1165
+#, c-format
+msgid "There is no function named `%s'"
+msgstr "Funkcija z imenom `%s' ne obstaja"
+
+#: info/infodoc.c:99
+msgid ""
+"Selecting other nodes:\n"
+"----------------------\n"
+msgstr ""
+"Izbira drugih vozlišč:\n"
+"----------------------\n"
+
+#: info/infokey.c:170
+#, c-format
+msgid "incorrect number of arguments"
+msgstr "neveljavno število argumentov"
+
+#: info/infokey.c:200
+#, c-format
+msgid "cannot open input file `%s'"
+msgstr "ni mogoče odpreti datoteke vnosa `%s'"
+
+#: info/infokey.c:214
+#, c-format
+msgid "cannot create output file `%s'"
+msgstr "ni mogoče ustvariti datoteke vnosa `%s'"
+
+#: info/infokey.c:225
+#, c-format
+msgid "error writing to `%s'"
+msgstr "napaka med branjem v `%s'"
+
+#: info/infokey.c:231
+#, c-format
+msgid "error closing output file `%s'"
+msgstr "napaka med končanjem datoteke vnosa `%s'"
+
+#: info/infokey.c:450
+#, c-format
+msgid "key sequence too long"
+msgstr "tipkovno zaporedje je predolgo"
+
+#: info/infokey.c:528
+#, c-format
+msgid "missing key sequence"
+msgstr "manjka tipkovno zaporedje"
+
+#: info/infokey.c:608
+#, c-format
+msgid "NUL character (\\000) not permitted"
+msgstr "znak NUL (\\000) ni dovoljen"
+
+#: info/infokey.c:638
+#, c-format
+msgid "NUL character (^%c) not permitted"
+msgstr "znak NUL (^%c) ni dovoljen"
+
+#: info/infokey.c:661
+#, c-format
+msgid "missing action name"
+msgstr "manjka ime dejanja"
+
+#: info/infokey.c:676 info/infokey.c:746
+#, c-format
+msgid "section too long"
+msgstr "odsek je predolg"
+
+#: info/infokey.c:682
+#, c-format
+msgid "unknown action `%s'"
+msgstr "neznano dejanje `%s'"
+
+#: info/infokey.c:692
+#, c-format
+msgid "action name too long"
+msgstr "ime dejanja je predolgo"
+
+#: info/infokey.c:705
+#, c-format
+msgid "extra characters following action `%s'"
+msgstr "dodatni znaki sledijo dejanju `%s'"
+
+#: info/infokey.c:716
+#, c-format
+msgid "missing variable name"
+msgstr "manjka ime spremenljivke"
+
+#: info/infokey.c:725
+#, c-format
+msgid "missing `=' immediately after variable name"
+msgstr "takoj za imenom spremenljivke manjka `='"
+
+#: info/infokey.c:732
+#, c-format
+msgid "variable name too long"
+msgstr "ime spremenljivke je predolgo"
+
+#: info/infokey.c:754
+#, c-format
+msgid "value too long"
+msgstr "vrednost je predolga"
+
+#: info/infokey.c:882
+#, c-format
+msgid "\"%s\", line %u: "
+msgstr "\"%s\", vrstica %u: "
+
+#: info/infokey.c:900
+#, c-format
+msgid ""
+"Usage: %s [OPTION]... [INPUT-FILE]\n"
+"\n"
+"Compile infokey source file to infokey file.  Reads INPUT-FILE (default\n"
+"$HOME/.infokey) and writes compiled key file to (by default) $HOME/.info.\n"
+"\n"
+"Options:\n"
+"  --output FILE        output to FILE instead of $HOME/.info\n"
+"  --help               display this help and exit.\n"
+"  --version            display version information and exit.\n"
+msgstr ""
+"Uporaba: %s [MOŽNOST]... [VHODNA-DATOTEKA]\n"
+"\n"
+"Kodno prevedi izvorno datoteko infokey v datoteko infokey. Prebere\n"
+"VHODNO-DATOTEKO (privzeto $HOME/.infokey) in zapiše kodno\n"
+"prevedeno datoteko ključa v (privzeto) $HOME/.info.\n"
+"\n"
+"Možnosti:\n"
+"  --output DATOTEKA izpis v DATOTEKO, namesto v $HOME/.info\n"
+"  --help prikaži to pomoč in končaj\n"
+"  --version prikaži podrobnosti različice in končaj.\n"
+
+#: info/infomap.c:956
+#, c-format
+msgid "Ignoring invalid infokey file `%s' - too small"
+msgstr "Preziranje neveljavne datoteke infokey `%s' - premajhna"
+
+#: info/infomap.c:959
+#, c-format
+msgid "Ignoring invalid infokey file `%s' - too big"
+msgstr "Preziranje neveljavne datoteke infokey `%s' - prevelika"
+
+#: info/infomap.c:972
+#, c-format
+msgid "Error reading infokey file `%s' - short read"
+msgstr "Napaka med branjem datoteke infokey `%s' - kratko branje"
+
+#: info/infomap.c:991
+#, c-format
+msgid ""
+"Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+msgstr ""
+"Neveljavna datoteka infokey `%s' (slabe magične številke) - zaženite infokey "
+"za posodobitev"
+
+#: info/infomap.c:1000
+#, c-format
+msgid "Your infokey file `%s' is out of date -- run infokey to update it"
+msgstr ""
+"Vaša datoteka infokey `%s' je zastarela - zaženite infokey za posodobitev"
+
+#: info/infomap.c:1016
+#, c-format
+msgid ""
+"Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+msgstr ""
+"Neveljavna datoteka infokey `%s' (slaba dolžina odseka) -- zaženite infokey "
+"za posodobitev"
+
+#: info/infomap.c:1037
+#, c-format
+msgid ""
+"Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+msgstr ""
+"Neveljavna datoteka infokey `%s' (slaba koda odseka) -- zaženite infokey za "
+"posodobitev"
+
+#: info/infomap.c:1172
+msgid "Bad data in infokey file -- some key bindings ignored"
+msgstr ""
+"Slabi podatki v datoteki infokey -- nekatere tipkovne bližnjice so prezrte"
+
+#: info/infomap.c:1221
+msgid "Bad data in infokey file -- some var settings ignored"
+msgstr ""
+"Slabi podatki v datoteki infokey -- nekatere nastavitve spremenljivk so "
+"prezrte"
+
+#: info/m-x.c:68
+msgid "Read the name of an Info command and describe it"
+msgstr "Preberi ime ukaza Info in ga opiši"
+
+#: info/m-x.c:72
+msgid "Describe command: "
+msgstr "Opiši ukaz: "
+
+#: info/m-x.c:95
+msgid "Read a command name in the echo area and execute it"
+msgstr "Preberi ime ukaza v področju echo  in ga izvrši"
+
+#: info/m-x.c:139
+#, c-format
+msgid "Cannot execute an `echo-area' command here."
+msgstr "Ukaza `echo-area' ni mogoče izvršiti tukaj."
+
+#: info/m-x.c:152
+#, c-format
+msgid "Undefined command: %s"
+msgstr "Nedoločen ukaz: %s"
+
+#: info/m-x.c:158
+msgid "Set the height of the displayed window"
+msgstr "Nastavi višino prikazanega okna"
+
+#: info/m-x.c:171
+#, c-format
+msgid "Set screen height to (%d): "
+msgstr "Nastavi višino zaslona na (%d): "
+
+#: info/makedoc.c:166 info/makedoc.c:174
+#, c-format
+msgid ""
+"   Source files groveled to make this file include:\n"
+"\n"
+msgstr ""
+
+#: info/makedoc.c:556
+#, c-format
+msgid "Couldn't manipulate the file %s.\n"
+msgstr "Ni mogoče obdelati datoteke %s.\n"
+
+#: info/nodemenu.c:30
+msgid ""
+"\n"
+"* Menu:\n"
+"  (File)Node                        Lines   Size   Containing File\n"
+"  ----------                        -----   ----   ---------------"
+msgstr ""
+"\n"
+"* Meni:\n"
+"  (Datoteka)Vozlišče Vrstice Velikost Vsebujoča datoteka\n"
+"  ---------- ----- ---- ---------------"
+
+#: info/nodemenu.c:201
+msgid ""
+"Here is the menu of nodes you have recently visited.\n"
+"Select one from this menu, or use `\\[history-node]' in another window.\n"
+msgstr ""
+"Tukaj je meni vozlišč, ki ste jih pred kratkim obiskali.\n"
+"Izberite eno iz menija ali pa uporabite `\\[history-node]' v drugem oknu.\n"
+
+#: info/nodemenu.c:221
+msgid "Make a window containing a menu of all of the currently visited nodes"
+msgstr "Ustvari okno, ki vsebuje meni vseh trenutno obiskanih vozlišč"
+
+#: info/nodemenu.c:301
+msgid "Select a node which has been previously visited in a visible window"
+msgstr "Izberi vozlišče, ki je bilo predhodno obiskano v vidnem oknu"
+
+#: info/nodemenu.c:314
+msgid "Select visited node: "
+msgstr "Izberi obiskana vozlišča: "
+
+#: info/nodemenu.c:334 info/session.c:2592
+#, c-format
+msgid "The reference disappeared! (%s)."
+msgstr "Sklic je izginil! (%s)."
+
+#: info/search.c:166
+#, c-format
+msgid "regexp error: %s"
+msgstr "napaka logičnega izraza: %s"
+
+#: info/session.c:156
+#, c-format
+msgid ""
+"Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
+"for menu item."
+msgstr ""
+"Dobrodošli v Info različice %s. Za pomoč vpišite \\[get-help-window], za "
+"predmet menija pa \\[menu-item]."
+
+#: info/session.c:622
+msgid "Move down to the next line"
+msgstr "Pomakni se navzdol v naslednjo vrstico"
+
+#: info/session.c:674
+msgid "Move up to the previous line"
+msgstr "Pomakni se navzgor v predhodno vrstico"
+
+#: info/session.c:944
+msgid "Move to the end of the line"
+msgstr "Pomakni se na konec vrstice"
+
+#: info/session.c:955
+msgid "Move to the start of the line"
+msgstr "Pomakni se na začetek vrstice"
+
+#: info/session.c:1155
+msgid "Next"
+msgstr "Naprej"
+
+#: info/session.c:1171 info/session.c:1295
+msgid "No more nodes within this document."
+msgstr "V tem dokumentu ni več vozlišč."
+
+#: info/session.c:1320
+msgid "No `Prev' for this node."
+msgstr "Brez `Pred' za to vozlišče."
+
+#: info/session.c:1340
+msgid "No `Prev' or `Up' for this node within this document."
+msgstr "Brez `Pred' ali `Gor' za to vozlišče znotraj tega dokumenta."
+
+#: info/session.c:1401
+msgid "Move forwards or down through node structure"
+msgstr "Pomakni se naprej ali dol skozi strukturo vozlišča"
+
+#: info/session.c:1417
+msgid "Move backwards or up through node structure"
+msgstr "Pomakni se nazaj ali gor skozi strukturo vozlišča"
+
+#: info/session.c:1518
+msgid "Scroll forward in this window"
+msgstr "Podrsaj  naprej v tem oknu"
+
+#: info/session.c:1526
+msgid "Scroll forward in this window and set default window size"
+msgstr "Podrsaj naprej v tem oknu in nastavi privzeto velikost okna"
+
+#: info/session.c:1534
+msgid "Scroll forward in this window staying within node"
+msgstr "Podrsaj naprej v tem oknu in ostani znotraj vozlišča"
+
+#: info/session.c:1542
+msgid ""
+"Scroll forward in this window staying within node and set default window size"
+msgstr ""
+"Podrsaj naprej v tem oknu in ostani znotraj vozlišča ter nastavi privzeto "
+"velikost okna"
+
+#: info/session.c:1550
+msgid "Scroll backward in this window"
+msgstr "Podrsaj nazaj v tem oknu"
+
+#: info/session.c:1558
+msgid "Scroll backward in this window and set default window size"
+msgstr "Podrsaj nazaj v tem oknu in nastavi privzeto velikost okna"
+
+#: info/session.c:1567
+msgid "Scroll backward in this window staying within node"
+msgstr "Podrsaj nazaj v tem oknu in ostani znotraj vozlišča"
+
+#: info/session.c:1575
+msgid ""
+"Scroll backward in this window staying within node and set default window "
+"size"
+msgstr ""
+"Podrsaj nazaj v tem oknu in ostani znotraj vozlišča in nastavi privzeto "
+"velikost okna"
+
+#: info/session.c:1583
+msgid "Move to the start of this node"
+msgstr "Pomakni se na začetek tega vozlišča"
+
+#: info/session.c:1590
+msgid "Move to the end of this node"
+msgstr "Pomakni se na konec tega vozlišča"
+
+#: info/session.c:1597
+msgid "Scroll down by lines"
+msgstr "Podrsaj dol po vrsticah"
+
+#: info/session.c:1614
+msgid "Scroll up by lines"
+msgstr "Podrsaj gor po vrsticah"
+
+#: info/session.c:1632
+msgid "Scroll down by half screen size"
+msgstr "Podrsaj dol za pol velikosti zaslona"
+
+#: info/session.c:1658
+msgid "Scroll up by half screen size"
+msgstr "Podrsaj gor za pol velikosti zaslona"
+
+#: info/session.c:1687
+msgid "Select the next window"
+msgstr "Izberi naslednje okno"
+
+#: info/session.c:1726
+msgid "Select the previous window"
+msgstr "Izberi predhodno okno"
+
+#: info/session.c:1777
+msgid "Split the current window"
+msgstr "Razdeli trenutno okno"
+
+#: info/session.c:1859
+msgid "Delete the current window"
+msgstr "Izbriši trenutno okno"
+
+#: info/session.c:1867
+msgid "Cannot delete a permanent window"
+msgstr "Trajnega okna ni mogoče izbrisati"
+
+#: info/session.c:1899
+msgid "Delete all other windows"
+msgstr "Izbriši vsa ostala okna"
+
+#: info/session.c:1945
+msgid "Scroll the other window"
+msgstr "Podrsaj drugo okno"
+
+#: info/session.c:1966
+msgid "Scroll the other window backward"
+msgstr "Podrsaj drugo okno nazaj"
+
+#: info/session.c:1972
+msgid "Grow (or shrink) this window"
+msgstr "Povečaj (ali pomanjšaj) to okno"
+
+#: info/session.c:1983
+msgid "Divide the available screen space among the visible windows"
+msgstr "Razdeli razpoložljiv prostor na zaslonu med vidna okna"
+
+#: info/session.c:1990
+msgid "Toggle the state of line wrapping in the current window"
+msgstr "Preklopi stanje preloma vrstic v trenutnem oknu"
+
+#: info/session.c:1997
+msgid "Toggle the usage of regular expressions in searches"
+msgstr "Preklopi uporabo logičnih izrazov v iskanjih"
+
+#: info/session.c:2001
+#, c-format
+msgid "Using regular expressions for searches."
+msgstr "Uporaba logičnih izrazov za iskanja"
+
+#: info/session.c:2002
+#, c-format
+msgid "Using literal strings for searches."
+msgstr "Uporaba znakovnih nizov za iskanja"
+
+#: info/session.c:2172
+msgid "Select the Next node"
+msgstr "Izberi nasled. vozlišče"
+
+#: info/session.c:2180
+msgid "Select the Prev node"
+msgstr "Izberi pred. vozlišče"
+
+#: info/session.c:2188
+msgid "Select the Up node"
+msgstr "Izberi zgor. vozlišče"
+
+#: info/session.c:2195
+msgid "Select the last node in this file"
+msgstr "Izberi zadnje vozlišče v tej datoteki"
+
+#: info/session.c:2223 info/session.c:2257
+msgid "This window has no additional nodes"
+msgstr "To okno nima dodatnih vozlišč"
+
+#: info/session.c:2229
+msgid "Select the first node in this file"
+msgstr "Izberi prvo vozlišče v tej datoteki"
+
+#: info/session.c:2264
+msgid "Select the last item in this node's menu"
+msgstr "Izberi zadnji predmet v tem meniju vozlišča"
+
+#: info/session.c:2270
+msgid "Select this menu item"
+msgstr "Izberi ta predmet menija"
+
+#: info/session.c:2303
+#, fuzzy, c-format
+msgid "There isn't %d item in this menu."
+msgid_plural "There aren't %d items in this menu."
+msgstr[0] "V tem meniju ni %d predmetov."
+msgstr[1] "V tem meniju ni %d predmetov."
+
+#: info/session.c:2499 info/session.c:2500
+#, c-format
+msgid "Menu item (%s): "
+msgstr "Predmet menija (%s): "
+
+#: info/session.c:2503
+msgid "Menu item: "
+msgstr "Predmet menija: "
+
+#: info/session.c:2510 info/session.c:2511
+#, c-format
+msgid "Follow xref (%s): "
+msgstr "Sledi xref (%s): "
+
+#: info/session.c:2514
+msgid "Follow xref: "
+msgstr "Sledi xref: "
+
+#: info/session.c:2641
+msgid "Read a menu item and select its node"
+msgstr "Preberi predmet menija in izberi njegovo vozlišče"
+
+#: info/session.c:2649
+msgid "Read a footnote or cross reference and select its node"
+msgstr ""
+"Preberi sprotno opombo ali pa navzkrižni sklic in izberi njuno vozlišče"
+
+#: info/session.c:2655
+msgid "Move to the start of this node's menu"
+msgstr "Premakni se na začetek tega menija vozlišča"
+
+#: info/session.c:2677
+msgid "Visit as many menu items at once as possible"
+msgstr "Če je možno, obišči čim več predmetov menijev naenkrat"
+
+#: info/session.c:2705
+msgid "Read a node name and select it"
+msgstr "Preberi ime vozlišča in ga izberi"
+
+#: info/session.c:2760 info/session.c:2765
+msgid "Goto node: "
+msgstr "Pojdi v vozlišče: "
+
+#: info/session.c:2830
+#, c-format
+msgid "No menu in node `%s'."
+msgstr "V vozlišču `%s' ni menijev."
+
+#: info/session.c:2877
+#, c-format
+msgid "No menu item `%s' in node `%s'."
+msgstr "V vozlišču `%s' ni predmetov menijev `%s'."
+
+#: info/session.c:2910
+#, c-format
+msgid "Unable to find node referenced by `%s' in `%s'."
+msgstr "Ni mogoče najti vozlišča, sklicevanega s strani `%s' v `%s'."
+
+#: info/session.c:2960
+msgid "Read a list of menus starting from dir and follow them"
+msgstr "Preberi seznam menijev, ki se začnejo v mapi in jim sledi"
+
+#: info/session.c:2962
+msgid "Follow menus: "
+msgstr "Sledi menijem: "
+
+#: info/session.c:3155
+msgid "Find the node describing program invocation"
+msgstr "Najdi vozlišče, ki opisuje priklic programa"
+
+#: info/session.c:3157
+#, c-format
+msgid "Find Invocation node of [%s]: "
+msgstr "Najdi vozlišče priklica [%s]: "
+
+#: info/session.c:3195
+msgid "Read a manpage reference and select it"
+msgstr "preberi priročniško stran in jo izberi"
+
+#: info/session.c:3199
+msgid "Get Manpage: "
+msgstr "Pridobi stran priročnika: "
+
+#: info/session.c:3229
+msgid "Select the node `Top' in this file"
+msgstr "Izberi vozlišče `Top' v tej datoteki"
+
+#: info/session.c:3235
+msgid "Select the node `(dir)'"
+msgstr "Izberi vozlišče `(dir)'"
+
+#: info/session.c:3252 info/session.c:3254
+#, c-format
+msgid "Kill node (%s): "
+msgstr "Uniči vozlišče (%s): "
+
+#: info/session.c:3306
+#, c-format
+msgid "Cannot kill node `%s'"
+msgstr "Vozlišča `%s' ni mogoče uničiti"
+
+#: info/session.c:3316
+msgid "Cannot kill the last node"
+msgstr "Zadnjega vozlišča ni mogoče uničiti"
+
+#: info/session.c:3402
+msgid "Select the most recently selected node"
+msgstr "Izberi nedavno izbrano vozlišče"
+
+#: info/session.c:3408
+msgid "Kill this node"
+msgstr "Uniči to vozlišče"
+
+#: info/session.c:3416
+msgid "Read the name of a file and select it"
+msgstr "Preberi ime vozlišča in ga izberi"
+
+#: info/session.c:3420
+msgid "Find file: "
+msgstr "Najdi datoteko: "
+
+#: info/session.c:3437
+#, c-format
+msgid "Cannot find `%s'."
+msgstr "Ni mogoče najti `%s'."
+
+#: info/session.c:3480 info/session.c:3597
+#, c-format
+msgid "Could not create output file `%s'."
+msgstr "Ni bilo mogoče ustvariti izhodne datoteke `%s'."
+
+#: info/session.c:3493 info/session.c:3614 info/session.c:3674
+msgid "Done."
+msgstr "Končano."
+
+#: info/session.c:3548
+#, c-format
+msgid "Writing node %s..."
+msgstr "Zapisovanje vozlišča %s ..."
+
+#: info/session.c:3623
+msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
+msgstr "Uporabi cev za vsebino tega vozlišča skozi INFO_PRINT_COMMAND"
+
+#: info/session.c:3658
+#, c-format
+msgid "Cannot open pipe to `%s'."
+msgstr "Ni mogoče odpreti cevi v `%s'."
+
+#: info/session.c:3664
+#, c-format
+msgid "Printing node %s..."
+msgstr "Izpisovanje vozlišča %s ..."
+
+#: info/session.c:3960
+msgid "Search continued from the end of the document."
+msgstr "Iskanje se nadaljuje od konca dokumenta."
+
+#: info/session.c:3965
+msgid "Search continued from the beginning of the document."
+msgstr "Iskanje se nadaljuje od začetka dokumenta."
+
+#: info/session.c:3982
+#, c-format
+msgid "Searching subfile %s ..."
+msgstr "Iskanje poddatoteke %s ..."
+
+#: info/session.c:4042
+msgid "Read a string and search for it case-sensitively"
+msgstr "Preberi niz in ga išči občutljivo na velikost črk"
+
+#: info/session.c:4049
+msgid "Read a string and search for it"
+msgstr "Preberi niz in ga poišči"
+
+#: info/session.c:4057
+msgid "Read a string and search backward for it"
+msgstr "Preberi niz in ga poišči v smeri nazaj"
+
+#: info/session.c:4093 info/session.c:4099
+#, c-format
+msgid "%s%s%s [%s]: "
+msgstr "%s%s%s [%s]: "
+
+#: info/session.c:4094 info/session.c:4100
+msgid "Regexp search"
+msgstr "Iskanje logičnega izraza"
+
+#: info/session.c:4095 info/session.c:4101
+msgid " case-sensitively"
+msgstr " ločevanje velikosti črk"
+
+#: info/session.c:4096 info/session.c:4102
+msgid " backward"
+msgstr " vzvratno"
+
+#: info/session.c:4100
+msgid "Search"
+msgstr "Iskanje"
+
+#: info/session.c:4148
+msgid "Search failed."
+msgstr "Iskanje je spodletelo."
+
+#: info/session.c:4166
+msgid "Repeat last search in the same direction"
+msgstr "Ponovi zadnje iskanje v isti smeri"
+
+#: info/session.c:4169 info/session.c:4179
+msgid "No previous search string"
+msgstr "Brez niza predhodnega iskanja"
+
+#: info/session.c:4176
+msgid "Repeat last search in the reverse direction"
+msgstr "Ponovi zadnje iskanje v obratni smeri"
+
+#: info/session.c:4195 info/session.c:4201
+msgid "Search interactively for a string as you type it"
+msgstr "Ko se vpisuje niz, ga išči vzajemno"
+
+#: info/session.c:4281
+msgid "Regexp I-search backward: "
+msgstr "Vzvratno I-iskanje logičnega izraza: "
+
+#: info/session.c:4282
+msgid "I-search backward: "
+msgstr "I-iskanje vzvratno: "
+
+#: info/session.c:4284
+msgid "Regexp I-search: "
+msgstr "I-iskanje logičnega izraza: "
+
+#: info/session.c:4285
+msgid "I-search: "
+msgstr "I-iskanje: "
+
+#: info/session.c:4310 info/session.c:4312
+msgid "Failing "
+msgstr "Spodletelo "
+
+#: info/session.c:4795
+msgid "Move to the previous cross reference"
+msgstr "Pomakni se na predhodni navzkrižni sklic"
+
+#: info/session.c:4813
+msgid "Move to the next cross reference"
+msgstr "Pomakni se na naslednji navzkrižni sklic"
+
+#: info/session.c:4835
+msgid "Select reference or menu item appearing on this line"
+msgstr "Izberi sklic ali predmet menija, ki se prikazuje v tej vrstici"
+
+#: info/session.c:4858
+msgid "Cancel current operation"
+msgstr "Prekliči trenutno opravilo"
+
+#: info/session.c:4865
+msgid "Quit"
+msgstr "Končaj"
+
+#: info/session.c:4874
+msgid "Move the cursor to a specific line of the window"
+msgstr "Premakni kazalko v določeno vrstico okna"
+
+#: info/session.c:4906
+msgid "Redraw the display"
+msgstr "Osveži zaslon"
+
+#: info/session.c:4943
+msgid "Quit using Info"
+msgstr "Končaj z uporabo Info"
+
+#: info/session.c:4956
+msgid "Run command bound to this key's lowercase variant"
+msgstr "Zaženi ukaz, določen tej izvedbi tipke z malimi črkami"
+
+#: info/session.c:4967
+#, c-format
+msgid "Unknown command (%s)."
+msgstr "Neznan ukaz (%s)."
+
+#: info/session.c:4970
+#, c-format
+msgid "\"%s\" is invalid"
+msgstr "\"%s\" je neveljaven"
+
+#: info/session.c:4971
+#, c-format
+msgid "`%s' is invalid"
+msgstr "`%s' je neveljaven"
+
+#: info/session.c:5186
+msgid "Add this digit to the current numeric argument"
+msgstr "Dodaj to števko trenutnemu številskemu argumentu"
+
+#: info/session.c:5195
+msgid "Start (or multiply by 4) the current numeric argument"
+msgstr "Začni (ali zmnoži s 4) trenutni številski argument"
+
+#: info/session.c:5210
+msgid "Internally used by \\[universal-argument]"
+msgstr "Notranja uporaba s \\[universal-argument]"
+
+#: info/tilde.c:336
+#, c-format
+msgid "readline: Out of virtual memory!\n"
+msgstr "vrstica branja: zmanjkalo je navideznega pomnilnika!\n"
+
+#: info/variables.c:37
+msgid "When \"On\", footnotes appear and disappear automatically"
+msgstr ""
+"Kadar je \"Vključeno\", se sprotne opombe prikažejo in izginejo samodejno"
+
+#: info/variables.c:41
+msgid "When \"On\", creating or deleting a window resizes other windows"
+msgstr ""
+"Kadar je \"Vključeno\", ustvarjanje ali izbris okna spremeni velikost drugih "
+"oken"
+
+#: info/variables.c:45
+msgid "When \"On\", flash the screen instead of ringing the bell"
+msgstr "Kadar je \"Vključeno\", naj utripa zaslon namesto zvonjenja z zvoncem"
+
+#: info/variables.c:49
+msgid "When \"On\", errors cause the bell to ring"
+msgstr "Kadar je \"Vključeno\", napake povzročijo zvonjenje zvonca"
+
+#: info/variables.c:53
+msgid "When \"On\", Info garbage collects files which had to be uncompressed"
+msgstr ""
+"Kadar je \"Vključeno\", Info sprošča pomnilnik datotek, ki so morale biti "
+"razširjene"
+
+#: info/variables.c:56
+msgid "When \"On\", the portion of the matched search string is highlighted"
+msgstr "Kadar je \"Vključeno\", je del ujemajočega niza iskanja označen"
+
+#: info/variables.c:60
+msgid "Controls what happens when scrolling is requested at the end of a node"
+msgstr "Nadzoruje, kaj se zgodi, ko je na koncu vozlišča zahtevano drsenje"
+
+#: info/variables.c:65
+msgid "Same as scroll-behaviour"
+msgstr "Enako kot obnašanje drsenja"
+
+#: info/variables.c:69
+msgid "The number lines to scroll when the cursor moves out of the window"
+msgstr "Število vrstic za drsenje, kadar se kazalka premakne izven okna"
+
+#: info/variables.c:73
+msgid "Controls whether scroll-behavior affects cursor movement commands"
+msgstr "Nadzoruje, če obnašanje drsenja vpliva na ukaze premikanja kazalke"
+
+#: info/variables.c:77
+msgid "When \"On\", Info accepts and displays ISO Latin characters"
+msgstr "Kadar je \"Vključeno\", Info sprejme in prikaže znake ISO Latin"
+
+#: info/variables.c:81
+msgid ""
+"What to do when a scrolling command is issued at the end of the last node"
+msgstr "Kaj storiti, kadar je ukaz drsenja izdan na koncu zadnjega vozlišča"
+
+#: info/variables.c:86
+msgid "Minimal length of a search string"
+msgstr ""
+
+#: info/variables.c:92
+msgid "Explain the use of a variable"
+msgstr "Pojasni uporabo spremenljivke"
+
+#: info/variables.c:98
+msgid "Describe variable: "
+msgstr "Opiši spremenljivko: "
+
+#: info/variables.c:117
+msgid "Set the value of an Info variable"
+msgstr "Nastavi vrednost spremenljivke Info"
+
+#: info/variables.c:123
+msgid "Set variable: "
+msgstr "Nastavi spremenljivko: "
+
+#: info/variables.c:141
+#, c-format
+msgid "Set %s to value (%d): "
+msgstr "Nastavi %s na vrednost (%d): "
+
+#: info/variables.c:182
+#, c-format
+msgid "Set %s to value (%s): "
+msgstr "Nastavi %s na vrednost (%s): "
+
+#: info/window.c:1032
+msgid "--*** Tags out of Date ***"
+msgstr "--*** Zastarele oznake ***"
+
+#: info/window.c:1043
+msgid "-----Info: (), lines ----, "
+msgstr "-----Info: (), vrstice ----, "
+
+#: info/window.c:1050
+#, c-format
+msgid "-%s---Info: %s, %d lines --%s--"
+msgstr "-%s---Info: %s, %d vrstic --%s--"
+
+#: info/window.c:1054
+#, c-format
+msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
+msgstr "-%s%s-Info: (%s)%s, %d vrstic --%s--"
+
+#: info/window.c:1061
+#, c-format
+msgid " Subfile: %s"
+msgstr " Poddatoteka: %s"
+
+#: install-info/install-info.c:285
+#, fuzzy, c-format
+msgid "%s for %s"
+msgstr " za %s"
+
+#: install-info/install-info.c:519
+#, c-format
+msgid "\tTry `%s --help' for a complete list of options.\n"
+msgstr "\tZa popoln seznam možnosti poskusite `%s --help'.\n"
+
+#: install-info/install-info.c:527
+#, c-format
+msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+msgstr "Uporaba: %s [MOŽNOST]... [DATOTEKA-INFO. [DATOTEKA-MAP]]\n"
+
+#: install-info/install-info.c:529
+msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
+msgstr "Dodaj ali odstrani vnose v DATOTEKI-INFO iz mape Info MAPA-DATOTEK"
+
+#: install-info/install-info.c:532
+msgid ""
+"Options:\n"
+" --debug             report what is being done.\n"
+" --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
+"                      don't insert any new entries.\n"
+" --description=TEXT  the description of the entry is TEXT; used with\n"
+"                      the --name option to become synonymous with the\n"
+"                      --entry option.\n"
+" --dir-file=NAME     specify file name of Info directory file;\n"
+"                      equivalent to using the DIR-FILE argument.\n"
+" --dry-run           same as --test."
+msgstr ""
+"Možnosti:\n"
+" --debug poročaj, kaj bo storjeno.\n"
+" --delete izbriši obstoječe vnose za DATOTEKO-INFO. iz DATOTEKE-MAP;\n"
+"                      ne vstavljaj novih vnosov.\n"
+" --description=BESEDILO opis vnosa je BESEDILO; uporabljeno\n"
+"                      z možnostjo --name lahko postane sopomenka \n"
+"                      z možnostjo --entry.\n"
+" --dir-file=IME navedi ime datoteke datoteke mape Info;\n"
+"                      enakovredno  uporabi argument MAPE-DATOTEK.\n"
+" --dry-run enako kot --test."
+
+#: install-info/install-info.c:544
+msgid ""
+" --entry=TEXT        insert TEXT as an Info directory entry.\n"
+"                      TEXT is written as an Info menu item line followed\n"
+"                       by zero or more extra lines starting with "
+"whitespace.\n"
+"                      If you specify more than one entry, all are added.\n"
+"                      If you don't specify any entries, they are determined\n"
+"                       from information in the Info file itself.\n"
+"                      When removing, TEXT specifies the entry to remove.\n"
+"                      TEXT is only removed as a last resort, if the\n"
+"                      entry as determined from the Info file is not "
+"present,\n"
+"                      and the basename of the Info file isn't found either."
+msgstr ""
+" --entry=BESEDILO vstavi BESEDILO kot vnos mape Info.\n"
+"                      BESEDILO je napisano kot predmet menija Info, čemur\n"
+"                       sledi ničla ali več dodatnih vrstic, začenši s "
+"presledkom.\n"
+"                      Če navedete več kot en vnos, so dodani vsi.\n"
+"                      Če ne navedete nobenih vnosov, so določeni na\n"
+"                       podlagi podatkov v sami datoteki Info.\n"
+"                      Pri odstranjevanju BESEDILO navede vnos za "
+"odstranitev.\n"
+"                      BESEDILO je odstranjeno samo v skrajnem primeru,\n"
+"                      če vnos, naveden iz datoteke Info ni prisoten in če\n"
+"                      osnovnega imena datoteke Info tudi ni mogoče najti."
+
+#: install-info/install-info.c:556
+msgid ""
+" --help              display this help and exit.\n"
+" --info-dir=DIR      same as --dir-file=DIR/dir.\n"
+" --info-file=FILE    specify Info file to install in the directory;\n"
+"                      equivalent to using the INFO-FILE argument.\n"
+" --item=TEXT         same as --entry=TEXT.\n"
+" --keep-old          do not replace entries, or remove empty sections.\n"
+" --menuentry=TEXT    same as --name=TEXT.\n"
+" --name=TEXT         the name of the entry is TEXT; used with --description\n"
+"                      to become synonymous with the --entry option.\n"
+" --no-indent         do not format new entries in the DIR file.\n"
+" --quiet             suppress warnings."
+msgstr ""
+" --help prikaži to pomoč in končaj.\n"
+" --info-dir=MAPA enako kot --dir-file=MAPA/mapa.\n"
+" --info-file=DATOTEKA navedi datoteko Info za namestitev v mapi;\n"
+"                      enakovredno uporabi argumenta DATOTEKA-INFO.\n"
+" --item=BESEDILO enako kot --entry=BESEDILO.\n"
+" --keep-old ne zamenjaj vnosov ali odstrani prazne odseke.\n"
+" --menuentry=BESEDILO enako kot --name=BESEDILO.\n"
+" --name=BESEDILO ime vnosa je BESEDILO; uporaba z --description\n"
+"                      da postane sopomenka z možnostjo --entry.\n"
+" --no-indent ne oblikuj novih vnosov v datoteki MAPA.\n"
+" --quiet zatri opozorila."
+
+#: install-info/install-info.c:569
+msgid ""
+" --regex=R           put this file's entries in all sections that match the\n"
+"                      regular expression R (ignoring case).\n"
+" --remove            same as --delete.\n"
+" --remove-exactly    only remove if the info file name matches exactly;\n"
+"                      suffixes such as .info and .gz are not ignored.\n"
+" --section=SEC       put entries in section SEC of the directory.\n"
+"                      If you specify more than one section, all the entries\n"
+"                       are added in each of the sections.\n"
+"                      If you don't specify any sections, they are "
+"determined\n"
+"                       from information in the Info file itself.\n"
+" --section R SEC     equivalent to --regex=R --section=SEC --add-once."
+msgstr ""
+
+#: install-info/install-info.c:582
+msgid ""
+" --silent            suppress warnings.\n"
+" --test              suppress updating of DIR-FILE.\n"
+" --version           display version information and exit."
+msgstr ""
+" --silent zatri opozorila.\n"
+" --test zatri posodabljanje MAPE-DATOTEK.\n"
+" --version prikaži podrobnosti različice in končaj."
+
+#: install-info/install-info.c:589 tp/texi2any.pl:680
+msgid ""
+"Email bug reports to bug-texinfo@gnu.org,\n"
+"general questions and discussion to help-texinfo@gnu.org.\n"
+"Texinfo home page: http://www.gnu.org/software/texinfo/"
+msgstr ""
+"Poročila o hroščih pošljite z e-pošto na bug-texinfo@gnu.org,\n"
+"splošna vprašanja in razprave na help-texinfo@gnu.org.\n"
+"Domača stran texinfo: http://www.gnu.org/software/texinfo/"
+
+#: install-info/install-info.c:616
+#, c-format
+msgid ""
+"This is the file .../info/dir, which contains the\n"
+"topmost node of the Info hierarchy, called (dir)Top.\n"
+"The first time you invoke Info you start off looking at this node.\n"
+"\n"
+"%s\tThis is the top of the INFO tree\n"
+"\n"
+"  This (the Directory node) gives a menu of major topics.\n"
+"  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
+"  \"h\" gives a primer for first-timers,\n"
+"  \"mEmacs<Return>\" visits the Emacs manual, etc.\n"
+"\n"
+"  In Emacs, you can click mouse button 2 on a menu item or cross reference\n"
+"  to select it.\n"
+"\n"
+"%s\n"
+msgstr ""
+"To je datoteka .../info/dir, katera vsebuje vrhovno\n"
+"vozlišče hierarhije Info, ki se imenuje (mapa)Top.\n"
+"Ko prvič prikličete Info, začnete s pogledom v to vozlišče.\n"
+"\n"
+"%s\tTo je vrh drevesa INFO\n"
+"\n"
+"  To (vozlišče map) da meni pomembnih tem.\n"
+"  Vnos \"q\" konča, \"?\" pokaže vse ukaze Info, \"d\" vrne sem,\n"
+"  \"h\" da primer za začetnike,\n"
+"  \"mEmacs<Return>\" obišče priročnik Emacsm, itd.\n"
+"\n"
+"  V Emacs lahko za izbiro kliknete desni miškin gumbom, kliknete na predmet\n"
+"  menija ali navzkižni sklic.\n"
+"\n"
+"%s\n"
+
+#: install-info/install-info.c:640
+#, fuzzy, c-format
+msgid "%s: could not read (%s) and could not create (%s)"
+msgstr "%s: ni mogoče brati (%s) in ni mogoče ustvariti (%s)\n"
+
+#: install-info/install-info.c:736
+#, c-format
+msgid "%s: empty file"
+msgstr "%s: prazna datoteka"
+
+#: install-info/install-info.c:1079 install-info/install-info.c:1119
+#, c-format
+msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
+msgstr "START-INFO-DIR-ENTRY nima ujemajočega END-INFO-DIR-ENTRY"
+
+#: install-info/install-info.c:1114
+#, c-format
+msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
+msgstr "END-INFO-DIR-ENTRY nima ujemajočega START-INFO-DIR-ENTRY"
+
+#: install-info/install-info.c:1978 install-info/install-info.c:1988
+#, c-format
+msgid "%s: already have dir file: %s\n"
+msgstr "%s: datoteka map že obstaja: %s\n"
+
+#: install-info/install-info.c:2068
+#, c-format
+msgid "%s: Specify the Info file only once.\n"
+msgstr "%s: Navedi datoteko Info samo enkrat.\n"
+
+#: install-info/install-info.c:2101
+#, c-format
+msgid "Extra regular expression specified, ignoring `%s'"
+msgstr "Naveden je dodaten logični izraz, prezrtje `%s'"
+
+#: install-info/install-info.c:2113
+#, c-format
+msgid "Error in regular expression `%s': %s"
+msgstr "Napaka v logičnem izrazu `%s': %s"
+
+#: install-info/install-info.c:2171
+#, c-format
+msgid "excess command line argument `%s'"
+msgstr "presežen argument ukazne vrstice `%s'"
+
+#: install-info/install-info.c:2175
+#, c-format
+msgid "No input file specified; try --help for more information."
+msgstr "Navedene ni nobene datoteke vnosa; za več podrobnosti poskusite --help"
+
+#: install-info/install-info.c:2177
+#, c-format
+msgid "No dir file specified; try --help for more information."
+msgstr "Navedene ni nobene datoteke map; za več podrobnosti poskusite --help"
+
+#: install-info/install-info.c:2319
+#, c-format
+msgid "no info dir entry in `%s'"
+msgstr "v `%s' ni nobene datoteke info"
+
+#: install-info/install-info.c:2567
+#, c-format
+msgid "no entries found for `%s'; nothing deleted"
+msgstr "za `%s' ni najdenih nobenih vnosov; nič ni izbrisano"
+
+#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:789
+#: tp/Texinfo/Convert/DocBook.pm:311 tp/Texinfo/Convert/HTML.pm:6518
+#: tp/Texinfo/Convert/HTML.pm:6542 tp/Texinfo/Convert/HTML.pm:6918
+#: tp/Texinfo/Convert/HTML.pm:6975 tp/Texinfo/Convert/HTML.pm:7052
+#: tp/Texinfo/Convert/HTML.pm:7120 tp/Texinfo/Convert/Info.pm:90
+#: tp/Texinfo/Convert/Info.pm:178 tp/Texinfo/Convert/Info.pm:201
+#: tp/Texinfo/Convert/Plaintext.pm:462 tp/Texinfo/Convert/XML.pm:275
+#, fuzzy, perl-format
+msgid "Could not open %s for writing: %s"
+msgstr "%s: ni mogoče odpreti --css-file: %s"
+
+#: tp/Texinfo/Common.pm:808
+msgid "recursion is always allowed"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:809
+#, fuzzy
+msgid "arguments are quoted by default"
+msgstr "@quote-arg je zastarel; argumenti so privzeto navedeni"
+
+#: tp/Texinfo/Common.pm:1008
+#, fuzzy, perl-format
+msgid "%s is not a valid language code"
+msgstr "%s ni veljavna koda jezika ISO 639"
+
+#: tp/Texinfo/Common.pm:1013
+#, fuzzy, perl-format
+msgid "%s is not a valid region code"
+msgstr "%s ni veljavna koda jezika ISO 639"
+
+#: tp/Texinfo/Common.pm:1031
+#, perl-format
+msgid "%s is not a valid split possibility"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1054 tp/Texinfo/Common.pm:1477
+#, fuzzy, perl-format
+msgid "Cannot read %s: %s"
+msgstr "Ni mogoče ustvariti mape `%s': %s"
+
+#: tp/Texinfo/Common.pm:1071
+#, fuzzy, perl-format
+msgid "Error on closing @verbatiminclude file %s: %s"
+msgstr "napaka med končanjem datoteke vnosa `%s'"
+
+#: tp/Texinfo/Common.pm:1076 tp/Texinfo/Parser.pm:3066
+#, fuzzy, perl-format
+msgid "@%s: Cannot find %s"
+msgstr "Ni mogoče najti `%s'."
+
+#: tp/Texinfo/Common.pm:1376
+#, fuzzy, perl-format
+msgid "Cannot open html refs config file %s: %s"
+msgstr "Ni mogoče odstraniti datoteke `%s': %s"
+
+#: tp/Texinfo/Common.pm:1404
+msgid "Missing type"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1407
+#, fuzzy, perl-format
+msgid "Unrecognized type: %s"
+msgstr "%s: neprepoznana možnost `--%s'\n"
+
+#: tp/Texinfo/Common.pm:1423
+#, perl-format
+msgid "Error on closing html refs config file %s: %s"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1458
+#, perl-format
+msgid "%s:%d: no node to be renamed\n"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1469
+#, perl-format
+msgid "%s:%d: nodes without a new name at the end of file\n"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1473
+#, fuzzy, perl-format
+msgid "Error on closing renamed nodes file %s: %s"
+msgstr "napaka med končanjem datoteke vnosa `%s'"
+
+#: tp/Texinfo/Common.pm:1958
+#, perl-format
+msgid "protect_hashchar_at_line_beginning cannot protect in @%s"
+msgstr ""
+
+#: tp/Texinfo/Convert/Converter.pm:397 tp/Texinfo/Convert/Converter.pm:416
+#: tp/texi2any.pl:343 tp/texi2any.pl:360
+#, fuzzy, perl-format
+msgid "Obsolete variable %s\n"
+msgstr "Nastavi spremenljivko: "
+
+#: tp/Texinfo/Convert/Converter.pm:603
+#, fuzzy, perl-format
+msgid "Can't create directories `%s' or `%s': %s"
+msgstr "Ni mogoče ustvariti mape `%s': %s"
+
+#: tp/Texinfo/Convert/Converter.pm:611
+#, fuzzy, perl-format
+msgid "Can't create directories `%s': %s"
+msgstr "Ni mogoče ustvariti mape `%s': %s"
+
+#: tp/Texinfo/Convert/DocBook.pm:347 tp/Texinfo/Convert/HTML.pm:6943
+#: tp/Texinfo/Convert/HTML.pm:7001 tp/Texinfo/Convert/Info.pm:145
+#: tp/Texinfo/Convert/Info.pm:167 tp/Texinfo/Convert/Info.pm:194
+#: tp/Texinfo/Convert/Info.pm:257 tp/Texinfo/Convert/XML.pm:305
+#: tp/Texinfo/Parser.pm:1854 tp/init/chm.pm:267 tp/init/chm.pm:338
+#: tp/init/chm.pm:399
+#, fuzzy, perl-format
+msgid "Error on closing %s: %s"
+msgstr "Napaka v logičnem izrazu `%s': %s"
+
+#: tp/Texinfo/Convert/DocBook.pm:933
+#, fuzzy, perl-format
+msgid "@image file `%s' not found, using `%s'"
+msgstr "datoteka @image `%s' je neberljiva: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:1677
+#, fuzzy, perl-format
+msgid "@image file `%s' (for HTML) not found, using `%s'"
+msgstr "@image datoteka `%s' (za HTML) ni berljiva: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:2345
+#, perl-format
+msgid "Raw format %s is not converted"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4831
+#, perl-format
+msgid "%s:%d: string not closed in css file"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4833
+#, fuzzy, perl-format
+msgid "%s:%d: --css-include ended in comment"
+msgstr "%s:%d: --css-file se je končala v komentarju"
+
+#: tp/Texinfo/Convert/HTML.pm:4835
+#, perl-format
+msgid "%s:%d @import not finished in css file"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4861
+#, fuzzy, perl-format
+msgid "css file %s not found"
+msgstr "%cend makra ni mogoče najti"
+
+#: tp/Texinfo/Convert/HTML.pm:4867
+#, fuzzy, perl-format
+msgid "could not open --include-file %s: %s"
+msgstr "%s: ni mogoče odpreti --css-file: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:4877
+#, fuzzy, perl-format
+msgid "Error on closing CSS file %s: %s"
+msgstr "napaka med končanjem datoteke vnosa `%s'"
+
+#: tp/Texinfo/Convert/HTML.pm:5824 tp/Texinfo/Convert/HTML.pm:5828
+#, fuzzy, perl-format
+msgid "No htmlxref.cnf entry found for `%s'"
+msgstr "Za `%s' ni najdenih nobenih vnosov kazal\n"
+
+#: tp/Texinfo/Convert/HTML.pm:6513
+#, fuzzy, perl-format
+msgid "Error on closing frame file %s: %s"
+msgstr "napaka med končanjem datoteke vnosa `%s'"
+
+#: tp/Texinfo/Convert/HTML.pm:6537
+#, fuzzy, perl-format
+msgid "Error on closing TOC frame file %s: %s"
+msgstr "napaka med končanjem datoteke vnosa `%s'"
+
+#: tp/Texinfo/Convert/HTML.pm:6652
+#, perl-format
+msgid "Handler %s of stage %s priority %s failed"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:6853
+msgid "Must specify a title with a title command or @top"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:7058
+#, perl-format
+msgid "Error on closing redirection node file %s: %s"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:7082
+#, fuzzy, perl-format
+msgid "Node `%s' that is to be renamed exists"
+msgstr "Kazalo `%s' že obstaja"
+
+#: tp/Texinfo/Convert/HTML.pm:7086
+#, fuzzy, perl-format
+msgid "File empty for renamed node `%s'"
+msgstr "nesklicevano vozlišče `%s'"
+
+#: tp/Texinfo/Convert/HTML.pm:7098
+#, perl-format
+msgid "Node to be renamed as, `%s' not found"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:7126
+#, fuzzy, perl-format
+msgid "Error on closing renamed node file %s: %s"
+msgstr "napaka med končanjem datoteke vnosa `%s'"
+
+#: tp/Texinfo/Convert/HTML.pm:7164
+msgid "Empty node name"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:7166 tp/Texinfo/Parser.pm:3401
+#, perl-format
+msgid "Syntax for an external node used for `%s'"
+msgstr ""
+
+#: tp/Texinfo/Convert/Info.pm:99
+#, fuzzy
+msgid "Document without nodes."
+msgstr "V tem vozlišču ni menijev."
+
+#: tp/Texinfo/Convert/Info.pm:115
+msgid "Document without Top node."
+msgstr ""
+
+#: tp/Texinfo/Convert/Info.pm:151
+#, perl-format
+msgid "Rename %s failed: %s"
+msgstr ""
+
+#: tp/Texinfo/Convert/Info.pm:226
+#, perl-format
+msgid "@%s `%s' output more than once"
+msgstr ""
+
+#: tp/Texinfo/Convert/Info.pm:340
+#, fuzzy, perl-format
+msgid "@%s outside of any node"
+msgstr "(zunaj vseh vozlišč)"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1110 tp/Texinfo/Parser.pm:2449
+#, perl-format
+msgid "Entry for index `%s' outside of any node"
+msgstr "Vnos za kazalo `%s' je zunaj vseh vozlišč"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1218
+#, fuzzy, perl-format
+msgid "Error on closing image text file %s: %s"
+msgstr "napaka med končanjem datoteke vnosa `%s'"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1223
+#, perl-format
+msgid "@image file `%s' unreadable: %s"
+msgstr "datoteka @image `%s' je neberljiva: %s"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1251
+#, perl-format
+msgid "Cannot find @image file `%s.txt' nor alternate text"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1616
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+"@strong{Opomba ...} ustvari lažni navzkrižni sklic v Info; ponovno ubesedite "
+"za izognitev temu"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1846
+#, fuzzy, perl-format
+msgid "`.' or `,' must follow @xref, not %s"
+msgstr "`.' ali `,' morata slediti @%s, ne `%c'"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1848
+#, fuzzy
+msgid "`.' or `,' must follow @xref"
+msgstr "`.' ali `,' morata slediti @%s, ne `%c'"
+
+#: tp/Texinfo/Parser.pm:783
+#, perl-format
+msgid "@%s should only appear at beginning or end of document"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:799
+#, fuzzy, perl-format
+msgid "Can't read file %s: %s"
+msgstr "Ni mogoče odstraniti datoteke `%s': %s"
+
+#: tp/Texinfo/Parser.pm:1029 tp/Texinfo/Structuring.pm:548
+#, perl-format
+msgid "Multiple @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1060
+#, fuzzy, perl-format
+msgid "Bad syntax for @%s argument: %s"
+msgstr "Slab argument k @%s"
+
+#: tp/Texinfo/Parser.pm:1076
+#, perl-format
+msgid "Bad or empty @%s formal argument: %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1085 tp/Texinfo/Parser.pm:4431
+#: tp/Texinfo/Parser.pm:4454 tp/Texinfo/Parser.pm:5071
+#: tp/Texinfo/Parser.pm:5080 tp/Texinfo/Parser.pm:5090
+#, perl-format
+msgid "%c%s requires a name"
+msgstr "%c%s potrebuje ime"
+
+#: tp/Texinfo/Parser.pm:1195
+#, perl-format
+msgid "%c%s missing close brace"
+msgstr "%c%s manjka zaklepaj"
+
+#: tp/Texinfo/Parser.pm:1198
+#, perl-format
+msgid "@%s missing closing delimiter sequence: %s}"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1310
+#, perl-format
+msgid "@itemx should not begin @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1378
+msgid "@itemx must follow @item"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1544
+#, perl-format
+msgid "@%s has text but no @item"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1574
+#, perl-format
+msgid "`@end' expected `%s', but saw `%s'"
+msgstr "`@end' pričakovan `%s', toda viden je `%s'"
+
+#: tp/Texinfo/Parser.pm:1577
+#, perl-format
+msgid "@%s seen before @end %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1581
+#, perl-format
+msgid "No matching `%cend %s'"
+msgstr "Ni ujemajočega `%cend %s'"
+
+#: tp/Texinfo/Parser.pm:1603 tp/Texinfo/Parser.pm:4756
+#: tp/Texinfo/Parser.pm:4966
+#, perl-format
+msgid "Misplaced %c"
+msgstr "Napačno postavljen %c"
+
+#: tp/Texinfo/Parser.pm:1698 tp/Texinfo/Parser.pm:3025
+#, perl-format
+msgid "Unmatched `%c%s'"
+msgstr "Neujemajoč `%c%s'"
+
+#: tp/Texinfo/Parser.pm:1928
+#, fuzzy, perl-format
+msgid "Macro `%s' called with too many args"
+msgstr "Makro `%s' je klican v vrstici %d s preveč argumenti"
+
+#: tp/Texinfo/Parser.pm:1950
+#, fuzzy, perl-format
+msgid "@%s missing close brace"
+msgstr "%c%s manjka zaklepaj"
+
+#: tp/Texinfo/Parser.pm:1957
+#, fuzzy, perl-format
+msgid "Macro `%s' declared without argument called with an argument"
+msgstr "Makro `%s' je klican v vrstici %d s preveč argumenti"
+
+#: tp/Texinfo/Parser.pm:1991
+#, fuzzy, perl-format
+msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
+msgstr "\\ v razširitvi makra, ki mu namesto imena parametra sledi `%s'"
+
+#: tp/Texinfo/Parser.pm:2382
+#, fuzzy, perl-format
+msgid "@%s `%s' previously defined"
+msgstr "makro `%s' je bil predhodno določen"
+
+#: tp/Texinfo/Parser.pm:2387
+#, fuzzy, perl-format
+msgid "here is the previous definition as @%s"
+msgstr "tukaj je predhodna določitev `%s'"
+
+#: tp/Texinfo/Parser.pm:2741
+#, perl-format
+msgid "Missing name for @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:2746
+#, perl-format
+msgid "Missing category for @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:2798
+#, fuzzy, perl-format
+msgid "Unexpected argument on @%s line: %s"
+msgstr "Slab argument k @%s: %s"
+
+#: tp/Texinfo/Parser.pm:2814
+#, fuzzy
+msgid "empty multitable"
+msgstr "%s: prazna datoteka"
+
+#: tp/Texinfo/Parser.pm:2869 tp/Texinfo/Parser.pm:5158
+#, fuzzy, perl-format
+msgid "Superfluous argument to @%s"
+msgstr "Slab argument k @%s"
+
+#: tp/Texinfo/Parser.pm:2875 tp/Texinfo/Parser.pm:5179
+#: tp/Texinfo/Parser.pm:5190
+#, perl-format
+msgid "Bad argument to @%s"
+msgstr "Slab argument k @%s"
+
+#: tp/Texinfo/Parser.pm:2886
+#, perl-format
+msgid "%s requires an argument: the formatter for %citem"
+msgstr "%s potrebuje argument: oblikovalnik za %citem"
+
+#: tp/Texinfo/Parser.pm:2891
+#, perl-format
+msgid "Command @%s not accepting argument in brace should not be on @%s line"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:2926
+#, fuzzy, perl-format
+msgid "Accent command `@%s' not allowed as @%s argument"
+msgstr "%s: možnost `--%s' ne dovoljuje argumenta\n"
+
+#: tp/Texinfo/Parser.pm:3003 tp/Texinfo/Parser.pm:3139
+#: tp/Texinfo/Parser.pm:5151
+#, fuzzy, perl-format
+msgid "@%s missing argument"
+msgstr "%s: manjka argument datoteke.\n"
+
+#: tp/Texinfo/Parser.pm:3015
+#, fuzzy, perl-format
+msgid "Unknown @end %s"
+msgstr "Neznano kazalo `%s'"
+
+#: tp/Texinfo/Parser.pm:3037 tp/Texinfo/Parser.pm:3643
+#, fuzzy, perl-format
+msgid "Superfluous argument to @%s %s: %s"
+msgstr "Slab argument k @%s: %s"
+
+#: tp/Texinfo/Parser.pm:3042 tp/Texinfo/Parser.pm:5230
+#: tp/Texinfo/Parser.pm:5263 tp/Texinfo/Parser.pm:5289
+#: tp/Texinfo/Parser.pm:5322 tp/Texinfo/Parser.pm:5383
+#, perl-format
+msgid "Bad argument to @%s: %s"
+msgstr "Slab argument k @%s: %s"
+
+#: tp/Texinfo/Parser.pm:3061
+#, fuzzy, perl-format
+msgid "@%s: Cannot open %s: %s"
+msgstr "%s: ni mogoče odpreti --css-file: %s"
+
+#: tp/Texinfo/Parser.pm:3073
+#, perl-format
+msgid "Encoding `%s' is not a canonical texinfo encoding"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3081
+#, perl-format
+msgid "unrecognized encoding name `%s'"
+msgstr "neprepoznano ime kodiranja `%s'"
+
+#: tp/Texinfo/Parser.pm:3229
+#, perl-format
+msgid "@%s after the first element"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3236
+#, fuzzy, perl-format
+msgid "@%s only meaningful on a @multitable line"
+msgstr "@%s ni smiselen zunaj okolja `@titlepage'"
+
+#: tp/Texinfo/Parser.pm:3273
+#, perl-format
+msgid "@%s should not be associated with @top"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3284
+#, perl-format
+msgid "@node precedes @%s, but part are not associated with nodes"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3381
+#, fuzzy, perl-format
+msgid "Empty argument in @%s"
+msgstr "Slab argument k @%s"
+
+#: tp/Texinfo/Parser.pm:3385
+#, perl-format
+msgid "Empty node name after expansion `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3428
+#, fuzzy, perl-format
+msgid "Empty menu entry name in `%s'"
+msgstr "V vozlišču `%s' ni menijev."
+
+#: tp/Texinfo/Parser.pm:3436
+msgid "Empty node in menu entry"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3506
+#, fuzzy, perl-format
+msgid "@%s should not appear in @%s"
+msgstr "%s: ni mogoče odpreti --css-file: %s"
+
+#: tp/Texinfo/Parser.pm:3637
+#, perl-format
+msgid "@end %s should only appear at a line beginning"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3659
+#, perl-format
+msgid "macro `%s' previously defined"
+msgstr "makro `%s' je bil predhodno določen"
+
+#: tp/Texinfo/Parser.pm:3661
+#, perl-format
+msgid "here is the previous definition of `%s'"
+msgstr "tukaj je predhodna določitev `%s'"
+
+#: tp/Texinfo/Parser.pm:3665
+#, perl-format
+msgid "Redefining Texinfo language command: @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3714
+#, perl-format
+msgid "@%s without associated character"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3775
+#, perl-format
+msgid ""
+"@%s defined with zero or more than one argument should be invoked with {}"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3798
+#, perl-format
+msgid ""
+"Macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
+"value %d)"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3806
+#, perl-format
+msgid "Recursive call of macro %s is not allowed; use @rmacro if needed"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3861
+#, perl-format
+msgid "Accent command `@%s' must not be followed by whitespace"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3867
+#, perl-format
+msgid "Use braces to give a command as an argument to @%s"
+msgstr "Če želite dati ukaz kot argument v @%s, uporabite oklepaje"
+
+#: tp/Texinfo/Parser.pm:3880 tp/Texinfo/Parser.pm:4870
+#, fuzzy, perl-format
+msgid "%c%s expects `i' or `j' as argument, not `%s'"
+msgstr "%c%s pričakuje `i' ali `j' kot argument, ne `%c'"
+
+#: tp/Texinfo/Parser.pm:3892
+#, perl-format
+msgid "Accent command `@%s' must not be followed by new line"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3898
+#, fuzzy, perl-format
+msgid "@%s expected braces"
+msgstr "%c%s pričakovani so oklepaji"
+
+#: tp/Texinfo/Parser.pm:4054
+#, perl-format
+msgid "undefined flag: %s"
+msgstr "nedoločena zastavica: %s"
+
+#: tp/Texinfo/Parser.pm:4057
+msgid "Bad syntax for @value"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4064
+#, fuzzy, perl-format
+msgid "%c%s is obsolete."
+msgstr "%c%s je zastarel"
+
+#: tp/Texinfo/Parser.pm:4067
+#, fuzzy, perl-format
+msgid "%c%s is obsolete; %s"
+msgstr "%c%s je zastarel"
+
+#: tp/Texinfo/Parser.pm:4075
+#, perl-format
+msgid "@%s should only appear at a line beginning"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4165
+#, fuzzy, perl-format
+msgid "@%s not allowed inside `@%s' block"
+msgstr "@%s ni smiselno znotraj bloka `@%s'"
+
+#: tp/Texinfo/Parser.pm:4173
+#, perl-format
+msgid "@%s should only appear in heading or footing"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4252 tp/Texinfo/Parser.pm:4264
+#: tp/Texinfo/Parser.pm:4308
+#, perl-format
+msgid "@%s not meaningful inside `@%s' block"
+msgstr "@%s ni smiselno znotraj bloka `@%s'"
+
+#: tp/Texinfo/Parser.pm:4271
+#, fuzzy, perl-format
+msgid "@%s in empty multitable"
+msgstr "%s: prazna datoteka"
+
+#: tp/Texinfo/Parser.pm:4276
+msgid "@tab before @item"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4278
+#, perl-format
+msgid "Too many columns in multitable item (max %d)"
+msgstr "Preveč stolpcev v predmetu večih razpredelnic (največ %d)"
+
+#: tp/Texinfo/Parser.pm:4311
+msgid "ignoring @tab outside of multitable"
+msgstr "prezrtje @tab izven večih razpredelnic"
+
+#: tp/Texinfo/Parser.pm:4313
+#, perl-format
+msgid "@%s outside of table or list"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4346
+#, fuzzy, perl-format
+msgid "Must be after `@%s' to use `@%s'"
+msgstr "Mora biti v okolju `@%s' za uporabo `@%s'"
+
+#: tp/Texinfo/Parser.pm:4387
+#, perl-format
+msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
+msgstr "@%s ni smiselen zunaj okolij `@titlepage' in `@quotation'"
+
+#: tp/Texinfo/Parser.pm:4391
+msgid "@dircategory after first node"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4542
+#, fuzzy, perl-format
+msgid "Region %s inside region %s is not allowed"
+msgstr "Sprotne opombe znotraj sprotnih opomb niso dovoljene"
+
+#: tp/Texinfo/Parser.pm:4559
+msgid "@direntry after first node"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4567
+#, fuzzy, perl-format
+msgid "@%s seen before first @node"
+msgstr "@menu je bil viden pred prvim @node, ki je ustvarilo vozlišče `Top'"
+
+#: tp/Texinfo/Parser.pm:4569
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr ""
+"Morda bi vaše vozlišče @top moralo biti ovito v @ifnottex namesto @ifinfo?"
+
+#: tp/Texinfo/Parser.pm:4630
+#, perl-format
+msgid "@%s should only appear in math context"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4638
+#, perl-format
+msgid "Unknown command `%s'"
+msgstr "Neznan ukaz `%s'"
+
+#: tp/Texinfo/Parser.pm:4648
+#, fuzzy
+msgid "Unexpected @"
+msgstr "Pričakovan `%s'"
+
+#: tp/Texinfo/Parser.pm:4676
+#, fuzzy, perl-format
+msgid "@%s is not meaningful outside `@float' environment"
+msgstr "@%s ni smiselno zunaj okolja `@float'"
+
+#: tp/Texinfo/Parser.pm:4680
+#, perl-format
+msgid "@%s should be right below `@float'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4688
+#, perl-format
+msgid "Ignoring multiple @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4799
+#, perl-format
+msgid "Command @%s does not accept arguments"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4822
+#, perl-format
+msgid "Command @%s missing a node or external manual argument"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4838
+#, perl-format
+msgid "In @%s empty cross reference name after expansion `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4848
+#, perl-format
+msgid "In @%s empty cross reference title after expansion `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4861
+msgid "@image missing filename argument"
+msgstr "@image manjka argument imena datoteke"
+
+#: tp/Texinfo/Parser.pm:4890
+#, fuzzy, perl-format
+msgid "@%s missing first argument"
+msgstr "%s: manjka argument datoteke.\n"
+
+#: tp/Texinfo/Parser.pm:4996
+msgid "Superfluous arguments for node"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5035
+#, fuzzy, perl-format
+msgid "Expected @end %s"
+msgstr "Pričakovan `%s'"
+
+#: tp/Texinfo/Parser.pm:5099
+#, fuzzy, perl-format
+msgid "Remaining argument on @%s line: %s"
+msgstr "Slab argument k @%s: %s"
+
+#: tp/Texinfo/Parser.pm:5101
+#, fuzzy, perl-format
+msgid "@%s should only accept a @-command as argument, not `%s'"
+msgstr "Če želite dati ukaz kot argument v @%s, uporabite oklepaje"
+
+#: tp/Texinfo/Parser.pm:5174
+#, fuzzy, perl-format
+msgid "Environment command %s as argument to @%s"
+msgstr "Če želite dati ukaz kot argument v @%s, uporabite oklepaje"
+
+#: tp/Texinfo/Parser.pm:5195
+#, perl-format
+msgid "Empty @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5203
+#, perl-format
+msgid "column fraction not a number: %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5212
+#, fuzzy, perl-format
+msgid "@sp arg must be numeric, not `%s'"
+msgstr "%s: %s argument mora biti številski, ne `%s'.\n"
+
+#: tp/Texinfo/Parser.pm:5220
+#, perl-format
+msgid "Reserved index name %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5237
+#, fuzzy, perl-format
+msgid "Unknown from index `%s' in @%s"
+msgstr "Neznano kazalo `%s'"
+
+#: tp/Texinfo/Parser.pm:5239
+#, fuzzy, perl-format
+msgid "Unknown to index name `%s' in @%s"
+msgstr "Neznano kazalo `%s'"
+
+#: tp/Texinfo/Parser.pm:5258
+#, perl-format
+msgid "@%s leads to a merging of %s in itself, ignoring"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5270
+#, perl-format
+msgid "Unknown index `%s' in @printindex"
+msgstr "Neznano kazalo `%s' v @printindex"
+
+#: tp/Texinfo/Parser.pm:5275
+#, perl-format
+msgid "Printing an index `%s' merged in another one `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5282
+#, perl-format
+msgid "Printindex before document beginning: @printindex %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5297
+#, fuzzy, perl-format
+msgid "@%s arg must be `top' or `bottom', not `%s'"
+msgstr "%s: %s argument mora biti številski, ne `%s'.\n"
+
+#: tp/Texinfo/Parser.pm:5303
+#, perl-format
+msgid "Only @%s 10 or 11 is supported, not `%s'"
+msgstr "Podprt je samo @%s 10 ali 11, ne `%s'"
+
+#: tp/Texinfo/Parser.pm:5309
+#, fuzzy, perl-format
+msgid "@%s arg must be `separate' or `end', not `%s'"
+msgstr ""
+"%s: --footnote-style argument mora biti `separate' ali `end', ne `%s'.\n"
+
+#: tp/Texinfo/Parser.pm:5315
+#, fuzzy, perl-format
+msgid "@%s arg must be `on', `off' or `odd', not `%s'"
+msgstr "%s: %s argument mora biti številski, ne `%s'.\n"
+
+#: tp/Texinfo/Parser.pm:5330 tp/Texinfo/Parser.pm:5333
+#, fuzzy, perl-format
+msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
+msgstr ""
+"%s: --paragraph-indent argument mora biti številski/`none'/`asis', ne `%s'.\n"
+
+#: tp/Texinfo/Parser.pm:5339
+#, fuzzy, perl-format
+msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
+msgstr ""
+"%s: --paragraph-indent argument mora biti številski/`none'/`asis', ne `%s'.\n"
+
+#: tp/Texinfo/Parser.pm:5347
+#, fuzzy, perl-format
+msgid "@exampleindent arg must be numeric/`asis', not `%s'"
+msgstr ""
+"%s: --paragraph-indent argument mora biti številski/`none'/`asis', ne `%s'.\n"
+
+#: tp/Texinfo/Parser.pm:5357
+#, perl-format
+msgid "Expected @%s on or off, not `%s'"
+msgstr "Pričakuje se @%s on ali off, namesto \"%s\""
+
+#: tp/Texinfo/Parser.pm:5364
+#, perl-format
+msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5370
+#, fuzzy, perl-format
+msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
+msgstr ""
+"%s: --footnote-style argument mora biti `separate' ali `end', ne `%s'.\n"
+
+#: tp/Texinfo/Parser.pm:5376
+#, fuzzy, perl-format
+msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
+msgstr ""
+"%s: --footnote-style argument mora biti `separate' ali `end', ne `%s'.\n"
+
+#: tp/Texinfo/Report.pm:93
+#, perl-format
+msgid "%s:%d: warning: %s (possibly involving @%s)\n"
+msgstr ""
+
+#: tp/Texinfo/Report.pm:96
+#, fuzzy, perl-format
+msgid "%s:%d: warning: %s\n"
+msgstr "%s:%d: opozorilo: "
+
+#: tp/Texinfo/Report.pm:139
+#, fuzzy, perl-format
+msgid "warning: %s\n"
+msgstr "%s: opozorilo: "
+
+#: tp/Texinfo/Structuring.pm:231
+#, perl-format
+msgid "Raising the section level of @%s which is too low"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:263
+#, perl-format
+msgid "No chapter-level command before @%s"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:268
+#, perl-format
+msgid "Lowering the section level of @%s appearing after a lower element"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:347
+#, perl-format
+msgid "No sectioning command associated with @%s"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:568
+#, fuzzy, perl-format
+msgid "Menu reference to nonexistent node `%s'"
+msgstr "nesklicevano vozlišče `%s'"
+
+#: tp/Texinfo/Structuring.pm:583
+#, perl-format
+msgid "Menu entry node name `%s' different from %s name `%s'"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:619
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr "nesklicevano vozlišče `%s'"
+
+#: tp/Texinfo/Structuring.pm:665
+#, perl-format
+msgid "Node `%s' is %s for `%s' in sectioning but not in menu"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:672
+#, perl-format
+msgid "Node %s `%s' in menu `%s' and in sectioning `%s' differ"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:690
+#, perl-format
+msgid "Node `%s' is %s for `%s' in menu but not in sectioning"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:744
+#, perl-format
+msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:771
+#, fuzzy, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "nesklicevano vozlišče `%s'"
+
+#: tp/Texinfo/Structuring.pm:790
+#, perl-format
+msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr ""
+"Vozlišču `%s' manjka predmet menija za `%s', kljub temu, da je njegov "
+"Zgornji cilj"
+
+#: tp/Texinfo/Structuring.pm:798
+#, perl-format
+msgid "For `%s', up in menu `%s' and up `%s' don't match"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:1282
+#, fuzzy, perl-format
+msgid "@%s reference to nonexistent node `%s'"
+msgstr ""
+"%s sklicevanje na neobstoječe vozlišče `%s' (morda nepravilno ustvarjanje "
+"odsekov?)"
+
+#: tp/Texinfo/Structuring.pm:1294
+#, perl-format
+msgid "@%s to `%s', different from %s name `%s'"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:1907
+#, perl-format
+msgid "Empty index key in @%s"
+msgstr ""
+
+#: tp/init/chm.pm:221 tp/init/chm.pm:277 tp/init/chm.pm:348
+#, perl-format
+msgid "Can't open %s for writing: %s\n"
+msgstr ""
+
+#: tp/init/tex4ht.pm:122
+#, perl-format
+msgid "tex4ht error opening %s: %s"
+msgstr ""
+
+#: tp/init/tex4ht.pm:218
+#, perl-format
+msgid "chdir to %s failed"
+msgstr ""
+
+#: tp/init/tex4ht.pm:242
+#, perl-format
+msgid "tex4ht output %s missing"
+msgstr ""
+
+#: tp/init/tex4ht.pm:294
+#, perl-format
+msgid "tex4ht output got %d for %d items entered"
+msgstr ""
+
+#: tp/init/tex4ht.pm:312
+#, perl-format
+msgid "tex4ht output no text for @%s %s"
+msgstr ""
+
+#: tp/texi2any.pl:331
+#, fuzzy, perl-format
+msgid "error loading %s: %s\n"
+msgstr "napaka med branjem v `%s'"
+
+#: tp/texi2any.pl:340 tp/texi2any.pl:357
+#, fuzzy, perl-format
+msgid "Unknown variable %s\n"
+msgstr "Neznano kazalo `%s'"
+
+#: tp/texi2any.pl:424
+#, fuzzy, perl-format
+msgid "Can't read init file %s"
+msgstr "ni mogoče odpreti datoteke vnosa `%s'"
+
+#: tp/texi2any.pl:554
+#, fuzzy
+msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
+msgstr "Uporaba: %s [MOŽNOST] ... DATOTEKA-TEXINFO ...\n"
+
+#: tp/texi2any.pl:555
+#, fuzzy
+msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
+msgstr "Uporaba: %s [MOŽNOST] ... DATOTEKA-TEXINFO ...\n"
+
+#: tp/texi2any.pl:557
+msgid ""
+"Translate Texinfo source documentation to various other formats, by default\n"
+"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
+msgstr ""
+"Prevedi izvorno dokumentacijo Texinfo v ostale različne oblike, privzeto \n"
+"datoteke Info, ki so primerne za branje na spletu z Emacs ali samostojnim "
+"GNU Info.\n"
+
+#: tp/texi2any.pl:560
+#, fuzzy, perl-format
+msgid ""
+"General options:\n"
+"      --document-language=STR locale to use in translating Texinfo keywords\n"
+"                                for the output document (default C).\n"
+"      --error-limit=NUM       quit after NUM errors (default %d).\n"
+"      --force                 preserve output even if errors.\n"
+"      --help                  display this help and exit.\n"
+"      --no-validate           suppress node cross-reference validation.\n"
+"      --no-warn               suppress warnings (but not errors).\n"
+"      --conf-dir=DIR          search also for initialization files in DIR.\n"
+"      --init-file=FILE        load FILE to modify the default behavior.\n"
+"      --set-customization-variable VAR=VAL  set customization variable VAR \n"
+"                                to VAL.\n"
+"  -v, --verbose               explain what is being done.\n"
+"      --version               display version information and exit.\n"
+msgstr ""
+"Splošne možnosti:\n"
+"      --error-limit=NUM končaj po napakah NUM (privzeto %d).\n"
+"      --document-language=STR uporaba jezikovne oznake pri prevajanju\n"
+"                                ključnih besed Texinfo za izhodni dokument "
+"(privzeto C).\n"
+"      --force ohrani izpis, četudi so napake.\n"
+"      --help prikaži to pomoč in končaj.\n"
+"      --no-validate prepreči potrditev navzkrižnega sklica vozlišča.\n"
+"      --no-warn prepreči opozorila (toda ne napak).\n"
+"  -v, --verbose pojasnitev, kaj se dogaja.\n"
+"      --version prikaži podrobnosti različice in končaj.\n"
+
+#: tp/texi2any.pl:575
+#, fuzzy
+msgid ""
+"Output format selection (default is to produce Info):\n"
+"      --docbook               output Docbook XML rather than Info.\n"
+"      --html                  output HTML rather than Info.\n"
+"      --plaintext             output plain text rather than Info.\n"
+"      --xml                   output Texinfo XML rather than Info.\n"
+"      --dvi, --dvipdf, --ps, --pdf  call texi2dvi to generate given output.\n"
+msgstr ""
+"Izbira vrste izhoda (privzeto je za ustvaritev Info):\n"
+"      --docbook izpiši Docbook XML namesto Info.\n"
+"      --html izpiši HTML namesto Info.\n"
+"      --xml izpiši Texinfo XML namesto Info.\n"
+"      --plaintext izpiši običajno besedilo namesto Info.\n"
+
+#: tp/texi2any.pl:583
+#, fuzzy
+msgid ""
+"General output options:\n"
+"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+"                                ignoring any @setfilename.\n"
+"      --no-headers            suppress node separators, Node: lines, and "
+"menus\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output).\n"
+"                                Also, if producing Info, write to\n"
+"                                standard output by default \n"
+"      --no-split              suppress any splitting of the output;\n"
+"                                generate only one output file.\n"
+"      --[no-]number-sections  output chapter and sectioning numbers;\n"
+"                                default is on.\n"
+"  -o, --output=DEST           output to DEST.\n"
+"                                With split output, create DEST as a "
+"directory\n"
+"                                 and put the output files there.\n"
+"                                With non-split output, if DEST is already\n"
+"                                 a directory or ends with a /,\n"
+"                                 put the output file there.\n"
+"                                Otherwise, DEST names the output file.\n"
+msgstr ""
+"Splošne možnosti izhoda:\n"
+"  -E, --macro-expand=DATOTEKA izpiši makro-razširjen izvor v DATOTEKO,\n"
+"                                s prezrtjem katerega koli @setfilename.\n"
+"      --no-headers zatri ločilnike vozlišč, vrstice vozlišča in menije\n"
+"                                iz izhoda Info (za ustvaritev običajnega "
+"besedila)\n"
+"                                ali iz HTML (za ustvaritev krajšega "
+"izpisa);\n"
+"                                prav tako privzeto zapisuj na standardni "
+"izhod.\n"
+"      --no-split zatri razdeljevanje izhoda Info ali HTML, ustvari samo\n"
+"                                eno datoteko izhoda.\n"
+"      --number-sections izpiši poglavje in številke ustvarjanja odsekov.\n"
+"  -o, --output=DATOTEKA izpiši v DATOTEKO (ali mapo, če se razdeli HTML).\n"
+
+#: tp/texi2any.pl:603
+#, perl-format
+msgid ""
+"Options for Info and plain text:\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default "
+"%d).\n"
+"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
+"                                `separate' to put them in their own node;\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
+"%d).\n"
+"                                If VAL is `none', do not indent; if VAL is\n"
+"                                `asis', preserve existing indentation.\n"
+"      --split-size=NUM        split Info files at size NUM (default %d).\n"
+msgstr ""
+"Možnosti za besedila Info in običajna besedila:\n"
+"      --disable-encoding ne izpiši naglašenih in posebnih znakov v izhod "
+"Info,\n"
+"                                ki temelji na @documentencoding.\n"
+"      --enable-encoding prepiši --disable-encoding (privzeto).\n"
+"      --fill-column=NUM prelomi vrstice Info pri znakih NUM (privzeto %d).\n"
+"      --footnote-style=STYLE izpiši sprotne opombe v Info v skladu s STYLE:\n"
+"                                uporabite `separate', da se jih da v lastno "
+"vozlišče;\n"
+"                                `end', da se jih da na konec vozlišča, \n"
+"                                v katerem so določeni (to je privzeto).\n"
+"      --paragraph-indent=VAL zamakni odstavke Info s presledki VAL (privzeto "
+"%d).\n"
+"                                Če je VAL `none', ne zamakni; če je VAL\n"
+"                                `asis', ohrani obstoječi zamik.\n"
+"      --split-size=NUM razdeli datoteke Info na velikost NUM (privzeto %d).\n"
+
+#: tp/texi2any.pl:620
+#, fuzzy
+msgid ""
+"Options for HTML:\n"
+"      --css-include=FILE      include FILE in HTML <style> output;\n"
+"                                read stdin if FILE is -.\n"
+"      --css-ref=URL           generate CSS reference to URL.\n"
+"      --internal-links=FILE   produce list of internal links in FILE.\n"
+"      --split=SPLIT           split at SPLIT, where SPLIT may be `chapter',\n"
+"                                `section' or `node'.\n"
+"      --transliterate-file-names  use file names in ASCII transliteration.\n"
+"      --node-files            produce redirection files for nodes and \n"
+"                                anchors; default is set only if split.\n"
+msgstr ""
+"Možnosti za HTML:\n"
+"      --css-include=DATOTEKA vključi DATOTEKO v HTML v izhod <style>;\n"
+"                                preberi stdin, če je datoteka -.\n"
+"      --css-ref=URL ustvari sklic na datoteko CSS.\n"
+"      --internal-links=DATOTEKA izdelaj seznam notranjih povezav v "
+"DATOTEKI.\n"
+"      --transliterate-file-names\n"
+"                              izdelaj imena datotek v transliteraciji "
+"ASCII.\n"
+
+#: tp/texi2any.pl:631
+msgid ""
+"Options for XML and Docbook:\n"
+"      --output-indent=VAL     does nothing, retained for compatibility.\n"
+msgstr ""
+
+#: tp/texi2any.pl:634
+msgid ""
+"Options for DVI/PS/PDF:\n"
+"      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
+msgstr ""
+
+#: tp/texi2any.pl:637
+#, fuzzy
+msgid ""
+"Input file options:\n"
+"      --commands-in-node-names  does nothing, retained for compatibility.\n"
+"  -D VAR                        define the variable VAR, as with @set.\n"
+"  -I DIR                        append DIR to the @include search path.\n"
+"  -P DIR                        prepend DIR to the @include search path.\n"
+"  -U VAR                        undefine the variable VAR, as with @clear.\n"
+msgstr ""
+"Možnosti vhodne datoteke:\n"
+"      --commands-in-node-names dovoli ukaze @ v imenih vozlišč.\n"
+"  -D SPR določi spremenljivko SPR, tako kot @set.\n"
+"  -I MAPA pripni MAPO k poti iskanja @include.\n"
+"  -P MAPA pripni MAPO na začetek poti iskanja @include.\n"
+"  -U SPR razveljavi določitev spremenljivke SPR, tako kot @clear.\n"
+
+#: tp/texi2any.pl:644
+#, fuzzy
+msgid ""
+"Conditional processing in input:\n"
+"  --ifdocbook       process @ifdocbook and @docbook even if\n"
+"                      not generating Docbook.\n"
+"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
+"  --ifinfo          process @ifinfo even if not generating Info.\n"
+"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
+"  --iftex           process @iftex and @tex.\n"
+"  --ifxml           process @ifxml and @xml.\n"
+"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
+"  --no-ifhtml       do not process @ifhtml and @html text.\n"
+"  --no-ifinfo       do not process @ifinfo text.\n"
+"  --no-ifplaintext  do not process @ifplaintext text.\n"
+"  --no-iftex        do not process @iftex and @tex text.\n"
+"  --no-ifxml        do not process @ifxml and @xml text.\n"
+"\n"
+"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
+msgstr ""
+"Pogojno obdelovanje v vhodu:\n"
+"  --ifdocbook obdelaj @ifdocbook in @docbook, tudi če \n"
+"                      se ne ustvari Docbook.\n"
+"  --ifhtml obdelaj @ifhtml in @html, tudi če se ne ustvari HTML.\n"
+"  --ifinfo obdelaj @ifinfo, tudi če se ne ustvari Info.\n"
+"  --ifplaintext obdelaj @ifplaintext, tudi če se ne ustvari običajno "
+"besedilo.\n"
+"  --iftex obdelaj @iftex in @tex; vključuje --no-split.\n"
+"  --ifxml obdelaj @ifxml in @xml.\n"
+"  --no-ifdocbook ne obdelaj besedila @ifdocbook in @docbook.\n"
+"  --no-ifhtml ne obdelaj besedila @ifhtml in @html.\n"
+"  --no-ifinfo ne obdelaj besedila @ifinfo.\n"
+"  --no-ifplaintext ne obdelaj besedila @ifplaintext.\n"
+"  --no-iftex ne obdelaj besedila @iftex in @tex.\n"
+"  --no-ifxml ne obdelaj besedila @ifxml in @xml.\n"
+"\n"
+"  Za možnosti --no-ifFORMAT obdelaj besedilo @ifnotFORMAT.\n"
+
+#: tp/texi2any.pl:661
+#, fuzzy
+msgid ""
+"  The defaults for the @if... conditionals depend on the output format:\n"
+"  if generating Docbook, --ifdocbook is on and the others are off;\n"
+"  if generating HTML, --ifhtml is on and the others are off;\n"
+"  if generating Info, --ifinfo is on and the others are off;\n"
+"  if generating plain text, --ifplaintext is on and the others are off;\n"
+"  if generating XML, --ifxml is on and the others are off.\n"
+msgstr ""
+"  Privzete vrednosti za pogojnike @if so odvisne od izhodne oblike:\n"
+"  če se ustvarja HTML, je --ifhtml vključen in vsi ostali izključeni;\n"
+"  če se ustvarja Info, je --ifinfo vključen in vsi ostali izključeni;\n"
+"  če se ustvarja običajno besedilo, je --ifplaintext vključen in vsi ostali "
+"izključeni;\n"
+"  če se ustvarja XML, je --ifxml vključen in vsi ostali izključeni;\n"
+
+#: tp/texi2any.pl:668
+#, fuzzy
+msgid ""
+"Examples:\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write Docbook XML to @setfilename\n"
+"  makeinfo --plaintext foo.texi          write plain text to standard "
+"output\n"
+"  makeinfo --pdf foo.texi                write PDF using texi2dvi\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
+msgstr ""
+"Primeri:\n"
+"  makeinfo foo.texi zapiši Info v @setfilename datoteke foo\n"
+"  makeinfo --html foo.texi zapiši HTML v @setfilename\n"
+"  makeinfo --xml foo.texi zapiši Texinfo XML v @setfilename\n"
+"  makeinfo --docbook foo.texi zapiši DocBook XML v @setfilename\n"
+"  makeinfo --no-headers foo.texi zapiši običajno besedilo v standardni vhod\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  zapiši html brez vrstic in menijev "
+"vozlišča\n"
+"  makeinfo --number-sections foo.texi zapiši Info z oštevilčenimi odseki\n"
+"  makeinfo --no-split foo.texi zapiši eno datoteko Info, ne glede na "
+"velikost\n"
+
+#: tp/texi2any.pl:715
+#, perl-format
+msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+msgstr ""
+"%s: --footnote-style argument mora biti `separate' ali `end', ne `%s'.\n"
+
+#: tp/texi2any.pl:805
+#, perl-format
+msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
+msgstr ""
+"%s: --paragraph-indent argument mora biti številski/`none'/`asis', ne `%s'.\n"
+
+#: tp/texi2any.pl:919
+#, perl-format
+msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
+msgstr "%s: Prezrtje neprepoznane vrednosti TEXINFO_OUTPUT_FORMAT `%s'.\n"
+
+#: tp/texi2any.pl:932
+#, perl-format
+msgid "when generating %s, only one input FILE may be specified with -o"
+msgstr ""
+
+#: tp/texi2any.pl:936
+msgid "--Xopt option without printed output"
+msgstr ""
+
+#: tp/texi2any.pl:946
+#, fuzzy, perl-format
+msgid "Unknown tree transformation %s"
+msgstr "neznano dejanje `%s'"
+
+#: tp/texi2any.pl:953
+#, perl-format
+msgid "Ignoring splitting for format %s"
+msgstr ""
+
+#: tp/texi2any.pl:1002
+#, perl-format
+msgid "%s: missing file argument.\n"
+msgstr "%s: manjka argument datoteke.\n"
+
+#: tp/texi2any.pl:1003
+#, perl-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Za več podrobnosti poskusite `%s --help'.\n"
+
+#: tp/texi2any.pl:1074
+msgid "fill_gaps_in_sectioning transformation return no result. No section?"
+msgstr ""
+
+#: tp/texi2any.pl:1096
+#, fuzzy, perl-format
+msgid "Error on closing macro expand file %s: %s\n"
+msgstr "napaka med končanjem datoteke vnosa `%s'"
+
+#: tp/texi2any.pl:1102 tp/texi2any.pl:1212 tp/texi2any.pl:1246
+#, fuzzy, perl-format
+msgid "Could not open %s for writing: %s\n"
+msgstr "%s: ni mogoče odpreti --css-file: %s"
+
+#: tp/texi2any.pl:1126
+msgid ""
+"insert_nodes_for_sectioning_commands transformation return no result. No "
+"section?"
+msgstr ""
+
+#: tp/texi2any.pl:1183 tp/texi2any.pl:1259
+#, fuzzy, perl-format
+msgid "Error on closing %s: %s\n"
+msgstr "Napaka v logičnem izrazu `%s': %s"
+
+#: tp/texi2any.pl:1206 tp/texi2any.pl:1240
+#, perl-format
+msgid "Error on closing internal links file %s: %s\n"
+msgstr ""
+
+#: util/texindex.c:223
+msgid "display this help and exit"
+msgstr "prikaži to besedilo pomoči in končaj"
+
+#: util/texindex.c:225
+msgid "send output to FILE"
+msgstr "pošlji izpis v DATOTEKO"
+
+#: util/texindex.c:227
+msgid "display version information and exit"
+msgstr "prikaži podrobnosti različice in končaj"
+
+#: util/texindex.c:237
+#, c-format
+msgid "Usage: %s [OPTION]... FILE...\n"
+msgstr "Uporaba: %s [IZBIRA] ... DATOTEKA ...\n"
+
+#: util/texindex.c:238
+#, c-format
+msgid "Generate a sorted index for each TeX output FILE.\n"
+msgstr "Ustvari urejeno kazalo za vsako DATOTEKO izpisa TeX.\n"
+
+#: util/texindex.c:241
+#, c-format
+msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+msgstr ""
+"Običajno je DATOTEKA ... navedena kot `foo.%c%c' za dokument `foo.texi'.\n"
+
+#: util/texindex.c:243
+#, c-format
+msgid ""
+"\n"
+"Options:\n"
+msgstr ""
+"\n"
+"Možnosti:\n"
+
+#: util/texindex.c:743
+#, c-format
+msgid "failure reopening %s"
+msgstr "ponovno odpiranje %s je spodletelo"
+
+#: util/texindex.c:758 util/texindex.c:786
+#, c-format
+msgid "%s: not a texinfo index file"
+msgstr "%s: ni datoteka kazala texinfo"
+
+#: util/texindex.c:993
+#, c-format
+msgid "No page number in %s"
+msgstr "Brez številk strani v %s"
+
+#: util/texindex.c:1066
+#, c-format
+msgid "entry %s follows an entry with a secondary name"
+msgstr "Vnos %s sledi vnosu z drugotnim imenom"
+
+#~ msgid "%s: illegal option -- %c\n"
+#~ msgstr "%s: nedovoljena možnost -- %c\n"
+
+#~ msgid "One completion:\n"
+#~ msgstr "Ena dopolnitev:\n"
+
+#~ msgid "more "
+#~ msgstr "več "
+
+#~ msgid "ferror on stdout\n"
+#~ msgstr "ferror na stdout\n"
+
+#~ msgid "fflush error on stdout\n"
+#~ msgstr "napaka fflush na stdout\n"
+
+#~ msgid "arguments to @%s ignored"
+#~ msgstr "argumenti k @%s so prezrti"
+
+#~ msgid "January"
+#~ msgstr "Januar"
+
+#~ msgid "February"
+#~ msgstr "Februar"
+
+#~ msgid "March"
+#~ msgstr "Marec"
+
+#~ msgid "April"
+#~ msgstr "April"
+
+#~ msgid "May"
+#~ msgstr "Maj"
+
+#~ msgid "June"
+#~ msgstr "Junij"
+
+#~ msgid "July"
+#~ msgstr "Julij"
+
+#~ msgid "August"
+#~ msgstr "Avgust"
+
+#~ msgid "September"
+#~ msgstr "September"
+
+#~ msgid "October"
+#~ msgstr "Oktober"
+
+#~ msgid "November"
+#~ msgstr "November"
+
+#~ msgid "December"
+#~ msgstr "December"
+
+#~ msgid "unlikely character %c in @var"
+#~ msgstr "neverjeten znak %c v @var"
+
+#~ msgid "@sc argument all uppercase, thus no effect"
+#~ msgstr "argument @sc ima same velike črke in zato nima učinka"
+
+#~ msgid "`{' expected, but saw `%c'"
+#~ msgstr "pričakovan je `{', toda viden je bil `%c'"
+
+#~ msgid "end of file inside verb block"
+#~ msgstr "konec datoteke znotraj bloka glagolov"
+
+#~ msgid "`}' expected, but saw `%c'"
+#~ msgstr "pričakovan je `}', toda viden je `%c'"
+
+#~ msgid "@sp requires a positive numeric argument, not `%s'"
+#~ msgstr "@sp potrebuje pozitiven številski argument, ne `%s'"
+
+#~ msgid "Bad argument to %c%s"
+#~ msgstr "Slab argument k %c%s"
+
+#~ msgid "asis"
+#~ msgstr "kotje"
+
+#~ msgid "none"
+#~ msgstr "brez"
+
+#~ msgid "insert"
+#~ msgstr "vstavi"
+
+#~ msgid "Missing `}' in @def arg"
+#~ msgstr "Manjka `}' v argumentu @def"
+
+#~ msgid "%s: getwd: %s, %s\n"
+#~ msgstr "%s: getwd: %s, %s\n"
+
+#~ msgid "`%s' omitted before output filename"
+#~ msgstr "`%s' je izpuščen pred imenom datoteke izpisa"
+
+#~ msgid "`%s' omitted since writing to stdout"
+#~ msgstr "`%s' je izpuščen od zapisovanja v stdout"
+
+#~ msgid "Output buffer not empty."
+#~ msgstr "Medpomnilnik izpisa ni prazen."
+
+#~ msgid "Requested float type `%s' not previously used"
+#~ msgstr "Zahtevana vrsta realnega števila `%s' ni bila predhodno uporabljena"
+
+#~ msgid "See "
+#~ msgstr "Poglej "
+
+#~ msgid "`%c%s' needs an argument `{...}', not just `%s'"
+#~ msgstr "`%c%s' potrebuje argument `{...}', ne samo `%s'"
+
+#~ msgid "No closing brace for footnote `%s'"
+#~ msgstr "Ni zaklepaja za sprotno opombo `%s'"
+
+#~ msgid "Footnote defined without parent node"
+#~ msgstr "Sprotna opomba je določena brez nadrejenega vozlišča"
+
+#~ msgid "Footnotes"
+#~ msgstr "Sprotne opombe"
+
+#~ msgid "[unexpected] no html tag to pop"
+#~ msgstr "[nepričakovano] brez oznake html za prikaz"
+
+#~ msgid "[unexpected] invalid node name: `%s'"
+#~ msgstr "[nepričakovano] neveljavno ime vozlišča: `%s'"
+
+#~ msgid "Info cannot handle `:' in index entry `%s'"
+#~ msgstr "Info ne zmore upravljati `:' v vnosu kazala`%s'"
+
+#~ msgid "Unknown index `%s' and/or `%s' in @synindex"
+#~ msgstr "Neznano kazalo `%s' in/ali `%s' v @synindex"
+
+#~ msgid "(line )"
+#~ msgstr "(vrstica )"
+
+#~ msgid "(line %*d)"
+#~ msgstr "(vrstica %*d)"
+
+#~ msgid "@item not allowed in argument to @itemize"
+#~ msgstr "@item ni dovoljen v argumentu k @itemize"
+
+#~ msgid "Broken-Type in insertion_type_pname"
+#~ msgstr "Pokvarjena vrsta v insertion_type_pname"
+
+#~ msgid "Enumeration stack overflow"
+#~ msgstr "Prekoračitev sklada oštevilčenja"
+
+#~ msgid "%cfloat environments cannot be nested"
+#~ msgstr "%cfload okolij ni mogoče gnezditi"
+
+#~ msgid "%s requires letter or digit"
+#~ msgstr "%s zahteva črko ali številko"
+
+#~ msgid "end of file inside verbatim block"
+#~ msgstr "konec datoteke znotraj bloka dobesednega zapisa"
+
+#~ msgid "@detailmenu seen before first node, creating `Top' node"
+#~ msgstr ""
+#~ "@detailmenu  je bil viden pred prvim vozliščem, ki je ustvarilo vozlišče "
+#~ "`Top'"
+
+#~ msgid "`%c%s' needs something after it"
+#~ msgstr "`%c%s' potrebuje nekaj za sabo"
+
+#~ msgid "Bad argument `%s' to `@%s', using `%s'"
+#~ msgstr "Slab argument `%s' k `@%s', uporaba `%s'"
+
+#~ msgid "@itemx not meaningful inside `%s' block"
+#~ msgstr "@itemx ni smiselen znotraj bloka `%s'"
+
+#~ msgid "%c%s found outside of an insertion block"
+#~ msgstr "%c%s je najden zunaj vstavka bloka"
+
+#~ msgid "no default territory known for language `%s'"
+#~ msgstr "ni privzetega območja, znanega za jezik `%s'"
+
+#~ msgid "sorry, encoding `%s' not supported"
+#~ msgstr "kodiranje `%s' ni podprto"
+
+#~ msgid "invalid encoded character `%s'"
+#~ msgstr "neveljaven kodiran znak `%s'"
+
+#~ msgid "%c%s expects a single character `i' or `j' as argument"
+#~ msgstr "%c%s pričakuje en znak `i' ali `j' kot argument"
+
+#~ msgid "@allow-recursion is deprecated; please use @rmacro instead"
+#~ msgstr "@allow-recursion je zastarela; namesto tega uporabite @rmacro"
+
+#~ msgid "mismatched @end %s with @%s"
+#~ msgstr "neujemajoč @end %s z @%s"
+
+#~ msgid "Too many errors!  Gave up.\n"
+#~ msgstr "Preveč napak!  Opustitev.\n"
+
+#~ msgid ""
+#~ "Options for XML and Docbook:\n"
+#~ "      --output-indent=VAL     indent XML elements by VAL spaces (default "
+#~ "%d).\n"
+#~ "                                If VAL is 0, ignorable whitespace is "
+#~ "dropped.\n"
+#~ msgstr ""
+#~ "Možnosti za XML in Docbook:\n"
+#~ "      --output-indent=VAL zamakni predmete XML s presledki VAL (preivzeto "
+#~ "%d).\n"
+#~ "                                Če je VAL 0, je prezrljiv presledek "
+#~ "opuščen.\n"
+
+#~ msgid "%s: could not open macro expansion output `%s'"
+#~ msgstr "%s: ni mogoče odpreti izhoda razširitve makra `%s'"
+
+#~ msgid "%s: ignoring second macro expansion output `%s'.\n"
+#~ msgstr "%s: prezrtje drugega izhoda razširitve makra `%s'.\n"
+
+#~ msgid "%s: could not open internal links output `%s'"
+#~ msgstr "%s: ni mogoče odpreti notranjega izhoda povezav `%s'"
+
+#~ msgid "%s: ignoring second internal links output `%s'.\n"
+#~ msgstr "%s: prezrtje drugega notranjega izhoda povezav `%s'.\n"
+
+#~ msgid "Multiline command %c%s used improperly"
+#~ msgstr "Večvrstični ukaz %c%s je uporabljen nepravilno"
+
+#~ msgid "No `%s' found in `%s'"
+#~ msgstr "Najdenega ni nobenega `%s' v `%s'"
+
+#~ msgid ""
+#~ "%s: Skipping macro expansion to stdout as Info output is going there.\n"
+#~ msgstr ""
+#~ "%s: preskok širitve makra v stdout, ker je mesto pridržano za izhod "
+#~ "Info.\n"
+
+#~ msgid "Making %s file `%s' from `%s'.\n"
+#~ msgstr "Ustvarjanje %s datoteke `%s' iz `%s'.\n"
+
+#~ msgid ""
+#~ "%s: Removing macro output file `%s' due to errors; use --force to "
+#~ "preserve.\n"
+#~ msgstr ""
+#~ "%s: Odstranjevanje datoteke izpisa makra `%s' zaradi napak; za ohranitev "
+#~ "uporabite --force.\n"
+
+#~ msgid ""
+#~ "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
+#~ msgstr ""
+#~ "%s: Odstranjevanje datoteke izpisa `%s' zaradi napak; za ohranitev "
+#~ "uporabite --force.\n"
+
+#~ msgid ""
+#~ "%s: Removing internal links output file `%s' due to errors; use --force "
+#~ "to preserve.\n"
+#~ msgstr ""
+#~ "%s: Odstranjevanje notranje datoteke izpisa povezav `%s' zaradi napak; za "
+#~ "ohranitev uporabite --force.\n"
+
+#~ msgid "Unmatched }"
+#~ msgstr "Neujemajoč }"
+
+#~ msgid "NO_NAME!"
+#~ msgstr "BREZ_IMENA!"
+
+#~ msgid "No such file `%s'"
+#~ msgstr "Ni takšne datoteke `%s'"
+
+#~ msgid "@image file `%s' (for text) unreadable: %s"
+#~ msgstr "@image datoteka `%s' (za besedilo) je neberljiva: %s"
+
+#~ msgid "{No value for `%s'}"
+#~ msgstr "{Ni vrednosti za `%s'}"
+
+#~ msgid "Reached eof before matching @end %s"
+#~ msgstr "Dosežen je bil konec datoteke pred ujemajočim @end %s"
+
+#~ msgid "`%.40s...' is too long for expansion; not expanded"
+#~ msgstr "`%.40s...' je predolg za razširitev, brez razširitve"
+
+#~ msgid "Missing } in @multitable template"
+#~ msgstr "Manjka } v predlogi @multitable"
+
+#~ msgid "[unexpected] cannot select column #%d in multitable"
+#~ msgstr ""
+#~ "[nepričakovano] ni mogoče izbrati stolpca št. %d večih razpredelnicah"
+
+#~ msgid "** Multicolumn output from last row:\n"
+#~ msgstr "** Izpis večih stolpcev iz zadnje vrste:\n"
+
+#~ msgid "* column #%d: output = %s\n"
+#~ msgstr "* stolpec št.%d: izpis = %s\n"
+
+#~ msgid "Node `%s' previously defined at line %d"
+#~ msgstr "Vozlišče `%s' je predhodno določeno v vrstici %d"
+
+#~ msgid "Formatting node %s...\n"
+#~ msgstr "Oblikovanje vozlišča %s ...\n"
+
+#~ msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
+#~ msgstr "Vozlišče `%s' potrebuje ukaz ustvarjanja odsekov  (npr. %c%s)"
+
+#~ msgid "No node name specified for `%c%s' command"
+#~ msgstr "Za ukaz `%c%s' ni navedenega nobenega imena vozlišča"
+
+#~ msgid "Anchor `%s' and node `%s' map to the same file name"
+#~ msgstr "Sidro `%s' in vozlišče `%s' sta preslikana na enako ime datoteke"
+
+#~ msgid "This @anchor command ignored; references to it will not work"
+#~ msgstr "Ta ukaz @anchor je prezrt; sklici nanj ne bodo delovali"
+
+#~ msgid "Rename this anchor or use the `--no-split' option"
+#~ msgstr "Preimenujte to sidro ali pa uporabite možnost `--no-split'"
+
+#~ msgid "Unexpected string at end of split-HTML file `%s'"
+#~ msgstr "Nepričakovan niz na koncu datoteke split-HTML `%s'"
+
+#~ msgid "Anchors `%s' and `%s' map to the same file name"
+#~ msgstr "Sidri `%s' in `%s' sta preslikani na isto ime datoteke"
+
+#~ msgid "@anchor command ignored; references to it will not work"
+#~ msgstr "ukaz @anchor je prezrt; sklici nanj ne bodo delovali"
+
+#~ msgid ""
+#~ "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
+#~ msgstr ""
+#~ "Na naslednje polje vozlišča `%s' ni kazano (morda nepravilno ustvarjanje "
+#~ "odsekov?)"
+
+#~ msgid "This node (%s) has the bad Prev"
+#~ msgstr "To vozlišče (%s) ima slab Pred."
+
+#~ msgid "Prev field of node `%s' not pointed to"
+#~ msgstr "Pred. polje vozlišča `%s' ni kazano"
+
+#~ msgid "This node (%s) has the bad Next"
+#~ msgstr "To vozlišče (%s) ima slab Naprej"
+
+#~ msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
+#~ msgstr "`%s' nima polja Gor (morda nepravilno ustvarjanje odsekov?)"
+
+#~ msgid "Removing %s\n"
+#~ msgstr "Odstranjevanje %s\n"
+
+#~ msgid "Appendix %c"
+#~ msgstr "Dodatek %c"
+
+#~ msgid "Internal error (search_sectioning) `%s'!"
+#~ msgstr "Notranja napaka (search_sectioning) `%s'!"
+
+#~ msgid "Internal error (search_sectioning) \"%s\"!"
+#~ msgstr "notranja napaka (search_sectioning) \"%s\"!"
+
+#~ msgid "%c%s is obsolete; use %c%s instead"
+#~ msgstr "%c%s je zastarel; namesto tega uporabite %c%s"
+
+#~ msgid "Node with %ctop as a section already exists"
+#~ msgstr "Vozlišče z odsekom %ctop že obstaja"
+
+#~ msgid "Here is the %ctop node"
+#~ msgstr "Tukaj je vozlišče %ctop"
+
+#~ msgid "%ctop used before %cnode, defaulting to %s"
+#~ msgstr "%ctop je uporabljen pred %cnode. Uporabljen bo %s"
+
+#~ msgid ""
+#~ "@headitem as the last item of @multitable produces invalid Docbook "
+#~ "documents"
+#~ msgstr ""
+#~ "@headitem kot zadnji predmet @multitable ustvari neveljavne dokumente "
+#~ "Docbook"
+
+#~ msgid "of"
+#~ msgstr "od"
+
+#~ msgid "on"
+#~ msgstr "na"
+
+#~ msgid "First argument to cross-reference may not be empty"
+#~ msgstr "Prvi argument k navzkrižnemu sklicu morda ni prazen"
+
+#~ msgid "Empty file name for HTML cross reference in `%s'"
+#~ msgstr "Prazno ime datoteke za navzkrižni sklic HTML v `%s'"
+
+#~ msgid "End of file reached while looking for `.' or `,'"
+#~ msgstr "Med iskanjem `.' ali `,' je bil dosežen konec datoteke"
+
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "za navzkrižne sklice v oklepajih uporabite @pxref"
+
+#~ msgid "First argument to @inforef may not be empty"
+#~ msgstr "Prvi argument v @inforef morda ni prazen"

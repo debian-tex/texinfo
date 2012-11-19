@@ -1,0 +1,19 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename no_contents.info
+
+@node Top
+@top No ccontent
+
+No content.
+
+@menu 
+* chapter::
+@end menu
+
+@node chapter
+@chapter Chapter 1
+
+The chapter
+
+@bye

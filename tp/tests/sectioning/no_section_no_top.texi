@@ -1,0 +1,17 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename no_section_no_top
+
+Garbage
+
+@node first,,,(dir)
+first node
+
+@menu
+* second node::
+@end menu
+
+@node second node,,first,first
+second node
+
+@bye

@@ -1,0 +1,37 @@
+# conditionals and macros
+texi glossary.texi
+texi bib-example.texi
+texi cond.texi --ifhtml --ifinfo --no-iftex
+# in the texinfo test suite, the default is info, and there is also a 
+# test with --html which doesn't make much sense here, replaced with --xml
+# though it is not the same
+cond cond.texi
+cond_xml cond.texi --xml
+cond_no-ifhtml_no-ifinfo_no-iftex cond.texi --no-ifhtml --no-ifinfo --no-iftex
+cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
+cond_info cond.texi --info
+cond_info_no-ifhtml_no-ifinfo_no-iftex cond.texi --info --no-ifhtml --no-ifinfo --no-iftex
+cond_info_ifhtml_ifinfo_iftex cond.texi --info --ifhtml --ifinfo --iftex
+defcondx_Dbar defxcond.texi -D bar
+defcondx_Ubar defxcond.texi -U bar
+
+# api
+texi ignore_and_comments.texi --init ignore_and_comments_output.init
+ignore_and_comments_output ignore_and_comments.texi --init ignore_and_comments_output.init
+test_redefine_need test_need.texi --init redefine_need.init
+
+# diverse
+direntry_dircategory_info_split direntry_dircategory.texi --info --split-size 1
+split_nocopying split_nocopying.texi --info
+split_nocopying_split split_nocopying.texi --info --split-size 10
+# FIXME /dev/null not portable
+split_nocopying_split_dev_null split_nocopying.texi --info --split-size 1 -o /dev/null
+simplest_test_prefix simplest.texi --set-customization-variable 'PREFIX truc'
+simplest_test_prefix_info simplest.texi --info --set-customization-variable 'PREFIX truc'
+simplest_test_css simplest.texi --css-include file.css
+simplest_test_date_in_header simplest.texi --set-customization-variable 'DATE_IN_HEADER 1'
+documentlanguage_set_option documentlanguage_set.texi --document-language fr
+documentlanguage_set_unknown documentlanguage_set.texi --document-language unknown
+documentlanguage_set_option_info documentlanguage_set.texi --info --document-language fr
+float_copying float_copying.texi --split chapter
+simple_with_menu_docbook_info simple_with_menu.texi --docbook --info

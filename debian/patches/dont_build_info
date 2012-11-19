@@ -1,17 +1,12 @@
-70_dont_build_info.dpatch by Norbert Preining
-
 dont build the info documentation, it has been removed
-
 ---
  doc/Makefile.in |   12 ++++++++----
  1 file changed, 8 insertions(+), 4 deletions(-)
 
-Index: texinfo-4.13a.dfsg.1/doc/Makefile.in
-===================================================================
---- texinfo-4.13a.dfsg.1.orig/doc/Makefile.in	2008-09-18 20:46:24.000000000 +0200
-+++ texinfo-4.13a.dfsg.1/doc/Makefile.in	2009-03-09 15:17:15.000000000 +0100
-@@ -121,14 +121,16 @@
- CONFIG_CLEAN_FILES =
+--- texinfo.orig/doc/Makefile.in
++++ texinfo/doc/Makefile.in
+@@ -162,14 +162,16 @@
+ CONFIG_CLEAN_VPATH_FILES =
  SOURCES =
  DIST_SOURCES =
 -INFO_DEPS = texinfo info-stnd.info info.info
@@ -29,16 +24,16 @@ Index: texinfo-4.13a.dfsg.1/doc/Makefile.in
  TEXI2DVI = texi2dvi
  TEXI2PDF = $(TEXI2DVI) --pdf --batch
  MAKEINFOHTML = $(MAKEINFO) --html
-@@ -435,8 +437,10 @@
- top_srcdir = @top_srcdir@
+@@ -911,8 +913,10 @@
+ SUBDIRS = tp_api
  
  # Put texinfo.txi first because that's the most important.
 -info_TEXINFOS = texinfo.txi info-stnd.texi info.texi
 -DISTCLEANFILES = texinfo texinfo-* info*.info*
 +#info_TEXINFOS = texinfo.txi info-stnd.texi info.texi
 +#DISTCLEANFILES = texinfo texinfo-* info*.info*
-+info_TEXINFOS = 
-+DISTCLEANFILES = 
- man_MANS = info.1 infokey.1 install-info.1 makeinfo.1 texindex.1 \
- 	info.5 texinfo.5 texi2dvi.1 texi2pdf.1 pdftexi2dvi.1
++info_TEXINFOS =
++DISTCLEANFILES =
  
+ # Use the programs built in our distribution, taking account of possible
+ # cross-compiling.

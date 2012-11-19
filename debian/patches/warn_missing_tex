@@ -1,14 +1,12 @@
 20_warn_missing_tex.dpatch by  <preining@logic.at>
 
 ---
- util/texi2dvi |   11 +++++++++++
- 1 file changed, 11 insertions(+)
+ util/texi2dvi |   13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-Index: texinfo-4.13a.dfsg.1/util/texi2dvi
-===================================================================
---- texinfo-4.13a.dfsg.1.orig/util/texi2dvi	2008-09-18 20:46:01.000000000 +0200
-+++ texinfo-4.13a.dfsg.1/util/texi2dvi	2009-03-09 15:16:49.000000000 +0100
-@@ -32,6 +32,17 @@
+--- texinfo.orig/util/texi2dvi
++++ texinfo/util/texi2dvi
+@@ -33,6 +33,19 @@
  # No failure shall remain unpunished.
  set -e
  
@@ -23,6 +21,8 @@ Index: texinfo-4.13a.dfsg.1/util/texi2dvi
 + exit 1
 +fi
 +
- # This string is expanded by rcs automatically when this file is checked out.
- rcs_revision='$Revision: 1.135 $'
++
++
+ # This string is expanded automatically when this file is checked out.
+ rcs_revision='$Revision: 1.173 $'
  rcs_version=`set - $rcs_revision; echo $2`

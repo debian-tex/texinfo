@@ -1,0 +1,74 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename index_nodes
+
+
+@node first before top, Top, ,(dir)
+@cindex first before top
+@printindex cp
+in first node
+@menu
+* node in menu before top::
+@end menu
+
+@node node in menu before top,,,first before top
+
+@cindex node in menu before top
+@printindex cp
+node in menu before top text
+
+@cindex printindex node in menu before top
+
+
+@node Top, ,first before top
+@cindex entry a
+
+@printindex cp
+
+@printindex fn
+
+And one one more index
+
+@printindex cp
+
+@menu
+* first::
+@end menu
+
+@node first,,Top, Top
+Text and then index entries
+@cindex ! entry in node
+@findex fun in node
+@cindex entry in node
+
+@printindex cp
+
+@menu
+* second::
+@end menu
+
+@node second,,,first
+@menu
+* a node::
+* another::
+@end menu
+
+@printindex fn
+
+@node another, , a node, second
+
+@cindex something
+@findex somewhere
+@cindex another
+
+@node a node, another, ,second
+@cindex entry after printindex
+
+@printindex cp
+
+@findex a function
+@cindex a concept a node
+
+@printindex cp
+
+@bye

@@ -1,0 +1,13 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename simple_with_menu.info
+
+@node Top
+
+@menu
+* test::
+@end menu
+
+@node test
+
+@bye

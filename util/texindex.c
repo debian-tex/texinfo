@@ -1,8 +1,9 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.24 2008/02/22 19:18:25 karl Exp $
+   $Id: texindex.c,v 1.28 2012/06/11 17:54:28 karl Exp $
 
    Copyright (C) 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
-   2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+   2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
+   Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -117,8 +118,8 @@ int compare_field (struct keyfield *keyfield, char *start1,
                    long int length2, long int pos2);
 int compare_full (const void *, const void *);
 void pfatal_with_name (const char *name);
-void fatal (const char *format, const char *arg);
-void error (const char *format, const char *arg);
+void fatal (const char *format, ...);
+void error (const char *format, ...);
 void *xmalloc (), *xrealloc ();
 static char *concat3 (const char *, const char *, const char *);
 
@@ -199,13 +200,12 @@ main (int argc, char *argv[])
 	{
 	  fprintf (stderr, "%s: %s: file too large\n", program_name,
 		   infiles[i]);
-	  xexit (1);
+	  exit (EXIT_FAILURE);
 	}
       sort_in_core (infiles[i], (int)ptr, outfile);
     }
 
-  xexit (0);
-  return 0; /* Avoid bogus warnings.  */
+  exit (EXIT_SUCCESS);
 }
 
 typedef struct
@@ -262,7 +262,7 @@ general questions and discussion to help-texinfo@gnu.org.\n\
 Texinfo home page: http://www.gnu.org/software/texinfo/"), f);
   fputs ("\n", f);
 
-  xexit (result_value);
+  exit (result_value);
 }
 
 /* Decode the command line arguments to set the parameter variables
@@ -296,8 +296,8 @@ decode_command (int argc, char **argv)
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-	      "2008");
-              xexit (0);
+	      "2012");
+              exit (EXIT_SUCCESS);
             }
           else if ((strcmp (arg, "--keep") == 0) ||
                    (strcmp (arg, "-k") == 0))
@@ -307,7 +307,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
           else if ((strcmp (arg, "--help") == 0) ||
                    (strcmp (arg, "-h") == 0))
             {
-              usage (0);
+              usage (EXIT_SUCCESS);
             }
           else if ((strcmp (arg, "--output") == 0) ||
                    (strcmp (arg, "-o") == 0))
@@ -319,10 +319,10 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
                     *(op - 1) = argv[arg_index];
                 }
               else
-                usage (1);
+                usage (EXIT_FAILURE);
             }
           else
-            usage (1);
+            usage (EXIT_FAILURE);
         }
       else
         {
@@ -335,7 +335,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   num_infiles = ip - infiles;
   *ip = (char *)NULL;
   if (num_infiles == 0)
-    usage (1);
+    usage (EXIT_FAILURE);
 }
 
 /* Compare LINE1 and LINE2 according to the specified set of keyfields. */
@@ -1146,20 +1146,34 @@ writelines (char **linearray, int nlines, FILE *ostream)
 /* Print error message and exit.  */
 
 void
-fatal (const char *format, const char *arg)
+vdiag (const char *fmt, const char *diagtype, va_list ap)
 {
-  error (format, arg);
-  xexit (1);
+  fprintf (stderr, "%s: ", program_name);
+  if (diagtype)
+    fprintf (stderr, "%s: ", diagtype);
+  vfprintf (stderr, fmt, ap);
+  putc ('\n', stderr);
 }
 
-/* Print error message.  FORMAT is printf control string, ARG is arg for it. */
 void
-error (const char *format, const char *arg)
+error (const char *fmt, ...)
 {
-  printf ("%s: ", program_name);
-  printf (format, arg);
-  if (format[strlen (format) -1] != '\n')
-    printf ("\n");
+  va_list ap;
+
+  va_start (ap, fmt);
+  vdiag (fmt, NULL, ap);
+  va_end (ap);
+}
+
+void
+fatal (const char *fmt, ...)
+{
+  va_list ap;
+
+  va_start (ap, fmt);
+  vdiag (fmt, NULL, ap);
+  va_end (ap);
+  exit (EXIT_FAILURE);
 }
 
 void
@@ -1173,7 +1187,7 @@ void
 pfatal_with_name (const char *name)
 {
   perror_with_name (name);
-  xexit (1);
+  exit (EXIT_FAILURE);
 }
 
 

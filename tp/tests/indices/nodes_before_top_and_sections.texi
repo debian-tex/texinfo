@@ -1,0 +1,95 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename more_before_top_section
+
+
+@node first before top, Top, ,(dir)
+@cindex first before top
+
+in first node before printindex
+@printindex cp
+in first node
+@printindex cp
+after second printindex in first node
+@menu
+* node in menu before top::
+@end menu
+
+@node node in menu before top,,,first before top
+
+@cindex node in menu before top
+between node in menu before top and printindex
+@printindex cp
+node in menu before top text after printindex
+
+@cindex printindex node in menu before top
+
+
+@node Top, ,first before top
+@cindex entry a
+in top node.
+@printindex cp
+
+@printindex fn
+
+And one more index in top node
+
+@printindex cp
+
+@top top section
+@cindex top section
+
+in top section
+
+@menu
+* first::
+* chapter::
+* node in chapter::
+@end menu
+
+@node first,,Top, Top
+Text and then index entries
+@cindex ! entry in node
+@findex fun in node
+@cindex entry in node
+
+@printindex cp
+
+@menu
+* second::
+@end menu
+
+@node second,,,first
+@menu
+* a node::
+* another::
+@end menu
+
+@printindex fn
+
+@node another, , a node, second
+
+@cindex something
+@findex somewhere
+@cindex another
+
+@node a node, another, ,second
+@cindex entry after printindex
+
+@printindex cp
+
+@findex a function
+@cindex a concept a node
+
+@printindex cp
+
+@node chapter,node in chapter,,Top
+@chapter A chapter
+
+@printindex cp
+
+@node node in chapter,, chapter,Top
+
+@cindex node in chapter
+
+@bye

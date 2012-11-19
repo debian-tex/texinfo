@@ -1,0 +1,19 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename contents_at_end_document_after_node.info
+
+@node Top
+@top top
+
+@menu
+* a node::
+@end menu
+
+@chapter chap
+
+@node a node,,,Top
+
+@contents
+
+@bye
+

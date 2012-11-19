@@ -1,0 +1,33 @@
+This is direntry_dircategory.info, produced by texi2any version from
+direntry_dircategory.texi.
+
+INFO-DIR-SECTION "category--TH ERE?"
+START-INFO-DIR-ENTRY
+* foo: (foo).   "hello--THERE?"
+END-INFO-DIR-ENTRY
+
+INFO-DIR-SECTION cat2
+START-INFO-DIR-ENTRY
+* aaa ::               aaaa
+                   bbbbb
+
+menutitle
+END-INFO-DIR-ENTRY
+
+INFO-DIR-SECTION in text
+START-INFO-DIR-ENTRY
+* in text: (in_text). in text
+END-INFO-DIR-ENTRY
+
+
+File: direntry_dircategory.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+Test dircategory and direntry
+*****************************
+
+Text
+
+* Menu:
+
+* chapter::
+

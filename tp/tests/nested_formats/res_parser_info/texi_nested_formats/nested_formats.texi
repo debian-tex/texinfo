@@ -1,0 +1,4553 @@
+\input texinfo @c -*-texinfo-*-
+
+@c value not expanded, by makeinfo nor by texi2html
+@c @setfilename nested_formats.info
+
+
+
+
+
+
+
+
+
+
+
+
+@set format_command_begin @group
+@set format_command group
+
+@c @setfilename @value{format_command}.info
+
+@node Top
+@top Test nested group
+
+@macro mymacro
+in macro
+
+@value{format_command_begin}
+@end @value{format_command}
+
+@value{format_command_begin}
+in format_command
+@end @value{format_command}
+
+Something
+@value{format_command_begin}
+@end @value{format_command}
+
+Something
+@value{format_command_begin}
+in group
+@end @value{format_command}
+
+Something2
+@value{format_command_begin}
+@end @value{format_command}
+After
+
+Something2
+@value{format_command_begin}
+in group
+@end @value{format_command}
+After
+
+
+@sp 2
+@value{format_command_begin}
+in group
+@end @value{format_command}
+
+@value{format_command_begin}
+@quotation 
+A quot---ation
+@end quotation
+@end @value{format_command}
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\\partial_t \\eta (t) = g(\\eta(t),\\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@value{format_command_begin}
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end @value{format_command}
+
+@end macro
+
+Call macro
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+
+Call macro in format_command
+@group
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@end group
+
+Call macro in itemize at the beginning of an item
+@itemize a--n itemize line
+@item in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@item item 1
+Call macro in itemize
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@item item 2
+Call macro in itemize in format_command
+@group
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@end group
+@end itemize
+
+Call macro in enumerate at the beginning of enumerate
+@enumerate
+@item in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@item enumerate
+Call macro in enumerate
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@item enumerate2
+Call macro in enumerate in format_command
+@group
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@end group
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item multitable item @tab multitable tab. And after Call macro in mutitable
+after item
+@item in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@item multitable item 2 @tab multitable tab 2
+Call macro in mutitable
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@item lone multitable item
+Call macro in mutitable in format_command
+@group
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@end group
+@end multitable
+
+call macro at the example beginning
+@example
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+example  some
+   text
+call macro in example
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+
+more example text
+call macro in example in format_command
+@group
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@end group
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+deffn
+call macro in deffn 
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+deffn continues
+call macro in deffn in format_command
+@group
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@end group
+@end deffn
+
+call macro in deffn at the beginning
+@deffn c--ategory2 d--effn_name2 a--rguments2...
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@end deffn
+
+@table @bullet
+@item a line
+call macro in table
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+call macro in table at an item beginning
+@item a line
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@item a line2
+call macro in table in format_command
+@group
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@end group
+@end table
+
+call macro at cartouche begin
+@cartouche
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+cartouche
+call macro in cartouche
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+call macro in cartouche in format_command
+@group
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@end group
+@end cartouche
+
+@flushleft
+call macro in flushleft
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+flushleft
+call macro in flushleft in format_command
+@group
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@end group
+@end flushleft
+
+@flushright
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+flushright
+@group
+in macro
+
+@group
+@end group
+
+@group
+in format_command
+@end group
+
+Something
+@group
+@end group
+
+Something
+@group
+in group
+@end group
+
+Something2
+@group
+@end group
+After
+
+Something2
+@group
+in group
+@end group
+After
+
+
+@sp 2
+@group
+in group
+@end group
+
+@group
+@quotation 
+A quot---ation
+@end quotation
+@end group
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@group
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end group
+
+@end group
+@end flushright
+
+@bye

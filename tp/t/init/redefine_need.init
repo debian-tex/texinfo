@@ -1,0 +1,26 @@
+use strict;
+
+texinfo_register_command_formatting('need', \&my_need_formatting);
+
+sub my_need_formatting($$$)
+{
+  my $converter = shift;
+  my $cmdname = shift;
+  my $command = shift;
+
+  if ($command->{'extra'} and $command->{'extra'}->{'misc_args'}
+      and @{$command->{'extra'}->{'misc_args'}}) {
+    $converter->line_warn ("need has the right arg: $command->{'extra'}->{'misc_args'}->[0]",
+                           $command->{'line_nr'});
+  } else {
+    $converter->line_warn ("Bad arg for $cmdname",
+                           $command->{'line_nr'});
+  }
+  my $arg_text;
+  if ($command->{'args'} and $command->{'args'}->[0]) {
+    $arg_text = Texinfo::Convert::Text::convert($command->{'args'}->[0]);
+  } else {
+    $arg_text = '';
+  }
+  return (&{$converter->{'format_comment'}}($converter, "$cmdname: $arg_text"));
+}

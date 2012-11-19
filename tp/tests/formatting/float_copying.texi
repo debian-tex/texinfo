@@ -1,0 +1,67 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename float_copying.info
+
+@copying 
+
+@float Copyright notice, public domain
+
+Public domain is not really a licence, as it means than 
+the author abandon his copyright.
+
+@caption{The Public Domain notice@footnote{
+The caption copying footnote
+@anchor{caption copying footnote anchor}
+
+@cindex indexed caption copying footnote
+@findex public domain function
+
+see @ref{Copying and floats}.
+
+}
+
+@anchor{public domain anchor}
+@cindex indexed caption
+@findex indexed caption function
+}
+@end float
+@end copying
+
+@node Top
+@top Top
+
+@cindex Top
+
+See the caption @ref{public domain anchor}.
+
+See the float @ref{public domain}.
+
+@insertcopying
+
+@menu
+* Copying and floats::
+@end menu
+
+@node Copying and floats
+@appendix Copying and floats
+
+In the appendix, we print the references and the copying once more
+and the list of coyright notices (listoffloats).
+
+See the caption @ref{public domain anchor}.
+
+See the float @ref{public domain}.
+
+@cindex listofloats
+
+@insertcopying
+@insertcopying
+
+@subheading listoffloats
+@listoffloats Copyright notice
+
+@subheading printindex
+@printindex cp
+@printindex fn
+
+@bye

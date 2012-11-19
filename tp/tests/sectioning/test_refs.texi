@@ -1,0 +1,100 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename test_refs.info
+@node Top
+@top Test refs
+
+@menu
+* other nodes::
+@end menu
+
+@subheading Testing distant nodes
+
+@verb{: a  node :} @ref{ a  node ,,, manual}@*
+@example
+mono : manual.html#a-node
+split: ../manual/a-node.html#a-node
+@end example
+
+@verb{;:;} @ref{:,,,manual}
+@example
+mono : manual.html#_003a
+split: ../manual/_003a.html#_003a
+@end example
+
+@verb{:Top:} @ref{ top ,,, manual}@* 
+@example
+mono : manual.html#Top
+split: ../manual/index.html#Top
+@end example
+
+@verb{:(mtexinfo)Cross References:} @ref{(mtexinfo)Cross References}
+@example
+mono: mtexinfo.html#Cross-References
+split: ../mtexinfo/Cross-References.html#Cross-References
+@end example
+
+@subheading Testing manual name
+
+@verb{:../manual/doc.texi:} @ref{node,,, ../manual/doc.texi}@*
+@example
+mono : doc.html#node
+split: ../doc/node.html#node
+@end example
+
+@subheading Testing local nodes
+
+@verb{:!_"#$%&'()*+-.:} @ref{!_"#$%&'()*+-.}
+@example
+target: #_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e
+@end example
+
+@verb{:/;<=>?[\]^_`|~:} @ref{/;<=>?[\]^_`|~}@*
+@example
+target: #_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e
+@end example
+
+@verb{:Top:} @ref{ Top}
+@example
+target: #Top
+@end example
+
+@verb{: local   node:} @ref{  local   node}
+@example
+target: #local-node
+@end example
+
+@node other nodes, !_"#$%&'()*+-., Top, Top
+@chapter Chapter with nodes
+
+@example
+id: other-nodes
+@end example
+
+@verb{:Top:} @ref{ Top}
+@example
+target: #Top
+@end example
+
+@menu
+* !_"#$%&'()*+-.::
+* /;<=>?[\]^_`|~::
+* local node::
+@end menu
+
+@node !_"#$%&'()*+-., /;<=>?[\]^_`|~, other nodes, other nodes
+@example
+id: _0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e
+@end example
+
+@node /;<=>?[\]^_`|~,local   node,!_"#$%&'()*+-., other nodes
+@example
+id: 002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e
+@end example
+
+@node  local   node,,/;<=>?[\]^_`|~,other nodes
+@example
+id: local-node
+@end example
+
+@bye

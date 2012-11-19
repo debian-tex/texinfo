@@ -1,8 +1,9 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.10 2008/07/26 17:13:26 karl Exp $
+   $Id: system.h,v 1.14 2011/10/18 18:37:31 karl Exp $
 
-   Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
-   2006, 2007, 2008 Free Software Foundation, Inc.
+   Copyright 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
+   2006, 2007, 2008, 2009, 2010, 2011
+   Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,12 +27,7 @@
 
 #ifdef MIKTEX
 #include <gnu-miktex.h>
-#define S_ISDIR(x) ((x)&_S_IFDIR) 
-#else
-/* MiKTeX defines substring() in a separate DLL, where it has its
-   own __declspec declaration.  We don't want to try to duplicate 
-   this Microsoft-ism here.  */
-extern char *substring (const char *, const char *);
+#define S_ISDIR(x) ((x)&_S_IFDIR)
 #endif
 
 /* Assume ANSI C89 headers are available.  */
@@ -40,6 +36,8 @@ extern char *substring (const char *, const char *);
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+
+#include <stdarg.h>
 
 /* Use POSIX headers.  If they are not available, we use the substitute
    provided by gnulib.  */
@@ -56,12 +54,11 @@ extern char *substring (const char *, const char *);
 
 /* Additional gnulib includes.  */
 #include "mbchar.h"
-#include "mbswidth.h"
-#include "xalloc.h"
-#include "xsetenv.h"
 #if HAVE_MBRTOWC
 #include "mbiter.h"
 #endif
+#include "mbswidth.h"
+#include "xalloc.h"
 
 #include <errno.h>
 #ifndef errno
@@ -132,25 +129,6 @@ extern int strcoll ();
 # endif
 #endif /* O_BINARY */
 
-/* We'd like to take advantage of _doprnt if it's around, a la error.c,
-   but then we'd have no VA_SPRINTF.  */
-#if HAVE_VPRINTF
-# if __STDC__
-#  include <stdarg.h>
-#  define VA_START(args, lastarg) va_start(args, lastarg)
-# else
-#  include <varargs.h>
-#  define VA_START(args, lastarg) va_start(args)
-# endif
-# define VA_FPRINTF(file, fmt, ap) vfprintf (file, fmt, ap)
-# define VA_SPRINTF(str, fmt, ap) vsprintf (str, fmt, ap)
-#else /* not HAVE_VPRINTF */
-# define VA_START(args, lastarg)
-# define va_alist a1, a2, a3, a4, a5, a6, a7, a8
-# define va_dcl char *a1, *a2, *a3, *a4, *a5, *a6, *a7, *a8;
-# define va_end(args)
-#endif
-
 #if O_BINARY
 # ifdef HAVE_IO_H
 #  include <io.h>
@@ -187,6 +165,7 @@ extern int strcoll ();
 #  define DEFAULT_TMPDIR	"c:/"
 #  define PATH_SEP	";"
 #  define STRIP_DOT_EXE	1
+#  define PIPE_USE_FORK	0
 # endif /* O_BINARY && !__CYGWIN__ */
   /* Back to any O_BINARY system.  */
 # define FILENAME_CMP	mbscasecmp
@@ -196,7 +175,6 @@ extern int strcoll ();
 # define HAVE_DRIVE(n)	((n)[0] && (n)[1] == ':')
 # define IS_SLASH(c)	((c) == '/' || (c) == '\\')
 # define IS_ABSOLUTE(n)	(IS_SLASH((n)[0]) || HAVE_DRIVE(n))
-# define PIPE_USE_FORK	0
 # define SET_BINARY(f)  do {if (!isatty(f)) setmode(f,O_BINARY);} while(0)
 
 #else  /* not O_BINARY, i.e., Unix */
@@ -232,8 +210,6 @@ extern int strcoll ();
 struct passwd *getpwnam (const char *name);
 
 /* Our library routines not included in any system library.  */
-extern void *xmalloc (size_t), *xrealloc (void *, size_t);
-extern char *xstrdup (const char *);
 extern void xexit (int);
 
 /* For convenience.  */
@@ -252,9 +228,8 @@ extern void xexit (int);
 #endif
 #define MAX(a,b) ((a) > (b) ? (a) : (b))
 
-#ifdef DMALLOC_DEBUG
-#define DMALLOC_FUNC_CHECK
-#include "dmalloc.h"
+#ifndef TEXINFO_PRINTFLIKE
+# define TEXINFO_PRINTFLIKE(fmt,narg) __attribute__ ((__format__ (__printf__, fmt, narg)))
 #endif
-
+			     
 #endif /* TEXINFO_SYSTEM_H */

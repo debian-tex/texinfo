@@ -1,0 +1,43 @@
+This is contents_in_middle_chapter.info, produced by texi2any version
+from contents_in_middle_chapter.texi.
+
+
+File: contents_in_middle_chapter.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+Contents in chapter
+*******************
+
+Content in chapter.
+
+* Menu:
+
+* chapter::
+
+
+File: contents_in_middle_chapter.info,  Node: chapter,  Prev: Top,  Up: Top
+
+1 Chapter 1
+***********
+
+The chapter with contents
+
+* Menu:
+
+* section::
+
+
+File: contents_in_middle_chapter.info,  Node: section,  Up: chapter
+
+1.1 section
+===========
+
+Section.
+
+
+
+Tag Table:
+Node: Top109
+Node: chapter274
+Node: section427
+
+End Tag Table

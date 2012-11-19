@@ -1,0 +1,7 @@
+# formats :_info
+
+texi formatting.texi
+formatting formatting.texi --internal-links=@OUT_DIR@internal_links_formatting.txt
+#formatting_info formatting.texi --info -U texi2html
+formatting_utf8_enable_encoding formatting_utf8.texi --enable-encoding
+formatting_fr formatting.texi --document-language fr

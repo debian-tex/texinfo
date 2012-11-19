@@ -1,0 +1,30 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename double_contents.info
+
+@contents
+
+@node Top
+@top Double contents
+
+Double contents.
+
+@menu 
+* chapter::
+@end menu
+
+@node chapter
+@chapter Chapter 1
+
+@contents
+The chapter
+
+@menu
+* section::
+@end menu
+
+@node section
+@section section with contents
+@contents
+
+@bye

@@ -1,0 +1,372 @@
+This is the todo list for the Texinfo::Parser implementation.
+
+  Copyright 2012 Free Software Foundation.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+export XML_CATALOG_FILES=~/src/texinfo/tp/maintain/catalog.xml
+xmllint --nonet --noout --valid commands.xml
+
+
+Before next release
+===================
+
+
+Bugs
+====
+
+
+Delayed bugs
+============
+
+In Plaintext, @quotation text should have the right margin narrowed.
+
+Text after @bye should be kept as is when redoing Texinfo.
+
+@-commands in index entries are transliterated when sorting, they should
+certainly be converted to unicode instead.
+
+Sorting of index entries should be locale dependent and sort properly
+unicode sorting.
+my $collator = Unicode::Collate::Locale->new('locale' => $locale_name, 'normalization' => 'NFKD')
+@sorted = $collator->sort(@not_sorted);
+
+Currently there is no error for something like 
+
+  @chapter @code{@anchor{TTO}}
+
+there should be an error as for the following construct:
+
+  @chapter @anchor{TTez}
+
+This would certainly imply adding, on top of the 'context_stack', a 
+stack of opened @-commands (although maybe not every @-commands?).  This 
+would allow to catch many other dubious nesting, such as @table in @menu, 
+@caption in @caption and also would certainly allow to handle the 2 cases 
+below.  This should, however, slow down the computation even more.
+
+warn nested footnotes.
+
+Following should be an error:
+@example
+@heading A heading
+@end example
+Example in heading/heading_in_example.
+
+
+Punctuation and spaces before @image do not lead to a doubling of space.
+In fact @image is completly formatted outside of usual formatting containers.
+Not sure what should be the right way?
+test in info_test/image_and_punctuation
+
+There should be a warning for something like
+@example text
+...
+
+Image on sectioning command line haven't their length ignored correctly.
+Not sure it is a big deal.  An example in sectioning/at_commands_in_refs.
+
+warn when a @noindent/@indent appears within a paragraph.
+
+in info_tests/error_in_footnote there is an error message for each 
+listoffloats;  Line numbers are right, though, so maybe this is not
+an issue.
+
+converters_tests/things_before_setfilename there is no error
+for anchor and footnote before setfilename.  It is not completly
+clear that there should be, though.
+
+
+Missing tests
+=============
+
+Unit test of end_line_count for Texinfo/Convert/Paragraph.pm .... containers.
+
+In html test empty @top for title, with different cases for 
+setcontentsaftertit* and for anchors.
+
+Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf8, with and without
+enable encoding and entities.
+
+in html test footnotestyle separate.  There are such tests in tp/tests,
+maybe they are sufficient, but they are only done for long checks.
+
+Test of CASE_INSENSITIVE_FILENAMES.
+
+
+Future features
+===============
+
+Add some elements of texinfo that are not of interest in the
+tree, like beginning and end of included file, @ protecting
+end of line in @def*, begin and end of user defined macro
+or value expansion.  Maybe call the key for these elements
+'sourcemark'?
+
+In a similar way, keep the information about aliases in the tree?
+And about @setfilename in included files which is for now completly
+removed (consistently with documentation).
+
+Right now VERBOSE is almost not used.
+
+Handle better @exdent in html? (there is a FIXME in the code)
+
+Check the design of the HTML.pm API.  Document the API, in particular
+everything in Texinfo::Config.  Add an API for everything used in the 
+default functions, for example in page_head, use $self->title_string() 
+and so on and so forth.  
+Functions to document for HTML API (many more are missing!):
+sectioning_command_target_name
+node_target_name
+
+Implement what is proposed in HTML Cross Reference Mismatch.
+
+Protection of punctuation in nodes.
+in @ref. First : is searched.  if followed by a : the node name is found
+and there is no label. When parsing a node a filename with ( is searched for.
+Nested parentheses are taken into account.
+Then more parentheses?
+
+Automatic generation of node names from section names.  To be protected:
+* in every case
+  ( at the beginning
+* In @node line
+  commas
+* In menu entry
+  * if there is a label
+    tab comma dot
+  * if there is no label
+    :
+* In @ref
+  commas
+
+In Info
+
+Nodes:
+* in every case 
+  ( at the beginning
+* in Node line 
+  commas
+* In menu entry and *Note
+  * if there is a label
+    tab comma dot
+  * if there is no label
+    :
+
+Labels in Info (which also means index entries)
+  :
+
+* at the beginning of a line in a @menu
+*note more or less everywhere
+
+
+DocBook
+=======
+
+  deftypevr, deftypecv: use type and not returnvalue for the type
+
+  also informalfigure in @float
+
+  also use informaltable or table, for multitable?
+
+  What is before the first sectioning command is put in <bookinfo><abstract>.
+
+  what about @titlefont in docbook?
+
+  maybe use simpara instead of para. Indeed, simpara is for paragraph without
+  block element within, and it should be that way in generated output.
+
+  put <title> in <articleinfo>?
+
+  how to handle @sc in docbook?
+
+* in docbook, when there is only one section <article> should be better
+  than book. Maybe the best way to do that would be passing the
+  information that there is only one section to the functions formatting
+  the page header and page footer.
+
+
+Interrogations and remarks
+==========================
+
+Instead of _set_global_multiple_commands and _unset_global_multiple_commands
+have a better granularity and do something per command, with the possibility
+to really revert everything, including things that are not set by set_conf.
+(There is a FIXME in the code).  This is not that important, now that the 
+actual case that was problematic (setting encodings as a side effect of 
+setting @documentencoding) is not supported anymore.  (Now the encoding is
+set at the initialization of the converter and should be changed by setting
+the correct customization variable, in general OUTPUT_ENCODING_NAME).
+
+Should more Converter ignore the last new line (with type 
+last_raw_newline) of a raw block format?
+
+In a first step, close when the the command to be closed is at the 
+top of the tree, not when it should be closed theoretically.
+Then it could be possible to come back to the place where the command
+should be closed and give an error message.
+This is certainly only an issue for @footnote and similar not a general issue.
+
+There is no forward looking code anymore, so maybe a lex/yacc parser
+could be used for the main loop.  More simply, a binary tokenizer, at 
+least, could make for a notable speedup.
+
+def/end_of_lines_protected_in_footnote.pl the footnote is
+   (1)  -- category: deffn_name arguments arg2 more args with end of line
+and not 
+   (1)
+ -- category: deffn_name arguments arg2 more args with end of line
+It happens this way because the paragraph starts right after the footnote 
+number.
+
+in HTML, the argument of a quotation is ignored if the quotation is empty,
+as in
+ @quotation thing
+ @end quotation
+Is it really a bug?
+
+In @copying things like some raw formats may be expanded.  However it is
+not clear that it should be the same than in the main converter.  Maybe a 
+specific list of formats could be passed to Convert::Text::convert, which
+would be different (for example Info and Plaintext even if converting HTML).
+This requires a test, to begin with.
+
+Use INLINE_INSERTCOPYING as the default for some formats?
+
+In HTML, HEADERS is used.  But not in other modules, especially not in
+Plaintext.pm or Info.pm, this is determined by the module used (Plaintext.pm
+or Info.pm).  No idea whether it is right or wrong.
+
+in hyphenation: only text and accent commands, and should
+only appear in toplevel
+
+use definfoenclose information in Convert::Text?
+
+From vincent Belaïche. About svg image files in HTML:
+
+I don't think that supporting svg would be easy: its seems that to embed an
+svg picture you need to declare the width x height of the frame in
+which you embed it, and this information cannot be derived quite
+straightforwardly from the picture.
+With @image you can declare width and height but this is intended for
+scaling. I am not sure whether or not that these arguments can be used
+for the purpose of defining that frame...
+What I did in 5x5 is that coded the height of the frame directly in
+the macro @FIGURE with which I embed the figure, without going through
+an argument.
+The @FIGURE @macro is, for html:
+@macro FIGURE {F,W}
+@html
+<div align="center">
+<embed src="5x5_\F\.svg" height="276"
+ type="image/svg+xml"
+ pluginspage="http://www.adobe.com/svg/viewer/install/" /></div>
+@end html
+@end macro
+
+Add @value to the corresponding commands categories?
+
+tests .init file not relevant since indices cannot be split anymore
+indices/index_test.init     
+
+Use of specialized synopsis in DocBook is not a priority and it is not even 
+obvious that it is interesting to do so.  The following notes explain the
+possibilities and issues extensively.
+
+Instead of synopsis it might seem to be relevant to use specialized synopsis, 
+funcsynopsis/funcprototype for deftype* and some def*, and other for object 
+oriented.  There are many issues such that this possibility do not appear
+appealing at all.
+
+1) there is no possibility to have a category.  So the category must be 
+   added somewhere as a role= or in the *synopsisinfo, or this should only
+   be used for specialized @def, like @defun.
+
+2) @defmethod and @deftypemethod cannot really be mapped to methodsynopsis
+   as the class name is not associated with the method as in Texinfo, but 
+   instead  the method should be in a class in docbook.
+
+3) From the docbook reference for funcsynopsis
+  "For the most part, the processing application is expected to
+  generate all of the parentheses, semicolons, commas, and so on
+  required in the rendered synopsis. The exception to this rule is
+  that the spacing and other punctuation inside a parameter that is a
+  pointer to a function must be provided in the source markup."
+
+  So this mean it is language specific (C, as said in the docbook doc)
+  and one have to remove the parentheses, semicolons, commas.
+
+  See also the mails from Per Bothner bug-texinfo, Sun, 22 Jul 2012 01:45:54.
+
+specialized @def, without a need for category:
+@defun and @deftypefun 
+<funcsynopsis><funcprototype><funcdef>TYPE <function>NAME</function><paramdef><parameter>args</parameter></paramdef></funcprototype></funcsynopsis>
+
+specialized @def, without a need for category, but without DocBook synopsis
+because of missing class:
+@defmethod, @deftypemethod: methodsynopsis cannot be used since the class
+is not available
+@defivar and @deftypeivar: fieldsynopsis cannot be used since the class
+is not available
+
+Generic @def with a need for a category
+For deffn deftypefn (and defmac?, defspec?), the possibilities of 
+funcsynopsis, with a category added could be used:
+  <funcsynopsis><funcprototype><funcdef role=...>TYPE <function>NAME</function></funcdef><paramdef>PARAMTYPE <parameter>PARAM</parameter></paramdef></funcprototype></funcsynopsis>
+
+Alternatively, use funcsynopsisinfo for the category.
+
+Generic @def with a need for a category, but without DocBook synopsis because
+of missing class:
+@defop and @deftypeop: methodsynopsis cannot be used since the class
+is not available
+defcv, deftypecv: fieldsynopsis cannot be used since the class
+is not available
+
+Remaining @def without DocBook synopsis because there is no equivalent, 
+and requires a category
+defvr (defvar, defopt), deftypevr (deftypevar)
+deftp
+
+
+
+Missing test outputs as files in t/
+===================================
+
+output files split (node or not split) could be interesting +texi2html 
+style for some tests.  However, the test suite is already too long to
+run so such additions should be done with caution.
+
+t/30sectioning.t
+ chapter_between_nodes (more_nodes_than_sections renamed)
+ more_sections_than_nodes
+ two_nodes_between_chapters
+ two_nodes_at_the_end
+ character_and_spaces_in_refs
+ character_and_spaces_in_node
+ some_at_commands_in_ref_nodes
+ at_commands_in_refs  
+ character_and_spaces_in_refs <- mono/chapter
+ rec_nodes (with USE_NODES and without)
+ loop_nodes?
+ nodes_before_top?
+ no_element
+ top_node_no_menu_direction? (with USE_NODES and without?)
+ anchor_in_footnote
+ anchor_in_footnote_separate
+ placed_things_before_node    (with USE_NODES and without?)
+ placed_things_before_element (with USE_NODES and without?)
+ top_no_argument_and_node
+ top_no_argument_and_top_node
+ nodes_after_top_before_chapter_(nodes/sections) (with USE_NODES and --split chapter)
+ nodes_after_top_before_section_(nodes/sections) (with USE_NODES and --split chapter and only --split chapter)
+ sectioning_part_appendix   (--split chapter)
+ nodes_no_node_top_explicit_directions (with USE_NODES and without)
+ one_node_explicit_directions_anchor (with USE_NODES and without) Really useful?
+ top_without_node_sections
+
+t/info_tests.t
+ space_in_setfilename
+

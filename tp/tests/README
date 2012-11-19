@@ -1,0 +1,126 @@
+$Id: README,v 1.6 2012/11/11 16:25:07 pertusus Exp $
+texinfo/tp/tests/README
+
+  Copyright (C) 2010, 2012 Free Software Foundation, Inc.
+
+  Copying and distribution of this README file, with or without
+  modification, are permitted in any medium without royalty provided the
+  copyright notice and this notice are preserved.
+
+Files anywhere within the tests/ subdirectory which have no other
+copyright notice are hereby placed in the public domain.
+
+
+Prerequisites
+=============
+To run this testsuite, sed, awk, diff (with -u), mktemp are used. 
+
+Some tests may also require a case insensitive filesystem.
+
+
+Running the testsuite
+=====================
+This testsuite can be run 
+
+* using the makefile rules: check for the base tests, long-checks for 
+  the long tests, or all-checks for both.
+
+* using ./parser_tests.sh with the list of directories in argument one 
+  want to run the tests in. 
+
+* by going in one directory and running ../run_parser_all.sh, like
+$ cd formatting
+$ ../run_parser_all.sh
+* by going in one directory and running one specific test, like
+$ cd formatting
+$ ../run_parser_all.sh cond
+(see below for info on how test names are specified).
+
+The test results are in the out_parser directories; the reference results are
+in res_parser directories; there are one or two out and res directories, 
+out_parser/ and res_parser/ for the html results in the texi2html style, 
+out_parser_info and res_parser_info for the info output, out_parser_html
+and res_parser_html for html output with the default texi2any style. 
+Diffs are put in diffs. 
+
+If a test failed,
+ F: a_test_directory 
+is printed, if there is a diff with the references, a
+ D: a_test_directory
+is printed. If there are no reference to compare with, 
+ no res: a_test_directory
+is printed.
+
+If a whole directory check run using './parser_tests.sh' had no failure, 
+the directory name is printed followed by a fail; it is followed 
+by a ok if there was a failure.
+
+The test results are in a directory below the out directories. This 
+directory name can be considered as the test name. Let's call it a_test
+for the remaining of the explanation. The stderr output is in 
+out_parser/a_test/a_test.2, stdout output is in out_parser/a_test/a_test.1. 
+All the commands called are output in tests.log.
+
+giving -copy in argument to parser_tests.sh or ../run_parser_all.sh will 
+cause the references to be regenerated. This can also be achieved with 
+the copy-tests make target.
+
+
+TeX4ht and LaTeX2HTML tests
+===========================
+The tex4ht and latex2HTML related tests are not run automatically, as
+some test results involving latex2HTML or tex4ht depend on the setup and 
+version of these tools.
+
+These tests may be run by
+  make tex-html-checks
+
+For the tests that use latex2html, to avoid the test failing if there is 
+a dot in the cwd, mktemp is used to create a temporary directory, and 
+the directory is passed through on the command line.
+
+
+Tests specification
+===================
+Test runs are driven by the content of the tests-parser.txt file. It is 
+a line oriented file. A # starts a comment. Each line describes a test.
+The first word on the line is the test name which corresponds also with the
+resulting directory (what we called a_test above).  It is followed by
+the source manual name. The source manual name has to have the .texi
+extension. Optionnally additional arguments can be given on the
+remaining of the line.
+
+So, for example, the line
+
+a_test manual.texi
+
+specifies that for the a_test test, the file manual.texi is processed and
+results are put are put in the a_test directory.  The line:
+
+a_test_split_chapter manual.texi --split chapter
+
+specifies that the results of the processing of manual.texi with additional
+command line arguments --split chapter will be in the a_test_split_chapter
+directory.
+
+Using "texi" as the test name is special. In that case the directory name 
+is constructed by appending _ followed by the manual name without the .texi
+extension to "texi". And the result is not processed normally, but instead
+macros are expanded and regions that are not processed removed and the 
+result is put in a file with the same name than the manual. 
+
+texi manual.texi
+
+results in the following: in the directory out_parser/texi_manual the file
+manual.texi will have macros expanded and ignored regions removed.
+
+
+Common .texi
+============
+A common .texi file should be in the top-level directory (there is such an
+example with coverage_macro.texi).
+
+
+Init files
+==========
+Init files are searched for in ../t/init/.

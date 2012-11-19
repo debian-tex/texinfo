@@ -1,0 +1,47 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename more_sections_than_nodes.info
+
+@node Top
+@top top
+
+@menu
+* n c2::
+* n c3::
+* n c3 s1 s2::
+@end menu
+
+@chapter c1
+
+@node n c2
+@chapter c2
+
+@section s1
+
+@node n c3, n c3 s1 s2, n c2, Top
+@chapter c3
+
+@menu 
+* n c3 s 2::
+@end menu
+
+@section C3 s1
+
+@node n c3 s 2
+@section c3 s2
+
+@section c3 s3
+
+@chapter c4
+
+@section c3 s1
+
+@subsection c3 s1 s1
+
+@node n c3 s1 s2,,n c3,Top
+@subsection c3 s1 s2
+
+@appendix appendix
+
+@bye
+

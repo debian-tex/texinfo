@@ -1,0 +1,48 @@
+\input texinfo.tex
+
+@setfilename glossary
+
+@macro glossarytext
+@table @asis
+@end macro
+
+@macro glossary
+@glossarytext
+@end table
+
+@end macro
+
+@macro gentry {id, name, text}
+@ifhtml
+@ref{\id\,\name\}
+@end ifhtml
+@ifnothtml
+\name\ (@pxref{\id\})
+@end ifnothtml
+@unmacro expandglossary
+@macro expandglossary{glossary}
+@unmacro glossarytext
+@macro glossarytext
+\\glossary\\
+@item \name\ @anchor{\id\}
+\text\
+@end macro
+@end macro
+@expandglossary {@glossarytext}
+
+@end macro
+
+@node Top
+@top Top
+
+@menu 
+* glossary::
+@end menu
+
+The @gentry{id1, name1, text1\, arg1 } is used in many cases while
+@gentry{id2, name2, text2} is quite specific
+
+@node glossary
+@chapter glossary
+@glossary
+

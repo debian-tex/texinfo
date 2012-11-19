@@ -1,0 +1,60 @@
+
+set_from_init_file('ICONS', 1);
+
+
+# insert here name of icon images for buttons
+# Icons are used, if ICONS and resp. value are set
+%ACTIVE_ICONS =
+    (
+     'Top',         'a_top.png',
+     'Contents',    'a_tableofcon.png',
+     'Overview',    'a_tableofcon.png',
+     'Index',       'a_index.png',
+     'This',        '',
+     'Back',        'a_left.png',
+     'FastBack',    'a_leftdouble.png',
+     'Prev',        'a_left.png',
+     'Up',          'a_up.png',
+     'Next',        'a_right.png',
+     'NodeUp',      'a_up.png',
+     'NodeNext',    'a_right.png',
+     'NodePrev',    'a_left.png',
+     'NodeForward', 'a_right.png',
+     'NodeBack',    'a_left.png',
+     'Forward',     'a_right.png',
+     'FastForward', 'a_rightdouble.png',
+     'About' ,      'a_help.png',
+     'First',       '',
+     'Last',        '',
+     ' ',           ''
+    );
+
+# insert here name of icon images for these, if button is inactive
+%PASSIVE_ICONS =
+    (
+     'Top',         'a_top_na.png',
+     'Contents',    'a_tableofcon_na.png',
+     'Overview',    'a_tableofcon_na.png',
+     'Index',       'a_index_na.png',
+     'This',        '',
+     'Back',        'a_left_na.png',
+     'FastBack',    'a_leftdouble_na.png',
+     'Prev',        'a_left_na.png',
+     'Up',          'a_up_na.png',
+     'Next',        'a_right_na.png',
+     'NodeUp',      'a_up_na.png',
+     'NodeNext',    'a_right_na.png',
+     'NodePrev',    'a_left_na.png',
+     'NodeForward', 'a_right_na.png',
+     'NodeBack',    'a_left_na.png',
+     'Forward',     'a_right_na.png',
+     'FastForward', 'a_rightdouble_na.png',
+     'About' ,      'a_help_na.png',
+     'First',       '',
+     'Last',        '',
+    );
+
+set_from_init_file('ACTIVE_ICONS', \%ACTIVE_ICONS);
+set_from_init_file('PASSIVE_ICONS', \%PASSIVE_ICONS);
+
+1;

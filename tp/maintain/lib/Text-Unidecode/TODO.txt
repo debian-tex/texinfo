@@ -1,0 +1,103 @@
+Text::Unidecode Transliteration Notes -- TODO FILE
+
+
+
+============================== BLOCK 03 ==============================
+
+Coptic things I'm unsure of: Khei=kh, Gangia=g, Shima=ch, Dei=ti.
+
+
+============================== BLOCK 09 ==============================
+
+What's an isshar? (09FA = "bengali isshar")
+
+
+============================== BLOCK 0b ==============================
+
+What's an isshar?  (0B70 = "oriya isshar")
+
+
+============================== BLOCK 0e ==============================
+
+What is 0E4C = "thai character thanthakhat" ?
+
+What is 0E4E = "thai character yamakkan" ?
+
+
+============================== BLOCK 0f ==============================
+
+Various questions to do with Tibetan (0f00-0fff)...
+
+A lot of these characters end up as "".  What to do with them?
+
+How to represent these Astrological signs, 0F15-0F1F ?
+
+What is a 0F38 = "Tibetan mark Che Mgo" ?
+
+Should I leave "Marks and Signs" (0F82-0F87) as ""?
+
+What to do with "Transliteration head letters" (0F88-0F8B) ?
+
+
+============================== BLOCK 11 ==============================
+
+Various Hangul components need checking:
+
+What are chitueumsios, chitueumssangsios,
+ceongchieumsios, and ceongchieumssangsios?
+
+Is "Z" a good transliteration for pansios?
+
+I'm using "N" for yesieung and kapyeoun both.  Is this right?
+
+What are chitueumcieuc, chitueumssangcieuc, ceongchieumcieuc,
+ceongchieumssangcieuc, chitueumchieuch, and ceongchieumchieuch?
+
+Is "kapyeounphieuph" best transliterated as "Np" or "pN"?,
+and so on for: kapyeounrieul, kapyeounmieum, kapyeounpieup,
+kapyeounssangpieup, kapyeounphieuph
+
+I'm using "Q" for yeorinhieuh, apparently an archaic glottal
+stop character.  Is that right?
+
+
+============================== BLOCK 14 ==============================
+
+How to transliterate 0x1426,
+AKA "canadian syllabics final double short vertical strokes"?
+
+How to transliterate 0x1429, AKA "canadian syllabics final plus"?
+
+
+============================== BLOCK 16 ==============================
+
+Fact-check the Ogham and Runes.
+
+What are eabhadh, or, uilleann, ifin, eamhancholl, and peith (1695-169A)?
+
+
+============================== BLOCK 18 ==============================
+
+What's 180A = "Mongolian nirugu" ?
+
+
+============================== BLOCK 31 ==============================
+
+I leave the Kaeriten (3190-319F) as null-string.  Is that good?
+
+
+============================== BLOCK fb ==============================
+
+Arabic Presentation Forms-A (FB50-FDFF) -- do I need to
+do these, or are they never actually found in text files?
+
+
+============================== BLOCK fe ==============================
+
+Arabic Presentation Forms-B (FE70-FEFF) -- do I need to
+do these, or are they never actually found in text files?
+
+
+
+--
+26 TODOs at Sat Jul 14 00:27:44 2001

@@ -1,0 +1,53 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename index_no_node
+
+@cindex truc
+Garbage
+@printindex cp
+
+
+@unnumbered unnumbered
+@printindex bidule
+
+@cindex unnumbered
+in unnumbered
+@cindex unnumbered after text
+
+@printindex cp
+
+@top top section
+
+@cindex top section
+@cindex top section
+@cindex top section
+@cindex top section
+@cindex top section
+@cindex top section
+Top node
+
+@printindex cp
+
+@cindex top section1
+
+
+@section second
+
+@printindex cp
+@cindex second
+second node
+@cindex second
+
+@printindex cp
+@chapter Chapter
+@cindex chapter
+
+@printindex cp
+Text of chapter
+@cindex Chapter2
+
+@chapter Chapter 2
+
+In chapter 2
+
+@bye

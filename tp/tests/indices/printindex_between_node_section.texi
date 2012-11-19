@@ -1,0 +1,41 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename printindex_between_node_section.info
+
+@node Top
+@top top
+
+@cindex top1
+@cindex top1
+@cindex top1
+@cindex top1
+@cindex top1
+@cindex top1
+@cindex top1
+@cindex top1
+@cindex top1
+@cindex aop1
+@cindex aop1
+@cindex aop1
+@cindex aop1
+@cindex aop1
+@cindex aop1
+@cindex aop1
+
+
+@menu
+* node chap1::
+@end menu
+
+@node node chap1
+@chapter chapter 1
+
+@menu
+* node sec1::
+@end menu
+
+@node node sec1
+@printindex cp
+@section section1
+
+@bye

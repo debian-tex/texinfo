@@ -1,0 +1,71 @@
+# Automatically generated from maintain/template.pod
+
+=head1 NAME
+
+Texinfo::Convert::OUTFORMAT - Convert Texinfo tree to OUTFORMAT
+
+=head1 SYNOPSIS
+
+  my $converter 
+    = Texinfo::Convert::OUTFORMAT->converter({'parser' => $parser});
+
+  $converter->output($tree);
+
+=head1 DESCRIPTION
+
+Texinfo::Convert::OUTFORMAT converts a Texinfo tree to OUTFORMAT.
+
+=head1 METHODS
+
+=over
+
+=item $converter = Texinfo::Convert::OUTFORMAT->converter($options)
+
+Initialize an OUTFORMAT converter.  
+
+The I<$options> hash reference holds options for the converter.  In
+this option hash reference a parser object may be associated with the 
+I<parser> key.  The other options should be configuration options
+described in the Texinfo manual.  Those options, when appropriate,
+override the document content.
+
+See L<Texinfo::Convert::Converter> for more informations.
+
+=item $converter->output($tree)
+
+Convert a Texinfo tree I<$tree> and output the result in files as
+described in the Texinfo manual.
+
+=item $result = $converter->convert($tree)
+
+Convert a Texinfo tree I<$tree> or tree portion and return 
+the resulting output.
+
+=item $result = $converter->convert_tree($tree)
+
+Convert a Texinfo tree portion I<$tree> and return the resulting 
+output.  This function do not try to output a full document but only
+portions of document.  For a full document use C<convert>.
+
+=item $result = $converter->output_internal_links()
+
+Returns text representing the links in the document.  At present the format 
+should follow the C<--internal-links> option of texi2any/makeinfo specification
+and this is only relevant for HTML.
+
+=back
+
+=head1 AUTHOR
+
+Patrice Dumas, E<lt>pertusus@free.frE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2012 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at 
+your option) any later version.
+
+=cut

@@ -1,7 +1,7 @@
 /* session.h -- Functions found in session.c.
-   $Id: session.h,v 1.10 2008/03/04 09:44:57 gray Exp $
+   $Id: session.h,v 1.13 2012/01/14 17:58:32 gray Exp $
 
-   Copyright (C) 1993, 1998, 1999, 2001, 2002, 2004, 2007
+   Copyright (C) 1993, 1998, 1999, 2001, 2002, 2004, 2007, 2011
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -86,9 +86,10 @@ extern void add_char_to_keyseq (char character);
 extern void info_gather_typeahead (void);
 extern FILE_BUFFER *file_buffer_of_window (WINDOW *window);
 extern long info_search_in_node (char *string, NODE *node,
-    long int start, WINDOW *window, int dir, int case_sensitive);
+    long int start, WINDOW *window, int dir, int case_sensitive,
+    int use_regexp);
 extern long info_target_search_node (NODE *node, char *string,
-    long int start);
+    long int start, int use_regexp_mask);
 extern void info_select_reference (WINDOW *window, REFERENCE *entry);
 extern int info_any_buffered_input_p (void);
 extern void print_node (NODE *node);
@@ -118,13 +119,11 @@ extern void info_set_input_from_file (char *filename);
 extern void begin_multiple_window_info_session (char *filename,
     char **nodenames);
 extern void begin_info_session (NODE *initial_node);
-extern void begin_info_session_with_error (NODE *initial_node,
-    const char *format, void *arg1, void *arg2);
 extern void info_session (void);
 extern void initialize_info_session (NODE *node, int clear_screen);
 extern void info_read_and_dispatch (void);
 extern void info_intuit_options_node (WINDOW *window,
-    NODE *initial_node, char *program);
+				      NODE *initial_node, char *program);
 
 /* Moving the point within a node. */
 extern void info_next_line (WINDOW *window, int count, unsigned char key);
@@ -198,7 +197,7 @@ extern void info_kill_node (WINDOW *window, int count, unsigned char key);
 extern void info_view_file (WINDOW *window, int count, unsigned char key);
 extern void info_menu_sequence (WINDOW *window, int count, unsigned char key);
 extern NODE *info_follow_menus (NODE *initial_node, char **menus,
-    const char **errstr, char **errarg1, char **errarg2);
+				NODE **err_node);
 extern void info_man (WINDOW *window, int count, unsigned char key);
 extern void list_visited_nodes (WINDOW *window, int count, unsigned char key);
 extern void select_visited_node (WINDOW *window, int count, unsigned char key);

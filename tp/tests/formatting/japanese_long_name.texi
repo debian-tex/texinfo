@@ -1,0 +1,13 @@
+@c -*- mode: texinfo; coding: iso-2022-jp -*-
+@setfilename jugemu
+@documentencoding ISO-2022-JP
+@node Top
+
+This is the longest personal name ever in Japan.  The source is a
+rakugo story named `jugemu' which is a traditional public
+entertainment popular in Japan.
+
+それは「寿限無寿限無五劫のすり切れ海砂利水魚の水行末雲行末風来末食う寝
+る所に住む所やぶら小路ぶら小路パイポパイポパイポのシューリンガンシュー
+リンガンのグーリンダイグーリンダイのポンポコピーのポンポコナの長久命の
+長助」です。

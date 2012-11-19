@@ -1,0 +1,1 @@
+<bidule truc="ff &amp;"> & </bidule>

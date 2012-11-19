@@ -1,0 +1,47 @@
+# formats :_info
+
+# split at node?
+double_index_entry double_index_entry.texi
+
+#split_chapter_index split_chapter_index.texi --split chapter --init index_test.init
+split_chapter_index split_chapter_index.texi --split chapter
+#index_split index_split.texi --split chapter --init index_test.init
+index_split index_split.texi --split chapter
+#makeinfo_index_split index_split.texi --init makeinfo.pm --init index_test.init
+index_split_nodes index_split.texi --set-customization-variable 'USE_NODES 1' --split node
+#index_no_node index_no_node.texi --split chapter --init index_test.init
+index_no_node index_no_node.texi --split chapter
+#nodes_before_top nodes_before_top.texi --set-customization-variable 'USE_NODES 1' --init index_test.init --split chapter
+nodes_before_top nodes_before_top.texi --set-customization-variable 'USE_NODES 1' --split chapter
+#makeinfo_nodes_before_top nodes_before_top.texi --init makeinfo.pm --init index_test.init --split node --no-node-files
+nodes_before_top_nodes nodes_before_top.texi --set-customization-variable 'USE_NODES 1' --split node
+# there is no sectioning command in nodes_before_top.texi, so when called as
+# texi2html there is nothing split, including indices. 
+#nodes_before_top_no_nodes nodes_before_top.texi --init index_test.init --split chapter
+nodes_before_top_no_nodes nodes_before_top.texi --split chapter
+#nodes_before_top_and_sections nodes_before_top_and_sections.texi --init index_test.init --split chapter
+nodes_before_top_and_sections_monolithic nodes_before_top_and_sections.texi
+#makeinfo_nodes_before_top_and_sections nodes_before_top_and_sections.texi --init makeinfo.pm --init index_test.init
+nodes_before_top_and_sections_html_chapter nodes_before_top_and_sections.texi --html --split chapter
+nodes_before_top_and_sections_html_chapter_nodes nodes_before_top_and_sections.texi --html --set-customization-variable 'USE_NODES 1' --node-files --split chapter
+index_special_region index_special_region.texi --split chapter --set-customization-variable 'USE_TITLEPAGE_FOR_TITLE 0'
+index_special_region_no_region index_special_region_no_region.texi --split chapter --set-customization-variable 'USE_TITLEPAGE_FOR_TITLE 0'
+index_special_region_no_insertcopying index_special_region_no_insertcopying.texi --split chapter --set-customization-variable 'USE_TITLEPAGE_FOR_TITLE 0'
+index_special_region_html index_special_region.texi --html --split chapter
+index_special_region_no_region_html index_special_region_no_region.texi --html --split chapter
+index_special_region_no_insertcopying_html index_special_region_no_insertcopying.texi --html --split chapter
+index_nodes index_nodes.texi
+#makeinfo_index_nodes index_nodes.texi --init makeinfo.pm --init index_test.init  --split node
+index_nodes_nodes index_nodes.texi --set-customization-variable 'USE_NODES 1' --split node
+#printindex_between_node_section printindex_between_node_section.texi --init index_test.init --node-files
+printindex_between_node_section printindex_between_node_section.texi --node-files
+#printindex_between_part_chapter printindex_between_part_chapter.texi --init index_test.init
+printindex_between_part_chapter printindex_between_part_chapter.texi
+index_and_node_same_name index_and_node_same_name.texi
+index_entry_in_footnote index_entry_in_footnote.texi
+index_one_node index_one_node.texi
+index_no_node_no_top index_no_node_no_top.texi
+#same_doc_nr_split_index_and_element same_doc_nr_split_index_and_element.texi --init index_test.init --split node --node-files
+
+index_entry_in_footnote_info index_entry_in_footnote.texi --info
+index_entry_in_footnote_separated_info index_entry_in_footnote.texi --info --footnote-style=separate

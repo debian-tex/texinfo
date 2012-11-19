@@ -1,0 +1,33 @@
+$Id: README,v 1.9 2012/11/16 18:33:03 karl Exp $
+texinfo/tp/README
+
+  Copyright 2011, 2012 Free Software Foundation, Inc.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+Texinfo::Parser (tp) is a Perl module for parsing Texinfo code into a 
+tree representing the Texinfo code structure.
+
+These other modules and libraries are required.  All have been standard
+parts of Perl for years, at least since 5.007003.
+  Carp, Config, Data::Dumper, Encode, File::Basename, File::Spec
+  Getopt::Long, Unicode::Normalize, Storable
+
+It also uses the less widely-available modules:
+  Locale::Messages, Unicode::EastAsianWidth, Text::Unidecode
+For these, internal versions are included, and are installed and used as
+part of Texinfo (not disturbing the Perl installation at all).
+
+To run the tests you also need:
+  Data::Compare, Test::Deep
+On Debian-based distros, the corresponding packages are named:
+  libdata-compare-perl libtest-deep-perl
+
+
+This module is part of GNU Texinfo.  A standalone Perl module may also be
+produced from within the the Texinfo tree, using 
+  ./maintain/prepare_perl_module.sh
+The resulting module, although standalone, should always be regenerated
+from the sources in Texinfo, to avoid divergence of sources.

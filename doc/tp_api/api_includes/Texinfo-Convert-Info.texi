@@ -1,0 +1,92 @@
+@node Texinfo::Convert::Info
+@chapter Texinfo::Convert::Info
+
+@menu
+* Texinfo@asis{::}Convert@asis{::}Info NAME::
+* Texinfo@asis{::}Convert@asis{::}Info SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}Info DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}Info METHODS::
+* Texinfo@asis{::}Convert@asis{::}Info AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}Info COPYRIGHT AND LICENSE::
+@end menu
+
+@node Texinfo::Convert::Info NAME
+@section NAME
+
+Texinfo::Convert::Info - Convert Texinfo tree to Info
+
+@node Texinfo::Convert::Info SYNOPSIS
+@section SYNOPSIS
+
+@verbatim
+  my $converter 
+    = Texinfo::Convert::Info->converter({'parser' => $parser});
+
+  $converter->output($tree);
+@end verbatim
+
+@node Texinfo::Convert::Info DESCRIPTION
+@section DESCRIPTION
+
+Texinfo::Convert::Info converts a Texinfo tree to Info.
+
+@node Texinfo::Convert::Info METHODS
+@section METHODS
+
+@table @asis
+@item $converter = Texinfo::Convert::Info->converter($options)
+@anchor{Texinfo::Convert::Info $converter = Texinfo::Convert::Info->converter($options)}
+
+Initialize an Info converter.  
+
+The @emph{$options} hash reference holds options for the converter.  In
+this option hash reference a parser object may be associated with the 
+@emph{parser} key.  The other options should be configuration options
+described in the Texinfo manual.  Those options, when appropriate,
+override the document content.
+
+See @ref{Texinfo::Convert::Converter NAME} for more informations.
+
+@item $converter->output($tree)
+@anchor{Texinfo::Convert::Info $converter->output($tree)}
+
+Convert a Texinfo tree @emph{$tree} and output the result in files as
+described in the Texinfo manual.
+
+@item $result = $converter->convert($tree)
+@anchor{Texinfo::Convert::Info $result = $converter->convert($tree)}
+
+Convert a Texinfo tree @emph{$tree} or tree portion and return 
+the resulting output.
+
+@item $result = $converter->convert_tree($tree)
+@anchor{Texinfo::Convert::Info $result = $converter->convert_tree($tree)}
+
+Convert a Texinfo tree portion @emph{$tree} and return the resulting 
+output.  This function do not try to output a full document but only
+portions of document.  For a full document use @code{convert}.
+
+@item $result = $converter->output_internal_links()
+@anchor{Texinfo::Convert::Info $result = $converter->output_internal_links()}
+
+Returns text representing the links in the document.  At present the format 
+should follow the @code{--internal-links} option of texi2any/makeinfo specification
+and this is only relevant for HTML.
+
+@end table
+
+@node Texinfo::Convert::Info AUTHOR
+@section AUTHOR
+
+Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo::Convert::Info COPYRIGHT AND LICENSE
+@section COPYRIGHT AND LICENSE
+
+Copyright 2012 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at 
+your option) any later version.
+

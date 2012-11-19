@@ -1,0 +1,14 @@
+Revision history for Perl extension Texinfo::Parser.
+This files lists only information specific to the standalone Perl module.
+The main ChangeLog is in the Texinfo distribution.
+
+0.01  Sat Sep  4 13:51:26 2010
+	- original version; created by h2xs 1.23 with options
+		-A -X -c -b 5.4.5 -n Texinfo::Parser
+	- generate automatically the module from the texinfo source tree
+
+Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.

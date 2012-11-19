@@ -1,0 +1,79 @@
+use vars qw(%result_texis %result_texts %result_trees %result_errors 
+   %result_indices %result_sectioning %result_nodes %result_menus
+   %result_floats %result_converted %result_converted_errors 
+   %result_elements %result_directions_text);
+
+use utf8;
+
+$result_trees{'unknown_synindex'} = {
+  'contents' => [
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'parent' => {},
+              'text' => 'c truc'
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        }
+      ],
+      'cmdname' => 'synindex',
+      'extra' => {
+        'spaces_after_command' => {}
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
+      'parent' => {}
+    }
+  ],
+  'type' => 'text_root'
+};
+$result_trees{'unknown_synindex'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'unknown_synindex'}{'contents'}[0];
+$result_trees{'unknown_synindex'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_synindex'}{'contents'}[0]{'args'}[0];
+$result_trees{'unknown_synindex'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_synindex'}{'contents'}[0]{'args'}[0];
+$result_trees{'unknown_synindex'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'unknown_synindex'}{'contents'}[0];
+$result_trees{'unknown_synindex'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'unknown_synindex'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'unknown_synindex'}{'contents'}[0]{'parent'} = $result_trees{'unknown_synindex'};
+
+$result_texis{'unknown_synindex'} = '@synindex c truc';
+
+
+$result_texts{'unknown_synindex'} = '';
+
+$result_errors{'unknown_synindex'} = [
+  {
+    'error_line' => ':1: Unknown from index `c\' in @synindex
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Unknown from index `c\' in @synindex',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':1: Unknown to index name `truc\' in @synindex
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Unknown to index name `truc\' in @synindex',
+    'type' => 'error'
+  }
+];
+
+
+1;

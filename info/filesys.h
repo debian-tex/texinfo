@@ -1,7 +1,7 @@
 /* filesys.h -- external declarations for filesys.c.
-   $Id: filesys.h,v 1.7 2007/07/01 21:20:29 karl Exp $
+   $Id: filesys.h,v 1.8 2009/03/14 17:31:30 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2002, 2004, 2005, 2007 Free Software
+   Copyright 1993, 1997, 1998, 2002, 2004, 2005, 2007, 2009 Free Software
    Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #ifndef INFO_FILESYS_H
 #define INFO_FILESYS_H
@@ -78,7 +78,7 @@ extern int is_dir_name (char *filename);
 
 /* The default value of INFOPATH. */
 #if !defined (DEFAULT_INFOPATH)
-#  define DEFAULT_INFOPATH ".:/usr/local/info:/usr/info:/usr/local/lib/info:/usr/lib/info:/usr/local/gnu/info:/usr/local/gnu/lib/info:/usr/gnu/info:/usr/gnu/lib/info:/opt/gnu/info:/usr/share/info:/usr/share/lib/info:/usr/local/share/info:/usr/local/share/lib/info:/usr/gnu/lib/emacs/info:/usr/local/gnu/lib/emacs/info:/usr/local/lib/emacs/info:/usr/local/emacs/info"
+#  define DEFAULT_INFOPATH ".:PATH:/usr/local/info:/usr/info:/usr/local/lib/info:/usr/lib/info:/usr/local/gnu/info:/usr/local/gnu/lib/info:/usr/gnu/info:/usr/gnu/lib/info:/opt/gnu/info:/usr/share/info:/usr/share/lib/info:/usr/local/share/info:/usr/local/share/lib/info:/usr/gnu/lib/emacs/info:/usr/local/gnu/lib/emacs/info:/usr/local/lib/emacs/info:/usr/local/emacs/info"
 #endif /* !DEFAULT_INFOPATH */
 
 #if !defined (S_ISREG) && defined (S_IFREG)

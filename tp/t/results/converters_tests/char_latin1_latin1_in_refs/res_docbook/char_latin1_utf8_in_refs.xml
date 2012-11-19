@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+  <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>
+<book id="char_latin1_utf8_in_refs.xml" lang="en">
+
+
+<chapter label="" id="Top">
+<title>top</title>
+
+<index role="cp"></index>
+
+
+</chapter>
+<chapter label="1" id="_00e4-_00eb-_00ef-_00f6-_00fc-_00ff-_00c4-_00cb-_00cf-_00d6-_00dc">
+<title>ä ë ï ö ü ÿ Ä Ë Ï Ö Ü</title>
+
+</chapter>
+<chapter label="2" id="_00e9">
+<title>é</title>
+
+</chapter>
+<chapter label="3" id="_00e0-_00e8-_00f9">
+<title>à è ù</title>
+
+</chapter>
+<chapter label="4" id="_00e2-_00ea-_00ee-_00f4-_00fb-_00c2-_00ca-_00ce-_00d4-_00db">
+<title>â ê î ô û Â Ê Î Ô Û</title>
+
+</chapter>
+<chapter label="5" id="_00e7">
+<title>ç</title>
+
+<para><link linkend="_00e4-_00eb-_00ef-_00f6-_00fc-_00ff-_00c4-_00cb-_00cf-_00d6-_00dc">ä ë ï ö ü ÿ Ä Ë Ï Ö Ü</link>
+<link linkend="_00e9">é</link>
+<link linkend="_00e0-_00e8-_00f9">à è ù</link>
+<link linkend="_00e2-_00ea-_00ee-_00f4-_00fb-_00c2-_00ca-_00ce-_00d4-_00db">â ê î ô û Â Ê Î Ô Û</link>
+<link linkend="_00e7">ç</link>
+</para>
+<indexterm role="cp"><primary>ä ë ï ö ü ÿ</primary></indexterm>
+<indexterm role="cp"><primary>Ä Ë Ï Ö Ü</primary></indexterm>
+<indexterm role="cp"><primary>é</primary></indexterm>
+<indexterm role="cp"><primary>è</primary></indexterm>
+<indexterm role="cp"><primary>â ê î ô û Â Ê Î Ô Û</primary></indexterm>
+<indexterm role="cp"><primary>ç</primary></indexterm>
+
+</chapter>
+</book>

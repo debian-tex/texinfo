@@ -1,7 +1,7 @@
 # @configure_input@
-# $Id: defs.in,v 1.1 2008/04/17 17:54:17 karl Exp $
+# $Id: defs.in,v 1.2 2012/11/11 00:33:54 karl Exp $
 # 
-# Copyright 2008 Free Software Foundation, Inc.
+# Copyright 2008, 2012 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,7 +21,8 @@
 SHELL='@SHELL@'
 export SHELL
 
-unset CDPATH
+# unsetting an already-unset variable fails with BSD sh.
+CDPATH=; unset CDPATH
 
 # Ensure we are running from the right directory.
 if test ! -f ./defs; then

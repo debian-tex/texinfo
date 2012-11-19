@@ -1,0 +1,23 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename index_entry_in_footnote.info
+
+@node Top
+@top index_entry_in_footnote
+
+Top node@footnote{in footnote
+
+Another para in footnote.
+@cindex index entry in footnote
+}
+
+@menu
+* Index::
+@end menu
+
+@node Index
+@appendix index
+
+@printindex cp
+
+@bye

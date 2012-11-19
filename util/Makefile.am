@@ -1,6 +1,9 @@
-# $Id: Makefile.am,v 1.34 2008/03/25 10:51:20 akim Exp $
+# $Id: Makefile.am,v 1.47 2012/11/11 00:44:37 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
+#
+# Copyright 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
+# Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -12,10 +15,16 @@
 
 bin_PROGRAMS = texindex
 bin_SCRIPTS = texi2dvi texi2pdf pdftexi2dvi
+nodist_noinst_SCRIPTS = txixml2texi
 
 # for auctex.
 pdftexi2dvi: texi2pdf
 	cp -f $(srcdir)/texi2pdf $@
+
+txixml2texi: txixml2texi.pl Makefile
+	sed -e 's,[@]datadir[@],$(datadir),g' \
+	    -e 's,[@]PACKAGE[@],$(PACKAGE),g' $(srcdir)/txixml2texi.pl >$@
+	chmod a+x $@
 
 localedir = $(datadir)/locale
 AM_CPPFLAGS = 					\
@@ -23,10 +32,9 @@ AM_CPPFLAGS = 					\
   -I$(top_srcdir)/gnulib/lib			\
   -I$(top_builddir)/gnulib/lib			\
   -DLOCALEDIR=\"$(localedir)\"
-LDADD = ../lib/libtxi.a $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
+LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
 
-dist_pkgdata_DATA = texinfo.dtd texinfo.xsl
-pkgdata_DATA = texinfo.cat
+dist_pkgdata_DATA = htmlxref.cnf texinfo.dtd texinfo.xsl texinfo.cat
 
 # we don't actually use version.texi in the rule, but it's one way of
 # noticing when the version changes.
@@ -36,27 +44,31 @@ texinfo.cat: texinfo-cat.in $(top_srcdir)/doc/version.texi
 # Most of these are for fun.  The only official/installed ones are the
 # *texi2* scripts.
 #
-EXTRA_DIST = README deref.c dir-example fix-info-dir fixfonts \
+EXTRA_DIST = README deref.c detexinfo dir-example fix-info-dir fixfonts \
   fixref.gawk gdoc gen-dir-node gendocs.sh gendocs_template infosrch \
   install-info-html outline.gawk pdftexi2dvi \
   prepinfo.awk tex3patch texi-docstring-magic.el texi2dvi texi2pdf txitextest \
-  $(dist_pkgdata_DATA) texinfo-cat.in
-CLEANFILES = $(pkgdata_DATA)
+  $(dist_pkgdata_DATA) texinfo-cat.in texi-elements-by-size \
+  texi2html txixml2texi.pl
 
+DISTCLEANFILES = txixml2texi
 
-# Let's not stress people's TeX installations, etc.
-if MAINTAINER_MODE
-TESTS =						\
-bibtex.test					\
-dvipdf.test					\
-latex2html.test					\
-local.test					\
-texi2dvi.test
-
-EXTRA_DIST += $(TESTS)
-
-# Each test case depends on defs.
-check_SCRIPTS = defs
-distclean-local:
-	-rm -rf testSubDir
-endif
+# We must not stress people's TeX installations.
+# In Automake 1.11, we'll have a switchable maintainer mode.
+# Until then, just comment these out.
+## if MAINTAINER_MODE
+## TESTS =						\
+## bibtex.test					\
+## dvipdf.test					\
+## latex2html.test					\
+## local.test					\
+## texi2dvi.test
+## 
+## EXTRA_DIST += $(TESTS)
+## 
+## # Each test case depends on defs.
+## check_SCRIPTS = defs
+## distclean-local:
+## 	-rm -rf testSubDir
+## endif
+ 

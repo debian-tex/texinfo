@@ -1,7 +1,7 @@
 /* search.c -- searching large bodies of text.
-   $Id: search.c,v 1.9 2008/06/11 09:55:42 gray Exp $
+   $Id: search.c,v 1.14 2012/04/12 10:38:29 gray Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2008
+   Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2008, 2009, 2011
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -70,16 +70,16 @@ copy_binding (SEARCH_BINDING *binding)
 
 /* Search forwards or backwards for the text delimited by BINDING.
    The search is forwards if BINDING->start is greater than BINDING->end. */
-long
-search (char *string, SEARCH_BINDING *binding)
+enum search_result
+search (char *string, SEARCH_BINDING *binding, long *poff)
 {
-  long result;
+  enum search_result result;
 
   /* If the search is backwards, then search backwards, otherwise forwards. */
   if (binding->start > binding->end)
-    result = search_backward (string, binding);
+    result = search_backward (string, binding, poff);
   else
-    result = search_forward (string, binding);
+    result = search_forward (string, binding, poff);
 
   return result;
 }
@@ -88,13 +88,13 @@ search (char *string, SEARCH_BINDING *binding)
    delimited by BINDING. The search is forwards if BINDING->start is greater
    than BINDING->end.
 
-   If PRET is specified, it receives a copy of BINDING at the end of a
+   If PEND is specified, it receives a copy of BINDING at the end of a
    succeded search.  Its START and END fields contain bounds of the found
    string instance. 
 */
-long
-regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
-	       SEARCH_BINDING *pret)
+enum search_result
+regexp_search (char *regexp, SEARCH_BINDING *binding, 
+	       long *poff, SEARCH_BINDING *pend)
 {
   static char *previous_regexp = NULL;
   static char *previous_content = NULL;
@@ -163,8 +163,8 @@ regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
           int size = regerror (result, &preg, NULL, 0);
           char *buf = xmalloc (size);
           regerror (result, &preg, buf, size);
-          info_error (_("regexp error: %s"), buf, NULL);
-          return -1;
+          info_error (_("regexp error: %s"), buf);
+          return search_failure;
         }
 
       previous_regexp = xstrdup(regexp);
@@ -173,14 +173,27 @@ regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
   if (previous_content != binding->buffer)
     {
       /* new buffer to search in, let's scan it */
-      regoff_t start = 0;
+      regoff_t start = 0, end;
+      size_t content_length;
       char saved_char;
 
+      if (binding->start < binding->end)
+	{
+	  start = binding->start;
+	  end = binding->end;
+	}
+      else
+	{
+	  start = binding->end;
+	  end = binding->start;
+	}
+      content_length = end - start + 1;
+      
       previous_content = binding->buffer;
-      saved_char = previous_content[length-1];
-      previous_content[length-1] = '\0';
+      saved_char = previous_content[content_length-1];
+      previous_content[content_length-1] = '\0';
 
-      for (match_count = 0; start < length; )
+      for (match_count = 0; start < content_length; )
         {
           int result = 0;
           if (match_count >= match_alloc)
@@ -213,7 +226,7 @@ regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
               break;
             }
         }
-      previous_content[length-1] = saved_char;
+      previous_content[content_length-1] = saved_char;
     }
 
   pos = binding->start;
@@ -225,14 +238,15 @@ regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
         {
           if (matches[i].rm_so <= pos)
 	    {
-	      if (pret)
+	      if (pend)
 		{
-		  pret->buffer = binding->buffer;
-		  pret->flags = binding->flags;
-		  pret->start = matches[i].rm_so;
-		  pret->end = matches[i].rm_eo;
+		  pend->buffer = binding->buffer;
+		  pend->flags = binding->flags;
+		  pend->start = matches[i].rm_so;
+		  pend->end = matches[i].rm_eo;
 		}
-	      return matches[i].rm_so;
+	      *poff = matches[i].rm_so;
+	      return search_success;
 	    }
         }
     }
@@ -244,28 +258,29 @@ regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
         {
           if (matches[i].rm_so >= pos)
             {
-	      if (pret)
+	      if (pend)
 		{
-		  pret->buffer = binding->buffer;
-		  pret->flags = binding->flags;
-		  pret->start = matches[i].rm_so;
-		  pret->end = matches[i].rm_eo;
+		  pend->buffer = binding->buffer;
+		  pend->flags = binding->flags;
+		  pend->start = matches[i].rm_so;
+		  pend->end = matches[i].rm_eo;
 		}
               if (binding->flags & S_SkipDest)
-                return matches[i].rm_eo;
+                *poff = matches[i].rm_eo;
               else
-                return matches[i].rm_so;
+                *poff = matches[i].rm_so;
+	      return search_success;
             }
         }
     }
 
   /* not found */
-  return -1;
+  return search_not_found;
 }
 
 /* Search forwards for STRING through the text delimited in BINDING. */
-long
-search_forward (char *string, SEARCH_BINDING *binding)
+enum search_result
+search_forward (char *string, SEARCH_BINDING *binding, long *poff)
 {
   register int c, i, len;
   register char *buff, *end;
@@ -310,7 +325,8 @@ search_forward (char *string, SEARCH_BINDING *binding)
             free (alternate);
           if (binding->flags & S_SkipDest)
             buff += len;
-          return buff - binding->buffer;
+          *poff = buff - binding->buffer;
+	  return search_success;
         }
 
       buff++;
@@ -319,12 +335,12 @@ search_forward (char *string, SEARCH_BINDING *binding)
   if (alternate)
     free (alternate);
 
-  return -1;
+  return search_not_found;
 }
 
 /* Search for STRING backwards through the text delimited in BINDING. */
-long
-search_backward (char *input_string, SEARCH_BINDING *binding)
+enum search_result
+search_backward (char *input_string, SEARCH_BINDING *binding, long *poff)
 {
   register int c, i, len;
   register char *buff, *end;
@@ -379,7 +395,8 @@ search_backward (char *input_string, SEARCH_BINDING *binding)
 
           if (binding->flags & S_SkipDest)
             buff -= len;
-          return 1 + buff - binding->buffer;
+          *poff = 1 + buff - binding->buffer;
+	  return search_success;
         }
 
       buff--;
@@ -389,7 +406,7 @@ search_backward (char *input_string, SEARCH_BINDING *binding)
   if (alternate)
     free (alternate);
 
-  return -1;
+  return search_not_found;
 }
 
 /* Find STRING in LINE, returning the offset of the end of the string.
@@ -400,7 +417,8 @@ string_in_line (char *string, char *line)
 {
   register int end;
   SEARCH_BINDING binding;
-
+  long offset;
+  
   /* Find the end of the line. */
   for (end = 0; line[end] && line[end] != '\n'; end++);
 
@@ -410,7 +428,9 @@ string_in_line (char *string, char *line)
   binding.end = end;
   binding.flags = S_FoldCase | S_SkipDest;
 
-  return search_forward (string, &binding);
+  if (search_forward (string, &binding, &offset) == search_success)
+    return offset;
+  return -1;
 }
 
 /* Return non-zero if STRING is the first text to appear at BINDING. */
@@ -419,7 +439,8 @@ looking_at (char *string, SEARCH_BINDING *binding)
 {
   long search_end;
 
-  search_end = search (string, binding);
+  if (search (string, binding, &search_end) != search_success)
+    return 0;
 
   /* If the string was not found, SEARCH_END is -1.  If the string was found,
      but not right away, SEARCH_END is != binding->start.  Otherwise, the
@@ -470,35 +491,51 @@ skip_non_whitespace (char *string)
   return i;
 }
 
-/* Return the index of the first non-node character in STRING.  Note that
-   this function contains quite a bit of hair to ignore periods in some
-   special cases.  This is because we here at GNU ship some info files which
-   contain nodenames that contain periods.  No such nodename can start with
-   a period, or continue with whitespace, newline, or ')' immediately following
-   the period.  If second argument NEWLINES_OKAY is non-zero, newlines should
+/* Return the index of the first non-node character in STRING.
+
+   The second argument instructs how to parse the node name:
+
+   PARSE_NODE_DFLT             Node name stops at LF, `,', `.', or `TAB'
+   PARSE_NODE_SKIP_NEWLINES    Node name stops at `,', `.', or `TAB'
+   PARSE_NODE_VERBATIM         Don't parse nodename
+   PARSE_NODE_START            The STRING argument is retrieved from a node
+                               start line, and therefore ends in `,' only.
+   
+   Note that if FLAG is PARSE_NODE_DFLT or PARSE_NODE_SKIP_NEWLINES, this
+   function contains quite a bit of hair to ignore periods in some special
+   cases.  This is because we here at GNU ship some info files which contain
+   nodenames that contain periods.  No such nodename can start with a period,
+   or continue with whitespace, newline, or ')' immediately following the
+   period.  If second argument NEWLINES_OKAY is non-zero, newlines should
    be skipped while parsing out the nodename specification. */
 int
-skip_node_characters (char *string, int newlines_okay)
+skip_node_characters (char *string, int flag)
 {
   register int c, i = 0;
   int paren_seen = 0;
   int paren = 0;
 
+  if (!string)
+    return 0;
+
+  if (flag == PARSE_NODE_VERBATIM)
+    return strlen (string);
+  
   /* Handle special case.  This is when another function has parsed out the
      filename component of the node name, and we just want to parse out the
      nodename proper.  In that case, a period at the start of the nodename
      indicates an empty nodename. */
-  if (string && *string == '.')
+  if (*string == '.')
     return 0;
 
-  if (string && *string == '(')
+  if (*string == '(')
     {
       paren++;
       paren_seen++;
       i++;
     }
 
-  for (; string && (c = string[i]); i++)
+  for (; (c = string[i]); i++)
     {
       if (paren)
         {
@@ -509,25 +546,26 @@ skip_node_characters (char *string, int newlines_okay)
 
           continue;
         }
-      
+
       /* If the character following the close paren is a space or period,
          then this node name has no more characters associated with it. */
       if (c == '\t' ||
           c == ','  ||
           c == INFO_TAGSEP ||
-          ((!newlines_okay) && (c == '\n')) ||
+          (!(flag == PARSE_NODE_SKIP_NEWLINES) && (c == '\n')) ||
           ((paren_seen && string[i - 1] == ')') &&
            (c == ' ' || c == '.')) ||
-          (c == '.' &&
-           (
+	  (flag != PARSE_NODE_START &&
+	   (c == '.' &&
+	    (
 #if 0
 /* This test causes a node name ending in a period, like `This.', not to
    be found.  The trailing . is stripped.  This occurs in the jargon
    file (`I see no X here.' is a node name).  */
            (!string[i + 1]) ||
 #endif
-            (whitespace_or_newline (string[i + 1])) ||
-            (string[i + 1] == ')'))))
+	   (whitespace_or_newline (string[i + 1])) ||
+	   (string[i + 1] == ')')))))
         break;
     }
   return i;
@@ -664,7 +702,7 @@ find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
       tmp_search.start += offset;
       tmp_search.start += skip_whitespace (tmp_search.buffer + tmp_search.start);
       offset = skip_node_characters
-        (tmp_search.buffer + tmp_search.start, DONT_SKIP_NEWLINES);
+        (tmp_search.buffer + tmp_search.start, PARSE_NODE_DFLT);
 
       /* Notice that this is an exact match.  You cannot grovel through
          the buffer with this function looking for random nodes. */

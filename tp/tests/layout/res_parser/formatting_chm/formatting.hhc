@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="texi2any">
+<!-- Sitemap 1.0 -->
+</HEAD>
+<BODY>
+<OBJECT type="text/site properties">
+<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Top section">
+<param name="Local" value="formatting.html#Top">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="1 chapter">
+<param name="Local" value="chapter.html#chapter">
+</OBJECT> </LI>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="1.1 A section">
+<param name="Local" value="s_002d_002dect_002cion.html#s_002d_002dect_002cion">
+</OBJECT> </LI>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="1.1.1 subsection">
+<param name="Local" value="subsection.html#subsection">
+</OBJECT> </LI>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="1.1.1.1 subsubsection &quot;simple-double-">
+<param name="Local" value="subsubsection-_0060_0060simple_002ddouble_002d_002d.html#subsubsection-_0060_0060simple_002ddouble_002d_002d">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="1.1.1.2 three--four---&quot;">
+<param name="Local" value="subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027.html#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">
+</OBJECT> </LI>
+</UL>
+</UL>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="chapter 2">
+<param name="Local" value="chapter2.html#chapter2">
+</OBJECT> </LI>
+</UL>
+</HTML>
+</BODY>

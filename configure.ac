@@ -1,5 +1,8 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.93 2008/09/18 18:45:56 karl Exp $
+# $Id: configure.ac,v 1.121 2012/11/16 01:26:27 pertusus Exp $
+#
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
+# Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -9,23 +12,39 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [4.13], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [4.13.90], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
-AM_INIT_AUTOMAKE([1.10.1 readme-alpha dist-lzma])
+dnl tar-ustar because we have long filenames for some test files.
+dnl parallel-tests as recommended by stefano.
+AM_INIT_AUTOMAKE([1.12 tar-ustar parallel-tests readme-alpha dist-xz])
 
 # Minimum Autoconf version required.
 AC_PREREQ(2.59)
 
 # Where to generate output; srcdir location.
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.
-AC_CONFIG_SRCDIR([makeinfo/makeinfo.c])
+AC_CONFIG_SRCDIR([info/info.c])
 
-# When the Texinfo source is imported into other repositories
-# (NetBSD and TeX Live), timestamps are generally not preserved.  This
-# causes lots of annoyance, so --enable-maintainer-mode.  Sorry.
-AM_MAINTAINER_MODE
+# Conditional texi2html support.
+AM_CONDITIONAL([TEXI2HTML],[false])
+
+# Package date.
+PACKAGE_DATE=`${SHELL} "$srcdir"/build-aux/mdate-sh "$srcdir"/configure.ac`
+AC_SUBST([PACKAGE_DATE])
+
+# We need Perl
+AC_PATH_PROG([PERL], [perl])
+if test -z "$PERL"; then
+   AC_MSG_ERROR(
+[perl not found; Texinfo requires Perl.
+If you have perl installed somewhere not in PATH,
+specify where it is using
+  ./configure PERL=/path/to/perl
+])
+
+fi
 
 # Checks for programs.
 AC_PROG_CC
@@ -35,9 +54,8 @@ AC_PROG_CC
 # keep everything together.
 gl_EARLY
 
-dnl Rest of Gnulib.
+# Rest of Gnulib.
 gl_INIT
-
 
 # Since we make a helper library.
 AC_PROG_RANLIB
@@ -45,6 +63,16 @@ AM_MISSING_PROG(HELP2MAN, help2man)
 
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
+
+AC_PROG_LN_S
+AC_PROG_MKDIR_P
+
+dnl gettext Makefiles may need MKINSTALLDIRS
+MKINSTALLDIRS="\$(top_srcdir)/build-aux/install-sh -d"
+AC_SUBST([MKINSTALLDIRS])
+
+AC_ARG_VAR([PERL], [The path to the 'perl' executable.])
+AC_PATH_PROG([PERL], [perl], [/usr/bin/env perl], [/opt/perl5/bin:"$PATH"])
 
 # Needed on sysV68 for sigblock, sigsetmask.  But check for it in libc first.
 AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])
@@ -213,28 +241,107 @@ AC_ARG_ENABLE(install-warnings,
 AM_CONDITIONAL(INSTALL_WARNINGS,
    test x"$install_warnings" = xtrue || test x"$install_warnings" = xyes)
 
+USE_EXTERNAL_EASTASIANWIDTH=no
+AC_ARG_WITH([external-Unicode-EastAsianWidth],
+   AC_HELP_STRING([--with-external-Unicode-EastAsianWidth],
+      [use external Unicode-EastAsianWidth if found (default: no)]),
+   [if test $withval = 'yes'; then
+      USE_EXTERNAL_EASTASIANWIDTH=yes
+   fi]
+)
+
+AC_SUBST([USE_EXTERNAL_EASTASIANWIDTH])
+
+USE_EXTERNAL_UNIDECODE=no
+AC_ARG_WITH([external-Text-Unidecode],
+    AC_HELP_STRING([--with-external-Text-Unidecode],
+           [use external Text::Unidecode if found (default: no)]),
+   [if test $withval = 'yes'; then
+      USE_EXTERNAL_UNIDECODE=yes
+   fi]
+)
+
+AC_SUBST([USE_UNICODE])
+AC_SUBST([USE_EXTERNAL_UNIDECODE])
+
 # i18n support.  To update to a new version of gettext, run:
-# gettextize -f -c
-AM_GNU_GETTEXT_VERSION([0.17])
+#   gettextize -f -c
+# See http://www.gnu.org/s/hello/manual/gnulib/gettextize-and-autopoint.html.
+AM_GNU_GETTEXT_VERSION([0.18.1])
 AM_GNU_GETTEXT([external])
+
+USE_EXTERNAL_LIBINTL=no
+AC_ARG_WITH([external-libintl-perl],
+   AC_HELP_STRING([--with-external-libintl-perl],
+      [use external libintl-perl if found (default: no)]),
+   [if test $withval = 'yes'; then
+      USE_EXTERNAL_LIBINTL=yes
+   fi]
+)
+
+AC_SUBST([USE_EXTERNAL_LIBINTL])
+
 
 # The test suite.
 AC_CONFIG_FILES([install-info/tests/defs])
 AC_CONFIG_FILES([util/defs])
 AC_CHECK_PROGS([HEVEA], [hevea], [])
 AC_CHECK_PROGS([TEX], [tex], [])
+AC_CHECK_PROGS([PROVE], [prove], [])
 
-AC_CONFIG_FILES([
+tp_tests='no'
+AC_ARG_ENABLE([tp-tests],
+    AC_HELP_STRING([--enable-tp-tests],
+        [run the parser and converters testsuite (default: detected)]),
+    [if test $enableval = 'no'; then
+       tp_tests='no'
+     else
+       tp_tests='yes'
+     fi],
+    [
+     if test "z$PROVE" = 'z'; then
+       tp_tests='no'
+     elif $PERL -e "use 5.006; use Encode; use Test::More; use File::Basename; use File::Copy; use Data::Dumper; use Data::Compare; use Test::Deep; use Storable qw(dclone); use Getopt::Long qw(GetOptions);" > /dev/null 2>&1;
+     then
+       tp_tests='yes'
+     else  
+       tp_tests='no'
+     fi
+    ])
+
+AC_MSG_CHECKING([parser tests requirements])
+AC_MSG_RESULT([$tp_tests])
+AM_CONDITIONAL([TP_TESTS], [test "z$tp_tests" = 'zyes'])
+
+dnl The bulk config files.
+AC_CONFIG_FILES([\
   Makefile
   doc/Makefile
+  doc/tp_api/Makefile
   gnulib/lib/Makefile
   info/Makefile
   install-info/Makefile
   install-info/tests/Makefile
-  lib/Makefile
-  makeinfo/Makefile
-  makeinfo/tests/Makefile
+  man/Makefile
   po/Makefile.in
+  po_document/Makefile.in
   util/Makefile
+  tp/Makefile
+  tp/tests/Makefile
+  tp/tests/many_input_files/Makefile
+  tp/tests/sectioning/Makefile
+  tp/tests/coverage/Makefile
+  tp/tests/formatting/Makefile
+  tp/tests/indices/Makefile
+  tp/tests/contents/Makefile   
+  tp/tests/htmlxref/Makefile
+  tp/tests/htmlxref-only_mono/Makefile
+  tp/tests/htmlxref-only_split/Makefile
+  tp/tests/nested_formats/Makefile
+  tp/tests/layout/Makefile
+  tp/tests/tex_html/Makefile
+  tp/defs
+  Pod-Simple-Texinfo/Makefile
 ])
+
 AC_OUTPUT

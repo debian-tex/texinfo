@@ -1,9 +1,10 @@
-$Id: NEWS,v 1.179 2008/09/18 18:45:56 karl Exp $
+$Id: NEWS,v 1.217 2012/11/08 23:08:43 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
-  Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-  2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+  Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
+  2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
+  Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -22,6 +23,94 @@ one of the relevant sections:
 
 -------------------------------------------------------------------------------
 
+* Language:
+  . Texinfo commands are supported in node names.
+  . #line directives are recognized.
+  . new commands @inlinefmt and @inlineraw for brace-delimited conditionals.
+  . new conditionals @ifcommanddefined and @ifcommandnotdefined to test
+    if a Texinfo command is available.
+  . new command @part for a group of chapters.
+  . new environments @raggedright, @smallquotation,
+      @indentedblock, and @smallindentedblock.
+  . new commands @codequoteundirected and @codequotebacktick,
+      for a better interface than the @set variables; now respected by @kbd.
+  . new command @xrefautomaticsectiontitle to allow using section titles
+      in cross references by default, instead of node names.
+  . new commands for Texinfo special characters:
+    @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}.
+  . new commands @deftypefnnewline to print return types on their own lines.
+  . new command @headitemfont for the sake of template rows.
+  . new command @urefbreakstyle to control breaking of @url/@uref in TeX.
+  . new diacritic command @ogonek.
+  . new commands for Icelandic letters eth and thorn: @DH{} @dh{} @TH{} @th{}.
+  . new command @errormsg to report an error.
+  . five-argument xrefs can refer to a whole manual, by omitting the
+      section name and either omitting the node name or using "Top".
+  . DEL (0x7f = 0177 = 127) is a true comment character (catcode 14 in TeX).
+
+* texi2any is the new generic converter for Texinfo that can produce all
+  supported output formats, both those from texi2dvi (PDF/DVI) and from
+  makeinfo (Info/HTML/etc.).  texi2any and makeinfo are now different
+  names for the same program; there are no differences in behavior based
+  on the program name.
+
+  The new implementation is in Perl (based on the texi2html program, but
+  with a vast array of subsequent changes).  It both replaces and is
+  intended to be (for all practical purposes) upward-compatible with the
+  C makeinfo.  It has many new features not in the C makeinfo.  For
+  example, cross-manual references are now fully supported, and
+  extensive customization of the HTML output is possible.  See the
+  `Generic Translator texi2any' chapter in the manual (among other places)
+  for more about this reimplementation.
+  
+  The new program is, unfortunately, noticeably slower at present than
+  the C program was.  We hope all the many improvements make the new
+  version worthwhile for users nevertheless.
+
+* texinfo.tex:
+  . urls (given to @uref and @url) are broken by default at special
+    characters; behavior controllable with @urefbreakstyle.
+  . support some per-language hyphenation, when the underlying TeX
+    engine does (for instance, etex/pdfetex from TeX Live 2008 or
+    later).  Words with accented letters are still not handled properly.
+  . @title, text will be broken if needed, and @* can be used to override.
+  . new Icelandic translation: txi-is.tex.
+  . new Hungarian translation: txi-hu.tex.
+  . official updates between full package releases available at
+    http://ftpmirror.gnu.org/texinfo/texinfo.tex.
+
+* texi2dvi:
+  . new option --max-iterations.
+  . official updates between full package releases available at
+    http://ftpmirror.gnu.org/texinfo/texi2dvi.
+  
+* info:
+  . INFOPATH is determined from PATH by default, or if an element "PATH"
+    is specified.
+  . New command Info-virtual-index, bound to I by default, following Emacs.
+  . Info keywords not included in searches.
+  . There is a lower limit on the length of search patterns.  The default
+    value is 1.  It can be changed by setting the variable min-search-length,
+    either by `M-x set-variable', or using infokey.
+  . xz compression supported.
+
+* install-info:
+  . xz compression supported.
+
+* Documentation:
+  . new appendix with a technical description of the Info file format.
+  . extensive information on the customizations of the HTML output that
+    are now possible.
+
+* Distribution:
+  . new file htmlxref.cnf is installed to support cross-manual
+    references; official updates between full package releases available at
+    http://ftpmirror.gnu.org/texinfo/htmlxref.cnf.
+  . language support for no removed/renamed to nb, per Norwegian translators.
+  . new translations: id it.
+  . documentation license now GFDLv1.3 or later.
+
+
 4.13 (18 September 2008)
 
 * A reference card for Texinfo is now available, in doc/refcard.  For
@@ -36,9 +125,9 @@ one of the relevant sections:
 * info:
   . support for multibyte encodings such as UTF-8.
   . new option --show-malformed-multibytes, to display malformed multibyte
-  sequences.
-  . new environment variable INFO_MAN_COMMAND sets the name of man binary
-  (use it if you a need to override PATH settings).
+    sequences.
+  . new environment variable INFO_MAN_COMMAND sets the name of man executable
+    (use it if you a need to override PATH settings).
   
 * install-info:
   . bug fix: support names with embedded periods (e.g., config.status) again.

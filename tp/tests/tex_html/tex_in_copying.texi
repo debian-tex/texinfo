@@ -1,0 +1,42 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename tex_in_copying.info
+
+@copying
+Some equation is indeed needed to understand the copyright of
+that file
+@tex 
+From @ someone <> !
+$$
+a = \phi
+$$
+@end tex
+
+@end copying
+
+
+@node Top
+@top Top node
+
+@insertcopying
+
+@menu
+* chapter::
+@end menu
+
+@insertcopying
+
+@node chapter
+@chapter chapter
+
+The fundamental equation is
+@tex 
+$$
+2 a = \dot{\phi}
+$$
+@end tex
+
+@insertcopying
+
+
+@bye

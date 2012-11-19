@@ -1,6 +1,7 @@
-# $Id: Makefile.am,v 1.1 2008/01/02 01:36:16 karl Exp $
+# $Id: Makefile.am,v 1.3 2012/06/11 17:54:27 karl Exp $
 # Makefile.am for texinfo/install-info.
-# Run automake in .. to produce Makefile.in from this.
+#
+# Copyright 2008, 2009, 2010 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -28,4 +29,4 @@ AM_CPPFLAGS = 					\
   -I$(top_srcdir)/gnulib/lib			\
   -I$(top_builddir)/gnulib/lib			\
   -DLOCALEDIR=\"$(localedir)\"
-LDADD = ../lib/libtxi.a $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
+LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)

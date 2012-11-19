@@ -1,10 +1,10 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
-   $Id: window.h,v 1.12 2008/09/13 10:02:01 gray Exp $
+   $Id: window.h,v 1.14 2011/10/18 18:47:22 karl Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
 
-   Copyright (C) 1993, 1997, 2004, 2007 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 2004, 2007, 2011 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -179,16 +179,25 @@ extern void window_unmark_chain (WINDOW *chain, int flag);
 /* Make WINDOW start displaying at PERCENT percentage of its node. */
 extern void window_goto_percentage (WINDOW *window, int percent);
 
-/* Build a new node which has FORMAT printed with ARG1 and ARG2 as the
+/* Build a new node which has AP printed according to FORMAT as the
    contents. */
-extern NODE *build_message_node (const char *format, void *arg1, void *arg2);
+extern NODE *build_message_node (const char *format, va_list ap);
+
+extern NODE *format_message_node (const char *format, ...)
+  TEXINFO_PRINTFLIKE(1,2);
+
+/* Build a new node with the given CONTENTS.
+   Note: CONTENTS is "stolen", i.e. the pointer to it is saved in the
+   new node. */
+extern NODE *string_to_node (char *contents);
 
 /* Useful functions can be called from outside of window.c. */
 extern void initialize_message_buffer (void);
 
-/* Print FORMAT with ARG1,2 to the end of the current message buffer. */
-extern void printf_to_message_buffer (const char *format, void *arg1, void *arg2,
-    void *arg3);
+/* Print arguments according to FORMAT to the end of the current message
+   buffer. */
+extern void printf_to_message_buffer (const char *format, ...)
+  TEXINFO_PRINTFLIKE(1,2);
 
 /* Convert the contents of the message buffer to a node. */
 extern NODE *message_buffer_to_node (void);
@@ -199,17 +208,27 @@ extern int message_buffer_length_this_line (void);
 /* Pad STRING to COUNT characters by inserting blanks. */
 extern int pad_to (int count, char *string);
 
-/* Make a message appear in the echo area, built from FORMAT, ARG1 and ARG2.
-   The arguments are treated similar to printf () arguments, but not all of
-   printf () hair is present.  The message appears immediately.  If there was
-   already a message appearing in the echo area, it is removed. */
-extern void window_message_in_echo_area (const char *format, void *arg1, void *arg2);
+/* Make a message appear in the echo area, built from arguments formatted
+   according to FORMAT.
 
-/* Place a temporary message in the echo area built from FORMAT, ARG1
-   and ARG2.  The message appears immediately, but does not destroy
+   The message appears immediately.  If there was
+   already a message appearing in the echo area, it is removed. */
+extern void window_message_in_echo_area (const char *format, ...)
+  TEXINFO_PRINTFLIKE(1,2);
+
+extern void vwindow_message_in_echo_area (const char *format, va_list ap);
+
+extern void free_echo_area (void);
+
+/* Place a temporary message in the echo area built from arguments
+   formatted as per FORMAT.
+
+   The message appears immediately, but does not destroy
    any existing message.  A future call to unmessage_in_echo_area ()
    restores the old contents. */
-extern void message_in_echo_area (const char *format, void *arg1, void *arg2);
+extern void message_in_echo_area (const char *format, ...)
+  TEXINFO_PRINTFLIKE(1,2);
+
 extern void unmessage_in_echo_area (void);
 
 /* Clear the echo area, removing any message that is already present.

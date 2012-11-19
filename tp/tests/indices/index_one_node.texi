@@ -1,0 +1,25 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename one_node
+
+Garbage
+@cindex before nodes
+
+@node one node,,,(dir)
+Top node
+@cindex Top node
+
+anchor ref @anchor{ref}.
+
+@menu
+* (some_manual_name_with_gcc):: ref to gcc
+@end menu
+
+
+ref to ref @ref{ref}.
+
+Some text.
+
+@printindex cp
+
+@bye

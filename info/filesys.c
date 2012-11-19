@@ -1,7 +1,7 @@
 /* filesys.c -- filesystem specific functions.
-   $Id: filesys.c,v 1.12 2008/06/11 09:55:42 gray Exp $
+   $Id: filesys.c,v 1.17 2011/10/18 18:47:19 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2000, 2002, 2003, 2004, 2007, 2008
+   Copyright 1993, 1997, 1998, 2000, 2002, 2003, 2004, 2007, 2008, 2009, 2011
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #include "info.h"
 
@@ -28,6 +28,7 @@
 static char *info_file_in_path (char *filename, char *path);
 static char *lookup_info_filename (char *filename);
 static char *info_absolute_file (char *fname);
+static char *build_infopath_from_path (void);
 
 static void remember_info_filename (char *filename, char *expansion);
 static void maybe_initialize_infopath (void);
@@ -53,10 +54,15 @@ static char *info_suffixes[] = {
 };
 
 static COMPRESSION_ALIST compress_suffixes[] = {
+#if STRIP_DOT_EXE
   { ".gz", "gunzip" },
+#else
+  { ".gz", "gzip -d" },
+#endif
+  { ".xz", "unxz" },
   { ".bz2", "bunzip2" },
-  { ".lzma", "unlzma" },
   { ".z", "gunzip" },
+  { ".lzma", "unlzma" },
   { ".Z", "uncompress" },
   { ".Y", "unyabba" },
 #ifdef __MSDOS__
@@ -364,12 +370,149 @@ maybe_initialize_infopath (void)
     }
 }
 
+/* For each path element PREFIX/DIR in PATH substitute either
+   PREFIX/share/info or PREFIX/info if that directory exists.
+   Avoid duplicates from, e.g., PREFIX/bin and PREFIX/sbin. */
+static char *
+build_infopath_from_path (void)
+{
+  typedef struct path_el
+    {
+      struct path_el *next;
+      char *path;
+      unsigned int len;
+    } PATH_EL, *PATH_PTR;
+
+  PATH_EL path_head = { NULL, NULL, 1 };
+  PATH_PTR path_prev, path_next;
+  char *res, *path_from_env, *temp_dirname;
+  int dirname_index = 0;
+  struct stat finfo;
+
+  path_from_env = getenv ("PATH");
+
+  while ((temp_dirname = extract_colon_unit (path_from_env, &dirname_index)))
+    {
+      unsigned int i, dir = 0;
+
+      /* Find end of DIRNAME/ (but ignore "/") */
+      for (i = 0; temp_dirname[i]; i++)
+        if (i && IS_SLASH (temp_dirname[i]))
+          dir = i + 1;
+
+      /* Discard path elements ending with "/", "/.", or "/.." */
+      if (!temp_dirname[dir] || STREQ (temp_dirname + dir, ".") || STREQ (temp_dirname + dir, "."))
+        dir = 0;
+      
+      path_prev = &path_head;
+      while (dir && (path_next = path_prev->next))
+        {
+          /* Ignore duplicate DIRNAME */
+          if (dir == path_next->len && strncmp (temp_dirname, path_next->path, dir) == 0)
+            dir = 0;
+
+          path_prev = path_next;
+        }
+
+      if (dir)
+        {
+          temp_dirname = xrealloc (temp_dirname, dir + strlen ("share/info") +1);
+
+          /* first try DIRNAME/share/info */
+          strcpy (temp_dirname + dir, "share/info");
+          if (stat (temp_dirname, &finfo) != 0 || !S_ISDIR (finfo.st_mode))
+            {
+              /* then try DIRNAME/info */
+              strcpy (temp_dirname + dir, "info");
+              if (stat (temp_dirname, &finfo) != 0 || !S_ISDIR (finfo.st_mode))
+                dir = 0;
+            }
+        }
+
+      if (dir)
+        {
+          path_next = xmalloc (sizeof (PATH_EL));
+          path_next->next = NULL;
+          path_next->path = temp_dirname;
+          path_next->len = dir;
+          path_prev->next = path_next;
+          path_head.len += strlen (temp_dirname) + 1;
+        }
+      else
+        free (temp_dirname);
+    }
+
+  /* Build the resulting sequence of paths */
+  res = xmalloc (path_head.len);
+  res[0] = '\0';
+
+  for (path_prev = path_head.next; path_prev; path_prev = path_next)
+    {
+      strcat (res, path_prev->path);
+      if ((path_next = path_prev->next))
+        strcat (res, PATH_SEP);
+
+      free (path_prev->path);
+      free (path_prev);
+    }
+
+  return res;
+}
+
 /* Add PATH to the list of paths found in INFOPATH.  2nd argument says
-   whether to put PATH at the front or end of INFOPATH. */
+   whether to put PATH at the front or end of INFOPATH.
+   Replace one path element "PATH" in PATH by a sequence of
+   path elements derived from the environment variable PATH. */
 void
 info_add_path (char *path, int where)
 {
   int len;
+  int found = 0;
+  unsigned int i, j;
+
+  /* Search for "PATH" in PATH */
+  for (i = 0; path[i]; i++)
+    {
+      j = i + strlen ("PATH");
+      if (strncmp (path + i, "PATH", strlen ("PATH")) == 0 &&
+          (!path[j] || path[j] == PATH_SEP[0]))
+        {
+          found = 1;
+          break;
+        }
+      else
+        {
+          /* Advance to next PATH_SEP.  */
+          while (path[i] && path[i] != PATH_SEP[0])
+            i++;
+
+          if (!path[i])
+            break;
+        }
+    }
+
+  if (found)
+    {
+      /* Build infopath from the environment variable PATH */
+      char *temp = build_infopath_from_path ();
+
+      if (i || path[j])
+        {
+          char *old_path = path;
+
+          /* Splice it into OLD_PATH */
+          path = xmalloc (1 + strlen (temp) + strlen (old_path) - strlen ("PATH"));
+          if (i)
+            strncpy (path, old_path, i);
+          strcpy (path + i, temp);
+          if (old_path[j])
+            strcat (path, old_path + j);
+
+          free (temp);
+        }
+      else
+        path = temp;
+    }
 
   if (!infopath)
     {
@@ -397,6 +540,9 @@ info_add_path (char *path, int where)
       strcat (infopath, temp);
       free (temp);
     }
+
+  if (found)
+    free (path);
 }
 
 /* Make INFOPATH have absolutely nothing in it. */
@@ -538,7 +684,7 @@ filesys_read_compressed (char *pathname, long int *filesize)
 
       temp = xmalloc (5 + strlen (command));
       sprintf (temp, "%s...", command);
-      message_in_echo_area ("%s", temp, NULL);
+      message_in_echo_area ("%s", temp);
       free (temp);
     }
 #endif /* !BUILDING_LIBRARY */

@@ -1,0 +1,23 @@
+\input texinfo
+@setfilename char_latin2_latin2_in_refs.info
+
+@documentencoding ISO-8859-2
+
+@node Top
+@top top
+
+@ref{¡ ± ² Ê ê}.
+
+@printindex cp
+
+@c Aogonek(0xa1=0241) aogonek(0xb1=0261) standalone ogonek(0xca=0312) Eogonek(0xea=0352) eogonek
+@menu
+* ¡ ± ² Ê ê::
+@end menu
+
+@node ¡ ± ² Ê ê
+@chapter ¡ ± ² Ê ê
+
+@cindex ¡ ± ² Ê ê
+
+@bye

@@ -1,0 +1,71 @@
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename sample_utf8.info
+@settitle Sample
+@documentencoding UTF-8
+@c %**end of header
+
+@copying
+This is a short example of a complete Texinfo file.
+
+Copyright (C) 2005 Someone.
+Texinfo中文示例
+@end copying
+
+@titlepage
+@title 标题示例 ĄĘ ae ąę Â ù
+@page
+Texinfo中文示例
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@c Output the table of the contents at the beginning.
+@contents
+
+@ifnottex
+@node Top
+@top Texinfo中文示例
+
+@insertcopying
+@end ifnottex
+
+@menu
+* 第一章（First Chapter）:: 这是此示例文档的第一章
+                           (with mixed cjk & latin char title)
+* Second Chapter AE ĄĘ ae ąę::  this is chapter 2. AE ĄĘ ae ąę
+* Index::    Complete index.
+@end menu
+
+
+@node 第一章（First Chapter）
+@chapter 第一章（First Chapter）
+
+@cindex chapter, first
+
+This is the first chapter. 这是第一章。
+@cindex 另一个，index entry
+@cindex ĄĘ ae ąę
+@cindex é Â
+
+Here is a numbered list.
+
+@enumerate
+@item 第
+This is the first item.
+
+@item ĄĘ
+This is the second item.
+@end enumerate
+
+@node Second Chapter AE ĄĘ ae ąę
+@chapter Chapter 2 AE ĄĘ ae ąę
+
+Zażółć gęślą jaźń!
+
+@node Index
+@unnumbered Index
+
+@printindex cp
+
+@bye

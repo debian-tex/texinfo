@@ -1,10 +1,11 @@
 /* display.h -- How the display in Info is done.
-   $Id: display.h,v 1.8 2008/06/09 22:51:20 gray Exp $
+   $Id: display.h,v 1.9 2011/10/18 18:47:19 karl Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
 
-   Copyright (C) 1993, 1997, 2004, 2007 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 2004, 2007, 2008, 2011
+   Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

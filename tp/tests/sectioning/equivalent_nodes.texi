@@ -1,0 +1,27 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename equivalent_nodes.info
+
+@node before top, @asis{node},,(dir)
+
+@node Top
+
+Equivalent nodes in node line and in menu.
+
+@menu
+* @strong{node}::
+@end menu
+
+@node node
+
+@float Figure, @samp{node}
+A figure
+@end float
+
+@listoffloats Figure
+
+Ref to node @ref{node}.
+
+Ref to @@samp@{node@} @ref{@samp{node}}.
+
+@bye

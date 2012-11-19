@@ -1,0 +1,10 @@
+ @c a comment
+
+
+@code{a node beginning with @@c}
+ old strong  @strong{node}
+ @@{} @strong{node}
+
+@@{} error here
+
+some node an error too

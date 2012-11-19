@@ -1,0 +1,21 @@
+This is cond.info, produced by texi2any version from cond.texi.
+
+
+File: cond.info,  Node: Top,  Up: (dir)
+
+This is html text.
+
+   This is ifhtml text.
+
+   This is ifinfo text.
+
+This is tex text.
+
+   This is iftex text.
+
+
+
+Tag Table:
+Node: Top65
+
+End Tag Table

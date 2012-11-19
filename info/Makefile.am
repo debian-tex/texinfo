@@ -1,6 +1,8 @@
-# $Id: Makefile.am,v 1.15 2008/03/28 23:39:20 karl Exp $
+# $Id: Makefile.am,v 1.17 2012/06/11 17:54:26 karl Exp $
 # Makefile.am for texinfo/info.
-# Run automake in .. to produce Makefile.in from this.
+#
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
+# Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -27,9 +29,8 @@ AM_CPPFLAGS = 					\
   -DINFODIR=\"$(infodir)\"			\
   -DINFODIR2=\"$(infodir2)\"
 
-LDADD = ../lib/libtxi.a $(top_builddir)/gnulib/lib/libgnu.a \
-        $(TERMLIBS) $(LIBINTL)
-infokey_LDADD = ../lib/libtxi.a $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
+LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(TERMLIBS) $(LIBINTL)
+infokey_LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
 
 EXTRA_DIST = README pcterm.c
 

@@ -1,0 +1,24 @@
+1.  english only
+
+   The Emacs mode for programming in Ada 95 with GNAT helps the user in
+understanding existing code and facilitates writing new code.  It
+furthermore provides some utility functions for easier integration of
+standard Emacs features when programming in Ada.
+
+   2.  chinese already aligned in source(this result)
+
+   这常用于修饰多个线程会访问或修改的全局变量，让编译器保证每次都从内存
+读取 变量的值，而不是作某些优化。（这些优化有可能导致程序不能获得正确的
+值）
+
+   3.  chinese not aligned in source
+
+   这常用于修饰多个线程会访问或修改的全局变量，让编译器保证每次都从内存
+读取 变量的值，而不是作某些优化。 （这些优化有可能导致程序不能获得正确的
+值）
+
+   4.  a mix of chinese and english
+
+   restrict 表示在当前 scope 内不允许其它变量指向它。用处，比如防止
+memory overlap。
+

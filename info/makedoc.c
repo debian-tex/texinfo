@@ -1,8 +1,8 @@
 /* makedoc.c -- make doc.c and funs.h from input files.
-   $Id: makedoc.c,v 1.10 2008/06/11 09:55:42 gray Exp $
+   $Id: makedoc.c,v 1.11 2012/06/11 17:54:26 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007,
-   2008 Free Software Foundation, Inc.
+   2008, 2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -554,7 +554,7 @@ static void
 fatal_file_error (char *filename)
 {
   fprintf (stderr, _("Couldn't manipulate the file %s.\n"), filename);
-  xexit (2);
+  exit (EXIT_FAILURE);
 }
 
 static FILE *

@@ -1,0 +1,187 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top Test for indices
+@menu
+* node with ftable and vtable::
+* node with printindex::
+* indices refs:: 
+@end menu
+
+@node node with ftable and vtable
+@chapter first node chapter, with ftable and vtable
+
+@cindex index entry in node
+
+Some text
+@cindex an second index entry in node
+
+
+
+@vtable @bullet
+@item var1
+@itemx var2
+var1 et var2
+@end vtable
+
+an ftable 
+@ftable @bullet
+@item fun1
+@itemx fun2
+fun1 et fun2 
+@item more fun
+and even more   
+@end ftable
+
+@node node with printindex
+@chapter node with printindex
+
+@printindex fn
+@printindex vr
+@printindex cp
+
+@node indices refs
+@chapter Indices refs
+@menu
+* node::       node 
+@end menu
+@cindex concept
+@cindex aoncept
+@cindex zoncept
+@cindex eoncept
+@cindex roncept
+@cindex toncept
+@cindex yoncept
+@cindex uoncept
+@cindex ioncept
+@cindex ooncept
+@cindex poncept
+@cindex qoncept
+@cindex concep
+@cindex rsconcept
+@cindex soncept
+@cindex doncept
+@cindex foncept
+@cindex goncept
+@cindex honcept
+@cindex joncept
+@cindex koncept
+@cindex loncept
+@cindex moncept
+@cindex roncept
+@cindex woncept
+@cindex xoncept
+@cindex voncept
+@cindex boncept
+@cindex noncept
+@cindex ,oncept
+@cindex ?oncept
+@cindex ;oncept
+@cindex /oncept
+@cindex !oncept
+@cindex cancept
+@cindex czncept
+@cindex cencept
+@cindex ctncept
+@cindex cyncept
+@cindex cuncept
+@cindex cincept
+@cindex concept
+@cindex cpncept
+@cindex cqncept
+@cindex csncept
+@cindex cdncept
+@cindex cfncept
+@cindex cgncept
+@cindex chncept
+@cindex cjncept
+@cindex ckncept
+@cindex clncept
+@cindex cmncept
+@cindex csdcept
+@cindex cxncept
+@cindex cvncept
+@cindex cbncept
+@cindex cnncept
+@cindex c,ncept
+@cindex crncept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@cindex concept
+@c @printindex fn
+@c @printindex vr
+
+@printindex cp
+
+@node node,,,
+@section node
+
+A section following the indices.
+
+@contents
+@bye

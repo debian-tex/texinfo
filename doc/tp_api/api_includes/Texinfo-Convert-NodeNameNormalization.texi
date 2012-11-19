@@ -1,0 +1,84 @@
+@node Texinfo::Convert::NodeNameNormalization
+@chapter Texinfo::Convert::NodeNameNormalization
+
+@menu
+* Texinfo@asis{::}Convert@asis{::}NodeNameNormalization NAME::
+* Texinfo@asis{::}Convert@asis{::}NodeNameNormalization SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}NodeNameNormalization DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}NodeNameNormalization METHODS::
+* Texinfo@asis{::}Convert@asis{::}NodeNameNormalization AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}NodeNameNormalization COPYRIGHT AND LICENSE::
+@end menu
+
+@node Texinfo::Convert::NodeNameNormalization NAME
+@section NAME
+
+Texinfo::Convert::NodeNameNormalization - Normalize and transliterate Texinfo trees
+
+@node Texinfo::Convert::NodeNameNormalization SYNOPSIS
+@section SYNOPSIS
+
+@verbatim
+  use Texinfo::Convert::NodeNameNormalization qw(normalize_node
+                                              transliterate_texinfo);
+
+  my $normalized = normalize_node({'contents' => $node_contents});
+
+  my $file_name = transliterate_texinfo({'contents'
+                                            => $section_contents});
+@end verbatim
+
+@node Texinfo::Convert::NodeNameNormalization DESCRIPTION
+@section DESCRIPTION
+
+Texinfo::Convert::NodeNameNormalization allows to normalize node names,
+with @code{normalize_node} following the specification described in the 
+Texinfo manual for HTML Xref.  This is usefull each time one want a 
+unique identifier for Texinfo content that is only composed of letter,
+digits, @code{-} and @code{_}.  In @code{Texinfo::Parser} @code{normalize_node} is used 
+for node, floats and anchor names normalization, but also float 
+types @code{@@acronym} and @code{@@abbr} first argument.
+
+It is also possible to transliterate non ascii letters, instead of mangling 
+them, with @code{transliterate_texinfo}, losing the uniqueness feature of 
+normalized node names.
+
+@node Texinfo::Convert::NodeNameNormalization METHODS
+@section METHODS
+
+@table @asis
+@item $normalized = normalize_node($tree)
+@anchor{Texinfo::Convert::NodeNameNormalization $normalized = normalize_node($tree)}
+
+The Texinfo @emph{$tree} is returned as a string, normalized as described in the
+Texinfo manual for HTML Xref.
+
+The result will be poor for Texinfo trees which are not @@-command arguments 
+(on an @@-command line or in braces), for instance if the tree contains 
+@code{@@node} or block commands.
+
+@item $transliterated = transliterate_texinfo($tree, $no_unidecode)
+@anchor{Texinfo::Convert::NodeNameNormalization $transliterated = transliterate_texinfo($tree@comma{} $no_unidecode)}
+
+The Texinfo @emph{$tree} is returned as a string, with non ascii letters
+transliterated as ascii, but otherwise similar with @code{normalize_node}
+output.  If the optional @emph{$no_unidecode} argument is set, @code{Text::Unidecode}
+is not used for characters whose transliteration is not built-in.
+
+@end table
+
+@node Texinfo::Convert::NodeNameNormalization AUTHOR
+@section AUTHOR
+
+Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo::Convert::NodeNameNormalization COPYRIGHT AND LICENSE
+@section COPYRIGHT AND LICENSE
+
+Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at 
+your option) any later version.
+

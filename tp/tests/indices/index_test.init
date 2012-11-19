@@ -1,0 +1,6 @@
+
+set_default('SPLIT', 'chapter');
+
+# if set and $SPLIT is set, then split index pages at the next letter
+# after they have more than that many entries
+set_default('SPLIT_INDEX', 6);

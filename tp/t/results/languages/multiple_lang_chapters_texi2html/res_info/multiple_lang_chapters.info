@@ -1,0 +1,72 @@
+This is multiple_lang_chapters.info, produced by tp version from
+multiple_lang_chapters.texi.
+
+
+File: multiple_lang_chapters.info,  Node: Top,  Next: chapter ja,  Up: (dir)
+
+Multi language file
+*******************
+
+* Menu:
+
+* chapter ja::
+* chapter en::
+* chapter fr_FR::
+* chapter de::
+* chapter pt_BR::
+
+
+File: multiple_lang_chapters.info,  Node: chapter ja,  Next: chapter en,  Prev: Top,  Up: Top
+
+1 ja
+****
+
+In japanese.  *Note Top::.
+ -- Instance Variable of AAA: BBB CCC
+
+
+File: multiple_lang_chapters.info,  Node: chapter en,  Next: chapter fr_FR,  Prev: chapter ja,  Up: Top
+
+2 en
+****
+
+In english.  *Note Top::.
+ -- Instance Variable of AAA: BBB CCC
+
+
+File: multiple_lang_chapters.info,  Node: chapter fr_FR,  Next: chapter de,  Prev: chapter en,  Up: Top
+
+3 fr_FR
+*******
+
+ -- Instance Variable de AAA: BBB CCC
+
+
+File: multiple_lang_chapters.info,  Node: chapter de,  Next: chapter pt_BR,  Prev: chapter fr_FR,  Up: Top
+
+4 de
+****
+
+
+File: multiple_lang_chapters.info,  Node: chapter pt_BR,  Prev: chapter de,  Up: Top
+
+5 pt_bR
+*******
+
+In brazilian.  *Note Top::.
+
+
+Tag Table:
+Node: Top95
+Node: chapter ja307
+Node: chapter en481
+Node: chapter fr_FR664
+Node: chapter de827
+Node: chapter pt_BR948
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

@@ -1,0 +1,2443 @@
+This is nested_formats.info, produced by texi2any version from
+nested_formats.texi.
+
+
+File: nested_formats.info,  Node: Top,  Up: (dir)
+
+Test nested flushright
+**********************
+
+Call macro in macro
+
+                                                      in format_command
+
+   Something
+
+   Something
+                                                               in group
+
+   Something2
+   After
+
+   Something2
+                                                               in group
+   After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+subheading
+----------
+
+in verbatim
+
+   * i-tem 1
+   * i-tem 2
+
+  1. e-numerate
+
+mu-ltitable headitem                        another tab
+-----------------------------------------------------------------------------------------------
+mu-ltitable item                            multitable tab
+mu-ltitable item 2                          multitable tab 2
+lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+     d-effn
+
+a
+     l-ine
+
+   c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+   *                                                                 i-tem 1
+   *                                                                 i-tem 2
+
+  1.                                                              e-numerate
+
+                    mu-ltitable headitem                                        another tab
+-----------------------------------------------------------------------------------------------
+                        mu-ltitable item                                     multitable tab
+                      mu-ltitable item 2                                   multitable tab 2
+                   lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+a
+                                                                  l-ine
+
+                                                             c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+   Call macro in format_command
+                                                               in macro
+
+                                                      in format_command
+
+                                                              Something
+
+                                                              Something
+                                                               in group
+
+                                                             Something2
+                                                                  After
+
+                                                             Something2
+                                                               in group
+                                                                  After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+subheading
+----------
+
+in verbatim
+
+   *                                                                 i-tem 1
+   *                                                                 i-tem 2
+
+  1.                                                              e-numerate
+
+                    mu-ltitable headitem                                        another tab
+-----------------------------------------------------------------------------------------------
+                        mu-ltitable item                                     multitable tab
+                      mu-ltitable item 2                                   multitable tab 2
+                   lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+a
+                                                                  l-ine
+
+                                                             c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+   *                                                                 i-tem 1
+   *                                                                 i-tem 2
+
+  1.                                                              e-numerate
+
+                    mu-ltitable headitem                                        another tab
+-----------------------------------------------------------------------------------------------
+                        mu-ltitable item                                     multitable tab
+                      mu-ltitable item 2                                   multitable tab 2
+                   lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+a
+                                                                  l-ine
+
+                                                             c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+   Call macro in itemize at the beginning of an item
+   a-n itemize line in macro
+
+                                                      in format_command
+
+     Something
+
+     Something
+                                                               in group
+
+     Something2
+     After
+
+     Something2
+                                                               in group
+     After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+     subheading
+---------------
+
+     in verbatim
+
+        * i-tem 1
+        * i-tem 2
+
+       1. e-numerate
+
+     mu-ltitable headitem                        another tab
+     -----------------------------------------------------------------------------------------------
+     mu-ltitable item                            multitable tab
+     mu-ltitable item 2                          multitable tab 2
+     lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+          d-effn
+
+     a
+          l-ine
+
+     c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+   a-n itemize line item 1 Call macro in itemize in macro
+
+                                                      in format_command
+
+     Something
+
+     Something
+                                                               in group
+
+     Something2
+     After
+
+     Something2
+                                                               in group
+     After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+     subheading
+---------------
+
+     in verbatim
+
+        * i-tem 1
+        * i-tem 2
+
+       1. e-numerate
+
+     mu-ltitable headitem                        another tab
+     -----------------------------------------------------------------------------------------------
+     mu-ltitable item                            multitable tab
+     mu-ltitable item 2                          multitable tab 2
+     lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+          d-effn
+
+     a
+          l-ine
+
+     c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+   a-n itemize line item 2 Call macro in itemize in format_command
+                                                               in macro
+
+                                                      in format_command
+
+                                                              Something
+
+                                                              Something
+                                                               in group
+
+                                                             Something2
+                                                                  After
+
+                                                             Something2
+                                                               in group
+                                                                  After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+     subheading
+---------------
+
+     in verbatim
+
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+   Call macro in enumerate at the beginning of enumerate
+  1. in macro
+
+                                                      in format_command
+
+     Something
+
+     Something
+                                                               in group
+
+     Something2
+     After
+
+     Something2
+                                                               in group
+     After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+     subheading
+---------------
+
+     in verbatim
+
+        * i-tem 1
+        * i-tem 2
+
+       1. e-numerate
+
+     mu-ltitable headitem                        another tab
+     -----------------------------------------------------------------------------------------------
+     mu-ltitable item                            multitable tab
+     mu-ltitable item 2                          multitable tab 2
+     lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+          d-effn
+
+     a
+          l-ine
+
+     c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+  2. enumerate Call macro in enumerate in macro
+
+                                                      in format_command
+
+     Something
+
+     Something
+                                                               in group
+
+     Something2
+     After
+
+     Something2
+                                                               in group
+     After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+     subheading
+---------------
+
+     in verbatim
+
+        * i-tem 1
+        * i-tem 2
+
+       1. e-numerate
+
+     mu-ltitable headitem                        another tab
+     -----------------------------------------------------------------------------------------------
+     mu-ltitable item                            multitable tab
+     mu-ltitable item 2                          multitable tab 2
+     lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+          d-effn
+
+     a
+          l-ine
+
+     c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+  3. enumerate2 Call macro in enumerate in format_command
+                                                               in macro
+
+                                                      in format_command
+
+                                                              Something
+
+                                                              Something
+                                                               in group
+
+                                                             Something2
+                                                                  After
+
+                                                             Something2
+                                                               in group
+                                                                  After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+     subheading
+---------------
+
+     in verbatim
+
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+mu-ltitable headitem                        another tab
+-----------------------------------------------------------------------------------------------
+multitable item                             multitable tab.  And after Call macro in
+                                            mutitable after item
+in macro
+
+                       in format_command
+
+Something
+
+Something
+                                in group
+
+Something2
+After
+
+Something2
+                                in group
+After
+
+
+
+                                in group
+
+                           A quot--ation
+
+subheading
+----------
+
+in verbatim
+
+   * i-tem 1
+   * i-tem 2
+
+  1. e-numerate
+
+mu-ltitable headitem      another tab
+--------------------------------------------------------
+mu-ltitable item          multitable tab
+mu-ltitable item 2        multitable tab 2
+lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name
+          a--rguments...
+     d-effn
+
+a
+     l-ine
+
+c-artouche
+
+f-lushleft
+
+                             f-lushright
+
+             ce-ntered line
+
+in macro, a format_command containing some other commands.
+   *                                  i-tem 1
+   *                                  i-tem 2
+
+  1.                               e-numerate
+
+  mu-ltitable headitem                   another tab
+--------------------------------------------------------
+      mu-ltitable item                multitable tab
+    mu-ltitable item 2              multitable tab 2
+ lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name
+          a--rguments...
+                                  d-effn
+
+a
+                                   l-ine
+
+                              c-artouche
+
+f-lushleft
+
+                             f-lushright
+
+             ce-ntered line
+
+multitable item 2                           multitable tab 2 Call macro in mutitable in
+                                            macro
+                                            
+                                                                          in format_command
+                                            
+                                            Something
+                                            
+                                            Something
+                                                                                   in group
+                                            
+                                            Something2
+                                            After
+                                            
+                                            Something2
+                                                                                   in group
+                                            After
+                                            
+                                            
+                                            
+                                                                                   in group
+                                            
+                                                                              A quot--ation
+                                            
+                                            subheading
+                                            ----------
+                                            
+                                            in verbatim
+                                            
+                                               * i-tem 1
+                                               * i-tem 2
+                                            
+                                              1. e-numerate
+                                            
+                                            mu-ltitable headitem          another tab
+                                            -----------------------------------------------------------------
+                                            mu-ltitable item              multitable tab
+                                            mu-ltitable item 2            multitable tab 2
+                                            lone mu-ltitable item
+                                            
+                                                 e--xample  some
+                                                    text
+                                            
+                                                 s--mallexample
+                                            
+                                             -- c--ategory: d--effn_name a--rguments...
+                                                 d-effn
+                                            
+                                            a
+                                                 l-ine
+                                            
+                                            c-artouche
+                                            
+                                            f-lushleft
+                                            
+                                                                                f-lushright
+                                            
+                                                            ce-ntered line
+                                            
+                                            in macro, a format_command containing some other commands.
+                                               *                                         i-tem 1
+                                               *                                         i-tem 2
+                                            
+                                              1.                                      e-numerate
+                                            
+                                                  mu-ltitable headitem                        another tab
+                                            -----------------------------------------------------------------
+                                                      mu-ltitable item                     multitable tab
+                                                    mu-ltitable item 2                   multitable tab 2
+                                                 lone mu-ltitable item
+                                            
+                                                 e--xample  some
+                                                    text
+                                            
+                                                 s--mallexample
+                                            
+                                             -- c--ategory: d--effn_name a--rguments...
+                                                                                     d-effn
+                                            
+                                            a
+                                                                                      l-ine
+                                            
+                                                                                 c-artouche
+                                            
+                                            f-lushleft
+                                            
+                                                                                f-lushright
+                                            
+                                                            ce-ntered line
+                                            
+lone multitable item Call macro in
+mutitable in format_command
+                                in macro
+
+                       in format_command
+
+                               Something
+
+                               Something
+                                in group
+
+                              Something2
+                                   After
+
+                              Something2
+                                in group
+                                   After
+
+
+
+                                in group
+
+                           A quot--ation
+
+subheading
+----------
+
+in verbatim
+
+   *                                  i-tem 1
+   *                                  i-tem 2
+
+  1.                               e-numerate
+
+  mu-ltitable headitem                   another tab
+--------------------------------------------------------
+      mu-ltitable item                multitable tab
+    mu-ltitable item 2              multitable tab 2
+ lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name
+          a--rguments...
+                                  d-effn
+
+a
+                                   l-ine
+
+                              c-artouche
+
+f-lushleft
+
+                             f-lushright
+
+             ce-ntered line
+
+in macro, a format_command containing some other commands.
+   *                                  i-tem 1
+   *                                  i-tem 2
+
+  1.                               e-numerate
+
+  mu-ltitable headitem                   another tab
+--------------------------------------------------------
+      mu-ltitable item                multitable tab
+    mu-ltitable item 2              multitable tab 2
+ lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name
+          a--rguments...
+                                  d-effn
+
+a
+                                   l-ine
+
+                              c-artouche
+
+f-lushleft
+
+                             f-lushright
+
+             ce-ntered line
+
+   call macro at the example beginning
+     in macro
+
+
+                                                      in format_command
+
+     Something
+
+     Something
+                                                               in group
+
+     Something2
+     After
+
+     Something2
+                                                               in group
+     After
+
+
+
+
+                                                               in group
+
+                                                         A quot---ation
+
+     subheading
+---------------
+
+
+     in verbatim
+
+
+
+
+        * i--tem 1
+        * i--tem 2
+
+       1. e--numerate
+
+     mu--ltitable headitem                       another tab
+     -----------------------------------------------------------------------------------------------
+     mu--ltitable item                           multitable tab
+     mu--ltitable item 2                         multitable tab 2
+     lone mu--ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+          d--effn
+
+     a
+          l--ine
+
+     c--artouche
+
+     f--lushleft
+
+                                                           f--lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                i--tem 1
+        *                                                                i--tem 2
+
+       1.                                                             e--numerate
+
+                        mu--ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                            mu--ltitable item                                     multitable tab
+                          mu--ltitable item 2                                   multitable tab 2
+                       lone mu--ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                d--effn
+
+     a
+                                                                 l--ine
+
+                                                            c--artouche
+
+     f--lushleft
+
+                                                           f--lushright
+
+                            ce-ntered line
+
+     example  some
+        text
+     call macro in example
+     in macro
+
+
+                                                      in format_command
+
+     Something
+
+     Something
+                                                               in group
+
+     Something2
+     After
+
+     Something2
+                                                               in group
+     After
+
+
+
+
+                                                               in group
+
+                                                         A quot---ation
+
+     subheading
+---------------
+
+
+     in verbatim
+
+
+
+
+        * i--tem 1
+        * i--tem 2
+
+       1. e--numerate
+
+     mu--ltitable headitem                       another tab
+     -----------------------------------------------------------------------------------------------
+     mu--ltitable item                           multitable tab
+     mu--ltitable item 2                         multitable tab 2
+     lone mu--ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+          d--effn
+
+     a
+          l--ine
+
+     c--artouche
+
+     f--lushleft
+
+                                                           f--lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                i--tem 1
+        *                                                                i--tem 2
+
+       1.                                                             e--numerate
+
+                        mu--ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                            mu--ltitable item                                     multitable tab
+                          mu--ltitable item 2                                   multitable tab 2
+                       lone mu--ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                d--effn
+
+     a
+                                                                 l--ine
+
+                                                            c--artouche
+
+     f--lushleft
+
+                                                           f--lushright
+
+                            ce-ntered line
+
+
+     more example text
+     call macro in example in format_command
+                                                               in macro
+
+                                                      in format_command
+
+                                                              Something
+
+                                                              Something
+                                                               in group
+
+                                                             Something2
+                                                                  After
+
+                                                             Something2
+                                                               in group
+                                                                  After
+
+
+
+                                                               in group
+
+                                                         A quot---ation
+
+     subheading
+---------------
+
+     in verbatim
+
+        *                                                                i--tem 1
+        *                                                                i--tem 2
+
+       1.                                                             e--numerate
+
+                        mu--ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                            mu--ltitable item                                     multitable tab
+                          mu--ltitable item 2                                   multitable tab 2
+                       lone mu--ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                d--effn
+
+     a
+                                                                 l--ine
+
+                                                            c--artouche
+
+     f--lushleft
+
+                                                           f--lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                i--tem 1
+        *                                                                i--tem 2
+
+       1.                                                             e--numerate
+
+                        mu--ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                            mu--ltitable item                                     multitable tab
+                          mu--ltitable item 2                                   multitable tab 2
+                       lone mu--ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                d--effn
+
+     a
+                                                                 l--ine
+
+                                                            c--artouche
+
+     f--lushleft
+
+                                                           f--lushright
+
+                            ce-ntered line
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+     deffn call macro in deffn in macro
+
+                                                      in format_command
+
+     Something
+
+     Something
+                                                               in group
+
+     Something2
+     After
+
+     Something2
+                                                               in group
+     After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+     subheading
+---------------
+
+     in verbatim
+
+        * i-tem 1
+        * i-tem 2
+
+       1. e-numerate
+
+     mu-ltitable headitem                        another tab
+     -----------------------------------------------------------------------------------------------
+     mu-ltitable item                            multitable tab
+     mu-ltitable item 2                          multitable tab 2
+     lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+          d-effn
+
+     a
+          l-ine
+
+     c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+     deffn continues call macro in deffn in format_command
+                                                               in macro
+
+                                                      in format_command
+
+                                                              Something
+
+                                                              Something
+                                                               in group
+
+                                                             Something2
+                                                                  After
+
+                                                             Something2
+                                                               in group
+                                                                  After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+     subheading
+---------------
+
+     in verbatim
+
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+   call macro in deffn at the beginning
+ -- c--ategory2: d--effn_name2 a--rguments2...
+     in macro
+
+                                                      in format_command
+
+     Something
+
+     Something
+                                                               in group
+
+     Something2
+     After
+
+     Something2
+                                                               in group
+     After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+     subheading
+---------------
+
+     in verbatim
+
+        * i-tem 1
+        * i-tem 2
+
+       1. e-numerate
+
+     mu-ltitable headitem                        another tab
+     -----------------------------------------------------------------------------------------------
+     mu-ltitable item                            multitable tab
+     mu-ltitable item 2                          multitable tab 2
+     lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+          d-effn
+
+     a
+          l-ine
+
+     c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+a line
+     call macro in table in macro
+
+                                                      in format_command
+
+     Something
+
+     Something
+                                                               in group
+
+     Something2
+     After
+
+     Something2
+                                                               in group
+     After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+     subheading
+---------------
+
+     in verbatim
+
+        * i-tem 1
+        * i-tem 2
+
+       1. e-numerate
+
+     mu-ltitable headitem                        another tab
+     -----------------------------------------------------------------------------------------------
+     mu-ltitable item                            multitable tab
+     mu-ltitable item 2                          multitable tab 2
+     lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+          d-effn
+
+     a
+          l-ine
+
+     c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+     call macro in table at an item beginning
+a line
+     in macro
+
+                                                      in format_command
+
+     Something
+
+     Something
+                                                               in group
+
+     Something2
+     After
+
+     Something2
+                                                               in group
+     After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+     subheading
+---------------
+
+     in verbatim
+
+        * i-tem 1
+        * i-tem 2
+
+       1. e-numerate
+
+     mu-ltitable headitem                        another tab
+     -----------------------------------------------------------------------------------------------
+     mu-ltitable item                            multitable tab
+     mu-ltitable item 2                          multitable tab 2
+     lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+          d-effn
+
+     a
+          l-ine
+
+     c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+a line2
+     call macro in table in format_command
+                                                               in macro
+
+                                                      in format_command
+
+                                                              Something
+
+                                                              Something
+                                                               in group
+
+                                                             Something2
+                                                                  After
+
+                                                             Something2
+                                                               in group
+                                                                  After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+     subheading
+---------------
+
+     in verbatim
+
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+        *                                                                 i-tem 1
+        *                                                                 i-tem 2
+
+       1.                                                              e-numerate
+
+                         mu-ltitable headitem                                        another tab
+     -----------------------------------------------------------------------------------------------
+                             mu-ltitable item                                     multitable tab
+                           mu-ltitable item 2                                   multitable tab 2
+                        lone mu-ltitable item
+
+          e--xample  some
+             text
+
+          s--mallexample
+
+      -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+     a
+                                                                  l-ine
+
+                                                             c-artouche
+
+     f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+   call macro at cartouche begin
+   in macro
+
+                                                      in format_command
+
+   Something
+
+   Something
+                                                               in group
+
+   Something2
+   After
+
+   Something2
+                                                               in group
+   After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+subheading
+----------
+
+in verbatim
+
+   * i-tem 1
+   * i-tem 2
+
+  1. e-numerate
+
+mu-ltitable headitem                        another tab
+-----------------------------------------------------------------------------------------------
+mu-ltitable item                            multitable tab
+mu-ltitable item 2                          multitable tab 2
+lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+     d-effn
+
+a
+     l-ine
+
+   c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+   *                                                                 i-tem 1
+   *                                                                 i-tem 2
+
+  1.                                                              e-numerate
+
+                    mu-ltitable headitem                                        another tab
+-----------------------------------------------------------------------------------------------
+                        mu-ltitable item                                     multitable tab
+                      mu-ltitable item 2                                   multitable tab 2
+                   lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+a
+                                                                  l-ine
+
+                                                             c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+   cartouche call macro in cartouche in macro
+
+                                                      in format_command
+
+   Something
+
+   Something
+                                                               in group
+
+   Something2
+   After
+
+   Something2
+                                                               in group
+   After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+subheading
+----------
+
+in verbatim
+
+   * i-tem 1
+   * i-tem 2
+
+  1. e-numerate
+
+mu-ltitable headitem                        another tab
+-----------------------------------------------------------------------------------------------
+mu-ltitable item                            multitable tab
+mu-ltitable item 2                          multitable tab 2
+lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+     d-effn
+
+a
+     l-ine
+
+   c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+   *                                                                 i-tem 1
+   *                                                                 i-tem 2
+
+  1.                                                              e-numerate
+
+                    mu-ltitable headitem                                        another tab
+-----------------------------------------------------------------------------------------------
+                        mu-ltitable item                                     multitable tab
+                      mu-ltitable item 2                                   multitable tab 2
+                   lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+a
+                                                                  l-ine
+
+                                                             c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+   call macro in cartouche in format_command
+                                                               in macro
+
+                                                      in format_command
+
+                                                              Something
+
+                                                              Something
+                                                               in group
+
+                                                             Something2
+                                                                  After
+
+                                                             Something2
+                                                               in group
+                                                                  After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+subheading
+----------
+
+in verbatim
+
+   *                                                                 i-tem 1
+   *                                                                 i-tem 2
+
+  1.                                                              e-numerate
+
+                    mu-ltitable headitem                                        another tab
+-----------------------------------------------------------------------------------------------
+                        mu-ltitable item                                     multitable tab
+                      mu-ltitable item 2                                   multitable tab 2
+                   lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+a
+                                                                  l-ine
+
+                                                             c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+   *                                                                 i-tem 1
+   *                                                                 i-tem 2
+
+  1.                                                              e-numerate
+
+                    mu-ltitable headitem                                        another tab
+-----------------------------------------------------------------------------------------------
+                        mu-ltitable item                                     multitable tab
+                      mu-ltitable item 2                                   multitable tab 2
+                   lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+a
+                                                                  l-ine
+
+                                                             c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+call macro in flushleft
+in macro
+
+                                                      in format_command
+
+Something
+
+Something
+                                                               in group
+
+Something2
+After
+
+Something2
+                                                               in group
+After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+subheading
+----------
+
+in verbatim
+
+   * i-tem 1
+   * i-tem 2
+
+  1. e-numerate
+
+mu-ltitable headitem                        another tab
+-----------------------------------------------------------------------------------------------
+mu-ltitable item                            multitable tab
+mu-ltitable item 2                          multitable tab 2
+lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+     d-effn
+
+a
+     l-ine
+
+c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+   *                                                                 i-tem 1
+   *                                                                 i-tem 2
+
+  1.                                                              e-numerate
+
+                    mu-ltitable headitem                                        another tab
+-----------------------------------------------------------------------------------------------
+                        mu-ltitable item                                     multitable tab
+                      mu-ltitable item 2                                   multitable tab 2
+                   lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+a
+                                                                  l-ine
+
+                                                             c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+flushleft
+call macro in flushleft in format_command
+                                                               in macro
+
+                                                      in format_command
+
+                                                              Something
+
+                                                              Something
+                                                               in group
+
+                                                             Something2
+                                                                  After
+
+                                                             Something2
+                                                               in group
+                                                                  After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+subheading
+----------
+
+in verbatim
+
+   *                                                                 i-tem 1
+   *                                                                 i-tem 2
+
+  1.                                                              e-numerate
+
+                    mu-ltitable headitem                                        another tab
+-----------------------------------------------------------------------------------------------
+                        mu-ltitable item                                     multitable tab
+                      mu-ltitable item 2                                   multitable tab 2
+                   lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+a
+                                                                  l-ine
+
+                                                             c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+   *                                                                 i-tem 1
+   *                                                                 i-tem 2
+
+  1.                                                              e-numerate
+
+                    mu-ltitable headitem                                        another tab
+-----------------------------------------------------------------------------------------------
+                        mu-ltitable item                                     multitable tab
+                      mu-ltitable item 2                                   multitable tab 2
+                   lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+a
+                                                                  l-ine
+
+                                                             c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+                                                               in macro
+
+                                                      in format_command
+
+                                                              Something
+
+                                                              Something
+                                                               in group
+
+                                                             Something2
+                                                                  After
+
+                                                             Something2
+                                                               in group
+                                                                  After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+subheading
+----------
+
+in verbatim
+
+   *                                                                 i-tem 1
+   *                                                                 i-tem 2
+
+  1.                                                              e-numerate
+
+                    mu-ltitable headitem                                        another tab
+-----------------------------------------------------------------------------------------------
+                        mu-ltitable item                                     multitable tab
+                      mu-ltitable item 2                                   multitable tab 2
+                   lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+a
+                                                                  l-ine
+
+                                                             c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+   *                                                                 i-tem 1
+   *                                                                 i-tem 2
+
+  1.                                                              e-numerate
+
+                    mu-ltitable headitem                                        another tab
+-----------------------------------------------------------------------------------------------
+                        mu-ltitable item                                     multitable tab
+                      mu-ltitable item 2                                   multitable tab 2
+                   lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+a
+                                                                  l-ine
+
+                                                             c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+                                                             flushright
+                                                               in macro
+
+                                                      in format_command
+
+                                                              Something
+
+                                                              Something
+                                                               in group
+
+                                                             Something2
+                                                                  After
+
+                                                             Something2
+                                                               in group
+                                                                  After
+
+
+
+                                                               in group
+
+                                                          A quot--ation
+
+subheading
+----------
+
+in verbatim
+
+   *                                                                 i-tem 1
+   *                                                                 i-tem 2
+
+  1.                                                              e-numerate
+
+                    mu-ltitable headitem                                        another tab
+-----------------------------------------------------------------------------------------------
+                        mu-ltitable item                                     multitable tab
+                      mu-ltitable item 2                                   multitable tab 2
+                   lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+a
+                                                                  l-ine
+
+                                                             c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+             in macro, a format_command containing some other commands.
+   *                                                                 i-tem 1
+   *                                                                 i-tem 2
+
+  1.                                                              e-numerate
+
+                    mu-ltitable headitem                                        another tab
+-----------------------------------------------------------------------------------------------
+                        mu-ltitable item                                     multitable tab
+                      mu-ltitable item 2                                   multitable tab 2
+                   lone mu-ltitable item
+
+     e--xample  some
+        text
+
+     s--mallexample
+
+ -- c--ategory: d--effn_name a--rguments...
+                                                                 d-effn
+
+a
+                                                                  l-ine
+
+                                                             c-artouche
+
+f-lushleft
+
+                                                            f-lushright
+
+                            ce-ntered line
+
+
+
+Tag Table:
+Node: Top85
+
+End Tag Table

@@ -1,0 +1,23 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename index_and_node_same_name.info
+
+@node Top
+@top Test index entry with node name clash
+
+Text.
+
+@cindex node
+
+@menu
+* index node::
+@end menu
+
+@node index node
+@chapter index node
+
+in index node node, with the same (croo_ref) name than index entry.
+
+@printindex cp
+
+@bye

@@ -1,0 +1,12 @@
+\input texinfo @c -*-texinfo-*-
+@c
+@setfilename documentlanguage_set.info
+@documentlanguage pt
+@settitle Test @@documentlanguage set
+
+@node Top
+@top @@documentlanguage set
+
+Text.
+
+@bye

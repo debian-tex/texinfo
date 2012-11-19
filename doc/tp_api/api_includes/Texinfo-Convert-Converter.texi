@@ -1,0 +1,219 @@
+@node Texinfo::Convert::Converter
+@chapter Texinfo::Convert::Converter
+
+@menu
+* Texinfo@asis{::}Convert@asis{::}Converter NAME::
+* Texinfo@asis{::}Convert@asis{::}Converter SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}Converter DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}Converter METHODS::
+* Texinfo@asis{::}Convert@asis{::}Converter AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}Converter COPYRIGHT AND LICENSE::
+@end menu
+
+@node Texinfo::Convert::Converter NAME
+@section NAME
+
+Texinfo::Convert::Converter - Parent class for Texinfo tree converters
+
+@node Texinfo::Convert::Converter SYNOPSIS
+@section SYNOPSIS
+
+@verbatim
+  package Texinfo::Convert::MyConverter;
+
+  use Texinfo::Convert::Converter;
+  @ISA = qw(Texinfo::Convert::Converter);
+
+  sub converter_defaults ($$) {
+    return %myconverter_defaults;
+  }
+  sub converter_initialize($) {
+    my $self = shift;
+    $self->{'document_context'} = [{}];
+  }
+  sub converter_global_commands($) {
+    return ('documentlanguage', documentencoding', 'paragraphindent');
+  }
+
+  sub convert($$) {
+    ...
+  }
+  sub convert_tree($$) {
+    ...
+  }
+  sub output ($$) {
+    ...
+  }
+
+  # end of Texinfo::Convert::MyConverter
+
+  my $converter = Texinfo::Convert::MyConverter->converter(
+                                               {'parser' => $parser});
+  $converter->output($texinfo_tree);
+@end verbatim
+
+@node Texinfo::Convert::Converter DESCRIPTION
+@section DESCRIPTION
+
+Texinfo::Convert::Converter is a super class that can be used to
+simplify converters initialization.  The class also provide some 
+useful methods.
+
+In turn, the converter should define some methods.  Three are optional,
+@code{converter_defaults}, @code{converter_initialize} and 
+@code{converter_global_commands} and used for initialization, to 
+give @code{Texinfo::Convert::Converter} some informations.
+
+The @code{convert_tree} is more or less mandatory and should convert
+portions of Texinfo tree.  The @code{output} and @code{convert} are not
+required, but customarily used by converters as entry points for
+conversion to a file with headers and so on, or conversion of a
+texinfo tree.
+
+@node Texinfo::Convert::Converter METHODS
+@section METHODS
+
+@menu
+* Texinfo@asis{::}Convert@asis{::}Converter Initialization::
+* Texinfo@asis{::}Convert@asis{::}Converter Helper methods::
+@end menu
+
+@node Texinfo::Convert::Converter Initialization
+@subsection Initialization
+
+A module subclassing @code{Texinfo::Convert::Converter} is created by calling
+the @code{converter} method that should be inherited from 
+@code{Texinfo::Convert::Converter}.
+
+@table @asis
+@item $converter = MyConverter->converter($options)
+@anchor{Texinfo::Convert::Converter $converter = MyConverter->converter($options)}
+
+The @emph{$options} hash reference holds options for the converter.  In
+this option hash reference a parser object may be associated with the 
+@emph{parser} key.  The other options should be configuration options
+described in the Texinfo manual.  Those options, when appropriate,
+override the document content.
+
+The @code{converter} function returns a converter object (a blessed hash 
+reference) after checking the options and performing some initializations,
+especially when a parser is given among the options.  The converter is
+also initialized as a @code{Texinfo::Report}.
+
+@end table
+
+To help with these initializations, the modules can define three methods:
+
+@table @asis
+@item %defaults = $converter->converter_defaults($options)
+@anchor{Texinfo::Convert::Converter %defaults = $converter->converter_defaults($options)}
+
+The converter can provide a defaults hash for configurations options.
+The @emph{$options} hash reference holds options for the converter.
+
+@item @@global_commands = $converter->converter_global_commands()
+@anchor{Texinfo::Convert::Converter @@global_commands = $converter->converter_global_commands()}
+
+The list returned is the list of Texinfo global commands (like 
+@code{@@paragraphindent}, @code{@@documentlanguage}...) that are relevant for the
+converter.
+
+@item converter_initialize
+@anchor{Texinfo::Convert::Converter converter_initialize}
+
+This method is called at the end of the converter initialization.
+
+@end table
+
+@node Texinfo::Convert::Converter Helper methods
+@subsection Helper methods
+
+@code{Texinfo::Convert::Converter} provides methods
+that may be useful for every converter:
+
+@table @asis
+@item $converter->get_conf($option_string)
+@anchor{Texinfo::Convert::Converter $converter->get_conf($option_string)}
+
+Returns the value of the Texinfo configuration option @emph{$option_string}.
+
+@item $converter->set_conf($option_string, $value)
+@anchor{Texinfo::Convert::Converter $converter->set_conf($option_string@comma{} $value)}
+
+Set the Texinfo configuration option @emph{$option_string} to @emph{$value} if
+not set as a converter option.
+
+@item $converter->force_conf($option_string, $value)
+@anchor{Texinfo::Convert::Converter $converter->force_conf($option_string@comma{} $value)}
+
+Set the Texinfo configuration option @emph{$option_string} to @emph{$value}.
+This should rarely be used, but the purpose of this method is to be able
+to revert a configuration that is always wrong for a given output
+format, like the splitting for example.
+
+@item $result = $converter->convert_document_sections($root, $file_handler)
+@anchor{Texinfo::Convert::Converter $result = $converter->convert_document_sections($root@comma{} $file_handler)}
+
+This method splits the @emph{$root} Texinfo tree at sections and 
+calls @code{convert_tree} on the elements.  If the optional @emph{$file_handler}
+is given in argument, the result are output in @emph{$file_handler}, otherwise
+the resulting string is returned.
+
+@item $result = $converter->convert_accents($accent_command, \&format_accents, $in_upper_case)
+@anchor{Texinfo::Convert::Converter $result = $converter->convert_accents($accent_command@comma{} \&format_accents@comma{} $in_upper_case)}
+
+@emph{$accent_command} is an accent command, which may have other accent
+commands nested.  The function returns the accents formatted either
+as encoded letters, or formatted using @emph{\&format_accents}.
+If @emph{$in_upper_case} is set, the result should be upper cased.  
+
+@end table
+
+Other @code{Texinfo::Convert::Converter} methods target conversion to XML:
+
+@table @asis
+@item $protected_text = $converter->xml_protect_text($text)
+@anchor{Texinfo::Convert::Converter $protected_text = $converter->xml_protect_text($text)}
+
+Protect special XML characters (&, <, >, ") of @emph{$text}.
+
+@item $comment = $converter->xml_comment($text)
+@anchor{Texinfo::Convert::Converter $comment = $converter->xml_comment($text)}
+
+Returns an XML comment for @emph{$text}.
+
+@item $result = xml_accent($text, $accent_command, $in_upper_case, $use_numeric_entities)
+@anchor{Texinfo::Convert::Converter $result = xml_accent($text@comma{} $accent_command@comma{} $in_upper_case@comma{} $use_numeric_entities)}
+
+@emph{$text} is the text appearing within an accent command.  @emph{$accent_command}
+should be a Texinfo tree element corresponding to an accent command taking
+an argument.  @emph{$in_upper_case} is optional, and, if set, the text is put
+in upper case.  The function returns the accented letter as XML entity 
+if possible.  @emph{$use_numeric_entities} is also optional, and, if set, and
+there is no XML entity, the numerical entity corresponding to unicode 
+points is preferred to an ascii transliteration.
+
+@item $result = $converter->xml_accents($accent_command, $in_upper_case)
+@anchor{Texinfo::Convert::Converter $result = $converter->xml_accents($accent_command@comma{} $in_upper_case)}
+
+@emph{$accent_command} is an accent command, which may have other accent
+commands nested.  If @emph{$in_upper_case} is set, the result should be 
+upper cased.  The function returns the accents formatted as XML.
+
+@end table
+
+@node Texinfo::Convert::Converter AUTHOR
+@section AUTHOR
+
+Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo::Convert::Converter COPYRIGHT AND LICENSE
+@section COPYRIGHT AND LICENSE
+
+Copyright (C) 2011, 2012 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at 
+your option) any later version.
+

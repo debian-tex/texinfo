@@ -1,0 +1,39 @@
+\input texinfo
+@setfilename cpp_lines.info
+
+#line 3 "a_file" 
+ # 66 "g_f" 4 
+
+@email{before top}.
+
+@node Top
+
+# 10 25 209
+# 1 2
+# 46
+
+@verbatim
+
+  #line 5 "f"
+@end verbatim
+
+@macro macr
+# line 7 "k"
+@end macro
+
+@email{after lacro def}
+
+@macr{}
+
+@email{after macro call}. 
+
+@include file_with_cpp_lines.texi
+@email{after inc}. 
+
+@verb{:
+#line 5 "in verb"
+:}
+
+@email{after verb}
+
+@bye

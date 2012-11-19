@@ -1,0 +1,23 @@
+@SECTION_BUTTONS = ();
+
+foreach my $direction (('Up', 'Forward', 'Back', 'Next',
+                        'Prev', 'FastForward', 'FastBack', 'This', 'NodeUp',
+                        'NodePrev', 'NodeNext', 'NodeForward', NodeBack ))
+#                        'NodePrev', 'NodeNext', 'ToplevelPrev', 'ToplevelNext',  'Following' ))
+
+{
+    my $direction_node = "node-".$direction;
+    my $direction_href = "href-".$direction;
+    my $direction_name = "name-".$direction;
+    push @SECTION_BUTTONS, \"|", \$direction_node, [$direction, '-> node'], \$direction_href, [$direction, '-> href'], \$direction_name, [$direction, '-> text'], \"|";
+}
+
+@MISC_BUTTONS = @SECTION_BUTTONS;
+@TOP_BUTTONS = @SECTION_BUTTONS;
+
+set_from_init_file('MISC_BUTTONS', \@MISC_BUTTONS);
+set_from_init_file('SECTION_BUTTONS', \@SECTION_BUTTONS);
+set_from_init_file('TOP_BUTTONS', \@TOP_BUTTONS);
+
+1;
+

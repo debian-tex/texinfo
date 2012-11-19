@@ -1,0 +1,13 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename contents_at_end_document.info
+
+@node Top
+@top top
+
+@chapter chap
+
+@contents
+
+@bye
+

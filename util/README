@@ -1,13 +1,15 @@
-$Id: README,v 1.6 2008/01/02 01:36:32 karl Exp $
+$Id: README,v 1.7 2011/10/16 23:14:09 karl Exp $
 texinfo/util/README
 
-  Copyright (C) 2002, 2008 Free Software Foundation, Inc.
+  Copyright 2002, 2008, 2011 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
-Assorted Texinfo-related files.
-
 texindex, texi2dvi, texi2pdf, pdftexi2dvi, and the XML stuff get installed.
 The other items here are for your amusement and/or hacking pleasure.
+
+For more information about using the gendocs script and templates, see
+the GNU Maintainers Information:
+http://www.gnu.org/prep/maintain/html_node/Invoking-gendocs_002esh.html

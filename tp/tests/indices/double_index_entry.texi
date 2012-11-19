@@ -1,0 +1,19 @@
+
+@node Top
+
+@cindex aaa
+
+Text
+
+@cindex aaa
+
+@menu
+* other node::
+@end menu
+
+@node other node,,,Top
+
+@cindex aaa
+
+@printindex cp
+

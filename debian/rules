@@ -28,7 +28,10 @@ build-stamp:
 	dh_testdir
 	# hardening call, but makes info unusable
 	# ./configure --prefix=/usr $(shell dpkg-buildflags --export=configure) \
-	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr \
+	CFLAGS="$(CFLAGS)" ./configure \
+	  --with-external-Text-Unidecode=yes \
+	  --with-external-libintl-perl=yes \
+	  --prefix=/usr \
           --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man'
 	$(MAKE)
 	touch $@
@@ -45,7 +48,7 @@ install-stamp: DH_OPTIONS=
 install-stamp: build-stamp
 	dh_testdir
 	dh_testroot
-	dh_clean -k
+	dh_prep
 	dh_installdirs
 	$(MAKE) install install-tex prefix=$(tmpdir)/usr \
                                     TEXMF=$(tmpdir)/usr/share/texmf
@@ -53,11 +56,16 @@ install-stamp: build-stamp
 	# epsf.tex is in texlive
 	rm -rf $(tmpdir)/usr/share/texmf/tex/generic
 	# remove perl libraries that we depend on in debian/control
-	rm -rf $(tmpdir)/usr/share/texinfo/lib/Text-Unidecode
-	rm -rf $(tmpdir)/usr/share/texinfo/lib/libintl-perl
+	# they should not be installed due to above --with-external-*
+	# but they still are, already send report to bug-texinfo
+	# remove without -f to make sure we fix the rules file
+	# when it is fixed upstream
+	rm -r $(tmpdir)/usr/share/texinfo/lib/Text-Unidecode
+	rm -r $(tmpdir)/usr/share/texinfo/lib/libintl-perl
+	# install all the files
 	dh_install --list-missing --sourcedir=debian/tmp -X share/info
-	#
 	dh_link
+	# work on debian install-info
 	mv $(ii)/usr/bin/install-info $(ii)/usr/bin/ginstall-info
 	sed -e "s/install-info/g&/g" \
 		< $(ii)/usr/share/man/man1/install-info.1 \

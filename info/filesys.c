@@ -1,8 +1,8 @@
 /* filesys.c -- filesystem specific functions.
-   $Id: filesys.c,v 1.17 2011/10/18 18:47:19 karl Exp $
+   $Id: filesys.c,v 1.18 2012/11/17 17:16:18 gray Exp $
 
-   Copyright 1993, 1997, 1998, 2000, 2002, 2003, 2004, 2007, 2008, 2009, 2011
-   Free Software Foundation, Inc.
+   Copyright 1993, 1997, 1998, 2000, 2002, 2003, 2004, 2007, 2008, 2009, 2011,
+   2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@
 
 #include "tilde.h"
 #include "filesys.h"
+#include "tag.h"
 
 /* Local to this file. */
 static char *info_file_in_path (char *filename, char *path);
@@ -596,22 +597,22 @@ convert_eols (char *text, long int textlen)
    If the file turns out to be compressed, set IS_COMPRESSED to non-zero.
    If the file cannot be read, return a NULL pointer. */
 char *
-filesys_read_info_file (char *pathname, long int *filesize,
-    struct stat *finfo, int *is_compressed)
+filesys_read_info_file (char *pathname, size_t *filesize,
+			struct stat *finfo, int *is_compressed)
 {
-  long st_size;
+  size_t fsize;
+  char *contents;
 
-  *filesize = filesys_error_number = 0;
+  fsize = filesys_error_number = 0;
 
   if (compressed_filename_p (pathname))
     {
       *is_compressed = 1;
-      return filesys_read_compressed (pathname, filesize);
+      contents = filesys_read_compressed (pathname, &fsize);
     }
   else
     {
       int descriptor;
-      char *contents;
 
       *is_compressed = 0;
       descriptor = open (pathname, O_RDONLY | O_BINARY, 0666);
@@ -624,9 +625,9 @@ filesys_read_info_file (char *pathname, long int *filesize,
         }
 
       /* Try to read the contents of this file. */
-      st_size = (long) finfo->st_size;
-      contents = xmalloc (1 + st_size);
-      if ((read (descriptor, contents, st_size)) != st_size)
+      fsize = (long) finfo->st_size;
+      contents = xmalloc (1 + fsize);
+      if ((read (descriptor, contents, fsize)) != fsize)
         {
 	  filesys_error_number = errno;
 	  close (descriptor);
@@ -635,20 +636,21 @@ filesys_read_info_file (char *pathname, long int *filesize,
         }
 
       close (descriptor);
-
-      /* Convert any DOS-style CRLF EOLs into Unix-style NL.
-	 Seems like a good idea to have even on Unix, in case the Info
-	 files are coming from some Windows system across a network.  */
-      *filesize = convert_eols (contents, st_size);
-
-      /* EOL conversion can shrink the text quite a bit.  We don't
-	 want to waste storage.  */
-      if (*filesize < st_size)
-	contents = xrealloc (contents, 1 + *filesize);
-      contents[*filesize] = '\0';
-
-      return contents;
     }
+
+  /* Convert any DOS-style CRLF EOLs into Unix-style NL.
+     Seems like a good idea to have even on Unix, in case the Info
+     files are coming from some Windows system across a network.  */
+  fsize = convert_eols (contents, fsize);
+
+  tags_expand (&contents, &fsize);
+
+  /* EOL conversion can shrink the text quite a bit.  We don't
+     want to waste storage.  */
+  contents = xrealloc (contents, 1 + fsize);
+  contents[fsize] = '\0';
+  *filesize = fsize;
+  return contents;
 }
 
 /* Typically, pipe buffers are 4k. */
@@ -658,7 +660,7 @@ filesys_read_info_file (char *pathname, long int *filesize,
 #define FILESYS_PIPE_BUFFER_SIZE (16 * BASIC_PIPE_BUFFER)
 
 char *
-filesys_read_compressed (char *pathname, long int *filesize)
+filesys_read_compressed (char *pathname, size_t *filesize)
 {
   FILE *stream;
   char *command, *decompressor;
@@ -695,7 +697,7 @@ filesys_read_compressed (char *pathname, long int *filesize)
   /* Read chunks from this file until there are none left to read. */
   if (stream)
     {
-      long offset, size;
+      size_t offset, size;
       char *chunk;
     
       offset = size = 0;
@@ -703,7 +705,7 @@ filesys_read_compressed (char *pathname, long int *filesize)
 
       while (1)
         {
-          int bytes_read;
+          size_t bytes_read;
 
           bytes_read = fread (chunk, 1, FILESYS_PIPE_BUFFER_SIZE, stream);
 
@@ -727,9 +729,9 @@ filesys_read_compressed (char *pathname, long int *filesize)
 	}
       else
 	{
-	  *filesize = convert_eols (contents, offset);
-	  contents = xrealloc (contents, 1 + *filesize);
-	  contents[*filesize] = '\0';
+	  contents = xrealloc (contents, 1 + offset);
+	  contents[offset] = '\0';
+	  *filesize = offset;
 	}
     }
   else

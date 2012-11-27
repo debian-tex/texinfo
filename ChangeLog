@@ -1,5 +1,175 @@
+2012-11-26  Karl Berry  <karl@gnu.org>
+
+	* configure.ac: invoke gl_REGEX, after
+	gnulib-tool --add-import regex.  This will now be used on
+	all systems except recent-enough libc.
+
+	* doc/texinfo.txi (Command Syntax): Explicitly mention
+	whitespace after @-command names being (usually) ignored.
+
+	* doc/texinfo.txi (Not Ending a Sentence): Attempt
+	to document the sentence-ending heuristic more clearly.
+	Suggestion from Eli Zaretskii in <http://bugs.gnu.org/12973#14>,
+	draft from Paul Eggert in bug-texinfo 24 Nov 2012 18:02:27.
+
+	* install-info/defs.in (findprog): new fn, from texi2dvi.
+	* install-info/tests/ii-0050-test,
+	* install-info/tests/ii-0041-test: use it to check for zdiff
+	(not available on bare Solaris) and skip tests if needed.
+
+2012-11-25  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi: consistently use "uppercase" and "lowercase",
+	rather than with spaces or dashes.
+	
+	* system.h (const): do not #undef around gettext.h.
+	Suggested by Eli.  We'll see.
+
+2012-11-16  Eli Zaretskii  <eliz@gnu.org>
+	
+	* info/pcterm.c (gettextinfo): exit rather than xexit.
+	(tputs, tgoto, tgetent): use const.
+	* info/session.c [!FIONREAD]: require F_GETFL and F_SETFL as well
+	as O_NDELAY for this branch.
+	* info/terminal.c (tputs) [! HAVE_TERMCAP_H]: declare puts as
+	returning int.
+
+2012-11-23  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (makeinfo Pointer Creation): be more
+	explicit about what to do.  Suggestion from Richard Jackson,
+	help-texinfo 18 Feb 2003 23:54:07.
+
+2012-11-22  Patrice Dumas  <pertusus@free.fr>
+
+	* */*.pl */Makefile.am: use #! /usr/bin/env perl for shebangs in case
+	perl is not in /usr/bin.
+	Subbstitute $(PERL) in the shebang for scripts that are modified
+	using configure generated values.
+	* man/Makefile.am: remove $(srcdir) from targets.
+
+2012-11-20  Patrice Dumas  <pertusus@free.fr>
+
+	* Texinfo/Common.pm, Texinfo/Parser.pm, 
+	doc/texinfo.txi (Other Customization Variables): if 
+	IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME is set (the default case),
+	spaces after an @-command name that take braces are ignored.
+	Report from John Darrington.
+
+2012-11-17  Patrice Dumas  <pertusus@free.fr>
+
+	* configure.ac, Pod-Simple-Texinfo/Makefile.am, doc/tp_api/Makefile.am:
+	new conditionals, BUILD_PERL_API_TEXI and POD_SIMPLE_TEXINFO_TESTS to
+	avoid rebuilding the texinfo files from pod documentnation if 
+	Pod::Simple::PullParser, and avoid running the Pod-Simple-Texinfo tests
+	if Test::More is not present.
+
+2012-11-17  Sergey Poznyakoff  <gray@gnu.org>
+
+	Use the text attribute to represent "image" tag.
+	Provide a general-purpose solution, so new tags can be easily
+	added.
+
+	This fixes bug #37686.
+
+	* info/tag.c: New file
+	* info/tag.h: New file
+	* info/Makefile.am: Add new files.
+	* info/dir.c: Use size_t instead of long to represent file size.
+	* info/display.c (handle_tag)
+	(handle_tag_start,handle_tag_end): Remove.
+	* info/display.h (handle_tag): Remove.
+	* info/filesys.c (filesys_read_info_file): Use size_t instead of
+	long to represent file sizes and offsets.
+	Call tags_expand to expand info tags.
+	(filesys_read_compressed): Do not call convert_eols, leave that
+	for filesys_read_info_file.
+	* info/filesys.h (filesys_read_info_file)
+	(filesys_read_compressed): Use size_t instead of
+        long to represent file sizes and offsets.
+	* info/info-utils.c (text_buffer_alloc): New function.
+	* info/info-utils.h (MIN_TEXT_BUF_ALLOC): New define.
+	(text_buffer_alloc): New proto.
+	(text_buffer_reset,text_buffer_base)
+	(text_buffer_off): New macros.
+	* info/nodes.c: Use size_t instead of long to represent file sizes
+	and offsets.
+	* info/nodes.h (FILE_BUFFER) <filesize>: Change type to size_t.
+	* NEWS: Update.
+	
+2012-11-16  Eli Zaretskii  <eliz@gnu.org>
+
+	Support for MS-Windows screen and keyboard in Info.
+	(bug-texinfo 17 Jan 2012 08:41:10 +0200)
+
+	* system.h (SET_SCREEN_SIZE_HELPER) [__MINGW32__]: Define.
+
+	* info/tilde.c (tilde_expand_word) [__MINGW32__]: Don't call
+	getpwuid or getpwnam; instead, consider "." as "home" if HOME is
+	not set in the environment.  Support tilde_expansion_failure_hook.
+
+	* info/terminal.c [_WIN32]: Include pcterm.h.
+	(terminal_initialize_terminal) [__MINGW32__]: Don't access
+	`ospeed'.
+	(terminal_prep_terminal, terminal_unprep_terminal) [__MINGW32__]:
+	Ifdef away the TIOC code for Windows.
+
+	* info/termdep.h [__MINGW32__]: Don't include sgtty.h.
+	[_WIN32]: Add a prototype for `sleep'.
+
+	* info/signals.c (redisplay_after_signal)
+	(reset_info_window_sizes): Make these 2 functions extern from
+	static, as they are called on MS-Windows from other files.
+
+	* info/session.c (read) [__MINGW32__]: Redirect read and _read to
+	w32_read.
+	(info_gather_typeahead) [__MINGW32__]: Call w32_chars_avail to
+	find out how many typeahead is available.
+
+	* info/pcterm.c <struct text_info, struct termios> [_WIN32]:
+	Definitions for the MS-Windows build.
+	(w32_info_prep, w32_info_unprep, w32_cleanup, w32_info_init)
+	(gettextinfo, textattr, textmode, ScreenGetCursor)
+	(ScreenSetCursor, ScreenClear, clreol, ScreenVisualBell)
+	(movetext, ScreenRows, ScreenCols, _set_screen_lines)
+	(w32_set_screen_dimensions) [_WIN32]: New; screen output and
+	cursor control functions for MS-Windows.
+	(sleep, w32_our_tty, define_seq, w32keyseq, w32_kbd_read)
+	(w32_chars_avail, w32_read) [_WIN32]: New; keyboard input
+	functions and their subroutines for MS-Windows.
+	(pc_prep_terminal) [_WIN32]: Call w32_info_prep.
+	(pc_unprep_terminal) [_WIN32]: Call w32_info_unprep.  Restore the
+	screen buffer size to what we found on startup.
+	(pc_initialize_terminal) [_WIN32]: Let term_name be "w32console".
+	Condition MSDOS key definitions on __MSDOS__.
+	(kill) [_WIN32]: Don't clear the screen and don't write "stopped"
+	message on MS-Windows.  Special suspend code for MS-Windows.
+
+	* info/man.c [__MINGW32__]: Don't include sys/ioctl.h.
+
+	Fix a crash in viewing man pages.
+
+	* info/man.c (get_manpage_contents) [!PIPE_USE_FORK]: Fix a
+	crasher due to addition of "-a" to the man command line arguments.
+
+	Miscellaneous MS-Windows related fixes.
+
+	* info/infokey.c (main): On MS-Windows, consider the current
+	directory a "home" if HOME is not defined in the environment.
+
+	* info/infomap.c (fetch_user_maps): Likewise.
+
+	* info/info.c <option long_options>: Enable the speech-friendly
+	options on MS-Windows as well.
+	(main): Likewise.
+
+	* info/dir.c (new_dir_file_p): Don't optimize the test for a new
+	file when the inode is zero (MS-Windows).
+
 2012-11-16  Karl Berry  <karl@gnu.org>
 
+	* pretest 4.13.90.
+	
 	* tp/Makefile.am,
 	* tp/maintain/regenerate_document_strings_make_rules.sh,
 	* tp/tests/run_parser_all.sh: avoid \+ with sed, not

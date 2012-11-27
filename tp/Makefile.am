@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.49 2012/11/16 18:33:03 karl Exp $
+# $Id: Makefile.am,v 1.51 2012/11/21 22:48:48 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012 Free Software Foundation, Inc.
@@ -41,7 +41,8 @@ do_subst = sed \
   -e 's,[@]PACKAGE[@],$(PACKAGE),g' \
   -e 's,[@]USE_EXTERNAL_LIBINTL[@],$(USE_EXTERNAL_LIBINTL),g' \
   -e 's,[@]USE_EXTERNAL_EASTASIANWIDTH[@],$(USE_EXTERNAL_EASTASIANWIDTH),g' \
-  -e 's,[@]USE_EXTERNAL_UNIDECODE[@],$(USE_EXTERNAL_UNIDECODE),g'
+  -e 's,[@]USE_EXTERNAL_UNIDECODE[@],$(USE_EXTERNAL_UNIDECODE),g' \
+  -e '1 s,/usr/bin/env perl,$(PERL),g'
 
 texi2any: texi2any.pl $(top_builddir)/config.status
 	$(do_subst) $(srcdir)/texi2any.pl >$@
@@ -211,22 +212,28 @@ maintain/catalog.xml: maintain/catalog.xml.in Makefile
 libsrcdir = $(srcdir)/maintain/lib
 
 install-data-local:
-	$(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
-	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData
-	$(INSTALL_DATA) $(libsrcdir)/libintl-perl/lib/Locale/*.pm \
-	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale
-	$(INSTALL_DATA) $(libsrcdir)/libintl-perl/lib/Locale/Recode/*.pm \
-	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode
-	$(INSTALL_DATA) $(libsrcdir)/libintl-perl/lib/Locale/RecodeData/*.pm \
-	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData
-	$(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode
-	$(INSTALL_DATA) $(libsrcdir)/Unicode-EastAsianWidth/lib/Unicode/EastAsianWidth.pm \
-	 $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode
-	$(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode
-	$(INSTALL_DATA) $(libsrcdir)/Text-Unidecode/lib/Text/Unidecode.pm \
-	  $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text
-	$(INSTALL_DATA) $(libsrcdir)/Text-Unidecode/lib/Text/Unidecode/*.pm \
-	  $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode
+	if test $(USE_EXTERNAL_LIBINTL) != 'yes' ; then \
+	  $(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
+	    $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData; \
+	  $(INSTALL_DATA) $(libsrcdir)/libintl-perl/lib/Locale/*.pm \
+	    $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale; \
+	  $(INSTALL_DATA) $(libsrcdir)/libintl-perl/lib/Locale/Recode/*.pm \
+	    $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode; \
+	  $(INSTALL_DATA) $(libsrcdir)/libintl-perl/lib/Locale/RecodeData/*.pm \
+	    $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData; \
+	fi
+	if test $(USE_EXTERNAL_EASTASIANWIDTH) != 'yes' ; then \
+	  $(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode; \
+	  $(INSTALL_DATA) $(libsrcdir)/Unicode-EastAsianWidth/lib/Unicode/EastAsianWidth.pm \
+	   $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode; \
+	fi
+	if test $(USE_EXTERNAL_UNIDECODE) != 'yes' ; then \
+	  $(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode; \
+	  $(INSTALL_DATA) $(libsrcdir)/Text-Unidecode/lib/Text/Unidecode.pm \
+	    $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text; \
+	  $(INSTALL_DATA) $(libsrcdir)/Text-Unidecode/lib/Text/Unidecode/*.pm \
+	    $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode; \
+	fi
 
 install-exec-hook:
 	-$(LN_S) texi2any $(DESTDIR)$(bindir)/makeinfo

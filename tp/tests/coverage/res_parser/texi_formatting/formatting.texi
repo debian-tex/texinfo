@@ -1378,9 +1378,7 @@ Invalid use of @@':@*
 @code{@@dotless@{a@}} @dotless{a}
 
 @c braces missing
-@@TeX, but without brace @TeX
-
-@c unknown command
+@@TeX, but without brace @TeX@c unknown command
 @code{@@#} #
 
 @c no arg
@@ -2102,9 +2100,7 @@ Invalid use of @@':@*
 @code{@@dotless@{a@}} @dotless{a}
 
 @c braces missing
-@@TeX, but without brace @TeX
-
-@c unknown command
+@@TeX, but without brace @TeX@c unknown command
 @code{@@#} #
 
 @c no arg
@@ -2826,9 +2822,7 @@ Invalid use of @@':@*
 @code{@@dotless@{a@}} @dotless{a}
 
 @c braces missing
-@@TeX, but without brace @TeX
-
-@c unknown command
+@@TeX, but without brace @TeX@c unknown command
 @code{@@#} #
 
 @c no arg
@@ -3544,9 +3538,7 @@ Invalid use of @@':@*
 @code{@@dotless@{a@}} @dotless{a}
 
 @c braces missing
-@@TeX, but without brace @TeX
-
-@c unknown command
+@@TeX, but without brace @TeX@c unknown command
 @code{@@#} #
 
 @c no arg

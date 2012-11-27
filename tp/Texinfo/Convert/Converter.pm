@@ -595,7 +595,7 @@ sub _create_destination_directory($)
           and $self->get_conf('EXTENSION') ne '') {
         my ($volume, $directories, $file) 
            = File::Spec->splitpath($self->{'destination_directory'}, 1);
-        my $new_directory = catpath($volume, 
+        my $new_directory = File::Spec->catpath($volume, 
                  $directories . '.' . $self->get_conf('EXTENSION'), $file);
         if (! -d $new_directory) {
           if (!mkdir($new_directory, oct(755))) {

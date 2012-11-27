@@ -8,6 +8,7 @@
 
 gnulib/lib/error.c
 gnulib/lib/getopt.c
+gnulib/lib/regcomp.c
 gnulib/lib/xalloc-die.c
 info/echo-area.c
 info/footnotes.c
@@ -20,6 +21,7 @@ info/infomap.c
 info/m-x.c
 info/makedoc.c
 info/nodemenu.c
+info/pcterm.c
 info/search.c
 info/session.c
 info/tilde.c

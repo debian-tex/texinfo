@@ -1,5 +1,5 @@
 /* tilde.c -- tilde expansion code (~/foo := $HOME/foo).
-   $Id: tilde.c,v 1.9 2012/06/11 17:54:27 karl Exp $
+   $Id: tilde.c,v 1.10 2012/11/16 23:33:29 karl Exp $
 
    Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1998, 1999,
    2002, 2004, 2006, 2007, 2008, 2012 Free Software Foundation, Inc.
@@ -190,11 +190,15 @@ tilde_expand_word (char *filename)
              the password database. */
           if (!temp_home)
             {
+#ifndef __MINGW32__
               struct passwd *entry;
 
               entry = (struct passwd *) getpwuid (getuid ());
               if (entry)
                 temp_home = entry->pw_dir;
+#else
+	      temp_home = ".";
+#endif
             }
 
           temp_name = xmalloc (1 + strlen (&dirname[1])
@@ -210,7 +214,9 @@ tilde_expand_word (char *filename)
         }
       else
         {
+#ifndef __MINGW32__
           struct passwd *user_entry;
+#endif
           char *username = xmalloc (257);
           int i, c;
 
@@ -223,6 +229,7 @@ tilde_expand_word (char *filename)
             }
           username[i - 1] = 0;
 
+#ifndef __MINGW32__
           if (!(user_entry = (struct passwd *) getpwnam (username)))
             {
               /* If the calling program has a special syntax for
@@ -259,6 +266,24 @@ tilde_expand_word (char *filename)
 
           endpwent ();
           free (username);
+#else
+	  if (tilde_expansion_failure_hook)
+	    {
+	      char *expansion = (*tilde_expansion_failure_hook) (username);
+
+	      if (expansion)
+		{
+		  temp_name = xmalloc (1 + strlen (expansion)
+				       + strlen (&dirname[i]));
+		  strcpy (temp_name, expansion);
+		  strcat (temp_name, &dirname[i]);
+		  free (expansion);
+		}
+	    }
+	  free (dirname);
+	  dirname = xstrdup (temp_name);
+	  free (temp_name);
+#endif
         }
     }
   return dirname;

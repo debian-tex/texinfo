@@ -27,6 +27,9 @@
    language is requested. */
 #undef ENABLE_NLS
 
+/* Define to 1 if nl_langinfo (YESEXPR) returns a non-empty string. */
+#undef FUNC_NL_LANGINFO_YESEXPR_WORKS
+
 /* Define if gettimeofday clobbers the localtime buffer. */
 #undef GETTIMEOFDAY_CLOBBERS_LOCALTIME
 
@@ -35,8 +38,15 @@
 #undef GETTIMEOFDAY_TIMEZONE
 
 /* Define to a C preprocessor expression that evaluates to 1 or 0, depending
+   whether the gnulib module malloc-gnu shall be considered present. */
+#undef GNULIB_MALLOC_GNU
+
+/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
    whether the gnulib module strerror shall be considered present. */
 #undef GNULIB_STRERROR
+
+/* Define to 1 when the gnulib module btowc should be tested. */
+#undef GNULIB_TEST_BTOWC
 
 /* Define to 1 when the gnulib module getopt-gnu should be tested. */
 #undef GNULIB_TEST_GETOPT_GNU
@@ -46,6 +56,9 @@
 
 /* Define to 1 when the gnulib module iswblank should be tested. */
 #undef GNULIB_TEST_ISWBLANK
+
+/* Define to 1 when the gnulib module localeconv should be tested. */
+#undef GNULIB_TEST_LOCALECONV
 
 /* Define to 1 when the gnulib module lstat should be tested. */
 #undef GNULIB_TEST_LSTAT
@@ -74,6 +87,9 @@
 /* Define to 1 when the gnulib module mbsstr should be tested. */
 #undef GNULIB_TEST_MBSSTR
 
+/* Define to 1 when the gnulib module mbtowc should be tested. */
+#undef GNULIB_TEST_MBTOWC
+
 /* Define to 1 when the gnulib module memchr should be tested. */
 #undef GNULIB_TEST_MEMCHR
 
@@ -85,6 +101,9 @@
 
 /* Define to 1 when the gnulib module mkstemp should be tested. */
 #undef GNULIB_TEST_MKSTEMP
+
+/* Define to 1 when the gnulib module nl_langinfo should be tested. */
+#undef GNULIB_TEST_NL_LANGINFO
 
 /* Define to 1 when the gnulib module stat should be tested. */
 #undef GNULIB_TEST_STAT
@@ -107,6 +126,9 @@
 /* Define to 1 when the gnulib module strstr should be tested. */
 #undef GNULIB_TEST_STRSTR
 
+/* Define to 1 when the gnulib module wcrtomb should be tested. */
+#undef GNULIB_TEST_WCRTOMB
+
 /* Define to 1 when the gnulib module wcwidth should be tested. */
 #undef GNULIB_TEST_WCWIDTH
 
@@ -126,6 +148,9 @@
 
 /* Define to 1 if you have the <bp-sym.h> header file. */
 #undef HAVE_BP_SYM_H
+
+/* Define to 1 if you have the 'btowc' function. */
+#undef HAVE_BTOWC
 
 /* Define to 1 if you have the `bzero' function. */
 #undef HAVE_BZERO
@@ -149,6 +174,10 @@
 /* Define to 1 if you have the declaration of `getenv', and to 0 if you don't.
    */
 #undef HAVE_DECL_GETENV
+
+/* Define to 1 if you have the declaration of `isblank', and to 0 if you
+   don't. */
+#undef HAVE_DECL_ISBLANK
 
 /* Define to 1 if you have the declaration of `iswblank', and to 0 if you
    don't. */
@@ -202,6 +231,10 @@
    don't. */
 #undef HAVE_DECL_TOWLOWER
 
+/* Define to 1 if you have the declaration of `wcrtomb', and to 0 if you
+   don't. */
+#undef HAVE_DECL_WCRTOMB
+
 /* Define to 1 if you have the declaration of `wcwidth', and to 0 if you
    don't. */
 #undef HAVE_DECL_WCWIDTH
@@ -250,17 +283,29 @@
 /* Define to 1 if you have the 'isascii' function. */
 #undef HAVE_ISASCII
 
+/* Define to 1 if you have the 'isblank' function. */
+#undef HAVE_ISBLANK
+
 /* Define to 1 if you have the 'iswblank' function. */
 #undef HAVE_ISWBLANK
 
 /* Define to 1 if you have the 'iswcntrl' function. */
 #undef HAVE_ISWCNTRL
 
+/* Define to 1 if you have the 'iswctype' function. */
+#undef HAVE_ISWCTYPE
+
 /* Define if you have <langinfo.h> and nl_langinfo(CODESET). */
 #undef HAVE_LANGINFO_CODESET
 
+/* Define to 1 if you have the <langinfo.h> header file. */
+#undef HAVE_LANGINFO_H
+
 /* Define to 1 if you have the `bsd' library (-lbsd). */
 #undef HAVE_LIBBSD
+
+/* Define to 1 if you have the <libintl.h> header file. */
+#undef HAVE_LIBINTL_H
 
 /* Define to 1 if you have the <limits.h> header file. */
 #undef HAVE_LIMITS_H
@@ -270,6 +315,10 @@
 
 /* Define to 1 if you have the 'lstat' function. */
 #undef HAVE_LSTAT
+
+/* Define to 1 if your system has a GNU libc compatible 'malloc' function, and
+   to 0 otherwise. */
+#undef HAVE_MALLOC_GNU
 
 /* Define if the 'malloc' function is POSIX compliant. */
 #undef HAVE_MALLOC_POSIX
@@ -321,6 +370,9 @@
 /* Define to 1 if you have the <ncurses/termcap.h> header file. */
 #undef HAVE_NCURSES_TERMCAP_H
 
+/* Define to 1 if you have the 'nl_langinfo' function. */
+#undef HAVE_NL_LANGINFO
+
 /* Define to 1 if you have the <pwd.h> header file. */
 #undef HAVE_PWD_H
 
@@ -348,6 +400,9 @@
 
 /* Define to 1 if dup3 is declared even after undefining macros. */
 #undef HAVE_RAW_DECL_DUP3
+
+/* Define to 1 if duplocale is declared even after undefining macros. */
+#undef HAVE_RAW_DECL_DUPLOCALE
 
 /* Define to 1 if endusershell is declared even after undefining macros. */
 #undef HAVE_RAW_DECL_ENDUSERSHELL
@@ -523,6 +578,9 @@
 /* Define to 1 if mkstemps is declared even after undefining macros. */
 #undef HAVE_RAW_DECL_MKSTEMPS
 
+/* Define to 1 if nl_langinfo is declared even after undefining macros. */
+#undef HAVE_RAW_DECL_NL_LANGINFO
+
 /* Define to 1 if openat is declared even after undefining macros. */
 #undef HAVE_RAW_DECL_OPENAT
 
@@ -576,6 +634,9 @@
 
 /* Define to 1 if sethostname is declared even after undefining macros. */
 #undef HAVE_RAW_DECL_SETHOSTNAME
+
+/* Define to 1 if setlocale is declared even after undefining macros. */
+#undef HAVE_RAW_DECL_SETLOCALE
 
 /* Define to 1 if setstate is declared even after undefining macros. */
 #undef HAVE_RAW_DECL_SETSTATE
@@ -845,6 +906,9 @@
 /* Define to 1 if you have the 'strndup' function. */
 #undef HAVE_STRNDUP
 
+/* Define to 1 if `decimal_point' is a member of `struct lconv'. */
+#undef HAVE_STRUCT_LCONV_DECIMAL_POINT
+
 /* Define to 1 if you have the 'symlink' function. */
 #undef HAVE_SYMLINK
 
@@ -920,6 +984,12 @@
 /* Define if you have the 'wchar_t' type. */
 #undef HAVE_WCHAR_T
 
+/* Define to 1 if you have the 'wcrtomb' function. */
+#undef HAVE_WCRTOMB
+
+/* Define to 1 if you have the 'wcscoll' function. */
+#undef HAVE_WCSCOLL
+
 /* Define to 1 if you have the <wctype.h> header file. */
 #undef HAVE_WCTYPE_H
 
@@ -940,6 +1010,9 @@
 
 /* Define to 1 if O_NOFOLLOW works. */
 #undef HAVE_WORKING_O_NOFOLLOW
+
+/* Define to 1 if you have the <xlocale.h> header file. */
+#undef HAVE_XLOCALE_H
 
 /* Define to 1 if the system has the type `_Bool'. */
 #undef HAVE__BOOL
@@ -1008,6 +1081,9 @@
    slash */
 #undef REPLACE_FUNC_STAT_FILE
 
+/* Define if nl_langinfo exists but is overridden by gnulib. */
+#undef REPLACE_NL_LANGINFO
+
 /* Define to 1 if strerror(0) does not return a message implying success. */
 #undef REPLACE_STRERROR_0
 
@@ -1068,6 +1144,9 @@
 /* Define for large files, on AIX-style hosts. */
 #undef _LARGE_FILES
 
+/* Define to 1 on Solaris. */
+#undef _LCONV_C99
+
 /* Define to 1 if on MINIX. */
 #undef _MINIX
 
@@ -1091,6 +1170,13 @@
 
 /* Define to 1 if you need to in order for 'stat' and other things to work. */
 #undef _POSIX_SOURCE
+
+/* Define if you want <regex.h> to include <limits.h>, so that it consistently
+   overrides <limits.h>'s RE_DUP_MAX. */
+#undef _REGEX_INCLUDE_LIMITS_H
+
+/* Define if you want regoff_t to be at least as wide POSIX requires. */
+#undef _REGEX_LARGE_OFFSETS
 
 /* Define to 500 only on HP-UX. */
 #undef _XOPEN_SOURCE
@@ -1216,6 +1302,51 @@
 
 /* Define to `int' if <sys/types.h> does not define. */
 #undef pid_t
+
+/* Define to rpl_re_comp if the replacement should be used. */
+#undef re_comp
+
+/* Define to rpl_re_compile_fastmap if the replacement should be used. */
+#undef re_compile_fastmap
+
+/* Define to rpl_re_compile_pattern if the replacement should be used. */
+#undef re_compile_pattern
+
+/* Define to rpl_re_exec if the replacement should be used. */
+#undef re_exec
+
+/* Define to rpl_re_match if the replacement should be used. */
+#undef re_match
+
+/* Define to rpl_re_match_2 if the replacement should be used. */
+#undef re_match_2
+
+/* Define to rpl_re_search if the replacement should be used. */
+#undef re_search
+
+/* Define to rpl_re_search_2 if the replacement should be used. */
+#undef re_search_2
+
+/* Define to rpl_re_set_registers if the replacement should be used. */
+#undef re_set_registers
+
+/* Define to rpl_re_set_syntax if the replacement should be used. */
+#undef re_set_syntax
+
+/* Define to rpl_re_syntax_options if the replacement should be used. */
+#undef re_syntax_options
+
+/* Define to rpl_regcomp if the replacement should be used. */
+#undef regcomp
+
+/* Define to rpl_regerror if the replacement should be used. */
+#undef regerror
+
+/* Define to rpl_regexec if the replacement should be used. */
+#undef regexec
+
+/* Define to rpl_regfree if the replacement should be used. */
+#undef regfree
 
 /* Define to the equivalent of the C99 'restrict' keyword, or to
    nothing if this is not supported.  Do not define if restrict is

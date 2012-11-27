@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.41 2012/06/11 17:54:26 karl Exp $
+   $Id: info.c,v 1.42 2012/11/16 23:33:28 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012
@@ -86,7 +86,7 @@ static int print_where_p = 0;
 /* Non-zero means don't try to be smart when searching for nodes.  */
 int strict_node_location_p = 0;
 
-#ifdef __MSDOS__
+#if defined(__MSDOS__) || defined(__MINGW32__)
 /* Non-zero indicates that screen output should be made 'speech-friendly'.
    Since on MSDOS the usual behavior is to write directly to the video
    memory, speech synthesizer software cannot grab the output.  Therefore,
@@ -123,14 +123,14 @@ static struct option long_options[] = {
   { "version", 0, &print_version_p, 1 },
   { "vi-keys", 0, &vi_keys_p, 1 },
   { "where", 0, &print_where_p, 1 },
-#ifdef __MSDOS__
+#if defined(__MSDOS__) || defined(__MINGW32__)
   { "speech-friendly", 0, &speech_friendly, 1 },
 #endif
   {NULL, 0, NULL, 0}
 };
 
 /* String describing the shorthand versions of the long options found above. */
-#ifdef __MSDOS__
+#if defined(__MSDOS__) || defined(__MINGW32__)
 static char *short_options = "k:d:n:f:ho:ORswb";
 #else
 static char *short_options = "k:d:n:f:ho:ORws";
@@ -244,12 +244,12 @@ main (int argc, char *argv[])
           print_where_p = 1;
           break;
 
-#ifdef __MSDOS__
+#if defined(__MSDOS__) || defined(__MINGW32__)
 	  /* User wants speech-friendly output.  */
 	case 'b':
 	  speech_friendly = 1;
 	  break;
-#endif /* __MSDOS__ */
+#endif /* __MSDOS__ || __MINGW32__ */
 
           /* User has specified a string to search all indices for. */
         case 'k':
@@ -648,7 +648,7 @@ Options:\n\
       --restore=FILENAME       read initial keystrokes from FILENAME.\n\
   -O, --show-options, --usage  go to command-line options node."));
 
-#ifdef __MSDOS__
+#if defined(__MSDOS__) || defined(__MINGW32__)
   puts (_("\
   -b, --speech-friendly        be friendly to speech synthesizers."));
 #endif

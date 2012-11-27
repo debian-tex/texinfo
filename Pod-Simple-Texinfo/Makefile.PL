@@ -5,7 +5,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME              => 'Pod::Simple::Texinfo',
     VERSION_FROM      => 'lib/Pod/Simple/Texinfo.pm', # finds $VERSION
-    EXE_FILES         => [ 'pod2texi.pl' ],
+    EXE_FILES         => [ 'pod2texi' ],
     PREREQ_PM         => { "Pod::Simple::PullParser" => 0,
                            "Texinfo::Parser" => 0,
                            "Getopt::Long" => 0,

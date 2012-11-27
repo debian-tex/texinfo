@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-12 13:59-0800\n"
+"POT-Creation-Date: 2012-11-23 14:58-0800\n"
 "PO-Revision-Date: 2006-01-09\n"
 "Last-Translator: Jorge Barros de Abreu <ficmatin01@solar.com.br>\n"
 "Language-Team: Unknown\n"
@@ -103,12 +103,12 @@ msgstr ""
 msgid "{float_number}\n"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2707
+#: tp/Texinfo/Parser.pm:2708
 #, perl-brace-format
 msgid "{name} on {class}"
 msgstr "{name} na {class}"
 
-#: tp/Texinfo/Parser.pm:2716
+#: tp/Texinfo/Parser.pm:2717
 #, perl-brace-format
 msgid "{name} of {class}"
 msgstr "{name} da {class}"

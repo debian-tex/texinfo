@@ -1,7 +1,7 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c,v 1.17 2008/10/05 16:06:18 gray Exp $
+   $Id: display.c,v 1.18 2012/11/17 17:16:18 gray Exp $
 
-   Copyright (C) 1993, 1997, 2003, 2004, 2006, 2007, 2008
+   Copyright (C) 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -21,15 +21,12 @@
 
 #include "info.h"
 #include "display.h"
+#include "tag.h"
 
 extern int info_any_buffered_input_p (void); /* Found in session.c. */
 
 static void free_display (DISPLAY_LINE **display);
 static DISPLAY_LINE **make_display (int width, int height);
-
-void handle_tag (char *tag);
-void handle_tag_start (char *tag);
-void handle_tag_end (char *tag);
 
 /* An array of display lines which tell us what is currently visible on
    the display.  */
@@ -90,33 +87,6 @@ display_update_display (WINDOW *window)
   /* Always update the echo area. */
   display_update_one_window (the_echo_area);
 }
-
-void
-handle_tag_start (char *tag)
-{
-  /* TODO really handle this tag.  */
-  return;
-}
-
-void
-handle_tag_end (char *tag)
-{
-  /* TODO really handle this tag.  */
-  return;
-}
-
-void
-handle_tag (char *tag)
-{
-    if (tag[0] == '/')
-      {
-	tag++;
-	handle_tag_end (tag);
-      }
-    else
-      handle_tag_start (tag);
-}
-
 
 struct display_node_closure {
   WINDOW *win;
@@ -265,7 +235,8 @@ display_update_one_window (WINDOW *win)
       dnc.win = win;
       dnc.display = the_display;
       
-      line_index = process_node_text (win, win->line_starts[win->pagetop],
+      line_index = process_node_text (win,
+				      win->line_starts[win->pagetop],
 				      1,
 				      display_node_text,
 				      &dnc);

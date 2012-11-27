@@ -1,5 +1,5 @@
 # @configure_input@
-# $Id: defs.in,v 1.2 2012/11/11 00:33:54 karl Exp $
+# $Id: defs.in,v 1.3 2012/11/26 18:30:49 karl Exp $
 # 
 # Copyright 2008, 2012 Free Software Foundation, Inc.
 #
@@ -38,7 +38,32 @@ if test -z "$srcdir"; then
    test $srcdir = $0 && srcdir=.
 fi
 
-# The two variables we use in the test scripts.
+# Return true if PROG is somewhere in PATH, else false.
+findprog ()
+{
+  local saveIFS="$IFS"
+  IFS=$path_sep  # break path components at the path separator
+  for dir in $PATH; do
+    IFS=$saveIFS
+    # The basic test for an executable is `test -f $f && test -x $f'.
+    # (`test -x' is not enough, because it can also be true for directories.)
+    # We have to try this both for $1 and $1.exe.
+    #
+    # Note: On Cygwin and DJGPP, `test -x' also looks for .exe.  On Cygwin,
+    # also `test -f' has this enhancement, but not on DJGPP.  (Both are
+    # design decisions, so there is little chance to make them consistent.)
+    # Thusly, it seems to be difficult to make use of these enhancements.
+    #
+    if   { test -f "$dir/$1"     && test -x "$dir/$1"; } \
+      || { test -f "$dir/$1.exe" && test -x "$dir/$1.exe"; }; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+
+# Two variables we use in the test scripts.
 
 top_builddir=@top_builddir@
 install_info=${top_builddir}/install-info/ginstall-info

@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.6 2012/11/12 01:24:39 pertusus Exp $
+# $Id: Makefile.am,v 1.7 2012/11/17 19:13:37 pertusus Exp $
 # Makefile.am for texinfo/doc/tp_api.
 #
 # Copyright 2012
@@ -16,11 +16,14 @@
 # cross-compiling.
 MAKEINFO = $(PERL) -I $(top_srcdir)/tp/ $(top_srcdir)/tp/texi2any.pl
 
+if BUILD_PERL_API_TEXI
+
 dist_info_TEXINFOS = tp_api.texi
 #info_TEXINFOS_SOURCES = tp_api.texi
 tp_api_TEXINFOS = tp_api.texi
 #dist_tp_api_TEXINFOS = tp_api.texi
 #tp_api_SOURCES = tp_api.texi
+
 BUILT_SOURCES = tp_api.texi
 
 #DISTCLEANFILES = tp_api.info
@@ -44,3 +47,5 @@ tp_api.texi: $(tp_api_dependencies)
 	$(PERL) -I $(top_srcdir)/Pod-Simple-Texinfo/lib/ -I $(top_srcdir)/tp/ -I $(top_srcdir)/tp/maintain/lib/Text-Unidecode/lib/ -I $(top_srcdir)/tp/maintain/lib/libintl-perl/lib/ -I $(top_srcdir)/tp/maintain/lib/Unicode-EastAsianWidth/lib/ $(top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl --base-level=section --top 'Texinfo perl module' --subdir=api_includes -o $@ $(tp_api_dependencies)
 
 EXTRA_DIST = api_includes tp_api.texi
+
+endif

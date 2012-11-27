@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.3 2011/10/25 23:22:07 karl Exp $
+# $Id: Makefile.am,v 1.4 2012/11/23 00:19:00 pertusus Exp $
 # Makefile.am for texinfo/man.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -61,22 +61,22 @@ common_mandeps = $(top_srcdir)/configure.ac
 
 # for Info, we have an additional help2man file since the standard
 # SEE ALSO text from help2man does not fit.
-$(srcdir)/info.1: $(top_srcdir)/info/info.c $(srcdir)/ginfo.h2m \
+info.1: $(top_srcdir)/info/info.c $(srcdir)/ginfo.h2m \
                   $(common_mandeps)
 	@name="read Info documents" && $(man_rule_bin)
 
-$(srcdir)/infokey.1: $(top_srcdir)/info/infokey.c $(common_mandeps)
+infokey.1: $(top_srcdir)/info/infokey.c $(common_mandeps)
 	@name="compile customizations for Info" && $(man_rule_bin)
 
-$(srcdir)/install-info.1: $(top_srcdir)/install-info/install-info.c \
+install-info.1: $(top_srcdir)/install-info/install-info.c \
                           $(common_mandeps)
 	@name="update info/dir entries" && $(man_rule_bin)
 
-$(srcdir)/texindex.1: $(top_srcdir)/util/texindex.c $(common_mandeps)
+texindex.1: $(top_srcdir)/util/texindex.c $(common_mandeps)
 	@name="sort Texinfo index files" && $(man_rule_bin)
 
 # Here we need some postprocessing to avoid man misformatting.
-$(srcdir)/makeinfo.1: $(tpdir)/texi2any.pl $(common_mandeps)
+makeinfo.1: $(tpdir)/texi2any.pl $(common_mandeps)
 	@name="translate Texinfo documents" && $(man_rule_bin)
 	mv $@ $@.tmp
 	sed '/^\.IP$$/N;/\nAlso/s/I//;/\nThe/s/I//' $@.tmp >$@
@@ -86,7 +86,7 @@ $(srcdir)/makeinfo.1: $(tpdir)/texi2any.pl $(common_mandeps)
 # For texi2dvi, do not depend on the current user's settings.
 texi2dvi_envvars = unset TEXI2DVI_BUILD_MODE; unset TEXI2DVI_BUILD_DIRECTORY
 
-$(srcdir)/texi2dvi.1: $(top_srcdir)/util/texi2dvi $(common_mandeps)
+texi2dvi.1: $(top_srcdir)/util/texi2dvi $(common_mandeps)
 	$(texi2dvi_envvars); $(HELP2MAN) \
 	  --name="convert Texinfo documents to DVI or PDF" \
 	  $(top_srcdir)/util/texi2dvi >$@

@@ -118,7 +118,7 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
 # there are better ways
     dir=`echo $line | awk '{print $1}'`
     file=`echo $line | awk '{print $2}'`
-    remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]* *[a-zA-Z0-9_./-]* *//'`
+    remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]*  *[a-zA-Z0-9_./-]* *//'`
     [ "z$dir" = 'z' -o "$zfile" = 'z' ] && continue
     basename=`basename $file .texi`
     if [ "z$dir" = 'ztexi' ]; then
@@ -156,18 +156,18 @@ fi
 
 . ../../defs || exit 1
 
-[ -d $diffs_dir ] || mkdir $diffs_dir
+test -d $diffs_dir || mkdir $diffs_dir
 staging_dir_res=$diffs_dir/staging_res/
-if [ z"$clean" = 'zyes' ]; then
+if test z"$clean" = 'zyes' ; then
   rm -rf $staging_dir_res
 else
-  [ -d $staging_dir_res ] || mkdir $staging_dir_res
+  test -d $staging_dir_res || mkdir $staging_dir_res
 fi
 
 for command_dir in $commands; do
   dir_suffix=`echo $command_dir | cut -d':' -f2`
   outdir="${out_dir}${dir_suffix}/"
-  [ -d "${outdir}" ] || mkdir "${outdir}"
+  test -d "${outdir}" || mkdir "${outdir}"
 done
 
 if tmp_dir=`mktemp -d l2h_t2h_XXXXXXXX`; then
@@ -186,12 +186,12 @@ do
 # there are better ways
   current=`echo $line | awk '{print $1}'`
   file=`echo $line | awk '{print $2}'`
-  [ "z$current" = 'z' -o "$zfile" = 'z' ] && continue
+  (test "z$current" = 'z' || test "$zfile" = 'z') && continue
   basename=`basename $file .texi`
-  remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]* *[a-zA-Z0-9_./-]* *//' \
+  remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]*  *[a-zA-Z0-9_./-]* *//' \
       | sed 's,@PATH_SEPARATOR@,'"${PATH_SEPARATOR}$testdir/$srcdir_test/"',g'`
   src_file="$testdir/$srcdir_test/$file"
-  if [ $one_test = 'yes' -a "z$current" != "z$the_test" ]; then
+  if test $one_test = 'yes' && test "z$current" != "z$the_test" ; then
     continue
   fi
   for command_dir in $commands; do
@@ -221,14 +221,14 @@ do
     outdir="${out_dir}${dir_suffix}/"
     results_dir="$testdir/$srcdir_test/${res_dir}${dir_suffix}"
     #results_dir_ref="$testdir/$srcdir_test/${res_dir_ref}${dir_suffix}"
-    if [ "z$current" = 'ztexi' ]; then
-      if [ $one_test = 'yes' -a "z$the_basename" != 'z' -a "z$basename" != "z$the_basename" ]; then
+    if test "z$current" = 'ztexi' ; then
+      if test $one_test = 'yes' && test "z$the_basename" != 'z' && test "z$basename" != "z$the_basename" ; then
         continue 2
       fi
       one_test_done=yes
       dir="texi_${basename}"
 
-      [ -d "${outdir}$dir" ] && rm -rf "${outdir}$dir"
+      test -d "${outdir}$dir" && rm -rf "${outdir}$dir"
       mkdir "${outdir}$dir"
       remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
       command_file=
@@ -259,22 +259,22 @@ do
         use_latex2html=yes
         l2h_tmp_dir="--set-customization-variable 'L2H_TMP $tmp_dir'"
       elif echo "$remaining" | grep -qs -- '-init tex4ht.pm'; then
-        if [ "$no_tex4ht" = 'yes' ]; then
+        if test "$no_tex4ht" = 'yes' ; then
           echo "S: (no tex4ht) $current"
           continue 2
         fi
         use_tex4ht=yes
       fi
-      if [ $use_tex4ht = 'yes' -o $use_latex2html = 'yes' ]; then
+      if test $use_tex4ht = 'yes' || test $use_latex2html = 'yes' ; then
         if echo "$remaining" | grep -qs -- '-init mediawiki.pm'; then
-         if [ "$no_html2wiki" = 'yes' ]; then
+         if test "$no_html2wiki" = 'yes' ; then
            echo "S: (no html2wiki) $current"
            continue 2
          fi
         fi
       fi
       dir=$current
-      [ -d "${outdir}$dir" ] && rm -rf "${outdir}$dir"
+      test -d "${outdir}$dir" && rm -rf "${outdir}$dir"
       mkdir "${outdir}$dir"
       remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
       echo "$command $dir" >> $logfile
@@ -287,12 +287,12 @@ do
       #  ${outdir}$dir/*_l2h.html.* \
       #  ${outdir}$dir/*_tex4ht_tex.html*
     fi
-    if [ $ret = 0 ]; then
+    if test $ret = 0 ; then
       diff_base="${dir}${dir_suffix}"
       if [ -d "$results_dir/$dir" ]; then
         res_dir_used="$results_dir/$dir"
       fi
-      if [ "z$res_dir_used" != 'z' ]; then
+      if test "z$res_dir_used" != 'z' ; then
         # use a staging dir to be able to remove CVS directory
         rm -rf $staging_dir_res/$dir
         cp -pr "$res_dir_used" $staging_dir_res
@@ -301,11 +301,11 @@ do
 
         # with latex2html or tex4ht output is stored in raw_outdir, and files
         # are removed or modified from the output directory used for comparisons
-        if [ "$use_latex2html" = 'yes' -o "$use_tex4ht" = 'yes' ]; then
+        if test "$use_latex2html" = 'yes' || test "$use_tex4ht" = 'yes' ; then
 
           # store raw output
           raw_outdir="${raw_out_dir}${dir_suffix}/"
-          [ -d "${raw_outdir}" ] || mkdir "${raw_outdir}"
+          test -d "${raw_outdir}" || mkdir "${raw_outdir}"
           rm -rf "${raw_outdir}$dir"
           cp -pr ${outdir}$dir/ "${raw_outdir}"
 
@@ -316,24 +316,24 @@ do
                 ${outdir}$dir/*_l2h.html.* \
                 ${outdir}$dir/*_tex4ht_tex.html*
         fi
-        if [ "$use_tex4ht" = 'yes' ]; then
+        if test "$use_tex4ht" = 'yes' ; then
           # tex4ht may be customized to use dvipng or dvips, both being
           # verbose, so there can not be reproducible tests on stderr either
           # with tex4ht.
           rm "${outdir}$dir/$basename.2"
-        elif [ "$use_latex2html" = 'yes' ]; then
+        elif test "$use_latex2html" = 'yes' ; then
           sed -e 's/^texexpand.*/texexpand /' \
               -e '/is no longer supported at.*line/d' \
               $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
           # "*"_images.pl" files are not guaranteed to be present
           for file in "${raw_outdir}$dir/"*"_labels.pl"; do
-           if [ -f "$file" ]; then
+           if test -f "$file" ; then
             filename=`basename "$file"`
             sed -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file" > "$outdir$dir/$filename"
            fi
           done
           for file in "${raw_outdir}$dir/"*.htm* "${raw_outdir}$dir/"*-l2h_cache.pm "${raw_outdir}$dir/"*_l2h_images.pl; do
-           if [ -f "$file" ]; then
+           if test -f "$file" ; then
            # width and height changed because of different rounding on 
            # different computers.  Also remove version information.
             filename=`basename "$file"`
@@ -369,7 +369,7 @@ done < "$driving_file"
 
 rm -rf $tmp_dir
 
-if [ "$one_test" = 'yes' -a "z$one_test_done" != "zyes" ]; then
+if test "$one_test" = 'yes' && test "z$one_test_done" != "zyes" ; then
   echo "$the_test $the_file test not found"
 fi
 

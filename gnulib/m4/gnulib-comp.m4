@@ -41,6 +41,7 @@ AC_DEFUN([gl_EARLY],
   AC_REQUIRE([AM_PROG_CC_C_O])
   # Code from module alloca-opt:
   # Code from module argz:
+  # Code from module btowc:
   # Code from module configmake:
   # Code from module dosname:
   # Code from module errno:
@@ -60,10 +61,14 @@ AC_DEFUN([gl_EARLY],
   # Code from module inline:
   # Code from module intprops:
   # Code from module iswblank:
+  # Code from module langinfo:
   # Code from module largefile:
   AC_REQUIRE([AC_SYS_LARGEFILE])
   # Code from module localcharset:
+  # Code from module locale:
+  # Code from module localeconv:
   # Code from module lstat:
+  # Code from module malloc-gnu:
   # Code from module malloc-posix:
   # Code from module malloca:
   # Code from module mbchar:
@@ -76,6 +81,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module mbsncasecmp:
   # Code from module mbsstr:
   # Code from module mbswidth:
+  # Code from module mbtowc:
   # Code from module mbuiter:
   # Code from module memchr:
   # Code from module memmem:
@@ -85,8 +91,10 @@ AC_DEFUN([gl_EARLY],
   # Code from module msvc-inval:
   # Code from module msvc-nothrow:
   # Code from module multiarch:
+  # Code from module nl_langinfo:
   # Code from module nocrash:
   # Code from module pathmax:
+  # Code from module regex:
   # Code from module snippet/_Noreturn:
   # Code from module snippet/arg-nonnull:
   # Code from module snippet/c++defs:
@@ -119,6 +127,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module uniwidth/width:
   # Code from module verify:
   # Code from module wchar:
+  # Code from module wcrtomb:
   # Code from module wctype-h:
   # Code from module wcwidth:
   # Code from module xalloc:
@@ -147,6 +156,12 @@ AC_DEFUN([gl_INIT],
   if test -n "$ARGZ_H"; then
     AC_LIBOBJ([argz])
   fi
+  gl_FUNC_BTOWC
+  if test $HAVE_BTOWC = 0 || test $REPLACE_BTOWC = 1; then
+    AC_LIBOBJ([btowc])
+    gl_PREREQ_BTOWC
+  fi
+  gl_WCHAR_MODULE_INDICATOR([btowc])
   gl_CONFIGMAKE_PREP
   gl_HEADER_ERRNO_H
   gl_ERROR
@@ -198,16 +213,29 @@ AC_DEFUN([gl_INIT],
     fi
   fi
   gl_WCTYPE_MODULE_INDICATOR([iswblank])
+  gl_LANGINFO_H
   AC_REQUIRE([gl_LARGEFILE])
   gl_LOCALCHARSET
   LOCALCHARSET_TESTS_ENVIRONMENT="CHARSETALIASDIR=\"\$(abs_top_builddir)/$gl_source_base\""
   AC_SUBST([LOCALCHARSET_TESTS_ENVIRONMENT])
+  gl_LOCALE_H
+  gl_FUNC_LOCALECONV
+  if test $REPLACE_LOCALECONV = 1; then
+    AC_LIBOBJ([localeconv])
+    gl_PREREQ_LOCALECONV
+  fi
+  gl_LOCALE_MODULE_INDICATOR([localeconv])
   gl_FUNC_LSTAT
   if test $REPLACE_LSTAT = 1; then
     AC_LIBOBJ([lstat])
     gl_PREREQ_LSTAT
   fi
   gl_SYS_STAT_MODULE_INDICATOR([lstat])
+  gl_FUNC_MALLOC_GNU
+  if test $REPLACE_MALLOC = 1; then
+    AC_LIBOBJ([malloc])
+  fi
+  gl_MODULE_INDICATOR([malloc-gnu])
   gl_FUNC_MALLOC_POSIX
   if test $REPLACE_MALLOC = 1; then
     AC_LIBOBJ([malloc])
@@ -235,6 +263,12 @@ AC_DEFUN([gl_INIT],
   gl_STRING_MODULE_INDICATOR([mbsncasecmp])
   gl_STRING_MODULE_INDICATOR([mbsstr])
   gl_MBSWIDTH
+  gl_FUNC_MBTOWC
+  if test $REPLACE_MBTOWC = 1; then
+    AC_LIBOBJ([mbtowc])
+    gl_PREREQ_MBTOWC
+  fi
+  gl_STDLIB_MODULE_INDICATOR([mbtowc])
   gl_MBITER
   gl_FUNC_MEMCHR
   if test $HAVE_MEMCHR = 0 || test $REPLACE_MEMCHR = 1; then
@@ -272,7 +306,17 @@ AC_DEFUN([gl_INIT],
     AC_LIBOBJ([msvc-nothrow])
   fi
   gl_MULTIARCH
+  gl_FUNC_NL_LANGINFO
+  if test $HAVE_NL_LANGINFO = 0 || test $REPLACE_NL_LANGINFO = 1; then
+    AC_LIBOBJ([nl_langinfo])
+  fi
+  gl_LANGINFO_MODULE_INDICATOR([nl_langinfo])
   gl_PATHMAX
+  gl_REGEX
+  if test $ac_use_included_regex = yes; then
+    AC_LIBOBJ([regex])
+    gl_PREREQ_REGEX
+  fi
   gt_TYPE_SSIZE_T
   gl_FUNC_STAT
   if test $REPLACE_STAT = 1; then
@@ -342,6 +386,12 @@ AC_DEFUN([gl_INIT],
   gl_LIBUNISTRING_LIBHEADER([0.9], [uniwidth.h])
   gl_LIBUNISTRING_MODULE([0.9.4], [uniwidth/width])
   gl_WCHAR_H
+  gl_FUNC_WCRTOMB
+  if test $HAVE_WCRTOMB = 0 || test $REPLACE_WCRTOMB = 1; then
+    AC_LIBOBJ([wcrtomb])
+    gl_PREREQ_WCRTOMB
+  fi
+  gl_WCHAR_MODULE_INDICATOR([wcrtomb])
   gl_WCTYPE_H
   gl_FUNC_WCWIDTH
   if test $HAVE_WCWIDTH = 0 || test $REPLACE_WCWIDTH = 1; then
@@ -497,6 +547,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/alloca.in.h
   lib/argz.c
   lib/argz.in.h
+  lib/btowc.c
   lib/config.charset
   lib/dosname.h
   lib/errno.in.h
@@ -513,8 +564,11 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/gettimeofday.c
   lib/intprops.h
   lib/iswblank.c
+  lib/langinfo.in.h
   lib/localcharset.c
   lib/localcharset.h
+  lib/locale.in.h
+  lib/localeconv.c
   lib/lstat.c
   lib/malloc.c
   lib/malloca.c
@@ -533,6 +587,8 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/mbsstr.c
   lib/mbswidth.c
   lib/mbswidth.h
+  lib/mbtowc-impl.h
+  lib/mbtowc.c
   lib/mbuiter.c
   lib/mbuiter.h
   lib/memchr.c
@@ -544,9 +600,16 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/msvc-inval.h
   lib/msvc-nothrow.c
   lib/msvc-nothrow.h
+  lib/nl_langinfo.c
   lib/pathmax.h
   lib/ref-add.sin
   lib/ref-del.sin
+  lib/regcomp.c
+  lib/regex.c
+  lib/regex.h
+  lib/regex_internal.c
+  lib/regex_internal.h
+  lib/regexec.c
   lib/stat.c
   lib/stdbool.in.h
   lib/stddef.in.h
@@ -579,6 +642,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/uniwidth/width.c
   lib/verify.h
   lib/wchar.in.h
+  lib/wcrtomb.c
   lib/wctype.in.h
   lib/wcwidth.c
   lib/xalloc-die.c
@@ -588,6 +652,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/00gnulib.m4
   m4/alloca.m4
   m4/argz.m4
+  m4/btowc.m4
   m4/codeset.m4
   m4/configmake.m4
   m4/eealloc.m4
@@ -614,6 +679,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/inttypes-pri.m4
   m4/inttypes_h.m4
   m4/iswblank.m4
+  m4/langinfo_h.m4
   m4/largefile.m4
   m4/lcmessage.m4
   m4/lib-ld.m4
@@ -624,6 +690,8 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/locale-fr.m4
   m4/locale-ja.m4
   m4/locale-zh.m4
+  m4/locale_h.m4
+  m4/localeconv.m4
   m4/lock.m4
   m4/longlong.m4
   m4/lstat.m4
@@ -636,6 +704,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/mbslen.m4
   m4/mbstate_t.m4
   m4/mbswidth.m4
+  m4/mbtowc.m4
   m4/memchr.m4
   m4/memmem.m4
   m4/mempcpy.m4
@@ -644,6 +713,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/msvc-inval.m4
   m4/msvc-nothrow.m4
   m4/multiarch.m4
+  m4/nl_langinfo.m4
   m4/nls.m4
   m4/nocrash.m4
   m4/off_t.m4
@@ -652,6 +722,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/po.m4
   m4/printf-posix.m4
   m4/progtest.m4
+  m4/regex.m4
   m4/size_max.m4
   m4/ssize_t.m4
   m4/stat.m4
@@ -680,6 +751,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/warn-on-use.m4
   m4/wchar_h.m4
   m4/wchar_t.m4
+  m4/wcrtomb.m4
   m4/wctype_h.m4
   m4/wcwidth.m4
   m4/wint_t.m4

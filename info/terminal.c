@@ -1,8 +1,8 @@
 /* terminal.c -- how to handle the physical terminal for Info.
-   $Id: terminal.c,v 1.7 2008/06/11 09:55:43 gray Exp $
+   $Id: terminal.c,v 1.10 2012/11/26 01:32:03 karl Exp $
 
    Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1997, 1998,
-   1999, 2001, 2002, 2004, 2007, 2008 Free Software Foundation, Inc.
+   1999, 2001, 2002, 2004, 2007, 2008, 2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ char PC;      /* Pad character */
 short ospeed; /* Terminal output baud rate */
 extern int tgetnum (), tgetflag (), tgetent ();
 extern char *tgetstr (), *tgoto ();
-extern void tputs ();
+extern int tputs ();
 #endif /* not HAVE_TERMCAP_H */
 #endif /* not HAVE_NCURSES_TERMCAP_H */
 
@@ -572,7 +572,9 @@ terminal_initialize_terminal (char *terminal_name)
       ospeed = B9600;
   }
 # else
+#ifndef __MINGW32__
   ospeed = B9600;
+#endif
 # endif /* !TIOCGETP */
 #endif
 
@@ -663,7 +665,9 @@ struct termio original_termio, ttybuff;
 /* Buffers containing the terminal mode flags upon entry to info. */
 int original_tty_flags = 0;
 int original_lmode;
+#ifndef __MINGW32__
 struct sgttyb ttybuff;
+#endif
 
 #    if defined(TIOCGETC) && defined(M_XENIX)
 /* SCO 3.2v5.0.2 defines but does not support TIOCGETC.  Gak.  Maybe
@@ -758,7 +762,7 @@ terminal_prep_terminal (void)
 #  endif
 #endif
 
-#if !defined (HAVE_TERMIOS_H) && !defined (HAVE_TERMIO_H)
+#if !defined (HAVE_TERMIOS_H) && !defined (HAVE_TERMIO_H) && !defined(__MINGW32__)
   ioctl (tty, TIOCGETP, &ttybuff);
 
   if (!original_tty_flags)
@@ -819,9 +823,11 @@ terminal_prep_terminal (void)
   }
 #  endif /* TIOCGLTC */
 
+# ifndef __MINGW32__
   ttybuff.sg_flags &= ~ECHO;
   ttybuff.sg_flags |= CBREAK;
   ioctl (tty, TIOCSETN, &ttybuff);
+# endif
 #endif /* !HAVE_TERMIOS_H && !HAVE_TERMIO_H */
 }
 
@@ -846,9 +852,11 @@ terminal_unprep_terminal (void)
 #  if defined (HAVE_TERMIO_H)
   ioctl (tty, TCSETA, &original_termio);
 #  else /* !HAVE_TERMIO_H */
+#   ifndef __MINGW32__
   ioctl (tty, TIOCGETP, &ttybuff);
   ttybuff.sg_flags = original_tty_flags;
   ioctl (tty, TIOCSETN, &ttybuff);
+#   endif
 
 #  if defined (TIOCGETC)
   ioctl (tty, TIOCSETC, &original_tchars);
@@ -867,6 +875,6 @@ terminal_unprep_terminal (void)
   terminal_end_using_terminal ();
 }
 
-#ifdef __MSDOS__
+#if defined(__MSDOS__) || defined(__MINGW32__)
 # include "pcterm.c"
 #endif

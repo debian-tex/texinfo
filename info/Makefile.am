@@ -1,7 +1,7 @@
-# $Id: Makefile.am,v 1.17 2012/06/11 17:54:26 karl Exp $
+# $Id: Makefile.am,v 1.18 2012/11/17 17:16:18 gray Exp $
 # Makefile.am for texinfo/info.
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012
 # Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -40,7 +40,7 @@ ginfo_SOURCES = dir.c display.c display.h doc.h dribble.c dribble.h \
   indices.c indices.h info-utils.c info-utils.h info.c info.h infodoc.c \
   infomap.c infomap.h m-x.c man.c man.h nodemenu.c nodes.c nodes.h \
   search.c search.h session.c session.h signals.c signals.h \
-  termdep.h terminal.c terminal.h tilde.c tilde.h \
+  tag.c tag.h termdep.h terminal.c terminal.h tilde.c tilde.h \
   variables.c variables.h window.c window.h
 nodist_ginfo_SOURCES = doc.c funs.h
 infokey_SOURCES = infokey.c infokey.h key.h

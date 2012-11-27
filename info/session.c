@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.56 2012/06/11 17:54:26 karl Exp $
+   $Id: session.c,v 1.58 2012/11/26 01:32:03 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008, 2009, 2011, 2012 Free Software Foundation, Inc.
@@ -21,7 +21,13 @@
 
 #include "info.h"
 #include "search.h"
+#ifndef __MINGW32__
 #include <sys/ioctl.h>
+#endif
+#ifdef __MINGW32__
+# define read(f,b,s)	w32_read(f,b,s)
+# define _read(f,b,s)	w32_read(f,b,s)
+#endif
 
 #if defined (HAVE_SYS_TIME_H)
 #  include <sys/time.h>
@@ -5397,7 +5403,7 @@ info_gather_typeahead (void)
       chars_avail = read (tty, &input[0], chars_avail);
   }
 #else /* !FIONREAD */
-#  if defined (O_NDELAY)
+#  if defined (O_NDELAY) && defined (F_GETFL) && defined (F_SETFL)
   {
     int flags;
 
@@ -5434,6 +5440,19 @@ info_gather_typeahead (void)
     if (chars_avail)
       chars_avail = read (tty, &input[0], chars_avail);
   }
+#   else
+#    ifdef __MINGW32__
+  {
+    extern long w32_chars_avail (int);
+
+    chars_avail = w32_chars_avail (tty);
+
+    if (chars_avail > space_avail)
+      chars_avail = space_avail;
+    if (chars_avail)
+      chars_avail = read (tty, &input[0], chars_avail);
+  }
+#    endif  /* _WIN32 */
 #   endif/* __DJGPP__ */
 #  endif /* O_NDELAY */
 #endif /* !FIONREAD */

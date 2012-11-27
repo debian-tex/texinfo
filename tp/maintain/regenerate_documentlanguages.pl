@@ -1,4 +1,4 @@
-#! /usr/bin/perl -w
+#! /usr/bin/env perl
 
 # regenerate_documentlanguages.pl: download the iana files language
 # and regenerate Texinfo/Documentlanguages.pm list of languages and regions
@@ -15,6 +15,12 @@
 # Calling that script for each release could be a good idea.
 
 use strict;
+
+# emulates -w
+BEGIN
+{
+  $^W = 1;
+}
 
 my $dir = 'maintain';
 system ("cd $dir && wget -N http://www.iana.org/assignments/language-subtag-registry");

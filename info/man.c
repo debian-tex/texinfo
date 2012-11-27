@@ -1,5 +1,5 @@
 /*  man.c: How to read and format man files.
-    $Id: man.c,v 1.20 2012/06/11 17:54:26 karl Exp $
+    $Id: man.c,v 1.21 2012/11/16 23:33:28 karl Exp $
 
    Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
    2007, 2008, 2009, 2011, 2012 Free Software Foundation, Inc.
@@ -20,7 +20,9 @@
    Originally written by Brian Fox Thu May  4 09:17:52 1995. */
 
 #include "info.h"
+#ifndef __MINGW32__
 #include <sys/ioctl.h>
+#endif
 #include "signals.h"
 #if defined (HAVE_SYS_TIME_H)
 #include <sys/time.h>
@@ -294,7 +296,7 @@ get_manpage_contents (char *pagename)
   if (manpage_section)
     formatter_args[arg_index++] = manpage_section;
   else
-    formatter_args[arg_index++] = "-a";    
+    formatter_args[arg_index++] = "-a";
 
   formatter_args[arg_index++] = manpage_pagename;
   formatter_args[arg_index] = NULL;
@@ -339,17 +341,23 @@ get_manpage_contents (char *pagename)
   /* Cannot fork/exec, but can popen/pclose.  */
   {
     FILE *fpipe;
-    char *cmdline = xmalloc (strlen (formatter_args[0])
-			     + strlen (manpage_pagename)
-			     + (arg_index > 2 ? strlen (manpage_section) : 0)
- 			     + 3);
+    char *cmdline;
+    size_t cmdlen = 0;
     int save_stderr = dup (fileno (stderr));
     int fd_err = open (NULL_DEVICE, O_WRONLY, 0666);
+    int i;
+
+    for (i = 0; i < arg_index; i++)
+      cmdlen += strlen (formatter_args[i]);
+    /* Add-ons: 2 blanks, 2 quotes for the formatter program, 1
+       terminating null character.  */
+    cmdlen += 2 + 2 + 1;
+    cmdline = xmalloc (cmdlen);
 
     if (fd_err > 2)
       dup2 (fd_err, fileno (stderr)); /* Don't print errors. */
-    sprintf (cmdline, "%s %s %s", formatter_args[0], manpage_pagename,
-				  arg_index > 2 ? manpage_section : "");
+    sprintf (cmdline, "\"%s\" %s %s",
+	     formatter_args[0], formatter_args[1], formatter_args[2]);
     fpipe = popen (cmdline, "r");
     free (cmdline);
     if (fd_err > 2)

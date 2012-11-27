@@ -8,8 +8,10 @@ if [ $# -gt 0 ]; then
  test_name=$1
 fi
 
+cmds_list="clean|generate|output|diff|texis"
+
 if [ z"$command" = 'z' ]; then
-  echo "Need an arg"
+  echo "Need an arg $cmds_list"
   exit 1
 fi
 
@@ -49,6 +51,6 @@ elif [ "$command" = 'texis' ]; then
     $PERL -w $file -c
   done
 else
-  echo "Unknown command (clean|generate|output|diff|texis)"
+  echo "Unknown command ($cmds_list)"
   exit 1
 fi

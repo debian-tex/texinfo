@@ -1,8 +1,8 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c,v 1.19 2012/04/12 10:38:29 gray Exp $
+   $Id: nodes.c,v 1.20 2012/11/17 17:16:18 gray Exp $
 
    Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
-   2008, 2009, 2011 Free Software Foundation, Inc.
+   2008, 2009, 2011, 2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -333,11 +333,11 @@ static FILE_BUFFER *
 info_load_file_internal (char *filename, int get_tags)
 {
   char *fullpath, *contents;
-  long filesize;
+  size_t filesize;
   struct stat finfo;
   int retcode, compressed;
   FILE_BUFFER *file_buffer = NULL;
-
+  
   /* Get the full pathname of this file, as known by the info system.
      That is to say, search along INFOPATH and expand tildes, etc. */
   fullpath = info_find_fullpath (filename);
@@ -396,7 +396,7 @@ info_load_file_internal (char *filename, int get_tags)
   file_buffer->contents = contents;
   if (compressed)
     file_buffer->flags |= N_IsCompressed;
-
+  
   /* If requested, build the tags and nodes for this file buffer. */
   if (get_tags)
     build_tags_and_nodes (file_buffer);

@@ -458,6 +458,8 @@ t/results/coverage/preformatted.pl
 t/results/coverage/punctuation_in_line_commands.pl
 t/results/coverage/quotation_author.pl
 t/results/coverage/setfilename_in_paragraph.pl
+t/results/coverage/spaces_after_braced_command.pl
+t/results/coverage/spaces_no_brace_after_braced_command.pl
 t/results/coverage/symbol_after_block.pl
 t/results/coverage/symbol_after_command.pl
 t/results/coverage/table.pl
@@ -1248,6 +1250,7 @@ t/results/value/bad_syntax.pl
 t/results/value/empty_set.pl
 t/results/value/empty_value_in_line.pl
 t/results/value/simple.pl
+t/results/value/spaces_before_value.pl
 t/results/value/value_after_accent.pl
 t/results/value/value_in_index_commands.pl
 t/results/value/value_in_invalid_documentencoding.pl

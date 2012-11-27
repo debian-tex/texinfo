@@ -16,7 +16,7 @@ $result_trees{'no_brace'} = {
         },
         {
           'parent' => {},
-          'text' => ' and '
+          'text' => 'and '
         },
         {
           'cmdname' => 'code',
@@ -25,7 +25,7 @@ $result_trees{'no_brace'} = {
         },
         {
           'parent' => {},
-          'text' => ' code and '
+          'text' => 'code and '
         },
         {
           'cmdname' => 'footnote',
@@ -39,7 +39,7 @@ $result_trees{'no_brace'} = {
         },
         {
           'parent' => {},
-          'text' => ' footnote '
+          'text' => 'footnote '
         }
       ],
       'parent' => {},
@@ -56,10 +56,10 @@ $result_trees{'no_brace'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_tree
 $result_trees{'no_brace'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'no_brace'}{'contents'}[0];
 $result_trees{'no_brace'}{'contents'}[0]{'parent'} = $result_trees{'no_brace'};
 
-$result_texis{'no_brace'} = '@TeX and @code code and @footnote footnote ';
+$result_texis{'no_brace'} = '@TeXand @codecode and @footnotefootnote ';
 
 
-$result_texts{'no_brace'} = 'TeX and  code and  footnote ';
+$result_texts{'no_brace'} = 'TeXand code and footnote ';
 
 $result_errors{'no_brace'} = [
   {
@@ -93,6 +93,6 @@ $result_errors{'no_brace'} = [
 
 
 
-$result_converted{'html_text'}->{'no_brace'} = '<p>TeX and  code and  footnote </p>';
+$result_converted{'html_text'}->{'no_brace'} = '<p>TeXand code and footnote </p>';
 
 1;

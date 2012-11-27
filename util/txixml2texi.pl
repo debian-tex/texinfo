@@ -27,27 +27,54 @@ use File::Spec;
 
 Getopt::Long::Configure("gnu_getopt");
 
-BEGIN {
-  my $dir;
-  if ('@datadir@' ne '@' . 'datadir@') {
-    my $package = '@PACKAGE@';
-    my $datadir = eval '"@datadir@"';
-    if ($datadir ne '') {
-      $dir = File::Spec->catdir($datadir, $package);
-      unshift @INC, ($dir);
+BEGIN
+{
+  # emulate -w
+  $^W = 1;
+  my ($real_command_name, $command_directory, $command_suffix) 
+     = fileparse($0, '.pl');
+
+  my $datadir = '@datadir@';
+  my $package = '@PACKAGE@';
+  my $updir = File::Spec->updir();
+
+  my $texinfolibdir;
+  my $lib_dir;
+
+  # in-source run
+  if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
+       and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
+    my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : $command_directory;
+    $texinfolibdir = File::Spec->catdir($srcdir, $updir, 'tp');
+    $lib_dir = File::Spec->catdir($texinfolibdir, 'maintain');
+    unshift @INC, $texinfolibdir;
+  } elsif ($datadir ne '@' .'datadir@' and $package ne '@' . 'PACKAGE@'
+           and $datadir ne '') {
+    $texinfolibdir = File::Spec->catdir($datadir, $package);
+    # try to make package relocatable, will only work if standard relative paths
+    # are used
+    if (! -f File::Spec->catfile($texinfolibdir, 'Texinfo', 'Parser.pm')
+        and -f File::Spec->catfile($command_directory, $updir, 'share', 
+                                   'texinfo', 'Texinfo', 'Parser.pm')) {
+      $texinfolibdir = File::Spec->catdir($command_directory, $updir, 
+                                          'share', 'texinfo');
     }
-  } elsif (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
-     and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
-    my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
-    my $tpdir = File::Spec->catdir($srcdir, File::Spec->updir(), 'tp');
-    $dir = File::Spec->catdir($tpdir, 'maintain');
-    unshift @INC, $tpdir;
+    $lib_dir = $texinfolibdir;
+    unshift @INC, $texinfolibdir;
   }
-  if (defined($dir)) {
-    unshift @INC, (
-        File::Spec->catdir($dir, 'lib', 'libintl-perl', 'lib'),
-        File::Spec->catdir($dir, 'lib', 'Unicode-EastAsianWidth', 'lib'),
-        File::Spec->catdir($dir, 'lib', 'Text-Unidecode', 'lib'));
+
+  # '@USE_EXTERNAL_LIBINTL @ and similar are substituted in the
+  # makefile using values from configure
+  if (defined($texinfolibdir)) {
+    if ('@USE_EXTERNAL_LIBINTL@' ne 'yes') {
+      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'libintl-perl', 'lib'));
+    }
+    if ('@USE_EXTERNAL_EASTASIANWIDTH@' ne 'yes') {
+      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'Unicode-EastAsianWidth', 'lib'));
+    }
+    if ('@USE_EXTERNAL_UNIDECODE@' ne 'yes') {
+      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'));
+    }
   }
 }
 

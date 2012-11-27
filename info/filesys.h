@@ -1,7 +1,7 @@
 /* filesys.h -- external declarations for filesys.c.
-   $Id: filesys.h,v 1.8 2009/03/14 17:31:30 karl Exp $
+   $Id: filesys.h,v 1.9 2012/11/17 17:16:18 gray Exp $
 
-   Copyright 1993, 1997, 1998, 2002, 2004, 2005, 2007, 2009 Free Software
+   Copyright 1993, 1997, 1998, 2002, 2004, 2005, 2007, 2009, 2012 Free Software
    Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -52,10 +52,10 @@ long convert_eols (char *text, long textlen);
    that file in it, and returning the size of that buffer in FILESIZE.
    FINFO is a stat struct which has already been filled in by the caller.
    If the file cannot be read, return a NULL pointer. */
-extern char *filesys_read_info_file (char *pathname, long int *filesize,
+extern char *filesys_read_info_file (char *pathname, size_t *filesize,
     struct stat *finfo, int *is_compressed);
 
-extern char *filesys_read_compressed (char *pathname, long int *filesize);
+extern char *filesys_read_compressed (char *pathname, size_t *filesize);
 
 /* Return the command string that would be used to decompress FILENAME. */
 extern char *filesys_decompressor_for_file (char *filename);

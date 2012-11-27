@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.19 2012/07/14 22:41:02 karl Exp $
+   $Id: info-utils.c,v 1.20 2012/11/17 17:16:18 gray Exp $
 
    Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012
    Free Software Foundation, Inc.
@@ -787,7 +787,7 @@ text_buffer_vprintf (struct text_buffer *buf, const char *format, va_list ap)
   if (!buf->base)
     {
       if (buf->size == 0)
-	buf->size = 512; /* Initial allocation */
+	buf->size = MIN_TEXT_BUF_ALLOC; /* Initial allocation */
       
       buf->base = xmalloc (buf->size);
     }
@@ -816,14 +816,22 @@ text_buffer_vprintf (struct text_buffer *buf, const char *format, va_list ap)
   return n;
 }
 
-size_t
-text_buffer_add_string (struct text_buffer *buf, const char *str, size_t len)
+void
+text_buffer_alloc (struct text_buffer *buf, size_t len)
 {
   if (buf->off + len > buf->size)
     {
       buf->size = buf->off + len;
+      if (buf->size < MIN_TEXT_BUF_ALLOC)
+	buf->size = MIN_TEXT_BUF_ALLOC;
       buf->base = xrealloc (buf->base, buf->size);
     }
+}
+
+size_t
+text_buffer_add_string (struct text_buffer *buf, const char *str, size_t len)
+{
+  text_buffer_alloc (buf, len);
   memcpy (buf->base + buf->off, str, len);
   buf->off += len;
   return len;
@@ -835,12 +843,8 @@ text_buffer_fill (struct text_buffer *buf, int c, size_t len)
   char *p;
   int i;
   
-  if (buf->off + len > buf->size)
-    {
-      buf->size = buf->off + len;
-      buf->base = xrealloc (buf->base, buf->size);
-    }
-
+  text_buffer_alloc (buf, len);
+  
   for (i = 0, p = buf->base + buf->off; i < len; i++)
     *p++ = c;
   buf->off += len;

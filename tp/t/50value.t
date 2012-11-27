@@ -17,6 +17,11 @@ my @test_cases = (
 
 @value{unknown}
 '],
+['spaces_before_value',
+'@set var val
+
+@value  {var}
+'],
 ['value_zero',
 '@set zero 0
 Value

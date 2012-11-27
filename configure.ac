@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.121 2012/11/16 01:26:27 pertusus Exp $
+# $Id: configure.ac,v 1.125 2012/11/26 19:27:08 karl Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -12,7 +12,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [4.13.90], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [4.13.91], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -57,8 +57,14 @@ gl_EARLY
 # Rest of Gnulib.
 gl_INIT
 
-# Since we make a helper library.
-AC_PROG_RANLIB
+# Regex from Gnulib if needed.
+gl_REGEX
+if test $ac_use_included_regex = yes; then
+  AC_LIBOBJ([regex])
+  gl_PREREQ_REGEX
+fi 
+
+# help2man to generate man pages.
 AM_MISSING_PROG(HELP2MAN, help2man)
 
 AC_PROG_INSTALL
@@ -244,7 +250,7 @@ AM_CONDITIONAL(INSTALL_WARNINGS,
 USE_EXTERNAL_EASTASIANWIDTH=no
 AC_ARG_WITH([external-Unicode-EastAsianWidth],
    AC_HELP_STRING([--with-external-Unicode-EastAsianWidth],
-      [use external Unicode-EastAsianWidth if found (default: no)]),
+      [use external Unicode-EastAsianWidth (default: no)]),
    [if test $withval = 'yes'; then
       USE_EXTERNAL_EASTASIANWIDTH=yes
    fi]
@@ -255,7 +261,7 @@ AC_SUBST([USE_EXTERNAL_EASTASIANWIDTH])
 USE_EXTERNAL_UNIDECODE=no
 AC_ARG_WITH([external-Text-Unidecode],
     AC_HELP_STRING([--with-external-Text-Unidecode],
-           [use external Text::Unidecode if found (default: no)]),
+           [use external Text::Unidecode (default: no)]),
    [if test $withval = 'yes'; then
       USE_EXTERNAL_UNIDECODE=yes
    fi]
@@ -266,14 +272,14 @@ AC_SUBST([USE_EXTERNAL_UNIDECODE])
 
 # i18n support.  To update to a new version of gettext, run:
 #   gettextize -f -c
-# See http://www.gnu.org/s/hello/manual/gnulib/gettextize-and-autopoint.html.
+# See http://gnu.org/s/gnulib/manual/html_node/gettextize-and-autopoint.html.
 AM_GNU_GETTEXT_VERSION([0.18.1])
 AM_GNU_GETTEXT([external])
 
 USE_EXTERNAL_LIBINTL=no
 AC_ARG_WITH([external-libintl-perl],
    AC_HELP_STRING([--with-external-libintl-perl],
-      [use external libintl-perl if found (default: no)]),
+      [use external libintl-perl (default: no)]),
    [if test $withval = 'yes'; then
       USE_EXTERNAL_LIBINTL=yes
    fi]
@@ -313,7 +319,53 @@ AC_MSG_CHECKING([parser tests requirements])
 AC_MSG_RESULT([$tp_tests])
 AM_CONDITIONAL([TP_TESTS], [test "z$tp_tests" = 'zyes'])
 
-dnl The bulk config files.
+build_perl_api_texi='no'
+AC_ARG_ENABLE([perl-api-texi-build],
+    AC_HELP_STRING([--enable-perl-api-texi-build],
+        [build the perl api texinfo files (default: detected)]),
+    [if test $enableval = 'no'; then
+       build_perl_api_texi='no'
+     else
+       build_perl_api_texi='yes'
+     fi],
+    [
+     if $PERL -e "use 5.006; use Encode; use Pod::Simple::PullParser;" > /dev/null 2>&1;
+     then
+       build_perl_api_texi='yes'
+     else  
+       build_perl_api_texi='no'
+     fi
+    ])
+
+AC_MSG_CHECKING([Perl Texinfo API texinfo documentation build requirements])
+AC_MSG_RESULT([$build_perl_api_texi])
+AM_CONDITIONAL([BUILD_PERL_API_TEXI], [test "z$build_perl_api_texi" = 'zyes'])
+
+pod_simple_texinfo_tests='no'
+AC_ARG_ENABLE([pod-simple-texinfo-tests],
+    AC_HELP_STRING([--enable-pod-simple-texinfo-tests],
+        [run the parser and converters testsuite (default: detected)]),
+    [if test $enableval = 'no'; then
+       pod_simple_texinfo_tests='no'
+     else
+       pod_simple_texinfo_tests='yes'
+     fi],
+    [
+     if test "z$PROVE" = 'z' ; then
+       pod_simple_texinfo_tests='no'
+     elif $PERL -e "use 5.006; use Encode; use Test::More; use Pod::Simple::PullParser;" > /dev/null 2>&1;
+     then
+       pod_simple_texinfo_tests='yes'
+     else
+       pod_simple_texinfo_tests='no'
+     fi
+    ])
+
+AC_MSG_CHECKING([Pod::Simple::Texinfo tests requirements])
+AC_MSG_RESULT([$pod_simple_texinfo_tests])
+AM_CONDITIONAL([POD_SIMPLE_TEXINFO_TESTS], [test "z$pod_simple_texinfo_tests" = 'zyes'])
+
+# The config files to generate.
 AC_CONFIG_FILES([\
   Makefile
   doc/Makefile

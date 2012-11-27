@@ -1,7 +1,7 @@
 /* signals.c -- install and maintain signal handlers.
-   $Id: signals.c,v 1.10 2007/07/01 21:20:31 karl Exp $
+   $Id: signals.c,v 1.12 2012/11/16 23:34:51 karl Exp $
 
-   Copyright (C) 1993, 1994, 1995, 1998, 2002, 2003, 2004, 2007
+   Copyright (C) 1993, 1994, 1995, 1998, 2002, 2003, 2004, 2007, 2012
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -151,7 +151,7 @@ initialize_info_signal_handler (void)
 #endif
 }
 
-static void
+void
 redisplay_after_signal (void)
 {
   terminal_clear_screen ();
@@ -162,7 +162,7 @@ redisplay_after_signal (void)
   fflush (stdout);
 }
 
-static void
+void
 reset_info_window_sizes (void)
 {
   terminal_goto_xy (0, 0);

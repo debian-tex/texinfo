@@ -11,23 +11,20 @@
 
 tempfile=`mktemp ii50-XXXXXXXX`
 outputdirfile=$tempfile.gz
-cp ${testdir}/ii-0050-input-dir-file.gz $outputdirfile
-if [ "x$?" != "x0" ]; then
-  exit 1
-fi
-
+cp ${testdir}/ii-0050-input-dir-file.gz $outputdirfile || exit $?
 
 # when copying in distcheck, source will be readonly.
 chmod u+rw $outputdirfile || exit $?
 
-${install_info} --remove ${testdir}/ii-0050-input-info-file $outputdirfile
-retval=$?
-if [ "x$retval" != "x0" ]; then
-  exit $retval
-fi
+${install_info} --remove ${testdir}/ii-0050-input-info-file $outputdirfile \
+|| exit $?
 
-zdiff ${testdir}/ii-0050-expected-dir-file.gz $outputdirfile
-retval=$?
+if findprog zdiff; then
+  zdiff ${testdir}/ii-0050-expected-dir-file.gz $outputdirfile
+  retval=$?
+else
+  retval=77
+fi
 
 rm -f $tempfile $outputdirfile
 exit $retval

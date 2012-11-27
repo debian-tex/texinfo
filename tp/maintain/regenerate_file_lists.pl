@@ -1,5 +1,5 @@
-#! /usr/bin/perl -w
-# $Id: regenerate_file_lists.pl,v 1.11 2012/11/14 00:20:39 karl Exp $
+#! /usr/bin/env perl
+# $Id: regenerate_file_lists.pl,v 1.12 2012/11/21 22:48:48 pertusus Exp $
 # Copyright 2011, 2012 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -13,6 +13,12 @@
 # Originally written by Patrice Dumas.
 
 use strict;
+
+# emulates -w
+BEGIN
+{
+  $^W = 1;
+}
 use File::Find;
 use File::Basename;
 use File::Spec;

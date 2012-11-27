@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.5 2012/11/11 00:44:36 karl Exp $
+# $Id: Makefile.am,v 1.8 2012/11/21 22:48:48 pertusus Exp $
 # Makefile.am for texinfo/Pod-Simple_Texinfo.
 # Copyright 2012 Free Software Foundation, Inc.
 #
@@ -12,12 +12,14 @@
 
 nodist_bin_SCRIPTS = pod2texi
 
+test_files = prove.sh
+
 EXTRA_DIST = Changes \
  Makefile.PL \
  MANIFEST \
  t/Pod-Simple-Texinfo.t \
  pod2texi.pl \
- $(TESTS)
+ $(test_files)
 
 modulesdir = $(pkgdatadir)/Pod-Simple-Texinfo/Pod/Simple/
 
@@ -26,9 +28,16 @@ dist_modules_DATA = \
 
 pod2texi: pod2texi.pl Makefile
 	sed -e 's,[@]datadir[@],$(datadir),g' \
-	-e 's,[@]PACKAGE[@],$(PACKAGE),g' $(srcdir)/pod2texi.pl >$@
+	-e 's,[@]PACKAGE[@],$(PACKAGE),g' \
+	-e 's,[@]USE_EXTERNAL_LIBINTL[@],$(USE_EXTERNAL_LIBINTL),g' \
+	-e 's,[@]USE_EXTERNAL_EASTASIANWIDTH[@],$(USE_EXTERNAL_EASTASIANWIDTH),g' \
+	-e 's,[@]USE_EXTERNAL_UNIDECODE[@],$(USE_EXTERNAL_UNIDECODE),g' \
+	-e '1 s,/usr/bin/env perl,$(PERL),g' \
+	   $(srcdir)/pod2texi.pl >$@
 	chmod a+x $@
 
-TESTS = prove.sh
+if POD_SIMPLE_TEXINFO_TESTS
+TESTS = $(test_files)
+endif
 
 DISTCLEANFILES = pod2texi

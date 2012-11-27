@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.217 2012/11/08 23:08:43 karl Exp $
+$Id: NEWS,v 1.220 2012/11/20 19:34:13 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -93,6 +93,8 @@ one of the relevant sections:
     value is 1.  It can be changed by setting the variable min-search-length,
     either by `M-x set-variable', or using infokey.
   . xz compression supported.
+  . Fix bug #37686: use the text attribute to represent "image" tags on
+    output.
 
 * install-info:
   . xz compression supported.
@@ -109,6 +111,7 @@ one of the relevant sections:
   . language support for no removed/renamed to nb, per Norwegian translators.
   . new translations: id it.
   . documentation license now GFDLv1.3 or later.
+  . autoconf 2.69, automake 1.12.4, gettext 0.18.1.1.
 
 
 4.13 (18 September 2008)

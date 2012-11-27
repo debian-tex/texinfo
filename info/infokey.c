@@ -1,9 +1,8 @@
 /* infokey.c -- compile ~/.infokey to ~/.info.
-   $Id: infokey.c,v 1.23 2012/07/06 23:55:32 karl Exp $
+   $Id: infokey.c,v 1.25 2012/11/16 23:34:51 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009,
-   2010, 2011, 2012
-   Free Software Foundation, Inc.
+   2010, 2011, 2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -177,7 +176,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     char *homedir;
 
     homedir = getenv ("HOME");
-#ifdef __MSDOS__
+#if defined(__MSDOS__) || defined(__MINGW32__)
     if (!homedir)
       homedir = ".";
 #endif

@@ -589,6 +589,15 @@ continue on other line}
 
 cut by blank line}
 '],
+['spaces_after_braced_command',
+'@code {b}
+
+@samp
+{v}
+'],
+['spaces_no_brace_after_braced_command',
+'@code b
+'],
 ['flushright_not_closed',
 '@flushright
 

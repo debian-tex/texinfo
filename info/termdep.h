@@ -1,7 +1,7 @@
 /* termdep.h -- system things that terminal.c depends on.
-   $Id: termdep.h,v 1.5 2007/07/01 21:20:31 karl Exp $
+   $Id: termdep.h,v 1.7 2012/11/16 23:34:51 karl Exp $
 
-   Copyright (C) 1993, 1996, 1997, 1998, 2001, 2002, 2007
+   Copyright (C) 1993, 1996, 1997, 1998, 2001, 2002, 2007, 2012
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -43,7 +43,9 @@
 #      endif /* M_XENIX */
 #    endif /* HAVE_SYS_PTEM_H */
 #  else /* !HAVE_TERMIO_H */
+#    ifndef __MINGW32__
 #    include <sgtty.h>
+#    endif
 #  endif /* !HAVE_TERMIO_H */
 #endif /* !HAVE_TERMIOS_H */
 
@@ -54,5 +56,9 @@
 #ifdef HAVE_SYS_TTOLD_H
 #  include <sys/ttold.h>
 #endif /* HAVE_SYS_TTOLD_H */
+
+#ifdef _WIN32
+extern unsigned sleep (unsigned);
+#endif
 
 #endif /* not INFO_TERMDEP_H */

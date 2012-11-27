@@ -128,6 +128,12 @@ If set, and @code{@@setfilename} exists, everything before @code{@@setfilename}
 is put in a special container type, @@@code{preamble_before_setfilename}.
 This option is set in the default case.
 
+@item IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME
+@anchor{Texinfo::Parser IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME}
+
+If set, spaces after an @@-commande name that take braces are ignored.
+Default on.
+
 @item MACRO_BODY_IGNORES_LEADING_SPACE
 @anchor{Texinfo::Parser MACRO_BODY_IGNORES_LEADING_SPACE}
 

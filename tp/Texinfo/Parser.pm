@@ -109,6 +109,7 @@ our %default_customization_values = (
   'INLINE_INSERTCOPYING' => 0,
   'IGNORE_BEFORE_SETFILENAME' => 1,
   'MACRO_BODY_IGNORES_LEADING_SPACE' => 0,
+  'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME' => 1,
   'INPUT_PERL_ENCODING' => undef, # input perl encoding name, set from 
                               # @documentencoding in the default case
   'INPUT_ENCODING_NAME' => undef, # encoding name normalized as preferred
@@ -3895,6 +3896,11 @@ sub _parse_texi($;$)
           }
           next;
         } else {
+          # ignore space after a braced @-command like TeX does
+          if ($self->{'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME'}
+              and $line =~ s/^\s+//) {
+            next;
+          }
           $self->line_error (sprintf($self->__("\@%s expected braces"), 
                            $current->{'cmdname'}), $line_nr);
           $current = $current->{'parent'};
@@ -4019,7 +4025,10 @@ sub _parse_texi($;$)
         }
         print STDERR "COMMAND $command\n" if ($self->{'DEBUG'});
 
+
         if ($command eq 'value') {
+          $line =~ s/^\s*// 
+             if ($self->{'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME'});
           if ($line =~ s/^{([\w\-]+)}//) {
             my $value = $1;
             if (exists($self->{'values'}->{$value})) {
@@ -5486,6 +5495,11 @@ considered to be a simple @-command and kept as is in the tree.
 If set, and C<@setfilename> exists, everything before C<@setfilename>
 is put in a special container type, @C<preamble_before_setfilename>.
 This option is set in the default case.
+
+=item IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME
+
+If set, spaces after an @-commande name that take braces are ignored.
+Default on.
 
 =item MACRO_BODY_IGNORES_LEADING_SPACE
 

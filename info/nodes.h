@@ -1,7 +1,7 @@
 /* nodes.h -- How we represent nodes internally.
-   $Id: nodes.h,v 1.9 2012/04/12 10:38:29 gray Exp $
+   $Id: nodes.h,v 1.10 2012/11/17 17:16:19 gray Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2011
+   Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2011, 2012
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -104,7 +104,7 @@ typedef struct {
   char *fullpath;               /* The full pathname of this info file. */
   struct stat finfo;            /* Information about this file. */
   char *contents;               /* The contents of this particular file. */
-  long filesize;                /* The number of bytes this file expands to. */
+  size_t filesize;              /* The number of bytes this file expands to. */
   char **subfiles;              /* If non-null, the list of subfiles. */
   TAG **tags;                   /* If non-null, the indirect tags table. */
   int tags_slots;               /* Number of slots allocated for TAGS. */

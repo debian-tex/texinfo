@@ -55,13 +55,6 @@ install-stamp: build-stamp
 	find $(tmpdir) -type f -name dir | xargs rm -f
 	# epsf.tex is in texlive
 	rm -rf $(tmpdir)/usr/share/texmf/tex/generic
-	# remove perl libraries that we depend on in debian/control
-	# they should not be installed due to above --with-external-*
-	# but they still are, already send report to bug-texinfo
-	# remove without -f to make sure we fix the rules file
-	# when it is fixed upstream
-	rm -r $(tmpdir)/usr/share/texinfo/lib/Text-Unidecode
-	rm -r $(tmpdir)/usr/share/texinfo/lib/libintl-perl
 	# install all the files
 	dh_install --list-missing --sourcedir=debian/tmp -X share/info
 	dh_link

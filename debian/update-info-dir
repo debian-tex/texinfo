@@ -14,6 +14,7 @@ set -e
 # the dir file. Unset LANGUAGE and reload /etc/environment to get
 # the system wide settings. See bug #536476
 unset LANGUAGE
+unset LANG
 if [ -r /etc/environment ] ; then
   . /etc/environment
 fi

@@ -1,12 +1,20 @@
 texinfo (4.13.91.dfsg.1-1) experimental; urgency=low
 
-  * new upstream release
+  * new upstream releases
     - fixes truncation at TAB chars (LP #394808)
+    - regexp isearch works (Closes: #522093)
+    - fixing null strings in install-info --help (Closes: #595243)
+    - allow makeinfo splitting at chapters (Closes: #228606)
+    - regexp searching in info (Closes: #31464) (yeah! 5 digits!)
+    - html output contains doctypes (Closes: #214729)
+    - proper positioning of book marks in pdfs (Closes: #37515)
+    - normal scrolling modes (Closes: #78504)
+  * re-enable hardening (Closes: #656659)
   * clean up patches
   * convert to 3.0/quilt format
   * bump compat level to 7
 
- -- Norbert Preining <preining@debian.org>  Tue, 27 Nov 2012 10:48:33 +0900
+ -- Norbert Preining <preining@debian.org>  Tue, 27 Nov 2012 13:07:56 +0900
 
 texinfo (4.13a.dfsg.1-10) unstable; urgency=low
 

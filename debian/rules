@@ -3,18 +3,9 @@
 #export DH_VERBOSE=1
 export DH_OPTIONS
 
-SAVEDGMO=po/nl.gmo po/ro.gmo po/tr.gmo po/de.gmo
-
-CFLAGS := -g -Wall
-ifneq "$(findstring noopt,$(DEB_BUILD_OPTIONS))" ""
-CFLAGS += -O0
-else
-CFLAGS += -O2
-endif
-# hardening: but makes info unusable
-#DEB_CFLAGS_MAINT_APPEND=-Wall
+DEB_CFLAGS_MAINT_APPEND=-Wall
 # needed for correct building of new texinfo
-#DEB_CFLAGS_MAINT_STRIP=-Werror=format-security
+DEB_CFLAGS_MAINT_STRIP=-Werror=format-security
 
 texinfo := $(CURDIR)/debian/texinfo
 ii := $(CURDIR)/debian/install-info
@@ -26,9 +17,7 @@ build-indep: build-stamp
 
 build-stamp:
 	dh_testdir
-	# hardening call, but makes info unusable
-	# ./configure --prefix=/usr $(shell dpkg-buildflags --export=configure) \
-	CFLAGS="$(CFLAGS)" ./configure \
+	./configure $(shell dpkg-buildflags --export=configure) \
 	  --with-external-Text-Unidecode=yes \
 	  --with-external-libintl-perl=yes \
 	  --prefix=/usr \

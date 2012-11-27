@@ -5,7 +5,7 @@ dont build the info documentation, it has been removed
 
 --- texinfo.orig/doc/Makefile.in
 +++ texinfo/doc/Makefile.in
-@@ -162,14 +162,16 @@
+@@ -170,14 +170,16 @@
  CONFIG_CLEAN_VPATH_FILES =
  SOURCES =
  DIST_SOURCES =
@@ -24,7 +24,7 @@ dont build the info documentation, it has been removed
  TEXI2DVI = texi2dvi
  TEXI2PDF = $(TEXI2DVI) --pdf --batch
  MAKEINFOHTML = $(MAKEINFO) --html
-@@ -911,8 +913,10 @@
+@@ -941,8 +943,10 @@
  SUBDIRS = tp_api
  
  # Put texinfo.txi first because that's the most important.

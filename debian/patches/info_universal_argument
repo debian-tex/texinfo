@@ -6,23 +6,23 @@ fix some .po files that have wrong references
 
 --- texinfo.orig/po/ro.po
 +++ texinfo/po/ro.po
-@@ -1733,7 +1733,7 @@
+@@ -1817,7 +1817,7 @@
  
- #: info/session.c:5210
+ #: info/session.c:5216
  msgid "Internally used by \\[universal-argument]"
 -msgstr "Folosit intern de \\[argument-universal]"
 +msgstr "Folosit intern de \\[universal-argument]"
  
- #: info/tilde.c:336
+ #: info/tilde.c:361
  #, c-format
 --- texinfo.orig/po/tr.po
 +++ texinfo/po/tr.po
-@@ -1736,7 +1736,7 @@
+@@ -1825,7 +1825,7 @@
  
- #: info/session.c:5210
+ #: info/session.c:5216
  msgid "Internally used by \\[universal-argument]"
 -msgstr "Dahili olarak \\[universal argument] tarafýndan kullanýlýyor"
 +msgstr "Dahili olarak \\[universal-argument] tarafýndan kullanýlýyor"
  
- #: info/tilde.c:336
+ #: info/tilde.c:361
  #, c-format

@@ -25,16 +25,21 @@ build-stamp:
 	$(MAKE)
 	touch $@
 
+check-stamp: build-stamp
+	$(MAKE) check ALL_TESTS=yes
+	touch $@
+
 clean:
 	dh_testdir
 	dh_testroot
 	[ ! -f Makefile ] || $(MAKE) distclean
-	dh_clean install-stamp build-stamp intl/libintl.h config.log
+	dh_clean install-stamp build-stamp check-stamp \
+		intl/libintl.h config.log
 
 install: install-stamp
 
 install-stamp: DH_OPTIONS=
-install-stamp: build-stamp
+install-stamp: build-stamp check-stamp
 	dh_testdir
 	dh_testroot
 	dh_prep

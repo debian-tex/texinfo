@@ -47,11 +47,16 @@ install-stamp: build-stamp check-stamp
 	$(MAKE) install install-tex prefix=$(tmpdir)/usr \
                                     TEXMF=$(tmpdir)/usr/share/texmf
 	find $(tmpdir) -type f -name dir | xargs rm -f
+	#
 	# epsf.tex is in texlive
 	rm -rf $(tmpdir)/usr/share/texmf/tex/generic
 	# install all the files
 	dh_install --list-missing --sourcedir=debian/tmp -X share/info
 	dh_link
+	#
+	# install additional files that are not installed by default
+	install -m 0755 util/txixml2texi $(texinfo)/usr/bin/txixml2texi
+	#
 	# work on debian install-info
 	mv $(ii)/usr/bin/install-info $(ii)/usr/bin/ginstall-info
 	sed -e "s/install-info/g&/g" \

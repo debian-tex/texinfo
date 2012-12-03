@@ -1,3 +1,12 @@
+texinfo (4.13.9NNN.dfsg.1-1) UNRELEASED; urgency=low
+
+  * UNRELEASED NEEDS NEW UPSTREAM RELEASE
+  * new upstream test release
+    - fix search prompt location (Closes: #652204)
+    - fix incomplete redraw in some cases (Closes: #596856)
+
+ -- Norbert Preining <preining@debian.org>  Mon, 03 Dec 2012 09:09:59 +0900
+
 texinfo (4.13.91.dfsg.1-2) experimental; urgency=low
 
   * run all checks during build time

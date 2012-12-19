@@ -1,0 +1,16 @@
+Fix for Debian bug #652204 and texinfo bug #37823
+displaced cursor on search
+---
+ info/window.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- texinfo.orig/info/window.c
++++ texinfo/info/window.c
+@@ -855,6 +855,7 @@
+   calc_closure_expand (&closure);
+   window->line_starts[window->line_count] = NULL;
+   window->log_line_no[window->line_count] = 0;
++  window_line_map_init (window);
+ }
+ 
+ /* Given WINDOW, recalculate the line starts for the node it displays. */

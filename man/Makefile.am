@@ -1,7 +1,7 @@
-# $Id: Makefile.am,v 1.4 2012/11/23 00:19:00 pertusus Exp $
+# $Id: Makefile.am,v 1.5 2012/12/14 19:36:53 karl Exp $
 # Makefile.am for texinfo/man.
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -13,7 +13,13 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 # These are generated using help2man.
-man_MANS = info.1 infokey.1 install-info.1 makeinfo.1 texindex.1 texi2dvi.1
+man_MANS = install-info.1 makeinfo.1 texindex.1 texi2dvi.1
+
+# These require the build in info/, thus can't do if we failed to find a
+# terminal library.
+if HAVE_TERMLIBS
+man_MANS += info.1 infokey.1
+endif
 
 # These are hand-written.
 man_MANS += info.5 texinfo.5

@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2012-11-11.14; # UTC
+htmlxrefversion=2012-12-11.22; # UTC
 
 # Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
 # 
@@ -458,6 +458,8 @@ mpc		node	http://www.multiprecision.org/index.php?prog=mpc&page=html
 mpfr		mono	http://www.mpfr.org/mpfr-current/mpfr.html
 
 myserver	node	http://www.myserverproject.net/documentation/
+
+nano		mono	http://www.nano-editor.org/dist/latest/nano.html
 
 nettle		chapter	http://www.lysator.liu.se/~nisse/nettle/nettle.html
 

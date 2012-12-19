@@ -49,6 +49,16 @@ $result_trees{'no_brace_space_end_line'} = {
     {
       'contents' => [
         {
+          'cmdname' => 'TeX',
+          'contents' => [],
+          'parent' => {}
+        },
+        {
+          'parent' => {},
+          'text' => 'text
+'
+        },
+        {
           'cmdname' => 'code',
           'contents' => [],
           'parent' => {}
@@ -72,23 +82,36 @@ $result_trees{'no_brace_space_end_line'}{'contents'}[0]{'parent'} = $result_tree
 $result_trees{'no_brace_space_end_line'}{'contents'}[1]{'parent'} = $result_trees{'no_brace_space_end_line'};
 $result_trees{'no_brace_space_end_line'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'no_brace_space_end_line'}{'contents'}[2];
 $result_trees{'no_brace_space_end_line'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'no_brace_space_end_line'}{'contents'}[2];
+$result_trees{'no_brace_space_end_line'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'no_brace_space_end_line'}{'contents'}[2];
+$result_trees{'no_brace_space_end_line'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'no_brace_space_end_line'}{'contents'}[2];
 $result_trees{'no_brace_space_end_line'}{'contents'}[2]{'parent'} = $result_trees{'no_brace_space_end_line'};
 
 $result_texis{'no_brace_space_end_line'} = '@code{c}.
 
+@TeXtext
 @codeArg.';
 
 
 $result_texts{'no_brace_space_end_line'} = 'c.
 
+TeXtext
 Arg.';
 
 $result_errors{'no_brace_space_end_line'} = [
   {
-    'error_line' => ':4: @code expected braces
+    'error_line' => ':4: @TeX expected braces
 ',
     'file_name' => '',
     'line_nr' => 4,
+    'macro' => '',
+    'text' => '@TeX expected braces',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':6: @code expected braces
+',
+    'file_name' => '',
+    'line_nr' => 6,
     'macro' => '',
     'text' => '@code expected braces',
     'type' => 'error'

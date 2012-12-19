@@ -294,12 +294,12 @@ $result_menus{'top_node_part_top'} = {
 
 $result_errors{'top_node_part_top'} = [
   {
-    'error_line' => ':3: warning: @node precedes @part, but part are not associated with nodes
+    'error_line' => ':3: warning: @node precedes @part, but parts may not be associated with nodes
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@node precedes @part, but part are not associated with nodes',
+    'text' => '@node precedes @part, but parts may not be associated with nodes',
     'type' => 'warning'
   },
   {

@@ -58,7 +58,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module gettimeofday:
   # Code from module havelib:
   # Code from module include_next:
-  # Code from module inline:
   # Code from module intprops:
   # Code from module iswblank:
   # Code from module langinfo:
@@ -203,7 +202,6 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_GETTIMEOFDAY
   fi
   gl_SYS_TIME_MODULE_INDICATOR([gettimeofday])
-  gl_INLINE
   gl_FUNC_ISWBLANK
   if test $HAVE_ISWCNTRL = 0 || test $REPLACE_ISWCNTRL = 1; then
     :
@@ -635,6 +633,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/tempname.c
   lib/tempname.h
   lib/time.in.h
+  lib/unistd.c
   lib/unistd.in.h
   lib/unitypes.in.h
   lib/uniwidth.in.h
@@ -643,6 +642,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/verify.h
   lib/wchar.in.h
   lib/wcrtomb.c
+  lib/wctype-h.c
   lib/wctype.in.h
   lib/wcwidth.c
   lib/xalloc-die.c
@@ -670,7 +670,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/gnulib-common.m4
   m4/iconv.m4
   m4/include_next.m4
-  m4/inline.m4
   m4/intdiv0.m4
   m4/intl.m4
   m4/intldir.m4

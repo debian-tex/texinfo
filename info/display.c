@@ -1,5 +1,5 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c,v 1.18 2012/11/17 17:16:18 gray Exp $
+   $Id: display.c,v 1.20 2012/12/01 15:15:44 gray Exp $
 
    Copyright (C) 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012
    Free Software Foundation, Inc.
@@ -113,14 +113,14 @@ find_diff (const char *a, size_t alen, const char *b, size_t blen, int *ppos)
 }
 
 int
-display_node_text(void *closure, size_t line_index,
+display_node_text(void *closure, size_t pline_index, size_t lline_index,
 		  const char *src_line,
 		  char *printed_line, size_t pl_index, size_t pl_count)
 {
   struct display_node_closure *dn = closure;
   WINDOW *win = dn->win;
   DISPLAY_LINE **display = dn->display;
-  DISPLAY_LINE *entry = display[win->first_row + line_index];
+  DISPLAY_LINE *entry = display[win->first_row + pline_index];
 
   /* We have the exact line as it should appear on the screen.
      Check to see if this line matches the one already appearing
@@ -139,7 +139,7 @@ display_node_text(void *closure, size_t line_index,
 	  /* Need to erase the line if it has escape sequences.  */
 	  || (raw_escapes_p && mbschr (entry->text, '\033') != 0))
 	{
-	  terminal_goto_xy (0, win->first_row + line_index);
+	  terminal_goto_xy (0, win->first_row + pline_index);
 	  terminal_clear_to_eol ();
 	  entry->inverse = 0;
 	  entry->text[0] = '\0';
@@ -154,7 +154,7 @@ display_node_text(void *closure, size_t line_index,
       if (i != pl_count || pl_count != entry->textlen)
 	{
 	  /* Move to the proper point on the terminal. */
-	  terminal_goto_xy (i, win->first_row + line_index);
+	  terminal_goto_xy (i, win->first_row + pline_index);
 	  /* If there is any text to print, print it. */
 	  if (i != pl_count)
 	    terminal_put_text (printed_line + i);
@@ -196,7 +196,7 @@ display_node_text(void *closure, size_t line_index,
       return 1;
     }
 
-  if (line_index + 1 == win->height)
+  if (pline_index + 1 == win->height)
     return 1;
 
   return 0;
@@ -324,7 +324,7 @@ display_scroll_display (int start, int end, int amount)
       last = end + amount;
 
       /* Shift the lines to scroll right into place. */
-      for (i = 0; i < (end - start); i++)
+      for (i = 1; i <= (end - start); i++)
         {
           temp = the_display[last - i];
           the_display[last - i] = the_display[end - i];
@@ -340,8 +340,7 @@ display_scroll_display (int start, int end, int amount)
           the_display[i]->inverse = 0;
         }
     }
-
-  if (amount < 0)
+  else
     {
       last = start + amount;
       for (i = 0; i < (end - start); i++)

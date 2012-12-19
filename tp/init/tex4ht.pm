@@ -239,7 +239,7 @@ sub tex4ht_process_command($$) {
   
   return 0 unless ($commands{$command}->{'counter'});
 
-  $self->document_warn(sprintf($self->__("tex4ht output %s missing"),
+  $self->document_warn(sprintf($self->__("tex4ht output file missing: %s"),
                                $commands{$command}->{'basefile'}))
     unless (-f $commands{$command}->{'basefile'});
   my $style = $commands{$command}->{'style'};
@@ -291,7 +291,8 @@ sub tex4ht_process_command($$) {
     }
   }
   if ($got_count != $commands{$command}->{'counter'}) {
-    $self->document_warn (sprintf($self->__("tex4ht output got %d for %d items entered"), 
+    $self->document_warn (sprintf($self->__(
+       "tex4ht processing produced %d items in HTML; expected %d, the number of items found in the document"), 
                                   $got_count, $commands{$command}->{'counter'}));
   }
   close (TEX4HT_HTMLFILE);
@@ -309,7 +310,7 @@ sub tex4ht_do_tex($$$$)
      $commands{$cmdname}->{'output_counter'}++;
      return $commands{$cmdname}->{'results'}->{$command};
   } else {
-    $self->document_warn (sprintf($self->__("tex4ht output no text for \@%s %s"),
+    $self->document_warn (sprintf($self->__("tex4ht output has no HTML item for \@%s %s"),
                                   $cmdname, $command));
     return '';
   }

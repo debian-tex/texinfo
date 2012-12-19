@@ -64,6 +64,12 @@ sub __($$)
   return &{$self->{'gettext'}}(@_);
 }
 
+sub __p($$$)
+{
+  my $self = shift;
+  return &{$self->{'pgettext'}}(@_);
+}
+
 sub new($)
 {
   my $self = shift;
@@ -71,6 +77,7 @@ sub new($)
   #print STDERR "REPORT NEW $self $self->{'errors_warnings'}\n";
   $self->{'errors_nrs'} = 0;
   $self->{'gettext'} = sub {return $_[0];} if (!defined($self->{'gettext'}));
+  $self->{'pgettext'} = sub {return $_[1];} if (!defined($self->{'pgettext'}));
   return $self;
 }
 

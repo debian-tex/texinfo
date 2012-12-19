@@ -29,9 +29,9 @@ staging_dir=$diffs_dir/staging
 echo "$basename" > $logfile
 : > $stdout_file
 
-if tmp_dir=`mktemp -d l2h_t2h_XXXXXXXX`; then
-  :
-else
+tmp_dir=`mktemp -d l2h_t2h_XXXXXXXX`
+if test z"$tmp_dir" = 'z' ; then
+  echo "mktemp failed" 1>&2
   exit 1
 fi
 

@@ -647,12 +647,12 @@ $result_menus{'node_part_chapter_after_top'}{'menu_child'}{'menu_up'} = $result_
 
 $result_errors{'node_part_chapter_after_top'} = [
   {
-    'error_line' => ':9: warning: @node precedes @part, but part are not associated with nodes
+    'error_line' => ':9: warning: @node precedes @part, but parts may not be associated with nodes
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => '@node precedes @part, but part are not associated with nodes',
+    'text' => '@node precedes @part, but parts may not be associated with nodes',
     'type' => 'warning'
   }
 ];

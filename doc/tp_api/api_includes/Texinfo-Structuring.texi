@@ -39,10 +39,10 @@ Texinfo::Structuring - informations and transformations in Texinfo::Parser tree
   elements_directions($parser, $elements);
   elements_file_directions($parser, $elements);
 
-  my ($index_names, $merged_indices, $index_entries) 
+  my ($index_names, $merged_indices) 
      = $parser->indices_information();
   my $merged_index_entries
-     = merge_indices($index_names, $merged_indices, $index_entries);
+     = merge_indices($index_names);
   my $index_entries_sorted;
   if ($sort_by_letter) {
     $index_entries_sorted = sort_indices_by_letter($parser,
@@ -367,16 +367,17 @@ following files.
 
 The API for association of pages/elements to files is not defined yet.
 
-@item $merged_entries = merge_indices($index_names, $merged_indices, $index_entries)
-@anchor{Texinfo::Structuring $merged_entries = merge_indices($index_names@comma{} $merged_indices@comma{} $index_entries)}
+@item $merged_entries = merge_indices($index_names)
+@anchor{Texinfo::Structuring $merged_entries = merge_indices($index_names)}
 
 Using informations returned by @ref{Texinfo::Parser indices_information},
-a structure similar with the one returned by 
-@ref{Texinfo::Parser indices_information}, but with all the entries of 
-merged indices merged with those of the indice merged into.  
+a structure holding all the index entries by index name is returned, 
+with all the entries of merged indices merged with those of the indice 
+merged into.
+
 The @emph{$merged_entries} returned is a hash reference whose
 keys are the index names and values arrays of index entry structures
-described in details in @ref{Texinfo::Parser indices_information}.
+described in details in @ref{Texinfo::Parser index_entries}.
 
 @item $index_entries_sorted = sort_indices_by_letter($parser, $merged_index_entries, $index_names)
 @anchor{Texinfo::Structuring $index_entries_sorted = sort_indices_by_letter($parser@comma{} $merged_index_entries@comma{} $index_names)}

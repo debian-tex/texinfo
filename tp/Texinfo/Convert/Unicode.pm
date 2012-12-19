@@ -19,7 +19,10 @@
 
 package Texinfo::Convert::Unicode;
 
-use 5.006;
+# Seems to be the perl version required for Encode:
+# http://cpansearch.perl.org/src/DANKOGAI/Encode-2.47/Encode/README.e2x
+# http://coding.derkeiler.com/Archive/Perl/comp.lang.perl.misc/2005-12/msg00833.html
+use 5.007_003;
 use strict;
 
 use Encode;

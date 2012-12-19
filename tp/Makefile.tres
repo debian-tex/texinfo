@@ -189,12 +189,14 @@ test_files_generated_list = \
   t/results/converters_tests/char_latin2_latin2_in_refs/res_info/char_latin2_latin2_in_refs.info \
   t/results/converters_tests/complex_nestings.pl \
   t/results/converters_tests/documentencoding_utf8_and_insertions.pl \
+  t/results/converters_tests/email_table_command_as_argument.pl \
   t/results/converters_tests/empty_accent.pl \
   t/results/converters_tests/footnote_no_number.pl \
   t/results/converters_tests/footnote_no_number_separate.pl \
   t/results/converters_tests/image_extension.pl \
   t/results/converters_tests/image_formatting.pl \
   t/results/converters_tests/image_with_spaces.pl \
+  t/results/converters_tests/index_entry_in_preformatted.pl \
   t/results/converters_tests/inline.pl \
   t/results/converters_tests/inline_expand_tex.pl \
   t/results/converters_tests/japanese_shift_jis.pl \
@@ -205,6 +207,7 @@ test_files_generated_list = \
   t/results/converters_tests/line_breaks.pl \
   t/results/converters_tests/no_documentencoding_and_insertions.pl \
   t/results/converters_tests/normal_font_in_monospace.pl \
+  t/results/converters_tests/printindex_merged_indices_code_style.pl \
   t/results/converters_tests/raw_block_commands.pl \
   t/results/converters_tests/raw_block_commands_expand_tex.pl \
   t/results/converters_tests/ref_error_formatting.pl \
@@ -437,6 +440,7 @@ test_files_generated_list = \
   t/results/include/verbatiminclude_and_encoding_latin1.pl \
   t/results/indices/complex_recursive_synindex.pl \
   t/results/indices/def_syn_indices.pl \
+  t/results/indices/default_cp_index_and_one_letter_syncodeindex.pl \
   t/results/indices/double_index_entry.pl \
   t/results/indices/double_syncodeindex.pl \
   t/results/indices/empty_cindex_entry.pl \

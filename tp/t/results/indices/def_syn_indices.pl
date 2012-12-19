@@ -2009,48 +2009,121 @@ $result_errors{'def_syn_indices'} = [
 $result_indices{'def_syn_indices'} = {
   'index_names' => {
     'abc' => {
-      'abc' => 0
+      'contained_indices' => {
+        'abc' => 1
+      },
+      'in_code' => 0,
+      'merged_in' => 'pg',
+      'name' => 'abc',
+      'prefix' => [
+        'abc'
+      ]
     },
     'codeidx' => {
-      'codeidx' => 1
+      'contained_indices' => {
+        'codeidx' => 1
+      },
+      'in_code' => 1,
+      'name' => 'codeidx',
+      'prefix' => [
+        'codeidx'
+      ]
     },
     'cp' => {
-      'c' => 0,
-      'cp' => 0
+      'contained_indices' => {
+        'cp' => 1
+      },
+      'in_code' => 1,
+      'merged_in' => 'fn',
+      'name' => 'cp',
+      'prefix' => [
+        'c',
+        'cp'
+      ]
     },
     'defg' => {
-      'abc' => 0,
-      'defg' => 0
+      'contained_indices' => {
+        'abc' => 1,
+        'defg' => 1
+      },
+      'in_code' => 0,
+      'merged_in' => 'pg',
+      'name' => 'defg',
+      'prefix' => [
+        'defg'
+      ]
     },
     'fn' => {
-      'c' => 1,
-      'cp' => 1,
-      'f' => 1,
-      'fn' => 1,
-      'truc' => 0
+      'contained_indices' => {
+        'cp' => 1,
+        'fn' => 1,
+        'truc' => 1
+      },
+      'in_code' => 1,
+      'name' => 'fn',
+      'prefix' => [
+        'f',
+        'fn'
+      ]
     },
     'ky' => {
-      'k' => 1,
-      'ky' => 1
+      'contained_indices' => {
+        'ky' => 1
+      },
+      'in_code' => 1,
+      'merged_in' => 'pg',
+      'name' => 'ky',
+      'prefix' => [
+        'k',
+        'ky'
+      ]
     },
     'pg' => {
-      'abc' => 0,
-      'defg' => 0,
-      'k' => 1,
-      'ky' => 1,
-      'p' => 1,
-      'pg' => 1
+      'contained_indices' => {
+        'abc' => 1,
+        'defg' => 1,
+        'ky' => 1,
+        'pg' => 1
+      },
+      'in_code' => 1,
+      'name' => 'pg',
+      'prefix' => [
+        'p',
+        'pg'
+      ]
     },
     'tp' => {
-      't' => 1,
-      'tp' => 1
+      'contained_indices' => {
+        'tp' => 1
+      },
+      'in_code' => 1,
+      'name' => 'tp',
+      'prefix' => [
+        't',
+        'tp'
+      ]
     },
     'truc' => {
-      'truc' => 0
+      'contained_indices' => {
+        'truc' => 1
+      },
+      'in_code' => 0,
+      'merged_in' => 'fn',
+      'name' => 'truc',
+      'prefix' => [
+        'truc'
+      ]
     },
     'vr' => {
-      'v' => 1,
-      'vr' => 1
+      'contained_indices' => {
+        'vr' => 1
+      },
+      'in_code' => 1,
+      'name' => 'vr',
+      'prefix' => [
+        'v',
+        'vr'
+      ]
     }
   },
   'merged_indices' => {

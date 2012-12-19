@@ -910,6 +910,76 @@ $result_errors{'colon_in_index_entry'} = [];
 
 
 $result_indices{'colon_in_index_entry'} = {
+  'index_names' => {
+    'cp' => {
+      'contained_indices' => {
+        'cp' => 1,
+        'vr' => 1
+      },
+      'in_code' => 0,
+      'name' => 'cp',
+      'prefix' => [
+        'c',
+        'cp'
+      ]
+    },
+    'fn' => {
+      'contained_indices' => {
+        'fn' => 1
+      },
+      'in_code' => 1,
+      'name' => 'fn',
+      'prefix' => [
+        'f',
+        'fn'
+      ]
+    },
+    'ky' => {
+      'contained_indices' => {
+        'ky' => 1
+      },
+      'in_code' => 1,
+      'name' => 'ky',
+      'prefix' => [
+        'k',
+        'ky'
+      ]
+    },
+    'pg' => {
+      'contained_indices' => {
+        'pg' => 1
+      },
+      'in_code' => 1,
+      'name' => 'pg',
+      'prefix' => [
+        'p',
+        'pg'
+      ]
+    },
+    'tp' => {
+      'contained_indices' => {
+        'tp' => 1
+      },
+      'in_code' => 1,
+      'name' => 'tp',
+      'prefix' => [
+        't',
+        'tp'
+      ]
+    },
+    'vr' => {
+      'contained_indices' => {
+        'vr' => 1
+      },
+      'in_code' => 0,
+      'merged_in' => 'cp',
+      'name' => 'vr',
+      'prefix' => [
+        'v',
+        'vr'
+      ]
+    }
+  },
   'merged_indices' => {
     'vr' => 'cp'
   }

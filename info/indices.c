@@ -1,5 +1,5 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c,v 1.20 2012/04/12 10:38:28 gray Exp $
+   $Id: indices.c,v 1.21 2012/11/30 23:58:20 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
@@ -502,7 +502,8 @@ DECLARE_INFO_COMMAND (info_next_index_match,
 
   {
     long loc;
-    long line = index_index[i]->line_number - 1;
+    long line = window_log_to_phys_line (window,
+					 index_index[i]->line_number - 1);
 
     if (line >= 0 && line < window->line_count)
       {

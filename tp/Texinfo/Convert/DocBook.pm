@@ -516,52 +516,35 @@ sub _convert($$;$)
       } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
                and $root->{'parent'}->{'type'} 
                and $root->{'parent'}->{'type'} eq 'table_term') {
+        my $converted_tree = {'parent' => $root};
+
+        # begin common with Plaintext.pm
+        my $contents = $root->{'extra'}->{'misc_content'};
         my $table_command = $root->{'parent'}->{'parent'}->{'parent'};
-        my $format_item_command;
-        my $arg_tree;
-        my $content_tree;
-        #my $content_tree = $root->{'args'}->[0];
-        if ($root->{'extra'} and $root->{'extra'}->{'misc_content'}) {
-          $content_tree = $root->{'extra'}->{'misc_content'};
-        } else {
-          $content_tree = [];
-        }
-        if ($table_command->{'extra'} 
+        if ($table_command->{'extra'}
             and $table_command->{'extra'}->{'command_as_argument'}) {
           my $command_as_argument
             = $table_command->{'extra'}->{'command_as_argument'};
-          if ($command_as_argument->{'type'} ne 'definfoenclose_command') {
-            $arg_tree = {'cmdname' => $command_as_argument->{'cmdname'},
-                     'args' => [{'type' => 'brace_command_arg',
-                              'contents' => $content_tree}]
-            };
-          } else {
-            $arg_tree = {'cmdname' => $command_as_argument->{'cmdname'},
-                          'type' => $command_as_argument->{'type'},
-                          'extra' => $command_as_argument->{'extra'},
-                     'args' => [{'type' => 'brace_command_arg',
-                                'contents' => $content_tree}]
-            };
+          my $command = {'cmdname' => $command_as_argument->{'cmdname'},
+                     'line_nr' => $root->{'line_nr'},
+                     'parent' => $converted_tree };
+          if ($command_as_argument->{'type'} eq 'definfoenclose_command') {
+            $command->{'type'} = $command_as_argument->{'type'};
+            $command->{'extra'} = $command_as_argument->{'extra'};
           }
-        } else {
-          $arg_tree = $root->{'args'}->[0];
+          my $arg = {'type' => 'brace_command_arg',
+                     'contents' => $contents,
+                     'parent' => $command,};
+          $command->{'args'} = [$arg];
+          $self->Texinfo::Parser::_register_command_arg($arg, 'brace_command_contents');
+          $contents = [$command];
         }
+        $converted_tree->{'contents'} = $contents;
+        # end common with Plaintext.pm
+
         $result .= "<term>";
         $result .= $self->_index_entry($root);
-        my $in_monospace_not_normal;
-        if ($format_item_command) {
-          if (defined($default_args_code_style{$format_item_command})
-              and $default_args_code_style{$format_item_command}->[0]) {
-            $in_monospace_not_normal = 1;
-          } elsif ($regular_font_style_commands{$format_item_command}) {
-            $in_monospace_not_normal = 0;
-          }
-        }
-        push @{$self->{'document_context'}->[-1]->{'monospace'}}, $in_monospace_not_normal
-          if (defined($in_monospace_not_normal));
-        $result .= $self->_convert($arg_tree);
-        pop @{$self->{'document_context'}->[-1]->{'monospace'}}
-          if (defined($in_monospace_not_normal));
+        $result .= $self->_convert($converted_tree);
         chomp ($result);
         $result .= "\n";
         $result .= "</term>";
@@ -582,6 +565,9 @@ sub _convert($$;$)
       my $end_line;
       if ($root->{'args'}->[0]) {
         $end_line = $self->_end_line_or_comment($root->{'args'}->[0]->{'contents'});
+        if ($self->{'document_context'}->[-1]->{'in_preformatted'}) {
+          chomp($end_line);
+        }
       } else {
         # May that happen?
         $end_line = '';
@@ -1186,6 +1172,7 @@ sub _convert($$;$)
       $result .= "<$type_elements{$root->{'type'}}>";
     } elsif ($root->{'type'} eq 'preformatted') {
       $result .= "<$self->{'document_context'}->[-1]->{'preformatted_stack'}->[-1]>";
+      $self->{'document_context'}->[-1]->{'in_preformatted'} = 1;
     } elsif ($root->{'type'} eq 'def_line') {
       $result .= "<synopsis>";
       $result .= $self->_index_entry($root);
@@ -1251,6 +1238,7 @@ sub _convert($$;$)
       $result .= "</$type_elements{$root->{'type'}}>";
     } elsif ($root->{'type'} eq 'preformatted') {
       $result .= "</$self->{'document_context'}->[-1]->{'preformatted_stack'}->[-1]>";
+      delete $self->{'document_context'}->[-1]->{'in_preformatted'};
     }
   }
   $result = '{'.$result.'}' 

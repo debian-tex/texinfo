@@ -171,31 +171,80 @@ $result_errors{'unknown_then_known_index_entry'} = [
 $result_indices{'unknown_then_known_index_entry'} = {
   'index_names' => {
     'cp' => {
-      'c' => 0,
-      'cp' => 0
+      'contained_indices' => {
+        'cp' => 1
+      },
+      'in_code' => 0,
+      'name' => 'cp',
+      'prefix' => [
+        'c',
+        'cp'
+      ]
     },
     'fn' => {
-      'f' => 1,
-      'fn' => 1
+      'contained_indices' => {
+        'fn' => 1
+      },
+      'in_code' => 1,
+      'name' => 'fn',
+      'prefix' => [
+        'f',
+        'fn'
+      ]
     },
     'ky' => {
-      'k' => 1,
-      'ky' => 1
+      'contained_indices' => {
+        'ky' => 1
+      },
+      'in_code' => 1,
+      'name' => 'ky',
+      'prefix' => [
+        'k',
+        'ky'
+      ]
     },
     'pg' => {
-      'p' => 1,
-      'pg' => 1
+      'contained_indices' => {
+        'pg' => 1
+      },
+      'in_code' => 1,
+      'name' => 'pg',
+      'prefix' => [
+        'p',
+        'pg'
+      ]
     },
     'some' => {
-      'some' => 0
+      'contained_indices' => {
+        'some' => 1
+      },
+      'in_code' => 0,
+      'name' => 'some',
+      'prefix' => [
+        'some'
+      ]
     },
     'tp' => {
-      't' => 1,
-      'tp' => 1
+      'contained_indices' => {
+        'tp' => 1
+      },
+      'in_code' => 1,
+      'name' => 'tp',
+      'prefix' => [
+        't',
+        'tp'
+      ]
     },
     'vr' => {
-      'v' => 1,
-      'vr' => 1
+      'contained_indices' => {
+        'vr' => 1
+      },
+      'in_code' => 1,
+      'name' => 'vr',
+      'prefix' => [
+        'v',
+        'vr'
+      ]
     }
   }
 };

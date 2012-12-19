@@ -15,19 +15,9 @@ if [ z"$command" = 'z' ]; then
   exit 1
 fi
 
-. ./defs || exit 1
-
 if [ "$command" = 'clean' ]; then
   rm -f t/results/*/*.pl.new
   rm -rf t/results/*/*/out_*/
-elif [ "$command" = 'generate' ]; then
-  for file in t/*.t; do
-    $PERL -w $file -g
-  done
-elif [ "$command" = 'output' ]; then
-  for file in t/*.t; do
-    $PERL -w $file -o
-  done
 elif [ "$command" = 'diff' ]; then
   if [ z"$test_name" = 'z' ]; then
     for result in t/results/*/*.pl; do
@@ -46,11 +36,24 @@ elif [ "$command" = 'diff' ]; then
       diff -a -u --exclude=CVS -r $result $out
     done
   fi 
-elif [ "$command" = 'texis' ]; then
-  for file in t/*.t; do
-    $PERL -w $file -c
-  done
 else
-  echo "Unknown command ($cmds_list)"
-  exit 1
+  # commands that require PERL
+  . ./defs || exit 1
+
+  if [ "$command" = 'generate' ]; then
+    for file in t/*.t; do
+      $PERL -w $file -g
+    done
+  elif [ "$command" = 'output' ]; then
+    for file in t/*.t; do
+      $PERL -w $file -o
+    done
+  elif [ "$command" = 'texis' ]; then
+    for file in t/*.t; do
+      $PERL -w $file -c
+    done
+  else
+    echo "Unknown command ($cmds_list)"
+    exit 1
+  fi
 fi

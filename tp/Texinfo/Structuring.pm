@@ -1897,8 +1897,7 @@ sub _do_index_keys($$$)
   }
   foreach my $index_name (keys(%$index_entries)) {
     foreach my $entry (@{$index_entries->{$index_name}}) {
-      $entry->{'in_code'} 
-         = $index_names->{$index_name}->{$entry->{'index_name'}};
+      $entry->{'in_code'} = $index_names->{$entry->{'index_name'}}->{'in_code'};
       $options->{'code'} = $entry->{'in_code'};
       $entry->{'key'} = Texinfo::Convert::Text::convert(
                               {'contents' => $entry->{'content'}},
@@ -1951,22 +1950,21 @@ sub sort_indices_by_letter($$$)
   return $indices_sorted_by_letters;
 }
 
-sub merge_indices($$$)
+sub merge_indices($)
 {
   my $index_names = shift;
-  my $merged_indices = shift;
-  my $index_entries = shift;
 
   my $merged_index_entries;
   foreach my $index_name (keys(%$index_names)) {
+    my $index_info = $index_names->{$index_name};
     #print STDERR "MERGE_INDICES: $index_name\n";
-    next if ($merged_indices->{$index_name});
-    foreach my $index_prefix (keys (%{$index_names->{$index_name}})) {
+    next if ($index_info->{'merged_in'});
+    foreach my $contained_index (keys (%{$index_info->{'contained_indices'}})) {
       #print STDERR "MERGE_INDICES: $index_name, prefix $index_prefix\n";
-      if ($index_entries->{$index_prefix}) {
+      if ($index_names->{$contained_index}->{'index_entries'}) {
         #print STDERR "MERGE_INDICES: final $index_name <- $index_prefix\n";
         push @{$merged_index_entries->{$index_name}},
-          @{$index_entries->{$index_prefix}};
+          @{$index_names->{$contained_index}->{'index_entries'}};
       }
     }
   }
@@ -2089,10 +2087,10 @@ Texinfo::Structuring - informations and transformations in Texinfo::Parser tree
   elements_directions($parser, $elements);
   elements_file_directions($parser, $elements);
 
-  my ($index_names, $merged_indices, $index_entries) 
+  my ($index_names, $merged_indices) 
      = $parser->indices_information();
   my $merged_index_entries
-     = merge_indices($index_names, $merged_indices, $index_entries);
+     = merge_indices($index_names);
   my $index_entries_sorted;
   if ($sort_by_letter) {
     $index_entries_sorted = sort_indices_by_letter($parser,
@@ -2374,15 +2372,16 @@ following files.
 
 The API for association of pages/elements to files is not defined yet.
 
-=item $merged_entries = merge_indices($index_names, $merged_indices, $index_entries)
+=item $merged_entries = merge_indices($index_names)
 
 Using informations returned by L<Texinfo::Parser/indices_information>,
-a structure similar with the one returned by 
-L<Texinfo::Parser/indices_information>, but with all the entries of 
-merged indices merged with those of the indice merged into.  
+a structure holding all the index entries by index name is returned, 
+with all the entries of merged indices merged with those of the indice 
+merged into.
+
 The I<$merged_entries> returned is a hash reference whose
 keys are the index names and values arrays of index entry structures
-described in details in L<Texinfo::Parser/indices_information>.
+described in details in L<Texinfo::Parser/index_entries>.
 
 =item $index_entries_sorted = sort_indices_by_letter($parser, $merged_index_entries, $index_names)
 

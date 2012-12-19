@@ -1,12 +1,11 @@
 texinfo (4.13.92.dfsg.1-1) experimental; urgency=low
 
   * new upstream test release
-    - fix search prompt location (Closes: #652204)
     - fix incomplete redraw in some cases (Closes: #596856)
   * fix Vcs-fields
   * unfuzzify patches
 
- -- Norbert Preining <preining@debian.org>  Wed, 19 Dec 2012 10:03:36 +0900
+ -- Norbert Preining <preining@debian.org>  Wed, 19 Dec 2012 10:41:42 +0900
 
 texinfo (4.13.91.dfsg.1-2) experimental; urgency=low
 

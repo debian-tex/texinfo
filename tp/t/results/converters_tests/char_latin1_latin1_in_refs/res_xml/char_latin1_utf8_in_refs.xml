@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1" ?>
-<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V5.00//EN" "http://www.gnu.org/software/texinfo/dtd/5.00/texinfo.dtd">
 <texinfo xml:lang="en">
 <filename file="char_latin1_utf8_in_refs.xml"></filename>
 <preamble>\input texinfo

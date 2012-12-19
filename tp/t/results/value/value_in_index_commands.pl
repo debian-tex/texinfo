@@ -1133,36 +1133,92 @@ $result_errors{'value_in_index_commands'} = [
 $result_indices{'value_in_index_commands'} = {
   'index_names' => {
     'codeidx' => {
-      'codeidx' => 1
+      'contained_indices' => {
+        'codeidx' => 1
+      },
+      'in_code' => 1,
+      'name' => 'codeidx',
+      'prefix' => [
+        'codeidx'
+      ]
     },
     'cp' => {
-      'c' => 0,
-      'cp' => 0
+      'contained_indices' => {
+        'cp' => 1
+      },
+      'in_code' => 1,
+      'merged_in' => 'fn',
+      'name' => 'cp',
+      'prefix' => [
+        'c',
+        'cp'
+      ]
     },
     'fn' => {
-      'c' => 1,
-      'cp' => 1,
-      'f' => 1,
-      'fn' => 1
+      'contained_indices' => {
+        'cp' => 1,
+        'fn' => 1
+      },
+      'in_code' => 1,
+      'name' => 'fn',
+      'prefix' => [
+        'f',
+        'fn'
+      ]
     },
     'ky' => {
-      'k' => 1,
-      'ky' => 1
+      'contained_indices' => {
+        'ky' => 1
+      },
+      'in_code' => 1,
+      'name' => 'ky',
+      'prefix' => [
+        'k',
+        'ky'
+      ]
     },
     'pg' => {
-      'p' => 1,
-      'pg' => 1
+      'contained_indices' => {
+        'pg' => 1
+      },
+      'in_code' => 1,
+      'name' => 'pg',
+      'prefix' => [
+        'p',
+        'pg'
+      ]
     },
     'tp' => {
-      't' => 1,
-      'tp' => 1
+      'contained_indices' => {
+        'tp' => 1
+      },
+      'in_code' => 1,
+      'name' => 'tp',
+      'prefix' => [
+        't',
+        'tp'
+      ]
     },
     'truc' => {
-      'truc' => 0
+      'contained_indices' => {
+        'truc' => 1
+      },
+      'in_code' => 0,
+      'name' => 'truc',
+      'prefix' => [
+        'truc'
+      ]
     },
     'vr' => {
-      'v' => 1,
-      'vr' => 1
+      'contained_indices' => {
+        'vr' => 1
+      },
+      'in_code' => 1,
+      'name' => 'vr',
+      'prefix' => [
+        'v',
+        'vr'
+      ]
     }
   },
   'merged_indices' => {

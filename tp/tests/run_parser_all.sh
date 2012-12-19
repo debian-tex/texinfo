@@ -170,11 +170,6 @@ for command_dir in $commands; do
   test -d "${outdir}" || mkdir "${outdir}"
 done
 
-if tmp_dir=`mktemp -d l2h_t2h_XXXXXXXX`; then
-  :
-else
-  exit 1
-fi
 
 echo "base_result_dir $base_results_dir, driving_file $driving_file" > $logfile
 
@@ -257,6 +252,13 @@ do
           continue 2
         fi
         use_latex2html=yes
+        if test z"$tmp_dir" = 'z'; then
+           tmp_dir=`mktemp -d l2h_t2h_XXXXXXXX`
+           if test z"$tmp_dir" = 'z'; then
+             echo "mktemp failed" 1>&2
+             exit 1
+           fi
+        fi
         l2h_tmp_dir="--set-customization-variable 'L2H_TMP $tmp_dir'"
       elif echo "$remaining" | grep -qs -- '-init tex4ht.pm'; then
         if test "$no_tex4ht" = 'yes' ; then
@@ -367,7 +369,9 @@ do
   done
 done < "$driving_file"
 
-rm -rf $tmp_dir
+if test z"$tmp_dir" != 'z' ; then
+  rm -rf $tmp_dir
+fi
 
 if test "$one_test" = 'yes' && test "z$one_test_done" != "zyes" ; then
   echo "$the_test $the_file test not found"

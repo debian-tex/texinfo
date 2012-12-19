@@ -1,4 +1,4 @@
-$Id: TODO,v 1.68 2012/11/11 19:53:19 pertusus Exp $
+$Id: TODO,v 1.69 2012/12/15 22:59:41 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -53,6 +53,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Allow subitems and `see' and `see also' in indices.
   - generalize @vtable/@htable to any defined index.
   - generalize @deffn/etc. with variants that don't make index entries.
+  - @mergeindex to do @syn*index without changing fonts.
   - multicolumn * width to take up `the rest'.
   - Allow @hsep/@vsep at @item, instead of just in template.
   - another table command to take N succeeding items and split them

@@ -1526,47 +1526,128 @@ $result_errors{'complex_recursive_synindex'} = [
 $result_indices{'complex_recursive_synindex'} = {
   'index_names' => {
     'aaa' => {
-      'aaa' => 0
+      'contained_indices' => {
+        'aaa' => 1
+      },
+      'in_code' => 0,
+      'merged_in' => 'bbb',
+      'name' => 'aaa',
+      'prefix' => [
+        'aaa'
+      ]
     },
     'bbb' => {
-      'aaa' => 0,
-      'bbb' => 0,
-      'ccc' => 0,
-      'ddd' => 0,
-      'eee' => 0
+      'contained_indices' => {
+        'aaa' => 1,
+        'bbb' => 1,
+        'ccc' => 1,
+        'ddd' => 1,
+        'eee' => 1
+      },
+      'in_code' => 0,
+      'name' => 'bbb',
+      'prefix' => [
+        'bbb'
+      ]
     },
     'ccc' => {
-      'ccc' => 0
+      'contained_indices' => {
+        'ccc' => 1
+      },
+      'in_code' => 0,
+      'merged_in' => 'bbb',
+      'name' => 'ccc',
+      'prefix' => [
+        'ccc'
+      ]
     },
     'cp' => {
-      'c' => 0,
-      'cp' => 0
+      'contained_indices' => {
+        'cp' => 1
+      },
+      'in_code' => 0,
+      'name' => 'cp',
+      'prefix' => [
+        'c',
+        'cp'
+      ]
     },
     'ddd' => {
-      'ddd' => 0
+      'contained_indices' => {
+        'ddd' => 1
+      },
+      'in_code' => 0,
+      'merged_in' => 'bbb',
+      'name' => 'ddd',
+      'prefix' => [
+        'ddd'
+      ]
     },
     'eee' => {
-      'eee' => 0
+      'contained_indices' => {
+        'eee' => 1
+      },
+      'in_code' => 0,
+      'merged_in' => 'bbb',
+      'name' => 'eee',
+      'prefix' => [
+        'eee'
+      ]
     },
     'fn' => {
-      'f' => 1,
-      'fn' => 1
+      'contained_indices' => {
+        'fn' => 1
+      },
+      'in_code' => 1,
+      'name' => 'fn',
+      'prefix' => [
+        'f',
+        'fn'
+      ]
     },
     'ky' => {
-      'k' => 1,
-      'ky' => 1
+      'contained_indices' => {
+        'ky' => 1
+      },
+      'in_code' => 1,
+      'name' => 'ky',
+      'prefix' => [
+        'k',
+        'ky'
+      ]
     },
     'pg' => {
-      'p' => 1,
-      'pg' => 1
+      'contained_indices' => {
+        'pg' => 1
+      },
+      'in_code' => 1,
+      'name' => 'pg',
+      'prefix' => [
+        'p',
+        'pg'
+      ]
     },
     'tp' => {
-      't' => 1,
-      'tp' => 1
+      'contained_indices' => {
+        'tp' => 1
+      },
+      'in_code' => 1,
+      'name' => 'tp',
+      'prefix' => [
+        't',
+        'tp'
+      ]
     },
     'vr' => {
-      'v' => 1,
-      'vr' => 1
+      'contained_indices' => {
+        'vr' => 1
+      },
+      'in_code' => 1,
+      'name' => 'vr',
+      'prefix' => [
+        'v',
+        'vr'
+      ]
     }
   },
   'merged_indices' => {

@@ -987,11 +987,10 @@ sub _printindex_formatted($$;$)
   # this is not redone for each index, only once
   if (!defined($self->{'index_entries'}) and $self->{'parser'}) {
 
-    my ($index_names, $merged_indices, $index_entries)
+    my ($index_names, $merged_indices)
        = $self->{'parser'}->indices_information();
     my $merged_index_entries 
-      = Texinfo::Structuring::merge_indices($index_names, $merged_indices,
-                                            $index_entries);
+      = Texinfo::Structuring::merge_indices($index_names);
     $self->{'index_entries'} 
       = $self->Texinfo::Structuring::sort_indices($merged_index_entries,
                                                   $index_names);
@@ -2112,28 +2111,32 @@ sub _convert($$)
             and $root->{'args'}->[0]->{'type'}
             and $root->{'args'}->[0]->{'type'} eq 'misc_line_arg') {
       if ($root->{'extra'} and $root->{'extra'}->{'misc_content'}) {
+        my $converted_tree = {'type' => 'frenchspacing',
+                                 'parent' => $root};
+
         my $contents = $root->{'extra'}->{'misc_content'};
         my $table_command = $root->{'parent'}->{'parent'}->{'parent'};
-        if ($table_command->{'extra'} and $table_command->{'extra'}->{'command_as_argument'}) {
-          my $command_as_argument = $table_command->{'extra'}->{'command_as_argument'};
-          if ($command_as_argument->{'type'} ne 'definfoenclose_command') {
-            $contents = [{'cmdname' => $command_as_argument->{'cmdname'},
-                     'args' => [{'type' => 'brace_command_arg', 
-                                'contents' => $contents}],
+        if ($table_command->{'extra'} 
+            and $table_command->{'extra'}->{'command_as_argument'}) {
+          my $command_as_argument 
+            = $table_command->{'extra'}->{'command_as_argument'};
+          my $command = {'cmdname' => $command_as_argument->{'cmdname'},
                      'line_nr' => $root->{'line_nr'},
-            }];
-          } else {
-            $contents = [{'cmdname' => $command_as_argument->{'cmdname'},
-                          'type' => $command_as_argument->{'type'},
-                          'extra' => $command_as_argument->{'extra'},
-                     'args' => [{'type' => 'brace_command_arg', 
-                                'contents' => $contents}],
-                     'line_nr' => $root->{'line_nr'},
-            }];
+                     'parent' => $converted_tree };
+          if ($command_as_argument->{'type'} eq 'definfoenclose_command') {
+            $command->{'type'} = $command_as_argument->{'type'};
+            $command->{'extra'} = $command_as_argument->{'extra'};
           }
+          my $arg = {'type' => 'brace_command_arg',
+                     'contents' => $contents,
+                     'parent' => $command,};
+          $command->{'args'} = [$arg];
+          $self->Texinfo::Parser::_register_command_arg($arg, 'brace_command_contents');
+          $contents = [$command];
         }
-        $result = $self->convert_line({'type' => 'frenchspacing',
-                                     'contents' => $contents},
+        $converted_tree->{'contents'} = $contents;
+
+        $result = $self->convert_line($converted_tree,
                     {'indent_level'
                       => $self->{'format_context'}->[-1]->{'indent_level'} -1});
         if ($result ne '') {

@@ -464,6 +464,16 @@ abc
 fn
 @printindex fn
 '],
+['default_cp_index_and_one_letter_syncodeindex',
+'@node Top
+
+@syncodeindex cp fn
+
+@cindex --cindex
+@cpindex --cpindex
+
+@printindex fn
+'],
 );
 
 sub encoding_index_text($)

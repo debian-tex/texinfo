@@ -156,7 +156,7 @@ $tree = $parser->parse_texi_text ('@node Top
 ($new_content, $added_nodes)
    = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
 $tree->{'contents'} = $new_content;
-my ($index_names, $merged_indices, $index_entries) = $parser->indices_information();
+my ($index_names, $merged_indices) = $parser->indices_information();
 my $labels = $parser->labels_information();
 ok (($labels->{'chap'}->{'menus'} and @{$labels->{'chap'}->{'menus'}}
      and scalar(@{$labels->{'chap'}->{'menus'}}) == 1
@@ -166,8 +166,8 @@ is (Texinfo::Convert::Texinfo::convert($labels->{'chap'}->{'menus'}->[0]),
 * (some_manual)::
 @end menu
 ', 'reassociated menu is correct');
-#print STDERR join('|', keys(%$index_entries))."\n";
-is ($labels->{'chap'}, $index_entries->{'cp'}->[0]->{'node'}, 
+#print STDERR join('|', keys(%{$index_names->{'cp'}->{'index_entries'}}))."\n";
+is ($labels->{'chap'}, $index_names->{'cp'}->{'index_entries'}->[0]->{'node'}, 
   'index entry reassociated');
 #print STDERR Texinfo::Convert::Texinfo::convert($tree);
 
@@ -185,8 +185,8 @@ $tree = $parser->parse_texi_text ($text_duplicate_nodes);
 # In fact, here we also check that there is no debugging message...
 ($new_content, $added_nodes)
    = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
-($index_names, $merged_indices, $index_entries) = $parser->indices_information();
+($index_names, $merged_indices) = $parser->indices_information();
 $labels = $parser->labels_information();
-is ($labels->{'SEE-ALSO'}, $index_entries->{'cp'}->[0]->{'node'},
+is ($labels->{'SEE-ALSO'}, $index_names->{'cp'}->{'index_entries'}->[0]->{'node'},
   'index entry reassociated duplicate node ignored');
 

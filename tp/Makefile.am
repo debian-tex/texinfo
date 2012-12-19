@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.51 2012/11/21 22:48:48 pertusus Exp $
+# $Id: Makefile.am,v 1.52 2012/12/10 01:34:13 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012 Free Software Foundation, Inc.
@@ -42,6 +42,7 @@ do_subst = sed \
   -e 's,[@]USE_EXTERNAL_LIBINTL[@],$(USE_EXTERNAL_LIBINTL),g' \
   -e 's,[@]USE_EXTERNAL_EASTASIANWIDTH[@],$(USE_EXTERNAL_EASTASIANWIDTH),g' \
   -e 's,[@]USE_EXTERNAL_UNIDECODE[@],$(USE_EXTERNAL_UNIDECODE),g' \
+  -e 's,[@]TEXINFO_DTD_VERSION[@],$(TEXINFO_DTD_VERSION),g' \
   -e '1 s,/usr/bin/env perl,$(PERL),g'
 
 texi2any: texi2any.pl $(top_builddir)/config.status
@@ -206,6 +207,7 @@ MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 maintain/catalog.xml: maintain/catalog.xml.in Makefile
 	$(mkdir_p) maintain
 	sed -e 's|[@]abs_top_srcdir[@]|$(abs_top_srcdir)|' \
+	    -e 's|[@]TEXINFO_DTD_VERSION[@]|$(TEXINFO_DTD_VERSION)|' \
 	  $(srcdir)/maintain/catalog.xml.in >$@
 
 

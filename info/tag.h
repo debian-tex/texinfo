@@ -1,5 +1,5 @@
 /* tag.c -- Functions to handle Info tags.
-   $Id: tag.h,v 1.1 2012/11/17 17:16:19 gray Exp $
+   $Id: tag.h,v 1.2 2012/11/30 23:58:21 gray Exp $
 
    Copyright (C) 2012 Free Software Foundation, Inc.
 
@@ -20,6 +20,6 @@
 #define TAG_H
 
 void tags_expand (char **pbuf, size_t *pbuflen);
-size_t handle_tag (char *tag);
+void handle_tag (char *tag);
 
 #endif

@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.125 2012/11/26 19:27:08 karl Exp $
+# $Id: configure.ac,v 1.131 2012/12/18 01:36:12 karl Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -12,7 +12,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [4.13.91], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [4.13.92], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -27,6 +27,12 @@ AC_PREREQ(2.59)
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.
 AC_CONFIG_SRCDIR([info/info.c])
 
+# version for the dtd.  In between releases, PACKAGE_VERSION is not set
+# to a value that corresponds to actual files on the internet.
+# TEXINFO_DTD_VERSION=$PACKAGE_VERSION
+TEXINFO_DTD_VERSION=5.00
+AC_SUBST([TEXINFO_DTD_VERSION])
+
 # Conditional texi2html support.
 AM_CONDITIONAL([TEXI2HTML],[false])
 
@@ -35,6 +41,9 @@ PACKAGE_DATE=`${SHELL} "$srcdir"/build-aux/mdate-sh "$srcdir"/configure.ac`
 AC_SUBST([PACKAGE_DATE])
 
 # We need Perl
+AC_ARG_VAR([PERL], [The path to the 'perl' executable.])
+dnl AC_PATH_PROG([PERL], [perl], [/usr/bin/env perl], [/opt/perl5/bin:"$PATH"])
+
 AC_PATH_PROG([PERL], [perl])
 if test -z "$PERL"; then
    AC_MSG_ERROR(
@@ -43,7 +52,18 @@ If you have perl installed somewhere not in PATH,
 specify where it is using
   ./configure PERL=/path/to/perl
 ])
+fi
 
+
+AC_MSG_CHECKING([Perl version and Encode module])
+if $PERL -e "use 5.007_003; use Encode;" > /dev/null 2>&1; then
+  perl_version_requirement='yes'
+else
+  perl_version_requirement='no'
+fi
+AC_MSG_RESULT($perl_version_requirement)
+if test z"$perl_version_requirement" = 'zno' ; then
+  AC_MSG_ERROR([perl >= 5.7.3 with Encode required by Texinfo.])
 fi
 
 # Checks for programs.
@@ -57,13 +77,6 @@ gl_EARLY
 # Rest of Gnulib.
 gl_INIT
 
-# Regex from Gnulib if needed.
-gl_REGEX
-if test $ac_use_included_regex = yes; then
-  AC_LIBOBJ([regex])
-  gl_PREREQ_REGEX
-fi 
-
 # help2man to generate man pages.
 AM_MISSING_PROG(HELP2MAN, help2man)
 
@@ -76,9 +89,6 @@ AC_PROG_MKDIR_P
 dnl gettext Makefiles may need MKINSTALLDIRS
 MKINSTALLDIRS="\$(top_srcdir)/build-aux/install-sh -d"
 AC_SUBST([MKINSTALLDIRS])
-
-AC_ARG_VAR([PERL], [The path to the 'perl' executable.])
-AC_PATH_PROG([PERL], [perl], [/usr/bin/env perl], [/opt/perl5/bin:"$PATH"])
 
 # Needed on sysV68 for sigblock, sigsetmask.  But check for it in libc first.
 AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])
@@ -164,15 +174,17 @@ AM_CONDITIONAL(TOOLS_ONLY, [[test "x$tools_only" = x1]])
 # rather ncurses.  So we check for it.
 TERMLIBS=
 # Check for termlib before termcap because Solaris termcap needs libucb.
-TERMLIB_VARIANTS="ncurses curses termlib termcap terminfo"
+TERMLIB_VARIANTS="tinfo ncurses curses termlib termcap terminfo"
 for termlib in ${TERMLIB_VARIANTS}; do
   AC_CHECK_LIB(${termlib}, tgetent,
      [TERMLIBS="${TERMLIBS} -l${termlib}"; break])
 done
+have_termlib=yes
 # don't bother warning on djgpp, it doesn't have a term library, it
 # ports each termcap-needing program separately according to its needs.
 if test -z "$TERMLIBS" && echo "$build" | grep -v djgpp >/dev/null; then
-  AC_MSG_WARN([probably need a terminal library, one of: ${TERMLIB_VARIANTS}])
+  AC_MSG_WARN([info needs a terminal library, one of: ${TERMLIB_VARIANTS}])
+  have_termlib=no
 fi
 
 # Checks for variables.
@@ -215,6 +227,7 @@ if test -n "$ac_cv_var_ospeed" \
   TERMLIBS="${TERMLIBS} -l${ac_cv_var_ospeed}"
 fi
 AC_SUBST(TERMLIBS)#
+AM_CONDITIONAL(HAVE_TERMLIBS, [[test "x$TERMLIBS" != x]])
 
 # Do not use <ncurses/termcap.h> unless we're linking with ncurses.
 # Must come after the termlib tests.
@@ -307,7 +320,7 @@ AC_ARG_ENABLE([tp-tests],
     [
      if test "z$PROVE" = 'z'; then
        tp_tests='no'
-     elif $PERL -e "use 5.006; use Encode; use Test::More; use File::Basename; use File::Copy; use Data::Dumper; use Data::Compare; use Test::Deep; use Storable qw(dclone); use Getopt::Long qw(GetOptions);" > /dev/null 2>&1;
+     elif $PERL -e "use 5.007_003; use Encode; use Test::More; use File::Basename; use File::Copy; use Data::Dumper; use Data::Compare; use Test::Deep; use Storable qw(dclone); use Getopt::Long qw(GetOptions);" > /dev/null 2>&1;
      then
        tp_tests='yes'
      else  
@@ -329,7 +342,7 @@ AC_ARG_ENABLE([perl-api-texi-build],
        build_perl_api_texi='yes'
      fi],
     [
-     if $PERL -e "use 5.006; use Encode; use Pod::Simple::PullParser;" > /dev/null 2>&1;
+     if $PERL -e "use 5.007_003; use Encode; use Pod::Simple::PullParser;" > /dev/null 2>&1;
      then
        build_perl_api_texi='yes'
      else  
@@ -353,7 +366,7 @@ AC_ARG_ENABLE([pod-simple-texinfo-tests],
     [
      if test "z$PROVE" = 'z' ; then
        pod_simple_texinfo_tests='no'
-     elif $PERL -e "use 5.006; use Encode; use Test::More; use Pod::Simple::PullParser;" > /dev/null 2>&1;
+     elif $PERL -e "use 5.007_003; use Encode; use Test::More; use Pod::Simple::PullParser;" > /dev/null 2>&1;
      then
        pod_simple_texinfo_tests='yes'
      else
@@ -364,6 +377,12 @@ AC_ARG_ENABLE([pod-simple-texinfo-tests],
 AC_MSG_CHECKING([Pod::Simple::Texinfo tests requirements])
 AC_MSG_RESULT([$pod_simple_texinfo_tests])
 AM_CONDITIONAL([POD_SIMPLE_TEXINFO_TESTS], [test "z$pod_simple_texinfo_tests" = 'zyes'])
+
+tgt_is_windows=no
+case "$target" in
+   *-mingw32 | *-mingw64 | *-msdosdjgpp )  tgt_is_windows=yes ;;
+esac     
+AM_CONDITIONAL([TGT_IS_WINDOWS], [test "x$tgt_is_windows" = "xyes"])
 
 # The config files to generate.
 AC_CONFIG_FILES([\
@@ -397,3 +416,9 @@ AC_CONFIG_FILES([\
 ])
 
 AC_OUTPUT
+
+# Summarize warnings to make them more visible.
+if test $have_termlib = no; then
+  AC_MSG_WARN([Could not find a terminal library among ${TERMLIB_VARIANTS}])
+  AC_MSG_WARN([The programs from \`info' directory will not be built.])
+fi

@@ -486,6 +486,76 @@ $result_errors{'double_syncodeindex'} = [
 
 
 $result_indices{'double_syncodeindex'} = {
+  'index_names' => {
+    'cp' => {
+      'contained_indices' => {
+        'cp' => 1
+      },
+      'in_code' => 1,
+      'merged_in' => 'fn',
+      'name' => 'cp',
+      'prefix' => [
+        'c',
+        'cp'
+      ]
+    },
+    'fn' => {
+      'contained_indices' => {
+        'cp' => 1,
+        'fn' => 1
+      },
+      'in_code' => 1,
+      'name' => 'fn',
+      'prefix' => [
+        'f',
+        'fn'
+      ]
+    },
+    'ky' => {
+      'contained_indices' => {
+        'ky' => 1
+      },
+      'in_code' => 1,
+      'name' => 'ky',
+      'prefix' => [
+        'k',
+        'ky'
+      ]
+    },
+    'pg' => {
+      'contained_indices' => {
+        'pg' => 1
+      },
+      'in_code' => 1,
+      'name' => 'pg',
+      'prefix' => [
+        'p',
+        'pg'
+      ]
+    },
+    'tp' => {
+      'contained_indices' => {
+        'tp' => 1
+      },
+      'in_code' => 1,
+      'name' => 'tp',
+      'prefix' => [
+        't',
+        'tp'
+      ]
+    },
+    'vr' => {
+      'contained_indices' => {
+        'vr' => 1
+      },
+      'in_code' => 1,
+      'name' => 'vr',
+      'prefix' => [
+        'v',
+        'vr'
+      ]
+    }
+  },
   'merged_indices' => {
     'cp' => 'fn'
   }

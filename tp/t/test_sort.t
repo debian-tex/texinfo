@@ -40,8 +40,9 @@ $tree = $parser->parse_texi_text('@node Top
 @cindex @l{}
 ');
 
-my ($index_names, $merged_indices, $index_entries) = 
+my ($index_names, $merged_indices) = 
    $parser->indices_information();
+my $index_entries = Texinfo::Structuring::merge_indices($index_names);
 my $sorted_index_entries 
   = Texinfo::Structuring::sort_indices($parser, $index_entries, $index_names);
 

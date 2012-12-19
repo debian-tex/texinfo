@@ -1,4 +1,129 @@
+2012-12-17  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.13.92.
+
+2012-12-15  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi: use "sectioning" as the general term
+	in a few places.
+	(Other Customization Variables) <TREE_TRANSFORMATIONS>: more
+	on default.
+
+2012-12-11  Eli Zaretskii  <eliz@gnu.org>
+
+	* configure.ac (TGT_IS_WINDOWS): New conditional.
+	* util/Makefile.am (bin_SCRIPTS) [TGT_IS_WINDOWS]: add Windows
+	batch files to bin_SCRIPTS.
+
+2012-12-14  Ineiev  <ineiev@gmail.com>  (tiny change)
+
+	* configure.ac (HAVE_TERMLIBS): new conditional.  End with
+	repeated warning about no terminal library for visibility.
+	* Makefile.am (SUBDIRS) [HAVE_TERMLIBS]: only include info/ if
+	new conditional is true.
+	* man/Makefile.am (man_MANS) [HAVE_TERMLIBS]: likewise for making
+	info.1 and infokey.1.
+
+2012-12-14  Thien-Thi Nguyen  <ttn@gnuvola.org>  (tiny change)
+
+	* doc/texinfo.txi (Three Arguments):
+	Add @findex xrefautomaticsectiontitle.
+
+2012-12-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Other Customization Variables): edit
+	wording of defaults, etc.
+
+2012-12-10  Patrice Dumas  <pertusus@free.fr>
+
+	* configure.ac, tp/Makefile.am, tp/texi2any.pl, tp/Texinfo/Common.pm, 
+	tp/Texinfo/Convert/XML.pm, tp/maintain/catalog.xml.in,
+	tp/t/test_utils.pl,
+	doc/texinfo.txi (Other Customization Variables):
+	Add a new configure variable TEXINFO_DTD_VERSION that holds the version
+	of the dtd.  Add the corresponding customization variable in tp/.
+
+2012-12-08  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/texinfo.txi (Command Contexts): @verb is not accepted in 
+	simple text commands and sectioning commands.
+
+2012-12-02  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (TERMLIB_VARIANTS): try tinfo first.
+	Suggestion from Andreas Schwab, 02 Dec 2012 10:00:44.
+
+2012-12-02  Colin Watson  <cjwatson@ubuntu.com>
+
+	Build gnulib/lib directory in native-tools pass when
+	cross-compiling (bug #37852).
+	* Makefile.am (SUBDIRS) [TOOLS_ONLY]: Add gnulib/lib.
+
+2012-12-02  Karl Berry  <karl@gnu.org>
+
+	* install-info/tests/defs.in (TMPDIR): define if not defined.
+
+2012-12-02  Patrice Dumas  <pertusus@free.fr>
+
+	* configure.ac: remove gnulib module regex snippet, it is already in 
+	gnulib/m4/gnulib-comp.m4.
+	* configure.ac, tp/Texinfo/Convert/Unicode.pm: check that Encode is
+	available, and use perl >= 5.7.3, required for Encode.  Report from 
+	Stefano Lattarini.
+
+2012-12-01  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Fix bug #37822 (incomplete redraw of screen).
+
+	* info/display.c (display_scroll_display): Fix a "fencepost"
+	error when scrolling down.
+	* info/terminal.c: Improve conditional.
+
+2012-12-01  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Fix cursor positioning after index searches (bug #37823).
+
+	* info/window.h (WINDOW): Use size_t instead of int.
+	(log_line_no): New member.
+	(process_node_text): Change signature.
+	* info/window.c (window_new_screen_size,recalculate_line_starts)
+	(window_toggle_wrap,window_delete_window): Handle the
+	log_line_no array.
+	(calc_closure_expand): New static function.
+	(_calc_line_starts): Update log_line_no. Use calc_closure_expand
+	instead of the add_pointer_to_array macro.
+	(calculate_line_starts): Fill in log_line_no.
+	(window_log_to_phys_line): New function.
+	(process_node_text): Keep track of logical line numbers.
+	* info/display.c (display_node_text): Change signature.
+	* info/indices.c (info_next_index_match): Convert logical line
+	number to physical line.
+
+	* info/tag.c (tags_expand): Remove unused variables.
+	(handle_tag): Fix return type.
+	* info/tag.h (handle_tag): Fix return type.
+
+2012-11-30  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/texinfo.txi (Invoking texi2any), tp/texi2any.pl: add -c as an
+	alias for --set-customization-variable (Karl idea).
+	* doc/texinfo.txi (Other Customization Variables): explain default 
+	values for customization variables.
+
+2012-11-30  Karl Berry  <karl@gnu.org>
+
+	* install-info/tests/defs.in (mktemp): define minimal
+	replacement if not found in PATH.  It is lacking on AIX 6 (Ineiev)
+	and mingw (Eli).
+
+2012-11-28  Karl Berry  <karl@gnu.org>
+
+	* install-info/tests/defs.in (path_spec, EGREP): need these
+	for findprog.
+
 2012-11-26  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.13.91.
 
 	* configure.ac: invoke gl_REGEX, after
 	gnulib-tool --add-import regex.  This will now be used on

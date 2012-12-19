@@ -58,7 +58,11 @@ BEGIN
   # in-source run
   if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
        and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
-    $texinfolibdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : $command_directory;
+    if (defined($ENV{'top_srcdir'})) {
+      $texinfolibdir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
+    } else {
+      $texinfolibdir = $command_directory;
+    }
     $lib_dir = File::Spec->catdir($texinfolibdir, 'maintain');
     unshift @INC, $texinfolibdir;
   } elsif ($datadir ne '@' .'datadir@' and $package ne '@' . 'PACKAGE@'
@@ -183,7 +187,12 @@ sub __p($$) {
   return Locale::Messages::dpgettext($messages_textdomain, $context, $msgid);
 }
 
-my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : $command_directory;
+my $srcdir;
+if (defined($ENV{'top_srcdir'})) {
+  $srcdir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
+} else {
+  $srcdir = $command_directory;
+}
 
 my $libsrcdir = File::Spec->catdir($srcdir, 'maintain');
 
@@ -206,6 +215,9 @@ if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
     File::Spec->catdir($updir, $updir, $updir, 'tp', 'LocaleData')) {
     if (-d $locales_dir) {
       Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
+      # the messages in this domain are not regenerated automatically, 
+      # only when calling ./maintain/regenerate_perl_module_files.sh
+      Locale::Messages::bindtextdomain ($messages_textdomain, $locales_dir);
       $locales_dir_found = 1;
       last;
     }
@@ -216,10 +228,12 @@ if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
 } else {
   Locale::Messages::bindtextdomain ($strings_textdomain, 
                                     File::Spec->catdir($datadir, 'locale'));
+  Locale::Messages::bindtextdomain ($messages_textdomain,
+                                    File::Spec->catdir($datadir, 'locale'));
 }
 
-Locale::Messages::bindtextdomain ($messages_textdomain, 
-                                  File::Spec->catdir($datadir, 'locale'));
+#Locale::Messages::bindtextdomain ($messages_textdomain, 
+#                                  File::Spec->catdir($datadir, 'locale'));
 
 
 # Version setting is complicated, because we cope with 
@@ -266,6 +280,27 @@ my $configured_url = '@PACKAGE_URL@';
 $configured_url = 'http://www.gnu.org/software/texinfo/'
   if ($configured_url eq '@' .'PACKAGE_URL@');
 
+my $texinfo_dtd_version = '@TEXINFO_DTD_VERSION@';
+# $hardcoded_version is undef for a standalone perl module
+if ($texinfo_dtd_version eq '@' . 'TEXINFO_DTD_VERSION@') {
+  $texinfo_dtd_version = undef;
+  if (defined($hardcoded_version)) {
+    if (open (CONFIGURE, 
+            "< ".File::Spec->catfile($srcdir, $updir, 'configure.ac'))) {
+      while (<CONFIGURE>) {
+        if (/^TEXINFO_DTD_VERSION=([0-9]\S*)/) {
+          $texinfo_dtd_version = "$1";
+          last;
+        }
+      }
+      close (CONFIGURE);
+    }
+  }
+}
+# Used in case it is not hardcoded in configure and for standalone perl module
+$texinfo_dtd_version = $configured_version
+  if (!defined($texinfo_dtd_version));
+
 # defaults for options relevant in the main program, not undef, and also
 # defaults for all the converters.
 # Other relevant options (undef) are NO_WARN FORCE OUTFILE
@@ -279,6 +314,7 @@ my $converter_default_options = {
     'PACKAGE_AND_VERSION' => $configured_name_version,
     'PACKAGE_URL' => $configured_url,
     'PROGRAM' => $real_command_name, 
+    'TEXINFO_DTD_VERSION' => $texinfo_dtd_version,
 };
 
 # determine configuration directories.
@@ -465,7 +501,8 @@ my @prepend_dirs = ();
 # options for all the files
 my $parser_default_options = {'expanded_formats' => [], 
                               'values' => {'txicommandconditionals' => 1},
-                              'gettext' => \&__};
+                              'gettext' => \&__,
+                              'pgettext' => \&__p,};
 
 Texinfo::Config::_load_config($converter_default_options, $cmdline_options);
 
@@ -573,7 +610,7 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
       --no-warn               suppress warnings (but not errors).
       --conf-dir=DIR          search also for initialization files in DIR.
       --init-file=FILE        load FILE to modify the default behavior.
-      --set-customization-variable VAR=VAL  set customization variable VAR 
+  -c, --set-customization-variable VAR=VAL  set customization variable VAR 
                                 to VAL.
   -v, --verbose               explain what is being done.
       --version               display version information and exit.\n"), get_conf('ERROR_LIMIT'))
@@ -766,7 +803,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
  'init-file=s' => sub {
     locate_and_load_init_file($_[1], [ @conf_dirs, @program_init_dirs ]);
  },
- 'set-customization-variable=s' => sub {
+ 'set-customization-variable|c=s' => sub {
    my $var_val = $_[1];
    if ($var_val =~ s/^(\w+)\s*=?\s*//) {
      my $var = $1;
@@ -1121,7 +1158,7 @@ while(@input_files) {
   }
 
   if ($formats_table{$format}->{'move_index_entries_after_items'}
-      or $tree_transformations{'simple_menus'}) {
+      or $tree_transformations{'move_index_entries_after_items'}) {
     Texinfo::Common::move_index_entries_after_items_in_tree($tree);
   }
 

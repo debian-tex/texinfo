@@ -6,10 +6,11 @@ EXTRA_DIST = \
  direntry_dircategory.texi \
  float_copying.texi         my-bib-macros.texi \
  documentlanguage_set.texi  japanese_long_name.texi \
- simple_with_menu.texi \
+ simple_with_menu.texi      unknown_nodes_renamed.texi \
+ unknown_nodes_renamed-noderename.cnf-ref \
  file.css tests-parser.txt  res_parser
 
-DISTCLEANFILES = tests.log tests.out
+DISTCLEANFILES = tests.log tests.out unknown_nodes_renamed-noderename.cnf
 
 distclean-local:
 	rm -rf out_parser diffs

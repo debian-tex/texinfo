@@ -511,6 +511,76 @@ $result_errors{'syncode_index_print_both'} = [
 
 
 $result_indices{'syncode_index_print_both'} = {
+  'index_names' => {
+    'cp' => {
+      'contained_indices' => {
+        'cp' => 1,
+        'fn' => 1
+      },
+      'in_code' => 0,
+      'name' => 'cp',
+      'prefix' => [
+        'c',
+        'cp'
+      ]
+    },
+    'fn' => {
+      'contained_indices' => {
+        'fn' => 1
+      },
+      'in_code' => 1,
+      'merged_in' => 'cp',
+      'name' => 'fn',
+      'prefix' => [
+        'f',
+        'fn'
+      ]
+    },
+    'ky' => {
+      'contained_indices' => {
+        'ky' => 1
+      },
+      'in_code' => 1,
+      'name' => 'ky',
+      'prefix' => [
+        'k',
+        'ky'
+      ]
+    },
+    'pg' => {
+      'contained_indices' => {
+        'pg' => 1
+      },
+      'in_code' => 1,
+      'name' => 'pg',
+      'prefix' => [
+        'p',
+        'pg'
+      ]
+    },
+    'tp' => {
+      'contained_indices' => {
+        'tp' => 1
+      },
+      'in_code' => 1,
+      'name' => 'tp',
+      'prefix' => [
+        't',
+        'tp'
+      ]
+    },
+    'vr' => {
+      'contained_indices' => {
+        'vr' => 1
+      },
+      'in_code' => 1,
+      'name' => 'vr',
+      'prefix' => [
+        'v',
+        'vr'
+      ]
+    }
+  },
   'merged_indices' => {
     'fn' => 'cp'
   }

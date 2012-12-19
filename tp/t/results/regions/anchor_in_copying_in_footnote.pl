@@ -507,9 +507,9 @@ End Tag Table
 $result_converted_errors{'info'}->{'anchor_in_copying_in_footnote'} = [
   {
     'file_name' => '',
-    'error_line' => ':5: @anchor `Copying footnote\' output more than once
+    'error_line' => ':5: @anchor output more than once: Copying footnote
 ',
-    'text' => '@anchor `Copying footnote\' output more than once',
+    'text' => '@anchor output more than once: Copying footnote',
     'type' => 'error',
     'macro' => '',
     'line_nr' => 5

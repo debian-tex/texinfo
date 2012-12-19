@@ -223,12 +223,12 @@ sub output($)
       $prefix = 'Node';
     } else {
       if ($seen_anchors{$label->{'root'}->{'extra'}->{'normalized'}}) {
-        $self->line_error(sprintf($self->__("\@%s `%s' output more than once"),
+        $self->line_error(sprintf($self->__("\@%s output more than once: %s"),
                        $label->{'root'}->{'cmdname'},
                  Texinfo::Convert::Texinfo::convert({'contents' =>
                       $label->{'root'}->{'extra'}->{'node_content'}})),
                       $label->{'root'}->{'line_nr'});
-         next;
+        next;
       } else {
         $seen_anchors{$label->{'root'}->{'extra'}->{'normalized'}} = $label;
       }

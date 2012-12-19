@@ -773,6 +773,51 @@ in example @r{in r---now @code{in co---de}}
 
 @command{in command---c @r{in r---r @file{in file---}}}.
 '],
+['index_entry_in_preformatted',
+'@node Top
+
+@example
+@cindex first
+text
+
+@cindex other @c comment
+text2
+@cindex last
+@end example
+'],
+['printindex_merged_indices_code_style',
+'@node Top
+
+@synindex cp fn
+
+@synindex vr fn
+
+@cindex c``b
+
+@vindex v``j
+
+@findex f``g
+
+@defcodeindex cdi
+
+@synindex cdi fn
+
+@cdiindex cdi``h
+
+@defindex ddi
+
+@syncodeindex ddi cp
+
+@ddiindex ddi``g
+
+@printindex fn
+'],
+['email_table_command_as_argument',
+'@table @email
+@item www-discuss@@gnu.org
+discussion
+@end table
+'],
 );
 
 my @html_text_cases = (

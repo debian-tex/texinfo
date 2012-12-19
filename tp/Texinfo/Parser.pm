@@ -94,11 +94,11 @@ sub N__($)
   return $_[0];
 }
 
-sub __($$)
-{
-  my $self = shift;
-  return &{$self->{'gettext'}}(@_);
-}
+#sub __($$)
+#{
+#  my $self = shift;
+#  return &{$self->{'gettext'}}(@_);
+#}
 
 # Customization variables obeyed by the Parser, and the default values.
 our %default_customization_values = (
@@ -136,8 +136,8 @@ my %parser_default_configuration = (%Texinfo::Common::default_parser_state_confi
 #
 # expanded_formats_hash   each key comes from expanded_formats value is 1
 # index_names             a structure holding the link between index 
-#                         names and prefixes
-#                         see the initial value as %index_names below.
+#                         names, prefixes, merged indices,
+#                         initial value is %index_names in Texinfo::Common.
 # context_stack           stack of the contexts, more recent on top.
 #                         'line' is added when on a line or 
 #                         block @-command line,
@@ -171,8 +171,6 @@ my %parser_default_configuration = (%Texinfo::Common::default_parser_state_confi
 # nodes                   list of nodes.
 # command_index_prefix    associate a command name to an index prefix.
 # prefix_to_index_name    associate an index prefix to the index name.
-# index_entries           key is an index name, value is an array reference
-#                         on index_entry.
 # floats                  key is the normalized float type, value is an array
 #                         reference holding all the floats.
 # internal_references     an array holding all the internal references.
@@ -278,16 +276,13 @@ foreach my $global_unique_command (
   $global_unique_commands{$global_unique_command} = 1;
 }
 
-# key is index name, keys of the reference value are the prefixes.
-# value associated with the prefix is 0 if the prefix is not a code-like
-# prefix, 1 if it is a code-like prefix (set by defcodeindex/syncodeindex).
 my %index_names = %Texinfo::Common::index_names;
 
 # index names that cannot be set by the user.
 my %forbidden_index_name = ();
 
 foreach my $name(keys(%index_names)) {
-  foreach my $prefix (keys %{$index_names{$name}}) {
+  foreach my $prefix (@{$index_names{$name}->{'prefix'}}) {
     $forbidden_index_name{$prefix} = 1;
   }
 }
@@ -514,7 +509,7 @@ sub _bug_message($$;$$)
 }
 
 # simple deep copy of a structure
-sub _deep_copy ($)
+sub _deep_copy($)
 {
   my $struct = shift;
   my $string = Data::Dumper->Dump([$struct], ['struct']);
@@ -524,11 +519,20 @@ sub _deep_copy ($)
 
 # enter all the commands associated with an index name using the prefix
 # list
-sub _register_index_commands ($$)
+sub _register_index_commands($$)
 {
   my $self = shift;
   my $index_name = shift;
-  foreach my $prefix (keys (%{$self->{'index_names'}->{$index_name}})) {
+  if (!$self->{'index_names'}->{$index_name}->{'prefix'}) {
+    $self->{'index_names'}->{$index_name}->{'prefix'} = [$index_name];
+  }
+  if (!exists($self->{'index_names'}->{$index_name}->{'name'})) {
+    $self->{'index_names'}->{$index_name}->{'name'} = $index_name;
+  }
+  if (!exists($self->{'index_names'}->{$index_name}->{'contained_indices'})) {
+    $self->{'index_names'}->{$index_name}->{'contained_indices'}->{$index_name} = 1;
+  }
+  foreach my $prefix (@{$self->{'index_names'}->{$index_name}->{'prefix'}}) {
     $self->{'misc_commands'}->{$prefix.'index'} = 'line';
     $self->{'no_paragraph_commands'}->{$prefix.'index'} = 1;
     $self->{'valid_nestings'}->{$prefix.'index'} = \%in_simple_text_commands;
@@ -550,6 +554,7 @@ sub parser(;$$)
   my $parser = _deep_copy(\%parser_default_configuration);
   # _deep_copy doesn't handle subs
   $parser->{'gettext'} = $parser_default_configuration{'gettext'};
+  $parser->{'pgettext'} = $parser_default_configuration{'pgettext'};
 
   # called not object-oriented
   if (ref($class) eq 'HASH') {
@@ -575,6 +580,7 @@ sub parser(;$$)
     }
     #$parser = _deep_copy($old_parser);
     $parser->{'gettext'} = $old_parser->{'gettext'};
+    $parser->{'pgettext'} = $old_parser->{'pgettext'};
     bless $parser, $class;
     $conf = shift;
 
@@ -624,11 +630,21 @@ sub parser(;$$)
                                    %{$parser->{'indices'}});
   } else { # an array holds index names defined with @defindex
     foreach my $name (@{$parser->{'indices'}}) {
-      $parser->{'index_names'}->{$name} = {$name => 0};
+      $parser->{'index_names'}->{$name} = {'in_code' => 0};
     }
   }
   foreach my $index (keys (%{$parser->{'index_names'}})) {
     $parser->_register_index_commands($index);
+  }
+  if ($parser->{'merged_indices'}) {
+    foreach my $index_from (keys (%{$parser->{'merged_indices'}})) {
+      my $index_to = $parser->{'merged_indices'}->{$index_from};
+      if (defined($parser->{'index_names'}->{$index_from})
+          and defined($parser->{'index_names'}->{$index_to})) {
+        $parser->{'index_names'}->{$index_from}->{'merged_in'} = $index_to;
+        $parser->{'index_names'}->{$index_to}->{'contained_indices'}->{$index_from} = 1;
+      }
+    }
   }
   foreach my $explained_command(keys(%explained_commands)) {
     if  (!defined($parser->{'explained_commands'}->{$explained_command})) {
@@ -895,26 +911,26 @@ sub parse_texi_line($$;$$$$)
 }
 
 # return indices informations
-sub indices_information ($)
+sub indices_information($)
 {
   my $self = shift;
-  #return ($self->{'index_names'}, $self->{'merged_indices'});
-  return ($self->{'index_names'}, $self->{'merged_indices'}, $self->{'index_entries'});
+  return ($self->{'index_names'}, $self->{'merged_indices'});
+  #return ($self->{'index_names'}, $self->{'merged_indices'}, $self->{'index_entries'});
 }
 
-sub floats_information ($)
+sub floats_information($)
 {
   my $self = shift;
   return $self->{'floats'};
 }
 
-sub internal_references_information ($)
+sub internal_references_information($)
 {
   my $self = shift;
   return $self->{'internal_references'};
 }
 
-sub global_commands_information ($)
+sub global_commands_information($)
 {
   my $self = shift;
   return $self->{'extra'};
@@ -925,13 +941,13 @@ sub global_commands_information ($)
 # perl_encoding
 # input_encoding_name
 # input_file_name
-sub global_informations ($)
+sub global_informations($)
 {
   my $self = shift;
   return $self->{'info'};
 }
 
-sub labels_information ($)
+sub labels_information($)
 {
   my $self = shift;
   return $self->{'labels'};
@@ -1090,7 +1106,7 @@ sub _parse_macro_command_line($$$$$;$)
 }
 
 # start a paragraph if in a context where paragraphs are to be started.
-sub _begin_paragraph ($$;$)
+sub _begin_paragraph($$;$)
 {
   my $self = shift;
   my $current = shift;
@@ -1233,7 +1249,7 @@ sub _close_all_style_commands($$$)
 }
 
 # close brace commands except for @caption, @footnote then the paragraph
-sub _end_paragraph ($$$)
+sub _end_paragraph($$$)
 {
   my $self = shift;
   my $current = shift;
@@ -1248,7 +1264,7 @@ sub _end_paragraph ($$$)
 }
 
 # close brace commands except for @caption, @footnote then the preformatted
-sub _end_preformatted ($$$)
+sub _end_preformatted($$$)
 {
   my $self = shift;
   my $current = shift;
@@ -2430,8 +2446,9 @@ sub _enter_index_entry($$$$$$$)
 
   my $prefix = $self->{'command_index_prefix'}->{$command_container};
   my $index_name = $self->{'prefix_to_index_name'}->{$prefix};
-  my $number = (defined($self->{'index_entries'}->{$index_name})
-                 ? (scalar(@{$self->{'index_entries'}->{$index_name}}) + 1)
+  my $index = $self->{'index_names'}->{$index_name};
+  my $number = (defined($index->{'index_entries'})
+                 ? (scalar(@{$index->{'index_entries'}}) + 1)
                    : 1);
   my $index_entry = { 'index_name'           => $index_name,
                       'index_at_command'     => $command,
@@ -2451,7 +2468,7 @@ sub _enter_index_entry($$$$$$$)
                                $index_name), $line_nr);
   }
   #print STDERR "INDEX ENTRY \@$command->{'cmdname'} $index_name($number)\n";
-  push @{$self->{'index_entries'}->{$index_name}}, $index_entry;
+  push @{$index->{'index_entries'}}, $index_entry;
   $current->{'extra'}->{'index_entry'} = $index_entry;
 }
 
@@ -3282,8 +3299,9 @@ sub _end_line($$$)
         push @{$self->{'current_parts'}}, $current;
         if ($self->{'current_node'}
            and !$self->{'current_node'}->{'extra'}->{'associated_section'}) {
-          $self->line_warn (sprintf($self->__("\@node precedes \@%s, but part are not associated with nodes"), 
-              $command), $line_nr);
+          $self->line_warn (sprintf($self->__(
+           "\@node precedes \@%s, but parts may not be associated with nodes"), 
+                                    $command), $line_nr);
         }
       }
     }
@@ -5231,7 +5249,7 @@ sub _parse_line_command_args($$$)
         my $in_code = 0;
         $in_code = 1 if ($command eq 'defcodeindex');
         $args = [$name];
-        $self->{'index_names'}->{$name} = {$name => $in_code};
+        $self->{'index_names'}->{$name} = {'in_code' => $in_code};
         $self->_register_index_commands($name);
       }
     } else {
@@ -5243,9 +5261,11 @@ sub _parse_line_command_args($$$)
     if ($line =~ /^([[:alnum:]][[:alnum:]\-]*)\s+([[:alnum:]][[:alnum:]\-]*)$/) {
       my $index_from = $1;
       my $index_to = $2;
-      $self->line_error (sprintf($self->__("Unknown from index `%s' in \@%s"), $index_from, $command), $line_nr)
+      $self->line_error (sprintf($self->__("Unknown source index in \@%s: %s"),
+                                  $command, $index_from), $line_nr)
         unless $self->{'index_names'}->{$index_from};
-      $self->line_error (sprintf($self->__("Unknown to index name `%s' in \@%s"), $index_to, $command), $line_nr)
+      $self->line_error (sprintf($self->__("Unknown destination index in \@%s: %s"), 
+                                 $command, $index_to), $line_nr)
         unless $self->{'index_names'}->{$index_to};
       if ($self->{'index_names'}->{$index_from} 
            and $self->{'index_names'}->{$index_to}) {
@@ -5256,12 +5276,23 @@ sub _parse_line_command_args($$$)
           $current_to = $self->{'merged_indices'}->{$current_to};
         }
         if ($current_to ne $index_from) {
+          my $index_from_info = $self->{'index_names'}->{$index_from};
+          my $index_to_info = $self->{'index_names'}->{$current_to};
+
           my $in_code = 0;
           $in_code = 1 if ($command eq 'syncodeindex');
           $self->{'merged_indices'}->{$index_from} = $current_to;
-          foreach my $prefix (keys(%{$self->{'index_names'}->{$index_from}})) {
-            $self->{'index_names'}->{$current_to}->{$prefix} = $in_code;
+          $index_from_info->{'in_code'} = $in_code;
+          foreach my $contained_index (keys %{$index_from_info->{'contained_indices'}}) {
+            $index_to_info->{'contained_indices'}->{$contained_index} = 1;
+            $self->{'index_names'}->{$contained_index}->{'merged_in'} = $current_to;
           }
+          $index_from_info->{'merged_in'} = $current_to;
+          $index_to_info->{'contained_indices'}->{$index_from} = 1;
+
+          #foreach my $prefix (keys(%{$self->{'index_names'}->{$index_from}})) {
+          #  $self->{'index_names'}->{$current_to}->{$prefix} = $in_code;
+          #}
           $args = [$index_from, $index_to];
         } else {
           $self->line_warn (sprintf($self->__("\@%s leads to a merging of %s in itself, ignoring"), 
@@ -5411,7 +5442,7 @@ Texinfo::Parser - Parse Texinfo code in a Perl tree
     warn $error_message->{'error_line'};
   }
 
-  my ($index_names, $merged_indices_hash, $index_entries_arrays)
+  my ($index_names, $merged_indices_hash)
       = $parser->indices_information();
   my $float_types_arrays = $parser->floats_information();
   my $internal_references_array
@@ -5703,33 +5734,43 @@ also available through the C<indices_information> method.
 
 =item indices_information
 
-  ($index_names, $merged_indices_hash, $index_entries_arrays)
+  ($index_names, $merged_indices_hash)
     = indices_information($parser);
 
-The index names is a hash reference.  The keys are the index names.  They
-are associated to a hash reference. The keys of these hash references are 
-the index prefixes associated to the index name, and the value is set if
-the index entries should be formatted as code.
+The index names is a hash reference.  The keys are
 
-The following shows the references corresponding with the default indexes
-I<cp> and I<fn>, the I<fn> index having its entries formatted as code and 
-the indices corresponding to the following texinfo
+=over
 
-  @defindex some
-  @defcodeindex code
+=item in_code
 
-  $index_names = {'cp' => {'cp' => 0, 'c' => 0},
-                  'fn' => {'fn' => 1, 'f' => 1},
-                  'some' => {'some' => 0},
-                  'code' => {'code' => 1}};
+1 if the index entries should be formatted as code, 0 in the opposite case.
 
-I<$merged_indices_hash> is a hash reference, the key is an index
-name merged in the value.
+=item name
 
-Last, I<$index_entries_arrays> is an hash reference. The keys are
-index names, the values are index entry structures that are associated
-with the index entries, associated to @-commands like C<@cindex>,
-or C<@item> in C<@vtable>, or definition commands entries like C<@deffn>.
+The index name.
+
+=item prefix
+
+An array reference of prefix associated to the index.
+
+=item merged_in
+
+In case the index is merged to another index, this key holds the name of 
+the index the index is merged into.  It takes into account indirectly
+merged indices.
+
+=item contained_indices
+
+An hash reference holding names of indices that are merged to the index,
+including itself.  It also contains indirectly merged indices.  This key 
+is present even if the index is itself later merged to another index.
+
+=item index_entries
+
+An array reference containing index entry structures for index entries 
+associated with the index.  The index entry could be associated to 
+@-commands like C<@cindex>, or C<@item> in C<@vtable>, or definition 
+commands entries like C<@deffn>.
 
 The keys of the index entry structures are
 
@@ -5780,6 +5821,28 @@ The region command (C<@copying>, C<@titlepage>) containing the index entry,
 if it is in such an environement.
 
 =back
+
+=back
+
+The following shows the references corresponding with the default indexes
+I<cp> and I<fn>, the I<fn> index having its entries formatted as code and 
+the indices corresponding to the following texinfo
+
+  @defindex some
+  @defcodeindex code
+
+  $index_names = {'cp' => {'name' => 'cp', 'in_code' => 0, 
+                                           'prefix' => ['c', 'cp']},
+                  'fn' => {'name' => 'fn', 'in_code' => 1, 
+                                           'prefix' => ['f', 'fn']},
+                  'some' => {'in_code' => 0},
+                  'code' => {'in_code' => 1}};
+
+If C<name> is not set, it is set to the index name.  If C<prefix> is 
+not set, it is  set to an array containing the index name.
+
+I<$merged_indices_hash> is a hash reference, the key is an index
+name merged in the value.
 
 =back
 
@@ -5873,7 +5936,7 @@ Is associated to a macro definition element
 = item merged_indices
 
 The associated hash reference holds merged indices information, each key 
-is merged in the value.  Same as setting C<@synindex> of C<syncodeindex>.
+is merged in the value.  Same as setting C<@synindex> or C<syncodeindex>.
 
 =item novalidate
 
@@ -6369,7 +6432,7 @@ C<@end> or C<@documentencoding>.
 
 =item index_entry
 
-The index entry information (described in L</indices_information>
+The index entry information (described in L</index_entries>
 in details) is associated to @-commands that have an associated
 index entry.
 

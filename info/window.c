@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.25 2012/07/06 23:55:32 karl Exp $
+   $Id: window.c,v 1.26 2012/11/30 23:58:20 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008,
    2011, 2012 Free Software Foundation, Inc.
@@ -25,6 +25,7 @@
 #include "display.h"
 #include "info-utils.h"
 #include "infomap.h"
+#include "tag.h"
 
 /* The window which describes the screen. */
 WINDOW *the_screen = NULL;
@@ -137,6 +138,7 @@ window_new_screen_size (int width, int height)
         {
           windows->height = 0;
           maybe_free (windows->line_starts);
+	  maybe_free (windows->log_line_no);
           windows->line_starts = NULL;
           windows->line_count = 0;
           break;
@@ -584,9 +586,11 @@ window_toggle_wrap (WINDOW *window)
   if (window != the_echo_area)
     {
       char **old_starts;
+      size_t *old_xlat;
       int old_lines, old_pagetop;
 
       old_starts = window->line_starts;
+      old_xlat = window->log_line_no;
       old_lines = window->line_count;
       old_pagetop = window->pagetop;
 
@@ -602,6 +606,7 @@ window_toggle_wrap (WINDOW *window)
         display_scroll_line_starts
           (window, old_pagetop, old_starts, old_lines);
       maybe_free (old_starts);
+      maybe_free (old_xlat);
     }
   window->flags |= W_UpdateWindow;
 }
@@ -645,11 +650,9 @@ window_delete_window (WINDOW *window)
   else
     prev->next = next;
 
-  if (window->line_starts)
-    free (window->line_starts);
-
-  if (window->modeline)
-    free (window->modeline);
+  free (window->line_starts);
+  free (window->log_line_no);
+  free (window->modeline);
 
   if (window == active_window)
     {
@@ -800,18 +803,36 @@ window_physical_lines (NODE *node)
 
 struct calc_closure {
   WINDOW *win;
-  int line_starts_slots; /* FIXME: size_t */
+  size_t line_starts_slots;
 };
 
+static void
+calc_closure_expand (struct calc_closure *cp)
+{
+  if (cp->win->line_count == cp->line_starts_slots)
+    {
+      if (cp->line_starts_slots == 0)
+	cp->line_starts_slots = 100;
+      cp->win->line_starts = x2nrealloc (cp->win->line_starts,
+					 &cp->line_starts_slots,
+					 sizeof (cp->win->line_starts[0]));
+      cp->win->log_line_no = xrealloc (cp->win->log_line_no,
+				     cp->line_starts_slots *
+				     sizeof (cp->win->log_line_no[0]));
+    }
+}
+
 static int
-_calc_line_starts (void *closure, size_t line_index,
+_calc_line_starts (void *closure, size_t pline_index, size_t lline_index,
 		   const char *src_line,
 		   char *printed_line, size_t pl_index, size_t pl_count)
 {
   struct calc_closure *cp = closure;
-  add_pointer_to_array (src_line,
-			cp->win->line_count, cp->win->line_starts,
-			cp->line_starts_slots, 100, char *);
+
+  calc_closure_expand (cp);
+  cp->win->line_starts[cp->win->line_count] = (char*) src_line;
+  cp->win->log_line_no[cp->win->line_count] = lline_index;
+  cp->win->line_count++;
   return 0;
 }
 
@@ -821,6 +842,7 @@ calculate_line_starts (WINDOW *window)
   struct calc_closure closure;
 
   window->line_starts = NULL;
+  window->log_line_no  = NULL;
   window->line_count = 0;
 
   if (!window->node)
@@ -830,6 +852,9 @@ calculate_line_starts (WINDOW *window)
   closure.line_starts_slots = 0;
   process_node_text (window, window->node->contents, 0,
 		     _calc_line_starts, &closure);
+  calc_closure_expand (&closure);
+  window->line_starts[window->line_count] = NULL;
+  window->log_line_no[window->line_count] = 0;
 }
 
 /* Given WINDOW, recalculate the line starts for the node it displays. */
@@ -837,9 +862,28 @@ void
 recalculate_line_starts (WINDOW *window)
 {
   maybe_free (window->line_starts);
+  maybe_free (window->log_line_no);
   calculate_line_starts (window);
 }
 
+/* Return the number of first physical line corresponding to the logical
+   line LN.
+
+   A logical line can occupy one or more physical lines of output.  It
+   occupies more than one physical line if its width is greater than the
+   window width and the flag W_NoWrap is not set for that window.
+ */
+size_t
+window_log_to_phys_line (WINDOW *window, size_t ln)
+{
+  size_t i;
+  
+  if (ln > window->line_count)
+    return 0;
+  for (i = ln; i < window->line_count && window->log_line_no[i] < ln; i++)
+    ;
+  return i;
+}
 
 /* Global variable control redisplay of scrolled windows.  If non-zero,
    it is the desired number of lines to scroll the window in order to
@@ -1430,12 +1474,13 @@ info_tag (mbi_iterator_t iter, int handle, size_t *plen)
 
    FUN is called for every line collected from the node. Its arguments:
 
-     int (*fun) (void *closure, size_t line_no,
+     int (*fun) (void *closure, size_t phys_line_no, size_t log_line_no,
                   const char *src_line, char *prt_line,
 		  size_t prt_bytes, size_t prt_chars)
 
      closure  -- An opaque pointer passed as 5th parameter to process_node_text;
-     line_no  -- Number of processed line (starts from 0);
+     line_no  -- Number of processed physical line (starts from 0);
+     log_line_no -- Number of processed logical line (starts from 0);
      src_line -- Pointer to the source line (unmodified);
      prt_line -- Collected line contents, ready for output;
      prt_bytes -- Number of bytes in prt_line;
@@ -1452,14 +1497,16 @@ info_tag (mbi_iterator_t iter, int handle, size_t *plen)
 size_t
 process_node_text (WINDOW *win, char *start,
 		   int do_tags,
-		   int (*fun) (void *, size_t, const char *, char *, size_t, size_t),
+		   int (*fun) (void *, size_t, size_t,
+			       const char *, char *, size_t, size_t),
 		   void *closure)
 {
   char *printed_line;      /* Buffer for a printed line. */
   size_t pl_count = 0;     /* Number of *characters* written to PRINTED_LINE */
   size_t pl_index = 0;     /* Index into PRINTED_LINE. */
   size_t in_index = 0;
-  size_t line_index = 0;   /* Number of lines done so far. */
+  size_t line_index = 0;   /* Number of physical lines done so far. */
+  size_t logline_index = 0;/* Number of logical lines */
   size_t allocated_win_width;
   mbi_iterator_t iter;
   
@@ -1493,7 +1540,7 @@ process_node_text (WINDOW *win, char *start,
           if (*cur_ptr == '\r' || *cur_ptr == '\n')
             {
               replen = win->width - pl_count;
-	      delim = 1;
+	      delim = *cur_ptr;
             }
 	  else if (ansi_escape (iter, &cur_len))
 	    {
@@ -1508,7 +1555,7 @@ process_node_text (WINDOW *win, char *start,
 	  else
 	    {
 	      if (*cur_ptr == '\t')
-		delim = 1;
+		delim = *cur_ptr;
               cur_ptr = printed_representation (cur_ptr, cur_len, pl_count,
 						&cur_len);
 	      replen = cur_len;
@@ -1590,10 +1637,13 @@ process_node_text (WINDOW *win, char *start,
               printed_line[pl_index] = '\0';
             }
 
-	  rc = fun (closure, line_index, mbi_cur_ptr (iter) - in_index,
+	  rc = fun (closure, line_index, logline_index,
+		    mbi_cur_ptr (iter) - in_index,
 		    printed_line, pl_index, pl_count);
 
           ++line_index;
+	  if (delim == '\r' || delim == '\n')
+	    ++logline_index;
 
 	  /* Reset all data to the start of the line. */
 	  pl_index = 0;
@@ -1631,7 +1681,8 @@ process_node_text (WINDOW *win, char *start,
     }
 
   if (pl_count)
-    fun (closure, line_index, mbi_cur_ptr (iter) - in_index,
+    fun (closure, line_index, logline_index,
+	 mbi_cur_ptr (iter) - in_index,
 	 printed_line, pl_index, pl_count);
 
   free (printed_line);

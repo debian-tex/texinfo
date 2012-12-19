@@ -1,5 +1,5 @@
 /* terminal.c -- how to handle the physical terminal for Info.
-   $Id: terminal.c,v 1.10 2012/11/26 01:32:03 karl Exp $
+   $Id: terminal.c,v 1.11 2012/12/01 15:15:44 gray Exp $
 
    Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1997, 1998,
    1999, 2001, 2002, 2004, 2007, 2008, 2012 Free Software Foundation, Inc.
@@ -412,25 +412,21 @@ terminal_scroll_terminal (int start, int end, int amount)
 
   if (terminal_scroll_terminal_hook)
     (*terminal_scroll_terminal_hook) (start, end, amount);
-  else
+  else if (amount > 0)
     {
       /* If we are scrolling down, delete AMOUNT lines at END.  Then insert
          AMOUNT lines at START. */
-      if (amount > 0)
-        {
-          terminal_delete_lines (end, amount);
-          terminal_insert_lines (start, amount);
-        }
-
+      terminal_delete_lines (end, amount);
+      terminal_insert_lines (start, amount);
+    }
+  else
+    {
       /* If we are scrolling up, delete AMOUNT lines before START.  This
          actually does the upwards scroll.  Then, insert AMOUNT lines
          after the already scrolled region (i.e., END - AMOUNT). */
-      if (amount < 0)
-        {
-          int abs_amount = -amount;
-          terminal_delete_lines (start - abs_amount, abs_amount);
-          terminal_insert_lines (end - abs_amount, abs_amount);
-        }
+      int abs_amount = -amount;
+      terminal_delete_lines (start - abs_amount, abs_amount);
+      terminal_insert_lines (end - abs_amount, abs_amount);
     }
 }
 

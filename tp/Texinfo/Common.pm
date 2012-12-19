@@ -97,6 +97,7 @@ our %default_parser_state_configuration = (
   'context' => '_root',
   'expanded_formats' => [],
   'gettext' => sub {return $_[0];},
+  'pgettext' => sub {return $_[1];},
   'include_directories' => [ '.' ],
   # these are the user-added indices.  May be an array reference on names
   # or an hash reference in the same format than %index_names below
@@ -233,7 +234,8 @@ my @variable_string_settables = (
   'TEXI2HTML', 'IMAGE_LINK_PREFIX', 'FIX_TEXINFO',
   'TREE_TRANSFORMATIONS', 'BASEFILENAME_LENGTH',
   'TEXTCONTENT_COMMENT', 'XREF_USE_FLOAT_LABEL', 'XREF_USE_NODE_NAME_ARG',
-  'MACRO_BODY_IGNORES_LEADING_SPACE', 'CHECK_HTMLXREF'
+  'MACRO_BODY_IGNORES_LEADING_SPACE', 'CHECK_HTMLXREF',
+  'TEXINFO_DTD_VERSION',
 );
 # Not strings. 
 # FIXME To be documented somewhere, but where?
@@ -489,19 +491,33 @@ our %misc_commands = (
 # key is index name, keys of the reference value are the prefixes.
 # value associated with the prefix is 0 if the prefix is not a code-like
 # prefix, 1 if it is a code-like prefix (set by defcodeindex/syncodeindex).
+#our %index_names = (
+# 'cp' => {'cp' => 0, 'c' => 0},
+# 'fn' => {'fn' => 1, 'f' => 1},
+# 'vr' => {'vr' => 1, 'v' => 1},
+# 'ky' => {'ky' => 1, 'k' => 1},
+# 'pg' => {'pg' => 1, 'p' => 1},
+# 'tp' => {'tp' => 1, 't' => 1}
+#);
+
 our %index_names = (
- 'cp' => {'cp' => 0, 'c' => 0},
- 'fn' => {'fn' => 1, 'f' => 1},
- 'vr' => {'vr' => 1, 'v' => 1},
- 'ky' => {'ky' => 1, 'k' => 1},
- 'pg' => {'pg' => 1, 'p' => 1},
- 'tp' => {'tp' => 1, 't' => 1}
+ 'cp' => {'prefix' => ['c'], 'in_code' => 0},
+ 'fn' => {'prefix' => ['f'], 'in_code' => 1},
+ 'vr' => {'prefix' => ['v'], 'in_code' => 1},
+ 'ky' => {'prefix' => ['k'], 'in_code' => 1},
+ 'pg' => {'prefix' => ['p'], 'in_code' => 1},
+ 'tp' => {'prefix' => ['t'], 'in_code' => 1},
 );
+
+foreach my $index(keys(%index_names)) {
+  $index_names{$index}->{'name'} = $index;
+  push @{$index_names{$index}->{'prefix'}}, $index;
+}
 
 our %default_index_commands;
 # all the commands are readded dynamically in the Parser.
 foreach my $index_name (keys (%index_names)) {
-  foreach my $index_prefix (keys (%{$index_names{$index_name}})) {
+  foreach my $index_prefix (@{$index_names{$index_name}->{'prefix'}}) {
     next if ($index_prefix eq $index_name);
     # only put the one letter versions in the hash.
     $misc_commands{$index_prefix.'index'} = 'line';
@@ -1451,8 +1467,8 @@ sub parse_renamed_nodes_file($$;$$)
         if (scalar(@old_names)) {
           foreach my $old_node_name (@old_names) {
             $renamed_nodes->{$old_node_name} = $_;
-            $renamed_nodes_lines->{$_} = $renamed_nodes_line_nr;
           }
+          $renamed_nodes_lines->{$_} = $renamed_nodes_line_nr;
           @old_names = ();
         } else {
           warn (sprintf($self->__("%s:%d: no node to be renamed\n"), 
@@ -1470,7 +1486,9 @@ sub parse_renamed_nodes_file($$;$$)
              $renamed_nodes_file, $renamed_nodes_line_nr));
     }
     if (!close(RENAMEDFILE)) {
-      $self->document_warn(sprintf($self->__("Error on closing renamed nodes file %s: %s"), 
+      $self->document_warn(sprintf($self->__p(
+          "see HTML Xref Link Preservation in the Texinfo manual for context",
+          "Error on closing node-renaming configuration file %s: %s"), 
                             $renamed_nodes_file, $!));
     }
   } else {

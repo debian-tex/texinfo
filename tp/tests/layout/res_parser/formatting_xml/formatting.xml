@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V5.00//EN" "http://www.gnu.org/software/texinfo/dtd/5.00/texinfo.dtd">
 <texinfo xml:lang="en">
 <filename file="formatting.xml"></filename>
 <preamble>\input texinfo @c -*-texinfo-*-

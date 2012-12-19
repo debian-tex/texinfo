@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.11 2012/11/11 19:53:19 pertusus Exp $
+# $Id: Makefile.am,v 1.12 2012/12/18 00:07:17 pertusus Exp $
 # Makefile.am for texinfo/tp/tests.
 # Copyright 2012 Free Software Foundation, Inc.
 #
@@ -52,7 +52,8 @@ tex-html-checks: all
 # when check is done in this directory.
 all-local: htmlxref/htmlxref.cnf htmlxref-only_mono/htmlxref.cnf \
  htmlxref-only_split/htmlxref.cnf htmlxref-only_split/.texinfo/htmlxref.cnf \
- sectioning/equivalent_nodes-noderename.cnf
+ sectioning/equivalent_nodes-noderename.cnf \
+ formatting/unknown_nodes_renamed-noderename.cnf
 
 htmlxref/htmlxref.cnf: htmlxref/htmlxref.cnf-ref
 	${INSTALL_DATA} $(srcdir)/htmlxref/htmlxref.cnf-ref $@
@@ -72,6 +73,9 @@ htmlxref-only_split/.texinfo:
 
 sectioning/equivalent_nodes-noderename.cnf: sectioning/renamednodes.cnf-ref
 	${INSTALL_DATA} $(srcdir)/sectioning/renamednodes.cnf-ref $@
+
+formatting/unknown_nodes_renamed-noderename.cnf: formatting/unknown_nodes_renamed-noderename.cnf-ref
+	${INSTALL_DATA} $(srcdir)/formatting/unknown_nodes_renamed-noderename.cnf-ref $@
 
 EXTRA_DIST = run_parser_all.sh parser_tests.sh \
  $(TESTS) coverage_macro.texi

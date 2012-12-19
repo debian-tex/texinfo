@@ -1,5 +1,5 @@
 /* tag.c -- Functions to handle Info tags.
-   $Id: tag.c,v 1.1 2012/11/17 17:16:19 gray Exp $
+   $Id: tag.c,v 1.2 2012/11/30 23:58:20 gray Exp $
 
    Copyright (C) 2012 Free Software Foundation, Inc.
 
@@ -186,12 +186,9 @@ tags_expand (char **pbuf, size_t *pbuflen)
 
   while ((p = input + strlen (input)) < endp)
     {
-      size_t len = p - input;
       if (memcmp(p + 1, "\b[", 2) == 0)
 	{
 	  char *q;
-	  size_t len;
-	  struct tag_handler *tp;
 
 	  p += 3;
 	  q = p + strlen (p);
@@ -237,7 +234,7 @@ tags_expand (char **pbuf, size_t *pbuflen)
     }
 }
   
-size_t
+void
 handle_tag (char *tag)
 {
   /* Nothing so far */

@@ -245,8 +245,11 @@ my @test_invalid = (
 ['no_brace_space_end_line',
 '@code {c}.
 
+@TeX
+text
 @code
-Arg.'],
+Arg.'
+],
 ['empty_line_in_anchor',
 '@anchor{an
 

@@ -60,6 +60,7 @@ my %defaults = (
   'EXTENSION'            => 'xml',
   #'output_perl_encoding' => 'utf8',
   'OUTPUT_ENCODING_NAME' => 'utf-8',
+  'TEXINFO_DTD_VERSION'  => '5.00',
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'output_format'        => 'xml',
@@ -258,6 +259,11 @@ sub converter_initialize($)
     $self->{'context_block_commands'}->{$raw} = 1
          if $self->{'expanded_formats_hash'}->{$raw};
   } 
+  if ($self->{'parser'}) {
+    my ($index_names, $merged_indices)
+       = $self->{'parser'}->indices_information();
+    $self->{'index_names'} = $index_names;
+  }
 }
 
 sub output($$)
@@ -285,9 +291,13 @@ sub output($$)
       and $self->get_conf('OUTPUT_ENCODING_NAME') ne 'utf-8') {
     $encoding = " encoding=\"".$self->get_conf('OUTPUT_ENCODING_NAME')."\" ";
   }
+  my $texinfo_dtd_version = $self->get_conf('TEXINFO_DTD_VERSION');
+  if (!defined($texinfo_dtd_version)) {
+    $texinfo_dtd_version = '1.00';
+  }
 
   my $header =  "<?xml version=\"1.0\"${encoding}?>".'
-<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V'.$texinfo_dtd_version.'//EN" "http://www.gnu.org/software/texinfo/dtd/'.$texinfo_dtd_version.'/texinfo.dtd">
 <texinfo xml:lang="' . $self->get_conf('documentlanguage') ."\">\n";
   if ($self->{'output_file'} ne '') {
     my $output_filename = $self->{'output_filename'};
@@ -316,7 +326,20 @@ sub _index_entry($$)
   my $root = shift;
   if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
     my $index_entry = $root->{'extra'}->{'index_entry'};
-    my $result = "<indexterm index=\"$index_entry->{'index_name'}\">";
+    my $attribute = '';
+    # in case the index is not a default index, or the style of the
+    # entry (in code or not) is not the default for this index
+    if ($self->{'index_names'}) {
+      my $in_code = $self->{'index_names'}->{$index_entry->{'index_name'}}->{'in_code'};
+      if (!$Texinfo::Common::index_names{$index_entry->{'index_name'}}
+          or $in_code != $Texinfo::Common::index_names{$index_entry->{'index_name'}}->{'in_code'}) {
+        $attribute .= " incode=\"$in_code\"";
+      }
+      if ($self->{'index_names'}->{$index_entry->{'index_name'}}->{'merged_in'}) {
+        $attribute .= " mergedindex=\"$self->{'index_names'}->{$index_entry->{'index_name'}}->{'merged_in'}\"";
+      }
+    }
+    my $result = "<indexterm index=\"$index_entry->{'index_name'}\"${attribute}>";
     push @{$self->{'document_context'}}, {'monospace' => [0]};
     $self->{'document_context'}->[-1]->{'monospace'}->[-1] = 1
       if ($index_entry->{'in_code'});

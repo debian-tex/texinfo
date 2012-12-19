@@ -2521,11 +2521,7 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 `<!-- /@w -->`simple-double-<!-- /@w -->-three---four----'<!-- /@w -->'
 
 
-<indexterm role="cp"><primary>&#8211;option</primary></indexterm>
-<indexterm role="cp"><primary>&#8220;</primary></indexterm>
-<indexterm role="fn"><primary>&#8220;</primary></indexterm>
-<indexterm role="fn"><primary>&#8211;foption</primary></indexterm>
-
+<indexterm role="cp"><primary>&#8211;option</primary></indexterm><indexterm role="cp"><primary>&#8220;</primary></indexterm><indexterm role="fn"><primary>&#8220;</primary></indexterm><indexterm role="fn"><primary>&#8211;foption</primary></indexterm>
 @&quot;u &#252; 
 @&quot;{U} &#220; 
 @~n &#241;
@@ -2750,8 +2746,7 @@ After clickstyle &#8658;
 </screen><itemizedlist><screen><!-- comment in itemize -->
 </screen><listitem><screen><emphasis>after emph</emphasis> e--mph item
 </screen></listitem></itemizedlist><screen>
-</screen><itemizedlist><screen></screen><listitem><screen>&#8226; a--n itemize line <indexterm role="cp"><primary>index entry within itemize</primary></indexterm>
-i--tem 1
+</screen><itemizedlist><screen></screen><listitem><screen>&#8226; a--n itemize line <indexterm role="cp"><primary>index entry within itemize</primary></indexterm>i--tem 1
 </screen></listitem><listitem><screen>&#8226; a--n itemize line i--tem 2
 </screen></listitem></itemizedlist><screen>
 </screen><orderedlist numeration="arabic"><listitem><screen>e--numerate
@@ -2760,8 +2755,7 @@ i--tem 1
 </screen></entry></row></thead><tbody><row><entry><screen>mu--ltitable item </screen></entry><entry><screen>multitable tab
 <!-- comment in multitable -->
 </screen></entry></row><row><entry><screen>mu--ltitable item 2 </screen></entry><entry><screen>multitable tab 2
-<indexterm role="cp"><primary>index entry within multitable</primary></indexterm>
-</screen></entry></row><row><entry><screen>lone mu--ltitable item
+<indexterm role="cp"><primary>index entry within multitable</primary></indexterm></screen></entry></row><row><entry><screen>lone mu--ltitable item
 </screen></entry></row></tbody></tgroup></informaltable><screen>
 </screen><informaltable><tgroup cols="2"><colspec colwidth="4*"></colspec><colspec colwidth="6*"></colspec><tbody><row><entry><screen>truc </screen></entry><entry><screen>bidule
 </screen></entry></row></tbody></tgroup></informaltable><screen>
@@ -2790,8 +2784,7 @@ i--tem 1
 <blockquote><screen>def--fn
 </screen></blockquote><screen> 
 </screen><synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
-<screen><indexterm role="cp"><primary>index entry within deffn</primary></indexterm>
-</screen><synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
+<screen><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></screen><synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable>  </synopsis>
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
@@ -2949,8 +2942,7 @@ See Info file <filename>a comma, in file</filename>, node &#8216;<literal>s--ect
 </term><listitem><screen>l--ine
 </screen></listitem></varlistentry></variablelist><screen>
 </screen><variablelist><varlistentry><term><indexterm role="fn"><primary>a</primary></indexterm>a
-</term><screen><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm>
-</screen><term><indexterm role="fn"><primary>b</primary></indexterm>b
+</term><screen><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm></screen><term><indexterm role="fn"><primary>b</primary></indexterm>b
 </term><listitem><screen>l--ine
 </screen></listitem></varlistentry></variablelist><screen>
 </screen><screen>c--artouche

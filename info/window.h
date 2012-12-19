@@ -1,5 +1,5 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
-   $Id: window.h,v 1.14 2011/10/18 18:47:22 karl Exp $
+   $Id: window.h,v 1.15 2012/11/30 23:58:20 gray Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
@@ -70,16 +70,18 @@ typedef struct window_struct
 {
   struct window_struct *next;      /* Next window in this chain. */
   struct window_struct *prev;      /* Previous window in this chain. */
-  int width;            /* Width of this window. */
-  int height;           /* Height of this window. */
-  int first_row;        /* Offset of the first line in the_screen. */
-  int goal_column;      /* The column we would like the cursor to appear in. */
+  size_t width;         /* Width of this window. */
+  size_t height;        /* Height of this window. */
+  size_t first_row;     /* Offset of the first line in the_screen. */
+  size_t goal_column;   /* The column we would like the cursor to appear in. */
   Keymap keymap;        /* Keymap used to read commands in this window. */
   WINDOW_STATE_DECL;    /* Node, pagetop and point. */
   LINE_MAP line_map;    /* Current line map */
   char *modeline;       /* Calculated text of the modeline for this window. */
   char **line_starts;   /* Array of printed line starts for this node. */
-  int line_count;       /* Number of lines appearing in LINE_STARTS. */
+  size_t line_count;    /* Number of lines appearing in LINE_STARTS. */
+  size_t *log_line_no;  /* Number of logical line corresponding to each
+			   physical one. */
   int flags;            /* See below for details. */
 } WINDOW;
 
@@ -273,7 +275,8 @@ extern int window_chars_to_goal (WINDOW *win, int goal);
 
 extern size_t process_node_text
         (WINDOW *win, char *start, int do_tags,
-         int (*fun) (void *, size_t, const char *, char *, size_t, size_t),
+         int (*fun) (void *, size_t, size_t, const char *, char *,
+		     size_t, size_t),
 	 void *closure);
 
 void clean_manpage (char *manpage);

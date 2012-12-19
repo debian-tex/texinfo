@@ -15,6 +15,9 @@ cond_info_ifhtml_ifinfo_iftex cond.texi --info --ifhtml --ifinfo --iftex
 defcondx_Dbar defxcond.texi -D bar
 defcondx_Ubar defxcond.texi -U bar
 
+# renamed nodes
+unknown_nodes_renamed unknown_nodes_renamed.texi
+
 # api
 texi ignore_and_comments.texi --init ignore_and_comments_output.init
 ignore_and_comments_output ignore_and_comments.texi --init ignore_and_comments_output.init

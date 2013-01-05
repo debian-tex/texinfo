@@ -5,13 +5,13 @@ dont build the info documentation, it has been removed
 
 --- texinfo.orig/doc/Makefile.in
 +++ texinfo/doc/Makefile.in
-@@ -169,14 +169,16 @@
- CONFIG_CLEAN_VPATH_FILES =
- SOURCES =
- DIST_SOURCES =
+@@ -209,14 +209,16 @@
+ am__v_texidevnull_ = $(am__v_texidevnull_@AM_DEFAULT_V@)
+ am__v_texidevnull_0 = > /dev/null
+ am__v_texidevnull_1 = 
 -INFO_DEPS = texinfo info-stnd.info info.info
 +#INFO_DEPS = texinfo info-stnd.info info.info
-+INFO_DEPS = 
++INFO_DEPS =
  TEXINFO_TEX = $(top_srcdir)/build-aux/texinfo.tex
  am__TEXINFO_TEX_DIR = $(top_srcdir)/build-aux
  DVIS = texinfo.dvi info-stnd.dvi info.dvi
@@ -24,7 +24,7 @@ dont build the info documentation, it has been removed
  TEXI2DVI = texi2dvi
  TEXI2PDF = $(TEXI2DVI) --pdf --batch
  MAKEINFOHTML = $(MAKEINFO) --html
-@@ -941,8 +943,10 @@
+@@ -1000,8 +1002,10 @@
  SUBDIRS = tp_api
  
  # Put texinfo.txi first because that's the most important.

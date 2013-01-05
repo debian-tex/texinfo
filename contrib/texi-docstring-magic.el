@@ -5,8 +5,6 @@
 ;; Copyright (C) 1998 David Aspinall
 ;; Maintainer:  David Aspinall <da@dcs.ed.ac.uk>
 ;;
-;; $Id: texi-docstring-magic.el,v 1.3 2007/07/01 21:20:33 karl Exp $
-;;
 ;; This package is distributed under the terms of the 
 ;; GNU General Public License, Version 3.
 ;; You should have a copy of the GPL with your version of 

@@ -87,7 +87,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.00';
+$VERSION = '5.0';
 
 sub N__($)
 {
@@ -3452,7 +3452,7 @@ sub _register_extra_menu_entry_information($$;$)
       my $parsed_entry_node = _parse_node_manual($arg);
       if (! defined($parsed_entry_node)) {
         if ($self->{'SHOW_MENU'}) {
-          $self->line_error ($self->__("Empty node in menu entry"), $line_nr);
+          $self->line_error ($self->__("Empty node name in menu entry"), $line_nr);
         }
       } else {
         $current->{'extra'}->{'menu_entry_node'} = $parsed_entry_node;

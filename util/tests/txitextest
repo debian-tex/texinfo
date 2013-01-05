@@ -1,6 +1,6 @@
 #!/bin/sh
-# $Id: txitextest,v 1.10 2012/09/11 17:33:26 karl Exp $
-# Copyright 2006, 2011 Free Software Foundation, Inc.
+# $Id: txitextest,v 1.1 2013/01/02 01:22:19 karl Exp $
+# Copyright 2006, 2011, 2012, 2013 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 # Another option is to run the manuals all the way through using
 # texi2dvi, which tests in another way.
 
-tsrc=`cd \`dirname $0\` && pwd`/..
+tsrc=`cd \`dirname $0\` && pwd`/../..
 PATH=$tsrc/util:$PATH
 
 tdoc=$tsrc/doc

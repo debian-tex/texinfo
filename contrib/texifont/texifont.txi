@@ -1,0 +1,680 @@
+\input texinfo.tex   @c -*-texinfo-*-
+@setfilename texifont
+@settitle GNU Texinfo font subsystem
+
+@c Originally written by Oleg Katsidatze and Karl Berry, 2006.
+@c Public domain.
+
+@syncodeindex fn cp
+
+@titlepage
+@title GNU Texinfo font subsystem
+@end titlepage
+
+
+@contents
+
+
+@ifnottex
+@node Top
+@top GNU Texinfo font subsystem
+
+Unfinished chapter on GNU Texinfo font subsystem, also unfinished.
+@end ifnottex
+
+@menu
+* Font management::             Defining font families.
+* Index::               
+@end menu
+
+
+@node Font management
+@chapter Font management
+
+Texinfo's font management macros allow customization of fonts used in
+the printed document.
+
+
+@menu
+* Introduction::                
+* Font definition macros::      
+* Font selection macros::       
+* Font substitution macros::    
+* Font collections::            
+* Input encodings::             
+* Font encodings::              
+@end menu
+
+@node Introduction
+@section Introduction
+
+In this chapter we introduce the basic concepts of font management in
+Texinfo.
+
+@menu
+* Font features and attributes::  
+* Current font attribute set::  
+* Font substitution::           
+@end menu
+
+@node Font features and attributes
+@subsection Font features and attributes
+
+@cindex font feature
+@cindex feature, of font
+@cindex font attribute
+@cindex attribute, of font
+Each font can be characterized by a number of @dfn{features}.  For
+example, a font can be characterized by weight (boldness of glyph
+strokes), slant (inclination of glyph strokes), etc.
+
+Font @dfn{attribute} is a particular representation of a feature.  For
+example, the ``weight'' feature can be represented by attributes
+``light'', ``medium'', ``semibold'', ``bold'', etc.; the ``slant''
+feature by attributes ``upright'', ``slanted'', ``italic'', etc.
+
+Most font features describe physical appearance of a font.  However,
+two special features describe organizational aspects of fonts---font
+family and font encoding.
+
+@cindex font family
+@cindex family, of font
+A collection of related fonts is grouped into a @dfn{font family}.
+All fonts in a font family generally have the same or similar design,
+representing variations on that particular design.  For example, a
+font family may include an upright font, an italic font and a bold
+upright font.  Examples of font families:  Computer Modern Roman,
+Times, Helvetica.
+
+@cindex font encoding
+@cindex encoding, of font
+@dfn{Font encoding} specifies the set and the order of characters
+represented within a font.  Examples of font encodings: OT1 (Latin
+upper- and lower-case characters, arabic numerals and some additional
+glyphs), T1 (characters of Western-European scripts), T2A (characters
+of Cyrillic scripts).  For a guide to @TeX{} font encodings, see
+@url{http://@/www.ctan.org/@/tex-archive/@/help/@/Catalogue/@/entries/@/encguide.html}.
+
+
+@node Current font attribute set
+@subsection Current font attribute set
+
+At font definition time, each font is associated with a set of
+attributes.  Naturally, only one attribute can be specified per
+feature, but not every feature has to be represented.
+
+A font then can be selected by specifying a list of attributes.  At
+all times, Texinfo maintains a @dfn{current font attribute set}.
+Texinfo provides macros to initialize this set, as well as to modify
+it by adding attributes or removing attributes corresponding to
+certain features.  If a font definition is found which matches every
+attribute in the resulting attribute set, the corresponding font is
+selected.
+
+For example, let's assume the current font attribute set consists of
+the following attributes:
+
+@table @samp
+@item CMRoman
+``family'' feature
+@item OT1 
+``encoding'' feature
+@item bold
+``weight'' feature
+@end table
+
+@noindent
+If now we instruct Texinfo to add attributes @samp{light} and
+@samp{italic} and to remove the @samp{encoding} feature, the font
+attribute set becomes:
+
+@table @samp
+@item CMRoman
+@item light
+replaces the @samp{bold} attribute of the ``weight'' feature
+@item italic
+``slant'' feature
+@end table
+
+@noindent
+Of course, in order for this font change specification to be
+successful, a font must be associated previously with such font
+attribute set.
+
+
+@node Font substitution
+@subsection Font substitution
+
+Sometimes it can be convenient to replace some attributes when a font
+with a certain set of attributes is requested.  For example, a font
+family may contain slanted but not italic fonts.  If we only define
+slanted fonts, all macros explicitly requesting italic font will fail
+when such font family is used.  But we may decide that it is
+acceptable to use slanted fonts wherever italic fonts are being used.
+To achieve this, one solution is to create fake italic font
+definitions by duplicating definitions of slanted fonts and replacing
+the @samp{slanted} attribute with @samp{italic}.  An alternative,
+simpler solution is to define font substitution, indicating that all
+requests for a font with the @samp{italic} attribute should be
+satisfied with a font with the @samp{slanted} attribute and all other
+font attributes unchanged.
+
+It is possible to specify more complex font substitutions which
+replace/add several attributes and/or remove attributes corresponding
+to certain features.  All defined substitutions are applied in turn,
+starting with the current font attribute set, with the later
+substitutions performed on the result of the previous, so that it's
+possible to define chains of substitutions.  Note that font
+substitution works with attribute sets; only the final attribute set
+is used to look up the corresponding font, so intermediate sets do not
+have to be associated with any font.
+
+Unlike font selection, font substitution is ``permissive'', that is,
+in order for a font substitution to be applied, its attribute set
+doesn't need to match the current font attribute set exactly, it can
+just be a subset of the font attribute set.  For example, if a font
+substitution is defined to apply to the set of two attributes
+@samp{CMRoman} and @samp{OT1}, the substitution will also apply to any
+of the following attribute sets:
+
+@itemize
+@item @samp{CMRoman}, @samp{OT1}, @samp{upright};
+@item @samp{CMRoman}, @samp{OT1}, @samp{bold};
+@item @samp{CMRoman}, @samp{OT1}, @samp{upright}, @samp{bold};
+@end itemize
+
+@noindent
+but to none of the following:
+
+@itemize
+@item @samp{CMRoman};
+@item @samp{OT1};
+@item @samp{CMRoman}, @samp{upright};
+@item @samp{OT1}, @samp{upright}.
+@end itemize
+
+
+``Restrictive'' font substitutions, where attribute sets have to mach
+exactly, are (currently?) not supported.
+
+
+@node Other
+@subsection Other
+
+@dfn{Scaling factor} is an integer equal to magnification ratio
+times@tie{}1000.
+
+
+@node Font definition macros
+@section Font definition macros
+
+@findex newfontarrs
+Font attributes can be defined with the command
+
+@example
+@@newfontatrrs @var{feature} @var{attribute-list}
+@end example
+
+@noindent
+where @var{feature} is the font feature to associate the attributes
+with, @var{attribute-list} is a comma-separated list of one or more
+attributes to define.  It is not an error to define an already defined
+attribute, as long as that attribute is associated with the same font
+feature as before.
+
+For example, the following command
+
+@example
+@@newfontattrs encoding OT1,OMS,OML,OMX
+@end example
+
+@noindent
+defines the classic @TeX{} font encodings.  After the above
+definition, the following command will be valid:
+
+@example
+@@newfontattrs encoding OT1,T1
+@end example
+
+@noindent
+but the following command will generate an error (feature names are
+case-sensitive):
+
+@example
+@@newfontattrs Encoding OT1
+@end example
+
+@findex newfont
+A font can be defined with the command
+
+@example
+@@newfont @var{scale} @var{font} @var{size} @var{lskip}[,@var{reduced},@var{small},@var{smaller}] [@var{attr-list}]
+@end example
+
+@noindent
+Here optional parts are in square brackets.  The arguments are as
+follows:
+
+@table @var
+@item scale
+Font's relative scaling factor (see below).
+
+@item font
+Font file name (e.g., @file{cmr10}).
+
+@item size
+Design size of the font (see below) specified as a @TeX{} dimension or
+a number (in which case @TeX{} points are assumed).
+
+@item lskip
+Recommended line skip scaling factor which will be multiplied by the
+selected font size to get the actual line skip.
+
+@item reduced
+Scaling factor for a reduced-size font (``one size smaller''), used
+for acronyms.  Default is 909 (10/11).
+
+@item small
+Scaling factor for a small-size font (``two sizes smaller''), used
+for indices, footnotes, small examples, etc.  Default is 818 (9/11).
+
+@item smaller
+Scaling factor for an even-smaller-size font (``three sizes
+smaller''), used for superscripts, subscripts, the @LaTeX{} logo, etc.
+Default is 727 (8/11).
+
+@item attr-list
+List of attributes to associate with the font.  If omitted, attributes
+from the last @code{@@newfont} command are applied.
+@end table
+
+@i{This scheme doesn't provide for situation when we want different
+@var{reduced}, @var{small} and @var{smaller} settings for the same
+font for different size ranges.}
+
+
+@cindex scaling factor, of a font
+@cindex font scaling factor
+Different font families have different notions of font size.  For
+example, Bera fonts at 10@dmn{pt} look much bigger than Computer
+Modern fonts at 10@dmn{pt}.  When mixing fonts and font families,
+their sizes must be scaled to achieve visual uniformity.  This is what
+the relative scaling factor (the first argument of @code{@@newfont})
+is for---it specifies the scaling factor which needs to be applied to
+a font to match a corresponding font from the Computer Modern
+collection of fonts (which are the default fonts of Texinfo).
+
+@i{Maybe it makes better sense to specify @var{scale} for the entire
+family and not for individual fonts.  Not sure if fonts from the same
+family would ever need different scaling factors.  One (hypothetical?)
+case I can think of is when a font family provides fonts at several
+design sizes, and those design sizes scale differently to the
+corresponding Computer Modern design sizes, so each design size has to
+be tweaked individually.}
+
+@cindex design size, of a font
+@cindex size, design, of a font
+@cindex font design size
+Each font has a @dfn{design size}, which is the size in which the
+designer intended the font to be displayed (the @var{size} argument of
+@code{@@newfont}).  To produce a font in a size other than the design
+size, Texinfo can scale a font.  Many font families provide fonts in
+only one design size, usually 10@dmn{pt}.  When fonts are provided in
+several design sizes, it is best to define all the provided design
+sizes.
+
+For example, Computer Modern Roman font family provides five design
+sizes (7@dmn{pt}, 8@dmn{pt}, 9@dmn{pt}, 10@dmn{pt} and 12@dmn{pt}) for
+the italic medium-weight face, but only one design size (10@dmn{pt})
+for the upright caps and small caps face.  The font encoding for both
+faces is @acronym{OT1}.  Therefore, part of the definition of the
+CMRoman font family dealing with italic and caps and small caps faces
+might look like the following:
+
+@example
+@@newfontattrs family   CMRoman
+@@newfontattrs encoding OT1
+@@newfontattrs slant    upright,italic
+@@newfontattrs caps     normalcaps,capssmallcaps
+
+@@newfont 1000 cmti7   7  1350 CMRoman,OT1,italic,normalcaps
+@@newfont 1000 cmti8   8  1300
+@@newfont 1000 cmti9   9  1250,1
+@@newfont 1000 cmti10  10 1200
+@@newfont 1000 cmti12  12 1150
+@@newfont 1000 cmcsc10 10 1200 CMRoman,OT1,upright,capssmallcaps
+@end example
+
+
+@node Font selection macros
+@section Font selection macros
+
+@findex setfont
+@cindex setting current attributes list
+@cindex current attributes list, setting
+@cindex setting a font
+@cindex selecting a font
+@cindex font, setting
+@cindex font, selecting
+The @code{@@setfont} command sets the current attribute list and then
+selects the font associated with that list:
+
+@example
+@@setfont@{@var{attribute-list}@}
+@end example
+
+@findex modfont
+If you don't want to specify all attributes but just want to add
+certain attributes to the current attribute list and/or remove
+attributes for certain features, use the command
+
+@example
+@@modfont@{@var{feature-list}@}@{@var{attribute-list}@}
+@end example
+
+@noindent
+Any attributes corresponding to features from @var{feature-list} will
+be removed from the current attribute list, attributes from
+@var{attribute-list} will be added to it, and the resulting attribute
+list will be used by Texinfo to select a font.
+
+
+@menu
+* Relative font scaling::       
+@end menu
+
+@node Relative font scaling
+@subsection Relative font scaling
+
+@cindex scaling of fonts
+@findex fontbasescale
+By default, all fonts are scaled to match the Computer Modern fonts,
+and the Computer Modern fonts come out at their ``natural'' sizes.
+This happens when base font scaling factor is set to 1000, the
+relative scaling factor of the Computer Modern fonts.  You can set a
+different base scaling factor using the command
+
+@example
+@@fontbasescale @var{scale}
+@end example
+
+@noindent
+If @var{scale} is omitted, the current font's relative scaling factor
+will be used.
+
+
+@node Font substitution macros
+@section Font substitution macros
+
+Each font substitution consists of three sets:  filter (set of
+attributes), removed features (set of features) and added attributes
+(set of attributes).  When selecting a font, Texinfo applies the list
+of defined substitutions to the current attribute list, and uses the
+resulting attribute list to selects a font.
+
+ examines each substitution in turn, applying
+those whose filter matches the current attribute list (i.e., those
+whose filter contains each attribute from the list) to the result of
+the previous substitutions on the current attribute list.  The
+resulting attribute list as used to select a font.
+
+To add a substitution to the head of the substitution list, use the
+command
+
+@example
+@@fontsubstpre =@var{filter} -@var{removed-features} +@var{added-attributes}
+@end example
+
+The following command adds a substitution to the tail of the
+substitution list:
+@example
+@@fontsubstpost =@var{filter} -@var{removed-features} +@var{added-attributes}
+@end example
+
+
+@node Font collections
+@section Font collections
+
+@code{@@declarefontcollection}
+
+@code{@@fontcollection}
+
+
+@menu
+* Font styles::                 
+* Font style selection::        
+* Font styles for document elements::  
+@end menu
+
+@node Font styles
+@subsection Font styles
+
+@cindex font styles
+@cindex styles, fonts
+Font styles are a way to apply one of the defined font families to the
+text.  It is possible to specify font styles for the various elements
+of a document individually, such as body text, page headings and
+footings, table of contents, indexes, and chapter, section, subsection
+and sub-subsection titles.
+
+@menu
+* Font style selection::        
+* Font styles for document elements::  
+@end menu
+
+
+@node Font style selection
+@subsection Font style selection
+
+Below are the styles defined by Texinfo, with the corresponding
+default meanings and commands which select them.  All the style
+commands take a single argument in braces and typeset it according to
+font attributes specified for the style.
+
+@table @samp
+@findex serif
+@item serif
+serifed fonts (CMRoman), applied with @code{@@serif}.
+
+@findex sansserif
+@item sans
+sans serif fonts (CMSans), applied with @code{@@sansserif}.
+
+@findex t
+@item mono
+monospace fonts (CMMono), applied with @code{@@t}.
+
+@findex r
+@item default
+fonts used in absence of any style switches, and applied with
+@code{@@r} (CMRoman).
+
+@item math
+fonts used in math mode (CMMath), no explicit switches.
+@end table
+
+For example, the command
+
+@example
+@@sansserif@{text@}
+@end example
+
+@noindent
+typesets @samp{text} using the @samp{sans} font style (which results
+in a sans serif font by default).
+
+
+@node Font styles for document elements
+@subsection Font styles for document elements
+
+It is possible to customize each of the above styles separately for
+each element of the document.  Texinfo associates styles with the
+following elements:
+
+@table @samp
+@item *
+Default, used for body text.  Attributes from this `element' are also
+inherited by other elements, unless those elements redefine them.
+
+@item heading
+@itemx footing
+Page headings and footings.
+
+@item toc
+The table of contents.
+
+@item shorttoc
+The short table of contents.
+
+@item shorttocchapter
+Chapters in the short table of contents.
+
+@item index
+Indexes.
+
+@item indexinitials
+Initials in the index.
+
+@item title
+Document title.
+
+@item chapter
+@itemx section
+@itemx subsection
+@itemx subsubsection
+Chapter, section, subsection and sub-subsection titles.
+@end table
+
+@findex fontfamily
+To associate a font family with a particular style for a particular
+document element, use the following command:
+
+@example
+@@fontfamily @var{element} @var{style} @var{family}
+@end example
+
+@findex fontaxes
+To specify which font axes should be used, use the command
+
+@example
+@@fontaxes @var{element} @var{style} @var{axes}
+@end example
+
+@noindent
+where @var{axes} is a comma-separated list of axes, or a single
+@samp{.} if none.
+
+@findex fontsize
+@findex fontshape
+@findex fontweight
+The following commands will set font size, shape and weight to be used
+for a document element:
+
+@example
+@@fontsize   @var{element} @var{point-size}
+@@fontshape  @var{element} @var{shape}
+@@fontweight @var{element} @var{weight}
+@end example
+
+@findex unsetfonts
+Before you start defining font attributes for the styles, it might be
+a good idea to @code{@@unsetfonts}, which unsets all font attribute
+definitions except the defaults, which are set as follows:
+
+@example
+@@fontfamily * default CMRoman
+@@fontfamily * serif   CMRoman
+@@fontfamily * sans    CMSans
+@@fontfamily * mono    CMMono
+@@fontfamily * math    CMMath
+
+@@fontaxes   * default .
+@@fontaxes   * serif   .
+@@fontaxes   * sans    .
+@@fontaxes   * mono    .
+@@fontaxes   * math    .
+
+@@fontsize   * 11
+@@fontweight * m
+@@fontshape  * n
+@end example
+
+@findex setfonts
+@findex resetfonts
+After you have finished specifying font attributes for the styles, you
+should activate them with @code{@@setfonts}.  To revert to the default
+styles, call @code{@@resetfonts}.
+
+Below is a complete example of a document style specification.
+
+@example
+@@c Use Computer Modern fonts with no axes (the defaults).
+@@unsetfonts
+
+@@c The body text will be 12pt medium-weight upright font.
+@@fontsize * 12
+
+@@c Page headings are in a smaller italic font; footings are in
+@@c smaller upright.
+@@fontsize  heading 10
+@@fontshape heading it
+@@fontsize  footing 10
+
+@@c TOC is in the default face and smaller; indexes are in the default
+@@c face and even smaller.
+@@fontsize toc   11
+@@fontsize index 10
+
+@@c Font attributes for the title.  We are not going to use @@serif,
+@@c @@sans, etc., so we don't care about non-default styles.
+@@fontfamily title * SomeFunkyFontFamily
+@@fontaxes   title * of,pf
+@@fontsize   title 20
+@@fontweight title bx
+@@fontshape  title it
+
+@@c Use sans fonts for chapters, sections and subsections.  We exchange
+@@c the meanings of @@sans and @@serif.
+
+@@fontfamily chapter *     CMSans
+@@fontfamily chapter serif CMSans
+@@fontfamily chapter sans  CMRoman
+@@fontfamily chapter math  CMBrightMath
+@@fontsize   chapter 17
+
+@@fontfamily section *     CMSans
+@@fontfamily section serif CMSans
+@@fontfamily section sans  CMRoman
+@@fontfamily section math  CMBrightMath
+@@fontsize   section 14
+
+@@fontfamily subsection *     CMSans
+@@fontfamily subsection serif CMSans
+@@fontfamily subsection sans  CMRoman
+@@fontfamily subsection math  CMBrightMath
+@@fontsize   subsection 12
+
+@@c Don't forget to activate the styles.
+@@setfonts
+@end example
+
+
+@node Input encodings
+@section Input encodings
+
+
+@node Font encodings
+@section Font encodings
+
+
+@node Index
+@unnumbered Index
+
+@printindex cp
+
+
+@bye
+
+@c Local variables:
+@c compile-command:  "texi2pdf texifont.txi && xpdf -remote key -raise -reload"
+@c End:

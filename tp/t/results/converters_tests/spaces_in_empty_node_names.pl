@@ -1113,11 +1113,11 @@ $result_converted{'xml'}->{'spaces_in_empty_node_names'} = '<node name="Top" spa
 
 <node name="" spaces=" "><nodename></nodename></node>
 
-<para><ref><xrefnodename><spacecmd type="spc"/><spacecmd type="spc"/></xrefnodename></ref>
+<para><ref label="--"><xrefnodename><spacecmd type="spc"/><spacecmd type="spc"/></xrefnodename></ref>
 </para>
-<para><ref><xrefnodename><verb delimiter=":">  </verb></xrefnodename></ref>
+<para><ref label="-"><xrefnodename><verb delimiter=":">  </verb></xrefnodename></ref>
 </para>
-<para><ref><xrefnodename><w>  </w></xrefnodename></ref>
+<para><ref label="-"><xrefnodename><w>  </w></xrefnodename></ref>
 </para>';
 
 

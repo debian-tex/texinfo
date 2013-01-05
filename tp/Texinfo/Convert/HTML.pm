@@ -53,7 +53,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.00';
+$VERSION = '5.0';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -2933,26 +2933,8 @@ sub _convert_item_command($$$$)
     # FIXME instead use the code of Plaintext or DocBook.
     my $args = $content;
     if ($args->[0]) {
-      my $tree = $args->[0]->{'tree'};
-      my $table_command = $command->{'parent'}->{'parent'}->{'parent'};
-      if ($table_command->{'extra'} 
-          and $table_command->{'extra'}->{'command_as_argument'}) {
-        my $command_as_argument 
-          = $table_command->{'extra'}->{'command_as_argument'};
-        if ($command_as_argument->{'type'} ne 'definfoenclose_command') {
-          $tree = {'cmdname' => $command_as_argument->{'cmdname'},
-                   'args' => [{'type' => 'brace_command_arg',
-                              'contents' => [$tree]}]
-          };
-        } else {
-          $tree = {'cmdname' => $command_as_argument->{'cmdname'},
-                        'type' => $command_as_argument->{'type'},
-                        'extra' => $command_as_argument->{'extra'},
-                   'args' => [{'type' => 'brace_command_arg',
-                              'contents' => [$tree]}]
-          };
-        }
-      }
+      my $tree = $self->_table_item_content_tree($command,
+                                                [$args->[0]->{'tree'}]);
       my $result = $self->convert_tree ($tree);
       foreach my $command_name (reverse($self->commands_stack())) {
         if ($preformatted_code_commands{$command_name}) {
@@ -4833,7 +4815,7 @@ sub _process_css_file ($$$)
                 $file, $line_nr)) if ($in_string);
   warn (sprintf($self->__("%s:%d: --css-include ended in comment"), 
                 $file, $line_nr)) if ($in_comment);
-  warn (sprintf($self->__("%s:%d \@import not finished in css file"), 
+  warn (sprintf($self->__("%s:%d: \@import not finished in css file"), 
         $file, $line_nr)) 
     if ($in_import and !$in_comment and !$in_string);
   return ($imports, $rules);

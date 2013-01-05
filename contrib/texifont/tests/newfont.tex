@@ -1,0 +1,55 @@
+\input ../fattr
+
+\ftracelevel=3
+
+\newfontattr family     Fam1
+\newfontattr family     Fam2
+\newfontattr family     Fam3
+\newfontattr encoding   Enc1
+\newfontattr encoding   Enc2
+\newfontattr encoding   Enc3
+\newfontattr encoding   Enc4
+\newfontattr slant      Slant1
+\newfontattr slant      Slant2
+
+\message{^^J**** Simple font defs.}
+
+\newfont 8  1000 a8  Fam1
+\newfont 10 1000 a10 Fam1
+\newfont 12 1000 a12 Fam1
+
+\newfont 12 1000 b12 Fam1
+\newfont 10 1000 b10 Fam1
+\newfont 8  1000 b8  Fam1
+
+\message{^^J**** Simple font defs with mag factor variations.}
+
+\newfont 12 1000 c12 Fam1,Enc1
+\newfont 8  1000 c8  Enc1,Fam1
+\newfont 10 1000 c10 Fam1,Enc1
+
+\newfont 10 1200 c10 Fam1,Enc1
+\newfont 12 1100 c12 Fam1,Enc1
+\newfont 8  1300 c8  Fam1,Enc1
+
+\message{^^J**** Same design size and mag factor, different feature sets.}
+
+\newfont 10 1000 d10 Fam2
+\newfont 10 1000 d10 Fam2,Enc2
+\newfont 10 1000 d10 Fam1,Enc2
+\newfont 10 1000 d10 Fam1,Enc3
+\newfont 10 1000 d10 Fam1,Enc2,Slant1
+\newfont 10 1000 d10 Fam1,Slant2,Enc2
+
+\message{^^J**** Same design size, different mag factors.}
+
+\newfont 10 1000 e1.0 Fam3
+\newfont 10 1400 e1.4 Fam3
+\newfont 10 800  e0.8 Fam3
+
+\newfont 10 1000 f1.0 Fam3,Enc4
+\newfont 10 800  f0.8 Fam3,Enc4
+\newfont 10 1400 f1.4 Fam3,Enc4
+\newfont 10 1200 f1.2 Fam3,Enc4
+
+\bye

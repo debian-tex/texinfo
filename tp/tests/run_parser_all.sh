@@ -10,6 +10,7 @@
 #echo "SRCDIR $srcdir srcdir_test $srcdir_test"
 
 LANG=C; export LANG
+LC_ALL=C; export LC_ALL
 
 prepended_command=
 #prepended_command=time

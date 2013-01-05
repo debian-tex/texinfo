@@ -1,0 +1,167 @@
+Date: Sun, 09 Jun 2002 00:40:14 -0400
+From: Stephen Gildea
+To: karl@freefriends.org (Karl Berry)
+cc: jgay@gnu.org
+Subject: Re: Texinfo fonts 
+
+I used to like to use Adobe Times, Helvetica, and Courier because a
+major output format for us is PDF, and bitmapped fonts in a PDF file
+look ugly with acroread.  I don't use this as much as I used to now that
+I can get Type 1 CM fonts.
+
+There are parts of this patch that look ugly, but it works for me.
+It would be great to see something like this support in the Texinfo
+distribution.
+
+ < Stephen
+
+*** texinfo.tex	Mon Apr 19 17:13:00 1999
+--- ps_texinfo.tex	Mon Apr 19 17:17:50 1999
+***************
+*** 58,69 ****
+  % It is possible to adapt texinfo.tex for other languages.  You can get
+  % the existing language-specific files from ftp://ftp.gnu.org/gnu/texinfo/.
+  
+! \message{Loading texinfo [version \texinfoversion]:}
+  
+  % If in a .fmt file, print the version number
+  % and turn on active characters that we couldn't do earlier because
+  % they might have appeared in the input file name.
+! \everyjob{\message{[Texinfo version \texinfoversion]}%
+    \catcode`+=\active \catcode`\_=\active}
+  
+  % Save some parts of plain tex whose names we will redefine.
+--- 58,69 ----
+  % It is possible to adapt texinfo.tex for other languages.  You can get
+  % the existing language-specific files from ftp://ftp.gnu.org/gnu/texinfo/.
+  
+! \message{Loading texinfo [version \texinfoversion ps]:}
+  
+  % If in a .fmt file, print the version number
+  % and turn on active characters that we couldn't do earlier because
+  % they might have appeared in the input file name.
+! \everyjob{\message{[Texinfo version \texinfoversion ps]}%
+    \catcode`+=\active \catcode`\_=\active}
+  
+  % Save some parts of plain tex whose names we will redefine.
+***************
+*** 858,890 ****
+  \newcount\mainmagstep
+  \mainmagstep=\magstephalf
+  
+  % Set the font macro #1 to the font named #2, adding on the
+  % specified font prefix (normally `cm').
+  % #3 is the font's design size, #4 is a scale factor
+! \def\setfont#1#2#3#4{\font#1=\fontprefix#2#3 scaled #4}
+  
+  % Use cm as the default font prefix.
+  % To specify the font prefix, you must define \fontprefix
+  % before you read in texinfo.tex.
+  \ifx\fontprefix\undefined
+! \def\fontprefix{cm}
+  \fi
+  % Support font families that don't use the same naming scheme as CM.
+! \def\rmshape{r}
+! \def\rmbshape{bx}               %where the normal face is bold
+! \def\bfshape{b}
+! \def\bxshape{bx}
+! \def\ttshape{tt}
+! \def\ttbshape{tt}
+! \def\ttslshape{sltt}
+! \def\itshape{ti}
+! \def\itbshape{bxti}
+! \def\slshape{sl}
+! \def\slbshape{bxsl}
+! \def\sfshape{ss}
+! \def\sfbshape{ss}
+! \def\scshape{csc}
+! \def\scbshape{csc}
+  
+  \ifx\bigger\relax
+  \let\mainmagstep=\magstep1
+--- 858,916 ----
+  \newcount\mainmagstep
+  \mainmagstep=\magstephalf
+  
++ % expand #1, a control sequence, without the leading escape char
++ \def\csstringname#1{\expandafter\csstrcdr\string#1;}
++ \def\csstrcdr#1#2;{#2}
++ 		
++ 
+  % Set the font macro #1 to the font named #2, adding on the
+  % specified font prefix (normally `cm').
+  % #3 is the font's design size, #4 is a scale factor
+! \def\setfont#1#2#3#4{\dimen255=#3pt\divide\dimen255by1000
+!    \multiply\dimen255by#4%
+!    \global\expandafter\font\csname f/\csstringname#1\endcsname=\fontprefix#2\fontencoding\space at\dimen255
+!    \global\def#1{\csname f/\csstringname#1\endcsname
+! 		\def\fcurshape{#2}%
+! 		\def\fcursize{#3}%
+! 		\def\fcurscale{#4}}}
+! 
+  
+  % Use cm as the default font prefix.
+  % To specify the font prefix, you must define \fontprefix
+  % before you read in texinfo.tex.
+  \ifx\fontprefix\undefined
+! \def\fontprefix{p}
+  \fi
+  % Support font families that don't use the same naming scheme as CM.
+! \def\fontencoding{7t}
+! \def\rmshape{tmr}
+! \def\rmbshape{tmb}            %where the normal face is bold
+! \def\bfshape{tmb}
+! \def\bxshape{tmb}
+! \def\ttshape{crr}
+! \def\ttbshape{crb}
+! \def\ttslshape{crro}
+! \def\itshape{tmri}
+! \def\itbshape{tmbi}
+! \def\slshape{tmro}
+! \def\slbshape{tmbo}
+! \def\sfshape{hvr}
+! \def\sfbshape{hvb}
+! \def\scshape{tmrc}
+! \def\scbshape{tmbc}
+! 
+! % the reason we save all the \fcur* stuff in \setfont
+! % is so we can do some nice symbols:
+! 
+! \def\setcurtextsymbolfont{\def\fontencoding{8r}%
+!        \expandafter\setfont
+!           \csname\fontname\font/\fontencoding\endcsname
+! 	  \fcurshape\fcursize\fcurscale
+!        \csname\fontname\font/\fontencoding\endcsname}
+! 
+! \def\copyright{{\setcurtextsymbolfont\char'251}}
+! \def\bullet{{\setcurtextsymbolfont\char'225}}
+! 
+  
+  \ifx\bigger\relax
+  \let\mainmagstep=\magstep1
+***************
+*** 1052,1059 ****
+  \textfonts
+  
+  % Define these so they can be easily changed for other fonts.
+! \def\angleleft{$\langle$}
+! \def\angleright{$\rangle$}
+  
+  % Count depth in font-changes, for error checks
+  \newcount\fontdepth \fontdepth=0
+--- 1078,1092 ----
+  \textfonts
+  
+  % Define these so they can be easily changed for other fonts.
+! 
+! \def\setcursymbolfont{\def\fontencoding{}%
+!        \expandafter\setfont
+!           \csname\fontname\font/syr\endcsname
+! 	  {syr}\fcursize\fcurscale
+!        \csname\fontname\font/syr\endcsname}
+! 
+! \def\angleleft{{\setcursymbolfont\char'341}}
+! \def\angleright{{\setcursymbolfont\char'361}}
+  
+  % Count depth in font-changes, for error checks
+  \newcount\fontdepth \fontdepth=0

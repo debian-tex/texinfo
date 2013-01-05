@@ -1,0 +1,990 @@
+%
+% Intro
+% =====
+%
+% A glyph can be accessed with one of the three different kinds of
+% macros:
+%
+%   command     a macro without arguments, e.g., |\textdegree|;
+%
+%   composite   a macro taking one argument, producing a single glyph
+%               from a font;
+%
+%   accent      a macro taking one argument, producing a glyph (the
+%               argument) with another glyph (accent) superimposed.
+%
+% Accents can place an accent mark on any glyph, but typographically
+% this often doesn't look good.  Therefore some fonts provide some
+% accented glyphs designed by a designer ("composites").  For example,
+% typing |\'a| will result in the acute accent (|\'|) being placed
+% over the glyph |a| in some encodings (e.g., in OT1), but will
+% produce a single glyph (|a| with acute) in others (e.g., T1).
+%
+% Note that a font may contain both composites (for some letters) and
+% accent marks.  When a composite is not available in the font, the
+% accent can be used to typeset the desired glyph.
+%
+% Besides the visual advantages, composites are preferable for a
+% technical reason -- TeX does not hyphenate words which contain
+% accents.
+%
+% Glyph searching
+% ===============
+%
+% Glyph searching means identifying a font encoding which both
+% contains the glyph and is supported by the current font family.
+%
+% The simplest approach at glyph searching is to search through the
+% list of encodings in which the glyph exists to find the first one
+% supported by the current font family.
+%
+% This however can result in using unnecessarily large number of
+% fonts.  In order to decrease the font usage we can provide hints to
+% the glyph searching mechanism as to which font encodings are the
+% most likely to contain glyphs under different circumstances.
+%
+% There is some relation between input encodings and font encodings,
+% although it is not necessarily a one-to-one (or a many-to-one)
+% mapping.  Each input encoding defines a list of font encodings which
+% should be tried first (we call it "the current font encoding list",
+% |\cur@fenc@list|).  These are encodings which cover the input
+% encoding completely.  Only if we don't find an encoding in this list
+% which is both supported by the current font family and contains the
+% glyph, we start searching the glyph's encoding list.
+%
+% Searching for a glyph involves an ambiguity -- the same glyph be
+% typeset as either an accent over a letter, or as a single composite
+% glyph.  Ideally a composite is preferable, but if an accent is
+% available without changing the current font, we might prefer the
+% accent.
+%
+% This is how we do the searching:
+%
+% 1) Check the current encoding + current font encoding list (set up
+%    by |@documentencoding|) "breadth-first", i.e., preferring accents
+%    in an earlier encoding over composites in later encodings.  This
+%    is to hopefully minimize the font usage, as we would find "the
+%    earliest" usable font.
+%
+% 2) If the glyph was not found in step 1, search the glyph's encoding
+%    list.  We now prefer composites -- we'll consider an accent only
+%    when none of the composite's encodings is supported by the
+%    current font family.  We now don't care about font usage and
+%    search "the best" glyph, as this is a (supposedly rare) situation
+%    when a "non-standard" font will get used anyway, e.g., when a
+%    user requests a Cyrillic glyph while inside a Latin environment.
+%
+% Cache
+% =====
+%
+% After we've found the glyph we can cache it, i.e., arrange for the
+% the glyph's macro the next time to typeset the glyph without doing
+% the searching again.
+%
+% Such cache however must be aware of changes in settings which affect
+% glyph searching, which are:
+%
+% 1) the current font encoding (E);
+% 2) the current font encoding list, set up by |@documentencoding| (EL);
+% 3) font encoding list of the current font family (FEL).
+%
+% Therefore, the first thing we do is assign a unique index to every
+% combination of E+EL+FEL we encounter in the document.  Whenever we
+% change E, EL or FEL we check if the new combination have already
+% been assigned an index; if not, we allocate next index for the new
+% combination (see |\update@enclist@index|).  When we cache a glyph we
+% use this index to remember for which combination of E+EL+FEL this
+% cache entry is for.
+%
+% This is how glyph caching works.  Let's say we have to typeset
+% |\'a|.  |\'| (being a composite or an accent) calls a macro named
+% |\N\'-a| (single command sequence, N is the index of the current
+% E+EL+FEL combination) if it's defined; if it's not defined, |\'|
+% calls glyph searching macro.  After the glyph searching macro finds
+% the glyph corresponding to |\'a|, it defines the macro named
+% |\N\'-a| to typeset that glyph (using either accent or composite,
+% whatever was found), so the next time we encounter |\'a| we won't
+% search for the glyph (unless the E+EL+FEL combination has changed
+% and |\'a| had not yet been cached for that combo).
+%
+% The drawback of this method is that TeX's memory gets filled with
+% many cache entries for every E+EL+FEL combo ever used in the
+% document.  It's possible to construct the glyph cache in a way to
+% avoid this -- for example, to define only one cache macro for |\'a|,
+% and add to it a new branch for each new E+EL+FEL combination, but
+% naturally this will be slower.
+%
+% Internal macros ("variables")
+% =============================
+%
+% fenc@enc          font encoding currently being defined.
+%
+% fenc@list/NAME    list of encodings for the glyph NAME.
+%
+% cur@fenc@list     "the current font encoding list" (see "Glyph
+%                   searching" above).
+%
+% ENC/NAME          definition of glyph NAME in encoding ENC.
+%
+% @enc              encoding of the glyph (set after finding the
+%                   glyph / retrieving the glyph from the cache).
+%
+% cache@enc@ENC     macro that defines \@enc to be ENC.
+%
+% N\NAME            cache entry for glyph \NAME under a combination of
+%                   E+EL+FEL number N.
+%
+%
+%
+% \fCmd{COMMAND}{TEXT}
+%
+% Define a command that does not take arguments.  Call \f@restore@enc
+% inside TEXT if you need to restore the original encoding (remember,
+% before the command is called, the encoding is changed to the one for
+% which the command was defined, which can be different from the
+% current user's encoding).
+\def\fCmd#1#2{%
+  \def#1{\f@search@command #1}%
+  \f@def@enc@glyph#1%
+    {\f@change@enc #2\f@enc@egroup}%
+}%
+%
+% \fSym{COMMAND}{SLOT}
+%
+% Define a font glyph in SLOT.
+\def\fSym#1#2{\fCmd{#1}{\char#2 }}%
+%
+% \fCmdd{COMMAND}{TEXT}
+%
+% Define a command that takes one argument.  Call \f@restore@enc
+% inside TEXT before typesetting the argument, to restore the original
+% encoding (remember, before the command is called, the encoding is
+% changed to the one for which the command was defined, which can be
+% different from the current user's encoding).
+\def\fCmdd#1#2{%
+  \def#1{\f@search@accent #1}% When searching, treat it as an accent.
+  \f@def@enc@glyph#1%
+    ##1{\f@change@enc #2\f@enc@egroup}%
+}%
+%
+% \fCmp{COMMAND}{ARG}{TEXT}
+%
+% Define a composite command.  If there's a corresponding accent,
+% composite will override the accent when the argument is ARG.
+\def\fCmp#1#2#3{%
+  \def#1{\f@search@composite #1}%
+  \f@def@enc@glyph{#1-\string#2}%
+    {\f@change@enc #3\f@enc@egroup}%
+}%
+%
+% \fCmpSym{COMMAND}{ARG}{SLOT}
+%
+% Same as \fCmp, but define a composite glyph in SLOT.
+\def\fCmpSym#1#2#3{\fCmp#1#2{\char#3}}%
+%
+% \fAcc{COMMAND}{SLOT}
+%
+% Define an accent in SLOT.  If there are corresponding composite
+% commands for some arguments, they will override the accent for those
+% arguments.
+\def\fAcc#1#2{%
+  \def#1{\f@search@accent #1}%
+  \f@def@enc@glyph#1%
+    {\f@do@accent{#2}}%
+}%
+%
+%
+%
+% \f@def@enc@glyph{NAME}{DEF}
+%
+% Define a glyph in the current encoding.
+\def\f@def@enc@glyph#1{%
+  % Add the font encoding to the encoding list for the command.
+  \expandafter\def\expandafter\temp\expandafter{%
+    \csname fenc@list/\string#1\endcsname
+  }%
+  \expandafter\ifx\temp\relax
+    \let\tempa\empty
+  \else
+    \edef\tempa{\temp}%
+  \fi
+  \expandafter\edef\temp{\fenc@enc\space\tempa}%
+  % Start definition of the glyph command for the current encoding.
+  \expandafter\def \csname\fenc@enc/\string#1\endcsname
+}%
+%
+% \f@change@enc
+%
+% Start a group with \f@enc@bgroup and change font encoding to \@enc,
+% if the current encoding is different.  The original encoding is
+% saved, call \f@restore@enc inside the command's def to restore it.
+\def\f@change@enc{%
+  \f@enc@bgroup
+  % Save original encoding -- the glyph macro might need to restore
+  % it, e.g., to typeset its argument.
+  \let\f@orig@enc\f@encoding
+  % Switch encoding, if needed.  \@enc is set when the glyph is
+  % found or retrieved from the cache.
+  \ifx\f@encoding\@enc \else
+    \setfontencoding{\@enc}\selectfont
+  \fi
+}%
+%
+% \f@restore@enc
+%
+% Restore encoding saved by \f@change@enc.
+\def\f@restore@enc{%
+  \ifx\f@orig@enc\f@encoding \else
+    \setfontencoding{\f@orig@enc}\selectfont
+  \fi
+}%
+%
+% These are used by glyphs to start and end a group isolating a font
+% encoding change.  Accents turn these off to avoid any grouping
+% inside their argument, because grouping breaks accents.
+\let\f@enc@bgroup\bgroup
+\let\f@enc@egroup\egroup
+%
+% \f@do@accent{SLOT}{ARG}
+%
+% Typeset an accent in SLOT over the ARG.
+\def\f@do@accent#1#2{%
+  \bgroup
+    % Avoid starting any more groups -- they're not needed because we
+    % already have one, and a group between the accent and the
+    % accented letter will break the accent.
+    \let\f@enc@bgroup\empty
+    \let\f@enc@egroup\empty
+    % Preload any fonts in advance, to prevent grouping (possible when
+    % loading fonts) from messing with the accent.  Also save the
+    % space factor of the argument -- we'll need to restore it,
+    % otherwise, e.g., \'A will have the factor of 1000 instead of 999.
+    \setbox\z@\hbox{#2%
+      \xdef\f@do@accent@spacefactor{\spacefactor\the\spacefactor}}%
+    % Save the current font encoding and switch it.
+    \f@change@enc
+    % Start the accent.
+    \accent#1
+    % Turn off \fontnotify and \setleading, because their \message and
+    % \setbox will break the accent.  We don't turn off \fontwarn
+    % because a warning would mean that the fonts are broken anyway,
+    % and a warning might help diagnosing.
+    \let\@fontnotify\gobble
+    \let\@setleading\gobble
+    % Restore the original encoding.
+    \f@restore@enc
+    % Typeset the argument.
+    #2\f@do@accent@spacefactor % Restore the space factor.
+  \egroup
+}%
+%
+%
+%
+% \f@search@command{COMMAND}
+%
+% Search for the glyph COMMAND and typeset it.
+\def\f@search@command#1{%
+  % Check the cache of the current font encoding list.
+  \expandafter\let \expandafter\temp
+    \csname \the\enclist@curr\string#1\endcsname
+  %
+  \ifx\temp\relax
+    % The glyph is not in the cache, search.
+    %\message{^^J Glyph command `\string#1' is not
+    %  in the cache (idx \the\enclist@curr).}%
+    \def\f@search@cmd{\string#1}%
+    \let\f@search@arg\empty
+    \let\f@accent@arg\empty
+    \f@search@encodings
+  \else
+    % The glyph is in the cache.
+    %\message{^^J Glyph command `\string#1' is
+    %  in the cache (idx \the\enclist@curr).}%
+    \temp
+  \fi
+}%
+%
+% \f@search@composite{COMMAND}{ARGUMENT}
+%
+% Search for the composite COMMAND + ARGUMENT and typeset it.  If such
+% composite is not defined but an accent named COMMAND is, the accent
+% will be substituted.
+\def\f@search@composite#1#2{%
+  % Check the cache with the current font encoding list.  \empty after
+  % #2 is for a situation like \'{} (empty ARGUMENT).
+  \expandafter\let \expandafter\temp
+    \csname \the\enclist@curr\string#1-\string#2\empty\endcsname
+  %
+  \ifx\temp\relax
+    % The glyph is not in the cache, search.
+    %\message{^^J Glyph composite `\string#1{\string#2\empty}' is not
+    %  in the cache (idx \the\enclist@curr).}%
+    \def\f@search@arg{-\string#2\empty}%
+    \def\f@search@cmd{\string#1}%
+    \def\f@accent@arg{{#2}}%
+    \f@search@encodings
+  \else
+    % The glyph is in the cache.
+    %\message{^^J Glyph composite `\string#1{\string#2\empty}' is
+    %  in the cache (idx \the\enclist@curr).}%
+    \temp
+  \fi
+}%
+%
+% \f@search@accent{COMMAND}{ARGUMENT}
+%
+% Search for the accent COMMAND and typeset it over the ARGUMENT.  If a
+% composite with the name COMMAND is defined with the ARGUMENT, it
+% might be used in preference to the accent.
+\let\f@search@accent\f@search@composite
+%
+%
+%
+% \f@search@encodings
+%
+% Search for a glyph (accent/composite/command), first in the current
+% encoding, then in the current font encoding list (set up by
+% @documentencoding), then in all encodings in which the glyph
+% appears.  After the glyph is found, define the cache entry for the
+% glyph and typeset the glyph.
+\def\f@search@encodings{%
+  \let\@enc\relax
+  \let\f@cache@arg\f@search@arg
+  % Check the current font encoding + the current font encoding list
+  % breadth-first.  We want to find a glyph as early in the list as
+  % possible (to hopefully minimize number of fonts that get loaded),
+  % therefore we prefer an accent in an earlier encoding over a
+  % composite in a later encoding, hence the "breadth first" search.
+  \edef\temp{\f@encoding\space\cur@fenc@list}%
+  \f@search@breadthfirst \temp
+  %
+  \ifx\@enc\relax
+    % Nothing found, so we try a different tactic.  We check encoding
+    % list of the glyph to find the first encoding which is supported
+    % by the current font family.  One complication is that a glyph
+    % can appear as a command, a composite or an accent, so we need to
+    % check all possibilities (but preferring composites over
+    % accents).
+    %
+    % Check the composite.  If \f@search@arg is \empty, this will check
+    % encoding list of the command, which is exactly what we need.
+    \expandafter\f@search@glyph
+      \csname fenc@list/\f@search@cmd\f@search@arg\endcsname
+    %
+    \ifx\@enc\relax
+      % Nothing found, check the font encoding list of the command / accent.
+      \let\f@search@arg\empty % It's not a composite, so we don't need arg part.
+      \expandafter\f@search@glyph
+        \csname fenc@list/\f@search@cmd\endcsname
+      %
+      \ifx\@enc\relax
+        % Still nothing found, which means the current family does not
+        % support any of the composite's / command's / accent's encodings.
+        \errmessage{^^JThe font family \f@family\space does not support
+                    the command `\f@search@cmd\f@cache@arg'}%
+      \fi
+    \else
+      % We've found a composite (or a command), so we don't need the arg below.
+      \let\f@accent@arg\empty
+    \fi
+  \fi
+  % Make the cache entry.
+  \edef\temp##1{%
+    \expandafter\gdef\expandafter\noexpand
+      \csname \the\enclist@curr\f@search@cmd\f@cache@arg\endcsname{%
+        % Set \@enc to the encoding of the glyph.
+        \expandafter\noexpand
+          \csname cache@enc@\@enc\endcsname
+        % Call the glyph's definition for the encoding we've found.
+        \expandafter\noexpand
+          \csname\@enc/\f@search@cmd\f@search@arg\endcsname ##1%
+      }%
+  }%
+  \expandafter\temp\expandafter{\f@accent@arg}%
+  % Typeset the glyph.
+  \csname \the\enclist@curr\f@search@cmd\f@cache@arg\endcsname
+}%
+%
+% \f@search@breadthfirst \ENC-LIST
+%
+% Search (recursively) for a glyph in encodings from \ENC-LIST,
+% preferring an accent in an earlier encoding over a composite in a
+% later encoding.  When the glyph is found, \@enc, \f@search@arg and
+% \f@accent@arg are set accordingly (see \f@search@encodings).
+\def\f@search@breadthfirst#1{%
+  \let\next\@f@search@breadthfirst % \@f@search@breadthfirst needs this.
+  \expandafter\@f@search@breadthfirst #1\finish
+}%
+%
+\def\@f@search@breadthfirst#1 #2\finish{%
+  % See if this is the last encoding in the list.
+  \def\temp{#2}%
+  \ifx\temp\empty % Yes, gobble the list's sentinel.
+    \let\next\gobble@to@finish
+  \fi
+  % See if this encoding is supported by the current family.
+  \expandafter\ifx \csname fam@enc/\f@family/#1\endcsname \relax
+  \else
+    % See if the encoding contains the composite (or the command, when
+    % \f@search@arg is \empty).
+    \expandafter\ifx \csname #1/\f@search@cmd\f@search@arg\endcsname \relax
+      % No, but maybe the encoding contains the accent.  (This might
+      % also check the second time for the command if it was not found
+      % above.)
+      \expandafter\ifx \csname #1/\f@search@cmd\endcsname \relax \else
+        \let\f@search@arg\empty % \f@search@encodings needs this.
+        \def\@enc{#1}%
+        \let\next\gobble@to@finish % Gobble the rest of the list.
+      \fi
+    \else % Yes, this encoding contains the composite (or a command).
+      \let\f@accent@arg\empty % \f@search@encodings needs this.
+      \def\@enc{#1}%
+      \let\next\gobble@to@finish % Gobble the rest of the list.
+    \fi
+  \fi
+  %
+  \next#2\finish
+}%
+%
+% \f@search@glyph \ENC-LIST
+%
+% Search (recursively) for a particular type of glyph
+% (command/composite/accent, determined by the combination of
+% \f@search@cmd and \f@search@arg) in encodings from \ENC-LIST.
+\def\f@search@glyph#1{%
+  \ifx#1\relax \else
+    \let\next\@f@search@glyph % \@f@search@glyph needs this.
+    \expandafter\@f@search@glyph#1\finish
+  \fi
+}%
+%
+\def\@f@search@glyph#1 #2\finish{%
+  % See if this is the last encoding in the list.
+  \def\temp{#2}%
+  \ifx\temp\empty % Yes, gobble the list's sentinel.
+    \let\next\gobble@to@finish
+  \fi
+  % See if this encoding is supported by the current family.
+  \expandafter\ifx \csname fam@enc/\f@family/#1\endcsname \relax
+  \else % Yes, see if the encoding contains the glyph.
+    \expandafter\ifx \csname #1/\f@search@cmd\f@search@arg\endcsname \relax
+    \else
+      \def\@enc{#1}%
+      \let\next\gobble@to@finish % Gobble the rest of the list.
+    \fi
+  \fi
+  %
+  \next#2\finish
+}%
+%
+%
+%
+% Font ("output") encodings.  LaTeX's ltoutenc.dtx v1.99h has been
+% used as reference.
+%
+% Some commands common to several encodings.
+%
+\def\registeredsymbol{\leavevmode\raise.7ex\hbox{\textregistered}}
+\def\@euro{{\setfontfamily{Eurosym}\setfontencoding{T1}\selectfont\char101}}%
+\def\aa{\ringaccent a}%
+\def\AA{\ringaccent A}%
+\def\@cedilla#1#2{{\setbox\z@\hbox{\f@restore@enc #2}%
+  \ifdim\ht\z@=1ex\accent#1 \f@restore@enc #2%
+    \else\ooalign{\unhbox\z@\crcr\hidewidth\char#1\hidewidth}\fi}}%
+\def\@udotaccent#1{{\o@lign{\relax\f@restore@enc#1\crcr
+  \hidewidth\sh@ft{-1ex}.\hidewidth}}}%
+\def\@ubaraccent#1#2{{\o@lign{\relax\f@restore@enc#2\crcr
+  \hidewidth\sh@ft{-3ex}\vbox to.2ex{\hbox{\char#1}\vss}\hidewidth}}}%
+%
+% This defines encoding used when defining font glyph and commands.
+\def\fenc@begin#1{%
+  \def\fenc@enc{#1}%
+  \expandafter\def\csname cache@enc@#1\endcsname{\def\@enc{#1}}%
+}%
+%
+% OT1.
+\fenc@begin{OT1}
+\fSym\ptexi{16}
+\fSym\j{17}
+\fAcc\`{18}
+\fCmp\`i{\f@restore@enc\`\ptexi}
+\fAcc\'{19}
+\fCmp\'i{\f@restore@enc\'\ptexi}
+\fAcc\v{20}
+\fAcc\u{21}
+\fAcc\={22}
+\fAcc\ringaccent{23}
+\fCmp\ringaccent A{\leavevmode\setbox0\hbox{!}\dimen@\ht0\advance\dimen@-1ex%
+  \rlap{\raise.67\dimen@\hbox{\char'27}}A}
+\fSym\ss{25}
+\fSym\ae{26}
+\fSym\oe{27}
+\fSym\o{28}
+\fSym\AE{29}
+\fSym\OE{30}
+\fSym\O{31}
+\fCmd\l{\char32l}
+\fCmd\L{\leavevmode\setbox0\hbox{L}\hbox to\wd0{\hss\char32L}}
+\fCmd\textquotedblright{`\"}
+\fCmd\textdollar{{\ifdim\fontdimen\@ne\font>\z@\slshape\else\upshape\fi\$}}
+\fCmd\textquoteright{`\'}
+\fCmd\exclamdown{!`}
+\fCmd\questiondown{?`}
+\fSym\textquotedblleft{92}
+\fAcc\^{94}
+\fCmp\^i{\f@restore@enc\^\ptexi}
+\fAcc\dotaccent{95}
+\fCmpSym\dotaccent i{`\i}
+\fCmpSym\dotaccent\i{`\i}
+\fCmd\textquoteleft{`\`}
+\fSym\textendash{123}
+\fSym\textemdash{124}
+\fAcc\H{125}
+\fAcc\~{126}
+\fAcc\"{127}
+\fCmp\"i{\f@restore@enc\"\ptexi}
+\fCmd\pounds{{\ifdim\fontdimen\@ne\font>\z@\itshape\else
+  \setfontshape{ui}\selectfont\fi\$}}
+\fCmd\euro\@euro
+\fCmdd\,{\@cedilla{24}{#1}}
+\fCmdd\udotaccent{\@udotaccent{#1}}
+\fCmdd\ubaraccent{\@ubaraccent{22}{#1}}
+\fCmd\ordf{\leavevmode\raise1ex\hbox{\scalefont{727}\underbar{a}}}
+\fCmd\ordm{\leavevmode\raise1ex\hbox{\scalefont{727}\underbar{o}}}
+\fCmd\ij{\nobreak\hskip\z@skip i\kern-0.02em j\nobreak\hskip\z@skip}
+\fCmd\IJ{\nobreak\hskip\z@skip I\kern-0.02em J\nobreak\hskip\z@skip}
+\fCmd\textonesuperior{$^{\hbox{\scalefont{727}1}}$}
+\fCmd\texttwosuperior{$^{\hbox{\scalefont{727}2}}$}
+\fCmd\textthreesuperior{$^{\hbox{\scalefont{727}3}}$}
+\fCmd\textonequarter{$\hbox{\scalefont{727}1}\over\hbox{\scalefont{727}4}$}
+\fCmd\textonehalf{$\hbox{\scalefont{727}1}\over\hbox{\scalefont{727}2}$}
+\fCmd\textthreequarters{$\hbox{\scalefont{727}3}\over\hbox{\scalefont{727}4}$}
+% End of OT1.
+%
+% OML.
+\fenc@begin{OML}
+\fSym\textless{`\<}
+\fSym\textgreater{`\>}
+%\fSym\star{63}% FIXME this requires redefining \point.
+\fAcc\tieaccent{127}
+% End of OML.
+%
+% OMS.
+\fenc@begin{OMS}
+\fSym\minus0
+\fSym\textperiodcentered1
+\fSym\textmultiply2
+\fSym\texttimes2
+\fSym\textdivide4
+\fSym\textdiv4
+\fSym\textplusminus6
+\fSym\textpm6
+\fSym\bullet{15}
+\fCmd\textdegree{$^{\hbox{\char14}}$}%
+% FIXME @result, @expansion, @print, @equiv?
+\fSym\{{102}
+\fSym\}{103}
+\fSym\textbackslash{110}% FIXME name.
+\fSym\textsection{120}
+\fSym\textdagger{121}
+\fSym\textdaggerdbl{122}
+\fSym\textparagraph{123}
+\fSym\textbigcircle{13}
+\def\oms@textcircled#1{{\ooalign{%
+  \hfil\raise.32ex\hbox{\f@restore@enc\scalefont{600}#1}\hfil\crcr
+       \raise.35ex\hbox{\scalefont{780}\textbigcircle}}}}%
+\fCmdd\textcircled{\oms@textcircled{#1}}
+\fCmd\textregistered{\oms@textcircled{R}}
+\fCmd\copyright{\oms@textcircled{\kern-.05em C}}
+% End of OMS.
+%
+% Common glyphs of the T* encodings.
+\def\t@oenc@common{%
+\fAcc\`0
+\fAcc\'1
+\fAcc\^2
+\fAcc\~3
+\fAcc\"4
+\fAcc\H5
+\fAcc\ringaccent6
+\fAcc\v7
+\fAcc\u8
+\fAcc\=9
+\fAcc\dotaccent{10}
+\fCmpSym\dotaccent i{`\i}
+\fCmpSym\dotaccent\i{`\i}
+\fCmdd\,{\@cedilla{11}{##1}}
+\fCmdd\k{{\ooalign{\relax\f@restore@enc ##1\crcr\hidewidth\char12}}}
+\fCmdd\ogonekcentered{{\ooalign{\relax\f@restore@enc ##1\crcr\hidewidth\char12\hidewidth}}}
+\fCmp\k o{\f@restore@enc\ogonekcentered o}
+\fCmp\k O{\f@restore@enc\ogonekcentered O}
+\fSym\textquotedblleft{16}
+\fSym\textquotedblright{17}
+\fSym\textendash{21}
+\fSym\textemdash{22}
+\fCmd\textperthousand{\%\char 24 }
+\fCmd\textpertenthousand{\%\char 24\char 24 }
+\fSym\ptexi{25}
+\fSym\j{26}
+\fSym\textvisiblespace{32}
+\fCmd\textquotedbl{`\"}
+\fCmd\textdollar{`\$}
+\fSym\textquoteright{`\'}
+\fSym\textless{`\<}
+\fSym\textgreater{`\>}
+\fSym\textbackslash{92}% FIXME name.
+\fSym\textquoteleft{`\`}
+\fSym\{{123}
+\fSym\}{125}
+\fCmdd\udotaccent{\@udotaccent{##1}}
+\fCmdd\ubaraccent{\@ubaraccent{9}{##1}}
+}%
+% End of common glyphs of the T* encodings.
+%
+% T1.
+\fenc@begin{T1}
+\t@oenc@common % The common glyphs.
+\fSym\textquotesinglbase{13}% FIXME LaTeX calls it `\quotesinglbase'.
+\fSym\textguilsinglleft{14}% FIXME LaTeX calls it `\guilsinglleft'.
+\fSym\textguilsinglright{15}% FIXME LaTeX calls it `\guilsinglright'.
+\fSym\textquotedblbase{18}% FIXME LaTeX calls it `\quotedblbase'.
+\fSym\textguillemotleft{19}% FIXME LaTeX calls it `\guillemotleft'.
+\fSym\textguillemotright{20}% FIXME LaTeX calls it `\guillemotright'.
+\fCmpSym\u A{128}
+\fCmpSym\k A{129}
+\fCmpSym\'C{130}
+\fCmpSym\v C{131}
+\fCmpSym\v D{132}
+\fCmpSym\v E{133}
+\fCmpSym\k E{134}
+\fCmpSym\u G{135}
+\fCmpSym\'L{136}
+\fCmpSym\v L{137}
+\fSym\L{138}
+\fCmpSym\'N{139}
+\fCmpSym\v N{140}
+\fSym\NG{141}
+\fCmpSym\H O{142}
+\fCmpSym\'R{143}
+\fCmpSym\v R{144}
+\fCmpSym\'S{145}
+\fCmpSym\v S{146}
+\fCmpSym\,S{147}
+\fCmpSym\v T{148}
+\fCmpSym\,T{149}
+\fCmpSym\H U{150}
+\fCmpSym\ringaccent U{151}
+\fCmpSym\"Y{152}
+\fCmpSym\'Z{153}
+\fCmpSym\v Z{154}
+\fCmpSym\dotaccent Z{155}
+\fSym\IJ{156}
+\fCmpSym\dotaccent I{157}
+\fSym\dj{158}% FIXME AGL calls it dcroat.
+\fSym\textsection{159}
+\fCmpSym\u a{160}
+\fCmpSym\k a{161}
+\fCmpSym\'c{162}
+\fCmpSym\v c{163}
+\fCmpSym\v d{164}
+\fCmpSym\v e{165}
+\fCmpSym\k e{166}
+\fCmpSym\u g{167}
+\fCmpSym\'l{168}
+\fCmpSym\v l{169}
+\fSym\l{170}
+\fCmpSym\'n{171}
+\fCmpSym\v n{172}
+\fSym\ng{173}
+\fCmpSym\H o{174}
+\fCmpSym\'r{175}
+\fCmpSym\v r{176}
+\fCmpSym\'s{177}
+\fCmpSym\v s{178}
+\fCmpSym\,s{179}
+\fCmpSym\v t{180}
+\fCmpSym\,t{181}
+\fCmpSym\H u{182}
+\fCmpSym\ringaccent u{183}
+\fCmpSym\"y{184}
+\fCmpSym\'z{185}
+\fCmpSym\v z{186}
+\fCmpSym\dotaccent z{187}
+\fSym\ij{188}
+\fSym\exclamdown{189}
+\fSym\questiondown{190}
+\fSym\pounds{191}
+\fCmpSym\`A{192}
+\fCmpSym\'A{193}
+\fCmpSym\^A{194}
+\fCmpSym\~A{195}
+\fCmpSym\"A{196}
+\fCmpSym\ringaccent A{197}
+\fSym\AE{198}
+\fCmpSym\,C{199}
+\fCmpSym\`E{200}
+\fCmpSym\'E{201}
+\fCmpSym\^E{202}
+\fCmpSym\"E{203}
+\fCmpSym\`I{204}
+\fCmpSym\'I{205}
+\fCmpSym\^I{206}
+\fCmpSym\"I{207}
+\fSym\DH{208}% FIXME AGL calls it eth.
+\fSym\DJ{208}% FIXME AGL calls it dcroat.
+\fCmpSym\~N{209}
+\fCmpSym\`O{210}
+\fCmpSym\'O{211}
+\fCmpSym\^O{212}
+\fCmpSym\~O{213}
+\fCmpSym\"O{214}
+\fSym\OE{215}
+\fSym\O{216}
+\fCmpSym\`U{217}
+\fCmpSym\'U{218}
+\fCmpSym\^U{219}
+\fCmpSym\"U{220}
+\fCmpSym\'Y{221}
+\fSym\TH{222}% FIXME AGL calls it thorn.
+\fSym\SS{223}
+\fCmpSym\`a{224}
+\fCmpSym\'a{225}
+\fCmpSym\^a{226}
+\fCmpSym\~a{227}
+\fCmpSym\"a{228}
+\fCmpSym\ringaccent a{229}
+\fSym\ae{230}
+\fCmpSym\,c{231}
+\fCmpSym\`e{232}
+\fCmpSym\'e{233}
+\fCmpSym\^e{234}
+\fCmpSym\"e{235}
+\fCmpSym\`i{236}
+\fCmpSym\'i{237}
+\fCmpSym\^i{238}
+\fCmpSym\"i{239}
+\fSym\dh{240}% FIXME AGL calls it eth.
+\fCmpSym\~n{241}
+\fCmpSym\`o{242}
+\fCmpSym\'o{243}
+\fCmpSym\^o{244}
+\fCmpSym\~o{245}
+\fCmpSym\"o{246}
+\fSym\oe{247}
+\fSym\o{248}
+\fCmpSym\`u{249}
+\fCmpSym\'u{250}
+\fCmpSym\^u{251}
+\fCmpSym\"u{252}
+\fCmpSym\'y{253}
+\fSym\th{254}% FIXME AGL calls it thorn.
+\fSym\ss{255}
+% End of T1.
+%
+% T2A.
+\fenc@begin{T2A}
+\t@oenc@common % The common glyphs.
+\fSym\CYRpalochka{13}
+\fAcc\f{18}
+\fAcc\C{19}
+\fAcc\U{20}
+\fSym\textnumero{157}
+\fSym\textsection{158}
+\fSym\textquotedblbase{189}% FIXME LaTeX calls this \quotedblbase.
+\fSym\textguillemotleft{190}% FIXME LaTeX calls it `\guillemotleft'.
+\fSym\textguillemotright{191}% FIXME LaTeX calls it `\guillemotright'.
+\fSym\CYRA{192}
+\fSym\cyra{224}
+\fSym\CYRB{193}
+\fSym\cyrb{225}
+\fSym\CYRV{194}
+\fSym\cyrv{226}
+\fSym\CYRG{195}
+\fSym\cyrg{227}
+\fSym\CYRD{196}
+\fSym\cyrd{228}
+\fSym\CYRE{197}
+\fSym\cyre{229}
+\fSym\CYRZH{198}
+\fSym\cyrzh{230}
+\fSym\CYRZ{199}
+\fSym\cyrz{231}
+\fSym\CYRI{200}
+\fSym\cyri{232}
+\fSym\CYRISHRT{201}
+\fSym\cyrishrt{233}
+\fSym\CYRK{202}
+\fSym\cyrk{234}
+\fSym\CYRL{203}
+\fSym\cyrl{235}
+\fSym\CYRM{204}
+\fSym\cyrm{236}
+\fSym\CYRN{205}
+\fSym\cyrn{237}
+\fSym\CYRO{206}
+\fSym\cyro{238}
+\fSym\CYRP{207}
+\fSym\cyrp{239}
+\fSym\CYRR{208}
+\fSym\cyrr{240}
+\fSym\CYRS{209}
+\fSym\cyrs{241}
+\fSym\CYRT{210}
+\fSym\cyrt{242}
+\fSym\CYRU{211}
+\fSym\cyru{243}
+\fSym\CYRF{212}
+\fSym\cyrf{244}
+\fSym\CYRH{213}
+\fSym\cyrh{245}
+\fSym\CYRC{214}
+\fSym\cyrc{246}
+\fSym\CYRCH{215}
+\fSym\cyrch{247}
+\fSym\CYRSH{216}
+\fSym\cyrsh{248}
+\fSym\CYRSHCH{217}
+\fSym\cyrshch{249}
+\fSym\CYRHRDSN{218}
+\fSym\cyrhrdsn{250}
+\fSym\CYRERY{219}
+\fSym\cyrery{251}
+\fSym\CYRSFTSN{220}
+\fSym\cyrsftsn{252}
+\fSym\CYREREV{221}
+\fSym\cyrerev{253}
+\fSym\CYRYU{222}
+\fSym\cyryu{254}
+\fSym\CYRYA{223}
+\fSym\cyrya{255}
+\fSym\CYRGUP{128}
+\fSym\cyrgup{160}
+\fSym\CYRGHCRS{129}
+\fSym\cyrghcrs{161}
+\fSym\CYRDJE{130}
+\fSym\cyrdje{162}
+\fSym\CYRTSHE{131}
+\fSym\cyrtshe{163}
+\fSym\CYRSHHA{132}
+\fSym\cyrshha{164}
+\fSym\CYRZHDSC{133}
+\fSym\cyrzhdsc{165}
+\fSym\CYRZDSC{134}
+\fSym\cyrzdsc{166}
+\fSym\CYRLJE{135}
+\fSym\cyrlje{167}
+\fSym\CYRYI{136}
+\fSym\cyryi{168}
+\fSym\CYRKDSC{137}
+\fSym\cyrkdsc{169}
+\fSym\CYRKBEAK{138}
+\fSym\cyrkbeak{170}
+\fSym\CYRKVCRS{139}
+\fSym\cyrkvcrs{171}
+\fSym\CYRAE{140}
+\fSym\cyrae{172}
+\fSym\CYRNDSC{141}
+\fSym\cyrndsc{173}
+\fSym\CYRNG{142}
+\fSym\cyrng{174}
+\fSym\CYRDZE{143}
+\fSym\cyrdze{175}
+\fSym\CYROTLD{144}
+\fSym\cyrotld{176}
+\fSym\CYRSDSC{145}
+\fSym\cyrsdsc{177}
+\fSym\CYRUSHRT{146}
+\fSym\cyrushrt{178}
+\fSym\CYRY{147}
+\fSym\cyry{179}
+\fSym\CYRYHCRS{148}
+\fSym\cyryhcrs{180}
+\fSym\CYRHDSC{149}
+\fSym\cyrhdsc{181}
+\fSym\CYRDZHE{150}
+\fSym\cyrdzhe{182}
+\fSym\CYRCHVCRS{151}
+\fSym\cyrchvcrs{183}
+\fSym\CYRCHRDSC{152}
+\fSym\cyrchrdsc{184}
+\fSym\CYRIE{153}
+\fSym\cyrie{185}
+\fSym\CYRSCHWA{154}
+\fSym\cyrschwa{186}
+\fSym\CYRNJE{155}
+\fSym\cyrnje{187}
+\fSym\CYRYO{156}
+\fSym\cyryo{188}
+\fSym\CYRII{73}
+\fSym\cyrii{105}
+\fSym\CYRJE{74}
+\fSym\cyrje{106}
+\fSym\CYRQ{81}
+\fSym\cyrq{113}
+\fSym\CYRW{87}
+\fSym\cyrw{119}
+\fCmpSym\"\CYRE{156}
+\fCmpSym\"\cyre{188}
+\fCmpSym\U\CYRI{201}
+\fCmpSym\U\cyri{233}
+\fCmpSym\"\CYRII{136}
+\fCmpSym\"\cyrii{168}
+\fCmpSym\,\CYRZ{134}
+\fCmpSym\,\cyrz{166}
+\fCmpSym\k\CYRS{145}
+\fCmpSym\k\cyrs{177}
+\fCmpSym\U\CYRU{146}
+\fCmpSym\U\cyru{178}
+% End of T2A.
+%
+% TS1.
+\fenc@begin{TS1}
+\fAcc\tieaccent{26}
+\fCmd\textdollar{`\$}
+\fSym\textfractionsolidus{47}
+\fSym\minus{61}
+\fSym\textbigcircle{79}
+\fCmdd\textcircled{{\ooalign{\hfil\raise.34ex%
+  \hbox{\f@restore@enc\scalefont{560}#1}\hfil\crcr\hbox{\textbigcircle}}}}
+%\fSym\star{98}% FIXME this requires redefining \point.
+\fSym\textdagger{132}
+\fSym\textdaggerdbl{133}
+\fSym\textperthousand{135}
+\fSym\bullet{136}
+\fSym\texttrademark{151}
+\fSym\textpertenthousand{152}
+\fSym\textnumero{155}
+\fSym\textcent{162}
+\fSym\pounds{163}
+\fSym\textcurrency{164}
+\fSym\textyen{165}
+\fSym\textbrokenbar{166}
+\fSym\textsection{167}
+\fSym\copyright{169}
+\fSym\ordf{170}
+\fSym\textlnot{172}% FIXME What about \lnot?
+\fSym\textregistered{174}
+\fSym\textdegree{176}
+\fSym\textplusminus{177}
+\fSym\textpm{177}
+\fSym\texttwosuperior{178}
+\fSym\textthreesuperior{179}
+\fSym\textmu{181}
+\fSym\textparagraph{182}
+\fSym\textperiodcentered{183}
+\fSym\textonesuperior{185}
+\fSym\ordm{186}
+\fSym\textonequarter{188}
+\fSym\textonehalf{189}
+\fSym\textthreequarters{190}
+\fSym\euro{191}
+\fSym\textmultiply{214}
+\fSym\texttimes{214}
+\fSym\textdivide{246}
+\fSym\textdiv{246}
+% End of TS1.
+%
+% Free the memory.
+\let\t@oenc@common\undefined
+%
+\endinput

@@ -1,0 +1,76 @@
+This is TeX, Version 3.141592 (Web2C 7.5.6)
+(./newfont.tex (../fattr.tex (/usr/share/texmf-texlive/tex/eplain/eplain.tex))
+
+**** Simple font defs. 
+17: Started font def with "\do 8.0pt 1000 {a8}".
+
+18: Updated font def to "\do 8.0pt 1000 {a8}\do 10.0pt 1000 {a10}".
+
+19: Updated font def to "\do 8.0pt 1000 {a8}\do 10.0pt 1000 {a10}\do 12.0pt 100
+0 {a12}".
+
+21: Warning: Replacing font "a12" (12.0pt@1000) with font "b12" (12.0pt@1000).
+
+21: Updated font def to "\do 8.0pt 1000 {a8}\do 10.0pt 1000 {a10}\do 12.0pt 100
+0 {b12}".
+
+22: Warning: Replacing font "a10" (10.0pt@1000) with font "b10" (10.0pt@1000).
+
+22: Updated font def to "\do 8.0pt 1000 {a8}\do 10.0pt 1000 {b10}\do 12.0pt 100
+0 {b12}".
+
+23: Warning: Replacing font "a8" (8.0pt@1000) with font "b8" (8.0pt@1000).
+
+23: Updated font def to "\do 8.0pt 1000 {b8}\do 10.0pt 1000 {b10}\do 12.0pt 100
+0 {b12}". 
+**** Simple font defs with mag factor variations.
+
+27: Started font def with "\do 12.0pt 1000 {c12}".
+
+28: Updated font def to "\do 8.0pt 1000 {c8}\do 12.0pt 1000 {c12}".
+
+29: Updated font def to "\do 8.0pt 1000 {c8}\do 10.0pt 1000 {c10}\do 12.0pt 100
+0 {c12}".
+
+31: Updated font def to "\do 8.0pt 1000 {c8}\do 10.0pt 1000 {c10}\do 10.0pt 120
+0 {c10}\do 12.0pt 1000 {c12}".
+
+32: Updated font def to "\do 8.0pt 1000 {c8}\do 10.0pt 1000 {c10}\do 10.0pt 120
+0 {c10}\do 12.0pt 1000 {c12}\do 12.0pt 1100 {c12}".
+
+33: Updated font def to "\do 8.0pt 1000 {c8}\do 10.0pt 1000 {c10}\do 8.0pt 1300
+ {c8}\do 10.0pt 1200 {c10}\do 12.0pt 1000 {c12}\do 12.0pt 1100 {c12}".
+
+**** Same design size and mag factor, different feature sets.
+
+37: Started font def with "\do 10.0pt 1000 {d10}".
+
+38: Started font def with "\do 10.0pt 1000 {d10}".
+
+39: Started font def with "\do 10.0pt 1000 {d10}".
+
+40: Started font def with "\do 10.0pt 1000 {d10}".
+
+41: Started font def with "\do 10.0pt 1000 {d10}".
+
+42: Started font def with "\do 10.0pt 1000 {d10}".
+
+**** Same design size, different mag factors.
+
+46: Started font def with "\do 10.0pt 1000 {e1.0}".
+
+47: Updated font def to "\do 10.0pt 1000 {e1.0}\do 10.0pt 1400 {e1.4}".
+
+48: Updated font def to "\do 10.0pt 800 {e0.8}\do 10.0pt 1000 {e1.0}\do 10.0pt 
+1400 {e1.4}". 
+50: Started font def with "\do 10.0pt 1000 {f1.0}".
+
+51: Updated font def to "\do 10.0pt 800 {f0.8}\do 10.0pt 1000 {f1.0}".
+
+52: Updated font def to "\do 10.0pt 800 {f0.8}\do 10.0pt 1000 {f1.0}\do 10.0pt 
+1400 {f1.4}".
+
+53: Updated font def to "\do 10.0pt 800 {f0.8}\do 10.0pt 1000 {f1.0}\do 10.0pt 
+1200 {f1.2}\do 10.0pt 1400 {f1.4}". )
+No pages of output.
+Transcript written on newfont.log.

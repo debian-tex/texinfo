@@ -113,6 +113,10 @@ our %extensions = (
   'docbook' => 'dbk',
 );
 
+my %xml_converter_defaults 
+    = Texinfo::Convert::XML::converter_defaults(undef, undef);
+my $XML_DTD_VERSION = $xml_converter_defaults{'TEXINFO_DTD_VERSION'};
+
 my %outfile_preamble = (
   'docbook' => ['<?xml version="1.0"?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
@@ -121,8 +125,8 @@ my %outfile_preamble = (
 ]>
 '. "<book lang=\"en\">\n", "</book>\n"],
   'xml' => ['<?xml version="1.0"?>
-<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V5.00//EN" "http://www.gnu.org/software/texinfo/dtd/5.00/texinfo.dtd">
-<texinfo xml:lang="en">
+'."<!DOCTYPE texinfo PUBLIC \"-//GNU//DTD TexinfoML V${XML_DTD_VERSION}//EN\" \"http://www.gnu.org/software/texinfo/dtd/${XML_DTD_VERSION}/texinfo.dtd\">
+".'<texinfo xml:lang="en">
 ', "</texinfo>\n"],
  'html_text' => ['<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

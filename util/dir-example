@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.98 2012/11/09 16:34:20 karl Exp $
+$Id: dir-example,v 1.100 2013/01/02 01:00:35 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -298,8 +298,8 @@ TeX
 
 Typesetting
 * Font utilities: (fontu).      Programs for font manipulation.
-* Groff: (groff).               The GNU troff document formatting system.
 * GV: (gv).                     The GNU PostScript and PDF viewer.
+* Groff: (groff).               The GNU troff document formatting system.
 
 DOS
 * GNUish: (gnuish).             GNU utilities for DOS.
@@ -496,7 +496,7 @@ Individual utilities
 * seq: (coreutils)seq invocation.               Print numeric sequences
 * sha1sum: (coreutils)sha1sum invocation.       Print or check SHA-1 digests.
 * sha2: (coreutils)sha2 utilities.              Print or check SHA-2 digests.
-* shar: (sharutils)shar invocation.             Make a shell archive.
+* shar: (sharutils)shar Invocation.             Make a shell archive.
 * shred: (coreutils)shred invocation.           Remove files more securely.
 * shuf: (coreutils)shuf invocation.             Shuffling text files.
 * sieve: (mailutils)sieve.                      Mail filtering utility.
@@ -546,13 +546,13 @@ Individual utilities
 * unify: (wdiff)unify invocation.               Diff format converter.
 * uniq: (coreutils)uniq invocation.             Uniquify files.
 * unlink: (coreutils)unlink invocation.         Removal via unlink(2).
-* unshar: (sharutils)unshar invocation.         Explode a shell archive.
+* unshar: (sharutils)unshar Invocation.         Explode a shell archive.
 * updatedb: (find)Invoking updatedb.            Building the locate database.
 * uptime: (coreutils)uptime invocation.         Print uptime and load.
 * users: (coreutils)users invocation.           Print current user names.
 * uucpd: (inetutils)uucpd invocation.           Unix to Unix Copy.
-* uudecode: (sharutils)uudecode invocation.     Restore file from 7-bits.
-* uuencode: (sharutils)uuencode invocation.     Force binary file to 7-bits.
+* uudecode: (sharutils)uudecode Invocation.     Restore file from 7-bits.
+* uuencode: (sharutils)uuencode Invocation.     Force binary file to 7-bits.
 * vc-chlog: (vc-dwim)vc-chlog Invocation.       Changelog writing helper tool.
 * vc-dwim: (vc-dwim)vc-dwim Invocation.         Version-control-agnostic diff 
                                                   and commit tool

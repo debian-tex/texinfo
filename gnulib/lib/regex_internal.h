@@ -1,20 +1,21 @@
 /* Extended regular expression matching and search library.
-   Copyright (C) 2002-2012 Free Software Foundation, Inc.
+   Copyright (C) 2002-2013 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
    Contributed by Isamu Hasegawa <isamu@yamato.ibm.com>.
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 3, or (at your option)
-   any later version.
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public
+   License as published by the Free Software Foundation; either
+   version 3 of the License, or (at your option) any later version.
 
-   This program is distributed in the hope that it will be useful,
+   The GNU C Library is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   General Public License for more details.
 
-   You should have received a copy of the GNU General Public License along
-   with this program; if not, see <http://www.gnu.org/licenses/>.  */
+   You should have received a copy of the GNU General Public
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 #ifndef _REGEX_INTERNAL_H
 #define _REGEX_INTERNAL_H 1
@@ -26,9 +27,6 @@
 #include <string.h>
 
 #include <langinfo.h>
-#ifndef _LIBC
-# include "localcharset.h"
-#endif
 #include <locale.h>
 #include <wchar.h>
 #include <wctype.h>
@@ -37,7 +35,6 @@
 #if defined _LIBC
 # include <bits/libc-lock.h>
 #else
-# define __libc_lock_define(CLASS,NAME)
 # define __libc_lock_init(NAME) do { } while (0)
 # define __libc_lock_lock(NAME) do { } while (0)
 # define __libc_lock_unlock(NAME) do { } while (0)
@@ -63,7 +60,7 @@
 # ifdef _LIBC
 #  undef gettext
 #  define gettext(msgid) \
-  INTUSE(__dcgettext) (_libc_intl_domainname, msgid, LC_MESSAGES)
+  __dcgettext (_libc_intl_domainname, msgid, LC_MESSAGES)
 # endif
 #else
 # define gettext(msgid) (msgid)
@@ -99,6 +96,8 @@
 
 /* Rename to standard API for using out of glibc.  */
 #ifndef _LIBC
+# undef __wctype
+# undef __iswctype
 # define __wctype wctype
 # define __iswctype iswctype
 # define __btowc btowc
@@ -463,6 +462,12 @@ static unsigned int re_string_context_at (const re_string_t *input, Idx idx,
 # endif
 #endif
 
+#ifdef _LIBC
+# define MALLOC_0_IS_NONNULL 1
+#elif !defined MALLOC_0_IS_NONNULL
+# define MALLOC_0_IS_NONNULL 0
+#endif
+
 #ifndef MAX
 # define MAX(a,b) ((a) < (b) ? (b) : (a))
 #endif
@@ -693,7 +698,9 @@ struct re_dfa_t
 #ifdef DEBUG
   char* re_str;
 #endif
+#ifdef _LIBC
   __libc_lock_define (, lock)
+#endif
 };
 
 #define re_node_set_init_empty(set) memset (set, '\0', sizeof (re_node_set))

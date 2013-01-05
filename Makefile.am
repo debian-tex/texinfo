@@ -1,9 +1,9 @@
-# $Id: Makefile.am,v 1.39 2012/12/14 19:36:53 karl Exp $
+# $Id: Makefile.am,v 1.41 2013/01/02 01:22:16 karl Exp $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
-# Free Software Foundation, Inc.
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
+# 2012, 2013 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -18,9 +18,11 @@ ACLOCAL_AMFLAGS = -I gnulib/m4
 
 # Additional files to distribute.
 EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
-  system.h \
-  djgpp/README djgpp/config.bat djgpp/config.sed djgpp/config.site \
-  gnulib/m4/gnulib-cache.m4
+  system.h gnulib/m4/gnulib-cache.m4 \
+  contrib djgpp
+
+dist-hook:
+	rm -rf `find $(distdir) -type d -name CVS`
 
 # This is to prevent texinfo.tex from being included in the top-level
 # distribution directory.
@@ -78,6 +80,7 @@ po-check:
 	  for file in $$($(CVS_LIST_EXCEPT))				\
 	      `find [a-z]* -name '*.[ch]' -o -name '*.p[lm]'`; do	\
 	    case $$file in						\
+            contrib/* ) continue;;					\
 	    djgpp/* | makeinfo/* | man/* | texi2html/* ) continue;;	\
             tp/maintain/* ) continue;;					\
 	    esac;							\

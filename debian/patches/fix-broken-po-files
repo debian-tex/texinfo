@@ -1,0 +1,32 @@
+fix wrong control character in some .po files
+See Ubuntu bug 707931
+https://bugs.launchpad.net/ubuntu/+source/texinfo/+bug/707931
+---
+ po/id.po |    2 +-
+ po/it.po |    4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+--- texinfo.orig/po/id.po
++++ texinfo/po/id.po
+@@ -2168,7 +2168,7 @@
+ "Ini adalah berkas .../info/dir, yang berisi\n"
+ "titik paling atas dari struktur Info, dipanggil (dir)Top.\n"
+ "Pertama kali anda memanggil Info anda berawal dari melihat titik ini.\n"
+-"^_\n"
++"\n"
+ "%s\tIni adalah tingkat paling atas dari pohon INFO\n"
+ "\n"
+ " Ini (titik Direktori) memberikan sebuah menu dari topik utama.\n"
+--- texinfo.orig/po/it.po
++++ texinfo/po/it.po
+@@ -2175,8 +2175,8 @@
+ "Questo è il file .../info/dir, che contiene il\n"
+ "nodo più in alto della gerarchia di Info, chiamata (dir)Top.\n"
+ "La prima volta che invochi il programma Info esso parte da questo nodo.\n"
+-"^_\n"
+-"%s\\tQuesto è il nodo più alto dell'albero INFO\n"
++"\n"
++"%s\tQuesto è il nodo più alto dell'albero INFO\n"
+ "\n"
+ "  Questo (il nodo principale) fornisce un menù che contiene le voci "
+ "principali.\n"

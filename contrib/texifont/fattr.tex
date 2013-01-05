@@ -1,0 +1,803 @@
+% font set              Computer Modern, Latin Modern, Bera
+%   font family         CMRoman, CMTypewriter, CMSansSerif
+%
+% font feature          slant, weight, width
+%   font attribute      sl, it, bold, cond
+%
+% fontfile
+%
+% Font features and attributes:
+%
+%     size              design point size
+%     encoding          ot1, oml, oms, omx, t1, ts1, t2a
+%     slant             up, sl, it, ui, cursive
+%     weight            lt, med, semib, bold, bx,
+%     width             cond, normal, ext
+%     figures           oldfigures, liningfigures
+%     caps              normalcaps, allcaps, smallcaps, nocaps
+
+\catcode`@=11
+%
+% \fsz:CMRoman/<OT1>/<up>/<med>/<normal>/<liningfigures>/<normalcaps>
+% ->
+% cmr5/5,cmr7/7,cmr8/8,cmr9/9,cmr10/10,cmr12/12,cmr17/17,.
+%
+% {CMRoman}{b}{bx}
+% {OML,CMRoman}{m}{up}
+% {OML,CMRoman}{bx}{up}
+% {OML,CMRoman}{b}{bx}
+% {CMSans}{it}{sl}
+% {CMSans}{b}{bx}
+% {CMSans,OML}{}{CMRoman}
+% {ConcreteRoman}{b}{LMSans,b}
+% {OT1,CMMath}{}{CMRoman,n}
+% {OMX,CMMath}{bx}{m}
+%
+
+\input eplain
+
+%
+%
+%
+% Font-related logging.  Meanings of \ftracelevel values are:
+%
+%   0 - none
+%   1 - warning
+%   2 - debug
+%   3 - verbose
+\newcount\ftracelevel
+\ftracelevel=1
+%
+\def\f@warning{\f@trace0}%
+\def\f@debug  {\f@trace1}%
+\def\f@verbose{\f@trace2}%
+\def\f@trace#1{%
+  \ifnum#1<\ftracelevel
+    \expandafter\message
+  \else
+    \expandafter\gobble
+  \fi
+}%
+%
+%
+%
+% Defining new fonts.
+%
+% \newfont MAG-FACTOR FILE-NAME DESIGN-SIZE [ATTRIBUTES]
+%
+% If ATTRIBUTES is not given, will reuse ATTRIBUTES from the
+% last \newfont call with ATTRIBUTES given.  To define a font with
+% empty attributes, pass \empty or {} for ATTRIBUTES.
+\let\newfont@last@attributes\empty
+%
+{\catcode`\^^M=12 % Comment out all line ends from now on.
+\gdef\newfont{\begingroup \catcode`\^^M=12 \@newfont}%
+\gdef\@newfont#1 #2 #3^^M{\endgroup%
+  \def\newfont@mag{#1}%
+  \def\newfont@fname{#2}%
+  \@new@font#3 ^^M%
+}%
+\gdef\@new@font #1 #2^^M{% DESIGN-SIZE [ATTRIBUTES]
+  \get@dimen{#1}% Convert font size into a dimen.
+  \if^^M#2^^M% Assume #2 contains no (leading) ^^Ms.
+    % #2 is empty, continue to use the current \newfont@last@attributes.
+  \else%
+    \@new@font@#2^^M% Redefine \newfont@last@attributes, removing the space.
+  \fi%
+  \def@newfont%
+}%
+\gdef\@new@font@#1 ^^M{\def\newfont@last@attributes{#1}}%
+}%
+%
+%\def\def@newfont{%
+%  \message{^^J.\newfont@mag.\newfont@fname.\the\dimen@.\newfont@last@attributes.}%
+%}%
+%
+\def\def@newfont{%
+  % Empty \ff@temp0, \ff@temp1, ..., \ff@temp<MAX-ITEM-IDX>.
+  \ff@temp@reset
+  \for\ff@temp@i:=\newfont@last@attributes\do{%
+    \f@get@af\ff@temp@i
+    \expandafter\edef\csname ff@temp\tempb\endcsname{\tempa\space}%
+  }%
+  % Combine all \f@temp<X> into \f@name.
+  \edef\f@name{f:\ff@temp@collect}%
+  \expandafter\let\expandafter\temp \csname \f@name \endcsname
+  %
+  \ifx\temp\relax
+    \let\do\relax
+    \expandafter\xdef\csname\f@name\endcsname
+      {\do \the\dimen@ \space \newfont@mag\space {\newfont@fname}}%
+    \f@debug{^^J\the\inputlineno: Started font def with
+             "\csname \f@name\endcsname".}%
+  \else
+    \edef\newfont@size{\the\dimen@}%
+    \divide\dimen@ by1000
+    \multiply\dimen@ by\newfont@mag\relax
+    \let\newfont@prefix\empty
+    \let\do\newfont@insert
+    % Try inserting the new size.
+    \temp\relax
+    % If the new size hasn't been inserted, append it now.
+    \ifx\do\newfont@insert
+      \let\do\relax
+      \expandafter\xdef\csname\f@name\endcsname {%
+        \newfont@prefix \do \newfont@size\space \newfont@mag\space {\newfont@fname}%
+      }%
+      \f@debug{^^J\the\inputlineno: Updated font def to
+               "\csname \f@name\endcsname".}%
+    \fi
+  \fi
+}%
+%
+% \newfont@insert FONT-SIZE MAG-FACTOR FILE-NAME
+%
+% Insert new font file into the list of font files in \newfont@prefix,
+% preserving ascending order of scaled design sizes.
+%
+% Pass in new font's design size in \newfont@size, mag factor
+% in \newfont@mag, font file name in \newfont@fname, pre-computed
+% scaled size in \dimen@.
+\def\newfont@insert#1 #2 #3{%
+  \toks@=\expandafter{\newfont@prefix}%
+  % We are comparing scaled font sizes, not design sizes.
+  \dimen@ii=#1\divide\dimen@ii by1000 \multiply\dimen@ii by#2\relax
+  %
+  \ifdim \dimen@ii < \dimen@
+    % Not inserting yet, go on to the next font file.
+    \edef\newfont@prefix{\the\toks@ \noexpand\do #1 #2 {#3}}%
+  \else
+    % Time to insert the new font file.  If we are adding a font file
+    % for the same design size/mag factor, the new def will override
+    % the old, but give out a warning.
+    \def\newfont@next{\noexpand\do #1 #2 {#3}}%
+    \ifnum #2=\newfont@mag
+      \ifdim #1=\newfont@size
+        \f@warning{^^J\the\inputlineno: Warning: Replacing font "#3" (#1@#2)
+          with font "\newfont@fname" (\newfont@size @\newfont@mag).}%
+        \let\newfont@next\empty
+      \fi
+    \fi
+    \edef\newfont@prefix{\the\toks@
+      \noexpand\do \newfont@size \space \newfont@mag \space {\newfont@fname}%
+      \newfont@next}%
+    % No need to parse further, just append the rest of the list.
+    \expandafter\newfont@append
+  \fi
+}%
+%
+\def\newfont@append#1\relax{%
+  \let\do\relax
+  \expandafter\xdef\csname\f@name\endcsname {\newfont@prefix #1}%
+  \f@debug{^^J\the\inputlineno: Updated font def to
+           "\csname \f@name\endcsname".}%
+}%
+%
+%
+%
+% Defining new font features and attributes.
+%
+\newcount\fcacheidx % Font cache index.
+\newcount\ffeatcount % Font feature count.
+% We'll build up the following as we add font features.
+\let\ff@reset\empty
+\let\ff@collect\empty
+\let\ff@temp@reset\empty
+\let\ff@temp@collect\empty
+%
+% \newfontattr FONTFEATURE FONTATTR
+\def\newfontattr #1 #2 {%
+  % Define a new font attribute, if it's not defined yet.
+  \expandafter\ifx\csname fa:#2\endcsname \relax
+  \else
+    \errmessage{Font attribute "#2" already defined as part
+      of font feature "\csname ff@\csname faf:#2\endcsname\endcsname"}%
+  \fi
+  \expandafter\xdef\csname fa:#2\endcsname{\the\fcacheidx}%
+  \expandafter\xdef\csname fa@\the\fcacheidx\endcsname{#2}%
+  % Invalidate current font cache (and update index for the next font
+  % attribute).
+  \global\advance\fcacheidx by1
+  %
+  % Define a new font feature, if it's not defined yet.
+  \expandafter\ifx\csname ff:#1\endcsname \relax
+    \expandafter\xdef\csname ff:#1\endcsname{\the\ffeatcount}%
+    \expandafter\xdef\csname ff@\the\ffeatcount\endcsname{#1}%
+    % Update \ff@reset to clear the new font feature cell \ffN.
+    \toks@=\expandafter{\ff@reset}%
+    \xdef\ff@reset{\the\toks@
+      \let\expandafter\noexpand\csname ff\the\ffeatcount\endcsname
+        \noexpand\empty}%
+    % Update \ff@temp@reset to clear the new font feature cell \ff@tempN.
+    \toks@=\expandafter{\ff@temp@reset}%
+    \xdef\ff@temp@reset{\the\toks@
+      \let\expandafter\noexpand\csname ff@temp\the\ffeatcount\endcsname
+        \noexpand\empty}%
+    % Update \ff@collect to include the new font feature cell \ffN.
+    \toks@=\expandafter{\ff@collect}%
+    \xdef\ff@collect{\the\toks@
+      ^^A\expandafter\noexpand\csname ff\the\ffeatcount\endcsname}%
+    % Update \ff@temp@collect to include the new font feature cell \ffN.
+    \toks@=\expandafter{\ff@temp@collect}%
+    \xdef\ff@temp@collect{\the\toks@
+      ^^A\expandafter\noexpand\csname ff@temp\the\ffeatcount\endcsname}%
+    % Set \ffN to \empty, otherwise it will be set to \relax the first
+    % time we try to access it through \csname...\endcsname, and we
+    % depend on it to be either a number or \empty.
+    \global\expandafter\let\csname ff\the\ffeatcount\endcsname \empty
+    %
+    \global\advance\ffeatcount by1
+    % We've added a new font feature, so we should invalidate current
+    % font cache.  But we've already done so above when adding the new
+    % font attribute.
+    %\global\advance\fcacheidx by1
+  \fi
+  % Assign the font attribute to the font feature.
+  \expandafter\xdef\csname faf:#2\endcsname{\csname ff:#1\endcsname}%
+}%
+%
+% \newfontattrs FONTFEATURE FONTATTRIBUTE[,...]
+\def\newfontattrs #1 #2 {%
+  \for\temp:=#2\do{\newfontattr #1 {\temp} }%
+}%
+%
+%
+%
+% Setting a font.
+%
+\newcount\f@base@mag \f@base@mag=1000
+\newcount\f@count@
+% Set a font based on the current values of \ff0, \ff1, ..., or
+% execute #1 if such font is not defined.
+\def\f@setfont#1{%
+  \f@verbose{^^J\the\inputlineno: (Started search for a font.}%
+  % Check the cache.
+  \expandafter\let\expandafter\temp
+    \csname f\the\fcacheidx:\the\f@cur@size:\ff@collect\endcsname
+  \ifx\temp\relax
+    % Not in the cache.
+    \let\do\relax
+    \expandafter\let\expandafter\temp \csname f:\ff@collect\endcsname
+    \ifx\temp\relax
+      \f@debug{^^JFont is not defined.}%
+      #1% Execute the no-font action.
+    \else
+      \dimen@=\z@ % Fake previous size for the first font in the list.
+      \let\f@fname\empty
+      \let\do\f@search@size
+      \global\dimen@i=\f@cur@size
+      \temp\relax
+      \ifnum\f@base@mag=\f@count@ \else
+        \global\divide\dimen@i by\f@base@mag
+        \global\multiply\dimen@i by\f@count@
+      \fi
+      \f@debug{Found font "\f@fname", mag factor \the\f@count@,
+        scaled size \the\dimen@i.}%
+      % Save it in the cache.
+      \global \expandafter\font
+        \csname f\the\fcacheidx:\the\f@cur@size:\ff@collect\endcsname
+        \f@fname \space at\the\dimen@i
+      % Set it.
+      \csname f\the\fcacheidx:\the\f@cur@size:\ff@collect\endcsname
+    \fi
+  \else
+    % Got a cache hit.
+    \f@debug{Found font in the cache.}%
+    \temp
+  \fi
+  \f@verbose{Ended search for a font.)}%
+}%
+%
+% \f@search@size DESIGN-SIZE MAG-FACTOR FILE-NAME
+%
+% Pass in the desired font size in \dimen@i.  Font file name is saved
+% in \f@fname, font's mag factor in \f@count@.
+\def\f@search@size #1 #2 #3{%
+  \f@verbose{Looking at font def "#3" (#1@#2).}%
+  \dimen@ii=\dimen@ % Get the size of the previous font from the list.
+  % Scale design size of the next font as per current base mag factor.
+  \dimen@=#1\relax
+  \ifnum#2=\f@base@mag \else
+    \divide\dimen@ by\f@base@mag \multiply\dimen@ by#2\relax
+  \fi
+  % Calculate the "dividing" point size.
+  \count@=\dimen@ % Don't clobber \dimen@.
+  \advance\count@ by-\dimen@ii % Curr size - prev size.
+  % Don't do the following line -- .3333*3pt < 1pt.
+  %\advance\dimen@ii by.3333\count@ % 1/3 of the way from prev to curr.
+  \divide\count@ by3
+  \advance\dimen@ii by\count@ sp% 1/3 of the way from prev to curr.
+  %
+  \ifdim \dimen@i > \dimen@ii
+    % The previous font's size is too small.  The current font might
+    % or might not be the one we need, but we assume it is, in case
+    % it's the last one in the list.
+    \def\f@fname{#3}%
+    \f@count@=#2\relax
+  \else
+    % The target size is close enough to the prev font's size, so we take that.
+    \ifx\f@fname\empty
+      % This is the case when we need a size smaller than the very
+      % first font in the list.
+      \def\f@fname{#3}%
+      \f@count@=#2\relax
+    \fi
+    \expandafter\f@search@gobble
+  \fi
+}%
+%
+\def\f@search@gobble#1\relax{}%
+%
+%
+%
+% Font feature manipulations.
+%
+\newdimen\f@cur@size \f@cur@size=10pt
+% \setfont{ATTRS}
+\def\setfont{%
+  % Empty \ff0, \ff1, ..., \ff<ffeature_count - 1>.
+  \ff@reset
+  \addfontattrs % Substitutes and sets the font.
+}%
+%
+% \modfont{REM-FEATURES}{ADD-OR-MOD-ATTRS}
+\def\modfont#1{%
+  \unsetfontfeatures{#1}%
+  \addfontattrs % Substitutes and sets the font.
+}%
+%
+% \addfontattrs{ADD-OR-MOD-ATTRS}
+\def\addfontattrs#1{%
+  % For each feature with attribute in #1, set \ff<f> to `<a> ', where
+  % <f> is the feature index and <a> is the attribute index.  For a
+  % number or a dimen in #1, set \f@cur@size.  Dimen specs starting
+  % with '.' (e.g., '.1pt') are not supported.
+  \for\f@i:=#1\do{%
+    \expandafter\gobble@to@finish % Gobbles 'pt' when \f@i is '10pt'.
+      \ifnum9<1\f@i\relax
+    \finish
+        % A number or a dimen.
+        \get@dimen{\f@i}%
+        \f@cur@size=\dimen@
+      \else
+    \finish
+        % Not a number.
+        \f@get@af\f@i
+        \expandafter\edef\csname ff\tempb\endcsname {\tempa\space}%
+      \fi
+  }%
+  % Try to set the font; if it's not defined, do substitution and try
+  % to set the resulting font.  Do font substitution inside a group so
+  % that the current set of font attributes is not clobbered.
+  \f@setfont{{\f@subst \f@setfont{\f@err@nofont}\expandafter}\the\font}%
+}%
+%
+% Take a dimension or a number, and save it in \dimen@.  In case of a
+% number, assume `pt' units.
+\def\get@dimen#1{%
+  \afterassignment\gobble@to@finish
+  \dimen@#1pt \finish
+}%
+\def\gobble@to@finish#1\finish{}%
+%
+\def\f@err@nofont{%
+  \dumpfontfeatures
+  \errmessage{^^JFound no font def for the selected feature set}%
+}%
+%
+% \remfontfeatures{REM-FEATURES}
+\def\remfontfeatures#1{%
+  \unsetfontfeatures{#1}%
+  % Try to set the font; if it's not defined, do substitution and try
+  % to set the resulting font.  Do font substitution inside a group so
+  % that the current set of font attributes is not clobbered.
+  \f@setfont{{\f@subst \f@setfont{\f@err@nofont}\expandafter}\the\font}%
+}%
+%
+\def\unsetfontfeatures#1{%
+  % Unset \ff<f> for each feature <f> in #1.
+  \for\f@i:=#1\do{%
+    \expandafter\let\expandafter\temp\csname ff:\f@i\endcsname
+    \ifx\temp\relax
+      \errmessage{Undefined font feature "\f@i"}%
+    \fi
+    \expandafter\let \csname ff\temp\endcsname \empty
+  }%
+}%
+%
+% Pretty-print the current settings of font features.
+\def\dumpfontfeatures{%
+  \message{^^J\the\inputlineno: font size \the\f@cur@size, features (}%
+  \@dumpfontfeatures\message
+  \message{).}%
+}%
+%
+\def\@dumpfontfeatures#1{%
+  \fori0\ffeatcount{%
+    \edef\temp{\csname ff\the\count@\endcsname}%
+    #1{%
+      \csname ff@\the\count@\endcsname=%
+      \ifx\temp\empty
+        <unset>%
+      \else
+        \expandafter\dump@ff\temp
+      \fi
+    }%
+  }%
+}%
+%
+\def\dump@ff#1 {\csname fa@#1\endcsname}%
+%
+%
+%
+% Construction of font filter strings.
+%
+% \fontsubstpre =MATCH-ATTR -REM-FEATURES +ADD-OR-MOD-ATTRS
+%
+% Install a new font substitution to be applied before other font
+% substitutions.
+\def\fontsubstpre{%
+  \let\fontsubst@mklist\fontsubst@pre
+  \@fontsubst
+}%
+%
+% \fontsubstpost =MATCH-ATTR -REM-FEATURES +ADD-OR-MOD-ATTRS
+%
+% Install a new font substitution to be applied after other font
+% substitutions.
+\def\fontsubstpost{%
+  \let\fontsubst@mklist\fontsubst@post
+  \@fontsubst
+}%
+%
+% \@fontsubst =MATCH-ATTR -REM-FEATURES +ADD-OR-MOD-ATTRS
+\def\@fontsubst{%
+  % Construct the match string in \fontsubst@match@list.
+  \f@mk@falist\fontsubst@\fontsubst@match@list % =MATCH-ATTR
+}%
+%
+% \fontsubst@ -REM-FEATURES +ADD-OR-MOD-ATTRS
+\def\fontsubst@{%
+  % Construct the rem string in \fontsubst@rem@list.
+  \f@mk@flist\fontsubst@@\fontsubst@rem@list % -REM-FEATURES
+}%
+%
+% \fontsubst@ +ADD-OR-MOD-ATTRS
+\def\fontsubst@@{%
+  % Construct the add string in \fontsubst@add@list.
+  \f@mk@falist\fontsubst@fin\fontsubst@add@list% +ADD-OR-MOD-ATTRS
+}%
+%
+\def\fontsubst@fin{%
+  % Add the new substitution to either head or tail of the current
+  % substitution list.
+  \let\@end\relax
+  \edef\f@subst@list{\fontsubst@mklist}%
+}%
+%
+\def\fontsubst@pre{%
+  \fontsubst@match@list \@end
+  \fontsubst@rem@list   \@end
+  \fontsubst@add@list   \@end
+  \f@subst@list
+}%
+%
+\def\fontsubst@post{%
+  \f@subst@list
+  \fontsubst@match@list \@end
+  \fontsubst@rem@list   \@end
+  \fontsubst@add@list   \@end
+}%
+%
+% Initialize the font substitution list to empty.
+\let\f@subst@list\empty
+%
+% Given the name of an attribute, return index of the attribute
+% in \tempa and index of the attribute's feature in \tempb.
+\def\f@get@af#1{%
+  % Get attribute's index.
+  \expandafter\let\expandafter\tempa\csname fa:#1\endcsname
+  \ifx\tempa\relax
+    \errmessage{Undefined font attribute "#1"}%
+  \fi
+  % Get feature index for the attribute.
+  \expandafter\let\expandafter\tempb\csname faf:#1\endcsname
+  \ifx\tempb\relax
+    \errmessage{Undefined font attribute "#1"}%
+  \fi
+}%
+%
+% Given a comma-separated list of attributes #4, construct a string
+% (saving it in macro #2) as a sequence of `F.A,' specs, where F is
+% the index of the feature to which attribute belongs, and A is the
+% index of the attribute.  After that, call #1.  #3 is an ignored
+% syntax sugar ("=" or "+") from the user-visible command.
+\def\f@mk@falist#1#2#3#4 {%
+  \let#2\empty % Start with a clean slate.
+  \let\do\relax
+  \for\f@i:=#4\do{%
+    \f@get@af\f@i
+    \edef#2{#2\do\tempb.\tempa,}% Append the spec to the list.
+  }%
+  #1%
+}%
+%
+% Given a comma-separated list of features #4, construct a string
+% (saving it in macro #2) as a sequence of `F,' specs, where F is the
+% feature index.  After that, call #1.  After that, call #1.  #3 is an
+% ignored syntax sugar ("-") from the user-visible command.
+\def\f@mk@flist#1#2#3#4 {%
+  \let#2\empty
+  \let\do\relax
+  \for\f@i:=#4\do{%
+    \expandafter\let\expandafter\temp\csname ff:\f@i\endcsname
+    \ifx\temp\relax
+      \errmessage{Undefined font feature "\f@i"}%
+    \fi
+    \edef#2{#2\do\temp,}%
+  }%
+  #1%
+}%
+%
+% \fori{FROM-INCL}{TO-EXCL}{EXEC}
+\def\fori#1#2#3{%
+  \count@=#1\relax
+  \loop
+    #3\relax
+    \advance\count@ by1
+  \ifnum\count@<#2\repeat
+}%
+%
+%
+%
+% Generic filter parsing macros.  Configure by defining these
+% callbacks (before running \f@run@filter on the filter string):
+%
+%   \f@do@filter@match#1.#2,  - match the pair filter/attribute.
+%   \f@do@filter@rem          - unset feature `F,'.
+%   \f@do@filter@add          - add the pair `F.A,'.
+%   \f@hook@filter@end        - action at the end of the filter (upon
+%                               successful match).
+%   \f@hook@filter@skip       - action for \f@filter@gobble@this
+%                               and \f@filter@gobble@all.
+%
+% To skip one filter, \f@do@filter@match can
+% call \f@filter@gobble@this.  To skip all remaining filters,
+% call \f@filter@gobble@all.
+%
+% Note:  Theoretically, we can use a construct like
+%
+%   \csname ff@\csname faf:A\endcsname\endcsname
+%
+% to get the feature corresponding to attribute A.  But this would
+% fail with an incomprehensible error message (`missing \endcsname')
+% if \csname faf:A\endcsname is undefined, so we'd have to test this
+% before each use.  To avoid the overhead, we just add the font
+% feature index to the font filter.
+%
+%
+% \f@run@filter
+%   [MATCH-ATTR\@end REM-FEATURES\@end ADD-OR-MOD-ATTRS\@end [...]]\relax
+\def\f@run@filter{%
+  \let\do\f@do@filter@match
+  \let\@end\f@run@filter@rem
+}%
+%
+% \f@run@filter@rem REM-FEATURES\@end ADD-OR-MOD-ATTRS\@end ... \relax
+\def\f@run@filter@rem{%
+  \let\do\f@do@filter@rem
+  \let\@end\f@run@filter@add
+}%
+%
+% \f@run@filter@add ADD-OR-MOD-ATTRS\@end ... \relax
+\def\f@run@filter@add{%
+  \let\do\f@do@filter@add
+  \let\@end\f@hook@filter@end
+}%
+%
+\def\f@filter@gobble@this#1\@end#2\@end#3\@end{\f@hook@filter@skip \f@run@filter}%
+\def\f@filter@gobble@all#1\relax{\f@hook@filter@skip}%
+%
+%
+%
+% Filter parsing callbacks for font substitution.
+%
+% Apply only the first font substitution matching the current font.
+\def\f@subst@once{%
+  \let\f@do@filter@match\f@subst@match@init
+  \let\f@do@filter@rem\f@subst@rem
+  \let\f@do@filter@add\f@subst@add
+  \let\f@hook@filter@end\f@subst@nomore
+  \let\f@hook@filter@skip\f@subst@skip
+  \expandafter\f@run@filter \f@subst@list \relax
+}%
+%
+% Apply all font substitutions in order, allowing substitutions to be
+% chained.
+\def\f@subst{%
+  \let\f@do@filter@match\f@subst@match@init
+  \let\f@do@filter@rem\f@subst@rem
+  \let\f@do@filter@add\f@subst@add
+  \let\f@hook@filter@end\f@subst@again
+  \let\f@hook@filter@skip\f@subst@skip
+  \f@verbose{^^J\the\inputlineno: (Running font substitution filter:}%
+  \expandafter\f@run@filter \f@subst@list \relax
+  \f@verbose{^^J)}%
+}%
+%
+% Match one feature.
+\def\f@subst@match@init{%
+  \f@verbose{^^J(}%
+  \let\do\f@subst@match
+  \do
+}%
+%
+\def\f@subst@match#1.#2,{%
+  \f@verbose{^^Jmatching \csname ff@#1\endcsname.\csname fa@#2\endcsname}%
+  % This funky way to compare the two numbers takes care of \ff#1
+  % being \empty.  However, keep in mind that if \ff#1 is undefined,
+  % the following will make it a \relax.  Space at the end of \ff#1
+  % will be gobbled by TeX, because it's a space following a number.
+  \ifnum 1#2=1\csname ff#1\endcsname \else
+    \f@verbose{^^J  skipping, unmatched
+      \csname ff@#1\endcsname.\csname fa@#2\endcsname}%
+    \expandafter\f@filter@gobble@this % Skip to the next filter.
+  \fi
+}%
+%
+% Remove one feature.
+\def\f@subst@rem#1,{%
+  \f@verbose{^^Junsetting \csname ff@#1\endcsname}%
+  \expandafter\let\csname ff#1\endcsname \empty
+}%
+%
+% Add attribute #2 (which must belong to feature #1).
+\def\f@subst@add#1.#2,{%
+  \f@verbose{^^Jadding \csname ff@#1\endcsname.\csname fa@#2\endcsname}%
+  \expandafter\def\csname ff#1\endcsname{#2 }%
+}%
+%
+\def\f@subst@nomore{\f@verbose{^^J)}\f@filter@gobble@all}%
+\def\f@subst@again{\f@verbose{^^J)}\f@run@filter}%
+\def\f@subst@skip{\f@verbose{^^J)}}%
+%
+%
+%
+% Filter parsing callbacks for pretty-printing the current font filter
+% string.
+%
+% Pretty-print the current font filter string.
+\def\dumpfontfilter{\f@dump@filter\f@subst@list}%
+%
+% Pretty-print the given font filter string.
+\def\f@dump@filter#1{%
+  \let\f@do@filter@match\f@dump@match@init
+  \let\f@do@filter@rem\f@dump@rem@init
+  \let\f@do@filter@add\f@dump@add@init
+  \let\f@hook@filter@end\f@dump@again
+  \let\f@hook@filter@skip\relax
+  \message{\the\inputlineno: (Dumping font substitution filter:}%
+  \expandafter\f@run@filter #1\relax
+  \message{^^J)}%
+}%
+\def\f@dump@match@init{%
+  \message{^^J(^^J=}%
+  \def\do##1.##2,{\message{\csname ff@##1\endcsname.\csname fa@##2\endcsname}}%
+  \do
+}%
+\def\f@dump@rem@init{%
+  \message{^^J-}%
+  \def\do##1,{\message{\csname ff@##1\endcsname}}%
+  \do
+}%
+\def\f@dump@add@init{%
+  \message{^^J+}%
+  \def\do##1.##2,{\message{\csname ff@##1\endcsname.\csname fa@##2\endcsname}}%
+  \do
+}%
+\def\f@dump@again{\message{^^J)}\f@run@filter}%
+
+\endinput
+
+
+\ftracelevel=3
+
+\newfontattr family   CMRoman
+\newfontattr family   CMTypewriter
+\newfontattr family   CMSansSerif
+\newfontattr encoding OT1
+\newfontattr encoding OML
+\newfontattr encoding OMS
+\newfontattr encoding OMX
+\newfontattr slant    up
+\newfontattr slant    sl
+\newfontattr slant    it
+\newfontattr slant    ui
+
+\fontsubstpre =CMRoman -slant +OT1
+%\dumpfontfilter
+
+\fontsubstpre =up - +CMRoman,OML
+%\dumpfontfilter
+
+\fontsubstpost =CMTypewriter -encoding +
+%\dumpfontfilter
+
+\fontsubstpost =CMRoman,up,OML -slant +OMX
+%\dumpfontfilter
+
+\fontsubstpre =it,CMTypewriter,OMX -family,encoding +OT1
+%\dumpfontfilter
+
+\fontsubstpost =CMSansSerif,ui -encoding +CMTypewriter,OMX,it
+%\dumpfontfilter
+
+\fontsubstpost =it,CMTypewriter,OMX -encoding,family +ui,OMS
+
+\dumpfontfilter
+\dumpfontfeatures
+
+%\newfont 10 cmbx10 {}
+%\message{^^J***\f@name}
+\newfont 10 1000 cmti10 CMRoman,it,OT1
+\message{^^J***\f@name}
+\newfont 10 1000 cmt10 CMRoman,OT1
+\message{^^J***\f@name}
+\newfont 12pt 1000 cmti12 CMRoman,it,OT1
+\message{^^J***\f@name}
+\newfont 10 1000 cmmi10 ui,OMS
+\message{^^J***\f@name}
+\newfont 8 1000 cmti8 CMRoman,it,OT1
+\message{^^J***\f@name}
+\newfont 11 1000 cmti11 CMRoman,it,OT1
+\message{^^J***\f@name}
+\newfont 8 1000 cmt8 CMRoman,OT1
+\message{^^J***\f@name}
+\newfont 9 1000 cmt9 CMRoman,OT1
+\message{^^J***\f@name}
+\newfont 0.2cm 1000 cmti1cm CMRoman,it,OT1
+\message{^^J***\f@name}
+\newfont 1.in 1000 cmin it,OT1
+\message{^^J***\f@name}
+\newfont 5. 1000 cmot1 OT1
+\message{^^J***\f@name}
+
+\setfont        {CMRoman,it,0.3cm,OMS}% -> family=CMRoman encoding=OT1 slant=<unset>
+\dumpfontfeatures
+\setfont        {CMTypewriter,it,OMX}%  -> family=<unset> encoding=OT1 slant=it
+\dumpfontfeatures
+\addfontattrs   {7,up}%                 -> family=CMRoman encoding=OT1 slant=<unset>
+\dumpfontfeatures
+\remfontfeatures{family}%               -> family=<unset> encoding=OT1 slant=<unset>
+\dumpfontfeatures
+\modfont        {}{CMSansSerif,ui}%     -> family=<unset> encoding=OMS slant=ui
+\dumpfontfeatures
+\remfontfeatures{}%                     -> family=<unset> encoding=OMS slant=ui
+\dumpfontfeatures
+\addfontattrs   {}%                     -> family=<unset> encoding=OMS slant=ui
+\dumpfontfeatures
+\modfont        {}{}%                   -> family=<unset> encoding=OMS slant=ui
+\dumpfontfeatures
+
+\message{^^J*********************************************************}
+
+\newfontattr family   TestFamily
+\newfont 5. 1000 sz5-1.0-1 TestFamily
+\message{^^J***\f@name}
+\newfont 5. 1000 sz5-1.0-2 TestFamily
+\message{^^J***\f@name}
+\newfont 5. 1400 sz5-1.4-1 TestFamily
+\message{^^J***\f@name}
+\newfont 5. 900 sz5-0.9-1 TestFamily
+\message{^^J***\f@name}
+\newfont 5. 900 sz5-0.9-2 TestFamily
+\message{^^J***\f@name}
+\newfont 5. 1400 sz5-1.4-2 TestFamily
+\message{^^J***\f@name}
+\setfont        {CMRoman,9pt}%          ->
+
+
+\newfont 10 1000 cmr10 CMRoman,rm,OT1
+\message{^^J***\f@name}
+
+\bye

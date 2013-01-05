@@ -1,8 +1,8 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.131 2012/12/18 01:36:12 karl Exp $
+# $Id: configure.ac,v 1.136 2013/01/02 02:58:26 karl Exp $
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
-# Free Software Foundation, Inc.
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
+# 2012, 2013 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -12,7 +12,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [4.13.92], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [4.13.93], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -27,10 +27,17 @@ AC_PREREQ(2.59)
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.
 AC_CONFIG_SRCDIR([info/info.c])
 
-# version for the dtd.  In between releases, PACKAGE_VERSION is not set
-# to a value that corresponds to actual files on the internet.
+# version for the dtd.  It is manually set to the next version number 
+# rather than $PACKAGE_VERSION as soon as the DTD is modified.  There 
+# are 3 reasons for that:
+# 1. to avoid using a DTD from internet that wouldn't be in sync;
+# 2. to avoid unnnecessary changes in XML output file headers, in
+#    test results for instance.  Otherwise after a release the 
+#    devel version and the pretest versions would be used;
+# 3. it may be kept as is in case there were no change in the DTD
+#    between releases.  This is highly improbable, but who knows.
 # TEXINFO_DTD_VERSION=$PACKAGE_VERSION
-TEXINFO_DTD_VERSION=5.00
+TEXINFO_DTD_VERSION=5.0
 AC_SUBST([TEXINFO_DTD_VERSION])
 
 # Conditional texi2html support.
@@ -286,7 +293,7 @@ AC_SUBST([USE_EXTERNAL_UNIDECODE])
 # i18n support.  To update to a new version of gettext, run:
 #   gettextize -f -c
 # See http://gnu.org/s/gnulib/manual/html_node/gettextize-and-autopoint.html.
-AM_GNU_GETTEXT_VERSION([0.18.1])
+AM_GNU_GETTEXT_VERSION([0.18.2])
 AM_GNU_GETTEXT([external])
 
 USE_EXTERNAL_LIBINTL=no
@@ -301,12 +308,14 @@ AC_ARG_WITH([external-libintl-perl],
 AC_SUBST([USE_EXTERNAL_LIBINTL])
 
 
-# The test suite.
+# Tests.
 AC_CONFIG_FILES([install-info/tests/defs])
-AC_CONFIG_FILES([util/defs])
-AC_CHECK_PROGS([HEVEA], [hevea], [])
-AC_CHECK_PROGS([TEX], [tex], [])
-AC_CHECK_PROGS([PROVE], [prove], [])
+dnl Except we cannot enable the TeX-related tests,
+dnl so don't waste time configuring them.  See util/tests/README.
+dnl AC_CONFIG_FILES([util/tests/defs])
+dnl AC_CHECK_PROGS([HEVEA], [hevea], [])
+dnl AC_CHECK_PROGS([TEX], [tex], [])
+dnl AC_CHECK_PROGS([PROVE], [prove], [])
 
 tp_tests='no'
 AC_ARG_ENABLE([tp-tests],
@@ -378,11 +387,11 @@ AC_MSG_CHECKING([Pod::Simple::Texinfo tests requirements])
 AC_MSG_RESULT([$pod_simple_texinfo_tests])
 AM_CONDITIONAL([POD_SIMPLE_TEXINFO_TESTS], [test "z$pod_simple_texinfo_tests" = 'zyes'])
 
-tgt_is_windows=no
-case "$target" in
-   *-mingw32 | *-mingw64 | *-msdosdjgpp )  tgt_is_windows=yes ;;
+host_is_windows=no
+case "$host" in
+   *-mingw32 | *-mingw64 | *-msdosdjgpp )  host_is_windows=yes ;;
 esac     
-AM_CONDITIONAL([TGT_IS_WINDOWS], [test "x$tgt_is_windows" = "xyes"])
+AM_CONDITIONAL([HOST_IS_WINDOWS], [test "x$host_is_windows" = "xyes"])
 
 # The config files to generate.
 AC_CONFIG_FILES([\

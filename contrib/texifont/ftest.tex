@@ -1,0 +1,445 @@
+\catcode`\@=11
+\input ienc
+\input oenc
+\input fsel
+\catcode`\@=12
+
+\tracingstats1
+\tracingfonts=0 % For this font sampler, too many messages.
+
+\hoffset=-.25in
+\hsize=7in
+\parindent=.5in
+% Avoid any over- and underfull boxes and hyphenation.
+\raggedbottom
+\tolerance=10000
+\hbadness=10000
+\hfuzz=\maxdimen
+\hyphenpenalty=10000
+\rightskip=0pt plus2pc
+
+
+\def\title#1{%
+  \vfil\eject
+  \begingroup
+    \immediate\write16{*** #1}
+    \setfontfamily{CMRoman}
+    \setfontseries{bx}
+    \setfontshape{n}
+    \setfontsize{17}
+    \selectfont
+    \noindent #1\vskip12pt
+  \endgroup
+}
+
+\def\dofamilies{%
+  \begingroup
+    \do{CMRoman}%
+    \do{CMSans}%
+    \do{CMMono}%
+    \setfontencoding{T1}%
+    \do{LMRoman}%
+    \do{LMSans}%
+    \do{LMMono}%
+    \do{CMBright}
+    \do{CMBrightMono}
+    \do{ConcreteRoman}%
+    \do{BeraRoman}%
+    \do{BeraSans}%
+    \do{BeraMono}%
+    \do{Charter}%
+    \do{NimbusRoman}%
+    \do{NimbusSans}%
+    \do{NimbusMono}%
+    \do{URWPalladio}%
+    \do{URWBookman}%
+    \do{CenturySchoolbook}%
+    \do{AntykwaTorunska}%
+    \do{Iwona}%
+    \do{URWGothic}%
+    \setfontshape{it}%
+    \do{URWChancery}%
+  \endgroup
+}
+
+
+% 
+% Font switching test.
+%
+\title{Font/base family switching}
+
+\begingroup
+  \def\teststring{%
+    \begingroup
+      \par
+      Default (CMRoman~OT1 medium upright 11pt)~--
+      \setfontseries{b}\selectfont bold~--
+      \bfseries                 bold extended~--
+      \itshape                  italic~--
+      \mdseries                 medium~--
+
+      \setfontsize{14}\selectfont  14\thinspace pt~--
+      \slshape                  slanted~--
+      \setfontencoding{T1}%
+      \setfontfamily{NimbusRoman}\selectfont NimbusRoman~T1~--
+      \itshape                  italic~--
+      \setfontfamily{NimbusSans}\selectfont NimbusSans~--
+      \upshape                  upright~--
+      \bfseries                 bold extended~--
+      \setfontfamily{NimbusMono}\selectfont NimbusMono~--
+
+      \setfontsize{10}\selectfont  10\thinspace pt~--
+      \itshape                  italic~--
+      \mdseries                 medium~--
+      \upshape                  upright~--
+      \setfontfamily{LMSans}\selectfont LMSans~--
+      \itshape                  italic~--
+      \setfontfamily{ConcreteRoman}\selectfont ConcreteRoman~--
+      \upshape                  upright
+      \vskip1pc
+    \endgroup
+  }
+
+  Now the base family is CMRoman:
+  \teststring
+
+  \fontbasefamily NimbusSans
+  Now the base family is NimbusSans:
+  \teststring
+\endgroup
+
+
+% 
+% Math test.
+%
+\title{Math}
+
+\begingroup
+  \def\teststring{%
+    $\displaystyle
+      \Longrightarrow
+      5! - f'(x) + \Re z \times \Im z;\quad
+      \bar u < \tilde e + \vec p - \hat x \cdot \widehat x \ge
+        \widehat{xy} = \widehat{xyz};\allowbreak\quad
+      \gamma, \epsilon, \varepsilon, \sigma, \varsigma, \rho, \varrho,
+        \Gamma, {\it \Gamma};\allowbreak\quad
+      (\exp i),\> [\mathop{\sf sin} \varphi],\>
+        \{\mathop{\tt lim}_{x_1\to\infty} c^{-x_1}\};\allowbreak\quad
+      \biggl(\sum_{i=1}^n a^{b_i}\biggr);\quad
+      \int_{y_2,\ldots,y_n\ge0} x\mskip\thinmuskip dy_2;\quad
+      (| \bigl(\big| \Bigl(\Big| \biggl(\bigg| \Biggl(\Bigg|.
+    $
+  }
+  \def\testfamily#1 #2 #3 #4 {%
+    \par
+    \setfontfamily{#1}\selectfont
+    \fontfamily roman #1
+    \fontfamily sans #2
+    \fontfamily mono #3
+    \fontfamily math #4
+    \hangindent=\parindent \hangafter=1
+    \noindent #4:\quad \teststring\medskip
+  }%
+  \def\test{%
+    \setfontencoding{OT1}%
+    \testfamily CMRoman CMSans CMMono CMMath
+    \setfontencoding{T1}%
+    \testfamily LMRoman LMSans LMMono CMMath
+    \testfamily ConcreteRoman LMSans LMMono EulerMath
+    \testfamily CMBright CMBright CMBrightMono CMBrightMath
+    \testfamily URWPalladio NimbusSans BeraMono PazoMath
+    \testfamily URWPalladio NimbusSans BeraMono PXFontsMath
+    \testfamily NimbusRoman NimbusSans NimbusMono TXFontsMath
+    \testfamily NimbusRoman NimbusSans NimbusMono Belleek
+    \testfamily Charter NimbusSans NimbusMono CharterMath
+    \testfamily BeraSans BeraSans BeraMono ArevMath
+    \testfamily Iwona Iwona LMMono IwonaMath
+  }
+  \test
+  \vskip1pc \hrule \nobreak\vskip1pc
+
+  \bfseries
+  \test
+  \vskip1pc \hrule \nobreak\vskip1pc
+
+  \mdseries\itshape
+  \test
+  \vskip1pc \hrule \nobreak\vskip1pc
+
+  \upshape\setfontsize{17}\selectfont
+  \test
+\endgroup
+
+
+% 
+% Test for relative font scaling.
+%
+\title{Relative scaling of font families}
+
+\begingroup
+  \def\do#1{%
+     {\setfontfamily{CMRoman}\setfontencoding{OT1}\selectfont CMRoman}\quad
+     {\setfontfamily{#1}\selectfont #1}\smallskip
+  }
+  \line{\vbox{\hsize=.5\hsize \dofamilies}\qquad
+        \vbox{\hsize=.5\hsize \setfontseries{bx}\dofamilies}}
+\endgroup
+
+% 
+% Test for baseline skips.
+%
+\title{Baseline skips}
+
+\begingroup
+  \def\do#1{%
+    \begingroup
+      \setfontfamily{#1}\selectfont
+      (#1).
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed
+      bibendum nulla id ante. Suspendisse nibh elit, ultricies
+      commodo, ultrices eget, sagittis a, erat. Praesent et
+      augue. Morbi sem. Phasellus augue. Ut bibendum. Sed urna enim,
+      luctus et, gravida vel, malesuada quis, velit. Fusce egestas
+      sapien quis leo.
+      \vskip5pt
+    \endgroup
+  }
+  \dofamilies
+\endgroup
+
+% 
+% Showcase for the font families we support.
+%
+\title{Font families showcase}
+
+\def\teststring{What a mess. }
+\def\test#1{%
+  #1%
+  \upshape \teststring
+  \itshape \teststring
+  \slshape \teststring
+  \scshape \teststring
+}
+
+\def\nextfamily#1 {%
+  \vskip2ex\relax
+  \setfontfamily{#1}\setfontsize{11}\setfontseries{m}\setfontshape{n}\selectfont
+  \hrule
+  \nobreak\vskip2ex\relax
+}
+
+\def\nextsize#1 {%
+  \vskip1ex
+  \setfontsize{#1}\setfontseries{m}\setfontshape{n}\selectfont
+  \textindent{\numwithunit{#1}:}%
+  \test\mdseries\par
+  \test{\setfontseries{b}\selectfont}\par
+  \test\bfseries\par
+}%
+\def\numwithunit#1{%
+  \def\num{#1}%
+  \afterassignment\getunit
+  \dimen255=#1pt\relax
+}%
+\def\getunit#1\relax{%
+  \def\temp{#1}%
+  \num \ifx\temp\empty \thinspace [pt]\fi
+}%
+
+
+\nextfamily CMRoman
+CMRoman.  The ``bold'' and ``bold extended'' series are missing the
+``caps and small caps'' shape.  The ``italic'' and ``slanted'' shapes
+of the ``bold'' series are mapped to the corresponding shapes of the
+``bold extended'' series.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily CMSans
+CMSans.  For all series, ``italic'' is mapped to ``slanted''.  All
+series are missing the ``caps and small caps'' shape.  Entire ``bold''
+series is mapped to the ``bold extended'' series.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily CMMono
+CMMono.  There are no ``bold'' and ``bold extended'' series.  All
+series are missing the ``caps and small caps'' shape.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily LMRoman
+LMRoman.  Maps to CMRoman for the OT1 encodings, so this is actually
+CMRoman now.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily LMSans
+LMSans.  Maps to CMSans for the OT1 encodings, so this is actually
+CMSans now.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily LMMono
+LMMono.  Maps to CMMono for the OT1 encodings, so this is actually
+CMMono now.
+\nextsize 10
+\nextsize 1pc
+
+
+\setfontencoding{T1}
+
+\nextfamily LMRoman
+LMRoman T1.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily LMSans
+LMSans T1.  The ``bold'' series is mapped to the ``bold extended''
+series.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily LMMono
+LMMono T1.  The ``bold'' and ``bold extended'' series are missing.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily CMBright
+CMBright T1.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily CMBrightMono
+CMBrightMono T1.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily ConcreteRoman
+ConcreteRoman T1.  Only the T1 encoding is currently defined.  The
+``bold'' and ``bold extended'' series are mapped to LMSans T1.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily BeraRoman
+BeraRoman.  The ``bold'' series maps to the ``bold extended'' series.
+``Slanted'' shapes are artificially slanted.  All series are missing
+the ``caps and small caps'' shape.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily BeraSans
+BeraSans.  The ``bold'' series is mapped to the ``bold extended''
+series.  All series are missing the ``caps and small caps'' shape.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily BeraMono
+BeraMono.  The ``bold extended'' series is mapped to the ``bold''
+series.  All series are missing the ``caps and small caps'' shape.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily Charter
+Charter.  The ``bold'' series is mapped to the ``bold extended''
+series.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily NimbusRoman
+NimbusRoman.  The ``bold'' series is mapped to the ``bold extended''
+series.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily NimbusSans
+NimbusSans.  For all series, ``italic'' is mapped to ``slanted''.  The
+``bold'' series is mapped to the ``bold extended'' series.  In one
+case, this results in double mapping:  bx/it maps to b/it which maps
+to b/sl (check out the log file).
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily NimbusMono
+NimbusMono.  For all series, ``italic'' is mapped to ``slanted''.  The
+``bold extended'' series is mapped to the ``bold'' series.  In one
+case, this results in double mapping:  bx/it maps to b/it which maps
+to b/sl (check out the log file).
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily URWPalladio
+URWPalladio.  The ``bold'' series is mapped to the ``bold extended''
+series.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily URWBookman
+URWBookman.  The ``bold extended'' series is mapped to the ``bold''
+series.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily CenturySchoolbook
+CenturySchoolbook.  The ``bold'' series is mapped to the ``bold
+extended'' series.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily AntykwaTorunska
+AntykwaTorunska.  The ``bold'' series is mapped to the ``bold
+extended'' series.  For all series, ``slanted'' is mapped to
+``italic''.
+\nextsize 10
+\nextsize 1pc
+
+
+
+\nextfamily Iwona
+Iwona.  The ``bold extended'' series is mapped to the ``bold'' series.
+For all series, ``italic'' is mapped to ``slanted''.
+\nextsize 10
+\nextsize 1pc
+
+\vskip 1pc
+\setfontsize{10pt}\setfontseries{m}\setfontshape{n}\selectfont
+Iwona also supports ``light'', ``semi-bold'' and ``extra-bold''
+series, with ``condensed'' variants:
+
+\def\\#1{\setfontseries{#1}\selectfont\teststring}
+
+\\{l} (light).\par
+\\{lc} (light condensed).
+
+\\{m} (medium).\par
+\\{c} (medium condensed).
+
+\\{sb} (semi-bold).\par
+\\{sbc} (semi-bold condensed).
+
+\\{b} (bold).\par
+\\{bc} (bold condensed).
+
+\\{eb} (extra-bold).\par
+\\{ebc} (extra-bold condensed).
+
+
+
+\nextfamily URWGothic
+URWGothic.  The ``bold extended'' series is mapped to the ``bold''
+series.
+\nextsize 10
+\nextsize 1pc
+
+\nextfamily URWChancery
+\itshape
+URWChancery.  Only the ``medium italic'' shape is available.
+\nextsize 10
+\nextsize 1pc
+
+\bye
+
+% Local variables:
+% compile-command: "tex --interact=nonstopmode ftest"
+% page-delimiter: "^% \f"
+% End:

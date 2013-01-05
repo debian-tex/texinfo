@@ -1,4 +1,4 @@
-$Id: TODO,v 1.69 2012/12/15 22:59:41 karl Exp $
+$Id: TODO,v 1.70 2012/12/31 19:02:57 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -149,6 +149,8 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Handle M-n, C-u m, and C-u g like Emacs Info (opening new windows).
 
 * install-info:
+  - install-info --dir-file=dir2 --entry=info foo.info installs garbage
+    from the misformatted --entry (and no entries from foo.info).
   - be able to copy the info file to compile-time $infodir, to
     simplify by-hand installation.
   - also support installing HTML files, etc., along with subsidiary

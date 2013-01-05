@@ -52,7 +52,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.00';
+$VERSION = '5.0';
 
 my %defaults = (
   'ENABLE_ENCODING'      => 0,
@@ -60,7 +60,7 @@ my %defaults = (
   'EXTENSION'            => 'xml',
   #'output_perl_encoding' => 'utf8',
   'OUTPUT_ENCODING_NAME' => 'utf-8',
-  'TEXINFO_DTD_VERSION'  => '5.00',
+  'TEXINFO_DTD_VERSION'  => '5.0',
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'output_format'        => 'xml',
@@ -972,6 +972,8 @@ sub _convert($$;$)
       if (scalar(@elements) > 1) {
         $command = shift @elements;
       }
+      # this is used for commands without args, or associated to the
+      # first argument
       my $attribute = '';
       if ($root->{'cmdname'} eq 'verb') {
         $attribute = " delimiter=\"".$self->xml_protect_text($root->{'type'})
@@ -1017,10 +1019,45 @@ sub _convert($$;$)
         }
         $arg_index++;
       }
+      # This is for the main command
       $attribute = '';
       if ($root->{'cmdname'} eq 'image') {
         if ($self->_is_inline($root)) {
           $attribute = " where=\"inline\"";
+        }
+      } elsif ($Texinfo::Common::ref_commands{$root->{'cmdname'}}) {
+        if ($root->{'extra'}->{'brace_command_contents'}) {
+          if ($root->{'extra'}->{'node_argument'}
+              and $root->{'extra'}->{'node_argument'}->{'node_content'}
+              and defined($root->{'extra'}->{'node_argument'}->{'normalized'})) {
+            $attribute = " label=\"".$self->xml_protect_text(
+                $root->{'extra'}->{'node_argument'}->{'normalized'})."\"";
+          }
+          my $manual;
+          my $manual_arg_index = 3;
+          if ($root->{'cmdname'} eq 'inforef') {
+            $manual_arg_index = 2;
+          }
+          if ($root->{'extra'}->{'brace_command_contents'}->[$manual_arg_index]) {
+            $manual = Texinfo::Convert::Text::convert({'contents'
+             => $root->{'extra'}->{'brace_command_contents'}->[$manual_arg_index]}, 
+                      {'code' => 1,
+                       Texinfo::Common::_convert_text_options($self)});
+          }
+          if (!defined($manual) and $root->{'extra'}->{'node_argument'}
+              and $root->{'extra'}->{'node_argument'}->{'manual_content'}) {
+            $manual = Texinfo::Convert::Text::convert({'contents' 
+                 => $root->{'extra'}->{'node_argument'}->{'manual_content'}},
+              {'code' => 1, Texinfo::Common::_convert_text_options($self)});
+          }
+          if (defined($manual)) {
+            my $manual_base = $manual;
+            $manual_base =~ s/\.[^\.]*$//;
+            $manual_base =~ s/^.*\///;
+            
+            $attribute .= " manual=\"".$self->xml_protect_text($manual_base)."\"" 
+                  if ($manual_base ne '');
+          }
         }
       }
       if (defined($command)) {

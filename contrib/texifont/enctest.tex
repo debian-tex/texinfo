@@ -1,0 +1,45 @@
+\catcode`\@=11
+\input ienc
+\input oenc
+\input fsel
+\catcode`\@=12
+
+\def\changedocenc#1 {%
+  \message{^^J** #1}%
+  \documentencoding #1
+}
+
+\hfuzz=\maxdimen
+%\tracingfonts2
+
+\setfontencoding{T1}\setfontfamily{LMRoman}\selectfont
+\changedocenc ISO-8859-1
+\input sample.latin1 % Icelandic
+
+\bigskip
+\changedocenc ISO-8859-15
+\input sample.latin9 % French
+
+\bigskip
+\changedocenc ISO-8859-2
+\input sample.latin2 % Czech
+
+\bigskip
+\changedocenc ISO-8859-2
+\setfontencoding{OT1}\setfontfamily{CMRoman}\selectfont
+\input sample.latin2 % Czech
+
+\bigskip
+\setfontencoding{T2A}\setfontfamily{LHRoman}\selectfont
+\changedocenc KOI8-R
+\input sample.koi8r % Russian
+
+\bigskip
+\changedocenc CP1251
+\input sample.cp1251 % Russian
+
+\bye
+
+% Local variables:
+% compile-command: "tex --interact=nonstopmode enctest.tex"
+% End:

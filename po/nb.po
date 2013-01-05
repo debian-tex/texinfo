@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-12-17 17:27-0800\n"
+"POT-Creation-Date: 2013-01-01 17:33-0800\n"
 "PO-Revision-Date: 2004-12-05 15:37+0100\n"
 "Last-Translator: Trond Endrestøl <Trond.Endrestol@gtf.ol.no>\n"
 "Language-Team: Norwegian Bokmaal <i18n-nb@lister.ping.uio.no>\n"
@@ -90,81 +90,81 @@ msgstr "%s: valget «-W %s» tillater ikke et argument\n"
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: valget «%s» krever et argument\n"
 
-#: gnulib/lib/regcomp.c:130
+#: gnulib/lib/regcomp.c:131
 msgid "Success"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:133
+#: gnulib/lib/regcomp.c:134
 msgid "No match"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:136
+#: gnulib/lib/regcomp.c:137
 msgid "Invalid regular expression"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:139
+#: gnulib/lib/regcomp.c:140
 #, fuzzy
 msgid "Invalid collation character"
 msgstr "Ugyldig kodet tegn «%s»"
 
-#: gnulib/lib/regcomp.c:142
+#: gnulib/lib/regcomp.c:143
 #, fuzzy
 msgid "Invalid character class name"
 msgstr "usannsynlig tegn %c i @var"
 
-#: gnulib/lib/regcomp.c:145
+#: gnulib/lib/regcomp.c:146
 msgid "Trailing backslash"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:148
+#: gnulib/lib/regcomp.c:149
 msgid "Invalid back reference"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:151
+#: gnulib/lib/regcomp.c:152
 #, fuzzy
 msgid "Unmatched [ or [^"
 msgstr "Umatchet }"
 
-#: gnulib/lib/regcomp.c:154
+#: gnulib/lib/regcomp.c:155
 #, fuzzy
 msgid "Unmatched ( or \\("
 msgstr "Umatchet }"
 
-#: gnulib/lib/regcomp.c:157
+#: gnulib/lib/regcomp.c:158
 #, fuzzy
 msgid "Unmatched \\{"
 msgstr "Umatchet }"
 
-#: gnulib/lib/regcomp.c:160
+#: gnulib/lib/regcomp.c:161
 msgid "Invalid content of \\{\\}"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:163
+#: gnulib/lib/regcomp.c:164
 msgid "Invalid range end"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:166
+#: gnulib/lib/regcomp.c:167
 msgid "Memory exhausted"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:169
+#: gnulib/lib/regcomp.c:170
 msgid "Invalid preceding regular expression"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:172
+#: gnulib/lib/regcomp.c:173
 msgid "Premature end of regular expression"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:175
+#: gnulib/lib/regcomp.c:176
 msgid "Regular expression too big"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:178
+#: gnulib/lib/regcomp.c:179
 #, fuzzy
 msgid "Unmatched ) or \\)"
 msgstr "Umatchet }"
 
-#: gnulib/lib/regcomp.c:703
+#: gnulib/lib/regcomp.c:704
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "Ingen tidligere søkestreng"
@@ -417,8 +417,8 @@ msgstr " for %s"
 msgid "Try --help for more information.\n"
 msgstr "Prøv --help for mer informasjon.\n"
 
-#: info/info.c:299 info/infokey.c:144 install-info/install-info.c:2133
-#: tp/texi2any.pl:735 util/texindex.c:295
+#: info/info.c:299 info/infokey.c:144 install-info/install-info.c:2142
+#: tp/texi2any.pl:736 util/texindex.c:295
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -914,8 +914,8 @@ msgid ""
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr ""
 "\\%-10[goto-node]  Flytte til en node angitt ved navn.\n"
-"              Du kan like godt inkludere et filnavn, som i (FILNAVN)"
-"NODENAVN.\n"
+"              Du kan like godt inkludere et filnavn, som i "
+"(FILNAVN)NODENAVN.\n"
 
 #: info/infodoc.c:132
 #, fuzzy, c-format
@@ -1937,28 +1937,44 @@ msgstr "-%s%s-Info: (%s)%s, %d linjer --%s--"
 msgid " Subfile: %s"
 msgstr " Delfil: %s"
 
-#: install-info/install-info.c:285
+#: install-info/install-info.c:286
 #, fuzzy, c-format
 msgid "%s for %s"
 msgstr " for %s"
 
-#: install-info/install-info.c:519
+#: install-info/install-info.c:520
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\tPrøv «%s --help» for en komplett liste over valg.\n"
 
-#: install-info/install-info.c:527
+#: install-info/install-info.c:528
 #, fuzzy, c-format
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 msgstr "Bruksmåte: %s [VALG]... TEXINFOFIL...\n"
 
-#: install-info/install-info.c:529
+#: install-info/install-info.c:530
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
 msgstr ""
 
+#: install-info/install-info.c:531
+msgid "INFO-FILE and DIR-FILE are required unless the --info-file or"
+msgstr ""
+
 #: install-info/install-info.c:532
+msgid "--dir-file (or --info-dir) options are given, respectively."
+msgstr ""
+
+#: install-info/install-info.c:535
 msgid ""
 "Options:\n"
+" --add-once          add only to first matching section, not all.\n"
+" --align=COL         start description of new entries at column COL.\n"
+" --calign=COL        format second and subsequent description lines to\n"
+"                       start at column COL."
+msgstr ""
+
+#: install-info/install-info.c:542
+msgid ""
 " --debug             report what is being done.\n"
 " --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
 "                      don't insert any new entries.\n"
@@ -1970,30 +1986,31 @@ msgid ""
 " --dry-run           same as --test."
 msgstr ""
 
-#: install-info/install-info.c:544
+#: install-info/install-info.c:553
 msgid ""
-" --entry=TEXT        insert TEXT as an Info directory entry.\n"
+" --entry=TEXT        insert TEXT as an Info directory entry,\n"
+"                      overriding any corresponding entry from DIR-FILE.\n"
 "                      TEXT is written as an Info menu item line followed\n"
 "                       by zero or more extra lines starting with "
 "whitespace.\n"
 "                      If you specify more than one entry, all are added.\n"
 "                      If you don't specify any entries, they are determined\n"
-"                       from information in the Info file itself.\n"
-"                      When removing, TEXT specifies the entry to remove.\n"
-"                      TEXT is only removed as a last resort, if the\n"
-"                      entry as determined from the Info file is not "
-"present,\n"
-"                      and the basename of the Info file isn't found either."
+"                       from information in the Info file itself."
 msgstr ""
 
-#: install-info/install-info.c:556
+#: install-info/install-info.c:562
 msgid ""
 " --help              display this help and exit.\n"
 " --info-dir=DIR      same as --dir-file=DIR/dir.\n"
 " --info-file=FILE    specify Info file to install in the directory;\n"
 "                      equivalent to using the INFO-FILE argument.\n"
 " --item=TEXT         same as --entry=TEXT.\n"
-" --keep-old          do not replace entries, or remove empty sections.\n"
+" --keep-old          do not replace entries, or remove empty sections."
+msgstr ""
+
+#: install-info/install-info.c:570
+msgid ""
+" --maxwidth, --max-width=COL  wrap description at column COL.\n"
 " --menuentry=TEXT    same as --name=TEXT.\n"
 " --name=TEXT         the name of the entry is TEXT; used with --description\n"
 "                      to become synonymous with the --entry option.\n"
@@ -2001,7 +2018,7 @@ msgid ""
 " --quiet             suppress warnings."
 msgstr ""
 
-#: install-info/install-info.c:569
+#: install-info/install-info.c:578
 msgid ""
 " --regex=R           put this file's entries in all sections that match the\n"
 "                      regular expression R (ignoring case).\n"
@@ -2017,14 +2034,14 @@ msgid ""
 " --section R SEC     equivalent to --regex=R --section=SEC --add-once."
 msgstr ""
 
-#: install-info/install-info.c:582
+#: install-info/install-info.c:591
 msgid ""
 " --silent            suppress warnings.\n"
 " --test              suppress updating of DIR-FILE.\n"
 " --version           display version information and exit."
 msgstr ""
 
-#: install-info/install-info.c:589 tp/texi2any.pl:723
+#: install-info/install-info.c:598 tp/texi2any.pl:724
 #, fuzzy
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -2036,7 +2053,7 @@ msgstr ""
 "generelle spørsmål og diskusjoner til help-texinfo@gnu.org.\n"
 "Websida for Texinfo: http://www.gnu.org/software/texinfo/"
 
-#: install-info/install-info.c:616
+#: install-info/install-info.c:625
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -2072,76 +2089,76 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:640
+#: install-info/install-info.c:649
 #, fuzzy, c-format
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: kunne ikke lese (%s) og kunne ikke opprette (%s)\n"
 
-#: install-info/install-info.c:736
+#: install-info/install-info.c:745
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: tom fil"
 
-#: install-info/install-info.c:1079 install-info/install-info.c:1119
+#: install-info/install-info.c:1088 install-info/install-info.c:1128
 #, c-format
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY uten tilhørende END-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1114
+#: install-info/install-info.c:1123
 #, c-format
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY uten tilhørende START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1978 install-info/install-info.c:1988
+#: install-info/install-info.c:1987 install-info/install-info.c:1997
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: har allerede en dirfil: %s\n"
 
-#: install-info/install-info.c:2068
+#: install-info/install-info.c:2077
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Spesifiser infofilen bare en gang.\n"
 
-#: install-info/install-info.c:2101
+#: install-info/install-info.c:2110
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr ""
 
-#: install-info/install-info.c:2113
+#: install-info/install-info.c:2122
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr ""
 
-#: install-info/install-info.c:2171
+#: install-info/install-info.c:2180
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "overflødig argument på kommandolinjen «%s»"
 
-#: install-info/install-info.c:2175
+#: install-info/install-info.c:2184
 #, c-format
 msgid "No input file specified; try --help for more information."
 msgstr "Ingen innfil angitt; prøv --help for mer informasjon."
 
-#: install-info/install-info.c:2177
+#: install-info/install-info.c:2186
 #, c-format
 msgid "No dir file specified; try --help for more information."
 msgstr "Ingen dir-fil angitt; prøv --help for mer informasjon."
 
-#: install-info/install-info.c:2319
+#: install-info/install-info.c:2328
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "ingen info-dir-oppføring i «%s»"
 
-#: install-info/install-info.c:2567
+#: install-info/install-info.c:2576
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "fant ingen oppføringer for «%s»; ingenting slettet"
 
-#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:794
-#: tp/Texinfo/Convert/DocBook.pm:311 tp/Texinfo/Convert/HTML.pm:6518
-#: tp/Texinfo/Convert/HTML.pm:6542 tp/Texinfo/Convert/HTML.pm:6918
-#: tp/Texinfo/Convert/HTML.pm:6975 tp/Texinfo/Convert/HTML.pm:7052
-#: tp/Texinfo/Convert/HTML.pm:7124 tp/Texinfo/Convert/Info.pm:90
+#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:825
+#: tp/Texinfo/Convert/DocBook.pm:311 tp/Texinfo/Convert/HTML.pm:6500
+#: tp/Texinfo/Convert/HTML.pm:6524 tp/Texinfo/Convert/HTML.pm:6900
+#: tp/Texinfo/Convert/HTML.pm:6957 tp/Texinfo/Convert/HTML.pm:7034
+#: tp/Texinfo/Convert/HTML.pm:7106 tp/Texinfo/Convert/Info.pm:90
 #: tp/Texinfo/Convert/Info.pm:178 tp/Texinfo/Convert/Info.pm:201
 #: tp/Texinfo/Convert/Plaintext.pm:462 tp/Texinfo/Convert/XML.pm:281
 #, fuzzy, perl-format
@@ -2221,7 +2238,7 @@ msgid "protect_hashchar_at_line_beginning cannot protect in @%s"
 msgstr ""
 
 #: tp/Texinfo/Convert/Converter.pm:398 tp/Texinfo/Convert/Converter.pm:417
-#: tp/texi2any.pl:385 tp/texi2any.pl:402
+#: tp/texi2any.pl:386 tp/texi2any.pl:403
 #, fuzzy, perl-format
 msgid "Obsolete variable %s\n"
 msgstr "Sett variabel: "
@@ -2236,17 +2253,16 @@ msgstr "Kan ikke opprette katalogen «%s»: %s"
 msgid "Can't create directories `%s': %s"
 msgstr "Kan ikke opprette katalogen «%s»: %s"
 
-#: tp/Texinfo/Convert/DocBook.pm:347 tp/Texinfo/Convert/HTML.pm:6943
-#: tp/Texinfo/Convert/HTML.pm:7001 tp/Texinfo/Convert/Info.pm:145
+#: tp/Texinfo/Convert/DocBook.pm:347 tp/Texinfo/Convert/HTML.pm:6925
+#: tp/Texinfo/Convert/HTML.pm:6983 tp/Texinfo/Convert/Info.pm:145
 #: tp/Texinfo/Convert/Info.pm:167 tp/Texinfo/Convert/Info.pm:194
 #: tp/Texinfo/Convert/Info.pm:257 tp/Texinfo/Convert/XML.pm:315
-#: tp/Texinfo/Parser.pm:1871 tp/init/chm.pm:267 tp/init/chm.pm:338
-#: tp/init/chm.pm:399
+#: tp/Texinfo/Parser.pm:1871
 #, fuzzy, perl-format
 msgid "Error on closing %s: %s"
 msgstr "feil ved skriving til «%s»"
 
-#: tp/Texinfo/Convert/DocBook.pm:919
+#: tp/Texinfo/Convert/DocBook.pm:897
 #, fuzzy, perl-format
 msgid "@image file `%s' not found, using `%s'"
 msgstr "@image-fil «%s» er uleselig: %s"
@@ -2261,91 +2277,91 @@ msgstr "@image-fil «%s» (for HTML) er uleselig: %s"
 msgid "Raw format %s is not converted"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:4832
+#: tp/Texinfo/Convert/HTML.pm:4814
 #, perl-format
 msgid "%s:%d: string not closed in css file"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:4834
+#: tp/Texinfo/Convert/HTML.pm:4816
 #, fuzzy, perl-format
 msgid "%s:%d: --css-include ended in comment"
 msgstr "%s:%d: --css-file endte i en kommentar"
 
-#: tp/Texinfo/Convert/HTML.pm:4836
+#: tp/Texinfo/Convert/HTML.pm:4818
 #, perl-format
-msgid "%s:%d @import not finished in css file"
+msgid "%s:%d: @import not finished in css file"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:4862
+#: tp/Texinfo/Convert/HTML.pm:4844
 #, fuzzy, perl-format
 msgid "css file %s not found"
 msgstr "%cend macro ikke funnet"
 
-#: tp/Texinfo/Convert/HTML.pm:4868
+#: tp/Texinfo/Convert/HTML.pm:4850
 #, fuzzy, perl-format
 msgid "could not open --include-file %s: %s"
 msgstr "%s: kunne ikke åpne --css-file: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:4878
+#: tp/Texinfo/Convert/HTML.pm:4860
 #, fuzzy, perl-format
 msgid "Error on closing CSS file %s: %s"
 msgstr "Feil ved lukking av outputfila «%s»"
 
-#: tp/Texinfo/Convert/HTML.pm:5824 tp/Texinfo/Convert/HTML.pm:5828
+#: tp/Texinfo/Convert/HTML.pm:5806 tp/Texinfo/Convert/HTML.pm:5810
 #, fuzzy, perl-format
 msgid "No htmlxref.cnf entry found for `%s'"
 msgstr "ingen innslag funnet for «%s»\n"
 
-#: tp/Texinfo/Convert/HTML.pm:6513
+#: tp/Texinfo/Convert/HTML.pm:6495
 #, fuzzy, perl-format
 msgid "Error on closing frame file %s: %s"
 msgstr "Feil ved lukking av outputfila «%s»"
 
-#: tp/Texinfo/Convert/HTML.pm:6537
+#: tp/Texinfo/Convert/HTML.pm:6519
 #, fuzzy, perl-format
 msgid "Error on closing TOC frame file %s: %s"
 msgstr "Feil ved lukking av outputfila «%s»"
 
-#: tp/Texinfo/Convert/HTML.pm:6652
+#: tp/Texinfo/Convert/HTML.pm:6634
 #, perl-format
 msgid "Handler %s of stage %s priority %s failed"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6853
+#: tp/Texinfo/Convert/HTML.pm:6835
 msgid "Must specify a title with a title command or @top"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:7058
+#: tp/Texinfo/Convert/HTML.pm:7040
 #, perl-format
 msgid "Error on closing redirection node file %s: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:7083
+#: tp/Texinfo/Convert/HTML.pm:7065
 #, fuzzy, perl-format
 msgid "Old name for `%s' is a node of the document"
 msgstr "Ingen «forrige» eller «opp» for denne noden i dette dokumentet."
 
-#: tp/Texinfo/Convert/HTML.pm:7087
+#: tp/Texinfo/Convert/HTML.pm:7069
 #, fuzzy, perl-format
 msgid "File empty for renamed node `%s'"
 msgstr "ureferert node «%s»"
 
-#: tp/Texinfo/Convert/HTML.pm:7099
+#: tp/Texinfo/Convert/HTML.pm:7081
 #, perl-format
 msgid "Target node (new name for `%s') not in document: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:7131
+#: tp/Texinfo/Convert/HTML.pm:7113
 #, fuzzy, perl-format
 msgid "Error on closing renamed node redirection file %s: %s"
 msgstr "Feil ved lukking av outputfila «%s»"
 
-#: tp/Texinfo/Convert/HTML.pm:7169
+#: tp/Texinfo/Convert/HTML.pm:7151
 #, fuzzy
 msgid "Empty node name"
 msgstr "ingen innslag funnet for «%s»\n"
 
-#: tp/Texinfo/Convert/HTML.pm:7171 tp/Texinfo/Parser.pm:3420
+#: tp/Texinfo/Convert/HTML.pm:7153 tp/Texinfo/Parser.pm:3420
 #, perl-format
 msgid "Syntax for an external node used for `%s'"
 msgstr ""
@@ -2644,7 +2660,7 @@ msgstr "Ugyldig argument til @%s"
 
 #: tp/Texinfo/Parser.pm:3455
 #, fuzzy
-msgid "Empty node in menu entry"
+msgid "Empty node name in menu entry"
 msgstr "ingen innslag funnet for «%s»\n"
 
 #: tp/Texinfo/Parser.pm:3525
@@ -3111,64 +3127,84 @@ msgstr ""
 msgid "Empty index key in @%s"
 msgstr "ingen innslag funnet for «%s»\n"
 
-#: tp/init/chm.pm:221 tp/init/chm.pm:277 tp/init/chm.pm:348
+#: tp/init/chm.pm:220 tp/init/chm.pm:276 tp/init/chm.pm:347
 #, fuzzy, perl-format
-msgid "Can't open %s for writing: %s\n"
+msgid "chm.pm:%s: Cannot open for writing: %s\n"
 msgstr "%s: kunne ikke åpne --css-file: %s"
 
-#: tp/init/tex4ht.pm:122
+#: tp/init/chm.pm:266 tp/init/chm.pm:337 tp/init/chm.pm:398
 #, fuzzy, perl-format
-msgid "tex4ht error opening %s: %s"
+msgid "chm.pm:%s: Error on closing: %s"
 msgstr "feil ved skriving til «%s»"
 
-#: tp/init/tex4ht.pm:218
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
+#, fuzzy, perl-format
+msgid "tex4ht.pm:%s: Cannot open: %s"
+msgstr "Kan ikke finne «%s»."
+
+#: tp/init/tex4ht.pm:219
 #, perl-format
-msgid "chdir to %s failed"
+msgid "tex4ht.pm:%s: chdir failed: %s"
 msgstr ""
 
-#: tp/init/tex4ht.pm:242
+#: tp/init/tex4ht.pm:232
+#, perl-format
+msgid "tex4ht.pm: Unable to return to initial directory: %s"
+msgstr ""
+
+#: tp/init/tex4ht.pm:244
 #, fuzzy, perl-format
-msgid "tex4ht output file missing: %s"
+msgid "tex4ht.pm: Output file missing: %s"
 msgstr "Kunne ikke opprette outputfila «%s»"
 
-#: tp/init/tex4ht.pm:295
+#: tp/init/tex4ht.pm:260
+#, perl-format
+msgid "tex4ht.pm: Command failed: %s"
+msgstr ""
+
+#: tp/init/tex4ht.pm:293
+#, perl-format
+msgid "tex4ht.pm: end of @%s item %d not found"
+msgstr ""
+
+#: tp/init/tex4ht.pm:300
 #, perl-format
 msgid ""
-"tex4ht processing produced %d items in HTML; expected %d, the number of "
+"tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
 "items found in the document"
 msgstr ""
 
-#: tp/init/tex4ht.pm:313
+#: tp/init/tex4ht.pm:319
 #, perl-format
-msgid "tex4ht output has no HTML item for @%s %s"
+msgid "tex4ht.pm: Output has no HTML item for @%s %s"
 msgstr ""
 
-#: tp/texi2any.pl:373
+#: tp/texi2any.pl:374
 #, fuzzy, perl-format
 msgid "error loading %s: %s\n"
 msgstr "feil ved skriving til «%s»"
 
-#: tp/texi2any.pl:382 tp/texi2any.pl:399
+#: tp/texi2any.pl:383 tp/texi2any.pl:400
 #, fuzzy, perl-format
 msgid "Unknown variable %s\n"
 msgstr "Ukjent kommando «%s»"
 
-#: tp/texi2any.pl:466
+#: tp/texi2any.pl:467
 #, fuzzy, perl-format
 msgid "Can't read init file %s"
 msgstr "Kan ikke åpne inputfilen «%s»"
 
-#: tp/texi2any.pl:597
+#: tp/texi2any.pl:598
 #, fuzzy
 msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 msgstr "Bruksmåte: %s [VALG]... TEXINFOFIL...\n"
 
-#: tp/texi2any.pl:598
+#: tp/texi2any.pl:599
 #, fuzzy
 msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 msgstr "Bruksmåte: %s [VALG]... TEXINFOFIL...\n"
 
-#: tp/texi2any.pl:600
+#: tp/texi2any.pl:601
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -3176,7 +3212,7 @@ msgstr ""
 "Oversette Texinfodokumentasjon til forskjellige andre formater:\n"
 "Infofiler for lesing online med Emacs eller den frittstående GNU Info.\n"
 
-#: tp/texi2any.pl:603
+#: tp/texi2any.pl:604
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -3205,7 +3241,7 @@ msgstr ""
 "  -v, --verbose               forklare hva som blir gjort.\n"
 "      --version               vise programversjon og avslutte.\n"
 
-#: tp/texi2any.pl:618
+#: tp/texi2any.pl:619
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -3221,7 +3257,7 @@ msgstr ""
 "      --xml                 generere Texinfo XML i stedet for Info.\n"
 "      --plaintext           generere ren tekst i stedet for Info.\n"
 
-#: tp/texi2any.pl:626
+#: tp/texi2any.pl:627
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -3265,7 +3301,7 @@ msgstr ""
 "  -o, --output=FIL          sende output til FIL (eller katalog dersom "
 "splittet HTML),\n"
 
-#: tp/texi2any.pl:646
+#: tp/texi2any.pl:647
 #, fuzzy, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3305,7 +3341,7 @@ msgstr ""
 "      --split-size=ANT        splitte Infofilene ved lengde ANT (standard "
 "%d).\n"
 
-#: tp/texi2any.pl:663
+#: tp/texi2any.pl:664
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -3323,19 +3359,19 @@ msgstr ""
 "      --css-include=FIL         inkluder FIL i HTML <style>-taggen;\n"
 "                                  les stdin dersom FIL er -.\n"
 
-#: tp/texi2any.pl:674
+#: tp/texi2any.pl:675
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:677
+#: tp/texi2any.pl:678
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:680
+#: tp/texi2any.pl:681
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -3356,7 +3392,7 @@ msgstr ""
 "  -U VAR                         udefiner variabelen VAR, som om @clear "
 "brukes.\n"
 
-#: tp/texi2any.pl:687
+#: tp/texi2any.pl:688
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -3393,7 +3429,7 @@ msgstr ""
 "  --no-iftex         ikke behandle @iftex og @tex.\n"
 "  --no-ifxml         ikke behandle @ifxml og @xml.\n"
 
-#: tp/texi2any.pl:704
+#: tp/texi2any.pl:705
 #, fuzzy
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
@@ -3409,7 +3445,7 @@ msgstr ""
 "  dersom ren tekst genereres er --ifplaintext påslått og de andre av;\n"
 "  dersom XML genereres er --ifxml påslått og de andre av.\n"
 
-#: tp/texi2any.pl:711
+#: tp/texi2any.pl:712
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -3437,77 +3473,77 @@ msgstr ""
 "  makeinfo --number-sections foo.texi   skrive Info med nummererte avsnitt\n"
 "  makeinfo --no-split foo.texi          skrive en Infofil uansett størrelse\n"
 
-#: tp/texi2any.pl:758
+#: tp/texi2any.pl:759
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr "%s: --footnote-style arg må være «separate» eller «end», ikke «%s».\n"
 
-#: tp/texi2any.pl:848
+#: tp/texi2any.pl:849
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: --paragraph-indent arg må være numerisk/«none»/«asis», ikke «%s».\n"
 
-#: tp/texi2any.pl:962
+#: tp/texi2any.pl:963
 #, perl-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: Ignorerer ugjenkjennelig TEXINFO_OUTPUT_FORMAT-verdi «%s».\n"
 
-#: tp/texi2any.pl:975
+#: tp/texi2any.pl:976
 #, perl-format
 msgid "when generating %s, only one input FILE may be specified with -o"
 msgstr ""
 
-#: tp/texi2any.pl:979
+#: tp/texi2any.pl:980
 msgid "--Xopt option without printed output"
 msgstr ""
 
-#: tp/texi2any.pl:989
+#: tp/texi2any.pl:990
 #, fuzzy, perl-format
 msgid "Unknown tree transformation %s"
 msgstr "Ukjent kommando «%s»"
 
-#: tp/texi2any.pl:996
+#: tp/texi2any.pl:997
 #, perl-format
 msgid "Ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:1045
+#: tp/texi2any.pl:1046
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: mangler filargument.\n"
 
-#: tp/texi2any.pl:1046
+#: tp/texi2any.pl:1047
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Prøv «%s --help» for mer informasjon.\n"
 
-#: tp/texi2any.pl:1117
+#: tp/texi2any.pl:1118
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 
-#: tp/texi2any.pl:1139
+#: tp/texi2any.pl:1140
 #, fuzzy, perl-format
 msgid "Error on closing macro expand file %s: %s\n"
 msgstr "Feil ved lukking av outputfila «%s»"
 
-#: tp/texi2any.pl:1145 tp/texi2any.pl:1255 tp/texi2any.pl:1289
+#: tp/texi2any.pl:1146 tp/texi2any.pl:1256 tp/texi2any.pl:1290
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s\n"
 msgstr "%s: kunne ikke åpne --css-file: %s"
 
-#: tp/texi2any.pl:1169
+#: tp/texi2any.pl:1170
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
 msgstr ""
 
-#: tp/texi2any.pl:1226 tp/texi2any.pl:1302
+#: tp/texi2any.pl:1227 tp/texi2any.pl:1303
 #, fuzzy, perl-format
 msgid "Error on closing %s: %s\n"
 msgstr "feil ved skriving til «%s»"
 
-#: tp/texi2any.pl:1249 tp/texi2any.pl:1283
+#: tp/texi2any.pl:1250 tp/texi2any.pl:1284
 #, perl-format
 msgid "Error on closing internal links file %s: %s\n"
 msgstr ""
@@ -3568,6 +3604,10 @@ msgstr "Ingen sidenummer i %s"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "oppføring %s følger en oppføring med et annet navn"
+
+#, fuzzy
+#~ msgid "tex4ht error opening %s: %s"
+#~ msgstr "feil ved skriving til «%s»"
 
 #, fuzzy
 #~ msgid "Error on closing renamed nodes file %s: %s"
@@ -4458,12 +4498,12 @@ msgstr "oppføring %s følger en oppføring med et annet navn"
 
 #~ msgid ""
 #~ "\\%-10[goto-node]  Move to node specified by name.\n"
-#~ "              You may include a filename as well, as in (FILENAME)"
-#~ "NODENAME.\n"
+#~ "              You may include a filename as well, as in "
+#~ "(FILENAME)NODENAME.\n"
 #~ msgstr ""
 #~ "\\%-10[goto-node]  Flytte til en node angitt ved navn.\n"
-#~ "              Du kan like godt inkludere et filnavn, som i (FILNAVN)"
-#~ "NODENAVN.\n"
+#~ "              Du kan like godt inkludere et filnavn, som i "
+#~ "(FILNAVN)NODENAVN.\n"
 
 #, fuzzy
 #~ msgid "\\%-10[next-node]  Move to the next node of current section.\n"
@@ -4587,11 +4627,11 @@ msgstr "oppføring %s følger en oppføring med et annet navn"
 #~ "              Valg av menypunkt fører til at en annen node blir valgt.\n"
 
 #~ msgid ""
-#~ "              You may include a filename as well, as in (FILENAME)"
-#~ "NODENAME.\n"
+#~ "              You may include a filename as well, as in "
+#~ "(FILENAME)NODENAME.\n"
 #~ msgstr ""
-#~ "              Du kan like godt inkludere et filnavn, som i (FILNAVN)"
-#~ "NODENAVN.\n"
+#~ "              Du kan like godt inkludere et filnavn, som i "
+#~ "(FILNAVN)NODENAVN.\n"
 
 #~ msgid "  %-10s  Search backward for a specified string\n"
 #~ msgstr ""

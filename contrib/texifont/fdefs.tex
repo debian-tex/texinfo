@@ -1,0 +1,176 @@
+\input fattr
+\ftracelevel=4
+
+\newfontattrs encoding  OT1,OMS,OML,OMX,T1,TS1,T2A
+\newfontattrs slant     upright,slanted,italic,unitalic,cursive
+\newfontattrs weight    light,medium,semibold,bold,boldext
+\newfontattrs figstyle  oldfigs,liningfigs
+\newfontattrs caps      normalcaps,capssmallcaps,allcaps,nocaps
+
+%
+%
+%\newfont 1000 aoeu 12.3 aa,b,c
+%\newfont 1000 hhth 83.6pt
+%\newfont 1000 xufd 24.8 
+%
+%\newfont 1000 huxo 8.3pt dd
+%\newfont 1000 ofeo 35.4
+%\newfont 1000 ixqe 217pt 
+%
+%\newfont 1000 huxo 9pt {}
+%\newfont 1000 ofeo 2pt 
+%\newfont 1000 ixqe 4
+%\bye
+%
+%
+
+
+%
+% Computer Modern Roman.
+%
+\newfontattr family CMRoman
+% Medium weight.
+% Upright.
+\newfont 1000 cmr5   5  CMRoman,OT1,upright,medium,liningfigs,normalcaps
+\newfont 1000 cmr6   6  {}
+\newfont 1000 cmr7   7  {}
+\newfont 1000 cmr8   8  {}
+\newfont 1000 cmr9   9  {}
+\newfont 1000 cmr10  10 {}
+\newfont 1000 cmr12  12 {}
+\newfont 1000 cmr17  17 {}
+% Italic.
+\newfont 1000 cmti7  7  CMRoman,OT1,italic,medium,liningfigs,normalcaps
+\newfont 1000 cmti8  8  {}
+\newfont 1000 cmti9  9  {}
+\newfont 1000 cmti10 10 {}
+\newfont 1000 cmti12 12 {}
+% Slanted.
+\newfont 1000 cmsl6  6  CMRoman,OT1,slanted,medium,liningfigs,normalcaps % From cmextra.
+\newfont 1000 cmsl8  8  {}
+\newfont 1000 cmsl9  9  {}
+\newfont 1000 cmsl10 10 {}
+\newfont 1000 cmsl12 12 {}
+% Caps and small caps.
+\newfont 1000 cmcsc10 10 CMRoman,OT1,upright,medium,liningfigs,capssmallcaps
+% Unslanted italic (for slanted pound sterling).
+\newfont 1000 cmu10   10 CMRoman,OT1,unitalic,medium,liningfigs,normalcaps
+%
+% Bold weight.
+\newfont 1000 cmb10  10 CMRoman,OT1,upright,bold,liningfigs,normalcaps
+\fontsubstpost =CMRoman,bold - +boldext
+%
+% Bold extended.
+% Upright.
+\newfont 1000 cmbx5  5  CMRoman,OT1,upright,boldext,liningfigs,normalcaps
+\newfont 1000 cmbx6  6  {}
+\newfont 1000 cmbx7  7  {}
+\newfont 1000 cmbx8  8  {}
+\newfont 1000 cmbx9  9  {}
+\newfont 1000 cmbx10 10 {}
+\newfont 1000 cmbx12 12 {}
+% Italic.
+\newfont 1000 cmbxti7  7  CMRoman,OT1,italic,boldext,liningfigs,normalcaps  % from cmextra
+\newfont 1000 cmbxti10 10 {}
+\newfont 1000 cmbxti12 12 {} % from cmextra
+% Slanted.
+\newfont 1000 cmbxsl10 10 CMRoman,OT1,slanted,boldext,liningfigs,normalcaps
+%
+% Math letters.
+\fontsubstpost =CMRoman,OML - +upright
+\fontsubstpost =CMRoman,OML - +oldfigs
+% Medium weight.
+\newfont 1000 cmmi5  5  CMRoman,OML,upright,medium,oldfigs,normalcaps
+\newfont 1000 cmmi6  6  {}
+\newfont 1000 cmmi7  7  {}
+\newfont 1000 cmmi8  8  {}
+\newfont 1000 cmmi9  9  {}
+\newfont 1000 cmmi10 10 {}
+\newfont 1000 cmmi12 12 {}
+% Bold extended.
+\newfont 1000 cmmib5  5  CMRoman,OML,upright,boldext,oldfigs,normalcaps
+\newfont 1000 cmmib6  6  {}
+\newfont 1000 cmmib7  7  {}
+\newfont 1000 cmmib8  8  {}
+\newfont 1000 cmmib9  9  {}
+\newfont 1000 cmmib10 10 {}
+%
+% Math symbols.
+\fontsubstpost =CMRoman,OMS - +upright
+% Medium weight.
+\newfont 1000 cmsy5  5  CMRoman,OMS,upright,medium
+\newfont 1000 cmsy6  6  {}
+\newfont 1000 cmsy7  7  {}
+\newfont 1000 cmsy8  8  {}
+\newfont 1000 cmsy9  9  {}
+\newfont 1000 cmsy10 10 {}
+% Bold extended.
+\newfont 1000 cmbsy5  5  CMRoman,OMS,upright,boldext
+\newfont 1000 cmbsy6  6  {}
+\newfont 1000 cmbsy7  7  {}
+\newfont 1000 cmbsy8  8  {}
+\newfont 1000 cmbsy9  9  {}
+\newfont 1000 cmbsy10 10 {}
+%
+% Computer Modern Sans.
+%
+\newfontattr family CMSans
+\fontsubstpost =CMSans,OML - +CMRoman
+\fontsubstpost =CMSans,OMS - +CMRoman
+\fontsubstpost =CMSans,italic - +slanted
+\fontsubstpost =CMSans,bold - +boldext
+% Medium weight.
+% Upright.
+\newfont 1000 cmss8  8  CMSans,OT1,upright,medium,liningfigs,normalcaps
+\newfont 1000 cmss9  9  {}
+\newfont 1000 cmss10 10 {}
+\newfont 1000 cmss12 12 {}
+\newfont 1000 cmss17 17 {}
+% Slanted.
+\newfont 1000 cmssi8  8  CMSans,OT1,slanted,medium,liningfigs,normalcaps
+\newfont 1000 cmssi9  9  {}
+\newfont 1000 cmssi10 10 {}
+\newfont 1000 cmssi12 12 {}
+\newfont 1000 cmssi17 17 {}
+%
+% Bold extended.
+\newfont 1000 cmssbx10  10 CMSans,OT1,upright,boldext,liningfigs,normalcaps
+\newfont 1000 cmssbxo10 10 CMSans,OT1,slanted,boldext,liningfigs,normalcaps % from cmextra
+%
+% Computer Modern Typewriter.
+%
+\newfontattr family CMMono
+\fontsubstpost =CMMono,OML - +CMRoman,oldfigs
+\fontsubstpost =CMMono,OMS - +CMRoman
+% Medium weight.
+% Upright.
+\newfont 1000 cmtt8  8  CMMono,OT1,upright,medium,liningfigs,normalcaps
+\newfont 1000 cmtt9  9  {}
+\newfont 1000 cmtt10 10 {}
+\newfont 1000 cmtt12 12 {}
+% Italic.
+\newfont 1000 cmitt9  9  CMMono,OT1,italic,medium,liningfigs,normalcaps % from cmextra
+\newfont 1000 cmitt10 10 {}
+\newfont 1000 cmitt12 12 {} % from cmextra
+% Slanted.
+\newfont 1000 cmsltt9  9  CMMono,OT1,slanted,medium,liningfigs,normalcaps % from cmextra
+\newfont 1000 cmsltt10 10 {}
+
+
+\setfont{OML,CMRoman,upright,medium,liningfigs,normalcaps}
+
+ABCabcdf
+
+\addfontattrs{CMMono}
+\dumpfontfeatures
+ABCabcdf
+
+\addfontattrs{CMRoman}
+\dumpfontfeatures
+ABCabcdf
+
+\addfontattrs{OT1}
+\dumpfontfeatures
+ABCabcdf
+
+\bye

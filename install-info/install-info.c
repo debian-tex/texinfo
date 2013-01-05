@@ -1,8 +1,9 @@
-/* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.19 2012/06/11 17:54:27 karl Exp $
+/* install-info -- merge Info directory entries from an Info file.
+   $Id: install-info.c,v 1.21 2013/01/01 19:31:57 karl Exp $
 
    Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
-   2005, 2007, 2008, 2009, 2010, 2011, 2012 Free Software Foundation, Inc.
+   2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013
+   Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -179,15 +180,15 @@ regex_t *psecreg = NULL;
 int remove_exactly = 0;
 
 /* Nonzero means that sections that don't have entries in them will be
-   deleted. */
+   deleted.  */
 int remove_empty_sections = 1;
 
-/* Nonzero means that new Info entries into the DIR file will go into all 
+/* Nonzero means that new Info entries into the DIR file go into all 
    sections that match with --section-regex or --section.  Zero means 
-   that new entries wil go into the first section that matches.*/
+   that new entries go into only the first section that matches.  */
 int add_entries_into_all_matching_sections = 1;
 
-/* Nonzero means we do not replace same-named info entries. */
+/* Nonzero means we do not replace same-named info entries.  */
 int keep_old_flag = 0;
 
 /* Nonzero means --test was specified, to inhibit updating the dir file.  */
@@ -527,10 +528,18 @@ print_help (void)
   printf (_("Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"), progname);
   puts ("");
   puts (_("Add or remove entries in INFO-FILE from the Info directory DIR-FILE."));
+  puts (_("INFO-FILE and DIR-FILE are required unless the --info-file or"));
+  puts (_("--dir-file (or --info-dir) options are given, respectively."));
   puts ("");
 
   puts (_("\
 Options:\n\
+ --add-once          add only to first matching section, not all.\n\
+ --align=COL         start description of new entries at column COL.\n\
+ --calign=COL        format second and subsequent description lines to\n\
+                       start at column COL."));
+
+  puts (_("\
  --debug             report what is being done.\n\
  --delete            delete existing entries for INFO-FILE from DIR-FILE;\n\
                       don't insert any new entries.\n\
@@ -542,16 +551,13 @@ Options:\n\
  --dry-run           same as --test."));
 
   puts (_("\
- --entry=TEXT        insert TEXT as an Info directory entry.\n\
+ --entry=TEXT        insert TEXT as an Info directory entry,\n\
+                      overriding any corresponding entry from DIR-FILE.\n\
                       TEXT is written as an Info menu item line followed\n\
                        by zero or more extra lines starting with whitespace.\n\
                       If you specify more than one entry, all are added.\n\
                       If you don't specify any entries, they are determined\n\
-                       from information in the Info file itself.\n\
-                      When removing, TEXT specifies the entry to remove.\n\
-                      TEXT is only removed as a last resort, if the\n\
-                      entry as determined from the Info file is not present,\n\
-                      and the basename of the Info file isn't found either."));
+                       from information in the Info file itself."));
 
   puts (_("\
  --help              display this help and exit.\n\
@@ -559,7 +565,10 @@ Options:\n\
  --info-file=FILE    specify Info file to install in the directory;\n\
                       equivalent to using the INFO-FILE argument.\n\
  --item=TEXT         same as --entry=TEXT.\n\
- --keep-old          do not replace entries, or remove empty sections.\n\
+ --keep-old          do not replace entries, or remove empty sections."));
+
+  puts (_("\
+ --maxwidth, --max-width=COL  wrap description at column COL.\n\
  --menuentry=TEXT    same as --name=TEXT.\n\
  --name=TEXT         the name of the entry is TEXT; used with --description\n\
                       to become synonymous with the --entry option.\n\
@@ -2134,7 +2143,7 @@ main (int argc, char *argv[])
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-              "2012");
+              "2013");
           exit (EXIT_SUCCESS);
 
         case 'W':

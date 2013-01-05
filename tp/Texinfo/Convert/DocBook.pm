@@ -53,7 +53,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.00';
+$VERSION = '5.0';
 
 my $mdash = '&#'.hex('2014').';';
 my $ndash = '&#'.hex('2013').';';
@@ -516,31 +516,9 @@ sub _convert($$;$)
       } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
                and $root->{'parent'}->{'type'} 
                and $root->{'parent'}->{'type'} eq 'table_term') {
-        my $converted_tree = {'parent' => $root};
 
-        # begin common with Plaintext.pm
-        my $contents = $root->{'extra'}->{'misc_content'};
-        my $table_command = $root->{'parent'}->{'parent'}->{'parent'};
-        if ($table_command->{'extra'}
-            and $table_command->{'extra'}->{'command_as_argument'}) {
-          my $command_as_argument
-            = $table_command->{'extra'}->{'command_as_argument'};
-          my $command = {'cmdname' => $command_as_argument->{'cmdname'},
-                     'line_nr' => $root->{'line_nr'},
-                     'parent' => $converted_tree };
-          if ($command_as_argument->{'type'} eq 'definfoenclose_command') {
-            $command->{'type'} = $command_as_argument->{'type'};
-            $command->{'extra'} = $command_as_argument->{'extra'};
-          }
-          my $arg = {'type' => 'brace_command_arg',
-                     'contents' => $contents,
-                     'parent' => $command,};
-          $command->{'args'} = [$arg];
-          $self->Texinfo::Parser::_register_command_arg($arg, 'brace_command_contents');
-          $contents = [$command];
-        }
-        $converted_tree->{'contents'} = $contents;
-        # end common with Plaintext.pm
+        my $converted_tree = $self->_table_item_content_tree($root,
+                                         $root->{'extra'}->{'misc_content'});
 
         $result .= "<term>";
         $result .= $self->_index_entry($root);

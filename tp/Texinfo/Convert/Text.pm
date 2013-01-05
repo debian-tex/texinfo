@@ -28,7 +28,7 @@ use Texinfo::Convert::Unicode;
 # for debugging
 use Texinfo::Convert::Texinfo;
 use Data::Dumper;
-use Carp qw(cluck);
+use Carp qw(cluck carp);
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
@@ -52,7 +52,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.00';
+$VERSION = '5.0';
 
 # this is in fact not needed for 'footnote', 'shortcaption', 'caption'
 # when they have no brace_command_arg, see below.
@@ -307,7 +307,11 @@ sub convert($;$)
 {
   my $root = shift;
   # means it was called object oriented
-  if (ref ($root) ne 'HASH') {
+  if (ref($root) ne 'HASH') {
+    if (ref($root) eq 'ARRAY') {
+      carp ("convert argument $root not blessed reference or HASH");
+      return undef;
+    }
     $root = shift;
   }
   my $options = shift;

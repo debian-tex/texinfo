@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.34 2012/12/15 18:19:16 pertusus Exp $
+<!-- $Id: texinfo.dtd,v 1.35 2012/12/21 00:30:46 pertusus Exp $
   Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -1062,16 +1062,20 @@
 
 <!ENTITY % xref.args "xrefnodename?, xrefinfoname?, xrefprinteddesc?,
                 xrefinfofile?, xrefprintedname?">
+<!ENTITY % xref.attr
+          "%spacesattr; 
+           label CDATA #IMPLIED
+           manual CDATA #IMPLIED">
 
 <!ELEMENT xref (%xref.args;)>
 <!ATTLIST xref
-          %spacesattr;>
+          %xref.attr;>
 <!ELEMENT ref (%xref.args;)>
 <!ATTLIST ref
-          %spacesattr;>
+          %xref.attr;>
 <!ELEMENT pxref (%xref.args;)>
 <!ATTLIST pxref
-          %spacesattr;>
+          %xref.attr;>
 
 <!ELEMENT xrefnodename    (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT xrefinfoname    (#PCDATA | %Inline.phrase;)*>
@@ -1089,7 +1093,7 @@
 
 <!ELEMENT inforef (inforefnodename?, inforefrefname?, inforefinfoname?)>
 <!ATTLIST inforef
-          %spacesattr;>
+          %xref.attr;>
 <!ELEMENT inforefnodename (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT inforefrefname  (#PCDATA | %Inline.phrase;)*>
 <!ATTLIST inforefrefname

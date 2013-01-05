@@ -1688,17 +1688,17 @@ $result_converted{'xml'}->{'things_before_setfilename_no_element'} = '<preamble>
 </preamble><anchor name="An-anchor">An anchor</anchor>
 
 <para>Ref to the anchor:
-<ref><xrefnodename>An anchor</xrefnodename></ref>
+<ref label="An-anchor"><xrefnodename>An anchor</xrefnodename></ref>
 </para>
 <para>Ref to the anchor in footnote:
-<ref><xrefnodename>Anchor in footnote</xrefnodename></ref>.
+<ref label="Anchor-in-footnote"><xrefnodename>Anchor in footnote</xrefnodename></ref>.
 </para>
 <para><footnote><para>In footnote.
 </para>
 <anchor name="Anchor-in-footnote">Anchor in footnote</anchor>
 
 <para>Ref to main text anchor
-<ref><xrefnodename>An anchor</xrefnodename></ref>
+<ref label="An-anchor"><xrefnodename>An anchor</xrefnodename></ref>
 </para></footnote>
 </para>
 <float name="float-anchor" type="" spaces=" " endspaces=" "><floatname spaces=" ">float anchor</floatname>
@@ -1706,7 +1706,7 @@ $result_converted{'xml'}->{'things_before_setfilename_no_element'} = '<preamble>
 </para></float>
 
 <para>Ref to float
-<ref><xrefnodename>float anchor</xrefnodename></ref>.
+<ref label="float-anchor"><xrefnodename>float anchor</xrefnodename></ref>.
 </para>
 <float name="ta" type="Text" spaces=" " endspaces=" "><floattype>Text</floattype><floatname spaces=" ">ta</floatname>
 <para>In float
@@ -1729,10 +1729,10 @@ $result_converted{'xml'}->{'things_before_setfilename_no_element'} = '<preamble>
 <setfilename file="things_before_setfilename_no_element.info" spaces=" ">things_before_setfilename_no_element.info </setfilename>
 
 <para>Ref to anchor
-<ref><xrefnodename>An anchor</xrefnodename></ref>
+<ref label="An-anchor"><xrefnodename>An anchor</xrefnodename></ref>
 </para>
 <para>Ref to footnote anchor
-<ref><xrefnodename>Anchor in footnote</xrefnodename></ref>
+<ref label="Anchor-in-footnote"><xrefnodename>Anchor in footnote</xrefnodename></ref>
 </para>
 ';
 

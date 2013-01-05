@@ -1,0 +1,544 @@
+% Some of the macros here (\iCh, \@iCh, \@denc@loop) originated in
+% LaTeX's inputenc.dtx (\DeclareInputText, \DeclareInputMath,
+% \@inpenc@loop).  It's not clear whether copyright applies on these
+% small fragments, especially since they have been modified, but just
+% in case, we have permission from the LaTeX Project to distribute
+% them under the GPL.
+%
+% The idea is quite simple -- make all non-ASCII characters active and
+% give them encoding-independent definitions.  The font encoding code
+% will map these definitions to relevant font slots based on the
+% current font encoding.
+%
+%
+% \iCh SLOT{TEXT}
+%
+% Define expansion of active character SLOT (*three* arguments as
+% decimal digits) to be TEXT commands.  Since in text space matters,
+% we have to guard against TEXT which end in a macro, by checking
+% whether TEXT's \meaning ends in a space.  If it does, then we add
+% braces around the definition, in order to avoid any space after the
+% active char being gobbled up once the text is written out to an
+% auxiliary file.  FIXME Is this needed?
+\def\iCh#1#2#3#4{%
+  \def\tempa##1 ${}%$ font-lock fix.
+  \def\tempb{#4}%
+  \ifcat_\expandafter\tempa\meaning\tempb$ $_%
+    \@iCh{#1#2#3}{#4}%
+  \else
+    \@iCh{#1#2#3}{{#4}}%
+  \fi
+}%
+%
+% \@iCh{SLOT}{TEXT}
+%
+% Define expansion of active character SLOT to be TEXT commands.
+% To get the active character, we use the fact that \uppercase
+% preserves catcodes of characters:  we (temporarily) declare the
+% SLOT char to be the uppercase of ~ (which is active while we're in
+% texinfo.tex) and then "uppercase" it.
+\def\@iCh#1{%
+  \bgroup
+    \uccode`\~#1%
+    \uppercase{%
+  \egroup
+      \def~%
+    }%
+}%
+%
+% \documentencoding ENC
+%
+% Set input encoding to ENC.  It first sets all the characters
+% 128-255 to be active (and sets their initial definition to be
+% \@denc@undefined).  It then calls the macro which defines the
+% input encoding.  Name of the current encoding is stored in
+% \documenttencodingname.
+\def\documentencoding#1 {%
+  % Make sure that the encoding is defined.
+  \expandafter\ifx\csname denc/#1\endcsname \relax
+    \message{^^JWarning:  document encoding `#1' is not defined,^^J
+             leaving document encoding unchanged.}%
+  \else
+    % Keyboard characters which don't get a definition will be mapped to
+    % \@denc@undefined.
+    \edef\@denc@undefined{\noexpand\@denc@undefined@{#1}}%
+    % Save encoding name.
+    \edef\documentencodingname{#1}%
+    % Make all potential input characters active.
+    \@denc@loop\^^80\^^ff%
+    % Call the command which will redefine the active characters
+    % according to the document encoding.
+    \csname denc/#1\endcsname
+    % Set up the current font encoding list, which defines priority of
+    % font encodings when searching for a glyph.
+    \expandafter\let\expandafter\cur@fenc@list
+      \csname denc@fenc@list/#1\endcsname
+    % Update encoding list index, for proper glyph caching.
+    \update@enclist@index
+  \fi
+}%
+%
+% Default definition for active characters.
+\def\@denc@undefined@#1{%
+  \errmessage{Keyboard character used is undefined in input encoding `#1'}%
+}%
+%
+% Make characters #1 to #2 inclusive active and undefined.
+\def\@denc@loop#1#2{%
+  \count@`#1\relax
+  \loop
+    \catcode\count@\active
+    \bgroup
+      \uccode`\~\count@
+      \uppercase{%
+    \egroup
+        \let~\@denc@undefined
+      }%
+  \ifnum\count@<`#2\relax
+    \advance\count@\@ne
+  \repeat
+}%
+%
+% \denc@begin{ENC}{FENC-LIST}{DEF-COMMANDS}
+%
+% Define input ("document") encoding ENC and save DEF-COMMANDS which
+% set up the encoding.  FENC-LIST defines priorities of font encodings
+% which are searched for glyphs while this document encoding is
+% active.
+\def\denc@define#1#2{%
+  \expandafter\edef\csname denc@fenc@list/#1\endcsname{#2\space}%
+  \expandafter\def\csname denc/#1\endcsname
+}%
+%
+% US-ASCII -- leaves all characters above 127 as undefined.
+\denc@define{US-ASCII}{OT1 OMS OML}{}%
+% End of US-ASCII.
+%
+% Characters common to ISO-8859-1 and ISO-8859-15.
+\def\denc@common@latin@i@xv{%
+\iCh160\tie
+\iCh161\exclamdown
+\iCh162\textcent
+\iCh163\pounds
+\iCh165\textyen
+\iCh167\textsection
+\iCh169\copyright
+\iCh170\ordf
+\iCh171\textguillemotleft
+\iCh172\textlnot % FIXME What about \lnot?
+\iCh173\-%
+\iCh174\registeredsymbol
+\iCh175{\={}}%
+\iCh176\textdegree
+\iCh177\textplusminus
+\iCh178\texttwosuperior
+\iCh179\textthreesuperior
+\iCh181\textmu
+\iCh182\textparagraph
+\iCh183\textperiodcentered
+\iCh185\textonesuperior
+\iCh186\ordm
+\iCh187\textguillemotright
+\iCh191\questiondown
+\iCh192{\`A}%
+\iCh193{\'A}%
+\iCh194{\^A}%
+\iCh195{\~A}%
+\iCh196{\"A}%
+\iCh197{\ringaccent A}%
+\iCh198\AE
+\iCh199{\,C}%
+\iCh200{\`E}%
+\iCh201{\'E}%
+\iCh202{\^E}%
+\iCh203{\"E}%
+\iCh204{\`I}%
+\iCh205{\'I}%
+\iCh206{\^I}%
+\iCh207{\"I}%
+\iCh208\DH
+\iCh209{\~N}%
+\iCh210{\`O}%
+\iCh211{\'O}%
+\iCh212{\^O}%
+\iCh213{\~O}%
+\iCh214{\"O}%
+\iCh215\textmultiply
+\iCh216\O
+\iCh217{\`U}%
+\iCh218{\'U}%
+\iCh219{\^U}%
+\iCh220{\"U}%
+\iCh221{\'Y}%
+\iCh222\TH
+\iCh223\ss
+\iCh224{\`a}%
+\iCh225{\'a}%
+\iCh226{\^a}%
+\iCh227{\~a}%
+\iCh228{\"a}%
+\iCh229{\ringaccent a}%
+\iCh230\ae
+\iCh231{\,c}%
+\iCh232{\`e}%
+\iCh233{\'e}%
+\iCh234{\^e}%
+\iCh235{\"e}%
+\iCh236{\`i}%
+\iCh237{\'i}%
+\iCh238{\^i}%
+\iCh239{\"i}%
+\iCh240\dh
+\iCh241{\~n}%
+\iCh242{\`o}%
+\iCh243{\'o}%
+\iCh244{\^o}%
+\iCh245{\~o}%
+\iCh246{\"o}%
+\iCh247\textdivide
+\iCh248\o
+\iCh249{\`u}%
+\iCh250{\'u}%
+\iCh251{\^u}%
+\iCh252{\"u}%
+\iCh253{\'y}%
+\iCh254\th
+\iCh255{\"y}%
+}% End of characters common to ISO-8859-1 and ISO-8859-15.
+%
+% ISO-8859-1.
+\denc@define{ISO-8859-1}{T1 TS1 OT1 OMS OML}{%
+\denc@common@latin@i@xv
+\iCh164\textcurrency
+\iCh166\textbrokenbar
+\iCh168{\"{}}%
+\iCh180{\'{}}%
+\iCh184{\,{}}% FIXME LaTeX has it as `\c\ ' (`\ ' instead of `{}'), check why (alignment?).
+\iCh188\textonequarter
+\iCh189\textonehalf
+\iCh190\textthreequarters
+}% End of ISO-8859-1.
+%
+% ISO-8859-15.
+\denc@define{ISO-8859-15}{T1 TS1 OT1 OMS OML}{%
+\denc@common@latin@i@xv
+\iCh164\euro
+\iCh166{\v S}%
+\iCh168{\v s}%
+\iCh180{\v Z}%
+\iCh184{\v z}%
+\iCh188\OE
+\iCh189\oe
+\iCh190{\"Y}%
+}% End of ISO-8859-15.
+%
+% ISO-8859-2.
+\denc@define{ISO-8859-2}{T1 TS1 OT1 OMS OML}{%
+\iCh160\tie
+\iCh161{\k A}%
+\iCh162{\u{}}%
+\iCh163{\L}%
+\iCh164\textcurrency
+\iCh165{\v L}%
+\iCh166{\' S}%
+\iCh167\textsection
+\iCh168{\"{}}%
+\iCh169{\v S}%
+\iCh170{\, S}%
+\iCh171{\v T}%
+\iCh172{\'Z}%
+\iCh173\-%
+\iCh174{\v Z}%
+\iCh175{\dotaccent Z}%
+\iCh176\textdegree
+\iCh177{\k a}%
+\iCh178{\k{}}% FIXME LaTeX has it as `\k\ ' (`\ ' instead of `{}'), check why (alignment?).
+\iCh179\l
+\iCh180{\'{}}%
+\iCh181{\v l}%
+\iCh182{\'s}%
+\iCh183{\v{}}%
+\iCh184{\,{}}% FIXME LaTeX has it as `\c\ ' (`\ ' instead of `{}'), check why (alignment?).
+\iCh185{\v s}%
+\iCh186{\, s}%
+\iCh187{\v t}%
+\iCh188{\'z}%
+\iCh189{\H{}}%
+\iCh190{\v z}%
+\iCh191{\dotaccent z}%
+\iCh192{\'R}%
+\iCh193{\'A}%
+\iCh194{\^A}%
+\iCh195{\u A}%
+\iCh196{\"A}%
+\iCh197{\'L}%
+\iCh198{\'C}%
+\iCh199{\,C}%
+\iCh200{\v C}%
+\iCh201{\'E}%
+\iCh202{\k E}%
+\iCh203{\"E}%
+\iCh204{\v E}%
+\iCh205{\'I}%
+\iCh206{\^I}%
+\iCh207{\v D}%
+\iCh208\DJ
+\iCh209{\'N}%
+\iCh210{\v N}%
+\iCh211{\'O}%
+\iCh212{\^O}%
+\iCh213{\H O}%
+\iCh214{\"O}%
+\iCh215\textmultiply
+\iCh216{\v R}%
+\iCh217{\ringaccent U}%
+\iCh218{\'U}%
+\iCh219{\H U}%
+\iCh220{\"U}%
+\iCh221{\'Y}%
+\iCh222{\,T}%
+\iCh223{\ss}%
+\iCh224{\'r}%
+\iCh225{\'a}%
+\iCh226{\^a}%
+\iCh227{\u a}%
+\iCh228{\"a}%
+\iCh229{\'l}%
+\iCh230{\'c}%
+\iCh231{\,c}%
+\iCh232{\v c}%
+\iCh233{\'e}%
+\iCh234{\k e}%
+\iCh235{\"e}%
+\iCh236{\v e}%
+\iCh237{\'i}%
+\iCh238{\^i}%
+\iCh239{\v d}%
+\iCh240\dj
+\iCh241{\'n}%
+\iCh242{\v n}%
+\iCh243{\'o}%
+\iCh244{\^o}%
+\iCh245{\H o}%
+\iCh246{\"o}%
+\iCh247\textdivide
+\iCh248{\v r}%
+\iCh249{\ringaccent u}%
+\iCh250{\'u}%
+\iCh251{\H u}%
+\iCh252{\"u}%
+\iCh253{\'y}%
+\iCh254{\,t}%
+\iCh255{\dotaccent{}}%
+}% End of ISO-8859-2.
+%
+% KOI8-R.
+\denc@define{KOI8-R}{T2A T1 TS1 OT1 OMS OML}{%
+% FIXME \textblacksquare, \surd, \sim, \leq, \geq?
+\iCh149\bullet
+\iCh154\tie
+\iCh156\textdegree
+\iCh157\texttwosuperior
+\iCh158\textperiodcentered
+\iCh159\textdivide
+\iCh163\cyryo
+\iCh179\CYRYO
+\iCh191\copyright
+\iCh192\cyryu
+\iCh193\cyra
+\iCh194\cyrb
+\iCh195\cyrc
+\iCh196\cyrd
+\iCh197\cyre
+\iCh198\cyrf
+\iCh199\cyrg
+\iCh200\cyrh
+\iCh201\cyri
+\iCh202\cyrishrt
+\iCh203\cyrk
+\iCh204\cyrl
+\iCh205\cyrm
+\iCh206\cyrn
+\iCh207\cyro
+\iCh208\cyrp
+\iCh209\cyrya
+\iCh210\cyrr
+\iCh211\cyrs
+\iCh212\cyrt
+\iCh213\cyru
+\iCh214\cyrzh
+\iCh215\cyrv
+\iCh216\cyrsftsn
+\iCh217\cyrery
+\iCh218\cyrz
+\iCh219\cyrsh
+\iCh220\cyrerev
+\iCh221\cyrshch
+\iCh222\cyrch
+\iCh223\cyrhrdsn
+\iCh224\CYRYU
+\iCh225\CYRA
+\iCh226\CYRB
+\iCh227\CYRC
+\iCh228\CYRD
+\iCh229\CYRE
+\iCh230\CYRF
+\iCh231\CYRG
+\iCh232\CYRH
+\iCh233\CYRI
+\iCh234\CYRISHRT
+\iCh235\CYRK
+\iCh236\CYRL
+\iCh237\CYRM
+\iCh238\CYRN
+\iCh239\CYRO
+\iCh240\CYRP
+\iCh241\CYRYA
+\iCh242\CYRR
+\iCh243\CYRS
+\iCh244\CYRT
+\iCh245\CYRU
+\iCh246\CYRZH
+\iCh247\CYRV
+\iCh248\CYRSFTSN
+\iCh249\CYRERY
+\iCh250\CYRZ
+\iCh251\CYRSH
+\iCh252\CYREREV
+\iCh253\CYRSHCH
+\iCh254\CYRCH
+\iCh255\CYRHRDSN
+}% End of KOI8-R.
+%
+% CP1251.
+\denc@define{CP1251}{T2A T1 TS1 OT1 OMS OML}{%
+\iCh128\CYRDJE
+\iCh129{\'\CYRG}%
+\iCh130\textquotesinglbase
+\iCh131{\'\cyrg}%
+\iCh132\textquotedblbase
+\iCh133\dots
+\iCh134\textdagger
+\iCh135\textdaggerdbl
+\iCh136\euro
+\iCh137\textperthousand
+\iCh138\CYRLJE
+\iCh139\textguilsinglleft
+\iCh140\CYRNJE
+\iCh141{\'\CYRK}%
+\iCh142\CYRTSHE
+\iCh143\CYRDZHE
+\iCh144\cyrdje
+\iCh145\textquoteleft
+\iCh146\textquoteright
+\iCh147\textquotedblleft
+\iCh148\textquotedblright
+\iCh149\bullet
+\iCh150\textendash
+\iCh151\textemdash
+\iCh153\texttrademark
+\iCh154\cyrlje
+\iCh155\textguilsinglright
+\iCh156\cyrnje
+\iCh157{\'\cyrk}%
+\iCh158\cyrtshe
+\iCh159\cyrdzhe
+\iCh160\tie
+\iCh161\CYRUSHRT
+\iCh162\cyrushrt
+\iCh163\CYRJE
+\iCh164\textcurrency
+\iCh165\CYRGUP
+\iCh166\textbrokenbar
+\iCh167\textsection
+\iCh168\CYRYO
+\iCh169\copyright
+\iCh170\CYRIE
+\iCh171\textguillemotleft
+\iCh172\textlnot
+\iCh173\-%
+\iCh174\registeredsymbol
+\iCh175\CYRYI
+\iCh176\textdegree
+\iCh177\textplusminus
+\iCh178\CYRII
+\iCh179\cyrii
+\iCh180\cyrgup
+\iCh181\textmu
+\iCh182\textparagraph
+\iCh183\textperiodcentered
+\iCh184\cyryo
+\iCh185\textnumero
+\iCh186\cyrie
+\iCh187\textguillemotright
+\iCh188\cyrje
+\iCh189\CYRDZE
+\iCh190\cyrdze
+\iCh191\cyryi
+\iCh192\CYRA
+\iCh193\CYRB
+\iCh194\CYRV
+\iCh195\CYRG
+\iCh196\CYRD
+\iCh197\CYRE
+\iCh198\CYRZH
+\iCh199\CYRZ
+\iCh200\CYRI
+\iCh201\CYRISHRT
+\iCh202\CYRK
+\iCh203\CYRL
+\iCh204\CYRM
+\iCh205\CYRN
+\iCh206\CYRO
+\iCh207\CYRP
+\iCh208\CYRR
+\iCh209\CYRS
+\iCh210\CYRT
+\iCh211\CYRU
+\iCh212\CYRF
+\iCh213\CYRH
+\iCh214\CYRC
+\iCh215\CYRCH
+\iCh216\CYRSH
+\iCh217\CYRSHCH
+\iCh218\CYRHRDSN
+\iCh219\CYRERY
+\iCh220\CYRSFTSN
+\iCh221\CYREREV
+\iCh222\CYRYU
+\iCh223\CYRYA
+\iCh224\cyra
+\iCh225\cyrb
+\iCh226\cyrv
+\iCh227\cyrg
+\iCh228\cyrd
+\iCh229\cyre
+\iCh230\cyrzh
+\iCh231\cyrz
+\iCh232\cyri
+\iCh233\cyrishrt
+\iCh234\cyrk
+\iCh235\cyrl
+\iCh236\cyrm
+\iCh237\cyrn
+\iCh238\cyro
+\iCh239\cyrp
+\iCh240\cyrr
+\iCh241\cyrs
+\iCh242\cyrt
+\iCh243\cyru
+\iCh244\cyrf
+\iCh245\cyrh
+\iCh246\cyrc
+\iCh247\cyrch
+\iCh248\cyrsh
+\iCh249\cyrshch
+\iCh250\cyrhrdsn
+\iCh251\cyrery
+\iCh252\cyrsftsn
+\iCh253\cyrerev
+\iCh254\cyryu
+\iCh255\cyrya
+}% End of CP1251.
+%
+\endinput

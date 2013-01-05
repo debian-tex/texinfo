@@ -1,8 +1,8 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2012-12-11.22; # UTC
+htmlxrefversion=2013-01-02.00; # UTC
 
-# Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -260,8 +260,7 @@ global		mono	${GS}/global/manual/global.html
 
 gmediaserver	node	${GS}/gmediaserver/manual/
 
-gmp		mono	${GS}/gmp/manual/html_mono/gmp.html
-gmp		node	${GS}/gmp/manual/html_node/
+gmp		node	http://www.gmplib.org/manual/
 
 gnu-arch	node	${GS}/gnu-arch/tutorial/
 

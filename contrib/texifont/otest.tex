@@ -1,0 +1,157 @@
+\catcode`\@=11
+\input ienc
+\input oenc
+\input fsel
+
+
+%\tracingfonts2
+\def\msg#1{\medskip\leftline{#1}\message{^^J^^J** #1}\ignorespaces}
+
+
+
+\msg{Copyright and registered}
+
+x\copyright\ x\registeredsymbol
+
+{\setfontencoding{T1}\setfontfamily{LMRoman}\selectfont
+x\copyright\ x\registeredsymbol}
+
+
+
+% Declare a test font family, with very different fonts (visually) for
+% OT1 and T1.
+\declarefontfamily TestFam 1000 1200
+\fontmapfamily TestFam OT1 CMSans
+\fontmapfamily TestFam T1 URWPalladio
+\fontmapfamily TestFam TS1 LMRoman
+\fontmapfamily TestFam OML CMRoman
+\fontmapfamily TestFam OMS CMRoman
+\fontmapfamily TestFam T2A LHRoman
+
+% Define some encoding-specific glyphs.
+\fenc@begin{OT1}
+\fAcc\a{19}% \'
+\fCmp\a e{\'e}
+\fCmp\a E{\f@restore@enc\'e}
+\fCmp\a g{\'g}
+\fCmp\a G{\f@restore@enc\'g}
+\fCmp\a m{\b{oo}}
+\fCmp\a M{\f@restore@enc\b{oo}}
+\fCmp\a n{\b \copyright}
+\fCmp\a N{\f@restore@enc\b \copyright}
+\fCmd\copyright{WrongEncoding}
+%
+\fenc@begin{OML}
+\fAcc\b{127}% \tieafter
+
+\catcode`\@=12
+
+
+
+\msg{Dollar, pounds, euro (in OT1)}
+
+\textdollar{\itshape\textdollar}
+{\bfseries\textdollar{\itshape\textdollar}}
+
+% There's no bold `ui' font, so we don't get a bold \pounds.
+\pounds{\itshape\pounds}
+{\bfseries\pounds{\itshape\pounds}}
+
+\euro{\itshape\euro}
+{\bfseries\euro{\itshape\euro}}
+
+
+
+\msg{Cache}
+% To see this test working, you must uncomment the messages in
+% \f@search@command and \f@search@composite (but this will break
+% accents, so for other test comment them out again).
+
+% The cache is global and does not depend on font shape.
+{\bf
+  \textregistered\textless\'a\texttimes\'g \tieaccent{oo}
+  \message{^^J*}
+}\quad
+\textregistered\textless\'a\texttimes\'g \tieaccent{oo}
+\message{^^J**}
+
+\documentencoding ISO-8859-1
+% Now the new cache will be filled because \documentencoding changed
+% the current font encoding list.
+{\bf
+  \textregistered\textless\'a\texttimes\'g \tieaccent{oo}
+  \message{^^J*}
+}\quad
+\textregistered\textless\'a\texttimes\'g \tieaccent{oo}
+\message{^^J**}
+
+\setfontencoding{T1}\setfontfamily{TestFam}\selectfont
+% Again, another cache because encodings list of TestFam is different
+% from that of CMRoman.
+{\bf
+  \textregistered\textless\'a\texttimes\'g \tieaccent{oo} \CYRZH
+  \message{^^J*}
+}\quad
+\textregistered\textless\'a\texttimes\'g \tieaccent{oo} \CYRZH
+\message{^^J**}
+
+
+% We are now in ISO-8859-1 input encoding and T1 encoding of TestFam.
+
+
+\msg{Accents}
+\'{}
+\'a
+\'ô
+\'\copyright
+\quad
+% |a| in T1 (the current encoding), the accent in OT1 (the only
+% encoding containing |\a|).
+\a a
+\a ô
+\a \copyright
+\quad
+% Argument of the accent can contain an expandable command (including
+% an active character) only as a first token.  But even then, it's
+% best if it's the only token in the argument, because |\bf a| and
+% |\bfa| will not be distinguished by the cache.
+\a{\bf c}
+%\a{\bf ô}% Doesn't work.
+\def\boldohat{\bf ô}%
+\a\boldohat
+%\a{\bf \ae}% Doesn't work.
+\def\boldae{\bf\ae}%
+\a\boldae
+
+
+
+\msg{Composites}
+\'e
+\'g
+\quad
+% Improperly defined composite -- |\a e| does not restore the original
+% encoding before calling another glyph macro (|\'e|), which results
+% in |e| being typeset in the encoding of the |\a e| composite (OT1).
+\a e
+\a g
+% Now the original encoding is properly restored -- therefore |\'e|
+% is called from T1; since T1 contains the composite |\'e|, we get
+% that.  For |\'g| we get an accent since there's no such composite.
+\a E
+\a G
+\quad
+% A more complex example with the actual accent coming from yet
+% another encoding.
+\a m
+\a M
+\quad
+% And now even the accent's argument is from a different encoding.
+\a n
+\a N
+
+\bye
+
+% Local variables:
+% compile-command: "tex --interact=nonstopmode otest.tex"
+% coding: latin-1
+% End:

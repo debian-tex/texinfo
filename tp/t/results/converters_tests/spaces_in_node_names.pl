@@ -1200,11 +1200,11 @@ $result_converted{'xml'}->{'spaces_in_node_names'} = '<node name="Top" spaces=" 
 
 <node name="c-" spaces=" "><nodename>c<w>  </w></nodename><nodeprev automatic="on">b<verb delimiter=":">  </verb></nodeprev><nodeup automatic="on">Top</nodeup></node>
 
-<para><ref><xrefnodename>a<spacecmd type="spc"/><spacecmd type="spc"/></xrefnodename></ref>
+<para><ref label="a--"><xrefnodename>a<spacecmd type="spc"/><spacecmd type="spc"/></xrefnodename></ref>
 </para>
-<para><ref><xrefnodename>b<verb delimiter=":">  </verb></xrefnodename></ref>
+<para><ref label="b-"><xrefnodename>b<verb delimiter=":">  </verb></xrefnodename></ref>
 </para>
-<para><ref><xrefnodename>c<w>  </w></xrefnodename></ref>
+<para><ref label="c-"><xrefnodename>c<w>  </w></xrefnodename></ref>
 </para>';
 
 

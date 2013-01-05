@@ -1,0 +1,18 @@
+% -*- mode: TeX; coding: latin-1; -*-
+% From http://www.unicode.org/standard/translations/icelandic.html
+Tölvur geta í eðli sínu aðeins unnið með tölur. Þær geyma bókstafi og
+önnur skriftákn með því að úthluta þeim tölu. Áður en Unicode kom til
+voru hundruð mismunandi túlkunarkerfa sem úthlutuðu þessum
+tölum. Ekkert eitt túlkunarkerfi gat innihaldið nægilegan fjölda
+skriftákna; t.d. þarfnast Evrópusambandið nokkurra mismunandi kerfa
+til að spanna öll tungumál þess. Jafnvel fyrir eitt tungumál, eins og
+ensku, var eitt túlkunarkerfi ekki nóg fyrir alla bókstafi,
+greinarmerki og algengustu einingatákn.
+
+Túlkunarkerfin hafa einnig verið í andstöðu hvert við annað, þ.e. tvö
+kerfi geta notað sömu tölu fyrir tvö ólík skriftákn eða notað tvær
+mismunandi tölur fyrir sama táknið. Sérhver tölva þarf (sérstaklega
+miðlarar) að styðja margs konar túlkanir á stöfum; engu að síður er
+alltaf hætta á stafabrenglun þegar gögn fara á milli tölva og á milli
+mismunandi túlkunarkerfa.
+\endinput

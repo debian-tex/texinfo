@@ -1,0 +1,1703 @@
+%
+% These are in Texinfo.
+%
+% We never want plain's \outer definition of \+ in Texinfo.
+% For @tex, we can use \tabalign.
+\let\+ = \relax
+%
+\def\gobble#1{}%
+\def\linenumber{l.\the\inputlineno:\space}%
+\newlinechar = `^^J
+% Set the baselineskip to #1, and the lineskip and strut size
+% correspondingly.  There is no deep meaning behind these magic numbers
+% used as factors; they just match (closely enough) what Knuth defined.
+%
+\def\lineskipfactor{.08333}%
+\def\strutheightpercent{.70833}%
+\def\strutdepthpercent {.29167}%
+%
+\def\setleading#1{%
+  \normalbaselineskip = #1\relax
+  \normallineskip = \lineskipfactor\normalbaselineskip
+  \normalbaselines
+  \setbox\strutbox =\hbox{%
+    \vrule width0pt height\strutheightpercent\baselineskip
+                    depth \strutdepthpercent \baselineskip
+  }%
+}%
+%
+% End of Texinfo defs.
+%
+% Specify amount and type of font-related logging:
+%   0   notifications and warnings go to the log file only;
+%   1   only warning go to the console;
+%   2   notifications and warnings go to the console;
+%   3   notifications go to the console, all warnings are made into errors.
+%
+% In all cases notifications and warnings go to the log file.
+\newcount\tracingfonts
+\tracingfonts1
+%
+\def\fontnotify{%
+  \ifcase\tracingfonts
+    \expandafter\wlog
+  \or % 1
+    \expandafter\wlog
+  \else % 2-...
+    \expandafter\message
+  \fi
+}%
+%
+\def\fontwarn{%
+  \ifcase\tracingfonts
+    \expandafter\wlog
+  \or % 1
+    \expandafter\message
+  \or % 2
+    \expandafter\message
+  \else % 3-...
+    \expandafter\errmessage
+  \fi
+}%
+%
+% We will sometimes temporarily turn these off (e.g., to avoid
+% \message and \setbox interfering with \accent).
+\let\@setleading\setleading
+\let\@fontnotify\fontnotify
+\let\@fontwarn\fontwarn
+% Font and shape identification strings.
+\def\shape@string{\f@encoding/\f@family/\f@series/\f@shape}%
+\def\font@string{\shape@string/\f@size:\base@fntscale}%
+%
+% \declarefontfamily FAMILY FACTOR LINESKIP
+%
+% Declare font FAMILY, and set it's scale FACTOR (relative to the
+% Computer Modern family) and LINESKIP factor (which will be applied
+% to the current font size to obtain basic baseline skip).  Every font
+% family must be declared before any font declaration \declarefont
+% using that family.
+\def\declarefontfamily#1 #2 #3 {%
+  % Warn if the family has already been declared.
+  \expandafter \ifx \csname fam@scale/#1\endcsname\relax \else
+    \fontwarn{^^JWarning: redeclaring font family `#1'.}%
+  \fi
+  \expandafter\def\csname fam@scale/#1\endcsname{#2}%
+  \expandafter\def\csname fam@lskip/#1\endcsname{#3}%
+  % Initialize the family's encoding list to an empty list.
+  \expandafter\let \csname fam@enc@list/#1\endcsname \empty
+}%
+%
+% \declaremathfontfamily FAMILY FACTOR LINESKIP TEXTENC L-SKEW S-SKEW
+%
+% Declare math font family.  Parameters:
+%
+%   FAMILY      font family name;
+%   FACTOR      scale factor (relative to the Computer Modern family);
+%   LINESKIP    lineskip factor (which will be applied to the current
+%               font size to obtain basic baseline skip);
+%   TEXTENC     font encoding to use for the family 0 (this is to
+%               distinguish fonts with T1 and OT1 encodings for the
+%               `text' font, since T1 and OT1 have accents in
+%               different slots);
+%   L-SKEW      skew char for family 1 (math letters);
+%   S-SKEW      skew char for family 2 (math symbols).
+\def\declaremathfontfamily#1 #2 #3 #4 #5 #6 {%
+  \declarefontfamily #1 #2 #3
+  \expandafter\def\csname fam@textenc/#1\endcsname{#4}%
+  \expandafter\def\csname fam@ml-sc/#1\endcsname{#5}%
+  \expandafter\def\csname fam@ms-sc/#1\endcsname{#6}%
+}%
+%
+% \mathfontfamilyhook FAMILY {TEXT}
+%
+% Define a hook to be called every time the fonts for math FAMILY are
+% set up.
+\def\mathfontfamilyhook#1 #2{%
+  \expandafter\def\csname fmath@hook@#1\endcsname{#2}%
+}%
+%
+% \mathfontfamilyprehook FAMILY {TEXT}
+%
+% Define a hook to be called when the math FAMILY is loaded.
+\def\mathfontfamilyprehook#1 #2{%
+  \expandafter\def\csname fmath@pre-hook@#1\endcsname{#2}%
+}%
+%
+% \mathfontfamilyposthook FAMILY {TEXT}
+%
+% Define a hook to be called when the math FAMILY is unloaded.
+\def\mathfontfamilyposthook#1 #2{%
+  \expandafter\def\csname fmath@post-hook@#1\endcsname{#2}%
+}%
+%
+% \fontbasefamily FAMILY
+%
+% Declare FAMILY as the "base" family, which means that its fonts
+% will be displayed at their "natural" sizes, and all other families
+% will be scaled to match FAMILY.
+\def\fontbasefamily#1 {%
+  % Check that the family has been declared.
+  \expandafter \ifx \csname fam@scale/#1\endcsname\relax
+    \errmessage{Error: setting base family to an unknown family `#1'}%
+  \fi
+  \edef\base@fntscale{\csname fam@scale/#1\endcsname}%
+  % Reload the current font (it may change if the base factor changed).
+  \selectfont
+}%
+%
+% \fontfamily STYLE FAMILY
+%
+% FIXME doc.
+\def\mathword{math}%
+\let\f@family@math\empty % Avoid `Undefined' errors in \csname the first time.
+\def\fontfamily#1 #2 {%
+  \edef\temp{#1}%
+  \ifx\temp\mathword
+    % Call post-hook for the old math family.
+    \csname fmath@post-hook@\f@family@math\endcsname
+    \expandafter\edef \csname f@family@\mathword\endcsname{#2}%
+    % Define accents for the encoding of the \fam0 font.
+    \expandafter\csname \csname fam@textenc/#2\endcsname @math@textenc\endcsname
+    % FIXME Need to call \resetmathfonts now, or call pre-hook after
+    % the first call to \resetmathfonts, otherwise errors are possible
+    % about undefined glyphs.
+    % Call pre-hook for the new math family.
+    \csname fmath@pre-hook@#2\endcsname
+  \else
+    \expandafter\edef \csname f@family@#1\endcsname{#2}%
+  \fi
+}%
+%
+% FIXME Rename.
+\def\selectfont@style#1{%
+  \expandafter\let\expandafter \f@family \csname f@family@#1\endcsname
+  \selectfont
+}%
+%
+% \declarefont ENC FAMILY SER SH L-U SZ FONT
+%
+% Declare a FAMILY font in ENC encoding, SER series and SH shape, for
+% the size range L-U.  SZ is the design size of the font, FONT is the
+% font file name.  L-U defines the size range as [L,U).  All sizes (L,
+% U, SZ) may contain optional unit specifier; if it is missing, `pt'
+% is assumed.
+\def\declarefont #1 #2 #3 #4 #5-#6 #7 #8 {%
+  % Check that FAMILY has been declared.
+  \expandafter \ifx \csname fam@scale/#2\endcsname\relax
+    \errmessage{Error: declaring font `#8' for an unknown family `#2'}%
+  \fi
+  % Convert all sizes into integers, scaled 10 times.
+  \fnt@size@to@int{#5}\edef\tempa{\number\dimen@}% L
+  \fnt@size@to@int{#6}\edef\tempb{\number\dimen@}% U
+  \fnt@size@to@int{#7}\edef\tempc{\number\dimen@}% SZ
+  % Construct internal font shape name as \sh/ENC/FAMILY/SER/SH.
+  \expandafter\def\expandafter\temp\expandafter{%
+    \csname sh/#1/#2/#3/#4\endcsname
+  }%
+  % Add the font specification as the quad L U SZ FONT to the
+  % beginning of the font list for this shape.
+  \expandafter\ifx\temp\relax
+    \let\tempd\empty
+  \else
+    \edef\tempd{\temp}% Previous def of the shape name.
+  \fi
+  \expandafter\edef\temp{\tempa\space\tempb\space\tempc\space#8 \tempd}%
+  % Add the encoding to the list of encodings for this family, if it's
+  % not been added yet.
+  \expandafter\ifx \csname fam@enc/#2/#1\endcsname \relax
+    \expandafter\let\expandafter\temp \csname fam@enc@list/#2\endcsname
+    \expandafter\edef \csname fam@enc@list/#2\endcsname{\temp\space #1}%
+  \fi
+  % Set the flag that this family supports this encoding.
+  \expandafter\let\csname fam@enc/#2/#1\endcsname\empty
+}%
+%
+% \fontmap ENC1 FAM1 SER1 SH1 > ENC2 FAM2 SER2 SH2
+%
+% Define font mapping.  Ideally, any of the attributes can be an `*',
+% but only a useful subset is currently supported for the first half
+% (see \search@font@map).  It should be easy to extend this subset if
+% need be.
+%
+% If an `*' appears in the first half (`from-attributes'), its
+% meaning is "apply this map to fonts having anything for this
+% attribute".  If an `*' appears in the second half (`to-attributes'),
+% its meaning is "leave this attribute unchanged from the respective
+% from-attribute".
+%
+%           E1 F1 S1 s1 > E2 F2 S2 s2
+\def\fontmap#1 #2 #3 #4 > #5 #6 #7 #8 {%
+  \expandafter\def\csname fmap/#1/#2/#3/#4\endcsname{#5/#6/#7/#8}%
+}%
+%
+% \fontmapshape FAMILY1 SH1 > FAMILY2 SH2
+%
+% Define generic shape mapping:  requests for FAMILY1 fonts in shape
+% SH1 and any encoding and series will be redirected to FAMILY2 fonts
+% in shape SH2 and the same encoding and series.
+\def\fontmapshape#1 #2 > #3 #4 {%
+  \fontmap * #1 * #2 > * #3 * #4
+}%
+%
+% \fontmapseries FAMILY1 SER1 > FAMILY2 SER2
+%
+% Define generic series mapping:  requests for FAMILY1 fonts in series
+% SER1 and any encoding and shape will be redirected to FAMILY2 fonts
+% in series SER2 and the same encoding and shape.
+\def\fontmapseries#1 #2 > #3 #4 {%
+  \fontmap * #1 #2 * > * #3 #4 *
+}%
+%
+% \fontmapfamily FAMILY1 ENC FAMILY2
+%
+% Define family mapping:  requests for FAMILY1 fonts in encoding ENC
+% will be redirected to FAMILY2 fonts in the same encoding.
+\def\fontmapfamily#1 #2 #3 {%
+  \fontmap #2 #1 * * > * #3 * *
+  % Remember that this family supports this encoding.
+  \expandafter\let\csname fam@enc/#1/#2\endcsname\empty
+}%
+%
+% Take a dimension or a number (in which case assume `pt' units) and
+% convert it into an integer (in \dimen@) ten times the dimension's
+% representation in points.  We attempt to round properly, to the
+% extent that TeX's integer arithmetics allows.  Note that we take
+% 0.1pt = 6554 (6553.6 rounded to the nearest integer), but maybe
+% 6553 would have been better because it rounds the 100ths of a point
+% better (e.g., in 10.85pt), for which we care more than for the
+% 1000ths / 10000ths of a point (e.g., in 10.849pt).
+\def\fnt@size@to@int#1{%
+  \get@dimen{#1}%
+  \advance\dimen@ by.05pt % 0.1pt / 2.
+  \divide\dimen@ by6554 % = 0.1pt = (Xpt / 0.1pt * 0.1pt) * 10 / 1pt.
+}%
+% Take a dimension or a number, and save it in \dimen@.  In case of a
+% number, assume `pt' units.
+\def\get@dimen#1{%
+  \afterassignment\gobble@to@finish
+  \dimen@#1pt \finish
+}%
+\def\gobble@to@finish#1\finish{}%
+%
+% These generally should not be used by the end user.  To actually
+% select the font specified by one or several of the following, say
+% \selectfont.
+\def\setfontencoding{\edef\f@encoding}%
+\def\setfontfamily{\edef\f@family}%
+\def\setfontseries{\edef\f@series}%
+\def\setfontshape{\edef\f@shape}%
+\def\setfontsize#1{\fnt@size@to@int{#1}\edef\f@size{\number\dimen@}}%
+% User-space commands to set (some of) the above.
+\def\mdseries{\setfontseries{m}\selectfont}%
+\def\bfseries{\setfontseries{bx}\selectfont}%
+\def\upshape{\setfontshape{n}\selectfont}%
+\def\itshape{\setfontshape{it}\selectfont}%
+\def\slshape{\setfontshape{sl}\selectfont}%
+\def\scshape{\setfontshape{sc}\selectfont}%
+%
+% Scale \f@size.
+\def\scale@f@size#1{%
+  \scalecount\f@size{#1}%
+  \edef\f@size{\number\count@}%
+}%
+% Scale the current font.  #1 is the magnification factor.
+\def\scalefont#1{%
+  \scale@f@size{#1}%
+  \selectfont
+}%
+% Scale current font size by #1.  Result in \dimen@ (in points).
+% Clobbers \dimen@.
+\def\scalefontsize#1{%
+  \scalecount\f@size{#1}%
+  \dimen@=\count@\p@
+  \divide\dimen@ by10
+}%
+% Scale integer #1 by #2, taking care of the rounding.  Result in
+% \count@.
+\def\scalecount#1#2{%
+  \count@#1%
+  \multiply\count@ by#2%
+  \advance\count@ by500%
+  \divide\count@ by1000
+}%
+%
+% Parameters for math fonts.
+%
+% FIXME These parameters probably have to be per-font-family.
+\def\mf@scr@factor{700 }%
+\def\mf@scrscr@factor{500 }%
+% Theoretically, these have to be per-font-family, but practically
+% plain TeX settings work with most families; and for families with
+% which these don't work (PXMath, TXMath, CharterMath, ArevMath) these
+% settings are still the best possible -- do these families have a bug
+% (or maybe some weird design decisions)?
+\def\big@factor{850 }%
+\def\Big@factor{1150 }%
+\def\bigg@factor{1450 }%
+\def\Bigg@factor{1750 }%
+%
+% Setup math fonts.  This is called for every math mode switch from
+% \everymath.  Texinfo doesn't use display math, so we don't bother
+% with \everydisplay.  NOTE:  One alternative to setting math fonts at
+% the beginning of every math mode is to set them at every change of a
+% font attribute which affects math fonts (i.e., size, series, but
+% _not_ shape). This would mean that lots of fonts will be loaded,
+% while in most cases the user will never use math with those settings.
+\everymath{\resetmathfonts}%
+\def\resetmathfonts{%
+  % Save all current font attributes -- we'll clobber them.
+  \let\reset@f@encoding\f@encoding
+  \let\reset@f@family\f@family
+  \let\reset@f@series\f@series
+  \let\reset@f@shape\f@shape
+  \let\reset@f@size\f@size
+  \let\reset@fontwarn\@fontwarn
+  % Don't report non-existent fonts -- we'll ignore them and hope that
+  % the user won't use them.
+  \let\@fontwarn\gobble
+  % Set math families for the style switches.
+  \selectmathfont@style{roman}\rmfam
+  \selectmathfont@style{sans}\sffam
+  \selectmathfont@style{mono}\ttfam
+  \let\f@family\reset@f@family
+  \itshape \setup@m@family\itfam
+  \slshape \setup@m@family\slfam
+  \setfontshape{n}\bfseries \setup@m@family\bffam
+  % Restore warnings.
+  \let\@fontwarn\reset@fontwarn
+  % Now set the math fonts.  The shape is always a `.'.
+  \let\f@family\f@family@math
+  \let\f@series\reset@f@series
+  \def\f@shape{.}%
+  % Text size.
+  \setup@m@families\textfont
+  % Script size.
+  \scale@f@size\mf@scr@factor
+  \setup@m@families\scriptfont
+  % Script-script size.
+  \let\f@size\reset@f@size
+  \scale@f@size\mf@scrscr@factor
+  \setup@m@families\scriptscriptfont
+  % Call the fonts hook for this family.
+  \let\f@size\reset@f@size
+  \csname fmath@hook@\f@family@math\endcsname
+  % Restore font attributes.
+  \let\f@encoding\reset@f@encoding
+  \let\f@family\reset@f@family
+  \let\f@series\reset@f@series
+  \let\f@shape\reset@f@shape
+  \let\f@size\reset@f@size
+  \selectfont
+}%
+%
+% Select style #1 and set math family #2 to the font. FIXME Rename.
+\def\selectmathfont@style#1#2{%
+  \selectfont@style{#1}%
+  \setup@m@family{#2}%
+}%
+% Set \textfont of math family #1 to \c@font@command, unless the
+% font command is \relax.
+\def\setup@m@family#1{%
+  \expandafter\ifx\c@font@command\relax\else
+    \textfont#1=\c@font@command
+  \fi
+}%
+% Set up #1 (\textfont, \scriptfont or \scriptscriptfont) fonts for
+% families 0, 1, 2 and 3 with the current size.  \f@family must be set
+% to the math font family.
+\def\setup@m@families#1{%
+  \setfontencoding{\csname fam@textenc/\f@family\endcsname}\search@font
+    #10=\c@font@command
+  \setfontencoding{OML}\search@font #11 = \c@font@command
+    \skewchar\c@font@command = \csname fam@ml-sc/\f@family\endcsname
+  \setfontencoding{OMS}\search@font #12 = \c@font@command
+    \skewchar\c@font@command = \csname fam@ms-sc/\f@family\endcsname
+  \setfontencoding{OMX}\search@font #13 = \c@font@command
+}%
+%
+% We need separate \rmfam -- math fonts define their own "text" fonts
+% which they use for the accents, and the user's "roman" family should
+% not interfere with that.
+\newfam\rmfam
+\def\rm{\selectfont@style{roman}\fam=\rmfam}%
+\newfam\sffam % \sffam is not in plain TeX.
+\def\sf{\selectfont@style{sans}\fam=\sffam}%
+\let\li = \sf % Sometimes we call it \li, not \sf.
+\def\tt{\selectfont@style{mono}\fam=\ttfam}%
+\def\it{\itshape \fam=\itfam}%
+\def\sl{\slshape \fam=\slfam}%
+\def\bf{\bfseries \fam=\bffam}%
+% We don't need math for this font style.
+\def\ttsl{\setfontshape{sl}\selectfont@style{mono}}%
+%
+\def\@big#1#2{%
+  {\hbox{$
+    \expandafter\scalefontsize \csname#1@factor\endcsname
+    \left#2\vbox to\dimen@{}\right.\n@space
+  $}}%
+}%
+\def\big{\@big{big}}%
+\def\Big{\@big{Big}}%
+\def\bigg{\@big{bigg}}%
+\def\Bigg{\@big{Bigg}}%
+%
+% The accents are in different slots in OT1 and T1, so these will
+% redefine the accents (see \setfontfamily).
+\expandafter\def\csname OT1@math@textenc\endcsname{%
+  \def\acute{\mathaccent"7013 }%
+  \def\grave{\mathaccent"7012 }%
+  \def\ddot{\mathaccent"707F }%
+  \def\tilde{\mathaccent"707E }%
+  \def\bar{\mathaccent"7016 }%
+  \def\breve{\mathaccent"7015 }%
+  \def\check{\mathaccent"7014 }%
+  \def\hat{\mathaccent"705E }%
+  \def\dot{\mathaccent"705F }%
+}%
+\expandafter\def\csname T1@math@textenc\endcsname{%
+  \def\acute{\mathaccent"7001 }%
+  \def\grave{\mathaccent"7000 }%
+  \def\ddot{\mathaccent"7004 }%
+  \def\tilde{\mathaccent"7003 }%
+  \def\bar{\mathaccent"7009 }%
+  \def\breve{\mathaccent"7008 }%
+  \def\check{\mathaccent"7007 }%
+  \def\hat{\mathaccent"7002 }%
+  \def\dot{\mathaccent"700A }%
+}%
+%
+% We keep track of the combinations of current encoding list (set by
+% @documentencoding) and current font family encoding list, for the
+% sake of glyph caching.
+\newcount\enclist@curr
+\newcount\enclist@count
+%
+\def\update@enclist@index{%
+  \expandafter\let\expandafter\temp \csname fam@enc@list/\f@family\endcsname
+  \edef\temp{\f@encoding/\cur@fenc@list/\temp}%
+  \expandafter\ifx \csname el@\temp\endcsname \relax
+    \global\advance \enclist@count by1
+    \expandafter\xdef \csname el@\temp\endcsname {\the\enclist@count}%
+    \enclist@curr=\enclist@count\relax
+  \else
+    \enclist@curr=\csname el@\temp\endcsname\relax
+  \fi
+}%
+%
+% \selectfont
+%
+% Select the font as specified by the values of \f@... and set line
+% skip and strut box for the font's size.
+\def\selectfont{%
+  \search@font
+  \c@font@command % Select the font.
+  \update@enclist@index % For proper glyph caching.
+  % Set strutbox and line skips accordingly.
+  \ifx\temp\relax\else
+    % The code below only produces lineskips which are multiples of
+    % 0.1pt.  The maximum dimension it can deal with is 214.7pt.  This
+    % means that, for a font with the relative factor of 1000 and the
+    % lineskip factor of 1200, the maximum font size is 178.9pt (which
+    % is 214.7pt / 1.2), which should be more than enough for Texinfo.
+    \count@\csname fam@lskip/\f@family\endcsname % This family's lineskip factor.
+    \multiply\count@ by\f@size % Requested font size (in pt, x10).
+    \multiply\count@ by\csname fam@scale/\f@family\endcsname % This family's factor.
+    \divide\count@ by\base@fntscale % Base factor.
+    \advance\count@ by500 % For the rounding.
+    \divide\count@ by1000
+    \dimen@\count@ pt
+    \divide\dimen@ by10
+    \@fontnotify{^^J\linenumber Setting line skip to \the\dimen@.}%
+    \@setleading\dimen@
+  \fi
+}%
+%
+\def\search@font{%
+  % Expand \font@string once now, we might use it several times.
+  \edef\c@font@string{\font@string}%
+  % Also define a shortcut for the corresponding font command.
+  \edef\c@font@command{\expandafter\noexpand \csname\c@font@string\endcsname}%
+  % First check if the requested font is in the cache.
+  \expandafter\let\expandafter \temp \c@font@command
+  \ifx\temp\relax
+    % No, it's not in the cache, search for the font.
+    \search@font@size
+    \expandafter\let\expandafter \temp \c@font@command
+    \ifx\temp\relax
+      % The font is not found, check whether it is mapped.
+      \search@font@map
+      \expandafter\let\expandafter \temp \c@font@command
+      \ifx\temp\relax
+        % No, it's not mapped either, issue a warning.
+        \@fontwarn{^^J\linenumber Warning: font \c@font@string\space
+                   is not declared, leaving the font unchanged.}%
+      \fi
+    \fi
+  \else
+    % The font is in the cache, report it.
+    \@fontnotify{^^J\linenumber In font cache: \c@font@string\space
+                 (\fontname\csname\c@font@string\endcsname).}%
+  \fi
+}%
+%
+% Search for the font as specified by the values of \f@...  If it's
+% found, load it and add it to the cache.
+\def\search@font@size{%
+  % Check that there's a definition for the requested font shape
+  % (declared by \declarefont).
+  \expandafter\let\expandafter \temp \csname sh/\shape@string\endcsname
+  \ifx\temp\relax \else
+    % The shape was defined.  It should contain mapping of size ranges
+    % to fonts.  Search the font for the requested size.
+    \expandafter\parse@font@range\temp\finish
+  \fi
+}%
+%                    L  U  SZ FN the-rest-of-the-list
+\def\parse@font@range#1 #2 #3 #4 #5\finish{%
+  % See if we have not yet reached the end of the list.
+  \def\temp{#5}%
+  \ifx\temp\empty
+    \let\next\gobble % Yeah, the end, gobble \finish below.
+  \else
+    \let\next\parse@font@range % No, continue recursively.
+  \fi
+  % If \f@size belongs in [#1,#2), we have found our range.
+  \ifnum\f@size<#1 \else \ifnum\f@size<#2
+    \load@font{#4}{#3}%
+    \let\next\gobble@to@finish % Stop the recursive list search.
+  \fi\fi
+  \next#5\finish
+}%
+%
+% Load the font as specified by \f@... and add it to the cache.  #1 is
+% the font file name, #2 is the design size.
+\def\load@font#1#2{%
+  % Calculate the scale factor for this font.  Because of the way we
+  % do this, the maximum possible font size, for a font with the
+  % relative factor of 1000, is 214.7pt, which should be more than
+  % enough for Texinfo.
+  \count@ \csname fam@scale/\f@family\endcsname % This family's factor.
+  \multiply\count@ by\f@size % Requested size.
+  \multiply\count@ by1000
+  \divide\count@ by#2 % This font's design size.
+  \divide\count@ by\base@fntscale % Base factor.
+  % Report the font.
+  \@fontnotify{^^J\linenumber Adding to font cache:
+               \c@font@string \space -> #1 scaled \the\count@.}%
+  % Load it.  The name we define will be used in "cache" lookups of
+  % this font.
+  \global\expandafter\font \c@font@command #1 scaled \count@\relax
+}%
+%
+% Search font mappings for the requested font (as per the \f@...
+% macros) and set \c@font@command if it's found.  Mappings can contain
+% globbing characters (`*'), but for the from-attributes, we only
+% support a subset of possible combinations, see the comments below.
+% To-attributes can have any combination of `*'s.
+\def\search@font@map{%
+  % * F1 * s1
+  \if\fmap@exists *\f@family*\f@shape
+  \else
+    % * F1 S1 *
+    \if\fmap@exists *\f@family\f@series*%
+    \else
+      % ENC F1 S1 *
+      \if\fmap@exists \f@encoding\f@family\f@series*%
+      \else
+        % ENC F1 * *
+        \if\fmap@exists \f@encoding\f@family**%
+        \fi
+      \fi
+    \fi
+  \fi
+}%
+%
+% Note:  calls \font@apply@map if the map exists.
+\def\fmap@exists#1#2#3#4{%
+  TT\fi % Cancel out the preceding \if -- we'll roll our own.
+  \expandafter\let\expandafter\@fmap \csname fmap/#1/#2/#3/#4\endcsname
+  \ifx\@fmap\relax
+    \fmap@exists@false
+  \else
+    \@fontnotify{^^J\linenumber Mapping font: #1/#2/#3/#4 -> \@fmap.}%
+    \expandafter\font@apply@map \@fmap\finish
+    \fmap@exists@true
+  \fi
+}%
+\def\fmap@exists@false{\expandafter\iffalse}%
+\def\fmap@exists@true{\expandafter\iftrue}%
+%
+\def\font@apply@map#1/#2/#3/#4\finish{%
+  \begingroup % Save the \f@... and \c@font@... macros.
+    \font@set@attrib \f@encoding{#1}%
+    \font@set@attrib \f@family  {#2}%
+    \font@set@attrib \f@series  {#3}%
+    \font@set@attrib \f@shape   {#4}%
+    \selectfont
+    \global\expandafter\let\expandafter \gtemp \c@font@command
+  \endgroup % Restore the \f@... and \c@font@... macros.
+  % Define the font selection command for the new font.
+  \global\expandafter\let \c@font@command \gtemp
+}%
+%
+\def\asteriskword{*}%
+%
+\def\font@set@attrib#1#2{%
+  \edef\temp{#2}%
+  \ifx\temp\asteriskword
+    % Leave the attribute unchanged.
+  \else
+    \let#1\temp
+  \fi
+}%
+%
+% Computer Modern Roman.
+%
+\declarefontfamily CMRoman 1000 1200
+% Medium weight.
+% Upright.               ser sh [l,u)     sz font
+\declarefont OT1 CMRoman m   n  0-5.5      5  cmr5
+\declarefont OT1 CMRoman m   n  5.5-6.5    6  cmr6
+\declarefont OT1 CMRoman m   n  6.5-7.5    7  cmr7
+\declarefont OT1 CMRoman m   n  7.5-8.5    8  cmr8
+\declarefont OT1 CMRoman m   n  8.5-9.5    9  cmr9
+\declarefont OT1 CMRoman m   n  9.5-10.5   10 cmr10
+\declarefont OT1 CMRoman m   n  10.5-14    12 cmr12
+\declarefont OT1 CMRoman m   n  14-10000   17 cmr17
+% Italic.
+\declarefont OT1 CMRoman m   it 0-7.5      7  cmti7
+\declarefont OT1 CMRoman m   it 7.5-8.5    8  cmti8
+\declarefont OT1 CMRoman m   it 8.5-9.5    9  cmti9
+\declarefont OT1 CMRoman m   it 9.5-10.5   10 cmti10
+\declarefont OT1 CMRoman m   it 10.5-10000 12 cmti12
+% Slanted.
+\declarefont OT1 CMRoman m   sl 0-6.8      6  cmsl6 % from cmextra
+\declarefont OT1 CMRoman m   sl 6.8-8.5    8  cmsl8
+\declarefont OT1 CMRoman m   sl 8.5-9.5    9  cmsl9
+\declarefont OT1 CMRoman m   sl 9.5-10.5   10 cmsl10
+\declarefont OT1 CMRoman m   sl 10.5-10000 12 cmsl12
+% Caps and small caps.
+\declarefont OT1 CMRoman m   sc 0-10000    10 cmcsc10
+% Unslanted italic (for slanted pound sterling).
+\declarefont OT1 CMRoman m   ui 0-10000    10 cmu10
+%
+% Bold weight.
+\declarefont OT1 CMRoman b   n  0-10000    10 cmb10
+\fontmapseries CMRoman b > * bx
+%
+% Bold extended.
+% Upright.               ser sh [l,u)      sz font
+\declarefont OT1 CMRoman bx  n  0-5.5      5  cmbx5
+\declarefont OT1 CMRoman bx  n  5.5-6.5    6  cmbx6
+\declarefont OT1 CMRoman bx  n  6.5-7.5    7  cmbx7
+\declarefont OT1 CMRoman bx  n  7.5-8.5    8  cmbx8
+\declarefont OT1 CMRoman bx  n  8.5-9.5    9  cmbx9
+\declarefont OT1 CMRoman bx  n  9.5-10.5   10 cmbx10
+\declarefont OT1 CMRoman bx  n  10.5-10000 12 cmbx12
+% Italic.
+\declarefont OT1 CMRoman bx  it 0-8.5      7  cmbxti7  % from cmextra
+\declarefont OT1 CMRoman bx  it 8.5-11     10 cmbxti10
+\declarefont OT1 CMRoman bx  it 11-10000   12 cmbxti12 % from cmextra
+% Slanted.
+\declarefont OT1 CMRoman bx  sl 0-10000    10 cmbxsl10
+%
+% Math letters.
+\fontmap OML CMRoman m * > * * * n
+\fontmap OML CMRoman bx * > * * * n
+\fontmap OML CMRoman b * > * * bx *
+% Medium weight.         ser sh [l,u)      sz font
+\declarefont OML CMRoman m   n  0-5.5      5  cmmi5
+\declarefont OML CMRoman m   n  5.5-6.5    6  cmmi6
+\declarefont OML CMRoman m   n  6.5-7.5    7  cmmi7
+\declarefont OML CMRoman m   n  7.5-8.5    8  cmmi8
+\declarefont OML CMRoman m   n  8.5-9.5    9  cmmi9
+\declarefont OML CMRoman m   n  9.5-10.5   10 cmmi10
+\declarefont OML CMRoman m   n  10.5-10000 12 cmmi12
+% Bold extended.
+\declarefont OML CMRoman bx  n  0-5.5      5  cmmib5
+\declarefont OML CMRoman bx  n  5.5-6.5    6  cmmib6
+\declarefont OML CMRoman bx  n  6.5-7.5    7  cmmib7
+\declarefont OML CMRoman bx  n  7.5-8.5    8  cmmib8
+\declarefont OML CMRoman bx  n  8.5-9.5    9  cmmib9
+\declarefont OML CMRoman bx  n  9.5-10000  10 cmmib10
+%
+% Math symbols.
+\fontmap OMS CMRoman m * > * * * n
+\fontmap OMS CMRoman bx * > * * * n
+\fontmap OMS CMRoman b * > * * bx *
+% Medium weight.         ser sh [l,u)      sz font
+\declarefont OMS CMRoman m   n  0-5.5      5  cmsy5
+\declarefont OMS CMRoman m   n  5.5-6.5    6  cmsy6
+\declarefont OMS CMRoman m   n  6.5-7.5    7  cmsy7
+\declarefont OMS CMRoman m   n  7.5-8.5    8  cmsy8
+\declarefont OMS CMRoman m   n  8.5-9.5    9  cmsy9
+\declarefont OMS CMRoman m   n  9.5-10000  10 cmsy10
+% Bold extended.
+\declarefont OMS CMRoman bx  n  0-5.5      5  cmbsy5
+\declarefont OMS CMRoman bx  n  5.5-6.5    6  cmbsy6
+\declarefont OMS CMRoman bx  n  6.5-7.5    7  cmbsy7
+\declarefont OMS CMRoman bx  n  7.5-8.5    8  cmbsy8
+\declarefont OMS CMRoman bx  n  8.5-9.5    9  cmbsy9
+\declarefont OMS CMRoman bx  n  9.5-10000  10 cmbsy10
+%
+% Computer Modern Sans.
+%
+\declarefontfamily CMSans 1000 1200
+\fontmapshape CMSans it > * sl
+\fontmapseries CMSans b > * bx
+\fontmapfamily CMSans OML CMRoman
+\fontmapfamily CMSans OMS CMRoman
+% Medium weight.
+% Upright.              ser sh [l,u)     sz font
+\declarefont OT1 CMSans m   n  0-8.5     8  cmss8
+\declarefont OT1 CMSans m   n  8.5-9.5   9  cmss9
+\declarefont OT1 CMSans m   n  9.5-10.5  10 cmss10
+\declarefont OT1 CMSans m   n  10.5-14   12 cmss12
+\declarefont OT1 CMSans m   n  14-10000  17 cmss17
+% Slanted.
+\declarefont OT1 CMSans m   sl 0-8.5     8  cmssi8
+\declarefont OT1 CMSans m   sl 8.5-9.5   9  cmssi9
+\declarefont OT1 CMSans m   sl 9.5-10.5  10 cmssi10
+\declarefont OT1 CMSans m   sl 10.5-14   12 cmssi12
+\declarefont OT1 CMSans m   sl 14-10000  17 cmssi17
+%
+% Bold extended.
+\declarefont OT1 CMSans bx  n  0-10000   10 cmssbx10
+\declarefont OT1 CMSans bx  sl 0-10000   10 cmssbxo10 % from cmextra
+%
+% Computer Modern Typewriter.
+%
+\declarefontfamily CMMono 1000 1200
+\fontmapfamily CMMono OML CMRoman
+\fontmapfamily CMMono OMS CMRoman
+% Medium weight.
+% Upright.              ser sh [l,u)      sz font
+\declarefont OT1 CMMono m   n  0-8.5      8  cmtt8
+\declarefont OT1 CMMono m   n  8.5-9.5    9  cmtt9
+\declarefont OT1 CMMono m   n  9.5-10.5   10 cmtt10
+\declarefont OT1 CMMono m   n  10.5-10000 12 cmtt12
+% Italic.
+\declarefont OT1 CMMono m   it 0-9.5      9  cmitt9  % from cmextra
+\declarefont OT1 CMMono m   it 9.5-10.5   10 cmitt10
+\declarefont OT1 CMMono m   it 10.5-10000 12 cmitt12 % from cmextra
+% Slanted.
+\declarefont OT1 CMMono m   sl 0-9.5      9  cmsltt9  % from cmextra
+\declarefont OT1 CMMono m   sl 9.5-10000  10 cmsltt10
+%
+% Latin Modern Roman.
+%
+\declarefontfamily LMRoman 1000 1200
+% Medium weight.
+% Upright.              ser sh [l,u)     sz font
+\declarefont T1 LMRoman m   n  0-5.5     5  ec-lmr5
+\declarefont T1 LMRoman m   n  5.5-6.5   6  ec-lmr6
+\declarefont T1 LMRoman m   n  6.5-7.5   7  ec-lmr7
+\declarefont T1 LMRoman m   n  7.5-8.5   8  ec-lmr8
+\declarefont T1 LMRoman m   n  8.5-9.5   9  ec-lmr9
+\declarefont T1 LMRoman m   n  9.5-10.5  10 ec-lmr10
+\declarefont T1 LMRoman m   n  10.5-14   12 ec-lmr12
+\declarefont T1 LMRoman m   n  14-10000  17 ec-lmr17
+\declarefont TS1 LMRoman m  n  0-5.5     5  ts1-lmr5
+\declarefont TS1 LMRoman m  n  5.5-6.5   6  ts1-lmr6
+\declarefont TS1 LMRoman m  n  6.5-7.5   7  ts1-lmr7
+\declarefont TS1 LMRoman m  n  7.5-8.5   8  ts1-lmr8
+\declarefont TS1 LMRoman m  n  8.5-9.5   9  ts1-lmr9
+\declarefont TS1 LMRoman m  n  9.5-10.5  10 ts1-lmr10
+\declarefont TS1 LMRoman m  n  10.5-14   12 ts1-lmr12
+\declarefont TS1 LMRoman m  n  14-10000  17 ts1-lmr17
+% Italic.
+\declarefont T1 LMRoman m   it 0-7.5      7  ec-lmri7
+\declarefont T1 LMRoman m   it 7.5-8.5    8  ec-lmri8
+\declarefont T1 LMRoman m   it 8.5-9.5    9  ec-lmri9
+\declarefont T1 LMRoman m   it 9.5-10.5   10 ec-lmri10
+\declarefont T1 LMRoman m   it 10.5-10000 12 ec-lmri12
+\declarefont TS1 LMRoman m  it 0-7.5      7  ts1-lmri7
+\declarefont TS1 LMRoman m  it 7.5-8.5    8  ts1-lmri8
+\declarefont TS1 LMRoman m  it 8.5-9.5    9  ts1-lmri9
+\declarefont TS1 LMRoman m  it 9.5-10.5   10 ts1-lmri10
+\declarefont TS1 LMRoman m  it 10.5-10000 12 ts1-lmri12
+% Slanted.
+\declarefont T1 LMRoman m   sl 6.8-8.5    8  ec-lmro8
+\declarefont T1 LMRoman m   sl 8.5-9.5    9  ec-lmro9
+\declarefont T1 LMRoman m   sl 9.5-10.5   10 ec-lmro10
+\declarefont T1 LMRoman m   sl 10.5-14    12 ec-lmro12
+\declarefont T1 LMRoman m   sl 14-10000   17 ec-lmro17
+\declarefont TS1 LMRoman m  sl 6.8-8.5    8  ts1-lmro8
+\declarefont TS1 LMRoman m  sl 8.5-9.5    9  ts1-lmro9
+\declarefont TS1 LMRoman m  sl 9.5-10.5   10 ts1-lmro10
+\declarefont TS1 LMRoman m  sl 10.5-14    12 ts1-lmro12
+\declarefont TS1 LMRoman m  sl 14-10000   17 ts1-lmro17
+% Caps and small caps.
+\declarefont T1 LMRoman m   sc 0-10000    10 ec-lmcsc10
+\declarefont TS1 LMRoman m  sc 0-10000    10 ts1-lmcsc10
+%
+% Bold weight.
+\declarefont T1 LMRoman b   n  0-10000    10 ec-lmb10
+\fontmapseries LMRoman b > * bx % For the `it' shape.
+\declarefont T1 LMRoman b   sl 0-10000    10 ec-lmbo10
+\declarefont TS1 LMRoman b  n  0-10000    10 ts1-lmb10
+\declarefont TS1 LMRoman b  sl 0-10000    10 ts1-lmbo10
+%
+% Bold extended.
+% Upright.              ser sh [l,u)      sz font
+\declarefont T1 LMRoman bx  n  0-5.5      5  ec-lmbx5
+\declarefont T1 LMRoman bx  n  5.5-6.5    6  ec-lmbx6
+\declarefont T1 LMRoman bx  n  6.5-7.5    7  ec-lmbx7
+\declarefont T1 LMRoman bx  n  7.5-8.5    8  ec-lmbx8
+\declarefont T1 LMRoman bx  n  8.5-9.5    9  ec-lmbx9
+\declarefont T1 LMRoman bx  n  9.5-10.5   10 ec-lmbx10
+\declarefont T1 LMRoman bx  n  10.5-10000 12 ec-lmbx12
+\declarefont TS1 LMRoman bx n  0-5.5      5  ts1-lmbx5
+\declarefont TS1 LMRoman bx n  5.5-6.5    6  ts1-lmbx6
+\declarefont TS1 LMRoman bx n  6.5-7.5    7  ts1-lmbx7
+\declarefont TS1 LMRoman bx n  7.5-8.5    8  ts1-lmbx8
+\declarefont TS1 LMRoman bx n  8.5-9.5    9  ts1-lmbx9
+\declarefont TS1 LMRoman bx n  9.5-10.5   10 ts1-lmbx10
+\declarefont TS1 LMRoman bx n  10.5-10000 12 ts1-lmbx12
+% Italic.
+\declarefont T1 LMRoman bx  it 0-10000    10 ec-lmbxi10
+\declarefont TS1 LMRoman bx it 0-10000    10 ts1-lmbxi10
+% Slanted.
+\declarefont T1 LMRoman bx  sl 0-10000    10 ec-lmbxo10
+\declarefont TS1 LMRoman bx sl 0-10000    10 ts1-lmbxo10
+%
+% Latin Modern Sans.
+%
+\declarefontfamily LMSans 1000 1200
+\fontmapshape LMSans it > * sl
+\fontmapseries LMSans b > * bx
+% Medium weight.
+% Upright.             ser sh [l,u)     sz font
+\declarefont T1 LMSans m   n  0-8.5     8  ec-lmss8
+\declarefont T1 LMSans m   n  8.5-9.5   9  ec-lmss9
+\declarefont T1 LMSans m   n  9.5-10.5  10 ec-lmss10
+\declarefont T1 LMSans m   n  10.5-14   12 ec-lmss12
+\declarefont T1 LMSans m   n  14-10000  17 ec-lmss17
+% Slanted.
+\declarefont T1 LMSans m   sl 0-8.5     8  ec-lmsso8
+\declarefont T1 LMSans m   sl 8.5-9.5   9  ec-lmsso9
+\declarefont T1 LMSans m   sl 9.5-10.5  10 ec-lmsso10
+\declarefont T1 LMSans m   sl 10.5-14   12 ec-lmsso12
+\declarefont T1 LMSans m   sl 14-10000  17 ec-lmsso17
+%
+% Bold extended.
+\declarefont T1 LMSans bx  n  0-10000   10 ec-lmssbx10
+\declarefont T1 LMSans bx  sl 0-10000   10 ec-lmssbo10
+%
+% Latin Modern Typewriter.
+%
+\declarefontfamily LMMono 1000 1200
+% Medium weight.
+% Upright.             ser sh [l,u)      sz font
+\declarefont T1 LMMono m   n  0-8.5      8  ec-lmtt8
+\declarefont T1 LMMono m   n  8.5-9.5    9  ec-lmtt9
+\declarefont T1 LMMono m   n  9.5-10.5   10 ec-lmtt10
+\declarefont T1 LMMono m   n  10.5-10000 12 ec-lmtt12
+% Italic.
+\declarefont T1 LMMono m   it 0-10000    10 ec-lmtti10
+% Slanted.
+\declarefont T1 LMMono m   sl 0-10000    10 ec-lmtto10
+%
+% Computer Modern Bright.
+%
+\declarefontfamily CMBright 1000 1250
+\fontmapshape CMBright it > * sl
+\fontmapseries CMBright bx > * sb
+% Medium weight.
+% Upright.               ser sh [l,u)      sz font
+\declarefont T1 CMBright m   n  0-8.5      8  ebmr8
+\declarefont T1 CMBright m   n  8.5-9.5    9  ebmr9
+\declarefont T1 CMBright m   n  9.5-14     10 ebmr10
+\declarefont T1 CMBright m   n  14-10000   17 ebmr17
+% Slanted.
+\declarefont T1 CMBright m   sl 0-8.5      8  ebmo8
+\declarefont T1 CMBright m   sl 8.5-9.5    9  ebmo9
+\declarefont T1 CMBright m   sl 9.5-14     10 ebmo10
+\declarefont T1 CMBright m   sl 14-10000   17 ebmo17
+%
+% Semi-bold weight.
+% Upright.
+\declarefont T1 CMBright sb  n  0-8.5      8  ebsr8
+\declarefont T1 CMBright sb  n  8.5-9.5    9  ebsr9
+\declarefont T1 CMBright sb  n  9.5-14     10 ebsr10
+\declarefont T1 CMBright sb  n  14-10000   17 ebsr17
+% Slanted.
+\declarefont T1 CMBright sb  sl 0-8.5      8  ebso8
+\declarefont T1 CMBright sb  sl 8.5-9.5    9  ebso9
+\declarefont T1 CMBright sb  sl 9.5-14     10 ebso10
+\declarefont T1 CMBright sb  sl 14-10000   17 ebso17
+%
+% Bold extended.
+\declarefont T1 CMBright bx  n  0-10000    10 ebbx10
+%
+% Computer Modern Bright Typewriter.
+%
+\declarefontfamily CMBrightMono 1000 1250
+\fontmapshape CMBrightMono it > * sl
+% Medium weight.             ser sh [l,u)      sz font
+\declarefont T1 CMBrightMono m   n  0-10000    10 ebtl10
+\declarefont T1 CMBrightMono m   sl 0-10000    10 ebto10
+%
+% European Concrete Roman.
+%
+\declarefontfamily ConcreteRoman 1000 1250
+\fontmapseries ConcreteRoman b > LMSans b
+\fontmapseries ConcreteRoman bx > LMSans bx
+% Medium weight.
+% Upright.                    ser sh [l,u)      sz font
+\declarefont T1 ConcreteRoman m   n  0-5.5      5  eorm5
+\declarefont T1 ConcreteRoman m   n  5.5-6.5    6  eorm6
+\declarefont T1 ConcreteRoman m   n  6.5-7.5    7  eorm7
+\declarefont T1 ConcreteRoman m   n  7.5-8.5    8  eorm8
+\declarefont T1 ConcreteRoman m   n  8.5-9.5    9  eorm9
+\declarefont T1 ConcreteRoman m   n  9.5-10000  10 eorm10
+% Italic.
+\declarefont T1 ConcreteRoman m   it  0-10000   10 eoti10
+% Slanted.
+\declarefont T1 ConcreteRoman m   sl 0-5.5      5  eosl5
+\declarefont T1 ConcreteRoman m   sl 5.5-6.5    6  eosl6
+\declarefont T1 ConcreteRoman m   sl 6.5-7.5    7  eosl7
+\declarefont T1 ConcreteRoman m   sl 7.5-8.5    8  eosl8
+\declarefont T1 ConcreteRoman m   sl 8.5-9.5    9  eosl9
+\declarefont T1 ConcreteRoman m   sl 9.5-10000  10 eosl10
+% Caps and small caps.
+\declarefont T1 ConcreteRoman m   sc  0-10000   10 eocc10
+%
+% LH Roman.
+%
+\declarefontfamily LHRoman 1000 1200
+\fontmapfamily LHRoman T1 LMRoman
+\fontmapfamily LHRoman TS1 LMRoman
+% Medium weight.
+% Upright.               ser sh [l,u)    sz font
+\declarefont T2A LHRoman m   n  0-5.5    5  larm0500
+\declarefont T2A LHRoman m   n  5.5-6.5  6  larm0600
+\declarefont T2A LHRoman m   n  6.5-7.5  7  larm0700
+\declarefont T2A LHRoman m   n  7.5-8.5  8  larm0800
+\declarefont T2A LHRoman m   n  8.5-9.5  9  larm0900
+\declarefont T2A LHRoman m   n  9.5-10.4 10 larm1000
+\declarefont T2A LHRoman m   n  10.4-11.4 10.95 larm1095
+\declarefont T2A LHRoman m   n  11.4-13.1 12    larm1200
+\declarefont T2A LHRoman m   n  13.1-15.6 14.4  larm1440
+\declarefont T2A LHRoman m   n  15.6-18.8 17.28 larm1728
+\declarefont T2A LHRoman m   n  18.8-22.5 20.74 larm2074
+\declarefont T2A LHRoman m   n  22.5-27   24.88 larm2488
+\declarefont T2A LHRoman m   n  27-32.5   29.86 larm2986
+\declarefont T2A LHRoman m   n  32.5-10000 35.83 larm3583
+% Bold weight.           ser sh [l,u)    sz font
+\declarefont T2A LHRoman b   n  0-5.5    5  larb0500
+\declarefont T2A LHRoman b   n  5.5-6.5  6  larb0600
+\declarefont T2A LHRoman b   n  6.5-7.5  7  larb0700
+\declarefont T2A LHRoman b   n  7.5-8.5  8  larb0800
+\declarefont T2A LHRoman b   n  8.5-9.5  9  larb0900
+\declarefont T2A LHRoman b   n  9.5-10.4 10 larb1000
+\declarefont T2A LHRoman b   n  10.4-11.4 10.95 larb1095
+\declarefont T2A LHRoman b   n  11.4-13.1 12    larb1200
+\declarefont T2A LHRoman b   n  13.1-15.6 14.4  larb1440
+\declarefont T2A LHRoman b   n  15.6-18.8 17.28 larb1728
+\declarefont T2A LHRoman b   n  18.8-22.5 20.74 larb2074
+\declarefont T2A LHRoman b   n  22.5-27   24.88 larb2488
+\declarefont T2A LHRoman b   n  27-32.5   29.86 larb2986
+\declarefont T2A LHRoman b   n  32.5-10000 35.83 larb3583
+% Bold extended.         ser sh [l,u)    sz font
+\declarefont T2A LHRoman bx  n  0-5.5    5  labx0500
+\declarefont T2A LHRoman bx  n  5.5-6.5  6  labx0600
+\declarefont T2A LHRoman bx  n  6.5-7.5  7  labx0700
+\declarefont T2A LHRoman bx  n  7.5-8.5  8  labx0800
+\declarefont T2A LHRoman bx  n  8.5-9.5  9  labx0900
+\declarefont T2A LHRoman bx  n  9.5-10.4 10 labx1000
+\declarefont T2A LHRoman bx  n  10.4-11.4 10.95 labx1095
+\declarefont T2A LHRoman bx  n  11.4-13.1 12    labx1200
+\declarefont T2A LHRoman bx  n  13.1-15.6 14.4  labx1440
+\declarefont T2A LHRoman bx  n  15.6-18.8 17.28 labx1728
+\declarefont T2A LHRoman bx  n  18.8-22.5 20.74 labx2074
+\declarefont T2A LHRoman bx  n  22.5-27   24.88 labx2488
+\declarefont T2A LHRoman bx  n  27-32.5   29.86 labx2986
+\declarefont T2A LHRoman bx  n  32.5-10000 35.83 labx3583
+%
+% Bera Roman (Bitstream Vera Serif).
+%
+\declarefontfamily BeraRoman 900 1375
+\fontmapshape BeraRoman it > * sl
+\fontmapseries BeraRoman b > * bx
+% Medium weight.            ser sh [l,u)     sz font
+\declarefont T1 BeraRoman   m   n  0-10000   10 fver8t
+\declarefont T1 BeraRoman   m   sl 0-10000   10 fvero8t
+% Bold extended.
+\declarefont T1 BeraRoman   bx  n  0-10000   10 fveb8t
+\declarefont T1 BeraRoman   bx  sl 0-10000   10 fvebo8t
+%
+% Bera Sans (Bitstream Vera Sans).
+%
+\declarefontfamily BeraSans 900 1375
+\fontmapshape BeraSans it > * sl
+\fontmapseries BeraSans b > * bx
+% Medium weight.            ser sh [l,u)     sz font
+\declarefont T1 BeraSans    m   n  0-10000   10 fvsr8t
+\declarefont T1 BeraSans    m   sl 0-10000   10 fvsro8t
+% Bold extended.
+\declarefont T1 BeraSans    bx  n  0-10000   10 fvsb8t
+\declarefont T1 BeraSans    bx  sl 0-10000   10 fvsbo8t
+%
+% Bera Mono (Bitstream Vera Mono).
+%
+\declarefontfamily BeraMono 900 1375
+\fontmapshape BeraMono it > * sl
+\fontmapseries BeraMono bx > * b
+% Medium weight.            ser sh [l,u)     sz font
+\declarefont T1 BeraMono    m   n  0-10000   10 fvmr8t
+\declarefont T1 BeraMono    m   sl 0-10000   10 fvmro8t
+% Bold weight.
+\declarefont T1 BeraMono    b   n  0-10000   10 fvmb8t
+\declarefont T1 BeraMono    b   sl 0-10000   10 fvmbo8t
+%
+% Bitstream Charter.
+%
+\declarefontfamily Charter 1000 1275
+\fontmapseries Charter b > * bx
+% Medium weight.        ser sh [l,u)     sz font
+\declarefont T1 Charter m   n  0-10000   10 bchr8t
+\declarefont T1 Charter m   it 0-10000   10 bchri8t
+\declarefont T1 Charter m   sl 0-10000   10 bchro8t
+\declarefont T1 Charter m   sc 0-10000   10 bchrc8t
+% Bold extended.
+\declarefont T1 Charter bx  n  0-10000   10 bchb8t
+\declarefont T1 Charter bx  it 0-10000   10 bchbi8t
+\declarefont T1 Charter bx  sl 0-10000   10 bchbo8t
+\declarefont T1 Charter bx  sc 0-10000   10 bchbc8t
+%
+% URW Nimbus Roman (Times) + TeX Gyre Termes.
+%
+\declarefontfamily NimbusRoman 1000 1200
+\fontmapseries NimbusRoman b > * bx
+\fontmapshape NimbusRoman sl > * it % For TS1.
+\fontmapshape NimbusRoman sc > * n  % For TS1.
+% Medium weight.             ser sh [l,u)     sz font
+\declarefont T1  NimbusRoman m   n  0-10000   10 ptmr8t
+\declarefont TS1 NimbusRoman m   n  0-10000   10 ts1-qtmr
+\declarefont T1  NimbusRoman m   it 0-10000   10 ptmri8t
+\declarefont TS1 NimbusRoman m   it 0-10000   10 ts1-qtmri
+\declarefont T1  NimbusRoman m   sl 0-10000   10 ptmro8t
+\declarefont T1  NimbusRoman m   sc 0-10000   10 ptmrc8t
+% Bold extended.
+\declarefont T1  NimbusRoman bx  n  0-10000   10 ptmb8t
+\declarefont TS1 NimbusRoman bx  n  0-10000   10 ts1-qtmb
+\declarefont T1  NimbusRoman bx  it 0-10000   10 ptmbi8t
+\declarefont TS1 NimbusRoman bx  it 0-10000   10 ts1-qtmbi
+\declarefont T1  NimbusRoman bx  sl 0-10000   10 ptmbo8t
+\declarefont T1  NimbusRoman bx  sc 0-10000   10 ptmbc8t
+%
+% URW Nimbus Sans (Helvetica).
+%
+\declarefontfamily NimbusSans 950 1250
+\fontmapshape NimbusSans it > * sl
+\fontmapseries NimbusSans b > * bx
+% Medium weight.           ser sh [l,u)     sz font
+\declarefont T1 NimbusSans m   n  0-10000   10 phvr8t
+\declarefont T1 NimbusSans m   sl 0-10000   10 phvro8t
+\declarefont T1 NimbusSans m   sc 0-10000   10 phvrc8t
+% Bold extended.
+\declarefont T1 NimbusSans bx  n  0-10000   10 phvb8t
+\declarefont T1 NimbusSans bx  sl 0-10000   10 phvbo8t
+\declarefont T1 NimbusSans bx  sc 0-10000   10 phvbc8t
+%
+% URW Nimbus Mono (Courier).
+%
+\declarefontfamily NimbusMono 1000 1200
+\fontmapshape NimbusMono it > * sl
+\fontmapseries NimbusMono bx > * b
+% Medium weight.           ser sh [l,u)     sz font
+\declarefont T1 NimbusMono m   n  0-10000   10 pcrr8t
+\declarefont T1 NimbusMono m   sl 0-10000   10 pcrro8t
+\declarefont T1 NimbusMono m   sc 0-10000   10 pcrrc8t
+% Bold weight.
+\declarefont T1 NimbusMono b   n  0-10000   10 pcrb8t
+\declarefont T1 NimbusMono b   sl 0-10000   10 pcrbo8t
+\declarefont T1 NimbusMono b   sc 0-10000   10 pcrbc8t
+%
+% URW Palladio (Palatino) + TeX Gyre Pagella.
+%
+\declarefontfamily URWPalladio 1000 1275
+\fontmapseries URWPalladio b > * bx
+\fontmapshape URWPalladio sl > * it % For TS1.
+\fontmapshape URWPalladio sc > * n  % For TS1.
+% Medium weight.             ser sh [l,u)     sz font
+\declarefont T1  URWPalladio m   n  0-10000   10 pplr8t
+\declarefont TS1 URWPalladio m   n  0-10000   10 ts1-qplr
+\declarefont T1  URWPalladio m   it 0-10000   10 pplri8t
+\declarefont TS1 URWPalladio m   it 0-10000   10 ts1-qplri
+\declarefont T1  URWPalladio m   sl 0-10000   10 pplro8t
+\declarefont T1  URWPalladio m   sc 0-10000   10 pplrc8t
+% Bold extended.
+\declarefont T1  URWPalladio bx  n  0-10000   10 pplb8t
+\declarefont TS1 URWPalladio bx  n  0-10000   10 ts1-qplb
+\declarefont T1  URWPalladio bx  it 0-10000   10 pplbi8t
+\declarefont TS1 URWPalladio bx  it 0-10000   10 ts1-qplbi
+\declarefont T1  URWPalladio bx  sl 0-10000   10 pplbo8t
+\declarefont T1  URWPalladio bx  sc 0-10000   10 pplbc8t
+%
+% URW Bookman.
+%
+\declarefontfamily URWBookman 1000 1260
+\fontmapshape URWBookman it > * sl
+\fontmapseries URWBookman bx > * b
+% Medium weight.           ser sh [l,u)     sz font
+\declarefont T1 URWBookman m   n  0-10000   10 pbkl8t
+\declarefont T1 URWBookman m   sl 0-10000   10 pbklo8t
+\declarefont T1 URWBookman m   sc 0-10000   10 pbklc8t
+% Bold weight.
+\declarefont T1 URWBookman b   n  0-10000   10 pbkd8t
+\declarefont T1 URWBookman b   sl 0-10000   10 pbkdo8t
+\declarefont T1 URWBookman b   sc 0-10000   10 pbkdc8t
+%
+% URW Century Schoolbook.
+%
+\declarefontfamily CenturySchoolbook 1000 1300
+\fontmapseries CenturySchoolbook b > * bx
+% Medium weight.                  ser sh [l,u)     sz font
+\declarefont T1 CenturySchoolbook m   n  0-10000   10 pncr8t
+\declarefont T1 CenturySchoolbook m   it 0-10000   10 pncri8t
+\declarefont T1 CenturySchoolbook m   sl 0-10000   10 pncro8t
+\declarefont T1 CenturySchoolbook m   sc 0-10000   10 pncrc8t
+% Bold extended.
+\declarefont T1 CenturySchoolbook bx  n  0-10000   10 pncb8t
+\declarefont T1 CenturySchoolbook bx  it 0-10000   10 pncbi8t
+\declarefont T1 CenturySchoolbook bx  sl 0-10000   10 pncbo8t
+\declarefont T1 CenturySchoolbook bx  sc 0-10000   10 pncbc8t
+%
+% Antykwa Torunska.
+%
+\declarefontfamily AntykwaTorunska 1000 1280
+\fontmapshape AntykwaTorunska sl > * it
+\fontmapseries AntykwaTorunska b > * bx
+% Medium weight.                ser sh [l,u)     sz font
+\declarefont T1 AntykwaTorunska m   n  0-10000   10 ec-anttr
+\declarefont T1 AntykwaTorunska m   it 0-10000   10 ec-anttri
+\declarefont T1 AntykwaTorunska m   sc 0-10000   10 ec-anttrcap
+% Bold extended.
+\declarefont T1 AntykwaTorunska bx  n  0-10000   10 ec-anttb
+\declarefont T1 AntykwaTorunska bx  it 0-10000   10 ec-anttbi
+\declarefont T1 AntykwaTorunska bx  sc 0-10000   10 ec-anttbcap
+%
+% Iwona.
+%
+\declarefontfamily Iwona 1000 1200
+\fontmapshape Iwona it > * sl
+\fontmapseries Iwona bx > * b
+% Light weight.        ser sh [l,u)     sz font
+\declarefont T1 Iwona  l   n  0-10000   10 ec-iwonal
+\declarefont T1 Iwona  l   sl 0-10000   10 ec-iwonali
+\declarefont T1 Iwona  l   sc 0-10000   10 ec-iwonalcap
+% Light condensed.
+\declarefont T1 Iwona  lc  n  0-10000   10 ec-iwonacl
+\declarefont T1 Iwona  lc  sl 0-10000   10 ec-iwonacli
+\declarefont T1 Iwona  lc  sc 0-10000   10 ec-iwonaclcap
+% Medium weight.
+\declarefont T1 Iwona  m   n  0-10000   10 ec-iwonar
+\declarefont T1 Iwona  m   sl 0-10000   10 ec-iwonari
+\declarefont T1 Iwona  m   sc 0-10000   10 ec-iwonarcap
+% Medium condensed.
+\declarefont T1 Iwona  c   n  0-10000   10 ec-iwonacr
+\declarefont T1 Iwona  c   sl 0-10000   10 ec-iwonacri
+\declarefont T1 Iwona  c   sc 0-10000   10 ec-iwonacrcap
+% Semi-bold weight. 
+\declarefont T1 Iwona  sb  n  0-10000   10 ec-iwonam
+\declarefont T1 Iwona  sb  sl 0-10000   10 ec-iwonami
+\declarefont T1 Iwona  sb  sc 0-10000   10 ec-iwonamcap
+% Semi-bold condensed. ser sh [l,u)     sz font
+\declarefont T1 Iwona  sbc n  0-10000   10 ec-iwonacm
+\declarefont T1 Iwona  sbc sl 0-10000   10 ec-iwonacmi
+\declarefont T1 Iwona  sbc sc 0-10000   10 ec-iwonacmcap
+% Bold weight.
+\declarefont T1 Iwona  b   n  0-10000   10 ec-iwonab
+\declarefont T1 Iwona  b   sl 0-10000   10 ec-iwonabi
+\declarefont T1 Iwona  b   sc 0-10000   10 ec-iwonabcap
+% Bold condensed.
+\declarefont T1 Iwona  bc  n  0-10000   10 ec-iwonacb
+\declarefont T1 Iwona  bc  sl 0-10000   10 ec-iwonacbi
+\declarefont T1 Iwona  bc  sc 0-10000   10 ec-iwonacbcap
+% Extra bold weight.
+\declarefont T1 Iwona  eb  n  0-10000   10 ec-iwonah
+\declarefont T1 Iwona  eb  sl 0-10000   10 ec-iwonahi
+\declarefont T1 Iwona  eb  sc 0-10000   10 ec-iwonahcap
+% Extra bold condensed.
+\declarefont T1 Iwona  ebc n  0-10000   10 ec-iwonach
+\declarefont T1 Iwona  ebc sl 0-10000   10 ec-iwonachi
+\declarefont T1 Iwona  ebc sc 0-10000   10 ec-iwonachcap
+%
+% URW Gothic (AvantGarde).
+%
+\declarefontfamily URWGothic 900 1450
+\fontmapshape URWGothic it > * sl
+\fontmapseries URWGothic bx > * b
+% Medium weight.          ser sh [l,u)     sz font
+\declarefont T1 URWGothic m   n  0-10000   10 pagk8t
+\declarefont T1 URWGothic m   sl 0-10000   10 pagko8t
+\declarefont T1 URWGothic m   sc 0-10000   10 pagkc8t
+% Bold weight.
+\declarefont T1 URWGothic b   n  0-10000   10 pagd8t
+\declarefont T1 URWGothic b   sl 0-10000   10 pagdo8t
+\declarefont T1 URWGothic b   sc 0-10000   10 pagdc8t
+%
+% URW Chancery.
+%
+\declarefontfamily URWChancery 1150 1150
+% Medium weight.            ser sh [l,u)     sz font
+\declarefont T1 URWChancery m   it 0-10000   10 pzcmi8t
+%
+% Eurosym.  The T1 encoding we use is just a stub.
+%
+\declarefontfamily Eurosym 1000 1200
+\fontmapshape Eurosym it > * sl
+\fontmapshape Eurosym sc > * n
+\fontmapseries Eurosym bx > * b
+% Medium weight.        ser sh [l,u)     sz font
+\declarefont T1 Eurosym m   n   0-10000  10 feymr10
+\declarefont T1 Eurosym m   sl  0-10000  10 feymo10
+% Bold weight.
+\declarefont T1 Eurosym b   n   0-10000  10 feybr10
+\declarefont T1 Eurosym b   sl  0-10000  10 feybo10
+%
+% Math fonts.
+%
+% Macros to restore some plain TeX math defs, needed by post-hooks of
+% some math font families, e.g., Belleek and EulerMath.  `\cm@...'
+% are "action" macros; `\@cm@...' are saved plain TeX defs.  We only
+% restore the defs which can be clobbered by the pre-hooks; add new
+% ones as they become needed.
+\def\cm@digits{%
+  \mathcode`0"7030
+  \mathcode`1"7031
+  \mathcode`2"7032
+  \mathcode`3"7033
+  \mathcode`4"7034
+  \mathcode`5"7035
+  \mathcode`6"7036
+  \mathcode`7"7037
+  \mathcode`8"7038
+  \mathcode`9"7039
+}%
+%
+\def\cm@upper@greek{%
+  \let\Gamma\@cm@Gamma
+  \let\Delta\@cm@Delta
+  \let\Theta\@cm@Theta
+  \let\Lambda\@cm@Lambda
+  \let\Xi\@cm@Xi
+  \let\Pi\@cm@Pi
+  \let\Sigma\@cm@Sigma
+  \let\Upsilon\@cm@Upsilon
+  \let\Phi\@cm@Phi
+  \let\Psi\@cm@Psi
+  \let\Omega\@cm@Omega
+}%
+\let\@cm@Gamma\Gamma
+\let\@cm@Delta\Delta
+\let\@cm@Theta\Theta
+\let\@cm@Lambda\Lambda
+\let\@cm@Xi\Xi
+\let\@cm@Pi\Pi
+\let\@cm@Sigma\Sigma
+\let\@cm@Upsilon\Upsilon
+\let\@cm@Phi\Phi
+\let\@cm@Psi\Psi
+\let\@cm@Omega\Omega
+\let\@cm@varsigma\varsigma
+\let\@cm@varrho\varrho
+%
+\def\cm@lower@greek{%
+  \let\varsigma\@cm@varsigma
+  \let\varrho\@cm@varrho
+}%
+\let\@cm@varsigma\varsigma
+\let\@cm@varrho\varrho
+%
+\def\cm@ordinary{%
+  \mathcode`!"5021 % Why the heck is this a closing delimiter?
+  \let\infty\@cm@infty
+  \let\Re\@cm@Re
+  \let\Im\@cm@Im
+}%
+\let\@cm@infty\infty
+\let\@cm@Re\Re
+\let\@cm@Im\Im
+%
+\def\cm@binary{%
+  \mathcode`+="202B
+  \let\triangleleft\@cm@triangleleft
+  \let\triangleright\@cm@triangleright
+}%
+\let\@cm@triangleleft\triangleleft
+\let\@cm@triangleright\triangleright
+%
+\def\cm@relations{%
+  \mathcode`:"303A
+  \mathcode`="303D
+  \let\relbar\@cm@relbar
+  \let\Relbar\@cm@Relbar
+}%
+\let\@cm@relbar\relbar
+\let\@cm@Relbar\Relbar
+%
+\def\cm@delims{%
+  \mathcode`("4028 \delcode`("028300
+  \mathcode`)"5029 \delcode`)"029301
+  \mathcode`["405B \delcode`["05B302
+  \mathcode`]"505D \delcode`]"05D303
+  \delcode`/"02F30E
+}%
+%
+\def\cm@vec{\let\vec\@cm@vec}%
+\let\@cm@vec\vec
+%
+{\catcode`'\active
+\gdef\cm@prime{\let'\@cm@prime}%
+\global\let\@cm@prime'%
+\gdef\def@active@prime{\def'}%
+}%
+%
+\def\cm@fillarrows{%
+  \let\rightarrowfill\@cm@rightarrowfill
+  \let\leftarrowfill\@cm@leftarrowfill
+}%
+\let\@cm@rightarrowfill\rightarrowfill
+\let\@cm@leftarrowfill\leftarrowfill
+%
+% Computer Modern Math.
+%
+\declaremathfontfamily CMMath 1000 1200 OT1 127 48
+\fontmap OT1 CMMath * * > * CMRoman * n
+\fontmapseries CMMath b > * bx
+\fontmap OMX CMMath bx * > * * m *
+% Math letters.
+% Medium weight.        ser sh [l,u)      sz font
+\declarefont OML CMMath m   .  0-5.5      5  cmmi5
+\declarefont OML CMMath m   .  5.5-6.5    6  cmmi6
+\declarefont OML CMMath m   .  6.5-7.5    7  cmmi7
+\declarefont OML CMMath m   .  7.5-8.5    8  cmmi8
+\declarefont OML CMMath m   .  8.5-9.5    9  cmmi9
+\declarefont OML CMMath m   .  9.5-10.5   10 cmmi10
+\declarefont OML CMMath m   .  10.5-10000 12 cmmi12
+%
+% Bold extended.
+\declarefont OML CMMath bx  .  0-5.5      5  cmmib5
+\declarefont OML CMMath bx  .  5.5-6.5    6  cmmib6
+\declarefont OML CMMath bx  .  6.5-7.5    7  cmmib7
+\declarefont OML CMMath bx  .  7.5-8.5    8  cmmib8
+\declarefont OML CMMath bx  .  8.5-9.5    9  cmmib9
+\declarefont OML CMMath bx  .  9.5-10000  10 cmmib10
+%
+% Math symbols.
+% Medium weight.        ser sh [l,u)      sz font
+\declarefont OMS CMMath m   .  0-5.5      5  cmsy5
+\declarefont OMS CMMath m   .  5.5-6.5    6  cmsy6
+\declarefont OMS CMMath m   .  6.5-7.5    7  cmsy7
+\declarefont OMS CMMath m   .  7.5-8.5    8  cmsy8
+\declarefont OMS CMMath m   .  8.5-9.5    9  cmsy9
+\declarefont OMS CMMath m   .  9.5-10000  10 cmsy10
+% Bold extended.
+\declarefont OMS CMMath bx  .  0-5.5      5  cmbsy5
+\declarefont OMS CMMath bx  .  5.5-6.5    6  cmbsy6
+\declarefont OMS CMMath bx  .  6.5-7.5    7  cmbsy7
+\declarefont OMS CMMath bx  .  7.5-8.5    8  cmbsy8
+\declarefont OMS CMMath bx  .  8.5-9.5    9  cmbsy9
+\declarefont OMS CMMath bx  .  9.5-10000  10 cmbsy10
+%
+% Math operators.
+% Medium weight.
+\declarefont OMX CMMath m   .  0-7.5      7  cmex7
+\declarefont OMX CMMath m   .  7.5-8.5    8  cmex8
+\declarefont OMX CMMath m   .  8.5-9.5    9  cmex9
+\declarefont OMX CMMath m   .  9.5-10000  10 cmex10
+%
+% Computer Modern Bright Math.
+%
+\declaremathfontfamily CMBrightMath 1000 1250 OT1 127 48
+\fontmapseries CMBrightMath bx > * m
+\fontmapfamily CMBrightMath OMX CMMath
+%                             ser sh [l,u)      sz font
+\declarefont OT1 CMBrightMath m . 0-8.5     8  cmbr8
+\declarefont OT1 CMBrightMath m . 8.5-9.5   9  cmbr9
+\declarefont OT1 CMBrightMath m . 9.5-14    10 cmbr10
+\declarefont OT1 CMBrightMath m . 14-10000  17 cmbr17
+\declarefont OML CMBrightMath m . 0-8.5     8  cmbrmi8
+\declarefont OML CMBrightMath m . 8.5-9.5   9  cmbrmi9
+\declarefont OML CMBrightMath m . 9.5-10000 10 cmbrmi10
+\declarefont OMS CMBrightMath m . 0-8.5     8  cmbrsy8
+\declarefont OMS CMBrightMath m . 8.5-9.5   9  cmbrsy9
+\declarefont OMS CMBrightMath m . 9.5-10000 10 cmbrsy10
+%
+% Belleek.
+%
+\declaremathfontfamily Belleek 1000 1200 OT1 45 -1
+\fontmapseries Belleek bx > * m
+\mathfontfamilyprehook Belleek {%
+  % Uppercase Greek letters.
+  \mathchardef\Gamma"130
+  \mathchardef\Delta"131
+  \mathchardef\Theta"132
+  \mathchardef\Lambda"133
+  \mathchardef\Xi"134
+  \mathchardef\Pi"135
+  \mathchardef\Sigma"136
+  \mathchardef\Upsilon"137
+  \mathchardef\Phi"138
+  \mathchardef\Psi"139
+  \mathchardef\Omega"17F
+  % Binary operations.
+  \mathchardef\triangleleft"2247
+  \mathchardef\triangleright"2246
+  % Relations.
+  \mathchardef\Relbar"3248
+  % Delimiters.
+  \mathcode`("412E \delcode`(="12E300
+  \mathcode`)"512F \delcode`)="12F301
+  % Accents.
+  \def\vec{\mathaccent"0245 }%
+  % FIXME Other glyphs: mtmi: \tieaccent
+}%
+\mathfontfamilyposthook Belleek {%
+  \cm@upper@greek
+  \cm@binary
+  \cm@relations
+  \cm@delims
+  \cm@vec
+}%
+\declarefont OT1 Belleek m . 0-10000 10 ptmr7t
+\declarefont OT1 Belleek bx . 0-10000 10 ptmb7t
+\declarefont OML Belleek m . 0-10000 10 mtmi
+\declarefont OMS Belleek m . 0-10000 10 mtsy
+\declarefont OMX Belleek m . 0-10000 10 mtex
+%
+% Pazo Math.
+%
+\declaremathfontfamily PazoMath 1000 1275 OT1 127 48
+\fontmapseries PazoMath bx > * b
+\fontmap OMX PazoMath b * > * * m *
+%                         ser sh [l,u)    sz font
+\declarefont OT1 PazoMath m   .  0-10000 10 zplmr7t
+\declarefont OT1 PazoMath b   .  0-10000 10 zplmb7t
+\declarefont OML PazoMath m   .  0-10000 10 zplmr7m
+\declarefont OML PazoMath b   .  0-10000 10 zplmb7m
+\declarefont OMS PazoMath m   .  0-10000 10 zplmr7y
+\declarefont OMS PazoMath b   .  0-10000 10 zplmb7y
+\declarefont OMX PazoMath m   .  0-10000 10 zplmr7v
+%
+% PX Fonts Math.
+%
+\declaremathfontfamily PXFontsMath 1000 1275 OT1 127 48
+\fontmapseries PXFontsMath bx > * b
+\declarefont OT1 PXFontsMath m   .  0-10000 10 pxr
+\declarefont OT1 PXFontsMath b   .  0-10000 10 pxb
+\declarefont OML PXFontsMath m   .  0-10000 10 pxmi
+\declarefont OML PXFontsMath b   .  0-10000 10 pxbmi
+\declarefont OMS PXFontsMath m   .  0-10000 10 pxsy
+\declarefont OMS PXFontsMath b   .  0-10000 10 pxbsy
+\declarefont OMX PXFontsMath m   .  0-10000 10 pxex
+\declarefont OMX PXFontsMath b   .  0-10000 10 pxbex
+%
+% TX Fonts Math.
+%
+\declaremathfontfamily TXFontsMath 1000 1200 OT1 127 48
+\fontmapseries TXFontsMath bx > * b
+\declarefont OT1 TXFontsMath m   .  0-10000 10 txr
+\declarefont OT1 TXFontsMath b   .  0-10000 10 txb
+\declarefont OML TXFontsMath m   .  0-10000 10 txmi
+\declarefont OML TXFontsMath b   .  0-10000 10 txbmi
+\declarefont OMS TXFontsMath m   .  0-10000 10 txsy
+\declarefont OMS TXFontsMath b   .  0-10000 10 txbsy
+\declarefont OMX TXFontsMath m   .  0-10000 10 txex
+\declarefont OMX TXFontsMath b   .  0-10000 10 txbex
+%
+% Charter Math (from Math Design).
+%
+\declaremathfontfamily CharterMath 1000 1275 OT1 127 48
+
+\fontmapseries CharterMath b > * bx
+\declarefont OT1 CharterMath m  . 0-10000 10 mdbchr7t
+\declarefont OT1 CharterMath bx . 0-10000 10 mdbchb7t
+\declarefont OML CharterMath m  . 0-10000 10 mdbchri7m
+\declarefont OML CharterMath bx . 0-10000 10 mdbchbi7m
+\declarefont OMS CharterMath m  . 0-10000 10 mdbchr7y
+\declarefont OMS CharterMath bx . 0-10000 10 mdbchb7y
+\declarefont OMX CharterMath m  . 0-10000 10 mdbchr7v
+\declarefont OMX CharterMath bx . 0-10000 10 mdbchb7v
+%
+% Arev Math.
+%
+% FIXME LaTeX has 127 for \textfont0.  What's it for?
+\declaremathfontfamily ArevMath 900 1375 OT1 127 48
+\fontmapseries ArevMath b > * bx
+\fontmapseries ArevMath bx > * m
+\fontmapfamily ArevMath OMX CharterMath
+\declarefont OT1 ArevMath m  . 0-10000 10 zavmr7t
+\declarefont OT1 ArevMath bx . 0-10000 10 zavmb7t
+\declarefont OML ArevMath m  . 0-10000 10 zavmri7m
+\declarefont OML ArevMath bx . 0-10000 10 zavmbi7m
+\declarefont OMS ArevMath m  . 0-10000 10 zavmr7y
+%
+% Iwona Math.
+%
+\declaremathfontfamily IwonaMath 1000 1200 OT1 -1 -1
+\fontmapseries IwonaMath bx > * b
+\declarefont OT1 IwonaMath l   . 0-10000 10 rm-iwonal
+\declarefont OT1 IwonaMath lc  . 0-10000 10 rm-iwonacl
+\declarefont OT1 IwonaMath m   . 0-10000 10 rm-iwonar
+\declarefont OT1 IwonaMath c   . 0-10000 10 rm-iwonacr
+\declarefont OT1 IwonaMath sb  . 0-10000 10 rm-iwonam
+\declarefont OT1 IwonaMath sbc . 0-10000 10 rm-iwonacm
+\declarefont OT1 IwonaMath b   . 0-10000 10 rm-iwonab
+\declarefont OT1 IwonaMath bc  . 0-10000 10 rm-iwonacb
+\declarefont OT1 IwonaMath eb  . 0-10000 10 rm-iwonah
+\declarefont OT1 IwonaMath ebc . 0-10000 10 rm-iwonach
+% Math letters.
+\declarefont OML IwonaMath l   . 0-10000 10 mi-iwonali
+\declarefont OML IwonaMath lc  . 0-10000 10 mi-iwonacli
+\declarefont OML IwonaMath m   . 0-10000 10 mi-iwonari
+\declarefont OML IwonaMath c   . 0-10000 10 mi-iwonacri
+\declarefont OML IwonaMath sb  . 0-10000 10 mi-iwonami
+\declarefont OML IwonaMath sbc . 0-10000 10 mi-iwonacmi
+\declarefont OML IwonaMath b   . 0-10000 10 mi-iwonabi
+\declarefont OML IwonaMath bc  . 0-10000 10 mi-iwonacbi
+\declarefont OML IwonaMath eb  . 0-10000 10 mi-iwonahi
+\declarefont OML IwonaMath ebc . 0-10000 10 mi-iwonachi
+% Math symbols.
+\declarefont OMS IwonaMath l   . 0-10000 10 sy-iwonalz
+\declarefont OMS IwonaMath lc  . 0-10000 10 sy-iwonaclz
+\declarefont OMS IwonaMath m   . 0-10000 10 sy-iwonarz
+\declarefont OMS IwonaMath c   . 0-10000 10 sy-iwonacrz
+\declarefont OMS IwonaMath sb  . 0-10000 10 sy-iwonamz
+\declarefont OMS IwonaMath sbc . 0-10000 10 sy-iwonacmz
+\declarefont OMS IwonaMath b   . 0-10000 10 sy-iwonabz
+\declarefont OMS IwonaMath bc  . 0-10000 10 sy-iwonacbz
+\declarefont OMS IwonaMath eb  . 0-10000 10 sy-iwonahz
+\declarefont OMS IwonaMath ebc . 0-10000 10 sy-iwonachz
+% Math operators.
+\declarefont OMX IwonaMath l   . 0-10000 10 ex-iwonal
+\declarefont OMX IwonaMath lc  . 0-10000 10 ex-iwonacl
+\declarefont OMX IwonaMath m   . 0-10000 10 ex-iwonar
+\declarefont OMX IwonaMath c   . 0-10000 10 ex-iwonacr
+\declarefont OMX IwonaMath sb  . 0-10000 10 ex-iwonam
+\declarefont OMX IwonaMath sbc . 0-10000 10 ex-iwonacm
+\declarefont OMX IwonaMath b   . 0-10000 10 ex-iwonab
+\declarefont OMX IwonaMath bc  . 0-10000 10 ex-iwonacb
+\declarefont OMX IwonaMath eb  . 0-10000 10 ex-iwonah
+\declarefont OMX IwonaMath ebc . 0-10000 10 ex-iwonach
+%
+% Euler Math.
+%
+\declaremathfontfamily EulerMath 1000 1250 T1 127 176
+\fontmapseries EulerMath bx > * m
+% Text font.
+\declarefont T1 EulerMath m . 0-5.5     5  eorm5
+\declarefont T1 EulerMath m . 5.5-6.5   6  eorm6
+\declarefont T1 EulerMath m . 6.5-7.5   7  eorm7
+\declarefont T1 EulerMath m . 7.5-8.5   8  eorm8
+\declarefont T1 EulerMath m . 8.5-9.5   9  eorm9
+\declarefont T1 EulerMath m . 9.5-10000 10 eorm10
+% Math letters.
+\declarefont OML EulerMath m  . 0-6       5  zeurm5
+\declarefont OML EulerMath m  . 6-8       7  zeurm7
+\declarefont OML EulerMath m  . 8-10000   10 zeurm10
+\declarefont OML EulerMath bx . 0-6       5  zeurb5
+\declarefont OML EulerMath bx . 6-8       7  zeurb7
+\declarefont OML EulerMath bx . 8-10000   10 zeurb10
+% Math symbols.
+\declarefont OMS EulerMath m  . 0-6       5  zeusm5
+\declarefont OMS EulerMath m  . 6-8       7  zeusm7
+\declarefont OMS EulerMath m  . 8-10000   10 zeusm10
+\declarefont OMS EulerMath bx . 0-6       5  zeusb5
+\declarefont OMS EulerMath bx . 6-8       7  zeusb7
+\declarefont OMS EulerMath bx . 8-10000   10 zeusb10
+% Extra math operators.
+\declarefont OMX EulerMath m . 0-10000 10 zeuex10
+% Hooks.  Based on gkpmac.tex and eulervm.sty.
+\mathfontfamilyprehook EulerMath {%
+  % Digits.
+  \mathcode`0"7130
+  \mathcode`1"7131
+  \mathcode`2"7132
+  \mathcode`3"7133
+  \mathcode`4"7134
+  \mathcode`5"7135
+  \mathcode`6"7136
+  \mathcode`7"7137
+  \mathcode`8"7138
+  \mathcode`9"7139
+  % Uppercase Greek letters.
+  \mathchardef\Gamma"100
+  \mathchardef\Delta"101
+  \mathchardef\Theta"102
+  \mathchardef\Lambda"103
+  \mathchardef\Xi"104
+  \mathchardef\Pi"105
+  \mathchardef\Sigma"106
+  \mathchardef\Upsilon"107
+  \mathchardef\Phi"108
+  \mathchardef\Psi"109
+  \mathchardef\Omega"10A
+  % Euler doesn't have these.
+  \let\varsigma\sigma
+  \let\varrho\rho
+  % Ordinary.
+  \mathcode`!"02A1
+  \mathchardef\infty"0399
+  \mathchardef\Re"023C
+  \mathchardef\Im"023D
+  % Binary operations.
+  \mathcode`+"22AB
+  % Relations.
+  \mathcode`:"32BA
+  \mathcode`="32BD
+  \mathchardef\bar@minus"181
+  \def\relbar{\mathrel{\smash\bar@minus}}%
+  \mathchardef\Relbar"3182
+  % Delimiters.
+  \mathcode`("42A8 \delcode`("2A8300
+  \mathcode`)"52A9 \delcode`)"2A9301
+  \mathcode`["42DB \delcode`["2DB302
+  \mathcode`]"52DD \delcode`]"2DD303
+  \delcode`/"13D30E
+  % Miscellaneous.
+  \def@active@prime{^\bgroup\mskip2mu\prim@s}%
+  \def\rightarrowfill{$\m@th\bar@minus\mkern-6mu%
+       \cleaders\hbox{$\mkern-2mu\bar@minus\mkern-2mu$}\hfill
+       \mkern-6mu\mathord\rightarrow$}%
+  \def\leftarrowfill{$\m@th\mathord\leftarrow\mkern-6mu%
+       \cleaders\hbox{$\mkern-2mu\bar@minus\mkern-2mu$}\hfill
+       \mkern-6mu\bar@minus$}%
+}%
+%
+\mathfontfamilyposthook EulerMath {%
+  \cm@digits
+  \cm@upper@greek
+  \cm@lower@greek
+  \cm@ordinary
+  \cm@binary
+  \cm@relations
+  \cm@delims
+  \cm@prime
+  \cm@fillarrows
+}%
+%
+% FIXME TeX-Gyre, Kerkis, Fourier-GUTenberg, Antykwa Torunska.
+%
+% Defaults.
+\setfontencoding{OT1}%
+\setfontfamily{CMRoman}%
+\setfontseries{m}%
+\setfontshape{n}%
+\setfontsize{11}%
+% Set some internal parameters for bootstrapping.
+\expandafter\let\expandafter\cur@fenc@list
+  \csname denc@fenc@list/US-ASCII\endcsname
+\fontbasefamily CMRoman % This calls \selectfont.
+%
+\fontfamily roman CMRoman
+\fontfamily sans CMSans
+\fontfamily mono CMMono
+\fontfamily math CMMath
+%
+\documentencoding US-ASCII
+%
+\endinput

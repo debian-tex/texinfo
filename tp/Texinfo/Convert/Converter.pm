@@ -59,7 +59,7 @@ xml_accents
 @EXPORT = qw(
 );
 
-$VERSION = '5.00';
+$VERSION = '5.0';
 
 my %defaults = (
   'ENABLE_ENCODING'      => 1,
@@ -761,6 +761,37 @@ sub _collect_leading_trailing_spaces_arg($$)
     }
   }
   return @result;
+}
+
+sub _table_item_content_tree($$$)
+{
+  my $self = shift;
+  my $root = shift;
+  my $contents = shift;
+
+  my $converted_tree = {'parent' => $root};
+  my $table_command = $root->{'parent'}->{'parent'}->{'parent'};
+  if ($table_command->{'extra'}
+     and $table_command->{'extra'}->{'command_as_argument'}) {
+    my $command_as_argument
+      = $table_command->{'extra'}->{'command_as_argument'};
+    my $command = {'cmdname' => $command_as_argument->{'cmdname'},
+               'line_nr' => $root->{'line_nr'},
+               'parent' => $converted_tree };
+    if ($command_as_argument->{'type'} eq 'definfoenclose_command') {
+      $command->{'type'} = $command_as_argument->{'type'};
+      $command->{'extra'}->{'begin'} = $command_as_argument->{'extra'}->{'begin'};
+      $command->{'extra'}->{'end'} = $command_as_argument->{'extra'}->{'end'};
+    }
+    my $arg = {'type' => 'brace_command_arg',
+               'contents' => $contents,
+               'parent' => $command,};
+    $command->{'args'} = [$arg];
+    $self->Texinfo::Parser::_register_command_arg($arg, 'brace_command_contents');
+    $contents = [$command];
+  }
+  $converted_tree->{'contents'} = $contents;
+  return $converted_tree;
 }
 
 sub _level_corrected_section($$)

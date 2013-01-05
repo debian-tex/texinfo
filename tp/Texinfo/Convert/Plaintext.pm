@@ -53,7 +53,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.00';
+$VERSION = '5.0';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -2111,31 +2111,11 @@ sub _convert($$)
             and $root->{'args'}->[0]->{'type'}
             and $root->{'args'}->[0]->{'type'} eq 'misc_line_arg') {
       if ($root->{'extra'} and $root->{'extra'}->{'misc_content'}) {
-        my $converted_tree = {'type' => 'frenchspacing',
-                                 'parent' => $root};
 
-        my $contents = $root->{'extra'}->{'misc_content'};
-        my $table_command = $root->{'parent'}->{'parent'}->{'parent'};
-        if ($table_command->{'extra'} 
-            and $table_command->{'extra'}->{'command_as_argument'}) {
-          my $command_as_argument 
-            = $table_command->{'extra'}->{'command_as_argument'};
-          my $command = {'cmdname' => $command_as_argument->{'cmdname'},
-                     'line_nr' => $root->{'line_nr'},
-                     'parent' => $converted_tree };
-          if ($command_as_argument->{'type'} eq 'definfoenclose_command') {
-            $command->{'type'} = $command_as_argument->{'type'};
-            $command->{'extra'} = $command_as_argument->{'extra'};
-          }
-          my $arg = {'type' => 'brace_command_arg',
-                     'contents' => $contents,
-                     'parent' => $command,};
-          $command->{'args'} = [$arg];
-          $self->Texinfo::Parser::_register_command_arg($arg, 'brace_command_contents');
-          $contents = [$command];
-        }
-        $converted_tree->{'contents'} = $contents;
+        my $converted_tree = $self->_table_item_content_tree($root,
+                                         $root->{'extra'}->{'misc_content'});
 
+        $converted_tree->{'type'} = 'frenchspacing';
         $result = $self->convert_line($converted_tree,
                     {'indent_level'
                       => $self->{'format_context'}->[-1]->{'indent_level'} -1});

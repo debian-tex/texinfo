@@ -5,8 +5,9 @@ texinfo (4.13.93.dfsg.1-1) experimental; urgency=low
   * add a script to generate orig tar files
   * update/unfuzzify patches
   * fix wrong control character in some .po files (LP #707931)
+  * add help2man to build-dependencies
 
- -- Norbert Preining <preining@debian.org>  Sat, 05 Jan 2013 12:03:46 +0900
+ -- Norbert Preining <preining@debian.org>  Sun, 06 Jan 2013 12:40:57 +0900
 
 texinfo (4.13.92.dfsg.1-1) experimental; urgency=low
 

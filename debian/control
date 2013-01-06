@@ -3,7 +3,7 @@ Section: doc
 Priority: standard
 Maintainer: Debian TeX maintainers <debian-tex-maint@lists.debian.org>
 Uploaders: Norbert Preining <preining@debian.org>, Frank Küster <frank@debian.org>
-Build-Depends: debhelper (>= 7.0.50~), libncurses5-dev | libncurses-dev, gettext, libtext-unidecode-perl, libintl-perl
+Build-Depends: debhelper (>= 7.0.50~), libncurses5-dev | libncurses-dev, gettext, libtext-unidecode-perl, libintl-perl, help2man
 Standards-Version: 3.9.3
 Vcs-Git: git://anonscm.debian.org/debian-tex/texinfo.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=debian-tex/texinfo.git

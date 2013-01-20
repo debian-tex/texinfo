@@ -29,7 +29,7 @@ if [ -z "$version" ] ; then
 fi
 
 case $fname in 
-  */*) : nothing 
+  /*) : nothing 
     ;;
   *) fname="$curdir/$fname" ;;
 esac
@@ -37,7 +37,7 @@ esac
 tmpdir=$(mktemp -d)
 
 cd $tmpdir
-tar -xf "$fname"
+tar -xvf "$fname"
 if [ ! -d "texinfo-$version" ] ; then
   echo "cannot find dir texinfo-$version in $tmpdir, strange package!"
   exit 1

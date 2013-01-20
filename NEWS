@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.223 2013/01/02 02:47:35 karl Exp $
+$Id: NEWS,v 1.225 2013/01/19 15:54:04 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -26,6 +26,9 @@ one of the relevant sections:
 * Language:
   . Texinfo commands are supported in node names.
   . #line directives are recognized.
+  . @-commands are now recognized in raw format blocks.  Therefore, for
+    example, lone @, { and } characters in @tex, @html and similar
+    environments must be converted to the normal @@, @{, and @} commands.
   . new commands @inlinefmt and @inlineraw for brace-delimited conditionals.
   . new conditionals @ifcommanddefined and @ifcommandnotdefined to test
     if a Texinfo command is available.
@@ -55,13 +58,16 @@ one of the relevant sections:
   on the program name.
 
   The new implementation is in Perl (based on the texi2html program, but
-  with a vast array of subsequent changes).  It both replaces and is
-  intended to be (for all practical purposes) upward-compatible with the
-  C makeinfo.  It has many new features not in the C makeinfo.  For
-  example, cross-manual references are now fully supported, and
-  extensive customization of the HTML output is possible.  See the
-  `Generic Translator texi2any' chapter in the manual (among other places)
-  for more about this reimplementation.
+  with a vast array of subsequent changes).  It requires Perl 5.7.3
+  (released in March 2002) and the standard Encode module.
+  
+  The Perl texi2any/makeinfo both replaces and is intended to be (for
+  all practical purposes) upward-compatible with the C makeinfo.  It has
+  many new features not in the C makeinfo.  For example, cross-manual
+  references are now fully supported, and extensive customization of the
+  HTML output is possible.  See the `Generic Translator texi2any'
+  chapter in the manual (among other places) for more about this
+  reimplementation.
   
   The new program is, unfortunately, noticeably slower at present than
   the C program was.  We hope all the many improvements make the new
@@ -112,7 +118,7 @@ one of the relevant sections:
   . new translations: id it.
   . texinfo.cat file removed since it is (to our knowledge) unused.
   . documentation license now GFDLv1.3 or later.
-  . autoconf 2.69, automake 1.13, gettext 0.18.2.
+  . autoconf 2.69, automake 1.13.1, gettext 0.18.2.
 
 
 4.13 (18 September 2008)

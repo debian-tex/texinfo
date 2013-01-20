@@ -559,11 +559,11 @@ $result_converted{'xml'}->{'empty_item_itemx'} = '<vtable commandarg="asis" spac
 <beforefirstitem>
 <para>VTable
 </para>
-</beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
+</beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="1">first item</indexterm>first item</itemformat></item>
 <itemx><itemformat command="asis"></itemformat></itemx>
-<itemx spaces=" "><itemformat command="asis"><indexterm index="vr">after an empty itemx, before an empty item</indexterm>after an empty itemx, before an empty item</itemformat></itemx>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="vr" number="2">after an empty itemx, before an empty item</indexterm>after an empty itemx, before an empty item</itemformat></itemx>
 </tableterm></tableentry><tableentry><tableterm><item><itemformat command="asis"> </itemformat></item>
-</tableterm></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">in item before end table</indexterm>in item before end table</itemformat></item>
+</tableterm></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="3">in item before end table</indexterm>in item before end table</itemformat></item>
 </tableterm></tableentry></vtable>
 ';
 

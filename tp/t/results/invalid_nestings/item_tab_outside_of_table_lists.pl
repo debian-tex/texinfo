@@ -8,9 +8,6 @@ use utf8;
 $result_trees{'item_tab_outside_of_table_lists'} = {
   'contents' => [
     {
-      'extra' => {
-        'command' => undef
-      },
       'parent' => {},
       'text' => ' ',
       'type' => 'empty_spaces_after_command'
@@ -27,9 +24,6 @@ $result_trees{'item_tab_outside_of_table_lists'} = {
       'type' => 'paragraph'
     },
     {
-      'extra' => {
-        'command' => undef
-      },
       'parent' => {},
       'text' => ' ',
       'type' => 'empty_spaces_after_command'
@@ -51,9 +45,6 @@ $result_trees{'item_tab_outside_of_table_lists'} = {
       'type' => 'paragraph'
     },
     {
-      'extra' => {
-        'command' => undef
-      },
       'parent' => {},
       'text' => ' ',
       'type' => 'empty_spaces_after_command'

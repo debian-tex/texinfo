@@ -42,9 +42,6 @@ $result_trees{'headitem_itemx_in_enumerate'} = {
               'type' => 'paragraph'
             },
             {
-              'extra' => {
-                'command' => undef
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -61,9 +58,6 @@ $result_trees{'headitem_itemx_in_enumerate'} = {
               'type' => 'paragraph'
             },
             {
-              'extra' => {
-                'command' => undef
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'

@@ -47,12 +47,12 @@
 <ref label="_00e2-_00ea-_00ee-_00f4-_00fb-_00c2-_00ca-_00ce-_00d4-_00db"><xrefnodename>â ê î ô û Â Ê Î Ô Û</xrefnodename></ref>
 <ref label="_00e7"><xrefnodename>ç</xrefnodename></ref>
 </para>
-<cindex index="cp" spaces=" "><indexterm index="cp">ä ë ï ö ü ÿ</indexterm></cindex>
-<cindex index="cp" spaces=" "><indexterm index="cp">Ä Ë Ï Ö Ü</indexterm></cindex>
-<cindex index="cp" spaces=" "><indexterm index="cp">é</indexterm></cindex>
-<cindex index="cp" spaces=" "><indexterm index="cp">è</indexterm></cindex>
-<cindex index="cp" spaces=" "><indexterm index="cp">â ê î ô û Â Ê Î Ô Û</indexterm></cindex>
-<cindex index="cp" spaces=" "><indexterm index="cp">ç</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="1">ä ë ï ö ü ÿ</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="2">Ä Ë Ï Ö Ü</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="3">é</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="4">è</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="5">â ê î ô û Â Ê Î Ô Û</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="6">ç</indexterm></cindex>
 
 </chapter>
 <bye></bye>

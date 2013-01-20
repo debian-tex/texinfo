@@ -1314,7 +1314,7 @@ $result_converted{'xml'}->{'inter_item_commands_in_multitable'} = '<multitable s
 
 </beforefirstitem><tbody><row><entry command="item" spaces=" "><para>truc
 </para>
-<cindex index="cp" spaces=" "><indexterm index="cp">index entry between empty lines</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="1">index entry between empty lines</indexterm></cindex>
 
 </entry></row><row><entry command="item" spaces=" "><para>trouc
 <!-- c last comment -->
@@ -1325,13 +1325,13 @@ $result_converted{'xml'}->{'inter_item_commands_in_multitable'} = '<multitable s
 </para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
 </para></entry></row><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab" spaces=" "><para>multitable tab 2
-<cindex index="cp" spaces=" "><indexterm index="cp">index entry within multitable</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="2">index entry within multitable</indexterm></cindex>
 </para></entry></row><row><entry command="item" spaces=" "><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
 <multitable spaces=" " endspaces=" "><columnprototypes><columnprototype bracketed="on">thing</columnprototype></columnprototypes>
 <beforefirstitem><para>Title
-<cindex index="cp" spaces=" "><indexterm index="cp">cindex</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="3">cindex</indexterm></cindex>
 </para></beforefirstitem><tbody><row><entry command="item" spaces=" "><para>thing
 </para></entry></row></tbody></multitable>
 

@@ -25,7 +25,7 @@
 * Texinfo@asis{::}Convert@asis{::}Unicode::
 * Texinfo@asis{::}Convert@asis{::}Info::
 * Texinfo@asis{::}Convert@asis{::}DocBook::
-* Texinfo@asis{::}Convert@asis{::}XML::
+* Texinfo@asis{::}Convert@asis{::}TexinfoXML::
 * Texinfo@asis{::}Convert@asis{::}Plaintext::
 * Texinfo@asis{::}Convert@asis{::}HTML::
 
@@ -145,14 +145,14 @@ Texinfo::Convert::DocBook
 * Texinfo@asis{::}Convert@asis{::}DocBook AUTHOR::
 * Texinfo@asis{::}Convert@asis{::}DocBook COPYRIGHT AND LICENSE::
 
-Texinfo::Convert::XML
+Texinfo::Convert::TexinfoXML
 
-* Texinfo@asis{::}Convert@asis{::}XML NAME::
-* Texinfo@asis{::}Convert@asis{::}XML SYNOPSIS::
-* Texinfo@asis{::}Convert@asis{::}XML DESCRIPTION::
-* Texinfo@asis{::}Convert@asis{::}XML METHODS::
-* Texinfo@asis{::}Convert@asis{::}XML AUTHOR::
-* Texinfo@asis{::}Convert@asis{::}XML COPYRIGHT AND LICENSE::
+* Texinfo@asis{::}Convert@asis{::}TexinfoXML NAME::
+* Texinfo@asis{::}Convert@asis{::}TexinfoXML SYNOPSIS::
+* Texinfo@asis{::}Convert@asis{::}TexinfoXML DESCRIPTION::
+* Texinfo@asis{::}Convert@asis{::}TexinfoXML METHODS::
+* Texinfo@asis{::}Convert@asis{::}TexinfoXML AUTHOR::
+* Texinfo@asis{::}Convert@asis{::}TexinfoXML COPYRIGHT AND LICENSE::
 
 Texinfo::Convert::Plaintext
 
@@ -186,7 +186,7 @@ Texinfo::Convert::HTML
 @include api_includes/Texinfo-Convert-Unicode.texi
 @include api_includes/Texinfo-Convert-Info.texi
 @include api_includes/Texinfo-Convert-DocBook.texi
-@include api_includes/Texinfo-Convert-XML.texi
+@include api_includes/Texinfo-Convert-TexinfoXML.texi
 @include api_includes/Texinfo-Convert-Plaintext.texi
 @include api_includes/Texinfo-Convert-HTML.texi
 

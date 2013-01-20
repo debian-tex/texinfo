@@ -1,7 +1,7 @@
-# $Id: Makefile.am,v 1.52 2012/12/10 01:34:13 pertusus Exp $
+# $Id: Makefile.am,v 1.55 2013/01/18 23:57:59 karl Exp $
 # Makefile.am for texinfo/tp.
 #
-# Copyright 2011, 2012 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -15,16 +15,15 @@
 include $(srcdir)/Makefile.tres
 
 # document string locales files and associated rules.
-include $(srcdir)/Makefile.documents_strings_mo_files
+include $(srcdir)/Makefile.docstr
 
 $(srcdir)/Makefile.tres: maintain/regenerate_file_lists.pl
 	cd $(srcdir)/ && $(PERL) ./maintain/regenerate_file_lists.pl
 
-$(srcdir)/Makefile.documents_strings_mo_files: \
-  maintain/regenerate_document_strings_make_rules.sh \
-  $(srcdir)/../po_document/LINGUAS
+$(srcdir)/Makefile.docstr: maintain/regenerate_docstr.sh \
+                           $(srcdir)/../po_document/LINGUAS
 	cd $(srcdir) \
-	&& $(SHELL) ./maintain/regenerate_document_strings_make_rules.sh
+	&& $(SHELL) ./maintain/regenerate_docstr.sh "$@"
 
 SUBDIRS = . tests
 
@@ -64,20 +63,21 @@ dist_modules_DATA = \
 
 convertersdir = $(pkgdatadir)/Texinfo/Convert
 dist_converters_DATA = \
- Texinfo/Convert/Texinfo.pm \
- Texinfo/Convert/PlainTexinfo.pm \
- Texinfo/Convert/Info.pm \
- Texinfo/Convert/NodeNameNormalization.pm \
  Texinfo/Convert/Converter.pm \
- Texinfo/Convert/XML.pm \
- Texinfo/Convert/Plaintext.pm \
- Texinfo/Convert/HTML.pm \
  Texinfo/Convert/DocBook.pm \
+ Texinfo/Convert/HTML.pm \
+ Texinfo/Convert/Info.pm \
+ Texinfo/Convert/Line.pm \
+ Texinfo/Convert/NodeNameNormalization.pm \
+ Texinfo/Convert/Paragraph.pm \
+ Texinfo/Convert/PlainTexinfo.pm \
+ Texinfo/Convert/Plaintext.pm \
+ Texinfo/Convert/Texinfo.pm \
+ Texinfo/Convert/TexinfoSXML.pm \
+ Texinfo/Convert/TexinfoXML.pm \
  Texinfo/Convert/Text.pm \
  Texinfo/Convert/TextContent.pm \
  Texinfo/Convert/UnFilled.pm \
- Texinfo/Convert/Paragraph.pm \
- Texinfo/Convert/Line.pm \
  Texinfo/Convert/Unicode.pm
 
 debugmodulesdir = $(pkgdatadir)/DebugTexinfo
@@ -172,7 +172,7 @@ maintenance_files = \
   maintain/MANIFEST_generated_files \
   maintain/prepare_perl_module.sh \
   maintain/regenerate_converters_documentation.sh \
-  maintain/regenerate_document_strings_make_rules.sh \
+  maintain/regenerate_docstr.sh \
   maintain/regenerate_documentlanguages.pl \
   maintain/regenerate_file_lists.pl \
   maintain/regenerate_perl_module_files.sh \

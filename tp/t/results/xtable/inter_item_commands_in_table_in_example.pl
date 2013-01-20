@@ -634,7 +634,7 @@ $result_converted{'html_text'}->{'inter_item_commands_in_table_in_example'} = '<
 $result_converted{'xml'}->{'inter_item_commands_in_table_in_example'} = '<example endspaces=" ">
 <table commandarg="var" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="var">a</itemformat></item>
-<pre xml:space="preserve"><cindex index="cp" spaces=" "><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
+<pre xml:space="preserve"><cindex index="cp" spaces=" "><indexterm index="cp" number="1">index entry between item and itemx</indexterm></cindex>
 <!-- c and a comment -->
 <!-- comment and another comment -->
 </pre><itemx spaces=" "><itemformat command="var">b</itemformat></itemx>

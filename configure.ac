@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.136 2013/01/02 02:58:26 karl Exp $
+# $Id: configure.ac,v 1.139 2013/01/19 00:13:06 karl Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
 # 2012, 2013 Free Software Foundation, Inc.
@@ -12,16 +12,13 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [4.13.93], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [4.13.94], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
 dnl tar-ustar because we have long filenames for some test files.
 dnl parallel-tests as recommended by stefano.
 AM_INIT_AUTOMAKE([1.12 tar-ustar parallel-tests readme-alpha dist-xz])
-
-# Minimum Autoconf version required.
-AC_PREREQ(2.59)
 
 # Where to generate output; srcdir location.
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.
@@ -315,7 +312,8 @@ dnl so don't waste time configuring them.  See util/tests/README.
 dnl AC_CONFIG_FILES([util/tests/defs])
 dnl AC_CHECK_PROGS([HEVEA], [hevea], [])
 dnl AC_CHECK_PROGS([TEX], [tex], [])
-dnl AC_CHECK_PROGS([PROVE], [prove], [])
+
+AC_CHECK_PROGS([PROVE], [prove], [])
 
 tp_tests='no'
 AC_ARG_ENABLE([tp-tests],

@@ -2271,17 +2271,17 @@ end example.
 </tableitem></tableentry></table>
 
 <vtable commandarg="strong" spaces=" " endspaces=" ">
-<tableentry><tableterm><item spaces=" "><itemformat command="strong"><indexterm index="vr">item before ignored lines</indexterm>item before ignored lines</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="strong"><indexterm index="vr" number="1">item before ignored lines</indexterm>item before ignored lines</itemformat></item>
 <!-- c comment -->
-<vindex index="vr" spaces=" "><indexterm index="vr">vindex</indexterm></vindex>
-<itemx spaces=" "><itemformat command="strong"><indexterm index="vr">itemx now</indexterm>itemx now</itemformat></itemx>
+<vindex index="vr" spaces=" "><indexterm index="vr" number="2">vindex</indexterm></vindex>
+<itemx spaces=" "><itemformat command="strong"><indexterm index="vr" number="3">itemx now</indexterm>itemx now</itemformat></itemx>
 </tableterm><tableitem>
 <para>Description
 </para></tableitem></tableentry></vtable>
 <vtable commandarg="r" spaces=" " endspaces=" ">
-<tableentry><tableterm><item spaces=" "><itemformat command="r"><indexterm index="vr">item</indexterm>item</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="r"><indexterm index="vr" number="4">item</indexterm>item</itemformat></item>
 
-<itemx spaces=" "><itemformat command="r"><indexterm index="vr">itemx after an empty line</indexterm>itemx after an empty line</itemformat></itemx>
+<itemx spaces=" "><itemformat command="r"><indexterm index="vr" number="5">itemx after an empty line</indexterm>itemx after an empty line</itemformat></itemx>
 </tableterm><tableitem>
 <para>Description.
 </para>

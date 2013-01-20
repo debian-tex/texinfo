@@ -70,9 +70,6 @@ $result_trees{'multitable_item_in_index'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
-                      'extra' => {
-                        'command' => undef
-                      },
                       'parent' => {},
                       'text' => ' ',
                       'type' => 'empty_spaces_after_command'

@@ -759,10 +759,10 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 </para>
 <para>&textlsquo;<w></w>&textlsquo;simple-double-<w></w>-three&textmdash;four&textmdash;-&textrsquo;<w></w>&textrsquo;&linebreak;
 </para>
-<cindex index="cp" spaces=" "><indexterm index="cp">&textndash;option</indexterm></cindex>
-<cindex index="cp" spaces=" "><indexterm index="cp">&textldquo;</indexterm></cindex>
-<findex index="fn" spaces=" "><indexterm index="fn">&textldquo;</indexterm></findex>
-<findex index="fn" spaces=" "><indexterm index="fn">&textndash;foption</indexterm></findex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="1">&textndash;option</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="2">&textldquo;</indexterm></cindex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="1">&textldquo;</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="2">&textndash;foption</indexterm></findex>
 
 <para>&arobase;&quot;u <accent type="uml" bracketed="off">u</accent> 
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
@@ -1007,11 +1007,11 @@ After clickstyle &result;
 <listitem spaces=" "><prepend>+</prepend><para>i&textndash;tem +
 </para></listitem></itemize>
 
-<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet" /></itemprepend>
+<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet"/></itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><para>b&textndash;ullet
 </para></listitem></itemize>
 
-<itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend><formattingcommand command="minus" /></itemprepend>
+<itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend><formattingcommand command="minus"/></itemprepend>
 <listitem spaces=" "><prepend>&minus;</prepend><para>minu&textndash;s
 </para></listitem></itemize>
 
@@ -1025,7 +1025,7 @@ After clickstyle &result;
 </para></listitem></itemize>
 
 <itemize spaces=" " endspaces=" "><itemprepend>&bullet; a&textndash;n itemize line</itemprepend>
-<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp">index entry within itemize</indexterm></cindex>
+<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp" number="3">index entry within itemize</indexterm></cindex>
 </beforefirstitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 1
 </para></listitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 2
 </para></listitem></itemize>
@@ -1039,7 +1039,7 @@ After clickstyle &result;
 </para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
 </para></entry></row><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab" spaces=" "><para>multitable tab 2
-<cindex index="cp" spaces=" "><indexterm index="cp">index entry within multitable</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="4">index entry within multitable</indexterm></cindex>
 </para></entry></row><row><entry command="item" spaces=" "><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
@@ -1080,122 +1080,122 @@ After clickstyle &result;
 <pre xml:space="preserve">s&textndash;mallformat
 </pre></smallformat>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="3">d&textndash;effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;effn
 </para></definitionitem></deffn>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">de&textndash;ffn_name</indexterm><defcategory>cate--gory</defcategory> <deffunction>de--ffn_name</deffunction> <defparam>ar--guments</defparam>    <defparam>more</defparam> <defparam>args</defparam> <defparam>&linebreak;</defparam> <defparam>even</defparam> <defparam>more</defparam> <defparam>so</defparam></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="4">de&textndash;ffn_name</indexterm><defcategory>cate--gory</defcategory> <deffunction>de--ffn_name</deffunction> <defparam>ar--guments</defparam>    <defparam>more</defparam> <defparam>args</defparam> <defparam>&linebreak;</defparam> <defparam>even</defparam> <defparam>more</defparam> <defparam>so</defparam></definitionterm>
 <definitionitem><para>def&textndash;fn
 </para></definitionitem></deffn>
  
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<cindex index="cp" spaces=" "><indexterm index="cp">index entry within deffn</indexterm></cindex>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on" spaces=" ">log trap1</deffunction> <defparam bracketed="on"></defparam>  </definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="5"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="5">index entry within deffn</indexterm></cindex>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="6">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="7">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="8">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on" spaces=" ">log trap1</deffunction> <defparam bracketed="on"></defparam>  </definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="9">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="10"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="11"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
 <deffnx><definitionterm></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory bracketed="on"></defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="12">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="13">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="14">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on" spaces=" "></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="15">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
 <!-- c comment -->
 <deffnx><definitionterm><defcategory bracketed="on">truc</defcategory></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">a</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam bracketed="on">h i</defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="16">a</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam bracketed="on">h i</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="17">deffnx</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
 </deffn>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="18">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction></definitionterm>
 </deffn>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="19">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
 <!-- c comment between deffn and deffnx -->
-<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="20">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
 </deffn>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="21"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="22">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <definitionitem><!-- c comment -->
 <para>text in def item for second def item
 </para></definitionitem></deffn>
 
-<defvr spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efvr_name</indexterm><defcategory>c--ategory</defcategory> <defvariable>d--efvr_name</defvariable></definitionterm>
+<defvr spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="1">d&textndash;efvr_name</indexterm><defcategory>c--ategory</defcategory> <defvariable>d--efvr_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;efvr
 </para></definitionitem></defvr>
 
-<deftypefn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypefn_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefn_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
+<deftypefn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="23">d&textndash;eftypefn_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefn_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftypefn
 </para></definitionitem></deftypefn>
 
-<deftypeop spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypeop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypeop_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
+<deftypeop spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="24">d&textndash;eftypeop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypeop_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftypeop
 </para></definitionitem></deftypeop>
 
-<deftypevr spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypevr_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevr_name</defvariable></definitionterm>
+<deftypevr spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="2">d&textndash;eftypevr_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevr_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;eftypevr
 </para></definitionitem></deftypevr>
 
-<defcv spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efcv_name</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efcv_name</defclassvar></definitionterm>
+<defcv spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="3">d&textndash;efcv_name</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efcv_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;efcv
 </para></definitionitem></defcv>
 
-<defop spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defoperation>d--efop_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
+<defop spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="25">d&textndash;efop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defoperation>d--efop_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efop
 </para></definitionitem></defop>
 
-<deftp spaces=" " endspaces=" "><definitionterm><indexterm index="tp">d&textndash;eftp_name</indexterm><defcategory>c--ategory</defcategory> <defdatatype>d--eftp_name</defdatatype> <defparamtype>a--ttributes...</defparamtype></definitionterm>
+<deftp spaces=" " endspaces=" "><definitionterm><indexterm index="tp" number="1">d&textndash;eftp_name</indexterm><defcategory>c--ategory</defcategory> <defdatatype>d--eftp_name</defdatatype> <defparamtype>a--ttributes...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftp
 </para></definitionitem></deftp>
 
-<defun spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efun_name</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>d--efun_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<defun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="26">d&textndash;efun_name</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>d--efun_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efun
 </para></definitionitem></defun>
 
-<defmac spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efmac_name</indexterm><defcategory automatic="on">Macro</defcategory> <deffunction>d--efmac_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<defmac spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="27">d&textndash;efmac_name</indexterm><defcategory automatic="on">Macro</defcategory> <deffunction>d--efmac_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efmac
 </para></definitionitem></defmac>
 
-<defspec spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efspec_name</indexterm><defcategory automatic="on" bracketed="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<defspec spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="28">d&textndash;efspec_name</indexterm><defcategory automatic="on" bracketed="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efspec
 </para></definitionitem></defspec>
 
-<defvar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efvar_name</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable>d--efvar_name</defvariable> <defparam>argvar</defparam> <defparam>argvar1</defparam></definitionterm>
+<defvar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="4">d&textndash;efvar_name</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable>d--efvar_name</defvariable> <defparam>argvar</defparam> <defparam>argvar1</defparam></definitionterm>
 <definitionitem><para>d&textndash;efvar
 </para></definitionitem></defvar>
 
-<defopt spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efopt_name</indexterm><defcategory automatic="on" bracketed="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
+<defopt spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="5">d&textndash;efopt_name</indexterm><defcategory automatic="on" bracketed="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;efopt
 </para></definitionitem></defopt>
 
-<deftypefun spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypefun_name</indexterm><defcategory automatic="on">Function</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefun_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
+<deftypefun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="29">d&textndash;eftypefun_name</indexterm><defcategory automatic="on">Function</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefun_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftypefun
 </para></definitionitem></deftypefun>
 
-<deftypevar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypevar_name</indexterm><defcategory automatic="on">Variable</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevar_name</defvariable></definitionterm>
+<deftypevar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="6">d&textndash;eftypevar_name</indexterm><defcategory automatic="on">Variable</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevar_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;eftypevar
 </para></definitionitem></deftypevar>
 
-<defivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
+<defivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="7">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;efivar
 </para></definitionitem></defivar>
 
-<deftypeivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
+<deftypeivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="8">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;eftypeivar
 </para></definitionitem></deftypeivar>
 
-<defmethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efmethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <defoperation>d--efmethod_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
+<defmethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="30">d&textndash;efmethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <defoperation>d--efmethod_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efmethod
 </para></definitionitem></defmethod>
 
-<deftypemethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypemethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypemethod_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
+<deftypemethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="31">d&textndash;eftypemethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypemethod_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftypemethod
 </para></definitionitem></deftypemethod>
 
@@ -1269,16 +1269,16 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 </para></tableitem></tableentry></table>
 
 <vtable commandarg="asis" spaces=" " endspaces=" ">
-<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="9">a</indexterm>a</itemformat></item>
 <!-- c comment between item and itemx -->
-<itemx spaces=" "><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="vr" number="10">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></vtable>
 
 <ftable commandarg="asis" spaces=" " endspaces=" ">
-<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
-<cindex index="cp" spaces=" "><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
-<itemx spaces=" "><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn" number="32">a</indexterm>a</itemformat></item>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="6">index entry between item and itemx</indexterm></cindex>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="fn" number="33">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></ftable>
 
@@ -1360,10 +1360,10 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 </para>
 <para>&textlsquo;<w></w>&textlsquo;simple-double-<w></w>-three&textmdash;four&textmdash;-&textrsquo;<w></w>&textrsquo;&linebreak;
 </para>
-<cindex index="cp" spaces=" "><indexterm index="cp">&textndash;option</indexterm></cindex>
-<cindex index="cp" spaces=" "><indexterm index="cp">&textldquo;</indexterm></cindex>
-<findex index="fn" spaces=" "><indexterm index="fn">&textldquo;</indexterm></findex>
-<findex index="fn" spaces=" "><indexterm index="fn">&textndash;foption</indexterm></findex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="7">&textndash;option</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="8">&textldquo;</indexterm></cindex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="34">&textldquo;</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="35">&textndash;foption</indexterm></findex>
 
 <para>&arobase;&quot;u <accent type="uml" bracketed="off">u</accent> 
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
@@ -1608,11 +1608,11 @@ After clickstyle &result;
 <listitem spaces=" "><prepend>+</prepend><para>i&textndash;tem +
 </para></listitem></itemize>
 
-<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet" /></itemprepend>
+<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet"/></itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><para>b&textndash;ullet
 </para></listitem></itemize>
 
-<itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend><formattingcommand command="minus" /></itemprepend>
+<itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend><formattingcommand command="minus"/></itemprepend>
 <listitem spaces=" "><prepend>&minus;</prepend><para>minu&textndash;s
 </para></listitem></itemize>
 
@@ -1626,7 +1626,7 @@ After clickstyle &result;
 </para></listitem></itemize>
 
 <itemize spaces=" " endspaces=" "><itemprepend>&bullet; a&textndash;n itemize line</itemprepend>
-<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp">index entry within itemize</indexterm></cindex>
+<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp" number="9">index entry within itemize</indexterm></cindex>
 </beforefirstitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 1
 </para></listitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 2
 </para></listitem></itemize>
@@ -1640,7 +1640,7 @@ After clickstyle &result;
 </para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
 </para></entry></row><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab" spaces=" "><para>multitable tab 2
-<cindex index="cp" spaces=" "><indexterm index="cp">index entry within multitable</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="10">index entry within multitable</indexterm></cindex>
 </para></entry></row><row><entry command="item" spaces=" "><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
@@ -1681,122 +1681,122 @@ After clickstyle &result;
 <pre xml:space="preserve">s&textndash;mallformat
 </pre></smallformat>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="36">d&textndash;effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;effn
 </para></definitionitem></deffn>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">de&textndash;ffn_name</indexterm><defcategory>cate--gory</defcategory> <deffunction>de--ffn_name</deffunction> <defparam>ar--guments</defparam>    <defparam>more</defparam> <defparam>args</defparam> <defparam>&linebreak;</defparam> <defparam>even</defparam> <defparam>more</defparam> <defparam>so</defparam></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="37">de&textndash;ffn_name</indexterm><defcategory>cate--gory</defcategory> <deffunction>de--ffn_name</deffunction> <defparam>ar--guments</defparam>    <defparam>more</defparam> <defparam>args</defparam> <defparam>&linebreak;</defparam> <defparam>even</defparam> <defparam>more</defparam> <defparam>so</defparam></definitionterm>
 <definitionitem><para>def&textndash;fn
 </para></definitionitem></deffn>
  
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<cindex index="cp" spaces=" "><indexterm index="cp">index entry within deffn</indexterm></cindex>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on" spaces=" ">log trap1</deffunction> <defparam bracketed="on"></defparam>  </definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="38"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="11">index entry within deffn</indexterm></cindex>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="39">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="40">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="41">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on" spaces=" ">log trap1</deffunction> <defparam bracketed="on"></defparam>  </definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="42">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="43"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="44"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
 <deffnx><definitionterm></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory bracketed="on"></defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="45">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="46">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="47">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on" spaces=" "></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="48">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
 <!-- c comment -->
 <deffnx><definitionterm><defcategory bracketed="on">truc</defcategory></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">a</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam bracketed="on">h i</defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="49">a</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam bracketed="on">h i</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="50">deffnx</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
 </deffn>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="51">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction></definitionterm>
 </deffn>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="52">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
 <!-- c comment between deffn and deffnx -->
-<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="53">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
 </deffn>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="54"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="55">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <definitionitem><!-- c comment -->
 <para>text in def item for second def item
 </para></definitionitem></deffn>
 
-<defvr spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efvr_name</indexterm><defcategory>c--ategory</defcategory> <defvariable>d--efvr_name</defvariable></definitionterm>
+<defvr spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="11">d&textndash;efvr_name</indexterm><defcategory>c--ategory</defcategory> <defvariable>d--efvr_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;efvr
 </para></definitionitem></defvr>
 
-<deftypefn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypefn_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefn_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
+<deftypefn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="56">d&textndash;eftypefn_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefn_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftypefn
 </para></definitionitem></deftypefn>
 
-<deftypeop spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypeop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypeop_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
+<deftypeop spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="57">d&textndash;eftypeop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypeop_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftypeop
 </para></definitionitem></deftypeop>
 
-<deftypevr spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypevr_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevr_name</defvariable></definitionterm>
+<deftypevr spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="12">d&textndash;eftypevr_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevr_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;eftypevr
 </para></definitionitem></deftypevr>
 
-<defcv spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efcv_name</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efcv_name</defclassvar></definitionterm>
+<defcv spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="13">d&textndash;efcv_name</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efcv_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;efcv
 </para></definitionitem></defcv>
 
-<defop spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defoperation>d--efop_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
+<defop spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="58">d&textndash;efop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defoperation>d--efop_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efop
 </para></definitionitem></defop>
 
-<deftp spaces=" " endspaces=" "><definitionterm><indexterm index="tp">d&textndash;eftp_name</indexterm><defcategory>c--ategory</defcategory> <defdatatype>d--eftp_name</defdatatype> <defparamtype>a--ttributes...</defparamtype></definitionterm>
+<deftp spaces=" " endspaces=" "><definitionterm><indexterm index="tp" number="2">d&textndash;eftp_name</indexterm><defcategory>c--ategory</defcategory> <defdatatype>d--eftp_name</defdatatype> <defparamtype>a--ttributes...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftp
 </para></definitionitem></deftp>
 
-<defun spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efun_name</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>d--efun_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<defun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="59">d&textndash;efun_name</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>d--efun_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efun
 </para></definitionitem></defun>
 
-<defmac spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efmac_name</indexterm><defcategory automatic="on">Macro</defcategory> <deffunction>d--efmac_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<defmac spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="60">d&textndash;efmac_name</indexterm><defcategory automatic="on">Macro</defcategory> <deffunction>d--efmac_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efmac
 </para></definitionitem></defmac>
 
-<defspec spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efspec_name</indexterm><defcategory automatic="on" bracketed="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<defspec spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="61">d&textndash;efspec_name</indexterm><defcategory automatic="on" bracketed="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efspec
 </para></definitionitem></defspec>
 
-<defvar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efvar_name</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable>d--efvar_name</defvariable> <defparam>argvar</defparam> <defparam>argvar1</defparam></definitionterm>
+<defvar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="14">d&textndash;efvar_name</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable>d--efvar_name</defvariable> <defparam>argvar</defparam> <defparam>argvar1</defparam></definitionterm>
 <definitionitem><para>d&textndash;efvar
 </para></definitionitem></defvar>
 
-<defopt spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efopt_name</indexterm><defcategory automatic="on" bracketed="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
+<defopt spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="15">d&textndash;efopt_name</indexterm><defcategory automatic="on" bracketed="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;efopt
 </para></definitionitem></defopt>
 
-<deftypefun spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypefun_name</indexterm><defcategory automatic="on">Function</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefun_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
+<deftypefun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="62">d&textndash;eftypefun_name</indexterm><defcategory automatic="on">Function</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefun_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftypefun
 </para></definitionitem></deftypefun>
 
-<deftypevar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypevar_name</indexterm><defcategory automatic="on">Variable</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevar_name</defvariable></definitionterm>
+<deftypevar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="16">d&textndash;eftypevar_name</indexterm><defcategory automatic="on">Variable</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevar_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;eftypevar
 </para></definitionitem></deftypevar>
 
-<defivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
+<defivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="17">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;efivar
 </para></definitionitem></defivar>
 
-<deftypeivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
+<deftypeivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="18">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;eftypeivar
 </para></definitionitem></deftypeivar>
 
-<defmethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efmethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <defoperation>d--efmethod_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
+<defmethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="63">d&textndash;efmethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <defoperation>d--efmethod_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efmethod
 </para></definitionitem></defmethod>
 
-<deftypemethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypemethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypemethod_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
+<deftypemethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="64">d&textndash;eftypemethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypemethod_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftypemethod
 </para></definitionitem></deftypemethod>
 
@@ -1870,16 +1870,16 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 </para></tableitem></tableentry></table>
 
 <vtable commandarg="asis" spaces=" " endspaces=" ">
-<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="19">a</indexterm>a</itemformat></item>
 <!-- c comment between item and itemx -->
-<itemx spaces=" "><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="vr" number="20">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></vtable>
 
 <ftable commandarg="asis" spaces=" " endspaces=" ">
-<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
-<cindex index="cp" spaces=" "><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
-<itemx spaces=" "><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn" number="65">a</indexterm>a</itemformat></item>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="12">index entry between item and itemx</indexterm></cindex>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="fn" number="66">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></ftable>
 
@@ -1961,10 +1961,10 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 </para>
 <para>&textlsquo;<w></w>&textlsquo;simple-double-<w></w>-three&textmdash;four&textmdash;-&textrsquo;<w></w>&textrsquo;&linebreak;
 </para>
-<cindex index="cp" spaces=" "><indexterm index="cp">&textndash;option</indexterm></cindex>
-<cindex index="cp" spaces=" "><indexterm index="cp">&textldquo;</indexterm></cindex>
-<findex index="fn" spaces=" "><indexterm index="fn">&textldquo;</indexterm></findex>
-<findex index="fn" spaces=" "><indexterm index="fn">&textndash;foption</indexterm></findex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="13">&textndash;option</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="14">&textldquo;</indexterm></cindex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="67">&textldquo;</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="68">&textndash;foption</indexterm></findex>
 
 <para>&arobase;&quot;u <accent type="uml" bracketed="off">u</accent> 
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
@@ -2209,11 +2209,11 @@ After clickstyle &result;
 <listitem spaces=" "><prepend>+</prepend><para>i&textndash;tem +
 </para></listitem></itemize>
 
-<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet" /></itemprepend>
+<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet"/></itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><para>b&textndash;ullet
 </para></listitem></itemize>
 
-<itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend><formattingcommand command="minus" /></itemprepend>
+<itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend><formattingcommand command="minus"/></itemprepend>
 <listitem spaces=" "><prepend>&minus;</prepend><para>minu&textndash;s
 </para></listitem></itemize>
 
@@ -2227,7 +2227,7 @@ After clickstyle &result;
 </para></listitem></itemize>
 
 <itemize spaces=" " endspaces=" "><itemprepend>&bullet; a&textndash;n itemize line</itemprepend>
-<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp">index entry within itemize</indexterm></cindex>
+<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp" number="15">index entry within itemize</indexterm></cindex>
 </beforefirstitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 1
 </para></listitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 2
 </para></listitem></itemize>
@@ -2241,7 +2241,7 @@ After clickstyle &result;
 </para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
 </para></entry></row><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab" spaces=" "><para>multitable tab 2
-<cindex index="cp" spaces=" "><indexterm index="cp">index entry within multitable</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="16">index entry within multitable</indexterm></cindex>
 </para></entry></row><row><entry command="item" spaces=" "><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
@@ -2282,122 +2282,122 @@ After clickstyle &result;
 <pre xml:space="preserve">s&textndash;mallformat
 </pre></smallformat>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="69">d&textndash;effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;effn
 </para></definitionitem></deffn>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">de&textndash;ffn_name</indexterm><defcategory>cate--gory</defcategory> <deffunction>de--ffn_name</deffunction> <defparam>ar--guments</defparam>    <defparam>more</defparam> <defparam>args</defparam> <defparam>&linebreak;</defparam> <defparam>even</defparam> <defparam>more</defparam> <defparam>so</defparam></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="70">de&textndash;ffn_name</indexterm><defcategory>cate--gory</defcategory> <deffunction>de--ffn_name</deffunction> <defparam>ar--guments</defparam>    <defparam>more</defparam> <defparam>args</defparam> <defparam>&linebreak;</defparam> <defparam>even</defparam> <defparam>more</defparam> <defparam>so</defparam></definitionterm>
 <definitionitem><para>def&textndash;fn
 </para></definitionitem></deffn>
  
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<cindex index="cp" spaces=" "><indexterm index="cp">index entry within deffn</indexterm></cindex>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on" spaces=" ">log trap1</deffunction> <defparam bracketed="on"></defparam>  </definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="71"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="17">index entry within deffn</indexterm></cindex>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="72">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="73">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="74">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on" spaces=" ">log trap1</deffunction> <defparam bracketed="on"></defparam>  </definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="75">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="76"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="77"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
 <deffnx><definitionterm></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory bracketed="on"></defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="78">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="79">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="80">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on" spaces=" "></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="81">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
 <!-- c comment -->
 <deffnx><definitionterm><defcategory bracketed="on">truc</defcategory></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">a</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam bracketed="on">h i</defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="82">a</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam bracketed="on">h i</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="83">deffnx</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
 </deffn>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="84">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction></definitionterm>
 </deffn>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="85">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
 <!-- c comment between deffn and deffnx -->
-<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="86">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
 </deffn>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="87"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="88">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <definitionitem><!-- c comment -->
 <para>text in def item for second def item
 </para></definitionitem></deffn>
 
-<defvr spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efvr_name</indexterm><defcategory>c--ategory</defcategory> <defvariable>d--efvr_name</defvariable></definitionterm>
+<defvr spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="21">d&textndash;efvr_name</indexterm><defcategory>c--ategory</defcategory> <defvariable>d--efvr_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;efvr
 </para></definitionitem></defvr>
 
-<deftypefn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypefn_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefn_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
+<deftypefn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="89">d&textndash;eftypefn_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefn_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftypefn
 </para></definitionitem></deftypefn>
 
-<deftypeop spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypeop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypeop_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
+<deftypeop spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="90">d&textndash;eftypeop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypeop_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftypeop
 </para></definitionitem></deftypeop>
 
-<deftypevr spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypevr_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevr_name</defvariable></definitionterm>
+<deftypevr spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="22">d&textndash;eftypevr_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevr_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;eftypevr
 </para></definitionitem></deftypevr>
 
-<defcv spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efcv_name</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efcv_name</defclassvar></definitionterm>
+<defcv spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="23">d&textndash;efcv_name</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efcv_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;efcv
 </para></definitionitem></defcv>
 
-<defop spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defoperation>d--efop_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
+<defop spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="91">d&textndash;efop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defoperation>d--efop_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efop
 </para></definitionitem></defop>
 
-<deftp spaces=" " endspaces=" "><definitionterm><indexterm index="tp">d&textndash;eftp_name</indexterm><defcategory>c--ategory</defcategory> <defdatatype>d--eftp_name</defdatatype> <defparamtype>a--ttributes...</defparamtype></definitionterm>
+<deftp spaces=" " endspaces=" "><definitionterm><indexterm index="tp" number="3">d&textndash;eftp_name</indexterm><defcategory>c--ategory</defcategory> <defdatatype>d--eftp_name</defdatatype> <defparamtype>a--ttributes...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftp
 </para></definitionitem></deftp>
 
-<defun spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efun_name</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>d--efun_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<defun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="92">d&textndash;efun_name</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>d--efun_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efun
 </para></definitionitem></defun>
 
-<defmac spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efmac_name</indexterm><defcategory automatic="on">Macro</defcategory> <deffunction>d--efmac_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<defmac spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="93">d&textndash;efmac_name</indexterm><defcategory automatic="on">Macro</defcategory> <deffunction>d--efmac_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efmac
 </para></definitionitem></defmac>
 
-<defspec spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efspec_name</indexterm><defcategory automatic="on" bracketed="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<defspec spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="94">d&textndash;efspec_name</indexterm><defcategory automatic="on" bracketed="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efspec
 </para></definitionitem></defspec>
 
-<defvar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efvar_name</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable>d--efvar_name</defvariable> <defparam>argvar</defparam> <defparam>argvar1</defparam></definitionterm>
+<defvar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="24">d&textndash;efvar_name</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable>d--efvar_name</defvariable> <defparam>argvar</defparam> <defparam>argvar1</defparam></definitionterm>
 <definitionitem><para>d&textndash;efvar
 </para></definitionitem></defvar>
 
-<defopt spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efopt_name</indexterm><defcategory automatic="on" bracketed="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
+<defopt spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="25">d&textndash;efopt_name</indexterm><defcategory automatic="on" bracketed="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;efopt
 </para></definitionitem></defopt>
 
-<deftypefun spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypefun_name</indexterm><defcategory automatic="on">Function</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefun_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
+<deftypefun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="95">d&textndash;eftypefun_name</indexterm><defcategory automatic="on">Function</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefun_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftypefun
 </para></definitionitem></deftypefun>
 
-<deftypevar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypevar_name</indexterm><defcategory automatic="on">Variable</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevar_name</defvariable></definitionterm>
+<deftypevar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="26">d&textndash;eftypevar_name</indexterm><defcategory automatic="on">Variable</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevar_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;eftypevar
 </para></definitionitem></deftypevar>
 
-<defivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
+<defivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="27">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;efivar
 </para></definitionitem></defivar>
 
-<deftypeivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
+<deftypeivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="28">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;eftypeivar
 </para></definitionitem></deftypeivar>
 
-<defmethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efmethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <defoperation>d--efmethod_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
+<defmethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="96">d&textndash;efmethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <defoperation>d--efmethod_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efmethod
 </para></definitionitem></defmethod>
 
-<deftypemethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypemethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypemethod_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
+<deftypemethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="97">d&textndash;eftypemethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypemethod_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><para>d&textndash;eftypemethod
 </para></definitionitem></deftypemethod>
 
@@ -2471,16 +2471,16 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 </para></tableitem></tableentry></table>
 
 <vtable commandarg="asis" spaces=" " endspaces=" ">
-<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="29">a</indexterm>a</itemformat></item>
 <!-- c comment between item and itemx -->
-<itemx spaces=" "><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="vr" number="30">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></vtable>
 
 <ftable commandarg="asis" spaces=" " endspaces=" ">
-<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
-<cindex index="cp" spaces=" "><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
-<itemx spaces=" "><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn" number="98">a</indexterm>a</itemformat></item>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="18">index entry between item and itemx</indexterm></cindex>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="fn" number="99">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></ftable>
 
@@ -2556,10 +2556,10 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 
 `<w></w>`simple-double-<w></w>-three---four----'<w></w>'&linebreak;
 
-<cindex index="cp" spaces=" "><indexterm index="cp">&textndash;option</indexterm></cindex>
-<cindex index="cp" spaces=" "><indexterm index="cp">&textldquo;</indexterm></cindex>
-<findex index="fn" spaces=" "><indexterm index="fn">&textldquo;</indexterm></findex>
-<findex index="fn" spaces=" "><indexterm index="fn">&textndash;foption</indexterm></findex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="19">&textndash;option</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="20">&textldquo;</indexterm></cindex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="100">&textldquo;</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="101">&textndash;foption</indexterm></findex>
 
 &arobase;&quot;u <accent type="uml" bracketed="off">u</accent> 
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
@@ -2804,11 +2804,11 @@ After clickstyle &result;
 <listitem spaces=" "><prepend>+</prepend><pre xml:space="preserve">i--tem +
 </pre></listitem></itemize>
 <pre xml:space="preserve">
-</pre><itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet" /></itemprepend>
+</pre><itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet"/></itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><pre xml:space="preserve">b--ullet
 </pre></listitem></itemize>
 <pre xml:space="preserve">
-</pre><itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend><formattingcommand command="minus" /></itemprepend>
+</pre><itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend><formattingcommand command="minus"/></itemprepend>
 <listitem spaces=" "><prepend>&minus;</prepend><pre xml:space="preserve">minu--s
 </pre></listitem></itemize>
 <pre xml:space="preserve">
@@ -2822,7 +2822,7 @@ After clickstyle &result;
 </pre></listitem></itemize>
 <pre xml:space="preserve">
 </pre><itemize spaces=" " endspaces=" "><itemprepend>&bullet; a--n itemize line</itemprepend>
-<beforefirstitem><pre xml:space="preserve"><cindex index="cp" spaces=" "><indexterm index="cp">index entry within itemize</indexterm></cindex>
+<beforefirstitem><pre xml:space="preserve"><cindex index="cp" spaces=" "><indexterm index="cp" number="21">index entry within itemize</indexterm></cindex>
 </pre></beforefirstitem><listitem spaces=" "><prepend>&bullet; a--n itemize line</prepend><pre xml:space="preserve">i--tem 1
 </pre></listitem><listitem spaces=" "><prepend>&bullet; a--n itemize line</prepend><pre xml:space="preserve">i--tem 2
 </pre></listitem></itemize>
@@ -2836,7 +2836,7 @@ After clickstyle &result;
 </pre></entry></row></thead><tbody><row><entry command="item" spaces=" "><pre xml:space="preserve">mu--ltitable item </pre></entry><entry command="tab" spaces=" "><pre xml:space="preserve">multitable tab
 <!-- c comment in multitable -->
 </pre></entry></row><row><entry command="item" spaces=" "><pre xml:space="preserve">mu--ltitable item 2 </pre></entry><entry command="tab" spaces=" "><pre xml:space="preserve">multitable tab 2
-<cindex index="cp" spaces=" "><indexterm index="cp">index entry within multitable</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="22">index entry within multitable</indexterm></cindex>
 </pre></entry></row><row><entry command="item" spaces=" "><pre xml:space="preserve">lone mu--ltitable item
 </pre></entry></row></tbody></multitable>
 <pre xml:space="preserve">
@@ -2877,122 +2877,122 @@ After clickstyle &result;
 <pre xml:space="preserve">s--mallformat
 </pre></smallformat>
 <pre xml:space="preserve">
-</pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+</pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="102">d&textndash;effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><pre xml:space="preserve">d--effn
 </pre></definitionitem></deffn>
 <pre xml:space="preserve">
-</pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">de&textndash;ffn_name</indexterm><defcategory>cate--gory</defcategory> <deffunction>de--ffn_name</deffunction> <defparam>ar--guments</defparam>    <defparam>more</defparam> <defparam>args</defparam> <defparam>&linebreak;</defparam> <defparam>even</defparam> <defparam>more</defparam> <defparam>so</defparam></definitionterm>
+</pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="103">de&textndash;ffn_name</indexterm><defcategory>cate--gory</defcategory> <deffunction>de--ffn_name</deffunction> <defparam>ar--guments</defparam>    <defparam>more</defparam> <defparam>args</defparam> <defparam>&linebreak;</defparam> <defparam>even</defparam> <defparam>more</defparam> <defparam>so</defparam></definitionterm>
 <definitionitem><pre xml:space="preserve">def--fn
 </pre></definitionitem></deffn>
 <pre xml:space="preserve"> 
-</pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<pre xml:space="preserve"><cindex index="cp" spaces=" "><indexterm index="cp">index entry within deffn</indexterm></cindex>
-</pre><deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on" spaces=" ">log trap1</deffunction> <defparam bracketed="on"></defparam>  </definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+</pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="104"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
+<pre xml:space="preserve"><cindex index="cp" spaces=" "><indexterm index="cp" number="23">index entry within deffn</indexterm></cindex>
+</pre><deffnx spaces=" "><definitionterm><indexterm index="fn" number="105">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="106">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="107">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on" spaces=" ">log trap1</deffunction> <defparam bracketed="on"></defparam>  </definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="108">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="109"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="110"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
 <deffnx><definitionterm></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory bracketed="on"></defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="111">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="112">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="113">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on" spaces=" "></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn" number="114">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
 <pre xml:space="preserve"><!-- c comment -->
 </pre><deffnx><definitionterm><defcategory bracketed="on">truc</defcategory></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">a</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam bracketed="on">h i</defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="115">a</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam bracketed="on">h i</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="116">deffnx</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
 </deffn>
 <pre xml:space="preserve">
-</pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction></definitionterm>
+</pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="117">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction></definitionterm>
 </deffn>
 <pre xml:space="preserve">
-</pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
+</pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="118">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
 <pre xml:space="preserve"><!-- c comment between deffn and deffnx -->
-</pre><deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
+</pre><deffnx spaces=" "><definitionterm><indexterm index="fn" number="119">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
 </deffn>
 <pre xml:space="preserve">
-</pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+</pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="120"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="121">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <definitionitem><pre xml:space="preserve"><!-- c comment -->
 text in def item for second def item
 </pre></definitionitem></deffn>
 <pre xml:space="preserve">
-</pre><defvr spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efvr_name</indexterm><defcategory>c--ategory</defcategory> <defvariable>d--efvr_name</defvariable></definitionterm>
+</pre><defvr spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="31">d&textndash;efvr_name</indexterm><defcategory>c--ategory</defcategory> <defvariable>d--efvr_name</defvariable></definitionterm>
 <definitionitem><pre xml:space="preserve">d--efvr
 </pre></definitionitem></defvr>
 <pre xml:space="preserve">
-</pre><deftypefn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypefn_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefn_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
+</pre><deftypefn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="122">d&textndash;eftypefn_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefn_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><pre xml:space="preserve">d--eftypefn
 </pre></definitionitem></deftypefn>
 <pre xml:space="preserve">
-</pre><deftypeop spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypeop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypeop_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
+</pre><deftypeop spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="123">d&textndash;eftypeop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypeop_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><pre xml:space="preserve">d--eftypeop
 </pre></definitionitem></deftypeop>
 <pre xml:space="preserve">
-</pre><deftypevr spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypevr_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevr_name</defvariable></definitionterm>
+</pre><deftypevr spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="32">d&textndash;eftypevr_name</indexterm><defcategory>c--ategory</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevr_name</defvariable></definitionterm>
 <definitionitem><pre xml:space="preserve">d--eftypevr
 </pre></definitionitem></deftypevr>
 <pre xml:space="preserve">
-</pre><defcv spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efcv_name</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efcv_name</defclassvar></definitionterm>
+</pre><defcv spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="33">d&textndash;efcv_name</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efcv_name</defclassvar></definitionterm>
 <definitionitem><pre xml:space="preserve">d--efcv
 </pre></definitionitem></defcv>
 <pre xml:space="preserve">
-</pre><defop spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defoperation>d--efop_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
+</pre><defop spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="124">d&textndash;efop_name on c&textndash;lass</indexterm><defcategory>c--ategory</defcategory> <defclass>c--lass</defclass> <defoperation>d--efop_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><pre xml:space="preserve">d--efop
 </pre></definitionitem></defop>
 <pre xml:space="preserve">
-</pre><deftp spaces=" " endspaces=" "><definitionterm><indexterm index="tp">d&textndash;eftp_name</indexterm><defcategory>c--ategory</defcategory> <defdatatype>d--eftp_name</defdatatype> <defparamtype>a--ttributes...</defparamtype></definitionterm>
+</pre><deftp spaces=" " endspaces=" "><definitionterm><indexterm index="tp" number="4">d&textndash;eftp_name</indexterm><defcategory>c--ategory</defcategory> <defdatatype>d--eftp_name</defdatatype> <defparamtype>a--ttributes...</defparamtype></definitionterm>
 <definitionitem><pre xml:space="preserve">d--eftp
 </pre></definitionitem></deftp>
 <pre xml:space="preserve">
-</pre><defun spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efun_name</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>d--efun_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+</pre><defun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="125">d&textndash;efun_name</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>d--efun_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><pre xml:space="preserve">d--efun
 </pre></definitionitem></defun>
 <pre xml:space="preserve">
-</pre><defmac spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efmac_name</indexterm><defcategory automatic="on">Macro</defcategory> <deffunction>d--efmac_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+</pre><defmac spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="126">d&textndash;efmac_name</indexterm><defcategory automatic="on">Macro</defcategory> <deffunction>d--efmac_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><pre xml:space="preserve">d--efmac
 </pre></definitionitem></defmac>
 <pre xml:space="preserve">
-</pre><defspec spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efspec_name</indexterm><defcategory automatic="on" bracketed="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+</pre><defspec spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="127">d&textndash;efspec_name</indexterm><defcategory automatic="on" bracketed="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><pre xml:space="preserve">d--efspec
 </pre></definitionitem></defspec>
 <pre xml:space="preserve">
-</pre><defvar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efvar_name</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable>d--efvar_name</defvariable> <defparam>argvar</defparam> <defparam>argvar1</defparam></definitionterm>
+</pre><defvar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="34">d&textndash;efvar_name</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable>d--efvar_name</defvariable> <defparam>argvar</defparam> <defparam>argvar1</defparam></definitionterm>
 <definitionitem><pre xml:space="preserve">d--efvar
 </pre></definitionitem></defvar>
 <pre xml:space="preserve">
-</pre><defopt spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efopt_name</indexterm><defcategory automatic="on" bracketed="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
+</pre><defopt spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="35">d&textndash;efopt_name</indexterm><defcategory automatic="on" bracketed="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
 <definitionitem><pre xml:space="preserve">d--efopt
 </pre></definitionitem></defopt>
 <pre xml:space="preserve">
-</pre><deftypefun spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypefun_name</indexterm><defcategory automatic="on">Function</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefun_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
+</pre><deftypefun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="128">d&textndash;eftypefun_name</indexterm><defcategory automatic="on">Function</defcategory> <deftype>t--ype</deftype> <deffunction>d--eftypefun_name</deffunction> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><pre xml:space="preserve">d--eftypefun
 </pre></definitionitem></deftypefun>
 <pre xml:space="preserve">
-</pre><deftypevar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypevar_name</indexterm><defcategory automatic="on">Variable</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevar_name</defvariable></definitionterm>
+</pre><deftypevar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="36">d&textndash;eftypevar_name</indexterm><defcategory automatic="on">Variable</defcategory> <deftype>t--ype</deftype> <defvariable>d--eftypevar_name</defvariable></definitionterm>
 <definitionitem><pre xml:space="preserve">d--eftypevar
 </pre></definitionitem></deftypevar>
 <pre xml:space="preserve">
-</pre><defivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
+</pre><defivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="37">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
 <definitionitem><pre xml:space="preserve">d--efivar
 </pre></definitionitem></defivar>
 <pre xml:space="preserve">
-</pre><deftypeivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
+</pre><deftypeivar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="38">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
 <definitionitem><pre xml:space="preserve">d--eftypeivar
 </pre></definitionitem></deftypeivar>
 <pre xml:space="preserve">
-</pre><defmethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;efmethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <defoperation>d--efmethod_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
+</pre><defmethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="129">d&textndash;efmethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <defoperation>d--efmethod_name</defoperation> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><pre xml:space="preserve">d--efmethod
 </pre></definitionitem></defmethod>
 <pre xml:space="preserve">
-</pre><deftypemethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn">d&textndash;eftypemethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypemethod_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
+</pre><deftypemethod spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="130">d&textndash;eftypemethod_name on c&textndash;lass</indexterm><defcategory automatic="on">Method</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defoperation>d--eftypemethod_name</defoperation> <defparamtype>a--rguments...</defparamtype></definitionterm>
 <definitionitem><pre xml:space="preserve">d--eftypemethod
 </pre></definitionitem></deftypemethod>
 <pre xml:space="preserve">
@@ -3066,16 +3066,16 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 </pre></tableitem></tableentry></table>
 <pre xml:space="preserve">
 </pre><vtable commandarg="asis" spaces=" " endspaces=" ">
-<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="39">a</indexterm>a</itemformat></item>
 <pre xml:space="preserve"><!-- c comment between item and itemx -->
-</pre><itemx spaces=" "><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
+</pre><itemx spaces=" "><itemformat command="asis"><indexterm index="vr" number="40">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><pre xml:space="preserve">l--ine
 </pre></tableitem></tableentry></vtable>
 <pre xml:space="preserve">
 </pre><ftable commandarg="asis" spaces=" " endspaces=" ">
-<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
-<pre xml:space="preserve"><cindex index="cp" spaces=" "><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
-</pre><itemx spaces=" "><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn" number="131">a</indexterm>a</itemformat></item>
+<pre xml:space="preserve"><cindex index="cp" spaces=" "><indexterm index="cp" number="24">index entry between item and itemx</indexterm></cindex>
+</pre><itemx spaces=" "><itemformat command="asis"><indexterm index="fn" number="132">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><pre xml:space="preserve">l--ine
 </pre></tableitem></tableentry></ftable>
 <pre xml:space="preserve">
@@ -3134,16 +3134,16 @@ docbook ''
 
 </pre></example>
 
-<cindex index="cp" spaces=" "><indexterm index="cp">t&textndash;ruc</indexterm></cindex>
-<cindex index="cp" spaces=" "><indexterm index="cp">T&textndash;ruc</indexterm></cindex>
-<cindex index="cp" spaces=" "><indexterm index="cp">.</indexterm></cindex>
-<cindex index="cp" spaces=" "><indexterm index="cp">?</indexterm></cindex>
-<cindex index="cp" spaces=" "><indexterm index="cp">a</indexterm></cindex>
-<findex index="fn" spaces=" "><indexterm index="fn">t&textndash;ruc</indexterm></findex>
-<findex index="fn" spaces=" "><indexterm index="fn">T&textndash;ruc</indexterm></findex>
-<findex index="fn" spaces=" "><indexterm index="fn">.</indexterm></findex>
-<findex index="fn" spaces=" "><indexterm index="fn">?</indexterm></findex>
-<findex index="fn" spaces=" "><indexterm index="fn">a</indexterm></findex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="25">t&textndash;ruc</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="26">T&textndash;ruc</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="27">.</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="28">?</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="29">a</indexterm></cindex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="133">t&textndash;ruc</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="134">T&textndash;ruc</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="135">.</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="136">?</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="137">a</indexterm></findex>
 
 
 <para>cp

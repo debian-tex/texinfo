@@ -1,6 +1,6 @@
-# $Id: Makefile.am,v 1.12 2012/12/18 00:07:17 pertusus Exp $
+# $Id: Makefile.am,v 1.13 2013/01/11 19:09:16 karl Exp $
 # Makefile.am for texinfo/tp/tests.
-# Copyright 2012 Free Software Foundation, Inc.
+# Copyright 2012, 2013 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -38,13 +38,13 @@ clean-tests:
 
 TESTS = parser_base_tests long_tests.sh tex_html_tests.sh
 
-long-checks: all
+long-checks long-check: all
 	$(MAKE) $(AM_MAKEFLAGS) check LONG_TESTS=yes
 
-all-checks: all
+all-checks all-check: all
 	$(MAKE) $(AM_MAKEFLAGS) check ALL_TESTS=yes
 
-tex-html-checks: all
+tex-html-checks tex-html-check: all
 	$(MAKE) $(AM_MAKEFLAGS) check TEX_HTML_TESTS=yes LONG_TESTS=yes
 
 # this is in order to have the htmlxref.cnf files in the build dir.

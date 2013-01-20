@@ -113,6 +113,14 @@ should be a Texinfo tree element corresponding to an accent command taking
 an argument.  The function returns a transliteration of the accented
 character.
 
+@item $result_accent_text = ascii_accent_fallback($converter, $text, $accent_command)
+@anchor{Texinfo::Convert::Text $result_accent_text = ascii_accent_fallback($converter@comma{} $text@comma{} $accent_command)}
+
+Same as @code{ascii_accent} but  with an additional first argument
+converter, which is in ignored, but needed if this function is to 
+be in argument of functions that need a fallback for accents
+conversion.
+
 @item $accents_text = text_accents($accents, $encoding, $set_case)
 @anchor{Texinfo::Convert::Text $accents_text = text_accents($accents@comma{} $encoding@comma{} $set_case)}
 

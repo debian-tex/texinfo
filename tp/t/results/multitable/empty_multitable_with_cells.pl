@@ -22,9 +22,6 @@ $result_trees{'empty_multitable_with_cells'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => undef
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -40,9 +37,6 @@ $result_trees{'empty_multitable_with_cells'} = {
               'type' => 'paragraph'
             },
             {
-              'extra' => {
-                'command' => undef
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -58,9 +52,6 @@ $result_trees{'empty_multitable_with_cells'} = {
               'type' => 'paragraph'
             },
             {
-              'extra' => {
-                'command' => undef
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -77,9 +68,6 @@ $result_trees{'empty_multitable_with_cells'} = {
               'type' => 'paragraph'
             },
             {
-              'extra' => {
-                'command' => undef
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'

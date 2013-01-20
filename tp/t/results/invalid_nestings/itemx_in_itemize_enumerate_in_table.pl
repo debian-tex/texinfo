@@ -120,9 +120,6 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
                     {
                       'contents' => [
                         {
-                          'extra' => {
-                            'command' => undef
-                          },
                           'parent' => {},
                           'text' => ' ',
                           'type' => 'empty_spaces_after_command'
@@ -226,9 +223,6 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
                     {
                       'contents' => [
                         {
-                          'extra' => {
-                            'command' => undef
-                          },
                           'parent' => {},
                           'text' => ' ',
                           'type' => 'empty_spaces_after_command'

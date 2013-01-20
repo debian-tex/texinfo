@@ -2745,7 +2745,7 @@ $result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize comman
 <listitem spaces=" "><prepend>x</prepend><para>itemize xit
 </para></listitem></itemize>
 
-<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet" /> </itemprepend><!-- c comm -->
+<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet"/> </itemprepend><!-- c comm -->
 <listitem spaces=" "><prepend>&bullet;</prepend><para>itemize bulletit
 </para></listitem></itemize>
 
@@ -2789,7 +2789,7 @@ $result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize comman
 <tbody><row><entry command="item" spaces=" "><para>aaa </para></entry><entry command="tab" spaces=" "><para>bbb
 </para></entry></row></tbody></multitable>
 
-<float name="g" type="f" spaces=" " endspaces=" "><floattype>f</floattype><floatname>g </floatname><!-- c comm -->
+<float name="g" type="f" number="1" spaces=" " endspaces=" "><floattype>f</floattype><floatname>g </floatname><!-- c comm -->
 <para>In f
 </para></float>
 

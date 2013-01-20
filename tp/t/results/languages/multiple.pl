@@ -102,7 +102,7 @@ $result_trees{'multiple'} = {
                                 'contents' => [],
                                 'type' => 'bracketed'
                               },
-                              'text' => 'Instance Variable'
+                              'text' => 'Variable d\'instance'
                             }
                           ],
                           'parent' => undef,
@@ -379,7 +379,7 @@ $result_trees{'multiple'} = {
                             'contents' => [],
                             'type' => 'bracketed'
                           },
-                          'text' => 'Instance Variable'
+                          'text' => 'Variable d\'instance'
                         }
                       ],
                       'parent' => undef,
@@ -975,7 +975,7 @@ $result_texis{'multiple'} = '@documentlanguage fr
 $result_texts{'multiple'} = '
 
 
-Instance Variable of fr: BBB CCC
+Variable d\'instance of fr: BBB CCC
 
 
 
@@ -1017,34 +1017,34 @@ $result_errors{'multiple'} = [];
 
 
 
-$result_converted{'plaintext'}->{'multiple'} = ' -- Instance Variable de fr: BBB CCC
+$result_converted{'plaintext'}->{'multiple'} = ' -- Variable d\'instance de fr : BBB CCC
 
- -- Instance Variable de copying: a b
+ -- Variable d\'instance de copying : a b
 
  -- Instance Variable da pt: BBB CCC
 
- -- Instance Variable da copying: a b
+ -- Variable d\'instance da copying: a b
 ';
 
 
 $result_converted{'info'}->{'multiple'} = 'This is , produced by tp version from .
 
- -- Instance Variable de copying: a b
+ -- Variable d\'instance de copying : a b
 
 
 File: ,  Node: Top,  Up: (dir)
 
- -- Instance Variable de fr: BBB CCC
+ -- Variable d\'instance de fr : BBB CCC
 
- -- Instance Variable de copying: a b
+ -- Variable d\'instance de copying : a b
 
  -- Instance Variable da pt: BBB CCC
 
- -- Instance Variable da copying: a b
+ -- Variable d\'instance da copying: a b
 
 
 Tag Table:
-Node: Top80
+Node: Top83
 
 End Tag Table
 ';
@@ -1052,7 +1052,7 @@ End Tag Table
 
 $result_converted{'html'}->{'multiple'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Instance Variable da copying: a b -->
+<!-- Variable d\'instance da copying: a b -->
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>Documento Sem Nome</title>
@@ -1103,11 +1103,11 @@ ul.no-bullet {list-style: none}
 <h1 class="node-heading">Top</h1>
 
 <dl>
-<dt><a name="index-BBB-of-fr"></a>Instance Variable de fr: <strong>BBB</strong> <em>CCC</em></dt>
+<dt><a name="index-BBB-of-fr"></a>Variable d\'instance de fr&nbsp;: <strong>BBB</strong> <em>CCC</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-copying-a-of-copying"></a>Instance Variable de copying: <strong>a</strong> <em>b</em></dt>
+<dt><a name="index-copying-a-of-copying"></a>Variable d\'instance de copying&nbsp;: <strong>a</strong> <em>b</em></dt>
 </dl>
 
 
@@ -1117,7 +1117,7 @@ ul.no-bullet {list-style: none}
 </dl>
 
 <dl>
-<dt><a name="index-copying-a-of-copying"></a>Instance Variable da copying: <strong>a</strong> <em>b</em></dt>
+<dt><a name="index-copying-a-of-copying"></a>Variable d\'instance da copying: <strong>a</strong> <em>b</em></dt>
 </dl>
 
 <hr>

@@ -3408,16 +3408,16 @@ After table.
 <para>Quotation
 </para><quotation endspaces=" ">
 <vtable commandarg="asis" spaces=" " endspaces=" ">
-<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
-<itemx spaces=" "><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="1">first item</indexterm>first item</itemformat></item>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="vr" number="2">second itemx</indexterm>second itemx</itemformat></itemx>
 </tableterm><tableitem>
 <para>Text.
 </para>
-</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">second item</indexterm>second item</itemformat></item>
+</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="3">second item</indexterm>second item</itemformat></item>
 </tableterm><tableitem>
 <para>Text 2
 </para>
-</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">last</indexterm>last</itemformat></item>
+</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="4">last</indexterm>last</itemformat></item>
 </tableterm></tableentry></vtable>
 
 <para>Something.
@@ -3433,16 +3433,16 @@ After table.
 <para>Example
 </para><example endspaces=" ">
 <vtable commandarg="asis" spaces=" " endspaces=" ">
-<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
-<itemx spaces=" "><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="5">first item</indexterm>first item</itemformat></item>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="vr" number="6">second itemx</indexterm>second itemx</itemformat></itemx>
 </tableterm><tableitem><pre xml:space="preserve">
 Text.
 
-</pre></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">second item</indexterm>second item</itemformat></item>
+</pre></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="7">second item</indexterm>second item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">
 Text 2
 
-</pre></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">last</indexterm>last</itemformat></item>
+</pre></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="8">last</indexterm>last</itemformat></item>
 </tableterm></tableentry></vtable>
 <pre xml:space="preserve">
 Something.
@@ -3459,16 +3459,16 @@ Something.
 </para><quotation endspaces=" ">
 <quotation endspaces=" ">
 <vtable commandarg="asis" spaces=" " endspaces=" ">
-<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
-<itemx spaces=" "><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="9">first item</indexterm>first item</itemformat></item>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="vr" number="10">second itemx</indexterm>second itemx</itemformat></itemx>
 </tableterm><tableitem>
 <para>Text.
 </para>
-</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">second item</indexterm>second item</itemformat></item>
+</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="11">second item</indexterm>second item</itemformat></item>
 </tableterm><tableitem>
 <para>Text 2
 </para>
-</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">last</indexterm>last</itemformat></item>
+</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="12">last</indexterm>last</itemformat></item>
 </tableterm></tableentry></vtable>
 
 <para>Something.

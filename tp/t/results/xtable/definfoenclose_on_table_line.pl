@@ -370,9 +370,9 @@ $result_converted{'html_text'}->{'definfoenclose_on_table_line'} = '
 
 $result_converted{'xml'}->{'definfoenclose_on_table_line'} = '<definfoenclose command="phi" open=":" close=":" line=" phi,:,:"></definfoenclose>
 
-<table commandarg="phi" begin=":"  end=":" spaces=" " endspaces=" ">
-<tableentry><tableterm><item spaces=" "><itemformat command="phi" begin=":"  end=":">item</itemformat></item>
-<itemx spaces=" "><itemformat command="phi" begin=":"  end=":">item x</itemformat></itemx>
+<table commandarg="phi" begin=":" end=":" spaces=" " endspaces=" ">
+<tableentry><tableterm><item spaces=" "><itemformat command="phi" begin=":" end=":">item</itemformat></item>
+<itemx spaces=" "><itemformat command="phi" begin=":" end=":">item x</itemformat></itemx>
 </tableterm><tableitem>
 <para>table content.
 </para></tableitem></tableentry></table>

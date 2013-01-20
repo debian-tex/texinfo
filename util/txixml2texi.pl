@@ -82,7 +82,7 @@ use XML::LibXML::Reader;
 
 # gather information on Texinfo XML elements
 use Texinfo::Common;
-use Texinfo::Convert::XML;
+use Texinfo::Convert::TexinfoXML;
 
 my $debug = 0;
 my $result_options = Getopt::Long::GetOptions (
@@ -122,38 +122,40 @@ my %entity_texts = (
   'textlsquo' => '`',
 );
 
-foreach my $command (keys(%Texinfo::Convert::XML::xml_commands_formatting)) {
-  my $xml_output = $Texinfo::Convert::XML::xml_commands_formatting{$command};
-  if ($xml_output =~ /^&(\w+);$/) {
-    my $entity = $1;
-    $entity_texts{$entity} = command_with_braces($command);
-    #print STDERR "$xml_output $command $1\n";
-  } elsif ($xml_output =~ /^<(\w+)/) {
-    my $element = $1;
+foreach my $command (keys(%Texinfo::Convert::TexinfoXML::commands_formatting)) {
+  if (!ref($Texinfo::Convert::TexinfoXML::commands_formatting{$command})) {
+    $entity_texts{$Texinfo::Convert::TexinfoXML::commands_formatting{$command}}
+      = command_with_braces($command);
+  } else {
+    my $spec = $Texinfo::Convert::TexinfoXML::commands_formatting{$command};
+    my $element = $spec->[0];
     if ($element eq 'spacecmd') {
-      if ($xml_output =~ /^<(\w+) type="(\w+)"/) {
-        $element_at_commands{$element}->{"type"}->{$2} 
-          = command_with_braces($command); 
+      if ($spec->[1] eq 'type') {
+        $element_at_commands{$element}->{"type"}->{$spec->[2]}
+          = command_with_braces($command);
+      } else {
+        die "BUG, bad spacecmd specification";
       }
     } else {
       $element_at_commands{$element} = command_with_braces($command);
     }
   }
 }
+
 $element_at_commands{'accent'} = 0;
 
 my %arg_elements;
-foreach my $command (keys(%Texinfo::Convert::XML::commands_args_elements)) {
+foreach my $command (keys(%Texinfo::Convert::TexinfoXML::commands_args_elements)) {
   my $arg_index = 0;
-  foreach my $element_argument (@{$Texinfo::Convert::XML::commands_args_elements{$command}}) {
+  foreach my $element_argument (@{$Texinfo::Convert::TexinfoXML::commands_args_elements{$command}}) {
     $arg_elements{$element_argument} = [$arg_index, $command];
     $arg_index++;
   }
 }
 
 my %accent_type_command;
-foreach my $accent_command (keys(%Texinfo::Convert::XML::xml_accent_types)) {
-  $accent_type_command{$Texinfo::Convert::XML::xml_accent_types{$accent_command}} 
+foreach my $accent_command (keys(%Texinfo::Convert::TexinfoXML::accent_types)) {
+  $accent_type_command{$Texinfo::Convert::TexinfoXML::accent_types{$accent_command}} 
     = $accent_command;
 }
 
@@ -236,7 +238,7 @@ while ($reader->read) {
     } elsif ($name eq 'listitem') {
       $name = 'item';
     }
-    if ($Texinfo::Convert::XML::commands_args_elements{$name}) {
+    if ($Texinfo::Convert::TexinfoXML::commands_args_elements{$name}) {
       push @commands_with_args_stack, 0;
     }
     if (exists $element_at_commands{$name}) {
@@ -367,7 +369,7 @@ while ($reader->read) {
       print '@'.$reader->getAttribute('commandarg');
     }
   } elsif ($reader->nodeType() eq XML_READER_TYPE_END_ELEMENT) {
-    if ($Texinfo::Convert::XML::commands_args_elements{$name}) {
+    if ($Texinfo::Convert::TexinfoXML::commands_args_elements{$name}) {
       pop @commands_with_args_stack;
     }
     if ($reader->hasAttributes()) {

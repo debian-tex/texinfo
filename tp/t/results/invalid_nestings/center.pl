@@ -710,9 +710,6 @@ $result_trees{'center'} = {
                       'text' => 'centered line with item '
                     },
                     {
-                      'extra' => {
-                        'command' => undef
-                      },
                       'parent' => {},
                       'text' => ' ',
                       'type' => 'empty_spaces_after_command'
@@ -915,9 +912,6 @@ $result_trees{'center'} = {
                           'text' => 'centered line with item '
                         },
                         {
-                          'extra' => {
-                            'command' => undef
-                          },
                           'parent' => {},
                           'text' => ' ',
                           'type' => 'empty_spaces_after_command'
@@ -1426,9 +1420,6 @@ $result_trees{'center'} = {
                               'type' => 'empty_spaces_after_command'
                             },
                             {
-                              'extra' => {
-                                'command' => undef
-                              },
                               'parent' => {},
                               'text' => ' ',
                               'type' => 'empty_spaces_after_command'
@@ -1438,9 +1429,6 @@ $result_trees{'center'} = {
                               'text' => 'ctruc '
                             },
                             {
-                              'extra' => {
-                                'command' => undef
-                              },
                               'parent' => {},
                               'text' => ' ',
                               'type' => 'empty_spaces_after_command'
@@ -1490,9 +1478,6 @@ $result_trees{'center'} = {
                               'type' => 'empty_spaces_after_command'
                             },
                             {
-                              'extra' => {
-                                'command' => undef
-                              },
                               'parent' => {},
                               'text' => ' ',
                               'type' => 'empty_spaces_after_command'
@@ -1721,9 +1706,6 @@ $result_trees{'center'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => undef
-      },
       'parent' => {},
       'text' => ' ',
       'type' => 'empty_spaces_after_command'
@@ -1745,9 +1727,6 @@ $result_trees{'center'} = {
       'type' => 'paragraph'
     },
     {
-      'extra' => {
-        'command' => undef
-      },
       'parent' => {},
       'text' => ' ',
       'type' => 'empty_spaces_after_command'

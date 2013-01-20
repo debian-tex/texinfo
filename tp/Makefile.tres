@@ -832,6 +832,7 @@ test_files_generated_list = \
   t/results/plaintext_tests/insert_copying_inline_and_paragraph.pl \
   t/results/plaintext_tests/invalid_accent_punctuation.pl \
   t/results/plaintext_tests/isolated_html_expanded.pl \
+  t/results/plaintext_tests/itemize_in_headitem_in_example.pl \
   t/results/plaintext_tests/japanese_utf8.pl \
   t/results/plaintext_tests/japanese_utf8/res_plaintext/japanese_utf8.txt \
   t/results/plaintext_tests/line_passed_and_formats.pl \
@@ -839,6 +840,7 @@ test_files_generated_list = \
   t/results/plaintext_tests/long_uref_after_item.pl \
   t/results/plaintext_tests/multiline_verb_after_space.pl \
   t/results/plaintext_tests/multitable.pl \
+  t/results/plaintext_tests/multitable_in_example_extraneous_tab.pl \
   t/results/plaintext_tests/nested_code_commands.pl \
   t/results/plaintext_tests/nested_indentedblock.pl \
   t/results/plaintext_tests/nested_multitable.pl \
@@ -866,6 +868,8 @@ test_files_generated_list = \
   t/results/plaintext_tests/settitle_and_empty_top.pl \
   t/results/plaintext_tests/sp_with_text_before_in_example.pl \
   t/results/plaintext_tests/star_at_command_formatting.pl \
+  t/results/plaintext_tests/tab_in_table_in_example.pl \
+  t/results/plaintext_tests/tab_item_in_example.pl \
   t/results/plaintext_tests/transparent_text.pl \
   t/results/preformatted/caption_in_example.pl \
   t/results/preformatted/comment_example_and_blank_lines.pl \

@@ -2241,35 +2241,17 @@ sub _convert($$)
         $lines_count += 2;
         foreach my $float (@{$self->{'floats'}->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
           next if (!defined($float->{'extra'}->{'block_command_line_contents'}->[1]));
-          my $float_entry;
-          if ($root->{'extra'}->{'type'}->{'normalized'} ne '') {
-            if (exists ($float->{'number'})) {
-              $float_entry = 
-               $self->gdt('* {float_type} {float_number}: {float_label}.', 
-                {'float_type' => $root->{'extra'}->{'type'}->{'content'},
-                 'float_number' => $float->{'number'},
-                 'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]});
-            } else {
-              $float_entry = $self->gdt('* {float_type}: {float_label}.', 
-                {'float_type' => $root->{'extra'}->{'type'}->{'content'},
-                 'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]
-                 });
-            }
-          } else {
-            if (exists ($float->{'number'})) {
-              $float_entry = 
-               $self->gdt('*  {float_number}: {float_label}.', 
-                {'float_number' => $float->{'number'},
-                 'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]});
-            } else {
-              $float_entry = $self->gdt('* : {float_label}.', 
-                {'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]
-                 });
-            }
+          my $float_label_text = $self->convert_line({'type' => '_code',
+             'contents' 
+                 => $float->{'extra'}->{'block_command_line_contents'}->[1]});
+          my $float_entry = $self->_float_type_number($float);
+          my $float_entry_text = ':';
+          if (defined($float_entry)) {
+            $float_entry->{'type'} = 'frenchspacing';
+            $float_entry_text = $self->convert_line($float_entry);
           }
-          #print STDERR "$float ".$self->convert_line($float_entry)."\n";
-          $float_entry->{'type'} = 'frenchspacing';
-          my $float_line = $self->convert_line($float_entry);
+          # no translation here, this is required Info format.
+          my $float_line = "* $float_entry_text: $float_label_text.";
           my $line_width 
              = Texinfo::Convert::Unicode::string_width($float_line);
           if ($line_width > $listoffloat_entry_length) {

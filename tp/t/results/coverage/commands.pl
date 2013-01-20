@@ -594,7 +594,7 @@ $result_converted{'xml'}->{'commands'} = '<para>&arobase; &tex; <spacecmd type="
 <email><emailaddress>a</emailaddress><emailname spaces=" ">b</emailname></email> <code>code --- -- \'\' ``</code>
 &textmdash; &textndash; &textrdquo; &textldquo;. <sc>small caps</sc>.
 </para>
-<cindex index="cp" spaces=" "><indexterm index="cp">index entry &textldquo;in text&textrdquo; &latex;</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="1">index entry &textldquo;in text&textrdquo; &latex;</indexterm></cindex>
 
 <majorheading spaces=" ">majorheading <b>in b</b></majorheading>
 ';

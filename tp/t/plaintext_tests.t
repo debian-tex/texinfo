@@ -545,6 +545,54 @@ Para indented.
 'AA @verb{*aa
 bb*}.
 '],
+['multitable_in_example_extraneous_tab',
+'@example
+@multitable a
+@item ita @tab tmp
+@item secit @tab
+@end multitable
+@end example
+'],
+['itemize_in_headitem_in_example',
+'@example
+@itemize
+@headitem a 
+@end itemize
+
+@itemize
+@item bbb
+@headitem ccc
+@end itemize
+
+@itemize
+@headitem ddd
+@item eee
+@end itemize
+
+@itemize
+@item fff
+@headitem ggg
+@item hhh
+@end itemize
+
+@end example
+'],
+['tab_in_table_in_example',
+'@example
+@table @code
+@tab in tab
+@item table item
+T
+@tab other tab
+@end table
+@end example
+'],
+['tab_item_in_example',
+'@example
+@tab in tab
+@item in item
+@end example
+'],
 );
 
 my $insert_copying_and_paragraph = 

@@ -1,8 +1,8 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.26 2012/11/30 23:58:20 gray Exp $
+   $Id: window.c,v 1.27 2013/01/11 18:28:56 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008,
-   2011, 2012 Free Software Foundation, Inc.
+   Copyright 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008,
+   2011, 2012, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox.  */
 
 #include "info.h"
 #include "nodes.h"
@@ -855,6 +855,7 @@ calculate_line_starts (WINDOW *window)
   calc_closure_expand (&closure);
   window->line_starts[window->line_count] = NULL;
   window->log_line_no[window->line_count] = 0;
+  window_line_map_init (window);
 }
 
 /* Given WINDOW, recalculate the line starts for the node it displays. */

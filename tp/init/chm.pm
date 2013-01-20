@@ -27,7 +27,7 @@ use strict;
 
 use File::Spec;
 
-main::set_format('html');
+main::set_global_format('html');
 
 set_from_init_file('TOP_NODE_FILE', undef);
 set_from_init_file('TOP_FILE', undef);

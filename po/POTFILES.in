@@ -35,7 +35,7 @@ tp/Texinfo/Convert/DocBook.pm
 tp/Texinfo/Convert/HTML.pm
 tp/Texinfo/Convert/Info.pm
 tp/Texinfo/Convert/Plaintext.pm
-tp/Texinfo/Convert/XML.pm
+tp/Texinfo/Convert/TexinfoXML.pm
 tp/Texinfo/Parser.pm
 tp/Texinfo/Report.pm
 tp/Texinfo/Structuring.pm

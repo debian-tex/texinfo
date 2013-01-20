@@ -2990,6 +2990,7 @@ sub _end_line($$$)
            and $current->{'contents'}->[-1]->{'type'}
            and $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command'
            and $current->{'contents'}->[-1]->{'extra'}
+           and $current->{'contents'}->[-1]->{'extra'}->{'command'}
            and $current->{'contents'}->[-1]->{'extra'}->{'command'}->{'cmdname'} eq 'verbatim') {
     $current = $self->_begin_preformatted($current);
   # misc command line arguments
@@ -3377,6 +3378,8 @@ sub _end_line($$$)
   return $current;
 }
 
+# $command may be undef if we are after a wrong misc command such as 
+# a buggy @tab.
 sub _start_empty_line_after_command($$$) {
   my $line = shift;
   my $current = shift;
@@ -3384,9 +3387,12 @@ sub _start_empty_line_after_command($$$) {
   $line =~ s/^([^\S\n]*)//;
   push @{$current->{'contents'}}, { 'type' => 'empty_line_after_command',
                                     'text' => $1,
-                                    'parent' => $current,
-                                    'extra' => {'command' => $command} };
-  $command->{'extra'}->{'spaces_after_command'} = $current->{'contents'}->[-1];
+                                    'parent' => $current, 
+                                  };
+  if (defined($command)) {
+    $current->{'contents'}->[-1]->{'extra'} = {'command' => $command};
+    $command->{'extra'}->{'spaces_after_command'} = $current->{'contents'}->[-1];
+  }
   return $line;
 }
 
@@ -3513,7 +3519,10 @@ sub _command_with_command_as_argument($)
                                =~ /^[^\S\n]*/)))
 }
 
-sub _register_and_warn_invalid($$$$)
+# $registered_as_invalid_command  may be undef, if there is no
+# tree element because the @-command construct is incorrect, for example
+# wrong @tab.
+sub _register_and_warn_invalid($$$$$)
 {
   my $self = shift;
   my $command = shift;
@@ -3524,7 +3533,8 @@ sub _register_and_warn_invalid($$$$)
   if (defined($invalid_parent)) {
     $self->line_warn (sprintf($self->__("\@%s should not appear in \@%s"), 
               $command, $invalid_parent), $line_nr);
-    $registered_as_invalid_command->{'extra'}->{'invalid_nesting'} = 1;
+    $registered_as_invalid_command->{'extra'}->{'invalid_nesting'} = 1
+      if (defined($registered_as_invalid_command));
   }
 }
 # the different types
@@ -4201,17 +4211,16 @@ sub _parse_texi($;$)
                                               $command), $line_nr);
               $only_in_headings = 1;
             }
-            unless ($ignored) {
+            if (!$ignored) {
               $misc = {'cmdname' => $command,
                       'parent' => $current};
               push @{$current->{'contents'}}, $misc;
+              # also sets invalid_nesting in that case
+              $misc->{'extra'}->{'invalid_nesting'} = 1 if ($only_in_headings);
+              $self->_register_global_command($command, $misc, $line_nr);
             }
             $self->_register_and_warn_invalid($command, $invalid_parent,
                                               $line_nr, $misc);
-            # also sets invalid_nesting in that case
-            $misc->{'extra'}->{'invalid_nesting'} = 1 if ($only_in_headings);
-            $self->_register_global_command($command, $misc, $line_nr);
-
             $current = $self->_begin_preformatted($current)
               if ($close_preformatted_commands{$command});
 
@@ -4274,10 +4283,10 @@ sub _parse_texi($;$)
                               {'item_number' => $parent->{'items_count'}} };
                   push @{$parent->{'contents'}}, $misc;
                   $current = $parent->{'contents'}->[-1];
-                  $current = $self->_begin_preformatted($current);
                 } else {
                   $self->line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
                 }
+                $current = $self->_begin_preformatted($current);
               # *table
               } elsif ($parent = _item_line_parent($current)) {
                 if ($command eq 'item' or $command eq 'itemx') {
@@ -4286,9 +4295,12 @@ sub _parse_texi($;$)
                   $self->_gather_previous_item($current, $command, $line_nr);
                   $misc = { 'cmdname' => $command, 'parent' => $current };
                   push @{$current->{'contents'}}, $misc;
+                  # since in the %misc_commands hash the entry for those 
+                  # commands is 'skipspace' we set $line_arg here.
                   $line_arg = 1;
                 } else {
                   $self->line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
+                  $current = $self->_begin_preformatted($current);
                 }
               # multitable
               } elsif ($parent = _item_multitable_parent($current)) {
@@ -4312,7 +4324,7 @@ sub _parse_texi($;$)
                             {'cell_number' => $row->{'cells_count'}} };
                       push @{$row->{'contents'}}, $misc;
                       $current = $row->{'contents'}->[-1];
-                      $current = $self->_begin_preformatted($current);
+                      #$current = $self->_begin_preformatted($current);
                       print STDERR "TAB\n" if ($self->{'DEBUG'});
                     }
                   } else {
@@ -4329,15 +4341,18 @@ sub _parse_texi($;$)
                                'extra' => {'cell_number' => 1}};
                     push @{$row->{'contents'}}, $misc;
                     $current = $row->{'contents'}->[-1];
-                    $current = $self->_begin_preformatted($current);
+                    #$current = $self->_begin_preformatted($current);
                   }
                 } else {
                   $self->line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
                 }
+                $current = $self->_begin_preformatted($current);
               } elsif ($command eq 'tab') {
                 $self->line_error($self->__("ignoring \@tab outside of multitable"), $line_nr);
+                $current = $self->_begin_preformatted($current);
               } else {
                 $self->line_error (sprintf($self->__("\@%s outside of table or list"), $command), $line_nr);
+                $current = $self->_begin_preformatted($current);
               }
               $misc->{'line_nr'} = $line_nr if (defined($misc));
             } else {

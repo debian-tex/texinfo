@@ -1535,7 +1535,7 @@ $result_converted{'xml'}->{'comments_end_lines'} = '<itemize commandarg="bullet"
 <tbody><row><entry command="item" spaces=" "><para>a </para></entry><entry command="tab" spaces=" "><para>b
 </para></entry></row></tbody></multitable> <!-- c comm -->
 
-<float name="g" type="f" spaces=" " endspaces=" "><floattype>f</floattype><floatname>g</floatname>
+<float name="g" type="f" number="1" spaces=" " endspaces=" "><floattype>f</floattype><floatname>g</floatname>
 <para>In f
 </para></float>  <!-- c comm -->
 

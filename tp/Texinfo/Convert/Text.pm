@@ -183,7 +183,7 @@ sub ascii_accent($$)
 }
 
 # format a stack of accents as ascii
-sub ascii_accents ($$;$)
+sub ascii_accents($$;$)
 {
   my $result = shift;
   my $stack = shift;
@@ -197,9 +197,21 @@ sub ascii_accents ($$;$)
     }
   }
   foreach my $accent_command (reverse(@$stack)) {
-    $result = ascii_accent ($result, $accent_command);
+    $result = ascii_accent($result, $accent_command);
   }
   return $result;
+}
+
+# Same as ascii_accent, but with a converter as first argument to be consistent
+# with calling conventions of fallback accent formatting functions given
+# to convert_accents/encoded_accents
+sub ascii_accent_fallback($$$)
+{
+  my $converter = shift;
+  my $text = shift;
+  my $command = shift;
+
+  return ascii_accent($text, $command);
 }
 
 # format an accent command and nested accents within as Text.
@@ -217,8 +229,8 @@ sub text_accents($;$$)
   $options->{'sc'} = $set_case if (defined($set_case));
   my $text = convert({'contents' => $contents}, $options);
 
-  my $result = Texinfo::Convert::Unicode::encoded_accents($text, $stack,
-                                  $encoding, \&ascii_accent, $set_case);
+  my $result = Texinfo::Convert::Unicode::encoded_accents(undef, $text, 
+                     $stack, $encoding, \&ascii_accent_fallback, $set_case);
   if (defined($result)) {
     return $result;
   } else {
@@ -794,6 +806,13 @@ I<$text> is the text appearing within an accent command.  I<$accent_command>
 should be a Texinfo tree element corresponding to an accent command taking
 an argument.  The function returns a transliteration of the accented
 character.
+
+=item $result_accent_text = ascii_accent_fallback($converter, $text, $accent_command)
+
+Same as C<ascii_accent> but  with an additional first argument
+converter, which is in ignored, but needed if this function is to 
+be in argument of functions that need a fallback for accents
+conversion.
 
 =item $accents_text = text_accents($accents, $encoding, $set_case)
 

@@ -973,14 +973,14 @@ sub convert_accents($$$;$)
 
   my $encoded;
   if ($self->get_conf('ENABLE_ENCODING')) {
-    $encoded = Texinfo::Convert::Unicode::encoded_accents($result, $stack,
+    $encoded = Texinfo::Convert::Unicode::encoded_accents($self, $result, $stack,
                                        $self->get_conf('OUTPUT_ENCODING_NAME'),
                                        $format_accents,
                                        $in_upper_case);
   }
   if (!defined($encoded)) {
     foreach my $accent_command (reverse(@$stack)) {
-      $result = &$format_accents ($result, $accent_command, 
+      $result = &$format_accents ($self, $result, $accent_command, 
                                   $in_upper_case);
     }
     return $result;
@@ -1173,8 +1173,9 @@ my %xml_accent_text_with_entities = (
 );
 
 
-sub xml_accent($$;$$)
+sub xml_accent($$$;$$)
 {
+  my $self = shift;
   my $text = shift;
   my $command = shift;
   my $in_upper_case = shift;
@@ -1204,10 +1205,11 @@ sub xml_accent($$;$$)
 
 sub _xml_accent_numeric_entities($$;$)
 {
+  my $self = shift;
   my $text = shift;
   my $command = shift;
   my $in_upper_case = shift;
-  return xml_accent($text, $command, $in_upper_case, 1);
+  return $self->xml_accent($text, $command, $in_upper_case, 1);
 }
 
 sub xml_accents($$;$)

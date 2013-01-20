@@ -398,8 +398,9 @@ sub _index_entry($$)
   return '';
 }
 
-sub docbook_accent($$;$)
+sub docbook_accent($$$;$)
 {
+  my $self = shift;
   my $text = shift;
   my $command = shift;
   my $in_upper_case = shift;

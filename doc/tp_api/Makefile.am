@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.7 2012/11/17 19:13:37 pertusus Exp $
+# $Id: Makefile.am,v 1.8 2013/01/16 22:02:36 pertusus Exp $
 # Makefile.am for texinfo/doc/tp_api.
 #
 # Copyright 2012
@@ -39,7 +39,7 @@ tp_api_dependencies = \
   $(top_srcdir)/tp/Texinfo/Convert/Unicode.pm \
   $(top_srcdir)/tp/Texinfo/Convert/Info.pm \
   $(top_srcdir)/tp/Texinfo/Convert/DocBook.pm \
-  $(top_srcdir)/tp/Texinfo/Convert/XML.pm \
+  $(top_srcdir)/tp/Texinfo/Convert/TexinfoXML.pm \
   $(top_srcdir)/tp/Texinfo/Convert/Plaintext.pm \
   $(top_srcdir)/tp/Texinfo/Convert/HTML.pm
 

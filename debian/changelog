@@ -1,3 +1,11 @@
+texinfo (4.13.94.dfsg.1-1) experimental; urgency=low
+
+  * small fixes to make-orig-tar
+  * Imported Upstream version 4.13.94.dfsg.1
+  * update patches to new release
+
+ -- Norbert Preining <preining@debian.org>  Sun, 20 Jan 2013 20:25:10 +0900
+
 texinfo (4.13.93.dfsg.1-1) experimental; urgency=low
 
   * new upstream test release

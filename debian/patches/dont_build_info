@@ -24,7 +24,7 @@ dont build the info documentation, it has been removed
  TEXI2DVI = texi2dvi
  TEXI2PDF = $(TEXI2DVI) --pdf --batch
  MAKEINFOHTML = $(MAKEINFO) --html
-@@ -1000,8 +1002,10 @@
+@@ -1001,8 +1003,10 @@
  SUBDIRS = tp_api
  
  # Put texinfo.txi first because that's the most important.

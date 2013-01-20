@@ -1041,13 +1041,13 @@ $result_converted{'xml'}->{'comment_space_command_on_line'} = '<settitle spaces=
 
 <frenchspacing value="on" line=" on "></frenchspacing><!-- c comment frenchspacing -->
 
-<cindex index="cp" spaces=" "><indexterm index="cp">index entry <spacecmd type="spc"/></indexterm></cindex><!-- c index entry -->
+<cindex index="cp" spaces=" "><indexterm index="cp" number="1">index entry <spacecmd type="spc"/></indexterm></cindex><!-- c index entry -->
 
 <heading spaces=" ">Heading <spacecmd type="spc"/>    </heading><!-- c heading -->
 
 <printindex value="cp" line=" cp "></printindex><!-- c printindex  -->
 
-<float name="label" type="Text" spaces=" " endspaces=" "><floattype>Text</floattype><floatname spaces=" ">label</floatname>
+<float name="label" type="Text" number="1" spaces=" " endspaces=" "><floattype>Text</floattype><floatname spaces=" ">label</floatname>
 <para>float
 </para></float> <!-- c end -->
 

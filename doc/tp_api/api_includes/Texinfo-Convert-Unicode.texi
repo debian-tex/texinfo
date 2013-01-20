@@ -25,8 +25,9 @@ Texinfo::Convert::Unicode - Handle conversion to Unicode
   my ($innermost_contents, $stack)
       = Texinfo::Common::find_innermost_accent_contents($accent);
   
-  my $formatted_accents = encoded_accents (convert($innermost_contents),
-                        $stack, $encoding, \&Texinfo::Text::ascii_accent);
+  my $formatted_accents = encoded_accents ($converter, 
+                        convert($innermost_contents), $stack, $encoding, 
+                        \&Texinfo::Text::ascii_accent_fallback);
 
   my $accent_text = unicode_accent('e', $accent_command);
 @end verbatim
@@ -56,9 +57,11 @@ should be a Texinfo tree element corresponding to an accent command taking
 an argument.  The function returns the unicode representation of the accented
 character.
 
-@item $result = encoded_accents ($text, $stack, $encoding, $format_accent, $set_case)
-@anchor{Texinfo::Convert::Unicode $result = encoded_accents ($text@comma{} $stack@comma{} $encoding@comma{} $format_accent@comma{} $set_case)}
+@item $result = encoded_accents ($converter, $text, $stack, $encoding, $format_accent, $set_case)
+@anchor{Texinfo::Convert::Unicode $result = encoded_accents ($converter@comma{} $text@comma{} $stack@comma{} $encoding@comma{} $format_accent@comma{} $set_case)}
 
+@emph{$converter} is a converter object.  It may be undef if there is no need of
+converter object in @emph{$format_accent} (@emph{$format_accent} described below).
 @emph{$text} is the text appearing within nested accent commands.  @emph{$stack} is
 an array reference holding the nested accents texinfo element trees.  For
 example, @emph{$text} could be the formatted content and @emph{$stack} the stack 

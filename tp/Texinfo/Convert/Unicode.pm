@@ -1265,8 +1265,9 @@ sub _eight_bit_and_unicode_point($$)
 }
 
 # format a stack of accents as unicode
-sub unicode_accents ($$$;$)
+sub unicode_accents($$$$;$)
 {
+  my $converter = shift;
   my $result = shift;
   my $stack = shift;
   my $format_accent = shift;
@@ -1288,13 +1289,14 @@ sub unicode_accents ($$$;$)
   }
   while (@$stack) {
     my $accent_command = pop @$stack;
-    $result = &$format_accent($result, $accent_command, $set_case);
+    $result = &$format_accent($converter, $result, $accent_command, $set_case);
   }
   return $result;
 }
 
-sub eight_bit_accents($$$$;$)
+sub eight_bit_accents($$$$$;$)
 {
+  my $converter = shift;
   my $unicode_formatted = shift;
   my $stack = shift;
   my $encoding = shift;
@@ -1402,7 +1404,7 @@ sub eight_bit_accents($$$$;$)
   # compatible unicode
   shift @results_stack if (!defined($results_stack[0]->[1]));
   while (@results_stack) {
-    $result = &$convert_accent($result,
+    $result = &$convert_accent($converter, $result,
                                $results_stack[0]->[1],
                                $set_case);
     shift @results_stack;
@@ -1413,8 +1415,9 @@ sub eight_bit_accents($$$$;$)
   return $result;
 }
 
-sub encoded_accents ($$$$;$)
+sub encoded_accents($$$$$;$)
 {
+  my $converter = shift;
   my $text = shift;
   my $stack = shift;
   my $encoding = shift;
@@ -1423,10 +1426,11 @@ sub encoded_accents ($$$$;$)
 
   if ($encoding) {
     if ($encoding eq 'utf-8') {
-      return unicode_accents($text, $stack, $format_accent, $set_case);
+      return unicode_accents($converter, $text, $stack, $format_accent, 
+                             $set_case);
     } elsif ($Texinfo::Encoding::eight_bit_encoding_aliases{$encoding}) {
-      return eight_bit_accents($text, $stack, $encoding, $format_accent, 
-                               $set_case);
+      return eight_bit_accents($converter, $text, $stack, $encoding, 
+                               $format_accent, $set_case);
     }
   }
   return undef;
@@ -1492,8 +1496,9 @@ Texinfo::Convert::Unicode - Handle conversion to Unicode
   my ($innermost_contents, $stack)
       = Texinfo::Common::find_innermost_accent_contents($accent);
   
-  my $formatted_accents = encoded_accents (convert($innermost_contents),
-                        $stack, $encoding, \&Texinfo::Text::ascii_accent);
+  my $formatted_accents = encoded_accents ($converter, 
+                        convert($innermost_contents), $stack, $encoding, 
+                        \&Texinfo::Text::ascii_accent_fallback);
 
   my $accent_text = unicode_accent('e', $accent_command);
 
@@ -1520,8 +1525,10 @@ should be a Texinfo tree element corresponding to an accent command taking
 an argument.  The function returns the unicode representation of the accented
 character.
 
-=item $result = encoded_accents ($text, $stack, $encoding, $format_accent, $set_case)
+=item $result = encoded_accents ($converter, $text, $stack, $encoding, $format_accent, $set_case)
 
+I<$converter> is a converter object.  It may be undef if there is no need of
+converter object in I<$format_accent> (I<$format_accent> described below).
 I<$text> is the text appearing within nested accent commands.  I<$stack> is
 an array reference holding the nested accents texinfo element trees.  For
 example, I<$text> could be the formatted content and I<$stack> the stack 

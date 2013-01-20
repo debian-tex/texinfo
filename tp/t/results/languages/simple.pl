@@ -129,7 +129,7 @@ $result_trees{'simple'} = {
                             'contents' => [],
                             'type' => 'bracketed'
                           },
-                          'text' => 'Instance Variable'
+                          'text' => 'Variable d\'instance'
                         }
                       ],
                       'parent' => undef,
@@ -355,7 +355,7 @@ $result_texis{'simple'} = '@documentlanguage fr
 
 $result_texts{'simple'} = '
 
-Instance Variable of AAA: BBB CCC
+Variable d\'instance of AAA: BBB CCC
 ';
 
 $result_sectioning{'simple'} = {};
@@ -390,7 +390,7 @@ $result_errors{'simple'} = [];
 
 
 
-$result_converted{'plaintext'}->{'simple'} = ' -- Instance Variable de AAA: BBB CCC
+$result_converted{'plaintext'}->{'simple'} = ' -- Variable d\'instance de AAA : BBB CCC
 ';
 
 1;

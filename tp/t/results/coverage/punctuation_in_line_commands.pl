@@ -1591,19 +1591,19 @@ $result_converted{'xml'}->{'punctuation_in_line_commands'} = '
 </para><exdent spaces=" ">exdent quotation! After punc</exdent>
 </quotation>
 
-<float name="float-label_0021-After-punc" type="float-type_0021-After-punc" spaces=" " endspaces=" "><floattype>float type! After punc</floattype><floatname spaces=" ">float label! After punc</floatname>
+<float name="float-label_0021-After-punc" type="float-type_0021-After-punc" number="1" spaces=" " endspaces=" "><floattype>float type! After punc</floattype><floatname spaces=" ">float label! After punc</floatname>
 <para>In float
 </para><shortcaption><para>shortcaption! After punc</para></shortcaption>
 </float>
 
-<float name="label-with-caption" type="float-type_0021-After-punc" spaces=" " endspaces=" "><floattype>float type! After punc</floattype><floatname spaces=" ">label with caption</floatname>
+<float name="label-with-caption" type="float-type_0021-After-punc" number="2" spaces=" " endspaces=" "><floattype>float type! After punc</floattype><floatname spaces=" ">label with caption</floatname>
 <para>In float with caption.
 </para><caption><para>caption! After punc</para></caption>
 </float>
 
 <listoffloats type="float-type_0021-After-punc" spaces=" ">float type! After punc</listoffloats>
 
-<cindex index="cp" spaces=" "><indexterm index="cp">index! After punc</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="1">index! After punc</indexterm></cindex>
 
 <heading spaces=" ">heading! After punc</heading>
 

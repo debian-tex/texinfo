@@ -129,7 +129,7 @@ $result_trees{'unknown_region'} = {
                             'contents' => [],
                             'type' => 'bracketed'
                           },
-                          'text' => 'Instance Variable'
+                          'text' => 'Variable d\'instance'
                         }
                       ],
                       'parent' => undef,
@@ -355,7 +355,7 @@ $result_texis{'unknown_region'} = '@documentlanguage fr_NOWHERE
 
 $result_texts{'unknown_region'} = '
 
-Instance Variable of AAA: BBB CCC
+Variable d\'instance of AAA: BBB CCC
 ';
 
 $result_sectioning{'unknown_region'} = {};
@@ -400,7 +400,7 @@ $result_errors{'unknown_region'} = [
 
 
 
-$result_converted{'plaintext'}->{'unknown_region'} = ' -- Instance Variable de AAA: BBB CCC
+$result_converted{'plaintext'}->{'unknown_region'} = ' -- Variable d\'instance de AAA : BBB CCC
 ';
 
 
@@ -409,7 +409,7 @@ $result_converted{'info'}->{'unknown_region'} = 'This is , produced by tp versio
 
 File: ,  Node: Top,  Up: (dir)
 
- -- Instance Variable de AAA: BBB CCC
+ -- Variable d\'instance de AAA : BBB CCC
 
 
 Tag Table:
@@ -470,7 +470,7 @@ ul.no-bullet {list-style: none}
 <h1 class="node-heading">Top</h1>
 
 <dl>
-<dt><a name="index-BBB-of-AAA"></a>Instance Variable de AAA: <strong>BBB</strong> <em>CCC</em></dt>
+<dt><a name="index-BBB-of-AAA"></a>Variable d\'instance de AAA&nbsp;: <strong>BBB</strong> <em>CCC</em></dt>
 </dl>
 <hr>
 

@@ -1174,7 +1174,7 @@ $result_converted{'xml'}->{'double_node_anchor_float'} = '<node name="node1" spa
 <float type="Text" spaces=" " endspaces=" "><floattype>Text</floattype><floatname spaces=" ">anchor1</floatname>
 </float>
 
-<float name="float1" type="Text" spaces=" " endspaces=" "><floattype>Text</floattype><floatname spaces=" ">float1</floatname>
+<float name="float1" type="Text" number="1" spaces=" " endspaces=" "><floattype>Text</floattype><floatname spaces=" ">float1</floatname>
 </float>
 
 <node name="" spaces=" "><nodename></nodename></node>

@@ -158,7 +158,7 @@ $result_converted{'html_text'}->{'definfoenclose_with_empty_arg'} = '
 $result_converted{'xml'}->{'definfoenclose_with_empty_arg'} = '
 <definfoenclose command="headword" open="" close=":" line=" headword, , :"></definfoenclose>
 
-<para>My <infoenclose command="headword" begin=""  end=":">something</infoenclose>.
+<para>My <infoenclose command="headword" begin="" end=":">something</infoenclose>.
 </para>
 ';
 

@@ -317,7 +317,7 @@ $result_converted{'docbook'}->{'def_in_example'} = '<synopsis><indexterm role="f
 
 
 $result_converted{'xml'}->{'def_in_example'} = '<example endspaces=" ">
-<defun spaces=" " endspaces=" "><definitionterm><indexterm index="fn">name</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>name</deffunction> <defparam>arg</defparam></definitionterm>
+<defun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="1">name</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>name</deffunction> <defparam>arg</defparam></definitionterm>
 <definitionitem><pre xml:space="preserve">in defun
 </pre></definitionitem></defun>
 </example>

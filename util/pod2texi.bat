@@ -1,2 +1,2 @@
-+@echo off
-+perl "%~dpn0" %*
+@echo off
+perl "%~dpn0" %*

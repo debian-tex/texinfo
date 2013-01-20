@@ -1075,21 +1075,21 @@ $result_converted{'xml'}->{'test_deftypefnnewline'} = '
 <deftypefnnewline value="on" line=" on"></deftypefnnewline>
 
 <node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
-<deftypefun spaces=" " endspaces=" "><definitionterm><indexterm index="fn">name</indexterm><defcategory automatic="on">Function</defcategory> <deftype>data-type</deftype> <deffunction>name</deffunction> <defparamtype>arguments...</defparamtype></definitionterm>
+<deftypefun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="1">name</indexterm><defcategory automatic="on">Function</defcategory> <deftype>data-type</deftype> <deffunction>name</deffunction> <defparamtype>arguments...</defparamtype></definitionterm>
 <definitionitem><para>aaa
 </para></definitionitem></deftypefun>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">arg</indexterm><defcategory>fun</defcategory> <deffunction>arg</deffunction></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="2">arg</indexterm><defcategory>fun</defcategory> <deffunction>arg</deffunction></definitionterm>
 <definitionitem><para>fff
 </para></definitionitem></deffn>
 
 <deftypefnnewline value="off" line=" off"></deftypefnnewline>
 
-<deftypefun spaces=" " endspaces=" "><definitionterm><indexterm index="fn">name2</indexterm><defcategory automatic="on">Function</defcategory> <deftype>data-type2</deftype> <deffunction>name2</deffunction> <defparamtype>arguments2...</defparamtype></definitionterm>
+<deftypefun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="3">name2</indexterm><defcategory automatic="on">Function</defcategory> <deftype>data-type2</deftype> <deffunction>name2</deffunction> <defparamtype>arguments2...</defparamtype></definitionterm>
 <definitionitem><para>aaa2
 </para></definitionitem></deftypefun>
 
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">arg2</indexterm><defcategory>fun2</defcategory> <deffunction>arg2</deffunction></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="4">arg2</indexterm><defcategory>fun2</defcategory> <deffunction>arg2</deffunction></definitionterm>
 <definitionitem><para>fff2
 </para></definitionitem></deffn>
 ';

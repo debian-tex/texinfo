@@ -1471,7 +1471,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
                             'contents' => [],
                             'type' => 'bracketed'
                           },
-                          'text' => 'Instance Variable'
+                          'text' => 'Variable d\'instance'
                         }
                       ],
                       'parent' => undef,
@@ -2384,7 +2384,7 @@ Instance Variable of AAA: BBB CCC
 3 fr_FR
 *******
 
-Instance Variable of AAA: BBB CCC
+Variable d\'instance of AAA: BBB CCC
 
 4 de
 ****

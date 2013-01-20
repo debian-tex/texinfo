@@ -100,7 +100,8 @@ use Texinfo::Parser;
 use Texinfo::Structuring;
 use Texinfo::Convert::Info;
 use Texinfo::Convert::HTML;
-use Texinfo::Convert::XML;
+use Texinfo::Convert::TexinfoXML;
+use Texinfo::Convert::TexinfoSXML;
 use Texinfo::Convert::DocBook;
 use Texinfo::Convert::TextContent;
 use Texinfo::Convert::PlainTexinfo;
@@ -166,7 +167,6 @@ if ('@datadir@' ne '@' . 'datadir@' and '@PACKAGE@' ne '@' . 'PACKAGE@') {
 if ((defined($ENV{"LC_ALL"}) and $ENV{"LC_ALL"} =~ /^(C|POSIX)$/)
      or (defined($ENV{"LANG"}) and $ENV{"LANG"} =~ /^(C|POSIX)$/)) {
   delete $ENV{"LANGUAGE"} if defined($ENV{"LANGUAGE"});
-  # FIXME set the other variable if only one is set?
 }
 
 
@@ -523,15 +523,31 @@ sub set_expansion($$) {
 }
 
 my $format_from_command_line = 0;
-sub set_format($;$)
+
+my %format_command_line_names = (
+  'xml' => 'texinfoxml',
+);
+
+sub set_format($)
 {
   my $set_format = shift;
-  my $no_associated_texinfo_format = shift;
-  $default_expanded_format = [$set_format]
-    unless ($no_associated_texinfo_format);
+
+  $default_expanded_format = [$set_format] 
+    if ($Texinfo::Common::texinfo_output_formats{$set_format});
   $format_from_command_line = 1;
-  $format = $set_format;
-  return $set_format;
+  my $format;
+  if ($format_command_line_names{$set_format}) {
+    $format = $format_command_line_names{$set_format};
+  } else {
+    $format = $set_format;
+  }
+  return $format;
+}
+
+sub set_global_format($)
+{
+  my $set_format = shift;
+  $format = set_format($set_format);
 }
 
 my $call_texi2dvi = 0;
@@ -814,18 +830,20 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
      }
      # special case, this is a pseudo format for debug
      if ($var eq 'DEBUGCOUNT') {
-       $format = set_format('debugcount', 1);
+       $format = set_format('debugcount');
      } elsif ($var eq 'TEXI2HTML') {
        $format = set_format('html');
        $parser_default_options->{'values'}->{'texi2html'} = 1;
      } elsif ($var eq 'DEBUGTREE') {
-       $format = set_format('debugtree', 1);
+       $format = set_format('debugtree');
      } elsif ($var eq 'PLAINTEXINFO') {
-       $format = set_format('plaintexinfo', 1);
+       $format = set_format('plaintexinfo');
      } elsif ($var eq 'RAWTEXT') {
-       $format = set_format('rawtext', 1);
+       $format = set_format('rawtext');
      } elsif ($var eq 'TEXTCONTENT') {
-       $format = set_format('textcontent', 1);
+       $format = set_format('textcontent');
+     } elsif ($var eq 'TEXINFOSXML') {
+       $format = set_format('texinfosxml');
      }
      set_from_cmdline ($var, $value);
      # FIXME do that here or when all command line options are processed?
@@ -916,9 +934,13 @@ my %formats_table = (
              'move_index_entries_after_items' => 1,
              'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
            },
-  'xml' => {
+  'texinfoxml' => {
              'nodes_tree' => 1,
-             'converter' => sub{Texinfo::Convert::XML->converter(@_)},
+             'converter' => sub{Texinfo::Convert::TexinfoXML->converter(@_)},
+           },
+  'texinfosxml' => {
+             'nodes_tree' => 1,
+             'converter' => sub{Texinfo::Convert::TexinfoSXML->converter(@_)},
            },
   'docbook' => {
              'move_index_entries_after_items' => 1,
@@ -956,6 +978,24 @@ my %formats_table = (
            },
 );
 
+my %format_names = (
+ 'info' => 'Info',
+ 'html' => 'HTML',
+ 'docbook' => 'DocBook',
+ 'texinfoxml' => 'Texinfo XML',
+ 'plaintext' => 'Plain Text',
+);
+
+sub format_name($)
+{
+  my $format = shift;
+  if ($format_names{$format}) {
+    return $format_names{$format};
+  } else {
+    return $format;
+  }
+}
+
 
 if (!$format_from_command_line and defined($ENV{'TEXINFO_OUTPUT_FORMAT'}) 
     and $ENV{'TEXINFO_OUTPUT_FORMAT'} ne '') {
@@ -974,10 +1014,10 @@ if (!$format_from_command_line and defined($ENV{'TEXINFO_OUTPUT_FORMAT'})
 if ($call_texi2dvi) {
   if (defined(get_conf('OUT')) and @ARGV > 1) {
     die sprintf(__('when generating %s, only one input FILE may be specified with -o'),
-                $format);
+                format_name($format));
   }
 } elsif($Xopt_arg_nr) {
-  document_warn (__('--Xopt option without printed output')); 
+  document_warn(__('--Xopt option without printed output')); 
 }
 
 my %tree_transformations;
@@ -994,13 +1034,13 @@ if (get_conf('TREE_TRANSFORMATIONS')) {
 }
 
 if (get_conf('SPLIT') and !$formats_table{$format}->{'split'}) {
-  document_warn (sprintf(__('Ignoring splitting for format %s'), $format));
+  document_warn (sprintf(__('Ignoring splitting for format %s'), format_name($format)));
   set_from_cmdline('SPLIT', ''); 
 }
 
-foreach my $format (@{$default_expanded_format}) {
-  push @{$parser_default_options->{'expanded_formats'}}, $format 
-    unless (grep {$_ eq $format} @{$parser_default_options->{'expanded_formats'}});
+foreach my $expanded_format (@{$default_expanded_format}) {
+  push @{$parser_default_options->{'expanded_formats'}}, $expanded_format 
+    unless (grep {$_ eq $expanded_format} @{$parser_default_options->{'expanded_formats'}});
 }
 
 my $converter_class;

@@ -1,6 +1,6 @@
 #! /bin/sh
-# $Id: regenerate_document_strings_make_rules.sh,v 1.3 2012/11/16 18:33:03 karl Exp $
-# Copyright 2011, 2012 Free Software Foundation, Inc.
+# $Id: regenerate_docstr.sh,v 1.1 2013/01/13 18:04:59 karl Exp $
+# Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -13,7 +13,7 @@
 # Originally written by Patrice Dumas.
 
 dir=`echo $0 | sed 's,/[^/]*$,,'`
-outfile=Makefile.documents_strings_mo_files
+outfile=$1
 
 (
 cd $dir/..

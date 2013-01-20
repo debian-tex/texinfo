@@ -2472,7 +2472,7 @@ T
 <para>T<footnote spaces="\\n"><image where="inline"><imagefile>in_footnote</imagefile></image>
 </footnote>
 </para>
-<float name="g" type="F" spaces=" " endspaces=" "><floattype>F</floattype><floatname>g</floatname>
+<float name="g" type="F" number="1.1" spaces=" " endspaces=" "><floattype>F</floattype><floatname>g</floatname>
 
 <image><imagefile>in_float</imagefile></image>
 

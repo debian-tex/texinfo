@@ -2887,7 +2887,7 @@ $result_converted{'xml'}->{'commands_and_spaces'} = '<set name="foo" line="  foo
 <para>Q
 </para></quotation>
 
-<float name="b" type="ff" spaces="  " endspaces=" "><floattype>ff </floattype><floatname spaces=" ">b   </floatname>
+<float name="b" type="ff" number="1" spaces="  " endspaces=" "><floattype>ff </floattype><floatname spaces=" ">b   </floatname>
 <para>f
 </para><caption spaces=" "><para>In caption </para></caption><para>j.
 </para><shortcaption><para>Short</para></shortcaption><para>  g.
@@ -2921,7 +2921,7 @@ in tex
 </para>
 <para><indicateurl spaces=" ">http://ggg </indicateurl>
 </para>
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn">machin </indexterm><defcategory bracketed="on" spaces=" ">truc </defcategory> <deffunction bracketed="on" spaces=" ">machin </deffunction>  <defparam bracketed="on" spaces=" ">bidule </defparam>  <defparam bracketed="on" spaces="  ">chose </defparam> <defparam bracketed="on" spaces="  ">arg </defparam></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="1">machin </indexterm><defcategory bracketed="on" spaces=" ">truc </defcategory> <deffunction bracketed="on" spaces=" ">machin </deffunction>  <defparam bracketed="on" spaces=" ">bidule </defparam>  <defparam bracketed="on" spaces="  ">chose </defparam> <defparam bracketed="on" spaces="  ">arg </defparam></definitionterm>
 <definitionitem><para>T
 </para></definitionitem></deffn>
 

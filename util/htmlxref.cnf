@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2013-01-02.00; # UTC
+htmlxrefversion=2013-01-10.14; # UTC
 
 # Copyright 2010, 2011, 2012, 2013 Free Software Foundation, Inc.
 # 
@@ -456,6 +456,8 @@ mpc		node	http://www.multiprecision.org/index.php?prog=mpc&page=html
 
 mpfr		mono	http://www.mpfr.org/mpfr-current/mpfr.html
 
+mtools		mono	${GS}/mtools/manual/mtools.html
+
 myserver	node	http://www.myserverproject.net/documentation/
 
 nano		mono	http://www.nano-editor.org/dist/latest/nano.html
@@ -486,6 +488,9 @@ proxyknife	node	${GS}/proxyknife/manual/html_node/
 pspp		mono	${GS}/pspp/manual/pspp.html
 pspp		node	${GS}/pspp/manual/html_node/
 
+pyconfigure	mono	${GS}/pyconfigure/manual/pyconfigure.html
+pyconfigure	node	${GS}/pyconfigure/manual/html_node/
+
 R = http://cran.r-project.org/doc/manuals/
  R-intro	mono	${R}/R-intro.html
  R-lang		mono	${R}/R-lang.html
@@ -509,6 +514,9 @@ recutils	node	${GS}/recutils/manual/html_node/
 
 reftex		mono	${GS}/auctex/manual/reftex.html
 reftex		node	${GS}/auctex/manual/reftex/
+
+remotecontrol	mono	${GS}/remotecontrol/manual/remotecontrol.html
+remotecontrol	node	${GS}/remotecontrol/manual/html_node/
 
 rottlog		mono	${GS}/rottlog/manual/rottlog.html
 rottlog		node	${GS}/rottlog/manual/html_node/

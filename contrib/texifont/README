@@ -1,4 +1,4 @@
-$Id: README,v 1.1 2013/01/02 01:00:29 karl Exp $
+$Id: README,v 1.2 2013/01/02 23:02:44 karl Exp $
 texinfo/contrib/texifont/README
 
 Everything in this directory is public domain.
@@ -11,18 +11,19 @@ in the mid-2000s on a new font system for Texinfo (and that could work
 with Eplain).  Oleg wrote essentially all the code, while I advised on
 the design, etc.
 
-The idea was to support all the widely-available free font families,
-getting away from of the current hardwiring of Computer Modern in
-texinfo.tex.  The example at the end of documentation gives the basic
-flavor.  As it stands, it is not hooked into texinfo.tex or Texinfo
-documents at all.  That is not the hard part :).
+The idea was to support all the widely-available free font families and
+widely used input encodings.  getting away from of the current
+hardwiring of Computer Modern in texinfo.tex.  The example at the end of
+documentation gives the basic flavor.  As it stands, it is not hooked
+into texinfo.tex or Texinfo documents at all.  That is not the hard part :).
 
 Unfortunately, it never came to fruition.  Even more unfortunately, Oleg
 and I can't even give any real specifics of what the "next thing" to do
 is, we've lost the details in the haze of time.  As I recall, the
 current problem was something about caching of glyphs to avoid
-unnecessary (and greatly excessive) switching of fonts, and that is
-where "attributes" (fattr.tex) was coming in, but it was never finished.
+unnecessary (and greatly excessive) switching of fonts.  In addition,
+"attributes" (fattr.tex) were starting to come into play.  But it all
+remains a work in progress.
 
 Anyway, I'm not sanguine about anyone ever doing anything with this, but
 just in case some super-duper TeX hacker has too much time on their

@@ -473,12 +473,12 @@ $result_converted{'html_text'}->{'index_entry_in_preformatted'} = '<a name="Top"
 $result_converted{'xml'}->{'index_entry_in_preformatted'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 
 <example endspaces=" ">
-<pre xml:space="preserve"><cindex index="cp" spaces=" "><indexterm index="cp">first</indexterm></cindex>
+<pre xml:space="preserve"><cindex index="cp" spaces=" "><indexterm index="cp" number="1">first</indexterm></cindex>
 text
 
-<cindex index="cp" spaces=" "><indexterm index="cp">other</indexterm></cindex><!-- c comment -->
+<cindex index="cp" spaces=" "><indexterm index="cp" number="2">other</indexterm></cindex><!-- c comment -->
 text2
-<cindex index="cp" spaces=" "><indexterm index="cp">last</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="3">last</indexterm></cindex>
 </pre></example>
 ';
 

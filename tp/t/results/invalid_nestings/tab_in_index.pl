@@ -127,9 +127,6 @@ $result_trees{'tab_in_index'} = {
                                   'text' => 'in index entry '
                                 },
                                 {
-                                  'extra' => {
-                                    'command' => undef
-                                  },
                                   'parent' => {},
                                   'text' => ' ',
                                   'type' => 'empty_spaces_after_command'

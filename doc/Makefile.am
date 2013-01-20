@@ -1,8 +1,8 @@
-# $Id: Makefile.am,v 1.53 2012/11/14 00:32:57 karl Exp $
+# $Id: Makefile.am,v 1.54 2013/01/19 15:54:04 karl Exp $
 # Makefile.am for texinfo/doc.
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
-# Free Software Foundation, Inc.
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
+# 2013 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -103,6 +103,9 @@ wwwdoc-build:
 	&& $(gendocs_invoke) -o $(manual2) $(manual2) $(manual2_title) \
 	&& $(gendocs_invoke) -o $(manual3) $(manual3) $(manual3_title)
 	@echo "Manuals for web distribution under: $(doctemp)/"
+#
+# At official release, we need to update:
+# http://www.gnu.org/software/texinfo/manual/
 wwwdoc-install:
 	cp -arf $(doctemp)/$(manual1) $(doctemp)/$(manual2) \
 	  $(doctemp)/$(manual3) $(www_target)

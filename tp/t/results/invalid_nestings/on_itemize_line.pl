@@ -308,9 +308,6 @@ $result_trees{'on_itemize_line'} = {
               'text' => 'on line '
             },
             {
-              'extra' => {
-                'command' => undef
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'

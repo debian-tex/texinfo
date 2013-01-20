@@ -161,9 +161,6 @@ $result_trees{'section_in_table'} = {
           'type' => 'empty_line'
         },
         {
-          'extra' => {
-            'command' => undef
-          },
           'parent' => {},
           'text' => ' ',
           'type' => 'empty_spaces_after_command'

@@ -1,6 +1,140 @@
+2013-01-19  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.13.94.
+	
+	* README-hacking: tersely describe release steps.
+
+2013-01-18  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Customization Variables for Program Behavior)
+	[TEXINFOSXML]: new output format.
+	* tp/Makefile.am (dist_converters_DATA): add TexinfoSXML.pm.
+
+2013-01-16  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/TexinfoXML.pm: replace tp/Texinfo/Convert/XML.pm.
+
+2013-01-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Marking Text): remaining node names needing @t.
+
+2013-01-15  Karl Berry  <karl@gnu.org>
+
+	* po_document/LINGUAS: es.us-ascii is back, paperwork executed
+	by Francisco Vila <paconet.org@gmail.com>.
+
+	* doc/texinfo.txi: use @t instead of @code in node names,
+	to avoid extraneous quotes.
+
+2013-01-15  Patrice Dumas  <pertusus@free.fr>
+
+	* autogen.sh: adapt to shorter regenerate_docstr.sh 
+	and Makefile.docstr names.
+
+2013-01-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Conditionally Visible Text,
+	Defining New Texinfo Commands,
+	Formatting and Printing Hardcopy,
+	Creating an Info File): node names with @.
+	Fix more xrefs for new names.
+
+2013-01-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Special Insertions, Breaks, deffnx,
+	documentencoding): node names with @, restructure.
+
+	* po_document/LINGUAS (ja, es.us-ascii): remove.
+	* tp/maintain/regenerate_docstr.sh: shorten name of
+	regenerate_document_strings_make_rules.sh.
+	* tp/Makefile.docstr: shorten name of generated file, too.
+	* tp/Makefile.am: renames.
+
+2013-01-12  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Internationalization of Document Strings):
+	small changes.
+
+2013-01-11  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (AC_PREREQ): remove, better to rely on
+	AM_INIT_AUTOMAKE's implicit prereq.
+	Suggestion from Stefano, 11 Jan 2013 12:12:53.
+
+	* tp/tests/Makefile.am (long-check, all-check, tex-html-check):
+	aliases for the names with s.
+
+2013-01-11  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* info/window.c (calculate_line_starts): call window_line_map_init,
+	19 Dec 2012 14:10:30 +0200
+
+2013-01-08  Patrice Dumas  <pertusus@free.fr>
+
+	* po_document/fr.us-ascii.po: update by Jean-Charles Malahieude,
+	with additional edits.
+	* doc/texinfo.txi (Internationalization of Strings), doc/draft_api.texi
+	(Internationalization of Strings Function): re-add the text about
+	translated strings in the manual keeping only the perl api information
+	in draft_api.texi.
+
+2013-01-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Lists and Tables, Floats): node names with @.
+
+2013-01-07  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Cross References, Quotations and Examples):
+	node names with @ throughout chapter.
+
+2013-01-06  Karl Berry  <karl@gnu.org>
+
+	* install-info/install-info.c (open_possibly_compressed_file):
+	free in .gz case is wrong.
+
+	* doc/texinfo.txi (Nodes): node names with @ throughout chapter.
+
+	* doc/texinfo.txi (acronyn, Smallcaps): more about the problems of
+	using them, and not recommending them.
+
+2013-01-06  Patrice Dumas  <pertusus@free.fr>
+
+	* configure.ac: prove is required for tp tests.
+
+2013-01-05  Karl Berry  <karl@gnu.org>
+
+	* install-info/install-info.c (open_possibly_compressed_file):
+	free the original in the .gz and (found by Andreas Schwab, 05 Jan
+	2013 12:28:05) .xz cases too.  Reindent other parts of fn correctly.
+
+	* doc/texinfo.txi (Chapter Structuring): node names with @
+	throughout chapter.
+
+2013-01-05  Patrice Dumas  <pertusus@free.fr>
+
+	* util/*.bat: remove spurious +, reported by Eli Z.
+
+2013-01-04  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (end titlepage, setchapternewpage,
+	headings on off, paragraphindent, exampleindent): continue
+	conversion to node names with @.
+
+2013-01-03  Thien-Thi Nguyen  <ttn@gnuvola.org>  (tiny change)
+
+	* doc/texinfo.txi (Combining Indices):
+	@synindex uses the "roman font for merged-from". 
+
+2013-01-03  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (setfilename, settitle, copying, insertcopying,
+	titlepage, titlefont center sp, title subtitle author,
+	documentdescription, quotation, setfilename, settitle): continue
+	conversion to node names with @.
+
 2013-01-01  Karl Berry  <karl@gnu.org>
 
-	* pretest 4.13.92.
+	* pretest 4.13.93.
 
 	* util/Makefile.am (texinfo.cat): remove rule and references;
 	not aware of anything using it, current rule fails distcheck.

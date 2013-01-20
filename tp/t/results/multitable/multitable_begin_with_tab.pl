@@ -58,9 +58,6 @@ $result_trees{'multitable_begin_with_tab'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => undef
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -220,9 +217,6 @@ $result_trees{'multitable_begin_with_tab'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => undef
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'

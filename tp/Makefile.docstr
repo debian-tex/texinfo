@@ -58,18 +58,6 @@ LocaleData/it/LC_MESSAGES: LocaleData/it
 LocaleData/it: LocaleData
 	$(mkdir_p) $@
 
-$(srcdir)/../po_document/ja.gmo: $(srcdir)/../po_document/ja.po
-	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) ja.gmo
-
-LocaleData/ja/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/ja.gmo LocaleData/ja/LC_MESSAGES
-	$(INSTALL_DATA) $(srcdir)/../po_document/ja.gmo $@
-
-LocaleData/ja/LC_MESSAGES: LocaleData/ja
-	$(mkdir_p) $@
-
-LocaleData/ja: LocaleData
-	$(mkdir_p) $@
-
 $(srcdir)/../po_document/nl.us-ascii.gmo: $(srcdir)/../po_document/nl.us-ascii.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) nl.us-ascii.gmo
 
@@ -121,4 +109,4 @@ LocaleData/pt.us-ascii: LocaleData
 LocaleData:
 	$(mkdir_p) $@
 
-document_strings_mo_files =  LocaleData/de.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/es.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/fr.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/hu/LC_MESSAGES/$(document_domain).mo LocaleData/it/LC_MESSAGES/$(document_domain).mo LocaleData/ja/LC_MESSAGES/$(document_domain).mo LocaleData/nl.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/no.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt.us-ascii/LC_MESSAGES/$(document_domain).mo
+document_strings_mo_files =  LocaleData/de.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/es.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/fr.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/hu/LC_MESSAGES/$(document_domain).mo LocaleData/it/LC_MESSAGES/$(document_domain).mo LocaleData/nl.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/no.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt.us-ascii/LC_MESSAGES/$(document_domain).mo

@@ -40,9 +40,6 @@ $result_trees{'headitem_in_table'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => undef
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'

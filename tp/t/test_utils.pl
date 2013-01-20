@@ -13,7 +13,7 @@ use Texinfo::Structuring;
 use Texinfo::Convert::Plaintext;
 use Texinfo::Convert::Info;
 use Texinfo::Convert::HTML;
-use Texinfo::Convert::XML;
+use Texinfo::Convert::TexinfoXML;
 use Texinfo::Convert::DocBook;
 use DebugTexinfo::DebugCount;
 use File::Basename;
@@ -114,7 +114,7 @@ our %extensions = (
 );
 
 my %xml_converter_defaults 
-    = Texinfo::Convert::XML::converter_defaults(undef, undef);
+    = Texinfo::Convert::TexinfoXML::converter_defaults(undef, undef);
 my $XML_DTD_VERSION = $xml_converter_defaults{'TEXINFO_DTD_VERSION'};
 
 my %outfile_preamble = (
@@ -536,9 +536,9 @@ sub convert_to_xml($$$$$$;$)
                                     $parser_options, 'xml');
   
   my $converter =
-     Texinfo::Convert::XML->converter ({'DEBUG' => $self->{'DEBUG'},
+     Texinfo::Convert::TexinfoXML->converter ({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,
-                                         'output_format' => 'xml',
+                                         'output_format' => 'texinfoxml',
                                           %$converter_options });
 
   my $result;

@@ -147,7 +147,7 @@ Cross reference @@-command referencing nodes, like @code{@@xref}.
 
 Commands delimiting a block with a closing @code{@@end}.  The value
 is @emph{conditional} for @code{@@if} commands, @emph{def} for definition
-commandslike @code{@@deffn}, @emph{raw} for @@-commands that have no expansion
+commands like @code{@@deffn}, @emph{raw} for @@-commands that have no expansion
 of @@-commands in their bodies and @emph{multitable} for @code{@@multitable}.  
 Otherwise it is set to the number of arguments separated by commas 
 that may appear on the @@-command line. That means 0 in most cases, 
@@ -164,6 +164,12 @@ as @code{@@macro}, @code{@@verbatim} or @code{@@ignore}.
 
 @@-commands associated with raw output format, like @code{@@html}, or
 @code{@@docbook}.
+
+@item %texinfo_output_formats
+@anchor{Texinfo::Common %texinfo_output_formats}
+
+Cannonical output formats that have associated conditionals.  In
+practice @code{%format_raw_commands} plus @code{info} and @code{plaintext}.
 
 @item %def_commands
 @anchor{Texinfo::Common %def_commands}
@@ -278,8 +284,8 @@ is @code{e}.
 @item trim_spaces_comment_from_content($contents)
 @anchor{Texinfo::Common trim_spaces_comment_from_content($contents)}
 
-Remove empty spaces after commands or braces at begina and
-and spaces and comments at end from a content array, modifying it.
+Remove empty spaces after commands or braces at begin and
+spaces and comments at end from a content array, modifying it.
 
 @item $normalized_name = normalize_top_node_name ($node_string)
 @anchor{Texinfo::Common $normalized_name = normalize_top_node_name ($node_string)}

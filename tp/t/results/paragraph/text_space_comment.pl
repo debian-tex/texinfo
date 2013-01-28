@@ -27,6 +27,11 @@ $result_trees{'text_space_comment'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' space comment'
+            ]
+          },
           'parent' => {}
         }
       ],

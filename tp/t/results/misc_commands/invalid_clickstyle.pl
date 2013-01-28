@@ -24,7 +24,10 @@ $result_trees{'invalid_clickstyle'} = {
       'cmdname' => 'clickstyle',
       'extra' => {
         'arg_line' => ' @result on the same line
-'
+',
+        'misc_args' => [
+          '@result'
+        ]
       },
       'line_nr' => {
         'file_name' => '',
@@ -86,7 +89,10 @@ $result_trees{'invalid_clickstyle'} = {
       'cmdname' => 'clickstyle',
       'extra' => {
         'arg_line' => ' @nocmd
-'
+',
+        'misc_args' => [
+          '@nocmd'
+        ]
       },
       'line_nr' => {
         'file_name' => '',

@@ -25,7 +25,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' text atext
-'
+',
+            'misc_args' => [
+              'text',
+              'atext'
+            ]
           },
           'parent' => {}
         },
@@ -181,6 +185,12 @@ $result_trees{'value_in_misc_commands'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment @value{text}
+'
+                ]
+              },
               'parent' => {}
             },
             {
@@ -193,6 +203,12 @@ $result_trees{'value_in_misc_commands'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment @value{text}
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -221,7 +237,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' pagesizes_arg 200mm,150mm
-'
+',
+            'misc_args' => [
+              'pagesizes_arg',
+              '200mm,150mm'
+            ]
           },
           'parent' => {}
         },
@@ -241,7 +261,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' afourpaper_macro @afourpaper
-'
+',
+            'misc_args' => [
+              'afourpaper_macro',
+              '@afourpaper'
+            ]
           },
           'parent' => {}
         },
@@ -352,6 +376,17 @@ $result_trees{'value_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'oddfooting',
+          'extra' => {
+            'misc_args' => [
+              ' some text ignored @value{text}
+'
+            ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 18,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -364,6 +399,17 @@ $result_trees{'value_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'everyheading',
+          'extra' => {
+            'misc_args' => [
+              ' on line following everyheading @value{text}
+'
+            ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 19,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -388,7 +434,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' need_arg 0.1
-'
+',
+            'misc_args' => [
+              'need_arg',
+              '0.1'
+            ]
           },
           'parent' => {}
         },
@@ -461,7 +511,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' raisesections_macro @raisesections
-'
+',
+            'misc_args' => [
+              'raisesections_macro',
+              '@raisesections'
+            ]
           },
           'parent' => {}
         },
@@ -493,7 +547,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' lowersections_macro @lowersections
-'
+',
+            'misc_args' => [
+              'lowersections_macro',
+              '@lowersections'
+            ]
           },
           'parent' => {}
         },
@@ -525,6 +583,12 @@ $result_trees{'value_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' tex error: Use of \\ doesn\'t match its definition.
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -645,7 +709,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' definfoenclose_name phi
-'
+',
+            'misc_args' => [
+              'definfoenclose_name',
+              'phi'
+            ]
           },
           'parent' => {}
         },
@@ -753,7 +821,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' strong_macro @strong
-'
+',
+            'misc_args' => [
+              'strong_macro',
+              '@strong'
+            ]
           },
           'parent' => {}
         },
@@ -773,7 +845,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' strong_name strong
-'
+',
+            'misc_args' => [
+              'strong_name',
+              'strong'
+            ]
           },
           'parent' => {}
         },
@@ -970,7 +1046,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' kbdinputstyle_arg code
-'
+',
+            'misc_args' => [
+              'kbdinputstyle_arg',
+              'code'
+            ]
           },
           'parent' => {}
         },
@@ -1186,7 +1266,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' asis_arg asis
-'
+',
+            'misc_args' => [
+              'asis_arg',
+              'asis'
+            ]
           },
           'parent' => {}
         },
@@ -1206,7 +1290,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' zero 0
-'
+',
+            'misc_args' => [
+              'zero',
+              '0'
+            ]
           },
           'parent' => {}
         },
@@ -1226,7 +1314,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' none_arg none
-'
+',
+            'misc_args' => [
+              'none_arg',
+              'none'
+            ]
           },
           'parent' => {}
         },
@@ -1246,7 +1338,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' four 4
-'
+',
+            'misc_args' => [
+              'four',
+              '4'
+            ]
           },
           'parent' => {}
         },
@@ -1266,7 +1362,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' six 6
-'
+',
+            'misc_args' => [
+              'six',
+              '6'
+            ]
           },
           'parent' => {}
         },
@@ -1544,7 +1644,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' end_arg end
-'
+',
+            'misc_args' => [
+              'end_arg',
+              'end'
+            ]
           },
           'parent' => {}
         },
@@ -1564,7 +1668,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' separate_arg separate 
-'
+',
+            'misc_args' => [
+              'separate_arg',
+              'separate'
+            ]
           },
           'parent' => {}
         },
@@ -1672,7 +1780,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' latin1 ISO-8859-1
-'
+',
+            'misc_args' => [
+              'latin1',
+              'ISO-8859-1'
+            ]
           },
           'parent' => {}
         },
@@ -1739,7 +1851,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' en en
-'
+',
+            'misc_args' => [
+              'en',
+              'en'
+            ]
           },
           'parent' => {}
         },
@@ -1759,7 +1875,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' documentlanguage_command @documentlanguage
-'
+',
+            'misc_args' => [
+              'documentlanguage_command',
+              '@documentlanguage'
+            ]
           },
           'parent' => {}
         },
@@ -1901,7 +2021,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' on_arg on
-'
+',
+            'misc_args' => [
+              'on_arg',
+              'on'
+            ]
           },
           'parent' => {}
         },
@@ -1921,7 +2045,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' off_arg off
-'
+',
+            'misc_args' => [
+              'off_arg',
+              'off'
+            ]
           },
           'parent' => {}
         },
@@ -2023,6 +2151,12 @@ $result_trees{'value_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' accepts 10 or 11
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -2041,7 +2175,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' ten 10
-'
+',
+            'misc_args' => [
+              'ten',
+              '10'
+            ]
           },
           'parent' => {}
         },
@@ -2102,6 +2240,12 @@ $result_trees{'value_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' accept false or true
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -2114,6 +2258,12 @@ $result_trees{'value_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' makeinfo don\'t care about the arg and remove the remaining of the line
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -2132,7 +2282,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' false_arg false
-'
+',
+            'misc_args' => [
+              'false_arg',
+              'false'
+            ]
           },
           'parent' => {}
         },
@@ -2152,7 +2306,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' true_arg true
-'
+',
+            'misc_args' => [
+              'true_arg',
+              'true'
+            ]
           },
           'parent' => {}
         },
@@ -2266,7 +2424,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' page_macro @page
-'
+',
+            'misc_args' => [
+              'page_macro',
+              '@page'
+            ]
           },
           'parent' => {}
         },
@@ -2286,7 +2448,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' noindent_macro @noindent
-'
+',
+            'misc_args' => [
+              'noindent_macro',
+              '@noindent'
+            ]
           },
           'parent' => {}
         },
@@ -2306,7 +2472,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' refill_macro @refill
-'
+',
+            'misc_args' => [
+              'refill_macro',
+              '@refill'
+            ]
           },
           'parent' => {}
         },
@@ -2526,7 +2696,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' contents_macro @contents
-'
+',
+            'misc_args' => [
+              'contents_macro',
+              '@contents'
+            ]
           },
           'parent' => {}
         },
@@ -2563,6 +2737,12 @@ $result_trees{'value_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'vskip',
+          'extra' => {
+            'misc_args' => [
+              ' @value{text}
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -2587,7 +2767,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' cropmarks_command @cropmarks
-'
+',
+            'misc_args' => [
+              'cropmarks_command',
+              '@cropmarks'
+            ]
           },
           'parent' => {}
         },
@@ -2625,7 +2809,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' exdent_macro @exdent
-'
+',
+            'misc_args' => [
+              'exdent_macro',
+              '@exdent'
+            ]
           },
           'parent' => {}
         },
@@ -2692,7 +2880,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' two 2
-'
+',
+            'misc_args' => [
+              'two',
+              '2'
+            ]
           },
           'parent' => {}
         },
@@ -2759,7 +2951,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' result_macro @result
-'
+',
+            'misc_args' => [
+              'result_macro',
+              '@result'
+            ]
           },
           'parent' => {}
         },
@@ -2780,7 +2976,10 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'clickstyle',
           'extra' => {
             'arg_line' => ' @value{result_macro}
-'
+',
+            'misc_args' => [
+              '@value'
+            ]
           },
           'line_nr' => {
             'file_name' => '',
@@ -2834,7 +3033,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' shortcontents_macro @shortcontents
-'
+',
+            'misc_args' => [
+              'shortcontents_macro',
+              '@shortcontents'
+            ]
           },
           'parent' => {}
         },
@@ -2877,7 +3080,11 @@ $result_trees{'value_in_misc_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' bye_macro @bye
-'
+',
+            'misc_args' => [
+              'bye_macro',
+              '@bye'
+            ]
           },
           'parent' => {}
         },

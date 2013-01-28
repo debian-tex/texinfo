@@ -32,6 +32,12 @@ $result_trees{'sample_utf8'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' %**start of header
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -169,6 +175,12 @@ $result_trees{'sample_utf8'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' %**end of header
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -363,6 +375,12 @@ $result_trees{'sample_utf8'} = {
                     }
                   ],
                   'cmdname' => 'vskip',
+                  'extra' => {
+                    'misc_args' => [
+                      ' 0pt plus 1filll
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -452,6 +470,12 @@ $result_trees{'sample_utf8'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' Output the table of the contents at the beginning.
+'
+            ]
+          },
           'parent' => {}
         },
         {

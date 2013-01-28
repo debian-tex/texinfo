@@ -105,6 +105,7 @@ use Texinfo::Convert::TexinfoSXML;
 use Texinfo::Convert::DocBook;
 use Texinfo::Convert::TextContent;
 use Texinfo::Convert::PlainTexinfo;
+use Texinfo::Convert::IXINSXML;
 use DebugTexinfo::DebugCount;
 use DebugTexinfo::DebugTree;
 
@@ -528,20 +529,108 @@ my %format_command_line_names = (
   'xml' => 'texinfoxml',
 );
 
-sub set_format($)
+my %formats_table = (
+ 'info' => {
+             'nodes_tree' => 1,
+             'floats' => 1,
+             'converter' => sub{Texinfo::Convert::Info->converter(@_)},
+           },
+  'plaintext' => {
+             'nodes_tree' => 1,
+             'floats' => 1,
+             'converter' => sub{Texinfo::Convert::Plaintext->converter(@_)},
+           },
+  'html' => {
+             'nodes_tree' => 1,
+             'floats' => 1,
+             'split' => 1,
+             'internal_links' => 1,
+             'simple_menu' => 1,
+             'move_index_entries_after_items' => 1,
+             'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
+           },
+  'texinfoxml' => {
+             'nodes_tree' => 1,
+             'converter' => sub{Texinfo::Convert::TexinfoXML->converter(@_)},
+             'floats' => 1,
+           },
+  'texinfosxml' => {
+             'nodes_tree' => 1,
+             'converter' => sub{Texinfo::Convert::TexinfoSXML->converter(@_)},
+             'floats' => 1,
+           },
+  'ixinsxml' => {
+             'nodes_tree' => 1,
+             'converter' => sub{Texinfo::Convert::IXINSXML->converter(@_)},
+           },
+  'docbook' => {
+             'move_index_entries_after_items' => 1,
+             'converter' => sub{Texinfo::Convert::DocBook->converter(@_)},
+           },
+  'pdf' => {
+             'texi2dvi_format' => 1,
+           },
+  'ps' =>  {
+             'texi2dvi_format' => 1,
+           },
+  'dvi' => {
+             'texi2dvi_format' => 1,
+           },
+  'dvipdf' => {
+             'texi2dvi_format' => 1,
+           },
+  'debugcount' => {
+             'nodes_tree' => 1,
+             'floats' => 1,
+             'converter' => sub{DebugTexinfo::DebugCount->converter(@_)},
+           },
+  'debugtree' => {
+          'split' => 1,
+          'converter' => sub{DebugTexinfo::DebugTree->converter(@_)},
+         },
+  'textcontent' => {
+            'converter' => sub{Texinfo::Convert::TextContent->converter(@_)},
+           },
+  'rawtext' => {
+            'converter' => sub{Texinfo::Convert::Text->converter(@_)},
+           },
+  'plaintexinfo' => {
+            'converter' => sub{Texinfo::Convert::PlainTexinfo->converter(@_)},
+           },
+);
+
+my $call_texi2dvi = 0;
+
+# previous_format should be in argument if there is a possibility of error.
+# as a fallback, the $format global variable is used.
+sub set_format($;$)
 {
   my $set_format = shift;
+  my $previous_format = shift;
 
-  $default_expanded_format = [$set_format] 
-    if ($Texinfo::Common::texinfo_output_formats{$set_format});
-  $format_from_command_line = 1;
-  my $format;
+  my $new_format;
   if ($format_command_line_names{$set_format}) {
-    $format = $format_command_line_names{$set_format};
+    $new_format = $format_command_line_names{$set_format};
   } else {
-    $format = $set_format;
+    $new_format = $set_format;
   }
-  return $format;
+  my $expanded_format = $set_format;
+  if (!$formats_table{$new_format}) {
+    warn sprintf(__("%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"), 
+                 $real_command_name, $new_format);
+    $new_format = $previous_format;
+    $new_format = $format if (!defined($new_format));
+  } else {
+    if ($formats_table{$new_format}->{'texi2dvi_format'}) {
+      $call_texi2dvi = 1;
+      push @texi2dvi_args, '--'.$new_format; 
+      $expanded_format = 'tex';
+    }
+    $default_expanded_format = [$expanded_format] 
+      if ($Texinfo::Common::texinfo_output_formats{$expanded_format});
+    $format_from_command_line = 1;
+  }
+  return $new_format;
 }
 
 sub set_global_format($)
@@ -549,18 +638,6 @@ sub set_global_format($)
   my $set_format = shift;
   $format = set_format($set_format);
 }
-
-my $call_texi2dvi = 0;
-sub set_texi2dvi_format($)
-{
-  my $format = shift;
-  $call_texi2dvi = 1;
-  push @texi2dvi_args, '--'.$format; 
-  $format_from_command_line = 1;
-  set_format('tex');
-  return $format;
-}
-
 
 sub document_warn($) {
   return if (get_conf('NO_WARN'));
@@ -829,21 +906,11 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
        $value = undef;
      }
      # special case, this is a pseudo format for debug
-     if ($var eq 'DEBUGCOUNT') {
-       $format = set_format('debugcount');
+     if ($var eq 'TEXINFO_OUTPUT_FORMAT') {
+       $format = set_format($value, $format);
      } elsif ($var eq 'TEXI2HTML') {
        $format = set_format('html');
        $parser_default_options->{'values'}->{'texi2html'} = 1;
-     } elsif ($var eq 'DEBUGTREE') {
-       $format = set_format('debugtree');
-     } elsif ($var eq 'PLAINTEXINFO') {
-       $format = set_format('plaintexinfo');
-     } elsif ($var eq 'RAWTEXT') {
-       $format = set_format('rawtext');
-     } elsif ($var eq 'TEXTCONTENT') {
-       $format = set_format('textcontent');
-     } elsif ($var eq 'TEXINFOSXML') {
-       $format = set_format('texinfosxml');
      }
      set_from_cmdline ($var, $value);
      # FIXME do that here or when all command line options are processed?
@@ -887,10 +954,10 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
  'info' => sub {$format = set_format($_[0]);},
  'docbook' => sub {$format = set_format($_[0]);},
  'xml' => sub {$format = set_format($_[0]);},
- 'dvi' => sub {$format = set_texi2dvi_format($_[0]);},
- 'dvipdf' => sub {$format = set_texi2dvi_format($_[0]);},
- 'ps' => sub {$format = set_texi2dvi_format($_[0]);},
- 'pdf' => sub {$format = set_texi2dvi_format($_[0]);},
+ 'dvi' => sub {$format = set_format($_[0]);},
+ 'dvipdf' => sub {$format = set_format($_[0]);},
+ 'ps' => sub {$format = set_format($_[0]);},
+ 'pdf' => sub {$format = set_format($_[0]);},
  'debug=i' => sub {set_from_cmdline('DEBUG', $_[1]); 
                    $parser_default_options->{'DEBUG'} = $_[1];
                    push @texi2dvi_args, '--'.$_[0]; },
@@ -914,69 +981,6 @@ if (get_conf('TEST')) {
   }
 }
 
-my %formats_table = (
- 'info' => {
-             'nodes_tree' => 1,
-             'floats' => 1,
-             'converter' => sub{Texinfo::Convert::Info->converter(@_)},
-           },
-  'plaintext' => {
-             'nodes_tree' => 1,
-             'floats' => 1,
-             'converter' => sub{Texinfo::Convert::Plaintext->converter(@_)},
-           },
-  'html' => {
-             'nodes_tree' => 1,
-             'floats' => 1,
-             'split' => 1,
-             'internal_links' => 1,
-             'simple_menu' => 1,
-             'move_index_entries_after_items' => 1,
-             'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
-           },
-  'texinfoxml' => {
-             'nodes_tree' => 1,
-             'converter' => sub{Texinfo::Convert::TexinfoXML->converter(@_)},
-           },
-  'texinfosxml' => {
-             'nodes_tree' => 1,
-             'converter' => sub{Texinfo::Convert::TexinfoSXML->converter(@_)},
-           },
-  'docbook' => {
-             'move_index_entries_after_items' => 1,
-             'converter' => sub{Texinfo::Convert::DocBook->converter(@_)},
-           },
-  'pdf' => {
-             'texi2dvi_format' => 1,
-           },
-  'ps' =>  {
-             'texi2dvi_format' => 1,
-           },
-  'dvi' => {
-             'texi2dvi_format' => 1,
-           },
-  'dvipdf' => {
-             'texi2dvi_format' => 1,
-           },
-  'debugcount' => {
-             'nodes_tree' => 1,
-             'floats' => 1,
-             'converter' => sub{DebugTexinfo::DebugCount->converter(@_)},
-           },
-  'debugtree' => {
-          'split' => 1,
-          'converter' => sub{DebugTexinfo::DebugTree->converter(@_)},
-         },
-  'textcontent' => {
-            'converter' => sub{Texinfo::Convert::TextContent->converter(@_)},
-           },
-  'rawtext' => {
-            'converter' => sub{Texinfo::Convert::Text->converter(@_)},
-           },
-  'plaintexinfo' => {
-            'converter' => sub{Texinfo::Convert::PlainTexinfo->converter(@_)},
-           },
-);
 
 my %format_names = (
  'info' => 'Info',
@@ -999,16 +1003,7 @@ sub format_name($)
 
 if (!$format_from_command_line and defined($ENV{'TEXINFO_OUTPUT_FORMAT'}) 
     and $ENV{'TEXINFO_OUTPUT_FORMAT'} ne '') {
-  if (!$formats_table{$ENV{'TEXINFO_OUTPUT_FORMAT'}}) {
-    warn sprintf(__("%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"), 
-                 $real_command_name, $ENV{'TEXINFO_OUTPUT_FORMAT'});
-  } else {
-    if ($formats_table{$ENV{'TEXINFO_OUTPUT_FORMAT'}}->{'texi2dvi_format'}) {
-      $format = set_texi2dvi_format($ENV{'TEXINFO_OUTPUT_FORMAT'});
-    } else {
-      $format = set_format($ENV{'TEXINFO_OUTPUT_FORMAT'});
-    }
-  }
+  $format = set_format($ENV{'TEXINFO_OUTPUT_FORMAT'}, $format);
 }
 
 if ($call_texi2dvi) {
@@ -1222,6 +1217,10 @@ while(@input_files) {
   if ($tree_transformations{'complete_tree_nodes_menus'}) {
     Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree);
   }
+  if ($tree_transformations{'indent_menus_descriptions'}) {
+    Texinfo::Convert::Plaintext::indent_menus_descriptions(undef, $parser);
+  }
+
   if ($tree_transformations{'regenerate_master_menu'}) {
     Texinfo::Structuring::regenerate_master_menu($parser);
   }
@@ -1349,10 +1348,10 @@ foreach my $unclosed_file (keys(%unclosed_files)) {
 
 if ($call_texi2dvi) {
   if (get_conf('DEBUG') or get_conf('VERBOSE')) {
-    print STDERR "EXEC ".join('|', (get_conf('TEXI2DVI'), @texi2dvi_args,  @ARGV)) 
+    print STDERR "EXEC ".join('|', (get_conf('TEXI2DVI'), @texi2dvi_args, @ARGV)) 
        ."\n";
   }
-  exec { get_conf('TEXI2DVI') } (get_conf('TEXI2DVI'), @texi2dvi_args,  @ARGV);
+  exec { get_conf('TEXI2DVI') } (get_conf('TEXI2DVI'), @texi2dvi_args, @ARGV);
 }
 
 1;

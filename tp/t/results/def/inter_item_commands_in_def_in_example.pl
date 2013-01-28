@@ -157,6 +157,12 @@ $result_trees{'inter_item_commands_in_def_in_example'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' comment before first deffnx
+'
+                        ]
+                      },
                       'parent' => {}
                     },
                     {

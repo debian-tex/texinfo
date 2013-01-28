@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.35 2012/12/21 00:30:46 pertusus Exp $
+<!-- $Id: texinfo.dtd,v 1.36 2013/01/19 21:12:08 pertusus Exp $
   Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -699,6 +699,7 @@
                 (caption | shortcaption)*)>
 <!ATTLIST float
           %spacesblockattr;
+          number CDATA #IMPLIED
           name CDATA #IMPLIED
           type CDATA #IMPLIED>
 <!ELEMENT floattype (#PCDATA | %Inline.line;)*>
@@ -1161,6 +1162,7 @@
 <!ATTLIST indexterm
           index         CDATA #IMPLIED
           mergedindex   CDATA #IMPLIED
+          number        CDATA #REQUIRED
           incode    (%zeroone;) #IMPLIED>
 <!ELEMENT indexcommand (indexterm)>
 <!ATTLIST indexcommand

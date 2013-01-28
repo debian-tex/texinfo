@@ -482,6 +482,12 @@ $result_trees{'node'} = {
                 }
               ],
               'cmdname' => 'comment',
+              'extra' => {
+                'misc_args' => [
+                  '
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -627,6 +633,12 @@ $result_trees{'node'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comma , end
+'
+                ]
+              },
               'parent' => {}
             }
           ],

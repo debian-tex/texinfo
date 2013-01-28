@@ -23,7 +23,11 @@ $result_trees{'value_zero'} = {
       'cmdname' => 'set',
       'extra' => {
         'arg_line' => ' zero 0
-'
+',
+        'misc_args' => [
+          'zero',
+          '0'
+        ]
       },
       'parent' => {}
     },

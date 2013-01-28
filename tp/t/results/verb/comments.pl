@@ -49,6 +49,12 @@ $result_trees{'comments'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' comment
+'
+            ]
+          },
           'parent' => {}
         }
       ],
@@ -104,6 +110,11 @@ $result_trees{'comments'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' other comment'
+            ]
+          },
           'parent' => {}
         }
       ],

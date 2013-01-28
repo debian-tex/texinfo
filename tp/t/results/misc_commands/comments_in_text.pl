@@ -23,6 +23,12 @@ $result_trees{'comments_in_text'} = {
         }
       ],
       'cmdname' => 'c',
+      'extra' => {
+        'misc_args' => [
+          ' lone comment
+'
+        ]
+      },
       'parent' => {}
     },
     {
@@ -47,6 +53,12 @@ $result_trees{'comments_in_text'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' comment
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -59,6 +71,12 @@ $result_trees{'comments_in_text'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' comment
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -75,6 +93,12 @@ $result_trees{'comments_in_text'} = {
             }
           ],
           'cmdname' => 'comment',
+          'extra' => {
+            'misc_args' => [
+              ' c
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -108,6 +132,12 @@ $result_trees{'comments_in_text'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' comment
+'
+            ]
+          },
           'parent' => {}
         }
       ],

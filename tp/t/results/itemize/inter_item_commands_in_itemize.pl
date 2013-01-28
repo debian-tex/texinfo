@@ -49,6 +49,12 @@ $result_trees{'inter_item_commands_in_itemize'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment in itemize
+'
+                ]
+              },
               'parent' => {}
             },
             {
@@ -515,6 +521,12 @@ $result_trees{'inter_item_commands_in_itemize'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment in itemize
+'
+                ]
+              },
               'parent' => {}
             },
             {

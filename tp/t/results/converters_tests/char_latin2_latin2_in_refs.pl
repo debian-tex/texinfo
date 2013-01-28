@@ -368,6 +368,12 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' Aogonek(0xa1=0241) aogonek(0xb1=0261) standalone ogonek(0xca=0312) Eogonek(0xea=0352) eogonek
+'
+            ]
+          },
           'parent' => {}
         },
         {

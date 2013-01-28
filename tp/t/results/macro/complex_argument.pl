@@ -251,6 +251,12 @@ $result_trees{'complex_argument'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' @macrofour
+'
+            ]
+          },
           'parent' => {}
         },
         {

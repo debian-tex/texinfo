@@ -381,6 +381,12 @@ $result_trees{'also_not_line'} = {
             }
           ],
           'cmdname' => 'vskip',
+          'extra' => {
+            'misc_args' => [
+              ' 
+'
+            ]
+          },
           'parent' => {}
         },
         {

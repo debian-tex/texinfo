@@ -27,6 +27,12 @@ $result_trees{'accent_no_closed_comment'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comment
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],

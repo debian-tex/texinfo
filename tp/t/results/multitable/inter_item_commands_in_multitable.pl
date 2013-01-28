@@ -53,6 +53,12 @@ $result_trees{'inter_item_commands_in_multitable'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment before first item
+'
+                ]
+              },
               'parent' => {}
             },
             {
@@ -206,6 +212,12 @@ $result_trees{'inter_item_commands_in_multitable'} = {
                             }
                           ],
                           'cmdname' => 'c',
+                          'extra' => {
+                            'misc_args' => [
+                              ' last comment
+'
+                            ]
+                          },
                           'parent' => {}
                         }
                       ],
@@ -518,6 +530,12 @@ $result_trees{'inter_item_commands_in_multitable'} = {
                             }
                           ],
                           'cmdname' => 'c',
+                          'extra' => {
+                            'misc_args' => [
+                              ' comment in multitable
+'
+                            ]
+                          },
                           'parent' => {}
                         }
                       ],

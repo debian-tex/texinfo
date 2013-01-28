@@ -157,6 +157,12 @@ $result_trees{'defx_after_comment_in_example'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' comment
+'
+                        ]
+                      },
                       'parent' => {}
                     }
                   ],

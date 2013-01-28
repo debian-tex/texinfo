@@ -217,6 +217,12 @@ $result_trees{'multitable'} = {
                             }
                           ],
                           'cmdname' => 'c',
+                          'extra' => {
+                            'misc_args' => [
+                              ' comment in multitable
+'
+                            ]
+                          },
                           'parent' => {}
                         }
                       ],

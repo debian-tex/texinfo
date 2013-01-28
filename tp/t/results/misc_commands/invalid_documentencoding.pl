@@ -17,6 +17,12 @@ $result_trees{'invalid_documentencoding'} = {
         }
       ],
       'cmdname' => 'c',
+      'extra' => {
+        'misc_args' => [
+          ' this one is valid
+'
+        ]
+      },
       'parent' => {}
     },
     {

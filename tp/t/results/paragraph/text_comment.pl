@@ -22,6 +22,11 @@ $result_trees{'text_comment'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' comment'
+            ]
+          },
           'parent' => {}
         }
       ],

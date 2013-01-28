@@ -49,6 +49,12 @@ $result_trees{'inter_item_commands_in_table'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment in table
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -301,6 +307,12 @@ $result_trees{'inter_item_commands_in_table'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' comment between item and itemx
+'
+                        ]
+                      },
                       'parent' => {}
                     }
                   ],
@@ -603,6 +615,12 @@ $result_trees{'inter_item_commands_in_table'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' and a comment
+'
+                        ]
+                      },
                       'parent' => {}
                     },
                     {
@@ -615,6 +633,12 @@ $result_trees{'inter_item_commands_in_table'} = {
                         }
                       ],
                       'cmdname' => 'comment',
+                      'extra' => {
+                        'misc_args' => [
+                          ' and another comment
+'
+                        ]
+                      },
                       'parent' => {}
                     }
                   ],
@@ -774,6 +798,12 @@ $result_trees{'inter_item_commands_in_table'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' comment between lines
+'
+                        ]
+                      },
                       'parent' => {}
                     },
                     {
@@ -861,6 +891,12 @@ $result_trees{'inter_item_commands_in_table'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comment at end
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -1032,6 +1068,12 @@ $result_trees{'inter_item_commands_in_table'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment in table
+'
+                ]
+              },
               'parent' => {}
             }
           ],

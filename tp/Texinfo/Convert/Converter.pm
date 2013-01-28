@@ -100,6 +100,7 @@ our %all_converters_defaults = (
   'DEBUG'                => 0,
   'TEST'                 => 0,
   'translated_commands'  => {'error' => 'error@arrow{}',},
+  'TEXINFO_COLUMN_FOR_DESCRIPTION' => 32, # same as emacs
 );
 
 # For translation of in document string.
@@ -128,6 +129,23 @@ sub output_internal_links($)
   return undef;
 }
 
+sub _informative_command_value($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  my $cmdname = $root->{'cmdname'};
+
+  if ($Texinfo::Common::misc_commands{$cmdname} eq 'skipline') {
+    return 1;
+  } elsif (exists($root->{'extra'}->{'text_arg'})) {
+    return $root->{'extra'}->{'text_arg'};
+  } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'}
+           and exists($root->{'extra'}->{'misc_args'}->[0])) {
+    return $root->{'extra'}->{'misc_args'}->[0];
+  }
+}
+
 # FIXME documentencoding handling is not reverted by resetting
 # a value with set_conf, so _unset_global_multiple_commands won't
 # reverse what _set_global_multiple_commands did through 
@@ -142,33 +160,8 @@ sub _informative_command($$)
 
   return if ($self->{'set'}->{$cmdname});
 
-  if ($Texinfo::Common::misc_commands{$cmdname} eq 'skipline') {
-    $self->set_conf($cmdname, 1);
-  } elsif (exists($root->{'extra'}->{'text_arg'})) {
-    $self->set_conf($cmdname, $root->{'extra'}->{'text_arg'});
-    #if ($cmdname eq 'documentencoding'
-    #    and defined($root->{'extra'})
-    #    and defined($root->{'extra'}->{'perl_encoding'})
-    #   ){
-      # the following does not work with shifijs.  The encoding
-      # has to be set only once by open_out. 
-      #if (defined($self->{'fh'})) {
-      #  my $encoding = $self->{'perl_encoding'};
-      #  my $filehandle = $self->{'fh'};
-      #  if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
-      #    binmode($filehandle, ':utf8');
-      #  } else { # also right for shiftijs or similar encodings?
-      #    binmode($filehandle, ':bytes');
-      #  }
-      #  binmode($filehandle, ":encoding($encoding)");
-      #}
-    #  $self->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
-    #  $self->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
-    #}
-  } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'}
-           and exists($root->{'extra'}->{'misc_args'}->[0])) {
-    $self->set_conf($cmdname, $root->{'extra'}->{'misc_args'}->[0]);
-  }
+  my $value = $self->_informative_command_value($root);
+  $self->set_conf($cmdname, $value);
 }
 
 sub register_close_file($$)
@@ -820,7 +813,7 @@ sub output($$)
   
   my $fh;
   if (! $self->{'output_file'} eq '') {
-    $fh = $self->Texinfo::Common::open_out ($self->{'output_file'});
+    $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
       $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                     $self->{'output_file'}, $!));
@@ -861,11 +854,11 @@ sub _convert_document_elements($$;$$)
   if ($elements) {
     my $result = '';
     foreach my $element (@$elements) {
-      $result .= $self->_output_text ($self->convert_tree($element), $fh);
+      $result .= $self->_output_text($self->convert_tree($element), $fh);
     }
     return $result;
   } else {
-    return $self->_output_text ($self->convert_tree($root), $fh);
+    return $self->_output_text($self->convert_tree($root), $fh);
   }
 }
 
@@ -1061,6 +1054,9 @@ sub xml_protect_text($$)
 {
   my $self = shift;
   my $text = shift;
+  if (!defined($text)) {
+    cluck;
+  }
   $text =~ s/&/&amp;/g;
   $text =~ s/</&lt;/g;
   $text =~ s/>/&gt;/g;

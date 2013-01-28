@@ -17,6 +17,12 @@ $result_trees{'vskip'} = {
         }
       ],
       'cmdname' => 'vskip',
+      'extra' => {
+        'misc_args' => [
+          ' 0pt plus 1filll
+'
+        ]
+      },
       'parent' => {}
     }
   ],

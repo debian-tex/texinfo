@@ -25,7 +25,11 @@ $result_trees{'value_expansion_in_include'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' testvar incl-incl.txi
-'
+',
+            'misc_args' => [
+              'testvar',
+              'incl-incl.txi'
+            ]
           },
           'parent' => {}
         },
@@ -45,6 +49,12 @@ $result_trees{'value_expansion_in_include'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' test - in the variable name, and concatenation of text after.
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -63,7 +73,11 @@ $result_trees{'value_expansion_in_include'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' test-var incl-incl.tx
-'
+',
+            'misc_args' => [
+              'test-var',
+              'incl-incl.tx'
+            ]
           },
           'parent' => {}
         },
@@ -83,6 +97,12 @@ $result_trees{'value_expansion_in_include'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' test - in the variable name, and concatenation of text before and after.
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -101,7 +121,11 @@ $result_trees{'value_expansion_in_include'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' test_var ncl-incl.tx
-'
+',
+            'misc_args' => [
+              'test_var',
+              'ncl-incl.tx'
+            ]
           },
           'parent' => {}
         },

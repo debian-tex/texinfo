@@ -23,7 +23,11 @@ $result_trees{'comma_value_in_macro_arg'} = {
       'cmdname' => 'set',
       'extra' => {
         'arg_line' => ' comma ,
-'
+',
+        'misc_args' => [
+          'comma',
+          ','
+        ]
       },
       'parent' => {}
     },

@@ -158,6 +158,12 @@ $result_trees{'index_entry_in_preformatted'} = {
                             }
                           ],
                           'cmdname' => 'c',
+                          'extra' => {
+                            'misc_args' => [
+                              ' comment
+'
+                            ]
+                          },
                           'parent' => {}
                         }
                       ],

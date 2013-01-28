@@ -110,6 +110,12 @@ $result_trees{'anchor_in_command'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' emph @emph{emph2 @anchor{anchor in emph} }}.
+'
+                        ]
+                      },
                       'parent' => {}
                     },
                     {

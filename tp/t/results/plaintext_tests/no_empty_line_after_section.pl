@@ -124,6 +124,12 @@ $result_trees{'no_empty_line_after_section'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' comment
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -149,6 +155,12 @@ $result_trees{'no_empty_line_after_section'} = {
                 }
               ],
               'cmdname' => 'comment',
+              'extra' => {
+                'misc_args' => [
+                  ' c
+'
+                ]
+              },
               'parent' => {}
             }
           ],

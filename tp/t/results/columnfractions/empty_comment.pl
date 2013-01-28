@@ -41,6 +41,12 @@ $result_trees{'empty_comment'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          '
+'
+                        ]
+                      },
                       'parent' => {}
                     }
                   ],

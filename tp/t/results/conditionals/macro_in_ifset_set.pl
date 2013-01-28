@@ -29,7 +29,11 @@ $result_trees{'macro_in_ifset_set'} = {
       'cmdname' => 'set',
       'extra' => {
         'arg_line' => ' a
-'
+',
+        'misc_args' => [
+          'a',
+          ''
+        ]
       },
       'parent' => {}
     },
@@ -101,7 +105,10 @@ $result_trees{'macro_in_ifset_set'} = {
       'cmdname' => 'unmacro',
       'extra' => {
         'arg_line' => ' truc
-'
+',
+        'misc_args' => [
+          'truc'
+        ]
       },
       'parent' => {}
     },

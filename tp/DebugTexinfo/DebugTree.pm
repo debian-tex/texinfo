@@ -19,11 +19,11 @@
 
 # Example of calls
 # with creation of elements corresponding to sections:
-# ./texi2any.pl --set DEBUGTREE --set USE_NODES=0 file.texi
+# ./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree --set USE_NODES=0 file.texi
 # with creation of elements corresponding to nodes:
-# ./texi2any.pl --set DEBUGTREE --set USE_NODES=1 file.texi
+# ./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree --set USE_NODES=1 file.texi
 # no elements
-# ./texi2any.pl --set DEBUGTREE file.texi
+# ./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree file.texi
 # 
 # Some unofficial info about the --debug command line option ... with
 # --debug=1, the tree is not printed,

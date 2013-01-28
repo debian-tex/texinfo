@@ -50,6 +50,12 @@ $result_trees{'good_space_comment'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' space comment
+'
+                        ]
+                      },
                       'parent' => {}
                     }
                   ],

@@ -79,6 +79,12 @@ $result_trees{'delcomment'} = {
         }
       ],
       'cmdname' => 'c',
+      'extra' => {
+        'misc_args' => [
+          ' this tests both the del comment and a file without
+'
+        ]
+      },
       'parent' => {}
     },
     {
@@ -91,6 +97,12 @@ $result_trees{'delcomment'} = {
         }
       ],
       'cmdname' => 'c',
+      'extra' => {
+        'misc_args' => [
+          ' element.
+'
+        ]
+      },
       'parent' => {}
     },
     {

@@ -273,6 +273,13 @@ After page on it\'s own line.
 ['value_in_invalid_documentencoding',
 '@set badvalue bad
 @documentencoding @value{badvalue}
+'],
+['set_flag_command_equivalent',
+'@set txicodequoteundirected
+
+@value{txicodequoteundirected}.
+
+@clear txicodequoteundirected
 ']
 );
 

@@ -57,6 +57,12 @@ $result_trees{'image_file_search'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' does not work in the standalone perl module
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -69,6 +75,12 @@ $result_trees{'image_file_search'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' @image{tp/t/include_dir/f--ile}
+'
+            ]
+          },
           'parent' => {}
         },
         {

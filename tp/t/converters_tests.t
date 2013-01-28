@@ -818,6 +818,94 @@ text2
 discussion
 @end table
 '],
+['at_commands_in_raw',
+'@node Top
+
+@macro othermacro{}
+Other macro
+@end macro
+
+@html
+<b>in b@footnote{in footnote}.</b>
+@anchor{anchor in html}
+@end html
+@kbd{in kbd before tex}@footnote{second footnote}.
+
+@tex
+@kbdinputstyle code
+in tex@footnote{footnote in tex}
+@anchor{anchor in tex}
+@cindex entry
+@findex fentry1
+
+@float Figs, f1
+Float
+@caption{Fcaption}
+@end float
+
+@menu
+* n::
+@end menu
+
+@acronym{FF, Fi Foo}
+
+@synindex cp fn
+
+@defindex new
+
+@definfoenclose a,:,:
+
+@alias moviecite = cite
+
+@documentlanguage fr
+
+@errormsg{mymsg}
+
+@ref{Somewhere}.
+
+@set flag soemthing
+
+@macro mymacro{}
+truc
+@end macro
+
+@macro macroarg{arg}
+Some \arg\.
+@end macro
+
+@unmacro othermacro
+
+@end tex
+
+
+
+@value{flag}.
+
+@kbd{in kbd after tex}.
+
+@xref{anchor in html}.
+
+@ref{anchor in tex}.
+@findex fentry2
+
+@newindex newidx entry
+
+@printindex cp
+@printindex fn
+
+@listoffloats Figs
+
+@acronym{FF}.
+
+@a{tt}.
+
+@moviecite{movie name}
+
+Macro not unmacroed @othermacro{}.
+
+Macros that should not be defined: @mymacro{}. @macroarg{with arg}.
+
+', {'expanded_formats' => ['html']}], 
 );
 
 my @html_text_cases = (

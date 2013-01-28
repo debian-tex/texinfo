@@ -58,16 +58,16 @@ LocaleData/it/LC_MESSAGES: LocaleData/it
 LocaleData/it: LocaleData
 	$(mkdir_p) $@
 
-$(srcdir)/../po_document/nl.us-ascii.gmo: $(srcdir)/../po_document/nl.us-ascii.po
-	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) nl.us-ascii.gmo
+$(srcdir)/../po_document/nl.gmo: $(srcdir)/../po_document/nl.po
+	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) nl.gmo
 
-LocaleData/nl.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/nl.us-ascii.gmo LocaleData/nl.us-ascii/LC_MESSAGES
-	$(INSTALL_DATA) $(srcdir)/../po_document/nl.us-ascii.gmo $@
+LocaleData/nl/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/nl.gmo LocaleData/nl/LC_MESSAGES
+	$(INSTALL_DATA) $(srcdir)/../po_document/nl.gmo $@
 
-LocaleData/nl.us-ascii/LC_MESSAGES: LocaleData/nl.us-ascii
+LocaleData/nl/LC_MESSAGES: LocaleData/nl
 	$(mkdir_p) $@
 
-LocaleData/nl.us-ascii: LocaleData
+LocaleData/nl: LocaleData
 	$(mkdir_p) $@
 
 $(srcdir)/../po_document/no.us-ascii.gmo: $(srcdir)/../po_document/no.us-ascii.po
@@ -109,4 +109,4 @@ LocaleData/pt.us-ascii: LocaleData
 LocaleData:
 	$(mkdir_p) $@
 
-document_strings_mo_files =  LocaleData/de.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/es.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/fr.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/hu/LC_MESSAGES/$(document_domain).mo LocaleData/it/LC_MESSAGES/$(document_domain).mo LocaleData/nl.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/no.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt.us-ascii/LC_MESSAGES/$(document_domain).mo
+document_strings_mo_files =  LocaleData/de.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/es.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/fr.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/hu/LC_MESSAGES/$(document_domain).mo LocaleData/it/LC_MESSAGES/$(document_domain).mo LocaleData/nl/LC_MESSAGES/$(document_domain).mo LocaleData/no.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt.us-ascii/LC_MESSAGES/$(document_domain).mo

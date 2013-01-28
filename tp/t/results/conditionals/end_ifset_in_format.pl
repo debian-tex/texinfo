@@ -29,7 +29,11 @@ $result_trees{'end_ifset_in_format'} = {
       'cmdname' => 'set',
       'extra' => {
         'arg_line' => ' notset
-'
+',
+        'misc_args' => [
+          'notset',
+          ''
+        ]
       },
       'parent' => {}
     },

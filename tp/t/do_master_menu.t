@@ -135,6 +135,10 @@ chap
  GGG
 * label: sec2.  D2 
 
+sec0
+
+* subsec::
+
 chapter @code{in code} 2
 
 * sec 2-0::

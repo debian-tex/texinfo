@@ -65,6 +65,12 @@ $result_trees{'menu_entry_name_comment'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' c
+'
+                        ]
+                      },
                       'parent' => {}
                     }
                   ],
@@ -154,6 +160,12 @@ $result_trees{'menu_entry_name_comment'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' c
+'
+                        ]
+                      },
                       'parent' => {}
                     }
                   ],
@@ -244,6 +256,12 @@ $result_trees{'menu_entry_name_comment'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' c
+'
+                        ]
+                      },
                       'parent' => {}
                     }
                   ],
@@ -333,6 +351,12 @@ $result_trees{'menu_entry_name_comment'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' c
+'
+                        ]
+                      },
                       'parent' => {}
                     }
                   ],
@@ -426,6 +450,12 @@ $result_trees{'menu_entry_name_comment'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' c
+'
+                        ]
+                      },
                       'parent' => {}
                     }
                   ],

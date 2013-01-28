@@ -1,9 +1,17 @@
-# List of source files which contain translatable strings.
+# Copyright 2013 Free Software Foundation, Inc.
+# 
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
+# notice and this notice are preserved.
+#  
+# List of source files containing translatable strings that end up in
+# the output from processing Texinfo documents.
 
 tp/Texinfo/Common.pm
 tp/Texinfo/Parser.pm
 tp/Texinfo/Convert/Converter.pm
 tp/Texinfo/Convert/DocBook.pm
+tp/Texinfo/Convert/IXIN.pm
 tp/Texinfo/Convert/Info.pm
 tp/Texinfo/Convert/Plaintext.pm
 tp/Texinfo/Convert/HTML.pm

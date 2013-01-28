@@ -54,6 +54,19 @@ Texinfo::Parser
 * Texinfo@asis{::}Parser AUTHOR::
 * Texinfo@asis{::}Parser COPYRIGHT AND LICENSE::
 
+METHODS
+
+* Texinfo@asis{::}Parser Initialization::
+* Texinfo@asis{::}Parser Parsing Texinfo text::
+* Texinfo@asis{::}Parser Getting informations on the document::
+* Texinfo@asis{::}Parser Texinfo Parser options::
+
+TEXINFO TREE
+
+* Texinfo@asis{::}Parser Element keys::
+* Texinfo@asis{::}Parser The containers and types::
+* Texinfo@asis{::}Parser Information available in the extra key::
+
 Texinfo::Structuring
 
 * Texinfo@asis{::}Structuring NAME::
@@ -117,6 +130,11 @@ Texinfo::Convert::Converter
 * Texinfo@asis{::}Convert@asis{::}Converter METHODS::
 * Texinfo@asis{::}Convert@asis{::}Converter AUTHOR::
 * Texinfo@asis{::}Convert@asis{::}Converter COPYRIGHT AND LICENSE::
+
+METHODS
+
+* Texinfo@asis{::}Convert@asis{::}Converter Initialization::
+* Texinfo@asis{::}Convert@asis{::}Converter Helper methods::
 
 Texinfo::Convert::Unicode
 

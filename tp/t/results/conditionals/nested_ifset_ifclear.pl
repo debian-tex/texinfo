@@ -129,7 +129,11 @@ Somevar is set, anothervar is not.
       'cmdname' => 'set',
       'extra' => {
         'arg_line' => ' somevar
-'
+',
+        'misc_args' => [
+          'somevar',
+          ''
+        ]
       },
       'parent' => {}
     },
@@ -149,7 +153,11 @@ Somevar is set, anothervar is not.
       'cmdname' => 'set',
       'extra' => {
         'arg_line' => ' anothervar
-'
+',
+        'misc_args' => [
+          'anothervar',
+          ''
+        ]
       },
       'parent' => {}
     },
@@ -186,7 +194,11 @@ Somevar is set, anothervar is not.
       'cmdname' => 'set',
       'extra' => {
         'arg_line' => ' somevar
-'
+',
+        'misc_args' => [
+          'somevar',
+          ''
+        ]
       },
       'parent' => {}
     },
@@ -201,7 +213,10 @@ Somevar is set, anothervar is not.
       'cmdname' => 'clear',
       'extra' => {
         'arg_line' => ' anothervar
-'
+',
+        'misc_args' => [
+          'anothervar'
+        ]
       },
       'parent' => {}
     },
@@ -233,7 +248,10 @@ Somevar is set, anothervar is not.
       'cmdname' => 'clear',
       'extra' => {
         'arg_line' => ' somevar
-'
+',
+        'misc_args' => [
+          'somevar'
+        ]
       },
       'parent' => {}
     },
@@ -253,7 +271,11 @@ Somevar is set, anothervar is not.
       'cmdname' => 'set',
       'extra' => {
         'arg_line' => ' anothervar
-'
+',
+        'misc_args' => [
+          'anothervar',
+          ''
+        ]
       },
       'parent' => {}
     },
@@ -274,7 +296,10 @@ Somevar is set, anothervar is not.
       'cmdname' => 'clear',
       'extra' => {
         'arg_line' => ' somevar
-'
+',
+        'misc_args' => [
+          'somevar'
+        ]
       },
       'parent' => {}
     },
@@ -289,7 +314,10 @@ Somevar is set, anothervar is not.
       'cmdname' => 'clear',
       'extra' => {
         'arg_line' => ' anothervar
-'
+',
+        'misc_args' => [
+          'anothervar'
+        ]
       },
       'parent' => {}
     }

@@ -1,3 +1,59 @@
+2013-01-28  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.13.95.
+
+	* README-hacking: .po files might not be literal copies.
+	texinfo_document is new TP domain.
+
+	* build-aux/config.sub: srclist-update.
+
+	* tp/Makefile.am (dist_converters_DATA): add
+	Texinfo/Convert/IXIN.pm Texinfo/Convert/IXINSXML.pm.
+
+2013-01-27  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (HTML Customization Variables): split node
+	out from Other Cust Var.
+	(Other Customization Variables): new TEXINFO_OUTPUT_FORMAT
+	replaces the individual special-output-format variables.
+	* doc/refcard/txivarcheck: only check uppercase
+	variable names, and do output manual-only names.
+
+	* man/pod2texi.1: new file, made with pod2man.
+	* man/Makefile.am (man_MANS): add it.
+
+2013-01-27  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/texi2any.pl, tp/Texinfo/Common.pm, tp/DebugTexinfo/DebugTree.pm,
+	util/detexinfo: remove output specific customization variables.
+
+2013-01-25  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Other Customization Variables)
+	<TEXINFO_COLUMN_FOR_DESCRIPTION>: new.
+	<TREE_TRANSFORMATIONS>: add indent_menu_descriptions.
+	Also, use it to re-indent the menus and regenerate_master_menu.
+
+2013-01-21  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Raw Formatter Commands): be more emphatic
+	about some processing being done inside raw regions,
+	and the resulting unpredictable effects when Texinfo-level
+	things are done there.
+
+2013-01-20  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Other Customization Variables)
+	[TREE_TRANSFORMATIONS]: @ftable, text tweaks.
+	(Top): update with texinfo-master-menu.
+
+	* doc/info-stnd.texi: @t in node names, merge footnote text
+	where reasonable.
+
+2013-01-19  Patrice Dumas  <pertusus@free.fr>
+
+	* util/texinfo.dtd: add number attribute for float and indexterm.
+
 2013-01-19  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.13.94.

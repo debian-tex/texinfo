@@ -39,6 +39,12 @@ $result_trees{'comment_space_command_on_line'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' settittle
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -102,6 +108,12 @@ $result_trees{'comment_space_command_on_line'} = {
                 }
               ],
               'cmdname' => 'comment',
+              'extra' => {
+                'misc_args' => [
+                  ' @node Top
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -166,6 +178,12 @@ $result_trees{'comment_space_command_on_line'} = {
                 }
               ],
               'cmdname' => 'comment',
+              'extra' => {
+                'misc_args' => [
+                  ' @top
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -212,6 +230,12 @@ $result_trees{'comment_space_command_on_line'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comment frenchspacing
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -274,6 +298,12 @@ $result_trees{'comment_space_command_on_line'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' index entry
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -351,6 +381,12 @@ $result_trees{'comment_space_command_on_line'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' heading
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -411,6 +447,12 @@ $result_trees{'comment_space_command_on_line'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' printindex 
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -523,6 +565,12 @@ $result_trees{'comment_space_command_on_line'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' end
+'
+                        ]
+                      },
                       'parent' => {}
                     }
                   ],
@@ -612,6 +660,12 @@ $result_trees{'comment_space_command_on_line'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' listoffloats
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],

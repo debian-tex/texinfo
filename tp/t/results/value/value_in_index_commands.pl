@@ -25,7 +25,11 @@ $result_trees{'value_in_index_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' cp cp
-'
+',
+            'misc_args' => [
+              'cp',
+              'cp'
+            ]
           },
           'parent' => {}
         },
@@ -45,7 +49,11 @@ $result_trees{'value_in_index_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' fn fn
-'
+',
+            'misc_args' => [
+              'fn',
+              'fn'
+            ]
           },
           'parent' => {}
         },
@@ -65,7 +73,11 @@ $result_trees{'value_in_index_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' syncodeindex_command @syncodeindex
-'
+',
+            'misc_args' => [
+              'syncodeindex_command',
+              '@syncodeindex'
+            ]
           },
           'parent' => {}
         },
@@ -181,7 +193,11 @@ $result_trees{'value_in_index_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' truc truc
-'
+',
+            'misc_args' => [
+              'truc',
+              'truc'
+            ]
           },
           'parent' => {}
         },
@@ -270,7 +286,11 @@ $result_trees{'value_in_index_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' trucindex_command @trucindex
-'
+',
+            'misc_args' => [
+              'trucindex_command',
+              '@trucindex'
+            ]
           },
           'parent' => {}
         },
@@ -296,7 +316,11 @@ $result_trees{'value_in_index_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' codeidx codeidx
-'
+',
+            'misc_args' => [
+              'codeidx',
+              'codeidx'
+            ]
           },
           'parent' => {}
         },
@@ -369,7 +393,11 @@ $result_trees{'value_in_index_commands'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' defcodeindex_entry a @var{index entry} t@\'e @^{@dotless{i}}
-'
+',
+            'misc_args' => [
+              'defcodeindex_entry',
+              'a @var{index entry} t@\'e @^{@dotless{i}}'
+            ]
           },
           'parent' => {}
         },

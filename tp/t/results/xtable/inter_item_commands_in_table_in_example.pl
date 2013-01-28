@@ -162,6 +162,12 @@ $result_trees{'inter_item_commands_in_table_in_example'} = {
                                 }
                               ],
                               'cmdname' => 'c',
+                              'extra' => {
+                                'misc_args' => [
+                                  ' and a comment
+'
+                                ]
+                              },
                               'parent' => {}
                             },
                             {
@@ -174,6 +180,12 @@ $result_trees{'inter_item_commands_in_table_in_example'} = {
                                 }
                               ],
                               'cmdname' => 'comment',
+                              'extra' => {
+                                'misc_args' => [
+                                  ' and another comment
+'
+                                ]
+                              },
                               'parent' => {}
                             }
                           ],

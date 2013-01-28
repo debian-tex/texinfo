@@ -1914,6 +1914,12 @@ $result_trees{'accentenc_no_entity'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' arg is command -- @dotless{i} is special-cased for HTML
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -2154,6 +2160,12 @@ $result_trees{'accentenc_no_entity'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' arg is command -- @dotless{j}
+'
+            ]
+          },
           'parent' => {}
         },
         {

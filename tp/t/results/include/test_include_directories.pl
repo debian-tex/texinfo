@@ -169,6 +169,12 @@ $result_trees{'test_include_directories'} = {
         }
       ],
       'cmdname' => 'c',
+      'extra' => {
+        'misc_args' => [
+          ' does not work in the standalone perl module
+'
+        ]
+      },
       'parent' => {}
     },
     {
@@ -181,6 +187,12 @@ $result_trees{'test_include_directories'} = {
         }
       ],
       'cmdname' => 'c',
+      'extra' => {
+        'misc_args' => [
+          ' @@include full parent path
+'
+        ]
+      },
       'parent' => {}
     },
     {
@@ -193,6 +205,12 @@ $result_trees{'test_include_directories'} = {
         }
       ],
       'cmdname' => 'c',
+      'extra' => {
+        'misc_args' => [
+          ' @include tp/t/include_dir/inc_file.texi
+'
+        ]
+      },
       'parent' => {}
     }
   ],

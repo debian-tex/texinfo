@@ -918,6 +918,12 @@ $result_trees{'block_commands_in_table'} = {
                             }
                           ],
                           'cmdname' => 'c',
+                          'extra' => {
+                            'misc_args' => [
+                              ' comment
+'
+                            ]
+                          },
                           'parent' => {}
                         },
                         {

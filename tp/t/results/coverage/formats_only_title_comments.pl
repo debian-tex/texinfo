@@ -31,6 +31,12 @@ $result_trees{'formats_only_title_comments'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment itemize
+'
+                ]
+              },
               'parent' => {}
             },
             {
@@ -139,6 +145,12 @@ $result_trees{'formats_only_title_comments'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment on enumerate line
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -160,6 +172,12 @@ $result_trees{'formats_only_title_comments'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment enumerate
+'
+                ]
+              },
               'parent' => {}
             },
             {
@@ -279,6 +297,12 @@ $result_trees{'formats_only_title_comments'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment table
+'
+                ]
+              },
               'parent' => {}
             },
             {
@@ -393,6 +417,12 @@ $result_trees{'formats_only_title_comments'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment on vtable line
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -557,6 +587,12 @@ $result_trees{'formats_only_title_comments'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment multitable
+'
+                ]
+              },
               'parent' => {}
             },
             {

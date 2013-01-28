@@ -248,6 +248,12 @@ $result_trees{'verbatiminclude_paths'} = {
         }
       ],
       'cmdname' => 'c',
+      'extra' => {
+        'misc_args' => [
+          ' does not work in the standalone perl module
+'
+        ]
+      },
       'parent' => {}
     },
     {
@@ -260,6 +266,12 @@ $result_trees{'verbatiminclude_paths'} = {
         }
       ],
       'cmdname' => 'c',
+      'extra' => {
+        'misc_args' => [
+          ' @@verbatiminclude full parent path
+'
+        ]
+      },
       'parent' => {}
     },
     {
@@ -272,6 +284,12 @@ $result_trees{'verbatiminclude_paths'} = {
         }
       ],
       'cmdname' => 'c',
+      'extra' => {
+        'misc_args' => [
+          ' @verbatiminclude tp/t/include_dir/inc_file.texi
+'
+        ]
+      },
       'parent' => {}
     }
   ],

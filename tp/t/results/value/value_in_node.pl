@@ -25,7 +25,11 @@ $result_trees{'value_in_node'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' node1 Node 1
-'
+',
+            'misc_args' => [
+              'node1',
+              'Node 1'
+            ]
           },
           'parent' => {}
         },
@@ -485,7 +489,11 @@ $result_trees{'value_in_node'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' sec1 Section 1.1
-'
+',
+            'misc_args' => [
+              'sec1',
+              'Section 1.1'
+            ]
           },
           'parent' => {}
         },

@@ -25,7 +25,11 @@ $result_trees{'value_node_directions'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' a--foo bar
-'
+',
+            'misc_args' => [
+              'a--foo',
+              'bar'
+            ]
           },
           'parent' => {}
         },

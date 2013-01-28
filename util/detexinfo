@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Id: detexinfo,v 1.2 2012/01/20 18:11:41 karl Exp $
+# $Id: detexinfo,v 1.3 2013/01/26 23:14:02 pertusus Exp $
 # Copyright 2011, 2012 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -15,4 +15,4 @@
 # Script to strip Texinfo commands.  It is so trivial we don't install
 # it, but it's in the distribution as an example.
 #
-exec texi2any --set-init-variable TEXTCONTENT=1 "$@"
+exec texi2any --set-customization-variable TEXINFO_OUTPUT_FORMAT=textcontent "$@"

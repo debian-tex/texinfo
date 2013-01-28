@@ -35,6 +35,12 @@ $result_trees{'misc_raw_comments'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment space
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -80,6 +86,12 @@ $result_trees{'misc_raw_comments'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comment no space
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -179,6 +191,12 @@ $result_trees{'misc_raw_comments'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comment after end tex
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],

@@ -29,6 +29,12 @@ $result_trees{'comment_first_on_enumerate_line'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment on enumerate line
+'
+                ]
+              },
               'parent' => {}
             }
           ],

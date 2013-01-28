@@ -252,6 +252,12 @@ $result_trees{'table'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' samp
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -273,6 +279,12 @@ $result_trees{'table'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' after vtable
+'
+                ]
+              },
               'parent' => {}
             },
             {
@@ -408,6 +420,12 @@ $result_trees{'table'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' after item
+'
+                        ]
+                      },
                       'parent' => {}
                     },
                     {
@@ -499,6 +517,12 @@ $result_trees{'table'} = {
                             }
                           ],
                           'cmdname' => 'comment',
+                          'extra' => {
+                            'misc_args' => [
+                              ' comment in itemx line
+'
+                            ]
+                          },
                           'parent' => {}
                         }
                       ],

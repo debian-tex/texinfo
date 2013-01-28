@@ -46,6 +46,12 @@ $result_trees{'comments_in_example'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment
+'
+                ]
+              },
               'parent' => {}
             },
             {
@@ -62,6 +68,12 @@ $result_trees{'comments_in_example'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -166,6 +178,12 @@ $result_trees{'comments_in_example'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment
+'
+                ]
+              },
               'parent' => {}
             }
           ],

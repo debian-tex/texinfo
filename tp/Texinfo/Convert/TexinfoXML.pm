@@ -360,6 +360,15 @@ foreach my $type (
   $ignored_types{$type} = 1;
 }
 
+# this is used in IXIN, to ignore everything before first node.
+sub _set_ignored_type($$)
+{
+  my $self = shift;
+  my $type = shift;
+
+  $ignored_types{$type} = 1;
+}
+
 my %type_elements = (
   'paragraph' => 'para',
   'preformatted' => 'pre',
@@ -464,8 +473,9 @@ sub _index_entry($$)
   my $root = shift;
   if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
     my $index_entry = $root->{'extra'}->{'index_entry'};
-    my $attribute = ['index', $index_entry->{'index_name'},
-                     'number', $index_entry->{'number'}];
+    my $attribute = ['index', $index_entry->{'index_name'}];
+    push @$attribute, ('number', $index_entry->{'number'})
+        if (defined($index_entry->{'number'}));
     # in case the index is not a default index, or the style of the
     # entry (in code or not) is not the default for this index
     if ($self->{'index_names'}) {
@@ -1546,7 +1556,9 @@ sub _convert($$;$)
   # is done, and the command is not associated to an element, or when
   # the element is closed.
   } elsif ((($root->{'type'} and $root->{'type'} eq 'element'
-             and $root->{'extra'} and $root->{'extra'}->{'element_command'})
+             and $root->{'extra'} and $root->{'extra'}->{'element_command'}
+             and !($root->{'extra'}->{'element_command'}->{'cmdname'}
+                   and $root->{'extra'}->{'element_command'}->{'cmdname'} eq 'node'))
             or ($root->{'cmdname'} 
                 and $Texinfo::Common::root_commands{$root->{'cmdname'}}
                 and $root->{'cmdname'} ne 'node'
@@ -1579,7 +1591,9 @@ sub _convert($$;$)
       delete $self->{'pending_bye'};
     }
   } elsif ((($root->{'type'} and $root->{'type'} eq 'element'
-             and $root->{'extra'} and $root->{'extra'}->{'element_command'})
+             and $root->{'extra'} and $root->{'extra'}->{'element_command'}
+             and $root->{'extra'}->{'element_command'}->{'cmdname'}
+             and $root->{'extra'}->{'element_command'}->{'cmdname'} eq 'node')
             or ($root->{'cmdname'} 
                 and $root->{'cmdname'} eq 'node'
                 and !($root->{'parent'} and $root->{'parent'}->{'type'}

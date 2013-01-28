@@ -526,7 +526,7 @@ my %direction_texts = (
 # first go through all the menu and set menu_up, menu_next, menu_prev
 # and warn for unknown nodes.
 # then go through all the nodes and set directions
-sub nodes_tree ($)
+sub nodes_tree($)
 {
   my $self = shift;
   return undef unless ($self->{'nodes'} and @{$self->{'nodes'}});
@@ -1223,7 +1223,7 @@ sub _print_element_command_texi($)
     if ($element->{'extra'}->{'node_content'}) {
       unshift @{$command->{'contents'}}, @{$element->{'extra'}->{'node_content'}};
     }
-    return Texinfo::Convert::Texinfo::convert ($command);
+    return Texinfo::Convert::Texinfo::convert($command);
   }
   
   my $command = $element->{'extra'}->{'element_command'};
@@ -1719,73 +1719,106 @@ sub complete_tree_nodes_menus($$)
   }
 }
 
+sub _print_down_menus($$;$);
+sub _print_down_menus($$;$)
+{
+  my $self = shift;
+  my $node = shift;
+  my $labels = shift;
+  $labels = $self->labels_information() if (!defined($labels));
+
+  my @master_menu_contents;
+
+  if ($node->{'menus'} and scalar(@{$node->{'menus'}})) {
+    my @node_children;
+    foreach my $menu (@{$node->{'menus'}}) {
+      foreach my $entry (@{$menu->{'contents'}}) {
+        if ($entry->{'type'} and $entry->{'type'} eq 'menu_entry') {
+          push @master_menu_contents, Texinfo::Common::copy_tree($entry);
+          # gather node cheldren to recusrsively print their menus
+          my $entry_node = $entry->{'extra'}->{'menu_entry_node'};
+          if (! $entry_node->{'manual_content'}
+              and defined($entry_node->{'normalized'})) {
+            my $node = $labels->{$entry_node->{'normalized'}};
+            if (defined($node) and $node->{'extra'}) {
+              push @node_children, $node;
+            }
+          }
+        }
+      }
+    }
+    if (scalar(@master_menu_contents)) {
+      # Prepend node title
+      my $node_title_contents;
+      if ($node->{'extra'}->{'associated_section'}
+          and $node->{'extra'}->{'associated_section'}->{'extra'}
+          and $node->{'extra'}->{'associated_section'}->{'extra'}->{'misc_content'}) {
+        $node_title_contents
+          = _copy_contents($node->{'extra'}->{'associated_section'}->{'extra'}->{'misc_content'});
+      } else {
+        $node_title_contents = _copy_contents($node->{'extra'}->{'node_content'});
+      }
+      my $menu_comment = {'type' => 'menu_comment'};
+      $menu_comment->{'contents'}->[0] = {'type' => 'preformatted',
+                                          'parent' => $menu_comment};
+    
+      $menu_comment->{'contents'}->[0]->{'contents'}
+        = [{'text' => "\n", 'type' => 'empty_line'}, @$node_title_contents,
+           {'text' => "\n", 'type' => 'empty_line'},
+           {'text' => "\n", 'type' => 'empty_line'}];
+      foreach my $content (@{$menu_comment->{'contents'}->[0]->{'contents'}}) {
+        $content->{'parent'} = $menu_comment->{'contents'}->[0];
+      }
+      unshift @master_menu_contents, $menu_comment;
+
+      # now recurse in the children
+      foreach my $child (@node_children) {
+        push @master_menu_contents, _print_down_menus($self, $child, $labels);
+      }
+    }
+  }
+  return @master_menu_contents;
+}
+
 sub new_master_menu($;$)
 {
   my $self = shift;
   my $labels = shift;
   $labels = $self->labels_information() if (!defined($labels));
-  my $top_node = $labels->{'Top'};
-  return undef if (!defined($top_node));
+  my $node = $labels->{'Top'};
+  return undef if (!defined($node));
 
-  my @first_level_nodes;
-  if ($top_node->{'menus'} and scalar(@{$top_node->{'menus'}})) {
-    foreach my $menu (@{$top_node->{'menus'}}) {
+  my @master_menu_contents;
+  if ($node->{'menus'} and scalar(@{$node->{'menus'}})) {
+    foreach my $menu (@{$node->{'menus'}}) {
       foreach my $entry (@{$menu->{'contents'}}) {
         if ($entry->{'type'} and $entry->{'type'} eq 'menu_entry') {
           my $entry_node = $entry->{'extra'}->{'menu_entry_node'};
           if (! $entry_node->{'manual_content'}
               and defined($entry_node->{'normalized'})) {
-            push @first_level_nodes, $entry_node->{'normalized'};
+            my $node = $labels->{$entry_node->{'normalized'}};
+            if (defined($node) and $node->{'extra'}) {
+              push @master_menu_contents, _print_down_menus($self, 
+                                                            $node, $labels);
+            }
           }
         }
       }
     }
   }
-
-  my @master_menu_contents;
-  foreach my $normalized_node (@first_level_nodes) {
-    my $node = $labels->{$normalized_node};
-    next if (!defined($node) or !$node->{'extra'});
-    my $node_title_contents;
-    if ($node->{'extra'}->{'associated_section'}
-        and $node->{'extra'}->{'associated_section'}->{'extra'}
-        and $node->{'extra'}->{'associated_section'}->{'extra'}->{'misc_content'}) {
-      $node_title_contents
-        = _copy_contents($node->{'extra'}->{'associated_section'}->{'extra'}->{'misc_content'});
-    } else {
-      $node_title_contents = _copy_contents($node->{'extra'}->{'node_content'});
+  if (scalar(@master_menu_contents)) {
+    my $first_preformatted = $master_menu_contents[0]->{'contents'}->[0];
+    my $master_menu_title = $self->gdt(' --- The Detailed Node Listing ---');
+    my @master_menu_title_contents;
+    foreach my $content (@{$master_menu_title->{'contents'}}, {'text' => "\n"}) {
+      $content->{'parent'} = $first_preformatted;
+      push @master_menu_title_contents, $content;
     }
-    my $menu_comment = {'type' => 'menu_comment'};
-    $menu_comment->{'contents'}->[0] = {'type' => 'preformatted',
-                                        'parent' => $menu_comment};
-    
-    $menu_comment->{'contents'}->[0]->{'contents'}
-      = [{'text' => "\n", 'type' => 'empty_line'}, @$node_title_contents,
-         {'text' => "\n", 'type' => 'empty_line'},
-         {'text' => "\n", 'type' => 'empty_line'}];
-    foreach my $content (@{$menu_comment->{'contents'}->[0]->{'contents'}}) {
-      $content->{'parent'} = $menu_comment->{'contents'}->[0];
-    }
-    push @master_menu_contents, $menu_comment;
-    if ($node->{'menus'}) {
-      foreach my $menu (@{$node->{'menus'}}) {
-        foreach my $entry (@{$menu->{'contents'}}) {
-          if ($entry->{'type'} and $entry->{'type'} eq 'menu_entry') {
-            push @master_menu_contents, Texinfo::Common::copy_tree($entry);
-          }
-        }
-      }
-    }
+    unshift @{$first_preformatted->{'contents'}}, @master_menu_title_contents;
+    return _new_block_command(\@master_menu_contents, undef, 'detailmenu');
+  } else {
+    return undef;
   }
-  my $first_preformatted = $master_menu_contents[0]->{'contents'}->[0];
-  my $master_menu_title = $self->gdt(' --- The Detailed Node Listing ---');
-  my @master_menu_title_contents;
-  foreach my $content (@{$master_menu_title->{'contents'}}, {'text' => "\n"}) {
-    $content->{'parent'} = $first_preformatted;
-    push @master_menu_title_contents, $content;
-  }
-  unshift @{$first_preformatted->{'contents'}}, @master_menu_title_contents;
-  return _new_block_command(\@master_menu_contents, undef, 'detailmenu');
 }
 
 sub regenerate_master_menu($;$)
@@ -2040,14 +2073,14 @@ sub set_menus_to_simple_menu($)
 
   if ($self->{'info'} and $self->{'info'}->{'unassociated_menus'}) {
     foreach my $menu (@{$self->{'info'}->{'unassociated_menus'}}) {
-      menu_to_simple_menu ($menu);
+      menu_to_simple_menu($menu);
     }
   }
   if ($self->{'nodes'} and @{$self->{'nodes'}}) {
     foreach my $node (@{$self->{'nodes'}}) {
       if ($node->{'menus'}) {
         foreach my $menu (@{$node->{'menus'}}) {
-          menu_to_simple_menu ($menu);
+          menu_to_simple_menu($menu);
         }
       }
     }

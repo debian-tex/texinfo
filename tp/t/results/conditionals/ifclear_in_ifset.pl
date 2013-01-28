@@ -23,6 +23,12 @@ $result_trees{'ifclear_in_ifset'} = {
         }
       ],
       'cmdname' => 'c',
+      'extra' => {
+        'misc_args' => [
+          ' WRONG - missing @end ifset.
+'
+        ]
+      },
       'parent' => {}
     }
   ],

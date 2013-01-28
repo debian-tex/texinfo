@@ -17,6 +17,17 @@ $result_trees{'command_in_heading_footing'} = {
         }
       ],
       'cmdname' => 'everyheading',
+      'extra' => {
+        'misc_args' => [
+          ' something @thispage @thischapternum
+'
+        ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

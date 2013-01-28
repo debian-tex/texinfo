@@ -69,6 +69,12 @@ $result_trees{'comment_on_menu_line'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      '
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],

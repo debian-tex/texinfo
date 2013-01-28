@@ -41,6 +41,12 @@ $result_trees{'comment_in_quotation'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  '
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -134,6 +140,12 @@ $result_trees{'comment_in_quotation'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  '
+'
+                ]
+              },
               'parent' => {}
             }
           ],

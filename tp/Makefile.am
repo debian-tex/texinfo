@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.55 2013/01/18 23:57:59 karl Exp $
+# $Id: Makefile.am,v 1.56 2013/01/28 18:36:51 karl Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
@@ -66,6 +66,8 @@ dist_converters_DATA = \
  Texinfo/Convert/Converter.pm \
  Texinfo/Convert/DocBook.pm \
  Texinfo/Convert/HTML.pm \
+ Texinfo/Convert/IXIN.pm \
+ Texinfo/Convert/IXINSXML.pm \
  Texinfo/Convert/Info.pm \
  Texinfo/Convert/Line.pm \
  Texinfo/Convert/NodeNameNormalization.pm \

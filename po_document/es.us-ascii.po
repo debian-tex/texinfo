@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-01-18 11:43-0800\n"
+"POT-Creation-Date: 2013-01-27 17:00-0800\n"
 "PO-Revision-Date: 2008-08-28\n"
 "Last-Translator: Francisco Vila <paconet.org@gmail.com>\n"
 "Language-Team: Unknown\n"
@@ -16,166 +16,166 @@ msgstr ""
 "Content-Type: text/plain; charset=us-ascii\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: tp/Texinfo/Common.pm:663 tp/Texinfo/Common.pm:668
+#: tp/Texinfo/Common.pm:686 tp/Texinfo/Common.pm:691
 #, fuzzy
 msgid "Function"
 msgstr "Secci@'on"
 
-#: tp/Texinfo/Common.pm:664
+#: tp/Texinfo/Common.pm:687
 msgid "Macro"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:665
+#: tp/Texinfo/Common.pm:688
 msgid "Special Form"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:666 tp/Texinfo/Common.pm:669
+#: tp/Texinfo/Common.pm:689 tp/Texinfo/Common.pm:692
 msgid "Variable"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:667
+#: tp/Texinfo/Common.pm:690
 #, fuzzy
 msgid "User Option"
 msgstr "Subir secci@'on"
 
-#: tp/Texinfo/Common.pm:670 tp/Texinfo/Common.pm:671
+#: tp/Texinfo/Common.pm:693 tp/Texinfo/Common.pm:694
 msgid "Instance Variable"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:672 tp/Texinfo/Common.pm:673
+#: tp/Texinfo/Common.pm:695 tp/Texinfo/Common.pm:696
 msgid "Method"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1118
+#: tp/Texinfo/Common.pm:1141
 #, fuzzy, perl-brace-format
 msgid "{category} on {class}"
 msgstr "{name} en {class}"
 
-#: tp/Texinfo/Common.pm:1125
+#: tp/Texinfo/Common.pm:1148
 #, fuzzy, perl-brace-format
 msgid "{category} of {class}"
 msgstr "{name} de {class}"
 
-#: tp/Texinfo/Common.pm:1142
+#: tp/Texinfo/Common.pm:1165
 #, perl-brace-format
 msgid "{month} {day}, {year}"
 msgstr "el {day} {month} {year}"
 
-#: tp/Texinfo/Common.pm:1173 tp/Texinfo/Convert/Plaintext.pm:904
+#: tp/Texinfo/Common.pm:1196 tp/Texinfo/Convert/Plaintext.pm:904
 #: tp/Texinfo/Convert/HTML.pm:511
 #, perl-brace-format
 msgid "Appendix {number} {section_title}"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1177 tp/Texinfo/Convert/Plaintext.pm:909
+#: tp/Texinfo/Common.pm:1200 tp/Texinfo/Convert/Plaintext.pm:909
 #: tp/Texinfo/Convert/HTML.pm:517
 #, perl-brace-format
 msgid "{number} {section_title}"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1312
+#: tp/Texinfo/Common.pm:1335
 #, perl-brace-format
 msgid "{float_type} {float_number}: "
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1316
+#: tp/Texinfo/Common.pm:1339
 #, perl-brace-format
 msgid "{float_type}: "
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1321
+#: tp/Texinfo/Common.pm:1344
 #, perl-brace-format
 msgid "{float_type} {float_number}\n"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1325
+#: tp/Texinfo/Common.pm:1348
 #, perl-brace-format
 msgid "{float_type}\n"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1331
+#: tp/Texinfo/Common.pm:1354
 #, perl-brace-format
 msgid "{float_number}: "
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1334
+#: tp/Texinfo/Common.pm:1357
 #, perl-brace-format
 msgid "{float_number}\n"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2725
+#: tp/Texinfo/Parser.pm:2762
 #, perl-brace-format
 msgid "{name} on {class}"
 msgstr "{name} en {class}"
 
-#: tp/Texinfo/Parser.pm:2734
+#: tp/Texinfo/Parser.pm:2771
 #, perl-brace-format
 msgid "{name} of {class}"
 msgstr "{name} de {class}"
 
-#: tp/Texinfo/Convert/Converter.pm:108
+#: tp/Texinfo/Convert/Converter.pm:109
 msgid "error@arrow{}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Converter.pm:577
+#: tp/Texinfo/Convert/Converter.pm:570
 msgid "January"
 msgstr "enero"
 
-#: tp/Texinfo/Convert/Converter.pm:578
+#: tp/Texinfo/Convert/Converter.pm:571
 msgid "February"
 msgstr "febrero"
 
-#: tp/Texinfo/Convert/Converter.pm:579
+#: tp/Texinfo/Convert/Converter.pm:572
 msgid "March"
 msgstr "marzo"
 
-#: tp/Texinfo/Convert/Converter.pm:580
+#: tp/Texinfo/Convert/Converter.pm:573
 msgid "April"
 msgstr "abril"
 
-#: tp/Texinfo/Convert/Converter.pm:581
+#: tp/Texinfo/Convert/Converter.pm:574
 msgid "May"
 msgstr "mayo"
 
-#: tp/Texinfo/Convert/Converter.pm:582
+#: tp/Texinfo/Convert/Converter.pm:575
 msgid "June"
 msgstr "junio"
 
-#: tp/Texinfo/Convert/Converter.pm:583
+#: tp/Texinfo/Convert/Converter.pm:576
 msgid "July"
 msgstr "julio"
 
-#: tp/Texinfo/Convert/Converter.pm:584
+#: tp/Texinfo/Convert/Converter.pm:577
 msgid "August"
 msgstr "agosto"
 
-#: tp/Texinfo/Convert/Converter.pm:585
+#: tp/Texinfo/Convert/Converter.pm:578
 msgid "September"
 msgstr "septiembre"
 
-#: tp/Texinfo/Convert/Converter.pm:586
+#: tp/Texinfo/Convert/Converter.pm:579
 msgid "October"
 msgstr "octubre"
 
-#: tp/Texinfo/Convert/Converter.pm:587
+#: tp/Texinfo/Convert/Converter.pm:580
 msgid "November"
 msgstr "noviembre"
 
-#: tp/Texinfo/Convert/Converter.pm:588
+#: tp/Texinfo/Convert/Converter.pm:581
 msgid "December"
 msgstr "diciembre"
 
-#: tp/Texinfo/Convert/Converter.pm:639
+#: tp/Texinfo/Convert/Converter.pm:632
 #, perl-brace-format
 msgid "{float_type} {float_number}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Converter.pm:643
+#: tp/Texinfo/Convert/Converter.pm:636
 #, perl-brace-format
 msgid "{float_type}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Converter.pm:647
+#: tp/Texinfo/Convert/Converter.pm:640
 #, perl-brace-format
 msgid "{float_number}"
 msgstr ""

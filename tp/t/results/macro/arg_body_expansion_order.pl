@@ -175,7 +175,10 @@ different
       'cmdname' => 'unmacro',
       'extra' => {
         'arg_line' => ' othermacro
-'
+',
+        'misc_args' => [
+          'othermacro'
+        ]
       },
       'parent' => {}
     },

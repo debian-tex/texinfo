@@ -29,7 +29,11 @@ $result_trees{'ifclear_in_ifset_set'} = {
       'cmdname' => 'set',
       'extra' => {
         'arg_line' => ' a
-'
+',
+        'misc_args' => [
+          'a',
+          ''
+        ]
       },
       'parent' => {}
     },
@@ -127,6 +131,12 @@ $result_trees{'ifclear_in_ifset_set'} = {
         }
       ],
       'cmdname' => 'c',
+      'extra' => {
+        'misc_args' => [
+          ' WRONG - missing @end ifset.
+'
+        ]
+      },
       'parent' => {}
     }
   ],

@@ -132,6 +132,12 @@ $result_trees{'characters_and_commands_in_var'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' ]
+'
+                    ]
+                  },
                   'parent' => {}
                 },
                 {

@@ -39,6 +39,12 @@ $result_trees{'empty_lines_at_beginning_no_setfilename'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' comment
+'
+            ]
+          },
           'parent' => {}
         },
         {

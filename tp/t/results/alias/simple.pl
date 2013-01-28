@@ -86,6 +86,12 @@ $result_trees{'simple'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment
+'
+                ]
+              },
               'parent' => {}
             }
           ],

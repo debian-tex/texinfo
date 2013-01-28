@@ -52,6 +52,12 @@ $result_trees{'comment_example_and_blank_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -162,6 +168,12 @@ $result_trees{'comment_example_and_blank_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment
+'
+                ]
+              },
               'parent' => {}
             }
           ],

@@ -29,6 +29,12 @@ $result_trees{'only_comment_on_quotation_line'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment
+'
+                ]
+              },
               'parent' => {}
             }
           ],

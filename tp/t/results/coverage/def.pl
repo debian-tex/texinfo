@@ -1711,6 +1711,12 @@ $result_trees{'def'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -1858,6 +1864,12 @@ $result_trees{'def'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment
+'
+                ]
+              },
               'parent' => {}
             }
           ],

@@ -23,7 +23,11 @@ $result_trees{'spaces_before_value'} = {
       'cmdname' => 'set',
       'extra' => {
         'arg_line' => ' var val
-'
+',
+        'misc_args' => [
+          'var',
+          'val'
+        ]
       },
       'parent' => {}
     },

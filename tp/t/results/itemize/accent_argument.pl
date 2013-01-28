@@ -34,6 +34,12 @@ $result_trees{'accent_argument'} = {
                 }
               ],
               'cmdname' => 'comment',
+              'extra' => {
+                'misc_args' => [
+                  '
+'
+                ]
+              },
               'parent' => {}
             }
           ],

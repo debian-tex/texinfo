@@ -84,6 +84,12 @@ $result_trees{'comments_end_lines'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comment itemize
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -176,6 +182,12 @@ $result_trees{'comments_end_lines'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comm
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -330,6 +342,12 @@ $result_trees{'comments_end_lines'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' table
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -429,6 +447,12 @@ $result_trees{'comments_end_lines'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' quot no arg
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -522,6 +546,12 @@ $result_trees{'comments_end_lines'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comm
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -615,6 +645,12 @@ $result_trees{'comments_end_lines'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comm
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -824,6 +860,12 @@ $result_trees{'comments_end_lines'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comm
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -942,6 +984,12 @@ $result_trees{'comments_end_lines'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comm
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -1054,6 +1102,12 @@ $result_trees{'comments_end_lines'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comm
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -1147,6 +1201,12 @@ $result_trees{'comments_end_lines'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comm
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],

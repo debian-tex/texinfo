@@ -38,6 +38,12 @@ $result_trees{'comments_on_misc_command_line'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' setfilename (text)
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -88,6 +94,12 @@ $result_trees{'comments_on_misc_command_line'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' definfoenclose (number)
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -142,6 +154,12 @@ $result_trees{'comments_on_misc_command_line'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' c (number)
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -198,6 +216,12 @@ $result_trees{'comments_on_misc_command_line'} = {
         }
       ],
       'cmdname' => 'comment',
+      'extra' => {
+        'misc_args' => [
+          '  (noarg)
+'
+        ]
+      },
       'parent' => {}
     },
     {
@@ -231,6 +255,12 @@ $result_trees{'comments_on_misc_command_line'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' pagesizes  (line)
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -262,6 +292,17 @@ $result_trees{'comments_on_misc_command_line'} = {
         }
       ],
       'cmdname' => 'everyheading',
+      'extra' => {
+        'misc_args' => [
+          ' @thispage @| aaa @c everyheading (lineraw)
+'
+        ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 7,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -300,6 +341,12 @@ $result_trees{'comments_on_misc_command_line'} = {
         }
       ],
       'cmdname' => 'c',
+      'extra' => {
+        'misc_args' => [
+          ' indent (skipspace)
+'
+        ]
+      },
       'parent' => {}
     },
     {

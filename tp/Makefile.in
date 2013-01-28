@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# $Id: Makefile.am,v 1.55 2013/01/18 23:57:59 karl Exp $
+# $Id: Makefile.am,v 1.56 2013/01/28 18:36:51 karl Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
@@ -1188,6 +1188,7 @@ test_files_generated_list = \
   t/docbook_tests.t \
   t/fix_texinfo.t \
   t/html_tests.t \
+  t/indent_menus_descriptions.t \
   t/index_before_item.t \
   t/info_tests.t \
   t/languages.t \
@@ -1248,6 +1249,7 @@ test_files_generated_list = \
   t/results/converters_tests/accentenc.pl \
   t/results/converters_tests/accentenc_enable_encoding.pl \
   t/results/converters_tests/accentenc_no_entity.pl \
+  t/results/converters_tests/at_commands_in_raw.pl \
   t/results/converters_tests/at_commands_in_refs.pl \
   t/results/converters_tests/at_commands_in_refs_latin1.pl \
   t/results/converters_tests/at_commands_in_refs_latin1/res_html/----_0021---_002e--_002e-_003f-_0040.html \
@@ -2217,6 +2219,7 @@ test_files_generated_list = \
   t/results/value/bad_syntax.pl \
   t/results/value/empty_set.pl \
   t/results/value/empty_value_in_line.pl \
+  t/results/value/set_flag_command_equivalent.pl \
   t/results/value/simple.pl \
   t/results/value/spaces_before_value.pl \
   t/results/value/value_after_accent.pl \
@@ -2284,7 +2287,7 @@ test_files_generated_list = \
   t/include_reference/section_file.texi
 
 test_copied_include_files = t/include_dir/section_file.texi t/include_dir/f--ile.txt t/include_dir/incl-incl.txi t/include_dir/inc_file.texi t/include_dir/f--ile.png t/include_dir/macro_included.texi
-document_strings_mo_files = LocaleData/de.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/es.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/fr.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/hu/LC_MESSAGES/$(document_domain).mo LocaleData/it/LC_MESSAGES/$(document_domain).mo LocaleData/nl.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/no.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt.us-ascii/LC_MESSAGES/$(document_domain).mo
+document_strings_mo_files = LocaleData/de.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/es.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/fr.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/hu/LC_MESSAGES/$(document_domain).mo LocaleData/it/LC_MESSAGES/$(document_domain).mo LocaleData/nl/LC_MESSAGES/$(document_domain).mo LocaleData/no.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt.us-ascii/LC_MESSAGES/$(document_domain).mo
 SUBDIRS = . tests
 bin_SCRIPTS = texi2any
 do_subst = sed \
@@ -2316,6 +2319,8 @@ dist_converters_DATA = \
  Texinfo/Convert/Converter.pm \
  Texinfo/Convert/DocBook.pm \
  Texinfo/Convert/HTML.pm \
+ Texinfo/Convert/IXIN.pm \
+ Texinfo/Convert/IXINSXML.pm \
  Texinfo/Convert/Info.pm \
  Texinfo/Convert/Line.pm \
  Texinfo/Convert/NodeNameNormalization.pm \
@@ -3133,16 +3138,16 @@ LocaleData/it/LC_MESSAGES: LocaleData/it
 LocaleData/it: LocaleData
 	$(mkdir_p) $@
 
-$(srcdir)/../po_document/nl.us-ascii.gmo: $(srcdir)/../po_document/nl.us-ascii.po
-	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) nl.us-ascii.gmo
+$(srcdir)/../po_document/nl.gmo: $(srcdir)/../po_document/nl.po
+	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) nl.gmo
 
-LocaleData/nl.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/nl.us-ascii.gmo LocaleData/nl.us-ascii/LC_MESSAGES
-	$(INSTALL_DATA) $(srcdir)/../po_document/nl.us-ascii.gmo $@
+LocaleData/nl/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/nl.gmo LocaleData/nl/LC_MESSAGES
+	$(INSTALL_DATA) $(srcdir)/../po_document/nl.gmo $@
 
-LocaleData/nl.us-ascii/LC_MESSAGES: LocaleData/nl.us-ascii
+LocaleData/nl/LC_MESSAGES: LocaleData/nl
 	$(mkdir_p) $@
 
-LocaleData/nl.us-ascii: LocaleData
+LocaleData/nl: LocaleData
 	$(mkdir_p) $@
 
 $(srcdir)/../po_document/no.us-ascii.gmo: $(srcdir)/../po_document/no.us-ascii.po

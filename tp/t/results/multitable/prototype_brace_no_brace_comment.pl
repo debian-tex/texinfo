@@ -43,6 +43,12 @@ $result_trees{'prototype_brace_no_brace_comment'} = {
                 }
               ],
               'cmdname' => 'comment',
+              'extra' => {
+                'misc_args' => [
+                  ' cc
+'
+                ]
+              },
               'parent' => {}
             }
           ],

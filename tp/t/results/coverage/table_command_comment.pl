@@ -34,6 +34,12 @@ $result_trees{'table_command_comment'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' in comment
+'
+                ]
+              },
               'parent' => {}
             }
           ],

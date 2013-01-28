@@ -1,4 +1,4 @@
-$Id: README-hacking,v 1.2 2013/01/19 15:54:04 karl Exp $
+$Id: README-hacking,v 1.3 2013/01/28 18:36:40 karl Exp $
 This file describes the development environment for Texinfo.
 
   Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013
@@ -39,6 +39,12 @@ specify that option.
 Other -W options can be useful too, and patches are welcome to resolve
 diagnostics; however, removing all possible warning messages, or
 warnings with nonfree compilers, is explicitly not a goal.
+
+Translations are handled through the Translation Project.  When a new
+.po is posted in
+  http://translationproject.org/latest/texinfo 
+  http://translationproject.org/latest/texinfo_document
+it should be installed.
 
 This distribution also uses Gnulib (http://www.gnu.org/software/gnulib)
 to share common files.  Gnulib files used in Texinfo are checked in to
@@ -82,7 +88,6 @@ Steps for making a release (pretest or official):
 - First checks:
 ensure texinfo.tex, texi2dvi, and htmlxref.cnf are updated on ftp.gnu.org.
 ensure TXI_XLATE in doc/Makefile.am matches actual file list.
-ensure *.po same as http://translationproject.org/latest/texinfo.
 
 - Official releases only:
 version number in texi2dvi, texi2pdf, txirefcard.tex.
@@ -92,7 +97,7 @@ specially plead with bug-texinfo / beebe / compile farms to try.
 try groff.texinfo from groff source repo.
 
 - Changes to sources:
-update version in configure.ac, ChangeLog, NEWS with date if official.
+update version in configure.ac, ChangeLog; NEWS with date if official.
 gnulib-tool --add-import
 util/srclist-txi
 make
@@ -106,7 +111,7 @@ rwtar *.tar.*             # consistent permissions in tarball?
 
 - To do the actual upload:
 pkg=texinfo
-ver=4.13.94
+ver=4.13.95
 
 then do one of:
 gnupload --to alpha.gnu.org:$pkg $pkg-$ver.tar.xz                #pretest

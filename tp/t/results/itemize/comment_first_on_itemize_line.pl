@@ -29,6 +29,12 @@ $result_trees{'comment_first_on_itemize_line'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment on itemize line
+'
+                ]
+              },
               'parent' => {}
             }
           ],

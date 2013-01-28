@@ -25,6 +25,12 @@ $result_trees{'raiselowersections'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' -*-texinfo-*-
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -536,7 +542,11 @@ $result_trees{'raiselowersections'} = {
           'cmdname' => 'set',
           'extra' => {
             'arg_line' => ' do-top
-'
+',
+            'misc_args' => [
+              'do-top',
+              ''
+            ]
           },
           'parent' => {}
         },
@@ -580,6 +590,12 @@ $result_trees{'raiselowersections'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' -*-texinfo-*-
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -1191,7 +1207,10 @@ $result_trees{'raiselowersections'} = {
           'cmdname' => 'clear',
           'extra' => {
             'arg_line' => ' do-top
-'
+',
+            'misc_args' => [
+              'do-top'
+            ]
           },
           'parent' => {}
         },

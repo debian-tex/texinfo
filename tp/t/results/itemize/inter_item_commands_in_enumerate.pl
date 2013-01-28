@@ -37,6 +37,12 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                 }
               ],
               'cmdname' => 'comment',
+              'extra' => {
+                'misc_args' => [
+                  ' comment before first item in enumerate
+'
+                ]
+              },
               'parent' => {}
             }
           ],

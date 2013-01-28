@@ -152,6 +152,17 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'oddfooting',
+          'extra' => {
+            'misc_args' => [
+              ' on line following oddfooting
+'
+            ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -168,6 +179,17 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'everyheading',
+          'extra' => {
+            'misc_args' => [
+              ' on line following everyheading
+'
+            ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -184,6 +206,17 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'everyfooting',
+          'extra' => {
+            'misc_args' => [
+              ' on line following everyfooting
+'
+            ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -200,6 +233,17 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'evenheading',
+          'extra' => {
+            'misc_args' => [
+              ' on line following evenheading
+'
+            ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -216,6 +260,17 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'evenfooting',
+          'extra' => {
+            'misc_args' => [
+              ' on line following evenfooting
+'
+            ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -232,6 +287,17 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'oddheading',
+          'extra' => {
+            'misc_args' => [
+              ' on line following
+'
+            ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 10,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

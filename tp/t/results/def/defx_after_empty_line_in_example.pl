@@ -163,6 +163,12 @@ $result_trees{'defx_after_empty_line_in_example'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' c
+'
+                        ]
+                      },
                       'parent' => {}
                     },
                     {
@@ -175,6 +181,12 @@ $result_trees{'defx_after_empty_line_in_example'} = {
                         }
                       ],
                       'cmdname' => 'comment',
+                      'extra' => {
+                        'misc_args' => [
+                          ' comment
+'
+                        ]
+                      },
                       'parent' => {}
                     },
                     {

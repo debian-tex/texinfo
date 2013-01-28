@@ -37,6 +37,12 @@ $result_trees{'comment_on_quotation_line'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' quotation 
+'
+                ]
+              },
               'parent' => {}
             }
           ],

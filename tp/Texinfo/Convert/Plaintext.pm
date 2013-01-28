@@ -127,7 +127,7 @@ foreach my $def_command (keys(%def_commands)) {
 #            of columns, actual indentation.  In general, it is better not 
 #            to have formatters in parallel, but it may happen.
 # count_context: holds the bytes count, the lines count and the location
-#            of the commands that have their byte count or llines count
+#            of the commands that have their byte count or lines count
 #            recorded.  It is set for out of document formatting to avoid
 #            counting some converted text, but it is also set when it has
 #            to be modified afterwards, for aligned commands or multitable
@@ -457,7 +457,7 @@ sub output($$)
   
   my $fh;
   if ($outfile ne '') {
-    $fh = $self->Texinfo::Common::open_out ($outfile);
+    $fh = $self->Texinfo::Common::open_out($outfile);
     if (!$fh) {
       $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                     $outfile, $!));
@@ -2591,15 +2591,15 @@ sub _convert($$)
         print STDERR "     --> $result" if ($self->get_conf('DEBUG'));
       }
     } elsif ($root->{'type'} eq 'menu_entry') {
-      my $menu_entry_internal_node;
-      if ($root->{'extra'} and $root->{'extra'}->{'menu_entry_node'}
-          and defined($root->{'extra'}->{'menu_entry_node'}->{'normalized'})
-          and !$root->{'extra'}->{'menu_entry_node'}->{'manual_content'}
-          and $self->{'labels'}
-          and $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
-        $menu_entry_internal_node 
-          = $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}};
-      }
+      #my $menu_entry_internal_node;
+      #if ($root->{'extra'} and $root->{'extra'}->{'menu_entry_node'}
+      #    and defined($root->{'extra'}->{'menu_entry_node'}->{'normalized'})
+      #    and !$root->{'extra'}->{'menu_entry_node'}->{'manual_content'}
+      #    and $self->{'labels'}
+      #    and $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
+      #  $menu_entry_internal_node 
+      #    = $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}};
+      #}
       foreach my $arg (@{$root->{'args'}}) {
         if ($arg->{'type'} eq 'menu_entry_node') {
           $result .= $self->_convert({'type' => '_code',
@@ -2889,6 +2889,100 @@ sub _convert($$)
   }
 
   return $result;
+}
+
+sub indent_menu_descriptions($$)
+{
+  my $self = shift;
+  my $menu = shift;
+
+  foreach my $content (@{$menu->{'contents'}}) {
+    if ($content->{'type'} and $content->{'type'} eq 'menu_entry') {
+      my $result = '';
+      my $node_seen = 0;
+      foreach my $arg (@{$content->{'args'}}) {
+        if ($arg->{'type'} eq 'menu_entry_node') {
+          $result .= $self->_convert({'type' => '_code',
+                                      'contents' => $arg->{'contents'}});
+          $node_seen = 1;
+        } else {
+          # the separator appearing after the node is modified
+          if ($arg->{'type'} eq 'menu_entry_separator' and $node_seen) {
+            $arg->{'text'} =~ s/\s*$//;
+          }
+          $result .= $self->_convert($arg);
+          if ($arg->{'type'} eq 'menu_entry_separator' and $node_seen) {
+            my $length = Texinfo::Convert::Unicode::string_width($result);
+            my $description_indent 
+              = $self->get_conf('TEXINFO_COLUMN_FOR_DESCRIPTION');
+            if ($length >= $description_indent) {
+              $arg->{'text'} .= ' ';
+            } else {
+              $arg->{'text'} .= ' ' x ($description_indent - $length);
+            }
+            last;
+          } elsif ($arg->{'type'} eq 'menu_entry_description') {
+            # This should never happen, but this is a safeguard for 
+            # incorrect trees.
+            last;  
+          }
+        }
+      }
+      #print STDERR "$result";
+    }
+  }
+}
+
+sub indent_menus_descriptions($;$)
+{
+  my $self = shift;
+  my $parser = shift;
+
+  if (!defined($self)) {
+    # setup a converter for menu
+    if (!defined($parser)) {
+      return undef;
+    }
+    $self = Texinfo::Convert::Plaintext->converter({'parser' => $parser});
+  } elsif (!defined($parser)) {
+    if (!defined($self->{'parser'})) {
+      return undef;
+    }
+    $parser = $self->{'parser'};
+  }
+
+  # setup the converter as if it was in a menu
+  my $cmdname = 'menu';
+  push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
+                                     'locations' => []};
+  push @{$self->{'context'}}, $cmdname;
+  push @{$self->{'format_context'}},
+           { 'cmdname' => $cmdname,
+             'paragraph_count' => 0,
+             'indent_level' =>
+                 $self->{'format_context'}->[-1]->{'indent_level'},
+           };
+  my $preformatted = $self->new_formatter('unfilled');
+  push @{$self->{'formatters'}}, $preformatted;
+
+  if ($parser->{'info'} and $parser->{'info'}->{'unassociated_menus'}) {
+    foreach my $menu (@{$parser->{'info'}->{'unassociated_menus'}}) {
+      $self->indent_menu_descriptions($menu);
+    }
+  }
+  if ($parser->{'nodes'} and @{$parser->{'nodes'}}) {
+    foreach my $node (@{$parser->{'nodes'}}) {
+      if ($node->{'menus'}) {
+        foreach my $menu (@{$node->{'menus'}}) {
+          $self->indent_menu_descriptions($menu);
+        }
+      }
+    }
+  }
+  pop @{$self->{'formatters'}};
+  pop @{$self->{'context'}};
+  pop @{$self->{'format_context'}};
+  pop @{$self->{'count_context'}};
 }
 
 1;

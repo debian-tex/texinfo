@@ -88,7 +88,11 @@ b
       'cmdname' => 'set',
       'extra' => {
         'arg_line' => ' flagab @ab
-'
+',
+        'misc_args' => [
+          'flagab',
+          '@ab'
+        ]
       },
       'parent' => {}
     },

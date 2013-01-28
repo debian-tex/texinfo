@@ -35,6 +35,12 @@ $result_trees{'nested_example_and_comment'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  '
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -215,6 +221,12 @@ $result_trees{'nested_example_and_comment'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  '
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -249,6 +261,12 @@ $result_trees{'nested_example_and_comment'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      '
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -406,6 +424,12 @@ $result_trees{'nested_example_and_comment'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  '
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -440,6 +464,12 @@ $result_trees{'nested_example_and_comment'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      '
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -515,6 +545,12 @@ $result_trees{'nested_example_and_comment'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  '
+'
+                ]
+              },
               'parent' => {}
             }
           ],

@@ -45,6 +45,12 @@ $result_trees{'good_comment'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' comment
+'
+                        ]
+                      },
                       'parent' => {}
                     }
                   ],

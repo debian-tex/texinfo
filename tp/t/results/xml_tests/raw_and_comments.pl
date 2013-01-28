@@ -29,6 +29,12 @@ $result_trees{'raw_and_comments'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -80,6 +86,12 @@ $result_trees{'raw_and_comments'} = {
                     }
                   ],
                   'cmdname' => 'comment',
+                  'extra' => {
+                    'misc_args' => [
+                      ' other comment
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -148,6 +160,12 @@ $result_trees{'raw_and_comments'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' in xml comment
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -199,6 +217,12 @@ $result_trees{'raw_and_comments'} = {
                         }
                       ],
                       'cmdname' => 'comment',
+                      'extra' => {
+                        'misc_args' => [
+                          ' end xml comment
+'
+                        ]
+                      },
                       'parent' => {}
                     }
                   ],

@@ -23,7 +23,11 @@ $result_trees{'empty_set_in_ifset'} = {
       'cmdname' => 'set',
       'extra' => {
         'arg_line' => ' a
-'
+',
+        'misc_args' => [
+          'a',
+          ''
+        ]
       },
       'parent' => {}
     },

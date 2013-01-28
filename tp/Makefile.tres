@@ -46,6 +46,7 @@ test_files_generated_list = \
   t/docbook_tests.t \
   t/fix_texinfo.t \
   t/html_tests.t \
+  t/indent_menus_descriptions.t \
   t/index_before_item.t \
   t/info_tests.t \
   t/languages.t \
@@ -106,6 +107,7 @@ test_files_generated_list = \
   t/results/converters_tests/accentenc.pl \
   t/results/converters_tests/accentenc_enable_encoding.pl \
   t/results/converters_tests/accentenc_no_entity.pl \
+  t/results/converters_tests/at_commands_in_raw.pl \
   t/results/converters_tests/at_commands_in_refs.pl \
   t/results/converters_tests/at_commands_in_refs_latin1.pl \
   t/results/converters_tests/at_commands_in_refs_latin1/res_html/----_0021---_002e--_002e-_003f-_0040.html \
@@ -1075,6 +1077,7 @@ test_files_generated_list = \
   t/results/value/bad_syntax.pl \
   t/results/value/empty_set.pl \
   t/results/value/empty_value_in_line.pl \
+  t/results/value/set_flag_command_equivalent.pl \
   t/results/value/simple.pl \
   t/results/value/spaces_before_value.pl \
   t/results/value/value_after_accent.pl \

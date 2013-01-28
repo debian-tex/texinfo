@@ -29,6 +29,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -172,6 +178,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -311,6 +323,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -459,6 +477,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -589,6 +613,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -723,6 +753,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -863,6 +899,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' table
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -1012,6 +1054,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' quot no arg
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -1122,6 +1170,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' quot arg
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -1228,6 +1282,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -1329,6 +1389,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -1451,6 +1517,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                         }
                       ],
                       'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' comm
+'
+                        ]
+                      },
                       'parent' => {}
                     }
                   ],
@@ -1665,6 +1737,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' c
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -1881,6 +1959,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -2001,6 +2085,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -2102,6 +2192,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
               'parent' => {}
             }
           ],

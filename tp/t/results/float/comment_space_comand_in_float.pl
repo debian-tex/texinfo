@@ -95,6 +95,12 @@ $result_trees{'comment_space_comand_in_float'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' float
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],
@@ -227,6 +233,12 @@ $result_trees{'comment_space_comand_in_float'} = {
                     }
                   ],
                   'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' listoffloats
+'
+                    ]
+                  },
                   'parent' => {}
                 }
               ],

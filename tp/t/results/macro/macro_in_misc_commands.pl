@@ -257,6 +257,12 @@ $result_trees{'macro_in_misc_commands'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment @text{}
+'
+                ]
+              },
               'parent' => {}
             },
             {
@@ -269,6 +275,12 @@ $result_trees{'macro_in_misc_commands'} = {
                 }
               ],
               'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment @text{}
+'
+                ]
+              },
               'parent' => {}
             }
           ],
@@ -696,6 +708,17 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'oddfooting',
+          'extra' => {
+            'misc_args' => [
+              ' some text ignored @text{}
+'
+            ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 40,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -708,6 +731,17 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'everyheading',
+          'extra' => {
+            'misc_args' => [
+              ' on line following everyheading @text{}
+'
+            ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 41,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -2526,6 +2560,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' accepts 10 or 11
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -2624,6 +2664,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' accept false or true
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -3329,6 +3375,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'vskip',
+          'extra' => {
+            'misc_args' => [
+              ' @atext{}
+'
+            ]
+          },
           'parent' => {}
         },
         {
@@ -3646,7 +3698,10 @@ $result_trees{'macro_in_misc_commands'} = {
           'cmdname' => 'clickstyle',
           'extra' => {
             'arg_line' => ' @resultmacro{}
-'
+',
+            'misc_args' => [
+              '@resultmacro'
+            ]
           },
           'line_nr' => {
             'file_name' => '',

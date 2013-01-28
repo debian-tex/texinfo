@@ -479,7 +479,7 @@ __END__
 
 =head1 NAME
 
-pod2texi - convert Pod files to a Texinfo
+pod2texi - convert Pod to Texinfo
 
 =head1 SYNOPSIS
 

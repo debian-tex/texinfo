@@ -506,7 +506,6 @@ $result_converted{'html'}->{'index_below'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#top" rel="start" title="top">
 <link href="#chap" rel="index" title="1 chap">

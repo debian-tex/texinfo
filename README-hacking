@@ -1,4 +1,4 @@
-$Id: README-hacking,v 1.3 2013/01/28 18:36:40 karl Exp $
+$Id: README-hacking,v 1.5 2013/02/05 00:45:47 karl Exp $
 This file describes the development environment for Texinfo.
 
   Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013
@@ -100,11 +100,12 @@ try groff.texinfo from groff source repo.
 update version in configure.ac, ChangeLog; NEWS with date if official.
 gnulib-tool --add-import
 util/srclist-txi
+pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
 make
 make po-check             # update po/POTFILES.in as needed
 make -C po update-po      # but don't commit yet, dist updates po_document
-(export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
 make -C doc wwwdoc-build  # and eventually -install, for official.
+(export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
 cvs commit                # when clean, then distcheck to be sure.
 make diff                 # for official
 rwtar *.tar.*             # consistent permissions in tarball?
@@ -131,7 +132,9 @@ cp $tutil/texinfo.dtd $ver
 cvs add $ver/texinfo.dtd
 cvs com -m$ver $ver
 
-update texinfo.html and commit as needed.
+update home page (texinfo.html) and commit as needed.
+update manual, including:
+  pod2html Pod-Simple-Texinfo/pod2texi.pl >pod2texi.html
 
   ... tag source tree:
 cvs tag -b texinfo_`echo $ver | tr . _`

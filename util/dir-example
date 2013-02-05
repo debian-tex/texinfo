@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.100 2013/01/02 01:00:35 karl Exp $
+$Id: dir-example,v 1.101 2013/02/04 01:34:59 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -45,6 +45,7 @@ Text creation and manipulation
 * Gawk: (gawk).                 A text scanning and processing language.
 * grep: (grep).                 Print lines matching a pattern.
 * M4: (m4).                     A powerful macro processor.
+* Perl: (perldoc-all).          Practical Extraction and Report Language.
 * sed: (sed).                   Stream EDitor.  
 * Wdiff: (wdiff).               Word difference finder and related tools.
 

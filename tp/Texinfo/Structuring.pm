@@ -228,7 +228,7 @@ sub sectioning_structure($$)
         if ($previous_section->{'level'} < $level) {
           if ($level - $previous_section->{'level'} > 1) {
             $self->line_error(sprintf($self->
-                  __("Raising the section level of \@%s which is too low"), 
+                  __("raising the section level of \@%s which is too low"), 
                   $content->{'cmdname'}), $content->{'line_nr'});
             $content->{'level'} = $previous_section->{'level'} + 1;
           }
@@ -260,12 +260,12 @@ sub sectioning_structure($$)
                 $new_upper_element = 1;
                 if ($level < $up->{'level'}) {
                   $self->line_warn(sprintf($self->__(
-                    "No chapter-level command before \@%s"),
+                    "no chapter-level command before \@%s"),
                           $content->{'cmdname'}), $content->{'line_nr'});
                 }
               } else {
                 $self->line_error(sprintf($self->__(
-                  "Lowering the section level of \@%s appearing after a lower element"), 
+         "lowering the section level of \@%s appearing after a lower element"), 
                   $content->{'cmdname'}), $content->{'line_nr'});
                 $content->{'level'} = $up->{'level'} + 1;
               }
@@ -344,7 +344,7 @@ sub sectioning_structure($$)
       } elsif ($content->{'cmdname'} eq 'part' 
                and !$content->{'extra'}->{'part_associated_section'}) {
         $self->line_warn(sprintf($self->__(
-            "No sectioning command associated with \@%s"),
+            "no sectioning command associated with \@%s"),
                 $content->{'cmdname'}), $content->{'line_nr'});
       }
 
@@ -545,7 +545,7 @@ sub nodes_tree($)
     if ($node->{'menus'}) {
       if ($self->{'SHOW_MENU'} and @{$node->{'menus'}} > 1) {
         foreach my $menu (@{$node->{'menus'}}[1 .. $#{$node->{'menus'}}]) {
-          $self->line_warn (sprintf($self->__("Multiple \@%s"), 
+          $self->line_warn(sprintf($self->__("multiple \@%s"), 
                         $menu->{'cmdname'}), $menu->{'line_nr'});
         }
       }
@@ -564,8 +564,8 @@ sub nodes_tree($)
             if (!$menu_content->{'extra'}->{'menu_entry_node'}->{'manual_content'}) {
               if (!$self->{'labels'}->{$menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
                 if ($check_menu_entries) {
-                  $self->line_error (sprintf($self->
-                   __("Menu reference to nonexistent node `%s'"), 
+                  $self->line_error(sprintf($self->
+                   __("menu reference to nonexistent node `%s'"), 
                      Texinfo::Parser::_node_extra_to_texi(
                              $menu_content->{'extra'}->{'menu_entry_node'})), 
                     $menu_content->{'line_nr'});
@@ -580,7 +580,7 @@ sub nodes_tree($)
                 if ($check_menu_entries and ! _check_node_same_texinfo_code($menu_node, 
                     $menu_content->{'extra'}->{'menu_entry_node'})) {
                   $self->line_warn(sprintf($self->
-                   __("Menu entry node name `%s' different from %s name `%s'"), 
+                   __("menu entry node name `%s' different from %s name `%s'"), 
                      Texinfo::Parser::_node_extra_to_texi(
                              $menu_content->{'extra'}->{'menu_entry_node'}),
                      $menu_node->{'cmdname'},
@@ -616,7 +616,7 @@ sub nodes_tree($)
   foreach my $node (@{$self->{'nodes'}}) {
     # warn if node is not top node and doesn't appear in menu
     if ($self->{'SHOW_MENU'} and $node ne $top_node and !$node->{'menu_up'}) {
-      $self->line_warn (sprintf($self->__("unreferenced node `%s'"), 
+      $self->line_warn(sprintf($self->__("unreferenced node `%s'"), 
                     Texinfo::Parser::_node_extra_to_texi($node->{'extra'})), 
                        $node->{'line_nr'});
     }
@@ -662,14 +662,14 @@ sub nodes_tree($)
               if ($self->{'SHOW_MENU'}) {
                 if (!$node->{'menu_'.$direction}) {
                   $self->line_warn(sprintf($self->
-                    __("Node `%s' is %s for `%s' in sectioning but not in menu"), 
+                    __("node `%s' is %s for `%s' in sectioning but not in menu"), 
                   Texinfo::Parser::_node_extra_to_texi($node->{'node_'.$direction}->{'extra'}), 
                   $direction,
                   Texinfo::Parser::_node_extra_to_texi($node->{'extra'})),
                   $node->{'line_nr'});
                 } elsif ($node->{'menu_'.$direction} ne $node->{'node_'.$direction}) {
                   $self->line_warn(sprintf($self->
-                    __("Node %s `%s' in menu `%s' and in sectioning `%s' differ"), 
+                    __("node %s `%s' in menu `%s' and in sectioning `%s' differ"), 
                     $direction,
                     Texinfo::Parser::_node_extra_to_texi($node->{'extra'}),
                     Texinfo::Parser::_node_extra_to_texi($node->{'menu_'.$direction}->{'extra'}), 
@@ -687,7 +687,7 @@ sub nodes_tree($)
               and !$node->{'menu_'.$direction}->{'extra'}->{'manual_content'}) {
             if ($self->{'SHOW_MENU'} and $node->{'extra'}->{'associated_section'}) {
               $self->line_warn(sprintf($self->
-                  __("Node `%s' is %s for `%s' in menu but not in sectioning"), 
+                  __("node `%s' is %s for `%s' in menu but not in sectioning"), 
                 Texinfo::Parser::_node_extra_to_texi($node->{'menu_'.$direction}->{'extra'}),
                 $direction,
                 Texinfo::Parser::_node_extra_to_texi($node->{'extra'}), 
@@ -767,7 +767,7 @@ sub nodes_tree($)
               $node->{'node_'.$direction}->{'extra'}->{'top_node_up'} 
                 = $node;
             } else {
-              $self->line_error (sprintf($self->
+              $self->line_error(sprintf($self->
                                   __("%s reference to nonexistent `%s'"),
                     $direction_texts{$direction},
                     Texinfo::Parser::_node_extra_to_texi($node_direction)), 
@@ -787,7 +787,7 @@ sub nodes_tree($)
       if (!$node->{'node_up'}->{'extra'}->{'manual_content'}) {
       # up node is a real node but has no menu entry
         $self->line_error(sprintf($self->
-           __("Node `%s' lacks menu item for `%s' despite being its Up target"), 
+           __("node `%s' lacks menu item for `%s' despite being its Up target"), 
            Texinfo::Parser::_node_extra_to_texi($node->{'node_up'}->{'extra'}), 
            Texinfo::Parser::_node_extra_to_texi($node->{'extra'})),
            $node->{'node_up'}->{'line_nr'});
@@ -795,7 +795,7 @@ sub nodes_tree($)
       # not in Top node.
       } elsif ($node->{'menu_up'}) {
         $self->line_warn(sprintf($self->
-           __("For `%s', up in menu `%s' and up `%s' don't match"), 
+           __("for `%s', up in menu `%s' and up `%s' don't match"), 
           Texinfo::Parser::_node_extra_to_texi($node->{'extra'}),
           Texinfo::Parser::_node_extra_to_texi($node->{'menu_up'}->{'extra'}), 
           Texinfo::Parser::_node_extra_to_texi($node->{'node_up'}->{'extra'})),
@@ -1279,7 +1279,7 @@ sub associate_internal_references($;$$)
   foreach my $ref (@$refs) {
     if (!defined($labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}})
          and !$self->{'novalidate'}) {
-      $self->line_error (sprintf($self->__("\@%s reference to nonexistent node `%s'"),
+      $self->line_error(sprintf($self->__("\@%s reference to nonexistent node `%s'"),
                            $ref->{'cmdname'}, 
                            Texinfo::Parser::_node_extra_to_texi(
                                 $ref->{'extra'}->{'node_argument'})), 
@@ -1626,9 +1626,31 @@ sub complete_node_menu($$)
   my $node = shift;
 
   my @node_childs;
-  foreach my $child (@{$node->{'extra'}->{'associated_section'}->{'section_childs'}}) {
-    if ($child->{'extra'} and $child->{'extra'}->{'associated_node'}) {
-      push @node_childs, $child->{'extra'}->{'associated_node'};
+  if ($node->{'extra'}->{'associated_section'}->{'section_childs'}) {
+    foreach my $child (@{$node->{'extra'}->{'associated_section'}->{'section_childs'}}) {
+      if ($child->{'extra'} and $child->{'extra'}->{'associated_node'}) {
+        push @node_childs, $child->{'extra'}->{'associated_node'};
+      }
+    }
+  }
+  # Special case for @top.  Gather all the children of the @part following
+  # @top.
+  if ($node->{'extra'}->{'associated_section'}->{'cmdname'} eq 'top') {
+    my $current = $node->{'extra'}->{'associated_section'};
+    while ($current->{'section_next'}) {
+      $current = $current->{'section_next'};
+      if ($current->{'cmdname'} and $current->{'cmdname'} eq 'part'
+          and $current->{'section_childs'}) {
+        foreach my $child (@{$current->{'section_childs'}}) {
+          if ($child->{'extra'} and $child->{'extra'}->{'associated_node'}) {
+            push @node_childs, $child->{'extra'}->{'associated_node'};
+          }
+        }
+      } elsif ($current->{'extra'}->{'associated_node'}) {
+        # for @appendix, and what follows, as it stops a @part, but is 
+        # not below @top
+        push @node_childs, $current->{'extra'}->{'associated_node'};
+      }
     }
   }
   if (scalar(@node_childs)) {
@@ -1711,9 +1733,7 @@ sub complete_tree_nodes_menus($$)
     if ($content->{'cmdname'} and $content->{'cmdname'} eq 'node'
         and (scalar(@{$content->{'extra'}->{'nodes_manuals'}}) == 1)
         and $content->{'extra'} 
-        and $content->{'extra'}->{'associated_section'}
-        and $content->{'extra'}->{'associated_section'}->{'section_childs'}
-        and scalar(@{$content->{'extra'}->{'associated_section'}->{'section_childs'}})) {
+        and $content->{'extra'}->{'associated_section'}) {
       complete_node_menu($self, $content);
     }
   }
@@ -1936,7 +1956,7 @@ sub _do_index_keys($$$)
                               {'contents' => $entry->{'content'}},
                   {%$options, Texinfo::Common::_convert_text_options($self)});
       if ($entry->{'key'} !~ /\S/) {
-        $self->line_warn(sprintf($self->__("Empty index key in \@%s"), 
+        $self->line_warn(sprintf($self->__("empty index key in \@%s"), 
                                  $entry->{'index_at_command'}),
                         $entry->{'command'}->{'line_nr'});
       }

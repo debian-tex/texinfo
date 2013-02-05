@@ -723,12 +723,12 @@ $result_errors{'at_commands_glued_in_paragraph'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':14: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':14: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 14,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
   {

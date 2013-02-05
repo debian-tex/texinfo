@@ -33,12 +33,12 @@ $result_texts{'lone_end_table'} = 'Text.
 
 $result_errors{'lone_end_table'} = [
   {
-    'error_line' => ':2: Unmatched `@end table\'
+    'error_line' => ':2: unmatched `@end table\'
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Unmatched `@end table\'',
+    'text' => 'unmatched `@end table\'',
     'type' => 'error'
   }
 ];

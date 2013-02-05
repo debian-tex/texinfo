@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.225 2013/01/19 15:54:04 karl Exp $
+$Id: NEWS,v 1.228 2013/02/04 01:34:46 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -57,22 +57,24 @@ one of the relevant sections:
   names for the same program; there are no differences in behavior based
   on the program name.
 
-  The new implementation is in Perl (based on the texi2html program, but
-  with a vast array of subsequent changes).  It requires Perl 5.7.3
-  (released in March 2002) and the standard Encode module.
+  The new implementation is in Perl, requiring Perl 5.7.3 (released in
+  March 2002) and its standard Encode module.
   
   The Perl texi2any/makeinfo both replaces and is intended to be (for
   all practical purposes) upward-compatible with the C makeinfo.  It has
   many new features not in the C makeinfo.  For example, cross-manual
-  references are now fully supported, and extensive customization of the
-  HTML output is possible.  See the `Generic Translator texi2any'
-  chapter in the manual (among other places) for more about this
-  reimplementation.
+  references are now fully supported, and allows for extensive
+  customization of the HTML output.  See the `Generic Translator
+  texi2any' chapter in the manual (among other places) for more about
+  this reimplementation.
   
   The new program is, unfortunately, noticeably slower at present than
   the C program was.  We hope all the many improvements make the new
   version worthwhile for users nevertheless.
 
+* pod2texi is a new (Perl) program that uses the capabilities of
+  texi2any to translate Perl pod documentation to Texinfo.
+  
 * texinfo.tex:
   . urls (given to @uref and @url) are broken by default at special
     characters; behavior controllable with @urefbreakstyle.
@@ -94,13 +96,11 @@ one of the relevant sections:
   . INFOPATH is determined from PATH by default, or if an element "PATH"
     is specified.
   . New command Info-virtual-index, bound to I by default, following Emacs.
-  . Info keywords not included in searches.
-  . There is a lower limit on the length of search patterns.  The default
-    value is 1.  It can be changed by setting the variable min-search-length,
-    either by `M-x set-variable', or using infokey.
+  . Info keywords not found by searches.
+  . A lower limit on the length of search patterns, default 1,
+    specified by the variable min-search-length.
+  . Use ASCII versions of images, if supplied by the document.
   . xz compression supported.
-  . Fix bug #37686: use the text attribute to represent "image" tags on
-    output.
 
 * install-info:
   . xz compression supported.
@@ -112,10 +112,11 @@ one of the relevant sections:
 
 * Distribution:
   . new file htmlxref.cnf is installed to support cross-manual
-    references; official updates between full package releases available at
-    http://ftpmirror.gnu.org/texinfo/htmlxref.cnf.
+    references; official updates between full package releases available
+    at http://ftpmirror.gnu.org/texinfo/htmlxref.cnf.
   . language support for no removed/renamed to nb, per Norwegian translators.
-  . new translations: id it.
+  . new translations: id it,
+    and document translations: eo pl.
   . texinfo.cat file removed since it is (to our knowledge) unused.
   . documentation license now GFDLv1.3 or later.
   . autoconf 2.69, automake 1.13.1, gettext 0.18.2.

@@ -74,12 +74,12 @@ $result_errors{'ignored_text'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: Superfluous argument to @end ifinfo:  on the node line
+    'error_line' => ':3: warning: superfluous argument to @end ifinfo:  on the node line
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Superfluous argument to @end ifinfo:  on the node line',
+    'text' => 'superfluous argument to @end ifinfo:  on the node line',
     'type' => 'warning'
   }
 ];

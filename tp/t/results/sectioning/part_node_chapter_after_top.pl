@@ -1075,7 +1075,7 @@ element: @chapter chapter
 ';
 
 
-$result_converted{'info'}->{'part_node_chapter_after_top'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'part_node_chapter_after_top'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: a node after part,  Up: (dir)
@@ -1102,9 +1102,9 @@ File: ,  Node: chapter,  Next: a node after part,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: a node after part154
-Node: chapter253
+Node: Top27
+Node: a node after part140
+Node: chapter239
 
 End Tag Table
 ';
@@ -1120,7 +1120,6 @@ $result_converted{'html'}->{'part_node_chapter_after_top'} = '<!DOCTYPE html PUB
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

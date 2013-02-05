@@ -873,84 +873,84 @@ truc:
 
 $result_errors{'empty_def_arguments'} = [
   {
-    'error_line' => ':1: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':1: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':2: warning: Missing name for @deffnx
+    'error_line' => ':2: warning: missing name for @deffnx
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Missing name for @deffnx',
+    'text' => 'missing name for @deffnx',
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: Missing category for @deffnx
+    'error_line' => ':3: warning: missing category for @deffnx
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Missing category for @deffnx',
+    'text' => 'missing category for @deffnx',
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: Missing name for @deffnx
+    'error_line' => ':4: warning: missing name for @deffnx
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Missing name for @deffnx',
+    'text' => 'missing name for @deffnx',
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: Missing name for @deffnx
+    'error_line' => ':5: warning: missing name for @deffnx
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Missing name for @deffnx',
+    'text' => 'missing name for @deffnx',
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: Missing name for @deffnx
+    'error_line' => ':6: warning: missing name for @deffnx
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Missing name for @deffnx',
+    'text' => 'missing name for @deffnx',
     'type' => 'warning'
   },
   {
-    'error_line' => ':7: warning: Missing name for @deffnx
+    'error_line' => ':7: warning: missing name for @deffnx
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Missing name for @deffnx',
+    'text' => 'missing name for @deffnx',
     'type' => 'warning'
   },
   {
-    'error_line' => ':8: warning: Missing name for @deffnx
+    'error_line' => ':8: warning: missing name for @deffnx
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'Missing name for @deffnx',
+    'text' => 'missing name for @deffnx',
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: warning: Missing name for @deffnx
+    'error_line' => ':9: warning: missing name for @deffnx
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'Missing name for @deffnx',
+    'text' => 'missing name for @deffnx',
     'type' => 'warning'
   }
 ];

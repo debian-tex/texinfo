@@ -367,48 +367,48 @@ Variable: type1 var bidule
 
 $result_errors{'not_closed'} = [
   {
-    'error_line' => ':1: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':1: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':2: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':2: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: Entry for index `vr\' outside of any node
+    'error_line' => ':3: warning: entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Entry for index `vr\' outside of any node',
+    'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: No matching `@end defvar\'
+    'error_line' => ':3: no matching `@end defvar\'
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'No matching `@end defvar\'',
+    'text' => 'no matching `@end defvar\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':3: No matching `@end deffn\'
+    'error_line' => ':3: no matching `@end deffn\'
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'No matching `@end deffn\'',
+    'text' => 'no matching `@end deffn\'',
     'type' => 'error'
   }
 ];

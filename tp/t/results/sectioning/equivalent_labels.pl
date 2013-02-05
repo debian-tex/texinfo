@@ -693,21 +693,21 @@ $result_menus{'equivalent_labels'}{'menu_child'}{'menu_up'} = $result_menus{'equ
 
 $result_errors{'equivalent_labels'} = [
   {
-    'error_line' => ':10: warning: Menu entry node name `anch\' different from anchor name `@samp{anch}\'
+    'error_line' => ':10: warning: menu entry node name `anch\' different from anchor name `@samp{anch}\'
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'Menu entry node name `anch\' different from anchor name `@samp{anch}\'',
+    'text' => 'menu entry node name `anch\' different from anchor name `@samp{anch}\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':11: warning: Menu entry node name `@code{floa}\' different from float name `floa\'
+    'error_line' => ':11: warning: menu entry node name `@code{floa}\' different from float name `floa\'
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'Menu entry node name `@code{floa}\' different from float name `floa\'',
+    'text' => 'menu entry node name `@code{floa}\' different from float name `floa\'',
     'type' => 'warning'
   }
 ];
@@ -744,7 +744,7 @@ $result_floats{'equivalent_labels'}{'truc'}[0]{'extra'}{'end_command'}{'extra'}{
 
 
 
-$result_converted{'info'}->{'equivalent_labels'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'equivalent_labels'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: \'anch\',  Up: (dir)
@@ -762,9 +762,9 @@ truc 1
 
 
 Tag Table:
-Node: Top41
-Ref: \'anch\'90
-Ref: floa93
+Node: Top27
+Ref: \'anch\'76
+Ref: floa79
 
 End Tag Table
 ';
@@ -780,7 +780,6 @@ $result_converted{'html'}->{'equivalent_labels'} = '<!DOCTYPE html PUBLIC "-//W3
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -841,9 +840,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'equivalent_labels'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

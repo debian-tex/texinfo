@@ -1049,12 +1049,12 @@ $result_menus{'two_nodes_between_chapters'}{'menu_child'}{'menu_up'} = $result_m
 
 $result_errors{'two_nodes_between_chapters'} = [
   {
-    'error_line' => ':15: warning: Node prev `chapter 2\' in menu `node between chapters\' and in sectioning `chapter 1\' differ
+    'error_line' => ':15: warning: node prev `chapter 2\' in menu `node between chapters\' and in sectioning `chapter 1\' differ
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => 'Node prev `chapter 2\' in menu `node between chapters\' and in sectioning `chapter 1\' differ',
+    'text' => 'node prev `chapter 2\' in menu `node between chapters\' and in sectioning `chapter 1\' differ',
     'type' => 'warning'
   }
 ];
@@ -1272,7 +1272,6 @@ $result_converted{'html'}->{'two_nodes_between_chapters'} = '<!DOCTYPE html PUBL
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

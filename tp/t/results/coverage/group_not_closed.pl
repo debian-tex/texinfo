@@ -70,12 +70,12 @@ text in group
 
 $result_errors{'group_not_closed'} = [
   {
-    'error_line' => ':3: No matching `@end group\'
+    'error_line' => ':3: no matching `@end group\'
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'No matching `@end group\'',
+    'text' => 'no matching `@end group\'',
     'type' => 'error'
   }
 ];

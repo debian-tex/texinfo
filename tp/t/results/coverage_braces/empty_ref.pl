@@ -220,39 +220,39 @@ $result_texts{'empty_ref'} = '
 
 $result_errors{'empty_ref'} = [
   {
-    'error_line' => ':2: warning: Command @ref missing a node or external manual argument
+    'error_line' => ':2: warning: command @ref missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Command @ref missing a node or external manual argument',
+    'text' => 'command @ref missing a node or external manual argument',
     'type' => 'warning'
   },
   {
-    'error_line' => ':2: warning: Command @xref missing a node or external manual argument
+    'error_line' => ':2: warning: command @xref missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Command @xref missing a node or external manual argument',
+    'text' => 'command @xref missing a node or external manual argument',
     'type' => 'warning'
   },
   {
-    'error_line' => ':2: warning: Command @inforef missing a node or external manual argument
+    'error_line' => ':2: warning: command @inforef missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Command @inforef missing a node or external manual argument',
+    'text' => 'command @inforef missing a node or external manual argument',
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: Command @inforef missing a node or external manual argument
+    'error_line' => ':3: warning: command @inforef missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Command @inforef missing a node or external manual argument',
+    'text' => 'command @inforef missing a node or external manual argument',
     'type' => 'warning'
   }
 ];

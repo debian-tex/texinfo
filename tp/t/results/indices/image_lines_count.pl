@@ -303,7 +303,7 @@ $result_errors{'image_lines_count'} = [];
 
 
 
-$result_converted{'info'}->{'image_lines_count'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'image_lines_count'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -324,7 +324,7 @@ ff
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

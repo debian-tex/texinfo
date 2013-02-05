@@ -1058,7 +1058,7 @@ $result_converted{'docbook'}->{'comment_space_command_on_line'} = '<title>Settit
 ';
 
 
-$result_converted{'info'}->{'comment_space_command_on_line'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'comment_space_command_on_line'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -1081,8 +1081,8 @@ Text 1
 
 
 Tag Table:
-Node: Top41
-Ref: label218
+Node: Top27
+Ref: label204
 
 End Tag Table
 ';

@@ -147,12 +147,12 @@ $result_errors{'node_in_copying'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':4: Unmatched `@end copying\'
+    'error_line' => ':4: unmatched `@end copying\'
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Unmatched `@end copying\'',
+    'text' => 'unmatched `@end copying\'',
     'type' => 'error'
   }
 ];

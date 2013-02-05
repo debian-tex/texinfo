@@ -336,7 +336,7 @@ $result_errors{'today_in_copying'} = [];
 
 
 
-$result_converted{'info'}->{'today_in_copying'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'today_in_copying'} = 'This is , produced from .
 
 a sunny day.
 
@@ -350,7 +350,7 @@ a sunny day.
 
 
 Tag Table:
-Node: Top55
+Node: Top41
 
 End Tag Table
 ';
@@ -367,7 +367,6 @@ $result_converted{'html'}->{'today_in_copying'} = '<!DOCTYPE html PUBLIC "-//W3C
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

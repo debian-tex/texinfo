@@ -561,12 +561,12 @@ $result_texts{'invalid_documentencoding'} = '
 
 $result_errors{'invalid_documentencoding'} = [
   {
-    'error_line' => ':4: warning: Encoding `latin1a\' is not a canonical texinfo encoding
+    'error_line' => ':4: warning: encoding `latin1a\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Encoding `latin1a\' is not a canonical texinfo encoding',
+    'text' => 'encoding `latin1a\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {
@@ -579,12 +579,12 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: Encoding `YS-ASCII\' is not a canonical texinfo encoding
+    'error_line' => ':5: warning: encoding `YS-ASCII\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Encoding `YS-ASCII\' is not a canonical texinfo encoding',
+    'text' => 'encoding `YS-ASCII\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {
@@ -606,12 +606,12 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: Encoding `bad encoding name\' is not a canonical texinfo encoding
+    'error_line' => ':6: warning: encoding `bad encoding name\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Encoding `bad encoding name\' is not a canonical texinfo encoding',
+    'text' => 'encoding `bad encoding name\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {
@@ -624,12 +624,12 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':7: warning: Encoding `1\' is not a canonical texinfo encoding
+    'error_line' => ':7: warning: encoding `1\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Encoding `1\' is not a canonical texinfo encoding',
+    'text' => 'encoding `1\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {
@@ -642,12 +642,12 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':8: warning: Encoding `%\' is not a canonical texinfo encoding
+    'error_line' => ':8: warning: encoding `%\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'Encoding `%\' is not a canonical texinfo encoding',
+    'text' => 'encoding `%\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {
@@ -660,12 +660,12 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: warning: Encoding `@\' is not a canonical texinfo encoding
+    'error_line' => ':9: warning: encoding `@\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'Encoding `@\' is not a canonical texinfo encoding',
+    'text' => 'encoding `@\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {
@@ -678,12 +678,12 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':10: warning: Encoding `AAATeX\' is not a canonical texinfo encoding
+    'error_line' => ':10: warning: encoding `AAATeX\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'Encoding `AAATeX\' is not a canonical texinfo encoding',
+    'text' => 'encoding `AAATeX\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {
@@ -696,12 +696,12 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':11: warning: Encoding `BBBe\'\' is not a canonical texinfo encoding
+    'error_line' => ':11: warning: encoding `BBBe\'\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'Encoding `BBBe\'\' is not a canonical texinfo encoding',
+    'text' => 'encoding `BBBe\'\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {

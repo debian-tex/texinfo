@@ -276,12 +276,12 @@ $result_errors{'multitable_item_in_index'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':2: warning: Entry for index `vr\' outside of any node
+    'error_line' => ':2: warning: entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Entry for index `vr\' outside of any node',
+    'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {

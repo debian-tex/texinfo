@@ -1722,7 +1722,7 @@ Copyright notice 1: The Public Domain notice(2)
 ';
 
 
-$result_converted{'info'}->{'float_copying'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'float_copying'} = 'This is , produced from .
 
 Public domain is not really a licence, as it means than the author
 abandon his copyright.
@@ -1801,14 +1801,14 @@ Copyright notice 1: The Public Domain notice(2)
 
 
 Tag Table:
-Node: Top290
-Ref: public domain360
-Ref: public domain anchor500
-Ref: Top-Footnote-1569
-Ref: caption copying footnote anchor604
-Node: Copying and floats642
-Ref: Copying and floats-Footnote-11493
-Ref: Copying and floats-Footnote-21566
+Node: Top276
+Ref: public domain346
+Ref: public domain anchor486
+Ref: Top-Footnote-1555
+Ref: caption copying footnote anchor590
+Node: Copying and floats628
+Ref: Copying and floats-Footnote-11479
+Ref: Copying and floats-Footnote-21552
 
 End Tag Table
 ';
@@ -1888,7 +1888,6 @@ the author abandon his copyright.
 <meta name="keywords" content="Top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <link href="#Copying-and-floats" rel="index" title="Copying and floats">

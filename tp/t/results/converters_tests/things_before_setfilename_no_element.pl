@@ -1523,21 +1523,21 @@ $result_errors{'things_before_setfilename_no_element'} = [
     'type' => 'error continuation'
   },
   {
-    'error_line' => 'things_before_setfilename_no_element.texi:38: warning: Entry for index `cp\' outside of any node
+    'error_line' => 'things_before_setfilename_no_element.texi:38: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => 'things_before_setfilename_no_element.texi',
     'line_nr' => 38,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => 'things_before_setfilename_no_element.texi:40: warning: Printindex before document beginning: @printindex cp
+    'error_line' => 'things_before_setfilename_no_element.texi:40: warning: printindex before document beginning: @printindex cp
 ',
     'file_name' => 'things_before_setfilename_no_element.texi',
     'line_nr' => 40,
     'macro' => '',
-    'text' => 'Printindex before document beginning: @printindex cp',
+    'text' => 'printindex before document beginning: @printindex cp',
     'type' => 'warning'
   }
 ];
@@ -1623,7 +1623,6 @@ $result_converted{'html'}->{'things_before_setfilename_no_element'} = '<!DOCTYPE
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
@@ -1674,9 +1673,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'things_before_setfilename_no_element'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'things_before_setfilename_no_element.texi: warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];
@@ -1747,8 +1746,8 @@ $result_converted{'docbook'}->{'things_before_setfilename_no_element'} = '
 ';
 
 
-$result_converted{'info'}->{'things_before_setfilename_no_element'} = 'This is things_before_setfilename_no_element.info, produced by tp
-version from things_before_setfilename_no_element.texi.
+$result_converted{'info'}->{'things_before_setfilename_no_element'} = 'This is things_before_setfilename_no_element.info, produced from
+things_before_setfilename_no_element.texi.
 
 Ref to anchor *note An anchor::
 
@@ -1763,9 +1762,9 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'things_before_setfilename_no_element'} = [
   {
-    'error_line' => 'warning: Document without nodes.
+    'error_line' => 'things_before_setfilename_no_element.texi: warning: document without nodes
 ',
-    'text' => 'Document without nodes.',
+    'text' => 'document without nodes',
     'type' => 'warning'
   }
 ];

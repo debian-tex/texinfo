@@ -1237,12 +1237,12 @@ $result_errors{'placed_things_before_node'} = [
     'type' => 'error continuation'
   },
   {
-    'error_line' => ':28: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':28: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 28,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }
 ];
@@ -1274,7 +1274,7 @@ $result_floats{'placed_things_before_node'}{''}[0]{'extra'}{'end_command'}{'extr
 
 
 
-$result_converted{'info'}->{'placed_things_before_node'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'placed_things_before_node'} = 'This is , produced from .
 
 Ref to the anchor: *note An anchor::
 
@@ -1311,11 +1311,11 @@ Ref to anchor *note An anchor::
 
 
 Tag Table:
-Ref: An anchor41
-Ref: float anchor150
-Node: Top277
-Ref: Top-Footnote-1459
-Ref: Anchor in footnote480
+Ref: An anchor27
+Ref: float anchor136
+Node: Top263
+Ref: Top-Footnote-1445
+Ref: Anchor in footnote466
 
 End Tag Table
 ';
@@ -1362,7 +1362,6 @@ $result_converted{'html'}->{'placed_things_before_node'} = '<!DOCTYPE html PUBLI
 <meta name="keywords" content="top section">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

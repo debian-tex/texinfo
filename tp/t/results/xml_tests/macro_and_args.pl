@@ -145,21 +145,21 @@ $result_texts{'macro_and_args'} = '
 
 $result_errors{'macro_and_args'} = [
   {
-    'error_line' => ':4: Bad or empty @macro formal argument: ggg"@@^_ ff
+    'error_line' => ':4: bad or empty @macro formal argument: ggg"@@^_ ff
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Bad or empty @macro formal argument: ggg"@@^_ ff',
+    'text' => 'bad or empty @macro formal argument: ggg"@@^_ ff',
     'type' => 'error'
   },
   {
-    'error_line' => ':4: Bad or empty @macro formal argument: ccc v
+    'error_line' => ':4: bad or empty @macro formal argument: ccc v
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Bad or empty @macro formal argument: ccc v',
+    'text' => 'bad or empty @macro formal argument: ccc v',
     'type' => 'error'
   }
 ];

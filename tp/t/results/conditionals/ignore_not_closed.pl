@@ -62,12 +62,12 @@ $result_texts{'ignore_not_closed'} = '';
 
 $result_errors{'ignore_not_closed'} = [
   {
-    'error_line' => ':3: No matching `@end ignore\'
+    'error_line' => ':3: no matching `@end ignore\'
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'No matching `@end ignore\'',
+    'text' => 'no matching `@end ignore\'',
     'type' => 'error'
   }
 ];

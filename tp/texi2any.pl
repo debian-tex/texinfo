@@ -33,6 +33,8 @@ use Config;
 use File::Basename;
 #use Cwd;
 use Getopt::Long qw(GetOptions);
+# for carp
+#use Carp;
 
 Getopt::Long::Configure("gnu_getopt");
 
@@ -355,6 +357,8 @@ foreach my $texinfo_config_dir (@language_config_dirs) {
 {
 package Texinfo::Config;
 
+#use Carp;
+
 # passed from main program
 my $cmdline_options;
 my $default_options;
@@ -377,14 +381,20 @@ sub _load_init_file($) {
   }
 }
 
+# FIXME: maybe use an opaque return status that can be used to retrieve
+# an error message?
 sub set_from_init_file($$) {
   my $var = shift;
   my $value = shift;
   if (!Texinfo::Common::valid_option($var)) {
-    warn (sprintf(main::__("Unknown variable %s\n"), $var));
+    # carp may be better, but infortunately, it points to the routine that 
+    # loads the file, and not to the init file.
+    main::document_warn(sprintf(main::__("%s: unknown variable %s"), 
+                                'set_from_init_file', $var));
     return 0;
   } elsif (Texinfo::Common::obsolete_option($var)) {
-    warn (sprintf(main::__("Obsolete variable %s\n"), $var));
+    main::document_warn(sprintf(main::__("%s: obsolete variable %s\n"), 
+                                  'set_from_init_file', $var));
   }
   return 0 if (defined($cmdline_options->{$var}));
   delete $default_options->{$var};
@@ -398,10 +408,12 @@ sub set_from_cmdline($$) {
   delete $options->{$var};
   delete $default_options->{$var};
   if (!Texinfo::Common::valid_option($var)) {
-    warn (sprintf(main::__("Unknown variable %s\n"), $var));
+    main::document_warn(sprintf(main::__("%s: unknown variable %s\n"), 
+                                'set_from_cmdline', $var));
     return 0;
   } elsif (Texinfo::Common::obsolete_option($var)) {
-    warn (sprintf(main::__("Obsolete variable %s\n"), $var));
+    main::document_warn(sprintf(main::__("obsolete variable %s\n"), 
+                                'set_from_cmdline', $var));
   }
   $cmdline_options->{$var} = $value;
   return 1;
@@ -465,7 +477,7 @@ sub locate_and_load_init_file($$)
   if (defined($file)) {
     Texinfo::Config::_load_init_file($file);
   } else {
-    document_warn (sprintf(__("Can't read init file %s"), $filename));
+    document_warn(sprintf(__("could not read init file %s"), $filename));
   }
 }
 
@@ -603,10 +615,12 @@ my $call_texi2dvi = 0;
 
 # previous_format should be in argument if there is a possibility of error.
 # as a fallback, the $format global variable is used.
-sub set_format($;$)
+sub set_format($;$$)
 {
   my $set_format = shift;
   my $previous_format = shift;
+  $previous_format = $format if (!defined($previous_format));
+  my $do_not_override_command_line = shift;
 
   my $new_format;
   if ($format_command_line_names{$set_format}) {
@@ -616,19 +630,23 @@ sub set_format($;$)
   }
   my $expanded_format = $set_format;
   if (!$formats_table{$new_format}) {
-    warn sprintf(__("%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"), 
-                 $real_command_name, $new_format);
+    document_warn(sprintf(__("ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"), 
+                 $new_format));
     $new_format = $previous_format;
-    $new_format = $format if (!defined($new_format));
   } else {
-    if ($formats_table{$new_format}->{'texi2dvi_format'}) {
-      $call_texi2dvi = 1;
-      push @texi2dvi_args, '--'.$new_format; 
-      $expanded_format = 'tex';
+    if ($format_from_command_line and $do_not_override_command_line) {
+      $new_format = $previous_format;
+    } else {
+      if ($formats_table{$new_format}->{'texi2dvi_format'}) {
+        $call_texi2dvi = 1;
+        push @texi2dvi_args, '--'.$new_format; 
+        $expanded_format = 'tex';
+      }
+      $default_expanded_format = [$expanded_format] 
+        if ($Texinfo::Common::texinfo_output_formats{$expanded_format});
+      $format_from_command_line = 1
+        unless ($do_not_override_command_line);
     }
-    $default_expanded_format = [$expanded_format] 
-      if ($Texinfo::Common::texinfo_output_formats{$expanded_format});
-    $format_from_command_line = 1;
   }
   return $new_format;
 }
@@ -643,7 +661,8 @@ sub document_warn($) {
   return if (get_conf('NO_WARN'));
   my $text = shift;
   chomp ($text);
-  warn sprintf(__p("warning: warning_message", "warning: %s\n"), $text);
+  warn(sprintf(__p("program name: warning: warning_message", 
+                   "%s: warning: %s\n"), $real_command_name,  $text));
 }
 
 sub _exit($$)
@@ -907,12 +926,12 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
      }
      # special case, this is a pseudo format for debug
      if ($var eq 'TEXINFO_OUTPUT_FORMAT') {
-       $format = set_format($value, $format);
+       $format = set_format($value, $format, 1);
      } elsif ($var eq 'TEXI2HTML') {
        $format = set_format('html');
        $parser_default_options->{'values'}->{'texi2html'} = 1;
      }
-     set_from_cmdline ($var, $value);
+     set_from_cmdline($var, $value);
      # FIXME do that here or when all command line options are processed?
      if ($var eq 'L2H' and get_conf('L2H')) {
        locate_and_load_init_file($latex2html_file, 
@@ -923,7 +942,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
  'css-include=s' => \@css_files,
  'css-ref=s' => \@css_refs,
  'transliterate-file-names!' => 
-     sub {set_from_cmdline ('TRANSLITERATE_FILE_NAMES', $_[1]);},
+     sub {set_from_cmdline('TRANSLITERATE_FILE_NAMES', $_[1]);},
  'error-limit|e=i' => sub { set_from_cmdline('ERROR_LIMIT', $_[1]); },
  'split-size=s' => sub {set_from_cmdline('SPLIT_SIZE', $_[1])},
  'paragraph-indent|p=s' => sub {
@@ -1001,15 +1020,15 @@ sub format_name($)
 }
 
 
-if (!$format_from_command_line and defined($ENV{'TEXINFO_OUTPUT_FORMAT'}) 
+if (defined($ENV{'TEXINFO_OUTPUT_FORMAT'}) 
     and $ENV{'TEXINFO_OUTPUT_FORMAT'} ne '') {
-  $format = set_format($ENV{'TEXINFO_OUTPUT_FORMAT'}, $format);
+  $format = set_format($ENV{'TEXINFO_OUTPUT_FORMAT'}, $format, 1);
 }
 
 if ($call_texi2dvi) {
   if (defined(get_conf('OUT')) and @ARGV > 1) {
-    die sprintf(__('when generating %s, only one input FILE may be specified with -o'),
-                format_name($format));
+    die sprintf(__('%s: when generating %s, only one input FILE may be specified with -o'."\n"),
+                $real_command_name, format_name($format));
   }
 } elsif($Xopt_arg_nr) {
   document_warn(__('--Xopt option without printed output')); 
@@ -1022,14 +1041,15 @@ if (get_conf('TREE_TRANSFORMATIONS')) {
     if (Texinfo::Common::valid_tree_transformation($transformation)) {
       $tree_transformations{$transformation} = 1;
     } else {
-      document_warn (sprintf(__('Unknown tree transformation %s'), 
+      document_warn(sprintf(__('unknown tree transformation %s'), 
                      $transformation));
     }
   }
 }
 
 if (get_conf('SPLIT') and !$formats_table{$format}->{'split'}) {
-  document_warn (sprintf(__('Ignoring splitting for format %s'), format_name($format)));
+  document_warn(sprintf(__('ignoring splitting for format %s'), 
+                        format_name($format)));
   set_from_cmdline('SPLIT', ''); 
 }
 
@@ -1150,7 +1170,7 @@ while(@input_files) {
     my ($filled_contents, $added_sections) 
       = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
     if (!defined($filled_contents)) {
-      document_warn (__("fill_gaps_in_sectioning transformation return no result. No section?"));
+      document_warn(__("fill_gaps_in_sectioning transformation return no result. No section?"));
     } else {
       $tree->{'contents'} = $filled_contents;
     }
@@ -1172,14 +1192,14 @@ while(@input_files) {
     if (defined ($macro_expand_fh)) {
       print $macro_expand_fh $texinfo_text;
       if (!close ($macro_expand_fh)) {
-        warn (sprintf(__("Error on closing macro expand file %s: %s\n"), 
-                      $macro_expand_file, $!));
+        document_warn(sprintf(__("error on closing macro expand file %s: %s\n"), 
+                              $macro_expand_file, $!));
         $error_macro_expand_file = 1;
       }
       $parser->Texinfo::Convert::Converter::register_close_file($macro_expand_file);
     } else {
-      warn (sprintf(__("Could not open %s for writing: %s\n"), 
-                    $macro_expand_file, $!));
+      document_warn(sprintf(__("could not open %s for writing: %s\n"), 
+                            $macro_expand_file, $!));
       $error_macro_expand_file = 1;
     }
 
@@ -1202,7 +1222,8 @@ while(@input_files) {
     my ($modified_contents, $added_nodes)
      = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
     if (!defined($modified_contents)) {
-      document_warn (__("insert_nodes_for_sectioning_commands transformation return no result. No section?"));
+      document_warn(__(
+       "insert_nodes_for_sectioning_commands transformation return no result. No section?"));
     } else {
       $tree->{'contents'} = $modified_contents;
     }
@@ -1217,8 +1238,8 @@ while(@input_files) {
   if ($tree_transformations{'complete_tree_nodes_menus'}) {
     Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree);
   }
-  if ($tree_transformations{'indent_menus_descriptions'}) {
-    Texinfo::Convert::Plaintext::indent_menus_descriptions(undef, $parser);
+  if ($tree_transformations{'indent_menu_descriptions'}) {
+    Texinfo::Convert::Plaintext::indent_menu_descriptions(undef, $parser);
   }
 
   if ($tree_transformations{'regenerate_master_menu'}) {
@@ -1263,8 +1284,8 @@ while(@input_files) {
           = $converter_unclosed_files->{$unclosed_file};
       } else {
         if (!close($converter_unclosed_files->{$unclosed_file})) {
-          warn (sprintf(__("Error on closing %s: %s\n"), 
-                           $unclosed_file, $!));
+          warn(sprintf(__("%s: error on closing %s: %s\n"), 
+                           $real_command_name, $unclosed_file, $!));
           $error_count++;
           _exit($error_count, \@opened_files);
         }
@@ -1286,14 +1307,14 @@ while(@input_files) {
       print $internal_links_fh $internal_links_text;
       
       if (!close ($internal_links_fh)) {
-        warn (sprintf(__("Error on closing internal links file %s: %s\n"), 
-                      $internal_links_file, $!));
+        warn(sprintf(__("%s: error on closing internal links file %s: %s\n"), 
+                      $real_command_name, $internal_links_file, $!));
         $error_internal_links_file = 1;
       }
       $converter->register_close_file($internal_links_file);
     } else {
-      warn (sprintf(__("Could not open %s for writing: %s\n"), 
-                    $internal_links_file, $!));
+      warn(sprintf(__("%s: could not open %s for writing: %s\n"), 
+                      $real_command_name, $internal_links_file, $!));
       $error_internal_links_file = 1;
     }
     if ($error_internal_links_file) {
@@ -1320,14 +1341,14 @@ while(@input_files) {
       print $sort_element_count_fh $sort_element_count_text;
       
       if (!close ($sort_element_count_fh)) {
-        warn (sprintf(__("Error on closing internal links file %s: %s\n"), 
-                      $sort_element_count_file, $!));
+        warn(sprintf(__("%s: error on closing internal links file %s: %s\n"), 
+                      $real_command_name, $sort_element_count_file, $!));
         $error_sort_element_count_file = 1;
       }
       $converter->register_close_file($sort_element_count_file);
     } else {
-      warn (sprintf(__("Could not open %s for writing: %s\n"), 
-                    $sort_element_count_file, $!));
+      warn(sprintf(__("%s: could not open %s for writing: %s\n"), 
+                    $real_command_name, $sort_element_count_file, $!));
       $error_sort_element_count_file = 1;
     }
     if ($error_sort_element_count_file) {
@@ -1339,8 +1360,8 @@ while(@input_files) {
 
 foreach my $unclosed_file (keys(%unclosed_files)) {
   if (!close($unclosed_files{$unclosed_file})) {
-    warn (sprintf(__("Error on closing %s: %s\n"), 
-                     $unclosed_file, $!));
+    warn(sprintf(__("%s: error on closing %s: %s\n"), 
+                     $real_command_name, $unclosed_file, $!));
     $error_count++;
     _exit($error_count, \@opened_files);
   }

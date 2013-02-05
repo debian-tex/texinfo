@@ -1053,7 +1053,7 @@ $result_errors{'def_in_copying'} = [];
 
 
 
-$result_converted{'info'}->{'def_in_copying'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'def_in_copying'} = 'This is , produced from .
 
 In copying
  -- aa: bb cc
@@ -1080,7 +1080,7 @@ In text
 
 
 Tag Table:
-Node: Top102
+Node: Top88
 
 End Tag Table
 ';

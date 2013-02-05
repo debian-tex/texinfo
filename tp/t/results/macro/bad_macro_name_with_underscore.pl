@@ -74,12 +74,12 @@ $result_texts{'bad_macro_name_with_underscore'} = '';
 
 $result_errors{'bad_macro_name_with_underscore'} = [
   {
-    'error_line' => ':1: Bad syntax for @macro argument: _macro {arg1, arg2}
+    'error_line' => ':1: bad syntax for @macro argument: _macro {arg1, arg2}
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Bad syntax for @macro argument: _macro {arg1, arg2}',
+    'text' => 'bad syntax for @macro argument: _macro {arg1, arg2}',
     'type' => 'error'
   }
 ];

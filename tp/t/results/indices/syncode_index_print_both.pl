@@ -499,12 +499,12 @@ $result_menus{'syncode_index_print_both'} = {
 
 $result_errors{'syncode_index_print_both'} = [
   {
-    'error_line' => ':11: warning: Printing an index `fn\' merged in another one `cp\'
+    'error_line' => ':11: warning: printing an index `fn\' merged in another one `cp\'
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'Printing an index `fn\' merged in another one `cp\'',
+    'text' => 'printing an index `fn\' merged in another one `cp\'',
     'type' => 'warning'
   }
 ];
@@ -588,7 +588,7 @@ $result_indices{'syncode_index_print_both'} = {
 
 
 
-$result_converted{'info'}->{'syncode_index_print_both'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'syncode_index_print_both'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -606,7 +606,7 @@ Print fn
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

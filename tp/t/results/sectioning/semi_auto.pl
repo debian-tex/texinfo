@@ -1170,21 +1170,21 @@ $result_menus{'semi_auto'}{'menu_child'}{'menu_up'} = $result_menus{'semi_auto'}
 
 $result_errors{'semi_auto'} = [
   {
-    'error_line' => ':9: warning: Node `Section non auto\' is next for `Chap1\' in menu but not in sectioning
+    'error_line' => ':9: warning: node `Section non auto\' is next for `Chap1\' in menu but not in sectioning
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'Node `Section non auto\' is next for `Chap1\' in menu but not in sectioning',
+    'text' => 'node `Section non auto\' is next for `Chap1\' in menu but not in sectioning',
     'type' => 'warning'
   },
   {
-    'error_line' => ':16: warning: Node `Section non auto\' is next for `Sec in chapter\' in sectioning but not in menu
+    'error_line' => ':16: warning: node `Section non auto\' is next for `Sec in chapter\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 16,
     'macro' => '',
-    'text' => 'Node `Section non auto\' is next for `Sec in chapter\' in sectioning but not in menu',
+    'text' => 'node `Section non auto\' is next for `Sec in chapter\' in sectioning but not in menu',
     'type' => 'warning'
   }
 ];

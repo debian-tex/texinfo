@@ -516,7 +516,6 @@ $result_converted{'html'}->{'inlineraw_in_menu_description'} = '<!DOCTYPE html P
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

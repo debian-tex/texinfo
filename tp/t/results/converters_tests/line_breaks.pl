@@ -795,7 +795,6 @@ $result_converted{'html'}->{'line_breaks'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD
  new version">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--

@@ -725,7 +725,7 @@ $result_errors{'ref_in_copying'} = [];
 
 
 
-$result_converted{'info'}->{'ref_in_copying'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'ref_in_copying'} = 'This is , produced from .
 
 *note GFDL::
 
@@ -750,8 +750,8 @@ File: ,  Node: GFDL,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top55
-Node: GFDL144
+Node: Top41
+Node: GFDL130
 
 End Tag Table
 ';
@@ -768,7 +768,6 @@ $result_converted{'html'}->{'ref_in_copying'} = '<!DOCTYPE html PUBLIC "-//W3C//
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

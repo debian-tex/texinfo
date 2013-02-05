@@ -500,21 +500,21 @@ $result_menus{'top_node_no_menu_direction'}{'menu_up'} = $result_menus{'top_node
 
 $result_errors{'top_node_no_menu_direction'} = [
   {
-    'error_line' => ':5: warning: Menu entry node name `TOP\' different from node name `Top\'
+    'error_line' => ':5: warning: menu entry node name `TOP\' different from node name `Top\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Menu entry node name `TOP\' different from node name `Top\'',
+    'text' => 'menu entry node name `TOP\' different from node name `Top\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: For `Top\', up in menu `Top\' and up `(dir)\' don\'t match
+    'error_line' => ':1: warning: for `Top\', up in menu `Top\' and up `(dir)\' don\'t match
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'For `Top\', up in menu `Top\' and up `(dir)\' don\'t match',
+    'text' => 'for `Top\', up in menu `Top\' and up `(dir)\' don\'t match',
     'type' => 'warning'
   },
   {
@@ -539,7 +539,7 @@ $result_errors{'top_node_no_menu_direction'} = [
 
 
 
-$result_converted{'info'}->{'top_node_no_menu_direction'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'top_node_no_menu_direction'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: second node,  Up: (dir)
@@ -555,8 +555,8 @@ File: ,  Node: second node,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: second node136
+Node: Top27
+Node: second node122
 
 End Tag Table
 ';
@@ -572,7 +572,6 @@ $result_converted{'html'}->{'top_node_no_menu_direction'} = '<!DOCTYPE html PUBL
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -639,9 +638,9 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 
 $result_converted_errors{'html'}->{'top_node_no_menu_direction'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

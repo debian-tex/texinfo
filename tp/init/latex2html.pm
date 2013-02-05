@@ -196,7 +196,9 @@ sub l2h_process($)
 
   unless ($self->get_conf('L2H_SKIP')) {
     unless (open(L2H_LATEX, ">$l2h_latex_file")) {
-      $self->document_error("l2h: Can't open latex file '$l2h_latex_file' for writing: $!");
+      $self->document_error(sprintf($self->__(
+              "l2h: could not open latex file %s for writing: %s"),
+                                    $l2h_latex_file, $!));
       $status = 0;
       return;
     }
@@ -336,12 +338,12 @@ sub l2h_to_html($)
   # Check for dot in directory where dvips will work
   if ($self->get_conf('L2H_TMP')) {
     if ($self->get_conf('L2H_TMP') =~ /\./) {
-      $self->document_warn ("l2h: l2h_tmp dir contains a dot.");
+      $self->document_warn($self->__("l2h: L2H_TMP directory contains a dot"));
       $dotbug = 1;
     }
   } else {
     if (cwd() =~ /\./) {
-      $self->document_warn ("l2h: current dir contains a dot.");
+      $self->document_warn($self->__("l2h: current directory contains a dot"));
       $dotbug = 1;
     }
   }
@@ -369,7 +371,8 @@ sub l2h_to_html($)
 
   warn "# l2h: executing '$call'\n" if ($verbose);
   if (system($call)) {
-    $self->document_error ("l2h: '${call}' did not succeed");
+    $self->document_error(sprintf($self->__("l2h: command did not succeed: %s"), 
+                                  $call));
     return 0;
   } else  {
      warn "# l2h: latex2html finished successfully\n" if ($verbose);
@@ -415,7 +418,8 @@ sub l2h_change_image_file_names($$)
         # document extension. copying the file could result in 
         # overwriting an output file (almost surely if the default 
         # texi2html file names are used).
-        $self->document_warn ("L2h image $src has invalid extension");
+        $self->document_warn(sprintf($self->__(
+                            "l2h: image has invalid extension: %s"), $src));
         next;
       }
       while (-e File::Spec->catpath($docu_volume, $docu_directories,
@@ -430,8 +434,9 @@ sub l2h_change_image_file_names($$)
       if ($debug) {
         copy($file_src, $file_dest);
       } else {
-        if (!rename ($file_src, $file_dest)) {
-          $self->document_warn ("Error renaming $file_src as $file_dest: $!");
+        if (!rename($file_src, $file_dest)) {
+          $self->document_warn(sprintf($self->__("l2h: rename %s as %s failed: %s"), 
+                                       $file_src, $file_dest, $!));
         }
       }
       $l2h_img{$src} = $dest;
@@ -452,7 +457,8 @@ sub l2h_init_from_html($)
   }
 
   if (! open(L2H_HTML, "<$l2h_html_file")) {
-    $self->document_warn ("l2h: Can't open $l2h_html_file for reading");
+    $self->document_warn(sprintf($self->__("l2h: could not open %s: %s"),
+                                 $l2h_html_file, $!));
     return 0;
   }
   warn "# l2h: use $l2h_html_file as html file\n" if ($verbose);
@@ -483,8 +489,9 @@ sub l2h_init_from_html($)
         $h_content = $h_content.$h_line;
       }
       unless ($h_end_found) { 
-        # couldn't found the closing comment. Certainly  a bug.
-        warn ("l2h: l2h_end $l2h_name $count not found\n");
+        # couldn't found the closing comment. Should be a bug.
+        $self->document_warn(sprintf(__("latex2html.pm: end of \@%s item %d not found"),
+                                      $l2h_name, $count));
         close(L2H_HTML);
         return 0;
       }
@@ -493,7 +500,9 @@ sub l2h_init_from_html($)
 
   # Not the same number of converted elements and retrieved elements
   if ($latex_converted_count != $html_converted_count) {
-    warn ("l2h: waiting for $latex_converted_count elements found $html_converted_count\n");
+    $self->document_warn(sprintf($self->__(
+      "latex2html.pm: processing produced %d items in HTML; expected %d, the number of items found in the document"),       
+                          $html_converted_count, $latex_converted_count));
   }
 
   warn "# l2h: Got $html_converted_count of $latex_count html contents\n"
@@ -521,14 +530,16 @@ sub l2h_do_tex($$)
   if (!defined($count)) {
     # counter is undefined
     $invalid_counter_count++;
-    warn ("l2h: undefined count for ${cmdname}_$counter\n");
+    $self->document_warn(
+           sprintf($self->__("l2h: could not determine the fragment %d for \@%s",
+                   $counter, $cmdname)));
     return ("<!-- l2h: ". __LINE__ . " undef count for ${cmdname}_$counter -->")
       if ($debug);
     return '';
   } elsif(($count <= 0) or ($count > $latex_count)) {
     # counter out of range
     $invalid_counter_count++;
-    warn ("l2h: Request of $count content which is out of valide range [0,$latex_count)\n");
+    $self->_bug_message("l2h: request of $count out of range [0,$latex_count]");
     return ("<!-- l2h: ". __LINE__ . " out of range count $count -->") 
       if ($debug);
     return '';
@@ -545,7 +556,9 @@ sub l2h_do_tex($$)
   } else {
     # if the result is not in @l2h_from_html, there is an error somewhere.
     $extract_error_count++;
-    warn ("l2h: can't extract content $count from html\n");
+    $self->document_warn(sprintf($self->__(
+       "l2h: could not extract the fragment %d for \@%s with output counter %d from HTML"), 
+                   $counter, $cmdname, $count));
     # try simple (ordinary) substitution (without l2h)
     $result .= "<!-- l2h: ". __LINE__ . " use default -->" if ($debug);
     $result .= &{$self->default_commands_conversion($cmdname)}($self, 
@@ -605,7 +618,8 @@ sub l2h_init_cache($)
   my $self = shift;
   if (-r $l2h_cache_file) {
     my $rdo = do "$l2h_cache_file";
-    $self->document_error ("l2h: could not load $l2h_cache_file: $@")
+    $self->document_error(sprintf($self->__("l2h: could not load %s: %s"),
+                                  $l2h_cache_file, $@))
       unless ($rdo);
   }
 }
@@ -617,7 +631,8 @@ sub l2h_store_cache($)
   return unless $latex_count;
   my ($key, $value);
   unless (open(FH, ">$l2h_cache_file")) { 
-    $self->document_error ("l2h: could not open $l2h_cache_file for writing: $!");
+    $self->document_error(sprintf($self->__("l2h: could not open %s for writing: %s"),
+                                  $l2h_cache_file, $!));
     return;
   }
   while (($key, $value) = each %l2h_cache) {

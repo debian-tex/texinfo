@@ -395,12 +395,12 @@ $result_sectioning{'hole_in_sectioning'}{'section_childs'}[0]{'section_up'} = $r
 
 $result_errors{'hole_in_sectioning'} = [
   {
-    'error_line' => ':7: Raising the section level of @subsubsection which is too low
+    'error_line' => ':7: raising the section level of @subsubsection which is too low
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Raising the section level of @subsubsection which is too low',
+    'text' => 'raising the section level of @subsubsection which is too low',
     'type' => 'error'
   }
 ];

@@ -129,12 +129,12 @@ $result_errors{'verbatim_in_brace_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: Misplaced }
+    'error_line' => ':5: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   }
 ];

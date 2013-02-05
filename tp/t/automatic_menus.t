@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 4 };
+BEGIN { plan tests => 5 };
 
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
@@ -106,3 +106,80 @@ test('@node Top
 @chapter chap2
 ', 'menu completed before');
 
+test('@node Top
+@top top
+
+@node nchap1
+@chapter nchap1
+
+@node nchap2
+@chapter nchap2
+
+@part
+
+@node pnchap1
+@chapter pnchap1
+
+@node pnchap2
+@chapter pnchap2
+
+@node napp
+@appendix app
+
+@node nsapp
+@section sapp
+
+@node anchap1
+@chapter achap1
+
+@part p2
+
+@node apnchap1
+@chapter apchap1
+
+', '@node Top
+@top top
+
+@menu
+* nchap1::
+* nchap2::
+* pnchap1::
+* pnchap2::
+* napp::
+* anchap1::
+* apnchap1::
+@end menu
+
+@node nchap1
+@chapter nchap1
+
+@node nchap2
+@chapter nchap2
+
+@part
+
+@node pnchap1
+@chapter pnchap1
+
+@node pnchap2
+@chapter pnchap2
+
+@node napp
+@appendix app
+
+@menu
+* nsapp::
+@end menu
+
+@node nsapp
+@section sapp
+
+@node anchap1
+@chapter achap1
+
+@part p2
+
+@node apnchap1
+@chapter apchap1
+
+', 'parts');

@@ -254,12 +254,12 @@ $result_errors{'inlinefmt_with_empty_line'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':3: Misplaced }
+    'error_line' => ':3: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
@@ -272,12 +272,12 @@ $result_errors{'inlinefmt_with_empty_line'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':6: Misplaced }
+    'error_line' => ':6: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   }
 ];

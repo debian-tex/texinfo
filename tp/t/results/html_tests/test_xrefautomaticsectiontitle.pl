@@ -805,7 +805,6 @@ $result_converted{'html'}->{'test_xrefautomaticsectiontitle'} = '<!DOCTYPE html 
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

@@ -987,7 +987,7 @@ $result_indices{'colon_in_index_entry'} = {
 
 
 
-$result_converted{'info'}->{'colon_in_index_entry'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'colon_in_index_entry'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -1008,7 +1008,7 @@ _%main::value_
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

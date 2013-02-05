@@ -399,7 +399,7 @@ $result_errors{'anchor_in_titlepage'} = [];
 
 
 
-$result_converted{'info'}->{'anchor_in_titlepage'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'anchor_in_titlepage'} = 'This is , produced from .
 
 top
 ***
@@ -411,7 +411,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top50
+Node: Top36
 
 End Tag Table
 ';
@@ -427,7 +427,6 @@ $result_converted{'html'}->{'anchor_in_titlepage'} = '<!DOCTYPE html PUBLIC "-//
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

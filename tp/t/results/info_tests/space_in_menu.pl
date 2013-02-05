@@ -587,7 +587,7 @@ $result_errors{'space_in_menu'} = [];
 
 
 
-$result_converted{'info'}->{'space_in_menu'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'space_in_menu'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: node,  Up: (dir)
@@ -611,8 +611,8 @@ in chapter.
 
 
 Tag Table:
-Node: Top41
-Node: node142
+Node: Top27
+Node: node128
 
 End Tag Table
 ';

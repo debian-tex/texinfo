@@ -203,6 +203,12 @@ warning message.
 Register the warning message @emph{$text} for file @emph{$file}, with, optionally
 the line @emph{$line_nr} in the file.
 
+@item $converter->file_line_error($text, $file, $line_nr)
+@anchor{Texinfo::Report $converter->file_line_error($text@comma{} $file@comma{} $line_nr)}
+
+Register the error message @emph{$text} for file @emph{$file}, with, optionally
+the line @emph{$line_nr} in the file.
+
 @end table
 
 @node Texinfo::Report AUTHOR

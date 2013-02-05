@@ -350,21 +350,21 @@ item
 
 $result_errors{'accent_argument'} = [
   {
-    'error_line' => ':1: warning: Accent command `@~\' not allowed as @itemize argument
+    'error_line' => ':1: warning: accent command `@~\' not allowed as @itemize argument
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Accent command `@~\' not allowed as @itemize argument',
+    'text' => 'accent command `@~\' not allowed as @itemize argument',
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: Accent command `@~\' not allowed as @itemize argument
+    'error_line' => ':5: warning: accent command `@~\' not allowed as @itemize argument
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Accent command `@~\' not allowed as @itemize argument',
+    'text' => 'accent command `@~\' not allowed as @itemize argument',
     'type' => 'warning'
   }
 ];

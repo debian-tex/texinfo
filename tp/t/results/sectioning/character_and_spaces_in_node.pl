@@ -610,12 +610,12 @@ $result_errors{'character_and_spaces_in_node'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':2: Node `Top\' lacks menu item for `other nodes\' despite being its Up target
+    'error_line' => ':2: node `Top\' lacks menu item for `other nodes\' despite being its Up target
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Node `Top\' lacks menu item for `other nodes\' despite being its Up target',
+    'text' => 'node `Top\' lacks menu item for `other nodes\' despite being its Up target',
     'type' => 'error'
   },
   {
@@ -628,12 +628,12 @@ $result_errors{'character_and_spaces_in_node'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: Node `other nodes\' lacks menu item for `!_"#$%&\'()*+-.\' despite being its Up target
+    'error_line' => ':3: node `other nodes\' lacks menu item for `!_"#$%&\'()*+-.\' despite being its Up target
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Node `other nodes\' lacks menu item for `!_"#$%&\'()*+-.\' despite being its Up target',
+    'text' => 'node `other nodes\' lacks menu item for `!_"#$%&\'()*+-.\' despite being its Up target',
     'type' => 'error'
   },
   {
@@ -646,12 +646,12 @@ $result_errors{'character_and_spaces_in_node'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: Node `other nodes\' lacks menu item for `/;<=>?[\\]^_`|~\' despite being its Up target
+    'error_line' => ':3: node `other nodes\' lacks menu item for `/;<=>?[\\]^_`|~\' despite being its Up target
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Node `other nodes\' lacks menu item for `/;<=>?[\\]^_`|~\' despite being its Up target',
+    'text' => 'node `other nodes\' lacks menu item for `/;<=>?[\\]^_`|~\' despite being its Up target',
     'type' => 'error'
   },
   {
@@ -664,19 +664,19 @@ $result_errors{'character_and_spaces_in_node'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: Node `other nodes\' lacks menu item for `local   node\' despite being its Up target
+    'error_line' => ':3: node `other nodes\' lacks menu item for `local   node\' despite being its Up target
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Node `other nodes\' lacks menu item for `local   node\' despite being its Up target',
+    'text' => 'node `other nodes\' lacks menu item for `local   node\' despite being its Up target',
     'type' => 'error'
   }
 ];
 
 
 
-$result_converted{'info'}->{'character_and_spaces_in_node'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'character_and_spaces_in_node'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -696,11 +696,11 @@ File: ,  Node: local node,  Prev: /;<=>?[\\]^_`|~,  Up: other nodes
 
 
 Tag Table:
-Node: Top41
-Node: other nodes75
-Node: !_"#$%&\'()*+-.150
-Node: /;<=>?[\\]^_`|~244
-Node: local node337
+Node: Top27
+Node: other nodes61
+Node: !_"#$%&\'()*+-.136
+Node: /;<=>?[\\]^_`|~230
+Node: local node323
 
 End Tag Table
 ';
@@ -716,7 +716,6 @@ $result_converted{'html'}->{'character_and_spaces_in_node'} = '<!DOCTYPE html PU
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -797,9 +796,9 @@ Previous: <a href="#g_t_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0
 
 $result_converted_errors{'html'}->{'character_and_spaces_in_node'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

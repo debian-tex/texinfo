@@ -83,12 +83,12 @@ $result_errors{'empty_line_in_anchor'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':3: Misplaced }
+    'error_line' => ':3: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   }
 ];

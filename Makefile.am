@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.41 2013/01/02 01:22:16 karl Exp $
+# $Id: Makefile.am,v 1.42 2013/02/05 00:23:49 karl Exp $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
@@ -22,6 +22,7 @@ EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
   contrib djgpp
 
 dist-hook:
+	cd $(top_distdir)/contrib/perldoc-all && $(MAKE) distclean
 	rm -rf `find $(distdir) -type d -name CVS`
 
 # This is to prevent texinfo.tex from being included in the top-level

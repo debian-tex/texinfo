@@ -159,7 +159,7 @@ $result_errors{'image_not_found'} = [];
 
 
 
-$result_converted{'info'}->{'image_not_found'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'image_not_found'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -167,7 +167,7 @@ File: ,  Node: Top,  Up: (dir)
 [n_f_image]
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';
@@ -175,9 +175,9 @@ End Tag Table
 $result_converted_errors{'info'}->{'image_not_found'} = [
   {
     'file_name' => '',
-    'error_line' => ':2: warning: Cannot find @image file `n_f_image.txt\' nor alternate text
+    'error_line' => ':2: warning: could not find @image file `n_f_image.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `n_f_image.txt\' nor alternate text',
+    'text' => 'could not find @image file `n_f_image.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 2

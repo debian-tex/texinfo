@@ -41,21 +41,21 @@ $result_texts{'unknown_commands'} = '
 
 $result_errors{'unknown_commands'} = [
   {
-    'error_line' => ':1: Unknown command `unknwon\'
+    'error_line' => ':1: unknown command `unknwon\'
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Unknown command `unknwon\'',
+    'text' => 'unknown command `unknwon\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':2: Unexpected @
+    'error_line' => ':2: unexpected @
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Unexpected @',
+    'text' => 'unexpected @',
     'type' => 'error'
   }
 ];

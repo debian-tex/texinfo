@@ -3872,12 +3872,12 @@ $result_menus{'value_in_misc_commands'} = {
 
 $result_errors{'value_in_misc_commands'} = [
   {
-    'error_line' => ':17: Bad argument to @headings: on line following headings atext
+    'error_line' => ':17: bad argument to @headings: on line following headings atext
 ',
     'file_name' => '',
     'line_nr' => 17,
     'macro' => '',
-    'text' => 'Bad argument to @headings: on line following headings atext',
+    'text' => 'bad argument to @headings: on line following headings atext',
     'type' => 'error'
   },
   {
@@ -3890,12 +3890,12 @@ $result_errors{'value_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':80: warning: Multiple @footnotestyle
+    'error_line' => ':80: warning: multiple @footnotestyle
 ',
     'file_name' => '',
     'line_nr' => 80,
     'macro' => '',
-    'text' => 'Multiple @footnotestyle',
+    'text' => 'multiple @footnotestyle',
     'type' => 'warning'
   },
   {
@@ -3926,12 +3926,12 @@ $result_errors{'value_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':143: warning: Remaining argument on @clickstyle line: {result_macro}
+    'error_line' => ':143: warning: remaining argument on @clickstyle line: {result_macro}
 ',
     'file_name' => '',
     'line_nr' => 143,
     'macro' => '',
-    'text' => 'Remaining argument on @clickstyle line: {result_macro}',
+    'text' => 'remaining argument on @clickstyle line: {result_macro}',
     'type' => 'warning'
   }
 ];

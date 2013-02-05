@@ -951,7 +951,6 @@ $result_converted{'html'}->{'contents'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HT
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <style type="text/css">

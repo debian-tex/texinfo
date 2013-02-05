@@ -452,7 +452,7 @@ $result_errors{'empty_top_node_up'} = [];
 
 
 
-$result_converted{'info'}->{'empty_top_node_up'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'empty_top_node_up'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: first,  Up: 
@@ -470,8 +470,8 @@ File: ,  Node: first,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: first141
+Node: Top27
+Node: first127
 
 End Tag Table
 ';
@@ -487,7 +487,6 @@ $result_converted{'html'}->{'empty_top_node_up'} = '<!DOCTYPE html PUBLIC "-//W3
 <meta name="keywords" content="empty top node up">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

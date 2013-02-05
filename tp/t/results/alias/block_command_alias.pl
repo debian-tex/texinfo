@@ -167,30 +167,30 @@ in lang
 
 $result_errors{'block_command_alias'} = [
   {
-    'error_line' => ':1: warning: Environment command lisp as argument to @alias
+    'error_line' => ':1: warning: environment command lisp as argument to @alias
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Environment command lisp as argument to @alias',
+    'text' => 'environment command lisp as argument to @alias',
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: Unknown @end lang
+    'error_line' => ':5: warning: unknown @end lang
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Unknown @end lang',
+    'text' => 'unknown @end lang',
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: No matching `@end lisp\'
+    'error_line' => ':5: no matching `@end lisp\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'No matching `@end lisp\'',
+    'text' => 'no matching `@end lisp\'',
     'type' => 'error'
   }
 ];

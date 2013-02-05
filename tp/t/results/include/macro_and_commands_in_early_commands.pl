@@ -687,12 +687,12 @@ $result_menus{'macro_and_commands_in_early_commands'} = {
 
 $result_errors{'macro_and_commands_in_early_commands'} = [
   {
-    'error_line' => ':11: warning: Encoding `ISO-8859-1@\' is not a canonical texinfo encoding
+    'error_line' => ':11: warning: encoding `ISO-8859-1@\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'Encoding `ISO-8859-1@\' is not a canonical texinfo encoding',
+    'text' => 'encoding `ISO-8859-1@\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {

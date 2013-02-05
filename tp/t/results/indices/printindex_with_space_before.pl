@@ -264,7 +264,7 @@ $result_errors{'printindex_with_space_before'} = [];
 
 
 
-$result_converted{'info'}->{'printindex_with_space_before'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'printindex_with_space_before'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -279,7 +279,7 @@ Text.
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

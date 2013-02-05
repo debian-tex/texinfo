@@ -197,7 +197,8 @@ sub _preamble($)
       my $anchor = '';
       my $node = '';
       if ($node_name =~ /\S/) {
-        if (!$self->texinfo_section_nodes) {
+        if (!$self->texinfo_section_nodes 
+            or $self->{'texinfo_sectioning_commands'}->[$level] eq 'part') {
           $anchor = "\@anchor{$node_name}\n";
         } else {
           $node = "\@node $node_name\n";

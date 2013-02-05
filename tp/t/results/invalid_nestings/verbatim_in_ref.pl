@@ -267,12 +267,12 @@ $result_errors{'verbatim_in_ref'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':8: Misplaced }
+    'error_line' => ':8: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   }
 ];

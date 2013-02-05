@@ -95,7 +95,7 @@ our %all_converters_defaults = (
   'PACKAGE_AND_VERSION'  => 'texinfo',
   'PACKAGE_VERSION'      => '',
   'PACKAGE_URL'          => 'http://www.gnu.org/software/texinfo/',
-  'PROGRAM'              => 'tp',
+  'PROGRAM'              => '',
 
   'DEBUG'                => 0,
   'TEST'                 => 0,
@@ -388,7 +388,7 @@ sub set_conf($$$)
     warn "BUG: unknown option $conf\n";
     return undef;
   } elsif (Texinfo::Common::obsolete_option($conf)) {
-    warn (sprintf(main::__("Obsolete variable %s\n"), $conf));
+    warn(sprintf(main::__("Obsolete variable %s\n"), $conf));
   }
   if ($self->{'set'}->{$conf}) {
     return 0;
@@ -407,7 +407,7 @@ sub force_conf($$$)
     warn "BUG: unknown option $conf\n";
     return undef;
   } elsif (Texinfo::Common::obsolete_option($conf)) {
-    warn (sprintf(main::__("Obsolete variable %s\n"), $conf));
+    warn(sprintf(main::__("Obsolete variable %s\n"), $conf));
   }
   $self->{'conf'}->{$conf} = $value;
   return 1;
@@ -598,7 +598,7 @@ sub _create_destination_directory($)
         if (! -d $new_directory) {
           if (!mkdir($new_directory, oct(755))) {
             $self->document_error(sprintf($self->__(
-              "Can't create directories `%s' or `%s': %s"), 
+              "could not create directories `%s' or `%s': %s"), 
               $self->{'destination_directory'}, $new_directory, $!));
             return undef;
           }
@@ -606,7 +606,7 @@ sub _create_destination_directory($)
         $self->{'destination_directory'} = $new_directory;
       } else {
         $self->document_error(sprintf($self->__(
-             "Can't create directories `%s': %s"), 
+             "could not create directory `%s': %s"), 
              $self->{'destination_directory'}, $!));
         return undef;
       }
@@ -815,7 +815,7 @@ sub output($$)
   if (! $self->{'output_file'} eq '') {
     $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
-      $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+      $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
                                     $self->{'output_file'}, $!));
       return undef;
     }

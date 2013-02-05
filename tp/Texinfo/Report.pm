@@ -51,7 +51,7 @@ use Locale::Messages;
 use Texinfo::Parser;
 
 # return the errors and warnings
-sub errors ($)
+sub errors($)
 {
   my $self = shift;
   #print STDERR "REPORT ERRORS $self $self->{'errors_warnings'}\n";
@@ -96,11 +96,12 @@ sub line_warn($$$)
     if ($self->get_conf('TEST'));
   my $warn_line;
   if ($line_number->{'macro'} ne '') {
-    $warn_line = sprintf($self->__(
+    $warn_line = sprintf($self->__p("Texinfo source file warning",
                              "%s:%d: warning: %s (possibly involving \@%s)\n"),
              $file, $line_number->{'line_nr'}, $text, $line_number->{'macro'});
   } else {
-    $warn_line = sprintf($self->__("%s:%d: warning: %s\n"),
+    $warn_line = sprintf($self->__p("Texinfo source file warning", 
+                                    "%s:%d: warning: %s\n"),
                          $file, $line_number->{'line_nr'}, $text);
   }
   warn $warn_line if ($self->get_conf('DEBUG'));
@@ -137,26 +138,39 @@ sub line_error($$$;$)
   $self->{'error_nrs'}++ unless ($continuation);
 }
 
-sub document_warn ($$)
+sub document_warn($$)
 {
   my $self = shift;
   my $text = shift;
   return if ($self->{'ignore_notice'});
-  chomp ($text);
-  my $warn_line = sprintf($self->__("warning: %s\n"), $text);
+  chomp($text);
+
+  my $warn_line;
+  if (defined($self->get_conf('PROGRAM')) and $self->get_conf('PROGRAM') ne '') {
+    $warn_line = sprintf($self->__p("whole document warning", "%s: warning: %s\n"), 
+                         $self->get_conf('PROGRAM'), $text);
+  } else {
+    $warn_line = sprintf($self->__p("whole document warning", "warning: %s\n"), 
+                         $text);
+  }
   push @{$self->{'errors_warnings'}},
-    { 'type' => 'warning', 'text' => $text, 'error_line' => $warn_line};
+    { 'type' => 'warning', 'text' => $text, 'error_line' => $warn_line };
 }
 
-sub document_error ($$)
+sub document_error($$)
 {
   my $self = shift;
   my $text = shift;
   return if ($self->{'ignore_notice'});
-  chomp ($text);
-  $text .= "\n";
+  chomp($text);
+  my $error_line;
+  if (defined($self->get_conf('PROGRAM')) and $self->get_conf('PROGRAM') ne '') {
+    $error_line = sprintf("%s: %s\n", $self->get_conf('PROGRAM'), $text);
+  } else {
+    $error_line = "$text\n";
+  }
   push @{$self->{'errors_warnings'}},
-    { 'type' => 'error', 'text' => $text, 'error_line' => $text };
+    { 'type' => 'error', 'text' => $text, 'error_line' => $error_line };
   $self->{'error_nrs'}++;
 }
 
@@ -170,15 +184,43 @@ sub file_line_warn($$$;$)
   my $line_nr = shift;
 
   my $warn_line;
-  if (!defined($line_nr)) {
-    $warn_line = "$file: $text\n";
+  if (!defined($file)) {
+    $warn_line = sprintf($self->__p("file warning", "warning: %s\n"), $text);
+  } elsif (!defined($line_nr)) {
+    $warn_line = sprintf($self->__p("file warning", "%s: warning: %s\n"), 
+                         $file, $text);
   } else {
-    $warn_line = "$file:$line_nr: $text\n";
+    $warn_line = sprintf($self->__p("file warning", "%s:%d: warning: %s\n"), 
+                         $file, $line_nr, $text);
   }
   #print STDERR "REPORT FILE_LINE_WARN $self $self->{'errors_warnings'}\n";
   push @{$self->{'errors_warnings'}},
-    { 'type' => 'warning', 'text' => $warn_line, 'error_line' => $warn_line};
+    { 'type' => 'warning', 'text' => $text, 'error_line' => $warn_line};
 }
+
+sub file_line_error($$$;$)
+{
+  my $self = shift;
+  my $text = shift;
+  return if ($self->{'ignore_notice'});
+  chomp($text);
+  my $file = shift;
+  my $line_nr = shift;
+
+  my $error_line;
+  if (!defined($file)) {
+    $error_line = "$text\n";
+  } elsif (!defined($line_nr)) {
+    $error_line = "$file: $text\n";
+  } else {
+    $error_line = "$file:$line_nr: $text\n";
+  }
+  #print STDERR "REPORT FILE_LINE_WARN $self $self->{'errors_warnings'}\n";
+  push @{$self->{'errors_warnings'}},
+    { 'type' => 'error', 'text' => $text, 'error_line' => $error_line};
+  $self->{'error_nrs'}++;
+}
+
 
 # i18n
 
@@ -547,6 +589,11 @@ warning message.
 =item $converter->file_line_warn($text, $file, $line_nr)
 
 Register the warning message I<$text> for file I<$file>, with, optionally
+the line I<$line_nr> in the file.
+
+=item $converter->file_line_error($text, $file, $line_nr)
+
+Register the error message I<$text> for file I<$file>, with, optionally
 the line I<$line_nr> in the file.
 
 =back

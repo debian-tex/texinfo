@@ -154,7 +154,7 @@ $result_errors{'node_up_direction_for_top_with_manual'} = [];
 
 
 
-$result_converted{'info'}->{'node_up_direction_for_top_with_manual'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'node_up_direction_for_top_with_manual'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)Top
@@ -162,7 +162,7 @@ File: ,  Node: Top,  Up: (dir)Top
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';
@@ -178,7 +178,6 @@ $result_converted{'html'}->{'node_up_direction_for_top_with_manual'} = '<!DOCTYP
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -226,9 +225,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'node_up_direction_for_top_with_manual'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

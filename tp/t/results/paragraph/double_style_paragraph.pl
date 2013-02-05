@@ -136,21 +136,21 @@ $result_errors{'double_style_paragraph'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':5: Misplaced }
+    'error_line' => ':5: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
-    'error_line' => ':6: Misplaced }
+    'error_line' => ':6: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   }
 ];

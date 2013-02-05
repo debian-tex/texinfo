@@ -93,12 +93,12 @@ $result_texts{'value_in_invalid_documentencoding'} = '';
 
 $result_errors{'value_in_invalid_documentencoding'} = [
   {
-    'error_line' => ':2: warning: Encoding `bad\' is not a canonical texinfo encoding
+    'error_line' => ':2: warning: encoding `bad\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Encoding `bad\' is not a canonical texinfo encoding',
+    'text' => 'encoding `bad\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {

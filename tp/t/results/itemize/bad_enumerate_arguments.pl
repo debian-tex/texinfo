@@ -613,48 +613,48 @@ $result_texts{'bad_enumerate_arguments'} = '
 
 $result_errors{'bad_enumerate_arguments'} = [
   {
-    'error_line' => ':1: Bad argument to @enumerate
+    'error_line' => ':1: bad argument to @enumerate
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Bad argument to @enumerate',
+    'text' => 'bad argument to @enumerate',
     'type' => 'error'
   },
   {
-    'error_line' => ':4: Bad argument to @enumerate
+    'error_line' => ':4: bad argument to @enumerate
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Bad argument to @enumerate',
+    'text' => 'bad argument to @enumerate',
     'type' => 'error'
   },
   {
-    'error_line' => ':7: Bad argument to @enumerate
+    'error_line' => ':7: bad argument to @enumerate
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Bad argument to @enumerate',
+    'text' => 'bad argument to @enumerate',
     'type' => 'error'
   },
   {
-    'error_line' => ':10: Superfluous argument to @enumerate
+    'error_line' => ':10: superfluous argument to @enumerate
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'Superfluous argument to @enumerate',
+    'text' => 'superfluous argument to @enumerate',
     'type' => 'error'
   },
   {
-    'error_line' => ':13: Bad argument to @enumerate
+    'error_line' => ':13: bad argument to @enumerate
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => 'Bad argument to @enumerate',
+    'text' => 'bad argument to @enumerate',
     'type' => 'error'
   }
 ];

@@ -478,39 +478,39 @@ $result_menus{'novalidate_empty_refs'} = {
 
 $result_errors{'novalidate_empty_refs'} = [
   {
-    'error_line' => ':9: Empty node name after expansion `@
+    'error_line' => ':9: empty node name after expansion `@
 \'
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'Empty node name after expansion `@
+    'text' => 'empty node name after expansion `@
 \'',
     'type' => 'error'
   },
   {
-    'error_line' => ':10: Empty node name after expansion `@:\'
+    'error_line' => ':10: empty node name after expansion `@:\'
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'Empty node name after expansion `@:\'',
+    'text' => 'empty node name after expansion `@:\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':11: Empty node name after expansion `@asis{ }\'
+    'error_line' => ':11: empty node name after expansion `@asis{ }\'
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'Empty node name after expansion `@asis{ }\'',
+    'text' => 'empty node name after expansion `@asis{ }\'',
     'type' => 'error'
   }
 ];
 
 
 
-$result_converted{'info'}->{'novalidate_empty_refs'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'novalidate_empty_refs'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -520,7 +520,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

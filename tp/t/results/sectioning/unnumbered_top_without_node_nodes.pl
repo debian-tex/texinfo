@@ -564,12 +564,12 @@ $result_menus{'unnumbered_top_without_node_nodes'} = {
 
 $result_errors{'unnumbered_top_without_node_nodes'} = [
   {
-    'error_line' => ':6: Lowering the section level of @top appearing after a lower element
+    'error_line' => ':6: lowering the section level of @top appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Lowering the section level of @top appearing after a lower element',
+    'text' => 'lowering the section level of @top appearing after a lower element',
     'type' => 'error'
   },
   {
@@ -678,7 +678,7 @@ element: @node second
 ';
 
 
-$result_converted{'info'}->{'unnumbered_top_without_node_nodes'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'unnumbered_top_without_node_nodes'} = 'This is , produced from .
 
 
 File: ,  Node: a node,  Up: (dir)
@@ -703,17 +703,17 @@ Text of chapter
 
 
 Tag Table:
-Node: a node41
-Node: second154
+Node: a node27
+Node: second140
 
 End Tag Table
 ';
 
 $result_converted_errors{'info'}->{'unnumbered_top_without_node_nodes'} = [
   {
-    'error_line' => 'warning: Document without Top node.
+    'error_line' => 'warning: document without Top node
 ',
-    'text' => 'Document without Top node.',
+    'text' => 'document without Top node',
     'type' => 'warning'
   }
 ];
@@ -730,7 +730,6 @@ $result_converted{'html'}->{'unnumbered_top_without_node_nodes'} = '<!DOCTYPE ht
 <meta name="keywords" content="top section">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#a-node" rel="start" title="a node">
 <style type="text/css">

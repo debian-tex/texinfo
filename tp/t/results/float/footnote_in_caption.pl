@@ -485,7 +485,7 @@ fl 1: in caption(1)
 ';
 
 
-$result_converted{'info'}->{'footnote_in_caption'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'footnote_in_caption'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -505,9 +505,9 @@ fl 1: in caption(1)
 
 
 Tag Table:
-Node: Top41
-Ref: label140
-Ref: Top-Footnote-1208
+Node: Top27
+Ref: label126
+Ref: Top-Footnote-1194
 
 End Tag Table
 ';
@@ -523,7 +523,6 @@ $result_converted{'html'}->{'footnote_in_caption'} = '<!DOCTYPE html PUBLIC "-//
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -588,9 +587,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'footnote_in_caption'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

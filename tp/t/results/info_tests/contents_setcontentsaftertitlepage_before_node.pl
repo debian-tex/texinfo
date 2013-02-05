@@ -249,7 +249,7 @@ $result_errors{'contents_setcontentsaftertitlepage_before_node'} = [];
 
 
 
-$result_converted{'info'}->{'contents_setcontentsaftertitlepage_before_node'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'contents_setcontentsaftertitlepage_before_node'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -260,7 +260,7 @@ Double contents
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

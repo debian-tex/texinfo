@@ -300,12 +300,12 @@ $result_sectioning{'section_on_defx_line'}{'section_childs'}[0]{'section_up'} = 
 
 $result_errors{'section_on_defx_line'} = [
   {
-    'error_line' => ':1: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':1: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
@@ -336,12 +336,12 @@ $result_errors{'section_on_defx_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: Unmatched `@end deffn\'
+    'error_line' => ':6: unmatched `@end deffn\'
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Unmatched `@end deffn\'',
+    'text' => 'unmatched `@end deffn\'',
     'type' => 'error'
   }
 ];

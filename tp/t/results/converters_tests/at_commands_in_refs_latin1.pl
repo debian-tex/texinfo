@@ -22268,63 +22268,63 @@ $result_converted_errors{'file_html'}->{'at_commands_in_refs_latin1'} = [
 $result_converted_errors{'file_info'}->{'at_commands_in_refs_latin1'} = [
   {
     'file_name' => '',
-    'error_line' => ':26: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':26: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 26
   },
   {
     'file_name' => '',
-    'error_line' => ':92: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':92: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 92
   },
   {
     'file_name' => '',
-    'error_line' => ':92: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':92: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 92
   },
   {
     'file_name' => '',
-    'error_line' => ':94: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':94: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 94
   },
   {
     'file_name' => '',
-    'error_line' => ':92: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':92: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 92
   },
   {
     'file_name' => '',
-    'error_line' => ':92: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':92: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 92
   },
   {
     'file_name' => '',
-    'error_line' => ':92: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':92: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 92

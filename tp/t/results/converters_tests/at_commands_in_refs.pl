@@ -22226,18 +22226,18 @@ in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
 $result_converted_errors{'plaintext'}->{'at_commands_in_refs'} = [
   {
     'file_name' => '',
-    'error_line' => ':91: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':91: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 91
   },
   {
     'file_name' => '',
-    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':89: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 89
@@ -22256,7 +22256,6 @@ $result_converted{'html'}->{'at_commands_in_refs'} = '<!DOCTYPE html PUBLIC "-//
 <meta name="keywords" content="Top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -23005,7 +23004,7 @@ $result_converted_errors{'docbook'}->{'at_commands_in_refs'} = [
 
 
 
-$result_converted{'info'}->{'at_commands_in_refs'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'at_commands_in_refs'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: { },  Up: (dir)
@@ -23225,34 +23224,34 @@ in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
 
 
 Tag Table:
-Node: Top41
-Node: { }858
+Node: Top27
+Node: { }844
 Node:     !
-. . ? @937
-Node: @ { } \\ #1042
-Node: LaTeX TeX * , (C) ... ...1161
-Node: == error-> Euro ! ==> -1322
-Node: >= <= ->1478
-Node: a o -!- # -| ? (R)1597
-Node: => o a b a sunny day aa1736
-Node: AA ae oe AE OE /o /O ss /l /L D d TH th1916
-Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2143
-Node: e. e( e_ .e e< j ee[2357
-Node: i E=` C\',2515
-Node: `` \'\' ` \' ,, ,2632
-Node: << >> << >> < >2754
-Node: `` \'\' --- -- ` \'2885
-Node: AAA (fff) AAA BBB3013
-Node: CCC (rrr) CCC DDD3153
-Node: the someone <someone@somewher> <no_explain@there>3326
-Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3628
-Node:  @ {} . 3984
-Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i4193
-Node: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'4455
-Node: 8.27in4735
-Node: sansserif slanted4883
-Node: \'indicateurl\'5009
-Node: <http://somewhere_aaa> text (url) ls5157
+. . ? @923
+Node: @ { } \\ #1028
+Node: LaTeX TeX * , (C) ... ...1147
+Node: == error-> Euro ! ==> -1308
+Node: >= <= ->1464
+Node: a o -!- # -| ? (R)1583
+Node: => o a b a sunny day aa1722
+Node: AA ae oe AE OE /o /O ss /l /L D d TH th1902
+Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2129
+Node: e. e( e_ .e e< j ee[2343
+Node: i E=` C\',2501
+Node: `` \'\' ` \' ,, ,2618
+Node: << >> << >> < >2740
+Node: `` \'\' --- -- ` \'2871
+Node: AAA (fff) AAA BBB2999
+Node: CCC (rrr) CCC DDD3139
+Node: the someone <someone@somewher> <no_explain@there>3312
+Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3614
+Node:  @ {} . 3970
+Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i4179
+Node: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'4441
+Node: 8.27in4721
+Node: sansserif slanted4869
+Node: \'indicateurl\'4995
+Node: <http://somewhere_aaa> text (url) ls5143
 
 End Tag Table
 ';
@@ -23260,63 +23259,63 @@ End Tag Table
 $result_converted_errors{'info'}->{'at_commands_in_refs'} = [
   {
     'file_name' => '',
-    'error_line' => ':23: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':23: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 23
   },
   {
     'file_name' => '',
-    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':89: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 89
   },
   {
     'file_name' => '',
-    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':89: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 89
   },
   {
     'file_name' => '',
-    'error_line' => ':91: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':91: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 91
   },
   {
     'file_name' => '',
-    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':89: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 89
   },
   {
     'file_name' => '',
-    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':89: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 89
   },
   {
     'file_name' => '',
-    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':89: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 89

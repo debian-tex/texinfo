@@ -161,21 +161,21 @@ in ifset
 
 $result_errors{'macro_in_ifset_end_in_arg'} = [
   {
-    'error_line' => ':8: Misplaced }
+    'error_line' => ':8: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
-    'error_line' => ':10: Unmatched `@end\'
+    'error_line' => ':10: unmatched `@end\'
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'Unmatched `@end\'',
+    'text' => 'unmatched `@end\'',
     'type' => 'error'
   }
 ];

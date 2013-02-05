@@ -462,39 +462,39 @@ first2 second2 first2 out
 
 $result_errors{'multitable_two_columns_too_much_cells'} = [
   {
-    'error_line' => ':2: Too many columns in multitable item (max 2)
+    'error_line' => ':2: too many columns in multitable item (max 2)
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Too many columns in multitable item (max 2)',
+    'text' => 'too many columns in multitable item (max 2)',
     'type' => 'error'
   },
   {
-    'error_line' => ':2: Too many columns in multitable item (max 2)
+    'error_line' => ':2: too many columns in multitable item (max 2)
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Too many columns in multitable item (max 2)',
+    'text' => 'too many columns in multitable item (max 2)',
     'type' => 'error'
   },
   {
-    'error_line' => ':2: Too many columns in multitable item (max 2)
+    'error_line' => ':2: too many columns in multitable item (max 2)
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Too many columns in multitable item (max 2)',
+    'text' => 'too many columns in multitable item (max 2)',
     'type' => 'error'
   },
   {
-    'error_line' => ':4: Too many columns in multitable item (max 2)
+    'error_line' => ':4: too many columns in multitable item (max 2)
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Too many columns in multitable item (max 2)',
+    'text' => 'too many columns in multitable item (max 2)',
     'type' => 'error'
   }
 ];

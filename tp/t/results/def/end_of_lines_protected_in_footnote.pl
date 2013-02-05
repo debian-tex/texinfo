@@ -424,12 +424,12 @@ $result_texts{'end_of_lines_protected_in_footnote'} = '
 
 $result_errors{'end_of_lines_protected_in_footnote'} = [
   {
-    'error_line' => ':5: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':5: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   }
 ];

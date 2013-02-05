@@ -42,6 +42,7 @@ tp/Texinfo/Parser.pm
 tp/Texinfo/Report.pm
 tp/Texinfo/Structuring.pm
 tp/init/chm.pm
+tp/init/latex2html.pm
 tp/init/tex4ht.pm
 tp/texi2any.pl
 util/texindex.c

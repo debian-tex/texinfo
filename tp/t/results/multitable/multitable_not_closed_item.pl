@@ -184,12 +184,12 @@ $result_texts{'multitable_not_closed_item'} = 'rt
 
 $result_errors{'multitable_not_closed_item'} = [
   {
-    'error_line' => ':2: No matching `@end multitable\'
+    'error_line' => ':2: no matching `@end multitable\'
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'No matching `@end multitable\'',
+    'text' => 'no matching `@end multitable\'',
     'type' => 'error'
   }
 ];

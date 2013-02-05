@@ -972,7 +972,6 @@ $result_converted{'html'}->{'two_footnotes_in_nodes_separate'} = '<!DOCTYPE html
 <meta name="keywords" content="2 footnotes in 2 nodes">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -1047,7 +1046,7 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 ';
 
 
-$result_converted{'info'}->{'two_footnotes_in_nodes_separate'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'two_footnotes_in_nodes_separate'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: chapter,  Up: (dir)
@@ -1098,14 +1097,14 @@ File: ,  Node: chapter-Footnotes,  Up: chapter
 
 
 Tag Table:
-Node: Top41
-Node: Top-Footnotes225
-Ref: Top-Footnote-1267
-Ref: Top-Footnote-2300
-Node: chapter333
-Node: chapter-Footnotes475
-Ref: chapter-Footnote-1525
-Ref: chapter-Footnote-2562
+Node: Top27
+Node: Top-Footnotes211
+Ref: Top-Footnote-1253
+Ref: Top-Footnote-2286
+Node: chapter319
+Node: chapter-Footnotes461
+Ref: chapter-Footnote-1511
+Ref: chapter-Footnote-2548
 
 End Tag Table
 ';

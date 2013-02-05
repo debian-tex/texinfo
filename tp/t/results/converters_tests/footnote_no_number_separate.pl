@@ -298,7 +298,7 @@ $result_converted{'docbook'}->{'footnote_no_number_separate'} = '<anchor id="Top
 </para>';
 
 
-$result_converted{'info'}->{'footnote_no_number_separate'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'footnote_no_number_separate'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -317,10 +317,10 @@ File: ,  Node: Top-Footnotes,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: Top-Footnotes149
-Ref: Top-Footnote-1191
-Ref: Top-Footnote-2211
+Node: Top27
+Node: Top-Footnotes135
+Ref: Top-Footnote-1177
+Ref: Top-Footnote-2197
 
 End Tag Table
 ';

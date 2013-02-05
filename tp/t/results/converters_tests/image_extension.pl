@@ -107,9 +107,9 @@ $result_converted{'plaintext'}->{'image_extension'} = '[f---ile]';
 $result_converted_errors{'plaintext'}->{'image_extension'} = [
   {
     'file_name' => '',
-    'error_line' => ':1: warning: Cannot find @image file `f---ile.txt\' nor alternate text
+    'error_line' => ':1: warning: could not find @image file `f---ile.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f---ile.txt\' nor alternate text',
+    'text' => 'could not find @image file `f---ile.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 1
@@ -156,7 +156,7 @@ $result_converted_errors{'docbook'}->{'image_extension'} = [
 
 
 
-$result_converted{'info'}->{'image_extension'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'image_extension'} = 'This is , produced from .
 
 [f---ile]
 
@@ -167,16 +167,16 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'image_extension'} = [
   {
-    'error_line' => 'warning: Document without nodes.
+    'error_line' => 'warning: document without nodes
 ',
-    'text' => 'Document without nodes.',
+    'text' => 'document without nodes',
     'type' => 'warning'
   },
   {
     'file_name' => '',
-    'error_line' => ':1: warning: Cannot find @image file `f---ile.txt\' nor alternate text
+    'error_line' => ':1: warning: could not find @image file `f---ile.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f---ile.txt\' nor alternate text',
+    'text' => 'could not find @image file `f---ile.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 1

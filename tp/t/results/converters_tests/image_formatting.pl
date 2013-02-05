@@ -3114,7 +3114,7 @@ $result_converted_errors{'docbook'}->{'image_formatting'} = [
 
 
 
-$result_converted{'info'}->{'image_formatting'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'image_formatting'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -3148,7 +3148,7 @@ ccc]
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

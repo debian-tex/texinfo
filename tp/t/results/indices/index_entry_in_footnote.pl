@@ -311,7 +311,7 @@ $result_errors{'index_entry_in_footnote'} = [];
 
 
 
-$result_converted{'info'}->{'index_entry_in_footnote'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'index_entry_in_footnote'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -330,8 +330,8 @@ Top node(1)
 
 
 Tag Table:
-Node: Top41
-Ref: Top-Footnote-1219
+Node: Top27
+Ref: Top-Footnote-1205
 
 End Tag Table
 ';

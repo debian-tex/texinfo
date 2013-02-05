@@ -300,7 +300,7 @@ $result_converted{'docbook'}->{'footnote_no_number'} = '<anchor id="Top"/>
 </para>';
 
 
-$result_converted{'info'}->{'footnote_no_number'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'footnote_no_number'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -318,9 +318,9 @@ Para(*).
 
 
 Tag Table:
-Node: Top41
-Ref: Top-Footnote-1135
-Ref: Top-Footnote-2155
+Node: Top27
+Ref: Top-Footnote-1121
+Ref: Top-Footnote-2141
 
 End Tag Table
 ';

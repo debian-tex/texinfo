@@ -69,12 +69,12 @@ $result_texts{'end_of_line_end_file'} = '';
 
 $result_errors{'end_of_line_end_file'} = [
   {
-    'error_line' => ':1: No matching `@end deffn\'
+    'error_line' => ':1: no matching `@end deffn\'
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'No matching `@end deffn\'',
+    'text' => 'no matching `@end deffn\'',
     'type' => 'error'
   }
 ];

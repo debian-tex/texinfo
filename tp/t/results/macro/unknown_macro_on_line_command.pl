@@ -52,30 +52,30 @@ $result_texts{'unknown_macro_on_line_command'} = '';
 
 $result_errors{'unknown_macro_on_line_command'} = [
   {
-    'error_line' => ':1: Unknown command `begin\'
+    'error_line' => ':1: unknown command `begin\'
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Unknown command `begin\'',
+    'text' => 'unknown command `begin\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':1: Misplaced {
+    'error_line' => ':1: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':1: Misplaced }
+    'error_line' => ':1: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {

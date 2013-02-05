@@ -215,12 +215,12 @@ $result_texts{'heading_in_footnote'} = 'T
 
 $result_errors{'heading_in_footnote'} = [
   {
-    'error_line' => ':4: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':4: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }
 ];

@@ -170,30 +170,30 @@ Item line
 
 $result_errors{'invalid_command_and_brace_in_table'} = [
   {
-    'error_line' => ':2: Misplaced {
+    'error_line' => ':2: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':2: Unknown command `itemTop\'
+    'error_line' => ':2: unknown command `itemTop\'
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Unknown command `itemTop\'',
+    'text' => 'unknown command `itemTop\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':3: Misplaced }
+    'error_line' => ':3: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {

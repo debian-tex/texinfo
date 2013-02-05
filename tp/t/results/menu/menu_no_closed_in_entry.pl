@@ -96,12 +96,12 @@ $result_errors{'menu_no_closed_in_entry'} = [
     'type' => 'error continuation'
   },
   {
-    'error_line' => ':2: No matching `@end menu\'
+    'error_line' => ':2: no matching `@end menu\'
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'No matching `@end menu\'',
+    'text' => 'no matching `@end menu\'',
     'type' => 'error'
   }
 ];

@@ -92,12 +92,12 @@ $result_texts{'unmatched_brace'} = 'Closing  } without opening macro .';
 
 $result_errors{'unmatched_brace'} = [
   {
-    'error_line' => ':1: Misplaced }
+    'error_line' => ':1: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   }
 ];

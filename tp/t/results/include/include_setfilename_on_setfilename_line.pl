@@ -169,12 +169,12 @@ $result_errors{'include_setfilename_on_setfilename_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: Multiple @setfilename
+    'error_line' => ':1: warning: multiple @setfilename
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Multiple @setfilename',
+    'text' => 'multiple @setfilename',
     'type' => 'warning'
   },
   {
@@ -196,12 +196,12 @@ $result_errors{'include_setfilename_on_setfilename_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: @include: Cannot find are you joking!
+    'error_line' => ':1: @include: could not find are you joking!
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@include: Cannot find are you joking!',
+    'text' => '@include: could not find are you joking!',
     'type' => 'error'
   }
 ];

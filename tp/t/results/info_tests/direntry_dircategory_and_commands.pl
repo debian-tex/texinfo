@@ -768,7 +768,7 @@ $result_errors{'direntry_dircategory_and_commands'} = [];
 
 
 
-$result_converted{'info'}->{'direntry_dircategory_and_commands'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'direntry_dircategory_and_commands'} = 'This is , produced from .
 
 INFO-DIR-SECTION "category--TH ERE?"
 START-INFO-DIR-ENTRY
@@ -793,7 +793,7 @@ Text
 
 
 Tag Table:
-Node: Top278
+Node: Top264
 
 End Tag Table
 ';

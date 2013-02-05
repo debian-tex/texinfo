@@ -167,12 +167,12 @@ $result_errors{'bad_style_nesting'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: Misplaced }
+    'error_line' => ':3: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   }
 ];

@@ -5138,7 +5138,7 @@ $result_errors{'test_index'} = [];
 
 
 
-$result_converted{'info'}->{'test_index'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'test_index'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: name,  Up: (dir)
@@ -5394,10 +5394,10 @@ B chapter end
 
 
 Tag Table:
-Node: Top41
-Node: name344
-Node: name1 looooooooooooooooooooooooooooooooooooooooooooooooooooooooong996
-Ref: a counting anchor3084
+Node: Top27
+Node: name330
+Node: name1 looooooooooooooooooooooooooooooooooooooooooooooooooooooooong982
+Ref: a counting anchor3070
 
 End Tag Table
 ';

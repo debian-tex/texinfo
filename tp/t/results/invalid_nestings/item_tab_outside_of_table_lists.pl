@@ -107,12 +107,12 @@ $result_errors{'item_tab_outside_of_table_lists'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':3: Unknown command `someitem\'
+    'error_line' => ':3: unknown command `someitem\'
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Unknown command `someitem\'',
+    'text' => 'unknown command `someitem\'',
     'type' => 'error'
   },
   {

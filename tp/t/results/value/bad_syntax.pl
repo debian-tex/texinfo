@@ -153,21 +153,21 @@ $result_errors{'bad_syntax'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':7: Bad syntax for @value
+    'error_line' => ':7: bad syntax for @value
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Bad syntax for @value',
+    'text' => 'bad syntax for @value',
     'type' => 'error'
   },
   {
-    'error_line' => ':7: Misplaced {
+    'error_line' => ':7: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {

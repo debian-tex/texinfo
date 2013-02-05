@@ -774,21 +774,21 @@ $result_errors{'block_not_matching'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':3: Unmatched `@end cartouche\'
+    'error_line' => ':3: unmatched `@end cartouche\'
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Unmatched `@end cartouche\'',
+    'text' => 'unmatched `@end cartouche\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':5: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':5: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
@@ -801,12 +801,12 @@ $result_errors{'block_not_matching'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':7: Unmatched `@end deftypefun\'
+    'error_line' => ':7: unmatched `@end deftypefun\'
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Unmatched `@end deftypefun\'',
+    'text' => 'unmatched `@end deftypefun\'',
     'type' => 'error'
   },
   {
@@ -819,12 +819,12 @@ $result_errors{'block_not_matching'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':12: Unmatched `@end vtable\'
+    'error_line' => ':12: unmatched `@end vtable\'
 ',
     'file_name' => '',
     'line_nr' => 12,
     'macro' => '',
-    'text' => 'Unmatched `@end vtable\'',
+    'text' => 'unmatched `@end vtable\'',
     'type' => 'error'
   },
   {
@@ -846,21 +846,21 @@ $result_errors{'block_not_matching'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':18: Unmatched `@end display\'
+    'error_line' => ':18: unmatched `@end display\'
 ',
     'file_name' => '',
     'line_nr' => 18,
     'macro' => '',
-    'text' => 'Unmatched `@end display\'',
+    'text' => 'unmatched `@end display\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':19: Unmatched `@end table\'
+    'error_line' => ':19: unmatched `@end table\'
 ',
     'file_name' => '',
     'line_nr' => 19,
     'macro' => '',
-    'text' => 'Unmatched `@end table\'',
+    'text' => 'unmatched `@end table\'',
     'type' => 'error'
   },
   {
@@ -873,12 +873,12 @@ $result_errors{'block_not_matching'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':23: Unmatched `@end table\'
+    'error_line' => ':23: unmatched `@end table\'
 ',
     'file_name' => '',
     'line_nr' => 23,
     'macro' => '',
-    'text' => 'Unmatched `@end table\'',
+    'text' => 'unmatched `@end table\'',
     'type' => 'error'
   },
   {
@@ -891,12 +891,12 @@ $result_errors{'block_not_matching'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':27: Unmatched `@end cartouche\'
+    'error_line' => ':27: unmatched `@end cartouche\'
 ',
     'file_name' => '',
     'line_nr' => 27,
     'macro' => '',
-    'text' => 'Unmatched `@end cartouche\'',
+    'text' => 'unmatched `@end cartouche\'',
     'type' => 'error'
   },
   {
@@ -909,12 +909,12 @@ $result_errors{'block_not_matching'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':31: Unmatched `@end group\'
+    'error_line' => ':31: unmatched `@end group\'
 ',
     'file_name' => '',
     'line_nr' => 31,
     'macro' => '',
-    'text' => 'Unmatched `@end group\'',
+    'text' => 'unmatched `@end group\'',
     'type' => 'error'
   },
   {
@@ -927,12 +927,12 @@ $result_errors{'block_not_matching'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':35: Unmatched `@end float\'
+    'error_line' => ':35: unmatched `@end float\'
 ',
     'file_name' => '',
     'line_nr' => 35,
     'macro' => '',
-    'text' => 'Unmatched `@end float\'',
+    'text' => 'unmatched `@end float\'',
     'type' => 'error'
   }
 ];

@@ -1120,7 +1120,7 @@ $result_errors{'nested_multitable_anchor_index'} = [];
 
 
 
-$result_converted{'info'}->{'nested_multitable_anchor_index'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'nested_multitable_anchor_index'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -1140,9 +1140,9 @@ other item         in tab
 
 
 Tag Table:
-Node: Top41
-Ref: mark inside108
-Ref: mark154
+Node: Top27
+Ref: mark inside94
+Ref: mark140
 
 End Tag Table
 ';

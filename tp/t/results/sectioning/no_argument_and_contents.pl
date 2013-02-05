@@ -244,7 +244,6 @@ $result_converted{'html'}->{'no_argument_and_contents'} = '<!DOCTYPE html PUBLIC
 <meta name="keywords" content="for example">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <style type="text/css">

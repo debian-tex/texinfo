@@ -644,7 +644,7 @@ $result_errors{'center_flush'} = [];
 
 
 
-$result_converted{'info'}->{'center_flush'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'center_flush'} = 'This is , produced from .
 
                                centered
 
@@ -682,9 +682,9 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'center_flush'} = [
   {
-    'error_line' => 'warning: Document without nodes.
+    'error_line' => 'warning: document without nodes
 ',
-    'text' => 'Document without nodes.',
+    'text' => 'document without nodes',
     'type' => 'warning'
   },
   {

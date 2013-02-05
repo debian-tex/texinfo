@@ -921,7 +921,7 @@ $result_errors{'printindex_index_entry_in_copying_in_footnote'} = [];
 
 
 
-$result_converted{'info'}->{'printindex_index_entry_in_copying_in_footnote'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'printindex_index_entry_in_copying_in_footnote'} = 'This is , produced from .
 
 Copying(1).
 
@@ -975,10 +975,10 @@ Copying(1).
 
 
 Tag Table:
-Node: Top132
-Ref: Top-Footnote-1293
-Node: chapter313
-Ref: chapter-Footnote-1526
+Node: Top118
+Ref: Top-Footnote-1279
+Node: chapter299
+Ref: chapter-Footnote-1512
 
 End Tag Table
 ';

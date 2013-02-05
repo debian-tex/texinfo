@@ -377,12 +377,12 @@ $result_errors{'item_in_ref'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: Misplaced }
+    'error_line' => ':6: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   }
 ];

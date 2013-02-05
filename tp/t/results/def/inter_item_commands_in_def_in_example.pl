@@ -841,48 +841,48 @@ In deff item.
 
 $result_errors{'inter_item_commands_in_def_in_example'} = [
   {
-    'error_line' => ':2: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':2: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':5: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':6: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':7: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':7: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':8: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':8: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }
 ];

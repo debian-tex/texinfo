@@ -187,12 +187,12 @@ $result_menus{'unknown_encoding'} = {
 
 $result_errors{'unknown_encoding'} = [
   {
-    'error_line' => ':2: warning: Encoding `ggg\' is not a canonical texinfo encoding
+    'error_line' => ':2: warning: encoding `ggg\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Encoding `ggg\' is not a canonical texinfo encoding',
+    'text' => 'encoding `ggg\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {
@@ -208,7 +208,7 @@ $result_errors{'unknown_encoding'} = [
 
 
 
-$result_converted{'info'}->{'unknown_encoding'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'unknown_encoding'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -216,7 +216,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

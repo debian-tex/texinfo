@@ -16530,426 +16530,426 @@ var then code: ret_type1 fun_name1 A1 A2 A3 A4
 
 $result_errors{'all_commands_delimiters'} = [
   {
-    'error_line' => ':2: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':2: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: Entry for index `vr\' outside of any node
+    'error_line' => ':6: warning: entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Entry for index `vr\' outside of any node',
+    'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':9: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':13: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':13: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':16: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':16: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 16,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':20: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':20: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 20,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':24: warning: Entry for index `vr\' outside of any node
+    'error_line' => ':24: warning: entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 24,
     'macro' => '',
-    'text' => 'Entry for index `vr\' outside of any node',
+    'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':28: warning: Entry for index `tp\' outside of any node
+    'error_line' => ':28: warning: entry for index `tp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 28,
     'macro' => '',
-    'text' => 'Entry for index `tp\' outside of any node',
+    'text' => 'entry for index `tp\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':32: warning: Entry for index `vr\' outside of any node
+    'error_line' => ':32: warning: entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 32,
     'macro' => '',
-    'text' => 'Entry for index `vr\' outside of any node',
+    'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':36: warning: Entry for index `vr\' outside of any node
+    'error_line' => ':36: warning: entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 36,
     'macro' => '',
-    'text' => 'Entry for index `vr\' outside of any node',
+    'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':40: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':40: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 40,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':44: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':44: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 44,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':47: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':47: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 47,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':50: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':50: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 50,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':53: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':53: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 53,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':56: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':56: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 56,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':59: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':59: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 59,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':62: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':62: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 62,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':65: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':65: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 65,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':68: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':68: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 68,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':71: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':71: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 71,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':74: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':74: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 74,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':77: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':77: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 77,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':80: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':80: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 80,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':83: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':83: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 83,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':86: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':86: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 86,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':89: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':89: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 89,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':92: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':92: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 92,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':95: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':95: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 95,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':98: warning: Entry for index `vr\' outside of any node
+    'error_line' => ':98: warning: entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 98,
     'macro' => '',
-    'text' => 'Entry for index `vr\' outside of any node',
+    'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':101: warning: Entry for index `vr\' outside of any node
+    'error_line' => ':101: warning: entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 101,
     'macro' => '',
-    'text' => 'Entry for index `vr\' outside of any node',
+    'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':104: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':104: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 104,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':107: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':107: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 107,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':110: warning: Entry for index `vr\' outside of any node
+    'error_line' => ':110: warning: entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 110,
     'macro' => '',
-    'text' => 'Entry for index `vr\' outside of any node',
+    'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':113: warning: Entry for index `vr\' outside of any node
+    'error_line' => ':113: warning: entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 113,
     'macro' => '',
-    'text' => 'Entry for index `vr\' outside of any node',
+    'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':116: warning: Entry for index `tp\' outside of any node
+    'error_line' => ':116: warning: entry for index `tp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 116,
     'macro' => '',
-    'text' => 'Entry for index `tp\' outside of any node',
+    'text' => 'entry for index `tp\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':119: warning: Entry for index `tp\' outside of any node
+    'error_line' => ':119: warning: entry for index `tp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 119,
     'macro' => '',
-    'text' => 'Entry for index `tp\' outside of any node',
+    'text' => 'entry for index `tp\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':122: warning: Entry for index `vr\' outside of any node
+    'error_line' => ':122: warning: entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 122,
     'macro' => '',
-    'text' => 'Entry for index `vr\' outside of any node',
+    'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':125: warning: Entry for index `tp\' outside of any node
+    'error_line' => ':125: warning: entry for index `tp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 125,
     'macro' => '',
-    'text' => 'Entry for index `tp\' outside of any node',
+    'text' => 'entry for index `tp\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':128: warning: Entry for index `vr\' outside of any node
+    'error_line' => ':128: warning: entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 128,
     'macro' => '',
-    'text' => 'Entry for index `vr\' outside of any node',
+    'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':131: warning: Entry for index `vr\' outside of any node
+    'error_line' => ':131: warning: entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 131,
     'macro' => '',
-    'text' => 'Entry for index `vr\' outside of any node',
+    'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':134: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':134: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 134,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':137: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':137: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 137,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':140: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':140: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 140,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':143: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':143: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 143,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':146: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':146: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 146,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':149: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':149: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 149,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   }
 ];

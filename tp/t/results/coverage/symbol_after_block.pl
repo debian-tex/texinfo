@@ -2353,138 +2353,138 @@ Copying:
 
 $result_errors{'symbol_after_block'} = [
   {
-    'error_line' => ':3: Superfluous argument to @end html: . On the line.
+    'error_line' => ':3: superfluous argument to @end html: . On the line.
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Superfluous argument to @end html: . On the line.',
+    'text' => 'superfluous argument to @end html: . On the line.',
     'type' => 'error'
   },
   {
-    'error_line' => ':7: Superfluous argument to @end html: @@ On the line.
+    'error_line' => ':7: superfluous argument to @end html: @@ On the line.
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Superfluous argument to @end html: @@ On the line.',
+    'text' => 'superfluous argument to @end html: @@ On the line.',
     'type' => 'error'
   },
   {
-    'error_line' => ':13: warning: Superfluous argument to @end verbatim: ;
+    'error_line' => ':13: warning: superfluous argument to @end verbatim: ;
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => 'Superfluous argument to @end verbatim: ;',
+    'text' => 'superfluous argument to @end verbatim: ;',
     'type' => 'warning'
   },
   {
-    'error_line' => ':17: warning: Superfluous argument to @end verbatim: @@
+    'error_line' => ':17: warning: superfluous argument to @end verbatim: @@
 ',
     'file_name' => '',
     'line_nr' => 17,
     'macro' => '',
-    'text' => 'Superfluous argument to @end verbatim: @@',
+    'text' => 'superfluous argument to @end verbatim: @@',
     'type' => 'warning'
   },
   {
-    'error_line' => ':24: Superfluous argument to @end table: +
+    'error_line' => ':24: superfluous argument to @end table: +
 ',
     'file_name' => '',
     'line_nr' => 24,
     'macro' => '',
-    'text' => 'Superfluous argument to @end table: +',
+    'text' => 'superfluous argument to @end table: +',
     'type' => 'error'
   },
   {
-    'error_line' => ':29: Superfluous argument to @end table: @@
+    'error_line' => ':29: superfluous argument to @end table: @@
 ',
     'file_name' => '',
     'line_nr' => 29,
     'macro' => '',
-    'text' => 'Superfluous argument to @end table: @@',
+    'text' => 'superfluous argument to @end table: @@',
     'type' => 'error'
   },
   {
-    'error_line' => ':35: Superfluous argument to @end itemize: \'\'
+    'error_line' => ':35: superfluous argument to @end itemize: \'\'
 ',
     'file_name' => '',
     'line_nr' => 35,
     'macro' => '',
-    'text' => 'Superfluous argument to @end itemize: \'\'',
+    'text' => 'superfluous argument to @end itemize: \'\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':39: Superfluous argument to @end itemize: @@
+    'error_line' => ':39: superfluous argument to @end itemize: @@
 ',
     'file_name' => '',
     'line_nr' => 39,
     'macro' => '',
-    'text' => 'Superfluous argument to @end itemize: @@',
+    'text' => 'superfluous argument to @end itemize: @@',
     'type' => 'error'
   },
   {
-    'error_line' => ':46: Superfluous argument to @end multitable: ^
+    'error_line' => ':46: superfluous argument to @end multitable: ^
 ',
     'file_name' => '',
     'line_nr' => 46,
     'macro' => '',
-    'text' => 'Superfluous argument to @end multitable: ^',
+    'text' => 'superfluous argument to @end multitable: ^',
     'type' => 'error'
   },
   {
-    'error_line' => ':51: Superfluous argument to @end multitable: @{
+    'error_line' => ':51: superfluous argument to @end multitable: @{
 ',
     'file_name' => '',
     'line_nr' => 51,
     'macro' => '',
-    'text' => 'Superfluous argument to @end multitable: @{',
+    'text' => 'superfluous argument to @end multitable: @{',
     'type' => 'error'
   },
   {
-    'error_line' => ':57: Superfluous argument to @end flushleft: !
+    'error_line' => ':57: superfluous argument to @end flushleft: !
 ',
     'file_name' => '',
     'line_nr' => 57,
     'macro' => '',
-    'text' => 'Superfluous argument to @end flushleft: !',
+    'text' => 'superfluous argument to @end flushleft: !',
     'type' => 'error'
   },
   {
-    'error_line' => ':61: Superfluous argument to @end flushleft: @@
+    'error_line' => ':61: superfluous argument to @end flushleft: @@
 ',
     'file_name' => '',
     'line_nr' => 61,
     'macro' => '',
-    'text' => 'Superfluous argument to @end flushleft: @@',
+    'text' => 'superfluous argument to @end flushleft: @@',
     'type' => 'error'
   },
   {
-    'error_line' => ':67: Superfluous argument to @end copying: *
+    'error_line' => ':67: superfluous argument to @end copying: *
 ',
     'file_name' => '',
     'line_nr' => 67,
     'macro' => '',
-    'text' => 'Superfluous argument to @end copying: *',
+    'text' => 'superfluous argument to @end copying: *',
     'type' => 'error'
   },
   {
-    'error_line' => ':69: warning: Multiple @copying
+    'error_line' => ':69: warning: multiple @copying
 ',
     'file_name' => '',
     'line_nr' => 69,
     'macro' => '',
-    'text' => 'Multiple @copying',
+    'text' => 'multiple @copying',
     'type' => 'warning'
   },
   {
-    'error_line' => ':71: Superfluous argument to @end copying: @@
+    'error_line' => ':71: superfluous argument to @end copying: @@
 ',
     'file_name' => '',
     'line_nr' => 71,
     'macro' => '',
-    'text' => 'Superfluous argument to @end copying: @@',
+    'text' => 'superfluous argument to @end copying: @@',
     'type' => 'error'
   }
 ];

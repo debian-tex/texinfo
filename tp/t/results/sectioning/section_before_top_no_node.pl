@@ -168,12 +168,12 @@ $result_sectioning{'section_before_top_no_node'}{'section_childs'}[1]{'toplevel_
 
 $result_errors{'section_before_top_no_node'} = [
   {
-    'error_line' => ':3: Lowering the section level of @top appearing after a lower element
+    'error_line' => ':3: lowering the section level of @top appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Lowering the section level of @top appearing after a lower element',
+    'text' => 'lowering the section level of @top appearing after a lower element',
     'type' => 'error'
   }
 ];

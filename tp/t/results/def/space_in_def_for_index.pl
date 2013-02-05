@@ -625,7 +625,7 @@ $result_errors{'space_in_def_for_index'} = [];
 
 
 
-$result_converted{'info'}->{'space_in_def_for_index'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'space_in_def_for_index'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -642,7 +642,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';
@@ -658,7 +658,6 @@ $result_converted{'html'}->{'space_in_def_for_index'} = '<!DOCTYPE html PUBLIC "
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <link href="#Top" rel="index" title="Top">
@@ -733,9 +732,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'space_in_def_for_index'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

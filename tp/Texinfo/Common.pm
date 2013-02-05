@@ -335,7 +335,7 @@ foreach my $valid_transformation ('simple_menus',
     'fill_gaps_in_sectioning', 'move_index_entries_after_items',
     'insert_nodes_for_sectioning_commands',
     'complete_tree_nodes_menus', 'regenerate_master_menu',
-    'indent_menus_descriptions') {
+    'indent_menu_descriptions') {
   $valid_tree_transformations{$valid_transformation} = 1;
 }
 
@@ -1093,7 +1093,7 @@ sub expand_verbatiminclude($$)
   if (defined($file)) {
     if (!open(VERBINCLUDE, $file)) {
       if ($self) {
-        $self->line_error (sprintf($self->__("Cannot read %s: %s"), $file, $!), 
+        $self->line_error(sprintf($self->__("could not read %s: %s"), $file, $!), 
                             $current->{'line_nr'});
       }
     } else {
@@ -1110,12 +1110,13 @@ sub expand_verbatiminclude($$)
                   {'type' => 'raw', 'text' => $_ };
       }
       if (!close (VERBINCLUDE)) {
-        $self->document_warn(sprintf($self->__("Error on closing \@verbatiminclude file %s: %s"),
+        $self->document_warn(sprintf($self->__(
+                      "error on closing \@verbatiminclude file %s: %s"),
                              $file, $!));
       }
     }
   } elsif ($self) {
-    $self->line_error (sprintf($self->__("\@%s: Cannot find %s"), 
+    $self->line_error(sprintf($self->__("\@%s: could not find %s"), 
                     $current->{'cmdname'}, $text), $current->{'line_nr'});
   }
   return $verbatiminclude;
@@ -1413,7 +1414,7 @@ sub parse_htmlxref_files($$)
     print STDERR "html refs config file: $file\n" if ($self->get_conf('DEBUG'));
     unless (open (HTMLXREF, $file)) {
       $self->document_warn(
-        sprintf($self->__("Cannot open html refs config file %s: %s"),
+        sprintf($self->__("could not open html refs config file %s: %s"),
           $file, $!));
       next;
     }
@@ -1441,10 +1442,10 @@ sub parse_htmlxref_files($$)
       my $split_or_mono = shift @htmlxref;
       #print STDERR "$split_or_mono $Texi2HTML::Config::htmlxref_entries{$split_or_mono} $line_nr\n";
       if (!defined($split_or_mono)) {
-        $self->file_line_warn($self->__("Missing type"), $file, $line_nr);
+        $self->file_line_warn($self->__("missing type"), $file, $line_nr);
         next;
       } elsif (!defined($htmlxref_entries{$split_or_mono})) {
-        $self->file_line_warn(sprintf($self->__("Unrecognized type: %s"), 
+        $self->file_line_warn(sprintf($self->__("unrecognized type: %s"), 
                                $split_or_mono), $file, $line_nr);
         next;
       }
@@ -1460,7 +1461,8 @@ sub parse_htmlxref_files($$)
       $htmlxref->{$manual}->{$split_or_mono} = $href;
     }
     if (!close (HTMLXREF)) {
-      $self->document_warn(sprintf($self->__("Error on closing html refs config file %s: %s"),
+      $self->document_warn(sprintf($self->__(
+                       "error on closing html refs config file %s: %s"),
                              $file, $!));
     }
   }
@@ -1495,8 +1497,8 @@ sub parse_renamed_nodes_file($$;$$)
           $renamed_nodes_lines->{$_} = $renamed_nodes_line_nr;
           @old_names = ();
         } else {
-          warn (sprintf($self->__("%s:%d: no node to be renamed\n"), 
-                        $renamed_nodes_file, $renamed_nodes_line_nr));
+          $self->file_line_warn($self->__("no node to be renamed"),
+                        $renamed_nodes_file, $renamed_nodes_line_nr);
         }
       } else {
         chomp;
@@ -1506,17 +1508,17 @@ sub parse_renamed_nodes_file($$;$$)
       }
     }
     if (scalar(@old_names)) {
-      warn (sprintf($self->__("%s:%d: nodes without a new name at the end of file\n"),
-             $renamed_nodes_file, $renamed_nodes_line_nr));
+      $self->file_line_warn($self->__("nodes without a new name at the end of file"),
+             $renamed_nodes_file, $renamed_nodes_line_nr);
     }
     if (!close(RENAMEDFILE)) {
       $self->document_warn(sprintf($self->__p(
           "see HTML Xref Link Preservation in the Texinfo manual for context",
-          "Error on closing node-renaming configuration file %s: %s"), 
+          "error on closing node-renaming configuration file %s: %s"), 
                             $renamed_nodes_file, $!));
     }
   } else {
-    $self->document_warn(sprintf($self->__("Cannot read %s: %s"), 
+    $self->document_warn(sprintf($self->__("could not open %s: %s"), 
                          $renamed_nodes_file, $!));
   }
   return ($renamed_nodes, $renamed_nodes_lines);
@@ -1997,8 +1999,8 @@ sub _protect_hashchar_at_line_beginning($$$)
         while ($parent) {
           if ($parent->{'cmdname'} and $parent->{'line_nr'}) {
             $self->line_warn(sprintf($self->__(
-                  "protect_hashchar_at_line_beginning cannot protect in \@%s"), 
-                                     $parent->{'cmdname'}), $parent->{'line_nr'});
+                  "could not protect hash character in \@%s"), 
+                             $parent->{'cmdname'}), $parent->{'line_nr'});
             last;
           }
           $parent = $parent->{'parent'};

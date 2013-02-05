@@ -381,7 +381,7 @@ $result_errors{'anchor_and_spaces'} = [];
 
 
 
-$result_converted{'info'}->{'anchor_and_spaces'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'anchor_and_spaces'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -395,10 +395,10 @@ Now .
 
 
 Tag Table:
-Node: Top41
-Ref: anchor 092
-Ref: anchor195
-Ref: anchor2110
+Node: Top27
+Ref: anchor 078
+Ref: anchor181
+Ref: anchor296
 
 End Tag Table
 ';

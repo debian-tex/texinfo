@@ -654,7 +654,7 @@ $result_floats{'float_long_captions'}{'Text'}[1]{'extra'}{'end_command'}{'extra'
 
 
 
-$result_converted{'info'}->{'float_long_captions'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'float_long_captions'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -671,9 +671,9 @@ Text 2: AAAAAAAAAAAAAAAA BBBBBB CCCCCCCCCCC
 
 
 Tag Table:
-Node: Top41
-Ref: text175
-Ref: text2119
+Node: Top27
+Ref: text161
+Ref: text2105
 
 End Tag Table
 ';

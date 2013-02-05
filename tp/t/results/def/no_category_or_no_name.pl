@@ -617,48 +617,48 @@ with deffnx missing category or name
 
 $result_errors{'no_category_or_no_name'} = [
   {
-    'error_line' => ':1: warning: Missing category for @deffn
+    'error_line' => ':1: warning: missing category for @deffn
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Missing category for @deffn',
+    'text' => 'missing category for @deffn',
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: Missing name for @deffn
+    'error_line' => ':5: warning: missing name for @deffn
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Missing name for @deffn',
+    'text' => 'missing name for @deffn',
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':9: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':10: warning: Missing name for @deffnx
+    'error_line' => ':10: warning: missing name for @deffnx
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'Missing name for @deffnx',
+    'text' => 'missing name for @deffnx',
     'type' => 'warning'
   },
   {
-    'error_line' => ':11: warning: Missing category for @deffnx
+    'error_line' => ':11: warning: missing category for @deffnx
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'Missing category for @deffnx',
+    'text' => 'missing category for @deffnx',
     'type' => 'warning'
   }
 ];

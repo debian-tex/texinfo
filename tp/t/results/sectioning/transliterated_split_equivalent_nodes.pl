@@ -989,9 +989,9 @@ element: @node @^a
 
 $result_converted_errors{'file_html'}->{'transliterated_split_equivalent_nodes'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'transliterated_split_equivalent_nodes.texi: warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

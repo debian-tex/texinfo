@@ -120,7 +120,7 @@ sub tex4ht_prepare($)
     if ($self->{'extra'}->{$command}) {
       local *TEX4HT_TEXFILE;
       unless (open (*TEX4HT_TEXFILE, ">$rfile")) {
-        $self->document_warn (sprintf($self->__("tex4ht.pm:%s: Cannot open: %s"), 
+        $self->document_warn(sprintf($self->__("tex4ht.pm: could not open %s: %s"), 
                                       $rfile, $!));
         return 1;
       }
@@ -216,7 +216,7 @@ sub tex4ht_convert($)
 {
   my $self = shift;
   unless (chdir $tex4ht_out_dir) {
-    $self->document_warn(sprintf($self->__("tex4ht.pm:%s: chdir failed: %s"),
+    $self->document_warn(sprintf($self->__("tex4ht.pm: chdir %s failed: %s"),
                          $tex4ht_out_dir, $!));
     return 0;
   }
@@ -229,7 +229,7 @@ sub tex4ht_convert($)
   }
   unless (chdir $tex4ht_initial_dir) {
     $self->document_warn(sprintf($self->__(
-          "tex4ht.pm: Unable to return to initial directory: %s"), $!));
+          "tex4ht.pm: unable to return to initial directory: %s"), $!));
     return 0;
   }
   return 1;
@@ -241,7 +241,7 @@ sub tex4ht_process_command($$) {
   
   return 0 unless ($commands{$command}->{'counter'});
 
-  $self->document_warn(sprintf($self->__("tex4ht.pm: Output file missing: %s"),
+  $self->document_warn(sprintf($self->__("tex4ht.pm: output file missing: %s"),
                                $commands{$command}->{'basefile'}))
     unless (-f $commands{$command}->{'basefile'});
   my $style = $commands{$command}->{'style'};
@@ -256,15 +256,15 @@ sub tex4ht_process_command($$) {
   my $cmd = "$commands{$command}->{'exec'} $commands{$command}->{'basefile'} $options";
   print STDERR "tex4ht command: $cmd\n" if ($self->get_conf('VERBOSE'));
   if (system($cmd)) {
-    $self->document_warn (sprintf(__(
-                         "tex4ht.pm: Command failed: %s"), $cmd));
+    $self->document_warn(sprintf(__(
+                         "tex4ht.pm: command failed: %s"), $cmd));
     return 1;
   }
 
   # extract the html from the file created by tex4ht
   my $html_basefile = $commands{$command}->{'html_file'};
   unless (open (TEX4HT_HTMLFILE, $html_basefile)) {
-    $self->document_warn (sprintf(__("tex4ht.pm:%s: Cannot open: %s"), 
+    $self->document_warn(sprintf(__("tex4ht.pm: could not open: %s"), 
                                   $html_basefile, $!));
     return 1;
   }
@@ -290,15 +290,16 @@ sub tex4ht_process_command($$) {
         }
       }
       unless ($end_found) {
-        $self->document_warn (sprintf(__("tex4ht.pm: end of \@%s item %d not found"), 
+        $self->document_warn(sprintf(__("tex4ht.pm: end of \@%s item %d not found"), 
                                       $command, $count));
       }
     }
   }
   if ($got_count != $commands{$command}->{'counter'}) {
-    $self->document_warn (sprintf($self->__(
-       "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of items found in the document"), 
-                                  $got_count, $commands{$command}->{'counter'}));
+    $self->document_warn(sprintf($self->__(
+       "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of items found in the document for \@%s"), 
+                                 $got_count, $commands{$command}->{'counter'},
+                                 $command));
   }
   close (TEX4HT_HTMLFILE);
   return 0;
@@ -312,11 +313,11 @@ sub tex4ht_do_tex($$$$)
   # return the resulting html 
   if (exists ($commands{$cmdname}->{'results'}->{$command})
       and defined($commands{$cmdname}->{'results'}->{$command})) {
-     $commands{$cmdname}->{'output_counter'}++;
-     return $commands{$cmdname}->{'results'}->{$command};
+    $commands{$cmdname}->{'output_counter'}++;
+    return $commands{$cmdname}->{'results'}->{$command};
   } else {
-    $self->document_warn (sprintf($self->__(
-                       "tex4ht.pm: Output has no HTML item for \@%s %s"),
+    $self->document_warn(sprintf($self->__(
+                       "tex4ht.pm: output has no HTML item for \@%s %s"),
                                   $cmdname, $command));
     return '';
   }
@@ -325,11 +326,15 @@ sub tex4ht_do_tex($$$$)
 sub tex4ht_finish($)
 {
   my $self = shift;
-  my $tex4ht_in_counter = 0;
+  # this is different from the warning in tex4ht_process_command as, here,
+  # this is the number of retrieved fragment, not processed fragment.
   if ($self->get_conf('VERBOSE')) {
     foreach my $command (keys(%commands)) {
       if ($commands{$command}->{'output_counter'} != $commands{$command}->{'counter'}) {
-        $self->document_warn ("tex4ht_finish: \@$command output counter $commands{$command}->{'output_counter'}, counter $commands{$command}->{'counter'}");
+        $self->document_warn(sprintf($self->__(
+           "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of items found in the document for \@%s"), 
+                                  $commands{$command}->{'output_counter'}, 
+                                  $commands{$command}->{'counter'}, $command));
       }
     }
   }

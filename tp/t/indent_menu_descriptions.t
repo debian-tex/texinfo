@@ -40,7 +40,7 @@ Comment
 
 my $parser = Texinfo::Parser::parser();
 my $tree = $parser->parse_texi_text($in);
-Texinfo::Convert::Plaintext::indent_menus_descriptions(undef, $parser);
+Texinfo::Convert::Plaintext::indent_menu_descriptions(undef, $parser);
 my $out = Texinfo::Convert::Texinfo::convert($tree);
 
 is ($out, $reference, 'indent menu descriptions test');

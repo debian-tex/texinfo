@@ -749,7 +749,7 @@ $result_errors{'chapter_between_nodes'} = [];
 
 
 
-$result_converted{'info'}->{'chapter_between_nodes'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'chapter_between_nodes'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: section node,  Up: (dir)
@@ -779,8 +779,8 @@ section.
 
 
 Tag Table:
-Node: Top41
-Node: section node191
+Node: Top27
+Node: section node177
 
 End Tag Table
 ';
@@ -796,7 +796,6 @@ $result_converted{'html'}->{'chapter_between_nodes'} = '<!DOCTYPE html PUBLIC "-
 <meta name="keywords" content="top section">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">

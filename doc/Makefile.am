@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.54 2013/01/19 15:54:04 karl Exp $
+# $Id: Makefile.am,v 1.55 2013/02/04 01:34:47 karl Exp $
 # Makefile.am for texinfo/doc.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
@@ -75,10 +75,12 @@ dist-info:
 # Rules for updating the online web pages for the documentation
 # using the gendocs.sh script; see
 # http://www.gnu.org/prep/maintain/html_node/Invoking-gendocs_002esh.html
+# 
+# Since gendocs.sh is maintained here in Texinfo, use it from
+# the development sources; ordinarily it's invoked from a gnulib checkout.
 #
-gnulib = $(HOME)/gnu/src/gnulib
-gendocs = $(gnulib)/build-aux/gendocs.sh
-gendocs_templates = $(gnulib)/doc
+gendocs = $(abs_top_srcdir)/util/gendocs.sh
+gendocs_templates = $(abs_top_srcdir)/util
 gendocs_envvars = GENDOCS_TEMPLATE_DIR=$(gendocs_templates)
 gendocs_email = bug-texinfo@gnu.org
 gendocs_invoke = env $(gendocs_envvars) $(gendocs) --email $(gendocs_email)
@@ -98,6 +100,7 @@ www_target = $(HOME)/gnu/www/texinfo/manual
 wwwdoc-build:
 	rm -rf $(doctemp) && mkdir $(doctemp)
 	cd $(doctemp) \
+	&& pod2html $(abs_top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl >pod2texi.html \
 	&& ln -s ../*.texi ../*.txi . \
 	&& $(gendocs_invoke) -o $(manual1) $(manual1) $(manual1_title) \
 	&& $(gendocs_invoke) -o $(manual2) $(manual2) $(manual2_title) \
@@ -108,6 +111,7 @@ wwwdoc-build:
 # http://www.gnu.org/software/texinfo/manual/
 wwwdoc-install:
 	cp -arf $(doctemp)/$(manual1) $(doctemp)/$(manual2) \
-	  $(doctemp)/$(manual3) $(www_target)
+                $(doctemp)/$(manual3) $(doctemp)/pod2texi.html \
+                $(www_target)
 	ls -ltu $(www_target)/*/html_node | tail  # cvs rm -f obsolete files
 # followed by cvs add of new files and cvs commit.

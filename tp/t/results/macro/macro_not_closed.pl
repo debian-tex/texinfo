@@ -51,12 +51,12 @@ $result_texts{'macro_not_closed'} = '';
 
 $result_errors{'macro_not_closed'} = [
   {
-    'error_line' => ':2: No matching `@end macro\'
+    'error_line' => ':2: no matching `@end macro\'
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'No matching `@end macro\'',
+    'text' => 'no matching `@end macro\'',
     'type' => 'error'
   }
 ];

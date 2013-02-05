@@ -627,12 +627,12 @@ $result_menus{'non_automatic_top_node_up_url'}{'menu_child'}{'menu_up'} = $resul
 
 $result_errors{'non_automatic_top_node_up_url'} = [
   {
-    'error_line' => ':8: warning: For `first\', up in menu `Top\' and up `(dir)\' don\'t match
+    'error_line' => ':8: warning: for `first\', up in menu `Top\' and up `(dir)\' don\'t match
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'For `first\', up in menu `Top\' and up `(dir)\' don\'t match',
+    'text' => 'for `first\', up in menu `Top\' and up `(dir)\' don\'t match',
     'type' => 'warning'
   }
 ];
@@ -752,7 +752,7 @@ element: @node first
 ';
 
 
-$result_converted{'info'}->{'non_automatic_top_node_up_url'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'non_automatic_top_node_up_url'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: first,  Prev: (dir),  Up: (dir)
@@ -770,8 +770,8 @@ File: ,  Node: first,  Prev: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
-Node: first166
+Node: Top27
+Node: first152
 
 End Tag Table
 ';
@@ -787,7 +787,6 @@ $result_converted{'html'}->{'non_automatic_top_node_up_url'} = '<!DOCTYPE html P
 <meta name="keywords" content="internal top node up">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

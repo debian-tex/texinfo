@@ -323,7 +323,7 @@ $result_errors{'format_in_titlepage_titlepage'} = [];
 
 
 
-$result_converted{'info'}->{'format_in_titlepage_titlepage'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'format_in_titlepage_titlepage'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -331,7 +331,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';
@@ -347,7 +347,6 @@ $result_converted{'html'}->{'format_in_titlepage_titlepage'} = '<!DOCTYPE html P
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -403,9 +402,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'format_in_titlepage_titlepage'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

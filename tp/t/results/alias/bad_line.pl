@@ -150,30 +150,30 @@ $result_texts{'bad_line'} = '
 
 $result_errors{'bad_line'} = [
   {
-    'error_line' => ':2: Bad argument to @alias
+    'error_line' => ':2: bad argument to @alias
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Bad argument to @alias',
+    'text' => 'bad argument to @alias',
     'type' => 'error'
   },
   {
-    'error_line' => ':4: Superfluous argument to @alias
+    'error_line' => ':4: superfluous argument to @alias
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Superfluous argument to @alias',
+    'text' => 'superfluous argument to @alias',
     'type' => 'error'
   },
   {
-    'error_line' => ':4: Bad argument to @alias
+    'error_line' => ':4: bad argument to @alias
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Bad argument to @alias',
+    'text' => 'bad argument to @alias',
     'type' => 'error'
   }
 ];

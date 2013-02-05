@@ -391,21 +391,21 @@ $result_errors{'table_on_item_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':2: No matching `@end table\'
+    'error_line' => ':2: no matching `@end table\'
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'No matching `@end table\'',
+    'text' => 'no matching `@end table\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':7: Unmatched `@end table\'
+    'error_line' => ':7: unmatched `@end table\'
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Unmatched `@end table\'',
+    'text' => 'unmatched `@end table\'',
     'type' => 'error'
   }
 ];

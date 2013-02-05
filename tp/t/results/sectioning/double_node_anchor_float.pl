@@ -1026,7 +1026,7 @@ $result_floats{'double_node_anchor_float'}{'Text'}[2]{'extra'}{'end_command'}{'e
 
 
 
-$result_converted{'info'}->{'double_node_anchor_float'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'double_node_anchor_float'} = 'This is , produced from .
 
 
 File: ,  Node: node1
@@ -1040,18 +1040,18 @@ Text 1
 
 
 Tag Table:
-Node: node141
-Ref: anchor165
-Ref: float177
+Node: node127
+Ref: anchor151
+Ref: float163
 
 End Tag Table
 ';
 
 $result_converted_errors{'info'}->{'double_node_anchor_float'} = [
   {
-    'error_line' => 'warning: Document without Top node.
+    'error_line' => 'warning: document without Top node
 ',
-    'text' => 'Document without Top node.',
+    'text' => 'document without Top node',
     'type' => 'warning'
   }
 ];
@@ -1068,7 +1068,6 @@ $result_converted{'html'}->{'double_node_anchor_float'} = '<!DOCTYPE html PUBLIC
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#node1" rel="start" title="node1">
 <style type="text/css">
@@ -1149,9 +1148,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'double_node_anchor_float'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

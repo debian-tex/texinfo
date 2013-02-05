@@ -174,7 +174,7 @@ $result_errors{'top_no_argument_and_top_node'} = [];
 
 
 
-$result_converted{'info'}->{'top_no_argument_and_top_node'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'top_no_argument_and_top_node'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -182,7 +182,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';
@@ -198,7 +198,6 @@ $result_converted{'html'}->{'top_no_argument_and_top_node'} = '<!DOCTYPE html PU
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -246,9 +245,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'top_no_argument_and_top_node'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

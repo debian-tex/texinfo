@@ -285,12 +285,12 @@ no at-command code
 
 $result_errors{'accent_on_table_line'} = [
   {
-    'error_line' => ':1: warning: Accent command `@~\' not allowed as @table argument
+    'error_line' => ':1: warning: accent command `@~\' not allowed as @table argument
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Accent command `@~\' not allowed as @table argument',
+    'text' => 'accent command `@~\' not allowed as @table argument',
     'type' => 'warning'
   }
 ];

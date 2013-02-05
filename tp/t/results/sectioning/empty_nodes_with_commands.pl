@@ -283,41 +283,41 @@ $result_sectioning{'empty_nodes_with_commands'} = {};
 
 $result_errors{'empty_nodes_with_commands'} = [
   {
-    'error_line' => ':2: Empty argument in @node
+    'error_line' => ':2: empty argument in @node
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Empty argument in @node',
+    'text' => 'empty argument in @node',
     'type' => 'error'
   },
   {
-    'error_line' => ':4: Empty node name after expansion `@
+    'error_line' => ':4: empty node name after expansion `@
 \'
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Empty node name after expansion `@
+    'text' => 'empty node name after expansion `@
 \'',
     'type' => 'error'
   },
   {
-    'error_line' => ':5: Empty node name after expansion `@:\'
+    'error_line' => ':5: empty node name after expansion `@:\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Empty node name after expansion `@:\'',
+    'text' => 'empty node name after expansion `@:\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':6: Empty node name after expansion `@asis{ }\'
+    'error_line' => ':6: empty node name after expansion `@asis{ }\'
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Empty node name after expansion `@asis{ }\'',
+    'text' => 'empty node name after expansion `@asis{ }\'',
     'type' => 'error'
   }
 ];

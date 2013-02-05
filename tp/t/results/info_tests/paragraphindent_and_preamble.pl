@@ -485,7 +485,7 @@ $result_errors{'paragraphindent_and_preamble'} = [];
 
 
 
-$result_converted{'info'}->{'paragraphindent_and_preamble'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'paragraphindent_and_preamble'} = 'This is , produced from .
 
 In copying.
 
@@ -506,7 +506,7 @@ First para.
 
 
 Tag Table:
-Node: Top77
+Node: Top63
 
 End Tag Table
 ';

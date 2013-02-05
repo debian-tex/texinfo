@@ -1434,7 +1434,7 @@ $result_errors{'printindex_index_entry_in_copying_no_insertcopying'} = [];
 
 
 
-$result_converted{'info'}->{'printindex_index_entry_in_copying_no_insertcopying'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'printindex_index_entry_in_copying_no_insertcopying'} = 'This is , produced from .
 
  -- Function: fun arg
  -- Function: xf arg
@@ -1472,8 +1472,8 @@ File: ,  Node: chapter,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top145
-Node: chapter232
+Node: Top131
+Node: chapter218
 
 End Tag Table
 ';

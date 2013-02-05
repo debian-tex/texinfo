@@ -255,19 +255,19 @@ $result_menus{'index_entry_before_first_node'} = {
 
 $result_errors{'index_entry_before_first_node'} = [
   {
-    'error_line' => ':2: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':2: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }
 ];
 
 
 
-$result_converted{'info'}->{'index_entry_before_first_node'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'index_entry_before_first_node'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -280,7 +280,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';
@@ -288,9 +288,9 @@ End Tag Table
 $result_converted_errors{'info'}->{'index_entry_before_first_node'} = [
   {
     'file_name' => '',
-    'error_line' => ':2: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':2: warning: entry for index `cp\' outside of any node
 ',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 2
@@ -308,9 +308,9 @@ $result_converted{'plaintext'}->{'index_entry_before_first_node'} = '* Menu:
 $result_converted_errors{'plaintext'}->{'index_entry_before_first_node'} = [
   {
     'file_name' => '',
-    'error_line' => ':2: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':2: warning: entry for index `cp\' outside of any node
 ',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 2

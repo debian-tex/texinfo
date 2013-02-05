@@ -5218,12 +5218,12 @@ $result_errors{'macro_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':39: Bad argument to @headings: on line following headings atext
+    'error_line' => ':39: bad argument to @headings: on line following headings atext
 ',
     'file_name' => '',
     'line_nr' => 39,
     'macro' => '',
-    'text' => 'Bad argument to @headings: on line following headings atext',
+    'text' => 'bad argument to @headings: on line following headings atext',
     'type' => 'error'
   },
   {
@@ -5236,12 +5236,12 @@ $result_errors{'macro_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':125: warning: Multiple @footnotestyle
+    'error_line' => ':125: warning: multiple @footnotestyle
 ',
     'file_name' => '',
     'line_nr' => 125,
     'macro' => '',
-    'text' => 'Multiple @footnotestyle',
+    'text' => 'multiple @footnotestyle',
     'type' => 'warning'
   },
   {

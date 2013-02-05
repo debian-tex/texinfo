@@ -527,21 +527,21 @@ in example
 
 $result_errors{'text_on_command_line'} = [
   {
-    'error_line' => ':10: Superfluous argument to @end example:  text after end
+    'error_line' => ':10: superfluous argument to @end example:  text after end
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'Superfluous argument to @end example:  text after end',
+    'text' => 'superfluous argument to @end example:  text after end',
     'type' => 'error'
   },
   {
-    'error_line' => ':14: Superfluous argument to @end example:  text after end example nested in example
+    'error_line' => ':14: superfluous argument to @end example:  text after end example nested in example
 ',
     'file_name' => '',
     'line_nr' => 14,
     'macro' => '',
-    'text' => 'Superfluous argument to @end example:  text after end example nested in example',
+    'text' => 'superfluous argument to @end example:  text after end example nested in example',
     'type' => 'error'
   }
 ];

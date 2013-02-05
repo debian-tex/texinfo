@@ -4687,7 +4687,6 @@ In text f@i-le..  a@<"%@  < & @ % " . -->
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -4776,9 +4775,9 @@ In text [ alt <b>&icirc;&ndash;le..</b>  a
 
 $result_converted_errors{'html'}->{'test_image'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   },
   {
@@ -4907,54 +4906,54 @@ In text [alt i^-le..  a
 $result_converted_errors{'plaintext'}->{'test_image'} = [
   {
     'file_name' => '',
-    'error_line' => ':14: warning: Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
+    'error_line' => ':14: warning: could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
 ',
-    'text' => 'Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
+    'text' => 'could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
     'type' => 'warning',
     'macro' => 'files-char',
     'line_nr' => 14
   },
   {
     'file_name' => '',
-    'error_line' => ':9: warning: Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
+    'error_line' => ':9: warning: could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
 ',
-    'text' => 'Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
+    'text' => 'could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
     'type' => 'warning',
     'macro' => 'files-char',
     'line_nr' => 9
   },
   {
     'file_name' => '',
-    'error_line' => ':20: warning: Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
+    'error_line' => ':20: warning: could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
 ',
-    'text' => 'Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
+    'text' => 'could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
     'type' => 'warning',
     'macro' => 'files-char',
     'line_nr' => 20
   },
   {
     'file_name' => '',
-    'error_line' => ':24: warning: Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
+    'error_line' => ':24: warning: could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
 ',
-    'text' => 'Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
+    'text' => 'could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
     'type' => 'warning',
     'macro' => 'files-char',
     'line_nr' => 24
   },
   {
     'file_name' => '',
-    'error_line' => ':26: warning: Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
+    'error_line' => ':26: warning: could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
 ',
-    'text' => 'Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
+    'text' => 'could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
     'type' => 'warning',
     'macro' => 'files-char',
     'line_nr' => 26
   },
   {
     'file_name' => '',
-    'error_line' => ':26: warning: Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
+    'error_line' => ':26: warning: could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
 ',
-    'text' => 'Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
+    'text' => 'could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
     'type' => 'warning',
     'macro' => 'files-char',
     'line_nr' => 26

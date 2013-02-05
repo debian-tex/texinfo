@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "POD2TEXI 1"
-.TH POD2TEXI 1 "2013-01-27" "perl v5.16.2" "User Contributed Perl Documentation"
+.TH POD2TEXI 1 "2013-02-04" "perl v5.16.2" "User Contributed Perl Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -134,28 +134,37 @@ pod2texi \- convert Pod to Texinfo
 .SH "SYNOPSIS"
 .IX Header "SYNOPSIS"
 .Vb 1
-\&  pod2texi [OPTION]... POD\-FILE...
+\&  pod2texi [OPTION]... POD...
 .Ve
 .SH "DESCRIPTION"
 .IX Header "DESCRIPTION"
-Translate Pod to Texinfo.  If the \f(CW\*(C`\-\-base\-level\*(C'\fR is higher than 0, a
-main manual including all the files is done otherwise all manuals are
-standalone (the default).
+Translate Pod file(s) to Texinfo.  There are two basic modes of
+operation.  First, by default, each pod is translated to a standalone
+Texinfo manual.
+.PP
+Second, if \f(CW\*(C`\-\-base\-level\*(C'\fR is set higher than 0, each pod is translated
+to a file suitable for \f(CW@include\fR, and one more file with all the
+\&\f(CW@include\fRs is generated, intended to be \f(CW@include\fRd in turn within a
+hand-written top-level file.
 .SH "OPTIONS"
 .IX Header "OPTIONS"
 .IP "\fB\-\-base\-level\fR=\fINUM|NAME\fR" 4
 .IX Item "--base-level=NUM|NAME"
-Sets the level of the head1 commands.  It may be an integer or a Texinfo
-sectioning command.  If it is a Texinfo sectioning command the corresponding
-level is used.  If the resulting level is 1, this corresponds to 
-\&\f(CW@chapter\fR/@unnumbered level.  If set to 0, the head1 commands level is 
-still 1, but the output manual is considered to be a standalone manual.
+Sets the level of the \f(CW\*(C`head1\*(C'\fR commands.  It may be an integer or a
+Texinfo sectioning command (without the \f(CW\*(C`@\*(C'\fR): 1 corresponds to the
+\&\f(CW@chapter\fR/\f(CW@unnumbered\fR level, 2 to the \f(CW@section\fR level, and so on.
+The default is 0, meaning that \f(CW\*(C`head1\*(C'\fR commands are still output as
+chapters, but the output is arranged as a standalone manual.
 .Sp
-If the level is not 0, the pod file is rendered as a fragment of a 
-Texinfo manual.  In that case, each pod file has an additional sectioning
-command one level above the head1 commands level added for the whole
-file.  Therefore if you want to have each pod file as a chapter, you should
-use \f(CW\*(C`section\*(C'\fR as the base level.
+If the level is not 0, the pod file is rendered as a fragment of a
+Texinfo manual suitable for \f(CW@include\fR.  In this case, each pod file
+has an additional sectioning command covering the entire file, one level
+above the \f(CW\*(C`\-\-base\-level\*(C'\fR value.  Therefore, to make each pod file a
+chapter in a large manual, you should use \f(CW\*(C`section\*(C'\fR as the base level.
+.Sp
+For an example of making Texinfo out of the Perl documentation itself,
+see \f(CW\*(C`contrib/perldoc\-all\*(C'\fR in the Texinfo source distribution, with
+output available at <http://www.gnu.org/software/perl/manual>.
 .IP "\fB\-\-debug\fR=\fI\s-1NUM\s0\fR" 4
 .IX Item "--debug=NUM"
 Set debugging level to \fI\s-1NUM\s0\fR.
@@ -165,27 +174,31 @@ Display help and exit.
 .IP "\fB\-\-output\fR=\fI\s-1NAME\s0\fR" 4
 .IX Item "--output=NAME"
 Name for the first manual, or the main manual if there is a main manual.
-Default is output on standard out.
+Default is to write to standard output.
 .IP "\fB\-\-no\-section\-nodes\fR" 4
 .IX Item "--no-section-nodes"
 Use anchors for sections instead of nodes.
 .IP "\fB\-\-no\-fill\-section\-gaps\fR" 4
 .IX Item "--no-fill-section-gaps"
-Do not fill sectioning gaps with empty \f(CW@unnumbered\fR.
+Do not fill sectioning gaps with empty \f(CW@unnumbered\fR files.
+Ordinarily, it's good to keep the sectioning hierarchy intact.
 .IP "\fB\-\-preamble\fR=\fI\s-1STR\s0\fR" 4
 .IX Item "--preamble=STR"
-Insert \fI\s-1STR\s0\fR as top boilerplate before includes.  The default is fairly
-minimal, and sets \f(CW@documentencoding\fR to \f(CW\*(C`utf\-8\*(C'\fR.  For example, you can
-set this to the empty string and then write your own top-level
-boilerplate which uses \f(CW@include\fR to incorporate the generated one.
+Insert \fI\s-1STR\s0\fR as top boilerplate before includes.  For standalone
+documents (\f(CW\*(C`\-\-base\-level\*(C'\fR is 0), the default is a minimal beginning for
+a Texinfo document, and sets \f(CW@documentencoding\fR to \f(CW\*(C`utf\-8\*(C'\fR.  For
+included documents (\f(CW\*(C`\-\-base\-level\*(C'\fR is nonzero), it is the empty string,
+under the assumption that you will want your own top-level material,
+and to \f(CW@include\fR the generated files.
 .IP "\fB\-\-subdir\fR=\fI\s-1NAME\s0\fR" 4
 .IX Item "--subdir=NAME"
-If there is a main manual with include files, each corresponding to
-an input pod file, then include files are put in the directory \fI\s-1NAME\s0\fR.
+If there is a main manual with include files (each corresponding to
+an input pod file), then those include files are put in directory \fI\s-1NAME\s0\fR.
 .IP "\fB\-\-unnumbered\-sections\fR" 4
 .IX Item "--unnumbered-sections"
-Use unnumbered sectioning commands (@unnumbered...) instead of the default
-numbered sectioning Texinfo @\-commands (@chapter, \f(CW@section\fR...).
+Use unnumbered sectioning commands (\f(CW@unnumbered\fR, ...) instead of the
+default numbered sectioning Texinfo @\-commands (\f(CW@chapter\fR,
+\&\f(CW@section\fR, ...).
 .IP "\fB\-\-top\fR=\fI\s-1TOP\s0\fR" 4
 .IX Item "--top=TOP"
 Name of the \f(CW@top\fR element for the main manual.  May contain Texinfo code.
@@ -194,10 +207,11 @@ Name of the \f(CW@top\fR element for the main manual.  May contain Texinfo code.
 Display version information and exit.
 .SH "SEE ALSO"
 .IX Header "SEE ALSO"
-Pod::Simple::Texinfo.  The Texinfo manual.  perlpod.
+Pod::Simple::Texinfo.  perlpod.  The Texinfo manual.
+Texinfo home page: <http://www.gnu.org/software/texinfo/>
 .SH "COPYRIGHT"
 .IX Header "COPYRIGHT"
-Copyright (C) 2012 Free Software Foundation, Inc.
+Copyright (C) 2013 Free Software Foundation, Inc.
 .PP
 This program is free software; you can redistribute it and/or modify
 it under the terms of the \s-1GNU\s0 General Public License as published by
@@ -207,4 +221,4 @@ or (at your option) any later version.
 There is \s-1NO\s0 \s-1WARRANTY\s0, to the extent permitted by law.
 .SH "AUTHOR"
 .IX Header "AUTHOR"
-Patrice Dumas <pertusus@free.fr>.
+Patrice Dumas <bug\-texinfo@gnu.org>.

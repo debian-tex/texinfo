@@ -56,12 +56,12 @@ $result_texts{'defindex_too_much_args'} = '';
 
 $result_errors{'defindex_too_much_args'} = [
   {
-    'error_line' => ':1: Bad argument to @defindex: chose    machin
+    'error_line' => ':1: bad argument to @defindex: chose    machin
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Bad argument to @defindex: chose    machin',
+    'text' => 'bad argument to @defindex: chose    machin',
     'type' => 'error'
   }
 ];

@@ -9109,7 +9109,6 @@ $result_converted{'html'}->{'section_in_unnumbered_plaintext'} = '<!DOCTYPE html
 <meta name="keywords" content="Test section in unnumbered">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">

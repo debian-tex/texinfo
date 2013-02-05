@@ -715,7 +715,7 @@ File: ,  Node: Top,  Up: (dir)
 ';
 
 
-$result_converted{'info'}->{'printindex'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'printindex'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -741,8 +741,8 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
-Ref: a counting anchor869
+Node: Top27
+Ref: a counting anchor855
 
 End Tag Table
 ';

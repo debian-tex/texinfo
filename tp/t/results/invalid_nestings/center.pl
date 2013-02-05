@@ -2246,12 +2246,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':3: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
   {
@@ -2264,21 +2264,21 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: No matching `@end quotation\'
+    'error_line' => ':5: no matching `@end quotation\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'No matching `@end quotation\'',
+    'text' => 'no matching `@end quotation\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':7: Unmatched `@end quotation\'
+    'error_line' => ':7: unmatched `@end quotation\'
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Unmatched `@end quotation\'',
+    'text' => 'unmatched `@end quotation\'',
     'type' => 'error'
   },
   {
@@ -2309,12 +2309,12 @@ $result_errors{'center'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':13: Misplaced }
+    'error_line' => ':13: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
@@ -2345,12 +2345,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':17: Misplaced }
+    'error_line' => ':17: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 17,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
@@ -2381,12 +2381,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':19: Misplaced }
+    'error_line' => ':19: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 19,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
@@ -2480,12 +2480,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':33: Misplaced }
+    'error_line' => ':33: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 33,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
@@ -2516,12 +2516,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':37: Misplaced }
+    'error_line' => ':37: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 37,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
@@ -2597,12 +2597,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':45: No matching `@end table\'
+    'error_line' => ':45: no matching `@end table\'
 ',
     'file_name' => '',
     'line_nr' => 45,
     'macro' => '',
-    'text' => 'No matching `@end table\'',
+    'text' => 'no matching `@end table\'',
     'type' => 'error'
   },
   {
@@ -2624,12 +2624,12 @@ $result_errors{'center'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':49: Unmatched `@end table\'
+    'error_line' => ':49: unmatched `@end table\'
 ',
     'file_name' => '',
     'line_nr' => 49,
     'macro' => '',
-    'text' => 'Unmatched `@end table\'',
+    'text' => 'unmatched `@end table\'',
     'type' => 'error'
   }
 ];

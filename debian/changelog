@@ -1,3 +1,9 @@
+texinfo (4.13.96.dfsg.1-1) UNRELEASED; urgency=low
+
+  * Imported Upstream version 4.13.96.dfsg.1
+
+ -- Norbert Preining <preining@debian.org>  Tue, 05 Feb 2013 20:42:23 +0900
+
 texinfo (4.13.95.dfsg.1-1) experimental; urgency=low
 
   * Imported Upstream version 4.13.95.dfsg.1

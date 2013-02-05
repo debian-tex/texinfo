@@ -326,12 +326,12 @@ $result_menus{'unnumbered_before_node_top_top'} = {
 
 $result_errors{'unnumbered_before_node_top_top'} = [
   {
-    'error_line' => ':6: Lowering the section level of @top appearing after a lower element
+    'error_line' => ':6: lowering the section level of @top appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Lowering the section level of @top appearing after a lower element',
+    'text' => 'lowering the section level of @top appearing after a lower element',
     'type' => 'error'
   }
 ];
@@ -418,7 +418,7 @@ element: @top top section
 ';
 
 
-$result_converted{'info'}->{'unnumbered_before_node_top_top'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'unnumbered_before_node_top_top'} = 'This is , produced from .
 
 before nodes
 ************
@@ -435,7 +435,7 @@ Top node
 
 
 Tag Table:
-Node: Top83
+Node: Top69
 
 End Tag Table
 ';
@@ -451,7 +451,6 @@ $result_converted{'html'}->{'unnumbered_before_node_top_top'} = '<!DOCTYPE html 
 <meta name="keywords" content="top section">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

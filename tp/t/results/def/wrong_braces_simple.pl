@@ -1739,156 +1739,156 @@ truc: machin bidule chose and and after
 
 $result_errors{'wrong_braces_simple'} = [
   {
-    'error_line' => ':1: Misplaced }
+    'error_line' => ':1: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
-    'error_line' => ':1: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':1: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: Misplaced }
+    'error_line' => ':4: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
-    'error_line' => ':4: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':4: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':7: Misplaced {
+    'error_line' => ':7: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':7: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':7: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':10: Misplaced {
+    'error_line' => ':10: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':10: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':10: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':13: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':13: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':14: Misplaced }
+    'error_line' => ':14: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 14,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
-    'error_line' => ':14: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':14: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 14,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':15: Misplaced }
+    'error_line' => ':15: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
-    'error_line' => ':15: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':15: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':16: Misplaced {
+    'error_line' => ':16: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 16,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':16: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':16: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 16,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':17: Misplaced {
+    'error_line' => ':17: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 17,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':17: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':17: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 17,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   }
 ];

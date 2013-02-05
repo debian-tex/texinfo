@@ -867,39 +867,39 @@ bullet item
 
 $result_errors{'inter_item_commands_in_itemize'} = [
   {
-    'error_line' => ':3: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':3: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':8: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':8: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':10: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':10: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':17: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':17: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 17,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }
 ];

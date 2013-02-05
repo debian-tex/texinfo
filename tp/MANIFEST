@@ -201,7 +201,7 @@ t/include_reference/inc_file.texi
 t/include_reference/incl-incl.txi
 t/include_reference/macro_included.texi
 t/include_reference/section_file.texi
-t/indent_menus_descriptions.t
+t/indent_menu_descriptions.t
 t/index_before_item.t
 t/info_tests.t
 t/init/cvs.init

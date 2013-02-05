@@ -729,7 +729,7 @@ $result_errors{'anchor_in_footnote'} = [];
 
 
 
-$result_converted{'info'}->{'anchor_in_footnote'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'anchor_in_footnote'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: chapter,  Up: (dir)
@@ -757,10 +757,10 @@ File: ,  Node: chapter,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Ref: Top-Footnote-1174
-Ref: Anchor in footnote192
-Node: chapter196
+Node: Top27
+Ref: Top-Footnote-1160
+Ref: Anchor in footnote178
+Node: chapter182
 
 End Tag Table
 ';
@@ -776,7 +776,6 @@ $result_converted{'html'}->{'anchor_in_footnote'} = '<!DOCTYPE html PUBLIC "-//W
 <meta name="keywords" content="Top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

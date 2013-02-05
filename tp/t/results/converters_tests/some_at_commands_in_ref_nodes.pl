@@ -1801,7 +1801,7 @@ $result_converted{'docbook'}->{'some_at_commands_in_ref_nodes'} = '
 ';
 
 
-$result_converted{'info'}->{'some_at_commands_in_ref_nodes'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'some_at_commands_in_ref_nodes'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: A SC N~ AA TeX node i" i" E=` /l C\', !,  Up: (dir)
@@ -1824,8 +1824,8 @@ trema i" E=` and exclamdown !::.
 
 
 Tag Table:
-Node: Top41
-Node: A SC N~ AA TeX node i" i" E=` /l C\', !184
+Node: Top27
+Node: A SC N~ AA TeX node i" i" E=` /l C\', !170
 
 End Tag Table
 ';

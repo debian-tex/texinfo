@@ -188,12 +188,12 @@ $result_errors{'paragraph_in_style_command'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':3: Misplaced }
+    'error_line' => ':3: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
@@ -206,12 +206,12 @@ $result_errors{'paragraph_in_style_command'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':9: Misplaced }
+    'error_line' => ':9: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   }
 ];

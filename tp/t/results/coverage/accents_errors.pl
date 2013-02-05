@@ -188,57 +188,57 @@ accent character followed by @ ~.
 
 $result_errors{'accents_errors'} = [
   {
-    'error_line' => ':1: warning: Accent command `@ringaccent\' must not be followed by new line
+    'error_line' => ':1: warning: accent command `@ringaccent\' must not be followed by new line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Accent command `@ringaccent\' must not be followed by new line',
+    'text' => 'accent command `@ringaccent\' must not be followed by new line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':2: warning: Accent command `@ringaccent\' must not be followed by new line
+    'error_line' => ':2: warning: accent command `@ringaccent\' must not be followed by new line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Accent command `@ringaccent\' must not be followed by new line',
+    'text' => 'accent command `@ringaccent\' must not be followed by new line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: Use braces to give a command as an argument to @ringaccent
+    'error_line' => ':3: use braces to give a command as an argument to @ringaccent
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Use braces to give a command as an argument to @ringaccent',
+    'text' => 'use braces to give a command as an argument to @ringaccent',
     'type' => 'error'
   },
   {
-    'error_line' => ':5: warning: Accent command `@~\' must not be followed by whitespace
+    'error_line' => ':5: warning: accent command `@~\' must not be followed by whitespace
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Accent command `@~\' must not be followed by whitespace',
+    'text' => 'accent command `@~\' must not be followed by whitespace',
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: Accent command `@~\' must not be followed by new line
+    'error_line' => ':6: warning: accent command `@~\' must not be followed by new line
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Accent command `@~\' must not be followed by new line',
+    'text' => 'accent command `@~\' must not be followed by new line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':7: Use braces to give a command as an argument to @~
+    'error_line' => ':7: use braces to give a command as an argument to @~
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Use braces to give a command as an argument to @~',
+    'text' => 'use braces to give a command as an argument to @~',
     'type' => 'error'
   }
 ];

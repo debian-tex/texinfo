@@ -84,12 +84,12 @@ $result_texts{'math_bracketed_not_closed_next_line'} = 'aa {
 
 $result_errors{'math_bracketed_not_closed_next_line'} = [
   {
-    'error_line' => ':1: Misplaced {
+    'error_line' => ':1: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {

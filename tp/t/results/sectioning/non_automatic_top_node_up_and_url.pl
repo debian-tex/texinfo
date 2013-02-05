@@ -994,7 +994,7 @@ element: @node first
 ';
 
 
-$result_converted{'info'}->{'non_automatic_top_node_up_and_url'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'non_automatic_top_node_up_and_url'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: first,  Up: GNU (GNU\'s Not Unix) manuals
@@ -1012,8 +1012,8 @@ File: ,  Node: first,  Prev: Top
 
 
 Tag Table:
-Node: Top41
-Node: first175
+Node: Top27
+Node: first161
 
 End Tag Table
 ';
@@ -1029,7 +1029,6 @@ $result_converted{'html'}->{'non_automatic_top_node_up_and_url'} = '<!DOCTYPE ht
 <meta name="keywords" content="internal top node up">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

@@ -661,12 +661,12 @@ $result_menus{'chapter_node_before_and_after_part'}{'menu_child'}{'menu_up'} = $
 
 $result_errors{'chapter_node_before_and_after_part'} = [
   {
-    'error_line' => ':11: warning: Node `Top\' is up for `after\' in menu but not in sectioning
+    'error_line' => ':11: warning: node `Top\' is up for `after\' in menu but not in sectioning
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'Node `Top\' is up for `after\' in menu but not in sectioning',
+    'text' => 'node `Top\' is up for `after\' in menu but not in sectioning',
     'type' => 'warning'
   }
 ];
@@ -685,7 +685,7 @@ part
 ';
 
 
-$result_converted{'info'}->{'chapter_node_before_and_after_part'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'chapter_node_before_and_after_part'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: after,  Up: (dir)
@@ -706,8 +706,8 @@ File: ,  Node: after,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: after130
+Node: Top27
+Node: after116
 
 End Tag Table
 ';
@@ -723,7 +723,6 @@ $result_converted{'html'}->{'chapter_node_before_and_after_part'} = '<!DOCTYPE h
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
@@ -811,9 +810,9 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 
 $result_converted_errors{'html'}->{'chapter_node_before_and_after_part'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

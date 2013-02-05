@@ -1294,28 +1294,28 @@ $result_menus{'next_in_menu_is_below'}{'menu_child'}{'menu_up'} = $result_menus{
 
 $result_errors{'next_in_menu_is_below'} = [
   {
-    'error_line' => ':16: warning: Node `subsection\' is next for `section\' in menu but not in sectioning
+    'error_line' => ':16: warning: node `subsection\' is next for `section\' in menu but not in sectioning
 ',
     'file_name' => '',
     'line_nr' => 16,
     'macro' => '',
-    'text' => 'Node `subsection\' is next for `section\' in menu but not in sectioning',
+    'text' => 'node `subsection\' is next for `section\' in menu but not in sectioning',
     'type' => 'warning'
   },
   {
-    'error_line' => ':23: warning: Node `section\' is prev for `subsection\' in menu but not in sectioning
+    'error_line' => ':23: warning: node `section\' is prev for `subsection\' in menu but not in sectioning
 ',
     'file_name' => '',
     'line_nr' => 23,
     'macro' => '',
-    'text' => 'Node `section\' is prev for `subsection\' in menu but not in sectioning',
+    'text' => 'node `section\' is prev for `subsection\' in menu but not in sectioning',
     'type' => 'warning'
   }
 ];
 
 
 
-$result_converted{'info'}->{'next_in_menu_is_below'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'next_in_menu_is_below'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: chapter,  Up: (dir)
@@ -1357,10 +1357,10 @@ File: ,  Node: subsection,  Prev: section,  Up: section
 
 
 Tag Table:
-Node: Top41
-Node: chapter122
-Node: section228
-Node: subsection337
+Node: Top27
+Node: chapter108
+Node: section214
+Node: subsection323
 
 End Tag Table
 ';
@@ -1376,7 +1376,6 @@ $result_converted{'html'}->{'next_in_menu_is_below'} = '<!DOCTYPE html PUBLIC "-
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

@@ -1698,12 +1698,12 @@ $result_errors{'in_table'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':11: Misplaced }
+    'error_line' => ':11: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
@@ -1743,21 +1743,21 @@ $result_errors{'in_table'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':17: warning: Empty index key in @item
+    'error_line' => ':17: warning: empty index key in @item
 ',
     'file_name' => '',
     'line_nr' => 17,
     'macro' => '',
-    'text' => 'Empty index key in @item',
+    'text' => 'empty index key in @item',
     'type' => 'warning'
   },
   {
-    'error_line' => ':20: warning: Empty index key in @item
+    'error_line' => ':20: warning: empty index key in @item
 ',
     'file_name' => '',
     'line_nr' => 20,
     'macro' => '',
-    'text' => 'Empty index key in @item',
+    'text' => 'empty index key in @item',
     'type' => 'warning'
   }
 ];

@@ -1324,30 +1324,30 @@ $result_menus{'nodename_parentheses'}{'menu_child'}{'menu_up'} = $result_menus{'
 
 $result_errors{'nodename_parentheses'} = [
   {
-    'error_line' => ':22: Syntax for an external node used for `(manual)node\'
+    'error_line' => ':22: syntax for an external node used for `(manual)node\'
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => 'Syntax for an external node used for `(manual)node\'',
+    'text' => 'syntax for an external node used for `(manual)node\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':27: Syntax for an external node used for `(manual)anchor\'
+    'error_line' => ':27: syntax for an external node used for `(manual)anchor\'
 ',
     'file_name' => '',
     'line_nr' => 27,
     'macro' => '',
-    'text' => 'Syntax for an external node used for `(manual)anchor\'',
+    'text' => 'syntax for an external node used for `(manual)anchor\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':15: warning: Node next `Other node\' in menu `(manual)node\' and in sectioning `node\' differ
+    'error_line' => ':15: warning: node next `Other node\' in menu `(manual)node\' and in sectioning `node\' differ
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => 'Node next `Other node\' in menu `(manual)node\' and in sectioning `node\' differ',
+    'text' => 'node next `Other node\' in menu `(manual)node\' and in sectioning `node\' differ',
     'type' => 'warning'
   },
   {
@@ -1360,30 +1360,30 @@ $result_errors{'nodename_parentheses'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: warning: Node `Other node\' is prev for `node\' in sectioning but not in menu
+    'error_line' => ':22: warning: node `Other node\' is prev for `node\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => 'Node `Other node\' is prev for `node\' in sectioning but not in menu',
+    'text' => 'node `Other node\' is prev for `node\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: warning: Node `Top\' is up for `node\' in sectioning but not in menu
+    'error_line' => ':22: warning: node `Top\' is up for `node\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => 'Node `Top\' is up for `node\' in sectioning but not in menu',
+    'text' => 'node `Top\' is up for `node\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: Node `Top\' lacks menu item for `node\' despite being its Up target
+    'error_line' => ':1: node `Top\' lacks menu item for `node\' despite being its Up target
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Node `Top\' lacks menu item for `node\' despite being its Up target',
+    'text' => 'node `Top\' lacks menu item for `node\' despite being its Up target',
     'type' => 'error'
   }
 ];

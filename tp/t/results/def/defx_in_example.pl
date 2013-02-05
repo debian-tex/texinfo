@@ -423,21 +423,21 @@ truc: bidulr machin...
 
 $result_errors{'defx_in_example'} = [
   {
-    'error_line' => ':2: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':2: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':3: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   }
 ];

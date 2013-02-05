@@ -722,7 +722,7 @@ $result_errors{'ref_tests'} = [];
 
 
 
-$result_converted{'info'}->{'ref_tests'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'ref_tests'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -737,7 +737,7 @@ command.\'.  *note name: (m)in ref ending with a dot. after ref.
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

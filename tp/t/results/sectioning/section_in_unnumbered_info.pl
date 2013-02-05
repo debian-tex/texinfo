@@ -8965,7 +8965,7 @@ $result_errors{'section_in_unnumbered_info'} = [];
 
 
 
-$result_converted{'info'}->{'section_in_unnumbered_info'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'section_in_unnumbered_info'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: chapter,  Up: (dir)
@@ -9234,38 +9234,38 @@ numbered subsection2 4
 
 
 Tag Table:
-Node: Top41
-Node: chapter235
-Node: section in chapter356
-Node: unnumbered454
-Node: section in unnumbered586
-Node: chapter 2688
-Node: unnumberedsec 2840
-Node: unnumbered sub 21051
-Node: numbered sub 21180
-Node: unnumbered sub2 21331
-Node: numbered sub2 21487
-Node: unnumberedsec 2-11616
-Node: numbered sub 2-11760
-Node: chapter 31868
-Node: unnumberedsec 32076
-Node: unnumbered sub 32281
-Node: numbered sub 32410
-Node: unnumbered sub2 32561
-Node: numbered sub2 32717
-Node: section 3-12846
-Node: unnumberedsec 3-22975
-Node: numbered sub 3-23135
-Node: section 3-33243
-Node: subsection 3-33403
-Node: unnumberedsec 3-43497
-Node: numbered sub 3-43637
-Node: unnumbered 43745
-Node: unnumberedsec 43861
-Node: unnumbered sub 44049
-Node: numbered sub 44178
-Node: unnumbered sub2 44329
-Node: numbered sub2 44485
+Node: Top27
+Node: chapter221
+Node: section in chapter342
+Node: unnumbered440
+Node: section in unnumbered572
+Node: chapter 2674
+Node: unnumberedsec 2826
+Node: unnumbered sub 21037
+Node: numbered sub 21166
+Node: unnumbered sub2 21317
+Node: numbered sub2 21473
+Node: unnumberedsec 2-11602
+Node: numbered sub 2-11746
+Node: chapter 31854
+Node: unnumberedsec 32062
+Node: unnumbered sub 32267
+Node: numbered sub 32396
+Node: unnumbered sub2 32547
+Node: numbered sub2 32703
+Node: section 3-12832
+Node: unnumberedsec 3-22961
+Node: numbered sub 3-23121
+Node: section 3-33229
+Node: subsection 3-33389
+Node: unnumberedsec 3-43483
+Node: numbered sub 3-43623
+Node: unnumbered 43731
+Node: unnumberedsec 43847
+Node: unnumbered sub 44035
+Node: numbered sub 44164
+Node: unnumbered sub2 44315
+Node: numbered sub2 44471
 
 End Tag Table
 ';
@@ -9281,7 +9281,6 @@ $result_converted{'html'}->{'section_in_unnumbered_info'} = '<!DOCTYPE html PUBL
 <meta name="keywords" content="Test section in unnumbered">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">

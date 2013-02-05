@@ -2206,39 +2206,39 @@ $result_menus{'lowered_subsubsection'}{'menu_child'}{'menu_up'} = $result_menus{
 
 $result_errors{'lowered_subsubsection'} = [
   {
-    'error_line' => ':34: warning: Node `Lowered subsubsection\' is next for `Lowered subsec\' in sectioning but not in menu
+    'error_line' => ':34: warning: node `Lowered subsubsection\' is next for `Lowered subsec\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 34,
     'macro' => '',
-    'text' => 'Node `Lowered subsubsection\' is next for `Lowered subsec\' in sectioning but not in menu',
+    'text' => 'node `Lowered subsubsection\' is next for `Lowered subsec\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':41: warning: Node `Lowered subsec\' is prev for `Lowered subsubsection\' in sectioning but not in menu
+    'error_line' => ':41: warning: node `Lowered subsec\' is prev for `Lowered subsubsection\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 41,
     'macro' => '',
-    'text' => 'Node `Lowered subsec\' is prev for `Lowered subsubsection\' in sectioning but not in menu',
+    'text' => 'node `Lowered subsec\' is prev for `Lowered subsubsection\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':41: warning: Node up `Lowered subsubsection\' in menu `Lowered subsec\' and in sectioning `Subsection\' differ
+    'error_line' => ':41: warning: node up `Lowered subsubsection\' in menu `Lowered subsec\' and in sectioning `Subsection\' differ
 ',
     'file_name' => '',
     'line_nr' => 41,
     'macro' => '',
-    'text' => 'Node up `Lowered subsubsection\' in menu `Lowered subsec\' and in sectioning `Subsection\' differ',
+    'text' => 'node up `Lowered subsubsection\' in menu `Lowered subsec\' and in sectioning `Subsection\' differ',
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: Node `Subsection\' lacks menu item for `Lowered subsubsection\' despite being its Up target
+    'error_line' => ':22: node `Subsection\' lacks menu item for `Lowered subsubsection\' despite being its Up target
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => 'Node `Subsection\' lacks menu item for `Lowered subsubsection\' despite being its Up target',
+    'text' => 'node `Subsection\' lacks menu item for `Lowered subsubsection\' despite being its Up target',
     'type' => 'error'
   }
 ];

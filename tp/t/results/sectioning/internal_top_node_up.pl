@@ -565,7 +565,7 @@ element: @node first
 ';
 
 
-$result_converted{'info'}->{'internal_top_node_up'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'internal_top_node_up'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: first,  Up: node@ node
@@ -583,8 +583,8 @@ File: ,  Node: first,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: first157
+Node: Top27
+Node: first143
 
 End Tag Table
 ';
@@ -600,7 +600,6 @@ $result_converted{'html'}->{'internal_top_node_up'} = '<!DOCTYPE html PUBLIC "-/
 <meta name="keywords" content="internal top node up">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

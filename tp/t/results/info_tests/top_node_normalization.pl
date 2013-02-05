@@ -435,28 +435,28 @@ $result_errors{'top_node_normalization'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: Menu entry node name `tOP\' different from node name `ToP\'
+    'error_line' => ':6: warning: menu entry node name `tOP\' different from node name `ToP\'
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Menu entry node name `tOP\' different from node name `ToP\'',
+    'text' => 'menu entry node name `tOP\' different from node name `ToP\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: For `ToP\', up in menu `ToP\' and up `(dir)\' don\'t match
+    'error_line' => ':1: warning: for `ToP\', up in menu `ToP\' and up `(dir)\' don\'t match
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'For `ToP\', up in menu `ToP\' and up `(dir)\' don\'t match',
+    'text' => 'for `ToP\', up in menu `ToP\' and up `(dir)\' don\'t match',
     'type' => 'warning'
   }
 ];
 
 
 
-$result_converted{'info'}->{'top_node_normalization'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'top_node_normalization'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: Top,  Prev: Top,  Up: (dir)
@@ -469,7 +469,7 @@ File: ,  Node: Top,  Next: Top,  Prev: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

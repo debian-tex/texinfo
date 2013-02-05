@@ -290,12 +290,12 @@ $result_errors{'section_in_table'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':8: Unmatched `@end table\'
+    'error_line' => ':8: unmatched `@end table\'
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'Unmatched `@end table\'',
+    'text' => 'unmatched `@end table\'',
     'type' => 'error'
   }
 ];

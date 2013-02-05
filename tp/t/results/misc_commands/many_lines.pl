@@ -1738,12 +1738,12 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: Bad argument to @headings: on line following headings
+    'error_line' => ':4: bad argument to @headings: on line following headings
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Bad argument to @headings: on line following headings',
+    'text' => 'bad argument to @headings: on line following headings',
     'type' => 'error'
   },
   {
@@ -1810,12 +1810,12 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':11: Bad argument to @need: 0.1 on line following
+    'error_line' => ':11: bad argument to @need: 0.1 on line following
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'Bad argument to @need: 0.1 on line following',
+    'text' => 'bad argument to @need: 0.1 on line following',
     'type' => 'error'
   },
   {
@@ -1990,12 +1990,12 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':28: warning: Multiple @footnotestyle
+    'error_line' => ':28: warning: multiple @footnotestyle
 ',
     'file_name' => '',
     'line_nr' => 28,
     'macro' => '',
-    'text' => 'Multiple @footnotestyle',
+    'text' => 'multiple @footnotestyle',
     'type' => 'warning'
   },
   {
@@ -2008,12 +2008,12 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':29: warning: Encoding `US-ascii encoding name\' is not a canonical texinfo encoding
+    'error_line' => ':29: warning: encoding `US-ascii encoding name\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 29,
     'macro' => '',
-    'text' => 'Encoding `US-ascii encoding name\' is not a canonical texinfo encoding',
+    'text' => 'encoding `US-ascii encoding name\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {

@@ -517,12 +517,12 @@ $result_errors{'equivalent_nodes'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: Menu entry node name `@strong{node}\' different from node name `@samp{node}\'
+    'error_line' => ':4: warning: menu entry node name `@strong{node}\' different from node name `@samp{node}\'
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Menu entry node name `@strong{node}\' different from node name `@samp{node}\'',
+    'text' => 'menu entry node name `@strong{node}\' different from node name `@samp{node}\'',
     'type' => 'warning'
   },
   {
@@ -538,7 +538,7 @@ $result_errors{'equivalent_nodes'} = [
 
 
 
-$result_converted{'info'}->{'equivalent_nodes'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'equivalent_nodes'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: \'node\'
@@ -554,8 +554,8 @@ File: ,  Node: \'node\',  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: \'node\'99
+Node: Top27
+Node: \'node\'85
 
 End Tag Table
 ';
@@ -571,7 +571,6 @@ $result_converted{'html'}->{'equivalent_nodes'} = '<!DOCTYPE html PUBLIC "-//W3C
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -638,9 +637,9 @@ Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 
 $result_converted_errors{'html'}->{'equivalent_nodes'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

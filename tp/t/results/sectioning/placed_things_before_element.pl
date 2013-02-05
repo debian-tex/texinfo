@@ -1142,12 +1142,12 @@ $result_errors{'placed_things_before_element'} = [
     'type' => 'error continuation'
   },
   {
-    'error_line' => ':28: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':28: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 28,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }
 ];
@@ -1179,7 +1179,7 @@ $result_floats{'placed_things_before_element'}{''}[0]{'extra'}{'end_command'}{'e
 
 
 
-$result_converted{'info'}->{'placed_things_before_element'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'placed_things_before_element'} = 'This is , produced from .
 
 Ref to the anchor: *note An anchor::
 
@@ -1222,9 +1222,9 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'placed_things_before_element'} = [
   {
-    'error_line' => 'warning: Document without nodes.
+    'error_line' => 'warning: document without nodes
 ',
-    'text' => 'Document without nodes.',
+    'text' => 'document without nodes',
     'type' => 'warning'
   },
   {
@@ -1277,7 +1277,6 @@ $result_converted{'html'}->{'placed_things_before_element'} = '<!DOCTYPE html PU
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
@@ -1365,9 +1364,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'placed_things_before_element'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

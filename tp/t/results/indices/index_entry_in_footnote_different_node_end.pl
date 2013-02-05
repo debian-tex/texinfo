@@ -697,7 +697,7 @@ $result_errors{'index_entry_in_footnote_different_node_end'} = [];
 
 
 
-$result_converted{'info'}->{'index_entry_in_footnote_different_node_end'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'index_entry_in_footnote_different_node_end'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: First,  Up: (dir)
@@ -728,9 +728,9 @@ File: ,  Node: First,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Ref: Top-Footnote-1158
-Node: First196
+Node: Top27
+Ref: Top-Footnote-1144
+Node: First182
 
 End Tag Table
 ';

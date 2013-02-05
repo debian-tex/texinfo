@@ -545,7 +545,7 @@ $result_errors{'text_before_node'} = [];
 
 
 
-$result_converted{'info'}->{'text_before_node'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'text_before_node'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: chapter node,  Up: (dir)
@@ -568,8 +568,8 @@ File: ,  Node: chapter node,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: chapter node139
+Node: Top27
+Node: chapter node125
 
 End Tag Table
 ';

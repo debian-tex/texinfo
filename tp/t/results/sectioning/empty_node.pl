@@ -189,21 +189,21 @@ $result_sectioning{'empty_node'} = {};
 
 $result_errors{'empty_node'} = [
   {
-    'error_line' => ':1: Empty argument in @node
+    'error_line' => ':1: empty argument in @node
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Empty argument in @node',
+    'text' => 'empty argument in @node',
     'type' => 'error'
   },
   {
-    'error_line' => ':3: Empty argument in @node
+    'error_line' => ':3: empty argument in @node
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Empty argument in @node',
+    'text' => 'empty argument in @node',
     'type' => 'error'
   }
 ];

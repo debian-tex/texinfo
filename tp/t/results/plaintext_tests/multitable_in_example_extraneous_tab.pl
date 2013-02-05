@@ -348,21 +348,21 @@ secit ';
 
 $result_errors{'multitable_in_example_extraneous_tab'} = [
   {
-    'error_line' => ':3: Too many columns in multitable item (max 1)
+    'error_line' => ':3: too many columns in multitable item (max 1)
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Too many columns in multitable item (max 1)',
+    'text' => 'too many columns in multitable item (max 1)',
     'type' => 'error'
   },
   {
-    'error_line' => ':4: Too many columns in multitable item (max 1)
+    'error_line' => ':4: too many columns in multitable item (max 1)
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Too many columns in multitable item (max 1)',
+    'text' => 'too many columns in multitable item (max 1)',
     'type' => 'error'
   }
 ];

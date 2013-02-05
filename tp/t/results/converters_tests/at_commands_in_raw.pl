@@ -2569,120 +2569,120 @@ $result_errors{'at_commands_in_raw'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':70: Unknown command `newindex\'
+    'error_line' => ':70: unknown command `newindex\'
 ',
     'file_name' => '',
     'line_nr' => 70,
     'macro' => '',
-    'text' => 'Unknown command `newindex\'',
+    'text' => 'unknown command `newindex\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':79: Unknown command `a\'
+    'error_line' => ':79: unknown command `a\'
 ',
     'file_name' => '',
     'line_nr' => 79,
     'macro' => '',
-    'text' => 'Unknown command `a\'',
+    'text' => 'unknown command `a\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':79: Misplaced {
+    'error_line' => ':79: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 79,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':79: Misplaced }
+    'error_line' => ':79: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 79,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
-    'error_line' => ':81: Unknown command `moviecite\'
+    'error_line' => ':81: unknown command `moviecite\'
 ',
     'file_name' => '',
     'line_nr' => 81,
     'macro' => '',
-    'text' => 'Unknown command `moviecite\'',
+    'text' => 'unknown command `moviecite\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':81: Misplaced {
+    'error_line' => ':81: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 81,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':81: Misplaced }
+    'error_line' => ':81: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 81,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
-    'error_line' => ':85: Unknown command `mymacro\'
+    'error_line' => ':85: unknown command `mymacro\'
 ',
     'file_name' => '',
     'line_nr' => 85,
     'macro' => '',
-    'text' => 'Unknown command `mymacro\'',
+    'text' => 'unknown command `mymacro\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':85: Misplaced {
+    'error_line' => ':85: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 85,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':85: Misplaced }
+    'error_line' => ':85: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 85,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
-    'error_line' => ':85: Unknown command `macroarg\'
+    'error_line' => ':85: unknown command `macroarg\'
 ',
     'file_name' => '',
     'line_nr' => 85,
     'macro' => '',
-    'text' => 'Unknown command `macroarg\'',
+    'text' => 'unknown command `macroarg\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':85: Misplaced {
+    'error_line' => ':85: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 85,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':85: Misplaced }
+    'error_line' => ':85: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 85,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {

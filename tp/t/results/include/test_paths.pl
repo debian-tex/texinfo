@@ -133,12 +133,12 @@ In included file.
 
 $result_errors{'test_paths'} = [
   {
-    'error_line' => ':6: @include: Cannot find ./inc_file.texi
+    'error_line' => ':6: @include: could not find ./inc_file.texi
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => '@include: Cannot find ./inc_file.texi',
+    'text' => '@include: could not find ./inc_file.texi',
     'type' => 'error'
   }
 ];

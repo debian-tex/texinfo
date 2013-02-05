@@ -367,30 +367,30 @@ truc: bidulr machin...
 
 $result_errors{'defx_after_paragraph_end'} = [
   {
-    'error_line' => ':1: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':1: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: Must be after `@deffn\' to use `@deffnx\'
+    'error_line' => ':4: must be after `@deffn\' to use `@deffnx\'
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Must be after `@deffn\' to use `@deffnx\'',
+    'text' => 'must be after `@deffn\' to use `@deffnx\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':4: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':4: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   }
 ];

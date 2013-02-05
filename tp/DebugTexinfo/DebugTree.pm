@@ -60,7 +60,7 @@ sub output($$)
   if (! $self->{'output_file'} eq '') {
     $fh = $self->Texinfo::Common::open_out ($self->{'output_file'});
     if (!$fh) {
-      $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+      $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
                                     $self->{'output_file'}, $!));
       return undef;
     }

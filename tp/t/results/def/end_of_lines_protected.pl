@@ -366,12 +366,12 @@ deffn
 
 $result_errors{'end_of_lines_protected'} = [
   {
-    'error_line' => ':4: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':4: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   }
 ];

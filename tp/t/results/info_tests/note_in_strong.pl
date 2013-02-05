@@ -456,7 +456,7 @@ $result_errors{'note_in_strong'} = [];
 
 
 
-$result_converted{'info'}->{'note_in_strong'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'note_in_strong'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -475,7 +475,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

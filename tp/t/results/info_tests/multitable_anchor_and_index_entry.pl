@@ -1517,7 +1517,7 @@ $result_errors{'multitable_anchor_and_index_entry'} = [];
 
 
 
-$result_converted{'info'}->{'multitable_anchor_and_index_entry'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'multitable_anchor_and_index_entry'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -1555,9 +1555,9 @@ mdsfk2
 
 
 Tag Table:
-Node: Top41
-Ref: anchor in multitable283
-Ref: mark402
+Node: Top27
+Ref: anchor in multitable269
+Ref: mark388
 
 End Tag Table
 ';

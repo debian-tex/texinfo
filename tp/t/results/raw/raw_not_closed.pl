@@ -75,12 +75,12 @@ $result_texts{'raw_not_closed'} = '';
 
 $result_errors{'raw_not_closed'} = [
   {
-    'error_line' => ':4: No matching `@end html\'
+    'error_line' => ':4: no matching `@end html\'
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'No matching `@end html\'',
+    'text' => 'no matching `@end html\'',
     'type' => 'error'
   }
 ];

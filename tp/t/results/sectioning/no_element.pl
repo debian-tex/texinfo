@@ -1017,12 +1017,12 @@ $result_errors{'no_element'} = [
     'type' => 'error continuation'
   },
   {
-    'error_line' => ':32: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':32: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 32,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }
 ];
@@ -1054,7 +1054,7 @@ $result_floats{'no_element'}{''}[0]{'extra'}{'end_command'}{'extra'}{'command'} 
 
 
 
-$result_converted{'info'}->{'no_element'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'no_element'} = 'This is , produced from .
 
 Ref to the anchor: *note An anchor::
 
@@ -1095,9 +1095,9 @@ End:
 
 $result_converted_errors{'info'}->{'no_element'} = [
   {
-    'error_line' => 'warning: Document without nodes.
+    'error_line' => 'warning: document without nodes
 ',
-    'text' => 'Document without nodes.',
+    'text' => 'document without nodes',
     'type' => 'warning'
   },
   {
@@ -1150,7 +1150,6 @@ $result_converted{'html'}->{'no_element'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD 
 <meta name="keywords" content="no_element test">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <style type="text/css">
 <!--

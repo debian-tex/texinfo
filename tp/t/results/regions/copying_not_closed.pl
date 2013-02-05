@@ -68,12 +68,12 @@ $result_texts{'copying_not_closed'} = '';
 
 $result_errors{'copying_not_closed'} = [
   {
-    'error_line' => ':3: No matching `@end copying\'
+    'error_line' => ':3: no matching `@end copying\'
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'No matching `@end copying\'',
+    'text' => 'no matching `@end copying\'',
     'type' => 'error'
   }
 ];

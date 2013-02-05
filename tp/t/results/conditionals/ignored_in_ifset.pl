@@ -216,57 +216,57 @@ text
 
 $result_errors{'ignored_in_ifset'} = [
   {
-    'error_line' => ':5: Unmatched `@end ignore\'
+    'error_line' => ':5: unmatched `@end ignore\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Unmatched `@end ignore\'',
+    'text' => 'unmatched `@end ignore\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':7: Unmatched `@end\'
+    'error_line' => ':7: unmatched `@end\'
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Unmatched `@end\'',
+    'text' => 'unmatched `@end\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':12: Unmatched `@end verbatim\'
+    'error_line' => ':12: unmatched `@end verbatim\'
 ',
     'file_name' => '',
     'line_nr' => 12,
     'macro' => '',
-    'text' => 'Unmatched `@end verbatim\'',
+    'text' => 'unmatched `@end verbatim\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':13: Unmatched `@end\'
+    'error_line' => ':13: unmatched `@end\'
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => 'Unmatched `@end\'',
+    'text' => 'unmatched `@end\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':18: Misplaced }
+    'error_line' => ':18: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 18,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
-    'error_line' => ':19: Unmatched `@end\'
+    'error_line' => ':19: unmatched `@end\'
 ',
     'file_name' => '',
     'line_nr' => 19,
     'macro' => '',
-    'text' => 'Unmatched `@end\'',
+    'text' => 'unmatched `@end\'',
     'type' => 'error'
   }
 ];

@@ -42,12 +42,12 @@ $result_errors{'macro_no_argument'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: No matching `@end macro\'
+    'error_line' => ':1: no matching `@end macro\'
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'No matching `@end macro\'',
+    'text' => 'no matching `@end macro\'',
     'type' => 'error'
   }
 ];

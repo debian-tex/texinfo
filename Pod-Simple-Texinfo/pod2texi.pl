@@ -1,7 +1,6 @@
 #! /usr/bin/env perl
-
+# $Id: pod2texi.pl,v 1.29 2013/02/04 22:52:25 karl Exp $
 # pod2texi -- convert Pod to Texinfo.
-#
 # Copyright 2012, 2013 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
@@ -108,25 +107,34 @@ sub __($)
 
 sub pod2texi_help()
 {
-  return __("Usage: pod2texi [OPTION]... POD-FILE...
+  return __("Usage: pod2texi [OPTION]... POD...
 
-Translate Pod to Texinfo.  If --base-level is higher than 0, 
-a main manual including all the files is done; otherwise, all
-manuals are standalone (the default).
+Translate Perl pod documentation file(s) to Texinfo.  There are two
+basic modes of operation.  First, by default, each pod is translated to
+a standalone Texinfo manual.
+
+Second, if C<--base-level> is set higher than 0, each pod is translated
+to a file suitable for C<\@include>, and one more file with all the
+C<\@include>s is generated, intended to be C<\@include>d in turn within
+a hand-written top-level file.
 
 Options:
-    --base-level=NUM|NAME   level of the head1 commands.
-    --debug=NUM             set debugging level
-    --help                  display this help and exit.
-    --no-fill-section-gaps  do not fill sectioning gaps.
-    --no-section-nodes      use anchors for sections instead of nodes.
-    --output=NAME           output to <NAME> for the first or the main manual
-                            instead of standard out.
-    --preamble=STR          insert STR as beginning boilerplate.
-    --subdir=NAME           put files included in the main manual in <NAME>.
-    --top                   top for the main manual.
-    --unnumbered-sections   use unumbered sections.
-    --version               display version information and exit.\n");
+  --base-level=NUM|NAME   level of the head1 commands; default 0.
+  --debug=NUM             set debugging level.
+  --help                  display this help and exit.
+  --no-fill-section-gaps  do not fill sectioning gaps.
+  --no-section-nodes      use anchors for sections instead of nodes.
+  --output=NAME           output to NAME for the first or main manual
+                          instead of standard output.
+  --preamble=STR          insert STR as beginning boilerplate.
+  --subdir=NAME           put files included in the main manual in NAME.
+  --top                   top for the main manual.
+  --unnumbered-sections   use unumbered sections.
+  --version               display version information and exit.
+
+Email bug reports to bug-texinfo\@gnu.org,
+general questions and discussion to help-texinfo\@gnu.org.
+Texinfo home page: http://www.gnu.org/software/texinfo/\n");
 }
 
 my $base_level = 0;
@@ -153,7 +161,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
      } elsif (defined($Texinfo::Common::command_structuring_level{$_[1]})) {
        $base_level = $Texinfo::Common::command_structuring_level{$_[1]};
      } else {
-       die sprintf(__("%s: wrong argument for --base-level.\n"), 
+       die sprintf(__("%s: wrong argument for --base-level\n"), 
                    $real_command_name);
      }
    },
@@ -172,8 +180,8 @@ exit 1 if (!$result_options);
 if (defined($subdir)) {
   if (! -d $subdir) {
     if (!mkdir($subdir)) {
-      die sprintf(__("%s: Can't create directory %s"), 
-                  $real_command_name, $subdir);
+      die sprintf(__("%s: could not create directory %s: %s"), 
+                  $real_command_name, $subdir, $!);
     }
   }
 }
@@ -187,8 +195,8 @@ my @input_files = @ARGV;
 
 # use STDIN if not a tty, like makeinfo does
 @input_files = ('-') if (!scalar(@input_files) and !-t STDIN);
-die sprintf(__("%s: missing file argument.\n"), $real_command_name)
-   .sprintf(__("Try `%s --help' for more information.\n"), $real_command_name)
+die sprintf(__("%s: missing file argument;\n"), $real_command_name)
+   .sprintf(__("try `%s --help' for more information\n"), $real_command_name)
      unless (scalar(@input_files) >= 1);
 
 my @processed_files;
@@ -236,6 +244,8 @@ sub _fix_texinfo_tree($$$$;$)
     my ($added_sections, $added_nodes);
     ($tree->{'contents'}, $added_sections)
       = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
+    # there should already be nodes associated with other sections.  Therefore
+    # new nodes should only be created for the $added_sections.
     if ($section_nodes) {
       ($tree->{'contents'}, $added_nodes)
         = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
@@ -302,11 +312,13 @@ sub _do_top_node_menu($)
   my $top_node_menu = $labels->{'Top'}->{'menus'}->[0];
   if ($top_node_menu) {
     return Texinfo::Convert::Texinfo::convert($top_node_menu);
+  } else {
+    return '';
   }
 }
 
 my $file_nr = 0;
-# Full manual is collected to generate the top node menu.
+# Full manual is collected to generate the top node menu, if $section_nodes
 my $full_manual = '';
 my @included;
 foreach my $file (@processed_files) {
@@ -342,7 +354,7 @@ foreach my $file (@processed_files) {
   if ($outfile eq '-') {
     $fh = *STDOUT;
   } else {
-    open (OUT, ">$outfile") or die sprintf(__("%s: Open %s: %s.\n"), 
+    open (OUT, ">$outfile") or die sprintf(__("%s: could not open %s for writing: %s\n"), 
                                           $real_command_name, $outfile, $!);
     $fh = *OUT;
   }
@@ -368,7 +380,7 @@ foreach my $file (@processed_files) {
   if ($section_nodes or $fill_sectioning_gaps) {
     if ($debug > 4) {
       # print to a file
-      open (DBGFILE, ">$outfile-dbg") or die sprintf(__("%s: Open %s: %s.\n"), 
+      open (DBGFILE, ">$outfile-dbg") or die sprintf(__("%s: could not open %s: %s\n"), 
                                       $real_command_name, "$outfile-dbg", $!);
       binmode(DBGFILE, ':encoding(utf8)');
       print DBGFILE $manual_texi;
@@ -381,13 +393,13 @@ foreach my $file (@processed_files) {
   print $fh $manual_texi;
 
   if ($outfile ne '-') {
-    close($fh) or die sprintf (__("%s: Close %s: %s.\n"), 
+    close($fh) or die sprintf(__("%s: error on closing %s: %s\n"), 
                                $real_command_name, $outfile, $!);
   }
 
   if ($base_level > 0) {
     if (!$new->content_seen) {
-      # this should only happen for input coming for pipe or the like
+      # this should only happen for input coming from pipe or the like
       warn sprintf(__("%s: removing %s as input file %s has no content\n"),
                    $real_command_name, $outfile, $file);
       unlink ($outfile);
@@ -405,7 +417,7 @@ foreach my $file (@processed_files) {
            if (defined($subdir));
         if ($new_outfile ne $outfile) {
           unless (rename ($outfile, $new_outfile)) {
-            die sprintf(__("%s: Rename %s failed: %s\n"), 
+            die sprintf(__("%s: rename %s failed: %s\n"), 
                         $real_command_name, $outfile, $!);
           }
         }
@@ -419,7 +431,7 @@ foreach my $file (@processed_files) {
 if ($base_level > 0) {
   my $fh;
   if ($output ne '-') {
-    open (OUT, ">$output") or die sprintf(__("%s: Open %s: %s.\n"), 
+    open (OUT, ">$output") or die sprintf(__("%s: could not open %s for writing: %s\n"), 
                                           $real_command_name, $output, $!);
     $fh = *OUT;
   } else {
@@ -436,13 +448,12 @@ if ($base_level > 0) {
   $outfile_name .= '.info';
 
   if (! defined ($preamble)) {
-    $preamble = '\input texinfo
-@setfilename ' . Pod::Simple::Texinfo::_protect_text ($outfile_name) . "
+    $preamble = ($base_level > 0) ? ""
+                : '\input texinfo
+@setfilename ' . Pod::Simple::Texinfo::_protect_text($outfile_name) . "
 \@documentencoding utf-8
-
 \@settitle $top
 
-\@shortcontents
 \@contents
 
 \@ifnottex
@@ -453,23 +464,24 @@ if ($base_level > 0) {
   
   print $fh $preamble;
   if ($section_nodes) {
+    #print STDERR "\@node Top\n\@top top\n".$full_manual;
     my $menu = _do_top_node_menu("\@node Top\n\@top top\n".$full_manual);
     print $fh $menu."\n";
   }
   foreach my $include (@included) {
     my $file = $include->[1];
-    print $fh "\@include ".Pod::Simple::Texinfo::_protect_text ($file)."\n";
+    print $fh "\@include ".Pod::Simple::Texinfo::_protect_text($file)."\n";
   }
   print $fh "\n\@bye\n";
   
   if ($output ne '-') {
-    close($fh) or die sprintf (__("%s: Close %s: %s.\n"), 
+    close($fh) or die sprintf(__("%s: error on closing %s: %s\n"), 
                                $real_command_name, $output, $!);
   }
 }
 
 if (defined($output) and $output eq '-') {
-  close(STDOUT) or die sprintf (__("%s: Close stdout: %s.\n"), 
+  close(STDOUT) or die sprintf(__("%s: error on closing stdout: %s\n"), 
                                $real_command_name, $!);
 }
 
@@ -483,13 +495,18 @@ pod2texi - convert Pod to Texinfo
 
 =head1 SYNOPSIS
 
-  pod2texi [OPTION]... POD-FILE...
+  pod2texi [OPTION]... POD...
 
 =head1 DESCRIPTION
 
-Translate Pod to Texinfo.  If the C<--base-level> is higher than 0, a
-main manual including all the files is done otherwise all manuals are
-standalone (the default).
+Translate Pod file(s) to Texinfo.  There are two basic modes of
+operation.  First, by default, each pod is translated to a standalone
+Texinfo manual.
+
+Second, if C<--base-level> is set higher than 0, each pod is translated
+to a file suitable for C<@include>, and one more file with all the
+C<@include>s is generated, intended to be C<@include>d in turn within a
+hand-written top-level file.
 
 =head1 OPTIONS
 
@@ -497,17 +514,21 @@ standalone (the default).
 
 =item B<--base-level>=I<NUM|NAME>
 
-Sets the level of the head1 commands.  It may be an integer or a Texinfo
-sectioning command.  If it is a Texinfo sectioning command the corresponding
-level is used.  If the resulting level is 1, this corresponds to 
-@chapter/@unnumbered level.  If set to 0, the head1 commands level is 
-still 1, but the output manual is considered to be a standalone manual.
+Sets the level of the C<head1> commands.  It may be an integer or a
+Texinfo sectioning command (without the C<@>): 1 corresponds to the
+C<@chapter>/C<@unnumbered> level, 2 to the C<@section> level, and so on.
+The default is 0, meaning that C<head1> commands are still output as
+chapters, but the output is arranged as a standalone manual.
 
-If the level is not 0, the pod file is rendered as a fragment of a 
-Texinfo manual.  In that case, each pod file has an additional sectioning
-command one level above the head1 commands level added for the whole
-file.  Therefore if you want to have each pod file as a chapter, you should
-use C<section> as the base level.
+If the level is not 0, the pod file is rendered as a fragment of a
+Texinfo manual suitable for C<@include>.  In this case, each pod file
+has an additional sectioning command covering the entire file, one level
+above the C<--base-level> value.  Therefore, to make each pod file a
+chapter in a large manual, you should use C<section> as the base level.
+
+For an example of making Texinfo out of the Perl documentation itself,
+see C<contrib/perldoc-all> in the Texinfo source distribution, with
+output available at L<http://www.gnu.org/software/perl/manual>.
 
 =item B<--debug>=I<NUM>
 
@@ -520,7 +541,7 @@ Display help and exit.
 =item B<--output>=I<NAME>
 
 Name for the first manual, or the main manual if there is a main manual.
-Default is output on standard out.
+Default is to write to standard output.
 
 =item B<--no-section-nodes>
 
@@ -528,24 +549,28 @@ Use anchors for sections instead of nodes.
 
 =item B<--no-fill-section-gaps>
 
-Do not fill sectioning gaps with empty C<@unnumbered>.
+Do not fill sectioning gaps with empty C<@unnumbered> files.
+Ordinarily, it's good to keep the sectioning hierarchy intact.
 
 =item B<--preamble>=I<STR>
 
-Insert I<STR> as top boilerplate before includes.  The default is fairly
-minimal, and sets @documentencoding to C<utf-8>.  For example, you can
-set this to the empty string and then write your own top-level
-boilerplate which uses @include to incorporate the generated one.
+Insert I<STR> as top boilerplate before includes.  For standalone
+documents (C<--base-level> is 0), the default is a minimal beginning for
+a Texinfo document, and sets C<@documentencoding> to C<utf-8>.  For
+included documents (C<--base-level> is nonzero), it is the empty string,
+under the assumption that you will want your own top-level material,
+and to C<@include> the generated files.
 
 =item B<--subdir>=I<NAME>
 
-If there is a main manual with include files, each corresponding to
-an input pod file, then include files are put in the directory I<NAME>.
+If there is a main manual with include files (each corresponding to
+an input pod file), then those include files are put in directory I<NAME>.
 
 =item B<--unnumbered-sections>
 
-Use unnumbered sectioning commands (@unnumbered...) instead of the default
-numbered sectioning Texinfo @-commands (@chapter, @section...).
+Use unnumbered sectioning commands (C<@unnumbered>, ...) instead of the
+default numbered sectioning Texinfo @-commands (C<@chapter>,
+C<@section>, ...).
 
 =item B<--top>=I<TOP>
 
@@ -559,11 +584,12 @@ Display version information and exit.
 
 =head1 SEE ALSO
 
-L<Pod::Simple::Texinfo>.  The Texinfo manual.  L<perlpod>.
+L<Pod::Simple::Texinfo>.  L<perlpod>.  The Texinfo manual.
+Texinfo home page: L<http://www.gnu.org/software/texinfo/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2012 Free Software Foundation, Inc.
+Copyright (C) 2013 Free Software Foundation, Inc.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -574,6 +600,6 @@ There is NO WARRANTY, to the extent permitted by law.
 
 =head1 AUTHOR
 
-Patrice Dumas E<lt>pertusus@free.frE<gt>.
+Patrice Dumas E<lt>bug-texinfo@gnu.orgE<gt>.
 
 =cut

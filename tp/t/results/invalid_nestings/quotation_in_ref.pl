@@ -308,12 +308,12 @@ $result_errors{'quotation_in_ref'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':7: Misplaced }
+    'error_line' => ':7: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   }
 ];

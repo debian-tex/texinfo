@@ -944,7 +944,7 @@ $result_errors{'index_entry_at_end_node'} = [];
 
 
 
-$result_converted{'info'}->{'index_entry_at_end_node'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'index_entry_at_end_node'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: chapter,  Up: (dir)
@@ -977,9 +977,9 @@ Appendix A indices
 
 
 Tag Table:
-Node: Top41
-Node: chapter142
-Node: indices227
+Node: Top27
+Node: chapter128
+Node: indices213
 
 End Tag Table
 ';

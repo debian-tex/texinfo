@@ -302,7 +302,7 @@ $result_errors{'nested_footnotes_separate'} = [];
 
 
 
-$result_converted{'info'}->{'nested_footnotes_separate'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'nested_footnotes_separate'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -321,10 +321,10 @@ File: ,  Node: Top-Footnotes,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: Top-Footnotes106
-Ref: Top-Footnote-1148
-Ref: Top-Footnote-2203
+Node: Top27
+Node: Top-Footnotes92
+Ref: Top-Footnote-1134
+Ref: Top-Footnote-2189
 
 End Tag Table
 ';

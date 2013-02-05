@@ -830,7 +830,7 @@ $result_directions_text{'nodes_after_top_before_section_sections'} = 'element: @
 ';
 
 
-$result_converted{'info'}->{'nodes_after_top_before_section_sections'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'nodes_after_top_before_section_sections'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: second node,  Up: (dir)
@@ -855,9 +855,9 @@ File: ,  Node: third node,  Prev: second node,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: second node145
-Node: third node229
+Node: Top27
+Node: second node131
+Node: third node215
 
 End Tag Table
 ';
@@ -873,7 +873,6 @@ $result_converted{'html'}->{'nodes_after_top_before_section_sections'} = '<!DOCT
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -951,9 +950,9 @@ Previous: <a href="#second-node" accesskey="p" rel="previous">second node</a>, U
 
 $result_converted_errors{'html'}->{'nodes_after_top_before_section_sections'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

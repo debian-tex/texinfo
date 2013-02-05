@@ -909,7 +909,6 @@ $result_converted{'html'}->{'check_htmlxref'} = '<!DOCTYPE html PUBLIC "-//W3C//
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -981,34 +980,34 @@ Next: <a href="no_existing_no_manual.html#Top" accesskey="n" rel="next">(no_exis
 
 $result_converted_errors{'html'}->{'check_htmlxref'} = [
   {
-    'error_line' => 'warning: No htmlxref.cnf entry found for `../there/no_existing_no_manual_direction\'
+    'error_line' => 'warning: no htmlxref.cnf entry found for `../there/no_existing_no_manual_direction\'
 ',
-    'text' => 'No htmlxref.cnf entry found for `../there/no_existing_no_manual_direction\'',
+    'text' => 'no htmlxref.cnf entry found for `../there/no_existing_no_manual_direction\'',
     'type' => 'warning'
   },
   {
     'file_name' => '',
-    'error_line' => ':5: warning: No htmlxref.cnf entry found for `no_existing_no_manual.info\'
+    'error_line' => ':5: warning: no htmlxref.cnf entry found for `no_existing_no_manual.info\'
 ',
-    'text' => 'No htmlxref.cnf entry found for `no_existing_no_manual.info\'',
+    'text' => 'no htmlxref.cnf entry found for `no_existing_no_manual.info\'',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 5
   },
   {
     'file_name' => '',
-    'error_line' => ':6: warning: No htmlxref.cnf entry found for `no_existing_no_manual.info\'
+    'error_line' => ':6: warning: no htmlxref.cnf entry found for `no_existing_no_manual.info\'
 ',
-    'text' => 'No htmlxref.cnf entry found for `no_existing_no_manual.info\'',
+    'text' => 'no htmlxref.cnf entry found for `no_existing_no_manual.info\'',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 6
   },
   {
     'file_name' => '',
-    'error_line' => ':10: warning: No htmlxref.cnf entry found for `other_no_existing_no_manual\'
+    'error_line' => ':10: warning: no htmlxref.cnf entry found for `other_no_existing_no_manual\'
 ',
-    'text' => 'No htmlxref.cnf entry found for `other_no_existing_no_manual\'',
+    'text' => 'no htmlxref.cnf entry found for `other_no_existing_no_manual\'',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 10

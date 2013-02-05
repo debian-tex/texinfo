@@ -103,12 +103,12 @@ $result_texts{'brace_opened_no_command'} = 'anchortruc} .
 
 $result_errors{'brace_opened_no_command'} = [
   {
-    'error_line' => ':1: Misplaced {
+    'error_line' => ':1: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   }
 ];

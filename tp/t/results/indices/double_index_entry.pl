@@ -726,7 +726,7 @@ $result_errors{'double_index_entry'} = [];
 
 
 
-$result_converted{'info'}->{'double_index_entry'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'double_index_entry'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: other node,  Up: (dir)
@@ -750,8 +750,8 @@ File: ,  Node: other node,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: other node125
+Node: Top27
+Node: other node111
 
 End Tag Table
 ';

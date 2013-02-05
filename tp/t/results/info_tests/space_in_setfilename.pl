@@ -212,7 +212,7 @@ $result_errors{'space_in_setfilename'} = [
 
 
 
-$result_converted{'info'}->{'space_in_setfilename'} = 'This is   name  , produced by tp version from .
+$result_converted{'info'}->{'space_in_setfilename'} = 'This is   name  , produced from .
 
 
 File:   name  ,  Node: Top,  Up: (dir)
@@ -220,7 +220,7 @@ File:   name  ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top49
+Node: Top35
 
 End Tag Table
 ';

@@ -1470,7 +1470,7 @@ $result_errors{'printindex_index_entry_in_copying'} = [];
 
 
 
-$result_converted{'info'}->{'printindex_index_entry_in_copying'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'printindex_index_entry_in_copying'} = 'This is , produced from .
 
  -- Function: fun arg
  -- Function: xf arg
@@ -1545,8 +1545,8 @@ xftable xitem
 
 
 Tag Table:
-Node: Top145
-Node: chapter701
+Node: Top131
+Node: chapter687
 
 End Tag Table
 ';

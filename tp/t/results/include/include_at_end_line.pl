@@ -85,12 +85,12 @@ After.';
 
 $result_errors{'include_at_end_line'} = [
   {
-    'error_line' => ':1: @include: Cannot find inc_file.texi 
+    'error_line' => ':1: @include: could not find inc_file.texi 
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@include: Cannot find inc_file.texi ',
+    'text' => '@include: could not find inc_file.texi ',
     'type' => 'error'
   }
 ];

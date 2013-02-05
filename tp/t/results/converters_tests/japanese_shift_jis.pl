@@ -1363,12 +1363,12 @@ $result_menus{'japanese_shift_jis'}{'menu_child'}{'menu_up'} = $result_menus{'ja
 
 $result_errors{'japanese_shift_jis'} = [
   {
-    'error_line' => 'japanese_shift_jis.texi:2: warning: Encoding `shift_jis\' is not a canonical texinfo encoding
+    'error_line' => 'japanese_shift_jis.texi:2: warning: encoding `shift_jis\' is not a canonical texinfo encoding
 ',
     'file_name' => 'japanese_shift_jis.texi',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Encoding `shift_jis\' is not a canonical texinfo encoding',
+    'text' => 'encoding `shift_jis\' is not a canonical texinfo encoding',
     'type' => 'warning'
   }
 ];

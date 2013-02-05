@@ -4814,48 +4814,48 @@ $result_texts{'ref_error_formatting'} = '
 
 $result_errors{'ref_error_formatting'} = [
   {
-    'error_line' => ':4: warning: Command @ref missing a node or external manual argument
+    'error_line' => ':4: warning: command @ref missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Command @ref missing a node or external manual argument',
+    'text' => 'command @ref missing a node or external manual argument',
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: Command @ref missing a node or external manual argument
+    'error_line' => ':5: warning: command @ref missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Command @ref missing a node or external manual argument',
+    'text' => 'command @ref missing a node or external manual argument',
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: warning: Command @ref missing a node or external manual argument
+    'error_line' => ':22: warning: command @ref missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => 'Command @ref missing a node or external manual argument',
+    'text' => 'command @ref missing a node or external manual argument',
     'type' => 'warning'
   },
   {
-    'error_line' => ':33: warning: Command @inforef missing a node or external manual argument
+    'error_line' => ':33: warning: command @inforef missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 33,
     'macro' => '',
-    'text' => 'Command @inforef missing a node or external manual argument',
+    'text' => 'command @inforef missing a node or external manual argument',
     'type' => 'warning'
   },
   {
-    'error_line' => ':36: warning: Command @inforef missing a node or external manual argument
+    'error_line' => ':36: warning: command @inforef missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 36,
     'macro' => '',
-    'text' => 'Command @inforef missing a node or external manual argument',
+    'text' => 'command @inforef missing a node or external manual argument',
     'type' => 'warning'
   },
   {

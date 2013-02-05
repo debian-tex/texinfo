@@ -170,12 +170,12 @@ $result_sectioning{'section_before_chapter'}{'section_childs'}[1]{'toplevel_prev
 
 $result_errors{'section_before_chapter'} = [
   {
-    'error_line' => ':3: Lowering the section level of @chapter appearing after a lower element
+    'error_line' => ':3: lowering the section level of @chapter appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Lowering the section level of @chapter appearing after a lower element',
+    'text' => 'lowering the section level of @chapter appearing after a lower element',
     'type' => 'error'
   }
 ];

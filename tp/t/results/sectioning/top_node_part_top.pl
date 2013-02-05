@@ -365,7 +365,7 @@ $result_directions_text{'top_node_part_top'} = 'element: @top top
 ';
 
 
-$result_converted{'info'}->{'top_node_part_top'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'top_node_part_top'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -376,7 +376,7 @@ top
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';
@@ -392,7 +392,6 @@ $result_converted{'html'}->{'top_node_part_top'} = '<!DOCTYPE html PUBLIC "-//W3
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

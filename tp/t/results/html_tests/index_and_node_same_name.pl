@@ -312,7 +312,6 @@ $result_converted{'html'}->{'index_and_node_same_name'} = '<!DOCTYPE html PUBLIC
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#index-node" rel="start" title="index node">
 <link href="#index-node" rel="index" title="index node">

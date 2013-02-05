@@ -250,7 +250,7 @@ $result_errors{'anchor_zero'} = [];
 
 
 
-$result_converted{'info'}->{'anchor_zero'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'anchor_zero'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -261,8 +261,8 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
-Ref: 075
+Node: Top27
+Ref: 061
 
 End Tag Table
 ';
@@ -278,7 +278,6 @@ $result_converted{'html'}->{'anchor_zero'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -330,9 +329,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'anchor_zero'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

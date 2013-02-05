@@ -250,12 +250,12 @@ A  (something).
 
 $result_errors{'invalid_clickstyle'} = [
   {
-    'error_line' => ':2: warning: Remaining argument on @clickstyle line: on the same line
+    'error_line' => ':2: warning: remaining argument on @clickstyle line: on the same line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Remaining argument on @clickstyle line: on the same line',
+    'text' => 'remaining argument on @clickstyle line: on the same line',
     'type' => 'warning'
   },
   {

@@ -307,7 +307,7 @@ $result_errors{'one_node_explicit_directions_anchor'} = [];
 
 
 
-$result_converted{'info'}->{'one_node_explicit_directions_anchor'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'one_node_explicit_directions_anchor'} = 'This is , produced from .
 
 
 File: ,  Node: one node,  Up: (dir)
@@ -320,17 +320,17 @@ Top node
 
 
 Tag Table:
-Node: one node41
-Ref: ref103
+Node: one node27
+Ref: ref89
 
 End Tag Table
 ';
 
 $result_converted_errors{'info'}->{'one_node_explicit_directions_anchor'} = [
   {
-    'error_line' => 'warning: Document without Top node.
+    'error_line' => 'warning: document without Top node
 ',
-    'text' => 'Document without Top node.',
+    'text' => 'document without Top node',
     'type' => 'warning'
   }
 ];
@@ -347,7 +347,6 @@ $result_converted{'html'}->{'one_node_explicit_directions_anchor'} = '<!DOCTYPE 
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#one-node" rel="start" title="one node">
 <style type="text/css">
@@ -400,9 +399,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'one_node_explicit_directions_anchor'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

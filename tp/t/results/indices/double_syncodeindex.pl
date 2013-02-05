@@ -474,12 +474,12 @@ $result_menus{'double_syncodeindex'} = {
 
 $result_errors{'double_syncodeindex'} = [
   {
-    'error_line' => ':10: warning: Printing an index `cp\' merged in another one `fn\'
+    'error_line' => ':10: warning: printing an index `cp\' merged in another one `fn\'
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'Printing an index `cp\' merged in another one `fn\'',
+    'text' => 'printing an index `cp\' merged in another one `fn\'',
     'type' => 'warning'
   }
 ];
@@ -563,7 +563,7 @@ $result_indices{'double_syncodeindex'} = {
 
 
 
-$result_converted{'info'}->{'double_syncodeindex'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'double_syncodeindex'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -577,7 +577,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

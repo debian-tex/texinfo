@@ -990,84 +990,84 @@ $result_texts{'all_empty_def'} = '
 
 $result_errors{'all_empty_def'} = [
   {
-    'error_line' => ':1: warning: Missing category for @deffn
+    'error_line' => ':1: warning: missing category for @deffn
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Missing category for @deffn',
+    'text' => 'missing category for @deffn',
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: Missing category for @defvr
+    'error_line' => ':4: warning: missing category for @defvr
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Missing category for @defvr',
+    'text' => 'missing category for @defvr',
     'type' => 'warning'
   },
   {
-    'error_line' => ':7: warning: Missing category for @deftypefn
+    'error_line' => ':7: warning: missing category for @deftypefn
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Missing category for @deftypefn',
+    'text' => 'missing category for @deftypefn',
     'type' => 'warning'
   },
   {
-    'error_line' => ':10: warning: Missing category for @deftypeop
+    'error_line' => ':10: warning: missing category for @deftypeop
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'Missing category for @deftypeop',
+    'text' => 'missing category for @deftypeop',
     'type' => 'warning'
   },
   {
-    'error_line' => ':13: warning: Missing category for @deftypevr
+    'error_line' => ':13: warning: missing category for @deftypevr
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => 'Missing category for @deftypevr',
+    'text' => 'missing category for @deftypevr',
     'type' => 'warning'
   },
   {
-    'error_line' => ':16: warning: Missing category for @defcv
+    'error_line' => ':16: warning: missing category for @defcv
 ',
     'file_name' => '',
     'line_nr' => 16,
     'macro' => '',
-    'text' => 'Missing category for @defcv',
+    'text' => 'missing category for @defcv',
     'type' => 'warning'
   },
   {
-    'error_line' => ':19: warning: Missing category for @deftypecv
+    'error_line' => ':19: warning: missing category for @deftypecv
 ',
     'file_name' => '',
     'line_nr' => 19,
     'macro' => '',
-    'text' => 'Missing category for @deftypecv',
+    'text' => 'missing category for @deftypecv',
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: warning: Missing category for @defop
+    'error_line' => ':22: warning: missing category for @defop
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => 'Missing category for @defop',
+    'text' => 'missing category for @defop',
     'type' => 'warning'
   },
   {
-    'error_line' => ':25: warning: Missing category for @deftp
+    'error_line' => ':25: warning: missing category for @deftp
 ',
     'file_name' => '',
     'line_nr' => 25,
     'macro' => '',
-    'text' => 'Missing category for @deftp',
+    'text' => 'missing category for @deftp',
     'type' => 'warning'
   }
 ];

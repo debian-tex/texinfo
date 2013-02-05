@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.56 2013/01/28 18:36:51 karl Exp $
+# $Id: Makefile.am,v 1.57 2013/02/03 23:53:48 karl Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
@@ -14,7 +14,7 @@
 # A long list of files that we generate and some rules.
 include $(srcdir)/Makefile.tres
 
-# document string locales files and associated rules.
+# Document string locale files and associated rules.
 include $(srcdir)/Makefile.docstr
 
 $(srcdir)/Makefile.tres: maintain/regenerate_file_lists.pl

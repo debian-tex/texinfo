@@ -357,7 +357,7 @@ $result_errors{'space_at_menu_end'} = [];
 
 
 
-$result_converted{'info'}->{'space_at_menu_end'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'space_at_menu_end'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: (out),  Up: (dir)
@@ -370,7 +370,7 @@ A para.
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

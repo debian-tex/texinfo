@@ -100,21 +100,21 @@ $result_texts{'empty_anchor'} = '.
 
 $result_errors{'empty_anchor'} = [
   {
-    'error_line' => ':1: Empty argument in @anchor
+    'error_line' => ':1: empty argument in @anchor
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Empty argument in @anchor',
+    'text' => 'empty argument in @anchor',
     'type' => 'error'
   },
   {
-    'error_line' => ':2: Empty argument in @anchor
+    'error_line' => ':2: empty argument in @anchor
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Empty argument in @anchor',
+    'text' => 'empty argument in @anchor',
     'type' => 'error'
   }
 ];

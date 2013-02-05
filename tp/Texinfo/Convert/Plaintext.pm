@@ -459,7 +459,7 @@ sub output($$)
   if ($outfile ne '') {
     $fh = $self->Texinfo::Common::open_out($outfile);
     if (!$fh) {
-      $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+      $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
                                     $outfile, $!));
       return undef;
     }
@@ -1106,7 +1106,7 @@ sub _printindex_formatted($$;$)
       # done by the Parser.
       # Warn, only once.
       if (!$self->{'index_entries_no_node'}->{$entry}) {
-        $self->line_warn (sprintf($self->__("Entry for index `%s' outside of any node"),
+        $self->line_warn(sprintf($self->__("entry for index `%s' outside of any node"),
                                  $index_name), $entry->{'command'}->{'line_nr'});
         $self->{'index_entries_no_node'}->{$entry} = 1;
       }
@@ -1198,7 +1198,7 @@ sub _image_text($$$)
   my $root = shift;
   my $basefile = shift;
 
-  my $txt_file = $self->Texinfo::Common::locate_include_file ($basefile.'.txt');
+  my $txt_file = $self->Texinfo::Common::locate_include_file($basefile.'.txt');
   if (!defined($txt_file)) {
     return undef;
   } else {
@@ -1214,7 +1214,7 @@ sub _image_text($$$)
       # remove last end of line
       chomp ($result);
       if (!close ($filehandle)) {
-        $self->document_warn(sprintf($self->__("Error on closing image text file %s: %s"),
+        $self->document_warn(sprintf($self->__("error on closing image text file %s: %s"),
                                      $txt_file, $!));
       }
       return $result;
@@ -1247,8 +1247,9 @@ sub _image_formatted_text($$$$$)
       $result = $alt;
     }
   } else {
-    $self->line_warn(sprintf($self->__("Cannot find \@image file `%s.txt' nor alternate text"),
-                       $basefile), $root->{'line_nr'});
+    $self->line_warn(sprintf($self->__(
+                    "could not find \@image file `%s.txt' nor alternate text"),
+                             $basefile), $root->{'line_nr'});
     $result = '['.$basefile.']';
   }
   return $result;
@@ -1612,7 +1613,9 @@ sub _convert($$)
              and $root->{'args'}->[0]->{'contents'}->[0]->{'text'} =~ /^Note\s/i
              and $self->{'output_format'}
              and $self->{'output_format'} eq 'info') {
-          $self->line_warn($self->__("\@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"), $root->{'line_nr'});
+          $self->line_warn($self->__(
+    "\@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"), 
+                           $root->{'line_nr'});
         }
       }
       $result .= $self->_count_added($formatter->{'container'},
@@ -1842,9 +1845,12 @@ sub _convert($$)
                 my $text = $next->{'text'};
                 $text =~ s/^\s*//;
                 my $char = substr($text, 0, 1);
-                $self->line_warn(sprintf($self->__("`.' or `,' must follow \@xref, not %s"), $char), $root->{'line_nr'});
+                $self->line_warn(sprintf($self->__(
+                            "`.' or `,' must follow \@xref, not %s"), 
+                                         $char), $root->{'line_nr'});
               } else {
-                $self->line_warn($self->__("`.' or `,' must follow \@xref"), $root->{'line_nr'});
+                $self->line_warn($self->__("`.' or `,' must follow \@xref"), 
+                                 $root->{'line_nr'});
               }
             }
             my @added = ({'text' => '.'});
@@ -2891,7 +2897,7 @@ sub _convert($$)
   return $result;
 }
 
-sub indent_menu_descriptions($$)
+sub indent_one_menu_descriptions($$)
 {
   my $self = shift;
   my $menu = shift;
@@ -2933,7 +2939,7 @@ sub indent_menu_descriptions($$)
   }
 }
 
-sub indent_menus_descriptions($;$)
+sub indent_menu_descriptions($;$)
 {
   my $self = shift;
   my $parser = shift;
@@ -2967,7 +2973,7 @@ sub indent_menus_descriptions($;$)
 
   if ($parser->{'info'} and $parser->{'info'}->{'unassociated_menus'}) {
     foreach my $menu (@{$parser->{'info'}->{'unassociated_menus'}}) {
-      $self->indent_menu_descriptions($menu);
+      $self->indent_one_menu_descriptions($menu);
     }
   }
   if ($parser->{'nodes'} and @{$parser->{'nodes'}}) {

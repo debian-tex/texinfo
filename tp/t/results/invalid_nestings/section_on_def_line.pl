@@ -204,12 +204,12 @@ $result_errors{'section_on_def_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: Unmatched `@end deffn\'
+    'error_line' => ':5: unmatched `@end deffn\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Unmatched `@end deffn\'',
+    'text' => 'unmatched `@end deffn\'',
     'type' => 'error'
   }
 ];

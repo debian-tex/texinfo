@@ -17,12 +17,12 @@ $result_texts{'conditional_not_closed'} = '';
 
 $result_errors{'conditional_not_closed'} = [
   {
-    'error_line' => ':2: No matching `@end ifhtml\'
+    'error_line' => ':2: no matching `@end ifhtml\'
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'No matching `@end ifhtml\'',
+    'text' => 'no matching `@end ifhtml\'',
     'type' => 'error'
   }
 ];

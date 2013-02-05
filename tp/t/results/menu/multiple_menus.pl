@@ -500,12 +500,12 @@ $result_menus{'multiple_menus'} = {
 
 $result_errors{'multiple_menus'} = [
   {
-    'error_line' => ':7: warning: Multiple @menu
+    'error_line' => ':7: warning: multiple @menu
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Multiple @menu',
+    'text' => 'multiple @menu',
     'type' => 'warning'
   }
 ];

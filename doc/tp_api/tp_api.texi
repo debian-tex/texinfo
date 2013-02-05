@@ -1,17 +1,3 @@
-\input texinfo
-@setfilename tp_api.info
-@documentencoding utf-8
-
-@settitle Texinfo perl module
-
-@shortcontents
-@contents
-
-@ifnottex
-@node Top
-@top Texinfo perl module
-@end ifnottex
-
 @menu
 * Texinfo@asis{::}Common::
 * Texinfo@asis{::}Parser::

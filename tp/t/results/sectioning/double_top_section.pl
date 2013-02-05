@@ -217,12 +217,12 @@ $result_sectioning{'double_top_section'}{'section_childs'}[1]{'toplevel_up'} = $
 
 $result_errors{'double_top_section'} = [
   {
-    'error_line' => ':5: warning: Multiple @top
+    'error_line' => ':5: warning: multiple @top
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Multiple @top',
+    'text' => 'multiple @top',
     'type' => 'warning'
   }
 ];

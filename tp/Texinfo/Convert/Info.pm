@@ -87,7 +87,7 @@ sub output($)
   if (! $self->{'output_file'} eq '') {
     $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
-      $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+      $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
                                     $self->{'output_file'}, $!));
       return undef;
     }
@@ -96,7 +96,8 @@ sub output($)
   my $out_file_nr = 0;
   my @indirect_files;
   if (!defined($elements) or $elements->[0]->{'extra'}->{'no_node'}) {
-    $self->document_warn($self->__("Document without nodes."));
+    $self->file_line_warn($self->__("document without nodes"), 
+                          $self->{'info'}->{'input_file_name'});
     my $output = $header.$self->_convert($root);
     $self->_count_context_bug_message('no element ');
 
@@ -112,7 +113,8 @@ sub output($)
   } else {
     unless ($self->{'structuring'} and $self->{'structuring'}->{'top_node'}
      and $self->{'structuring'}->{'top_node'}->{'extra'}->{'normalized'} eq 'Top') {
-      $self->document_warn($self->__("Document without Top node."));
+      $self->file_line_warn($self->__("document without Top node"),
+                            $self->{'info'}->{'input_file_name'});
     }
     $out_file_nr = 1;
     if ($fh) {
@@ -142,13 +144,13 @@ sub output($)
         if ($out_file_nr == 1) {
           $self->register_close_file($self->{'output_file'});
           if (defined($close_error)) {
-            $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+            $self->document_error(sprintf($self->__("error on closing %s: %s"),
                                   $self->{'output_file'}, $close_error));
             return undef;
           }
           unless (rename ($self->{'output_file'}, 
                           $self->{'output_file'}.'-'.$out_file_nr)) {
-            $self->document_error(sprintf($self->__("Rename %s failed: %s"),
+            $self->document_error(sprintf($self->__("rename %s failed: %s"),
                                          $self->{'output_file'}, $!));
             return undef;
           }
@@ -164,7 +166,7 @@ sub output($)
         } else {
           $self->register_close_file($self->{'output_file'}.'-'.$out_file_nr);
           if (defined($close_error)) {
-            $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+            $self->document_error(sprintf($self->__("error on closing %s: %s"),
                                   $self->{'output_file'}.'-'.$out_file_nr, 
                                   $close_error));
             return undef;
@@ -175,7 +177,7 @@ sub output($)
                                $self->{'output_file'}.'-'.$out_file_nr); 
         if (!$fh) {
            $self->document_error(sprintf(
-                  $self->__("Could not open %s for writing: %s"),
+                  $self->__("could not open %s for writing: %s"),
                   $self->{'output_file'}.'-'.$out_file_nr, $!));
            return undef;
         }
@@ -191,14 +193,14 @@ sub output($)
   if ($out_file_nr > 1) {
     $self->register_close_file($self->{'output_file'}.'-'.$out_file_nr);
     if (!close ($fh)) {
-      $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+      $self->document_error(sprintf($self->__("error on closing %s: %s"),
                             $self->{'output_file'}.'-'.$out_file_nr, $!));
       return undef;
     }
     $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
       $self->document_error(sprintf(
-            $self->__("Could not open %s for writing: %s"),
+            $self->__("could not open %s for writing: %s"),
             $self->{'output_file'}, $!));
       return undef;
     }
@@ -254,7 +256,7 @@ sub output($)
     unless ($self->{'output_file'} eq '-') {
       $self->register_close_file($self->{'output_file'});
       if (!close ($fh)) {
-        $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+        $self->document_error(sprintf($self->__("error on closing %s: %s"),
                               $self->{'output_file'}, $!));
       }
     }
@@ -275,7 +277,11 @@ sub _info_header($)
   $result .= $paragraph->add_next($self->{'output_filename'});
   my $program = $self->get_conf('PROGRAM');
   my $version = $self->get_conf('PACKAGE_VERSION');
-  $result .= $paragraph->add_text(", produced by $program version $version from ");
+  if (defined($program) and $program ne '') {
+    $result .= $paragraph->add_text(", produced by $program version $version from ");
+  } else {
+    $result .= $paragraph->add_text(", produced from ");
+  }
   $result .= $paragraph->add_next($self->{'input_basename'});
   $result .= $paragraph->add_text('.');
   $result .= $paragraph->end();

@@ -411,7 +411,7 @@ $result_errors{'pxref_test'} = [];
 
 
 
-$result_converted{'info'}->{'pxref_test'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'pxref_test'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -421,7 +421,7 @@ end.  *note (m) n::.  *note name: (m) n.
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

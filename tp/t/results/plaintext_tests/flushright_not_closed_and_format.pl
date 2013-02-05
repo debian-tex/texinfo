@@ -165,12 +165,12 @@ A quot--ation
 
 $result_errors{'flushright_not_closed_and_format'} = [
   {
-    'error_line' => ':6: No matching `@end flushright\'
+    'error_line' => ':6: no matching `@end flushright\'
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'No matching `@end flushright\'',
+    'text' => 'no matching `@end flushright\'',
     'type' => 'error'
   }
 ];

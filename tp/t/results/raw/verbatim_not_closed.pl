@@ -91,12 +91,12 @@ some verbatim @
 
 $result_errors{'verbatim_not_closed'} = [
   {
-    'error_line' => ':6: No matching `@end verbatim\'
+    'error_line' => ':6: no matching `@end verbatim\'
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'No matching `@end verbatim\'',
+    'text' => 'no matching `@end verbatim\'',
     'type' => 'error'
   }
 ];

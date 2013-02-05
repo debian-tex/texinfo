@@ -151,48 +151,48 @@ macro_arg1
 
 $result_errors{'value_in_macro_formal_arg'} = [
   {
-    'error_line' => ':3: Bad syntax for @macro argument: }
+    'error_line' => ':3: bad syntax for @macro argument: }
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Bad syntax for @macro argument: }',
+    'text' => 'bad syntax for @macro argument: }',
     'type' => 'error'
   },
   {
-    'error_line' => ':3: Bad or empty @macro formal argument: the@value{argument
+    'error_line' => ':3: bad or empty @macro formal argument: the@value{argument
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Bad or empty @macro formal argument: the@value{argument',
+    'text' => 'bad or empty @macro formal argument: the@value{argument',
     'type' => 'error'
   },
   {
-    'error_line' => ':7: Unknown command `testvalue\'
+    'error_line' => ':7: unknown command `testvalue\'
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Unknown command `testvalue\'',
+    'text' => 'unknown command `testvalue\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':7: Misplaced {
+    'error_line' => ':7: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':7: Misplaced }
+    'error_line' => ':7: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   }
 ];

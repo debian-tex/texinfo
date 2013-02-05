@@ -185,12 +185,12 @@ $result_sectioning{'chapter_before_part'}{'section_childs'}[1]{'section_up'} = $
 
 $result_errors{'chapter_before_part'} = [
   {
-    'error_line' => ':3: warning: No sectioning command associated with @part
+    'error_line' => ':3: warning: no sectioning command associated with @part
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'No sectioning command associated with @part',
+    'text' => 'no sectioning command associated with @part',
     'type' => 'warning'
   }
 ];
@@ -263,7 +263,6 @@ $result_converted{'html'}->{'chapter_before_part'} = '<!DOCTYPE html PUBLIC "-//
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
@@ -314,9 +313,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'chapter_before_part'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

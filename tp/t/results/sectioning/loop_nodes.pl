@@ -1054,12 +1054,12 @@ $result_menus{'loop_nodes'}{'menu_child'}{'menu_up'} = $result_menus{'loop_nodes
 
 $result_errors{'loop_nodes'} = [
   {
-    'error_line' => ':21: Node `node down\' lacks menu item for `node up\' despite being its Up target
+    'error_line' => ':21: node `node down\' lacks menu item for `node up\' despite being its Up target
 ',
     'file_name' => '',
     'line_nr' => 21,
     'macro' => '',
-    'text' => 'Node `node down\' lacks menu item for `node up\' despite being its Up target',
+    'text' => 'node `node down\' lacks menu item for `node up\' despite being its Up target',
     'type' => 'error'
   }
 ];

@@ -391,18 +391,18 @@ In included file.
 $result_converted_errors{'plaintext'}->{'verbatiminclude_paths'} = [
   {
     'file_name' => '',
-    'error_line' => ':8: @verbatiminclude: Cannot find ../include_dir/inc_file.texi
+    'error_line' => ':8: @verbatiminclude: could not find ../include_dir/inc_file.texi
 ',
-    'text' => '@verbatiminclude: Cannot find ../include_dir/inc_file.texi',
+    'text' => '@verbatiminclude: could not find ../include_dir/inc_file.texi',
     'type' => 'error',
     'macro' => '',
     'line_nr' => 8
   },
   {
     'file_name' => '',
-    'error_line' => ':11: @verbatiminclude: Cannot find ./tp/t/include_dir/inc_file.texi
+    'error_line' => ':11: @verbatiminclude: could not find ./tp/t/include_dir/inc_file.texi
 ',
-    'text' => '@verbatiminclude: Cannot find ./tp/t/include_dir/inc_file.texi',
+    'text' => '@verbatiminclude: could not find ./tp/t/include_dir/inc_file.texi',
     'type' => 'error',
     'macro' => '',
     'line_nr' => 11
@@ -426,18 +426,18 @@ $result_converted{'html_text'}->{'verbatiminclude_paths'} = '
 $result_converted_errors{'html_text'}->{'verbatiminclude_paths'} = [
   {
     'file_name' => '',
-    'error_line' => ':8: @verbatiminclude: Cannot find ../include_dir/inc_file.texi
+    'error_line' => ':8: @verbatiminclude: could not find ../include_dir/inc_file.texi
 ',
-    'text' => '@verbatiminclude: Cannot find ../include_dir/inc_file.texi',
+    'text' => '@verbatiminclude: could not find ../include_dir/inc_file.texi',
     'type' => 'error',
     'macro' => '',
     'line_nr' => 8
   },
   {
     'file_name' => '',
-    'error_line' => ':11: @verbatiminclude: Cannot find ./tp/t/include_dir/inc_file.texi
+    'error_line' => ':11: @verbatiminclude: could not find ./tp/t/include_dir/inc_file.texi
 ',
-    'text' => '@verbatiminclude: Cannot find ./tp/t/include_dir/inc_file.texi',
+    'text' => '@verbatiminclude: could not find ./tp/t/include_dir/inc_file.texi',
     'type' => 'error',
     'macro' => '',
     'line_nr' => 11
@@ -482,18 +482,18 @@ $result_converted{'docbook'}->{'verbatiminclude_paths'} = '
 $result_converted_errors{'docbook'}->{'verbatiminclude_paths'} = [
   {
     'file_name' => '',
-    'error_line' => ':8: @verbatiminclude: Cannot find ../include_dir/inc_file.texi
+    'error_line' => ':8: @verbatiminclude: could not find ../include_dir/inc_file.texi
 ',
-    'text' => '@verbatiminclude: Cannot find ../include_dir/inc_file.texi',
+    'text' => '@verbatiminclude: could not find ../include_dir/inc_file.texi',
     'type' => 'error',
     'macro' => '',
     'line_nr' => 8
   },
   {
     'file_name' => '',
-    'error_line' => ':11: @verbatiminclude: Cannot find ./tp/t/include_dir/inc_file.texi
+    'error_line' => ':11: @verbatiminclude: could not find ./tp/t/include_dir/inc_file.texi
 ',
-    'text' => '@verbatiminclude: Cannot find ./tp/t/include_dir/inc_file.texi',
+    'text' => '@verbatiminclude: could not find ./tp/t/include_dir/inc_file.texi',
     'type' => 'error',
     'macro' => '',
     'line_nr' => 11

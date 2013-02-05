@@ -1941,66 +1941,66 @@ $result_menus{'def_syn_indices'} = {
 
 $result_errors{'def_syn_indices'} = [
   {
-    'error_line' => ':39: warning: Printing an index `ky\' merged in another one `pg\'
+    'error_line' => ':39: warning: printing an index `ky\' merged in another one `pg\'
 ',
     'file_name' => '',
     'line_nr' => 39,
     'macro' => '',
-    'text' => 'Printing an index `ky\' merged in another one `pg\'',
+    'text' => 'printing an index `ky\' merged in another one `pg\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':42: warning: Printing an index `truc\' merged in another one `fn\'
+    'error_line' => ':42: warning: printing an index `truc\' merged in another one `fn\'
 ',
     'file_name' => '',
     'line_nr' => 42,
     'macro' => '',
-    'text' => 'Printing an index `truc\' merged in another one `fn\'',
+    'text' => 'printing an index `truc\' merged in another one `fn\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':45: warning: Printing an index `truc\' merged in another one `fn\'
+    'error_line' => ':45: warning: printing an index `truc\' merged in another one `fn\'
 ',
     'file_name' => '',
     'line_nr' => 45,
     'macro' => '',
-    'text' => 'Printing an index `truc\' merged in another one `fn\'',
+    'text' => 'printing an index `truc\' merged in another one `fn\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':48: warning: Printing an index `cp\' merged in another one `fn\'
+    'error_line' => ':48: warning: printing an index `cp\' merged in another one `fn\'
 ',
     'file_name' => '',
     'line_nr' => 48,
     'macro' => '',
-    'text' => 'Printing an index `cp\' merged in another one `fn\'',
+    'text' => 'printing an index `cp\' merged in another one `fn\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':51: warning: Printing an index `cp\' merged in another one `fn\'
+    'error_line' => ':51: warning: printing an index `cp\' merged in another one `fn\'
 ',
     'file_name' => '',
     'line_nr' => 51,
     'macro' => '',
-    'text' => 'Printing an index `cp\' merged in another one `fn\'',
+    'text' => 'printing an index `cp\' merged in another one `fn\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':54: warning: Printing an index `defg\' merged in another one `pg\'
+    'error_line' => ':54: warning: printing an index `defg\' merged in another one `pg\'
 ',
     'file_name' => '',
     'line_nr' => 54,
     'macro' => '',
-    'text' => 'Printing an index `defg\' merged in another one `pg\'',
+    'text' => 'printing an index `defg\' merged in another one `pg\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':57: warning: Printing an index `abc\' merged in another one `defg\'
+    'error_line' => ':57: warning: printing an index `abc\' merged in another one `defg\'
 ',
     'file_name' => '',
     'line_nr' => 57,
     'macro' => '',
-    'text' => 'Printing an index `abc\' merged in another one `defg\'',
+    'text' => 'printing an index `abc\' merged in another one `defg\'',
     'type' => 'warning'
   }
 ];
@@ -2137,7 +2137,7 @@ $result_indices{'def_syn_indices'} = {
 
 
 
-$result_converted{'info'}->{'def_syn_indices'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'def_syn_indices'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -2179,7 +2179,7 @@ definedx truc after
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

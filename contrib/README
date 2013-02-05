@@ -1,4 +1,4 @@
-$Id: README,v 1.1 2013/01/02 01:00:12 karl Exp $
+$Id: README,v 1.2 2013/02/04 01:35:10 karl Exp $
 texinfo/contrib/README
 
   Copyright 2013 Free Software Foundation, Inc.
@@ -24,3 +24,7 @@ version of the original texinfo.tex on which Torsten's file was based.)
 Adapting one of these to actually be installable would doubtless be much
 simpler (which is not to say simple) than finalizing texifont/, though
 of course much less featureful.
+
+The perldoc-all subdirectory is about making Texinfo out of the standard
+Perl *.pod files.  The results are at
+http://www.gnu.org/software/perl/manual.

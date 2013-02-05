@@ -219,7 +219,7 @@ $result_errors{'file_only_png'} = [];
 
 
 
-$result_converted{'info'}->{'file_only_png'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'file_only_png'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -229,7 +229,7 @@ text.
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

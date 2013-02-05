@@ -100,12 +100,12 @@ $result_errors{'text_before_after'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: Superfluous argument to @end macro:  after
+    'error_line' => ':3: warning: superfluous argument to @end macro:  after
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Superfluous argument to @end macro:  after',
+    'text' => 'superfluous argument to @end macro:  after',
     'type' => 'warning'
   }
 ];

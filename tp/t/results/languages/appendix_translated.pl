@@ -367,7 +367,7 @@ Appendice A dernier
 ';
 
 
-$result_converted{'info'}->{'appendix_translated'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'appendix_translated'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -381,7 +381,7 @@ Appendice A dernier
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';
@@ -397,7 +397,6 @@ $result_converted{'html'}->{'appendix_translated'} = '<!DOCTYPE html PUBLIC "-//
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <link href="#SEC_Contents" rel="contents" title="Table des mati&egrave;res">

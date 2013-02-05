@@ -291,7 +291,7 @@ $result_directions_text{'unnumbered_before_top_node'} = 'element: @unnumbered be
 ';
 
 
-$result_converted{'info'}->{'unnumbered_before_top_node'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'unnumbered_before_top_node'} = 'This is , produced from .
 
 before nodes
 ************
@@ -306,7 +306,7 @@ Title titlefont
 
 
 Tag Table:
-Node: Top68
+Node: Top54
 
 End Tag Table
 ';
@@ -322,7 +322,6 @@ $result_converted{'html'}->{'unnumbered_before_top_node'} = '<!DOCTYPE html PUBL
 <meta name="keywords" content="Title titlefont">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

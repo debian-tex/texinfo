@@ -946,12 +946,12 @@ $result_menus{'spaces_in_empty_node_names'} = {
 
 $result_errors{'spaces_in_empty_node_names'} = [
   {
-    'error_line' => ':9: Empty node name after expansion `@ @ \'
+    'error_line' => ':9: empty node name after expansion `@ @ \'
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'Empty node name after expansion `@ @ \'',
+    'text' => 'empty node name after expansion `@ @ \'',
     'type' => 'error'
   },
   {
@@ -964,21 +964,21 @@ $result_errors{'spaces_in_empty_node_names'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':11: Empty node name after expansion `@verb{:  :}\'
+    'error_line' => ':11: empty node name after expansion `@verb{:  :}\'
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'Empty node name after expansion `@verb{:  :}\'',
+    'text' => 'empty node name after expansion `@verb{:  :}\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':13: Empty node name after expansion `@w{  }\'
+    'error_line' => ':13: empty node name after expansion `@w{  }\'
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => 'Empty node name after expansion `@w{  }\'',
+    'text' => 'empty node name after expansion `@w{  }\'',
     'type' => 'error'
   },
   {
@@ -1018,30 +1018,30 @@ $result_errors{'spaces_in_empty_node_names'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':4: Menu reference to nonexistent node `@ @ \'
+    'error_line' => ':4: menu reference to nonexistent node `@ @ \'
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Menu reference to nonexistent node `@ @ \'',
+    'text' => 'menu reference to nonexistent node `@ @ \'',
     'type' => 'error'
   },
   {
-    'error_line' => ':5: Menu reference to nonexistent node `@verb{:  :}\'
+    'error_line' => ':5: menu reference to nonexistent node `@verb{:  :}\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Menu reference to nonexistent node `@verb{:  :}\'',
+    'text' => 'menu reference to nonexistent node `@verb{:  :}\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':6: Menu reference to nonexistent node `@ \'
+    'error_line' => ':6: menu reference to nonexistent node `@ \'
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Menu reference to nonexistent node `@ \'',
+    'text' => 'menu reference to nonexistent node `@ \'',
     'type' => 'error'
   }
 ];
@@ -1135,7 +1135,7 @@ $result_converted{'docbook'}->{'spaces_in_empty_node_names'} = '<anchor id="Top"
 </para>';
 
 
-$result_converted{'info'}->{'spaces_in_empty_node_names'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'spaces_in_empty_node_names'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -1154,7 +1154,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

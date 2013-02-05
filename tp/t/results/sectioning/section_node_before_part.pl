@@ -272,28 +272,28 @@ $result_menus{'section_node_before_part'} = {
 
 $result_errors{'section_node_before_part'} = [
   {
-    'error_line' => ':5: warning: No chapter-level command before @part
+    'error_line' => ':5: warning: no chapter-level command before @part
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'No chapter-level command before @part',
+    'text' => 'no chapter-level command before @part',
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: No sectioning command associated with @part
+    'error_line' => ':5: warning: no sectioning command associated with @part
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'No sectioning command associated with @part',
+    'text' => 'no sectioning command associated with @part',
     'type' => 'warning'
   }
 ];
 
 
 
-$result_converted{'info'}->{'section_node_before_part'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'section_node_before_part'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -304,7 +304,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';
@@ -320,7 +320,6 @@ $result_converted{'html'}->{'section_node_before_part'} = '<!DOCTYPE html PUBLIC
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -374,9 +373,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'section_node_before_part'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

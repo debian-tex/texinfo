@@ -120,12 +120,12 @@ $result_texts{'macro_in_invalid_documentencoding'} = '';
 
 $result_errors{'macro_in_invalid_documentencoding'} = [
   {
-    'error_line' => ':4: warning: Encoding `badm\' is not a canonical texinfo encoding
+    'error_line' => ':4: warning: encoding `badm\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Encoding `badm\' is not a canonical texinfo encoding',
+    'text' => 'encoding `badm\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {

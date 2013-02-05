@@ -362,12 +362,12 @@ $result_errors{'menu_in_style_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':7: Misplaced }
+    'error_line' => ':7: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   }
 ];

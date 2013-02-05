@@ -835,12 +835,12 @@ $result_menus{'node'} = {
 
 $result_errors{'node'} = [
   {
-    'error_line' => ':6: warning: Superfluous arguments for node
+    'error_line' => ':6: warning: superfluous arguments for node
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Superfluous arguments for node',
+    'text' => 'superfluous arguments for node',
     'type' => 'warning'
   },
   {

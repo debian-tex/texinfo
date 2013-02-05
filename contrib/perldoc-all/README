@@ -1,0 +1,17 @@
+$Id: README,v 1.1 2013/02/04 01:35:11 karl Exp $
+texinfo/contrib/perldoc-all/README
+
+  Copyright 2013 Free Software Foundation, Inc.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+This stuff is about making Texinfo out of the standard Perl *.pod files.
+The results are at http://www.gnu.org/software/perl/manual.
+
+The idea is to download the perl distribution here, as in,
+  wget http://www.cpan.org/src/5.0/perl-5.16.2.tar.gz
+and run (GNU) make.  Aside from the result hopefully being useful in
+itself, it also serves as a nontrivial example of using pod2texi.
+

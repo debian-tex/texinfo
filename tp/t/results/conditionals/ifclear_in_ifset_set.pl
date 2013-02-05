@@ -179,39 +179,39 @@ $result_texts{'ifclear_in_ifset_set'} = '
 
 $result_errors{'ifclear_in_ifset_set'} = [
   {
-    'error_line' => ':6: warning: Unknown @end junky
+    'error_line' => ':6: warning: unknown @end junky
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Unknown @end junky',
+    'text' => 'unknown @end junky',
     'type' => 'warning'
   },
   {
-    'error_line' => ':7: Unmatched `@end\'
+    'error_line' => ':7: unmatched `@end\'
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Unmatched `@end\'',
+    'text' => 'unmatched `@end\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':8: Expected @end ifclear
+    'error_line' => ':8: expected @end ifclear
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'Expected @end ifclear',
+    'text' => 'expected @end ifclear',
     'type' => 'error'
   },
   {
-    'error_line' => ':8: Expected @end ifset
+    'error_line' => ':8: expected @end ifset
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'Expected @end ifset',
+    'text' => 'expected @end ifset',
     'type' => 'error'
   }
 ];

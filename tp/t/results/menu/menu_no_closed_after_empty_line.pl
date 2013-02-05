@@ -167,12 +167,12 @@ $result_errors{'menu_no_closed_after_empty_line'} = [
     'type' => 'error continuation'
   },
   {
-    'error_line' => ':4: No matching `@end menu\'
+    'error_line' => ':4: no matching `@end menu\'
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'No matching `@end menu\'',
+    'text' => 'no matching `@end menu\'',
     'type' => 'error'
   }
 ];

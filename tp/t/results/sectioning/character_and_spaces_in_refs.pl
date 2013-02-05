@@ -2189,7 +2189,7 @@ $result_errors{'character_and_spaces_in_refs'} = [];
 
 
 
-$result_converted{'info'}->{'character_and_spaces_in_refs'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'character_and_spaces_in_refs'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: other nodes,  Up: (dir)
@@ -2237,11 +2237,11 @@ File: ,  Node: local node,  Prev: /;<=>?[\\]^_`|~,  Up: other nodes
 
 
 Tag Table:
-Node: Top41
-Node: other nodes435
-Node: !_"#$%&\'()*+-.616
-Node: /;<=>?[\\]^_`|~710
-Node: local node803
+Node: Top27
+Node: other nodes421
+Node: !_"#$%&\'()*+-.602
+Node: /;<=>?[\\]^_`|~696
+Node: local node789
 
 End Tag Table
 ';
@@ -2257,7 +2257,6 @@ $result_converted{'html'}->{'character_and_spaces_in_refs'} = '<!DOCTYPE html PU
 <meta name="keywords" content="Test refs">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

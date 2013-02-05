@@ -890,73 +890,73 @@ $result_menus{'section_chapter_before_top_nodes'}{'menu_child'}{'menu_up'} = $re
 
 $result_errors{'section_chapter_before_top_nodes'} = [
   {
-    'error_line' => ':5: Lowering the section level of @chapter appearing after a lower element
+    'error_line' => ':5: lowering the section level of @chapter appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Lowering the section level of @chapter appearing after a lower element',
+    'text' => 'lowering the section level of @chapter appearing after a lower element',
     'type' => 'error'
   },
   {
-    'error_line' => ':12: Lowering the section level of @top appearing after a lower element
+    'error_line' => ':12: lowering the section level of @top appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 12,
     'macro' => '',
-    'text' => 'Lowering the section level of @top appearing after a lower element',
+    'text' => 'lowering the section level of @top appearing after a lower element',
     'type' => 'error'
   },
   {
-    'error_line' => ':1: warning: Node `chapter node\' is next for `section node\' in sectioning but not in menu
+    'error_line' => ':1: warning: node `chapter node\' is next for `section node\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Node `chapter node\' is next for `section node\' in sectioning but not in menu',
+    'text' => 'node `chapter node\' is next for `section node\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: Node `chapter node\' is up for `section node\' in menu but not in sectioning
+    'error_line' => ':1: warning: node `chapter node\' is up for `section node\' in menu but not in sectioning
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Node `chapter node\' is up for `section node\' in menu but not in sectioning',
+    'text' => 'node `chapter node\' is up for `section node\' in menu but not in sectioning',
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: Node `Top\' is next for `chapter node\' in sectioning but not in menu
+    'error_line' => ':4: warning: node `Top\' is next for `chapter node\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Node `Top\' is next for `chapter node\' in sectioning but not in menu',
+    'text' => 'node `Top\' is next for `chapter node\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: Node `section node\' is prev for `chapter node\' in sectioning but not in menu
+    'error_line' => ':4: warning: node `section node\' is prev for `chapter node\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Node `section node\' is prev for `chapter node\' in sectioning but not in menu',
+    'text' => 'node `section node\' is prev for `chapter node\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: Node `Top\' is up for `chapter node\' in menu but not in sectioning
+    'error_line' => ':4: warning: node `Top\' is up for `chapter node\' in menu but not in sectioning
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Node `Top\' is up for `chapter node\' in menu but not in sectioning',
+    'text' => 'node `Top\' is up for `chapter node\' in menu but not in sectioning',
     'type' => 'warning'
   }
 ];
 
 
 
-$result_converted{'info'}->{'section_chapter_before_top_nodes'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'section_chapter_before_top_nodes'} = 'This is , produced from .
 
 
 File: ,  Node: section node,  Next: chapter node,  Up: chapter node
@@ -987,9 +987,9 @@ top
 
 
 Tag Table:
-Node: section node41
-Node: chapter node133
-Node: Top246
+Node: section node27
+Node: chapter node119
+Node: Top232
 
 End Tag Table
 ';
@@ -1005,7 +1005,6 @@ $result_converted{'html'}->{'section_chapter_before_top_nodes'} = '<!DOCTYPE htm
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

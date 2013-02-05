@@ -354,19 +354,19 @@ $result_menus{'empty_index_entry'} = {
 
 $result_errors{'empty_index_entry'} = [
   {
-    'error_line' => ':3: warning: Missing name for @deffn
+    'error_line' => ':3: warning: missing name for @deffn
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Missing name for @deffn',
+    'text' => 'missing name for @deffn',
     'type' => 'warning'
   }
 ];
 
 
 
-$result_converted{'info'}->{'empty_index_entry'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'empty_index_entry'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -376,7 +376,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

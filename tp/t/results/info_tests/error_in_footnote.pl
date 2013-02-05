@@ -680,7 +680,7 @@ $result_floats{'error_in_footnote'}{'Text'}[0]{'extra'}{'end_command'}{'extra'}{
 
 
 
-$result_converted{'info'}->{'error_in_footnote'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'error_in_footnote'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -704,9 +704,9 @@ Text 1: Caption.  TeX.  In caption *note caption*.  Now footnote(1)
 
 
 Tag Table:
-Node: Top41
-Ref: label75
-Ref: Top-Footnote-1357
+Node: Top27
+Ref: label61
+Ref: Top-Footnote-1343
 
 End Tag Table
 ';

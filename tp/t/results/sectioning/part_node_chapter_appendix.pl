@@ -887,7 +887,7 @@ element: @appendix Appendix
 ';
 
 
-$result_converted{'info'}->{'part_node_chapter_appendix'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'part_node_chapter_appendix'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: chapter node,  Up: (dir)
@@ -911,8 +911,8 @@ Appendix A Appendix
 
 
 Tag Table:
-Node: Top41
-Node: chapter node132
+Node: Top27
+Node: chapter node118
 
 End Tag Table
 ';
@@ -928,7 +928,6 @@ $result_converted{'html'}->{'part_node_chapter_appendix'} = '<!DOCTYPE html PUBL
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

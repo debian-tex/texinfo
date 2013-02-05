@@ -311,12 +311,12 @@ $result_sectioning{'section_in_math'}{'section_childs'}[1]{'toplevel_prev'} = $r
 
 $result_errors{'section_in_math'} = [
   {
-    'error_line' => ':2: Misplaced {
+    'error_line' => ':2: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {

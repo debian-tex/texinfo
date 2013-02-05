@@ -1,3 +1,50 @@
+2013-02-04  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.13.95.
+
+	* contrib/perldoc-all/GNUmakefile (distclean): new target.
+	* Makefile.am (dist-hook): use it.
+
+2013-02-03  Karl Berry  <karl@gnu.org>
+
+	* contrib/perldoc-all: example making Texinfo from Perl's *.pod.
+	* util/dir-example (Perl): add it.
+	* util/gendocs.sh: add --source, --common, --split --no-ascii.
+	Prettify output.
+	* doc/Makefile.am (gendocs): use the version from our
+	source hierarchy, since it's maintained here.
+
+	* Pod-Simple-Texinfo/pod2texi.pl (preamble): null if making
+	@include files.  More doc.
+	* doc/texinfo.txi (Invoking pod2texi): new node.
+
+2013-02-03  Karl Berry  <karl@gnu.org>
+
+	* tp/Makefile.am: doc fix.
+	* tp/maintain/regenerate_docstr.sh: do not depend on directories
+	with their unpredictable timestamps.
+	* tp/maintain/regenerate_file_lists.pl: copyright year update.
+
+	* po_document/pl.po: new translation.
+	* po_document/LINGUAS: add it.
+
+2013-02-01  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (@normalturnoffactive): also reset -, so
+	@code{@xref{-}} works.
+	(\normaldash): rename from \realdash, for consistency.
+	Change all uses.
+
+2013-01-29  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (HTML Customization Files) <TOC_FILE>: is no more.
+
+2013-01-29  Patrice Dumas  <pertusus@free.fr>
+
+	* po/POTFILES.in, tp/init/latex2html.pm: mark translations
+	for error messages in latex2html.pm, and add file to 
+	po/POTFILES.in.
+
 2013-01-28  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.13.95.

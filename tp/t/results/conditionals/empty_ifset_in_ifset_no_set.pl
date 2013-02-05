@@ -27,12 +27,12 @@ $result_texts{'empty_ifset_in_ifset_no_set'} = '
 
 $result_errors{'empty_ifset_in_ifset_no_set'} = [
   {
-    'error_line' => ':6: No matching `@end ifset\'
+    'error_line' => ':6: no matching `@end ifset\'
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'No matching `@end ifset\'',
+    'text' => 'no matching `@end ifset\'',
     'type' => 'error'
   }
 ];

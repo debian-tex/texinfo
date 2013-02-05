@@ -56,21 +56,21 @@ $result_texts{'unknown_synindex'} = '';
 
 $result_errors{'unknown_synindex'} = [
   {
-    'error_line' => ':1: Unknown source index in @synindex: c
+    'error_line' => ':1: unknown source index in @synindex: c
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Unknown source index in @synindex: c',
+    'text' => 'unknown source index in @synindex: c',
     'type' => 'error'
   },
   {
-    'error_line' => ':1: Unknown destination index in @synindex: truc
+    'error_line' => ':1: unknown destination index in @synindex: truc
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Unknown destination index in @synindex: truc',
+    'text' => 'unknown destination index in @synindex: truc',
     'type' => 'error'
   }
 ];

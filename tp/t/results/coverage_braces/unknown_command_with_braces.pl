@@ -153,84 +153,84 @@ third
 
 $result_errors{'unknown_command_with_braces'} = [
   {
-    'error_line' => ':1: Unknown command `thing\'
+    'error_line' => ':1: unknown command `thing\'
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Unknown command `thing\'',
+    'text' => 'unknown command `thing\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':1: Misplaced {
+    'error_line' => ':1: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':1: Misplaced }
+    'error_line' => ':1: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
-    'error_line' => ':3: Unknown command `unknown\'
+    'error_line' => ':3: unknown command `unknown\'
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Unknown command `unknown\'',
+    'text' => 'unknown command `unknown\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':3: Misplaced {
+    'error_line' => ':3: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':5: Misplaced }
+    'error_line' => ':5: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   },
   {
-    'error_line' => ':7: Unknown command `unknown2\'
+    'error_line' => ':7: unknown command `unknown2\'
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Unknown command `unknown2\'',
+    'text' => 'unknown command `unknown2\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':7: Misplaced {
+    'error_line' => ':7: misplaced {
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Misplaced {',
+    'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':11: Misplaced }
+    'error_line' => ':11: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'Misplaced }',
+    'text' => 'misplaced }',
     'type' => 'error'
   }
 ];

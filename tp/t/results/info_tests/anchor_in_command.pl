@@ -302,7 +302,7 @@ $result_errors{'anchor_in_command'} = [];
 
 
 
-$result_converted{'info'}->{'anchor_in_command'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'anchor_in_command'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -311,8 +311,8 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
-Ref: anchor in emph111
+Node: Top27
+Ref: anchor in emph97
 
 End Tag Table
 ';

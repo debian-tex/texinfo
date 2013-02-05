@@ -145,30 +145,30 @@ category2: deffn_name2 arguments2
 
 $result_errors{'end_of_line_protect_at_end'} = [
   {
-    'error_line' => ':2: Unexpected @
+    'error_line' => ':2: unexpected @
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Unexpected @',
+    'text' => 'unexpected @',
     'type' => 'error'
   },
   {
-    'error_line' => ':2: warning: Entry for index `fn\' outside of any node
+    'error_line' => ':2: warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => ':2: No matching `@end deffn\'
+    'error_line' => ':2: no matching `@end deffn\'
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'No matching `@end deffn\'',
+    'text' => 'no matching `@end deffn\'',
     'type' => 'error'
   }
 ];

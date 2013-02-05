@@ -739,7 +739,7 @@ $result_errors{'space_in_node'} = [];
 
 
 
-$result_converted{'info'}->{'space_in_node'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'space_in_node'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: Chap first here,  Up: (dir)
@@ -762,10 +762,10 @@ File: ,  Node: Last with spaces,  Prev: Test title,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: Chap first here192
-Node: Test title267
-Node: Last with spaces355
+Node: Top27
+Node: Chap first here178
+Node: Test title253
+Node: Last with spaces341
 
 End Tag Table
 ';
@@ -781,7 +781,6 @@ $result_converted{'html'}->{'space_in_node'} = '<!DOCTYPE html PUBLIC "-//W3C//D
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -867,9 +866,9 @@ Previous: <a href="#Test-title" accesskey="p" rel="previous">Test               
 
 $result_converted_errors{'html'}->{'space_in_node'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

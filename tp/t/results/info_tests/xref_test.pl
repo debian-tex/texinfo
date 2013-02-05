@@ -481,7 +481,7 @@ $result_errors{'xref_test'} = [];
 
 
 
-$result_converted{'info'}->{'xref_test'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'xref_test'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -492,7 +492,7 @@ xref and dot inside.  *Note (m)in ref followed by symbol::.# g.
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

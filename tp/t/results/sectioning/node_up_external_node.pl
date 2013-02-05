@@ -502,12 +502,12 @@ $result_menus{'node_up_external_node'}{'menu_child'}{'menu_up'} = $result_menus{
 
 $result_errors{'node_up_external_node'} = [
   {
-    'error_line' => ':7: warning: For `first\', up in menu `Top\' and up `(manual3)\' don\'t match
+    'error_line' => ':7: warning: for `first\', up in menu `Top\' and up `(manual3)\' don\'t match
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'For `first\', up in menu `Top\' and up `(manual3)\' don\'t match',
+    'text' => 'for `first\', up in menu `Top\' and up `(manual3)\' don\'t match',
     'type' => 'warning'
   }
 ];
@@ -648,7 +648,6 @@ $result_converted{'html'}->{'node_up_external_node'} = '<!DOCTYPE html PUBLIC "-
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
@@ -713,9 +712,9 @@ Next: <a href="manual1.html#Top" accesskey="n" rel="next">(manual1)</a>, Previou
 
 $result_converted_errors{'html'}->{'node_up_external_node'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

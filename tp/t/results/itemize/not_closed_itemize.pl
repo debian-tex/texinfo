@@ -58,12 +58,12 @@ $result_texts{'not_closed_itemize'} = '';
 
 $result_errors{'not_closed_itemize'} = [
   {
-    'error_line' => ':1: No matching `@end itemize\'
+    'error_line' => ':1: no matching `@end itemize\'
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'No matching `@end itemize\'',
+    'text' => 'no matching `@end itemize\'',
     'type' => 'error'
   }
 ];

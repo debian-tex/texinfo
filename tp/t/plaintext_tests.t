@@ -1,5 +1,8 @@
 use strict;
 
+use File::Spec;
+BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} }
+
 require 't/test_utils.pl';
 
 my @test_cases = (
@@ -592,6 +595,27 @@ T
 @tab in tab
 @item in item
 @end example
+'],
+# if this test is modified, the corresponding test in t/info_tests.t should
+# be changed too
+['multiline_image_and_align',
+'@center @image{figure}
+
+@center CCCC @image{figure} 
+
+@center fffffffffffffffffffffffffffffffffffffff @image{figure}
+
+@center dddd @image{figure} iiiii
+
+@flushright
+AAA
+@image{figure}
+
+BBB @image{figure} gggg @image{figure}
+
+HHH
+@image{figure} JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+@end flushright
 '],
 );
 

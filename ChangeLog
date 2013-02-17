@@ -1,6 +1,51 @@
+2013-02-16  Karl Berry  <karl@gnu.org>
+
+	* Version 5.0.
+	
+	* doc/texinfo.txi: remove zyx placeholder.
+
+2013-02-13  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* info/window.c (window_make_window): Initialize allocated
+	memory.
+	(string_to_node): Likewise.
+	* info/filesys.c (filesys_read_info_file): Always terminate
+	the contents with 0.
+	Fix 700354@bugs.debian.org.
+
+2013-02-12  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.13.97.
+
+2013-02-10  Karl Berry  <karl@gnu.org>
+
+	* info/tag.c (tag_found_keyword): new fn, including a check
+	for the text buffer being realloc-ed, invalidating kw.  Sigh.
+	(tag_image): call it (twice).
+
+2013-02-10  Patrice Dumas  <pertusus@free.fr>
+
+	* autogen.sh, tp/maintain/regenerate_cmd_tests.sh, tp/tests/*:
+	Generate automatically test file scripts for each test in 
+	tp/tests/*.
+	* tp/Makefile.am: run directly tap tests in Makefile.am.
+
+2013-02-09  Patrice Dumas  <pertusus@free.fr>
+
+	* configure.ac, tp/Makefile.am, tp/maintain/regenerate_file_lists.pl:
+	prepare for running directly tap tests in Makefile.am.
+
+2013-02-07  Karl Berry  <karl@gnu.org>
+
+	* contrib/booklet.mak: new contribution from John Darrington.
+
+	* Pod-Simple-Texinfo/pod2texi.pl (preamble): back to inserting
+	the default.
+	* contrib/perldoc-all/GNUmakefile (pod2texi_args): omit it.
+
 2013-02-04  Karl Berry  <karl@gnu.org>
 
-	* pretest 4.13.95.
+	* pretest 4.13.96.
 
 	* contrib/perldoc-all/GNUmakefile (distclean): new target.
 	* Makefile.am (dist-hook): use it.

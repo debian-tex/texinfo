@@ -6,7 +6,7 @@ EXTRA_DIST = no_monolithic.texi navigation.texi formatting_regions.texi \
 DISTCLEANFILES = tests.log tests.out
 
 distclean-local:
-	rm -rf out_parser diffs
+	rm -rf out_parser diffs test_log
 
 dist-hook:
 	rm -rf `find $(distdir)/res_parser -name CVS`

@@ -203,7 +203,7 @@ my $libsrcdir = File::Spec->catdir($srcdir, 'maintain');
 
 # we want a reliable way to switch locale, so we don't use the system
 # gettext.
-Locale::Messages->select_package ('gettext_pp');
+Locale::Messages->select_package('gettext_pp');
 
 #my @search_locale_dirs = ("$datadir/locale", (map $_ . '/LocaleData', @INC),
 #  qw (/usr/share/locale /usr/local/share/locale));

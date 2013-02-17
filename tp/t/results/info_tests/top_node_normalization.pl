@@ -435,12 +435,12 @@ $result_errors{'top_node_normalization'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: menu entry node name `tOP\' different from node name `ToP\'
+    'error_line' => ':6: warning: @menu entry node name `tOP\' different from node name `ToP\'
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'menu entry node name `tOP\' different from node name `ToP\'',
+    'text' => '@menu entry node name `tOP\' different from node name `ToP\'',
     'type' => 'warning'
   },
   {

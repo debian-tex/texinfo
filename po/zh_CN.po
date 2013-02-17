@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-02-04 15:57-0800\n"
+"POT-Creation-Date: 2013-02-16 06:55-0800\n"
 "PO-Revision-Date: 2009-05-21 15:08中国标准时间\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -2419,38 +2419,38 @@ msgstr ""
 msgid "@%s outside of any node"
 msgstr "(超出任何节点)"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1109 tp/Texinfo/Parser.pm:2508
+#: tp/Texinfo/Convert/Plaintext.pm:1200 tp/Texinfo/Parser.pm:2508
 #, fuzzy, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "关于索引“%s”的条目超出了所有节点"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1217
+#: tp/Texinfo/Convert/Plaintext.pm:1313
 #, fuzzy, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "关闭输出文件“%s”时出错"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1222
+#: tp/Texinfo/Convert/Plaintext.pm:1318
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image 文件“%s”不可读：%s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1251
+#: tp/Texinfo/Convert/Plaintext.pm:1341
 #, fuzzy, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr "无法找到节点“%s”。"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1617
+#: tp/Texinfo/Convert/Plaintext.pm:1705
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
 msgstr "@strong{Note...} 在 Info 中形成了一个假的交叉引用；可通过重写避免此事"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1849
+#: tp/Texinfo/Convert/Plaintext.pm:1937
 #, fuzzy, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "“.”或“,”之后必须为 @%s，而不是“%c”"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1852
+#: tp/Texinfo/Convert/Plaintext.pm:1940
 #, fuzzy
 msgid "`.' or `,' must follow @xref"
 msgstr "“.”或“,”之后必须为 @%s，而不是“%c”"
@@ -2460,7 +2460,7 @@ msgstr "“.”或“,”之后必须为 @%s，而不是“%c”"
 msgid "@%s should only appear at beginning or end of document"
 msgstr "%s: 无法打开 --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:1068 tp/Texinfo/Structuring.pm:548
+#: tp/Texinfo/Parser.pm:1068 tp/Texinfo/Structuring.pm:588
 #, perl-format
 msgid "multiple @%s"
 msgstr ""
@@ -3067,67 +3067,62 @@ msgstr ""
 msgid "no sectioning command associated with @%s"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:568
-#, fuzzy, perl-format
-msgid "menu reference to nonexistent node `%s'"
-msgstr "未引用的节点“%s”"
-
-#: tp/Texinfo/Structuring.pm:583
-#, perl-format
-msgid "menu entry node name `%s' different from %s name `%s'"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:619
-#, perl-format
-msgid "unreferenced node `%s'"
-msgstr "未引用的节点“%s”"
-
-#: tp/Texinfo/Structuring.pm:665
-#, perl-format
-msgid "node `%s' is %s for `%s' in sectioning but not in menu"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:672
-#, perl-format
-msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:690
-#, perl-format
-msgid "node `%s' is %s for `%s' in menu but not in sectioning"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:744
-#, perl-format
-msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:771
-#, fuzzy, perl-format
-msgid "%s reference to nonexistent `%s'"
-msgstr "未引用的节点“%s”"
-
-#: tp/Texinfo/Structuring.pm:790
-#, fuzzy, perl-format
-msgid "node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr "尽管节点“%s”是“%s”的上层节点，但缺少相关的菜单项"
-
-#: tp/Texinfo/Structuring.pm:798
-#, perl-format
-msgid "for `%s', up in menu `%s' and up `%s' don't match"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:1282
+#: tp/Texinfo/Structuring.pm:538 tp/Texinfo/Structuring.pm:1319
 #, fuzzy, perl-format
 msgid "@%s reference to nonexistent node `%s'"
 msgstr "%s 引用到不存在的节点“%s”(也许字段不正确？)"
 
-#: tp/Texinfo/Structuring.pm:1294
+#: tp/Texinfo/Structuring.pm:551
+#, perl-format
+msgid "@%s entry node name `%s' different from %s name `%s'"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:656
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr "未引用的节点“%s”"
+
+#: tp/Texinfo/Structuring.pm:702
+#, perl-format
+msgid "node `%s' is %s for `%s' in sectioning but not in menu"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:709
+#, perl-format
+msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:727
+#, perl-format
+msgid "node `%s' is %s for `%s' in menu but not in sectioning"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:781
+#, perl-format
+msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:808
+#, fuzzy, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "未引用的节点“%s”"
+
+#: tp/Texinfo/Structuring.pm:827
+#, fuzzy, perl-format
+msgid "node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr "尽管节点“%s”是“%s”的上层节点，但缺少相关的菜单项"
+
+#: tp/Texinfo/Structuring.pm:835
+#, perl-format
+msgid "for `%s', up in menu `%s' and up `%s' don't match"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:1331
 #, perl-format
 msgid "@%s to `%s', different from %s name `%s'"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:1959
+#: tp/Texinfo/Structuring.pm:1996
 #, fuzzy, perl-format
 msgid "empty index key in @%s"
 msgstr "找不到含有“%s”的索引\n"
@@ -3239,24 +3234,24 @@ msgstr "无法寻找“%s”。"
 msgid "tex4ht.pm: could not open: %s"
 msgstr "无法寻找“%s”。"
 
-#: tp/init/tex4ht.pm:293
+#: tp/init/tex4ht.pm:294
 #, perl-format
 msgid "tex4ht.pm: end of @%s item %d not found"
 msgstr ""
 
-#: tp/init/tex4ht.pm:300
+#: tp/init/tex4ht.pm:301
 #, perl-format
 msgid ""
 "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
 "items found in the document for @%s"
 msgstr ""
 
-#: tp/init/tex4ht.pm:320
+#: tp/init/tex4ht.pm:321
 #, fuzzy, perl-format
 msgid "tex4ht.pm: output has no HTML item for @%s %s"
 msgstr "无法创建输出文件“%s”"
 
-#: tp/init/tex4ht.pm:335
+#: tp/init/tex4ht.pm:336
 #, perl-format
 msgid ""
 "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
@@ -3690,6 +3685,10 @@ msgstr "%s 中没有页码"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "条目 %s 出现在具有次要名称的条目之后"
+
+#, fuzzy
+#~ msgid "menu reference to nonexistent node `%s'"
+#~ msgstr "未引用的节点“%s”"
 
 #, fuzzy
 #~ msgid "Can't create directories `%s': %s"

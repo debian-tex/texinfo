@@ -8,7 +8,7 @@ EXTRA_DIST = contents_at_begin.texi contents_at_end.texi \
 DISTCLEANFILES = tests.log tests.out
 
 distclean-local:
-	rm -rf out_parser diffs
+	rm -rf out_parser diffs test_log
 
 dist-hook:
 	rm -rf `find $(distdir)/res_parser -name CVS`

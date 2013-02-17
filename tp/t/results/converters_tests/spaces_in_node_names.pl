@@ -1117,12 +1117,12 @@ $result_errors{'spaces_in_node_names'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: menu entry node name `c@ \' different from node name `c@w{  }\'
+    'error_line' => ':6: warning: @menu entry node name `c@ \' different from node name `c@w{  }\'
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'menu entry node name `c@ \' different from node name `c@w{  }\'',
+    'text' => '@menu entry node name `c@ \' different from node name `c@w{  }\'',
     'type' => 'warning'
   }
 ];

@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: texi2pdf,v 1.4 2011/10/18 18:36:56 karl Exp $
+# $Id: texi2pdf,v 1.5 2013/02/16 16:50:28 karl Exp $
 # Written by Thomas Esser.  Public domain.
 # Execute texi2dvi --pdf.
 
@@ -16,7 +16,7 @@ unset RUNNING_BSH
 # hack around a bug in zsh:
 test -n "${ZSH_VERSION+set}" && alias -g '${1+"$@"}'='"$@"'
 
-rcs_revision='$Revision: 1.4 $'
+rcs_revision='$Revision: 1.5 $'
 rcs_version=`set - $rcs_revision; echo $2`
 
 # special-case --version following GNU standards for identifying the
@@ -25,9 +25,9 @@ rcs_version=`set - $rcs_revision; echo $2`
 # obliged to.
 if test "x$1" = x--version; then
   cat <<EOF
-texi2pdf (GNU Texinfo 4.13+dev) $rcs_version
+texi2pdf (GNU Texinfo 5.0) $rcs_version
 
-Copyright (C) 2011 Free Software Foundation, Inc.
+Copyright (C) 2013 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.

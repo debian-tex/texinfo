@@ -1,5 +1,8 @@
 use strict;
 
+use File::Spec;
+BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} }
+
 require 't/test_utils.pl';
 
 my @test_cases = (
@@ -410,8 +413,8 @@ V@footnote{F2}
 * tOP::
 @end menu
 '],
-# since there is no split in the test suite, there is no split tested
-# here, in fact.
+# since there is no split in the test suite, there is no split tested
+# here, in fact.
 ['split_no_copying',
 '\input texinfo
 @setfilename split-nocopying.info
@@ -784,6 +787,45 @@ Now anchor
 @anchor{anchor in flushright}
 after anchor
 Second anchor in text @anchor{second anchor in flushright} after anchor.
+@end flushright
+'],
+# if this test is changed, the corresponding test in t/plaintext_tests.t
+# should be changed too
+['multiline_image_and_align',
+'@center @image{figure}
+
+@center CCCC @image{figure} 
+
+@center fffffffffffffffffffffffffffffffffffffff @image{figure}
+
+@center dddd @image{figure} iiiii
+
+@flushright
+AAA
+@image{figure}
+
+BBB @image{figure} gggg @image{figure}
+
+HHH
+@image{figure} JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+@end flushright
+
+@center @image{figure, , , ,txt}
+
+@center CCCC @image{figure, , , ,txt} 
+  
+@center fffffffffffffffffffffffffffffffffffffff @image{figure, , , ,txt}
+
+@center dddd @image{figure, , , ,txt} iiiii
+
+@flushright
+AAA
+@image{figure, , , ,txt}
+
+BBB @image{figure, , , ,txt} gggg @image{figure, , , ,txt}
+
+HHH
+@image{figure, , , ,txt} JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
 @end flushright
 '],
 );

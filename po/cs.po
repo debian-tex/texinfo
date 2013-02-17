@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-02-04 15:57-0800\n"
+"POT-Creation-Date: 2013-02-16 06:55-0800\n"
 "PO-Revision-Date: 2000-10-31 15:17+01:00\n"
 "Last-Translator: Vladimir Michl <Vladimir.Michl@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -2343,38 +2343,38 @@ msgstr ""
 msgid "@%s outside of any node"
 msgstr "(mimo v¹echny uzly)"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1109 tp/Texinfo/Parser.pm:2508
+#: tp/Texinfo/Convert/Plaintext.pm:1200 tp/Texinfo/Parser.pm:2508
 #, fuzzy, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "Polo¾ka pro rejstøík `%s' je mimo v¹echny uzly"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1217
+#: tp/Texinfo/Convert/Plaintext.pm:1313
 #, fuzzy, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "Výstupní soubor `%s' nelze vytvoøit."
 
-#: tp/Texinfo/Convert/Plaintext.pm:1222
+#: tp/Texinfo/Convert/Plaintext.pm:1318
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "soubor `%s' v pøíkazu @image je neèitelný: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1251
+#: tp/Texinfo/Convert/Plaintext.pm:1341
 #, fuzzy, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr "Uzel `%s' nelze nalézt."
 
-#: tp/Texinfo/Convert/Plaintext.pm:1617
+#: tp/Texinfo/Convert/Plaintext.pm:1705
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1849
+#: tp/Texinfo/Convert/Plaintext.pm:1937
 #, fuzzy, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "`.' nebo `,' musí následovat za køí¾ovým odkazem, ale ne za %c"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1852
+#: tp/Texinfo/Convert/Plaintext.pm:1940
 #, fuzzy
 msgid "`.' or `,' must follow @xref"
 msgstr "`.' nebo `,' musí následovat za køí¾ovým odkazem, ale ne za %c"
@@ -2384,7 +2384,7 @@ msgstr "`.' nebo `,' musí následovat za køí¾ovým odkazem, ale ne za %c"
 msgid "@%s should only appear at beginning or end of document"
 msgstr "Výstup %s pro expanzi makra nelze otevøít"
 
-#: tp/Texinfo/Parser.pm:1068 tp/Texinfo/Structuring.pm:548
+#: tp/Texinfo/Parser.pm:1068 tp/Texinfo/Structuring.pm:588
 #, perl-format
 msgid "multiple @%s"
 msgstr ""
@@ -3001,69 +3001,64 @@ msgstr ""
 msgid "no sectioning command associated with @%s"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:568
+#: tp/Texinfo/Structuring.pm:538 tp/Texinfo/Structuring.pm:1319
 #, fuzzy, perl-format
-msgid "menu reference to nonexistent node `%s'"
-msgstr "uzel `%s' - nesmìøuje na nìj ¾ádný odkaz"
+msgid "@%s reference to nonexistent node `%s'"
+msgstr "%s se odkazuje na neexistující uzel `%s'"
 
-#: tp/Texinfo/Structuring.pm:583
+#: tp/Texinfo/Structuring.pm:551
 #, perl-format
-msgid "menu entry node name `%s' different from %s name `%s'"
+msgid "@%s entry node name `%s' different from %s name `%s'"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:619
+#: tp/Texinfo/Structuring.pm:656
 #, perl-format
 msgid "unreferenced node `%s'"
 msgstr "uzel `%s' - nesmìøuje na nìj ¾ádný odkaz"
 
-#: tp/Texinfo/Structuring.pm:665
+#: tp/Texinfo/Structuring.pm:702
 #, perl-format
 msgid "node `%s' is %s for `%s' in sectioning but not in menu"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:672
+#: tp/Texinfo/Structuring.pm:709
 #, perl-format
 msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:690
+#: tp/Texinfo/Structuring.pm:727
 #, perl-format
 msgid "node `%s' is %s for `%s' in menu but not in sectioning"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:744
+#: tp/Texinfo/Structuring.pm:781
 #, perl-format
 msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:771
+#: tp/Texinfo/Structuring.pm:808
 #, fuzzy, perl-format
 msgid "%s reference to nonexistent `%s'"
 msgstr "uzel `%s' - nesmìøuje na nìj ¾ádný odkaz"
 
-#: tp/Texinfo/Structuring.pm:790
+#: tp/Texinfo/Structuring.pm:827
 #, fuzzy, perl-format
 msgid "node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "Uzel `%s' postrádá polo¾ku menu pro `%s' navzdory tomu, ¾e je jeho vy¹¹ím "
 "uzlem"
 
-#: tp/Texinfo/Structuring.pm:798
+#: tp/Texinfo/Structuring.pm:835
 #, perl-format
 msgid "for `%s', up in menu `%s' and up `%s' don't match"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:1282
-#, fuzzy, perl-format
-msgid "@%s reference to nonexistent node `%s'"
-msgstr "%s se odkazuje na neexistující uzel `%s'"
-
-#: tp/Texinfo/Structuring.pm:1294
+#: tp/Texinfo/Structuring.pm:1331
 #, perl-format
 msgid "@%s to `%s', different from %s name `%s'"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:1959
+#: tp/Texinfo/Structuring.pm:1996
 #, fuzzy, perl-format
 msgid "empty index key in @%s"
 msgstr "odpovídající polo¾ky rejstøíku nebyly pro `%s' nalezeny\n"
@@ -3175,24 +3170,24 @@ msgstr "Nelze najít `%s'."
 msgid "tex4ht.pm: could not open: %s"
 msgstr "Nelze najít `%s'."
 
-#: tp/init/tex4ht.pm:293
+#: tp/init/tex4ht.pm:294
 #, perl-format
 msgid "tex4ht.pm: end of @%s item %d not found"
 msgstr ""
 
-#: tp/init/tex4ht.pm:300
+#: tp/init/tex4ht.pm:301
 #, perl-format
 msgid ""
 "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
 "items found in the document for @%s"
 msgstr ""
 
-#: tp/init/tex4ht.pm:320
+#: tp/init/tex4ht.pm:321
 #, fuzzy, perl-format
 msgid "tex4ht.pm: output has no HTML item for @%s %s"
 msgstr "Výstupní soubor `%s' nelze vytvoøit."
 
-#: tp/init/tex4ht.pm:335
+#: tp/init/tex4ht.pm:336
 #, perl-format
 msgid ""
 "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
@@ -3565,6 +3560,10 @@ msgstr "Na %s není èíslo stránky"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "polo¾ka %s následuje za polo¾kou se sekundárním jménem"
+
+#, fuzzy
+#~ msgid "menu reference to nonexistent node `%s'"
+#~ msgstr "uzel `%s' - nesmìøuje na nìj ¾ádný odkaz"
 
 #, fuzzy
 #~ msgid "Can't read file %s: %s"

@@ -523,6 +523,43 @@ my %direction_texts = (
  'up' => 'Up'
 );
 
+sub _check_menu_entry($$$$)
+{
+  my $self = shift;
+  my $command = shift;
+  my $menu_content = shift;
+  my $check_menu_entries = shift;
+
+  my $menu_node;
+
+  if (!$self->{'labels'}->{$menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
+    if ($check_menu_entries) {
+      $self->line_error(sprintf($self->
+       __("\@%s reference to nonexistent node `%s'"), 
+         $command,
+         Texinfo::Parser::_node_extra_to_texi(
+                 $menu_content->{'extra'}->{'menu_entry_node'})), 
+        $menu_content->{'line_nr'});
+    }
+  } else {
+    my $normalized_menu_node
+      = $menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'};
+    $menu_node = $self->{'labels'}->{$normalized_menu_node};
+    if ($check_menu_entries and ! _check_node_same_texinfo_code($menu_node, 
+        $menu_content->{'extra'}->{'menu_entry_node'})) {
+      $self->line_warn(sprintf($self->
+       __("\@%s entry node name `%s' different from %s name `%s'"), 
+         $command,
+         Texinfo::Parser::_node_extra_to_texi(
+                 $menu_content->{'extra'}->{'menu_entry_node'}),
+         $menu_node->{'cmdname'},
+         Texinfo::Parser::_node_extra_to_texi($menu_node->{'extra'})),
+        $menu_content->{'line_nr'});
+    }
+  }
+  return $menu_node;
+}
+
 # first go through all the menu and set menu_up, menu_next, menu_prev
 # and warn for unknown nodes.
 # then go through all the nodes and set directions
@@ -532,6 +569,9 @@ sub nodes_tree($)
   return undef unless ($self->{'nodes'} and @{$self->{'nodes'}});
   my $top_node;
   my $top_node_up;
+
+  my $check_menu_entries = (!$self->{'novalidate'} and $self->{'SHOW_MENU'});
+
   foreach my $node (@{$self->{'nodes'}}) {
     if ($node->{'extra'}->{'normalized'} eq 'Top') {
       $top_node = $node;
@@ -553,7 +593,6 @@ sub nodes_tree($)
       # menu entry before the first node may be treated slightly differently.
       # at least, there are no error messages for them
 
-      my $check_menu_entries = (!$self->{'novalidate'} and $self->{'SHOW_MENU'});
       foreach my $menu (@{$node->{'menus'}}) {
         my $previous_node;
         foreach my $menu_content (@{$menu->{'contents'}}) {
@@ -562,31 +601,12 @@ sub nodes_tree($)
             my $menu_node;
             my $external_node;
             if (!$menu_content->{'extra'}->{'menu_entry_node'}->{'manual_content'}) {
-              if (!$self->{'labels'}->{$menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
-                if ($check_menu_entries) {
-                  $self->line_error(sprintf($self->
-                   __("menu reference to nonexistent node `%s'"), 
-                     Texinfo::Parser::_node_extra_to_texi(
-                             $menu_content->{'extra'}->{'menu_entry_node'})), 
-                    $menu_content->{'line_nr'});
-                }
-              } else {
-                # this may happen more than once for a given node if the node 
-                # is in more than one menu.  Therefore all the menu up node 
-                # are kept in $menu_node->{'menu_up_hash'}
-                my $normalized_menu_node
-                  = $menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'};
-                $menu_node = $self->{'labels'}->{$normalized_menu_node};
-                if ($check_menu_entries and ! _check_node_same_texinfo_code($menu_node, 
-                    $menu_content->{'extra'}->{'menu_entry_node'})) {
-                  $self->line_warn(sprintf($self->
-                   __("menu entry node name `%s' different from %s name `%s'"), 
-                     Texinfo::Parser::_node_extra_to_texi(
-                             $menu_content->{'extra'}->{'menu_entry_node'}),
-                     $menu_node->{'cmdname'},
-                     Texinfo::Parser::_node_extra_to_texi($menu_node->{'extra'})),
-                    $menu_content->{'line_nr'});
-                }
+              $menu_node = _check_menu_entry($self, 'menu', $menu_content, 
+                                                    $check_menu_entries);
+              # this may happen more than once for a given node if the node 
+              # is in more than one menu.  Therefore all the menu up node 
+              # are kept in $menu_node->{'menu_up_hash'}
+              if ($menu_node) {
                 $menu_node->{'menu_up'} = $node;
                 $menu_node->{'menu_up_hash'}->{$node->{'extra'}->{'normalized'}} = 1;
               }
@@ -612,6 +632,23 @@ sub nodes_tree($)
       }
     }
   }
+  if ($check_menu_entries) {
+    my $global_commands = $self->global_commands_information();
+    if ($global_commands->{'detailmenu'}) {
+      foreach my $detailmenu (@{$global_commands->{'detailmenu'}}) {
+        foreach my $menu_content (@{$detailmenu->{'contents'}}) {
+          if ($menu_content->{'extra'}
+             and $menu_content->{'extra'}->{'menu_entry_node'}) {
+            if (!$menu_content->{'extra'}->{'menu_entry_node'}->{'manual_content'}) {
+              _check_menu_entry($self, 'detailmenu', $menu_content, 
+                                $check_menu_entries);
+            }
+          }
+        }
+      }
+    }
+  }
+
   $top_node = $self->{'nodes'}->[0] if (!$top_node);
   foreach my $node (@{$self->{'nodes'}}) {
     # warn if node is not top node and doesn't appear in menu
@@ -1755,7 +1792,7 @@ sub _print_down_menus($$;$)
       foreach my $entry (@{$menu->{'contents'}}) {
         if ($entry->{'type'} and $entry->{'type'} eq 'menu_entry') {
           push @master_menu_contents, Texinfo::Common::copy_tree($entry);
-          # gather node cheldren to recusrsively print their menus
+          # gather node children to recusrsively print their menus
           my $entry_node = $entry->{'extra'}->{'menu_entry_node'};
           if (! $entry_node->{'manual_content'}
               and defined($entry_node->{'normalized'})) {

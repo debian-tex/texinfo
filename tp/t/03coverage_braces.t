@@ -1,5 +1,8 @@
 use strict;
 
+use File::Spec;
+BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} }
+
 require 't/test_utils.pl';
 
 my $two_footnotes_in_nodes_text = 

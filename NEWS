@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.228 2013/02/04 01:34:46 karl Exp $
+$Id: NEWS,v 1.230 2013/02/16 23:59:29 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -23,6 +23,7 @@ one of the relevant sections:
 
 -------------------------------------------------------------------------------
 
+5.0 (16 February 2013)
 * Language:
   . Texinfo commands are supported in node names.
   . #line directives are recognized.
@@ -107,8 +108,7 @@ one of the relevant sections:
 
 * Documentation:
   . new appendix with a technical description of the Info file format.
-  . extensive information on the customizations of the HTML output that
-    are now possible.
+  . information on the customizations of the HTML output now possible.
 
 * Distribution:
   . new file htmlxref.cnf is installed to support cross-manual

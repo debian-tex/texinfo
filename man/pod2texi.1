@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "POD2TEXI 1"
-.TH POD2TEXI 1 "2013-02-04" "perl v5.16.2" "User Contributed Perl Documentation"
+.TH POD2TEXI 1 "2013-02-07" "perl v5.16.2" "User Contributed Perl Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -184,12 +184,9 @@ Do not fill sectioning gaps with empty \f(CW@unnumbered\fR files.
 Ordinarily, it's good to keep the sectioning hierarchy intact.
 .IP "\fB\-\-preamble\fR=\fI\s-1STR\s0\fR" 4
 .IX Item "--preamble=STR"
-Insert \fI\s-1STR\s0\fR as top boilerplate before includes.  For standalone
-documents (\f(CW\*(C`\-\-base\-level\*(C'\fR is 0), the default is a minimal beginning for
-a Texinfo document, and sets \f(CW@documentencoding\fR to \f(CW\*(C`utf\-8\*(C'\fR.  For
-included documents (\f(CW\*(C`\-\-base\-level\*(C'\fR is nonzero), it is the empty string,
-under the assumption that you will want your own top-level material,
-and to \f(CW@include\fR the generated files.
+Insert \fI\s-1STR\s0\fR as top boilerplate before includes.  The default is a
+minimal beginning for a Texinfo document, and sets \f(CW@documentencoding\fR
+to \f(CW\*(C`utf\-8\*(C'\fR (because the output is written that way).
 .IP "\fB\-\-subdir\fR=\fI\s-1NAME\s0\fR" 4
 .IX Item "--subdir=NAME"
 If there is a main manual with include files (each corresponding to

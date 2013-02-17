@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# $Id: pod2texi.pl,v 1.29 2013/02/04 22:52:25 karl Exp $
+# $Id: pod2texi.pl,v 1.30 2013/02/07 18:14:46 karl Exp $
 # pod2texi -- convert Pod to Texinfo.
 # Copyright 2012, 2013 Free Software Foundation, Inc.
 # 
@@ -448,8 +448,7 @@ if ($base_level > 0) {
   $outfile_name .= '.info';
 
   if (! defined ($preamble)) {
-    $preamble = ($base_level > 0) ? ""
-                : '\input texinfo
+    $preamble = '\input texinfo
 @setfilename ' . Pod::Simple::Texinfo::_protect_text($outfile_name) . "
 \@documentencoding utf-8
 \@settitle $top
@@ -554,12 +553,9 @@ Ordinarily, it's good to keep the sectioning hierarchy intact.
 
 =item B<--preamble>=I<STR>
 
-Insert I<STR> as top boilerplate before includes.  For standalone
-documents (C<--base-level> is 0), the default is a minimal beginning for
-a Texinfo document, and sets C<@documentencoding> to C<utf-8>.  For
-included documents (C<--base-level> is nonzero), it is the empty string,
-under the assumption that you will want your own top-level material,
-and to C<@include> the generated files.
+Insert I<STR> as top boilerplate before includes.  The default is a
+minimal beginning for a Texinfo document, and sets C<@documentencoding>
+to C<utf-8> (because the output is written that way).
 
 =item B<--subdir>=I<NAME>
 

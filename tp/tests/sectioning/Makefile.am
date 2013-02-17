@@ -21,7 +21,7 @@ EXTRA_DIST = \
 DISTCLEANFILES = tests.log tests.out equivalent_nodes-noderename.cnf
 
 distclean-local:
-	rm -rf out_parser out_parser_html diffs
+	rm -rf out_parser out_parser_html diffs test_log
 
 dist-hook:
 	rm -rf `find $(distdir)/res_parser $(distdir)/res_parser_html -name CVS`

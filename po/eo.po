@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-02-04 15:57-0800\n"
+"POT-Creation-Date: 2013-02-16 06:55-0800\n"
 "PO-Revision-Date: 2012-12-26 19:34+0100\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -2457,28 +2457,28 @@ msgstr "'@%s' eliĝis plu ol unu fojo: %s"
 msgid "@%s outside of any node"
 msgstr "'@%s' ekster iu ajn nodo"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1109 tp/Texinfo/Parser.pm:2508
+#: tp/Texinfo/Convert/Plaintext.pm:1200 tp/Texinfo/Parser.pm:2508
 #, fuzzy, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "Elemento por indekso «%s» estas ekster iu ajn nodo"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1217
+#: tp/Texinfo/Convert/Plaintext.pm:1313
 #, fuzzy, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "Eraro dum fermo de %s (dosiero kun 'image'-teksto): %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1222
+#: tp/Texinfo/Convert/Plaintext.pm:1318
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "Dosiero «%s» en komando '@image' ne legeblas: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1251
+#: tp/Texinfo/Convert/Plaintext.pm:1341
 #, fuzzy, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr ""
 "Ne eblas trovi dosieron «%s.txt» en komando '@image' nek alternativan tekston"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1617
+#: tp/Texinfo/Convert/Plaintext.pm:1705
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -2486,12 +2486,12 @@ msgstr ""
 "«@strong{Note...}» estigas falsan referencon en Info; alivortigu por eviti "
 "tion"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1849
+#: tp/Texinfo/Convert/Plaintext.pm:1937
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "Post '@xref' sekvendas «.» aŭ «,», ne «%s»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1852
+#: tp/Texinfo/Convert/Plaintext.pm:1940
 msgid "`.' or `,' must follow @xref"
 msgstr "Post '@xref' sekvendas «.» aŭ «,»"
 
@@ -2500,7 +2500,7 @@ msgstr "Post '@xref' sekvendas «.» aŭ «,»"
 msgid "@%s should only appear at beginning or end of document"
 msgstr "@%s devus aperi nur je komenco aŭ fino de dokumento"
 
-#: tp/Texinfo/Parser.pm:1068 tp/Texinfo/Structuring.pm:548
+#: tp/Texinfo/Parser.pm:1068 tp/Texinfo/Structuring.pm:588
 #, fuzzy, perl-format
 msgid "multiple @%s"
 msgstr "Pluraj '@%s'"
@@ -3115,67 +3115,62 @@ msgstr ""
 msgid "no sectioning command associated with @%s"
 msgstr "Neniu sekciada komando estas rilatata al '@%s'"
 
-#: tp/Texinfo/Structuring.pm:568
-#, fuzzy, perl-format
-msgid "menu reference to nonexistent node `%s'"
-msgstr "Menua referenco al neekzistanta nodo «%s»"
-
-#: tp/Texinfo/Structuring.pm:583
-#, fuzzy, perl-format
-msgid "menu entry node name `%s' different from %s name `%s'"
-msgstr "Menuera nodnomo '%s' malsamas de %s-nomo '%s'"
-
-#: tp/Texinfo/Structuring.pm:619
-#, perl-format
-msgid "unreferenced node `%s'"
-msgstr "nodo «%s» ne estas referencita"
-
-#: tp/Texinfo/Structuring.pm:665
-#, fuzzy, perl-format
-msgid "node `%s' is %s for `%s' in sectioning but not in menu"
-msgstr "Nodo «%s» estas %s por '%s' en sekciado sed ne en menuo"
-
-#: tp/Texinfo/Structuring.pm:672
-#, fuzzy, perl-format
-msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
-msgstr "Nodo «%s» '%s' malsamas en menuo '%s' kaj en sekciado '%s'"
-
-#: tp/Texinfo/Structuring.pm:690
-#, fuzzy, perl-format
-msgid "node `%s' is %s for `%s' in menu but not in sectioning"
-msgstr "Nodo «%s» estas %s por '%s' en menuo sed ne en sekciado"
-
-#: tp/Texinfo/Structuring.pm:744
-#, perl-format
-msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
-msgstr "%s-ligo '%s' (por nodo «%s») malsamas de %s-nomo '%s'"
-
-#: tp/Texinfo/Structuring.pm:771
-#, perl-format
-msgid "%s reference to nonexistent `%s'"
-msgstr "%s referenco al neekzistanta «%s»"
-
-#: tp/Texinfo/Structuring.pm:790
-#, fuzzy, perl-format
-msgid "node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr "En nodo «%s» mankas menuero por '%s', malgraŭ esti ties ligo 'Up'"
-
-#: tp/Texinfo/Structuring.pm:798
-#, fuzzy, perl-format
-msgid "for `%s', up in menu `%s' and up `%s' don't match"
-msgstr "Por '%s', supren en menuo '%s' kaj supren en '%s' ne kongruas"
-
-#: tp/Texinfo/Structuring.pm:1282
+#: tp/Texinfo/Structuring.pm:538 tp/Texinfo/Structuring.pm:1319
 #, perl-format
 msgid "@%s reference to nonexistent node `%s'"
 msgstr "@%s referenco al neekzistanta nodo «%s»"
 
-#: tp/Texinfo/Structuring.pm:1294
+#: tp/Texinfo/Structuring.pm:551
+#, fuzzy, perl-format
+msgid "@%s entry node name `%s' different from %s name `%s'"
+msgstr "Menuera nodnomo '%s' malsamas de %s-nomo '%s'"
+
+#: tp/Texinfo/Structuring.pm:656
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr "nodo «%s» ne estas referencita"
+
+#: tp/Texinfo/Structuring.pm:702
+#, fuzzy, perl-format
+msgid "node `%s' is %s for `%s' in sectioning but not in menu"
+msgstr "Nodo «%s» estas %s por '%s' en sekciado sed ne en menuo"
+
+#: tp/Texinfo/Structuring.pm:709
+#, fuzzy, perl-format
+msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
+msgstr "Nodo «%s» '%s' malsamas en menuo '%s' kaj en sekciado '%s'"
+
+#: tp/Texinfo/Structuring.pm:727
+#, fuzzy, perl-format
+msgid "node `%s' is %s for `%s' in menu but not in sectioning"
+msgstr "Nodo «%s» estas %s por '%s' en menuo sed ne en sekciado"
+
+#: tp/Texinfo/Structuring.pm:781
+#, perl-format
+msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
+msgstr "%s-ligo '%s' (por nodo «%s») malsamas de %s-nomo '%s'"
+
+#: tp/Texinfo/Structuring.pm:808
+#, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "%s referenco al neekzistanta «%s»"
+
+#: tp/Texinfo/Structuring.pm:827
+#, fuzzy, perl-format
+msgid "node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr "En nodo «%s» mankas menuero por '%s', malgraŭ esti ties ligo 'Up'"
+
+#: tp/Texinfo/Structuring.pm:835
+#, fuzzy, perl-format
+msgid "for `%s', up in menu `%s' and up `%s' don't match"
+msgstr "Por '%s', supren en menuo '%s' kaj supren en '%s' ne kongruas"
+
+#: tp/Texinfo/Structuring.pm:1331
 #, perl-format
 msgid "@%s to `%s', different from %s name `%s'"
 msgstr "@%s al '%s', malsamas de %s-nomo '%s'"
 
-#: tp/Texinfo/Structuring.pm:1959
+#: tp/Texinfo/Structuring.pm:1996
 #, fuzzy, perl-format
 msgid "empty index key in @%s"
 msgstr "Vaka indeksŝlosilo en '@%s'"
@@ -3289,12 +3284,12 @@ msgstr "Fiaskis alinomo de %s: %s"
 msgid "tex4ht.pm: could not open: %s"
 msgstr "@%s: Ne eblas malfermi %s: %s"
 
-#: tp/init/tex4ht.pm:293
+#: tp/init/tex4ht.pm:294
 #, perl-format
 msgid "tex4ht.pm: end of @%s item %d not found"
 msgstr ""
 
-#: tp/init/tex4ht.pm:300
+#: tp/init/tex4ht.pm:301
 #, fuzzy, perl-format
 msgid ""
 "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
@@ -3303,12 +3298,12 @@ msgstr ""
 "traktado per 'tex4ht' produktis %d erojn en HTML; sed atendatas %d, la "
 "nombro de elementoj en la dokumento"
 
-#: tp/init/tex4ht.pm:320
+#: tp/init/tex4ht.pm:321
 #, fuzzy, perl-format
 msgid "tex4ht.pm: output has no HTML item for @%s %s"
 msgstr "'tex4ht'-a eligo ne enhavas HTML-an eron por '@%s %s'"
 
-#: tp/init/tex4ht.pm:335
+#: tp/init/tex4ht.pm:336
 #, fuzzy, perl-format
 msgid ""
 "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
@@ -3785,6 +3780,10 @@ msgstr "Mankas paĝnumero en %s"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "elemento %s sekvas elementon kun kromnomo"
+
+#, fuzzy
+#~ msgid "menu reference to nonexistent node `%s'"
+#~ msgstr "Menua referenco al neekzistanta nodo «%s»"
 
 #~ msgid "protect_hashchar_at_line_beginning cannot protect in @%s"
 #~ msgstr "'protect_hashchar_at_line_beginning()' ne povas protekti en '@%s'"

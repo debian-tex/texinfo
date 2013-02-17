@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-02-04 15:57-0800\n"
+"POT-Creation-Date: 2013-02-16 06:55-0800\n"
 "PO-Revision-Date: 2013-01-07 11:26+0100\n"
 "Last-Translator: Francesco Groccia <frgroccia@gmail.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -2505,27 +2505,27 @@ msgstr "output di @%s «%s» più di una volta"
 msgid "@%s outside of any node"
 msgstr "@%s non presente in alcun nodo"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1109 tp/Texinfo/Parser.pm:2508
+#: tp/Texinfo/Convert/Plaintext.pm:1200 tp/Texinfo/Parser.pm:2508
 #, fuzzy, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "Voce per l'indice «%s» non presente in alcun nodo"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1217
+#: tp/Texinfo/Convert/Plaintext.pm:1313
 #, fuzzy, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "Errore durante la chiusura del file testo dell'immagine %s: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1222
+#: tp/Texinfo/Convert/Plaintext.pm:1318
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "file @image «%s» non leggibile: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1251
+#: tp/Texinfo/Convert/Plaintext.pm:1341
 #, fuzzy, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr "Impossibile trovare il file @image «%s.txt» né testo alternativo"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1617
+#: tp/Texinfo/Convert/Plaintext.pm:1705
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -2533,12 +2533,12 @@ msgstr ""
 "@strong{Nota...} produce un riferimento falso; riscrivilo per evitare che "
 "non succeda"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1849
+#: tp/Texinfo/Convert/Plaintext.pm:1937
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "«.» o «,» devono seguire @xref, non %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1852
+#: tp/Texinfo/Convert/Plaintext.pm:1940
 msgid "`.' or `,' must follow @xref"
 msgstr "«.» o «,» devono seguire @xref"
 
@@ -2547,7 +2547,7 @@ msgstr "«.» o «,» devono seguire @xref"
 msgid "@%s should only appear at beginning or end of document"
 msgstr "@%s dovrebbe apparire solo all'inizio o alla fine del documento"
 
-#: tp/Texinfo/Parser.pm:1068 tp/Texinfo/Structuring.pm:548
+#: tp/Texinfo/Parser.pm:1068 tp/Texinfo/Structuring.pm:588
 #, fuzzy, perl-format
 msgid "multiple @%s"
 msgstr "@%s multiplo"
@@ -3175,69 +3175,64 @@ msgstr ""
 msgid "no sectioning command associated with @%s"
 msgstr "Nessun comando di sezionamento associato con @%s"
 
-#: tp/Texinfo/Structuring.pm:568
-#, fuzzy, perl-format
-msgid "menu reference to nonexistent node `%s'"
-msgstr "Riferimento del menù all'inesistente nodo «%s»"
+#: tp/Texinfo/Structuring.pm:538 tp/Texinfo/Structuring.pm:1319
+#, perl-format
+msgid "@%s reference to nonexistent node `%s'"
+msgstr "%s si riferisce al nodo inesistente «%s»"
 
-#: tp/Texinfo/Structuring.pm:583
+#: tp/Texinfo/Structuring.pm:551
 #, fuzzy, perl-format
-msgid "menu entry node name `%s' different from %s name `%s'"
+msgid "@%s entry node name `%s' different from %s name `%s'"
 msgstr "Nome del nodo della voce di menù «%s» diverso dal nome %s «%s»"
 
-#: tp/Texinfo/Structuring.pm:619
+#: tp/Texinfo/Structuring.pm:656
 #, perl-format
 msgid "unreferenced node `%s'"
 msgstr "nodo «%s» non referenziato"
 
-#: tp/Texinfo/Structuring.pm:665
+#: tp/Texinfo/Structuring.pm:702
 #, fuzzy, perl-format
 msgid "node `%s' is %s for `%s' in sectioning but not in menu"
 msgstr "Il nodo «%s» è %s per «%s» nel sezionamento, ma non nel menù"
 
-#: tp/Texinfo/Structuring.pm:672
+#: tp/Texinfo/Structuring.pm:709
 #, fuzzy, perl-format
 msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
 msgstr "I nodi %s «%s» nel menù «%s» e nel sezionamento «%s» sono diversi"
 
-#: tp/Texinfo/Structuring.pm:690
+#: tp/Texinfo/Structuring.pm:727
 #, fuzzy, perl-format
 msgid "node `%s' is %s for `%s' in menu but not in sectioning"
 msgstr "Il nodo «%s» è %s per «%s» nel menù, ma non nel sezionamento"
 
-#: tp/Texinfo/Structuring.pm:744
+#: tp/Texinfo/Structuring.pm:781
 #, perl-format
 msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
 msgstr "Il puntatore %s «%s» (per il nodo «%s») è diverso dal nome %s «%s»"
 
-#: tp/Texinfo/Structuring.pm:771
+#: tp/Texinfo/Structuring.pm:808
 #, perl-format
 msgid "%s reference to nonexistent `%s'"
 msgstr "%s si riferisce all'inesistente «%s»"
 
-#: tp/Texinfo/Structuring.pm:790
+#: tp/Texinfo/Structuring.pm:827
 #, fuzzy, perl-format
 msgid "node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "Il nodo «%s» non ha alcuna voce di menù per «%s», nonostante sia destinata "
 "ad «Up»"
 
-#: tp/Texinfo/Structuring.pm:798
+#: tp/Texinfo/Structuring.pm:835
 #, fuzzy, perl-format
 msgid "for `%s', up in menu `%s' and up `%s' don't match"
 msgstr "Per «%s», «Up» nel menù «%s» e «%s» «Up» non coincidono"
 
-#: tp/Texinfo/Structuring.pm:1282
-#, perl-format
-msgid "@%s reference to nonexistent node `%s'"
-msgstr "%s si riferisce al nodo inesistente «%s»"
-
-#: tp/Texinfo/Structuring.pm:1294
+#: tp/Texinfo/Structuring.pm:1331
 #, perl-format
 msgid "@%s to `%s', different from %s name `%s'"
 msgstr "@%s a «%s», diverso dal nome %s «%s»"
 
-#: tp/Texinfo/Structuring.pm:1959
+#: tp/Texinfo/Structuring.pm:1996
 #, fuzzy, perl-format
 msgid "empty index key in @%s"
 msgstr "Chiave indice vuota in @%s"
@@ -3351,12 +3346,12 @@ msgstr "Rinomina di %s fallita: %s"
 msgid "tex4ht.pm: could not open: %s"
 msgstr "%s: impossibile aprire %s: %s"
 
-#: tp/init/tex4ht.pm:293
+#: tp/init/tex4ht.pm:294
 #, perl-format
 msgid "tex4ht.pm: end of @%s item %d not found"
 msgstr ""
 
-#: tp/init/tex4ht.pm:300
+#: tp/init/tex4ht.pm:301
 #, fuzzy, perl-format
 msgid ""
 "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
@@ -3365,12 +3360,12 @@ msgstr ""
 "L'elaborazioine di tex4ht ha prodotto %d voci in HTML; si aspettava %d, il "
 "numero di voci trovate nel documento"
 
-#: tp/init/tex4ht.pm:320
+#: tp/init/tex4ht.pm:321
 #, fuzzy, perl-format
 msgid "tex4ht.pm: output has no HTML item for @%s %s"
 msgstr "L'output di tex4ht non ha nessuna voce HTML per @%s %s"
 
-#: tp/init/tex4ht.pm:335
+#: tp/init/tex4ht.pm:336
 #, fuzzy, perl-format
 msgid ""
 "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
@@ -3879,6 +3874,10 @@ msgstr "Nessun numero di pagina in %s"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "la voce %s segue un elemento con un nome secondario"
+
+#, fuzzy
+#~ msgid "menu reference to nonexistent node `%s'"
+#~ msgstr "Riferimento del menù all'inesistente nodo «%s»"
 
 #~ msgid "protect_hashchar_at_line_beginning cannot protect in @%s"
 #~ msgstr "protect_hashchar_at_line_beginning non protetto in @%s"

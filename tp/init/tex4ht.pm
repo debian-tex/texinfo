@@ -256,7 +256,7 @@ sub tex4ht_process_command($$) {
   my $cmd = "$commands{$command}->{'exec'} $commands{$command}->{'basefile'} $options";
   print STDERR "tex4ht command: $cmd\n" if ($self->get_conf('VERBOSE'));
   if (system($cmd)) {
-    $self->document_warn(sprintf(__(
+    $self->document_warn(sprintf($self->__(
                          "tex4ht.pm: command failed: %s"), $cmd));
     return 1;
   }
@@ -264,7 +264,7 @@ sub tex4ht_process_command($$) {
   # extract the html from the file created by tex4ht
   my $html_basefile = $commands{$command}->{'html_file'};
   unless (open (TEX4HT_HTMLFILE, $html_basefile)) {
-    $self->document_warn(sprintf(__("tex4ht.pm: could not open: %s"), 
+    $self->document_warn(sprintf($self->__("tex4ht.pm: could not open: %s"), 
                                   $html_basefile, $!));
     return 1;
   }
@@ -290,7 +290,8 @@ sub tex4ht_process_command($$) {
         }
       }
       unless ($end_found) {
-        $self->document_warn(sprintf(__("tex4ht.pm: end of \@%s item %d not found"), 
+        $self->document_warn(sprintf($self->__(
+                               "tex4ht.pm: end of \@%s item %d not found"), 
                                       $command, $count));
       }
     }

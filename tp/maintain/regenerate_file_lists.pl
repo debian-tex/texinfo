@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# $Id: regenerate_file_lists.pl,v 1.13 2013/02/03 23:53:48 karl Exp $
+# $Id: regenerate_file_lists.pl,v 1.14 2013/02/09 21:24:21 pertusus Exp $
 # Copyright 2011, 2012 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -23,20 +23,27 @@ use File::Find;
 use File::Basename;
 use File::Spec;
 
-my %files;
-
 my ($command, $mydir, $suffix) = fileparse($0);
 my $parent = File::Spec->catdir($mydir, File::Spec->updir());
 chdir($parent) || die "chdir $parent: $!";
 -d "t" || (die "goodbye, no t directory in " . `pwd`);
 
+my %files;
 find (\&wanted, ('t'));
 sub wanted 
 {
   if ((/\.pl$/ and $File::Find::dir =~ m:^t/results/[^/]+:)
-      or (/\.t$/ and $File::Find::dir =~ /t$/)
       or (!/^CVS$/ and $File::Find::dir =~ m:^t/results/[^/]+/[^/]+/res_[^/]+$:)) {
     $files{$File::Find::name} = 1;
+  }
+}
+
+my %tap_files;
+find (\&wanted_tap_files, ('t'));
+sub wanted_tap_files
+{
+  if (/\.t$/ and $File::Find::dir =~ /t$/) {
+    $tap_files{$File::Find::name} = 1;
   }
 }
 
@@ -65,7 +72,13 @@ print INCLUDE <<EOH;
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 EOH
 
-print INCLUDE "test_files_generated_list =";
+print INCLUDE 'test_tap_files_generated_list =';
+foreach my $file (sort(keys(%tap_files))) {
+  print INCLUDE " \\\n  $file";
+}
+print INCLUDE "\n\n";
+
+print INCLUDE 'test_files_generated_list = $(test_tap_files_generated_list)';
 foreach my $file (sort(keys(%files)), sort(keys(%include_files))) {
   print INCLUDE " \\\n  $file";
 }

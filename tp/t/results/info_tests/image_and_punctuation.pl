@@ -521,17 +521,17 @@ $result_converted{'info'}->{'image_and_punctuation'} = 'This is , produced from 
 
 File: ,  Node: Top,  Up: (dir)
 
-One space.  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ].
+One space.  [image src="f--ile.png" text="Image description\\"\\"\\\\." ].
 
-   Two spaces.   [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ].
+   Two spaces.   [image src="f--ile.png" text="Image description\\"\\"\\\\." ].
 
-   End line.  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ].
+   End line.  [image src="f--ile.png" text="Image description\\"\\"\\\\." ].
 
-   One space. [This is an image words.].
+   One space. This is an image words..
 
-   Two spaces.  [This is an image words.].
+   Two spaces.  This is an image words..
 
-   End line. [This is an image words.].
+   End line. This is an image words..
 
 
 Tag Table:

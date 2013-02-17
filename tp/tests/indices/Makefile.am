@@ -14,7 +14,7 @@ EXTRA_DIST = index_table.texi index_no_node.texi \
 DISTCLEANFILES = tests.log tests.out
 
 distclean-local:
-	rm -rf out_parser out_parser_info diffs
+	rm -rf out_parser out_parser_info diffs test_log
 
 dist-hook:
 	rm -rf `find $(distdir)/res_parser $(distdir)/res_parser_info -name CVS`

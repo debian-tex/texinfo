@@ -667,6 +667,24 @@ sub _add_location($$)
   return $location;
 }
 
+sub _add_image($$$$;$)
+{
+  my $self = shift;
+  my $root = shift;
+  my $lines_count = shift;
+  my $image_width = shift;
+  my $no_align = shift;
+
+  push @{$self->{'count_context'}->[-1]->{'images'}}, {
+    'lines' => $self->{'count_context'}->[-1]->{'lines'},
+    'lines_count' => $lines_count,
+    'image_width'  => $image_width,
+    'no_align' =>  $no_align,
+    # may be used for debugging?
+    #'_ref' => $root,
+  };
+}
+
 sub _count_added($$$)
 {
   my $self = shift;
@@ -786,13 +804,32 @@ sub _footnotes($;$)
   return $result;
 }
 
-sub _align_lines($$$$$)
+sub _compute_spaces_align_line($$$;$)
+{
+  my $line_width = shift;
+  my $max_column = shift;
+  my $direction = shift;
+  my $no_align = shift;
+
+  my $spaces_prepended;
+  if ($line_width > $max_column or $no_align) {
+    $spaces_prepended = 0;
+  } elsif ($direction eq 'center') {
+    $spaces_prepended = (($max_column -1 - $line_width) /2);
+  } else {
+    $spaces_prepended = ($max_column -1 - $line_width);
+  }
+  return $spaces_prepended;
+}
+
+sub _align_lines($$$$$$)
 {
   my $self = shift;
   my $text = shift;
   my $max_column = shift;
   my $direction = shift;
   my $locations = shift;
+  my $images = shift;
 
   my $result = '';
 
@@ -804,46 +841,100 @@ sub _align_lines($$$$$)
       push @{$updated_locations->{$location->{'lines'}}}, $location;
     }
   }
+  my $images_marks = {};
+  if ($images and @$images) {
+    foreach my $image (@$images) {
+      #print STDERR "I $image->{'lines'}, $image->{'lines_count'}, $image->{'image_width'}\n";
+      if ($image->{'lines_count'} > 1) {
+        if (!$images_marks->{$image->{'lines'}}) {
+          $images_marks->{$image->{'lines'}} = $image;
+        }# else {
+        # Happens in Info with the special construct as, in that 
+        # case, there are no lines!  So no error...
+        #  $self->_bug_message("more than one image with lines on $image->{'lines'}");
+        # in that case, the $image->{'lines'} is not in sync with the
+        # lines count.  So the second image will be treated as simple text.
+        #}
+      }
+    }
+  }
 
   my $bytes_count = 0;
   my $delta_bytes = 0;
   my $line_index = 0;
+  my $image;
+  my $image_lines_count;
+  my $image_prepended_spaces;
   foreach my $line (split /^/, $text) {
     my $line_bytes_begin = 0;
     my $line_bytes_end = 0;
-    my $chomped = chomp($line);
-    # for debugging.
-    my $orig_line = $line;
-    $line_bytes_end -= $self->count_bytes($chomped);
-    $line =~ s/^(\s*)//;
-    $line_bytes_begin -= $self->count_bytes($1);
-    $line =~ s/(\s*)$//;
-    $line_bytes_end -= $self->count_bytes($1);
-    my $line_width = Texinfo::Convert::Unicode::string_width($line);
-    if ($line_width == 0) {
-      $result .= "\n";
-      $line_bytes_end += $self->count_bytes("\n");
-      $bytes_count += $self->count_bytes("\n");
-    } else {
-      my $spaces_prepended;
-      if ($line_width > $max_column) {
-        $spaces_prepended = 0;
-      } elsif ($direction eq 'center') {
-        $spaces_prepended = (($max_column -1 - $line_width) /2);
+
+    my ($new_image, $new_image_prepended_spaces);
+    if ($images_marks->{$line_index}) {
+      $new_image = $images_marks->{$line_index};
+      $image_lines_count = 0;
+      $new_image_prepended_spaces
+       = _compute_spaces_align_line($new_image->{'image_width'}, $max_column, 
+                                    $direction, $new_image->{'no_align'});
+      if (!defined($image)) {
+        $image = $new_image;
+        $image_prepended_spaces = $new_image_prepended_spaces;
+        $new_image = undef;
+      }
+    }
+
+    if (!$image) {
+      my $chomped = chomp($line);
+      # for debugging.
+      my $orig_line = $line;
+      $line_bytes_end -= $self->count_bytes($chomped);
+      $line =~ s/^(\s*)//;
+      $line_bytes_begin -= $self->count_bytes($1);
+      $line =~ s/(\s*)$//;
+      $line_bytes_end -= $self->count_bytes($1);
+      my $line_width = Texinfo::Convert::Unicode::string_width($line);
+      if ($line_width == 0) {
+        $result .= "\n";
+        $line_bytes_end += $self->count_bytes("\n");
+        $bytes_count += $self->count_bytes("\n");
       } else {
-        $spaces_prepended = ($max_column -1 - $line_width);
+        my $spaces_prepended 
+         = _compute_spaces_align_line($line_width, $max_column, $direction);
+        $result .= ' ' x$spaces_prepended . $line ."\n";
+        $line_bytes_begin += $self->count_bytes(' ' x$spaces_prepended);
+        $line_bytes_end += $self->count_bytes("\n");
+        $bytes_count += $line_bytes_begin + $line_bytes_end 
+                        + $self->count_bytes($line);
       }
-      $result .= ' ' x$spaces_prepended . $line ."\n";
-      $line_bytes_begin += $self->count_bytes(' ' x$spaces_prepended);
-      $line_bytes_end += $self->count_bytes("\n");
-      if ($updated_locations->{$line_index}) {
-        foreach my $location (@{$updated_locations->{$line_index}}) {
-          $location->{'bytes'} += $line_bytes_begin + $delta_bytes;
-          #print STDERR "UPDATE ALIGN: $location->{'root'}->{'extra'}->{'normalized'}: ($location->{'bytes'})\n";
-        }
+    } else {
+      $image_lines_count++;
+      my $prepended_spaces = $image_prepended_spaces;
+      # adjust if there is something else that the image on the first or
+      # last line.  The adjustment is approximate.
+      if (($image_lines_count == 1 or $image_lines_count == $image->{'lines_count'})
+          and Texinfo::Convert::Unicode::string_width($line) > $image->{'image_width'}) {
+        $prepended_spaces 
+         -= Texinfo::Convert::Unicode::string_width($line) - $image->{'image_width'};
+        $prepended_spaces = 0 if ($prepended_spaces < 0);
       }
-      $bytes_count += $line_bytes_begin + $line_bytes_end 
-                      + $self->count_bytes($line);
+      $result .= ' ' x$prepended_spaces . $line;
+      $line_bytes_begin += $self->count_bytes(' ' x$prepended_spaces);
+      $bytes_count += $line_bytes_begin + $self->count_bytes($line);
+      if ($new_image) {
+        $image = $new_image;
+        $image_prepended_spaces = $new_image_prepended_spaces;
+      } elsif ($image_lines_count == $image->{'lines_count'}) {
+        $image = undef;
+        $image_lines_count = undef;
+        $image_prepended_spaces = undef;
+      }
+    }
+
+    if ($updated_locations->{$line_index}) {
+      foreach my $location (@{$updated_locations->{$line_index}}) {
+        $location->{'bytes'} += $line_bytes_begin + $delta_bytes;
+        #print STDERR "UPDATE ALIGN: $location->{'root'}->{'extra'}->{'normalized'}: ($location->{'bytes'})\n";
+      }
     }
     $delta_bytes += $line_bytes_begin + $line_bytes_end;
     #print STDERR "ALIGN $orig_line ($line_index. lbb $line_bytes_begin, lbe $line_bytes_end, delta $delta_bytes, bytes_count $bytes_count)\n";
@@ -862,7 +953,7 @@ sub _align_environment($$$$)
   my $counts = pop @{$self->{'count_context'}};
   my $bytes_count;
   ($result, $bytes_count) = $self->_align_lines($result, $max,
-                      $align, $counts->{'locations'});
+                      $align, $counts->{'locations'}, $counts->{'images'});
   $self->_update_locations_counts($counts->{'locations'});
   $self->{'count_context'}->[-1]->{'bytes'} += $bytes_count;
   $self->{'count_context'}->[-1]->{'lines'} += $counts->{'lines'};
@@ -1208,7 +1299,12 @@ sub _image_text($$$)
                          .$self->get_conf('INPUT_PERL_ENCODING').")")
                 if (defined($self->get_conf('INPUT_PERL_ENCODING')));
       my $result = '';
+      my $max_width = 0;
       while (<$filehandle>) {
+        my $width = Texinfo::Convert::Unicode::string_width($_);
+        if ($width > $max_width) {
+          $max_width = $width;
+        }
         $result .= $_;
       }
       # remove last end of line
@@ -1217,7 +1313,7 @@ sub _image_text($$$)
         $self->document_warn(sprintf($self->__("error on closing image text file %s: %s"),
                                      $txt_file, $!));
       }
-      return $result;
+      return ($result, $max_width);
     } else {
       $self->line_warn(sprintf($self->__("\@image file `%s' unreadable: %s"), 
                                $txt_file, $!), $root->{'line_nr'});
@@ -1226,26 +1322,20 @@ sub _image_text($$$)
   return undef;
 }
 
-sub _image_formatted_text($$$$$)
+sub _image_formatted_text($$$$)
 {
   my $self = shift;
   my $root = shift;
   my $basefile = shift;
   my $text = shift;
-  my $text_result = shift;
 
   my $result;
   if (defined($text)) {
-    $result = $text_result;
+    $result = $text;
   } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[3])) {
-    my $alt = Texinfo::Convert::Text::convert(
+    $result = '[' .Texinfo::Convert::Text::convert(
       {'contents' => $root->{'extra'}->{'brace_command_contents'}->[3]},
-      {Texinfo::Common::_convert_text_options($self)});
-    if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
-      $result = '['.$alt.']';
-    } else {
-      $result = $alt;
-    }
+      {Texinfo::Common::_convert_text_options($self)}) .']';
   } else {
     $self->line_warn(sprintf($self->__(
                     "could not find \@image file `%s.txt' nor alternate text"),
@@ -1264,18 +1354,16 @@ sub _image($$)
     my $basefile = Texinfo::Convert::Text::convert(
      {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]},
      {'code' => 1, Texinfo::Common::_convert_text_options($self)});
-    my $text = $self->_image_text($root, $basefile);
-    my $text_result;
-    if (defined($text)) {
-      if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
-        $text_result = '['.$text.']';
-      } else {
-        $text_result = $text;
-      }
-    }
-    my $result = $self->_image_formatted_text($root, $basefile, $text,
-                                              $text_result);
+    my ($text, $width) = $self->_image_text($root, $basefile);
+    my $result = $self->_image_formatted_text($root, $basefile, $text);
     my $lines_count = ($result =~ tr/\n/\n/);
+    if (!defined($width)) {
+      $width = Texinfo::Convert::Unicode::string_width($result);
+    }
+    # the last line is part of the image but do not have a new line,
+    # so 1 is added to $lines_count to have the number of lines of
+    # the image
+    $self->_add_image($root, $lines_count+1, $width);
     return ($result, $lines_count);
   }
   return ('', 0);
@@ -2208,7 +2296,7 @@ sub _convert($$)
          {'indent_level'
           => $self->{'format_context'}->[-1]->{'indent_level'} -1});
       } else {
-        $result = $self->convert_line ({'contents' => $root->{'extra'}->{'misc_content'}},
+        $result = $self->convert_line({'contents' => $root->{'extra'}->{'misc_content'}},
          {'indent_level' 
           => $self->{'format_context'}->[-1]->{'indent_level'} -1});
       }
@@ -2797,7 +2885,7 @@ sub _convert($$)
     $result .= $self->_count_added($paragraph->{'container'},
                                    $paragraph->{'container'}->end());
     if ($self->{'context'}->[-1] eq 'flushright') {
-      $result = $self->_align_environment ($result, 
+      $result = $self->_align_environment($result, 
         $self->{'text_element_context'}->[-1]->{'max'}, 'right');
     }
     pop @{$self->{'formatters'}};

@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.57 2013/02/03 23:53:48 karl Exp $
+# $Id: Makefile.am,v 1.61 2013/02/10 16:45:05 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
@@ -163,8 +163,16 @@ all-local: maintain/catalog.xml $(document_strings_mo_files) \
 tp_tests = prove.sh
 
 if TP_TESTS
-TESTS = $(tp_tests)
+#TESTS = $(tp_tests)
+TESTS = $(test_tap_files_generated_list)
 endif
+
+TEST_EXTENSIONS = .t
+T_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) \
+                       $(top_srcdir)/build-aux/tap-driver.sh
+T_LOG_COMPILER = $(PERL)
+AM_T_LOG_FLAGS = -w
+AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir;
 
 maintenance_files = \
   maintain/all_tests.sh \
@@ -173,6 +181,7 @@ maintenance_files = \
   maintain/Makefile_perl_po \
   maintain/MANIFEST_generated_files \
   maintain/prepare_perl_module.sh \
+  maintain/regenerate_cmd_tests.sh \
   maintain/regenerate_converters_documentation.sh \
   maintain/regenerate_docstr.sh \
   maintain/regenerate_documentlanguages.pl \

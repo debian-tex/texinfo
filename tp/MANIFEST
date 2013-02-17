@@ -78,6 +78,7 @@ maintain/catalog.xml.in
 maintain/change_perl_modules_version.sh
 maintain/language-subtag-registry
 maintain/prepare_perl_module.sh
+maintain/regenerate_cmd_tests.sh
 maintain/regenerate_converters_documentation.sh
 maintain/regenerate_docstr.sh
 maintain/regenerate_documentlanguages.pl
@@ -197,6 +198,7 @@ t/include_dir/macro_included.texi
 t/include_dir/section_file.texi
 t/include_reference/f--ile.png
 t/include_reference/f--ile.txt
+t/include_reference/figure.txt
 t/include_reference/inc_file.texi
 t/include_reference/incl-incl.txi
 t/include_reference/macro_included.texi
@@ -702,6 +704,7 @@ t/results/info_tests/image_quotes.pl
 t/results/info_tests/image_text_encoded.pl
 t/results/info_tests/index_entry_at_end_node.pl
 t/results/info_tests/known_encoding.pl
+t/results/info_tests/multiline_image_and_align.pl
 t/results/info_tests/multitable_anchor_and_index_entry.pl
 t/results/info_tests/nested_footnotes_separate.pl
 t/results/info_tests/nested_multitable_anchor_index.pl
@@ -1025,6 +1028,7 @@ t/results/plaintext_tests/japanese_utf8/res_plaintext/japanese_utf8.txt
 t/results/plaintext_tests/line_passed_and_formats.pl
 t/results/plaintext_tests/long_line.pl
 t/results/plaintext_tests/long_uref_after_item.pl
+t/results/plaintext_tests/multiline_image_and_align.pl
 t/results/plaintext_tests/multiline_verb_after_space.pl
 t/results/plaintext_tests/multitable.pl
 t/results/plaintext_tests/multitable_in_example_extraneous_tab.pl

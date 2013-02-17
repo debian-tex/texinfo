@@ -1,5 +1,8 @@
 use strict;
 
+use File::Spec;
+BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} }
+
 require 't/test_utils.pl';
 
 my $simple_menu_text = '
@@ -173,6 +176,15 @@ Chap 2
 
 @node unnumberedsec
 @unnumberedsec unnumberedsec
+'],
+['detailmenu_unknown_node',
+'@node Top
+
+@menu
+@detailmenu
+* unknown::
+@end detailmenu
+@end menu
 '],
 ['reference_to_external_manual',
 '

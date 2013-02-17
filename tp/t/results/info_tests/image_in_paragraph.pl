@@ -218,7 +218,7 @@ $result_converted{'info'}->{'image_in_paragraph'} = 'This is , produced from .
 
 File: ,  Node: Top,  Up: (dir)
 
-Para.  [image src="f--ile.png" alt="alt\\"\\"\\\\" text="[Image description\\"\\"\\\\.]" ].  End para.
+Para.  [image src="f--ile.png" alt="alt\\"\\"\\\\" text="Image description\\"\\"\\\\." ].  End para.
 
 
 Tag Table:

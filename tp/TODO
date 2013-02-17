@@ -95,6 +95,7 @@ maybe they are sufficient, but they are only done for long checks.
 
 Test of CASE_INSENSITIVE_FILENAMES.
 
+anchor in flushright, on an empty line, with a current byte offset.
 
 Future features
 ===============

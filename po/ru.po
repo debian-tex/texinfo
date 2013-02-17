@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-02-04 15:57-0800\n"
+"POT-Creation-Date: 2013-02-16 06:55-0800\n"
 "PO-Revision-Date: 2005-02-07 09:27+0300\n"
 "Last-Translator: Oleg S. Tihonov <ost@tatnipi.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -2376,27 +2376,27 @@ msgstr ""
 msgid "@%s outside of any node"
 msgstr "(вне какой-либо ноды)"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1109 tp/Texinfo/Parser.pm:2508
+#: tp/Texinfo/Convert/Plaintext.pm:1200 tp/Texinfo/Parser.pm:2508
 #, fuzzy, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "Вхождение для именного указателя `%s' вне ноды"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1217
+#: tp/Texinfo/Convert/Plaintext.pm:1313
 #, fuzzy, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "невозможно закрыть выходной файл `%s'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1222
+#: tp/Texinfo/Convert/Plaintext.pm:1318
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "невозможно прочитать @image файл `%s': %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1251
+#: tp/Texinfo/Convert/Plaintext.pm:1341
 #, fuzzy, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr "Невозможно найти ноду `%s'."
 
-#: tp/Texinfo/Convert/Plaintext.pm:1617
+#: tp/Texinfo/Convert/Plaintext.pm:1705
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -2404,12 +2404,12 @@ msgstr ""
 "@strong{Note...} создает в Info ложную перекрестную ссылку; перефразируйте "
 "текст, чтобы избежать этого"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1849
+#: tp/Texinfo/Convert/Plaintext.pm:1937
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1852
+#: tp/Texinfo/Convert/Plaintext.pm:1940
 msgid "`.' or `,' must follow @xref"
 msgstr ""
 
@@ -2418,7 +2418,7 @@ msgstr ""
 msgid "@%s should only appear at beginning or end of document"
 msgstr "%s: невозможно открыть css-файл: %s"
 
-#: tp/Texinfo/Parser.pm:1068 tp/Texinfo/Structuring.pm:548
+#: tp/Texinfo/Parser.pm:1068 tp/Texinfo/Structuring.pm:588
 #, perl-format
 msgid "multiple @%s"
 msgstr ""
@@ -3038,70 +3038,65 @@ msgstr ""
 msgid "no sectioning command associated with @%s"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:568
-#, fuzzy, perl-format
-msgid "menu reference to nonexistent node `%s'"
-msgstr "на ноду `%s' нет ссылок"
-
-#: tp/Texinfo/Structuring.pm:583
-#, perl-format
-msgid "menu entry node name `%s' different from %s name `%s'"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:619
-#, perl-format
-msgid "unreferenced node `%s'"
-msgstr "на ноду `%s' нет ссылок"
-
-#: tp/Texinfo/Structuring.pm:665
-#, perl-format
-msgid "node `%s' is %s for `%s' in sectioning but not in menu"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:672
-#, perl-format
-msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:690
-#, perl-format
-msgid "node `%s' is %s for `%s' in menu but not in sectioning"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:744
-#, perl-format
-msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:771
-#, fuzzy, perl-format
-msgid "%s reference to nonexistent `%s'"
-msgstr "на ноду `%s' нет ссылок"
-
-#: tp/Texinfo/Structuring.pm:790
-#, fuzzy, perl-format
-msgid "node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr "Нода `%s' не имеет пункта меню для `%s', хотя на нее ссылается поле Up"
-
-#: tp/Texinfo/Structuring.pm:798
-#, perl-format
-msgid "for `%s', up in menu `%s' and up `%s' don't match"
-msgstr ""
-
 #  здесь %s может быть `cross' или `menu'
-#: tp/Texinfo/Structuring.pm:1282
+#: tp/Texinfo/Structuring.pm:538 tp/Texinfo/Structuring.pm:1319
 #, fuzzy, perl-format
 msgid "@%s reference to nonexistent node `%s'"
 msgstr ""
 "%s на несуществующую ноду `%s' (возможно, неправильно описана структура "
 "глав?)"
 
-#: tp/Texinfo/Structuring.pm:1294
+#: tp/Texinfo/Structuring.pm:551
+#, perl-format
+msgid "@%s entry node name `%s' different from %s name `%s'"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:656
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr "на ноду `%s' нет ссылок"
+
+#: tp/Texinfo/Structuring.pm:702
+#, perl-format
+msgid "node `%s' is %s for `%s' in sectioning but not in menu"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:709
+#, perl-format
+msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:727
+#, perl-format
+msgid "node `%s' is %s for `%s' in menu but not in sectioning"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:781
+#, perl-format
+msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:808
+#, fuzzy, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "на ноду `%s' нет ссылок"
+
+#: tp/Texinfo/Structuring.pm:827
+#, fuzzy, perl-format
+msgid "node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr "Нода `%s' не имеет пункта меню для `%s', хотя на нее ссылается поле Up"
+
+#: tp/Texinfo/Structuring.pm:835
+#, perl-format
+msgid "for `%s', up in menu `%s' and up `%s' don't match"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:1331
 #, perl-format
 msgid "@%s to `%s', different from %s name `%s'"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:1959
+#: tp/Texinfo/Structuring.pm:1996
 #, fuzzy, perl-format
 msgid "empty index key in @%s"
 msgstr "для `%s' не найдено вхождений в именном указателе\n"
@@ -3213,24 +3208,24 @@ msgstr "Невозможно найти `%s'."
 msgid "tex4ht.pm: could not open: %s"
 msgstr "Невозможно найти `%s'."
 
-#: tp/init/tex4ht.pm:293
+#: tp/init/tex4ht.pm:294
 #, perl-format
 msgid "tex4ht.pm: end of @%s item %d not found"
 msgstr ""
 
-#: tp/init/tex4ht.pm:300
+#: tp/init/tex4ht.pm:301
 #, perl-format
 msgid ""
 "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
 "items found in the document for @%s"
 msgstr ""
 
-#: tp/init/tex4ht.pm:320
+#: tp/init/tex4ht.pm:321
 #, fuzzy, perl-format
 msgid "tex4ht.pm: output has no HTML item for @%s %s"
 msgstr "невозможно создать выходной файл `%s'"
 
-#: tp/init/tex4ht.pm:335
+#: tp/init/tex4ht.pm:336
 #, perl-format
 msgid ""
 "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
@@ -3695,6 +3690,10 @@ msgstr "В %s нет номера страницы"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "за вхождением %s следует вхождение с вторичным именем"
+
+#, fuzzy
+#~ msgid "menu reference to nonexistent node `%s'"
+#~ msgstr "на ноду `%s' нет ссылок"
 
 #, fuzzy
 #~ msgid "Can't create directories `%s': %s"

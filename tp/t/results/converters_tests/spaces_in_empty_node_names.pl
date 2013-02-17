@@ -1018,30 +1018,30 @@ $result_errors{'spaces_in_empty_node_names'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':4: menu reference to nonexistent node `@ @ \'
+    'error_line' => ':4: @menu reference to nonexistent node `@ @ \'
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'menu reference to nonexistent node `@ @ \'',
+    'text' => '@menu reference to nonexistent node `@ @ \'',
     'type' => 'error'
   },
   {
-    'error_line' => ':5: menu reference to nonexistent node `@verb{:  :}\'
+    'error_line' => ':5: @menu reference to nonexistent node `@verb{:  :}\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'menu reference to nonexistent node `@verb{:  :}\'',
+    'text' => '@menu reference to nonexistent node `@verb{:  :}\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':6: menu reference to nonexistent node `@ \'
+    'error_line' => ':6: @menu reference to nonexistent node `@ \'
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'menu reference to nonexistent node `@ \'',
+    'text' => '@menu reference to nonexistent node `@ \'',
     'type' => 'error'
   }
 ];

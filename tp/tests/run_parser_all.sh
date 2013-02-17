@@ -21,6 +21,7 @@ raw_out_dir=raw_out_parser
 #res_dir_ref=res
 #command=texi2html.pl
 diffs_dir=diffs
+one_test_logs_dir=test_log
 
 logfile=tests.log
 main_command='texi2any.pl'
@@ -70,10 +71,14 @@ one_test=no
 if [ z"$1" != 'z' ]; then
   one_test=yes
   the_test=$1
+  test_name=$the_test
   if [ "z$the_test" = "ztexi" ]; then
     the_file=$2
     [ "z$the_file" != "z" ] && the_basename=`basename $the_file .texi`
+    test_name="${test_name}_$the_basename"
   fi
+  test -d $one_test_logs_dir || mkdir $one_test_logs_dir
+  logfile="$one_test_logs_dir/$test_name.log"
 fi
 
 if [ "z$srcdir_test" = 'z' ]; then

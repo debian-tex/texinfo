@@ -1,7 +1,8 @@
-/* tag.c -- Functions to handle Info tags.
-   $Id: tag.c,v 1.2 2012/11/30 23:58:20 gray Exp $
+/* tag.c -- Functions to handle Info tags (that is, the special
+   construct for images, not the "tag table" of starting position.)
+   $Id: tag.c,v 1.3 2013/02/10 19:44:42 karl Exp $
 
-   Copyright (C) 2012 Free Software Foundation, Inc.
+   Copyright (C) 2012, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -47,6 +48,9 @@ info_tag_free (struct info_tag *tag)
     }
 }
 
+
+/* See if KW is one of the tags in the list starting at TAG.  */
+
 static struct info_tag *
 info_tag_find (struct info_tag *tag, const char *kw)
 {
@@ -55,6 +59,29 @@ info_tag_find (struct info_tag *tag, const char *kw)
       return tag;
   return NULL;
 }
+
+
+/* Found a keyword when parsing the full tag string: alt, text, etc.
+   Return the new tag, update *TMPBUF_PTR and set *KW.  */
+
+static struct info_tag *
+tag_found_keyword (struct text_buffer *tmpbuf_ptr, char **kw)
+{
+  struct info_tag *tag = xmalloc (sizeof (*tag));
+  tag->next = NULL;  /* have to update in caller */
+
+  text_buffer_add_char (tmpbuf_ptr, 0);
+  if (*kw != tmpbuf_ptr->base) { /* in case tmpbuf got realloc-ed */
+    *kw = tmpbuf_ptr->base;      /* ick */
+  }
+  tag->kw = xstrdup (*kw);
+  tag->val = xstrdup (*kw + strlen(*kw) + 1);
+  text_buffer_reset (tmpbuf_ptr);
+
+  return tag;
+}
+
+/* Handle the image tag.  */
 
 static int
 tag_image (char *text, struct text_buffer *outbuf)
@@ -77,14 +104,11 @@ tag_image (char *text, struct text_buffer *outbuf)
 	{
 	  if (state == state_val)
 	    {
-	      text_buffer_add_char (&tmpbuf, 0);
-	      tag = xmalloc (sizeof (*tag));
-	      tag->next = tag_head;
-	      tag_head = tag;
-	      tag->kw = xstrdup (kw);
-	      tag->val = xstrdup (kw + strlen(kw) + 1);
-	      text_buffer_reset (&tmpbuf);
-	      state = state_delim;
+              struct info_tag *new_kw = tag_found_keyword (&tmpbuf, &kw);
+              new_kw->next = tag_head;
+              tag_head = new_kw;
+              state = state_delim;
+              continue;
 	    }
 	  if (state == state_delim)
 	    continue;
@@ -121,13 +145,9 @@ tag_image (char *text, struct text_buffer *outbuf)
 		}
 	      if (state == state_qstr)
 		{
-		  text_buffer_add_char (&tmpbuf, 0);
-		  tag = xmalloc (sizeof (*tag));
-		  tag->next = tag_head;
-		  tag_head = tag;
-		  tag->kw = xstrdup (kw);
-		  tag->val = xstrdup (kw + strlen(kw) + 1);
-		  text_buffer_reset (&tmpbuf);
+		  struct info_tag *new_kw = tag_found_keyword (&tmpbuf, &kw);
+		  new_kw->next = tag_head;
+		  tag_head = new_kw;
 		  state = state_delim;
 		  continue;
 		}
@@ -158,6 +178,9 @@ tag_image (char *text, struct text_buffer *outbuf)
   return 0;
 }
 
+
+/* We don't do anything with the index tag; it'll just be ignored.  */
+
 static struct tag_handler tagtab[] = {
   { "image", 5, tag_image },
   { NULL }
@@ -184,25 +207,25 @@ tags_expand (char **pbuf, size_t *pbuflen)
 
   text_buffer_init (&outbuf);
 
-  while ((p = input + strlen (input)) < endp)
+  while ((p = input + strlen (input)) < endp) /* go forward to null */
     {
-      if (memcmp(p + 1, "\b[", 2) == 0)
+      if (memcmp(p + 1, "\b[", 2) == 0)       /* opening magic? */
 	{
 	  char *q;
 
 	  p += 3;
-	  q = p + strlen (p);
-	  if (memcmp (q + 1, "\b]", 2) == 0)
+	  q = p + strlen (p);                 /* forward to next null */
+	  if (memcmp (q + 1, "\b]", 2) == 0)  /* closing magic? */
 	    {
 	      size_t len;
 	      struct tag_handler *tp;
 
-	      len = strcspn (p, " \t");
+	      len = strcspn (p, " \t");       /* tag name */
 	      tp = find_tag_handler (p, len);
 	      if (tp)
 		{
 		  while (p[len] == ' ' || p[len] == '\t')
-		    ++len;
+		    ++len;                      /* move past whitespace */
 	      
 		  if (!text_buffer_off (&outbuf))
 		    text_buffer_add_string (&outbuf, *pbuf, p - *pbuf - 3);

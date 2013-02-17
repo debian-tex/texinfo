@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-02-04 15:57-0800\n"
+"POT-Creation-Date: 2013-02-16 06:55-0800\n"
 "PO-Revision-Date: 2002-03-08 04:56+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -2319,38 +2319,38 @@ msgstr ""
 msgid "@%s outside of any node"
 msgstr "(不在任何的節點內)"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1109 tp/Texinfo/Parser.pm:2508
+#: tp/Texinfo/Convert/Plaintext.pm:1200 tp/Texinfo/Parser.pm:2508
 #, fuzzy, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "索引 `%s' 的項目不在任何的節點內"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1217
+#: tp/Texinfo/Convert/Plaintext.pm:1313
 #, fuzzy, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Convert/Plaintext.pm:1222
+#: tp/Texinfo/Convert/Plaintext.pm:1318
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image 檔案 `%s' 無法讀取: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1251
+#: tp/Texinfo/Convert/Plaintext.pm:1341
 #, fuzzy, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr "找不到 `%s' 節點."
 
-#: tp/Texinfo/Convert/Plaintext.pm:1617
+#: tp/Texinfo/Convert/Plaintext.pm:1705
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1849
+#: tp/Texinfo/Convert/Plaintext.pm:1937
 #, fuzzy, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "`.' 或 `,' 必須跟著交互參照, 而不是 %c"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1852
+#: tp/Texinfo/Convert/Plaintext.pm:1940
 #, fuzzy
 msgid "`.' or `,' must follow @xref"
 msgstr "`.' 或 `,' 必須跟著交互參照, 而不是 %c"
@@ -2360,7 +2360,7 @@ msgstr "`.' 或 `,' 必須跟著交互參照, 而不是 %c"
 msgid "@%s should only appear at beginning or end of document"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Parser.pm:1068 tp/Texinfo/Structuring.pm:548
+#: tp/Texinfo/Parser.pm:1068 tp/Texinfo/Structuring.pm:588
 #, perl-format
 msgid "multiple @%s"
 msgstr ""
@@ -2967,67 +2967,62 @@ msgstr ""
 msgid "no sectioning command associated with @%s"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:568
-#, fuzzy, perl-format
-msgid "menu reference to nonexistent node `%s'"
-msgstr "未被參照的節點 `%s'"
-
-#: tp/Texinfo/Structuring.pm:583
-#, perl-format
-msgid "menu entry node name `%s' different from %s name `%s'"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:619
-#, perl-format
-msgid "unreferenced node `%s'"
-msgstr "未被參照的節點 `%s'"
-
-#: tp/Texinfo/Structuring.pm:665
-#, perl-format
-msgid "node `%s' is %s for `%s' in sectioning but not in menu"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:672
-#, perl-format
-msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:690
-#, perl-format
-msgid "node `%s' is %s for `%s' in menu but not in sectioning"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:744
-#, perl-format
-msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:771
-#, fuzzy, perl-format
-msgid "%s reference to nonexistent `%s'"
-msgstr "未被參照的節點 `%s'"
-
-#: tp/Texinfo/Structuring.pm:790
-#, perl-format
-msgid "node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:798
-#, perl-format
-msgid "for `%s', up in menu `%s' and up `%s' don't match"
-msgstr ""
-
-#: tp/Texinfo/Structuring.pm:1282
+#: tp/Texinfo/Structuring.pm:538 tp/Texinfo/Structuring.pm:1319
 #, fuzzy, perl-format
 msgid "@%s reference to nonexistent node `%s'"
 msgstr "%s 參照到不存在的節點: `%s'"
 
-#: tp/Texinfo/Structuring.pm:1294
+#: tp/Texinfo/Structuring.pm:551
+#, perl-format
+msgid "@%s entry node name `%s' different from %s name `%s'"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:656
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr "未被參照的節點 `%s'"
+
+#: tp/Texinfo/Structuring.pm:702
+#, perl-format
+msgid "node `%s' is %s for `%s' in sectioning but not in menu"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:709
+#, perl-format
+msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:727
+#, perl-format
+msgid "node `%s' is %s for `%s' in menu but not in sectioning"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:781
+#, perl-format
+msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:808
+#, fuzzy, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "未被參照的節點 `%s'"
+
+#: tp/Texinfo/Structuring.pm:827
+#, perl-format
+msgid "node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:835
+#, perl-format
+msgid "for `%s', up in menu `%s' and up `%s' don't match"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:1331
 #, perl-format
 msgid "@%s to `%s', different from %s name `%s'"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:1959
+#: tp/Texinfo/Structuring.pm:1996
 #, fuzzy, perl-format
 msgid "empty index key in @%s"
 msgstr "找不到包含 `%s' 的索引項目\n"
@@ -3139,24 +3134,24 @@ msgstr "無法找到 `%s'."
 msgid "tex4ht.pm: could not open: %s"
 msgstr "無法找到 `%s'."
 
-#: tp/init/tex4ht.pm:293
+#: tp/init/tex4ht.pm:294
 #, perl-format
 msgid "tex4ht.pm: end of @%s item %d not found"
 msgstr ""
 
-#: tp/init/tex4ht.pm:300
+#: tp/init/tex4ht.pm:301
 #, perl-format
 msgid ""
 "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
 "items found in the document for @%s"
 msgstr ""
 
-#: tp/init/tex4ht.pm:320
+#: tp/init/tex4ht.pm:321
 #, fuzzy, perl-format
 msgid "tex4ht.pm: output has no HTML item for @%s %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/init/tex4ht.pm:335
+#: tp/init/tex4ht.pm:336
 #, perl-format
 msgid ""
 "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
@@ -3519,6 +3514,10 @@ msgstr "在 %s 中沒有頁碼"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr ""
+
+#, fuzzy
+#~ msgid "menu reference to nonexistent node `%s'"
+#~ msgstr "未被參照的節點 `%s'"
 
 #, fuzzy
 #~ msgid "Can't read file %s: %s"

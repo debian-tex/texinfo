@@ -1,5 +1,5 @@
 /* filesys.c -- filesystem specific functions.
-   $Id: filesys.c,v 1.18 2012/11/17 17:16:18 gray Exp $
+   $Id: filesys.c,v 1.19 2013/02/13 19:16:39 gray Exp $
 
    Copyright 1993, 1997, 1998, 2000, 2002, 2003, 2004, 2007, 2008, 2009, 2011,
    2012 Free Software Foundation, Inc.
@@ -634,7 +634,7 @@ filesys_read_info_file (char *pathname, size_t *filesize,
 	  free (contents);
 	  return NULL;
         }
-
+      contents[fsize] = 0;
       close (descriptor);
     }
 

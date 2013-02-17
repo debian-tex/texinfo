@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.27 2013/01/11 18:28:56 karl Exp $
+   $Id: window.c,v 1.28 2013/02/13 07:38:19 gray Exp $
 
    Copyright 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008,
    2011, 2012, 2013 Free Software Foundation, Inc.
@@ -293,7 +293,7 @@ window_make_window (NODE *node)
      chain cannot start at window->height, since that is where the modeline
      for the previous window is displayed.  The inverse adjustment is made
      in window_delete_window (). */
-  window = xmalloc (sizeof (WINDOW));
+  window = xzalloc (sizeof (WINDOW));
   window->width = the_screen->width;
   window->height = (active_window->height / 2) - 1;
 #if defined (SPLIT_BEFORE_ACTIVE)
@@ -1293,7 +1293,7 @@ string_to_node (char *contents)
 {
   NODE *node;
 
-  node = xmalloc (sizeof (NODE));
+  node = xzalloc (sizeof (NODE));
   node->filename = NULL;
   node->parent = NULL;
   node->nodename = NULL;

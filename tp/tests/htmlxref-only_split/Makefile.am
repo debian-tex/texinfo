@@ -4,7 +4,7 @@ EXTRA_DIST = htmlxref.cnf-ref htmlxref.cnf-texinfo \
 DISTCLEANFILES = tests.log tests.out htmlxref.cnf
 
 distclean-local:
-	rm -rf out_parser diffs .texinfo
+	rm -rf out_parser diffs test_log .texinfo
 
 dist-hook:
 	rm -rf `find $(distdir)/res_parser -name CVS`

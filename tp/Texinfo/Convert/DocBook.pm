@@ -887,7 +887,7 @@ sub _convert($$;$)
                .$self->xml_protect_text($file->[0])
                ."\" format=\"$file->[1]\"></imagedata></imageobject>";
           }
-          my $image_text
+          my ($image_text, $image_width)
             = $self->Texinfo::Convert::Plaintext::_image_text($root, $basefile);
           if (defined($image_text)) {
             $result .= "<textobject><literallayout>"

@@ -22179,8 +22179,8 @@ $result_converted{'plaintext'}->{'at_commands_in_refs'} = 'Top
 ****************************************************
 
 
-19 [f--ile1] [Image description""\\.]
-************************************
+19 [f--ile1] Image description""\\.
+**********************************
 
 20  @ {} . 
 ***********
@@ -22216,7 +22216,7 @@ ae oe AE OE /o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e*
 e\'\' e;:: *note e. e( e_ .e e< j ee[:: *note i E=` C\',:: *note `` \'\' ` \'
 ,, ,:: *note << >> << >> < >:: *note `` \'\' --- -- ` \':: *note AAA (fff)
 AAA BBB:: *note CCC (rrr) CCC DDD:: *note the someone <someone@somewher>
-<no_explain@there>:: *note [f--ile1] [Image description""\\.]:: *note  @ {} . :: *note \'cite asis\' in @w b
+<no_explain@there>:: *note [f--ile1] Image description""\\.:: *note  @ {} . :: *note \'cite asis\' in @w b
 in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
 \'command\' \'file\' \'C-x <ESC>\':: *note 8.27in:: *note sansserif slanted::
 *note \'indicateurl\':: *note <http://somewhere_aaa> text (url) ls::
@@ -23033,7 +23033,7 @@ Top
 * AAA (fff) AAA BBB::
 * CCC (rrr) CCC DDD::
 * the someone <someone@somewher> <no_explain@there>::
-* [f--ile1]   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]::
+* [f--ile1]   [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]::
 *  @ {} . ::
 * \'cite asis\' in @w b in r SC *str* t VAR "dfn" i::
 * \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'::
@@ -23149,20 +23149,20 @@ File: ,  Node: CCC (rrr) CCC DDD,  Next: the someone <someone@somewher> <no_expl
 ********************
 
 
-File: ,  Node: the someone <someone@somewher> <no_explain@there>,  Next: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Prev: CCC (rrr) CCC DDD,  Up: Top
+File: ,  Node: the someone <someone@somewher> <no_explain@there>,  Next: [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ],  Prev: CCC (rrr) CCC DDD,  Up: Top
 
 18 the someone <someone@somewher> <no_explain@there>
 ****************************************************
 
 
-File: ,  Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Next:  @ {} . ,  Prev: the someone <someone@somewher> <no_explain@there>,  Up: Top
+File: ,  Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ],  Next:  @ {} . ,  Prev: the someone <someone@somewher> <no_explain@there>,  Up: Top
 
 
-19 [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]
-*********************************************************************************
+19 [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]
+*******************************************************************************
 
 
-File: ,  Node:  @ {} . ,  Next: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Prev: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Up: Top
+File: ,  Node:  @ {} . ,  Next: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Prev: [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ],  Up: Top
 
 20  @ {} . 
 ***********
@@ -23216,7 +23216,7 @@ ae oe AE OE /o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e*
 e\'\' e;:: *note e. e( e_ .e e< j ee[:: *note i E=` C\',:: *note `` \'\' ` \'
 ,, ,:: *note << >> << >> < >:: *note `` \'\' --- -- ` \':: *note AAA (fff)
 AAA BBB:: *note CCC (rrr) CCC DDD:: *note the someone <someone@somewher>
-<no_explain@there>:: *note [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]:: *note  @ {} . :: *note \'cite asis\' in @w b
+<no_explain@there>:: *note [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]:: *note  @ {} . :: *note \'cite asis\' in @w b
 in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
 \'command\' \'file\' \'C-x <ESC>\':: *note 8.27in:: *note sansserif slanted::
 *note \'indicateurl\':: *note <http://somewhere_aaa> text (url) ls::
@@ -23225,33 +23225,33 @@ in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
 
 Tag Table:
 Node: Top27
-Node: { }844
+Node: { }842
 Node:     !
-. . ? @923
-Node: @ { } \\ #1028
-Node: LaTeX TeX * , (C) ... ...1147
-Node: == error-> Euro ! ==> -1308
-Node: >= <= ->1464
-Node: a o -!- # -| ? (R)1583
-Node: => o a b a sunny day aa1722
-Node: AA ae oe AE OE /o /O ss /l /L D d TH th1902
-Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2129
-Node: e. e( e_ .e e< j ee[2343
-Node: i E=` C\',2501
-Node: `` \'\' ` \' ,, ,2618
-Node: << >> << >> < >2740
-Node: `` \'\' --- -- ` \'2871
-Node: AAA (fff) AAA BBB2999
-Node: CCC (rrr) CCC DDD3139
-Node: the someone <someone@somewher> <no_explain@there>3312
-Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3614
-Node:  @ {} . 3970
-Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i4179
-Node: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'4441
-Node: 8.27in4721
-Node: sansserif slanted4869
-Node: \'indicateurl\'4995
-Node: <http://somewhere_aaa> text (url) ls5143
+. . ? @921
+Node: @ { } \\ #1026
+Node: LaTeX TeX * , (C) ... ...1145
+Node: == error-> Euro ! ==> -1306
+Node: >= <= ->1462
+Node: a o -!- # -| ? (R)1581
+Node: => o a b a sunny day aa1720
+Node: AA ae oe AE OE /o /O ss /l /L D d TH th1900
+Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2127
+Node: e. e( e_ .e e< j ee[2341
+Node: i E=` C\',2499
+Node: `` \'\' ` \' ,, ,2616
+Node: << >> << >> < >2738
+Node: `` \'\' --- -- ` \'2869
+Node: AAA (fff) AAA BBB2997
+Node: CCC (rrr) CCC DDD3137
+Node: the someone <someone@somewher> <no_explain@there>3310
+Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]3610
+Node:  @ {} . 3960
+Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i4167
+Node: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'4429
+Node: 8.27in4709
+Node: sansserif slanted4857
+Node: \'indicateurl\'4983
+Node: <http://somewhere_aaa> text (url) ls5131
 
 End Tag Table
 ';

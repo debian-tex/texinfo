@@ -1,8 +1,10 @@
-texinfo (4.13.96.dfsg.1-1~1) UNRELEASED; urgency=low
+texinfo (5.0.dfsg.1-1) experimental; urgency=low
 
-  * Imported Upstream version 4.13.96.dfsg.1
+  * Imported Upstream version 5.0.dfsg.1
+    - fixes info segfault on big terminals (Closes: #700354)
+  * unfuzzify patches
 
- -- Norbert Preining <preining@debian.org>  Tue, 12 Feb 2013 15:52:10 +0900
+ -- Norbert Preining <preining@debian.org>  Sun, 17 Feb 2013 23:00:29 +0900
 
 texinfo (4.13.95.dfsg.1-1) experimental; urgency=low
 

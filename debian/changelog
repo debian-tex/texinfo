@@ -1,3 +1,10 @@
+texinfo (5.1.dfsg.1-1) experimental; urgency=low
+
+  * Imported Upstream version 5.1.dfsg.1
+  * unfuzzify patches
+
+ -- Norbert Preining <preining@debian.org>  Wed, 13 Mar 2013 08:36:02 +0900
+
 texinfo (5.0.dfsg.1-1) experimental; urgency=low
 
   * Imported Upstream version 5.0.dfsg.1

@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.230 2013/02/16 23:59:29 karl Exp $
+$Id: NEWS 5234 2013-03-12 22:56:31Z karl $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -22,7 +22,19 @@ one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
+5.1 (12 March 2013)
+* texi2any:
+  . irregular sectioning trees (see 5.0 news item) produce a warning
+    rather than an error.
+  . @set in the middle of the line no longer produces a warning.
+  
+* info:
+  . lzip (.lz) compression supported.
+  
+* install-info:
+  . lzip (.lz) compression supported.
 
+
 5.0 (16 February 2013)
 * Language:
   . Texinfo commands are supported in node names.
@@ -72,6 +84,29 @@ one of the relevant sections:
   The new program is, unfortunately, noticeably slower at present than
   the C program was.  We hope all the many improvements make the new
   version worthwhile for users nevertheless.
+
+* Intentional incompatibilities with the previous implementation of
+  makeinfo, through version 4.13:
+  
+  . The old implementation accepted a lone block of text inside @itemize,
+    @enumerate, etc., without any @item.  This is semantically
+    inconsistent, leading to problems with some backends, and thus now
+    produces a warning.
+    
+  . The old implementation accepted ``irregular'' sectioning trees.  Now,
+    when @node pointers are implicitly determined, the consistency of
+    @menu and the sectioning tree is checked.  (If node pointers are
+    explicitly specified in the document, the tree can still be irregular.)
+  
+  . The old implementation always added blank lines between function
+    definitions if they weren't already there.  Now blank lines are not
+    added.  (Both old and new implementations preserve blank lines that
+    are present.)
+    
+  . The old implementation did not consider ends of lines from expansion
+    of an @macro definition to end an @-command line-delimited argument
+    (@chapter, @center, etc.).  This is no longer the case.  (A detailed
+    example is in the manual, node Macro Details.)
 
 * pod2texi is a new (Perl) program that uses the capabilities of
   texi2any to translate Perl pod documentation to Texinfo.

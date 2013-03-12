@@ -1,8 +1,8 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.20 2012/11/17 17:16:18 gray Exp $
+   $Id: info-utils.c 5191 2013-02-23 00:11:18Z karl $
 
-   Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012
-   Free Software Foundation, Inc.
+   Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012,
+   2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,13 +17,17 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Originally written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #include "info.h"
 #include "info-utils.h"
 #if defined (HANDLE_MAN_PAGES)
 #  include "man.h"
 #endif /* HANDLE_MAN_PAGES */
+
+#ifdef __hpux
+#define va_copy(ap1,ap2) memcpy((&ap1),(&ap2),sizeof(va_list))
+#endif
 
 /* When non-zero, various display and input functions handle ISO Latin
    character sets correctly. */

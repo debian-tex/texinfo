@@ -581,14 +581,14 @@ $result_converted{'debugcount'}->{'printindex'} = ' [1] (0,0) :element
   [2] (0,0) :text_root
   [2] (0,0)
   [3] (0,0) @node
-   [4] (17,0) :_code
-    [5] (17,0) :text|Top|
-    [5] (17,0)
- locations  (1) l 0 b 0
-   [4] (17,0)
+   [4] (0,0) :_code
+    [5] (0,0) :text|Top|
+    [5] (0,0)
+   [4] (0,0)
    [6] (27,0) :_code
     [7] (27,0) :text|(|
     [7] (27,0)
+ locations  (1) l 0 b 0
     [8] (27,0) :text|dir|
     [8] (27,0)
     [9] (27,0) :text|)|
@@ -612,83 +612,51 @@ $result_converted{'debugcount'}->{'printindex'} = ' [1] (0,0) :element
      [17] (55,6) :text|after index|
      [17] (60,6)
     [16] (60,6)
-    [18] (96,6) :_code
-     [19] (96,6) :text|Top|
-     [19] (96,6)
-    [18] (96,6)
-    [20] (128,7) :frenchspacing
-     [21] (128,7) :text|index entry|
-     [21] (133,7)
-    [20] (133,7)
-    [22] (169,7) :_code
-     [23] (169,7) :text|Top|
-     [23] (169,7)
-    [22] (169,7)
-    [24] (201,8) :frenchspacing
-     [25] (201,8) :text|index entry|
-     [25] (206,8)
-    [24] (206,8)
-    [26] (242,8) :_code
-     [27] (242,8) :text|Top|
-     [27] (242,8)
-    [26] (242,8)
-    [28] (274,9) :frenchspacing
-     [29] (274,9) :text|looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry|
-     [29] (342,9)
-    [28] (342,9)
-    [30] (352,9) :_code
-     [31] (352,9) :text|Top|
-     [31] (352,9)
-    [30] (352,9)
+    [18] (128,7) :frenchspacing
+     [19] (128,7) :text|index entry|
+     [19] (133,7)
+    [18] (133,7)
+    [20] (201,8) :frenchspacing
+     [21] (201,8) :text|index entry|
+     [21] (206,8)
+    [20] (206,8)
+    [22] (274,9) :frenchspacing
+     [23] (274,9) :text|looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry|
+     [23] (342,9)
+    [22] (342,9)
    [15] (431,12)
-   [32] (431,12) :empty_line:text|\\n|
-   [32] (431,12)
-   [33] (431,12) @cindex:index_entry_command
-   [33] (431,12)
+   [24] (431,12) :empty_line:text|\\n|
+   [24] (431,12)
+   [25] (431,12) @cindex:index_entry_command
+   [25] (431,12)
  locations  (5) l 12
-   [34] (431,12) :empty_line:text|\\n|
-   [34] (431,12)
-   [35] (431,12) @printindex
-    [36] (452,15) :frenchspacing
-     [37] (452,15) :text|after index|
-     [37] (457,15)
-    [36] (457,15)
-    [38] (493,15) :_code
-     [39] (493,15) :text|Top|
-     [39] (493,15)
-    [38] (493,15)
-    [40] (525,16) :frenchspacing
-     [41] (525,16) :text|index entry|
-     [41] (530,16)
-    [40] (530,16)
-    [42] (566,16) :_code
-     [43] (566,16) :text|Top|
-     [43] (566,16)
-    [42] (566,16)
-    [44] (598,17) :frenchspacing
-     [45] (598,17) :text|index entry|
-     [45] (603,17)
-    [44] (603,17)
-    [46] (639,17) :_code
-     [47] (639,17) :text|Top|
-     [47] (639,17)
-    [46] (639,17)
-    [48] (671,18) :frenchspacing
-     [49] (671,18) :text|looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry|
-     [49] (739,18)
-    [48] (739,18)
-    [50] (749,18) :_code
-     [51] (749,18) :text|Top|
-     [51] (749,18)
-    [50] (749,18)
-   [35] (828,21)
-   [52] (828,21) :empty_line:text|\\n|
-   [52] (828,21)
-   [53] (828,21) @anchor
-   [53] (828,21)
+   [26] (431,12) :empty_line:text|\\n|
+   [26] (431,12)
+   [27] (431,12) @printindex
+    [28] (452,15) :frenchspacing
+     [29] (452,15) :text|after index|
+     [29] (457,15)
+    [28] (457,15)
+    [30] (525,16) :frenchspacing
+     [31] (525,16) :text|index entry|
+     [31] (530,16)
+    [30] (530,16)
+    [32] (598,17) :frenchspacing
+     [33] (598,17) :text|index entry|
+     [33] (603,17)
+    [32] (603,17)
+    [34] (671,18) :frenchspacing
+     [35] (671,18) :text|looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry|
+     [35] (739,18)
+    [34] (739,18)
+   [27] (828,21)
+   [36] (828,21) :empty_line:text|\\n|
+   [36] (828,21)
+   [37] (828,21) @anchor
+   [37] (828,21)
  locations  (6) l 21 b 828
-   [54] (828,21) :empty_spaces_after_close_brace:text|\\n|
-   [54] (828,21)
+   [38] (828,21) :empty_spaces_after_close_brace:text|\\n|
+   [38] (828,21)
   [3] (828,21)
  [1] (828,21)
 

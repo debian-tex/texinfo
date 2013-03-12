@@ -1,6 +1,6 @@
 #! /bin/false
 # vim: set autoindent shiftwidth=4 tabstop=4:
-# $Id: ISO_10367_BOX.pm,v 1.1 2011/10/12 23:51:41 pertusus Exp $
+# $Id: ISO_10367_BOX.pm,v 1.1 2011-10-12 23:51:41 pertusus Exp $
 
 # Conversion routines for ISO_10367-BOX.
 # Copyright (C) 2002-2009 Guido Flohr <guido@imperia.net>, all

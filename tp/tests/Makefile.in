@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# $Id: Makefile.am,v 1.14 2013/02/10 15:14:12 pertusus Exp $
+# $Id: Makefile.am 5191 2013-02-23 00:11:18Z karl $
 # Makefile.am for texinfo/tp/tests.
 # Copyright 2012, 2013 Free Software Foundation, Inc.
 #
@@ -141,6 +141,7 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/po.m4 \
 	$(top_srcdir)/gnulib/m4/progtest.m4 \
 	$(top_srcdir)/gnulib/m4/regex.m4 \
+	$(top_srcdir)/gnulib/m4/secure_getenv.m4 \
 	$(top_srcdir)/gnulib/m4/ssize_t.m4 \
 	$(top_srcdir)/gnulib/m4/stat.m4 \
 	$(top_srcdir)/gnulib/m4/stdbool.m4 \
@@ -485,6 +486,8 @@ CPPFLAGS = @CPPFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DIFF_A_OPTION = @DIFF_A_OPTION@
+DIFF_U_OPTION = @DIFF_U_OPTION@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
@@ -612,6 +615,7 @@ GNULIB_REALLOC_POSIX = @GNULIB_REALLOC_POSIX@
 GNULIB_REALPATH = @GNULIB_REALPATH@
 GNULIB_RMDIR = @GNULIB_RMDIR@
 GNULIB_RPMATCH = @GNULIB_RPMATCH@
+GNULIB_SECURE_GETENV = @GNULIB_SECURE_GETENV@
 GNULIB_SETENV = @GNULIB_SETENV@
 GNULIB_SETHOSTNAME = @GNULIB_SETHOSTNAME@
 GNULIB_SETLOCALE = @GNULIB_SETLOCALE@
@@ -797,6 +801,7 @@ HAVE_READLINK = @HAVE_READLINK@
 HAVE_READLINKAT = @HAVE_READLINKAT@
 HAVE_REALPATH = @HAVE_REALPATH@
 HAVE_RPMATCH = @HAVE_RPMATCH@
+HAVE_SECURE_GETENV = @HAVE_SECURE_GETENV@
 HAVE_SETENV = @HAVE_SETENV@
 HAVE_SETHOSTNAME = @HAVE_SETHOSTNAME@
 HAVE_SIGNED_SIG_ATOMIC_T = @HAVE_SIGNED_SIG_ATOMIC_T@
@@ -1291,6 +1296,9 @@ one_test_files_generated_list = \
      test_scripts/formatting_texi_ignore_and_comments.sh \
      test_scripts/formatting_ignore_and_comments_output.sh \
      test_scripts/formatting_test_redefine_need.sh \
+     test_scripts/formatting_one_line_no_content.sh \
+     test_scripts/formatting_one_line.sh \
+     test_scripts/formatting_empty.sh \
      test_scripts/formatting_direntry_dircategory_info_split.sh \
      test_scripts/formatting_split_nocopying.sh \
      test_scripts/formatting_split_nocopying_split.sh \
@@ -2664,6 +2672,27 @@ test_scripts/formatting_ignore_and_comments_output.sh.log: test_scripts/formatti
 test_scripts/formatting_test_redefine_need.sh.log: test_scripts/formatting_test_redefine_need.sh
 	@p='test_scripts/formatting_test_redefine_need.sh'; \
 	b='test_scripts/formatting_test_redefine_need.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test_scripts/formatting_one_line_no_content.sh.log: test_scripts/formatting_one_line_no_content.sh
+	@p='test_scripts/formatting_one_line_no_content.sh'; \
+	b='test_scripts/formatting_one_line_no_content.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test_scripts/formatting_one_line.sh.log: test_scripts/formatting_one_line.sh
+	@p='test_scripts/formatting_one_line.sh'; \
+	b='test_scripts/formatting_one_line.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test_scripts/formatting_empty.sh.log: test_scripts/formatting_empty.sh
+	@p='test_scripts/formatting_empty.sh'; \
+	b='test_scripts/formatting_empty.sh'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \

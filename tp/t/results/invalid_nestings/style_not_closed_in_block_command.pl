@@ -83,7 +83,6 @@ $result_trees{'style_not_closed_in_block_command'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'cartouche',
-            'invalid_nesting' => 1,
             'spaces_after_command' => {},
             'text_arg' => 'cartouche'
           },
@@ -139,21 +138,12 @@ $result_texts{'style_not_closed_in_block_command'} = 'cartouche in code
 
 $result_errors{'style_not_closed_in_block_command'} = [
   {
-    'error_line' => ':3: warning: @end should not appear in @code
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => '@end should not appear in @code',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':2: @code missing close brace
+    'error_line' => ':2: @end cartouche seen before @code closing brace
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@end cartouche seen before @code closing brace',
     'type' => 'error'
   }
 ];

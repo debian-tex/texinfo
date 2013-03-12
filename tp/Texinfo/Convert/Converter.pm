@@ -1,6 +1,6 @@
 # Converter.pm: Common code for Converters.
 #
-# Copyright 2011, 2012 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1272,16 +1272,30 @@ Texinfo::Convert::Converter is a super class that can be used to
 simplify converters initialization.  The class also provide some 
 useful methods.
 
-In turn, the converter should define some methods.  Three are optional,
-C<converter_defaults>, C<converter_initialize> and 
+In turn, the converter should define some methods.  Three are 
+optional, C<converter_defaults>, C<converter_initialize> and 
 C<converter_global_commands> and used for initialization, to 
 give C<Texinfo::Convert::Converter> some informations.
 
-The C<convert_tree> is more or less mandatory and should convert
-portions of Texinfo tree.  The C<output> and C<convert> are not
-required, but customarily used by converters as entry points for
-conversion to a file with headers and so on, or conversion of a
-texinfo tree.
+The C<convert_tree> method is more or less mandatory and should 
+convert portions of Texinfo tree.  The C<output> and C<convert> 
+are not required, but customarily used by converters as entry 
+points for conversion to a file with headers and so on, or 
+conversion of a whole Texinfo tree.
+
+Existing backends may be used as examples that implement those
+methods.  C<Texinfo::Convert::Texinfo> together with 
+C<Texinfo::Convert::PlainTexinfo>, as well as 
+C<Texinfo::Convert::TextContent> are trivial examples.  
+C<Texinfo::Convert::Text> is less trivial, although still simplistic, 
+while C<Texinfo::Convert::DocBook> is a real converter
+that is also not too complex.  
+
+L<Texinfo::Common>, L<Texinfo::Convert::Unicode> 
+and L<Texinfo::Report> document modules or additional function 
+that may be useful for backends, while the parsed Texinfo tree is 
+described in L<Texinfo::Parser>.
+
 
 =head1 METHODS
 
@@ -1296,15 +1310,15 @@ C<Texinfo::Convert::Converter>.
 =item $converter = MyConverter->converter($options)
 
 The I<$options> hash reference holds options for the converter.  In
-this option hash reference a parser object may be associated with the 
-I<parser> key.  The other options should be configuration options
-described in the Texinfo manual.  Those options, when appropriate,
-override the document content.
+this option hash reference a L<parser object|Texinfo::Parser> 
+may be associated with the I<parser> key.  The other options 
+should be configuration options described in the Texinfo manual.
+Those options, when appropriate, override the document content.
 
 The C<converter> function returns a converter object (a blessed hash 
 reference) after checking the options and performing some initializations,
 especially when a parser is given among the options.  The converter is
-also initialized as a C<Texinfo::Report>.
+also initialized as a L<Texinfo::Report>.
 
 =back
 
@@ -1398,13 +1412,18 @@ upper cased.  The function returns the accents formatted as XML.
 
 =back
 
+=head1 SEE ALSO
+
+L<Texinfo::Common>, L<Texinfo::Convert::Unicode>, L<Texinfo::Report> 
+and L<Texinfo::Parser>.  
+
 =head1 AUTHOR
 
 Patrice Dumas, E<lt>pertusus@free.frE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2011, 2012 Free Software Foundation, Inc.
+Copyright (C) 2011, 2012, 2013 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

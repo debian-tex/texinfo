@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# $Id: regenerate_file_lists.pl,v 1.14 2013/02/09 21:24:21 pertusus Exp $
+# $Id: regenerate_file_lists.pl 5197 2013-02-23 13:06:21Z pertusus $
 # Copyright 2011, 2012 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -33,7 +33,8 @@ find (\&wanted, ('t'));
 sub wanted 
 {
   if ((/\.pl$/ and $File::Find::dir =~ m:^t/results/[^/]+:)
-      or (!/^CVS$/ and $File::Find::dir =~ m:^t/results/[^/]+/[^/]+/res_[^/]+$:)) {
+      or (!/^CVS$/ and !/^\.svn$/ 
+          and $File::Find::dir =~ m:^t/results/[^/]+/[^/]+/res_[^/]+$:)) {
     $files{$File::Find::name} = 1;
   }
 }
@@ -51,7 +52,8 @@ my %include_files;
 find (\&wanted_include_files, ('t'));
 sub wanted_include_files
 {
-  if (/\.[a-z]+$/ and $File::Find::dir =~ m:^t/include_reference:) {
+  if (/\.[a-z]+$/ and !/^\.svn$/ 
+      and $File::Find::dir =~ m:^t/include_reference:) {
     $include_files{$File::Find::name} = 1;
   }
 }
@@ -85,7 +87,7 @@ foreach my $file (sort(keys(%files)), sort(keys(%include_files))) {
 print INCLUDE "\n\n";
 
 print INCLUDE "t/include_dir:\n".
-   "\t".'$(mkdir_p) $@'."\n\n";
+   "\t".'$(MKDIR_P) $@'."\n\n";
 my $test_copied_include_files = 'test_copied_include_files =';
 foreach my $include_file (keys(%include_files)) {
   my $bfile = basename($include_file);

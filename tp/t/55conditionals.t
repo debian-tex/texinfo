@@ -13,6 +13,28 @@ Flag a is set.
 
 @end ifset
 '],
+['comment_on_ifset_line',
+'@set x
+
+@ifset x@c
+Y1
+@end ifset
+@ifset x@c comm
+Y2
+@end ifset
+@ifset x@c@ggg
+Y3
+@end ifset
+@ifset x @c
+Y4
+@end ifset
+@ifset x @c comm
+Y5
+@end ifset
+@ifset x @c@ggg
+Y6
+@end ifset
+'],
 ['nested_ignore',
 '@ignore
 @ignore
@@ -118,6 +140,17 @@ open {
 @bye
 @end ifset
 '],
+['ifset_in_command',
+'
+@file{
+@ifset x
+xset
+@end ifset
+@ifclear x
+xclear
+@end ifclear
+}
+'],
 ['ignored_in_ifset',
 '
 @ifset notset
@@ -160,7 +193,7 @@ text
 @set a
 
 @ifset a
-@ifclear ok  - ok, ignored
+@ifclear ok @c - ok, ignored
 @end junky   - ok, ignored
 @end ifset
 @c WRONG - missing @end ifset.
@@ -272,6 +305,17 @@ Something
 Something
 
 @end ifset
+'],
+['bad_ifset_argument',
+'@ifset a|b
+Ra&b
+@end ifset
+'],
+['bad_ifclear_argument',
+'
+@ifclear #something
+R#something
+@end ifclear
 '],
 ['ignore_not_closed',
 '@ignore

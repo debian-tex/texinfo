@@ -1,4 +1,4 @@
-$Id: README-hacking,v 1.7 2013/02/16 23:59:29 karl Exp $
+$Id: README-hacking 5234 2013-03-12 22:56:31Z karl $
 This file describes the development environment for Texinfo.
 
   Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013
@@ -39,6 +39,10 @@ specify that option.
 Other -W options can be useful too, and patches are welcome to resolve
 diagnostics; however, removing all possible warning messages, or
 warnings with nonfree compilers, is explicitly not a goal.
+
+If you want to delve into making a new backend for the Perl makeinfo,
+the documentation in tp/Texinfo/Convert/Converter.pm is a good starting
+point, as it describes the existing backends and other places to look.
 
 Translations are handled through the Translation Project.  When a new
 .po is posted in
@@ -92,6 +96,7 @@ ensure TXI_XLATE in doc/Makefile.am matches actual file list.
 - Official releases only:
 version number in texi2dvi, texi2pdf, txirefcard.tex.
 sync texi2html/test/ results with tp/.
+ensure building standalone modules for CPAN still works.
 make dvi and fix underfull/overfull boxes.
 specially plead with bug-texinfo / beebe / compile farms to try.
 try groff.texinfo from groff source repo.
@@ -106,12 +111,12 @@ make po-check             # update po/POTFILES.in as needed
 make -C po update-po      # but don't commit yet, dist updates po_document
 make -C doc wwwdoc-build  # and eventually -install, for official.
 (export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
-cvs commit                # when clean, then distcheck to be sure.
+svn commit                # when clean, then distcheck to be sure.
 #create diff  for official, see below 
 
 - To do the actual upload:
 pkg=texinfo
-ver=4.13.97
+ver=5.0.91
 
 then do one of:
 gnupload --to alpha.gnu.org:$pkg $pkg-$ver.tar.xz                #pretest
@@ -152,3 +157,15 @@ relink texinfo $ver
   ... announcements:
 news item at savannah.
 send announcement to info-gnu, cc bug-texinfo.
+
+  ... make diffs at official release:
+  prev=4.13
+  ver=5.0
+  cd $xarchive/../prod
+  tar xf texinfo-$ver.tar.gz
+  tar xf texinfo-$prev.tar.gz
+  diff -Nrc2 texinfo-$prev texinfo-$ver | xz >texinfo-$prev-$ver.diff.xz
+  gnupload --to ftp.gnu.org:texinfo !$
+  rm -rf texinfo-$ver texinfo-$prev
+  ro texinfo-*$ver*
+  

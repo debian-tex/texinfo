@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.144 2013/02/16 16:50:22 karl Exp $
+# $Id: configure.ac 5234 2013-03-12 22:56:31Z karl $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
 # 2012, 2013 Free Software Foundation, Inc.
@@ -12,7 +12,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [5.0], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [5.1], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -93,9 +93,45 @@ AC_PROG_MAKE_SET
 AC_PROG_LN_S
 AC_PROG_MKDIR_P
 
-dnl gettext Makefiles may need MKINSTALLDIRS
+# gettext Makefiles may still need MKINSTALLDIRS.
 MKINSTALLDIRS="\$(top_srcdir)/build-aux/install-sh -d"
 AC_SUBST([MKINSTALLDIRS])
+
+# check whether diff accepts the -u option (not on HP-UX).
+AC_MSG_CHECKING(whether diff accepts -u)
+diff_accepts_u_option=no
+echo foo >conftest.dtx
+echo foo | diff -u - conftest.dtx >/dev/null 2>&1
+error_status_diff_u=$?
+if test $error_status_diff_u = 0; then
+  diff_accepts_u_option=yes
+fi
+AC_MSG_RESULT($diff_accepts_u_option)
+rm -f conftest.dtx
+
+DIFF_U_OPTION=
+if test "z$diff_accepts_u_option" = 'zyes' ; then
+  DIFF_U_OPTION=-u
+fi
+AC_SUBST([DIFF_U_OPTION])
+
+# check whether diff accepts the -a option (only needed for GNU diff).
+AC_MSG_CHECKING(whether diff accepts -a)
+diff_accepts_a_option=no
+echo foo >conftest.dtx
+echo foo | diff -a - conftest.dtx >/dev/null 2>&1
+error_status_diff_a=$?
+if test $error_status_diff_a = 0; then
+  diff_accepts_a_option=yes
+fi
+AC_MSG_RESULT($diff_accepts_a_option)
+rm -f conftest.dtx
+
+DIFF_A_OPTION=
+if test "z$diff_accepts_a_option" = 'zyes' ; then
+  DIFF_U_OPTION=-a
+fi
+AC_SUBST([DIFF_A_OPTION])
 
 # Needed on sysV68 for sigblock, sigsetmask.  But check for it in libc first.
 AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])

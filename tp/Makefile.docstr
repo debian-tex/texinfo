@@ -15,7 +15,7 @@ $(srcdir)/../po_document/de.us-ascii.gmo: $(srcdir)/../po_document/de.us-ascii.p
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) de.us-ascii.gmo
 
 LocaleData/de.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/de.us-ascii.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/de.us-ascii.gmo $@
 
 
@@ -24,7 +24,7 @@ $(srcdir)/../po_document/eo.gmo: $(srcdir)/../po_document/eo.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) eo.gmo
 
 LocaleData/eo/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/eo.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/eo.gmo $@
 
 
@@ -33,17 +33,17 @@ $(srcdir)/../po_document/es.us-ascii.gmo: $(srcdir)/../po_document/es.us-ascii.p
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) es.us-ascii.gmo
 
 LocaleData/es.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/es.us-ascii.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/es.us-ascii.gmo $@
 
 
 
-$(srcdir)/../po_document/fr.us-ascii.gmo: $(srcdir)/../po_document/fr.us-ascii.po
-	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) fr.us-ascii.gmo
+$(srcdir)/../po_document/fr.gmo: $(srcdir)/../po_document/fr.po
+	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) fr.gmo
 
-LocaleData/fr.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/fr.us-ascii.gmo
-	$(mkdir_p) `dirname $@`
-	$(INSTALL_DATA) $(srcdir)/../po_document/fr.us-ascii.gmo $@
+LocaleData/fr/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/fr.gmo
+	$(MKDIR_P) `dirname $@`
+	$(INSTALL_DATA) $(srcdir)/../po_document/fr.gmo $@
 
 
 
@@ -51,7 +51,7 @@ $(srcdir)/../po_document/hu.gmo: $(srcdir)/../po_document/hu.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) hu.gmo
 
 LocaleData/hu/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/hu.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/hu.gmo $@
 
 
@@ -60,7 +60,7 @@ $(srcdir)/../po_document/it.gmo: $(srcdir)/../po_document/it.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) it.gmo
 
 LocaleData/it/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/it.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/it.gmo $@
 
 
@@ -69,7 +69,7 @@ $(srcdir)/../po_document/nl.gmo: $(srcdir)/../po_document/nl.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) nl.gmo
 
 LocaleData/nl/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/nl.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/nl.gmo $@
 
 
@@ -78,7 +78,7 @@ $(srcdir)/../po_document/no.us-ascii.gmo: $(srcdir)/../po_document/no.us-ascii.p
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) no.us-ascii.gmo
 
 LocaleData/no.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/no.us-ascii.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/no.us-ascii.gmo $@
 
 
@@ -87,7 +87,7 @@ $(srcdir)/../po_document/pl.gmo: $(srcdir)/../po_document/pl.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) pl.gmo
 
 LocaleData/pl/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/pl.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/pl.gmo $@
 
 
@@ -96,7 +96,7 @@ $(srcdir)/../po_document/pt_BR.us-ascii.gmo: $(srcdir)/../po_document/pt_BR.us-a
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) pt_BR.us-ascii.gmo
 
 LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/pt_BR.us-ascii.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/pt_BR.us-ascii.gmo $@
 
 
@@ -105,8 +105,8 @@ $(srcdir)/../po_document/pt.us-ascii.gmo: $(srcdir)/../po_document/pt.us-ascii.p
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) pt.us-ascii.gmo
 
 LocaleData/pt.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/pt.us-ascii.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/pt.us-ascii.gmo $@
 
 
-document_strings_mo_files =  LocaleData/de.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/eo/LC_MESSAGES/$(document_domain).mo LocaleData/es.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/fr.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/hu/LC_MESSAGES/$(document_domain).mo LocaleData/it/LC_MESSAGES/$(document_domain).mo LocaleData/nl/LC_MESSAGES/$(document_domain).mo LocaleData/no.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pl/LC_MESSAGES/$(document_domain).mo LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt.us-ascii/LC_MESSAGES/$(document_domain).mo
+document_strings_mo_files =  LocaleData/de.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/eo/LC_MESSAGES/$(document_domain).mo LocaleData/es.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/fr/LC_MESSAGES/$(document_domain).mo LocaleData/hu/LC_MESSAGES/$(document_domain).mo LocaleData/it/LC_MESSAGES/$(document_domain).mo LocaleData/nl/LC_MESSAGES/$(document_domain).mo LocaleData/no.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pl/LC_MESSAGES/$(document_domain).mo LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt.us-ascii/LC_MESSAGES/$(document_domain).mo

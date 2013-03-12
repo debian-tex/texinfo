@@ -1,7 +1,7 @@
 README for libintl-perl
 =======================
 
-$Id: README,v 1.1 2011/10/12 23:51:24 pertusus Exp $
+$Id: README,v 1.1 2011-10-12 23:51:24 pertusus Exp $
 
 The package libintl-perl is an internationalization library for Perl
 that aims to be compatible with the Uniforum message translations

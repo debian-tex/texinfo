@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Id: tex_html_tests.sh,v 1.3 2012/11/13 18:30:39 karl Exp $
+# $Id: tex_html_tests.sh 5191 2013-02-23 00:11:18Z karl $
 # Copyright 2010, 2012 Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,

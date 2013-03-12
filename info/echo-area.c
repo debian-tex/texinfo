@@ -1,5 +1,5 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c,v 1.18 2011/12/27 20:27:21 gray Exp $
+   $Id: echo-area.c 5191 2013-02-23 00:11:18Z karl $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.

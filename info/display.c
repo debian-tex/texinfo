@@ -1,5 +1,5 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c,v 1.20 2012/12/01 15:15:44 gray Exp $
+   $Id: display.c 5191 2013-02-23 00:11:18Z karl $
 
    Copyright (C) 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012
    Free Software Foundation, Inc.

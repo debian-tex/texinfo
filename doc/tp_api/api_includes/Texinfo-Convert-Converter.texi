@@ -6,6 +6,7 @@
 * Texinfo@asis{::}Convert@asis{::}Converter SYNOPSIS::
 * Texinfo@asis{::}Convert@asis{::}Converter DESCRIPTION::
 * Texinfo@asis{::}Convert@asis{::}Converter METHODS::
+* Texinfo@asis{::}Convert@asis{::}Converter SEE ALSO::
 * Texinfo@asis{::}Convert@asis{::}Converter AUTHOR::
 * Texinfo@asis{::}Convert@asis{::}Converter COPYRIGHT AND LICENSE::
 @end menu
@@ -59,16 +60,29 @@ Texinfo::Convert::Converter is a super class that can be used to
 simplify converters initialization.  The class also provide some 
 useful methods.
 
-In turn, the converter should define some methods.  Three are optional,
-@code{converter_defaults}, @code{converter_initialize} and 
+In turn, the converter should define some methods.  Three are 
+optional, @code{converter_defaults}, @code{converter_initialize} and 
 @code{converter_global_commands} and used for initialization, to 
 give @code{Texinfo::Convert::Converter} some informations.
 
-The @code{convert_tree} is more or less mandatory and should convert
-portions of Texinfo tree.  The @code{output} and @code{convert} are not
-required, but customarily used by converters as entry points for
-conversion to a file with headers and so on, or conversion of a
-texinfo tree.
+The @code{convert_tree} method is more or less mandatory and should 
+convert portions of Texinfo tree.  The @code{output} and @code{convert} 
+are not required, but customarily used by converters as entry 
+points for conversion to a file with headers and so on, or 
+conversion of a whole Texinfo tree.
+
+Existing backends may be used as examples that implement those
+methods.  @code{Texinfo::Convert::Texinfo} together with 
+@code{Texinfo::Convert::PlainTexinfo}, as well as 
+@code{Texinfo::Convert::TextContent} are trivial examples.  
+@code{Texinfo::Convert::Text} is less trivial, although still simplistic, 
+while @code{Texinfo::Convert::DocBook} is a real converter
+that is also not too complex.  
+
+@ref{Texinfo::Common NAME}, @ref{Texinfo::Convert::Unicode NAME} 
+and @ref{Texinfo::Report NAME} document modules or additional function 
+that may be useful for backends, while the parsed Texinfo tree is 
+described in @ref{Texinfo::Parser NAME}.
 
 @node Texinfo::Convert::Converter METHODS
 @section METHODS
@@ -90,15 +104,15 @@ the @code{converter} method that should be inherited from
 @anchor{Texinfo::Convert::Converter $converter = MyConverter->converter($options)}
 
 The @emph{$options} hash reference holds options for the converter.  In
-this option hash reference a parser object may be associated with the 
-@emph{parser} key.  The other options should be configuration options
-described in the Texinfo manual.  Those options, when appropriate,
-override the document content.
+this option hash reference a @ref{Texinfo::Parser NAME, parser object, parser object} 
+may be associated with the @emph{parser} key.  The other options 
+should be configuration options described in the Texinfo manual.
+Those options, when appropriate, override the document content.
 
 The @code{converter} function returns a converter object (a blessed hash 
 reference) after checking the options and performing some initializations,
 especially when a parser is given among the options.  The converter is
-also initialized as a @code{Texinfo::Report}.
+also initialized as a @ref{Texinfo::Report NAME}.
 
 @end table
 
@@ -202,6 +216,12 @@ upper cased.  The function returns the accents formatted as XML.
 
 @end table
 
+@node Texinfo::Convert::Converter SEE ALSO
+@section SEE ALSO
+
+@ref{Texinfo::Common NAME}, @ref{Texinfo::Convert::Unicode NAME}, @ref{Texinfo::Report NAME} 
+and @ref{Texinfo::Parser NAME}.  
+
 @node Texinfo::Convert::Converter AUTHOR
 @section AUTHOR
 
@@ -210,7 +230,7 @@ Patrice Dumas, <pertusus@@free.fr>
 @node Texinfo::Convert::Converter COPYRIGHT AND LICENSE
 @section COPYRIGHT AND LICENSE
 
-Copyright (C) 2011, 2012 Free Software Foundation, Inc.
+Copyright (C) 2011, 2012, 2013 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

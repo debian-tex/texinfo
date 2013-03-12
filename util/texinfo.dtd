@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.36 2013/01/19 21:12:08 pertusus Exp $
+<!-- $Id: texinfo.dtd 5191 2013-02-23 00:11:18Z karl $
   Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,

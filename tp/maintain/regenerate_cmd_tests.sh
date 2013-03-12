@@ -2,7 +2,7 @@
 # regenerate_cmd_tests.sh: use information from test driving files to
 # regenerate test scripts that run only one test, and files lists to be
 # use in Makefiles.
-# $Id: regenerate_cmd_tests.sh,v 1.1 2013/02/10 15:14:11 pertusus Exp $
+# $Id: regenerate_cmd_tests.sh 5191 2013-02-23 00:11:18Z karl $
 # Copyright 2013 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives

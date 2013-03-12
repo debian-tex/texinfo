@@ -751,7 +751,7 @@ $result_trees{'sample_utf8'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => 'Index'
+                      'text' => 'Index node'
                     }
                   ],
                   'parent' => {},
@@ -786,7 +786,7 @@ $result_trees{'sample_utf8'} = {
                   'node_content' => [
                     {}
                   ],
-                  'normalized' => 'Index'
+                  'normalized' => 'Index-node'
                 }
               },
               'line_nr' => {
@@ -1524,7 +1524,7 @@ $result_trees{'sample_utf8'} = {
             },
             {
               'parent' => {},
-              'text' => 'Index'
+              'text' => 'Index node'
             },
             {
               'parent' => {},
@@ -1546,10 +1546,10 @@ $result_trees{'sample_utf8'} = {
         'nodes_manuals' => [
           {
             'node_content' => [],
-            'normalized' => 'Index'
+            'normalized' => 'Index-node'
           }
         ],
-        'normalized' => 'Index',
+        'normalized' => 'Index-node',
         'spaces_after_command' => {}
       },
       'line_nr' => {
@@ -2009,7 +2009,7 @@ Texinfo中文示例
 * 第一章（First Chapter）:: 这是此示例文档的第一章
                            (with mixed cjk & latin char title)
 * Second Chapter AE ĄĘ ae ąę::  this is chapter 2. AE ĄĘ ae ąę
-* Index::    Complete index.
+* Index node::    Complete index.
 @end menu
 
 
@@ -2038,7 +2038,7 @@ This is the second item.
 
 Zażółć gęślą jaźń!
 
-@node Index
+@node Index node
 @unnumbered Index
 
 @printindex cp
@@ -2059,7 +2059,7 @@ Texinfo中文示例
 * 第一章（First Chapter）:: 这是此示例文档的第一章
                            (with mixed cjk & latin char title)
 * Second Chapter AE ĄĘ ae ąę::  this is chapter 2. AE ĄĘ ae ąę
-* Index::    Complete index.
+* Index node::    Complete index.
 
 
 1 第一章（First Chapter）
@@ -2141,7 +2141,7 @@ $result_sectioning{'sample_utf8'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
-                'normalized' => 'Index'
+                'normalized' => 'Index-node'
               }
             }
           },
@@ -2209,7 +2209,7 @@ $result_nodes{'sample_utf8'} = {
             'extra' => {},
             'level' => 1
           },
-          'normalized' => 'Index'
+          'normalized' => 'Index-node'
         },
         'node_prev' => {},
         'node_up' => {}
@@ -2276,7 +2276,7 @@ $result_menus{'sample_utf8'} = {
       'menu_next' => {
         'cmdname' => 'node',
         'extra' => {
-          'normalized' => 'Index'
+          'normalized' => 'Index-node'
         },
         'menu_prev' => {},
         'menu_up' => {},

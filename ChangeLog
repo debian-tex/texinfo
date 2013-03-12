@@ -1,3 +1,169 @@
+2013-03-12  Karl Berry  <karl@gnu.org>
+
+	* Version 5.1.
+
+2013-03-11  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/init/tex4ht.pm (tex4ht_process_command): correct
+	the warning, it should also give the reason of the error.
+	Follow-up on Benno Schulenberg report.
+
+2013-03-08  Karl Berry  <karl@gnu.org>
+
+	* pretest 5.0.91.
+
+	* install-info/install-info.c (print_help): combine
+	sentence for better translation.
+	* tp/init/tex4ht.pm (tex4ht_process_command): omit :
+	for consistency.
+	Report from Benno Schulenberg, 08 Mar 2013 22:07:31.
+
+	* util/texi2dvi: don't mention Debian specifically;
+	I don't think tetex-bin has been the name for a while.
+
+	* util/gendocs.sh: omit --split=node for the sake of pre-5.0
+	installations.  Report to bug-gnulib from Martin von Gagern,
+	08 Mar 2013 19:20:36.
+
+2013-03-05  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Parser.pm (_close_current): close correctly stacks when
+	closing $format_raw_commands.  Report from Mat Booth.
+
+2013-03-02  Karl Berry  <karl@gnu.org>
+
+	* pretest 5.0.90.
+
+	* NEWS,
+	* doc/texinfo.txi (Macro Details): behavior of newlines in macro
+	definitions and line-delimited commands has changed.
+
+2013-03-02  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Parser.pm: put the first line in 'pending' instead of 
+	seeking back in the input stream.
+
+2013-02-28  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/t/test_utils.pl: close generated files before doing the comparison.
+	* tp/Texinfo/Convert/Plaintext.pm, tp/Texinfo/Convert/Info.pm:
+	cache get_conf() results.  Convert node names only once.
+	* tp/texi2any.pl, doc/texinfo.txi (Customization Variables and Options):
+	two new formats, parse and structure that respectively do the parsing 
+	phase, and the parsing and structuring phase, and no conversion.
+
+2013-02-26  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Generating HTML, HTML CSS): xref to
+	Customization Variables.  Suggestion from Vincent Belaiche.
+
+2013-02-25  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Parser.pm: use tell to find the position of the 
+	beginning of the line.
+	Close line @-command with special @-commands if there is no comment
+	ending the line.  Report from Eli Zaretskii on bug-texinfo,
+	24 Feb 2013 17:53:15.
+	* configure.ac, tp/defs.in, tp/tests/run_parser_all.sh:
+	determine whether diff accepts -a and sets DIFF_A_OPTION to -a if so.
+
+2013-02-24  Karl Berry  <karl@gnu.org>
+
+	* tp/Makefile.am (install-exec-hook): rm old makeinfo,
+	possibly a binary, before making the link.
+	Report from Ken Moffat, 23 Feb 2013 21:31:33.
+
+	* doc/texinfo.txi (Other Customization Variables): OPEN_ and
+	CLOSE_QUOTE_SYMBOL now apply to Info too.
+	(@t{@@code}): mention this.
+	(@t{@@set @@value}): grudgingly mention that some non-alphanumerics
+	sometimes work in @set names.
+
+2013-02-24  Patrice Dumas  <pertusus@free.fr>
+
+	* configure.ac, tp/defs.in, tp/tests/*/*.sh,
+	tp/tests/run_parser_all.sh:
+	determine whether diff accepts -u and sets DIFF_U_OPTION to -u if so.
+	Report that HP-UX diff do not accept -u from Richard Lloyd
+	bug-texinfo, 19 Feb 2013 15:56:41.
+
+2013-02-23  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/t/input_files/sample_utf8.texi: avoid having two nodes differing
+	only in case, for case-sensitve filesystems.
+	Report in http://savannah.gnu.org/bugs/?38380.
+	* tp/Makefile.am, tp/maintain/*: modularize and rename scripts
+	associated to standalone modules handling.
+	* tp/Texinfo/Convert/Plaintext.pm: use OPEN_QUOTE_SYMBOL and 
+	CLOSE_QUOTE_SYMBOL.
+	* tp/Texinfo/Parser.pm: allow more characters in flags.
+	do not close a line after a special command @set...
+
+2013-02-22  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (@t{@@set @@value}): mention that @set
+	need not appear at the beginning of a line.
+	(@t{@@enumerate}, @t{@@itemize}): clarify that at least
+	one @item should be inside @itemize.
+	
+	* README-hacking: include potential CPAN update in release checks.
+
+2013-02-22  Antonio Diaz Diaz  <ant_diaz@teleline.es>  (tiny change)
+
+	* info/filesys.c (compress_suffixes): Add .lz/lzip.
+	* install-info/install-info.c (open_possibly_compressed_file):
+	Add lzip support.
+	* doc/info-stnd.texi,
+	* doc/texinfo.txi: mention it.
+	bug-texinfo, 22 Feb 2013 19:08:02.
+
+2013-02-22  Eli Zaretskii  <eliz@gnu.org>
+
+	* install-info/ginstall-info.exe.manifest: new file.
+	* install-info/Makefile.am (dist_bin_SCRIPTS) [HOST_IS_WINDOWS]:
+	add it.  bug-texinfo, 19 Feb 2013 19:39:51.
+
+	* info/pcterm.c (pc_initialize_terminal): Move prototype outside
+	of w32_info_init to the file level.
+	bug-texinfo, 19 Feb 2013 19:40:48.
+
+2013-02-22  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Parser.pm: better handling of comments in @-commands
+	with line specially handled (@set, @ifset, @unmacro...).
+	Accept @set and @clear almost everywhere.
+	Accept that @set and @clear are not at the beginning of a line.
+	Do not warn for @end in style command, as it may be the @end of
+	a conditional that is correct in that context.
+	Improve error messages of @-commands with braces closed because
+	of seeing a command before the closing brace.
+
+2013-02-21  Karl Berry  <karl@gnu.org>
+
+	* NEWS: mention incompatibilities of text outside @item
+	and irregular sectioning trees.
+
+2013-02-20  Patrice Dumas  <pertusus@free.fr>
+
+	* Makeinfo.am, texi2html/test/*/Makefile.am, tp/tests/*/Makefile.am,
+	tp/maintain/regenerate_file_lists.pl, tp/tests/many_input_files/*.sh,
+	tp/tests/run_parser_all.sh, texi2html/test/run_*.sh, 
+	texi2html/test/many_input_files/*.sh: adapt for SVN.
+	* tp/MANIFEST: regenerate.
+	* tp/Texinfo/Structuring.pm: lowering a section level is only a 
+	warning.
+
+2013-02-18  Karl Berry  <karl@gnu.org>  (tiny change)
+
+	* info/info-utils (va_copy) [__hpux]: define for HP-UX,
+	From Richard Lloyd, 18 Feb 2013 11:52:10.
+	* system.h (TEXINFO_PRINTFLIKE) [! __GNUC__]: define to nothing.
+
+2013-02-17  Karl Berry  <karl@gnu.org>
+
+	* doc/refcard/txirefcard.tex: reduce to four pages again
+	(by regretfully removing the Emacs section).
+
 2013-02-16  Karl Berry  <karl@gnu.org>
 
 	* Version 5.0.

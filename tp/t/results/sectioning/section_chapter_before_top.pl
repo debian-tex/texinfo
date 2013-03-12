@@ -245,22 +245,22 @@ $result_sectioning{'section_chapter_before_top'}{'section_childs'}[2]{'toplevel_
 
 $result_errors{'section_chapter_before_top'} = [
   {
-    'error_line' => ':3: lowering the section level of @chapter appearing after a lower element
+    'error_line' => ':3: warning: lowering the section level of @chapter appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
     'text' => 'lowering the section level of @chapter appearing after a lower element',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':5: lowering the section level of @top appearing after a lower element
+    'error_line' => ':5: warning: lowering the section level of @top appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
     'text' => 'lowering the section level of @top appearing after a lower element',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

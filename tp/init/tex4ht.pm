@@ -4,7 +4,7 @@
 #
 # tex4ht.pm: use tex4ht to convert tex to html
 #
-# Copyright 2005, 2007, 2009, 2011, 2012 Free Software Foundation, Inc.
+# Copyright 2005, 2007, 2009, 2011, 2012, 2013 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -264,7 +264,7 @@ sub tex4ht_process_command($$) {
   # extract the html from the file created by tex4ht
   my $html_basefile = $commands{$command}->{'html_file'};
   unless (open (TEX4HT_HTMLFILE, $html_basefile)) {
-    $self->document_warn(sprintf($self->__("tex4ht.pm: could not open: %s"), 
+    $self->document_warn(sprintf($self->__("tex4ht.pm: could not open %s: %s"), 
                                   $html_basefile, $!));
     return 1;
   }

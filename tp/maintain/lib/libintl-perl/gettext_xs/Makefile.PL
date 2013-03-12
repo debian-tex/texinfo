@@ -1,7 +1,7 @@
 #! /usr/local/bin/perl -w # -*- perl -*-
 
 # vim: tabstop=4
-# $Id: Makefile.PL,v 1.1 2011/10/12 23:51:25 pertusus Exp $
+# $Id: Makefile.PL,v 1.1 2011-10-12 23:51:25 pertusus Exp $
 
 # Makefile generator for libintl-perl.
 # Copyright (C) 2002-2009 Guido Flohr <guido@imperia.net>, 

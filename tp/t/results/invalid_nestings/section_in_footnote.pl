@@ -155,12 +155,12 @@ $result_sectioning{'section_in_footnote'}{'section_childs'}[0]{'section_up'} = $
 
 $result_errors{'section_in_footnote'} = [
   {
-    'error_line' => ':2: @footnote missing close brace
+    'error_line' => ':2: @section seen before @footnote closing brace
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@footnote missing close brace',
+    'text' => '@section seen before @footnote closing brace',
     'type' => 'error'
   }
 ];

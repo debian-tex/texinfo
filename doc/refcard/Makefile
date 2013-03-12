@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.4 2012/09/21 17:40:44 karl Exp $
+# $Id: Makefile,v 1.4 2012-09-21 17:40:44 karl Exp $
 # Makefile for texinfo/doc/refcard.
 # This is not hooked into Automake, just here for those working on the refcard.
 #

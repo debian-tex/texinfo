@@ -1,5 +1,5 @@
 /* info.h -- Header file which includes all of the other headers.
-   $Id: info.h,v 1.12 2011/10/18 18:47:20 karl Exp $
+   $Id: info.h 5191 2013-02-23 00:11:18Z karl $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007, 2011
    Free Software Foundation, Inc.

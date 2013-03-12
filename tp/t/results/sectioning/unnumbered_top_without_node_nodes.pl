@@ -564,13 +564,13 @@ $result_menus{'unnumbered_top_without_node_nodes'} = {
 
 $result_errors{'unnumbered_top_without_node_nodes'} = [
   {
-    'error_line' => ':6: lowering the section level of @top appearing after a lower element
+    'error_line' => ':6: warning: lowering the section level of @top appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
     'text' => 'lowering the section level of @top appearing after a lower element',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':9: warning: unreferenced node `second\'

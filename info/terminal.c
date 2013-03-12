@@ -1,5 +1,5 @@
 /* terminal.c -- how to handle the physical terminal for Info.
-   $Id: terminal.c,v 1.11 2012/12/01 15:15:44 gray Exp $
+   $Id: terminal.c 5191 2013-02-23 00:11:18Z karl $
 
    Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1997, 1998,
    1999, 2001, 2002, 2004, 2007, 2008, 2012 Free Software Foundation, Inc.

@@ -60,6 +60,10 @@ in
 @macro aftername {ggg} more
 in macro
 @end macro
+
+@macro #badname
+in #
+@end macro
 '],
 ['bad_macro_name_with_underscore',
 '@macro the_macro {arg1, arg2}

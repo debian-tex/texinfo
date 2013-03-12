@@ -85,6 +85,9 @@ sub output($)
 
   my $fh;
   if (! $self->{'output_file'} eq '') {
+    if ($self->get_conf('VERBOSE')) {
+      print STDERR "Output file $self->{'output_file'}\n";
+    }
     $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
       $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
@@ -148,6 +151,10 @@ sub output($)
                                   $self->{'output_file'}, $close_error));
             return undef;
           }
+          if ($self->get_conf('VERBOSE')) {
+            print STDERR "Renaming first output file as ".
+                  $self->{'output_file'}.'-'.$out_file_nr."\n";
+          }
           unless (rename($self->{'output_file'}, 
                          $self->{'output_file'}.'-'.$out_file_nr)) {
             $self->document_error(sprintf($self->__("rename %s failed: %s"),
@@ -173,6 +180,10 @@ sub output($)
           }
         }
         $out_file_nr++;
+        if ($self->get_conf('VERBOSE')) {
+          print STDERR "New output file ".
+                $self->{'output_file'}.'-'.$out_file_nr."\n";
+        }
         $fh = $self->Texinfo::Common::open_out (
                                $self->{'output_file'}.'-'.$out_file_nr); 
         if (!$fh) {
@@ -196,6 +207,9 @@ sub output($)
       $self->document_error(sprintf($self->__("error on closing %s: %s"),
                             $self->{'output_file'}.'-'.$out_file_nr, $!));
       return undef;
+    }
+    if ($self->get_conf('VERBOSE')) {
+      print STDERR "Outputing the split manual file $self->{'output_file'}\n";
     }
     $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
@@ -236,10 +250,7 @@ sub output($)
       }
       $prefix = 'Ref';
     }
-    push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
-    my $label_text = _normalize_top_node($self->convert_line({'type' => '_code',
-      'contents' => $label->{'root'}->{'extra'}->{'node_content'}}));
-    pop @{$self->{'count_context'}};
+    my ($label_text, $byte_count) = $self->_node_line($label->{'root'});
     $tag_text .=  "$prefix: $label_text\x{7F}$label->{'bytes'}\n";
   }
   $tag_text .=  "\x{1F}\nEnd Tag Table\n";
@@ -348,12 +359,6 @@ sub _error_outside_of_any_node($$)
   }
 }
 
-sub _normalize_top_node($)
-{
-  my $node = shift;
-  return Texinfo::Common::normalize_top_node_name($node);
-}
-
 my @directions = ('Next', 'Prev', 'Up');
 sub _node($$)
 {
@@ -379,8 +384,8 @@ sub _node($$)
   my $node_begin = "\x{1F}\nFile: $output_filename,  Node: ";
   $result .= $node_begin;
   $self->_add_text_count($node_begin);
-  my $node_text = _normalize_top_node($self->convert_line({'type' => '_code',
-                           'contents' => $node->{'extra'}->{'node_content'}}));
+  my ($node_text, $byte_count) = $self->_node_line($node);
+  $self->{'count_context'}->[-1]->{'bytes'} += $byte_count;
   $result .= $node_text;
   foreach my $direction(@directions) {
     if ($node->{'node_'.lc($direction)}) {
@@ -395,8 +400,9 @@ sub _node($$)
                                           {'text' => ')'}]});
       }
       if ($node_direction->{'extra'}->{'node_content'}) {
-        $result .= _normalize_top_node($self->convert_line({'type' => '_code',
-                 'contents' => $node_direction->{'extra'}->{'node_content'}}));
+        my ($node_text, $byte_count) = $self->_node_line($node_direction);
+        $self->{'count_context'}->[-1]->{'bytes'} += $byte_count;
+        $result .= $node_text;
       }
     }
   }

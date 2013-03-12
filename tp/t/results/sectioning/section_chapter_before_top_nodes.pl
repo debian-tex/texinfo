@@ -890,22 +890,22 @@ $result_menus{'section_chapter_before_top_nodes'}{'menu_child'}{'menu_up'} = $re
 
 $result_errors{'section_chapter_before_top_nodes'} = [
   {
-    'error_line' => ':5: lowering the section level of @chapter appearing after a lower element
+    'error_line' => ':5: warning: lowering the section level of @chapter appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
     'text' => 'lowering the section level of @chapter appearing after a lower element',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':12: lowering the section level of @top appearing after a lower element
+    'error_line' => ':12: warning: lowering the section level of @top appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 12,
     'macro' => '',
     'text' => 'lowering the section level of @top appearing after a lower element',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':1: warning: node `chapter node\' is next for `section node\' in sectioning but not in menu

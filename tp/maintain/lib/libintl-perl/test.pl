@@ -1,7 +1,7 @@
 #! /usr/local/bin/perl -w
 
 # vim: tabstop=4
-# $Id: test.pl,v 1.1 2011/10/12 23:51:25 pertusus Exp $
+# $Id: test.pl,v 1.1 2011-10-12 23:51:25 pertusus Exp $
 
 # Portable character conversion for Perl.
 # Copyright (C) 2002-2009 Guido Flohr <guido@imperia.net>,

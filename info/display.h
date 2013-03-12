@@ -1,5 +1,5 @@
 /* display.h -- How the display in Info is done.
-   $Id: display.h,v 1.10 2012/11/17 17:16:18 gray Exp $
+   $Id: display.h 5191 2013-02-23 00:11:18Z karl $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.

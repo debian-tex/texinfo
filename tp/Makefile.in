@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# $Id: Makefile.am,v 1.61 2013/02/10 16:45:05 pertusus Exp $
+# $Id: Makefile.am 5205 2013-02-24 23:34:39Z karl $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
@@ -145,6 +145,7 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/po.m4 \
 	$(top_srcdir)/gnulib/m4/progtest.m4 \
 	$(top_srcdir)/gnulib/m4/regex.m4 \
+	$(top_srcdir)/gnulib/m4/secure_getenv.m4 \
 	$(top_srcdir)/gnulib/m4/ssize_t.m4 \
 	$(top_srcdir)/gnulib/m4/stat.m4 \
 	$(top_srcdir)/gnulib/m4/stdbool.m4 \
@@ -491,6 +492,8 @@ CPPFLAGS = @CPPFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DIFF_A_OPTION = @DIFF_A_OPTION@
+DIFF_U_OPTION = @DIFF_U_OPTION@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
@@ -618,6 +621,7 @@ GNULIB_REALLOC_POSIX = @GNULIB_REALLOC_POSIX@
 GNULIB_REALPATH = @GNULIB_REALPATH@
 GNULIB_RMDIR = @GNULIB_RMDIR@
 GNULIB_RPMATCH = @GNULIB_RPMATCH@
+GNULIB_SECURE_GETENV = @GNULIB_SECURE_GETENV@
 GNULIB_SETENV = @GNULIB_SETENV@
 GNULIB_SETHOSTNAME = @GNULIB_SETHOSTNAME@
 GNULIB_SETLOCALE = @GNULIB_SETLOCALE@
@@ -803,6 +807,7 @@ HAVE_READLINK = @HAVE_READLINK@
 HAVE_READLINKAT = @HAVE_READLINKAT@
 HAVE_REALPATH = @HAVE_REALPATH@
 HAVE_RPMATCH = @HAVE_RPMATCH@
+HAVE_SECURE_GETENV = @HAVE_SECURE_GETENV@
 HAVE_SETENV = @HAVE_SETENV@
 HAVE_SETHOSTNAME = @HAVE_SETHOSTNAME@
 HAVE_SIGNED_SIG_ATOMIC_T = @HAVE_SIGNED_SIG_ATOMIC_T@
@@ -1227,9 +1232,12 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/columnfractions/wrong_command.pl \
   t/results/conditionals/additional_space_in_end_conditional.pl \
   t/results/conditionals/additional_space_in_end_conditional_expanded.pl \
+  t/results/conditionals/bad_ifclear_argument.pl \
+  t/results/conditionals/bad_ifset_argument.pl \
   t/results/conditionals/command_conditionals.pl \
   t/results/conditionals/command_conditionals_user_defined.pl \
   t/results/conditionals/commands_in_ifset.pl \
+  t/results/conditionals/comment_on_ifset_line.pl \
   t/results/conditionals/conditional_not_closed.pl \
   t/results/conditionals/consecutive_conditionals.pl \
   t/results/conditionals/empty_ifclear.pl \
@@ -1244,6 +1252,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/conditionals/ifclear_in_ifset_set.pl \
   t/results/conditionals/ifnot_format_conditional.pl \
   t/results/conditionals/ifnotinfo_exception.pl \
+  t/results/conditionals/ifset_in_command.pl \
   t/results/conditionals/ignore_not_closed.pl \
   t/results/conditionals/ignored_in_ifset.pl \
   t/results/conditionals/info_ifinfo_ifnotplaintext.pl \
@@ -1374,7 +1383,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/converters_tests/refs_formatting.pl \
   t/results/converters_tests/sample_utf8.pl \
   t/results/converters_tests/sample_utf8/res_html/DiYiZhang_0028First-Chapter_0029.html \
-  t/results/converters_tests/sample_utf8/res_html/Index.html \
+  t/results/converters_tests/sample_utf8/res_html/Index-node.html \
   t/results/converters_tests/sample_utf8/res_html/Second-Chapter-AE-AE-ae-ae.html \
   t/results/converters_tests/sample_utf8/res_html/index.html \
   t/results/converters_tests/sample_utf8/res_info/sample_utf8.info \
@@ -1735,6 +1744,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/invalid_nestings/on_subheading_line.pl \
   t/results/invalid_nestings/quotation_in_ref.pl \
   t/results/invalid_nestings/quotation_in_style_command.pl \
+  t/results/invalid_nestings/raw_block_on_line.pl \
   t/results/invalid_nestings/recursive_copying.pl \
   t/results/invalid_nestings/ref_in_anchor.pl \
   t/results/invalid_nestings/ref_in_ref.pl \
@@ -1866,6 +1876,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/menu/detailmenu.pl \
   t/results/menu/detailmenu_in_description.pl \
   t/results/menu/detailmenu_on_subnodes.pl \
+  t/results/menu/detailmenu_unknown_node.pl \
   t/results/menu/direntry_dircategory_after_first_node.pl \
   t/results/menu/empty_menu_entry_name.pl \
   t/results/menu/entry_after_detailmenu.pl \
@@ -2234,9 +2245,12 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/test_count/multitable.pl \
   t/results/test_count/printindex.pl \
   t/results/value/bad_syntax.pl \
+  t/results/value/comment_on_set_line.pl \
   t/results/value/empty_set.pl \
   t/results/value/empty_value_in_line.pl \
   t/results/value/set_flag_command_equivalent.pl \
+  t/results/value/set_in_item_missing_line.pl \
+  t/results/value/set_on_item_line.pl \
   t/results/value/simple.pl \
   t/results/value/spaces_before_value.pl \
   t/results/value/value_after_accent.pl \
@@ -2298,7 +2312,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/include_reference/section_file.texi
 
 test_copied_include_files = t/include_dir/section_file.texi t/include_dir/f--ile.txt t/include_dir/incl-incl.txi t/include_dir/inc_file.texi t/include_dir/figure.txt t/include_dir/f--ile.png t/include_dir/macro_included.texi
-document_strings_mo_files = LocaleData/de.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/eo/LC_MESSAGES/$(document_domain).mo LocaleData/es.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/fr.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/hu/LC_MESSAGES/$(document_domain).mo LocaleData/it/LC_MESSAGES/$(document_domain).mo LocaleData/nl/LC_MESSAGES/$(document_domain).mo LocaleData/no.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pl/LC_MESSAGES/$(document_domain).mo LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt.us-ascii/LC_MESSAGES/$(document_domain).mo
+document_strings_mo_files = LocaleData/de.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/eo/LC_MESSAGES/$(document_domain).mo LocaleData/es.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/fr/LC_MESSAGES/$(document_domain).mo LocaleData/hu/LC_MESSAGES/$(document_domain).mo LocaleData/it/LC_MESSAGES/$(document_domain).mo LocaleData/nl/LC_MESSAGES/$(document_domain).mo LocaleData/no.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pl/LC_MESSAGES/$(document_domain).mo LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt.us-ascii/LC_MESSAGES/$(document_domain).mo
 SUBDIRS = . tests
 bin_SCRIPTS = texi2any
 do_subst = sed \
@@ -2432,16 +2446,17 @@ AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcd
 maintenance_files = \
   maintain/all_tests.sh \
   maintain/change_perl_modules_version.sh \
+  maintain/clean_perl_module_files.sh \
   maintain/language-subtag-registry \
   maintain/Makefile_perl_po \
   maintain/MANIFEST_generated_files \
-  maintain/prepare_perl_module.sh \
+  maintain/prepare_perl_module_files.sh \
+  maintain/prepare_perl_standalone_module_archive.sh \
   maintain/regenerate_cmd_tests.sh \
   maintain/regenerate_converters_documentation.sh \
   maintain/regenerate_docstr.sh \
   maintain/regenerate_documentlanguages.pl \
   maintain/regenerate_file_lists.pl \
-  maintain/regenerate_perl_module_files.sh \
   maintain/template.pod \
   maintain/catalog.xml.in
 
@@ -3073,7 +3088,7 @@ uninstall-am: uninstall-binSCRIPTS uninstall-dist_convertersDATA \
 
 
 t/include_dir:
-	$(mkdir_p) $@
+	$(MKDIR_P) $@
 
 t/include_dir/section_file.texi: $(srcdir)/t/include_reference/section_file.texi t/include_dir
 	$(INSTALL_DATA) $(srcdir)/t/include_reference/section_file.texi $@
@@ -3100,77 +3115,77 @@ $(srcdir)/../po_document/de.us-ascii.gmo: $(srcdir)/../po_document/de.us-ascii.p
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) de.us-ascii.gmo
 
 LocaleData/de.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/de.us-ascii.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/de.us-ascii.gmo $@
 
 $(srcdir)/../po_document/eo.gmo: $(srcdir)/../po_document/eo.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) eo.gmo
 
 LocaleData/eo/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/eo.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/eo.gmo $@
 
 $(srcdir)/../po_document/es.us-ascii.gmo: $(srcdir)/../po_document/es.us-ascii.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) es.us-ascii.gmo
 
 LocaleData/es.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/es.us-ascii.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/es.us-ascii.gmo $@
 
-$(srcdir)/../po_document/fr.us-ascii.gmo: $(srcdir)/../po_document/fr.us-ascii.po
-	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) fr.us-ascii.gmo
+$(srcdir)/../po_document/fr.gmo: $(srcdir)/../po_document/fr.po
+	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) fr.gmo
 
-LocaleData/fr.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/fr.us-ascii.gmo
-	$(mkdir_p) `dirname $@`
-	$(INSTALL_DATA) $(srcdir)/../po_document/fr.us-ascii.gmo $@
+LocaleData/fr/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/fr.gmo
+	$(MKDIR_P) `dirname $@`
+	$(INSTALL_DATA) $(srcdir)/../po_document/fr.gmo $@
 
 $(srcdir)/../po_document/hu.gmo: $(srcdir)/../po_document/hu.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) hu.gmo
 
 LocaleData/hu/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/hu.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/hu.gmo $@
 
 $(srcdir)/../po_document/it.gmo: $(srcdir)/../po_document/it.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) it.gmo
 
 LocaleData/it/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/it.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/it.gmo $@
 
 $(srcdir)/../po_document/nl.gmo: $(srcdir)/../po_document/nl.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) nl.gmo
 
 LocaleData/nl/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/nl.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/nl.gmo $@
 
 $(srcdir)/../po_document/no.us-ascii.gmo: $(srcdir)/../po_document/no.us-ascii.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) no.us-ascii.gmo
 
 LocaleData/no.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/no.us-ascii.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/no.us-ascii.gmo $@
 
 $(srcdir)/../po_document/pl.gmo: $(srcdir)/../po_document/pl.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) pl.gmo
 
 LocaleData/pl/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/pl.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/pl.gmo $@
 
 $(srcdir)/../po_document/pt_BR.us-ascii.gmo: $(srcdir)/../po_document/pt_BR.us-ascii.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) pt_BR.us-ascii.gmo
 
 LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/pt_BR.us-ascii.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/pt_BR.us-ascii.gmo $@
 
 $(srcdir)/../po_document/pt.us-ascii.gmo: $(srcdir)/../po_document/pt.us-ascii.po
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) pt.us-ascii.gmo
 
 LocaleData/pt.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/pt.us-ascii.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/pt.us-ascii.gmo $@
 
 # A long list of files that we generate and some rules.
@@ -3240,10 +3255,11 @@ install-data-local:
 	fi
 
 install-exec-hook:
+	rm -f $(DESTDIR)$(bindir)/makeinfo
 	-$(LN_S) texi2any $(DESTDIR)$(bindir)/makeinfo
 
 dist-hook:
-	rm -rf `find $(distdir)/maintain/lib -name CVS`
+	rm -rf `find $(distdir)/maintain/lib -name .svn`
 
 uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/

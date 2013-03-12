@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.6 2013/01/27 17:34:30 karl Exp $
+# $Id: Makefile.am 5191 2013-02-23 00:11:18Z karl $
 # Makefile.am for texinfo/man.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,

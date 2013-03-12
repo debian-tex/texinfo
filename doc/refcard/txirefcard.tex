@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.30 2013/02/16 16:50:29 karl Exp $
+% $Id: txirefcard.tex 5234 2013-03-12 22:56:31Z karl $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -49,13 +49,12 @@
 % Summary node in texinfo.txi, written primarily by Bob Chassell.
 
 \def\versionyear{2013}          % year manual was updated
-\def\versionTexinfo{5.0}        % version of Texinfo this manual is for
-\def\year{2013}                 % copyright year
+\def\versionTexinfo{5.1}        % version of Texinfo this manual is for
 
 \def\copyrightnotice{%
 \vskip 1ex plus 1filll\begingroup\small
 \advance\baselineskip by 1pt
-\centerline{Copyright \copyright\ \year\ Free Software Foundation, Inc.}
+\centerline{Copyright \copyright\ 2013 Free Software Foundation, Inc.}
 \centerline{for Texinfo version \versionTexinfo, \versionyear}
 \centerline{by Robert D. Solimeno}
 \centerline{and the Texinfo maintainers}
@@ -932,70 +931,12 @@ processing the document according to their desires.
 \txicmd{@errormsg}{\ttbraced{msg}}{Report \var{msg} as an error.}
 
 
-\chapter{Editing Texinfo sources in Emacs}
-
-The Texinfo major mode in GNU Emacs is for editing Texinfo source files.
-To enter Texinfo mode, visit a source file with one of the supported
-extensions.  This list of mode commands is from Emacs 22.1.
-
-\key{C-c C-s}{texinfo-show-structure}
-\key{C-c ]}{up-list}
-\key{C-c \rbracechar}{up-list}
-
-\key{"}{texinfo-insert-quote}
-\key{M-RET}{texinfo-insert-@item}
-\key{C-c C-o}{texinfo-insert-block}
-\key{C-c \lbracechar}{texinfo-insert-braces}
-\key{C-c C-c C-d}{texinfo-start-menu-description}
-\key{C-c C-c C-e}{texinfo-insert-@emph}
-\key{C-c C-c C-s}{texinfo-insert-@strong}
-\key{C-c C-c c}{texinfo-insert-@code}
-\key{C-c C-c d}{texinfo-insert-@dfn}
-\key{C-c C-c e}{texinfo-insert-@end}
-\key{C-c C-c f}{texinfo-insert-@file}
-\key{C-c C-c i}{texinfo-insert-@item}
-\key{C-c C-c k}{texinfo-insert-@kbd}
-\key{C-c C-c m}{texinfo-insert-@email}
-\key{C-c C-c n}{texinfo-insert-@node}
-\key{C-c C-c o}{texinfo-insert-@noindent}
-\key{C-c C-c q}{texinfo-insert-@quotation}
-\key{C-c C-c s}{texinfo-insert-@samp}
-\key{C-c C-c t}{texinfo-insert-@table}
-\key{C-c C-c u}{texinfo-insert-@uref}
-\key{C-c C-c v}{texinfo-insert-@var}
-\key{C-c C-c x}{texinfo-insert-@example}
-
-\key{C-c C-u C-a}{texinfo-all-menus-update}
-\key{C-c C-u C-e}{texinfo-every-node-update}
-\key{C-c C-u RET}{texinfo-make-menu}
-\key{C-c C-u C-n}{texinfo-update-node}
-\key{C-c C-u m}{texinfo-master-menu}
-
-\key{C-c C-e C-b}{texinfo-format-buffer}
-\key{C-c C-e C-r}{texinfo-format-region}
-
-\key{C-c RET C-b}{makeinfo-buffer}
-\key{C-c RET C-k}{kill-compilation}
-\key{C-c RET C-l}{makeinfo-recenter-compilation-buffer}
-\key{C-c RET C-r}{makeinfo-region}
-\key{M-TAB}{ispell-complete-word}
-
-\key{C-c C-t C-b}{texinfo-tex-buffer}
-\key{C-c C-t C-d}{texinfo-delete-from-print-queue}
-\key{C-c C-t TAB}{texinfo-texindex}
-\key{C-c C-t C-k}{tex-kill-job}
-\key{C-c C-t C-l}{tex-recenter-output-buffer}
-\key{C-c C-t C-p}{texinfo-tex-print}
-\key{C-c C-t C-q}{tex-show-print-queue}
-\key{C-c C-t C-r}{texinfo-tex-region}
-\key{C-c C-t C-v}{texinfo-tex-view}
-\key{C-c C-t C-x}{texinfo-quit-job}
 
 \chapter{Reading Info files}
 
 There are two main Info readers: \code{M-x info} (\code{C-h i}) in GNU
 Emacs, and the standalone \code{info} program.  These basic keystrokes
-are from standalone Info, but most work in Emacs Info as well.
+work in both.
 
 \begininfokeys %
 \infokey q           Quit Info altogether.\cr
@@ -1005,7 +946,7 @@ are from standalone Info, but most work in Emacs Info as well.
 \infokey Down        Move down one line.\cr
 \infokey DEL         Scroll backward one screenful.\cr
 \infokey SPC         Scroll forward one screenful.\cr
-\infokey Home, b     Go to the beginning of this node.\cr
+\infokey Home,b      Go to the beginning of this node.\cr
 \infokey End         Go to the end of this node.\cr
 
 \infokey TAB         Skip to the next hypertext link.\cr

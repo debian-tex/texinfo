@@ -1,5 +1,5 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.16 2012/11/26 01:32:03 karl Exp $
+   $Id: system.h 5191 2013-02-23 00:11:18Z karl $
 
    Copyright 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
    2006, 2007, 2008, 2009, 2010, 2011
@@ -230,7 +230,11 @@ extern void xexit (int);
 #define MAX(a,b) ((a) > (b) ? (a) : (b))
 
 #ifndef TEXINFO_PRINTFLIKE
-# define TEXINFO_PRINTFLIKE(fmt,narg) __attribute__ ((__format__ (__printf__, fmt, narg)))
+# ifdef __GNUC__
+#  define TEXINFO_PRINTFLIKE(fmt,narg) __attribute__ ((__format__ (__printf__, fmt, narg)))
+# else
+#  define TEXINFO_PRINTFLIKE(fmt,narg)
+# endif
 #endif
 			     
 #endif /* TEXINFO_SYSTEM_H */

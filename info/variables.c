@@ -1,5 +1,5 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c,v 1.13 2011/10/18 18:47:22 karl Exp $
+   $Id: variables.c 5191 2013-02-23 00:11:18Z karl $
 
    Copyright (C) 1993, 1997, 2001, 2002, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.

@@ -1,5 +1,5 @@
 #! /bin/sh -x
-# $Id: prove.sh,v 1.2 2012/11/13 18:30:38 karl Exp $
+# $Id: prove.sh 5191 2013-02-23 00:11:18Z karl $
 # Copyright 2010, 2012 Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,

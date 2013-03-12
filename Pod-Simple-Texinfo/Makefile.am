@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.8 2012/11/21 22:48:48 pertusus Exp $
+# $Id: Makefile.am 5191 2013-02-23 00:11:18Z karl $
 # Makefile.am for texinfo/Pod-Simple_Texinfo.
 # Copyright 2012 Free Software Foundation, Inc.
 #

@@ -1,5 +1,5 @@
 /* install-info -- merge Info directory entries from an Info file.
-   $Id: install-info.c,v 1.23 2013/01/06 23:18:56 karl Exp $
+   $Id: install-info.c 5226 2013-03-09 02:21:54Z karl $
 
    Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013
@@ -425,6 +425,11 @@ strip_info_suffix (char *fname)
       len -= 4;
       ret[len] = 0;
     }
+  else if (len > 3 && FILENAME_CMP (ret + len - 3, ".lz") == 0)
+    {
+      len -= 3;
+      ret[len] = 0;
+    }
   else if (len > 5 && FILENAME_CMP (ret + len - 5, ".lzma") == 0)
    {
       len -= 5;
@@ -528,8 +533,8 @@ print_help (void)
   printf (_("Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"), progname);
   puts ("");
   puts (_("Add or remove entries in INFO-FILE from the Info directory DIR-FILE."));
-  puts (_("INFO-FILE and DIR-FILE are required unless the --info-file or"));
-  puts (_("--dir-file (or --info-dir) options are given, respectively."));
+  puts (_("INFO-FILE and DIR-FILE are required unless the --info-file\n\
+or --dir-file (or --info-dir) options are given, respectively."));
   puts ("");
 
   puts (_("\
@@ -701,6 +706,12 @@ open_possibly_compressed_file (char *filename,
     }
   if (!f)
     {
+      free (*opened_filename);
+      *opened_filename = concat (filename, ".lz", "");
+      f = fopen (*opened_filename, FOPEN_RBIN);
+    }
+  if (!f)
+    {
      free (*opened_filename);
      *opened_filename = concat (filename, ".lzma", "");
      f = fopen (*opened_filename, FOPEN_RBIN);
@@ -780,6 +791,14 @@ open_possibly_compressed_file (char *filename,
     *compression_program = "bzip.exe";
 #else
     *compression_program = "bzip";
+#endif
+
+  else if (data[0] == 0x4C && data[1] == 0x5A && data[2] == 0x49
+           && data[3] == 0x50 && data[4] == 1)		/* "LZIP" */
+#ifndef STRIP_DOT_EXE
+    *compression_program = "lzip.exe";
+#else
+    *compression_program = "lzip";
 #endif
 
     /* We (try to) match against old lzma format (which lacks proper

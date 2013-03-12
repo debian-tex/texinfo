@@ -320,21 +320,21 @@ $result_errors{'section_in_math'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':2: @math missing close brace
+    'error_line' => ':2: @section seen before @math closing brace
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@math missing close brace',
+    'text' => '@section seen before @math closing brace',
     'type' => 'error'
   },
   {
-    'error_line' => ':6: @math missing close brace
+    'error_line' => ':6: @section seen before @math closing brace
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => '@math missing close brace',
+    'text' => '@section seen before @math closing brace',
     'type' => 'error'
   },
   {

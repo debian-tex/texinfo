@@ -94,6 +94,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module nocrash:
   # Code from module pathmax:
   # Code from module regex:
+  # Code from module secure_getenv:
   # Code from module snippet/_Noreturn:
   # Code from module snippet/arg-nonnull:
   # Code from module snippet/c++defs:
@@ -315,6 +316,12 @@ AC_DEFUN([gl_INIT],
     AC_LIBOBJ([regex])
     gl_PREREQ_REGEX
   fi
+  gl_FUNC_SECURE_GETENV
+  if test $HAVE_SECURE_GETENV = 0; then
+    AC_LIBOBJ([secure_getenv])
+    gl_PREREQ_SECURE_GETENV
+  fi
+  gl_STDLIB_MODULE_INDICATOR([secure_getenv])
   gt_TYPE_SSIZE_T
   gl_FUNC_STAT
   if test $REPLACE_STAT = 1; then
@@ -608,6 +615,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/regex_internal.c
   lib/regex_internal.h
   lib/regexec.c
+  lib/secure_getenv.c
   lib/stat.c
   lib/stdbool.in.h
   lib/stddef.in.h
@@ -722,6 +730,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/printf-posix.m4
   m4/progtest.m4
   m4/regex.m4
+  m4/secure_getenv.m4
   m4/size_max.m4
   m4/ssize_t.m4
   m4/stat.m4

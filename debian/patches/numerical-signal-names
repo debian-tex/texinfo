@@ -7,7 +7,7 @@ replace numerical signal names with symbolical
 
 --- texinfo.orig/util/texi2dvi
 +++ texinfo/util/texi2dvi
-@@ -1949,7 +1949,7 @@
+@@ -1948,7 +1948,7 @@
               sed "s,^$orig_pwd/,,;s,^\./,,;s,/,!,g"`
    esac
    # Remove it at exit if clean mode.

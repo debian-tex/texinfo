@@ -1,6 +1,6 @@
 #! /bin/false
 # vim: set autoindent shiftwidth=4 tabstop=4:
-# $Id: NATS_SEFI.pm,v 1.1 2011/10/12 23:51:49 pertusus Exp $
+# $Id: NATS_SEFI.pm,v 1.1 2011-10-12 23:51:49 pertusus Exp $
 
 # Conversion routines for NATS-SEFI.
 # Copyright (C) 2002-2009 Guido Flohr <guido@imperia.net>, all

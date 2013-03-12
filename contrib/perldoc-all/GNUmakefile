@@ -1,4 +1,4 @@
-# $Id: GNUmakefile,v 1.4 2013/02/16 16:49:49 karl Exp $
+# $Id: GNUmakefile 5191 2013-02-23 00:11:18Z karl $
 # Sample Makefile to build Texinfo from the Perl POD documentation,
 # using pod2texi.
 #

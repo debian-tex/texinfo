@@ -1,6 +1,6 @@
 #! /bin/false
 # vim: set autoindent shiftwidth=4 tabstop=4:
-# $Id: MACTURKISH.pm,v 1.1 2011/10/12 23:51:48 pertusus Exp $
+# $Id: MACTURKISH.pm,v 1.1 2011-10-12 23:51:48 pertusus Exp $
 
 # Conversion routines for MACTURKISH.
 # Copyright (C) 2002-2009 Guido Flohr <guido@imperia.net>, all

@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Id: regenerate_docstr.sh,v 1.3 2013/02/10 15:14:12 pertusus Exp $
+# $Id: regenerate_docstr.sh 5197 2013-02-23 13:06:21Z pertusus $
 # Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -47,7 +47,7 @@ $(srcdir)/../po_document/'"$lingua.gmo"': $(srcdir)/../po_document/'"$lingua.po"
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) '"$lingua.gmo"'
 
 LocaleData/'"$lingua"'/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/'"$lingua"'.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/'"$lingua"'.gmo $@
 
 ' >>$outfile

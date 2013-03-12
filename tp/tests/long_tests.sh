@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Id: long_tests.sh,v 1.8 2012/11/13 20:13:47 pertusus Exp $
+# $Id: long_tests.sh 5191 2013-02-23 00:11:18Z karl $
 # Copyright 2010, 2012 Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,

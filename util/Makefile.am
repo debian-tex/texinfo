@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.57 2013/01/02 02:47:35 karl Exp $
+# $Id: Makefile.am 5191 2013-02-23 00:11:18Z karl $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #

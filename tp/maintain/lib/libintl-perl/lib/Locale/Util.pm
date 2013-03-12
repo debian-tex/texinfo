@@ -1,7 +1,7 @@
 #! /bin/false
 
 # vim: set autoindent shiftwidth=4 tabstop=4:
-# $Id: Util.pm,v 1.1 2011/10/12 23:51:27 pertusus Exp $
+# $Id: Util.pm,v 1.1 2011-10-12 23:51:27 pertusus Exp $
 
 # Portable methods for locale handling.
 # Copyright (C) 2002-2009 Guido Flohr <guido@imperia.net>,

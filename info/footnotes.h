@@ -1,5 +1,5 @@
 /* footnotes.h -- Some functions for manipulating footnotes.
-   $Id: footnotes.h,v 1.6 2007/07/01 21:20:29 karl Exp $
+   $Id: footnotes.h 5191 2013-02-23 00:11:18Z karl $
 
    Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007
    Free Software Foundation, Inc.

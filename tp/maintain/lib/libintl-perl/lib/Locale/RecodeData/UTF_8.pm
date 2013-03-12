@@ -1,7 +1,7 @@
 #! /bin/false
 
 # vim: set autoindent shiftwidth=4 tabstop=4:
-# $Id: UTF_8.pm,v 1.1 2011/10/12 23:51:50 pertusus Exp $
+# $Id: UTF_8.pm,v 1.1 2011-10-12 23:51:50 pertusus Exp $
 
 # Conversion routines for UTF-8 (perl < 5.8.0).
 # Copyright (C) 2002-2009 Guido Flohr <guido@imperia.net>,

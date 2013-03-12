@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.42 2013/02/05 00:23:49 karl Exp $
+# $Id: Makefile.am 5191 2013-02-23 00:11:18Z karl $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
@@ -23,7 +23,7 @@ EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
 
 dist-hook:
 	cd $(top_distdir)/contrib/perldoc-all && $(MAKE) distclean
-	rm -rf `find $(distdir) -type d -name CVS`
+	rm -rf `find $(distdir) -type d -name .svn`
 
 # This is to prevent texinfo.tex from being included in the top-level
 # distribution directory.
@@ -59,9 +59,6 @@ distclean-local:
 dist-local:
 	cp -fpR $(srcdir)/po_document/*.po $(srcdir)/po_document/LINGUAS texi2html/po_document/
 	cp -fpR $(srcdir)/po/*.po $(srcdir)/po/LINGUAS texi2html/po_messages/
-
-#dist-hook:
-#	tar -C $(srcdir) -c -f - --exclude CVS tp | tar -C $(distdir) -x -f -
 
 # Don't install native tools for cross compile.
 if TOOLS_ONLY

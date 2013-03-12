@@ -157,6 +157,51 @@ $result_trees{'bad_argument'} = {
       },
       'parent' => {}
     },
+    {},
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line'
+    },
+    {
+      'cmdname' => 'macro',
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'in #',
+          'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
+        }
+      ],
+      'extra' => {
+        'arg_line' => ' #badname
+',
+        'invalid_syntax' => 1,
+        'macrobody' => 'in #
+',
+        'spaces_after_command' => {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        }
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 13,
+        'macro' => ''
+      },
+      'parent' => {}
+    },
     {}
   ],
   'type' => 'text_root'
@@ -184,6 +229,13 @@ $result_trees{'bad_argument'}{'contents'}[6]{'extra'}{'spaces_after_command'}{'e
 $result_trees{'bad_argument'}{'contents'}[6]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'bad_argument'};
 $result_trees{'bad_argument'}{'contents'}[6]{'parent'} = $result_trees{'bad_argument'};
 $result_trees{'bad_argument'}{'contents'}[7] = $result_trees{'bad_argument'}{'contents'}[6]{'extra'}{'spaces_after_command'};
+$result_trees{'bad_argument'}{'contents'}[8]{'parent'} = $result_trees{'bad_argument'};
+$result_trees{'bad_argument'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'bad_argument'}{'contents'}[9];
+$result_trees{'bad_argument'}{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'bad_argument'}{'contents'}[9];
+$result_trees{'bad_argument'}{'contents'}[9]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'bad_argument'}{'contents'}[9];
+$result_trees{'bad_argument'}{'contents'}[9]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'bad_argument'};
+$result_trees{'bad_argument'}{'contents'}[9]{'parent'} = $result_trees{'bad_argument'};
+$result_trees{'bad_argument'}{'contents'}[10] = $result_trees{'bad_argument'}{'contents'}[9]{'extra'}{'spaces_after_command'};
 
 $result_texis{'bad_argument'} = '@macro
 in macro
@@ -196,10 +248,15 @@ in
 @macro aftername {ggg} more
 in macro
 @end macro
+
+@macro #badname
+in #
+@end macro
 ';
 
 
 $result_texts{'bad_argument'} = '
+
 
 ';
 
@@ -229,6 +286,15 @@ $result_errors{'bad_argument'} = [
     'line_nr' => 9,
     'macro' => '',
     'text' => 'bad syntax for @macro argument: more',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':13: bad name for @macro
+',
+    'file_name' => '',
+    'line_nr' => 13,
+    'macro' => '',
+    'text' => 'bad name for @macro',
     'type' => 'error'
   }
 ];

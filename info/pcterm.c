@@ -1,5 +1,5 @@
 /* pcterm.c -- How to handle the PC terminal for Info under MS-DOS/MS-Windows.
-   $Id: pcterm.c,v 1.11 2012/11/26 01:32:03 karl Exp $
+   $Id: pcterm.c 5191 2013-02-23 00:11:18Z karl $
 
    Copyright (C) 1998, 1999, 2003, 2004, 2007, 2008, 2012
    Free Software Foundation, Inc.
@@ -123,12 +123,11 @@ w32_cleanup (void)
 }
 
 static void w32_info_init (void) __attribute__((constructor));
+static void pc_initialize_terminal (char *);
 
 static void
 w32_info_init (void)
 {
-  static void pc_initialize_terminal (char *);
-
   /* We need to set this single hook here; the rest
      will be set by pc_initialize_terminal when it is called.  */
   terminal_initialize_terminal_hook = pc_initialize_terminal;

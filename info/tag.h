@@ -1,5 +1,5 @@
 /* tag.c -- Functions to handle Info tags.
-   $Id: tag.h,v 1.2 2012/11/30 23:58:21 gray Exp $
+   $Id: tag.h 5191 2013-02-23 00:11:18Z karl $
 
    Copyright (C) 2012 Free Software Foundation, Inc.
 

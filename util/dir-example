@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.101 2013/02/04 01:34:59 karl Exp $
+$Id: dir-example 5232 2013-03-11 18:31:12Z karl $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -47,7 +47,7 @@ Text creation and manipulation
 * M4: (m4).                     A powerful macro processor.
 * Perl: (perldoc-all).          Practical Extraction and Report Language.
 * sed: (sed).                   Stream EDitor.  
-* Wdiff: (wdiff).               Word difference finder and related tools.
+* Word differences: (wdiff).    GNU wdiff and diff related tools.
 
 Texinfo documentation system
 * Info: (info).                 How to use the documentation browsing system.
@@ -146,68 +146,82 @@ Software development
 * vc-dwim: (vc-dwim).           VCS-agnostic commit, diff, and change logs.
 
 Emacs
+* Emacs: (emacs).               The extensible self-documenting text editor.
+* Emacs FAQ: (efaq).            Frequently Asked Questions about Emacs.
+
+GNU Emacs Lisp
+* Elisp: (elisp).               The Emacs Lisp Reference Manual.
+* Emacs Lisp Intro: (eintr).    A simple introduction to Emacs Lisp 
+                                  programming.
+
+Emacs editing modes
 * Ada mode: (ada-mode).         Emacs mode for editing and compiling Ada code.
-* Auth-source: (auth).          The Emacs auth-source library.
-* Autotype: (autotype).         Convenient features for text that you enter 
-                                  frequently in Emacs.
 * CC Mode: (ccmode).            Emacs mode for editing C, C++, Objective-C, 
                                   Java, Pike, AWK, and CORBA IDL code.
+* IDLWAVE: (idlwave).           Major mode and shell for IDL files.
+* Org Mode: (org).              Outline-based notes management and organizer
+* nXML Mode: (nxml-mode).       XML editing mode with RELAX NG support.
+
+Emacs Lisp libraries
+* Auth-source: (auth).          The Emacs auth-source library.
 * CL: (cl).                     Partial Common Lisp support for Emacs Lisp.
-* Calc: (calc).                 Advanced desk calculator and mathematical tool.
 * D-Bus: (dbus).                Using D-Bus in Emacs.
+* Emacs MIME: (emacs-mime).     Emacs MIME de/composition library.
+* SMTP: (smtpmail).             Emacs library for sending mail via SMTP.
+* URL: (url).                   URL loading package.
+* Widget: (widget).             The "widget" package used by the Emacs 
+                                  Customization facility.
+
+Emacs misc features
+* Autotype: (autotype).         Convenient features for text that you enter 
+                                  frequently in Emacs.
+* Bovine: (bovine).             Semantic bovine parser development.
+* Calc: (calc).                 Advanced desk calculator and mathematical tool.
 * Dired-X: (dired-x).           Dired Extra Features.
-* ERC: (erc).                   Powerful, modular, and extensible IRC client 
-                                  for Emacs.
-* EUDC: (eudc).                 An Emacs client for directory servers (LDAP, 
-                                  PH).
+* EDE: (ede).                   The Emacs Development Environment.
+* EDT: (edt).                   An Emacs emulation of the EDT editor.
+* EIEIO: (eieio).               An objects system for Emacs Lisp.
+* ERT: (ert).                   Emacs Lisp regression testing tool.
 * EasyPG Assistant: (epa).      An Emacs user interface to GNU Privacy Guard.
 * Ebrowse: (ebrowse).           A C++ class browser for Emacs.
 * Ediff: (ediff).               A visual interface for comparing and merging 
                                   programs.
-* Elisp: (elisp).               The Emacs Lisp Reference Manual.
-* Emacs: (emacs).               The extensible self-documenting text editor.
-* Emacs FAQ: (efaq).            Frequently Asked Questions about Emacs.
-* Emacs Lisp Intro: (eintr).    A simple introduction to Emacs Lisp 
-                                  programming.
-* Emacs MIME: (emacs-mime).     Emacs MIME de/composition library.
 * Eshell: (eshell).             A command shell implemented in Emacs Lisp.
 * Flymake: (flymake).           A universal on-the-fly syntax checker.
 * Forms: (forms).               Emacs package for editing data bases by 
                                   filling in forms.
-* Gnus: (gnus).                 The newsreader Gnus.
-* IDLWAVE: (idlwave).           Major mode and shell for IDL files.
-* Intro Elisp: (emacs-lisp-intro). Introduction to Elisp programming.
+* Htmlfontify: (htmlfontify).   Convert source code to html.
+* PCL-CVS: (pcl-cvs).           Emacs front-end to CVS.
+* RefTeX: (reftex).             Emacs support for LaTeX cross-references and 
+                                  citations.
+* Remember: (remember).         Simple information manager for Emacs.
+* SES: (ses).                   Simple Emacs Spreadsheet.
+* SRecode: (srecode).           Template code generator.
+* Semantic: (semantic).         Source code parser library and utilities.
+* Speedbar: (speedbar).         File/Tag summarizing utility.
+* VIP: (vip).                   An older VI-emulation for Emacs.
+* VIPER: (viper).               A VI-emulation mode for Emacs.
+* Wisent: (wisent).             Semantic Wisent parser development.
+* WoMan: (woman).               Browse UN*X Manual Pages "W.O. (without) Man".
 
-* AUC TeX: (auctex).            Editing (La)TeX files.
+Emacs network features
+* ERC: (erc).                   Powerful and extensible IRC client for Emacs.
+* EUDC: (eudc).                 Emacs client for directory servers (LDAP, PH).
+* GnuTLS: (emacs-gnutls).       The Emacs GnuTLS integration.
+* Gnus: (gnus).                 The newsreader Gnus.
 * MH-E: (mh-e).                 Emacs interface to the MH mail system.
 * Mairix: (mairix-el).          Emacs interface to the Mairix mail indexer.
 * Message: (message).           Mail and news composition mode that goes with 
                                   Gnus.
 * Newsticker: (newsticker).     A Newsticker for Emacs.
-* Org Mode: (org).              Outline-based notes management and organizer
-* PCL-CVS: (pcl-cvs).           Emacs front-end to CVS.
 * PGG: (pgg).                   Emacs interface to various PGP implementations.
 * Rcirc: (rcirc).               Internet Relay Chat (IRC) client.
-* RefTeX: (reftex).             Emacs support for LaTeX cross-references and 
-                                  citations.
-* Remember: (remember).         Simple information manager for Emacs
 * SASL: (sasl).                 The Emacs SASL library.
 * SC: (sc).                     Supercite lets you cite parts of messages 
                                   you're replying to, in flexible ways.
-* SES: (ses).                   Simple Emacs Spreadsheet
-* SMTP: (smtpmail).             Emacs library for sending mail via SMTP.
 * Sieve: (sieve).               Managing Sieve scripts in Emacs.
-* Speedbar: (speedbar).         File/Tag summarizing utility.
-* TRAMP: (tramp).               Transparent Remote Access, Multiple Protocol,
+* TRAMP: (tramp).               Transparent Remote Access, Multiple Protocol 
                                   Emacs remote file access via rsh and rcp.
-* VIP: (vip).                   An older VI-emulation for Emacs.
-* VIPER: (viper).               The newest Emacs VI-emulation mode.  (also, A 
-                                  VI Plan for Emacs Rescue or the VI PERil.)
-* VM: (vm).                     View Mail for Emacs.
-* Widget: (widget).             The "widget" package used by the Emacs 
-                                  Customization facility.
-* WoMan: (woman).               Browse UN*X Manual Pages "W.O. (without) Man".
-* nXML Mode: (nxml-mode).       XML editing mode with RELAX NG support.
 
 GNU Gettext Utilities
 * ISO3166: (gettext)Country Codes.             ISO 3166 country codes.
@@ -541,7 +555,6 @@ Individual utilities
 * tsort: (coreutils)tsort invocation.           Topological sort.
 * tty: (coreutils)tty invocation.               Print terminal name.
 * txt2gcal: (gcal)Invoking txt2gcal.            Calendar text to resource file.
-* umb-scheme: (umb-scheme).                     UMB Scheme Interpreter.
 * uname: (coreutils)uname invocation.           Print system information.
 * unexpand: (coreutils)unexpand invocation.     Convert spaces to tabs.
 * unify: (wdiff)unify invocation.               Diff format converter.

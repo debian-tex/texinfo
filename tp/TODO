@@ -18,6 +18,17 @@ Bugs
 ====
 
 
+Profiling
+=========
+
+profiling: package on debian:
+libdevel-nytprof-perl
+In doc:
+perl -d:NYTProf ../tp/texi2any.pl texinfo.txi
+nytprofhtml --open
+# firefox nytprof/index.html
+
+
 Delayed bugs
 ============
 
@@ -78,9 +89,17 @@ converters_tests/things_before_setfilename there is no error
 for anchor and footnote before setfilename.  It is not completly
 clear that there should be, though.
 
+Recursive expansion of @value may lead to an infinite loop.  Wait for
+marksource to proceed.
+ https://bugzilla.redhat.com/show_bug.cgi?id=744878
+
 
 Missing tests
 =============
+
+Test node files that differ only in case.  This may be rather complicated,
+however, as http://savannah.gnu.org/bugs/?38380 shows.  This may be linked
+to a possible test of CASE_INSENSITIVE_FILENAMES.
 
 Unit test of end_line_count for Texinfo/Convert/Paragraph.pm .... containers.
 
@@ -93,12 +112,14 @@ enable encoding and entities.
 in html test footnotestyle separate.  There are such tests in tp/tests,
 maybe they are sufficient, but they are only done for long checks.
 
-Test of CASE_INSENSITIVE_FILENAMES.
-
 anchor in flushright, on an empty line, with a current byte offset.
 
 Future features
 ===============
+
+Update Unicode-EastAsianWidth.  The new version has improved tests
+and a new license, but no functional change.  So maybe wait a
+bit to update.
 
 Add some elements of texinfo that are not of interest in the
 tree, like beginning and end of included file, @ protecting

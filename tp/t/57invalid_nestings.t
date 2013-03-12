@@ -28,6 +28,9 @@ my @test_cases = (
 @deffnx {@anchor{in anchorx}} @titlefont{in titlefontx} @footnote{footnotex} @exdent exdentx
 @end deffn
 '],
+['raw_block_on_line',
+'@cindex @tex
+'],
 ['ignored_text',
 '@node before ignore @ifinfo
 in ifinfo

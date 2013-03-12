@@ -609,6 +609,13 @@ my %formats_table = (
   'plaintexinfo' => {
             'converter' => sub{Texinfo::Convert::PlainTexinfo->converter(@_)},
            },
+  'parse' => {
+           },
+  'structure' => {
+             'nodes_tree' => 1,
+             'floats' => 1,
+             'split' => 1,
+           },
 );
 
 my $call_texi2dvi = 0;
@@ -680,7 +687,8 @@ sub _exit($$)
      or $error_count > get_conf('ERROR_LIMIT')));
 }
 
-sub handle_errors($$$) {
+sub handle_errors($$$)
+{
   my $self = shift;
   my $error_count = shift;
   my $opened_files = shift;
@@ -1151,7 +1159,7 @@ while(@input_files) {
   my $parser = Texinfo::Parser::parser($parser_options);
   my $tree = $parser->parse_texi_file($input_file_name);
 
-  if (!defined($tree)) {
+  if (!defined($tree) or $format eq 'parse') {
     handle_errors($parser, $error_count, \@opened_files);
     next;
   }
@@ -1189,9 +1197,9 @@ while(@input_files) {
                         $macro_expand_file, $parser->{'INPUT_PERL_ENCODING'});
 
     my $error_macro_expand_file;
-    if (defined ($macro_expand_fh)) {
+    if (defined($macro_expand_fh)) {
       print $macro_expand_fh $texinfo_text;
-      if (!close ($macro_expand_fh)) {
+      if (!close($macro_expand_fh)) {
         document_warn(sprintf(__("error on closing macro expand file %s: %s\n"), 
                               $macro_expand_file, $!));
         $error_macro_expand_file = 1;
@@ -1257,6 +1265,10 @@ while(@input_files) {
     Texinfo::Structuring::number_floats($floats);
   }
   $error_count = handle_errors($parser, $error_count, \@opened_files);
+
+  if ($format eq 'structure') {
+    next;
+  }
 
   if ($file_number != 0) {
     delete $cmdline_options->{'OUTFILE'} if exists($cmdline_options->{'OUTFILE'});

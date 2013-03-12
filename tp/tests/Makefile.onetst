@@ -163,6 +163,9 @@ one_test_files_generated_list =  \
      test_scripts/formatting_texi_ignore_and_comments.sh \
      test_scripts/formatting_ignore_and_comments_output.sh \
      test_scripts/formatting_test_redefine_need.sh \
+     test_scripts/formatting_one_line_no_content.sh \
+     test_scripts/formatting_one_line.sh \
+     test_scripts/formatting_empty.sh \
      test_scripts/formatting_direntry_dircategory_info_split.sh \
      test_scripts/formatting_split_nocopying.sh \
      test_scripts/formatting_split_nocopying_split.sh \

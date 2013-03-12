@@ -1,5 +1,5 @@
 /* man.h: Defines and external function declarations for man.c.
-   $Id: man.h,v 1.6 2007/07/01 21:20:30 karl Exp $
+   $Id: man.h 5191 2013-02-23 00:11:18Z karl $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.

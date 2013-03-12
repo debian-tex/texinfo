@@ -268,12 +268,12 @@ $result_texts{'caption_not_closed'} = 'Text
 
 $result_errors{'caption_not_closed'} = [
   {
-    'error_line' => ':3: @caption missing close brace
+    'error_line' => ':3: @end float seen before @caption closing brace
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@caption missing close brace',
+    'text' => '@end float seen before @caption closing brace',
     'type' => 'error'
   }
 ];

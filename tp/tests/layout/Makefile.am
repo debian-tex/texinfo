@@ -9,4 +9,4 @@ distclean-local:
 	rm -rf out_parser diffs test_log
 
 dist-hook:
-	rm -rf `find $(distdir)/res_parser -name CVS`
+	rm -rf `find $(distdir)/res_parser -name .svn`

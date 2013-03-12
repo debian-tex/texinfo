@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.175 2013/02/16 16:50:28 karl Exp $
+# $Id: texi2dvi 5234 2013-03-12 22:56:31Z karl $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002,
 # 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013
@@ -34,7 +34,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.175 $'
+rcs_revision='$Revision: 5234 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -428,7 +428,7 @@ verbose ()
 version ()
 {
   cat <<EOF
-texi2dvi (GNU Texinfo 5.0) $rcs_version
+texi2dvi (GNU Texinfo 5.1) $rcs_version
 
 Copyright (C) 2013 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -1775,9 +1775,8 @@ this script, you'll need to install TeX (if you don't have it) or change
 your PATH or TEX environment variable (if you do).  See the --help
 output for more details.
 
-For information about obtaining TeX, please see http://www.tug.org.  If
-you happen to be using Debian, you can get it with this command:
-  apt-get install tetex-bin
+For information about obtaining TeX, please see http://tug.org/texlive,
+or do a web search for TeX and your operating system or distro.
 EOM
   exit 1
 fi

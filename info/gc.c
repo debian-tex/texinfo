@@ -1,5 +1,5 @@
 /* gc.c -- Functions to remember and garbage collect unused node contents.
-   $Id: gc.c,v 1.7 2008/06/11 09:55:42 gray Exp $
+   $Id: gc.c 5191 2013-02-23 00:11:18Z karl $
 
    Copyright (C) 1993, 2004, 2007, 2008 Free Software Foundation, Inc.
 

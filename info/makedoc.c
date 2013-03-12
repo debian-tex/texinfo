@@ -1,5 +1,5 @@
 /* makedoc.c -- make doc.c and funs.h from input files.
-   $Id: makedoc.c,v 1.11 2012/06/11 17:54:26 karl Exp $
+   $Id: makedoc.c 5191 2013-02-23 00:11:18Z karl $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007,
    2008, 2012 Free Software Foundation, Inc.

@@ -1,5 +1,5 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c,v 1.20 2012/11/17 17:16:18 gray Exp $
+   $Id: nodes.c 5191 2013-02-23 00:11:18Z karl $
 
    Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
    2008, 2009, 2011, 2012 Free Software Foundation, Inc.

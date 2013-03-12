@@ -79,9 +79,12 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/columnfractions/wrong_command.pl \
   t/results/conditionals/additional_space_in_end_conditional.pl \
   t/results/conditionals/additional_space_in_end_conditional_expanded.pl \
+  t/results/conditionals/bad_ifclear_argument.pl \
+  t/results/conditionals/bad_ifset_argument.pl \
   t/results/conditionals/command_conditionals.pl \
   t/results/conditionals/command_conditionals_user_defined.pl \
   t/results/conditionals/commands_in_ifset.pl \
+  t/results/conditionals/comment_on_ifset_line.pl \
   t/results/conditionals/conditional_not_closed.pl \
   t/results/conditionals/consecutive_conditionals.pl \
   t/results/conditionals/empty_ifclear.pl \
@@ -96,6 +99,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/conditionals/ifclear_in_ifset_set.pl \
   t/results/conditionals/ifnot_format_conditional.pl \
   t/results/conditionals/ifnotinfo_exception.pl \
+  t/results/conditionals/ifset_in_command.pl \
   t/results/conditionals/ignore_not_closed.pl \
   t/results/conditionals/ignored_in_ifset.pl \
   t/results/conditionals/info_ifinfo_ifnotplaintext.pl \
@@ -226,7 +230,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/converters_tests/refs_formatting.pl \
   t/results/converters_tests/sample_utf8.pl \
   t/results/converters_tests/sample_utf8/res_html/DiYiZhang_0028First-Chapter_0029.html \
-  t/results/converters_tests/sample_utf8/res_html/Index.html \
+  t/results/converters_tests/sample_utf8/res_html/Index-node.html \
   t/results/converters_tests/sample_utf8/res_html/Second-Chapter-AE-AE-ae-ae.html \
   t/results/converters_tests/sample_utf8/res_html/index.html \
   t/results/converters_tests/sample_utf8/res_info/sample_utf8.info \
@@ -587,6 +591,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/invalid_nestings/on_subheading_line.pl \
   t/results/invalid_nestings/quotation_in_ref.pl \
   t/results/invalid_nestings/quotation_in_style_command.pl \
+  t/results/invalid_nestings/raw_block_on_line.pl \
   t/results/invalid_nestings/recursive_copying.pl \
   t/results/invalid_nestings/ref_in_anchor.pl \
   t/results/invalid_nestings/ref_in_ref.pl \
@@ -718,6 +723,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/menu/detailmenu.pl \
   t/results/menu/detailmenu_in_description.pl \
   t/results/menu/detailmenu_on_subnodes.pl \
+  t/results/menu/detailmenu_unknown_node.pl \
   t/results/menu/direntry_dircategory_after_first_node.pl \
   t/results/menu/empty_menu_entry_name.pl \
   t/results/menu/entry_after_detailmenu.pl \
@@ -1086,9 +1092,12 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/test_count/multitable.pl \
   t/results/test_count/printindex.pl \
   t/results/value/bad_syntax.pl \
+  t/results/value/comment_on_set_line.pl \
   t/results/value/empty_set.pl \
   t/results/value/empty_value_in_line.pl \
   t/results/value/set_flag_command_equivalent.pl \
+  t/results/value/set_in_item_missing_line.pl \
+  t/results/value/set_on_item_line.pl \
   t/results/value/simple.pl \
   t/results/value/spaces_before_value.pl \
   t/results/value/value_after_accent.pl \
@@ -1150,7 +1159,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/include_reference/section_file.texi
 
 t/include_dir:
-	$(mkdir_p) $@
+	$(MKDIR_P) $@
 
 t/include_dir/section_file.texi: $(srcdir)/t/include_reference/section_file.texi t/include_dir
 	$(INSTALL_DATA) $(srcdir)/t/include_reference/section_file.texi $@

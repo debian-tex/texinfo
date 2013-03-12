@@ -61,7 +61,6 @@ $result_trees{'quotation_beginning_and_end_on_line'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'quotation',
-            'invalid_nesting' => 1,
             'spaces_after_command' => {},
             'text_arg' => 'quotation'
           },
@@ -115,15 +114,6 @@ $result_errors{'quotation_beginning_and_end_on_line'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => '@end should only appear at a line beginning',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':1: warning: @end should not appear in @quotation
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@end should not appear in @quotation',
     'type' => 'warning'
   }
 ];

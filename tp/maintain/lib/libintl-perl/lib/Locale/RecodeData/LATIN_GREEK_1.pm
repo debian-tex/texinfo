@@ -1,6 +1,6 @@
 #! /bin/false
 # vim: set autoindent shiftwidth=4 tabstop=4:
-# $Id: LATIN_GREEK_1.pm,v 1.1 2011/10/12 23:51:47 pertusus Exp $
+# $Id: LATIN_GREEK_1.pm,v 1.1 2011-10-12 23:51:47 pertusus Exp $
 
 # Conversion routines for LATIN-GREEK-1.
 # Copyright (C) 2002-2009 Guido Flohr <guido@imperia.net>, all

@@ -15,6 +15,12 @@ my @test_cases = (
 @set 
 @set ?
 @set :-/ hey!
+@set a@b
+@set :-" bad
+@set } no
+
+@clear aaa ggg
+@clear and{other
 
 @value{gurgl
 
@@ -24,6 +30,14 @@ my @test_cases = (
 '@set var val
 
 @value  {var}
+'],
+['comment_on_set_line',
+'@set x@c
+@set y @c
+@set z g@c
+@set t a vv @comment@ggg
+
+!@value{x}!, !@value{y}!, !@value{z}!, !@value{t}!
 '],
 ['value_zero',
 '@set zero 0
@@ -283,6 +297,36 @@ After page on it\'s own line.
 @value{txicodequoteundirected}.
 
 @clear txicodequoteundirected
+'],
+['set_on_item_line',
+'@table @code
+@item @set a b@c
+item text
+in item
+@item jj @set j@c
+line
+@item vvv @set g@c
+@end table
+
+@table @code
+@item @set a b
+item text
+in item
+@item jj @set j
+line
+@item vvv @set g
+@end table
+'],
+['set_in_item_missing_line',
+'@table @code
+@item xx @set n
+@item jj
+@end table
+
+@table @code
+@item xx @set n@c
+@item jj
+@end table
 ']
 );
 

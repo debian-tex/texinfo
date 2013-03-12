@@ -1,4 +1,4 @@
-$Id: TODO,v 1.70 2012/12/31 19:02:57 karl Exp $
+$Id: TODO 5214 2013-02-28 08:50:54Z pertusus $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -48,6 +48,9 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     as surrounding node names with SPACE BACKSPACE is probably the best
     solution, although this is an incompatible change to Info format.
   - @else for the @if... conditionals.
+  - consider doing some @inline version of @set, @ifset, like 
+    @inlineset{flag, ...}, @inlineifset{flag, if set} or @inlineifset{flag,
+    if set, if not set} in analogy with @inlinefmt.
   - @xindexterm [def] primary [,secondary [,tertiary]]  or some such?
   - Add a @sortkey command for indices like @findex @sortkey{command} @@command
   - Allow subitems and `see' and `see also' in indices.

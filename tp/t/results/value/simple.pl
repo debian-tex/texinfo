@@ -16,7 +16,7 @@ $result_trees{'simple'} = {
         },
         {
           'parent' => {},
-          'text' => 'the value @b{b} @c comment',
+          'text' => 'the value @b{b}',
           'type' => 'misc_arg'
         }
       ],
@@ -26,7 +26,7 @@ $result_trees{'simple'} = {
 ',
         'misc_args' => [
           'a-_5b',
-          'the value @b{b} @c comment'
+          'the value @b{b}'
         ]
       },
       'parent' => {}
@@ -67,25 +67,8 @@ $result_trees{'simple'} = {
         },
         {
           'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => ' comment After value.
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' comment After value.
+          'text' => ' After value.
 '
-            ]
-          },
-          'parent' => {}
         }
       ],
       'parent' => {},
@@ -103,18 +86,17 @@ $result_trees{'simple'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{
 $result_trees{'simple'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[2]{'contents'}[1];
 $result_trees{'simple'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[2];
 $result_trees{'simple'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'simple'}{'contents'}[2];
-$result_trees{'simple'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[2]{'contents'}[3];
-$result_trees{'simple'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'simple'}{'contents'}[2];
 $result_trees{'simple'}{'contents'}[2]{'parent'} = $result_trees{'simple'};
 
 $result_texis{'simple'} = '@set a-_5b the value @b{b} @c comment
 
-the value @b{b} @c comment After value.
+the value @b{b} After value.
 ';
 
 
 $result_texts{'simple'} = '
-the value b ';
+the value b After value.
+';
 
 $result_errors{'simple'} = [];
 

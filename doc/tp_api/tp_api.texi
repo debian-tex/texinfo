@@ -126,6 +126,7 @@ Texinfo::Convert::Converter
 * Texinfo@asis{::}Convert@asis{::}Converter SYNOPSIS::
 * Texinfo@asis{::}Convert@asis{::}Converter DESCRIPTION::
 * Texinfo@asis{::}Convert@asis{::}Converter METHODS::
+* Texinfo@asis{::}Convert@asis{::}Converter SEE ALSO::
 * Texinfo@asis{::}Convert@asis{::}Converter AUTHOR::
 * Texinfo@asis{::}Convert@asis{::}Converter COPYRIGHT AND LICENSE::
 

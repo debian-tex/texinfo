@@ -23,6 +23,11 @@ texi ignore_and_comments.texi --init ignore_and_comments_output.init
 ignore_and_comments_output ignore_and_comments.texi --init ignore_and_comments_output.init
 test_redefine_need test_need.texi --init redefine_need.init
 
+# test the first line
+one_line_no_content one_line_no_content.texi
+one_line one_line.texi
+empty empty.texi
+
 # diverse
 direntry_dircategory_info_split direntry_dircategory.texi --info --split-size 1
 split_nocopying split_nocopying.texi --info

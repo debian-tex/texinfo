@@ -1,17 +1,18 @@
-$Id: README,v 1.11 2012/12/02 18:09:33 pertusus Exp $
+$Id: README 5222 2013-03-08 17:38:27Z karl $
 texinfo/tp/README
 
-  Copyright 2011, 2012 Free Software Foundation, Inc.
+  Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
-Texinfo::Parser (tp) is a Perl module for parsing Texinfo code into a 
-tree representing the Texinfo code structure.
+Texinfo::Parser (hence the directory name tp) is a Perl module for
+parsing Texinfo code into a tree representing the Texinfo code
+structure.
 
-These other modules and libraries are required.  All have been standard
-parts of Perl for years, at least since 5.7.3.
+These other modules and libraries are required (all have been standard
+parts of Perl for years, at least since 5.7.3):
   Carp, Config, Data::Dumper, Encode, File::Basename, File::Spec
   Getopt::Long, Unicode::Normalize, Storable
 
@@ -33,3 +34,10 @@ produced from within the the Texinfo tree, using
   ./maintain/prepare_perl_module.sh
 The resulting module, although standalone, should always be regenerated
 from the sources in Texinfo, to avoid divergence of sources.
+
+
+If you want to delve into making a new backend, the documentation in
+tp/Texinfo/Convert/Converter.pm is a good starting point, as it
+describes the existing backends and other places to look.  To do a good
+job, expect to spend a lot of time making it do the right thing with the
+existing tests.

@@ -23277,39 +23277,12 @@ $result_converted_errors{'info'}->{'at_commands_in_refs'} = [
   },
   {
     'file_name' => '',
-    'error_line' => ':89: warning: could not find @image file `f--ile1.txt\' nor alternate text
-',
-    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 89
-  },
-  {
-    'file_name' => '',
     'error_line' => ':91: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
     'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 91
-  },
-  {
-    'file_name' => '',
-    'error_line' => ':89: warning: could not find @image file `f--ile1.txt\' nor alternate text
-',
-    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 89
-  },
-  {
-    'file_name' => '',
-    'error_line' => ':89: warning: could not find @image file `f--ile1.txt\' nor alternate text
-',
-    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 89
   },
   {
     'file_name' => '',

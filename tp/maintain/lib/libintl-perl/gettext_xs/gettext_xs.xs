@@ -1,5 +1,5 @@
 /* -*- C -*- */
-/* $Id: gettext_xs.xs,v 1.1 2011/10/12 23:51:26 pertusus Exp $ */
+/* $Id: gettext_xs.xs,v 1.1 2011-10-12 23:51:26 pertusus Exp $ */
 /*
 # Perl binding for Uniforum message translation.
 # Copyright (C) 2002-2009 Guido Flohr <guido@imperia.net>,

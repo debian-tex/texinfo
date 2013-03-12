@@ -75,8 +75,12 @@ my $input_files_dir = $srcdir."t/input_files/";
 
 our $output_files_dir = 't/output_files/';
 foreach my $dir ('t', 't/results', $output_files_dir) {
+  my $error;
+  # to avoid a race conditon, first create the dir then test that it
+  # exists
+  mkdir $dir or $error = $!;
   if (! -d $dir) {
-    mkdir $dir or die "mkdir $dir: $!\n";
+    die "mkdir $dir: $error\n";
   }
 }
 
@@ -239,8 +243,9 @@ sub compare_dirs_files($$;$)
   }
   foreach my $file (sort(keys(%dir1_files))) {
     if ($dir2_files{$file}) {
-      if (compare("$dir1/$file", "$dir2/$file")) {
-        push @errors, "$dir1/$file and $dir2/$file differ";
+      my $status = compare("$dir1/$file", "$dir2/$file");
+      if ($status) {
+        push @errors, "$dir1/$file and $dir2/$file differ: $status";
       }
       delete $dir2_files{$file};
     } else {
@@ -434,6 +439,21 @@ sub set_converter_option_defaults($$$)
   return $converter_options;
 }
 
+sub close_files($)
+{
+  my $converter = shift;
+  my $converter_unclosed_files = $converter->converter_unclosed_files();
+  if ($converter_unclosed_files) {
+    foreach my $unclosed_file (keys(%$converter_unclosed_files)) {
+      if (!close($converter_unclosed_files->{$unclosed_file})) {
+        # FIXME or die?
+        warn(sprintf("tp_utils.pl: error on closing %s: %s\n",
+                    $converter_unclosed_files->{$unclosed_file}, $!));
+      } 
+    }
+  }
+}
+
 sub convert_to_plaintext($$$$$$;$)
 {
   my $self = shift;
@@ -462,6 +482,7 @@ sub convert_to_plaintext($$$$$$;$)
     $result = $converter->convert($tree);
   } else {
     $result = $converter->output($tree);
+    close_files($converter);
     $result = undef if (defined($result and $result eq ''));
   }
   my ($errors, $error_nrs) = $converter->errors();
@@ -488,6 +509,7 @@ sub convert_to_info($$$$$;$)
                                          'output_format' => 'info',
                                           %$converter_options });
   my $result = $converter->output($tree);
+  close_files($converter);
   die if (!defined($converter_options->{'SUBDIR'}) and !defined($result));
   my ($errors, $error_nrs) = $converter->errors();
   return ($errors, $result);
@@ -524,6 +546,7 @@ sub convert_to_html($$$$$$;$)
     $result = $converter->convert($tree);
   } else {
     $result = $converter->output($tree);
+    close_files($converter);
   }
   die if (!defined($converter_options->{'SUBDIR'}) and !defined($result));
   my ($errors, $error_nrs) = $converter->errors();
@@ -555,6 +578,7 @@ sub convert_to_xml($$$$$$;$)
     $result = $converter->convert($tree);
   } else {
     $result = $converter->output($tree);
+    close_files($converter);
     $result = undef if (defined($result and $result eq ''));
   }
   my ($errors, $error_nrs) = $converter->errors();
@@ -585,6 +609,7 @@ sub convert_to_docbook($$$$$$;$)
     $result = $converter->convert($tree);
   } else {
     $result = $converter->output($tree);
+    close_files($converter);
     $result = undef if (defined($result and $result eq ''));
   }
   my ($errors, $error_nrs) = $converter->errors();

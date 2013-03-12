@@ -264,7 +264,7 @@ sub sectioning_structure($$)
                           $content->{'cmdname'}), $content->{'line_nr'});
                 }
               } else {
-                $self->line_error(sprintf($self->__(
+                $self->line_warn(sprintf($self->__(
          "lowering the section level of \@%s appearing after a lower element"), 
                   $content->{'cmdname'}), $content->{'line_nr'});
                 $content->{'level'} = $up->{'level'} + 1;
@@ -1985,13 +1985,14 @@ sub _do_index_keys($$$)
       and $self->get_conf('INPUT_ENCODING_NAME')) {
     $options->{'enabled_encoding'} = $self->get_conf('INPUT_ENCODING_NAME');
   }
+  my %convert_text_options = Texinfo::Common::_convert_text_options($self);
+  $options = {%$options, %convert_text_options};
   foreach my $index_name (keys(%$index_entries)) {
     foreach my $entry (@{$index_entries->{$index_name}}) {
       $entry->{'in_code'} = $index_names->{$entry->{'index_name'}}->{'in_code'};
       $options->{'code'} = $entry->{'in_code'};
       $entry->{'key'} = Texinfo::Convert::Text::convert(
-                              {'contents' => $entry->{'content'}},
-                  {%$options, Texinfo::Common::_convert_text_options($self)});
+                              {'contents' => $entry->{'content'}}, $options);
       if ($entry->{'key'} !~ /\S/) {
         $self->line_warn(sprintf($self->__("empty index key in \@%s"), 
                                  $entry->{'index_at_command'}),

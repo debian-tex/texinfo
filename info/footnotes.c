@@ -1,5 +1,5 @@
 /* footnotes.c -- Some functions for manipulating footnotes.
-   $Id: footnotes.c,v 1.14 2012/04/21 00:38:03 karl Exp $
+   $Id: footnotes.c 5191 2013-02-23 00:11:18Z karl $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.

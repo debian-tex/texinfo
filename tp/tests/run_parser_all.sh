@@ -144,10 +144,10 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
         resdir="${res_dir}${dir_suffix}/"
         if [ -d "${outdir}$dir" ]; then
           if [ -d "${resdir}$dir" ]; then
-          # ugly hack to avoid CVS
-            rm -f "${resdir}$dir/"*.*
+          # ugly hack to avoid CVS and .svn
+            rm -f "${resdir}$dir/"?*.*
           else
-             mkdir "${resdir}$dir/"
+            mkdir "${resdir}$dir/"
           fi
           cp -r "${outdir}$dir/"* "${resdir}$dir/"
         else
@@ -296,6 +296,7 @@ do
     fi
     if test $ret = 0 ; then
       diff_base="${dir}${dir_suffix}"
+      res_dir_used=
       if [ -d "$results_dir/$dir" ]; then
         res_dir_used="$results_dir/$dir"
       fi
@@ -304,7 +305,7 @@ do
         rm -rf $staging_dir_res/$dir
         cp -pr "$res_dir_used" $staging_dir_res
         chmod -R u+w "$staging_dir_res/$dir"
-        rm -rf $staging_dir_res$dir/CVS
+        rm -rf $staging_dir_res$dir/CVS $staging_dir_res$dir/.svn
 
         # with latex2html or tex4ht output is stored in raw_outdir, and files
         # are removed or modified from the output directory used for comparisons
@@ -355,8 +356,7 @@ do
                 ${outdir}$dir/*_l2h.css
         fi
 
-        #diff -a -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' --exclude='*_1' --exclude='*_2' -r "$res_dir_used" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
-        diff -a -u -r "${staging_dir_res}$dir" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
+        diff $DIFF_A_OPTION $DIFF_U_OPTION -r "${staging_dir_res}$dir" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
         dif_ret=$?
         if [ $dif_ret != 0 ]; then
           echo "D: ${mydir}$diffs_dir/$diff_base.diff"

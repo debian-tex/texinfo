@@ -1,7 +1,7 @@
 #! /bin/false
 
 # vim: tabstop=4
-# $Id: gettext_xs.pm,v 1.1 2011/10/12 23:51:26 pertusus Exp $
+# $Id: gettext_xs.pm,v 1.1 2011-10-12 23:51:26 pertusus Exp $
 
 # Pure Perl implementation of Uniforum message translation.
 # Copyright (C) 2002-2009 Guido Flohr <guido@imperia.net>,

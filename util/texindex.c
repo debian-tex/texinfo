@@ -1,5 +1,5 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.29 2013/01/01 19:31:57 karl Exp $
+   $Id: texindex.c 5191 2013-02-23 00:11:18Z karl $
 
    Copyright 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
    2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,

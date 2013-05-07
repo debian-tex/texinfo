@@ -1,3 +1,9 @@
+texinfo (5.1.dfsg.1-2) unstable; urgency=low
+
+  * upload to unstable
+
+ -- Norbert Preining <preining@debian.org>  Tue, 07 May 2013 13:45:11 +0900
+
 texinfo (5.1.dfsg.1-1) experimental; urgency=low
 
   * Imported Upstream version 5.1.dfsg.1

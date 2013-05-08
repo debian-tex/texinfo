@@ -1,3 +1,9 @@
+texinfo (5.1.dfsg.1-3) unstable; urgency=low
+
+  * use interest-noawait for install-info trigger (Closes: #707133)
+
+ -- Norbert Preining <preining@debian.org>  Wed, 08 May 2013 09:02:05 +0900
+
 texinfo (5.1.dfsg.1-2) unstable; urgency=low
 
   * upload to unstable

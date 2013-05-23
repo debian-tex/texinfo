@@ -47,6 +47,7 @@ Package: install-info
 Section: doc
 Priority: important
 Architecture: any
+Pre-Depends: dpkg (>= 1.16.1)
 Replaces: texinfo (<< 4.13a.dfsg.1-2)
 Breaks: texinfo (<< 4.13a.dfsg.1-2)
 Depends: ${shlibs:Depends}, ${misc:Depends}

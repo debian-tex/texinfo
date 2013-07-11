@@ -1,0 +1,31 @@
+Fix continuation of @enumerate with numbers >= 10
+Bug report #709673
+patch is discussed on texinfo ml, but not decided by now
+---
+ tp/Texinfo/Common.pm |    2 +-
+ tp/Texinfo/Parser.pm |    3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+--- texinfo.orig/tp/Texinfo/Common.pm
++++ texinfo/tp/Texinfo/Common.pm
+@@ -1382,7 +1382,7 @@
+   my $specification = shift;
+   my $number = shift;
+ 
+-  if ($specification =~ /^[0-9]$/) {
++  if ($specification =~ /^[0-9]+$/) {
+     return $specification + $number -1;
+   }
+ 
+--- texinfo.orig/tp/Texinfo/Parser.pm
++++ texinfo/tp/Texinfo/Parser.pm
+@@ -2973,7 +2973,8 @@
+                         $current->{'cmdname'});
+           }
+           my $arg = $current->{'extra'}->{'block_command_line_contents'}->[0]->[0];
+-          if (!defined($arg->{'text'}) or $arg->{'text'} !~ /^[[:alnum:]]$/) {
++          if (!defined($arg->{'text'}) or ($arg->{'text'} !~ /^[[:alnum:]]$/ and
++	      $arg->{'text'} !~ /^[0-9]+$/)) {
+             $self->_command_error($current, $line_nr, 
+                         $self->__("bad argument to \@%s"),
+                         $current->{'cmdname'});

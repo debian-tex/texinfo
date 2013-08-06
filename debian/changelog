@@ -1,3 +1,9 @@
+texinfo (5.1.dfsg.1-5) UNRELEASED; urgency=low
+
+  * do not call mktexlsr without arguments in texinfo.postrm (Closes: #717901)
+
+ -- Norbert Preining <preining@debian.org>  Tue, 06 Aug 2013 12:34:52 +0900
+
 texinfo (5.1.dfsg.1-4) unstable; urgency=low
 
   * pre-depend on dpkg >= 1.16.1 (for interest-nowait) (Closes: #709443)

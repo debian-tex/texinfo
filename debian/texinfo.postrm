@@ -4,7 +4,7 @@ check_run_without_errors ()
 {
     tempfile=`mktemp -p /tmp checkrun.XXXXXXXX`
     if which $1  >/dev/null; then
-        echo -n "Running $*. This may take some time. ..."
+        echo -n "Running $1. This may take some time. ..."
 	set +e
         $* > $tempfile 2>&1
 	if [ $? = 0 ] ; then
@@ -47,7 +47,7 @@ case "$1" in
         rm -f /var/lib/texmf/web2c/texinfo.*
         rm -f /var/lib/texmf/web2c/cyrtexinfo.*
         check_run_without_errors update-fmtutil
-	check_run_without_errors mktexlsr
+        check_run_without_errors mktexlsr /usr/share/texmf /var/lib/texmf
     ;;
     purge|upgrade|failed-upgrade|abort-upgrade|abort-install)
     ;;

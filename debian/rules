@@ -7,6 +7,8 @@ DEB_CFLAGS_MAINT_APPEND=-Wall
 # needed for correct building of new texinfo
 DEB_CFLAGS_MAINT_STRIP=-Werror=format-security
 
+DEB_HOST_GNU_TYPE=$(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+
 texinfo := $(CURDIR)/debian/texinfo
 ii := $(CURDIR)/debian/install-info
 tmpdir := $(CURDIR)/debian/tmp
@@ -21,7 +23,8 @@ build-stamp:
 	  --with-external-Text-Unidecode=yes \
 	  --with-external-libintl-perl=yes \
 	  --prefix=/usr \
-          --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man'
+	  --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man' \
+	  --build=$(DEB_BUILD_GNU_TYPE) --host=$(DEB_HOST_GNU_TYPE)
 	$(MAKE)
 	touch $@
 
@@ -87,8 +90,10 @@ binary-arch: install
 		
 	dh_installmenu
 	dh_installchangelogs ChangeLog
+ifeq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
 ifeq "$(findstring nostrip,$(DEB_BUILD_OPTIONS))" ""
 	dh_strip
+endif
 endif
 	dh_compress
 	dh_fixperms

@@ -4,3 +4,4 @@ numerical-signal-names
 info_universal_argument
 dont_build_info
 maybe-upstream-fix-itemize-start
+upstream-perl5.18

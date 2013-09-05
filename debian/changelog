@@ -1,10 +1,10 @@
-texinfo (5.1.dfsg.1-5) UNRELEASED; urgency=low
+texinfo (5.1.dfsg.1-5) unstable; urgency=low
 
   * do not call mktexlsr without arguments in texinfo.postrm (Closes: #717901)
   * allow for cross compiling, patch thanks to Eleanor Chen (Closes: #719907)
   * fix building with perl 5.18 (from upstream svn) (Closes:  #720866)
 
- -- Norbert Preining <preining@debian.org>  Thu, 05 Sep 2013 10:04:36 +0900
+ -- Norbert Preining <preining@debian.org>  Thu, 05 Sep 2013 11:13:16 +0900
 
 texinfo (5.1.dfsg.1-4) unstable; urgency=low
 

@@ -7,7 +7,7 @@ https://bugs.launchpad.net/ubuntu/+source/texinfo/+bug/707931
 
 --- texinfo.orig/po/id.po
 +++ texinfo/po/id.po
-@@ -2166,7 +2166,7 @@
+@@ -2260,7 +2260,7 @@
  "Ini adalah berkas .../info/dir, yang berisi\n"
  "titik paling atas dari struktur Info, dipanggil (dir)Top.\n"
  "Pertama kali anda memanggil Info anda berawal dari melihat titik ini.\n"

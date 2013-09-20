@@ -5,12 +5,12 @@ fix some .po files that have wrong references
 
 --- texinfo.orig/po/ro.po
 +++ texinfo/po/ro.po
-@@ -1817,7 +1817,7 @@
+@@ -1900,7 +1900,7 @@
  
- #: info/session.c:5216
+ #: info/session.c:5312
  msgid "Internally used by \\[universal-argument]"
 -msgstr "Folosit intern de \\[argument-universal]"
 +msgstr "Folosit intern de \\[universal-argument]"
  
- #: info/tilde.c:361
- #, c-format
+ #: info/session.c:5388
+ msgid "Show full file name of node being displayed"

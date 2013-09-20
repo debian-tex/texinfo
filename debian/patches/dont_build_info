@@ -5,12 +5,12 @@ dont build the info documentation, it has been removed
 
 --- texinfo.orig/doc/Makefile.in
 +++ texinfo/doc/Makefile.in
-@@ -210,14 +210,16 @@
+@@ -240,14 +240,16 @@
  am__v_texidevnull_ = $(am__v_texidevnull_@AM_DEFAULT_V@)
  am__v_texidevnull_0 = > /dev/null
  am__v_texidevnull_1 = 
--INFO_DEPS = texinfo info-stnd.info info.info
-+#INFO_DEPS = texinfo info-stnd.info info.info
+-INFO_DEPS = texinfo.info info-stnd.info info.info
++#INFO_DEPS = texinfo.info info-stnd.info info.info
 +INFO_DEPS =
  TEXINFO_TEX = $(top_srcdir)/build-aux/texinfo.tex
  am__TEXINFO_TEX_DIR = $(top_srcdir)/build-aux
@@ -18,20 +18,20 @@ dont build the info documentation, it has been removed
  PDFS = texinfo.pdf info-stnd.pdf info.pdf
  PSS = texinfo.ps info-stnd.ps info.ps
  HTMLS = texinfo.html info-stnd.html info.html
--TEXINFOS = texinfo.txi info-stnd.texi info.texi
-+#TEXINFOS = texinfo.txi info-stnd.texi info.texi
+-TEXINFOS = texinfo.texi info-stnd.texi info.texi
++#TEXINFOS = texinfo.texi info-stnd.texi info.texi
 +TEXINFOS =
  TEXI2DVI = texi2dvi
  TEXI2PDF = $(TEXI2DVI) --pdf --batch
  MAKEINFOHTML = $(MAKEINFO) --html
-@@ -1006,8 +1008,10 @@
+@@ -1044,8 +1046,10 @@
  SUBDIRS = tp_api
  
- # Put texinfo.txi first because that's the most important.
--info_TEXINFOS = texinfo.txi info-stnd.texi info.texi
--DISTCLEANFILES = texinfo texinfo-* info*.info*
-+#info_TEXINFOS = texinfo.txi info-stnd.texi info.texi
-+#DISTCLEANFILES = texinfo texinfo-* info*.info*
+ # Put the Texinfo manual first because that's the most important.
+-info_TEXINFOS = texinfo.texi info-stnd.texi info.texi
+-DISTCLEANFILES = texinfo.info* info*.info*
++#info_TEXINFOS = texinfo.texi info-stnd.texi info.texi
++#DISTCLEANFILES = texinfo.info* info*.info*
 +info_TEXINFOS =
 +DISTCLEANFILES =
  

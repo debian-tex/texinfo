@@ -89,6 +89,7 @@ binary-arch: install
 		doc/refcard/txirefcard*.pdf
 		
 	dh_installmenu
+	dh_installmime
 	dh_installchangelogs ChangeLog
 ifeq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
 ifeq "$(findstring nostrip,$(DEB_BUILD_OPTIONS))" ""

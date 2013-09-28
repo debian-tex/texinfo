@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
-# $Id: txicmdcheck 5191 2013-02-23 00:11:18Z karl $
-# Copyright 2008, 2011, 2012 Free Software Foundation, Inc.
+# $Id: txicmdcheck 5320 2013-08-16 13:50:01Z karl $
+# Copyright 2008, 2011, 2012, 2013 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ sub main {
   my $no_common = $ARGV[0] eq "--no-common";
 
   my @card_cmds = &read_refcard ("txirefcard.tex");
-  my @man_cmds = &read_refman ("../texinfo.txi");
+  my @man_cmds = &read_refman ("../texinfo.texi");
   my @tp_cmds = &read_tp ("../../util/txicmdlist");
   # perhaps we should check against the manual's fnindex too.
 

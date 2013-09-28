@@ -1,8 +1,8 @@
 #! /bin/sh
-# regenerate_cmd_tests.sh: use information from test driving files to
-# regenerate test scripts that run only one test, and files lists to be
-# use in Makefiles.
-# $Id: regenerate_cmd_tests.sh 5191 2013-02-23 00:11:18Z karl $
+# $Id: regenerate_cmd_tests.sh 5238 2013-03-14 23:22:01Z karl $
+# Use information from test driving files to regenerate test scripts
+# that run only one test, and file lists to be use in Makefiles.
+#
 # Copyright 2013 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -34,7 +34,7 @@ while test z"$1" = 'z-base' -o z"$1" = 'z-long' -o z"$1" = 'z-tex_html'; do
   elif test z"$1" = 'z-tex_html'; then
     tex_html_test_dirs=$2
   else
-    echo "Bad args" 1>&2
+    echo "$0: Bad args" 1>&2
     exit 1
   fi
   shift
@@ -129,7 +129,7 @@ exit $exit_status
     chmod 0755 $one_test_file
     done < $driving_file
   else
-    echo "Missing file $driving_file" 1>&2
+    echo "$0: Missing file $driving_file" 1>&2
     exit 1
   fi
 done

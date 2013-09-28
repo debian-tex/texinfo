@@ -4,6 +4,13 @@
 <filename file="formatting.xml"></filename>
 <preamble>\input texinfo @c -*-texinfo-*-
 </preamble><setfilename file="formatting.info" spaces=" ">formatting.info</setfilename>
+
+<dircategory spaces=" ">Formatting <accent type="acute" bracketed="off">e</accent> <code>&arobase; &tex;</code> test</dircategory>
+<direntry endspaces=" ">
+<menuentry leadingtext="* "><menutitle separator=": ">Truc</menutitle><menunode separator=".           ">(formatting)</menunode><menudescription><pre xml:space="preserve">The GNU documentation truc.
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menutitle separator=": "><code>&arobase; <accent type="acute" bracketed="off">e</accent> &equiv;</code></menutitle><menunode separator=".  ">(formatting)</menunode><menudescription><pre xml:space="preserve">&textldquo;<asis>&textmdash; something</asis>&textrdquo; 
+                           <command>cmd</command> <accent type="grave" bracketed="off">a</accent>
+</pre></menudescription></menuentry></direntry>
 <node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <top spaces=" "><sectiontitle>Top section</sectiontitle>
 

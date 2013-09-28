@@ -1,7 +1,7 @@
 /* search.h -- Structure used to search large bodies of text, with bounds.
-   $Id: search.h 5191 2013-02-23 00:11:18Z karl $
+   $Id: search.h 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2009, 2011
+   Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2009, 2011, 2013
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Originally written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 /* The search functions take two arguments:
 

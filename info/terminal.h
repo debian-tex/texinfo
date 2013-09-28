@@ -1,7 +1,7 @@
 /* terminal.h -- The external interface to terminal I/O.
-   $Id: terminal.h 5191 2013-02-23 00:11:18Z karl $
+   $Id: terminal.h 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1993, 1996, 1997, 2001, 2002, 2004, 2007
+   Copyright 1993, 1996, 1997, 2001, 2002, 2004, 2007, 2013
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally uWritten by Brian Fox. */
 
 #if !defined (TERMINAL_H)
 #define TERMINAL_H

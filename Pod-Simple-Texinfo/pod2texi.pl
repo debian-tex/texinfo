@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# $Id: pod2texi.pl 5191 2013-02-23 00:11:18Z karl $
+# $Id: pod2texi.pl 5292 2013-08-10 10:58:05Z pertusus $
 # pod2texi -- convert Pod to Texinfo.
 # Copyright 2012, 2013 Free Software Foundation, Inc.
 # 
@@ -25,6 +25,7 @@ use File::Basename;
 use File::Spec;
 
 Getopt::Long::Configure("gnu_getopt");
+#use Pod::Simple::Debug (4);
 
 BEGIN
 {

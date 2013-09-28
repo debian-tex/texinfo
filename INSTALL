@@ -1,8 +1,8 @@
-$Id: INSTALL 5191 2013-02-23 00:11:18Z karl $
+$Id: INSTALL 5320 2013-08-16 13:50:01Z karl $
 INSTALL file for texinfo.
 
      Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-     2001, 2002, 2003, 2004, 2005, 2006, 2007, 2010, 2011
+     2001, 2002, 2003, 2004, 2005, 2006, 2007, 2010, 2011, 2013
      Free Software Foundation, Inc.
 
      Copying and distribution of this file, with or without modification,
@@ -37,5 +37,5 @@ Installation notes specific to Texinfo:
 * You can create a file texinfo.cnf to be read by TeX when
   processing Texinfo manuals.  For example, you might like to use
   @afourpaper by default.  See the `Preparing for TeX' node in
-  texinfo.txi for more details.  You don't have to create the file if
-  you have nothing to put in it.
+  the Texinfo manual for more details.  You don't have to create the
+  file if you have nothing to put in it.

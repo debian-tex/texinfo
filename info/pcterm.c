@@ -1,7 +1,7 @@
 /* pcterm.c -- How to handle the PC terminal for Info under MS-DOS/MS-Windows.
-   $Id: pcterm.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: pcterm.c 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1998, 1999, 2003, 2004, 2007, 2008, 2012
+   Copyright 1998, 1999, 2003, 2004, 2007, 2008, 2012, 2013
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify

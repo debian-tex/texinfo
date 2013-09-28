@@ -5,6 +5,25 @@ BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{
 
 require 't/test_utils.pl';
 
+my $invalid_node_name_text = '
+@node Top
+
+@menu
+* @asis{truc:}: @asis{nodename. a}
+* machin: node@comma{}comma, def
+* @asis{bidule:}::
+@end menu
+
+@node @asis{nodename. a}
+
+@node node@comma{}comma
+
+@node @asis{bidule:}
+
+@ref{@asis{nodename. a}, @asis{truc:}}. @ref{node@comma{}comma, machin}.
+@ref{@asis{bidule:}}.
+';
+
 my @test_cases = (
 ['no_nodes',
 'Text.'],
@@ -457,6 +476,13 @@ First chapter.
 @node @:
 @node @asis{ }
 '],
+['invalid_node_name_warning',
+$invalid_node_name_text
+],
+['invalid_node_name_no_warning',
+$invalid_node_name_text,
+{},{'INFO_SPECIAL_CHARS_WARNING' => 0}
+],
 ['only_documentencoding',
 '@documentencoding ISO-8859-1'],
 ['direntry_dircategory_and_commands',
@@ -830,13 +856,59 @@ HHH
 '],
 );
 
+my @file_tests = (
+['split_test_before_first_node',
+'@setfilename split_test_before_first_node.info
+
+truc machin et reuc machin  ze aze zea zae eaz eaz zae
+
+@node Top
+@top top
+
+In top node
+
+@menu
+* chap1::
+@end menu
+
+@node chap1
+@chapter chap
+
+In chap1.
+
+',{},{'SPLIT_SIZE' => 10}],
+['split_test_before_first_node_no_empty_line',
+'@setfilename split_test_before_first_node.info
+
+truc machin et reuc machin  ze aze zea zae eaz eaz zae
+@node Top
+@top top
+
+In top node
+
+@menu
+* chap1::
+@end menu
+
+@node chap1
+@chapter chap
+
+In chap1.
+
+',{},{'SPLIT_SIZE' => 10}],
+);
+
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'info';
 }
 
+foreach my $test (@file_tests) {
+  push @{$test->[2]->{'test_formats'}}, 'file_info';
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('info_tests', [@test_cases], $arg_test_case,
+run_all ('info_tests', [@test_cases, @file_tests], $arg_test_case,
    $arg_generate, $arg_debug);
 
 1;

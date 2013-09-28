@@ -1081,7 +1081,7 @@ Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="#GNU-man
 <a name="first"></a>
 <div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="previous">Top</a> &nbsp; </p>
+Previous: <a href="#Top" accesskey="p" rel="prev">Top</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">first</h4>
 <hr>

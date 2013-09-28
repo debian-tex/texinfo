@@ -239,6 +239,10 @@ $two_footnotes_in_nodes_text,
 '@footnotestyle separate
 '.$two_footnotes_in_nodes_text,
 , {'test_formats' => ['html', 'info']} ],
+['form_feed_in_brace_commands',
+'@option{ aa} @anchor{aa}something @email{aaa,  fff}@footnote{ 
+ f1 } @footnote{  ggjj}.
+', {'test_formats' => ['xml']}]
 );
 
 my @test_invalid = (

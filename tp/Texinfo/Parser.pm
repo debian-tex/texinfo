@@ -87,7 +87,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.0';
+$VERSION = '5.1.90';
 
 sub N__($)
 {
@@ -242,6 +242,8 @@ my %code_style_commands       = %Texinfo::Common::code_style_commands;
 my %in_heading_commands       = %Texinfo::Common::in_heading_commands;
 my %explained_commands        = %Texinfo::Common::explained_commands;
 my %inline_format_commands    = %Texinfo::Common::inline_format_commands;
+my %inline_commands           = %Texinfo::Common::inline_commands;
+my %inline_conditional_commands = %Texinfo::Common::inline_conditional_commands;
 my %all_commands              = %Texinfo::Common::all_commands;
 
 # equivalence between a @set flag and an @@-command
@@ -537,7 +539,7 @@ sub _deep_copy($)
 sub _ignore_global_commands($)
 {
   my $self = shift;
-  return !$self->{'raw_formats_stack'}->[-1];
+  return !$self->{'expanded_formats_stack'}->[-1];
 }
 
 # enter all the commands associated with an index name using the prefix
@@ -678,7 +680,7 @@ sub parser(;$$)
   $parser->{'regions_stack'} = [];
   $parser->{'macro_stack'} = [];
   $parser->{'conditionals_stack'} = [];
-  $parser->{'raw_formats_stack'} = [1];
+  $parser->{'expanded_formats_stack'} = [1];
 
   # turn the array to a hash for speed.  Not sure it really matters for such
   # a small array.
@@ -1147,6 +1149,8 @@ sub _begin_paragraph($$;$)
   my $current = shift;
   my $line_nr = shift;
 
+  # !$current->{'type'} is true for @-commands.  In fact it is unclear
+  # that there may be cases of !$current->{'type'} and !$current->{'cmdname'}
   if ((!$current->{'type'} or $type_with_paragraph{$current->{'type'}})
       and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
     if (!defined($current->{'contents'})) {
@@ -1670,7 +1674,7 @@ sub _close_current($$$;$$)
           or $menu_commands{$current->{'cmdname'}}
           or $format_raw_commands{$current->{'cmdname'}}) {
         my $context = pop @{$self->{'context_stack'}};
-        pop @{$self->{'raw_formats_stack'}} 
+        pop @{$self->{'expanded_formats_stack'}} 
           if ($format_raw_commands{$current->{'cmdname'}});
       }
       pop @{$self->{'regions_stack'}} 
@@ -1766,7 +1770,7 @@ sub _close_commands($$$;$$)
         $self->_bug_message("context $context instead of rawpreformatted for $closed_command", 
                             $line_nr, $current);
       }
-      pop @{$self->{'raw_formats_stack'}};
+      pop @{$self->{'expanded_formats_stack'}};
     } elsif ($menu_commands{$current->{'cmdname'}}) {
       my $context = pop @{$self->{'context_stack'}};
       # may be in menu, but context is preformatted if in a preformatted too.
@@ -1908,6 +1912,10 @@ sub _next_text($$$)
       my $fh = $input->{'fh'};
       my $line = <$fh>;
       while (defined($line)) {
+        # add an end of line if there is none at the end of file
+        if (eof($fh) and $line !~ /\n/) {
+          $line .= "\n";
+        }
         $line =~ s/\x{7F}.*\s*//;
         if ($self->{'CPP_LINE_DIRECTIVES'}
             # no cpp directives in ignored/macro/verbatim
@@ -2008,7 +2016,7 @@ sub _expand_macro_arguments($$$$)
         if ($braces_level == 1) {
           if (scalar(@$arguments) < $args_total) {
             push @$arguments, '';
-            $line =~ s/^\s*//;
+            $line =~ s/^[^\S\f]*//;
             print STDERR "MACRO NEW ARG\n" if ($self->{'DEBUG'});
           } else {
             # implicit quoting when there is one argument.
@@ -2042,7 +2050,7 @@ sub _expand_macro_arguments($$$$)
       }
     }
   }
-  if ($args_total == 0 and $arguments->[0] =~ /\S/) {
+  if ($args_total == 0 and $arguments->[0] =~ /[\S\f]/) {
     $self->line_error(sprintf($self->__(
                "macro `%s' declared without argument called with an argument"), 
                                 $name), $line_nr);
@@ -2109,7 +2117,10 @@ sub _abort_empty_line($$;$)
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_after_close_brace')) {
     print STDERR "ABORT EMPTY additional text |$additional_text|, current |$current->{'contents'}->[-1]->{'text'}|\n" if ($self->{'DEBUG'});
     $current->{'contents'}->[-1]->{'text'} .= $additional_text;
+    # remove empty 'empty*before'.
     if ($current->{'contents'}->[-1]->{'text'} eq '') {
+      # as we remove 'empty_spaces_before_argument', 'spaces_before_argument'
+      # is removed from 'extra' too.
       if ($current->{'extra'} 
           and $current->{'extra'}->{'spaces_before_argument'}
           and $current->{'extra'}->{'spaces_before_argument'} 
@@ -2143,6 +2154,12 @@ sub _isolate_last_space($$;$)
   $type = 'spaces_at_end' if (!defined($type));
   if ($current->{'contents'} and @{$current->{'contents'}}) {
     my $index = -1;
+    # we ignore space before a misc command that is last on line.
+    # This is primarily to tag spaces before comments, but this will
+    # also tag and, in most converter lead to removal of spaces
+    # before any misc command, which is not really problematic as 
+    # in most cases, if it is not a comment, we are in an invalid 
+    # nesting of misc command on another @-command line.
     $index = -2 
       if (scalar(@{$current->{'contents'}}) > 1 
         and $current->{'contents'}->[-1]->{'cmdname'}
@@ -2730,12 +2747,12 @@ sub _end_line($$$)
       while (@{$menu_entry->{'args'}}) {
         my $arg = shift @{$menu_entry->{'args'}};
         if (defined($arg->{'text'})) {
-          $current = _merge_text ($self, $current, $arg->{'text'});
+          $current = _merge_text($self, $current, $arg->{'text'});
         } else {
           while (@{$arg->{'contents'}}) {
             my $content = shift @{$arg->{'contents'}};
             if (defined($content->{'text'})) {
-              $current = _merge_text ($self, $current, 
+              $current = _merge_text($self, $current, 
                                     $content->{'text'});
               $content = undef;
             } else {
@@ -2973,7 +2990,7 @@ sub _end_line($$$)
                         $current->{'cmdname'});
           }
           my $arg = $current->{'extra'}->{'block_command_line_contents'}->[0]->[0];
-          if (!defined($arg->{'text'}) or $arg->{'text'} !~ /^[[:alnum:]]$/) {
+          if (!defined($arg->{'text'}) or $arg->{'text'} !~ /^(([[:digit:]]+)|([[:alpha:]]+))$/) {
             $self->_command_error($current, $line_nr, 
                         $self->__("bad argument to \@%s"),
                         $current->{'cmdname'});
@@ -2998,7 +3015,7 @@ sub _end_line($$$)
         }
       }
       # This code checks that the command_as_argument of the @itemize
-      # is alone on the line, otherwise it is not an command_as_argument.
+      # is alone on the line, otherwise it is not a command_as_argument.
       if ($current->{'extra'}
           and $current->{'extra'}->{'command_as_argument'}
           and $current->{'cmdname'} eq 'itemize') {
@@ -3475,7 +3492,7 @@ sub _start_empty_line_after_command($$$) {
   my $line = shift;
   my $current = shift;
   my $command = shift;
-  $line =~ s/^([^\S\n]*)//;
+  $line =~ s/^([^\S\r\n]*)//;
   push @{$current->{'contents'}}, { 'type' => 'empty_line_after_command',
                                     'text' => $1,
                                     'parent' => $current, 
@@ -3607,7 +3624,7 @@ sub _command_with_command_as_argument($)
            or (scalar(@{$current->{'contents'}}) == 2
             and defined($current->{'contents'}->[0]->{'text'})
             and $current->{'contents'}->[0]->{'text'}
-                               =~ /^[^\S\n]*/)))
+                               =~ /^[^\S\r\n]*/)))
 }
 
 # $marked_as_invalid_command may be undef, if there is no
@@ -3699,7 +3716,7 @@ sub _parse_texi($;$)
         # not def line
         and $self->{'context_stack'}->[-1] ne 'def') {
       print STDERR "BEGIN LINE\n" if ($self->{'DEBUG'});
-      $line =~ s/^([^\S\n]*)//;
+      $line =~ s/^([^\S\r\n]*)//;
       push @{$current->{'contents'}}, { 'type' => 'empty_line', 
                                         'text' => $1,
                                         'parent' => $current };
@@ -3889,9 +3906,9 @@ sub _parse_texi($;$)
         my $expanded_macro = $self->{'macros'}->{$command};
         my $args_number = scalar(@{$expanded_macro->{'args'}}) -1;
         my $arguments = [];
-        if ($line =~ s/^\s*{\s*//) { # macro with args
+        if ($line =~ s/^\s*{[^\S\f]*//) { # macro with args
           ($arguments, $line, $line_nr) = 
-            _expand_macro_arguments ($self, $expanded_macro, $line, $line_nr);
+            _expand_macro_arguments($self, $expanded_macro, $line, $line_nr);
         } elsif (($args_number >= 2) or ($args_number <1)) {
         # as agreed on the bug-texinfo mailing list, no warn when zero
         # arg and not called with {}.
@@ -3904,7 +3921,7 @@ sub _parse_texi($;$)
             ($line, $line_nr) = _new_line($self, $line_nr, $expanded_macro);
             $line = '' if (!defined($line));
           }
-          $line =~ s/^\s*// if ($line =~ /\S/);
+          $line =~ s/^[^\S\f]*// if ($line =~ /[\S\f]/);
           my $has_end_of_line = chomp $line;
           $arguments = [$line];
           $line = "\n" if ($has_end_of_line);
@@ -3977,9 +3994,9 @@ sub _parse_texi($;$)
           $current = $current->{'parent'};
         # now accent commands
         } elsif ($accent_commands{$current->{'cmdname'}}) {
-          if ($line =~ /^[^\S\n]/) {
+          if ($line =~ /^[^\S\r\n]/) {
             if ($current->{'cmdname'} =~ /^[a-zA-Z]/) {
-              $line =~ s/^([^\S\n]+)//;
+              $line =~ s/^([^\S\r\n]+)//;
               $current->{'extra'}->{'spaces'} = '' 
                 if (!defined($current->{'extra'}->{'spaces'}));
               $current->{'extra'}->{'spaces'} .= $1;
@@ -4116,7 +4133,7 @@ sub _parse_texi($;$)
           $current = $current->{'args'}->[-1];
           $current = _merge_text($self, $current, $separator);
         # here we collect spaces following separators.
-        } elsif ($line =~ s/^([^\S\n]+)//) {
+        } elsif ($line =~ s/^([^\S\r\n]+)//) {
           # FIXME a trailing end of line could be considered to be part
           # of the separator. Right now it is part of the description,
           # since it is catched (in the next while) as one of the case below
@@ -4155,7 +4172,8 @@ sub _parse_texi($;$)
         if ($command eq 'value') {
           $line =~ s/^\s*// 
              if ($self->{'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME'});
-          if ($line =~ s/^{([\w\-]+)}//) {
+          # REVALUE
+          if ($line =~ s/^{([\w\-][^\s{\\}~`\^+"<>|@]*)}//) {
             my $value = $1;
             if (exists($self->{'values'}->{$value})) {
               if (!defined($self->{'values'}->{$value})) {
@@ -4748,10 +4766,10 @@ sub _parse_texi($;$)
               } elsif ($format_raw_commands{$command}) {
                 push @{$self->{'context_stack'}}, 'rawpreformatted';
                 if ($self->{'expanded_formats_hash'}->{$command} 
-                    and $self->{'raw_formats_stack'}->[-1]) {
-                  push @{$self->{'raw_formats_stack'}}, 1;
+                    and $self->{'expanded_formats_stack'}->[-1]) {
+                  push @{$self->{'expanded_formats_stack'}}, $command;
                 } else {
-                  push @{$self->{'raw_formats_stack'}}, 0;
+                  push @{$self->{'expanded_formats_stack'}}, 0;
                 }
               }
               if ($region_commands{$command}) {
@@ -4860,7 +4878,7 @@ sub _parse_texi($;$)
                                       $command), $line_nr);
         }
 
-      } elsif ($line =~ s/^([{}@,:\t.])//) {
+      } elsif ($line =~ s/^([{}@,:\t.\f])//) {
         my $separator = $1;
         print STDERR "SEPARATOR: $separator\n" if ($self->{'DEBUG'});
         if ($separator eq '@') {
@@ -4917,7 +4935,7 @@ sub _parse_texi($;$)
                 }
               }
               push @{$self->{'context_stack'}}, $command;
-              $line =~ s/([^\S\n]*)//;
+              $line =~ s/([^\S\f\n]*)//;
               $current->{'type'} = 'brace_command_context';
               push @{$current->{'contents'}}, { 'type' => 'empty_spaces_before_argument', 
                                         'text' => $1,
@@ -4935,10 +4953,11 @@ sub _parse_texi($;$)
                 $current->{'parent'}->{'extra'}->{'spaces_before_argument'}
                    = $current->{'contents'}->[-1];
               }
-              if ($command eq 'inlineraw') {
-                push @{$self->{'context_stack'}}, $command;
+              if ($inline_commands{$command}) {
                 # this is changed when the first argument is known.
-                push @{$self->{'raw_formats_stack'}}, 0;
+                push @{$self->{'expanded_formats_stack'}}, 0;
+                push @{$self->{'context_stack'}}, $command
+                  if ($command eq 'inlineraw');
               }
             }
             print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining: "
@@ -4969,10 +4988,12 @@ sub _parse_texi($;$)
           } elsif ($current->{'type'} 
                    and $current->{'type'} eq 'rawpreformatted') {
             push @{$current->{'contents'}}, {'text' => '{' };
-          # matching braces accepted in a rawpreformatted or math
+          # matching braces accepted in a rawpreformatted or math or ignored
+          # code
           } elsif ($self->{'context_stack'}->[-1] eq 'math'
                    or $self->{'context_stack'}->[-1] eq 'rawpreformatted'
-                   or $self->{'context_stack'}->[-1] eq 'inlineraw') {
+                   or $self->{'context_stack'}->[-1] eq 'inlineraw'
+                   or $self->_ignore_global_commands()) {
             push @{$current->{'contents'}},
                  { 'type' => 'bracketed', 'contents' => [],
                    'parent' => $current, 'line_nr' => $line_nr };
@@ -5011,7 +5032,7 @@ sub _parse_texi($;$)
                 and $current->{'parent'}->{'cmdname'} ne 'math') {
               # @inline* always have end spaces considered as normal text 
               $self->_isolate_last_space($current) 
-                unless ($inline_format_commands{$current->{'parent'}->{'cmdname'}});
+                unless ($inline_commands{$current->{'parent'}->{'cmdname'}});
               $self->_register_command_arg($current, 'brace_command_contents');
               # Remove empty arguments, as far as possible
               _remove_empty_content_arguments($current);
@@ -5106,16 +5127,18 @@ sub _parse_texi($;$)
                 }
               }
             } elsif ($explained_commands{$current->{'parent'}->{'cmdname'}}
-                     or $inline_format_commands{$current->{'parent'}->{'cmdname'}}) {
+                     or $inline_commands{$current->{'parent'}->{'cmdname'}}) {
               my $current_command = $current->{'parent'};
-              if ($current_command->{'cmdname'} eq 'inlineraw') {
-                my $context_command = pop @{$self->{'context_stack'}};
-                if ($context_command ne $current_command->{'cmdname'}) {
-                  $self->_bug_message("context $context_command instead of inlineraw $current_command->{'cmdname'}", 
-                                   $line_nr, $current);
-                  die;
+              if ($inline_commands{$current_command->{'cmdname'}}) {
+                if ($current_command->{'cmdname'} eq 'inlineraw') {
+                  my $context_command = pop @{$self->{'context_stack'}};
+                  if ($context_command ne $current_command->{'cmdname'}) {
+                    $self->_bug_message("context $context_command instead of inlineraw $current_command->{'cmdname'}", 
+                                     $line_nr, $current);
+                    die;
+                  }
                 }
-                pop @{$self->{'raw_formats_stack'}};
+                pop @{$self->{'expanded_formats_stack'}};
               }
               if (!@{$current_command->{'args'}} 
                   or !@{$current_command->{'extra'}->{'brace_command_contents'}}
@@ -5139,13 +5162,13 @@ sub _parse_texi($;$)
                     $self->{'explained_commands'}->{$current_command->{'cmdname'}}->{$normalized_type} 
                       = $current_command->{'extra'}->{'brace_command_contents'}->[1];
                   }
-                } else {
-                  my $format
-                   = Texinfo::Convert::Text::convert({'contents' =>
-                       $current_command->{'extra'}->{'brace_command_contents'}->[0]},
-                       {Texinfo::Common::_convert_text_options($self)});
-                  $current_command->{'extra'}->{'format'} = $format; 
-                }
+                }# else {
+                #  my $argument
+                #   = Texinfo::Convert::Text::convert({'contents' =>
+                #       $current_command->{'extra'}->{'brace_command_contents'}->[0]},
+                #       {Texinfo::Common::_convert_text_options($self)});
+                #  $current_command->{'extra'}->{'format'} = $argument; 
+                #}
               }
             } elsif ($current->{'parent'}->{'cmdname'} eq 'errormsg') {
               if (! _ignore_global_commands($self)) {
@@ -5218,23 +5241,55 @@ sub _parse_texi($;$)
           }
           my $type = $current->{'type'};
           $current = $current->{'parent'};
-          if ($current->{'cmdname'} eq 'inlineraw') {
-            # change the top of the raw_formats_stack now that we know the
-            # first arg of the inlineraw
-            my $inlineraw_type
-               = Texinfo::Convert::Text::convert({'contents' =>
+          if ($inline_commands{$current->{'cmdname'}}) {
+            if (! $current->{'extra'}->{'format'}) {
+              # change the top of the raw_formats_stack now that we know the
+              # first arg of the inlineraw
+              my $inline_type
+                = Texinfo::Convert::Text::convert({'contents' =>
                   $current->{'extra'}->{'brace_command_contents'}->[0]},
                           {Texinfo::Common::_convert_text_options($self)});
-            if ($self->{'expanded_formats_hash'}->{$inlineraw_type} 
-                and $self->{'raw_formats_stack'}->[-2]) {
-              $self->{'raw_formats_stack'}->[-1] = 1;
+              if ($self->{'expanded_formats_stack'}->[-2]) {
+                if ($inline_format_commands{$current->{'cmdname'}}) {
+                  if ($self->{'expanded_formats_hash'}->{$inline_type}) { 
+                    $self->{'expanded_formats_stack'}->[-1] = $inline_type;
+                    $current->{'extra'}->{'expand_index'} = 1;
+                  } else {
+                    $self->{'expanded_formats_stack'}->[-1] = 0;
+                  }
+                } elsif (($current->{'cmdname'} eq 'inlineifset'
+                          and exists($self->{'values'}->{$inline_type}))
+                         or ($current->{'cmdname'} eq 'inlineifclear' 
+                             and ! exists($self->{'values'}->{$inline_type}))) {
+                  $self->{'expanded_formats_stack'}->[-1] 
+                         = "$current->{'cmdname'} $inline_type";
+                  $current->{'extra'}->{'expand_index'} = 1;
+                } else {
+                  $self->{'expanded_formats_stack'}->[-1] = 0;
+                }
+              } else {
+                $self->{'expanded_formats_stack'}->[-1] = 0;
+              }
+              $current->{'extra'}->{'format'} = $inline_type;
             } else {
-              $self->{'raw_formats_stack'}->[-1] = 0;
+              # happens for the second arg of inlinefmtifelse
+              my $inline_type = $current->{'extra'}->{'format'};
+              if ($self->{'expanded_formats_stack'}->[-2]
+                  and ! ($self->{'expanded_formats_hash'}->{$inline_type})) {
+                $self->{'expanded_formats_stack'}->[-1] = $inline_type;
+                $current->{'extra'}->{'expand_index'} = 2;
+              } else {
+                $self->{'expanded_formats_stack'}->[-1] = 0;
+              }
             }
           }
           $current->{'remaining_args'}--;
           push @{$current->{'args'}},
                { 'type' => $type, 'parent' => $current, 'contents' => [] };
+          #if ($inline_commands{$current->{'cmdname'}} 
+          #    and ! $self->{'expanded_formats_stack'}->[-1]) {
+          #  $current->{'args'}->[-1]->{'extra'}->{'ignore'} = 1;
+          #} 
           $current = $current->{'args'}->[-1];
           push @{$current->{'contents'}}, 
                  {'type' => 'empty_spaces_before_argument',
@@ -5253,11 +5308,22 @@ sub _parse_texi($;$)
           push @{$current->{'args'}}, { 'type' => 'menu_entry_separator',
                                  'text' => $separator,
                                  'parent' => $current };
+        } elsif ($separator eq "\f" and $current->{'type'}
+                 and $current->{'type'} eq 'paragraph') {
+          # form feed stops and restart a paragraph.
+          $current = $self->_end_paragraph($current);
+          push @{$current->{'contents'}}, {'text' => $separator, 
+                                           'type' => 'empty_line',
+                                            'parent' => $current };
+          push @{$current->{'contents'}}, { 'type' => 'empty_line', 
+                                            'text' => '',
+                                            'parent' => $current };
+          
         } else {
           $current = _merge_text($self, $current, $separator);
         }
       # Misc text except end of line
-      } elsif ($line =~ s/^([^{}@,:\t.\n]+)//) {
+      } elsif ($line =~ s/^([^{}@,:\t.\n\f]+)//) {
         my $new_text = $1;
         $current = _merge_text($self, $current, $new_text);
       # end of line
@@ -5296,11 +5362,11 @@ sub _parse_texi($;$)
     }
     @{$self->{'context_stack'}} = ($self->{'context'});
   }
-  if (@{$self->{'raw_formats_stack'}} != 1) {
+  if (@{$self->{'expanded_formats_stack'}} != 1) {
     if ($self->{'DEBUG'}) {
-      print STDERR "RAW_FORMATS_STACK no empty end _parse_texi: ".join('|', @{$self->{'raw_formats_stack'}})."\n";
+      print STDERR "EXPANDED_FORMATS_STACK no empty end _parse_texi: ".join('|', @{$self->{'expanded_formats_stack'}})."\n";
     }
-    @{$self->{'raw_formats_stack'}} = ($self->{'raw_formats_stack'}->[0]);
+    @{$self->{'expanded_formats_stack'}} = ($self->{'expanded_formats_stack'}->[0]);
   }
   return $root;
 }
@@ -5321,11 +5387,11 @@ sub _parse_special_misc_command($$$$)
   if ($command eq 'set') {
     # REVALUE
     #if ($line =~ s/^\s+([\w\-]+)(\s+(.*?))\s*$//) {
-    if ($line =~ /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)(\@(c|comment)((\@|\s+).*)?|\s+(.*?))?\s*$/) {
+    if ($line =~ /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)(\@(c|comment)((\@|\s+).*)?|[^\S\f]+(.*?))?[^\S\f]*$/) {
       if ($line =~ s/\@(c|comment)((\@|\s+).*)?$//) {
         $has_comment = 1;
       }
-      $line =~ /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)(\s+(.*?))?\s*$/;
+      $line =~ /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)([^\S\f]+(.*?))?[^\S\f]*$/;
       my $name = $1;
       my $arg = $3;
       $arg = '' if (!defined($arg));
@@ -6921,27 +6987,27 @@ is in I<quotation>.
 The author tree element is in the I<author> array of the C<@titlepage>
 or the C<@quotation> or C<@smallquotation> it is associated with.
 
-=item @ifclear
+=item C<@ifclear>
 
-=item @ifset
+=item C<@ifset>
 
 The original line is in I<line>.
 
-=item @end
+=item C<@end>
 
 The textual argument is in I<command_argument>.
 The corresponding @-command is in I<command>.
 
-=item @documentencoding
+=item C<@documentencoding>
 
 The argument, normalized is in I<input_encoding_name> if it is recognized.
 The corresponding perl encoding name is in I<input_perl_encoding>.
 
-=item @click
+=item C<@click>
 
 In I<clickstyle> there is the current clickstyle command.
 
-=item kbd
+=item C<@kbd>
 
 I<code> is set depending on the context and C<@kbdinputstyle>.
 
@@ -6960,6 +7026,22 @@ the one appearing in the I<nodes_manuals> array for C<@node>.
 =item empty_line_after_command
 
 The corresponding command is in I<command>.
+
+=item C<@inlinefmt>
+
+=item C<@inlineraw>
+
+=item C<@inlinefmtifelse>
+
+=item C<@inlineifclear>
+
+=item C<@inlineifset>
+
+The first argument is in I<format>.  If an argument has been determined
+as being expanded by the Parser, the index of this argument is in
+I<expand_index>.  Index numbering begins at 0, but the first argument is
+always the format or flag name, so, if set, it should be 1 or 2 for
+C<@inlinefmtifelse>, and 1 for other commands.
 
 =back
 

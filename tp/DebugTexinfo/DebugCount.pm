@@ -17,6 +17,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # 
 # Original author: Patrice Dumas <pertusus@free.fr>
+# ./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugcount file.texi
 
 use strict;
 
@@ -43,6 +44,7 @@ sub _convert($$)
     $command_type .= ":text";
     my $text = $root->{'text'};
     $text =~ s/\n/\\n/g;
+    $text =~ s/\f/\\f/g;
     $command_type .= "|$text|";
   }
   my $string_before = ' ' x $self->{'level'}. "$command_nr $number_before $command_type\n";

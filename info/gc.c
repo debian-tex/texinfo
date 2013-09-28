@@ -1,7 +1,8 @@
 /* gc.c -- Functions to remember and garbage collect unused node contents.
-   $Id: gc.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: gc.c 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1993, 2004, 2007, 2008 Free Software Foundation, Inc.
+   Copyright 1993, 2004, 2007, 2008, 2013
+   Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #include "info.h"
 
@@ -24,8 +25,8 @@
    list can be garbage collected when no info window contains a node whose
    contents member match the pointer. */
 static char **gcable_pointers = NULL;
-static int gcable_pointers_index = 0;
-static int gcable_pointers_slots = 0;
+static size_t gcable_pointers_index = 0;
+static size_t gcable_pointers_slots = 0;
 
 /* Add POINTER to the list of garbage collectible pointers.  A pointer
    is not actually garbage collected until no info window contains a node
@@ -35,7 +36,7 @@ add_gcable_pointer (char *pointer)
 {
   gc_pointers ();
   add_pointer_to_array (pointer, gcable_pointers_index, gcable_pointers,
-			gcable_pointers_slots, 10, char *);
+			gcable_pointers_slots, 10);
 }
 
 /* Grovel the list of info windows and gc-able pointers finding those
@@ -43,11 +44,11 @@ add_gcable_pointer (char *pointer)
 void
 gc_pointers (void)
 {
-  register int i, j, k;
+  size_t i, j, k;
   INFO_WINDOW *iw;
   char **new = NULL;
-  int new_index = 0;
-  int new_slots = 0;
+  size_t new_index = 0;
+  size_t new_slots = 0;
 
   if (!info_windows || !gcable_pointers_index)
     return;
@@ -63,8 +64,8 @@ gc_pointers (void)
 	  for (k = 0; k < gcable_pointers_index; k++)
 	    if (gcable_pointers[k] == node->contents)
 	      {
-		add_pointer_to_array
-		  (node->contents, new_index, new, new_slots, 10, char *);
+		add_pointer_to_array (node->contents, new_index, new, 
+                                      new_slots, 10);
 		break;
 	      }
 	}

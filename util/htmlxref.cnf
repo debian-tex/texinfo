@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2013-01-10.14; # UTC
+htmlxrefversion=2013-08-03.16; # UTC
 
 # Copyright 2010, 2011, 2012, 2013 Free Software Foundation, Inc.
 # 
@@ -79,13 +79,18 @@ binutils	node	${BINUTILS}/binutils/
 bison		mono	${GS}/bison/manual/bison.html
 bison		node	${GS}/bison/manual/html_node/
 
-bpel2owfn	mono	http://www.gnu.org/software/bpel2owfn/manual/2.0.x/bpel2owfn.html
+bpel2owfn	mono	${GS}/bpel2owfn/manual/2.0.x/bpel2owfn.html
 
 cflow		mono	${GS}/cflow/manual/cflow
 cflow		node	${GS}/cflow/manual/html_node/
 
 chess		mono	${GS}/chess/manual/gnuchess.html
 chess		node	${GS}/chess/manual/html_node/
+
+combine		mono	${GS}/combine/manual/combine.html
+combine		chapter	${GS}/combine/manual/html_chapter/
+combine		section	${GS}/combine/manual/html_section/
+combine		node	${GS}/combine/manual/html_node/
 
 complexity	mono	${GS}/complexity/manual/complexity.html
 complexity	node	${GS}/complexity/manual/html_node/
@@ -379,9 +384,9 @@ jwhois		node	${GS}/jwhois/manual/html_node/
 libc		mono	${GS}/libc/manual/html_mono/libc.html
 libc		node	${GS}/libc/manual/html_node/
 
-LIBCDIO = http://www.gnu.org/software/libcdio/
+LIBCDIO = ${GS}/libcdio
  libcdio	mono	${LIBCDIO}/libcdio.html
- cd-text	mono	${LIBCDIO}/cd-text.html
+ cd-text	mono	${LIBCDIO}/cd-text-format.html
 
 libextractor	mono	${GS}/libextractor/manual/libextractor.html
 libextractor	node	${GS}/libextractor/manual/html_node/
@@ -394,8 +399,9 @@ librejs		node	${GS}/librejs/manual/html_node/
 
 libmatheval	mono	${GS}/libmatheval/manual/libmatheval.html
 
-LIBMICROHTTPD = http://www.gnu.org/software/libmicrohttpd/
- microhttpd		mono	${LIBMICROHTTPD}/microhttpd.html
+LIBMICROHTTPD = ${GS}/libmicrohttpd
+libmicrohttpd		mono	${LIBMICROHTTPD}/manual/libmicrohttpd.html
+libmicrohttpd		node	${LIBMICROHTTPD}/manual/html_node/
  microhttpd-tutorial	mono	${LIBMICROHTTPD}/tutorial.html
 
 libtasn1	mono	${GS}/libtasn1/manual/libtasn1.html
@@ -409,7 +415,7 @@ lightning	node	${GS}/lightning/manual/html_node/
 
 # The stable/ url redirects immediately, but that's ok.
 # The .html extension is omitted on their web site, but it works if given.
-LILYPOND = http://lilypond.org/doc/stable/Documentation/
+LILYPOND = http://lilypond.org/doc/stable/Documentation
  lilypond-internals	node ${LILYPOND}/internals/
  lilypond-learning	node ${LILYPOND}/learning/
  lilypond-notation 	node ${LILYPOND}/notation/
@@ -438,11 +444,11 @@ make		node	${GS}/make/manual/html_node/
 mdk		mono	${GS}/mdk/manual/mdk.html
 mdk		node	${GS}/mdk/manual/html_node/
 
-METAEXCHANGE = http://ftp.gwdg.de/pub/gnu2/iwfmdh/doc/texinfo/
+METAEXCHANGE = http://ftp.gwdg.de/pub/gnu2/iwfmdh/doc/texinfo
  iwf_mh		node	${METAEXCHANGE}/iwf_mh.html
  scantest	node	${METAEXCHANGE}/scantest.html
 
-MIT_SCHEME = http://www.gnu.org/software/mit-scheme/documentation
+MIT_SCHEME = ${GS}/mit-scheme/documentation
  mit-scheme-ref	  node	${MIT_SCHEME}/mit-scheme-ref/
  mit-scheme-user  node	${MIT_SCHEME}/mit-scheme-user/
  sos		  node	${MIT_SCHEME}/mit-scheme-sos/
@@ -491,7 +497,7 @@ pspp		node	${GS}/pspp/manual/html_node/
 pyconfigure	mono	${GS}/pyconfigure/manual/pyconfigure.html
 pyconfigure	node	${GS}/pyconfigure/manual/html_node/
 
-R = http://cran.r-project.org/doc/manuals/
+R = http://cran.r-project.org/doc/manuals
  R-intro	mono	${R}/R-intro.html
  R-lang		mono	${R}/R-lang.html
  R-exts		mono	${R}/R-exts.html
@@ -538,10 +544,10 @@ sharutils	chapter	${GS}/sharutils/manual/html_chapter/
 sharutils	node	${GS}/sharutils/manual/html_node/
 
 # can't use mono files since they have generic names
-SMALLTALK = ${GS}/smalltalk/
+SMALLTALK = ${GS}/smalltalk
 smalltalk	node	${SMALLTALK}/manual/html_node/
-smalltalk-base	node	${SMALLTALK}/manual-base/html_node/
-smalltalk-libs	node	${SMALLTALK}/manual-libs/html_node/
+ smalltalk-base	node	${SMALLTALK}/manual-base/html_node/
+ smalltalk-libs	node	${SMALLTALK}/manual-libs/html_node/
 
 sourceinstall	mono	${GS}/sourceinstall/manual/sourceinstall.html
 sourceinstall	node	${GS}/sourceinstall/manual/html_node/

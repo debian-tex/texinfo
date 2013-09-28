@@ -41,6 +41,7 @@ one_test_files_generated_list =  \
      test_scripts/coverage_formatting.sh \
      test_scripts/coverage_formatting_utf8_enable_encoding.sh \
      test_scripts/coverage_formatting_fr.sh \
+     test_scripts/coverage_formatting_cr.sh \
      test_scripts/indices_double_index_entry.sh \
      test_scripts/indices_split_chapter_index.sh \
      test_scripts/indices_index_split.sh \

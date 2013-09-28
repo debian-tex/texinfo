@@ -824,7 +824,7 @@ Next: <a href="#GFDL" accesskey="n" rel="next">GFDL</a>, Up: <a href="dir.html#T
 <a name="GFDL"></a>
 <div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="GFDL-1"></a>
 <h2 class="chapter">1 GFDL</h2>

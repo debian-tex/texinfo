@@ -1,7 +1,7 @@
 /* infokey.h -- Custom keystroke definition support.
-   $Id: infokey.h 5191 2013-02-23 00:11:18Z karl $
+   $Id: infokey.h 5338 2013-08-22 17:58:30Z karl $
 
-   Copyright (C) 1999, 2002, 2007 Free Software Foundation, Inc.
+   Copyright 1999, 2002, 2007, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Andrew Bettison <andrewb@zip.com.au>.
+   Originally written by Andrew Bettison.
 
    This design was derived from the "lesskey" system in less 3.4.0. by
    Mark Nudelman.

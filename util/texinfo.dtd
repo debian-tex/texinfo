@@ -1,8 +1,8 @@
-<!-- $Id: texinfo.dtd 5191 2013-02-23 00:11:18Z karl $
+<!-- $Id: texinfo.dtd 5369 2013-09-09 18:08:48Z karl $
   Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
-  2011, 2012 Free Software Foundation, Inc.
+  2011, 2012, 2013 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -151,7 +151,8 @@
 <!ENTITY % Inline.reference "xref | ref | pxref | inforef | email | uref | url">
 <!ENTITY % Inline.misc "click | clicksequence | logo | punct | spacecmd | today
                         | linebreak | accent | dotless | ctrl | inlineraw 
-                        | inlinefmt | infoenclose">
+                        | inlinefmt | inlinefmtifelse | inlineifclear 
+                        | inlineifset | infoenclose | noeos | formfeed ">
 
 <!-- on lines -->
 <!ENTITY % Inline.linetext "%Inline.emphasize; | %Inline.misc; | %Inline.fonts;
@@ -1038,6 +1039,7 @@
 <!ATTLIST errormsg
           %spacesattr;>
 
+<!-- inline conditionals -->
 <!ELEMENT inlineraw (inlinerawformat, inlinerawcontent)>
 <!ATTLIST inlineraw
           %spacesattr;>
@@ -1053,6 +1055,34 @@
 <!ELEMENT inlinefmtcontent (#PCDATA | %Inline.phrase;)*>
 <!ATTLIST inlinefmtcontent
           %spacesattr;>
+
+<!ELEMENT inlineifclear (inlineifclearformat, inlineifclearcontent)>
+<!ATTLIST inlineifclear
+          %spacesattr;>
+<!ELEMENT inlineifclearformat (#PCDATA)>
+<!ELEMENT inlineifclearcontent (#PCDATA | %Inline.phrase;)*>
+<!ATTLIST inlineifclearcontent
+          %spacesattr;>
+
+<!ELEMENT inlineifset (inlineifsetformat, inlineifsetcontent)>
+<!ATTLIST inlineifset
+          %spacesattr;>
+<!ELEMENT inlineifsetformat (#PCDATA)>
+<!ELEMENT inlineifsetcontent (#PCDATA | %Inline.phrase;)*>
+<!ATTLIST inlineifsetcontent
+          %spacesattr;>
+
+<!ELEMENT inlinefmtifelse (inlinefmtifelseformat, inlinefmtifelsecontentif?, inlinefmtifelsecontentelse?)>
+<!ATTLIST inlinefmtifelse
+          %spacesattr;>
+<!ELEMENT inlinefmtifelseformat (#PCDATA)>
+<!ELEMENT inlinefmtifelsecontentif (#PCDATA | %Inline.phrase;)*>
+<!ATTLIST inlinefmtifelsecontentif
+          %spacesattr;>
+<!ELEMENT inlinefmtifelsecontentelse (#PCDATA | %Inline.phrase;)*>
+<!ATTLIST inlinefmtifelsecontentelse
+          %spacesattr;>
+
 
 <!-- command defined by definfoenclose -->
 <!ELEMENT infoenclose  (#PCDATA | %Inline.phrase;)*>
@@ -1220,6 +1250,7 @@
 <!ELEMENT logo      (#PCDATA)>
 <!ELEMENT linebreak EMPTY>
 <!ELEMENT noeos EMPTY>
+<!ELEMENT formfeed EMPTY>
 
 <!ENTITY tex        "<logo>TeX</logo>">
 <!ENTITY latex      "<logo>LaTeX</logo>">
@@ -1252,6 +1283,8 @@
 <!ENTITY rsaquo     "&#x203a;">
 <!ENTITY textmdash      "&#x2014;">
 <!ENTITY textndash      "&#x2013;">
+<!ENTITY formfeed       "<formfeed/>">
+<!ENTITY attrformfeed   "\f">
 <!ENTITY period     "<punct end-of-sentence='no'>.</punct>">
 <!ENTITY eosperiod  "<punct end-of-sentence='yes'>.</punct>">
 <!ENTITY quest      "<punct end-of-sentence='no'>?</punct>">

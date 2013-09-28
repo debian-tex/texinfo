@@ -53,7 +53,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.0';
+$VERSION = '5.1.90';
 
 my $mdash = '&#'.hex('2014').';';
 my $ndash = '&#'.hex('2013').';';
@@ -368,6 +368,12 @@ my %docbook_sections = (
   4 => 'sect3'
 );
 
+my %docbook_special_unnumbered;
+foreach my $special_unnumbered ('acknowledgements', 'colophon', 
+                                'dedication', 'preface') {
+  $docbook_special_unnumbered{$special_unnumbered} = 1;
+}
+
 sub _docbook_section_element($$)
 {
   my $self = shift;
@@ -377,6 +383,13 @@ sub _docbook_section_element($$)
     return $docbook_sections{$heading_level};
   }
   my $command = $self->_level_corrected_section($root);
+  if ($command eq 'unnumbered'
+      and $root->{'extra'}->{'associated_node'} 
+      and $root->{'extra'}->{'associated_node'}->{'extra'}->{'normalized'}
+      and $docbook_special_unnumbered{lc($root->{'extra'}->{'associated_node'}->{'extra'}->{'normalized'})}) {
+    return lc($root->{'extra'}->{'associated_node'}->{'extra'}->{'normalized'});
+  }
+
   return $docbook_sections{$command};
 }
 
@@ -434,6 +447,15 @@ sub _parse_attribute($)
   return ($element, $attributes);
 }
 
+sub _protect_text($$)
+{
+  my $self = shift;
+  my $text = shift;
+  my $result = $self->xml_protect_text($text);
+  # form feed not allowed in XML
+  $result =~ s/\f/ /g;
+  return $result;
+}
 
 sub _convert($$;$);
 
@@ -460,7 +482,7 @@ sub _convert($$;$)
     } elsif ($self->{'document_context'}->[-1]->{'raw'}) {
       return $root->{'text'};
     }
-    $result = $self->xml_protect_text($root->{'text'});
+    $result = $self->_protect_text($root->{'text'});
     if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
       if (!$self->{'document_context'}->[-1]->{'monospace'}->[-1]) {
         $result =~ s/``/$ldquo/g;
@@ -581,7 +603,7 @@ sub _convert($$;$)
             $result .= "<anchor id=\"$root->{'extra'}->{'normalized'}\"/>\n";
           }
         } elsif ($Texinfo::Common::root_commands{$root->{'cmdname'}}) {
-          my $attribute;
+          my $attribute = '';
           # FIXME it is not clear that a label should be set for
           # @appendix* or @chapter/@*section as the formatter should be
           # able to figure it out.  For @unnumbered or if ! NUMBER_SECTIONS
@@ -594,11 +616,13 @@ sub _convert($$;$)
             # section title, so only the letter is used.
             $label = $root->{'number'};
           }
-          $attribute = " label=\"$label\"";
+          $command = $self->_docbook_section_element($root);
+          if (! $docbook_special_unnumbered{$command}) {
+            $attribute = " label=\"$label\"";
+          }
           if ($root->{'extra'} and $root->{'extra'}->{'associated_node'}) {
             $attribute .= " id=\"$root->{'extra'}->{'associated_node'}->{'extra'}->{'normalized'}\"";
           }
-          $command = $self->_docbook_section_element($root);
           $result .= "<$command${attribute}>\n";
           if ($root->{'args'} and $root->{'args'}->[0]) {
             my ($arg, $end_line)
@@ -891,7 +915,7 @@ sub _convert($$;$)
             = $self->Texinfo::Convert::Plaintext::_image_text($root, $basefile);
           if (defined($image_text)) {
             $result .= "<textobject><literallayout>"
-               .$self->xml_protect_text($image_text)
+               .$self->_protect_text($image_text)
                .'</literallayout></textobject>';
           }
           if (!defined($image_text) and !$image_file_found) {
@@ -918,7 +942,7 @@ sub _convert($$;$)
           if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
             $email = $root->{'extra'}->{'brace_command_contents'}->[0];
             $email_text 
-              = $self->xml_protect_text(Texinfo::Convert::Text::convert(
+              = $self->_protect_text(Texinfo::Convert::Text::convert(
                                          {'contents' => $email},
                                          {'code' => 1,
                                   Texinfo::Common::_convert_text_options($self)}));
@@ -939,7 +963,7 @@ sub _convert($$;$)
           my ($url_text, $url_content);
           if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
             $url_content = $root->{'extra'}->{'brace_command_contents'}->[0];
-            $url_text = $self->xml_protect_text(Texinfo::Convert::Text::convert(
+            $url_text = $self->_protect_text(Texinfo::Convert::Text::convert(
                                          {'contents' => $url_content},
                                          {'code' => 1,
                                   Texinfo::Common::_convert_text_options($self)}));
@@ -1001,17 +1025,30 @@ sub _convert($$;$)
         } else {
           return '';
         }
-      } elsif ($Texinfo::Common::inline_format_commands{$root->{'cmdname'}}
-               and $root->{'extra'} and $root->{'extra'}->{'format'}
-               and $self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}) {
+      } elsif ($Texinfo::Common::inline_commands{$root->{'cmdname'}}) {
+        my $expand = 0;
+        if ($Texinfo::Common::inline_format_commands{$root->{'cmdname'}}) {
+          if ($root->{'cmdname'} eq 'inlinefmtifelse'
+              or ($root->{'extra'} and $root->{'extra'}->{'format'}
+                  and $self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}})) {
+            $expand = 1;
+          }
+        } elsif (defined($root->{'extra'}->{'expand_index'})) {
+          $expand = 1;
+        }
+        return '' if (! $expand);
+        my $arg_index = 1;
         if ($root->{'cmdname'} eq 'inlineraw') {
           push @{$self->{'document_context'}}, {'monospace' => [0]};
           $self->{'document_context'}->[-1]->{'raw'} = 1;
+        } elsif ($root->{'cmdname'} eq 'inlinefmtifelse' 
+                 and ! $self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}) {
+          $arg_index = 2;
         }
-        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
-            and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) > $arg_index
+            and defined($root->{'extra'}->{'brace_command_contents'}->[$arg_index])) {
           $result .= $self->_convert({'contents'
-                        => $root->{'extra'}->{'brace_command_contents'}->[-1]});
+                        => $root->{'extra'}->{'brace_command_contents'}->[$arg_index]});
         }
         if ($root->{'cmdname'} eq 'inlineraw') {
           pop @{$self->{'document_context'}};

@@ -1,4 +1,4 @@
-# $Id: Makefile.am 5205 2013-02-24 23:34:39Z karl $
+# $Id: Makefile.am 5295 2013-08-10 15:33:48Z pertusus $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
@@ -112,6 +112,7 @@ test_files = \
  t/include/fextext \
  t/include/file_with_cpp_lines.texi \
  t/include/file_with_xml_chars.texi \
+ t/include/include_noeol.texi \
  t/include/image.txt \
  t/include/image_encoded.txt \
  t/include/inc_@f--ile.texi \
@@ -133,24 +134,26 @@ test_files = \
  t/init/l2h.init \
  t/manual_tree.pl \
  t/test_utils.pl \
- t/input_files/delcomment.texi \
+ t/input_files/all_spaces.texi \
  t/input_files/char_latin1_utf8_in_refs.texi \
  t/input_files/char_latin1_latin1_in_refs.texi \
  t/input_files/char_latin2_latin2_in_refs.texi \
- t/input_files/sample_utf8.texi \
- t/input_files/japanese_utf8.texi \
- t/input_files/japanese_shift_jis.texi \
  t/input_files/chinese_mixed_with_en.texi \
- t/input_files/things_before_setfilename_no_element.texi \
- t/input_files/empty_lines_at_beginning_no_setfilename.texi \
- t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi \
- t/input_files/things_before_setfilename.texi \
  t/input_files/contents_at_document_begin.texi \
  t/input_files/contents_at_end_document_after_node.texi \
  t/input_files/contents_at_end_document.texi \
  t/input_files/contents_in_document.texi \
  t/input_files/contents_no_section.texi \
  t/input_files/cpp_lines.texi \
+ t/input_files/delcomment.texi \
+ t/input_files/empty_lines_at_beginning_no_setfilename.texi \
+ t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi \
+ t/input_files/japanese_utf8.texi \
+ t/input_files/japanese_shift_jis.texi \
+ t/input_files/non_break_spaces.texi \
+ t/input_files/sample_utf8.texi \
+ t/input_files/things_before_setfilename_no_element.texi \
+ t/input_files/things_before_setfilename.texi \
  #
 
 document_domain = $(PACKAGE)_document
@@ -217,7 +220,7 @@ MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 	 | sort >$@
 
 maintain/catalog.xml: maintain/catalog.xml.in Makefile
-	$(mkdir_p) maintain
+	$(MKDIR_P) maintain
 	sed -e 's|[@]abs_top_srcdir[@]|$(abs_top_srcdir)|' \
 	    -e 's|[@]TEXINFO_DTD_VERSION[@]|$(TEXINFO_DTD_VERSION)|' \
 	  $(srcdir)/maintain/catalog.xml.in >$@
@@ -227,7 +230,7 @@ libsrcdir = $(srcdir)/maintain/lib
 
 install-data-local:
 	if test $(USE_EXTERNAL_LIBINTL) != 'yes' ; then \
-	  $(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
+	  $(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
 	    $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData; \
 	  $(INSTALL_DATA) $(libsrcdir)/libintl-perl/lib/Locale/*.pm \
 	    $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale; \
@@ -237,12 +240,12 @@ install-data-local:
 	    $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData; \
 	fi
 	if test $(USE_EXTERNAL_EASTASIANWIDTH) != 'yes' ; then \
-	  $(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode; \
+	  $(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode; \
 	  $(INSTALL_DATA) $(libsrcdir)/Unicode-EastAsianWidth/lib/Unicode/EastAsianWidth.pm \
 	   $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode; \
 	fi
 	if test $(USE_EXTERNAL_UNIDECODE) != 'yes' ; then \
-	  $(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode; \
+	  $(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode; \
 	  $(INSTALL_DATA) $(libsrcdir)/Text-Unidecode/lib/Text/Unidecode.pm \
 	    $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text; \
 	  $(INSTALL_DATA) $(libsrcdir)/Text-Unidecode/lib/Text/Unidecode/*.pm \

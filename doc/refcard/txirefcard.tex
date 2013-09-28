@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex 5234 2013-03-12 22:56:31Z karl $
+% $Id: txirefcard.tex 5381 2013-09-26 23:03:58Z karl $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -46,10 +46,10 @@
 % use TeX.
 %
 % Much of the text is based on, and sometimes copied from, the @-Command
-% Summary node in texinfo.txi, written primarily by Bob Chassell.
+% Summary node in the Texinfo manual, originally written by Bob Chassell.
 
 \def\versionyear{2013}          % year manual was updated
-\def\versionTexinfo{5.1}        % version of Texinfo this manual is for
+\def\versionTexinfo{5.2}        % version of Texinfo this manual is for
 
 \def\copyrightnotice{%
 \vskip 1ex plus 1filll\begingroup\small
@@ -835,6 +835,7 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 \txicmd{@ifnotdocbook @ifnothtml @ifnotplaintext @ifnottex @ifnotxml}{\dots\code{@end ifnot\var{format}}}{Begin text to be ignored in one output format but no others: \code{@ifnothtml} text is omitted from \acro{HTML} output, etc.}
 \txicmd{@ifnotinfo}{\dots\code{@end ifnotinfo}}{Like the other \code{@ifnot\dots} commands, but omit from plain text output as well as Info.}
 \txicmd{@inlinefmt}{\ttbraced{format, text}}{Include Texinfo \var{text} only in \var{format} output.}
+\txicmd{@inlinefmtifelse}{\ttbraced{format, then-text, else-text}}{Include either \var{then-text} or \var{else-text} according to whether \var{format} is being output.}
 
 \subsection{Raw formatter text}
 
@@ -847,10 +848,12 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 \subsection{Document variables}
 
 \txicmd{@set}{name \rmbrack[string]}{Define the Texinfo variable \var{name}, optionally to the value \var{string}.}
-\txicmd{@clear}{name}{Undefine the Texinfo variable \var{name}.}
-\txicmd{@value}{\ttbraced{name}}{Insert the value of the Texinfo variable \var{name}.}
-\txicmd{@ifset}{name \dots\code{@end ifset}}{If the Texinfo variable \var{name} is set, format the enclosed text.}
-\txicmd{@ifclear}{flag \dots\code{@end ifclear}}{If the Texinfo variable \var{name} is not set, format the enclosed text.}
+\txicmd{@clear}{name}{Undefine \var{name}.}
+\txicmd{@value}{\ttbraced{name}}{Insert the value of \var{name}.}
+\txicmd{@ifset}{name \dots\code{@end ifset}}{If \var{name} is set, format enclosed text.}
+\txicmd{@ifclear}{name \dots\code{@end ifclear}}{If \var{name} is not set, format enclosed text.}
+\txicmd{@inlineifset}{\ttbraced{name, text}}{If \var{name} is set, format \var{text}.}
+\txicmd{@inlineifclear}{\ttbraced{name, text}}{If \var{name} is notset, format \var{text}.}
 
 \subsection{Testing for commands}
 

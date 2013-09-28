@@ -1,7 +1,7 @@
 /* infomap.h -- description of a keymap in Info and related functions.
-   $Id: infomap.h 5191 2013-02-23 00:11:18Z karl $
+   $Id: infomap.h 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1993, 2001, 2004, 2007 Free Software Foundation, Inc.
+   Copyright 1993, 2001, 2004, 2007, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originaly written by Brian Fox. */
 
 #ifndef INFOMAP_H
 #define INFOMAP_H

@@ -1,6 +1,6 @@
 This is the todo list for the Texinfo::Parser implementation.
 
-  Copyright 2012 Free Software Foundation.
+  Copyright 2012, 2013 Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -24,13 +24,22 @@ Profiling
 profiling: package on debian:
 libdevel-nytprof-perl
 In doc:
-perl -d:NYTProf ../tp/texi2any.pl texinfo.txi
+perl -d:NYTProf ../tp/texi2any.pl texinfo.texi
 nytprofhtml --open
 # firefox nytprof/index.html
 
 
 Delayed bugs
 ============
+
+In @inline* ignore arguments, @value and user macros should not be
+expanded.  For example
+
+ @set closebrace }
+
+ @inlinefmt{html,
+ truc @value{closebrace}
+ machin
 
 In Plaintext, @quotation text should have the right margin narrowed.
 

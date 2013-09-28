@@ -1,7 +1,7 @@
 /* nodes.h -- How we represent nodes internally.
-   $Id: nodes.h 5191 2013-02-23 00:11:18Z karl $
+   $Id: nodes.h 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2011, 2012
+   Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2011, 2012, 2013
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #ifndef NODES_H
 #define NODES_H
@@ -89,7 +89,10 @@ typedef struct {
   char *filename;               /* The file where this node can be found. */
   char *nodename;               /* The node pointed to by this tag. */
   long nodestart;               /* The offset of the start of this node. */
-  long nodelen;                 /* The length of this node. */
+  size_t nodelen;               /* The length of this node. */
+  char *content_cache;          /* Cache of the node contents; used if the
+				   node contents must be preprocessed before
+				   displaying it. */
 } TAG;
 
 /* The following structure is used to remember information about the contents
@@ -107,7 +110,7 @@ typedef struct {
   size_t filesize;              /* The number of bytes this file expands to. */
   char **subfiles;              /* If non-null, the list of subfiles. */
   TAG **tags;                   /* If non-null, the indirect tags table. */
-  int tags_slots;               /* Number of slots allocated for TAGS. */
+  size_t tags_slots;            /* Number of slots allocated for TAGS. */
   int flags;                    /* Various flags.  Mimics of N_* flags. */
 } FILE_BUFFER;
 
@@ -117,7 +120,7 @@ typedef struct {
 extern FILE_BUFFER **info_loaded_files;
 
 /* The number of slots currently allocated to INFO_LOADED_FILES. */
-extern int info_loaded_files_slots;
+extern size_t info_loaded_files_slots;
 
 /* Locate the file named by FILENAME, and return the information structure
    describing this file.  The file may appear in our list of loaded files
@@ -157,5 +160,7 @@ extern char *info_recent_file_error;
 
 /* Create a new, empty file buffer. */
 extern FILE_BUFFER *make_file_buffer (void);
+
+void forget_info_file (char *filename);
 
 #endif /* not NODES_H */

@@ -45,6 +45,7 @@ $result_trees{'inline_missing_first_arg'} = {
                 {}
               ]
             ],
+            'format' => '',
             'spaces_before_argument' => {}
           },
           'line_nr' => {
@@ -89,6 +90,7 @@ $result_trees{'inline_missing_first_arg'} = {
                 {}
               ]
             ],
+            'format' => '',
             'spaces_before_argument' => {
               'text' => '',
               'type' => 'empty_spaces_before_argument'

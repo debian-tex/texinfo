@@ -206,6 +206,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/converters_tests/documentencoding_utf8_and_insertions.pl \
   t/results/converters_tests/email_table_command_as_argument.pl \
   t/results/converters_tests/empty_accent.pl \
+  t/results/converters_tests/enumerate_above_ten.pl \
   t/results/converters_tests/footnote_no_number.pl \
   t/results/converters_tests/footnote_no_number_separate.pl \
   t/results/converters_tests/image_extension.pl \
@@ -325,6 +326,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/coverage_braces/footnote_in_command_not_closed.pl \
   t/results/coverage_braces/footnote_no_node.pl \
   t/results/coverage_braces/footnote_not_closed.pl \
+  t/results/coverage_braces/form_feed_in_brace_commands.pl \
   t/results/coverage_braces/format_on_first_footnote_line.pl \
   t/results/coverage_braces/heading_in_footnote.pl \
   t/results/coverage_braces/inforef_too_much_args.pl \
@@ -390,6 +392,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/def/wrong_braces_simple.pl \
   t/results/def/wrong_braces_with_end_of_lines.pl \
   t/results/docbook_tests/empty_quotation_with_arg_followed_by_quotation.pl \
+  t/results/docbook_tests/special_docbook_unnumbered.pl \
   t/results/float/anchor_in_caption.pl \
   t/results/float/cindex_in_caption.pl \
   t/results/float/comment_space_comand_in_float.pl \
@@ -446,6 +449,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/include/macro_and_commands_in_early_commands.pl \
   t/results/include/macro_definition_in_include.pl \
   t/results/include/macro_in_early_commands.pl \
+  t/results/include/no_eol_in_included_file.pl \
   t/results/include/simple.pl \
   t/results/include/simple_no_eol.pl \
   t/results/include/test_include_directories.pl \
@@ -667,6 +671,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/macro/empty_macro_no_arg.pl \
   t/results/macro/expand_two_same.pl \
   t/results/macro/expansion_order.pl \
+  t/results/macro/form_feeds.pl \
   t/results/macro/ifclear_in_macro.pl \
   t/results/macro/ifset_and_end_isef_in_macro.pl \
   t/results/macro/ifset_in_macro.pl \
@@ -773,6 +778,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/misc_commands/empty_center_with_arg.pl \
   t/results/misc_commands/empty_documentencoding.pl \
   t/results/misc_commands/footnote_in_center.pl \
+  t/results/misc_commands/incorrect_allowcodebreaks_argument.pl \
   t/results/misc_commands/indent_in_quotation.pl \
   t/results/misc_commands/index_entries.pl \
   t/results/misc_commands/invalid_clickstyle.pl \
@@ -829,6 +835,8 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/plaintext_tests/accent_command_punctuation.pl \
   t/results/plaintext_tests/accents_in_var_enable_encoding.pl \
   t/results/plaintext_tests/after_punctuation_character_in_command.pl \
+  t/results/plaintext_tests/all_spaces.pl \
+  t/results/plaintext_tests/all_spaces/res_plaintext/all_spaces.txt \
   t/results/plaintext_tests/anchor_and_empty_lines.pl \
   t/results/plaintext_tests/at_commands_glued_in_example.pl \
   t/results/plaintext_tests/at_commands_glued_in_paragraph.pl \
@@ -866,6 +874,8 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/plaintext_tests/no_empty_line_after_section.pl \
   t/results/plaintext_tests/no_punctuation_commands.pl \
   t/results/plaintext_tests/no_punctuation_commands_frenchspacing.pl \
+  t/results/plaintext_tests/non_break_spaces.pl \
+  t/results/plaintext_tests/non_break_spaces/res_plaintext/non_break_spaces.txt \
   t/results/plaintext_tests/paragraphindent.pl \
   t/results/plaintext_tests/protect_spaces_on_line.pl \
   t/results/plaintext_tests/protected_space_end_line.pl \
@@ -1048,6 +1058,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/sectioning/section_before_top.pl \
   t/results/sectioning/section_before_top_no_node.pl \
   t/results/sectioning/section_below_unnumbered.pl \
+  t/results/sectioning/section_below_unnumbered_no_top.pl \
   t/results/sectioning/section_chapter_before_top.pl \
   t/results/sectioning/section_chapter_before_top_nodes.pl \
   t/results/sectioning/section_in_unnumbered_info.pl \
@@ -1095,7 +1106,9 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/value/comment_on_set_line.pl \
   t/results/value/empty_set.pl \
   t/results/value/empty_value_in_line.pl \
+  t/results/value/not_only_characters.pl \
   t/results/value/set_flag_command_equivalent.pl \
+  t/results/value/set_form_feed.pl \
   t/results/value/set_in_item_missing_line.pl \
   t/results/value/set_on_item_line.pl \
   t/results/value/simple.pl \
@@ -1161,26 +1174,26 @@ test_files_generated_list = $(test_tap_files_generated_list) \
 t/include_dir:
 	$(MKDIR_P) $@
 
-t/include_dir/section_file.texi: $(srcdir)/t/include_reference/section_file.texi t/include_dir
-	$(INSTALL_DATA) $(srcdir)/t/include_reference/section_file.texi $@
-
 t/include_dir/f--ile.txt: $(srcdir)/t/include_reference/f--ile.txt t/include_dir
 	$(INSTALL_DATA) $(srcdir)/t/include_reference/f--ile.txt $@
 
 t/include_dir/incl-incl.txi: $(srcdir)/t/include_reference/incl-incl.txi t/include_dir
 	$(INSTALL_DATA) $(srcdir)/t/include_reference/incl-incl.txi $@
 
-t/include_dir/inc_file.texi: $(srcdir)/t/include_reference/inc_file.texi t/include_dir
-	$(INSTALL_DATA) $(srcdir)/t/include_reference/inc_file.texi $@
-
-t/include_dir/figure.txt: $(srcdir)/t/include_reference/figure.txt t/include_dir
-	$(INSTALL_DATA) $(srcdir)/t/include_reference/figure.txt $@
+t/include_dir/macro_included.texi: $(srcdir)/t/include_reference/macro_included.texi t/include_dir
+	$(INSTALL_DATA) $(srcdir)/t/include_reference/macro_included.texi $@
 
 t/include_dir/f--ile.png: $(srcdir)/t/include_reference/f--ile.png t/include_dir
 	$(INSTALL_DATA) $(srcdir)/t/include_reference/f--ile.png $@
 
-t/include_dir/macro_included.texi: $(srcdir)/t/include_reference/macro_included.texi t/include_dir
-	$(INSTALL_DATA) $(srcdir)/t/include_reference/macro_included.texi $@
+t/include_dir/figure.txt: $(srcdir)/t/include_reference/figure.txt t/include_dir
+	$(INSTALL_DATA) $(srcdir)/t/include_reference/figure.txt $@
 
-test_copied_include_files = t/include_dir/section_file.texi t/include_dir/f--ile.txt t/include_dir/incl-incl.txi t/include_dir/inc_file.texi t/include_dir/figure.txt t/include_dir/f--ile.png t/include_dir/macro_included.texi
+t/include_dir/inc_file.texi: $(srcdir)/t/include_reference/inc_file.texi t/include_dir
+	$(INSTALL_DATA) $(srcdir)/t/include_reference/inc_file.texi $@
+
+t/include_dir/section_file.texi: $(srcdir)/t/include_reference/section_file.texi t/include_dir
+	$(INSTALL_DATA) $(srcdir)/t/include_reference/section_file.texi $@
+
+test_copied_include_files = t/include_dir/f--ile.txt t/include_dir/incl-incl.txi t/include_dir/macro_included.texi t/include_dir/f--ile.png t/include_dir/figure.txt t/include_dir/inc_file.texi t/include_dir/section_file.texi
 

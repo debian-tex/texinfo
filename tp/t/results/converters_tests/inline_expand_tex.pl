@@ -300,6 +300,7 @@ $result_trees{'inline_expand_tex'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'tex',
             'spaces_before_argument' => {
               'text' => '',
@@ -644,6 +645,7 @@ $result_trees{'inline_expand_tex'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'tex',
             'spaces_before_argument' => {
               'text' => '',

@@ -53,7 +53,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.0';
+$VERSION = '5.1.90';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -72,6 +72,7 @@ my %explained_commands = %Texinfo::Common::explained_commands;
 my %item_container_commands = %Texinfo::Common::item_container_commands;
 my %raw_commands = %Texinfo::Common::raw_commands;
 my %format_raw_commands = %Texinfo::Common::format_raw_commands;
+my %inline_commands = %Texinfo::Common::inline_commands;
 my %inline_format_commands = %Texinfo::Common::inline_format_commands;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
 my %regular_font_style_commands = %Texinfo::Common::regular_font_style_commands;
@@ -644,14 +645,14 @@ my %BUTTONS_REL =
  'Overview',    '',
  'Index',       'index',
  'This',        '',
- 'Back',        'previous',
+ 'Back',        'prev',
  'FastBack',    '',
- 'Prev',        'previous',
+ 'Prev',        'prev',
  'Up',          'up',
  'Next',        'next',
  'NodeUp',      'up',
  'NodeNext',    'next',
- 'NodePrev',    'previous',
+ 'NodePrev',    'prev',
  'NodeForward', '',
  'NodeBack',    '',
  'Forward',     'next',
@@ -660,7 +661,7 @@ my %BUTTONS_REL =
  'First',       '',
  'Last',        '',
  'NextFile',    'next',
- 'PrevFile',    'previous',
+ 'PrevFile',    'prev',
 );
 
 my %BUTTONS_ACCESSKEY =
@@ -1106,8 +1107,12 @@ my %default_commands_args = (
   'pxref' => [['monospace'],['normal'],['normal'],['monospacetext'],['normal']],
   'ref' => [['monospace'],['normal'],['normal'],['monospacetext'],['normal']],
   'image' => [['monospacetext'],['monospacetext'],['monospacetext'],['string', 'normal'],['monospacetext']],
+  # FIXME shouldn't it better not to convert if later ignored?
   'inlinefmt' => [['monospacetext'],['normal']],
+  'inlinefmtifelse' => [['monospacetext'],['normal'],['normal']],
   'inlineraw' => [['monospacetext'],['raw']],
+  'inlineifclear' => [['monospacetext'],['normal']],
+  'inlineifset' => [['monospacetext'],['normal']],
   'item' => [[]],
   'itemx' => [[]],
 );
@@ -1843,7 +1848,9 @@ sub protect_text($$) {
 sub _default_protect_text($$) {
   my $self = shift;
   my $text = shift;
-  return $self->xml_protect_text($text);
+  my $result = $self->xml_protect_text($text);
+  $result =~ s/\f/&#12;/g;
+  return $result;
 }
 
 sub _default_heading_text($$$$$)
@@ -2361,15 +2368,26 @@ sub _convert_inline_command($$$$)
   my $args = shift;
 
   my $format_arg = shift @$args;
-  my $text_arg = shift @$args;
 
   my $format;
   if (defined($format_arg)) {
     $format = $format_arg->{'monospacetext'};
   }
   return '' if (!defined($format) or $format eq '');
-  
-  if ($self->{'expanded_formats_hash'}->{$format}) {
+
+  my $arg_index = undef;
+  if ($inline_format_commands{$cmdname}) {
+    if ($cmdname eq 'inlinefmtifelse' 
+        and ! $self->{'expanded_formats_hash'}->{$format}) {
+      $arg_index = 1;
+    } elsif ($self->{'expanded_formats_hash'}->{$format}) {
+      $arg_index = 0;
+    }
+  } elsif (defined($command->{'extra'}->{'expand_index'})) {
+    $arg_index = 0;
+  }
+  if (defined($arg_index) and $arg_index < scalar(@$args)) {
+    my $text_arg = $args->[$arg_index];
     if ($text_arg) {
       if ($text_arg->{'normal'}) {
         return $text_arg->{'normal'};
@@ -2377,12 +2395,11 @@ sub _convert_inline_command($$$$)
         return $text_arg->{'raw'};
       }
     }
-  } else {
-    return '';
   }
+  return '';
 }
 
-foreach my $command (keys(%inline_format_commands)) {
+foreach my $command (keys(%inline_commands)) {
   $default_commands_conversion{$command} = \&_convert_inline_command;
 }
 
@@ -7069,7 +7086,7 @@ sub output($$)
       $parser_for_renamed_nodes = $self->{'parser'}->parser();
     }
     my %warned_new_node;
-    foreach my $old_node_name (keys(%{$self->{'renamed_nodes'}})) {
+    foreach my $old_node_name (sort(keys(%{$self->{'renamed_nodes'}}))) {
       my $parsed_old_node = $self->_parse_node_and_warn_external(
          $old_node_name, $parser_for_renamed_nodes,
          $self->{'renamed_nodes_lines'}->{$old_node_name},

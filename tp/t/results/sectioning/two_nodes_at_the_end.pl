@@ -1167,7 +1167,7 @@ Next: <a href="#chapter-1" accesskey="n" rel="next">chapter 1</a>, Up: <a href="
 <a name="chapter-1"></a>
 <div class="header">
 <p>
-Next: <a href="#node-after-chapter-1" accesskey="n" rel="next">node after chapter 1</a>, Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#node-after-chapter-1" accesskey="n" rel="next">node after chapter 1</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="chapter-c1"></a>
 <h2 class="chapter">1 chapter c1</h2>
@@ -1176,7 +1176,7 @@ Next: <a href="#node-after-chapter-1" accesskey="n" rel="next">node after chapte
 <a name="node-after-chapter-1"></a>
 <div class="header">
 <p>
-Next: <a href="#node-after-chapter-2" accesskey="n" rel="next">node after chapter 2</a>, Previous: <a href="#chapter-1" accesskey="p" rel="previous">chapter 1</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#node-after-chapter-2" accesskey="n" rel="next">node after chapter 2</a>, Previous: <a href="#chapter-1" accesskey="p" rel="prev">chapter 1</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">node after chapter 1</h4>
 
@@ -1184,7 +1184,7 @@ Next: <a href="#node-after-chapter-2" accesskey="n" rel="next">node after chapte
 <a name="node-after-chapter-2"></a>
 <div class="header">
 <p>
-Previous: <a href="#node-after-chapter-1" accesskey="p" rel="previous">node after chapter 1</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#node-after-chapter-1" accesskey="p" rel="prev">node after chapter 1</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">node after chapter 2</h4>
 <hr>

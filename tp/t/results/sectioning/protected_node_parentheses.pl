@@ -784,7 +784,7 @@ Next: <a href="#g_t_0028manual_0029-name" accesskey="n" rel="next">(manual) name
 <a name="g_t_0028manual_0029-name"></a>
 <div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">(manual) name</h4>
 

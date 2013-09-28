@@ -1,10 +1,8 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
-   $Id: window.h 5191 2013-02-23 00:11:18Z karl $
+   $Id: window.h 5337 2013-08-22 17:54:06Z karl $
 
-   This file is part of GNU Info, a program for reading online documentation
-   stored in Info format.
-
-   Copyright (C) 1993, 1997, 2004, 2007, 2011 Free Software Foundation, Inc.
+   Copyright 1993, 1997, 2004, 2007, 2011 2013
+   Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #ifndef INFO_WINDOW_H
 #define INFO_WINDOW_H
@@ -279,14 +277,16 @@ extern size_t process_node_text
 		     size_t, size_t),
 	 void *closure);
 
-void clean_manpage (char *manpage);
+extern void clean_manpage (char *manpage);
 
 extern void window_compute_line_map (WINDOW *win);
 
-int window_point_to_column (WINDOW *win, long point, long *np);
+extern int window_point_to_column (WINDOW *win, long point, long *np);
 
-void window_line_map_init (WINDOW *win);
+extern void window_line_map_init (WINDOW *win);
 
-long window_end_of_line (WINDOW *win);
+extern long window_end_of_line (WINDOW *win);
+
+extern size_t window_log_to_phys_line (WINDOW *window, size_t ln);
 
 #endif /* not INFO_WINDOW_H */

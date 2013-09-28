@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac 5234 2013-03-12 22:56:31Z karl $
+# $Id: configure.ac 5381 2013-09-26 23:03:58Z karl $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
 # 2012, 2013 Free Software Foundation, Inc.
@@ -12,13 +12,14 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [5.1], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [5.2], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
 dnl tar-ustar because we have long filenames for some test files.
 dnl parallel-tests as recommended by stefano.
-AM_INIT_AUTOMAKE([1.12 tar-ustar parallel-tests readme-alpha dist-xz])
+AM_INIT_AUTOMAKE([1.14 dist-xz 
+                 info-in-builddir parallel-tests readme-alpha tar-ustar])
 
 # Where to generate output; srcdir location.
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.
@@ -129,7 +130,7 @@ rm -f conftest.dtx
 
 DIFF_A_OPTION=
 if test "z$diff_accepts_a_option" = 'zyes' ; then
-  DIFF_U_OPTION=-a
+  DIFF_A_OPTION=-a
 fi
 AC_SUBST([DIFF_A_OPTION])
 
@@ -223,9 +224,10 @@ for termlib in ${TERMLIB_VARIANTS}; do
      [TERMLIBS="${TERMLIBS} -l${termlib}"; break])
 done
 have_termlib=yes
-# don't bother warning on djgpp, it doesn't have a term library, it
-# ports each termcap-needing program separately according to its needs.
-if test -z "$TERMLIBS" && echo "$build" | grep -v djgpp >/dev/null; then
+# don't bother warning on djgpp and MinGW, they don't have a term library,
+# and port each termcap-needing program separately according to the needs.
+if test -z "$TERMLIBS" \
+   && echo "$build" | grep -v djgpp | grep -v mingw >/dev/null; then
   AC_MSG_WARN([info needs a terminal library, one of: ${TERMLIB_VARIANTS}])
   have_termlib=no
 fi
@@ -329,7 +331,7 @@ AC_SUBST([USE_EXTERNAL_UNIDECODE])
 # i18n support.  To update to a new version of gettext, run:
 #   gettextize -f -c
 # See http://gnu.org/s/gnulib/manual/html_node/gettextize-and-autopoint.html.
-AM_GNU_GETTEXT_VERSION([0.18.2])
+AM_GNU_GETTEXT_VERSION([0.18.3])
 AM_GNU_GETTEXT([external])
 
 USE_EXTERNAL_LIBINTL=no

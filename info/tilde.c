@@ -1,8 +1,8 @@
 /* tilde.c -- tilde expansion code (~/foo := $HOME/foo).
-   $Id: tilde.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: tilde.c 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1998, 1999,
-   2002, 2004, 2006, 2007, 2008, 2012 Free Software Foundation, Inc.
+   Copyright 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1998, 1999,
+   2002, 2004, 2006, 2007, 2008, 2012, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #include "info.h"
 #include "tilde.h"
@@ -174,7 +174,7 @@ tilde_expand (char *string)
 /* Do the work of tilde expansion on FILENAME.  FILENAME starts with a
    tilde.  If there is no expansion, call tilde_expansion_failure_hook. */
 char *
-tilde_expand_word (char *filename)
+tilde_expand_word (const char *filename)
 {
   char *dirname = filename ? xstrdup (filename) : NULL;
 

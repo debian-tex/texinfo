@@ -2257,7 +2257,7 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 <a name="chapter"></a>
 <div class="header">
 <p>
-Next: <a href="#chapter-2" accesskey="n" rel="next">chapter 2</a>, Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#chapter-2" accesskey="n" rel="next">chapter 2</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="chapter-1"></a>
 <h2 class="chapter">1 chapter</h2>
@@ -2280,7 +2280,7 @@ Up: <a href="#chapter" accesskey="u" rel="up">chapter</a> &nbsp; </p>
 <a name="chapter-2"></a>
 <div class="header">
 <p>
-Previous: <a href="#chapter" accesskey="p" rel="previous">chapter</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="chapter-2-1"></a>
 <h2 class="chapter">2 chapter 2</h2>
@@ -2305,7 +2305,7 @@ Next: <a href="#unnumberedsec" accesskey="n" rel="next">unnumberedsec</a>, Up: <
 <a name="unnumberedsec"></a>
 <div class="header">
 <p>
-Previous: <a href="#section-chap-2" accesskey="p" rel="previous">section chap 2</a>, Up: <a href="#chapter-2" accesskey="u" rel="up">chapter 2</a> &nbsp; </p>
+Previous: <a href="#section-chap-2" accesskey="p" rel="prev">section chap 2</a>, Up: <a href="#chapter-2" accesskey="u" rel="up">chapter 2</a> &nbsp; </p>
 </div>
 <a name="unnumberedsec-1"></a>
 <h3 class="unnumberedsec">unnumberedsec</h3>

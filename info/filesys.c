@@ -1,8 +1,8 @@
 /* filesys.c -- filesystem specific functions.
-   $Id: filesys.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: filesys.c 5337 2013-08-22 17:54:06Z karl $
 
    Copyright 1993, 1997, 1998, 2000, 2002, 2003, 2004, 2007, 2008, 2009, 2011,
-   2012 Free Software Foundation, Inc.
+   2012, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,10 +29,8 @@
 static char *info_file_in_path (char *filename, char *path);
 static char *lookup_info_filename (char *filename);
 static char *info_absolute_file (char *fname);
-static char *build_infopath_from_path (void);
 
 static void remember_info_filename (char *filename, char *expansion);
-static void maybe_initialize_infopath (void);
 
 typedef struct
 {
@@ -75,13 +73,6 @@ static COMPRESSION_ALIST compress_suffixes[] = {
   { NULL, NULL }
 };
 
-/* The path on which we look for info files.  You can initialize this
-   from the environment variable INFOPATH if there is one, or you can
-   call info_add_path () to add paths to the beginning or end of it.
-   You can call zap_infopath () to make the path go away. */
-char *infopath = NULL;
-static int infopath_size = 0;
-
 /* Expand the filename in PARTIAL to make a real name for this operating
    system.  This looks in INFO_PATHS in order to find the correct file.
    If it can't find the file, it returns NULL. */
@@ -94,9 +85,9 @@ info_find_fullpath (char *partial)
   int initial_character;
   char *temp;
 
-  filesys_error_number = 0;
+  debug(1, (_("looking for file \"%s\""), partial));
 
-  maybe_initialize_infopath ();
+  filesys_error_number = 0;
 
   if (partial && (initial_character = *partial))
     {
@@ -147,7 +138,7 @@ info_find_fullpath (char *partial)
 	    partial = local_temp_filename;
         }
       else
-        temp = info_file_in_path (partial, infopath);
+        temp = info_file_in_path (partial, infopath ());
 
       if (temp)
         {
@@ -167,31 +158,28 @@ info_find_fullpath (char *partial)
 /* Scan the list of directories in PATH looking for FILENAME.  If we find
    one that is a regular file, return it as a new string.  Otherwise, return
    a NULL pointer. */
-static char *
-info_file_in_path (char *filename, char *path)
+char *
+info_file_find_next_in_path (char *filename, char *path, int *diridx)
 {
   struct stat finfo;
   char *temp_dirname;
-  int statable, dirname_index;
+  int statable;
 
   /* Reject ridiculous cases up front, to prevent infinite recursion
      later on.  E.g., someone might say "info '(.)foo'"...  */
   if (!*filename || STREQ (filename, ".") || STREQ (filename, ".."))
     return NULL;
 
-  dirname_index = 0;
-
-  while ((temp_dirname = extract_colon_unit (path, &dirname_index)))
+  while ((temp_dirname = extract_colon_unit (path, diridx)))
     {
       register int i, pre_suffix_length;
       char *temp;
 
+      debug(1, (_("looking for file %s in %s"), filename, temp_dirname));
       /* Expand a leading tilde if one is present. */
       if (*temp_dirname == '~')
         {
-          char *expanded_dirname;
-
-          expanded_dirname = tilde_expand_word (temp_dirname);
+          char *expanded_dirname = tilde_expand_word (temp_dirname);
           free (temp_dirname);
           temp_dirname = expanded_dirname;
         }
@@ -218,6 +206,7 @@ info_file_in_path (char *filename, char *path)
             {
               if (S_ISREG (finfo.st_mode))
                 {
+		  debug(1, (_("found file %s"), temp));
                   return temp;
                 }
               else if (S_ISDIR (finfo.st_mode))
@@ -232,6 +221,7 @@ info_file_in_path (char *filename, char *path)
                   if (newtemp)
                     {
                       free (temp);
+		      debug(1, (_("found file %s"), newtemp));
                       return newtemp;
                     }
                 }
@@ -251,13 +241,23 @@ info_file_in_path (char *filename, char *path)
 
                   statable = (stat (temp, &finfo) == 0);
                   if (statable && (S_ISREG (finfo.st_mode)))
-                    return temp;
+		    {
+		      debug(1, (_("found file %s"), temp));
+		      return temp;
+		    }
                 }
             }
         }
       free (temp);
     }
   return NULL;
+}
+
+static char *
+info_file_in_path (char *filename, char *path)
+{
+  int i = 0;
+  return info_file_find_next_in_path (filename, path, &i);
 }
 
 /* Assume FNAME is an absolute file name, and check whether it is
@@ -361,204 +361,21 @@ remember_info_filename (char *filename, char *expansion)
   names_and_files[names_and_files_index] = NULL;
 }
 
-static void
-maybe_initialize_infopath (void)
-{
-  if (!infopath_size)
-    {
-      infopath = (char *)
-        xmalloc (infopath_size = (1 + strlen (DEFAULT_INFOPATH)));
-
-      strcpy (infopath, DEFAULT_INFOPATH);
-    }
-}
-
-/* For each path element PREFIX/DIR in PATH substitute either
-   PREFIX/share/info or PREFIX/info if that directory exists.
-   Avoid duplicates from, e.g., PREFIX/bin and PREFIX/sbin. */
-static char *
-build_infopath_from_path (void)
-{
-  typedef struct path_el
-    {
-      struct path_el *next;
-      char *path;
-      unsigned int len;
-    } PATH_EL, *PATH_PTR;
-
-  PATH_EL path_head = { NULL, NULL, 1 };
-  PATH_PTR path_prev, path_next;
-  char *res, *path_from_env, *temp_dirname;
-  int dirname_index = 0;
-  struct stat finfo;
-
-  path_from_env = getenv ("PATH");
-
-  while ((temp_dirname = extract_colon_unit (path_from_env, &dirname_index)))
-    {
-      unsigned int i, dir = 0;
-
-      /* Find end of DIRNAME/ (but ignore "/") */
-      for (i = 0; temp_dirname[i]; i++)
-        if (i && IS_SLASH (temp_dirname[i]))
-          dir = i + 1;
-
-      /* Discard path elements ending with "/", "/.", or "/.." */
-      if (!temp_dirname[dir] || STREQ (temp_dirname + dir, ".") || STREQ (temp_dirname + dir, "."))
-        dir = 0;
-      
-      path_prev = &path_head;
-      while (dir && (path_next = path_prev->next))
-        {
-          /* Ignore duplicate DIRNAME */
-          if (dir == path_next->len && strncmp (temp_dirname, path_next->path, dir) == 0)
-            dir = 0;
-
-          path_prev = path_next;
-        }
-
-      if (dir)
-        {
-          temp_dirname = xrealloc (temp_dirname, dir + strlen ("share/info") +1);
-
-          /* first try DIRNAME/share/info */
-          strcpy (temp_dirname + dir, "share/info");
-          if (stat (temp_dirname, &finfo) != 0 || !S_ISDIR (finfo.st_mode))
-            {
-              /* then try DIRNAME/info */
-              strcpy (temp_dirname + dir, "info");
-              if (stat (temp_dirname, &finfo) != 0 || !S_ISDIR (finfo.st_mode))
-                dir = 0;
-            }
-        }
-
-      if (dir)
-        {
-          path_next = xmalloc (sizeof (PATH_EL));
-          path_next->next = NULL;
-          path_next->path = temp_dirname;
-          path_next->len = dir;
-          path_prev->next = path_next;
-          path_head.len += strlen (temp_dirname) + 1;
-        }
-      else
-        free (temp_dirname);
-    }
-
-  /* Build the resulting sequence of paths */
-  res = xmalloc (path_head.len);
-  res[0] = '\0';
-
-  for (path_prev = path_head.next; path_prev; path_prev = path_next)
-    {
-      strcat (res, path_prev->path);
-      if ((path_next = path_prev->next))
-        strcat (res, PATH_SEP);
-
-      free (path_prev->path);
-      free (path_prev);
-    }
-
-  return res;
-}
-
-/* Add PATH to the list of paths found in INFOPATH.  2nd argument says
-   whether to put PATH at the front or end of INFOPATH.
-   Replace one path element "PATH" in PATH by a sequence of
-   path elements derived from the environment variable PATH. */
 void
-info_add_path (char *path, int where)
+forget_file_names (void)
 {
-  int len;
-  int found = 0;
-  unsigned int i, j;
+  int i;
 
-  /* Search for "PATH" in PATH */
-  for (i = 0; path[i]; i++)
+  for (i = 0; i < names_and_files_index; i++)
     {
-      j = i + strlen ("PATH");
-      if (strncmp (path + i, "PATH", strlen ("PATH")) == 0 &&
-          (!path[j] || path[j] == PATH_SEP[0]))
-        {
-          found = 1;
-          break;
-        }
-      else
-        {
-          /* Advance to next PATH_SEP.  */
-          while (path[i] && path[i] != PATH_SEP[0])
-            i++;
-
-          if (!path[i])
-            break;
-        }
+      free (names_and_files[i]->filename);
+      free (names_and_files[i]->expansion);
+      free (names_and_files[i]);
+      names_and_files[i] = NULL;
     }
-
-  if (found)
-    {
-      /* Build infopath from the environment variable PATH */
-      char *temp = build_infopath_from_path ();
-
-      if (i || path[j])
-        {
-          char *old_path = path;
-
-          /* Splice it into OLD_PATH */
-          path = xmalloc (1 + strlen (temp) + strlen (old_path) - strlen ("PATH"));
-          if (i)
-            strncpy (path, old_path, i);
-          strcpy (path + i, temp);
-          if (old_path[j])
-            strcat (path, old_path + j);
-
-          free (temp);
-        }
-      else
-        path = temp;
-    }
-
-  if (!infopath)
-    {
-      infopath = xmalloc (infopath_size = 200 + strlen (path));
-      infopath[0] = '\0';
-    }
-
-  len = strlen (path) + strlen (infopath);
-
-  if (len + 2 >= infopath_size)
-    infopath = xrealloc (infopath, (infopath_size += (2 * len) + 2));
-
-  if (!*infopath)
-    strcpy (infopath, path);
-  else if (where == INFOPATH_APPEND)
-    {
-      strcat (infopath, PATH_SEP);
-      strcat (infopath, path);
-    }
-  else if (where == INFOPATH_PREPEND)
-    {
-      char *temp = xstrdup (infopath);
-      strcpy (infopath, path);
-      strcat (infopath, PATH_SEP);
-      strcat (infopath, temp);
-      free (temp);
-    }
-
-  if (found)
-    free (path);
+  names_and_files_index = 0;
 }
-
-/* Make INFOPATH have absolutely nothing in it. */
-void
-zap_infopath (void)
-{
-  if (infopath)
-    free (infopath);
-
-  infopath = NULL;
-  infopath_size = 0;
-}
-
+
 /* Given a chunk of text and its length, convert all CRLF pairs at every
    end-of-line into a single Newline character.  Return the length of
    produced text.
@@ -644,8 +461,6 @@ filesys_read_info_file (char *pathname, size_t *filesize,
      Seems like a good idea to have even on Unix, in case the Info
      files are coming from some Windows system across a network.  */
   fsize = convert_eols (contents, fsize);
-
-  tags_expand (&contents, &fsize);
 
   /* EOL conversion can shrink the text quite a bit.  We don't
      want to waste storage.  */

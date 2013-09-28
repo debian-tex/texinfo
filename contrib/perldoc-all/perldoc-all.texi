@@ -2,6 +2,11 @@
 @c This top-level file is so trivial, it has to be public domain.
 @setfilename perldoc-all.info
 @settitle Perl pod documentation
+@finalout
+@tex
+\global\hfuzz=\maxdimen
+\global\hbadness=10000
+@end tex
 
 @shortcontents
 @contents
@@ -18,7 +23,7 @@ it useful to have the Perl documentation available in Info and other
 formats, and thought they would share the results.  Suggestions welcome.
 
 This is created entirely by the Texinfo tools; see the
-@url{http://cvs.savannah.gnu.org/viewvc/texinfo/contrib/perldoc-all/?root=texinfo,
+@url{http://svn.savannah.gnu.org/viewvc/trunk/contrib/perldoc-all/?root=texinfo,
 @file{contrib/perldoc-all}} directory in the Texinfo sources for the
 procedure used.  The output is available at
 @url{http://www.gnu.org/software/perl/manual}.

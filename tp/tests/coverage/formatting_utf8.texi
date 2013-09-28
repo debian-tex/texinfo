@@ -3,6 +3,12 @@
 
 @documentencoding utf8
 
+@dircategory Formatting @'e @code{@@ @TeX{}} test
+@direntry
+* Truc: (formatting).           The GNU documentation truc.
+* @code{@@ @'e @equiv{}}: (formatting).  ``@asis{--- something}'' 
+                           @command{cmd} @`a
+@end direntry
 @node Top
 @top Top section
 

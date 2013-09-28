@@ -1,5 +1,7 @@
 #! /bin/sh
 
+LC_ALL=C; export LC_ALL
+
 if test "z$TEX_HTML_TESTS" != z'yes'; then
   echo "Skipping HTML TeX tests that are not easily reproducible"
   exit 77

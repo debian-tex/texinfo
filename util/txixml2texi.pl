@@ -120,6 +120,10 @@ my %entity_texts = (
   'textndash' => '--',
   'textrsquo' => "'",
   'textlsquo' => '`',
+  'formfeed' => "\f",
+  # this is not used in pratice, as attrformfeed appears in an 
+  # attribute and thus is already expanded to text.
+  'attrformfeed' => "\f",
 );
 
 foreach my $command (keys(%Texinfo::Convert::TexinfoXML::commands_formatting)) {
@@ -300,7 +304,11 @@ while ($reader->read) {
       }
       print "\@$name";
       if ($reader->hasAttributes() and defined($reader->getAttribute('line'))) {
-        print $reader->getAttribute('line');
+        my $line = $reader->getAttribute('line');
+        $line =~ s/\\\\/\x{1F}/g;
+        $line =~ s/\\f/\f/g;
+        $line =~ s/\x{1F}/\\/g;
+        print $line;
       }
       if ($name eq 'set' or $name eq 'clickstyle') {
         skip_until_end($reader, $name);
@@ -357,6 +365,7 @@ while ($reader->read) {
       if (defined($reader->getAttribute('spaces'))) {
         my $spaces = $reader->getAttribute('spaces');
         $spaces =~ s/\\n/\n/g;
+        $spaces =~ s/\\f/\f/g;
         print $spaces;
       }
       if (defined($reader->getAttribute('leadingtext'))) {
@@ -418,7 +427,9 @@ while ($reader->read) {
     }
     if ($reader->hasAttributes() 
         and defined($reader->getAttribute('trailingspaces'))) {
-      print $reader->getAttribute('trailingspaces');
+      my $trailingspaces = $reader->getAttribute('trailingspaces');
+      $trailingspaces =~ s/\\f/\f/g;
+      print $trailingspaces;
     }
   } elsif ($reader->nodeType() eq XML_READER_TYPE_ENTITY_REFERENCE) {
     if (defined($entity_texts{$name})) {

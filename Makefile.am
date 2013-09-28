@@ -1,4 +1,4 @@
-# $Id: Makefile.am 5191 2013-02-23 00:11:18Z karl $
+# $Id: Makefile.am 5244 2013-03-20 23:22:05Z karl $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
@@ -35,6 +35,11 @@ if TOOLS_ONLY
   SUBDIRS += gnulib/lib install-info tp util
 if HAVE_TERMLIBS
     SUBDIRS += info
+else
+# DOS/Windows don't need TERMLIBS to build Info
+if HOST_IS_WINDOWS
+  SUBDIRS += info
+endif
 endif
 else
   # All subdirectories.
@@ -44,6 +49,11 @@ else
   SUBDIRS += $(native_tools) gnulib/lib
 if HAVE_TERMLIBS
   SUBDIRS += info
+else
+# DOS/Windows don't need TERMLIBS to build Info
+if HOST_IS_WINDOWS
+  SUBDIRS += info
+endif
 endif
   SUBDIRS += install-info po po_document tp Pod-Simple-Texinfo util \
              doc man

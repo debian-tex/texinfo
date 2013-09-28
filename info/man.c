@@ -1,8 +1,8 @@
-/*  man.c: How to read and format man files.
-    $Id: man.c 5191 2013-02-23 00:11:18Z karl $
+/* man.c: How to read and format man files.
+   $Id: man.c 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
-   2007, 2008, 2009, 2011, 2012 Free Software Foundation, Inc.
+   Copyright 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
+   2007, 2008, 2009, 2011, 2012, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -541,8 +541,8 @@ xrefs_of_manpage (NODE *node)
 {
   SEARCH_BINDING *reference_section;
   REFERENCE **refs = NULL;
-  int refs_index = 0;
-  int refs_slots = 0;
+  size_t refs_index = 0;
+  size_t refs_slots = 0;
   long position;
 
   reference_section = find_reference_section (node);
@@ -594,8 +594,7 @@ xrefs_of_manpage (NODE *node)
           entry->start = start;
           entry->end = end;
 
-          add_pointer_to_array
-            (entry, refs_index, refs, refs_slots, 10, REFERENCE *);
+          add_pointer_to_array (entry, refs_index, refs, refs_slots, 10);
         }
 
       reference_section->start = position + 1;
@@ -654,12 +653,12 @@ locate_manpage_xref (NODE *node, long int start, int dir)
 REFERENCE **
 manpage_xrefs_in_binding (NODE *node, SEARCH_BINDING *binding)
 {
-  register int i;
+  size_t i;
   REFERENCE **all_refs = xrefs_of_manpage (node);
   REFERENCE **brefs = NULL;
   REFERENCE *entry;
-  int brefs_index = 0;
-  int brefs_slots = 0;
+  size_t brefs_index = 0;
+  size_t brefs_slots = 0;
   int start, end;
 
   if (!all_refs)
@@ -671,17 +670,9 @@ manpage_xrefs_in_binding (NODE *node, SEARCH_BINDING *binding)
   for (i = 0; (entry = all_refs[i]); i++)
     {
       if ((entry->start > start) && (entry->end < end))
-        {
-          add_pointer_to_array
-            (entry, brefs_index, brefs, brefs_slots, 10, REFERENCE *);
-        }
+        add_pointer_to_array (entry, brefs_index, brefs, brefs_slots, 10);
       else
-        {
-          maybe_free (entry->label);
-          maybe_free (entry->filename);
-          maybe_free (entry->nodename);
-          free (entry);
-        }
+        info_reference_free (entry);
     }
 
   free (all_refs);

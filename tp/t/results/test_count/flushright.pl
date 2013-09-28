@@ -444,35 +444,35 @@ $result_converted{'debugcount'}->{'flushright'} = ' [1] (0,0) :text_root
     [16] (25,1)
     [17] (25,1) :text|dsdbf\\n|
     [17] (32,2)
-   [6] (142,2)
+   [6] (144,2)
  locations  (1) l 0 b 67 (2) l 1 b 133 (3) l 1 b 137
-   [18] (142,2) :empty_line:text|\\n|
-   [18] (143,3)
-   [19] (143,3) :paragraph
+   [18] (144,2) :empty_line:text|\\n|
+   [18] (145,3)
+   [19] (145,3) :paragraph
     [20] (0,0) :text|dqs\\n|
     [20] (4,1)
     [21] (4,1) :text|sqdd\\n|
     [21] (9,2)
-   [19] (285,5)
-   [22] (285,5) :empty_line:text|\\n|
-   [22] (286,6)
-   [23] (286,6) @anchor
-   [23] (286,6)
- locations  (4) l 6 b 286
-   [24] (286,6) :empty_spaces_after_close_brace:text|\\n|
-   [24] (286,6)
-   [25] (286,6) :empty_line:text|\\n|
-   [25] (286,6)
-   [26] (286,6) :paragraph
+   [19] (289,5)
+   [22] (289,5) :empty_line:text|\\n|
+   [22] (290,6)
+   [23] (290,6) @anchor
+   [23] (290,6)
+ locations  (4) l 6 b 290
+   [24] (290,6) :empty_spaces_after_close_brace:text|\\n|
+   [24] (290,6)
+   [25] (290,6) :empty_line:text|\\n|
+   [25] (290,6)
+   [26] (290,6) :paragraph
     [27] (0,0) :text|new para.\\n|
     [27] (10,1)
-   [26] (357,7)
-   [28] (357,7) :empty_line:text|\\n|
-   [28] (358,8)
-   [29] (358,8) @end
-   [29] (358,8)
-  [3] (358,8)
- [1] (358,8)
+   [26] (362,7)
+   [28] (362,7) :empty_line:text|\\n|
+   [28] (363,8)
+   [29] (363,8) @end
+   [29] (363,8)
+  [3] (363,8)
+ [1] (363,8)
                                                              aaa bb ada
                                                    dad sff sd and dsdbf
 

@@ -188,7 +188,7 @@ sub _add_next($;$$$$$)
           and !$line->{'frenchspacing'}
            and !$line->{'line_beginning'} and $line->{'space'}) {
         if ($word !~ /^\s/) {
-          $line->{'space'} = '  ';
+          $line->{'space'} .= ' ' x (2 - length($line->{'space'}));
         }
         delete $line->{'end_sentence'};
       }
@@ -248,7 +248,7 @@ sub set_space_protection($$;$$$)
   if (!$line->{'frenchspacing'} and $frenchspacing
     and $line->{'end_sentence'} and !$line->{'line_beginning'} 
     and $line->{'space'} and !defined($line->{'word'})) {
-    $line->{'space'} = '  ';
+    $line->{'space'} .= ' ' x (2 - length($line->{'space'}));
     print STDERR "SWITCH.L frenchspacing end sentence space\n" if ($line->{'DEBUG'});
     delete $line->{'end_sentence'};
   }
@@ -280,8 +280,9 @@ sub add_text($$;$)
       $word = $line->{'word'} if (defined($line->{'word'}));
       print STDERR "s `$line->{'space'}', w `$word'\n";
     }
-    if ($text =~ s/^([^\S\n]+)//) {
-      $underlying_text =~ s/^([^\S\n]+)//;
+    # \x{202f}\x{00a0} are non breaking spaces
+    if ($text =~ s/^([^\S\x{202f}\x{00a0}\n]+)//) {
+      $underlying_text =~ s/^([^\S\x{202f}\x{00a0}\n]+)//;
       my $spaces = $1;
       print STDERR "SPACES.L\n" if ($line->{'DEBUG'});
       if ($line->{'protect_spaces'}) {
@@ -296,19 +297,26 @@ sub add_text($$;$)
                and $line->{'end_sentence'}
                and $line->{'end_sentence'} > 0) {
             if (length($line->{'space'}) >= 1 or length($spaces) > 1) {
-              $line->{'space'} = '  ';
+              my $all_spaces = substr($line->{'space'} . $spaces, 0, 2);
+              $all_spaces =~ s/[\n\r]/ /g;
+              $all_spaces .= ' ' x (2 - length($all_spaces));
+              $line->{'space'} = $all_spaces;
               delete $line->{'end_sentence'};
             } else {
-              $line->{'space'} = ' ';
+              my $new_space = $spaces;
+              $new_space =~ s/^[\n\r]/ /;
+              $line->{'space'} = $new_space;
             }
           } else {
-            $line->{'space'} = ' ';
+            my $new_space = substr($spaces, 0, 1);
+            $new_space =~ s/^[\n\r]/ /;
+            $line->{'space'} = $new_space;
           }
         }
       }
-    } elsif ($text =~ s/^([^\s\p{InFullwidth}]+)//) {
+    } elsif ($text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//) {
       my $added_word = $1;
-      $underlying_text =~ s/^([^\s\p{InFullwidth}]+)//;
+      $underlying_text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//;
       my $underlying_added_word = $1;
 
       $result .= $line->_add_next($added_word, $underlying_added_word);

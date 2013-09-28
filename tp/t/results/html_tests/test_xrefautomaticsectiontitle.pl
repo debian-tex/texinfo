@@ -857,7 +857,7 @@ Next: <a href="#chap" accesskey="n" rel="next">chap</a>, Up: <a href="dir.html#T
 <a name="chap"></a>
 <div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="chapter"></a>
 <h2 class="chapter">1 chapter</h2>

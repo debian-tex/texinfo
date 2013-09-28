@@ -1,9 +1,8 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: infodoc.c 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
-   2007, 2008, 2011
-   Free Software Foundation, Inc.
+   Copyright 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
+   2007, 2008, 2011, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #include "info.h"
 #include "funs.h"
@@ -310,7 +309,7 @@ create_internal_info_help_node (int help_is_only_window_p)
 
       printf_to_message_buffer ("---------------------\n");
       printf_to_message_buffer (_("The current search path is:\n"));
-      printf_to_message_buffer ("%s\n", infopath);
+      printf_to_message_buffer ("%s\n", infopath ());
       printf_to_message_buffer ("---------------------\n\n");
       printf_to_message_buffer (_("Commands available in Info windows:\n\n"));
       dump_map_to_message_buffer ("", info_keymap);
@@ -358,7 +357,7 @@ create_internal_info_help_node (int help_is_only_window_p)
       if (printed_one_mx)
         printf_to_message_buffer ("\n");
 
-      maybe_free (exec_keys);
+      free (exec_keys);
 #endif /* NAMED_FUNCTIONS */
 
       node = message_buffer_to_node ();
@@ -863,7 +862,7 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
   register int i, start, next;
   static char *result = NULL;
 
-  maybe_free (result);
+  free (result);
   result = xmalloc (1 + reslen);
 
   i = next = start = 0;
@@ -1014,7 +1013,7 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
                 start++;
             }
 
-          maybe_free (fmt);
+          free (fmt);
         }
     }
   strcpy (result + next, string + start);

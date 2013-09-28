@@ -1,8 +1,8 @@
 /* m-x.c -- Meta-x minibuffer reader.
-   $Id: m-x.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: m-x.c 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2004, 2007, 2008, 2011
-   Free Software Foundation, Inc.
+   Copyright 1993, 1997, 1998, 2001, 2002, 2004, 2007, 2008, 2011,
+   2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Originally written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #include "info.h"
 #include "funs.h"
@@ -37,7 +37,7 @@ read_function_name (const char *prompt, WINDOW *window)
   register int i;
   char *line;
   REFERENCE **array = NULL;
-  int array_index = 0, array_slots = 0;
+  size_t array_index = 0, array_slots = 0;
 
   /* Make an array of REFERENCE which actually contains the names of
      the functions available in Info. */
@@ -50,8 +50,7 @@ read_function_name (const char *prompt, WINDOW *window)
       entry->nodename = NULL;
       entry->filename = NULL;
 
-      add_pointer_to_array
-        (entry, array_index, array, array_slots, 200, REFERENCE *);
+      add_pointer_to_array (entry, array_index, array, array_slots, 200);
     }
 
   line = info_read_completing_in_echo_area (window, prompt, array);

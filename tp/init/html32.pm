@@ -89,6 +89,7 @@ sub html32_protect_text($$)
   $text =~ s/</&lt;/g;
   $text =~ s/>/&gt;/g;
   $text =~ s/\"/&#34;/g;
+  $text =~ s/\f/&#12;/g;
   return $text;
 }
 

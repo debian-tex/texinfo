@@ -1,7 +1,7 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: display.c 5338 2013-08-22 17:58:30Z karl $
 
-   Copyright (C) 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012
+   Copyright 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012, 2013
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Originally written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #include "info.h"
 #include "display.h"

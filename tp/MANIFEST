@@ -11,8 +11,8 @@ LocaleData/eo/LC_MESSAGES/texinfo.mo
 LocaleData/eo/LC_MESSAGES/texinfo_document.mo
 LocaleData/es.us-ascii/LC_MESSAGES/texinfo_document.mo
 LocaleData/es/LC_MESSAGES/texinfo.mo
-LocaleData/fr.us-ascii/LC_MESSAGES/texinfo_document.mo
 LocaleData/fr/LC_MESSAGES/texinfo.mo
+LocaleData/fr/LC_MESSAGES/texinfo_document.mo
 LocaleData/he/LC_MESSAGES/texinfo.mo
 LocaleData/hr/LC_MESSAGES/texinfo.mo
 LocaleData/hu/LC_MESSAGES/texinfo.mo
@@ -123,7 +123,7 @@ po_document/POTFILES.in
 po_document/de.us-ascii.po
 po_document/eo.po
 po_document/es.us-ascii.po
-po_document/fr.us-ascii.po
+po_document/fr.po
 po_document/hu.po
 po_document/it.po
 po_document/nl.po
@@ -188,6 +188,7 @@ t/include/file_with_xml_chars.texi
 t/include/image.txt
 t/include/image_encoded.txt
 t/include/inc_@f--ile.texi
+t/include/include_noeol.texi
 t/include/included_file_with_setfilename.texi
 t/include/this_is_a_long_unknown_file.png
 t/include/verbatim_encoded.texi
@@ -221,6 +222,7 @@ t/init/redefine_need.init
 t/init/t2h_singular.init
 t/init/test_directions.init
 t/init/test_renamed_nodes.init
+t/input_files/all_spaces.texi
 t/input_files/char_latin1_latin1_in_refs.texi
 t/input_files/char_latin1_utf8_in_refs.texi
 t/input_files/char_latin2_latin2_in_refs.texi
@@ -236,6 +238,7 @@ t/input_files/empty_lines_at_beginning_no_setfilename.texi
 t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi
 t/input_files/japanese_shift_jis.texi
 t/input_files/japanese_utf8.texi
+t/input_files/non_break_spaces.texi
 t/input_files/sample_utf8.texi
 t/input_files/things_before_setfilename.texi
 t/input_files/things_before_setfilename_no_element.texi
@@ -388,6 +391,7 @@ t/results/converters_tests/complex_nestings.pl
 t/results/converters_tests/documentencoding_utf8_and_insertions.pl
 t/results/converters_tests/email_table_command_as_argument.pl
 t/results/converters_tests/empty_accent.pl
+t/results/converters_tests/enumerate_above_ten.pl
 t/results/converters_tests/footnote_no_number.pl
 t/results/converters_tests/footnote_no_number_separate.pl
 t/results/converters_tests/image_extension.pl
@@ -396,6 +400,8 @@ t/results/converters_tests/image_with_spaces.pl
 t/results/converters_tests/index_entry_in_preformatted.pl
 t/results/converters_tests/inline.pl
 t/results/converters_tests/inline_expand_tex.pl
+t/results/converters_tests/inlinefmtifelse.pl
+t/results/converters_tests/inlineifsetifclear.pl
 t/results/converters_tests/japanese_shift_jis.pl
 t/results/converters_tests/japanese_shift_jis/res_html/Introduction.html
 t/results/converters_tests/japanese_shift_jis/res_html/Preface.html
@@ -507,6 +513,7 @@ t/results/coverage_braces/footnote_ending_on_empty_line.pl
 t/results/coverage_braces/footnote_in_command_not_closed.pl
 t/results/coverage_braces/footnote_no_node.pl
 t/results/coverage_braces/footnote_not_closed.pl
+t/results/coverage_braces/form_feed_in_brace_commands.pl
 t/results/coverage_braces/format_on_first_footnote_line.pl
 t/results/coverage_braces/heading_in_footnote.pl
 t/results/coverage_braces/inforef_too_much_args.pl
@@ -572,6 +579,7 @@ t/results/def/space_in_def_for_index.pl
 t/results/def/wrong_braces_simple.pl
 t/results/def/wrong_braces_with_end_of_lines.pl
 t/results/docbook_tests/empty_quotation_with_arg_followed_by_quotation.pl
+t/results/docbook_tests/special_docbook_unnumbered.pl
 t/results/float/anchor_in_caption.pl
 t/results/float/cindex_in_caption.pl
 t/results/float/comment_space_comand_in_float.pl
@@ -628,6 +636,7 @@ t/results/include/include_with_setfilename.pl
 t/results/include/macro_and_commands_in_early_commands.pl
 t/results/include/macro_definition_in_include.pl
 t/results/include/macro_in_early_commands.pl
+t/results/include/no_eol_in_included_file.pl
 t/results/include/simple.pl
 t/results/include/simple_no_eol.pl
 t/results/include/test_include_directories.pl
@@ -711,6 +720,8 @@ t/results/info_tests/image_not_found.pl
 t/results/info_tests/image_quotes.pl
 t/results/info_tests/image_text_encoded.pl
 t/results/info_tests/index_entry_at_end_node.pl
+t/results/info_tests/invalid_node_name_no_warning.pl
+t/results/info_tests/invalid_node_name_warning.pl
 t/results/info_tests/known_encoding.pl
 t/results/info_tests/multiline_image_and_align.pl
 t/results/info_tests/multitable_anchor_and_index_entry.pl
@@ -732,6 +743,14 @@ t/results/info_tests/space_at_menu_end.pl
 t/results/info_tests/space_in_menu.pl
 t/results/info_tests/space_in_setfilename.pl
 t/results/info_tests/split_no_copying.pl
+t/results/info_tests/split_test_before_first_node.pl
+t/results/info_tests/split_test_before_first_node/res_info/split_test_before_first_node.info
+t/results/info_tests/split_test_before_first_node/res_info/split_test_before_first_node.info-1
+t/results/info_tests/split_test_before_first_node/res_info/split_test_before_first_node.info-2
+t/results/info_tests/split_test_before_first_node_no_empty_line.pl
+t/results/info_tests/split_test_before_first_node_no_empty_line/res_info/split_test_before_first_node.info
+t/results/info_tests/split_test_before_first_node_no_empty_line/res_info/split_test_before_first_node.info-1
+t/results/info_tests/split_test_before_first_node_no_empty_line/res_info/split_test_before_first_node.info-2
 t/results/info_tests/test_index.pl
 t/results/info_tests/text_before_node.pl
 t/results/info_tests/top_node_normalization.pl
@@ -849,10 +868,12 @@ t/results/macro/empty_macro_in_text_no_arg.pl
 t/results/macro/empty_macro_no_arg.pl
 t/results/macro/expand_two_same.pl
 t/results/macro/expansion_order.pl
+t/results/macro/form_feeds.pl
 t/results/macro/ifclear_in_macro.pl
 t/results/macro/ifset_and_end_isef_in_macro.pl
 t/results/macro/ifset_in_macro.pl
 t/results/macro/ifset_in_macro_set.pl
+t/results/macro/ignored_macro_definition.pl
 t/results/macro/implicit_quoting_one_arg.pl
 t/results/macro/implicit_quoting_recursion.pl
 t/results/macro/leading_spaces_ignore.pl
@@ -913,6 +934,7 @@ t/results/menu/example_in_menu_comment.pl
 t/results/menu/example_in_menu_description.pl
 t/results/menu/formats_in_menu.pl
 t/results/menu/inlineraw_in_menu_description.pl
+t/results/menu/invalid_info_menu_entry.pl
 t/results/menu/menu_entry_name.pl
 t/results/menu/menu_entry_name_comment.pl
 t/results/menu/menu_entry_no_entry.pl
@@ -955,6 +977,7 @@ t/results/misc_commands/empty_center.pl
 t/results/misc_commands/empty_center_with_arg.pl
 t/results/misc_commands/empty_documentencoding.pl
 t/results/misc_commands/footnote_in_center.pl
+t/results/misc_commands/incorrect_allowcodebreaks_argument.pl
 t/results/misc_commands/indent_in_quotation.pl
 t/results/misc_commands/index_entries.pl
 t/results/misc_commands/invalid_clickstyle.pl
@@ -1011,6 +1034,8 @@ t/results/paragraph/two_lines.pl
 t/results/plaintext_tests/accent_command_punctuation.pl
 t/results/plaintext_tests/accents_in_var_enable_encoding.pl
 t/results/plaintext_tests/after_punctuation_character_in_command.pl
+t/results/plaintext_tests/all_spaces.pl
+t/results/plaintext_tests/all_spaces/res_plaintext/all_spaces.txt
 t/results/plaintext_tests/anchor_and_empty_lines.pl
 t/results/plaintext_tests/at_commands_glued_in_example.pl
 t/results/plaintext_tests/at_commands_glued_in_paragraph.pl
@@ -1036,6 +1061,7 @@ t/results/plaintext_tests/itemize_in_headitem_in_example.pl
 t/results/plaintext_tests/japanese_utf8.pl
 t/results/plaintext_tests/japanese_utf8/res_plaintext/japanese_utf8.txt
 t/results/plaintext_tests/line_passed_and_formats.pl
+t/results/plaintext_tests/lone_braces_in_inlineraw.pl
 t/results/plaintext_tests/long_line.pl
 t/results/plaintext_tests/long_uref_after_item.pl
 t/results/plaintext_tests/multiline_image_and_align.pl
@@ -1048,6 +1074,8 @@ t/results/plaintext_tests/nested_multitable.pl
 t/results/plaintext_tests/no_empty_line_after_section.pl
 t/results/plaintext_tests/no_punctuation_commands.pl
 t/results/plaintext_tests/no_punctuation_commands_frenchspacing.pl
+t/results/plaintext_tests/non_break_spaces.pl
+t/results/plaintext_tests/non_break_spaces/res_plaintext/non_break_spaces.txt
 t/results/plaintext_tests/paragraphindent.pl
 t/results/plaintext_tests/protect_spaces_on_line.pl
 t/results/plaintext_tests/protected_space_end_line.pl
@@ -1230,6 +1258,7 @@ t/results/sectioning/section_before_part.pl
 t/results/sectioning/section_before_top.pl
 t/results/sectioning/section_before_top_no_node.pl
 t/results/sectioning/section_below_unnumbered.pl
+t/results/sectioning/section_below_unnumbered_no_top.pl
 t/results/sectioning/section_chapter_before_top.pl
 t/results/sectioning/section_chapter_before_top_nodes.pl
 t/results/sectioning/section_in_unnumbered_info.pl
@@ -1271,13 +1300,17 @@ t/results/sectioning/unnumbered_top_without_node_sections.pl
 t/results/test_count/commands.pl
 t/results/test_count/expanded_tex.pl
 t/results/test_count/flushright.pl
+t/results/test_count/flushright_in_example.pl
 t/results/test_count/multitable.pl
 t/results/test_count/printindex.pl
 t/results/value/bad_syntax.pl
 t/results/value/comment_on_set_line.pl
 t/results/value/empty_set.pl
 t/results/value/empty_value_in_line.pl
+t/results/value/ignored_value_definition.pl
+t/results/value/not_only_characters.pl
 t/results/value/set_flag_command_equivalent.pl
+t/results/value/set_form_feed.pl
 t/results/value/set_in_item_missing_line.pl
 t/results/value/set_on_item_line.pl
 t/results/value/simple.pl

@@ -53,7 +53,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.0';
+$VERSION = '5.1.90';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -87,6 +87,7 @@ my %root_commands = %Texinfo::Common::root_commands;
 my %preformatted_commands = %Texinfo::Common::preformatted_commands;
 my %explained_commands = %Texinfo::Common::explained_commands;
 my %inline_format_commands = %Texinfo::Common::inline_format_commands;
+my %inline_commands = %Texinfo::Common::inline_commands;
 my %item_container_commands = %Texinfo::Common::item_container_commands;
 my %raw_commands = %Texinfo::Common::raw_commands;
 my %format_raw_commands = %Texinfo::Common::format_raw_commands;
@@ -229,15 +230,24 @@ my %upper_case_commands = (
  'var' => 1
 );
 
-my %ignored_types;
-foreach my $type ('empty_line_after_command', 'preamble',
-            'preamble_before_setfilename',
+my %ignorable_space_types;
+foreach my $type ('empty_line_after_command',
             'empty_spaces_after_command', 'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
             'empty_spaces_after_close_brace', 
             'empty_space_at_end_def_bracketed') {
-  #$ignored_types{$type} = 1;
+  $ignorable_space_types{$type} = 1;
+}
+
+my %ignored_types;
+foreach my $type ('preamble',
+            'preamble_before_setfilename') {
   $ignored_types{$type} = 1;
+}
+
+my %ignorable_types = %ignorable_space_types;
+foreach my $ignored_type(keys(%ignored_types)) {
+  $ignorable_types{$ignored_type} = 1;
 }
 
 # All those commands run with the text.
@@ -293,6 +303,7 @@ my %defaults = (
 # not used for plaintext, since default is '-', and always set, for plaintext.
   'EXTENSION'            => 'info',
   'USE_SETFILENAME_EXTENSION' => 1,
+  'INFO_SPECIAL_CHARS_WARNING' => 1,
 
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
@@ -350,6 +361,7 @@ sub converter_initialize($)
                                      'locations' => []};
 
   %{$self->{'ignored_types'}} = %ignored_types;
+  %{$self->{'ignorable_space_types'}} = %ignorable_space_types;
   %{$self->{'ignored_commands'}} = %ignored_commands;
   # this is dynamic because raw formats may either be full commands if
   # isolated, or simple text if in a paragraph
@@ -406,13 +418,14 @@ sub _count_context_bug_message($$$)
   my $precision = shift; 
   my $element = shift;
 
-  my $element_text;
-  if ($element) {
-    $element_text = Texinfo::Structuring::_print_element_command_texi($element);
-  } else {
-    $element_text = '';
-  }
   if (scalar(@{$self->{'count_context'}}) != 1) {
+    my $element_text;
+    if ($element) {
+      $element_text 
+         = Texinfo::Structuring::_print_element_command_texi($element);
+    } else {
+      $element_text = '';
+    }
     $self->_bug_message("Too much count_context ${precision}(".
       scalar(@{$self->{'count_context'}}). "): ". $element_text, $element);
     die;
@@ -843,7 +856,8 @@ sub _compute_spaces_align_line($$$;$)
   if ($line_width > $max_column or $no_align) {
     $spaces_prepended = 0;
   } elsif ($direction eq 'center') {
-    $spaces_prepended = (($max_column -1 - $line_width) /2);
+    # if no int we may end up with floats...
+    $spaces_prepended = int(($max_column -1 - $line_width) /2);
   } else {
     $spaces_prepended = ($max_column -1 - $line_width);
   }
@@ -896,6 +910,8 @@ sub _align_lines($$$$$$)
   foreach my $line (split /^/, $text) {
     my $line_bytes_begin = 0;
     my $line_bytes_end = 0;
+    my $removed_line_bytes_end = 0;
+    my $removed_line_bytes_begin = 0;
 
     my ($new_image, $new_image_prepended_spaces);
     if ($images_marks->{$line_index}) {
@@ -911,15 +927,19 @@ sub _align_lines($$$$$$)
       }
     }
 
+    my $orig_line;
     if (!$image) {
       my $chomped = chomp($line);
       # for debugging.
-      my $orig_line = $line;
-      $line_bytes_end -= $self->count_bytes($chomped);
+      $orig_line = $line;
+      $removed_line_bytes_end -= $self->count_bytes($chomped);
+      #$line_bytes_end -= $self->count_bytes($chomped);
       $line =~ s/^(\s*)//;
-      $line_bytes_begin -= $self->count_bytes($1);
+      $removed_line_bytes_begin -= $self->count_bytes($1);
+      #$line_bytes_begin -= $self->count_bytes($1);
       $line =~ s/(\s*)$//;
-      $line_bytes_end -= $self->count_bytes($1);
+      $removed_line_bytes_end -= $self->count_bytes($1);
+      #$line_bytes_end -= $self->count_bytes($1);
       my $line_width = Texinfo::Convert::Unicode::string_width($line);
       if ($line_width == 0) {
         $result .= "\n";
@@ -960,12 +980,14 @@ sub _align_lines($$$$$$)
 
     if ($updated_locations->{$line_index}) {
       foreach my $location (@{$updated_locations->{$line_index}}) {
-        $location->{'bytes'} += $line_bytes_begin + $delta_bytes;
+        $location->{'bytes'} += $line_bytes_begin + $removed_line_bytes_begin 
+                                + $delta_bytes;
         #print STDERR "UPDATE ALIGN: $location->{'root'}->{'extra'}->{'normalized'}: ($location->{'bytes'})\n";
       }
     }
-    $delta_bytes += $line_bytes_begin + $line_bytes_end;
-    #print STDERR "ALIGN $orig_line ($line_index. lbb $line_bytes_begin, lbe $line_bytes_end, delta $delta_bytes, bytes_count $bytes_count)\n";
+    $delta_bytes += $line_bytes_begin + $line_bytes_end 
+             + $removed_line_bytes_begin + $removed_line_bytes_end;
+    #print STDERR "ALIGN $orig_line ($line_index. lbb $line_bytes_begin, lbe $line_bytes_end, rlbb $removed_line_bytes_begin, rlbe $removed_line_bytes_end delta $delta_bytes, bytes_count $bytes_count)\n";
     $line_index++;
   }
   return ($result, $bytes_count);
@@ -1434,6 +1456,14 @@ sub _image($$)
   return ('', 0);
 }
 
+sub _get_form_feeds($)
+{
+  my $form_feeds = shift;
+  $form_feeds =~ s/^[^\f]*//;
+  $form_feeds =~ s/[^\f]$//;
+  return $form_feeds;
+}
+
 sub _convert($$);
 
 sub _convert($$)
@@ -1454,8 +1484,9 @@ sub _convert($$)
     print STDERR " type: $root->{'type'}" if ($root->{'type'});
     my $text = $root->{'text'}; 
     if (defined($text)) {
-      $text =~ s/\n/\\n/;
-      print STDERR " text: $text";
+      my $text_escaped_spaces 
+          = Texinfo::Convert::Paragraph::_print_escaped_spaces($text);
+      print STDERR " text: $text_escaped_spaces";
     }
     print STDERR "\n";
    
@@ -1472,18 +1503,32 @@ sub _convert($$)
     }
   }
 
-  if (($root->{'type'} and $self->{'ignored_types'}->{$root->{'type'}}
-       and ($root->{'type'} ne 'empty_spaces_before_paragraph'
-            or $self->get_conf('paragraphindent') ne 'asis'))
+  if (($root->{'type'} and $self->{'ignored_types'}->{$root->{'type'}})
        or ($root->{'cmdname'} 
             and ($self->{'ignored_commands'}->{$root->{'cmdname'}}
-                 or ($inline_format_commands{$root->{'cmdname'}}
-                     and (!$root->{'extra'}->{'format'}
-                          or !$self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}))))) {
+                 or ($inline_commands{$root->{'cmdname'}}
+                     and $root->{'cmdname'} ne 'inlinefmtifelse'
+                     and (($inline_format_commands{$root->{'cmdname'}}
+                          and (!$root->{'extra'}->{'format'}
+                               or !$self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}))
+                         or (!$inline_format_commands{$root->{'cmdname'}}
+                             and !defined($root->{'extra'}->{'expand_index'}))))))) {
     print STDERR "IGNORED\n" if ($self->{'debug'});
     return '';
   }
   my $result = '';
+
+  # in ignorable spaces, keep only form feeds.
+  if ($root->{'type'} and $self->{'ignorable_space_types'}->{$root->{'type'}}
+      and ($root->{'type'} ne 'empty_spaces_before_paragraph'
+           or $self->get_conf('paragraphindent') ne 'asis')) {
+    if ($root->{'text'} =~ /\f/) {
+      $result = _get_form_feeds($root->{'text'});
+    }
+    $self->_add_text_count($result);
+    print STDERR "IGNORABLE SPACE: ($result)\n" if ($self->{'debug'});
+    return $result;
+  }
 
   # First handle empty lines. This has to be done before the handling
   # of text below to be sure that an empty line is always processed
@@ -1500,6 +1545,9 @@ sub _convert($$)
     if ($self->{'empty_lines_count'} <= 1
         or $self->{'preformatted_context_commands'}->{$self->{'context'}->[-1]}) {
       $result = "\n";
+      if ($root->{'text'} =~ /\f/) {
+        $result = _get_form_feeds($root->{'text'}) .$result;
+      }
       $self->_add_text_count($result);
       $self->_add_lines_count(1);
       return $result;
@@ -1565,7 +1613,7 @@ sub _convert($$)
         foreach my $following_content (@$parent_content) {
           unless (($following_content->{'type'} 
                 and ($following_content->{'type'} eq 'empty_line'
-                    or $ignored_types{$following_content->{'type'}}))
+                    or $ignorable_types{$following_content->{'type'}}))
               or ($following_content->{'cmdname'} 
                   and ($following_content->{'cmdname'} eq 'c'  
                        or $following_content->{'cmdname'} eq 'comment'))) {
@@ -1940,11 +1988,10 @@ sub _convert($$)
           $args[3] = $args[2];
           $args[2] = undef;
         }
-        my @contents;
         if ($command eq 'xref') {
-          $contents[0] = {'text' => '*Note '};
+          $result = $self->_convert({'contents' => [{'text' => '*Note '}]});
         } else {
-          $contents[0] = {'text' => '*note '};
+          $result = $self->_convert({'contents' => [{'text' => '*note '}]});
         }
         my $name;
         if (defined($args[1])) {
@@ -1965,21 +2012,51 @@ sub _convert($$)
         }
          
         if ($name) {
-          push @contents, (@$name, {'text' => ': '});
+          my $name_text = $self->_convert({'contents' => $name});
+          # needed, as last word is added only when : is added below
+          my $name_text_checked = $name_text
+             .$self->{'formatters'}->[-1]->{'container'}->get_pending();
+          if ($name_text_checked =~ /:/m 
+              and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
+            $self->line_warn(sprintf($self->__(
+               "\@%s cross-reference name should not contain `:'"), $command),
+                             $root->{'line_nr'});
+          }
+          $result .= $name_text;
+          $result .= $self->_convert({'contents' => [{'text' => ': '}]});
+
           if ($file) {
-            push @contents, @$file;
+            $result .= $self->_convert({'contents' => $file});
           }
           # node name
-          push @contents, ({'type' => '_code',
-                            'contents' => $node_content});
+          my $node_text = $self->_convert({'type' => '_code',
+                                           'contents' => $node_content});
+          my $node_text_checked = $node_text 
+             .$self->{'formatters'}->[-1]->{'container'}->get_pending();
+          if ($node_text_checked =~ /([,\t]|\.\s)/m 
+              and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
+            $self->line_warn(sprintf($self->__(
+               "\@%s node name should not contain `%s'"), $command, $1),
+                             $root->{'line_nr'});
+          }
+          $result .= $node_text;
         } else {
           if ($file) {
-            push @contents, @$file;
+            $result .= $self->_convert({'contents' => $file});
           }
-          push @contents, ({'type' => '_code',
-                            'contents' => [@{$node_content}, {'text' => '::'}]});
+          my $node_text = $self->_convert({'type' => '_code',
+                                           'contents' => $node_content});
+          my $node_text_checked = $node_text 
+             .$self->{'formatters'}->[-1]->{'container'}->get_pending();
+          if ($node_text_checked =~ /:/m
+              and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
+            $self->line_warn(sprintf($self->__(
+               "\@%s node name should not contain `:'"), $command),
+                             $root->{'line_nr'});
+          }
+          $result .= $node_text;
+          $result .= $self->_convert({'contents' => [{'text' => '::'}]});
         }
-        $result = $self->_convert({'contents' => \@contents});
         # we could use $formatter, but in case it was changed in _convert 
         # we play it safe.
         my $pending = $result 
@@ -2042,15 +2119,21 @@ sub _convert($$)
         }
       }
       return '';
-    } elsif ($inline_format_commands{$command}) {
-      if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
-         and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+    } elsif ($inline_commands{$command}) {
+      my $arg_index = 1;
+      if ($command eq 'inlinefmtifelse'
+          and (!$root->{'extra'}->{'format'} 
+               or !$self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}})) {
+        $arg_index = 2;
+      }
+      if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) > $arg_index
+         and defined($root->{'extra'}->{'brace_command_contents'}->[$arg_index])) {
         my $argument;
         if ($command eq 'inlineraw') {
           $argument->{'type'} = '_code';
         }
         $argument->{'contents'} 
-            = $root->{'extra'}->{'brace_command_contents'}->[-1];
+            = $root->{'extra'}->{'brace_command_contents'}->[$arg_index];
         unshift @{$self->{'current_contents'}->[-1]}, ($argument);
       }
       return '';
@@ -2757,10 +2840,37 @@ sub _convert($$)
       #  $menu_entry_internal_node 
       #    = $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}};
       #}
+      my $entry_name_seen = 0;
       foreach my $arg (@{$root->{'args'}}) {
         if ($arg->{'type'} eq 'menu_entry_node') {
-          $result .= $self->_convert({'type' => '_code',
+          my $node_text = $self->_convert({'type' => '_code',
                                       'contents' => $arg->{'contents'}});
+          if ($entry_name_seen) {
+            if ($node_text =~ /([,\t]|\.\s)/
+                and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
+              $self->line_warn(sprintf($self->__(
+                 "menu entry node name should not contain `%s'"), $1),
+                             $root->{'line_nr'});
+            }
+          } else {
+            if ($node_text =~ /:/
+                and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
+              $self->line_warn($self->__(
+               "menu entry node name should not contain `:'"),
+                             $root->{'line_nr'});
+            }
+          }
+          $result .= $node_text;
+        } elsif ($arg->{'type'} eq 'menu_entry_name') {
+          my $entry_name = $self->_convert($arg);
+          $entry_name_seen = 1;
+          if ($entry_name =~ /:/
+              and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
+            $self->line_warn($self->__(
+               "menu entry name should not contain `:'"),
+                             $root->{'line_nr'});
+          }
+          $result .= $entry_name;
         } else {
           $result .= $self->_convert($arg);
         }
@@ -2941,6 +3051,8 @@ sub _convert($$)
       $self->{'format_context'}->[-1]->{'row_counts'} = [];
       $self->{'format_context'}->[-1]->{'row_empty_lines_count'} 
         = $self->{'empty_lines_count'};
+    } elsif ($root->{'type'} eq 'text_root') {
+      $self->{'text_before_first_node'} = $result;
     }
   }
   # close paragraphs and preformatted
@@ -3021,6 +3133,9 @@ sub _convert($$)
       die "Not a preformatted context: $old_context"
         if (!$self->{'preformatted_context_commands'}->{$old_context}
             and $old_context ne 'float');
+      if ($old_context ne 'float' and !$menu_commands{$old_context}) {
+        $self->{'empty_lines_count'} = 0;
+      }
       delete ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}})
        unless ($default_preformatted_context_commands{$root->{'cmdname'}});
     } elsif ($flush_commands{$root->{'cmdname'}}) {

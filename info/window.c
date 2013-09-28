@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: window.c 5334 2013-08-20 19:15:05Z gray $
 
    Copyright 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008,
    2011, 2012, 2013 Free Software Foundation, Inc.
@@ -137,8 +137,8 @@ window_new_screen_size (int width, int height)
       if (!windows->next)
         {
           windows->height = 0;
-          maybe_free (windows->line_starts);
-	  maybe_free (windows->log_line_no);
+          free (windows->line_starts);
+	  free (windows->log_line_no);
           windows->line_starts = NULL;
           windows->line_count = 0;
           break;
@@ -186,7 +186,7 @@ window_new_screen_size (int width, int height)
       if ((win->width != width) && ((win->flags & W_InhibitMode) == 0))
         {
           win->width = width;
-          maybe_free (win->modeline);
+          free (win->modeline);
           win->modeline = xmalloc (1 + width);
         }
 
@@ -605,8 +605,8 @@ window_toggle_wrap (WINDOW *window)
       if (old_pagetop == window->pagetop)
         display_scroll_line_starts
           (window, old_pagetop, old_starts, old_lines);
-      maybe_free (old_starts);
-      maybe_free (old_xlat);
+      free (old_starts);
+      free (old_xlat);
     }
   window->flags |= W_UpdateWindow;
 }
@@ -862,8 +862,8 @@ calculate_line_starts (WINDOW *window)
 void
 recalculate_line_starts (WINDOW *window)
 {
-  maybe_free (window->line_starts);
-  maybe_free (window->log_line_no);
+  free (window->line_starts);
+  free (window->log_line_no);
   calculate_line_starts (window);
 }
 
@@ -1174,7 +1174,7 @@ free_echo_area (void)
 {
   if (echo_area_node)
     {
-      maybe_free (echo_area_node->contents);
+      free (echo_area_node->contents);
       free (echo_area_node);
     }
 
@@ -1219,8 +1219,8 @@ window_message_in_echo_area (const char *format, ...)
    any existing message.  A future call to unmessage_in_echo_area ()
    restores the old contents. */
 static NODE **old_echo_area_nodes = NULL;
-static int old_echo_area_nodes_index = 0;
-static int old_echo_area_nodes_slots = 0;
+static size_t old_echo_area_nodes_index = 0;
+static size_t old_echo_area_nodes_slots = 0;
 
 void
 message_in_echo_area (const char *format, ...)
@@ -1231,7 +1231,7 @@ message_in_echo_area (const char *format, ...)
     {
       add_pointer_to_array (echo_area_node, old_echo_area_nodes_index,
                             old_echo_area_nodes, old_echo_area_nodes_slots,
-                            4, NODE *);
+                            4);
     }
   echo_area_node = NULL;
   va_start (ap, format);

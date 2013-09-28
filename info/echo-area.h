@@ -1,10 +1,7 @@
 /* echo-area.h -- Functions used in reading information from the echo area.
-   $Id: echo-area.h 5191 2013-02-23 00:11:18Z karl $
+   $Id: echo-area.h 5337 2013-08-22 17:54:06Z karl $
 
-   This file is part of GNU Info, a program for reading online documentation
-   stored in Info format.
-
-   Copyright (C) 1993, 1997, 2004, 2007, 2008, 2011
+   Copyright 1993, 1997, 2004, 2007, 2008, 2011, 2013
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -20,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #ifndef INFO_ECHO_AREA_H
 #define INFO_ECHO_AREA_H

@@ -45,7 +45,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.0';
+$VERSION = '5.1.90';
 
 my $STDIN_DOCU_NAME = 'stdin';
 
@@ -76,11 +76,14 @@ sub output($)
   push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
                                      'locations' => []};
   my $header = $self->_info_header();
+  # header + text between setfilename and first node
+  my $complete_header = $header;
 
   pop @{$self->{'count_context'}};
   return undef unless $self->_create_destination_directory();
 
   my $header_bytes = $self->count_bytes($header);
+  my $complete_header_bytes = $header_bytes;
   my $elements = Texinfo::Structuring::split_by_node($root);
 
   my $fh;
@@ -120,17 +123,23 @@ sub output($)
                             $self->{'info'}->{'input_file_name'});
     }
     $out_file_nr = 1;
-    if ($fh) {
-      print $fh $header;
-    } else {
-      $result = $header;
-    }
+    my $first_node = 0;
     $self->{'count_context'}->[-1]->{'bytes'} += $header_bytes;
-    my $first_node_bytes_count = $header_bytes;
     my @nodes = @$elements;
     while (@nodes) {
       my $node = shift @nodes;
       my $node_text = $self->_convert_node($node);
+      if (!$first_node) {
+        $first_node = 1;
+        if (defined($self->{'text_before_first_node'})) {
+          $complete_header .= $self->{'text_before_first_node'};
+          $complete_header_bytes += $self->count_bytes($self->{'text_before_first_node'});
+        }
+        # for the first node, header is prepended, not complete_header
+        # as 'text_before_first_node' is already part of the node
+        # text
+        $node_text = $header . $node_text;
+      }
       if ($fh) {
         print $fh $node_text;
       } else {
@@ -168,7 +177,7 @@ sub output($)
           push @{$self->{'opened_files'}}, 
                    $self->{'output_file'}.'-'.$out_file_nr;
           push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
-                                 $first_node_bytes_count];
+                                 $complete_header_bytes];
           #print STDERR join(' --> ', @{$indirect_files[-1]}) ."\n";
         } else {
           $self->register_close_file($self->{'output_file'}.'-'.$out_file_nr);
@@ -192,8 +201,8 @@ sub output($)
                   $self->{'output_file'}.'-'.$out_file_nr, $!));
            return undef;
         }
-        print $fh $header;
-        $self->{'count_context'}->[-1]->{'bytes'} += $header_bytes;
+        print $fh $complete_header;
+        $self->{'count_context'}->[-1]->{'bytes'} += $complete_header_bytes;
         push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
                                $self->{'count_context'}->[-1]->{'bytes'}];
         #print STDERR join(' --> ', @{$indirect_files[-1]}) ."\n";
@@ -218,7 +227,7 @@ sub output($)
             $self->{'output_file'}, $!));
       return undef;
     }
-    $tag_text = $header;
+    $tag_text = $complete_header;
     $tag_text .= "\x{1F}\nIndirect:";
     foreach my $indirect (@indirect_files) {
       $tag_text .= "\n$indirect->[0]: $indirect->[1]";
@@ -370,6 +379,13 @@ sub _node($$)
   if (!$self->{'empty_lines_count'}) {
     $result .= "\n";
     $self->_add_text_count("\n");
+    # if in the first node, complete the 'text_before_first_node' too.
+    if (!$self->{'first_node_done'}) {
+      $self->{'text_before_first_node'} .= "\n";
+    }
+  }
+  if (!$self->{'first_node_done'}) {
+    $self->{'first_node_done'} = 1;
   }
 
   # May happen when only converting a fragment
@@ -385,6 +401,11 @@ sub _node($$)
   $result .= $node_begin;
   $self->_add_text_count($node_begin);
   my ($node_text, $byte_count) = $self->_node_line($node);
+  if ($node_text =~ /,/ and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
+    $self->line_warn(sprintf($self->__(
+               "\@node name should not contain `,': %s"), $node_text),
+                             $node->{'line_nr'});
+  }
   $self->{'count_context'}->[-1]->{'bytes'} += $byte_count;
   $result .= $node_text;
   foreach my $direction(@directions) {

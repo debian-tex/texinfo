@@ -59,7 +59,7 @@ xml_accents
 @EXPORT = qw(
 );
 
-$VERSION = '5.0';
+$VERSION = '5.1.90';
 
 my %defaults = (
   'ENABLE_ENCODING'      => 1,
@@ -144,6 +144,7 @@ sub _informative_command_value($$)
            and exists($root->{'extra'}->{'misc_args'}->[0])) {
     return $root->{'extra'}->{'misc_args'}->[0];
   }
+  return undef;
 }
 
 # FIXME documentencoding handling is not reverted by resetting
@@ -161,7 +162,9 @@ sub _informative_command($$)
   return if ($self->{'set'}->{$cmdname});
 
   my $value = $self->_informative_command_value($root);
-  $self->set_conf($cmdname, $value);
+  if (defined($value)) {
+    $self->set_conf($cmdname, $value);
+  }
 }
 
 sub register_close_file($$)

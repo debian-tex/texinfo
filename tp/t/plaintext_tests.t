@@ -394,7 +394,6 @@ flushright
 A quot---ation
 @end quotation
 '],
-# FIXME the result is not right, space should be doubled after @abbr{AAA}. too.
 ['punctuation_abbr_acronym',
 '@abbr{AAA}. @acronym{BBB}. @abbr{aaa}. @acronym{bbb}. Next.
 @abbr{AAA, expL}. @acronym{BBB, explA}. @abbr{aaa, expl}. 
@@ -595,6 +594,9 @@ T
 @tab in tab
 @item in item
 @end example
+'],
+['lone_braces_in_inlineraw',
+'@inlineraw{plaintext, {truc}}.
 '],
 # if this test is modified, the corresponding test in t/info_tests.t should
 # be changed too
@@ -961,6 +963,14 @@ undef, {'test_file' => 'japanese_utf8.texi'}
 ],
 ['chinese_mixed_with_en',
 undef, {'test_file' => 'chinese_mixed_with_en.texi'}
+],
+['non_break_spaces',
+undef, {'test_file' => 'non_break_spaces.texi'}
+],
+['all_spaces',
+undef, {'test_file' => 'all_spaces.texi', 
+        'todo' => {'file_plaintext' => 
+                          'NEL handled differently between perl versions'}}
 ],
 );
 

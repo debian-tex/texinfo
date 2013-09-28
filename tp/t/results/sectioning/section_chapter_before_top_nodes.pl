@@ -1052,7 +1052,7 @@ Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a>, Up: <a 
 <a name="chapter-node"></a>
 <div class="header">
 <p>
-Next: <a href="#Top" accesskey="n" rel="next">Top</a>, Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#Top" accesskey="n" rel="next">Top</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="chapter"></a>
 <h3 class="section">2 chapter</h3>

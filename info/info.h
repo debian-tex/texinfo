@@ -1,8 +1,8 @@
 /* info.h -- Header file which includes all of the other headers.
-   $Id: info.h 5191 2013-02-23 00:11:18Z karl $
+   $Id: info.h 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007, 2011
-   Free Software Foundation, Inc.
+   Copyright 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007, 2011,
+   2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #ifndef INFO_H
 #define INFO_H
@@ -63,15 +63,19 @@ typedef char *CFunction ();
    array where POINTER should be added.  GROW is the number of slots to grow
    ARRAY by, in the case that it needs growing.  TYPE is a cast of the type
    of object stored in ARRAY (e.g., NODE_ENTRY *. */
-#define add_pointer_to_array(pointer, idx, array, slots, grow, type) \
-  do { \
-    if (idx + 2 >= slots) \
-      array = (type *)(xrealloc (array, (slots += grow) * sizeof (type))); \
-    array[idx++] = (type)pointer; \
-    array[idx] = (type)NULL; \
-  } while (0)
-
-#define maybe_free(x) do { if (x) free (x); } while (0)
+#define add_pointer_to_array(pointer, idx, array, slots, minslots)	\
+  do									\
+    {									\
+       if (idx + 2 >= slots)						\
+	 {								\
+	   if (slots == 0)						\
+	     slots = minslots;						\
+	   array = x2nrealloc (array, &slots, sizeof(array[0]));	\
+	 }								\
+       array[idx++] = pointer;						\
+       array[idx] = NULL;						\
+    }									\
+  while (0)
 
 #if !defined (zero_mem) && defined (HAVE_MEMSET)
 #  define zero_mem(mem, length) memset (mem, 0, length)
@@ -129,6 +133,19 @@ extern int raw_escapes_p;
 /* Non-zero means don't try to be smart when searching for nodes.  */
 extern int strict_node_location_p;
 
+extern unsigned debug_level;
+
+#define debug(n,c)							\
+  do									\
+    {									\
+      if (debug_level >= (n))						\
+	info_debug c;							\
+    }									\
+  while (0)
+
+extern void vinfo_debug (const char *format, va_list ap);
+extern void info_debug (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
+
 /* Print args as per FORMAT.  If the window system was initialized,
    then the message is printed in the echo area.  Otherwise, a message is
    output to stderr. */
@@ -157,10 +174,8 @@ extern const char *msg_win_too_small;
 extern const char *msg_cant_make_help;
 
 
-#if defined(INFOKEY)
 /* Found in variables.c. */
-extern void set_variable_to_value (char *name, char *value);
-#endif /* INFOKEY */
+extern int set_variable_to_value (char *name, char *value);
 
 /* Found in m-x.c.  */
 extern char *read_function_name (const char *prompt, WINDOW *window);

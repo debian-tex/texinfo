@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-03-12 15:50-0700\n"
+"POT-Creation-Date: 2013-09-26 15:52-0700\n"
 "PO-Revision-Date: 2002-03-08 04:56+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Unmatched ) or \\)"
 msgstr "未配對的 }"
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "沒有前一次的搜尋字串"
@@ -159,11 +159,11 @@ msgstr "沒有前一次的搜尋字串"
 msgid "memory exhausted"
 msgstr "虛擬記憶體耗盡"
 
-#: info/echo-area.c:283 info/session.c:985
+#: info/echo-area.c:283 info/session.c:978
 msgid "Move forward a character"
 msgstr "向前移動一個字元"
 
-#: info/echo-area.c:295 info/session.c:1012
+#: info/echo-area.c:295 info/session.c:1005
 msgid "Move backward a character"
 msgstr "向後移動一個字元"
 
@@ -175,11 +175,11 @@ msgstr "移至本行開頭"
 msgid "Move to the end of this line"
 msgstr "移至本行結尾"
 
-#: info/echo-area.c:320 info/session.c:1044
+#: info/echo-area.c:320 info/session.c:1037
 msgid "Move forward a word"
 msgstr "向前移動一個字"
 
-#: info/echo-area.c:360 info/session.c:1068
+#: info/echo-area.c:360 info/session.c:1061
 msgid "Move backward a word"
 msgstr "向後移動一個字"
 
@@ -266,18 +266,33 @@ msgid_plural "%d completions:\n"
 msgstr[0] "%d 個完成句:\n"
 msgstr[1] "%d 個完成句:\n"
 
-#: info/echo-area.c:1089
+#: info/echo-area.c:1091
 msgid "Insert completion"
 msgstr "插入完成句"
 
-#: info/echo-area.c:1224
+#: info/echo-area.c:1228
 #, c-format
 msgid "Building completions..."
 msgstr "建立完成句中..."
 
-#: info/echo-area.c:1343
+#: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "捲動完成句分隔視窗"
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "無法建立輸出檔案 `%s'."
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "無法建立輸出檔案 `%s'."
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "無法建立輸出檔案 `%s'."
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"
@@ -292,82 +307,82 @@ msgstr "將本節點的註腳顯示在另一個分隔視窗內"
 msgid "---------- Footnotes ----------"
 msgstr "---------------------\n"
 
-#: info/indices.c:175
+#: info/indices.c:174
 msgid "Look up a string in the index for this file"
 msgstr "在本檔案的索引內查詢字串"
 
-#: info/indices.c:203 info/indices.c:893
+#: info/indices.c:202 info/indices.c:885
 #, c-format
 msgid "Finding index entries..."
 msgstr "找尋索引項目..."
 
-#: info/indices.c:210
+#: info/indices.c:209
 #, c-format
 msgid "No indices found."
 msgstr "找不到索引"
 
-#: info/indices.c:220
+#: info/indices.c:219
 msgid "Index entry: "
 msgstr "索引項目: "
 
-#: info/indices.c:254 info/indices.c:915 info/session.c:4133
+#: info/indices.c:253 info/indices.c:907 info/session.c:4204
 #, c-format
 msgid "Search string too short"
 msgstr ""
 
-#: info/indices.c:366
+#: info/indices.c:365
 msgid ""
 "Go to the next matching index item from the last `\\[index-search]' command"
 msgstr "移動至下一個符合上一次的 `\\[index-search] 命令的搜尋項目"
 
-#: info/indices.c:377
+#: info/indices.c:376
 #, c-format
 msgid "No previous index search string."
 msgstr "沒有前一個索引搜尋字串"
 
-#: info/indices.c:384
+#: info/indices.c:383
 #, c-format
 msgid "No index entries."
 msgstr "沒有索引項目."
 
-#: info/indices.c:432
+#: info/indices.c:431
 #, fuzzy, c-format
 msgid "No more index entries containing `%s'."
 msgstr "沒有 %s索引項目包含 \"%s\"."
 
-#: info/indices.c:433 info/indices.c:951
+#: info/indices.c:432 info/indices.c:942
 #, fuzzy, c-format
 msgid "No index entries containing `%s'."
 msgstr "沒有 %s索引項目包含 \"%s\"."
 
-#: info/indices.c:445
+#: info/indices.c:444
 msgid "CAN'T SEE THIS"
 msgstr ""
 
-#: info/indices.c:481
+#: info/indices.c:480
 #, fuzzy, c-format
 msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
 msgstr "找到 \"%s\" 在 %s 之中. (`\\[next-index-match]' 嘗試要找到下一個字串.)"
 
-#: info/indices.c:612
+#: info/indices.c:611
 #, fuzzy, c-format
 msgid "Scanning indices of `%s'..."
 msgstr "掃瞄 \"%s\" 的索引中..."
 
-#: info/indices.c:666
+#: info/indices.c:659
 #, c-format
 msgid "No available info files have `%s' in their indices."
 msgstr ""
 
-#: info/indices.c:692
+#: info/indices.c:685
 msgid "Grovel all known info file's indices for a string and build a menu"
 msgstr "整理所有已知 info 檔中包含查詢字串的索引, 並建立一個選單"
 
-#: info/indices.c:696
+#: info/indices.c:689
 msgid "Index apropos: "
 msgstr ""
 
-#: info/indices.c:724
+#: info/indices.c:717
 #, fuzzy, c-format
 msgid ""
 "\n"
@@ -376,32 +391,71 @@ msgstr ""
 "\n"
 "* Menu: 其索引中包含 \"%s\" 的節點:\n"
 
-#: info/indices.c:876
+#: info/indices.c:869
 msgid "List all matches of a string in the index"
 msgstr ""
 
-#: info/indices.c:899
+#: info/indices.c:891
 #, fuzzy, c-format
 msgid "No index"
 msgstr "沒有索引項目."
 
-#: info/indices.c:903
+#: info/indices.c:895
 #, fuzzy
 msgid "Index topic: "
 msgstr "索引項目: "
 
-#: info/indices.c:922
+#: info/indices.c:913
 #, c-format
 msgid "Index for `%s'"
 msgstr ""
 
-#: info/info.c:280 info/infokey.c:892
+#: info/indices.c:966
+#, fuzzy, c-format
+msgid "File names matching `%s'"
+msgstr "No matching `%cend %s'"
+
+#: info/indices.c:996
+msgid "Show all matching files"
+msgstr ""
+
+#: info/indices.c:1000
+#, fuzzy, c-format
+msgid "No file index"
+msgstr "沒有索引項目."
+
+#: info/info.c:316
+#, c-format
+msgid "no index entries found for `%s'\n"
+msgstr "找不到包含 `%s' 的索引項目\n"
+
+#: info/info.c:490
+#, c-format
+msgid "invalid number: %s\n"
+msgstr ""
+
+#: info/info.c:641
+#, c-format
+msgid "malformed variable assignment: %s"
+msgstr ""
+
+#: info/info.c:650 info/infomap.c:1218
+#, fuzzy, c-format
+msgid "%s: no such variable"
+msgstr "未知的命令 `%s'"
+
+#: info/info.c:654 info/infomap.c:1222
+#, fuzzy, c-format
+msgid "value %s is not valid for variable %s"
+msgstr "設定 Info 變數的數值"
+
+#: info/info.c:671 info/infokey.c:892
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "試試 --help 以取得更多的資訊.\n"
 
-#: info/info.c:299 info/infokey.c:144 install-info/install-info.c:2163
-#: tp/texi2any.pl:856 util/texindex.c:295
+#: info/info.c:693 info/infokey.c:144 install-info/install-info.c:2163
+#: tp/texi2any.pl:861 util/texindex.c:295
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -411,12 +465,17 @@ msgid ""
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 
-#: info/info.c:513
-#, c-format
-msgid "no index entries found for `%s'\n"
-msgstr "找不到包含 `%s' 的索引項目\n"
+#: info/info.c:785
+#, fuzzy, c-format
+msgid "can't open %s: %s"
+msgstr "無法建立輸出檔案 `%s'."
 
-#: info/info.c:626
+#: info/info.c:791
+#, c-format
+msgid "debugging output diverted to \"%s\""
+msgstr ""
+
+#: info/info.c:877
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -424,47 +483,50 @@ msgid ""
 "Read documentation in Info format.\n"
 msgstr ""
 
-#: info/info.c:632
+#: info/info.c:883
 msgid ""
 "Options:\n"
+"  -a, --all                    use all matching manuals.\n"
 "  -k, --apropos=STRING         look up STRING in all indices of all "
 "manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
-"      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
-"  -f, --file=FILENAME          specify Info file to visit."
+"      --dribble=FILE           remember user keystrokes in FILENAME.\n"
+"  -f, --file=MANUAL            specify Info manual to visit."
 msgstr ""
 
-#: info/info.c:639
+#: info/info.c:891
 msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
 "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
-"  -o, --output=FILENAME        output selected nodes to FILENAME."
+"  -o, --output=FILE            output selected nodes to FILE."
 msgstr ""
 
-#: info/info.c:645
+#: info/info.c:897
 msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
-"      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
+"      --restore=FILE           read initial keystrokes from FILE.\n"
 "  -O, --show-options, --usage  go to command-line options node."
 msgstr ""
 
-#: info/info.c:652
+#: info/info.c:904
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
 msgstr ""
 
-#: info/info.c:656
+#: info/info.c:908
 msgid ""
 "      --strict-node-location   (for debugging) use Info file pointers as-"
 "is.\n"
 "      --subnodes               recursively output menu items.\n"
+"  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
 "      --version                display version information and exit.\n"
-"  -w, --where, --location      print physical location of Info file."
+"  -w, --where, --location      print physical location of Info file.\n"
+"  -x, --debug=NUMBER           set debugging level (-1 for all).\n"
 msgstr ""
 
-#: info/info.c:663
+#: info/info.c:917
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -474,13 +536,13 @@ msgid ""
 "items relative to the initial node visited."
 msgstr ""
 
-#: info/info.c:670
+#: info/info.c:924
 msgid ""
 "\n"
 "For a summary of key bindings, type h within Info."
 msgstr ""
 
-#: info/info.c:673
+#: info/info.c:927
 msgid ""
 "\n"
 "Examples:\n"
@@ -494,7 +556,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:684 info/infokey.c:911 util/texindex.c:259
+#: info/info.c:938 info/infokey.c:911 util/texindex.c:259
 #, fuzzy
 msgid ""
 "\n"
@@ -506,361 +568,361 @@ msgstr ""
 "程式臭蟲, 請以電子郵件 (英文) 回報至 bug-texinfo@gnu.org,\n"
 "一般問題與討論, 請以電子郵件 (英文) 寄到 help-texinfo@gnu.org.\n"
 
-#: info/info.c:718
+#: info/info.c:972
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "找不到 `%s' 節點."
 
-#: info/info.c:719
+#: info/info.c:973
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "找不到 `(%s)%s' 節點."
 
-#: info/info.c:720
+#: info/info.c:974
 msgid "Cannot find a window!"
 msgstr "找不到分隔視窗!"
 
-#: info/info.c:721
+#: info/info.c:975
 msgid "Point doesn't appear within this window's node!"
 msgstr "游標位置不在本分隔視窗的節點內!"
 
-#: info/info.c:722
+#: info/info.c:976
 msgid "Cannot delete the last window."
 msgstr "無法刪除上一個分隔視窗."
 
-#: info/info.c:723
+#: info/info.c:977
 msgid "No menu in this node."
 msgstr "本節點沒有選單."
 
-#: info/info.c:724
+#: info/info.c:978
 msgid "No footnotes in this node."
 msgstr "本節點沒有註腳."
 
-#: info/info.c:725
+#: info/info.c:979
 msgid "No cross references in this node."
 msgstr "本節點沒有交互參照."
 
-#: info/info.c:726
+#: info/info.c:980
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "本節點沒有 `%s' pointer."
 
-#: info/info.c:727
+#: info/info.c:981
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "未知的 Info 命令 `%c'; 試試 `?' 以取得求助資訊."
 
-#: info/info.c:728
+#: info/info.c:982
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "終端機類型 `%s' 無法支援執行 Info 所需的需求."
 
-#: info/info.c:729
+#: info/info.c:983
 msgid "You are already at the last page of this node."
 msgstr "您已在本節點的最後一頁."
 
-#: info/info.c:730
+#: info/info.c:984
 msgid "You are already at the first page of this node."
 msgstr "您已在本節點的第一頁."
 
-#: info/info.c:731
+#: info/info.c:985
 msgid "Only one window."
 msgstr "只有一個分隔視窗."
 
-#: info/info.c:732
+#: info/info.c:986
 msgid "Resulting window would be too small."
 msgstr "產生的分隔視窗會太小."
 
-#: info/info.c:733
+#: info/info.c:987
 msgid "Not enough room for a help window, please delete a window."
 msgstr "剩下的空間太小, 無法容納求助分隔視窗, 請刪除一個分隔視窗."
 
-#: info/infodoc.c:46
+#: info/infodoc.c:45
 msgid "Basic Info command keys\n"
 msgstr ""
 
-#: info/infodoc.c:48
+#: info/infodoc.c:47
 #, fuzzy
 msgid "\\%-10[quit-help]  Close this help window.\n"
 msgstr "  %-10s  結束本求助.\n"
 
-#: info/infodoc.c:49
+#: info/infodoc.c:48
 #, fuzzy
 msgid "\\%-10[quit]  Quit Info altogether.\n"
 msgstr "  %-10s  一併結束 Info 程式.\n"
 
-#: info/infodoc.c:50
+#: info/infodoc.c:49
 #, fuzzy
 msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
 msgstr "  %-10s  執行 Info 指導課程.\n"
 
-#: info/infodoc.c:52
+#: info/infodoc.c:51
 #, fuzzy
 msgid "\\%-10[prev-line]  Move up one line.\n"
 msgstr "  %-10s  往後捲動一行.\n"
 
-#: info/infodoc.c:53
+#: info/infodoc.c:52
 #, fuzzy
 msgid "\\%-10[next-line]  Move down one line.\n"
 msgstr "  %-10s  往前捲動一行.\n"
 
-#: info/infodoc.c:54
+#: info/infodoc.c:53
 #, fuzzy
 msgid "\\%-10[scroll-backward]  Scroll backward one screenful.\n"
 msgstr "  %-10s  向後捲動一頁.\n"
 
-#: info/infodoc.c:55
+#: info/infodoc.c:54
 #, fuzzy
 msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
 msgstr "  %-10s  向前捲動一頁.\n"
 
-#: info/infodoc.c:56
+#: info/infodoc.c:55
 #, fuzzy
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
 msgstr "  %-10s  移至本節點的開頭.\n"
 
-#: info/infodoc.c:57
+#: info/infodoc.c:56
 #, fuzzy
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "  %-10s  移至本節點的結尾.\n"
 
-#: info/infodoc.c:59
+#: info/infodoc.c:58
 #, fuzzy
 msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
 msgstr "  %-10s  跳到本節點中的下一個超本文連結.\n"
 
-#: info/infodoc.c:60
+#: info/infodoc.c:59
 #, fuzzy
 msgid ""
 "\\%-10[select-reference-this-line]  Follow the hypertext link under the "
 "cursor.\n"
 msgstr "  %-10s  跟隨游標下的超本文連結.\n"
 
-#: info/infodoc.c:61
+#: info/infodoc.c:60
 #, fuzzy
 msgid "\\%-10[history-node]  Go back to the last node seen in this window.\n"
 msgstr "  %-10s  移動至本分隔視窗中, 上一個觀看的節點.\n"
 
-#: info/infodoc.c:63
+#: info/infodoc.c:62
 #, fuzzy
 msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
 msgstr "  %-10s  移至本節點的 '上一個 (previous)' 節點.\n"
 
-#: info/infodoc.c:64
+#: info/infodoc.c:63
 #, fuzzy
 msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
 msgstr "  %-10s  移至本節點的 '下一個 (next)' 節點.\n"
 
-#: info/infodoc.c:65
+#: info/infodoc.c:64
 #, fuzzy
 msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
 msgstr "  %-10s  移至本節點的 '上一個 (previous)' 節點.\n"
 
-#: info/infodoc.c:66
+#: info/infodoc.c:65
 #, fuzzy
 msgid "\\%-10[next-node]  Go to the next node on this level.\n"
 msgstr "  %-10s  移至本節點的 '下一個 (next)' 節點.\n"
 
-#: info/infodoc.c:67
+#: info/infodoc.c:66
 #, fuzzy
 msgid "\\%-10[up-node]  Go up one level.\n"
 msgstr "  %-10s  移至本節點的 '上一層 (up)' 節點.\n"
 
-#: info/infodoc.c:68
+#: info/infodoc.c:67
 #, fuzzy
 msgid "\\%-10[top-node]  Go to the top node of this document.\n"
 msgstr "  %-10s  移至本節點的結尾.\n"
 
-#: info/infodoc.c:69
+#: info/infodoc.c:68
 #, fuzzy
 msgid "\\%-10[dir-node]  Go to the main `directory' node.\n"
 msgstr "  %-10s  移至本節點的結尾.\n"
 
-#: info/infodoc.c:71
+#: info/infodoc.c:70
 #, fuzzy
 msgid "1...9       Pick the first...ninth item in this node's menu.\n"
 msgstr "  %-10s  挑選節點目錄中的第一個...第九個項目.\n"
 
-#: info/infodoc.c:72
+#: info/infodoc.c:71
 #, fuzzy
 msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
 msgstr "  %-10s  挑選節點目錄的最後一個項目.\n"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:72
 #, fuzzy
 msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
 msgstr "  %-10s  以名稱選取選單項目.\n"
 
-#: info/infodoc.c:74
+#: info/infodoc.c:73
 #, fuzzy
 msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
 msgstr "  %-10s  跟隨交互參照.  讀取參照的名稱.\n"
 
-#: info/infodoc.c:75
+#: info/infodoc.c:74
 #, fuzzy
 msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
 msgstr "  %-10s  移動到指定名稱的節點.\n"
 
-#: info/infodoc.c:77
+#: info/infodoc.c:76
 #, fuzzy
 msgid "\\%-10[search]  Search forward for a specified string.\n"
 msgstr "  %-10s  在本 Info 檔中, 向前搜尋一個指定的字串,\n"
 
-#: info/infodoc.c:78
+#: info/infodoc.c:77
 #, fuzzy
 msgid "\\%-10[search-previous]  Search for previous occurrence.\n"
 msgstr "  %-10s  移至本節點的 '上一個 (previous)' 節點.\n"
 
-#: info/infodoc.c:79
+#: info/infodoc.c:78
 #, fuzzy
 msgid "\\%-10[search-next]  Search for next occurrence.\n"
 msgstr "  %-10s  在本 Info 檔的索引項目中, 搜尋一個指定的字串,\n"
 
-#: info/infodoc.c:80
+#: info/infodoc.c:79
 #, fuzzy
 msgid ""
 "\\%-10[index-search]  Search for a specified string in the index, and\n"
 "              select the node referenced by the first entry found.\n"
 msgstr "              並且選擇第一個搜尋到的項目所參照的節點.\n"
 
-#: info/infodoc.c:82
+#: info/infodoc.c:81
 msgid "\\%-10[virtual-index]  Synthesize menu of matching index entries.\n"
 msgstr ""
 
-#: info/infodoc.c:84
+#: info/infodoc.c:83
 #, fuzzy
 msgid "\\%-10[abort-key]  Cancel the current operation.\n"
 msgstr "取消目前的作業"
 
-#: info/infodoc.c:92
+#: info/infodoc.c:91
 #, fuzzy
 msgid ""
 "Basic Commands in Info Windows\n"
 "******************************\n"
 msgstr "******************************\n"
 
-#: info/infodoc.c:95
+#: info/infodoc.c:94
 #, c-format
 msgid "  %-10s  Quit this help.\n"
 msgstr "  %-10s  結束本求助.\n"
 
-#: info/infodoc.c:96
+#: info/infodoc.c:95
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
 msgstr "  %-10s  一併結束 Info 程式.\n"
 
-#: info/infodoc.c:97
+#: info/infodoc.c:96
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
 msgstr "  %-10s  執行 Info 指導課程.\n"
 
-#: info/infodoc.c:101
+#: info/infodoc.c:100
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
 msgstr "  %-10s  移至本節點的 '下一個 (next)' 節點.\n"
 
-#: info/infodoc.c:102
+#: info/infodoc.c:101
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
 msgstr "  %-10s  移至本節點的 '上一個 (previous)' 節點.\n"
 
-#: info/infodoc.c:103
+#: info/infodoc.c:102
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
 msgstr "  %-10s  移至本節點的 '上一層 (up)' 節點.\n"
 
-#: info/infodoc.c:104
+#: info/infodoc.c:103
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Pick menu item specified by name.\n"
 "              Picking a menu item causes another node to be selected.\n"
 msgstr "              選取選單項目以選擇另一個節點.\n"
 
-#: info/infodoc.c:106
+#: info/infodoc.c:105
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  跟隨交互參照.  讀取參照的名稱.\n"
 
-#: info/infodoc.c:107
+#: info/infodoc.c:106
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
 msgstr "  %-10s  移動至本分隔視窗中, 上一個觀看的節點.\n"
 
-#: info/infodoc.c:108
+#: info/infodoc.c:107
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
 msgstr "  %-10s  跳到本節點中的下一個超本文連結.\n"
 
-#: info/infodoc.c:109
+#: info/infodoc.c:108
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  跟隨游標下的超本文連結.\n"
 
-#: info/infodoc.c:110
+#: info/infodoc.c:109
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
 msgstr "  %-10s  移至 `directory' 節點.  同 `g (DIR)'.\n"
 
-#: info/infodoc.c:111
+#: info/infodoc.c:110
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
 msgstr "  %-10s  移至 Top 節點.  同 `g TOP'.\n"
 
-#: info/infodoc.c:113
+#: info/infodoc.c:112
 #, fuzzy
 msgid ""
 "Moving within a node:\n"
 "---------------------\n"
 msgstr "---------------------\n"
 
-#: info/infodoc.c:115
+#: info/infodoc.c:114
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
 msgstr "  %-10s  向前捲動一頁.\n"
 
-#: info/infodoc.c:116
+#: info/infodoc.c:115
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
 msgstr "  %-10s  向後捲動一頁.\n"
 
-#: info/infodoc.c:117
+#: info/infodoc.c:116
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
 msgstr "  %-10s  移至本節點的開頭.\n"
 
-#: info/infodoc.c:118
+#: info/infodoc.c:117
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
 msgstr "  %-10s  移至本節點的結尾.\n"
 
-#: info/infodoc.c:119
+#: info/infodoc.c:118
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
 msgstr "  %-10s  往前捲動一行.\n"
 
-#: info/infodoc.c:120
+#: info/infodoc.c:119
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
 msgstr "  %-10s  往後捲動一行.\n"
 
-#: info/infodoc.c:122
+#: info/infodoc.c:121
 #, fuzzy
 msgid ""
 "Other commands:\n"
 "---------------\n"
 msgstr "---------------\n"
 
-#: info/infodoc.c:124
+#: info/infodoc.c:123
 #, fuzzy, c-format
 msgid "  %-10s  Pick first...ninth item in node's menu.\n"
 msgstr "  %-10s  挑選節點目錄中的第一個...第九個項目.\n"
 
-#: info/infodoc.c:125
+#: info/infodoc.c:124
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  挑選節點目錄的最後一個項目.\n"
 
-#: info/infodoc.c:128
+#: info/infodoc.c:127
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
@@ -868,33 +930,33 @@ msgid ""
 "found.\n"
 msgstr "              並且選擇第一個搜尋到的項目所參照的節點.\n"
 
-#: info/infodoc.c:130
+#: info/infodoc.c:129
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Move to node specified by name.\n"
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr "              您也可以包含檔名, 如: (檔名)節點名.\n"
 
-#: info/infodoc.c:132
+#: info/infodoc.c:131
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search forward for a specified string,\n"
 "              and select the node in which the next occurrence is found.\n"
 msgstr "              並且選擇下一個搜尋到的字串所在的節點.\n"
 
-#: info/infodoc.c:134
+#: info/infodoc.c:133
 #, fuzzy, c-format
 msgid ""
 "  %-10s  Search backward for a specified string,\n"
 "              and select the node in which the next occurrence is found.\n"
 msgstr "              並且選擇下一個搜尋到的字串所在的節點.\n"
 
-#: info/infodoc.c:312
+#: info/infodoc.c:311
 #, c-format
 msgid "The current search path is:\n"
 msgstr "目前的搜尋路徑為:\n"
 
-#: info/infodoc.c:315
+#: info/infodoc.c:314
 #, c-format
 msgid ""
 "Commands available in Info windows:\n"
@@ -903,7 +965,7 @@ msgstr ""
 "在 Info 分隔視窗中可用的指令:\n"
 "\n"
 
-#: info/infodoc.c:318
+#: info/infodoc.c:317
 #, c-format
 msgid ""
 "Commands available in the echo area:\n"
@@ -912,7 +974,7 @@ msgstr ""
 "回應區中可用的指令:\n"
 "\n"
 
-#: info/infodoc.c:339
+#: info/infodoc.c:338
 #, fuzzy, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -921,7 +983,7 @@ msgstr ""
 "以下的指令, 只可經由 M-x 執行:\n"
 "\n"
 
-#: info/infodoc.c:343
+#: info/infodoc.c:342
 #, fuzzy, c-format
 msgid ""
 "The following commands cannot be invoked at all:\n"
@@ -930,67 +992,67 @@ msgstr ""
 "以下的指令, 只可經由 M-x 執行:\n"
 "\n"
 
-#: info/infodoc.c:469
+#: info/infodoc.c:468
 msgid "Display help message"
 msgstr "顯示求助訊息"
 
-#: info/infodoc.c:487
+#: info/infodoc.c:486
 msgid "Visit Info node `(info)Help'"
 msgstr "拜訪 Info 節點 `(info)Help'"
 
-#: info/infodoc.c:613
+#: info/infodoc.c:612
 msgid "Print documentation for KEY"
 msgstr "列出 KEY 的文件"
 
-#: info/infodoc.c:625
+#: info/infodoc.c:624
 #, c-format
 msgid "Describe key: %s"
 msgstr "描述按鍵指令: %s"
 
-#: info/infodoc.c:635
+#: info/infodoc.c:634
 #, c-format
 msgid "ESC %s is undefined."
 msgstr "ESC %s 未定義."
 
-#: info/infodoc.c:651 info/infodoc.c:679
+#: info/infodoc.c:650 info/infodoc.c:678
 #, c-format
 msgid "%s is undefined."
 msgstr "%s 未定義."
 
-#: info/infodoc.c:700
+#: info/infodoc.c:699
 #, c-format
 msgid "%s is defined to %s."
 msgstr "%s 定義成 %s."
 
-#: info/infodoc.c:1124
+#: info/infodoc.c:1123
 msgid "Show what to type to execute a given command"
 msgstr "顯示執行某命令所需鍵入的按鍵"
 
-#: info/infodoc.c:1128
+#: info/infodoc.c:1127
 msgid "Where is command: "
 msgstr ""
 
-#: info/infodoc.c:1150
+#: info/infodoc.c:1149
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "`%s' 未鏈結到任何按鍵"
 
-#: info/infodoc.c:1156
+#: info/infodoc.c:1155
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s 只能經由 %s 執行."
 
-#: info/infodoc.c:1160
+#: info/infodoc.c:1159
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s 可經由 %s 執行."
 
-#: info/infodoc.c:1165
+#: info/infodoc.c:1164
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "沒有名為 `%s' 的函式"
 
-#: info/infodoc.c:99
+#: info/infodoc.c:98
 #, fuzzy
 msgid ""
 "Selecting other nodes:\n"
@@ -1106,91 +1168,91 @@ msgid ""
 "  --version            display version information and exit.\n"
 msgstr ""
 
-#: info/infomap.c:956
+#: info/infomap.c:959
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr ""
 
-#: info/infomap.c:959
+#: info/infomap.c:962
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr ""
 
-#: info/infomap.c:972
+#: info/infomap.c:975
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr ""
 
-#: info/infomap.c:991
+#: info/infomap.c:993
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
 msgstr ""
 
-#: info/infomap.c:1000
+#: info/infomap.c:1001
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr ""
 
-#: info/infomap.c:1016
+#: info/infomap.c:1017
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
 msgstr ""
 
-#: info/infomap.c:1037
+#: info/infomap.c:1041
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
 msgstr ""
 
-#: info/infomap.c:1172
+#: info/infomap.c:1171
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr ""
 
-#: info/infomap.c:1221
+#: info/infomap.c:1236
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr ""
 
-#: info/m-x.c:68
+#: info/m-x.c:67
 msgid "Read the name of an Info command and describe it"
 msgstr "讀取 Info 命令的名稱, 並且描述它"
 
-#: info/m-x.c:72
+#: info/m-x.c:71
 msgid "Describe command: "
 msgstr "描述命令: "
 
-#: info/m-x.c:95
+#: info/m-x.c:94
 msgid "Read a command name in the echo area and execute it"
 msgstr "在回應區中讀取命令名稱, 並且執行它"
 
-#: info/m-x.c:139
+#: info/m-x.c:138
 #, c-format
 msgid "Cannot execute an `echo-area' command here."
 msgstr "無法在這裡執行 `echo-area' 命令."
 
-#: info/m-x.c:152
+#: info/m-x.c:151
 #, fuzzy, c-format
 msgid "Undefined command: %s"
 msgstr "未知的命令 `%s'"
 
-#: info/m-x.c:158
+#: info/m-x.c:157
 msgid "Set the height of the displayed window"
 msgstr "設定顯示視窗的高度"
 
-#: info/m-x.c:171
+#: info/m-x.c:170
 #, c-format
 msgid "Set screen height to (%d): "
 msgstr "設定螢幕高度為 (%d): "
 
-#: info/makedoc.c:166 info/makedoc.c:174
+#: info/makedoc.c:167 info/makedoc.c:175
 #, c-format
 msgid ""
 "   Source files groveled to make this file include:\n"
 "\n"
 msgstr ""
 
-#: info/makedoc.c:556
+#: info/makedoc.c:557
 #, c-format
 msgid "Couldn't manipulate the file %s.\n"
 msgstr "無法處理檔案 %s.\n"
@@ -1207,7 +1269,7 @@ msgstr ""
 "  (檔案)節點                        行 數   大小    包  含  檔  案\n"
 "  ----------                        -----   ----   ---------------"
 
-#: info/nodemenu.c:201
+#: info/nodemenu.c:200
 msgid ""
 "Here is the menu of nodes you have recently visited.\n"
 "Select one from this menu, or use `\\[history-node]' in another window.\n"
@@ -1215,19 +1277,19 @@ msgstr ""
 "這是您最近拜訪過的節點選單.\n"
 "自本選單選取一項, 或是在另一個分隔視窗使用 `\\[history-node]' 命令.\n"
 
-#: info/nodemenu.c:221
+#: info/nodemenu.c:220
 msgid "Make a window containing a menu of all of the currently visited nodes"
 msgstr "產生一個分隔視窗, 包含所有最近拜訪過的節點選單"
 
-#: info/nodemenu.c:301
+#: info/nodemenu.c:300
 msgid "Select a node which has been previously visited in a visible window"
 msgstr "選取之前在可見分隔視窗拜訪過的節點"
 
-#: info/nodemenu.c:314
+#: info/nodemenu.c:313
 msgid "Select visited node: "
 msgstr "選取拜訪過的節點: "
 
-#: info/nodemenu.c:334 info/session.c:2598
+#: info/nodemenu.c:333 info/session.c:2617
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "交互參照不見了! (%s)."
@@ -1251,512 +1313,537 @@ msgstr ""
 "歡迎使用 Info 版本 %s. 鍵入 \\[get-help-window] 以取得求助資訊, \\[menu-"
 "item] 以取得選單項目."
 
-#: info/session.c:628
+#: info/session.c:621
 msgid "Move down to the next line"
 msgstr "移至下一行"
 
-#: info/session.c:680
+#: info/session.c:673
 msgid "Move up to the previous line"
 msgstr "移至上一行"
 
-#: info/session.c:950
+#: info/session.c:943
 msgid "Move to the end of the line"
 msgstr "移至本行結尾"
 
-#: info/session.c:961
+#: info/session.c:954
 msgid "Move to the start of the line"
 msgstr "移至本行開頭"
 
-#: info/session.c:1161
+#: info/session.c:1156
 msgid "Next"
 msgstr "下一個"
 
-#: info/session.c:1177 info/session.c:1301
+#: info/session.c:1172 info/session.c:1296
 msgid "No more nodes within this document."
 msgstr "本文件中沒有更多的節點了."
 
-#: info/session.c:1326
+#: info/session.c:1321
 msgid "No `Prev' for this node."
 msgstr "本節點沒有 `上一個 (Prev)' 節點."
 
-#: info/session.c:1346
+#: info/session.c:1341
 msgid "No `Prev' or `Up' for this node within this document."
 msgstr "在本文件中, 本節點沒有 `上一個 (Prev)' 節點或 `上一層 (Up)' 節點."
 
-#: info/session.c:1407
+#: info/session.c:1402
 msgid "Move forwards or down through node structure"
 msgstr "在節點結構中, 往前或往下移動"
 
-#: info/session.c:1423
+#: info/session.c:1418
 msgid "Move backwards or up through node structure"
 msgstr "在節點結構中, 往後或往下移動"
 
-#: info/session.c:1524
+#: info/session.c:1519
 msgid "Scroll forward in this window"
 msgstr "在本分隔視窗中向前捲動"
 
-#: info/session.c:1532
+#: info/session.c:1527
 msgid "Scroll forward in this window and set default window size"
 msgstr "在本分隔視窗中向前捲動, 並且設定成預設的分隔視窗尺寸"
 
-#: info/session.c:1540
+#: info/session.c:1535
 #, fuzzy
 msgid "Scroll forward in this window staying within node"
 msgstr "在本分隔視窗中向前捲動"
 
-#: info/session.c:1548
+#: info/session.c:1543
 #, fuzzy
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr "在本分隔視窗中向前捲動, 並且設定成預設的分隔視窗尺寸"
 
-#: info/session.c:1556
+#: info/session.c:1551
 msgid "Scroll backward in this window"
 msgstr "在本分隔視窗中向後捲動"
 
-#: info/session.c:1564
+#: info/session.c:1559
 msgid "Scroll backward in this window and set default window size"
 msgstr "在本分隔視窗中向後捲動, 並且設定成預設的分隔視窗尺寸"
 
-#: info/session.c:1573
+#: info/session.c:1568
 #, fuzzy
 msgid "Scroll backward in this window staying within node"
 msgstr "在本分隔視窗中向後捲動"
 
-#: info/session.c:1581
+#: info/session.c:1576
 #, fuzzy
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
 msgstr "在本分隔視窗中向後捲動, 並且設定成預設的分隔視窗尺寸"
 
-#: info/session.c:1589
+#: info/session.c:1584
 msgid "Move to the start of this node"
 msgstr "移至本節點的起點"
 
-#: info/session.c:1596
+#: info/session.c:1591
 msgid "Move to the end of this node"
 msgstr "移至本節點的結尾"
 
-#: info/session.c:1603
+#: info/session.c:1598
 msgid "Scroll down by lines"
 msgstr "一行行向下捲動"
 
-#: info/session.c:1620
+#: info/session.c:1615
 msgid "Scroll up by lines"
 msgstr "一行行向上捲動"
 
-#: info/session.c:1638
+#: info/session.c:1633
 msgid "Scroll down by half screen size"
 msgstr "向下捲動半個螢幕的大小"
 
-#: info/session.c:1664
+#: info/session.c:1659
 msgid "Scroll up by half screen size"
 msgstr "向上捲動半個螢幕的大小"
 
-#: info/session.c:1693
+#: info/session.c:1688
 msgid "Select the next window"
 msgstr "選擇下一個分隔視窗"
 
-#: info/session.c:1732
+#: info/session.c:1727
 msgid "Select the previous window"
 msgstr "選擇前一個分隔視窗"
 
-#: info/session.c:1783
+#: info/session.c:1778
 msgid "Split the current window"
 msgstr "分隔目前的分隔視窗"
 
-#: info/session.c:1865
+#: info/session.c:1862
 msgid "Delete the current window"
 msgstr "刪除目前的分隔視窗"
 
-#: info/session.c:1873
+#: info/session.c:1870
 msgid "Cannot delete a permanent window"
 msgstr "無法刪除固定的分隔視窗"
 
-#: info/session.c:1905
+#: info/session.c:1902
 msgid "Delete all other windows"
 msgstr "刪除所有其它的分隔視窗"
 
-#: info/session.c:1951
+#: info/session.c:1948
 msgid "Scroll the other window"
 msgstr "捲動另一個分隔視窗"
 
-#: info/session.c:1972
+#: info/session.c:1969
 msgid "Scroll the other window backward"
 msgstr "向後捲動另一個分隔視窗"
 
-#: info/session.c:1978
+#: info/session.c:1975
 msgid "Grow (or shrink) this window"
 msgstr "擴大 (或縮小) 這個分隔視窗"
 
-#: info/session.c:1989
+#: info/session.c:1986
 msgid "Divide the available screen space among the visible windows"
 msgstr "在可用的螢幕空間中, 平均分割所有的可見分隔視窗"
 
-#: info/session.c:1996
+#: info/session.c:1993
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "切換目前分隔視窗的自動換行狀態"
 
-#: info/session.c:2003
+#: info/session.c:2000
 msgid "Toggle the usage of regular expressions in searches"
 msgstr ""
 
-#: info/session.c:2007
+#: info/session.c:2004
 #, c-format
 msgid "Using regular expressions for searches."
 msgstr ""
 
-#: info/session.c:2008
+#: info/session.c:2005
 #, c-format
 msgid "Using literal strings for searches."
 msgstr ""
 
-#: info/session.c:2178
+#: info/session.c:2197
 msgid "Select the Next node"
 msgstr "選取 下一個 節點"
 
-#: info/session.c:2186
+#: info/session.c:2205
 msgid "Select the Prev node"
 msgstr "選取 前一個 節點"
 
-#: info/session.c:2194
+#: info/session.c:2213
 msgid "Select the Up node"
 msgstr "選取 上一層 節點"
 
-#: info/session.c:2201
+#: info/session.c:2220
 msgid "Select the last node in this file"
 msgstr "選取本檔案的最後一個節點"
 
-#: info/session.c:2229 info/session.c:2263
+#: info/session.c:2248 info/session.c:2282
 msgid "This window has no additional nodes"
 msgstr "本分隔視窗沒有額外的節點"
 
-#: info/session.c:2235
+#: info/session.c:2254
 msgid "Select the first node in this file"
 msgstr "選取本檔案的第一個節點"
 
-#: info/session.c:2270
+#: info/session.c:2289
 msgid "Select the last item in this node's menu"
 msgstr "選取本節點選單中, 最後一個項目"
 
-#: info/session.c:2276
+#: info/session.c:2295
 msgid "Select this menu item"
 msgstr "選擇這一個選單項目"
 
-#: info/session.c:2309
+#: info/session.c:2328
 #, fuzzy, c-format
 msgid "There isn't %d item in this menu."
 msgid_plural "There aren't %d items in this menu."
 msgstr[0] "本選單中沒有 %d 個項目"
 msgstr[1] "本選單中沒有 %d 個項目"
 
-#: info/session.c:2505 info/session.c:2506
+#: info/session.c:2524 info/session.c:2525
 #, c-format
 msgid "Menu item (%s): "
 msgstr "選單項目 (%s): "
 
-#: info/session.c:2509
+#: info/session.c:2528
 msgid "Menu item: "
 msgstr "選單項目: "
 
-#: info/session.c:2516 info/session.c:2517
+#: info/session.c:2535 info/session.c:2536
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "跟隨交互參照 (%s): "
 
-#: info/session.c:2520
+#: info/session.c:2539
 msgid "Follow xref: "
 msgstr "跟隨交互參照: "
 
-#: info/session.c:2647
+#: info/session.c:2660
 msgid "Read a menu item and select its node"
 msgstr "讀取一個選單項目, 並且選擇它的節點"
 
-#: info/session.c:2655
+#: info/session.c:2668
 msgid "Read a footnote or cross reference and select its node"
 msgstr "讀取一個註腳或交互參照, 並且選擇它的節點"
 
-#: info/session.c:2661
+#: info/session.c:2674
 msgid "Move to the start of this node's menu"
 msgstr "移至本節點的選單開頭"
 
-#: info/session.c:2683
+#: info/session.c:2696
 msgid "Visit as many menu items at once as possible"
 msgstr "儘可能一次拜訪最多個選單項目"
 
-#: info/session.c:2711
+#: info/session.c:2724
 msgid "Read a node name and select it"
 msgstr "讀取節點名稱, 並且選擇它"
 
-#: info/session.c:2766 info/session.c:2771
+#: info/session.c:2778 info/session.c:2783
 msgid "Goto node: "
 msgstr "跳至節點: "
 
-#: info/session.c:2836
+#: info/session.c:2855
 #, c-format
 msgid "No menu in node `%s'."
 msgstr "節點 `%s' 中沒有選單."
 
-#: info/session.c:2883
+#: info/session.c:2904
 #, c-format
 msgid "No menu item `%s' in node `%s'."
 msgstr "選單項目 `%s' 不在節點 `%s' 中."
 
-#: info/session.c:2916
+#: info/session.c:2940
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
 msgstr "被參照的節點 `%s' 在 `%s' 中找不到."
 
-#: info/session.c:2966
+#: info/session.c:2992
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "讀取自 dir 開始的節點條列, 並且跟隨它們"
 
-#: info/session.c:2968
+#: info/session.c:2994
 msgid "Follow menus: "
 msgstr "跟隨選單: "
 
-#: info/session.c:3161
+#: info/session.c:3187
 msgid "Find the node describing program invocation"
 msgstr "找尋描述程式執行方法的節點"
 
-#: info/session.c:3163
+#: info/session.c:3189
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "找尋 [%s] 的執行方法節點: "
 
-#: info/session.c:3201
+#: info/session.c:3227
 msgid "Read a manpage reference and select it"
 msgstr "讀取線上手冊 (manpage) 的參照, 並且選擇它"
 
-#: info/session.c:3205
+#: info/session.c:3231
 msgid "Get Manpage: "
 msgstr "取得線上手冊 (Manpage): "
 
-#: info/session.c:3235
+#: info/session.c:3261
 msgid "Select the node `Top' in this file"
 msgstr "選取本檔案中的 `Top' 節點"
 
-#: info/session.c:3241
+#: info/session.c:3267
 msgid "Select the node `(dir)'"
 msgstr "選取節點 `(dir)'"
 
-#: info/session.c:3258 info/session.c:3260
+#: info/session.c:3284 info/session.c:3286
 #, c-format
 msgid "Kill node (%s): "
 msgstr "刪除節點 (%s): "
 
-#: info/session.c:3312
+#: info/session.c:3337
 #, c-format
 msgid "Cannot kill node `%s'"
 msgstr "無法刪除節點 `%s'"
 
-#: info/session.c:3322
+#: info/session.c:3347
 msgid "Cannot kill the last node"
 msgstr "無法刪除上一個節點"
 
-#: info/session.c:3408
+#: info/session.c:3433
 msgid "Select the most recently selected node"
 msgstr "選擇最近一次被選擇的節點"
 
-#: info/session.c:3414
+#: info/session.c:3439
 msgid "Kill this node"
 msgstr "刪除本節點"
 
-#: info/session.c:3422
+#: info/session.c:3447
 msgid "Read the name of a file and select it"
 msgstr "讀取檔案名稱, 然後選取它"
 
-#: info/session.c:3426
+#: info/session.c:3451
 msgid "Find file: "
 msgstr "找尋檔案: "
 
-#: info/session.c:3443
+#: info/session.c:3468
 #, c-format
 msgid "Cannot find `%s'."
 msgstr "無法找到 `%s'."
 
-#: info/session.c:3486 info/session.c:3603
+#: info/session.c:3508 info/session.c:3633
+#, fuzzy, c-format
+msgid "writing file %s"
+msgstr "寫入節點 %s 中..."
+
+#: info/session.c:3519 info/session.c:3644
 #, c-format
 msgid "Could not create output file `%s'."
 msgstr "無法建立輸出檔案 `%s'."
 
-#: info/session.c:3499 info/session.c:3620 info/session.c:3680
-msgid "Done."
-msgstr "完成."
+#: info/session.c:3533 info/session.c:3663
+#, fuzzy, c-format
+msgid "error writing to %s: %s"
+msgstr "無法建立輸出檔案 `%s'."
 
-#: info/session.c:3554
-#, c-format
-msgid "Writing node %s..."
+#: info/session.c:3541
+#, fuzzy, c-format
+msgid "closing %s"
+msgstr "無法建立輸出檔案 `%s'."
+
+#: info/session.c:3590
+#, fuzzy, c-format
+msgid "writing node %s..."
 msgstr "寫入節點 %s 中..."
 
-#: info/session.c:3629
+#: info/session.c:3670
+#, fuzzy, c-format
+msgid "closing file %s"
+msgstr "無法建立輸出檔案 `%s'."
+
+#: info/session.c:3678
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "將本節點的內容, 經由管道 (pipe) 送至 INFO_PRINT_COMMAND"
 
-#: info/session.c:3664
+#: info/session.c:3713
 #, c-format
 msgid "Cannot open pipe to `%s'."
 msgstr "無法開啟至 `%s' 的管道."
 
-#: info/session.c:3670
-#, c-format
-msgid "Printing node %s..."
+#: info/session.c:3718
+#, fuzzy, c-format
+msgid "printing node %s..."
 msgstr "列印節點 %s 中..."
 
-#: info/session.c:3966
+#: info/session.c:3726
+#, fuzzy, c-format
+msgid "finished printing node %s"
+msgstr "列印節點 %s 中..."
+
+#: info/session.c:4015
 msgid "Search continued from the end of the document."
 msgstr ""
 
-#: info/session.c:3971
+#: info/session.c:4020
 #, fuzzy
 msgid "Search continued from the beginning of the document."
 msgstr "刪除至本行開頭, 並置入剪貼簿"
 
-#: info/session.c:3988
+#: info/session.c:4037
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "搜尋子檔案 %s ..."
 
-#: info/session.c:4048
+#: info/session.c:4097
 msgid "Read a string and search for it case-sensitively"
 msgstr "讀取一個字串, 然後以區分大小寫方式搜尋"
 
-#: info/session.c:4055
+#: info/session.c:4104
 msgid "Read a string and search for it"
 msgstr "讀取一個字串, 然後搜尋"
 
-#: info/session.c:4063
+#: info/session.c:4112
 msgid "Read a string and search backward for it"
 msgstr "讀取一個字串, 然後向後搜尋"
 
-#: info/session.c:4099 info/session.c:4105
+#: info/session.c:4169 info/session.c:4175
 #, fuzzy, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%s [%s]: "
 
-#: info/session.c:4100 info/session.c:4106
+#: info/session.c:4170 info/session.c:4176
 msgid "Regexp search"
 msgstr ""
 
-#: info/session.c:4101 info/session.c:4107
+#: info/session.c:4171 info/session.c:4177
 #, fuzzy
 msgid " case-sensitively"
 msgstr ", 以區分大小寫的方式"
 
-#: info/session.c:4102 info/session.c:4108
+#: info/session.c:4172 info/session.c:4178
 #, fuzzy
 msgid " backward"
 msgstr "向後搜尋字串"
 
-#: info/session.c:4106
+#: info/session.c:4176
 msgid "Search"
 msgstr "搜尋字串"
 
-#: info/session.c:4154
+#: info/session.c:4225
 msgid "Search failed."
 msgstr "搜尋失敗."
 
-#: info/session.c:4172
+#: info/session.c:4243
 msgid "Repeat last search in the same direction"
 msgstr "以同樣的搜尋方向重覆上次的搜尋"
 
-#: info/session.c:4175 info/session.c:4185
+#: info/session.c:4246 info/session.c:4267
 msgid "No previous search string"
 msgstr "沒有前一次的搜尋字串"
 
-#: info/session.c:4182
+#: info/session.c:4264
 msgid "Repeat last search in the reverse direction"
 msgstr "以相反的搜尋方向重覆上次的搜尋"
 
-#: info/session.c:4201 info/session.c:4207
+#: info/session.c:4294 info/session.c:4300
 msgid "Search interactively for a string as you type it"
 msgstr "以互動方式, 邊輸入字串邊搜尋"
 
-#: info/session.c:4287
+#: info/session.c:4380
 #, fuzzy
 msgid "Regexp I-search backward: "
 msgstr "反向互動搜尋: "
 
-#: info/session.c:4288
+#: info/session.c:4381
 msgid "I-search backward: "
 msgstr "反向互動搜尋: "
 
-#: info/session.c:4290
+#: info/session.c:4383
 #, fuzzy
 msgid "Regexp I-search: "
 msgstr "互動搜尋: "
 
-#: info/session.c:4291
+#: info/session.c:4384
 msgid "I-search: "
 msgstr "互動搜尋: "
 
-#: info/session.c:4316 info/session.c:4318
+#: info/session.c:4409 info/session.c:4411
 msgid "Failing "
 msgstr "失敗 "
 
-#: info/session.c:4801
+#: info/session.c:4895
 msgid "Move to the previous cross reference"
 msgstr "移動至前一個交互參照"
 
-#: info/session.c:4819
+#: info/session.c:4913
 msgid "Move to the next cross reference"
 msgstr "移動至下一個交互參照"
 
-#: info/session.c:4841
+#: info/session.c:4935
 msgid "Select reference or menu item appearing on this line"
 msgstr "選擇出現在本行的參照或選單項目"
 
-#: info/session.c:4864
+#: info/session.c:4958
 msgid "Cancel current operation"
 msgstr "取消目前的作業"
 
-#: info/session.c:4871
+#: info/session.c:4965
 msgid "Quit"
 msgstr "結束"
 
-#: info/session.c:4880
+#: info/session.c:4974
 msgid "Move the cursor to a specific line of the window"
 msgstr "移動游標至分隔視窗中的指定位置"
 
-#: info/session.c:4912
+#: info/session.c:5006
 msgid "Redraw the display"
 msgstr "重繪畫面"
 
-#: info/session.c:4949
+#: info/session.c:5043
 msgid "Quit using Info"
 msgstr "結束使用 Info"
 
-#: info/session.c:4962
+#: info/session.c:5058
 msgid "Run command bound to this key's lowercase variant"
 msgstr ""
 
-#: info/session.c:4973
+#: info/session.c:5069
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "未知的命令 (%s)."
 
-#: info/session.c:4976
+#: info/session.c:5072
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" 不合法"
 
-#: info/session.c:4977
+#: info/session.c:5073
 #, fuzzy, c-format
 msgid "`%s' is invalid"
 msgstr "\"%s\" 不合法"
 
-#: info/session.c:5192
+#: info/session.c:5288
 msgid "Add this digit to the current numeric argument"
 msgstr "將本數字加至目前的數值引數"
 
-#: info/session.c:5201
+#: info/session.c:5297
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "開始目前的數值引數 (或是乘以 4)"
 
-#: info/session.c:5216
+#: info/session.c:5312
 msgid "Internally used by \\[universal-argument]"
 msgstr "在內部被 \\[universal-argument] 使用"
+
+#: info/session.c:5388
+msgid "Show full file name of node being displayed"
+msgstr ""
 
 #: info/tilde.c:361
 #, c-format
@@ -1817,28 +1904,32 @@ msgstr "控制在節點的結尾時, 捲動會有什麼反應"
 msgid "Minimal length of a search string"
 msgstr ""
 
-#: info/variables.c:92
+#: info/variables.c:90
+msgid "Skip current window when searching"
+msgstr ""
+
+#: info/variables.c:95
 msgid "Explain the use of a variable"
 msgstr "解釋變數的用法"
 
-#: info/variables.c:98
+#: info/variables.c:101
 msgid "Describe variable: "
 msgstr "描述變數: "
 
-#: info/variables.c:117
+#: info/variables.c:120
 msgid "Set the value of an Info variable"
 msgstr "設定 Info 變數的數值"
 
-#: info/variables.c:123
+#: info/variables.c:126
 msgid "Set variable: "
 msgstr "設定變數: "
 
-#: info/variables.c:141
+#: info/variables.c:144
 #, c-format
 msgid "Set %s to value (%d): "
 msgstr "設定 %s 的數值 (%d): "
 
-#: info/variables.c:182
+#: info/variables.c:184
 #, c-format
 msgid "Set %s to value (%s): "
 msgstr "設定 %s 的數值 (%s): "
@@ -1968,7 +2059,7 @@ msgid ""
 " --version           display version information and exit."
 msgstr ""
 
-#: install-info/install-info.c:603 tp/texi2any.pl:844
+#: install-info/install-info.c:603 tp/texi2any.pl:849
 #, fuzzy
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -1985,7 +2076,7 @@ msgid ""
 "This is the file .../info/dir, which contains the\n"
 "topmost node of the Info hierarchy, called (dir)Top.\n"
 "The first time you invoke Info you start off looking at this node.\n"
-"\n"
+"%c\n"
 "%s\tThis is the top of the INFO tree\n"
 "\n"
 "  This (the Directory node) gives a menu of major topics.\n"
@@ -2079,885 +2170,919 @@ msgstr "`%s' 內沒有 info dir 項目"
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "找不到 `%s' 的項目; 未刪除任何項目"
 
-#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:818
-#: tp/Texinfo/Convert/DocBook.pm:311 tp/Texinfo/Convert/HTML.pm:6511
-#: tp/Texinfo/Convert/HTML.pm:6535 tp/Texinfo/Convert/HTML.pm:6912
-#: tp/Texinfo/Convert/HTML.pm:6970 tp/Texinfo/Convert/HTML.pm:7048
-#: tp/Texinfo/Convert/HTML.pm:7125 tp/Texinfo/Convert/IXIN.pm:293
-#: tp/Texinfo/Convert/Info.pm:93 tp/Texinfo/Convert/Info.pm:191
-#: tp/Texinfo/Convert/Info.pm:217 tp/Texinfo/Convert/Plaintext.pm:490
-#: tp/Texinfo/Convert/TexinfoXML.pm:429
+#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:821
+#: tp/Texinfo/Convert/DocBook.pm:311 tp/Texinfo/Convert/HTML.pm:6528
+#: tp/Texinfo/Convert/HTML.pm:6552 tp/Texinfo/Convert/HTML.pm:6929
+#: tp/Texinfo/Convert/HTML.pm:6987 tp/Texinfo/Convert/HTML.pm:7065
+#: tp/Texinfo/Convert/HTML.pm:7142 tp/Texinfo/Convert/IXIN.pm:293
+#: tp/Texinfo/Convert/Info.pm:96 tp/Texinfo/Convert/Info.pm:200
+#: tp/Texinfo/Convert/Info.pm:226 tp/Texinfo/Convert/Plaintext.pm:503
+#: tp/Texinfo/Convert/TexinfoXML.pm:457
 #, fuzzy, perl-format
 msgid "could not open %s for writing: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Common.pm:850
+#: tp/Texinfo/Common.pm:865
 msgid "recursion is always allowed"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:851
+#: tp/Texinfo/Common.pm:866
 msgid "arguments are quoted by default"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1050
+#: tp/Texinfo/Common.pm:1065
 #, fuzzy, perl-format
 msgid "%s is not a valid language code"
 msgstr "%s 不是一個合法的 ISO 639 語言碼"
 
-#: tp/Texinfo/Common.pm:1055
+#: tp/Texinfo/Common.pm:1070
 #, fuzzy, perl-format
 msgid "%s is not a valid region code"
 msgstr "%s 不是一個合法的 ISO 639 語言碼"
 
-#: tp/Texinfo/Common.pm:1073
+#: tp/Texinfo/Common.pm:1088
 #, fuzzy, perl-format
 msgid "%s is not a valid split possibility"
 msgstr "%s 不是一個合法的 ISO 639 語言碼"
 
-#: tp/Texinfo/Common.pm:1096
+#: tp/Texinfo/Common.pm:1111
 #, fuzzy, perl-format
 msgid "could not read %s: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Common.pm:1114
+#: tp/Texinfo/Common.pm:1129
 #, fuzzy, perl-format
 msgid "error on closing @verbatiminclude file %s: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Common.pm:1119 tp/Texinfo/Parser.pm:3170
+#: tp/Texinfo/Common.pm:1134 tp/Texinfo/Parser.pm:3187
 #, fuzzy, perl-format
 msgid "@%s: could not find %s"
 msgstr "無法找到 `%s'."
 
-#: tp/Texinfo/Common.pm:1417
+#: tp/Texinfo/Common.pm:1432
 #, fuzzy, perl-format
 msgid "could not open html refs config file %s: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Common.pm:1445
+#: tp/Texinfo/Common.pm:1460
 #, fuzzy
 msgid "missing type"
 msgstr "%c%s 遺漏右大括號"
 
-#: tp/Texinfo/Common.pm:1448
+#: tp/Texinfo/Common.pm:1463
 #, fuzzy, perl-format
 msgid "unrecognized type: %s"
 msgstr "%s: 未知的選項 `--%s'\n"
 
-#: tp/Texinfo/Common.pm:1465
+#: tp/Texinfo/Common.pm:1480
 #, fuzzy, perl-format
 msgid "error on closing html refs config file %s: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Common.pm:1500
+#: tp/Texinfo/Common.pm:1515
 msgid "no node to be renamed"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1511
+#: tp/Texinfo/Common.pm:1526
 msgid "nodes without a new name at the end of file"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1521 tp/Texinfo/Parser.pm:840
+#: tp/Texinfo/Common.pm:1536 tp/Texinfo/Parser.pm:842
 #, fuzzy, perl-format
 msgid "could not open %s: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Common.pm:2008
+#: tp/Texinfo/Common.pm:2028
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Converter.pm:391 tp/Texinfo/Convert/Converter.pm:410
+#: tp/Texinfo/Convert/Converter.pm:394 tp/Texinfo/Convert/Converter.pm:413
 #, fuzzy, perl-format
 msgid "Obsolete variable %s\n"
 msgstr "設定變數: "
 
-#: tp/Texinfo/Convert/Converter.pm:601
+#: tp/Texinfo/Convert/Converter.pm:604
 #, fuzzy, perl-format
 msgid "could not create directories `%s' or `%s': %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Convert/Converter.pm:609
+#: tp/Texinfo/Convert/Converter.pm:612
 #, fuzzy, perl-format
 msgid "could not create directory `%s': %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Convert/DocBook.pm:347 tp/Texinfo/Convert/HTML.pm:6938
-#: tp/Texinfo/Convert/HTML.pm:6996 tp/Texinfo/Convert/IXIN.pm:915
-#: tp/Texinfo/Convert/Info.pm:150 tp/Texinfo/Convert/Info.pm:176
-#: tp/Texinfo/Convert/Info.pm:207 tp/Texinfo/Convert/Info.pm:270
-#: tp/Texinfo/Convert/TexinfoXML.pm:448 tp/Texinfo/Parser.pm:1942
+#: tp/Texinfo/Convert/DocBook.pm:347 tp/Texinfo/Convert/HTML.pm:6955
+#: tp/Texinfo/Convert/HTML.pm:7013 tp/Texinfo/Convert/IXIN.pm:915
+#: tp/Texinfo/Convert/Info.pm:159 tp/Texinfo/Convert/Info.pm:185
+#: tp/Texinfo/Convert/Info.pm:216 tp/Texinfo/Convert/Info.pm:279
+#: tp/Texinfo/Convert/TexinfoXML.pm:476 tp/Texinfo/Parser.pm:1950
 #, fuzzy, perl-format
 msgid "error on closing %s: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Convert/DocBook.pm:899
+#: tp/Texinfo/Convert/DocBook.pm:923
 #, fuzzy, perl-format
 msgid "@image file `%s' not found, using `%s'"
 msgstr "@image 檔案 `%s' 無法讀取: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:1678
+#: tp/Texinfo/Convert/HTML.pm:1683
 #, fuzzy, perl-format
 msgid "@image file `%s' (for HTML) not found, using `%s'"
 msgstr "@image 檔案 `%s' 無法讀取: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:2347
+#: tp/Texinfo/Convert/HTML.pm:2354
 #, perl-format
 msgid "raw format %s is not converted"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:4816
+#: tp/Texinfo/Convert/HTML.pm:4833
 msgid "string not closed in css file"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:4818
+#: tp/Texinfo/Convert/HTML.pm:4835
 msgid "--css-include ended in comment"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:4820
+#: tp/Texinfo/Convert/HTML.pm:4837
 msgid "@import not finished in css file"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:4846
+#: tp/Texinfo/Convert/HTML.pm:4863
 #, fuzzy, perl-format
 msgid "CSS file %s not found"
 msgstr "@image 檔案 `%s' 無法讀取: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:4852
+#: tp/Texinfo/Convert/HTML.pm:4869
 #, fuzzy, perl-format
 msgid "could not open --include-file %s: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Convert/HTML.pm:4862
+#: tp/Texinfo/Convert/HTML.pm:4879
 #, fuzzy, perl-format
 msgid "error on closing CSS file %s: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Convert/HTML.pm:5808 tp/Texinfo/Convert/HTML.pm:5812
+#: tp/Texinfo/Convert/HTML.pm:5825 tp/Texinfo/Convert/HTML.pm:5829
 #, fuzzy, perl-format
 msgid "no htmlxref.cnf entry found for `%s'"
 msgstr "找不到包含 `%s' 的索引項目\n"
 
-#: tp/Texinfo/Convert/HTML.pm:6506
+#: tp/Texinfo/Convert/HTML.pm:6523
 #, fuzzy, perl-format
 msgid "error on closing frame file %s: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Convert/HTML.pm:6530
+#: tp/Texinfo/Convert/HTML.pm:6547
 #, fuzzy, perl-format
 msgid "error on closing TOC frame file %s: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Convert/HTML.pm:6645
+#: tp/Texinfo/Convert/HTML.pm:6662
 #, perl-format
 msgid "handler %s of stage %s priority %s failed"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6846
+#: tp/Texinfo/Convert/HTML.pm:6863
 msgid "must specify a title with a title command or @top"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:7055
+#: tp/Texinfo/Convert/HTML.pm:7072
 #, fuzzy, perl-format
 msgid "error on closing redirection node file %s: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Convert/HTML.pm:7080
+#: tp/Texinfo/Convert/HTML.pm:7097
 #, fuzzy, perl-format
 msgid "old name for `%s' is a node of the document"
 msgstr "在本文件中, 本節點沒有 `上一個 (Prev)' 節點或 `上一層 (Up)' 節點."
 
-#: tp/Texinfo/Convert/HTML.pm:7086
+#: tp/Texinfo/Convert/HTML.pm:7103
 #, fuzzy, perl-format
 msgid "file empty for renamed node `%s'"
 msgstr "未被參照的節點 `%s'"
 
-#: tp/Texinfo/Convert/HTML.pm:7100
+#: tp/Texinfo/Convert/HTML.pm:7117
 #, perl-format
 msgid "target node (new name for `%s') not in document: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:7132
+#: tp/Texinfo/Convert/HTML.pm:7149
 #, fuzzy, perl-format
 msgid "error on closing renamed node redirection file %s: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Convert/HTML.pm:7170
+#: tp/Texinfo/Convert/HTML.pm:7187
 #, fuzzy
 msgid "empty node name"
 msgstr "找不到包含 `%s' 的索引項目\n"
 
-#: tp/Texinfo/Convert/HTML.pm:7172 tp/Texinfo/Parser.pm:3517
+#: tp/Texinfo/Convert/HTML.pm:7189 tp/Texinfo/Parser.pm:3534
 #, perl-format
 msgid "syntax for an external node used for `%s'"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:102
+#: tp/Texinfo/Convert/Info.pm:105
 #, fuzzy
 msgid "document without nodes"
 msgstr "本節點沒有選單."
 
-#: tp/Texinfo/Convert/Info.pm:119
+#: tp/Texinfo/Convert/Info.pm:122
 #, fuzzy
 msgid "document without Top node"
 msgstr "本節點沒有選單."
 
-#: tp/Texinfo/Convert/Info.pm:160
+#: tp/Texinfo/Convert/Info.pm:169
 #, perl-format
 msgid "rename %s failed: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:242
+#: tp/Texinfo/Convert/Info.pm:251
 #, perl-format
 msgid "@%s output more than once: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:357
+#: tp/Texinfo/Convert/Info.pm:366
 #, fuzzy, perl-format
 msgid "@%s outside of any node"
 msgstr "(不在任何的節點內)"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1265 tp/Texinfo/Parser.pm:2549
+#: tp/Texinfo/Convert/Info.pm:406
+#, fuzzy, perl-format
+msgid "@node name should not contain `,': %s"
+msgstr "無法建立輸出檔案 `%s'."
+
+#: tp/Texinfo/Convert/Plaintext.pm:1287 tp/Texinfo/Parser.pm:2566
 #, fuzzy, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "索引 `%s' 的項目不在任何的節點內"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1378
+#: tp/Texinfo/Convert/Plaintext.pm:1400
 #, fuzzy, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Convert/Plaintext.pm:1383
+#: tp/Texinfo/Convert/Plaintext.pm:1405
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image 檔案 `%s' 無法讀取: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1406
+#: tp/Texinfo/Convert/Plaintext.pm:1428
 #, fuzzy, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr "找不到 `%s' 節點."
 
-#: tp/Texinfo/Convert/Plaintext.pm:1768
+#: tp/Texinfo/Convert/Plaintext.pm:1816
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2000
+#: tp/Texinfo/Convert/Plaintext.pm:2022
+#, perl-format
+msgid "@%s cross-reference name should not contain `:'"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:2039
+#, fuzzy, perl-format
+msgid "@%s node name should not contain `%s'"
+msgstr "無法建立輸出檔案 `%s'."
+
+#: tp/Texinfo/Convert/Plaintext.pm:2054
+#, perl-format
+msgid "@%s node name should not contain `:'"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:2077
 #, fuzzy, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "`.' 或 `,' 必須跟著交互參照, 而不是 %c"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2003
+#: tp/Texinfo/Convert/Plaintext.pm:2080
 #, fuzzy
 msgid "`.' or `,' must follow @xref"
 msgstr "`.' 或 `,' 必須跟著交互參照, 而不是 %c"
 
-#: tp/Texinfo/Parser.pm:824
+#: tp/Texinfo/Convert/Plaintext.pm:2852
+#, fuzzy, perl-format
+msgid "menu entry node name should not contain `%s'"
+msgstr "對 %c%s 無用的引數"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2859
+msgid "menu entry node name should not contain `:'"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:2870
+#, fuzzy
+msgid "menu entry name should not contain `:'"
+msgstr "對 %c%s 無用的引數"
+
+#: tp/Texinfo/Parser.pm:826
 #, fuzzy, perl-format
 msgid "@%s should only appear at beginning or end of document"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Parser.pm:1074 tp/Texinfo/Structuring.pm:588
+#: tp/Texinfo/Parser.pm:1076 tp/Texinfo/Structuring.pm:598
 #, perl-format
 msgid "multiple @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:1108
+#: tp/Texinfo/Parser.pm:1110
 #, fuzzy, perl-format
 msgid "bad syntax for @%s argument: %s"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:1124
+#: tp/Texinfo/Parser.pm:1126
 #, fuzzy, perl-format
 msgid "bad or empty @%s formal argument: %s"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:1133 tp/Texinfo/Parser.pm:4637
-#: tp/Texinfo/Parser.pm:4663 tp/Texinfo/Parser.pm:5337
-#: tp/Texinfo/Parser.pm:5353 tp/Texinfo/Parser.pm:5368
+#: tp/Texinfo/Parser.pm:1135 tp/Texinfo/Parser.pm:4655
+#: tp/Texinfo/Parser.pm:4681 tp/Texinfo/Parser.pm:5403
+#: tp/Texinfo/Parser.pm:5419 tp/Texinfo/Parser.pm:5434
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s 必須要有名稱"
 
-#: tp/Texinfo/Parser.pm:1137 tp/Texinfo/Parser.pm:4640
-#: tp/Texinfo/Parser.pm:4666 tp/Texinfo/Parser.pm:5340
-#: tp/Texinfo/Parser.pm:5356 tp/Texinfo/Parser.pm:5371
+#: tp/Texinfo/Parser.pm:1139 tp/Texinfo/Parser.pm:4658
+#: tp/Texinfo/Parser.pm:4684 tp/Texinfo/Parser.pm:5406
+#: tp/Texinfo/Parser.pm:5422 tp/Texinfo/Parser.pm:5437
 #, fuzzy, perl-format
 msgid "bad name for @%s"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:1253
+#: tp/Texinfo/Parser.pm:1257
 #, fuzzy, perl-format
 msgid "@end %s seen before @%s closing brace"
 msgstr "@menu 在第一個 @node 之前出現, 將建立 `Top' 節點"
 
-#: tp/Texinfo/Parser.pm:1257
+#: tp/Texinfo/Parser.pm:1261
 #, fuzzy, perl-format
 msgid "@%s seen before @%s closing brace"
 msgstr "@menu 在第一個 @node 之前出現, 將建立 `Top' 節點"
 
-#: tp/Texinfo/Parser.pm:1262
+#: tp/Texinfo/Parser.pm:1266
 #, perl-format
 msgid "%c%s missing close brace"
 msgstr "%c%s 遺漏右大括號"
 
-#: tp/Texinfo/Parser.pm:1266
+#: tp/Texinfo/Parser.pm:1270
 #, fuzzy, perl-format
 msgid "@%s missing closing delimiter sequence: %s}"
 msgstr "%c%s 遺漏右大括號"
 
-#: tp/Texinfo/Parser.pm:1388
+#: tp/Texinfo/Parser.pm:1392
 #, fuzzy, perl-format
 msgid "@itemx should not begin @%s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Parser.pm:1456
+#: tp/Texinfo/Parser.pm:1460
 msgid "@itemx must follow @item"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:1624
+#: tp/Texinfo/Parser.pm:1628
 #, perl-format
 msgid "@%s has text but no @item"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:1655
+#: tp/Texinfo/Parser.pm:1659
 #, perl-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:1658
+#: tp/Texinfo/Parser.pm:1662
 #, fuzzy, perl-format
 msgid "@%s seen before @end %s"
 msgstr "@menu 在第一個 @node 之前出現, 將建立 `Top' 節點"
 
-#: tp/Texinfo/Parser.pm:1662
+#: tp/Texinfo/Parser.pm:1666
 #, fuzzy, perl-format
 msgid "no matching `%cend %s'"
 msgstr "No matching `%cend %s'"
 
-#: tp/Texinfo/Parser.pm:1688 tp/Texinfo/Parser.pm:4982
-#: tp/Texinfo/Parser.pm:5202
+#: tp/Texinfo/Parser.pm:1692 tp/Texinfo/Parser.pm:5003
+#: tp/Texinfo/Parser.pm:5225
 #, fuzzy, perl-format
 msgid "misplaced %c"
 msgstr "誤置的 %c"
 
-#: tp/Texinfo/Parser.pm:1786 tp/Texinfo/Parser.pm:3129
+#: tp/Texinfo/Parser.pm:1790 tp/Texinfo/Parser.pm:3146
 #, fuzzy, perl-format
 msgid "unmatched `%c%s'"
 msgstr "未配對的 `%c%s'"
 
-#: tp/Texinfo/Parser.pm:2017
+#: tp/Texinfo/Parser.pm:2025
 #, fuzzy, perl-format
 msgid "macro `%s' called with too many args"
 msgstr "巨集 `%s' 在第 %d 行被呼叫, 但是引數過多"
 
-#: tp/Texinfo/Parser.pm:2039
+#: tp/Texinfo/Parser.pm:2047
 #, fuzzy, perl-format
 msgid "@%s missing close brace"
 msgstr "%c%s 遺漏右大括號"
 
-#: tp/Texinfo/Parser.pm:2047
+#: tp/Texinfo/Parser.pm:2055
 #, fuzzy, perl-format
 msgid "macro `%s' declared without argument called with an argument"
 msgstr "巨集 `%s' 在第 %d 行被呼叫, 但是引數過多"
 
-#: tp/Texinfo/Parser.pm:2082
+#: tp/Texinfo/Parser.pm:2090
 #, perl-format
 msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2477
+#: tp/Texinfo/Parser.pm:2494
 #, fuzzy, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "巨集 `%s' 已定義過"
 
-#: tp/Texinfo/Parser.pm:2482
+#: tp/Texinfo/Parser.pm:2499
 #, fuzzy, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "這裡是 `%s' 之前的定義"
 
-#: tp/Texinfo/Parser.pm:2843
+#: tp/Texinfo/Parser.pm:2860
 #, fuzzy, perl-format
 msgid "missing name for @%s"
 msgstr "@def 參數中遺漏 `}'"
 
-#: tp/Texinfo/Parser.pm:2848
+#: tp/Texinfo/Parser.pm:2865
 #, fuzzy, perl-format
 msgid "missing category for @%s"
 msgstr "@def 參數中遺漏 `}'"
 
-#: tp/Texinfo/Parser.pm:2900
+#: tp/Texinfo/Parser.pm:2917
 #, fuzzy, perl-format
 msgid "unexpected argument on @%s line: %s"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:2916
+#: tp/Texinfo/Parser.pm:2933
 #, fuzzy
 msgid "empty multitable"
 msgstr "%s: 空檔案"
 
-#: tp/Texinfo/Parser.pm:2972 tp/Texinfo/Parser.pm:5450
+#: tp/Texinfo/Parser.pm:2989 tp/Texinfo/Parser.pm:5516
 #, fuzzy, perl-format
 msgid "superfluous argument to @%s"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:2978 tp/Texinfo/Parser.pm:5472
-#: tp/Texinfo/Parser.pm:5484
+#: tp/Texinfo/Parser.pm:2995 tp/Texinfo/Parser.pm:5538
+#: tp/Texinfo/Parser.pm:5550
 #, fuzzy, perl-format
 msgid "bad argument to @%s"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:2989
+#: tp/Texinfo/Parser.pm:3006
 #, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2994
+#: tp/Texinfo/Parser.pm:3011
 #, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3029
+#: tp/Texinfo/Parser.pm:3046
 #, fuzzy, perl-format
 msgid "accent command `@%s' not allowed as @%s argument"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:3107 tp/Texinfo/Parser.pm:3246
-#: tp/Texinfo/Parser.pm:5443
+#: tp/Texinfo/Parser.pm:3124 tp/Texinfo/Parser.pm:3263
+#: tp/Texinfo/Parser.pm:5509
 #, fuzzy, perl-format
 msgid "@%s missing argument"
 msgstr "%s: 遺漏檔案引數.\n"
 
-#: tp/Texinfo/Parser.pm:3119
+#: tp/Texinfo/Parser.pm:3136
 #, fuzzy, perl-format
 msgid "unknown @end %s"
 msgstr "未知的索引 `%s'"
 
-#: tp/Texinfo/Parser.pm:3141 tp/Texinfo/Parser.pm:3763
+#: tp/Texinfo/Parser.pm:3158 tp/Texinfo/Parser.pm:3780
 #, fuzzy, perl-format
 msgid "superfluous argument to @%s %s: %s"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:3146 tp/Texinfo/Parser.pm:5527
-#: tp/Texinfo/Parser.pm:5572 tp/Texinfo/Parser.pm:5601
-#: tp/Texinfo/Parser.pm:5642 tp/Texinfo/Parser.pm:5720
+#: tp/Texinfo/Parser.pm:3163 tp/Texinfo/Parser.pm:5593
+#: tp/Texinfo/Parser.pm:5638 tp/Texinfo/Parser.pm:5667
+#: tp/Texinfo/Parser.pm:5708 tp/Texinfo/Parser.pm:5786
 #, fuzzy, perl-format
 msgid "bad argument to @%s: %s"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:3165
+#: tp/Texinfo/Parser.pm:3182
 #, fuzzy, perl-format
 msgid "@%s: could not open %s: %s"
 msgstr "無法找到 `%s'."
 
-#: tp/Texinfo/Parser.pm:3177
+#: tp/Texinfo/Parser.pm:3194
 #, perl-format
 msgid "encoding `%s' is not a canonical texinfo encoding"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3186
+#: tp/Texinfo/Parser.pm:3203
 #, fuzzy, perl-format
 msgid "unrecognized encoding name `%s'"
 msgstr "%s: 未知的選項 `%c%s'\n"
 
-#: tp/Texinfo/Parser.pm:3336
+#: tp/Texinfo/Parser.pm:3353
 #, perl-format
 msgid "@%s after the first element"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3343
+#: tp/Texinfo/Parser.pm:3360
 #, fuzzy, perl-format
 msgid "@%s only meaningful on a @multitable line"
 msgstr "@%s 在 `@%s' 區塊之內, 並不具有意義"
 
-#: tp/Texinfo/Parser.pm:3383
+#: tp/Texinfo/Parser.pm:3400
 #, fuzzy, perl-format
 msgid "@%s should not be associated with @top"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Parser.pm:3395
+#: tp/Texinfo/Parser.pm:3412
 #, fuzzy, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Parser.pm:3497
+#: tp/Texinfo/Parser.pm:3514
 #, fuzzy, perl-format
 msgid "empty argument in @%s"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:3501
+#: tp/Texinfo/Parser.pm:3518
 #, fuzzy, perl-format
 msgid "empty node name after expansion `%s'"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:3544
+#: tp/Texinfo/Parser.pm:3561
 #, fuzzy, perl-format
 msgid "empty menu entry name in `%s'"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:3552
+#: tp/Texinfo/Parser.pm:3569
 #, fuzzy
 msgid "empty node name in menu entry"
 msgstr "找不到包含 `%s' 的索引項目\n"
 
-#: tp/Texinfo/Parser.pm:3625
+#: tp/Texinfo/Parser.pm:3642
 #, fuzzy, perl-format
 msgid "@%s should not appear in @%s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Parser.pm:3757
+#: tp/Texinfo/Parser.pm:3774
 #, fuzzy, perl-format
 msgid "@end %s should only appear at a line beginning"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Parser.pm:3780
+#: tp/Texinfo/Parser.pm:3797
 #, perl-format
 msgid "macro `%s' previously defined"
 msgstr "巨集 `%s' 已定義過"
 
-#: tp/Texinfo/Parser.pm:3783
+#: tp/Texinfo/Parser.pm:3800
 #, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "這裡是 `%s' 之前的定義"
 
-#: tp/Texinfo/Parser.pm:3788
+#: tp/Texinfo/Parser.pm:3805
 #, perl-format
 msgid "redefining Texinfo language command: @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3837
+#: tp/Texinfo/Parser.pm:3854
 #, perl-format
 msgid "@%s without associated character"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3899
+#: tp/Texinfo/Parser.pm:3916
 #, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3923
+#: tp/Texinfo/Parser.pm:3940
 #, perl-format
 msgid ""
 "macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
 "value %d)"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3932
+#: tp/Texinfo/Parser.pm:3949
 #, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3988
+#: tp/Texinfo/Parser.pm:4005
 #, fuzzy, perl-format
 msgid "accent command `@%s' must not be followed by whitespace"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:3994
+#: tp/Texinfo/Parser.pm:4011
 #, fuzzy, perl-format
 msgid "use braces to give a command as an argument to @%s"
 msgstr "使用大括號將命令包起來, 以作為 @%s 的引數"
 
-#: tp/Texinfo/Parser.pm:4007 tp/Texinfo/Parser.pm:5103
+#: tp/Texinfo/Parser.pm:4024 tp/Texinfo/Parser.pm:5124
 #, fuzzy, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s 期望使用 `i' 或 `j' 作為引數, 而不是 `%c'"
 
-#: tp/Texinfo/Parser.pm:4019
+#: tp/Texinfo/Parser.pm:4036
 #, fuzzy, perl-format
 msgid "accent command `@%s' must not be followed by new line"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:4030
+#: tp/Texinfo/Parser.pm:4047
 #, fuzzy, perl-format
 msgid "@%s expected braces"
 msgstr "%c%s 預計要有 `{...}'"
 
-#: tp/Texinfo/Parser.pm:4189
+#: tp/Texinfo/Parser.pm:4207
 #, perl-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4192
+#: tp/Texinfo/Parser.pm:4210
 #, fuzzy
 msgid "bad syntax for @value"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:4199
+#: tp/Texinfo/Parser.pm:4217
 #, fuzzy, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s 已廢止不用"
 
-#: tp/Texinfo/Parser.pm:4202
+#: tp/Texinfo/Parser.pm:4220
 #, fuzzy, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s 已廢止不用"
 
-#: tp/Texinfo/Parser.pm:4211
+#: tp/Texinfo/Parser.pm:4229
 #, fuzzy, perl-format
 msgid "@%s should only appear at a line beginning"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Parser.pm:4302
+#: tp/Texinfo/Parser.pm:4320
 #, fuzzy, perl-format
 msgid "@%s not allowed inside `@%s' block"
 msgstr "@%s 在 `@%s' 區塊之內, 並不具有意義"
 
-#: tp/Texinfo/Parser.pm:4311
+#: tp/Texinfo/Parser.pm:4329
 #, fuzzy, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Parser.pm:4437 tp/Texinfo/Parser.pm:4454
-#: tp/Texinfo/Parser.pm:4504
+#: tp/Texinfo/Parser.pm:4455 tp/Texinfo/Parser.pm:4472
+#: tp/Texinfo/Parser.pm:4522
 #, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s 在 `@%s' 區塊之內, 並不具有意義"
 
-#: tp/Texinfo/Parser.pm:4464
+#: tp/Texinfo/Parser.pm:4482
 #, fuzzy, perl-format
 msgid "@%s in empty multitable"
 msgstr "%s: 空檔案"
 
-#: tp/Texinfo/Parser.pm:4470
+#: tp/Texinfo/Parser.pm:4488
 msgid "@tab before @item"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4473
+#: tp/Texinfo/Parser.pm:4491
 #, fuzzy, perl-format
 msgid "too many columns in multitable item (max %d)"
 msgstr "multitable 項目中有太多的欄位 (最大值為 %d)"
 
-#: tp/Texinfo/Parser.pm:4510
+#: tp/Texinfo/Parser.pm:4528
 msgid "ignoring @tab outside of multitable"
 msgstr "忽略 multitable 外的 @tab"
 
-#: tp/Texinfo/Parser.pm:4514
+#: tp/Texinfo/Parser.pm:4532
 #, perl-format
 msgid "@%s outside of table or list"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4549
+#: tp/Texinfo/Parser.pm:4567
 #, fuzzy, perl-format
 msgid "must be after `@%s' to use `@%s'"
 msgstr "@image 檔案 `%s' 無法讀取: %s"
 
-#: tp/Texinfo/Parser.pm:4591
+#: tp/Texinfo/Parser.pm:4609
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4595
+#: tp/Texinfo/Parser.pm:4613
 #, fuzzy
 msgid "@dircategory after first node"
 msgstr "@menu 在第一個 @node 之前出現, 將建立 `Top' 節點"
 
-#: tp/Texinfo/Parser.pm:4760
+#: tp/Texinfo/Parser.pm:4778
 #, fuzzy, perl-format
 msgid "region %s inside region %s is not allowed"
 msgstr "定義註腳, 但是沒有父節點"
 
-#: tp/Texinfo/Parser.pm:4778
+#: tp/Texinfo/Parser.pm:4796
 #, fuzzy
 msgid "@direntry after first node"
 msgstr "@menu 在第一個 @node 之前出現, 將建立 `Top' 節點"
 
-#: tp/Texinfo/Parser.pm:4786
+#: tp/Texinfo/Parser.pm:4804
 #, fuzzy, perl-format
 msgid "@%s seen before first @node"
 msgstr "@menu 在第一個 @node 之前出現, 將建立 `Top' 節點"
 
-#: tp/Texinfo/Parser.pm:4789
+#: tp/Texinfo/Parser.pm:4807
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "也許您應該把 @top 節點包含在 @ifnottex, 而不是 @ifinfo?"
 
-#: tp/Texinfo/Parser.pm:4851
+#: tp/Texinfo/Parser.pm:4869
 #, fuzzy, perl-format
 msgid "@%s should only appear in math context"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/Texinfo/Parser.pm:4859
+#: tp/Texinfo/Parser.pm:4877
 #, fuzzy, perl-format
 msgid "unknown command `%s'"
 msgstr "未知的命令 `%s'"
 
-#: tp/Texinfo/Parser.pm:4869
+#: tp/Texinfo/Parser.pm:4887
 #, fuzzy
 msgid "unexpected @"
 msgstr "Expected `%s'"
 
-#: tp/Texinfo/Parser.pm:4898
+#: tp/Texinfo/Parser.pm:4916
 #, fuzzy, perl-format
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "@%s 在 `@%s' 區塊之內, 並不具有意義"
 
-#: tp/Texinfo/Parser.pm:4903
+#: tp/Texinfo/Parser.pm:4921
 #, perl-format
 msgid "@%s should be right below `@float'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4911
+#: tp/Texinfo/Parser.pm:4929
 #, perl-format
 msgid "ignoring multiple @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5027
+#: tp/Texinfo/Parser.pm:5048
 #, fuzzy, perl-format
 msgid "command @%s does not accept arguments"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:5051
+#: tp/Texinfo/Parser.pm:5072
 #, fuzzy, perl-format
 msgid "command @%s missing a node or external manual argument"
 msgstr "%s: 遺漏檔案引數.\n"
 
-#: tp/Texinfo/Parser.pm:5070
+#: tp/Texinfo/Parser.pm:5091
 #, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5081
+#: tp/Texinfo/Parser.pm:5102
 #, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5094
+#: tp/Texinfo/Parser.pm:5115
 msgid "@image missing filename argument"
 msgstr "@image 沒有檔名引數"
 
-#: tp/Texinfo/Parser.pm:5124
+#: tp/Texinfo/Parser.pm:5147
 #, fuzzy, perl-format
 msgid "@%s missing first argument"
 msgstr "%s: 遺漏檔案引數.\n"
 
-#: tp/Texinfo/Parser.pm:5246
+#: tp/Texinfo/Parser.pm:5301
 #, fuzzy
 msgid "superfluous arguments for node"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:5285
+#: tp/Texinfo/Parser.pm:5351
 #, fuzzy, perl-format
 msgid "expected @end %s"
 msgstr "Expected `%s'"
 
-#: tp/Texinfo/Parser.pm:5384
+#: tp/Texinfo/Parser.pm:5450
 #, fuzzy, perl-format
 msgid "@%s should only accept a @-command as argument, not `%s'"
 msgstr "使用大括號將命令包起來, 以作為 @%s 的引數"
 
-#: tp/Texinfo/Parser.pm:5394
+#: tp/Texinfo/Parser.pm:5460
 #, fuzzy, perl-format
 msgid "remaining argument on @%s line: %s"
 msgstr "對 %c%s 無用的引數"
 
-#: tp/Texinfo/Parser.pm:5467
+#: tp/Texinfo/Parser.pm:5533
 #, fuzzy, perl-format
 msgid "environment command %s as argument to @%s"
 msgstr "使用大括號將命令包起來, 以作為 @%s 的引數"
 
-#: tp/Texinfo/Parser.pm:5489
+#: tp/Texinfo/Parser.pm:5555
 #, perl-format
 msgid "empty @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5497
+#: tp/Texinfo/Parser.pm:5563
 #, perl-format
 msgid "column fraction not a number: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5506
+#: tp/Texinfo/Parser.pm:5572
 #, fuzzy, perl-format
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "%s: %s 引數必須為數值, 而不是 `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5515
+#: tp/Texinfo/Parser.pm:5581
 #, perl-format
 msgid "reserved index name %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5534
+#: tp/Texinfo/Parser.pm:5600
 #, fuzzy, perl-format
 msgid "unknown source index in @%s: %s"
 msgstr "未知的索引 `%s'"
 
-#: tp/Texinfo/Parser.pm:5537
+#: tp/Texinfo/Parser.pm:5603
 #, fuzzy, perl-format
 msgid "unknown destination index in @%s: %s"
 msgstr "未知的索引 `%s'"
 
-#: tp/Texinfo/Parser.pm:5567
+#: tp/Texinfo/Parser.pm:5633
 #, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5580
+#: tp/Texinfo/Parser.pm:5646
 #, fuzzy, perl-format
 msgid "unknown index `%s' in @printindex"
 msgstr "@printindex 中有未知的索引 `%s'"
 
-#: tp/Texinfo/Parser.pm:5586
+#: tp/Texinfo/Parser.pm:5652
 #, perl-format
 msgid "printing an index `%s' merged in another one `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5594
+#: tp/Texinfo/Parser.pm:5660
 #, perl-format
 msgid "printindex before document beginning: @printindex %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5610
+#: tp/Texinfo/Parser.pm:5676
 #, fuzzy, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr "%s: %s 引數必須為數值, 而不是 `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5618
+#: tp/Texinfo/Parser.pm:5684
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5626
+#: tp/Texinfo/Parser.pm:5692
 #, fuzzy, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr "%s: --footnote-style 的引數必須為 `separate' 或 `end', 而不是 `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5634
+#: tp/Texinfo/Parser.pm:5700
 #, fuzzy, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr "%s: %s 引數必須為數值, 而不是 `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5652 tp/Texinfo/Parser.pm:5657
+#: tp/Texinfo/Parser.pm:5718 tp/Texinfo/Parser.pm:5723
 #, fuzzy, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr "%s: --paragraph-indent 的引數必須為 數值/`none'/`asis', 而不是 `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5665
+#: tp/Texinfo/Parser.pm:5731
 #, fuzzy, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr "%s: --paragraph-indent 的引數必須為 數值/`none'/`asis', 而不是 `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5675
+#: tp/Texinfo/Parser.pm:5741
 #, fuzzy, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr "%s: --paragraph-indent 的引數必須為 數值/`none'/`asis', 而不是 `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5686
+#: tp/Texinfo/Parser.pm:5752
 #, perl-format
 msgid "expected @%s on or off, not `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5696
+#: tp/Texinfo/Parser.pm:5762
 #, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5704
+#: tp/Texinfo/Parser.pm:5770
 #, fuzzy, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr "%s: --footnote-style 的引數必須為 `separate' 或 `end', 而不是 `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5712
+#: tp/Texinfo/Parser.pm:5778
 #, fuzzy, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr "%s: --footnote-style 的引數必須為 `separate' 或 `end', 而不是 `%s'.\n"
@@ -2977,67 +3102,67 @@ msgstr ""
 msgid "lowering the section level of @%s appearing after a lower element"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:347
+#: tp/Texinfo/Structuring.pm:357
 #, perl-format
 msgid "no sectioning command associated with @%s"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:538 tp/Texinfo/Structuring.pm:1319
+#: tp/Texinfo/Structuring.pm:548 tp/Texinfo/Structuring.pm:1329
 #, fuzzy, perl-format
 msgid "@%s reference to nonexistent node `%s'"
 msgstr "%s 參照到不存在的節點: `%s'"
 
-#: tp/Texinfo/Structuring.pm:551
+#: tp/Texinfo/Structuring.pm:561
 #, perl-format
 msgid "@%s entry node name `%s' different from %s name `%s'"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:656
+#: tp/Texinfo/Structuring.pm:666
 #, perl-format
 msgid "unreferenced node `%s'"
 msgstr "未被參照的節點 `%s'"
 
-#: tp/Texinfo/Structuring.pm:702
+#: tp/Texinfo/Structuring.pm:712
 #, perl-format
 msgid "node `%s' is %s for `%s' in sectioning but not in menu"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:709
+#: tp/Texinfo/Structuring.pm:719
 #, perl-format
 msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:727
+#: tp/Texinfo/Structuring.pm:737
 #, perl-format
 msgid "node `%s' is %s for `%s' in menu but not in sectioning"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:781
+#: tp/Texinfo/Structuring.pm:791
 #, perl-format
 msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:808
+#: tp/Texinfo/Structuring.pm:818
 #, fuzzy, perl-format
 msgid "%s reference to nonexistent `%s'"
 msgstr "未被參照的節點 `%s'"
 
-#: tp/Texinfo/Structuring.pm:827
+#: tp/Texinfo/Structuring.pm:837
 #, perl-format
 msgid "node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:835
+#: tp/Texinfo/Structuring.pm:845
 #, perl-format
 msgid "for `%s', up in menu `%s' and up `%s' don't match"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:1331
+#: tp/Texinfo/Structuring.pm:1341
 #, perl-format
 msgid "@%s to `%s', different from %s name `%s'"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:1997
+#: tp/Texinfo/Structuring.pm:2007
 #, fuzzy, perl-format
 msgid "empty index key in @%s"
 msgstr "找不到包含 `%s' 的索引項目\n"
@@ -3203,23 +3328,23 @@ msgstr "無法開啟至 `%s' 的管道."
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr ""
 
-#: tp/texi2any.pl:718
+#: tp/texi2any.pl:723
 #, fuzzy
 msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 msgstr "用法: %s [OPTION]... FILE...\n"
 
-#: tp/texi2any.pl:719
+#: tp/texi2any.pl:724
 #, fuzzy
 msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 msgstr "用法: %s [OPTION]... FILE...\n"
 
-#: tp/texi2any.pl:721
+#: tp/texi2any.pl:726
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
 msgstr ""
 
-#: tp/texi2any.pl:724
+#: tp/texi2any.pl:729
 #, perl-format
 msgid ""
 "General options:\n"
@@ -3238,7 +3363,7 @@ msgid ""
 "      --version               display version information and exit.\n"
 msgstr ""
 
-#: tp/texi2any.pl:739
+#: tp/texi2any.pl:744
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3248,7 +3373,7 @@ msgid ""
 "      --dvi, --dvipdf, --ps, --pdf  call texi2dvi to generate given output.\n"
 msgstr ""
 
-#: tp/texi2any.pl:747
+#: tp/texi2any.pl:752
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -3275,7 +3400,7 @@ msgid ""
 "                                Otherwise, DEST names the output file.\n"
 msgstr ""
 
-#: tp/texi2any.pl:767
+#: tp/texi2any.pl:772
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3297,7 +3422,7 @@ msgid ""
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
 
-#: tp/texi2any.pl:784
+#: tp/texi2any.pl:789
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3311,19 +3436,19 @@ msgid ""
 "                                anchors; default is set only if split.\n"
 msgstr ""
 
-#: tp/texi2any.pl:795
+#: tp/texi2any.pl:800
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:798
+#: tp/texi2any.pl:803
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:801
+#: tp/texi2any.pl:806
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3333,7 +3458,7 @@ msgid ""
 "  -U VAR                        undefine the variable VAR, as with @clear.\n"
 msgstr ""
 
-#: tp/texi2any.pl:808
+#: tp/texi2any.pl:813
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -3353,7 +3478,7 @@ msgid ""
 "  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
 msgstr ""
 
-#: tp/texi2any.pl:825
+#: tp/texi2any.pl:830
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating Docbook, --ifdocbook is on and the others are off;\n"
@@ -3363,7 +3488,7 @@ msgid ""
 "  if generating XML, --ifxml is on and the others are off.\n"
 msgstr ""
 
-#: tp/texi2any.pl:832
+#: tp/texi2any.pl:837
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -3395,76 +3520,76 @@ msgstr ""
 "程式臭蟲, 請以電子郵件 (英文) 回報至 bug-texinfo@gnu.org,\n"
 "一般問題與討論, 請以電子郵件 (英文) 寄到 help-texinfo@gnu.org."
 
-#: tp/texi2any.pl:879
+#: tp/texi2any.pl:884
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr "%s: --footnote-style 的引數必須為 `separate' 或 `end', 而不是 `%s'.\n"
 
-#: tp/texi2any.pl:961
+#: tp/texi2any.pl:966
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr "%s: --paragraph-indent 的引數必須為 數值/`none'/`asis', 而不是 `%s'.\n"
 
-#: tp/texi2any.pl:1038
+#: tp/texi2any.pl:1043
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 
-#: tp/texi2any.pl:1042
+#: tp/texi2any.pl:1047
 msgid "--Xopt option without printed output"
 msgstr ""
 
-#: tp/texi2any.pl:1052
+#: tp/texi2any.pl:1057
 #, fuzzy, perl-format
 msgid "unknown tree transformation %s"
 msgstr "未知的命令 `%s'"
 
-#: tp/texi2any.pl:1059
+#: tp/texi2any.pl:1064
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:1109
+#: tp/texi2any.pl:1114
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: 遺漏檔案引數.\n"
 
-#: tp/texi2any.pl:1110
+#: tp/texi2any.pl:1115
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "試試 `%s --help' 以取得更多的資訊.\n"
 
-#: tp/texi2any.pl:1181
+#: tp/texi2any.pl:1193
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 
-#: tp/texi2any.pl:1203
+#: tp/texi2any.pl:1215
 #, fuzzy, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/texi2any.pl:1209
+#: tp/texi2any.pl:1221
 #, fuzzy, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/texi2any.pl:1234
+#: tp/texi2any.pl:1246
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
 msgstr ""
 
-#: tp/texi2any.pl:1299 tp/texi2any.pl:1375
+#: tp/texi2any.pl:1311 tp/texi2any.pl:1387
 #, fuzzy, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/texi2any.pl:1322 tp/texi2any.pl:1356
+#: tp/texi2any.pl:1334 tp/texi2any.pl:1368
 #, fuzzy, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/texi2any.pl:1328 tp/texi2any.pl:1362
+#: tp/texi2any.pl:1340 tp/texi2any.pl:1374
 #, fuzzy, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "無法建立輸出檔案 `%s'."
@@ -3524,6 +3649,9 @@ msgstr "在 %s 中沒有頁碼"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr ""
+
+#~ msgid "Done."
+#~ msgstr "完成."
 
 #, fuzzy
 #~ msgid "tex4ht.pm: could not open %s"

@@ -52,7 +52,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.0';
+$VERSION = '5.1.90';
 
 # XML specific
 my %defaults = (
@@ -141,7 +141,7 @@ sub protect_text($$)
 {
   my $self = shift;
   my $string = shift;
-  return $self->xml_protect_text($string);
+  return $self->_protect_text($string);
 }
 
 sub _xml_attributes($$)
@@ -153,7 +153,21 @@ sub _xml_attributes($$)
   }
   my $result = '';
   for (my $i = 0; $i < scalar(@$attributes); $i += 2) {
-    $result .= " $attributes->[$i]=\"".$self->xml_protect_text($attributes->[$i+1])."\"";
+    # this cannot be used, because of formfeed, as in 
+    # attribute < which is substituted from &formfeed; is not allowed
+    #my $text = $self->_protect_text($attributes->[$i+1]);
+    my $text = $self->xml_protect_text($attributes->[$i+1]);
+    # in fact form feed is not allowed at all in XML, even protected
+    # and even in xml 1.1 in contrast to what is said on internet.
+    # maybe this is a limitation of libxml?
+    #$text =~ s/\f/&#12;/g;
+    if ($attributes->[$i] ne 'spaces' 
+        and $attributes->[$i] ne 'trailingspaces') {
+      $text =~ s/\f/&attrformfeed;/g;
+      # &attrformfeed; resolves to \f so \ are doubled
+      $text =~ s/\\/\\\\/g;
+    }
+    $result .= " $attributes->[$i]=\"".$text."\"";
   }
   return $result;
 }
@@ -212,12 +226,22 @@ sub format_comment($$)
   return $self->xml_comment($string);
 }
 
+# form feed is not accepted in xml, replace it.
+sub _protect_text($$)
+{
+  my $self = shift;
+  my $text = shift;
+  my $result = $self->xml_protect_text($text);
+  $result =~ s/\f/&formfeed;/g;
+  return $result;
+}
+
 # format specific
 sub format_text($$)
 {
   my $self = shift;
   my $root = shift;
-  my $result = $self->xml_protect_text($root->{'text'});
+  my $result = $self->_protect_text($root->{'text'});
   if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
     if (!$self->{'document_context'}->[-1]->{'monospace'}->[-1]) {
       $result =~ s/``/&textldquo;/g;
@@ -326,10 +350,14 @@ foreach my $explained_command (keys(%Texinfo::Common::explained_commands)) {
                                                  "${explained_command}desc"];
 }
 
-foreach my $inline_command (keys(%Texinfo::Common::inline_format_commands)) {
+foreach my $inline_command (keys(%Texinfo::Common::inline_commands)) {
   $commands_args_elements{$inline_command} = ["${inline_command}format",
                                               "${inline_command}content"];
 }
+
+my $inline_command = 'inlinefmtifelse';
+$commands_args_elements{$inline_command} = ["${inline_command}format",
+             "${inline_command}contentif", "${inline_command}contentelse"];
 
 my %commands_elements;
 foreach my $command (keys(%Texinfo::Common::brace_commands)) {
@@ -546,10 +574,11 @@ sub convert_tree($$)
   return $self->_convert($root);
 }
 
-sub _protect_end_of_lines($)
+sub _protect_in_spaces($)
 {
   my $text = shift;
   $text =~ s/\n/\\n/g;
+  $text =~ s/\f/\\f/g;
   return $text;
 }
 
@@ -558,7 +587,7 @@ sub _leading_spaces($)
   my $root = shift;
   if ($root->{'extra'} and $root->{'extra'}->{'spaces_after_command'}
       and $root->{'extra'}->{'spaces_after_command'}->{'type'} eq 'empty_spaces_after_command') {
-    return ('spaces', _protect_end_of_lines(
+    return ('spaces', _protect_in_spaces(
          $root->{'extra'}->{'spaces_after_command'}->{'text'}));
   } else {
     return ();
@@ -571,7 +600,7 @@ sub _leading_spaces_before_argument($)
   if ($root->{'extra'} and $root->{'extra'}->{'spaces_before_argument'}
       and $root->{'extra'}->{'spaces_before_argument'}->{'type'} eq 'empty_spaces_before_argument'
       and $root->{'extra'}->{'spaces_before_argument'}->{'text'} ne '') {
-    return ('spaces', _protect_end_of_lines(
+    return ('spaces', _protect_in_spaces(
                  $root->{'extra'}->{'spaces_before_argument'}->{'text'}));
   } else {
     return ();
@@ -626,7 +655,7 @@ sub _trailing_spaces_arg($$)
   if (defined($spaces[1])) {
     chomp($spaces[1]);
     if ($spaces[1] ne '') {
-      return ('trailingspaces', $spaces[1]);
+      return ('trailingspaces', _protect_in_spaces($spaces[1]));
     }
   }
   return ();
@@ -640,7 +669,7 @@ sub _leading_spaces_arg($$)
   my @result = ();
   my @spaces = $self->_collect_leading_trailing_spaces_arg($root);
   if (defined($spaces[0]) and $spaces[0] ne '') {
-    @result = ('spaces', _protect_end_of_lines($spaces[0]));
+    @result = ('spaces', _protect_in_spaces($spaces[0]));
   }
   return @result;
 }
@@ -653,12 +682,12 @@ sub _leading_trailing_spaces_arg($$)
   my @result;
   my @spaces = $self->_collect_leading_trailing_spaces_arg($root);
   if (defined($spaces[0]) and $spaces[0] ne '') {
-    push @result, ('spaces', _protect_end_of_lines($spaces[0]));
+    push @result, ('spaces', _protect_in_spaces($spaces[0]));
   }
   if (defined($spaces[1])) {
     chomp($spaces[1]);
     if ($spaces[1] ne '') {
-      push @result, ('trailingspaces', $spaces[1]);
+      push @result, ('trailingspaces', _protect_in_spaces($spaces[1]));
     }
   }
   return @result;

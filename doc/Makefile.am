@@ -1,4 +1,4 @@
-# $Id: Makefile.am 5191 2013-02-23 00:11:18Z karl $
+# $Id: Makefile.am 5376 2013-09-13 17:07:26Z karl $
 # Makefile.am for texinfo/doc.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
@@ -14,9 +14,9 @@
 
 SUBDIRS = tp_api
 
-# Put texinfo.txi first because that's the most important.
-info_TEXINFOS = texinfo.txi info-stnd.texi info.texi
-DISTCLEANFILES = texinfo texinfo-* info*.info*
+# Put the Texinfo manual first because that's the most important.
+info_TEXINFOS = texinfo.texi info-stnd.texi info.texi
+DISTCLEANFILES = texinfo.info* info*.info*
 
 # Use the programs built in our distribution, taking account of possible
 # cross-compiling.
@@ -101,7 +101,7 @@ wwwdoc-build:
 	rm -rf $(doctemp) && mkdir $(doctemp)
 	cd $(doctemp) \
 	&& pod2html $(abs_top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl >pod2texi.html \
-	&& ln -s ../*.texi ../*.txi . \
+	&& ln -s ../*.texi . \
 	&& $(gendocs_invoke) -o $(manual1) $(manual1) $(manual1_title) \
 	&& $(gendocs_invoke) -o $(manual2) $(manual2) $(manual2_title) \
 	&& $(gendocs_invoke) -o $(manual3) $(manual3) $(manual3_title)

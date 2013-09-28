@@ -38,6 +38,24 @@ new para.
 
 @end flushright
 '],
+['flushright_in_example',
+'
+@example
+@flushright
+  aaa bb @anchor{rrr} ada   
+             dad  sff sd @anchor{a1} and @anchor{a2} dsdbf
+             dad  sff sd @anchor{a3} and @anchor{a4} dsdbf
+
+dqs
+sqdd
+
+@anchor{alone}
+
+new para.
+
+@end flushright
+@end example
+'],
 ['multitable',
 '
 @multitable {aaa} {bb1} {ccc}

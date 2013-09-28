@@ -22277,6 +22277,42 @@ $result_converted_errors{'file_info'}->{'at_commands_in_refs_latin1'} = [
   },
   {
     'file_name' => '',
+    'error_line' => ':33: warning: menu entry node name should not contain `:\'
+',
+    'text' => 'menu entry node name should not contain `:\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 33
+  },
+  {
+    'file_name' => '',
+    'error_line' => ":45: warning: \@node name should not contain `,': LaTeX TeX * , \x{a9} ... ...
+",
+    'text' => "\@node name should not contain `,': LaTeX TeX * , \x{a9} ... ...",
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 45
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':69: warning: @node name should not contain `,\': i E=` C\',
+',
+    'text' => '@node name should not contain `,\': i E=` C\',',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 69
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':72: warning: @node name should not contain `,\': `` \'\' ` \' ,, ,
+',
+    'text' => '@node name should not contain `,\': `` \'\' ` \' ,, ,',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 72
+  },
+  {
+    'file_name' => '',
     'error_line' => ':92: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
     'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
@@ -22301,6 +22337,15 @@ $result_converted_errors{'file_info'}->{'at_commands_in_refs_latin1'} = [
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 92
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':152: warning: @ref node name should not contain `:\'
+',
+    'text' => '@ref node name should not contain `:\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 152
   }
 ];
 

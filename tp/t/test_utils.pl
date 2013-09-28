@@ -342,12 +342,12 @@ sub cmp_trimmed($$$$)
   my $reference = shift;
   my $deleted_keys = shift;
   my $test_name = shift;
-  my $trimmed = remove_keys ($compared, $deleted_keys);
+  my $trimmed = remove_keys($compared, $deleted_keys);
 no warnings 'recursion';
   cmp_deeply($trimmed, $reference, $test_name);
 }
 
-sub new_test ($;$$$)
+sub new_test($;$$$)
 {
   my $name = shift;
   my $generate = shift;
@@ -670,6 +670,11 @@ sub test($$)
     }
     delete $parser_options->{'test_split'};
   }
+  my %todos;
+  if ($parser_options->{'todo'}) {
+    %todos = %{$parser_options->{'todo'}};
+    delete $parser_options->{'todo'};
+  }
   my $split_pages = '';
   if ($parser_options->{'test_split_pages'}) {
     $split_pages = $parser_options->{'test_split_pages'};
@@ -970,7 +975,14 @@ sub test($$)
         $test_name.' indices');
     ok (Texinfo::Convert::Texinfo::convert($result) eq $result_texis{$test_name}, 
          $test_name.' texi');
-    ok ($converted_text eq $result_texts{$test_name}, $test_name.' text');
+    if ($todos{'text'}) {
+      TODO: {
+        local $TODO = $todos{'text'};
+        ok ($converted_text eq $result_texts{$test_name}, $test_name.' text');
+      }
+    } else {
+      ok ($converted_text eq $result_texts{$test_name}, $test_name.' text');
+    }
     $tests_count = $nr_comparisons;
     if (defined($result_directions_text{$test_name})) {
       cmp_trimmed($elements, $result_elements{$test_name}, 
@@ -992,8 +1004,16 @@ sub test($$)
             $reference_exists = 1;
             $tests_count += 1;
             my $errors = compare_dirs_files($reference_dir, $results_dir);
-            ok (!defined($errors), $test_name.' converted '.$format)
-             or diag (join("\n", @$errors));
+            if ($todos{$format}) {
+              TODO: {
+                local $TODO = $todos{$format};
+                ok (!defined($errors), $test_name.' converted '.$format)
+                  or diag (join("\n", @$errors));
+              }
+            } else {
+              ok (!defined($errors), $test_name.' converted '.$format)
+                or diag (join("\n", @$errors));
+            }
           } else {
             print STDERR "\n$format $test_name: \n$results_dir\n";
           }
@@ -1008,8 +1028,18 @@ sub test($$)
         } else {
           $reference_exists = 1;
           $tests_count += 1;
-          ok ($converted{$format} eq $result_converted{$format}->{$test_name},
-            $test_name.' converted '.$format);
+          if ($todos{$format}) {
+            TODO: {
+              local $TODO = $todos{$format};
+              ok ($converted{$format} 
+                              eq $result_converted{$format}->{$test_name},
+                   $test_name.' converted '.$format);
+            }
+          } else {
+            ok ($converted{$format} 
+                           eq $result_converted{$format}->{$test_name},
+                $test_name.' converted '.$format);
+          }
         }
         if ($reference_exists) {
           $tests_count += 1;
@@ -1026,6 +1056,7 @@ sub test($$)
   return $tests_count;
 }
 
+# if a $test_case_name is given, only run that test.
 sub run_all($$;$$$)
 {
   my $name = shift;

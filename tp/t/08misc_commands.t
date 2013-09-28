@@ -384,6 +384,10 @@ After true
 @testallowcodebreakspara{2}
 @testallowcodebreaksexample{}
 '],
+['incorrect_allowcodebreaks_argument',
+'@allowcodebreaks _arg
+@code{b a}
+'],
 ['codequoteundirected_codequotebacktick',
 '@macro quotes
 ``simple-double--three---four----\'\' `simple\' quotedblleft: @quotedblleft{} @*

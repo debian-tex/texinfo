@@ -12,6 +12,7 @@ gnulib/lib/getopt.c
 gnulib/lib/regcomp.c
 gnulib/lib/xalloc-die.c
 info/echo-area.c
+info/filesys.c
 info/footnotes.c
 info/footnotes.h
 info/indices.c

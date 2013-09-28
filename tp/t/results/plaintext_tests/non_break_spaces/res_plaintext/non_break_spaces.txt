@@ -1,0 +1,4 @@
+NO-BREAK SPACE:
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbb
+NARROW NO-BREAK SPACE:
+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc dddddddddddddddddddd

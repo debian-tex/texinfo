@@ -1,4 +1,4 @@
-# $Id: Makefile.am 5191 2013-02-23 00:11:18Z karl $
+# $Id: Makefile.am 5346 2013-08-27 20:20:49Z pertusus $
 # Makefile.am for texinfo/tp/tests.
 # Copyright 2012, 2013 Free Software Foundation, Inc.
 #
@@ -62,7 +62,7 @@ tex-html-checks tex-html-check: all
 all-local: htmlxref/htmlxref.cnf htmlxref-only_mono/htmlxref.cnf \
  htmlxref-only_split/htmlxref.cnf htmlxref-only_split/.texinfo/htmlxref.cnf \
  sectioning/equivalent_nodes-noderename.cnf \
- formatting/unknown_nodes_renamed-noderename.cnf
+ formatting/unknown_nodes_renamed-noderename.cnf coverage_macro-cr.texi
 
 htmlxref/htmlxref.cnf: htmlxref/htmlxref.cnf-ref
 	${INSTALL_DATA} $(srcdir)/htmlxref/htmlxref.cnf-ref $@
@@ -78,7 +78,7 @@ htmlxref-only_split/.texinfo/htmlxref.cnf: \
 	${INSTALL_DATA} $(srcdir)/htmlxref-only_split/htmlxref.cnf-texinfo $@
 
 htmlxref-only_split/.texinfo:
-	$(mkdir_p) $@
+	$(MKDIR_P) $@
 
 sectioning/equivalent_nodes-noderename.cnf: sectioning/renamednodes.cnf-ref
 	${INSTALL_DATA} $(srcdir)/sectioning/renamednodes.cnf-ref $@
@@ -86,5 +86,9 @@ sectioning/equivalent_nodes-noderename.cnf: sectioning/renamednodes.cnf-ref
 formatting/unknown_nodes_renamed-noderename.cnf: formatting/unknown_nodes_renamed-noderename.cnf-ref
 	${INSTALL_DATA} $(srcdir)/formatting/unknown_nodes_renamed-noderename.cnf-ref $@
 
+coverage_macro-cr.texi: coverage_macro.texi
+	sed 's/$$/\r/' $(srcdir)/coverage_macro.texi > $@
+
 EXTRA_DIST = run_parser_all.sh parser_tests.sh \
- $(old_test_scripts) $(one_test_files_generated_list) coverage_macro.texi
+ $(old_test_scripts) $(one_test_files_generated_list) coverage_macro.texi \
+ coverage_macro-cr.texi

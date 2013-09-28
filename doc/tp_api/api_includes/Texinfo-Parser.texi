@@ -1398,33 +1398,33 @@ is in @emph{quotation}.
 The author tree element is in the @emph{author} array of the @code{@@titlepage}
 or the @code{@@quotation} or @code{@@smallquotation} it is associated with.
 
-@item @@ifclear
-@anchor{Texinfo::Parser @@ifclear}
+@item @code{@@ifclear}
+@anchor{Texinfo::Parser @code{@@ifclear}}
 
-@item @@ifset
-@anchor{Texinfo::Parser @@ifset}
+@item @code{@@ifset}
+@anchor{Texinfo::Parser @code{@@ifset}}
 
 The original line is in @emph{line}.
 
-@item @@end
-@anchor{Texinfo::Parser @@end}
+@item @code{@@end}
+@anchor{Texinfo::Parser @code{@@end}}
 
 The textual argument is in @emph{command_argument}.
 The corresponding @@-command is in @emph{command}.
 
-@item @@documentencoding
-@anchor{Texinfo::Parser @@documentencoding}
+@item @code{@@documentencoding}
+@anchor{Texinfo::Parser @code{@@documentencoding}}
 
 The argument, normalized is in @emph{input_encoding_name} if it is recognized.
 The corresponding perl encoding name is in @emph{input_perl_encoding}.
 
-@item @@click
-@anchor{Texinfo::Parser @@click}
+@item @code{@@click}
+@anchor{Texinfo::Parser @code{@@click}}
 
 In @emph{clickstyle} there is the current clickstyle command.
 
-@item kbd
-@anchor{Texinfo::Parser kbd}
+@item @code{@@kbd}
+@anchor{Texinfo::Parser @code{@@kbd}}
 
 @emph{code} is set depending on the context and @code{@@kbdinputstyle}.
 
@@ -1446,6 +1446,27 @@ the one appearing in the @emph{nodes_manuals} array for @code{@@node}.
 @anchor{Texinfo::Parser empty_line_after_command 1}
 
 The corresponding command is in @emph{command}.
+
+@item @code{@@inlinefmt}
+@anchor{Texinfo::Parser @code{@@inlinefmt}}
+
+@item @code{@@inlineraw}
+@anchor{Texinfo::Parser @code{@@inlineraw}}
+
+@item @code{@@inlinefmtifelse}
+@anchor{Texinfo::Parser @code{@@inlinefmtifelse}}
+
+@item @code{@@inlineifclear}
+@anchor{Texinfo::Parser @code{@@inlineifclear}}
+
+@item @code{@@inlineifset}
+@anchor{Texinfo::Parser @code{@@inlineifset}}
+
+The first argument is in @emph{format}.  If an argument has been determined
+as being expanded by the Parser, the index of this argument is in
+@emph{expand_index}.  Index numbering begins at 0, but the first argument is
+always the format or flag name, so, if set, it should be 1 or 2 for
+@code{@@inlinefmtifelse}, and 1 for other commands.
 
 @end table
 

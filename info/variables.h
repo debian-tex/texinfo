@@ -1,10 +1,8 @@
 /* variables.h -- Description of user visible variables in Info.
-   $Id: variables.h 5191 2013-02-23 00:11:18Z karl $
+   $Id: variables.h 5337 2013-08-22 17:54:06Z karl $
 
-   This file is part of GNU Info, a program for reading online documentation
-   stored in Info format.
-
-   Copyright (C) 1993, 1997, 2004, 2007, 2011 Free Software Foundation, Inc.
+   Copyright 1993, 1997, 2004, 2007, 2011, 2013
+   Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #ifndef INFO_VARIABLES_H
 #define INFO_VARIABLES_H
@@ -64,5 +62,6 @@ extern int cursor_movement_scrolls_p;
 extern int ISO_Latin_p;
 extern int scroll_last_node;
 extern int min_search_length;
+extern int search_skip_screen_p;
 
 #endif /* not INFO_VARIABLES_H */

@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: txitextest 5191 2013-02-23 00:11:18Z karl $
+# $Id: txitextest 5320 2013-08-16 13:50:01Z karl $
 # Copyright 2006, 2011, 2012, 2013 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,7 @@ tsrc=`cd \`dirname $0\` && pwd`/../..
 PATH=$tsrc/util:$PATH
 
 tdoc=$tsrc/doc
-default_manuals="$tdoc/texinfo.txi $tdoc/info.texi $tdoc/info-stnd.texi"
+default_manuals="$tdoc/texinfo.texi $tdoc/info.texi $tdoc/info-stnd.texi"
 
 olddir=$tsrc/../gnulib/config
 newdir=$tdoc

@@ -1,7 +1,7 @@
 /* info-utils.h -- Exported functions and variables from info-utils.c.
-   $Id: info-utils.h 5191 2013-02-23 00:11:18Z karl $   
+   $Id: info-utils.h 5337 2013-08-22 17:54:06Z karl $   
 
-   Copyright (C) 1993, 1996, 1998, 2002, 2003, 2004, 2007, 2011, 2012
+   Copyright 1993, 1996, 1998, 2002, 2003, 2004, 2007, 2011, 2012, 2013
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #ifndef INFO_UTILS_H
 #define INFO_UTILS_H
@@ -99,6 +99,9 @@ REFERENCE **info_concatenate_references (REFERENCE **ref1, REFERENCE **ref2);
 /* Copy an existing reference into new memory.  */
 extern REFERENCE *info_copy_reference (REFERENCE *src);
 
+/* Free the data associated with a single REF */
+void info_reference_free (REFERENCE *ref);
+
 /* Free the data associated with REFERENCES. */
 extern void info_free_references (REFERENCE **references);
 
@@ -166,5 +169,9 @@ size_t text_buffer_printf (struct text_buffer *buf, const char *format, ...);
 #define text_buffer_reset(buf) ((buf)->off = 0)
 #define text_buffer_base(buf) ((buf)->base)
 #define text_buffer_off(buf) ((buf)->off)
+
+struct info_namelist_entry;
+int info_namelist_add (struct info_namelist_entry **ptop, const char *name);
+void info_namelist_free (struct info_namelist_entry *top);
 
 #endif /* not INFO_UTILS_H */

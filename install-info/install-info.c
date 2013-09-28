@@ -1,5 +1,5 @@
 /* install-info -- merge Info directory entries from an Info file.
-   $Id: install-info.c 5226 2013-03-09 02:21:54Z karl $
+   $Id: install-info.c 5313 2013-08-15 16:07:06Z karl $
 
    Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013
@@ -630,7 +630,7 @@ ensure_dirfile_exists (char *dirfile)
           fprintf (f, _("This is the file .../info/dir, which contains the\n\
 topmost node of the Info hierarchy, called (dir)Top.\n\
 The first time you invoke Info you start off looking at this node.\n\
-\x1f\n\
+%c\n\
 %s\tThis is the top of the INFO tree\n\
 \n\
   This (the Directory node) gives a menu of major topics.\n\
@@ -642,9 +642,9 @@ The first time you invoke Info you start off looking at this node.\n\
   to select it.\n\
 \n\
 %s\n\
-"), "File: dir,\tNode: Top",  /* These keywords must not be translated.  */
-    "* Menu:"
-);
+"),         /* These keywords must not be translated:  */
+            '\x1f',  "File: dir,\tNode: Top",  "* Menu:"
+          );
           if (fclose (f) < 0)
             pfatal_with_name (dirfile);
         }

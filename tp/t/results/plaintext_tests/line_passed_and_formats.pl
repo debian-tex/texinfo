@@ -3614,9 +3614,11 @@ $result_converted{'plaintext'}->{'line_passed_and_formats'} = '     special: Quo
           In nested
 
 
+
    Example empty out, no spaces inside
 
           In nested
+
 
    menu
    end menu

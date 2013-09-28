@@ -55,6 +55,7 @@ $result_trees{'inlinefmt_with_empty_line'} = {
                 {}
               ]
             ],
+            'format' => 'plaintext',
             'spaces_before_argument' => {
               'text' => '',
               'type' => 'empty_spaces_before_argument'
@@ -133,6 +134,7 @@ $result_trees{'inlinefmt_with_empty_line'} = {
                 {}
               ]
             ],
+            'format' => 'html',
             'spaces_before_argument' => {
               'text' => '',
               'type' => 'empty_spaces_before_argument'

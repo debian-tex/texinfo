@@ -1,5 +1,8 @@
 #! /bin/sh
-# Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+# $Id: run_parser_all.sh 5238 2013-03-14 23:22:01Z karl $
+# Run all Texinfo tests.
+# 
+# Copyright 2010, 2011, 2012, 2013 Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -100,7 +103,7 @@ driving_file="$testdir/$srcdir_test/$test_file"
 if [ -f "$driving_file" ]; then
   :
 else
-  echo "Cannot find test driving file $driving_file" 1>&2
+  echo "$0: Cannot find test driving file $driving_file" 1>&2
   exit 1
 fi
 
@@ -151,7 +154,7 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
           fi
           cp -r "${outdir}$dir/"* "${resdir}$dir/"
         else
-          echo "No dir ${outdir}$dir" 1>&2
+          echo "$0: No dir ${outdir}$dir" 1>&2
         fi
       done
     fi
@@ -260,7 +263,7 @@ do
         if test z"$tmp_dir" = 'z'; then
            tmp_dir=`mktemp -d l2h_t2h_XXXXXXXX`
            if test z"$tmp_dir" = 'z'; then
-             echo "mktemp failed" 1>&2
+             echo "$0: mktemp failed" 1>&2
              exit 1
            fi
         fi

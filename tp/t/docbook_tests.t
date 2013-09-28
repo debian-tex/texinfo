@@ -5,6 +5,7 @@ BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{
 
 require 't/test_utils.pl';
 
+# special docbook quotations are tested for in 181quotation.t
 my @test_cases = (
 ['empty_quotation_with_arg_followed_by_quotation',
 '@quotation something
@@ -14,6 +15,39 @@ my @test_cases = (
 In quotation
 @end quotation
 '],
+['special_docbook_unnumbered',
+'@node Top
+@top top
+
+This is the top.
+
+@menu
+* Dedication::
+* preface::
+* glossary::
+* acknowledgements::
+@end menu
+
+@node Dedication
+@unnumbered a dedication
+
+Dedicated
+
+@node preface
+@unnumbered The Preface
+
+Preface.
+
+@node colophon
+@unnumbered A colophon
+
+Glossary
+
+@node acknowledgements
+@chapter A chapter Acnkowledgements
+
+Ack!
+']
 );
 
 foreach my $test (@test_cases) {

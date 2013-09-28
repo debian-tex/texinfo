@@ -1,7 +1,7 @@
 /* tag.c -- Functions to handle Info tags.
-   $Id: tag.h 5191 2013-02-23 00:11:18Z karl $
+   $Id: tag.h 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 2012 Free Software Foundation, Inc.
+   Copyright 2012, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 #ifndef TAG_H
 #define TAG_H
 
-void tags_expand (char **pbuf, size_t *pbuflen);
+int tags_expand (char *input, size_t inputlen, char **pbuf, size_t *pbuflen);
 void handle_tag (char *tag);
 
 #endif

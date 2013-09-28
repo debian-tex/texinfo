@@ -44,6 +44,13 @@
 # include <wchar.h>
 #endif
 
+/* mingw has declarations of towupper and towlower in <ctype.h> as
+   well <wctype.h>.  Include <ctype.h> in advance to avoid rpl_ prefix
+   being added to the declarations.  */
+#ifdef __MINGW32__
+# include <ctype.h>
+#endif
+
 /* Include the original <wctype.h> if it exists.
    BeOS 5 has the functions but no <wctype.h>.  */
 /* The include_next requires a split double-inclusion guard.  */
@@ -54,6 +61,9 @@
 #ifndef _@GUARD_PREFIX@_WCTYPE_H
 #define _@GUARD_PREFIX@_WCTYPE_H
 
+#ifndef _GL_INLINE_HEADER_BEGIN
+ #error "Please include config.h first."
+#endif
 _GL_INLINE_HEADER_BEGIN
 #ifndef _GL_WCTYPE_INLINE
 # define _GL_WCTYPE_INLINE _GL_INLINE

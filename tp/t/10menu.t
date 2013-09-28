@@ -86,6 +86,17 @@ Horizontal space
 @chapter first
 @node first
 '],
+['invalid_info_menu_entry',
+'@node Top
+
+@menu
+* (f)@asis{a:}::
+* @asis{name:}: (f)node.
+* name: (f)@asis{node. }. d
+* name: (f)@asis{node,n}. d2
+* name: (f)@asis{node	n}. d3
+@end menu
+'],
 ['no_colon_in_menu',
 '@node Top
 

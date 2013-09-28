@@ -67,7 +67,7 @@ move_index_entries_after_items_in_tree
 @EXPORT = qw(
 );
 
-$VERSION = '5.0';
+$VERSION = '5.1.90';
 
 # i18n
 sub N__($)
@@ -258,7 +258,7 @@ my @variable_string_settables = (
   'TEXTCONTENT_COMMENT', 'XREF_USE_FLOAT_LABEL', 'XREF_USE_NODE_NAME_ARG',
   'MACRO_BODY_IGNORES_LEADING_SPACE', 'CHECK_HTMLXREF',
   'TEXINFO_DTD_VERSION', 'TEXINFO_COLUMN_FOR_DESCRIPTION',
-  'TEXINFO_OUTPUT_FORMAT',
+  'TEXINFO_OUTPUT_FORMAT', 'INFO_SPECIAL_CHARS_WARNING',
 );
 # Not strings. 
 # FIXME To be documented somewhere, but where?
@@ -625,10 +625,25 @@ foreach my $explained_command ('abbr', 'acronym') {
 }
 
 our %inline_format_commands;
-foreach my $inline_format_command ('inlineraw', 'inlinefmt') {
+our %inline_commands;
+foreach my $inline_format_command ('inlineraw', 'inlinefmt', 
+        'inlinefmtifelse') {
   $inline_format_commands{$inline_format_command} = 1;
   $brace_commands{$inline_format_command} = 2;
+  $inline_commands{$inline_format_command} = 1;
 }
+
+$brace_commands{'inlinefmtifelse'} = 3;
+
+our %inline_conditional_commands;
+foreach my $inline_conditional_command ('inlineifclear', 'inlineifset') {
+  $inline_conditional_commands{$inline_conditional_command} = 1;
+  $brace_commands{$inline_conditional_command} = 2;
+  $inline_commands{$inline_conditional_command} = 1;
+}
+
+# 'inlineset', 'inlineclear'
+#$brace_commands{'inlineclear'} = 1;
 
 foreach my $two_arg_command('email') {
   $brace_commands{$two_arg_command} = 2;
@@ -1382,7 +1397,7 @@ sub enumerate_item_representation($$)
   my $specification = shift;
   my $number = shift;
 
-  if ($specification =~ /^[0-9]$/) {
+  if ($specification =~ /^[0-9]+$/) {
     return $specification + $number -1;
   }
 
@@ -1587,6 +1602,11 @@ sub count_bytes($$;$)
     return length(Encode::encode($encoding, $string));
   } else {
     return length($string);
+    #my $length = length($string);
+    #$string =~ s/\n/\\n/g;
+    #$string =~ s/\f/\\f/g;
+    #print STDERR "Count($length): $string\n";
+    #return $length;
   }
   # FIXME is the following required for correct count of end of lines?
   #if ($encoding) {

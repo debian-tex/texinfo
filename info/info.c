@@ -1,7 +1,7 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: info.c 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
+   Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013
    Free Software Foundation, Inc.
 
@@ -58,8 +58,8 @@ static int print_help_p = 0;
 /* Array of the names of nodes that the user specified with "--node" on the
    command line. */
 static char **user_nodenames = NULL;
-static int user_nodenames_index = 0;
-static int user_nodenames_slots = 0;
+static size_t user_nodenames_index = 0;
+static size_t user_nodenames_slots = 0;
 
 /* String specifying the first file to load.  This string can only be set
    by the user specifying "--file" on the command line. */
@@ -80,8 +80,14 @@ int vi_keys_p = 0;
 /* Non-zero means don't remove ANSI escape sequences.  */
 int raw_escapes_p = 1;
 
+/* Print/visit all matching documents. */
+static int all_matches_p = 0;
+
 /* Non-zero means print the absolute location of the file to be loaded.  */
 static int print_where_p = 0;
+
+/* Debugging level */
+unsigned debug_level;
 
 /* Non-zero means don't try to be smart when searching for nodes.  */
 int strict_node_location_p = 0;
@@ -102,7 +108,9 @@ int speech_friendly = 0;
 #define RESTORE_OPTION 3
 #define IDXSRCH_OPTION 4
 static struct option long_options[] = {
+  { "all", 0, 0, 'a' },
   { "apropos", 1, 0, 'k' },
+  { "debug", 1, 0, 'x' },
   { "directory", 1, 0, 'd' },
   { "dribble", 1, 0, DRIBBLE_OPTION },
   { "file", 1, 0, 'f' },
@@ -120,6 +128,7 @@ static struct option long_options[] = {
   { "strict-node-location", 0, &strict_node_location_p, 1 },
   { "subnodes", 0, &dump_subnodes, 1 },
   { "usage", 0, 0, 'O' },
+  { "variable", 0, 0, 'v' },
   { "version", 0, &print_version_p, 1 },
   { "vi-keys", 0, &vi_keys_p, 1 },
   { "where", 0, &print_where_p, 1 },
@@ -131,9 +140,9 @@ static struct option long_options[] = {
 
 /* String describing the shorthand versions of the long options found above. */
 #if defined(__MSDOS__) || defined(__MINGW32__)
-static char *short_options = "k:d:n:f:ho:ORswb";
+static char *short_options = "ak:d:n:f:ho:ORsv:wbx:";
 #else
-static char *short_options = "k:d:n:f:ho:ORws";
+static char *short_options = "ak:d:n:f:ho:ORv:wsx:";
 #endif
 
 /* When non-zero, the Info window system has been initialized. */
@@ -143,6 +152,350 @@ int info_windows_initialized_p = 0;
 static void info_short_help (void);
 static void init_messages (void);
 
+
+static const char *
+node_file_name (NODE *node, int dirok)
+{
+  if (node->parent)
+    return node->parent;
+  else if (node->filename
+	   && (dirok ||
+	       !is_dir_name (filename_non_directory (node->filename))))
+    return node->filename;
+  return 0;
+}
+
+static int
+single_file (char *filename, int argc, char **argv)
+{
+  NODE *initial_node;           /* First node loaded by Info. */
+  NODE *new_initial_node, *error_node;
+  
+  /* Get the initial Info node.  It is either "(dir)Top", or what the user
+     specifed with values in filename and user_nodenames. */
+  initial_node = info_get_node (filename,
+                                user_nodenames ? user_nodenames[0] : 0,
+                                PARSE_NODE_DFLT);
+
+  /* If we couldn't get the initial node, this user is in trouble. */
+  if (!initial_node)
+    {
+      if (info_recent_file_error)
+        info_error ("%s", info_recent_file_error);
+      else
+        info_error (msg_cant_find_node,
+                    user_nodenames ? user_nodenames[0] : "Top");
+      return EXIT_FAILURE;
+    }
+
+  /* Special cases for when the user specifies multiple nodes.  If we
+     are dumping to an output file, dump all of the nodes specified.
+     Otherwise, attempt to create enough windows to handle the nodes
+     that this user wants displayed. */
+  if (user_nodenames_index > 1)
+    {
+      free (initial_node);
+
+      if (print_where_p)
+        printf ("%s\n", filename ? filename : "unknown?!");
+      else if (user_output_filename)
+        dump_nodes_to_file (filename, user_nodenames,
+			    user_output_filename, dump_subnodes);
+      else
+        begin_multiple_window_info_session (filename, user_nodenames);
+
+      return EXIT_SUCCESS;
+    }
+
+  /* If there are arguments remaining, they are the names of menu items
+     in sequential info files starting from the first one loaded.  That
+     file name is either "dir", or the contents of filename if one
+     was specified. */
+  /* If they say info -O info, we want to show them the invocation node
+     for standalone info; there's nothing useful in info.texi.  */
+  if (goto_invocation_p && *argv
+      && mbscasecmp (*argv, "info") == 0)
+    *argv = "info-stnd";
+
+  new_initial_node = info_follow_menus (initial_node, argv, &error_node, 0);
+
+  if (new_initial_node && new_initial_node != initial_node)
+    initial_node = new_initial_node;
+
+  if (print_where_p)
+    {
+      const char *name = node_file_name (initial_node, 0);
+      if (!name)
+	return EXIT_FAILURE;
+      printf ("%s\n", name);
+      return EXIT_SUCCESS;
+    }
+
+  /* If the user specified that this node should be output, then do that
+     now.  Otherwise, start the Info session with this node.  Or act
+     accordingly if the initial node was not found.  */
+  if (user_output_filename && !goto_invocation_p)
+    {
+      if (error_node)
+	show_error_node (error_node);
+      else
+	dump_node_to_file (initial_node, user_output_filename,
+			   dump_subnodes);
+    }
+  else
+    {
+      if (error_node)
+	{
+	  initialize_info_session (initial_node, 1);
+	  show_error_node (error_node);
+	  info_session ();
+	}
+      
+      /* If the user specified `--index-search=STRING' or
+	 --show-options, start the info session in the node
+	 corresponding to what they want. */
+      else if (index_search_p || goto_invocation_p)
+	{
+	  int status = EXIT_SUCCESS;
+	  
+	  initialize_info_session (initial_node, 0);
+	  
+	  if (goto_invocation_p ||
+	      index_entry_exists (windows, index_search_string))
+	    {
+	      terminal_prep_terminal ();
+	      terminal_clear_screen ();
+	      info_last_executed_command = NULL;
+	      
+	      if (index_search_p)
+		do_info_index_search (windows, 0, index_search_string);
+	      else
+		{
+		  /* If they said "info --show-options foo bar baz",
+		     the last of the arguments is the program whose
+		     options they want to see.  */
+		  char **p = argv;
+		  char *program;
+		  
+		  if (*p)
+		    {
+		      while (p[1])
+			p++;
+		      program = xstrdup (*p);
+		    }
+		  else if (filename)
+		    /* If there's no command-line arguments to
+		       supply the program name, use the Info file
+		       name (sans extension and leading directories)
+		       instead.  */
+		    program = program_name_from_file_name (filename);
+		  else
+		    program = xstrdup ("");
+		  
+		  info_intuit_options_node (windows, initial_node, program);
+		  free (program);
+		}
+	      
+	      if (user_output_filename)
+		{
+		  dump_node_to_file (windows->node, user_output_filename,
+				     dump_subnodes);
+		}
+	      else
+		info_read_and_dispatch ();
+	      
+	      /* On program exit, leave the cursor at the bottom of the
+		 window, and restore the terminal IO. */
+	      terminal_goto_xy (0, screenheight - 1);
+	      terminal_clear_to_eol ();
+	      fflush (stdout);
+	      terminal_unprep_terminal ();
+	    }
+	  else
+	    {
+	      fprintf (stderr, _("no index entries found for `%s'\n"),
+		       index_search_string);
+	      status = EXIT_FAILURE;
+	    }
+	  
+	  close_dribble_file ();
+	  return status;
+	}
+      else
+	begin_info_session (initial_node);
+    }
+
+  return EXIT_SUCCESS;
+}
+
+static char *
+dirname (const char *file)
+{
+  char *p;
+  size_t len;
+
+  p = strrchr (file, '/');
+  if (!p)
+    return NULL;
+  len = p - file;
+  p = xmalloc (len + 1);
+  memcpy (p, file, len);
+  p[len] = 0;
+  return p;
+}
+
+REFERENCE **
+info_find_matching_files (char *filename)
+{
+  size_t argc = 0;
+  size_t argn = 0;
+  REFERENCE **argv = NULL;
+  int i = 0;
+  char *p;
+  
+  while (1)
+    {
+      p = info_file_find_next_in_path (filename, infopath (), &i);
+      if (argc == argn)
+	{
+	  if (argn == 0)
+	    argn = 2;
+	  argv = x2nrealloc (argv, &argn, sizeof (argv[0]));
+	}
+      if (!p)
+	{
+	  argv[argc] = NULL;
+	  break;
+	}
+
+      argv[argc] = xzalloc (sizeof (*argv[0]));
+      argv[argc]->filename = p;
+      ++argc;
+    }
+
+  return argv;
+}
+
+static int
+all_files (char *filename, int argc, char **argv)
+{
+  REFERENCE **fref;
+  char *fname;
+  int i, j;
+  int dirok;
+  struct info_namelist_entry *nlist = NULL;
+  int dump_flags = dump_subnodes;
+  
+  if (user_filename)
+    {
+      fname = user_filename;
+      dirok = 0;
+    }
+  else
+    {
+      fname = "dir";
+      dirok = 1;
+    }
+  
+  fref = info_find_matching_files (fname);
+  
+  for (i = 0; fref[i]; )
+    {
+      NODE *node;
+      
+      forget_file_names ();
+      if (!user_filename)
+	{
+	  char *p = dirname (fref[i]->filename);
+	  infopath_add (p, INFOPATH_INIT);
+	  free (p);
+	}
+      node = info_get_node (fref[i]->filename,
+			    user_nodenames ? user_nodenames[0] : 0,
+			    PARSE_NODE_DFLT);
+      
+      if (node)
+	{
+	  NODE *subnode = info_follow_menus (node, argv, NULL, 1);
+	  if (!subnode)
+	    {
+	      forget_info_file (fref[i]->filename);
+	      node = NULL;
+	    }
+	  else
+	    node = subnode;
+	}
+      
+      if (node)
+	{
+	  const char *name = node_file_name (node, dirok);
+	  if (!name)
+	    node = NULL;
+	  else
+	    {
+	      free (fref[i]->filename);
+	      fref[i]->filename = xstrdup (name);
+	    }
+	}
+      
+      if (!node)
+	{
+	  info_reference_free (fref[i]);
+	  for (j = i; (fref[j] = fref[j + 1]); j++);
+	}
+      else
+	{
+	  if (info_namelist_add (&nlist, fref[i]->filename) == 0)
+	    {
+	      if (print_where_p)
+		printf ("%s\n", fref[i]->filename);
+	      else if (user_output_filename)
+		{
+		  dump_node_to_file (node, user_output_filename, dump_flags);
+		  dump_flags |= DUMP_APPEND;
+		}
+	      else
+		fref[i]->nodename = xstrdup (node->nodename);
+	      forget_info_file (fref[i]->filename);
+	      ++i;
+	    }
+	  else
+	    {
+	      forget_info_file (fref[i]->filename);
+	      info_reference_free (fref[i]);
+	      for (j = i; (fref[j] = fref[j + 1]); j++);
+	    }
+	}
+    }
+  
+  info_namelist_free (nlist);
+
+  if (print_where_p || user_output_filename)
+    return EXIT_SUCCESS;
+
+  if (i <= 1)
+    return single_file (user_filename, argc, argv);
+  
+  begin_info_session (allfiles_create_node (argc ? argv[0] : fname, fref));
+  return EXIT_SUCCESS;
+}
+
+static void
+set_debug_level (const char *arg)
+{
+  char *p;
+  long n = strtol (arg, &p, 10);
+  if (*p)
+    {
+      fprintf (stderr, _("invalid number: %s\n"), arg);
+      exit (EXIT_FAILURE);
+    }
+  if (n < 0 || n > UINT_MAX)
+    debug_level = UINT_MAX;
+  else
+    debug_level = n;
+}
+      
 
 /* **************************************************************** */
 /*                                                                  */
@@ -154,7 +507,6 @@ int
 main (int argc, char *argv[])
 {
   int getopt_long_index;        /* Index returned by getopt_long (). */
-  NODE *initial_node;           /* First node loaded by Info. */
 
 #ifdef HAVE_SETLOCALE
   /* Set locale via LC_ALL.  */
@@ -168,13 +520,13 @@ main (int argc, char *argv[])
 #endif
 
   init_messages ();
-
+  infopath_init ();
   while (1)
     {
       int option_character;
 
-      option_character = getopt_long
-        (argc, argv, short_options, long_options, &getopt_long_index);
+      option_character = getopt_long (argc, argv, short_options, long_options,
+				      &getopt_long_index);
 
       /* getopt_long returns EOF when there are no more long options. */
       if (option_character == EOF)
@@ -190,15 +542,19 @@ main (int argc, char *argv[])
         case 0:
           break;
 
+	case 'a':
+	  all_matches_p = 1;
+	  break;
+	  
           /* User wants to add a directory. */
         case 'd':
-          info_add_path (optarg, INFOPATH_PREPEND);
+          infopath_add (optarg, INFOPATH_PREPEND);
           break;
 
           /* User is specifying a particular node. */
         case 'n':
           add_pointer_to_array (optarg, user_nodenames_index, user_nodenames,
-                                user_nodenames_slots, 10, char *);
+                                user_nodenames_slots, 10);
           break;
 
           /* User is specifying a particular Info file. */
@@ -254,7 +610,7 @@ main (int argc, char *argv[])
           /* User has specified a string to search all indices for. */
         case 'k':
           apropos_p = 1;
-          maybe_free (apropos_search_string);
+          free (apropos_search_string);
           apropos_search_string = xstrdup (optarg);
           break;
 
@@ -272,10 +628,45 @@ main (int argc, char *argv[])
           /* User has specified a string to search all indices for. */
         case IDXSRCH_OPTION:
           index_search_p = 1;
-          maybe_free (index_search_string);
+          free (index_search_string);
           index_search_string = xstrdup (optarg);
           break;
 
+	case 'v':
+	  {
+	    char *p;
+	    p = strchr (optarg, '=');
+	    if (!p)
+	      {
+		info_error (_("malformed variable assignment: %s"), optarg);
+		exit (EXIT_FAILURE);
+	      }
+	    *p++ = 0;
+	    if (set_variable_to_value (optarg, p))
+	      {
+		switch (errno)
+		  {
+		  case ENOENT:
+		    info_error (_("%s: no such variable"), optarg);
+		    break;
+			    
+		  case EINVAL:
+		    info_error (_("value %s is not valid for variable %s"),
+				p, optarg);
+		    break;
+		    
+		  default:
+		    abort ();
+		  }
+		exit (EXIT_FAILURE);
+	      }	
+	  }
+	  break;
+	  
+	case 'x':
+	  set_debug_level (optarg);
+	  break;
+	  
         default:
           fprintf (stderr, _("Try --help for more information.\n"));
           exit (EXIT_FAILURE);
@@ -291,6 +682,9 @@ main (int argc, char *argv[])
       dump_subnodes = 1;
     }
 
+  if (dump_subnodes)
+    dump_subnodes = DUMP_SUBNODES;
+  
   /* If the user specified --version, then show the version and exit. */
   if (print_version_p)
     {
@@ -311,43 +705,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       exit (EXIT_SUCCESS);
     }
 
-  /* If the user hasn't specified a path for Info files, default it.
-     Lowest priority is our messy hardwired list in filesys.h.
-     Then comes the user's INFODIR from the Makefile.
-     Highest priority is the environment variable, if set.  */
-  if (!infopath)
-    {
-      char *path_from_env = getenv ("INFOPATH");
-
-      if (path_from_env)
-        {
-          unsigned len = strlen (path_from_env);
-          /* Trailing : on INFOPATH means insert the default path.  */
-          if (len && path_from_env[len - 1] == PATH_SEP[0])
-            {
-              path_from_env[len - 1] = 0;
-              info_add_path (DEFAULT_INFOPATH, INFOPATH_PREPEND);
-            }
-#ifdef INFODIR /* from the Makefile */
-          info_add_path (INFODIR, INFOPATH_PREPEND);
-#endif
-          info_add_path (path_from_env, INFOPATH_PREPEND);
-        }
-      else
-        {
-          info_add_path (DEFAULT_INFOPATH, INFOPATH_PREPEND);
-#ifdef INFODIR /* from the Makefile */
-          info_add_path (INFODIR, INFOPATH_PREPEND);
-#endif
-#ifdef INFODIR2 /* from the Makefile, too */
-#  ifdef INFODIR
-          if (!STREQ (INFODIR, INFODIR2))
-#  endif
-            info_add_path (INFODIR2, INFOPATH_PREPEND);
-#endif
-        }
-    }
-
   /* If the user specified a particular filename, add the path of that
      file to the contents of INFOPATH. */
   if (user_filename)
@@ -361,171 +718,13 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       exit (EXIT_SUCCESS);
     }
 
-  /* Get the initial Info node.  It is either "(dir)Top", or what the user
-     specifed with values in user_filename and user_nodenames. */
-  initial_node = info_get_node (user_filename,
-                                user_nodenames ? user_nodenames[0] : 0,
-                                PARSE_NODE_DFLT);
+  argc -= optind;
+  argv += optind;
+  
+  if (all_matches_p)
+    return all_files (user_filename, argc, argv);
 
-  /* If we couldn't get the initial node, this user is in trouble. */
-  if (!initial_node)
-    {
-      if (info_recent_file_error)
-        info_error ("%s", info_recent_file_error);
-      else
-        info_error (msg_cant_find_node,
-                    user_nodenames ? user_nodenames[0] : "Top");
-      exit (EXIT_FAILURE);
-    }
-
-  /* Special cases for when the user specifies multiple nodes.  If we
-     are dumping to an output file, dump all of the nodes specified.
-     Otherwise, attempt to create enough windows to handle the nodes
-     that this user wants displayed. */
-  if (user_nodenames_index > 1)
-    {
-      free (initial_node);
-
-      if (print_where_p)
-        printf ("%s\n", user_filename ? user_filename : "unknown?!");
-      else if (user_output_filename)
-        dump_nodes_to_file
-          (user_filename, user_nodenames, user_output_filename, dump_subnodes);
-      else
-        begin_multiple_window_info_session (user_filename, user_nodenames);
-
-      exit (EXIT_SUCCESS);
-    }
-
-  /* If there are arguments remaining, they are the names of menu items
-     in sequential info files starting from the first one loaded.  That
-     file name is either "dir", or the contents of user_filename if one
-     was specified. */
-  {
-    NODE *new_initial_node, *error_node;
-    
-    /* If they say info -O info, we want to show them the invocation node
-       for standalone info; there's nothing useful in info.texi.  */
-    if (goto_invocation_p && argv[optind]
-	&& mbscasecmp (argv[optind], "info") == 0)
-      argv[optind] = "info-stnd";
-    
-    new_initial_node = info_follow_menus (initial_node, argv + optind,
-					  &error_node);
-
-    if (new_initial_node && new_initial_node != initial_node)
-      initial_node = new_initial_node;
-
-    if (print_where_p)
-      {
-        if (initial_node->parent)
-          printf ("%s\n", initial_node->parent);
-        else if (initial_node->filename
-            && !is_dir_name (filename_non_directory (initial_node->filename)))
-          printf ("%s\n", initial_node->filename);
-        else
-          exit (EXIT_FAILURE);
-        exit (EXIT_SUCCESS);
-      }
-
-    /* If the user specified that this node should be output, then do that
-       now.  Otherwise, start the Info session with this node.  Or act
-       accordingly if the initial node was not found.  */
-    if (user_output_filename && !goto_invocation_p)
-      {
-        if (error_node)
-	  show_error_node (error_node);
-        else
-          dump_node_to_file (initial_node, user_output_filename,
-                             dump_subnodes);
-      }
-    else
-      {
-        if (error_node)
-	  {
-	    initialize_info_session (initial_node, 1);
-	    show_error_node (error_node);
-	    info_session ();
-	  }
-	
-        /* If the user specified `--index-search=STRING' or
-           --show-options, start the info session in the node
-           corresponding to what they want. */
-        else if (index_search_p || goto_invocation_p)
-          {
-            int status = EXIT_SUCCESS;
-
-            initialize_info_session (initial_node, 0);
-
-            if (goto_invocation_p
-                || index_entry_exists (windows, index_search_string))
-              {
-                terminal_prep_terminal ();
-                terminal_clear_screen ();
-                info_last_executed_command = NULL;
-
-                if (index_search_p)
-                  do_info_index_search (windows, 0, index_search_string);
-                else
-                  {
-                    /* If they said "info --show-options foo bar baz",
-                       the last of the arguments is the program whose
-                       options they want to see.  */
-                    char **p = argv + optind;
-                    char *program;
-
-                    if (*p)
-                      {
-                        while (p[1])
-                          p++;
-                        program = xstrdup (*p);
-                      }
-                    else if (user_filename)
-		      /* If there's no command-line arguments to
-			 supply the program name, use the Info file
-			 name (sans extension and leading directories)
-			 instead.  */
-		      program = program_name_from_file_name (user_filename);
-		    else
-		      program = xstrdup ("");
-
-                    info_intuit_options_node (windows, initial_node, program);
-                    free (program);
-                  }
-
-		if (user_output_filename)
-		  {
-		    dump_node_to_file (windows->node, user_output_filename,
-				       dump_subnodes);
-		  }
-		else
-		  info_read_and_dispatch ();
-
-                /* On program exit, leave the cursor at the bottom of the
-                   window, and restore the terminal IO. */
-                terminal_goto_xy (0, screenheight - 1);
-                terminal_clear_to_eol ();
-                fflush (stdout);
-                terminal_unprep_terminal ();
-              }
-            else
-              {
-                fprintf (stderr, _("no index entries found for `%s'\n"),
-                         index_search_string);
-                status = EXIT_FAILURE;
-              }
-
-            close_dribble_file ();
-            exit (status);
-          }
-        else
-          begin_info_session (initial_node);
-      }
-
-    exit (EXIT_SUCCESS);
-  }
-
-  return 0; /* Avoid bogus warnings.  */
+  return single_file (user_filename, argc, argv);
 }
 
 void
@@ -544,7 +743,7 @@ add_file_directory_to_path (char *filename)
 	  temp += 2;
 	}
       temp[-1] = 0;
-      info_add_path (directory_name, INFOPATH_PREPEND);
+      infopath_add (directory_name, INFOPATH_PREPEND);
     }
 
   free (directory_name);
@@ -558,6 +757,58 @@ int info_error_was_printed = 0;
 
 /* Non-zero means ring terminal bell on errors. */
 int info_error_rings_bell_p = 1;
+
+static FILE *debug_file;
+
+static void
+close_debugfile (void)
+{
+  fclose (debug_file);
+}
+
+#define INFODEBUG_FILE "infodebug"
+
+void
+vinfo_debug (const char *format, va_list ap)
+{
+  FILE *fp;
+
+  if (!debug_file)
+    {
+      if (!info_windows_initialized_p || display_inhibited)
+	fp = stderr;
+      else
+	{
+	  debug_file = fopen (INFODEBUG_FILE, "w");
+	  if (!debug_file)
+	    {
+	      info_error (_("can't open %s: %s"), INFODEBUG_FILE,
+			  strerror (errno));
+	      exit (EXIT_FAILURE);
+	    }
+	  atexit (close_debugfile);
+	  fp = debug_file;
+	  info_error (_("debugging output diverted to \"%s\""),
+		      INFODEBUG_FILE);
+	}
+    }
+  else
+    fp = debug_file;
+  
+  fprintf (fp, "%s: ", program_name);
+  vfprintf (fp, format, ap);
+  fprintf (fp, "\n");
+  fflush (stderr);
+}
+
+void
+info_debug (const char *format, ...)
+{
+  va_list ap;
+  va_start (ap, format);
+  vinfo_debug (format, ap);
+  va_end (ap);
+}
 
 /* Print AP according to FORMAT.  If the window system was initialized,
    then the message is printed in the echo area.  Otherwise, a message is
@@ -631,21 +882,22 @@ Read documentation in Info format.\n"), program_name);
 
   puts (_("\
 Options:\n\
+  -a, --all                    use all matching manuals.\n\
   -k, --apropos=STRING         look up STRING in all indices of all manuals.\n\
   -d, --directory=DIR          add DIR to INFOPATH.\n\
-      --dribble=FILENAME       remember user keystrokes in FILENAME.\n\
-  -f, --file=FILENAME          specify Info file to visit."));
+      --dribble=FILE           remember user keystrokes in FILENAME.\n\
+  -f, --file=MANUAL            specify Info manual to visit."));
 
   puts (_("\
   -h, --help                   display this help and exit.\n\
       --index-search=STRING    go to node pointed by index entry STRING.\n\
   -n, --node=NODENAME          specify nodes in first visited Info file.\n\
-  -o, --output=FILENAME        output selected nodes to FILENAME."));
+  -o, --output=FILE            output selected nodes to FILE."));
 
   puts (_("\
   -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n\
       --no-raw-escapes         output escapes as literal text.\n\
-      --restore=FILENAME       read initial keystrokes from FILENAME.\n\
+      --restore=FILE           read initial keystrokes from FILE.\n\
   -O, --show-options, --usage  go to command-line options node."));
 
 #if defined(__MSDOS__) || defined(__MINGW32__)
@@ -656,9 +908,11 @@ Options:\n\
   puts (_("\
       --strict-node-location   (for debugging) use Info file pointers as-is.\n\
       --subnodes               recursively output menu items.\n\
+  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR.\n\
       --vi-keys                use vi-like and less-like key bindings.\n\
       --version                display version information and exit.\n\
-  -w, --where, --location      print physical location of Info file."));
+  -w, --where, --location      print physical location of Info file.\n\
+  -x, --debug=NUMBER           set debugging level (-1 for all).\n"));
 
   puts (_("\n\
 The first non-option argument, if present, is the menu entry to start from;\n\

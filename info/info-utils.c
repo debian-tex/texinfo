@@ -1,7 +1,7 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: info-utils.c 5379 2013-09-19 09:00:48Z eliz $
 
-   Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012,
+   Copyright 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012,
    2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -272,7 +272,7 @@ info_references_internal (char *label, SEARCH_BINDING *binding)
 {
   SEARCH_BINDING tmp_search;
   REFERENCE **refs = NULL;
-  int refs_index = 0, refs_slots = 0;
+  size_t refs_index = 0, refs_slots = 0;
   int searching_for_menu_items = 0;
   long position;
 
@@ -354,8 +354,7 @@ info_references_internal (char *label, SEARCH_BINDING *binding)
           entry->line_number = info_parsed_line_number;
         }
 
-      add_pointer_to_array
-        (entry, refs_index, refs, refs_slots, 50, REFERENCE *);
+      add_pointer_to_array (entry, refs_index, refs, refs_slots, 50);
     }
   return refs;
 }
@@ -435,6 +434,18 @@ info_copy_reference (REFERENCE *src)
 
 
 
+void
+info_reference_free (REFERENCE *ref)
+{
+  if (ref)
+    {
+      free (ref->label);
+      free (ref->filename);
+      free (ref->nodename);
+      free (ref);
+    }
+}
+
 /* Free the data associated with REFERENCES. */
 void
 info_free_references (REFERENCE **references)
@@ -445,13 +456,7 @@ info_free_references (REFERENCE **references)
   if (references)
     {
       for (i = 0; references && (entry = references[i]); i++)
-        {
-          maybe_free (entry->label);
-          maybe_free (entry->filename);
-          maybe_free (entry->nodename);
-
-          free (entry);
-        }
+        info_reference_free (entry);
 
       free (references);
     }
@@ -874,3 +879,60 @@ text_buffer_printf (struct text_buffer *buf, const char *format, ...)
   va_end (ap);
   return n;
 }
+
+#if defined(__MSDOS__) || defined(__MINGW32__)
+/* Cannot use FILENAME_CMP here, since that does not consider forward-
+   and back-slash characters equal.  */
+static int
+fncmp (const char *fn1, const char *fn2)
+{
+  const char *s1 = fn1, *s2 = fn2;
+
+  while (tolower (*s1) == tolower (*s2)
+	 || (IS_SLASH (*s1) && IS_SLASH (*s2)))
+    {
+      if (*s1 == 0)
+	return 0;
+      s1++;
+      s2++;
+    }
+
+  return tolower (*s1) - tolower (*s2);
+}
+#else
+# define fncmp(s,t) strcmp(s,t)
+#endif
+
+struct info_namelist_entry
+{
+  struct info_namelist_entry *next;
+  char name[1];
+};
+
+int
+info_namelist_add (struct info_namelist_entry **ptop, const char *name)
+{
+  struct info_namelist_entry *p;
+
+  for (p = *ptop; p; p = p->next)
+    if (fncmp (p->name, name) == 0)
+      return 1;
+
+  p = xmalloc (sizeof (*p) + strlen (name));
+  strcpy (p->name, name);
+  p->next = *ptop;
+  *ptop = p;
+  return 0;
+}
+
+void
+info_namelist_free (struct info_namelist_entry *top)
+{
+  while (top)
+    {
+      struct info_namelist_entry *next = top->next;
+      free (top);
+      top = next;
+    }
+}
+

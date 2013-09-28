@@ -1,5 +1,7 @@
 #! /bin/sh
 
+LC_ALL=C; export LC_ALL
+
 if test "z$LONG_TESTS" = z'yes'; then
   echo "Skipping short tests because we are only doing long tests"
   exit 77

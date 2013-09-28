@@ -66,6 +66,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module localcharset:
   # Code from module locale:
   # Code from module localeconv:
+  # Code from module lock:
   # Code from module lstat:
   # Code from module malloc-gnu:
   # Code from module malloc-posix:
@@ -120,6 +121,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module sys_time:
   # Code from module sys_types:
   # Code from module tempname:
+  # Code from module threadlib:
+  gl_THREADLIB_EARLY
   # Code from module time:
   # Code from module unistd:
   # Code from module unitypes:
@@ -224,6 +227,8 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_LOCALECONV
   fi
   gl_LOCALE_MODULE_INDICATOR([localeconv])
+  gl_LOCK
+  gl_MODULE_INDICATOR([lock])
   gl_FUNC_LSTAT
   if test $REPLACE_LSTAT = 1; then
     AC_LIBOBJ([lstat])
@@ -385,6 +390,7 @@ AC_DEFUN([gl_INIT],
   gl_SYS_TYPES_H
   AC_PROG_MKDIR_P
   gl_FUNC_GEN_TEMPNAME
+  gl_THREADLIB
   gl_HEADER_TIME_H
   gl_UNISTD_H
   gl_LIBUNISTRING_LIBHEADER([0.9], [unitypes.h])
@@ -567,6 +573,9 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/getopt_int.h
   lib/gettext.h
   lib/gettimeofday.c
+  lib/glthread/lock.c
+  lib/glthread/lock.h
+  lib/glthread/threadlib.c
   lib/intprops.h
   lib/iswblank.c
   lib/langinfo.in.h

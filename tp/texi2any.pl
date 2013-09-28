@@ -649,8 +649,13 @@ sub set_format($;$$)
         push @texi2dvi_args, '--'.$new_format; 
         $expanded_format = 'tex';
       }
-      $default_expanded_format = [$expanded_format] 
-        if ($Texinfo::Common::texinfo_output_formats{$expanded_format});
+      if ($Texinfo::Common::texinfo_output_formats{$expanded_format}) {
+        if ($expanded_format eq 'plaintext') {
+          $default_expanded_format = [$expanded_format, 'info'] 
+        } else {
+          $default_expanded_format = [$expanded_format] 
+        }
+      }
       $format_from_command_line = 1
         unless ($do_not_override_command_line);
     }
@@ -932,7 +937,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
      if ($value =~ /^undef$/i) {
        $value = undef;
      }
-     # special case, this is a pseudo format for debug
+     # special format
      if ($var eq 'TEXINFO_OUTPUT_FORMAT') {
        $format = set_format($value, $format, 1);
      } elsif ($var eq 'TEXI2HTML') {
@@ -976,7 +981,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
  'silent|quiet' => sub {set_from_cmdline('SILENT', $_[1]);
                          push @texi2dvi_args, '--'.$_[0];},
    
- 'plaintext' => sub {$format = $_[0];},
+ 'plaintext' => sub {$format = set_format($_[0]);},
  'html' => sub {$format = set_format($_[0]);},
  'info' => sub {$format = set_format($_[0]);},
  'docbook' => sub {$format = set_format($_[0]);},
@@ -1138,7 +1143,14 @@ while(@input_files) {
   my $input_file_base = $input_file_name;
   $input_file_base =~ s/\.te?x(i|info)?$//;
 
-  my @htmlxref_dirs = @language_config_dirs;
+  my @htmlxref_dirs;
+  if (get_conf('TEST')) {
+    # to have reproducible tests, do not use system or user
+    # directories if TEST is set.
+    @htmlxref_dirs = File::Spec->catdir($curdir, '.texinfo');
+  } else {
+    @htmlxref_dirs = @language_config_dirs;
+  }
   if ($input_directory ne '.' and $input_directory ne '') {
     unshift @htmlxref_dirs, $input_directory;
   }

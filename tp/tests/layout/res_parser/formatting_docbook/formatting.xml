@@ -4,6 +4,7 @@
   <!ENTITY latex "LaTeX">
 ]>
 <book id="formatting.xml" lang="en">
+
 <chapter label="" id="Top">
 <title>Top section</title>
 

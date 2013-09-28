@@ -1250,7 +1250,7 @@ Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a>, Up: <a 
 <a name="chapter-node"></a>
 <div class="header">
 <p>
-Next: <a href="#part-chapter-node" accesskey="n" rel="next">part chapter node</a>, Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="#part-chapter-node" accesskey="n" rel="next">part chapter node</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 
 <a name="chapter-node-1"></a>
@@ -1260,7 +1260,7 @@ Next: <a href="#part-chapter-node" accesskey="n" rel="next">part chapter node</a
 <a name="part-chapter-node"></a>
 <div class="header">
 <p>
-Previous: <a href="#chapter-node" accesskey="p" rel="previous">chapter node</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Previous: <a href="#chapter-node" accesskey="p" rel="prev">chapter node</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <a name="part"></a>
 <h1 class="part">part</h1>

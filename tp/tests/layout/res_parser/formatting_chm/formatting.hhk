@@ -9,182 +9,6 @@
 <param name="ImageType" value="Folder">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftp_name">
-<param name="Local" value="formatting.html#index-copying-d_002d_002deftp_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftp_name">
-<param name="Local" value="formatting.html#index-titlepage-d_002d_002deftp_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftp_name">
-<param name="Local" value="formatting.html#index-d_002d_002deftp_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftp_name">
-<param name="Local" value="formatting.html#index-d_002d_002deftp_005fname-1">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="a">
-<param name="Local" value="formatting.html#index-copying-a-2">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="a">
-<param name="Local" value="formatting.html#index-titlepage-a-2">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="a">
-<param name="Local" value="formatting.html#index-a-6">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="a">
-<param name="Local" value="formatting.html#index-a-7">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="b">
-<param name="Local" value="formatting.html#index-copying-b-1">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="b">
-<param name="Local" value="formatting.html#index-titlepage-b-1">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="b">
-<param name="Local" value="formatting.html#index-b-2">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="b">
-<param name="Local" value="formatting.html#index-b-3">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efcv_name">
-<param name="Local" value="formatting.html#index-copying-d_002d_002defcv_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efcv_name">
-<param name="Local" value="formatting.html#index-titlepage-d_002d_002defcv_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efcv_name">
-<param name="Local" value="formatting.html#index-d_002d_002defcv_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efcv_name">
-<param name="Local" value="formatting.html#index-d_002d_002defcv_005fname-1">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efivar_name of c--lass">
-<param name="Local" value="formatting.html#index-copying-d_002d_002defivar_005fname-of-c_002d_002dlass">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efivar_name of c--lass">
-<param name="Local" value="formatting.html#index-titlepage-d_002d_002defivar_005fname-of-c_002d_002dlass">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efivar_name of c--lass">
-<param name="Local" value="formatting.html#index-d_002d_002defivar_005fname-of-c_002d_002dlass">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efivar_name of c--lass">
-<param name="Local" value="formatting.html#index-d_002d_002defivar_005fname-of-c_002d_002dlass-1">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efopt_name">
-<param name="Local" value="formatting.html#index-copying-d_002d_002defopt_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efopt_name">
-<param name="Local" value="formatting.html#index-titlepage-d_002d_002defopt_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efopt_name">
-<param name="Local" value="formatting.html#index-d_002d_002defopt_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efopt_name">
-<param name="Local" value="formatting.html#index-d_002d_002defopt_005fname-1">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftypeivar_name of c--lass">
-<param name="Local" value="formatting.html#index-copying-d_002d_002deftypeivar_005fname-of-c_002d_002dlass">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftypeivar_name of c--lass">
-<param name="Local" value="formatting.html#index-titlepage-d_002d_002deftypeivar_005fname-of-c_002d_002dlass">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftypeivar_name of c--lass">
-<param name="Local" value="formatting.html#index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftypeivar_name of c--lass">
-<param name="Local" value="formatting.html#index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass-1">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftypevar_name">
-<param name="Local" value="formatting.html#index-copying-d_002d_002deftypevar_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftypevar_name">
-<param name="Local" value="formatting.html#index-titlepage-d_002d_002deftypevar_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftypevar_name">
-<param name="Local" value="formatting.html#index-d_002d_002deftypevar_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftypevar_name">
-<param name="Local" value="formatting.html#index-d_002d_002deftypevar_005fname-1">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftypevr_name">
-<param name="Local" value="formatting.html#index-copying-d_002d_002deftypevr_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftypevr_name">
-<param name="Local" value="formatting.html#index-titlepage-d_002d_002deftypevr_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftypevr_name">
-<param name="Local" value="formatting.html#index-d_002d_002deftypevr_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--eftypevr_name">
-<param name="Local" value="formatting.html#index-d_002d_002deftypevr_005fname-1">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efvar_name">
-<param name="Local" value="formatting.html#index-copying-d_002d_002defvar_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efvar_name">
-<param name="Local" value="formatting.html#index-titlepage-d_002d_002defvar_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efvar_name">
-<param name="Local" value="formatting.html#index-d_002d_002defvar_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efvar_name">
-<param name="Local" value="formatting.html#index-d_002d_002defvar_005fname-1">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efvr_name">
-<param name="Local" value="formatting.html#index-copying-d_002d_002defvr_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efvr_name">
-<param name="Local" value="formatting.html#index-titlepage-d_002d_002defvr_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efvr_name">
-<param name="Local" value="formatting.html#index-d_002d_002defvr_005fname">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="d--efvr_name">
-<param name="Local" value="formatting.html#index-d_002d_002defvr_005fname-1">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="&quot;">
 <param name="Local" value="formatting.html#index-copying-_0060_0060">
 </OBJECT> </LI>
@@ -943,6 +767,182 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="truc">
 <param name="Local" value="formatting.html#index-truc-3">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftp_name">
+<param name="Local" value="formatting.html#index-copying-d_002d_002deftp_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftp_name">
+<param name="Local" value="formatting.html#index-titlepage-d_002d_002deftp_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftp_name">
+<param name="Local" value="formatting.html#index-d_002d_002deftp_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftp_name">
+<param name="Local" value="formatting.html#index-d_002d_002deftp_005fname-1">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="a">
+<param name="Local" value="formatting.html#index-copying-a-2">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="a">
+<param name="Local" value="formatting.html#index-titlepage-a-2">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="a">
+<param name="Local" value="formatting.html#index-a-6">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="a">
+<param name="Local" value="formatting.html#index-a-7">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="b">
+<param name="Local" value="formatting.html#index-copying-b-1">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="b">
+<param name="Local" value="formatting.html#index-titlepage-b-1">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="b">
+<param name="Local" value="formatting.html#index-b-2">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="b">
+<param name="Local" value="formatting.html#index-b-3">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efcv_name">
+<param name="Local" value="formatting.html#index-copying-d_002d_002defcv_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efcv_name">
+<param name="Local" value="formatting.html#index-titlepage-d_002d_002defcv_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efcv_name">
+<param name="Local" value="formatting.html#index-d_002d_002defcv_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efcv_name">
+<param name="Local" value="formatting.html#index-d_002d_002defcv_005fname-1">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efivar_name of c--lass">
+<param name="Local" value="formatting.html#index-copying-d_002d_002defivar_005fname-of-c_002d_002dlass">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efivar_name of c--lass">
+<param name="Local" value="formatting.html#index-titlepage-d_002d_002defivar_005fname-of-c_002d_002dlass">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efivar_name of c--lass">
+<param name="Local" value="formatting.html#index-d_002d_002defivar_005fname-of-c_002d_002dlass">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efivar_name of c--lass">
+<param name="Local" value="formatting.html#index-d_002d_002defivar_005fname-of-c_002d_002dlass-1">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efopt_name">
+<param name="Local" value="formatting.html#index-copying-d_002d_002defopt_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efopt_name">
+<param name="Local" value="formatting.html#index-titlepage-d_002d_002defopt_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efopt_name">
+<param name="Local" value="formatting.html#index-d_002d_002defopt_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efopt_name">
+<param name="Local" value="formatting.html#index-d_002d_002defopt_005fname-1">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftypeivar_name of c--lass">
+<param name="Local" value="formatting.html#index-copying-d_002d_002deftypeivar_005fname-of-c_002d_002dlass">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftypeivar_name of c--lass">
+<param name="Local" value="formatting.html#index-titlepage-d_002d_002deftypeivar_005fname-of-c_002d_002dlass">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftypeivar_name of c--lass">
+<param name="Local" value="formatting.html#index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftypeivar_name of c--lass">
+<param name="Local" value="formatting.html#index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass-1">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftypevar_name">
+<param name="Local" value="formatting.html#index-copying-d_002d_002deftypevar_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftypevar_name">
+<param name="Local" value="formatting.html#index-titlepage-d_002d_002deftypevar_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftypevar_name">
+<param name="Local" value="formatting.html#index-d_002d_002deftypevar_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftypevar_name">
+<param name="Local" value="formatting.html#index-d_002d_002deftypevar_005fname-1">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftypevr_name">
+<param name="Local" value="formatting.html#index-copying-d_002d_002deftypevr_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftypevr_name">
+<param name="Local" value="formatting.html#index-titlepage-d_002d_002deftypevr_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftypevr_name">
+<param name="Local" value="formatting.html#index-d_002d_002deftypevr_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--eftypevr_name">
+<param name="Local" value="formatting.html#index-d_002d_002deftypevr_005fname-1">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efvar_name">
+<param name="Local" value="formatting.html#index-copying-d_002d_002defvar_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efvar_name">
+<param name="Local" value="formatting.html#index-titlepage-d_002d_002defvar_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efvar_name">
+<param name="Local" value="formatting.html#index-d_002d_002defvar_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efvar_name">
+<param name="Local" value="formatting.html#index-d_002d_002defvar_005fname-1">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efvr_name">
+<param name="Local" value="formatting.html#index-copying-d_002d_002defvr_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efvr_name">
+<param name="Local" value="formatting.html#index-titlepage-d_002d_002defvr_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efvr_name">
+<param name="Local" value="formatting.html#index-d_002d_002defvr_005fname">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d--efvr_name">
+<param name="Local" value="formatting.html#index-d_002d_002defvr_005fname-1">
 </OBJECT> </LI>
 </BODY>
 </HTML>

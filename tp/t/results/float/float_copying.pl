@@ -1954,7 +1954,7 @@ the author abandon his copyright.
 <a name="Copying-and-floats"></a>
 <div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#Copying-and-floats" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#Copying-and-floats" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Copying-and-floats-1"></a>
 <h2 class="appendix">Appendix A Copying and floats</h2>

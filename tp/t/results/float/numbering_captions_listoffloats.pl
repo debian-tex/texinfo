@@ -9839,7 +9839,7 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 <a name="chapter"></a>
 <div class="header">
 <p>
-Next: <a href="#Unnumbered" accesskey="n" rel="next">Unnumbered</a>, Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#Unnumbered" accesskey="n" rel="next">Unnumbered</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="A-chapter"></a>
 <h2 class="chapter">1 A chapter</h2>
@@ -9893,7 +9893,7 @@ Up: <a href="#chapter" accesskey="u" rel="up">chapter</a> &nbsp; </p>
 <a name="Unnumbered"></a>
 <div class="header">
 <p>
-Next: <a href="#Chapter-with-unnumbsubsec" accesskey="n" rel="next">Chapter with unnumbsubsec</a>, Previous: <a href="#chapter" accesskey="p" rel="previous">chapter</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#Chapter-with-unnumbsubsec" accesskey="n" rel="next">Chapter with unnumbsubsec</a>, Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="Unnumbered-1"></a>
 <h2 class="unnumbered">Unnumbered</h2>
@@ -9932,7 +9932,7 @@ Up: <a href="#Unnumbered" accesskey="u" rel="up">Unnumbered</a> &nbsp; </p>
 <a name="Chapter-with-unnumbsubsec"></a>
 <div class="header">
 <p>
-Next: <a href="#Appendix-for-float" accesskey="n" rel="next">Appendix for float</a>, Previous: <a href="#Unnumbered" accesskey="p" rel="previous">Unnumbered</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#Appendix-for-float" accesskey="n" rel="next">Appendix for float</a>, Previous: <a href="#Unnumbered" accesskey="p" rel="prev">Unnumbered</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="Chapter-with-unnumbsubsec-1"></a>
 <h2 class="chapter">2 Chapter with unnumbsubsec</h2>
@@ -9970,7 +9970,7 @@ Up: <a href="#Chapter-with-unnumbsubsec" accesskey="u" rel="up">Chapter with unn
 <a name="Appendix-for-float"></a>
 <div class="header">
 <p>
-Next: <a href="#list-of-floats" accesskey="n" rel="next">list of floats</a>, Previous: <a href="#Chapter-with-unnumbsubsec" accesskey="p" rel="previous">Chapter with unnumbsubsec</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#list-of-floats" accesskey="n" rel="next">list of floats</a>, Previous: <a href="#Chapter-with-unnumbsubsec" accesskey="p" rel="prev">Chapter with unnumbsubsec</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="Appendix-for-float-1"></a>
 <h2 class="appendix">Appendix A Appendix for float</h2>
@@ -9985,7 +9985,7 @@ Next: <a href="#list-of-floats" accesskey="n" rel="next">list of floats</a>, Pre
 <a name="list-of-floats"></a>
 <div class="header">
 <p>
-Previous: <a href="#Appendix-for-float" accesskey="p" rel="previous">Appendix for float</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#Appendix-for-float" accesskey="p" rel="prev">Appendix for float</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="list-of-floats-1"></a>
 <h2 class="unnumbered">list of floats</h2>

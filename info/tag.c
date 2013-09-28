@@ -1,8 +1,8 @@
 /* tag.c -- Functions to handle Info tags (that is, the special
    construct for images, not the "tag table" of starting position.)
-   $Id: tag.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: tag.c 5338 2013-08-22 17:58:30Z karl $
 
-   Copyright (C) 2012, 2013 Free Software Foundation, Inc.
+   Copyright 2012, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -113,6 +113,8 @@ tag_image (char *text, struct text_buffer *outbuf)
 	  if (state == state_delim)
 	    continue;
 	}
+      else if (state == state_delim)
+	state = state_kw;
       cur_len = mb_len (mbi_cur (iter));
       cur_ptr = mbi_cur_ptr (iter);
       
@@ -125,6 +127,8 @@ tag_image (char *text, struct text_buffer *outbuf)
 	  switch (*cur_ptr)
 	    {
 	    case '=':
+	      if (state != state_kw)
+		break;
 	      text_buffer_add_char (&tmpbuf, 0);
 	      kw = tmpbuf.base;
 	      if (!mbi_avail (iter))
@@ -183,6 +187,7 @@ tag_image (char *text, struct text_buffer *outbuf)
 
 static struct tag_handler tagtab[] = {
   { "image", 5, tag_image },
+  { "index", 5, NULL },
   { NULL }
 };
 
@@ -197,15 +202,16 @@ find_tag_handler (char *tag, size_t taglen)
   return NULL;
 }
 
-void
-tags_expand (char **pbuf, size_t *pbuflen)
+/* Expand \b[...\b] constructs in INPUT (of INPUTLEN bytes).  If encountered,
+   put the expanded text into PBUF, store its length in PBUFLEN, and return
+   1.  Otherwise, don't touch neither of the latter and return 0. */
+int
+tags_expand (char *input, size_t inputlen, char **pbuf, size_t *pbuflen)
 {
-  char *input = *pbuf;
-  char *endp = input + *pbuflen;
+  char *endp = input + inputlen;
   struct text_buffer outbuf;
+  int text_buffer_used = 0;
   char *p;
-
-  text_buffer_init (&outbuf);
 
   while ((p = input + strlen (input)) < endp) /* go forward to null */
     {
@@ -213,6 +219,12 @@ tags_expand (char **pbuf, size_t *pbuflen)
 	{
 	  char *q;
 
+	  if (!text_buffer_used)
+	    {
+	      text_buffer_init (&outbuf);
+	      text_buffer_used = 1;
+	    }
+	  
 	  p += 3;
 	  q = p + strlen (p);                 /* forward to next null */
 	  if (memcmp (q + 1, "\b]", 2) == 0)  /* closing magic? */
@@ -227,11 +239,8 @@ tags_expand (char **pbuf, size_t *pbuflen)
 		  while (p[len] == ' ' || p[len] == '\t')
 		    ++len;                      /* move past whitespace */
 	      
-		  if (!text_buffer_off (&outbuf))
-		    text_buffer_add_string (&outbuf, *pbuf, p - *pbuf - 3);
-		  else
-		    text_buffer_add_string (&outbuf, input, p - input - 3);
-		  if (tp->handler (p + len, &outbuf) == 0)
+		  text_buffer_add_string (&outbuf, input, p - input - 3);
+		  if (!tp->handler || tp->handler (p + len, &outbuf) == 0)
 		    {
 		      input = q + 3;
 		      continue;
@@ -240,21 +249,21 @@ tags_expand (char **pbuf, size_t *pbuflen)
 	    }
 	}
 
-      if (text_buffer_off (&outbuf))
-	{
-	  text_buffer_add_string (&outbuf, input, p - input);
-	}
+      if (text_buffer_used)
+	text_buffer_add_string (&outbuf, input, p - input);
+
       input = p + 1;
     }
 
-  if (text_buffer_off (&outbuf))
+  if (text_buffer_used && text_buffer_off (&outbuf))
     {
       if (input < endp)
 	text_buffer_add_string (&outbuf, input, endp - input);
-      free (*pbuf);
       *pbuflen = text_buffer_off (&outbuf);
       *pbuf = text_buffer_base (&outbuf);
+      return 1;
     }
+  return 0;
 }
   
 void

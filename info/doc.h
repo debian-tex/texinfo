@@ -1,7 +1,7 @@
 /* doc.h -- Structures associating function pointers with documentation.
-   $Id: doc.h 5191 2013-02-23 00:11:18Z karl $
+   $Id: doc.h 5338 2013-08-22 17:58:30Z karl $
 
-   Copyright (C) 1993, 2001, 2004, 2007, 2011
+   Copyright 1993, 2001, 2004, 2007, 2011, 2013
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #if !defined (DOC_H)
 #define DOC_H

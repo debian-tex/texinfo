@@ -825,7 +825,7 @@ ul.no-bullet {list-style: none}
 <a name="Top"></a>
 <div class="header">
 <p>
-Next: <a href="#first" accesskey="n" rel="next">first</a>, Previous: <a href="dir.html#Top" accesskey="p" rel="previous">(dir)</a>, Up: <a href="http://www.gnu.org/manual/" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#first" accesskey="n" rel="next">first</a>, Previous: <a href="dir.html#Top" accesskey="p" rel="prev">(dir)</a>, Up: <a href="http://www.gnu.org/manual/" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
 <a name="internal-top-node-up"></a>
 <h1 class="top">internal top node up</h1>
@@ -839,7 +839,7 @@ Next: <a href="#first" accesskey="n" rel="next">first</a>, Previous: <a href="di
 <a name="first"></a>
 <div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">first</h4>
 <hr>

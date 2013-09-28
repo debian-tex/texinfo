@@ -1,3 +1,659 @@
+2013-09-26  Karl Berry  <karl@gnu.org>
+
+	* Version 5.2.
+
+2013-09-19  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/info-utils.c (fncmp): For MS-DOS/MS-Windows, a new function
+	for comparing file names disregarding letter-case and
+	forward/backslash differences; for Posix platforms, a macro that
+	expands into a strcmp call.
+	(info_namelist_add): Use fncmp instead of strcmp.
+
+2013-09-13  Karl Berry  <karl@gnu.org>
+
+	* pretest 5.1.90.
+
+2013-09-12  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\inlinefmtifelse, \inlineifset, \inlineifclear):
+	new commands.
+	* doc/refcard/txirefcard.tex,
+	* doc/texinfo.texi (Inline Conditionals),
+	(@t{@@set @@clear @@value}),
+	(@t{@@inlineifset @@inlineifclear}),
+	(Command Summary): document them.
+
+2013-09-11  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\onepageout): call new macro
+	\commonheadfootline to make the headline/footline vboxes,
+	which in turn calls \texinfochars.
+	(\texinfochars): new macro; should reset all definitions done by
+	@tex, but have skipped some for now out of laziness, since no
+	one has noticed.
+	(\expandablevalue): change formatting; note that _ in
+	an @value string fails in non-typewriter output,
+	and has been for a long time.
+	(\activetilde, \activehat, \activeless, \activegtr): factor
+	out the normal Texinfo definitions, now also used in \texinfochars.
+	
+	All this due to a bug report from Charlie Zender where ' in the
+	@settitle caused failures when a page break occurred inside @tex,
+	help-texinfo 08 Sep 2013 16:26:16.
+
+2013-09-10  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (Two Arguments, Three Arguments):
+	some node name requirements apply to arg#2 and arg#3 too.
+	(Inline Conditionals): TeX can't properly deal with
+	newline-delimited commands inside @inline*.
+
+2013-09-09  Karl Berry  <karl@gnu.org>
+
+	* NEWS,
+	* doc/texinfo.texi (Node Line Requirements, Menu Parts,
+	Cross Reference Parts, Other Customization variables): 
+	mention Info warnings and INFO_SPECIAL_CHARS_WARNING.
+	Other small tweaks.
+
+2013-09-07  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/texi2any.pl: handle plaintext as other formats to set 
+	expanded formats.
+	* tp/Texinfo/Parser.pm: accept matching braces in ignored 
+	@inline* commands.
+	* tp/Texinfo/Common.pm(@variable_string_settables),
+	tp/Texinfo/Convert/Info.pm(_node), tp/Texinfo/Convert/Plaintext.pm:
+	add the INFO_SPECIAL_CHARS_WARNING customization variable, if
+	false do not output warning messages on info characters in menu,
+	cross-refs and node names.
+	Use pending word in ref formatting to construct checked cross ref
+	and node names.
+
+2013-09-06  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Parser.pm, 
+	tp/Texinfo/Convert/HTML.pm(_convert_inline_command),
+	tp/Texinfo/Convert/Plaintext.pm, tp/Texinfo/Convert/DocBook.pm,
+	tp/Texinfo/Convert/Text.pm, tp/Texinfo/Common.pm, 
+	tp/Texinfo/Convert/TexinfoXML.pm:
+	implement @inlinefmtifelse, @inlineifclear, @inlineifset.
+
+2013-09-01  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Info.pm (_node): warn if node name contains
+	a comma.
+
+2013-08-31  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Plaintext.pm: warn when cross-reference
+	name contains a :, or node name contains a problematic character.
+	Warn similarly when a menu entry name contains a :, or when the
+	menu entry node contains a problematic character.
+
+2013-08-27  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Parser.pm: add \r to regexps to exclude it when 
+	excluding newlines.  Report from Karl.
+
+2013-08-26  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (run_bibtex): only run biber if
+	</bcf:controlfile> is present in the bcf file.
+	Allow override with BIBER envvar.
+	Report from Jozef Vesely, 26 Aug 2013 14:26:26.
+
+2013-08-26  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_align_lines): correct byte count
+	in flushleft and center.
+
+2013-08-24  Karl Berry  <karl@gnu.org>  (tiny change)
+
+	* util/texi2dvi (run_bibtex): run biber if .bcf file exists.
+	(xref_files_changed): check for biblatex rerun warning.
+	Report from Jozef Vesely, 24 Aug 2013 12:15:40.
+
+2013-08-24  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Info.pm (output), 
+	tp/Texinfo/Convert/Plaintext.pm: collect text before first node
+	and output the same header for every Info output files using that
+	text.  Based on a report from Juri Linkov and analysis of Sergey.
+	Thread started at
+	http://lists.gnu.org/archive/html/bug-gnu-emacs/2013-04/msg00039.html
+
+2013-08-22  Karl Berry  <karl@gnu.org>
+
+	* info/*: update copyright notices.
+
+	* info/infomap.c (default_{emacs,vi}_like_info_keys),
+	* info/session.c (info_display_file_info): rename from
+	info_display_file.
+	* NEWS: mention display-file-info.
+	* doc/info-stnd.texi (Invoking Info): mention new debugging level,
+	more about -f.
+	(Miscellaneous Commands): document =.
+	* info/info.c (info_short_help): mention -1 for all debugging.
+
+2013-08-20  Sergey Poznyakoff  <gray@gnu.org>
+
+	* info/info.h (add_pointer_to_array): Use x2nrealloc.
+	Remove sixth argument.  All uses updated.
+	(maybe_free): Remove.  Use free() instead.  All uses
+	updated.
+
+2013-08-20  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (AM_INIT_AUTOMAKE): require 1.14 for info-in-builddir.
+	Noted by Patrice.
+
+	* doc/texinfo.tex (\sectionheading): must do
+	\global\let\prevsectiondefs, since we're inside a group.
+	Otherwise, \thissection is lost in PDF output if an xref intervenes
+	due to the color \mark.  Report from Thien-Thi Nguyen, 
+	16 Feb 2013 12:06:17.
+
+2013-08-20  Sergey Poznyakoff  <gray@gnu.org>
+
+	Check for I/O errors when dumping nodes to file.
+	Use a general-purpose interface for storing and looking up in
+	a list of names.
+
+	* info/info-utils.c (info_namelist_add)
+	(info_namelist_free): New functions.
+	* info/info-utils.h: Likewise.
+	* info/info.c (namelist_add,namelist_free): Move to
+	info-utils.c, redeclare as extern.
+	(all_files): Update accordingly.
+	* info/session.c [VERBOSE_NODE_DUMPING]: Replace with
+	calls to debug.
+	(write_node_to_stream)
+	(dump_node_to_stream): Return error code.
+	(dump_nodes_to_file): Check for I/O errors,
+	(dumped_already): Change data type to struct
+	info_namelist_entry *.
+	(dumped_already_index, dumped_already_slots): Remove.
+	(initialize_dumping): Rewrite.
+
+2013-08-20  Sergey Poznyakoff  <gray@gnu.org>
+
+	Bind display-file to C-g in vi mode.
+
+	* info/infomap.c (default_vi_like_info_keys): Bind display-file to
+	C-g and abort to C-c.
+	* info/session.c (info_gc_file_buffers): Fix null pointer dereference.
+	* NEWS: Update.
+
+2013-08-19  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (@t{@@unnumbered @@appendix}): mention special
+	Docbook output for acknowledgements, colophon, etc.
+
+2013-08-19  Sergey Poznyakoff  <gray@gnu.org>
+
+	New interactive command "display-file".
+
+	* info/session.c (info_display_file): New command.
+	* info/infomap.c: Bind '=' to display-file.
+
+2013-08-19  Sergey Poznyakoff  <gray@gnu.org>
+
+	Don't return dir entries when called with -a.  Fix interaction of
+	-a and --output.
+
+	* info/session.c (info_follow_menus): Add debugging output
+	on level 3.
+	In strict mode, return NULL if no matching node was found (by
+	default initial node is returned).
+	(dump_nodes_to_file,dump_node_to_file): Take flags in the
+	last parameter.  If DUMP_APPEND is set, append to the output
+	file instead of overwriting it.
+	* info/session.h (DUMP_APPEND, DUMP_SUBNODES): New flags.
+	* info/filesys.c (info_file_find_next_in_path): Improve
+	debugging output
+	* info/info.c (all_files): Set DUMP_APPEND for all but the
+	first call to dump_node_to_file.
+	(main): Initialize dump_subnodes.
+
+2013-08-18  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (Image Syntax): a bit more about Docbook.
+
+	* doc/info-stnd.texi (Invoking Info),
+	(Variables): editing throughout.
+	* info/info.c (info_short_help): use MANUAL instead of FILENAME
+	for -f.  Report from Arne Babenhauserheide,
+	11 Apr 2013 11:05:37.
+
+2013-08-18  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Improve info -a: process manpages, filter out duplicate names.
+
+	* info/info-utils.c (info_reference_free): New function.
+	(info_free_references): Use info_reference_free.
+	* info/info-utils.h (info_reference_free): New proto.
+	* info/info.c (info_find_matching_files): Return
+	REFERENCE **.
+	(namelist_add,namelist_free): New static functions.
+	(all_files): Select unique file names.
+	* info/session.c (info_split_window)
+	[SPLIT_BEFORE_ACTIVE]: Declare pagetop.
+	(info_menu_or_ref_item): Use info_reference_free.
+	(info_follow_menus): Fix processing in strict mode.
+
+	* info/filesys.c: Remove unused variable.
+	* info/filesys.h (forget_file_names): New proto.
+	* info/indices.c (apropos_in_all_indices): Use info_reference_free
+	to free a pointer to REFERENCE.
+	(info_virtual_index): Remove unused variable.
+	(allfiles_create_node): Second argument is REFERENCE **.
+	* info/indices.h (allfiles_create_node): Change signature.
+	* info/man.c (manpage_xrefs_in_binding): Use info_reference_free.
+	* info/nodes.c: Include tag.h
+	* info/nodes.h (TAG)<nodelen>: Change type to size_t.
+	* info/window.h (window_log_to_phys_line): New proto.
+
+2013-08-17  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	The -x option takes a numeric argument.
+
+	* NEWS: Document -a.
+	* doc/info-stnd.texi: Document existing debugging levels.
+	Document -x -1.
+	* info/info.c (debug_level): Change type to unsigned.
+	(long_options, short_options): -x now requires argument.
+	(set_debug_level): New function.
+	(main): Change -x handling.
+	* info/info.h (debug_level): Change declaration.
+
+	Minor fixes:
+
+	* info/echo-area.c (ea_possible_completions)
+	[SPLIT_BEFORE_ACTIVE]: Declare start here.
+	(ea_scroll_completions_window): Remove unused variable.
+	(pause_or_input): Likewise.
+
+2013-08-17  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Fix -a functionality.
+
+	* info/info.c (all_files): Clear cached data to avoid
+	reading the same file again.
+
+2013-08-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (Conventions): remove statement about
+	CRLF not being recognized.  It seems that both TeX and tp
+	are agnostic about line endings.
+	Report frmo vincent.belaiche@gmail.com, 21 Apr 2013 19:02:39.
+
+        * README,
+        * INSTALL,
+        * tp/TODO,
+	* doc/texinfo.texi,
+        * doc/texi2oldapi.texi,
+        * doc/refcard/txicmdcheck,
+        * doc/refcard/txirefcard.tex,
+        * doc/refcard/txivarcheck,
+        * doc/Makefile.am,
+        * util/tests/txitextest: texinfo.txi -> texinfo.texi.
+
+2013-08-15  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (@settitle): typo (missing "to"), report from
+	Alex Sassmannshausen, 26 Apr 2013 14:21:38.
+	
+	* doc/texinfo.texi (Indicating): rewrite intro to avoid implying
+	that users can change at will what Texinfo's commands output.
+	(Defining New Texinfo Commands): and avoid implying that macros
+	should be used to redefine existing commands.
+	Thread with Robert Dodier, starting 26 Apr 2013 09:33:42.
+
+	* doc/texinfo.texi: @setfilename texinfo.info, not just
+	texinfo, per automake 1.14 complaint.
+
+	* configure.ac (AM_INIT_AUTOMAKE): add info-in-builddir,
+	per automake 1.14 complaint.
+
+	* doc/Makefile.am (info_TEXINFOS),
+	* doc/texinfo.texi: rename from doc/texinfo.texi,
+	per automake 1.14 deprecation.
+
+2013-08-15  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* gnulib/m4/po.m4: Upgrade to gettext-0.18.3.
+	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.18.3.
+
+2013-08-15  Karl Berry  <karl@gnu.org>
+
+	* install-info/install-info.c (ensure_dirfile_exists): do not
+	translate the ^_ byte; the Italian translation missed it,
+	and it makes more sense to consider it a keyword anyway.
+	Report from Thien-Thi Nguyen, 17 May 2013 11:16:41.
+
+2013-08-13  Karl Berry  <karl@gnu.org>
+
+	* doc/info-stnd.texi (Variables, Searching Commands): tweak
+	wording of search-skip-screen descriptions, etc.
+
+2013-08-12  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/init/chm.pm: sort indices names to get a reproducible output.
+	Report by Karl.
+	* tp/Texinfo/Structuring.pm: set @command_unnumbered for the toplevel
+	@-command if not @top.  Report from Karl.
+
+2013-08-11  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Conventions): add item about form feed processing.
+
+2013-08-11  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/HTML.pm(output): sort when processing renamed
+	nodes to have a reproducible error output.  Report by Karl.
+	* Texinfo/Convert/Converter.pm(_informative_command_value,
+	_informative_command): do not set informative command value if 
+	value is not defined.
+
+2013-08-10  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Line.pm, Texinfo/Convert/Paragraph.pm: preserve 
+	spaces coming from the document.
+	Do not break words at non-breaking spaces.
+	* Pod-Simple-Texinfo/t/Pod-Simple-Texinfo.t: correctly close =over
+	with a =back, as reported by newer Pod::Simple.  Report by Karl.
+	Mark as TODO the test that changes depending on Pod::Simple version.
+	Report by Karl.
+	* tp/Texinfo/Parser.pm(_next_text): add a end of line at the end of
+	files when there is one missing.  Found out in 
+	https://bugzilla.redhat.com/show_bug.cgi?id=950644
+	* tp/Makefile.am: reorder alphabetically test input files.  
+	Distribute missing test files.
+	* tp/t/test_utils.pl(test): allow for marking tests as TODO.  Use
+	this facility to mark a test of all_spaces that fails on perl 5.10
+	with NEL not being treated the same as in perl 5.14.
+
+2013-08-09  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/DocBook.pm(_protect_text): convert
+	formfeed to space instead of simply removing it.
+
+2013-08-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\codedashfinish): include an explicit
+	space after the \let=, for @code{- a}.
+	Report from Vincent Lefevre, 7 Aug 2013 04:07:10.
+
+2013-08-08  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Plaintext.pm: output ^L in ignorable
+	spaces.
+
+2013-08-07  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/HTML.pm(_default_protect_text), 
+	tp/init/html32.pm: protect ^L with an entity.
+	* tp/Texinfo/Convert/Plaintext.pm: output ^L between 
+	paragraphs.
+
+2013-08-06  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/TexinfoXML.pm(_xml_attributes):
+	do not protect \f and \ in spaces or trailingspaces attributes.
+	* tp/Texinfo/Convert/DocBook.pm(_protect_text): remove
+	form-feed from output, as it is not allowed in XML.
+
+2013-08-06  Patrice Dumas  <pertusus@free.fr>
+
+	* Texinfo/Parser.pm: keep form-feed in @set value.
+	* util/texinfo.dtd, util/txixml2texi.pl, 
+	tp/Texinfo/Convert/TexinfoXML.pm(_protect_text): output form-feed
+	as entity in XML, when possible.  Handle form-feeds in 
+	txixml2texi.pl too.
+	* tp/Texinfo/Convert/TexinfoXML.pm(_xml_attributes),
+	util/texinfo.dtd, util/txixml2texi.pl: protect form-feed in
+	attributes by using an entity that becomes a literal \f. 
+	Double \ in attributes too.
+
+2013-08-06  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\smartitaliccorrection): also omit italic
+	correction if next command is @. or @comma.
+	Report from Vincent Lefevre, 5 Aug 2013 02:47:31.
+
+2013-08-06  Patrice Dumas  <pertusus@free.fr>
+
+	* Texinfo/Parser.pm: form-feed in paragraph stops the current
+	paragraph.  For that consider \f to be a separator.
+
+2013-08-04  Patrice Dumas  <pertusus@free.fr>
+
+	* Texinfo/Parser.pm: keep form-feed in macro arguments.
+
+2013-07-29  Patrice Dumas  <pertusus@free.fr>
+
+	* Texinfo//Common.pm (enumerate_item_representation),
+	* Texinfo/Parser.pm:
+	handle correctly @enumerate specification greater than 10.
+	Report from Dmitry Shachnev.
+
+2013-06-28  Karl Berry  <karl@gnu.org>
+
+	* contrib/perldoc-all/GNUmakefile (texi_pod_doc_incl): remove X<...>
+	pod constructs, so we get good filenames.  For perl-5.18.0.
+
+2013-06-25  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/HTML.pm: use "prev" for rel attribute and not 
+	"previous", as prev is the preferred one.  Report by Tom Tromey.
+
+2013-06-21  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\codedash): use \futurelet.
+	(\codedashfinish): new definition for - inside @code et al.,
+	which does not allow a break after a - when it is preceded or
+	followed by another -, or when it is first.
+	(\code): initialize \codedashprev for the - as first char case.
+	Report from Arnold Robbins, 04 Apr 2013 01:30:28 -0600.
+
+	* texi2dvi (run_makeinfo): more verbose error message if our
+	test reading texinfo.tex fails.  Suggestion from Vincent B,
+	25 May 2013 23:10:58.
+
+2013-06-08  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Skip the current screen when repeating searches.
+
+	* NEWS: Update.
+	* doc/info-stnd.texi: Document the -a (--all) option and
+	the search-skip-screen. Mention '}' and '{' commands when
+	discussing repeated searches.
+	* doc/version-stnd.texi: Update.
+	* doc/version.texi: Update.
+	* info/session.c (search_skip_screen_p): New variable.
+	(info_search_1): Take additional argument, supplying the
+	starting position for the search. All uses changed
+	(DFL_START): New define.
+	(info_search_next,info_search_previous): If search_skip_screen_p
+	is set, skip the lines displayed on the screen.
+	* info/variables.c (info_variables): New variable
+	"search-skip-screen".
+	* info/variables.h (min_search_length): New proto.
+
+2013-06-07  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Preparing for @TeX{}): texinfo.cnf
+	is a "configuration" file, other wording tweaks.
+
+2013-06-07  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+        Handle "index" tag.
+        * info/tag.c (tags_expand): Accept NULL handler as a no-op.
+        (tagtab): Add an entry for "index".
+
+2013-04-29  Stefano Lattarini  <stefano.lattarini@gmail.com>  (tiny change)
+
+	* tp/Makefile.am,
+	* tp/tests/Makefile.am: use $(MKDIR_P) instead of $(mkdir_p).
+
+2013-04-16  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Restore the cursor position when going to the Up node.
+
+	* info/session.c (info_win_find_node): New static.
+	(info_handle_pointer): When handling Up pointer,
+	restore the point (cursor position) as well.
+
+2013-04-16  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Implement the --all (-a) option as per bug #38168.
+
+	* info/infopath.c: New file.
+	* info/Makefile.am (ginfo_SOURCES): Add new file.
+	* info/tilde.c (tilde_expand_word): Argument is const char *.
+	All uses changed.
+	* info/info.c (all_matches_p): New variable.
+	(long_options, short_options): New option --all (-a).
+	(single_file, all_files): New functions.
+	(main): Handle new option.
+	* info/nodes.c (forget_info_file): Now extern.
+	* info/nodes.h (forget_info_file): New proto.
+	* info/indices.c (create_virtindex_file_buffer): Allow for
+	NULL as the filename.
+	(allfiles_create_node, info_all_files): New functions.
+	* info/dir.c (maybe_build_dir_node): Use infopath_first and
+	infopath_next to iterate over the INFOPATH.
+	* info/filesys.c: Remove infopath functions. See infopath.c
+	(info_file_in_path, info_file_find_next_in_path): New functions.
+	* info/indices.h (allfiles_create_node): New prototype.
+	* info/filesys.h (infopath): Remove extern.
+	(infopath): New prototype.
+	(zap_infopath): Rename to infopath_clear.
+	(info_add_path): Rename to infopath_add.
+	(infopath_init,infopath_first,infopath_next)
+	(info_file_find_next_in_path): New prototypes.
+	(INFOPATH_INIT): New constant.
+	* info/session.c (info_read_and_dispatch): Do not set
+	quit_info_immediately, it is done by info_quit.
+	(info_follow_menus): Take an additional argument.
+	(info_quit): Set quit_info_immediately.
+	* info/session.h (quit_info_immediately): Extern.
+	(info_follow_menus): Change signature.
+	* info/infomap.c: Bind `C-x f' in Emacs mode, and `:a' in Vi mode
+	to info_all_files.
+
+	* doc/info-stnd.texi: Document the --all option.
+
+2013-04-13  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* info/infomap.c: Fix indentation and style.
+
+2013-04-13  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Implement new options for standalone info.
+
+	* info/info.c (debug_level): New variable.
+	(long_options): New options: -x (--debug) and -v (--variable).
+	(short_options): Update accordingly.
+	(main): Handle the new options.
+	(vinfo_debug, info_debug): New functions.
+	* info/info.h (info/info.h): New exern.
+	(debug): New macros.
+	(vinfo_debug, info_debug): New prototypes.
+	(set_variable_to_value): Change the return type.
+	* info/variables.c (set_variable_to_value): Compile
+	unconditionally.  Return 0/-1 depending on the success/failure of
+	the operation.
+	* info/filesys.c: Print additional debugging info.
+	* info/infomap.c: Check the return from set_variable_to_value.
+	* doc/info-stnd.texi: Document new options.
+	* doc/version.texi: Update.
+	* doc/version-stnd.texi: Update.
+	* NEWS: Update.
+
+2013-04-07  Patrice Dumas  <pertusus@free.fr>
+
+	* configure.ac: set DIFF_A_OPTION to -a, and not DIFF_U_OPTION.
+	* tp/Texinfo/Convert/Plaintext.pm: do not consider an empty line
+	at the end of a preformatted format as counting as an empty line
+	in order to output an empty line following the preformatted format 
+	too.  Karl report.
+	* tp/Texinfo/Convert/DocBook.pm: add support for special docbook
+	sectioning elements with special node names and @unnumbered. 
+	Feature asked for by Aharon Robbins, syntax by Karl.
+
+2013-03-31  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* info/indices.c (info_next_index_match): Fix improper string
+	indexing. Based on report from Eli Zaretskii.
+
+2013-03-31  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Fix \b[...\b] tag processing.
+
+	* info/nodes.h (TAG) <content_cache>: New member.
+	* info/nodes.c (get_nodes_of_info_file)
+	(get_nodes_of_tags_table): Initialize TAG->content_cache.
+	(info_node_of_file_buffer_tags): Use cached contents if
+	available. Call tags_expand upon the first access to that
+	node.
+	(free_info_tag): Free content_cache.
+	* info/tag.c (tag_image): Fix state machine.  Ignore '='s,
+	unless in state_kw.
+	(tags_expand): Change return value and signature. Allocate
+	memory only if at least one tag is actually expanded.
+	* info/tag.h (tags_expand): Change prototype.
+	* info/filesys.c (filesys_read_info_file): Do not call
+	tags_expand on the entire buffer.
+
+2013-03-20  Karl Berry  <karl@gnu.org>
+
+	Doc tweaks.
+	* NEWS: more technalities about the macro-expansion incompatibility.
+	* README-hacking: call change_perl_modules_version.sh for release.
+	* doc/texinfo.txi: wording around PDF items.
+	* doc/texinfo.tex: typos in comment.
+
+2013-03-20  Eli Zaretskii  <eliz@gnu.org>
+
+	* Makefile.am (SUBDIRS): If HOST_IS_WINDOWS, add 'info' to SUBDIRS
+	even if HAVE_TERMLIBS is false.
+	* configure.ac <have_termlib>: Don't bother warning on MinGW as
+	well.
+
+2013-03-20  Karl Berry  <karl@gnu.org>
+
+	* man/Makefile.am (man_rule_0): set EXEEXT="" since it's
+	no longer an executable.  Report from Eli, 20 Mar 2013 20:47:52.
+	(mi_perl5lib): set up another variable to shorten source lines.
+
+2013-03-16  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): accept the same 
+	character in @value as in @set.
+
+2013-03-14  Karl Berry  <karl@gnu.org>
+
+	* maintain/regenerate_cmd_tests.sh,
+	* tests/run_parser_all.sh,
+	* tests/many_input_files/tex_l2h.sh: use $0 in some diagnostics.
+
+	* NEWS: mention switch from cvs to svn.
+	* doc/texinfo.txi (Invoking @t{pod2texi}): svn url instead of cvs
+	for Perl manual in Texinfo.
+	* contrib/perldoc-all/perldoc-all.texi: likewise, and turn off
+	all underfull/overfull messages since we can't do anything about them.
+	* contrib/perldoc-all/README: 5.16.3.
+	* contrib/perldoc-all/GNUmakefile (all): set save_size in
+	environment to avoid TeX overflow.
+	(install): new target.
+	* doc/texinfo.tex (\nonfillstart): only reset to \hfuzz=12pt
+	if it's less than that.
+
+	* README-hacking: tweaks to release wording.
+
 2013-03-12  Karl Berry  <karl@gnu.org>
 
 	* Version 5.1.

@@ -259,29 +259,55 @@ $result_trees{'inline'} = {
                 },
                 {
                   'parent' => {},
-                  'text' => '$\\underlinea < b '
+                  'text' => '$\\underline'
                 },
                 {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
+                      'parent' => {},
+                      'text' => 'a < b '
+                    },
+                    {
+                      'args' => [
                         {
+                          'contents' => [
+                            {
+                              'parent' => {},
+                              'text' => 'tex \\hbox'
+                            },
+                            {
+                              'contents' => [
+                                {
+                                  'parent' => {},
+                                  'text' => ' code '
+                                }
+                              ],
+                              'line_nr' => {
+                                'file_name' => '',
+                                'line_nr' => 6,
+                                'macro' => ''
+                              },
+                              'parent' => {},
+                              'type' => 'bracketed'
+                            }
+                          ],
                           'parent' => {},
-                          'text' => 'tex \\hbox code '
+                          'type' => 'brace_command_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'cmdname' => 'code',
+                      'contents' => [],
+                      'line_nr' => {},
+                      'parent' => {}
                     }
                   ],
-                  'cmdname' => 'code',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 6,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'line_nr' => {},
+                  'parent' => {},
+                  'type' => 'bracketed'
+                },
+                {
+                  'parent' => {},
+                  'text' => '$ ``'
                 }
               ],
               'parent' => {},
@@ -297,6 +323,7 @@ $result_trees{'inline'} = {
               ],
               [
                 {},
+                {},
                 {}
               ]
             ],
@@ -311,7 +338,7 @@ $result_trees{'inline'} = {
         },
         {
           'parent' => {},
-          'text' => '$ ``
+          'text' => '
 '
         }
       ],
@@ -701,14 +728,22 @@ $result_trees{'inline'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{
 $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[0];
 $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8];
 $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1];
-$result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2];
+$result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2];
+$result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'contents'}[1]{'args'}[0];
+$result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'contents'}[1]{'args'}[0];
+$result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'contents'}[1];
+$result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'contents'}[1]{'line_nr'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
+$result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2];
+$result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'line_nr'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1];
+$result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[3]{'parent'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1];
 $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'parent'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8];
 $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0];
 $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[1];
 $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'extra'}{'brace_command_contents'}[1][1] = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2];
-$result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'line_nr'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'line_nr'};
+$result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'extra'}{'brace_command_contents'}[1][2] = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[3];
+$result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'line_nr'} = $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'args'}[1]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'inline'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'inline'}{'contents'}[1];
 $result_trees{'inline'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'inline'}{'contents'}[1];
 $result_trees{'inline'}{'contents'}[1]{'parent'} = $result_trees{'inline'};
@@ -774,7 +809,7 @@ $result_texis{'inline'} = '
 @inlinefmt{plaintext, plaintext ``}, 
 @inlinefmt{xml, <para>xml</para> ``},
 @inlinefmt{docbook, <emphasis>docbook</emphasis> ``}, 
-@inlinefmt{tex, $\\underlinea < b @code{tex \\hbox code }}$ ``
+@inlinefmt{tex, $\\underline{a < b @code{tex \\hbox{ code }}}$ ``}
 
 
 @inlineraw{html, raw <blink>html</blink> ``}, 
@@ -790,7 +825,7 @@ $result_texts{'inline'} = '
 , 
 ,
 , 
-$ "
+
 
 
 , 
@@ -800,48 +835,11 @@ $ "
 
 ';
 
-$result_errors{'inline'} = [
-  {
-    'error_line' => ':6: misplaced {
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => 'misplaced {',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':6: misplaced {
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => 'misplaced {',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':6: misplaced }
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => 'misplaced }',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':6: misplaced }
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => 'misplaced }',
-    'type' => 'error'
-  }
-];
+$result_errors{'inline'} = [];
 
 
 
-$result_converted{'plaintext'}->{'inline'} = ', plaintext ", , , $ "
+$result_converted{'plaintext'}->{'inline'} = ', plaintext ", , ,
 
    , raw plaintext ``, , ,
 ';
@@ -852,7 +850,7 @@ $result_converted{'html_text'}->{'inline'} = '
 , 
 ,
 , 
-$ &ldquo;
+
 </p>
 
 <p>raw <blink>html</blink> ``, 
@@ -868,7 +866,7 @@ $result_converted{'xml'}->{'inline'} = '
 <inlinefmt><inlinefmtformat>plaintext</inlinefmtformat><inlinefmtcontent spaces=" ">plaintext &textldquo;</inlinefmtcontent></inlinefmt>, 
 &lt;para&gt;xml&lt;/para&gt; &textldquo;,
 <inlinefmt><inlinefmtformat>docbook</inlinefmtformat><inlinefmtcontent spaces=" ">&lt;emphasis&gt;docbook&lt;/emphasis&gt; &textldquo;</inlinefmtcontent></inlinefmt>, 
-<inlinefmt><inlinefmtformat>tex</inlinefmtformat><inlinefmtcontent spaces=" ">$\\underlinea &lt; b <code>tex \\hbox code </code></inlinefmtcontent></inlinefmt>$ &textldquo;
+<inlinefmt><inlinefmtformat>tex</inlinefmtformat><inlinefmtcontent spaces=" ">$\\underline{a &lt; b <code>tex \\hbox{ code }</code>}$ &textldquo;</inlinefmtcontent></inlinefmt>
 </para>
 
 <para><inlineraw><inlinerawformat>html</inlinerawformat><inlinerawcontent spaces=" ">raw &lt;blink&gt;html&lt;/blink&gt; &textldquo;</inlinerawcontent></inlineraw>, 
@@ -884,7 +882,7 @@ $result_converted{'docbook'}->{'inline'} = '
 , 
 ,
 &lt;emphasis&gt;docbook&lt;/emphasis&gt; &#8220;, 
-$ &#8220;
+
 </para>
 
 <para>, 

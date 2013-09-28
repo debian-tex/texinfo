@@ -1,7 +1,7 @@
 /* infokey.c -- compile ~/.infokey to ~/.info.
-   $Id: infokey.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: infokey.c 5338 2013-08-22 17:58:30Z karl $
 
-   Copyright (C) 1999, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009,
+   Copyright 1999, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009,
    2010, 2011, 2012, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Andrew Bettison <andrewb@zip.com.au>. */
+   Originally written by Andrew Bettison. */
 
 #include "info.h"
 #include "infomap.h"

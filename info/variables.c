@@ -1,7 +1,7 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: variables.c 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1993, 1997, 2001, 2002, 2004, 2007, 2008, 2011
+   Copyright 1993, 1997, 2001, 2002, 2004, 2007, 2008, 2011, 2013
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #include "info.h"
 #include "variables.h"
@@ -86,6 +86,9 @@ VARIABLE_ALIST info_variables[] = {
     N_("Minimal length of a search string"),
     &min_search_length, NULL },
 
+  { "search-skip-screen",
+      N_("Skip current window when searching"),
+    &search_skip_screen_p, (char **)on_off_choices },
   { NULL }
 };
 
@@ -163,8 +166,8 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
       {
         register int i;
         REFERENCE **array = NULL;
-        int array_index = 0;
-        int array_slots = 0;
+        size_t array_index = 0;
+        size_t array_slots = 0;
 
         for (i = 0; var->choices[i]; i++)
           {
@@ -175,8 +178,7 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
             entry->nodename = NULL;
             entry->filename = NULL;
 
-            add_pointer_to_array
-              (entry, array_index, array, array_slots, 10, REFERENCE *);
+            add_pointer_to_array (entry, array_index, array, array_slots, 10);
           }
 
         sprintf (prompt, _("Set %s to value (%s): "),
@@ -269,7 +271,7 @@ make_variable_completions_array (void)
 {
   register int i;
   REFERENCE **array = NULL;
-  int array_index = 0, array_slots = 0;
+  size_t array_index = 0, array_slots = 0;
 
   for (i = 0; info_variables[i].name; i++)
     {
@@ -280,44 +282,52 @@ make_variable_completions_array (void)
       entry->nodename = NULL;
       entry->filename = NULL;
 
-      add_pointer_to_array
-        (entry, array_index, array, array_slots, 200, REFERENCE *);
+      add_pointer_to_array (entry, array_index, array, array_slots, 200);
     }
 
   return array;
 }
 
-#if defined(INFOKEY)
-
-void
+int
 set_variable_to_value(char *name, char *value)
 {
-	register int i;
+  register int i;
 
-	/* Find the variable in our list of variables. */
-	for (i = 0; info_variables[i].name; i++)
-		if (strcmp(info_variables[i].name, name) == 0)
-			break;
+  /* Find the variable in our list of variables. */
+  for (i = 0; info_variables[i].name; i++)
+    if (strcmp(info_variables[i].name, name) == 0)
+      break;
 
-	if (!info_variables[i].name)
-		return;
-
-	if (info_variables[i].choices)
+  if (!info_variables[i].name)
+    {
+      errno = ENOENT;
+      return -1;
+    }
+  
+  if (info_variables[i].choices)
+    {
+      register int j;
+      
+      /* Find the choice in our list of choices. */
+      for (j = 0; info_variables[i].choices[j]; j++)
+	if (strcmp (info_variables[i].choices[j], value) == 0)
+	  {
+	    *info_variables[i].value = j;
+	    return 0;
+	  }
+    }
+  else
+    {
+      char *p;
+      long n = strtol (value, &p, 10);
+      if (*p == 0 && INT_MIN <= n && n <= INT_MAX)
 	{
-		register int j;
-
-		/* Find the choice in our list of choices. */
-		for (j = 0; info_variables[i].choices[j]; j++)
-			if (strcmp (info_variables[i].choices[j], value) == 0)
-				break;
-
-		if (info_variables[i].choices[j])
-			*info_variables[i].value = j;
+	  *info_variables[i].value = n;
+	  return 0;
 	}
-	else
-	{
-		*info_variables[i].value = atoi(value);
-	}
+    }
+
+  errno = EINVAL;
+  return -1;
 }
 
-#endif /* INFOKEY */

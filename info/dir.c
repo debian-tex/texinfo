@@ -1,8 +1,8 @@
 /* dir.c -- how to build a special "dir" node from "localdir" files.
-   $Id: dir.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: dir.c 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1993, 1997, 1998, 2004, 2007, 
-   2008, 2009, 2012 Free Software Foundation, Inc.
+   Copyright 1993, 1997, 1998, 2004, 2007, 2008, 2009, 2012,
+   2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-  Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #include "info.h"
 #include "info-utils.h"
@@ -95,14 +95,15 @@ maybe_build_dir_node (char *dirname)
      with the dir file just found.  */
   new_dir_file_p (&dir_buffer->finfo);
   
-  path_index = update_tags = 0;
+  update_tags = 0;
 
   /* Using each element of the path, check for one of the files in
      DIRS_TO_ADD.  Do not check for "localdir.info.Z" or anything else.
      Only files explictly named are eligible.  This is a design decision.
      There can be an info file name "localdir.info" which contains
      information on the setting up of "localdir" files. */
-  while ((this_dir = extract_colon_unit (infopath, &path_index)))
+  for (this_dir = infopath_first (&path_index); this_dir; 
+       this_dir = infopath_next (&path_index))
     {
       register int da_index;
       char *from_file;

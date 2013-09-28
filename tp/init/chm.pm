@@ -237,7 +237,7 @@ sub chm_init($)
                                           $self->{'index_entries'},
                                           $self->{'index_names'});
   if ($index_entries) {
-    foreach my $index_name (keys (%$index_entries)) {
+    foreach my $index_name (sort(keys(%$index_entries))) {
       foreach my $index_entry_ref (@{$index_entries->{$index_name}}) {
         my $file = $self->command_filename($index_entry_ref->{'command'});
         # happens for things in @titlepage when it is not output

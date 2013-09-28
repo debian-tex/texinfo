@@ -1268,6 +1268,7 @@ In verbatim test text
      In verbatim in example
      In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
 
+
      In quotation with spaces
 
      In verbatim in quotation with spaces

@@ -1,8 +1,8 @@
 /* nodemenu.c -- produce a menu of all visited nodes.
-   $Id: nodemenu.c 5191 2013-02-23 00:11:18Z karl $
+   $Id: nodemenu.c 5337 2013-08-22 17:54:06Z karl $
 
-   Copyright (C) 1993, 1997, 1998, 2002, 2003, 2004, 2007, 2008, 2011
-   Free Software Foundation, Inc.
+   Copyright 1993, 1997, 1998, 2002, 2003, 2004, 2007, 2008, 2011,
+   2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,11 +17,11 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #include "info.h"
 
-NODE * get_visited_nodes (Function *filter_func);
+NODE *get_visited_nodes (Function *filter_func);
 
 /* Return a line describing the format of a node information line. */
 static const char *
@@ -132,7 +132,7 @@ get_visited_nodes (Function *filter_func)
   INFO_WINDOW *info_win;
   NODE *node;
   char **lines = NULL;
-  int lines_index = 0, lines_slots = 0;
+  size_t lines_index = 0, lines_slots = 0;
 
   if (!info_windows)
     return NULL;
@@ -153,8 +153,7 @@ get_visited_nodes (Function *filter_func)
               char *line;
 
               line = format_node_info (node);
-              add_pointer_to_array
-                (line, lines_index, lines, lines_slots, 20, char *);
+              add_pointer_to_array (line, lines_index, lines, lines_slots, 20);
             }
         }
     }

@@ -1,4 +1,4 @@
-$Id: NEWS 5234 2013-03-12 22:56:31Z karl $
+$Id: NEWS 5382 2013-09-26 23:06:01Z karl $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -22,6 +22,40 @@ one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
+
+5.2 (26 September 2013)
+* Language:
+  . new commands @inlinefmtifelse, @inlineifset, @inlineifclear, for
+    more brace-delimited alternatives to the conditional environments.
+
+* texi2any:
+  . warns about node names, menu items, and cross-references (but not
+    index entries) containing problematic characters; can be disabled
+    with -c INFO_SPECIAL_CHARS_WARNING=0.
+
+* info:
+  . new option -x (--debug) for debugging output; -x -1 to get everything.
+  . new option -v (--variable) assigns a value to an Info variable,
+    with the usual syntax, -v VARIABLE=VALUE.
+  . new option -a (--all) instructs Info to display all documents
+    matching the command line arguments, not just the first.  In
+    conjunction with the -w option, it shows full names of all Info
+    files matching the command line arguments; with -o, it outputs all
+    matching files.
+  . new variable search-skip-screen controls the starting position for
+    repeated search commands ({ and }).  When set to On, repeated
+    searches skip the lines displayed on the screen, i.e.,
+    forward searches (}) start at the beginning of the next page, and
+    backward searches ({) start at the end of the previous page.
+  . new command display-file-info (bound to = by default, C-g in vi mode)
+    shows full file name of the node being displayed and position in it.
+
+* texi2dvi:
+  . support for biblatex+biber.
+
+* Distribution: automake-1.14, gettext-0.18.3.1.
+
+
 5.1 (12 March 2013)
 * texi2any:
   . irregular sectioning trees (see 5.0 news item) produce a warning
@@ -33,6 +67,9 @@ one of the relevant sections:
   
 * install-info:
   . lzip (.lz) compression supported.
+
+* Development: switch from CVS to Subversion.
+  https://savannah.gnu.org/svn/?group=texinfo
 
 
 5.0 (16 February 2013)
@@ -103,10 +140,13 @@ one of the relevant sections:
     added.  (Both old and new implementations preserve blank lines that
     are present.)
     
-  . The old implementation did not consider ends of lines from expansion
-    of an @macro definition to end an @-command line-delimited argument
-    (@chapter, @center, etc.).  This is no longer the case.  (A detailed
-    example is in the manual, node Macro Details.)
+  . The old implementation processed macros in place, formatting the
+    replacement text with the output.  Now the replacement text is
+    textually substituted as Texinfo source.  A consequence of the old
+    behavior is that ends of lines from expansion of an @macro
+    definition did not end an @-command line-delimited argument
+    (@chapter, @center, etc.).  Now they do.  (A detailed example is in
+    the manual, node Macro Details.)
 
 * pod2texi is a new (Perl) program that uses the capabilities of
   texi2any to translate Perl pod documentation to Texinfo.

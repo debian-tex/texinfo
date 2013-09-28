@@ -1,9 +1,7 @@
-/* key.h -- Structure associating function names with numeric codes. */
+/* key.h -- Structure associating function names with numeric codes.
+   $Id: key.h 5338 2013-08-22 17:58:30Z karl $
 
-/* This file is part of GNU Info, a program for reading online documentation
-   stored in Info format.
-
-   Copyright (C) 1993, 2007 Free Software Foundation, Inc.
+   Copyright 1993, 2007, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +16,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Andrew Bettison <andrewb@zip.com.au> */
+   Originally written by Andrew Bettison. */
 
 #if !defined (KEY_H)
 #define KEY_H

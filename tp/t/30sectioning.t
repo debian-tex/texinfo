@@ -367,6 +367,10 @@ Should be unnumbered.
 
 @bye
 '],
+['section_below_unnumbered_no_top',
+'@unnumbered U
+@section S
+'],
 ['top_no_argument_and_content',
 '@top
 

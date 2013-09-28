@@ -1,4 +1,4 @@
-# $Id: Makefile.am 5191 2013-02-23 00:11:18Z karl $
+# $Id: Makefile.am 5255 2013-04-15 21:39:09Z gray $
 # Makefile.am for texinfo/info.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012
@@ -38,7 +38,7 @@ ginfo_SOURCES = dir.c display.c display.h doc.h dribble.c dribble.h \
   echo-area.c echo-area.h \
   filesys.c filesys.h footnotes.c footnotes.h gc.c gc.h \
   indices.c indices.h info-utils.c info-utils.h info.c info.h infodoc.c \
-  infomap.c infomap.h m-x.c man.c man.h nodemenu.c nodes.c nodes.h \
+  infomap.c infomap.h infopath.c m-x.c man.c man.h nodemenu.c nodes.c nodes.h \
   search.c search.h session.c session.h signals.c signals.h \
   tag.c tag.h termdep.h terminal.c terminal.h tilde.c tilde.h \
   variables.c variables.h window.c window.h

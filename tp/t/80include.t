@@ -12,6 +12,11 @@ my @test_cases = (
 ['simple_no_eol',
 '@include inc_file.texi'
 ],
+['no_eol_in_included_file',
+'Some thing.
+@include include_noeol.texi
+Following
+'],
 ['macro_definition_in_include',
 '@include macro_included.texi
 

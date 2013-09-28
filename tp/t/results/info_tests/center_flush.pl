@@ -673,9 +673,9 @@ after anchor
 
 
 Tag Table:
-Ref: anchor in flushleft98
-Ref: anchor in flushright601
-Ref: second anchor in flushright671
+Ref: anchor in flushleft99
+Ref: anchor in flushright607
+Ref: second anchor in flushright677
 
 End Tag Table
 ';

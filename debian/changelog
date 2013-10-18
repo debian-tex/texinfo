@@ -1,3 +1,9 @@
+texinfo (5.2.0.dfsg.1-2) UNRELEASED; urgency=low
+
+  * update mime handler for plain text output (Closes: #723711)
+
+ -- Norbert Preining <preining@debian.org>  Fri, 18 Oct 2013 11:35:59 +0900
+
 texinfo (5.2.0.dfsg.1-1) unstable; urgency=low
 
   * install mime handler for info files (thanks to Ryde Kevin) (Closes: #723711)

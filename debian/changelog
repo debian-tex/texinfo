@@ -1,8 +1,10 @@
 texinfo (5.2.0.dfsg.1-2) UNRELEASED; urgency=low
 
   * update mime handler for plain text output (Closes: #723711)
+  * Use dh_autotools-dev to update config.{sub,guess} for new ports.
+    Patch from Ubuntu (Closes: #729863), thanks Matthias Klose
 
- -- Norbert Preining <preining@debian.org>  Fri, 18 Oct 2013 11:35:59 +0900
+ -- Norbert Preining <preining@debian.org>  Sun, 24 Nov 2013 05:42:20 +0900
 
 texinfo (5.2.0.dfsg.1-1) unstable; urgency=low
 

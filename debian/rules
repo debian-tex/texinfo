@@ -19,6 +19,7 @@ build-indep: build-stamp
 
 build-stamp:
 	dh_testdir
+	dh_autotools-dev_updateconfig
 	./configure $(shell dpkg-buildflags --export=configure) \
 	  --with-external-Text-Unidecode=yes \
 	  --with-external-libintl-perl=yes \
@@ -38,6 +39,7 @@ clean:
 	dh_testdir
 	dh_testroot
 	[ ! -f Makefile ] || $(MAKE) distclean
+	dh_autotools-dev_restoreconfig
 	dh_clean install-stamp build-stamp check-stamp \
 		intl/libintl.h config.log
 

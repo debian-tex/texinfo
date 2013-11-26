@@ -1,0 +1,15 @@
+fix missing Ctrl-n key binding in info, included upstream
+---
+ info/infomap.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- texinfo.orig/info/infomap.c
++++ texinfo/info/infomap.c
+@@ -297,6 +297,7 @@
+   CONTROL('f'), NUL,              A_info_forward_char,
+   CONTROL('h'), NUL,              A_info_get_help_window,
+   CONTROL('l'), NUL,              A_info_redraw_display,
++  CONTROL('n'), NUL,              A_info_next_line,
+   CONTROL('p'), NUL,              A_info_prev_line,
+   CONTROL('r'), NUL,              A_isearch_backward,
+   CONTROL('s'), NUL,              A_isearch_forward,

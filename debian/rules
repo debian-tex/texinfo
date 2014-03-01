@@ -26,7 +26,16 @@ build-stamp:
 	  --prefix=/usr \
 	  --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man' \
 	  --build=$(DEB_BUILD_GNU_TYPE) --host=$(DEB_HOST_GNU_TYPE)
+	# after dh_autotools-dev_updateconfig the man pages would
+	# be rebuild, but we don't have tex installed (and don't want
+	# to add texlive-binaries to build-deps, too big and not used)
+	# so the check we patched in would break the man page generation
+	# see BTS#740343
+	# backup the generated man page texi2dvi.1 and restore it
+	cp man/texi2dvi.1 debian
 	$(MAKE)
+	mv debian/texi2dvi.1 man/
+	touch man/texi2dvi.1
 	touch $@
 
 check-stamp: build-stamp

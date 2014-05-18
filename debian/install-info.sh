@@ -10,8 +10,9 @@ set -e
 if [ -z "$DPKG_RUNNING_VERSION" ] ; then
   # it seems we are running from outside a maintainer script, so give a
   # warning and call ginstall-info without anything else
-  echo "This is not dpkg install-info anymore, but GNU install-info" >&2
-  echo "See the man page for ginstall-info for command line arguments" >&2
+  # we are so long in the transition, we don't need to tell this anymore!
+  # echo "This is not dpkg install-info anymore, but GNU install-info" >&2
+  # echo "See the man page for ginstall-info for command line arguments" >&2
   ginstall-info "$@"
 else 
   # we are running from a maintainer script, simply ignore the call

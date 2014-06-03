@@ -53,7 +53,7 @@ if [ -r "$INFODIR/dir" ] ; then
   cp $INFODIR/dir $INFODIR/dir.old
 fi
 
-# we have to remove the dir file not make ginstall-info being surprised
+# we have to remove the dir file not make install-info being surprised
 rm -f "$INFODIR/dir"
 
 errors=0
@@ -64,7 +64,7 @@ find "$INFODIR" -type f | while read file ; do
       continue
       ;;
     *)
-      ginstall-info "$file" "$INFODIR/dir" || {
+      install-info "$file" "$INFODIR/dir" || {
         errors=$[errors+1]
       }
       ;;

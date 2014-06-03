@@ -73,7 +73,8 @@ install-stamp: build-stamp check-stamp
 	install -m 0755 util/txixml2texi $(texinfo)/usr/bin/txixml2texi
 	#
 	# we ship ginstall-info as link to install-info, it is long enough
-	dh_link -p $(ii) \
+	dh_link
+	dh_link -p install-info \
 		usr/share/man/man1/install-info.1 	\
 		usr/share/man/man1/ginstall-info.1	\
 		usr/bin/install-info 			\

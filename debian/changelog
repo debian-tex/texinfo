@@ -1,8 +1,10 @@
 texinfo (5.2.0.dfsg.1-5) UNRELEASED; urgency=medium
 
   * mention texinfo-doc-nonfree in the info man page (Closes: #752731)
+  * fix a typo in update-info-dir (thanks to anonymous user), switch
+    to use sh instead of bash
 
- -- Norbert Preining <preining@debian.org>  Thu, 26 Jun 2014 09:49:17 +0900
+ -- Norbert Preining <preining@debian.org>  Sat, 04 Oct 2014 07:27:43 +0900
 
 texinfo (5.2.0.dfsg.1-4) unstable; urgency=medium
 

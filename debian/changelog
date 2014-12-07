@@ -1,3 +1,9 @@
+texinfo (5.2.0.dfsg.1-6) unstable; urgency=medium
+
+  * fix bashism in update-info-dir (Closes: #772338)
+
+ -- Norbert Preining <preining@debian.org>  Sun, 07 Dec 2014 21:13:29 +0900
+
 texinfo (5.2.0.dfsg.1-5) unstable; urgency=medium
 
   * mention texinfo-doc-nonfree in the info man page (Closes: #752731)

@@ -65,7 +65,7 @@ find "$INFODIR" -type f | while read file ; do
       ;;
     *)
       install-info "$file" "$INFODIR/dir" || {
-        errors=$[errors+1]
+        errors=$((errors+1))
       }
       ;;
   esac

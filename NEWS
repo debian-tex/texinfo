@@ -1,10 +1,10 @@
-$Id: NEWS 5382 2013-09-26 23:06:01Z karl $
+$Id: NEWS 6239 2015-05-03 17:22:08Z eliz $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
   Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
-  2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013
-  Free Software Foundation, Inc.
+  2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
+  2013, 2014, 2015 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -12,7 +12,7 @@ See the manual for detailed information.
 
 *** NEWS FOR ALL AUTHORS OF TEXINFO MANUALS ***
 
-As of version 4.2, Texinfo has a new command @copying to define the
+As of version 4.2, Texinfo has a command @copying to define the
 copyright and copying permissions for a manual.  If you haven't already,
 please switch to using it in your next release, because the historical
 method of doing copyright permissions using @ifinfo failed to output
@@ -22,6 +22,77 @@ one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
+
+* Language:
+  . new commands @sub and @sup, for textual subscripts and superscripts.
+  . new command @U to insert a Unicode character by code point.
+
+* texinfo.tex:
+  . @url/@uref output in PDF now the same as in DVI, showing the url
+    even if the second argument is given, not just as a link target.
+    TeX option \urefurlonlylinktrue gives previous behavior, of invisible urls.
+    PDF-only \linkcolor and \urlcolor specify colors (default black).
+
+* texi2any:
+  . customization variable TOP_NODE_UP_URL now replaces all (dir) references;
+    recommended setting for GNU packages is /manual/.
+  . new customization variable INDEX_SPECIAL_CHARS_WARNING to complain
+    when index entries contain a colon.
+  . Docbook output no longer uses <lineannotation> for @r.
+  . -D'var val' on the command line works as intended again.
+  . --plaintext output can be split.
+  . a bit faster.
+
+* info:
+  . invoking `info foo bar' looks for bar as an index entry in manual foo,
+    if not found as a top-level menu item.
+  . invoking info with an absolute or explicitly relative file name
+    (./foo.info, /tmp/foo.info, etc.) just visits that file.
+  . separate `infokey' program has been removed - the .infokey file is
+    now read directly by Info.
+  . new option --init-file allows overriding ~/.infokey.
+  . new variable `highlight-searches' allows highlighting results from a
+    search
+  . support for mouse scrollwheel, controlled by `mouse' variable.
+  . new variable `key_time' to control how long to wait for byte
+    sequences sent by special keys.
+  . new variable `hide-note-references' alters appearance of displayed nodes
+  . new variable `infopath-no-defaults' allows omitting the compile-time
+    Info directory from the Info search path.
+  . support input of multibyte characters for searches in a UTF-8 locale.
+  . if reading an Info file that is known to be in a different character
+    encoding to that of the user's environment, convert its contents 
+    when displayed and substitute missing characters
+  . new command M-x info-version.
+  . the M-x kill-node command has been removed.
+  . test suite at build time.
+
+* texindex:
+  . completely new implementation as a literate program using Texinfo
+    and (portable) awk (called TexiWeb Jr.), thanks to Arnold Robbins.
+    (Requires gawk 4.0+ if .twjr source is modified.)
+  . the -o (--output) is not supported, unless we hear of someone using it.
+  . duplicated sort keys with different display texts result in one
+    merged index entry, using the first display text.
+  . better sorting and parsing in unusual cases; most notably, { and }
+    characters can appear as initials.
+
+* install-info:
+  . handle compressed input file names containing spaces.
+  . exit successfully if --remove is given and the dir file does not exist.
+  . new option --defsection, to be used instead of "Miscellaneous" when
+    a section is not present in the Info file.
+
+* texi2dvi:
+  . look for the environment variable THUMBPDF_CMD instead of THUMBPDF,
+    since thumbpdf itself has used THUMBPDF for options since 2000.
+  . remove --recode and --recode-from options, since they haven't
+    worked as intended for years, so evidently no one needs them.
+
+* Distribution:
+  . new translation ca (catalan).
+  . automake-1.15, gettext-0.19.4.
+
 
 5.2 (26 September 2013)
 * Language:
@@ -86,7 +157,8 @@ one of the relevant sections:
   . new environments @raggedright, @smallquotation,
       @indentedblock, and @smallindentedblock.
   . new commands @codequoteundirected and @codequotebacktick,
-      for a better interface than the @set variables; now respected by @kbd.
+      for a better interface than "@set txicodequoteundirected" and
+      "@set txicodequotebacktick"; now respected by @kbd.
   . new command @xrefautomaticsectiontitle to allow using section titles
       in cross references by default, instead of node names.
   . new commands for Texinfo special characters:

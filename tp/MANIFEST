@@ -2,6 +2,8 @@ COPYING
 Changes
 DebugTexinfo/DebugCount.pm
 DebugTexinfo/DebugTree.pm
+LocaleData/ca.us-ascii/LC_MESSAGES/texinfo_document.mo
+LocaleData/ca/LC_MESSAGES/texinfo.mo
 LocaleData/cs/LC_MESSAGES/texinfo.mo
 LocaleData/da/LC_MESSAGES/texinfo.mo
 LocaleData/de.us-ascii/LC_MESSAGES/texinfo_document.mo
@@ -29,6 +31,7 @@ LocaleData/pl/LC_MESSAGES/texinfo.mo
 LocaleData/pl/LC_MESSAGES/texinfo_document.mo
 LocaleData/pt.us-ascii/LC_MESSAGES/texinfo_document.mo
 LocaleData/pt_BR.us-ascii/LC_MESSAGES/texinfo_document.mo
+LocaleData/pt_BR/LC_MESSAGES/texinfo.mo
 LocaleData/ro/LC_MESSAGES/texinfo.mo
 LocaleData/ru/LC_MESSAGES/texinfo.mo
 LocaleData/rw/LC_MESSAGES/texinfo.mo
@@ -90,6 +93,7 @@ maintain/template.pod
 po/Makefile
 po/PACKAGE
 po/POTFILES.in
+po/ca.po
 po/cs.po
 po/da.po
 po/de.po
@@ -106,6 +110,7 @@ po/ja.po
 po/nb.po
 po/nl.po
 po/pl.po
+po/pt_BR.po
 po/ro.po
 po/ru.po
 po/rw.po
@@ -120,6 +125,7 @@ po/zh_TW.po
 po_document/Makefile
 po_document/PACKAGE
 po_document/POTFILES.in
+po_document/ca.us-ascii.po
 po_document/de.us-ascii.po
 po_document/eo.po
 po_document/es.us-ascii.po
@@ -329,6 +335,7 @@ t/results/converters_tests/at_commands_in_refs_latin1/res_html/cite-asis-in-_004
 t/results/converters_tests/at_commands_in_refs_latin1/res_html/e-e-e-e-e-j-ee.html
 t/results/converters_tests/at_commands_in_refs_latin1/res_html/env-code-option-samp-command-file-C_002dx-ESC.html
 t/results/converters_tests/at_commands_in_refs_latin1/res_html/f_002d_002dile1-f_002d_002dile.html
+t/results/converters_tests/at_commands_in_refs_latin1/res_html/gH-3rd.html
 t/results/converters_tests/at_commands_in_refs_latin1/res_html/http_003a_002f_002fsomewhere_005faaa-url-_002fman_002ecgi_002f1_002fls.html
 t/results/converters_tests/at_commands_in_refs_latin1/res_html/i-E-C.html
 t/results/converters_tests/at_commands_in_refs_latin1/res_html/index.html
@@ -358,6 +365,7 @@ t/results/converters_tests/at_commands_in_refs_utf8/res_html/cite-asis-in-_0040w
 t/results/converters_tests/at_commands_in_refs_utf8/res_html/e-e-e-e-e-j-ee.html
 t/results/converters_tests/at_commands_in_refs_utf8/res_html/env-code-option-samp-command-file-C_002dx-ESC.html
 t/results/converters_tests/at_commands_in_refs_utf8/res_html/f_002d_002dile1-f_002d_002dile.html
+t/results/converters_tests/at_commands_in_refs_utf8/res_html/gH-3rd.html
 t/results/converters_tests/at_commands_in_refs_utf8/res_html/http_003a_002f_002fsomewhere_005faaa-url-_002fman_002ecgi_002f1_002fls.html
 t/results/converters_tests/at_commands_in_refs_utf8/res_html/i-E-C.html
 t/results/converters_tests/at_commands_in_refs_utf8/res_html/index.html
@@ -472,6 +480,7 @@ t/results/coverage/hyphenation.pl
 t/results/coverage/indentedblock.pl
 t/results/coverage/indicateurl_end_lines.pl
 t/results/coverage/insertcopying.pl
+t/results/coverage/invalid_U.pl
 t/results/coverage/item_container.pl
 t/results/coverage/lettered_accent_and_spaces.pl
 t/results/coverage/math.pl
@@ -481,6 +490,7 @@ t/results/coverage/not_i_j_in_dotless.pl
 t/results/coverage/preformatted.pl
 t/results/coverage/punctuation_in_line_commands.pl
 t/results/coverage/quotation_author.pl
+t/results/coverage/raggedright.pl
 t/results/coverage/setfilename_in_paragraph.pl
 t/results/coverage/spaces_after_braced_command.pl
 t/results/coverage/spaces_no_brace_after_braced_command.pl
@@ -611,6 +621,11 @@ t/results/html_tests/index_and_node_same_name.pl
 t/results/html_tests/index_below.pl
 t/results/html_tests/no_use_iso.pl
 t/results/html_tests/raw_html.pl
+t/results/html_tests/redirection_same_labels.pl
+t/results/html_tests/redirection_same_labels/res_html/circumflex.html
+t/results/html_tests/redirection_same_labels/res_html/i.html
+t/results/html_tests/redirection_same_labels/res_html/index.html
+t/results/html_tests/redirection_same_labels/res_html/umlaut.html
 t/results/html_tests/ref_in_preformatted.pl
 t/results/html_tests/shortcontents_no_top.pl
 t/results/html_tests/simple_menu.pl
@@ -1014,6 +1029,7 @@ t/results/multitable/paragraph_in_cells.pl
 t/results/multitable/prototype_brace_no_brace.pl
 t/results/multitable/prototype_brace_no_brace_comment.pl
 t/results/multitable/prototype_no_brace.pl
+t/results/multitable/ref_in_multitable.pl
 t/results/multitable/w_in_multitable.pl
 t/results/paragraph/close_paragraph_command.pl
 t/results/paragraph/commands_in_flushright.pl
@@ -1031,6 +1047,7 @@ t/results/paragraph/text_comment.pl
 t/results/paragraph/text_line.pl
 t/results/paragraph/text_space_comment.pl
 t/results/paragraph/two_lines.pl
+t/results/plaintext_tests/U_with_utf8_enable_encoding.pl
 t/results/plaintext_tests/accent_command_punctuation.pl
 t/results/plaintext_tests/accents_in_var_enable_encoding.pl
 t/results/plaintext_tests/after_punctuation_character_in_command.pl
@@ -1368,6 +1385,7 @@ t/results/xtable/title_and_itemx_before_item.pl
 t/test_brace_count.t
 t/test_count.t
 t/test_fill_gaps_in_sectioning.t
+t/test_is_content_empty.t
 t/test_protect_hashchar_at_line_beginning.t
 t/test_sort.t
 t/test_tree_copy.t

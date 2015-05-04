@@ -15,7 +15,7 @@
 @node Texinfo::Parser NAME
 @section NAME
 
-Texinfo::Parser - Parse Texinfo code in a Perl tree
+Texinfo::Parser - Parse Texinfo code into a Perl tree
 
 @node Texinfo::Parser SYNOPSIS
 @section SYNOPSIS
@@ -48,22 +48,22 @@ Texinfo::Parser - Parse Texinfo code in a Perl tree
 @section DESCRIPTION
 
 Texinfo::Parser will parse Texinfo text into a perl tree.  In one pass
-it expands user defined @@-commands, conditionals (@@ifset, @@ifinfo...)
+it expands user-defined @@-commands, conditionals (@@ifset, @@ifinfo...)
 and @@value and constructs the tree.  Some extra information is gathered
-while doing the tree, for example the block command associated with @@end,
-the number of row in a multitable, the node associated with a section.
+while doing the tree: for example, the block command associated with @@end,
+the number of rows in a multitable, or the node associated with a section.
 
 @node Texinfo::Parser METHODS
 @section METHODS
 
 No method is exported in the default case.  The module allows both
-an object oriented syntax, or traditional function, with the parser
-as an opaque data structure given in argument to every function.
+an object-oriented syntax, or traditional function, with the parser
+as an opaque data structure given as an argument to every function.
 
 @menu
 * Texinfo@asis{::}Parser Initialization::
 * Texinfo@asis{::}Parser Parsing Texinfo text::
-* Texinfo@asis{::}Parser Getting informations on the document::
+* Texinfo@asis{::}Parser Getting information on the document::
 * Texinfo@asis{::}Parser Texinfo Parser options::
 @end menu
 
@@ -77,11 +77,11 @@ The following method is used to construct a new @code{Texinfo::Parser} object:
 @anchor{Texinfo::Parser $parser = Texinfo::Parser::parser($options);}
 
 This method creates a new parser.  The options may be provided as a hash
-reference.  There are two types of options.  The first type of options
-change the way the parser behave, they are described right here.  The 
-other type of options allow to give to the parser some information as if 
-it came from texinfo code, for example allow to set aliases (as with 
-@code{@@alias}), values (as with @code{@@set}), merged indices (as with 
+reference.  There are two types of option.  The first type of option
+change the way the parser behaves; they are described right here.  The 
+other type of option allows giving the parser some information as if 
+it came from texinfo code; for example, allow setting aliases (as with 
+@code{@@alias}), values (as with @code{@@set}), or merged indices (as with 
 @code{@@synindex}).  These options are described below in @ref{Texinfo::Parser Texinfo Parser options,, Texinfo Parser options}.
 
 @table @asis
@@ -99,7 +99,7 @@ always kept.
 
 If set, the function reference is used to translate error and warning
 messages.  It takes a string as argument and returns a string.  The default 
-function returns the error message as is.
+function returns the error message as-is.
 
 @item GLOBAL_COMMANDS
 @anchor{Texinfo::Parser GLOBAL_COMMANDS}
@@ -119,7 +119,7 @@ searched for.  Default contains the working directory, @file{.}.
 
 If set, @code{@@insertcopying} is replaced by the @code{@@copying} content as if
 @code{@@insertcopying} was a user-defined macro.  In the default case, it is 
-considered to be a simple @@-command and kept as is in the tree.
+considered to be a simple @@-command and kept as-is in the tree.
 
 @item IGNORE_BEFORE_SETFILENAME
 @anchor{Texinfo::Parser IGNORE_BEFORE_SETFILENAME}
@@ -131,13 +131,13 @@ This option is set in the default case.
 @item IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME
 @anchor{Texinfo::Parser IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME}
 
-If set, spaces after an @@-commande name that take braces are ignored.
+If set, spaces after an @@-command name that take braces are ignored.
 Default on.
 
 @item MACRO_BODY_IGNORES_LEADING_SPACE
 @anchor{Texinfo::Parser MACRO_BODY_IGNORES_LEADING_SPACE}
 
-If set, leading spaces are stripped from user defined macro bodies.
+If set, leading spaces are stripped from user-defined macro bodies.
 
 @item MAX_MACRO_CALL_NESTING
 @anchor{Texinfo::Parser MAX_MACRO_CALL_NESTING}
@@ -147,7 +147,7 @@ Maximal number of nested user-defined macro calls.  Default is 100000.
 @item SHOW_MENU
 @anchor{Texinfo::Parser SHOW_MENU}
 
-If false, no menu related error are reported.  Default is true.
+If false, no menu-related errors are reported.  Default is true.
 
 @end table
 
@@ -156,17 +156,17 @@ If false, no menu related error are reported.  Default is true.
 @node Texinfo::Parser Parsing Texinfo text
 @subsection Parsing Texinfo text
 
-There are three methods that may be called to parse some Texinfo code,
+There are three methods that may be called to parse some Texinfo code:
 @code{parse_texi_line} for a line, @code{parse_texi_text} for a text fragment, 
 and @code{parse_texi_file} for a file.
 
 For all those functions, if the @emph{$parser} argument is undef, a new 
-parser object is generated to parse the line, otherwise the parser given 
-in argument is used to parse into a tree.
+parser object is generated to parse the line.  Otherwise the parser given 
+as an argument is used to parse into a tree.
 
 When @code{parse_texi_text} is used, the resulting tree is rooted at 
 a @code{root_line} type container.  Otherwise, the resulting tree should be 
-rooted at a @code{text_root} type container if it do not contain nodes or 
+rooted at a @code{text_root} type container if it does not contain nodes or 
 sections, at a @code{document_root} type container otherwise.
 
 @table @asis
@@ -177,7 +177,7 @@ This function is used to parse a short fragment of Texinfo code.
 
 @emph{$text} may be either an array reference of lines, or a text.
 
-The other arguments are optional and allow to specify the position
+The other arguments are optional and allow specifying the position
 information of the Texinfo code.  @emph{$first_line_number} is the line number
 of the first text line.  @emph{$file_name} is the name of the file the
 text comes from.  @emph{$macro} is for the user-defined macro name the text
@@ -192,18 +192,18 @@ This function is used to parse some Texinfo text.
 
 @emph{$text} may be either an array reference of lines, or a text.
 
-The other arguments are optional and allow to specify the position
+The other arguments are optional and allow specifying the position
 information of the Texinfo code.  There are two distinct cases for 
 @emph{$line_numbers_specification}.  
 
 @enumerate
 @item If it is an array reference, it is considered to hold objects describing 
-the position information of each text lines.
+the position information of each text line.
 
 @item If @emph{$line_numbers_specification} is a scalar, it is the line number of 
 the first text line.  In that case (like for @code{parse_texi_text}), 
 @emph{$file_name} is the name of the file the text comes from.  
-@emph{$macro} is for the user-defined macro name the text
+and @emph{$macro} is for the user-defined macro name the text
 is expanded from.  If @emph{$fixed_line_number} is set, the line number is
 not increased for the different lines, as if the text was the expansion
 of a macro.
@@ -224,13 +224,13 @@ The errors collected during the tree parsing are available through the
 @code{errors} method.  This method comes from @code{Texinfo::Report}, and is 
 described in @ref{Texinfo::Report ($error_warnings_list@comma{} $error_count) = errors ($converter), errors, errors}.
 
-@node Texinfo::Parser Getting informations on the document
-@subsection Getting informations on the document
+@node Texinfo::Parser Getting information on the document
+@subsection Getting information on the document
 
-After parsing some informations about the Texinfo code that was processed
-are available from the parser.
+After parsing some information about the Texinfo code that was processed
+is available from the parser.
 
-Some global informations is available through @code{global_informations}
+Some global information is available through @code{global_informations}
 
 @table @asis
 @item $info = global_informations($parser)
@@ -283,9 +283,9 @@ tree elements.
 
 @end table
 
-All the @@-commands that have an associated label, that can be the
-target of cross references, @code{@@node}, @code{@@anchor} and @code{@@float} with
-label have a normalized name associated, constructed as described in the
+All the @@-commands that have an associated label (so can be the
+target of cross references) - @code{@@node}, @code{@@anchor} and @code{@@float} with
+label - have a normalized name associated, constructed as described in the
 @strong{HTML Xref} node in the Texinfo manual.  Those normalized labels and
 the association with @@-commands is available through @code{labels_information}:
 
@@ -313,14 +313,14 @@ of float tree elements appearing in the texinfo document.
 
 @end table
 
-Internal references, that is, @@-commands that refers to node, anchors
+Internal references, that is, @@-commands that refer to node, anchors
 or floats within the document are also available:
 
 @table @asis
 @item $internal_references_array = internal_references_information($parser);
 @anchor{Texinfo::Parser $internal_references_array = internal_references_information($parser);}
 
-The function returns a list of cross reference commands referring to
+The function returns a list of cross-reference commands referring to
 the same document.
 
 @end table
@@ -455,7 +455,7 @@ the indices corresponding to the following texinfo
 @end verbatim
 
 If @code{name} is not set, it is set to the index name.  If @code{prefix} is 
-not set, it is  set to an array containing the index name.
+not set, it is set to an array containing the index name.
 
 @emph{$merged_indices_hash} is a hash reference, the key is an index
 name merged in the value.
@@ -465,7 +465,7 @@ name merged in the value.
 @node Texinfo::Parser Texinfo Parser options
 @subsection Texinfo Parser options
 
-Setting those options is the same as seeing some Texinfo constructs in the 
+Setting these options is the same as seeing some Texinfo constructs in the 
 document.
 
 @table @asis
@@ -548,7 +548,7 @@ be a float label or an anchor name.  The value is the corresponding
 @item macros
 @anchor{Texinfo::Parser macros}
 
-The associated hash reference has as key user-defined macro names.  The
+The associated hash reference has as keys user-defined macro names.  The
 value is the reference on a macro definition element as obtained by 
 the Parser when parsing a @code{@@macro}.  For example
 
@@ -597,32 +597,48 @@ Same as values set by @code{@@set}.
 @section TEXINFO TREE
 
 A Texinfo tree element (called element because node is overloaded in 
-the Texinfo world) is an hash reference.  There are three main category
+the Texinfo world) is an hash reference.  There are three main categories
 of tree element.  Tree elements associated with an @@-command have a 
-@code{cmdname} key holding the @@-command name.  Tree element corresponding
+@code{cmdname} key holding the @@-command name.  Tree elements corresponding
 to text fragments have a @code{text} key holding the corresponding text.
-The last category corresponds to other containers (hereafter called 
-containers).  In most case these containers have a @code{type} key holding 
-their name.  Text fragments and @@-command elements may also have an 
-associated type when such information is needed.
+Finally, the last category is other containers (hereafter called 
+containers) which in most cases have a @code{type} key holding their name.  
+Text fragments and @@-command elements may also have an associated type 
+when such information is needed.
 
-The children of @@-command or container elements are in the array
-correponding with the @code{args} key or with the @code{contents} key.  The
-@code{args} key is for arguments of @@-commands, in braces or on the @@-command
-line.  @code{args} is also used for the elements of a menu entry, as a menu
-entry is well structured with a limited number of arguments.  
+The children of an @@-command or container element are in the array
+referred to with the @code{args} key or with the @code{contents} key.  The
+@code{args} key is for arguments of @@-commands, either in braces or on
+the rest of the line after the command, depending on the type of command.
+@code{args} is also used for the elements of a menu entry, as a menu
+entry is well-structured with a limited number of arguments.  
 The @code{contents} key array holds the contents of the texinfo 
 code appearing within a block @@-command, within a container, 
-within a @code{@@node} or sectioning @@-command.
+or within a @code{@@node} or sectioning @@-command.
 
 Another important key for the elements is the @code{extra} key which is 
-associated to a hash reference and holds all kinds of informations gathered
-during the parsing and that may help with the conversion.
+associated to a hash reference and holds all kinds of information that
+is gathered during the parsing and may help with the conversion.
+
+You can see examples of the tree structure by running makeinfo like 
+this:
+
+@verbatim
+  makeinfo -c DUMP_TREE=1 -c TEXINFO_OUTPUT_FORMAT=parse document.texi
+@end verbatim
+
+For a simpler, more regular representation of the tree structure, you 
+can do:
+
+@verbatim
+  makeinfo -c TEXINFO_OUTPUT_FORMAT=debugtree document.texi
+@end verbatim
 
 @menu
 * Texinfo@asis{::}Parser Element keys::
-* Texinfo@asis{::}Parser The containers and types::
+* Texinfo@asis{::}Parser Element types::
 * Texinfo@asis{::}Parser Information available in the extra key::
+* Texinfo@asis{::}Parser Other information set by the parser::
 @end menu
 
 @node Texinfo::Parser Element keys
@@ -706,15 +722,26 @@ See @ref{Texinfo::Parser Information available in the extra key,, Information av
 
 @end table
 
-@node Texinfo::Parser The containers and types
-@subsection The containers and types
+@node Texinfo::Parser Element types
+@subsection Element types
 
-Some types are associated with @@-commands.  As said above, for @code{@@verb} 
-the type is the delimiter.  For a @code{@@value} command that is not 
-expanded because there is no corresponding value set, the type is the 
-value argument string.  
+@menu
+* Texinfo@asis{::}Parser Types for command elements::
+* Texinfo@asis{::}Parser Types for text elements::
+* Texinfo@asis{::}Parser Types of container elements::
+@end menu
 
-The following types also happen for @@-commands:
+@node Texinfo::Parser Types for command elements
+@subsubsection Types for command elements
+
+Some types can be associated with @@-commands (in addition to the element 
+being described by @code{cmdname}), although usually there will be no type 
+at all.  As said above, for @code{@@verb} the type is the delimiter.  For a 
+@code{@@value} command that is not expanded because there is no corresponding 
+value set, the type is the value argument string.  
+
+The following are the other possible values of @code{type} for tree elements 
+for @@-commands.
 
 @table @asis
 @item def_line
@@ -756,7 +783,7 @@ element:
 @anchor{Texinfo::Parser index_entry_command}
 
 This is the type of index entry command like @code{@@cindex}, and, more
-importantly user defined index entry commands.  So for example if there
+importantly user-defined index entry commands.  So for example if there
 is 
 
 @verbatim
@@ -772,7 +799,7 @@ type.
 @item following_arg
 @anchor{Texinfo::Parser following_arg}
 
-This type is set for non alphabetic accent @@-commands that don't use brace 
+This type is set for non-alphabetic accent @@-commands that don't use braces
 but instead have their argument right after them, as
 
 @verbatim
@@ -798,24 +825,17 @@ The beginning is in @code{@{'extra'@}->@{'begin'@}} and the end in
 
 @end table
 
-The text elements may be associated to the following types:
+@node Texinfo::Parser Types for text elements
+@subsubsection Types for text elements
+
+The text elements may have the following types (or may have no type
+at all):
 
 @table @asis
 @item empty_line
 @anchor{Texinfo::Parser empty_line}
 
-An empty line.
-
-@item raw
-@anchor{Texinfo::Parser raw}
-
-Text in an environment where it should be kept as is (in @code{@@verbatim},
-@code{@@verb}, @code{@@html}, @code{@@macro} body).
-
-@item last_raw_newline
-@anchor{Texinfo::Parser last_raw_newline}
-
-The last end of line in a raw block (except for @code{@@verbatim}).
+An empty line (possibly containing whitespace characters only).
 
 @item empty_line_after_command
 @anchor{Texinfo::Parser empty_line_after_command}
@@ -825,16 +845,21 @@ The last end of line in a raw block (except for @code{@@verbatim}).
 
 The text is spaces for @emph{empty_spaces_after_command} 
 or spaces followed by a newline for 
-@emph{empty_line_after_command}, appearing after a @@-command that 
-takes an argument on the line or a block 
-@@-commands.
+@emph{empty_line_after_command}, appearing after an @@-command that 
+takes an argument on the line or a block @@-command.
+
+@item empty_spaces_before_argument
+@anchor{Texinfo::Parser empty_spaces_before_argument}
+
+The text is spaces appearing after an opening brace or after a 
+comma separating a command's arguments.
 
 @item spaces_at_end
 @anchor{Texinfo::Parser spaces_at_end}
 
-Space at the end of a @@-command line, at the end of some @@-commands
-with braces or at the end of a bracketed content on a 
-@code{@@multitable} line.
+Space at the end of an argument to a line command, at the end of an
+comma-separated argument for some brace commands, or at the end of
+bracketed content on a @code{@@multitable} line.
 
 @item empty_space_at_end_def_bracketed
 @anchor{Texinfo::Parser empty_space_at_end_def_bracketed}
@@ -846,12 +871,6 @@ Space at the end of a bracketed content on definition line.
 
 Space at the end of a block @@-command line.
 
-@item empty_spaces_before_argument
-@anchor{Texinfo::Parser empty_spaces_before_argument}
-
-The text is spaces appearing after an opening brace of after a 
-comma separated @@-command arguments.
-
 @item empty_spaces_after_close_brace
 @anchor{Texinfo::Parser empty_spaces_after_close_brace}
 
@@ -862,6 +881,17 @@ this space should be ignorable (like @code{@@caption}).
 @anchor{Texinfo::Parser empty_spaces_before_paragraph}
 
 Space appearing before a paragraph beginning.
+
+@item raw
+@anchor{Texinfo::Parser raw}
+
+Text in an environment where it should be kept as is (in @code{@@verbatim},
+@code{@@verb}, @code{@@html}, @code{@@macro} body).
+
+@item last_raw_newline
+@anchor{Texinfo::Parser last_raw_newline}
+
+The last end of line in a raw block (except for @code{@@verbatim}).
 
 @item preamble_text
 @anchor{Texinfo::Parser preamble_text}
@@ -879,7 +909,11 @@ and space appearing after the description line.
 
 @end table
 
-Other special types are described in the following.
+@node Texinfo::Parser Types of container elements
+@subsubsection Types of container elements
+
+The other types of element are the following.  These are containers with 
+other elements appearing in their @code{contents}.
 
 @table @asis
 @item text_root
@@ -894,7 +928,7 @@ Other special types are described in the following.
 These types correspond to document roots.  @code{text_root} is the document
 root when there is no @code{@@node} or sectioning command.  When
 such a command appears, a new root container is used, @code{document_root},
-and @code{text_root} becomes the first content of @code{document_root}.
+and @code{text_root} becomes the first element in the contents of @code{document_root}.
 @code{root_line} is the type of the root tree when parsing Texinfo line
 fragments using @code{parse_texi_line}.
 
@@ -913,13 +947,17 @@ if @emph{IGNORE_BEFORE_SETFILENAME} parser option is set.
 @item paragraph
 @anchor{Texinfo::Parser paragraph}
 
-A paragraph.
+A paragraph.  The @code{contents} of a paragraph (like other container 
+elements for Texinfo content) are elements representing the contents of 
+the paragraph in the order they occur, such as simple text elements 
+without a @code{cmdname} or @code{type}, or @@-command elements for commands 
+appearing in the paragraph.
 
 @item preformatted
 @anchor{Texinfo::Parser preformatted}
 
 Texinfo code within a format that is not filled.  Happens within some
-block commands as @code{@@example}, but also in menu (in menu descriptions,
+block commands like @code{@@example}, but also in menu (in menu descriptions,
 menu comments...).
 
 @item brace_command_arg
@@ -928,19 +966,22 @@ menu comments...).
 @item brace_command_context
 @anchor{Texinfo::Parser brace_command_context}
 
-@item block_line_arg
-@anchor{Texinfo::Parser block_line_arg}
-
 @item misc_line_arg
 @anchor{Texinfo::Parser misc_line_arg}
 
-Those containers are within @code{args} of @@-commands with braces for 
-@emph{brace_command_arg}, @@-commands with braces that start a new context 
-(@code{@@footnote}, @code{@@caption}, @code{@@math}) for @emph{brace_command_context}, 
-block command argument on their line for @emph{block_line_arg} and 
-other commands that take texinfo code as argument on their line 
-(@code{@@settitle}, @code{@@node}, @code{@@section} and similar) for @emph{misc_line_arg}.
-They hold the content of the command argument.
+@item block_line_arg
+@anchor{Texinfo::Parser block_line_arg}
+
+Those containers occur within the @code{args} array of @@-commands taking an 
+argument.  @emph{brace_command_arg} is used for the arguments to commands
+taking arguments surrounded by braces (and in some cases separated by 
+commas).  @emph{brace_command_context} is used for @@-commands with braces 
+that start a new context (@code{@@footnote}, @code{@@caption}, @code{@@math}).
+
+@emph{misc_line_arg} is used for commands that take the texinfo code on the
+rest of the line as their argument (for example (@code{@@settitle}, @code{@@node}, 
+@code{@@section} and similar).  @emph{block_line_arg} is similar but is used for 
+commands that start a new block (which is to be ended with @code{@@end}).
 
 For example
 
@@ -959,9 +1000,10 @@ leads to
 @item misc_arg
 @anchor{Texinfo::Parser misc_arg}
 
-Argument of @@-command taking specific textual arguments on the line.
-For example @code{@@set}, @code{@@clickstyle}, @code{@@unmacro}, @code{@@comment}.
-The argument is associated to the @emph{text} key.
+Used for the arguments to some special line commands whose arguments
+aren't subject to the usual macro expansion.  For example @code{@@set}, 
+@code{@@clickstyle}, @code{@@unmacro}, @code{@@comment}.  The argument is associated to 
+the @emph{text} key.
 
 @item menu_entry
 @anchor{Texinfo::Parser menu_entry}
@@ -993,8 +1035,8 @@ The different elements of the menu entry are directly in the
 @emph{menu_entry_leading_text} holds the star and following spaces. 
 @emph{menu_entry_name} is the menu entry name (if present), @emph{menu_entry_node}
 corresponds to the node in the menu entry, @emph{menu_entry_separator} holds
-the text after the node and before the description, in most case
-@code{::   }.  Last @emph{menu_entry_description} is for the description.
+the text after the node and before the description, in most cases
+@code{::   }.  Lastly, @emph{menu_entry_description} is for the description.
 
 @item menu_comment
 @anchor{Texinfo::Parser menu_comment}
@@ -1057,12 +1099,13 @@ with items (@code{@@table}, @code{@@multitable}, @code{@@enumerate}...).
 @anchor{Texinfo::Parser inter_item}
 
 Those containers appear in @code{@@table}, @code{@@ftable} and @code{@@vtable}.
-A @emph{table_entry} container contains @code{@@item} and @code{@@itemx} and
-the text following the @code{@@item} and @code{@@itemx} entries.  A @emph{table_term}
-container holds all the @code{@@item} and @code{@@itemx} of the @emph{table_entry}.
-The @emph{table_item} container holds the content following the @emph{table_term}.
-If there is some content before an @code{@@itemx} (normally only comments, 
-empty lines or maybe index entriees are allowed), it will be in 
+A @emph{table_entry} container contains an entire row of the table.
+It contains a @emph{table_term} container, which holds all the @code{@@item} and
+@code{@@itemx} lines.  This is followed by a @emph{table_item} container, which
+holds the content that is to go into the second column of the table.
+
+If there is any content before an @code{@@itemx} (normally only comments, 
+empty lines or maybe index entries are allowed), it will be in 
 a container with type @emph{inter_item}. 
 
 @item def_line
@@ -1090,8 +1133,8 @@ an @emph{inter_def_item} container.
 @item row
 @anchor{Texinfo::Parser row}
 
-In @code{@@multitable}, a @emph{multitable_head} container contains all the row
-with @code{@@headitem}, while @emph{multitable_body} contains the rows associated 
+In @code{@@multitable}, a @emph{multitable_head} container contains all the rows
+with @code{@@headitem}, while @emph{multitable_body} contains the rows associated
 with @code{@@item}.  A @emph{row} container contains the @code{@@item} and @@<tab> 
 forming a row.
 
@@ -1121,7 +1164,13 @@ is in @emph{row_prototype}.
 @node Texinfo::Parser Information available in the extra key
 @subsection Information available in the extra key
 
-Some extra keys are available for more than one @@-command:
+@menu
+* Texinfo@asis{::}Parser Extra keys available for more than one @@-command::
+* Texinfo@asis{::}Parser Extra keys specific of certain @@-commands or containers::
+@end menu
+
+@node Texinfo::Parser Extra keys available for more than one @@-command
+@subsubsection Extra keys available for more than one @@-command
 
 @table @asis
 @item block_command_line_contents
@@ -1131,8 +1180,8 @@ Some extra keys are available for more than one @@-command:
 @anchor{Texinfo::Parser brace_command_contents}
 
 An array associated with block @@-commands or @@-commands with braces
-taking more than one argument or with a simple text content
-(@code{@@anchor}, @code{@@titlefont}, @code{@@dmn}).  Each of the element of the
+taking more than one argument or with simple text content
+(@code{@@anchor}, @code{@@titlefont}, @code{@@dmn}).  Each of the elements of the
 array is either undef, if there is no argument at that place,
 or an array reference holding the argument contents.
 
@@ -1140,7 +1189,7 @@ or an array reference holding the argument contents.
 @anchor{Texinfo::Parser misc_content}
 
 The contents of an @@-command taking regular Texinfo code as
-argument, like @code{@@sttitle} or @code{@@exdent}.
+argument, like @code{@@settitle} or @code{@@exdent}.
 
 @item end_command
 @anchor{Texinfo::Parser end_command}
@@ -1203,7 +1252,7 @@ For @@-commands with opening brace followed by spaces held in a
 @item spaces
 @anchor{Texinfo::Parser spaces}
 
-For accent commands consisting in letter only, like @code{@@ringaccent}
+For accent commands acting on one letter only, like @code{@@ringaccent}
 appearing like
 
 @verbatim
@@ -1215,7 +1264,8 @@ the command and the argument.
 
 @end table
 
-Then there are extra keys specific of @@-commands or containers.
+@node Texinfo::Parser Extra keys specific of certain @@-commands or containers
+@subsubsection Extra keys specific of certain @@-commands or containers
 
 @table @asis
 @item @code{@@macro}
@@ -1231,9 +1281,9 @@ line after @code{@@macro}.
 @anchor{Texinfo::Parser @code{@@node}}
 
 The arguments are in the @emph{nodes_manuals} array. Each
-of the entry has a @emph{node_content} key for
-an array holding the corresponding content, a @emph{manual_content}
-if there is an associated external manual name, and @emph{normalized}
+of the entries is a hash with a @emph{node_content} key for
+an array holding the corresponding content, a @emph{manual_content} key
+if there is an associated external manual name, and a @emph{normalized}
 key for the normalized label, built as specified in the Texinfo manual
 in the @strong{HTML Xref} node.
 
@@ -1274,7 +1324,7 @@ have the float tree element stored in @emph{float}.
 @item @code{@@anchor}
 @anchor{Texinfo::Parser @code{@@anchor}}
 
-@@-Commands that are targets for cross references have a @emph{normalized}
+@@-commands that are targets for cross-references have a @emph{normalized}
 key for the normalized label, built as specified in the Texinfo manual
 in the @strong{HTML Xref} node.  There is also a @emph{node_content} key for
 an array holding the corresponding content.
@@ -1322,8 +1372,8 @@ appearing after the definition command without x.
 @anchor{Texinfo::Parser def_line 2}
 
 The @emph{def_arg} extra key holds an array reference corresponding to
-the parsed definition line argument.  Each of the the element of the
-array is a two element array reference.  The first element is the type
+the parsed definition line argument.  Each of the elements of the
+array is a two-element array reference.  The first element is the type,
 which could be @emph{spaces} for a space, types specific of the 
 definition, like @emph{category}, @emph{name}, @emph{class}, @emph{type}, and, at the
 end, a mix of @emph{arg}, @emph{typearg}, @emph{delimiter} depending on the definition.
@@ -1362,7 +1412,7 @@ argument.
 @item @code{@@ftable}
 @anchor{Texinfo::Parser @code{@@ftable}}
 
-The @emph{command_as_argument} extra key points on the @@-command on
+The @emph{command_as_argument} extra key points to the @@-command on
 as argument on the @@-command line.
 
 @item paragraph
@@ -1379,7 +1429,7 @@ The @emph{item_number} extra key holds the number of this item.
 @item @code{@@item} and @code{@@tab} in @code{@@multitable}
 @anchor{Texinfo::Parser @code{@@item} and @code{@@tab} in @code{@@multitable}}
 
-The @emph{cell_count} index key holds the index of the column of
+The @emph{cell_number} index key holds the index of the column of
 the cell.
 
 @item row
@@ -1439,8 +1489,9 @@ In @emph{clickstyle} there is the current clickstyle command.
 
 The @emph{menu_entry_description} and @emph{menu_entry_name} keys
 are associated with the corresponding tree elements. The
-@emph{menu_entry_node} holds the parsed node entry, like
-the one appearing in the @emph{nodes_manuals} array for @code{@@node}.
+@emph{menu_entry_node} value is a hash with information about the parsed
+node entry; its keys are the same as those appearing in the
+elements of the @emph{nodes_manuals} array for @code{@@node}.
 
 @item empty_line_after_command
 @anchor{Texinfo::Parser empty_line_after_command 1}
@@ -1470,6 +1521,18 @@ always the format or flag name, so, if set, it should be 1 or 2 for
 
 @end table
 
+@node Texinfo::Parser Other information set by the parser
+@subsection Other information set by the parser
+
+The parser creates an array of nodes and stores this in the
+@emph{nodes} key of the parser object.
+
+Each element in the tree corresponding to a node contaning a menu
+has a @emph{menus} key which refers to an array of references to menu
+elements occuring in the node.
+
+These are both used by the @code{Texinfo::Structuring} module.
+
 @node Texinfo::Parser SEE ALSO
 @section SEE ALSO
 
@@ -1483,7 +1546,7 @@ Patrice Dumas, <pertusus@@free.fr>
 @node Texinfo::Parser COPYRIGHT AND LICENSE
 @section COPYRIGHT AND LICENSE
 
-Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

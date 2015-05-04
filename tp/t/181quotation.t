@@ -12,6 +12,11 @@ my @test_cases = (
 A quot---ation
 @end quotation
 
+@smallquotation
+@author An Author Name
+in small---quotation.
+@end smallquotation
+
 @quotation Note
 @author Some Notifier
 A Note

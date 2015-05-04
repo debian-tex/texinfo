@@ -60,6 +60,8 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@,c @,c
 @@,c@@&quot;u @,c@&quot;u @*
 
+@@U@{0075@} @U{0075}
+
 @@* @*
 @@ followed by a space
 @ 
@@ -667,6 +669,14 @@ Invalid use of @@':@*
 @code{@@dotless@{--a@}} @dotless{--a}
 @code{@@dotless@{a@}} @dotless{a}
 
+@c @U arg must be specified and within range
+@@U, without braces @U
+@@U@{@}, with empty arg @U{}
+@@U@{z@}, with non-hex arg @U{z}
+@@U@{abc@}, with &lt;4 hex digits @U{abc}
+@@U@{FFFFFFFFFFFFFF@}, value much too large @U{FFFFFFFFFFFFFF}
+@@U@{110000@}, value just beyond Unicode @U{110000}
+
 @c braces missing
 @@TeX, but without brace @TeX
 
@@ -787,6 +797,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 &arobase;,&lbrace;&arobase;&textrsquo;C&rbrace; <accent type="cedil"><accent type="acute" bracketed="off">C</accent></accent>
 &arobase;,c <accent type="cedil" bracketed="off">c</accent>
 &arobase;,c&arobase;&quot;u <accent type="cedil" bracketed="off">c</accent><accent type="uml" bracketed="off">u</accent> &linebreak;
+</para>
+<para>&arobase;U&lbrace;0075&rbrace; <U>0075</U>
 </para>
 <para>&arobase;* &linebreak;
 &arobase; followed by a space
@@ -1103,7 +1115,7 @@ After clickstyle &result;
 <deffnx spaces=" "><definitionterm><indexterm index="fn" number="9">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn" number="10"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn" number="11"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory>    </definitionterm></deffnx>
 <deffnx><definitionterm></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
@@ -1388,6 +1400,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 &arobase;,&lbrace;&arobase;&textrsquo;C&rbrace; <accent type="cedil"><accent type="acute" bracketed="off">C</accent></accent>
 &arobase;,c <accent type="cedil" bracketed="off">c</accent>
 &arobase;,c&arobase;&quot;u <accent type="cedil" bracketed="off">c</accent><accent type="uml" bracketed="off">u</accent> &linebreak;
+</para>
+<para>&arobase;U&lbrace;0075&rbrace; <U>0075</U>
 </para>
 <para>&arobase;* &linebreak;
 &arobase; followed by a space
@@ -1704,7 +1718,7 @@ After clickstyle &result;
 <deffnx spaces=" "><definitionterm><indexterm index="fn" number="42">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn" number="43"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn" number="44"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory>    </definitionterm></deffnx>
 <deffnx><definitionterm></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
@@ -1989,6 +2003,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 &arobase;,&lbrace;&arobase;&textrsquo;C&rbrace; <accent type="cedil"><accent type="acute" bracketed="off">C</accent></accent>
 &arobase;,c <accent type="cedil" bracketed="off">c</accent>
 &arobase;,c&arobase;&quot;u <accent type="cedil" bracketed="off">c</accent><accent type="uml" bracketed="off">u</accent> &linebreak;
+</para>
+<para>&arobase;U&lbrace;0075&rbrace; <U>0075</U>
 </para>
 <para>&arobase;* &linebreak;
 &arobase; followed by a space
@@ -2305,7 +2321,7 @@ After clickstyle &result;
 <deffnx spaces=" "><definitionterm><indexterm index="fn" number="75">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn" number="76"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn" number="77"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory>    </definitionterm></deffnx>
 <deffnx><definitionterm></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
@@ -2584,6 +2600,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 &arobase;,&lbrace;&arobase;'C&rbrace; <accent type="cedil"><accent type="acute" bracketed="off">C</accent></accent>
 &arobase;,c <accent type="cedil" bracketed="off">c</accent>
 &arobase;,c&arobase;&quot;u <accent type="cedil" bracketed="off">c</accent><accent type="uml" bracketed="off">u</accent> &linebreak;
+
+&arobase;U&lbrace;0075&rbrace; <U>0075</U>
 
 &arobase;* &linebreak;
 &arobase; followed by a space
@@ -2900,7 +2918,7 @@ After clickstyle &result;
 <deffnx spaces=" "><definitionterm><indexterm index="fn" number="108">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn" number="109"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn" number="110"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory>    </definitionterm></deffnx>
 <deffnx><definitionterm></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>

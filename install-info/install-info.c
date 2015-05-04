@@ -1,8 +1,8 @@
 /* install-info -- merge Info directory entries from an Info file.
-   $Id: install-info.c 5313 2013-08-15 16:07:06Z karl $
+   $Id: install-info.c 6165 2015-02-27 18:46:10Z gavin $
 
    Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
-   2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013
+   2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -26,6 +26,7 @@
 #define TAB_WIDTH 8
 
 static char *progname = "install-info";
+static char *default_section = NULL;
 
 struct spec_entry;
 struct spec_section;
@@ -146,6 +147,8 @@ struct option longopts[] =
   { "calign",    required_argument, NULL, 'C'},
   { "debug",     no_argument, NULL, 'g' },
   { "delete",    no_argument, NULL, 'r' },
+  { "defentry",  required_argument, NULL, 'E' },
+  { "defsection",  required_argument, NULL, 'S' },
   { "dir-file",  required_argument, NULL, 'd' },
   { "entry",     required_argument, NULL, 'e' },
   { "name",      required_argument, NULL, 't' },
@@ -283,6 +286,11 @@ copy_string (const char *string, int size)
 void
 pfatal_with_name (const char *name)
 {
+  /* Empty files don't set errno, so we get something like
+     "install-info: No error for foo", which is confusing.  */
+  if (errno == 0)
+    fatal (_("%s: empty file"), name);
+
   fatal (_("%s for %s"), strerror (errno), name);
 }
 
@@ -548,6 +556,8 @@ Options:\n\
  --debug             report what is being done.\n\
  --delete            delete existing entries for INFO-FILE from DIR-FILE;\n\
                       don't insert any new entries.\n\
+ --defsection=TEXT   like --section, but only use TEXT if no sections\n\
+                      are present in INFO-FILE (replacing \"Miscellaneous\").\n\
  --description=TEXT  the description of the entry is TEXT; used with\n\
                       the --name option to become synonymous with the\n\
                       --entry option.\n\
@@ -590,7 +600,10 @@ Options:\n\
                       If you specify more than one section, all the entries\n\
                        are added in each of the sections.\n\
                       If you don't specify any sections, they are determined\n\
-                       from information in the Info file itself.\n\
+                       from information in the Info file itself;\n\
+                       if nothing is available there, the --defsection\n\
+                       value is used; if that is not specified, the\n\
+                       final default is \"Miscellaneous\".\n\
  --section R SEC     equivalent to --regex=R --section=SEC --add-once."));
 
   puts (_("\
@@ -662,18 +675,19 @@ The first time you invoke Info you start off looking at this node.\n\
 /* Open FILENAME and return the resulting stream pointer.  If it doesn't
    exist, try FILENAME.gz.  If that doesn't exist either, call
    CREATE_CALLBACK (with FILENAME as arg) to create it, if that is
-   non-NULL.  If still no luck, fatal error.
+   non-NULL.  If still no luck, return a null pointer.
 
-   If we do open it, return the actual name of the file opened in
-   OPENED_FILENAME and the compress program to use to (de)compress it in
+   Return the actual name of the file we tried to open in
+   OPENED_FILENAME and the compress program to (de)compress it in
    COMPRESSION_PROGRAM.  The compression program is determined by the
+   magic number, not the filename.
    
-   MAGIC number, not the filename.  */
-
+   Return either stdin reading the file, or a non-stdin pipe reading
+   the output of the compression program.  */
 FILE *
 open_possibly_compressed_file (char *filename,
     void (*create_callback) (char *),
-    char **opened_filename, char **compression_program, int *is_pipe) 
+    char **opened_filename, char **compression_program) 
 {
   char *local_opened_filename, *local_compression_program;
   int nread;
@@ -730,33 +744,37 @@ open_possibly_compressed_file (char *filename,
       f = fopen (*opened_filename, FOPEN_RBIN);
     }
 #endif /* __MSDOS__ */
-   if (!f)
-     {
-       if (create_callback)
-         { /* That didn't work either.  Create the file if we can.  */
-           (*create_callback) (filename);
+  if (!f)
+    {
+      /* The file was not found with any extention added.  Try the
+         original file again. */
+      free (*opened_filename);
+      *opened_filename = filename;
 
-           /* And try opening it again.  */
-           free (*opened_filename);
-           *opened_filename = filename;
-           f = fopen (*opened_filename, FOPEN_RBIN);
-           if (!f)
-             pfatal_with_name (filename);
-         }
-       else
-         pfatal_with_name (filename);
-     }
+      if (create_callback)
+        {
+          /* Create the file if we can.  */
+          (*create_callback) (filename);
+
+          /* And try opening it again.  */
+          f = fopen (*opened_filename, FOPEN_RBIN);
+          if (!f)
+            return 0;
+        }
+      else
+        return 0;
+    }
 
   /* Read first few bytes of file rather than relying on the filename.
      If the file is shorter than this it can't be usable anyway.  */
   nread = fread (data, sizeof (data), 1, f);
   if (nread != 1)
     {
-      /* Empty files don't set errno, so we get something like
-         "install-info: No error for foo", which is confusing.  */
+      /* Empty files don't set errno.  Calling code can check for
+         this, so make sure errno == 0 just in case it isn't already. */
       if (nread == 0)
-        fatal (_("%s: empty file"), *opened_filename);
-      pfatal_with_name (*opened_filename);
+        errno = 0;
+      return 0;
     }
 
   if (!compression_program)
@@ -819,27 +837,36 @@ open_possibly_compressed_file (char *filename,
   else
     *compression_program = NULL;
 
+  /* Seek back over the magic bytes.  */
+  if (fseek (f, 0, 0) < 0)
+    return 0;
+
   if (*compression_program)
-    { /* It's compressed, so fclose the file and then open a pipe.  */
-      char *command = concat (*compression_program," -cd <", *opened_filename);
+    { /* It's compressed, so open a pipe.  */
+      char *command = concat (*compression_program, " -d", "");
+
       if (fclose (f) < 0)
-        pfatal_with_name (*opened_filename);
+        return 0;
+      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
+      if (!f)
+        return 0;
       f = popen (command, "r");
-      if (f)
-        *is_pipe = 1;
-      else
-        pfatal_with_name (command);
+      if (!f)
+        {
+          /* Used for error message in calling code. */
+          *opened_filename = command;
+          return 0;
+        }
     }
   else
-    { /* It's a plain file, seek back over the magic bytes.  */
-      if (fseek (f, 0, 0) < 0)
-        pfatal_with_name (*opened_filename);
+    {
 #if O_BINARY
       /* Since this is a text file, and we opened it in binary mode,
          switch back to text mode.  */
       f = freopen (*opened_filename, "r", f);
+      if (! f)
+	return 0;
 #endif
-      *is_pipe = 0;
     }
 
   return f;
@@ -850,32 +877,32 @@ open_possibly_compressed_file (char *filename,
    (i.e., try FILENAME.gz et al. if FILENAME does not exist) and store
    the actual file name that was opened into OPENED_FILENAME (if it is
    non-NULL), and the companion compression program (if any, else NULL)
-   into COMPRESSION_PROGRAM (if that is non-NULL).  If trouble, do
-   a fatal error.  */
+   into COMPRESSION_PROGRAM (if that is non-NULL).  If trouble, return
+   a null pointer. */
 
 char *
 readfile (char *filename, int *sizep,
     void (*create_callback) (char *), char **opened_filename,
     char **compression_program)
 {
-  char *real_name;
   FILE *f;
-  int pipe_p;
   int filled = 0;
   int data_size = 8192;
   char *data = xmalloc (data_size);
 
   /* If they passed the space for the file name to return, use it.  */
   f = open_possibly_compressed_file (filename, create_callback,
-                                     opened_filename ? opened_filename
-                                                     : &real_name,
-                                     compression_program, &pipe_p);
+                                     opened_filename,
+                                     compression_program);
+
+  if (!f)
+    return 0;
 
   for (;;)
     {
       int nread = fread (data + filled, 1, data_size - filled, f);
       if (nread < 0)
-        pfatal_with_name (real_name);
+        return 0;
       if (nread == 0)
         break;
 
@@ -892,10 +919,8 @@ readfile (char *filename, int *sizep,
   /* We need to close the stream, since on some systems the pipe created
      by popen is simulated by a temporary file which only gets removed
      inside pclose.  */
-  if (pipe_p)
+  if (f != stdin)
     pclose (f);
-  else
-    fclose (f);
 
   *sizep = filled;
   return data;
@@ -1371,7 +1396,6 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
   size_t offset_out = 0;        /* Index in `line_out' for next char. */
   static char *line_out = NULL;
   static size_t allocated_out = 0;
-  int saved_errno;
   if (!desc || !name)
     return 1;
 
@@ -1489,8 +1513,6 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
 
       line_out[offset_out++] = c;
     }
-
-  saved_errno = errno;
 
   if (desc_len <= 2)
     strncat (*outstr, "\n", 1);
@@ -1644,8 +1666,7 @@ reformat_new_entries (struct spec_entry *entries, int calign_cli, int align_cli,
           align = align_cli;
         }
 
-      if (maxwidth_cli == -1)
-        maxwidth = 79;
+      maxwidth = maxwidth_cli == -1 ? 79 : maxwidth_cli; 
 
       format_entry (name, name_len, desc, desc_len, calign, align, 
                     maxwidth, &entry->text, &entry->text_len);
@@ -1876,6 +1897,8 @@ main (int argc, char *argv[])
   struct spec_entry *entries_to_add = NULL;
   struct spec_entry *entries_to_add_from_file = NULL;
   int n_entries_to_add = 0;
+  struct spec_entry *default_entries_to_add = NULL;
+  int n_default_entries_to_add = 0;
 
   /* Record the old text of the dir file, as plain characters,
      as lines, and as nodes.  */
@@ -1905,6 +1928,12 @@ main (int argc, char *argv[])
   /* Set the text message domain.  */
   bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
+
+  /* Make sure standard input can be freopened at will.  Otherwise,
+     when stdin starts off closed, bad things could happen if a plain fopen
+     returns stdin before open_possibly_compressed_file freopens it.  */
+  if (! freopen (NULL_DEVICE, "r", stdin))
+    pfatal_with_name (NULL_DEVICE);
 
   munge_old_style_debian_options (argc, argv, &argc, &argv);
 
@@ -2060,6 +2089,7 @@ main (int argc, char *argv[])
           }
           break;
 
+	case 'E':
         case 'e':
           {
             struct spec_entry *next
@@ -2074,12 +2104,27 @@ main (int argc, char *argv[])
             next->text_len = olen;
             next->entry_sections = NULL;
             next->entry_sections_tail = NULL;
-            next->next = entries_to_add;
             next->missing_name = 0;
             next->missing_basename = 0;
             next->missing_description = 0;
-            entries_to_add = next;
-            n_entries_to_add++;
+	    if (opt == 'e')
+  	      {
+		next->next = entries_to_add;
+		entries_to_add = next;
+		n_entries_to_add++;
+	      } 
+	    else
+	      {
+	        /* Although this list is maintained, nothing is ever
+	           done with it.  So it seems no one cares about the
+	           feature.  The intended --help string was:
+ --defentry=TEXT     like --entry, but only use TEXT if an entry\n\
+                      is not present in INFO-FILE.\n\
+                   in case anyone ever wants to finish it.  */
+		next->next = default_entries_to_add;
+		default_entries_to_add = next;
+		n_default_entries_to_add++;
+	      }
           }
           break;
 
@@ -2146,6 +2191,10 @@ main (int argc, char *argv[])
           }
           break;
 
+	case 'S':
+	  default_section = optarg;
+	  break;
+
         case 's':
           {
             struct spec_section *next
@@ -2164,7 +2213,7 @@ main (int argc, char *argv[])
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-              "2013");
+              "2015");
           exit (EXIT_SUCCESS);
 
         case 'W':
@@ -2209,8 +2258,27 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   /* Now read in the Info dir file.  */
   if (debug_flag)
     printf ("debug: reading dir file %s\n", dirfile);
-  dir_data = readfile (dirfile, &dir_size, ensure_dirfile_exists,
-                       &opened_dirfilename, &compression_program);
+
+  if (!delete_flag)
+    {
+      dir_data = readfile (dirfile, &dir_size, ensure_dirfile_exists,
+                           &opened_dirfilename, &compression_program);
+      if (!dir_data)
+        pfatal_with_name (opened_dirfilename);
+    }
+  else
+    {
+      /* For "--remove" operation, it is not an error for the dir file
+         not to exist. */
+      dir_data = readfile (dirfile, &dir_size, NULL,
+                           &opened_dirfilename, &compression_program);
+      if (!dir_data)
+        {
+          warning (_("Could not read %s."), opened_dirfilename);
+          exit (EXIT_SUCCESS);
+        }
+    }
+
   dir_lines = findlines (dir_data, dir_size, &dir_nlines);
 
   parse_dir_file (dir_lines, dir_nlines, &dir_nodes);
@@ -2259,9 +2327,14 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
      removing exactly.  */
   if (!remove_exactly)
     {
+      char *opened_infilename;
+
       if (debug_flag)
         printf ("debug: reading input file %s\n", infile);
-      input_data = readfile (infile, &input_size, NULL, NULL, NULL);
+      input_data = readfile (infile, &input_size, NULL,
+                             &opened_infilename, NULL);
+      if (!input_data)
+        pfatal_with_name (opened_infilename);
       input_lines = findlines (input_data, input_size, &input_nlines);
     }
 
@@ -2329,12 +2402,14 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
             reformat_new_entries (entries_to_add, calign, align, maxwidth);
         }
 
-      /* If we got no sections, default to "Miscellaneous".  */
+      /* If we got no sections, use the --defsection value if it was
+         given, else "Miscellaneous".  */ 
       if (input_sections == NULL)
         {
           input_sections = (struct spec_section *)
             xmalloc (sizeof (struct spec_section));
-          input_sections->name = "Miscellaneous";
+          input_sections->name = default_section ? default_section
+                                                 : "Miscellaneous";
           input_sections->next = NULL;
           input_sections->missing = 1;
         }

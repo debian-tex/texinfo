@@ -212,22 +212,22 @@ $result_converted{'html_text'}->{'space_in_image'} = '<img src="a.e" alt="dd"><p
 
 $result_converted_errors{'html_text'}->{'space_in_image'} = [
   {
-    'file_name' => '',
     'error_line' => ':1: warning: @image file `a\' (for HTML) not found, using `a.e\'
 ',
-    'text' => '@image file `a\' (for HTML) not found, using `a.e\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 1,
     'macro' => '',
-    'line_nr' => 1
+    'text' => '@image file `a\' (for HTML) not found, using `a.e\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':1: warning: @image file `f\' (for HTML) not found, using `f.jpg\'
 ',
-    'text' => '@image file `f\' (for HTML) not found, using `f.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 1,
     'macro' => '',
-    'line_nr' => 1
+    'text' => '@image file `f\' (for HTML) not found, using `f.jpg\'',
+    'type' => 'warning'
   }
 ];
 

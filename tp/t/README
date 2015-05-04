@@ -1,26 +1,80 @@
-Most test files use a testing infrastructure from t/test_utils.pl.  In that
-case the references for the test of a test category $test_category.t file 
-are in  t/results/$test_category/.  They are regenerated with the -g option 
-given to the .t file, as in
+$Id: README 6139 2015-02-22 22:53:33Z karl $
+texinfo/tp/t/README
 
-  perl -w t/60macro.t -g
+  Copyright 2010, 2011, 2012, 2013, 2014, 2015
+  Free Software Foundation, Inc.
 
-To regenerate a precise test reference file, the test name should be in
-argument, for example to regenerate the reference files for 
-arg_body_expansion_order:
+  Copying and distribution of this README file, with or without
+  modification, are permitted in any medium without royalty provided the
+  copyright notice and this notice are preserved.
 
-  perl -w t/60macro.t -g arg_body_expansion_order
+Files anywhere within the texinfo/tp/t/ subdirectory which have no
+other copyright notice are hereby placed in the public domain.
 
+
+These tests are run by "make check" under tp/.  (The test files are 
+listed in tp/Makefile.tres, which is a generated file.)  A single .t 
+test file can be run on its own with
+
+  perl -w t/03coverage_braces.t
+
+Most test files use a testing infrastructure from t/test_utils.pl.  In
+that case the reference output files for the test of a test category 
+$test_category.t file are in t/results/$test_category/.  For example, if 
+after running "make check" test-suite.log contains a line like:
+
+FAIL: t/03coverage_braces.t 324 - test_image converted html
+
+you can see the difference between the expected and actual output with
+
+  diff t/results/coverage_braces/test_image.pl{,.new}
+
+To review all the differences for one of the *.t test files, you can do:
+
+  for f in t/results/coverage_braces/*.pl; do echo --------; echo \
+  Differences in $f; diff $f{,.new}; done | less
+
+The reference files are regenerated with the -g option given to the .t 
+file, as in
+
+  perl -w t/03coverage_braces.t -g
+
+To regenerate a specific test reference file, the test name should be 
+given as an argument.  For example, to just regenerate the reference 
+files for the "test_image" test within t/03.coverage_braces.t, run
+
+  perl -w t/03coverage_braces.t -g test_image
+
+Some tests under this directory use input files in the 'input_files' 
+subdirectory.  
+
+For some tests, as well as a .pl file as usual in results/*/, actual
+output files are generated.  For those tests, there are directories with
+reference test results (with names prefixed with res_), and directories
+with the obtained results (with names prefixed with out_).  For example,
+many of the tests whose results are in the 'results/indices' directory
+follow this format.  (The same convention is used by the test suite in
+../tests.)
+
+Tests can be managed using the script in ../maintain/all_tests.sh.  For
+example, "./maintain/all_tests.sh generate" regenerates all of the
+reference test results (run from the upper-level directory), and
+"./maintain/all_tests.sh diff" makes a diff of all resulting files
+against references.
 
 From the top directory, you can also create texinfo files corresponding with
-tests by running something along
+tests by running something along the lines of:
 
   perl -w t/60macro.t -c
 
-to create a file for each of the test in t/60macro.t, or for a specific
+to create a file for each of the tests in t/60macro.t, or for a specific
 test, here arg_body_expansion_order: 
 
   perl -w t/60macro.t -c arg_body_expansion_order
 
-
 The output files will be created with -o, in t/output_files/$test_category/
+
+When adding Perl (sub)tests under t/, also run
+maintain/prepare_perl_module_files.sh to regenerate
+maintain/MANIFEST_generated_files, or a "plan" (aka results file) will
+be missing at distcheck.

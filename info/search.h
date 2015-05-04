@@ -1,5 +1,5 @@
 /* search.h -- Structure used to search large bodies of text, with bounds.
-   $Id: search.h 5337 2013-08-22 17:54:06Z karl $
+   $Id: search.h 5997 2014-12-27 21:53:22Z gavin $
 
    Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2009, 2011, 2013
    Free Software Foundation, Inc.
@@ -32,6 +32,8 @@
 #ifndef INFO_SEARCH_H
 #define INFO_SEARCH_H
 
+#include "window.h"
+
 typedef struct {
   char *buffer;                 /* The buffer of text to search. */
   long start;                   /* Offset of the start of the search. */
@@ -46,10 +48,9 @@ enum search_result
   {
     search_success,             
     search_not_found,
-    search_failure
+    search_invalid
   };
 
-SEARCH_BINDING *make_binding (char *buffer, long int start, long int end);
 SEARCH_BINDING *copy_binding (SEARCH_BINDING *binding);
 extern enum search_result search_forward (char *string,
 					  SEARCH_BINDING *binding, long *poff);
@@ -58,11 +59,12 @@ extern enum search_result search_backward (char *input_string,
 					   long *poff);
 extern enum search_result search (char *string, SEARCH_BINDING *binding,
 				  long *poff);
-extern enum search_result regexp_search (char *regexp,
-					 SEARCH_BINDING *binding,
-					 long *poff,
-					 SEARCH_BINDING *pret);
+enum search_result regexp_search (char *regexp,
+               int is_literal, int is_insensitive,
+               char *buffer, size_t buflen,
+               regmatch_t **matches_out, size_t *match_count_out);
 extern int looking_at (char *string, SEARCH_BINDING *binding);
+int looking_at_line (char *string, char *pointer);
 
 /* Note that STRING_IN_LINE () always returns the offset of the 1st character
    after the string. */
@@ -77,11 +79,10 @@ extern int skip_whitespace (char *string);
 extern int skip_non_whitespace (char *string);
 extern int skip_whitespace_and_newlines (char *string);
 extern int skip_line (char *string);
-extern int skip_node_characters (char *string, int newlines_okay);
 extern int skip_node_separator (char *body);
 
 extern long find_node_separator (SEARCH_BINDING *binding);
-extern long find_tags_table (SEARCH_BINDING *binding);
+long find_file_section (SEARCH_BINDING *binding, char *label);
 extern long find_node_in_binding (char *nodename, SEARCH_BINDING *binding);
 
 #endif /* not INFO_SEARCH_H */

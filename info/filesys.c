@@ -1,8 +1,8 @@
 /* filesys.c -- filesystem specific functions.
-   $Id: filesys.c 5337 2013-08-22 17:54:06Z karl $
+   $Id: filesys.c 5999 2014-12-29 14:21:24Z gavin $
 
    Copyright 1993, 1997, 1998, 2000, 2002, 2003, 2004, 2007, 2008, 2009, 2011,
-   2012, 2013 Free Software Foundation, Inc.
+   2012, 2013, 2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,17 +20,21 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
-
 #include "tilde.h"
 #include "filesys.h"
 #include "tag.h"
+#include "session.h"
 
 /* Local to this file. */
-static char *info_file_in_path (char *filename, char *path);
-static char *lookup_info_filename (char *filename);
-static char *info_absolute_file (char *fname);
+static char *info_file_in_path (char *filename, struct stat *finfo);
+char *info_add_extension (char *dirname, char *fname,
+                                 struct stat *finfo);
 
-static void remember_info_filename (char *filename, char *expansion);
+static char *filesys_read_compressed (char *pathname, size_t *filesize);
+
+/* Return the command string that would be used to decompress FILENAME. */
+static char *filesys_decompressor_for_file (char *filename);
+static int compressed_filename_p (char *filename);
 
 typedef struct
 {
@@ -74,347 +78,203 @@ static COMPRESSION_ALIST compress_suffixes[] = {
 };
 
 /* Expand the filename in PARTIAL to make a real name for this operating
-   system.  This looks in INFO_PATHS in order to find the correct file.
-   If it can't find the file, it returns NULL. */
-static char *local_temp_filename = NULL;
-static int local_temp_filename_size = 0;
-
+   system.  This looks in INFOPATH in order to find the correct file.
+   Return file name and set *FINFO with information about file.  If it
+   can't find the file, it returns NULL, and sets filesys_error_number.
+   Return value should be freed by caller. */
 char *
-info_find_fullpath (char *partial)
+info_find_fullpath (char *partial, struct stat *finfo)
 {
-  int initial_character;
-  char *temp;
+  char *fullpath = 0;
+  struct stat dummy;
 
   debug(1, (_("looking for file \"%s\""), partial));
 
+  if (!finfo)
+    finfo = &dummy;
+
   filesys_error_number = 0;
 
-  if (partial && (initial_character = *partial))
+  if (!partial || !*partial)
+    return 0;
+  
+  /* IS_SLASH and IS_ABSOLUTE defined in ../system.h. */
+
+  /* If path is absolute already, see if it needs an extension. */
+  if (IS_ABSOLUTE (partial))
     {
-      char *expansion;
-
-      expansion = lookup_info_filename (partial);
-
-      if (expansion)
-        return expansion;
-
-      /* If we have the full path to this file, we still may have to add
-         various extensions to it.  I guess we have to stat this file
-         after all. */
-      if (IS_ABSOLUTE (partial))
-	temp = info_absolute_file (partial);
-      else if (initial_character == '~')
-        {
-          expansion = tilde_expand_word (partial);
-          if (IS_ABSOLUTE (expansion))
-            {
-              temp = info_absolute_file (expansion);
-              free (expansion);
-            }
-          else
-            temp = expansion;
-        }
-      else if (initial_character == '.' &&
-               (IS_SLASH (partial[1]) ||
-		(partial[1] == '.' && IS_SLASH (partial[2]))))
-        {
-          if (local_temp_filename_size < 1024)
-            local_temp_filename = xrealloc
-              (local_temp_filename, (local_temp_filename_size = 1024));
-#if defined (HAVE_GETCWD)
-          if (!getcwd (local_temp_filename, local_temp_filename_size))
-#else /*  !HAVE_GETCWD */
-          if (!getwd (local_temp_filename))
-#endif /* !HAVE_GETCWD */
-            {
-              filesys_error_number = errno;
-              return partial;
-            }
-
-          strcat (local_temp_filename, "/");
-          strcat (local_temp_filename, partial);
-	  temp = info_absolute_file (local_temp_filename); /* try extensions */
-	  if (!temp)
-	    partial = local_temp_filename;
-        }
-      else
-        temp = info_file_in_path (partial, infopath ());
-
-      if (temp)
-        {
-          remember_info_filename (partial, temp);
-          if (strlen (temp) > (unsigned int) local_temp_filename_size)
-            local_temp_filename = xrealloc
-              (local_temp_filename,
-               (local_temp_filename_size = (50 + strlen (temp))));
-          strcpy (local_temp_filename, temp);
-          free (temp);
-          return local_temp_filename;
-        }
+      fullpath = info_add_extension (0, partial, finfo);
     }
-  return partial;
+
+  /* Tilde expansion.  FIXME: Not needed, because done by shell. */
+  else if (partial[0] == '~')
+    {
+      partial = tilde_expand_word (partial);
+      fullpath = info_add_extension (0, partial, finfo);
+    }
+
+  /* If filename has a slash in it (for example, begins with "./" or "../", or
+     if there are intermediate directories) interpret it as relative to current
+     directory.  This may be from the command line, or in the subfiles table of
+     a split file. */
+  else if (HAS_SLASH (partial))
+    fullpath = info_add_extension (0, partial, finfo);
+  /* If just a simple name element, look for it in the path. */
+  else
+    fullpath = info_file_in_path (partial, finfo);
+
+  if (!fullpath)
+    filesys_error_number = ENOENT;
+
+  return fullpath;
 }
 
-/* Scan the list of directories in PATH looking for FILENAME.  If we find
+/* Scan the directories in search path looking for FILENAME.  If we find
    one that is a regular file, return it as a new string.  Otherwise, return
-   a NULL pointer. */
+   a NULL pointer.  Set *FINFO with information about file. */
 char *
-info_file_find_next_in_path (char *filename, char *path, int *diridx)
+info_file_find_next_in_path (char *filename, int *path_index, struct stat *finfo)
 {
-  struct stat finfo;
-  char *temp_dirname;
-  int statable;
+  struct stat dummy;
+
+  /* Used for output of stat in case the caller doesn't care about
+     its value. */
+  if (!finfo)
+    finfo = &dummy;
 
   /* Reject ridiculous cases up front, to prevent infinite recursion
      later on.  E.g., someone might say "info '(.)foo'"...  */
   if (!*filename || STREQ (filename, ".") || STREQ (filename, ".."))
     return NULL;
 
-  while ((temp_dirname = extract_colon_unit (path, diridx)))
+  while (1)
     {
-      register int i, pre_suffix_length;
-      char *temp;
+      char *dirname, *with_extension = 0;
 
-      debug(1, (_("looking for file %s in %s"), filename, temp_dirname));
+      dirname = infopath_next (path_index);
+      if (!dirname)
+        break;
+
+      debug(1, (_("looking for file %s in %s"), filename, dirname));
+
       /* Expand a leading tilde if one is present. */
-      if (*temp_dirname == '~')
+      if (*dirname == '~')
         {
-          char *expanded_dirname = tilde_expand_word (temp_dirname);
-          free (temp_dirname);
-          temp_dirname = expanded_dirname;
+          char *expanded_dirname = tilde_expand_word (dirname);
+          free (dirname);
+          dirname = expanded_dirname;
         }
 
-      temp = xmalloc (30 + strlen (temp_dirname) + strlen (filename));
-      strcpy (temp, temp_dirname);
-      if (!IS_SLASH (temp[(strlen (temp)) - 1]))
-        strcat (temp, "/");
-      strcat (temp, filename);
+      with_extension = info_add_extension (dirname, filename, finfo);
 
-      pre_suffix_length = strlen (temp);
-
-      free (temp_dirname);
-
-      for (i = 0; info_suffixes[i]; i++)
-        {
-          strcpy (temp + pre_suffix_length, info_suffixes[i]);
-
-          statable = (stat (temp, &finfo) == 0);
-
-          /* If we have found a regular file, then use that.  Else, if we
-             have found a directory, look in that directory for this file. */
-          if (statable)
-            {
-              if (S_ISREG (finfo.st_mode))
-                {
-		  debug(1, (_("found file %s"), temp));
-                  return temp;
-                }
-              else if (S_ISDIR (finfo.st_mode))
-                {
-                  char *newpath, *filename_only, *newtemp;
-
-                  newpath = xstrdup (temp);
-                  filename_only = filename_non_directory (filename);
-                  newtemp = info_file_in_path (filename_only, newpath);
-
-                  free (newpath);
-                  if (newtemp)
-                    {
-                      free (temp);
-		      debug(1, (_("found file %s"), newtemp));
-                      return newtemp;
-                    }
-                }
-            }
-          else
-            {
-              /* Add various compression suffixes to the name to see if
-                 the file is present in compressed format. */
-              register int j, pre_compress_suffix_length;
-
-              pre_compress_suffix_length = strlen (temp);
-
-              for (j = 0; compress_suffixes[j].suffix; j++)
-                {
-                  strcpy (temp + pre_compress_suffix_length,
-                          compress_suffixes[j].suffix);
-
-                  statable = (stat (temp, &finfo) == 0);
-                  if (statable && (S_ISREG (finfo.st_mode)))
-		    {
-		      debug(1, (_("found file %s"), temp));
-		      return temp;
-		    }
-                }
-            }
-        }
-      free (temp);
+      if (with_extension)
+        return with_extension;
     }
   return NULL;
 }
 
 static char *
-info_file_in_path (char *filename, char *path)
+info_file_in_path (char *filename, struct stat *finfo)
 {
   int i = 0;
-  return info_file_find_next_in_path (filename, path, &i);
+  return info_file_find_next_in_path (filename, &i, finfo);
 }
 
-/* Assume FNAME is an absolute file name, and check whether it is
-   a regular file.  If it is, return it as a new string; otherwise
-   return a NULL pointer.  We do it by taking the file name apart
-   into its directory and basename parts, and calling info_file_in_path.*/
-static char *
-info_absolute_file (char *fname)
-{
-  char *containing_dir = xstrdup (fname);
-  char *base = filename_non_directory (containing_dir);
-
-  if (base > containing_dir)
-    base[-1] = '\0';
-
-  return info_file_in_path (filename_non_directory (fname), containing_dir);
-}
-
-
-/* Given a string containing units of information separated by the
-   PATH_SEP character, return the next one after IDX, or NULL if there
-   are no more.  Advance IDX to the character after the colon. */
-
+/* Look for a file called FILENAME in a directory called DIRNAME, adding file
+   extensions if necessary.  FILENAME can be an absolute path or a path
+   relative to the current directory, in which case DIRNAME should be
+   null.  Return it as a new string; otherwise return a NULL pointer. */
 char *
-extract_colon_unit (char *string, int *idx)
+info_add_extension (char *dirname, char *filename, struct stat *finfo)
 {
-  unsigned int i = (unsigned int) *idx;
-  unsigned int start = i;
+  char *try_filename;
+  register int i, pre_suffix_length = 0;
 
-  if (!string || i >= strlen (string))
-    return NULL;
+  if (dirname)
+    pre_suffix_length += strlen (dirname);
 
-  if (!string[i]) /* end of string */
-    return NULL;
+  pre_suffix_length += strlen (filename);
 
-  /* Advance to next PATH_SEP.  */
-  while (string[i] && string[i] != PATH_SEP[0])
-    i++;
+  /* Add enough space for any file extensions at end. */
+  try_filename = xmalloc (pre_suffix_length + 30);
+  try_filename[0] = '\0';
 
-  {
-    char *value = xmalloc ((i - start) + 1);
-    strncpy (value, &string[start], (i - start));
-    value[i - start] = 0;
-
-    i++; /* move past PATH_SEP */
-    *idx = i;
-    return value;
-  }
-}
-
-/* A structure which associates a filename with its expansion. */
-typedef struct
-{
-  char *filename;
-  char *expansion;
-} FILENAME_LIST;
-
-/* An array of remembered arguments and results. */
-static FILENAME_LIST **names_and_files = NULL;
-static int names_and_files_index = 0;
-static int names_and_files_slots = 0;
-
-/* Find the result for having already called info_find_fullpath () with
-   FILENAME. */
-static char *
-lookup_info_filename (char *filename)
-{
-  if (filename && names_and_files)
+  if (dirname)
     {
-      register int i;
-      for (i = 0; names_and_files[i]; i++)
+      strcpy (try_filename, dirname);
+      if (!IS_SLASH (try_filename[(strlen (try_filename)) - 1]))
         {
-          if (FILENAME_CMP (names_and_files[i]->filename, filename) == 0)
-            return names_and_files[i]->expansion;
+          strcat (try_filename, "/");
+          pre_suffix_length++;
         }
     }
-  return NULL;
-}
 
-/* Add a filename and its expansion to our list. */
-static void
-remember_info_filename (char *filename, char *expansion)
-{
-  FILENAME_LIST *new;
+  strcat (try_filename, filename);
 
-  if (names_and_files_index + 2 > names_and_files_slots)
+  for (i = 0; info_suffixes[i]; i++)
     {
-      int alloc_size;
-      names_and_files_slots += 10;
+      int statable;
 
-      alloc_size = names_and_files_slots * sizeof (FILENAME_LIST *);
+      strcpy (try_filename + pre_suffix_length, info_suffixes[i]);
+      statable = (stat (try_filename, finfo) == 0);
 
-      names_and_files = xrealloc (names_and_files, alloc_size);
+      /* If we have found a regular file, then use that.  Else, if we
+         have found a directory, look in that directory for this file. */
+      if (statable)
+        {
+          if (S_ISREG (finfo->st_mode))
+            {
+              debug(1, (_("found file %s"), try_filename));
+              return try_filename;
+            }
+          else if (S_ISDIR (finfo->st_mode))
+            {
+              char *newpath, *new_filename;
+
+              newpath = xstrdup (try_filename);
+              new_filename = info_add_extension (newpath, filename, finfo);
+
+              free (newpath);
+              if (new_filename)
+                {
+                  free (try_filename);
+                  debug(1, (_("found file %s"), new_filename));
+                  return new_filename;
+                }
+            }
+        }
+      else
+        {
+          /* Add various compression suffixes to the name to see if
+             the file is present in compressed format. */
+          register int j, pre_compress_suffix_length;
+
+          pre_compress_suffix_length = strlen (try_filename);
+
+          for (j = 0; compress_suffixes[j].suffix; j++)
+            {
+              strcpy (try_filename + pre_compress_suffix_length,
+                      compress_suffixes[j].suffix);
+
+              statable = (stat (try_filename, finfo) == 0);
+              if (statable && (S_ISREG (finfo->st_mode)))
+                {
+                  debug(1, (_("found file %s"), try_filename));
+                  return try_filename;
+                }
+            }
+        }
     }
-
-  new = xmalloc (sizeof (FILENAME_LIST));
-  new->filename = xstrdup (filename);
-  new->expansion = expansion ? xstrdup (expansion) : NULL;
-
-  names_and_files[names_and_files_index++] = new;
-  names_and_files[names_and_files_index] = NULL;
-}
-
-void
-forget_file_names (void)
-{
-  int i;
-
-  for (i = 0; i < names_and_files_index; i++)
-    {
-      free (names_and_files[i]->filename);
-      free (names_and_files[i]->expansion);
-      free (names_and_files[i]);
-      names_and_files[i] = NULL;
-    }
-  names_and_files_index = 0;
-}
-
-/* Given a chunk of text and its length, convert all CRLF pairs at every
-   end-of-line into a single Newline character.  Return the length of
-   produced text.
-
-   This is required because the rest of code is too entrenched in having
-   a single newline at each EOL; in particular, searching for various
-   Info headers and cookies can become extremely tricky if that assumption
-   breaks.
-
-   FIXME: this could also support Mac-style text files with a single CR
-   at the EOL, but what about random CR characters in non-Mac files?  Can
-   we afford converting them into newlines as well?  Maybe implement some
-   heuristics here, like in Emacs 20.
-
-   FIXME: is it a good idea to show the EOL type on the modeline?  */
-long
-convert_eols (char *text, long int textlen)
-{
-  register char *s = text;
-  register char *d = text;
-
-  while (textlen--)
-    {
-      if (*s == '\r' && textlen && s[1] == '\n')
-	{
-	  s++;
-	  textlen--;
-	}
-      *d++ = *s++;
-    }
-
-  return d - text;
+  /* Nothing was found. */
+  free (try_filename);
+  return 0;
 }
 
 /* Read the contents of PATHNAME, returning a buffer with the contents of
    that file in it, and returning the size of that buffer in FILESIZE.
-   FINFO is a stat struct which has already been filled in by the caller.
    If the file turns out to be compressed, set IS_COMPRESSED to non-zero.
-   If the file cannot be read, return a NULL pointer. */
+   If the file cannot be read, set filesys_error_number and return a NULL
+   pointer.  Set *FINFO with information about file. */
 char *
 filesys_read_info_file (char *pathname, size_t *filesize,
 			struct stat *finfo, int *is_compressed)
@@ -423,6 +283,9 @@ filesys_read_info_file (char *pathname, size_t *filesize,
   char *contents;
 
   fsize = filesys_error_number = 0;
+
+  stat (pathname, finfo);
+  fsize = (long) finfo->st_size;
 
   if (compressed_filename_p (pathname))
     {
@@ -444,7 +307,6 @@ filesys_read_info_file (char *pathname, size_t *filesize,
         }
 
       /* Try to read the contents of this file. */
-      fsize = (long) finfo->st_size;
       contents = xmalloc (1 + fsize);
       if ((read (descriptor, contents, fsize)) != fsize)
         {
@@ -457,16 +319,8 @@ filesys_read_info_file (char *pathname, size_t *filesize,
       close (descriptor);
     }
 
-  /* Convert any DOS-style CRLF EOLs into Unix-style NL.
-     Seems like a good idea to have even on Unix, in case the Info
-     files are coming from some Windows system across a network.  */
-  fsize = convert_eols (contents, fsize);
-
-  /* EOL conversion can shrink the text quite a bit.  We don't
-     want to waste storage.  */
-  contents = xrealloc (contents, 1 + fsize);
-  contents[fsize] = '\0';
   *filesize = fsize;
+
   return contents;
 }
 
@@ -476,7 +330,7 @@ filesys_read_info_file (char *pathname, size_t *filesize,
 /* We use some large multiple of that. */
 #define FILESYS_PIPE_BUFFER_SIZE (16 * BASIC_PIPE_BUFFER)
 
-char *
+static char *
 filesys_read_compressed (char *pathname, size_t *filesize)
 {
   FILE *stream;
@@ -496,7 +350,6 @@ filesys_read_compressed (char *pathname, size_t *filesize)
   sprintf (command, "%s%s < %s",
 	   decompressor, STRIP_DOT_EXE ? ".exe" : "", pathname);
 
-#if !defined (BUILDING_LIBRARY)
   if (info_windows_initialized_p)
     {
       char *temp;
@@ -506,7 +359,6 @@ filesys_read_compressed (char *pathname, size_t *filesize)
       message_in_echo_area ("%s", temp);
       free (temp);
     }
-#endif /* !BUILDING_LIBRARY */
 
   stream = popen (command, FOPEN_RBIN);
   free (command);
@@ -556,15 +408,13 @@ filesys_read_compressed (char *pathname, size_t *filesize)
       filesys_error_number = errno;
     }
 
-#if !defined (BUILDING_LIBARARY)
   if (info_windows_initialized_p)
     unmessage_in_echo_area ();
-#endif /* !BUILDING_LIBRARY */
   return contents;
 }
 
 /* Return non-zero if FILENAME belongs to a compressed file. */
-int
+static int
 compressed_filename_p (char *filename)
 {
   char *decompressor;
@@ -580,7 +430,7 @@ compressed_filename_p (char *filename)
 }
 
 /* Return the command string that would be used to decompress FILENAME. */
-char *
+static char *
 filesys_decompressor_for_file (char *filename)
 {
   register int i;
@@ -623,6 +473,8 @@ int filesys_error_number = 0;
 static char *errmsg_buf = NULL;
 static int errmsg_buf_size = 0;
 
+/* Return string for ERROR_NUM when opening file.  Return value should not
+   be freed by caller. */
 char *
 filesys_error_string (char *filename, int error_num)
 {

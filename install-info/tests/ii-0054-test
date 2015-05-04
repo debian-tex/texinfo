@@ -1,0 +1,39 @@
+#!/bin/sh -x
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+. ./defs || exit 1
+
+outputdirfile=`mktemp ii54-XXXXXXXX`
+cp ${testdir}/ii-0054-input-dir-file $outputdirfile || exit $?
+
+# test compressed input file names with spaces (but avoid having such a
+# name in the repository).
+info_with_space='ii54 input.info.gz'
+cp ${testdir}/ii-0054-input-info-file.gz "$info_with_space"
+${install_info} "$info_with_space" $outputdirfile || exit $?
+
+diff ${testdir}/ii-0054-expected-dir-file $outputdirfile || exit $?
+
+rm -f "$info_with_space" $outputdirfile
+exit $retval
+
+
+#output_dir=`mktemp 'ii 54'-XXXXXXXX`
+#outputdirfile=`mktemp ii53-XXXXXXXX`
+#
+## Test for spaces in target directory name.
+#${install_info} --info-dir="${output_dir}" ${testdir}/ii-0054-input-info-file 
+#test $? = 0 || exit 2
+#
+#diff ${testdir}/ii-0053-expected-dir-file $outputdirfile
+#test $? = 0 || exit 3
+#
+#rm -f $outputdirfile
+#exit 0
+#

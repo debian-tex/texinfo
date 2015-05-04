@@ -106,13 +106,13 @@ $result_converted{'plaintext'}->{'image_extension'} = '[f---ile]';
 
 $result_converted_errors{'plaintext'}->{'image_extension'} = [
   {
-    'file_name' => '',
     'error_line' => ':1: warning: could not find @image file `f---ile.txt\' nor alternate text
 ',
-    'text' => 'could not find @image file `f---ile.txt\' nor alternate text',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 1,
     'macro' => '',
-    'line_nr' => 1
+    'text' => 'could not find @image file `f---ile.txt\' nor alternate text',
+    'type' => 'warning'
   }
 ];
 
@@ -123,13 +123,13 @@ $result_converted{'html_text'}->{'image_extension'} = '<img src="f---ile.gr--a" 
 
 $result_converted_errors{'html_text'}->{'image_extension'} = [
   {
-    'file_name' => '',
     'error_line' => ':1: warning: @image file `f---ile\' (for HTML) not found, using `f---ile.gr--a\'
 ',
-    'text' => '@image file `f---ile\' (for HTML) not found, using `f---ile.gr--a\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 1,
     'macro' => '',
-    'line_nr' => 1
+    'text' => '@image file `f---ile\' (for HTML) not found, using `f---ile.gr--a\'',
+    'type' => 'warning'
   }
 ];
 
@@ -144,13 +144,13 @@ $result_converted{'docbook'}->{'image_extension'} = '<informalfigure><mediaobjec
 
 $result_converted_errors{'docbook'}->{'image_extension'} = [
   {
-    'file_name' => '',
     'error_line' => ':1: warning: @image file `f---ile\' not found, using `f---ile.jpg\'
 ',
-    'text' => '@image file `f---ile\' not found, using `f---ile.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 1,
     'macro' => '',
-    'line_nr' => 1
+    'text' => '@image file `f---ile\' not found, using `f---ile.jpg\'',
+    'type' => 'warning'
   }
 ];
 
@@ -173,13 +173,13 @@ $result_converted_errors{'info'}->{'image_extension'} = [
     'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':1: warning: could not find @image file `f---ile.txt\' nor alternate text
 ',
-    'text' => 'could not find @image file `f---ile.txt\' nor alternate text',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 1,
     'macro' => '',
-    'line_nr' => 1
+    'text' => 'could not find @image file `f---ile.txt\' nor alternate text',
+    'type' => 'warning'
   }
 ];
 

@@ -1,6 +1,7 @@
+# $Id: Plaintext.pm 6234 2015-05-01 12:34:52Z gavin $
 # Plaintext.pm: output tree as text with filling.
 #
-# Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -108,7 +109,7 @@ foreach my $def_command (keys(%def_commands)) {
   $formatting_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
 }
 
-# There are 5 stacks that define the context.
+# There are 6 stacks that define the context.
 # context:   relevant for alignement of text.  Set in math, footnote, 
 #            listoffloats, flush_commands, preformatted_context_commands 
 #            (preformatted + menu + verbatim), and raw commands if 
@@ -133,6 +134,7 @@ foreach my $def_command (keys(%def_commands)) {
 #            counting some converted text, but it is also set when it has
 #            to be modified afterwards, for aligned commands or multitable
 #            cells for example.
+# document_context: Used to keep track if we are in a multitable.
 
 # formatters have their own stack
 # in container
@@ -261,7 +263,7 @@ foreach my $command (keys(%style_map)) {
   $style_map{$command} = [$style_map{$command}, $style_map{$command}];
 }
 
-# math  is special
+# math is special
 my @asis_commands = ('asis', 'w', 'b', 'ctrl', 'i', 'sc', 't', 'r',
   'slanted', 'sansserif', 'var', 'verb', 'clicksequence',
   'headitemfont', 'dmn');
@@ -289,6 +291,8 @@ delete $non_quoted_commands_when_nested{'samp'};
 delete $non_quoted_commands_when_nested{'indicateurl'};
 
 $style_map{'key'} = ['<', '>'];
+$style_map{'sub'} = ['_{', '}'];
+$style_map{'sup'} = ['^{', '}'];
 
 # in those commands, there is no addition of double space after a dot.
 # math is special
@@ -300,16 +304,18 @@ foreach my $command ('var', 'cite', 'dmn', keys(%code_style_commands)) {
 my %defaults = (
   'ENABLE_ENCODING'      => 1,
   'SHOW_MENU'            => 0,
-# not used for plaintext, since default is '-', and always set, for plaintext.
-  'EXTENSION'            => 'info',
-  'USE_SETFILENAME_EXTENSION' => 1,
+  #'EXTENSION'            => 'info',
+  'EXTENSION'            => 'txt',
+  #'USE_SETFILENAME_EXTENSION' => 1,
   'INFO_SPECIAL_CHARS_WARNING' => 1,
 
-  'OUTFILE'              => undef,
+  #'OUTFILE'              => undef,
+  'OUTFILE'              => '-',
   'SUBDIR'               => undef,
   'documentlanguage'     => undef,
 
   'output_format'        => '',
+  'USE_NODES'            => 1,
 );
 
 sub push_top_formatter($$)
@@ -325,6 +331,10 @@ sub push_top_formatter($$)
   push @{$self->{'text_element_context'}}, {
                                      'max' => $self->{'fillcolumn'}
                                    };
+  push @{$self->{'document_context'}}, {
+                                     'in_multitable' => 0
+                                   };
+
   # This is not really meant to be used, as contents should open 
   # their own formatters, however it happens that there is some text
   # outside any content that needs to be formatted, as @sp for example.
@@ -356,7 +366,6 @@ sub converter_initialize($)
   $self->{'context'} = [];
   $self->{'format_context'} = [];
   $self->{'empty_lines_count'} = undef;
-  $self->push_top_formatter('_Root_context');
   push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
                                      'locations' => []};
 
@@ -381,19 +390,14 @@ sub converter_initialize($)
       and $self->get_conf('OUTPUT_ENCODING_NAME') eq 'utf-8') {
     # cache this to avoid redoing calls to get_conf
     $self->{'to_utf8'} = 1;
+
     foreach my $quoted_command (@quoted_commands) {
+      # Directed single quotes
       $self->{'style_map'}->{$quoted_command} = ["\x{2018}", "\x{2019}"];
     }
+    # Directed double quotes
+    $self->{'style_map'}->{'dfn'} = ["\x{201C}", "\x{201D}"];
   }
-  # some caching to avoid calling get_conf
-  if ($self->get_conf('OUTPUT_PERL_ENCODING')) {
-    $self->{'output_perl_encoding'} = $self->get_conf('OUTPUT_PERL_ENCODING');
-  } else {
-    $self->{'output_perl_encoding'} = '';
-  }
-  $self->{'enable_encoding'} = $self->get_conf('ENABLE_ENCODING');
-  $self->{'output_encoding_name'} = $self->get_conf('OUTPUT_ENCODING_NAME');
-  $self->{'debug'} = $self->get_conf('DEBUG');
   $self->{'convert_text_options'} 
       = {Texinfo::Common::_convert_text_options($self)};
   if (defined($self->get_conf('OPEN_QUOTE_SYMBOL'))) {
@@ -408,6 +412,21 @@ sub converter_initialize($)
        = $self->get_conf('CLOSE_QUOTE_SYMBOL');
     }
   }
+  if ($self->get_conf('FILLCOLUMN')) {
+    $self->{'fillcolumn'} = $self->get_conf('FILLCOLUMN');
+    # else it's already set via the defaults
+  }
+  # This needs to be here to take into account $self->{'fillcolumn'}.
+  $self->push_top_formatter('_Root_context');
+  # some caching to avoid calling get_conf
+  if ($self->get_conf('OUTPUT_PERL_ENCODING')) {
+    $self->{'output_perl_encoding'} = $self->get_conf('OUTPUT_PERL_ENCODING');
+  } else {
+    $self->{'output_perl_encoding'} = '';
+  }
+  $self->{'enable_encoding'} = $self->get_conf('ENABLE_ENCODING');
+  $self->{'output_encoding_name'} = $self->get_conf('OUTPUT_ENCODING_NAME');
+  $self->{'debug'} = $self->get_conf('DEBUG');
 
   return $self;
 }
@@ -432,7 +451,7 @@ sub _count_context_bug_message($$$)
   }
 }
 
-sub _convert_node($$)
+sub _convert_element($$)
 {
   my $self = shift;
   my $element = shift;
@@ -473,7 +492,7 @@ sub convert($$)
     $result .= $footnotes;
   } else {
     foreach my $node (@$elements) {
-      my $node_text = $self->_convert_node($node);
+      my $node_text = _convert_element($self, $node);
       $result .= $node_text;
     }
   }
@@ -481,7 +500,23 @@ sub convert($$)
   return $result;
 }
 
-sub output($$)
+sub convert_tree($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  $self->{'empty_lines_count'} = 1;
+  my $result;
+  if ($root->{'type'} and $root->{'type'} eq 'element') {
+    $result = _convert_element($self, $root);
+  } else {
+    $result = $self->_convert($root);
+  }
+  return $result;
+}
+
+# old implementation of output that does not allow for splitting.
+sub _output_old($$)
 {
   my $self = shift;
   my $root = shift;
@@ -581,7 +616,7 @@ sub new_formatter($$;$)
          'indent_level'      => $self->{'format_context'}->[-1]->{'indent_level'}, 
   };
   $container_conf->{'frenchspacing'} = 1 
-    if ($self->get_conf('frenchspacing') eq 'on');
+    if ($self->{'conf'}->{'frenchspacing'} eq 'on');
   $container_conf->{'counter'} 
     = $self->{'text_element_context'}->[-1]->{'counter'}
       if (defined($self->{'text_element_context'}->[-1]->{'counter'}));
@@ -620,7 +655,7 @@ sub new_formatter($$;$)
                    #'code' => 0, 'code_command'=> 0,
                    'font_type_stack' => [{}],
                    'w' => 0, 'type' => $type,
-                   'frenchspacing_stack' => [$self->get_conf('frenchspacing')]};
+                'frenchspacing_stack' => [$self->{'conf'}->{'frenchspacing'}]};
 
   if ($type eq 'unfilled') {
     foreach my $context (reverse(@{$self->{'context'}})) {
@@ -647,7 +682,7 @@ sub convert_line($$;$)
   my $formatter = $self->new_formatter('line', $conf);
   push @{$self->{'formatters'}}, $formatter;
   my $text = $self->_convert($converted);
-  $text .= $self->_count_added($formatter->{'container'},
+  $text .= _count_added($self, $formatter->{'container'},
                                $formatter->{'container'}->end());
   pop @{$self->{'formatters'}};
   return $text;
@@ -663,7 +698,7 @@ sub convert_unfilled($$;$)
   $formatter->{'font_type_stack'}->[-1]->{'monospace'} = 1;
   push @{$self->{'formatters'}}, $formatter;
   my $result = $self->_convert($converted);
-  $result .= $self->_count_added($formatter->{'container'},
+  $result .= _count_added($self, $formatter->{'container'},
                                  $formatter->{'container'}->end());
   pop @{$self->{'formatters'}};
   return $result;
@@ -682,7 +717,9 @@ sub _add_text_count($$)
 {
   my $self = shift;
   my $text = shift;
-  $self->{'count_context'}->[-1]->{'bytes'} += $self->count_bytes($text);
+  $self->{'count_context'}->[-1]->{'bytes'}
+      += Texinfo::Common::count_bytes($self, $text, 
+                                      $self->{'output_perl_encoding'});
 }
 
 sub _add_lines_count($$)
@@ -732,8 +769,13 @@ sub _count_added($$$)
   my $container = shift;
   my $text = shift;
 
-  $self->_add_lines_count($container->end_line_count());
-  $self->_add_text_count($text);
+  #$self->_add_lines_count($container->end_line_count());
+  $self->{'count_context'}->[-1]->{'lines'} += $container->end_line_count();
+
+  #$self->_add_text_count($text);
+  $self->{'count_context'}->[-1]->{'bytes'} +=
+    Texinfo::Common::count_bytes($self, $text,
+                                 $self->{'output_perl_encoding'});
   return $text;
 }
 
@@ -753,8 +795,8 @@ sub _add_newline_if_needed($) {
   my $self = shift;
   if (defined($self->{'empty_lines_count'}) 
        and $self->{'empty_lines_count'} == 0) {
-    $self->_add_text_count("\n");
-    $self->_add_lines_count(1);
+    _add_text_count($self, "\n");
+    _add_lines_count($self, 1);
     $self->{'empty_lines_count'} = 1;
     return "\n";
   }
@@ -771,14 +813,14 @@ sub _footnotes($;$)
 
   my $result = '';
   if (scalar(@{$self->{'pending_footnotes'}})) {
-    $result .= $self->_add_newline_if_needed();
+    $result .= _add_newline_if_needed($self);
     print STDERR "FOOTNOTES ".scalar(@{$self->{'pending_footnotes'}})."\n"
         if ($self->{'debug'});
     if ($self->get_conf('footnotestyle') eq 'end' or !defined($element)) {
       my $footnotes_header = "   ---------- Footnotes ----------\n\n";
       $result .= $footnotes_header;
-      $self->_add_text_count($footnotes_header);
-      $self->_add_lines_count(2);
+      _add_text_count($self, $footnotes_header);
+      _add_lines_count($self, 2);
       $self->{'empty_lines_count'} = 1;
     } else {
 
@@ -814,7 +856,8 @@ sub _footnotes($;$)
                                     'normalized' => $normalized}
                        });
       }
-      # this pushes on 'context', 'format_context' and 'formatters'
+      # this pushes on 'context', 'formatters', 'format_context',
+      # 'text_element_context' and 'document_context'
       $self->push_top_formatter('footnote');
       my $formatted_footnote_number;
       if ($self->get_conf('NUMBER_FOOTNOTES')) {
@@ -827,17 +870,18 @@ sub _footnotes($;$)
       $result .= $footnote_text;
       $self->{'text_element_context'}->[-1]->{'counter'} += 
          Texinfo::Convert::Unicode::string_width($footnote_text);
-      $self->_add_text_count($footnote_text);
+      _add_text_count($self, $footnote_text);
       $self->{'empty_lines_count'} = 0;
 
       $result .= $self->_convert($footnote->{'root'}->{'args'}->[0]); 
-      $result .= $self->_add_newline_if_needed();
+      $result .= _add_newline_if_needed($self);
       
       my $old_context = pop @{$self->{'context'}};
       die if ($old_context ne 'footnote');
-      pop @{$self->{'format_context'}};
       pop @{$self->{'formatters'}};
+      pop @{$self->{'format_context'}};
       pop @{$self->{'text_element_context'}};
+      pop @{$self->{'document_context'}};
     }
   }
   $self->{'footnote_index'} = 0;
@@ -1093,8 +1137,8 @@ sub _menu($$)
 
   if ($menu_command->{'cmdname'} eq 'menu') {
     my $result = "* Menu:\n\n";
-    $self->_add_text_count($result);
-    $self->_add_lines_count(2);
+    _add_text_count($self, $result);
+    _add_lines_count($self, 2);
     return $result;
   } else {
     return '';
@@ -1168,18 +1212,18 @@ sub _printindex_formatted($$;$)
   }
 
   my $result = '';
-  $result .= $self->_add_newline_if_needed();
+  $result .= _add_newline_if_needed($self);
   if ($in_info) {
     my $info_printindex_magic = "\x{00}\x{08}[index\x{00}\x{08}]\n";
     $result .= $info_printindex_magic;
-    $self->_add_text_count($info_printindex_magic);
-    $self->_add_lines_count(1);
+    _add_text_count($self, $info_printindex_magic);
+    _add_lines_count($self, 1);
   }
   my $heading = "* Menu:\n\n";
 
   $result .= $heading;
-  $self->_add_text_count($heading);
-  $self->_add_lines_count(2);
+  _add_text_count($self, $heading);
+  _add_lines_count($self, 2);
 
   # first determine the line numbers for the spacing of their formatting
   my %line_nrs;
@@ -1238,12 +1282,12 @@ sub _printindex_formatted($$;$)
     $entry_text .= $self->convert_line($entry_tree, {'indent' => 0});
     next if ($entry_text !~ /\S/);
     # FIXME protect instead
-    #if ($entry_text =~ /:/) {
-      #$self->line_warn (sprintf($self->__("Index entry in \@%s with : produces invalid Info: %s"),
-      #                           $entry->{'index_at_command'},
-      #    Texinfo::Convert::Texinfo::convert($entry_tree)), 
-      #                  $entry->{'command'}->{'line_nr'});
-    #}
+    if ($entry_text =~ /:/ and $self->get_conf('INDEX_SPECIAL_CHARS_WARNING')) {
+      $self->line_warn (sprintf($self->__("Index entry in \@%s with : produces invalid Info: %s"),
+                                 $entry->{'index_at_command'},
+          Texinfo::Convert::Texinfo::convert($entry_tree)), 
+                        $entry->{'command'}->{'line_nr'});
+    }
 
     my $entry_nr = '';
     if (!defined($entry_counts{$entry_text})) {
@@ -1251,17 +1295,18 @@ sub _printindex_formatted($$;$)
     } else {
       $entry_counts{$entry_text}++;
       $entry_nr = ' <'.$entry_counts{$entry_text}.'>';
-      $self->_add_text_count($entry_nr);
+      _add_text_count($self, $entry_nr);
     }
     my $entry_line = "* $entry_text${entry_nr}: ";
-    $self->_add_text_count("* ".": ");
-    #$self->_add_text_count($entry_line);
+    _add_text_count($self, "* ".": ");
+    #_add_text_count($self, $entry_line);
     
     my $line_width = Texinfo::Convert::Unicode::string_width($entry_line);
+    my $entry_line_addition = '';
     if ($line_width < $index_length_to_node) {
       my $spaces = ' ' x ($index_length_to_node - $line_width);
-      $entry_line .= $spaces;
-      $self->_add_text_count($spaces);
+      $entry_line_addition .= $spaces;
+      _add_text_count($self, $spaces);
     }
     my $node = $entry_nodes{$entry};
 
@@ -1277,7 +1322,7 @@ sub _printindex_formatted($$;$)
         $self->{'outside_of_any_node_text'}->{'count'} 
           = $end_context->{'bytes'};
       }
-      $entry_line .= $self->{'outside_of_any_node_text'}->{'text'};
+      $entry_line_addition .= $self->{'outside_of_any_node_text'}->{'text'};
       $self->{'count_context'}->[-1]->{'bytes'} 
             += $self->{'outside_of_any_node_text'}->{'count'};
       # FIXME when outside of sectioning commands this message was already
@@ -1290,36 +1335,37 @@ sub _printindex_formatted($$;$)
       }
     } else {
       my ($node_line, $byte_count) = $self->_node_line($node);
-      $entry_line .= $node_line;
+      $entry_line_addition .= $node_line;
       $self->{'count_context'}->[-1]->{'bytes'} += $byte_count;
     }
-    $entry_line .= '.';
-    $self->_add_text_count('.');
+    $entry_line_addition .= '.';
+    _add_text_count($self, '.');
 
+    $entry_line .= $entry_line_addition;
     $result .= $entry_line;
 
     my $line_nr = $line_nrs{$entry};
     my $line_nr_spaces = sprintf("%${max_index_line_nr_string_length}d", $line_nr);
     my $line_part = "(line ${line_nr_spaces})";
-    $line_width = Texinfo::Convert::Unicode::string_width($entry_line);
+    $line_width += Texinfo::Convert::Unicode::string_width($entry_line_addition);
     my $line_part_width = Texinfo::Convert::Unicode::string_width($line_part);
     if ($line_width + $line_part_width +1 > $self->{'fillcolumn'}) {
       $line_part = "\n" . ' ' x ($self->{'fillcolumn'} - $line_part_width) 
            . "$line_part\n";
-      $self->_add_lines_count(1);
+      _add_lines_count($self, 1);
     } else { 
       $line_part 
         = ' ' x ($self->{'fillcolumn'} - $line_part_width - $line_width)
            . "$line_part\n";
     }
-    $self->_add_lines_count(1);
-    $self->_add_text_count($line_part);
+    _add_lines_count($self, 1);
+    _add_text_count($self, $line_part);
     $result .= $line_part;
   }
 
   $result .= "\n"; 
-  $self->_add_text_count("\n");
-  $self->_add_lines_count(1);
+  _add_text_count($self, "\n");
+  _add_lines_count($self, 1);
   
   return $result;
 }
@@ -1365,8 +1411,8 @@ sub ensure_end_of_line($$)
     $self->{'count_context'}->[-1]->{'lines'} -= 1;
   }
   $text .= "\n";
-  $self->_add_text_count("\n");
-  $self->_add_lines_count(1);
+  _add_text_count($self, "\n");
+  _add_lines_count($self, 1);
   return $text;
 }
 
@@ -1466,6 +1512,9 @@ sub _get_form_feeds($)
 
 sub _convert($$);
 
+# Convert the Texinfo tree under $ROOT to plain text.  Note that this
+# function should be called as "$self->_convert" to allow the
+# DebugTexinfo::DebugCount::_convert method to override this one.
 sub _convert($$)
 {
   my $self = shift;
@@ -1525,7 +1574,7 @@ sub _convert($$)
     if ($root->{'text'} =~ /\f/) {
       $result = _get_form_feeds($root->{'text'});
     }
-    $self->_add_text_count($result);
+    _add_text_count($self, $result);
     print STDERR "IGNORABLE SPACE: ($result)\n" if ($self->{'debug'});
     return $result;
   }
@@ -1544,12 +1593,13 @@ sub _convert($$)
     $self->{'empty_lines_count'}++;
     if ($self->{'empty_lines_count'} <= 1
         or $self->{'preformatted_context_commands'}->{$self->{'context'}->[-1]}) {
-      $result = "\n";
+      $result = "";
       if ($root->{'text'} =~ /\f/) {
-        $result = _get_form_feeds($root->{'text'}) .$result;
+        $result .= _get_form_feeds($root->{'text'});
+        _add_text_count($self, $result);
       }
-      $self->_add_text_count($result);
-      $self->_add_lines_count(1);
+      $result .= _count_added($self, $formatter->{'container'},
+                $formatter->{'container'}->add_text("\n"));
       return $result;
     } else {
       return '';
@@ -1561,19 +1611,19 @@ sub _convert($$)
     if (!$formatter->{'_top_formatter'}) {
       if ($root->{'type'} and ($root->{'type'} eq 'raw' 
                                or $root->{'type'} eq 'last_raw_newline')) {
-        $result = $self->_count_added($formatter->{'container'},
+        $result = _count_added($self, $formatter->{'container'},
                     $formatter->{'container'}->add_next($root->{'text'}));
       } elsif ($root->{'type'} and ($root->{'type'} eq 'underlying_text')) {
         $formatter->{'container'}->add_underlying_text($root->{'text'});
       } else {
-        my ($text, $lower_case_text) = $self->_process_text($root, $formatter);
-        $result = $self->_count_added($formatter->{'container'},
+        my ($text, $lower_case_text) = _process_text($self, $root, $formatter);
+        $result = _count_added($self, $formatter->{'container'},
                     $formatter->{'container'}->add_text($text, $lower_case_text));
       }
       return $result;
     # the following is only possible if paragraphindent is set to asis
     } elsif ($root->{'type'} and $root->{'type'} eq 'empty_spaces_before_paragraph') {
-      $self->_add_text_count($root->{'text'});
+      _add_text_count($self, $root->{'text'});
       return $root->{'text'};
     # ignore text outside of any format, but warn if ignored text not empty
     } elsif ($root->{'text'} =~ /\S/) {
@@ -1655,18 +1705,18 @@ sub _convert($$)
         $formatter->{'container'}->inhibit_end_sentence();
         return '';
       } elsif ($command eq '*') {
-        $result = $self->_count_added($formatter->{'container'},
+        $result = _count_added($self, $formatter->{'container'},
                               $formatter->{'container'}->add_pending_word());
-        $result .= $self->_count_added($formatter->{'container'},
+        $result .= _count_added($self, $formatter->{'container'},
                               $formatter->{'container'}->end_line());
       } elsif ($command eq '.' or $command eq '?' or $command eq '!') {
-        $result .= $self->_count_added($formatter->{'container'},
+        $result .= _count_added($self, $formatter->{'container'},
             $formatter->{'container'}->add_next($command, undef, 1));
       } elsif ($command eq ' ' or $command eq "\n" or $command eq "\t") {
-        $result .= $self->_count_added($formatter->{'container'}, 
+        $result .= _count_added($self, $formatter->{'container'}, 
             $formatter->{'container'}->add_next($no_brace_commands{$command}));
       } else {
-        $result .= $self->_count_added($formatter->{'container'}, 
+        $result .= _count_added($self, $formatter->{'container'}, 
             $formatter->{'container'}->add_text($no_brace_commands{$command}));
       }
       return $result;
@@ -1691,19 +1741,19 @@ sub _convert($$)
                              $self->{'convert_text_options'});
       }
       if ($punctuation_no_arg_commands{$command}) {
-        $result .= $self->_count_added($formatter->{'container'},
+        $result .= _count_added($self, $formatter->{'container'},
                     $formatter->{'container'}->add_next($text, undef, 1));
       } elsif ($command eq 'tie') {
         $formatter->{'w'}++;
-        $result .= $self->_count_added($formatter->{'container'},
-            $formatter->{'container'}->set_space_protection(1,1))
+        $result .= _count_added($self, $formatter->{'container'},
+            $formatter->{'container'}->set_space_protection(1,undef))
           if ($formatter->{'w'} == 1);
-        $result .= $self->_count_added($formatter->{'container'}, 
+        $result .= _count_added($self, $formatter->{'container'}, 
                        $formatter->{'container'}->add_text($text,
                                                            $lower_case_text)); 
         $formatter->{'w'}--;
-        $result .= $self->_count_added($formatter->{'container'},
-            $formatter->{'container'}->set_space_protection(0,0))
+        $result .= _count_added($self, $formatter->{'container'},
+            $formatter->{'container'}->set_space_protection(0,undef))
           if ($formatter->{'w'} == 0);
       } else {
         # This is to have @TeX{}, for example, be considered as tex
@@ -1711,7 +1761,7 @@ sub _convert($$)
         if (!$letter_no_arg_commands{$command}) {
           $lower_case_text = lc($text);
         }
-        $result .= $self->_count_added($formatter->{'container'}, 
+        $result .= _count_added($self, $formatter->{'container'}, 
                        $formatter->{'container'}->add_text($text,
                                                            $lower_case_text)); 
         if ($command eq 'dots') {
@@ -1740,7 +1790,7 @@ sub _convert($$)
         $accented_text_lower_case
          = Texinfo::Convert::Text::text_accents($root, $encoding);
       }
-      $result .= $self->_count_added($formatter->{'container'},
+      $result .= _count_added($self, $formatter->{'container'},
          $formatter->{'container'}->add_text($accented_text, 
                                              $accented_text_lower_case));
       # in case the text added ends with punctuation.  
@@ -1777,8 +1827,8 @@ sub _convert($$)
       }
       if ($command eq 'w') {
         $formatter->{'w'}++;
-        $result .= $self->_count_added($formatter->{'container'},
-            $formatter->{'container'}->set_space_protection(1,1))
+        $result .= _count_added($self, $formatter->{'container'},
+            $formatter->{'container'}->set_space_protection(1,undef))
           if ($formatter->{'w'} == 1);
       }
       my ($text_before, $text_after);
@@ -1800,7 +1850,7 @@ sub _convert($$)
       if ($non_quoted_commands_when_nested{$command}) {
         $formatter->{'font_type_stack'}->[-1]->{'code_command'}++;
       }
-      $result .= $self->_count_added($formatter->{'container'},
+      $result .= _count_added($self, $formatter->{'container'},
                $formatter->{'container'}->add_next($text_before, 
                                                    undef, undef, 1))
          if ($text_before ne '');
@@ -1817,14 +1867,14 @@ sub _convert($$)
                            $root->{'line_nr'});
         }
       }
-      $result .= $self->_count_added($formatter->{'container'},
+      $result .= _count_added($self, $formatter->{'container'},
                $formatter->{'container'}->add_next($text_after,
                                                    undef, undef, 1))
          if ($text_after ne '');
       if ($command eq 'w') {
         $formatter->{'w'}--;
-        $result .= $self->_count_added($formatter->{'container'},
-            $formatter->{'container'}->set_space_protection(0,0))
+        $result .= _count_added($self, $formatter->{'container'},
+            $formatter->{'container'}->set_space_protection(0,undef))
           if ($formatter->{'w'} == 0);
       }
       if ($code_style_commands{$command}) {
@@ -1856,11 +1906,11 @@ sub _convert($$)
       }
       return $result;
     } elsif ($root->{'cmdname'} eq 'image') {
-      $result = $self->_count_added($formatter->{'container'},
+      $result = _count_added($self, $formatter->{'container'},
                    $formatter->{'container'}->add_pending_word(1));
       my ($image, $lines_count) = $self->_image($root);
-      $self->_add_lines_count($lines_count);
-      $self->_add_text_count($image);
+      _add_lines_count($self, $lines_count);
+      _add_text_count($self, $image);
       if ($image ne '' and $formatter->{'type'} ne 'paragraph') {
         $self->{'empty_lines_count'} = 0;
       }
@@ -1936,7 +1986,7 @@ sub _convert($$)
       if (!$self->{'in_copying_header'}) {
         $self->_error_outside_of_any_node($root);
       }
-      $result .= $self->_count_added($formatter->{'container'},
+      $result .= _count_added($self, $formatter->{'container'},
            $formatter->{'container'}->add_next("($formatted_footnote_number)", 
                                                   undef, undef, 1));
       if ($self->get_conf('footnotestyle') eq 'separate' and $self->{'node'}) {
@@ -1951,7 +2001,7 @@ sub _convert($$)
       }
       return $result;
     } elsif ($command eq 'anchor') {
-      $result = $self->_count_added($formatter->{'container'},
+      $result = _count_added($self, $formatter->{'container'},
                    $formatter->{'container'}->add_pending_word());
       $result .= $self->_anchor($root);
       return $result;
@@ -1988,6 +2038,20 @@ sub _convert($$)
           $args[3] = $args[2];
           $args[2] = undef;
         }
+
+        # Treat cross-reference commands in a multitable cell as if they
+        # were surrounded by @w{ ... }, so the output will not be split across
+        # lines, leading text from other columns appearing to be part of the
+        # cross-reference.
+        my $in_multitable = 0;
+        if ($self->{'document_context'}->[-1]->{'in_multitable'}) {
+          $in_multitable = 1;
+          $formatter->{'w'}++;
+          $result .= _count_added($self, $formatter->{'container'},
+            $formatter->{'container'}->set_space_protection(1,undef))
+          if ($formatter->{'w'} == 1);
+        }
+
         if ($command eq 'xref') {
           $result = $self->_convert({'contents' => [{'text' => '*Note '}]});
         } else {
@@ -2087,6 +2151,13 @@ sub _convert($$)
             unshift @{$self->{'current_contents'}->[-1]}, @added;
           }
         }
+
+        if ($in_multitable) {
+          $formatter->{'w'}--;
+          $result .= _count_added($self, $formatter->{'container'},
+              $formatter->{'container'}->set_space_protection(0,undef))
+            if ($formatter->{'w'} == 0);
+        }
         return $result;
       }
       return '';
@@ -2154,11 +2225,65 @@ sub _convert($$)
       pop @{$self->{'count_context'}};
       $result = Texinfo::Convert::Text::heading({'level' => 0, 
         'cmdname' => 'titlefont'}, $result, $self, 
-        $self->get_conf('NUMBER_SECTIONS'));
+        $self->get_conf('NUMBER_SECTIONS'),
+        ($self->{'format_context'}->[-1]->{'indent_level'}) * $indent_length);
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
-      $self->_add_text_count($result);
-      $self->_add_lines_count(2);
+      _add_text_count($self, $result);
+      _add_lines_count($self, 2);
       return $result;
+
+    } elsif ($command eq 'U') {
+      my $arg = $root->{'extra'}->{'brace_command_contents'}
+                ->[0]->[0]->{'text'};
+      if (defined($arg) && $arg) {
+        # The general idea is to output UTF-8 if that has been
+        # explicitly given as the encoding, else simple ASCII.
+        # 
+        # Syntactic checks on the value were already done in Parser.pm,
+        # but we have one more thing to test: since this is the one
+        # place where we might output actual UTF-8 binary bytes, we have
+        # to check that chr(hex($arg)) is valid.  Perl gives a warning
+        # and will not output UTF-8 for Unicode non-characters such as
+        # U+10FFFF.  In this case, silently fall back to plain text, on
+        # the theory that the user wants something.
+        # 
+        # Having an option to output binary bytes nevertheless is
+        # possible, but seems unlikely to be practically useful, so skip
+        # it until it gets requested.
+        my $res;
+        if ($self->{'to_utf8'}) {
+          # The warning about non-characters is only given when the code
+          # point is attempted to be output, not just manipulated.
+          # http://stackoverflow.com/questions/5127725/how-could-i-catch-an-unicode-non-character-warning
+          #
+          # Therefore, we have to try to output it within an eval.
+          # Since opening /dev/null or a temporary file means
+          # more system-dependent checks, use a string as our
+          # filehandle; this was introduced ca.2000, which should be old
+          # enough.  We hope.
+          eval {
+            use warnings FATAL => qw(all);
+            my ($fh, $string);
+            open($fh, ">", \$string) || die "open(U string eval) failed: $!";
+            binmode($fh, ":utf8") || die "binmode(U string eval) failed: $!";
+            print $fh chr(hex("$arg"));
+          };
+          if ($@) {
+            warn "\@U chr(hex($arg)) eval failed: $@\n" if ($self->{'DEBUG'});
+            $res = "U+$arg";       # chr won't work
+          } else {
+            $res = chr(hex($arg)); # ok to call chr
+          }
+        } else {
+          $res = "U+$arg";  # not outputting UTF-8
+        }
+        $result .= _count_added($self, $formatter->{'container'}, 
+                   $formatter->{'container'}->add_text($res, $res)); 
+      } else {
+        $result = '';  # arg was not defined
+      }
+      return $result;
+
     } elsif ($command eq 'value') {
       my $expansion = $self->gdt('@{No value for `{value}\'@}', 
                                     {'value' => $root->{'type'}});
@@ -2187,9 +2312,9 @@ sub _convert($$)
           or $root->{'cmdname'} eq 'float') {
         if ($self->{'formatters'}->[-1]->{'type'} eq 'paragraph'
             and $format_raw_commands{$root->{'cmdname'}}) {
-          $result .= $self->_count_added($formatter->{'container'},
+          $result .= _count_added($self, $formatter->{'container'},
                               $formatter->{'container'}->add_pending_word(1));
-          $result .= $self->_count_added($formatter->{'container'},
+          $result .= _count_added($self, $formatter->{'container'},
                               $formatter->{'container'}->end_line());
         }
         push @{$self->{'context'}}, $root->{'cmdname'};
@@ -2198,9 +2323,9 @@ sub _convert($$)
       } elsif ($raw_commands{$root->{'cmdname'}}) {
         if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
           # reuse the current formatter if not in top level
-          $result .= $self->_count_added($formatter->{'container'},
+          $result .= _count_added($self, $formatter->{'container'},
                               $formatter->{'container'}->add_pending_word(1));
-          $result .= $self->_count_added($formatter->{'container'},
+          $result .= _count_added($self, $formatter->{'container'},
                               $formatter->{'container'}->end_line());
         } else {
           # if in top level, the raw block command is turned into a 
@@ -2269,8 +2394,9 @@ sub _convert($$)
         $self->{'format_context'}->[-1]->{'columns_size'} = $columnsize;
         $self->{'format_context'}->[-1]->{'row_empty_lines_count'} 
           = $self->{'empty_lines_count'};
+        $self->{'document_context'}->[-1]->{'in_multitable'}++;
       } elsif ($root->{'cmdname'} eq 'float') {
-        $result .= $self->_add_newline_if_needed();
+        $result .= _add_newline_if_needed($self);
         if ($root->{'extra'} and $root->{'extra'}->{'normalized'}) {
           $result .= $self->_anchor($root);
         }
@@ -2289,8 +2415,8 @@ sub _convert($$)
         if ($contents ne '') {
           $contents .= "\n";
           $self->{'empty_lines_count'} = 1;
-          $self->_add_text_count($contents);
-          $self->_add_lines_count($lines_count+1);
+          _add_text_count($self, $contents);
+          _add_lines_count($self, $lines_count+1);
         }
         $self->{'setcontentsaftertitlepage_done'} = 1;
         $result .= $contents;
@@ -2304,8 +2430,8 @@ sub _convert($$)
         if ($contents ne '') {
           $contents .= "\n";
           $self->{'empty_lines_count'} = 1;
-          $self->_add_text_count($contents);
-          $self->_add_lines_count($lines_count+1);
+          _add_text_count($self, $contents);
+          _add_lines_count($self, $lines_count+1);
         }
 
         $self->{'setshortcontentsaftertitlepage_done'} = 1;
@@ -2334,15 +2460,17 @@ sub _convert($$)
         # @* leads to an end of line, underlying appears on the line below
         # over one line
         my $heading_underlined = 
-             Texinfo::Convert::Text::heading ($root, $heading, $self,
-                                              $self->get_conf('NUMBER_SECTIONS'));
-        $result .= $self->_add_newline_if_needed();
+             Texinfo::Convert::Text::heading($root, $heading, $self,
+                                             $self->get_conf('NUMBER_SECTIONS'),
+                           ($self->{'format_context'}->[-1]->{'indent_level'})
+                                           * $indent_length);
+        $result .= _add_newline_if_needed($self);
         $self->{'empty_lines_count'} = 0 unless ($heading_underlined eq '');
-        $self->_add_text_count($heading_underlined);
+        _add_text_count($self, $heading_underlined);
         $result .= $heading_underlined;
         if ($heading_underlined ne '') {
-          $self->_add_lines_count(2);
-          $result .= $self->_add_newline_if_needed();
+          _add_lines_count($self, 2);
+          $result .= _add_newline_if_needed($self);
         }
       }
       $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
@@ -2374,7 +2502,7 @@ sub _convert($$)
                  + $item_indent_format_length{$root->{'parent'}->{'cmdname'}}});
       push @{$self->{'formatters'}}, $line;
       if ($root->{'parent'}->{'cmdname'} eq 'enumerate') {
-        $result = $self->_count_added($line->{'container'},
+        $result = _count_added($self, $line->{'container'},
             $line->{'container'}->add_next(
                Texinfo::Common::enumerate_item_representation(
                  $root->{'parent'}->{'extra'}->{'enumerate_specification'},
@@ -2388,7 +2516,7 @@ sub _convert($$)
               { 'text' => ' ' }]
           });
       }
-      $result .= $self->_count_added($line->{'container'}, 
+      $result .= _count_added($self, $line->{'container'}, 
                                      $line->{'container'}->end());
       print STDERR "  $root->{'parent'}->{'cmdname'}($root->{'extra'}->{'item_number'}) -> |$result|\n" 
          if ($self->{'debug'});
@@ -2544,15 +2672,15 @@ sub _convert($$)
         pop @{$self->{'count_context'}};
       }
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
-      $self->_add_text_count($result);
-      $self->_add_lines_count($lines_count);
+      _add_text_count($self, $result);
+      _add_lines_count($self, $lines_count);
       return $result;
     } elsif ($root->{'cmdname'} eq 'sp') {
       if ($root->{'extra'}->{'misc_args'}->[0]) {
         # this useless copy avoids perl changing the type to integer!
         my $sp_nr = $root->{'extra'}->{'misc_args'}->[0];
         for (my $i = 0; $i < $sp_nr; $i++) {
-          $result .= $self->_count_added($formatter->{'container'},
+          $result .= _count_added($self, $formatter->{'container'},
                 $formatter->{'container'}->end_line());
         }
         
@@ -2568,8 +2696,8 @@ sub _convert($$)
         ($result, $lines_count) 
             = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
                               'contents');
-        $self->_add_lines_count($lines_count);
-        $self->_add_text_count($result);
+        _add_lines_count($self, $lines_count);
+        _add_text_count($self, $result);
       }
       return $result;
     } elsif ($root->{'cmdname'} eq 'shortcontents' 
@@ -2581,8 +2709,8 @@ sub _convert($$)
         ($result, $lines_count) 
               = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
                               'shortcontents');
-        $self->_add_lines_count($lines_count);
-        $self->_add_text_count($result);
+        _add_lines_count($self, $lines_count);
+        _add_text_count($self, $result);
       }
       return $result;
     # all the @-commands that have an information for the formatting, like
@@ -2822,7 +2950,7 @@ sub _convert($$)
         push @{$self->{'formatters'}}, $def_paragraph;
 
         $result .= $self->_convert({'type' => '_code', 'contents' => [$tree]});
-        $result .= $self->_count_added($def_paragraph->{'container'},
+        $result .= _count_added($self, $def_paragraph->{'container'},
                                       $def_paragraph->{'container'}->end());
 
         pop @{$self->{'formatters'}};
@@ -2893,7 +3021,7 @@ sub _convert($$)
       $formatter->{'container'}->set_space_protection(undef,
         undef,undef,1);
     } elsif ($root->{'type'} eq 'bracketed') {
-      $result .= $self->_count_added($formatter->{'container'}, 
+      $result .= _count_added($self, $formatter->{'container'}, 
                    $formatter->{'container'}->add_text('{'));
     }
   }
@@ -2933,7 +3061,7 @@ sub _convert($$)
       $formatter->{'container'}->set_space_protection(undef,
         undef, undef, $frenchspacing);
     } elsif ($root->{'type'} eq 'bracketed') {
-      $result .= $self->_count_added($formatter->{'container'}, 
+      $result .= _count_added($self, $formatter->{'container'}, 
                                      $formatter->{'container'}->add_text('}'));
     } elsif ($root->{'type'} eq 'row') {
       my @cell_beginnings;
@@ -3057,7 +3185,7 @@ sub _convert($$)
   }
   # close paragraphs and preformatted
   if ($paragraph) {
-    $result .= $self->_count_added($paragraph->{'container'},
+    $result .= _count_added($self, $paragraph->{'container'},
                                    $paragraph->{'container'}->end());
     if ($self->{'context'}->[-1] eq 'flushright') {
       $result = $self->_align_environment($result, 
@@ -3066,7 +3194,7 @@ sub _convert($$)
     pop @{$self->{'formatters'}};
     delete $self->{'text_element_context'}->[-1]->{'counter'};
   } elsif ($preformatted) {
-    $result .= $self->_count_added($preformatted->{'container'},
+    $result .= _count_added($self, $preformatted->{'container'},
                                    $preformatted->{'container'}->end());
     if ($result ne '') {
       $result = $self->ensure_end_of_line($result);
@@ -3098,7 +3226,7 @@ sub _convert($$)
                or defined($root->{'number'})
                or $root->{'extra'}->{'caption'} or $root->{'extra'}->{'shortcaption'})) {
         
-        $result .= $self->_add_newline_if_needed();
+        $result .= _add_newline_if_needed($self);
         my ($caption, $prepended) = Texinfo::Common::float_name_caption($self,
                                                                         $root);
         if ($prepended) {
@@ -3116,16 +3244,18 @@ sub _convert($$)
           $result .= $self->_convert($tree);
         }
       }
-    } elsif ($root->{'cmdname'} eq 'quotation' and $root->{'extra'} 
-             and $root->{'extra'}->{'authors'}) {
+    } elsif (($root->{'cmdname'} eq 'quotation' 
+               or $root->{'cmdname'} eq 'smallquotation')
+             and $root->{'extra'} and $root->{'extra'}->{'authors'}) {
       foreach my $author (@{$root->{'extra'}->{'authors'}}) {
         $result .= $self->_convert(
                  $self->gdt("\@center --- \@emph{{author}}\n",
                     {'author' => $author->{'extra'}->{'misc_content'}}));
       }
+    } elsif (($root->{'cmdname'} eq 'multitable')) {
+      $self->{'document_context'}->[-1]->{'in_multitable'}--;
     }
-
-  
+ 
     # close the contexts and register the cells
     if ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}}
         or $root->{'cmdname'} eq 'float') {
@@ -3205,6 +3335,7 @@ sub indent_one_menu_descriptions($$)
   }
 }
 
+# FIXME document
 sub indent_menu_descriptions($;$)
 {
   my $self = shift;
@@ -3260,6 +3391,7 @@ sub indent_menu_descriptions($;$)
 1;
 
 __END__
+# $Id: Plaintext.pm 6234 2015-05-01 12:34:52Z gavin $
 # Automatically generated from maintain/template.pod
 
 =head1 NAME
@@ -3272,6 +3404,8 @@ Texinfo::Convert::Plaintext - Convert Texinfo tree to Plaintext
     = Texinfo::Convert::Plaintext->converter({'parser' => $parser});
 
   $converter->output($tree);
+  $converter->convert($tree);
+  $converter->convert_tree($tree);
 
 =head1 DESCRIPTION
 
@@ -3283,7 +3417,7 @@ Texinfo::Convert::Plaintext converts a Texinfo tree to Plaintext.
 
 =item $converter = Texinfo::Convert::Plaintext->converter($options)
 
-Initialize an Plaintext converter.  
+Initialize converter from Texinfo to Plaintext.  
 
 The I<$options> hash reference holds options for the converter.  In
 this option hash reference a parser object may be associated with the 
@@ -3306,14 +3440,8 @@ the resulting output.
 =item $result = $converter->convert_tree($tree)
 
 Convert a Texinfo tree portion I<$tree> and return the resulting 
-output.  This function do not try to output a full document but only
-portions of document.  For a full document use C<convert>.
-
-=item $result = $converter->output_internal_links()
-
-Returns text representing the links in the document.  At present the format 
-should follow the C<--internal-links> option of texi2any/makeinfo specification
-and this is only relevant for HTML.
+output.  This function does not try to output a full document but only
+portions.  For a full document use C<convert>.
 
 =back
 
@@ -3323,7 +3451,7 @@ Patrice Dumas, E<lt>pertusus@free.frE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2012 Free Software Foundation, Inc.
+Copyright 2015 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

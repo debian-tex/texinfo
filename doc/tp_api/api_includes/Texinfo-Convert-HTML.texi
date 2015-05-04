@@ -23,6 +23,9 @@ Texinfo::Convert::HTML - Convert Texinfo tree to HTML
     = Texinfo::Convert::HTML->converter({'parser' => $parser});
 
   $converter->output($tree);
+  $converter->convert($tree);
+  $converter->convert_tree($tree);
+  $converter->output_internal_links(); # HTML only
 @end verbatim
 
 @node Texinfo::Convert::HTML DESCRIPTION
@@ -37,7 +40,7 @@ Texinfo::Convert::HTML converts a Texinfo tree to HTML.
 @item $converter = Texinfo::Convert::HTML->converter($options)
 @anchor{Texinfo::Convert::HTML $converter = Texinfo::Convert::HTML->converter($options)}
 
-Initialize an HTML converter.  
+Initialize converter from Texinfo to HTML.  
 
 The @emph{$options} hash reference holds options for the converter.  In
 this option hash reference a parser object may be associated with the 
@@ -63,15 +66,15 @@ the resulting output.
 @anchor{Texinfo::Convert::HTML $result = $converter->convert_tree($tree)}
 
 Convert a Texinfo tree portion @emph{$tree} and return the resulting 
-output.  This function do not try to output a full document but only
-portions of document.  For a full document use @code{convert}.
+output.  This function does not try to output a full document but only
+portions.  For a full document use @code{convert}.
 
 @item $result = $converter->output_internal_links()
 @anchor{Texinfo::Convert::HTML $result = $converter->output_internal_links()}
 
-Returns text representing the links in the document.  At present the format 
-should follow the @code{--internal-links} option of texi2any/makeinfo specification
-and this is only relevant for HTML.
+Returns text representing the links in the document.  The format should
+follow the @code{--internal-links} option of the texi2any/makeinfo
+specification.  This is only supported in (and relevant for) HTML.
 
 @end table
 
@@ -83,7 +86,7 @@ Patrice Dumas, <pertusus@@free.fr>
 @node Texinfo::Convert::HTML COPYRIGHT AND LICENSE
 @section COPYRIGHT AND LICENSE
 
-Copyright 2012 Free Software Foundation, Inc.
+Copyright 2015 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

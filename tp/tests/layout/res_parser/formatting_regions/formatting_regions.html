@@ -41,6 +41,8 @@ kbd: ``simple-double-three-four-''
 @,c@"u c,u" 
 
 
+@U{0075} 0075
+
 @* 
 
 @ followed by a space
@@ -520,6 +522,12 @@ Invalid use of @':
 @dotless{-a} -a
 @dotless{a} a
 
+@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg z
+@U{abc}, with <4 hex digits abc
+@U{FFFFFFFFFFFFFF}, value much too large FFFFFFFFFFFFFF
+@U{110000}, value just beyond Unicode 110000
+
 @TeX, but without brace TeX@# #
 
 @w{-a} -a
@@ -594,16 +602,16 @@ truc: after a deff item
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -612,10 +620,10 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nocodebreak {white-space: nowrap}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: serif; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -623,7 +631,7 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <h1>title &ndash;a</h1>
 <h3 align="right">formatting subtitle &ndash;a</h3>
 <h3 align="right">subtitle 2 &ndash;a</h3>
@@ -668,6 +676,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 @,{@&rsquo;C} &#262;,
 @,c &ccedil;
 @,c@&quot;u &ccedil;&uuml; <br>
+</p>
+<p>@U{0075} &#x0075;
 </p>
 <p>@* <br>
 @ followed by a space
@@ -1274,6 +1284,12 @@ html ''
 <code>@dotless{--a}</code> &ndash;a
 <code>@dotless{a}</code> a
 </p>
+<p>@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg &#xz;
+@U{abc}, with &lt;4 hex digits &#xabc;
+@U{FFFFFFFFFFFFFF}, value much too large &#xFFFFFFFFFFFFFF;
+@U{110000}, value just beyond Unicode &#x110000;
+</p>
 <p>@TeX, but without brace TeX<code>@#</code> #
 </p>
 <p><code>@w{--a}</code> &ndash;a<!-- /@w -->
@@ -1380,6 +1396,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 @,{@&rsquo;C} &#262;,
 @,c &ccedil;
 @,c@&quot;u &ccedil;&uuml; <br>
+</p>
+<p>@U{0075} &#x0075;
 </p>
 <p>@* <br>
 @ followed by a space
@@ -1986,6 +2004,12 @@ html ''
 <code>@dotless{--a}</code> &ndash;a
 <code>@dotless{a}</code> a
 </p>
+<p>@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg &#xz;
+@U{abc}, with &lt;4 hex digits &#xabc;
+@U{FFFFFFFFFFFFFF}, value much too large &#xFFFFFFFFFFFFFF;
+@U{110000}, value just beyond Unicode &#x110000;
+</p>
 <p>@TeX, but without brace TeX<code>@#</code> #
 </p>
 <p><code>@w{--a}</code> &ndash;a<!-- /@w -->
@@ -2129,6 +2153,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 @,{@&rsquo;C} &#262;,
 @,c &ccedil;
 @,c@&quot;u &ccedil;&uuml; <br>
+</p>
+<p>@U{0075} &#x0075;
 </p>
 <p>@* <br>
 @ followed by a space
@@ -2735,6 +2761,12 @@ html ''
 <code>@dotless{--a}</code> &ndash;a
 <code>@dotless{a}</code> a
 </p>
+<p>@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg &#xz;
+@U{abc}, with &lt;4 hex digits &#xabc;
+@U{FFFFFFFFFFFFFF}, value much too large &#xFFFFFFFFFFFFFF;
+@U{110000}, value just beyond Unicode &#x110000;
+</p>
 <p>@TeX, but without brace TeX<code>@#</code> #
 </p>
 <p><code>@w{--a}</code> &ndash;a<!-- /@w -->
@@ -2844,6 +2876,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 @,c &ccedil;
 @,c@&quot;u &ccedil;&uuml; 
 
+
+@U{0075} &#x0075;
 
 @* 
 
@@ -3453,6 +3487,12 @@ Invalid use of @':
 <code>@dotless{--a}</code> --a
 <code>@dotless{a}</code> a
 
+@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg &#xz;
+@U{abc}, with &lt;4 hex digits &#xabc;
+@U{FFFFFFFFFFFFFF}, value much too large &#xFFFFFFFFFFFFFF;
+@U{110000}, value just beyond Unicode &#x110000;
+
 @TeX, but without brace TeX<code>@#</code> #
 
 <code>@w{--a}</code> --a<!-- /@w -->
@@ -3560,6 +3600,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 @,{@&rsquo;C} &#262;,
 @,c &ccedil;
 @,c@&quot;u &ccedil;&uuml; <br>
+</p>
+<p>@U{0075} &#x0075;
 </p>
 <p>@* <br>
 @ followed by a space
@@ -4165,6 +4207,12 @@ html ''
 @dotless{ij} ij
 <code>@dotless{--a}</code> &ndash;a
 <code>@dotless{a}</code> a
+</p>
+<p>@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg &#xz;
+@U{abc}, with &lt;4 hex digits &#xabc;
+@U{FFFFFFFFFFFFFF}, value much too large &#xFFFFFFFFFFFFFF;
+@U{110000}, value just beyond Unicode &#x110000;
 </p>
 <p>@TeX, but without brace TeX<code>@#</code> #
 </p>

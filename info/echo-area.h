@@ -1,7 +1,7 @@
 /* echo-area.h -- Functions used in reading information from the echo area.
-   $Id: echo-area.h 5337 2013-08-22 17:54:06Z karl $
+   $Id: echo-area.h 5912 2014-11-07 10:49:13Z gavin $
 
-   Copyright 1993, 1997, 2004, 2007, 2008, 2011, 2013
+   Copyright 1993, 1997, 2004, 2007, 2008, 2011, 2013, 2014
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -30,53 +30,59 @@ extern int echo_area_is_active, info_aborted_echo_area;
    killed some text. */
 extern int echo_area_last_command_was_kill;
 
+extern REFERENCE **echo_area_completion_items;
+
 extern void inform_in_echo_area (const char *message);
 extern void echo_area_inform_of_deleted_window (WINDOW *window);
 extern void echo_area_prep_read (void);
-extern VFunction *ea_last_executed_command;
-extern char * info_read_completing_internal (WINDOW *window, const char *prompt,
-    REFERENCE **completions, int force);
+
+typedef int (*reference_bool_fn) (REFERENCE *);
+
+extern char *info_read_completing_internal (char *prompt,
+    REFERENCE **completions, int force, reference_bool_fn exclude);
 
 /* Read a line of text in the echo area.  Return a malloc ()'ed string,
-   or NULL if the user aborted out of this read.  WINDOW is the currently
-   active window, so that we can restore it when we need to.  PROMPT, if
+   or NULL if the user aborted out of this read.  PROMPT, if
    non-null, is a prompt to print before reading the line. */
-extern char *info_read_in_echo_area (WINDOW *window, const char *prompt);
+extern char *info_read_in_echo_area (char *prompt);
 
-/* Read a line in the echo area with completion over COMPLETIONS.
-   Takes arguments of WINDOW, PROMPT, and COMPLETIONS, a REFERENCE **. */
-char *info_read_completing_in_echo_area (WINDOW *window,
-    const char *prompt, REFERENCE **completions);
+/* Read a line in the echo area with completion over COMPLETIONS. */
+char *info_read_completing_in_echo_area (char *prompt,
+                                         REFERENCE **completions);
 
 /* Read a line in the echo area allowing completion over COMPLETIONS, but
-   not requiring it.  Takes arguments of WINDOW, PROMPT, and COMPLETIONS,
-   a REFERENCE **. */
-extern char *info_read_maybe_completing (WINDOW *window,
-    const char *prompt, REFERENCE **completions);
+   not requiring it. */
+extern char *info_read_maybe_completing (char *prompt,
+                                         REFERENCE **completions);
 
-extern void ea_insert (WINDOW *window, int count, unsigned char key);
-extern void ea_quoted_insert (WINDOW *window, int count, unsigned char key);
-extern void ea_beg_of_line (WINDOW *window, int count, unsigned char key);
-extern void ea_backward (WINDOW *window, int count, unsigned char key);
-extern void ea_delete (WINDOW *window, int count, unsigned char key);
-extern void ea_end_of_line (WINDOW *window, int count, unsigned char key);
-extern void ea_forward (WINDOW *window, int count, unsigned char key);
-extern void ea_abort (WINDOW *window, int count, unsigned char key);
-extern void ea_rubout (WINDOW *window, int count, unsigned char key);
-extern void ea_complete (WINDOW *window, int count, unsigned char key);
-extern void ea_newline (WINDOW *window, int count, unsigned char key);
-extern void ea_kill_line (WINDOW *window, int count, unsigned char key);
-extern void ea_backward_kill_line (WINDOW *window, int count, unsigned char key);
-extern void ea_transpose_chars (WINDOW *window, int count, unsigned char key);
-extern void ea_yank (WINDOW *window, int count, unsigned char key);
-extern void ea_tab_insert (WINDOW *window, int count, unsigned char key);
-extern void ea_possible_completions (WINDOW *window, int count, unsigned char key);
-extern void ea_backward_word (WINDOW *window, int count, unsigned char key);
-extern void ea_kill_word (WINDOW *window, int count, unsigned char key);
-extern void ea_forward_word (WINDOW *window, int count, unsigned char key);
-extern void ea_yank_pop (WINDOW *window, int count, unsigned char key);
-extern void ea_backward_kill_word (WINDOW *window, int count, unsigned char key);
-extern void ea_scroll_completions_window (WINDOW *window, int count,
-    unsigned char key);
+/* Read a line in the echo area with completion over COMPLETIONS, using
+   EXCLUDE to exclude items from the completion list. */
+char *
+info_read_completing_in_echo_area_with_exclusions (char *prompt,
+    REFERENCE **completions, reference_bool_fn exclude);
+
+extern void ea_insert (WINDOW *window, int count, int key);
+extern void ea_quoted_insert (WINDOW *window, int count);
+extern void ea_beg_of_line (WINDOW *window, int count);
+extern void ea_backward (WINDOW *window, int count);
+extern void ea_delete (WINDOW *window, int count);
+extern void ea_end_of_line (WINDOW *window, int count);
+extern void ea_forward (WINDOW *window, int count);
+extern void ea_abort (WINDOW *window, int count);
+extern void ea_rubout (WINDOW *window, int count);
+extern void ea_complete (WINDOW *window, int count);
+extern void ea_newline (WINDOW *window, int count);
+extern void ea_kill_line (WINDOW *window, int count);
+extern void ea_backward_kill_line (WINDOW *window, int count);
+extern void ea_transpose_chars (WINDOW *window, int count);
+extern void ea_yank (WINDOW *window, int count);
+extern void ea_tab_insert (WINDOW *window, int count);
+extern void ea_possible_completions (WINDOW *window, int count);
+extern void ea_backward_word (WINDOW *window, int count);
+extern void ea_kill_word (WINDOW *window, int count);
+extern void ea_forward_word (WINDOW *window, int count);
+extern void ea_yank_pop (WINDOW *window, int count);
+extern void ea_backward_kill_word (WINDOW *window, int count);
+extern void ea_scroll_completions_window (WINDOW *window, int count);
 
 #endif /* not INFO_ECHO_AREA_H */

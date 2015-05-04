@@ -1,0 +1,4025 @@
+# Translation of Texinfo
+# Copyright (C) 2015 Free Software Foundation, Inc.
+# This file is distributed under the same license as the texinfo package.
+# Walter Garcia-Fontes <walter.garcia@upf.edu>, 2015
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: texinfo 5.9.90\n"
+"Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
+"POT-Creation-Date: 2015-05-03 16:29-0700\n"
+"PO-Revision-Date: 2015-02-26 19:36+0100\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team: Catalan <ca@dodds.net>\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: gnulib/lib/error.c:191
+msgid "Unknown system error"
+msgstr "Error desconegut de sistema"
+
+#: gnulib/lib/getopt.c:575 gnulib/lib/getopt.c:604
+#, c-format
+msgid "%s: option '%s' is ambiguous; possibilities:"
+msgstr "%s: l'opció '%s' és ambigua; possibilitats:"
+
+#: gnulib/lib/getopt.c:619
+#, c-format
+msgid "%s: option '%s' is ambiguous\n"
+msgstr "%s: l'opció '%s' és ambigua\n"
+
+#: gnulib/lib/getopt.c:654 gnulib/lib/getopt.c:658
+#, c-format
+msgid "%s: option '--%s' doesn't allow an argument\n"
+msgstr "%s: l'opció '--%s' no permet un argument\n"
+
+#: gnulib/lib/getopt.c:667 gnulib/lib/getopt.c:672
+#, c-format
+msgid "%s: option '%c%s' doesn't allow an argument\n"
+msgstr "%s: l'opció '%c%s' no permet un argument\n"
+
+#: gnulib/lib/getopt.c:715 gnulib/lib/getopt.c:734
+#, c-format
+msgid "%s: option '--%s' requires an argument\n"
+msgstr "%s: l'opció '--%s' requereix un argument\n"
+
+#: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
+#, c-format
+msgid "%s: unrecognized option '--%s'\n"
+msgstr "%s: opció no reconeguda '--%s'\n"
+
+#: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
+#, c-format
+msgid "%s: unrecognized option '%c%s'\n"
+msgstr "%s: opció no reconeguda '%c%s'\n"
+
+#: gnulib/lib/getopt.c:835 gnulib/lib/getopt.c:838
+#, c-format
+msgid "%s: invalid option -- '%c'\n"
+msgstr "%s: opció no vàlida -- '%c'\n"
+
+#: gnulib/lib/getopt.c:891 gnulib/lib/getopt.c:908 gnulib/lib/getopt.c:1118
+#: gnulib/lib/getopt.c:1136
+#, c-format
+msgid "%s: option requires an argument -- '%c'\n"
+msgstr "%s: l'opció requereix un argument -- '%c'\n"
+
+#: gnulib/lib/getopt.c:964 gnulib/lib/getopt.c:980
+#, c-format
+msgid "%s: option '-W %s' is ambiguous\n"
+msgstr "%s: l'opció '-W %s' és ambigua\n"
+
+#: gnulib/lib/getopt.c:1004 gnulib/lib/getopt.c:1022
+#, c-format
+msgid "%s: option '-W %s' doesn't allow an argument\n"
+msgstr "%s: l'opció '-W %s' no permet un argument\n"
+
+#: gnulib/lib/getopt.c:1043 gnulib/lib/getopt.c:1061
+#, c-format
+msgid "%s: option '-W %s' requires an argument\n"
+msgstr "%s: l'opció '-W %s' requereix un argument\n"
+
+#: gnulib/lib/regcomp.c:131
+msgid "Success"
+msgstr "Èxit"
+
+#: gnulib/lib/regcomp.c:134
+msgid "No match"
+msgstr "No hi ha concordança"
+
+#: gnulib/lib/regcomp.c:137
+msgid "Invalid regular expression"
+msgstr "Expressió regular no vàlida"
+
+#: gnulib/lib/regcomp.c:140
+msgid "Invalid collation character"
+msgstr "Caràcter d'intercalació no vàlid"
+
+#: gnulib/lib/regcomp.c:143
+msgid "Invalid character class name"
+msgstr "Nom de classe de caràcter no vàlid"
+
+#: gnulib/lib/regcomp.c:146
+msgid "Trailing backslash"
+msgstr "Barra inversa al final"
+
+#: gnulib/lib/regcomp.c:149
+msgid "Invalid back reference"
+msgstr "Referència enrere no vàlida"
+
+#: gnulib/lib/regcomp.c:152
+msgid "Unmatched [ or [^"
+msgstr "[ o [^ sense concordància"
+
+#: gnulib/lib/regcomp.c:155
+msgid "Unmatched ( or \\("
+msgstr "( o \\( sense concordància"
+
+#: gnulib/lib/regcomp.c:158
+msgid "Unmatched \\{"
+msgstr "\\{ sense concordància"
+
+#: gnulib/lib/regcomp.c:161
+msgid "Invalid content of \\{\\}"
+msgstr "Contingut no vàlid de \\{\\}"
+
+#: gnulib/lib/regcomp.c:164
+msgid "Invalid range end"
+msgstr "Final no vàlid de rang"
+
+#: gnulib/lib/regcomp.c:167
+msgid "Memory exhausted"
+msgstr "La memòria s'ha exhaurit"
+
+#: gnulib/lib/regcomp.c:170
+msgid "Invalid preceding regular expression"
+msgstr "Expressió regular precedent no vàlida"
+
+#: gnulib/lib/regcomp.c:173
+msgid "Premature end of regular expression"
+msgstr "Final prematur d'expressió regular"
+
+#: gnulib/lib/regcomp.c:176
+msgid "Regular expression too big"
+msgstr "L'expressió regular és massa gran"
+
+#: gnulib/lib/regcomp.c:179
+msgid "Unmatched ) or \\)"
+msgstr ") o \\) sense concordància"
+
+#: gnulib/lib/regcomp.c:707
+msgid "No previous regular expression"
+msgstr "No hi ha una expressió regular prèvia"
+
+#: gnulib/lib/xalloc-die.c:34
+msgid "memory exhausted"
+msgstr "la memòria s'ha exhaurit"
+
+#: info/echo-area.c:299 info/session.c:1327
+msgid "Move forward a character"
+msgstr "Ves un caràcter cap endavant"
+
+#: info/echo-area.c:318 info/session.c:1340
+msgid "Move backward a character"
+msgstr "Ves un caràcter cap endarrere"
+
+#: info/echo-area.c:344
+msgid "Move to the start of this line"
+msgstr "Ves al principi de la línia"
+
+#: info/echo-area.c:349
+msgid "Move to the end of this line"
+msgstr "Ves al final de la línia"
+
+#: info/echo-area.c:357 info/session.c:1355
+msgid "Move forward a word"
+msgstr "Ves endavant una paraula"
+
+#: info/echo-area.c:397 info/session.c:1369
+msgid "Move backward a word"
+msgstr "Ves endarrere una paraula"
+
+#: info/echo-area.c:437
+msgid "Delete the character under the cursor"
+msgstr "Esborra el caràcter a sota del cursor"
+
+#: info/echo-area.c:457
+msgid "Delete the character behind the cursor"
+msgstr "Esborra el caràcter a darrere del cursor"
+
+#: info/echo-area.c:478
+msgid "Cancel or quit operation"
+msgstr "Cancel·la o deixa l'operació"
+
+#: info/echo-area.c:493
+msgid "Accept (or force completion of) this line"
+msgstr "Accepta (o completa de forma forçada) aquesta línia"
+
+#: info/echo-area.c:498
+msgid "Insert next character verbatim"
+msgstr "Insereix el caràcter següent literalment"
+
+#: info/echo-area.c:530
+msgid "Insert a TAB character"
+msgstr "Insereix un caràcter de tabulació"
+
+#: info/echo-area.c:582
+msgid "Transpose characters at point"
+msgstr "Transposa els caràcters en aquest punt"
+
+#: info/echo-area.c:651
+msgid "Yank back the contents of the last kill"
+msgstr "Enganxa un altre cop els continguts de l'última retallada"
+
+#: info/echo-area.c:658
+msgid "Kill ring is empty"
+msgstr "El porta-retalls està buit"
+
+#: info/echo-area.c:671
+msgid "Yank back a previous kill"
+msgstr "Torna a enganxar una retallada prèvia"
+
+#: info/echo-area.c:704
+msgid "Kill to the end of the line"
+msgstr "Retalla fina al final de la línia"
+
+#: info/echo-area.c:717
+msgid "Kill to the beginning of the line"
+msgstr "Retalla fins al principi de la línia"
+
+#: info/echo-area.c:729
+msgid "Kill the word following the cursor"
+msgstr "Retalla la paraula que segueix al cursor"
+
+#: info/echo-area.c:749
+msgid "Kill the word preceding the cursor"
+msgstr "Retalla la paraula que precedeix el cursor"
+
+#: info/echo-area.c:981 info/echo-area.c:1039
+msgid "No completions"
+msgstr "No hi ha elements a completar"
+
+#: info/echo-area.c:983
+msgid "Not complete"
+msgstr "No està complet"
+
+#: info/echo-area.c:1032
+msgid "List possible completions"
+msgstr "Fes una llista de possibles maneres de completar"
+
+#: info/echo-area.c:1043
+msgid "Sole completion"
+msgstr "Única manera de completar"
+
+#: info/echo-area.c:1052
+#, c-format
+msgid "%d completion:\n"
+msgid_plural "%d completions:\n"
+msgstr[0] "%d manera de completar:\n"
+msgstr[1] "%d maneres de completar:\n"
+
+#: info/echo-area.c:1169
+msgid "Insert completion"
+msgstr "Insereix el suggeriment per completar"
+
+#: info/echo-area.c:1271
+#, c-format
+msgid "Building completions..."
+msgstr "S'estan construint les opcions de completar..."
+
+#: info/echo-area.c:1390
+msgid "Scroll the completions window"
+msgstr "Desplaça la finestra de suggeriments de completar"
+
+#: info/filesys.c:91
+#, c-format
+msgid "looking for file \"%s\""
+msgstr "s'està buscant el fitxer \"%s\""
+
+#: info/filesys.c:158
+#, c-format
+msgid "looking for file %s in %s"
+msgstr "s'està buscant el fitxer %s a %s"
+
+#: info/filesys.c:227 info/filesys.c:241 info/filesys.c:262
+#, c-format
+msgid "found file %s"
+msgstr "s'ha trobat el fitxer %s"
+
+#: info/footnotes.c:231
+#, c-format
+msgid "Footnotes could not be displayed"
+msgstr "No s'han pogut mostrar les notes a peu de pàgina"
+
+#: info/footnotes.c:251
+msgid "Show the footnotes associated with this node in another window"
+msgstr ""
+"Mostra les notes a peu de pàgina associades amb aquest node a una altra "
+"finestra"
+
+#: info/footnotes.h:26
+msgid "---------- Footnotes ----------"
+msgstr "---------- Notes a peu de pàgina ----------"
+
+#: info/indices.c:123 info/indices.c:806
+#, c-format
+msgid "Finding index entries..."
+msgstr "S'estan buscant les entrades d'índex..."
+
+#: info/indices.c:206
+msgid "Look up a string in the index for this file"
+msgstr "Busca una cadena de caràcters a l'index per a aquest fitxer"
+
+#: info/indices.c:218 info/indices.c:324 info/indices.c:812
+#, c-format
+msgid "No indices found."
+msgstr "No s'ha trobat cap índex"
+
+#: info/indices.c:222
+msgid "Index entry: "
+msgstr "Entrada d'índex: "
+
+#: info/indices.c:439
+#, c-format
+msgid "Found '%s' in %s. ('\\[next-index-match]' tries to find next.)"
+msgstr ""
+"S'ha trobat `%s' a %s. ('\\[next-index-match]' intenta trobar el següent.)"
+
+#: info/indices.c:449
+msgid ""
+"Go to the next matching index item from the last '\\[index-search]' command"
+msgstr ""
+"Ves al següent element concordant d'element d'índex de l'última ordre `"
+"\\[index-search]'"
+
+#: info/indices.c:460
+#, c-format
+msgid "No previous index search string."
+msgstr "No hi ha una cadena prèvia de caràcters de cerca d'índex"
+
+#: info/indices.c:478
+#, c-format
+msgid "No more index entries containing '%s'."
+msgstr "No hi ha més entrades d'índex que continguin `%s'."
+
+#: info/indices.c:479 info/indices.c:874
+#, c-format
+msgid "No index entries containing '%s'."
+msgstr "No hi ha entrades d'índex que continguin `%s'."
+
+#: info/indices.c:583
+#, c-format
+msgid "Scanning indices of '%s'..."
+msgstr "S'estan explorant els índexs de `%s'..."
+
+#: info/indices.c:636
+msgid "Grovel all known info file's indices for a string and build a menu"
+msgstr ""
+"Arrossega tots els índexs coneguts de fitxers info per a una cadena de "
+"caràcters i construeix un menú"
+
+#: info/indices.c:644 info/indices.c:646
+msgid "Index apropos"
+msgstr "Sobre Índex"
+
+#: info/indices.c:686
+#, c-format
+msgid "Index entries containing '%s':\n"
+msgstr "Entrades d'índex que contenen `%s':\n"
+
+#: info/indices.c:791
+msgid "List all matches of a string in the index"
+msgstr ""
+"Fes una  llista de totes les concordances d'una cadena de caràcters a l'índex"
+
+#: info/indices.c:818 info/indices.c:820
+msgid "Index topic"
+msgstr "Tema d'índex"
+
+#: info/indices.h:40
+#, c-format
+msgid "No available info files have '%s' in their indices."
+msgstr "Cap dels fitxers info disponibles tenen `%s' als seus índexs."
+
+#: info/info-utils.c:897
+#, c-format
+msgid "Error converting file character encoding."
+msgstr ""
+"S'ha produït un error en la conversió la codificació de caràcters del fitxer."
+
+#: info/info.c:223 info/session.c:2699
+#, c-format
+msgid "No menu item '%s' in node '%s'."
+msgstr "No hi ha un element de menú `%s' al node `%s'."
+
+#: info/info.c:316
+#, c-format
+msgid "No file given for node '%s'."
+msgstr "No s'ha donat un fitxer per al node `%s'."
+
+#: info/info.c:365 info/info.c:1110
+#, c-format
+msgid "Cannot find node '%s'."
+msgstr "No es pot trobar el node `%s'."
+
+#: info/info.c:387
+#, c-format
+msgid "No program name given."
+msgstr "No s'ha donat un nom de programa."
+
+#: info/info.c:575
+#, c-format
+msgid "invalid number: %s\n"
+msgstr "número no vàlid: %s\n"
+
+#: info/info.c:755
+#, c-format
+msgid "malformed variable assignment: %s"
+msgstr "Assignació mal format de variable: %s"
+
+#: info/info.c:762 info/infokey.c:537
+#, c-format
+msgid "%s: no such variable"
+msgstr "%s: la variable no existeix"
+
+#: info/info.c:768 info/infokey.c:539
+#, c-format
+msgid "value %s is not valid for variable %s"
+msgstr "el valor %s no és vàlid per a la variable %s"
+
+#: info/info.c:780
+#, c-format
+msgid "Try --help for more information.\n"
+msgstr "Proveu --help per a més informació.\n"
+
+#: info/info.c:802 install-info/install-info.c:2212 tp/texi2any.pl:878
+#, c-format, perl-format
+msgid ""
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
+msgstr ""
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"Llicència GPLv3+: GNU GPL versió 3 o posterior <http://gnu.org/licenses/gpl."
+"html>\n"
+"Això és programari lliure, teniu la llibertat de canviar-lo o redistribuir-"
+"lo.\n"
+"No hi ha CAP GARANTIA, en la mesura que ho permet la llei.\n"
+
+#: info/info.c:960
+#, c-format
+msgid "no index entries found for '%s'\n"
+msgstr "no s'han trobat entrades d'índex per a `%s'\n"
+
+#: info/info.c:1013
+#, c-format
+msgid ""
+"Usage: %s [OPTION]... [MENU-ITEM...]\n"
+"\n"
+"Read documentation in Info format.\n"
+msgstr ""
+"Ús: %s [OPCIÓ]... [ELEMENT-DE-MENÚ...]\n"
+"\n"
+"Llegiu la informació en format Info.\n"
+
+#: info/info.c:1019
+msgid ""
+"Options:\n"
+"  -a, --all                    use all matching manuals.\n"
+"  -k, --apropos=STRING         look up STRING in all indices of all "
+"manuals.\n"
+"  -d, --directory=DIR          add DIR to INFOPATH.\n"
+"      --dribble=FILE           remember user keystrokes in FILENAME.\n"
+"  -f, --file=MANUAL            specify Info manual to visit."
+msgstr ""
+"Options:\n"
+"  -a, --all                    usa tots els manuals concordants.\n"
+"  -k, --apropos=CADENA         busca la CADENA DE CARÂCTERS a tots els índex "
+"de tots els manuals.\n"
+"  -d, --directory=DIR          afegeix DIR a l'INFOPATH\n"
+"      --dribble=FITXER         recorda les pulsacions de tecla d'usuari a "
+"FITXER\n"
+"  -f, --file=MANUAL            especifiqueu al manual INFO a visitar."
+
+#: info/info.c:1027
+msgid ""
+"  -h, --help                   display this help and exit.\n"
+"      --index-search=STRING    go to node pointed by index entry STRING.\n"
+"  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
+"  -o, --output=FILE            output selected nodes to FILE."
+msgstr ""
+"  -h, --help                   mostra aquesta ajuda i surt.\n"
+"      --index-search=CADENA    ves al node apuntat per l'entrada d'índex "
+"CADENA DE CARÂCTERS.\n"
+"  -n, --node=NOMDENODE         especifiqueu els nodes al primer fitxer INFO "
+"visitat.\n"
+"  -o, --output=FITXER          bolca els nodes escollits a FITXER."
+
+#: info/info.c:1033
+msgid ""
+"  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
+"      --no-raw-escapes         output escapes as literal text.\n"
+"      --restore=FILE           read initial keystrokes from FILE.\n"
+"  -O, --show-options, --usage  go to command-line options node."
+msgstr ""
+"  -R, --raw-escapes            bolca les seqüencies d'escapada ANSI \"en brut"
+"\" (predeterminat).\n"
+"      --no-raw-escapes         bolca les seqüencies d'escapada com a text "
+"literal.\n"
+"      --restore=FITXER         llegeix les pulsacions de tecla originals des "
+"de FITXER.\n"
+"  -O, --show-options, --usage  ves al node d'opcions de línia d'ordres."
+
+#: info/info.c:1040
+msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
+msgstr ""
+"  -b, --speech-friendly        sigues amigable amb els sintetitzadors de veu."
+
+#: info/info.c:1044
+msgid ""
+"      --strict-node-location   (for debugging) use Info file pointers as-"
+"is.\n"
+"      --subnodes               recursively output menu items.\n"
+"  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR.\n"
+"      --vi-keys                use vi-like and less-like key bindings.\n"
+"      --version                display version information and exit.\n"
+"  -w, --where, --location      print physical location of Info file.\n"
+"  -x, --debug=NUMBER           set debugging level (-1 for all).\n"
+msgstr ""
+"      --strict-node-location   (per a depuració) usa els punters dels "
+"fitxers Info sense modificar.\n"
+"      --subnodes               bolca de forma recursiva els elements de "
+"menú.\n"
+"  -v, --variable VAR=VALOR     assigna VALOR a la variable Info VAR.\n"
+"      --vi-keys                usa assignacions de tecla tipus vi i less.\n"
+"      --version                mostra la informació de versió i surt.\n"
+"  -w, --where, --location      imprimeix la ubicació física del fitxer "
+"Info.\n"
+"  -x, --debug=NUMBER           estableix el nivell de depuració (-1 per a "
+"tot).\n"
+
+#: info/info.c:1053
+msgid ""
+"\n"
+"The first non-option argument, if present, is the menu entry to start from;\n"
+"it is searched for in all 'dir' files along INFOPATH.\n"
+"If it is not present, info merges all 'dir' files and shows the result.\n"
+"Any remaining arguments are treated as the names of menu\n"
+"items relative to the initial node visited."
+msgstr ""
+"\n"
+"El primer argument que no és una opció, si està present, és l'entrada de "
+"menú on començar;\n"
+"és el criteri de cerca per a tos els fitxers `dir' sobre INFOPATH.\n"
+"Si no està present, info fusiona tots el fitxers `dir' i mostra el "
+"resultat.\n"
+"Tots els arguments restants són considerats el noms dels elements\n"
+"de menú relatius al node inicial que s'ha visitat."
+
+#: info/info.c:1060
+msgid ""
+"\n"
+"For a summary of key bindings, type H within Info."
+msgstr ""
+"\n"
+"Per a un resum de les assignacions de tecles, entreu H dins d'Info."
+
+#: info/info.c:1063
+msgid ""
+"\n"
+"Examples:\n"
+"  info                       show top-level dir menu\n"
+"  info info                  show the general manual for Info readers\n"
+"  info info-stnd             show the manual specific to this Info program\n"
+"  info emacs                 start at emacs node from top-level dir\n"
+"  info emacs buffers         select buffers menu entry in emacs manual\n"
+"  info emacs -n Files        start at Files node within emacs manual\n"
+"  info '(emacs)Files'        alternative way to start at Files node\n"
+"  info --show-options emacs  start at node with emacs' command line options\n"
+"  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
+"  info -f ./foo.info         show file ./foo.info, not searching dir"
+msgstr ""
+"\n"
+"Exemples:\n"
+"  info                       mostra el menú dir de nivell superior\n"
+"  info info                  mostra el manual general per a lectors d'Info\n"
+"  info info-stnd             mostra el manual específica per a aquest "
+"programa Info\n"
+"  info emacs                 comença pel node emacs del directori de nivell "
+"superior\n"
+"  info emacs buffers         selecciona l'entrada de menú de memòries "
+"intermèdies dins del manual de l'emacs\n"
+"  info emacs -n Files        comença al node Files dins del manual de "
+"l'emacs\n"
+"  info '(emacs)Files'        manera alternativa de començar al node Files\n"
+"  info --show-options emacs  comença pel node amb les opcions de línia "
+"d'ordres de l'emacs\n"
+"  info --subnodes -o sortida.txt    demana a l'emacs que bolqui el manual "
+"sencer a sortida.txt\n"
+"  info -f ./bla.info         mostra el fitxer ./bla.info, sense buscar a dir"
+
+#: info/info.c:1076
+msgid ""
+"\n"
+"Email bug reports to bug-texinfo@gnu.org,\n"
+"general questions and discussion to help-texinfo@gnu.org.\n"
+"Texinfo home page: http://www.gnu.org/software/texinfo/"
+msgstr ""
+"\n"
+"Envia els informes d'error per correu electrònica a bug-texinfo@gnu.org\n"
+"preguntes generals i discussió a help-texinfo@gnu.org.\n"
+"Pàgina d'inici del texinfo: http://www.gnu.org/software/texinfo/"
+
+#: info/info.c:1111
+#, c-format
+msgid "Cannot find node '(%s)%s'."
+msgstr "No es pot trobar el node '(%s)%s'."
+
+#: info/info.c:1112
+msgid "Cannot find a window!"
+msgstr "No es pot trobar una finestra!"
+
+#: info/info.c:1113
+msgid "Point doesn't appear within this window's node!"
+msgstr "El punt no apareix dins del node d'aquesta finestra!"
+
+#: info/info.c:1114
+msgid "Cannot delete the last window."
+msgstr "No es pot eliminar l'última finestra."
+
+#: info/info.c:1115
+msgid "No menu in this node."
+msgstr "No hi ha un menú a aquest node."
+
+#: info/info.c:1116
+msgid "No footnotes in this node."
+msgstr "No hi ha notes a peu de pàgina a aquest node."
+
+#: info/info.c:1117
+msgid "No cross references in this node."
+msgstr "No hi ha referències creuades a aquest node."
+
+#: info/info.c:1118
+#, c-format
+msgid "No '%s' pointer for this node."
+msgstr "No hi ha un punter '%s' per a aquest node."
+
+#: info/info.c:1119
+#, c-format
+msgid "Unknown Info command '%c'; try '?' for help."
+msgstr "Ordre `%c' d'Info desconeguda; proveu `?' per a ajuda."
+
+#: info/info.c:1120
+#, c-format
+msgid "Terminal type '%s' is not smart enough to run Info."
+msgstr "La terminal tipus `%s' no és prou intel·ligent per executar Info."
+
+#: info/info.c:1121
+msgid "You are already at the last page of this node."
+msgstr "Ja esteu a l'última pàgina d'aquest node."
+
+#: info/info.c:1122
+msgid "You are already at the first page of this node."
+msgstr "Ja esteu a la primera pàgina d'aquest node."
+
+#: info/info.c:1123
+msgid "Only one window."
+msgstr "Sols una finestra."
+
+#: info/info.c:1124
+msgid "Resulting window would be too small."
+msgstr "La finestra resultant seria massa petita."
+
+#: info/info.c:1125
+msgid "Not enough room for a help window, please delete a window."
+msgstr ""
+"No hi ha prou espai per a una finestra d'ajuda, si us plau elimineu una "
+"finestra."
+
+#: info/infodoc.c:40
+msgid "Basic Info command keys\n"
+msgstr "Tecles bàsiques d'ordres d'Info\n"
+
+#: info/infodoc.c:42
+msgid "\\%-10[quit-help]  Close this help window.\n"
+msgstr "\\%-10[quit-help]  Tanca aquesta finestra d'ajuda.\n"
+
+#: info/infodoc.c:43
+msgid "\\%-10[quit]  Quit Info altogether.\n"
+msgstr "\\%-10[quit]  Surt d'Info completament.\n"
+
+#: info/infodoc.c:44
+msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
+msgstr "\\%-10[get-info-help-node]  Invoca el tutorial d'Info.\n"
+
+#: info/infodoc.c:46
+msgid "\\%-10[prev-line]  Move up one line.\n"
+msgstr "\\%-10[prev-line]  Ves cap amunt una línia.\n"
+
+#: info/infodoc.c:47
+msgid "\\%-10[next-line]  Move down one line.\n"
+msgstr "\\%-10[next-line]  Ves cap avall una línia.\n"
+
+#: info/infodoc.c:48
+msgid "\\%-10[scroll-backward]  Scroll backward one screenful.\n"
+msgstr "\\%-10[scroll-backward]  Desplaça't endarrere una pantalla completa.\n"
+
+#: info/infodoc.c:49
+msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
+msgstr "\\%-10[scroll-forward]  Desplaça't endavant una pantalla completa.\n"
+
+#: info/infodoc.c:50
+msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
+msgstr "\\%-10[beginning-of-node]  Ves al principi d'aquest node.\n"
+
+#: info/infodoc.c:51
+msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
+msgstr "\\%-10[end-of-node]  Ves al final d'aquest node.\n"
+
+#: info/infodoc.c:53
+msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
+msgstr "\\%-10[move-to-next-xref]  Salta al següent enllaç d'hipertext.\n"
+
+#: info/infodoc.c:54
+msgid ""
+"\\%-10[select-reference-this-line]  Follow the hypertext link under the "
+"cursor.\n"
+msgstr ""
+"\\%-10[select-reference-this-line]  Segueix l'enllaç d'hipertext sota el "
+"cursor.\n"
+
+#: info/infodoc.c:55
+msgid "\\%-10[history-node]  Go back to the last node seen in this window.\n"
+msgstr ""
+"\\%-10[history-node]  Ves endarrere a l'ultim node vist a aquesta finestra.\n"
+
+#: info/infodoc.c:57
+msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
+msgstr "\\%-10[global-prev-node]  Ves al node anterior a aquest document.\n"
+
+#: info/infodoc.c:58
+msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
+msgstr "\\%-10[global-next-node]  Ves al següent node a aquest document.\n"
+
+#: info/infodoc.c:59
+msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
+msgstr "\\%-10[prev-node]  Ves al node previ a aquest nivell.\n"
+
+#: info/infodoc.c:60
+msgid "\\%-10[next-node]  Go to the next node on this level.\n"
+msgstr "\\%-10[next-node]  Ves al node següent a aquest nivell.\n"
+
+#: info/infodoc.c:61
+msgid "\\%-10[up-node]  Go up one level.\n"
+msgstr "\\%-10[up-node]  Ves un nivell amunt.\n"
+
+#: info/infodoc.c:62
+msgid "\\%-10[top-node]  Go to the top node of this document.\n"
+msgstr "\\%-10[top-node]  Ves al node superior d'aquest document.\n"
+
+#: info/infodoc.c:63
+msgid "\\%-10[dir-node]  Go to the main 'directory' node.\n"
+msgstr "\\%-10[dir-node]  Ves al node 'directory' principal.\n"
+
+#: info/infodoc.c:65
+msgid "1...9       Pick the first...ninth item in this node's menu.\n"
+msgstr "1...9       Escull el primer...nouré element al menú d'aquest node.\n"
+
+#: info/infodoc.c:66
+msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
+msgstr ""
+"\\%-10[last-menu-item]  Escull l'últim element al menú d'aquest node.\n"
+
+#: info/infodoc.c:67
+msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
+msgstr ""
+"\\%-10[menu-item]  Escull un element de menú especificat pel seu nom.\n"
+
+#: info/infodoc.c:68
+msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
+msgstr ""
+"\\%-10[xref-item]  Segueix una referència creuada especificada per nom.\n"
+
+#: info/infodoc.c:69
+msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
+msgstr "\\%-10[goto-node]  Ves al node especificat per nom.\n"
+
+#: info/infodoc.c:71
+msgid "\\%-10[search]  Search forward for a specified string.\n"
+msgstr ""
+"\\%-10[search]  Cerca cap endavant per a una cadena de caràcters "
+"especificada.\n"
+
+#: info/infodoc.c:72
+msgid "\\%-10[search-previous]  Search for previous occurrence.\n"
+msgstr "\\%-10[search-previous]  Cerca per l'ocurrència anterior.\n"
+
+#: info/infodoc.c:73
+msgid "\\%-10[search-next]  Search for next occurrence.\n"
+msgstr "\\%-10[search-next]  Cerca per l'ocurrència següent.\n"
+
+#: info/infodoc.c:74
+msgid ""
+"\\%-10[index-search]  Search for a specified string in the index, and\n"
+"              select the node referenced by the first entry found.\n"
+msgstr ""
+"\\%-10[index-search]  Cerca per una cadena de caràcters especificada a "
+"l'índex, i\n"
+"              selecciona el node referenciat per la primera entrada "
+"trobada.\n"
+
+#: info/infodoc.c:76
+msgid "\\%-10[virtual-index]  Synthesize menu of matching index entries.\n"
+msgstr ""
+"\\%-10[virtual-index]  Sintetitza el menú d'entrades concordats d'índex.\n"
+
+#: info/infodoc.c:78
+msgid "\\%-10[abort-key]  Cancel the current operation.\n"
+msgstr "\\%-10[abort-key]  Cancel·la l'operació corrent.\n"
+
+#: info/infodoc.c:197
+#, c-format
+msgid "This is GNU Info version %s.  "
+msgstr "Això és GNU Info versió %s"
+
+#: info/infodoc.c:198
+msgid "The current search path is:\n"
+msgstr "El camí de cerca actual és:\n"
+
+#: info/infodoc.c:203
+msgid ""
+"Commands available in Info windows:\n"
+"\n"
+msgstr ""
+"Ordres disponibles a la finestra Info:\n"
+"\n"
+
+#: info/infodoc.c:206
+msgid ""
+"Commands available in the echo area:\n"
+"\n"
+msgstr ""
+"Ordres disponibles a l'àrea d'eco:\n"
+"\n"
+
+#: info/infodoc.c:226
+#, c-format
+msgid ""
+"The following commands can only be invoked via %s:\n"
+"\n"
+msgstr ""
+"Les ordres següents sols es poden invocar via %s:\n"
+"\n"
+
+#: info/infodoc.c:231
+msgid ""
+"The following commands cannot be invoked at all:\n"
+"\n"
+msgstr ""
+"Les ordres següents no es poden invocar en absolut:\n"
+"\n"
+
+#: info/infodoc.c:335
+msgid "Display help message"
+msgstr "Mostra el missatge d'ajuda"
+
+#: info/infodoc.c:348
+msgid "Visit Info node '(info)Help'"
+msgstr "Visita el node Info '(info)Help'"
+
+#: info/infodoc.c:447
+msgid "Print documentation for KEY"
+msgstr "Imprimeix la documentació per a TECLA"
+
+#: info/infodoc.c:458
+#, c-format
+msgid "Describe key: %s"
+msgstr "Descriu la tecla: %s"
+
+#: info/infodoc.c:468 info/infodoc.c:504
+#, c-format
+msgid "%s is undefined."
+msgstr "%s no està definit"
+
+#: info/infodoc.c:866
+msgid "Show what to type to execute a given command"
+msgstr "Mostra què s'ha d'entrar per executar una ordre donada"
+
+#: info/infodoc.c:870
+msgid "Where is command: "
+msgstr "On és l'ordre: "
+
+#: info/infodoc.c:892
+#, c-format
+msgid "'%s' is not on any keys"
+msgstr "'%s' no està en cap tecla"
+
+#: info/infodoc.c:898
+#, c-format
+msgid "%s can only be invoked via %s."
+msgstr "%s es pot invocar únicament via %s."
+
+#: info/infodoc.c:902
+#, c-format
+msgid "%s can be invoked via %s."
+msgstr "%s es pot invocar via %s."
+
+#: info/infodoc.c:907
+#, c-format
+msgid "There is no function named '%s'"
+msgstr "No hi ha una funció nomenada '%s'"
+
+#: info/infomap.c:600
+#, fuzzy, c-format
+msgid "could not open init file %s"
+msgstr "no s'ha pogut llegir el fitxer d'inicialització %s"
+
+#: info/infokey.c:229
+#, c-format
+msgid "key sequence too long"
+msgstr "seqüència de tecles massa llarga"
+
+#: info/infokey.c:306
+#, c-format
+msgid "missing key sequence"
+msgstr "seqüència de tecles absent"
+
+#: info/infokey.c:386
+#, c-format
+msgid "NUL character (\\000) not permitted"
+msgstr "el caràcter NUL (\\000) no està permès"
+
+#: info/infokey.c:415
+#, c-format
+msgid "NUL character (^%c) not permitted"
+msgstr "el caràcter NUL (^%c) no està permès"
+
+#: info/infokey.c:438
+#, c-format
+msgid "missing action name"
+msgstr "nom absent d'acció "
+
+#: info/infokey.c:450
+#, c-format
+msgid "cannot bind key sequence to menu-digit"
+msgstr "no es pot associar la seqüència de tecles al dígit de menú"
+
+#: info/infokey.c:458
+#, c-format
+msgid "unknown action `%s'"
+msgstr "acció desconeguda `%s'"
+
+#: info/infokey.c:482
+#, c-format
+msgid "action name too long"
+msgstr "nom d'acció massa llarg"
+
+#: info/infokey.c:495
+#, c-format
+msgid "extra characters following action `%s'"
+msgstr "hi ha caràcters extra a continuació de l'acció `%s'"
+
+#: info/infokey.c:506
+#, c-format
+msgid "missing variable name"
+msgstr "nom absent de variable"
+
+#: info/infokey.c:515
+#, c-format
+msgid "missing `=' immediately after variable name"
+msgstr "`=' absent immediatament després del nom de la variable"
+
+#: info/infokey.c:522
+#, c-format
+msgid "variable name too long"
+msgstr "nom de la variable massa llarg"
+
+#: info/infokey.c:546
+#, c-format
+msgid "value too long"
+msgstr "valor massa llarg"
+
+#: info/infokey.c:592
+#, c-format
+msgid "\"%s\", line %u: "
+msgstr "\"%s\", línia %u: "
+
+#: info/m-x.c:66
+msgid "Read the name of an Info command and describe it"
+msgstr "Llegeix el nom d'una ordre Info i descriu-lo"
+
+#: info/m-x.c:70
+msgid "Describe command: "
+msgstr "Descriu l'ordre: "
+
+#: info/m-x.c:93
+msgid "Read a command name in the echo area and execute it"
+msgstr "Llegeix un nom d'ordre a l'àrea d'eco i executa-la"
+
+#: info/m-x.c:136
+#, c-format
+msgid "Cannot execute an 'echo-area' command here."
+msgstr "No es pot executar una ordre 'echo-area' aquí."
+
+#: info/m-x.c:149
+#, c-format
+msgid "Undefined command: %s"
+msgstr "Ordre no definida: %s"
+
+#: info/m-x.c:155
+msgid "Set the height of the displayed window"
+msgstr "Estableix l'alçada de la finestra visualitzada"
+
+#: info/m-x.c:168
+#, c-format
+msgid "Set screen height to (%d): "
+msgstr "Estableix l'alçada de la pantalla a (%d): "
+
+#: info/makedoc.c:141
+#, c-format
+msgid ""
+"   Source files groveled to make this file include:\n"
+"\n"
+msgstr ""
+"   S'han arrossegat els fitxers font per fer que aquest fitxer inclogui:\n"
+"\n"
+
+#: info/makedoc.c:466
+#, c-format
+msgid "Couldn't manipulate the file %s.\n"
+msgstr "No s'ha pogut manipular el fitxer %s.\n"
+
+#. TRANSLATORS: The "\n* Menu:\n\n" part of this should not be translated, as
+#. it is part of the Info syntax.
+#: info/nodemenu.c:35
+msgid ""
+"\n"
+"* Menu:\n"
+"\n"
+"  (File)Node                        Lines   Size   Containing File\n"
+"  ----------                        -----   ----   ---------------"
+msgstr ""
+"\n"
+"* Menú:\n"
+"  (Fitxer)Node                      Línies   Mida   Fitxer continent\n"
+"  ------------                      ------   ----   ---------------"
+
+#: info/nodemenu.c:187
+msgid ""
+"Here is the menu of nodes you have recently visited.\n"
+"Select one from this menu, or use '\\[history-node]' in another window.\n"
+msgstr ""
+"Aquí està el menú de nodes que heu visitat recentment.\n"
+"Seleccioneu-ne u d'aquest menú, o useu '\\[history-node]' en una altra "
+"finestra.\n"
+
+#: info/nodemenu.c:208
+msgid "Make a window containing a menu of all of the currently visited nodes"
+msgstr ""
+"Creeu una finestra que contingui un menú de tots els menús visitats "
+"actualment"
+
+#: info/nodemenu.c:253
+msgid "Select a node which has been previously visited in a visible window"
+msgstr "Seleccioneu un node que s'ha visitat prèviament a una finestra visible"
+
+#: info/nodemenu.c:260
+msgid "Select visited node: "
+msgstr "Node visitat seleccionat: "
+
+#: info/nodemenu.c:278 info/session.c:2355
+#, c-format
+msgid "The reference disappeared! (%s)."
+msgstr "La referència ha desaparegut! (%s)."
+
+#: info/pcterm.c:206
+#, c-format
+msgid "Terminal cannot be initialized: %s\n"
+msgstr "La terminal no es pot inicialitzar: %s\n"
+
+#: info/search.c:166
+#, c-format
+msgid "regexp error: %s"
+msgstr "error d'expressió regular: %s"
+
+#: info/session.c:60
+msgid "Show all matching files"
+msgstr "Mostra tots els fitxers que concordin"
+
+#: info/session.c:64
+#, c-format
+msgid "No file index"
+msgstr "No hi ha un índex de fitxer"
+
+#. TRANSLATORS: This message should fit within 79 characters, otherwise
+#. anything after the 80th character will not be displayed.
+#: info/session.c:189
+#, fuzzy, c-format
+msgid ""
+"Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
+"help-node] for tutorial."
+msgstr ""
+"Benvigut a la versió %s d'Info. Entreu \\[get-help-window] per l'ajuda, ,"
+"\\[menu-item] per a un element de menú, \\[get-info-help-node] per a un "
+"tutorial."
+
+#: info/session.c:766
+#, c-format
+msgid "can't open %s: %s"
+msgstr "no es pot obrir %s: %s"
+
+#: info/session.c:772
+#, c-format
+msgid "debugging output diverted to \"%s\""
+msgstr "la sortida de depuració s'he redirigit a \"%s\""
+
+#: info/session.c:1214
+msgid "Move down to the next line"
+msgstr "Ves avall a la línia següent"
+
+#: info/session.c:1229
+msgid "Move up to the previous line"
+msgstr "Ves amunt a la línia prèvia"
+
+#: info/session.c:1245
+msgid "Move the cursor to a specific line of the window"
+msgstr "Mou del cursos a una línia específica de la finestra"
+
+#: info/session.c:1277
+msgid "Move to the end of the line"
+msgstr "Ves al final de la línia"
+
+#: info/session.c:1302
+msgid "Move to the start of the line"
+msgstr "Ves a l'inici de la línia"
+
+#: info/session.c:1384
+msgid "Move to the start of this node"
+msgstr "Ves a l'inici d'aquest node"
+
+#: info/session.c:1391
+msgid "Move to the end of this node"
+msgstr "Ves al final d'aquest node"
+
+#: info/session.c:1473
+msgid "Scroll forward in this window"
+msgstr "Desplaça't cap endavant a aquesta finestra"
+
+#: info/session.c:1487
+msgid "Scroll backward in this window"
+msgstr "Desplaça't cap endarrere a aquesta finestra"
+
+#: info/session.c:1495
+msgid "Scroll forward in this window and set default window size"
+msgstr ""
+"Desplaça't cap endavant a aquesta finestra i estableix la mida "
+"predeterminada de la finestra"
+
+#: info/session.c:1510
+msgid "Scroll backward in this window and set default window size"
+msgstr ""
+"Desplaça't cap endarrere a aquesta finestra i estableix la mida "
+"predeterminada de la finestra"
+
+#: info/session.c:1516
+msgid "Scroll forward in this window staying within node"
+msgstr "Desplaça't cap endavant a aquesta finestra romanent dins dins del node"
+
+#: info/session.c:1531
+msgid "Scroll backward in this window staying within node"
+msgstr "Desplaçat cap endarrere a aquesta finestra romanent dins del node"
+
+#: info/session.c:1539
+msgid ""
+"Scroll forward in this window staying within node and set default window size"
+msgstr ""
+"Desplaça't cap endavant a aquesta finestra dins del node i estableix la mida "
+"predeterminada de la finestra"
+
+#: info/session.c:1566
+msgid ""
+"Scroll backward in this window staying within node and set default window "
+"size"
+msgstr ""
+"Desplaça't endarrere a aquesta finestra romanent dins del node i estableix "
+"la finestra predeterminada "
+
+#: info/session.c:1572
+msgid "Scroll down by lines"
+msgstr "Desplaça't cap avall per línies"
+
+#: info/session.c:1578
+msgid "Scroll up by lines"
+msgstr "Desplaça't cap amunt per línies"
+
+#: info/session.c:1590
+msgid "Scroll down by half screen size"
+msgstr "Desplaça't cap avall per una mitja mida de pantalla"
+
+#: info/session.c:1617
+msgid "Scroll up by half screen size"
+msgstr "Desplaça't cap amunt per una mitja mida de pantalla"
+
+#: info/session.c:1623
+msgid "Scroll the other window"
+msgstr "Desplaça l'altra finestra"
+
+#: info/session.c:1644
+msgid "Scroll the other window backward"
+msgstr "Desplaça l'altra finestra cap endarrere"
+
+#: info/session.c:1744
+msgid "Select the next window"
+msgstr "Selecciona la finestra següent"
+
+#: info/session.c:1781
+msgid "Select the previous window"
+msgstr "Selecciona la finestra prèvia"
+
+#: info/session.c:1825
+msgid "Split the current window"
+msgstr "Divideix la finestra actual"
+
+#: info/session.c:1867
+msgid "Delete the current window"
+msgstr "Elimina la finestra actual"
+
+#: info/session.c:1872
+msgid "Cannot delete a permanent window"
+msgstr "No es pot eliminar una finestra permanent"
+
+#: info/session.c:1903
+msgid "Delete all other windows"
+msgstr "Elimina totes les altres finestres"
+
+#: info/session.c:1949
+msgid "Grow (or shrink) this window"
+msgstr "Fes més gran (o fes més petita) aquesta finestra"
+
+#: info/session.c:1960
+msgid "Divide the available screen space among the visible windows"
+msgstr "Divideix l'espai disponible de pantalla entre les finestres visibles"
+
+#: info/session.c:1967
+msgid "Toggle the state of line wrapping in the current window"
+msgstr "Commuta l'estat de l'ajust de línia a la finestra actual"
+
+#: info/session.c:2116
+msgid "Select this menu item"
+msgstr "Selecciona aquest element de menú"
+
+#: info/session.c:2146
+#, c-format
+msgid "There isn't %d item in this menu."
+msgid_plural "There aren't %d items in this menu."
+msgstr[0] "No hi ha l'element %d a aquest menú."
+msgstr[1] "No hi els elements %d a aquest menú."
+
+#: info/session.c:2155
+msgid "Select the last item in this node's menu"
+msgstr "Selecciona l'últim element al menú d'aquest node"
+
+#: info/session.c:2263 info/session.c:2264
+#, c-format
+msgid "Menu item (%s): "
+msgstr "Element de menú (%s): "
+
+#: info/session.c:2267
+msgid "Menu item: "
+msgstr "Element de menú: "
+
+#: info/session.c:2274 info/session.c:2275
+#, c-format
+msgid "Follow xref (%s): "
+msgstr "Segueix xref (%s): "
+
+#: info/session.c:2278
+msgid "Follow xref: "
+msgstr "Segueix xref: "
+
+#: info/session.c:2367
+msgid "Read a menu item and select its node"
+msgstr "Llegeix un element de menú i selecciona el seu node"
+
+#: info/session.c:2392
+msgid "Read a footnote or cross reference and select its node"
+msgstr ""
+"Llegeix una nota a peu de pàgina o una referència creuada i selecciona el "
+"seu node"
+
+#: info/session.c:2398
+msgid "Move to the start of this node's menu"
+msgstr "Ves a l'inici del menú d'aquest node"
+
+#: info/session.c:2420
+msgid "Visit as many menu items at once as possible"
+msgstr "Visita el màxim d'elements de menú que sigui possible"
+
+#: info/session.c:2519
+msgid "Move to the previous cross reference"
+msgstr "Ves a la referència creuada prèvia"
+
+#: info/session.c:2582
+msgid "Move to the next cross reference"
+msgstr "Ves a la referència creuada següent"
+
+#: info/session.c:2643
+msgid "Select reference or menu item appearing on this line"
+msgstr ""
+"Selecciona la referència o l'element de menú que apareix en aquesta línia"
+
+#: info/session.c:2677
+#, c-format
+msgid "No menu in node '%s'."
+msgstr "No hi ha un menú al node '%s'."
+
+#: info/session.c:2724
+#, c-format
+msgid "Unable to find node referenced by '%s' in '%s'."
+msgstr "No s'ha pogut trobar el node referenciat per '%s' a '%s'."
+
+#: info/session.c:2774
+msgid "Read a list of menus starting from dir and follow them"
+msgstr "Llegeix una llista de menús començant des del directori i segueix-los"
+
+#: info/session.c:2776
+msgid "Follow menus: "
+msgstr "Segueix els menús: "
+
+#: info/session.c:2878
+msgid "Select the Next node"
+msgstr "Selecciona el node Següent"
+
+#: info/session.c:2885
+msgid "Select the Prev node"
+msgstr "Selecciona el node Previ"
+
+#: info/session.c:2892
+msgid "Select the Up node"
+msgstr "Selecciona el node Amunt"
+
+#: info/session.c:2898
+msgid "Select the last node in this file"
+msgstr "Selecciona l'últim node a aquest fitxer"
+
+#: info/session.c:2925 info/session.c:2958
+msgid "This window has no additional nodes"
+msgstr "Aquesta finestra no té nodes addicionals"
+
+#: info/session.c:2931
+msgid "Select the first node in this file"
+msgstr "Selecciona el primer node a aquest fitxer"
+
+#: info/session.c:3063
+msgid "No more nodes within this document."
+msgstr "No hi ha més nodes dins d'aquest document."
+
+#: info/session.c:3108 info/session.c:3148
+msgid "No 'Prev' or 'Up' for this node within this document."
+msgstr "No hi ha `Previ' o `Amunt' per a aquest node dins d'aquest document."
+
+#: info/session.c:3161
+msgid "Move forwards or down through node structure"
+msgstr "Ves amunt o avall a través de l'estructura de nodes"
+
+#: info/session.c:3178
+msgid "Move backwards or up through node structure"
+msgstr "Ves cap endarrere o amunt a través de l'estructura de nodes"
+
+#: info/session.c:3201
+msgid "Read a node name and select it"
+msgstr "Llegeix un nom de node i selecciona'l"
+
+#: info/session.c:3255 info/session.c:3259
+msgid "Goto node: "
+msgstr "Ves al node: "
+
+#: info/session.c:3438
+msgid "Find the node describing program invocation"
+msgstr "Troba el node que descriu la invocació del programa"
+
+#: info/session.c:3440
+#, c-format
+msgid "Find Invocation node of [%s]: "
+msgstr "Troba el node Invocació de [%s]: "
+
+#: info/session.c:3485
+msgid "Read a manpage reference and select it"
+msgstr "Llegeix una referència manpage i selecciona-la"
+
+#: info/session.c:3489
+msgid "Get Manpage: "
+msgstr "Obté la Manpage: "
+
+#: info/session.c:3510
+msgid "Select the node 'Top' in this file"
+msgstr "Selecciona el node `Top' a aquest fitxer"
+
+#: info/session.c:3516
+msgid "Select the node '(dir)'"
+msgstr "Selecciona el node '(dir)'"
+
+#: info/session.c:3522
+msgid "Show full file name of node being displayed"
+msgstr "Mostra el nom complet de fitxer del node que s'està mostrant"
+
+#: info/session.c:3539
+msgid "Select the most recently selected node"
+msgstr "Selecciona el node seleccionat més recentment"
+
+#: info/session.c:3544
+#, c-format
+msgid "No earlier node in history"
+msgstr "No hi ha un node anterior a la història"
+
+#: info/session.c:3548
+msgid "Read the name of a file and select it"
+msgstr "Llegeix el nom d'un fitxer i selecciona'l"
+
+#: info/session.c:3552
+msgid "Find file: "
+msgstr "Troba el fitxer: "
+
+#: info/session.c:3569
+#, c-format
+msgid "Cannot find '%s'."
+msgstr "No es pot trobar '%s'."
+
+#: info/session.c:3618
+#, c-format
+msgid "Could not create output file '%s'."
+msgstr "No s'ha pogut crear el fitxer de sortida '%s'."
+
+#: info/session.c:3632
+#, c-format
+msgid "error writing to %s: %s"
+msgstr "error quan s'estava escrivint a %s: %s"
+
+#: info/session.c:3641
+#, c-format
+msgid "closing %s"
+msgstr "s'està tancant %s"
+
+#: info/session.c:3690
+#, c-format
+msgid "writing node %s..."
+msgstr "s'està escrivint el node %s..."
+
+#: info/session.c:3736
+msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
+msgstr "Passa els continguts d'aquest node a través d'INFO_PRINT_COMMAND"
+
+#: info/session.c:3764
+#, c-format
+msgid "Cannot open pipe to '%s'."
+msgstr "No es pot obrir el conducte a '%s'."
+
+#: info/session.c:3769
+#, c-format
+msgid "printing node %s..."
+msgstr "s'està imprimint el node %s..."
+
+#: info/session.c:3777
+#, c-format
+msgid "finished printing node %s"
+msgstr "s'ha acabat d'imprimir el node %s"
+
+#: info/session.c:3809
+msgid "Toggle the usage of regular expressions in searches"
+msgstr "Commuta l'ús d'expressions regulars a les cerques"
+
+#: info/session.c:3813
+#, c-format
+msgid "Using regular expressions for searches."
+msgstr "S'estan usant les expressions regular per a les cerques."
+
+#: info/session.c:3814
+#, c-format
+msgid "Using literal strings for searches."
+msgstr "S'estan usant cadenes literals de caràcters per a les cerques."
+
+#: info/session.c:4058
+msgid "Search continued from the end of the document."
+msgstr "Es continuarà la cerca des del final del document."
+
+#: info/session.c:4063
+msgid "Search continued from the beginning of the document."
+msgstr "Es continuarà la cerca des del principi del document."
+
+#: info/session.c:4083
+#, c-format
+msgid "Searching subfile %s ..."
+msgstr "S'està buscant el subfitxer %s..."
+
+#: info/session.c:4122
+msgid "Search failed."
+msgstr "La cerca ha fallat."
+
+#: info/session.c:4141
+#, c-format
+msgid "%s%s%s [%s]: "
+msgstr "%s%s%s [%s]: "
+
+#: info/session.c:4142 info/session.c:4148
+msgid "Regexp search"
+msgstr "Cerca d'expressió regular"
+
+#: info/session.c:4142 info/session.c:4148
+msgid "Search"
+msgstr "Cerca"
+
+#: info/session.c:4143 info/session.c:4149
+msgid " case-sensitively"
+msgstr "respectant majúscules i minúscules"
+
+#: info/session.c:4144 info/session.c:4150
+msgid " backward"
+msgstr " cap endarrere"
+
+#: info/session.c:4147
+#, c-format
+msgid "%s%s%s: "
+msgstr "%s%s%s: "
+
+#: info/session.c:4167
+msgid "Search string too short"
+msgstr "La cadena de caràcters de cerca és massa curta"
+
+#: info/session.c:4237
+msgid "Read a string and search for it case-sensitively"
+msgstr ""
+"Llegeix una cadena de caràcters i busca-la respectant majúscules i minúscules"
+
+#: info/session.c:4242
+msgid "Read a string and search for it"
+msgstr "Llegeix una cadena de caràcters i busca-la"
+
+#: info/session.c:4248
+msgid "Read a string and search backward for it"
+msgstr "Llegeix una cadena de caràcters i busca cap endarrere per ella"
+
+#: info/session.c:4256
+msgid "Repeat last search in the same direction"
+msgstr "Repeteix l'última cerca en la mateixa direcció"
+
+#: info/session.c:4264 info/session.c:4309
+msgid "No previous search string"
+msgstr "No hi ha una cadena de caràcters de cerca prèvia"
+
+#: info/session.c:4301
+msgid "Repeat last search in the reverse direction"
+msgstr "Repeteix l'última cerca en la direcció inversa"
+
+#: info/session.c:4348
+msgid "Clear displayed search matches"
+msgstr "Neteja les concordances mostrades de cerca"
+
+#: info/session.c:4365 info/session.c:4371
+msgid "Search interactively for a string as you type it"
+msgstr ""
+"Cerca interactivament per una cadena de caràcters a mesura que l'escriviu"
+
+#: info/session.c:4485
+msgid "Regexp I-search backward: "
+msgstr "I-cerca l'expressió regular cap endarrere: "
+
+#: info/session.c:4486
+msgid "I-search backward: "
+msgstr "I-cerca cap endarrere: "
+
+#: info/session.c:4488
+msgid "Regexp I-search: "
+msgstr "I-cerca l'expressió regular: "
+
+#: info/session.c:4489
+msgid "I-search: "
+msgstr "I-cerca: "
+
+#: info/session.c:4514 info/session.c:4517
+msgid "Failing "
+msgstr "Està fallant "
+
+#: info/session.c:4890
+msgid "Cancel current operation"
+msgstr "Cancel·la l'operació actual"
+
+#: info/session.c:4897
+msgid "Quit"
+msgstr "Surt"
+
+#: info/session.c:4902
+msgid "Display version of Info being run"
+msgstr "Mostra la informació de versió de l'Info que s'està executant"
+
+#: info/session.c:4904
+#, c-format
+msgid "GNU Info version %s"
+msgstr "GNU Info versió %s"
+
+#: info/session.c:4909
+msgid "Redraw the display"
+msgstr "Torna a dibuixar la pantalla"
+
+#: info/session.c:4946
+msgid "Quit using Info"
+msgstr "Surt d'Info"
+
+#: info/session.c:4959
+msgid "Run command bound to this key's lowercase variant"
+msgstr "Executa l'ordre lligada a la variant minúscula d'aquesta tecla"
+
+#: info/session.c:4970
+#, c-format
+msgid "Unknown command (%s)."
+msgstr "Ordre desconeguda (%s)."
+
+#: info/session.c:4973
+#, c-format
+msgid "\"%s\" is invalid"
+msgstr "\"%s\" no és vàlid"
+
+#: info/session.c:4974
+#, c-format
+msgid "'%s' is invalid"
+msgstr "'%s' no és vàlid"
+
+#: info/session.c:5291
+msgid "Add this digit to the current numeric argument"
+msgstr "Afegeix aquest dígit a l'argument numèric actual"
+
+#: info/session.c:5298
+msgid "Start (or multiply by 4) the current numeric argument"
+msgstr "Inicia (o multiplica per 4) l'argument numèric actual"
+
+#: info/tilde.c:361
+#, c-format
+msgid "readline: Out of virtual memory!\n"
+msgstr "readline: s'ha exhaurit la memòria virtual!\n"
+
+#: info/variables.c:51
+msgid "When \"On\", footnotes appear and disappear automatically"
+msgstr ""
+"Quan està establert a \"Activa\", les notes a peu de pàgina apareixen "
+"idesapareixen automàticament"
+
+#: info/variables.c:55
+msgid "When \"On\", creating or deleting a window resizes other windows"
+msgstr ""
+"Quan està establert a \"Activa\", la creació i eliminació d'una finestra "
+"redimensiona altres finestres"
+
+#: info/variables.c:59
+msgid "When \"On\", flash the screen instead of ringing the bell"
+msgstr ""
+"Quan està establert a \"Activa\", fes un senyal a la finestra en comptes "
+"d'activar l'avís sonor"
+
+#: info/variables.c:63
+msgid "When \"On\", errors cause the bell to ring"
+msgstr ""
+"Quan està establert a \"Activa\", els errors causen que s'activi l'avís sonor"
+
+#: info/variables.c:67
+msgid "When \"On\", Info garbage collects files which had to be uncompressed"
+msgstr ""
+"Quan està establert a \"Activa\", la porció de la cadena de caràcters de "
+"cerca que ha concordat es realça"
+
+#: info/variables.c:70
+msgid "When \"On\", the portion of the matched search string is highlighted"
+msgstr ""
+"Quan està establert a \"Activa\", la porció de la cadena de caràcters que ha "
+"concordat es realça"
+
+#: info/variables.c:74
+msgid "Controls what happens when scrolling is requested at the end of a node"
+msgstr "Controla què passa quan es demana desplaçament al final d'un node"
+
+#: info/variables.c:79
+msgid "Same as scroll-behaviour"
+msgstr "El mateix que el comportament de desplaçament"
+
+#: info/variables.c:83
+msgid "The number lines to scroll when the cursor moves out of the window"
+msgstr ""
+"El nombre de línies a deplaçar quan el cursor es mou a fora de la finestra"
+
+#: info/variables.c:87
+msgid "Controls whether scroll-behavior affects cursor movement commands"
+msgstr ""
+"Controla si el comportament de desplaçament afecta les ordres de moviment "
+"del cursor"
+
+#: info/variables.c:91
+msgid "When \"On\", Info accepts and displays ISO Latin characters"
+msgstr ""
+"Quan està establert a \"Activa\", Info accepta i mostra els caràcters ISO "
+"Latin"
+
+#: info/variables.c:95
+msgid ""
+"What to do when a scrolling command is issued at the end of the last node"
+msgstr ""
+"Què fer quan es llança una ordre de desplaçament al final de l'últim node"
+
+#: info/variables.c:100
+msgid "Minimal length of a search string"
+msgstr "Longitud mínima d'una cadena de caràcters"
+
+#: info/variables.c:104
+msgid "Skip current window when searching"
+msgstr "Salta la finestra actual quan s'estigui cercant"
+
+#: info/variables.c:108
+msgid "Exclude default directories from file search path"
+msgstr "Exclou els directoris predeterminats del camí de cerca de fitxers"
+
+#: info/variables.c:112
+msgid "Hide some Info file syntax in the text of nodes"
+msgstr "Amaga alguna sintaxi de fitxer Info al text de nodes"
+
+#: info/variables.c:116
+msgid ""
+"Length of time in milliseconds to wait for the next byte in a sequence "
+"indicating that a key has been pressed"
+msgstr ""
+"Longitud en milisegons per espercar al byte següent en una seqüència "
+"indicant que s'ha pulsat una tecla"
+
+#: info/variables.c:120
+msgid "Highlight search matches"
+msgstr "Destaca les concordances de la cerca"
+
+#: info/variables.c:124
+msgid "Method to use to track mouse events"
+msgstr "Mètode a usar per seguir els esdeveniments"
+
+#: info/variables.c:130
+msgid "Explain the use of a variable"
+msgstr "Explica l'ús d'una variable"
+
+#: info/variables.c:136
+msgid "Describe variable: "
+msgstr "Descriu la variable: "
+
+#: info/variables.c:151
+msgid "Set the value of an Info variable"
+msgstr "Estableix el valor d'una variable Info"
+
+#: info/variables.c:158
+msgid "Set variable: "
+msgstr "Estableix la variable: "
+
+#: info/variables.c:174
+#, c-format
+msgid "Set %s to value (%d): "
+msgstr "Estableix %s al valor (%d): "
+
+#: info/variables.c:208
+#, c-format
+msgid "Set %s to value (%s): "
+msgstr "Estableix %s al valor (%s): "
+
+#: info/window.c:921
+msgid "--*** Tags out of Date ***"
+msgstr "--*** Etiquetes fora de Data ***"
+
+#: info/window.c:965
+msgid "-----Info: (), lines ----, "
+msgstr "-----Info: (), línies ----, "
+
+#: info/window.c:972
+#, c-format
+msgid "-%s---Info: %s, %ld lines --%s--"
+msgstr "-%s---Info: %s, %ld línies --%s--"
+
+#: info/window.c:976
+#, c-format
+msgid "-%s%s-Info: (%s)%s, %ld lines --%s--"
+msgstr "-%s%s-Info: (%s)%s, %ld línies --%s--"
+
+#: info/window.c:982
+#, c-format
+msgid " Subfile: %s"
+msgstr "Subfitxer: %s"
+
+#: install-info/install-info.c:292
+#, c-format
+msgid "%s: empty file"
+msgstr "%s: fitxer buit"
+
+#: install-info/install-info.c:294
+#, c-format
+msgid "%s for %s"
+msgstr "%s per a %s"
+
+#: install-info/install-info.c:533
+#, c-format
+msgid "\tTry `%s --help' for a complete list of options.\n"
+msgstr "\tProveu `%s --help' per a una llista completa d'opcions.\n"
+
+#: install-info/install-info.c:541
+#, c-format
+msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+msgstr "Ús: %s [OPCIÓ]... [FITXER-INFO [FITXER-DIR]]\n"
+
+#: install-info/install-info.c:543
+msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
+msgstr ""
+"Afegeix o elimina entrades a FITXER-INFO del directori infor FITXER-DIR."
+
+#: install-info/install-info.c:544
+msgid ""
+"INFO-FILE and DIR-FILE are required unless the --info-file\n"
+"or --dir-file (or --info-dir) options are given, respectively."
+msgstr ""
+"Es requereixen FITXER-INFO i FITXER-DIR a no ser que es donin\n"
+"les opcions--info-file o --dir-file (o --info-dir), respectivament."
+
+#: install-info/install-info.c:548
+msgid ""
+"Options:\n"
+" --add-once          add only to first matching section, not all.\n"
+" --align=COL         start description of new entries at column COL.\n"
+" --calign=COL        format second and subsequent description lines to\n"
+"                       start at column COL."
+msgstr ""
+"Opcions:\n"
+" --add-once          afegeix sols la primera secció concordant, no totes.\n"
+" --align=COL         inicia la descripció de noves entrades a la columna "
+"COL.\n"
+" --calign=COL        dóna format a la segona i subsegüents línies de "
+"descripció perquè s'iniciïn a la columna COL."
+
+#: install-info/install-info.c:555
+msgid ""
+" --debug             report what is being done.\n"
+" --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
+"                      don't insert any new entries.\n"
+" --defsection=TEXT   like --section, but only use TEXT if no sections\n"
+"                      are present in INFO-FILE (replacing \"Miscellaneous"
+"\").\n"
+" --description=TEXT  the description of the entry is TEXT; used with\n"
+"                      the --name option to become synonymous with the\n"
+"                      --entry option.\n"
+" --dir-file=NAME     specify file name of Info directory file;\n"
+"                      equivalent to using the DIR-FILE argument.\n"
+" --dry-run           same as --test."
+msgstr ""
+" --debug             informa sobre el que s'està fent.\n"
+" --delete            esborra les entrades existents per a FITXER-INFO de "
+"FITXER-DIR;\n"
+"                      no insereixis cap nova entrada.\n"
+" --defsectin=TEXT    com --section, per sols usa TEXT si no hi ha seccions\n"
+"a FITXER-INFO (reemplaçant \"Miscel·lània).\n"
+" --description=TEXT  la descripció de la entrada és TEXT; si s'usa \n"
+"                      amb l'opció --name esdevé un sinònim de l'opció\n"
+"                      --entry.\n"
+" --dir-file=NOM      especifica el nom del fitxer del fitxer de directori "
+"Info;\n"
+"                      és equivalent a usar l'argument FITXER-DIR.\n"
+" --dry-run           igual que --test."
+
+#: install-info/install-info.c:568
+msgid ""
+" --entry=TEXT        insert TEXT as an Info directory entry,\n"
+"                      overriding any corresponding entry from DIR-FILE.\n"
+"                      TEXT is written as an Info menu item line followed\n"
+"                       by zero or more extra lines starting with "
+"whitespace.\n"
+"                      If you specify more than one entry, all are added.\n"
+"                      If you don't specify any entries, they are determined\n"
+"                       from information in the Info file itself."
+msgstr ""
+" --entry=TEXT        insereix TEXT com una entrada de directori Info,\n"
+"                      anul·lant qualsevol entrada corresponent de FITXER-"
+"DIR.\n"
+"                      TEXT s'escriu com un element de menú Info seguit\n"
+"                       per zero o més línies extra començant amb espai en "
+"blanc.\n"
+"                      Si especifiqueu més d'una entrada, s'afegeixen totes.\n"
+"                      Si no especifiqueu cap entrada, es determinen \n"
+"                       de la informació al fitxer Info mateix."
+
+#: install-info/install-info.c:577
+msgid ""
+" --help              display this help and exit.\n"
+" --info-dir=DIR      same as --dir-file=DIR/dir.\n"
+" --info-file=FILE    specify Info file to install in the directory;\n"
+"                      equivalent to using the INFO-FILE argument.\n"
+" --item=TEXT         same as --entry=TEXT.\n"
+" --keep-old          do not replace entries, or remove empty sections."
+msgstr ""
+" --help              mostra aquesta ajuda i surt.\n"
+" --info-dir=DIR      igual qeu --dir-file=DIR/dir.\n"
+" --info-file=FITXER  especifiqueu el fitxer Info a instal·lar al directori;\n"
+"                      és equivalent a suar l'argument FITXER-INFO.\n"
+" --item=TEXT         igual que --entry=TEXT.\n"
+" --keep-old          no reemplacis les entrades, ni eliminis les seccions "
+"buides."
+
+#: install-info/install-info.c:585
+msgid ""
+" --maxwidth, --max-width=COL  wrap description at column COL.\n"
+" --menuentry=TEXT    same as --name=TEXT.\n"
+" --name=TEXT         the name of the entry is TEXT; used with --description\n"
+"                      to become synonymous with the --entry option.\n"
+" --no-indent         do not format new entries in the DIR file.\n"
+" --quiet             suppress warnings."
+msgstr ""
+" --maxwidth, --max-width=COL  trunca la descripció a la columna COL.\n"
+" --menuentry=TEXT    igual que --name=TEXT.\n"
+" --name=TEXT         el nom de l'entrada és TEXT; s'usa amb --description\n"
+"                      perquè sigui sinònim amb l'opció --entry\n"
+" --no-indent         no li donis format a les noves entrada al fitxer DIR.\n"
+" --quiet             suprimeix els advertiments."
+
+#: install-info/install-info.c:593
+msgid ""
+" --regex=R           put this file's entries in all sections that match the\n"
+"                      regular expression R (ignoring case).\n"
+" --remove            same as --delete.\n"
+" --remove-exactly    only remove if the info file name matches exactly;\n"
+"                      suffixes such as .info and .gz are not ignored.\n"
+" --section=SEC       put entries in section SEC of the directory.\n"
+"                      If you specify more than one section, all the entries\n"
+"                       are added in each of the sections.\n"
+"                      If you don't specify any sections, they are "
+"determined\n"
+"                       from information in the Info file itself;\n"
+"                       if nothing is available there, the --defsection\n"
+"                       value is used; if that is not specified, the\n"
+"                       final default is \"Miscellaneous\".\n"
+" --section R SEC     equivalent to --regex=R --section=SEC --add-once."
+msgstr ""
+" --regex=R           posa les entrades d'aquest fitxer a totes les seccions "
+"que concordin\n"
+"                      amb l'expressió regular R (ignorant majúscules i "
+"minúscules).\n"
+" --remove            igual que --delete\n"
+" --remove-exactly    elimina sols si el nom del fitxer info concorda "
+"exactament;\n"
+"                      els sufixos com ara .info i .gz no s'ignoren.\n"
+" --section=SEC       posa les entrades a la secció SEC del directori.\n"
+"                      Si especifiqueu més d'una secció, totes les entrades\n"
+"                       s'afegeixen a cadascuna de les seccions.\n"
+"                      Si no especifiqueu cap secció, es determinen \n"
+"                       de la informació al fitxer Info mateix;\n"
+"                       si no ha ha res allà, s'usa el valor --defsection:\n"
+"                       si no s'especifica això, el valor predeterminat\n"
+"                       final és \"Miscel·lània\".\n"
+" --section R SEC     equivalent a --regex=R --section=SEC --add-once."
+
+#: install-info/install-info.c:609
+msgid ""
+" --silent            suppress warnings.\n"
+" --test              suppress updating of DIR-FILE.\n"
+" --version           display version information and exit."
+msgstr ""
+" --silent            suprimeix els advertiments.\n"
+" --test              suprimeix l'actualització de FITXER-DIR.\n"
+" --version           mostra la informació de versió i surt."
+
+#: install-info/install-info.c:616 tp/texi2any.pl:866
+msgid ""
+"Email bug reports to bug-texinfo@gnu.org,\n"
+"general questions and discussion to help-texinfo@gnu.org.\n"
+"Texinfo home page: http://www.gnu.org/software/texinfo/"
+msgstr ""
+"Envia els informes d'error per correu electrònic a bug-texinfo@gnu.org.\n"
+"preguntes generals i discussió a help-texinfo@gnu.org.\n"
+"Pàgina d'inici de texinfo: http://www.gnu.org/software/texinfo/"
+
+#: install-info/install-info.c:643
+#, c-format
+msgid ""
+"This is the file .../info/dir, which contains the\n"
+"topmost node of the Info hierarchy, called (dir)Top.\n"
+"The first time you invoke Info you start off looking at this node.\n"
+"%c\n"
+"%s\tThis is the top of the INFO tree\n"
+"\n"
+"  This (the Directory node) gives a menu of major topics.\n"
+"  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
+"  \"h\" gives a primer for first-timers,\n"
+"  \"mEmacs<Return>\" visits the Emacs manual, etc.\n"
+"\n"
+"  In Emacs, you can click mouse button 2 on a menu item or cross reference\n"
+"  to select it.\n"
+"\n"
+"%s\n"
+msgstr ""
+"Aquest és el fitxer .../info/dir, que conté el node\n"
+"de nivell superior de la jerarquia Info, anomenat (dir)Amunt.\n"
+"El primer cop que invoqueu Info comenceu mirant a aquest node.\n"
+"%c\n"
+"%s\tAixò és la part més alta de l'arbre INFO\n"
+"  Aquest node (Directori) dóna un menú dels temes principals.\n"
+"  L'escripture de \"q\" surt, \"?\" llista totes les ordres Info, \"d\" "
+"retorna aquí,\n"
+"  \"h\" dóna una introducció als usuaris novells,\n"
+"  \"mEmacs<Intro>\" visita el manual Emacs, etc.\n"
+"\n"
+"  A Emacs, podeu clicar el botó 2 del ratolí a un menú o a una referència\n"
+"  creuada per seleccionar-los.\n"
+"\n"
+"%s\n"
+
+#: install-info/install-info.c:667
+#, c-format
+msgid "%s: could not read (%s) and could not create (%s)"
+msgstr "%s: no s'ha pogut llegir (%s) i no s'ha pogut crear (%s)"
+
+#: install-info/install-info.c:1134 install-info/install-info.c:1174
+#, c-format
+msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
+msgstr "START-INFO-DIR-ENTRY sense END-INFO-DIR-ENTRY concordant"
+
+#: install-info/install-info.c:1169
+#, c-format
+msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
+msgstr "END-INFO-DIR-ENTRY sense START-INFO-DIR-ENTRY concordant"
+
+#: install-info/install-info.c:2037 install-info/install-info.c:2047
+#, c-format
+msgid "%s: already have dir file: %s\n"
+msgstr "%s: ja té fitxer dir: %s\n"
+
+#: install-info/install-info.c:2143
+#, c-format
+msgid "%s: Specify the Info file only once.\n"
+msgstr "%s: Especifiqueu el fitxer Info sols un cop.\n"
+
+#: install-info/install-info.c:2176
+#, c-format
+msgid "Extra regular expression specified, ignoring `%s'"
+msgstr "Expressió regular extra especificat, s'ignorarà `%s'"
+
+#: install-info/install-info.c:2188
+#, c-format
+msgid "Error in regular expression `%s': %s"
+msgstr "Error a l'expressió regular `%s': %s"
+
+#: install-info/install-info.c:2250
+#, c-format
+msgid "excess command line argument `%s'"
+msgstr "argument `%s' excessiu de línia d'ordres"
+
+#: install-info/install-info.c:2254
+#, c-format
+msgid "No input file specified; try --help for more information."
+msgstr ""
+"No s'ha especificat fitxer d'entrada: proveu --help per a més informació."
+
+#: install-info/install-info.c:2256
+#, c-format
+msgid "No dir file specified; try --help for more information."
+msgstr "No s'ha especificat un fitxer dir: proveu --help per a més informació."
+
+#: install-info/install-info.c:2277
+#, c-format
+msgid "Could not read %s."
+msgstr "no s'ha pogut llegir %s."
+
+#: install-info/install-info.c:2424
+#, c-format
+msgid "no info dir entry in `%s'"
+msgstr "no hi ha una entrada de directori info a `%s'"
+
+#: install-info/install-info.c:2672
+#, c-format
+msgid "no entries found for `%s'; nothing deleted"
+msgstr "no s'han trobat entrades per a `%s'; no s'ha esborrat res"
+
+#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:855
+#: tp/Texinfo/Convert/Converter.pm:893 tp/Texinfo/Convert/Converter.pm:1204
+#: tp/Texinfo/Convert/DocBook.pm:325 tp/Texinfo/Convert/HTML.pm:6499
+#: tp/Texinfo/Convert/HTML.pm:6523 tp/Texinfo/Convert/HTML.pm:6900
+#: tp/Texinfo/Convert/HTML.pm:6958 tp/Texinfo/Convert/HTML.pm:7036
+#: tp/Texinfo/Convert/HTML.pm:7113 tp/Texinfo/Convert/IXIN.pm:293
+#: tp/Texinfo/Convert/Info.pm:99 tp/Texinfo/Convert/Info.pm:203
+#: tp/Texinfo/Convert/Info.pm:229 tp/Texinfo/Convert/Plaintext.pm:538
+#: tp/Texinfo/Convert/TexinfoXML.pm:457
+#, perl-format
+msgid "could not open %s for writing: %s"
+msgstr "no s'ha pogut obrir %s per escriure: %s"
+
+#: tp/Texinfo/Common.pm:878
+msgid "recursion is always allowed"
+msgstr "sempre es permet la recursivitat"
+
+#: tp/Texinfo/Common.pm:879
+msgid "arguments are quoted by default"
+msgstr "els arguments estan entre cometes de forma predeterminada"
+
+#: tp/Texinfo/Common.pm:1096
+#, perl-format
+msgid "%s is not a valid language code"
+msgstr "%s no és un codi vàlid"
+
+#: tp/Texinfo/Common.pm:1101
+#, perl-format
+msgid "%s is not a valid region code"
+msgstr "%s no es un codi vàlid de regió"
+
+#: tp/Texinfo/Common.pm:1119
+#, perl-format
+msgid "%s is not a valid split possibility"
+msgstr "%s no és una possibilitat vàlida de divisió"
+
+#: tp/Texinfo/Common.pm:1142
+#, perl-format
+msgid "could not read %s: %s"
+msgstr "no s'ha pogut llegir %s: %s"
+
+#: tp/Texinfo/Common.pm:1161
+#, perl-format
+msgid "error on closing @verbatiminclude file %s: %s"
+msgstr "error en tancar fitxer @verbatiminclude %s: %s"
+
+#: tp/Texinfo/Common.pm:1167 tp/Texinfo/Parser.pm:3342
+#, perl-format
+msgid "@%s: could not find %s"
+msgstr "@%s: no s'ha pogut trobar %s"
+
+#: tp/Texinfo/Common.pm:1511
+#, perl-format
+msgid "could not open html refs config file %s: %s"
+msgstr ""
+"no s'ha pogut obrir el fitxer de configuració de referències html %s: %s"
+
+#: tp/Texinfo/Common.pm:1539
+msgid "missing type"
+msgstr "tipus que falta"
+
+#: tp/Texinfo/Common.pm:1542
+#, perl-format
+msgid "unrecognized type: %s"
+msgstr "tipus no reconegut: %s"
+
+#: tp/Texinfo/Common.pm:1559
+#, perl-format
+msgid "error on closing html refs config file %s: %s"
+msgstr "error en tancar el fitxer de configuració de referències html %s: %s"
+
+#: tp/Texinfo/Common.pm:1594
+msgid "no node to be renamed"
+msgstr "no hi ha un node a reanomenar"
+
+#: tp/Texinfo/Common.pm:1605
+msgid "nodes without a new name at the end of file"
+msgstr "hi ha nodes sense un nom nou al final del fitxer"
+
+#: tp/Texinfo/Common.pm:1615 tp/Texinfo/Parser.pm:926
+#, perl-format
+msgid "could not open %s: %s"
+msgstr "no s'ha pogut obrir %s: %s"
+
+#: tp/Texinfo/Common.pm:2135
+#, perl-format
+msgid "could not protect hash character in @%s"
+msgstr "no s'ha pogut protegir el caràcter coixinet a @%s"
+
+#: tp/Texinfo/Convert/Converter.pm:395 tp/Texinfo/Convert/Converter.pm:414
+#, perl-format
+msgid "Obsolete variable %s\n"
+msgstr "Variable obsoleta %s\n"
+
+#: tp/Texinfo/Convert/Converter.pm:794
+#, perl-format
+msgid "%s: output incompatible with split"
+msgstr "%s: la sortida és incompatible amb la divisió"
+
+#: tp/Texinfo/Convert/Converter.pm:876 tp/Texinfo/Convert/Converter.pm:909
+#: tp/Texinfo/Convert/DocBook.pm:361 tp/Texinfo/Convert/HTML.pm:6926
+#: tp/Texinfo/Convert/HTML.pm:6984 tp/Texinfo/Convert/IXIN.pm:915
+#: tp/Texinfo/Convert/Info.pm:162 tp/Texinfo/Convert/Info.pm:188
+#: tp/Texinfo/Convert/Info.pm:219 tp/Texinfo/Convert/Info.pm:282
+#: tp/Texinfo/Convert/TexinfoXML.pm:476 tp/Texinfo/Parser.pm:2034
+#, perl-format
+msgid "error on closing %s: %s"
+msgstr "error en tancar %s: %s"
+
+#: tp/Texinfo/Convert/Converter.pm:987
+#, perl-format
+msgid "could not create directories `%s' or `%s': %s"
+msgstr "no s'ha pogut crear els directoris `%s' o `%s': %s"
+
+#: tp/Texinfo/Convert/Converter.pm:995
+#, perl-format
+msgid "could not create directory `%s': %s"
+msgstr "no s'ha pogut crear el directory `%s': %s"
+
+#: tp/Texinfo/Convert/DocBook.pm:968
+#, perl-format
+msgid "@image file `%s' not found, using `%s'"
+msgstr "no s'ha trobar el fitxer @image  `%s', s'usarà `%s'"
+
+#: tp/Texinfo/Convert/DocBook.pm:1082 tp/Texinfo/Parser.pm:5342
+msgid "no argument specified for @U"
+msgstr "no s'ha especificat un argument per a @U"
+
+#: tp/Texinfo/Convert/HTML.pm:1684
+#, perl-format
+msgid "@image file `%s' (for HTML) not found, using `%s'"
+msgstr "no s'ha trobat el fitxer @image `%s' (for HTML), s'usarà `%s'"
+
+#: tp/Texinfo/Convert/HTML.pm:2373
+#, perl-format
+msgid "raw format %s is not converted"
+msgstr "el format en cru %s no es convertirà"
+
+#: tp/Texinfo/Convert/HTML.pm:4883
+msgid "string not closed in css file"
+msgstr "la cadena de caràcters no està tancada al fitxer css"
+
+#: tp/Texinfo/Convert/HTML.pm:4885
+msgid "--css-include ended in comment"
+msgstr "--css-include ha finalitzat en un comentari"
+
+#: tp/Texinfo/Convert/HTML.pm:4887
+msgid "@import not finished in css file"
+msgstr "@import no ha acabat a un fitxer css"
+
+#: tp/Texinfo/Convert/HTML.pm:4913
+#, perl-format
+msgid "CSS file %s not found"
+msgstr "No s'ha trobat el fitxer CSS %s"
+
+#: tp/Texinfo/Convert/HTML.pm:4919
+#, perl-format
+msgid "could not open --include-file %s: %s"
+msgstr "no s'ha pogut obrir --include-file %s: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:4929
+#, perl-format
+msgid "error on closing CSS file %s: %s"
+msgstr "error en tancar el fitxer CSS %s: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:5796 tp/Texinfo/Convert/HTML.pm:5800
+#, perl-format
+msgid "no htmlxref.cnf entry found for `%s'"
+msgstr "no s'ha trobat una entrada htmlxref.cnf per a `%s'"
+
+#: tp/Texinfo/Convert/HTML.pm:6494
+#, perl-format
+msgid "error on closing frame file %s: %s"
+msgstr "error en tancar el fitxer marc %s: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:6518
+#, perl-format
+msgid "error on closing TOC frame file %s: %s"
+msgstr "error en tancar el fitxer marc taula de continguts %s: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:6633
+#, perl-format
+msgid "handler %s of stage %s priority %s failed"
+msgstr "ha fallat el gestor %s de l'etapa %s amb prioritat %s"
+
+#: tp/Texinfo/Convert/HTML.pm:6834
+msgid "must specify a title with a title command or @top"
+msgstr "heu d'especificar un títol amb una ordre de títol o @top"
+
+#: tp/Texinfo/Convert/HTML.pm:7043
+#, perl-format
+msgid "error on closing redirection node file %s: %s"
+msgstr "error en tancar el fitxer de node de redirecció %s: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:7068
+#, perl-format
+msgid "old name for `%s' is a node of the document"
+msgstr "el nom antic per a `%s' és un node del document"
+
+#: tp/Texinfo/Convert/HTML.pm:7074
+#, perl-format
+msgid "file empty for renamed node `%s'"
+msgstr "el fitxer està buit per al node reanomenat `%s'"
+
+#: tp/Texinfo/Convert/HTML.pm:7088
+#, perl-format
+msgid "target node (new name for `%s') not in document: %s"
+msgstr "el node destí (nou nom per a `%s') no està al document: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:7120
+#, perl-format
+msgid "error on closing renamed node redirection file %s: %s"
+msgstr "error en tancar el fitxer reanomenat de node de redirecció %s: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:7158
+msgid "empty node name"
+msgstr "nom buit de node"
+
+#: tp/Texinfo/Convert/HTML.pm:7160 tp/Texinfo/Parser.pm:3689
+#, perl-format
+msgid "syntax for an external node used for `%s'"
+msgstr "sintaxi per a un node extern usat per a `%s'"
+
+#: tp/Texinfo/Convert/Info.pm:108
+msgid "document without nodes"
+msgstr "document sense nodes"
+
+#: tp/Texinfo/Convert/Info.pm:125
+msgid "document without Top node"
+msgstr "document sense node Amunt"
+
+#: tp/Texinfo/Convert/Info.pm:172
+#, perl-format
+msgid "rename %s failed: %s"
+msgstr "reanomena %s ha fallat: %s"
+
+#: tp/Texinfo/Convert/Info.pm:254
+#, perl-format
+msgid "@%s output more than once: %s"
+msgstr "@%s sortida més d'un cop: %s"
+
+#: tp/Texinfo/Convert/Info.pm:369
+#, perl-format
+msgid "@%s outside of any node"
+msgstr "@%s fora de qualsevol node"
+
+#: tp/Texinfo/Convert/Info.pm:409
+#, perl-format
+msgid "@node name should not contain `,': %s"
+msgstr "el nom de @node no ha de contenir `,': %s"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1286
+#, perl-format
+msgid "Index entry in @%s with : produces invalid Info: %s"
+msgstr "L'entrada d'índex a @%s amb : productio Info invàlid: %s"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1332 tp/Texinfo/Parser.pm:2721
+#, perl-format
+msgid "entry for index `%s' outside of any node"
+msgstr "l'entrada per a l'índex `%s' està fora de qualsevol node"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1446
+#, perl-format
+msgid "error on closing image text file %s: %s"
+msgstr "error en tancar el fitxer de text d'imatge %s: %s"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1451
+#, perl-format
+msgid "@image file `%s' unreadable: %s"
+msgstr "fitxer @image `%s' no llegible: %s"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1474
+#, perl-format
+msgid "could not find @image file `%s.txt' nor alternate text"
+msgstr ""
+"no s'ha pogut trobar el fitxer @image `%s.txt' i tampoc un text alternatiu"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1866
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+"@strong{Note...} produeix una referencia creuada espúria a Info; reformula-"
+"ho per evitar això"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2086
+#, perl-format
+msgid "@%s cross-reference name should not contain `:'"
+msgstr "el nom @%s de referència creuada no hauria de contenir `:'"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2103
+#, perl-format
+msgid "@%s node name should not contain `%s'"
+msgstr "el nom de node @%s no hauria de contenir `%s'"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2118
+#, perl-format
+msgid "@%s node name should not contain `:'"
+msgstr "el nom de node @%s no hauria de contenir `:'"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2141
+#, perl-format
+msgid "`.' or `,' must follow @xref, not %s"
+msgstr "`.' o `,' ha de seguir a @xref, no %s"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2144
+msgid "`.' or `,' must follow @xref"
+msgstr "`.' or `,' ha de seguir a @xref"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2980
+#, perl-format
+msgid "menu entry node name should not contain `%s'"
+msgstr "el nom de node d'entrada de menú no hauria de contenir `%s'"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2987
+msgid "menu entry node name should not contain `:'"
+msgstr "el nom de node d'entrada de menú no hauria de contenir `:'"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2998
+msgid "menu entry name should not contain `:'"
+msgstr "el nom d'entrada de menú no hauria de contenir `:'"
+
+#: tp/Texinfo/Parser.pm:910
+#, perl-format
+msgid "@%s should only appear at beginning or end of document"
+msgstr "@%s hauria d'aparèixer únicament al principi o al final del document"
+
+#: tp/Texinfo/Parser.pm:1160 tp/Texinfo/Structuring.pm:613
+#, perl-format
+msgid "multiple @%s"
+msgstr "@%s múltiple"
+
+#: tp/Texinfo/Parser.pm:1194
+#, perl-format
+msgid "bad syntax for @%s argument: %s"
+msgstr "sintaxi incorrecta per a argument @%s: %s "
+
+#: tp/Texinfo/Parser.pm:1210
+#, perl-format
+msgid "bad or empty @%s formal argument: %s"
+msgstr "argument formal @%s incorrecte o buit: %s"
+
+#: tp/Texinfo/Parser.pm:1219 tp/Texinfo/Parser.pm:4810
+#: tp/Texinfo/Parser.pm:4836 tp/Texinfo/Parser.pm:5602
+#: tp/Texinfo/Parser.pm:5618 tp/Texinfo/Parser.pm:5633
+#, perl-format
+msgid "%c%s requires a name"
+msgstr "%c%s requereix un nom"
+
+#: tp/Texinfo/Parser.pm:1223 tp/Texinfo/Parser.pm:4813
+#: tp/Texinfo/Parser.pm:4839 tp/Texinfo/Parser.pm:5605
+#: tp/Texinfo/Parser.pm:5621 tp/Texinfo/Parser.pm:5636
+#, perl-format
+msgid "bad name for @%s"
+msgstr "nom incorrecte per a @%s"
+
+#: tp/Texinfo/Parser.pm:1341
+#, perl-format
+msgid "@end %s seen before @%s closing brace"
+msgstr "@end %s vist abans @%s claudàtor de tancada"
+
+#: tp/Texinfo/Parser.pm:1345
+#, perl-format
+msgid "@%s seen before @%s closing brace"
+msgstr "@%s vist abans @%s claudàtor de tancada"
+
+#: tp/Texinfo/Parser.pm:1350
+#, perl-format
+msgid "%c%s missing close brace"
+msgstr "%c%s claudàtor de tancada que falta"
+
+#: tp/Texinfo/Parser.pm:1354
+#, perl-format
+msgid "@%s missing closing delimiter sequence: %s}"
+msgstr "@%s seqüència de delimitació de tancada que falta: %s}"
+
+#: tp/Texinfo/Parser.pm:1476
+#, perl-format
+msgid "@itemx should not begin @%s"
+msgstr "@itemx no hauria de començar @%s"
+
+#: tp/Texinfo/Parser.pm:1544
+msgid "@itemx must follow @item"
+msgstr "@itemx ha de seguir @item"
+
+#: tp/Texinfo/Parser.pm:1712
+#, perl-format
+msgid "@%s has text but no @item"
+msgstr "@%s té text però no @item"
+
+#: tp/Texinfo/Parser.pm:1743
+#, perl-format
+msgid "`@end' expected `%s', but saw `%s'"
+msgstr "`@end' esperava `%s', però ha vist `%s'"
+
+#: tp/Texinfo/Parser.pm:1746
+#, perl-format
+msgid "@%s seen before @end %s"
+msgstr "s'ha vist @%s abans de @end %s"
+
+#: tp/Texinfo/Parser.pm:1750
+#, perl-format
+msgid "no matching `%cend %s'"
+msgstr "no hi ha `%cend %s' concordant"
+
+#: tp/Texinfo/Parser.pm:1776 tp/Texinfo/Parser.pm:5158
+#: tp/Texinfo/Parser.pm:5424
+#, perl-format
+msgid "misplaced %c"
+msgstr "%c fora de lloc"
+
+#: tp/Texinfo/Parser.pm:1874 tp/Texinfo/Parser.pm:3301
+#, perl-format
+msgid "unmatched `%c%s'"
+msgstr "`%c%s' no concordat"
+
+#: tp/Texinfo/Parser.pm:2109
+#, perl-format
+msgid "macro `%s' called with too many args"
+msgstr "el macro `%s' s'ha cridat amb massa arguments"
+
+#: tp/Texinfo/Parser.pm:2131
+#, perl-format
+msgid "@%s missing close brace"
+msgstr "@%s claudàtor de tancada que falta"
+
+#: tp/Texinfo/Parser.pm:2139
+#, perl-format
+msgid "macro `%s' declared without argument called with an argument"
+msgstr "el macro `%s' s'ha declarat sense un argument cridat amb un argument"
+
+#: tp/Texinfo/Parser.pm:2174
+#, perl-format
+msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
+msgstr ""
+"\\ a expansió  @%s seguida de `%s' en comptes del nom de paràmetre o \\"
+
+#: tp/Texinfo/Parser.pm:2649
+#, perl-format
+msgid "@%s `%s' previously defined"
+msgstr "@%s `%s' definit prèviament"
+
+#: tp/Texinfo/Parser.pm:2654
+#, perl-format
+msgid "here is the previous definition as @%s"
+msgstr "aquí està la definició prèvia de @%s"
+
+#: tp/Texinfo/Parser.pm:3015
+#, perl-format
+msgid "missing name for @%s"
+msgstr "nom que falta per a @%s"
+
+#: tp/Texinfo/Parser.pm:3020
+#, perl-format
+msgid "missing category for @%s"
+msgstr "categoria que falta per a @%s"
+
+#: tp/Texinfo/Parser.pm:3072
+#, perl-format
+msgid "unexpected argument on @%s line: %s"
+msgstr "argument inesperat sobre @%s a la línia: %s"
+
+#: tp/Texinfo/Parser.pm:3088
+msgid "empty multitable"
+msgstr "multitaula buida"
+
+#: tp/Texinfo/Parser.pm:3144 tp/Texinfo/Parser.pm:5715
+#, perl-format
+msgid "superfluous argument to @%s"
+msgstr "argument superflu a @%s"
+
+#: tp/Texinfo/Parser.pm:3150 tp/Texinfo/Parser.pm:5737
+#: tp/Texinfo/Parser.pm:5749
+#, perl-format
+msgid "bad argument to @%s"
+msgstr "argument incorrecte a @%s"
+
+#: tp/Texinfo/Parser.pm:3161
+#, perl-format
+msgid "%s requires an argument: the formatter for %citem"
+msgstr "%s requereix un argument: el formatejador per a %citem"
+
+#: tp/Texinfo/Parser.pm:3166
+#, perl-format
+msgid "command @%s not accepting argument in brace should not be on @%s line"
+msgstr ""
+"l'ordre @%s que no està acceptant un argument en claudàtor no hauria de "
+"estar a la línia @%s"
+
+#: tp/Texinfo/Parser.pm:3201
+#, perl-format
+msgid "accent command `@%s' not allowed as @%s argument"
+msgstr "l'ordre d'accent `@%s' no està permesa com argument @%s"
+
+#: tp/Texinfo/Parser.pm:3279 tp/Texinfo/Parser.pm:3418
+#: tp/Texinfo/Parser.pm:5708
+#, perl-format
+msgid "@%s missing argument"
+msgstr "@%s argument que falta"
+
+#: tp/Texinfo/Parser.pm:3291
+#, perl-format
+msgid "unknown @end %s"
+msgstr "@end desconegut %s"
+
+#: tp/Texinfo/Parser.pm:3313 tp/Texinfo/Parser.pm:3935
+#, perl-format
+msgid "superfluous argument to @%s %s: %s"
+msgstr "argument superflu a @%s %s: %s"
+
+#: tp/Texinfo/Parser.pm:3318 tp/Texinfo/Parser.pm:5792
+#: tp/Texinfo/Parser.pm:5837 tp/Texinfo/Parser.pm:5866
+#: tp/Texinfo/Parser.pm:5907 tp/Texinfo/Parser.pm:5985
+#, perl-format
+msgid "bad argument to @%s: %s"
+msgstr "argument incorrecte a @%s: %s"
+
+#: tp/Texinfo/Parser.pm:3337
+#, perl-format
+msgid "@%s: could not open %s: %s"
+msgstr "@%s: no s'ha pogut obrir %s: %s"
+
+#: tp/Texinfo/Parser.pm:3349
+#, perl-format
+msgid "encoding `%s' is not a canonical texinfo encoding"
+msgstr "la codificació `%s' no és una codificació de texinfo canònica"
+
+#: tp/Texinfo/Parser.pm:3358
+#, perl-format
+msgid "unrecognized encoding name `%s'"
+msgstr "nom `%s' de codificació no reconegut"
+
+#: tp/Texinfo/Parser.pm:3508
+#, perl-format
+msgid "@%s after the first element"
+msgstr "@%s després del primer element"
+
+#: tp/Texinfo/Parser.pm:3515
+#, perl-format
+msgid "@%s only meaningful on a @multitable line"
+msgstr "@%s sols té sentit a una línia @multitable"
+
+#: tp/Texinfo/Parser.pm:3555
+#, perl-format
+msgid "@%s should not be associated with @top"
+msgstr "@%s no hauria d'estar associat amb @top"
+
+#: tp/Texinfo/Parser.pm:3567
+#, perl-format
+msgid "@node precedes @%s, but parts may not be associated with nodes"
+msgstr ""
+"@node precedeix @%s, però les parts no haurien d'estar associades amb nodes"
+
+#: tp/Texinfo/Parser.pm:3669
+#, perl-format
+msgid "empty argument in @%s"
+msgstr "argument buit a @%s"
+
+#: tp/Texinfo/Parser.pm:3673
+#, perl-format
+msgid "empty node name after expansion `%s'"
+msgstr "nom de node buit després d'expansió `%s'"
+
+#: tp/Texinfo/Parser.pm:3716
+#, perl-format
+msgid "empty menu entry name in `%s'"
+msgstr "nom buit d'entrada de menú a `%s'"
+
+#: tp/Texinfo/Parser.pm:3724
+msgid "empty node name in menu entry"
+msgstr "nom buit de node a entrada de menú"
+
+#: tp/Texinfo/Parser.pm:3797
+#, perl-format
+msgid "@%s should not appear in @%s"
+msgstr "@%s no hauria d'aparèixer a @%s"
+
+#: tp/Texinfo/Parser.pm:3929
+#, perl-format
+msgid "@end %s should only appear at a line beginning"
+msgstr "@end %s hauria d'aparèixer únicament a un principi de línia"
+
+#: tp/Texinfo/Parser.pm:3952
+#, perl-format
+msgid "macro `%s' previously defined"
+msgstr "el macro `%s' ha estat definit prèviament"
+
+#: tp/Texinfo/Parser.pm:3955
+#, perl-format
+msgid "here is the previous definition of `%s'"
+msgstr "aquí està la definició prèvia de `%s'"
+
+#: tp/Texinfo/Parser.pm:3960
+#, perl-format
+msgid "redefining Texinfo language command: @%s"
+msgstr "s'està redefinint l'ordre de llenguatge Texinfo: @%s"
+
+#: tp/Texinfo/Parser.pm:4009
+#, perl-format
+msgid "@%s without associated character"
+msgstr "@%s sense un caràcter associat"
+
+#: tp/Texinfo/Parser.pm:4071
+#, perl-format
+msgid ""
+"@%s defined with zero or more than one argument should be invoked with {}"
+msgstr "@%s definit amb zero o més d'un argument hauria de ser invocat amb {}"
+
+#: tp/Texinfo/Parser.pm:4095
+#, perl-format
+msgid ""
+"macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
+"value %d)"
+msgstr ""
+"la crida de macro està niuada massa profundament (establiu MAX_NESTED_MACROS "
+"per anul·lar-ho: el valor actual és %d)"
+
+#: tp/Texinfo/Parser.pm:4104
+#, perl-format
+msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
+msgstr ""
+"no està permès la crida recursiva del macro %s; useu @rmacro si es necessita"
+
+#: tp/Texinfo/Parser.pm:4160
+#, perl-format
+msgid "accent command `@%s' must not be followed by whitespace"
+msgstr "l'ordre d'accent `@%s' no ha de ser seguida per espai en blanc"
+
+#: tp/Texinfo/Parser.pm:4166
+#, perl-format
+msgid "use braces to give a command as an argument to @%s"
+msgstr "useu claudàtors per donar una ordre com argument per a @%s"
+
+#: tp/Texinfo/Parser.pm:4179 tp/Texinfo/Parser.pm:5279
+#, perl-format
+msgid "%c%s expects `i' or `j' as argument, not `%s'"
+msgstr "%c%s espera `i' o `j' com argument, no `%s'"
+
+#: tp/Texinfo/Parser.pm:4191
+#, perl-format
+msgid "accent command `@%s' must not be followed by new line"
+msgstr "l'ordre d'accent `@%s' no ha de ser seguida per una línia nova"
+
+#: tp/Texinfo/Parser.pm:4202
+#, perl-format
+msgid "@%s expected braces"
+msgstr "@%s esperava claudàtors"
+
+#: tp/Texinfo/Parser.pm:4362
+#, perl-format
+msgid "undefined flag: %s"
+msgstr "etiqueta no definida: %s"
+
+#: tp/Texinfo/Parser.pm:4365
+msgid "bad syntax for @value"
+msgstr "sintaxi incorrecta per a @value"
+
+#: tp/Texinfo/Parser.pm:4372
+#, perl-format
+msgid "%c%s is obsolete."
+msgstr "%c%s és obsolet."
+
+#: tp/Texinfo/Parser.pm:4375
+#, perl-format
+msgid "%c%s is obsolete; %s"
+msgstr "%c%s és obsolet; %s"
+
+#: tp/Texinfo/Parser.pm:4384
+#, perl-format
+msgid "@%s should only appear at a line beginning"
+msgstr "@%s hauria d'aparèixer únicament a un començament de línia"
+
+#: tp/Texinfo/Parser.pm:4475
+#, perl-format
+msgid "@%s not allowed inside `@%s' block"
+msgstr "@%s no està permès dins d'un bloc `@%s'"
+
+#: tp/Texinfo/Parser.pm:4484
+#, perl-format
+msgid "@%s should only appear in heading or footing"
+msgstr "@%s hauria d'aparèixer únicament a la capçalera o al peu"
+
+#: tp/Texinfo/Parser.pm:4610 tp/Texinfo/Parser.pm:4627
+#: tp/Texinfo/Parser.pm:4677
+#, perl-format
+msgid "@%s not meaningful inside `@%s' block"
+msgstr "@%s no té sentit dins d'un bloc `@%s'"
+
+#: tp/Texinfo/Parser.pm:4637
+#, perl-format
+msgid "@%s in empty multitable"
+msgstr "@%s a una multitaula buida"
+
+#: tp/Texinfo/Parser.pm:4643
+msgid "@tab before @item"
+msgstr "@tab abans de @item"
+
+#: tp/Texinfo/Parser.pm:4646
+#, perl-format
+msgid "too many columns in multitable item (max %d)"
+msgstr "massa columnes a element multitaula (max %d)"
+
+#: tp/Texinfo/Parser.pm:4683
+msgid "ignoring @tab outside of multitable"
+msgstr "s'ignorarà @tab fora d'una multitaula"
+
+#: tp/Texinfo/Parser.pm:4687
+#, perl-format
+msgid "@%s outside of table or list"
+msgstr "@%s fora d'una taula o una llista"
+
+#: tp/Texinfo/Parser.pm:4722
+#, perl-format
+msgid "must be after `@%s' to use `@%s'"
+msgstr "ha d'estar a darrera de `@%s' per usar `@%s'"
+
+#: tp/Texinfo/Parser.pm:4764
+#, perl-format
+msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
+msgstr "@%s no té sentit fora d'entorns `@titlepage' i `@quotation'"
+
+#: tp/Texinfo/Parser.pm:4768
+msgid "@dircategory after first node"
+msgstr "@dircategory després del primer node"
+
+#: tp/Texinfo/Parser.pm:4933
+#, perl-format
+msgid "region %s inside region %s is not allowed"
+msgstr "no es permet una regió %s dins d'una regió %s"
+
+#: tp/Texinfo/Parser.pm:4951
+msgid "@direntry after first node"
+msgstr "@direntry després del primer node"
+
+#: tp/Texinfo/Parser.pm:4959
+#, perl-format
+msgid "@%s seen before first @node"
+msgstr "s'ha vist @%s abans del primer @node"
+
+#: tp/Texinfo/Parser.pm:4962
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr ""
+"potser el vostre node @top hauria d'estar envoltat dins de @ifnottex and "
+"comptes de @ifinfo?"
+
+#: tp/Texinfo/Parser.pm:5024
+#, perl-format
+msgid "@%s should only appear in math context"
+msgstr "@%s no hauria d'aparèixer a un context de matemàtiques"
+
+#: tp/Texinfo/Parser.pm:5032
+#, perl-format
+msgid "unknown command `%s'"
+msgstr "ordre `%s' desconeguda"
+
+#: tp/Texinfo/Parser.pm:5042
+msgid "unexpected @"
+msgstr "@ no esperat"
+
+#: tp/Texinfo/Parser.pm:5071
+#, perl-format
+msgid "@%s is not meaningful outside `@float' environment"
+msgstr "@%s no té sentit fora d'un entorn `@float'"
+
+#: tp/Texinfo/Parser.pm:5076
+#, perl-format
+msgid "@%s should be right below `@float'"
+msgstr "@%s hauria de estar just a sota de `@float'"
+
+#: tp/Texinfo/Parser.pm:5084
+#, perl-format
+msgid "ignoring multiple @%s"
+msgstr "s'ignoraran @%s múltiples"
+
+#: tp/Texinfo/Parser.pm:5203
+#, perl-format
+msgid "command @%s does not accept arguments"
+msgstr "l'ordre @%s no accepta arguments"
+
+#: tp/Texinfo/Parser.pm:5227
+#, perl-format
+msgid "command @%s missing a node or external manual argument"
+msgstr "a l'ordre @%s li falta un node o un argument manual extern"
+
+#: tp/Texinfo/Parser.pm:5246
+#, perl-format
+msgid "in @%s empty cross reference name after expansion `%s'"
+msgstr "a @%s nom buit de referència creuada després de l'expansió `%s'"
+
+#: tp/Texinfo/Parser.pm:5257
+#, perl-format
+msgid "in @%s empty cross reference title after expansion `%s'"
+msgstr "a @%s títol buit de referència creuada després de l'expansió `%s'"
+
+#: tp/Texinfo/Parser.pm:5270
+msgid "@image missing filename argument"
+msgstr "argument de nom de fitxer que falta a @image"
+
+#: tp/Texinfo/Parser.pm:5302
+#, perl-format
+msgid "@%s missing first argument"
+msgstr "primer argument que falta a @%s"
+
+#: tp/Texinfo/Parser.pm:5347
+#, perl-format
+msgid "non-hex digits in argument for @U: %s"
+msgstr "digits que no són hex a l'argument de @U: %s"
+
+#: tp/Texinfo/Parser.pm:5353
+#, perl-format
+msgid "fewer than four hex digits in argument for @U: %s"
+msgstr "menys de quatre dígits hex a l'argument per a @U: %s"
+
+#: tp/Texinfo/Parser.pm:5366
+#, perl-format
+msgid "argument for @U exceeds size of integer: %s"
+msgstr "l'argument per a @U excedeix la mida de l'enter: %s"
+
+#: tp/Texinfo/Parser.pm:5372
+#, perl-format
+msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
+msgstr "l'argument per a @U excedeix al máxim d'Unicode 0x10FFFF: %s"
+
+#: tp/Texinfo/Parser.pm:5500
+msgid "superfluous arguments for node"
+msgstr "arguments superflus per a node"
+
+#: tp/Texinfo/Parser.pm:5550
+#, perl-format
+msgid "expected @end %s"
+msgstr "s'esperava @end %s"
+
+#: tp/Texinfo/Parser.pm:5649
+#, perl-format
+msgid "@%s should only accept a @-command as argument, not `%s'"
+msgstr "@%s hauria d'acceptar únicament una ordre amb @ com argument, no `%s'"
+
+#: tp/Texinfo/Parser.pm:5659
+#, perl-format
+msgid "remaining argument on @%s line: %s"
+msgstr "argument restant a la línia @%s: %s"
+
+#: tp/Texinfo/Parser.pm:5732
+#, perl-format
+msgid "environment command %s as argument to @%s"
+msgstr "ordre d'entorn %s com argument per a @%s"
+
+#: tp/Texinfo/Parser.pm:5754
+#, perl-format
+msgid "empty @%s"
+msgstr "@%s buit"
+
+#: tp/Texinfo/Parser.pm:5762
+#, perl-format
+msgid "column fraction not a number: %s"
+msgstr "la fracció de columna no és un número: %s"
+
+#: tp/Texinfo/Parser.pm:5771
+#, perl-format
+msgid "@sp arg must be numeric, not `%s'"
+msgstr "argument @sp ha de ser numèric, no `%s'"
+
+#: tp/Texinfo/Parser.pm:5780
+#, perl-format
+msgid "reserved index name %s"
+msgstr "nom d'índex reservat %s"
+
+#: tp/Texinfo/Parser.pm:5799
+#, perl-format
+msgid "unknown source index in @%s: %s"
+msgstr "índex desconegut de font a @%s: %s"
+
+#: tp/Texinfo/Parser.pm:5802
+#, perl-format
+msgid "unknown destination index in @%s: %s"
+msgstr "índex desconegut de destinació a @%s: %s"
+
+#: tp/Texinfo/Parser.pm:5832
+#, perl-format
+msgid "@%s leads to a merging of %s in itself, ignoring"
+msgstr "@%s porta a una fusió de %s en sí mateix, s'ignorarà"
+
+#: tp/Texinfo/Parser.pm:5845
+#, perl-format
+msgid "unknown index `%s' in @printindex"
+msgstr "índex desconegut `%s' a @printindex"
+
+#: tp/Texinfo/Parser.pm:5851
+#, perl-format
+msgid "printing an index `%s' merged in another one `%s'"
+msgstr "s'està imprimint un índex `%s' fusionat en un altre `%s'"
+
+#: tp/Texinfo/Parser.pm:5859
+#, perl-format
+msgid "printindex before document beginning: @printindex %s"
+msgstr "printindex abans del principi del document: @printindex %s"
+
+#: tp/Texinfo/Parser.pm:5875
+#, perl-format
+msgid "@%s arg must be `top' or `bottom', not `%s'"
+msgstr "l'argument de @%s ha de ser `top' o `bottom', no `%s'"
+
+#: tp/Texinfo/Parser.pm:5883
+#, perl-format
+msgid "Only @%s 10 or 11 is supported, not `%s'"
+msgstr "Sols se suporta @%s 10 o 11, no `%s'"
+
+#: tp/Texinfo/Parser.pm:5891
+#, perl-format
+msgid "@%s arg must be `separate' or `end', not `%s'"
+msgstr "l'argument de @%s ha de ser `separate' o `end', no `%s'"
+
+#: tp/Texinfo/Parser.pm:5899
+#, perl-format
+msgid "@%s arg must be `on', `off' or `odd', not `%s'"
+msgstr "l'argument @%s ha de ser `on', `off' o `odd', no `%s'"
+
+#: tp/Texinfo/Parser.pm:5917 tp/Texinfo/Parser.pm:5922
+#, perl-format
+msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
+msgstr "l'argument @paragraphindent ha de ser numèric/`none'/`asis', no `%s'"
+
+#: tp/Texinfo/Parser.pm:5930
+#, perl-format
+msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
+msgstr "l'argument @firstparagraphindent ha de ser `none' o `insert', no `%s'"
+
+#: tp/Texinfo/Parser.pm:5940
+#, perl-format
+msgid "@exampleindent arg must be numeric/`asis', not `%s'"
+msgstr "l'argument @exampleindent ha de ser numèric/`asis', no `%s'"
+
+#: tp/Texinfo/Parser.pm:5951
+#, perl-format
+msgid "expected @%s on or off, not `%s'"
+msgstr "s'esperava @%s activat o desactivat, no `%s'"
+
+#: tp/Texinfo/Parser.pm:5961
+#, perl-format
+msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
+msgstr ""
+"l'argument de @kbdinputstyle ha de ser `code'/`example'/`distinct', no `%s'"
+
+#: tp/Texinfo/Parser.pm:5969
+#, perl-format
+msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
+msgstr "l'argument de @allowcodebreaks ha de ser `true' o `false', no `%s'"
+
+#: tp/Texinfo/Parser.pm:5977
+#, perl-format
+msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
+msgstr ""
+"l'argument de @urefbreakstyle ha de ser `after'/`before'/`none', no `%s'"
+
+#: tp/Texinfo/Structuring.pm:232
+#, perl-format
+msgid "raising the section level of @%s which is too low"
+msgstr "s'elevarà el nivell de la secció de @%s que és massa baix"
+
+#: tp/Texinfo/Structuring.pm:264
+#, perl-format
+msgid "no chapter-level command before @%s"
+msgstr "no hi ha una ordre de nivell de capítol abans de @%s"
+
+#: tp/Texinfo/Structuring.pm:269
+#, perl-format
+msgid "lowering the section level of @%s appearing after a lower element"
+msgstr ""
+"es baixarà el nivell de secció de @%s que apareix després d'un element "
+"inferior"
+
+#: tp/Texinfo/Structuring.pm:358
+#, perl-format
+msgid "no sectioning command associated with @%s"
+msgstr "no hi ha una ordre de secció associada amb @%s"
+
+#: tp/Texinfo/Structuring.pm:507
+#, perl-format
+msgid "@%s not empty"
+msgstr "@%s no buit"
+
+#: tp/Texinfo/Structuring.pm:563 tp/Texinfo/Structuring.pm:1345
+#, perl-format
+msgid "@%s reference to nonexistent node `%s'"
+msgstr "referència @%s a node no existent `%s'"
+
+#: tp/Texinfo/Structuring.pm:576
+#, perl-format
+msgid "@%s entry node name `%s' different from %s name `%s'"
+msgstr "@%s el nom de node d'entrada `%s' és diferent de %s amb nom `%s'"
+
+#: tp/Texinfo/Structuring.pm:681
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr "node sense referenciar `%s'"
+
+#: tp/Texinfo/Structuring.pm:727
+#, perl-format
+msgid "node `%s' is %s for `%s' in sectioning but not in menu"
+msgstr ""
+"el node `%s' és %s per a `%s' a la determinació de seccions però no al menú"
+
+#: tp/Texinfo/Structuring.pm:734
+#, perl-format
+msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
+msgstr ""
+"el node %s `%s' al menú `%s' i en el procediment de seccions `%s' difereixen"
+
+#: tp/Texinfo/Structuring.pm:752
+#, perl-format
+msgid "node `%s' is %s for `%s' in menu but not in sectioning"
+msgstr "el node `%s' és %s per a `%s' al menú però no a les seccions"
+
+#: tp/Texinfo/Structuring.pm:806
+#, perl-format
+msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
+msgstr "%s punter `%s' (per al node `%s') diferent de %s nom `%s'"
+
+#: tp/Texinfo/Structuring.pm:833
+#, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "%s referència per a `%s' inexistent"
+
+#: tp/Texinfo/Structuring.pm:853
+#, perl-format
+msgid "node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr ""
+"al node `%s' li falta l'element de menú per a `%s' malgrat que és el seu "
+"destí Amunt"
+
+#: tp/Texinfo/Structuring.pm:861
+#, perl-format
+msgid "for `%s', up in menu `%s' and up `%s' don't match"
+msgstr "per a `%s', amunt al menú `%s' i amunt `%s' no concorden"
+
+#: tp/Texinfo/Structuring.pm:1357
+#, perl-format
+msgid "@%s to `%s', different from %s name `%s'"
+msgstr "@%s a `%s', diferent de %s nom `%s'"
+
+#: tp/Texinfo/Structuring.pm:2023
+#, perl-format
+msgid "empty index key in @%s"
+msgstr "clau buida d'índex a @%s"
+
+#: tp/init/chm.pm:221 tp/init/chm.pm:277 tp/init/chm.pm:348
+#, perl-format
+msgid "chm.pm: could not open %s for writing: %s\n"
+msgstr "chm.pm: no es pot obrir %s per a escripture: %s\n"
+
+#: tp/init/chm.pm:267 tp/init/chm.pm:338 tp/init/chm.pm:399
+#, perl-format
+msgid "chm.pm: error on closing %s: %s"
+msgstr "chm.pm: error en tancar %s: %s"
+
+#: tp/init/latex2html.pm:200
+#, perl-format
+msgid "l2h: could not open latex file %s for writing: %s"
+msgstr "l2h: no s'ha pogut obrir el fitxer latex %s per a escriptura: %s"
+
+#: tp/init/latex2html.pm:341
+msgid "l2h: L2H_TMP directory contains a dot"
+msgstr "l2h: el directori L2H_TMP conté un punt"
+
+#: tp/init/latex2html.pm:346
+msgid "l2h: current directory contains a dot"
+msgstr "l2h: el directori actual conté un punt"
+
+#: tp/init/latex2html.pm:374
+#, perl-format
+msgid "l2h: command did not succeed: %s"
+msgstr "l2h: l'ordre no ha tingut èxit: %s"
+
+#: tp/init/latex2html.pm:422
+#, perl-format
+msgid "l2h: image has invalid extension: %s"
+msgstr "l2h: la imatge té una extensió no vàlida: %s"
+
+#: tp/init/latex2html.pm:438
+#, perl-format
+msgid "l2h: rename %s as %s failed: %s"
+msgstr "l2h: reanomenar %s com %s ha fallat: %s"
+
+#: tp/init/latex2html.pm:460
+#, perl-format
+msgid "l2h: could not open %s: %s"
+msgstr "l2h: no s'ha pogut obrir %s: %s"
+
+#: tp/init/latex2html.pm:493
+#, perl-format
+msgid "latex2html.pm: end of @%s item %d not found"
+msgstr ""
+"latex2html.pm: no s'ha trobat el final de l'element @%s no s'ha trobat %d"
+
+#: tp/init/latex2html.pm:504
+#, perl-format
+msgid ""
+"latex2html.pm: processing produced %d items in HTML; expected %d, the number "
+"of items found in the document"
+msgstr ""
+"latex2html.pm: el processament va produir %d elements en HTML; s'esperava "
+"%d, el nombre d'elements trobat al document"
+
+#: tp/init/latex2html.pm:534
+#, perl-format
+msgid "l2h: could not determine the fragment %d for @%s"
+msgstr "l2h: no s'ha pogut determinar el fragment %d per a @%s"
+
+#: tp/init/latex2html.pm:560
+#, perl-format
+msgid ""
+"l2h: could not extract the fragment %d for @%s with output counter %d from "
+"HTML"
+msgstr ""
+"l2h: no s'ha pogut extraure el fragment %d per a @%s amb comptador de "
+"sortida %d de HTML"
+
+#: tp/init/latex2html.pm:621
+#, perl-format
+msgid "l2h: could not load %s: %s"
+msgstr "l2h: no s'ha pogut carregar %s: %s"
+
+#: tp/init/latex2html.pm:634
+#, perl-format
+msgid "l2h: could not open %s for writing: %s"
+msgstr "l2h: no s'ha pogut obrir %s per a escriptura: %s"
+
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
+#, perl-format
+msgid "tex4ht.pm: could not open %s: %s"
+msgstr "tex4ht.pm: no s'ha pogut obrir %s: %s"
+
+#: tp/init/tex4ht.pm:219
+#, perl-format
+msgid "tex4ht.pm: chdir %s failed: %s"
+msgstr "tex4ht.pm: ha fallat chdir %s: %s"
+
+#: tp/init/tex4ht.pm:232
+#, perl-format
+msgid "tex4ht.pm: unable to return to initial directory: %s"
+msgstr "tex4ht.pm: no s'ha pogut retornar al directori inicial: %s"
+
+#: tp/init/tex4ht.pm:244
+#, perl-format
+msgid "tex4ht.pm: output file missing: %s"
+msgstr "tex4ht.pm: falta el fitxer de sortida: %s"
+
+#: tp/init/tex4ht.pm:260
+#, perl-format
+msgid "tex4ht.pm: command failed: %s"
+msgstr "tex4ht.pm: ha fallat l'ordre: %s"
+
+#: tp/init/tex4ht.pm:294
+#, perl-format
+msgid "tex4ht.pm: end of @%s item %d not found"
+msgstr "tex4ht.pm: no s'ha trobat el final de %s element %d"
+
+#: tp/init/tex4ht.pm:301
+#, perl-format
+msgid ""
+"tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
+"items found in the document for @%s"
+msgstr ""
+"tex4ht.pm: el processament va produir %d element en HTML; s'esperava %d, el "
+"nombre d'element trobats al document per a @%s"
+
+#: tp/init/tex4ht.pm:321
+#, perl-format
+msgid "tex4ht.pm: output has no HTML item for @%s %s"
+msgstr "tex4ht.pm: la sortida no té element HTML per a @%s: %s"
+
+#: tp/init/tex4ht.pm:336
+#, perl-format
+msgid ""
+"tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
+"items found in the document for @%s"
+msgstr ""
+"tex4ht.pm: el processament va recuperar %d elements en HTML; s'esperava %d, "
+"el nombre d'elements trobats al document per @%s"
+
+#: tp/texi2any.pl:388
+#, perl-format
+msgid "error loading %s: %s\n"
+msgstr "error en carregar %s: %s\n"
+
+#: tp/texi2any.pl:401
+#, perl-format
+msgid "%s: unknown variable %s"
+msgstr "%s: variable desconeguda %s"
+
+#: tp/texi2any.pl:405
+#, perl-format
+msgid "%s: obsolete variable %s\n"
+msgstr "%s: variable obsoleta %s\n"
+
+#: tp/texi2any.pl:420
+#, perl-format
+msgid "%s: unknown variable %s\n"
+msgstr "%s: variable desconeguda %s\n"
+
+#: tp/texi2any.pl:424
+#, perl-format
+msgid "obsolete variable %s\n"
+msgstr "variable obsoleta %s\n"
+
+#: tp/texi2any.pl:489
+#, perl-format
+msgid "could not read init file %s"
+msgstr "no s'ha pogut llegir el fitxer d'inicialització %s"
+
+#: tp/texi2any.pl:652
+#, perl-format
+msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
+msgstr "s'ignorarà l'ordre no reconeguda TEXINFO_OUTPUT_FORMAT valor `%s'\n"
+
+#: tp/texi2any.pl:735
+#, perl-format
+msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
+msgstr "Ús: %s [OPCIÓ]... FITXER-TEXINFO...\n"
+
+#: tp/texi2any.pl:738
+msgid ""
+"Translate Texinfo source documentation to various other formats, by default\n"
+"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
+"\n"
+"This program is commonly installed as both `makeinfo' and `texi2any';\n"
+"the behavior is identical, and does not depend on the installed name.\n"
+msgstr ""
+"Tradueix la documentació font Texinfo a diversos altres formats, de forma "
+"predeterminada\n"
+"El fitxers Info són adequats per llegir en línia amb Emacs o per GNU Info "
+"independent.\n"
+"Aquest s'instal·la generalment tant com a `makeinfo' com `texi2any';\n"
+"el comportament és idèntic, i no depèn del nom instal·lat.\n"
+"\n"
+
+#: tp/texi2any.pl:744
+#, perl-format
+msgid ""
+"General options:\n"
+"      --document-language=STR locale to use in translating Texinfo keywords\n"
+"                                for the output document (default C).\n"
+"      --error-limit=NUM       quit after NUM errors (default %d).\n"
+"      --force                 preserve output even if errors.\n"
+"      --help                  display this help and exit.\n"
+"      --no-validate           suppress node cross-reference validation.\n"
+"      --no-warn               suppress warnings (but not errors).\n"
+"      --conf-dir=DIR          search also for initialization files in DIR.\n"
+"      --init-file=FILE        load FILE to modify the default behavior.\n"
+"  -c, --set-customization-variable VAR=VAL  set customization variable VAR \n"
+"                                to value VAL.\n"
+"  -v, --verbose               explain what is being done.\n"
+"      --version               display version information and exit.\n"
+msgstr ""
+"Opcions generals\n"
+"      --document-language=STR locale a usar quan es tradueixen paraules clau "
+"Texinfo\n"
+"                                per al document de sortida (predeterminat "
+"C).\n"
+"      --error-limit=NUM       surt després de NUM errors (predeterminat "
+"%d).\n"
+"      --force                 preserva la sortida tot i que hi hagi errors.\n"
+"      --help                  mostra aquesta ajuda i surt.\n"
+"      --no-validate           suprimeix la validació de referències creuades "
+"entre nodes.\n"
+"      --no-warn               suprimeix els advertiments (però no els "
+"errors)\n"
+"      --conf-dir=DIR          cerca també fitxer d'inicialització a DIR.\n"
+"      --init-file=FITXER      carrega FITXER per modificar el comportament "
+"predeterminat.\n"
+"  -c, --set-customization-variable VAR=VAL  estableix la variable VAR de "
+"personalització\n"
+"                                al valor VAL.\n"
+"  -v, --verbose               explica el que es fa.\n"
+"      --version               mostra la informació de versió i surt.\n"
+
+#: tp/texi2any.pl:760
+msgid ""
+"Output format selection (default is to produce Info):\n"
+"      --docbook               output Docbook XML rather than Info.\n"
+"      --html                  output HTML rather than Info.\n"
+"      --plaintext             output plain text rather than Info.\n"
+"      --xml                   output Texinfo XML rather than Info.\n"
+"      --dvi, --dvipdf, --ps, --pdf  call texi2dvi to generate given output,\n"
+"                                after checking validity of TEXINFO-FILE.\n"
+msgstr ""
+"Selecció de format de sortida (es produeix Info de forma predeterminada):\n"
+"      --docbook               produeix Docbook XML en comptes d'Info.\n"
+"      --html                  produeix HTML en comptes d'Info.\n"
+"      --plaintext             produeix text sense format en comptes d'Info.\n"
+"      --xml                   produeix Texinfo XML en comptes d'Info.\n"
+"      --dvi, --dvipdf, --ps, --pdf  crida texi2dvi per generar la sortida "
+"donada,\n"
+"                               després de verificar la validesa de FITXER-"
+"TEXINFO.\n"
+
+#: tp/texi2any.pl:768
+msgid ""
+"General output options:\n"
+"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+"                                ignoring any @setfilename.\n"
+"      --no-headers            suppress node separators, Node: lines, and "
+"menus\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output).\n"
+"                                Also, if producing Info, write to\n"
+"                                standard output by default.\n"
+"      --no-split              suppress any splitting of the output;\n"
+"                                generate only one output file.\n"
+"      --[no-]number-sections  output chapter and sectioning numbers;\n"
+"                                default is on.\n"
+"  -o, --output=DEST           output to DEST.\n"
+"                                With split output, create DEST as a "
+"directory\n"
+"                                 and put the output files there.\n"
+"                                With non-split output, if DEST is already\n"
+"                                 a directory or ends with a /,\n"
+"                                 put the output file there.\n"
+"                                Otherwise, DEST names the output file.\n"
+msgstr ""
+"Opcions de sortida generals:\n"
+"  -E, --macro-expand=FITXER   bolca la font expandida amb macros a FITXER,\n"
+"                                ignorant qualsevol @setfilename.\n"
+"      --no-headers            suprimeix els separadors de nodes, Node: "
+"línies i menús\n"
+"                                de la sortida Info (produint aleshores text "
+"sense format)\n"
+"                                o de l'HTML (produint aleshores una sortida "
+"més curta).\n"
+"                                A més a més, si s'està produint Info, escriu "
+"a la\n"
+"                                sortida estàndard de forma predeterminada\n"
+"      --no-split              suprimeix qualsevol divisió de la sortida;\n"
+"                                genera únicament un fitxer de sortida.\n"
+"      --[no-]number-sections  bolca el números de capítols i seccions;\n"
+"                                està activat de forma predeterminada.\n"
+"  -o, --output=DEST           bolca a  DEST.\n"
+"                                Amb sortida dividida, crea DEST com a "
+"directori\n"
+"                                 i posa-hi els fitxers de sortida.\n"
+"                                Amb sortida sense divisió, si DEST ja és \n"
+"                                 un directori o acaba amb /,\n"
+"                                 posa-hi els fitxers de sortida.\n"
+"                                En cas contrari, DEST anomena el fitxer de "
+"sortida.\n"
+
+#: tp/texi2any.pl:788
+#, perl-format
+msgid ""
+"Options for Info and plain text:\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default "
+"%d).\n"
+"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
+"                                `separate' to put them in their own node;\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
+"%d).\n"
+"                                If VAL is `none', do not indent; if VAL is\n"
+"                                `asis', preserve existing indentation.\n"
+"      --split-size=NUM        split Info files at size NUM (default %d).\n"
+msgstr ""
+"Opcions per Info i text sense format:\n"
+"      --disable-encoding      no bolquis caràcters accentuats o especials\n"
+"                                a Info en base a @documentencoding.\n"
+"      --enable-encoding       anul·la --disable-encoding (de forma "
+"predeterminada).\n"
+"      --fill-column=NUM       trunca les línies Info a NUM caràcters "
+"(predeterminat %d)\n"
+"      --footnote-style=ESTIL  bolca les notes a peu de pàgina d'acord amb "
+"ESTIL:\n"
+"                                `separate' per posar-les en el seu propi "
+"node, en \n"
+"                                el qual estan definides (comportament "
+"predeterminat)\n"
+"which they are defined (this is the default).\n"
+"      --paragraph-indent=VAL  sagna el paràgraf per VAL espais "
+"(predeterminat %d)\n"
+"                                Si val és `none', no sagnis; si VAL és\n"
+"                                `asis', preserva el sagnat preexistent.\n"
+"      --split-size=NUM        divideix els fitxers Info a la mida NUM "
+"(predeterminat %d).\n"
+
+#: tp/texi2any.pl:805
+msgid ""
+"Options for HTML:\n"
+"      --css-include=FILE      include FILE in HTML <style> output;\n"
+"                                read stdin if FILE is -.\n"
+"      --css-ref=URL           generate CSS reference to URL.\n"
+"      --internal-links=FILE   produce list of internal links in FILE.\n"
+"      --split=SPLIT           split at SPLIT, where SPLIT may be `chapter',\n"
+"                                `section' or `node'.\n"
+"      --transliterate-file-names  use file names in ASCII transliteration.\n"
+"      --node-files            produce redirection files for nodes and \n"
+"                                anchors; default is set only if split.\n"
+msgstr ""
+"Opcions per a HTML:\n"
+"      --css-include=FITXER    inclou FITXER a la sortida <estil> HTML;\n"
+"                                llegeix l'entrada estàndard si FITXER és -.\n"
+"      --css-ref=URL           genera la referència CSS a URL.\n"
+"      --internal-links=FITXER produeix una llista d'enllaços interns a "
+"FITXER.\n"
+"      --split=DIVISIÓ           divideix a DIVISIÓ, on DIVISIÓ pot ser "
+"`chapter'\n"
+"                                `secció' o `node'.\n"
+"      --transliterate-file-names  usa els noms de fitxer en transliteració "
+"ASCII.\n"
+"      --node-files            produeix fitxers de redirecció per a nodes i "
+"àncores; de forma predeterminada està activat sols si hi ha divisió.\n"
+
+#: tp/texi2any.pl:816
+msgid ""
+"Options for XML and Docbook:\n"
+"      --output-indent=VAL     does nothing, retained for compatibility.\n"
+msgstr ""
+"Opcions per a XML i Docbook:\n"
+"      --output-indent=VAL     no fa res, es manté per compatibilitat.\n"
+
+#: tp/texi2any.pl:819
+msgid ""
+"Options for DVI/PS/PDF:\n"
+"      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
+msgstr ""
+"Opcions per a DVI/PS/PDF:\n"
+"      --Xopt=OPT              passa OPT a texi2dvi: es pot repetir.\n"
+
+#: tp/texi2any.pl:822
+msgid ""
+"Input file options:\n"
+"      --commands-in-node-names  does nothing, retained for compatibility.\n"
+"  -D VAR                        define the variable VAR, as with @set.\n"
+"  -D 'VAR VAL'                  define VAR to VAL (one shell argument).\n"
+"  -I DIR                        append DIR to the @include search path.\n"
+"  -P DIR                        prepend DIR to the @include search path.\n"
+"  -U VAR                        undefine the variable VAR, as with @clear.\n"
+msgstr ""
+"Opcions de fitxer d'entrada:\n"
+"      --commands-in-node-names  no fa res, es manté per compatibilitat.\n"
+"  -D VAR                        defineix la variable VAR, igual que amb "
+"@set.\n"
+"  -D 'VAR VAL'                  defineix VAR a VAL (un argument d'intèrpret "
+"d'ordres).\n"
+"  -I DIR                        annexa DIR al camí de cerca d'@include\n"
+"  -P DIR                        avantposa DIR al camí de cerca d'@include\n"
+"  -U VAR                        anul·la la definició de la variable VAR, "
+"igual que amb @clear\n"
+
+#: tp/texi2any.pl:830
+msgid ""
+"Conditional processing in input:\n"
+"  --ifdocbook       process @ifdocbook and @docbook even if\n"
+"                      not generating Docbook.\n"
+"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
+"  --ifinfo          process @ifinfo even if not generating Info.\n"
+"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
+"  --iftex           process @iftex and @tex.\n"
+"  --ifxml           process @ifxml and @xml.\n"
+"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
+"  --no-ifhtml       do not process @ifhtml and @html text.\n"
+"  --no-ifinfo       do not process @ifinfo text.\n"
+"  --no-ifplaintext  do not process @ifplaintext text.\n"
+"  --no-iftex        do not process @iftex and @tex text.\n"
+"  --no-ifxml        do not process @ifxml and @xml text.\n"
+"\n"
+"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
+msgstr ""
+"Processament condicional a l'entrada:\n"
+"  --ifdocbook       processa @ifdocbook i @docbook tot i que no\n"
+"                      s'estigui generant Docbook.\n"
+"  --ifhtml          processa @ifhtml i @html tot i que no s'estigui generant "
+"HTML.\n"
+"  --ifinfo          processa @ifinfo tot i que no s'estigui generant Info.\n"
+"  --ifplaintext     processa @ifplaintext tot i que no s'estigui generant "
+"text sense format.\n"
+"  --iftex           processa @iftex i @tex.\n"
+"  --ifxml           processa @ifxml i @xml.\n"
+"  --no-ifdocbook    no processis el text @ifdocbook i @docbook.\n"
+"  --no-ifhtml       no processis el text @ifhtml i @html.\n"
+"  --no-ifinfo       no processis el text @ifinfo.\n"
+"  --no-ifplaintext  no processis el text @ifplaintext.\n"
+"  --no-iftex        no processis el text @iftex i @tex.\n"
+"  --no-ifxml        no processis el text @ifxml i @xml.\n"
+"\n"
+"  A més, per les opcions --noifFORMAT, processa igualment el text "
+"@ifnotFORMAT.\n"
+
+#: tp/texi2any.pl:847
+msgid ""
+"  The defaults for the @if... conditionals depend on the output format:\n"
+"  if generating Docbook, --ifdocbook is on and the others are off;\n"
+"  if generating HTML, --ifhtml is on and the others are off;\n"
+"  if generating Info, --ifinfo is on and the others are off;\n"
+"  if generating plain text, --ifplaintext is on and the others are off;\n"
+"  if generating XML, --ifxml is on and the others are off.\n"
+msgstr ""
+"  Els valors predeterminats per als condicionals @if... depenen del format "
+"de la sortida:\n"
+"  si s'està generant Docbook, --ifdocbook està activat i els altres estan "
+"desactivats\n"
+"  si s'està generant Docbook, --ifdocbook està activat i els altres estan "
+"desactivats\n"
+"  si s'està generant HTML, --ifhtml està activat i els altres estan "
+"desactivats\n"
+"  si s'està generant Info, --ifinfo està activat i els altres estan "
+"desactivats\n"
+"  si s'està generant plain text, --ifplaintext  està activat i els altres "
+"estan deactivats\n"
+"  si s'està generant XML, --ifxml està activat i els altres estan "
+"desactivats\n"
+
+#: tp/texi2any.pl:854
+msgid ""
+"Examples:\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write Docbook XML to @setfilename\n"
+"  makeinfo --plaintext foo.texi          write plain text to standard "
+"output\n"
+"  makeinfo --pdf foo.texi                write PDF using texi2dvi\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
+msgstr ""
+"Exemples:\n"
+"  makeinfo foo.texi                      escriu Info a @setfilename\n"
+"  makeinfo --html foo.texi               escriu HTML a @setfilename\n"
+"  makeinfo --xml foo.texi                escriu Texinfo XML  @setfilename\n"
+"  makeinfo --docbook foo.texi            escriu Docbook XML  @setfilename\n"
+"  makeinfo --plaintext foo.texi          escriu text sense format a la "
+"sortida estàndard\n"
+"  makeinfo --pdf foo.texi                escriu PDF usant texi2dvi\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  escriu html sense línies de node, "
+"menús\n"
+"  makeinfo --number-sections foo.texi    escriu Info seccions numerades\n"
+"  makeinfo --no-split foo.texi           escriu un sol fitxer Info, no "
+"importa la mida\n"
+
+#: tp/texi2any.pl:901
+#, perl-format
+msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+msgstr ""
+"%s: l'argument --footnote-style ha de ser  `separate' o `end', no `%s'.\n"
+
+#: tp/texi2any.pl:992
+#, perl-format
+msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
+msgstr ""
+"%s: l'argument --paragraph-indent arg ha de ser numeric/`none'/`asis', no `"
+"%s'.\n"
+
+#: tp/texi2any.pl:1069
+#, perl-format
+msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
+msgstr ""
+"%s: quan s'estigui generant %s, sols es pot especificar un FITXER amb -o\n"
+
+#: tp/texi2any.pl:1073
+msgid "--Xopt option without printed output"
+msgstr "opció --Xopt sense sortida impresa"
+
+#: tp/texi2any.pl:1083
+#, perl-format
+msgid "unknown tree transformation %s"
+msgstr "transformació d'arbre desconeguda %s"
+
+#: tp/texi2any.pl:1090
+#, perl-format
+msgid "ignoring splitting for format %s"
+msgstr "s'ignorarà la divisió per al format %s"
+
+#: tp/texi2any.pl:1140
+#, perl-format
+msgid "%s: missing file argument.\n"
+msgstr "%s: falta l'argument de fitxer.\n"
+
+#: tp/texi2any.pl:1141
+#, perl-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Proveu `%s --help' per a més informació.\n"
+
+#: tp/texi2any.pl:1222
+msgid "fill_gaps_in_sectioning transformation return no result. No section?"
+msgstr ""
+"la transformació fill_gaps_in_sectioning no ha retornat cap resultat. No hi "
+"ha cap secció?"
+
+#: tp/texi2any.pl:1244
+#, perl-format
+msgid "error on closing macro expand file %s: %s\n"
+msgstr "error en tancar el fitxer d'expansió de macros %s: %s\n"
+
+#: tp/texi2any.pl:1250
+#, perl-format
+msgid "could not open %s for writing: %s\n"
+msgstr "no s'ha pogut obrir %s per a escriptura: %s\n"
+
+#: tp/texi2any.pl:1275
+msgid ""
+"insert_nodes_for_sectioning_commands transformation return no result. No "
+"section?"
+msgstr ""
+"la transformació insert_nodes_for_sectioning_commands no ha retornat cap "
+"resultat. No hi ha cap secció?"
+
+#: tp/texi2any.pl:1345 tp/texi2any.pl:1421
+#, perl-format
+msgid "%s: error on closing %s: %s\n"
+msgstr "%s: error en tancar %s: %s\n"
+
+#: tp/texi2any.pl:1368 tp/texi2any.pl:1402
+#, perl-format
+msgid "%s: error on closing internal links file %s: %s\n"
+msgstr "%s: error en tancar els fitxers d'enllaços interns %s: %s\n"
+
+#: tp/texi2any.pl:1374 tp/texi2any.pl:1408
+#, perl-format
+msgid "%s: could not open %s for writing: %s\n"
+msgstr "%s: no s'ha pogut obrir %s per a escriptura: %s\n"
+
+#~ msgid "Insert this character"
+#~ msgstr "Insereix aquest caràcter"
+
+#~ msgid "No index entries."
+#~ msgstr "No hi ha entrades d'índex"
+
+#~ msgid "CAN'T SEE THIS"
+#~ msgstr "NO PUC VEURE AIXÒ"
+
+#~ msgid ""
+#~ "\n"
+#~ "* Menu: Nodes whose indices contain `%s':\n"
+#~ msgstr ""
+#~ "\n"
+#~ "* Menú: Nodes els índexs dels quals contenen `%s':\n"
+
+#~ msgid "No index"
+#~ msgstr "No hi ha cap índex"
+
+#~ msgid "Index for `%s'"
+#~ msgstr "Índex per a `%s'"
+
+#~ msgid "File names matching `%s'"
+#~ msgstr "Noms de fitxer concordant amb `%s'"
+
+#~ msgid ""
+#~ "Basic Commands in Info Windows\n"
+#~ "******************************\n"
+#~ msgstr ""
+#~ "Ordres bàsiques a les finestres Info\n"
+#~ "************************************\n"
+
+#~ msgid "  %-10s  Quit this help.\n"
+#~ msgstr "  %-10s  Surt d'aquesta ajuda.\n"
+
+#~ msgid "  %-10s  Quit Info altogether.\n"
+#~ msgstr "  %-10s  Surt d'Info totalment.\n"
+
+#~ msgid "  %-10s  Invoke the Info tutorial.\n"
+#~ msgstr "  %-10s  Invoca el tutorial d'Info.\n"
+
+#~ msgid "  %-10s  Move to the `next' node of this node.\n"
+#~ msgstr "  %-10s  Ves al node `següent' d'aquest node.\n"
+
+#~ msgid "  %-10s  Move to the `previous' node of this node.\n"
+#~ msgstr "  %-10s  Ves al node `previ' d'aquest node.\n"
+
+#~ msgid "  %-10s  Move `up' from this node.\n"
+#~ msgstr "  %-10s  Ves `amunt' des d'aquest node.\n"
+
+#~ msgid ""
+#~ "  %-10s  Pick menu item specified by name.\n"
+#~ "              Picking a menu item causes another node to be selected.\n"
+#~ msgstr ""
+#~ "  %-10s  Escull l'element de menú especificat per nom.\n"
+#~ "              L'elecció d'un element de menú causa que se seleccioni un "
+#~ "altre node.\n"
+
+#~ msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
+#~ msgstr ""
+#~ "  %-10s  Segueix una referència creuada.  Llegeix el nom de la "
+#~ "referència.\n"
+
+#~ msgid "  %-10s  Move to the last node seen in this window.\n"
+#~ msgstr "  %-10s  Ves a l'últim node vist a la finestra.\n"
+
+#~ msgid "  %-10s  Skip to next hypertext link within this node.\n"
+#~ msgstr "  %-10s  Salta a l'enllaç següent d'hipertext dins d'aquest node.\n"
+
+#~ msgid "  %-10s  Follow the hypertext link under cursor.\n"
+#~ msgstr "  %-10s  Segueix l'enllaç d'hipertext sota el cursor.\n"
+
+#~ msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
+#~ msgstr "  %-10s  Ves al node `directori'.  Equivalent a `g (DIR)'.\n"
+
+#~ msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
+#~ msgstr "  %-10s  Ves al node Top.  Equivalent a `g Top'.\n"
+
+#~ msgid ""
+#~ "Moving within a node:\n"
+#~ "---------------------\n"
+#~ msgstr ""
+#~ "Moviment dins d'un node:\n"
+#~ "------------------------\n"
+
+#~ msgid "  %-10s  Scroll forward a page.\n"
+#~ msgstr "  %-10s  Desplaça't cap endavant una pàgina.\n"
+
+#~ msgid "  %-10s  Scroll backward a page.\n"
+#~ msgstr "  %-10s  Desplaçat cap a darrere una pàgina.\n"
+
+#~ msgid "  %-10s  Go to the beginning of this node.\n"
+#~ msgstr "  %-10s  Ves al principi d'aquest node.\n"
+
+#~ msgid "  %-10s  Go to the end of this node.\n"
+#~ msgstr "  %-10s  Ves al final d'aquest node.\n"
+
+#~ msgid "  %-10s  Scroll forward 1 line.\n"
+#~ msgstr "  %-10s  Desplaçat cap endavant 1 línia.\n"
+
+#~ msgid "  %-10s  Scroll backward 1 line.\n"
+#~ msgstr "  %-10s  Desplaçat cap a darrere 1 línia.\n"
+
+#~ msgid ""
+#~ "Other commands:\n"
+#~ "---------------\n"
+#~ msgstr ""
+#~ "Altres ordres:\n"
+#~ "--------------\n"
+
+#~ msgid "  %-10s  Pick first...ninth item in node's menu.\n"
+#~ msgstr "  %-10s  Escull el primer...nouré element al menú del node.\n"
+
+#~ msgid "  %-10s  Pick last item in node's menu.\n"
+#~ msgstr "  %-10s  Escull l'últim element al menú del node.\n"
+
+#~ msgid ""
+#~ "  %-10s  Search for a specified string in the index entries of this Info\n"
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ msgstr ""
+#~ "  %-10s  Cerca per una cadena de caràcters especificada dins de les "
+#~ "entrades d'índex d'aquest fitxer\n"
+#~ "              Info, i selecciona el node referencia per la primera "
+#~ "entrada trobada.\n"
+
+#~ msgid ""
+#~ "  %-10s  Move to node specified by name.\n"
+#~ "              You may include a filename as well, as in "
+#~ "(FILENAME)NODENAME.\n"
+#~ msgstr ""
+#~ "  %-10s  Ves al node especificat per nom.\n"
+#~ "              Podeu incloure un nom de fitxer també, per exemple "
+#~ "(NOMDEFITXER)NOMDENODE.\n"
+
+#~ msgid ""
+#~ "  %-10s  Search forward for a specified string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "  %-10s  Cerca cap endavant per una cadena de caràcters especificada,\n"
+#~ "              i selecciona el node en el qual es troba l'ocurrència "
+#~ "següent.\n"
+
+#~ msgid ""
+#~ "  %-10s  Search backward for a specified string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "  %-10s  Cerca cap endarrere per una cadena de caràcters especificat,\n"
+#~ "              i selecciona el node en el qual es troba l'ocurrència "
+#~ "següent.\n"
+
+#~ msgid "ESC %s is undefined."
+#~ msgstr "ESC %s no està definit"
+
+#~ msgid "%s is defined to %s."
+#~ msgstr "%s està definit a %s."
+
+#~ msgid ""
+#~ "Selecting other nodes:\n"
+#~ "----------------------\n"
+#~ msgstr ""
+#~ "S'estan seleccionant altres nodes:\n"
+#~ "----------------------------------\n"
+
+#~ msgid "incorrect number of arguments"
+#~ msgstr "nombre incorrecte d'arguments"
+
+#~ msgid "cannot open input file `%s'"
+#~ msgstr "no es pot obrir el fitxer d'entrada `%s'"
+
+#~ msgid "cannot create output file `%s'"
+#~ msgstr "no es pot crear el fitxer de sortida `%s'"
+
+#~ msgid "error writing to `%s'"
+#~ msgstr "error en escriure a `%s'"
+
+#~ msgid "error closing output file `%s'"
+#~ msgstr "error en tancar el fitxer de sortida `%s'"
+
+#~ msgid "section too long"
+#~ msgstr "secció massa llarga"
+
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [INPUT-FILE]\n"
+#~ "\n"
+#~ "Compile infokey source file to infokey file.  Reads INPUT-FILE (default\n"
+#~ "$HOME/.infokey) and writes compiled key file to (by default) $HOME/."
+#~ "info.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "  --output FILE        output to FILE instead of $HOME/.info\n"
+#~ "  --help               display this help and exit.\n"
+#~ "  --version            display version information and exit.\n"
+#~ msgstr ""
+#~ "Ús: %s [OPCIÓ]... [FITXER-ENTRADA]\n"
+#~ "\n"
+#~ "Compila el fitxer font infokey a un fitxer infokey. Llegeix FITXER-"
+#~ "ENTRADA\n"
+#~ "(predeterminat\n"
+#~ "$HOME/.infokey) i escriu el fitxer compilat de claus a (de forma "
+#~ "predeterminada) $HOME/.info.\n"
+#~ "\n"
+#~ "Opcions:\n"
+#~ "  --output FITXER      bolca a FITXER en comptes de $HOME/.info\n"
+#~ "  --help               mostra aquesta ajuda i surt.\n"
+#~ "  --version            mostra la informació de versió i surt.\n"
+
+#~ msgid "Ignoring invalid infokey file `%s' - too small"
+#~ msgstr "S'ignorarà el fitxer invàlid infokey `%s' - massa petit"
+
+#~ msgid "Ignoring invalid infokey file `%s' - too big"
+#~ msgstr "S'ignorarà el fitxer invàlid infokey `%s' - massa gran"
+
+#~ msgid "Error reading infokey file `%s' - short read"
+#~ msgstr "Error quan s'estava llegint el fitxer `%s' - s'ha llegit curt"
+
+#~ msgid ""
+#~ "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+#~ msgstr ""
+#~ "Fitxer invàlid infokey `%s' (nombres màgics incorrectes) -- executeu "
+#~ "infokey per actualizar-lo"
+
+#~ msgid "Your infokey file `%s' is out of date -- run infokey to update it"
+#~ msgstr ""
+#~ "El vostre fitxer infokey `%s' està desactualitzat -- executeu infokey per "
+#~ "actualitzar-lo"
+
+#~ msgid ""
+#~ "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+#~ msgstr ""
+#~ "Fitxer infokey `%s' no vàlid (longitud incorrecta de secció) -- executeu "
+#~ "infokey per actualitzar-lo"
+
+#~ msgid ""
+#~ "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+#~ msgstr ""
+#~ "Fitxer infokey `%s' no vàlid (codi incorrecte de secció) -- executeu "
+#~ "infokey per actualizar-lo"
+
+#~ msgid "Bad data in infokey file -- some key bindings ignored"
+#~ msgstr ""
+#~ "Dades incorrectes al fitxer infokey -- algunes assignacions de tecla "
+#~ "s'ignoraran"
+
+#~ msgid "Bad data in infokey file -- some var settings ignored"
+#~ msgstr ""
+#~ "Dades incorrectes al fitxer infokey -- algunes configuracions de "
+#~ "variables s'ignoraran"
+
+#~ msgid "Next"
+#~ msgstr "Següent"
+
+#~ msgid "No `Prev' for this node."
+#~ msgstr "No hi ha `Previ' per a aquest node."
+
+#~ msgid "Kill node (%s): "
+#~ msgstr "Elimina el node (%s): "
+
+#~ msgid "Cannot kill node `%s'"
+#~ msgstr "No es pot eliminar el node `%s'"
+
+#~ msgid "Cannot kill the last node"
+#~ msgstr "No es pot eliminar l'últim node"
+
+#~ msgid "Kill this node"
+#~ msgstr "Elimina aquest node"
+
+#~ msgid "writing file %s"
+#~ msgstr "s'està escrivint el fitxer %s"
+
+#~ msgid "closing file %s"
+#~ msgstr "s'està tancant el fitxer %s"
+
+#~ msgid "Internally used by \\[universal-argument]"
+#~ msgstr "Usat internament per \\[universal-argument]"
+
+#~ msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
+#~ msgstr "Ús: makeinfo [OPCIÓ]... FITXER-TEXINFO...\n"
+
+#~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
+#~ msgstr "  o:  texi2any [OPCIÓ]... FITXER-TEXINFO...\n"
+
+#~ msgid "display this help and exit"
+#~ msgstr "mostra aquesta ajuda i surt"
+
+#~ msgid "send output to FILE"
+#~ msgstr "envia la sortida a FITXER"
+
+#~ msgid "Generate a sorted index for each TeX output FILE.\n"
+#~ msgstr ""
+#~ "Genera un índex ordenat alfabèticament per a cada FITXER de sortida TeX.\n"
+
+#~ msgid ""
+#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+#~ msgstr ""
+#~ "En general FITXER... s'especifica com `bla%c%c' per a un document `foo."
+#~ "texi'.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Options:\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Opcions:\n"
+
+#~ msgid "failure reopening %s"
+#~ msgstr "ha fallat la reobertura %s"
+
+#~ msgid "%s: not a texinfo index file"
+#~ msgstr "%s: no és un fitxer d'índex texinfo"
+
+#~ msgid "No page number in %s"
+#~ msgstr "No hi ha números de pàgina a %s"
+
+#~ msgid "entry %s follows an entry with a secondary name"
+#~ msgstr "l'entrada %s segueix una entrada amb un nom secundari"

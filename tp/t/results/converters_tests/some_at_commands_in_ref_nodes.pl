@@ -1794,7 +1794,7 @@ $result_converted{'docbook'}->{'some_at_commands_in_ref_nodes'} = '
 
 </chapter>
 <chapter label="1" id="A-SC-_00d1-_00c5-TeX-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1">
-<title>A sc node &#239; &#239; &#274;` &#322; &#262;, &#161;</title>
+<title>A SC node &#239; &#239; &#274;` &#322; &#262;, &#161;</title>
 
 <para>see .
 </para></chapter>
@@ -1832,13 +1832,13 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'some_at_commands_in_ref_nodes'} = [
   {
-    'file_name' => '',
     'error_line' => ':9: warning: @node name should not contain `,\': A SC N~ AA TeX node i" i" E=` /l C\', !
 ',
-    'text' => '@node name should not contain `,\': A SC N~ AA TeX node i" i" E=` /l C\', !',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 9,
     'macro' => '',
-    'line_nr' => 9
+    'text' => '@node name should not contain `,\': A SC N~ AA TeX node i" i" E=` /l C\', !',
+    'type' => 'warning'
   }
 ];
 

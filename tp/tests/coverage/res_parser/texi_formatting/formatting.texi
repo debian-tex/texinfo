@@ -57,6 +57,8 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@,c @,c
 @@,c@@"u @,c@"u @*
 
+@@U@{0075@} @U{0075}
+
 @@* @*
 @@ followed by a space
 @ 
@@ -664,6 +666,14 @@ Invalid use of @@':@*
 @code{@@dotless@{--a@}} @dotless{--a}
 @code{@@dotless@{a@}} @dotless{a}
 
+@c @U arg must be specified and within range
+@@U, without braces @U
+@@U@{@}, with empty arg @U{}
+@@U@{z@}, with non-hex arg @U{z}
+@@U@{abc@}, with <4 hex digits @U{abc}
+@@U@{FFFFFFFFFFFFFF@}, value much too large @U{FFFFFFFFFFFFFF}
+@@U@{110000@}, value just beyond Unicode @U{110000}
+
 @c braces missing
 @@TeX, but without brace @TeX
 
@@ -784,6 +794,8 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@,@{@@'C@} @,{@'C}
 @@,c @,c
 @@,c@@"u @,c@"u @*
+
+@@U@{0075@} @U{0075}
 
 @@* @*
 @@ followed by a space
@@ -1383,6 +1395,13 @@ Invalid use of @@':@*
 @@dotless@{ij@} @dotless{ij}
 @code{@@dotless@{--a@}} @dotless{--a}
 @code{@@dotless@{a@}} @dotless{a}
+
+@c @U arg must be specified and within range
+@@U, without braces @U@@U@{@}, with empty arg @U{}
+@@U@{z@}, with non-hex arg @U{z}
+@@U@{abc@}, with <4 hex digits @U{abc}
+@@U@{FFFFFFFFFFFFFF@}, value much too large @U{FFFFFFFFFFFFFF}
+@@U@{110000@}, value just beyond Unicode @U{110000}
 
 @c braces missing
 @@TeX, but without brace @TeX@c unknown command
@@ -1507,6 +1526,8 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@,c @,c
 @@,c@@"u @,c@"u @*
 
+@@U@{0075@} @U{0075}
+
 @@* @*
 @@ followed by a space
 @ 
@@ -2105,6 +2126,13 @@ Invalid use of @@':@*
 @@dotless@{ij@} @dotless{ij}
 @code{@@dotless@{--a@}} @dotless{--a}
 @code{@@dotless@{a@}} @dotless{a}
+
+@c @U arg must be specified and within range
+@@U, without braces @U@@U@{@}, with empty arg @U{}
+@@U@{z@}, with non-hex arg @U{z}
+@@U@{abc@}, with <4 hex digits @U{abc}
+@@U@{FFFFFFFFFFFFFF@}, value much too large @U{FFFFFFFFFFFFFF}
+@@U@{110000@}, value just beyond Unicode @U{110000}
 
 @c braces missing
 @@TeX, but without brace @TeX@c unknown command
@@ -2229,6 +2257,8 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@,c @,c
 @@,c@@"u @,c@"u @*
 
+@@U@{0075@} @U{0075}
+
 @@* @*
 @@ followed by a space
 @ 
@@ -2827,6 +2857,13 @@ Invalid use of @@':@*
 @@dotless@{ij@} @dotless{ij}
 @code{@@dotless@{--a@}} @dotless{--a}
 @code{@@dotless@{a@}} @dotless{a}
+
+@c @U arg must be specified and within range
+@@U, without braces @U@@U@{@}, with empty arg @U{}
+@@U@{z@}, with non-hex arg @U{z}
+@@U@{abc@}, with <4 hex digits @U{abc}
+@@U@{FFFFFFFFFFFFFF@}, value much too large @U{FFFFFFFFFFFFFF}
+@@U@{110000@}, value just beyond Unicode @U{110000}
 
 @c braces missing
 @@TeX, but without brace @TeX@c unknown command
@@ -2945,6 +2982,8 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@,c @,c
 @@,c@@"u @,c@"u @*
 
+@@U@{0075@} @U{0075}
+
 @@* @*
 @@ followed by a space
 @ 
@@ -3543,6 +3582,13 @@ Invalid use of @@':@*
 @@dotless@{ij@} @dotless{ij}
 @code{@@dotless@{--a@}} @dotless{--a}
 @code{@@dotless@{a@}} @dotless{a}
+
+@c @U arg must be specified and within range
+@@U, without braces @U@@U@{@}, with empty arg @U{}
+@@U@{z@}, with non-hex arg @U{z}
+@@U@{abc@}, with <4 hex digits @U{abc}
+@@U@{FFFFFFFFFFFFFF@}, value much too large @U{FFFFFFFFFFFFFF}
+@@U@{110000@}, value just beyond Unicode @U{110000}
 
 @c braces missing
 @@TeX, but without brace @TeX@c unknown command

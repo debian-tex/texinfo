@@ -1,8 +1,8 @@
-# $Id: Makefile.am 5376 2013-09-13 17:07:26Z karl $
+# $Id: Makefile.am 6142 2015-02-23 00:38:34Z karl $
 # Makefile.am for texinfo/doc.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
-# 2013 Free Software Foundation, Inc.
+# 2013, 2014, 2015 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -28,10 +28,10 @@ MAKEINFO = $(PERL) -I "$(tpdir)" -I "$(tplibdir)/libintl-perl/lib" -I "$(tplibdi
 # "install-info" directly.
 # INSTALL_INFO = $(top_builddir)/$(native_tools)/util/ginstall-info
 
-TXI_XLATE = txi-cs.tex txi-de.tex txi-en.tex txi-es.tex txi-fr.tex \
-            txi-hu.tex txi-is.tex txi-it.tex txi-nb.tex txi-nl.tex \
-            txi-nn.tex txi-pl.tex txi-pt.tex txi-ru.tex txi-sr.tex \
-            txi-tr.tex txi-uk.tex
+TXI_XLATE = txi-ca.tex txi-cs.tex txi-de.tex txi-en.tex txi-es.tex \
+            txi-fr.tex txi-hu.tex txi-is.tex txi-it.tex txi-nb.tex \
+	    txi-nl.tex txi-nn.tex txi-pl.tex txi-pt.tex txi-ru.tex \
+	    txi-sr.tex txi-tr.tex txi-uk.tex
 
 refcard_files = refcard/Makefile refcard/txicmdcheck \
                 refcard/txirefcard-a4.pdf refcard/txirefcard.pdf \
@@ -76,14 +76,17 @@ dist-info:
 # using the gendocs.sh script; see
 # http://www.gnu.org/prep/maintain/html_node/Invoking-gendocs_002esh.html
 # 
-# Since gendocs.sh is maintained here in Texinfo, use it from
-# the development sources; ordinarily it's invoked from a gnulib checkout.
+# Invoke gendocs.sh from a gnulib checkout (outside our tree).
 #
-gendocs = $(abs_top_srcdir)/util/gendocs.sh
-gendocs_templates = $(abs_top_srcdir)/util
+gnulib = $(abs_top_srcdir)/../gnulib
+gendocs = $(gnulib)/build-aux/gendocs.sh
+gendocs_templates = $(gnulib)/doc
 gendocs_envvars = GENDOCS_TEMPLATE_DIR=$(gendocs_templates)
+#
 gendocs_email = bug-texinfo@gnu.org
-gendocs_invoke = env $(gendocs_envvars) $(gendocs) --email $(gendocs_email)
+gendocs_dir_url = /manual/
+gendocs_invoke = env $(gendocs_envvars) $(gendocs) --email $(gendocs_email) \
+  --html '-c TOP_NODE_UP_URL=$(gendocs_dir_url)'
 #
 manual1 = info
 manual1_title = "GNU Info manual"
@@ -94,18 +97,22 @@ manual2_title = "GNU standalone info manual"
 manual3 = texinfo
 manual3_title = "GNU Texinfo manual"
 #
+# We also make a little HTML document for pod2texi script.
+pod2texi_pl = $(abs_top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl
+
+# destination directory.
 doctemp = wwwtemp
 www_target = $(HOME)/gnu/www/texinfo/manual
 #
 wwwdoc-build:
 	rm -rf $(doctemp) && mkdir $(doctemp)
 	cd $(doctemp) \
-	&& pod2html $(abs_top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl >pod2texi.html \
 	&& ln -s ../*.texi . \
 	&& $(gendocs_invoke) -o $(manual1) $(manual1) $(manual1_title) \
 	&& $(gendocs_invoke) -o $(manual2) $(manual2) $(manual2_title) \
-	&& $(gendocs_invoke) -o $(manual3) $(manual3) $(manual3_title)
-	@echo "Manuals for web distribution under: $(doctemp)/"
+	&& $(gendocs_invoke) -o $(manual3) $(manual3) $(manual3_title) \
+	&& pod2html $(pod2texi_pl) >pod2texi.html \
+	&& echo "Manuals ready for web distribution under: $(doctemp)/"
 #
 # At official release, we need to update:
 # http://www.gnu.org/software/texinfo/manual/

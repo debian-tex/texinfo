@@ -1,9 +1,9 @@
-# $Id: Makefile.am 5244 2013-03-20 23:22:05Z karl $
+# $Id: Makefile.am 6237 2015-05-02 23:28:19Z karl $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
-# 2012, 2013 Free Software Foundation, Inc.
+# 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -21,14 +21,25 @@ EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
   system.h gnulib/m4/gnulib-cache.m4 \
   contrib djgpp
 
+# include contrib perl manual, exclude .svn.
 dist-hook:
 	cd $(top_distdir)/contrib/perldoc-all && $(MAKE) distclean
 	rm -rf `find $(distdir) -type d -name .svn`
+
+# update texi2html translations.
+dist-local:
+	cp -fpR $(srcdir)/po_document/*.po $(srcdir)/po_document/LINGUAS texi2html/po_document/
+	cp -fpR $(srcdir)/po/*.po $(srcdir)/po/LINGUAS texi2html/po_messages/
 
 # This is to prevent texinfo.tex from being included in the top-level
 # distribution directory.
 TEXINFO_TEX = doc/texinfo.tex
 
+# One special target for installers to use by hand if desired.
+install-tex:
+	cd doc && $(MAKE) TEXMF=$(TEXMF) install-tex
+
+# painful separate build for cross-compiling.
 SUBDIRS =
 if TOOLS_ONLY
   # Build native tools only.
@@ -55,20 +66,12 @@ if HOST_IS_WINDOWS
   SUBDIRS += info
 endif
 endif
-  SUBDIRS += install-info po po_document tp Pod-Simple-Texinfo util \
+  SUBDIRS += install-info po po_document tp Pod-Simple-Texinfo texindex util \
              doc man
 endif
 
-# One special target for installers to use by hand if desired.
-install-tex:
-	cd doc && $(MAKE) TEXMF=$(TEXMF) install-tex
-
 distclean-local:
 	-test -d "$(native_tools)" && rm -rf "$(native_tools)"
-
-dist-local:
-	cp -fpR $(srcdir)/po_document/*.po $(srcdir)/po_document/LINGUAS texi2html/po_document/
-	cp -fpR $(srcdir)/po/*.po $(srcdir)/po/LINGUAS texi2html/po_messages/
 
 # Don't install native tools for cross compile.
 if TOOLS_ONLY
@@ -76,31 +79,55 @@ install:
 
 endif
 
-# From coreutils.
+# just a convenience for running these additional tests.
+long-checks:
+	cd tp/tests && $(MAKE) long-checks
+
+# to be run before making a distribution: ensure that the texinfo.dtd on
+# the web is what we will be releasing.  See README-hacking.
+wget = wget
+dtd_url = http://www.gnu.org/software/texinfo/dtd/$(TEXINFO_DTD_VERSION)/texinfo.dtd
+dtd-check:
+	$(wget) -nv $(dtd_url) -O $@-1 \
+	&& diff $@-1 $(srcdir)/util/texinfo.dtd \
+	&& rm -f $@-1
+
+# emacs-page
+# From coreutils.  Use when making a release.
 # Verify that all source files using _() are listed in po/POTFILES.in.
 # Run this before making pretests, as well as official releases, so that
-# translators will see changed strings.
+# translators will see changed strings.  See README-hacking.
 po-check:
 	@if test -f po/POTFILES.in; then				\
 	  grep -E -v '^(#|$$)' po/POTFILES.in				\
 	    | grep -v '^src/false\.c$$' | sort > $@-1;			\
 	  files=;							\
 	  for file in $$($(CVS_LIST_EXCEPT))				\
-	      `find [a-z]* -name '*.[ch]' -o -name '*.p[lm]'`; do	\
+	              `find [a-z]* -name '*.[ch]' 			\
+		                -o -name '*.p[lm]'			\
+				-o -name '*.twjr'`; do			\
+	    # don't look at sources from some subdirs.			\
 	    case $$file in						\
-            contrib/* ) continue;;					\
-	    djgpp/* | makeinfo/* | man/* | texi2html/* ) continue;;	\
-            tp/maintain/* ) continue;;					\
+	      contrib/* ) continue;;					\
+	      djgpp/* | makeinfo/* | man/* | texi2html/* ) continue;;	\
+	      parsetexi/*) continue;;					\
+	      texinfo-*/*) continue;;					\
+              tp/maintain/* ) continue;;				\
 	    esac;							\
+	    # if have lex/yacc sources, skip corresponding c/h files.	\
 	    case $$file in						\
-	    *.[ch] | *.p[lm])						\
+	    *.[ch])							\
 	      base=`expr " $$file" : ' \(.*\)\..'`;			\
 	      { test -f $$base.l || test -f $$base.y; } && continue;;	\
 	    esac;							\
 	    files="$$files $$file";					\
 	  done;								\
-	  grep -E -l '\b(N?__?|gdt|gettext *)\([^)"]*("|$$)' $$files	\
-	    | sort -u > $@-2;						\
+	  # the first alternative is for twjr/gawk, which just uses _"	\
+	  # with no space or lparen; the other alternative matches the	\
+	  # usual function calls, e.g., _("..."), with or without space.\
+	  grep -E -l							\
+	    '\b[^$$]N?__?"|\b(N?__?|gdt|gettext *)\([^)"]*("|$$)'	\
+	    $$files | sort -u > $@-2;					\
 	  diff -u $@-1 $@-2 || exit 1;					\
 	  rm -f $@-1 $@-2;						\
 	fi

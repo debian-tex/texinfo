@@ -1,7 +1,7 @@
 /* signals.c -- install and maintain signal handlers.
-   $Id: signals.c 5337 2013-08-22 17:54:06Z karl $
+   $Id: signals.c 5823 2014-09-12 17:22:40Z gavin $
 
-   Copyright 1993, 1994, 1995, 1998, 2002, 2003, 2004, 2007, 2012, 2013
+   Copyright 1993, 1994, 1995, 1998, 2002, 2003, 2004, 2007, 2012, 2013, 2014
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -20,6 +20,9 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
+#include "display.h"
+#include "footnotes.h"
+#include "window.h"
 #include "signals.h"
 
 void initialize_info_signal_handler (void);
@@ -80,6 +83,9 @@ mask_termsig (sigset_t *set)
 #if defined (SIGINT)
   sigaddset (set, SIGINT);
 #endif
+#if defined (SIGTERM)
+  sigaddset (set, SIGTERM);
+#endif
 # if defined (SIGUSR1)
   sigaddset (set, SIGUSR1);
 # endif
@@ -111,7 +117,7 @@ static int term_conf_busy = 0;
 #endif /* !HAVE_SIGACTION */
 
 static signal_info old_TSTP, old_TTOU, old_TTIN;
-static signal_info old_WINCH, old_INT, old_USR1;
+static signal_info old_WINCH, old_INT, old_TERM, old_USR1;
 static signal_info old_QUIT;
 
 void
@@ -145,6 +151,10 @@ initialize_info_signal_handler (void)
   set_termsig (SIGINT, &old_INT);
 #endif
 
+#if defined (SIGTERM)
+  set_termsig (SIGTERM, &old_TERM);
+#endif
+
 #if defined (SIGUSR1)
   /* Used by DJGPP to simulate SIGTSTP on Ctrl-Z.  */
   set_termsig (SIGUSR1, &old_USR1);
@@ -156,8 +166,10 @@ redisplay_after_signal (void)
 {
   terminal_clear_screen ();
   display_clear_display (the_display);
+  if (auto_footnotes_p)
+    info_get_or_remove_footnotes (active_window);
   window_mark_chain (windows, W_UpdateWindow);
-  display_update_display (windows);
+  display_update_display ();
   display_cursor_at_point (active_window);
   fflush (stdout);
 }
@@ -165,14 +177,33 @@ redisplay_after_signal (void)
 void
 reset_info_window_sizes (void)
 {
-  terminal_goto_xy (0, 0);
-  fflush (stdout);
-  terminal_unprep_terminal ();
   terminal_get_screen_size ();
-  terminal_prep_terminal ();
   display_initialize_display (screenwidth, screenheight);
   window_new_screen_size (screenwidth, screenheight);
   redisplay_after_signal ();
+}
+
+/* Number of times we were told to ignore SIGWINCH. */
+static int sigwinch_block_count = 0;
+
+void
+signal_block_winch (void)
+{
+#if defined (SIGWINCH)
+  if (sigwinch_block_count == 0)
+    BLOCK_SIGNAL (SIGWINCH);
+  sigwinch_block_count++;
+#endif
+}
+
+void
+signal_unblock_winch (void)
+{
+#if defined (SIGWINCH)
+  sigwinch_block_count--;
+  if (sigwinch_block_count == 0)
+    UNBLOCK_SIGNAL (SIGWINCH);
+#endif
 }
 
 static RETSIGTYPE
@@ -207,6 +238,9 @@ info_signal_proc (int sig)
 #if defined (SIGINT)
     case SIGINT:
 #endif
+#if defined (SIGTERM)
+    case SIGTERM:
+#endif
       {
 #if defined (SIGTSTP)
         if (sig == SIGTSTP)
@@ -224,6 +258,10 @@ info_signal_proc (int sig)
         if (sig == SIGINT)
           old_signal_handler = &old_INT;
 #endif /* SIGINT */
+#if defined (SIGTERM)
+        if (sig == SIGTERM)
+          old_signal_handler = &old_TERM;
+#endif /* SIGTERM */
 
         /* For stop signals, restore the terminal IO, leave the cursor
            at the bottom of the window, and stop us. */
@@ -263,17 +301,30 @@ info_signal_proc (int sig)
 	if (sig == SIGUSR1)
 	  old_signal_handler = &old_USR1;
 #endif
-	terminal_goto_xy (0, 0);
-	fflush (stdout);
-	terminal_unprep_terminal (); /* needless? */
+
+        /* This seems risky: what if we receive a (real) signal before
+           the next line is reached? */
+#if 0
 	restore_termsig (sig, old_signal_handler);
-	UNBLOCK_SIGNAL (sig);
 	kill (getpid (), sig);
+#endif
 
 	/* After our old signal handler returns... */
 	set_termsig (sig, old_signal_handler); /* needless? */
-	terminal_prep_terminal ();
+
+        if (sigwinch_block_count != 0)
+          abort ();
+
+        /* Avoid any of the code unblocking the signal too early.  This
+           should set the variable to 1 because we shouldn't be here if
+           sigwinch_block_count > 0. */
+        sigwinch_block_count++;
+
 	reset_info_window_sizes ();
+
+        sigwinch_block_count--;
+        /* Don't unblock the signal until after we've finished. */
+	UNBLOCK_SIGNAL (sig);
       }
       break;
 #endif /* SIGWINCH || SIGUSR1 */
@@ -291,4 +342,6 @@ info_signal_proc (int sig)
 #endif /* HAVE_SIGPROCMASK || HAVE_SIGSETMASK */
 #endif /* !HAVE_SIGACTION */
 }
+
+
 /* vim: set sw=2 cino={1s>2sn-s^-se-s: */

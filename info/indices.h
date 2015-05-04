@@ -1,7 +1,7 @@
 /* indices.h -- Functions defined in indices.c.
-   $Id: indices.h 5337 2013-08-22 17:54:06Z karl $
+   $Id: indices.h 6209 2015-04-07 10:52:27Z gavin $
 
-   Copyright 1993, 1997, 2004, 2007, 2013
+   Copyright 1993, 1997, 2004, 2007, 2013, 2014
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -25,20 +25,18 @@
 /* User-visible variable controls the output of info-index-next. */
 extern int show_index_match;
 
-extern REFERENCE **info_indices_of_window (WINDOW *window);
-extern REFERENCE **info_indices_of_file_buffer (FILE_BUFFER *file_buffer);
-extern void info_apropos (char *string);
-
 /* For every menu item in DIR, search the indices of that file for STRING. */
 REFERENCE **apropos_in_all_indices (char *search_string, int inform);
 
 /* User visible functions declared in indices.c. */
-extern void info_index_search (WINDOW *window, int count, unsigned char key);
-extern void info_next_index_match (WINDOW *window, int count, unsigned char key);
-extern void info_index_apropos (WINDOW *window, int count, unsigned char key);
-extern void do_info_index_search (WINDOW *window, int count, char *search_string);
-extern int index_entry_exists (WINDOW *window, char *string);
+extern void info_index_search (WINDOW *window, int count);
+extern void info_index_apropos (WINDOW *window, int count);
+void next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
+                  REFERENCE **result, int *found_offset, int *match_offset);
+void report_index_match (int i, int match_offset);
+REFERENCE *look_in_indices (FILE_BUFFER *fb, char *string, int sloppy);
 
-NODE *allfiles_create_node (char *term, REFERENCE **fref);
+#define APROPOS_NONE \
+   N_("No available info files have '%s' in their indices.")
 
 #endif /* not INFO_INDICES_H */

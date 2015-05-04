@@ -1,3 +1,4 @@
+# $Id: 02coverage.t 6132 2015-02-18 00:07:53Z karl $
 use strict;
 
 use File::Spec;
@@ -26,13 +27,15 @@ my @test_cases = (
 @math{--{x^i}\over{\tan y}}
 
 Math with @@-command
-@math{@code{math code} a < b}
+@math{@code{math code} a < b \sum@sub{i} q@sup{2}}
 
 Complex
 @math{ \underline{@code{math \hbox{ code }}} @\i \sum_{i}{\underline{f}}}
 
 @@\ outside of math
 @\
+
+The 3@sup{rd}is the I@sub{r}.
 
 '],
 ['empty_w',
@@ -60,6 +63,11 @@ In float
 
 in caption}
 @end float
+'],
+['raggedright','
+@raggedright
+in raggedright
+@end raggedright
 '],
 ['item_container','
 @itemize +
@@ -533,6 +541,9 @@ In float with caption.
 ['setfilename_in_paragraph',
 'Some text
 @setfilename filename.info
+'],
+['invalid_U',
+'@U @U{} @U{z} @U{abc} @U{9999999999999} @U{110000} @U{10FFFF}
 '],
 ['test_errormsg',
 'Some text

@@ -1,6 +1,18 @@
 #! /bin/sh
-
+# $Id: all_tests.sh 6139 2015-02-22 22:53:33Z karl $
 # Helper script for tests.
+#
+# Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+# Originally written by Patrice Dumas.
 
 command=$1
 if [ $# -gt 0 ]; then 
@@ -11,7 +23,7 @@ fi
 cmds_list="clean|generate|output|diff|texis"
 
 if [ z"$command" = 'z' ]; then
-  echo "Need an arg $cmds_list"
+  echo "$0: need an arg, one of: $cmds_list" >&2
   exit 1
 fi
 
@@ -53,7 +65,7 @@ else
       $PERL -w $file -c
     done
   else
-    echo "Unknown command ($cmds_list)"
+    echo "$0: Unknown command ($cmds_list)" >&2
     exit 1
   fi
 fi

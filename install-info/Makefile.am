@@ -1,4 +1,4 @@
-# $Id: Makefile.am 5191 2013-02-23 00:11:18Z karl $
+# $Id: Makefile.am 6165 2015-02-27 18:46:10Z gavin $
 # Makefile.am for texinfo/install-info.
 #
 # Copyright 2008, 2009, 2010, 2012, 2013 Free Software Foundation, Inc.
@@ -11,7 +11,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-SUBDIRS = tests
+SUBDIRS = . tests
 bin_PROGRAMS = ginstall-info
 
 w32_script = ginstall-info.exe.manifest

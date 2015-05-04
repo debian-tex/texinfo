@@ -1,8 +1,8 @@
 /* window.c -- windows in Info.
-   $Id: window.c 5334 2013-08-20 19:15:05Z gray $
+   $Id: window.c 6019 2015-01-03 18:11:40Z gavin $
 
    Copyright 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008,
-   2011, 2012, 2013 Free Software Foundation, Inc.
+   2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,12 +20,14 @@
    Originally written by Brian Fox.  */
 
 #include "info.h"
-#include "nodes.h"
-#include "window.h"
+#include "session.h"
 #include "display.h"
 #include "info-utils.h"
-#include "infomap.h"
+#include "doc.h"
 #include "tag.h"
+#include "variables.h"
+
+static void calculate_line_starts (WINDOW *window);
 
 /* The window which describes the screen. */
 WINDOW *the_screen = NULL;
@@ -43,10 +45,6 @@ WINDOW *active_window = NULL;
    size of the screen. */
 #define ECHO_AREA_HEIGHT 1
 
-/* Macro returns the amount of space that the echo area truly requires relative
-   to the entire screen. */
-#define echo_area_required (1 + the_echo_area->height)
-
 /* Show malformed multibyte sequences */
 int show_malformed_multibyte_p = 0;
 
@@ -56,19 +54,10 @@ int show_malformed_multibyte_p = 0;
 void
 window_initialize_windows (int width, int height)
 {
-  the_screen = xmalloc (sizeof (WINDOW));
-  the_echo_area = xmalloc (sizeof (WINDOW));
-  windows = xmalloc (sizeof (WINDOW));
+  the_screen = xzalloc (sizeof (WINDOW));
+  the_echo_area = xzalloc (sizeof (WINDOW));
+  windows = xzalloc (sizeof (WINDOW));
   active_window = windows;
-
-  zero_mem (the_screen, sizeof (WINDOW));
-  zero_mem (the_echo_area, sizeof (WINDOW));
-  zero_mem (active_window, sizeof (WINDOW));
-
-  /* None of these windows has a goal column yet. */
-  the_echo_area->goal_column = -1;
-  active_window->goal_column = -1;
-  the_screen->goal_column = -1;
 
   /* The active and echo_area windows are visible.
      The echo_area is permanent.
@@ -86,10 +75,6 @@ window_initialize_windows (int width, int height)
   the_echo_area->height = ECHO_AREA_HEIGHT;
   active_window->height = the_screen->height - 1 - the_echo_area->height;
   window_new_screen_size (width, height);
-
-  /* The echo area uses a different keymap than normal info windows. */
-  the_echo_area->keymap = echo_area_keymap;
-  active_window->keymap = info_keymap;
 }
 
 /* Given that the size of the screen has changed to WIDTH and HEIGHT
@@ -99,15 +84,10 @@ window_initialize_windows (int width, int height)
    after deleting the window from our chain of windows.  If DELETER is NULL,
    nothing extra is done.  The last window can never be deleted, but it can
    become invisible. */
-
-/* If non-null, a function to call with WINDOW as argument when the function
-   window_new_screen_size () has deleted WINDOW. */
-VFunction *window_deletion_notifier = NULL;
-
 void
 window_new_screen_size (int width, int height)
 {
-  register WINDOW *win;
+  register WINDOW *win, *first_win;
   int delta_height, delta_each, delta_leftover;
   int numwins;
 
@@ -115,14 +95,26 @@ window_new_screen_size (int width, int height)
   if (width == the_screen->width && height == the_screen->height)
     return;
 
-  /* If the new window height is too small, make it be zero. */
-  if (height < (WINDOW_MIN_SIZE + the_echo_area->height))
-    height = 0;
-  if (width < 0)
-    width = 0;
+  /* The screen has changed height and width. */
+  delta_height = height - the_screen->height;
+  the_screen->height = height;
+  the_screen->width = width;
 
-  /* Find out how many windows will change. */
-  for (numwins = 0, win = windows; win; win = win->next, numwins++);
+  /* Set the start of the echo area. */
+  the_echo_area->first_row = height - the_echo_area->height;
+  the_echo_area->width = width;
+
+  /* Count number of windows. */
+  numwins = 0;
+  for (win = windows; win; win = win->next)
+    numwins++;
+
+  if (numwins == 0)
+    return; /* There is nothing to do. */
+
+  /* Divide the change in height among the available windows. */
+  delta_each = delta_height / numwins;
+  delta_leftover = delta_height - (delta_each * numwins);
 
   /* See if some windows will need to be deleted.  This is the case if
      the screen is getting smaller, and the available space divided by
@@ -130,18 +122,19 @@ window_new_screen_size (int width, int height)
      delete some windows and try again until there is either enough
      space to divy up among the windows, or until there is only one
      window left. */
-  while ((height - echo_area_required) / numwins <= WINDOW_MIN_SIZE)
+  while (height - 1 <= WINDOW_MIN_SIZE * numwins)
     {
-      /* If only one window, make the size of it be zero, and return
-         immediately. */
+      /* If only one window left, give up. */
       if (!windows->next)
         {
-          windows->height = 0;
-          free (windows->line_starts);
-	  free (windows->log_line_no);
-          windows->line_starts = NULL;
-          windows->line_count = 0;
-          break;
+          /* Keep track of the height so that when the screen gets bigger
+             again, it can be resized properly.  The -2 is for the window
+             information bar and the echo area. */
+          windows->height = height - 2;
+          windows->width = width;
+          free (windows->modeline);
+          windows->modeline = xmalloc (1 + width);
+          return;
         }
 
       /* If we have some temporary windows, delete one of them. */
@@ -153,35 +146,27 @@ window_new_screen_size (int width, int height)
       if (!win)
         win = windows;
 
-      if (window_deletion_notifier)
-        (*window_deletion_notifier) (win);
-
+      forget_window_and_nodes (win);
       window_delete_window (win);
       numwins--;
     }
 
-  /* The screen has changed height and width. */
-  delta_height = height - the_screen->height;   /* This is how much. */
-  the_screen->height = height;                  /* This is the new height. */
-  the_screen->width = width;                    /* This is the new width. */
-
-  /* Set the start of the echo area. */
-  the_echo_area->first_row = height - the_echo_area->height;
-  the_echo_area->width = width;
-
-  /* Check to see if the screen can really be changed this way. */
-  if ((!windows->next) && ((windows->height == 0) && (delta_height < 0)))
-    return;
-
-  /* Divide the change in height among the available windows. */
-  delta_each = delta_height / numwins;
-  delta_leftover = delta_height - (delta_each * numwins);
+  /* Alternate which window we start resizing at, to resize all
+     windows evenly. */
+    {
+      int first_win_num = the_screen->height % numwins;
+      int i;
+      first_win = windows;
+      for (i = 0; i < first_win_num; i++)
+        first_win = first_win->next;
+    }
 
   /* Change the height of each window in the chain by delta_each.  Change
      the height of the last window in the chain by delta_each and by the
      leftover amount of change.  Change the width of each window to be
      WIDTH. */
-  for (win = windows; win; win = win->next)
+  win = first_win;
+  do
     {
       if ((win->width != width) && ((win->flags & W_InhibitMode) == 0))
         {
@@ -190,28 +175,39 @@ window_new_screen_size (int width, int height)
           win->modeline = xmalloc (1 + width);
         }
 
-      win->height += delta_each;
+      /* Don't resize a window to be smaller than one line. */
+      if (win->height + delta_each >= 1)
+        win->height += delta_each;
+      else
+        delta_leftover += delta_each;
 
-      /* If the previous height of this window was zero, it was the only
-         window, and it was not visible.  Thus we need to compensate for
-         the echo_area. */
-      if (win->height == delta_each)
-        win->height -= (1 + the_echo_area->height);
+      /* Try to use up the extra space. */
+      if (delta_leftover != 0 && win->height + delta_leftover >= 1)
+        {
+          win->height += delta_leftover;
+          delta_leftover = 0;
+        }
+      /* Go to next window, wrapping round to the start. */
+      win = win->next;
+      if (!win)
+        win = windows;
+    }
+  while (win != first_win);
 
-      /* If this is not the first window in the chain, then change the
-         first row of it.  We cannot just add delta_each to the first row,
-         since this window's first row is the sum of the collective increases
-         that have gone before it.  So we just add one to the location of the
+  for (win = windows; win; win = win->next)
+    {
+      /* If this is not the first window in the chain, set the
+         first row of it by adding one to the location of the
          previous window's modeline. */
       if (win->prev)
         win->first_row = (win->prev->first_row + win->prev->height) + 1;
 
-      /* The last window in the chain gets the extra space (or shrinkage). */
-      if (!win->next)
-        win->height += delta_leftover;
-
       if (win->node)
-        recalculate_line_starts (win);
+        {
+          free (win->line_starts);
+          free (win->log_line_no);
+          calculate_line_starts (win);
+        }
 
       win->flags |= W_UpdateWindow;
     }
@@ -258,6 +254,9 @@ window_new_screen_size (int width, int height)
         }
     }
 
+  /* Make sure point is in displayed part of active window. */
+  window_adjust_pagetop (active_window);
+
   /* One more loop.  If any heights or widths have become negative,
      set them to zero.  This can apparently happen with resizing down to
      very small sizes.  Sadly, it is not apparent to me where in the
@@ -272,17 +271,12 @@ window_new_screen_size (int width, int height)
     }
 }
 
-/* Make a new window showing NODE, and return that window structure.
-   If NODE is passed as NULL, then show the node showing in the active
-   window.  If the window could not be made return a NULL pointer.  The
-   active window is not changed.*/
+/* Make a new window by splitting an existing one. If the window could
+   not be made return a null pointer.  The active window is not changed .*/
 WINDOW *
-window_make_window (NODE *node)
+window_make_window (void)
 {
   WINDOW *window;
-
-  if (!node)
-    node = active_window->node;
 
   /* If there isn't enough room to make another window, return now. */
   if ((active_window->height / 2) < WINDOW_MIN_SIZE)
@@ -296,53 +290,20 @@ window_make_window (NODE *node)
   window = xzalloc (sizeof (WINDOW));
   window->width = the_screen->width;
   window->height = (active_window->height / 2) - 1;
-#if defined (SPLIT_BEFORE_ACTIVE)
-  window->first_row = active_window->first_row;
-#else
   window->first_row = active_window->first_row +
     (active_window->height - window->height);
-#endif
-  window->keymap = info_keymap;
   window->goal_column = -1;
   memset (&window->line_map, 0, sizeof (window->line_map));
   window->modeline = xmalloc (1 + window->width);
   window->line_starts = NULL;
   window->flags = W_UpdateWindow | W_WindowVisible;
-  window_set_node_of_window (window, node);
 
   /* Adjust the height of the old active window. */
   active_window->height -= (window->height + 1);
-#if defined (SPLIT_BEFORE_ACTIVE)
-  active_window->first_row += (window->height + 1);
-#endif
   active_window->flags |= W_UpdateWindow;
 
-  /* Readjust the new and old windows so that their modelines and contents
-     will be displayed correctly. */
-#if defined (NOTDEF)
-  /* We don't have to do this for WINDOW since window_set_node_of_window ()
-     already did. */
-  window_adjust_pagetop (window);
-  window_make_modeline (window);
-#endif /* NOTDEF */
-
-  /* We do have to readjust the existing active window. */
-  window_adjust_pagetop (active_window);
   window_make_modeline (active_window);
 
-#if defined (SPLIT_BEFORE_ACTIVE)
-  /* This window is just before the active one.  The active window gets
-     bumped down one.  The active window is not changed. */
-  window->next = active_window;
-
-  window->prev = active_window->prev;
-  active_window->prev = window;
-
-  if (window->prev)
-    window->prev->next = window;
-  else
-    windows = window;
-#else
   /* This window is just after the active one.  Which window is active is
      not changed. */
   window->prev = active_window;
@@ -350,7 +311,6 @@ window_make_window (NODE *node)
   active_window->next = window;
   if (window->next)
     window->next->prev = window;
-#endif /* !SPLIT_BEFORE_ACTIVE */
   return window;
 }
 
@@ -361,7 +321,6 @@ window_make_window (NODE *node)
     me->height += diff; \
     next->height -= diff; \
     next->first_row += diff; \
-    window_adjust_pagetop (next); \
   } while (0)
 
 #define grow_me_shrinking_prev(me, prev, diff) \
@@ -369,7 +328,6 @@ window_make_window (NODE *node)
     me->height += diff; \
     prev->height -= diff; \
     me->first_row -=diff; \
-    window_adjust_pagetop (prev); \
   } while (0)
 
 #define shrink_me_growing_next(me, next, diff) \
@@ -377,7 +335,6 @@ window_make_window (NODE *node)
     me->height -= diff; \
     next->height += diff; \
     next->first_row -= diff; \
-    window_adjust_pagetop (next); \
   } while (0)
 
 #define shrink_me_growing_prev(me, prev, diff) \
@@ -385,7 +342,6 @@ window_make_window (NODE *node)
     me->height -= diff; \
     prev->height += diff; \
     me->first_row += diff; \
-    window_adjust_pagetop (prev);		\
   } while (0)
 
 /* Change the height of WINDOW by AMOUNT.  This also automagically adjusts
@@ -504,8 +460,6 @@ window_change_window_height (WINDOW *window, int amount)
                   next->first_row++;
                 }
             }
-          window_adjust_pagetop (prev);
-          window_adjust_pagetop (next);
         }
     }
   if (prev)
@@ -515,7 +469,6 @@ window_change_window_height (WINDOW *window, int amount)
     next->flags |= W_UpdateWindow;
 
   window->flags |= W_UpdateWindow;
-  window_adjust_pagetop (window);
 }
 
 /* Tile all of the windows currently displayed in the global variable
@@ -585,8 +538,8 @@ window_toggle_wrap (WINDOW *window)
 
   if (window != the_echo_area)
     {
-      char **old_starts;
-      size_t *old_xlat;
+      long *old_starts;
+      long *old_xlat;
       int old_lines, old_pagetop;
 
       old_starts = window->line_starts;
@@ -603,8 +556,8 @@ window_toggle_wrap (WINDOW *window)
          to speed up the display.  Many of the line starts will be the same,
          so scrolling here is a very good optimization.*/
       if (old_pagetop == window->pagetop)
-        display_scroll_line_starts
-          (window, old_pagetop, old_starts, old_lines);
+        display_scroll_line_starts (window, old_pagetop,
+                                    old_starts, old_lines);
       free (old_starts);
       free (old_xlat);
     }
@@ -618,18 +571,33 @@ window_set_node_of_window (WINDOW *window, NODE *node)
   window->node = node;
   window->pagetop = 0;
   window->point = 0;
-  recalculate_line_starts (window);
+
+  free (window->line_starts);
+  free (window->log_line_no);
+  calculate_line_starts (window);
+  window_compute_line_map (window);
+
+  /* Clear displayed search matches if any.  TODO: do search again in new
+     node? */
+  free (window->matches);
+  window->matches = 0;
+
   window->flags |= W_UpdateWindow;
-  /* The display_pos member is nonzero if we're displaying an anchor.  */
-  window->point = node ? node->display_pos : 0;
-  window_adjust_pagetop (window);
+  if (node)
+    {
+      /* The display_pos member is nonzero if we're displaying an anchor.  */
+      window->point = node ? node->display_pos : 0;
+      window_adjust_pagetop (window);
+    }
   window_make_modeline (window);
 }
 
 /* Delete WINDOW from the list of known windows.  If this window was the
    active window, make the next window in the chain be the active window.
    If the active window is the next or previous window, choose that window
-   as the recipient of the extra space.  Otherwise, prefer the next window. */
+   as the recipient of the extra space.  Otherwise, prefer the next window.
+   Be aware that info_delete_window_internal (in session.c) should be called
+   instead if you need to remove the window from the info_windows list. */
 void
 window_delete_window (WINDOW *window)
 {
@@ -652,17 +620,31 @@ window_delete_window (WINDOW *window)
 
   free (window->line_starts);
   free (window->log_line_no);
+  free (window->line_map.map);
   free (window->modeline);
 
   if (window == active_window)
     {
+      WINDOW *new_active = 0;
+
       /* If there isn't a next window, then there must be a previous one,
          since we cannot delete the last window.  If there is a next window,
-         prefer to use that as the active window. */
+         prefer to use that as the active window.  Try to find an important
+         window to select, e.g. not a footnotes window. */
       if (next)
-        active_window = next;
-      else
-        active_window = prev;
+        {
+          new_active = next;
+          while ((new_active->flags & W_TempWindow) && new_active->next)
+            new_active = new_active->next;
+        }
+
+      if ((!new_active || new_active->flags & W_TempWindow) && prev)
+        {
+          new_active = prev;
+          while ((new_active->flags & W_TempWindow) && new_active->prev)
+            new_active = new_active->prev;
+        }
+      active_window = new_active;
     }
 
   if (next && active_window == next)
@@ -718,155 +700,6 @@ window_unmark_chain (WINDOW *chain, int flag)
     win->flags &= ~flag;
 }
 
-/* Return the number of characters it takes to display CHARACTER on the
-   screen at HPOS. */
-int
-character_width (int character, int hpos)
-{
-  int printable_limit = 127;
-  int width = 1;
-
-  if (ISO_Latin_p)
-    printable_limit = 255;
-
-  if (character > printable_limit)
-    width = 3;
-  else if (iscntrl (character))
-    {
-      switch (character)
-        {
-        case '\r':
-        case '\n':
-          width = the_screen->width - hpos;
-          break;
-        case '\t':
-          width = ((hpos + 8) & 0xf8) - hpos;
-          break;
-        default:
-          width = 2;
-        }
-    }
-  else if (character == DEL)
-    width = 2;
-
-  return width;
-}
-
-/* Return the number of characters it takes to display STRING on the screen
-   at HPOS. */
-int
-string_width (char *string, int hpos)
-{
-  register int i, width, this_char_width;
-
-  for (width = 0, i = 0; string[i]; i++)
-    {
-      /* Support ANSI escape sequences for -R.  */
-      if (raw_escapes_p
-	  && string[i] == '\033'
-	  && string[i+1] == '['
-	  && isdigit (string[i+2])
-	  && (string[i+3] == 'm'
-	      || (isdigit (string[i+3]) && string[i+4] == 'm')))
-	{
-	  while (string[i] != 'm')
-	    i++;
-	  this_char_width = 0;
-	}
-      else
-	this_char_width = character_width (string[i], hpos);
-      width += this_char_width;
-      hpos += this_char_width;
-    }
-  return width;
-}
-
-/* Quickly guess the approximate number of lines that NODE would
-   take to display.  This really only counts carriage returns. */
-int
-window_physical_lines (NODE *node)
-{
-  register int i, lines;
-  char *contents;
-
-  if (!node)
-    return 0;
-
-  contents = node->contents;
-  for (i = 0, lines = 1; i < node->nodelen; i++)
-    if (contents[i] == '\n')
-      lines++;
-
-  return lines;
-}
-
-
-struct calc_closure {
-  WINDOW *win;
-  size_t line_starts_slots;
-};
-
-static void
-calc_closure_expand (struct calc_closure *cp)
-{
-  if (cp->win->line_count == cp->line_starts_slots)
-    {
-      if (cp->line_starts_slots == 0)
-	cp->line_starts_slots = 100;
-      cp->win->line_starts = x2nrealloc (cp->win->line_starts,
-					 &cp->line_starts_slots,
-					 sizeof (cp->win->line_starts[0]));
-      cp->win->log_line_no = xrealloc (cp->win->log_line_no,
-				     cp->line_starts_slots *
-				     sizeof (cp->win->log_line_no[0]));
-    }
-}
-
-static int
-_calc_line_starts (void *closure, size_t pline_index, size_t lline_index,
-		   const char *src_line,
-		   char *printed_line, size_t pl_index, size_t pl_count)
-{
-  struct calc_closure *cp = closure;
-
-  calc_closure_expand (cp);
-  cp->win->line_starts[cp->win->line_count] = (char*) src_line;
-  cp->win->log_line_no[cp->win->line_count] = lline_index;
-  cp->win->line_count++;
-  return 0;
-}
-
-void
-calculate_line_starts (WINDOW *window)
-{
-  struct calc_closure closure;
-
-  window->line_starts = NULL;
-  window->log_line_no  = NULL;
-  window->line_count = 0;
-
-  if (!window->node)
-    return;
-  
-  closure.win = window;
-  closure.line_starts_slots = 0;
-  process_node_text (window, window->node->contents, 0,
-		     _calc_line_starts, &closure);
-  calc_closure_expand (&closure);
-  window->line_starts[window->line_count] = NULL;
-  window->log_line_no[window->line_count] = 0;
-  window_line_map_init (window);
-}
-
-/* Given WINDOW, recalculate the line starts for the node it displays. */
-void
-recalculate_line_starts (WINDOW *window)
-{
-  free (window->line_starts);
-  free (window->log_line_no);
-  calculate_line_starts (window);
-}
-
 /* Return the number of first physical line corresponding to the logical
    line LN.
 
@@ -874,8 +707,8 @@ recalculate_line_starts (WINDOW *window)
    occupies more than one physical line if its width is greater than the
    window width and the flag W_NoWrap is not set for that window.
  */
-size_t
-window_log_to_phys_line (WINDOW *window, size_t ln)
+long
+window_log_to_phys_line (WINDOW *window, long ln)
 {
   size_t i;
   
@@ -886,66 +719,102 @@ window_log_to_phys_line (WINDOW *window, size_t ln)
   return i;
 }
 
-/* Global variable control redisplay of scrolled windows.  If non-zero,
-   it is the desired number of lines to scroll the window in order to
-   make point visible.  A value of 1 produces smooth scrolling.  If set
-   to zero, the line containing point is centered within the window. */
-int window_scroll_step = 1;
+/* Change the pagetop of WINDOW to DESIRED_TOP, perhaps scrolling the screen
+   to do so.  WINDOW->pagetop should be the currently displayed pagetop. */
+void
+set_window_pagetop (WINDOW *window, int desired_top)
+{
+  int point_line, old_pagetop;
+
+  if (desired_top < 0)
+    desired_top = 0;
+  else if (desired_top > window->line_count)
+    desired_top = window->line_count - 1;
+
+  if (window->pagetop == desired_top)
+    return;
+
+  old_pagetop = window->pagetop;
+  window->pagetop = desired_top;
+
+  /* Make sure that point appears in this window. */
+  point_line = window_line_of_point (window);
+  if (point_line < window->pagetop)
+    {
+      window->point = window->line_starts[window->pagetop];
+      window->goal_column = 0;
+    }
+  else if (point_line >= window->pagetop + window->height)
+    {
+      long bottom = window->pagetop + window->height - 1;
+      window->point = window->line_starts[bottom];
+      window->goal_column = 0;
+    }
+
+  window->flags |= W_UpdateWindow;
+
+  /* Find out which direction to scroll, and scroll the window in that
+     direction.  Do this only if there would be a savings in redisplay
+     time.  This is true if the amount to scroll is less than the height
+     of the window, and if the number of lines scrolled would be greater
+     than 10 % of the window's height.
+
+     To prevent status line blinking when keeping up or down key,
+     scrolling is disabled if the amount to scroll is 1. */
+  if (old_pagetop < desired_top)
+    {
+      int start, end, amount;
+
+      amount = desired_top - old_pagetop;
+
+      if (amount == 1 ||
+          (amount >= window->height) ||
+          (((window->height - amount) * 10) < window->height))
+        return;
+
+      start = window->first_row;
+      end = window->height + window->first_row;
+
+      display_scroll_display (start, end, -amount);
+    }
+  else
+    {
+      int start, end, amount;
+
+      amount = old_pagetop - desired_top;
+
+      if (amount == 1 ||
+          (amount >= window->height) ||
+          (((window->height - amount) * 10) < window->height))
+        return;
+
+      start = window->first_row;
+      end = window->first_row + window->height;
+      display_scroll_display (start, end, amount);
+    }
+}
 
 /* Adjust the pagetop of WINDOW such that the cursor point will be visible. */
 void
 window_adjust_pagetop (WINDOW *window)
 {
-  register int line = 0;
-  char *contents;
+  register int line;
 
   if (!window->node)
     return;
 
-  contents = window->node->contents;
-
-  /* Find the first printed line start which is after WINDOW->point. */
-  for (line = 0; line < window->line_count; line++)
-    {
-      char *line_start;
-
-      line_start = window->line_starts[line];
-
-      if ((line_start - contents) > window->point)
-        break;
-    }
-
-  /* The line index preceding the line start which is past point is the
-     one containing point. */
-  line--;
+  line = window_line_of_point (window);
 
   /* If this line appears in the current displayable page, do nothing.
      Otherwise, adjust the top of the page to make this line visible. */
-  if ((line < window->pagetop) ||
-      (line - window->pagetop > (window->height - 1)))
+  if (line < window->pagetop
+      || line - window->pagetop > window->height - 1)
     {
-      /* The user-settable variable "scroll-step" is used to attempt
-         to make point visible, iff it is non-zero.  If that variable
-         is zero, then the line containing point is centered within
-         the window. */
-      if (window_scroll_step < window->height)
-        {
-          if ((line < window->pagetop) &&
-              ((window->pagetop - window_scroll_step) <= line))
-            window->pagetop -= window_scroll_step;
-          else if ((line - window->pagetop > (window->height - 1)) &&
-                   ((line - (window->pagetop + window_scroll_step)
-                     < window->height)))
-            window->pagetop += window_scroll_step;
-          else
-            window->pagetop = line - ((window->height - 1) / 2);
-        }
-      else
-        window->pagetop = line - ((window->height - 1) / 2);
+      int new_pagetop = line - ((window->height - 1) / 2);
 
-      if (window->pagetop < 0)
-        window->pagetop = 0;
-      window->flags |= W_UpdateWindow;
+      if (new_pagetop < 0)
+        new_pagetop = 0;
+      set_window_pagetop (window, new_pagetop);
     }
 }
 
@@ -957,14 +826,13 @@ window_line_of_point (WINDOW *window)
 
   /* Try to optimize.  Check to see if point is past the pagetop for
      this window, and if so, start searching forward from there. */
-  if ((window->pagetop > -1 && window->pagetop < window->line_count) &&
-      (window->line_starts[window->pagetop] - window->node->contents)
-      <= window->point)
+  if (window->pagetop > -1 && window->pagetop < window->line_count
+      && window->line_starts[window->pagetop] <= window->point)
     start = window->pagetop;
 
   for (i = start; i < window->line_count; i++)
     {
-      if ((window->line_starts[i] - window->node->contents) > window->point)
+      if (window->line_starts[i] > window->point)
         break;
     }
 
@@ -977,37 +845,11 @@ window_line_of_point (WINDOW *window)
     return 0;
 }
 
-/* Get and return the goal column for this window. */
-int
-window_get_goal_column (WINDOW *window)
-{
-  if (!window->node)
-    return -1;
-
-  if (window->goal_column != -1)
-    return window->goal_column;
-
-  /* Okay, do the work.  Find the printed offset of the cursor
-     in this window. */
-  return window_get_cursor_column (window);
-}
-
 /* Get and return the printed column offset of the cursor in this window. */
 int
 window_get_cursor_column (WINDOW *window)
 {
   return window_point_to_column (window, window->point, &window->point);
-}
-
-/* Count the number of characters in LINE that precede the printed column
-   offset of GOAL. */
-int
-window_chars_to_goal (WINDOW *win, int goal)
-{
-  window_compute_line_map (win);
-  if (goal >= win->line_map.used)
-    goal = win->line_map.used - 1;
-  return win->line_map.map[goal] - win->line_map.map[0];
 }
 
 /* Create a modeline for WINDOW, and store it in window->modeline. */
@@ -1043,7 +885,7 @@ window_make_modeline (WINDOW *window)
           int percentage;
 
           pt = (float)window->pagetop;
-          lc = (float)window->line_count;
+          lc = (float)(window->line_count - window->height);
 
           percentage = 100 * (pt / lc);
 
@@ -1064,49 +906,84 @@ window_make_modeline (WINDOW *window)
         if (node->nodename)
           nodename = node->nodename;
 
-        if (node->parent)
+        if (node->subfile)
           {
-            parent = filename_non_directory (node->parent);
-            modeline_len += strlen ("Subfile: ") + strlen (node->filename);
+            parent = filename_non_directory (node->fullpath);
+            filename = filename_non_directory (node->subfile);
           }
-
-        if (node->filename)
-          filename = filename_non_directory (node->filename);
+        else
+          {
+            parent = 0;
+            filename = filename_non_directory (node->fullpath);
+          }
 
         if (node->flags & N_UpdateTags)
           update_message = _("--*** Tags out of Date ***");
       }
 
-    if (update_message)
-      modeline_len += strlen (update_message);
-    modeline_len += strlen (filename);
-    modeline_len += strlen (nodename);
-    modeline_len += 4;          /* strlen (location_indicator). */
+    if (preprocess_nodes_p)
+      {
+        char *name;
+        int dot;
 
-    /* 10 for the decimal representation of the number of lines in this
-       node, and the remainder of the text that can appear in the line. */
-    modeline_len += 10 + strlen (_("-----Info: (), lines ----, "));
-    modeline_len += window->width;
+        name = filename_non_directory (node->fullpath);
 
-    modeline = xmalloc (1 + modeline_len);
+        modeline_len += strlen ("--() --");
+        modeline_len += 3; /* strlen (location_indicator) */
+        modeline_len += strlen (name);
+        if (nodename) modeline_len += strlen (nodename);
+        if (modeline_len < window->width)
+          modeline_len = window->width;
 
-    /* Special internal windows have no filename. */
-    if (!parent && !*filename)
-      sprintf (modeline, _("-%s---Info: %s, %d lines --%s--"),
-               (window->flags & W_NoWrap) ? "$" : "-",
-               nodename, window->line_count, location_indicator);
+        modeline = xcalloc (1, 1 + modeline_len);
+
+        /* Omit any extension like ".info.gz" from file name. */
+        dot = strcspn (name, ".");
+
+        sprintf (modeline, "%s--", location_indicator);
+        if (name && strcmp ("", name))
+          {
+            sprintf (modeline + strlen (modeline), "(");
+            strncpy (modeline + strlen (modeline), name, dot);
+            sprintf (modeline + strlen (modeline), ") ");
+          }
+        sprintf (modeline + strlen (modeline), "%s--", nodename);
+      }
     else
-      sprintf (modeline, _("-%s%s-Info: (%s)%s, %d lines --%s--"),
-               (window->flags & W_NoWrap) ? "$" : "-",
-               (node && (node->flags & N_IsCompressed)) ? "zz" : "--",
-               parent ? parent : filename,
-               nodename, window->line_count, location_indicator);
+      {
+        if (node && node->subfile)
+            modeline_len += strlen ("Subfile: ") + strlen (node->subfile);
 
-    if (parent)
-      sprintf (modeline + strlen (modeline), _(" Subfile: %s"), filename);
+        if (update_message)
+          modeline_len += strlen (update_message);
+        modeline_len += strlen (filename);
+        modeline_len += strlen (nodename);
+        modeline_len += 4;          /* strlen (location_indicator). */
 
-    if (update_message)
-      sprintf (modeline + strlen (modeline), "%s", update_message);
+        /* 10 for the decimal representation of the number of lines in this
+           node, and the remainder of the text that can appear in the line. */
+        modeline_len += 10 + strlen (_("-----Info: (), lines ----, "));
+        modeline_len += window->width;
+
+        modeline = xmalloc (1 + modeline_len);
+
+        /* Special internal windows have no filename. */
+        if (!filename || !*filename)
+          sprintf (modeline, _("-%s---Info: %s, %ld lines --%s--"),
+                   (window->flags & W_NoWrap) ? "$" : "-",
+                   nodename, window->line_count, location_indicator);
+        else
+          sprintf (modeline, _("-%s%s-Info: (%s)%s, %ld lines --%s--"),
+                   (window->flags & W_NoWrap) ? "$" : "-",
+                   (node && (node->flags & N_IsCompressed)) ? "zz" : "--",
+                   parent ? parent : filename,
+                   nodename, window->line_count, location_indicator);
+        if (node->subfile)
+          sprintf (modeline + strlen (modeline), _(" Subfile: %s"), filename);
+
+        if (update_message)
+          sprintf (modeline + strlen (modeline), "%s", update_message);
+      }
 
     i = strlen (modeline);
 
@@ -1138,33 +1015,12 @@ window_goto_percentage (WINDOW *window, int percent)
 
   window->pagetop = desired_line;
   window->point =
-    window->line_starts[window->pagetop] - window->node->contents;
+    window->line_starts[window->pagetop];
   window->flags |= W_UpdateWindow;
   window_make_modeline (window);
 }
 
-/* Get the state of WINDOW, and save it in STATE. */
-void
-window_get_state (WINDOW *window, SEARCH_STATE *state)
-{
-  state->node = window->node;
-  state->pagetop = window->pagetop;
-  state->point = window->point;
-}
-
-/* Set the node, pagetop, and point of WINDOW. */
-void
-window_set_state (WINDOW *window, SEARCH_STATE *state)
-{
-  if (window->node != state->node)
-    window_set_node_of_window (window, state->node);
-  window->pagetop = state->pagetop;
-  window->point = state->point;
-}
-
 
-/* Manipulating home-made nodes.  */
-
 /* A place to buffer echo area messages. */
 static NODE *echo_area_node = NULL;
 
@@ -1251,29 +1107,18 @@ unmessage_in_echo_area (void)
   display_update_one_window (the_echo_area);
 }
 
-/* A place to build a message. */
-static struct text_buffer message_buffer;
-
-/* Format MESSAGE_BUFFER with the results of printing FORMAT with ARG1 and
-   ARG2. */
-static void
-build_message_buffer (const char *format, va_list ap)
-{
-  text_buffer_vprintf (&message_buffer, format, ap);
-}
-
+
 /* Build a new node which has FORMAT printed with ARG1 and ARG2 as the
    contents. */
 NODE *
 build_message_node (const char *format, va_list ap)
 {
-  NODE *node;
+  struct text_buffer msg;
 
-  initialize_message_buffer ();
-  build_message_buffer (format, ap);
+  text_buffer_init (&msg);
+  text_buffer_vprintf (&msg, format, ap);
 
-  node = message_buffer_to_node ();
-  return node;
+  return text_buffer_to_node (&msg);
 }
 
 NODE *
@@ -1289,452 +1134,125 @@ format_message_node (const char *format, ...)
 }
 
 NODE *
-string_to_node (char *contents)
+text_buffer_to_node (struct text_buffer *tb)
 {
   NODE *node;
 
-  node = xzalloc (sizeof (NODE));
-  node->filename = NULL;
-  node->parent = NULL;
-  node->nodename = NULL;
-  node->flags = 0;
-  node->display_pos =0;
+  node = info_create_node ();
 
   /* Make sure that this buffer ends with a newline. */
-  node->nodelen = 1 + strlen (contents);
-  node->contents = contents;
+  text_buffer_add_char (tb, '\n');
+  node->nodelen = text_buffer_off (tb);
+  text_buffer_add_char (tb, '\0');
+
+  node->contents = text_buffer_base (tb);
   return node;
 }
 
-/* Convert the contents of the message buffer to a node. */
-NODE *
-message_buffer_to_node (void)
+/* Used by calculate_line_starts to record line starts in the
+   win->LINE_COUNT and win->LOG_LINE_NO arrays. */
+static void
+collect_line_starts (WINDOW *win, long ll_num, long pl_start)
 {
-  NODE *node;
+  add_element_to_array (pl_start, win->line_count,
+                        win->line_starts, win->line_slots, 2);
 
-  node = xzalloc (sizeof (NODE));
-  node->filename = NULL;
-  node->parent = NULL;
-  node->nodename = NULL;
-  node->flags = 0;
-  node->display_pos =0;
-
-  /* Make sure that this buffer ends with a newline. */
-  node->nodelen = 1 + strlen (message_buffer.base);
-  node->contents = xmalloc (1 + node->nodelen);
-  strcpy (node->contents, message_buffer.base);
-  node->contents[node->nodelen - 1] = '\n';
-  node->contents[node->nodelen] = '\0';
-  return node;
+  /* We cannot do add_element_to_array for this, as this would lead
+     to incrementing cp->win->line_count twice. */
+  win->log_line_no = xrealloc (win->log_line_no,
+                               win->line_slots * sizeof (long));
+  win->log_line_no[win->line_count - 1] = ll_num;
 }
 
-/* Useful functions can be called from outside of window.c. */
-void
-initialize_message_buffer (void)
+/* Calculate a list of line starts for the node belonging to WINDOW.  The
+   line starts are offsets within WINDOW->node->contents.
+
+   Note that this function must agree with what display_update_one_window
+   in display.c does. */
+static void
+calculate_line_starts (WINDOW *win)
 {
-  message_buffer.off = 0;
-}
+  long pl_chars = 0;     /* Number of characters in line so far. */
+  long pl_start = 0;     /* Offset of start of current physical line. */
+  long ll_num = 0;       /* Number of logical lines */
+  mbi_iterator_t iter;
 
-/* Print supplied arguments using FORMAT to the end of the current message
-   buffer. */
-void
-printf_to_message_buffer (const char *format, ...)
-{
-  va_list ap;
+  /* Width of character carried over from one physical line to the next.  */
+  size_t carried_over_chars = 0;
 
-  va_start (ap, format);
-  build_message_buffer (format, ap);
-  va_end (ap);
-}
+  win->line_starts = NULL;
+  win->log_line_no = NULL;
+  win->line_count = 0;
+  win->line_slots = 0;
 
-/* Return the current horizontal position of the "cursor" on the most
-   recently output message buffer line. */
-int
-message_buffer_length_this_line (void)
-{
-  char *p;
-  
-  if (!message_buffer.base || !*message_buffer.base)
-    return 0;
+  if (!win->node)
+    return;
 
-  p = strrchr (message_buffer.base, '\n');
-  if (!p)
-    p = message_buffer.base;
-  return string_width (p, 0);
-}
-
-/* Pad STRING to COUNT characters by inserting blanks. */
-int
-pad_to (int count, char *string)
-{
-  register int i;
-
-  i = strlen (string);
-
-  if (i >= count)
-    string[i++] = ' ';
-  else
+  for (mbi_init (iter, win->node->contents, win->node->nodelen);
+       mbi_avail (iter);
+       mbi_advance (iter))
     {
-      while (i < count)
-        string[i++] = ' ';
-    }
-  string[i] = '\0';
+      size_t pchars = 0; /* Screen columns for this character. */
+      size_t pbytes = 0; /* Not used. */
+      int delim = 0;
 
-  return i;
+      printed_representation (&iter, &delim, pl_chars, &pchars, &pbytes);
+
+      /* If this character can be printed without passing the width of
+         the line, then include it in the line. */
+      if (!delim && pl_chars + pchars < win->width)
+        {
+          pl_chars += pchars;
+          continue;
+        }
+
+      /* If this character cannot be printed in this line, we have
+         found the end of this line as it would appear on the screen. */
+
+      carried_over_chars = delim ? 0 : pchars;
+
+      collect_line_starts (win, ll_num, pl_start);
+
+      if (delim == '\r' || delim == '\n')
+        ++ll_num;
+
+      /* Start a new physical line at next character, unless a character
+         was carried over, in which case start there. */
+      pl_start = mbi_cur_ptr (iter) - win->node->contents;
+      if (carried_over_chars == 0)
+        pl_start += mb_len (mbi_cur (iter));
+      pl_chars = 0;
+
+      /* If there is a character carried over, count it now.  Expected to be 
+         "short", i.e. a representation like "^A". */
+      if (carried_over_chars != 0)
+        {
+          pl_chars = carried_over_chars;
+    
+          /* If this window has chosen not to wrap lines, skip to the end
+             of the logical line in the buffer, and start a new line here. */
+          if (win->flags & W_NoWrap)
+            {
+              for (; mbi_avail (iter); mbi_advance (iter))
+                if (mb_len (mbi_cur (iter)) == 1
+                    && *mbi_cur_ptr (iter) == '\n')
+                  break;
+
+              pl_chars = 0;
+              pl_start = mbi_cur_ptr (iter) + mb_len (mbi_cur (iter))
+                         - win->node->contents;
+            }
+        }
+    }
+
+  if (pl_chars)
+    collect_line_starts (win, ll_num, pl_start);
+
+  /* Finally, initialize the line map for the current line. */
+  window_line_map_init (win);
 }
 
 
-#define ITER_SETBYTES(iter,n) ((iter).cur.bytes = n)
-#define ITER_LIMIT(iter) ((iter).limit - (iter).cur.ptr)
-
-/* If ITER points to an ANSI escape sequence, process it, set PLEN to its
-   length in bytes, and return 1.
-   Otherwise, return 0.
- */
-static int
-ansi_escape (mbi_iterator_t iter, size_t *plen)
-{
-  if (raw_escapes_p && *mbi_cur_ptr (iter) == '\033' && mbi_avail (iter))
-    {
-      mbi_advance (iter);
-      if (*mbi_cur_ptr (iter) == '[' &&  mbi_avail (iter))
-	{
-	  ITER_SETBYTES (iter, 1);
-	  mbi_advance (iter);
-	  if (isdigit (*mbi_cur_ptr (iter)) && mbi_avail (iter))
-	    {	
-	      ITER_SETBYTES (iter, 1);
-	      mbi_advance (iter);
-	      if (*mbi_cur_ptr (iter) == 'm')
-		{
-		  *plen = 4;
-		  return 1;
-		}
-	      else if (isdigit (*mbi_cur_ptr (iter)) && mbi_avail (iter))
-		{
-		  ITER_SETBYTES (iter, 1);
-		  mbi_advance (iter);
-		  if (*mbi_cur_ptr (iter) == 'm')
-		    {
-		      *plen = 5;
-		      return 1;
-		    }
-		}
-	    }
-	}
-    }
-		
-  return 0;
-}
-
-/* If ITER points to an info tag, process it, set PLEN to its
-   length in bytes, and return 1.
-   Otherwise, return 0.
-
-   Collected tag is processed if HANDLE!=0.
-*/
-static int
-info_tag (mbi_iterator_t iter, int handle, size_t *plen)
-{
-  if (*mbi_cur_ptr (iter) == '\0' && mbi_avail (iter))
-    {
-      mbi_advance (iter);
-      if (*mbi_cur_ptr (iter) == '\b' && mbi_avail (iter))
-	{
-	  mbi_advance (iter);
-	  if (*mbi_cur_ptr (iter) == '[' && mbi_avail (iter))
-	    {
-	      const char *ptr, *end;
-	      mbi_advance (iter);
-	      ptr = mbi_cur_ptr (iter);
-	      end = memmem (ptr, ITER_LIMIT (iter), "\0\b]", 3);
-	      if (end)
-		{
-		  size_t len = end - ptr;
-
-		  if (handle)
-		    {
-		      char *elt = xmalloc (len + 1);
-		      memcpy (elt, ptr, len);
-		      elt[len] = 0;
-		      handle_tag (elt);
-		      free (elt);
-		    }
-		  *plen = len + 6;
-		  return 1;
-		}
-	    }
-	}
-    }
-
-  return 0;
-}
-
-/* Process contents of the current node from WIN, beginning from START, using
-   callback function FUN.
-
-   FUN is called for every line collected from the node. Its arguments:
-
-     int (*fun) (void *closure, size_t phys_line_no, size_t log_line_no,
-                  const char *src_line, char *prt_line,
-		  size_t prt_bytes, size_t prt_chars)
-
-     closure  -- An opaque pointer passed as 5th parameter to process_node_text;
-     line_no  -- Number of processed physical line (starts from 0);
-     log_line_no -- Number of processed logical line (starts from 0);
-     src_line -- Pointer to the source line (unmodified);
-     prt_line -- Collected line contents, ready for output;
-     prt_bytes -- Number of bytes in prt_line;
-     prt_chars -- Number of characters in prt_line.
-
-   If FUN returns non zero, process_node_text stops processing and returns
-   immediately.
-
-   If DO_TAGS is not zero, process info tags, otherwise ignore them.
-
-   Return value: number of lines processed.
-*/
-   
-size_t
-process_node_text (WINDOW *win, char *start,
-		   int do_tags,
-		   int (*fun) (void *, size_t, size_t,
-			       const char *, char *, size_t, size_t),
-		   void *closure)
-{
-  char *printed_line;      /* Buffer for a printed line. */
-  size_t pl_count = 0;     /* Number of *characters* written to PRINTED_LINE */
-  size_t pl_index = 0;     /* Index into PRINTED_LINE. */
-  size_t in_index = 0;
-  size_t line_index = 0;   /* Number of physical lines done so far. */
-  size_t logline_index = 0;/* Number of logical lines */
-  size_t allocated_win_width;
-  mbi_iterator_t iter;
-  
-  /* Print each line in the window into our local buffer, and then
-     check the contents of that buffer against the display.  If they
-     differ, update the display. */
-  allocated_win_width = win->width + 1;
-  printed_line = xmalloc (allocated_win_width);
-
-  for (mbi_init (iter, start, 
-		 win->node->contents + win->node->nodelen - start),
-	 pl_count = 0;
-       mbi_avail (iter);
-       mbi_advance (iter))
-    {
-      const char *carried_over_ptr;
-      size_t carried_over_len = 0;
-      size_t carried_over_count = 0;
-      const char *cur_ptr = mbi_cur_ptr (iter);
-      size_t cur_len = mb_len (mbi_cur (iter));
-      size_t replen = 0;
-      int delim = 0;
-      int rc;
-
-      if (mb_isprint (mbi_cur (iter)))
-	{
-	  replen = 1;
-	}
-      else if (cur_len == 1)
-	{
-          if (*cur_ptr == '\r' || *cur_ptr == '\n')
-            {
-              replen = win->width - pl_count;
-	      delim = *cur_ptr;
-            }
-	  else if (ansi_escape (iter, &cur_len))
-	    {
-	      replen = 0;
-	      ITER_SETBYTES (iter, cur_len);
-	    }
-	  else if (info_tag (iter, do_tags, &cur_len)) 
-	    {
-	      ITER_SETBYTES (iter, cur_len);
-	      continue;
-	    }
-	  else
-	    {
-	      if (*cur_ptr == '\t')
-		delim = *cur_ptr;
-              cur_ptr = printed_representation (cur_ptr, cur_len, pl_count,
-						&cur_len);
-	      replen = cur_len;
-            }
-        }
-      else if (show_malformed_multibyte_p || mbi_cur (iter).wc_valid)
-	{
-	  /* FIXME: I'm not sure it's the best way to deal with unprintable
-	     multibyte characters */
-	  cur_ptr = printed_representation (cur_ptr, cur_len, pl_count,
-					    &cur_len);
-	  replen = cur_len;
-	}
-
-      /* Ensure there is enough space in the buffer */
-      while (pl_index + cur_len + 2 > allocated_win_width - 1)
-	printed_line = x2realloc (printed_line, &allocated_win_width);
-
-      /* If this character can be printed without passing the width of
-         the line, then stuff it into the line. */
-      if (pl_count + replen < win->width)
-        {
-	  int i;
-	  
-	  for (i = 0; i < cur_len; i++)
-	    printed_line[pl_index++] = cur_ptr[i];
-	  pl_count += replen;
-	  in_index += mb_len (mbi_cur (iter));
-        }
-      else
-	{
-          /* If this character cannot be printed in this line, we have
-             found the end of this line as it would appear on the screen.
-             Carefully print the end of the line, and then compare. */
-          if (delim)
-            {
-              printed_line[pl_index] = '\0';
-              carried_over_ptr = NULL;
-            }
-	  else
-	    {
-              /* The printed representation of this character extends into
-                 the next line. */
-
-	      carried_over_count = replen;
-	      if (replen == 1)
-		{
-		  /* It is a single (possibly multibyte) character */
-		  /* FIXME? */
-		  carried_over_ptr = cur_ptr;
-		  carried_over_len = cur_len;
-		}
-	      else
-		{
-		  int i;
-		  
-		  /* Remember the offset of the last character printed out of
-		     REP so that we can carry the character over to the next
-		     line. */
-		  for (i = 0; pl_count < (win->width - 1);
-		       pl_count++)
-		    printed_line[pl_index++] = cur_ptr[i++];
-
-		  carried_over_ptr = cur_ptr + i;
-		  carried_over_len = cur_len;
-		}
-
-              /* If printing the last character in this window couldn't
-                 possibly cause the screen to scroll, place a backslash
-                 in the rightmost column. */
-              if (1 + line_index + win->first_row < the_screen->height)
-                {
-                  if (win->flags & W_NoWrap)
-                    printed_line[pl_index++] = '$';
-                  else
-                    printed_line[pl_index++] = '\\';
-		  pl_count++;
-                }
-              printed_line[pl_index] = '\0';
-            }
-
-	  rc = fun (closure, line_index, logline_index,
-		    mbi_cur_ptr (iter) - in_index,
-		    printed_line, pl_index, pl_count);
-
-          ++line_index;
-	  if (delim == '\r' || delim == '\n')
-	    ++logline_index;
-
-	  /* Reset all data to the start of the line. */
-	  pl_index = 0;
-	  pl_count = 0;
-	  in_index = 0;
-
-	  if (rc)
-	    break;
-	  
-          /* If there are bytes carried over, stuff them
-             into the buffer now. */
-          if (carried_over_ptr)
-	    {
-	      for (; carried_over_len;
-		   carried_over_len--, carried_over_ptr++, pl_index++)
-		printed_line[pl_index] = *carried_over_ptr;
-	      pl_count += carried_over_count;
-	    }
-	
-          /* If this window has chosen not to wrap lines, skip to the end
-             of the physical line in the buffer, and start a new line here. */
-          if (pl_index && win->flags & W_NoWrap)
-            {
-	      for (; mbi_avail (iter); mbi_advance (iter))
-		if (mb_len (mbi_cur (iter)) == 1
-		    && *mbi_cur_ptr (iter) == '\n')
-		  break;
-
-	      pl_index = 0;
-	      pl_count = 0;
-	      in_index = 0;
-	      printed_line[0] = 0;
-	    }
-	}
-    }
-
-  if (pl_count)
-    fun (closure, line_index, logline_index,
-	 mbi_cur_ptr (iter) - in_index,
-	 printed_line, pl_index, pl_count);
-
-  free (printed_line);
-  return line_index;
-}
-
-void
-clean_manpage (char *manpage)
-{
-  mbi_iterator_t iter;
-  size_t len = strlen (manpage);
-  char *newpage = xmalloc (len + 1);
-  char *np = newpage;
-  int prev_len = 0;
-  
-  for (mbi_init (iter, manpage, len);
-       mbi_avail (iter);
-       mbi_advance (iter))
-    {
-      const char *cur_ptr = mbi_cur_ptr (iter);
-      size_t cur_len = mb_len (mbi_cur (iter));
-
-      if (cur_len == 1)
-	{
-	  if (*cur_ptr == '\b' || *cur_ptr == '\f')
-	    {
-	      if (np >= newpage + prev_len)
-		np -= prev_len;
-	    }
-	  else if (ansi_escape (iter, &cur_len))
-	    {
-	      memcpy (np, cur_ptr, cur_len);
-	      np += cur_len;
-	      ITER_SETBYTES (iter, cur_len);
-	    }
-	  else if (show_malformed_multibyte_p || mbi_cur (iter).wc_valid)
-	    *np++ = *cur_ptr;
-	}
-      else
-	{
-	  memcpy (np, cur_ptr, cur_len);
-	  np += cur_len;
-	}
-      prev_len = cur_len;
-    }
-  *np = 0;
-  
-  strcpy (manpage, newpage);
-  free (newpage);
-}
-
 static void
 line_map_init (LINE_MAP *map, NODE *node, int line)
 {
@@ -1765,131 +1283,52 @@ window_line_map_init (WINDOW *win)
   win->line_map.used = 0;
 }
 
-/* Scan the line number LINE in WIN.  If PHYS is true, stop scanning at
-   the end of physical line, i.e. at the newline character.  Otherwise,
-   stop it at the end of logical line.
-
-   If FUN is supplied, call it for each processed multibyte character.
-   Arguments of FUN are
-
-     closure  -  Function-specific data passed as 5th argument to
-                 window_scan_line;
-     cpos     -  Current point value;
-     replen   -  Size of screen representation of this character, in
-                 columns.  This value may be 0 (for ANSI sequences and
-		 info tags), or > 1 (for tabs).
- */
-int
-window_scan_line (WINDOW *win, int line, int phys,
-		  void (*fun) (void *closure, long cpos, size_t replen),
-		  void *closure)
-{
-  mbi_iterator_t iter;
-  long cpos = win->line_starts[line] - win->node->contents;
-  int delim = 0;
-  char *endp;
-  
-  if (!phys && line + 1 < win->line_count)
-    endp = win->line_starts[line + 1];
-  else
-    endp = win->node->contents + win->node->nodelen;
-  
-  for (mbi_init (iter,
-		 win->line_starts[line], 
-		 win->node->contents + win->node->nodelen -
-		   win->line_starts[line]);
-       !delim && mbi_avail (iter);
-       mbi_advance (iter))
-    {
-      const char *cur_ptr = mbi_cur_ptr (iter);
-      size_t cur_len = mb_len (mbi_cur (iter));
-      size_t replen;
-
-      if (cur_ptr >= endp)
-	break;
-      
-      if (mb_isprint (mbi_cur (iter)))
-	{
-	  replen = 1;
-	}
-      else if (cur_len == 1)
-	{
-          if (*cur_ptr == '\r' || *cur_ptr == '\n')
-            {
-              replen = 1;
-	      delim = 1;
-            }
-	  else if (ansi_escape (iter, &cur_len))
-	    {
-	      ITER_SETBYTES (iter, cur_len);
-	      replen = 0;
-	    }
-	  else if (info_tag (iter, 0, &cur_len)) 
-	    {
-	      ITER_SETBYTES (iter, cur_len);
-	      cpos += cur_len;
-	      replen = 0;
-	    }
-	  else
-	    {
-              printed_representation (cur_ptr, cur_len,
-				      win->line_map.used,
-				      &replen);
-            }
-        }
-      else
-	{
-	  /* FIXME: I'm not sure it's the best way to deal with unprintable
-	     multibyte characters */
-	  printed_representation (cur_ptr, cur_len, win->line_map.used,
-				  &replen);
-	}
-
-      if (fun)
-	fun (closure, cpos, replen);
-      cpos += cur_len;
-    }
-  return cpos;
-}
-
-static void
-add_line_map (void *closure, long cpos, size_t replen)
-{
-  WINDOW *win = closure;
-
-  while (replen--)
-    line_map_add (&win->line_map, cpos);
-}
-
 /* Compute the line map for the current line in WIN. */
 void
 window_compute_line_map (WINDOW *win)
 {
   int line = window_line_of_point (win);
+  mbi_iterator_t iter;
+  int delim = 0;
+  char *endp;
+  const char *cur_ptr;
 
   if (win->line_map.node == win->node && win->line_map.nline == line
       && win->line_map.used)
     return;
   line_map_init (&win->line_map, win->node, line);
-  if (win->node)
-    window_scan_line (win, line, 0, add_line_map, win);
-}
+  if (!win->node)
+    return;
 
-/* Return offset of the end of current physical line.
- */
-long
-window_end_of_line (WINDOW *win)
-{
-  int line = window_line_of_point (win);
-  if (win->node)
-    return window_scan_line (win, line, 1, NULL, NULL) - 1;
-  return 0;
+  if (line + 1 < win->line_count)
+    endp = win->node->contents + win->line_starts[line + 1];
+  else
+    endp = win->node->contents + win->node->nodelen;
+  
+  for (mbi_init (iter,
+		 win->node->contents + win->line_starts[line], 
+		 win->node->nodelen - win->line_starts[line]);
+       !delim && mbi_avail (iter);
+       mbi_advance (iter))
+    {
+      size_t pchars, pbytes;
+      cur_ptr = mbi_cur_ptr (iter);
+
+      if (cur_ptr >= endp)
+	break;
+      
+      printed_representation (&iter, &delim, win->line_map.used,
+                              &pchars, &pbytes);
+
+      while (pchars--)
+        line_map_add (&win->line_map, cur_ptr - win->node->contents);
+    }
 }
 
 /* Translate the value of POINT into a column number.  If NP is given
    store there the value of point corresponding to the beginning of a
-   multibyte character in this column.
- */
+   multibyte character in this column.  If the character at POINT spans 
+   multiple columns (e.g. a tab), return the leftmost column it occupies. */
 int
 window_point_to_column (WINDOW *win, long point, long *np)
 {
@@ -1899,10 +1338,10 @@ window_point_to_column (WINDOW *win, long point, long *np)
   if (!win->line_map.map || point < win->line_map.map[0])
     return 0;
   for (i = 0; i < win->line_map.used; i++)
-    if (win->line_map.map[i] > point)
+    if (win->line_map.map[i] >= point)
       break;
   if (np)
-    *np = win->line_map.map[i-1];
-  return i - 1;
+    *np = win->line_map.map[i];
+  return i;
 }
       

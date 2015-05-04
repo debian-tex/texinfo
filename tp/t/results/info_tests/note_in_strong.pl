@@ -482,22 +482,22 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'note_in_strong'} = [
   {
-    'file_name' => '',
     'error_line' => ':5: warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
 ',
-    'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 5,
     'macro' => '',
-    'line_nr' => 5
+    'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':11: warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
 ',
-    'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 11,
     'macro' => '',
-    'line_nr' => 11
+    'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
+    'type' => 'warning'
   }
 ];
 

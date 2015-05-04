@@ -1,0 +1,125 @@
+2015-02-27         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* jrweave, jrtangle: Updated to current version. In particular,
+	jrtangle should work out of the box on Windows, thanks to
+	Eli Zaretskii.
+
+2015-01-08  Karl Berry  <karl@gnu.org>
+
+	* version.texi: remove, no easy way to automatically update it.
+	* ti.twjr,
+	* Makefile.am (do_subst, texindex.awk, ti.texi): use substitutions
+	for @VERSION@ and @UPDATED@ instead.
+
+	* texindex.in: also look for ../share/texinfo/texindex.awk,
+	relative to dirname $0.
+
+	* ti.twjr (Invocation_name): new global, renamed from Prgname.
+	(usage): use it, a la coreutils.
+	* texindex.in: pass it (value $0), with -v.
+	
+	* Makefile.am (EXTRA_DIST): dek_idx.png rename.
+
+2015-01-06  Karl Berry  <karl@gnu.org>
+
+	first merge into automake:
+	* texindex/Makefile.am: new file.
+	* texindex/texindex.in: new file.
+	* texindex/README: update.
+	(see also ../ChangeLog.)
+
+2014-12-30         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Remove `@xrefautomaticsectiontitle on'. It's now
+	supplied by jrweave.
+	* jrweave: Updated.
+
+2014-12-26         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Restore use of `@xrefautomaticsectiontitle on'.
+	And restore support for vim editing.
+
+2014-12-15  Karl Berry  <karl@gnu.org>
+
+	* ti.twjr: convert to minimal Texinfo conventions
+	instead of Arnold's published-book conventions.
+
+2014-12-13         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* jrtangle, jrweave: Updated with versions that include
+	github location.
+
+2014-08-07         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Typo fix in an index entry. Change the update month
+	and increase version to 0.95.
+
+2014-05-30         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* README: New file.
+	* tests: New directory with some regression tests.
+	* jrtangle, jrweave: Copied from TexiWebJr to have standalone.
+
+	*****
+
+	* All: Pushed to https://github.com/arnoldrobbins/texindex.
+
+2014-04-26         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Remove summaries appendix. Not needed with better
+	formatting from jrweave.  Bump version to 0.94.
+
+2014-04-16         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Bug fix. Multiple files had junk in second and
+	subsequent output files. Needed to clear out more data between
+	files. Bump version to 0.93.
+
+2014-03-21         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: General cleanup and finalizatio of the text. Bump
+	version to 0.92.
+
+2014-03-17         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Fix case in chunk names.
+
+2014-03-14         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Add a few commands to make the PDF nicer.
+
+2014-03-04         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Polished up. Add an XKCD cartoon. Bump version to 0.9.
+	* donald_knuth.jpg: New file.
+
+2014-03-03         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Rework where initial extraction is done. Set up to
+	produce \{ and \}. Works when used with itself to sort the
+	index!  Woo hoo!
+
+2014-02-27         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Revise extraction of the initial as per Karl.
+	Still needs more documentation but I think we've hit
+	functionally complete.
+
+2014-02-26         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Sorting in and seems to work well. Still need to add
+	more descriptive prose.  Did some cleanup and added menus.
+
+2014-02-25         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Just about done, except for sorting.
+
+2014-02-24         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr, texinfo.tex, Makefile: Initial check-in.
+
+Copyright 2014, 2015 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.

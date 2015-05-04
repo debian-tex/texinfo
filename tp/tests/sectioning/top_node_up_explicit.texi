@@ -1,0 +1,21 @@
+\input texinfo  @c public domain
+@setfilename top_node_up_explicit
+
+@c should replace all explicit (dir) pointers, but not
+@c pointers to other files.
+
+@node Top, (dir), (weird), (dir)
+@top The top
+
+Just a top node.
+
+@menu
+* Chap::
+@end menu
+
+@node Chap
+@chapter A chapter
+
+Without the chapter, no up node from top is generated.
+
+@bye

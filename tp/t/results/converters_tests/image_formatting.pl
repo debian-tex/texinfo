@@ -2931,76 +2931,76 @@ $result_converted{'html_text'}->{'image_formatting'} = '<a name="Top"></a>
 
 $result_converted_errors{'html_text'}->{'image_formatting'} = [
   {
-    'file_name' => '',
     'error_line' => ':9: warning: @image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'
 ',
-    'text' => '@image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 9,
     'macro' => '',
-    'line_nr' => 9
+    'text' => '@image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':10: warning: @image file `f--ile@.\' (for HTML) not found, using `f--ile@..file ext e--xt}\'
 ',
+    'file_name' => '',
+    'line_nr' => 10,
+    'macro' => '',
     'text' => '@image file `f--ile@.\' (for HTML) not found, using `f--ile@..file ext e--xt}\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 10
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':11: warning: @image file `image\' (for HTML) not found, using `image.jpg\'
 ',
-    'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 11,
     'macro' => '',
-    'line_nr' => 11
+    'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':11: warning: @image file `image\' (for HTML) not found, using `image.jpg\'
 ',
-    'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 11,
     'macro' => '',
-    'line_nr' => 11
+    'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':20: warning: @image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'
 ',
-    'text' => '@image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 20,
     'macro' => '',
-    'line_nr' => 20
+    'text' => '@image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':21: warning: @image file `f--ile@.\' (for HTML) not found, using `f--ile@..file ext e--xt}\'
 ',
+    'file_name' => '',
+    'line_nr' => 21,
+    'macro' => '',
     'text' => '@image file `f--ile@.\' (for HTML) not found, using `f--ile@..file ext e--xt}\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 21
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':22: warning: @image file `image\' (for HTML) not found, using `image.jpg\'
 ',
-    'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 22,
     'macro' => '',
-    'line_nr' => 22
+    'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':22: warning: @image file `image\' (for HTML) not found, using `image.jpg\'
 ',
-    'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 22,
     'macro' => '',
-    'line_nr' => 22
+    'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
+    'type' => 'warning'
   }
 ];
 
@@ -3075,40 +3075,40 @@ ccc</literallayout></textobject></inlinemediaobject>
 
 $result_converted_errors{'docbook'}->{'image_formatting'} = [
   {
-    'file_name' => '',
     'error_line' => ':9: warning: @image file `f-ile\' not found, using `f-ile.jpg\'
 ',
-    'text' => '@image file `f-ile\' not found, using `f-ile.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 9,
     'macro' => '',
-    'line_nr' => 9
+    'text' => '@image file `f-ile\' not found, using `f-ile.jpg\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':10: warning: @image file `f--ile@.\' not found, using `f--ile@..jpg\'
 ',
-    'text' => '@image file `f--ile@.\' not found, using `f--ile@..jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 10,
     'macro' => '',
-    'line_nr' => 10
+    'text' => '@image file `f--ile@.\' not found, using `f--ile@..jpg\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':20: warning: @image file `f-ile\' not found, using `f-ile.jpg\'
 ',
-    'text' => '@image file `f-ile\' not found, using `f-ile.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 20,
     'macro' => '',
-    'line_nr' => 20
+    'text' => '@image file `f-ile\' not found, using `f-ile.jpg\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':21: warning: @image file `f--ile@.\' not found, using `f--ile@..jpg\'
 ',
-    'text' => '@image file `f--ile@.\' not found, using `f--ile@..jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 21,
     'macro' => '',
-    'line_nr' => 21
+    'text' => '@image file `f--ile@.\' not found, using `f--ile@..jpg\'',
+    'type' => 'warning'
   }
 ];
 

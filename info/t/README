@@ -1,0 +1,51 @@
+This directory contains shell scripts used as tests for Info.  They are
+listed in "info/Makefile.am" and will usually be run with "make check".
+It should be possible to run a test on its own by running it at the
+command line and checking the return value, e.g.
+
+bash $t/goto-quoted.sh
+bash $echo $?
+1
+
+shows a test failure.
+
+The tests fall into two categories: tests of non-interactive and
+interactive operation.
+
+New tests can be created by copying existing ones.  Each test should
+start with the lines
+
+srcdir=${srcdir:-.}
+. $srcdir/t/Init-test.inc
+
+to allow running at the command line, or with either an in-source or
+out-of-source build with "make check".  Tests of interactive operation
+should follow with the line.
+
+. $t/Init-inter.inc
+
+Any interactive test should also finish with
+
+. $t/Cleanup.inc
+
+to cleanup temporary files and spawned processes.  This shell snippet
+will exit with whatever the value of RETVAL is, so you can set the
+exit status of the script indicating success or failure.
+
+Tests of interactive operation
+------------------------------
+
+These use the "pseudotty" program in the info subdirectory, which
+creates a pseudo-terminal for the input and output of the program.
+This allows the program to happily enter interactive operation (its standard
+file descriptors pass the isatty library function) and avoids affecting
+the output of the terminal the test was invoked from.  pseudotty reads and
+discards all input on its stdin, and passes through any bytes read on file
+descriptor 3 into the pseudo-terminal.
+
+Many of the tests of interactive operation try to position the cursor 
+on a cross-reference by various means, follow the reference, and dump the node
+reached to a file.  (It can be compared with a target file in
+info/t/node-target, to check that we ended up where we thought we would.)
+
+

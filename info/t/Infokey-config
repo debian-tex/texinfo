@@ -1,0 +1,8 @@
+#info
+?	xxx-not-recognized # Check that unknown actions don't break.
+!	menu-digit	# menu-digit can't be rebound
+D	print-node	# Dump node to file
+#echo-area
+#var
+infopath-no-defaults=On
+automatic-footnotes=On

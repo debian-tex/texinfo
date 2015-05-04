@@ -1,9 +1,10 @@
-$Id: TODO 5368 2013-09-09 18:03:11Z karl $
+$Id: TODO 6124 2015-02-13 20:22:54Z gavin $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
   Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003, 
-  2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013
+  2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2010, 2011, 2012,
+  2013, 2014, 2015
   Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
@@ -19,10 +20,10 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     recommended categories.
     For background, see the thread (which discusses a lot of other
     issues too) at
-    http://mail.gnu.org/pipermail/emacs-devel/2002-10/msg00011.html,
+    http://lists.gnu.org/archive/html/emacs-devel/2002-10/msg00011.html
     especially 
-      http://mail.gnu.org/archive/html/emacs-devel/2002-10/msg00090.html
-      http://mail.gnu.org/archive/html/emacs-devel/2002-10/msg00137.html
+      http://lists.gnu.org/archive/html/emacs-devel/2002-10/msg00090.html
+      http://lists.gnu.org/archive/html/emacs-devel/2002-10/msg00137.html
   - Support installation of manuals in different languages, along these lines:
     . support a LINGUAS file or variable saying which subdirs LL in the
       source to descend into (under doc/).
@@ -126,10 +127,8 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Documentation of the HTML customization is missing.
 
 * Info:
-  - The help message does not report Down/Up for next/prev-line.
   - When scrolling through the help text, it should stop at the end, not
     report "No more nodes" and go back to the beginning.
-  - It would be nice for h in the help window to quit help.
   - It would be nice to be able to specify a preferred key to report in
     the help message, instead of using the last one set; cf. q vs. C-x C-c.
   - Full-text search across all info files installed on the system.
@@ -151,7 +150,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Incorporate an X-based viewer, perhaps the old GNU xinfo widget
      (http://www.gnu.org/software/xinfo) or saxinfo
      or tkinfo (http://www.math.ucsb.edu/~boldt/tkinfo/).
-  - Make "info foo bar" search for bar in foo's index(es) if no menu match.
   - Handle M-n, C-u m, and C-u g like Emacs Info (opening new windows).
 
 * install-info:

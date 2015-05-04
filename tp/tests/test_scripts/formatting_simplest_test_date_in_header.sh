@@ -20,13 +20,12 @@ name='simplest_test_date_in_header'
 [ -d "$dir" ] || mkdir $dir
 
 srcdir_test=$dir; export srcdir_test;
-cd "$dir" || exit 99
-../"$srcdir"/"$command" -dir $dir $arg
+"$srcdir"/"$command" -dir $dir $arg
 exit_status=$?
-cat $one_test_logs_dir/$name.log
-if test -f $diffs_dir/$name.diff; then
+cat $dir/$one_test_logs_dir/$name.log
+if test -f $dir/$diffs_dir/$name.diff; then
   echo 
-  cat $diffs_dir/$name.diff
+  cat $dir/$diffs_dir/$name.diff
 fi
 exit $exit_status
 

@@ -1,5 +1,5 @@
 /* termdep.h -- system things that terminal.c depends on.
-   $Id: termdep.h 5337 2013-08-22 17:54:06Z karl $
+   $Id: termdep.h 5864 2014-10-06 19:33:29Z gavin $
 
    Copyright 1993, 1996, 1997, 1998, 2001, 2002, 2007, 2012, 2013
    Free Software Foundation, Inc.
@@ -49,7 +49,7 @@
 #  endif /* !HAVE_TERMIO_H */
 #endif /* !HAVE_TERMIOS_H */
 
-#ifdef GWINSZ_IN_SYS_IOCTL
+#ifdef HAVE_SYS_IOCTL_H
 #  include <sys/ioctl.h>
 #endif
 

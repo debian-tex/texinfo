@@ -282,9 +282,9 @@ $result_converted{'xml'}->{'normal_font_in_monospace'} = '<example endspaces=" "
 </para>';
 
 
-$result_converted{'docbook'}->{'normal_font_in_monospace'} = '<screen>in example <lineannotation>in r&#8212;now <literal>in co---de</literal></lineannotation>
+$result_converted{'docbook'}->{'normal_font_in_monospace'} = '<screen>in example in r&#8212;now <literal>in co---de</literal>
 </screen>
-<para><command>in command---c <lineannotation>in r&#8212;r <filename>in file---</filename></lineannotation></command>.
+<para><command>in command---c in r&#8212;r <filename>in file---</filename></command>.
 </para>';
 
 1;

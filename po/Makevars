@@ -9,6 +9,7 @@ top_builddir = ..
 
 # These options get passed to xgettext.
 XGETTEXT_OPTIONS = \
+ -cTRANSLATORS\
  --keyword=_\
  --keyword=N_\
  --keyword=__\

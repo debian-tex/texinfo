@@ -1,4 +1,7 @@
 # formats :_html
+# $Id: tests-parser.txt 6094 2015-02-02 23:58:41Z karl $
+# Public domain.  Originally created by Patrice Dumas.
+
 node_footnote_end node_footnote.texi --footnote-style=end
 node_footnote_use_node node_footnote.texi --set-customization-variable 'USE_NODES 1' --node-files --footnote-style=end --split node
 node_footnote_separated node_footnote.texi --footnote-style=separate
@@ -29,6 +32,5 @@ one_node one_node.texi --set-customization-variable 'USE_NODES 1'
 more_sections_than_nodes more_sections_than_nodes.texi
 two_footnotes_in_nodes two_footnotes_in_nodes.texi
 two_footnotes_in_nodes_separated two_footnotes_in_nodes.texi --footnote-style=separate
-
-# FIXME
-#empty_top_node_up ?.texi --set-customization-variable TOP_NODE_UP
+top_node_up_implicit top_node_up_implicit.texi -c TOP_NODE_UP_URL=http://itop.example.org
+top_node_up_explicit top_node_up_explicit.texi -c TOP_NODE_UP_URL=http://etop.example.org

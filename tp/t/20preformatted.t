@@ -80,6 +80,13 @@ Example with comments 1 line
 @example
 line @c comment
 @end example
+
+Example with newline after comment
+@example
+line @c comment
+
+second line
+@end example
 '],
 ['nested_example_and_comment',
 '@example

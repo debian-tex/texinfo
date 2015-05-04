@@ -4,7 +4,6 @@
  * Make all texinfo references into the one argument form.
  * 
  * Arnold Robbins
- * arnold@gnu.org
  * Written: December, 1991
  * Released: November, 1998
  *

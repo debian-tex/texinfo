@@ -1,8 +1,9 @@
-$Id: INSTALL 5320 2013-08-16 13:50:01Z karl $
+$Id: INSTALL 6124 2015-02-13 20:22:54Z gavin $
 INSTALL file for texinfo.
 
      Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-     2001, 2002, 2003, 2004, 2005, 2006, 2007, 2010, 2011, 2013
+     2001, 2002, 2003, 2004, 2005, 2006, 2007, 2010, 2011, 2013, 2014,
+     2015
      Free Software Foundation, Inc.
 
      Copying and distribution of this file, with or without modification,
@@ -14,8 +15,8 @@ Automake-based distribution, please read the file `INSTALL.generic'.
 
 Installation notes specific to Texinfo:
 
-* texinfo.tex and the other *.tex files are not installed by `make
-  install'.  This is because there is no reliable way to know where to
+* texinfo.tex and the other *.tex files are not installed by
+  `make install', because there is no reliable way to know where to
   install them.  Instead, you have to run an additional make command
   after the normal make install:
     make TEXMF=/your/texmf install-tex

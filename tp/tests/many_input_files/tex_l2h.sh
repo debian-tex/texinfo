@@ -65,11 +65,12 @@ else
   outdir=$basename
   cp -pr $outdir $raw_output_dir
   rm -f $outdir/*_l2h_images.log $outdir/*.aux $outdir/*_l2h.css \
-        $outdir/*_l2h_images.out $outdir/*.png
+        $outdir/*_l2h_images.out $outdir/*_l2h_images.pl $outdir/*.png
   sed -e 's/^texexpand.*/texexpand /' \
       -e '/is no longer supported at.*line/d' "$raw_outdir/$basename.2" > "$outdir/$basename.2"
 
-  for file in "$raw_outdir/"*.html "$raw_outdir/"*_l2h_images.pl "$raw_outdir/"*-l2h_cache.pm; do
+  #for file in "$raw_outdir/"*.html "$raw_outdir/"*_l2h_images.pl "$raw_outdir/"*-l2h_cache.pm; do
+  for file in "$raw_outdir/"*.html "$raw_outdir/"*-l2h_cache.pm; do
     filename=`basename "$file"`
     sed -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' \
         -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' \

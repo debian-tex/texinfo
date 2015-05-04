@@ -2,7 +2,7 @@
 
 # prepinfo.awk --- fix node lines and menus
 #
-# Copyright 1998 Arnold Robbins, arnold@gnu.org
+# Copyright 1998 Arnold Robbins
 #
 # PREPINFO is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

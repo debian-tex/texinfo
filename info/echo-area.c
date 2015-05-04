@@ -1,8 +1,8 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c 5337 2013-08-22 17:54:06Z karl $
+   $Id: echo-area.c 5926 2014-11-13 17:47:21Z gavin $
 
-   Copyright 1993, 1997, 1998, 1999, 2001, 2004, 2007, 2008, 2011, 2013
-   Free Software Foundation, Inc.
+   Copyright 1993, 1997, 1998, 1999, 2001, 2004, 2007, 2008, 2011, 2013,
+   2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,14 +20,10 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
-
-#if defined (FD_SET)
-#  if defined (hpux)
-#    define fd_set_cast(x) (int *)(x)
-#  else
-#    define fd_set_cast(x) (fd_set *)(x)
-#  endif /* !hpux */
-#endif /* FD_SET */
+#include "session.h"
+#include "display.h"
+#include "info-utils.h"
+#include "echo-area.h"
 
 /* Non-zero means that C-g was used to quit reading input. */
 int info_aborted_echo_area = 0;
@@ -36,18 +32,22 @@ int info_aborted_echo_area = 0;
 int echo_area_is_active = 0;
 
 /* The address of the last command executed in the echo area. */
-VFunction *ea_last_executed_command = NULL;
+static VFunction *ea_last_executed_command = NULL;
 
 /* Non-zero means that the last command executed while reading input
    killed some text. */
 int echo_area_last_command_was_kill = 0;
 
 /* Variables which hold on to the current state of the input line. */
-static char input_line[1 + EA_MAX_INPUT];
+static char input_line[1 + EA_MAX_INPUT]; /* Contents of echo area, including 
+                                             any prompt. */
+static int input_line_point;     /* Offset into input_line of point */
+static int input_line_beg;       /* End of prompt, and start of user input. */
+static int input_line_end;       /* End of user input. */
+
+/* Current prompt.  FIXME: This variable is not actually used for anything. */
 static const char *input_line_prompt;
-static int input_line_point;
-static int input_line_beg;
-static int input_line_end;
+
 static NODE input_line_node = {
   NULL, NULL, NULL, input_line,
   EA_MAX_INPUT, 0, N_IsInternal
@@ -58,6 +58,7 @@ static void push_echo_area (void), pop_echo_area (void);
 static int echo_area_stack_contains_completions_p (void);
 
 static void ea_kill_text (int from, int to);
+static void ea_remove_text (int from, int to);
 
 /* Non-zero means we force the user to complete. */
 static int echo_area_must_complete_p = 0;
@@ -72,8 +73,6 @@ static WINDOW *echo_area_completions_window = NULL;
    entering the echo area. */
 static WINDOW *calling_window = NULL;
 static NODE *calling_window_node = NULL;
-static long calling_window_point = 0;
-static long calling_window_pagetop = 0;
 
 /* Remember the node and pertinent variables of the calling window. */
 static void
@@ -86,8 +85,6 @@ remember_calling_window (WINDOW *window)
     {
       calling_window = window;
       calling_window_node = window->node;
-      calling_window_point = window->point;
-      calling_window_pagetop = window->pagetop;
     }
 }
 
@@ -107,9 +104,7 @@ restore_calling_window (void)
 
       if (win == calling_window && win == compwin)
         {
-          window_set_node_of_window (calling_window, calling_window_node);
-          calling_window->point = calling_window_point;
-          calling_window->pagetop = calling_window_pagetop;
+          forget_node (win);
           compwin = NULL;
           break;
         }
@@ -120,39 +115,10 @@ restore_calling_window (void)
      pending which created a completions window. */
   if (compwin)
     {
-      if ((compwin != windows || windows->next) &&
-          !echo_area_stack_contains_completions_p ())
+      if ((compwin != windows || windows->next)
+          && !echo_area_stack_contains_completions_p ())
         {
-          WINDOW *next;
-          int pagetop = 0;
-          int start = 0;
-          int end = 0;
-          int amount = 0;
-
-          next = compwin->next;
-          if (next)
-            {
-              start = next->first_row;
-              end = start + next->height;
-              amount = - (compwin->height + 1);
-              pagetop = next->pagetop;
-            }
-
           info_delete_window_internal (compwin);
-
-          /* This is not necessary because info_delete_window_internal ()
-             calls echo_area_inform_of_deleted_window (), which does the
-             right thing. */
-#if defined (UNNECESSARY)
-          echo_area_completions_window = NULL;
-#endif /* UNNECESSARY */
-
-          if (next)
-            {
-              display_scroll_display (start, end, amount);
-              next->pagetop = pagetop;
-              display_update_display (windows);
-            }
         }
     }
 }
@@ -195,12 +161,53 @@ echo_area_after_read (void)
   return return_value;
 }
 
+static void
+read_and_dispatch_in_echo_area (void)
+{
+  while (1)
+    {
+      int count;
+      VFunction *cmd;
+      int lk = 0;
+
+      lk = echo_area_last_command_was_kill;
+      echo_area_prep_read ();
+
+      if (!info_any_buffered_input_p ())
+        display_update_display ();
+
+      display_cursor_at_point (active_window);
+
+      /* Do the selected command. */
+      cmd = read_key_sequence (echo_area_keymap, 0, 0, 1, &count);
+      if (cmd)
+        {
+          (*cmd) (the_echo_area, count);
+          ea_last_executed_command = cmd;
+        }
+      else
+        ea_last_executed_command = 0;
+
+      /* Echo area commands that do killing increment the value of
+         ECHO_AREA_LAST_COMMAND_WAS_KILL.  Thus, if there is no
+         change in the value of this variable, the last command
+         executed was not a kill command. */
+      if (lk == echo_area_last_command_was_kill)
+        echo_area_last_command_was_kill = 0;
+
+      if (cmd == ea_newline || info_aborted_echo_area)
+        {
+          ea_last_executed_command = NULL;
+          break;
+        }
+    }
+}
+
 /* Read a line of text in the echo area.  Return a malloc ()'ed string,
-   or NULL if the user aborted out of this read.  WINDOW is the currently
-   active window, so that we can restore it when we need to.  PROMPT, if
+   or NULL if the user aborted out of this read.  PROMPT, if
    non-null, is a prompt to print before reading the line. */
 char *
-info_read_in_echo_area (WINDOW *window, const char *prompt)
+info_read_in_echo_area (char *prompt)
 {
   char *line;
 
@@ -216,14 +223,16 @@ info_read_in_echo_area (WINDOW *window, const char *prompt)
 
   /* Save away the original node of this window, and the window itself,
      so echo area commands can temporarily use this window. */
-  remember_calling_window (window);
+  remember_calling_window (active_window);
 
   /* Let the rest of Info know that the echo area is active. */
   echo_area_is_active++;
   active_window = the_echo_area;
 
   /* Read characters in the echo area. */
-  info_read_and_dispatch ();
+  read_and_dispatch_in_echo_area ();
+
+  window_clear_echo_area ();
 
   echo_area_is_active--;
 
@@ -269,6 +278,13 @@ echo_area_prep_read (void)
 
   the_echo_area->point = input_line_point;
   input_line[input_line_end] = '\n';
+
+  /* Mark the line map as invalid.  This causes window_compute_line_map to
+     recalculate it when it is called via display_cursor_at_point below.  
+     Otherwise adding or removing multi-column characters (like tabs) lead 
+     to incorrect cursor positioning. */
+  the_echo_area->line_map.used = 0;
+
   display_update_one_window (the_echo_area);
   display_cursor_at_point (active_window);
 }
@@ -283,24 +299,45 @@ echo_area_prep_read (void)
 DECLARE_INFO_COMMAND (ea_forward, _("Move forward a character"))
 {
   if (count < 0)
-    ea_backward (window, -count, key);
+    ea_backward (window, -count);
   else
     {
-      input_line_point += count;
-      if (input_line_point > input_line_end)
-        input_line_point = input_line_end;
+      mbi_iterator_t iter;
+      mbi_init (iter, input_line + input_line_point,
+                input_line_end - input_line_point);
+      while (mbi_avail (iter) && count--)
+        {
+          mbi_advance (iter);
+          input_line_point = mbi_cur_ptr (iter) - input_line;
+          if (input_line_point > input_line_end)
+            input_line_point = input_line_end;
+        }
     }
 }
 
 DECLARE_INFO_COMMAND (ea_backward, _("Move backward a character"))
 {
   if (count < 0)
-    ea_forward (window, -count, key);
+    ea_forward (window, -count);
   else
     {
-      input_line_point -= count;
-      if (input_line_point < input_line_beg)
-        input_line_point = input_line_beg;
+      char *ptr = input_line + input_line_point;
+      while (count--)
+        {
+          /* Go back one character.  Go back by bytes until we look at a valid
+             multi-byte sequence. */
+          ptr = input_line + input_line_point;
+          while (ptr > input_line)
+            {
+              ptr--;
+              if ((long) mbrlen (ptr,
+                                 input_line + input_line_point - ptr, 0) > 0)
+                break;
+            }
+          input_line_point = ptr - input_line;
+          if (input_line_point < input_line_beg)
+            input_line_point = input_line_beg;
+        }
     }
 }
 
@@ -322,7 +359,7 @@ DECLARE_INFO_COMMAND (ea_forward_word, _("Move forward a word"))
   int c;
 
   if (count < 0)
-    ea_backward_word (window, -count, key);
+    ea_backward_word (window, -count);
   else
     {
       while (count--)
@@ -362,7 +399,7 @@ DECLARE_INFO_COMMAND (ea_backward_word, _("Move backward a word"))
   int c;
 
   if (count < 0)
-    ea_forward_word (window, -count, key);
+    ea_forward_word (window, -count);
   else
     {
       while (count--)
@@ -399,38 +436,28 @@ DECLARE_INFO_COMMAND (ea_backward_word, _("Move backward a word"))
 
 DECLARE_INFO_COMMAND (ea_delete, _("Delete the character under the cursor"))
 {
-  register int i;
-
   if (count < 0)
-    ea_rubout (window, -count, key);
+    ea_rubout (window, -count);
   else
     {
+      int orig_point;
       if (input_line_point == input_line_end)
         return;
 
-      if (info_explicit_arg || count > 1)
-        {
-          int orig_point;
-
-          orig_point = input_line_point;
-          ea_forward (window, count, key);
-          ea_kill_text (orig_point, input_line_point);
-          input_line_point = orig_point;
-        }
+      orig_point = input_line_point;
+      ea_forward (window, count);
+      if (ea_explicit_arg || count > 1)
+        ea_kill_text (orig_point, input_line_point);
       else
-        {
-          for (i = input_line_point; i < input_line_end; i++)
-            input_line[i] = input_line[i + 1];
-
-          input_line_end--;
-        }
+        ea_remove_text (orig_point, input_line_point);
+      input_line_point = orig_point;
     }
 }
 
 DECLARE_INFO_COMMAND (ea_rubout, _("Delete the character behind the cursor"))
 {
   if (count < 0)
-    ea_delete (window, -count, key);
+    ea_delete (window, -count);
   else
     {
       int start;
@@ -439,12 +466,12 @@ DECLARE_INFO_COMMAND (ea_rubout, _("Delete the character behind the cursor"))
         return;
 
       start = input_line_point;
-      ea_backward (window, count, key);
+      ea_backward (window, count);
 
-      if (info_explicit_arg || count > 1)
+      if (ea_explicit_arg || count > 1)
         ea_kill_text (start, input_line_point);
       else
-        ea_delete (window, count, key);
+        ea_delete (window, count);
     }
 }
 
@@ -470,13 +497,18 @@ DECLARE_INFO_COMMAND (ea_newline, _("Accept (or force completion of) this line")
 
 DECLARE_INFO_COMMAND (ea_quoted_insert, _("Insert next character verbatim"))
 {
-  unsigned char character;
+  int character;
 
-  character = info_get_another_input_char ();
+  character = get_another_input_key ();
+  
+  if (character >= 256 || character < 0)
+    return;
+
   ea_insert (window, count, character);
 }
 
-DECLARE_INFO_COMMAND (ea_insert, _("Insert this character"))
+void
+ea_insert (WINDOW *window, int count, int key)
 {
   register int i;
 
@@ -500,36 +532,99 @@ DECLARE_INFO_COMMAND (ea_tab_insert, _("Insert a TAB character"))
   ea_insert (window, count, '\t');
 }
 
+/* Swap characters in INPUT_LINE.  The first starts at C1 and ends at C1E, the 
+   second starts at C2 and ends at C2E, with C1 < C1E <= C2 < C2E. */
+static void
+ea_swap_chars (int c1, int c1e, int c2, int c2e)
+{
+  int len1, len2;
+  char *tmp;
+
+  len1 = c1e - c1;
+  len2 = c2e - c2;
+
+  if (len1 >= len2)
+    {
+      /* Save first character. */
+      tmp = xmalloc (len1);
+      memcpy (tmp, input_line + c1, len1);
+
+      /* Move the second character to where the first was. */
+      memcpy (input_line + c1, input_line + c2, len2);
+
+      /* Shift the part in between the characters backwards. */
+      memmove (input_line + c1 + len2, input_line + c1e, c2 - c1e);
+
+      /* Restore the first character at the end. */
+      memcpy (input_line + c2 - (len1 - len2), tmp, len1);
+      free (tmp);
+    }
+  else /* len2 > len1 */
+    {
+      /* Save second character. */
+      tmp = xmalloc (len2);
+      memcpy (tmp, input_line + c2, len2);
+
+      /* Move first character to end of second character. */
+      memcpy (input_line + c2e - len1, input_line + c1, len1);
+
+      /* Shift the part in between the characters forwards. */
+      memmove (input_line + c1e + (len2 - len1), input_line + c1e, c2 - c1e);
+
+      /* Place the second character at the beginning. */
+      memcpy (input_line + c1, tmp, len2);
+      free (tmp);
+    }
+}
+
 /* Transpose the characters at point.  If point is at the end of the line,
    then transpose the characters before point. */
 DECLARE_INFO_COMMAND (ea_transpose_chars, _("Transpose characters at point"))
 {
-  /* Handle conditions that would make it impossible to transpose
-     characters. */
-  if (!count || !input_line_point || (input_line_end - input_line_beg) < 2)
-    return;
-
   while (count)
     {
-      int t;
-      if (input_line_point == input_line_end)
+      if (input_line_point == input_line_end || count < 0)
         {
-          t = input_line[input_line_point - 1];
+          /* Swap two characters before point. */
+          int c1, c2, c2e;
+          c2e = input_line_point;
 
-          input_line[input_line_point - 1] = input_line[input_line_point - 2];
-          input_line[input_line_point - 2] = t;
+          ea_backward (window, 1);
+          c2 = input_line_point;
+
+          ea_backward (window, 1);
+          c1 = input_line_point;
+
+          if (c1 != c2) /* There are two characters in this line. */
+            ea_swap_chars (c1, c2, c2, c2e);
+
+          if (count > 0)
+            /* Restore point. */
+            input_line_point = c2e;
+          else
+            input_line_point = c1 + c2e - c2;
         }
       else
         {
-          t = input_line[input_line_point];
+          int c1, c2, c2e;
 
-          input_line[input_line_point] = input_line[input_line_point - 1];
-          input_line[input_line_point - 1] = t;
+          c2 = input_line_point;
 
-          if (count < 0 && input_line_point != input_line_beg)
-            input_line_point--;
-          else
-            input_line_point++;
+          ea_forward (window, 1);
+          c2e = input_line_point;
+          if (c2e == c2)
+            return; /* Shouldn't happen. */
+
+          input_line_point = c2;
+          ea_backward (window, 1);
+          c1 = input_line_point;
+          if (c1 == c2e)
+            return; /* Can't go earlier in line. */
+
+          ea_swap_chars (c1, c2, c2, c2e);
+
+          /* Set point is after swapped pair. */
+          input_line_point = c2e;
         }
 
       if (count < 0)
@@ -602,7 +697,7 @@ DECLARE_INFO_COMMAND (ea_yank_pop, _("Yank back a previous kill"))
   if (kill_ring_loc < 0)
     kill_ring_loc = kill_ring_index - 1;
 
-  ea_yank (window, count, key);
+  ea_yank (window, count);
 }
 
 /* Delete the text from point to end of line. */
@@ -636,10 +731,10 @@ DECLARE_INFO_COMMAND (ea_kill_word, _("Kill the word following the cursor"))
   int orig_point = input_line_point;
 
   if (count < 0)
-    ea_backward_kill_word (window, -count, key);
+    ea_backward_kill_word (window, -count);
   else
     {
-      ea_forward_word (window, count, key);
+      ea_forward_word (window, count);
 
       if (input_line_point != orig_point)
         ea_kill_text (orig_point, input_line_point);
@@ -656,15 +751,29 @@ DECLARE_INFO_COMMAND (ea_backward_kill_word,
   int orig_point = input_line_point;
 
   if (count < 0)
-    ea_kill_word (window, -count, key);
+    ea_kill_word (window, -count);
   else
     {
-      ea_backward_word (window, count, key);
+      ea_backward_word (window, count);
 
       if (input_line_point != orig_point)
         ea_kill_text (orig_point, input_line_point);
     }
   window_line_map_init (window);
+}
+
+/* Remove text from offsets FROM to TO.  Unlike 'ea_kill_text' nothing is
+   saved in the kill ring. */
+static void
+ea_remove_text (int from, int to)
+{
+  int distance, i, counter;
+  counter = input_line_end - to;
+  distance = to - from;
+
+  for (i = from; counter; i++, counter--)
+    input_line[i] = input_line[i + distance];
+  input_line_end -= distance;
 }
 
 /* The way to kill something.  This appends or prepends to the last
@@ -675,7 +784,7 @@ DECLARE_INFO_COMMAND (ea_backward_kill_word,
 static void
 ea_kill_text (int from, int to)
 {
-  register int i, counter, distance;
+  register int distance;
   int killing_backwards, slot;
   char *killed_text;
 
@@ -696,12 +805,7 @@ ea_kill_text (int from, int to)
   killed_text[distance] = '\0';
 
   /* Actually delete the text from the line. */
-  counter = input_line_end - to;
-
-  for (i = from; counter; i++, counter--)
-    input_line[i] = input_line[i + distance];
-
-  input_line_end -= distance;
+  ea_remove_text (from, to);
 
   /* If the last command was a kill, append or prepend the killed text to
      the last command's killed text. */
@@ -765,7 +869,7 @@ ea_kill_text (int from, int to)
 /* **************************************************************** */
 
 /* Pointer to an array of REFERENCE to complete over. */
-static REFERENCE **echo_area_completion_items = NULL;
+REFERENCE **echo_area_completion_items = NULL;
 
 /* Sorted array of REFERENCE * which is the possible completions found in
    the variable echo_area_completion_items.  If there is only one element,
@@ -777,8 +881,12 @@ static size_t completions_found_slots = 0;
 /* The lowest common denominator found while completing. */
 static REFERENCE *LCD_completion;
 
+/* Function to choose which references to offer as completion options. */
+static reference_bool_fn completion_exclude_func = 0;
+
 /* Internal functions used by the user calls. */
-static void build_completions (void), completions_must_be_rebuilt (void);
+static void build_completions (void);
+static void completions_must_be_rebuilt (void);
 
 /* Variable which holds the output of completions. */
 static NODE *possible_completions_output_node = NULL;
@@ -799,10 +907,11 @@ completions_window_p (WINDOW *window)
 }
 
 /* Workhorse for completion readers.  If FORCE is non-zero, the user cannot
-   exit unless the line read completes, or is empty. */
+   exit unless the line read completes, or is empty.  Use EXCLUDE_FUNC to
+   exclude items in COMPLETIONS. */
 char *
-info_read_completing_internal (WINDOW *window, const char *prompt,
-    REFERENCE **completions, int force)
+info_read_completing_internal (char *prompt, REFERENCE **completions,
+                               int force, reference_bool_fn exclude_func)
 {
   char *line;
 
@@ -820,11 +929,12 @@ info_read_completing_internal (WINDOW *window, const char *prompt,
 
   /* Save away the original node of this window, and the window itself,
      so echo area commands can temporarily use this window. */
-  remember_calling_window (window);
+  remember_calling_window (active_window);
 
   /* Save away the list of items to complete over. */
   echo_area_completion_items = completions;
   completions_must_be_rebuilt ();
+  completion_exclude_func = exclude_func;
 
   active_window = the_echo_area;
   echo_area_is_active++;
@@ -833,7 +943,7 @@ info_read_completing_internal (WINDOW *window, const char *prompt,
   /* Read characters in the echo area. */
   while (1)
     {
-      info_read_and_dispatch ();
+      read_and_dispatch_in_echo_area ();
 
       line = echo_area_after_read ();
 
@@ -877,6 +987,7 @@ info_read_completing_internal (WINDOW *window, const char *prompt,
       break;
     }
   echo_area_is_active--;
+  window_clear_echo_area ();
 
   /* Restore the original active window and show point in it. */
   active_window = calling_window;
@@ -896,31 +1007,30 @@ info_read_completing_internal (WINDOW *window, const char *prompt,
   
 /* Read a line in the echo area with completion over COMPLETIONS. */
 char *
-info_read_completing_in_echo_area (WINDOW *window,
-    const char *prompt, REFERENCE **completions)
+info_read_completing_in_echo_area (char *prompt, REFERENCE **completions)
 {
-  return info_read_completing_internal (window, prompt, completions, 1);
+  return info_read_completing_internal (prompt, completions, 1, 0);
 }
 
 /* Read a line in the echo area allowing completion over COMPLETIONS, but
    not requiring it. */
 char *
-info_read_maybe_completing (WINDOW *window,
-    const char *prompt, REFERENCE **completions)
+info_read_maybe_completing (char *prompt, REFERENCE **completions)
 {
-  return info_read_completing_internal (window, prompt, completions, 0);
+  return info_read_completing_internal (prompt, completions, 0, 0);
+}
+
+/* Read a line in the echo area with completion over COMPLETIONS, using
+   EXCLUDE to exclude items from the completion list. */
+char *
+info_read_completing_in_echo_area_with_exclusions (char *prompt,
+     REFERENCE **completions, reference_bool_fn exclude)
+{
+  return info_read_completing_internal (prompt, completions, 1, exclude);
 }
 
 DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
 {
-  if (!echo_area_completion_items
-      || (isprint (key)
-	  && ea_last_executed_command == (VFunction *) ea_possible_completions))
-    {
-      ea_insert (window, count, key);
-      return;
-    }
-
   build_completions ();
 
   if (!completions_found_index)
@@ -928,7 +1038,7 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
       terminal_ring_bell ();
       inform_in_echo_area (_("No completions"));
     }
-  else if ((completions_found_index == 1) && (key != '?'))
+  else if (completions_found_index == 1)
     {
       inform_in_echo_area (_("Sole completion"));
     }
@@ -936,9 +1046,10 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
     {
       size_t i, l;
       size_t limit, iterations, max_label = 0;
+      struct text_buffer message;
 
-      initialize_message_buffer ();
-      printf_to_message_buffer (ngettext ("%d completion:\n",
+      text_buffer_init (&message);
+      text_buffer_printf (&message, ngettext ("%d completion:\n",
 					  "%d completions:\n",
 					  completions_found_index),
 				completions_found_index);
@@ -987,17 +1098,17 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
 
                   label = completions_found[l]->label;
                   printed_length = strlen (label);
-                  printf_to_message_buffer ("%s", label);
+                  text_buffer_printf (&message, "%s", label);
 
                   if (j + 1 < limit)
                     {
                       for (k = 0; k < max_label - printed_length; k++)
-                        printf_to_message_buffer (" ");
+                        text_buffer_printf (&message, " ");
                     }
                 }
               l += iterations;
             }
-          printf_to_message_buffer ("\n");
+          text_buffer_printf (&message, "\n");
         }
 
       /* Make a new node to hold onto possible completions.  Don't destroy
@@ -1005,10 +1116,10 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
       {
         NODE *temp;
 
-        temp = message_buffer_to_node ();
-        add_gcable_pointer (temp->contents);
-        name_internal_node (temp, compwin_name);
+        temp = text_buffer_to_node (&message);
+        name_internal_node (temp, xstrdup (compwin_name));
         possible_completions_output_node = temp;
+        possible_completions_output_node->flags |= N_WasRewritten;
       }
 
       /* Find a suitable window for displaying the completions output.
@@ -1028,112 +1139,39 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
             if (calling_window->height > (iterations * 2)
 		&& calling_window->height / 2 >= WINDOW_MIN_SIZE)
               {
-                int pagetop;
-#ifdef SPLIT_BEFORE_ACTIVE
-                int start, end;
-#endif
+                remember_calling_window (calling_window);
 
                 active_window = calling_window;
-
-                /* Perhaps we can scroll this window on redisplay. */
-#ifdef SPLIT_BEFORE_ACTIVE
-                start = calling_window->first_row;
-#endif
-                pagetop = calling_window->pagetop;
-
-                compwin =
-                  window_make_window (possible_completions_output_node);
-                active_window = the_echo_area;
+                compwin = window_make_window ();
                 window_change_window_height
                   (compwin, -(compwin->height - (iterations + 2)));
 
-                window_adjust_pagetop (calling_window);
-                remember_calling_window (calling_window);
-
-#if defined (SPLIT_BEFORE_ACTIVE)
-                /* If the pagetop hasn't changed, scrolling the calling
-                   window is a reasonable thing to do. */
-                if (pagetop == calling_window->pagetop)
-                  {
-                    end = start + calling_window->height;
-                    display_scroll_display
-                      (start, end, calling_window->prev->height + 1);
-                  }
-#else /* !SPLIT_BEFORE_ACTIVE */
-                /* If the pagetop has changed, set the new pagetop here. */
-                if (pagetop != calling_window->pagetop)
-                  {
-                    int newtop = calling_window->pagetop;
-                    calling_window->pagetop = pagetop;
-                    set_window_pagetop (calling_window, newtop);
-                  }
-#endif /* !SPLIT_BEFORE_ACTIVE */
-
                 echo_area_completions_window = compwin;
-                remember_window_and_node (compwin, compwin->node);
+                active_window = the_echo_area;
               }
             else
               compwin = calling_window;
           }
 
-        if (compwin->node != possible_completions_output_node)
-          {
-            window_set_node_of_window
-              (compwin, possible_completions_output_node);
-            remember_window_and_node (compwin, compwin->node);
-          }
+        /* Clear any completion nodes already showing from the window history.
+           This could happen if the user presses TAB more than once. */
+        while (compwin->node && (compwin->node->flags & N_IsInternal)
+               && !strcmp (compwin->node->nodename, compwin_name))
+          forget_node (compwin);
 
-        display_update_display (windows);
+        info_set_node_of_window (compwin, possible_completions_output_node);
+
+        display_update_display ();
       }
     }
 }
 
 DECLARE_INFO_COMMAND (ea_complete, _("Insert completion"))
 {
-  if (!echo_area_completion_items)
-    {
-      ea_insert (window, count, key);
-      return;
-    }
-
-  /* If KEY is SPC, and we are not forcing completion to take place, simply
-     insert the key. */
-  if (!echo_area_must_complete_p && key == SPC)
-    {
-      ea_insert (window, count, key);
-      return;
-    }
-
   if (ea_last_executed_command == (VFunction *) ea_complete)
     {
-      /* If the keypress is a SPC character, and we have already tried
-         completing once, and there are several completions, then check
-         the batch of completions to see if any continue with a space.
-         If there are some, insert the space character and continue. */
-      if (key == SPC && completions_found_index > 1)
-        {
-          size_t i;
-	  int offset;
-
-          offset = input_line_end - input_line_beg;
-
-          for (i = 0; i < completions_found_index; i++)
-            if (completions_found[i]->label[offset] == ' ')
-              break;
-
-          if (completions_found[i])
-            ea_insert (window, 1, ' ');
-          else
-            {
-              ea_possible_completions (window, count, key);
-              return;
-            }
-        }
-      else
-        {
-          ea_possible_completions (window, count, key);
-          return;
-        }
+      ea_possible_completions (window, count);
+      return;
     }
 
   input_line_point = input_line_end;
@@ -1142,7 +1180,7 @@ DECLARE_INFO_COMMAND (ea_complete, _("Insert completion"))
   if (!completions_found_index)
     terminal_ring_bell ();
   else if (LCD_completion->label[0] == '\0')
-    ea_possible_completions (window, count, key);
+    ea_possible_completions (window, count);
   else
     {
       register int i;
@@ -1217,6 +1255,11 @@ build_completions (void)
 
   for (i = 0; (entry = echo_area_completion_items[i]); i++)
     {
+      /* Skip certain items (for example, we might only want
+         a list of menu items). */
+      if (completion_exclude_func && completion_exclude_func (entry))
+        continue;
+
       if (mbsncasecmp (request, entry->label, len) == 0)
         add_pointer_to_array (entry, completions_found_index,
                               completions_found, completions_found_slots,
@@ -1252,8 +1295,8 @@ build_completions (void)
         int c1, c2;
 
         for (j = 0;
-             (c1 = info_tolower (completions_found[i - 1]->label[j])) &&
-             (c2 = info_tolower (completions_found[i]->label[j]));
+             (c1 = tolower (completions_found[i - 1]->label[j]))
+             && (c2 = tolower (completions_found[i]->label[j]));
              j++)
           if (c1 != c2)
             break;
@@ -1355,7 +1398,7 @@ DECLARE_INFO_COMMAND (ea_scroll_completions_window, _("Scroll the completions wi
 
   /* Let info_scroll_forward () do the work, and print any messages that
      need to be displayed. */
-  info_scroll_forward (compwin, count, key);
+  info_scroll_forward (compwin, count);
 }
 
 /* Function which gets called when an Info window is deleted while the

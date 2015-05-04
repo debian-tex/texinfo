@@ -1,8 +1,8 @@
 /* info.h -- Header file which includes all of the other headers.
-   $Id: info.h 5337 2013-08-22 17:54:06Z karl $
+   $Id: info.h 5998 2014-12-27 22:23:46Z gavin $
 
    Copyright 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007, 2011,
-   2013 Free Software Foundation, Inc.
+   2013, 2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,11 +22,6 @@
 #ifndef INFO_H
 #define INFO_H
 
-/* We always want these, so why clutter up the compile command?  */
-#define HANDLE_MAN_PAGES
-#define NAMED_FUNCTIONS
-#define INFOKEY
-
 /* System dependencies.  */
 #include "system.h"
 
@@ -35,35 +30,26 @@ typedef int Function ();
 typedef void VFunction ();
 typedef char *CFunction ();
 
-#include "filesys.h"
-#include "doc.h"
-#include "display.h"
-#include "session.h"
-#include "echo-area.h"
-#include "footnotes.h"
-#include "gc.h"
-
 #include "string.h"
 #include "mbiter.h"
 #include "mbchar.h"
 
-#define info_toupper(x) (islower (x) ? toupper (x) : x)
-#define info_tolower(x) (isupper (x) ? tolower (x) : x)
+extern char *program_name;
 
 #if !defined (whitespace)
 #  define whitespace(c) ((c == ' ') || (c == '\t'))
 #endif /* !whitespace */
 
 #if !defined (whitespace_or_newline)
-#  define whitespace_or_newline(c) (whitespace (c) || (c == '\n'))
+#  define whitespace_or_newline(c) (whitespace (c) \
+                                    || (c == '\n') || (c == '\r'))
 #endif /* !whitespace_or_newline */
 
-/* Add POINTER to the list of pointers found in ARRAY.  SLOTS is the number
-   of slots that have already been allocated.  INDEX is the index into the
-   array where POINTER should be added.  GROW is the number of slots to grow
-   ARRAY by, in the case that it needs growing.  TYPE is a cast of the type
-   of object stored in ARRAY (e.g., NODE_ENTRY *. */
-#define add_pointer_to_array(pointer, idx, array, slots, minslots)	\
+/* Add ELT to the list of elements found in ARRAY.  SLOTS is the number
+   of slots that have already been allocated.  IDX is the index into the
+   array where ELT should be added.  MINSLOTS is the number of slots to
+   start the array with in case it is empty. */
+#define add_pointer_to_array(elt, idx, array, slots, minslots)	\
   do									\
     {									\
        if (idx + 2 >= slots)						\
@@ -72,88 +58,33 @@ typedef char *CFunction ();
 	     slots = minslots;						\
 	   array = x2nrealloc (array, &slots, sizeof(array[0]));	\
 	 }								\
-       array[idx++] = pointer;						\
-       array[idx] = NULL;						\
+       array[idx++] = elt;						\
+       array[idx] = 0; /* null pointer for pointer types */       	\
     }									\
   while (0)
 
-#if !defined (zero_mem) && defined (HAVE_MEMSET)
-#  define zero_mem(mem, length) memset (mem, 0, length)
-#endif /* !zero_mem && HAVE_MEMSET */
+#define add_element_to_array add_pointer_to_array
 
-#if !defined (zero_mem) && defined (HAVE_BZERO)
-#  define zero_mem(mem, length) bzero (mem, length)
-#endif /* !zero_mem && HAVE_BZERO */
-
-#if !defined (zero_mem)
-#  define zero_mem(mem, length) \
-  do {                                  \
-        register int zi;                \
-        register unsigned char *place;  \
-                                        \
-        place = (unsigned char *)mem;   \
-        for (zi = 0; zi < length; zi++) \
-          place[zi] = 0;                \
-      } while (0)
-#endif /* !zero_mem */
+/* All commands that can be invoked from within info_session () receive
+   arguments in the same way.  This simple define declares the header
+   of a function named NAME, with associated documentation DOC.  The
+   documentation string is groveled out of the source files by the
+   utility program `makedoc', which is also responsible for making
+   the documentation/function-pointer maps. */
+#define DECLARE_INFO_COMMAND(name, doc) \
+void name (WINDOW *window, int count)
 
 
-/* A structure associating the nodes visited in a particular window. */
-typedef struct {
-  WINDOW *window;               /* The window that this list is attached to. */
-  NODE **nodes;                 /* Array of nodes visited in this window. */
-  int *pagetops;                /* For each node in NODES, the pagetop. */
-  long *points;                 /* For each node in NODES, the point. */
-  int current;                  /* Index in NODES of the current node. */
-  int nodes_index;              /* Index where to add the next node. */
-  int nodes_slots;              /* Number of slots allocated to NODES. */
-} INFO_WINDOW;
-
-/* Array of structures describing for each window which nodes have been
-   visited in that window. */
-extern INFO_WINDOW **info_windows;
-
 /* For handling errors.  If you initialize the window system, you should
    also set info_windows_initialized_p to non-zero.  It is used by the
    info_error () function to determine how to format and output errors. */
 extern int info_windows_initialized_p;
-
-/* Non-zero if an error message has been printed. */
-extern int info_error_was_printed;
-
-/* Non-zero means ring terminal bell on errors. */
-extern int info_error_rings_bell_p;
 
 /* Non-zero means default keybindings are loosely modeled on vi(1).  */
 extern int vi_keys_p;
 
 /* Non-zero means don't remove ANSI escape sequences from man pages.  */
 extern int raw_escapes_p;
-
-/* Non-zero means don't try to be smart when searching for nodes.  */
-extern int strict_node_location_p;
-
-extern unsigned debug_level;
-
-#define debug(n,c)							\
-  do									\
-    {									\
-      if (debug_level >= (n))						\
-	info_debug c;							\
-    }									\
-  while (0)
-
-extern void vinfo_debug (const char *format, va_list ap);
-extern void info_debug (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
-
-/* Print args as per FORMAT.  If the window system was initialized,
-   then the message is printed in the echo area.  Otherwise, a message is
-   output to stderr. */
-extern void info_error (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
-
-extern void vinfo_error (const char *format, va_list ap);
-
-extern void add_file_directory_to_path (char *filename);
 
 /* Error message defines. */
 extern const char *msg_cant_find_node;
@@ -174,12 +105,11 @@ extern const char *msg_win_too_small;
 extern const char *msg_cant_make_help;
 
 
-/* Found in variables.c. */
-extern int set_variable_to_value (char *name, char *value);
+/* In infopath.c, but also used in man.c. */
 
-/* Found in m-x.c.  */
-extern char *read_function_name (const char *prompt, WINDOW *window);
-
-extern void show_error_node (NODE *node);
+/* Given a string containing units of information separated by colons,
+   return the next one pointed to by IDX, or NULL if there are no more.
+   Advance IDX to the character after the colon. */
+char *extract_colon_unit (char *string, int *idx);
 
 #endif /* !INFO_H */

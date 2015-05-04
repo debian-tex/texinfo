@@ -1,7 +1,8 @@
-$Id: README 5191 2013-02-23 00:11:18Z karl $
+$Id: README 6099 2015-02-06 15:34:53Z gavin $
 texinfo/util/README
 
-  Copyright 2002, 2008, 2011, 2012, 2013 Free Software Foundation, Inc.
+  Copyright 2002, 2008, 2011, 2012, 2013, 2014, 2015 Free Software
+  Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -11,7 +12,7 @@ All the files here are maintained as part of the Texinfo distribution
 (in contrast to the contrib/ directory).
 
 These scripts actually get installed:
-  texindex texi2dvi texi2pdf pdftexi2dvi
+  texi2dvi texi2pdf pdftexi2dvi
   (along with *.bat on Windows)
   Also the XML stuff: texinfo.dtd texinfo.cat.
 

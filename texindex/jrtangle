@@ -1,0 +1,481 @@
+#! /usr/local/bin/gawk -f
+#
+# Copyright (C) 2013, 2014, 2015 Arnold David Robbins
+# 
+# This file is part of TexiWeb Jr., a literate programming system.
+# 
+# TexiWeb Jr. is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+# 
+# TexiWeb Jr. is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
+#
+# Up-to-date source code for TexiWeb Jr. can be obtained via
+# Git from github:
+#
+#	git clone http://github.com/arnoldrobbins/texiwebjr
+#
+BEGIN {
+	TRUE = 1
+	FALSE = 0
+	File_chunk_pattern = "^@\\(([^)]+)@\\)[[:space:]]*=[[:space:]]*$"
+	Code_chunk_pattern = "^@" "<(.+)" "@>[[:space:]]*=[[:space:]]*$"
+	Chunk_name_pattern = "@<[^>\n]+@>"
+}
+# Error checking:
+
+# Use brackets to avoid triggering the warning on ourselves!
+/(^<[@])|(>[@]([[:space:]]*=[[:space:]]*)?$)/	{
+	# Ditto, with concatenation
+	warning("<" "@ or >" "@ used instead of @" "< or @" ">\n\t%s\n",
+			$0)
+}
+
+END {
+	check_unfinished()
+}
+# check_unfinished --- print a fatal error when an unfinished code or
+#			file chunk is detected. Also ifweave / iftangle.
+
+function check_unfinished()
+{
+	if (Flags["file chunk"])
+		fatal(_"unfinished file chunk (started at %s)\n",
+			Line_numbers["file chunk"])
+	else if (Flags["code chunk"])
+		fatal(_"unfinished code chunk (started at %s)\n",
+			Line_numbers["code chunk"])
+
+	if ("ifweave" in Line_numbers)
+		fatal(_"unfinished @ifweave section (started at %s)\n",
+			Line_numbers["ifweave"])
+
+	if ("iftangle" in Line_numbers)
+		fatal(_"unfinished @iftangle section (started at %s)\n",
+			Line_numbers["iftangle"])
+}
+# strip_out_name --- get the name from name
+
+function strip_out_name(name,	l)
+{
+	l = length(name)
+	name = substr(name, 3, l - 4)
+
+	return name
+}
+# Helper functions
+
+# message --- write a particular kind of message out to stderr
+
+function message(msg, format, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
+{
+	printf("%s:%d: %s: " format, FILENAME, FNR, msg,
+		a1, a2, a3, a4, a5, a6, a7, a8, a9, a10) > "/dev/stderr"
+
+	if (substr(format, length(format), 1) != "\n")
+		printf("\n") > "/dev/stderr"
+}
+
+# fatal --- print a fatal error message and exit.
+#	 No varargs, so fake it with lots of parameters.
+
+function fatal(format, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
+{
+	message(_"fatal", format, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
+	exit 1
+}
+
+# warning --- print a warning message to stderr
+#	 No varargs, so fake it with lots of parameters.
+
+function warning(format, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
+{
+	message(_"warning", format, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
+}
+
+# join.awk --- join an array into a string
+#
+# Arnold Robbins, arnold@skeeve.com, Public Domain
+# May 1993
+
+function join(array, start, end, sep,    result, i)
+{
+	if (sep == "")
+		sep = " "
+	else if (sep == SUBSEP) # magic value
+		sep = ""
+	result = array[start]
+	for (i = start + 1; i <= end; i++)
+		result = result sep array[i]
+	return result
+}
+# ifweave lines should be removed
+
+/^@ifweave[[:space:]]*$/, /^@end ifweave[[:space:]]*$/ {
+	if ("iftangle" in Line_numbers)
+		fatal(_"cannot nest @ifweave inside @iftangle\n")
+
+	# start of construct, save line number
+	if (/^@ifweave[[:space:]]*$/)
+		Line_numbers["ifweave"] = (FILENAME ":" FNR)
+
+	# end of construct, delete line number
+	if (/^@end ifweave[[:space:]]*$/)
+		delete Line_numbers["ifweave"]
+
+	# simply skip these lines, this is tangling
+	next
+}
+
+# For tangling we remove the bracketing control lines and let anything
+# in between fall through.
+
+/^@iftangle[[:space:]]*$/, /^@end iftangle[[:space:]]*$/ {
+	if ("ifweave" in Line_numbers)
+		fatal(_"cannot nest @iftangle inside @ifweave\n")
+
+	# start of construct, save line number, skip this line
+	if (/^@iftangle[[:space:]]*$/) {
+		Line_numbers["iftangle"] = (FILENAME ":" FNR)
+		next
+	}
+
+	# end of construct, delete line number, skip this line
+	if (/^@end iftangle[[:space:]]*$/) {
+		delete Line_numbers["iftangle"]
+		next
+	}
+
+	# otherwise fall through into the rest of the code
+}
+$0 ~ Code_chunk_pattern {
+	Chunk_type = "code chunk"
+	Pattern = Code_chunk_pattern
+	Debug_pat = "code"
+	new_chunk = gensub(Pattern, "\\1", 1)
+	if (Flags[Chunk_type]) {
+		fatal(_"%s start of %s found while still collecting %s\n",
+			Chunk_type, new_chunk, Current_chunk)
+	}
+	check_unfinished()
+	
+	Flags[Chunk_type] = TRUE
+	Line_numbers[Chunk_type] = (FILENAME ":" FNR)
+	Current_chunk = new_chunk
+	Chunk_info[Current_chunk]["type"] = Chunk_type
+	
+	if (Debug ~ Debug_pat)
+		printf("saw new %s %s\n", Debug_pat, Current_chunk) > "/dev/stderr"
+	next
+}
+$0 ~ File_chunk_pattern {
+	Chunk_type = "file chunk"
+	Pattern = File_chunk_pattern
+	Debug_pat = "filename"
+	new_chunk = gensub(Pattern, "\\1", 1)
+	if (Flags[Chunk_type]) {
+		fatal(_"%s start of %s found while still collecting %s\n",
+			Chunk_type, new_chunk, Current_chunk)
+	}
+	check_unfinished()
+	
+	Flags[Chunk_type] = TRUE
+	Line_numbers[Chunk_type] = (FILENAME ":" FNR)
+	Current_chunk = new_chunk
+	Chunk_info[Current_chunk]["type"] = Chunk_type
+	
+	if (Debug ~ Debug_pat)
+		printf("saw new %s %s\n", Debug_pat, Current_chunk) > "/dev/stderr"
+	next
+}
+/^@[[:space:]]*$/ {
+	if (Flags["file chunk"])
+		end_file_gathering()
+	else if (Flags["code chunk"])
+		end_code_gathering()
+	else
+		warning(_"unmatched terminating @-sign: ignored\n")
+
+	Chunk_lines = ""
+	Flags[Chunk_type] = FALSE
+	Line_numbers[Chunk_type] = ""
+	Chunk_type = ""
+
+	next
+}
+Flags["file chunk"] || Flags["code chunk"] {
+	if (Chunk_lines == "")
+		Chunk_lines = $0
+	else
+		Chunk_lines = Chunk_lines "\n" $0
+
+	next
+}
+# end_file_gathering ---finish up collecting a file
+
+function end_file_gathering()
+{
+	if (Current_chunk in File_contents)
+		File_contents[Current_chunk] = \
+			File_contents[Current_chunk] "\n" Chunk_lines
+	else
+		File_contents[Current_chunk] = Chunk_lines
+
+	if (Debug ~ /filename/)
+		printf("finished collecting file %s\n",
+						Current_chunk) > "/dev/stderr"
+}
+# end_code_gathering --- complete collecting lines of the code chunk
+
+function end_code_gathering()
+{
+	if (Current_chunk in Code_contents)
+		Code_contents[Current_chunk] = \
+			Code_contents[Current_chunk] "\n" Chunk_lines
+	else
+		Code_contents[Current_chunk] = Chunk_lines
+
+	if (Debug ~ /code/)
+		printf("finished collecting %s\n",
+					Current_chunk) > "/dev/stderr"
+}
+# Finishing off code is easy, at least from 10,000 feet.
+
+END {
+	if (length(Initial_setup) > 0) {
+		Initial_setup = Initial_setup "\n"
+		system(Shell_debug Initial_setup)
+	}
+
+	dump_files()
+
+	if (Debug ~ /code/)
+		dump_chunks()
+}
+# dump_files --- create files and update them as needed
+
+function dump_files(	i, s, update_recipe)
+{
+	for (i in File_contents) {
+		s = expand_code_chunks(File_contents[i])
+
+		create_update_recipe(i, update_recipe)
+		printf("%s\n", s) > update_recipe["output"]
+		close(update_recipe["output"])
+
+		# update the file if necessary
+		update_recipe["recipe"] = (Shell_debug update_recipe["recipe"])
+		system(update_recipe["recipe"])
+
+		# run any "post create" command (such as changing mode)
+		if (i in Post_create_commands)
+			system(Shell_debug Post_create_commands[i])
+	}
+}
+# expand_code_chunks --- expand embedded code chunks.
+
+function expand_code_chunks(contents)
+{
+	delete Currently_expanding
+
+	return do_expand_code_chunks(contents)
+}
+# do_expand_code_chunks --- do the actual work to expand code chunks
+
+function do_expand_code_chunks(contents,
+								nlines, lines, results, i, j) # locals
+{
+	nlines = split(contents, lines, "\n")
+
+	for (i = 1; i <= nlines; i++) {
+		if (lines[i] !~ Chunk_name_pattern) {
+			results[i] = lines[i]
+		} else
+			results[i] = expand_one_line(lines[i])
+	}
+
+	return join(results, 1, nlines, "\n")
+}
+# expand_one_line --- expand a line with code chunk references
+
+function expand_one_line(input_line,	parts, chunk_names, nparts,
+										num_names, code_lines, i, j)
+{
+	nparts = split(input_line, parts, Chunk_name_pattern, chunk_names)
+	num_names = length(chunk_names)
+	# check for recursive expansion
+	for (i = 1; i <= num_names; i++) {
+		j = strip_out_name(chunk_names[i])
+	
+		if (! (j in Code_contents))
+			fatal(_"expand_one_line: code chunk `%s' used but not defined\n",
+				chunk_names[i])
+	
+		if (j in Currently_expanding)
+			fatal(_"expand_one_line: code chunk `%s' expands itself recursively\n",
+				chunk_names[i])
+		else
+			Currently_expanding[j] = TRUE
+	}
+	code_lines = code_body(chunk_names[1])
+	delete Currently_expanding[strip_out_name(chunk_names[1])]
+	
+	if (input_line !~ ("^" Chunk_name_pattern)) {
+		if (parts[1] ~ /^[[:space:]]+$/) {
+			# insert leading white space on all lines to get indentation
+			gsub(/^|\n/, ("&" parts[1]), code_lines)
+		} else {
+			code_lines = parts[1] code_lines
+		}
+	}
+	for (i = 2; i <= nparts; i++) {
+		code_lines = code_lines parts[i]
+		if (i in chunk_names) {
+			code_lines = code_lines code_body(chunk_names[i])
+			delete Currently_expanding[strip_out_name(chunk_names[i])]
+		}
+	}
+
+	if (code_lines ~ Chunk_name_pattern) {
+		# get any further code chunks, recursively
+		return do_expand_code_chunks(code_lines)
+	} else
+		return code_lines
+}
+# code_body --- get the code body associated with name
+
+function code_body(name)
+{
+	return Code_contents[strip_out_name(name)]
+}
+/^@initial_setup[[:space:]]*$/, /^@end initial_setup[[:space:]]*$/ {
+	if (/^@initial_setup[[:space:]]*$/) {
+		# start of construct, save line number, skip this line
+		if ("initial_setup" in Line_numbers)
+			fatal(_"cannot nest one @initial_setup inside another\n")
+		Line_numbers["initial_setup"] = (FILENAME ":" FNR)
+		Initial_setup = ""
+	} else if (/^@end initial_setup[[:space:]]*$/) {
+		# end of construct, delete line number, skip this line
+		delete Line_numbers["initial_setup"]
+	} else
+		Initial_setup = Initial_setup "\n" $0
+
+	next
+}
+BEGIN {
+	# This condition should distinguish between the native and
+	# MSYS (POSIX-ish) Gawk.  We rely on the fact that MSYS mounts
+	# /tmp and sets $TEMP to point to it, but resets the value
+	# back to the native C:/Foo/Bar value when invoking native
+	# programs.
+	if (ENVIRON["TEMP"] ~ /^[A-Z]:[\\\/]/) {
+		# MS-Windows recipe
+		Update_recipe = \
+			"fc /B \"@DIR@\\@FILE@\" \"@DIR@\\@FILE@@SUFFIX@\" >nul 2>&1 || move /Y \"@DIR@\\@FILE@\" \"@DIR@\\@FILE@@SUFFIX@\" >nul"
+	} else {
+		# POSIX recipe
+		Update_recipe = \
+			"PATH=/bin:/usr/bin\n" \
+			"export PATH\n" \
+			"destname=\"@DIR@/@FILE@\"\n" \
+			"outname=\"${destname}@SUFFIX@\"\n" \
+			"if [ ! -f \"$destname\" ]\n" \
+			"then\n" \
+			"\tmv \"$outname\" \"$destname\"\n" \
+			"elif cmp -s \"$outname\" \"$destname\" > /dev/null\n" \
+			"then\n" \
+			"\trm \"$outname\"\n" \
+			"else\n" \
+			"\tmv \"$outname\" \"$destname\"\n" \
+			"fi\n"
+}
+/^@file_update_recipe[[:space:]]*$/,
+			/^@end file_update_recipe[[:space:]]*$/ {
+	if (/^@file_update_recipe[[:space:]]*$/) {
+		# start of construct, save line number, skip this line
+		if ("file_update_recipe" in Line_numbers)
+			fatal(_"cannot nest one @file_update_recipe inside another\n")
+		Line_numbers["file_update_recipe"] = (FILENAME ":" FNR)
+		Update_recipe = ""
+	} else if (/^@end file_update_recipe[[:space:]]*$/) {
+		# end of construct, delete line number, skip this line
+		delete Line_numbers["file_update_recipe"]
+	} else
+		Update_recipe = Update_recipe "\n" $0
+
+	next
+}
+BEGIN {
+	# @default is an unlikely name for a real file
+	Update_value["@default"]["DIR"] = "."	# current directory
+	Update_value["@default"]["SUFFIX"] = ".tangle_tmp"	# unlikely suffix
+	# No default for filename, jrtangle knows it!
+}
+/^@file_update[[:space:]]/ {
+	if (NF != 4)
+		fatal(_"usage: @file_update name dir suffix\n")
+
+	if ($4 == "\"\"")
+		$4 = ""
+	Update_value[$2]["DIR"] = $3
+	Update_value[$2]["SUFFIX"] = $4
+
+	next
+}
+# create_update_recipe --- create update recipe per file,
+#							return dest filename
+
+function create_update_recipe(file, results,
+							source_file, dir, suffix, recipe) # locals
+{
+	if (file in Update_value)
+		source_file = file
+	else
+		source_file = "@default"
+
+	dir = Update_value[source_file]["DIR"]
+	suffix = Update_value[source_file]["SUFFIX"]
+
+	delete results
+
+	recipe = Update_recipe
+	gsub(/@DIR@/, dir, recipe)
+	gsub(/@FILE@/, file, recipe)
+	gsub(/@SUFFIX@/, suffix, recipe)
+
+	results["recipe"] = recipe
+	results["output"] = (dir "/" file suffix)
+}
+BEGIN {
+	if (Debug ~ /shell/ && ENVIRON["TEMP"] !~ /^[A-Z]:[\\\/]/)
+		if (length(Shell_debug) == 0)
+			Shell_debug = "set -x; "
+}
+/^@post_create[[:space:]]+/ {
+	if (NF < 3)
+		fatal(_"usage: @post_create filename command\n")
+	check_unfinished()
+
+	name = $2
+	$1 = $2 = ""
+	$0 = $0
+	Post_create_commands[name] = $0
+}
+# dump_chunks --- print out all the chunks
+
+function dump_chunks(	i, format)
+{
+	format = "@<%s"
+	format = format "@>=\n%s@\n\n"
+	for (i in Code_contents)
+		printf(format, i, Code_contents[i]) > "/dev/stderr"
+}

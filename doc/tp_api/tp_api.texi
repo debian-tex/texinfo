@@ -56,14 +56,26 @@ METHODS
 
 * Texinfo@asis{::}Parser Initialization::
 * Texinfo@asis{::}Parser Parsing Texinfo text::
-* Texinfo@asis{::}Parser Getting informations on the document::
+* Texinfo@asis{::}Parser Getting information on the document::
 * Texinfo@asis{::}Parser Texinfo Parser options::
 
 TEXINFO TREE
 
 * Texinfo@asis{::}Parser Element keys::
-* Texinfo@asis{::}Parser The containers and types::
+* Texinfo@asis{::}Parser Element types::
 * Texinfo@asis{::}Parser Information available in the extra key::
+* Texinfo@asis{::}Parser Other information set by the parser::
+
+Element types
+
+* Texinfo@asis{::}Parser Types for command elements::
+* Texinfo@asis{::}Parser Types for text elements::
+* Texinfo@asis{::}Parser Types of container elements::
+
+Information available in the extra key
+
+* Texinfo@asis{::}Parser Extra keys available for more than one @@-command::
+* Texinfo@asis{::}Parser Extra keys specific of certain @@-commands or containers::
 
 Texinfo::Structuring
 
@@ -129,6 +141,7 @@ Texinfo::Convert::Converter
 * Texinfo@asis{::}Convert@asis{::}Converter SEE ALSO::
 * Texinfo@asis{::}Convert@asis{::}Converter AUTHOR::
 * Texinfo@asis{::}Convert@asis{::}Converter COPYRIGHT AND LICENSE::
+* Texinfo@asis{::}Convert@asis{::}Converter POD ERRORS::
 
 METHODS
 

@@ -384,13 +384,13 @@ $result_converted{'plaintext'}->{'uref_in_ref'} = '*note cross ref with uref ure
 
 $result_converted_errors{'plaintext'}->{'uref_in_ref'} = [
   {
-    'file_name' => '',
     'error_line' => ':1: warning: @ref cross-reference name should not contain `:\'
 ',
-    'text' => '@ref cross-reference name should not contain `:\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 1,
     'macro' => '',
-    'line_nr' => 1
+    'text' => '@ref cross-reference name should not contain `:\'',
+    'type' => 'warning'
   }
 ];
 

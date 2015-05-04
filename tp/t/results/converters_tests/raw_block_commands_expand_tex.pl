@@ -502,13 +502,13 @@ $\\underline{a &lt; b &lt;code&gt;tex \\hbox{ code }&lt;/code&gt;}$ ``}
 
 $result_converted_errors{'html_text'}->{'raw_block_commands_expand_tex'} = [
   {
-    'file_name' => '',
     'error_line' => ':14: warning: raw format tex is not converted
 ',
-    'text' => 'raw format tex is not converted',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 14,
     'macro' => '',
-    'line_nr' => 14
+    'text' => 'raw format tex is not converted',
+    'type' => 'warning'
   }
 ];
 

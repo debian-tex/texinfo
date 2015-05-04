@@ -64,7 +64,7 @@ sub test_correction($$$)
   if (!defined($out)) {
     print STDERR " --> $name:\n$texi_result";
   } else {
-    is ($texi_result, $out, $name);
+    is($texi_result, $out, $name);
   }
 }
 test_correction('@chapter chap

@@ -1,8 +1,8 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac 5381 2013-09-26 23:03:58Z karl $
+# $Id: configure.ac 6244 2015-05-03 23:28:24Z karl $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
-# 2012, 2013 Free Software Foundation, Inc.
+# 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -12,7 +12,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [5.2], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [5.9.91], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -25,17 +25,17 @@ AM_INIT_AUTOMAKE([1.14 dist-xz
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.
 AC_CONFIG_SRCDIR([info/info.c])
 
-# version for the dtd.  It is manually set to the next version number 
-# rather than $PACKAGE_VERSION as soon as the DTD is modified.  There 
-# are 3 reasons for that:
-# 1. to avoid using a DTD from internet that wouldn't be in sync;
-# 2. to avoid unnnecessary changes in XML output file headers, in
-#    test results for instance.  Otherwise after a release the 
-#    devel version and the pretest versions would be used;
-# 3. it may be kept as is in case there were no change in the DTD
-#    between releases.  This is highly improbable, but who knows.
-# TEXINFO_DTD_VERSION=$PACKAGE_VERSION
-TEXINFO_DTD_VERSION=5.0
+# TexinfoXML DTD (./util/texinfo.dtd) version:
+# manually set this to the next version number rather than
+# $PACKAGE_VERSION, as soon as the DTD is modified, and perhaps put the
+# file on the web, too.  Several reasons:
+# 1. To avoid using a DTD from the Internet that wouldn't be in sync;
+# 2. To avoid unnnecessary changes in XML output file headers, in
+#    test results for instance.
+# 3. It may be kept as is in case there were no change in the DTD
+#    between releases.  This is rare, but has happened.
+#
+TEXINFO_DTD_VERSION=6.0
 AC_SUBST([TEXINFO_DTD_VERSION])
 
 # Conditional texi2html support.
@@ -47,8 +47,6 @@ AC_SUBST([PACKAGE_DATE])
 
 # We need Perl
 AC_ARG_VAR([PERL], [The path to the 'perl' executable.])
-dnl AC_PATH_PROG([PERL], [perl], [/usr/bin/env perl], [/opt/perl5/bin:"$PATH"])
-
 AC_PATH_PROG([PERL], [perl])
 if test -z "$PERL"; then
    AC_MSG_ERROR(
@@ -58,7 +56,6 @@ specify where it is using
   ./configure PERL=/path/to/perl
 ])
 fi
-
 
 AC_MSG_CHECKING([Perl version and Encode module])
 if $PERL -e "use 5.007_003; use Encode;" > /dev/null 2>&1; then
@@ -142,7 +139,8 @@ AC_HEADER_STAT
 AC_HEADER_STDC
 AC_CHECK_HEADERS(fcntl.h io.h limits.h pwd.h string.h strings.h \
   termcap.h termio.h termios.h unistd.h \
-  sys/fcntl.h sys/file.h sys/stream.h sys/time.h sys/ttold.h sys/wait.h)
+  sys/fcntl.h sys/file.h sys/ioctl.h sys/stream.h \
+  sys/time.h sys/ttold.h sys/wait.h)
 
 # sys/ptem.h requires sys/stream.h for mblk_t on Solaris.
 AC_CHECK_HEADERS([sys/ptem.h],,,
@@ -152,7 +150,6 @@ AC_CHECK_HEADERS([sys/ptem.h],,,
 ])
 
 AC_SYS_POSIX_TERMIOS
-AC_HEADER_TIOCGWINSZ
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_OFF_T
@@ -170,8 +167,11 @@ AC_FUNC_VPRINTF
 # that anyone compiling new texinfo still has such a thing? we'll see.
 # AC_FUNC_SETVBUF_REVERSED
 AC_CHECK_FUNCS(bzero getcwd memset setlocale setvbuf sigaction sigprocmask \
-               sigsetmask strchr)
+	       sigsetmask strchr posix_openpt)
 AC_REPLACE_FUNCS(memcpy memmove strdup strerror)
+
+# Used for Info tests
+AM_CONDITIONAL([have_ptys], [test x$ac_cv_func_posix_openpt = xyes])
 
 # We want to recognize djgpp to avoid the useless warning about no
 # term library.
@@ -331,7 +331,7 @@ AC_SUBST([USE_EXTERNAL_UNIDECODE])
 # i18n support.  To update to a new version of gettext, run:
 #   gettextize -f -c
 # See http://gnu.org/s/gnulib/manual/html_node/gettextize-and-autopoint.html.
-AM_GNU_GETTEXT_VERSION([0.18.3])
+AM_GNU_GETTEXT_VERSION([0.19.4])
 AM_GNU_GETTEXT([external])
 
 USE_EXTERNAL_LIBINTL=no
@@ -445,6 +445,7 @@ AC_CONFIG_FILES([\
   po/Makefile.in
   po_document/Makefile.in
   util/Makefile
+  texindex/Makefile
   tp/Makefile
   tp/tests/Makefile
   tp/tests/many_input_files/Makefile

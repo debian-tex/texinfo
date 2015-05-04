@@ -9,6 +9,7 @@
 * Texinfo@asis{::}Convert@asis{::}Converter SEE ALSO::
 * Texinfo@asis{::}Convert@asis{::}Converter AUTHOR::
 * Texinfo@asis{::}Convert@asis{::}Converter COPYRIGHT AND LICENSE::
+* Texinfo@asis{::}Convert@asis{::}Converter POD ERRORS::
 @end menu
 
 @node Texinfo::Convert::Converter NAME
@@ -42,7 +43,7 @@ Texinfo::Convert::Converter - Parent class for Texinfo tree converters
   sub convert_tree($$) {
     ...
   }
-  sub output ($$) {
+  sub output($$) {
     ...
   }
 
@@ -122,7 +123,7 @@ To help with these initializations, the modules can define three methods:
 @item %defaults = $converter->converter_defaults($options)
 @anchor{Texinfo::Convert::Converter %defaults = $converter->converter_defaults($options)}
 
-The converter can provide a defaults hash for configurations options.
+The converter can provide a defaults hash for configuration options.
 The @emph{$options} hash reference holds options for the converter.
 
 @item @@global_commands = $converter->converter_global_commands()
@@ -179,7 +180,7 @@ the resulting string is returned.
 @emph{$accent_command} is an accent command, which may have other accent
 commands nested.  The function returns the accents formatted either
 as encoded letters, or formatted using @emph{\&format_accents}.
-If @emph{$in_upper_case} is set, the result should be upper cased.  
+If @emph{$in_upper_case} is set, the result should be uppercased.
 
 @end table
 
@@ -204,8 +205,8 @@ should be a Texinfo tree element corresponding to an accent command taking
 an argument.  @emph{$in_upper_case} is optional, and, if set, the text is put
 in upper case.  The function returns the accented letter as XML entity 
 if possible.  @emph{$use_numeric_entities} is also optional, and, if set, and
-there is no XML entity, the numerical entity corresponding to unicode 
-points is preferred to an ascii transliteration.
+there is no XML entity, the numerical entity corresponding to Unicode 
+points is preferred to an ASCII transliteration.
 
 @item $result = $converter->xml_accents($accent_command, $in_upper_case)
 @anchor{Texinfo::Convert::Converter $result = $converter->xml_accents($accent_command@comma{} $in_upper_case)}
@@ -213,6 +214,18 @@ points is preferred to an ascii transliteration.
 @emph{$accent_command} is an accent command, which may have other accent
 commands nested.  If @emph{$in_upper_case} is set, the result should be 
 upper cased.  The function returns the accents formatted as XML.
+
+@end table
+
+Finally, there is:
+
+@table @asis
+@item $result = $converter->output_internal_links()
+@anchor{Texinfo::Convert::Converter $result = $converter->output_internal_links()}
+
+At this level, the method just returns undef.  It is used in the HTML
+output, following the @code{--internal-links} option of texi2any/makeinfo
+specification.
 
 @end table
 
@@ -230,10 +243,23 @@ Patrice Dumas, <pertusus@@free.fr>
 @node Texinfo::Convert::Converter COPYRIGHT AND LICENSE
 @section COPYRIGHT AND LICENSE
 
-Copyright (C) 2011, 2012, 2013 Free Software Foundation, Inc.
+Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 3 of the License, or (at 
 your option) any later version.
+
+@node Texinfo::Convert::Converter POD ERRORS
+@section POD ERRORS
+
+Hey! @strong{The above document had some coding errors, which are explained below:}
+
+@table @asis
+@item Around line 1803:
+@anchor{Texinfo::Convert::Converter Around line 1803:}
+
+'=item' outside of any '=over'
+
+@end table
 

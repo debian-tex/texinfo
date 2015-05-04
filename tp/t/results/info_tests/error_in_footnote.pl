@@ -713,40 +713,40 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'error_in_footnote'} = [
   {
-    'file_name' => '',
     'error_line' => ':9: warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
 ',
-    'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 9,
     'macro' => '',
-    'line_nr' => 9
+    'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':9: warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
 ',
-    'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 9,
     'macro' => '',
-    'line_nr' => 9
+    'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':9: warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
 ',
-    'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 9,
     'macro' => '',
-    'line_nr' => 9
+    'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':11: warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
 ',
-    'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 11,
     'macro' => '',
-    'line_nr' => 11
+    'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
+    'type' => 'warning'
   }
 ];
 

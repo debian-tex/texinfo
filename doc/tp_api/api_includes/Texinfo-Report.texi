@@ -41,18 +41,18 @@ Texinfo::Report - Error storing and string translations for Texinfo modules
 @node Texinfo::Report DESCRIPTION
 @section DESCRIPTION
 
-The Texinfo::Report module helps with string translations and errors 
-handling.  It is used by Texinfo modules, Texinfo::Parser and 
+The Texinfo::Report module helps with string translations and error 
+handling.  It is used by the Texinfo modules Texinfo::Parser and 
 Texinfo::Convert::Converter.  To use this module, the usual way is
-to inherit Texinfo::Report methods and initialize Texinfo::Report
-variables for a @emph{$converter} object, by calling 
+to inherit Texinfo::Report methods and initialize the Texinfo::Report
+variables for a @emph{$converter} object. This is done by calling 
 @code{Texinfo::Report::new()} on the @emph{$converter} object.  This is done by 
 Texinfo::Convert::Converter, for instance, so every module that inherits
 Texinfo::Convert::Converter can automatically use the Texinfo::Report
-methods in an object oriented way.
+methods in an object-oriented way.
 
-Besides the @code{new} method, @code{gdt} is used for strings translations, 
-@code{errors} to report errors and the other methods to store errors
+Besides the @code{new} method, @code{gdt} is used for string translations, 
+@code{errors} for reporting errors, and the other methods to store errors
 (and warnings).
 
 @node Texinfo::Report METHODS
@@ -80,13 +80,13 @@ translation.  @emph{$replaced_substrings} is an optional
 hash reference specifying some 
 substitution to be done after the translation.  The key of 
 the @emph{$replaced_substrings} hash reference identifies what is to 
-be substituted, the value is some string, texinfo tree or array content 
+be substituted, and the value is some string, texinfo tree or array content 
 that is substituted in the resulting texinfo tree.
 In the string to be translated word in brace matching keys of 
 @emph{$replaced_substrings} are replaced.
 
 @emph{$mode} is an optional string which may modify how the function
-behave.  The possible values are
+behaves.  The possible values are
 
 @table @asis
 @item translated_text
@@ -121,13 +121,13 @@ encoding and documentlanguage.  More precisely,
 @code{$converter->@{'encoding_name'@}}, @code{$converter->@{'perl_encoding'@}}
 and @code{$converter->get_conf('documentlanguage')} are used.
 
-@code{gdt} use a gettext-like infrastructure to retrieve the 
+@code{gdt} uses a gettext-like infrastructure to retrieve the 
 translated strings, using the @emph{texinfo_document} domain.
 
 @end table
 
 The errors collected are available through the @code{errors} method, the other
-methods allow to register errors and warnings.
+methods allow registering errors and warnings.
 
 @table @asis
 @item ($error_warnings_list, $error_count) = errors ($converter)

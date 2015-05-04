@@ -1,7 +1,7 @@
-# $Id: Makefile.am 5295 2013-08-10 15:33:48Z pertusus $
+# $Id: Makefile.am 6141 2015-02-22 23:35:32Z karl $
 # Makefile.am for texinfo/tp.
 #
-# Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -177,6 +177,10 @@ T_LOG_COMPILER = $(PERL)
 AM_T_LOG_FLAGS = -w
 AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir;
 
+# just a convenience for running these additional tests.
+long-checks:
+	cd tests && $(MAKE) long-checks
+
 maintenance_files = \
   maintain/all_tests.sh \
   maintain/change_perl_modules_version.sh \
@@ -208,6 +212,9 @@ EXTRA_DIST = \
   $(perl_specific_files) \
   maintain/lib
 
+# MANIFEST is used for the Perl module.
+# maintain/MANIFEST_generated_files is used for dist(check).
+# They are made by maintain/prepare_perl_module_files.sh.
 MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 	LC_ALL=C; export LC_ALL; LANGUAGE=C; export LANGUAGE; \
 	echo "$(dist_modules_DATA) $(dist_converters_DATA)" \
@@ -218,6 +225,14 @@ MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 	 | sed 's/  */\n/g' \
 	 | cat - $(srcdir)/maintain/MANIFEST_generated_files \
 	 | sort >$@
+
+# template.pod is the basis for the .pm documentation, and the script
+# invoked here updates them; to be run when template.pod changes.
+# 
+# If we ever make that documentation more extensive, the .pm doc could
+# (and probably should) just be maintained separately, by hand.
+do-pm-doc:
+	./maintain/regenerate_converters_documentation.sh
 
 maintain/catalog.xml: maintain/catalog.xml.in Makefile
 	$(MKDIR_P) maintain
@@ -253,8 +268,8 @@ install-data-local:
 	fi
 
 install-exec-hook:
-	rm -f $(DESTDIR)$(bindir)/makeinfo
-	-$(LN_S) texi2any $(DESTDIR)$(bindir)/makeinfo
+	makeinfo_f=`echo makeinfo | sed -e '$(transform)'`; rm -f $(DESTDIR)$(bindir)/$$makeinfo_f
+	-makeinfo_f=`echo makeinfo | sed -e '$(transform)'`; texi2any_f=`echo texi2any| sed -e '$(transform)'`; $(LN_S) $$texi2any_f $(DESTDIR)$(bindir)/$$makeinfo_f
 
 dist-hook:
 	rm -rf `find $(distdir)/maintain/lib -name .svn`

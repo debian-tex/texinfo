@@ -1,4 +1,4 @@
-# Copyright 2005, 2006, 2007, 2008, 2011, 2012, 2013
+# Copyright 2005, 2006, 2007, 2008, 2011, 2012, 2013, 2014, 2015
 # Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
@@ -16,10 +16,12 @@ info/filesys.c
 info/footnotes.c
 info/footnotes.h
 info/indices.c
+info/indices.h
+info/info-utils.c
 info/info.c
 info/infodoc.c
-info/infokey.c
 info/infomap.c
+info/infokey.c
 info/m-x.c
 info/makedoc.c
 info/nodemenu.c
@@ -30,6 +32,7 @@ info/tilde.c
 info/variables.c
 info/window.c
 install-info/install-info.c
+texindex/ti.twjr
 tp/DebugTexinfo/DebugTree.pm
 tp/Texinfo/Common.pm
 tp/Texinfo/Convert/Converter.pm
@@ -46,4 +49,3 @@ tp/init/chm.pm
 tp/init/latex2html.pm
 tp/init/tex4ht.pm
 tp/texi2any.pl
-util/texindex.c

@@ -1,7 +1,7 @@
 # @configure_input@
-# $Id: defs.in 5191 2013-02-23 00:11:18Z karl $
+# $Id: defs.in 5909 2014-11-06 17:10:58Z karl $
 # 
-# Copyright 2008, 2012 Free Software Foundation, Inc.
+# Copyright 2008, 2012, 2013, 2014 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,7 +22,8 @@ SHELL='@SHELL@'
 export SHELL
 
 # unsetting an already-unset variable fails with BSD sh.
-CDPATH=; unset CDPATH
+CDPATH=
+unset CDPATH
 
 # Ensure we are running from the right directory.
 if test ! -f ./defs; then
@@ -39,11 +40,11 @@ if test -z "$srcdir"; then
 fi
 
 # Two variables we use in the test scripts:
-top_builddir=@top_builddir@
+top_builddir='@top_builddir@'
 install_info=${top_builddir}/install-info/ginstall-info
 export install_info
 #
-top_srcdir=@top_srcdir@
+top_srcdir='@top_srcdir@'
 testdir=${top_srcdir}/install-info/tests
 export testdir
 
@@ -76,10 +77,10 @@ findprog ()
     # (`test -x' is not enough, because it can also be true for directories.)
     # We have to try this both for $1 and $1.exe.
     #
-    # Note: On Cygwin and DJGPP, `test -x' also looks for .exe.  On Cygwin,
-    # also `test -f' has this enhancement, but not on DJGPP.  (Both are
-    # design decisions, so there is little chance to make them consistent.)
-    # Thusly, it seems to be difficult to make use of these enhancements.
+    # On Cygwin and DJGPP, `test -x' also looks for .exe.  On Cygwin,
+    # also `test -f' has this enhancement, but not on DJGPP.  Both are
+    # design decisions, so there is little chance to make them consistent.
+    # So we must check for .exe explicitly.
     #
     if   { test -f "$dir/$1"     && test -x "$dir/$1"; } \
       || { test -f "$dir/$1.exe" && test -x "$dir/$1.exe"; }; then
@@ -94,8 +95,8 @@ if findprog mktemp; then :; else
 # Our mktemp substitute doesn't need all the features of real mktemp;
 # our tests here only use it in the most simplistic way, to create a
 # temp file.  The autoconf manual suggests doing it in a temporary
-# directory (mode 700).  ($RANDOM may expand to nothing, but that's ok.)
-# We do not even bother to expand the X's in the template ...
+# directory (mode 700), so do that.  ($RANDOM may expand to nothing, but
+# that's ok.) We do not even bother to expand the X's in the template ...
 mktemp ()
 {
   dir=$TMPDIR/iimktemp$$-$RANDOM

@@ -1,8 +1,8 @@
 /* dir.c -- how to build a special "dir" node from "localdir" files.
-   $Id: dir.c 5337 2013-08-22 17:54:06Z karl $
+   $Id: dir.c 6182 2015-03-07 19:36:01Z gavin $
 
    Copyright 1993, 1997, 1998, 2004, 2007, 2008, 2009, 2012,
-   2013 Free Software Foundation, Inc.
+   2013, 2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -28,74 +28,64 @@
    with the addition of the menus of every file named in the array
    dirs_to_add which are found in INFOPATH. */
 
-static void add_menu_to_file_buffer (char *contents, size_t size,
-				     FILE_BUFFER *fb);
-static void insert_text_into_fb_at_binding (FILE_BUFFER *fb,
-    SEARCH_BINDING *binding, char *text, int textlen);
-void maybe_build_dir_node (char *dirname);
+static void add_menu_to_node (char *contents, size_t size, NODE *node);
+static void insert_text_into_node (NODE *node, long start,
+    char *text, int textlen);
 
 static char *dirs_to_add[] = {
   "dir", "localdir", NULL
 };
 
+static NODE *dir_node = 0;
 
-/* Return zero if the file represented in the stat structure TEST has
-   already been seen, nonzero otherwise.  */
+static NODE *build_dir_node (void);
 
-typedef struct
+/* Return composite directory node.  Return value should be freed by caller,
+   but none of its fields should be. */
+NODE *
+get_dir_node (void)
 {
-  dev_t device;
-  ino_t inode;
-} dir_file_list_entry_type;
+  NODE *node;
 
-static int
-new_dir_file_p (struct stat *test)
-{
-  static unsigned dir_file_list_len = 0;
-  static dir_file_list_entry_type *dir_file_list = NULL;
-  unsigned i;
-  
-  for (i = 0; i < dir_file_list_len; i++)
-    {
-      dir_file_list_entry_type entry;
-      entry = dir_file_list[i];
-      if (entry.device == test->st_dev && entry.inode == test->st_ino
-	  /* On MS-Windows, `stat' returns zero as the inode, so we
-	     effectively disable this optimization for that OS.  */
-	  && entry.inode != 0)
-        return 0;
-    }
-  
-  dir_file_list_len++;
-  dir_file_list = xrealloc (dir_file_list, 
-                        dir_file_list_len * sizeof (dir_file_list_entry_type));
-  dir_file_list[dir_file_list_len - 1].device = test->st_dev;
-  dir_file_list[dir_file_list_len - 1].inode = test->st_ino;
-  return 1;
+  if (!dir_node)
+    dir_node = build_dir_node ();
+
+  node = xmalloc (sizeof (NODE));
+  *node = *dir_node;
+
+  /* Allow the node to be passed to free_history_node. */
+  if (node->flags & N_WasRewritten)
+    node->flags &= ~N_WasRewritten;
+  node->references = info_copy_references (node->references);
+  node->nodename = xstrdup (node->nodename);
+  return node;
 }
 
-
-void
-maybe_build_dir_node (char *dirname)
+static NODE *
+build_dir_node (void)
 {
-  int path_index, update_tags;
+  int path_index;
   char *this_dir;
-  FILE_BUFFER *dir_buffer = info_find_file (dirname);
+  NODE *node;
 
-  /* If there is no "dir" in the current info path, we cannot build one
-     from nothing. */
-  if (!dir_buffer)
-    return;
+  node = info_create_node ();
+  node->nodename = xstrdup ("Top");
+  node->fullpath = xstrdup ("dir");
+  node->contents = xstrdup (
 
-  /* If this directory has already been built, return now. */
-  if (dir_buffer->flags & N_CannotGC)
-    return;
+"File: dir,	Node: Top,	This is the top of the INFO tree.\n"
+"\n"
+"This is the Info main menu (aka directory node).\n"
+"A few useful Info commands:\n"
+"\n"
+"  'q' quits;\n"
+"  '?' lists all Info commands;\n"
+"  'h' starts the Info tutorial;\n"
+"  'mTexinfo RET' visits the Texinfo manual, etc.\n"
 
-  /* Initialize the list we use to avoid reading the same dir file twice
-     with the dir file just found.  */
-  new_dir_file_p (&dir_buffer->finfo);
-  
-  update_tags = 0;
+  );
+
+  node->nodelen = strlen (node->contents);
 
   /* Using each element of the path, check for one of the files in
      DIRS_TO_ADD.  Do not check for "localdir.info.Z" or anything else.
@@ -116,7 +106,6 @@ maybe_build_dir_node (char *dirname)
           tilde_expanded_dirname = tilde_expand_word (this_dir);
           if (tilde_expanded_dirname != this_dir)
             {
-              free (this_dir);
               this_dir = tilde_expanded_dirname;
             }
         }
@@ -137,8 +126,7 @@ maybe_build_dir_node (char *dirname)
 
           statable = (stat (fullpath, &finfo) == 0);
 
-          /* Only add this file if we have not seen it before.  */
-          if (statable && S_ISREG (finfo.st_mode) && new_dir_file_p (&finfo))
+          if (statable && S_ISREG (finfo.st_mode))
             {
               size_t filesize;
 	      int compressed;
@@ -146,29 +134,26 @@ maybe_build_dir_node (char *dirname)
                                                        &finfo, &compressed);
               if (contents)
                 {
-                  update_tags++;
-                  add_menu_to_file_buffer (contents, filesize, dir_buffer);
+                  add_menu_to_node (contents, filesize, node);
                   free (contents);
                 }
             }
 
           free (fullpath);
         }
-      free (this_dir);
     }
 
-  if (update_tags)
-    build_tags_and_nodes (dir_buffer);
-
-  /* Flag that the dir buffer has been built. */
-  dir_buffer->flags |= N_CannotGC;
+  {
+    node->flags |= (N_IsDir | N_IsInternal);
+    scan_node_contents (node, 0, 0);
+  }
+  return node;
 }
 
-/* Given CONTENTS and FB (a file buffer), add the menu found in CONTENTS
-   to the menu found in FB->contents.  Second argument SIZE is the total
-   size of CONTENTS. */
+/* Given CONTENTS and NODE, add the menu found in CONTENTS to the menu
+   found in NODE->contents.  SIZE is the total size of CONTENTS. */
 static void
-add_menu_to_file_buffer (char *contents, size_t size, FILE_BUFFER *fb)
+add_menu_to_node (char *contents, size_t size, NODE *node)
 {
   SEARCH_BINDING contents_binding, fb_binding;
   long contents_offset, fb_offset;
@@ -178,12 +163,12 @@ add_menu_to_file_buffer (char *contents, size_t size, FILE_BUFFER *fb)
   contents_binding.end = size;
   contents_binding.flags = S_FoldCase | S_SkipDest;
 
-  fb_binding.buffer = fb->contents;
+  fb_binding.buffer = node->contents;
   fb_binding.start = 0;
-  fb_binding.end = fb->filesize;
+  fb_binding.end = node->nodelen;
   fb_binding.flags = S_FoldCase | S_SkipDest;
 
-  /* Move to the start of the menus in CONTENTS and FB. */
+  /* Move to the start of the menus in CONTENTS and NODE. */
   if (search_forward (INFO_MENU_LABEL, &contents_binding, &contents_offset)
       != search_success)
     /* If there is no menu in CONTENTS, quit now. */
@@ -194,39 +179,18 @@ add_menu_to_file_buffer (char *contents, size_t size, FILE_BUFFER *fb)
      and newline characters. */
   contents_offset += skip_whitespace_and_newlines (contents + contents_offset);
 
-  /* If there is no menu in FB, make one. */
+  /* If there is no menu in NODE, make one. */
   if (search_forward (INFO_MENU_LABEL, &fb_binding, &fb_offset)
       != search_success)
     {
-      /* Find the start of the second node in this file buffer.  If there
-         is only one node, we will be adding the contents to the end of
-         this node. */
-      fb_offset = find_node_separator (&fb_binding);
+      fb_binding.start = node->nodelen;
 
-      /* If not even a single node separator, give up. */
-      if (fb_offset == -1)
-        return;
+      insert_text_into_node
+        (node, fb_binding.start, INFO_MENU_LABEL, strlen (INFO_MENU_LABEL));
 
-      fb_binding.start = fb_offset;
-      fb_binding.start +=
-        skip_node_separator (fb_binding.buffer + fb_binding.start);
-
-      /* Try to find the next node separator. */
-      fb_offset = find_node_separator (&fb_binding);
-
-      /* If found one, consider that the start of the menu.  Otherwise, the
-         start of this menu is the end of the file buffer (i.e., fb->size). */
-      if (fb_offset != -1)
-        fb_binding.start = fb_offset;
-      else
-        fb_binding.start = fb_binding.end;
-
-      insert_text_into_fb_at_binding
-        (fb, &fb_binding, INFO_MENU_LABEL, strlen (INFO_MENU_LABEL));
-
-      fb_binding.buffer = fb->contents;
+      fb_binding.buffer = node->contents;
       fb_binding.start = 0;
-      fb_binding.end = fb->filesize;
+      fb_binding.end = node->nodelen;
       if (search_forward (INFO_MENU_LABEL, &fb_binding, &fb_offset)
 	  != search_success)
         abort ();
@@ -234,7 +198,7 @@ add_menu_to_file_buffer (char *contents, size_t size, FILE_BUFFER *fb)
 
   /* CONTENTS_OFFSET and FB_OFFSET point to the starts of the menus that
      appear in their respective buffers.  Add the remainder of CONTENTS
-     to the end of FB's menu. */
+     to the end of NODE's menu. */
   fb_binding.start = fb_offset;
   fb_offset = find_node_separator (&fb_binding);
   if (fb_offset != -1)
@@ -262,32 +226,90 @@ add_menu_to_file_buffer (char *contents, size_t size, FILE_BUFFER *fb)
     else
       {
         /* Do it the hard way. */
-        insert_text_into_fb_at_binding (fb, &fb_binding, "\n\n", 2);
+        insert_text_into_node (node, fb_binding.start, "\n\n", 2);
         fb_binding.start += 2;
       }
   }
 
   /* Insert the new menu. */
-  insert_text_into_fb_at_binding
-    (fb, &fb_binding, contents + contents_offset, size - contents_offset);
+  insert_text_into_node
+    (node, fb_binding.start, contents + contents_offset, size - contents_offset);
 }
 
 static void
-insert_text_into_fb_at_binding (FILE_BUFFER *fb,
-    SEARCH_BINDING *binding, char *text, int textlen)
+insert_text_into_node (NODE *node, long start, char *text, int textlen)
 {
   char *contents;
-  long start, end;
+  long end;
 
-  start = binding->start;
-  end = fb->filesize;
+  end = node->nodelen;
 
-  contents = xmalloc (fb->filesize + textlen + 1);
-  memcpy (contents, fb->contents, start);
+  contents = xmalloc (node->nodelen + textlen + 1);
+  memcpy (contents, node->contents, start);
   memcpy (contents + start, text, textlen);
-  memcpy (contents + start + textlen, fb->contents + start, end - start);
-  free (fb->contents);
-  fb->contents = contents;
-  fb->filesize += textlen;
-  fb->finfo.st_size = fb->filesize;
+  memcpy (contents + start + textlen, node->contents + start, end - start + 1);
+  free (node->contents);
+  node->contents = contents;
+  node->nodelen += textlen;
 }
+
+/* Return directory entry.  Return value should not be freed or modified. */
+REFERENCE *
+lookup_dir_entry (char *label, int sloppy)
+{
+  REFERENCE *entry;
+
+  if (!dir_node)
+    dir_node = build_dir_node ();
+
+  entry = info_get_menu_entry_by_label (dir_node, label, sloppy);
+
+  return entry;
+}
+
+/* Look up entry in "dir" and "localdir" in search directory.  Return
+   value is a pointer to a newly allocated REFERENCE. */
+REFERENCE *
+dir_entry_of_infodir (char *label, char *searchdir)
+{
+  int da_index;
+  char *dir_filename;
+  char *dir_fullpath;
+
+  struct stat dummy;
+  char *entry_fullpath;
+
+  NODE *dir_node;
+  REFERENCE *entry;
+
+  for (da_index = 0; dir_filename = dirs_to_add[da_index]; da_index++)
+    {
+      dir_fullpath = info_add_extension (searchdir, dir_filename, &dummy);
+      if (!dir_fullpath)
+        continue;
+
+      dir_node = info_get_node (dir_fullpath, "Top");
+      free (dir_fullpath);
+      entry = info_get_menu_entry_by_label (dir_node, label, 1);
+      if (!entry || !entry->filename)
+        {
+          free_history_node (dir_node);
+          continue;
+          /* A dir entry with no filename is unlikely, but not impossible. */
+        }
+
+      entry = info_copy_reference (entry);
+      entry_fullpath = info_add_extension (searchdir, entry->filename, &dummy);
+      if (entry_fullpath)
+        {
+          free (entry->filename);
+          entry->filename = entry_fullpath;
+        }
+
+      free_history_node (dir_node);
+      return entry;
+    }
+  return 0;
+}
+
+

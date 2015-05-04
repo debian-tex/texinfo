@@ -1,20 +1,21 @@
-$Id: README 5191 2013-02-23 00:11:18Z karl $
+$Id: README 6236 2015-05-02 23:15:38Z karl $
 texinfo/tp/tests/README
 
-  Copyright (C) 2010, 2012 Free Software Foundation, Inc.
+  Copyright 2010, 2011, 2012, 2013, 2014, 2015
+  Free Software Foundation, Inc.
 
   Copying and distribution of this README file, with or without
   modification, are permitted in any medium without royalty provided the
   copyright notice and this notice are preserved.
 
-Files anywhere within the tests/ subdirectory which have no other
-copyright notice are hereby placed in the public domain.
+Files anywhere within the texinfo/tp/tests/ subdirectory which have no
+other copyright notice are hereby placed in the public domain.
 
 
 Prerequisites
 =============
 To run this testsuite, sed, awk, diff (with -u) are used. 
-For LaTeX2HTML tests (not run in the default case) mktemp 
+For LaTeX2HTML tests (not run by default), mktemp 
 understanding the -d option is also required.
 
 Some tests may also require a case insensitive filesystem.
@@ -22,30 +23,32 @@ Some tests may also require a case insensitive filesystem.
 
 Running the testsuite
 =====================
-This testsuite can be run 
+This testsuite can be run one of the following ways:
 
-* using the makefile rules: check for the base tests, long-checks for 
-  the long tests, or all-checks for both.
+* Using the makefile rules: "make check" (in this directory) for the 
+base tests, "make long-checks" for the long tests, or "make all-checks" 
+for both.
 
-* using ./parser_tests.sh with the list of directories in argument one 
-  want to run the tests in. 
+* Using ./parser_tests.sh with the directories one want to run the tests 
+in given as arguments 
 
-* by going in one directory and running ../run_parser_all.sh, like
+* By going into one directory and running ../run_parser_all.sh, like
 $ cd formatting
 $ ../run_parser_all.sh
-* by going in one directory and running one specific test, like
+
+* By going into one directory and running one specific test, like
 $ cd formatting
 $ ../run_parser_all.sh cond
 (see below for info on how test names are specified).
 
-The test results are in the out_parser directories; the reference results are
-in res_parser directories; there are one or two out and res directories, 
-out_parser/ and res_parser/ for the html results in the texi2html style, 
-out_parser_info and res_parser_info for the info output, out_parser_html
-and res_parser_html for html output with the default texi2any style. 
-Diffs are put in diffs. 
+The test results are in the out_parser directories; the reference
+results are in res_parser directories.  There can be these pairs.
+- out_parser/ and res_parser/ for html output in texi2html style;
+- out_parser_html/ and res_parser_html/ for html output in texi2any style;
+- out_parser_info/ and res_parser_info/ for info results;
+and diffs are put in the diffs/ subdir.
 
-If a test failed,
+If a test failed when run via parser_tests.sh or run_parser_all.sh, then
  F: a_test_directory 
 is printed, if there is a diff with the references, a
  D: a_test_directory
@@ -59,17 +62,30 @@ by a ok if there was a failure.
 
 The test results are in a directory below the out directories. This 
 directory name can be considered as the test name. Let's call it a_test
-for the remaining of the explanation. The stderr output is in 
-out_parser/a_test/a_test.2, stdout output is in out_parser/a_test/a_test.1. 
-All the commands called are output in tests.log.
+for the remainder of the explanation. The stderr output is in 
+out_parser/a_test/a_test.2, stdout output is in 
+out_parser/a_test/a_test.1.  All the commands called are output in 
+tests.log.
 
-giving -copy in argument to parser_tests.sh or ../run_parser_all.sh will 
-cause the references to be regenerated. This can also be achieved with 
-the copy-tests make target.
+Giving -copy as the first argument to ../run_parser_all.sh or
+parser_tests.sh (or long_tests.sh or tex_html_tests.sh, which need
+environment variables LONG_TESTS resp. TEX_HTML_TESTS, or ALL_TESTS, to
+be set, but otherwise operate similarly) will cause the references to be
+regenerated.  For example, to update the references for one particular
+test:
+
+$ cd formatting
+$ ../run_parser_all.sh -copy a_test
+The copy-* make targets update all the references for various large sets
+of tests via this method.
+
+Exception: in the many_input_files subdirectory, the *parser*.sh scripts
+can't be used for updating.  Instead, the Makefile's copy-tests and
+copy-tex-html targets do it directly.
 
 
 TeX4ht and LaTeX2HTML tests
-===========================
+---------------------------
 The tex4ht and latex2HTML related tests are not run automatically, as
 some test results involving latex2HTML or tex4ht depend on the setup and 
 version of these tools.
@@ -84,20 +100,25 @@ the directory is passed through on the command line.
 
 Tests specification
 ===================
-Test runs are driven by the content of the tests-parser.txt file. It is 
-a line oriented file. A # starts a comment. Each line describes a test.
-The first word on the line is the test name which corresponds also with the
+Test runs are driven by the content of the tests-parser.txt files in
+each subdirectory. This is a line oriented file. A # starts a
+comment, except that the very first line of the file can be, e.g.,
+# formats :html
+which says which formats to generate.
+
+Otherwise, each non-empty non-comment line describes a test.  The first
+word on the line is the test name which corresponds also with the
 resulting directory (what we called a_test above).  It is followed by
 the source manual name. The source manual name has to have the .texi
-extension. Optionnally additional arguments can be given on the
-remaining of the line.
+extension.  Optionally, additional arguments can be given on the rest of
+the line.
 
 So, for example, the line
 
 a_test manual.texi
 
-specifies that for the a_test test, the file manual.texi is processed and
-results are put are put in the a_test directory.  The line:
+specifies that for the test a_test, the file manual.texi is processed
+and results are put are put in the a_test directory.  The line:
 
 a_test_split_chapter manual.texi --split chapter
 
@@ -118,11 +139,43 @@ manual.texi will have macros expanded and ignored regions removed.
 
 
 Common .texi
-============
+------------
 A common .texi file should be in the top-level directory (there is such an
 example with coverage_macro.texi).
 
 
 Init files
-==========
+----------
 Init files are searched for in ../t/init/.
+
+
+Creating a new test
+===================
+- choose the subdir here for the new test.  Each subdir only generates
+output in one or two formats (according to the `formats' line in
+its tests-parser.txt), so if you want to test a particular output
+format, use the right place.
+
+- add the line to subdir/tests-parser.txt as described above.
+- most probably, create the needed subdir/*.texi file
+- cd subdir; ../run_parser_all.sh newtest
+
+This will create subdir/out_parser*/newtest/ with the test results
+(as explained above), as well as stdout in newtest.1 and stderr in newtest.2.
+Look carefully to be sure they are as they should be.
+
+For XML output, perhaps check validity using the commands in tp/TODO.
+
+When things look good, use the -copy option to create the
+subdir/res_parser*/newtest/ subdirs and copy the output files there.
+
+The test run will be logged in subdir/test_log/newtest.log,
+including the exact invocation of texi2any, which can alter anything.
+For even more, use sh -vx to show exactly what run_parser_all is doing.
+
+When satisfied, add the .texi in subdir/Makefile.am.
+
+Of course commit all the files and try a make check (or long-checks,
+as needed) afterward to verify it gets run, and passes.
+
+See tp/t/README for info about those tests.

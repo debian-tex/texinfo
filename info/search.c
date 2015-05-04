@@ -1,8 +1,8 @@
 /* search.c -- searching large bodies of text.
-   $Id: search.c 5337 2013-08-22 17:54:06Z karl $
+   $Id: search.c 6185 2015-03-09 19:34:10Z gavin $
 
-   Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2008, 2009, 2011, 2013
-   Free Software Foundation, Inc.
+   Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2008, 2009, 2011, 2013,
+   2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,8 +22,9 @@
 #include "info.h"
 #include <regex.h>
 
+#include "session.h"
+#include "info-utils.h"
 #include "search.h"
-#include "nodes.h"
 
 /* The search functions take two arguments:
 
@@ -35,28 +36,16 @@
    They return a long, which is the offset from the start of the buffer
    at which the match was found.  An offset of -1 indicates failure. */
 
-/* A function which makes a binding with buffer and bounds. */
-SEARCH_BINDING *
-make_binding (char *buffer, long int start, long int end)
-{
-  SEARCH_BINDING *binding;
-
-  binding = xmalloc (sizeof (SEARCH_BINDING));
-  binding->buffer = buffer;
-  binding->start = start;
-  binding->end = end;
-  binding->flags = 0;
-
-  return binding;
-}
-
 /* Make a copy of BINDING without duplicating the data. */
 SEARCH_BINDING *
 copy_binding (SEARCH_BINDING *binding)
 {
   SEARCH_BINDING *copy;
 
-  copy = make_binding (binding->buffer, binding->start, binding->end);
+  copy = xmalloc (sizeof (SEARCH_BINDING));
+  copy->buffer = binding->buffer;
+  copy->start = binding->start;
+  copy->end = binding->end;
   copy->flags = binding->flags;
   return copy;
 }
@@ -84,198 +73,138 @@ search (char *string, SEARCH_BINDING *binding, long *poff)
   return result;
 }
 
-/* Search forwards or backwards for anything matching the regexp in the text
-   delimited by BINDING. The search is forwards if BINDING->start is greater
-   than BINDING->end.
-
-   If PEND is specified, it receives a copy of BINDING at the end of a
-   succeded search.  Its START and END fields contain bounds of the found
-   string instance. 
-*/
-enum search_result
-regexp_search (char *regexp, SEARCH_BINDING *binding, 
-	       long *poff, SEARCH_BINDING *pend)
+/* Expand \n and \t in regexp to newlines and tabs */
+static char *
+regexp_expand_newlines_and_tabs (char *regexp)
 {
-  static char *previous_regexp = NULL;
-  static char *previous_content = NULL;
-  static int was_insensitive = 0;
-  static regex_t preg;
-  static regmatch_t *matches;
-  static int match_alloc = 0;
-  static int match_count = 0;
-  regoff_t pos;
+  char *unescaped_regexp = xmalloc (1 + strlen (regexp));
+  char *p, *q;
 
-  if (previous_regexp == NULL
-      || ((binding->flags & S_FoldCase) != was_insensitive)
-      || (strcmp (previous_regexp, regexp) != 0))
+  for (p = regexp, q = unescaped_regexp; *p != '\0'; p++, q++)
     {
-      /* need to compile a new regexp */
-      int result;
-      char *unescaped_regexp;
-      char *p, *q;
-
-      previous_content = NULL;
-
-      if (previous_regexp != NULL)
-        {
-          free (previous_regexp);
-          previous_regexp = NULL;
-          regfree (&preg);
-        }
-
-      was_insensitive = binding->flags & S_FoldCase;
-
-      /* expand the \n and \t in regexp */
-      unescaped_regexp = xmalloc (1 + strlen (regexp));
-      for (p = regexp, q = unescaped_regexp; *p != '\0'; p++, q++)
-        {
-          if (*p == '\\')
-            switch(*++p)
-              {
-              case 'n':
-                *q = '\n';
-                break;
-              case 't':
-                *q = '\t';
-                break;
-              case '\0':
-                *q = '\\';
-                p--;
-                break;
-              default:
-                *q++ = '\\';
-                *q = *p;
-                break;
-              }
-          else
+      if (*p == '\\')
+        switch(*++p)
+          {
+          case 'n':
+            *q = '\n';
+            break;
+          case 't':
+            *q = '\t';
+            break;
+          case '\0':
+            *q = '\\';
+            p--;
+            break;
+          default:
+            *q++ = '\\';
             *q = *p;
-        }
-      *q = '\0';
-
-      result = regcomp (&preg, unescaped_regexp,
-                       REG_EXTENDED|
-                       REG_NEWLINE|
-                       (was_insensitive ? REG_ICASE : 0));
-      free (unescaped_regexp);
-
-      if (result != 0)
-        {
-          int size = regerror (result, &preg, NULL, 0);
-          char *buf = xmalloc (size);
-          regerror (result, &preg, buf, size);
-          info_error (_("regexp error: %s"), buf);
-          return search_failure;
-        }
-
-      previous_regexp = xstrdup(regexp);
-    }
-
-  if (previous_content != binding->buffer)
-    {
-      /* new buffer to search in, let's scan it */
-      regoff_t start = 0, end;
-      size_t content_length;
-      char saved_char;
-
-      if (binding->start < binding->end)
-	{
-	  start = binding->start;
-	  end = binding->end;
-	}
+            break;
+          }
       else
-	{
-	  start = binding->end;
-	  end = binding->start;
-	}
-      content_length = end - start + 1;
-      
-      previous_content = binding->buffer;
-      saved_char = previous_content[content_length-1];
-      previous_content[content_length-1] = '\0';
-
-      for (match_count = 0; start < content_length; )
-        {
-          int result = 0;
-          if (match_count >= match_alloc)
-            {
-              /* match list full. Initially allocate 256 entries, then double
-                 every time we fill it */
-              match_alloc = (match_alloc > 0 ? match_alloc * 2 : 256);
-              matches = xrealloc (matches,
-				  match_alloc * sizeof(regmatch_t));
-            }
-
-          result = regexec (&preg, &previous_content[start],
-                            1, &matches[match_count], 0);
-          if (result == 0)
-            {
-              if (matches[match_count].rm_eo == 0)
-                {
-                  /* ignore empty matches */
-                  start++;
-                }
-              else
-                {
-                  matches[match_count].rm_so += start;
-                  matches[match_count].rm_eo += start;
-                  start = matches[match_count++].rm_eo;
-                }
-            }
-          else
-            {
-              break;
-            }
-        }
-      previous_content[content_length-1] = saved_char;
+        *q = *p;
     }
+  *q = '\0';
 
-  pos = binding->start;
-  if (pos > binding->end)
+  return unescaped_regexp;
+}
+
+/* Escape any special characters in SEARCH_STRING. */
+static char *
+regexp_escape_string (char *search_string)
+{
+  char *special_chars = "\\[]^$.*(){}|+?";
+  char *p, *q;
+
+  char *escaped_string = xmalloc (strlen (search_string) * 2 + 1);
+
+  for (p = search_string, q = escaped_string; *p != '\0'; )
     {
-      /* searching backward */
-      int i;
-      for (i = match_count - 1; i >= 0; i--)
+      if (strchr (special_chars, *p))
         {
-          if (matches[i].rm_so <= pos)
-	    {
-	      if (pend)
-		{
-		  pend->buffer = binding->buffer;
-		  pend->flags = binding->flags;
-		  pend->start = matches[i].rm_so;
-		  pend->end = matches[i].rm_eo;
-		}
-	      *poff = matches[i].rm_so;
-	      return search_success;
-	    }
+          *q++ = '\\';
         }
+      *q++ = *p++;
     }
+
+  *q = '\0';
+
+  return escaped_string;
+}
+
+
+/* Search BUFFER for REGEXP.  Pass back the list of matches in MATCHES. */
+enum search_result
+regexp_search (char *regexp, int is_literal, int is_insensitive,
+               char *buffer, size_t buflen,
+               regmatch_t **matches_out, size_t *match_count_out)
+{
+  regmatch_t *matches = 0; /* List of found matches. */
+  size_t match_alloc = 0;
+  size_t match_count;
+
+  regex_t preg; /* Compiled pattern buffer for regexp. */
+  int result;
+  char *regexp_str;
+  char saved_char;
+  regoff_t offset = 0;
+
+  if (!is_literal)
+    regexp_str = regexp_expand_newlines_and_tabs (regexp);
   else
+    regexp_str = regexp_escape_string (regexp);
+
+  result = regcomp (&preg, regexp_str,
+                    REG_EXTENDED | REG_NEWLINE
+                    | (is_insensitive ? REG_ICASE : 0));
+  free (regexp_str);
+
+  if (result != 0)
     {
-      /* searching forward */
-      int i;
-      for (i = 0; i < match_count; i++)
-        {
-          if (matches[i].rm_so >= pos)
-            {
-	      if (pend)
-		{
-		  pend->buffer = binding->buffer;
-		  pend->flags = binding->flags;
-		  pend->start = matches[i].rm_so;
-		  pend->end = matches[i].rm_eo;
-		}
-              if (binding->flags & S_SkipDest)
-                *poff = matches[i].rm_eo;
-              else
-                *poff = matches[i].rm_so;
-	      return search_success;
-            }
-        }
+      int size = regerror (result, &preg, NULL, 0);
+      char *buf = xmalloc (size);
+      regerror (result, &preg, buf, size);
+      info_error (_("regexp error: %s"), buf);
+      return search_invalid;
     }
 
-  /* not found */
-  return search_not_found;
+  saved_char = buffer[buflen];
+  buffer[buflen] = '\0';
+
+  for (match_count = 0; offset < buflen; )
+    {
+      int result = 0;
+      regmatch_t m;
+
+      result = regexec (&preg, &buffer[offset], 1, &m, REG_NOTBOL);
+      if (result == 0)
+        {
+          if (match_count == match_alloc)
+            {
+              /* The match list is full. */
+              if (match_alloc == 0)
+                match_alloc = 50;
+              matches = x2nrealloc
+                (matches, &match_alloc, sizeof matches[0]);
+            }
+
+          matches[match_count] = m;
+          matches[match_count].rm_so += offset;
+          matches[match_count].rm_eo += offset;
+          offset = matches[match_count++].rm_eo;
+
+          if (m.rm_eo == 0)
+            offset++; /* Avoid finding match again for a pattern of "$". */
+        }
+      else
+        break;
+    }
+  buffer[buflen] = saved_char;
+  regfree (&preg);
+
+  *matches_out = matches;
+  *match_count_out = match_count;
+
+  return search_success;
 }
 
 /* Search forwards for STRING through the text delimited in BINDING. */
@@ -447,6 +376,24 @@ looking_at (char *string, SEARCH_BINDING *binding)
      string was found at binding->start. */
   return search_end == binding->start;
 }
+
+/* Return non-zero if POINTER is looking at the text at STRING before an 
+   end-of-line. */
+int
+looking_at_line (char *string, char *pointer)
+{
+  int len;
+
+  len = strlen (string);
+  if (strncmp (pointer, string, len) != 0)
+    return 0;
+
+  pointer += len;
+  if (*pointer == '\n' || !strncmp (pointer, "\r\n", 2)
+      || *pointer == '\0')
+    return 1;
+  return 0;
+}
 
 /* **************************************************************** */
 /*                                                                  */
@@ -490,87 +437,6 @@ skip_non_whitespace (char *string)
   for (i = 0; string && string[i] && !whitespace (string[i]); i++);
   return i;
 }
-
-/* Return the index of the first non-node character in STRING.
-
-   The second argument instructs how to parse the node name:
-
-   PARSE_NODE_DFLT             Node name stops at LF, `,', `.', or `TAB'
-   PARSE_NODE_SKIP_NEWLINES    Node name stops at `,', `.', or `TAB'
-   PARSE_NODE_VERBATIM         Don't parse nodename
-   PARSE_NODE_START            The STRING argument is retrieved from a node
-                               start line, and therefore ends in `,' only.
-   
-   Note that if FLAG is PARSE_NODE_DFLT or PARSE_NODE_SKIP_NEWLINES, this
-   function contains quite a bit of hair to ignore periods in some special
-   cases.  This is because we here at GNU ship some info files which contain
-   nodenames that contain periods.  No such nodename can start with a period,
-   or continue with whitespace, newline, or ')' immediately following the
-   period.  If second argument NEWLINES_OKAY is non-zero, newlines should
-   be skipped while parsing out the nodename specification. */
-int
-skip_node_characters (char *string, int flag)
-{
-  register int c, i = 0;
-  int paren_seen = 0;
-  int paren = 0;
-
-  if (!string)
-    return 0;
-
-  if (flag == PARSE_NODE_VERBATIM)
-    return strlen (string);
-  
-  /* Handle special case.  This is when another function has parsed out the
-     filename component of the node name, and we just want to parse out the
-     nodename proper.  In that case, a period at the start of the nodename
-     indicates an empty nodename. */
-  if (*string == '.')
-    return 0;
-
-  if (*string == '(')
-    {
-      paren++;
-      paren_seen++;
-      i++;
-    }
-
-  for (; (c = string[i]); i++)
-    {
-      if (paren)
-        {
-          if (c == '(')
-            paren++;
-          else if (c == ')')
-            paren--;
-
-          continue;
-        }
-
-      /* If the character following the close paren is a space or period,
-         then this node name has no more characters associated with it. */
-      if (c == '\t' ||
-          c == ','  ||
-          c == INFO_TAGSEP ||
-          (!(flag == PARSE_NODE_SKIP_NEWLINES) && (c == '\n')) ||
-          ((paren_seen && string[i - 1] == ')') &&
-           (c == ' ' || c == '.')) ||
-	  (flag != PARSE_NODE_START &&
-	   (c == '.' &&
-	    (
-#if 0
-/* This test causes a node name ending in a period, like `This.', not to
-   be found.  The trailing . is stripped.  This occurs in the jargon
-   file (`I see no X here.' is a node name).  */
-           (!string[i + 1]) ||
-#endif
-	   (whitespace_or_newline (string[i + 1])) ||
-	   (string[i + 1] == ')')))))
-        break;
-    }
-  return i;
-}
-
 
 /* **************************************************************** */
 /*                                                                  */
@@ -578,29 +444,47 @@ skip_node_characters (char *string, int flag)
 /*                                                                  */
 /* **************************************************************** */
 
-/* Return the absolute position of the first occurence of a node separator in
-   BINDING-buffer.  The search starts at BINDING->start.  Return -1 if no node
-   separator was found. */
+/* Return the absolute position of the first occurence of a node separator
+   starting in BINDING->buffer between BINDING->start and BINDING->end 
+   inclusive.  Return -1 if no node separator was found. */
 long
 find_node_separator (SEARCH_BINDING *binding)
 {
   register long i;
   char *body;
+  int dir;
 
   body = binding->buffer;
+  dir = binding->start < binding->end ? 1 : -1;
 
-  /* A node is started by [^L]^_[^L]\n.  That is to say, the C-l's are
-     optional, but the DELETE and NEWLINE are not.  This separator holds
+  /* A node is started by [^L]^_[^L][\r]\n.  That is to say, the C-l's are
+     optional, but the US and NEWLINE are not.  This separator holds
      true for all separated elements in an Info file, including the tags
      table (if present) and the indirect tags table (if present). */
-  for (i = binding->start; i < binding->end - 1; i++)
-    if (((body[i] == INFO_FF && body[i + 1] == INFO_COOKIE) &&
-         (body[i + 2] == '\n' ||
-          (body[i + 2] == INFO_FF && body[i + 3] == '\n'))) ||
-        ((body[i] == INFO_COOKIE) &&
-         (body[i + 1] == '\n' ||
-          (body[i + 1] == INFO_FF && body[i + 2] == '\n'))))
-      return i;
+  i = binding->start;
+  while (1)
+    {
+      /* Note that bytes are read in order from the buffer, so if at any
+         point a null byte is encountered signifying the end of the buffer,
+         no more bytes will be read past that point. */
+      if (body[i] == INFO_COOKIE)
+        {
+          int j = i + 1;
+
+          if (body[j] == INFO_FF)
+            j++;
+          if (body[j] == '\r')
+            j++;
+
+          if (body[j] == '\n')
+            return i;
+        }
+
+      if (i == binding->end)
+        break;
+      i += dir;
+    }
+
   return -1;
 }
 
@@ -620,6 +504,9 @@ skip_node_separator (char *body)
     return 0;
 
   if (body[i] == INFO_FF)
+    i++;
+
+  if (body[i] == '\r')
     i++;
 
   if (body[i++] != '\n')
@@ -643,27 +530,40 @@ skip_line (char *string)
   return i;
 }
 
-/* Return the absolute position of the beginning of a tags table in this
-   binding starting the search at binding->start. */
+/* Return the absolute position of the beginning of a section in this file
+   whose first line is LABEL, starting the search at binding->start. */
 long
-find_tags_table (SEARCH_BINDING *binding)
+find_file_section (SEARCH_BINDING *binding, char *label)
 {
-  SEARCH_BINDING tmp_search;
+  SEARCH_BINDING s;
   long position;
+  int dir;
 
-  tmp_search.buffer = binding->buffer;
-  tmp_search.start = binding->start;
-  tmp_search.end = binding->end;
-  tmp_search.flags = S_FoldCase;
+  s.buffer = binding->buffer;
+  s.start = binding->start;
+  s.end = binding->end;
+  s.flags = S_FoldCase;
+  dir = binding->start < binding->end ? 1 : -1;
 
-  while ((position = find_node_separator (&tmp_search)) != -1 )
+  while ((position = find_node_separator (&s)) != -1 )
     {
-      tmp_search.start = position;
-      tmp_search.start += skip_node_separator (tmp_search.buffer
-          + tmp_search.start);
-
-      if (looking_at (TAGS_TABLE_BEG_LABEL, &tmp_search))
+      long offset = position;
+      offset += skip_node_separator (s.buffer + offset);
+      if (looking_at_line (label, s.buffer + offset))
         return position;
+
+      if (dir > 0)
+        {
+          s.start = offset;
+          if (s.start >= s.end)
+            break;
+        }
+      else
+        {
+          s.start = position - 1;
+          if (s.start <= s.end)
+            break;
+        }
     }
   return -1;
 }
@@ -677,39 +577,40 @@ long
 find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
 {
   long position;
-  int offset, namelen;
-  SEARCH_BINDING tmp_search;
+  int offset;
+  SEARCH_BINDING s;
 
-  namelen = strlen (nodename);
+  s.buffer = binding->buffer;
+  s.start = binding->start;
+  s.end = binding->end;
+  s.flags = 0;
 
-  tmp_search.buffer = binding->buffer;
-  tmp_search.start = binding->start;
-  tmp_search.end = binding->end;
-  tmp_search.flags = 0;
-
-  while ((position = find_node_separator (&tmp_search)) != -1)
+  while ((position = find_node_separator (&s)) != -1)
     {
-      tmp_search.start = position;
-      tmp_search.start += skip_node_separator
-        (tmp_search.buffer + tmp_search.start);
+      char *nodename_start;
+      char *read_nodename;
+      int found;
 
-      offset = string_in_line
-        (INFO_NODE_LABEL, tmp_search.buffer + tmp_search.start);
+      s.start = position;
+      s.start += skip_node_separator (s.buffer + s.start);
+
+      offset = string_in_line (INFO_NODE_LABEL, s.buffer + s.start);
 
       if (offset == -1)
         continue;
 
-      tmp_search.start += offset;
-      tmp_search.start += skip_whitespace (tmp_search.buffer + tmp_search.start);
-      offset = skip_node_characters
-        (tmp_search.buffer + tmp_search.start, PARSE_NODE_DFLT);
+      s.start += offset;
+      s.start += skip_whitespace (s.buffer + s.start); 
+      nodename_start = s.buffer + s.start;
+      read_quoted_string (nodename_start, "\n\r\t,", 0, &read_nodename);
+      if (!read_nodename)
+        return -1;
 
-      /* Notice that this is an exact match.  You cannot grovel through
-         the buffer with this function looking for random nodes. */
-       if ((offset == namelen) &&
-           (tmp_search.buffer[tmp_search.start] == nodename[0]) &&
-           (strncmp (tmp_search.buffer + tmp_search.start, nodename, offset) == 0))
-         return position;
+      found = !strcmp (read_nodename, nodename);
+      free (read_nodename);
+
+      if (found)
+        return position;
     }
   return -1;
 }

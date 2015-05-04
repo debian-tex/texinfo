@@ -151,11 +151,11 @@ $result_converted{'plaintext'}->{'indentedblock'} = '     indented block
 ';
 
 
-$result_converted{'html_text'}->{'indentedblock'} = '<div class="indentedblock">
+$result_converted{'html_text'}->{'indentedblock'} = '<blockquote class="indentedblock">
 <p>indented block
 </p>
 <p>Text
-</p></div>
+</p></blockquote>
 ';
 
 

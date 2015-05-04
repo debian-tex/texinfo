@@ -1,8 +1,8 @@
 /* footnotes.c -- Some functions for manipulating footnotes.
-   $Id: footnotes.c 5338 2013-08-22 17:58:30Z karl $
+   $Id: footnotes.c 5949 2014-12-03 17:53:45Z gavin $
 
-   Copyright 1993, 1997, 1998, 1999, 2002, 2004, 2007, 2008, 2011, 2013
-   Free Software Foundation, Inc.
+   Copyright 1993, 1997, 1998, 1999, 2002, 2004, 2007, 2008, 2011, 2013,
+   2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,16 +20,14 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
+#include "session.h"
+#include "info-utils.h"
+#include "footnotes.h"
 
 /* Nonzero means attempt to show footnotes when displaying a new window. */
 int auto_footnotes_p = 0;
 
 static char *footnote_nodename = "*Footnotes*";
-
-NODE * make_footnotes_node (NODE *node);
-
-#define FOOTNOTE_HEADER_FORMAT \
-   "*** Footnotes appearing in the node `%s' ***\n"
 
 /* Find the window currently showing footnotes. */
 static WINDOW *
@@ -52,22 +50,30 @@ find_footnotes_window (void)
 NODE *
 make_footnotes_node (NODE *node)
 {
-  NODE *fn_node, *result = NULL;
-  long fn_start;
+  NODE *fn_node, *footnotes_node = NULL, *result = NULL;
+  long fn_start = -1;
+  char *fnptr;
 
   /* Make the initial assumption that the footnotes appear as simple
      text within this windows node. */
   fn_node = node;
 
   /* See if this node contains the magic footnote label. */
-  fn_start = info_search_in_node (FOOTNOTE_LABEL, node, 0, NULL, 1, 0, 0);
+    {
+      char saved = node->contents[node->nodelen];
+      node->contents[node->nodelen] = '\0';
+      fnptr = strstr (node->contents, FOOTNOTE_LABEL);
+      node->contents[node->nodelen] = saved;
+    }
+  if (fnptr)
+    fn_start = fnptr - node->contents;
 
   /* If it doesn't, check to see if it has an associated footnotes node. */
-  if (fn_start == -1)
+  if (!fnptr)
     {
       REFERENCE **refs;
 
-      refs = info_xrefs_of_node (node);
+      refs = node->references;
 
       if (refs)
         {
@@ -81,30 +87,25 @@ make_footnotes_node (NODE *node)
           strcat (refname, "-Footnotes");
 
           for (i = 0; refs[i]; i++)
-            if ((refs[i]->nodename != NULL) &&
+            if (refs[i]->type == REFERENCE_XREF
+                && (refs[i]->nodename != NULL)
                 /* Support both the older "foo-Footnotes" and the new
                    style "foo-Footnote-NN" references.  */
-                (strcmp (refs[i]->nodename, refname) == 0 ||
+                && (strcmp (refs[i]->nodename, refname) == 0 ||
                  (strncmp (refs[i]->nodename, refname, reflen - 1) == 0 &&
                   refs[i]->nodename[reflen - 1] == '-' &&
                   isdigit (refs[i]->nodename[reflen]))))
               {
-                char *filename;
-
-                filename = node->parent;
-                if (!filename)
-                  filename = node->filename;
-
-                fn_node = info_get_node (filename, refname, PARSE_NODE_DFLT);
-
-                if (fn_node)
-                  fn_start = 0;
-
+                footnotes_node = info_get_node (node->fullpath, refname);
+                if (footnotes_node)
+                  {
+                    fn_node = footnotes_node;
+                    fn_start = 0;
+                  }
                 break;
               }
 
           free (refname);
-          info_free_references (refs);
         }
     }
 
@@ -113,18 +114,16 @@ make_footnotes_node (NODE *node)
     return NULL;
 
   /* Make the new node. */
-  result = xmalloc (sizeof (NODE));
-  result->flags = 0;
-  result->display_pos = 0;
+  result = info_create_node ();
 
   /* Get the size of the footnotes appearing within this node. */
   {
     char *header;
     long text_start = fn_start;
 
-    header = xmalloc
-      (1 + strlen (node->nodename) + strlen (FOOTNOTE_HEADER_FORMAT));
-    sprintf (header, FOOTNOTE_HEADER_FORMAT, node->nodename);
+    asprintf (&header,
+              "*** Footnotes appearing in the node '%s' ***\n",
+              node->nodename);
 
     /* Move the start of the displayed text to right after the first line.
        This effectively skips either "---- footno...", or "File: foo...". */
@@ -139,18 +138,38 @@ make_footnotes_node (NODE *node)
     sprintf (result->contents, "%s", header);
     memcpy (result->contents + strlen (header),
             fn_node->contents + text_start, fn_node->nodelen - text_start);
+    result->contents[strlen (header) + fn_node->nodelen - text_start] = '\0';
 
-    name_internal_node (result, footnote_nodename);
+   /* Copy and adjust references that appear in footnotes section. */
+    {
+      REFERENCE **ref = fn_node->references;
+
+      for (; *ref; ref++)
+        {
+          if ((*ref)->start > text_start)
+            break;
+        }
+
+      result->references = info_copy_references (ref);
+
+      for (ref = result->references; *ref; ref++)
+        {
+          (*ref)->start -= text_start - strlen (header);
+          (*ref)->end -= text_start - strlen (header);
+        }
+    }
+
+    result->nodename = xstrdup (footnote_nodename);
+    result->flags |= N_IsInternal | N_WasRewritten;
+
+    /* Needed in case the user follows a reference in the footnotes window. */
+    result->fullpath = fn_node->fullpath;
+    result->subfile = fn_node->subfile;
+
     free (header);
   }
 
-#if defined (NOTDEF)
-  /* If the footnotes were gleaned from the node that we were called with,
-     shorten the calling node's display length. */
-  if (fn_node == node)
-    narrow_node (node, 0, fn_start);
-#endif /* NOTDEF */
-
+  free_history_node (footnotes_node);
   return result;
 }
 
@@ -163,7 +182,7 @@ int
 info_get_or_remove_footnotes (WINDOW *window)
 {
   WINDOW *fn_win;
-  NODE *new_footnotes;
+  NODE *new_footnotes = 0;
 
   fn_win = find_footnotes_window ();
 
@@ -171,20 +190,24 @@ info_get_or_remove_footnotes (WINDOW *window)
   if (fn_win == window)
     return FN_FOUND;
 
-  /* Try to find footnotes for this window's node. */
-  new_footnotes = make_footnotes_node (window->node);
+  /* Don't display footnotes for the "*" node (entire contents of file) or
+     for nodes without a name like completion windows. */
+  if (window->node->nodename && strcmp ("*", window->node->nodename))
+    /* Try to find footnotes for this window's node. */
+    new_footnotes = make_footnotes_node (window->node);
 
-  /* If there was a window showing footnotes, and there are no footnotes
-     for the current window, delete the old footnote window. */
-  if (fn_win && !new_footnotes)
+  if (!new_footnotes)
     {
-      if (windows->next)
+      /* If there was a window showing footnotes, and there are no footnotes
+         for the current window, delete the old footnote window. */
+      if (fn_win && windows->next)
         info_delete_window_internal (fn_win);
+      return FN_UNFOUND;
     }
 
-  /* If there are footnotes for this window's node, but no window around
-     showing footnotes, try to make a new window. */
-  if (new_footnotes && !fn_win)
+  /* If there is no window around showing footnotes, try
+     to make a new window. */
+  if (!fn_win)
     {
       WINDOW *old_active;
       WINDOW *last, *win;
@@ -197,39 +220,30 @@ info_get_or_remove_footnotes (WINDOW *window)
          contain the footnotes. */
       old_active = active_window;
       active_window = last;
-      fn_win = window_make_window (new_footnotes);
+      fn_win = window_make_window ();
       active_window = old_active;
 
+      /* If we are hacking automatic footnotes, and there are footnotes
+         but we couldn't display them, print a message to that effect. */
       if (!fn_win)
         {
-          free (new_footnotes->contents);
-          free (new_footnotes);
-
-          /* If we are hacking automatic footnotes, and there are footnotes
-             but we couldn't display them, print a message to that effect. */
           if (auto_footnotes_p)
-            inform_in_echo_area (_("Footnotes could not be displayed"));
+            info_error (_("Footnotes could not be displayed"));
           return FN_UNABLE;
         }
     }
 
-  /* If there are footnotes, and there is a window to display them,
-     make that window be the number of lines appearing in the footnotes. */
-  if (new_footnotes && fn_win)
-    {
-      window_set_node_of_window (fn_win, new_footnotes);
+  /* Note that info_set_node_of_window calls this function
+     (info_get_or_remove_footnotes), but we do not recurse indefinitely
+     because we check if we are in the footnote window above. */
+  info_set_node_of_window (fn_win, new_footnotes);
+  fn_win->flags |= W_TempWindow;
 
-      window_change_window_height
-        (fn_win, fn_win->line_count - fn_win->height);
+  /* Make the height be the number of lines appearing in the footnotes. */
+  if (new_footnotes)
+    window_change_window_height (fn_win, fn_win->line_count - fn_win->height);
 
-      remember_window_and_node (fn_win, new_footnotes);
-      add_gcable_pointer (new_footnotes->contents);
-    }
-
-  if (!new_footnotes)
-    return FN_UNFOUND;
-  else
-    return FN_FOUND;
+  return FN_FOUND;
 }
 
 /* Show the footnotes associated with this node in another window. */

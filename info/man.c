@@ -1,8 +1,8 @@
 /* man.c: How to read and format man files.
-   $Id: man.c 5337 2013-08-22 17:54:06Z karl $
+   $Id: man.c 6182 2015-03-07 19:36:01Z gavin $
 
    Copyright 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
-   2007, 2008, 2009, 2011, 2012, 2013 Free Software Foundation, Inc.
+   2007, 2008, 2009, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,9 +20,6 @@
    Originally written by Brian Fox Thu May  4 09:17:52 1995. */
 
 #include "info.h"
-#ifndef __MINGW32__
-#include <sys/ioctl.h>
-#endif
 #include "signals.h"
 #if defined (HAVE_SYS_TIME_H)
 #include <sys/time.h>
@@ -32,7 +29,9 @@
 #endif
 
 #include "tilde.h"
+#include "nodes.h"
 #include "man.h"
+#include "variables.h"
 
 #if !defined (_POSIX_VERSION)
 #define pid_t int
@@ -54,115 +53,84 @@ static char const * const exec_extensions[] = {
 static char const * const exec_extensions[] = { "", NULL };
 #endif
 
+static REFERENCE **xrefs_of_manpage (NODE *node);
 static char *read_from_fd (int fd);
-static NODE *manpage_node_of_file_buffer (FILE_BUFFER *file_buffer,
-    char *pagename);
 static char *get_manpage_contents (char *pagename);
 
-NODE *
-make_manpage_node (char *pagename)
-{
-  return info_get_node (MANPAGE_FILE_BUFFER_NAME, pagename,
-                        PARSE_NODE_VERBATIM);
-}
+/* We store the contents of retrieved man pages in here. */
+static NODE **manpage_nodes = 0;
+size_t manpage_node_index = 0;
+size_t manpage_node_slots = 0;
 
 NODE *
-get_manpage_node (FILE_BUFFER *file_buffer, char *pagename)
+get_manpage_node (char *pagename)
 {
-  NODE *node;
+  NODE *node = 0, **n, *node2 = 0;
+  char *page;
 
-  node = manpage_node_of_file_buffer (file_buffer, pagename);
+  if (manpage_node_index > 0)
+    for (n = manpage_nodes; (node = *n); n++)
+      if (!strcmp (node->nodename, pagename))
+        break;
 
+  /* Node was not found, so we have to create it. */
   if (!node)
     {
-      char *page;
+      node = info_create_node ();
+      node->fullpath = MANPAGE_FILE_BUFFER_NAME;
+      node->nodename = xstrdup (pagename);
+      node->flags |= (N_HasTagsTable | N_IsManPage | N_IsInternal);
+
+      /* Save this node. */
+      add_pointer_to_array (node, manpage_node_index,
+                            manpage_nodes,
+                            manpage_node_slots, 100);
+    } 
+
+  /* Node wasn't found, or its contents were freed since last time. */
+  if (!node->contents)
+    {
+      int hlen, plen;
 
       page = get_manpage_contents (pagename);
+      if (!page)
+        return 0;
+      plen = strlen (page);
 
-      if (page)
+      if (!preprocess_nodes_p)
         {
-          char header[1024];
-          long oldsize, newsize;
-          int hlen, plen;
-	  char *old_contents = file_buffer->contents;
-
-          sprintf (header, "\n\n%c\n%s %s,  %s %s,  %s (dir)\n\n",
-                   INFO_COOKIE,
-                   INFO_FILE_LABEL, file_buffer->filename,
+          char *header;
+          hlen = asprintf (&header, "%s %s,  %s %s,  %s (dir)\n\n",
+                   INFO_FILE_LABEL, MANPAGE_FILE_BUFFER_NAME,
                    INFO_NODE_LABEL, pagename,
                    INFO_UP_LABEL);
-          oldsize = file_buffer->filesize;
-          hlen = strlen (header);
-          plen = strlen (page);
-          newsize = (oldsize + hlen + plen);
-          file_buffer->contents = xrealloc (file_buffer->contents, 1 + newsize);
-          memcpy (file_buffer->contents + oldsize, header, hlen);
-          memcpy (file_buffer->contents + oldsize + hlen, page, plen);
-          file_buffer->contents[newsize] = '\0';
-          file_buffer->filesize = newsize;
-          file_buffer->finfo.st_size = newsize;
-          build_tags_and_nodes (file_buffer);
+
+          node->contents = xcalloc (1, hlen + plen + 1);
+          memcpy (node->contents, header, hlen);
+          memcpy (node->contents + hlen, page, plen);
+
+          /* Set nodelen. */
+          node->nodelen = hlen + plen;
+
+          free (header);
+          /* FIXME: Don't allocate page just to immediately free it. */
           free (page);
-	  /* We have just relocated file_buffer->contents from under
-	     the feet of info_windows[] array.  Therefore, all the
-	     nodes on that list which are showing man pages have their
-	     contents member pointing into the blue.  Undo that harm.  */
-	  if (old_contents && oldsize && old_contents != file_buffer->contents
-	      && info_windows)
-	    {
-	      int iw;
-	      INFO_WINDOW *info_win;
-	      char *old_contents_end = old_contents + oldsize;
-
-	      for (iw = 0; (info_win = info_windows[iw]); iw++)
-		{
-		  int in;
-
-		  for (in = 0; in < info_win->nodes_index; in++)
-		    {
-		      NODE *tmp_node = info_win->nodes[in];
-
-		      /* It really only suffices to see that node->filename
-			 is "*manpages*".  But after several hours of
-			 debugging this, would you blame me for being a bit
-			 paranoid?  */
-		      if (tmp_node && tmp_node->filename
-                          && tmp_node->contents
-                          && strcmp (tmp_node->filename,
-				  MANPAGE_FILE_BUFFER_NAME) == 0
-                          && tmp_node->contents >= old_contents
-                          && tmp_node->contents + tmp_node->nodelen
-                                <= old_contents_end)
-			{
-			  info_win->nodes[in] =
-			    manpage_node_of_file_buffer (file_buffer,
-                                tmp_node->nodename);
-			  free (tmp_node->nodename);
-			  free (tmp_node);
-			}
-		    }
-		}
-	    }
+        }
+      else
+        {
+          node->contents = page;
+          node->nodelen = plen;
         }
 
-      node = manpage_node_of_file_buffer (file_buffer, pagename);
+      node->body_start = strcspn (node->contents, "\n");
     }
 
-  return node;
-}
-
-FILE_BUFFER *
-create_manpage_file_buffer (void)
-{
-  FILE_BUFFER *file_buffer = make_file_buffer ();
-  file_buffer->filename = xstrdup (MANPAGE_FILE_BUFFER_NAME);
-  file_buffer->fullpath = xstrdup (MANPAGE_FILE_BUFFER_NAME);
-  file_buffer->finfo.st_size = 0;
-  file_buffer->filesize = 0;
-  file_buffer->contents = NULL;
-  file_buffer->flags = (N_IsInternal | N_CannotGC | N_IsManPage);
-
-  return file_buffer;
+  node2 = xmalloc (sizeof (NODE));
+  *node2 = *node;
+  node2->references = xrefs_of_manpage (node2);
+  node2->nodename = xstrdup (pagename);
+  node2->up = xstrdup ("(dir)");
+  return node2;
 }
 
 /* Scan the list of directories in PATH looking for FILENAME.  If we find
@@ -267,23 +235,58 @@ get_page_and_section (char *pagename)
     }
 }
 
-#if PIPE_USE_FORK
-static void
-reap_children (int sig)
+void
+clean_manpage (char *manpage)
 {
-  wait (NULL);
+  mbi_iterator_t iter;
+  size_t len = strlen (manpage);
+  char *newpage = xmalloc (len + 1);
+  char *np = newpage;
+  int prev_len = 0;
+  
+  for (mbi_init (iter, manpage, len);
+       mbi_avail (iter);
+       mbi_advance (iter))
+    {
+      const char *cur_ptr = mbi_cur_ptr (iter);
+      size_t cur_len = mb_len (mbi_cur (iter));
+
+      if (cur_len == 1)
+	{
+	  if (*cur_ptr == '\b' || *cur_ptr == '\f')
+	    {
+	      if (np >= newpage + prev_len)
+		np -= prev_len;
+	    }
+	  else if (ansi_escape (iter, &cur_len))
+	    {
+	      memcpy (np, cur_ptr, cur_len);
+	      np += cur_len;
+	      ITER_SETBYTES (iter, cur_len);
+	    }
+	  else if (show_malformed_multibyte_p || mbi_cur (iter).wc_valid)
+	    *np++ = *cur_ptr;
+	}
+      else
+	{
+	  memcpy (np, cur_ptr, cur_len);
+	  np += cur_len;
+	}
+      prev_len = cur_len;
+    }
+  *np = 0;
+  
+  strcpy (manpage, newpage);
+  free (newpage);
 }
-#endif
+
+static char *get_manpage_from_formatter (char *formatter_args[]);
 
 static char *
 get_manpage_contents (char *pagename)
 {
   static char *formatter_args[4] = { NULL };
-  int pipes[2];
-  pid_t child;
-  RETSIGTYPE (*sigsave) (int signum);
-  char *formatted_page = NULL;
-  int arg_index = 1;
+  char *formatted_page;
 
   if (formatter_args[0] == NULL)
     formatter_args[0] = find_man_formatter ();
@@ -294,20 +297,39 @@ get_manpage_contents (char *pagename)
   get_page_and_section (pagename);
 
   if (manpage_section)
-    formatter_args[arg_index++] = manpage_section;
+    formatter_args[1] = manpage_section;
   else
-    formatter_args[arg_index++] = "-a";
+    formatter_args[1] = "-a";
 
-  formatter_args[arg_index++] = manpage_pagename;
-  formatter_args[arg_index] = NULL;
+  formatter_args[2] = manpage_pagename;
+  formatter_args[3] = NULL;
+
+  formatted_page = get_manpage_from_formatter (formatter_args);
+
+  /* If there was a section and the page wasn't found, try again
+     without the section (e.g. "man 3X curses" versus "man -a curses"). */
+  if (!formatted_page && manpage_section)
+    {
+      formatter_args[1] = "-a";
+      formatted_page = get_manpage_from_formatter (formatter_args);
+    }
+
+  return formatted_page;
+}
+
+static char *
+get_manpage_from_formatter (char *formatter_args[])
+{
+  char *formatted_page = NULL;
+  int pipes[2];
+  pid_t child;
+  int formatter_status = 0;
 
   /* Open a pipe to this program, read the output, and save it away
      in FORMATTED_PAGE.  The reader end of the pipe is pipes[0]; the
      writer end is pipes[1]. */
 #if PIPE_USE_FORK
   pipe (pipes);
-
-  sigsave = signal (SIGCHLD, reap_children);
 
   child = fork ();
   if (child == -1)
@@ -320,7 +342,7 @@ get_manpage_contents (char *pagename)
       close (pipes[1]);
       formatted_page = read_from_fd (pipes[0]);
       close (pipes[0]);
-      signal (SIGCHLD, sigsave);
+      wait (&formatter_status); /* Wait for child process to exit. */
     }
   else
     { /* In the child, close the read end of the pipe, make the write end
@@ -347,7 +369,7 @@ get_manpage_contents (char *pagename)
     int fd_err = open (NULL_DEVICE, O_WRONLY, 0666);
     int i;
 
-    for (i = 0; i < arg_index; i++)
+    for (i = 0; formatter_args[i]; i++)
       cmdlen += strlen (formatter_args[i]);
     /* Add-ons: 2 blanks, 2 quotes for the formatter program, 1
        terminating null character.  */
@@ -366,57 +388,42 @@ get_manpage_contents (char *pagename)
     if (fpipe == 0)
       return NULL;
     formatted_page = read_from_fd (fileno (fpipe));
-    if (pclose (fpipe) == -1)
-      {
-	if (formatted_page)
-	  free (formatted_page);
-	return NULL;
-      }
+    formatter_status = pclose (fpipe);
   }
 #endif /* !PIPE_USE_FORK */
 
+  if (!formatted_page)
+    return 0;
+
+  if (formatter_status != 0) /* Check for failure. */
+    {
+      int i;
+      char *p;
+      /* It is possible for "man -a" to output a man page and still to exit 
+         with a non-zero status.  This was found to happen when duplicate man 
+         pages were found.  Hence, still treat it as a success if more than 
+         three lines were output.  (A small amount of output could be error 
+         messages that were sent to standard output.) */
+      p = formatted_page;
+      for (i = 0; i < 3; i++)
+        {
+          p = strchr (p, '\n');
+          if (!p)
+            {
+              free (formatted_page);
+              return NULL;
+            }
+        }
+    }
+
   /* If we have the page, then clean it up. */
-  if (formatted_page)
-    clean_manpage (formatted_page);
+  clean_manpage (formatted_page);
 
   return formatted_page;
 }
 
-static NODE *
-manpage_node_of_file_buffer (FILE_BUFFER *file_buffer, char *pagename)
-{
-  NODE *node = NULL;
-  TAG *tag = NULL;
-
-  if (file_buffer->contents)
-    {
-      register int i;
-
-      for (i = 0; (tag = file_buffer->tags[i]); i++)
-        {
-          if (mbscasecmp (pagename, tag->nodename) == 0)
-            break;
-        }
-    }
-
-  if (tag)
-    {
-      node = xmalloc (sizeof (NODE));
-      node->filename = file_buffer->filename;
-      node->nodename = xstrdup (tag->nodename);
-      node->contents = file_buffer->contents + tag->nodestart;
-      node->nodelen = tag->nodelen;
-      node->flags    = 0;
-      node->display_pos = 0;
-      node->parent   = NULL;
-      node->flags = (N_HasTagsTable | N_IsManPage);
-      node->contents += skip_node_separator (node->contents);
-      node->body_start = strcspn(node->contents, "\n");
-    }
-
-  return node;
-}
-
+/* Return pointer to bytes read from file descriptor FD.  Return value to be
+   freed by caller. */
 static char *
 read_from_fd (int fd)
 {
@@ -482,6 +489,8 @@ read_from_fd (int fd)
   return buffer;
 }
 
+/* Search in the whole man page for references now. */
+#if 0
 static char *reference_section_starters[] =
 {
   "\nRELATED INFORMATION",
@@ -536,145 +545,105 @@ find_reference_section (NODE *node)
   return &frs_binding;
 }
 
-REFERENCE **
+#endif
+
+static REFERENCE **
 xrefs_of_manpage (NODE *node)
 {
-  SEARCH_BINDING *reference_section;
+  SEARCH_BINDING s;
+
   REFERENCE **refs = NULL;
   size_t refs_index = 0;
   size_t refs_slots = 0;
   long position;
 
-  reference_section = find_reference_section (node);
+  /* Initialize reference list to have a single null entry. */
+  refs = calloc(1, sizeof (REFERENCE *));
+  refs_slots = 1;
 
-  if (reference_section == NULL)
-    return NULL;
+  s.buffer = node->contents;
+  s.start = 0;
+  s.flags = 0;
+  s.end = node->nodelen;
 
-  /* Grovel the reference section building a list of references found there.
-     A reference is alphabetic characters followed by non-whitespace text
-     within parenthesis. */
-  reference_section->flags = 0;
-
-  while (search_forward ("(", reference_section, &position) == search_success)
+  /* Build a list of references.  A reference is alphabetic characters
+     followed by non-whitespace text within parenthesis leading with a digit. */
+  while (search_forward ("(", &s, &position) == search_success)
     {
-      register int start, end;
+      register int name, name_end;
+      int section, section_end;
 
-      for (start = position; start > reference_section->start; start--)
-        if (whitespace (reference_section->buffer[start]))
+      for (name = position; name > 0; name--)
+        if (whitespace (s.buffer[name]))
           break;
 
-      start++;
+      if (name != 0)
+        name++;
 
-      for (end = position; end < reference_section->end; end++)
+      if (name == position)
+        goto skip; /* Whitespace immediately before '('. */
+
+      /* If we are on an ECMA-48 SGR escape sequence, skip past it. */
+      if (s.buffer[name] == '\033' && s.buffer[name + 1] == '[')
         {
-          if (whitespace (reference_section->buffer[end]))
+          name += 2;
+          name += strspn (s.buffer + name, "0123456789;");
+          if (s.buffer[name] == 'm')
+            name++;
+          else
+            goto skip;
+        }
+
+      for (name_end = name; name_end < position; name_end++)
+        if (!isalnum (s.buffer[name_end])
+            && s.buffer[name_end] != '_'
+            && s.buffer[name_end] != '.'
+            && s.buffer[name_end] != '-')
+          break;
+
+      section = position;
+      if (!isdigit (s.buffer[section + 1]))
+        goto skip; /* Could be ordinary text in parentheses. */
+
+      for (section_end = section + 1; section_end < s.end; section_end++)
+        {
+          if (whitespace (s.buffer[section_end]))
             {
-              end = start;
+              continue;
               break;
             }
 
-          if (reference_section->buffer[end] == ')')
+          if (s.buffer[section_end] == ')')
             {
-              end++;
+              section_end++;
               break;
             }
         }
 
-      if (end != start)
-        {
-          REFERENCE *entry;
-          int len = end - start;
+      {
+        REFERENCE *entry;
+        int len = name_end - name + section_end - section;
 
-          entry = xmalloc (sizeof (REFERENCE));
-          entry->label = xmalloc (1 + len);
-          strncpy (entry->label, (reference_section->buffer) + start, len);
-          entry->label[len] = '\0';
-          entry->filename = xstrdup (node->filename);
-          entry->nodename = xstrdup (entry->label);
-          entry->start = start;
-          entry->end = end;
+        entry = xmalloc (sizeof (REFERENCE));
+        entry->label = xcalloc (1, 1 + len);
+        strncpy (entry->label, s.buffer + name, name_end - name);
+        strncpy (entry->label + strlen (entry->label),
+                 s.buffer + section,
+                 section_end - section);
 
-          add_pointer_to_array (entry, refs_index, refs, refs_slots, 10);
-        }
+        entry->filename = xstrdup (MANPAGE_FILE_BUFFER_NAME);
+        entry->nodename = xstrdup (entry->label);
+        entry->line_number = 0;
+        entry->start = name;
+        entry->end = section_end;
+        entry->type = REFERENCE_XREF;
 
-      reference_section->start = position + 1;
+        add_pointer_to_array (entry, refs_index, refs, refs_slots, 10);
+      }
+
+skip:
+      s.start = position + 1;
     }
 
   return refs;
-}
-
-long
-locate_manpage_xref (NODE *node, long int start, int dir)
-{
-  REFERENCE **refs;
-  long position = -1;
-
-  refs = xrefs_of_manpage (node);
-
-  if (refs)
-    {
-      register int i, count;
-      REFERENCE *entry;
-
-      for (i = 0; refs[i]; i++);
-      count = i;
-
-      if (dir > 0)
-        {
-          for (i = 0; (entry = refs[i]); i++)
-            if (entry->start > start)
-              {
-                position = entry->start;
-                break;
-              }
-        }
-      else
-        {
-          for (i = count - 1; i > -1; i--)
-            {
-              entry = refs[i];
-
-              if (entry->start < start)
-                {
-                  position = entry->start;
-                  break;
-                }
-            }
-        }
-
-      info_free_references (refs);
-    }
-  return position;
-}
-
-/* This one was a little tricky.  The binding buffer that is passed in has
-   a START and END value of 0 -- strlen (window-line-containing-point).
-   The BUFFER is a pointer to the start of that line. */
-REFERENCE **
-manpage_xrefs_in_binding (NODE *node, SEARCH_BINDING *binding)
-{
-  size_t i;
-  REFERENCE **all_refs = xrefs_of_manpage (node);
-  REFERENCE **brefs = NULL;
-  REFERENCE *entry;
-  size_t brefs_index = 0;
-  size_t brefs_slots = 0;
-  int start, end;
-
-  if (!all_refs)
-    return NULL;
-
-  start = binding->start + (binding->buffer - node->contents);
-  end = binding->end + (binding->buffer - node->contents);
-
-  for (i = 0; (entry = all_refs[i]); i++)
-    {
-      if ((entry->start > start) && (entry->end < end))
-        add_pointer_to_array (entry, brefs_index, brefs, brefs_slots, 10);
-      else
-        info_reference_free (entry);
-    }
-
-  free (all_refs);
-  return brefs;
 }

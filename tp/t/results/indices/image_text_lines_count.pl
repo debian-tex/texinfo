@@ -368,13 +368,13 @@ $result_converted{'html_text'}->{'image_text_lines_count'} = '<a name="Top"></a>
 
 $result_converted_errors{'html_text'}->{'image_text_lines_count'} = [
   {
-    'file_name' => '',
     'error_line' => ':3: warning: @image file `count_image_text\' (for HTML) not found, using `count_image_text.jpg\'
 ',
-    'text' => '@image file `count_image_text\' (for HTML) not found, using `count_image_text.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 3,
     'macro' => '',
-    'line_nr' => 3
+    'text' => '@image file `count_image_text\' (for HTML) not found, using `count_image_text.jpg\'',
+    'type' => 'warning'
   }
 ];
 

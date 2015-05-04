@@ -23,6 +23,8 @@ Texinfo::Convert::DocBook - Convert Texinfo tree to DocBook
     = Texinfo::Convert::DocBook->converter({'parser' => $parser});
 
   $converter->output($tree);
+  $converter->convert($tree);
+  $converter->convert_tree($tree);
 @end verbatim
 
 @node Texinfo::Convert::DocBook DESCRIPTION
@@ -37,7 +39,7 @@ Texinfo::Convert::DocBook converts a Texinfo tree to DocBook.
 @item $converter = Texinfo::Convert::DocBook->converter($options)
 @anchor{Texinfo::Convert::DocBook $converter = Texinfo::Convert::DocBook->converter($options)}
 
-Initialize an DocBook converter.  
+Initialize converter from Texinfo to DocBook.  
 
 The @emph{$options} hash reference holds options for the converter.  In
 this option hash reference a parser object may be associated with the 
@@ -63,15 +65,8 @@ the resulting output.
 @anchor{Texinfo::Convert::DocBook $result = $converter->convert_tree($tree)}
 
 Convert a Texinfo tree portion @emph{$tree} and return the resulting 
-output.  This function do not try to output a full document but only
-portions of document.  For a full document use @code{convert}.
-
-@item $result = $converter->output_internal_links()
-@anchor{Texinfo::Convert::DocBook $result = $converter->output_internal_links()}
-
-Returns text representing the links in the document.  At present the format 
-should follow the @code{--internal-links} option of texi2any/makeinfo specification
-and this is only relevant for HTML.
+output.  This function does not try to output a full document but only
+portions.  For a full document use @code{convert}.
 
 @end table
 
@@ -83,7 +78,7 @@ Patrice Dumas, <pertusus@@free.fr>
 @node Texinfo::Convert::DocBook COPYRIGHT AND LICENSE
 @section COPYRIGHT AND LICENSE
 
-Copyright 2012 Free Software Foundation, Inc.
+Copyright 2015 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

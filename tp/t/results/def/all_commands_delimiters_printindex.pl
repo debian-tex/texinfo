@@ -8206,12 +8206,13 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'category',
                     {
-                      'text' => 'Command'
+                      'contents' => [
+                        {
+                          'text' => 'Command'
+                        },
+                        {}
+                      ]
                     }
-                  ],
-                  [
-                    'class',
-                    {}
                   ],
                   [
                     'spaces',
@@ -8221,7 +8222,7 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     }
                   ],
                   [
-                    'type',
+                    'class',
                     {
                       'contents' => [],
                       'parent' => {},
@@ -8236,14 +8237,15 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     }
                   ],
                   [
-                    'name',
+                    'type',
                     {
-                      'text' => 'expose'
+                      'contents' => [
+                        {
+                          'text' => 'expose'
+                        },
+                        {}
+                      ]
                     }
-                  ],
-                  [
-                    'arg',
-                    {}
                   ],
                   [
                     'spaces',
@@ -8253,7 +8255,7 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     }
                   ],
                   [
-                    'typearg',
+                    'name',
                     {
                       'text' => 'name'
                     }
@@ -8293,7 +8295,7 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'index_type_command' => 'deftypeop',
-                  'key' => 'expose on com',
+                  'key' => 'name on Windowint',
                   'node' => {},
                   'number' => 21
                 },
@@ -15549,20 +15551,20 @@ $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[5
 $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0];
-$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[1][1] = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[3][1]{'contents'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0]{'contents'}[4]{'contents'};
-$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[3][1]{'parent'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0];
-$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0]{'contents'}[6];
+$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'}[1] = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[2][1]{'contents'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0]{'contents'}[4]{'contents'};
+$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[2][1]{'parent'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0];
+$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[4][1]{'contents'}[1] = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0]{'contents'}[6];
 $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[0][1];
-$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[5][1];
-$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'type'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[3][1];
+$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[6][1];
+$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'type'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[4][1];
 $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0];
-$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[5][1];
+$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[6][1];
 $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[2]{'parent'}{'contents'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'index_entry'}{'content'};
-$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[3] = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[5][1];
-$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[2] = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[3] = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[6][1];
+$result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[2] = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'extra'}{'index_entry'}{'node'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1];
 $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'line_nr'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50]{'contents'}[0]{'parent'} = $result_trees{'all_commands_delimiters_printindex'}{'contents'}[1]{'contents'}[50];
@@ -16967,7 +16969,7 @@ Operation20 on W;indow: int e;xpose type arg
 
 Operation21 on ;Window: int ;expose type arg
 
-Command on com: Windowint expose exp name
+Commandcom on Windowint: exposeexp name
 
 Function: apply function &rest arguments
 
@@ -17120,7 +17122,7 @@ File: ,  Node: Top,  Up: (dir)
 
  -- Operation21 on ;Window: \'int\' ;expose type arg
 
- -- Command on \'com\': Window\'int\' expose EXP name
+ -- Command\'com\' on Window\'int\': exposeEXP name
 
  -- Function: apply function &rest arguments
 
@@ -17191,7 +17193,6 @@ Functions
 * e,xpose on W,indow <1>:                Top.                 (line  45)
 * e;xpose on W;indow:                    Top.                 (line  57)
 * e;xpose on W;indow <1>:                Top.                 (line  61)
-* expose on \'com\':                       Top.                 (line  65)
 * expose on W,indow:                     Top.                 (line  36)
 * expose on Window:                      Top.                 (line  39)
 * expose on windows:                     Top.                 (line  33)
@@ -17201,6 +17202,7 @@ Functions
 * FORWARD--CHAR:                         Top.                 (line   3)
 * fun_name:                              Top.                 (line 105)
 * fun_name1:                             Top.                 (line 107)
+* name on Window\'int\':                   Top.                 (line  65)
 * push:                                  Top.                 (line  18)
 
 Types
@@ -17257,16 +17259,16 @@ $result_converted{'html'}->{'all_commands_delimiters_printindex'} = '<!DOCTYPE h
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -17275,10 +17277,10 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nocodebreak {white-space: nowrap}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: serif; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -17286,7 +17288,7 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <a name="Top"></a>
 <h1 class="node-heading">Top</h1>
 <dl>
@@ -17390,7 +17392,7 @@ ul.no-bullet {list-style: none}
 </dl>
 
 <dl>
-<dt><a name="index-expose-on-com"></a>Command on <code>com</code>: <em>Window<code>int</code></em> <strong>expose</strong> <em><var>exp</var> name</em></dt>
+<dt><a name="index-name-on-Windowint"></a>Command<code>com</code> on Window<code>int</code>: <em>expose<var>exp</var></em> <strong>name</strong></dt>
 </dl>
 
 <dl>
@@ -17492,6 +17494,8 @@ ul.no-bullet {list-style: none}
  &nbsp; 
 <a class="summary-letter" href="#Top_fn_letter-F"><b>F</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Top_fn_letter-N"><b>N</b></a>
+ &nbsp; 
 <a class="summary-letter" href="#Top_fn_letter-P"><b>P</b></a>
  &nbsp; 
 </td></tr></table>
@@ -17528,7 +17532,6 @@ ul.no-bullet {list-style: none}
 <tr><td></td><td valign="top"><a href="#index-e_002cxpose-on-W_002cindow-1"><code>e,xpose on W,indow</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-e_003bxpose-on-W_003bindow"><code>e;xpose on W;indow</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-e_003bxpose-on-W_003bindow-1"><code>e;xpose on W;indow</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-expose-on-com"><code>expose on <code>com</code></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-expose-on-W_002cindow"><code>expose on W,indow</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-expose-on-Window"><code>expose on Window</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-expose-on-windows"><code>expose on windows</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
@@ -17540,6 +17543,9 @@ ul.no-bullet {list-style: none}
 <tr><td></td><td valign="top"><a href="#index-forward_002d_002dchar"><code><var>forward--char</var></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-fun_005fname"><code>fun_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-fun_005fname1"><code>fun_name1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Top_fn_letter-N">N</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-name-on-Windowint"><code>name on Window<code>int</code></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Top_fn_letter-P">P</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-push"><code>push</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
@@ -17557,6 +17563,8 @@ ul.no-bullet {list-style: none}
 <a class="summary-letter" href="#Top_fn_letter-E"><b>E</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Top_fn_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Top_fn_letter-N"><b>N</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Top_fn_letter-P"><b>P</b></a>
  &nbsp; 

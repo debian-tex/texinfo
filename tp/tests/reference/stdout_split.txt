@@ -1,0 +1,3 @@
+texi2any: warning: -: output incompatible with split
+This is a very simple texi manual   <>.
+

@@ -1,8 +1,9 @@
 # $Id: Makefile,v 1.4 2012-09-21 17:40:44 karl Exp $
 # Makefile for texinfo/doc/refcard.
-# This is not hooked into Automake, just here for those working on the refcard.
+# This is not hooked into Automake, just conveniences for working on the
+# refcard.
 #
-# Copyright 2008, 2012 Free Software Foundation, Inc.
+# Copyright 2008, 2012, 2014 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -35,6 +36,10 @@ ccheck:
 
 vcheck:
 	txivarcheck $(txi_check_args)
+
+spell:
+	aspell list --mode=tex --add-extra-dicts=`pwd`/refcard.spell \
+	< $(doc).tex | sort -f -u
 
 clean:
 	rm -f $(doc)*.dvi $(doc)*.log $(doc)*.ps

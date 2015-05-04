@@ -688,31 +688,31 @@ $result_converted_errors{'info'}->{'center_flush'} = [
     'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':14: warning: @anchor outside of any node
 ',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 14,
     'macro' => '',
-    'line_nr' => 14
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':29: warning: @anchor outside of any node
 ',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 29,
     'macro' => '',
-    'line_nr' => 29
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':31: warning: @anchor outside of any node
 ',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 31,
     'macro' => '',
-    'line_nr' => 31
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
   }
 ];
 

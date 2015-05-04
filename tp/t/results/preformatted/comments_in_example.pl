@@ -242,6 +242,127 @@ $result_trees{'comments_in_example'} = {
         'macro' => ''
       },
       'parent' => {}
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line'
+    },
+    {
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'Example with newline after comment
+'
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'cmdname' => 'example',
+      'contents' => [
+        {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        },
+        {
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => 'line '
+            },
+            {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comment
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment
+'
+                ]
+              },
+              'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'empty_line'
+            },
+            {
+              'parent' => {},
+              'text' => 'second line
+'
+            }
+          ],
+          'parent' => {},
+          'type' => 'preformatted'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'extra' => {
+                    'command' => {}
+                  },
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'example'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'example',
+            'spaces_after_command' => {},
+            'text_arg' => 'example'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 17,
+            'macro' => ''
+          },
+          'parent' => {}
+        }
+      ],
+      'extra' => {
+        'end_command' => {},
+        'spaces_after_command' => {}
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 13,
+        'macro' => ''
+      },
+      'parent' => {}
     }
   ],
   'type' => 'text_root'
@@ -288,6 +409,28 @@ $result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[2]{'parent'} = $
 $result_trees{'comments_in_example'}{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[2];
 $result_trees{'comments_in_example'}{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[0];
 $result_trees{'comments_in_example'}{'contents'}[4]{'parent'} = $result_trees{'comments_in_example'};
+$result_trees{'comments_in_example'}{'contents'}[5]{'parent'} = $result_trees{'comments_in_example'};
+$result_trees{'comments_in_example'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[6];
+$result_trees{'comments_in_example'}{'contents'}[6]{'parent'} = $result_trees{'comments_in_example'};
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comments_in_example'}{'contents'}[7];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1]{'contents'}[1];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'args'}[0];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'args'}[0];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'args'}[0];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'extra'}{'command'} = $result_trees{'comments_in_example'}{'contents'}[7];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7];
+$result_trees{'comments_in_example'}{'contents'}[7]{'extra'}{'end_command'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2];
+$result_trees{'comments_in_example'}{'contents'}[7]{'extra'}{'spaces_after_command'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[0];
+$result_trees{'comments_in_example'}{'contents'}[7]{'parent'} = $result_trees{'comments_in_example'};
 
 $result_texis{'comments_in_example'} = 'Example with comments 2 lines
 @example 
@@ -299,13 +442,24 @@ Example with comments 1 line
 @example
 line @c comment
 @end example
+
+Example with newline after comment
+@example
+line @c comment
+
+second line
+@end example
 ';
 
 
 $result_texts{'comments_in_example'} = 'Example with comments 2 lines
 line second line 
 Example with comments 1 line
-line ';
+line 
+Example with newline after comment
+line 
+second line
+';
 
 $result_errors{'comments_in_example'} = [];
 
@@ -316,6 +470,10 @@ $result_converted{'plaintext'}->{'comments_in_example'} = 'Example with comments
 
    Example with comments 1 line
      line 
+
+   Example with newline after comment
+     line 
+     second line
 ';
 
 
@@ -326,6 +484,12 @@ $result_converted{'html_text'}->{'comments_in_example'} = '<p>Example with comme
 <p>Example with comments 1 line
 </p><div class="example">
 <pre class="example">line </pre></div>
+
+<p>Example with newline after comment
+</p><div class="example">
+<pre class="example">line 
+second line
+</pre></div>
 ';
 
 
@@ -335,6 +499,11 @@ second line <!-- comment -->
 </screen>
 <para>Example with comments 1 line
 </para><screen>line <!-- comment -->
+</screen>
+<para>Example with newline after comment
+</para><screen>line <!-- comment -->
+
+second line
 </screen>';
 
 
@@ -347,6 +516,13 @@ second line <!-- c comment -->
 <para>Example with comments 1 line
 </para><example endspaces=" ">
 <pre xml:space="preserve">line <!-- c comment -->
+</pre></example>
+
+<para>Example with newline after comment
+</para><example endspaces=" ">
+<pre xml:space="preserve">line <!-- c comment -->
+
+second line
 </pre></example>
 ';
 

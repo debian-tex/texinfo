@@ -2,7 +2,7 @@
 
 # texi.outline ---  produce an outline from a texinfo source file
 # 
-# Copyright (C) 1998 Arnold David Robbins (arnold@gnu.org)
+# Copyright (C) 1998 Arnold David Robbins
 # 
 # TEXI.OUTLINE is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

@@ -1,8 +1,8 @@
-# $Id: Makefile.am 5243 2013-03-20 23:05:29Z karl $
+# $Id: Makefile.am 6074 2015-01-29 01:45:33Z gavin $
 # Makefile.am for texinfo/man.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
-# 2012, 2013 Free Software Foundation, Inc.
+# 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -18,7 +18,7 @@ man_MANS = install-info.1 makeinfo.1 texindex.1 texi2dvi.1
 # These require the build in info/, thus can't do if we failed to find a
 # terminal library.
 if HAVE_TERMLIBS
-man_MANS += info.1 infokey.1
+man_MANS += info.1
 endif
 
 # These are hand-written.
@@ -45,7 +45,7 @@ tplibdir = $(tpdir)/maintain/lib
 mi_perl5lib_path = "$(tpdir):$(tplibdir)/libintl-perl/lib:$(tplibdir)/Unicode-EastAsianWidth/lib:$(tplibdir)/Text-Unidecode/lib"
 mi_perl5lib = PERL5LIB=$(mi_perl5lib_path); export PERL5LIB
 
-# Set up the variables.  makeinfo is no longer a .exe(cutable).
+# Set up the variables.  makeinfo, texindex are no longer a .exe(cutable).
 man_rule_0 = \
   exe_ext="$(EXEEXT)" \
   && program=`expr '/$@' : '.*/\(.*\)\.1'` \
@@ -53,6 +53,7 @@ man_rule_0 = \
          makeinfo) dir=tp; $(mi_perl5lib); exe_ext="";; \
             info*) dir=info; test $$program != info || program=g$$program;; \
     *install-info) dir=install-info; program=g$$program;; \
+        *texindex) dir=texindex; exe_ext="";; \
                 *) dir=util;; esac \
   && dir="$(top_builddir)/$(native_tools)/$$dir" \
   && h2m="$(srcdir)/$$program.h2m"
@@ -76,9 +77,6 @@ info.1: $(top_srcdir)/info/info.c $(srcdir)/ginfo.h2m \
                   $(common_mandeps)
 	@name="read Info documents" && $(man_rule_bin)
 
-infokey.1: $(top_srcdir)/info/infokey.c $(common_mandeps)
-	@name="compile customizations for Info" && $(man_rule_bin)
-
 install-info.1: $(top_srcdir)/install-info/install-info.c \
                           $(common_mandeps)
 	@name="update info/dir entries" && $(man_rule_bin)
@@ -90,7 +88,7 @@ makeinfo.1: $(tpdir)/texi2any.pl $(common_mandeps)
 	sed '/^\.IP$$/N;/\nAlso/s/I//;/\nThe/s/I//' $@.tmp >$@
 	rm $@.tmp
 
-texindex.1: $(top_srcdir)/util/texindex.c $(common_mandeps)
+texindex.1: $(top_srcdir)/texindex/ti.twjr $(common_mandeps)
 	@name="sort Texinfo index files" && $(man_rule_bin)
 
 # 

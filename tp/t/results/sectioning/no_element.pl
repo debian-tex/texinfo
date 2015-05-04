@@ -1101,40 +1101,40 @@ $result_converted_errors{'info'}->{'no_element'} = [
     'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':5: warning: @anchor outside of any node
 ',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 5,
     'macro' => '',
-    'line_nr' => 5
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':13: warning: @footnote outside of any node
 ',
-    'text' => '@footnote outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 13,
     'macro' => '',
-    'line_nr' => 13
+    'text' => '@footnote outside of any node',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':21: warning: @float outside of any node
 ',
-    'text' => '@float outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 21,
     'macro' => '',
-    'line_nr' => 21
+    'text' => '@float outside of any node',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':15: warning: @anchor outside of any node
 ',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 15,
     'macro' => '',
-    'line_nr' => 15
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
   }
 ];
 
@@ -1154,16 +1154,16 @@ $result_converted{'html'}->{'no_element'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD 
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -1172,10 +1172,10 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nocodebreak {white-space: nowrap}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: serif; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -1183,7 +1183,7 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <h1 class="settitle" align="center">no_element test</h1>
 
 

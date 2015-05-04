@@ -161,7 +161,7 @@ $result_errors{'titlefont_in_example'} = [];
 
 
 $result_converted{'plaintext'}->{'titlefont_in_example'} = '     Title
-**********
+     *****
 
      Text.
 ';

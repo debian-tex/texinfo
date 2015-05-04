@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
-# $Id: txicmdcheck 5320 2013-08-16 13:50:01Z karl $
-# Copyright 2008, 2011, 2012, 2013 Free Software Foundation, Inc.
+# $Id: txicmdcheck 6132 2015-02-18 00:07:53Z karl $
+# Copyright 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
+# Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,22 +26,21 @@ exit (&main ());
 sub main {
   my $no_common = $ARGV[0] eq "--no-common";
 
-  my @card_cmds = &read_refcard ("txirefcard.tex");
-  my @man_cmds = &read_refman ("../texinfo.texi");
-  my @tp_cmds = &read_tp ("../../util/txicmdlist");
-  # perhaps we should check against the manual's fnindex too.
+  my %card_cmds = &read_refcard ("txirefcard.tex");
+  my %idx_cmds = &read_refidx ("../texinfo.texi");
+  my %man_cmds = &read_refman ("../texinfo.texi");
+  my %tp_cmds = &read_tp ("../../util/txicmdlist");
 
-  my (%card_cmds, %man_cmds, %tp_cmds);
-  @card_cmds{@card_cmds} = ();
-  @man_cmds{@man_cmds} = ();
-  @tp_cmds{@tp_cmds} = ();
-
+  # find the commands that are covered everywhere.
   my @found = ();
-  for my $cc (@card_cmds) {
-    if (exists $man_cmds{$cc} && exists $tp_cmds{$cc}) {
+  for my $cc (keys %card_cmds) {
+    if (exists $idx_cmds{$cc}
+        && exists $man_cmds{$cc}
+        && exists $tp_cmds{$cc}) {
       push (@found, $cc);
-      delete $man_cmds{$cc};
       delete $card_cmds{$cc};
+      delete $idx_cmds{$cc};
+      delete $man_cmds{$cc};
       delete $tp_cmds{$cc};
     }
   }
@@ -48,6 +48,27 @@ sub main {
   printf ("    common %d: @{[sort @found]}\n", @found + 0)
     unless $no_common;
 
+  # there are numerous @findex entries which are not @-commands, which
+  # can be seen this way:
+  #my @idx_only = keys %idx_cmds;
+  #printf "findex  only %s: @{[sort @idx_only]}\n", @idx_only + 0;
+  #
+  # let's not report those, but we do want to report normal commands that
+  # did not have findex entries: those which are present in all the
+  # other lists.
+  my @idx_missing = ();
+  for my $cc (sort keys %card_cmds) {
+    if (exists $man_cmds{$cc} && exists $tp_cmds{$cc}) {
+      push (@idx_missing, $cc);
+      delete $card_cmds{$cc};
+      delete $man_cmds{$cc};
+      delete $tp_cmds{$cc};
+    }
+  }
+  printf "findex missing %s: @idx_missing\n", @idx_missing + 0
+    if @idx_missing;
+
+  # now report on commands only in some other subset.
   my @card_only = keys %card_cmds;
   printf "refcard only %s: @{[sort @card_only]}\n", @card_only + 0;
 
@@ -61,7 +82,10 @@ sub main {
 }
 
 
-# Return command names from the reference card.
+# Return command names from the reference card as the keys of a hash
+# (with empty values).  In principle it's a list, but as a practical
+# matter we want to work with a hash anyway, so we might as well return
+# it that way in the first place.  (Ditto for the other functions.)
 # 
 sub read_refcard {
   my ($fname) = @_;
@@ -111,12 +135,41 @@ sub read_refcard {
   push (@ret, '@,');  # our non-parsing above lost these
   push (@ret, qw(@atchar @lbracechar @rbracechar @backslashchar));
   close (FILE) || warn "close($FILE) failed: $!";
-  return @ret;
+  
+  my %ret; @ret{@ret} = ();
+  return %ret;
 }
 
 
-# Return command names from the @-Command List
-# node in the reference manual.
+# Return command names from @findex entries in the reference manual as
+# the keys of a hash (empty values).
+# 
+sub read_refidx {
+  my ($fname) = @_;
+  my @ret = ();
+
+  local *FILE;
+  $FILE = $fname;
+  open (FILE) || die "open($FILE) failed: $!";
+  while (<FILE>) {
+    next unless s/^\@findex\s+//; # only consider @findex lines
+    chomp;
+    s/\s+\@r.*$//;# if /^[^a-zA-Z]/;        # remove comment
+    s/\@\{\@\}//;         # remove @{@} used in atchar, etc.
+    s/<colon>/:/;         # @:
+    s/<newline>/var{whitespace}/;  # special generic entry: @var{whitespace}
+    s/^/\@/ unless /^\@/; # prepend @ unless already there (@@ @{ @})
+    push (@ret, $_);
+  }
+  close (FILE) || warn "close($FILE) failed: $!";
+  
+  my %ret; @ret{@ret} = ();
+  return %ret;
+}
+
+
+# Return command names from the @-Command List node in the reference
+# manual as the keys of a hash (empty values).
 # 
 sub read_refman {
   my ($fname) = @_;
@@ -139,14 +192,16 @@ sub read_refman {
     push (@ret, $_);
   }
   push (@ret, '@{'); # our non-parsing above fails on this one
-
   close (FILE) || warn "close($FILE) failed: $!";
-  return @ret;
+  
+  my %ret; @ret{@ret} = ();
+  return %ret;
 }
 
 
-# Return command names implemented in the general parser.
-# The argument is the command to run to return the list.
+# Return command names implemented in the general parser as the keys of
+# a hash (empty values).  The argument is the command to run to return
+# the list.
 #
 sub read_tp {
   my ($prog) = @_;
@@ -177,5 +232,6 @@ sub read_tp {
   
   push (@ret, '@var{whitespace}');
 
-  return @ret;
+  my %ret; @ret{@ret} = ();
+  return %ret;
 }

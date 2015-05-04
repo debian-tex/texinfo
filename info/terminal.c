@@ -1,8 +1,8 @@
 /* terminal.c -- how to handle the physical terminal for Info.
-   $Id: terminal.c 5337 2013-08-22 17:54:06Z karl $
+   $Id: terminal.c 6149 2015-02-24 18:21:51Z gavin $
 
    Copyright 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1997, 1998,
-   1999, 2001, 2002, 2004, 2007, 2008, 2012, 2013
+   1999, 2001, 2002, 2004, 2007, 2008, 2012, 2013, 2014
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -23,17 +23,22 @@
 #include "info.h"
 #include "terminal.h"
 #include "termdep.h"
+#include "doc.h"
+#include "variables.h"
 
 #include <sys/types.h>
 #include <signal.h>
 
 /* The Unix termcap interface code. */
-#ifdef HAVE_NCURSES_TERMCAP_H
+/* With MinGW, if the user has ncurses installed, including
+   ncurses/termcap.h will cause the Info binary depend on the ncurses
+   DLL, just because BC and PC are declared there, although they are
+   never used in the MinGW build.  Avoid that useless dependency.  */
+#if defined (HAVE_NCURSES_TERMCAP_H) && !defined (__MINGW32__)
 #include <ncurses/termcap.h>
-#else
-#ifdef HAVE_TERMCAP_H
+#elif defined (HAVE_TERMCAP_H)
 #include <termcap.h>
-#else
+#else  /* (!HAVE_NCURSES_TERMCAP_H || __MINGW32__) && !HAVE_TERMCAP_H */
 /* On Solaris2, sys/types.h #includes sys/reg.h, which #defines PC.
    Unfortunately, PC is a global variable used by the termcap library. */
 #undef PC
@@ -45,7 +50,6 @@ short ospeed; /* Terminal output baud rate */
 extern int tgetnum (), tgetflag (), tgetent ();
 extern char *tgetstr (), *tgoto ();
 extern int tputs ();
-#endif /* not HAVE_TERMCAP_H */
 #endif /* not HAVE_NCURSES_TERMCAP_H */
 
 /* Function "hooks".  If you make one of these point to a function, that
@@ -54,6 +58,8 @@ extern int tputs ();
    to the namesake function. */
 VFunction *terminal_begin_inverse_hook = NULL;
 VFunction *terminal_end_inverse_hook = NULL;
+VFunction *terminal_begin_standout_hook = NULL;
+VFunction *terminal_end_standout_hook = NULL;
 VFunction *terminal_prep_terminal_hook = NULL;
 VFunction *terminal_unprep_terminal_hook = NULL;
 VFunction *terminal_up_line_hook = NULL;
@@ -68,6 +74,9 @@ VFunction *terminal_put_text_hook = NULL;
 VFunction *terminal_ring_bell_hook = NULL;
 VFunction *terminal_write_chars_hook = NULL;
 VFunction *terminal_scroll_terminal_hook = NULL;
+
+/* User variable 'mouse'.  Values can be MP_* constants in terminal.h. */
+int mouse_protocol = MP_NORMAL_TRACKING;
 
 /* **************************************************************** */
 /*                                                                  */
@@ -85,6 +94,9 @@ static char *term_name;
 static char *term_goto, *term_clreol, *term_cr, *term_clrpag;
 static char *term_begin_use, *term_end_use;
 static char *term_AL, *term_DL, *term_al, *term_dl;
+
+static char *term_cs; /* Set scrolling region. */
+static char *term_SF, *term_SR; /* Scroll forward and in reverse. */
 
 static char *term_keypad_on, *term_keypad_off;
 
@@ -109,6 +121,12 @@ static char *term_invbeg;
 /* The string to turn off inverse mode, if this term has one. */
 static char *term_invend;
 
+/* String introducing a mouse event. */
+static char *term_Km;
+
+/* Strings entering and leaving standout mode. */
+char *term_so, *term_se;
+
 /* Although I can't find any documentation that says this is supposed to
    return its argument, all the code I've looked at (termutils, less)
    does so, so fine.  */
@@ -131,6 +149,16 @@ static void
 terminal_begin_using_terminal (void)
 {
   RETSIGTYPE (*sigsave) (int signum);
+
+  /* Turn on mouse reporting.  This is "normal tracking mode" supported by
+     xterm.  The presence of the Km capability may not be a reliable way to
+     tell whether this mode exists, but sending the following sequence is
+     probably harmless if it doesn't.  */
+  if (mouse_protocol == MP_NORMAL_TRACKING
+      && term_Km && !strcmp (term_Km, "\033[M"))
+    send_to_terminal ("\033[?1000h");
+  else
+    term_Km = 0;
 
   if (term_keypad_on)
       send_to_terminal (term_keypad_on);
@@ -162,6 +190,10 @@ static void
 terminal_end_using_terminal (void)
 {
   RETSIGTYPE (*sigsave) (int signum);
+
+  /* Turn off mouse reporting ("normal tracking mode"). */
+  if (term_Km)
+    send_to_terminal ("\033[?1000l");
 
   if (term_keypad_off)
       send_to_terminal (term_keypad_off);
@@ -211,6 +243,10 @@ int terminal_use_visible_bell_p = 0;
 /* Non-zero means that the terminal can do scrolling. */
 int terminal_can_scroll = 0;
 
+/* Non-zero means that the terminal scroll within a restricted region
+   of lines. */
+int terminal_can_scroll_region = 0;
+
 /* The key sequences output by the arrow keys, if this terminal has any. */
 char *term_ku = NULL;
 char *term_kd = NULL;
@@ -222,7 +258,7 @@ char *term_kh = NULL;	/* home */
 char *term_ke = NULL;	/* end */
 char *term_kD = NULL;	/* delete */
 char *term_ki = NULL;	/* ins */
-char *term_kx = NULL;	/* del */
+char *term_kB = NULL;	/* back tab */
 
 /* Move the cursor to the terminal location of X and Y. */
 void
@@ -334,6 +370,31 @@ terminal_end_inverse (void)
     }
 }
 
+/* Turn on "standout mode" if possible.  Likely the same
+   as reverse video. */
+void
+terminal_begin_standout (void)
+{
+  if (terminal_begin_standout_hook)
+    (*terminal_begin_standout_hook) ();
+  else
+    {
+      send_to_terminal (term_so);
+    }
+}
+
+/* Turn off "standout mode" if possible. */
+void
+terminal_end_standout (void)
+{
+  if (terminal_end_standout_hook)
+    (*terminal_end_standout_hook) ();
+  else
+    {
+      send_to_terminal (term_se);
+    }
+}
+
 /* Ring the terminal bell.  The bell is run visibly if it both has one and
    terminal_use_visible_bell_p is non-zero. */
 void
@@ -395,6 +456,36 @@ terminal_insert_lines (int start, int count)
     }
 
   fflush (stdout);
+}
+
+void
+terminal_scroll_region (int start, int end, int amount)
+{
+  /* Any scrolling at all? */
+  if (amount == 0)
+    return;
+
+  if (terminal_scroll_terminal_hook)
+    {
+      (*terminal_scroll_terminal_hook) (start, end, amount);
+      return;
+    }
+
+  if (terminal_can_scroll_region)
+    {
+      /* Set scrolling region. */
+      tputs (tgoto (term_cs, end - 1, start), 0, output_character_function);
+
+      /* Scroll. */
+      if (amount > 0)
+        tputs (tgoto (term_SR, 0, amount), 0, output_character_function);
+      else
+        tputs (tgoto (term_SF, 0, -amount), 0, output_character_function);
+
+      /* Reset scrolling region. */
+      tputs (tgoto (term_cs, screenheight - 1, 0), 0, output_character_function);
+      return;
+    }
 }
 
 /* Scroll an area of the terminal, starting with the region from START
@@ -499,12 +590,131 @@ terminal_get_screen_size (void)
     }
 }
 
+/* Root of structure representing a mapping from sequences of bytes to named
+   keys. */
+BYTEMAP_ENTRY *byte_seq_to_key;
+
+static void
+add_seq_to_byte_map (int key_id, char *seq)
+{
+  BYTEMAP_ENTRY *b = byte_seq_to_key;
+
+  /* Must consider bytes as unsigned because we use them as array indices. */
+  unsigned char *c = (unsigned char *) seq;
+  for (; *c; c++)
+    {
+      if (c[1] == '\0') /* Last character. */
+        {
+          b[*c].type = BYTEMAP_KEY;
+          b[*c].key = key_id;
+        }
+      else
+        {
+          b[*c].type = BYTEMAP_MAP;
+          b[*c].key = 0;
+          if (!b[*c].next)
+            b[*c].next = xzalloc (256 * sizeof (BYTEMAP_ENTRY));
+          b = b[*c].next;
+        }
+    }
+}
+
+/* Initialize byte map read in get_input_key. */
+static void
+initialize_byte_map (void)
+{
+  int i;
+
+  static struct special_keys {
+      int key_id;
+      char **byte_seq;
+  } keys[] = {
+      KEY_RIGHT_ARROW, &term_kr,
+      KEY_LEFT_ARROW, &term_kl,
+      KEY_UP_ARROW, &term_ku,
+      KEY_DOWN_ARROW, &term_kd,
+      KEY_PAGE_UP, &term_kP,
+      KEY_PAGE_DOWN, &term_kN,
+      KEY_HOME, &term_kh,
+      KEY_END, &term_ke,
+      KEY_DELETE, &term_kD,
+      KEY_INSERT, &term_ki,
+      KEY_BACK_TAB, &term_kB
+  };
+
+  /* Recognize arrow key sequences with both of the usual prefixes in case they 
+     are missing in the termcap entry. */
+  static struct special_keys2 {
+      int key_id;
+      char *byte_seq;
+  } keys2[] = {
+      KEY_RIGHT_ARROW, "\033[C",
+      KEY_RIGHT_ARROW, "\033OC",
+      KEY_LEFT_ARROW, "\033[D",
+      KEY_LEFT_ARROW, "\033OD",
+      KEY_UP_ARROW, "\033[A",
+      KEY_UP_ARROW, "\033OA",
+      KEY_DOWN_ARROW, "\033[B",
+      KEY_DOWN_ARROW, "\033OB"
+  };
+
+  byte_seq_to_key = xmalloc (256 * sizeof (BYTEMAP_ENTRY));
+
+  /* Make each byte represent itself by default. */
+  for (i = 0; i < 128; i++)
+    {
+      byte_seq_to_key[i].type = BYTEMAP_KEY;
+      byte_seq_to_key[i].key = i;
+      byte_seq_to_key[i].next = 0;
+    }
+
+  /* Use 'ISO-Latin' variable to decide whether bytes with the 8th bit set 
+     represent the Meta key being pressed.  Maybe we should have another 
+     variable to enable 8-bit input.  If 'ISO-Latin' is set this allows input 
+     of non-ASCII characters in the echo area. */
+  if (!ISO_Latin_p)
+    for (i = 128; i < 256; i++)
+      {
+        byte_seq_to_key[i].type = BYTEMAP_KEY;
+        byte_seq_to_key[i].key = (i - 128) + KEYMAP_META_BASE;
+        byte_seq_to_key[i].next = 0;
+      }
+
+  /* Hard-code octal 177 = delete.  Either 177 or the term_kD sequence will
+     result in a delete key being registered. */
+  byte_seq_to_key['\177'].type = BYTEMAP_KEY;
+  byte_seq_to_key['\177'].key = KEY_DELETE;
+  byte_seq_to_key['\177'].next = 0;
+
+  /* For each special key, record its byte sequence. */
+  for (i = 0; i < sizeof (keys) / sizeof (*keys); i++)
+    {
+      if (!*keys[i].byte_seq)
+        continue; /* No byte sequence known for this key. */
+
+      add_seq_to_byte_map (keys[i].key_id, *keys[i].byte_seq);
+    }
+
+  /* Hard-coded byte sequences. */
+  for (i = 0; i < sizeof (keys2) / sizeof (*keys2); i++)
+    {
+      add_seq_to_byte_map (keys2[i].key_id, keys2[i].byte_seq);
+    }
+
+  if (term_Km)
+    add_seq_to_byte_map (KEY_MOUSE, term_Km);
+
+  /* Special case for ESC: Can introduce special key sequences, represent the
+     Meta key being pressed, or be a key on its own. */
+  byte_seq_to_key['\033'].type = BYTEMAP_ESC;
+}
+
 /* Initialize the terminal which is known as TERMINAL_NAME.  If this
    terminal doesn't have cursor addressability, `terminal_is_dumb_p'
    becomes nonzero.  The variables SCREENHEIGHT and SCREENWIDTH are set
    to the dimensions that this terminal actually has.  The variable
    TERMINAL_HAS_META_P becomes nonzero if this terminal supports a Meta
-   key.  Finally, the terminal screen is cleared. */
+   key.  Get and save various termcap strings. */
 void
 terminal_initialize_terminal (char *terminal_name)
 {
@@ -515,6 +725,7 @@ terminal_initialize_terminal (char *terminal_name)
   if (terminal_initialize_terminal_hook)
     {
       (*terminal_initialize_terminal_hook) (terminal_name);
+      initialize_byte_map ();
       return;
     }
 
@@ -586,13 +797,24 @@ terminal_initialize_terminal (char *terminal_name)
   term_al = tgetstr ("al", &buffer);
   term_dl = tgetstr ("dl", &buffer);
 
+  term_cs = tgetstr ("cs", &buffer);
+  term_SF = tgetstr ("SF", &buffer);
+  term_SR = tgetstr ("SR", &buffer);
+
   terminal_can_scroll = ((term_AL || term_al) && (term_DL || term_dl));
+  terminal_can_scroll_region = term_cs && term_SF && term_SR;
 
   term_invbeg = tgetstr ("mr", &buffer);
   if (term_invbeg)
     term_invend = tgetstr ("me", &buffer);
   else
     term_invend = NULL;
+
+  term_so = tgetstr ("so", &buffer);
+  if (term_so)
+    term_se = tgetstr ("se", &buffer);
+  else
+    term_se = NULL;
 
   if (!term_cr)
     term_cr =  "\r";
@@ -632,18 +854,17 @@ terminal_initialize_terminal (char *terminal_name)
   term_kP = tgetstr ("kP", &buffer);
   term_kN = tgetstr ("kN", &buffer);
 
-#if defined(INFOKEY)
   term_kh = tgetstr ("kh", &buffer);
   term_ke = tgetstr ("@7", &buffer);
   term_ki = tgetstr ("kI", &buffer);
-  term_kx = tgetstr ("kD", &buffer);
-#endif /* defined(INFOKEY) */
-
-  /* Home and end keys. */
-  term_kh = tgetstr ("kh", &buffer);
-  term_ke = tgetstr ("@7", &buffer);
-
   term_kD = tgetstr ("kD", &buffer);
+
+  term_kB = tgetstr ("kB", &buffer);
+
+  /* String introducing a mouse event. */
+  term_Km = tgetstr ("Km", &buffer);
+
+  initialize_byte_map ();
 
   /* If this terminal is not cursor addressable, then it is really dumb. */
   if (!term_goto)
@@ -687,16 +908,20 @@ struct ltchars original_ltchars;
 #  endif /* !HAVE_TERMIO_H */
 #endif /* !HAVE_TERMIOS_H */
 
-/* Prepare to start using the terminal to read characters singly. */
-void
+/* Prepare to start using the terminal to read characters singly.  Return
+   0 if terminal is too dumb to run Info interactively. */
+int
 terminal_prep_terminal (void)
 {
   int tty;
 
+  if (terminal_is_dumb_p)
+    return 0;
+
   if (terminal_prep_terminal_hook)
     {
       (*terminal_prep_terminal_hook) ();
-      return;
+      return 1;
     }
 
   terminal_begin_using_terminal ();
@@ -826,6 +1051,7 @@ terminal_prep_terminal (void)
   ioctl (tty, TIOCSETN, &ttybuff);
 # endif
 #endif /* !HAVE_TERMIOS_H && !HAVE_TERMIO_H */
+  return 1;
 }
 
 /* Restore the tty settings back to what they were before we started using

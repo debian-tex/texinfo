@@ -68,7 +68,7 @@ up with nodes, floats or anchors with @code{associate_internal_references}.
 It is also possible to group the top-level contents of the tree, which consist
 in nodes and sectioning commands into elements that group together a node and
 the next sectioning element.  With @code{split_by_node} nodes are considered
-to be the main sectionning elements, while with @code{split_by_section} the 
+to be the main sectioning elements, while with @code{split_by_section} the 
 sectioning command elements are the main elements.  The first mode is typical
 of Info format, while the second correspond to a traditional book.
 The elements may be further split in @emph{pages}, which are not pages as
@@ -201,6 +201,11 @@ Verify that internal references (@code{@@ref} and similar without
 fourth of fifth argument) have an associated node, anchor or float.
 Set the @emph{label} key in the @emph{extra} hash of the reference tree
 element to the associated labeled tree element.
+
+@item warn_non_empty_parts($parser)
+@anchor{Texinfo::Structuring warn_non_empty_parts($parser)}
+
+Register a warning in @code{$parser} for each @code{@@part} that is not empty.
 
 @item $elements = split_by_node($tree)
 @anchor{Texinfo::Structuring $elements = split_by_node($tree)}

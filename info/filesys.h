@@ -1,8 +1,8 @@
 /* filesys.h -- external declarations for filesys.c.
-   $Id: filesys.h 5337 2013-08-22 17:54:06Z karl $
+   $Id: filesys.h 5609 2014-05-27 12:49:23Z gavin $
 
-   Copyright 1993, 1997, 1998, 2002, 2004, 2005, 2007, 2009, 2012, 2013
-   Free Software Foundation, Inc.
+   Copyright 1993, 1997, 1998, 2002, 2004, 2005, 2007, 2009, 2012, 2013,
+   2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,43 +22,32 @@
 #ifndef INFO_FILESYS_H
 #define INFO_FILESYS_H
 
-/* The path on which we look for info files.  You can initialize this
-   from the environment variable INFOPATH if there is one, or you can
-   call info_add_path () to add paths to the beginning or end of it. */
-
-extern char *infopath ();
+/* Return a string describing the search path. */
+extern char *infopath_string ();
 
 /* Initialize INFOPATH */
 void infopath_init (void);
 
-/* Make INFOPATH have absolutely nothing in it. */
-extern void infopath_clear (void);
-
-/* Add PATH to the list of paths found in INFOPATH.  2nd argument says
-   whether to put PATH at the front or end of INFOPATH. */
-extern void infopath_add (char *path, int where);
+/* Add PATH to the list of paths found in INFOPATH. */
+extern void infopath_add (char *path);
 
 /* Iterate over INFOPATH */
 char *infopath_first (int *idx);
 char *infopath_next (int *idx);
 
-/* Defines that are passed along with the pathname to infopath_add (). */
-#define INFOPATH_PREPEND 0
-#define INFOPATH_APPEND  1
-#define INFOPATH_INIT    2
-
 /* Expand the filename in PARTIAL to make a real name for this operating
    system.  This looks in INFO_PATHS in order to find the correct file.
    If it can't find the file, it returns NULL. */
-extern char *info_find_fullpath (char *partial);
+extern char *info_find_fullpath (char *partial, struct stat *finfo);
 
-/* Forget all cached file names */
-extern void forget_file_names (void);
+/* Scan the list of directories in PATH looking for FILENAME.  If we find
+   one that is a regular file, return it as a new string.  Otherwise, return
+   a NULL pointer. */
+extern char *info_file_find_next_in_path (char *filename,
+					  int *diridx, struct stat *finfo);
 
-/* Given a chunk of text and its length, convert all CRLF pairs at the
-   EOLs into a single Newline character.  Return the length of produced
-   text.  */
-long convert_eols (char *text, long textlen);
+extern char *info_add_extension (char *dirname, char *filename,
+                                 struct stat *finfo);
 
 /* Read the contents of PATHNAME, returning a buffer with the contents of
    that file in it, and returning the size of that buffer in FILESIZE.
@@ -67,12 +56,6 @@ long convert_eols (char *text, long textlen);
 extern char *filesys_read_info_file (char *pathname, size_t *filesize,
     struct stat *finfo, int *is_compressed);
 
-extern char *filesys_read_compressed (char *pathname, size_t *filesize);
-
-/* Return the command string that would be used to decompress FILENAME. */
-extern char *filesys_decompressor_for_file (char *filename);
-extern int compressed_filename_p (char *filename);
-
 /* A function which returns a pointer to a static buffer containing
    an error message for FILENAME and ERROR_NUM. */
 extern char *filesys_error_string (char *filename, int error_num);
@@ -80,23 +63,12 @@ extern char *filesys_error_string (char *filename, int error_num);
 /* The number of the most recent file system error. */
 extern int filesys_error_number;
 
-/* Given a string containing units of information separated by colons,
-   return the next one pointed to by IDX, or NULL if there are no more.
-   Advance IDX to the character after the colon. */
-extern char *extract_colon_unit (char *string, int *idx);
-
 /* Return true if FILENAME is `dir', with a possible compression suffix.  */
 extern int is_dir_name (char *filename);
 
-/* Scan the list of directories in PATH looking for FILENAME.  If we find
-   one that is a regular file, return it as a new string.  Otherwise, return
-   a NULL pointer. */
-extern char *info_file_find_next_in_path (char *filename, char *path,
-					  int *diridx);
-
 /* The default value of INFOPATH. */
 #if !defined (DEFAULT_INFOPATH)
-#  define DEFAULT_INFOPATH ".:PATH:/usr/local/info:/usr/info:/usr/local/lib/info:/usr/lib/info:/usr/local/gnu/info:/usr/local/gnu/lib/info:/usr/gnu/info:/usr/gnu/lib/info:/opt/gnu/info:/usr/share/info:/usr/share/lib/info:/usr/local/share/info:/usr/local/share/lib/info:/usr/gnu/lib/emacs/info:/usr/local/gnu/lib/emacs/info:/usr/local/lib/emacs/info:/usr/local/emacs/info"
+#  define DEFAULT_INFOPATH "PATH:/usr/local/info:/usr/info:/usr/local/lib/info:/usr/lib/info:/usr/local/gnu/info:/usr/local/gnu/lib/info:/usr/gnu/info:/usr/gnu/lib/info:/opt/gnu/info:/usr/share/info:/usr/share/lib/info:/usr/local/share/info:/usr/local/share/lib/info:/usr/gnu/lib/emacs/info:/usr/local/gnu/lib/emacs/info:/usr/local/lib/emacs/info:/usr/local/emacs/info:."
 #endif /* !DEFAULT_INFOPATH */
 
 #if !defined (S_ISREG) && defined (S_IFREG)

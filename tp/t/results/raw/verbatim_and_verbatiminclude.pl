@@ -1282,31 +1282,31 @@ In verbatim test text
 
 $result_converted_errors{'plaintext'}->{'verbatim_and_verbatiminclude'} = [
   {
-    'file_name' => '',
     'error_line' => ':25: @verbatiminclude: could not find verb.txt
 ',
-    'text' => '@verbatiminclude: could not find verb.txt',
-    'type' => 'error',
+    'file_name' => '',
+    'line_nr' => 25,
     'macro' => '',
-    'line_nr' => 25
+    'text' => '@verbatiminclude: could not find verb.txt',
+    'type' => 'error'
   },
   {
-    'file_name' => '',
     'error_line' => ':29: @verbatiminclude: could not find verb.txt
 ',
-    'text' => '@verbatiminclude: could not find verb.txt',
-    'type' => 'error',
+    'file_name' => '',
+    'line_nr' => 29,
     'macro' => '',
-    'line_nr' => 29
+    'text' => '@verbatiminclude: could not find verb.txt',
+    'type' => 'error'
   },
   {
-    'file_name' => '',
     'error_line' => ':33: @verbatiminclude: could not find verb.txt
 ',
-    'text' => '@verbatiminclude: could not find verb.txt',
-    'type' => 'error',
+    'file_name' => '',
+    'line_nr' => 33,
     'macro' => '',
-    'line_nr' => 33
+    'text' => '@verbatiminclude: could not find verb.txt',
+    'type' => 'error'
   }
 ];
 

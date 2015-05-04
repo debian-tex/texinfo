@@ -1,8 +1,8 @@
 /* infokey.c -- compile ~/.infokey to ~/.info.
-   $Id: infokey.c 5338 2013-08-22 17:58:30Z karl $
+   $Id: infokey.c 5927 2014-11-14 13:32:00Z gavin $
 
    Copyright 1999, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009,
-   2010, 2011, 2012, 2013 Free Software Foundation, Inc.
+   2010, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,243 +20,23 @@
    Originally written by Andrew Bettison. */
 
 #include "info.h"
-#include "infomap.h"
-#include "infokey.h"
-#include "key.h"
+#include "doc.h"
+#include "session.h"
+#include "funs.h"
 #include "getopt.h"
+#include "variables.h"
 
-char *program_name = "infokey";
+extern char *program_name;  /* in info.c */
 
-/* Non-zero means print version info only. */
-static int print_version_p = 0;
-
-/* Non-zero means print a short description of the options. */
-static int print_help_p = 0;
-
-/* String specifying the source file.  This is set by the user on the
-   command line, or a default is used. */
-static char *input_filename = NULL;
-
-/* String specifying the name of the file to output to.  This is
-   set by the user on the command line, or a default is used. */
-static char *output_filename = NULL;
-
-/* Structure describing the options that Infokey accepts.  We pass this
-   structure to getopt_long ().  If you add or otherwise change this
-   structure, you must also change the string which follows it. */
-static struct option long_options[] =
-{
-  {"output", 1, 0, 'o'},
-  {"help", 0, &print_help_p, 1},
-  {"version", 0, &print_version_p, 1},
-  {NULL, 0, NULL, 0}
-};
-
-/* String describing the shorthand versions of the long options found above. */
-static char *short_options = "o:";
-
-/* Structure for holding the compiled sections. */
 enum sect_e
   {
     info = 0,
     ea = 1,
     var = 2
   };
-struct sect
-  {
-    unsigned int cur;
-    unsigned char data[INFOKEY_MAX_SECTIONLEN];
-  };
 
-/* Some "forward" declarations. */
-static char *mkpath (const char *dir, const char *file);
-static int compile (FILE *fp, const char *filename, struct sect *sections);
-static int write_infokey_file (FILE *fp, struct sect *sections);
 static void syntax_error (const char *filename, unsigned int linenum,
 			  const char *fmt, ...) TEXINFO_PRINTFLIKE(3,4);
-static void error_message (int error_code, const char *fmt, ...)
-  TEXINFO_PRINTFLIKE(2,3);
-static void suggest_help (void);
-static void short_help (void);
-
-
-/* **************************************************************** */
-/*                                                                  */
-/*             Main Entry Point to the Infokey Program              */
-/*                                                                  */
-/* **************************************************************** */
-
-int
-main (int argc, char **argv)
-{
-  int getopt_long_index;	/* Index returned by getopt_long (). */
-
-#ifdef HAVE_SETLOCALE
-  /* Set locale via LC_ALL.  */
-  setlocale (LC_ALL, "");
-#endif
-
-#ifdef ENABLE_NLS
-  /* Set the text message domain.  */
-  bindtextdomain (PACKAGE, LOCALEDIR);
-  textdomain (PACKAGE);
-#endif
-
-  while (1)
-    {
-      int option_character;
-
-      option_character = getopt_long
-	(argc, argv, short_options, long_options, &getopt_long_index);
-
-      /* getopt_long () returns EOF when there are no more long options. */
-      if (option_character == EOF)
-	break;
-
-      /* If this is a long option, then get the short version of it. */
-      if (option_character == 0 && long_options[getopt_long_index].flag == 0)
-	option_character = long_options[getopt_long_index].val;
-
-      /* Case on the option that we have received. */
-      switch (option_character)
-	{
-	case 0:
-	  break;
-
-	  /* User is specifying the name of a file to output to. */
-	case 'o':
-	  if (output_filename)
-	    free (output_filename);
-	  output_filename = xstrdup (optarg);
-	  break;
-
-	default:
-	  suggest_help ();
-	  exit (EXIT_FAILURE);
-	}
-    }
-
-  /* If the user specified --version, then show the version and exit. */
-  if (print_version_p)
-    {
-      printf ("%s (GNU %s) %s\n", program_name, PACKAGE, VERSION);
-      puts ("");
-      printf (_("Copyright (C) %s Free Software Foundation, Inc.\n\
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
-This is free software: you are free to change and redistribute it.\n\
-There is NO WARRANTY, to the extent permitted by law.\n"),
-	      "2013");
-      exit (EXIT_SUCCESS);
-    }
-
-  /* If the `--help' option was present, show the help and exit. */
-  if (print_help_p)
-    {
-      short_help ();
-      exit (EXIT_SUCCESS);
-    }
-
-  /* If there is one argument remaining, it is the name of the input
-     file. */
-  if (optind == argc - 1)
-    {
-      if (input_filename)
-	free (input_filename);
-      input_filename = xstrdup (argv[optind]);
-    }
-  else if (optind != argc)
-    {
-      error_message (0, _("incorrect number of arguments"));
-      suggest_help ();
-      exit (EXIT_FAILURE);
-    }
-
-  /* Use default filenames where none given. */
-  {
-    char *homedir;
-
-    homedir = getenv ("HOME");
-#if defined(__MSDOS__) || defined(__MINGW32__)
-    if (!homedir)
-      homedir = ".";
-#endif
-    if (!input_filename)
-      input_filename = mkpath (homedir, INFOKEY_SRCFILE);
-    if (!output_filename)
-      output_filename = mkpath (homedir, INFOKEY_FILE);
-  }
-
-  {
-    FILE *inf;
-    FILE *outf;
-    int write_error;
-    static struct sect sections[3];
-
-    /* Open the input file. */
-    inf = fopen (input_filename, "r");
-    if (!inf)
-      {
-	error_message (errno, _("cannot open input file `%s'"),
-		       input_filename);
-	exit (EXIT_FAILURE);
-      }
-
-    /* Compile the input file to its verious sections, then write the
-       section data to the output file. */
-
-    if (compile (inf, input_filename, sections))
-      {
-	/* Open the output file. */
-	outf = fopen (output_filename, FOPEN_WBIN);
-	if (!outf)
-	  {
-	    error_message (errno, _("cannot create output file `%s'"),
-			   output_filename);
-	    exit (EXIT_FAILURE);
-	  }
-
-	/* Write the contents of the output file and close it.  If there is
-	   an error writing to the file, delete it and exit with a failure
-	   status.  */
-	write_error = 0;
-	if (!write_infokey_file (outf, sections))
-	  {
-	    error_message (errno, _("error writing to `%s'"),
-			   output_filename);
-	    write_error = 1;
-	  }
-	if (fclose (outf) == EOF)
-	  {
-	    error_message (errno, _("error closing output file `%s'"),
-			   output_filename);
-	    write_error = 1;
-	  }
-	if (write_error)
-	  {
-	    unlink (output_filename);
-	    exit (EXIT_FAILURE);
-	  }
-      }
-
-    /* Close the input file. */
-    fclose (inf);
-  }
-
-  return 0;
-}
-
-static char *
-mkpath (const char *dir, const char *file)
-{
-  char *p;
-
-  p = xmalloc (strlen (dir) + 1 + strlen (file) + 2);
-  strcpy (p, dir);
-  strcat (p, "/");
-  strcat (p, file);
-  return p;
-}
-
 
 /* Compilation - the real work.
 
@@ -373,17 +153,17 @@ mkpath (const char *dir, const char *file)
 	following the '=' is not ignored.
  */
 
-static int add_to_section (struct sect *s, const char *str, unsigned int len);
 static int lookup_action (const char *actname);
 
-/* Compile the input file into its various sections.  Return true if no
-   error was encountered.
- */
-static int
-compile (FILE *fp, const char *filename, struct sect *sections)
+/* Read the init file.  Return true if no error was encountered.  Set
+   SUPPRESS_INFO or SUPPRESS_EA to true if the init file specified to ignore
+   default key bindings. */
+int
+compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
 {
-  int error = 0;
-  char rescan = 0;
+  int error = 0; /* Set if there was a fatal error in reading init file. */
+  char rescan = 0; /* Whether to reuse the same character when moving onto the
+                      next state. */
   unsigned int lnum = 0;
   int c = 0;
 
@@ -430,7 +210,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
   char oval = 0;
   char comment[10];
   unsigned int clen = 0;
-  char seq[20];
+  int seq[20];
   unsigned int slen = 0;
   char act[80];
   unsigned int alen = 0;
@@ -441,8 +221,8 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 
 #define	To_seq(c) \
 		  do { \
-		    if (slen < sizeof seq) \
-		      seq[slen++] = meta ? Meta(c) : (c); \
+		    if (slen < sizeof seq/sizeof(int)) \
+		      seq[slen++] = meta ? KEYMAP_META(c) : (c); \
 		    else \
 		      { \
 			syntax_error(filename, lnum, \
@@ -451,12 +231,6 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		      } \
 		    meta = 0; \
 		  } while (0)
-
-  sections[info].cur = 1;
-  sections[info].data[0] = 0;
-  sections[ea].cur = 1;
-  sections[ea].data[0] = 0;
-  sections[var].cur = 0;
 
   while (!error && (rescan || (c = fgetc (fp)) != EOF))
     {
@@ -503,7 +277,12 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		section = var;
 	      else if (strcmp (comment, "stop") == 0
 		       && (section == info || section == ea))
-		sections[section].data[0] = 1;
+                {
+                  if (section == info)
+                    *suppress_info = 1;
+                  else
+                    *suppress_ea = 1;
+                }
 	    }
 	  else if (clen < sizeof comment - 1)
 	    comment[clen++] = c;
@@ -611,19 +390,18 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	      break;
 
 	    case special_key:
-	      To_seq (SK_ESCAPE);
 	      switch (c)
 		{
-		case 'u': To_seq (SK_UP_ARROW); break;
-		case 'd': To_seq (SK_DOWN_ARROW); break;
-		case 'r': To_seq (SK_RIGHT_ARROW); break;
-		case 'l': To_seq (SK_LEFT_ARROW); break;
-		case 'U': To_seq (SK_PAGE_UP); break;
-		case 'D': To_seq (SK_PAGE_DOWN); break;
-		case 'h': To_seq (SK_HOME); break;
-		case 'e': To_seq (SK_END); break;
-		case 'x': To_seq (SK_DELETE); break;
-		default:  To_seq (SK_LITERAL); rescan = 1; break;
+		case 'u': To_seq (KEY_UP_ARROW); break;
+		case 'd': To_seq (KEY_DOWN_ARROW); break;
+		case 'r': To_seq (KEY_RIGHT_ARROW); break;
+		case 'l': To_seq (KEY_LEFT_ARROW); break;
+		case 'U': To_seq (KEY_PAGE_UP); break;
+		case 'D': To_seq (KEY_PAGE_DOWN); break;
+		case 'h': To_seq (KEY_HOME); break;
+		case 'e': To_seq (KEY_END); break;
+		case 'x': To_seq (KEY_DELETE); break;
+		default:  To_seq (c); rescan = 1; break;
 		}
 	      seqstate = normal;
 	      break;
@@ -664,23 +442,36 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		{
 		  act[alen] = '\0';
 		  a = lookup_action (act);
-		  if (a != -1)
+                  if (a == A_info_menu_digit)
 		    {
-		      char av = a;
-
-		      if (!(add_to_section (&sections[section], seq, slen)
-			    && add_to_section (&sections[section], "", 1)
-			    && add_to_section (&sections[section], &av, 1)))
-			{
-			  syntax_error (filename, lnum, _("section too long"));
-			  error = 1;
-			}
+                      /* It does not make sense for menu-digit to be anything
+                         other than '0' .. '9'. */
+		      syntax_error (filename, lnum,
+                        _("cannot bind key sequence to menu-digit"));
 		    }
-		  else
+		  else if (a == -1)
 		    {
+                      /* Print an error message, but keep going (don't set
+                         error = 1) for compatibility with infokey files aimed
+                         at future versions which may have different
+                         actions. */
 		      syntax_error (filename, lnum, _("unknown action `%s'"),
 				    act);
-		      error = 1;
+		    }
+                  else
+		    {
+                      int keymap_bind_keyseq (Keymap, int *, KEYMAP_ENTRY *);
+
+                      KEYMAP_ENTRY ke;
+                      
+                      ke.type = ISFUNC;
+                      ke.value.function = &function_doc_array[a];
+                      To_seq (0);
+
+                      if (section == info)
+                        keymap_bind_keyseq (info_keymap, seq, &ke);
+                      else /* section == ea */
+                        keymap_bind_keyseq (echo_area_keymap, seq, &ke);
 		    }
 		}
 	    }
@@ -724,7 +515,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 			    _("missing `=' immediately after variable name"));
 	      error = 1;
 	    }
-	  else if (varlen < sizeof varn)
+	  else if (varlen < sizeof varn - 1)
 	    varn[varlen++] = c;
 	  else
 	    {
@@ -736,17 +527,19 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	case get_value:
 	  if (c == '\n')
 	    {
-	      state = start_of_line;
-	      if (!(add_to_section (&sections[section], varn, varlen)
-		    && add_to_section (&sections[section], "", 1)
-		    && add_to_section (&sections[section], val, vallen)
-		    && add_to_section (&sections[section], "", 1)))
-		{
-		  syntax_error (filename, lnum, _("section too long"));
-		  error = 1;
-		}
+              VARIABLE_ALIST *v;
+
+              state = start_of_line;
+              varn[varlen] = '\0';
+              val[vallen] = '\0';
+              v = variable_by_name (varn);
+              if (!v)
+                info_error (_("%s: no such variable"), varn);
+              else if (!set_variable_to_value (v, val, SET_IN_CONFIG_FILE))
+                info_error (_("value %s is not valid for variable %s"),
+                              val, varn);
 	    }
-	  else if (vallen < sizeof val)
+	  else if (vallen < sizeof val - 1)
 	    val[vallen++] = c;
 	  else
 	    {
@@ -767,106 +560,24 @@ compile (FILE *fp, const char *filename, struct sect *sections)
   return !error;
 }
 
-/* Add some characters to a section's data.  Return true if all the
-   characters fit, or false if the section's size limit was exceeded.
- */
+/* Return the numeric code of an Info command given its name.  If not found,
+   return -1.  This uses the auto-generated array in doc.c. */
 static int
-add_to_section (struct sect *s, const char *str, unsigned int len)
-{
-  if (s->cur + len > sizeof s->data)
-    return 0;
-  strncpy ((char *) s->data + s->cur, str, len);
-  s->cur += len;
-  return 1;
-}
-
-/* Translate from an action name to its numeric code.  This uses the
-   auto-generated array in key.c.
- */
-static int
-lookup_action (const char *actname)
+lookup_action (const char *name)
 {
   int i;
 
-  if (strcmp ("invalid", actname) == 0)
+  if (!strcmp (name, "invalid"))
     return A_INVALID;
-  for (i = 0; function_key_array[i].name != NULL; i++)
-    if (strcmp (function_key_array[i].name, actname) == 0)
-      return function_key_array[i].code;
+  for (i = 0; function_doc_array[i].func_name; i++)
+    if (!strcmp (function_doc_array[i].func_name, name))
+      return i;
   return -1;
 }
 
-/* Put an integer to an infokey file.
-   Integers are stored as two bytes, low order first,
-   in radix INFOKEY_RADIX.
- */
-static int
-putint (int i, FILE *fp)
-{
-  return fputc (i % INFOKEY_RADIX, fp) != EOF
-    && fputc ((i / INFOKEY_RADIX) % INFOKEY_RADIX, fp) != EOF;
-}
-
-/* Write an entire section to an infokey file.  If the section is
-   empty, simply omit it.
- */
-static int
-putsect (struct sect *s, int code, FILE *fp)
-{
-  if (s->cur == 0)
-    return 1;
-  return fputc (code, fp) != EOF
-    && putint (s->cur, fp)
-    && fwrite (s->data, s->cur, 1, fp) == 1;
-}
-
-/* Write an entire infokey file, given an array containing its sections.
- */
-static int
-write_infokey_file (FILE *fp, struct sect *sections)
-{
-  /* Get rid of sections with no effect. */
-  if (sections[info].cur == 1 && sections[info].data[0] == 0)
-    sections[info].cur = 0;
-  if (sections[ea].cur == 1 && sections[ea].data[0] == 0)
-    sections[ea].cur = 0;
-
-  /* Write all parts of the file out in order (no lseeks),
-     checking for errors all the way. */
-  return fputc (INFOKEY_MAGIC_S0, fp) != EOF
-    && fputc (INFOKEY_MAGIC_S1, fp) != EOF
-    && fputc (INFOKEY_MAGIC_S2, fp) != EOF
-    && fputc (INFOKEY_MAGIC_S3, fp) != EOF
-    && fputs (VERSION, fp) != EOF
-    && fputc ('\0', fp) != EOF
-    && putsect (&sections[info], INFOKEY_SECTION_INFO, fp)
-    && putsect (&sections[ea], INFOKEY_SECTION_EA, fp)
-    && putsect (&sections[var], INFOKEY_SECTION_VAR, fp)
-    && fputc (INFOKEY_MAGIC_E0, fp) != EOF
-    && fputc (INFOKEY_MAGIC_E1, fp) != EOF
-    && fputc (INFOKEY_MAGIC_E2, fp) != EOF
-    && fputc (INFOKEY_MAGIC_E3, fp) != EOF;
-}
 
 
 /* Error handling. */
-
-/* Give the user a "syntax error" message in the form
-	progname: "filename", line N: message
- */
-static void
-error_message (int error_code, const char *fmt, ...)
-{
-  va_list ap;
-
-  fprintf (stderr, "%s: ", program_name);
-  va_start(ap, fmt);
-  vfprintf (stderr, fmt, ap);
-  va_end(ap);
-  if (error_code)
-    fprintf (stderr, " - %s", strerror (error_code));
-  fprintf (stderr, "\n");
-}
 
 /* Give the user a generic error message in the form
 	progname: message
@@ -885,33 +596,4 @@ syntax_error (const char *filename,
   fprintf (stderr, "\n");
 }
 
-/* Produce a gentle rtfm. */
-static void
-suggest_help (void)
-{
-  fprintf (stderr, _("Try --help for more information.\n"));
-}
 
-/* Produce a scaled down description of the available options to Info. */
-static void
-short_help (void)
-{
-  printf (_("\
-Usage: %s [OPTION]... [INPUT-FILE]\n\
-\n\
-Compile infokey source file to infokey file.  Reads INPUT-FILE (default\n\
-$HOME/.infokey) and writes compiled key file to (by default) $HOME/.info.\n\
-\n\
-Options:\n\
-  --output FILE        output to FILE instead of $HOME/.info\n\
-  --help               display this help and exit.\n\
-  --version            display version information and exit.\n\
-"), program_name);
-
-  puts (_("\n\
-Email bug reports to bug-texinfo@gnu.org,\n\
-general questions and discussion to help-texinfo@gnu.org.\n\
-Texinfo home page: http://www.gnu.org/software/texinfo/"));
-
-  exit (EXIT_SUCCESS);
-}

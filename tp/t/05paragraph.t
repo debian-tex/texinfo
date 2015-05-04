@@ -1,3 +1,4 @@
+# $Id: 05paragraph.t 6132 2015-02-18 00:07:53Z karl $
 use strict;
 
 use File::Spec;
@@ -28,6 +29,8 @@ text l 2
 @b{aaa}.
 
 @dotless{i} also dotless i.
+
+@U{0075} also U+0075.
 
 @email{m1} email.
 

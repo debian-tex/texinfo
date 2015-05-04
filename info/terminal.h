@@ -1,7 +1,7 @@
 /* terminal.h -- The external interface to terminal I/O.
-   $Id: terminal.h 5337 2013-08-22 17:54:06Z karl $
+   $Id: terminal.h 5817 2014-09-10 19:46:09Z gavin $
 
-   Copyright 1993, 1996, 1997, 2001, 2002, 2004, 2007, 2013
+   Copyright 1993, 1996, 1997, 2001, 2002, 2004, 2007, 2013, 2014
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -47,6 +47,9 @@ extern int terminal_use_visible_bell_p;
 /* Non-zero means that this terminal can scroll lines up and down. */
 extern int terminal_can_scroll;
 
+/* Non-zero means that this terminal can scroll within a restricted region. */
+extern int terminal_can_scroll_region;
+
 /* Initialize the terminal which is known as TERMINAL_NAME.  If this terminal
    doesn't have cursor addressability, TERMINAL_IS_DUMB_P becomes non-zero.
    The variables SCREENHEIGHT and SCREENWIDTH are set to the dimensions that
@@ -61,7 +64,7 @@ extern void terminal_get_screen_size (void);
 extern VFunction *terminal_get_screen_size_hook;
 
 /* Save and restore tty settings. */
-extern void terminal_prep_terminal (void);
+extern int terminal_prep_terminal (void);
 extern void terminal_unprep_terminal (void);
 
 extern VFunction *terminal_prep_terminal_hook;
@@ -107,12 +110,22 @@ extern VFunction *terminal_begin_inverse_hook;
 extern void terminal_end_inverse (void);
 extern VFunction *terminal_end_inverse_hook;
 
+/* Turn on standout mode if possible. */
+extern void terminal_begin_standout (void);
+extern VFunction *terminal_begin_standout_hook;
+
+/* Turn off standout mode if possible. */
+extern void terminal_end_standout (void);
+extern VFunction *terminal_end_standout_hook;
+
 /* Scroll an area of the terminal, starting with the region from START
    to END, AMOUNT lines.  If AMOUNT is negative, the lines are scrolled
    towards the top of the screen, else they are scrolled towards the
    bottom of the screen. */
 extern void terminal_scroll_terminal (int start, int end, int amount);
 extern VFunction *terminal_scroll_terminal_hook;
+
+extern void terminal_scroll_region (int start, int end, int amount);
 
 /* Ring the terminal bell.  The bell is run visibly if it both has one and
    terminal_use_visible_bell_p is non-zero. */
@@ -123,7 +136,13 @@ extern VFunction *terminal_ring_bell_hook;
 extern char *term_ku, *term_kd, *term_kr, *term_kl;
 extern char *term_kP, *term_kN;
 extern char *term_ke, *term_kh;
-extern char *term_kx, *term_ki;
-extern char *term_kD;
+extern char *term_kD, *term_ki;
+extern char *term_kB;
+
+extern char *term_so, *term_se;
+
+#define MP_NONE 0
+#define MP_NORMAL_TRACKING 1
+extern int mouse_protocol;
 
 #endif /* !TERMINAL_H */

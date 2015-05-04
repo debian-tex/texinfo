@@ -75,6 +75,21 @@ Following should be an error:
 @end example
 Example in heading/heading_in_example.
 
+Similar, but not exactly the same issue, there is no warning with a
+block command between @def* and @def*x, only for paragraph.
+
+ @defun a b c d e f 
+
+ @itemize @minus
+ truc
+ @item t
+ @end itemize
+
+ @defunx g h j k l m
+
+ @end defun
+
+
 
 Punctuation and spaces before @image do not lead to a doubling of space.
 In fact @image is completly formatted outside of usual formatting containers.
@@ -210,8 +225,6 @@ DocBook
   block element within, and it should be that way in generated output.
 
   put <title> in <articleinfo>?
-
-  how to handle @sc in docbook?
 
 * in docbook, when there is only one section <article> should be better
   than book. Maybe the best way to do that would be passing the

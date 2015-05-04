@@ -1,7 +1,7 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
-   $Id: window.h 5337 2013-08-22 17:54:06Z karl $
+   $Id: window.h 5884 2014-10-22 22:19:04Z gavin $
 
-   Copyright 1993, 1997, 2004, 2007, 2011 2013
+   Copyright 1993, 1997, 2004, 2007, 2011 2013, 2014
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -22,8 +22,9 @@
 #ifndef INFO_WINDOW_H
 #define INFO_WINDOW_H
 
-#include "infomap.h"
+#include "doc.h"
 #include "nodes.h"
+#include <regex.h>
 
 /* Smallest number of visible lines in a window.  The actual height is
    always one more than this number because each window has a modeline. */
@@ -55,8 +56,12 @@ typedef struct line_map_struct
    do it.  NB> The last element does NOT end with a semi-colon. */
 #define WINDOW_STATE_DECL \
    NODE *node;          /* The node displayed in this window. */ \
-   int pagetop;         /* LINE_STARTS[PAGETOP] is first line in WINDOW. */ \
+   long pagetop;        /* LINE_STARTS[PAGETOP] is first line in WINDOW. */ \
    long point           /* Offset within NODE of the cursor position. */
+
+typedef struct {
+  WINDOW_STATE_DECL;            /* What gets saved. */
+} WINDOW_STATE;
 
 /* Structure which defines a window.  Windows are doubly linked, next
    and prev. The list of windows is kept on WINDOWS.  The structure member
@@ -68,32 +73,33 @@ typedef struct window_struct
 {
   struct window_struct *next;      /* Next window in this chain. */
   struct window_struct *prev;      /* Previous window in this chain. */
-  size_t width;         /* Width of this window. */
-  size_t height;        /* Height of this window. */
-  size_t first_row;     /* Offset of the first line in the_screen. */
-  size_t goal_column;   /* The column we would like the cursor to appear in. */
-  Keymap keymap;        /* Keymap used to read commands in this window. */
+  long width;           /* Width of this window. */
+  long height;          /* Height of this window. */
+  long first_row;       /* Offset of the first line in the_screen. */
+  long goal_column;     /* Column to place the cursor in when moving it up and 
+                           down.  -1 means the column it is currently in. */
   WINDOW_STATE_DECL;    /* Node, pagetop and point. */
   LINE_MAP line_map;    /* Current line map */
   char *modeline;       /* Calculated text of the modeline for this window. */
-  char **line_starts;   /* Array of printed line starts for this node. */
-  size_t line_count;    /* Number of lines appearing in LINE_STARTS. */
-  size_t *log_line_no;  /* Number of logical line corresponding to each
-			   physical one. */
+  long *line_starts;    /* Offsets of printed line starts in node->contents.*/
+  long *log_line_no;    /* Number of logical line corresponding to each
+                           physical one. */
+  long line_count;      /* Number of elements in LINE_STARTS and LOG_LINE_NO.*/
+  size_t line_slots;    /* Allocated space in LINE_STARTS and LOG_LINE_NO. */
+
   int flags;            /* See below for details. */
+
+  /* Used for highlighting search matches. */
+  char *search_string;
+  int search_is_case_sensitive;
+  regmatch_t *matches;
+  size_t match_count;
+
+  /* History of nodes visited in this window. */
+  WINDOW_STATE **hist;       /* Nodes visited in this window. */
+  size_t hist_index;            /* Index where to add the next node. */
+  size_t hist_slots;            /* Number of slots allocated to HIST. */
 } WINDOW;
-
-typedef struct {
-  WINDOW_STATE_DECL;            /* What gets saved. */
-} WINDOW_STATE;
-
-/* Structure defining the current state of an incremental search. */
-typedef struct {
-  WINDOW_STATE_DECL;    /* The node, pagetop and point. */
-  int search_index;     /* Offset of the last char in the search string. */
-  int direction;        /* The direction that this search is heading in. */
-  int failing;          /* Whether or not this search failed. */
-} SEARCH_STATE;
 
 #define W_UpdateWindow  0x01    /* WINDOW needs updating. */
 #define W_WindowIsPerm  0x02    /* This WINDOW is a permanent object. */
@@ -124,23 +130,14 @@ extern void window_make_modeline (WINDOW *window);
    You pass WIDTH and HEIGHT; the dimensions of the total screen size. */
 extern void window_initialize_windows (int width, int height);
 
-/* Make a new window showing NODE, and return that window structure.
-   The new window is made to be the active window.  If NODE is passed
-   as NULL, then show the node showing in the active window.  If the
-   window could not be made return a NULL pointer.  The active window
-   is not changed.*/
-extern WINDOW *window_make_window (NODE *node);
+/* Make a new window by splitting an existing one. If the window could
+   not be made return a null pointer.  The active window is not changed .*/
+extern WINDOW *window_make_window (void);
 
 /* Delete WINDOW from the list of known windows.  If this window was the
    active window, make the next window in the chain be the active window,
    or the previous window in the chain if there is no next window. */
 extern void window_delete_window (WINDOW *window);
-
-/* A function to call when the screen changes size, and some windows have
-   to get deleted.  The function is called with the window to be deleted
-   as an argument, and it can't do anything about the window getting deleted;
-   it can only clean up dangling references to that window. */
-extern VFunction *window_deletion_notifier;
 
 /* Set WINDOW to display NODE. */
 extern void window_set_node_of_window (WINDOW *window, NODE *node);
@@ -155,6 +152,8 @@ extern void window_new_screen_size (int width, int height);
    the previous and next windows in the chain.  If there is only one user
    window, then no change takes place. */
 extern void window_change_window_height (WINDOW *window, int amount);
+
+extern void set_window_pagetop (WINDOW *window, int desired_top);
 
 /* Adjust the pagetop of WINDOW such that the cursor point will be visible. */
 extern void window_adjust_pagetop (WINDOW *window);
@@ -186,27 +185,8 @@ extern NODE *build_message_node (const char *format, va_list ap);
 extern NODE *format_message_node (const char *format, ...)
   TEXINFO_PRINTFLIKE(1,2);
 
-/* Build a new node with the given CONTENTS.
-   Note: CONTENTS is "stolen", i.e. the pointer to it is saved in the
-   new node. */
-extern NODE *string_to_node (char *contents);
-
-/* Useful functions can be called from outside of window.c. */
-extern void initialize_message_buffer (void);
-
-/* Print arguments according to FORMAT to the end of the current message
-   buffer. */
-extern void printf_to_message_buffer (const char *format, ...)
-  TEXINFO_PRINTFLIKE(1,2);
-
-/* Convert the contents of the message buffer to a node. */
-extern NODE *message_buffer_to_node (void);
-
-/* Return the length of the most recently printed line in message buffer. */
-extern int message_buffer_length_this_line (void);
-
-/* Pad STRING to COUNT characters by inserting blanks. */
-extern int pad_to (int count, char *string);
+struct text_buffer;
+extern NODE *text_buffer_to_node (struct text_buffer *tb);
 
 /* Make a message appear in the echo area, built from arguments formatted
    according to FORMAT.
@@ -235,49 +215,16 @@ extern void unmessage_in_echo_area (void);
    The echo area is cleared immediately. */
 extern void window_clear_echo_area (void);
 
-/* Quickly guess the approximate number of lines to that NODE would
-   take to display.  This really only counts carriage returns. */
-extern int window_physical_lines (NODE *node);
-
-/* Calculate a list of line starts for the node belonging to WINDOW.  The line
-   starts are pointers to the actual text within WINDOW->NODE. */
-extern void calculate_line_starts (WINDOW *window);
-
-/* Given WINDOW, recalculate the line starts for the node it displays. */
-extern void recalculate_line_starts (WINDOW *window);
-
-/* Return the number of characters it takes to display CHARACTER on the
-   screen at HPOS. */
-extern int character_width (int character, int hpos);
-
-/* Return the number of characters it takes to display STRING on the
-   screen at HPOS. */
-extern int string_width (char *string, int hpos);
-
 /* Return the index of the line containing point. */
 extern int window_line_of_point (WINDOW *window);
-
-/* Get and return the goal column for this window. */
-extern int window_get_goal_column (WINDOW *window);
 
 /* Get and return the printed column offset of the cursor in this window. */
 extern int window_get_cursor_column (WINDOW *window);
 
-/* Get and Set the node, pagetop, and point of WINDOW. */
-extern void window_get_state (WINDOW *window, SEARCH_STATE *state);
-extern void window_set_state (WINDOW *window, SEARCH_STATE *state);
-
-/* Count the number of characters in current line of WIN that precede
-   the printed column offset of GOAL. */
-extern int window_chars_to_goal (WINDOW *win, int goal);
-
 extern size_t process_node_text
-        (WINDOW *win, char *start, int do_tags,
-         int (*fun) (void *, size_t, size_t, const char *, char *,
-		     size_t, size_t),
-	 void *closure);
-
-extern void clean_manpage (char *manpage);
+        (WINDOW *win, char *start,
+         int (*fun) (WINDOW *, size_t, size_t, size_t, char *,
+		     size_t, size_t));
 
 extern void window_compute_line_map (WINDOW *win);
 
@@ -285,8 +232,6 @@ extern int window_point_to_column (WINDOW *win, long point, long *np);
 
 extern void window_line_map_init (WINDOW *win);
 
-extern long window_end_of_line (WINDOW *win);
-
-extern size_t window_log_to_phys_line (WINDOW *window, size_t ln);
+extern long window_log_to_phys_line (WINDOW *window, long ln);
 
 #endif /* not INFO_WINDOW_H */

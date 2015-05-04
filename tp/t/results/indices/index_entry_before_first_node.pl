@@ -287,13 +287,13 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'index_entry_before_first_node'} = [
   {
-    'file_name' => '',
     'error_line' => ':2: warning: entry for index `cp\' outside of any node
 ',
-    'text' => 'entry for index `cp\' outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 2,
     'macro' => '',
-    'line_nr' => 2
+    'text' => 'entry for index `cp\' outside of any node',
+    'type' => 'warning'
   }
 ];
 
@@ -307,13 +307,13 @@ $result_converted{'plaintext'}->{'index_entry_before_first_node'} = '* Menu:
 
 $result_converted_errors{'plaintext'}->{'index_entry_before_first_node'} = [
   {
-    'file_name' => '',
     'error_line' => ':2: warning: entry for index `cp\' outside of any node
 ',
-    'text' => 'entry for index `cp\' outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 2,
     'macro' => '',
-    'line_nr' => 2
+    'text' => 'entry for index `cp\' outside of any node',
+    'type' => 'warning'
   }
 ];
 

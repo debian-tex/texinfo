@@ -1,6 +1,6 @@
 # Paragraph.pm: handle paragraph text.
 #
-# Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -66,7 +66,7 @@ sub _cut_line($)
 {
   my $paragraph = shift;
   return '' if ($paragraph->{'ignore_columns'});
-  return $paragraph->_end_line();
+  return _end_line($paragraph);
 }
 
 sub end_line_count($)
@@ -79,7 +79,7 @@ sub end_line($)
 {
   my $paragraph = shift;
   $paragraph->{'end_line_count'} = 0;
-  return $paragraph->_end_line();
+  return _end_line($paragraph);
 }
 
 # end a line.
@@ -116,7 +116,7 @@ sub add_pending_word($;$)
   my $paragraph = shift;
   my $add_spaces = shift;
   $paragraph->{'end_line_count'} = 0;
-  return $paragraph->_add_pending_word($add_spaces);
+  return _add_pending_word($paragraph, $add_spaces);
 }
 
 # put a pending word and spaces in the result string.
@@ -159,7 +159,7 @@ sub end($)
   my $paragraph = shift;
   $paragraph->{'end_line_count'} = 0;
   print STDERR "PARA END\n" if ($paragraph->{'DEBUG'});
-  my $result = $paragraph->_add_pending_word();
+  my $result = _add_pending_word($paragraph);
   if ($paragraph->{'counter'} != 0) {
     $result .= "\n"; 
     $paragraph->{'lines_counter'}++;
@@ -176,8 +176,8 @@ sub add_next($;$$$$)
   my $end_sentence = shift;
   my $transparent = shift;
   $paragraph->{'end_line_count'} = 0;
-  return $paragraph->_add_next($word, undef, $space, $end_sentence, 
-                               $transparent);
+  return _add_next($paragraph, $word, undef, $space, $end_sentence, 
+                   $transparent);
 }
 
 # add a word and/or spaces and end of sentence.
@@ -216,7 +216,7 @@ sub _add_next($;$$$$$)
       $result .= $paragraph->{'space'};
       $paragraph->{'space'} = '';
       $result .= $paragraph->{'word'};
-      $paragraph->_end_line();
+      _end_line($paragraph);
       $paragraph->{'word_counter'} = 0;
       $paragraph->{'word'} = undef;
       $paragraph->{'underlying_word'} = undef;
@@ -241,18 +241,18 @@ sub _add_next($;$$$$$)
     if ($paragraph->{'counter'} != 0 and 
         $paragraph->{'counter'} + $paragraph->{'word_counter'} + 
            length($paragraph->{'space'}) > $paragraph->{'max'}) {
-      $result .= $paragraph->_cut_line();
+      $result .= _cut_line($paragraph);
     }
   }
   if (defined($space)) {
     if ($paragraph->{'protect_spaces'}) {
-      $result .= $paragraph->_add_text($space);
+      $result .= _add_text($paragraph, $space);
     } else {
-      $result .= $paragraph->_add_pending_word();
+      $result .= _add_pending_word($paragraph);
       $paragraph->{'space'} = $space;
       if ($paragraph->{'counter'} + length($paragraph->{'space'}) 
                       > $paragraph->{'max'}) {
-        $result .= $paragraph->_cut_line();
+        $result .= _cut_line($paragraph);
       }
     }
   }
@@ -304,7 +304,7 @@ sub set_space_protection($$;$$$)
     if defined($frenchspacing);
   # begin a word, to have something even if empty
   if ($space_protection) {
-    $paragraph->_add_next('');
+    _add_next($paragraph, '');
   }
   return '';
 }
@@ -318,7 +318,6 @@ sub add_text($$;$)
   my $paragraph = shift;
   my $text = shift;
   my $underlying_text = shift;
-  $underlying_text = $text if (!defined($underlying_text));
   $paragraph->{'end_line_count'} = 0;
   my $result = '';
 
@@ -332,7 +331,8 @@ sub add_text($$;$)
     # \x{202f}\x{00a0} are non breaking spaces
     if ($text =~ s/^([^\S\x{202f}\x{00a0}]+)//) {
       my $spaces = $1;
-      $underlying_text =~ s/^([^\S\x{202f}\x{00a0}]+)//;
+      $underlying_text =~ s/^([^\S\x{202f}\x{00a0}]+)//
+        if defined($underlying_text);
       print STDERR "SPACES($paragraph->{'counter'}) `"._print_escaped_spaces($spaces)."'\n" if ($paragraph->{'DEBUG'});
       #my $added_word = $paragraph->{'word'};
       if ($paragraph->{'protect_spaces'}) {
@@ -363,10 +363,10 @@ sub add_text($$;$)
         if ($paragraph->{'counter'} != 0 and 
             $paragraph->{'counter'} + $paragraph->{'word_counter'} + 
                length($paragraph->{'space'}) > $paragraph->{'max'}) {
-          $result .= $paragraph->_cut_line();
+          $result .= _cut_line($paragraph);
         }
       } else {
-        $result .= $paragraph->_add_pending_word();
+        $result .= _add_pending_word($paragraph);
         if ($paragraph->{'counter'} != 0) {
           if (!$paragraph->{'frenchspacing'} 
               and $paragraph->{'end_sentence'} 
@@ -397,15 +397,20 @@ sub add_text($$;$)
       #delete $paragraph->{'end_sentence'};
       if ($paragraph->{'counter'} + length($paragraph->{'space'}) 
                       > $paragraph->{'max'}) {
-        $result .= $paragraph->_cut_line();
+        $result .= _cut_line($paragraph);
       }
       if ($spaces =~ /\n/ and $paragraph->{'keep_end_lines'}) {
-        $result .= $paragraph->_end_line();
+        $result .= _end_line($paragraph);
       }
     } elsif ($text =~ s/^(\p{InFullwidth})//) {
       my $added = $1;
-      $underlying_text =~ s/^(\p{InFullwidth})//;
-      my $underlying_added = $1;
+      my $underlying_added;
+      if (defined($underlying_text)) {
+        $underlying_text =~ s/^(\p{InFullwidth})//;
+        $underlying_added = $1;
+      } else {
+        $underlying_added = $added;
+      }
       
       print STDERR "EAST_ASIAN\n" if ($paragraph->{'DEBUG'});
       if (!defined($paragraph->{'word'})) {
@@ -418,17 +423,22 @@ sub add_text($$;$)
       if ($paragraph->{'counter'} != 0 and
           $paragraph->{'counter'} + $paragraph->{'word_counter'} 
                                > $paragraph->{'max'}) {
-        $result .= $paragraph->_cut_line();
+        $result .= _cut_line($paragraph);
       }
-      $result .= $paragraph->_add_pending_word();
+      $result .= _add_pending_word($paragraph);
       delete $paragraph->{'end_sentence'};
       $paragraph->{'space'} = '';
     } elsif ($text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//) {
       my $added_word = $1;
-      $underlying_text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//;
-      my $underlying_added_word = $1;
+      my $underlying_added_word;
+      if (defined($underlying_text)) {
+        $underlying_text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//;
+        $underlying_added_word = $1;
+      } else {
+        $underlying_added_word = $added_word;
+      }
 
-      $result .= $paragraph->_add_next($added_word, $underlying_added_word);
+      $result .= _add_next($paragraph, $added_word, $underlying_added_word);
 
       # now check if it is considered as an end of sentence
       if (defined($paragraph->{'end_sentence'})

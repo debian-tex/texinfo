@@ -1,6 +1,6 @@
 # Info.pm: output tree as Info.
 #
-# Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -51,6 +51,9 @@ my $STDIN_DOCU_NAME = 'stdin';
 
 my %defaults = Texinfo::Convert::Plaintext::converter_defaults(undef, undef);
 $defaults{'SHOW_MENU'} = 1;
+$defaults{'EXTENSION'} = 'info';
+$defaults{'USE_SETFILENAME_EXTENSION'} = 1;
+$defaults{'OUTFILE'} = undef;
 
 sub converter_defaults($$)
 {
@@ -128,7 +131,7 @@ sub output($)
     my @nodes = @$elements;
     while (@nodes) {
       my $node = shift @nodes;
-      my $node_text = $self->_convert_node($node);
+      my $node_text = $self->_convert_element($node);
       if (!$first_node) {
         $first_node = 1;
         if (defined($self->{'text_before_first_node'})) {
@@ -508,6 +511,7 @@ sub _image($$)
 1;
 
 __END__
+# $Id: template.pod 6140 2015-02-22 23:34:38Z karl $
 # Automatically generated from maintain/template.pod
 
 =head1 NAME
@@ -520,6 +524,8 @@ Texinfo::Convert::Info - Convert Texinfo tree to Info
     = Texinfo::Convert::Info->converter({'parser' => $parser});
 
   $converter->output($tree);
+  $converter->convert($tree);
+  $converter->convert_tree($tree);
 
 =head1 DESCRIPTION
 
@@ -531,7 +537,7 @@ Texinfo::Convert::Info converts a Texinfo tree to Info.
 
 =item $converter = Texinfo::Convert::Info->converter($options)
 
-Initialize an Info converter.  
+Initialize converter from Texinfo to Info.  
 
 The I<$options> hash reference holds options for the converter.  In
 this option hash reference a parser object may be associated with the 
@@ -554,14 +560,8 @@ the resulting output.
 =item $result = $converter->convert_tree($tree)
 
 Convert a Texinfo tree portion I<$tree> and return the resulting 
-output.  This function do not try to output a full document but only
-portions of document.  For a full document use C<convert>.
-
-=item $result = $converter->output_internal_links()
-
-Returns text representing the links in the document.  At present the format 
-should follow the C<--internal-links> option of texi2any/makeinfo specification
-and this is only relevant for HTML.
+output.  This function does not try to output a full document but only
+portions.  For a full document use C<convert>.
 
 =back
 
@@ -571,7 +571,7 @@ Patrice Dumas, E<lt>pertusus@free.frE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2012 Free Software Foundation, Inc.
+Copyright 2015 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

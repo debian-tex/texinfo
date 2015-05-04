@@ -1,0 +1,19 @@
+
+File: cr-tag-table.info, Node: Top
+
+Line ends in 'carriage-return linefeed'.
+Another line.
+Removal of these makes the tag table inaccurate.
+
+
+File: cr-tag-table.info, Node: Second
+
+Second node.
+
+
+Tag Table:
+Node: Top0
+Node: Second147
+
+End Tag Table
+

@@ -499,40 +499,40 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'xref_test'} = [
   {
-    'file_name' => '',
     'error_line' => ':4: warning: `.\' or `,\' must follow @xref, not a
 ',
-    'text' => '`.\' or `,\' must follow @xref, not a',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 4,
     'macro' => '',
-    'line_nr' => 4
+    'text' => '`.\' or `,\' must follow @xref, not a',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':5: warning: `.\' or `,\' must follow @xref
 ',
-    'text' => '`.\' or `,\' must follow @xref',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 5,
     'macro' => '',
-    'line_nr' => 5
+    'text' => '`.\' or `,\' must follow @xref',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':6: warning: `.\' or `,\' must follow @xref, not !
 ',
-    'text' => '`.\' or `,\' must follow @xref, not !',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 6,
     'macro' => '',
-    'line_nr' => 6
+    'text' => '`.\' or `,\' must follow @xref, not !',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':7: warning: `.\' or `,\' must follow @xref, not #
 ',
-    'text' => '`.\' or `,\' must follow @xref, not #',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 7,
     'macro' => '',
-    'line_nr' => 7
+    'text' => '`.\' or `,\' must follow @xref, not #',
+    'type' => 'warning'
   }
 ];
 

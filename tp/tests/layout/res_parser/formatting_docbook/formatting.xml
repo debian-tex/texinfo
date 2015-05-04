@@ -56,6 +56,8 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 @,c@&quot;u &#231;&#252; 
 
 </para>
+<para>@U{0075} &#x0075;
+</para>
 <para>@* 
 
 @ followed by a space
@@ -158,9 +160,9 @@ but , ,
 <literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> <inlineequation><mathphrase>--a {\frac{1}{2}} &#8722;</mathphrase></inlineequation>
 <literal>@option{--a}</literal> <option>--a</option>
-<literal>@r{--a}</literal> <lineannotation>&#8211;a</lineannotation>
+<literal>@r{--a}</literal> &#8211;a
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
-<literal>@sc{--a}</literal> &#8211;a
+<literal>@sc{--a}</literal> &#8211;A
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
 <literal>@t{--a}</literal> <literal>--a</literal>
 <literal>@sansserif{--a}</literal> &#8211;a
@@ -309,7 +311,7 @@ After clickstyle &#8658;
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase>    </synopsis>
 <synopsis></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
@@ -553,6 +555,8 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 @,c@&quot;u &#231;&#252; 
 
 </para>
+<para>@U{0075} &#x0075;
+</para>
 <para>@* 
 
 @ followed by a space
@@ -655,9 +659,9 @@ but , ,
 <literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> <inlineequation><mathphrase>--a {\frac{1}{2}} &#8722;</mathphrase></inlineequation>
 <literal>@option{--a}</literal> <option>--a</option>
-<literal>@r{--a}</literal> <lineannotation>&#8211;a</lineannotation>
+<literal>@r{--a}</literal> &#8211;a
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
-<literal>@sc{--a}</literal> &#8211;a
+<literal>@sc{--a}</literal> &#8211;A
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
 <literal>@t{--a}</literal> <literal>--a</literal>
 <literal>@sansserif{--a}</literal> &#8211;a
@@ -806,7 +810,7 @@ After clickstyle &#8658;
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase>    </synopsis>
 <synopsis></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
@@ -1051,6 +1055,8 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 @,c@&quot;u &#231;&#252; 
 
 </para>
+<para>@U{0075} &#x0075;
+</para>
 <para>@* 
 
 @ followed by a space
@@ -1153,9 +1159,9 @@ but , ,
 <literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> <inlineequation><mathphrase>--a {\frac{1}{2}} &#8722;</mathphrase></inlineequation>
 <literal>@option{--a}</literal> <option>--a</option>
-<literal>@r{--a}</literal> <lineannotation>&#8211;a</lineannotation>
+<literal>@r{--a}</literal> &#8211;a
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
-<literal>@sc{--a}</literal> &#8211;a
+<literal>@sc{--a}</literal> &#8211;A
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
 <literal>@t{--a}</literal> <literal>--a</literal>
 <literal>@sansserif{--a}</literal> &#8211;a
@@ -1304,7 +1310,7 @@ After clickstyle &#8658;
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase>    </synopsis>
 <synopsis></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
@@ -1550,6 +1556,8 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 @,c@&quot;u &#231;&#252; 
 
 </para>
+<para>@U{0075} &#x0075;
+</para>
 <para>@* 
 
 @ followed by a space
@@ -1652,9 +1660,9 @@ but , ,
 <literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> <inlineequation><mathphrase>--a {\frac{1}{2}} &#8722;</mathphrase></inlineequation>
 <literal>@option{--a}</literal> <option>--a</option>
-<literal>@r{--a}</literal> <lineannotation>&#8211;a</lineannotation>
+<literal>@r{--a}</literal> &#8211;a
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
-<literal>@sc{--a}</literal> &#8211;a
+<literal>@sc{--a}</literal> &#8211;A
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
 <literal>@t{--a}</literal> <literal>--a</literal>
 <literal>@sansserif{--a}</literal> &#8211;a
@@ -1803,7 +1811,7 @@ After clickstyle &#8658;
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase>    </synopsis>
 <synopsis></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
@@ -2048,6 +2056,8 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 @,c@&quot;u &#231;&#252; 
 
 </para>
+<para>@U{0075} &#x0075;
+</para>
 <para>@* 
 
 @ followed by a space
@@ -2150,9 +2160,9 @@ but , ,
 <literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> <inlineequation><mathphrase>--a {\frac{1}{2}} &#8722;</mathphrase></inlineequation>
 <literal>@option{--a}</literal> <option>--a</option>
-<literal>@r{--a}</literal> <lineannotation>&#8211;a</lineannotation>
+<literal>@r{--a}</literal> &#8211;a
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
-<literal>@sc{--a}</literal> &#8211;a
+<literal>@sc{--a}</literal> &#8211;A
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
 <literal>@t{--a}</literal> <literal>--a</literal>
 <literal>@sansserif{--a}</literal> &#8211;a
@@ -2301,7 +2311,7 @@ After clickstyle &#8658;
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase>    </synopsis>
 <synopsis></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
@@ -2541,6 +2551,8 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 @,c@&quot;u &#231;&#252; 
 
 
+@U{0075} &#x0075;
+
 @* 
 
 @ followed by a space
@@ -2643,9 +2655,9 @@ but , ,
 <literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> <inlineequation><mathphrase>--a {\frac{1}{2}} &#8722;</mathphrase></inlineequation>
 <literal>@option{--a}</literal> <option>--a</option>
-<literal>@r{--a}</literal> <lineannotation>&#8211;a</lineannotation>
+<literal>@r{--a}</literal> &#8211;a
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
-<literal>@sc{--a}</literal> --a
+<literal>@sc{--a}</literal> --A
 <literal>@strong{--a}</literal> <emphasis role="bold">--a</emphasis>
 <literal>@t{--a}</literal> <literal>--a</literal>
 <literal>@sansserif{--a}</literal> &#8211;a
@@ -2791,7 +2803,7 @@ After clickstyle &#8658;
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase>    </synopsis>
 <synopsis></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>

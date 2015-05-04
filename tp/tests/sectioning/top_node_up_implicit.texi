@@ -1,0 +1,20 @@
+\input texinfo  @c public domain
+@setfilename top_node_up_implicit
+
+@c should replace implicit Up.
+
+@node Top
+@top The top
+
+Just a top node.
+
+@menu
+* Chap::
+@end menu
+
+@node Chap
+@chapter A chapter
+
+Without the chapter, no up node from top is generated.
+
+@bye

@@ -1,7 +1,7 @@
 /* display.h -- How the display in Info is done.
-   $Id: display.h 5337 2013-08-22 17:54:06Z karl $
+   $Id: display.h 5796 2014-09-01 18:04:46Z gavin $
 
-   Copyright 1993, 1997, 2004, 2007, 2008, 2011, 2012, 2013
+   Copyright 1993, 1997, 2004, 2007, 2008, 2011, 2012, 2013, 2014
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -26,9 +26,10 @@
 #include "terminal.h"
 
 typedef struct {
-  char *text;			/* Text of the line as it appears. */
-  int textlen;			/* Printable Length of TEXT. */
-  int inverse;			/* Non-zero means this line is inverse. */
+  char *text;		/* Text of the line as it appears. */
+  int textlen;		/* Printable Length of TEXT. */
+  int inverse;		/* Screen line is either in inverse video, or
+                           'text' does not represent what is on the screen. */
 } DISPLAY_LINE;
 
 /* An array of display lines which tell us what is currently visible on
@@ -47,9 +48,8 @@ extern void display_initialize_display (int width, int height);
 /* Clear all of the lines in DISPLAY making the screen blank. */
 extern void display_clear_display (DISPLAY_LINE **display);
 
-/* Update the windows pointed to by WINDOWS in THE_DISPLAY.  This actually
-   writes the text on the screen. */
-extern void display_update_display (WINDOW *window);
+/* Update the windows on the display. */
+extern void display_update_display (void);
 
 /* Display WIN on THE_DISPLAY.  Unlike display_update_display (), this
    function only does one window. */
@@ -70,6 +70,6 @@ extern void display_scroll_display (int start, int end, int amount);
    starts that used to appear in this window.  OLD_COUNT is the number of lines
    that appear in the OLD_STARTS array. */
 extern void display_scroll_line_starts (WINDOW *window, int old_pagetop,
-    char **old_starts, int old_count);
+    long *old_starts, int old_count);
 
 #endif /* not INFO_DISPLAY_H */

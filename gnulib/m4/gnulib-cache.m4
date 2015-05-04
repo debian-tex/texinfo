@@ -1,4 +1,4 @@
-# Copyright (C) 2002-2013 Free Software Foundation, Inc.
+# Copyright (C) 2002-2015 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --lib=libgnu --source-base=gnulib/lib --m4-base=gnulib/m4 --doc-base=doc --tests-base=tests --aux-dir=build-aux --no-conditional-dependencies --no-libtool --macro-prefix=gl --no-vc-files argz getopt-gnu gettext mbchar mbiter mbscasecmp mbschr mbslen mbsncasecmp mbsstr mbswidth memmem mkstemp regex strdup-posix strerror xalloc
+#   gnulib-tool --import --dir=. --lib=libgnu --source-base=gnulib/lib --m4-base=gnulib/m4 --doc-base=doc --tests-base=tests --aux-dir=build-aux --no-conditional-dependencies --no-libtool --macro-prefix=gl --no-vc-files argz getopt-gnu gettext iconv mbchar mbiter mbscasecmp mbschr mbslen mbsncasecmp mbsstr mbswidth memmem memrchr mkstemp regex strcasestr strdup-posix strerror vasprintf-posix xalloc
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([])
@@ -35,6 +35,7 @@ gl_MODULES([
   argz
   getopt-gnu
   gettext
+  iconv
   mbchar
   mbiter
   mbscasecmp
@@ -44,10 +45,13 @@ gl_MODULES([
   mbsstr
   mbswidth
   memmem
+  memrchr
   mkstemp
   regex
+  strcasestr
   strdup-posix
   strerror
+  vasprintf-posix
   xalloc
 ])
 gl_AVOID([])

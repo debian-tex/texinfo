@@ -206,6 +206,7 @@ my $at_commands_in_refs_text = '@node Top
 * 8.27@dmn{in}::
 * @sansserif{sansserif} @slanted{slanted}::
 * @indicateurl{indicateurl}::
+* @sub{g}H 3@sup{rd}::
 * @url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}::
 @end menu
 
@@ -290,6 +291,9 @@ my $at_commands_in_refs_text = '@node Top
 @node @indicateurl{indicateurl}
 @chapter @indicateurl{indicateurl}
 
+@node @sub{g}H 3@sup{rd}
+@chapter @sub{g}H 3@sup{rd}
+
 @node @url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}
 @chapter @url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}
 
@@ -325,6 +329,7 @@ my $at_commands_in_refs_text = '@node Top
 @ref{8.27@dmn{in}}
 @ref{@sansserif{sansserif} @slanted{slanted}}
 @ref{@indicateurl{indicateurl}}
+@ref{@sub{g}H 3@sup{rd}}
 @ref{@url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}}
 
 @bye

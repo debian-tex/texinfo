@@ -1,4 +1,19 @@
 #! /bin/sh
+# $Id: prepare_perl_module_files.sh 6139 2015-02-22 22:53:33Z karl $
+# Regenerate lists of t/ files, used for make dist(check)
+# and the Perl modules.
+#
+# Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+# Originally written by Patrice Dumas.
 
 set -e
 
@@ -34,10 +49,10 @@ for dir in po po_document; do
   (cd $dir && make all && make clean)
 done
 
-find LocaleData po_document po t/include_dir -type f | sort > maintain/MANIFEST_generated_files
+find LocaleData po_document po t/include_dir -type f | sort \
+  > maintain/MANIFEST_generated_files
 make MANIFEST
 cp -p ../COPYING .
 sed 's/\(my \$hardcoded_version = \).*/\1 undef;/' texi2any.pl > texi2any
 chmod a+x texi2any
 touch -r texi2any.pl texi2any
-

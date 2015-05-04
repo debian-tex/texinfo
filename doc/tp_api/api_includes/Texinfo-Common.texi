@@ -240,7 +240,8 @@ Expand today's date, as a texinfo tree with translations.
 The @emph{$converter} argument may be undef.  @emph{$verbatiminclude} is a
 @code{@@verbatiminclude} tree element.  This function returns a 
 @code{@@verbatim} tree elements after finding the included file and
-reading it.
+reading it.  If @emph{$converter} is not defined, the document encoding 
+is not taken into account when reading the file.
 
 @item $tree = definition_category($converter, $def_line)
 @anchor{Texinfo::Common $tree = definition_category($converter@comma{} $def_line)}
@@ -249,6 +250,15 @@ The @emph{$converter} argument may be undef.  @emph{$def_line} is a
 @code{def_line} texinfo tree container.  This function
 returns a texinfo tree corresponding to the category of the
 @emph{$def_line} taking the class into account, if there is one.
+If @emph{$converter} is not defined, the resulting string won't be
+translated.
+
+@item $result = is_content_empty($tree, $do_not_ignore_index_entries)
+@anchor{Texinfo::Common $result = is_content_empty($tree@comma{} $do_not_ignore_index_entries)}
+
+Return true if the @code{$tree} has content that could be formatted.
+@code{$do_not_ignore_index_entries} is optional.  If set, index entries
+are considered to be formatted.
 
 @item $result = numbered_heading ($converter, $heading_element, $heading_text, $do_number)
 @anchor{Texinfo::Common $result = numbered_heading ($converter@comma{} $heading_element@comma{} $heading_text@comma{} $do_number)}
@@ -258,7 +268,8 @@ a heading command tree element.  @emph{$heading_text} is the already
 formatted heading text.  if the @emph{$do_number} optional argument is 
 defined and false, no number is used and the text is returned as is.
 This function returns the heading with a number and the appendix 
-part if needed.
+part if needed.  If @emph{$converter} is not defined, the resulting 
+string won't be translated.
 
 @item ($caption, $prepended) = float_name_caption ($converter, $float)
 @anchor{Texinfo::Common ($caption@comma{} $prepended) = float_name_caption ($converter@comma{} $float)}
@@ -360,7 +371,7 @@ Patrice Dumas, <pertusus@@free.fr>
 @node Texinfo::Common COPYRIGHT AND LICENSE
 @section COPYRIGHT AND LICENSE
 
-Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

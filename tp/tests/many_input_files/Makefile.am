@@ -1,3 +1,15 @@
+# $Id: Makefile.am 6073 2015-01-29 00:08:18Z karl $
+# Makefile.am for texinfo/tp/tests/many_input_files
+# Copyright 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
 EXTRA_DIST = $(TESTS) \
   indices_res index_split_res tex_l2h_res tex_t4ht_res
 

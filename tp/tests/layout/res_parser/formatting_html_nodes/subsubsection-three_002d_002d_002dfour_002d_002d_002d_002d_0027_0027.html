@@ -42,6 +42,8 @@ kbd: ``simple-double-three-four-''
 @,c@"u c,u" 
 
 
+@U{0075} 0075
+
 @* 
 
 @ followed by a space
@@ -530,6 +532,12 @@ Invalid use of @':
 @dotless{-a} -a
 @dotless{a} a
 
+@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg z
+@U{abc}, with <4 hex digits abc
+@U{FFFFFFFFFFFFFF}, value much too large FFFFFFFFFFFFFF
+@U{110000}, value just beyond Unicode 110000
+
 @TeX, but without brace TeX@# #
 
 @w{-a} -a
@@ -604,16 +612,16 @@ truc: after a deff item
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -622,10 +630,10 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nocodebreak {white-space: nowrap}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: serif; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -633,7 +641,7 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <a name="subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="chapter.html#chapter" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

@@ -310,16 +310,59 @@ my @todo = (
 ',{}, {'ENABLE_ENCODING' => 1}]
 );
 
+# test that the node name that goes in the redirection file is reproducible.
+my @file_tests = (
+['redirection_same_labels',
+'@setfilename redirection_same_labels.info
+
+@node Top
+@top the top
+
+@menu
+@c * @"i::
+@c * @~{@dotless{i}}::
+@c * @^i::
+* umlaut::
+* circumflex::
+@end menu
+
+@node umlaut
+@chapter umlaut
+
+@menu
+* @"i::
+* @~{@dotless{i}}::
+@end menu
+
+@node @"i
+
+@node @~{@dotless{i}}
+
+@node circumflex
+@chapter circumflex
+
+@menu
+* @^i::
+@end menu
+
+@node @^i
+', {'test_split' => 'section'}, {'SPLIT' => 'chapter'}],
+);
+
+
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'html';
 }
 foreach my $test (@test_cases_text) {
   push @{$test->[2]->{'test_formats'}}, 'html_text';
 }
+foreach my $test (@file_tests) {
+  push @{$test->[2]->{'test_formats'}}, 'file_html';
+}
 
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('html_tests', [@test_cases, @test_cases_text], $arg_test_case,
+run_all ('html_tests', [@test_cases, @test_cases_text, @file_tests], $arg_test_case,
    $arg_generate, $arg_debug);
 
 1;

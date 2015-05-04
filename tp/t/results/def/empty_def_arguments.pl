@@ -203,6 +203,13 @@ $result_trees{'empty_def_arguments'} = {
               [
                 'category',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '    ',
+                  'type' => 'spaces'
+                }
               ]
             ],
             'def_command' => 'deffn',

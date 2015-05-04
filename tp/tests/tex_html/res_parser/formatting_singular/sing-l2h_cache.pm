@@ -1,13 +1,4 @@
 
-$l2h_cache_key = q/$--a@minus{} {\frac{1}{2}}$/;
-$l2h_cache{$l2h_cache_key} = q|<!-- MATH
- $- -a@minus{} {\frac{1}{2}}$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_3.png"
- ALT="$--a@minus{} {\frac{1}{2}}$"></SPAN>|;
-
 $l2h_cache_key = q/$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$ ''/;
 $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
 <DIV ALIGN="CENTER" CLASS="mathdisplay">
@@ -33,4 +24,13 @@ $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_2.png"
  ALT="$--a {\frac{1}{2}} @minus{}$"></SPAN>|;
+
+$l2h_cache_key = q/$--a@minus{} {\frac{1}{2}}$/;
+$l2h_cache{$l2h_cache_key} = q|<!-- MATH
+ $- -a@minus{} {\frac{1}{2}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_3.png"
+ ALT="$--a@minus{} {\frac{1}{2}}$"></SPAN>|;
 1;

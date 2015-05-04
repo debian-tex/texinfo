@@ -1,7 +1,7 @@
 /* variables.h -- Description of user visible variables in Info.
-   $Id: variables.h 5337 2013-08-22 17:54:06Z karl $
+   $Id: variables.h 5912 2014-11-07 10:49:13Z gavin $
 
-   Copyright 1993, 1997, 2004, 2007, 2011, 2013
+   Copyright 1993, 1997, 2004, 2007, 2011, 2013, 2014
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,9 @@
 #ifndef INFO_VARIABLES_H
 #define INFO_VARIABLES_H
 
+#include "window.h"
+#include "info-utils.h"
+
 /* A variable (in the Info sense) is an integer value with a user-visible
    name.  You may supply an array of strings to complete over when the
    variable is set; in that case, the variable is set to the index of the
@@ -34,20 +37,31 @@ typedef struct {
   char *doc;                    /* Documentation string. */
   int *value;                   /* Address of value. */
   char **choices;               /* Array of strings or NULL if numeric only. */
+  int where_set;                /* Where this variable was set. */
 } VARIABLE_ALIST;
+
+/* Values for VARIABLE_ALIST.where_set, in order of increasing priority. */
+#define SET_BY_DEFAULT 0
+#define SET_IN_CONFIG_FILE 1
+#define SET_ON_COMMAND_LINE 2
+#define SET_IN_SESSION 4
 
 /* Read the name of an Info variable in the echo area and return the
    address of a VARIABLE_ALIST member.  A return value of NULL indicates
    that no variable could be read. */
-extern VARIABLE_ALIST *read_variable_name (const char *prompt, WINDOW *window);
+extern VARIABLE_ALIST *read_variable_name (char *prompt, WINDOW *window);
+
+extern VARIABLE_ALIST *variable_by_name (char *name);
 
 /* Make an array of REFERENCE which actually contains the names of the
    variables available in Info. */
 extern REFERENCE **make_variable_completions_array (void);
 
 /* Set the value of an info variable. */
-extern void set_variable (WINDOW *window, int count, unsigned char key);
-extern void describe_variable (WINDOW *window, int count, unsigned char key);
+extern void set_variable (WINDOW *window, int count);
+extern int set_variable_to_value (VARIABLE_ALIST *var, char *value, int where);
+
+extern void describe_variable (WINDOW *window, int count);
 
 /* The list of user-visible variables. */
 extern int auto_footnotes_p;
@@ -63,5 +77,11 @@ extern int ISO_Latin_p;
 extern int scroll_last_node;
 extern int min_search_length;
 extern int search_skip_screen_p;
+extern int infopath_no_defaults_p;
+extern int preprocess_nodes_p;
+extern int key_time;
+extern int highlight_searches_p;
+extern int mouse_protocol;
+
 
 #endif /* not INFO_VARIABLES_H */

@@ -1,3 +1,5 @@
+# Tests of some uses of @multitable
+
 use strict;
 
 use File::Spec;
@@ -11,6 +13,7 @@ my @test_cases = (
 @item 1.3 @tab 5-6
 @end multitable
 '],
+
 ['paragraph_in_cells',
 '@multitable {AAA}  {BBB}
 @item truc @tab bidule
@@ -35,6 +38,7 @@ new paragraph in item. example
 new paragraph in tab. example
 @end multitable
 @end example'],
+
 ['w_in_multitable',
 '@multitable {aaaaaaaaa} {bbbbbbbbbbb}
 @item @w{aaaaaaaa
@@ -42,6 +46,7 @@ bbbbbbbbbb}
 @tab gg
 @end multitable
 '],
+
 ['inter_item_commands_in_multitable',
 '@multitable {truc}
 @c comment before first item
@@ -70,6 +75,7 @@ Title
 @end multitable
 
 '],
+
 ['empty_item_tab',
 '@multitable @columnfractions 1.0
 @item
@@ -96,22 +102,47 @@ Title
 @item not empty @tab tab not empty
 @end multitable
 '],
+
 ['prototype_brace_no_brace',
 '@multitable {aa} bb
 @end multitable
 '],
+
 ['prototype_brace_no_brace_comment',
 '@multitable {aa} bb@comment cc
 @end multitable
 '],
+
 ['prototype_no_brace',
 '@multitable aa@var{FF} b    cc
 @end multitable
 '],
+
 ['multitable_with_empty_item_tab',
 '@multitable @columnfractions 0.3 0.7
 @item 1-1 @tab 1-2 @item@tab@item 3-1 @tab 3-2
 @end multitable
+'],
+
+# Check xrefs in a multitable are treated as if surrounded in @w { ... }.
+['ref_in_multitable',
+'@novalidate
+
+@ref{XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XX XXX XXX XXX XXX 
+XXX XXX XXX XXX XXX XXX XXX XXX XX}.
+
+@multitable @columnfractions .35 .65
+@item XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XX
+@tab See @ref{RRR RRR RRR RRR RRR RRR RRR RRR RRR RRRR}.
+@item XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XX
+@tab See @ref{SSS SSS SSS SSS SSS SSS SSS SSS SSS SSS SSS SSS SSSSS}.
+@item adsf@footnote{@ref{XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XX 
+XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XX}} @tab 
+second column
+@end multitable
+
+@ref{XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XX XXX XXX XXX XXX 
+XXX XXX XXX XXX XXX XXX XXX XXX XX}.
 '],
 );
 

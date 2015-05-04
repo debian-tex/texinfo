@@ -1,0 +1,28 @@
+#!/bin/sh -x
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+. ./defs || exit 1
+
+# test of --defsection, when its value is used.
+testnum=0055
+
+outputdirfile=`mktemp ii$testnum-XXXXXXXX`
+cp ${testdir}/ii-$testnum-input-dir-file $outputdirfile || exit 1
+
+${install_info} \
+  --defsection="Antlered Animals" \
+  --entry="* Gnu: (gnu).  Wildebeest native to Africa." \
+  ${testdir}/ii-$testnum-input-info-file $outputdirfile \
+|| exit $?
+
+diff ${testdir}/ii-$testnum-expected-dir-file $outputdirfile
+retval=$?
+
+rm -f $outputdirfile
+exit $retval

@@ -1238,7 +1238,7 @@ sub unicode_text($$)
     $text =~ s/'/\x{2019}/g;
     $text =~ s/`/\x{2018}/g;
   }
-  return Unicode::Normalize::NFC($text);
+  return $text;
 }
 
 # return the 8 bit, if it exists, and the unicode codepoint

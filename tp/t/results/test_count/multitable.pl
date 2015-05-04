@@ -579,22 +579,22 @@ aaa   bb    ccc
 
 $result_converted_errors{'debugcount'}->{'multitable'} = [
   {
-    'file_name' => '',
     'error_line' => ':3: warning: @anchor outside of any node
 ',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 3,
     'macro' => '',
-    'line_nr' => 3
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':5: warning: @anchor outside of any node
 ',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 5,
     'macro' => '',
-    'line_nr' => 5
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
   }
 ];
 

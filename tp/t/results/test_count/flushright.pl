@@ -485,40 +485,40 @@ $result_converted{'debugcount'}->{'flushright'} = ' [1] (0,0) :text_root
 
 $result_converted_errors{'debugcount'}->{'flushright'} = [
   {
-    'file_name' => '',
     'error_line' => ':3: warning: @anchor outside of any node
 ',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 3,
     'macro' => '',
-    'line_nr' => 3
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':4: warning: @anchor outside of any node
 ',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 4,
     'macro' => '',
-    'line_nr' => 4
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':4: warning: @anchor outside of any node
 ',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 4,
     'macro' => '',
-    'line_nr' => 4
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':9: warning: @anchor outside of any node
 ',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 9,
     'macro' => '',
-    'line_nr' => 9
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
   }
 ];
 

@@ -1,3 +1,6 @@
+# $Id: Makefile.am 6094 2015-02-02 23:58:41Z karl $
+# sectioning/Makefile.am - public domain.
+ 
 EXTRA_DIST = \
  at_commands_in_refs.texi \
  equivalent_nodes.texi \
@@ -13,7 +16,10 @@ EXTRA_DIST = \
  sectioning.texi \
  test_refs.texi \
  test_two_include.texi \
+ top_node_up_implicit.texi \
+ top_node_up_explicit.texi \
  two_footnotes_in_nodes.texi \
+ \
  renamednodes.cnf-ref \
  tests-parser.txt \
  res_parser res_parser_html

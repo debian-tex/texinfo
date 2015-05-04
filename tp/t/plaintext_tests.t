@@ -1,3 +1,4 @@
+# $Id: plaintext_tests.t 6132 2015-02-18 00:07:53Z karl $
 use strict;
 
 use File::Spec;
@@ -385,6 +386,10 @@ follows}.
 ['sc_with_utf8_enable_encoding',
 '@documentencoding utf-8
 @sc{in sc}.
+'],
+['U_with_utf8_enable_encoding',
+'@documentencoding utf-8
+@U{00FF} (should be a real y-dieresis in UTF-8).
 '],
 ['flushright_not_closed_and_format',
 '@flushright
@@ -988,4 +993,3 @@ run_all ('plaintext_tests', [@test_cases, @file_tests], $arg_test_case,
    $arg_generate, $arg_debug);
 
 1;
-

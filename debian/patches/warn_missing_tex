@@ -6,9 +6,9 @@
 
 --- texinfo.orig/util/texi2dvi
 +++ texinfo/util/texi2dvi
-@@ -33,6 +33,19 @@
- # No failure shall remain unpunished.
- set -e
+@@ -36,6 +36,19 @@
+ # In case the default sed doesn't suffice.
+ : ${SED=sed}
  
 +if ! command -v tex >/dev/null 2>&1; then
 + cat <<%EOM%
@@ -24,5 +24,5 @@
 +
 +
  # This string is expanded automatically when this file is checked out.
- rcs_revision='$Revision: 5381 $'
+ rcs_revision='$Revision: 6207 $'
  rcs_version=`set - $rcs_revision; echo $2`

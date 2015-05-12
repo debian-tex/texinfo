@@ -1,5 +1,5 @@
 /* man.c: How to read and format man files.
-   $Id: man.c 6182 2015-03-07 19:36:01Z gavin $
+   $Id: man.c 6256 2015-05-08 23:13:20Z gavin $
 
    Copyright 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
    2007, 2008, 2009, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
@@ -413,6 +413,7 @@ get_manpage_from_formatter (char *formatter_args[])
               free (formatted_page);
               return NULL;
             }
+          p++;
         }
     }
 

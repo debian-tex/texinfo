@@ -1459,6 +1459,17 @@ sub string_width($)
 {
   my $string = shift;
 
+  $string =~ s/\p{InFullwidth}/\x{02}/g;
+  $string =~ s/\pM/\x{00}/g;
+  $string =~ s/\p{IsPrint}/\x{01}/g;
+  $string =~ s/\p{IsSpace}/\x{01}/g;
+  $string =~ s/[^\x{01}\x{02}]/\x{00}/g;
+
+  # This sums up the byte values of the bytes in $string, which now are
+  # all either 0, 1 or 2.  This is faster.  The original, more readable
+  # version is below.
+  return unpack("U0%32A*", $string);
+
   if (! defined($string)) {
     Carp::cluck();
   }

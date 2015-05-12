@@ -1,4 +1,4 @@
-# $Id: Plaintext.pm 6234 2015-05-01 12:34:52Z gavin $
+# $Id: Plaintext.pm 6255 2015-05-07 02:06:19Z gavin $
 # Plaintext.pm: output tree as text with filling.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -717,9 +717,10 @@ sub _add_text_count($$)
 {
   my $self = shift;
   my $text = shift;
-  $self->{'count_context'}->[-1]->{'bytes'}
-      += Texinfo::Common::count_bytes($self, $text, 
-                                      $self->{'output_perl_encoding'});
+  if (!$self->{'count_context'}->[-1]->{'pending_text'}) {
+    $self->{'count_context'}->[-1]->{'pending_text'} = '';
+  }
+  $self->{'count_context'}->[-1]->{'pending_text'} .= $text;
 }
 
 sub _add_lines_count($$)
@@ -729,6 +730,22 @@ sub _add_lines_count($$)
   $self->{'count_context'}->[-1]->{'lines'} += $lines_count;
 }
 
+# Update $SELF->{'count_context'}->[-1]->{'bytes'} by counting the text that
+# hasn't been counted yet.  It is faster to count the text all together than
+# piece by piece in _add_text_count.
+sub _update_count_context($)
+{
+  my $self = shift;
+  if ($self->{'count_context'}->[-1]->{'pending_text'}) {
+    $self->{'count_context'}->[-1]->{'bytes'} +=
+      Texinfo::Common::count_bytes($self,
+        $self->{'count_context'}->[-1]->{'pending_text'},
+        $self->{'output_perl_encoding'});
+    $self->{'count_context'}->[-1]->{'pending_text'} = '';
+  }
+}
+
+# Save the line and byte offset of $ROOT.
 sub _add_location($$)
 {
   my $self = shift;
@@ -736,8 +753,8 @@ sub _add_location($$)
   my $location = { 'lines' => $self->{'count_context'}->[-1]->{'lines'} };
   push @{$self->{'count_context'}->[-1]->{'locations'}}, $location;
   if (!($root->{'extra'} and $root->{'extra'}->{'index_entry'})) {
-    $location->{'bytes'}
-      = $self->{'count_context'}->[-1]->{'bytes'};
+    _update_count_context($self);
+    $location->{'bytes'} = $self->{'count_context'}->[-1]->{'bytes'};
     $location->{'root'} = $root;
   } else {
     $location->{'index_entry'} = $root;
@@ -770,12 +787,16 @@ sub _count_added($$$)
   my $text = shift;
 
   #$self->_add_lines_count($container->end_line_count());
-  $self->{'count_context'}->[-1]->{'lines'} += $container->end_line_count();
+  $self->{'count_context'}->[-1]->{'lines'} += $container->{'end_line_count'};
 
   #$self->_add_text_count($text);
-  $self->{'count_context'}->[-1]->{'bytes'} +=
-    Texinfo::Common::count_bytes($self, $text,
-                                 $self->{'output_perl_encoding'});
+  #$self->{'count_context'}->[-1]->{'bytes'} +=
+  #  Texinfo::Common::count_bytes($self, $text,
+  #                               $self->{'output_perl_encoding'});
+  if (!defined $self->{'count_context'}->[-1]->{'pending_text'}) {
+    $self->{'count_context'}->[-1]->{'pending_text'} = '';
+  }
+  $self->{'count_context'}->[-1]->{'pending_text'} .= $text;
   return $text;
 }
 
@@ -783,6 +804,7 @@ sub _update_locations_counts($$)
 {
   my $self = shift;
   my $locations = shift;
+  _update_count_context($self);
   foreach my $location (@$locations) {
     $location->{'bytes'} += $self->{'count_context'}->[-1]->{'bytes'}
        if (defined($location->{'bytes'}));
@@ -1044,6 +1066,7 @@ sub _align_environment($$$$)
   my $max = shift;
   my $align = shift;
 
+  _update_count_context($self);
   my $counts = pop @{$self->{'count_context'}};
   my $bytes_count;
   ($result, $bytes_count) = $self->_align_lines($result, $max,
@@ -1169,6 +1192,7 @@ sub _node_line($$)
     push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
     $self->{'node_lines_text'}->{$node}->{'text'} 
        = _normalize_top_node($self->convert_line($node_text));
+    _update_count_context($self);
     my $end_context = pop @{$self->{'count_context'}};
     $self->{'node_lines_text'}->{$node}->{'count'} 
       = $end_context->{'bytes'};
@@ -1318,6 +1342,7 @@ sub _printindex_formatted($$;$)
         my $node_text = $self->gdt('(outside of any node)');
         $self->{'outside_of_any_node_text'}->{'text'} 
           = $self->convert_line($node_text);
+        _update_count_context($self);
         my $end_context = pop @{$self->{'count_context'}};
         $self->{'outside_of_any_node_text'}->{'count'} 
           = $end_context->{'bytes'};
@@ -3281,6 +3306,7 @@ sub _convert($$)
       pop @{$self->{'format_context'}};
       pop @{$self->{'text_element_context'}};
       push @{$self->{'format_context'}->[-1]->{'row'}}, $result;
+      _update_count_context($self);
       my $cell_counts = pop @{$self->{'count_context'}};
       push @{$self->{'format_context'}->[-1]->{'row_counts'}}, $cell_counts;
       $result = '';
@@ -3391,7 +3417,7 @@ sub indent_menu_descriptions($;$)
 1;
 
 __END__
-# $Id: Plaintext.pm 6234 2015-05-01 12:34:52Z gavin $
+# $Id: Plaintext.pm 6255 2015-05-07 02:06:19Z gavin $
 # Automatically generated from maintain/template.pod
 
 =head1 NAME

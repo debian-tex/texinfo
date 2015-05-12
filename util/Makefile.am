@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6022 2015-01-06 23:46:52Z karl $
+# $Id: Makefile.am 6258 2015-05-10 15:09:20Z eliz $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -16,7 +16,7 @@
 bin_SCRIPTS = texi2dvi texi2pdf pdftexi2dvi
 nodist_noinst_SCRIPTS = txixml2texi
 
-w32_bat = makeinfo.bat pod2texi.bat texi2any.bat
+w32_bat = makeinfo.bat pod2texi.bat texi2any.bat texindex.bat
 if HOST_IS_WINDOWS
  bin_SCRIPTS += $(w32_bat)
 endif

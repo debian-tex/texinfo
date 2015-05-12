@@ -1,4 +1,4 @@
-$Id: README 6139 2015-02-22 22:53:33Z karl $
+$Id: README 6252 2015-05-06 17:37:57Z karl $
 texinfo/tp/README
 
   Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -44,3 +44,11 @@ tp/Texinfo/Convert/Converter.pm is a good starting point, as it
 describes the existing backends and other places to look.  To do a good
 job, expect to spend a lot of time making it do the right thing with the
 existing tests.
+
+tp builds a complicated parse tree.  It can output a lot of debug
+information about the tree, and what it's doing generally.  For example,
+these commands output the tree (in different forms):
+  makeinfo -c DUMP_TREE=1 -c TEXINFO_OUTPUT_FORMAT=parse document.texi
+  makeinfo -c TEXINFO_OUTPUT_FORMAT=debugtree document.texi
+In addition (or instead) setting the DEBUG configuration variable will
+dump more information about what it's doing.

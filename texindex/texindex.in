@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: texindex.in 6029 2015-01-09 00:41:20Z karl $
+# $Id: texindex.in 6257 2015-05-09 23:24:27Z karl $
 #
 # Copyright 2015 Free Software Foundation, Inc.
 #
@@ -44,7 +44,7 @@ fi
 #
 # else use configured value for awk.
 if test -z "$awk_binary"; then
-  awk_configured="@AWK@"
+  awk_binary="@AWK@"
 fi
 #
 # that should never be empty, but just in case, else fall back to plain

@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6142 2015-02-23 00:38:34Z karl $
+# $Id: Makefile.am 6252 2015-05-06 17:37:57Z karl $
 # Makefile.am for texinfo/doc.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
@@ -87,6 +87,8 @@ gendocs_email = bug-texinfo@gnu.org
 gendocs_dir_url = /manual/
 gendocs_invoke = env $(gendocs_envvars) $(gendocs) --email $(gendocs_email) \
   --html '-c TOP_NODE_UP_URL=$(gendocs_dir_url)'
+# A nice side effect of using --html is to eliminate the fancy css default;
+# otherwise, we could use gendocs_template_min.
 #
 manual1 = info
 manual1_title = "GNU Info manual"

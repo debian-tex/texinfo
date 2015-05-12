@@ -1,4 +1,4 @@
-# $Id: Parser.pm 6230 2015-04-30 17:28:47Z gavin $
+# $Id: Parser.pm 6251 2015-05-06 00:39:09Z gavin $
 # Parser.pm: parse texinfo code into a tree.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -4046,12 +4046,20 @@ sub _parse_texi($;$)
       # handle user defined macros before anything else since
       # their expansion may lead to changes in the line
       # REMACRO
-      if ($line =~ /^\@([[:alnum:]][[:alnum:]-]*)/ 
-                and ($self->{'macros'}->{$1} 
-                     or (exists $self->{'aliases'}->{$1} and 
-                       $self->{'macros'}->{$self->{'aliases'}->{$1}}))) {
-        $line =~ s/^\@([[:alnum:]][[:alnum:]-]*)//o;
-        my $command = $1;
+      my $at_command = undef;
+      my $at_command_length;
+      if ($line =~ /^\@([[:alnum:]][[:alnum:]-]*)/g) {
+        $at_command = $1;
+        # Get length with pos instead of length($1) for efficiency
+        $at_command_length = pos($line);
+        pos($line) = 0;
+      }
+      if ($at_command
+            and ($self->{'macros'}->{$at_command} 
+                 or (exists $self->{'aliases'}->{$at_command} and 
+                   $self->{'macros'}->{$self->{'aliases'}->{$at_command}}))) {
+        substr($line, 0, $at_command_length) = '';
+        my $command = $at_command;
         my $alias_command;
         if (exists($self->{'aliases'}->{$command})) {
           $alias_command = $command;
@@ -4204,11 +4212,12 @@ sub _parse_texi($;$)
           $current = $current->{'parent'};
         }
       # maybe a menu entry beginning: a * at the beginning of a menu line
-      } elsif ($line =~ /^\*/ and $current->{'type'}
+      } elsif ($current->{'type'}
                 and $current->{'type'} eq 'preformatted'
                 and $current->{'parent'}->{'type'} 
                 and ($current->{'parent'}->{'type'} eq 'menu_comment'
                      or $current->{'parent'}->{'type'} eq 'menu_entry_description')
+                and $line =~ /^\*/
                 and @{$current->{'contents'}} 
                 and $current->{'contents'}->[-1]->{'type'}
                 and $current->{'contents'}->[-1]->{'type'} eq 'empty_line'
@@ -4219,60 +4228,58 @@ sub _parse_texi($;$)
         push @{$current->{'contents'}}, { 'type' => 'menu_star',
                                           'text' => '*' };
       # a space after a * at the beginning of a menu line
-      } elsif ($line =~ /^\s+/ and $current->{'contents'} 
-               and @{$current->{'contents'}} 
-               and $current->{'contents'}->[-1]->{'type'}
-               and $current->{'contents'}->[-1]->{'type'} eq 'menu_star') {
-        print STDERR "MENU ENTRY (certainly)\n" if ($self->{'DEBUG'});
-        # this is the menu star collected previously
-        pop @{$current->{'contents'}};
-        $line =~ s/^(\s+)//;
-        my $leading_text = '*' . $1;
-        if ($current->{'type'} eq 'preformatted'
-            and $current->{'parent'}->{'type'} 
-            and $current->{'parent'}->{'type'} eq 'menu_comment') {
-          my $menu = $current->{'parent'}->{'parent'};
-          if (!@{$current->{'contents'}}) {
-            pop @{$current->{'parent'}->{'contents'}};
-            if (!scalar(@{$current->{'parent'}->{'contents'}})) {
-              pop @{$menu->{'contents'}}; 
-            }
-          }
-          $current = $menu;
-          #print STDERR "Close MENU_COMMENT because new menu entry\n";
-        } else {
-          # first parent preformatted, third is menu_entry
-          if ($current->{'type'} ne 'preformatted' 
-              or $current->{'parent'}->{'type'} ne 'menu_entry_description'
-              or $current->{'parent'}->{'parent'}->{'type'} ne 'menu_entry'
-              or !$menu_commands{$current->{'parent'}->{'parent'}->{'parent'}->{'cmdname'}}) {
-            $self->_bug_message("Not in menu comment nor description", 
-                                 $line_nr, $current);
-          }
-          $current = $current->{'parent'}->{'parent'}->{'parent'};
-        }
-        my $context = pop @{$self->{'context_stack'}};
-        if ($context ne 'preformatted') {
-          $self->_bug_message("context $context instead of preformatted after menu leading star", 
-                              $line_nr, $current);
-        }
-        push @{$current->{'contents'}}, { 'type' => 'menu_entry',
-                                          'parent' => $current,
-                                        };
-        $current = $current->{'contents'}->[-1];
-        $current->{'args'} = [ { 'type' => 'menu_entry_leading_text',
-                                 'text' => $leading_text,
-                                 'parent' => $current },
-                               { 'type' => 'menu_entry_name',
-                                 'contents' => [],
-                                 'parent' => $current } ];
-        $current = $current->{'args'}->[-1];
-      # * followed by something else than a space.
       } elsif ($current->{'contents'} and @{$current->{'contents'}} 
                and $current->{'contents'}->[-1]->{'type'}
                and $current->{'contents'}->[-1]->{'type'} eq 'menu_star') {
-        print STDERR "ABORT MENU STAR ($line)\n" if ($self->{'DEBUG'});
-        delete $current->{'contents'}->[-1]->{'type'};
+        if ($line !~ /^\s+/) {
+          print STDERR "ABORT MENU STAR ($line)\n" if ($self->{'DEBUG'});
+          delete $current->{'contents'}->[-1]->{'type'};
+        } else {
+          print STDERR "MENU ENTRY (certainly)\n" if ($self->{'DEBUG'});
+          # this is the menu star collected previously
+          pop @{$current->{'contents'}};
+          $line =~ s/^(\s+)//;
+          my $leading_text = '*' . $1;
+          if ($current->{'type'} eq 'preformatted'
+              and $current->{'parent'}->{'type'} 
+              and $current->{'parent'}->{'type'} eq 'menu_comment') {
+            my $menu = $current->{'parent'}->{'parent'};
+            if (!@{$current->{'contents'}}) {
+              pop @{$current->{'parent'}->{'contents'}};
+              if (!scalar(@{$current->{'parent'}->{'contents'}})) {
+                pop @{$menu->{'contents'}}; 
+              }
+            }
+            $current = $menu;
+            #print STDERR "Close MENU_COMMENT because new menu entry\n";
+          } else {
+            # first parent preformatted, third is menu_entry
+            if ($current->{'type'} ne 'preformatted' 
+                or $current->{'parent'}->{'type'} ne 'menu_entry_description'
+                or $current->{'parent'}->{'parent'}->{'type'} ne 'menu_entry'
+                or !$menu_commands{$current->{'parent'}->{'parent'}->{'parent'}->{'cmdname'}}) {
+              $self->_bug_message("Not in menu comment nor description", 
+                                   $line_nr, $current);
+            }
+            $current = $current->{'parent'}->{'parent'}->{'parent'};
+          }
+          my $context = pop @{$self->{'context_stack'}};
+          if ($context ne 'preformatted') {
+            $self->_bug_message("context $context instead of preformatted after menu leading star", 
+                                $line_nr, $current);
+          }
+          push @{$current->{'contents'}}, { 'type' => 'menu_entry',
+                                            'parent' => $current,
+                                          };
+          $current = $current->{'contents'}->[-1];
+          $current->{'args'} = [ { 'type' => 'menu_entry_leading_text',
+                                   'text' => $leading_text,
+                                   'parent' => $current },
+                                 { 'type' => 'menu_entry_name',
+                                   'contents' => [],
+                                   'parent' => $current } ];
+          $current = $current->{'args'}->[-1];
+        }
       # after a separator in menu
       } elsif ($current->{'args'} and @{$current->{'args'}} 
                and $current->{'args'}->[-1]->{'type'}
@@ -4313,9 +4320,15 @@ sub _parse_texi($;$)
           $current = _enter_menu_entry_node($self, $current, $line_nr);
         }
         # REMACRO
-      } elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
-               or $line =~ s/^\@([[:alnum:]][[:alnum:]-]*)//o) {
-        my $command = $1;
+      } elsif ($at_command
+               or $line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o) {
+        my $command;
+        if (!$at_command) {
+          $command = $1;
+        } else {
+          $command = $at_command;
+          substr($line, 0, $at_command_length) = '';
+        }
         my $alias_command;
         if (exists($self->{'aliases'}->{$command})) {
           $alias_command = $command;

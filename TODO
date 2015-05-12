@@ -1,4 +1,4 @@
-$Id: TODO 6124 2015-02-13 20:22:54Z gavin $
+$Id: TODO 6252 2015-05-06 17:37:57Z karl $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -10,38 +10,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
-
-* General:
-  - Monitor and improve the dir categories in existing manuals,
-    following the Free Software Directory categories.  Much mail to
-    developers has already been sent, what's needed now is to check new
-    releases and make sure they are using the right categories.
-    See the util/dir-example in the Texinfo distribution for our current
-    recommended categories.
-    For background, see the thread (which discusses a lot of other
-    issues too) at
-    http://lists.gnu.org/archive/html/emacs-devel/2002-10/msg00011.html
-    especially 
-      http://lists.gnu.org/archive/html/emacs-devel/2002-10/msg00090.html
-      http://lists.gnu.org/archive/html/emacs-devel/2002-10/msg00137.html
-  - Support installation of manuals in different languages, along these lines:
-    . support a LINGUAS file or variable saying which subdirs LL in the
-      source to descend into (under doc/).
-    . within each subdir LL, install the info files into $infodir/LL,
-      and run install-info on $infodir/LL/dir.
-    . info (both emacs and standalone) should read $infodir/$LANG/dir
-      as the first dir file, and likewise read info files first from
-      $infodir/$LANG, before falling back to $infodir.
-    . consider ways to avoid installing images in both places.
-      In fact, images probably need to be installed in a subdir
-      $infodir/MANUAL/ in the first place, to avoid conflicts of having
-      the same image name in different manuals.
-    For a test case, see texinfo cvs, with its one translated manual
-    (info-fr.texi).
-    From Wojciech Polak.
-  - Or even multibyte languages like Japanese, see msg:
-    http://lists.gnu.org/archive/html/bug-texinfo/2005-03/msg00000.html
-  - Support general reference card creation.
 
 * Language:
   - Remove the need for @if[not]tex at the beginning of the document.
@@ -89,10 +57,10 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Support the MediaWiki output format.
 
 * TeX:
-  - Use @ as the escape character, and Texinfo syntax generally, in the
-    table of contents and index files.
-  - Support input in any encoding and language, via ec or Latin Modern fonts.
-    Including Unicode, e.g., UTF-8.  (Some work has been done.)
+  - Index above @item allows page break.
+  - Table of contents is misaligned if there are 10 or more [sub]sections.
+  - @float captions should be typeset in a smaller font?
+  - Reset the scriptfonts and scriptscriptfonts when font size changes.
   - Reasonable way to change fonts from the default (some work has been
     done), to allow for PostScript fonts, for example.
   - @multitable: handle @hsep and @vsep.
@@ -100,8 +68,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - @multitable: support a heading line concept (<thead> in HTML).
   - Introduce new command to change \bindingoffset.
   - Use marks to define a real @thissection.
-  - Table of contents is misaligned if there are 10 or more [sub]sections.
-  - Make accent commands implicitly use @dotless{i/j}.
+  - Include synctex support.
   - Include hyperlink \special's in the DVI output for xdvi, etc.
   - PDF: make each letter of the index (A, B, ...) a section in the TOC.
     From Carsten Dominik.
@@ -109,21 +76,14 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     pages, presumably after xpdf/gv support it.  Section 8.3.1 of the
     PDF reference.  From Werner Lemberg, texinfo-pretest mail of
     27 Feb 2006 22:55:13 +0100.
+  - Use @ as the escape character in index files by default,
+    after new texindex is deployed (2020?).
 
 * Doc:
-  - Improve the manuals.
-  - location of text before the information required to understand them:
-    * 2 Using Texinfo Mode: before the Texinfo language description
-    * 4.1 Printing Indices and Menus: before @node, @unnumbered and indices
-  - The Cross References node is very long and maybe should
-    start with the most general uses and proceed to special cases.
-  - Strange sentence in @node key:
-     As a convention in GNU manuals, @code{@@key} should not be used in
-     index entries.
-  - new section on doing dedication pages. See gawk.texi
+  - New section on doing dedication pages. See gawk.texi
     for an example of doing it in both the tex and info versions.
-  - use/distribute pod2texi generated documentation of the perl modules in 
-    tp generated in doc/tp_api.
+  - Use/distribute pod2texi generated documentation of the perl modules in 
+    tp generated in doc/tp_api -- when api is stable.
   - Documentation of the HTML customization is missing.
 
 * Info:
@@ -161,6 +121,18 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     @image (or other) files.  In subdirs.  Or something.
   - support info dir entries for other than the current info file name;
     see comments in menu_item_equal.
+  - Monitor and improve the dir categories in existing manuals,
+    following the Free Software Directory categories.  Much mail to
+    developers has already been sent, what's needed now is to check new
+    releases and make sure they are using the right categories.
+    See the util/dir-example in the Texinfo distribution for our current
+    recommended categories.
+    For background, see the thread (which discusses a lot of other
+    issues too) at
+    http://lists.gnu.org/archive/html/emacs-devel/2002-10/msg00011.html
+    especially 
+      http://lists.gnu.org/archive/html/emacs-devel/2002-10/msg00090.html
+      http://lists.gnu.org/archive/html/emacs-devel/2002-10/msg00137.html
 
 * texindex:
   - read source file (specified by new option) for @documentlanguage
@@ -171,7 +143,30 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - generate txi-??.tex from .po's to make translators' jobs easier.
     From Akim and Karl E.
 
-Ideas that will not be implemented:
+* Ideas that will not be implemented:
+- Support general reference card creation.
+  [Reference cards are too different from normal Texinfo.]
+
+- Support installation of manuals in different languages, along these lines:
+  . support a LINGUAS file or variable saying which subdirs LL in the
+    source to descend into (under doc/).
+  . within each subdir LL, install the info files into $infodir/LL,
+    and run install-info on $infodir/LL/dir.
+  . info (both emacs and standalone) should read $infodir/$LANG/dir
+    as the first dir file, and likewise read info files first from
+    $infodir/$LANG, before falling back to $infodir.
+  . consider ways to avoid installing images in both places.
+    In fact, images probably need to be installed in a subdir
+    $infodir/MANUAL/ in the first place, to avoid conflicts of having
+    the same image name in different manuals.
+  For a test case, see texinfo cvs, with its one translated manual
+  (info-fr.texi).
+  From Wojciech Polak.
+  ... Except, in practice, people just name their manuals with a
+  suffix for the language, and that seems to work well enough.  There
+  aren't that many manuals even in English, let alone other languages,
+  and there are almost no manuals in multiple languages.
+
 - Process Texinfo files directly instead of converting to Info:
   ftp://ftp.cs.berkeley.edu/ucb/people/phelps/tcltk/tkman.tar.Z, which
   uses Tcl/Tk 8.0 from ftp.smli.com in the /pub/tcl directory.

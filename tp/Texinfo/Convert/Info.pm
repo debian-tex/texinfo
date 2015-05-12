@@ -148,6 +148,7 @@ sub output($)
       } else {
         $result .= $node_text;
       }
+      $self->_update_count_context();
       if (defined($self->get_conf('SPLIT_SIZE')) 
           and $self->{'count_context'}->[-1]->{'bytes'} > 
                   $out_file_nr * $self->get_conf('SPLIT_SIZE') 
@@ -205,6 +206,7 @@ sub output($)
            return undef;
         }
         print $fh $complete_header;
+        $self->_update_count_context();
         $self->{'count_context'}->[-1]->{'bytes'} += $complete_header_bytes;
         push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
                                $self->{'count_context'}->[-1]->{'bytes'}];

@@ -1,3 +1,76 @@
+2015-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (convert_eols): Do pointer arithmetic before 
+	reallocating.
+	(find_node_from_tag) <EOL conversion>: Also update 'node' field 
+	of each window as well as the histories.
+	* info/info.c (add_initial_nodes) <inexact menu following>: 
+	Always free reached node.
+
+2015-05-10  Eli Zaretskii  <eliz@gnu.org>
+
+	* util/texindex.bat: New file.
+	* util/Makefile.am (w32_bat): Add texindex.bat.
+
+2015-05-09  Karl Berry  <karl@freefriends.org>
+
+	* texindex/texindex.in: set awk_binary, not awk_configured.
+
+2015-05-09  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/man.c (get_manpage_from_formatter) <failed exit status>:
+	Fix check whether there are enough lines in formatter's output.
+
+2015-05-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_add_text_count)
+	(_count_added): Don't call Texinfo::Common::count_bytes, collect 
+	the argument instead into a string.
+	(_update_count_context): Count the text collected in 
+	_add_text_count.
+
+	* tp/Texinfo/Convert/Plaintext.pm (add_location)
+	(_update_locations_counts, _align_environment, _node_line)
+	(_printindex_formatted, _convert),
+	* tp/Texinfo/Convert/Info.pm (output),
+	* tp/DebugTexinfo/DebugCount.pm (_convert):
+	Call _update_count_context before accessing 'bytes' value of 
+	current count context.
+
+	* tp/Texinfo/Convert/Plaintext.pm (_count_added): Access
+	'end_line_count' value on hash directly instead of via function 
+	call.
+
+2015-05-06  Karl Berry  <karl@freefriends.org>
+
+	* doc/texinfo.tex (\ensuremath): new helper macro.
+	Use it throughout, replacing simple \ifmmode ... \fi and
+	for additional math chars.
+	(2020, 2021, 2225): define these Unicode chars (from cmsy).
+
+	* doc/texinfo.texi (key): not using @key in indexes is an rms
+	edict (from many years ago, maybe he would revisit if any need).
+
+2015-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (parse_texi): Only use regex to look for
+	@-command once instead of twice.  Reorder a condition to make 
+	regex execution less likely.  Combine "ABORT MENU STAR" and 
+	"MENU ENTRY (certainly)" blocks into a single condition.
+
+2015-05-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Unicode.pm (string_width): Calculate string
+	width using "unpack" function.
+
+	* tp/Texinfo/Convert/Paragraph.pm (_add_next): Add new argument 
+	"$newlines_impossible" to elimate a regex match.  Don't access 
+	arguments we don't need.
+	(add_text): Use "split" function to split up text.  Try to 
+	eliminate regex matches for a newline character.  Save some 
+	flags in local variables.  Reorder a condition.  Add "o" flag to 
+	some regexes that used variables.
+
 2015-05-03  Karl Berry  <karl@freefriends.org>
 
 	* pretest 5.9.91.

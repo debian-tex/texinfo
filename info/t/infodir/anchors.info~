@@ -1,0 +1,51 @@
+
+File: utf8.info,  Node: Top, Up: (DIR), Next: Node 2,
+
+This is UTF-8 text.
+x
+‘Text in quotes’. In ISO-8859-1, these should appear as straight
+quotes, because open and closed quotes are not represented.
+
+Symbols without replacements -
+好 - Chinese character "hao3"
+∀ - Mathematical symbol "for all"
+
+“Text in double quotes”.
+
+Sample characters representable in UTF-8 and ISO-8859-1:
+Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Û Ü Ý Þ ß à á
+
+*Note target:(intera)Node 1.
+
+.
+.
+.
+.
+.
+.
+x
+.
+.
+.
+.
+.
+.
+.
+.
+
+Other symbols with ASCII replacements -
+Double closing angular brackets »
+Right arrow →
+Copyright symbol ©
+
+
+Tag Table:
+Node: Top0
+Ref: anchor-177
+Ref: anchor-2534
+
+End Tag Table
+
+Local Variables:
+coding: UTF-8
+End:

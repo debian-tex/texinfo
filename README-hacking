@@ -1,4 +1,4 @@
-$Id: README-hacking 6237 2015-05-02 23:28:19Z karl $
+$Id: README-hacking 6246 2015-05-04 18:13:48Z karl $
 This file describes the development environment for Texinfo.
 
   Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013,
@@ -124,6 +124,7 @@ make
 make po-check             # update po/POTFILES.in as needed
 make -C po update-po      # but don't commit yet, dist updates po_document
 make -C doc wwwdoc-build  # and -install for official (and eventual commit)
+make long-checks          # distcheck does not do this
 (export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
 svn commit                # when clean, then distcheck to be sure
 #create diff for official, see below 

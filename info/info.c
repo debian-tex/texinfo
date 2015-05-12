@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c 6209 2015-04-07 10:52:27Z gavin $
+   $Id: info.c 6261 2015-05-11 16:11:09Z gavin $
 
    Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
@@ -468,13 +468,16 @@ add_initial_nodes (int argc, char **argv, char **error)
                                                       0);
           free (*error); *error = 0;
           node_via_menus = info_follow_menus (initial_node, argv, error, 0);
-          if (node_via_menus && (argc >= 2 || !*error))
+          if (node_via_menus)
             {
-              argv += argc; argc = 0;
+              if (argc >= 2 || !*error)
+                {
+                  argv += argc; argc = 0;
 
-              info_reference_free (ref_list[0]);
-              ref_list[0] = info_new_reference (node_via_menus->fullpath,
-                                                node_via_menus->nodename);
+                  info_reference_free (ref_list[0]);
+                  ref_list[0] = info_new_reference (node_via_menus->fullpath,
+                                                    node_via_menus->nodename);
+                }
               free_history_node (node_via_menus);
             }
         }

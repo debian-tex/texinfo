@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: texi2pdf 5381 2013-09-26 23:03:58Z karl $
+# $Id: pdftexi2dvi 5381 2013-09-26 23:03:58Z karl $
 # Written by Thomas Esser.  Public domain.
 # Execute texi2dvi --pdf.
 

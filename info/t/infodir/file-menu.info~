@@ -1,0 +1,41 @@
+
+File: file-menu,   Node: Top
+
+This is file whose Top node contains a menu.
+
+* Menu:
+
+* First entry:Node 1.
+* Has.dot::
+* Target:(file1.info) Top.
+
+
+File: file-menu,   Node: Node 1
+
+Arrived at Node 1.
+
+* Menu:
+
+* Node 2::
+
+
+File: file-menu,   Node: Node 2
+
+Arrived at Node 2.
+
+* Menu:
+
+* Node 3::
+
+File: file-menu,   Node: Node 3
+
+Arrived at Node 3.
+
+
+File: file-menu,   Node: Unreachable
+
+This node is not linked to elsewhere.
+
+File: file-menu,   Node: Has.dot
+
+This node is not linked to elsewhere.

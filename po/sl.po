@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-05-03 16:29-0700\n"
+"POT-Creation-Date: 2015-05-11 17:24+0100\n"
 "PO-Revision-Date: 2012-08-10 18:31+0100\n"
 "Last-Translator: Klemen Košir <klemen.kosir@gmx.com>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -409,7 +409,7 @@ msgstr "V vozlišču `%s' ni predmetov menijev `%s'."
 msgid "No file given for node '%s'."
 msgstr "V vozlišču `%s' ni menijev."
 
-#: info/info.c:365 info/info.c:1110
+#: info/info.c:365 info/info.c:1113
 #, fuzzy, c-format
 msgid "Cannot find node '%s'."
 msgstr "Ni mogoče najti vozlišča `%s'."
@@ -419,32 +419,32 @@ msgstr "Ni mogoče najti vozlišča `%s'."
 msgid "No program name given."
 msgstr ""
 
-#: info/info.c:575
+#: info/info.c:578
 #, c-format
 msgid "invalid number: %s\n"
 msgstr ""
 
-#: info/info.c:755
+#: info/info.c:758
 #, c-format
 msgid "malformed variable assignment: %s"
 msgstr ""
 
-#: info/info.c:762 info/infokey.c:537
+#: info/info.c:765 info/infokey.c:537
 #, fuzzy, c-format
 msgid "%s: no such variable"
 msgstr "Neznano kazalo `%s'"
 
-#: info/info.c:768 info/infokey.c:539
+#: info/info.c:771 info/infokey.c:539
 #, fuzzy, c-format
 msgid "value %s is not valid for variable %s"
 msgstr "Nastavi vrednost spremenljivke Info"
 
-#: info/info.c:780
+#: info/info.c:783
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Za več podrobnosti poskusite --help.\n"
 
-#: info/info.c:802 install-info/install-info.c:2212 tp/texi2any.pl:878
+#: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:878
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -459,12 +459,12 @@ msgstr ""
 "To je prosta programska oprema; lahko jo spreminjate in razširjate.\n"
 "Je BREZ KAKRŠNEKOLI GARANCIJE, v obsegu, ki ga dovoljuje zakonodaja.\n"
 
-#: info/info.c:960
+#: info/info.c:963
 #, fuzzy, c-format
 msgid "no index entries found for '%s'\n"
 msgstr "Za `%s' ni najdenih nobenih vnosov kazal\n"
 
-#: info/info.c:1013
+#: info/info.c:1016
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -475,7 +475,7 @@ msgstr ""
 "\n"
 "Preberite dokumentacijo v obliki Info.\n"
 
-#: info/info.c:1019
+#: info/info.c:1022
 #, fuzzy
 msgid ""
 "Options:\n"
@@ -493,7 +493,7 @@ msgstr ""
 "IMENU_DATOTEKE.\n"
 "  -f, --file=IME_DATOTEKE določi datoteko podrobnosti za ogled."
 
-#: info/info.c:1027
+#: info/info.c:1030
 #, fuzzy
 msgid ""
 "  -h, --help                   display this help and exit.\n"
@@ -507,7 +507,7 @@ msgstr ""
 "  -n, --node=IME_VOZLIŠČA določi vozlišča v prvi obiskani datoteki Info .\n"
 "  -o, --output=IME_DATOTEKE izpiši izbrana vozlišča v IME_DATOTEKE."
 
-#: info/info.c:1033
+#: info/info.c:1036
 #, fuzzy
 msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
@@ -520,11 +520,11 @@ msgstr ""
 "      --restore=IME_DATOTEKE preberi začetne poteze tipk iz IMENA_DATOTEKE.\n"
 "  -O, --show-options, --usage pojdi do vozlišča možnosti ukazne vrstice."
 
-#: info/info.c:1040
+#: info/info.c:1043
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
 msgstr "  -b, --speech-friendly bodi prijazen do sintetizatorjev govora."
 
-#: info/info.c:1044
+#: info/info.c:1047
 #, fuzzy
 msgid ""
 "      --strict-node-location   (for debugging) use Info file pointers as-"
@@ -541,7 +541,7 @@ msgstr ""
 "      --version prikaži podrobnosti različice in končaj.\n"
 "  -w, --where, --location izpiši fizično mesto datoteke Info."
 
-#: info/info.c:1053
+#: info/info.c:1056
 #, fuzzy
 msgid ""
 "\n"
@@ -558,7 +558,7 @@ msgstr ""
 "Vsi preostali argumenti so obravnavani kot imena predmetov menijiev,\n"
 "glede na začetno obiskano vozlišče."
 
-#: info/info.c:1060
+#: info/info.c:1063
 #, fuzzy
 msgid ""
 "\n"
@@ -567,7 +567,7 @@ msgstr ""
 "\n"
 "Za povzetek tipkovnih bližnjic, vnesite h znotraj Info."
 
-#: info/info.c:1063
+#: info/info.c:1066
 #, fuzzy
 msgid ""
 "\n"
@@ -597,7 +597,7 @@ msgstr ""
 "txt\n"
 "  info -f ./foo.info prikaži datoteko /foo.info brez iskanja mape"
 
-#: info/info.c:1076
+#: info/info.c:1079
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -609,67 +609,67 @@ msgstr ""
 "splošna vprašanja in razprave na help-texinfo@gnu.org.\n"
 "Domača stran texinfo: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1111
+#: info/info.c:1114
 #, fuzzy, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "Ni mogoče najti vozlišča `(%s)%s'."
 
-#: info/info.c:1112
+#: info/info.c:1115
 msgid "Cannot find a window!"
 msgstr "Ni mogoče najti okna!"
 
-#: info/info.c:1113
+#: info/info.c:1116
 msgid "Point doesn't appear within this window's node!"
 msgstr "Točka se ne prikaže znotraj vozlišča okna!"
 
-#: info/info.c:1114
+#: info/info.c:1117
 msgid "Cannot delete the last window."
 msgstr "Zadnjega okna ni mogoče izbrisati."
 
-#: info/info.c:1115
+#: info/info.c:1118
 msgid "No menu in this node."
 msgstr "V tem vozlišču ni menijev."
 
-#: info/info.c:1116
+#: info/info.c:1119
 msgid "No footnotes in this node."
 msgstr "V tem vozlišču ni sprotnih opomb."
 
-#: info/info.c:1117
+#: info/info.c:1120
 msgid "No cross references in this node."
 msgstr "V tem vozlišču ni navzkrižnih sklicev."
 
-#: info/info.c:1118
+#: info/info.c:1121
 #, fuzzy, c-format
 msgid "No '%s' pointer for this node."
 msgstr "Za to vozlišče ni kazalcev `%s'."
 
-#: info/info.c:1119
+#: info/info.c:1122
 #, fuzzy, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "Neznan ukaz Info `%c'; za pomoč poskusite `?'."
 
-#: info/info.c:1120
+#: info/info.c:1123
 #, fuzzy, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "Vrsta terminala `%s' ni dovolj napredna za zagon Info."
 
-#: info/info.c:1121
+#: info/info.c:1124
 msgid "You are already at the last page of this node."
 msgstr "Ste že na zadnji strani tega vozlišča."
 
-#: info/info.c:1122
+#: info/info.c:1125
 msgid "You are already at the first page of this node."
 msgstr "Ste že na prvi strani tega vozlišča."
 
-#: info/info.c:1123
+#: info/info.c:1126
 msgid "Only one window."
 msgstr "Samo eno okno."
 
-#: info/info.c:1124
+#: info/info.c:1127
 msgid "Resulting window would be too small."
 msgstr "Končno okno bi bilo premajhno."
 
-#: info/info.c:1125
+#: info/info.c:1128
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Za okno pomoči ni dovolj prostora, izbrišite okno."
 
@@ -2032,8 +2032,8 @@ msgstr "za `%s' ni najdenih nobenih vnosov; nič ni izbrisano"
 #: tp/Texinfo/Convert/HTML.pm:6523 tp/Texinfo/Convert/HTML.pm:6900
 #: tp/Texinfo/Convert/HTML.pm:6958 tp/Texinfo/Convert/HTML.pm:7036
 #: tp/Texinfo/Convert/HTML.pm:7113 tp/Texinfo/Convert/IXIN.pm:293
-#: tp/Texinfo/Convert/Info.pm:99 tp/Texinfo/Convert/Info.pm:203
-#: tp/Texinfo/Convert/Info.pm:229 tp/Texinfo/Convert/Plaintext.pm:538
+#: tp/Texinfo/Convert/Info.pm:99 tp/Texinfo/Convert/Info.pm:204
+#: tp/Texinfo/Convert/Info.pm:231 tp/Texinfo/Convert/Plaintext.pm:538
 #: tp/Texinfo/Convert/TexinfoXML.pm:457
 #, fuzzy, perl-format
 msgid "could not open %s for writing: %s"
@@ -2129,8 +2129,8 @@ msgstr ""
 #: tp/Texinfo/Convert/Converter.pm:876 tp/Texinfo/Convert/Converter.pm:909
 #: tp/Texinfo/Convert/DocBook.pm:361 tp/Texinfo/Convert/HTML.pm:6926
 #: tp/Texinfo/Convert/HTML.pm:6984 tp/Texinfo/Convert/IXIN.pm:915
-#: tp/Texinfo/Convert/Info.pm:162 tp/Texinfo/Convert/Info.pm:188
-#: tp/Texinfo/Convert/Info.pm:219 tp/Texinfo/Convert/Info.pm:282
+#: tp/Texinfo/Convert/Info.pm:163 tp/Texinfo/Convert/Info.pm:189
+#: tp/Texinfo/Convert/Info.pm:221 tp/Texinfo/Convert/Info.pm:284
 #: tp/Texinfo/Convert/TexinfoXML.pm:476 tp/Texinfo/Parser.pm:2034
 #, fuzzy, perl-format
 msgid "error on closing %s: %s"
@@ -2151,7 +2151,7 @@ msgstr "Ni mogoče ustvariti mape `%s': %s"
 msgid "@image file `%s' not found, using `%s'"
 msgstr "datoteka @image `%s' je neberljiva: %s"
 
-#: tp/Texinfo/Convert/DocBook.pm:1082 tp/Texinfo/Parser.pm:5342
+#: tp/Texinfo/Convert/DocBook.pm:1082 tp/Texinfo/Parser.pm:5355
 #, fuzzy
 msgid "no argument specified for @U"
 msgstr "Za ukaz `%c%s' ni navedenega nobenega imena vozlišča"
@@ -2262,52 +2262,52 @@ msgstr "V tem vozlišču ni menijev."
 msgid "document without Top node"
 msgstr "V tem vozlišču ni menijev."
 
-#: tp/Texinfo/Convert/Info.pm:172
+#: tp/Texinfo/Convert/Info.pm:173
 #, perl-format
 msgid "rename %s failed: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:254
+#: tp/Texinfo/Convert/Info.pm:256
 #, perl-format
 msgid "@%s output more than once: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:369
+#: tp/Texinfo/Convert/Info.pm:371
 #, fuzzy, perl-format
 msgid "@%s outside of any node"
 msgstr "(zunaj vseh vozlišč)"
 
-#: tp/Texinfo/Convert/Info.pm:409
+#: tp/Texinfo/Convert/Info.pm:411
 #, perl-format
 msgid "@node name should not contain `,': %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1286
+#: tp/Texinfo/Convert/Plaintext.pm:1310
 #, perl-format
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1332 tp/Texinfo/Parser.pm:2721
+#: tp/Texinfo/Convert/Plaintext.pm:1357 tp/Texinfo/Parser.pm:2721
 #, fuzzy, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "Vnos za kazalo `%s' je zunaj vseh vozlišč"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1446
+#: tp/Texinfo/Convert/Plaintext.pm:1471
 #, fuzzy, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "napaka med končanjem datoteke vnosa `%s'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1451
+#: tp/Texinfo/Convert/Plaintext.pm:1476
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "datoteka @image `%s' je neberljiva: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1474
+#: tp/Texinfo/Convert/Plaintext.pm:1499
 #, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1866
+#: tp/Texinfo/Convert/Plaintext.pm:1891
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -2315,41 +2315,41 @@ msgstr ""
 "@strong{Opomba ...} ustvari lažni navzkrižni sklic v Info; ponovno ubesedite "
 "za izognitev temu"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2086
+#: tp/Texinfo/Convert/Plaintext.pm:2111
 #, perl-format
 msgid "@%s cross-reference name should not contain `:'"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2103
+#: tp/Texinfo/Convert/Plaintext.pm:2128
 #, fuzzy, perl-format
 msgid "@%s node name should not contain `%s'"
 msgstr "%s: ni mogoče odpreti --css-file: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2118
+#: tp/Texinfo/Convert/Plaintext.pm:2143
 #, perl-format
 msgid "@%s node name should not contain `:'"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2141
+#: tp/Texinfo/Convert/Plaintext.pm:2166
 #, fuzzy, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "`.' ali `,' morata slediti @%s, ne `%c'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2144
+#: tp/Texinfo/Convert/Plaintext.pm:2169
 #, fuzzy
 msgid "`.' or `,' must follow @xref"
 msgstr "`.' ali `,' morata slediti @%s, ne `%c'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2980
+#: tp/Texinfo/Convert/Plaintext.pm:3005
 #, fuzzy, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "V vozlišču `%s' ni menijev."
 
-#: tp/Texinfo/Convert/Plaintext.pm:2987
+#: tp/Texinfo/Convert/Plaintext.pm:3012
 msgid "menu entry node name should not contain `:'"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2998
+#: tp/Texinfo/Convert/Plaintext.pm:3023
 #, fuzzy
 msgid "menu entry name should not contain `:'"
 msgstr "V vozlišču `%s' ni menijev."
@@ -2374,16 +2374,16 @@ msgstr "Slab argument k @%s"
 msgid "bad or empty @%s formal argument: %s"
 msgstr "Slab argument k @%s"
 
-#: tp/Texinfo/Parser.pm:1219 tp/Texinfo/Parser.pm:4810
-#: tp/Texinfo/Parser.pm:4836 tp/Texinfo/Parser.pm:5602
-#: tp/Texinfo/Parser.pm:5618 tp/Texinfo/Parser.pm:5633
+#: tp/Texinfo/Parser.pm:1219 tp/Texinfo/Parser.pm:4823
+#: tp/Texinfo/Parser.pm:4849 tp/Texinfo/Parser.pm:5615
+#: tp/Texinfo/Parser.pm:5631 tp/Texinfo/Parser.pm:5646
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s potrebuje ime"
 
-#: tp/Texinfo/Parser.pm:1223 tp/Texinfo/Parser.pm:4813
-#: tp/Texinfo/Parser.pm:4839 tp/Texinfo/Parser.pm:5605
-#: tp/Texinfo/Parser.pm:5621 tp/Texinfo/Parser.pm:5636
+#: tp/Texinfo/Parser.pm:1223 tp/Texinfo/Parser.pm:4826
+#: tp/Texinfo/Parser.pm:4852 tp/Texinfo/Parser.pm:5618
+#: tp/Texinfo/Parser.pm:5634 tp/Texinfo/Parser.pm:5649
 #, fuzzy, perl-format
 msgid "bad name for @%s"
 msgstr "Slab argument k @%s"
@@ -2437,8 +2437,8 @@ msgstr ""
 msgid "no matching `%cend %s'"
 msgstr "Ni ujemajočega `%cend %s'"
 
-#: tp/Texinfo/Parser.pm:1776 tp/Texinfo/Parser.pm:5158
-#: tp/Texinfo/Parser.pm:5424
+#: tp/Texinfo/Parser.pm:1776 tp/Texinfo/Parser.pm:5171
+#: tp/Texinfo/Parser.pm:5437
 #, fuzzy, perl-format
 msgid "misplaced %c"
 msgstr "Napačno postavljen %c"
@@ -2498,13 +2498,13 @@ msgstr "Slab argument k @%s: %s"
 msgid "empty multitable"
 msgstr "%s: prazna datoteka"
 
-#: tp/Texinfo/Parser.pm:3144 tp/Texinfo/Parser.pm:5715
+#: tp/Texinfo/Parser.pm:3144 tp/Texinfo/Parser.pm:5728
 #, fuzzy, perl-format
 msgid "superfluous argument to @%s"
 msgstr "Slab argument k @%s"
 
-#: tp/Texinfo/Parser.pm:3150 tp/Texinfo/Parser.pm:5737
-#: tp/Texinfo/Parser.pm:5749
+#: tp/Texinfo/Parser.pm:3150 tp/Texinfo/Parser.pm:5750
+#: tp/Texinfo/Parser.pm:5762
 #, fuzzy, perl-format
 msgid "bad argument to @%s"
 msgstr "Slab argument k @%s"
@@ -2525,7 +2525,7 @@ msgid "accent command `@%s' not allowed as @%s argument"
 msgstr "%s: možnost `--%s' ne dovoljuje argumenta\n"
 
 #: tp/Texinfo/Parser.pm:3279 tp/Texinfo/Parser.pm:3418
-#: tp/Texinfo/Parser.pm:5708
+#: tp/Texinfo/Parser.pm:5721
 #, fuzzy, perl-format
 msgid "@%s missing argument"
 msgstr "%s: manjka argument datoteke.\n"
@@ -2540,9 +2540,9 @@ msgstr "Neznano kazalo `%s'"
 msgid "superfluous argument to @%s %s: %s"
 msgstr "Slab argument k @%s: %s"
 
-#: tp/Texinfo/Parser.pm:3318 tp/Texinfo/Parser.pm:5792
-#: tp/Texinfo/Parser.pm:5837 tp/Texinfo/Parser.pm:5866
-#: tp/Texinfo/Parser.pm:5907 tp/Texinfo/Parser.pm:5985
+#: tp/Texinfo/Parser.pm:3318 tp/Texinfo/Parser.pm:5805
+#: tp/Texinfo/Parser.pm:5850 tp/Texinfo/Parser.pm:5879
+#: tp/Texinfo/Parser.pm:5920 tp/Texinfo/Parser.pm:5998
 #, fuzzy, perl-format
 msgid "bad argument to @%s: %s"
 msgstr "Slab argument k @%s: %s"
@@ -2631,357 +2631,357 @@ msgstr ""
 msgid "@%s without associated character"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4071
+#: tp/Texinfo/Parser.pm:4079
 #, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4095
+#: tp/Texinfo/Parser.pm:4103
 #, perl-format
 msgid ""
 "macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
 "value %d)"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4104
+#: tp/Texinfo/Parser.pm:4112
 #, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4160
+#: tp/Texinfo/Parser.pm:4168
 #, fuzzy, perl-format
 msgid "accent command `@%s' must not be followed by whitespace"
 msgstr "%s: možnost `--%s' ne dovoljuje argumenta\n"
 
-#: tp/Texinfo/Parser.pm:4166
+#: tp/Texinfo/Parser.pm:4174
 #, fuzzy, perl-format
 msgid "use braces to give a command as an argument to @%s"
 msgstr "Če želite dati ukaz kot argument v @%s, uporabite oklepaje"
 
-#: tp/Texinfo/Parser.pm:4179 tp/Texinfo/Parser.pm:5279
+#: tp/Texinfo/Parser.pm:4187 tp/Texinfo/Parser.pm:5292
 #, fuzzy, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s pričakuje `i' ali `j' kot argument, ne `%c'"
 
-#: tp/Texinfo/Parser.pm:4191
+#: tp/Texinfo/Parser.pm:4199
 #, fuzzy, perl-format
 msgid "accent command `@%s' must not be followed by new line"
 msgstr "%s: možnost `--%s' ne dovoljuje argumenta\n"
 
-#: tp/Texinfo/Parser.pm:4202
+#: tp/Texinfo/Parser.pm:4210
 #, fuzzy, perl-format
 msgid "@%s expected braces"
 msgstr "%c%s pričakovani so oklepaji"
 
-#: tp/Texinfo/Parser.pm:4362
+#: tp/Texinfo/Parser.pm:4375
 #, perl-format
 msgid "undefined flag: %s"
 msgstr "nedoločena zastavica: %s"
 
-#: tp/Texinfo/Parser.pm:4365
+#: tp/Texinfo/Parser.pm:4378
 #, fuzzy
 msgid "bad syntax for @value"
 msgstr "Slab argument k @%s"
 
-#: tp/Texinfo/Parser.pm:4372
+#: tp/Texinfo/Parser.pm:4385
 #, fuzzy, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s je zastarel"
 
-#: tp/Texinfo/Parser.pm:4375
+#: tp/Texinfo/Parser.pm:4388
 #, fuzzy, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s je zastarel"
 
-#: tp/Texinfo/Parser.pm:4384
+#: tp/Texinfo/Parser.pm:4397
 #, perl-format
 msgid "@%s should only appear at a line beginning"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4475
+#: tp/Texinfo/Parser.pm:4488
 #, fuzzy, perl-format
 msgid "@%s not allowed inside `@%s' block"
 msgstr "@%s ni smiselno znotraj bloka `@%s'"
 
-#: tp/Texinfo/Parser.pm:4484
+#: tp/Texinfo/Parser.pm:4497
 #, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4610 tp/Texinfo/Parser.pm:4627
-#: tp/Texinfo/Parser.pm:4677
+#: tp/Texinfo/Parser.pm:4623 tp/Texinfo/Parser.pm:4640
+#: tp/Texinfo/Parser.pm:4690
 #, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s ni smiselno znotraj bloka `@%s'"
 
-#: tp/Texinfo/Parser.pm:4637
+#: tp/Texinfo/Parser.pm:4650
 #, fuzzy, perl-format
 msgid "@%s in empty multitable"
 msgstr "%s: prazna datoteka"
 
-#: tp/Texinfo/Parser.pm:4643
+#: tp/Texinfo/Parser.pm:4656
 msgid "@tab before @item"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4646
+#: tp/Texinfo/Parser.pm:4659
 #, fuzzy, perl-format
 msgid "too many columns in multitable item (max %d)"
 msgstr "Preveč stolpcev v predmetu večih razpredelnic (največ %d)"
 
-#: tp/Texinfo/Parser.pm:4683
+#: tp/Texinfo/Parser.pm:4696
 msgid "ignoring @tab outside of multitable"
 msgstr "prezrtje @tab izven večih razpredelnic"
 
-#: tp/Texinfo/Parser.pm:4687
+#: tp/Texinfo/Parser.pm:4700
 #, perl-format
 msgid "@%s outside of table or list"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4722
+#: tp/Texinfo/Parser.pm:4735
 #, fuzzy, perl-format
 msgid "must be after `@%s' to use `@%s'"
 msgstr "Mora biti v okolju `@%s' za uporabo `@%s'"
 
-#: tp/Texinfo/Parser.pm:4764
+#: tp/Texinfo/Parser.pm:4777
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "@%s ni smiselen zunaj okolij `@titlepage' in `@quotation'"
 
-#: tp/Texinfo/Parser.pm:4768
+#: tp/Texinfo/Parser.pm:4781
 msgid "@dircategory after first node"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4933
+#: tp/Texinfo/Parser.pm:4946
 #, fuzzy, perl-format
 msgid "region %s inside region %s is not allowed"
 msgstr "Sprotne opombe znotraj sprotnih opomb niso dovoljene"
 
-#: tp/Texinfo/Parser.pm:4951
+#: tp/Texinfo/Parser.pm:4964
 msgid "@direntry after first node"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4959
+#: tp/Texinfo/Parser.pm:4972
 #, fuzzy, perl-format
 msgid "@%s seen before first @node"
 msgstr "@menu je bil viden pred prvim @node, ki je ustvarilo vozlišče `Top'"
 
-#: tp/Texinfo/Parser.pm:4962
+#: tp/Texinfo/Parser.pm:4975
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr ""
 "Morda bi vaše vozlišče @top moralo biti ovito v @ifnottex namesto @ifinfo?"
 
-#: tp/Texinfo/Parser.pm:5024
+#: tp/Texinfo/Parser.pm:5037
 #, perl-format
 msgid "@%s should only appear in math context"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5032
+#: tp/Texinfo/Parser.pm:5045
 #, fuzzy, perl-format
 msgid "unknown command `%s'"
 msgstr "Neznan ukaz `%s'"
 
-#: tp/Texinfo/Parser.pm:5042
+#: tp/Texinfo/Parser.pm:5055
 #, fuzzy
 msgid "unexpected @"
 msgstr "Pričakovan `%s'"
 
-#: tp/Texinfo/Parser.pm:5071
+#: tp/Texinfo/Parser.pm:5084
 #, fuzzy, perl-format
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "@%s ni smiselno zunaj okolja `@float'"
 
-#: tp/Texinfo/Parser.pm:5076
+#: tp/Texinfo/Parser.pm:5089
 #, perl-format
 msgid "@%s should be right below `@float'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5084
+#: tp/Texinfo/Parser.pm:5097
 #, perl-format
 msgid "ignoring multiple @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5203
+#: tp/Texinfo/Parser.pm:5216
 #, fuzzy, perl-format
 msgid "command @%s does not accept arguments"
 msgstr "%s: možnost `--%s' ne dovoljuje argumenta\n"
 
-#: tp/Texinfo/Parser.pm:5227
+#: tp/Texinfo/Parser.pm:5240
 #, perl-format
 msgid "command @%s missing a node or external manual argument"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5246
+#: tp/Texinfo/Parser.pm:5259
 #, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5257
+#: tp/Texinfo/Parser.pm:5270
 #, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5270
+#: tp/Texinfo/Parser.pm:5283
 msgid "@image missing filename argument"
 msgstr "@image manjka argument imena datoteke"
 
-#: tp/Texinfo/Parser.pm:5302
+#: tp/Texinfo/Parser.pm:5315
 #, fuzzy, perl-format
 msgid "@%s missing first argument"
 msgstr "%s: manjka argument datoteke.\n"
 
-#: tp/Texinfo/Parser.pm:5347
+#: tp/Texinfo/Parser.pm:5360
 #, fuzzy, perl-format
 msgid "non-hex digits in argument for @U: %s"
 msgstr "Slab argument k @%s: %s"
 
-#: tp/Texinfo/Parser.pm:5353
+#: tp/Texinfo/Parser.pm:5366
 #, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5366
+#: tp/Texinfo/Parser.pm:5379
 #, perl-format
 msgid "argument for @U exceeds size of integer: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5372
+#: tp/Texinfo/Parser.pm:5385
 #, perl-format
 msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5500
+#: tp/Texinfo/Parser.pm:5513
 #, fuzzy
 msgid "superfluous arguments for node"
 msgstr "Slab argument k @%s"
 
-#: tp/Texinfo/Parser.pm:5550
+#: tp/Texinfo/Parser.pm:5563
 #, fuzzy, perl-format
 msgid "expected @end %s"
 msgstr "Pričakovan `%s'"
 
-#: tp/Texinfo/Parser.pm:5649
+#: tp/Texinfo/Parser.pm:5662
 #, fuzzy, perl-format
 msgid "@%s should only accept a @-command as argument, not `%s'"
 msgstr "Če želite dati ukaz kot argument v @%s, uporabite oklepaje"
 
-#: tp/Texinfo/Parser.pm:5659
+#: tp/Texinfo/Parser.pm:5672
 #, fuzzy, perl-format
 msgid "remaining argument on @%s line: %s"
 msgstr "Slab argument k @%s: %s"
 
-#: tp/Texinfo/Parser.pm:5732
+#: tp/Texinfo/Parser.pm:5745
 #, fuzzy, perl-format
 msgid "environment command %s as argument to @%s"
 msgstr "Če želite dati ukaz kot argument v @%s, uporabite oklepaje"
 
-#: tp/Texinfo/Parser.pm:5754
+#: tp/Texinfo/Parser.pm:5767
 #, perl-format
 msgid "empty @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5762
+#: tp/Texinfo/Parser.pm:5775
 #, perl-format
 msgid "column fraction not a number: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5771
+#: tp/Texinfo/Parser.pm:5784
 #, fuzzy, perl-format
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "%s: %s argument mora biti številski, ne `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5780
+#: tp/Texinfo/Parser.pm:5793
 #, perl-format
 msgid "reserved index name %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5799
+#: tp/Texinfo/Parser.pm:5812
 #, fuzzy, perl-format
 msgid "unknown source index in @%s: %s"
 msgstr "Neznano kazalo `%s'"
 
-#: tp/Texinfo/Parser.pm:5802
+#: tp/Texinfo/Parser.pm:5815
 #, fuzzy, perl-format
 msgid "unknown destination index in @%s: %s"
 msgstr "Neznano kazalo `%s'"
 
-#: tp/Texinfo/Parser.pm:5832
+#: tp/Texinfo/Parser.pm:5845
 #, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5845
+#: tp/Texinfo/Parser.pm:5858
 #, fuzzy, perl-format
 msgid "unknown index `%s' in @printindex"
 msgstr "Neznano kazalo `%s' v @printindex"
 
-#: tp/Texinfo/Parser.pm:5851
+#: tp/Texinfo/Parser.pm:5864
 #, perl-format
 msgid "printing an index `%s' merged in another one `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5859
+#: tp/Texinfo/Parser.pm:5872
 #, perl-format
 msgid "printindex before document beginning: @printindex %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5875
+#: tp/Texinfo/Parser.pm:5888
 #, fuzzy, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr "%s: %s argument mora biti številski, ne `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5883
+#: tp/Texinfo/Parser.pm:5896
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "Podprt je samo @%s 10 ali 11, ne `%s'"
 
-#: tp/Texinfo/Parser.pm:5891
+#: tp/Texinfo/Parser.pm:5904
 #, fuzzy, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr ""
 "%s: --footnote-style argument mora biti `separate' ali `end', ne `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5899
+#: tp/Texinfo/Parser.pm:5912
 #, fuzzy, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr "%s: %s argument mora biti številski, ne `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5917 tp/Texinfo/Parser.pm:5922
+#: tp/Texinfo/Parser.pm:5930 tp/Texinfo/Parser.pm:5935
 #, fuzzy, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr ""
 "%s: --paragraph-indent argument mora biti številski/`none'/`asis', ne `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5930
+#: tp/Texinfo/Parser.pm:5943
 #, fuzzy, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr ""
 "%s: --paragraph-indent argument mora biti številski/`none'/`asis', ne `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5940
+#: tp/Texinfo/Parser.pm:5953
 #, fuzzy, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr ""
 "%s: --paragraph-indent argument mora biti številski/`none'/`asis', ne `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5951
+#: tp/Texinfo/Parser.pm:5964
 #, fuzzy, perl-format
 msgid "expected @%s on or off, not `%s'"
 msgstr "Pričakuje se @%s on ali off, namesto \"%s\""
 
-#: tp/Texinfo/Parser.pm:5961
+#: tp/Texinfo/Parser.pm:5974
 #, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5969
+#: tp/Texinfo/Parser.pm:5982
 #, fuzzy, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr ""
 "%s: --footnote-style argument mora biti `separate' ali `end', ne `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5977
+#: tp/Texinfo/Parser.pm:5990
 #, fuzzy, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr ""

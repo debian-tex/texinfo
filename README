@@ -1,4 +1,4 @@
-$Id: README 6124 2015-02-13 20:22:54Z gavin $
+$Id: README 6252 2015-05-06 17:37:57Z karl $
 This is the README file for the GNU Texinfo distribution.  Texinfo is
 the preferred documentation format for GNU software.
 
@@ -36,9 +36,9 @@ If you don't have Internet access, you can read the manual locally:
 - then, for HTML, run: make -C doc html
   and you can start reading at doc/texinfo.html/index.html.
 - for PDF, if you have a working TeX, run: make -C doc pdf
-- for Info, you can read about the Info reader itself with:
+- for Info, you can read a tutorial on reading Info files:
  ./info/ginfo doc/info
-  and then read the Texinfo manual:
+  and/or read the Texinfo manual:
  ./info/ginfo doc/texinfo
 
 Texinfo mailing lists and archives:
@@ -51,11 +51,11 @@ There are no corresponding newsgroups.
 Bug reports:
 Please include enough information for the maintainers to reproduce the
 problem.  Generally speaking, that means:
-- the contents of all input files necessary to reproduce the bug (crucial!).
+- the contents of all input files needed to reproduce the bug (crucial!).
 - a statement of the problem and any samples of the erroneous output.
 - the version number of Texinfo and the program(s) involved (use --version).
 - hardware and operating system information (uname -a).
-- unusual options you gave to configure, if any (see config.status).
+- unusual options you gave to configure, if any (try ./config.status --help).
 - anything else that you think could be helpful.
 
 Patches are most welcome; if possible, please make them with diff -c and
@@ -107,7 +107,6 @@ Source directories:
                            sorted indices used by TeX when
                            typesetting a file for printing.
 
-
 Translation support:
   po/                      Strings of the programs.
   po_document/             Strings in generated Texinfo documents.
@@ -120,6 +119,9 @@ Installation support:
   configure                Configuration script for local conditions,
                              created by Autoconf.
   build-aux/               Common files.
+
+The util/ directory contains a few other scripts, e.g., examples of
+using makeinfo in various ways.  See util/README.
 
 Finally, the contrib/ directory contains additional files from users
 provided for your reading and/or hacking pleasure.  They aren't part of

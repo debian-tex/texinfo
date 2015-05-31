@@ -1,11 +1,12 @@
-texinfo (5.9.92.dfsg.1-1) UNRELEASED; urgency=medium
+texinfo (5.9.92.dfsg.1-1) experimental; urgency=medium
 
   * Imported upstream testing releases
   * refresh/clean patches
   * remove cyrtexinfo format definition file, just give explanations
     in README.cyrtexinfo
+  * work around implicit aclocal-1.15 build requirement
 
- -- Norbert Preining <preining@debian.org>  Mon, 01 Jun 2015 08:47:11 +0900
+ -- Norbert Preining <preining@debian.org>  Mon, 01 Jun 2015 08:59:31 +0900
 
 texinfo (5.2.0.dfsg.1-6) unstable; urgency=medium
 

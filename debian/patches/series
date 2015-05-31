@@ -3,3 +3,4 @@ numerical-signal-names
 #info_universal_argument
 dont_build_info
 info-manpage-mentiones-nonfree
+do-not-require-automake-1.15

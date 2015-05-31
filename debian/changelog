@@ -2,8 +2,10 @@ texinfo (5.9.92.dfsg.1-1) UNRELEASED; urgency=medium
 
   * Imported upstream testing releases
   * refresh/clean patches
+  * remove cyrtexinfo format definition file, just give explanations
+    in README.cyrtexinfo
 
- -- Norbert Preining <preining@debian.org>  Tue, 12 May 2015 09:46:45 +0900
+ -- Norbert Preining <preining@debian.org>  Mon, 01 Jun 2015 08:47:11 +0900
 
 texinfo (5.2.0.dfsg.1-6) unstable; urgency=medium
 

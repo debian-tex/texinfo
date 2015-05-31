@@ -84,8 +84,9 @@ install-stamp: build-stamp check-stamp
 	install -m 0755 debian/update-info-dir $(ii)/usr/sbin/update-info-dir
 	mkdir -p $(ii)/usr/share/man/man8
 	install -m 0644 debian/update-info-dir.8 $(ii)/usr/share/man/man8/update-info-dir.8
-	cp debian/conf/50cyrtexinfo.cnf $(texinfo)/etc/texmf/fmt.d
-	echo "50cyrtexinfo" > $(texinfo)/var/lib/tex-common/fmtutil-cnf/texinfo.list
+	# we don't do the cyrtexinfo dance anymore
+	#cp debian/conf/50cyrtexinfo.cnf $(texinfo)/etc/texmf/fmt.d
+	#echo "50cyrtexinfo" > $(texinfo)/var/lib/tex-common/fmtutil-cnf/texinfo.list
 	touch install-stamp
 
 binary-indep:

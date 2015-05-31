@@ -1,14 +1,19 @@
 README.cyrtexinfo
 =================
 
-The current combinations teTeX/TeX live/TeXinfo do not provide the
+The current combinations TeX live/TeXinfo do not provide the
 	cyrtexinfo
 format anymore. If you want to get cyrtexinfo, the cyrillic texinfo format,
 please follow the following steps:
-. install either tetex-base and tetex-extra, or texlive-langcyrillic
-. comment out the format line in /etc/texmf/fmt.d/50cyrtexinfo.cnf
+. install texlive-lang-cyrillic
+. add the following line to one of the fmtutil.cnf files *not* managed
+  by Debian, that is the one in /usr/local/share/texmf/web2c or
+  /etc/texmf/web2c:
+  	cyrtexinfo pdfetex language.dat -translate-file=cp227.tcx *cyrtxinf.ini
 . create a link
 	/usr/local/bin/cyrtexinfo -> ../../bin/pdfetex
-. call update-fmtutil
 . call fmtutil-sys --missing (or --all)
+
+(And maybe read the man page of fmtutil for a more detailed description
+of how formats are handled)
 

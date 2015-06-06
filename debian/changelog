@@ -1,12 +1,15 @@
 texinfo (5.9.92.dfsg.1-1) experimental; urgency=medium
 
   * Imported upstream testing releases
+    - last line is found again (Closes: #785724)
+    - broken info-dir-entries are not problematic anymore (Closes: #683204)
+    - info (cat page) does not produce waste output (Closes: #732237)
   * refresh/clean patches
   * remove cyrtexinfo format definition file, just give explanations
     in README.cyrtexinfo
   * work around implicit aclocal-1.15 build requirement
 
- -- Norbert Preining <preining@debian.org>  Sat, 06 Jun 2015 16:09:12 +0900
+ -- Norbert Preining <preining@debian.org>  Sat, 06 Jun 2015 16:14:19 +0900
 
 texinfo (5.2.0.dfsg.1-6) unstable; urgency=medium
 

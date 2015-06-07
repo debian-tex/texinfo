@@ -1,17 +1,17 @@
 # Esperanto translations for GNU Texinfo.
-# Copyright (C) 2013 Free Software Foundation, Inc.
+# Copyright (C) 2015 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
 #
-# Dies mal mit Nietzsche und Nutella!
+# « Le bonheur est dans le pré. »
 #
-# Benno Schulenberg <benno@vertaalt.nl>, 2010, 2011, 2012, 2013.
+# Benno Schulenberg <benno@vertaalt.nl>, 2010, 2011, 2012, 2013, 2015.
 # Sergio Pokrovskij <sergio.pokrovskij@gmail.com>, 1999-2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 5.1.90\n"
+"Project-Id-Version: texinfo 5.9.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-05-11 17:24+0100\n"
-"PO-Revision-Date: 2013-09-15 15:48+0200\n"
+"POT-Creation-Date: 2015-06-03 15:28-0700\n"
+"PO-Revision-Date: 2015-05-19 13:06+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
 "Language: eo\n"
@@ -31,9 +31,9 @@ msgid "%s: option '%s' is ambiguous; possibilities:"
 msgstr "%s: opcio «%s» estas ambigua; eblaĵoj estas:"
 
 #: gnulib/lib/getopt.c:619
-#, fuzzy, c-format
+#, c-format
 msgid "%s: option '%s' is ambiguous\n"
-msgstr "%s: opcio «-W %s» estas ambigua\n"
+msgstr "%s: opcio «%s» estas ambigua\n"
 
 #: gnulib/lib/getopt.c:654 gnulib/lib/getopt.c:658
 #, c-format
@@ -51,9 +51,9 @@ msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: opcio «--%s» bezonas argumenton\n"
 
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
-#, c-format
+#, fuzzy, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: nekonata opcio «--%s»\n"
+msgstr "%s: nekonata opcio «%c%s»\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, c-format
@@ -325,16 +325,15 @@ msgid "Index entry: "
 msgstr "Indeksero: "
 
 #: info/indices.c:439
-#, fuzzy, c-format
+#, c-format
 msgid "Found '%s' in %s. ('\\[next-index-match]' tries to find next.)"
-msgstr "Trovita «%s» en %s.  (“\\[next-index-match]” serĉos la sekvan)"
+msgstr "Troviĝis «%s» en %s.  (“\\[next-index-match]” serĉos la sekvan)"
 
 #: info/indices.c:449
-#, fuzzy
 msgid ""
 "Go to the next matching index item from the last '\\[index-search]' command"
 msgstr ""
-"Pasi al la sekva indeksa ero kongrua al la lasta komando “\\[index-search]”"
+"Pasi al la sekva indeksero kongrua al la lasta komando “\\[index-search]”"
 
 #: info/indices.c:460
 #, c-format
@@ -342,17 +341,17 @@ msgid "No previous index search string."
 msgstr "Malestas antaŭa ĉeno por serĉo en indekso."
 
 #: info/indices.c:478
-#, fuzzy, c-format
+#, c-format
 msgid "No more index entries containing '%s'."
-msgstr "Ne ekzistas pli da indekseroj kiuj enhavas «%s»."
+msgstr "Ne ekzistas pli da indekseroj enhavantaj «%s»."
 
 #: info/indices.c:479 info/indices.c:874
-#, fuzzy, c-format
+#, c-format
 msgid "No index entries containing '%s'."
 msgstr "Ne ekzistas indekseroj kiuj enhavas «%s»."
 
 #: info/indices.c:583
-#, fuzzy, c-format
+#, c-format
 msgid "Scanning indices of '%s'..."
 msgstr "Serĉado en la indeksoj de «%s»..."
 
@@ -361,53 +360,51 @@ msgid "Grovel all known info file's indices for a string and build a menu"
 msgstr "Serĉi ĉenon en ĉiuj konataj indeksoj Info-dosieraj kaj fari menuon"
 
 #: info/indices.c:644 info/indices.c:646
-#, fuzzy
 msgid "Index apropos"
-msgstr "Serĉi en indekso informon pri: "
+msgstr "Serĉi en indekso informon pri"
 
 #: info/indices.c:686
-#, fuzzy, c-format
+#, c-format
 msgid "Index entries containing '%s':\n"
-msgstr "Ne ekzistas indekseroj kiuj enhavas «%s»."
+msgstr "Indekseroj kiuj enhavas «%s»:\n"
 
 #: info/indices.c:791
 msgid "List all matches of a string in the index"
 msgstr "Listigi ĉiujn aperojn de signoĉeno en la indekso"
 
 #: info/indices.c:818 info/indices.c:820
-#, fuzzy
 msgid "Index topic"
-msgstr "Indeksa temo: "
+msgstr "Indeksa temo"
 
 #: info/indices.h:40
-#, fuzzy, c-format
+#, c-format
 msgid "No available info files have '%s' in their indices."
-msgstr "«%s» malestas en la indeksoj de la disponeblaj Info-dosieroj"
+msgstr "Malestas «%s» en la indeksoj de ĉiuj disponeblaj Info-dosieroj."
 
-#: info/info-utils.c:897
+#: info/info-utils.c:899
 #, c-format
 msgid "Error converting file character encoding."
-msgstr ""
+msgstr "Eraro dum konverto de signara kodo."
 
 #: info/info.c:223 info/session.c:2699
-#, fuzzy, c-format
+#, c-format
 msgid "No menu item '%s' in node '%s'."
 msgstr "Malestas menuero «%s» en nodo «%s»."
 
 #: info/info.c:316
-#, fuzzy, c-format
+#, c-format
 msgid "No file given for node '%s'."
-msgstr "Malestas menuo en nodo «%s»."
+msgstr "Neniu dosiero indikatas por nodo «%s»."
 
-#: info/info.c:365 info/info.c:1113
-#, fuzzy, c-format
+#: info/info.c:365 info/info.c:1115
+#, c-format
 msgid "Cannot find node '%s'."
 msgstr "Nodo «%s» ne troveblas."
 
 #: info/info.c:387
 #, c-format
 msgid "No program name given."
-msgstr ""
+msgstr "Programnomo ne indikatas."
 
 #: info/info.c:578
 #, c-format
@@ -435,7 +432,8 @@ msgid "Try --help for more information.\n"
 msgstr "Por ricevi pli da informoj uzu la opcion “--help”.\n"
 
 #: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:878
-#, c-format, perl-format
+#: texindex/ti.twjr:1293
+#, c-format, awk-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -450,9 +448,9 @@ msgstr ""
 "NENIA garantio estas donita, kiom la leĝo tion toleras.\n"
 
 #: info/info.c:963
-#, fuzzy, c-format
+#, c-format
 msgid "no index entries found for '%s'\n"
-msgstr "ne troviĝas indeksero por «%s»\n"
+msgstr "neniu indeksero troviĝas por «%s»\n"
 
 #: info/info.c:1016
 #, c-format
@@ -536,7 +534,6 @@ msgstr ""
 "  -x, --debug=NUMERO           erarserĉa nivelo (-1 por ciuj mesaĝoj)\n"
 
 #: info/info.c:1056
-#, fuzzy
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -549,20 +546,19 @@ msgstr ""
 "La unua neopcia argumento, se ĝi indikatas, estas nomo de la unue vizitenda\n"
 "menuero, kiu serĉotas en ĉiuj 'dir'-dosieroj troveblaj per INFOPATH.\n"
 "Se ĝi mankas, Info kunfandas ĉiujn 'dir'-dosierojn kaj montras la rezulton.\n"
-"Ĉiuj ceteraj argumentoj estas traktataj kiel nomoj de menueroj relative al\n"
-"la unue vizitenda nodo."
+"Ĉiuj ceteraj argumentoj traktatas kiel nomoj de menueroj relative al la "
+"unue\n"
+"vizitenda nodo.  Eblas mallongigi tiujn nomojn se ili restas unikaj."
 
 #: info/info.c:1063
-#, fuzzy
 msgid ""
 "\n"
 "For a summary of key bindings, type H within Info."
 msgstr ""
 "\n"
-"Por prezento de la komandoklavoj, tajpu «h» ene de 'info'."
+"Por prezento de la komandoklavoj, tajpu «H» ene de 'info'."
 
 #: info/info.c:1066
-#, fuzzy
 msgid ""
 "\n"
 "Examples:\n"
@@ -582,89 +578,88 @@ msgstr ""
 "  info                       montri la ĉefan menuon de la Info-katalogo\n"
 "  info info                  montri ĝeneralan manlibron pri Info\n"
 "  info info-stnd             montri la manlibron por ĉi tiu 'info'-programo\n"
-"  info emacs                 komenci per la nodo «emacs» el la kataloga "
-"nodo\n"
-"  info emacs buffers          komenci per la nodo «buffers» en Emaksa "
+"  info emacs                 komenci je la nodo «emacs» el la kataloga nodo\n"
+"  info emacs buffers         elekti la menueron «buffers» en Emaksa "
 "manlibro\n"
-"  info --show-options emacs    komenci per la Emaksaj komandliniaj opcioj\n"
-"  info --subnodes -o ELO.txt emacs  eligi tutan manlibron al ELO.txt\n"
-"  info -f ./UM.info            eligi la dosieron ./UM.info sen atenti «dir»"
+"  info emacs -n Files        komenci je la nodo «Files» en Emaksa manlibro\n"
+"  info '(emacs)Files'        komenci je la nodo «Files» en Emaksa manlibro\n"
+"  info --usage emacs         komenci je la Emaksaj komandliniaj opcioj\n"
+"  info --sub -o ELO.txt emacs  eligi tutan Emaksan manlibron al ELO.txt\n"
+"  info -f ./UMO.info         eligi la dosieron ./UMO.info sen atenti «dir»"
 
-#: info/info.c:1079
+#: info/info.c:1081 install-info/install-info.c:616 tp/texi2any.pl:866
+#: texindex/ti.twjr:1282
 msgid ""
-"\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
-"\n"
-"Erarraportojn sendu al <bug-texinfo@nu.org>;\n"
-"ĝeneralajn demandojn kaj opiniojn al <help-texinfo@gnu.org>.\n"
-"La hejmpaĝo de Texinfo: <http://www.gnu.org/software/texinfo/>.\n"
-"Por diskutoj pri Esperanto-traduko uzu la dissendoliston\n"
-"<translation-team-eo@lists.sourceforge.net>."
+"Raportu programmisojn al <bug-texinfo@nu.org>;\n"
+"sendu ĝeneralajn demandojn kaj opiniojn al <help-texinfo@gnu.org>.\n"
+"La hejmpaĝo de Texinfo estas:  http://www.gnu.org/software/texinfo/.\n"
+"Diskutu Esperantotradukon je <translation-team-eo@lists.sourceforge.net>."
 
-#: info/info.c:1114
-#, fuzzy, c-format
+#: info/info.c:1116
+#, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "Nodo «(%s)%s» ne troveblas."
 
-#: info/info.c:1115
+#: info/info.c:1117
 msgid "Cannot find a window!"
 msgstr "Ne eblas trovi fenestron!"
 
-#: info/info.c:1116
+#: info/info.c:1118
 msgid "Point doesn't appear within this window's node!"
 msgstr "La muskursoro ne estas en ĉi-fenestra nodo!"
 
-#: info/info.c:1117
+#: info/info.c:1119
 msgid "Cannot delete the last window."
 msgstr "Maleblas forigi la lastan fenestron."
 
-#: info/info.c:1118
+#: info/info.c:1120
 msgid "No menu in this node."
 msgstr "Malestas menuo en ĉi tiu nodo."
 
-#: info/info.c:1119
+#: info/info.c:1121
 msgid "No footnotes in this node."
 msgstr "Malestas piednotoj en ĉi tiu nodo."
 
-#: info/info.c:1120
+#: info/info.c:1122
 msgid "No cross references in this node."
 msgstr "Neniu referenco en ĉi tiu nodo."
 
-#: info/info.c:1121
-#, fuzzy, c-format
-msgid "No '%s' pointer for this node."
-msgstr "Mankas ligo '%s' por ĉi tiu nodo."
-
-#: info/info.c:1122
-#, fuzzy, c-format
-msgid "Unknown Info command '%c'; try '?' for help."
-msgstr "Nekonata Info-komando “%c”; tajpu “?” por helpo."
-
 #: info/info.c:1123
-#, fuzzy, c-format
+#, c-format
+msgid "No '%s' pointer for this node."
+msgstr "Mankas ligo “%s” por ĉi tiu nodo."
+
+#: info/info.c:1124
+#, c-format
+msgid "Unknown Info command '%c'; try '?' for help."
+msgstr "Nekonata Info-komando “%c”; tajpu «?» por helpo."
+
+#: info/info.c:1125
+#, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "Terminalo de tipo «%s» ne estas sufiĉe inteligenta por Info."
 
-#: info/info.c:1124
+#: info/info.c:1126
 msgid "You are already at the last page of this node."
 msgstr "Ĉi tiu jam estas la lasta paĝo en ĉi tiu nodo."
 
-#: info/info.c:1125
+#: info/info.c:1127
 msgid "You are already at the first page of this node."
 msgstr "Ĉi tiu jam estas la unua paĝo en ĉi tiu nodo."
 
-#: info/info.c:1126
+#: info/info.c:1128
 msgid "Only one window."
 msgstr "Nur unu fenestro."
 
-#: info/info.c:1127
+#: info/info.c:1129
 msgid "Resulting window would be too small."
 msgstr "La fenestro rezultus tro malgranda."
 
-#: info/info.c:1128
+#: info/info.c:1130
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Mankas spaco por helpa fenestro; bonvolu forigi iun fenestron."
 
@@ -753,9 +748,8 @@ msgid "\\%-10[top-node]  Go to the top node of this document.\n"
 msgstr "\\%-10[top-node]  Iri al la pinta nodo de ĉi tiu dokumento.\n"
 
 #: info/infodoc.c:63
-#, fuzzy
 msgid "\\%-10[dir-node]  Go to the main 'directory' node.\n"
-msgstr "\\%-10[dir-node]  Iri al la ĉefan ĉefkatalogan nodo.\n"
+msgstr "\\%-10[dir-node]  Iri al la ĉefa ĉefkataloga nodo.\n"
 
 #: info/infodoc.c:65
 msgid "1...9       Pick the first...ninth item in this node's menu.\n"
@@ -807,9 +801,9 @@ msgid "\\%-10[abort-key]  Cancel the current operation.\n"
 msgstr "\\%-10[abort-key]  Ĉesigi la kurantan operacion.\n"
 
 #: info/infodoc.c:197
-#, fuzzy, c-format
+#, c-format
 msgid "This is GNU Info version %s.  "
-msgstr "Ĉi tiun dosieron %s generis Makeinfo-%s el %s.\n"
+msgstr "Ĉi tiu estas GNU Info, versio %s.  "
 
 #: info/infodoc.c:198
 msgid "The current search path is:\n"
@@ -853,7 +847,6 @@ msgid "Display help message"
 msgstr "Eligi helpomesaĝon"
 
 #: info/infodoc.c:348
-#, fuzzy
 msgid "Visit Info node '(info)Help'"
 msgstr "Viziti la Info-nodon «(info)Help»"
 
@@ -880,9 +873,9 @@ msgid "Where is command: "
 msgstr "Kie estas la komando: "
 
 #: info/infodoc.c:892
-#, fuzzy, c-format
+#, c-format
 msgid "'%s' is not on any keys"
-msgstr "neniu klavo trovita por la komando «%s»"
+msgstr "«%s» estas en neniu klavo"
 
 #: info/infodoc.c:898
 #, c-format
@@ -895,14 +888,14 @@ msgid "%s can be invoked via %s."
 msgstr "%s vokeblas per %s."
 
 #: info/infodoc.c:907
-#, fuzzy, c-format
+#, c-format
 msgid "There is no function named '%s'"
 msgstr "Malestas funkcio nomata «%s»"
 
 #: info/infomap.c:600
-#, fuzzy, c-format
+#, c-format
 msgid "could not open init file %s"
-msgstr "ne eblas legi agordan dosieron %s"
+msgstr "ne eblas malfermi agordan dosieron %s"
 
 #: info/infokey.c:229
 #, c-format
@@ -930,9 +923,9 @@ msgid "missing action name"
 msgstr "mankas agonomo"
 
 #: info/infokey.c:450
-#, fuzzy, c-format
+#, c-format
 msgid "cannot bind key sequence to menu-digit"
-msgstr "tro longa klavosekvenco"
+msgstr "ne eblas ligi klavosekvencon al menuera cifero"
 
 #: info/infokey.c:458
 #, c-format
@@ -987,7 +980,7 @@ msgid "Read a command name in the echo area and execute it"
 msgstr "Legi en la eĥozono nomon de komando kaj plenumi ĝin"
 
 #: info/m-x.c:136
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot execute an 'echo-area' command here."
 msgstr "Maleblas plenumi eĥozonan (“echo-area-”) komandon ĉi tie."
 
@@ -1022,7 +1015,6 @@ msgstr "Ne eblas prilabori la dosieron %s.\n"
 #. TRANSLATORS: The "\n* Menu:\n\n" part of this should not be translated, as
 #. it is part of the Info syntax.
 #: info/nodemenu.c:35
-#, fuzzy
 msgid ""
 "\n"
 "* Menu:\n"
@@ -1036,7 +1028,6 @@ msgstr ""
 "  --------------                    ------  -----  -----------------"
 
 #: info/nodemenu.c:187
-#, fuzzy
 msgid ""
 "Here is the menu of nodes you have recently visited.\n"
 "Select one from this menu, or use '\\[history-node]' in another window.\n"
@@ -1080,16 +1071,17 @@ msgstr "Montri ĉiujn kongruantajn dosierojn"
 msgid "No file index"
 msgstr "Neniu dosier-indekso"
 
-#. TRANSLATORS: This message should fit within 79 characters, otherwise
-#. anything after the 80th character will not be displayed.
-#: info/session.c:189
-#, fuzzy, c-format
+#. TRANSLATORS: Try to keep this message (when "expanded") at most 79
+#. characters; anything after the 79th character will not actually be
+#. displayed on an 80-column terminal.
+#: info/session.c:190
+#, c-format
 msgid ""
 "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
 "help-node] for tutorial."
 msgstr ""
-"Bonvenon al Info, versio %s.  Tajpu \\[get-help-window] por helpo, \\[menu-"
-"item] por iri al menuero."
+"Bonvenon al Info, versio %s.  Tajpu «\\[get-help-window]» por helpo, <Spaco> "
+"por foliumi."
 
 #: info/session.c:766
 #, c-format
@@ -1292,12 +1284,12 @@ msgid "Select reference or menu item appearing on this line"
 msgstr "Elekti la referencon aŭ la menueron de ĉi tiu linio"
 
 #: info/session.c:2677
-#, fuzzy, c-format
+#, c-format
 msgid "No menu in node '%s'."
 msgstr "Malestas menuo en nodo «%s»."
 
 #: info/session.c:2724
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to find node referenced by '%s' in '%s'."
 msgstr "Ne eblas trovi nodon referencatan per «%s» en «%s»."
 
@@ -1338,9 +1330,8 @@ msgid "No more nodes within this document."
 msgstr "Malestas pluaj referencoj en la dokumento."
 
 #: info/session.c:3108 info/session.c:3148
-#, fuzzy
 msgid "No 'Prev' or 'Up' for this node within this document."
-msgstr "En la dokumento mankas ligo(j) “Prev” aŭ “Up” por tiu nodo."
+msgstr "En la dokumento mankas ligo(j) “Prev” aŭ “Up” por tiu ĉi nodo."
 
 #: info/session.c:3161
 msgid "Move forwards or down through node structure"
@@ -1376,14 +1367,12 @@ msgid "Get Manpage: "
 msgstr "Manlibran paĝon: "
 
 #: info/session.c:3510
-#, fuzzy
 msgid "Select the node 'Top' in this file"
-msgstr "Viziti la nodon «Top» en ĉi tiu dosiero"
+msgstr "Viziti la nodon “Top” en ĉi tiu dosiero"
 
 #: info/session.c:3516
-#, fuzzy
 msgid "Select the node '(dir)'"
-msgstr "Viziti la nodon «(dir)»"
+msgstr "Viziti la nodon “(dir)”"
 
 #: info/session.c:3522
 msgid "Show full file name of node being displayed"
@@ -1396,7 +1385,7 @@ msgstr "Reviziti nodon plej ĵuse vizititan"
 #: info/session.c:3544
 #, c-format
 msgid "No earlier node in history"
-msgstr ""
+msgstr "Malestas pli frua nodo en historio"
 
 #: info/session.c:3548
 msgid "Read the name of a file and select it"
@@ -1407,12 +1396,12 @@ msgid "Find file: "
 msgstr "Trovi dosieron: "
 
 #: info/session.c:3569
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot find '%s'."
 msgstr "Ne eblas trovi «%s»."
 
 #: info/session.c:3618
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create output file '%s'."
 msgstr "Ne eblas krei eligan dosieron «%s»."
 
@@ -1436,7 +1425,7 @@ msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "Meti la enhavon de ĉi tiu nodo en la dukton per INFO_PRINT_COMMAND"
 
 #: info/session.c:3764
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot open pipe to '%s'."
 msgstr "Ne eblas malfermi dukton al «%s»."
 
@@ -1503,9 +1492,9 @@ msgid " backward"
 msgstr " malantaŭen"
 
 #: info/session.c:4147
-#, fuzzy, c-format
+#, c-format
 msgid "%s%s%s: "
-msgstr "%s%s%s [%s]: "
+msgstr "%s%s%s: "
 
 #: info/session.c:4167
 msgid "Search string too short"
@@ -1537,7 +1526,7 @@ msgstr "Ripeti la ĵusan serĉon alidirekte"
 
 #: info/session.c:4348
 msgid "Clear displayed search matches"
-msgstr ""
+msgstr "Viŝi la montratajn serĉajn kongruojn"
 
 #: info/session.c:4365 info/session.c:4371
 msgid "Search interactively for a string as you type it"
@@ -1573,14 +1562,13 @@ msgid "Quit"
 msgstr "Fini"
 
 #: info/session.c:4902
-#, fuzzy
 msgid "Display version of Info being run"
-msgstr "eligi la uzatan version kaj fini"
+msgstr "Montri la version de la rulanta Info"
 
 #: info/session.c:4904
 #, c-format
 msgid "GNU Info version %s"
-msgstr ""
+msgstr "GNU Info, versio %s"
 
 #: info/session.c:4909
 msgid "Redraw the display"
@@ -1605,15 +1593,15 @@ msgid "\"%s\" is invalid"
 msgstr "«%s» ne validas"
 
 #: info/session.c:4974
-#, fuzzy, c-format
+#, c-format
 msgid "'%s' is invalid"
 msgstr "'%s' ne validas"
 
-#: info/session.c:5291
+#: info/session.c:5292
 msgid "Add this digit to the current numeric argument"
 msgstr "Aldoni ĉi tiun ciferon al la kuranta nombra argumento"
 
-#: info/session.c:5298
+#: info/session.c:5299
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Komenci (aŭ 4-obligi) la kurantan nombran argumenton"
 
@@ -1682,25 +1670,27 @@ msgstr "Preterpasi la nunan fenestron en serĉoj"
 
 #: info/variables.c:108
 msgid "Exclude default directories from file search path"
-msgstr ""
+msgstr "Ekskluzivi defaŭltajn dosierujojn el serĉpado de dosieroj"
 
 #: info/variables.c:112
 msgid "Hide some Info file syntax in the text of nodes"
-msgstr ""
+msgstr "Kaŝi ian Info-an sintakson en la teksto de nodoj"
 
 #: info/variables.c:116
 msgid ""
 "Length of time in milliseconds to wait for the next byte in a sequence "
 "indicating that a key has been pressed"
 msgstr ""
+"Nombro de milisekundoj por atendi je la sekva bajto en sekvenco kiu indikas "
+"ke klavo presiĝis"
 
 #: info/variables.c:120
 msgid "Highlight search matches"
-msgstr ""
+msgstr "Marki serĉajn kongruojn"
 
 #: info/variables.c:124
 msgid "Method to use to track mouse events"
-msgstr ""
+msgstr "Uzenda metodo por atendadi musajn eventojn"
 
 #: info/variables.c:130
 msgid "Explain the use of a variable"
@@ -1737,14 +1727,14 @@ msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), linioj ----, "
 
 #: info/window.c:972
-#, fuzzy, c-format
+#, c-format
 msgid "-%s---Info: %s, %ld lines --%s--"
-msgstr "-%s---Info: %s, %d linioj --%s--"
+msgstr "-%s---Info: %s, %ld linioj --%s--"
 
 #: info/window.c:976
-#, fuzzy, c-format
+#, c-format
 msgid "-%s%s-Info: (%s)%s, %ld lines --%s--"
-msgstr "-%s%s-Info: (%s)%s, %d linioj --%s--"
+msgstr "-%s%s-Info: (%s)%s, %ld linioj --%s--"
 
 #: info/window.c:982
 #, c-format
@@ -1797,7 +1787,6 @@ msgstr ""
 " --calign=KOLUMNO      duaj kaj postaj priskribaj linioj komencu ĉi tie"
 
 #: install-info/install-info.c:555
-#, fuzzy
 msgid ""
 " --debug             report what is being done.\n"
 " --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
@@ -1815,6 +1804,8 @@ msgstr ""
 "  --debug               raporti ĉion kio fariĝas\n"
 "  --delete              forigi ekzistantajn erojn el INFO-DOSIERO;\n"
 "                          ne enŝovi iun ajn novan eron\n"
+"  --defsection=TEKSTO   kiel '--section', sed TEKSTO nur uziĝas kiam la\n"
+"                          INFO-DOSIERO ne enhavas iujn ajn sekciojn\n"
 "  --description=TEKSTO  la priskribo de la ero estu TEKSTO; kune kun la\n"
 "                          opcio '--name' ĝi egalas al la opcio '--entry'\n"
 "  --dir-file=DOSIERO    nomo de la uzenda Info-katalogo;\n"
@@ -1877,7 +1868,6 @@ msgstr ""
 "  --quiet               ne eligi avertojn"
 
 #: install-info/install-info.c:593
-#, fuzzy
 msgid ""
 " --regex=R           put this file's entries in all sections that match the\n"
 "                      regular expression R (ignoring case).\n"
@@ -1907,7 +1897,11 @@ msgstr ""
 "                          ilin ĉiujn; se neniu sekcio indikatas, uzendaj "
 "sekcioj\n"
 "                          determiniĝos el la informoj de la Info-dosiero "
-"mem\n"
+"mem;\n"
+"                          se tie nenio haveblas, la valoro de '--"
+"defsection'\n"
+"                          uziĝas; se tiu ne indikatas, \"Miscellaneous\" "
+"uziĝas\n"
 "  --section RE SEKCIO   egalas al '--regex=RE --section=SEKCIO --add-once'"
 
 #: install-info/install-info.c:609
@@ -1919,17 +1913,6 @@ msgstr ""
 "  --silent              ne eligi avertojn\n"
 "  --test                ne ĝisdatigi la katalogan dosieron\n"
 "  --version             montri programversion kaj eliri"
-
-#: install-info/install-info.c:616 tp/texi2any.pl:866
-msgid ""
-"Email bug reports to bug-texinfo@gnu.org,\n"
-"general questions and discussion to help-texinfo@gnu.org.\n"
-"Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-"Raportu programmisojn al <bug-texinfo@nu.org>;\n"
-"sendu ĝeneralajn demandojn kaj opiniojn al <help-texinfo@gnu.org>.\n"
-"La hejmpaĝo de Texinfo estas:  http://www.gnu.org/software/texinfo/.\n"
-"Diskutu Esperantotradukon je <translation-team-eo@lists.sourceforge.net>."
 
 #: install-info/install-info.c:643
 #, c-format
@@ -2017,9 +2000,9 @@ msgid "No dir file specified; try --help for more information."
 msgstr "Mankas dosiero Info-katalogo (dir); provu «--help» por pluaj informoj."
 
 #: install-info/install-info.c:2277
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read %s."
-msgstr "ne eblas legi %s: %s"
+msgstr "Ne eblas legi %s."
 
 #: install-info/install-info.c:2424
 #, c-format
@@ -2127,7 +2110,7 @@ msgstr "Arkaika variablo %s\n"
 #: tp/Texinfo/Convert/Converter.pm:794
 #, perl-format
 msgid "%s: output incompatible with split"
-msgstr ""
+msgstr "%s: eligo malkongruas kun fendo"
 
 #: tp/Texinfo/Convert/Converter.pm:876 tp/Texinfo/Convert/Converter.pm:909
 #: tp/Texinfo/Convert/DocBook.pm:361 tp/Texinfo/Convert/HTML.pm:6926
@@ -2155,9 +2138,8 @@ msgid "@image file `%s' not found, using `%s'"
 msgstr "'@image'-dosiero «%s» ne troviĝas; «%s» uziĝas"
 
 #: tp/Texinfo/Convert/DocBook.pm:1082 tp/Texinfo/Parser.pm:5355
-#, fuzzy
 msgid "no argument specified for @U"
-msgstr "Mankas nodnomo por la komando „%c%s‟"
+msgstr "mankas argumento je @U"
 
 #: tp/Texinfo/Convert/HTML.pm:1684
 #, perl-format
@@ -2286,7 +2268,7 @@ msgstr "'@node' -- nomo ne devus enteni «,»: %s"
 #: tp/Texinfo/Convert/Plaintext.pm:1310
 #, perl-format
 msgid "Index entry in @%s with : produces invalid Info: %s"
-msgstr ""
+msgstr "Indeksero en @%s kun «:» produktas nevalidan Info-on: %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:1357 tp/Texinfo/Parser.pm:2721
 #, perl-format
@@ -2833,24 +2815,24 @@ msgid "@%s missing first argument"
 msgstr "al '@%s' mankas unua argumento"
 
 #: tp/Texinfo/Parser.pm:5360
-#, fuzzy, perl-format
+#, perl-format
 msgid "non-hex digits in argument for @U: %s"
-msgstr "misa argumento por '@%s': %s"
+msgstr "nedeksesumaj ciferoj en argumento por @U: %s"
 
 #: tp/Texinfo/Parser.pm:5366
 #, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
-msgstr ""
+msgstr "malpli ol kvar deksesumaj ciferoj en argumento por @U: %s"
 
 #: tp/Texinfo/Parser.pm:5379
 #, perl-format
 msgid "argument for @U exceeds size of integer: %s"
-msgstr ""
+msgstr "argumento por @U preterpasas grandon de entjero: %s"
 
 #: tp/Texinfo/Parser.pm:5385
 #, perl-format
 msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
-msgstr ""
+msgstr "argumento por @U preterpasas Unikodan maksimumon 0x10FFFF: %s"
 
 #: tp/Texinfo/Parser.pm:5513
 msgid "superfluous arguments for node"
@@ -3008,9 +2990,9 @@ msgid "no sectioning command associated with @%s"
 msgstr "neniu sekciada komando estas rilatata al '@%s'"
 
 #: tp/Texinfo/Structuring.pm:507
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s not empty"
-msgstr "@%s en vaka plurtabelo"
+msgstr "@%s ne vakas"
 
 #: tp/Texinfo/Structuring.pm:563 tp/Texinfo/Structuring.pm:1345
 #, perl-format
@@ -3243,10 +3225,9 @@ msgstr "ignoriĝas nekonata valoro de TEXINFO_OUTPUT_FORMAT: «%s»\n"
 #: tp/texi2any.pl:735
 #, fuzzy, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
-msgstr "Uzmaniero:  %s [OPCIO...] DOSIERO...\n"
+msgstr "Uzmaniero:  %s [OPCIO...] TEXINFO-DOSIERO...\n"
 
 #: tp/texi2any.pl:738
-#, fuzzy
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -3255,10 +3236,13 @@ msgid ""
 "the behavior is identical, and does not depend on the installed name.\n"
 msgstr ""
 "Tradukas fontan Texinfo-dokumenton en diversajn aliajn formojn, defaŭlte en\n"
-"Info-dosierojn kiuj taŭgas por legado per Emakso aŭ aŭtonoma GNU-Info.\n"
+"Info-dosieron kiu taŭgas por legado per Emakso aŭ aŭtonoma GNU-Info.\n"
+"\n"
+"Ĉi tiu programo kutime instaliĝis kiel ambaŭ 'makeinfo' kaj 'texi2any';\n"
+"ilia konduto tute samas kaj ne dependas je la nomo.\n"
 
 #: tp/texi2any.pl:744
-#, fuzzy, perl-format
+#, perl-format
 msgid ""
 "General options:\n"
 "      --document-language=STR locale to use in translating Texinfo keywords\n"
@@ -3289,10 +3273,9 @@ msgstr ""
 "konduton\n"
 "  -c, --set-customization-variable VARIABLO=VALORO  agordi variablon\n"
 "  -v, --verbose               rakonti kio estas farata\n"
-"      --version               eligi la versio-informon kaj fini\n"
+"      --version               montri informon pri versio kaj fini\n"
 
 #: tp/texi2any.pl:760
-#, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3308,10 +3291,12 @@ msgstr ""
 "      --plaintext             generi platan tekston anstataŭ Info-on\n"
 "      --xml                   generi en Texinfo-XML anstataŭ en Info\n"
 "      --dvi, --dvipdf,\n"
-"      --ps, --pdf             uzi 'texi2dvi' por generi la indikatan eligon\n"
+"      --ps, --pdf             uzi 'texi2dvi' por generi la indikatan "
+"eligon,\n"
+"                                post kontrolo de valideco de TEXINFO-"
+"DOSIERO\n"
 
 #: tp/texi2any.pl:768
-#, fuzzy
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -3354,7 +3339,7 @@ msgstr ""
 "tien;\n"
 "                                kun nefenda eligo, se CELO jam estas "
 "dosierujo\n"
-"                                aŭ finas per '/', meti eligdosierojn tien\n"
+"                                aŭ finas per '/', meti eligdosierojn tien;\n"
 "                                alikaze, CELO estas la eligdosiero\n"
 
 #: tp/texi2any.pl:788
@@ -3440,7 +3425,6 @@ msgstr ""
 "      --Xopt=OPCIO            doni tiu OPCIO al 'texi2dvi'; ripeteblas\n"
 
 #: tp/texi2any.pl:822
-#, fuzzy
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3452,10 +3436,11 @@ msgid ""
 msgstr ""
 "Opcioj pri la fontodosieroj:\n"
 "      --commands-in-node-names    (faras nenion; rekoniĝas por kongrueco)\n"
-"  -D VAR      difini la variablon VAR, kiel per @set\n"
-"  -I UJO      alkroĉi dosierUJOn al la serĉvojo de @include\n"
-"  -P UJO      antaŭmeti dosierUJOn al la serĉvojo de @include\n"
-"  -U VAR      maldifini la variablon VAR, kiel per @clear\n"
+"  -D VAR        difini la variablon VAR, kiel per @set\n"
+"  -D 'VAR VAL'  difini la variablon VAR al valoro VAL (ununura argumento)\n"
+"  -I UJO        alkroĉi dosierUJOn al la serĉvojo de @include\n"
+"  -P UJO        antaŭmeti dosierUJOn al la serĉvojo de @include\n"
+"  -U VAR        maldifini la variablon VAR, kiel per @clear\n"
 
 #: tp/texi2any.pl:830
 msgid ""
@@ -3623,6 +3608,83 @@ msgstr "%s: eraro dum fermo de %s (dosiero de internaj ligoj): %s\n"
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: ne eblas malfermi %s por skribi: %s\n"
+
+#: texindex/ti.twjr:373
+#, fuzzy, awk-format
+msgid "%s: unrecognized option `%s'\n"
+msgstr "%s: nekonata opcio «--%s»\n"
+
+#: texindex/ti.twjr:444
+#, fuzzy, awk-format
+msgid "%s is not a Texinfo index file\n"
+msgstr "%s: ne estas indeksa dosiero laŭ Texinfo"
+
+#: texindex/ti.twjr:543
+#, awk-format
+msgid "%s:%d: Bad key %s in record\n"
+msgstr ""
+
+#: texindex/ti.twjr:566
+#, awk-format
+msgid "%s:%d: Bad entry; expected three fields, not %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:725
+#, awk-format
+msgid "%s:%d: Bad entry; expected %s at column %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:1254
+msgid "..."
+msgstr ""
+
+#: texindex/ti.twjr:1273
+#, fuzzy, awk-format
+msgid "Usage: %s [OPTION]... FILE...\n"
+msgstr "Uzmaniero:  %s [OPCIO...] TEXINFO-DOSIERO...\n"
+
+#: texindex/ti.twjr:1274
+#, fuzzy
+msgid "Generate a sorted index for each TeX output FILE."
+msgstr "Generas ordigitan indekson por ĉiu TeX-a elig-DOSIERO.\n"
+
+#: texindex/ti.twjr:1275
+#, fuzzy
+msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
+msgstr "Kutime DOSIERO... estas “umo.%c%c” por dokumento “umo.texi”.\n"
+
+#: texindex/ti.twjr:1277
+#, fuzzy
+msgid "Options:"
+msgstr ""
+"\n"
+"Opcioj:\n"
+
+#: texindex/ti.twjr:1278
+#, fuzzy
+msgid " -h, --help   display this help and exit"
+msgstr "eligi ĉi tiun helpon kaj fini"
+
+#: texindex/ti.twjr:1279
+msgid " --version    display version information and exit"
+msgstr ""
+
+#: texindex/ti.twjr:1280
+msgid " --           end option processing"
+msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Erarraportojn sendu al <bug-texinfo@nu.org>;\n"
+#~ "ĝeneralajn demandojn kaj opiniojn al <help-texinfo@gnu.org>.\n"
+#~ "La hejmpaĝo de Texinfo: <http://www.gnu.org/software/texinfo/>.\n"
+#~ "Por diskutoj pri Esperanto-traduko uzu la dissendoliston\n"
+#~ "<translation-team-eo@lists.sourceforge.net>."
 
 #~ msgid "Insert this character"
 #~ msgstr "Enŝovi tiun signon"
@@ -3897,31 +3959,11 @@ msgstr "%s: ne eblas malfermi %s por skribi: %s\n"
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "       aŭ:  texi2any [OPCIO...] TEXINFO-DOSIERO...\n"
 
-#~ msgid "display this help and exit"
-#~ msgstr "eligi ĉi tiun helpon kaj fini"
-
 #~ msgid "send output to FILE"
 #~ msgstr "sendi la eligaĵon en DOSIEROn"
 
-#~ msgid "Generate a sorted index for each TeX output FILE.\n"
-#~ msgstr "Generas ordigitan indekson por ĉiu TeX-a elig-DOSIERO.\n"
-
-#~ msgid ""
-#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-#~ msgstr "Kutime DOSIERO... estas “umo.%c%c” por dokumento “umo.texi”.\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Options:\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Opcioj:\n"
-
 #~ msgid "failure reopening %s"
 #~ msgstr "fiaskis remalfermo de %s"
-
-#~ msgid "%s: not a texinfo index file"
-#~ msgstr "%s: ne estas indeksa dosiero laŭ Texinfo"
 
 #~ msgid "No page number in %s"
 #~ msgstr "Mankas paĝnumero en %s"

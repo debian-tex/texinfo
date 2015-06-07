@@ -1,7 +1,7 @@
-$Id: AUTHORS 5191 2013-02-23 00:11:18Z karl $
+$Id: AUTHORS 6302 2015-06-03 17:48:34Z karl $
 Texinfo authors.
 
-  Copyright 2003, 2005, 2006, 2007, 2008, 2010, 2011
+  Copyright 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2015
   Free Software Foundation, Inc.
   
   Copying and distribution of this file, with or without modification,
@@ -28,8 +28,10 @@ Karl Heinz Marbaise	original makeinfo language support, most files,
 Philippe Martin		original makeinfo xml/docbook output.
 Sergey Poznyakoff	all files.
 Derek Price		texi2html.
+Arnold Robbins		literate (texi+awk) texindex.
 Paul Rubin		original makeinfo/multi.c.
 Andreas Schwab		texinfo.tex, configure.ac, most makeinfo files.
+Gavin Smith		all files.
 Richard Stallman	original texinfo.tex, install-info.c,
 			texindex.c, texinfo.txi.
 Zack Weinberg		texinfo.tex: @macro implementation.

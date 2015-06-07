@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: info\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-05-11 17:24+0100\n"
+"POT-Creation-Date: 2015-06-03 15:28-0700\n"
 "PO-Revision-Date: 2006-02-18 16:00+0100\n"
 "Last-Translator: Mate LABADI <labadimate@freemail.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -49,7 +49,7 @@ msgstr "%s: Option „%s“ argumentumot vár\n"
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
 #, fuzzy, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: ismeretlen opció „--%s“\n"
+msgstr "%s: ismeretlen opció „%c%s“\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, fuzzy, c-format
@@ -90,9 +90,11 @@ msgstr ""
 msgid "No match"
 msgstr ""
 
+# keresési feltétel / keresési szöveg / keresett szöveg ? LM
 #: gnulib/lib/regcomp.c:137
+#, fuzzy
 msgid "Invalid regular expression"
-msgstr ""
+msgstr "Nincs korábbi keresési feltétel"
 
 #: gnulib/lib/regcomp.c:140
 #, fuzzy
@@ -139,17 +141,23 @@ msgstr ""
 msgid "Memory exhausted"
 msgstr ""
 
+# keresési feltétel / keresési szöveg / keresett szöveg ? LM
 #: gnulib/lib/regcomp.c:170
+#, fuzzy
 msgid "Invalid preceding regular expression"
-msgstr ""
+msgstr "Nincs korábbi keresési feltétel"
 
+# keresési feltétel / keresési szöveg / keresett szöveg ? LM
 #: gnulib/lib/regcomp.c:173
+#, fuzzy
 msgid "Premature end of regular expression"
-msgstr ""
+msgstr "Nincs korábbi keresési feltétel"
 
+# keresési feltétel / keresési szöveg / keresett szöveg ? LM
 #: gnulib/lib/regcomp.c:176
+#, fuzzy
 msgid "Regular expression too big"
-msgstr ""
+msgstr "Nincs korábbi keresési feltétel"
 
 #: gnulib/lib/regcomp.c:179
 #, fuzzy
@@ -392,7 +400,7 @@ msgstr "Tárgymutató apropók:"
 msgid "No available info files have '%s' in their indices."
 msgstr "Nincs elérhető fájl, amely tárgymutatója tartalmazná  „%s“-t."
 
-#: info/info-utils.c:897
+#: info/info-utils.c:899
 #, c-format
 msgid "Error converting file character encoding."
 msgstr ""
@@ -407,7 +415,7 @@ msgstr "Nincs „%s“ menüelem a(z) „%s“ oldalon."
 msgid "No file given for node '%s'."
 msgstr "Nincs menü a(z) „%s“ oldalon."
 
-#: info/info.c:365 info/info.c:1113
+#: info/info.c:365 info/info.c:1115
 #, fuzzy, c-format
 msgid "Cannot find node '%s'."
 msgstr "A(z) „%s“ oldal nem található."
@@ -443,7 +451,8 @@ msgid "Try --help for more information.\n"
 msgstr "A --help több információt ad.\n"
 
 #: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:878
-#, c-format, perl-format
+#: texindex/ti.twjr:1293
+#, c-format, awk-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -540,9 +549,10 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1079
+#: info/info.c:1081 install-info/install-info.c:616 tp/texi2any.pl:866
+#: texindex/ti.twjr:1282
+#, fuzzy
 msgid ""
-"\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
@@ -553,72 +563,72 @@ msgstr ""
 "címre küldhetők.\n"
 "Texinfo honlap: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1114
+#: info/info.c:1116
 #, fuzzy, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "A(z) „(%s)%s“ oldal nem található."
 
-#: info/info.c:1115
+#: info/info.c:1117
 msgid "Cannot find a window!"
 msgstr "Nem található ablak!"
 
 # ATNEZNI LM
-#: info/info.c:1116
+#: info/info.c:1118
 msgid "Point doesn't appear within this window's node!"
 msgstr "A pont nem jelenik meg az ablakon látható oldalon!"
 
-#: info/info.c:1117
+#: info/info.c:1119
 msgid "Cannot delete the last window."
 msgstr "Az utolsó ablak nem törölhető!"
 
 # node = csomópont? LM
 # vagy csak pont? sas
-#: info/info.c:1118
+#: info/info.c:1120
 msgid "No menu in this node."
 msgstr "Nincs menü ezen az oldalon."
 
 # node = csomópont? LM
 # vagy csak pont? sas
-#: info/info.c:1119
+#: info/info.c:1121
 msgid "No footnotes in this node."
 msgstr "Nincs lábjegyezet ezen az oldalon."
 
 # node = csomópont? LM
 # vagy csak pont? sas
-#: info/info.c:1120
+#: info/info.c:1122
 msgid "No cross references in this node."
 msgstr "Ez az oldal nem tartalmaz kereszthivatkozást."
 
-#: info/info.c:1121
+#: info/info.c:1123
 #, fuzzy, c-format
 msgid "No '%s' pointer for this node."
 msgstr "Nincs „%s“ utalás ezen az oldalon."
 
-#: info/info.c:1122
+#: info/info.c:1124
 #, fuzzy, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "Ismeretlen Info parancs: „%c“. A „?“ súg."
 
 # smart = okos vagy smart = modern vagy smart = fejlett ? LM
 # sztem fejlett: sas
-#: info/info.c:1123
+#: info/info.c:1125
 #, fuzzy, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "A „%s“ termináltípus nem elég fejlett az Info futtatásához."
 
 # tegez/magáz? LM
 # talán egy kicsit jobb a magázás itt, de ahogy tetszik, de 1séges legyen - sas
-#: info/info.c:1124
+#: info/info.c:1126
 msgid "You are already at the last page of this node."
 msgstr "Ön már az oldal utolsó lapját látja."
 
 # tegez/magáz? LM
 # talán egy kicsit jobb a magázás itt, de ahogy tetszik, de 1séges legyen - sas
-#: info/info.c:1125
+#: info/info.c:1127
 msgid "You are already at the first page of this node."
 msgstr "Ön már az oldal legelső lapját látja."
 
-#: info/info.c:1126
+#: info/info.c:1128
 msgid "Only one window."
 msgstr "Csak egy ablak."
 
@@ -626,13 +636,13 @@ msgstr "Csak egy ablak."
 # vagy
 # resulting window = létrejövő/keletkező ablak
 # LM
-#: info/info.c:1127
+#: info/info.c:1129
 msgid "Resulting window would be too small."
 msgstr "Az eredményablak túl kicsi lenne."
 
 # tegez/magáz LM
 # ha lehet, legjobb elkerülni, például be kell zárni egy ablakot, amúgy itt: talán egy kicsit jobb a magázás, de ahogy tetszik, de 1séges legyen - sas
-#: info/info.c:1128
+#: info/info.c:1130
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Nincs elég hely súgóablakhoz, kérem zárjon be egy ablakot!."
 
@@ -837,10 +847,13 @@ msgstr ""
 "\n"
 
 #: info/infodoc.c:206
+#, fuzzy
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
 msgstr ""
+"Az Info ablakban elérhető parancsok:\n"
+"\n"
 
 #: info/infodoc.c:226
 #, c-format
@@ -1012,17 +1025,18 @@ msgid "\"%s\", line %u: "
 msgstr "„%s“, %u. sor: "
 
 #: info/m-x.c:66
+#, fuzzy
 msgid "Read the name of an Info command and describe it"
-msgstr ""
+msgstr "Fájlnév beolvasása és kiválasztása"
 
 #: info/m-x.c:70
 msgid "Describe command: "
 msgstr "Parancs leírása: "
 
-# FORDITANI
 #: info/m-x.c:93
+#, fuzzy
 msgid "Read a command name in the echo area and execute it"
-msgstr ""
+msgstr "Egy kéziköny oldal hivatkozás olvasása és kiválasztása"
 
 #: info/m-x.c:136
 #, c-format
@@ -1043,7 +1057,6 @@ msgstr "A megjelnített ablak magasságának beállítása"
 msgid "Set screen height to (%d): "
 msgstr "A képernyő magasságának beállítása (%d): "
 
-# FORDITANI
 #: info/makedoc.c:141
 #, c-format
 msgid ""
@@ -1081,12 +1094,10 @@ msgid ""
 "Select one from this menu, or use '\\[history-node]' in another window.\n"
 msgstr ""
 
-# FORDITANI
 #: info/nodemenu.c:208
 msgid "Make a window containing a menu of all of the currently visited nodes"
 msgstr ""
 
-# FORDITANI
 #: info/nodemenu.c:253
 msgid "Select a node which has been previously visited in a visible window"
 msgstr ""
@@ -1106,9 +1117,9 @@ msgid "Terminal cannot be initialized: %s\n"
 msgstr ""
 
 #: info/search.c:166
-#, c-format
+#, fuzzy, c-format
 msgid "regexp error: %s"
-msgstr ""
+msgstr "I.-keresés: "
 
 #: info/session.c:60
 msgid "Show all matching files"
@@ -1119,9 +1130,10 @@ msgstr ""
 msgid "No file index"
 msgstr "Nincs tárgymutató."
 
-#. TRANSLATORS: This message should fit within 79 characters, otherwise
-#. anything after the 80th character will not be displayed.
-#: info/session.c:189
+#. TRANSLATORS: Try to keep this message (when "expanded") at most 79
+#. characters; anything after the 79th character will not actually be
+#. displayed on an 80-column terminal.
+#: info/session.c:190
 #, fuzzy, c-format
 msgid ""
 "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
@@ -1269,7 +1281,6 @@ msgstr "Jelen ablak növelése (csökkentése)"
 msgid "Divide the available screen space among the visible windows"
 msgstr "Elérhető képernyőhely felosztása a látható ablakok közt"
 
-# FORDITANI
 #: info/session.c:1967
 msgid "Toggle the state of line wrapping in the current window"
 msgstr ""
@@ -1350,7 +1361,6 @@ msgstr "Nincs menü a(z) „%s“ oldalon."
 msgid "Unable to find node referenced by '%s' in '%s'."
 msgstr "Nincs a(z) „%s“ által hivatkozott oldal ebben: „%s“."
 
-# FORDITANI
 #: info/session.c:2774
 msgid "Read a list of menus starting from dir and follow them"
 msgstr ""
@@ -1410,12 +1420,10 @@ msgstr "Egy oldalnév elolvasása és kiválasztása"
 msgid "Goto node: "
 msgstr "Ugrás az oldalra: "
 
-# FORDITANI
 #: info/session.c:3438
 msgid "Find the node describing program invocation"
 msgstr ""
 
-# FORDITANI
 #: info/session.c:3440
 #, c-format
 msgid "Find Invocation node of [%s]: "
@@ -1529,8 +1537,9 @@ msgid "Using literal strings for searches."
 msgstr ""
 
 #: info/session.c:4058
+#, fuzzy
 msgid "Search continued from the end of the document."
-msgstr ""
+msgstr "Törlés a sor elejéig"
 
 #: info/session.c:4063
 #, fuzzy
@@ -1555,8 +1564,9 @@ msgid "%s%s%s [%s]: "
 msgstr "%s%sa sztringhez [%s]: "
 
 #: info/session.c:4142 info/session.c:4148
+#, fuzzy
 msgid "Regexp search"
-msgstr ""
+msgstr "I.-keresés: "
 
 #: info/session.c:4142 info/session.c:4148
 msgid "Search"
@@ -1655,9 +1665,9 @@ msgid "Display version of Info being run"
 msgstr "kiírja a verzióinformációt és kilép"
 
 #: info/session.c:4904
-#, c-format
+#, fuzzy, c-format
 msgid "GNU Info version %s"
-msgstr ""
+msgstr "Ez itt %s, ami a makeinfo %s verziójával (%s) lett generálva.\n"
 
 #: info/session.c:4909
 msgid "Redraw the display"
@@ -1688,11 +1698,11 @@ msgstr "\"%s\" érvénytelen"
 msgid "'%s' is invalid"
 msgstr "„%s“ érvénytelen"
 
-#: info/session.c:5291
+#: info/session.c:5292
 msgid "Add this digit to the current numeric argument"
 msgstr "Add hozzá ezt a számjegyet az aktuális numerikus argumentumhoz"
 
-#: info/session.c:5298
+#: info/session.c:5299
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Start (vagy szorozd be 4-gyel) az aktuális numerikus argumentumot"
 
@@ -1947,19 +1957,6 @@ msgid ""
 " --version           display version information and exit."
 msgstr ""
 
-#: install-info/install-info.c:616 tp/texi2any.pl:866
-#, fuzzy
-msgid ""
-"Email bug reports to bug-texinfo@gnu.org,\n"
-"general questions and discussion to help-texinfo@gnu.org.\n"
-"Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-"\n"
-"Hibajegyek a bug-texinfo@gnu.org,\n"
-"általános kérdések és ötletek a help-texinfo@gnu.org\n"
-"címre küldhetők.\n"
-"Texinfo honlap: http://www.gnu.org/software/texinfo/"
-
 #: install-info/install-info.c:643
 #, c-format
 msgid ""
@@ -2010,10 +2007,11 @@ msgstr "%s: Az Info fájlt csak egyszer kell megadni!\n"
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr ""
 
+# keresési feltétel / keresési szöveg / keresett szöveg ? LM
 #: install-info/install-info.c:2188
-#, c-format
+#, fuzzy, c-format
 msgid "Error in regular expression `%s': %s"
-msgstr ""
+msgstr "Nincs korábbi keresési feltétel"
 
 #: install-info/install-info.c:2250
 #, c-format
@@ -2138,9 +2136,9 @@ msgid "could not open %s: %s"
 msgstr "%s: A CSS fájl nem nyitható meg: %s"
 
 #: tp/Texinfo/Common.pm:2135
-#, perl-format
+#, fuzzy, perl-format
 msgid "could not protect hash character in @%s"
-msgstr ""
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
 
 #: tp/Texinfo/Convert/Converter.pm:395 tp/Texinfo/Convert/Converter.pm:414
 #, fuzzy, perl-format
@@ -2260,10 +2258,11 @@ msgstr "Nincs Előző vagy Fel lehetőség e ponthoz e dokumentumban."
 msgid "file empty for renamed node `%s'"
 msgstr "nem hivatkozott oldal „%s“"
 
+# ATNEZNI LM
 #: tp/Texinfo/Convert/HTML.pm:7088
-#, perl-format
+#, fuzzy, perl-format
 msgid "target node (new name for `%s') not in document: %s"
-msgstr ""
+msgstr "Nincs Előző vagy Fel lehetőség e ponthoz e dokumentumban."
 
 #: tp/Texinfo/Convert/HTML.pm:7120
 #, fuzzy, perl-format
@@ -2294,10 +2293,12 @@ msgstr "Nincs menü ezen az oldalon."
 msgid "document without Top node"
 msgstr "Nincs menü ezen az oldalon."
 
+# található / találom
+# a mondatszerkezet miatt itt jó a nem található - sas
 #: tp/Texinfo/Convert/Info.pm:173
-#, perl-format
+#, fuzzy, perl-format
 msgid "rename %s failed: %s"
-msgstr ""
+msgstr "„%s“ nem található."
 
 #: tp/Texinfo/Convert/Info.pm:256
 #, perl-format
@@ -2346,9 +2347,9 @@ msgid ""
 msgstr ""
 
 #: tp/Texinfo/Convert/Plaintext.pm:2111
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s cross-reference name should not contain `:'"
-msgstr ""
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2128
 #, fuzzy, perl-format
@@ -2356,9 +2357,9 @@ msgid "@%s node name should not contain `%s'"
 msgstr "%s: A CSS fájl nem nyitható meg: %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2143
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s node name should not contain `:'"
-msgstr ""
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2166
 #, perl-format
@@ -2375,8 +2376,9 @@ msgid "menu entry node name should not contain `%s'"
 msgstr "Rossz argumentum ide: @%s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:3012
+#, fuzzy
 msgid "menu entry node name should not contain `:'"
-msgstr ""
+msgstr "Rossz argumentum ide: @%s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:3023
 #, fuzzy
@@ -2548,9 +2550,9 @@ msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s egy argumentumot igényel: %citem formázását"
 
 #: tp/Texinfo/Parser.pm:3166
-#, perl-format
+#, fuzzy, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
-msgstr ""
+msgstr "@item nem szerepelhet az @itemize argumentumaként"
 
 #: tp/Texinfo/Parser.pm:3201
 #, fuzzy, perl-format
@@ -2663,9 +2665,9 @@ msgid "redefining Texinfo language command: @%s"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:4009
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s without associated character"
-msgstr ""
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
 
 #: tp/Texinfo/Parser.pm:4079
 #, perl-format
@@ -2758,8 +2760,10 @@ msgid "@%s in empty multitable"
 msgstr "%s: üres fájl"
 
 #: tp/Texinfo/Parser.pm:4656
+#, fuzzy
 msgid "@tab before @item"
 msgstr ""
+"@menu-t találtam az első @node előtt. Létrehozom a „Szülő“ (Top) oldalt"
 
 #: tp/Texinfo/Parser.pm:4659
 #, fuzzy, perl-format
@@ -2771,9 +2775,9 @@ msgid "ignoring @tab outside of multitable"
 msgstr "figyelmen kívül hagyom a multitable-n kívül eső @tab-ot"
 
 #: tp/Texinfo/Parser.pm:4700
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s outside of table or list"
-msgstr ""
+msgstr "(az oldalakon kívül)"
 
 #: tp/Texinfo/Parser.pm:4735
 #, fuzzy, perl-format
@@ -2840,10 +2844,12 @@ msgstr "A(z) @%s -nek nincs értelme a „@float“ környezeten kívül"
 msgid "@%s should be right below `@float'"
 msgstr ""
 
+# írás / mentés ? LM
+# írás - sas
 #: tp/Texinfo/Parser.pm:5097
-#, perl-format
+#, fuzzy, perl-format
 msgid "ignoring multiple @%s"
-msgstr ""
+msgstr "„%s“ oldal írása..."
 
 #: tp/Texinfo/Parser.pm:5216
 #, fuzzy, perl-format
@@ -2856,14 +2862,14 @@ msgid "command @%s missing a node or external manual argument"
 msgstr "%s: hiányzó fájl argumentum.\n"
 
 #: tp/Texinfo/Parser.pm:5259
-#, perl-format
+#, fuzzy, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
-msgstr ""
+msgstr "Rossz argumentum ide: @%s"
 
 #: tp/Texinfo/Parser.pm:5270
-#, perl-format
+#, fuzzy, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
-msgstr ""
+msgstr "Rossz argumentum ide: @%s"
 
 #: tp/Texinfo/Parser.pm:5283
 msgid "@image missing filename argument"
@@ -2880,9 +2886,9 @@ msgid "non-hex digits in argument for @U: %s"
 msgstr "@item nem szerepelhet az @itemize argumentumaként"
 
 #: tp/Texinfo/Parser.pm:5366
-#, perl-format
+#, fuzzy, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
-msgstr ""
+msgstr "@item nem szerepelhet az @itemize argumentumaként"
 
 #: tp/Texinfo/Parser.pm:5379
 #, perl-format
@@ -2920,9 +2926,9 @@ msgid "environment command %s as argument to @%s"
 msgstr "Kapcsos zárójelekkel egy parancsot is megadhat @%s argumentumaként"
 
 #: tp/Texinfo/Parser.pm:5767
-#, perl-format
+#, fuzzy, perl-format
 msgid "empty @%s"
-msgstr ""
+msgstr "Rossz argumentum ide: @%s"
 
 #: tp/Texinfo/Parser.pm:5775
 #, perl-format
@@ -3018,9 +3024,11 @@ msgid "expected @%s on or off, not `%s'"
 msgstr "@%s on vagy off-t vártam, „%s“ helyett"
 
 #: tp/Texinfo/Parser.pm:5974
-#, perl-format
+#, fuzzy, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
+"%s: a --footnote-style argumentumának „separate“-nek vagy  „end“-nek kell "
+"lennie, „%s“ helyett.\n"
 
 #: tp/Texinfo/Parser.pm:5982
 #, fuzzy, perl-format
@@ -3068,9 +3076,9 @@ msgstr ""
 "%s egy nem létező oldalra („%s“) hivatkozik (esetleg hibás szekcionálás?)"
 
 #: tp/Texinfo/Structuring.pm:576
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s entry node name `%s' different from %s name `%s'"
-msgstr ""
+msgstr "Rossz argumentum ide: @%s"
 
 #: tp/Texinfo/Structuring.pm:681
 #, perl-format
@@ -3147,9 +3155,9 @@ msgid "l2h: current directory contains a dot"
 msgstr ""
 
 #: tp/init/latex2html.pm:374
-#, perl-format
+#, fuzzy, perl-format
 msgid "l2h: command did not succeed: %s"
-msgstr ""
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
 
 #: tp/init/latex2html.pm:422
 #, perl-format
@@ -3179,9 +3187,9 @@ msgid ""
 msgstr ""
 
 #: tp/init/latex2html.pm:534
-#, perl-format
+#, fuzzy, perl-format
 msgid "l2h: could not determine the fragment %d for @%s"
-msgstr ""
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
 
 #: tp/init/latex2html.pm:560
 #, perl-format
@@ -3553,6 +3561,82 @@ msgstr "hiba a(z) „%s“ output fájl bezárásakor"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: A CSS fájl nem nyitható meg: %s"
 
+#: texindex/ti.twjr:373
+#, fuzzy, awk-format
+msgid "%s: unrecognized option `%s'\n"
+msgstr "%s: ismeretlen opció „--%s“\n"
+
+#: texindex/ti.twjr:444
+#, fuzzy, awk-format
+msgid "%s is not a Texinfo index file\n"
+msgstr "%s: nem Texinfo tárgymutatófájl"
+
+#: texindex/ti.twjr:543
+#, awk-format
+msgid "%s:%d: Bad key %s in record\n"
+msgstr ""
+
+#: texindex/ti.twjr:566
+#, awk-format
+msgid "%s:%d: Bad entry; expected three fields, not %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:725
+#, awk-format
+msgid "%s:%d: Bad entry; expected %s at column %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:1254
+msgid "..."
+msgstr ""
+
+#: texindex/ti.twjr:1273
+#, fuzzy, awk-format
+msgid "Usage: %s [OPTION]... FILE...\n"
+msgstr "Használat: %s [OPCIÓK]... FÁJL...\n"
+
+#: texindex/ti.twjr:1274
+#, fuzzy
+msgid "Generate a sorted index for each TeX output FILE."
+msgstr "Rendezett tárgymutató generálása minden TeX kimeneti fájlhoz.\n"
+
+#: texindex/ti.twjr:1275
+#, fuzzy
+msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
+msgstr "FÁJL... általában „foo.%c%c“ alakú egy „foo.texi“ dokumentum esetén.\n"
+
+#: texindex/ti.twjr:1277
+#, fuzzy
+msgid "Options:"
+msgstr ""
+"\n"
+"Opciók:\n"
+
+#: texindex/ti.twjr:1278
+#, fuzzy
+msgid " -h, --help   display this help and exit"
+msgstr "kiírja e súgót és kilép"
+
+#: texindex/ti.twjr:1279
+msgid " --version    display version information and exit"
+msgstr ""
+
+#: texindex/ti.twjr:1280
+msgid " --           end option processing"
+msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Hibajegyek a bug-texinfo@gnu.org,\n"
+#~ "általános kérdések és ötletek a help-texinfo@gnu.org\n"
+#~ "címre küldhetők.\n"
+#~ "Texinfo honlap: http://www.gnu.org/software/texinfo/"
+
 #~ msgid "Insert this character"
 #~ msgstr "E karakter beszúrása"
 
@@ -3782,12 +3866,6 @@ msgstr "%s: A CSS fájl nem nyitható meg: %s"
 #~ msgid "Kill this node"
 #~ msgstr "Ezen oldal törlése"
 
-# írás / mentés ? LM
-# írás - sas
-#, fuzzy
-#~ msgid "writing file %s"
-#~ msgstr "„%s“ oldal írása..."
-
 #, fuzzy
 #~ msgid "closing file %s"
 #~ msgstr "hiba a(z) „%s“ output fájl bezárásakor"
@@ -3803,32 +3881,11 @@ msgstr "%s: A CSS fájl nem nyitható meg: %s"
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "Használat: %s [OPCIÓK] ... TEXINFO-FÁJL...\n"
 
-#~ msgid "display this help and exit"
-#~ msgstr "kiírja e súgót és kilép"
-
 #~ msgid "send output to FILE"
 #~ msgstr "kimenet átirányítása FILE-ba"
 
-#~ msgid "Generate a sorted index for each TeX output FILE.\n"
-#~ msgstr "Rendezett tárgymutató generálása minden TeX kimeneti fájlhoz.\n"
-
-#~ msgid ""
-#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-#~ msgstr ""
-#~ "FÁJL... általában „foo.%c%c“ alakú egy „foo.texi“ dokumentum esetén.\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Options:\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Opciók:\n"
-
 #~ msgid "failure reopening %s"
 #~ msgstr "Hiba történt „%s“ újbóli megnyitásakor"
-
-#~ msgid "%s: not a texinfo index file"
-#~ msgstr "%s: nem Texinfo tárgymutatófájl"
 
 #~ msgid "No page number in %s"
 #~ msgstr "Nem található oldalszám ebben: %s"
@@ -4381,11 +4438,6 @@ msgstr "%s: A CSS fájl nem nyitható meg: %s"
 #, fuzzy
 #~ msgid "%s: could not open --css-file %s: %s\n"
 #~ msgstr "%s: A CSS fájl nem nyitható meg: %s"
-
-#, fuzzy
-#~ msgid "@menu before first node"
-#~ msgstr ""
-#~ "@menu-t találtam az első @node előtt. Létrehozom a „Szülő“ (Top) oldalt"
 
 #~ msgid "One completion:\n"
 #~ msgstr "1 kiegészítés:\n"

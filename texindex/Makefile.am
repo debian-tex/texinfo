@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6103 2015-02-07 00:49:01Z karl $
+# $Id: Makefile.am 6305 2015-06-03 22:29:56Z karl $
 # Makefile.am for texinfo/texindex.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -13,11 +13,9 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 # basic plan: what users invoke will be texindex, a shell script wrapper
-# for texindex.awk.
-# 
-# texindex will be created from texindex.in by configure.
-# texindex.awk will be created from ti.twjr by the maintainer (before
-# make dist), using the texiwebjr system.
+# created from texindex.in by configure.
+# texindex.awk does the real work; it is created from ti.twjr 
+# using rules here invoking the texiwebjr utilities.
 
 # what we want installed in $(bindir).
 dist_bin_SCRIPTS = texindex
@@ -28,7 +26,7 @@ CLEANFILES = texindex
 # and mention the original sources explicitly.
 EXTRA_DIST = texindex.in ti.twjr
 
-# we'll put the awk script in $(sharedir)/texinfo.
+# let's install the awk script in $(sharedir)/texinfo.
 dist_pkgdata_SCRIPTS = texindex.awk
 
 # since we generate it, have to clean it (at maintainer-clean) explicitly.
@@ -56,7 +54,6 @@ texindex: texindex.in Makefile
 # build texindex.awk from ti.twjr using jrtangle; that creates
 # texindex.awk (hardwired).  Then we substitute configure-time variables
 # to avoid manual updates of the version number.
-# 
 texindex.awk: ti.twjr
 	$(AWK) -f $(srcdir)/jrtangle $(srcdir)/ti.twjr || rm -f texindex.awk
 	$(do_subst) <texindex.awk >texindex.awk-tmp
@@ -70,13 +67,12 @@ ti.info: ti.texi
 ti.html: ti.texi
 	makeinfo --no-split --html ti.texi -o ti.html
 
-# unlink jrtangle, jrweave outputs to stdout; and we want the
-# usual UPDATED string.
+# unlike jrtangle, jrweave outputs to stdout; use the usual UPDATED string.
 ti.texi: ti.twjr
 	UPDATED=`$(top_srcdir)/build-aux/mdate-sh $(srcdir)/ti.twjr`; \
 	  $(AWK) -f $(srcdir)/jrweave $(srcdir)/ti.twjr \
 	  | $(do_subst) -e "s,[@]UPDATED[@],$$UPDATED,g" \
 	  >ti.texi || rm -f ti.texi
 
-# just a fun cartoon used in the literate document.
+# a fun cartoon used in the literate program.
 EXTRA_DIST += dek_idx.png

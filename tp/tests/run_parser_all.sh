@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Id: run_parser_all.sh 6197 2015-03-29 19:59:32Z pertusus $
+# $Id: run_parser_all.sh 6291 2015-05-31 18:29:37Z karl $
 # Run all Texinfo tests.
 # 
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015
@@ -9,7 +9,22 @@
 # are permitted in any medium without royalty provided the copyright
 # notice and this notice are preserved.
 
-#set -x
+
+# Explanation: on Solaris 5.10 (and other?), /bin/sh is the original
+# Bourne shell, where redirecting a while loop (or any compound command)
+# causes execution in a subshell.
+# http://unix.stackexchange.com/questions/137680/variable-scope-in-while-read-loop-on-solaris
+# 
+# The result for us being that the assignment to $one_test_done inside
+# the loop is ineffective, causing the test to seemingly fail.  Let's
+# try running under the POSIX sh available on Solaris instead (which
+# sets $RANDOM, whereas /bin/sh does not).
+# 
+# If more problems arise, perhaps we'll be better off just detecting the
+# original Bourne sh and skipping the test.
+#
+test -f /usr/xpg4/bin/sh && test -z "$RANDOM" \
+&& exec /usr/xpg4/bin/sh "$0" "$@"
 
 #echo "SRCDIR $srcdir srcdir_test $srcdir_test"
 
@@ -113,7 +128,7 @@ else
 fi
 
 first_line=`head -1 "$driving_file"`
-if echo $first_line |grep -qs '^# formats'; then
+if echo $first_line |grep '^# formats' >/dev/null; then
   formats=`echo $first_line |sed 's/^# formats //'`
   commands="$commands $formats"
   echo "found special first line, commands now: $commands" >>$logfile
@@ -129,12 +144,12 @@ done
 if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
   while read line
   do
-    if echo $line | grep -qs '^ *#'; then continue; fi
+    if echo $line | grep '^ *#' >/dev/null 2>&1; then continue; fi
 # there are better ways
     dir=`echo $line | awk '{print $1}'`
     file=`echo $line | awk '{print $2}'`
     remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]*  *[a-zA-Z0-9_./-]* *//'`
-    [ "z$dir" = 'z' -o "$zfile" = 'z' ] && continue
+    [ "z$dir" = 'z' -o "z$file" = 'z' ] && continue
     basename=`basename $file .texi`
     if [ "z$dir" = 'ztexi' ]; then
       dir="texi_${basename}"
@@ -190,13 +205,13 @@ return_code=0
 
 while read line; do
   # skip comments.
-  if echo $line | grep -qs '^ *#'; then continue; fi
+  if echo $line | grep '^ *#' >/dev/null; then continue; fi
 
   current=`echo $line | awk '{print $1}'`
   file=`echo $line | awk '{print $2}'`
   #
   # skip empty lines.
-  (test "z$current" = 'z' || test "$zfile" = 'z') && continue
+  (test "z$current" = 'z' || test "z$file" = 'z') && continue
   #
   # if we're only doing one test, skip it unless this is the one.
   if test $one_test = 'yes' && test "z$current" != "z$the_test" ; then
@@ -270,10 +285,10 @@ while read line; do
       use_tex4ht=no
       l2h_tmp_dir=
       maybe_use_latex2html=no
-      if echo "$remaining" | grep -qs -- '-l2h'; then
+      if echo "$remaining" | grep '[-]l2h' >/dev/null; then
         maybe_use_latex2html=yes
       fi
-      if echo "$remaining" | grep -qs -- 'L2H 1'; then
+      if echo "$remaining" | grep 'L2H 1' >/dev/null; then
         maybe_use_latex2html=yes
       fi
       if [ $maybe_use_latex2html = 'yes' ]; then
@@ -290,7 +305,7 @@ while read line; do
            fi
         fi
         l2h_tmp_dir="--set-customization-variable 'L2H_TMP $tmp_dir'"
-      elif echo "$remaining" | grep -qs -- '-init tex4ht.pm'; then
+      elif echo "$remaining" | grep '[-]init tex4ht.pm' >/dev/null; then
         if test "$no_tex4ht" = 'yes' ; then
           echo "S: (no tex4ht) $current"
           continue 2
@@ -298,7 +313,7 @@ while read line; do
         use_tex4ht=yes
       fi
       if test $use_tex4ht = 'yes' || test $use_latex2html = 'yes' ; then
-        if echo "$remaining" | grep -qs -- '-init mediawiki.pm'; then
+        if echo "$remaining" | grep '[-]init mediawiki.pm' >/dev/null; then
          if test "$no_html2wiki" = 'yes' ; then
            echo "S: (no html2wiki) $current"
            continue 2

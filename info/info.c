@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c 6261 2015-05-11 16:11:09Z gavin $
+   $Id: info.c 6305 2015-06-03 22:29:56Z karl $
 
    Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
@@ -1076,7 +1076,9 @@ Examples:\n\
   info --subnodes -o out.txt emacs  dump entire manual to out.txt\n\
   info -f ./foo.info         show file ./foo.info, not searching dir"));
 
-  puts (_("\n\
+  puts ("");
+
+  puts (_("\
 Email bug reports to bug-texinfo@gnu.org,\n\
 general questions and discussion to help-texinfo@gnu.org.\n\
 Texinfo home page: http://www.gnu.org/software/texinfo/"));

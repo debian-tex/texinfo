@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Id: regenerate_cmd_tests.sh 6197 2015-03-29 19:59:32Z pertusus $
+# $Id: regenerate_cmd_tests.sh 6291 2015-05-31 18:29:37Z karl $
 # Use information from test driving files to regenerate test scripts
 # that run only one test, and file lists to be used in Makefiles.
 #
@@ -60,7 +60,7 @@ for test_dir in $test_dirs; do
     test_driving_files="$test_driving_files $driving_file"
     while read line
     do
-    if echo $line | grep -qs '^ *#'; then continue; fi
+    if echo $line | grep '^ *#' >/dev/null; then continue; fi
 # there are better ways
     name=`echo $line | awk '{print $1}'`
     arg=$name

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-05-11 17:24+0100\n"
+"POT-Creation-Date: 2015-06-03 15:28-0700\n"
 "PO-Revision-Date: 2015-02-26 19:36+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan <ca@dodds.net>\n"
@@ -47,9 +47,9 @@ msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: l'opció '--%s' requereix un argument\n"
 
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
-#, c-format
+#, fuzzy, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: opció no reconeguda '--%s'\n"
+msgstr "%s: opció no reconeguda '%c%s'\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, c-format
@@ -384,7 +384,7 @@ msgstr "Tema d'índex"
 msgid "No available info files have '%s' in their indices."
 msgstr "Cap dels fitxers info disponibles tenen `%s' als seus índexs."
 
-#: info/info-utils.c:897
+#: info/info-utils.c:899
 #, c-format
 msgid "Error converting file character encoding."
 msgstr ""
@@ -400,7 +400,7 @@ msgstr "No hi ha un element de menú `%s' al node `%s'."
 msgid "No file given for node '%s'."
 msgstr "No s'ha donat un fitxer per al node `%s'."
 
-#: info/info.c:365 info/info.c:1113
+#: info/info.c:365 info/info.c:1115
 #, c-format
 msgid "Cannot find node '%s'."
 msgstr "No es pot trobar el node `%s'."
@@ -436,7 +436,8 @@ msgid "Try --help for more information.\n"
 msgstr "Proveu --help per a més informació.\n"
 
 #: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:878
-#, c-format, perl-format
+#: texindex/ti.twjr:1293
+#, c-format, awk-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -603,79 +604,78 @@ msgstr ""
 "sencer a sortida.txt\n"
 "  info -f ./bla.info         mostra el fitxer ./bla.info, sense buscar a dir"
 
-#: info/info.c:1079
+#: info/info.c:1081 install-info/install-info.c:616 tp/texi2any.pl:866
+#: texindex/ti.twjr:1282
 msgid ""
-"\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
-"\n"
-"Envia els informes d'error per correu electrònica a bug-texinfo@gnu.org\n"
+"Envia els informes d'error per correu electrònic a bug-texinfo@gnu.org.\n"
 "preguntes generals i discussió a help-texinfo@gnu.org.\n"
-"Pàgina d'inici del texinfo: http://www.gnu.org/software/texinfo/"
+"Pàgina d'inici de texinfo: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1114
+#: info/info.c:1116
 #, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "No es pot trobar el node '(%s)%s'."
 
-#: info/info.c:1115
+#: info/info.c:1117
 msgid "Cannot find a window!"
 msgstr "No es pot trobar una finestra!"
 
-#: info/info.c:1116
+#: info/info.c:1118
 msgid "Point doesn't appear within this window's node!"
 msgstr "El punt no apareix dins del node d'aquesta finestra!"
 
-#: info/info.c:1117
+#: info/info.c:1119
 msgid "Cannot delete the last window."
 msgstr "No es pot eliminar l'última finestra."
 
-#: info/info.c:1118
+#: info/info.c:1120
 msgid "No menu in this node."
 msgstr "No hi ha un menú a aquest node."
 
-#: info/info.c:1119
+#: info/info.c:1121
 msgid "No footnotes in this node."
 msgstr "No hi ha notes a peu de pàgina a aquest node."
 
-#: info/info.c:1120
+#: info/info.c:1122
 msgid "No cross references in this node."
 msgstr "No hi ha referències creuades a aquest node."
 
-#: info/info.c:1121
+#: info/info.c:1123
 #, c-format
 msgid "No '%s' pointer for this node."
 msgstr "No hi ha un punter '%s' per a aquest node."
 
-#: info/info.c:1122
+#: info/info.c:1124
 #, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "Ordre `%c' d'Info desconeguda; proveu `?' per a ajuda."
 
-#: info/info.c:1123
+#: info/info.c:1125
 #, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "La terminal tipus `%s' no és prou intel·ligent per executar Info."
 
-#: info/info.c:1124
+#: info/info.c:1126
 msgid "You are already at the last page of this node."
 msgstr "Ja esteu a l'última pàgina d'aquest node."
 
-#: info/info.c:1125
+#: info/info.c:1127
 msgid "You are already at the first page of this node."
 msgstr "Ja esteu a la primera pàgina d'aquest node."
 
-#: info/info.c:1126
+#: info/info.c:1128
 msgid "Only one window."
 msgstr "Sols una finestra."
 
-#: info/info.c:1127
+#: info/info.c:1129
 msgid "Resulting window would be too small."
 msgstr "La finestra resultant seria massa petita."
 
-#: info/info.c:1128
+#: info/info.c:1130
 msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "No hi ha prou espai per a una finestra d'ajuda, si us plau elimineu una "
@@ -1096,9 +1096,10 @@ msgstr "Mostra tots els fitxers que concordin"
 msgid "No file index"
 msgstr "No hi ha un índex de fitxer"
 
-#. TRANSLATORS: This message should fit within 79 characters, otherwise
-#. anything after the 80th character will not be displayed.
-#: info/session.c:189
+#. TRANSLATORS: Try to keep this message (when "expanded") at most 79
+#. characters; anything after the 79th character will not actually be
+#. displayed on an 80-column terminal.
+#: info/session.c:190
 #, fuzzy, c-format
 msgid ""
 "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
@@ -1628,11 +1629,11 @@ msgstr "\"%s\" no és vàlid"
 msgid "'%s' is invalid"
 msgstr "'%s' no és vàlid"
 
-#: info/session.c:5291
+#: info/session.c:5292
 msgid "Add this digit to the current numeric argument"
 msgstr "Afegeix aquest dígit a l'argument numèric actual"
 
-#: info/session.c:5298
+#: info/session.c:5299
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Inicia (o multiplica per 4) l'argument numèric actual"
 
@@ -1964,16 +1965,6 @@ msgstr ""
 " --silent            suprimeix els advertiments.\n"
 " --test              suprimeix l'actualització de FITXER-DIR.\n"
 " --version           mostra la informació de versió i surt."
-
-#: install-info/install-info.c:616 tp/texi2any.pl:866
-msgid ""
-"Email bug reports to bug-texinfo@gnu.org,\n"
-"general questions and discussion to help-texinfo@gnu.org.\n"
-"Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-"Envia els informes d'error per correu electrònic a bug-texinfo@gnu.org.\n"
-"preguntes generals i discussió a help-texinfo@gnu.org.\n"
-"Pàgina d'inici de texinfo: http://www.gnu.org/software/texinfo/"
 
 #: install-info/install-info.c:643
 #, c-format
@@ -3293,7 +3284,7 @@ msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "s'ignorarà l'ordre no reconeguda TEXINFO_OUTPUT_FORMAT valor `%s'\n"
 
 #: tp/texi2any.pl:735
-#, perl-format
+#, fuzzy, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Ús: %s [OPCIÓ]... FITXER-TEXINFO...\n"
 
@@ -3707,6 +3698,84 @@ msgstr "%s: error en tancar els fitxers d'enllaços interns %s: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: no s'ha pogut obrir %s per a escriptura: %s\n"
 
+#: texindex/ti.twjr:373
+#, fuzzy, awk-format
+msgid "%s: unrecognized option `%s'\n"
+msgstr "%s: opció no reconeguda '--%s'\n"
+
+#: texindex/ti.twjr:444
+#, fuzzy, awk-format
+msgid "%s is not a Texinfo index file\n"
+msgstr "%s: no és un fitxer d'índex texinfo"
+
+#: texindex/ti.twjr:543
+#, awk-format
+msgid "%s:%d: Bad key %s in record\n"
+msgstr ""
+
+#: texindex/ti.twjr:566
+#, awk-format
+msgid "%s:%d: Bad entry; expected three fields, not %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:725
+#, awk-format
+msgid "%s:%d: Bad entry; expected %s at column %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:1254
+msgid "..."
+msgstr ""
+
+#: texindex/ti.twjr:1273
+#, fuzzy, awk-format
+msgid "Usage: %s [OPTION]... FILE...\n"
+msgstr "Ús: %s [OPCIÓ]... FITXER-TEXINFO...\n"
+
+#: texindex/ti.twjr:1274
+#, fuzzy
+msgid "Generate a sorted index for each TeX output FILE."
+msgstr ""
+"Genera un índex ordenat alfabèticament per a cada FITXER de sortida TeX.\n"
+
+#: texindex/ti.twjr:1275
+#, fuzzy
+msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
+msgstr ""
+"En general FITXER... s'especifica com `bla%c%c' per a un document `foo."
+"texi'.\n"
+
+#: texindex/ti.twjr:1277
+#, fuzzy
+msgid "Options:"
+msgstr ""
+"\n"
+"Opcions:\n"
+
+#: texindex/ti.twjr:1278
+#, fuzzy
+msgid " -h, --help   display this help and exit"
+msgstr "mostra aquesta ajuda i surt"
+
+#: texindex/ti.twjr:1279
+msgid " --version    display version information and exit"
+msgstr ""
+
+#: texindex/ti.twjr:1280
+msgid " --           end option processing"
+msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Envia els informes d'error per correu electrònica a bug-texinfo@gnu.org\n"
+#~ "preguntes generals i discussió a help-texinfo@gnu.org.\n"
+#~ "Pàgina d'inici del texinfo: http://www.gnu.org/software/texinfo/"
+
 #~ msgid "Insert this character"
 #~ msgstr "Insereix aquest caràcter"
 
@@ -3989,34 +4058,11 @@ msgstr "%s: no s'ha pogut obrir %s per a escriptura: %s\n"
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "  o:  texi2any [OPCIÓ]... FITXER-TEXINFO...\n"
 
-#~ msgid "display this help and exit"
-#~ msgstr "mostra aquesta ajuda i surt"
-
 #~ msgid "send output to FILE"
 #~ msgstr "envia la sortida a FITXER"
 
-#~ msgid "Generate a sorted index for each TeX output FILE.\n"
-#~ msgstr ""
-#~ "Genera un índex ordenat alfabèticament per a cada FITXER de sortida TeX.\n"
-
-#~ msgid ""
-#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-#~ msgstr ""
-#~ "En general FITXER... s'especifica com `bla%c%c' per a un document `foo."
-#~ "texi'.\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Options:\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Opcions:\n"
-
 #~ msgid "failure reopening %s"
 #~ msgstr "ha fallat la reobertura %s"
-
-#~ msgid "%s: not a texinfo index file"
-#~ msgstr "%s: no és un fitxer d'índex texinfo"
 
 #~ msgid "No page number in %s"
 #~ msgstr "No hi ha números de pàgina a %s"

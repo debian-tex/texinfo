@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-05-11 17:24+0100\n"
+"POT-Creation-Date: 2015-06-03 15:28-0700\n"
 "PO-Revision-Date: 2005-05-03 12:00+05\n"
 "Last-Translator: Laurentiu Buzdugan <lbuz@rolix.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -50,7 +50,7 @@ msgstr "%s: opþiunea `%s' necesitã un argument\n"
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
 #, fuzzy, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: opþiune nerecunoscutã `--%s'\n"
+msgstr "%s: opþiune nerecunoscutã `%c%s'\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, fuzzy, c-format
@@ -92,8 +92,9 @@ msgid "No match"
 msgstr ""
 
 #: gnulib/lib/regcomp.c:137
+#, fuzzy
 msgid "Invalid regular expression"
-msgstr ""
+msgstr "Nici un ºir cãutat anterior"
 
 #: gnulib/lib/regcomp.c:140
 #, fuzzy
@@ -141,16 +142,19 @@ msgid "Memory exhausted"
 msgstr ""
 
 #: gnulib/lib/regcomp.c:170
+#, fuzzy
 msgid "Invalid preceding regular expression"
-msgstr ""
+msgstr "Nici un ºir cãutat anterior"
 
 #: gnulib/lib/regcomp.c:173
+#, fuzzy
 msgid "Premature end of regular expression"
-msgstr ""
+msgstr "Nici un ºir cãutat anterior"
 
 #: gnulib/lib/regcomp.c:176
+#, fuzzy
 msgid "Regular expression too big"
-msgstr ""
+msgstr "Nici un ºir cãutat anterior"
 
 #: gnulib/lib/regcomp.c:179
 #, fuzzy
@@ -391,7 +395,7 @@ msgstr "Index apropos: "
 msgid "No available info files have '%s' in their indices."
 msgstr "Nici un fiºier info nu are `%s' în indexurile lor."
 
-#: info/info-utils.c:897
+#: info/info-utils.c:899
 #, c-format
 msgid "Error converting file character encoding."
 msgstr ""
@@ -406,7 +410,7 @@ msgstr "Nici un articol de meniu `%s' în nod `%s'."
 msgid "No file given for node '%s'."
 msgstr "Nici un meniu în nod `%s'."
 
-#: info/info.c:365 info/info.c:1113
+#: info/info.c:365 info/info.c:1115
 #, fuzzy, c-format
 msgid "Cannot find node '%s'."
 msgstr "Nu pot gãsi nodul `%s'."
@@ -442,7 +446,8 @@ msgid "Try --help for more information.\n"
 msgstr "Încercaþi --help pentru informaþii suplimentare.\n"
 
 #: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:878
-#, c-format, perl-format
+#: texindex/ti.twjr:1293
+#, c-format, awk-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -542,9 +547,10 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1079
+#: info/info.c:1081 install-info/install-info.c:616 tp/texi2any.pl:866
+#: texindex/ti.twjr:1282
+#, fuzzy
 msgid ""
-"\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
@@ -554,67 +560,67 @@ msgstr ""
 "întrebãri generale ºi discuþii la help-texinfo@gnu.org.\n"
 "Texinfo homepage: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1114
+#: info/info.c:1116
 #, fuzzy, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "Nu pot gãsi nodul `(%s)%s'."
 
-#: info/info.c:1115
+#: info/info.c:1117
 msgid "Cannot find a window!"
 msgstr "Nu pot gãsi o fereastrã!"
 
-#: info/info.c:1116
+#: info/info.c:1118
 msgid "Point doesn't appear within this window's node!"
 msgstr "Punctul nu apare în interiorul nodului acestei ferestre!"
 
-#: info/info.c:1117
+#: info/info.c:1119
 msgid "Cannot delete the last window."
 msgstr "Nu pot ºterge ultima fereastrã."
 
-#: info/info.c:1118
+#: info/info.c:1120
 msgid "No menu in this node."
 msgstr "Nici un meniu în acest nod"
 
-#: info/info.c:1119
+#: info/info.c:1121
 msgid "No footnotes in this node."
 msgstr "Nici o notã de subsol în acest nod."
 
-#: info/info.c:1120
+#: info/info.c:1122
 msgid "No cross references in this node."
 msgstr "Nici o referinþã la acelaºi pasaj în acest nod."
 
-#: info/info.c:1121
+#: info/info.c:1123
 #, fuzzy, c-format
 msgid "No '%s' pointer for this node."
 msgstr "Nici un pointer `%s' pentru acest nod."
 
-#: info/info.c:1122
+#: info/info.c:1124
 #, fuzzy, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "Comandã Info necunoscutã `%c';încercaþi `?' pentru ajutor."
 
-#: info/info.c:1123
+#: info/info.c:1125
 #, fuzzy, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "Terminalul de tip `%s' nu e destul de deºtept sã ruleze Info."
 
-#: info/info.c:1124
+#: info/info.c:1126
 msgid "You are already at the last page of this node."
 msgstr "Sunteþi deja la ultima paginã a acestui nod."
 
-#: info/info.c:1125
+#: info/info.c:1127
 msgid "You are already at the first page of this node."
 msgstr "Sunteþi deja la prima paginã a acestui nod."
 
-#: info/info.c:1126
+#: info/info.c:1128
 msgid "Only one window."
 msgstr "O singurã fereastrã."
 
-#: info/info.c:1127
+#: info/info.c:1129
 msgid "Resulting window would be too small."
 msgstr "Fereastra rezultantã ar fi prea micã."
 
-#: info/info.c:1128
+#: info/info.c:1130
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Nu e destul spaþiu pentru o fereastrã de ajutor, ºtergeþi o fereastrã."
 
@@ -1047,9 +1053,9 @@ msgid "Terminal cannot be initialized: %s\n"
 msgstr ""
 
 #: info/search.c:166
-#, c-format
+#, fuzzy, c-format
 msgid "regexp error: %s"
-msgstr ""
+msgstr "I-cautã: "
 
 #: info/session.c:60
 msgid "Show all matching files"
@@ -1060,9 +1066,10 @@ msgstr ""
 msgid "No file index"
 msgstr "Nici o intrare în index."
 
-#. TRANSLATORS: This message should fit within 79 characters, otherwise
-#. anything after the 80th character will not be displayed.
-#: info/session.c:189
+#. TRANSLATORS: Try to keep this message (when "expanded") at most 79
+#. characters; anything after the 79th character will not actually be
+#. displayed on an 80-column terminal.
+#: info/session.c:190
 #, fuzzy, c-format
 msgid ""
 "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
@@ -1447,8 +1454,9 @@ msgid "Using literal strings for searches."
 msgstr ""
 
 #: info/session.c:4058
+#, fuzzy
 msgid "Search continued from the end of the document."
-msgstr ""
+msgstr "ªterge (kill) pânã la începutul liniei"
 
 #: info/session.c:4063
 #, fuzzy
@@ -1470,8 +1478,9 @@ msgid "%s%s%s [%s]: "
 msgstr "%s%s pentru ºir [%s]: "
 
 #: info/session.c:4142 info/session.c:4148
+#, fuzzy
 msgid "Regexp search"
-msgstr ""
+msgstr "I-cautã: "
 
 #: info/session.c:4142 info/session.c:4148
 msgid "Search"
@@ -1564,9 +1573,9 @@ msgid "Display version of Info being run"
 msgstr "afiºeazã informaþii despre versiune ºi terminã"
 
 #: info/session.c:4904
-#, c-format
+#, fuzzy, c-format
 msgid "GNU Info version %s"
-msgstr ""
+msgstr "Acesta este %s, produs de makeinfo versiunea %s din %s.\n"
 
 #: info/session.c:4909
 msgid "Redraw the display"
@@ -1595,11 +1604,11 @@ msgstr "\"%s\" este invalid"
 msgid "'%s' is invalid"
 msgstr "`%s' este invalid"
 
-#: info/session.c:5291
+#: info/session.c:5292
 msgid "Add this digit to the current numeric argument"
 msgstr "Adaugã aceastã cifrã la argumentul numeric curent"
 
-#: info/session.c:5298
+#: info/session.c:5299
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Începe (sau înmulþeºte cu 4) argumentul numeric curent"
 
@@ -1857,18 +1866,6 @@ msgid ""
 " --version           display version information and exit."
 msgstr ""
 
-#: install-info/install-info.c:616 tp/texi2any.pl:866
-#, fuzzy
-msgid ""
-"Email bug reports to bug-texinfo@gnu.org,\n"
-"general questions and discussion to help-texinfo@gnu.org.\n"
-"Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-"\n"
-"Trimiteþi emailuri raportând bug-uri la bug-texinfo@gnu.org,\n"
-"întrebãri generale ºi discuþii la help-texinfo@gnu.org.\n"
-"Texinfo homepage: http://www.gnu.org/software/texinfo/"
-
 #: install-info/install-info.c:643
 #, fuzzy, c-format
 msgid ""
@@ -1937,9 +1934,9 @@ msgid "Extra regular expression specified, ignoring `%s'"
 msgstr ""
 
 #: install-info/install-info.c:2188
-#, c-format
+#, fuzzy, c-format
 msgid "Error in regular expression `%s': %s"
-msgstr ""
+msgstr "Nici un ºir cãutat anterior"
 
 #: install-info/install-info.c:2250
 #, c-format
@@ -2060,9 +2057,9 @@ msgid "could not open %s: %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
 #: tp/Texinfo/Common.pm:2135
-#, perl-format
+#, fuzzy, perl-format
 msgid "could not protect hash character in @%s"
-msgstr ""
+msgstr "%s: nu am putut deschide --css-file: %s"
 
 #: tp/Texinfo/Convert/Converter.pm:395 tp/Texinfo/Convert/Converter.pm:414
 #, fuzzy, perl-format
@@ -2182,9 +2179,9 @@ msgid "file empty for renamed node `%s'"
 msgstr "nod nereferit `%s'"
 
 #: tp/Texinfo/Convert/HTML.pm:7088
-#, perl-format
+#, fuzzy, perl-format
 msgid "target node (new name for `%s') not in document: %s"
-msgstr ""
+msgstr "Nici un `Prec' sau `Sus' pentru acest nod în acest document."
 
 #: tp/Texinfo/Convert/HTML.pm:7120
 #, fuzzy, perl-format
@@ -2212,9 +2209,9 @@ msgid "document without Top node"
 msgstr "Nici un meniu în acest nod"
 
 #: tp/Texinfo/Convert/Info.pm:173
-#, perl-format
+#, fuzzy, perl-format
 msgid "rename %s failed: %s"
-msgstr ""
+msgstr "Nu pot gãsi `%s'."
 
 #: tp/Texinfo/Convert/Info.pm:256
 #, perl-format
@@ -2265,9 +2262,9 @@ msgstr ""
 "pentru a o evita"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2111
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s cross-reference name should not contain `:'"
-msgstr ""
+msgstr "%s: nu am putut deschide --css-file: %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2128
 #, fuzzy, perl-format
@@ -2275,9 +2272,9 @@ msgid "@%s node name should not contain `%s'"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2143
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s node name should not contain `:'"
-msgstr ""
+msgstr "%s: nu am putut deschide --css-file: %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2166
 #, perl-format
@@ -2294,8 +2291,9 @@ msgid "menu entry node name should not contain `%s'"
 msgstr "Argument nepotrivit pentru @%s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:3012
+#, fuzzy
 msgid "menu entry node name should not contain `:'"
-msgstr ""
+msgstr "Argument nepotrivit pentru @%s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:3023
 #, fuzzy
@@ -2463,9 +2461,9 @@ msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s necesitã un argument: formatatorul pentru %citem"
 
 #: tp/Texinfo/Parser.pm:3166
-#, perl-format
+#, fuzzy, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
-msgstr ""
+msgstr "@item nu este permis în argument la @itemize"
 
 #: tp/Texinfo/Parser.pm:3201
 #, fuzzy, perl-format
@@ -2576,9 +2574,9 @@ msgid "redefining Texinfo language command: @%s"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:4009
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s without associated character"
-msgstr ""
+msgstr "%s: nu am putut deschide --css-file: %s"
 
 #: tp/Texinfo/Parser.pm:4079
 #, perl-format
@@ -2670,8 +2668,9 @@ msgid "@%s in empty multitable"
 msgstr "%s: fiºier gol"
 
 #: tp/Texinfo/Parser.pm:4656
+#, fuzzy
 msgid "@tab before @item"
-msgstr ""
+msgstr "@menu vãzut înainte de primul @node, creez nodul `Vârf'"
 
 #: tp/Texinfo/Parser.pm:4659
 #, fuzzy, perl-format
@@ -2683,9 +2682,9 @@ msgid "ignoring @tab outside of multitable"
 msgstr "ignor @tab în afara multitabelului"
 
 #: tp/Texinfo/Parser.pm:4700
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s outside of table or list"
-msgstr ""
+msgstr "(în afara oricãrui nod)"
 
 #: tp/Texinfo/Parser.pm:4735
 #, fuzzy, perl-format
@@ -2750,9 +2749,9 @@ msgid "@%s should be right below `@float'"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:5097
-#, perl-format
+#, fuzzy, perl-format
 msgid "ignoring multiple @%s"
-msgstr ""
+msgstr "Scriu nod %s..."
 
 #: tp/Texinfo/Parser.pm:5216
 #, fuzzy, perl-format
@@ -2765,14 +2764,14 @@ msgid "command @%s missing a node or external manual argument"
 msgstr "%s: lipseºte fiºierul argument.\n"
 
 #: tp/Texinfo/Parser.pm:5259
-#, perl-format
+#, fuzzy, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
-msgstr ""
+msgstr "Argument nepotrivit pentru @%s"
 
 #: tp/Texinfo/Parser.pm:5270
-#, perl-format
+#, fuzzy, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
-msgstr ""
+msgstr "Argument nepotrivit pentru @%s"
 
 #: tp/Texinfo/Parser.pm:5283
 msgid "@image missing filename argument"
@@ -2789,9 +2788,9 @@ msgid "non-hex digits in argument for @U: %s"
 msgstr "@item nu este permis în argument la @itemize"
 
 #: tp/Texinfo/Parser.pm:5366
-#, perl-format
+#, fuzzy, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
-msgstr ""
+msgstr "@item nu este permis în argument la @itemize"
 
 #: tp/Texinfo/Parser.pm:5379
 #, perl-format
@@ -2829,9 +2828,9 @@ msgid "environment command %s as argument to @%s"
 msgstr "Folosiþi paranteze pentru a da o comandã ca argument lui @%s"
 
 #: tp/Texinfo/Parser.pm:5767
-#, perl-format
+#, fuzzy, perl-format
 msgid "empty @%s"
-msgstr ""
+msgstr "Argument nepotrivit pentru @%s"
 
 #: tp/Texinfo/Parser.pm:5775
 #, perl-format
@@ -2923,9 +2922,10 @@ msgid "expected @%s on or off, not `%s'"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:5974
-#, perl-format
+#, fuzzy, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
+"%s: --footnote-style arg trebuie sã fie `separate' sau `end', nu `%s'.\n"
 
 #: tp/Texinfo/Parser.pm:5982
 #, fuzzy, perl-format
@@ -2971,9 +2971,9 @@ msgstr ""
 "referinþa %s cãtre nodul inexistent `%s' (probabil secþionare incorectã?)"
 
 #: tp/Texinfo/Structuring.pm:576
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s entry node name `%s' different from %s name `%s'"
-msgstr ""
+msgstr "Argument nepotrivit pentru @%s"
 
 #: tp/Texinfo/Structuring.pm:681
 #, perl-format
@@ -3049,9 +3049,9 @@ msgid "l2h: current directory contains a dot"
 msgstr ""
 
 #: tp/init/latex2html.pm:374
-#, perl-format
+#, fuzzy, perl-format
 msgid "l2h: command did not succeed: %s"
-msgstr ""
+msgstr "%s: nu am putut deschide --css-file: %s"
 
 #: tp/init/latex2html.pm:422
 #, perl-format
@@ -3081,9 +3081,9 @@ msgid ""
 msgstr ""
 
 #: tp/init/latex2html.pm:534
-#, perl-format
+#, fuzzy, perl-format
 msgid "l2h: could not determine the fragment %d for @%s"
-msgstr ""
+msgstr "%s: nu am putut deschide --css-file: %s"
 
 #: tp/init/latex2html.pm:560
 #, perl-format
@@ -3544,6 +3544,83 @@ msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
+#: texindex/ti.twjr:373
+#, fuzzy, awk-format
+msgid "%s: unrecognized option `%s'\n"
+msgstr "%s: opþiune nerecunoscutã `--%s'\n"
+
+#: texindex/ti.twjr:444
+#, fuzzy, awk-format
+msgid "%s is not a Texinfo index file\n"
+msgstr "%s: nu este un fiºier index texinfo"
+
+#: texindex/ti.twjr:543
+#, awk-format
+msgid "%s:%d: Bad key %s in record\n"
+msgstr ""
+
+#: texindex/ti.twjr:566
+#, awk-format
+msgid "%s:%d: Bad entry; expected three fields, not %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:725
+#, awk-format
+msgid "%s:%d: Bad entry; expected %s at column %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:1254
+msgid "..."
+msgstr ""
+
+#: texindex/ti.twjr:1273
+#, fuzzy, awk-format
+msgid "Usage: %s [OPTION]... FILE...\n"
+msgstr "Folosire: %s [OPÞIUNI]... FIªIER...\n"
+
+#: texindex/ti.twjr:1274
+#, fuzzy
+msgid "Generate a sorted index for each TeX output FILE."
+msgstr "Genereazã un index sortat pentru fiecare FIªIER de ieºire TeX.\n"
+
+#: texindex/ti.twjr:1275
+#, fuzzy
+msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
+msgstr ""
+"De obicei FIªIER... este specificat ca `foo.%c%c' pentru un document 'foo."
+"texi'.\n"
+
+#: texindex/ti.twjr:1277
+#, fuzzy
+msgid "Options:"
+msgstr ""
+"\n"
+"Opþiuni:\n"
+
+#: texindex/ti.twjr:1278
+#, fuzzy
+msgid " -h, --help   display this help and exit"
+msgstr "afiºeazã acest mesaj ºi terminã"
+
+#: texindex/ti.twjr:1279
+msgid " --version    display version information and exit"
+msgstr ""
+
+#: texindex/ti.twjr:1280
+msgid " --           end option processing"
+msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Trimiteþi emailuri raportând bug-uri la bug-texinfo@gnu.org,\n"
+#~ "întrebãri generale ºi discuþii la help-texinfo@gnu.org.\n"
+#~ "Texinfo homepage: http://www.gnu.org/software/texinfo/"
+
 #~ msgid "Insert this character"
 #~ msgstr "Insereazã acest caracter"
 
@@ -3815,10 +3892,6 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgstr "Distruge acest nod"
 
 #, fuzzy
-#~ msgid "writing file %s"
-#~ msgstr "Scriu nod %s..."
-
-#, fuzzy
 #~ msgid "closing file %s"
 #~ msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
@@ -3833,33 +3906,11 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "Folosire: %s [OPÞIUNE]... FIªIER-TEXINFO...\n"
 
-#~ msgid "display this help and exit"
-#~ msgstr "afiºeazã acest mesaj ºi terminã"
-
 #~ msgid "send output to FILE"
 #~ msgstr "trimite ieºire în FIªIER"
 
-#~ msgid "Generate a sorted index for each TeX output FILE.\n"
-#~ msgstr "Genereazã un index sortat pentru fiecare FIªIER de ieºire TeX.\n"
-
-#~ msgid ""
-#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-#~ msgstr ""
-#~ "De obicei FIªIER... este specificat ca `foo.%c%c' pentru un document 'foo."
-#~ "texi'.\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Options:\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Opþiuni:\n"
-
 #~ msgid "failure reopening %s"
 #~ msgstr "am eºuat sã redeschid %s"
-
-#~ msgid "%s: not a texinfo index file"
-#~ msgstr "%s: nu este un fiºier index texinfo"
 
 #~ msgid "No page number in %s"
 #~ msgstr "Nici un numãr de paginã în %s"
@@ -4658,10 +4709,6 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #, fuzzy
 #~ msgid "%s: could not open --css-file %s: %s\n"
 #~ msgstr "%s: nu am putut deschide --css-file: %s"
-
-#, fuzzy
-#~ msgid "@menu before first node"
-#~ msgstr "@menu vãzut înainte de primul @node, creez nodul `Vârf'"
 
 #~ msgid "One completion:\n"
 #~ msgstr "O completare:\n"

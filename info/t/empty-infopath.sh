@@ -21,7 +21,8 @@ srcdir=${srcdir:-.}
 # Check that an empty search path doesn't break.  There are no search
 # directories here because infopath-no-defaults=On in
 # info/t/Infokey-config.
-export INFOPATH=
+INFOPATH=
+export INFOPATH
 run_ginfo
 printf q >$PTY_TYPE
 . $t/Timeout-test.inc

@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c 6208 2015-04-07 10:14:19Z gavin $
+   $Id: session.c 6289 2015-05-29 16:52:29Z gavin $
 
    Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015
@@ -184,8 +184,9 @@ display_startup_message (void)
   char *format;
 
   format = replace_in_documentation
-  /* TRANSLATORS: This message should fit within 79 characters, otherwise
-     anything after the 80th character will not be displayed. */
+  /* TRANSLATORS: Try to keep this message (when "expanded") at most 79 
+     characters; anything after the 79th character will not actually be 
+     displayed on an 80-column terminal. */
 (_("Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-help-node] for tutorial."),
      0);
 
@@ -237,11 +238,10 @@ info_read_and_dispatch (void)
       display_cursor_at_point (active_window);
 
       cmd = read_key_sequence (info_keymap, 1, 1, 0, &count);
-      if (!info_keyseq_displayed_p)
-        window_clear_echo_area ();
-
       if (cmd)
         {
+          if (!info_keyseq_displayed_p)
+            window_clear_echo_area ();
 
           (*cmd) (active_window, count);
 
@@ -5233,6 +5233,7 @@ read_key_sequence (Keymap map, int menu, int mouse,
           int k = key;
           if (k > KEYMAP_META_BASE)
             k -= KEYMAP_META_BASE;
+          window_clear_echo_area ();
           menu_digit (active_window, k);
           return 0;
         }

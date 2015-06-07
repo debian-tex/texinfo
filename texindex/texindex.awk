@@ -136,9 +136,9 @@ function usage(exit_val)
   print _" --version    display version information and exit"
   print _" --           end option processing"
   print ""
-  print _"Email bug reports to bug-texinfo@gnu.org,"
-  print _"general questions and discussion to help-texinfo@gnu.org."
-  print _"Texinfo home page: http://www.gnu.org/software/texinfo/"
+  print _"Email bug reports to bug-texinfo@gnu.org,\n\
+general questions and discussion to help-texinfo@gnu.org.\n\
+Texinfo home page: http://www.gnu.org/software/texinfo/";
 
   exit exit_val
 }
@@ -147,10 +147,10 @@ function version()
 {
   print "texindex (GNU texinfo)", Texindex_version
   print ""
-  print _"Copyright (C) 2015 Free Software Foundation, Inc."
-  print _"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
-  print _"This is free software: you are free to change and redistribute it."
-  print _"There is NO WARRANTY, to the extent permitted by law."
+  printf _"Copyright (C) %s Free Software Foundation, Inc.\n\
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
+This is free software: you are free to change and redistribute it.\n\
+There is NO WARRANTY, to the extent permitted by law.\n", "2015";
 
   exit EXIT_SUCCESS
 }
@@ -161,7 +161,7 @@ BEGIN {
   EXIT_SUCCESS = 0
   EXIT_FAILURE = 1
   
-  Texindex_version = "5.2dev"
+  Texindex_version = "5.9.93"
   if (! Invocation_name) {
     # provide fallback in case it's not passed in.
     Invocation_name = "texindex"
@@ -198,8 +198,9 @@ function beginfile(filename)
   # Reinitialize these for each input file
   del_array(Data)
   del_array(Keys)
-  Do_initials = FALSE
+  del_array(Seen)
   Entries = 0
+  Do_initials = FALSE
   Prev_initial = ""
 
   Command_char = substr($0, 1, 1)

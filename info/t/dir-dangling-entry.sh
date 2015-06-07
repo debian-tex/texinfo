@@ -18,7 +18,7 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
-# Try to load a dir entry refererring to a non-existing file
+# Try to load a dir entry referring to a non-existing file
 
 run_ginfo non-existent
 

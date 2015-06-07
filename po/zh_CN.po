@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-05-11 17:24+0100\n"
+"POT-Creation-Date: 2015-06-03 15:28-0700\n"
 "PO-Revision-Date: 2009-05-21 15:08中国标准时间\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -49,7 +49,7 @@ msgstr "%s：选项“%s”需要一个参数\n"
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
 #, fuzzy, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s：不能识别的选项“--%s”\n"
+msgstr "%s：不能识别的选项“%c%s”\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, fuzzy, c-format
@@ -133,8 +133,9 @@ msgid "Invalid content of \\{\\}"
 msgstr ""
 
 #: gnulib/lib/regcomp.c:164
+#, fuzzy
 msgid "Invalid range end"
-msgstr ""
+msgstr "正则表达式“%s”中存在错误: %s"
 
 #: gnulib/lib/regcomp.c:167
 #, fuzzy
@@ -391,7 +392,7 @@ msgstr "索引含有："
 msgid "No available info files have '%s' in their indices."
 msgstr "在可用的 info 文件的索引中均不含有“%s”。"
 
-#: info/info-utils.c:897
+#: info/info-utils.c:899
 #, c-format
 msgid "Error converting file character encoding."
 msgstr ""
@@ -406,7 +407,7 @@ msgstr "节点“%2$s”中没有菜单项“%1$s”。"
 msgid "No file given for node '%s'."
 msgstr "节点“%s”中没有菜单。"
 
-#: info/info.c:365 info/info.c:1113
+#: info/info.c:365 info/info.c:1115
 #, fuzzy, c-format
 msgid "Cannot find node '%s'."
 msgstr "无法找到节点“%s”。"
@@ -442,7 +443,8 @@ msgid "Try --help for more information.\n"
 msgstr "尝试 --更多的求助信息。\n"
 
 #: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:878
-#, c-format, perl-format
+#: texindex/ti.twjr:1293
+#, c-format, awk-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -590,79 +592,78 @@ msgstr ""
 "  info --subnodes -o out.txt emacs  将整个手册页输出至 out.txt\n"
 "  info -f ./foo.info         显示文件 ./foo.info，而不是查找目录"
 
-#: info/info.c:1079
+#: info/info.c:1081 install-info/install-info.c:616 tp/texi2any.pl:866
+#: texindex/ti.twjr:1282
 msgid ""
-"\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
-"\n"
 "请将错误报告发送到 bug-texinfo@gnu.org，\n"
 "一般的问题和讨论请发送到 help-texinfo@gnu.org。\n"
 "Texinfo 主页：http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1114
+#: info/info.c:1116
 #, fuzzy, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "无法找到节点“(%s)%s”。"
 
-#: info/info.c:1115
+#: info/info.c:1117
 msgid "Cannot find a window!"
 msgstr "无法找到一个窗口！"
 
-#: info/info.c:1116
+#: info/info.c:1118
 msgid "Point doesn't appear within this window's node!"
 msgstr "光标没有出现在该窗口的节点之中！"
 
-#: info/info.c:1117
+#: info/info.c:1119
 msgid "Cannot delete the last window."
 msgstr "无法删除最后的窗口。"
 
-#: info/info.c:1118
+#: info/info.c:1120
 msgid "No menu in this node."
 msgstr "该节点中没有菜单。"
 
-#: info/info.c:1119
+#: info/info.c:1121
 msgid "No footnotes in this node."
 msgstr "该节点中没有脚注。"
 
-#: info/info.c:1120
+#: info/info.c:1122
 msgid "No cross references in this node."
 msgstr "该节点中没有交叉引用。"
 
-#: info/info.c:1121
+#: info/info.c:1123
 #, fuzzy, c-format
 msgid "No '%s' pointer for this node."
 msgstr "该节点中没有“%s”指针"
 
-#: info/info.c:1122
+#: info/info.c:1124
 #, fuzzy, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "未知的 Info 命令“%c”；请以“?”获得帮助。"
 
-#: info/info.c:1123
+#: info/info.c:1125
 #, fuzzy, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "终端类型“%s”的能力不足以支持 Info 的运行。"
 
-#: info/info.c:1124
+#: info/info.c:1126
 msgid "You are already at the last page of this node."
 msgstr "您已经在该节点的最后一个页面中了。"
 
-#: info/info.c:1125
+#: info/info.c:1127
 msgid "You are already at the first page of this node."
 msgstr "您已经在该节点的第一页中了。"
 
-#: info/info.c:1126
+#: info/info.c:1128
 msgid "Only one window."
 msgstr "只有一个窗口。"
 
-#: info/info.c:1127
+#: info/info.c:1129
 msgid "Resulting window would be too small."
 msgstr "结果窗口将会太小。"
 
-#: info/info.c:1128
+#: info/info.c:1130
 msgid "Not enough room for a help window, please delete a window."
 msgstr "没有足够的空间用于求助窗口，请删除一个窗口。"
 
@@ -1072,9 +1073,10 @@ msgstr ""
 msgid "No file index"
 msgstr "没有索引条目。"
 
-#. TRANSLATORS: This message should fit within 79 characters, otherwise
-#. anything after the 80th character will not be displayed.
-#: info/session.c:189
+#. TRANSLATORS: Try to keep this message (when "expanded") at most 79
+#. characters; anything after the 79th character will not actually be
+#. displayed on an 80-column terminal.
+#: info/session.c:190
 #, fuzzy, c-format
 msgid ""
 "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
@@ -1563,9 +1565,9 @@ msgid "Display version of Info being run"
 msgstr "显示版本信息并退出"
 
 #: info/session.c:4904
-#, c-format
+#, fuzzy, c-format
 msgid "GNU Info version %s"
-msgstr ""
+msgstr "这是 %s，由 makeinfo 版本 %s 从 %s 生成。\n"
 
 #: info/session.c:4909
 msgid "Redraw the display"
@@ -1594,11 +1596,11 @@ msgstr "“%s”为非法"
 msgid "'%s' is invalid"
 msgstr "“%s”是无效的"
 
-#: info/session.c:5291
+#: info/session.c:5292
 msgid "Add this digit to the current numeric argument"
 msgstr "将本数字添加到当前数值参数中"
 
-#: info/session.c:5298
+#: info/session.c:5299
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "开启(或乘以 4)当前数值参数"
 
@@ -1909,16 +1911,6 @@ msgstr ""
 " --test              不更新 DIR-FILE。\n"
 " --version           显示版本信息并退出。"
 
-#: install-info/install-info.c:616 tp/texi2any.pl:866
-msgid ""
-"Email bug reports to bug-texinfo@gnu.org,\n"
-"general questions and discussion to help-texinfo@gnu.org.\n"
-"Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-"请将错误报告发送到 bug-texinfo@gnu.org，\n"
-"一般的问题和讨论请发送到 help-texinfo@gnu.org。\n"
-"Texinfo 主页：http://www.gnu.org/software/texinfo/"
-
 #: install-info/install-info.c:643
 #, fuzzy, c-format
 msgid ""
@@ -2105,9 +2097,9 @@ msgid "could not open %s: %s"
 msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/Texinfo/Common.pm:2135
-#, perl-format
+#, fuzzy, perl-format
 msgid "could not protect hash character in @%s"
-msgstr ""
+msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/Texinfo/Convert/Converter.pm:395 tp/Texinfo/Convert/Converter.pm:414
 #, fuzzy, perl-format
@@ -2227,9 +2219,9 @@ msgid "file empty for renamed node `%s'"
 msgstr "未引用的节点“%s”"
 
 #: tp/Texinfo/Convert/HTML.pm:7088
-#, perl-format
+#, fuzzy, perl-format
 msgid "target node (new name for `%s') not in document: %s"
-msgstr ""
+msgstr "在本文档中没有本节点的“上一个”或“上层”节点。"
 
 #: tp/Texinfo/Convert/HTML.pm:7120
 #, fuzzy, perl-format
@@ -2257,9 +2249,9 @@ msgid "document without Top node"
 msgstr "该节点中没有菜单。"
 
 #: tp/Texinfo/Convert/Info.pm:173
-#, perl-format
+#, fuzzy, perl-format
 msgid "rename %s failed: %s"
-msgstr ""
+msgstr "无法寻找“%s”。"
 
 #: tp/Texinfo/Convert/Info.pm:256
 #, perl-format
@@ -2308,9 +2300,9 @@ msgid ""
 msgstr "@strong{Note...} 在 Info 中形成了一个假的交叉引用；可通过重写避免此事"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2111
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s cross-reference name should not contain `:'"
-msgstr ""
+msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2128
 #, fuzzy, perl-format
@@ -2318,9 +2310,9 @@ msgid "@%s node name should not contain `%s'"
 msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2143
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s node name should not contain `:'"
-msgstr ""
+msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2166
 #, fuzzy, perl-format
@@ -2338,8 +2330,9 @@ msgid "menu entry node name should not contain `%s'"
 msgstr "@%s 的参数错误"
 
 #: tp/Texinfo/Convert/Plaintext.pm:3012
+#, fuzzy
 msgid "menu entry node name should not contain `:'"
-msgstr ""
+msgstr "@%s 的参数错误"
 
 #: tp/Texinfo/Convert/Plaintext.pm:3023
 #, fuzzy
@@ -2507,9 +2500,9 @@ msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s 需要一个参数: %citem 的格式化参数"
 
 #: tp/Texinfo/Parser.pm:3166
-#, perl-format
+#, fuzzy, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
-msgstr ""
+msgstr "参数中不允许 @item 改为 @itemize"
 
 #: tp/Texinfo/Parser.pm:3201
 #, fuzzy, perl-format
@@ -2620,9 +2613,9 @@ msgid "redefining Texinfo language command: @%s"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:4009
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s without associated character"
-msgstr ""
+msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/Texinfo/Parser.pm:4079
 #, perl-format
@@ -2714,8 +2707,9 @@ msgid "@%s in empty multitable"
 msgstr "%s：空文件"
 
 #: tp/Texinfo/Parser.pm:4656
+#, fuzzy
 msgid "@tab before @item"
-msgstr ""
+msgstr "在第一个节点之前遇到 @menu，正在创建“顶”节点"
 
 #: tp/Texinfo/Parser.pm:4659
 #, fuzzy, perl-format
@@ -2727,9 +2721,9 @@ msgid "ignoring @tab outside of multitable"
 msgstr "忽略多列表格外的 @tab"
 
 #: tp/Texinfo/Parser.pm:4700
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s outside of table or list"
-msgstr ""
+msgstr "(超出任何节点)"
 
 #: tp/Texinfo/Parser.pm:4735
 #, fuzzy, perl-format
@@ -2792,9 +2786,9 @@ msgid "@%s should be right below `@float'"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:5097
-#, perl-format
+#, fuzzy, perl-format
 msgid "ignoring multiple @%s"
-msgstr ""
+msgstr "正在写入节点 %s..."
 
 #: tp/Texinfo/Parser.pm:5216
 #, fuzzy, perl-format
@@ -2807,14 +2801,14 @@ msgid "command @%s missing a node or external manual argument"
 msgstr "%s：遗漏文件参数。\n"
 
 #: tp/Texinfo/Parser.pm:5259
-#, perl-format
+#, fuzzy, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
-msgstr ""
+msgstr "@%s 的参数错误"
 
 #: tp/Texinfo/Parser.pm:5270
-#, perl-format
+#, fuzzy, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
-msgstr ""
+msgstr "@%s 的参数错误"
 
 #: tp/Texinfo/Parser.pm:5283
 msgid "@image missing filename argument"
@@ -2831,9 +2825,9 @@ msgid "non-hex digits in argument for @U: %s"
 msgstr "参数中不允许 @item 改为 @itemize"
 
 #: tp/Texinfo/Parser.pm:5366
-#, perl-format
+#, fuzzy, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
-msgstr ""
+msgstr "参数中不允许 @item 改为 @itemize"
 
 #: tp/Texinfo/Parser.pm:5379
 #, perl-format
@@ -2871,9 +2865,9 @@ msgid "environment command %s as argument to @%s"
 msgstr "使用花括号将一个命令用作 @%s 的参数"
 
 #: tp/Texinfo/Parser.pm:5767
-#, perl-format
+#, fuzzy, perl-format
 msgid "empty @%s"
-msgstr ""
+msgstr "@%s 的参数错误"
 
 #: tp/Texinfo/Parser.pm:5775
 #, perl-format
@@ -2961,9 +2955,9 @@ msgid "expected @%s on or off, not `%s'"
 msgstr "应当 @%s 开启或关闭，而不是“%s”"
 
 #: tp/Texinfo/Parser.pm:5974
-#, perl-format
+#, fuzzy, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
-msgstr ""
+msgstr "%s：--footnote-style 的参数必须为“separate”或“end”，而不是“%s”。\n"
 
 #: tp/Texinfo/Parser.pm:5982
 #, fuzzy, perl-format
@@ -3006,9 +3000,9 @@ msgid "@%s reference to nonexistent node `%s'"
 msgstr "%s 引用到不存在的节点“%s”(也许字段不正确？)"
 
 #: tp/Texinfo/Structuring.pm:576
-#, perl-format
+#, fuzzy, perl-format
 msgid "@%s entry node name `%s' different from %s name `%s'"
-msgstr ""
+msgstr "@%s 的参数错误"
 
 #: tp/Texinfo/Structuring.pm:681
 #, perl-format
@@ -3084,9 +3078,9 @@ msgid "l2h: current directory contains a dot"
 msgstr ""
 
 #: tp/init/latex2html.pm:374
-#, perl-format
+#, fuzzy, perl-format
 msgid "l2h: command did not succeed: %s"
-msgstr ""
+msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/init/latex2html.pm:422
 #, perl-format
@@ -3116,9 +3110,9 @@ msgid ""
 msgstr ""
 
 #: tp/init/latex2html.pm:534
-#, perl-format
+#, fuzzy, perl-format
 msgid "l2h: could not determine the fragment %d for @%s"
-msgstr ""
+msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/init/latex2html.pm:560
 #, perl-format
@@ -3559,6 +3553,81 @@ msgstr "关闭输出文件“%s”时出错"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: 无法打开 --css-file: %s"
 
+#: texindex/ti.twjr:373
+#, fuzzy, awk-format
+msgid "%s: unrecognized option `%s'\n"
+msgstr "%s：不能识别的选项“--%s”\n"
+
+#: texindex/ti.twjr:444
+#, fuzzy, awk-format
+msgid "%s is not a Texinfo index file\n"
+msgstr "%s：不是 texinfo 索引文件"
+
+#: texindex/ti.twjr:543
+#, awk-format
+msgid "%s:%d: Bad key %s in record\n"
+msgstr ""
+
+#: texindex/ti.twjr:566
+#, awk-format
+msgid "%s:%d: Bad entry; expected three fields, not %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:725
+#, awk-format
+msgid "%s:%d: Bad entry; expected %s at column %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:1254
+msgid "..."
+msgstr ""
+
+#: texindex/ti.twjr:1273
+#, fuzzy, awk-format
+msgid "Usage: %s [OPTION]... FILE...\n"
+msgstr "用法：%s [选项]... 文件...\n"
+
+#: texindex/ti.twjr:1274
+#, fuzzy
+msgid "Generate a sorted index for each TeX output FILE."
+msgstr "为每个 TeX 输出文件生成排序的索引。\n"
+
+#: texindex/ti.twjr:1275
+#, fuzzy
+msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
+msgstr "对于文档“foo.texi”，FILE... 通常为“foo.%c%c”的形式。\n"
+
+#: texindex/ti.twjr:1277
+#, fuzzy
+msgid "Options:"
+msgstr ""
+"\n"
+"选项：\n"
+
+#: texindex/ti.twjr:1278
+#, fuzzy
+msgid " -h, --help   display this help and exit"
+msgstr "显示该求助信息并退出"
+
+#: texindex/ti.twjr:1279
+msgid " --version    display version information and exit"
+msgstr ""
+
+#: texindex/ti.twjr:1280
+msgid " --           end option processing"
+msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "请将错误报告发送到 bug-texinfo@gnu.org，\n"
+#~ "一般的问题和讨论请发送到 help-texinfo@gnu.org。\n"
+#~ "Texinfo 主页：http://www.gnu.org/software/texinfo/"
+
 #~ msgid "Insert this character"
 #~ msgstr "插入该字符"
 
@@ -3808,10 +3877,6 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgstr "删除本节点"
 
 #, fuzzy
-#~ msgid "writing file %s"
-#~ msgstr "正在写入节点 %s..."
-
-#, fuzzy
 #~ msgid "closing file %s"
 #~ msgstr "关闭输出文件“%s”时出错"
 
@@ -3826,31 +3891,11 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "用法：%s [选项]... TEXINFO-文件...\n"
 
-#~ msgid "display this help and exit"
-#~ msgstr "显示该求助信息并退出"
-
 #~ msgid "send output to FILE"
 #~ msgstr "将输出送入 FILE"
 
-#~ msgid "Generate a sorted index for each TeX output FILE.\n"
-#~ msgstr "为每个 TeX 输出文件生成排序的索引。\n"
-
-#~ msgid ""
-#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-#~ msgstr "对于文档“foo.texi”，FILE... 通常为“foo.%c%c”的形式。\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Options:\n"
-#~ msgstr ""
-#~ "\n"
-#~ "选项：\n"
-
 #~ msgid "failure reopening %s"
 #~ msgstr "重新打开 %s 失败"
-
-#~ msgid "%s: not a texinfo index file"
-#~ msgstr "%s：不是 texinfo 索引文件"
 
 #~ msgid "No page number in %s"
 #~ msgstr "%s 中没有页码"
@@ -4654,10 +4699,6 @@ msgstr "%s: 无法打开 --css-file: %s"
 #, fuzzy
 #~ msgid "`.' or `,' must follow @xref."
 #~ msgstr "“.”或“,”之后必须为 @%s，而不是“%c”"
-
-#, fuzzy
-#~ msgid "@menu before first node"
-#~ msgstr "在第一个节点之前遇到 @menu，正在创建“顶”节点"
 
 #~ msgid "One completion:\n"
 #~ msgstr "一个补齐：\n"

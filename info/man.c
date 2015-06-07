@@ -1,8 +1,8 @@
 /* man.c: How to read and format man files.
-   $Id: man.c 6256 2015-05-08 23:13:20Z gavin $
+   $Id: man.c 6280 2015-05-18 16:32:19Z gavin $
 
-   Copyright 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
-   2007, 2008, 2009, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
+   Copyright 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 2007, 2008, 
+   2009, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -395,27 +395,31 @@ get_manpage_from_formatter (char *formatter_args[])
   if (!formatted_page)
     return 0;
 
-  if (formatter_status != 0) /* Check for failure. */
-    {
-      int i;
-      char *p;
-      /* It is possible for "man -a" to output a man page and still to exit 
-         with a non-zero status.  This was found to happen when duplicate man 
-         pages were found.  Hence, still treat it as a success if more than 
-         three lines were output.  (A small amount of output could be error 
-         messages that were sent to standard output.) */
-      p = formatted_page;
-      for (i = 0; i < 3; i++)
-        {
-          p = strchr (p, '\n');
-          if (!p)
-            {
-              free (formatted_page);
-              return NULL;
-            }
-          p++;
-        }
-    }
+  /* We could check the exit status of "man -a" to see if it successfully
+     output a man page  However:
+      * It is possible for "man -a" to output a man page and still to exit with
+        a non-zero status.  This was found to happen when duplicate man pages 
+        were found.
+      * "man" was found to exit with a zero status on Solaris 10 even when
+        it found nothing.
+     Hence, treat it as a success if more than three lines were output.  (A 
+     small amount of output could be error messages that were sent to standard 
+     output.) */
+  {
+    int i;
+    char *p;
+    p = formatted_page;
+    for (i = 0; i < 3; i++)
+      {
+        p = strchr (p, '\n');
+        if (!p)
+          {
+            free (formatted_page);
+            return NULL;
+          }
+        p++;
+      }
+  }
 
   /* If we have the page, then clean it up. */
   clean_manpage (formatted_page);

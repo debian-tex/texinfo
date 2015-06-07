@@ -6,10 +6,10 @@
 # Antonio Ceballos <aceballos@gmail.com>, 2015.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo-5.9.90\n"
+"Project-Id-Version: texinfo-5.9.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-05-11 17:24+0100\n"
-"PO-Revision-Date: 2015-05-03 18:53+0200\n"
+"POT-Creation-Date: 2015-06-03 15:28-0700\n"
+"PO-Revision-Date: 2015-05-09 12:20+0200\n"
 "Last-Translator: Antonio Ceballos <aceballos@gmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
 "Language: es\n"
@@ -49,9 +49,9 @@ msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: la opción '--%s' requiere un argumento\n"
 
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
-#, c-format
+#, fuzzy, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: opción desconocida '--%s'\n"
+msgstr "%s: opción desconocida '%c%s'\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, c-format
@@ -393,7 +393,7 @@ msgstr "Tema del índice"
 msgid "No available info files have '%s' in their indices."
 msgstr "No existen ficheros Info que contengan la palabra '%s' en sus índices."
 
-#: info/info-utils.c:897
+#: info/info-utils.c:899
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Error al convertir la codificación de caracteres del fichero."
@@ -408,7 +408,7 @@ msgstr "No existe ningún elemento de menú llamado '%s' en el nodo '%s'."
 msgid "No file given for node '%s'."
 msgstr "No se ha especificado ningún fichero para el nodo '%s'."
 
-#: info/info.c:365 info/info.c:1113
+#: info/info.c:365 info/info.c:1115
 #, c-format
 msgid "Cannot find node '%s'."
 msgstr "El nodo '%s' no se ha encontrado."
@@ -444,7 +444,8 @@ msgid "Try --help for more information.\n"
 msgstr "Pruebe la opción `--help' para obtener más información.\n"
 
 #: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:878
-#, c-format, perl-format
+#: texindex/ti.twjr:1293
+#, c-format, awk-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -501,7 +502,7 @@ msgid ""
 "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
 "  -o, --output=FILE            output selected nodes to FILE."
 msgstr ""
-"  -h, --help                   mostrar este mensaje de ayuda y termina.\n"
+"  -h, --help                   mostrar este mensaje de ayuda y terminar.\n"
 "      --index-search=TEXTO     visitar el nodo al que el índice TEXTO "
 "apunta.\n"
 "  -n, --node=NOMBRE_NODO       nodo que mostrar del primer fichero Info.\n"
@@ -556,8 +557,8 @@ msgstr ""
 "                                 programas `vi' y `less'.\n"
 "      --version                mostrar información de esta versión de Info.\n"
 "  -w, --where, --location      mostrar la ruta física del fichero Info en\n"
-"                                 cuestión.  -x, --debug=NÚMERO           "
-"establecer el nivel de depuración (-1 para\n"
+"                                 cuestión.\n"
+"  -x, --debug=NÚMERO           establecer el nivel de depuración (-1 para\n"
 "                                 todos).\n"
 
 #: info/info.c:1056
@@ -578,7 +579,7 @@ msgstr ""
 "recavaría información de todos los ficheros 'directorio' y mostraría el\n"
 "resultado.  Cualesquiera que fueran los argumentos restantes serían "
 "tratados\n"
-" como nombres de elementos del menú con respecto al nodo inicial visitado."
+"como nombres de elementos del menú con respecto al nodo inicial visitado."
 
 #: info/info.c:1063
 msgid ""
@@ -622,83 +623,82 @@ msgstr ""
 "  info -f ./foo.info         muestra el fichero './foo.info', sin buscar en\n"
 "                               el directorio"
 
-#: info/info.c:1079
+#: info/info.c:1081 install-info/install-info.c:616 tp/texi2any.pl:866
+#: texindex/ti.twjr:1282
 msgid ""
-"\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
-"\n"
 "Reporte cualquier tipo de problema que usted encuentre en el funcionamiento\n"
-"de esta programa a <bug-texinfo@gnu.org>.  Preguntas y discusiones sobre\n"
+"de esta programa a <bug-texinfo@gnu.org>.  Las preguntas y discusiones "
+"sobre\n"
 "Texinfo en general pueden ser dirigidas a <help-texinfo@gnu.org>.\n"
 "El sitio web de Texinfo es: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1114
+#: info/info.c:1116
 #, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "El nodo '(%s)%s' no se ha encontrado."
 
-#: info/info.c:1115
+#: info/info.c:1117
 msgid "Cannot find a window!"
 msgstr "¡No se ha podido encontrar una ventana!"
 
 # TODO review point=cursor
-#: info/info.c:1116
+#: info/info.c:1118
 msgid "Point doesn't appear within this window's node!"
 msgstr "¡El cursor no parece estar sobre nodo alguno en esta ventana!"
 
-#: info/info.c:1117
+#: info/info.c:1119
 msgid "Cannot delete the last window."
 msgstr "No se puede eliminar la última ventana."
 
-#: info/info.c:1118
+#: info/info.c:1120
 msgid "No menu in this node."
 msgstr "No existe un menú en este nodo."
 
-#: info/info.c:1119
+#: info/info.c:1121
 msgid "No footnotes in this node."
 msgstr "No hay notas de pie de página en este nodo."
 
-#: info/info.c:1120
+#: info/info.c:1122
 msgid "No cross references in this node."
 msgstr "No hay referencias cruzadas en este nodo."
 
-#: info/info.c:1121
+#: info/info.c:1123
 #, c-format
 msgid "No '%s' pointer for this node."
 msgstr "Este nodo no contiene enlace alguno a '%s'."
 
-#: info/info.c:1122
+#: info/info.c:1124
 #, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr ""
-"'%c' no es una orden de Info conocida; pruebe usted con '?' para acceder a "
-"la ayuda."
+"'%c' no es una orden de Info conocida; pruebe con '?' para obtener ayuda."
 
-#: info/info.c:1123
+#: info/info.c:1125
 #, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "El tipo de terminal '%s' es incapaz de ejecutar Info."
 
-#: info/info.c:1124
+#: info/info.c:1126
 msgid "You are already at the last page of this node."
 msgstr "Usted ya se encuentra en la última página de este nodo."
 
-#: info/info.c:1125
+#: info/info.c:1127
 msgid "You are already at the first page of this node."
 msgstr "Usted ya se encuentra en la primera página de este nodo."
 
-#: info/info.c:1126
+#: info/info.c:1128
 msgid "Only one window."
 msgstr "Una única ventana."
 
-#: info/info.c:1127
+#: info/info.c:1129
 msgid "Resulting window would be too small."
 msgstr "La ventana resultante sería demasiado pequeña."
 
-#: info/info.c:1128
+#: info/info.c:1130
 msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "No hay pantalla suficiente como para albergar la ventana de ayuda, elimine "
@@ -939,9 +939,9 @@ msgid "There is no function named '%s'"
 msgstr "No existe función alguna llamada '%s'"
 
 #: info/infomap.c:600
-#, fuzzy, c-format
+#, c-format
 msgid "could not open init file %s"
-msgstr "no se ha podido leer el fichero de inicialización %s"
+msgstr "no se ha podido abrir el fichero de inicialización %s"
 
 #: info/infokey.c:229
 #, c-format
@@ -1020,7 +1020,7 @@ msgstr "Leer el nombre de una orden de Info y describirla"
 
 #: info/m-x.c:70
 msgid "Describe command: "
-msgstr "Describir orden: "
+msgstr "Describa la orden: "
 
 #: info/m-x.c:93
 msgid "Read a command name in the echo area and execute it"
@@ -1121,17 +1121,17 @@ msgstr "Muestra todos los ficheros coincidentes."
 msgid "No file index"
 msgstr "No hay índice de fichero"
 
-#. TRANSLATORS: This message should fit within 79 characters, otherwise
-#. anything after the 80th character will not be displayed.
-#: info/session.c:189
-#, fuzzy, c-format
+#. TRANSLATORS: Try to keep this message (when "expanded") at most 79
+#. characters; anything after the 79th character will not actually be
+#. displayed on an 80-column terminal.
+#: info/session.c:190
+#, c-format
 msgid ""
 "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
 "help-node] for tutorial."
 msgstr ""
-"Esto es Info, versión %s. Teclee \\[get-help-window] para ayuda, \\[menu-"
-"item] para seleccionar un elemento del menú, \\[get-info-help-node] para un "
-"cursillo."
+"Esto es Info, versión %s. Teclee \\[get-help-window] para ayuda, \\[get-info-"
+"help-node] para cursillo."
 
 #: info/session.c:766
 #, c-format
@@ -1653,11 +1653,11 @@ msgstr "\"%s\" no es válida"
 msgid "'%s' is invalid"
 msgstr "'%s' no es válida"
 
-#: info/session.c:5291
+#: info/session.c:5292
 msgid "Add this digit to the current numeric argument"
 msgstr "Sumar este dígito al argumento numérico actual"
 
-#: info/session.c:5298
+#: info/session.c:5299
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Comenzar (o multiplicar por 4) el argumento numérico actual"
 
@@ -1702,7 +1702,7 @@ msgstr ""
 
 #: info/variables.c:74
 msgid "Controls what happens when scrolling is requested at the end of a node"
-msgstr "Controla loque ocurre al intentar avanzar al final de un nodo"
+msgstr "Controla lo que ocurre al intentar avanzar al final de un nodo"
 
 #: info/variables.c:79
 msgid "Same as scroll-behaviour"
@@ -1848,9 +1848,8 @@ msgid ""
 "INFO-FILE and DIR-FILE are required unless the --info-file\n"
 "or --dir-file (or --info-dir) options are given, respectively."
 msgstr ""
-"FICHERO_INFO y FICHERO_ÍNDICE son necesarios a menos que una de las "
-"opciones\n"
-"--info-file o --dir-file (o --info-dir), respectivamente, sea especificada."
+"FICHERO_INFO y FICHERO_ÍNDICE son necesarios a menos que las opciones\n"
+"--info-file o --dir-file (o --info-dir) sean especificadas."
 
 #: install-info/install-info.c:548
 msgid ""
@@ -2015,18 +2014,6 @@ msgstr ""
 " --test            suprimir la actualización del fichero índice "
 "FICHERO_ÍNDICE.\n"
 " --version         mostrar información sobre la versión de este programa."
-
-#: install-info/install-info.c:616 tp/texi2any.pl:866
-msgid ""
-"Email bug reports to bug-texinfo@gnu.org,\n"
-"general questions and discussion to help-texinfo@gnu.org.\n"
-"Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-"Reporte cualquier tipo de problema que usted encuentre en el funcionamiento\n"
-"de esta programa a <bug-texinfo@gnu.org>.  Las preguntas y discusiones "
-"sobre\n"
-"Texinfo en general pueden ser dirigidas a <help-texinfo@gnu.org>.\n"
-"El sitio web de Texinfo es: http://www.gnu.org/software/texinfo/"
 
 #: install-info/install-info.c:643
 #, c-format
@@ -2673,7 +2660,7 @@ msgstr "@%s: no se pudo abrir %s: %s"
 #: tp/Texinfo/Parser.pm:3349
 #, perl-format
 msgid "encoding `%s' is not a canonical texinfo encoding"
-msgstr "la condificación `%s' no es una codificación canónica de texinfo"
+msgstr "la codificación `%s' no es una codificación canónica de texinfo"
 
 #: tp/Texinfo/Parser.pm:3358
 #, perl-format
@@ -3370,7 +3357,7 @@ msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "ignorando valor desconocido de TEXINFO_OUTPUT_FORMAT ('%s').\n"
 
 #: tp/texi2any.pl:735
-#, perl-format
+#, fuzzy, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Modo de empleo: %s [OPCIÓN]... FICHERO-TEXINFO...\n"
 
@@ -3875,6 +3862,85 @@ msgstr "%s: error al cerrar el fichero de enlaces internos %s: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: no se pudo abrir %s para escritura: %s\n"
 
+#: texindex/ti.twjr:373
+#, fuzzy, awk-format
+msgid "%s: unrecognized option `%s'\n"
+msgstr "%s: opción desconocida '--%s'\n"
+
+#: texindex/ti.twjr:444
+#, fuzzy, awk-format
+msgid "%s is not a Texinfo index file\n"
+msgstr "%s: no es un fichero índice de Info"
+
+#: texindex/ti.twjr:543
+#, awk-format
+msgid "%s:%d: Bad key %s in record\n"
+msgstr ""
+
+#: texindex/ti.twjr:566
+#, awk-format
+msgid "%s:%d: Bad entry; expected three fields, not %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:725
+#, awk-format
+msgid "%s:%d: Bad entry; expected %s at column %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:1254
+msgid "..."
+msgstr ""
+
+#: texindex/ti.twjr:1273
+#, fuzzy, awk-format
+msgid "Usage: %s [OPTION]... FILE...\n"
+msgstr "Modo de empleo: %s [OPCIÓN]... FICHERO-TEXINFO...\n"
+
+#: texindex/ti.twjr:1274
+#, fuzzy
+msgid "Generate a sorted index for each TeX output FILE."
+msgstr "Genera un índice ordenado para cada fichero TeX de salida FICHERO.\n"
+
+#: texindex/ti.twjr:1275
+#, fuzzy
+msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
+msgstr ""
+"FICHERO es generalmente especificado como `foo.%c%c' para un documento "
+"llamado `foo.texi'.\n"
+
+#: texindex/ti.twjr:1277
+#, fuzzy
+msgid "Options:"
+msgstr ""
+"\n"
+"Opciones:\n"
+
+#: texindex/ti.twjr:1278
+#, fuzzy
+msgid " -h, --help   display this help and exit"
+msgstr "mostrar este texto de ayuda"
+
+#: texindex/ti.twjr:1279
+msgid " --version    display version information and exit"
+msgstr ""
+
+#: texindex/ti.twjr:1280
+msgid " --           end option processing"
+msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Reporte cualquier tipo de problema que usted encuentre en el "
+#~ "funcionamiento\n"
+#~ "de esta programa a <bug-texinfo@gnu.org>.  Preguntas y discusiones sobre\n"
+#~ "Texinfo en general pueden ser dirigidas a <help-texinfo@gnu.org>.\n"
+#~ "El sitio web de Texinfo es: http://www.gnu.org/software/texinfo/"
+
 #~ msgid "Insert this character"
 #~ msgstr "Insertar este carácter"
 
@@ -4162,34 +4228,11 @@ msgstr "%s: no se pudo abrir %s para escritura: %s\n"
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "Uso: %s [OPCIÓN]... FICHERO-TEXINFO...\n"
 
-#~ msgid "display this help and exit"
-#~ msgstr "mostrar este texto de ayuda"
-
 #~ msgid "send output to FILE"
 #~ msgstr "enviar la salida al fichero FICHERO"
 
-#~ msgid "Generate a sorted index for each TeX output FILE.\n"
-#~ msgstr ""
-#~ "Genera un índice ordenado para cada fichero TeX de salida FICHERO.\n"
-
-#~ msgid ""
-#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-#~ msgstr ""
-#~ "FICHERO es generalmente especificado como `foo.%c%c' para un documento "
-#~ "llamado `foo.texi'.\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Options:\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Opciones:\n"
-
 #~ msgid "failure reopening %s"
 #~ msgstr "error al re-abrir %s"
-
-#~ msgid "%s: not a texinfo index file"
-#~ msgstr "%s: no es un fichero índice de Info"
 
 #~ msgid "No page number in %s"
 #~ msgstr "No hay constancia de número de página en %s"

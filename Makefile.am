@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6237 2015-05-02 23:28:19Z karl $
+# $Id: Makefile.am 6305 2015-06-03 22:29:56Z karl $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
@@ -93,6 +93,11 @@ dtd-check:
 	&& rm -f $@-1
 
 # emacs-page
+# just for convenience:
+update-po:
+	cd $(srcdir)/po && $(MAKE) update-po
+	cd $(srcdir)/po_document && $(MAKE) update-po
+
 # From coreutils.  Use when making a release.
 # Verify that all source files using _() are listed in po/POTFILES.in.
 # Run this before making pretests, as well as official releases, so that
@@ -105,7 +110,7 @@ po-check:
 	  for file in $$($(CVS_LIST_EXCEPT))				\
 	              `find [a-z]* -name '*.[ch]' 			\
 		                -o -name '*.p[lm]'			\
-				-o -name '*.twjr'`; do			\
+				-o -name '*.notyettwjr'`; do		\
 	    # don't look at sources from some subdirs.			\
 	    case $$file in						\
 	      contrib/* ) continue;;					\

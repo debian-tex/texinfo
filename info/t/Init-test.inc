@@ -47,7 +47,6 @@ INFO_PRINT_COMMAND=">$GINFO_OUTPUT"; export INFO_PRINT_COMMAND
 
 # Not an interactive test
 PTY_PID=0
-WEDGE_PTY_PID=0
 SUBSHELL=0
 
 # Get error messages in English
@@ -56,26 +55,36 @@ LC_ALL=C; export LC_ALL
 # Make sure that non-interactive operation works even if terminal is dumb
 TERM=dumb; export TERM
 
+# For interactive tests, we try to set this in Init-inter.inc
+STTY=true
+reset_required=no
+
 # Clean up if the test is interrupted, for example if the user types
-# C-c, to avoid lingering child processes.
-trap cleanup SIGINT
+# C-c, to avoid lingering child processes.  Signal 2 is SIGINT.
+trap cleanup 2
 
 # Cleanup and exit
 cleanup ()
 {
   # Delete created files and kill spawned processes if any.
   test $PTY_PID -ne 0 && kill $PTY_PID
-  test $WEDGE_PTY_PID -ne 0 && kill $WEDGE_PTY_PID
   test $SUBSHELL -ne 0 && kill $SUBSHELL
 
   rm -f $GINFO_OUTPUT
   rm -f $PIPEIN $PTY_TYPE
   rm -f $FINISHEDFIFO
   
+  # We do this because some versions of ksh93 (including that in
+  # Solaris 11) have a bug where a timed-out "read -t" can mess up
+  # the terminal settings, leading to characters not being echoed.
+  # This is only done if we don't start with "-echo" at the beginning.
+  test $reset_required = yes && { $STTY | grep '[-]echo' ; } && $STTY sane
+
   if test -n "$TIMED_OUT"; then
-    return 1
+    exit 1
   fi
-  #killall `basename $0`
+
+  #killall `basename $0`  # see below
   exit $RETVAL
 }
 

@@ -40,8 +40,21 @@ creates a pseudo-terminal for the input and output of the program.
 This allows the program to happily enter interactive operation (its standard
 file descriptors pass the isatty library function) and avoids affecting
 the output of the terminal the test was invoked from.  pseudotty reads and
-discards all input on its stdin, and passes through any bytes read on file
-descriptor 3 into the pseudo-terminal.
+discards all input on its stdin, and passes through any bytes read on 
+its control channel into the pseudo-terminal.  It prints the name of the 
+pseudoterminal slave device on standard output.
+
+(test script)
+ ^  |
+ |  `-control----> pseudotty (master) <---> (slave) stdin/stdout ginfo
+ `-name of slave-----'
+
+pseudotty will stop running either when killed, or when it exits after 
+its control channel is closed.
+
+Since ginfo is reading to and writing from the pseudoterminal slave 
+device, if pseudotty exits before ginfo does, ginfo will exit with an 
+I/O error.
 
 Many of the tests of interactive operation try to position the cursor 
 on a cross-reference by various means, follow the reference, and dump the node

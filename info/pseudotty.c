@@ -19,7 +19,7 @@
    
    Originally written by Gavin Smith.  */
 
-#define _XOPEN_SOURCE
+#define _XOPEN_SOURCE 500
 
 #include <config.h>
 #include <errno.h>
@@ -29,14 +29,17 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
+#include <sys/select.h>
 #include <stdlib.h>
+#include <string.h>
 
-#define CONTROL 3
+/* Used by "error" function. */
+const char *program_name = "pseudotty";
 
 int
-main (void)
+main (int argc, char *argv[])
 {
-  int master;
+  int master, control;
   char *name;
   fd_set read_set;
 
@@ -54,62 +57,89 @@ main (void)
     exit (1);
 
   error (0, 0, "%s", name);
+
   printf ("%s\n", name);
-  fclose (stdout);
+  if (fclose (stdout) != 0)
+    error (1, 0, "error closing stdout: aborting");
+
+  error (0, 0, "opening control channel");
+  control = open (argv[1], O_RDONLY);
+  if (control == -1)
+    error (1, 0, "error opening control channel: aborting");
+
 
   FD_ZERO (&read_set);
 
   error (0, 0, "entering main loop");
-  for (;;)
+  while (1)
     {
       FD_SET (master, &read_set);
-      FD_SET (CONTROL, &read_set);
+      FD_SET (control, &read_set);
 
       select (FD_SETSIZE, &read_set, 0, 0, 0);
 
-      if (FD_ISSET (CONTROL, &read_set))
+      if (FD_ISSET (control, &read_set))
         {
-          int c, success;
+          char c;
+          int success;
           errno = 0;
-          do
+          while (1)
             {
               error (0, 0, "trying to read");
-              success = read (CONTROL, &c, 1);
+              success = read (control, &c, 1);
               if (success < 0)
                 {
                   if (errno != EINTR)
-                    {
-                      error (0, errno, "read error on control channel");
-                      sleep (1);
-                    }
+                    error (1, errno, "read error on control channel");
                 }
               else if (success == 0)
                 {
-                  error (0, 0, "end of file on control channel");
-                  exit (1);
+                  error (1, 0, "end of file on control channel");
                 }
               else if (success == 1)
-                break;
+                {
+                  error (0, 0, "read byte 0x%02X", c);
+                  break;
+                }
             }
-          while (1);
 
           /* Feed any read bytes to the program being controlled. */
-          write (master, &c, 1);
+          do
+            {
+              success = write (master, &c, 1);
+              if (success == 0)
+                {
+                  error (0, 0, "couldn't send byte!");
+                  sleep (1);
+                  continue;
+                }
+            }
+          while (success == -1 && errno == EINTR);
+
+          if (success != 1)
+            {
+              /* The controlled process has probably exited, or been killed. */
+              error (0, 0, "couldn't send byte (giving up)");
+              sleep (1);
+            }
         }
 
       if (FD_ISSET (master, &read_set))
         {
-          int c, success;
+          char c;
+          int success;
           errno = 0;
           do
             {
               success = read (master, &c, 1);
             }
-          while (success != 1 && errno == EINTR);
-          if (!success)
+          while (success == -1 && errno == EINTR);
+
+          if (success == -1)
             {
+              /* The controlled process has probably exited, or been killed. */
               error (0, 0, "read error on master fd");
-              exit (1);
+              sleep (1);
             }
         }
     }

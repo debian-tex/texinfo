@@ -1,6 +1,6 @@
 \input texinfo   @c -*-texinfo-*-
 @c vim: filetype=texinfo tabstop=2 expandtab
-@c $Id: ti.twjr 6037 2015-01-14 19:10:55Z arnold $
+@c $Id: ti.twjr 6305 2015-06-03 22:29:56Z karl $
 @c %**start of header (This is for running Texinfo on a region.)
 @setfilename texindex.info
 @settitle Texindex @VERSION@: A program for sorting indices
@@ -79,8 +79,8 @@ files produced by the @file{texinfo.tex} file.
 
 This file defines @file{texindex.awk}, a reimplementation of the C
 program @file{texindex.c}.  The purpose is to make the program more
-maintainable, and in particular, to support correctly listing the
-@samp{@{} and @samp{@}} characters in an index.
+maintainable.  As a practical benefit, it also supports correct sorting
+and initials for the @samp{@{} and @samp{@}} characters in an index.
 @cindex @{ (left brace), example index entry for
 @cindex @} (right brace), example index entry for
 
@@ -89,7 +89,7 @@ maintainable, and in particular, to support correctly listing the
 This is a @dfn{literate program}, written using the
 @uref{https://github.com/arnoldrobbins/texiwebjr, @sc{TexiWeb Jr.@:}
 literate programming system}.  The underlying documentation system is
-@uref{http://www.gnu.org/software/texinfo, Texinfo}, the GNU
+@uref{http://www.gnu.org/software/texinfo, Texinfo} the GNU
 documentation formatting language.  A single source file produces the
 runnable program, a printable document, and an online document.
 
@@ -148,6 +148,24 @@ key by escaping them with the @dfn{command character}.  This is the
 first character on the line.  It is either the backslash used by @TeX{}
 (@samp{\}) or the at sign used by Texinfo (@samp{@@}).
 
+@cindex backslash vs.@: at
+@cindex command character, @samp{\} vs.@: @samp{@@}
+Historically, @file{texinfo.tex} has used @samp{\} as the command
+character in index files.  This causes complications with index entries
+containing backslashes and braces; C @command{texindex} has never output
+the correct initial (a left brace) for an index entry like
+@samp{@@cindex @@@{@}}, or done technically-correct sorting with such
+entries.  @xref{Details of @t{texindex},,, texinfo, GNU Texinfo}.
+
+The present @code{awk} implementation handles these cases better.  It
+also supports @samp{@@} as the command character, which allows
+@file{texinfo.tex} to output cleaner raw index files.  (For
+compatibility, for now this is only done if a ``secret'' @TeX{} variable
+is set: @code{\global\usebracesinindexestrue}.)  The first character of
+the raw input file is taken as the command character.
+
+@subheading Processing
+
 The job is to sort the entries, and merge those which are identical
 except for the page numbers.  Thus, for the above two entries, the
 output should be:
@@ -171,6 +189,8 @@ output looks like:
 @example
 \initial @{A@}
 @end example
+
+@subheading Assumptions
 
 In the rest of the program we make two fundamental assumptions:
 
@@ -282,11 +302,13 @@ The initial setup sets up some constants, including the version of the
 program.  In the program itself, we follow a convenient convention:
 global variable and array names start with a capital letter.
 
+@cindex @code{Invocation_name} variable
 Per GNU standards, we sometimes hardwire the string @samp{texindex} as
 the name of the program, and sometimes use the name by which the program
 was invoked.  We'll call the latter @code{Invocation_name}; it's
 supposed to be passed in from the shell wrapper.
 
+@cindex @code{Can_split_null} variable
 The last line below sets up @code{Can_split_null}, which tells us if the
 built-in @code{split()} function will split apart a string into its
 individual characters or if we have to do it manually.
@@ -296,8 +318,6 @@ individual characters or if we have to do it manually.
 @cindex @code{EXIT_SUCCESS} constant
 @cindex @code{EXIT_FAILURE} constant
 @cindex @code{Texindex_version} variable
-@cindex @code{Invocation_name} variable
-@cindex @code{Can_split_null} variable
 @cindex @code{check_split_null()} function
 @<Initial setup@>=
 TRUE = 1
@@ -333,6 +353,10 @@ The C implementation of @command{texindex} provided an option @code{-o}
 chosen to omit it from this incarnation of the program unless and until
 we receive information that it was ever useful.
 
+@cindex @code{-h} (@code{--help}) option
+@cindex @code{-k} (@code{--keep}), no-op option
+@cindex @code{--} option
+@cindex @code{--version} option
 @<Argument processing@>=
 for (i = 1; i < ARGC; i++) {
   if (ARGV[i] == "-h" || ARGV[i] == "--help") {
@@ -373,25 +397,34 @@ the data properly.
 @section Setup for each input file
 
 At the beginning of each input file, the @code{beginfile()} function
-sets up the output file name.  We always append an @samp{s} to the name
-of the input file, which has become the standard convention.  (As
-mentioned above, the @option{-o} option in the C implementation of
-@command{texindex} has been omitted here.)
+clears our variables from any previous processing (@code{Data},
+@code{Keys}, etc.)@: and sets up the output file name.  We always append
+an @samp{s} to the name of the input file, which has become the standard
+convention.  (As mentioned above, the @option{-o} option in the C
+implementation of @command{texindex} has been omitted here, until the
+need is seen.)
 
 When @code{beginfile()} is called, the first record has already been
 read, so it's possible to perform the checks for a Texinfo index file:
-The first character must be either @samp{\} or @samp{@@}, and the next
-five characters must be the word @samp{entry}.
+The first character must be either @samp{\} or @samp{@@}
+(@pxref{Requirements}), and the next five characters must be the word
+@samp{entry}.
 
 @cindex @code{Special_chars} variable
 @code{Special_chars} are the three characters that must be preceded by
 the command character inside the first key.
 
-@cindex @code{Output_file} variable
-@cindex @code{Command_char} variable
-@cindex @code{Do_initials} variable
-@cindex @code{del_array()} function
 @cindex @code{beginfile()} function
+@cindex @code{Output_file} variable
+@cindex @code{Data} array
+@cindex @code{Keys} array
+@cindex @code{Seen} array
+@cindex @code{Entries} variable
+@cindex @code{Do_initials} variable
+@cindex @code{Prev_initial} variable
+@cindex @code{del_array()} function
+@cindex @code{Command_char} variable
+@cindex @code{Special_chars} variable
 @<@code{beginfile()} function@>=
 function beginfile(filename)
 {
@@ -400,8 +433,9 @@ function beginfile(filename)
   # Reinitialize these for each input file
   del_array(Data)
   del_array(Keys)
-  Do_initials = FALSE
+  del_array(Seen)
   Entries = 0
+  Do_initials = FALSE
   Prev_initial = ""
 
   Command_char = substr($0, 1, 1)
@@ -546,8 +580,6 @@ text = fields[3]
 
 @cindex storing data
 
-@cindex @code{Keys} array
-@cindex @code{Entries} variable
 @cindex @code{Data} array
 We use a traditional @command{awk} multidimensional array, @code{Data}.
 The sort key from the input is invariant across entries, so we use that
@@ -565,10 +597,12 @@ last that's been stored.  (We're assuming the page numbers don't jump
 around, which, in fact, they don't, so we don't need a more complex
 approach.)
 
-@cindex @code{Entries}
+@cindex @code{Keys} array
+@cindex @code{Entries} variable
 In addition to all this updating of the @code{Data} array, the key is
-stored in the @code{Entries} array the first time it is seen; this array
-is sorted later on.
+stored in the @code{Keys} array the first time it is seen; this array
+is sorted later on.  For now, its indices are just incremented integers,
+stored in the global @code{Entries} variable.
 
 @<Store the data for this line in the @code{Data} array@>=
 if (! ((key, "text") in Data)) {
@@ -714,11 +748,13 @@ Upon end of input, the processing is straightforward: sort the entries
 and write them out.  Additionally, if we are printing the initial,
 handle that.  (That printing task is delegated to a small function.)
 
-@cindex @code{quicksort()} function
 @cindex @code{endfile()} function
+@cindex @code{quicksort()} function
+@cindex @code{Entries} variable
 @cindex @code{Keys} array
 @cindex @code{Data} array
-@cindex @code{Entries} variable
+@cindex @code{print_initial()} function
+@cindex @code{Output_file} variable
 @<@code{endfile()} function@>=
 function endfile(filename,    i, prev_initial, initial)
 {
@@ -1243,9 +1279,9 @@ function usage(exit_val)
   print _" --version    display version information and exit"
   print _" --           end option processing"
   print ""
-  print _"Email bug reports to bug-texinfo@gnu.org,"
-  print _"general questions and discussion to help-texinfo@gnu.org."
-  print _"Texinfo home page: http://www.gnu.org/software/texinfo/"
+  print _"Email bug reports to bug-texinfo@gnu.org,\n\
+general questions and discussion to help-texinfo@gnu.org.\n\
+Texinfo home page: http://www.gnu.org/software/texinfo/";
 
   exit exit_val
 }
@@ -1254,10 +1290,10 @@ function version()
 {
   print "texindex (GNU texinfo)", Texindex_version
   print ""
-  print _"Copyright (C) 2015 Free Software Foundation, Inc."
-  print _"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
-  print _"This is free software: you are free to change and redistribute it."
-  print _"There is NO WARRANTY, to the extent permitted by law."
+  printf _"Copyright (C) %s Free Software Foundation, Inc.\n\
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
+This is free software: you are free to change and redistribute it.\n\
+There is NO WARRANTY, to the extent permitted by law.\n", "2015";
 
   exit EXIT_SUCCESS
 }

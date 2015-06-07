@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-05-11 17:24+0100\n"
+"POT-Creation-Date: 2015-06-03 15:28-0700\n"
 "PO-Revision-Date: 2015-05-04 22:28+0200\n"
 "Last-Translator: Petr Pisar <petr.pisar@atlas.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -59,9 +59,9 @@ msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: přepínač „--%s“ vyžaduje argument\n"
 
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
-#, c-format
+#, fuzzy, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: nerozpoznaný přepínač „--%s“\n"
+msgstr "%s: nerozpoznaný přepínač „%c%s“\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, c-format
@@ -393,7 +393,7 @@ msgstr "Téma rejstříku"
 msgid "No available info files have '%s' in their indices."
 msgstr "Žádné dostupné info soubory nemají ve svých rejstřících „%s“."
 
-#: info/info-utils.c:897
+#: info/info-utils.c:899
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Chyba při převodu kódování znaků souboru."
@@ -408,7 +408,7 @@ msgstr "V uzlu „%2$s“ žádná položka nabídky „%1$s“ není."
 msgid "No file given for node '%s'."
 msgstr "Pro uzel „%s“ nebyl zadán žádný soubor."
 
-#: info/info.c:365 info/info.c:1113
+#: info/info.c:365 info/info.c:1115
 #, c-format
 msgid "Cannot find node '%s'."
 msgstr "Uzel „%s“ nelze nalézt."
@@ -444,7 +444,8 @@ msgid "Try --help for more information.\n"
 msgstr "Více informací můžete získat pomocí přepínače --help.\n"
 
 #: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:878
-#, c-format, perl-format
+#: texindex/ti.twjr:1293
+#, c-format, awk-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -599,80 +600,80 @@ msgstr ""
 "  info -f ./foo.info         zobrazí soubor ./foo.info, adresář se "
 "neprohledává"
 
-#: info/info.c:1079
+#: info/info.c:1081 install-info/install-info.c:616 tp/texi2any.pl:866
+#: texindex/ti.twjr:1282
 msgid ""
-"\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
-"\n"
-"Chyby v programu oznamujte e-mailem na <bug-texinfo@gnu.org> (anglicky),\n"
-"obecné otázky směřujte na <help-texinfo@gnu.org>. Připomínky k překladu\n"
-"zasílejte na <translation-team-cs@lists.sourceforge.net> (česky).\n"
-"Domovská stránka Texinfa: <http://www.gnu.org/software/texinfo/>"
+"Chyby v programu oznamujte na adrese <bug-texinfo@gnu.org> (anglicky),\n"
+"obecné otázky a diskuzi směřujte na <help-texinfo@gnu.org>. Připomínky\n"
+"k překladu zasílejte na <translation-team-cs@lists.sourceforge.net> "
+"(česky).\n"
+"Domovská stránka texinfa je <http://www.gnu.org/software/texinfo/>."
 
-#: info/info.c:1114
+#: info/info.c:1116
 #, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "Uzel „(%s)%s“ nelze nalézt."
 
-#: info/info.c:1115
+#: info/info.c:1117
 msgid "Cannot find a window!"
 msgstr "Nelze nalézt okno!"
 
-#: info/info.c:1116
+#: info/info.c:1118
 msgid "Point doesn't appear within this window's node!"
 msgstr "Bod se v okně tohoto uzlu nevyskytuje!"
 
-#: info/info.c:1117
+#: info/info.c:1119
 msgid "Cannot delete the last window."
 msgstr "Poslední okno nelze smazat."
 
-#: info/info.c:1118
+#: info/info.c:1120
 msgid "No menu in this node."
 msgstr "V tomto uzlu není menu."
 
-#: info/info.c:1119
+#: info/info.c:1121
 msgid "No footnotes in this node."
 msgstr "V tomto nejsou poznámky pod čarou."
 
-#: info/info.c:1120
+#: info/info.c:1122
 msgid "No cross references in this node."
 msgstr "V tomto uzlu není křížový odkaz."
 
-#: info/info.c:1121
+#: info/info.c:1123
 #, c-format
 msgid "No '%s' pointer for this node."
 msgstr "Pro tento uzel není „%s“ ukazatel."
 
-#: info/info.c:1122
+#: info/info.c:1124
 #, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "Neznámý Info příkaz „%c“; zkuste „?“ pro nápovědu."
 
-#: info/info.c:1123
+#: info/info.c:1125
 #, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "Typ terminálu „%s“ není dostatečně inteligentní pro provoz Infa."
 
-#: info/info.c:1124
+#: info/info.c:1126
 msgid "You are already at the last page of this node."
 msgstr "Již jste na poslední stránce tohoto uzlu."
 
-#: info/info.c:1125
+#: info/info.c:1127
 msgid "You are already at the first page of this node."
 msgstr "Již jste na první stránce tohoto uzlu."
 
-#: info/info.c:1126
+#: info/info.c:1128
 msgid "Only one window."
 msgstr "Pouze jedno okno."
 
-#: info/info.c:1127
+#: info/info.c:1129
 msgid "Resulting window would be too small."
 msgstr "Výsledné okno by bylo příliš malé."
 
-#: info/info.c:1128
+#: info/info.c:1130
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Není volné místo pro okno nápovědy, prosím smažte některé okno."
 
@@ -1084,9 +1085,10 @@ msgstr "Zobrazit všechny odpovídající soubory"
 msgid "No file index"
 msgstr "Žádný rejstřík souborů"
 
-#. TRANSLATORS: This message should fit within 79 characters, otherwise
-#. anything after the 80th character will not be displayed.
-#: info/session.c:189
+#. TRANSLATORS: Try to keep this message (when "expanded") at most 79
+#. characters; anything after the 79th character will not actually be
+#. displayed on an 80-column terminal.
+#: info/session.c:190
 #, c-format
 msgid ""
 "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
@@ -1608,11 +1610,11 @@ msgstr "„%s“ je neplatné"
 msgid "'%s' is invalid"
 msgstr "„%s“ je neplatné"
 
-#: info/session.c:5291
+#: info/session.c:5292
 msgid "Add this digit to the current numeric argument"
 msgstr "Přidání této číslice do aktuálního číselného argumentu"
 
-#: info/session.c:5298
+#: info/session.c:5299
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Začátek (nebo dělení čtyřmi) aktuálního číselného argumentu"
 
@@ -1930,18 +1932,6 @@ msgstr ""
 " --silent            potlačí varování.\n"
 " --test              potlačí aktualizaci ADRESÁŘOVÉHO_SOUBORU.\n"
 " --version           zobrazí údaje o verzi a skončí."
-
-#: install-info/install-info.c:616 tp/texi2any.pl:866
-msgid ""
-"Email bug reports to bug-texinfo@gnu.org,\n"
-"general questions and discussion to help-texinfo@gnu.org.\n"
-"Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-"Chyby v programu oznamujte na adrese <bug-texinfo@gnu.org> (anglicky),\n"
-"obecné otázky a diskuzi směřujte na <help-texinfo@gnu.org>. Připomínky\n"
-"k překladu zasílejte na <translation-team-cs@lists.sourceforge.net> "
-"(česky).\n"
-"Domovská stránka texinfa je <http://www.gnu.org/software/texinfo/>."
 
 #: install-info/install-info.c:643
 #, c-format
@@ -3249,7 +3239,7 @@ msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "nerozpoznaná hodnota TEXINFO_OUTPUT_FORMAT „%s“ se ignoruje\n"
 
 #: tp/texi2any.pl:735
-#, perl-format
+#, fuzzy, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Použití: %s [PŘEPÍNAČ]… SOUBOR_TEXINFA…\n"
 
@@ -3644,6 +3634,82 @@ msgstr "%s: chyba při zavírání souboru %s s vnitřními odkazy: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: %s nebylo možné otevřít pro zápis: %s\n"
 
+#: texindex/ti.twjr:373
+#, fuzzy, awk-format
+msgid "%s: unrecognized option `%s'\n"
+msgstr "%s: nerozpoznaný přepínač „--%s“\n"
+
+#: texindex/ti.twjr:444
+#, fuzzy, awk-format
+msgid "%s is not a Texinfo index file\n"
+msgstr "%s: není rejstříkový soubor texinfa"
+
+#: texindex/ti.twjr:543
+#, awk-format
+msgid "%s:%d: Bad key %s in record\n"
+msgstr ""
+
+#: texindex/ti.twjr:566
+#, awk-format
+msgid "%s:%d: Bad entry; expected three fields, not %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:725
+#, awk-format
+msgid "%s:%d: Bad entry; expected %s at column %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:1254
+msgid "..."
+msgstr ""
+
+#: texindex/ti.twjr:1273
+#, fuzzy, awk-format
+msgid "Usage: %s [OPTION]... FILE...\n"
+msgstr "Použití: %s [PŘEPÍNAČ]… SOUBOR_TEXINFA…\n"
+
+#: texindex/ti.twjr:1274
+#, fuzzy
+msgid "Generate a sorted index for each TeX output FILE."
+msgstr "Vytvoří seřazený rejstřík pro každý texový výstupní SOUBOR.\n"
+
+#: texindex/ti.twjr:1275
+#, fuzzy
+msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
+msgstr "SOUBOR… je obvykle zadán jako „foo.%c%c“ pro dokument „foo.texi“.\n"
+
+#: texindex/ti.twjr:1277
+#, fuzzy
+msgid "Options:"
+msgstr ""
+"\n"
+"Přepínače:\n"
+
+#: texindex/ti.twjr:1278
+#, fuzzy
+msgid " -h, --help   display this help and exit"
+msgstr "vypíše tuto nápovědu a skončí"
+
+#: texindex/ti.twjr:1279
+msgid " --version    display version information and exit"
+msgstr ""
+
+#: texindex/ti.twjr:1280
+msgid " --           end option processing"
+msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Chyby v programu oznamujte e-mailem na <bug-texinfo@gnu.org> (anglicky),\n"
+#~ "obecné otázky směřujte na <help-texinfo@gnu.org>. Připomínky k překladu\n"
+#~ "zasílejte na <translation-team-cs@lists.sourceforge.net> (česky).\n"
+#~ "Domovská stránka Texinfa: <http://www.gnu.org/software/texinfo/>"
+
 #~ msgid "Insert this character"
 #~ msgstr "Vložení tohoto znaku"
 
@@ -3917,31 +3983,11 @@ msgstr "%s: %s nebylo možné otevřít pro zápis: %s\n"
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "   nebo: texi2any [PŘEPÍNAČ]… SOUBOR_TEXINFA…\n"
 
-#~ msgid "display this help and exit"
-#~ msgstr "vypíše tuto nápovědu a skončí"
-
 #~ msgid "send output to FILE"
 #~ msgstr "zapíše výstup do SOUBORu"
 
-#~ msgid "Generate a sorted index for each TeX output FILE.\n"
-#~ msgstr "Vytvoří seřazený rejstřík pro každý texový výstupní SOUBOR.\n"
-
-#~ msgid ""
-#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-#~ msgstr "SOUBOR… je obvykle zadán jako „foo.%c%c“ pro dokument „foo.texi“.\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Options:\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Přepínače:\n"
-
 #~ msgid "failure reopening %s"
 #~ msgstr "soubor %s nepovedlo se znovu otevřít"
-
-#~ msgid "%s: not a texinfo index file"
-#~ msgstr "%s: není rejstříkový soubor texinfa"
 
 #~ msgid "No page number in %s"
 #~ msgstr "Na %s není číslo stránky"

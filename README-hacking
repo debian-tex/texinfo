@@ -1,4 +1,4 @@
-$Id: README-hacking 6246 2015-05-04 18:13:48Z karl $
+$Id: README-hacking 6307 2015-06-03 23:18:28Z karl $
 This file describes the development environment for Texinfo.
 
   Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013,
@@ -43,16 +43,6 @@ Other -W options can be useful too, and patches are welcome to resolve
 diagnostics; however, removing all possible warning messages, or
 warnings with nonfree compilers, is explicitly not a goal.
 
-If you want to delve into making a new backend for the Perl makeinfo,
-the documentation in tp/Texinfo/Convert/Converter.pm is a good starting
-point, as it describes the existing backends and other places to look.
-
-Translations are handled through the Translation Project.  When a new
-.po is posted in
-  http://translationproject.org/latest/texinfo 
-  http://translationproject.org/latest/texinfo_document
-it should be installed.
-
 This distribution also uses Gnulib (http://www.gnu.org/software/gnulib)
 to share common files.  Gnulib files used in Texinfo are checked in to
 the repository.  If you get automake/conf/etc. errors from ./autogen.sh,
@@ -66,11 +56,11 @@ The currently-used gnulib modules and other gnulib information are
 recorded in gnulib/m4/gnulib-cache.m4.  Given a source checkout of
 gnulib, you can update the files with gnulib-tool --add-import.
 
-And, when running gnulib-tool --add-import or otherwise adding modules,
-remember to check what files were added (e.g., run "svn status build-aux
-gnulib") and add them to the repository with "svn add"; likewise for
-removals.  Likewise for adding new generated files (typically
-gnulib/lib/foo.h from foo.h.in) to the ignore list.
+When running gnulib-tool --add-import or otherwise adding modules, it is
+necessary to check what files were added (e.g., run "svn status
+build-aux gnulib") and add them to the repository with "svn add";
+likewise for removals.  Likewise for adding new generated files
+(typically gnulib/lib/foo.h from foo.h.in) to the ignore list.
 
 
 
@@ -95,7 +85,27 @@ or symlink to a trivial script along these lines:
 #!/bin/sh
 exec /YOUR/TEXINFO/CHECKOUT/tp/texi2any.pl "$@"
 
-For information on creating and modifying
+
+
+References for working on various parts of the system:
+
+If you want to delve into making a new backend for the Perl makeinfo,
+the documentation in tp/Texinfo/Convert/Converter.pm is a good starting
+point, as it describes the existing backends and other places to look.
+
+If you want to delve into texinfo.tex, a thorough plain TeX reference
+is available under the GFDL:
+  TeX by Topic - http://www.eijkhout.net/texbytopic/texbytopic.html
+Another book on plain TeX, also available under the GFDL, is a GNU package:
+  TeX for the Impatient - http://www.gnu.org/software/teximpatient/
+
+The texindex program is implemented using the TexiWebJR literate
+programming system, combining Texinfo and Awk
+(https://github.com/arnoldrobbins/texiwebjr).  Running "make ti.pdf"
+in the texindex/ subdirectory creates the printable form of the
+program.  All the usual Texinfo output formats are possible.
+
+
 
 Steps for making a release (pretest or official):
 
@@ -105,6 +115,12 @@ Ensure TXI_XLATE in doc/Makefile.am matches actual file list.
 Check that TEXINFO_DTD_VERSION has been updated to the next version in
   configure.ac if the DTD has been modified since the last release.
 
+- When close to official release:
+special pleading with bug-texinfo / beebe / platform-testers to try.
+check OpenCSW build reports at
+  https://buildfarm.opencsw.org/buildbot/waterfall?category=texinfo
+try groff.texinfo from groff source repo.
+
 - Official releases only:
 version number in texi2dvi, texi2pdf, txirefcard.tex.
 version and date in NEWS.
@@ -112,8 +128,6 @@ version and date in NEWS.
 sync texi2html/test/ results with tp/.
 ensure building standalone modules for CPAN still works.
 make V=1 pdf and fix underfull/overfull boxes.
-special pleading with bug-texinfo / beebe / compile farms to try.
-try groff.texinfo from groff source repo.
 
 - Changes to sources:
 update version in configure.ac, notice in ChangeLog.
@@ -122,7 +136,7 @@ util/srclist-txi          # for pretest
 pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
 make
 make po-check             # update po/POTFILES.in as needed
-make -C po update-po      # but don't commit yet, dist updates po_document
+make update-po            # both po and po_document needed, build a dist first
 make -C doc wwwdoc-build  # and -install for official (and eventual commit)
 make long-checks          # distcheck does not do this
 (export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
@@ -143,7 +157,8 @@ and the corresponding, to save in local archives:
 mv -v $pkg-$ver.tar.xz* $misc/archive/$pkg/alpha/                #pretest
 mv -v $pkg-$ver.tar.{gz,xz}* *.diff.xz $misc/archive/$pkg/prod/  #official
 
-For pretest release, send announcement to bug-texinfo.
+For pretest release, send announcement to bug-texinfo and
+bcc coordinator@translationproject.org.
 
 - When official release is out there ...
 update home page (texinfo.html) and commit as needed.
@@ -188,7 +203,7 @@ relink texinfo $ver
 
   ... announcements:
 send announcement to info-gnu,
-  cc bug-texinfo and coordinator@translationproject.org.
+  cc bug-texinfo and bcc coordinator@translationproject.org.
 news item at savannah.
 
   ... make diffs at official release:

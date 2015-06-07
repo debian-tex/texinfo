@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-05-11 17:24+0100\n"
+"POT-Creation-Date: 2015-06-03 15:28-0700\n"
 "PO-Revision-Date: 2014-08-11 17:30+0700\n"
 "Last-Translator: Arif E. Nugroho <arif_endro@yahoo.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -47,9 +47,9 @@ msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: opsi '--%s' membutuhkan sebuah argumen\n"
 
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
-#, c-format
+#, fuzzy, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: opsi tidak dikenal '--%s'\n"
+msgstr "%s: opsi tidak dikenal '%c%s'\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, c-format
@@ -385,7 +385,7 @@ msgstr "Indeks apropos: "
 msgid "No available info files have '%s' in their indices."
 msgstr "Info berkas tidak tersedia memiliki `%s' dalam indicesnya."
 
-#: info/info-utils.c:897
+#: info/info-utils.c:899
 #, c-format
 msgid "Error converting file character encoding."
 msgstr ""
@@ -400,7 +400,7 @@ msgstr "Tidak ada menu item `%s' dalam titik `%s'."
 msgid "No file given for node '%s'."
 msgstr "Tidak ada menu dalam titik `%s'."
 
-#: info/info.c:365 info/info.c:1113
+#: info/info.c:365 info/info.c:1115
 #, fuzzy, c-format
 msgid "Cannot find node '%s'."
 msgstr "Tidak dapat menemukan titik `%s'."
@@ -436,7 +436,8 @@ msgid "Try --help for more information.\n"
 msgstr "Coba --help untuk informasi lebih lanjut.\n"
 
 #: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:878
-#, c-format, perl-format
+#: texindex/ti.twjr:1293
+#, c-format, awk-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -594,79 +595,78 @@ msgstr ""
 "  info --subnodes -o out.txt emacs dump seluruh manual ke out.txt\n"
 "  info -f ./foo.info         tampilkan berkas ./foo.info, bukan mencari dir"
 
-#: info/info.c:1079
+#: info/info.c:1081 install-info/install-info.c:616 tp/texi2any.pl:866
+#: texindex/ti.twjr:1282
 msgid ""
-"\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
-"\n"
 "Email laporan bug ke bug-texinfo@gnu.org,\n"
 "pertanyaan umum dan diskusi ke help-texinfo@gnu.org.\n"
-"Texinfo home page: http://www.gnu.org/software/texinfo/"
+"Texinfo halaman rumah: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1114
+#: info/info.c:1116
 #, fuzzy, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "Tidak dapat menemukan titik `(%s)%s'."
 
-#: info/info.c:1115
+#: info/info.c:1117
 msgid "Cannot find a window!"
 msgstr "Tidak dapat menemukan sebuah jendela!"
 
-#: info/info.c:1116
+#: info/info.c:1118
 msgid "Point doesn't appear within this window's node!"
 msgstr "Titik tidak kelihatan didalam titik jendela ini!"
 
-#: info/info.c:1117
+#: info/info.c:1119
 msgid "Cannot delete the last window."
 msgstr "Tidak dapat menghapus jendela terakhir."
 
-#: info/info.c:1118
+#: info/info.c:1120
 msgid "No menu in this node."
 msgstr "Tidak ada menu di titik ini."
 
-#: info/info.c:1119
+#: info/info.c:1121
 msgid "No footnotes in this node."
 msgstr "Tidak ada catatan kaki di titik ini."
 
-#: info/info.c:1120
+#: info/info.c:1122
 msgid "No cross references in this node."
 msgstr "Tidak ada referensi silang di titik ini."
 
-#: info/info.c:1121
+#: info/info.c:1123
 #, fuzzy, c-format
 msgid "No '%s' pointer for this node."
 msgstr "Tidak ada `%s' penunjuk untuk titik ini."
 
-#: info/info.c:1122
+#: info/info.c:1124
 #, fuzzy, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "Perintah Info `%c' tidak diketahui; coba `?' untuk bantuan."
 
-#: info/info.c:1123
+#: info/info.c:1125
 #, fuzzy, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "Tipe terminal `%s' tidak cukup pintar untuk menjalankan Info."
 
-#: info/info.c:1124
+#: info/info.c:1126
 msgid "You are already at the last page of this node."
 msgstr "Anda telah berada di akhir halaman dari titik ini."
 
-#: info/info.c:1125
+#: info/info.c:1127
 msgid "You are already at the first page of this node."
 msgstr "Anda telah berada di halaman pertama dari titik ini."
 
-#: info/info.c:1126
+#: info/info.c:1128
 msgid "Only one window."
 msgstr "Hanya satu jendela."
 
-#: info/info.c:1127
+#: info/info.c:1129
 msgid "Resulting window would be too small."
 msgstr "Menghasilkan jendela yang akan terlalu kecil."
 
-#: info/info.c:1128
+#: info/info.c:1130
 msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "Tidak cukup ruang untuk sebuah jendela bantuan, mohon hapus sebuah jendela."
@@ -1089,9 +1089,10 @@ msgstr "Show all matching files"
 msgid "No file index"
 msgstr "No file index"
 
-#. TRANSLATORS: This message should fit within 79 characters, otherwise
-#. anything after the 80th character will not be displayed.
-#: info/session.c:189
+#. TRANSLATORS: Try to keep this message (when "expanded") at most 79
+#. characters; anything after the 79th character will not actually be
+#. displayed on an 80-column terminal.
+#: info/session.c:190
 #, fuzzy, c-format
 msgid ""
 "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
@@ -1616,11 +1617,11 @@ msgstr "\"%s\" tidak valid"
 msgid "'%s' is invalid"
 msgstr "`%s' tidak valid"
 
-#: info/session.c:5291
+#: info/session.c:5292
 msgid "Add this digit to the current numeric argument"
 msgstr "Tambahkan digit ini ke argumen numerik sekarang"
 
-#: info/session.c:5298
+#: info/session.c:5299
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Awal (atau kelipatan dari 4) argumen numerik sekarang"
 
@@ -1942,16 +1943,6 @@ msgstr ""
 " --silent            tekan peringatan.\n"
 " --test              tekang pengupdatan dari BERKAS-DIR.\n"
 " --version           tampilkan informasi versi dan keluar."
-
-#: install-info/install-info.c:616 tp/texi2any.pl:866
-msgid ""
-"Email bug reports to bug-texinfo@gnu.org,\n"
-"general questions and discussion to help-texinfo@gnu.org.\n"
-"Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-"Email laporan bug ke bug-texinfo@gnu.org,\n"
-"pertanyaan umum dan diskusi ke help-texinfo@gnu.org.\n"
-"Texinfo halaman rumah: http://www.gnu.org/software/texinfo/"
 
 #: install-info/install-info.c:643
 #, c-format
@@ -2865,9 +2856,9 @@ msgid "non-hex digits in argument for @U: %s"
 msgstr "Argumen ke @%s: %s buruk"
 
 #: tp/Texinfo/Parser.pm:5366
-#, perl-format
+#, fuzzy, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
-msgstr ""
+msgstr "Argumen ke @%s: %s buruk"
 
 #: tp/Texinfo/Parser.pm:5379
 #, perl-format
@@ -3635,6 +3626,83 @@ msgstr "%s: mengabaikan keluaran link internal kedua `%s'. %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: tidak dapat membuka %s --css-file: %s\n"
 
+#: texindex/ti.twjr:373
+#, fuzzy, awk-format
+msgid "%s: unrecognized option `%s'\n"
+msgstr "%s: opsi tidak dikenal '--%s'\n"
+
+#: texindex/ti.twjr:444
+#, fuzzy, awk-format
+msgid "%s is not a Texinfo index file\n"
+msgstr "%s: bukan sebuah berkas indeks texinfo"
+
+#: texindex/ti.twjr:543
+#, awk-format
+msgid "%s:%d: Bad key %s in record\n"
+msgstr ""
+
+#: texindex/ti.twjr:566
+#, awk-format
+msgid "%s:%d: Bad entry; expected three fields, not %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:725
+#, awk-format
+msgid "%s:%d: Bad entry; expected %s at column %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:1254
+msgid "..."
+msgstr ""
+
+#: texindex/ti.twjr:1273
+#, fuzzy, awk-format
+msgid "Usage: %s [OPTION]... FILE...\n"
+msgstr "Penggunaan: %s [OPSI]... BERKAS...\n"
+
+#: texindex/ti.twjr:1274
+#, fuzzy
+msgid "Generate a sorted index for each TeX output FILE."
+msgstr "Buat sebuah indeks terurut untuk setiap BERKAS keluaran Tex.\n"
+
+#: texindex/ti.twjr:1275
+#, fuzzy
+msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
+msgstr ""
+"Biasanya BERKAS... dispesifikasikan sebagai `foo.%c%c' untuk sebuah dokumen "
+"`foo.texi'.\n"
+
+#: texindex/ti.twjr:1277
+#, fuzzy
+msgid "Options:"
+msgstr ""
+"\n"
+"Opsi:\n"
+
+#: texindex/ti.twjr:1278
+#, fuzzy
+msgid " -h, --help   display this help and exit"
+msgstr "tampilkan bantuan ini dan keluar"
+
+#: texindex/ti.twjr:1279
+msgid " --version    display version information and exit"
+msgstr ""
+
+#: texindex/ti.twjr:1280
+msgid " --           end option processing"
+msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Email laporan bug ke bug-texinfo@gnu.org,\n"
+#~ "pertanyaan umum dan diskusi ke help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+
 #~ msgid "Insert this character"
 #~ msgstr "Masukan karakter ini"
 
@@ -3909,33 +3977,11 @@ msgstr "%s: tidak dapat membuka %s --css-file: %s\n"
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "Penggunaan: [OPSI]... BERKAS-TEXINFO...\n"
 
-#~ msgid "display this help and exit"
-#~ msgstr "tampilkan bantuan ini dan keluar"
-
 #~ msgid "send output to FILE"
 #~ msgstr "kirim keluaran ke BERKAS"
 
-#~ msgid "Generate a sorted index for each TeX output FILE.\n"
-#~ msgstr "Buat sebuah indeks terurut untuk setiap BERKAS keluaran Tex.\n"
-
-#~ msgid ""
-#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-#~ msgstr ""
-#~ "Biasanya BERKAS... dispesifikasikan sebagai `foo.%c%c' untuk sebuah "
-#~ "dokumen `foo.texi'.\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Options:\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Opsi:\n"
-
 #~ msgid "failure reopening %s"
 #~ msgstr "gagal membuka kembali %s"
-
-#~ msgid "%s: not a texinfo index file"
-#~ msgstr "%s: bukan sebuah berkas indeks texinfo"
 
 #~ msgid "No page number in %s"
 #~ msgstr "Tidak ada nomor halaman dalam %s"

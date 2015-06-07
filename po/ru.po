@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-05-11 17:24+0100\n"
+"POT-Creation-Date: 2015-06-03 15:28-0700\n"
 "PO-Revision-Date: 2015-05-05 19:05+0300\n"
 "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <gnu@mx.ru>\n"
@@ -51,9 +51,9 @@ msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: для параметра «--%s» требуется аргумент\n"
 
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
-#, c-format
+#, fuzzy, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: нераспознанный параметр «--%s»\n"
+msgstr "%s: нераспознанный параметр «%c%s»\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, c-format
@@ -386,7 +386,7 @@ msgstr "Указатель тем"
 msgid "No available info files have '%s' in their indices."
 msgstr "Ни один из info-файлов не содержит «%s» в алфавитных указателях."
 
-#: info/info-utils.c:897
+#: info/info-utils.c:899
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Ошибка при преобразовании кодировки символов файла."
@@ -401,7 +401,7 @@ msgstr "Пункт меню «%s» отсутствует в ноде «%s»."
 msgid "No file given for node '%s'."
 msgstr "В ноде «%s» не указан файл."
 
-#: info/info.c:365 info/info.c:1113
+#: info/info.c:365 info/info.c:1115
 #, c-format
 msgid "Cannot find node '%s'."
 msgstr "Невозможно найти ноду «%s»."
@@ -437,7 +437,8 @@ msgid "Try --help for more information.\n"
 msgstr "Попробуйте --help для получения более подробного описания.\n"
 
 #: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:878
-#, c-format, perl-format
+#: texindex/ti.twjr:1293
+#, c-format, awk-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -596,80 +597,79 @@ msgstr ""
 "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
 "  info -f ./foo.info         показать файл ./foo.info, не искать каталог"
 
-#: info/info.c:1079
+#: info/info.c:1081 install-info/install-info.c:616 tp/texi2any.pl:866
+#: texindex/ti.twjr:1282
 msgid ""
-"\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
-"\n"
 "Об ошибках сообщайте по адресу bug-texinfo@gnu.org,\n"
 "общее обсуждение и вопросы направляйте по адресу help-texinfo@gnu.org.\n"
 "Домашняя страница Texinfo: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1114
+#: info/info.c:1116
 #, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "Невозможно найти ноду «(%s)%s»."
 
-#: info/info.c:1115
+#: info/info.c:1117
 msgid "Cannot find a window!"
 msgstr "Невозможно найти окно!"
 
-#: info/info.c:1116
+#: info/info.c:1118
 msgid "Point doesn't appear within this window's node!"
 msgstr "Точка находится вне ноды этого окна!"
 
-#: info/info.c:1117
+#: info/info.c:1119
 msgid "Cannot delete the last window."
 msgstr "Невозможно удалить последнее окно."
 
-#: info/info.c:1118
+#: info/info.c:1120
 msgid "No menu in this node."
 msgstr "В этой ноде нет меню."
 
-#: info/info.c:1119
+#: info/info.c:1121
 msgid "No footnotes in this node."
 msgstr "В этой ноде нет сносок."
 
-#: info/info.c:1120
+#: info/info.c:1122
 msgid "No cross references in this node."
 msgstr "В этой ноде нет перекрёстных ссылок."
 
-#: info/info.c:1121
+#: info/info.c:1123
 #, c-format
 msgid "No '%s' pointer for this node."
 msgstr "Для этой ноды нет указателя «%s»."
 
-#: info/info.c:1122
+#: info/info.c:1124
 #, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "Команда Info «%c» неизвестна; попробуйте «?» для получения справки."
 
-#: info/info.c:1123
+#: info/info.c:1125
 #, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr ""
 "Тип терминала «%s» не обладает достаточными возможностями для запуска Info."
 
-#: info/info.c:1124
+#: info/info.c:1126
 msgid "You are already at the last page of this node."
 msgstr "Вы уже находитесь на последней странице этой ноды."
 
-#: info/info.c:1125
+#: info/info.c:1127
 msgid "You are already at the first page of this node."
 msgstr "Вы уже находитесь на первой странице этой ноды."
 
-#: info/info.c:1126
+#: info/info.c:1128
 msgid "Only one window."
 msgstr "Только одно окно."
 
-#: info/info.c:1127
+#: info/info.c:1129
 msgid "Resulting window would be too small."
 msgstr "Получившееся окно было бы слишком маленьким."
 
-#: info/info.c:1128
+#: info/info.c:1130
 msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "Не хватает места для справочного окна, пожалуйста, удалите какое-нибудь окно."
@@ -1078,9 +1078,10 @@ msgstr "Показать все подходящие файлы"
 msgid "No file index"
 msgstr "Не найден файл указателя"
 
-#. TRANSLATORS: This message should fit within 79 characters, otherwise
-#. anything after the 80th character will not be displayed.
-#: info/session.c:189
+#. TRANSLATORS: Try to keep this message (when "expanded") at most 79
+#. characters; anything after the 79th character will not actually be
+#. displayed on an 80-column terminal.
+#: info/session.c:190
 #, c-format
 msgid ""
 "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
@@ -1601,11 +1602,11 @@ msgstr "Неверная команда «%s»"
 msgid "'%s' is invalid"
 msgstr "«%s» неверно"
 
-#: info/session.c:5291
+#: info/session.c:5292
 msgid "Add this digit to the current numeric argument"
 msgstr "Добавить цифру к текущему числовому аргументу"
 
-#: info/session.c:5298
+#: info/session.c:5299
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Начать (или умножить на 4) текущий числовой аргумент"
 
@@ -1920,16 +1921,6 @@ msgstr ""
 " --silent            не показывать предупреждения\n"
 " --test              не обновлять DIR-ФАЙЛ\n"
 " --version           показать информацию о версии и выйти"
-
-#: install-info/install-info.c:616 tp/texi2any.pl:866
-msgid ""
-"Email bug reports to bug-texinfo@gnu.org,\n"
-"general questions and discussion to help-texinfo@gnu.org.\n"
-"Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-"Об ошибках сообщайте по адресу bug-texinfo@gnu.org,\n"
-"общее обсуждение и вопросы направляйте по адресу help-texinfo@gnu.org.\n"
-"Домашняя страница Texinfo: http://www.gnu.org/software/texinfo/"
 
 #: install-info/install-info.c:643
 #, c-format
@@ -3245,7 +3236,7 @@ msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "игнорируется неизвестное значение TEXINFO_OUTPUT_FORMAT «%s»\n"
 
 #: tp/texi2any.pl:735
-#, perl-format
+#, fuzzy, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Использование: %s [ПАРАМЕТР]… ФАЙЛ-TEXINFO…\n"
 
@@ -3635,6 +3626,83 @@ msgstr "%s: ошибка при закрытии файла внутренних
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: невозможно открыть %s для записи: %s\n"
 
+#: texindex/ti.twjr:373
+#, fuzzy, awk-format
+msgid "%s: unrecognized option `%s'\n"
+msgstr "%s: нераспознанный параметр «--%s»\n"
+
+#: texindex/ti.twjr:444
+#, fuzzy, awk-format
+msgid "%s is not a Texinfo index file\n"
+msgstr "%s: не texinfo-файл с алфавитным указателем"
+
+#: texindex/ti.twjr:543
+#, awk-format
+msgid "%s:%d: Bad key %s in record\n"
+msgstr ""
+
+#: texindex/ti.twjr:566
+#, awk-format
+msgid "%s:%d: Bad entry; expected three fields, not %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:725
+#, awk-format
+msgid "%s:%d: Bad entry; expected %s at column %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:1254
+msgid "..."
+msgstr ""
+
+#: texindex/ti.twjr:1273
+#, fuzzy, awk-format
+msgid "Usage: %s [OPTION]... FILE...\n"
+msgstr "Использование: %s [ПАРАМЕТР]… ФАЙЛ-TEXINFO…\n"
+
+#: texindex/ti.twjr:1274
+#, fuzzy
+msgid "Generate a sorted index for each TeX output FILE."
+msgstr ""
+"Создаёт сортированный алфавитный указатель для\n"
+"каждого выходного ФАЙЛА TeX.\n"
+
+#: texindex/ti.twjr:1275
+#, fuzzy
+msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
+msgstr "Обычно, ФАЙЛ… для документа «foo.texi» задаётся как «foo.%c%c».\n"
+
+#: texindex/ti.twjr:1277
+#, fuzzy
+msgid "Options:"
+msgstr ""
+"\n"
+"Параметры:\n"
+
+#: texindex/ti.twjr:1278
+#, fuzzy
+msgid " -h, --help   display this help and exit"
+msgstr "показать эту справку и выйти"
+
+#: texindex/ti.twjr:1279
+msgid " --version    display version information and exit"
+msgstr ""
+
+#: texindex/ti.twjr:1280
+msgid " --           end option processing"
+msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Об ошибках сообщайте по адресу bug-texinfo@gnu.org,\n"
+#~ "общее обсуждение и вопросы направляйте по адресу help-texinfo@gnu.org.\n"
+#~ "Домашняя страница Texinfo: http://www.gnu.org/software/texinfo/"
+
 #~ msgid "Insert this character"
 #~ msgstr "Вставить этот символ"
 
@@ -3906,33 +3974,11 @@ msgstr "%s: невозможно открыть %s для записи: %s\n"
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "  или:  texi2any [ПАРАМЕТР]… TEXINFO-ФАЙЛ…\n"
 
-#~ msgid "display this help and exit"
-#~ msgstr "показать эту справку и выйти"
-
 #~ msgid "send output to FILE"
 #~ msgstr "записать вывод в ФАЙЛ"
 
-#~ msgid "Generate a sorted index for each TeX output FILE.\n"
-#~ msgstr ""
-#~ "Создаёт сортированный алфавитный указатель для\n"
-#~ "каждого выходного ФАЙЛА TeX.\n"
-
-#~ msgid ""
-#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-#~ msgstr "Обычно, ФАЙЛ… для документа «foo.texi» задаётся как «foo.%c%c».\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Options:\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Параметры:\n"
-
 #~ msgid "failure reopening %s"
 #~ msgstr "ошибка повторного открытия %s"
-
-#~ msgid "%s: not a texinfo index file"
-#~ msgstr "%s: не texinfo-файл с алфавитным указателем"
 
 #~ msgid "No page number in %s"
 #~ msgstr "В %s нет номера страницы"

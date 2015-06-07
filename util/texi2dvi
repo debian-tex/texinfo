@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi 6207 2015-04-07 09:48:14Z gavin $
+# $Id: texi2dvi 6290 2015-05-30 22:39:08Z karl $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002,
 # 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,
@@ -37,7 +37,7 @@ set -e
 : ${SED=sed}
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 6207 $'
+rcs_revision='$Revision: 6290 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | $SED -e 's!.*/!!'`
 
@@ -753,7 +753,14 @@ generated_files_get ()
   # Gather the files created by TeX.
   (
     if test -f "$1.log"; then
-      $SED -n -e "s,^\\\\openout.* = \`\\(.*\\)'\\.,\\1,p" "$1.log"
+      # Usually the output is like: \openout1 = `foobar.tex'.
+      # (including the final period)
+      # but luatex outputs: \openout1 = foobar.tex
+      # (no quotes, no period).
+      # So we have to make the punctuation optional.
+      grep '^\\openout[0-9]' "$1.log" \
+        | $SED -e "s/\\\\openout[^=]*= *[\`']*//" \
+             -e "s/'\.$//"
     fi
     echo "$1.log"
   ) |

@@ -32,7 +32,6 @@ info/tilde.c
 info/variables.c
 info/window.c
 install-info/install-info.c
-texindex/ti.twjr
 tp/DebugTexinfo/DebugTree.pm
 tp/Texinfo/Common.pm
 tp/Texinfo/Convert/Converter.pm

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-05-11 17:24+0100\n"
+"POT-Creation-Date: 2015-06-03 15:28-0700\n"
 "PO-Revision-Date: 2015-05-04 15:55+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
@@ -51,9 +51,9 @@ msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: tùy chọn “--%s” cần một đối số\n"
 
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
-#, c-format
+#, fuzzy, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: không nhận ra tùy chọn “--%s”\n"
+msgstr "%s: không nhận ra tùy chọn “%c%s”\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, c-format
@@ -386,7 +386,7 @@ msgstr "Mục lục theo chủ đề"
 msgid "No available info files have '%s' in their indices."
 msgstr "Không có tập tin thông tin sẵn sàng chứa “%s” trong chỉ mục ."
 
-#: info/info-utils.c:897
+#: info/info-utils.c:899
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Gặp lỗi khi chuyển đổi bộ mã ký tự tập tin."
@@ -401,7 +401,7 @@ msgstr "Không có mục trình đơn “%s” trong nút “%s”."
 msgid "No file given for node '%s'."
 msgstr "Chưa chỉ ra tập tin cho nút “%s”"
 
-#: info/info.c:365 info/info.c:1113
+#: info/info.c:365 info/info.c:1115
 #, c-format
 msgid "Cannot find node '%s'."
 msgstr "Không thể tìm thấy nút thông tin “%s”."
@@ -437,7 +437,8 @@ msgid "Try --help for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp “--help” để xem thông tin thêm.\n"
 
 #: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:878
-#, c-format, perl-format
+#: texindex/ti.twjr:1293
+#, c-format, awk-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -590,80 +591,79 @@ msgstr ""
 "  info -f ./foo.info         hiển thị tập tin “./foo.info”, không tìm kiếm "
 "thư mục"
 
-#: info/info.c:1079
+#: info/info.c:1081 install-info/install-info.c:616 tp/texi2any.pl:866
+#: texindex/ti.twjr:1282
 msgid ""
-"\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
-"\n"
-"Hãy thông báo lỗi cho <bug-texinfo@gnu.org>,\n"
-"và gửi câu hỏi chung, thảo luận v.v. cho <help-texinfo@gnu.org>.\n"
+"Hãy thông báo lỗi cho địa chỉ “bug-texinfo@gnu.org”,\n"
+"và gửi câu hỏi chung, thảo luận v.v. cho help-texinfo@gnu.org.\n"
 "Thông báo lỗi dịch cho: <http://translationproject.org/team/vi.html>.\n"
-"Trang chủ texinfo: <http://www.gnu.org/software/texinfo/>."
+"Trang chủ texinfo: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1114
+#: info/info.c:1116
 #, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "Không thể tìm thấy nút thông tin “(%s)%s”."
 
-#: info/info.c:1115
+#: info/info.c:1117
 msgid "Cannot find a window!"
 msgstr "Không tìm thấy cửa sổ!"
 
-#: info/info.c:1116
+#: info/info.c:1118
 msgid "Point doesn't appear within this window's node!"
 msgstr "Điểm không xuất hiện bên trong cái nút thông tin của cửa sổ này."
 
-#: info/info.c:1117
+#: info/info.c:1119
 msgid "Cannot delete the last window."
 msgstr "Không thể xóa cửa sổ cuối cùng."
 
-#: info/info.c:1118
+#: info/info.c:1120
 msgid "No menu in this node."
 msgstr "Không có trình đơn trong nút thông tin này."
 
-#: info/info.c:1119
+#: info/info.c:1121
 msgid "No footnotes in this node."
 msgstr "Không có cước chú trong nút thông tin này."
 
-#: info/info.c:1120
+#: info/info.c:1122
 msgid "No cross references in this node."
 msgstr "Không có tham chiếu chéo trong nút thông tin này."
 
-#: info/info.c:1121
+#: info/info.c:1123
 #, c-format
 msgid "No '%s' pointer for this node."
 msgstr "Không có con trỏ “%s” cho nút này."
 
-#: info/info.c:1122
+#: info/info.c:1124
 #, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "Không nhận ra lệnh Info “%c”; hãy thử lệnh “?” để xem trợ giúp."
 
-#: info/info.c:1123
+#: info/info.c:1125
 #, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "Thiết bị cuối kiểu “%s” không đủ khéo để chạy Info."
 
-#: info/info.c:1124
+#: info/info.c:1126
 msgid "You are already at the last page of this node."
 msgstr "Bạn ở trang cuối cùng của nút thông tin này."
 
-#: info/info.c:1125
+#: info/info.c:1127
 msgid "You are already at the first page of this node."
 msgstr "Bạn ở trang đầu tiên của nút thông tin này."
 
-#: info/info.c:1126
+#: info/info.c:1128
 msgid "Only one window."
 msgstr "Chỉ một cửa sổ."
 
-#: info/info.c:1127
+#: info/info.c:1129
 msgid "Resulting window would be too small."
 msgstr "Cửa sổ kết quả quá nhỏ."
 
-#: info/info.c:1128
+#: info/info.c:1130
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Không đủ chỗ cho cửa sổ trợ giúp: hãy xóa một cửa sổ."
 
@@ -1074,9 +1074,10 @@ msgstr "Hiển thị mọi tập tin khớp mẫu"
 msgid "No file index"
 msgstr "Không có chỉ mục tập tin"
 
-#. TRANSLATORS: This message should fit within 79 characters, otherwise
-#. anything after the 80th character will not be displayed.
-#: info/session.c:189
+#. TRANSLATORS: Try to keep this message (when "expanded") at most 79
+#. characters; anything after the 79th character will not actually be
+#. displayed on an 80-column terminal.
+#: info/session.c:190
 #, c-format
 msgid ""
 "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
@@ -1597,11 +1598,11 @@ msgstr "“%s” không hợp lệ"
 msgid "'%s' is invalid"
 msgstr "“%s” không hợp lệ"
 
-#: info/session.c:5291
+#: info/session.c:5292
 msgid "Add this digit to the current numeric argument"
 msgstr "Thêm chữ số này vào đối số thuộc số hiện tại"
 
-#: info/session.c:5298
+#: info/session.c:5299
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Bắt đầu (hoặc nhân với 4) đối số thuộc số hiện tại)"
 
@@ -1910,17 +1911,6 @@ msgstr ""
 " --silent            thu hồi cảnh báo.\n"
 " --test              thu hồi nâng cấp TẬP_TIN_THƯ_MỤC.\n"
 " --version           hiển thị thông tin phiên bản rồi thoát."
-
-#: install-info/install-info.c:616 tp/texi2any.pl:866
-msgid ""
-"Email bug reports to bug-texinfo@gnu.org,\n"
-"general questions and discussion to help-texinfo@gnu.org.\n"
-"Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-"Hãy thông báo lỗi cho địa chỉ “bug-texinfo@gnu.org”,\n"
-"và gửi câu hỏi chung, thảo luận v.v. cho help-texinfo@gnu.org.\n"
-"Thông báo lỗi dịch cho: <http://translationproject.org/team/vi.html>.\n"
-"Trang chủ texinfo: http://www.gnu.org/software/texinfo/"
 
 #: install-info/install-info.c:643
 #, c-format
@@ -3275,7 +3265,7 @@ msgstr ""
 "Texinfo) “%s”\n"
 
 #: tp/texi2any.pl:735
-#, perl-format
+#, fuzzy, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Cách dùng: %s [TÙY-CHỌN]… TẬP-TIN-TEXTINFO…\n"
 
@@ -3684,6 +3674,83 @@ msgstr "%s: gặp lỗi khi đóng tập tin liên kết nội tại %s: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: không thể mở “%s” để ghi: %s\n"
 
+#: texindex/ti.twjr:373
+#, fuzzy, awk-format
+msgid "%s: unrecognized option `%s'\n"
+msgstr "%s: không nhận ra tùy chọn “--%s”\n"
+
+#: texindex/ti.twjr:444
+#, fuzzy, awk-format
+msgid "%s is not a Texinfo index file\n"
+msgstr "%s: không phải tập tin chỉ mục texinfo"
+
+#: texindex/ti.twjr:543
+#, awk-format
+msgid "%s:%d: Bad key %s in record\n"
+msgstr ""
+
+#: texindex/ti.twjr:566
+#, awk-format
+msgid "%s:%d: Bad entry; expected three fields, not %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:725
+#, awk-format
+msgid "%s:%d: Bad entry; expected %s at column %d\n"
+msgstr ""
+
+#: texindex/ti.twjr:1254
+msgid "..."
+msgstr ""
+
+#: texindex/ti.twjr:1273
+#, fuzzy, awk-format
+msgid "Usage: %s [OPTION]... FILE...\n"
+msgstr "Cách dùng: %s [TÙY-CHỌN]… TẬP-TIN-TEXTINFO…\n"
+
+#: texindex/ti.twjr:1274
+#, fuzzy
+msgid "Generate a sorted index for each TeX output FILE."
+msgstr "Tạo ra chỉ mục đã sắp xếp cho mỗi TẬP_TIN xuất TeX.\n"
+
+#: texindex/ti.twjr:1275
+#, fuzzy
+msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
+msgstr ""
+"Thường TẬP_TIN… được ghi rõ dạng “phu.%c%c” cho tài liệu dạng “phu.texi”.\n"
+
+#: texindex/ti.twjr:1277
+#, fuzzy
+msgid "Options:"
+msgstr ""
+"\n"
+"Tùy chọn:\n"
+
+#: texindex/ti.twjr:1278
+#, fuzzy
+msgid " -h, --help   display this help and exit"
+msgstr "hiển thị trợ giúp này rồi thoát"
+
+#: texindex/ti.twjr:1279
+msgid " --version    display version information and exit"
+msgstr ""
+
+#: texindex/ti.twjr:1280
+msgid " --           end option processing"
+msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Hãy thông báo lỗi cho <bug-texinfo@gnu.org>,\n"
+#~ "và gửi câu hỏi chung, thảo luận v.v. cho <help-texinfo@gnu.org>.\n"
+#~ "Thông báo lỗi dịch cho: <http://translationproject.org/team/vi.html>.\n"
+#~ "Trang chủ texinfo: <http://www.gnu.org/software/texinfo/>."
+
 #~ msgid "Insert this character"
 #~ msgstr "Chèn ký tự này"
 
@@ -3955,33 +4022,11 @@ msgstr "%s: không thể mở “%s” để ghi: %s\n"
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "  hoặc:  texi2any [TÙY-CHỌN]… TẬP-TIN-TEXINFO…\n"
 
-#~ msgid "display this help and exit"
-#~ msgstr "hiển thị trợ giúp này rồi thoát"
-
 #~ msgid "send output to FILE"
 #~ msgstr "xuất ra TẬP_TIN"
 
-#~ msgid "Generate a sorted index for each TeX output FILE.\n"
-#~ msgstr "Tạo ra chỉ mục đã sắp xếp cho mỗi TẬP_TIN xuất TeX.\n"
-
-#~ msgid ""
-#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-#~ msgstr ""
-#~ "Thường TẬP_TIN… được ghi rõ dạng “phu.%c%c” cho tài liệu dạng “phu."
-#~ "texi”.\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Options:\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Tùy chọn:\n"
-
 #~ msgid "failure reopening %s"
 #~ msgstr "lỗi mở lại %s"
-
-#~ msgid "%s: not a texinfo index file"
-#~ msgstr "%s: không phải tập tin chỉ mục texinfo"
 
 #~ msgid "No page number in %s"
 #~ msgstr "Không có số thứ tự trang trong %s"

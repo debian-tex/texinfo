@@ -1,3 +1,257 @@
+2015-06-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Timeout-test.inc: Check for "read -t" slightly 
+	differently.
+
+2015-06-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-test.inc,
+	* info/t/Init-inter.inc: Check if running the test turned off 
+	terminal echoing, and only run "stty sane" if that is the case.
+	* info/t/Timeout-test.inc: Default exit status of test to 
+	success.
+
+2015-06-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/index-apropos.sh: Wait for 'index-apropos' command to 
+	finish before we sent more key strokes.
+
+2015-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-test.inc (cleanup): Run "stty sane" (interactive 
+	tests only).
+	* info/t/Init-inter.inc: Check for stty program.
+
+2015-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/adjust-anchors.sh: Add comment about name of character 
+	encoding.  Export LC_ALL instead of LANG.
+
+2015-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/pseudotty.c: Check for failure from "write" call.  Don't 
+	exit for an error communicating with controlled process; do exit 
+	for error on control channel.
+	* info/t/Init-inter.inc: Open FIFO for commmunicating that ginfo 
+	has finished on both ends, to allow timeout to work.  Start 
+	pseudotty with "exec" in case there is an intermediate shell, to 
+	get its PID correctly.
+	* info/t/README: Update.
+
+2015-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Infokey-config: Set key-time=0 to try to increase 
+	predictability of interactive tests.
+
+2015-06-03  Karl Berry  <karl@freefriends.org>
+
+	* prepare for pretest 5.9.93.
+
+2015-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc (run_ginfo): Close fd opened to control 
+	FIFO in subshell so pseudotty can exit for an EOF.  This 
+	prevents lingering processes if a test is interrupted.
+
+2015-06-03  Karl Berry  <karl@freefriends.org>
+
+	* texindex/ti.twjr (usage, version): combine multi-line strings.
+	Suggested by Benno.
+	* info/info.c (info_short_help): no leading newline on trailing
+	block, to merge string with other occurrences.
+	* Makefile.am (update-po): new convenience target to build both
+	po and po_document strings.
+	* texindex/Makefile.am: doc tweaks.
+
+2015-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/pseudotty.c: Don't get control channel from an already 
+	redirected file descriptor, get it from the filename of a FIFO 
+	passed on the command line.  #define _XOPEN_SOURCE as 500 to 
+	expose prototype of "ptsname" under NetBSD 6.1.4.
+	* info/t/Init-inter.inc: Create control channel FIFO and pass 
+	name of it to pseudotty.  Don't use background processes to keep 
+	the control FIFO open.  Redirect FIFO for communicating name of 
+	pty slave device within a subshell.  Keep control FIFO open 
+	using file descriptor redirection in main shell process.
+	* info/t/Init-test.inc: Remove unneeded cleanup code.
+	* info/t/Timeout-test.inc: Don't try to open FIFO for indicating 
+	that ginfo has finished read-write.
+
+2015-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: mention OpenCSW build reports
+
+2015-06-03  Karl Berry  <karl@freefriends.org>
+
+	* AUTHORS (Robbins, Smith): add.
+	* README-hacking: mention TeX by Topic, TeX for the Impatient,
+	and texiwebjr.
+
+2015-06-02  Karl Berry  <karl@freefriends.org>
+
+	* po_document/Makevars (PACKAGE_GNU, MSGINIT_OPTIONS,
+	PO_DEPENDS_ON_POT, DIST_DEPENDS_ON_UPDATE_PO): new variables,
+	as with po/Makevars a couple days ago.
+
+2015-06-02  Karl Berry  <karl@freefriends.org>
+
+	* texindex/ti.twjr (Seen): re-initialize for each output file,
+	so a duplicated index entry is kept if it's in a different index.
+	Doc: discuss @ vs. \ as command character; indexing updates.
+	* doc/texinfo.texi (Details of texindex): a bit more about twjr.
+	
+	* doc/texinfo.tex (\lastsection): define as empty in case
+	a sub(sub)heading occurs out of sequence.
+
+2015-05-31  Karl Berry  <karl@freefriends.org>
+
+	* configure.ac (AC_INIT): prepare for 5.993 pretest.
+
+2015-05-31  Karl Berry  <karl@freefriends.org>
+
+	* texindex/ti.twjr (version): use printf for year.
+
+2015-05-31  Karl Berry  <karl@freefriends.org>
+
+	* po/Makefile.in.in ($(DOMAIN).pot-update): invoke xgettext a
+	second time with --join-existing --language=awk texindex/ti.twjr,
+	since there is apparently no other way to get ti.twjr's strings
+	into texinfo.pot.
+	* util/srclist.txt: must manually merge po/Makefile.in.in
+	instead of just copying until xgettext knows about .twjr.
+	* po/POTFILES.in: remove texindex/ti.twjr.
+	* Makefile.am (po-check): don't expect *.twjr in po/POTFILES.in.
+
+2015-05-31  Karl Berry  <karl@freefriends.org>
+
+	* po/Makevars (PACKAGE_GNU, MSGINIT_OPTIONS, PO_DEPENDS_ON_POT,
+	DIST_DEPENDS_ON_UPDATE_PO): new variables to sync with
+	Makevars.template from gettext-0.19.4 (and earlier.)
+
+2015-05-31  Karl Berry  <karl@freefriends.org>
+
+	* tp/tests/run_parser_all.sh,
+	* tp/maintain/regenerate_cmd_tests.sh: use grep >/dev/null
+	instead of -qs; Solaris 5.10 grep does not support -q.
+
+	* tp/tests/run_parser_all.sh: exec /usr/xpg4/bin/sh for Solaris 5.10.
+
+	* tp/tests/run_parser_all.sh: test "z$file" rather than "$zfile",
+	as intended.
+
+2015-05-30  Karl Berry  <karl@freefriends.org>
+
+	* util/texi2dvi (generated_files_get): another attempt at making
+	punctuation optional on the \openout line, for luatex.
+	Report from Wybo Dekker.
+
+2015-05-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_read_and_dispatch): Make call to 
+	window_clear_echo_area conditional on read_key_sequence not 
+	having dispatched to a user command itself, so error messages 
+	aren't cleared.
+	(read_key_sequence) <menu digit>: Clear echo area first.
+	Reported by Benno Schulenberg.
+
+2015-05-29  Benno Schulenberg <bensberg@justemail.net> (tiny change)
+
+	* info/session.c (display_startup_message): Reword note to 
+	translators.
+
+2015-05-26  Karl Berry  <karl@freefriends.org>
+
+	* doc/texinfo.tex (\setnonasciicharscatcodenonglobal):
+	rm spurious blank line.  Report from David Kastrup,
+	26 May 2015 15:14:06.	
+
+2015-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/pseudotty.c: Check return value of fclose.  Use an int to 
+	hold return value of read.  Consistent syntax for infinite 
+	loops.  (Suggestions from Karl Berry.)
+
+2015-05-20  Karl Berry  <karl@freefriends.org>
+
+	* util/texi2dvi (generated_files_get): make punctuation optional
+	on the \openout line, to cater to luatex 0.80.0.  Noted
+	by Wybo Dekker, report http://tracker.luatex.org/view.php?id=909.
+
+2015-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (printed_representation): Declare char * as 
+	unsigned, so that check for printable limit works.  Display 
+	unknown bytes with an octal representation.
+
+2015-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-test.inc, info/t/Init-inter.inc, info/t/*.sh:
+	Revert split of GINFO variable from yesterday.
+
+	* info/t/Init-inter.inc: Wedge pipe for input key presses open 
+	for reading as well as for writing.
+	* info/t/Timeout-test.inc: Try to detect if "read -t" works by 
+	running it in a subshell.  If exit status of "read -t" is 1, 
+	report that an end-of-file was likely.
+
+	* info/man.c (get_manpage_from_formatter): Ignore exit status of 
+	man page formatter.
+
+2015-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-test.inc: Split GINFO variable into GINFO and 
+	GINFO_OPTIONS, and provide GINFO function to use them together.
+	* info/t/Init-inter.inc: Pass GINFO_OPTIONS variable as 
+	arguments to GINFO.  (Attempt at fixing error message on
+	Solaris 10, "./ginfo --init-file ./t/Infokey-config: not found".  
+	Maybe word splitting isn't happening.)
+	* info/t/*.sh: Use GINFO alias instead of $GINFO.
+
+	* info/t/Init-test.inc: Remove portability code for "local" 
+	builtin.  It doesn't work.
+	(findprog): Don't use "local".
+
+2015-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/index-apropos.sh: Don't run printf in background to 
+	pass input keystrokes into program.  (Attempt at fixing test 
+	failure reported by Assaf Gordon.)
+	* info/pseudotty.c: Include sys/select.h for fd_set and others.  
+	Reported by Assaf Gordon.
+
+	* info/pseudotty.c: Log bytes received from control channel, for 
+	better trouble-shooting.
+
+	* po/Makevars: Escape "$" in XGETTEXT_OPTIONS.  (Attempt at 
+	fixing build failure on FreeBSD 9.3, reported by Assaf Gordon.)
+
+2015-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc: Copy shell portability code for "local" 
+	builtin from util/texi2dvi.
+	* init/t/Init-test.inc: Use "2" as argument to "trap" instead of 
+	"SIGINT" for portability to Solaris, among others.
+	* init/t/empty-infopath.sh: Set and export variable separately.
+	(Automated build report via Dagobert Michelsen and 
+	platform-testers.)
+
+2015-05-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/pseudotty.c: Define a global "program_name" variable for 
+	use by "error" function.  Include string.h to make sure we get a 
+	declaration of memset.  Reported by Dagobert Michelsen.
+
+2015-05-14  Karl Berry  <karl@freefriends.org>
+
+	* texindex/texindex.in (escaped0): double backslashes in $0
+	for passing to awk.
+	Report from Eli on texinfo-devel, 09 May 2015 14:04:37.
+
+2015-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* Pretest 5.9.92.
+
 2015-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.c (convert_eols): Do pointer arithmetic before 

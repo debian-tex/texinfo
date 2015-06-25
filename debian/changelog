@@ -1,8 +1,9 @@
-texinfo (5.9.93.dfsg.1-2) UNRELEASED; urgency=medium
+texinfo (5.9.96.dfsg.1-1) unstable; urgency=medium
 
   * add dependency on gawk (texindex)
+  * upload to unstable
 
- -- Norbert Preining <preining@debian.org>  Tue, 23 Jun 2015 13:43:36 +0900
+ -- Norbert Preining <preining@debian.org>  Thu, 25 Jun 2015 15:31:37 +0900
 
 texinfo (5.9.93.dfsg.1-1) experimental; urgency=medium
 

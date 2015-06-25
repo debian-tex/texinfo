@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# $Id: Makefile.am 6177 2015-03-04 12:12:18Z gavin $
+# $Id: Makefile.am 6316 2015-06-07 12:49:39Z gavin $
 # Makefile.am for texinfo/info.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012,
@@ -195,6 +195,7 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/size_max.m4 \
 	$(top_srcdir)/gnulib/m4/ssize_t.m4 \
 	$(top_srcdir)/gnulib/m4/stat.m4 \
+	$(top_srcdir)/gnulib/m4/stdarg.m4 \
 	$(top_srcdir)/gnulib/m4/stdbool.m4 \
 	$(top_srcdir)/gnulib/m4/stddef_h.m4 \
 	$(top_srcdir)/gnulib/m4/stdint.m4 \
@@ -1270,6 +1271,7 @@ NEXT_AS_FIRST_DIRECTIVE_GETOPT_H = @NEXT_AS_FIRST_DIRECTIVE_GETOPT_H@
 NEXT_AS_FIRST_DIRECTIVE_LANGINFO_H = @NEXT_AS_FIRST_DIRECTIVE_LANGINFO_H@
 NEXT_AS_FIRST_DIRECTIVE_LOCALE_H = @NEXT_AS_FIRST_DIRECTIVE_LOCALE_H@
 NEXT_AS_FIRST_DIRECTIVE_MATH_H = @NEXT_AS_FIRST_DIRECTIVE_MATH_H@
+NEXT_AS_FIRST_DIRECTIVE_STDARG_H = @NEXT_AS_FIRST_DIRECTIVE_STDARG_H@
 NEXT_AS_FIRST_DIRECTIVE_STDDEF_H = @NEXT_AS_FIRST_DIRECTIVE_STDDEF_H@
 NEXT_AS_FIRST_DIRECTIVE_STDINT_H = @NEXT_AS_FIRST_DIRECTIVE_STDINT_H@
 NEXT_AS_FIRST_DIRECTIVE_STDIO_H = @NEXT_AS_FIRST_DIRECTIVE_STDIO_H@
@@ -1290,6 +1292,7 @@ NEXT_GETOPT_H = @NEXT_GETOPT_H@
 NEXT_LANGINFO_H = @NEXT_LANGINFO_H@
 NEXT_LOCALE_H = @NEXT_LOCALE_H@
 NEXT_MATH_H = @NEXT_MATH_H@
+NEXT_STDARG_H = @NEXT_STDARG_H@
 NEXT_STDDEF_H = @NEXT_STDDEF_H@
 NEXT_STDINT_H = @NEXT_STDINT_H@
 NEXT_STDIO_H = @NEXT_STDIO_H@
@@ -1525,6 +1528,7 @@ SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 SIG_ATOMIC_T_SUFFIX = @SIG_ATOMIC_T_SUFFIX@
 SIZE_T_SUFFIX = @SIZE_T_SUFFIX@
+STDARG_H = @STDARG_H@
 STDBOOL_H = @STDBOOL_H@
 STDDEF_H = @STDDEF_H@
 STDINT_H = @STDINT_H@
@@ -1710,6 +1714,7 @@ TESTS = \
 	t/menu-sequence.sh \
 	t/relative-reference.sh \
 	t/resize-in-completions.sh \
+	t/replace-viewed.sh \
 	t/search-skip-screen.sh \
 	t/search-empty.sh \
 	t/inc-sea-forward.sh \
@@ -2464,6 +2469,13 @@ t/relative-reference.sh.log: t/relative-reference.sh
 t/resize-in-completions.sh.log: t/resize-in-completions.sh
 	@p='t/resize-in-completions.sh'; \
 	b='t/resize-in-completions.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+t/replace-viewed.sh.log: t/replace-viewed.sh
+	@p='t/replace-viewed.sh'; \
+	b='t/replace-viewed.sh'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \

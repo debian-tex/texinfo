@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6177 2015-03-04 12:12:18Z gavin $
+# $Id: Makefile.am 6316 2015-06-07 12:49:39Z gavin $
 # Makefile.am for texinfo/info.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012,
@@ -141,6 +141,7 @@ TESTS = \
 	t/menu-sequence.sh \
 	t/relative-reference.sh \
 	t/resize-in-completions.sh \
+	t/replace-viewed.sh \
 	t/search-skip-screen.sh \
 	t/search-empty.sh \
 	t/inc-sea-forward.sh \

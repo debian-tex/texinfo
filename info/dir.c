@@ -1,5 +1,5 @@
 /* dir.c -- how to build a special "dir" node from "localdir" files.
-   $Id: dir.c 6182 2015-03-07 19:36:01Z gavin $
+   $Id: dir.c 6327 2015-06-09 11:12:41Z gavin $
 
    Copyright 1993, 1997, 1998, 2004, 2007, 2008, 2009, 2012,
    2013, 2014 Free Software Foundation, Inc.
@@ -282,7 +282,7 @@ dir_entry_of_infodir (char *label, char *searchdir)
   NODE *dir_node;
   REFERENCE *entry;
 
-  for (da_index = 0; dir_filename = dirs_to_add[da_index]; da_index++)
+  for (da_index = 0; (dir_filename = dirs_to_add[da_index]); da_index++)
     {
       dir_fullpath = info_add_extension (searchdir, dir_filename, &dummy);
       if (!dir_fullpath)

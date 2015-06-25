@@ -21,12 +21,19 @@ srcdir=${srcdir:-.}
 # Set screen geometry so that scrolling down by screens goes to 
 # predictable places.  5 lines of the node should be visible at once, 1 
 # status line and 1 line for the echo area.
-# This relies on the TIOCGWINSZ ioctl failing for the pseudotty (see 
-# terminal_get_screen_size in terminal.c).
+# This relies on the TIOCGWINSZ ioctl either failing for the pseudotty,
+# or returning non-positive values.
+# (See terminal_get_screen_size in terminal.c, and the use of
+# TIOCSWINSZ in pseudotty.c.)
 LINES=7; export LINES
 COLUMNS=80; export COLUMNS
 
 run_ginfo -f intera -n 'Scroll four lines'
+
+# Wait for the program to do its terminal initialization, so that C-u
+# will not be special.
+printf D >$PTY_TYPE
+while test ! -f $GINFO_OUTPUT ; do sleep 1 ; done
 
 # C-u M-x scroll-forward should scroll four lines, not four screens
 printf '\025\033xscroll-forward\r' >$PTY_TYPE

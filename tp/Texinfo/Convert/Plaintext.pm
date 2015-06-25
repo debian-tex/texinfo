@@ -1,4 +1,4 @@
-# $Id: Plaintext.pm 6255 2015-05-07 02:06:19Z gavin $
+# $Id: Plaintext.pm 6332 2015-06-11 23:35:57Z karl $
 # Plaintext.pm: output tree as text with filling.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -1129,7 +1129,9 @@ sub _contents($$$)
       my $text = $section_title;
       chomp ($text);
       $text .= "\n";
-      $result .= (' ' x (2*($section->{'level'} - ($root_level+1)))) . $text;
+      my $repeat_count = 2 * ($section->{'level'} - ($root_level+1));
+      ($result .= (' ' x $repeat_count)) if $repeat_count > 0;
+      $result .= $text;
       $lines_count++;
       if ($section->{'section_childs'} 
           and ($contents or $section->{'level'} < $root_level+1)) {
@@ -3417,7 +3419,7 @@ sub indent_menu_descriptions($;$)
 1;
 
 __END__
-# $Id: Plaintext.pm 6255 2015-05-07 02:06:19Z gavin $
+# $Id: Plaintext.pm 6332 2015-06-11 23:35:57Z karl $
 # Automatically generated from maintain/template.pod
 
 =head1 NAME

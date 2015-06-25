@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac 6297 2015-05-31 21:33:20Z karl $
+# $Id: configure.ac 6352 2015-06-20 16:26:25Z gavin $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
 # 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -12,7 +12,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [5.9.93], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [5.9.96], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -138,7 +138,7 @@ AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])
 AC_HEADER_STAT
 AC_HEADER_STDC
 AC_CHECK_HEADERS(fcntl.h io.h limits.h pwd.h string.h strings.h \
-  termcap.h termio.h termios.h unistd.h \
+  stropts.h termcap.h termio.h termios.h unistd.h \
   sys/fcntl.h sys/file.h sys/ioctl.h sys/stream.h \
   sys/time.h sys/ttold.h sys/wait.h)
 

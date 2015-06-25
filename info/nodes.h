@@ -1,5 +1,5 @@
 /* nodes.h -- How we represent nodes internally.
-   $Id: nodes.h 6014 2015-01-01 19:32:00Z karl $
+   $Id: nodes.h 6316 2015-06-07 12:49:39Z gavin $
 
    Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2011, 2012, 2013,
    2014, 2015 Free Software Foundation, Inc.
@@ -67,6 +67,7 @@ typedef struct {
 #define N_IsDir        0x400    /* A dir node. */
 #define N_Subfile      0x800    /* File buffer is a subfile of a split file. */
 #define N_EOLs_Converted 0x1000 /* CR bytes were stripped before LF. */
+#define N_Gone         0x2000   /* File is no more. */
 
 /* String constants. */
 #define INFO_FILE_LABEL                 "File:"

@@ -16,6 +16,9 @@
 # Set up standalone info test environment 
 # This file is to be sourced, not to be run directly 
 
+# write each expanded command to the *.log file for the test.
+set -x
+
 # Allow running with "make check" and individual tests at the command-line
 srcdir=${srcdir:-.}
 

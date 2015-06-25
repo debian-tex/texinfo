@@ -1,5 +1,5 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c 6209 2015-04-07 10:52:27Z gavin $
+   $Id: indices.c 6327 2015-06-09 11:12:41Z gavin $
 
    Copyright 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008, 2011,
    2013, 2014 Free Software Foundation, Inc.
@@ -794,7 +794,7 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   FILE_BUFFER *fb;
   NODE *node;
   struct text_buffer text;
-  size_t i;
+  int i;
   size_t cnt;
   
   fb = file_buffer_of_window (window);

@@ -1,5 +1,5 @@
 /* pcterm.c -- How to handle the PC terminal for Info under MS-DOS/MS-Windows.
-   $Id: pcterm.c 6205 2015-04-06 14:57:05Z eliz $
+   $Id: pcterm.c 6348 2015-06-20 08:06:47Z eliz $
 
    Copyright 1998, 1999, 2003, 2004, 2007, 2008, 2012, 2013, 2014, 2015
    Free Software Foundation, Inc.
@@ -69,6 +69,11 @@ enum text_modes { LASTMODE=-1 };
 
 #undef read
 #undef _read
+
+#include "display.h"
+
+void reset_info_window_sizes (void);
+void redisplay_after_signal (void);
 
 #endif
 
@@ -760,7 +765,7 @@ rpl_nl_langinfo (nl_item item)
    the binary, because it resolves the calls to this replacement
    function.  */
 int
-wcwidth (int wc)
+wcwidth (wchar_t wc)
 {
   return wc == 0 ? 0 : iswprint (wc) ? 1 : -1;
 }

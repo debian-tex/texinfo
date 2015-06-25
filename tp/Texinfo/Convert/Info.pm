@@ -94,10 +94,8 @@ sub output($)
     if ($self->get_conf('VERBOSE')) {
       print STDERR "Output file $self->{'output_file'}\n";
     }
-    $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
+    $fh = _open_info_file($self, $self->{'output_file'});
     if (!$fh) {
-      $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
-                                    $self->{'output_file'}, $!));
       return undef;
     }
   }
@@ -197,13 +195,9 @@ sub output($)
           print STDERR "New output file ".
                 $self->{'output_file'}.'-'.$out_file_nr."\n";
         }
-        $fh = $self->Texinfo::Common::open_out (
-                               $self->{'output_file'}.'-'.$out_file_nr); 
+        $fh = _open_info_file($self, $self->{'output_file'}.'-'.$out_file_nr); 
         if (!$fh) {
-           $self->document_error(sprintf(
-                  $self->__("could not open %s for writing: %s"),
-                  $self->{'output_file'}.'-'.$out_file_nr, $!));
-           return undef;
+          return undef;
         }
         print $fh $complete_header;
         $self->_update_count_context();
@@ -225,11 +219,8 @@ sub output($)
     if ($self->get_conf('VERBOSE')) {
       print STDERR "Outputing the split manual file $self->{'output_file'}\n";
     }
-    $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
+    $fh = _open_info_file($self, $self->{'output_file'});
     if (!$fh) {
-      $self->document_error(sprintf(
-            $self->__("could not open %s for writing: %s"),
-            $self->{'output_file'}, $!));
       return undef;
     }
     $tag_text = $complete_header;
@@ -289,6 +280,23 @@ sub output($)
     $result .= $tag_text;
   }
   return $result;
+}
+
+# Wrapper around Texinfo::Common::open_out.  Open the file with any CR-LF
+# conversion disabled.  We need this for tag tables to be correct under
+# MS-Windows.   Return filehandle or undef on failure.
+sub _open_info_file($$)
+{
+  my $self = shift;
+  my $filename = shift;
+  my $fh = $self->Texinfo::Common::open_out($filename, undef, 'use_binmode');
+  if (!$fh) {
+    $self->document_error(sprintf(
+        $self->__("could not open %s for writing: %s"),
+        $filename, $!));
+    return undef;
+  }
+  return $fh;
 }
 
 sub _info_header($)

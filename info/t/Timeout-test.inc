@@ -22,11 +22,23 @@ TIMED_OUT=
 # should exit the subshell with an error exit status.  Under some other
 # shells the subshell will not exit but the "read -t" will have an exit
 # status of 2, representing a syntax error.
+status=0
 (read -t 0 ; test $? != 2 ; exit $?)
 if test $? != 0; then
   # skip test below
   status=2
-else
+fi
+
+# If that succeeded, now check that "read -t 0" has no output, which could
+# be an error message.
+if test $status != 2; then
+  (read -t 0 2>&1 ) | grep .
+  test $? = 0 && status=2
+fi
+# This last test was needed under OpenBSD 5.5, where
+# "read -t 0" has an exit status of 1, not 2
+
+if test $status != 2; then
   read -t 3 FINISHED <$FINISHEDFIFO
   status=$?
 fi

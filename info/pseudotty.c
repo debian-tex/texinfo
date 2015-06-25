@@ -33,13 +33,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+#if HAVE_STROPTS_H
+#include <stropts.h>
+#endif
+
+#include "termdep.h"
+
 /* Used by "error" function. */
 const char *program_name = "pseudotty";
 
 int
 main (int argc, char *argv[])
 {
-  int master, control;
+  int master, slave, control;
   char *name;
   fd_set read_set;
 
@@ -55,8 +61,43 @@ main (int argc, char *argv[])
   name = ptsname (master);
   if (!name)
     exit (1);
-
   error (0, 0, "%s", name);
+
+#ifdef HAVE_STROPTS_H
+  error (0, 0, "opening slave device");
+  slave = open (name, O_RDWR);
+  if (slave == -1)
+    exit (1);
+  if (!isatty (slave))
+    {
+      error (0, 0, "performing STREAMS ioctl's on slave");
+      if (isastream (slave))
+        {
+          if (ioctl (slave, I_PUSH, "ptem") < 0
+              || ioctl (slave, I_PUSH, "ldterm") < 0)
+            error (1, 0, "STREAMS ioctl's failed");
+        }
+    }
+  /* Don't close it because it just leads to an EOF read at the master end. */
+  /*
+  error (0, 0, "closing slave device");
+  close (slave);
+  error (0, 0, "...closed");
+  */
+#endif
+
+#if defined (TIOCSWINSZ)
+  {
+    struct winsize ws;
+    ws.ws_col = ws.ws_row = 0;
+
+    error (0, 0, "attempting to set window size");
+    if (ioctl (master, TIOCSWINSZ, &ws) == 0)
+      error (0, 0, "...succeeded");
+    else
+      error (0, 0, "...failed");
+  }
+#endif 
 
   printf ("%s\n", name);
   if (fclose (stdout) != 0)

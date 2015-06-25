@@ -7,10 +7,10 @@
 # Yuri Chornoivan <yurchor@ukr.net>, 2013, 2015.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 5.9.91\n"
+"Project-Id-Version: texinfo 5.9.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-06-03 15:28-0700\n"
-"PO-Revision-Date: 2015-05-04 11:27+0300\n"
+"POT-Creation-Date: 2015-06-20 19:07+0100\n"
+"PO-Revision-Date: 2015-06-07 16:37+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
 "Language: uk\n"
@@ -51,9 +51,9 @@ msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: до параметра «--%s» слід додати аргумент\n"
 
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
-#, fuzzy, c-format
+#, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: невідомий параметр «%c%s»\n"
+msgstr "%s: невідомий параметр «--%s»\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, c-format
@@ -162,11 +162,11 @@ msgstr "Не виявлено попереднього формального в
 msgid "memory exhausted"
 msgstr "вичерпано пам’ять"
 
-#: info/echo-area.c:299 info/session.c:1327
+#: info/echo-area.c:299 info/session.c:1328
 msgid "Move forward a character"
 msgstr "Перейти на символ вперед"
 
-#: info/echo-area.c:318 info/session.c:1340
+#: info/echo-area.c:318 info/session.c:1341
 msgid "Move backward a character"
 msgstr "Перейти на символ назад"
 
@@ -178,11 +178,11 @@ msgstr "Перейти на початок цього рядка"
 msgid "Move to the end of this line"
 msgstr "Перейти в кінець цього рядка"
 
-#: info/echo-area.c:357 info/session.c:1355
+#: info/echo-area.c:357 info/session.c:1356
 msgid "Move forward a word"
 msgstr "Перейти вперед на одне слово"
 
-#: info/echo-area.c:397 info/session.c:1369
+#: info/echo-area.c:397 info/session.c:1370
 msgid "Move backward a word"
 msgstr "Перейти назад на одне слово"
 
@@ -390,7 +390,7 @@ msgstr "Жоден доступний файл info не містить «%s» �
 msgid "Error converting file character encoding."
 msgstr "Помилка під час спроби змінити кодування символів у файлі."
 
-#: info/info.c:223 info/session.c:2699
+#: info/info.c:223 info/session.c:2700
 #, c-format
 msgid "No menu item '%s' in node '%s'."
 msgstr "Меню вузла «%2$s» не містить пункту «%1$s»."
@@ -1061,12 +1061,12 @@ msgstr "Оберіть вузол, який ви раніше відвідува
 msgid "Select visited node: "
 msgstr "Оберіть відвіданий вузол: "
 
-#: info/nodemenu.c:278 info/session.c:2355
+#: info/nodemenu.c:278 info/session.c:2356
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "Посилання зникло! (%s)."
 
-#: info/pcterm.c:206
+#: info/pcterm.c:211
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Не вдалося ініціалізувати термінал: %s\n"
@@ -1076,11 +1076,11 @@ msgstr "Не вдалося ініціалізувати термінал: %s\n"
 msgid "regexp error: %s"
 msgstr "помилка регулярного виразу: %s"
 
-#: info/session.c:60
+#: info/session.c:61
 msgid "Show all matching files"
 msgstr "Показати усі відповідні файли"
 
-#: info/session.c:64
+#: info/session.c:65
 #, c-format
 msgid "No file index"
 msgstr "Немає покажчика файлів"
@@ -1088,7 +1088,7 @@ msgstr "Немає покажчика файлів"
 #. TRANSLATORS: Try to keep this message (when "expanded") at most 79
 #. characters; anything after the 79th character will not actually be
 #. displayed on an 80-column terminal.
-#: info/session.c:190
+#: info/session.c:191
 #, c-format
 msgid ""
 "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
@@ -1097,76 +1097,76 @@ msgstr ""
 "Вітаємо у Info версії %s. \\[get-help-window] — довідка, \\[get-info-help-"
 "node] — настанови."
 
-#: info/session.c:766
+#: info/session.c:767
 #, c-format
 msgid "can't open %s: %s"
 msgstr "не вдалося відкрити %s: %s"
 
-#: info/session.c:772
+#: info/session.c:773
 #, c-format
 msgid "debugging output diverted to \"%s\""
 msgstr "діагностичні дані спрямовано до «%s»"
 
-#: info/session.c:1214
+#: info/session.c:1215
 msgid "Move down to the next line"
 msgstr "Перейти вниз на наступний рядок"
 
-#: info/session.c:1229
+#: info/session.c:1230
 msgid "Move up to the previous line"
 msgstr "Перейти вверх на попередній рядок"
 
-#: info/session.c:1245
+#: info/session.c:1246
 msgid "Move the cursor to a specific line of the window"
 msgstr "Пересунути курсор до вказаного рядка вікна"
 
-#: info/session.c:1277
+#: info/session.c:1278
 msgid "Move to the end of the line"
 msgstr "Перейти в кінець рядка"
 
-#: info/session.c:1302
+#: info/session.c:1303
 msgid "Move to the start of the line"
 msgstr "Перейти на початок рядка"
 
-#: info/session.c:1384
+#: info/session.c:1385
 msgid "Move to the start of this node"
 msgstr "Перейти до початку вузла"
 
-#: info/session.c:1391
+#: info/session.c:1392
 msgid "Move to the end of this node"
 msgstr "Перейти до кінця вузла"
 
-#: info/session.c:1473
+#: info/session.c:1474
 msgid "Scroll forward in this window"
 msgstr "Гортати вперед це вікно"
 
-#: info/session.c:1487
+#: info/session.c:1488
 msgid "Scroll backward in this window"
 msgstr "Гортати назад це вікно"
 
-#: info/session.c:1495
+#: info/session.c:1496
 msgid "Scroll forward in this window and set default window size"
 msgstr "Гортати вперед це вікно й встановити стандартний розмір вікна"
 
-#: info/session.c:1510
+#: info/session.c:1511
 msgid "Scroll backward in this window and set default window size"
 msgstr "Гортати назад це вікно й встановити стандартний розмір вікна"
 
-#: info/session.c:1516
+#: info/session.c:1517
 msgid "Scroll forward in this window staying within node"
 msgstr "Гортати вперед це вікно, не перетинаючи меж вузла"
 
-#: info/session.c:1531
+#: info/session.c:1532
 msgid "Scroll backward in this window staying within node"
 msgstr "Гортати назад це вікно, не перетинаючи меж вузла"
 
-#: info/session.c:1539
+#: info/session.c:1540
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "Гортати вперед це вікно, не перетинаючи меж вузла й встановити стандартний "
 "розмір вікна"
 
-#: info/session.c:1566
+#: info/session.c:1567
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
@@ -1174,71 +1174,71 @@ msgstr ""
 "Гортати назад це вікно, не перетинаючи меж вузла й встановити стандартний "
 "розмір вікна"
 
-#: info/session.c:1572
+#: info/session.c:1573
 msgid "Scroll down by lines"
 msgstr "Прокручувати вниз по рядку"
 
-#: info/session.c:1578
+#: info/session.c:1579
 msgid "Scroll up by lines"
 msgstr "Прокручувати вверх по рядку"
 
-#: info/session.c:1590
+#: info/session.c:1591
 msgid "Scroll down by half screen size"
 msgstr "Прокручувати вниз на половину екрану"
 
-#: info/session.c:1617
+#: info/session.c:1618
 msgid "Scroll up by half screen size"
 msgstr "Прокручувати вверх на половину екрану"
 
-#: info/session.c:1623
+#: info/session.c:1624
 msgid "Scroll the other window"
 msgstr "Гортати інше вікно"
 
-#: info/session.c:1644
+#: info/session.c:1645
 msgid "Scroll the other window backward"
 msgstr "Гортати інше вікно назад"
 
-#: info/session.c:1744
+#: info/session.c:1745
 msgid "Select the next window"
 msgstr "Обрати наступне вікно"
 
-#: info/session.c:1781
+#: info/session.c:1782
 msgid "Select the previous window"
 msgstr "Обрати попереднє вікно"
 
-#: info/session.c:1825
+#: info/session.c:1826
 msgid "Split the current window"
 msgstr "Розділити поточне вікно"
 
-#: info/session.c:1867
+#: info/session.c:1868
 msgid "Delete the current window"
 msgstr "Прибрати поточне вікно"
 
-#: info/session.c:1872
+#: info/session.c:1873
 msgid "Cannot delete a permanent window"
 msgstr "Не вдається прибрати постійне вікно"
 
-#: info/session.c:1903
+#: info/session.c:1904
 msgid "Delete all other windows"
 msgstr "Прибрати усі інші вікна"
 
-#: info/session.c:1949
+#: info/session.c:1950
 msgid "Grow (or shrink) this window"
 msgstr "Збільшити (або скоротити) це вікно"
 
-#: info/session.c:1960
+#: info/session.c:1961
 msgid "Divide the available screen space among the visible windows"
 msgstr "Розділити доступний простір екрану між видимими вікнами"
 
-#: info/session.c:1967
+#: info/session.c:1968
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "Перемикнути стан вертання рядків у поточному вікні"
 
-#: info/session.c:2116
+#: info/session.c:2117
 msgid "Select this menu item"
 msgstr "Обрати цей пункт меню"
 
-#: info/session.c:2146
+#: info/session.c:2147
 #, c-format
 msgid "There isn't %d item in this menu."
 msgid_plural "There aren't %d items in this menu."
@@ -1246,375 +1246,375 @@ msgstr[0] "У цьому меню немає пункту %d."
 msgstr[1] "У цьому меню нема %d-го пункту."
 msgstr[2] "У цьому меню нема %d-го пункту."
 
-#: info/session.c:2155
+#: info/session.c:2156
 msgid "Select the last item in this node's menu"
 msgstr "Обрати останній пункт меню цього вузла"
 
-#: info/session.c:2263 info/session.c:2264
+#: info/session.c:2264 info/session.c:2265
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Пункт меню (%s): "
 
-#: info/session.c:2267
+#: info/session.c:2268
 msgid "Menu item: "
 msgstr "Пункт меню: "
 
-#: info/session.c:2274 info/session.c:2275
+#: info/session.c:2275 info/session.c:2276
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Перейти за xref (%s): "
 
-#: info/session.c:2278
+#: info/session.c:2279
 msgid "Follow xref: "
 msgstr "Перейти за посиланням: "
 
-#: info/session.c:2367
+#: info/session.c:2368
 msgid "Read a menu item and select its node"
 msgstr "Прочитати пункт меню й обрати його вузол"
 
-#: info/session.c:2392
+#: info/session.c:2393
 msgid "Read a footnote or cross reference and select its node"
 msgstr "Прочитати виноску чи перехресне посилання й обрати її вузол"
 
-#: info/session.c:2398
+#: info/session.c:2399
 msgid "Move to the start of this node's menu"
 msgstr "Перейти до початку меню цього вузла"
 
-#: info/session.c:2420
+#: info/session.c:2421
 msgid "Visit as many menu items at once as possible"
 msgstr "Відкрити одночасно стільки пунктів меню, скільки вдасться"
 
-#: info/session.c:2519
+#: info/session.c:2520
 msgid "Move to the previous cross reference"
 msgstr "Перейти до попереднього перехресного посилання"
 
-#: info/session.c:2582
+#: info/session.c:2583
 msgid "Move to the next cross reference"
 msgstr "Перейти до наступного перехресного посилання"
 
-#: info/session.c:2643
+#: info/session.c:2644
 msgid "Select reference or menu item appearing on this line"
 msgstr "Обрати посилання чи пункт меню з цього рядка"
 
-#: info/session.c:2677
+#: info/session.c:2678
 #, c-format
 msgid "No menu in node '%s'."
 msgstr "Вузол «%s» не містить меню."
 
-#: info/session.c:2724
+#: info/session.c:2725
 #, c-format
 msgid "Unable to find node referenced by '%s' in '%s'."
 msgstr "Не вдається знайти вузол, на який посилається «%s» у «%s»."
 
-#: info/session.c:2774
+#: info/session.c:2775
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Прочитати список пунктів меню, починаючи від dir та перейти за ними"
 
-#: info/session.c:2776
+#: info/session.c:2777
 msgid "Follow menus: "
 msgstr "Йти за меню: "
 
-#: info/session.c:2878
+#: info/session.c:2879
 msgid "Select the Next node"
 msgstr "Обрати наступний вузол"
 
-#: info/session.c:2885
+#: info/session.c:2886
 msgid "Select the Prev node"
 msgstr "Обрати попередній вузол"
 
-#: info/session.c:2892
+#: info/session.c:2893
 msgid "Select the Up node"
 msgstr "Обрати горішній вузол"
 
-#: info/session.c:2898
+#: info/session.c:2899
 msgid "Select the last node in this file"
 msgstr "Обрати останній вузол цього файлу"
 
-#: info/session.c:2925 info/session.c:2958
+#: info/session.c:2926 info/session.c:2959
 msgid "This window has no additional nodes"
 msgstr "Це вікно не має додаткових вузлів"
 
-#: info/session.c:2931
+#: info/session.c:2932
 msgid "Select the first node in this file"
 msgstr "Обрати перший вузол цього файлу"
 
-#: info/session.c:3063
+#: info/session.c:3064
 msgid "No more nodes within this document."
 msgstr "Це останній вузол цього документу."
 
-#: info/session.c:3108 info/session.c:3148
+#: info/session.c:3109 info/session.c:3149
 msgid "No 'Prev' or 'Up' for this node within this document."
 msgstr ""
 "У цього вузла немає «Попереднього» чи «Горішнього» вузла у цьому документі."
 
-#: info/session.c:3161
+#: info/session.c:3162
 msgid "Move forwards or down through node structure"
 msgstr "Перейти вперед чи вниз по структурі вузлів"
 
-#: info/session.c:3178
+#: info/session.c:3179
 msgid "Move backwards or up through node structure"
 msgstr "Перейти назад чи вверх по структурі вузлів"
 
-#: info/session.c:3201
+#: info/session.c:3202
 msgid "Read a node name and select it"
 msgstr "Прочитати назву вузла й обрати його"
 
-#: info/session.c:3255 info/session.c:3259
+#: info/session.c:3256 info/session.c:3260
 msgid "Goto node: "
 msgstr "Перейти до вузла: "
 
-#: info/session.c:3438
+#: info/session.c:3439
 msgid "Find the node describing program invocation"
 msgstr "Знайти вузол, що описує запуск програми"
 
-#: info/session.c:3440
+#: info/session.c:3441
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Знайти вузол запуску програми [%s]: "
 
-#: info/session.c:3485
+#: info/session.c:3486
 msgid "Read a manpage reference and select it"
 msgstr "Прочитати посилання на сторінку man та обрати її"
 
-#: info/session.c:3489
+#: info/session.c:3490
 msgid "Get Manpage: "
 msgstr "Отримати man-сторінку: "
 
-#: info/session.c:3510
+#: info/session.c:3511
 msgid "Select the node 'Top' in this file"
 msgstr "Обрати «Верхній» вузол цього файлу"
 
-#: info/session.c:3516
+#: info/session.c:3517
 msgid "Select the node '(dir)'"
 msgstr "Обрати вузол «(dir)»"
 
-#: info/session.c:3522
+#: info/session.c:3523
 msgid "Show full file name of node being displayed"
 msgstr "Показувати повну назву файла для показаного вузла"
 
-#: info/session.c:3539
+#: info/session.c:3540
 msgid "Select the most recently selected node"
 msgstr "Позначити останній з позначених вузлів"
 
-#: info/session.c:3544
+#: info/session.c:3545
 #, c-format
 msgid "No earlier node in history"
 msgstr "У журналі немає попереднього вузла"
 
-#: info/session.c:3548
+#: info/session.c:3549
 msgid "Read the name of a file and select it"
 msgstr "Прочитати назву файлу й обрати його"
 
-#: info/session.c:3552
+#: info/session.c:3553
 msgid "Find file: "
 msgstr "Знайти файл: "
 
-#: info/session.c:3569
+#: info/session.c:3570
 #, c-format
 msgid "Cannot find '%s'."
 msgstr "Не вдалося знайти «%s»."
 
-#: info/session.c:3618
+#: info/session.c:3619
 #, c-format
 msgid "Could not create output file '%s'."
 msgstr "Не вдається створити файл виводу «%s»."
 
-#: info/session.c:3632
+#: info/session.c:3633
 #, c-format
 msgid "error writing to %s: %s"
 msgstr "помилка під час запису до %s: %s"
 
-#: info/session.c:3641
+#: info/session.c:3642
 #, c-format
 msgid "closing %s"
 msgstr "закриття %s"
 
-#: info/session.c:3690
+#: info/session.c:3691
 #, c-format
 msgid "writing node %s..."
 msgstr "записуємо вузол %s…"
 
-#: info/session.c:3736
+#: info/session.c:3737
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "Передати вміст цього вузла через канал до INFO_PRINT_COMMAND"
 
-#: info/session.c:3764
+#: info/session.c:3765
 #, c-format
 msgid "Cannot open pipe to '%s'."
 msgstr "Не вдається створити канал до «%s»."
 
-#: info/session.c:3769
+#: info/session.c:3770
 #, c-format
 msgid "printing node %s..."
 msgstr "друкуємо вузол %s…"
 
-#: info/session.c:3777
+#: info/session.c:3778
 #, c-format
 msgid "finished printing node %s"
 msgstr "завершено друк вузла %s"
 
-#: info/session.c:3809
+#: info/session.c:3810
 msgid "Toggle the usage of regular expressions in searches"
 msgstr "Перемикнути використання регулярних виразів під час пошуку"
 
-#: info/session.c:3813
+#: info/session.c:3814
 #, c-format
 msgid "Using regular expressions for searches."
 msgstr "Під час пошуку використовуватимуться регулярні вирази."
 
-#: info/session.c:3814
+#: info/session.c:3815
 #, c-format
 msgid "Using literal strings for searches."
 msgstr "Під час пошуку використовуватимуться звичайні рядки."
 
-#: info/session.c:4058
+#: info/session.c:4059
 msgid "Search continued from the end of the document."
 msgstr "Пошук продовжено з кінця документа."
 
-#: info/session.c:4063
+#: info/session.c:4064
 msgid "Search continued from the beginning of the document."
 msgstr "Пошук продовжено з початку документа."
 
-#: info/session.c:4083
+#: info/session.c:4084
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Пошук підфайлу %s ..."
 
-#: info/session.c:4122
+#: info/session.c:4123
 msgid "Search failed."
 msgstr "Пошук не вдався."
 
-#: info/session.c:4141
+#: info/session.c:4142
 #, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%s%s [%s]: "
 
-#: info/session.c:4142 info/session.c:4148
+#: info/session.c:4143 info/session.c:4149
 msgid "Regexp search"
 msgstr "Пошук за регулярним виразом"
 
-#: info/session.c:4142 info/session.c:4148
+#: info/session.c:4143 info/session.c:4149
 msgid "Search"
 msgstr "Пошук"
 
-#: info/session.c:4143 info/session.c:4149
+#: info/session.c:4144 info/session.c:4150
 msgid " case-sensitively"
 msgstr " з врахуванням регістру"
 
-#: info/session.c:4144 info/session.c:4150
+#: info/session.c:4145 info/session.c:4151
 msgid " backward"
 msgstr " назад"
 
-#: info/session.c:4147
+#: info/session.c:4148
 #, c-format
 msgid "%s%s%s: "
 msgstr "%s%s%s: "
 
-#: info/session.c:4167
+#: info/session.c:4168
 msgid "Search string too short"
 msgstr "Рядок пошуку є надто коротким"
 
-#: info/session.c:4237
+#: info/session.c:4238
 msgid "Read a string and search for it case-sensitively"
 msgstr "Прочитати рядок та знайти його, враховуючи регістр"
 
-#: info/session.c:4242
+#: info/session.c:4243
 msgid "Read a string and search for it"
 msgstr "Прочитати рядок та знайти його"
 
-#: info/session.c:4248
+#: info/session.c:4249
 msgid "Read a string and search backward for it"
 msgstr "Прочитати рядок та знайти його у попередньому тексті"
 
-#: info/session.c:4256
+#: info/session.c:4257
 msgid "Repeat last search in the same direction"
 msgstr "Повторити попередній пошук у тому ж напрямі"
 
-#: info/session.c:4264 info/session.c:4309
+#: info/session.c:4265 info/session.c:4310
 msgid "No previous search string"
 msgstr "Нема попереднього рядку пошуку"
 
-#: info/session.c:4301
+#: info/session.c:4302
 msgid "Repeat last search in the reverse direction"
 msgstr "Повторити пошук у зворотньому напрямі"
 
-#: info/session.c:4348
+#: info/session.c:4349
 msgid "Clear displayed search matches"
 msgstr "Явно показані результати пошуку"
 
-#: info/session.c:4365 info/session.c:4371
+#: info/session.c:4366 info/session.c:4372
 msgid "Search interactively for a string as you type it"
 msgstr "Шукати рядок інтерактивно, поки ви його набираєте"
 
-#: info/session.c:4485
+#: info/session.c:4486
 msgid "Regexp I-search backward: "
 msgstr "I-пошук назад за формальним виразом: "
 
-#: info/session.c:4486
+#: info/session.c:4487
 msgid "I-search backward: "
 msgstr "I-пошук назад: "
 
-#: info/session.c:4488
+#: info/session.c:4489
 msgid "Regexp I-search: "
 msgstr "I-пошук за формальним виразом: "
 
-#: info/session.c:4489
+#: info/session.c:4490
 msgid "I-search: "
 msgstr "I-пошук: "
 
-#: info/session.c:4514 info/session.c:4517
+#: info/session.c:4515 info/session.c:4518
 msgid "Failing "
 msgstr "Невдалий "
 
-#: info/session.c:4890
+#: info/session.c:4891
 msgid "Cancel current operation"
 msgstr "Скасувати поточну операцію"
 
-#: info/session.c:4897
+#: info/session.c:4898
 msgid "Quit"
 msgstr "Завершено"
 
-#: info/session.c:4902
+#: info/session.c:4903
 msgid "Display version of Info being run"
 msgstr "Показати версію запущеного екземпляра Info"
 
-#: info/session.c:4904
+#: info/session.c:4905
 #, c-format
 msgid "GNU Info version %s"
 msgstr "GNU Info версії %s"
 
-#: info/session.c:4909
+#: info/session.c:4910
 msgid "Redraw the display"
 msgstr "Оновити зображення"
 
-#: info/session.c:4946
+#: info/session.c:4947
 msgid "Quit using Info"
 msgstr "Вийти з Info"
 
-#: info/session.c:4959
+#: info/session.c:4960
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Запустити команду, призначену цій клавіші у нижньому регістрі"
 
-#: info/session.c:4970
+#: info/session.c:4971
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "Невідома команда (%s)."
 
-#: info/session.c:4973
+#: info/session.c:4974
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "невірна послідовність \"%s\""
 
-#: info/session.c:4974
+#: info/session.c:4975
 #, c-format
 msgid "'%s' is invalid"
 msgstr "«%s» є некоректним"
 
-#: info/session.c:5292
+#: info/session.c:5293
 msgid "Add this digit to the current numeric argument"
 msgstr "Додати цю цифру до поточного числового аргументу"
 
-#: info/session.c:5299
+#: info/session.c:5300
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Ініціювати (чи помножити на 4) поточний числовий аргумент"
 
@@ -2041,8 +2041,7 @@ msgstr "у `%s' записів не знайдено; нічого не вилу
 #: tp/Texinfo/Convert/HTML.pm:6523 tp/Texinfo/Convert/HTML.pm:6900
 #: tp/Texinfo/Convert/HTML.pm:6958 tp/Texinfo/Convert/HTML.pm:7036
 #: tp/Texinfo/Convert/HTML.pm:7113 tp/Texinfo/Convert/IXIN.pm:293
-#: tp/Texinfo/Convert/Info.pm:99 tp/Texinfo/Convert/Info.pm:204
-#: tp/Texinfo/Convert/Info.pm:231 tp/Texinfo/Convert/Plaintext.pm:538
+#: tp/Texinfo/Convert/Info.pm:295 tp/Texinfo/Convert/Plaintext.pm:538
 #: tp/Texinfo/Convert/TexinfoXML.pm:457
 #, perl-format
 msgid "could not open %s for writing: %s"
@@ -2056,69 +2055,69 @@ msgstr "рекурсію дозволено завжди"
 msgid "arguments are quoted by default"
 msgstr "типово, аргументи подаються у лапках"
 
-#: tp/Texinfo/Common.pm:1096
+#: tp/Texinfo/Common.pm:1102
 #, perl-format
 msgid "%s is not a valid language code"
 msgstr "%s не є коректним кодом мови"
 
-#: tp/Texinfo/Common.pm:1101
+#: tp/Texinfo/Common.pm:1107
 #, perl-format
 msgid "%s is not a valid region code"
 msgstr "%s не є коректним кодом регіону"
 
-#: tp/Texinfo/Common.pm:1119
+#: tp/Texinfo/Common.pm:1125
 #, perl-format
 msgid "%s is not a valid split possibility"
 msgstr "%s не є коректною можливістю поділу"
 
-#: tp/Texinfo/Common.pm:1142
+#: tp/Texinfo/Common.pm:1148
 #, perl-format
 msgid "could not read %s: %s"
 msgstr "не вдалося прочитати %s: %s"
 
-#: tp/Texinfo/Common.pm:1161
+#: tp/Texinfo/Common.pm:1167
 #, perl-format
 msgid "error on closing @verbatiminclude file %s: %s"
 msgstr "помилка під час закриття файла @verbatiminclude %s: %s"
 
-#: tp/Texinfo/Common.pm:1167 tp/Texinfo/Parser.pm:3342
+#: tp/Texinfo/Common.pm:1173 tp/Texinfo/Parser.pm:3342
 #, perl-format
 msgid "@%s: could not find %s"
 msgstr "@%s: не вдалося знайти %s"
 
-#: tp/Texinfo/Common.pm:1511
+#: tp/Texinfo/Common.pm:1517
 #, perl-format
 msgid "could not open html refs config file %s: %s"
 msgstr "не вдалося відкрити файл налаштувань посилань html %s: %s"
 
-#: tp/Texinfo/Common.pm:1539
+#: tp/Texinfo/Common.pm:1545
 msgid "missing type"
 msgstr "пропущено тип"
 
-#: tp/Texinfo/Common.pm:1542
+#: tp/Texinfo/Common.pm:1548
 #, perl-format
 msgid "unrecognized type: %s"
 msgstr "нерозпізнаний тип: %s"
 
-#: tp/Texinfo/Common.pm:1559
+#: tp/Texinfo/Common.pm:1565
 #, perl-format
 msgid "error on closing html refs config file %s: %s"
 msgstr "помилка під час закриття файла налаштувань посилань html %s: %s"
 
-#: tp/Texinfo/Common.pm:1594
+#: tp/Texinfo/Common.pm:1600
 msgid "no node to be renamed"
 msgstr "немає вузла для перейменування"
 
-#: tp/Texinfo/Common.pm:1605
+#: tp/Texinfo/Common.pm:1611
 msgid "nodes without a new name at the end of file"
 msgstr "вузли без нової назви наприкінці файла"
 
-#: tp/Texinfo/Common.pm:1615 tp/Texinfo/Parser.pm:926
+#: tp/Texinfo/Common.pm:1621 tp/Texinfo/Parser.pm:926
 #, perl-format
 msgid "could not open %s: %s"
 msgstr "не вдалося відкрити %s: %s"
 
-#: tp/Texinfo/Common.pm:2135
+#: tp/Texinfo/Common.pm:2141
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr "не вдалося екранувати символ решітки у @%s"
@@ -2136,8 +2135,8 @@ msgstr "%s: виведені дані несумісні із поділом"
 #: tp/Texinfo/Convert/Converter.pm:876 tp/Texinfo/Convert/Converter.pm:909
 #: tp/Texinfo/Convert/DocBook.pm:361 tp/Texinfo/Convert/HTML.pm:6926
 #: tp/Texinfo/Convert/HTML.pm:6984 tp/Texinfo/Convert/IXIN.pm:915
-#: tp/Texinfo/Convert/Info.pm:163 tp/Texinfo/Convert/Info.pm:189
-#: tp/Texinfo/Convert/Info.pm:221 tp/Texinfo/Convert/Info.pm:284
+#: tp/Texinfo/Convert/Info.pm:161 tp/Texinfo/Convert/Info.pm:187
+#: tp/Texinfo/Convert/Info.pm:215 tp/Texinfo/Convert/Info.pm:275
 #: tp/Texinfo/Convert/TexinfoXML.pm:476 tp/Texinfo/Parser.pm:2034
 #, perl-format
 msgid "error on closing %s: %s"
@@ -2260,60 +2259,60 @@ msgstr "порожня назва вузла"
 msgid "syntax for an external node used for `%s'"
 msgstr "синтаксис для зовнішнього вузла використано для «%s»"
 
-#: tp/Texinfo/Convert/Info.pm:108
+#: tp/Texinfo/Convert/Info.pm:106
 msgid "document without nodes"
 msgstr "документ без вузлів"
 
-#: tp/Texinfo/Convert/Info.pm:125
+#: tp/Texinfo/Convert/Info.pm:123
 msgid "document without Top node"
 msgstr "документ без вузла Top"
 
-#: tp/Texinfo/Convert/Info.pm:173
+#: tp/Texinfo/Convert/Info.pm:171
 #, perl-format
 msgid "rename %s failed: %s"
 msgstr "спроба перейменування %s зазнала невдачі: %s"
 
-#: tp/Texinfo/Convert/Info.pm:256
+#: tp/Texinfo/Convert/Info.pm:247
 #, perl-format
 msgid "@%s output more than once: %s"
 msgstr "виведення @%s декілька разів: %s"
 
-#: tp/Texinfo/Convert/Info.pm:371
+#: tp/Texinfo/Convert/Info.pm:379
 #, perl-format
 msgid "@%s outside of any node"
 msgstr "@%s поза межами будь-якого вузла"
 
-#: tp/Texinfo/Convert/Info.pm:411
+#: tp/Texinfo/Convert/Info.pm:419
 #, perl-format
 msgid "@node name should not contain `,': %s"
 msgstr "назва @node не повинна містити «,»: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1310
+#: tp/Texinfo/Convert/Plaintext.pm:1312
 #, perl-format
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr "Запис покажчика у @%s з : призводить до некоректного Info: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1357 tp/Texinfo/Parser.pm:2721
+#: tp/Texinfo/Convert/Plaintext.pm:1359 tp/Texinfo/Parser.pm:2721
 #, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "пункт покажчика «%s» ззовні будь-якого вузла"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1471
+#: tp/Texinfo/Convert/Plaintext.pm:1473
 #, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "помилка під час спроби закрити файл тексту зображення %s: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1476
+#: tp/Texinfo/Convert/Plaintext.pm:1478
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "Неможливо прочитати файл @image `%s': %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1499
+#: tp/Texinfo/Convert/Plaintext.pm:1501
 #, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr "не вдалося знайти файл @image «%s.txt» або текст-замінник"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1891
+#: tp/Texinfo/Convert/Plaintext.pm:1893
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -2321,40 +2320,40 @@ msgstr ""
 "@strong{Note...} створює хибні перехресні посилання у Info; переформулюйте, "
 "уникаючи цього"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2111
+#: tp/Texinfo/Convert/Plaintext.pm:2113
 #, perl-format
 msgid "@%s cross-reference name should not contain `:'"
 msgstr "у назві перехресного посилання @%s не повинно міститися «:»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2128
+#: tp/Texinfo/Convert/Plaintext.pm:2130
 #, perl-format
 msgid "@%s node name should not contain `%s'"
 msgstr "У назві вузла @%s не повинно міститися «%s»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2143
+#: tp/Texinfo/Convert/Plaintext.pm:2145
 #, perl-format
 msgid "@%s node name should not contain `:'"
 msgstr "у назві вузла @%s не повинно міститися «:»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2166
+#: tp/Texinfo/Convert/Plaintext.pm:2168
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "після @xref має бути «.» або «,», але не %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2169
+#: tp/Texinfo/Convert/Plaintext.pm:2171
 msgid "`.' or `,' must follow @xref"
 msgstr "після @xref має бути «.» або «,»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3005
+#: tp/Texinfo/Convert/Plaintext.pm:3007
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "у назві вузла пункту меню не повинно бути «%s»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3012
+#: tp/Texinfo/Convert/Plaintext.pm:3014
 msgid "menu entry node name should not contain `:'"
 msgstr "у назві вузла пункту меню не повинно бути «:»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3023
+#: tp/Texinfo/Convert/Plaintext.pm:3025
 msgid "menu entry name should not contain `:'"
 msgstr "у назві пункту меню не повинно бути «:»"
 
@@ -3256,7 +3255,7 @@ msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "пропускаємо невідоме значення TEXINFO_OUTPUT_FORMAT «%s».\n"
 
 #: tp/texi2any.pl:735
-#, fuzzy, perl-format
+#, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Usage: %s [ПАРАМЕТР]... ФАЙЛ-TEXINFO...\n"
 
@@ -3670,68 +3669,62 @@ msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: не вдалося відкрити %s для запису даних: %s\n"
 
 #: texindex/ti.twjr:373
-#, fuzzy, awk-format
+#, awk-format
 msgid "%s: unrecognized option `%s'\n"
-msgstr "%s: невідомий параметр «--%s»\n"
+msgstr "%s: невідомий параметр «%s»\n"
 
 #: texindex/ti.twjr:444
-#, fuzzy, awk-format
+#, awk-format
 msgid "%s is not a Texinfo index file\n"
-msgstr "%s: це не файл покажчика texinfo"
+msgstr "%s не є файлом покажчика Texinfo\n"
 
 #: texindex/ti.twjr:543
 #, awk-format
 msgid "%s:%d: Bad key %s in record\n"
-msgstr ""
+msgstr "%s:%d: помилковий ключ %s у записі\n"
 
 #: texindex/ti.twjr:566
 #, awk-format
 msgid "%s:%d: Bad entry; expected three fields, not %d\n"
-msgstr ""
+msgstr "%s:%d: помилковий запис; мало бути три поля, а не %d\n"
 
 #: texindex/ti.twjr:725
 #, awk-format
 msgid "%s:%d: Bad entry; expected %s at column %d\n"
-msgstr ""
+msgstr "%s:%d: помилковий запис; мало бути %s у позиції %d\n"
 
 #: texindex/ti.twjr:1254
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: texindex/ti.twjr:1273
-#, fuzzy, awk-format
+#, awk-format
 msgid "Usage: %s [OPTION]... FILE...\n"
-msgstr "Usage: %s [ПАРАМЕТР]... ФАЙЛ-TEXINFO...\n"
+msgstr "Користування: %s [ПАРАМЕТР]... ФАЙЛ-TEXINFO...\n"
 
 #: texindex/ti.twjr:1274
-#, fuzzy
 msgid "Generate a sorted index for each TeX output FILE."
-msgstr "Генерує упорядкований покажчик для кожного файлу виводу TeX.\n"
+msgstr "Генерує упорядкований покажчик для кожного файлу виводу TeX."
 
 #: texindex/ti.twjr:1275
-#, fuzzy
 msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
-msgstr "Зазвичай, ФАЙЛ... вказується як `foo.%c%c' для документу `foo.texi'.\n"
+msgstr "Зазвичай, ФАЙЛ... вказується як `foo.??' для документу `foo.texi'."
 
 #: texindex/ti.twjr:1277
-#, fuzzy
 msgid "Options:"
-msgstr ""
-"\n"
-"Параметри:\n"
+msgstr "Параметри:"
 
 #: texindex/ti.twjr:1278
-#, fuzzy
 msgid " -h, --help   display this help and exit"
-msgstr "показати цю довідку й вийти"
+msgstr " -h, --help     вивести довідку і завершити роботу"
 
 #: texindex/ti.twjr:1279
 msgid " --version    display version information and exit"
-msgstr ""
+msgstr " --version    показати дані щодо версії і завершити роботу"
 
 #: texindex/ti.twjr:1280
 msgid " --           end option processing"
-msgstr ""
+msgstr " --           кінець оброблюваних параметрів"
 
 #~ msgid ""
 #~ "\n"

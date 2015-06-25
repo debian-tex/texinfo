@@ -1,4 +1,4 @@
-# $Id: Common.pm 6221 2015-04-13 16:55:18Z gavin $
+# $Id: Common.pm 6344 2015-06-18 19:45:35Z gavin $
 # Common.pm: definition of commands. Common code of other Texinfo modules.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -1040,11 +1040,12 @@ sub locate_include_file($$)
   return $file;
 }
 
-sub open_out($$;$)
+sub open_out($$;$$)
 {
   my $self = shift;
   my $file = shift;
   my $encoding = shift;
+  my $use_binmode = shift;
 
   if (!defined($encoding) and $self 
       and defined($self->get_conf('OUTPUT_PERL_ENCODING'))) {
@@ -1052,6 +1053,7 @@ sub open_out($$;$)
   }
 
   if ($file eq '-') {
+    binmode(STDOUT) if $use_binmode;
     binmode(STDOUT, ":encoding($encoding)") if ($encoding);
     if ($self) {
       $self->{'unclosed_files'}->{$file} = \*STDOUT;
@@ -1062,6 +1064,10 @@ sub open_out($$;$)
   if (!open ($filehandle, '>', $file)) {
     return undef; 
   }
+  # We run binmode to turn off outputting LF as CR LF under MS-Windows,
+  # so that Info tag tables will have correct offsets.  This must be done
+  # before setting the encoding filters with binmode.
+  binmode($filehandle) if $use_binmode;
   if ($encoding) {
     if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
       binmode($filehandle, ':utf8');

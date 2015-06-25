@@ -74,7 +74,7 @@ test -z "$ti_script" && test -s "$mydir/texindex.awk" \
 #
 # else look for script in pkgdatadir.
 if test -z "$ti_script"; then
-  pkgdatadir_configured="/tmp/ktx/share/texinfo"
+  pkgdatadir_configured="/usr/local/share/texinfo"
   test -s "$pkgdatadir_configured/texindex.awk" \
   && ti_script=$pkgdatadir_configured/texindex.awk
 fi

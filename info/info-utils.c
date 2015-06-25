@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c 6281 2015-05-18 20:29:08Z gavin $
+   $Id: info-utils.c 6327 2015-06-09 11:12:41Z gavin $
 
    Copyright 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012,
    2013, 2014, 2015 Free Software Foundation, Inc.
@@ -237,7 +237,7 @@ info_get_menu_entry_by_label (NODE *node, char *label, int sloppy)
     return 0;
 
   /* First look for an exact match. */
-  for (i = 0; entry = references[i]; i++)
+  for (i = 0; (entry = references[i]); i++)
     {
       if (REFERENCE_MENU_ITEM != entry->type) continue;
       if (strcmp (label, entry->label) == 0)
@@ -251,7 +251,7 @@ info_get_menu_entry_by_label (NODE *node, char *label, int sloppy)
       int i;
       int best_guess = -1;
 
-      for (i = 0; entry = references[i]; i++)
+      for (i = 0; (entry = references[i]); i++)
         {
           if (REFERENCE_MENU_ITEM != entry->type) continue;
           if (mbscasecmp (label, entry->label) == 0)
@@ -506,7 +506,7 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
   int printable_limit = ISO_Latin_p ? 255 : 127;
   struct text_buffer *rep = &printed_rep;
 
-  unsigned char *cur_ptr = (unsigned char *) mbi_cur_ptr (*iter);
+  char *cur_ptr = (char *) mbi_cur_ptr (*iter);
   size_t cur_len = mb_len (mbi_cur (*iter));
 
   text_buffer_reset (&printed_rep);
@@ -561,7 +561,7 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
     }
 
   /* Show CTRL-x as "^X".  */
-  if (iscntrl (*cur_ptr) && *cur_ptr < 127)
+  if (iscntrl (*cur_ptr) && *(unsigned char *)cur_ptr < 127)
     {
       *pchars = 2;
       *pbytes = 2;
@@ -570,7 +570,7 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
       return text_buffer_base (rep);
     }
   /* Show META-x as "\370".  */
-  else if (*cur_ptr > printable_limit)
+  else if (*(unsigned char *)cur_ptr > printable_limit)
     {
       *pchars = 4;
       *pbytes = 4;

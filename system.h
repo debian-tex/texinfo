@@ -1,5 +1,5 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h 5860 2014-10-06 13:17:14Z gavin $
+   $Id: system.h 6348 2015-06-20 08:06:47Z eliz $
 
    Copyright 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
    2006, 2007, 2008, 2009, 2010, 2011, 2012, 2014
@@ -164,6 +164,7 @@ extern int strcoll ();
 # else  /* O_BINARY && !__CYGWIN__ */
 #  ifdef __MINGW32__
 #   define SET_SCREEN_SIZE_HELPER terminal_prep_terminal()
+extern int kill (pid_t, int);
 #  endif  /* _WIN32 */
 #  define DEFAULT_TMPDIR	"c:/"
 #  define PATH_SEP	";"

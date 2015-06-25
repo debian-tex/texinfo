@@ -1,4 +1,4 @@
-$Id: README-hacking 6307 2015-06-03 23:18:28Z karl $
+$Id: README-hacking 6329 2015-06-09 23:14:56Z karl $
 This file describes the development environment for Texinfo.
 
   Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013,
@@ -59,8 +59,9 @@ gnulib, you can update the files with gnulib-tool --add-import.
 When running gnulib-tool --add-import or otherwise adding modules, it is
 necessary to check what files were added (e.g., run "svn status
 build-aux gnulib") and add them to the repository with "svn add";
-likewise for removals.  Likewise for adding new generated files
-(typically gnulib/lib/foo.h from foo.h.in) to the ignore list.
+likewise for removals, likewise for adding new generated files
+(typically gnulib/lib/foo.h from foo.h.in) to the ignore list (e.g.,
+  svn propedit svn:ignore gnulib/lib).
 
 
 

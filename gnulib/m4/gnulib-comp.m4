@@ -119,6 +119,12 @@ AC_DEFUN([gl_EARLY],
   # Code from module snippet/warn-on-use:
   # Code from module ssize_t:
   # Code from module stat:
+  # Code from module stdarg:
+  dnl Some compilers (e.g., AIX 5.3 cc) need to be in c99 mode
+  dnl for the builtin va_copy to work.  With Autoconf 2.60 or later,
+  dnl gl_PROG_CC_C99 arranges for this.  With older Autoconf gl_PROG_CC_C99
+  dnl shouldn't hurt, though installers are on their own to set c99 mode.
+  gl_PROG_CC_C99
   # Code from module stdbool:
   # Code from module stddef:
   # Code from module stdint:
@@ -408,6 +414,7 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_STAT
   fi
   gl_SYS_STAT_MODULE_INDICATOR([stat])
+  gl_STDARG_H
   AM_STDBOOL_H
   gl_STDDEF_H
   gl_STDINT_H
@@ -761,6 +768,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/signbitl.c
   lib/size_max.h
   lib/stat.c
+  lib/stdarg.in.h
   lib/stdbool.in.h
   lib/stddef.in.h
   lib/stdint.in.h
@@ -907,6 +915,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/size_max.m4
   m4/ssize_t.m4
   m4/stat.m4
+  m4/stdarg.m4
   m4/stdbool.m4
   m4/stddef_h.m4
   m4/stdint.m4

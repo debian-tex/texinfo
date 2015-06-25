@@ -1,5 +1,5 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c 6261 2015-05-11 16:11:09Z gavin $
+   $Id: nodes.c 6316 2015-06-07 12:49:39Z gavin $
 
    Copyright 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
    2008, 2009, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -542,7 +542,7 @@ free_info_tag (TAG *tag)
 
 static FILE_BUFFER *info_load_file (char *fullpath, int get_tags);
 static void get_file_character_encoding (FILE_BUFFER *fb);
-static void forget_info_file (char *filename);
+static void forget_info_file (FILE_BUFFER *file_buffer);
 static void info_reload_file_buffer_contents (FILE_BUFFER *fb);
 
 /* Locate the file named by FILENAME, and return the information structure
@@ -578,7 +578,7 @@ info_find_file (char *filename)
               {
                 /* The file has changed.  Forget that we ever had loaded it
                    in the first place. */
-                forget_info_file (filename);
+                forget_info_file (file_buffer);
                 break;
               }
 
@@ -676,7 +676,7 @@ info_find_subfile (char *fullpath)
               {
                 /* The file has changed.  Forget that we ever had loaded it
                    in the first place. */
-                forget_info_file (fullpath);
+                forget_info_file (file_buffer);
                 break;
               }
             return file_buffer;
@@ -800,39 +800,14 @@ make_file_buffer (void)
   return file_buffer;
 }
 
-/* Forget the contents, tags table, nodes list, and names of FILENAME. */
+/* Prevent this file buffer being used again. */
 static void
-forget_info_file (char *filename)
+forget_info_file (FILE_BUFFER *file_buffer)
 {
-  int i;
-  FILE_BUFFER *file_buffer;
-
-  if (!info_loaded_files)
-    return;
-
-  for (i = 0; (file_buffer = info_loaded_files[i]); i++)
-    if (FILENAME_CMP (filename, file_buffer->filename) == 0
-        || FILENAME_CMP (filename, file_buffer->fullpath) == 0)
-      {
-        free (file_buffer->fullpath);
-
-        if (file_buffer->contents)
-          free (file_buffer->contents);
-
-        /* free_file_buffer_tags () also kills the subfiles list, since
-           the subfiles list is only of use in conjunction with tags. */
-        free_file_buffer_tags (file_buffer);
-
-        /* Move rest of list down.  */
-        while (info_loaded_files[i + 1])
-          {
-            info_loaded_files[i] = info_loaded_files[i + 1];
-            i++;
-          }
-        info_loaded_files[i] = 0;
-
-        break;
-      }
+  file_buffer->flags |= N_Gone;
+  file_buffer->filename = "";
+  file_buffer->fullpath = "";
+  memset (&file_buffer->finfo, 0, sizeof (struct stat));
 }
 
 /* Load the contents of FILE_BUFFER->contents.  This function is called

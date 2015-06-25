@@ -24,21 +24,9 @@ run_ginfo
 # result. Then type "i" followed by <TAB> to check the indices in the
 # file are still there.
 
-printf '\033xindex-apropos\rlink\rD' >$PTY_TYPE
-
-# Wait for the M-x index-apropos to finish.  If we don't do this,
-# ginfo sometimes doesn't exit, and is timed out.  We are unsure why
-# but it could be because C-g is interpreted differently while this
-# command is running.
-echo 'waiting for index-apropos to finish...' >&2
-
-# Synchronize
-while ! test -f $GINFO_OUTPUT ; do sleep 1 ; done
-echo ...synchronized >&2
-cat $GINFO_OUTPUT >&2
-rm -f $GINFO_OUTPUT
-
-printf '\t\ri\t\x07q' >$PTY_TYPE
+printf '\033xindex-apropos\rlink\r\t\ri\txxxx\rq' >$PTY_TYPE
+# We exited the "i" prompt with "xxx\r" instead of "\007" because
+# C-g leads typeahead to be discarded so it would not be reliable.
 
 . $t/Timeout-test.inc
 

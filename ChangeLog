@@ -1,3 +1,150 @@
+2015-06-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* pretest 5.9.95, 5.9.96
+	* configure.ac: version.
+
+2015-06-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/pseudotty.c: Attempt to register display size as 0 by 0.
+	* info/t/c-u-m-x-scroll-forward.sh: Comment changed.
+
+2015-06-20  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/pcterm.c (kill): Move prototype from here...
+	* system.h: ...to here, conditioned by __MINGW32__.  This solves
+	compiler warnings in signals.c.
+	* info/pcterm.c	(wcwidth): Make function's signature consistent
+	with Gnulib's prototype in gnulib/lib/wchar.h.
+
+	* info/session.c (w32_read): Provide prototype, to avoid compiler
+	warnings.
+
+2015-06-18  Eli Zaretskii  <eliz@gnu.org>
+
+	* tp/Texinfo/Common.pm (open_out): Call binmode on opened file 
+	handle as intended.
+
+2015-06-18  Karl Berry  <karl@freefriends.org>
+
+	* pretest 5.9.94.
+	* configure.ac: version.
+
+2015-06-18  Eli Zaretskii  <eliz@gnu.org>
+
+	Avoid "implicit declaration" warnings in pcterm.c.
+	* info/pcterm.c: Include display.h.  Provide prototypes for
+	'kill', 'reset_info_window_sizes', and 'redisplay_after_signal'.
+
+2015-06-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Commom.pm (open_out): Add parameter which 
+	conditionalizes the calls to "binmode" on file handle.
+	* tp/Texinfo/Convert/Info.pm (_open_info_file): New function,
+	wrapping Texinfo::Common::open_out.  Call 
+	Texinfo::Common::open_out so that it calls "binmode".
+	(output): Call _open_info_file instead of open_out directly.
+
+2015-06-16  Karl Berry  <karl@freefriends.org>
+
+	* texindex/tests/ti-helpversion: new test, in new subdir, with
+	fingers crossed.
+	* texindex/Makefile.am (TESTS): new variable setting.
+	(EXTRA_DIST): include $(TESTS).
+
+2015-06-15  Eli Zaretskii  <eliz@gnu.org>, and
+            Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (open_out): Run "binmode" on file handle, 
+	to disable conversion of LF to CR LF under MS-Windows.
+
+2015-06-14  Karl Berry  <karl@freefriends.org>
+
+	* doc/texinfo.tex (\tcfont, \etcfont): new macros.
+	(\ecfont): call \etcfont now, so we can equally support tc* with ec*.
+	(\latonechardefs) <a2,a4,a5,a6>,
+	(\utfeightchardefs) <00A2,00A4,00A5,00A6>: can now support
+	characters cents, currency, yen, broken bar (among others from
+	the LaTeX TS1 encoding, but we'll leave it at that for now).
+
+2015-06-13  Karl Berry  <karl@freefriends.org>
+
+	* info/t/Init-test.inc: set -x so the t/*.log files have
+	more tracing in case of debugging.
+
+2015-06-11  Karl Berry  <karl@freefriends.org>
+
+	* tp/Texinfo/Convert/UnFilled.pm (_add_text),
+	* tp/Texinfo/Convert/Plaintext.pm (_contents):
+        avoid negative repeat counts, which cause a warning in perl 5.22.0.
+
+2015-06-10  Karl Berry  <karl@freefriends.org>
+
+	* doc/refcard/txicmdcheck (read_refcard): \escape all the {
+	due to new warning in perl 5.22.0.  Also \escape the }
+	for consistency.
+
+2015-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (info_virtual_index): Change type of a local 
+	variable to match expected type of argument to next_index_match.
+	* info/dir.c (dir_entry_of_infodir),
+	* info/info-utils.c (info_get_menu_entry_by_label): Add 
+	parentheses around assignment for clarity.
+	* info/info-utils.c (printed_representation): Change declaration 
+	of a variable from an unsigned char * to a char * and cast it 
+	when we need to check the referent is in a range.
+
+2015-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* gnulib: Add stdarg module, to try to fix compilations in C89 
+	mode due to lack of va_copy.
+	* README-hacking: Add note how to ignore files in SVN.
+
+2015-06-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Timeout-test.inc: Also check that "time -t 0" produces 
+	no output.  (Attempt at stopping failures under OpenBSD 5.5.)
+
+2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* configure.ac (AC_CHECK_HEADERS): Check for stropts.h.
+	* info/pseudotty.c [HAVE_STROPTS_H]: Perform STREAMS ioctl's on 
+	slave device, as recommended in the GNU C Library Reference 
+	Manual.  (Attempt at stopping hang of test replace-viewed.sh 
+	under Solaris 10.)
+
+2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/c-u-m-x-scroll-forward: Synch with controlled program 
+	before sending in typed input.  (Attempt at fixing test failures 
+	under CentOS.)
+
+2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/index-apropos.sh: Don't send C-g to controlled program.
+
+2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/replace-viewed.sh: Use rm -f instead of rm.
+
+2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (forget_info_file): Function replaced.  Don't 
+	free the file buffer because it could still be referenced in a 
+	displayed node.
+	* info/Makefile.am (XFAIL_TESTS): Remove replace-viewed.sh.
+	* info/nodes.h (N_Gone): New symbol.
+
+2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/replaced-viewed.sh: New test.  (Bug reported by Benno 
+	Schulenberg).
+	* info/Makefile.am (TESTS, XFAIL_TESTS): Add it.
+
+2015-06-07  Karl Berry  <karl@freefriends.org>
+
+	* Pretest 5.9.93.
+
 2015-06-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Timeout-test.inc: Check for "read -t" slightly 

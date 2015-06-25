@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6305 2015-06-03 22:29:56Z karl $
+# $Id: Makefile.am 6338 2015-06-16 22:57:48Z karl $
 # Makefile.am for texinfo/texindex.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -76,3 +76,7 @@ ti.texi: ti.twjr
 
 # a fun cartoon used in the literate program.
 EXTRA_DIST += dek_idx.png
+
+TESTS = \
+        tests/ti-helpversion.sh
+EXTRA_DIST += $(TESTS)

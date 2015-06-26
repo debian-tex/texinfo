@@ -1,3 +1,9 @@
+texinfo (5.9.96.dfsg.1-2) unstable; urgency=medium
+
+  * use awk by default, change dep to awk (Closes: #790004, #790019)
+
+ -- Norbert Preining <preining@debian.org>  Fri, 26 Jun 2015 20:27:35 +0900
+
 texinfo (5.9.96.dfsg.1-1) unstable; urgency=medium
 
   * add dependency on gawk (texindex)

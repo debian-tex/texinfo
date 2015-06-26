@@ -20,7 +20,7 @@ build-indep: build-stamp
 build-stamp:
 	dh_testdir
 	dh_autotools-dev_updateconfig
-	./configure $(shell dpkg-buildflags --export=configure) \
+	AWK=awk ./configure $(shell dpkg-buildflags --export=configure) \
 	  --with-external-Text-Unidecode=yes \
 	  --with-external-libintl-perl=yes \
 	  --prefix=/usr \

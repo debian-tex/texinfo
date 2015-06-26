@@ -19,6 +19,7 @@ srcdir=${srcdir:-.}
 . $t/Init-inter.inc
 
 run_ginfo -f inc-sea-history
+synch_with_program
 # Check that we go back to the right node after an incremental search
 printf '\02301234\b4\b\b34\b\bqwerty\b\b\b\b\b\b34' >$PTY_TYPE
 printf '\rD' >$PTY_TYPE

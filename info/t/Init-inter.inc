@@ -160,11 +160,13 @@ run_ginfo ()
     echo 'pgrep program not found - cannot get PID of ginfo process' >&2
     GINFO_PID=unknown
   fi
-  #
-  # If the PID is unknown, wait for a short time to wait for the program 
-  # to start.  Normally this isn't needed, but on a few tests, it breaks
-  # otherwise, possibly because some bytes have special meaning to the 
-  # terminal, like C-u for kill and C-s for stop, and haven't been 
-  # turned off yet.
-  test $GINFO_PID = unknown && sleep 1
+}
+
+synch_with_program ()
+{
+  # Wait for the program to do its terminal initialization, so that
+  # bytes like C-u and C-s will not be special.
+  printf D >$PTY_TYPE
+  while test ! -f $GINFO_OUTPUT ; do sleep 1 ; done
+  rm -f $GINFO_OUTPUT
 }

@@ -19,7 +19,10 @@
    
    Originally written by Gavin Smith.  */
 
-#define _XOPEN_SOURCE 500
+#define _XOPEN_SOURCE 600
+/* SunOS 5.10 on SPARC doesn't allow compilation in C99 mode with
+   _XOPEN_SOURCE with a smaller value (and the gnulib stdarg module
+   puts us in C99 mode. */
 
 #include <config.h>
 #include <errno.h>

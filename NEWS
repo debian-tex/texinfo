@@ -1,4 +1,4 @@
-$Id: NEWS 6239 2015-05-03 17:22:08Z eliz $
+$Id: NEWS 6363 2015-06-26 12:36:32Z gavin $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -23,6 +23,7 @@ one of the relevant sections:
 
 -------------------------------------------------------------------------------
 
+6.0 (26 June 2015)
 * Language:
   . new commands @sub and @sup, for textual subscripts and superscripts.
   . new command @U to insert a Unicode character by code point.
@@ -44,8 +45,8 @@ one of the relevant sections:
   . a bit faster.
 
 * info:
-  . invoking `info foo bar' looks for bar as an index entry in manual foo,
-    if not found as a top-level menu item.
+  . invoking as `info foo bar' looks for bar as an index entry in manual
+    foo, if not found as a top-level menu item.
   . invoking info with an absolute or explicitly relative file name
     (./foo.info, /tmp/foo.info, etc.) just visits that file.
   . separate `infokey' program has been removed - the .infokey file is

@@ -1,3 +1,10 @@
+texinfo (6.0.0.dfsg.1-1) unstable; urgency=medium
+
+  * Imported Upstream version 6.0.0.dfsg.1
+  * unfuzzify for 6.0.0 release
+
+ -- Norbert Preining <preining@debian.org>  Sat, 27 Jun 2015 00:53:21 +0900
+
 texinfo (5.9.96.dfsg.1-2) unstable; urgency=medium
 
   * use awk by default, change dep to awk (Closes: #790004, #790019)

@@ -1,4 +1,4 @@
-# $Id: Parser.pm 6251 2015-05-06 00:39:09Z gavin $
+# $Id: Parser.pm 6363 2015-06-26 12:36:32Z gavin $
 # Parser.pm: parse texinfo code into a tree.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -92,7 +92,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.1.90';
+$VERSION = '6.0';
 
 sub N__($)
 {

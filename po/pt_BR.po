@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-06-20 19:07+0100\n"
+"POT-Creation-Date: 2015-06-26 13:52+0100\n"
 "PO-Revision-Date: 2015-06-07 05:40-0300\n"
 "Last-Translator: Jorge Barros de Abreu <ficmatin10@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldpbr-translation@lists.sourceforge."
@@ -2076,7 +2076,7 @@ msgstr "nenhuma entrada encontrada em `%s'; nada apagado"
 
 #: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:855
 #: tp/Texinfo/Convert/Converter.pm:893 tp/Texinfo/Convert/Converter.pm:1204
-#: tp/Texinfo/Convert/DocBook.pm:325 tp/Texinfo/Convert/HTML.pm:6499
+#: tp/Texinfo/Convert/DocBook.pm:326 tp/Texinfo/Convert/HTML.pm:6499
 #: tp/Texinfo/Convert/HTML.pm:6523 tp/Texinfo/Convert/HTML.pm:6900
 #: tp/Texinfo/Convert/HTML.pm:6958 tp/Texinfo/Convert/HTML.pm:7036
 #: tp/Texinfo/Convert/HTML.pm:7113 tp/Texinfo/Convert/IXIN.pm:293
@@ -2176,7 +2176,7 @@ msgid "%s: output incompatible with split"
 msgstr "%s: sa@'{i}da incompat@'{i}vel com quebra"
 
 #: tp/Texinfo/Convert/Converter.pm:876 tp/Texinfo/Convert/Converter.pm:909
-#: tp/Texinfo/Convert/DocBook.pm:361 tp/Texinfo/Convert/HTML.pm:6926
+#: tp/Texinfo/Convert/DocBook.pm:362 tp/Texinfo/Convert/HTML.pm:6926
 #: tp/Texinfo/Convert/HTML.pm:6984 tp/Texinfo/Convert/IXIN.pm:915
 #: tp/Texinfo/Convert/Info.pm:161 tp/Texinfo/Convert/Info.pm:187
 #: tp/Texinfo/Convert/Info.pm:215 tp/Texinfo/Convert/Info.pm:275
@@ -2195,12 +2195,12 @@ msgstr "n@~{a}o posso criar diret@'{o}rios `%s' ou `%s': %s"
 msgid "could not create directory `%s': %s"
 msgstr "n@~{a}o posso criar diret@'{o}rio `%s': %s"
 
-#: tp/Texinfo/Convert/DocBook.pm:968
+#: tp/Texinfo/Convert/DocBook.pm:969
 #, perl-format
 msgid "@image file `%s' not found, using `%s'"
 msgstr "arquivo @image `%s' n@~{a}o encontrado, usando `%s'"
 
-#: tp/Texinfo/Convert/DocBook.pm:1082 tp/Texinfo/Parser.pm:5355
+#: tp/Texinfo/Convert/DocBook.pm:1083 tp/Texinfo/Parser.pm:5355
 msgid "no argument specified for @U"
 msgstr "nenhum argumento especificado para @U"
 

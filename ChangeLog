@@ -1,3 +1,54 @@
+2015-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS, util/texi2dvi, util/texi2pdf, 
+	doc/refcard/txirefcard.tex, configure.ac: 6.0 release.
+
+2015-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Multiple Spaces): Correct explanation of @NL.
+
+2015-06-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\macrolineargctxt): New macro, based on 
+	\macroargctxt.
+	(\defmacro) <one argument non-recursive>,
+	<one argument recursive>: Don't call \macroargctxt.
+	(\braceorlinexxx) Call \macroargctxt only if a { follows the 
+	macro name, otherwise call \macrolineargctxt.  (Various reports 
+	from, inter alia, Werner Lemberg and David Kastrup.)
+
+2015-06-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/DocBook.pm (@inline_elements): Add 
+	'subscript' and 'superscript' so they can show up in a @def* 
+	line.  Bug report from Per Bothner.
+
+2015-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc (run_ginfo): Remove delay if PID of 
+	process is unknown.
+	
+	* info/t/Init-inter.inc (synch_with_program): Add function.
+	* info/t/c-u-m-x-scroll-forward.sh, info/t/gc-split.sh,
+	info/t/inc-sea-forward-non-regex.sh, info/t/inc-sea-forward.sh,
+	info/t/inc-sea-history.sh, info/t/inc-sea-insensitive.sh: Use 
+	it.
+
+2015-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/pseudotty.c: Define _XOPEN_SOURCE as 600 instead of 500.
+
+2015-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/echo-area.c (info_read_in_echo_area)
+	(info_read_completing_internal, info_read_maybe_completing)
+	(info_read_completing_in_echo_area_with_exclusions): Add const
+	qualifier to char * in parameter list.
+
+2015-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* run gnulib --add-import
+
 2015-06-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* pretest 5.9.95, 5.9.96

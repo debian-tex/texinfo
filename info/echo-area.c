@@ -1,5 +1,5 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c 5926 2014-11-13 17:47:21Z gavin $
+   $Id: echo-area.c 6355 2015-06-23 19:12:56Z gavin $
 
    Copyright 1993, 1997, 1998, 1999, 2001, 2004, 2007, 2008, 2011, 2013,
    2014 Free Software Foundation, Inc.
@@ -207,7 +207,7 @@ read_and_dispatch_in_echo_area (void)
    or NULL if the user aborted out of this read.  PROMPT, if
    non-null, is a prompt to print before reading the line. */
 char *
-info_read_in_echo_area (char *prompt)
+info_read_in_echo_area (const char *prompt)
 {
   char *line;
 
@@ -910,7 +910,7 @@ completions_window_p (WINDOW *window)
    exit unless the line read completes, or is empty.  Use EXCLUDE_FUNC to
    exclude items in COMPLETIONS. */
 char *
-info_read_completing_internal (char *prompt, REFERENCE **completions,
+info_read_completing_internal (const char *prompt, REFERENCE **completions,
                                int force, reference_bool_fn exclude_func)
 {
   char *line;
@@ -1007,7 +1007,7 @@ info_read_completing_internal (char *prompt, REFERENCE **completions,
   
 /* Read a line in the echo area with completion over COMPLETIONS. */
 char *
-info_read_completing_in_echo_area (char *prompt, REFERENCE **completions)
+info_read_completing_in_echo_area (const char *prompt, REFERENCE **completions)
 {
   return info_read_completing_internal (prompt, completions, 1, 0);
 }
@@ -1015,7 +1015,7 @@ info_read_completing_in_echo_area (char *prompt, REFERENCE **completions)
 /* Read a line in the echo area allowing completion over COMPLETIONS, but
    not requiring it. */
 char *
-info_read_maybe_completing (char *prompt, REFERENCE **completions)
+info_read_maybe_completing (const char *prompt, REFERENCE **completions)
 {
   return info_read_completing_internal (prompt, completions, 0, 0);
 }
@@ -1023,7 +1023,7 @@ info_read_maybe_completing (char *prompt, REFERENCE **completions)
 /* Read a line in the echo area with completion over COMPLETIONS, using
    EXCLUDE to exclude items from the completion list. */
 char *
-info_read_completing_in_echo_area_with_exclusions (char *prompt,
+info_read_completing_in_echo_area_with_exclusions (const char *prompt,
      REFERENCE **completions, reference_bool_fn exclude)
 {
   return info_read_completing_internal (prompt, completions, 1, exclude);

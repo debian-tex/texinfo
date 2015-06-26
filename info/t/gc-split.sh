@@ -19,6 +19,7 @@ srcdir=${srcdir:-.}
 . $t/Init-inter.inc
 
 run_ginfo -f split
+synch_with_program
 # Cause the garbage collector to run in a split file by cancelling an 
 # incremental search.  Refresh the screen afterwards to increase the 
 # chances of trying to access freed file contents.

@@ -30,10 +30,7 @@ COLUMNS=80; export COLUMNS
 
 run_ginfo -f intera -n 'Scroll four lines'
 
-# Wait for the program to do its terminal initialization, so that C-u
-# will not be special.
-printf D >$PTY_TYPE
-while test ! -f $GINFO_OUTPUT ; do sleep 1 ; done
+sync_with_program
 
 # C-u M-x scroll-forward should scroll four lines, not four screens
 printf '\025\033xscroll-forward\r' >$PTY_TYPE

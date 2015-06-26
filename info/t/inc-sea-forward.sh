@@ -19,6 +19,7 @@ srcdir=${srcdir:-.}
 . $t/Init-inter.inc
 
 run_ginfo -f search
+synch_with_program
 
 # Search for "match" with incremental search.  Test deleting characters from
 # search string with backspace.  Go forward to match in next node.  Test

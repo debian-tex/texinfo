@@ -1,4 +1,4 @@
-# $Id: DocBook.pm 6141 2015-02-22 23:35:32Z karl $
+# $Id: DocBook.pm 6363 2015-06-26 12:36:32Z gavin $
 # DocBook.pm: output tree as DocBook.
 #
 # Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -54,7 +54,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.1.90';
+$VERSION = '6.0';
 
 my $nbsp = '&#'.hex('00A0').';';
 my $mdash = '&#'.hex('2014').';';
@@ -121,7 +121,8 @@ my %upper_case_style_commands = (
 );
 
 my @inline_elements = ('emphasis', 'abbrev', 'acronym', 'link', 
-  'inlinemediaobject', 'firstterm', 'footnote', 'replaceable', 'wordasword');
+  'inlinemediaobject', 'firstterm', 'footnote', 'replaceable',
+  'subscript', 'superscript', 'wordasword');
 my %inline_elements;
 foreach my $inline_element (@inline_elements) {
   $inline_elements{$inline_element} = 1;
@@ -1410,7 +1411,7 @@ sub _convert($$;$)
 1;
 
 __END__
-# $Id: DocBook.pm 6141 2015-02-22 23:35:32Z karl $
+# $Id: DocBook.pm 6363 2015-06-26 12:36:32Z gavin $
 # Automatically generated from maintain/template.pod
 
 =head1 NAME

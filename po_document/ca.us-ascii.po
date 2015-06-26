@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo_document 5.9.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-06-20 19:07+0100\n"
+"POT-Creation-Date: 2015-06-26 13:52+0100\n"
 "PO-Revision-Date: 2015-06-08 17:08+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan <ca@dodds.net>\n"
@@ -179,72 +179,72 @@ msgstr "{float_type}"
 msgid "{float_number}"
 msgstr "{float_number}"
 
-#: tp/Texinfo/Convert/DocBook.pm:824
+#: tp/Texinfo/Convert/DocBook.pm:825
 #, perl-brace-format
 msgid "See Info file @file{{myfile}}, node @samp{{mynode}}"
 msgstr "Vegreu fitxer Info @file{{myfile}}, node @samp{{mynode}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:829
+#: tp/Texinfo/Convert/DocBook.pm:830
 #, perl-brace-format
 msgid "See node @samp{{mynode}}"
 msgstr "Vegeu node @samp{{mynode}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:833
+#: tp/Texinfo/Convert/DocBook.pm:834
 #, perl-brace-format
 msgid "See Info file @file{{myfile}}"
 msgstr "Vegeu fitxer Info @file{{myfile}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:873
+#: tp/Texinfo/Convert/DocBook.pm:874
 #, perl-brace-format
 msgid "section ``{section_name}'' in @cite{{book}}"
 msgstr "secci@'o ``{section_name}'' a @cite{{book}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:878
+#: tp/Texinfo/Convert/DocBook.pm:879
 #, perl-brace-format
 msgid "See section ``{section_name}'' in @cite{{book}}"
 msgstr "Vegeu secci@'o ``{section_name}'' a @cite{{book}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:883
+#: tp/Texinfo/Convert/DocBook.pm:884
 #, perl-brace-format
 msgid "see section ``{section_name}'' in @cite{{book}}"
 msgstr "vegeu secci@'o ``{section_name}'' a @cite{{book}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:890 tp/Texinfo/Convert/HTML.pm:3287
+#: tp/Texinfo/Convert/DocBook.pm:891 tp/Texinfo/Convert/HTML.pm:3287
 #, perl-brace-format
 msgid "@cite{{book}}"
 msgstr "@cite{{book}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:894 tp/Texinfo/Convert/HTML.pm:3264
+#: tp/Texinfo/Convert/DocBook.pm:895 tp/Texinfo/Convert/HTML.pm:3264
 #, perl-brace-format
 msgid "See @cite{{book}}"
 msgstr "Vegeu @cite{{book}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:898 tp/Texinfo/Convert/HTML.pm:3241
+#: tp/Texinfo/Convert/DocBook.pm:899 tp/Texinfo/Convert/HTML.pm:3241
 #, perl-brace-format
 msgid "see @cite{{book}}"
 msgstr "vegeu @cite{{book}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:913
+#: tp/Texinfo/Convert/DocBook.pm:914
 #, perl-brace-format
 msgid "{title_ref}"
 msgstr "{title_ref}"
 
-#: tp/Texinfo/Convert/DocBook.pm:918
+#: tp/Texinfo/Convert/DocBook.pm:919
 #, perl-brace-format
 msgid "See {title_ref}"
 msgstr "Vegeu {title_ref}"
 
-#: tp/Texinfo/Convert/DocBook.pm:923
+#: tp/Texinfo/Convert/DocBook.pm:924
 #, perl-brace-format
 msgid "see {title_ref}"
 msgstr "vegeu {title_ref}"
 
-#: tp/Texinfo/Convert/DocBook.pm:1060 tp/Texinfo/Convert/Plaintext.pm:2204
+#: tp/Texinfo/Convert/DocBook.pm:1061 tp/Texinfo/Convert/Plaintext.pm:2204
 #, perl-brace-format
 msgid "{abbr_or_acronym} ({explanation})"
 msgstr "{abbr_or_acronym} ({explanation})"
 
-#: tp/Texinfo/Convert/DocBook.pm:1221 tp/Texinfo/Convert/Plaintext.pm:2390
+#: tp/Texinfo/Convert/DocBook.pm:1222 tp/Texinfo/Convert/Plaintext.pm:2390
 #: tp/Texinfo/Convert/HTML.pm:3593
 #, perl-brace-format
 msgid "@b{{quotation_arg}:} "

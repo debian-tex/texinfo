@@ -1,5 +1,5 @@
 /* echo-area.h -- Functions used in reading information from the echo area.
-   $Id: echo-area.h 5912 2014-11-07 10:49:13Z gavin $
+   $Id: echo-area.h 6355 2015-06-23 19:12:56Z gavin $
 
    Copyright 1993, 1997, 2004, 2007, 2008, 2011, 2013, 2014
    Free Software Foundation, Inc.
@@ -38,27 +38,27 @@ extern void echo_area_prep_read (void);
 
 typedef int (*reference_bool_fn) (REFERENCE *);
 
-extern char *info_read_completing_internal (char *prompt,
+extern char *info_read_completing_internal (const char *prompt,
     REFERENCE **completions, int force, reference_bool_fn exclude);
 
 /* Read a line of text in the echo area.  Return a malloc ()'ed string,
    or NULL if the user aborted out of this read.  PROMPT, if
    non-null, is a prompt to print before reading the line. */
-extern char *info_read_in_echo_area (char *prompt);
+extern char *info_read_in_echo_area (const char *prompt);
 
 /* Read a line in the echo area with completion over COMPLETIONS. */
-char *info_read_completing_in_echo_area (char *prompt,
+char *info_read_completing_in_echo_area (const char *prompt,
                                          REFERENCE **completions);
 
 /* Read a line in the echo area allowing completion over COMPLETIONS, but
    not requiring it. */
-extern char *info_read_maybe_completing (char *prompt,
+extern char *info_read_maybe_completing (const char *prompt,
                                          REFERENCE **completions);
 
 /* Read a line in the echo area with completion over COMPLETIONS, using
    EXCLUDE to exclude items from the completion list. */
 char *
-info_read_completing_in_echo_area_with_exclusions (char *prompt,
+info_read_completing_in_echo_area_with_exclusions (const char *prompt,
     REFERENCE **completions, reference_bool_fn exclude);
 
 extern void ea_insert (WINDOW *window, int count, int key);

@@ -1,0 +1,48 @@
+Make texino indices reproducible by genrating deterministic order
+From Debian #790065
+While working on the "reproducible builds" effort [1], we have noticed
+that texinfo generates indices in a non-deterministic order.
+
+This appears to happen because the index sort is not stable with respect
+to the line number, resulting in output non-determinstically changing
+from:                                                                           
+                                                                                
+  * Entry   (line 1)                                                            
+  * Entry   (line 2)
+
+and
+
+  * Entry   (line 2)
+  * Entry   (line 1)
+
+.. when the entry is the same string.
+
+The attached patch adds the line number to the sort comparator. Once
+applied, (some) packages using texinfo can be built reproducibly in
+our reproducible toolchain.
+
+Patch by Chris Lamb
+---
+ tp/Texinfo/Structuring.pm |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- texinfo.orig/tp/Texinfo/Structuring.pm
++++ texinfo/tp/Texinfo/Structuring.pm
+@@ -1984,6 +1984,9 @@
+   if ($res == 0) {
+     $res = ($key1->{'number'} <=> $key2->{'number'});
+   }
++  if ($res == 0) {                                                             
++    $res = ($key1->{'line_nr'} <=> $key2->{'line_nr'});                        
++  }                                                                            
+   return $res;
+ }
+ 
+@@ -2016,6 +2019,7 @@
+   foreach my $index_name (keys(%$index_entries)) {
+     foreach my $entry (@{$index_entries->{$index_name}}) {
+       $entry->{'in_code'} = $index_names->{$entry->{'index_name'}}->{'in_code'};
++      $entry->{'line_nr'} = $entry->{'command'}->{'line_nr'}->{'line_nr'};
+       $options->{'code'} = $entry->{'in_code'};
+       $entry->{'key'} = Texinfo::Convert::Text::convert(
+                               {'contents' => $entry->{'content'}}, $options);

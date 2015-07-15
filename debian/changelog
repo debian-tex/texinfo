@@ -1,3 +1,10 @@
+texinfo (6.0.0.dfsg.1-4~1) UNRELEASED; urgency=medium
+
+  * including a patch to allow for info files in subdir (Closes: #792328)
+    STILL IN TESTING
+
+ -- Norbert Preining <preining@debian.org>  Thu, 16 Jul 2015 08:29:19 +0900
+
 texinfo (6.0.0.dfsg.1-3) unstable; urgency=medium
 
   * ignore jpg files in update-info-dir (Closes: #790519)

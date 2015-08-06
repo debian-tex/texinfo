@@ -7,3 +7,4 @@ do-not-require-automake-1.15
 upstream-svn6390-index-deterministic
 #texinfo-make-index-deterministic
 slash-in-dir-entry
+follow-strategy-remain-svn6502

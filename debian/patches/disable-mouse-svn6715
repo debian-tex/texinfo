@@ -1,0 +1,15 @@
+---
+ info/terminal.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- texinfo.orig/info/terminal.c
++++ texinfo/info/terminal.c
+@@ -76,7 +76,7 @@
+ VFunction *terminal_scroll_terminal_hook = NULL;
+ 
+ /* User variable 'mouse'.  Values can be MP_* constants in terminal.h. */
+-int mouse_protocol = MP_NORMAL_TRACKING;
++int mouse_protocol = MP_NONE;
+ 
+ /* **************************************************************** */
+ /*                                                                  */

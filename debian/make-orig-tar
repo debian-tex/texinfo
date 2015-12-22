@@ -8,7 +8,6 @@ set -e
 
 nonfreefiles="fdl.texi	\
 	info-stnd.texi	\
-	info.texi	\
 	texinfo.texi"
 addcopyfiles="version-stnd.texi version.texi"
 
@@ -63,19 +62,19 @@ done
 
 cd ../..
 
-tar -cJf texinfo-${fullversion}.dfsg.1.tar.xz texinfo-${fullversion}.dfsg.1
-tar -cJf texinfo-doc-nonfree-${fullversion}.tar.xz texinfo-doc-nonfree-$fullversion
+tar -cJf texinfo_${fullversion}.dfsg.1.tar.xz texinfo-${fullversion}.dfsg.1
+tar -cJf texinfo-doc-nonfree_${fullversion}.tar.xz texinfo-doc-nonfree-$fullversion
 
-if [ -r "$curdir/texinfo-${fullversion}.dfsg.1.tar.xz" ] ; then
-  echo "texinfo-${fullversion}.dfsg.1.tar.xz already present in cwd, leaving it in $tmpdir"
+if [ -r "$curdir/texinfo_${fullversion}.dfsg.1.tar.xz" ] ; then
+  echo "texinfo_${fullversion}.dfsg.1.tar.xz already present in cwd, leaving it in $tmpdir"
 else
-  mv texinfo-${fullversion}.dfsg.1.tar.xz "$curdir"
+  mv texinfo_${fullversion}.dfsg.1.tar.xz "$curdir"
 fi
 
-if [ -r "$curdir/texinfo-doc-nonfree-${fullversion}.tar.xz" ] ; then
-  echo "texinfo-doc-nonfree-${fullversion}.tar.xz already present in cwd, leaving it in $tmpdir"
+if [ -r "$curdir/texinfo-doc-nonfree_${fullversion}.tar.xz" ] ; then
+  echo "texinfo-doc-nonfree_${fullversion}.tar.xz already present in cwd, leaving it in $tmpdir"
 else
-  mv texinfo-doc-nonfree-${fullversion}.tar.xz "$curdir"
+  mv texinfo-doc-nonfree_${fullversion}.tar.xz "$curdir"
 fi
 
 rm -rf texinfo-${fullversion}.dfsg.1

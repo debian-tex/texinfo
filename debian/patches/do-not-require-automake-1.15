@@ -4,7 +4,7 @@
 
 --- texinfo.orig/configure
 +++ texinfo/configure
-@@ -4148,13 +4148,13 @@
+@@ -3979,13 +3979,13 @@
  
  # Some tools Automake needs.
  

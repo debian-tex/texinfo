@@ -5,35 +5,35 @@ dont build the info documentation, it has been removed
 
 --- texinfo.orig/doc/Makefile.in
 +++ texinfo/doc/Makefile.in
-@@ -279,14 +279,16 @@
+@@ -265,14 +265,16 @@
  am__v_texidevnull_ = $(am__v_texidevnull_@AM_DEFAULT_V@)
  am__v_texidevnull_0 = > /dev/null
  am__v_texidevnull_1 = 
--INFO_DEPS = texinfo.info info-stnd.info info.info
-+#INFO_DEPS = texinfo.info info-stnd.info info.info
+-INFO_DEPS = texinfo.info info-stnd.info
++#INFO_DEPS = texinfo.info info-stnd.info
 +INFO_DEPS =
  TEXINFO_TEX = $(top_srcdir)/build-aux/texinfo.tex
  am__TEXINFO_TEX_DIR = $(top_srcdir)/build-aux
- DVIS = texinfo.dvi info-stnd.dvi info.dvi
- PDFS = texinfo.pdf info-stnd.pdf info.pdf
- PSS = texinfo.ps info-stnd.ps info.ps
- HTMLS = texinfo.html info-stnd.html info.html
--TEXINFOS = texinfo.texi info-stnd.texi info.texi
-+#TEXINFOS = texinfo.texi info-stnd.texi info.texi
+ DVIS = texinfo.dvi info-stnd.dvi
+ PDFS = texinfo.pdf info-stnd.pdf
+ PSS = texinfo.ps info-stnd.ps
+ HTMLS = texinfo.html info-stnd.html
+-TEXINFOS = texinfo.texi info-stnd.texi
++#TEXINFOS = texinfo.texi info-stnd.texi
 +TEXINFOS =
  TEXI2DVI = texi2dvi
  TEXI2PDF = $(TEXI2DVI) --pdf --batch
  MAKEINFOHTML = $(MAKEINFO) --html
-@@ -1470,8 +1472,10 @@
+@@ -1204,8 +1206,10 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
  SUBDIRS = tp_api
- 
- # Put the Texinfo manual first because that's the most important.
--info_TEXINFOS = texinfo.texi info-stnd.texi info.texi
--DISTCLEANFILES = texinfo.info* info*.info*
-+#info_TEXINFOS = texinfo.texi info-stnd.texi info.texi
-+#DISTCLEANFILES = texinfo.info* info*.info*
+-info_TEXINFOS = texinfo.texi info-stnd.texi
+-DISTCLEANFILES = texinfo.info* info-stnd.info*
++#info_TEXINFOS = texinfo.texi info-stnd.texi
++#DISTCLEANFILES = texinfo.info* info-stnd.info*
 +info_TEXINFOS =
 +DISTCLEANFILES =
- 
- # Use the programs built in our distribution, taking account of possible
- # cross-compiling.
+ MAKEINFO_ENVIRONMENT = TEXINFO_DEV_SOURCE=1 ; export TEXINFO_DEV_SOURCE ; \
+                        top_srcdir="$(top_srcdir)" ; export top_srcdir ; \
+                        top_builddir="$(top_builddir)" ; export top_builddir ;

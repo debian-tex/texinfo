@@ -10,4 +10,4 @@ fi
  
 
 #find Texinfo/ -name '*.pm' | xargs sed -i -e 's/\$VERSION = '"'"'\([0-9.]\+\)'"'"'/$VERSION = '"'$VERS'"'/'
-find Texinfo/ -name '*.pm' | xargs perl -pi -e 's/\$VERSION = '"'"'([0-9.]+)'"'"'/\$VERSION = '"'$VERS'"'/'
+find Texinfo/ -name '*.pm' | xargs perl -pi -e 's/\$VERSION = '"'([0-9.]+[^']*)'"'/\$VERSION = '"'$VERS'"'/'

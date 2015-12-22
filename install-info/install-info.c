@@ -1,5 +1,5 @@
 /* install-info -- merge Info directory entries from an Info file.
-   $Id: install-info.c 6165 2015-02-27 18:46:10Z gavin $
+   $Id: install-info.c 6802 2015-11-22 21:16:44Z gavin $
 
    Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
@@ -636,7 +636,6 @@ ensure_dirfile_exists (char *dirfile)
     {
       FILE *f;
       char *readerr = strerror (errno);
-      close (desc);
       f = fopen (dirfile, "w");
       if (f)
         {
@@ -671,6 +670,7 @@ The first time you invoke Info you start off looking at this node.\n\
   else
     close (desc); /* It already existed, so fine.  */
 }
+
 
 /* Open FILENAME and return the resulting stream pointer.  If it doesn't
    exist, try FILENAME.gz.  If that doesn't exist either, call
@@ -770,13 +770,32 @@ open_possibly_compressed_file (char *filename,
   nread = fread (data, sizeof (data), 1, f);
   if (nread != 1)
     {
-      /* Empty files don't set errno.  Calling code can check for
-         this, so make sure errno == 0 just in case it isn't already. */
       if (nread == 0)
-        errno = 0;
-      return 0;
+        {
+          /* Try to create the file if its empty. */
+          if (feof (f) && create_callback)
+            {
+              if (fclose (f) != 0)
+                return 0; /* unknown error closing file */
+
+              if (remove (filename) != 0)
+                return 0; /* unknown error deleting file */
+
+              (*create_callback) (filename);
+              f = fopen (*opened_filename, FOPEN_RBIN);
+              if (!f)
+                return 0;
+              nread = fread (data, sizeof (data), 1, f);
+              if (nread == 0)
+                return 0;
+              goto determine_file_type; /* success */
+            }
+        }
+      errno = 0;
+      return 0; /* unknown error */
     }
 
+determine_file_type:
   if (!compression_program)
     compression_program = &local_compression_program;
 
@@ -1063,8 +1082,13 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
     fclose (output);
 }
 
-/* Parse the input to find the section names and the entry names it
-   specifies.  Return the number of entries to add from this file.  */
+/* Read through the input LINES, to find the section names and the
+   entry names it specifies. Each INFO-DIR-SECTION entry is added
+   to the SECTIONS linked list.  Each START-INFO-DIR-ENTRY block is added to 
+   the ENTRIES linked list, and the last group of INFO-DIR-SECTION entries
+   is recorded in next->entry_sections and next->entry_sections_tail, where
+   next is the new entry.  Return the number of entries to add from this 
+   file.  */
 int
 parse_input (const struct line_data *lines, int nlines,
              struct spec_section **sections, struct spec_entry **entries,
@@ -1083,12 +1107,6 @@ parse_input (const struct line_data *lines, int nlines,
   if (ignore_sections && ignore_entries)
     return 0;
 
-  /* Loop here processing lines from the input file.  Each
-     INFO-DIR-SECTION entry is added to the SECTIONS linked list.
-     Each START-INFO-DIR-ENTRY block is added to the ENTRIES linked
-     list, and all its entries inherit the chain of SECTION entries
-     defined by the last group of INFO-DIR-SECTION entries we have
-     seen until that point.  */
   for (i = 0; i < nlines; i++)
     {
       if (!ignore_sections
@@ -1130,6 +1148,8 @@ parse_input (const struct line_data *lines, int nlines,
                  tail pointer.  */
               reset_tail = 1;
 
+              /* Save start of the entry.  If this is non-zero, we're
+                 already inside an entry, so fail. */
               if (start_of_this_entry != 0)
                 fatal (_("START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"));
               start_of_this_entry = lines[i + 1].start;
@@ -1142,9 +1162,8 @@ parse_input (const struct line_data *lines, int nlines,
                                 lines[i].start, lines[i].size)
                       && sizeof ("END-INFO-DIR-ENTRY") - 1 == lines[i].size))
                 {
-                  /* We found an end of this entry.  Allocate another
-                     entry, fill its data, and add it to the linked
-                     list.  */
+                  /* We found the end of this entry.  Save its contents
+                     in a new entry in the linked list.  */
                   struct spec_entry *next
                     = (struct spec_entry *) xmalloc (sizeof (struct spec_entry));
                   next->text
@@ -1153,6 +1172,7 @@ parse_input (const struct line_data *lines, int nlines,
                   next->text_len = lines[i].start - start_of_this_entry;
                   next->entry_sections = head;
                   next->entry_sections_tail = tail;
+                  next->missing_basename = 0;
                   next->next = *entries;
                   *entries = next;
                   n_entries++;
@@ -1379,32 +1399,36 @@ adjust_column (size_t column, char c)
   return column;
 }
 
-/* Indent the Info entry's NAME and DESCRIPTION.  Lines are wrapped at the
-   WIDTH column.  The description on first line is indented at the CALIGN-th 
-   column, and all subsequent lines are indented at the ALIGN-th column.  
-   The resulting Info entry is put into OUTSTR.
+/* Format the Info entry's NAME and DESCRIPTION.
    NAME is of the form "* TEXT (TEXT)[:TEXT].".
+   The description on the first line is indented at the CALIGN-th column, and 
+   all subsequent lines are indented at the ALIGN-th column.
+   Lines are wrapped at the WIDTH column.
+   The resulting Info entry is put into OUTSTR.
  */
 static int
-format_entry (char *name, size_t name_len, char *desc, size_t desc_len, 
-              int calign, int align, size_t width, 
-              char **outstr, size_t *outstr_len)
+format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
+              int calign, int align, size_t width,
+              char **outstr_out, size_t *outstr_len)
 {
   int i, j;
   char c;
   size_t column = 0;            /* Screen column where next char will go */
-  size_t offset_out = 0;        /* Index in `line_out' for next char. */
+
+  /* Used to collect a line at a time, before transferring to outstr. */
   static char *line_out = NULL;
-  static size_t allocated_out = 0;
+  size_t offset_out = 0;           /* Index in `line_out' for next char. */
+  static size_t allocated_out = 0; /* Space allocated in `line_out'. */
+  char *outstr;
+
   if (!desc || !name)
     return 1;
 
-  *outstr = malloc (width  + 
-                    (((desc_len  + width) / (width - align)) * width) * 2 
-                    * sizeof (char));
-  *outstr[0] = '\0';
+  outstr = xmalloc (width
+         + (desc_len + width) / (width - align) * width * 2 * sizeof (char));
+  outstr[0] = '\0';
 
-  strncat (*outstr, name, name_len);
+  strncat (outstr, name, name_len);
 
   column = name_len;
 
@@ -1413,12 +1437,12 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
       /* Name is too long to have description on the same line. */
       if (desc_len > 1)
         {
-          strncat (*outstr, "\n", 1);
+          strncat (outstr, "\n", 1);
           column = 0;
           for (j = 0; j < calign - 1; j++)
             {
               column = adjust_column (column, ' ');
-              strncat (*outstr, " ", 1);
+              strncat (outstr, " ", 1);
             }
         }
     }
@@ -1428,7 +1452,7 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
         if (desc_len <= 2)
           break;
         column = adjust_column (column, ' ');
-        strncat (*outstr, " ", 1);
+        strncat (outstr, " ", 1);
       }
 
   for (i = 0; i < desc_len; i++)
@@ -1439,17 +1463,20 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
       if (offset_out + 1 >= allocated_out)
         {
           allocated_out = offset_out + 1;
-          line_out = (char *) realloc ((void *)line_out, allocated_out);
+          line_out = (char *) xrealloc ((void *)line_out, allocated_out + 1);
+          /* The + 1 here shouldn't be necessary, but a crash was reported
+             for a following strncat call. */
         }
 
       if (c == '\n')
         {
           line_out[offset_out++] = c;
-          strncat (*outstr, line_out, offset_out);
+          strncat (outstr, line_out, offset_out);
           column = offset_out = 0;
           continue;
         }
 
+      /* Come here from inside "column > width" block below. */
     rescan:
       column = adjust_column (column, c);
 
@@ -1480,12 +1507,12 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
 
               /* Found a blank.  Don't output the part after it. */
               logical_end++;
-              strncat (*outstr, line_out, logical_end);
-              strncat (*outstr, "\n", 1);
+              strncat (outstr, line_out, logical_end);
+              strncat (outstr, "\n", 1);
               for (j = 0; j < align - 1; j++)
                 {
                   column = adjust_column (column, ' ');
-                  strncat (*outstr, " ", 1);
+                  strncat (outstr, " ", 1);
                 }
 
               /* Move the remainder to the beginning of the next 
@@ -1506,21 +1533,21 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
             }
 
           line_out[offset_out++] = '\n';
-          strncat (*outstr, line_out, offset_out);
+          strncat (outstr, line_out, offset_out);
           column = offset_out = 0;
           goto rescan;
         }
-
       line_out[offset_out++] = c;
     }
 
   if (desc_len <= 2)
-    strncat (*outstr, "\n", 1);
+    strncat (outstr, "\n", 1);
 
   if (offset_out)
-    strncat (*outstr, line_out, offset_out);
+    strncat (outstr, line_out, offset_out);
 
-  *outstr_len = strlen (*outstr);
+  *outstr_out = outstr;
+  *outstr_len = strlen (outstr);
   return 1;
 }
 
@@ -2342,8 +2369,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
                    &input_sections, &entries_to_add_from_file, delete_flag);
   if (!delete_flag)
     {
-      /* If there are no entries on the command-line at all, so we use the 
-         entries found in the Info file itself (if any). */
+      /* If there are no entries on the command-line at all, use the entries
+         found in the Info file itself (if any). */
       if (entries_to_add == NULL)
         {
           entries_to_add = entries_to_add_from_file;
@@ -2776,11 +2803,9 @@ compare_entries_text (const void *p1, const void *p2)
   return mbsncasecmp (text1, text2, len1 <= len2 ? len1 : len2);
 }
 
-/* Insert ENTRY into the add_entries_before vector
-   for line number LINE_NUMBER of the dir file.
-   DIR_LINES and N_ENTRIES carry information from like-named variables
-   in main.  */
-
+/* Insert ENTRY into the ADD_ENTRIES_BEFORE vector for line number LINE_NUMBER 
+   of the dir file.  DIR_LINES and N_ENTRIES carry information from like-named 
+   variables in main.  */
 void
 insert_entry_here (struct spec_entry *entry, int line_number,
                    struct line_data *dir_lines, int n_entries)
@@ -2801,8 +2826,8 @@ insert_entry_here (struct spec_entry *entry, int line_number,
   for (i = 0; i < n_entries; i++)
     if (dir_lines[line_number].add_entries_before[i] == 0
         || menu_line_lessp (entry->text, strlen (entry->text),
-                            dir_lines[line_number].add_entries_before[i]->text,
-                            strlen (dir_lines[line_number].add_entries_before[i]->text)))
+              dir_lines[line_number].add_entries_before[i]->text,
+              strlen (dir_lines[line_number].add_entries_before[i]->text)))
       break;
 
   if (i == n_entries)

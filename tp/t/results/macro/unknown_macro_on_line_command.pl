@@ -16,8 +16,12 @@ $result_trees{'unknown_macro_on_line_command'} = {
                 'command' => {}
               },
               'parent' => {},
-              'text' => ' file',
+              'text' => ' ',
               'type' => 'empty_spaces_after_command'
+            },
+            {
+              'parent' => {},
+              'text' => 'file'
             }
           ],
           'parent' => {},
@@ -26,8 +30,8 @@ $result_trees{'unknown_macro_on_line_command'} = {
       ],
       'cmdname' => 'setfilename',
       'extra' => {
-        'missing_argument' => 1,
-        'spaces_after_command' => {}
+        'spaces_after_command' => {},
+        'text_arg' => 'file'
       },
       'line_nr' => {
         'file_name' => '',
@@ -41,6 +45,7 @@ $result_trees{'unknown_macro_on_line_command'} = {
 };
 $result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'unknown_macro_on_line_command'}{'contents'}[0];
 $result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'args'}[0];
+$result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'args'}[0];
 $result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'unknown_macro_on_line_command'}{'contents'}[0];
 $result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'parent'} = $result_trees{'unknown_macro_on_line_command'};
@@ -77,15 +82,6 @@ $result_errors{'unknown_macro_on_line_command'} = [
     'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
-  },
-  {
-    'error_line' => ':1: warning: @setfilename missing argument
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@setfilename missing argument',
-    'type' => 'warning'
   }
 ];
 

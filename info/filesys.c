@@ -1,5 +1,5 @@
 /* filesys.c -- filesystem specific functions.
-   $Id: filesys.c 5999 2014-12-29 14:21:24Z gavin $
+   $Id: filesys.c 6435 2015-07-16 17:53:33Z gavin $
 
    Copyright 1993, 1997, 1998, 2000, 2002, 2003, 2004, 2007, 2008, 2009, 2011,
    2012, 2013, 2014 Free Software Foundation, Inc.
@@ -77,8 +77,7 @@ static COMPRESSION_ALIST compress_suffixes[] = {
   { NULL, NULL }
 };
 
-/* Expand the filename in PARTIAL to make a real name for this operating
-   system.  This looks in INFOPATH in order to find the correct file.
+/* Look for the filename PARTIAL in INFOPATH in order to find the correct file.
    Return file name and set *FINFO with information about file.  If it
    can't find the file, it returns NULL, and sets filesys_error_number.
    Return value should be freed by caller. */
@@ -101,7 +100,8 @@ info_find_fullpath (char *partial, struct stat *finfo)
   /* IS_SLASH and IS_ABSOLUTE defined in ../system.h. */
 
   /* If path is absolute already, see if it needs an extension. */
-  if (IS_ABSOLUTE (partial))
+  if (IS_ABSOLUTE (partial)
+      || partial[0] == '.' && IS_SLASH(partial[1]))
     {
       fullpath = info_add_extension (0, partial, finfo);
     }
@@ -113,12 +113,6 @@ info_find_fullpath (char *partial, struct stat *finfo)
       fullpath = info_add_extension (0, partial, finfo);
     }
 
-  /* If filename has a slash in it (for example, begins with "./" or "../", or
-     if there are intermediate directories) interpret it as relative to current
-     directory.  This may be from the command line, or in the subfiles table of
-     a split file. */
-  else if (HAS_SLASH (partial))
-    fullpath = info_add_extension (0, partial, finfo);
   /* If just a simple name element, look for it in the path. */
   else
     fullpath = info_file_in_path (partial, finfo);
@@ -168,11 +162,24 @@ info_file_find_next_in_path (char *filename, int *path_index, struct stat *finfo
       with_extension = info_add_extension (dirname, filename, finfo);
 
       if (with_extension)
-        return with_extension;
+        {
+          if (!IS_ABSOLUTE (with_extension))
+            {
+              /* Prefix "./" to it. */
+              char *s;
+              asprintf (&s, "%s%s", "./", with_extension);
+              free (with_extension);
+              return s;
+            }
+          else
+            return with_extension;
+        }
     }
   return NULL;
 }
 
+/* Return full path of first Info file known as FILENAME in
+   search path.  If relative to current directory, precede it with './'. */
 static char *
 info_file_in_path (char *filename, struct stat *finfo)
 {
@@ -189,6 +196,10 @@ info_add_extension (char *dirname, char *filename, struct stat *finfo)
 {
   char *try_filename;
   register int i, pre_suffix_length = 0;
+  struct stat dummy;
+
+  if (!finfo)
+    finfo = &dummy;
 
   if (dirname)
     pre_suffix_length += strlen (dirname);

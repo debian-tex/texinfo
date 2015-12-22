@@ -1,5 +1,5 @@
 /* pcterm.c -- How to handle the PC terminal for Info under MS-DOS/MS-Windows.
-   $Id: pcterm.c 6348 2015-06-20 08:06:47Z eliz $
+   $Id: pcterm.c 6409 2015-07-11 07:15:10Z eliz $
 
    Copyright 1998, 1999, 2003, 2004, 2007, 2008, 2012, 2013, 2014, 2015
    Free Software Foundation, Inc.
@@ -90,7 +90,7 @@ extern int speech_friendly;	/* defined in info.c */
 
 static struct text_info outside_info;  /* holds screen params outside Info */
 #ifdef _WIN32
-static SHORT norm_attr, inv_attr;
+static SHORT norm_attr, inv_attr, xref_attr;
 static SHORT current_attr;
 static HANDLE hstdin = INVALID_HANDLE_VALUE;
 static HANDLE hstdout = INVALID_HANDLE_VALUE;
@@ -100,7 +100,7 @@ static DWORD old_inpmode;
 static DWORD old_outpmode;
 static UINT output_cp;
 #else
-static unsigned char    norm_attr, inv_attr;
+static unsigned char    norm_attr, inv_attr, xref_attr;
 #endif
 
 static unsigned const char * find_sequence (int);
@@ -231,6 +231,28 @@ void
 textmode (int mode)
 {
   /* Nothing.  */
+}
+
+void
+highvideo (void)
+{
+  int attr;
+  CONSOLE_SCREEN_BUFFER_INFO csbi;
+
+  GetConsoleScreenBufferInfo (hscreen, &csbi);
+  attr = csbi.wAttributes | FOREGROUND_INTENSITY;
+  textattr (attr);
+}
+
+void
+normvideo (void)
+{
+  int attr;
+  CONSOLE_SCREEN_BUFFER_INFO csbi;
+
+  GetConsoleScreenBufferInfo (hscreen, &csbi);
+  attr = csbi.wAttributes & ~FOREGROUND_INTENSITY;
+  textattr (attr);
 }
 
 void
@@ -787,6 +809,34 @@ pc_end_inverse (void)
   textattr (norm_attr);
 }
 
+/* The implementation of the underlined text.  The DOS/Windows console
+   doesn't support underlined text, so we make it blue instead (blue,
+   because this face is used for hyperlinks).  */
+static void
+pc_begin_underline (void)
+{
+  textattr (xref_attr);
+}
+
+static void
+pc_end_underline (void)
+{
+  textattr (norm_attr);
+}
+
+/* Standout (a.k.a. "high video") text.  */
+static void
+pc_begin_standout (void)
+{
+  highvideo ();
+}
+
+static void
+pc_end_standout (void)
+{
+  normvideo ();
+}
+
 /* Move the cursor up one line. */
 static void
 pc_up_line (void)
@@ -1023,6 +1073,12 @@ pc_initialize_terminal (term_name)
   norm_attr    = outside_info.normattr;
   inv_attr     = (((outside_info.normattr &    7) << 4) |
                   ((outside_info.normattr & 0x7f) >> 4));
+#ifdef __MSDOS__
+  xref_attr = CYAN;
+#endif
+#ifdef _WIN32
+  xref_attr = FOREGROUND_BLUE | FOREGROUND_GREEN;
+#endif
 
   /* Does the user want non-default colors?  */
   info_colors = getenv ("INFO_COLORS");
@@ -1091,6 +1147,10 @@ pc_initialize_terminal (term_name)
   /* Set all the hooks to our PC-specific functions.  */
   terminal_begin_inverse_hook       = pc_begin_inverse;
   terminal_end_inverse_hook         = pc_end_inverse;
+  terminal_begin_standout_hook      = pc_begin_standout;
+  terminal_end_standout_hook        = pc_end_standout;
+  terminal_begin_underline_hook     = pc_begin_underline;
+  terminal_end_underline_hook       = pc_end_underline;
   terminal_prep_terminal_hook       = pc_prep_terminal;
   terminal_unprep_terminal_hook     = pc_unprep_terminal;
   terminal_up_line_hook             = pc_up_line;

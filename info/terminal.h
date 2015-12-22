@@ -1,7 +1,7 @@
 /* terminal.h -- The external interface to terminal I/O.
-   $Id: terminal.h 5817 2014-09-10 19:46:09Z gavin $
+   $Id: terminal.h 6804 2015-11-22 22:55:04Z gavin $
 
-   Copyright 1993, 1996, 1997, 2001, 2002, 2004, 2007, 2013, 2014
+   Copyright 1993, 1996, 1997, 2001, 2002, 2004, 2007, 2013, 2014, 2015
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -118,6 +118,12 @@ extern VFunction *terminal_begin_standout_hook;
 extern void terminal_end_standout (void);
 extern VFunction *terminal_end_standout_hook;
 
+/* Turn on and off underline mode if possible. */
+void terminal_begin_underline (void);
+extern VFunction *terminal_begin_underline_hook;
+void terminal_end_underline (void);
+extern VFunction *terminal_end_underline_hook;
+
 /* Scroll an area of the terminal, starting with the region from START
    to END, AMOUNT lines.  If AMOUNT is negative, the lines are scrolled
    towards the top of the screen, else they are scrolled towards the
@@ -144,5 +150,37 @@ extern char *term_so, *term_se;
 #define MP_NONE 0
 #define MP_NORMAL_TRACKING 1
 extern int mouse_protocol;
+
+#define COLOUR_MASK             000000000017
+#define COLOUR_BLACK    (8 + 0)
+#define COLOUR_RED      (8 + 1)
+#define COLOUR_GREEN    (8 + 2)
+#define COLOUR_YELLOW   (8 + 3)
+#define COLOUR_BLUE     (8 + 4)
+#define COLOUR_MAGENTA  (8 + 5)
+#define COLOUR_CYAN     (8 + 6)
+#define COLOUR_WHITE    (8 + 7)
+#define UNDERLINE_MASK          000000000020
+#define STANDOUT_MASK           000000000040
+#define BOLD_MASK               000000000100
+#define ZERO1_MASK              000000000200
+#define BLINK_MASK              000000000400
+#define BGCOLOUR_MASK           000000017000
+#define BGCOLOUR_BLACK    ((8 + 0) << 9)
+#define BGCOLOUR_RED      ((8 + 1) << 9)
+#define BGCOLOUR_GREEN    ((8 + 2) << 9)
+#define BGCOLOUR_YELLOW   ((8 + 3) << 9)
+#define BGCOLOUR_BLUE     ((8 + 4) << 9)
+#define BGCOLOUR_MAGENTA  ((8 + 5) << 9)
+#define BGCOLOUR_CYAN     ((8 + 6) << 9)
+#define BGCOLOUR_WHITE    ((8 + 7) << 9)
+#define ZERO2_MASK              000000100000
+#define ZERO3_MASK              000040000000
+#define ZERO4_MASK              020000000000
+
+/* ZEROi_MASK are always zero bits. */
+
+void terminal_switch_rendition (unsigned long desired_rendition);
+
 
 #endif /* !TERMINAL_H */

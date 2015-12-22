@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6258 2015-05-10 15:09:20Z eliz $
+# $Id: Makefile.am 6399 2015-07-07 12:16:26Z gavin $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -60,7 +60,8 @@ EXTRA_DIST = README detexinfo dir-example \
   pdftexi2dvi \
   texi2dvi texi2pdf \
   $(dist_pkgdata_DATA) texinfo-cat.in texi-elements-by-size \
-  texi2html txixml2texi.pl $(w32_bat) \
-  tests  
+  texi2html txixml2texi.pl $(w32_bat) $(TESTS)
 
 DISTCLEANFILES = txixml2texi
+
+TESTS=tests/texi2dvi_helpversion.sh

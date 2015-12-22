@@ -747,7 +747,7 @@ $result_floats{'equivalent_labels'}{'truc'}[0]{'extra'}{'end_command'}{'extra'}{
 $result_converted{'info'}->{'equivalent_labels'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: \'anch\',  Up: (dir)
+File: ,  Node: Top,  Next: anch,  Up: (dir)
 
 .
 
@@ -758,13 +758,13 @@ truc 1
 * Menu:
 
 * anch::
-* \'floa\'::
+* floa::
 
 
 Tag Table:
 Node: Top27
-Ref: \'anch\'76
-Ref: floa79
+Ref: anch74
+Ref: floa77
 
 End Tag Table
 ';

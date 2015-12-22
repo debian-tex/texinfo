@@ -486,9 +486,9 @@ $result_converted{'info'}->{'xref_test'} = 'This is , produced from .
 
 File: ,  Node: Top,  Up: (dir)
 
-*Note (m)in xref::.  *Note (m)bad xref::.  after xref.  \'*Note (m)bad
-nested xref::.\'.  *Note name: (m)in ref ending with a dot..  !  after
-xref and dot inside.  *Note (m)in ref followed by symbol::.# g.
+*Note (m)in xref::.  *Note (m)bad xref:: after xref.  \'*Note (m)bad
+nested xref::\'.  *Note name: (m)in ref ending with a dot..  !  after
+xref and dot inside.  *Note (m)in ref followed by symbol::# g.
 
 
 Tag Table:
@@ -499,21 +499,12 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'xref_test'} = [
   {
-    'error_line' => ':4: warning: `.\' or `,\' must follow @xref, not a
+    'error_line' => ':6: warning: @xref node name should not contain `.\'
 ',
     'file_name' => '',
-    'line_nr' => 4,
+    'line_nr' => 6,
     'macro' => '',
-    'text' => '`.\' or `,\' must follow @xref, not a',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':5: warning: `.\' or `,\' must follow @xref
-',
-    'file_name' => '',
-    'line_nr' => 5,
-    'macro' => '',
-    'text' => '`.\' or `,\' must follow @xref',
+    'text' => '@xref node name should not contain `.\'',
     'type' => 'warning'
   },
   {
@@ -523,15 +514,6 @@ $result_converted_errors{'info'}->{'xref_test'} = [
     'line_nr' => 6,
     'macro' => '',
     'text' => '`.\' or `,\' must follow @xref, not !',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':7: warning: `.\' or `,\' must follow @xref, not #
-',
-    'file_name' => '',
-    'line_nr' => 7,
-    'macro' => '',
-    'text' => '`.\' or `,\' must follow @xref, not #',
     'type' => 'warning'
   }
 ];

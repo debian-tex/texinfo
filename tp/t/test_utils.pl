@@ -1,4 +1,4 @@
-# $Id: test_utils.pl 6116 2015-02-10 19:06:31Z karl $
+# $Id: test_utils.pl 6791 2015-11-21 14:57:34Z gavin $
 # t/* test support for the Perl modules.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015
@@ -23,18 +23,26 @@ use strict;
 
 use 5.006;
 
-use Test::More;
+use File::Basename;
 use File::Spec;
-BEGIN { if (defined($ENV{'top_srcdir'})) {
-          my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp', 'maintain');
-          unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'libintl-perl', 'lib'),
-                         File::Spec->catdir($lib_dir, 'lib', 'Unicode-EastAsianWidth', 'lib'),
-                         File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'));
-      }};
 
-use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
-use lib 'maintain/lib/libintl-perl/lib/';
-use lib 'maintain/lib/Text-Unidecode/lib/';
+BEGIN {
+
+if (!$ENV{'top_srcdir'}) {
+  my ($real_command_name, $command_directory, $command_suffix) 
+     = fileparse($0, '.pl');
+  my $updir = File::Spec->updir();
+
+  # tp/t -> tp/t/../..
+  $ENV{'top_srcdir'} = File::Spec->catdir($command_directory, $updir, $updir);
+}
+require Texinfo::ModulePath;
+Texinfo::ModulePath::init();
+
+} # end BEGIN
+
+use Test::More;
+
 use Texinfo::Parser;
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Texinfo;
@@ -658,6 +666,8 @@ sub debugcount($$$$$$;$)
   return ($errors, $result);
 }
 
+# Run a single test case.  Each test case is an array
+# [TEST_NAME, TEST_TEXT, PARSER_OPTIONS, CONVERTER_OPTIONS]
 sub test($$) 
 {
   my $self = shift;
@@ -674,6 +684,7 @@ sub test($$)
   $test_text = shift @$test_case;
   $parser_options = shift @$test_case if (@$test_case);
   $converter_options = shift @$test_case if (@$test_case);
+
   my $test_file;
   if ($parser_options->{'test_file'}) {
     $test_file = $input_files_dir . $parser_options->{'test_file'};
@@ -1086,7 +1097,14 @@ sub test($$)
   return $tests_count;
 }
 
-# if a $test_case_name is given, only run that test.
+# Main entry point for the tests.
+#   $NAME - a string, name of test
+#   $TEST_CASES - array of sub-tests
+#   If $TEST_CASE_NAME is given, only run that test.
+#   $GENERATE means to generate reference test results (-g from command line).
+#   $DEBUG for debugging.
+# The $ARG_COMPLETE variable is the -c option, to create Texinfo files for the
+# test cases.
 sub run_all($$;$$$)
 {
   my $name = shift;
@@ -1131,6 +1149,7 @@ sub run_all($$;$$$)
   }
 }
 
+# Create a Texinfo file for a test case; used when -c option is given.
 sub output_texi_file($)
 {
   my $self = shift;

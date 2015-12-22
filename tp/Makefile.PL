@@ -26,6 +26,11 @@ WriteMakefile(
                          },
     PMLIBDIRS         => [ 'Texinfo', 'LocaleData', 'DebugTexinfo' ],
     EXE_FILES         => [ 'texi2any' ],
+    # FIXME MakeMaker seems to support only subdirectory with one level.
+    # The blib directory is put in ../, so in Texinfo/Convert/ which 
+    # means that XSParagraph is not used in tests.  It should be 
+    # correctly installed, though.
+    DIR                => ['Texinfo/Convert/XSParagraph/'],
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (
        AUTHOR         => 'Patrice Dumas <pertusus@free.fr>') : ()),

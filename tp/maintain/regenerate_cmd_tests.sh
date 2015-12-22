@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Id: regenerate_cmd_tests.sh 6291 2015-05-31 18:29:37Z karl $
+# $Id: regenerate_cmd_tests.sh 6451 2015-07-22 16:00:14Z gavin $
 # Use information from test driving files to regenerate test scripts
 # that run only one test, and file lists to be used in Makefiles.
 #
@@ -14,6 +14,9 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
 # Originally written by Patrice Dumas.
+
+# This script is run from "tp/tests/Makefile.am" to regenerate
+# "tp/tests/Makefile.onetst".
 
 #set -x
 
@@ -47,8 +50,10 @@ done
 (
 cd "$dir/../tests/$destdir" || exit 1
 
-test_driving_files='test_driving_files_generated_list ='
-one_test_files='one_test_files_generated_list = '
+test_driving_files='# List of files that describe tests.  See tp/tests/README.
+test_driving_files_generated_list ='
+one_test_files='# List of test scripts that only run one test
+one_test_files_generated_list = '
 
 gather_tests() {
 type=$1

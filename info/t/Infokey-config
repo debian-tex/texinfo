@@ -7,3 +7,4 @@ D	print-node	# Dump node to file
 infopath-no-defaults=On
 automatic-footnotes=On
 key-time=0
+nodeline=print

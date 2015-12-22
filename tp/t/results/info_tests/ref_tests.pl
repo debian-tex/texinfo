@@ -742,4 +742,17 @@ Node: Top27
 End Tag Table
 ';
 
+$result_converted_errors{'info'}->{'ref_tests'} = [
+  {
+    'error_line' => ':12: warning: @ref node name should not contain `.\'
+',
+    'file_name' => '',
+    'line_nr' => 12,
+    'macro' => '',
+    'text' => '@ref node name should not contain `.\'',
+    'type' => 'warning'
+  }
+];
+
+
 1;

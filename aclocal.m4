@@ -56,6 +56,66 @@ m4_ifndef([AC_AUTOCONF_VERSION],
   [m4_copy([m4_PACKAGE_VERSION], [AC_AUTOCONF_VERSION])])dnl
 _AM_AUTOCONF_VERSION(m4_defn([AC_AUTOCONF_VERSION]))])
 
+# Copyright (C) 2011-2014 Free Software Foundation, Inc.
+#
+# This file is free software; the Free Software Foundation
+# gives unlimited permission to copy and/or distribute it,
+# with or without modifications, as long as this notice is preserved.
+
+# AM_PROG_AR([ACT-IF-FAIL])
+# -------------------------
+# Try to determine the archiver interface, and trigger the ar-lib wrapper
+# if it is needed.  If the detection of archiver interface fails, run
+# ACT-IF-FAIL (default is to abort configure with a proper error message).
+AC_DEFUN([AM_PROG_AR],
+[AC_BEFORE([$0], [LT_INIT])dnl
+AC_BEFORE([$0], [AC_PROG_LIBTOOL])dnl
+AC_REQUIRE([AM_AUX_DIR_EXPAND])dnl
+AC_REQUIRE_AUX_FILE([ar-lib])dnl
+AC_CHECK_TOOLS([AR], [ar lib "link -lib"], [false])
+: ${AR=ar}
+
+AC_CACHE_CHECK([the archiver ($AR) interface], [am_cv_ar_interface],
+  [AC_LANG_PUSH([C])
+   am_cv_ar_interface=ar
+   AC_COMPILE_IFELSE([AC_LANG_SOURCE([[int some_variable = 0;]])],
+     [am_ar_try='$AR cru libconftest.a conftest.$ac_objext >&AS_MESSAGE_LOG_FD'
+      AC_TRY_EVAL([am_ar_try])
+      if test "$ac_status" -eq 0; then
+        am_cv_ar_interface=ar
+      else
+        am_ar_try='$AR -NOLOGO -OUT:conftest.lib conftest.$ac_objext >&AS_MESSAGE_LOG_FD'
+        AC_TRY_EVAL([am_ar_try])
+        if test "$ac_status" -eq 0; then
+          am_cv_ar_interface=lib
+        else
+          am_cv_ar_interface=unknown
+        fi
+      fi
+      rm -f conftest.lib libconftest.a
+     ])
+   AC_LANG_POP([C])])
+
+case $am_cv_ar_interface in
+ar)
+  ;;
+lib)
+  # Microsoft lib, so override with the ar-lib wrapper script.
+  # FIXME: It is wrong to rewrite AR.
+  # But if we don't then we get into trouble of one sort or another.
+  # A longer-term fix would be to have automake use am__AR in this case,
+  # and then we could set am__AR="$am_aux_dir/ar-lib \$(AR)" or something
+  # similar.
+  AR="$am_aux_dir/ar-lib $AR"
+  ;;
+unknown)
+  m4_default([$1],
+             [AC_MSG_ERROR([could not determine $AR interface])])
+  ;;
+esac
+AC_SUBST([AR])dnl
+])
+
 # AM_AUX_DIR_EXPAND                                         -*- Autoconf -*-
 
 # Copyright (C) 2001-2014 Free Software Foundation, Inc.
@@ -1161,16 +1221,11 @@ m4_include([gnulib/m4/eealloc.m4])
 m4_include([gnulib/m4/errno_h.m4])
 m4_include([gnulib/m4/error.m4])
 m4_include([gnulib/m4/exponentd.m4])
-m4_include([gnulib/m4/exponentf.m4])
-m4_include([gnulib/m4/exponentl.m4])
 m4_include([gnulib/m4/extensions.m4])
 m4_include([gnulib/m4/extern-inline.m4])
 m4_include([gnulib/m4/fcntl-o.m4])
 m4_include([gnulib/m4/fcntl_h.m4])
 m4_include([gnulib/m4/float_h.m4])
-m4_include([gnulib/m4/fpieee.m4])
-m4_include([gnulib/m4/frexp.m4])
-m4_include([gnulib/m4/frexpl.m4])
 m4_include([gnulib/m4/getopt.m4])
 m4_include([gnulib/m4/gettext.m4])
 m4_include([gnulib/m4/gettimeofday.m4])
@@ -1182,13 +1237,9 @@ m4_include([gnulib/m4/include_next.m4])
 m4_include([gnulib/m4/intlmacosx.m4])
 m4_include([gnulib/m4/intmax_t.m4])
 m4_include([gnulib/m4/inttypes_h.m4])
-m4_include([gnulib/m4/isnand.m4])
-m4_include([gnulib/m4/isnanf.m4])
-m4_include([gnulib/m4/isnanl.m4])
 m4_include([gnulib/m4/iswblank.m4])
 m4_include([gnulib/m4/langinfo_h.m4])
 m4_include([gnulib/m4/largefile.m4])
-m4_include([gnulib/m4/ldexpl.m4])
 m4_include([gnulib/m4/lib-ld.m4])
 m4_include([gnulib/m4/lib-link.m4])
 m4_include([gnulib/m4/lib-prefix.m4])
@@ -1204,7 +1255,6 @@ m4_include([gnulib/m4/longlong.m4])
 m4_include([gnulib/m4/lstat.m4])
 m4_include([gnulib/m4/malloc.m4])
 m4_include([gnulib/m4/malloca.m4])
-m4_include([gnulib/m4/math_h.m4])
 m4_include([gnulib/m4/mbchar.m4])
 m4_include([gnulib/m4/mbiter.m4])
 m4_include([gnulib/m4/mbrtowc.m4])
@@ -1229,13 +1279,10 @@ m4_include([gnulib/m4/off_t.m4])
 m4_include([gnulib/m4/onceonly.m4])
 m4_include([gnulib/m4/pathmax.m4])
 m4_include([gnulib/m4/po.m4])
-m4_include([gnulib/m4/printf-frexp.m4])
-m4_include([gnulib/m4/printf-frexpl.m4])
 m4_include([gnulib/m4/printf.m4])
 m4_include([gnulib/m4/progtest.m4])
 m4_include([gnulib/m4/regex.m4])
 m4_include([gnulib/m4/secure_getenv.m4])
-m4_include([gnulib/m4/signbit.m4])
 m4_include([gnulib/m4/size_max.m4])
 m4_include([gnulib/m4/ssize_t.m4])
 m4_include([gnulib/m4/stat.m4])
@@ -1265,7 +1312,6 @@ m4_include([gnulib/m4/threadlib.m4])
 m4_include([gnulib/m4/time_h.m4])
 m4_include([gnulib/m4/unistd_h.m4])
 m4_include([gnulib/m4/vasnprintf.m4])
-m4_include([gnulib/m4/vasprintf-posix.m4])
 m4_include([gnulib/m4/vasprintf.m4])
 m4_include([gnulib/m4/warn-on-use.m4])
 m4_include([gnulib/m4/wchar_h.m4])

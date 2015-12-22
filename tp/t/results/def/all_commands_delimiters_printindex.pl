@@ -17179,13 +17179,13 @@ Functions
 * ;expose on ;Window:                    Top.                 (line  59)
 * ;expose on ;Window <1>:                Top.                 (line  63)
 * A2:                                    Top.                 (line  69)
-* \'A2\':                                  Top.                 (line  71)
+* A2 <1>:                                Top.                 (line  71)
 * A3:                                    Top.                 (line  77)
-* \'A3\':                                  Top.                 (line  79)
+* A3 <1>:                                Top.                 (line  79)
 * A3 on A2:                              Top.                 (line  97)
-* \'A3\' on \'A2\':                          Top.                 (line  99)
+* A3 on A2 <1>:                          Top.                 (line  99)
 * A4 on A2:                              Top.                 (line 101)
-* \'A4\' on \'A2\':                          Top.                 (line 103)
+* A4 on A2 <1>:                          Top.                 (line 103)
 * apply:                                 Top.                 (line  67)
 * e)xpose on W)indow:                    Top.                 (line  49)
 * e)xpose on W)indow <1>:                Top.                 (line  53)
@@ -17202,7 +17202,7 @@ Functions
 * FORWARD--CHAR:                         Top.                 (line   3)
 * fun_name:                              Top.                 (line 105)
 * fun_name1:                             Top.                 (line 107)
-* name on Window\'int\':                   Top.                 (line  65)
+* name on Windowint:                     Top.                 (line  65)
 * push:                                  Top.                 (line  18)
 
 Types
@@ -17212,8 +17212,8 @@ Types
 * Menu:
 
 * A2:                                    Top.                  (line 85)
-* \'A2\':                                  Top.                  (line 87)
-* \'A2\' <1>:                              Top.                  (line 91)
+* A2 <1>:                                Top.                  (line 87)
+* A2 <2>:                                Top.                  (line 91)
 * pair:                                  Top.                  (line 24)
 
 Variables
@@ -17223,12 +17223,12 @@ Variables
 * Menu:
 
 * A2:                                    Top.                  (line 73)
-* \'A2\':                                  Top.                  (line 75)
+* A2 <1>:                                Top.                  (line 75)
 * A3:                                    Top.                  (line 81)
-* \'A3\':                                  Top.                  (line 83)
-* A3 <1>:                                Top.                  (line 89)
+* A3 <1>:                                Top.                  (line 83)
+* A3 <2>:                                Top.                  (line 89)
 * A4 of A2:                              Top.                  (line 93)
-* \'A4\' of \'A2\':                          Top.                  (line 95)
+* A4 of A2 <1>:                          Top.                  (line 95)
 * border-pattern:                        Top.                  (line 27)
 * border-pattern of Window:              Top.                  (line 30)
 * enable:                                Top.                  (line 21)

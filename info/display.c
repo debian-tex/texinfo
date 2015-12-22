@@ -1,8 +1,8 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c 5986 2014-12-25 16:37:09Z gavin $
+   $Id: display.c 6877 2015-12-19 16:42:47Z gavin $
 
-   Copyright 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012, 2013, 2014
-   Free Software Foundation, Inc.
+   Copyright 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012, 2013,
+   2014, 2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,6 +24,7 @@
 #include "session.h"
 #include "tag.h"
 #include "signals.h"
+#include "variables.h"
 
 static void free_display (DISPLAY_LINE **display);
 static DISPLAY_LINE **make_display (int width, int height);
@@ -63,7 +64,7 @@ display_clear_display (DISPLAY_LINE **display)
 /* Non-zero if we didn't completely redisplay a window. */
 int display_was_interrupted_p = 0;
 
-/* Update the windows on the display. */
+/* Check each window on the screen, and update it if it needs updating. */
 void
 display_update_display (void)
 {
@@ -75,13 +76,12 @@ display_update_display (void)
   signal_block_winch ();
   display_was_interrupted_p = 0;
 
-  /* For every window in the list, check contents against the display. */
   for (win = windows; win; win = win->next)
     {
       /* Only re-display visible windows which need updating. */
-      if (((win->flags & W_WindowVisible) == 0) ||
-          ((win->flags & W_UpdateWindow) == 0) ||
-          (win->height == 0))
+      if ((win->flags & W_WindowVisible) == 0
+          || (win->flags & W_UpdateWindow) == 0
+          || win->height == 0)
         continue;
 
       display_update_one_window (win);
@@ -144,9 +144,9 @@ find_diff (const char *a, size_t alen, const char *b, size_t blen, int *ppos)
 
 /* Update line PL_NUM of the screen to be PRINTED_LINE, which is PL_BYTES long
    and takes up PL_CHARS columns. */
-int
-display_node_text (long pl_num, char *printed_line,
-                   long pl_bytes, long pl_chars)
+static int
+display_update_line (long pl_num, char *printed_line,
+                     long pl_bytes, long pl_chars)
 {
   DISPLAY_LINE **display = the_display;
   DISPLAY_LINE *entry;
@@ -225,8 +225,6 @@ display_node_text (long pl_num, char *printed_line,
 }
 
 
-int highlight_searches_p = 0;
-
 /* Given an array MATCHES with regions, and an offset *MATCH_INDEX, decide
    if we are inside a region at offset OFF.  The matches are assumed not
    to overlap and to be in order. */
@@ -254,74 +252,133 @@ decide_if_in_match (long off, int *in_match, regmatch_t *matches,
   *in_match = m;
 }
 
-/* Print each line in the window into our local buffer, and then
-   check the contents of that buffer against the display.  If they
-   differ, update the display.
-   Return value: number of lines processed.  */
-long
-display_update_window_1 (WINDOW *win)
+/* Similar to decide_if_in_match, but used for reference highlighting. */
+static void
+decide_if_in_reference (long off, int *in_ref, REFERENCE **references,
+                        int *ref_index)
 {
-  char *start = win->node->contents + win->line_starts[win->pagetop];
+  int i = *ref_index;
+  int m = *in_ref;
 
-  struct text_buffer tb_printed_line;     /* Buffer for a printed line. */
-  long pl_chars = 0;     /* Number of characters written to printed_line */
-  long pl_num = 0;       /* Number of physical lines done so far. */
+  for (; (references[i]); i++)
+    {
+      if (references[i]->start > off)
+        break;
+
+      m = 1;
+
+      if (references[i]->end > off)
+        break;
+
+      m = 0;
+    }
+
+  *ref_index = i;
+  *in_ref = m;
+}
+
+/* Used when processing a line to be displayed from a node.  DEFAULT is the
+   value when the line has no special styles like underlined references or
+   highlighted search matches.  Otherwise, a line is processed once with
+   COLLECT as the value, and if it differs to what is on the display already,
+   it is processed with WRITEOUT and written to the display. */
+static int writing_out;
+#define DEFAULT 0
+#define COLLECT 1
+#define WRITEOUT 2 /* Values for writing_out global. */
+
+/* Combine rendition masks that are active, in order of priority,
+   then check what's currently active on the display, and output
+   the necessary codes to switch.  The list of rendition masks is
+   the complete information about what the style should now be.
+   RENDITION3 takes priority over RENDITION2, which in turn takes
+   priority over RENDITION1. */
+static void
+wrap_terminal_switch_rendition (struct text_buffer *printed_line,
+                                 RENDITION rendition1,
+                                 RENDITION rendition2,
+                                 RENDITION rendition3)
+{
+  long int desired_rendition = 0;
+  desired_rendition = rendition1.value;
+  desired_rendition &= ~rendition2.mask;
+  desired_rendition |= rendition2.value;
+  desired_rendition &= ~rendition3.mask;
+  desired_rendition |= rendition3.value;
+
+  if (writing_out == WRITEOUT)
+    terminal_switch_rendition (desired_rendition);
+  else
+    {
+      /* Guarantee that each byte is non-zero, by having at least one
+         non-zero bit in it.  See ZERO1_MASK symbol in display.c. */
+      desired_rendition = ~desired_rendition;
+
+      /* The text added here is only used internally to see when the
+         display has changed, and is not output to the terminal. */
+      text_buffer_add_string (printed_line, "\033", 1);
+      text_buffer_add_string (printed_line, (char *) &desired_rendition,
+                              sizeof (long));
+    }
+}
+
+/* Set in display_update_node_text if matches or references are to be 
+   distinguished with terminal appearance modes. */
+static regmatch_t *matches;
+static REFERENCE **refs;
+static size_t match_index;
+static int ref_index;
+
+/* Number of screen columns output so far in a line. */
+static int pl_chars;
+
+/* Whether we are currently outputting a highlighted reference.  This can be 
+   carried over from one line to another. */
+static int ref_highlighted;
+
+static int pl_num; /* Number of printed lines done so far. */
+
+RENDITION ref_rendition = {UNDERLINE_MASK, UNDERLINE_MASK};
+RENDITION hl_ref_rendition = {UNDERLINE_MASK, 0};
+RENDITION match_rendition = {STANDOUT_MASK, STANDOUT_MASK};
+
+
+/* Process a line from the node in WIN starting at ITER, and advancing ITER
+   to the end of the line.  What is done with the line depends on the value
+   of WRITING_OUT.
+   If the line ends in a newline character, set *DELIM to 1. */
+static void
+display_process_line (WINDOW *win,
+                 mbi_iterator_t *iter_inout,
+                 struct text_buffer *tb_printed_line,
+                 int *delim)
+{
   mbi_iterator_t iter;
+  const char *cur_ptr;
+  size_t pchars = 0; /* Printed chars */
+  size_t pbytes = 0; /* Bytes to output. */
+  char *rep;
+  int in_match = 0;
+  int in_ref = 0, in_ref_proper = 0;
+  RENDITION empty = {0, 0};
 
-  /* If there are no highlighted regions in a line, we output the line with
-     display_node_text, which does some optimization of the redisplay.
-     Otherwise, the entire line is output in this function. */
-  int match_seen_in_line = 0;
+  int point_in_line;
 
-  regmatch_t *matches = 0;
-  size_t match_index = 0;
-  int in_match = 0; /* If we have highlighting on for a match. */
+  if (win->point >= win->line_starts[win->pagetop + pl_num]
+      && win->point < win->line_starts[win->pagetop + pl_num + 1])
+    point_in_line = 1;
+  else
+    point_in_line = 0;
 
-  if (highlight_searches_p)
-    matches = win->matches;
+  iter = *iter_inout;
 
-  /* Find first search match after the start of the page, and check whether
-     we start inside a match. */
-  if (matches)
+  while (1)
     {
-      match_index = 0;
-      decide_if_in_match (win->line_starts[win->pagetop], &in_match,
-                          matches, win->match_count, &match_index);
-    }
+      int was_in_ref_proper = in_ref_proper;
+      int was_in_match = in_match;
 
-  text_buffer_init (&tb_printed_line);
-
-  if (in_match)
-    {
-      terminal_begin_standout ();
-      match_seen_in_line = 1;
-      terminal_goto_xy (0, win->first_row);
-    }
-
-  for (mbi_init (iter, start, 
-                 win->node->contents + win->node->nodelen - start);
-       mbi_avail (iter);
-       mbi_advance (iter))
-    {
-      const char *cur_ptr;
-      char *rep;
-
-      size_t pchars = 0; /* Printed chars */
-      size_t pbytes = 0; /* Bytes to output. */
-      int delim = 0;
-      int finish = 0;
-
-      /* Check if we have processed all the lines in the window. */
-      if (pl_num == win->height)
+      if (!mbi_avail (iter))
         break;
-
-      /* Check if this line of the window is off the screen.  This might happen
-         if the screen was resized very small. */
-      if (win->first_row + pl_num >= screenheight)
-        break;
-
-      rep = printed_representation (&iter, &delim, pl_chars, &pchars, &pbytes);
-
       cur_ptr = mbi_cur_ptr (iter);
 
       if (matches && match_index != win->match_count)
@@ -331,126 +388,279 @@ display_update_window_1 (WINDOW *win)
                               &in_match, matches, win->match_count,
                               &match_index);
 
-          if (was_in_match && !in_match)
-            {
-              terminal_end_standout ();
-            }
-          else if (!was_in_match && in_match)
-            {
-              if (!match_seen_in_line)
-                {
-                  match_seen_in_line = 1;
+          if (!was_in_match && in_match && writing_out == DEFAULT)
+            writing_out = COLLECT;
+        }
 
-                  /* Output the line so far. */
-                  terminal_goto_xy (0, win->first_row + pl_num);
-                  terminal_write_chars (text_buffer_base (&tb_printed_line),
-                                      text_buffer_off (&tb_printed_line));
+      if (refs && refs[ref_index])
+        {
+          int was_in_ref = in_ref;
+          decide_if_in_reference (cur_ptr - win->node->contents,
+                                  &in_ref, refs, &ref_index);
+
+          if (was_in_ref && !in_ref)
+            {
+              in_ref_proper = ref_highlighted = 0;
+            }
+          else if (!was_in_ref && in_ref)
+            {
+              if (writing_out == DEFAULT)
+                writing_out = COLLECT;
+
+              /* Decide if this reference should be highlighted. */
+              if (point_in_line && win->point < refs[ref_index]->end)
+                {
+                  /* The reference in is the part of the line after
+                     the cursor, or the reference contains the cursor. */
+                  point_in_line = 0;
+                  ref_highlighted = 1;
                 }
-              terminal_begin_standout ();
+              else if (point_in_line
+                       && (!refs[ref_index + 1]
+                           || refs[ref_index + 1]->start
+                              >= win->line_starts[win->pagetop + pl_num + 1]))
+                {
+                  /* The reference label is before the cursor in
+                     the current line and none occurs after it in
+                     the current line. */
+                  point_in_line = 0;
+                  ref_highlighted = 1;
+                }
+              else if (win->point >= refs[ref_index]->start
+                       && win->point < refs[ref_index]->end)
+                {
+                  /* The point is in a cross-reference, but not in the 
+                     current line. */
+                  ref_highlighted = 1;
+                }
+              else if (win->point >= win->line_starts
+                                                  [win->pagetop + pl_num + 1]
+                       && win->point < win->line_starts
+                                                    [win->pagetop + pl_num + 2]
+                       && refs[ref_index]->end
+                          >= win->line_starts[win->pagetop + pl_num + 1]
+                       && (!refs[ref_index + 1]
+                           || refs[ref_index + 1]->start
+                              >= win->line_starts[win->pagetop + pl_num + 2]))
+                {
+                  /* Point is in the next line, not inside this reference,
+                     but this reference continues onto the next line and
+                     no other reference follows it in the line. */
+                  ref_highlighted = 1;
+                }
             }
         }
 
-      if (delim || pl_chars + pchars >= win->width)
+      if (in_ref && !in_ref_proper && !strchr (" \t", *cur_ptr))
+        in_ref_proper = 1;
+
+      if (was_in_ref_proper != in_ref_proper || was_in_match != in_match)
         {
-          /* If this character cannot be printed in this line, we have
-             found the end of this line as it would appear on the screen. */
+          /* Calculate the new rendition for output characters, and call
+             the function to switch to it. */
+          RENDITION ref = {0, 0};
+          RENDITION match = {0, 0};
 
-          text_buffer_add_char (&tb_printed_line, '\0');
-
-          if (!match_seen_in_line)
+          if (in_ref_proper)
+            ref = ref_highlighted && hl_ref_rendition.mask
+                    ? hl_ref_rendition : ref_rendition;
+          if (in_match)
+            match = match_rendition;
+          if (!ref_highlighted)
             {
-              finish = display_node_text (win->first_row + pl_num,
-                          text_buffer_base (&tb_printed_line),
-                          text_buffer_off (&tb_printed_line) - 1,
-                          pl_chars);
+              wrap_terminal_switch_rendition (tb_printed_line,
+                                              ref, match, empty);
             }
           else
             {
-              terminal_clear_to_eol ();
-              /* Let display_node_text know to clear this entire line. */
-              the_display[win->first_row + pl_num]->inverse = 1;
+              wrap_terminal_switch_rendition (tb_printed_line,
+                                              match, ref, empty);
             }
-
-          /* Check if a line continuation character should be displayed.
-             Don't print one if printing the last character in this window 
-             could possibly cause the screen to scroll. */
-          if (!delim && 1 + pl_num + win->first_row < the_screen->height)
-            {
-              terminal_goto_xy (win->width - 1, win->first_row + pl_num);
-
-              if (!(win->flags & W_NoWrap))
-                terminal_put_text ("\\");
-              else
-                {
-                  terminal_put_text ("$");
-                  rep = 0; /* Don't display this character. */
-
-                  /* If this window has chosen not to wrap lines, skip to the
-                     end of the logical line in the buffer, and start a new
-                     line here. */
-                  for (; mbi_avail (iter); mbi_advance (iter))
-                    if (mb_len (mbi_cur (iter)) == 1
-                        && *mbi_cur_ptr (iter) == '\n')
-                      break;
-
-                  if (matches)
-                    {
-                      /* Check if the next line starts in a match. */
-                      decide_if_in_match (mbi_cur_ptr (iter) - win->node->contents,
-                                          &in_match, matches, win->match_count,
-                                          &match_index);
-                      if (!in_match)
-                        terminal_end_standout ();
-                    }
-                }
-              fflush (stdout);
-            }
-
-          /* Set for next line. */
-          match_seen_in_line = in_match ? 1 : 0;
-          ++pl_num;
-
-          pl_chars = 0;
-          text_buffer_reset (&tb_printed_line);
-
-          if (finish)
-            break;
-
-          /* Go to the start of the next line if we are outputting in this
-             function. */
-          if (match_seen_in_line)
-            terminal_goto_xy (0, win->first_row + pl_num);
         }
 
-      if (*cur_ptr != '\n' && rep) 
+      rep = printed_representation (&iter, delim, pl_chars,
+                                    &pchars, &pbytes);
+
+      /* If a newline character has been seen, or we have reached the
+         edge of the display.  */
+      if (*delim || pl_chars + pchars >= win->width)
+        break;
+
+      if (rep)
         {
-          if (!match_seen_in_line)
-            text_buffer_add_string (&tb_printed_line, rep, pbytes);
+          if (writing_out != WRITEOUT)
+            text_buffer_add_string (tb_printed_line, rep, pbytes);
           else
             terminal_write_chars (rep, pbytes);
 
           pl_chars += pchars;
-          continue;
         }
+      mbi_advance (iter);
     }
 
-  /* This would be the very last line of the node. */
-  if (pl_chars && !match_seen_in_line)
+  if (writing_out != DEFAULT)
+    wrap_terminal_switch_rendition (tb_printed_line, empty, empty, empty);
+
+  *iter_inout = iter;
+}
+
+/* Update the part of WIN containing text from a node, i.e. not the blank
+   part at the end or a modeline.
+   Print each line in the window into our local buffer, and then
+   check the contents of that buffer against the display.  If they
+   differ, update the display.  Return number of lines printed. */
+int
+display_update_node_text (WINDOW *win)
+{
+  static struct text_buffer tb_printed_line;  /* Buffer for a printed line.  */
+
+  mbi_iterator_t iter;  /* Used to iterate through part of node displayed.  */
+  mbi_iterator_t bol_iter; /* Keep reference to beginning of each line.  */
+  int bol_ref_index = 0, bol_match_index = 0;
+  int bol_ref_highlighted;
+
+  int finish;
+
+  matches = 0;
+  refs = 0;
+  if (match_rendition.mask)
+    matches = win->matches;
+  if (ref_rendition.mask || hl_ref_rendition.mask)
+    refs = win->node->references;
+
+  pl_num = 0;
+
+  ref_highlighted = 0;
+
+  writing_out = DEFAULT; /* Global variable, declared above. */
+  ref_index = match_index = 0;
+
+  mbi_init (iter, win->node->contents + win->line_starts[win->pagetop],
+            win->node->nodelen - win->line_starts[win->pagetop]);
+  mbi_avail (iter);
+  while (1)
     {
+      int delim = 0;
+      mbi_copy (&bol_iter, &iter);
+      bol_ref_index = ref_index;
+      bol_match_index = match_index;
+      bol_ref_highlighted = ref_highlighted;
+
+      /* Come back here at end of line when write_out == COLLECT */
+start_of_line:
+      pl_chars = 0;
+
+      text_buffer_reset (&tb_printed_line);
+
+      /* Check if we have processed all the lines in the window. */
+      if (pl_num == win->height)
+        break;
+
+      /* Check if this line of the window is off the screen.  This might 
+         happen if the screen was resized very small. */
+      if (win->first_row + pl_num >= screenheight)
+        break;
+
+      display_process_line (win, &iter, &tb_printed_line, &delim);
+
+      /* End of printed line. */
       text_buffer_add_char (&tb_printed_line, '\0');
-      display_node_text (win->first_row + pl_num,
-                         text_buffer_base (&tb_printed_line),
-                         text_buffer_off (&tb_printed_line),
-                         pl_chars);
+
+      finish = 0;
+      /* If there are no highlighted regions in a line, we output the line with
+         display_update_line, which does some optimization of the redisplay.
+         Otherwise, the entire line is output in this function. */
+      if (writing_out == DEFAULT)
+        {
+          finish = display_update_line (win->first_row + pl_num,
+                      text_buffer_base (&tb_printed_line),
+                      text_buffer_off (&tb_printed_line) - 1,
+                      pl_chars);
+        }
+      else if (writing_out == COLLECT)
+        {
+          /* Check if the line differs from what is already on the display,
+             and if so, go back to the start of the line and display it for
+             real. */
+          DISPLAY_LINE *entry = the_display[win->first_row + pl_num];
+          if (strcmp (tb_printed_line.base,
+                      the_display[win->first_row + pl_num]->text))
+            {
+              if (tb_printed_line.off > screenwidth)
+                {
+                  entry->text = xrealloc (entry->text,
+                                          tb_printed_line.off + 1);
+                }
+              strcpy (entry->text, tb_printed_line.base);
+              /* Record that the contents of this DISPLAY_LINE isn't
+                 literally what is on the display. */
+              entry->textlen = 0;
+              entry->inverse = 1;
+              mbi_copy (&iter, &bol_iter);
+              mbi_avail (bol_iter);
+              ref_index = bol_ref_index;
+              match_index = bol_match_index;
+              terminal_goto_xy (0, win->first_row + pl_num);
+              ref_highlighted = bol_ref_highlighted;
+              writing_out = WRITEOUT;
+              goto start_of_line;
+            }
+          else
+            writing_out = DEFAULT;
+        }
+      else /* writing_out == WRITEOUT */
+        {
+          /* We have just written out this line to the display. */
+          terminal_clear_to_eol ();
+          writing_out = DEFAULT;
+        }
+
+      /* Check if a line continuation character should be displayed.
+         Don't print one on the very last line of the display, as this could 
+         cause it to scroll. */
+      if (delim)
+        mbi_advance (iter);
+      else if (win->first_row + pl_num <= the_screen->height - 2)
+        {
+          terminal_goto_xy (win->width - 1, win->first_row + pl_num);
+
+          if (!(win->flags & W_NoWrap))
+            terminal_put_text ("\\");
+          else
+            {
+              terminal_put_text ("$");
+
+              /* If this window has chosen not to wrap lines, skip to the
+                 end of the logical line in the buffer, and start a new
+                 line here. */
+              for (; mbi_avail (iter); mbi_advance (iter))
+                if (mb_len (mbi_cur (iter)) == 1
+                    && *mbi_cur_ptr (iter) == '\n')
+                  {
+                    mbi_advance (iter);
+                    break;
+                  }
+            }
+          fflush (stdout);
+        }
+
       pl_num++;
+      if (finish)
+        break; /* Display was interrupted by typed input. */
+
+      if (!mbi_avail (iter))
+        break;
     }
 
-  if (in_match)
-    terminal_end_standout ();
+  /* Unlike search match highlighting, we always turn reference highlighting
+     off at the end of each line, so the following isn't needed. */
+  /* terminal_end_underline (); */
 
-  text_buffer_free (&tb_printed_line);
   return pl_num;
 }
+#undef DEFAULT
+#undef COLLECT
+#undef WRITEOUT /* values for writing_out global */
 
 /* Update one window on the screen. */
 void
@@ -483,9 +693,11 @@ display_update_one_window (WINDOW *win)
   if ((win->first_row < 0) || (win->first_row > the_screen->height))
     goto funexit;
 
-  if (win->node && win->line_starts)
+  if (win->node)
     {
-      line_index = display_update_window_1 (win);
+      if (!win->line_starts)
+        calculate_line_starts (win);
+      line_index = display_update_node_text (win);
 
       if (display_was_interrupted_p)
 	goto funexit;
@@ -504,6 +716,7 @@ display_update_one_window (WINDOW *win)
         {
           entry->textlen = 0;
           entry->text[0] = '\0';
+          entry->inverse = 0;
 
           terminal_goto_xy (0, win->first_row + line_index);
           terminal_clear_to_eol ();

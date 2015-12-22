@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c 6348 2015-06-20 08:06:47Z eliz $
+   $Id: session.c 6844 2015-12-09 19:47:21Z gavin $
 
    Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015
@@ -27,6 +27,7 @@
 #include "search.h"
 #include "footnotes.h"
 #include "man.h"
+#include "variables.h"
 
 #ifdef HAVE_SYS_IOCTL_H
 #include <sys/ioctl.h>
@@ -235,6 +236,11 @@ info_read_and_dispatch (void)
     {
       if (!info_any_buffered_input_p ())
         display_update_display ();
+
+      /* Some redisplay might be necessary if the cursor has moved and
+         a different reference (or no reference) has to be highlighted. */
+      if (hl_ref_rendition.mask)
+        display_update_one_window (active_window);
 
       display_cursor_at_point (active_window);
 
@@ -589,7 +595,7 @@ get_input_key (void)
 
 /* Time in milliseconds to wait for the next byte of a byte sequence
    corresponding to a key or key chord.  Settable with the 'key-time' user
-   variable.  If zero, wait indefinitely. */
+   variable. */
 int key_time = 100;
 
 /* Read bytes from input and return what key has been pressed.  Return -1 on
@@ -601,16 +607,14 @@ get_input_key_internal (void)
   unsigned char c;
   int esc_seen = 0;
   int pop_start;
-  unsigned char first;
+  int byte_count = 0;
   fill_input_buffer (1);
 
   if (pop_index == push_index)
     return -1; /* No input waiting.  This shouldn't happen. */
 
-  /* Save the first byte waiting in the input buffer. */
-  first = info_input_buffer[pop_index];
-
   b = byte_seq_to_key;
+  pop_start = pop_index;
 
   while (pop_index != push_index)
     {
@@ -618,6 +622,7 @@ get_input_key_internal (void)
       int unknown = 0;
       if (!get_byte_from_input_buffer (&c))
         break; /* Incomplete byte sequence. */
+      byte_count++;
 
       switch (b[c].type)
         {
@@ -625,7 +630,6 @@ get_input_key_internal (void)
           return b[c].key;
         case BYTEMAP_ESC:
           esc_seen = 1;
-          pop_start = pop_index;
           /* Fall through. */
         case BYTEMAP_MAP:
           in_map = 1;
@@ -651,12 +655,9 @@ get_input_key_internal (void)
           FD_ZERO (&readfds);
           FD_SET (fileno (info_input_stream), &readfds);
 
-          if (key_time)
-            {
-              timer.tv_sec = 0;
-              timer.tv_usec = key_time * 1000;
-              timerp = &timer;
-            }
+          timer.tv_sec = 0;
+          timer.tv_usec = key_time * 1000;
+          timerp = &timer;
           ready = select (fileno(info_input_stream)+1, &readfds,
                           NULL, NULL, timerp);
 #else
@@ -667,21 +668,28 @@ get_input_key_internal (void)
         }
     }
 
-  if (!esc_seen)
-    /* If the sequence was incomplete, return the first byte. */
-    return first;
+  /* Incomplete or unknown byte sequence. Start again with the first byte.  */
+  pop_index = pop_start;
+
+  if (!esc_seen || (byte_count >= 3 && key_time == 0))
+    {
+      /* If the sequence was incomplete, return the first byte.
+             Also return the first byte for sequences with ESC that are at
+         least three bytes long if 'key_time' is 0, to give some support for 
+         specifying byte sequences in .infokey for those sent by unrecognized
+         special keys (which would otherwise be skipped below). */
+      pop_index = pop_start;
+      get_byte_from_input_buffer (&c);
+      return c;
+    }
   else
     {
-      /* Start again with the first key after ESC. */
-      pop_index = pop_start;
+      get_byte_from_input_buffer (&c); /* Should be ESC */
 
       /* If there are no more characters, then decide that the escape key
          itself has been pressed. */
       if (pop_index == push_index)
         return 033;
-
-      /* Save the first byte waiting in the input buffer. */
-      first = info_input_buffer[pop_index];
 
       /* Skip byte sequences that look like they could have come from
          unrecognized keys, e.g. F3 or C-S-Left, to avoid them as being
@@ -694,11 +702,12 @@ get_input_key_internal (void)
       if (c == 'O')
         {
           /* If no more bytes, call it M-O. */
-          if (!get_byte_from_input_buffer (&c))
+          if (!info_any_buffered_input_p ())
             return 'O' + KEYMAP_META_BASE;
 
           /* Otherwise it could be an unrecognized key producing a sequence
-             ESC O (byte).  Ignore it. */
+             ESC O (byte).  Ignore it, discarding the next byte. */
+          get_byte_from_input_buffer (&c);
           return -1;
         }
 
@@ -865,28 +874,56 @@ show_error_node (char *error)
 void
 free_history_node (NODE *n)
 {
-  if (!n)
-    return;
-  if (n->flags & N_WasRewritten)
-    free (n->contents);
-  info_free_references (n->references);
-  free (n->next); free (n->prev); free (n->up);
-  free (n->nodename);
+  if (n && (n->flags & N_IsInternal))
+    {
+      free (n->contents);
+      info_free_references (n->references);
+      free (n->next); free (n->prev); free (n->up);
+      free (n->nodename);
+    }
   free (n);
 }
 
+static void
+put_node_in_window (WINDOW *win, NODE *node)
+{
+  win->node = node;
+  win->pagetop = 0;
+  win->point = 0;
+  free (win->matches); win->matches = 0;
+  free (win->line_starts); win->line_starts = 0;
+  free (win->log_line_no); win->log_line_no = 0;
+  win->flags |= W_UpdateWindow;
+}
+
 /* Go back one in the node history. */
-void
-forget_node (WINDOW *win)
+int
+forget_node_fast (WINDOW *win)
 {
   int i = win->hist_index;
   if (i == 0)
-    return;
+    return 0;
 
   free_history_node (win->hist[i - 1]->node);
   free (win->hist[i - 1]);
   win->hist[i - 1] = 0;
   i = --win->hist_index;
+
+  if (i == 0)
+    /* Window history is empty. */
+    win->node = 0;
+  else
+    {
+      put_node_in_window (win, win->hist[i - 1]->node);
+      win->point = win->hist[i - 1]->point;
+    }
+  return i;
+}
+
+void
+forget_node (WINDOW *win)
+{
+  int i = forget_node_fast (win);
 
   if (i == 0)
     {
@@ -914,6 +951,27 @@ forget_window_and_nodes (WINDOW *win)
       free (win->hist[i]);
     }
   free (win->hist);
+}
+
+/* Like info_set_node_of_window, but only do enough so to extend the
+   window history, avoiding calculating line starts. */
+void
+info_set_node_of_window_fast (WINDOW *win, NODE *node)
+{
+  WINDOW_STATE *new;
+
+  if (win->hist_index && win->hist[win->hist_index - 1]->node == win->node)
+    {
+      win->hist[win->hist_index - 1]->pagetop = win->pagetop;
+      win->hist[win->hist_index - 1]->point = win->point;
+    }
+  put_node_in_window (win, node);
+
+  new = xmalloc (sizeof (WINDOW_STATE));
+  new->node = win->node;
+  new->pagetop = win->pagetop;
+  new->point = win->point;
+  add_pointer_to_array (new, win->hist_index, win->hist, win->hist_slots, 16);
 }
 
 /* Set WINDOW to show NODE.  Remember the new window in our list of
@@ -1430,7 +1488,11 @@ _scroll_forward (WINDOW *window, int count, int nodeonly)
             {
               /* If there are no more lines to scroll here, error, or get
                  another node. */
-              forward_move_node_structure (window, info_scroll_behaviour);
+              if (forward_move_node_structure (window, info_scroll_behaviour)
+                  == 0)
+                window->point = 0;
+              else
+                info_end_of_node (window, 1);
             }
           return;
         }
@@ -1455,7 +1517,12 @@ _scroll_backward (WINDOW *window, int count, int nodeonly)
                  another node. */
               if (backward_move_node_structure (window, info_scroll_behaviour)
                   == 0)
-                info_end_of_node (window, 1);
+                {
+                  info_end_of_node (window, 1);
+                  window->point = window->line_starts[window->pagetop];
+                }
+              else
+                window->point = 0;
             }
           return;
         }
@@ -1706,6 +1773,7 @@ gc_file_buffers_and_nodes (void)
       if (!fb_referenced[i])
         {
           FILE_BUFFER *fb = info_loaded_files[i];
+          TAG **t;
 
           if (fb->flags & N_TagsIndirect)
             continue;
@@ -1726,6 +1794,14 @@ gc_file_buffers_and_nodes (void)
 
           free (fb->contents);
           fb->contents = 0;
+
+          /* Clear pointers into the file contents in the tags table. */
+          if (fb->tags)
+            for (t = fb->tags; (*t); t++)
+              {
+                if (!((*t)->cache.flags & N_WasRewritten))
+                  (*t)->cache.contents = 0;
+              }
         }
     }
 
@@ -1834,19 +1910,22 @@ DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
       NODE *copy = xmalloc (sizeof (NODE));
       *copy = *window->node; /* Field-by-field copy of structure. */
 
-      /* This allows us to free nodes without checking if these fields
-         are shared by NODE objects in other windows. */
-      copy->references = info_copy_references (copy->references);
-      copy->nodename = xstrdup (copy->nodename);
+      if (copy->flags & N_IsInternal)
+        {
+          /* This allows us to free nodes without checking if these fields
+             are shared by NODE objects in other windows.  For non-internal
+             nodes, this data is stored in the tag table. */
+          copy->references = info_copy_references (copy->references);
+          copy->nodename = xstrdup (copy->nodename);
 
-      if (copy->up)
-        copy->up = xstrdup (copy->up);
-      if (copy->next)
-        copy->next = xstrdup (copy->next);
-      if (copy->prev)
-        copy->prev = xstrdup (copy->prev);
-      if (copy->flags & N_WasRewritten)
-        copy->contents = xstrdup (copy->contents);
+          if (copy->up)
+            copy->up = xstrdup (copy->up);
+          if (copy->next)
+            copy->next = xstrdup (copy->next);
+          if (copy->prev)
+            copy->prev = xstrdup (copy->prev);
+          copy->contents = xstrdup (copy->contents);
+        }
 
       info_set_node_of_window (split, copy);
       /* Make sure point still appears in the active window. */
@@ -1942,8 +2021,8 @@ DECLARE_INFO_COMMAND (info_keep_one_window, _("Delete all other windows"))
       amount -= (window->pagetop - pagetop);
       display_scroll_display (start, end, amount);
     }
-
   window->flags |= W_UpdateWindow;
+  gc_file_buffers_and_nodes ();
 }
 
 /* Change the size of WINDOW by AMOUNT. */
@@ -1986,8 +2065,15 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
   NODE *node;
   char *file_system_error = NULL;
 
-  node = info_get_node_with_defaults (entry->filename, entry->nodename,
-                                      window->node);
+  /* We need to copy everything from entry because the call to 
+     info_get_node_with_defaults can free it if it came from
+     the tag table of a file. */
+  char *filename = entry->filename;
+  char *nodename = entry->nodename;
+  char *label = entry->label;
+  int line_number = entry->line_number;
+
+  node = info_get_node_with_defaults (filename, nodename, window->node);
 
   /* Try something a little weird.  If the node couldn't be found, and the
      reference was of the form "foo::", see if the entry->label can be found
@@ -1997,13 +2083,12 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
       if (info_recent_file_error)
         file_system_error = xstrdup (info_recent_file_error);
 
-      if (entry->nodename
-          && entry->label && (strcmp (entry->nodename, entry->label) == 0))
+      if (nodename && label && !strcmp (nodename, label))
         {
           free (file_system_error);
           file_system_error = NULL;
 
-          node = info_get_node (entry->label, "Top");
+          node = info_get_node (label, "Top");
           if (!node && info_recent_file_error)
             file_system_error = xstrdup (info_recent_file_error);
         }
@@ -2017,8 +2102,7 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
           free (file_system_error);
         }
       else
-        info_error (msg_cant_find_node,
-                    entry->nodename ? entry->nodename : "Top");
+        info_error (msg_cant_find_node, nodename ? nodename : "Top");
       return 0;
     }
 
@@ -2042,10 +2126,10 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
         }
   info_set_node_of_window (window, node);
 
-  if (entry->line_number > 0)
+  if (line_number > 0)
     {
       /* Go to the line given by entry->line_number. */
-      long line = window_log_to_phys_line (window, entry->line_number - 1);
+      long line = window_log_to_phys_line (window, line_number - 1);
 
       if (line >= 0 && line < window->line_count)
         {
@@ -2064,9 +2148,9 @@ info_parse_and_select (char *line, WINDOW *window)
 {
   REFERENCE entry;
 
-  /* info_parse_node will be called on 'line' in subsequent functions. */
-  entry.nodename = line;
-  entry.filename = 0;
+  info_parse_node (line);
+  entry.filename = info_parsed_filename;
+  entry.nodename = info_parsed_nodename;
   entry.line_number = 0;
   entry.label = "*info-parse-and-select*";
 
@@ -2214,9 +2298,6 @@ info_menu_or_ref_item (WINDOW *window, int menu_item, int xref, int ask_p)
   else /* !menu_item && !xref */
     return;
 
-  /* Default the selected reference to the one which is on the line that
-     point is in. */
-
   line_no = window_line_of_point (window);
   this_line = window->line_starts[line_no];
   if (window->line_starts[line_no + 1])
@@ -2224,6 +2305,8 @@ info_menu_or_ref_item (WINDOW *window, int menu_item, int xref, int ask_p)
   else
     next_line = window->node->nodelen;
 
+  /* Look for a reference in the current line, preferring one that
+     the point is in, otherwise preferring after the point. */
   for (which = 0; refs[which]; which++)
     {
       /* If we got to the next line without finding an eligible reference. */
@@ -2243,14 +2326,14 @@ info_menu_or_ref_item (WINDOW *window, int menu_item, int xref, int ask_p)
 
           /* If a reference contains the point, prefer it.  Otherwise prefer a
              reference after the cursor to one before it. */
-          if (refs[which]->start >= window->point)
+          if (window->point >= refs[which]->start
+              && window->point < refs[which]->end)
             break;
         }
     }
   if (closest != -1)
     defentry = refs[closest];
 
-  /* If we are going to ask the user a question, do it now. */
   if (ask_p)
     {
       char *prompt;
@@ -2514,6 +2597,7 @@ cleanup_history (WINDOW *window, int start, int end)
   memmove (&window->hist[start], &window->hist[end],
            (window->hist_index - end) * sizeof (WINDOW_STATE *));
   window->hist_index -= end - start;
+  window->hist[window->hist_index] = 0;
 }
 
 DECLARE_INFO_COMMAND (info_move_to_prev_xref,
@@ -2841,7 +2925,10 @@ info_handle_pointer (char *label, WINDOW *window)
       return 0;
     }
 
-  node = info_get_node_with_defaults (0, description, window->node);
+  info_parse_node (description);
+  node = info_get_node_with_defaults (info_parsed_filename,
+                                      info_parsed_nodename,
+                                      window->node);
   if (!node)
     {
       if (info_recent_file_error)
@@ -2911,7 +2998,7 @@ DECLARE_INFO_COMMAND (info_last_node, _("Select the last node in this file"))
       if (count == 0 || (count == 1 && !info_explicit_arg))
         count = -1;
       for (i = 0; count && fb->tags[i]; i++)
-        if (fb->tags[i]->nodelen != 0) /* don't count anchor tags */
+        if (fb->tags[i]->cache.nodelen != 0) /* don't count anchor tags */
           {
             count--;
             last_node_tag_idx = i;
@@ -2944,7 +3031,7 @@ DECLARE_INFO_COMMAND (info_first_node, _("Select the first node in this file"))
       int last_node_tag_idx = -1;
 
       for (i = 0; count && fb->tags[i]; i++)
-        if (fb->tags[i]->nodelen != 0) /* don't count anchor tags */
+        if (fb->tags[i]->cache.nodelen != 0) /* don't count anchor tags */
           {
             count--;
             last_node_tag_idx = i;
@@ -2987,8 +3074,10 @@ forward_move_node_structure (WINDOW *window, int behaviour)
     case IS_Continuous:
       {
         /* If this node contains a menu, select its first entry.  Indices
-           are an exception, as their menus lead nowhere meaningful. */
-        if (!(window->node->flags & N_IsIndex))
+           are an exception, as their menus lead nowhere meaningful.  Likewise
+           for dir nodes. */
+        if (!(window->node->flags & N_IsIndex)
+            && !(window->node->flags & N_IsDir))
           {
             REFERENCE *entry;
 
@@ -3876,13 +3965,12 @@ match_in_match_list (regmatch_t *matches, size_t match_count,
 /* Search for STRING in NODE starting at START.  The DIR argument says which
    direction to search in.  If it is positive, search forward, else backwards.
 
-   If the string was found, return its location in POFF,  set the
-   window's node to be NODE, its point to be the found string, and readjust
-   the window's pagetop.  
+   If the string was found, return its location in POFF, set the
+   window's node, its point to be the found string, and readjust
+   the window's pagetop.  NODE can be retained as a field within WINDOW.
 
    WINDOW->matches should be a list of matches for NODE->contents, or null.
-   If new matches are calculated, they are saved in WINDOW->matches.
-*/
+   If new matches are calculated, they are saved in WINDOW->matches.  */
 static enum search_result
 info_search_in_node_internal (WINDOW *window, NODE *node,
                               char *string, long start,
@@ -3921,6 +4009,24 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
   
   if (result != search_success)
     return result;
+
+  if (node->flags & N_Simple)
+    {
+      /* There are matches in the node, but it hasn't been scanned yet.  Get
+         the node again, because its contents may differ. */
+      enum search_result subresult;
+      NODE *full_node;
+
+      free (matches);
+      full_node = info_get_node (node->fullpath, node->nodename);
+      subresult = info_search_in_node_internal (window, full_node,
+                                    string, start,
+                                    dir, case_sensitive,
+                                    match_regexp, poff);
+      if (window->node != full_node)
+        free (full_node);
+      return subresult;
+    }
 
   if (dir > 0)
     {
@@ -4029,12 +4135,11 @@ info_search_internal (char *string, WINDOW *window,
       result = info_search_in_node_internal (window, node, string, start, dir,
                  case_sensitive, use_regex, start_off);
 
+      if (node != window->node)
+        free_history_node (node);
+
       if (result == search_invalid)
-        {
-          if (node != window->node)
-            free_history_node (node);
-          return 1;
-        }
+        return 1;
 
       if (result == search_success)
         {
@@ -4066,7 +4171,7 @@ info_search_internal (char *string, WINDOW *window,
             }
           
           tag = file_buffer->tags[i];
-          if (tag->nodelen != 0)
+          if (tag->cache.nodelen != 0)
             break;
         }
 
@@ -4086,12 +4191,10 @@ info_search_internal (char *string, WINDOW *window,
         }
 
       /* Get a new node to search in. */
-      if (node != window->node)
-        free_history_node (node);
       free (window->matches);
       window->matches = 0;
 
-      node = info_get_node (file_buffer->filename, tag->nodename);
+      node = info_node_of_tag_fast (file_buffer, &tag);
       if (!node)
         {
           /* If not doing i-search... */
@@ -4108,7 +4211,7 @@ info_search_internal (char *string, WINDOW *window,
         }
 
       if (dir < 0)
-        start = tag->nodelen;
+        start = tag->cache.nodelen;
       else
         start = 0;
 
@@ -4123,8 +4226,6 @@ info_search_internal (char *string, WINDOW *window,
     info_error ("%s", _("Search failed."));
 
 funexit:
-  if (node != window->node)
-    free_history_node (node);
   return -1;
 }
 
@@ -4233,6 +4334,336 @@ info_search_1 (WINDOW *window, int count, int case_sensitive)
      not retained. */
   gc_file_buffers_and_nodes ();
 }
+
+/* Set *T to an offset within the tags table of the node referenced by R,
+   using WINDOW for defaults.  *FB is set to the file buffer structure for
+   the node. */
+static int
+tag_of_reference (REFERENCE *r, WINDOW *window, FILE_BUFFER **fb, TAG ***t)
+{
+  char *filename, *nodename;
+  int i;
+
+  filename = r->filename;
+  nodename = r->nodename;
+  if (!filename)
+    filename = window->node->fullpath;
+  if (!nodename || !*nodename)
+    nodename = "Top";
+
+  *fb = info_find_file (filename);
+  if (!*fb)
+    return 0;
+
+  for (i = 0; *(*t = &(*fb)->tags[i]); i++)
+    if (!strcmp (nodename, (**t)->nodename))
+      goto found_tag;
+  return 0;
+found_tag: ;
+  return 1;
+}
+
+/* Value for NODE.active_menu */
+#define BEFORE_MENU -99
+
+static void tree_search_check_node (WINDOW *window);
+static void tree_search_check_node_backwards (WINDOW *window);
+
+/* Search in WINDOW->node, and nodes reachable by menus from it, for
+   WINDOW->search_string. */
+static void
+tree_search_check_node (WINDOW *window)
+{
+  long start_off;
+  enum search_result result;
+  char *string;
+  int previous_match;
+
+  if (window->node->active_menu != 0)
+    previous_match = 1;
+  else
+    {
+      previous_match = 0;
+      window->node->active_menu = BEFORE_MENU;
+    }
+  string = xstrdup (window->search_string);
+  goto check_node;
+
+check_node:
+  result = info_search_in_node_internal (window, window->node,
+                                  string,
+                                  window->point + 1,
+                                  1, /* Search forwards */
+                                  1, /* Case-sensitive */
+                                  0, /* No regular expressions. */
+                                  &start_off);
+  if (result == search_success)
+    {
+      info_show_point (window);
+      goto funexit;
+    }
+
+  /* Otherwise, try each menu entry in turn. */
+  if (window->matches)
+    window->point++; /* Find this match again if/when we come back. */
+  goto check_menus;
+
+  /* At this juncture, window->node->active_menu is the index of the last
+     reference in the node to have been checked, plus one.  BEFORE_MENU is a 
+     special code to say that none of them have been checked. */
+check_menus:
+  if (!(window->node->flags & N_IsIndex)) /* Don't go down menus in index  */
+    {                               /* nodes, because this leads to loops. */
+      REFERENCE *r;
+      int ref_index;
+      if (window->node->active_menu != BEFORE_MENU)
+        ref_index = window->node->active_menu;
+      else
+        ref_index = 0;
+      for (; (r = window->node->references[ref_index]); ref_index++)
+        if (r->type == REFERENCE_MENU_ITEM)
+          {
+            FILE_BUFFER *file_buffer;
+            TAG **tag;
+            NODE *node;
+
+            if (!tag_of_reference (r, window, &file_buffer, &tag))
+              continue;
+
+            if ((*tag)->flags & N_SeenBySearch)
+              continue;
+            (*tag)->flags |= N_SeenBySearch;
+
+            window->node->active_menu = ref_index + 1;
+            node = info_node_of_tag (file_buffer, tag);
+            if (!node)
+              continue;
+            info_set_node_of_window_fast (window, node);
+            window->node->active_menu = BEFORE_MENU;
+            goto check_node;
+          }
+    }
+  goto go_up;
+
+go_up:
+  /* If no more menu entries, try going back. */
+  if (window->hist_index >= 2
+      && window->hist[window->hist_index - 2]->node->active_menu != 0)
+    {
+      forget_node_fast (window);
+      goto check_menus;
+    }
+
+  /* Go back to the final match. */
+  if (previous_match)
+    {
+      REFERENCE *mentry;
+
+      message_in_echo_area (_("Going back to last match from %s"),
+                            window->node->nodename);
+
+      /* This is a trick.  Add an arbitrary node to the window history,
+         but set active_menu to one more than the number of references.  When
+         we call tree_search_check_node_backwards, this will repeatedly go down 
+         the last menu entry for us. */
+      {
+        int n = 0;
+
+        while (window->node->references[n])
+          n++;
+        window->node->active_menu = n + 1;
+
+        mentry = select_menu_digit (window, '1');
+        if (!mentry)
+          goto funexit;
+        if (!info_select_reference (window, mentry))
+          goto funexit;
+        window->node->active_menu = BEFORE_MENU;
+      }
+      window->point = window->node->body_start;
+      tree_search_check_node_backwards (window);
+    }
+  info_error (_("No more matches."));
+
+funexit:
+  free (string);
+} /*********** end tree_search_check_node *************/
+
+
+/* The same as tree_search_check_node, but backwards. */
+static void
+tree_search_check_node_backwards (WINDOW *window)
+{
+  long start_off;
+  enum search_result result;
+  char *string;
+
+  string = xstrdup (window->search_string);
+  goto check_node;
+
+check_node:
+  result = info_search_in_node_internal (window, window->node,
+                                  string,
+                                  window->point - 1,
+                                 -1, /* Search backwards */
+                                  1, /* Case-sensitive */
+                                  0, /* No regular expressions. */
+                                  &start_off);
+  if (result == search_success)
+    {
+      info_show_point (window);
+      goto funexit;
+    }
+
+  goto go_up;
+
+  /* Check through menus in current node, in reverse order.
+     At this juncture, window->node->active_menu is the index of the last
+     reference in the node to have been checked, plus one.  BEFORE_MENU is a 
+     special code to say that none of them have been checked. */
+check_menus:
+  if (!(window->node->flags & N_IsIndex)) /* Don't go down menus in index  */
+    {                               /* nodes, because this leads to loops. */
+      REFERENCE *r;
+      int ref_index;
+      if (window->node->active_menu == BEFORE_MENU)
+        goto check_node;
+      else
+        ref_index = window->node->active_menu - 2;
+      for (; ref_index >= 0; ref_index--)
+        {
+          r = window->node->references[ref_index];
+          if (r->type == REFERENCE_MENU_ITEM)
+            {
+              TAG **tag;
+              FILE_BUFFER *file_buffer;
+              NODE *node;
+
+              if (!tag_of_reference (r, window, &file_buffer, &tag))
+                continue;
+
+              /* This inverts what is done for the forwards search.  It's 
+                 possible that we will visit the nodes in a different order if 
+                 there is more than one reference to a node. */
+              if (!((*tag)->flags & N_SeenBySearch))
+                continue;
+
+              node = info_node_of_tag (file_buffer, tag);
+              if (!node)
+                continue;
+              window->node->active_menu = ref_index + 1;
+              info_set_node_of_window_fast (window, node);
+              window->point = window->node->nodelen;
+              {
+                /* Start at the last menu entry in the subordinate node. */
+                int i;
+                i = 0;
+                while(window->node->references[i])
+                  i++;
+                window->node->active_menu = i + 1;
+              }
+              goto check_menus;
+            }
+        }
+    }
+  window->node->active_menu = BEFORE_MENU;
+  goto check_node;
+
+  /* Try going back. */
+go_up:
+  if (window->hist_index >= 2
+      && window->hist[window->hist_index - 2]->node->active_menu != 0)
+    {
+      TAG **tag;
+      REFERENCE *r;
+      FILE_BUFFER *file_buffer;
+
+      forget_node_fast (window);
+      r = window->node->references[window->node->active_menu - 1];
+
+      /* Clear the flag to say we've been to the node we just came back
+         from.  This reverse the order from the forwards search, where
+         we set this flag just before going down. */
+      if (r && tag_of_reference (r, window, &file_buffer, &tag))
+        {
+          (*tag)->flags &= ~N_SeenBySearch;
+        }
+
+      goto check_menus;
+    }
+
+  /* Otherwise, no result. */
+  info_error (_("No more matches."));
+
+funexit:
+  free (string);
+} /*********** end tree_search_check_node_backwards *************/
+
+
+/* Clear N_SeenBySearch for all nodes. */
+void
+wipe_seen_flags (void)
+{
+  int fb_index;
+  TAG **t;
+
+  for (fb_index = 0; fb_index < info_loaded_files_index; fb_index++)
+    {
+      t = info_loaded_files[fb_index]->tags;
+      if (!t)
+        continue; /* Probably a sub-file of a split file. */
+      for (; *t; t++)
+        {
+          (*t)->flags &= ~N_SeenBySearch;
+        }
+    }
+}
+
+DECLARE_INFO_COMMAND (info_tree_search,
+                      _("Search this node and subnodes for a string."))
+{
+  char *prompt, *line;
+  int i;
+
+  /* TODO: Display manual name */
+  asprintf (&prompt, "Search under %s: ",
+            window->node->nodename);
+  line = info_read_in_echo_area (prompt); free (prompt);
+  if (!line)
+    return;
+
+  /* Remove relics of previous tree searches. */
+  wipe_seen_flags ();
+  for (i = 0; i < window->hist_index; i++)
+    window->hist[i]->node->active_menu = 0;
+  window->search_string = line;
+  tree_search_check_node (window);
+}
+
+DECLARE_INFO_COMMAND (info_tree_search_next,
+                      _("Go to next match in Info sub-tree"))
+{
+  if (!window->search_string || window->node->active_menu == 0)
+    {
+      info_error (_("No active search"));
+      return;
+    }
+
+  tree_search_check_node (window);
+}
+
+DECLARE_INFO_COMMAND (info_tree_search_previous,
+                      _("Go to previous match in Info sub-tree"))
+{
+  if (!window->search_string || window->node->active_menu == 0)
+    {
+      info_error (_("No active search"));
+      return;
+    }
+
+  tree_search_check_node_backwards (window);
+}
+#undef BEFORE_MENU
 
 DECLARE_INFO_COMMAND (info_search_case_sensitively,
                       _("Read a string and search for it case-sensitively"))
@@ -4376,7 +4807,8 @@ DECLARE_INFO_COMMAND (isearch_backward,
 
 /* Structure defining the current state of an incremental search. */
 typedef struct {
-  NODE *node;           /* The node displayed in this window. */
+  char *fullpath;
+  char *nodename;
   long pagetop;         /* LINE_STARTS[PAGETOP] is first line in WINDOW. */
   long point;           /* Point in window. */
   long start;           /* Offset in node contents where search started. */
@@ -4403,7 +4835,8 @@ static size_t isearch_states_slots = 0;
 static void
 window_get_state (WINDOW *window, SEARCH_STATE *state)
 {
-  state->node = window->node;
+  state->fullpath = window->node->fullpath;
+  state->nodename = window->node->nodename;
   state->pagetop = window->pagetop;
   state->point = window->point;
 }
@@ -4412,8 +4845,12 @@ window_get_state (WINDOW *window, SEARCH_STATE *state)
 static void
 window_set_state (WINDOW *window, SEARCH_STATE *state)
 {
-  if (window->node != state->node)
-    window_set_node_of_window (window, state->node);
+  if (strcmp(window->node->fullpath, state->fullpath)
+      || strcmp(window->node->nodename, state->nodename))
+    {
+      NODE *n = info_get_node (state->fullpath, state->nodename);
+      info_set_node_of_window (window, n);
+    }
   window->pagetop = state->pagetop;
   window->point = state->point;
 }
@@ -4820,7 +5257,8 @@ gotfunc:
         {
           /* Make sure the match is visible, and update the display. */
 
-          if (mystate.node == window->node
+          if (!strcmp(window->node->fullpath, mystate.fullpath)
+              && !strcmp(window->node->nodename, mystate.nodename)
               && mystate.pagetop != window->pagetop)
             {
               int newtop = window->pagetop;
@@ -4844,32 +5282,24 @@ gotfunc:
      started the incremental search if the match was in a different node. */
   {
     int i = window->hist_index - 1;
-    while (i >= starting_history_entry
-           && window->node != window->hist[i]->node)
-      {
-        free_history_node (window->hist[i]->node);
-        free (window->hist[i]);
-        i--;
-      }
+    int j = starting_history_entry;
 
-    if (i > starting_history_entry)
+    if (i > j)
       {
-        /* History entry i is the only one we want to keep. */
-        int i2 = i - 1;
-        while (i2 > starting_history_entry)
+        if (!strcmp(window->hist[i]->node->nodename,
+                    window->hist[j]->node->nodename)
+            && !strcmp(window->hist[j]->node->fullpath,
+                       window->hist[i]->node->fullpath))
           {
-            free_history_node (window->hist[i2]->node);
-            free (window->hist[i2]);
-            i2--;
+            /* If we end up at the same node we started at, don't extend
+               the history at all. */
+            cleanup_history (window, j, i);
           }
-        window->hist[starting_history_entry + 1] = window->hist[i];
-        window->hist_index = starting_history_entry + 2;
+        else
+          {
+            cleanup_history (window, j + 1, i);
+          }
       }
-    else
-      /* The match was in the first node checked.  No extra history entries 
-         are needed. */
-      window->hist_index = starting_history_entry + 1;
-    window->hist[window->hist_index] = 0;
   }
 
   /* Perhaps GC some file buffers. */
@@ -4946,7 +5376,10 @@ DECLARE_INFO_COMMAND (info_redraw_display, _("Redraw the display"))
 /* Exit from info */
 DECLARE_INFO_COMMAND (info_quit, _("Quit using Info"))
 {
-  quit_info_immediately = 1;
+  if (window->next || window->prev)
+    info_delete_window (window, count);
+  else
+    quit_info_immediately = 1;
 }
 
 

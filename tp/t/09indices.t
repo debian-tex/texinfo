@@ -477,6 +477,24 @@ fn
 
 @printindex fn
 '],
+['same_index_entry_merged_indices', 
+'@syncodeindex vr fn
+
+@node Top
+@top
+
+Text.
+
+@deffn Command mmm-mode @var{arg}
+Toggle the state of MMM Mode.
+@end deffn
+
+@defvar mmm-mode
+This variable represents MMM Mode.
+@end defvar
+
+@printindex fn
+']
 );
 
 sub encoding_index_text($)

@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c 6327 2015-06-09 11:12:41Z gavin $
+   $Id: info-utils.c 6877 2015-12-19 16:42:47Z gavin $
 
    Copyright 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012,
    2013, 2014, 2015 Free Software Foundation, Inc.
@@ -43,10 +43,6 @@ extern char * rpl_nl_langinfo (nl_item);
 #define va_copy(ap1,ap2) memcpy((&ap1),(&ap2),sizeof(va_list))
 #endif
 
-/* When non-zero, various display and input functions handle ISO Latin
-   character sets correctly. */
-int ISO_Latin_p = 1;
-
 /* Variable which holds the most recent filename parsed as a result of
    calling info_parse_xxx (). */
 char *info_parsed_filename = NULL;
@@ -56,8 +52,8 @@ char *info_parsed_filename = NULL;
 char *info_parsed_nodename = NULL;
 
 /* Read a filename surrounded by "(" and ")", accounting for matching
-   characters.  Return length of read filename.  On error, set *FILENAME
-   to null and return 0.  */
+   characters, and place it in *FILENAME if FILENAME is not null.  Return 
+   length of read filename.  On error, set *FILENAME to null and return 0.  */
 int
 read_bracketed_filename (char *string, char **filename)
 {
@@ -65,7 +61,6 @@ read_bracketed_filename (char *string, char **filename)
   int count = 0; /* Level of nesting. */
   int first_close = -1; /* First ")" encountered. */
 
-  *filename = 0;
   if (*string != '(')
     return 0;
 
@@ -91,13 +86,19 @@ read_bracketed_filename (char *string, char **filename)
   if (count > 0)
     {
       if (first_close == -1)
-        return 0;
+        {
+          if (filename)
+            *filename = 0;
+          return 0;
+        }
       i = first_close;
     }
 
-  /* Remember parsed filename. */
-  *filename = xcalloc (1, i + 1);
-  memcpy (*filename, string, i);
+  if (filename)
+    {
+      *filename = xcalloc (1, i + 1);
+      memcpy (*filename, string, i);
+    }
 
   return i + 2; /* Length of filename plus "(" and ")". */
 }
@@ -126,11 +127,10 @@ info_parse_node (char *string)
 
   /* Parse out nodename. */
   string += skip_whitespace_and_newlines (string);
-  nodename_len = strlen (string);
+  nodename_len = read_quoted_string (string, "", 0, &info_parsed_nodename);
 
   if (nodename_len != 0)
     {
-      info_parsed_nodename = xstrdup (string);
       canonicalize_whitespace (info_parsed_nodename);
     }
 }
@@ -141,9 +141,7 @@ info_parse_node (char *string)
    TERMINATOR is an empty string, finish at a null character.   LINES is
    the number of lines that the string can span.  If LINES is zero, there is no
    limit.  Return length of string including any quoting characters.  Return
-   0 if input was invalid.
-
-   TODO: Decide on best method of quoting. */
+   0 if input was invalid. */
 long
 read_quoted_string (char *start, char *terminator, int lines, char **output)
 {
@@ -184,7 +182,6 @@ read_quoted_string (char *start, char *terminator, int lines, char **output)
           (*output)[len] = '\0';
         }
     }
-#ifdef QUOTE_NODENAMES
   else
     {
       len = strcspn (start + 1, "\177");
@@ -203,13 +200,6 @@ read_quoted_string (char *start, char *terminator, int lines, char **output)
 
       len += 2;
     }
-#else /* ! QUOTE_NODENAMES */
-  else
-    {
-      *output = xstrdup ("");
-      len = 0;
-    }
-#endif
 
   if (nl)
     *nl = saved_char;
@@ -489,13 +479,14 @@ ansi_escape (mbi_iterator_t iter, size_t *plen)
   return 0;
 }
 
-static struct text_buffer printed_rep = {}; /* Initialize with all zeroes. */
+static struct text_buffer printed_rep = { 0 };
 
 /* Return pointer to string that is the printed representation of character
    (or other logical unit) at ITER if it were printed at screen column
-   PL_CHARS.  Use ITER_SETBYTES (info-utils.h) on ITER if byte length is
-   different.  If ITER points at an end-of-line character, set *DELIM to this
-   character.  *PCHARS gets the number of screen columns taken up by
+   PL_CHARS.  Use ITER_SETBYTES (info-utils.h) on ITER if we need to advance 
+   past a unit that the multibyte iteractor doesn't know about (like an ANSI 
+   escape sequence).  If ITER points at an end-of-line character, set *DELIM to 
+   this character.  *PCHARS gets the number of screen columns taken up by
    outputting the return value, and *PBYTES the number of bytes in returned
    string.  Return value is not null-terminated.  Return value must not be
    freed by caller. */
@@ -503,7 +494,6 @@ char *
 printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
                         size_t *pchars, size_t *pbytes) 
 {
-  int printable_limit = ISO_Latin_p ? 255 : 127;
   struct text_buffer *rep = &printed_rep;
 
   char *cur_ptr = (char *) mbi_cur_ptr (*iter);
@@ -569,20 +559,10 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
       text_buffer_add_char (rep, *cur_ptr | 0x40);
       return text_buffer_base (rep);
     }
-  /* Show META-x as "\370".  */
-  else if (*(unsigned char *)cur_ptr > printable_limit)
-    {
-      *pchars = 4;
-      *pbytes = 4;
-      text_buffer_printf (rep, "\\%0o", *cur_ptr);
-      return text_buffer_base (rep);
-    }
   else if (*cur_ptr == DEL)
     {
-      *pchars = 2;
-      *pbytes = 2;
-      text_buffer_add_char (rep, '^');
-      text_buffer_add_char (rep, '?');
+      *pchars = 0;
+      *pbytes = 0;
       return text_buffer_base (rep);
     }
   else
@@ -594,7 +574,7 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
          terminal. */
       *pchars = 4;
       *pbytes = 4;
-      text_buffer_printf (rep, "\\%0o", *cur_ptr);
+      text_buffer_printf (rep, "\\%o", *(unsigned char *)cur_ptr);
       return text_buffer_base (rep);
     }
 }
@@ -612,7 +592,11 @@ int preprocess_nodes_p;
 /* Whether contents of nodes should be rewritten. */
 static int rewrite_p;
 
-static char *input_start, *inptr;
+/* inptr is moved forward through the body of a node. */
+static char *inptr;
+
+/* Pointer to first byte of node (after node separator). */
+static char *input_start;
 
 /* Number of bytes in node contents. */
 static size_t input_length;
@@ -623,10 +607,12 @@ struct text_buffer output_buf;
    a result of byte counts changing due to character encoding conversion or
    inserted/deleted text. */
 static TAG **anchor_to_adjust;
-static int node_offset; /* Offset within file buffer of first byte of node. */
+/* Offset within file buffer of first byte of node, used for anchor
+   adjustment. */
+static int node_offset;
 
-/* Difference between the number of bytes input in the file and
-   bytes output.  If !rewrite_p, this should stay 0. */
+/* Difference so far between the number of bytes input in the file and
+   bytes output.  Used to adjust the values of anchors in nodes. */
 static long int output_bytes_difference;
 
 /* Whether we are converting the character encoding of the file. */
@@ -792,6 +778,10 @@ degrade_utf8 (char **from, size_t *from_left)
     {"\xC3\xAB","e\""},  /* Lower case letter e with diaeresis */
     {"\xC3\xB6","o\""},  /* Lower case letter o with diaeresis */
     {"\xC3\xBC","u\""},  /* Lower case letter u with diaeresis */
+    {"\xC3\x84", "A\""},  /* Upper case letter A with diaeresis. */
+    {"\xC3\x96", "O\""},  /* Upper case letter O with diaeresis. */
+    {"\xC3\x9c", "U\""},  /* Upper case letter U with diaeresis. */
+
     {"\xC3\xB1","n~"},  /* Lower case letter n with tilde */
     {"\xC3\x87","C,"},  /* Upper case letter C with cedilla */
     {"\xC3\xA7","c,"},  /* Lower case letter c with cedilla */
@@ -982,8 +972,8 @@ copy_input_to_output (long n)
 
               if (anchor_to_adjust)
                 {
-                  char *first_anchor = input_start - node_offset
-                                       + (*anchor_to_adjust)->nodestart;
+                  char *first_anchor = input_start
+                             + (*anchor_to_adjust)->nodestart - node_offset;
 
                   /* If there is an anchor in the input: */
                   if (first_anchor < inptr + bytes_left)
@@ -1018,7 +1008,8 @@ copy_input_to_output (long n)
                    = (*anchor_to_adjust)->nodestart - output_bytes_difference;
 
                 anchor_to_adjust++;
-                if (!*anchor_to_adjust || (*anchor_to_adjust)->nodelen != 0)
+                if (!*anchor_to_adjust
+                    || (*anchor_to_adjust)->cache.nodelen != 0)
                   {
                     anchor_to_adjust = 0;
                     break;
@@ -1082,157 +1073,136 @@ skip_tag_contents (long n)
     }
 }
 
-/* ANSI escape codes */
-#define ANSI_UNDERLINING_OFF "\033[24m"
-#define ANSI_UNDERLINING_ON  "\033[4m"
-
-/* Turn off underlining */
-static void
-underlining_off (void)
-{
-  write_extra_bytes_to_output (ANSI_UNDERLINING_OFF,
-                               strlen (ANSI_UNDERLINING_OFF));
-}
-
-/* Turn on underlining */
-static void
-underlining_on (void)
-{
-  write_extra_bytes_to_output (ANSI_UNDERLINING_ON,
-                               strlen (ANSI_UNDERLINING_ON));
-}
+#define NO_NODELINE 0
+#define PRINT_NODELINE 1
+#define NODELINE_POINTERS_ONLY 2
+int nodeline_print = 2;
 
 /* Read first line of node and set next, prev and up. */
 static void
 parse_top_node_line (NODE *node)
 {
-  char **store_in, *dummy = 0;
+  char **store_in = 0;
+  char *nodename;
+  char *ptr, *ptr2;
+  char *display_start = 0;
   int value_length;
 
   /* If the first line is empty, leave it in.  This is the case
      in the index-apropos window. */
-  if (*inptr == '\n')
-    {
-      return;
-    }
+  if (*node->contents == '\n')
+    return;
 
   node->next = node->prev = node->up = 0;
+  ptr = node->contents;
 
   while (1)
     {
       store_in = 0;
 
-      skip_input (skip_whitespace (inptr));
+      ptr += skip_whitespace (ptr);
 
       /* Check what field we are looking at */
-      if (!strncasecmp (inptr, INFO_FILE_LABEL, strlen(INFO_FILE_LABEL)))
+      if (!strncasecmp (ptr, INFO_FILE_LABEL, strlen(INFO_FILE_LABEL)))
         {
-          skip_input (strlen(INFO_FILE_LABEL));
-          store_in = &dummy;
+          ptr2 = ptr + strlen (INFO_FILE_LABEL);
         }
-      else if (!strncasecmp (inptr, INFO_NODE_LABEL, strlen(INFO_NODE_LABEL)))
+      else if (!strncasecmp (ptr, INFO_NODE_LABEL, strlen(INFO_NODE_LABEL)))
         {
-          skip_input (strlen(INFO_NODE_LABEL));
-          store_in = &dummy;
+          ptr2 = ptr + strlen (INFO_NODE_LABEL);
         }
-      else if (!strncasecmp (inptr, INFO_PREV_LABEL, strlen(INFO_PREV_LABEL)))
+      else if (!strncasecmp (ptr, INFO_PREV_LABEL, strlen(INFO_PREV_LABEL)))
         {
-          skip_input (strlen(INFO_PREV_LABEL));
+          ptr2 = ptr + strlen (INFO_PREV_LABEL);
           store_in = &node->prev;
         }
-      else if (!strncasecmp (inptr, INFO_ALTPREV_LABEL, 
+      else if (!strncasecmp (ptr, INFO_ALTPREV_LABEL, 
                              strlen(INFO_ALTPREV_LABEL)))
         {
-          skip_input (strlen(INFO_ALTPREV_LABEL));
+          ptr2 = ptr + strlen (INFO_ALTPREV_LABEL);
           store_in = &node->prev;
         }
-      else if (!strncasecmp (inptr, INFO_NEXT_LABEL, strlen(INFO_NEXT_LABEL)))
+      else if (!strncasecmp (ptr, INFO_NEXT_LABEL, strlen(INFO_NEXT_LABEL)))
         {
-          skip_input (strlen(INFO_NEXT_LABEL));
+          ptr2 = ptr + strlen (INFO_NEXT_LABEL);
           store_in = &node->next;
         }
-      else if (!strncasecmp (inptr, INFO_UP_LABEL, strlen(INFO_UP_LABEL)))
+      else if (!strncasecmp (ptr, INFO_UP_LABEL, strlen(INFO_UP_LABEL)))
         {
-          skip_input (strlen(INFO_UP_LABEL));
+          ptr2 = ptr + strlen (INFO_UP_LABEL);
           store_in = &node->up;
         }
       else 
         {
-          store_in = &dummy;
+          ptr2 = ptr;
+          store_in = 0;
           /* Not recognized - code below will skip to next comma */
         }
         
-      skip_input (skip_whitespace (inptr));
+      if (nodeline_print==NODELINE_POINTERS_ONLY && !display_start && store_in)
+        display_start = ptr;
+      ptr = ptr2;
+
+      ptr += skip_whitespace (ptr);
+
+      if (*ptr != '(')
+        value_length = 0;
+      else
+        value_length = read_bracketed_filename (ptr, 0);
 
       /* Separate at commas or newlines, so it will work for
          filenames including full stops. */
-      /* TODO: Account for "(dir)" and "(DIR)". */
-      value_length = read_quoted_string (inptr, "\n\r\t,", 1, store_in);
-
-      free (dummy); dummy = 0;
-
-      /* Skip past value and any quoting or separating characters. */
-      skip_input (value_length);
-
-      if (*inptr == '\n')
+      value_length += read_quoted_string (ptr + value_length,
+                                          "\n\r\t,", 1, &nodename);
+      if (store_in)
         {
-          skip_input (1);
+          *store_in = xmalloc (value_length + 1);
+          strncpy (*store_in, ptr, value_length);
+          (*store_in)[value_length] = '\0';
+        }
+
+      free (nodename);
+      ptr += value_length;
+
+      if (*ptr == '\n')
+        {
+          ptr++;
           break;
         }
 
-      skip_input (1); /* Point after field terminator */
+      ptr += 1; /* Point after field terminator */
+    }
+  if (display_start)
+    {
+      output_bytes_difference = display_start - node->contents;
+      node_offset += output_bytes_difference;
+      node->nodelen -= display_start - node->contents;
+      node->contents = display_start;
+    }
+  else if (nodeline_print == NO_NODELINE)
+    {
+      output_bytes_difference = ptr - node->contents;
+      node_offset += output_bytes_difference;
+      node->nodelen -= ptr - node->contents;
+      node->contents = ptr;
     }
 }
 
-/* Check if preceding word is a word like "see".  BASE points before PTR in
-   a block of allocated memory. */
-static int
-avoid_see_see (char *ptr, char *base)
-{
-  /* TODO: Only do this for English-language files. */
-  static char *words_like_see[] = {
-    "see", "See", "In", "in", "of", "also"
-  };
-  int i;
-  int word_len = 0;
-
-  if (ptr == base)
-    return 0;
-
-  /* Skip past whitespace, and then go to beginning of preceding word. */
-  ptr--;
-  while (ptr > base && (*ptr == ' ' || *ptr == '\n' || *ptr == '\r'
-                        || *ptr == '\t' || *ptr == '('))
-    ptr--;
-
-  while (ptr > base && !(*ptr == ' ' || *ptr == '\n' || *ptr == '\r'
-                         || *ptr == '\t' || *ptr == '(' ))
-    {
-      ptr--;
-      word_len++;
-    }
-
-  ptr++;
-
-  /* Check if it is in our list. */
-  for (i = 0; i < sizeof (words_like_see) / sizeof (char *); i++)
-    {
-      if (!strncmp (words_like_see[i], ptr, word_len))
-        return 1;
-    }
-  return 0;
-}
-
-/* Output, replace or hide text introducing a reference.  inptr starts on
+/* Output, replace or hide text introducing a reference.  INPTR starts on
    the first byte of a sequence introducing a reference and finishes on the
    first (non-whitespace) byte of the reference label. */
 static int
-scan_reference_marker (REFERENCE *entry)
+scan_reference_marker (REFERENCE *entry, int in_parentheses)
 {
   /* When preprocess_nodes is Off, we position the cursor on
      the "*" when moving between references. */
   if (!preprocess_nodes_p)
-    entry->start = inptr - input_start - output_bytes_difference;
+    {
+      if (rewrite_p)
+        entry->start = text_buffer_off(&output_buf);
+      else
+        entry->start = inptr - input_start;
+    }
 
   /* Check what we found based on first character of match */
   if (inptr[0] == '\n')
@@ -1248,8 +1218,6 @@ scan_reference_marker (REFERENCE *entry)
     copy_input_to_output (strlen ("\n* "));
   else
     {
-      int previous_word_is_like_see = 0;
-
       /* Only match "*Note" if it is followed by a whitespace character so that 
          it will not be recognized if, e.g., it is surrounded in inverted 
          commas. */
@@ -1264,23 +1232,28 @@ scan_reference_marker (REFERENCE *entry)
          and "See" in HTML and print.  @ref and @pxref output "*note "
          in Info format, and either nothing at all or "see" in HTML
          and print.  Unfortunately, there is no easy way to distinguish
-         between these latter two cases.  We must make do with
-         displayed manuals occasionally containing "See see" and the
-         like. */
+         between these latter two cases. */
       /* TODO: Internationalize these strings, but only if we know the
          language of the document. */
       if (inptr[1] == 'N')
-        write_extra_bytes_to_output ("See", 3);
-      else
         {
-          previous_word_is_like_see = avoid_see_see (inptr, input_start);
-
-          if (!previous_word_is_like_see)
-            write_extra_bytes_to_output ("see", 3);
+          write_extra_bytes_to_output ("See", 3);
+          in_parentheses = 1;
+        }
+      else if (in_parentheses)
+        {
+          write_extra_bytes_to_output ("see", 3);
+          /* Only output the "see" for input like "(*note ...)", which
+             would have come from a use of @pxref.  We used to output "see" for 
+             "*note" in more circumstances, with a list of words where to
+             suppress it (to avoid "see *note" turning into "see see"), but
+             such a list can't be complete or reliable.  It's better to remove 
+             it with more enthusiasm, then if the document writer wants a "see"
+             to appear, they can add one themselves. */
         }
 
       skip_input (strlen ("*Note"));
-      if (previous_word_is_like_see)
+      if (!in_parentheses)
         skip_input (skip_whitespace (inptr));
     }
 
@@ -1297,78 +1270,39 @@ scan_reference_marker (REFERENCE *entry)
 static int
 scan_reference_label (REFERENCE *entry)
 {
-  char *nl_ptr;
-  char *end;
-  char *label = 0;
-  long label_len;
+  char *dummy;
+  int label_len = 0;
+
+  /* Handle case of cross-reference like (FILE)^?NODE^?::. */
+  if (inptr[0] == '(')
+    label_len = read_bracketed_filename (inptr, 0);
 
   /* Search forward to ":" to get label name.  Cross-references may have
      a newline in the middle. */
   if (entry->type == REFERENCE_MENU_ITEM)
-    label_len = read_quoted_string (inptr, ":", 1, &label);
+    label_len += read_quoted_string (inptr + label_len, ":", 1, &dummy);
   else
-    label_len = read_quoted_string (inptr, ":", 2, &label);
+    label_len += read_quoted_string (inptr + label_len, ":", 2, &dummy);
+  free (dummy);
     
   if (label_len == 0)
-    {
-      free (label);
-      return 0;
-    }
+    return 0;
 
-  entry->label = label;
+  entry->label = xmalloc (label_len + 1);
+  memcpy (entry->label, inptr, label_len);
+  entry->label[label_len] = '\0';
   canonicalize_whitespace (entry->label);
 
-#ifdef QUOTE_NODENAMES
-  if (inptr[0] == '\177')
-    {
-      skip_input (1);
-      label_len -= 2;
-    }
-#endif
-
-  end = inptr + label_len;
-
-  underlining_on ();
-
-  /* Must start underlining first so that entry->start points to a printable
-     character.  Otherwise the cursor can end up in the previous column. */
   if (preprocess_nodes_p)
     entry->start = text_buffer_off (&output_buf);
 
-  /* Write text of label.  If there is a newline in the middle of
-     a reference label, turn off underlining until text starts again. */
-  while (inptr < end)
-    {
-      nl_ptr = strchr (inptr, '\n');
-      if (!nl_ptr || nl_ptr >= end)
-        break;
+  /* Write text of label. */
+  copy_input_to_output (label_len);
 
-      copy_input_to_output (nl_ptr - inptr);
-
-      /* Note we do this before the newline is output.  This way if
-         the first half of the label is on the bottom line of the
-         screen, underlining will not be left on. */
-      underlining_off ();
-
-      /* Output newline and any whitespace at start of next line. */
-      copy_input_to_output (1 + skip_whitespace (nl_ptr + 1));
-
-      underlining_on ();
-    }
-
-  /* Output rest of label */
-  copy_input_to_output (end - inptr);
-  underlining_off ();
-
-  if (preprocess_nodes_p)
+  if (rewrite_p)
     entry->end = text_buffer_off (&output_buf);
   else
-    entry->end = entry->start + label_len;
-
-#ifdef QUOTE_NODENAMES
-  if (inptr[0] == '\177')
-    skip_input (1);
-#endif
+    entry->end = inptr - input_start;
 
   /* Colon after label. */
   skip_input (1);
@@ -1385,19 +1319,38 @@ static int
 scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
 {
   int i;
+  int label_len;
 
-  /* If this reference entry continues with another ':' then the reference is
-     within the same file, and the nodename is the same as the label. */
+  /* If this reference entry continues with another ':' then the target
+     of the reference is given by the label. */
+  if (*inptr == ':')
+    info_parse_node (entry->label);
+
+  label_len = strlen (entry->label);
+  if (label_len >= 2 && entry->label[label_len - 1] == 0177)
+    {
+      /* Remove the DEL bytes.  We don't do this until after calling
+         info_parse_node so that ^?(FOO)BAR^?:: refers to a node called 
+         "(FOO)BAR" within the current manual. */
+      char *p = strchr (entry->label, '\177');
+      memmove (p, p + 1, label_len - (p - entry->label) - 1);
+      entry->label[label_len - 2] = '\0';
+    }
+
   if (*inptr == ':')
     {
       skip_input (1);
       if (entry->type == REFERENCE_MENU_ITEM)
         write_extra_bytes_to_output (" ", 1);
 
-      entry->filename = 0;
-      entry->nodename = xstrdup (entry->label);
+      if (info_parsed_filename)
+        entry->filename = xstrdup (info_parsed_filename);
+      if (info_parsed_nodename)
+        entry->nodename = xstrdup (info_parsed_nodename);
+
       return 1;
     }
+
 
   /* This entry continues with a specific target.  Parse the
      file name and node name from the specification. */
@@ -1429,6 +1382,7 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
           else
             nl_off = 0;
         }
+      canonicalize_whitespace (entry->nodename);
 
       if (entry->filename)
         {
@@ -1652,8 +1606,9 @@ forward_to_info_syntax (char *contents)
 
    If FB is non-null, it is the file containing the node, and TAG_PTR is an 
    offset into FB->tags.  If the node contents are rewritten, adjust anchors
-   that occur in the node. */
-
+   that occur in the node and store adjusted value as TAG->nodestart_adjusted, 
+   otherwise simply copy TAG->nodestart to TAG->nodestart_adjusted for each 
+   anchor in the node. */
 void
 scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
 {
@@ -1678,7 +1633,8 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
       anchor_to_adjust = tag_ptr + 1;
       if (!*anchor_to_adjust)
         anchor_to_adjust = 0;
-      else if (*anchor_to_adjust && (*anchor_to_adjust)->nodelen != 0)
+      else if (*anchor_to_adjust
+               && (*anchor_to_adjust)->cache.nodelen != 0)
         anchor_to_adjust = 0;
 
       if (!node->subfile)
@@ -1702,13 +1658,14 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
   refs = calloc (1, sizeof *refs);
   refs_slots = 1;
 
+  parse_top_node_line (node);
+
   /* This should be the only time we assign to inptr in this function -
      all other assignment should be done with the helper functions above. */
   inptr = node->contents;
   input_start = node->contents;
   input_length = node->nodelen;
 
-  parse_top_node_line (node);
 
   while ((match = forward_to_info_syntax (inptr))
           && match < node->contents + node->nodelen)
@@ -1731,7 +1688,7 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
 
           save_conversion_state ();
           
-          if (!scan_reference_marker (entry)
+          if (!scan_reference_marker (entry, in_parentheses)
               || !scan_reference_label (entry)
               || !scan_reference_target (entry, node, in_parentheses))
             {
@@ -1788,6 +1745,17 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
          written.  Subtracting 1 gives the offset of our terminating
          null, that is, the length. */
       node->nodelen = text_buffer_off (&output_buf) - 1;
+    }
+  else if (fb && tag_ptr)
+    {
+      /* Set nodestart_adjusted for all of the anchors in this node. */
+      tag_ptr++;
+      while (*tag_ptr && (*tag_ptr)->cache.nodelen == 0)
+        {
+          (*tag_ptr)->nodestart_adjusted = (*tag_ptr)->nodestart
+                                             - output_bytes_difference;
+          tag_ptr++;
+        }
     }
 }
 

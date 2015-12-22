@@ -154,6 +154,7 @@ $result_converted{'plaintext'}->{'raw_in_style'} = '\' \'
 
 
 $result_converted{'html_text'}->{'raw_in_style'} = '<p><code>
-in html</code></p>';
+in html
+</code></p>';
 
 1;

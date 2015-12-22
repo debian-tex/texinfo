@@ -10,8 +10,10 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
+# List of files that describe tests.  See tp/tests/README.
 test_driving_files_generated_list = sectioning/tests-parser.txt coverage/tests-parser.txt indices/tests-parser.txt nested_formats/tests-parser.txt contents/tests-parser.txt layout/tests-parser.txt formatting/tests-parser.txt tex_html/tests-parser.txt
 
+# List of test scripts that only run one test
 one_test_files_generated_list =  \
      test_scripts/sectioning_node_footnote_end.sh \
      test_scripts/sectioning_node_footnote_use_node.sh \

@@ -217,6 +217,8 @@ $result_converted{'plaintext'}->{'lone_braces_in_html'} = '';
 
 
 $result_converted{'html_text'}->{'lone_braces_in_html'} = '}
-{';
+
+{
+';
 
 1;

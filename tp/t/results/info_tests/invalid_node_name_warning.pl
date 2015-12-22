@@ -1257,12 +1257,12 @@ $result_converted_errors{'info'}->{'invalid_node_name_warning'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':16: warning: @ref node name should not contain `. \'
+    'error_line' => ':16: warning: @ref node name should not contain `.\'
 ',
     'file_name' => '',
     'line_nr' => 16,
     'macro' => '',
-    'text' => '@ref node name should not contain `. \'',
+    'text' => '@ref node name should not contain `.\'',
     'type' => 'warning'
   },
   {

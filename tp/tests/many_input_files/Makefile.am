@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6073 2015-01-29 00:08:18Z karl $
+# $Id: Makefile.am 6488 2015-07-31 22:50:37Z gavin $
 # Makefile.am for texinfo/tp/tests/many_input_files
 # Copyright 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 #
@@ -14,6 +14,7 @@ EXTRA_DIST = $(TESTS) \
   indices_res index_split_res tex_l2h_res tex_t4ht_res
 
 TESTS = indices.sh tex_l2h.sh tex_t4ht.sh
+AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir; builddir="$(builddir)"; export buildir; top_builddir="$(top_builddir)"; export top_builddir;
 
 test_dirs = indices index_split
 tex_html_dirs = tex_l2h tex_t4ht

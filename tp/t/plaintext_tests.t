@@ -1,4 +1,4 @@
-# $Id: plaintext_tests.t 6132 2015-02-18 00:07:53Z karl $
+# $Id: plaintext_tests.t 6790 2015-11-21 14:50:34Z gavin $
 use strict;
 
 use File::Spec;
@@ -976,6 +976,14 @@ undef, {'test_file' => 'non_break_spaces.texi'}
 undef, {'test_file' => 'all_spaces.texi', 
         'todo' => {'file_plaintext' => 
                           'NEL handled differently between perl versions'}}
+],
+['east_asian_in_w',
+undef, {'test_file' => 'east_asian_in_w.texi'}
+],
+['quote_node_names',
+undef, {'test_file' => 'nodequote.texi',},
+{'INFO_SPECIAL_CHARS_QUOTE' => 1,
+ 'INFO_SPECIAL_CHARS_WARNING' => 0,}
 ],
 );
 

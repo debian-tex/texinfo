@@ -6,4 +6,5 @@ rm pm_to_blib
 rm -rf blib
 rm -rf po po_document
 (cd ../ && ./config.status)
+(cd Texinfo/Convert/XSParagraph && ./config.status)
 make texi2any

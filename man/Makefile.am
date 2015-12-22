@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6074 2015-01-29 01:45:33Z gavin $
+# $Id: Makefile.am 6772 2015-11-09 22:46:37Z gavin $
 # Makefile.am for texinfo/man.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
@@ -39,18 +39,21 @@ MAINTAINERCLEANFILES = $(man_MANS)
 # Use the programs built in our distribution, taking account of possible
 # cross-compiling.  makeinfo needs a bunch of our included modules.
 tpdir = $(top_srcdir)/tp
-MAKEINFO = $(PERL) -I "$(tpdir)" "$(tpdir)"/texi2any.pl
+MAKEINFO_ENVIRONMENT = TEXINFO_DEV_SOURCE=1 ; export TEXINFO_DEV_SOURCE ; \
+                       top_srcdir="$(top_srcdir)" ; export top_srcdir ; \
+                       top_builddir="$(top_builddir)" ; export top_builddir ;
+
+MAKEINFO = $(MAKEINFO_ENVIRIONMENT) $(PERL) "$(tpdir)"/texi2any.pl
 #
-tplibdir = $(tpdir)/maintain/lib
-mi_perl5lib_path = "$(tpdir):$(tplibdir)/libintl-perl/lib:$(tplibdir)/Unicode-EastAsianWidth/lib:$(tplibdir)/Text-Unidecode/lib"
-mi_perl5lib = PERL5LIB=$(mi_perl5lib_path); export PERL5LIB
+mi_env = \
+  TEXINFO_DEV_SOURCE=1; export TEXINFO_DEV_SOURCE; ${MAKEINFO_ENVIRONMENT}
 
 # Set up the variables.  makeinfo, texindex are no longer a .exe(cutable).
 man_rule_0 = \
   exe_ext="$(EXEEXT)" \
   && program=`expr '/$@' : '.*/\(.*\)\.1'` \
   && case $$program in \
-         makeinfo) dir=tp; $(mi_perl5lib); exe_ext="";; \
+         makeinfo) dir=tp; $(mi_env) exe_ext="";; \
             info*) dir=info; test $$program != info || program=g$$program;; \
     *install-info) dir=install-info; program=g$$program;; \
         *texindex) dir=texindex; exe_ext="";; \

@@ -1,4 +1,4 @@
-$Id: README 6236 2015-05-02 23:15:38Z karl $
+$Id: README 6734 2015-10-29 19:55:48Z gavin $
 texinfo/tp/tests/README
 
   Copyright 2010, 2011, 2012, 2013, 2014, 2015
@@ -11,6 +11,7 @@ texinfo/tp/tests/README
 Files anywhere within the texinfo/tp/tests/ subdirectory which have no
 other copyright notice are hereby placed in the public domain.
 
+This directory contains tests of the texi2any program.
 
 Prerequisites
 =============
@@ -27,20 +28,13 @@ This testsuite can be run one of the following ways:
 
 * Using the makefile rules: "make check" (in this directory) for the 
 base tests, "make long-checks" for the long tests, or "make all-checks" 
-for both.
+for both.  These use the scripts under the test_scripts directory.
 
 * Using ./parser_tests.sh with the directories one want to run the tests 
-in given as arguments 
+in given as arguments, for example "./parser_tests.sh formatting".
 
-* By going into one directory and running ../run_parser_all.sh, like
-$ cd formatting
-$ ../run_parser_all.sh
-
-* By going into one directory and running one specific test, like
-$ cd formatting
-$ ../run_parser_all.sh cond
-(see below for info on how test names are specified).
-
+Checking test results
+---------------------
 The test results are in the out_parser directories; the reference
 results are in res_parser directories.  There can be these pairs.
 - out_parser/ and res_parser/ for html output in texi2html style;
@@ -48,11 +42,27 @@ results are in res_parser directories.  There can be these pairs.
 - out_parser_info/ and res_parser_info/ for info results;
 and diffs are put in the diffs/ subdir.
 
-If a test failed when run via parser_tests.sh or run_parser_all.sh, then
- F: a_test_directory 
-is printed, if there is a diff with the references, a
+For example, to investigate a failure in the 
+test_scripts/layout_formaatting_docbook.sh test, compare the contents of the
+files in the layout_res_parser/formatting_docbook and 
+layout_out_parser/formatting_docbook directories, e.g.
+
+diff {res,out}_parser/formatting_docbook/formatting.2
+
+Also look in the layout/diffs directory.
+
+If the test results are as expected, copy the output files onto the 
+reference files.  Otherwise, if they need more investigation, see "Tests 
+specification" below, to find out what input file, etc. was used for the 
+test.  Sometimes you need to use "makeinfo -F" to force an output file 
+to be created.
+
+When running tests via parser_tests.sh or run_parser_all.sh, then
+a test failure causes
+ F: a_test_directory
+to be printed.  If there is a diff with the references, then
  D: a_test_directory
-is printed. If there are no reference to compare with, 
+is printed. If there are no reference to compare with, then
  no res: a_test_directory
 is printed.
 
@@ -67,15 +77,17 @@ out_parser/a_test/a_test.2, stdout output is in
 out_parser/a_test/a_test.1.  All the commands called are output in 
 tests.log.
 
+Regenerating test results
+=========================
+
 Giving -copy as the first argument to ../run_parser_all.sh or
 parser_tests.sh (or long_tests.sh or tex_html_tests.sh, which need
 environment variables LONG_TESTS resp. TEX_HTML_TESTS, or ALL_TESTS, to
-be set, but otherwise operate similarly) will cause the references to be
-regenerated.  For example, to update the references for one particular
-test:
+be set to "yes", but otherwise operate similarly) will cause the 
+reference results to be regenerated.  For example, to update the 
+reference results for one particular test:
 
-$ cd formatting
-$ ../run_parser_all.sh -copy a_test
+$ ./parser_tests.sh -copy formatting
 The copy-* make targets update all the references for various large sets
 of tests via this method.
 
@@ -85,7 +97,7 @@ copy-tex-html targets do it directly.
 
 
 TeX4ht and LaTeX2HTML tests
----------------------------
+===========================
 The tex4ht and latex2HTML related tests are not run automatically, as
 some test results involving latex2HTML or tex4ht depend on the setup and 
 version of these tools.
@@ -100,8 +112,8 @@ the directory is passed through on the command line.
 
 Tests specification
 ===================
-Test runs are driven by the content of the tests-parser.txt files in
-each subdirectory. This is a line oriented file. A # starts a
+Test runs are driven by the contents of the tests-parser.txt file in
+each subdirectory. This is a line-oriented file. A # starts a
 comment, except that the very first line of the file can be, e.g.,
 # formats :html
 which says which formats to generate.
@@ -130,7 +142,7 @@ Using "texi" as the test name is special. In that case the directory name
 is constructed by appending _ followed by the manual name without the .texi
 extension to "texi". And the result is not processed normally, but instead
 macros are expanded and regions that are not processed removed and the 
-result is put in a file with the same name than the manual. 
+result is put in a file with the same name as the manual. 
 
 texi manual.texi
 
@@ -147,6 +159,16 @@ example with coverage_macro.texi).
 Init files
 ----------
 Init files are searched for in ../t/init/.
+
+Subdirectories
+--------------
+
+There are three subdirectories containing tests, each of which is 
+organized like this one: htmlxref, htmlxref-only_mono and htmlxref-only_split.
+These groups of tests are in their own subdirectorie so they can use 
+their own htmlxref.cnf init file (which is copied to the build dir in 
+tests/Makefile.am).  In htmlxref-only_split, using a .texinfo directory 
+is tested.
 
 
 Creating a new test

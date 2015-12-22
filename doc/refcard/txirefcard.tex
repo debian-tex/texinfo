@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex 6363 2015-06-26 12:36:32Z gavin $
+% $Id: txirefcard.tex 6593 2015-09-03 22:13:22Z gavin $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -508,6 +508,7 @@ which they conventionally appear.
 
 \txicmd{@menu}{}{Mark the beginning of a menu of nodes in Info. No effect in a printed manual. Pair with \code{@end menu}.}
 \txicmd{@detailmenu}{}{Mark the (optional) detailed node listing in a master menu.}
+\txicmd{@validatemenus}{}{Specify whether menus can be automatically generated.}
 
 
 \section{Cross references}
@@ -666,6 +667,8 @@ In these environments also, each line of input is a line of output.
 \txicmd{@syncodeindex}{from-index to-index}{Merge the contents of \var{from-index} into \code{to-index}, formatting the entries in \var{from-index} with \code{@code}.}
 \txicmd{@synindex}{from-index to-index}{Merge the contents of \var{from-index} into \var{to-index}; no special formatting.}
 \txicmd{@printindex}{index-name}{Generate an alphabetized index (using two columns in a printed manual).}
+\txicmd{@sortas}{\ttbraced{key}}{Specify a string by which to sort an 
+index entry.}
 
 
 \section{Insertions within a paragraph}
@@ -944,7 +947,7 @@ work in both.
 
 \begininfokeys %
 \infokey q           Quit Info altogether.\cr
-\infokey H           Invoke the Info tutorial.\cr
+\infokey h           Invoke the Info tutorial.\cr
 
 \infokey Up          Move up one line.\cr
 \infokey Down        Move down one line.\cr

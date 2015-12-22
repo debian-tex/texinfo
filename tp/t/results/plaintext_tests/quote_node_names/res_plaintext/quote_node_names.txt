@@ -1,0 +1,31 @@
+*Note the::caption and a word: normal node.  *Note the::caption: normal
+node.
+
+   *Note the::caption and a word: blah:blah.  *Note the::caption:
+blah:blah.
+
+   *Note the::caption and a word: blumpty.fump.  *Note the::caption:
+blumpty.fump.mrmrmrmmrmrmr
+
+   *Note blah:blah::
+
+   *Note secret,node::
+
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA *Note
+blah:blah::.)
+
+1 blah:blah
+***********
+
+stuff here.
+
+2 blumpty.fump
+**************
+
+3 normal node
+*************
+
+4 secret,node
+*************
+
+stuff here.

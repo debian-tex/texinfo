@@ -2368,7 +2368,8 @@ ul.no-bullet {list-style: none}
 </pre><ul>
 <li> <pre class="menu-preformatted">idescr
 </pre></li></ul>
-<pre class="menu-preformatted">in htmlAAA
+<pre class="menu-preformatted">in html
+AAA
 
 CCC
 
@@ -2377,6 +2378,7 @@ CCC
 </pre></li></ul>
 <pre class="menu-preformatted">
 in html title
+
 BBB
 
 </pre><ul>
@@ -2394,7 +2396,8 @@ in description
 </pre><ul>
 <li> <pre class="menu-preformatted">idetaildescr
 </pre></li></ul>
-<pre class="menu-preformatted">detailin detailhtmldetailAAA
+<pre class="menu-preformatted">detailin detailhtml
+detailAAA
 
 detailCCC
 
@@ -2403,6 +2406,7 @@ detailCCC
 </pre></li></ul>
 <pre class="menu-preformatted">
 detailin html detailtitle
+
 detailBBB
 
 </pre><ul>

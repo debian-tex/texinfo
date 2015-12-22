@@ -1,4 +1,4 @@
-$Id: README 6139 2015-02-22 22:53:33Z karl $
+$Id: README 6848 2015-12-11 17:20:47Z gavin $
 texinfo/tp/t/README
 
   Copyright 2010, 2011, 2012, 2013, 2014, 2015
@@ -8,8 +8,10 @@ texinfo/tp/t/README
   modification, are permitted in any medium without royalty provided the
   copyright notice and this notice are preserved.
 
-Files anywhere within the texinfo/tp/t/ subdirectory which have no
+Files anywhere within the tp/t subdirectory which have no
 other copyright notice are hereby placed in the public domain.
+
+See also the tests in the tp/tests directory.
 
 
 These tests are run by "make check" under tp/.  (The test files are 
@@ -18,8 +20,15 @@ test file can be run on its own with
 
   perl -w t/03coverage_braces.t
 
-Most test files use a testing infrastructure from t/test_utils.pl.  In
-that case the reference output files for the test of a test category 
+Another way, which works when doing an out-of-source build, is
+
+  make check TESTS=t/03coverage_braces.t
+
+Most test files use a testing infrastructure from t/test_utils.pl.
+The run_all function from that file runs the tests that have been 
+specified.
+
+In that case the reference output files for the test of a test category 
 $test_category.t file are in t/results/$test_category/.  For example, if 
 after running "make check" test-suite.log contains a line like:
 
@@ -28,6 +37,9 @@ FAIL: t/03coverage_braces.t 324 - test_image converted html
 you can see the difference between the expected and actual output with
 
   diff t/results/coverage_braces/test_image.pl{,.new}
+
+(Any number at the start of the name of the test, like "03" in this
+example, is removed.)
 
 To review all the differences for one of the *.t test files, you can do:
 
@@ -46,7 +58,8 @@ files for the "test_image" test within t/03.coverage_braces.t, run
   perl -w t/03coverage_braces.t -g test_image
 
 Some tests under this directory use input files in the 'input_files' 
-subdirectory.  
+subdirectory.  When adding a test that uses an input file, add its path 
+to tp/Makefile.am.
 
 For some tests, as well as a .pl file as usual in results/*/, actual
 output files are generated.  For those tests, there are directories with
@@ -62,7 +75,7 @@ reference test results (run from the upper-level directory), and
 "./maintain/all_tests.sh diff" makes a diff of all resulting files
 against references.
 
-From the top directory, you can also create texinfo files corresponding with
+From the top directory, you can also create texinfo files corresponding to
 tests by running something along the lines of:
 
   perl -w t/60macro.t -c
@@ -75,6 +88,6 @@ test, here arg_body_expansion_order:
 The output files will be created with -o, in t/output_files/$test_category/
 
 When adding Perl (sub)tests under t/, also run
-maintain/prepare_perl_module_files.sh to regenerate
-maintain/MANIFEST_generated_files, or a "plan" (aka results file) will
-be missing at distcheck.
+maintain/regenerate_file_lists.pl and/or maintain/prepare_perl_module_files.sh
+to regenerate MANIFEST and/or maintain/MANIFEST_generated_files, or a 
+"plan" (aka results file) will be missing at distcheck.

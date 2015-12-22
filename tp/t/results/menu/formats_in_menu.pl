@@ -1186,7 +1186,8 @@ ul.no-bullet {list-style: none}
 </pre></td></tr>
 <tr><td align="left" valign="top">&bull; <a href="manual2.html#Top" accesskey="3">(manual2)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">%
 
-<i></i>Log$
+<i></i>
+Log$
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="truc.html#Top" accesskey="4">(truc)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"><acronym>description
 * acronym::</acronym>

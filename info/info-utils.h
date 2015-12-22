@@ -1,5 +1,5 @@
 /* info-utils.h -- Exported functions and variables from info-utils.c.
-   $Id: info-utils.h 6011 2014-12-30 21:54:02Z gavin $   
+   $Id: info-utils.h 6528 2015-08-14 18:57:51Z gavin $   
 
    Copyright 1993, 1996, 1998, 2002, 2003, 2004, 2007, 2011, 2012, 2013,
    2014 Free Software Foundation, Inc.
@@ -29,10 +29,6 @@
 #if HAVE_ICONV
 # include <iconv.h>
 #endif
-
-/* When non-zero, various display and input functions handle ISO Latin
-   character sets correctly. */
-extern int ISO_Latin_p;
 
 /* Variable which holds the most recent filename parsed as a result of
    calling info_parse_xxx (). */

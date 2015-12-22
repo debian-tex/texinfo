@@ -19,3 +19,6 @@ Test Info files
 * split: (split). 
 
 * non-existent: (non-existent).  Dir reference to non-existent file.
+
+* subdir:(subdir/file-in-subdir).          File in a subdir.
+* subdir-split:(subdir/split-in-subdir).   Split file in a subdir.

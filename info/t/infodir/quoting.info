@@ -4,6 +4,8 @@ File: quoting.info,  Node: Top,  Next: Colon::in, name,
 *Note Colon::in, name::
 *Note Labelled reference:Colon::in, name
 *Note Quoted label...:Colon::in, name
+*Note File in target:(quoting)Colon::in, name
+*Note (quoting)Colon::in, name::
 
 
 File: quoting.info, Node: Colon::in, name
@@ -12,6 +14,6 @@ File: quoting.info, Node: Colon::in, name
 
 Tag Table:
 Node: Top0
-Node: Colon::in, name88
+Node: Colon::in, name256
 
 End Tag Table

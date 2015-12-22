@@ -3,7 +3,7 @@
 # This is not hooked into Automake, just conveniences for working on the
 # refcard.
 #
-# Copyright 2008, 2012, 2014 Free Software Foundation, Inc.
+# Copyright 2008, 2012, 2014, 2015 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -32,10 +32,10 @@ $(doc)-a4.pdf: $(doc).tex
 check: ccheck vcheck
 
 ccheck:
-	txicmdcheck $(txi_check_args)
+	./txicmdcheck $(txi_check_args)
 
 vcheck:
-	txivarcheck $(txi_check_args)
+	./txivarcheck $(txi_check_args)
 
 spell:
 	aspell list --mode=tex --add-extra-dicts=`pwd`/refcard.spell \

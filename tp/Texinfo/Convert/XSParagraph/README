@@ -1,0 +1,55 @@
+This is an experimental XS module to implement the functionality of
+Texinfo::Convert::Paragraph.
+
+Instructions for using this module
+----------------------------------
+
+Uncomment the lines in tp/Texinfo/Convert/Plaintext.pm that use this 
+module.
+
+Caution: if you run an installed "makeinfo" from within the "tp/" 
+directory, it is likely to use the modules underneath "tp/", and not the 
+installed modules.
+
+Debugging with gdb
+------------------
+
+To debug with gdb, create a .gdbinit file like the following:
+
+dir Texinfo/Convert/XSParagraph/mylib
+r texi2any
+
+Run
+
+export PERL5LIB=Texinfo/Convert/XSParagraph/lib:Texinfo/Convert/XSParagraph/blib/arch/auto/XSParagraph"  
+
+at the command line.
+
+Run gdb as "gdb `which perl`".  The .gdbinit file will load the symbols 
+from the source files.  Then you can do e.g.
+
+b xspara_end_line
+
+in gdb.  Run with "r texi2any (options)", for example,
+"r texi2any ../doc/info-stnd.texi".
+
+
+Issues
+------
+
+* Do we need to support more than one paragraph formatter at once?  It 
+depends on what the calling code in Plaintext.pm does.
+If this was necessary, the functions in XSParagraph.xs can call
+xspara_set_state to make sure that the right paragraph state is used.
+
+* Effect of changing locale.  At initialization, xspara_hello tries to
+switch to a UTF-8 locale, so that the C standard library multibyte 
+functions operate on the UTF-8 data correctly.  Could this break 
+anything for the running Perl instance?
+
+* Check that we correctly imitate variables being "undefined" in Perl.
+
+* Check where space doubling at an end of a sentence is done - it is 
+done in a couple of places depending on some conditions, but the logic 
+of this isn't clear to me.
+

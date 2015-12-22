@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6038 2015-01-14 19:33:17Z karl $
+# $Id: Makefile.am 6868 2015-12-16 11:58:14Z gavin $
 # Makefile.am for texinfo/install-info/tests.
 #
 # Copyright 2008, 2009, 2010, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -97,9 +97,11 @@ ii-0017-expected-dir-file \
 \
 ii-0018-input-dir-file \
 ii-0018-input-info-file \
+ii-0018-expected-dir-file \
 \
 ii-0019-input-dir-file \
 ii-0019-input-info-file \
+ii-0019-expected-dir-file \
 \
 ii-0020-input-dir-file \
 ii-0020-input-info-file \
@@ -251,5 +253,4 @@ ii-0056-expected-dir-file \
 ii-0057-input-dir-file \
 ii-0057-input-info-file \
 ii-0057-expected-dir-file \
-\
 README

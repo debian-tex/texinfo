@@ -24,7 +24,7 @@ run_ginfo
 # result. Then type "i" followed by <TAB> to check the indices in the
 # file are still there.
 
-printf '\033xindex-apropos\rlink\r\t\ri\txxxx\rq' >$PTY_TYPE
+printf '\033xindex-apropos\rlink\r\t\ri\txxxx\rqq' >$PTY_TYPE
 # We exited the "i" prompt with "xxx\r" instead of "\007" because
 # C-g leads typeahead to be discarded so it would not be reliable.
 

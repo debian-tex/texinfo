@@ -984,7 +984,9 @@ undef, {'test_file' => 'sample_utf8.texi'}
 
 '.
 $at_commands_in_refs_text, 
-{}, {'TEST' => 1}], # TEST => 1 triggers @today constant expansion for diffs
+{'todo' =>
+   {'file_info' => 'different results from XS and pure Perl modules',
+  }}, {'TEST' => 1}], # TEST => 1 triggers @today constant expansion for diffs
 ['at_commands_in_refs_latin1',
 '@setfilename at_commands_in_refs_latin1.info
 @documentencoding ISO-8859-15

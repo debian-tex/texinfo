@@ -535,6 +535,7 @@ $result_converted{'docbook'}->{'raw_block_commands_expand_tex'} = '
 
 
 
-$\\underline{a < b <literal>tex \\hbox{ code }</literal>}$ ``}';
+$\\underline{a < b <literal>tex \\hbox{ code }</literal>}$ ``}
+';
 
 1;

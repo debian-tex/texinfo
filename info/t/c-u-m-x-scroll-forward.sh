@@ -30,7 +30,7 @@ COLUMNS=80; export COLUMNS
 
 run_ginfo -f intera -n 'Scroll four lines'
 
-sync_with_program
+synch_with_program
 
 # C-u M-x scroll-forward should scroll four lines, not four screens
 printf '\025\033xscroll-forward\r' >$PTY_TYPE

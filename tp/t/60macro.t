@@ -46,6 +46,14 @@ in macro
 
 This 2 see.@texnltwo  A.
 '],
+['macro_expands_to_empty',
+'@macro foo {arg}
+\arg\
+@end macro
+
+@foo{}
+@foo{aa}
+'],
 ['empty_end','@macro foo {aaa, }
 in foo
 @end macro'],

@@ -22778,12 +22778,12 @@ $result_converted_errors{'file_info'}->{'at_commands_in_refs_utf8'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ":46: warning: \@node name should not contain `,': LaTeX TeX \x{2022} , \x{a9} \x{2026} ...
+    'error_line' => ":46: warning: \@node name should not contain `,': LaTeX TeX \x{2022} , \x{a9} ... ...
 ",
     'file_name' => '',
     'line_nr' => 46,
     'macro' => '',
-    'text' => "\@node name should not contain `,': LaTeX TeX \x{2022} , \x{a9} \x{2026} ...",
+    'text' => "\@node name should not contain `,': LaTeX TeX \x{2022} , \x{a9} ... ...",
     'type' => 'warning'
   },
   {

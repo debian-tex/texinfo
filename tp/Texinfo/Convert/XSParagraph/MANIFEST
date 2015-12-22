@@ -1,0 +1,11 @@
+Makefile.PL
+MANIFEST
+ppport.h
+xspara.c
+xspara.h
+text.c
+text.h
+README
+XSParagraph.xs
+t/XSParagraph.t
+XSParagraph.pm

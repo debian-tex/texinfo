@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c 6150 2015-02-24 18:42:59Z gavin $
+   $Id: infomap.c 6655 2015-09-29 19:45:29Z gavin $
 
    Copyright 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007,
    2008, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
@@ -160,7 +160,7 @@ static int default_emacs_like_info_keys[] =
   CONTROL('b'), NUL,              A_info_backward_char,
   CONTROL('e'), NUL,              A_info_end_of_line,
   CONTROL('f'), NUL,              A_info_forward_char,
-  CONTROL('h'), NUL,              A_info_get_help_window,
+  CONTROL('h'), NUL,              A_info_scroll_backward,
   CONTROL('l'), NUL,              A_info_redraw_display,
   CONTROL('n'), NUL,              A_info_next_line,
   CONTROL('p'), NUL,              A_info_prev_line,
@@ -184,7 +184,7 @@ static int default_emacs_like_info_keys[] =
   '<', NUL,                       A_info_first_node,
   '=', NUL,                       A_info_display_file_info,
   '>', NUL,                       A_info_last_node,
-  '?', NUL,                       A_info_get_help_window,
+  '?', NUL,                       A_info_search_backward,
   '[', NUL,                       A_info_global_prev_node,
   ']', NUL,                       A_info_global_next_node,
   'b', NUL,                       A_info_beginning_of_node,
@@ -230,6 +230,9 @@ static int default_emacs_like_info_keys[] =
   KEYMAP_META('r'), NUL,                 A_info_move_to_window_line,
   KEYMAP_META('v'), NUL,                 A_info_scroll_backward_page_only,
   KEYMAP_META('x'), NUL,                 A_info_execute_command,
+  KEYMAP_META('/'), NUL,                 A_info_tree_search,
+  KEYMAP_META('}'), NUL,                 A_info_tree_search_next,
+  KEYMAP_META('{'), NUL,                 A_info_tree_search_previous,
 
   CONTROL('x'), CONTROL('b'), NUL,        A_list_visited_nodes,
   CONTROL('x'), CONTROL('c'), NUL,        A_info_quit,
@@ -250,7 +253,7 @@ static int default_emacs_like_info_keys[] =
 
   KEY_RIGHT_ARROW, NUL,         A_info_forward_char,
   KEY_LEFT_ARROW, NUL,          A_info_backward_char,
-  KEY_DELETE, NUL,                A_info_scroll_backward,
+  KEY_DELETE, NUL,              A_info_scroll_backward,
   
   ESC, KEY_PAGE_UP, NUL,        A_info_scroll_other_window_backward,
   ESC, KEY_PAGE_DOWN, NUL,      A_info_scroll_other_window,

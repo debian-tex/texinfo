@@ -1,5 +1,5 @@
 /* search.c -- searching large bodies of text.
-   $Id: search.c 6185 2015-03-09 19:34:10Z gavin $
+   $Id: search.c 6711 2015-10-19 18:17:21Z gavin $
 
    Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2008, 2009, 2011, 2013,
    2014 Free Software Foundation, Inc.
@@ -204,7 +204,10 @@ regexp_search (char *regexp, int is_literal, int is_insensitive,
   *matches_out = matches;
   *match_count_out = match_count;
 
-  return search_success;
+  if (match_count == 0)
+    return search_not_found;
+  else
+    return search_success;
 }
 
 /* Search forwards for STRING through the text delimited in BINDING. */
@@ -488,8 +491,8 @@ find_node_separator (SEARCH_BINDING *binding)
   return -1;
 }
 
-/* Return the length of the node separator characters that BODY is
-   currently pointing at. */
+/* Return the length of the node separator characters that BODY is currently
+   pointing at.  If it's not pointing at a node separator, return 0. */
 int
 skip_node_separator (char *body)
 {

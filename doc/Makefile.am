@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6252 2015-05-06 17:37:57Z karl $
+# $Id: Makefile.am 6710 2015-10-17 19:53:30Z gavin $
 # Makefile.am for texinfo/doc.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
@@ -14,15 +14,13 @@
 
 SUBDIRS = tp_api
 
-# Put the Texinfo manual first because that's the most important.
-info_TEXINFOS = texinfo.texi info-stnd.texi info.texi
-DISTCLEANFILES = texinfo.info* info*.info*
+info_TEXINFOS = texinfo.texi info-stnd.texi
+DISTCLEANFILES = texinfo.info* info-stnd.info*
 
-# Use the programs built in our distribution, taking account of possible
-# cross-compiling.
-tpdir = $(top_srcdir)/tp
-tplibdir = $(tpdir)/maintain/lib
-MAKEINFO = $(PERL) -I "$(tpdir)" -I "$(tplibdir)/libintl-perl/lib" -I "$(tplibdir)/Unicode-EastAsianWidth/lib" -I "$(tplibdir)/Text-Unidecode/lib" $(top_builddir)/tp/texi2any
+MAKEINFO_ENVIRONMENT = TEXINFO_DEV_SOURCE=1 ; export TEXINFO_DEV_SOURCE ; \
+                       top_srcdir="$(top_srcdir)" ; export top_srcdir ; \
+                       top_builddir="$(top_builddir)" ; export top_builddir ;
+MAKEINFO = $(MAKEINFO_ENVIRONMENT) $(PERL) $(top_builddir)/tp/texi2any
 
 # We'd also like to use something like this, but Automake calls
 # "install-info" directly.
@@ -41,7 +39,7 @@ refcard_files = refcard/Makefile refcard/txicmdcheck \
 EXTRA_DIST = epsf.tex texinfo.tex \
              fdl.texi \
 	     $(man_MANS) $(TXI_XLATE) \
-	     $(refcard_files)
+	     $(refcard_files) texinfo-tex-test.texi
 
 if INSTALL_WARNINGS
 install-data-local:

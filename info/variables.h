@@ -1,7 +1,7 @@
 /* variables.h -- Description of user visible variables in Info.
-   $Id: variables.h 5912 2014-11-07 10:49:13Z gavin $
+   $Id: variables.h 6742 2015-10-31 22:17:34Z gavin $
 
-   Copyright 1993, 1997, 2004, 2007, 2011, 2013, 2014
+   Copyright 1993, 1997, 2004, 2007, 2011, 2013, 2014, 2015
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -35,7 +35,7 @@
 typedef struct {
   char *name;                   /* Polite name. */
   char *doc;                    /* Documentation string. */
-  int *value;                   /* Address of value. */
+  void *value;                  /* Address of value. */
   char **choices;               /* Array of strings or NULL if numeric only. */
   int where_set;                /* Where this variable was set. */
 } VARIABLE_ALIST;
@@ -80,8 +80,18 @@ extern int search_skip_screen_p;
 extern int infopath_no_defaults_p;
 extern int preprocess_nodes_p;
 extern int key_time;
-extern int highlight_searches_p;
 extern int mouse_protocol;
+extern int follow_strategy;
+extern int nodeline_print;
+
+typedef struct {
+    unsigned long mask;
+    unsigned long value;
+} RENDITION;
+
+extern RENDITION ref_rendition;
+extern RENDITION hl_ref_rendition;
+extern RENDITION match_rendition;
 
 
 #endif /* not INFO_VARIABLES_H */

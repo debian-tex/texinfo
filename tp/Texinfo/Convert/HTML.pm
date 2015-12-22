@@ -1,4 +1,4 @@
-# $Id: HTML.pm 6363 2015-06-26 12:36:32Z gavin $
+# $Id: HTML.pm 6681 2015-10-08 18:18:05Z gavin $
 # HTML.pm: output tree as HTML.
 #
 # Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -54,7 +54,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.0';
+$VERSION = '6.0dev';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -1169,7 +1169,7 @@ foreach my $misc_command (keys(%misc_commands)) {
 }
 
 foreach my $ignored_brace_commands ('caption', 'shortcaption', 
-  'hyphenation') {
+  'hyphenation', 'sortas') {
   #$ignored_commands{$ignored_brace_commands} = 1;
   $default_commands_conversion{$ignored_brace_commands} = undef;
 }
@@ -2367,7 +2367,6 @@ sub _convert_raw_command($$$$)
   my $content = shift;
 
   if ($cmdname eq $self->{'output_format'}) {
-    chomp ($content);
     return $content;
   }
   $self->line_warn(sprintf($self->__("raw format %s is not converted"), 
@@ -2913,10 +2912,16 @@ sub _convert_enumerate_command($$$$)
   if ($self->in_string()) {
     return $content;
   }
-  if ($content ne '') {
-    return "<ol>\n" . $content . "</ol>\n";
-  } else {
+  if ($content eq '') {
     return '';
+  }
+  if ($command->{'extra'}{'enumerate_specification'}
+      and $command->{'extra'}{'enumerate_specification'} =~ /^\d*$/
+      and $command->{'extra'}{'enumerate_specification'} ne '1') {
+    return "<ol start=\"$command->{'extra'}{'enumerate_specification'}\">\n"
+           . $content . "</ol>\n";
+  } else {
+    return "<ol>\n" . $content . "</ol>\n";
   }
 }
 
@@ -7645,7 +7650,7 @@ sub _set_variables_texi2html()
 1;
 
 __END__
-# $Id: HTML.pm 6363 2015-06-26 12:36:32Z gavin $
+# $Id: HTML.pm 6681 2015-10-08 18:18:05Z gavin $
 # Automatically generated from maintain/template.pod
 
 =head1 NAME

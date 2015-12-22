@@ -1,8 +1,8 @@
 /* terminal.c -- how to handle the physical terminal for Info.
-   $Id: terminal.c 6149 2015-02-24 18:21:51Z gavin $
+   $Id: terminal.c 6804 2015-11-22 22:55:04Z gavin $
 
    Copyright 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1997, 1998,
-   1999, 2001, 2002, 2004, 2007, 2008, 2012, 2013, 2014
+   1999, 2001, 2002, 2004, 2007, 2008, 2012, 2013, 2014, 2015
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -60,6 +60,14 @@ VFunction *terminal_begin_inverse_hook = NULL;
 VFunction *terminal_end_inverse_hook = NULL;
 VFunction *terminal_begin_standout_hook = NULL;
 VFunction *terminal_end_standout_hook = NULL;
+VFunction *terminal_begin_underline_hook = NULL;
+VFunction *terminal_end_underline_hook = NULL;
+VFunction *terminal_begin_bold_hook = NULL;
+VFunction *terminal_begin_blink_hook = NULL;
+VFunction *terminal_end_all_modes_hook = NULL;
+VFunction *terminal_default_colour_hook = NULL;
+VFunction *terminal_set_colour_hook = NULL;
+VFunction *terminal_set_bgcolour_hook = NULL;
 VFunction *terminal_prep_terminal_hook = NULL;
 VFunction *terminal_unprep_terminal_hook = NULL;
 VFunction *terminal_up_line_hook = NULL;
@@ -76,7 +84,7 @@ VFunction *terminal_write_chars_hook = NULL;
 VFunction *terminal_scroll_terminal_hook = NULL;
 
 /* User variable 'mouse'.  Values can be MP_* constants in terminal.h. */
-int mouse_protocol = MP_NORMAL_TRACKING;
+int mouse_protocol = MP_NONE;
 
 /* **************************************************************** */
 /*                                                                  */
@@ -126,6 +134,26 @@ static char *term_Km;
 
 /* Strings entering and leaving standout mode. */
 char *term_so, *term_se;
+
+/* Strings entering and leaving underline mode. */
+char *term_us, *term_ue;
+
+/* Set foreground and background colours (terminfo setaf and setab) */
+char *term_AF, *term_AB;
+
+/* Restore original colours, both foreground and background.
+   ("original pair") */
+char *term_op;
+
+/* Turn on bold mode. */
+char *term_md;
+
+/* Turn on blink mode. */
+char *term_mb;
+
+/* Exit all attribute modes. */
+char *term_me;
+
 
 /* Although I can't find any documentation that says this is supposed to
    return its argument, all the code I've looked at (termutils, less)
@@ -395,6 +423,61 @@ terminal_end_standout (void)
     }
 }
 
+void
+terminal_begin_underline (void)
+{
+  if (terminal_begin_underline_hook)
+    (*terminal_begin_underline_hook) ();
+  else
+    {
+      send_to_terminal (term_us);
+    }
+}
+
+void
+terminal_end_underline (void)
+{
+  if (terminal_end_underline_hook)
+    (*terminal_end_underline_hook) ();
+  else
+    {
+      send_to_terminal (term_ue);
+    }
+}
+
+void
+terminal_begin_bold (void)
+{
+  if (terminal_begin_bold_hook)
+    (*terminal_begin_bold_hook) ();
+  else
+    {
+      send_to_terminal (term_md);
+    }
+}
+
+void
+terminal_begin_blink (void)
+{
+  if (terminal_begin_blink_hook)
+    (*terminal_begin_underline_hook) ();
+  else
+    {
+      send_to_terminal (term_mb);
+    }
+}
+
+void
+terminal_end_all_modes (void)
+{
+  if (terminal_end_all_modes_hook)
+    (*terminal_end_all_modes_hook) ();
+  else
+    {
+      send_to_terminal (term_me);
+    }
+}
+
 /* Ring the terminal bell.  The bell is run visibly if it both has one and
    terminal_use_visible_bell_p is non-zero. */
 void
@@ -522,6 +605,111 @@ terminal_scroll_terminal (int start, int end, int amount)
     }
 }
 
+/* Revert to the default foreground and background colours. */
+static void
+terminal_default_colour (void)
+{
+  if (terminal_default_colour_hook)
+    (*terminal_default_colour_hook) ();
+  else
+    tputs (term_op, 0, output_character_function);
+}
+
+static void
+terminal_set_colour (int colour)
+{
+  if (terminal_set_colour_hook)
+    (*terminal_set_colour_hook) (colour);
+  else
+    tputs (tgoto (term_AF, 0, colour), 0, output_character_function);
+}
+
+static void
+terminal_set_bgcolour (int colour)
+{
+  if (terminal_set_bgcolour_hook)
+    (*terminal_set_bgcolour_hook) (colour);
+  else
+    tputs (tgoto (term_AB, 0, colour), 0, output_character_function);
+}
+
+/* Information about what styles like colour, underlining, boldface are
+   currently output for text on the screen.  All zero represents the default
+   rendition. */
+static unsigned long terminal_rendition;
+
+/* Modes for which there aren't termcap entries for turning them off. */
+#define COMBINED_MODES (BOLD_MASK | BLINK_MASK)
+
+void
+terminal_switch_rendition (unsigned long new)
+{
+  unsigned long old = terminal_rendition;
+
+  if ((old & new & COMBINED_MODES) != (old & COMBINED_MODES))
+    {
+      /* Some modes we can't turn off by themselves, so if we need to turn
+         one of them off, turn back on all the ones that should be on 
+         afterwards. */
+      terminal_end_all_modes ();
+      old = 0;
+    }
+
+  if ((new & COLOUR_MASK) != (old & COLOUR_MASK))
+    {
+      /* Switch colour. */
+      if ((new & COLOUR_MASK) == 00)
+        {
+          terminal_default_colour ();
+          old &= ~BGCOLOUR_MASK;
+        }
+      else if ((new & COLOUR_MASK) >= 8)
+        {
+          terminal_set_colour ((new & COLOUR_MASK) - 8);
+        }
+      /* Colour values from 1 to 7 don't do anything right now. */
+    }
+  if ((new & BGCOLOUR_MASK) != (old & BGCOLOUR_MASK))
+    {
+      /* Switch colour. */
+      if ((new & BGCOLOUR_MASK) == 00)
+        {
+          terminal_default_colour ();
+        }
+      else if ((new & BGCOLOUR_MASK) >> 9 >= 8)
+        {
+          terminal_set_bgcolour (((new & BGCOLOUR_MASK) >> 9) - 8);
+        }
+      /* Colour values from 1 to 7 don't do anything right now. */
+    }
+  if ((new & UNDERLINE_MASK) != (old & UNDERLINE_MASK))
+    {
+      if ((new & UNDERLINE_MASK))
+        terminal_begin_underline ();
+      else
+        terminal_end_underline ();
+    }
+  if ((new & STANDOUT_MASK) != (old & STANDOUT_MASK))
+    {
+      if ((new & STANDOUT_MASK))
+        terminal_begin_standout ();
+      else
+        terminal_end_standout ();
+    }
+  if ((new & BOLD_MASK) != (old & BOLD_MASK))
+    {
+      if ((new & BOLD_MASK))
+        terminal_begin_bold ();
+    }
+  if ((new & BLINK_MASK) != (old & BLINK_MASK))
+    {
+      if ((new & BLINK_MASK))
+        terminal_begin_blink ();
+    }
+  terminal_rendition = new;
+}
+
+
 /* Re-initialize the terminal considering that the TERM/TERMCAP variable
    has changed. */
 void
@@ -534,6 +722,9 @@ terminal_new_terminal (char *terminal_name)
       terminal_initialize_terminal (terminal_name);
     }
 }
+
+/* Saved values of the LINES and COLUMNS environmental variables. */
+static char *env_lines, *env_columns;
 
 /* Set the global variables SCREENWIDTH and SCREENHEIGHT. */
 void
@@ -560,10 +751,8 @@ terminal_get_screen_size (void)
       /* Environment variable COLUMNS overrides setting of "co". */
       if (screenwidth <= 0)
         {
-          char *sw = getenv ("COLUMNS");
-
-          if (sw)
-            screenwidth = atoi (sw);
+          if (env_columns)
+            screenwidth = atoi (env_columns);
 
           if (screenwidth <= 0)
             screenwidth = tgetnum ("co");
@@ -572,10 +761,8 @@ terminal_get_screen_size (void)
       /* Environment variable LINES overrides setting of "li". */
       if (screenheight <= 0)
         {
-          char *sh = getenv ("LINES");
-
-          if (sh)
-            screenheight = atoi (sh);
+          if (env_lines)
+            screenheight = atoi (env_lines);
 
           if (screenheight <= 0)
             screenheight = tgetnum ("li");
@@ -618,6 +805,10 @@ add_seq_to_byte_map (int key_id, char *seq)
         }
     }
 }
+
+/* When non-zero, various display and input functions handle extended
+   character sets such as ISO Latin or UTF-8 correctly. */
+int ISO_Latin_p = 1;
 
 /* Initialize byte map read in get_input_key. */
 static void
@@ -733,6 +924,12 @@ terminal_initialize_terminal (char *terminal_name)
   if (!term_name)
     term_name = "dumb";
 
+  env_lines = getenv ("LINES");
+  env_columns = getenv ("COLUMNS");
+  /* We save LINES and COLUMNS before the call to tgetent below, because
+     on some openSUSE systems, including openSUSE 12.3, the call to tgetent 
+     changes the values returned by getenv for these. */
+
   if (!term_string_buffer)
     term_string_buffer = xmalloc (2048);
 
@@ -815,6 +1012,27 @@ terminal_initialize_terminal (char *terminal_name)
     term_se = tgetstr ("se", &buffer);
   else
     term_se = NULL;
+
+  term_us = tgetstr ("us", &buffer);
+  if (term_us)
+    term_ue = tgetstr ("ue", &buffer);
+  else
+    term_ue = NULL;
+
+  term_AF = tgetstr ("AF", &buffer);
+  if (term_AF)
+    term_AB = tgetstr ("AB", &buffer);
+  else
+    term_AB = NULL;
+
+  term_op = tgetstr ("op", &buffer);
+
+  term_md = tgetstr ("md", &buffer);
+  term_mb = tgetstr ("mb", &buffer);
+
+  term_me = tgetstr ("me", &buffer);
+  if (!term_me)
+    term_md = 0; /* Don't use modes if we can't turn them off. */
 
   if (!term_cr)
     term_cr =  "\r";

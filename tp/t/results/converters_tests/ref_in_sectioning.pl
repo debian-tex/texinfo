@@ -3060,7 +3060,7 @@ $result_converted{'plaintext'}->{'ref_in_sectioning'} = 'for example *note node:
 2 *note node:: just node
   2.1 *note cross ref name: node. node, crossref arg2
   2.2 *note \'title\': node. code node, samptitle arg3
-  2.3 *note (file name)\'node\':: code node, file name
+  2.3 *note (file name)node:: code node, file name
   2.4 *note ()node:: node and manual
   2.5 *note ()Top:: Top and manual
   2.6 *note ():: no node just manual
@@ -3085,8 +3085,8 @@ for example *note node:: (*note node::) (*note (file)Top::)
 2.2 *note \'title\': node. code node, samptitle arg3
 ==================================================
 
-2.3 *note (file name)\'node\':: code node, file name
-==================================================
+2.3 *note (file name)node:: code node, file name
+================================================
 
 2.4 *note ()node:: node and manual
 ==================================

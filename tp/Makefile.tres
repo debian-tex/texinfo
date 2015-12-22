@@ -517,6 +517,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/indices/printindex_index_entry_in_copying_no_insertcopying.pl \
   t/results/indices/printindex_with_space_before.pl \
   t/results/indices/recursive_synindex.pl \
+  t/results/indices/same_index_entry_merged_indices.pl \
   t/results/indices/syncode_index_print_both.pl \
   t/results/indices/syncodeindex_to_plain.pl \
   t/results/indices/unknown_index_entry.pl \
@@ -703,6 +704,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/macro/implicit_quoting_recursion.pl \
   t/results/macro/leading_spaces_ignore.pl \
   t/results/macro/leading_spaces_no_ignore.pl \
+  t/results/macro/macro_expands_to_empty.pl \
   t/results/macro/macro_expansion.pl \
   t/results/macro/macro_for_end.pl \
   t/results/macro/macro_for_ignored_line_command.pl \
@@ -873,6 +875,8 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/plaintext_tests/code_commands_and_punctuation.pl \
   t/results/plaintext_tests/command_brace_no_arg_punctuation.pl \
   t/results/plaintext_tests/commands_and_punctuation.pl \
+  t/results/plaintext_tests/east_asian_in_w.pl \
+  t/results/plaintext_tests/east_asian_in_w/res_plaintext/east_asian_in_w.txt \
   t/results/plaintext_tests/empty_line_in_example_end.pl \
   t/results/plaintext_tests/empty_multitable_in_itemize.pl \
   t/results/plaintext_tests/end_sentence_space_protected.pl \
@@ -920,6 +924,8 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/plaintext_tests/punctuation_frenchspacing.pl \
   t/results/plaintext_tests/punctuation_in_command.pl \
   t/results/plaintext_tests/punctuation_in_command_end_line.pl \
+  t/results/plaintext_tests/quote_node_names.pl \
+  t/results/plaintext_tests/quote_node_names/res_plaintext/quote_node_names.txt \
   t/results/plaintext_tests/sc_with_utf8_enable_encoding.pl \
   t/results/plaintext_tests/settitle_and_empty_top.pl \
   t/results/plaintext_tests/sp_with_text_before_in_example.pl \
@@ -1032,6 +1038,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/sectioning/lone_contents.pl \
   t/results/sectioning/loop_nodes.pl \
   t/results/sectioning/lowered_subsubsection.pl \
+  t/results/sectioning/loweredheading.pl \
   t/results/sectioning/menutextorder.pl \
   t/results/sectioning/more_sections_than_nodes.pl \
   t/results/sectioning/next_in_menu_is_below.pl \

@@ -1,5 +1,5 @@
 /* nodemenu.c -- produce a menu of all visited nodes.
-   $Id: nodemenu.c 6168 2015-03-01 00:06:37Z gavin $
+   $Id: nodemenu.c 6403 2015-07-10 23:16:20Z gavin $
 
    Copyright 1993, 1997, 1998, 2002, 2003, 2004, 2007, 2008, 2011,
    2013, 2014 Free Software Foundation, Inc.
@@ -52,7 +52,7 @@ format_node_info (NODE *node)
 {
   register int i;
   char *containing_file;
-  static struct text_buffer line_buffer = {};
+  static struct text_buffer line_buffer = { 0 };
 
   if (!text_buffer_base (&line_buffer))
     text_buffer_init (&line_buffer);

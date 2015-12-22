@@ -156,6 +156,7 @@ in html
 
 
 $result_converted{'html_text'}->{'raw_expanded_in_style'} = '<p><code>
-in html</code></p>';
+in html
+</code></p>';
 
 1;

@@ -1,5 +1,5 @@
 /* man.c: How to read and format man files.
-   $Id: man.c 6280 2015-05-18 16:32:19Z gavin $
+   $Id: man.c 6877 2015-12-19 16:42:47Z gavin $
 
    Copyright 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 2007, 2008, 
    2009, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -79,7 +79,7 @@ get_manpage_node (char *pagename)
       node = info_create_node ();
       node->fullpath = MANPAGE_FILE_BUFFER_NAME;
       node->nodename = xstrdup (pagename);
-      node->flags |= (N_HasTagsTable | N_IsManPage | N_IsInternal);
+      node->flags |= N_HasTagsTable | N_IsManPage;
 
       /* Save this node. */
       add_pointer_to_array (node, manpage_node_index,
@@ -90,46 +90,23 @@ get_manpage_node (char *pagename)
   /* Node wasn't found, or its contents were freed since last time. */
   if (!node->contents)
     {
-      int hlen, plen;
+      int plen;
 
       page = get_manpage_contents (pagename);
       if (!page)
         return 0;
       plen = strlen (page);
 
-      if (!preprocess_nodes_p)
-        {
-          char *header;
-          hlen = asprintf (&header, "%s %s,  %s %s,  %s (dir)\n\n",
-                   INFO_FILE_LABEL, MANPAGE_FILE_BUFFER_NAME,
-                   INFO_NODE_LABEL, pagename,
-                   INFO_UP_LABEL);
+      node->contents = page;
+      node->nodelen = plen;
 
-          node->contents = xcalloc (1, hlen + plen + 1);
-          memcpy (node->contents, header, hlen);
-          memcpy (node->contents + hlen, page, plen);
-
-          /* Set nodelen. */
-          node->nodelen = hlen + plen;
-
-          free (header);
-          /* FIXME: Don't allocate page just to immediately free it. */
-          free (page);
-        }
-      else
-        {
-          node->contents = page;
-          node->nodelen = plen;
-        }
-
-      node->body_start = strcspn (node->contents, "\n");
+      node->body_start = 0;
+      node->references = xrefs_of_manpage (node);
+      node->up = "(dir)";
     }
 
   node2 = xmalloc (sizeof (NODE));
   *node2 = *node;
-  node2->references = xrefs_of_manpage (node2);
-  node2->nodename = xstrdup (pagename);
-  node2->up = xstrdup ("(dir)");
   return node2;
 }
 
@@ -571,6 +548,11 @@ xrefs_of_manpage (NODE *node)
   s.flags = 0;
   s.end = node->nodelen;
 
+  /* Exclude first line, which often looks like:
+CAT(1)                           User Commands                          CAT(1)
+  */
+  s.start = strcspn (node->contents, "\n");
+
   /* Build a list of references.  A reference is alphabetic characters
      followed by non-whitespace text within parenthesis leading with a digit. */
   while (search_forward ("(", &s, &position) == search_success)
@@ -579,11 +561,12 @@ xrefs_of_manpage (NODE *node)
       int section, section_end;
 
       for (name = position; name > 0; name--)
-        if (whitespace (s.buffer[name]))
+        if (whitespace_or_newline (s.buffer[name]))
           break;
 
-      if (name != 0)
-        name++;
+      if (name == 0)
+        goto skip;
+      name++;
 
       if (name == position)
         goto skip; /* Whitespace immediately before '('. */

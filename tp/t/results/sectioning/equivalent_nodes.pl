@@ -541,21 +541,21 @@ $result_errors{'equivalent_nodes'} = [
 $result_converted{'info'}->{'equivalent_nodes'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: \'node\'
+File: ,  Node: Top,  Next: node
 
 * Menu:
 
 * *node*::
 
 
-File: ,  Node: \'node\',  Up: Top
+File: ,  Node: node,  Up: Top
 
-*Note \'node\'::.
+*Note node::.
 
 
 Tag Table:
 Node: Top27
-Node: \'node\'85
+Node: node83
 
 End Tag Table
 ';

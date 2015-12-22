@@ -1,5 +1,5 @@
 /* nodes.h -- How we represent nodes internally.
-   $Id: nodes.h 6316 2015-06-07 12:49:39Z gavin $
+   $Id: nodes.h 6711 2015-10-19 18:17:21Z gavin $
 
    Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2011, 2012, 2013,
    2014, 2015 Free Software Foundation, Inc.
@@ -45,13 +45,14 @@ typedef struct {
   char *nodename;               /* The name of this node. */
   char *contents;               /* Characters appearing in this node. */
   long nodelen;                 /* The length of the CONTENTS member. */
-  unsigned long display_pos;    /* Where to display at, if nonzero.  */
+  long display_pos;             /* Where to display at, if nonzero.  */
   long body_start;              /* Offset of the actual node body */
   int flags;                    /* See immediately below. */
   REFERENCE **references;       /* Cross-references or menu items in node.
-                                   references == 0 implies uninitialized,
-                                   not empty */
+                                   Null-terminated.  references == 0 implies 
+                                   uninitialized, not empty */
   char *up, *prev, *next;       /* Names of nearby nodes. */
+  int active_menu;              /* Used for subnodes search. */
 } NODE;
 
 /* Values for NODE.flags or FILE_BUFFER.flags. */
@@ -68,6 +69,8 @@ typedef struct {
 #define N_Subfile      0x800    /* File buffer is a subfile of a split file. */
 #define N_EOLs_Converted 0x1000 /* CR bytes were stripped before LF. */
 #define N_Gone         0x2000   /* File is no more. */
+#define N_Simple       0x4000   /* Data about cross-references is missing. */
+#define N_SeenBySearch 0x8000   /* Node has already been seen in a search. */
 
 /* String constants. */
 #define INFO_FILE_LABEL                 "File:"
@@ -104,11 +107,8 @@ typedef struct {
   char *nodename;               /* The node pointed to by this tag. */
   long nodestart;               /* The value read from the tag table. */
   long nodestart_adjusted;
-  size_t nodelen;               /* The length of this node.
-                                   nodelen == -1 if length is unknown
-                                   because node hasn't been read yet.
-                                   nodelen == 0 if it is an anchor. */
   int flags;                    /* Same as NODE.flags. */
+  NODE cache;                   /* Saved information about pointed-to node. */
 } TAG;
 
 /* The following structure is used to remember information about the contents
@@ -161,6 +161,7 @@ extern NODE *info_get_node_with_defaults (char *filename, char *nodename,
                                           NODE *defaults);
 
 extern NODE *info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr);
+extern NODE *info_node_of_tag_fast (FILE_BUFFER *fb, TAG **tag_ptr);
 
 /* Return a pointer to a NODE structure for the Info node NODENAME in
    FILE_BUFFER.  NODENAME can be passed as NULL, in which case the

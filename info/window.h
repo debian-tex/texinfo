@@ -1,5 +1,5 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
-   $Id: window.h 5884 2014-10-22 22:19:04Z gavin $
+   $Id: window.h 6492 2015-08-02 23:02:59Z gavin $
 
    Copyright 1993, 1997, 2004, 2007, 2011 2013, 2014
    Free Software Foundation, Inc.
@@ -84,7 +84,7 @@ typedef struct window_struct
   long *line_starts;    /* Offsets of printed line starts in node->contents.*/
   long *log_line_no;    /* Number of logical line corresponding to each
                            physical one. */
-  long line_count;      /* Number of elements in LINE_STARTS and LOG_LINE_NO.*/
+  long line_count;      /* Number of printed lines in node. */
   size_t line_slots;    /* Allocated space in LINE_STARTS and LOG_LINE_NO. */
 
   int flags;            /* See below for details. */
@@ -96,9 +96,9 @@ typedef struct window_struct
   size_t match_count;
 
   /* History of nodes visited in this window. */
-  WINDOW_STATE **hist;       /* Nodes visited in this window. */
-  size_t hist_index;            /* Index where to add the next node. */
-  size_t hist_slots;            /* Number of slots allocated to HIST. */
+  WINDOW_STATE **hist;  /* Nodes visited in this window, including current. */  
+  size_t hist_index;    /* Index where to add the next node. */
+  size_t hist_slots;    /* Number of slots allocated to HIST. */
 } WINDOW;
 
 #define W_UpdateWindow  0x01    /* WINDOW needs updating. */
@@ -233,5 +233,8 @@ extern int window_point_to_column (WINDOW *win, long point, long *np);
 extern void window_line_map_init (WINDOW *win);
 
 extern long window_log_to_phys_line (WINDOW *window, long ln);
+
+void calculate_line_starts (WINDOW *window);
+
 
 #endif /* not INFO_WINDOW_H */

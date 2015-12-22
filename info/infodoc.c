@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c 6175 2015-03-03 16:08:05Z gavin $
+   $Id: infodoc.c 6799 2015-11-22 16:22:38Z gavin $
 
    Copyright 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
    2007, 2008, 2011, 2013, 2014 Free Software Foundation, Inc.
@@ -388,14 +388,19 @@ DECLARE_INFO_COMMAND (info_get_info_help_node, _("Visit Info node '(info)Help'")
     nodename = "Help";
 
   /* Try to get the info file for Info. */
-  node = info_get_node ("Info", nodename);
+  node = info_get_node ("info", nodename);
+
+  /* info.info is distributed with Emacs, not Texinfo, so fall back to 
+     info-stnd.info if it isn't there. */
+  if (!node)
+    node = info_get_node ("info-stnd", "Top");
 
   if (!node)
     {
       if (info_recent_file_error)
         info_error ("%s", info_recent_file_error);
       else
-        info_error (msg_cant_file_node, "Info", nodename);
+        info_error (msg_cant_file_node, "info", nodename);
         
       return;
     }
@@ -606,7 +611,7 @@ pretty_keyname (int key)
 char *
 pretty_keyseq (int *keyseq)
 {
-  static struct text_buffer rep = {};
+  static struct text_buffer rep = { 0 };
 
   if (!text_buffer_base (&rep))
     text_buffer_init (&rep);

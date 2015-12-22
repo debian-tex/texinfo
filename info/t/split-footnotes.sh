@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,8 +20,7 @@ srcdir=${srcdir:-.}
 
 run_ginfo -f intera -n 'Node with footnotes' -v automatic-footnotes=On
 # Move to automatic footnotes window and split it.  Check we don't crash.
-# FIXME: pseudotty should set the window height for reliable results.
-printf '\030o\0302q' >$PTY_TYPE
+printf '\030o\0302qqqq' >$PTY_TYPE
 . $t/Timeout-test.inc
 
 cleanup

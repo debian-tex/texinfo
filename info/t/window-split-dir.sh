@@ -25,5 +25,6 @@ printf '\0302\030o\0301Dq' >$PTY_TYPE
 . $t/Timeout-test.inc
 
 grep '^File: dir' $GINFO_OUTPUT
+RETVAL=$?
 
 cleanup

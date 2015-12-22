@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6316 2015-06-07 12:49:39Z gavin $
+# $Id: Makefile.am 6881 2015-12-20 12:38:15Z gavin $
 # Makefile.am for texinfo/info.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012,
@@ -29,7 +29,7 @@ AM_CPPFLAGS =                                   \
 
 LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(TERMLIBS) $(LIBINTL) $(LIBICONV)
 
-EXTRA_DIST = README pcterm.c
+EXTRA_DIST = pcterm.c
 
 ginfo_SOURCES = dir.c display.c display.h doc.h dribble.c dribble.h \
   echo-area.c echo-area.h \
@@ -108,16 +108,19 @@ TESTS = \
 	t/dir-menus-sloppily.sh \
 	t/where-dir-file.sh \
 	t/dir-dangling-entry.sh \
+	t/dir-entry-to-subdir.sh \
 	t/spec-file-node.sh \
 	t/spec-no-node.sh \
 	t/spec-menu.sh \
 	t/all-only.sh \
 	t/empty.sh \
 	t/cr-tag-table.sh \
+	t/inc-sea-bs-after-strip-cr.sh \
 	t/tab.sh \
 	t/tab-argument.sh \
 	t/tab-no-xref.sh \
 	t/tab-skip-node.sh \
+	t/xref-across-lines.sh \
 	t/body-start.sh \
 	t/end-of-line.sh \
 	t/goal-column.sh \
@@ -128,6 +131,7 @@ TESTS = \
 	t/window-split-dir.sh \
 	t/last-node-not-top-level.sh \
 	t/adjust-anchors.sh \
+	t/xref-to-anchor.sh \
 	t/search-after-tag.sh \
 	t/split-file-menu.sh \
 	t/index.sh \
@@ -153,18 +157,15 @@ TESTS = \
 	t/quoted-label-as-target.sh \
 	t/quoted-target.sh \
 	t/quoted-label-and-target.sh \
+	t/quoted-manual-in-target.sh \
+	t/quoted-manual-in-label.sh \
 	t/goto-quoted.sh \
 	t/next-quoted.sh \
 	t/help.sh
-
-XFAIL_TESTS = \
-	t/quoted-label-as-target.sh \
-	t/quoted-target.sh \
-	t/quoted-label-and-target.sh \
-	t/goto-quoted.sh \
-	t/next-quoted.sh
 
 EXTRA_DIST += $(TESTS) $(XFAIL_TESTS) \
   t/README t/infodir \
   t/Init-inter.inc t/Init-test.inc t/Timeout-test.inc \
   t/Infokey-config t/node-target
+dist-hook:
+	rm -rf `find $(distdir)/t/infodir -name '*~'`

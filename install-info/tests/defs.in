@@ -1,7 +1,7 @@
 # @configure_input@
-# $Id: defs.in 5909 2014-11-06 17:10:58Z karl $
+# $Id: defs.in 6740 2015-10-31 12:18:00Z gavin $
 # 
-# Copyright 2008, 2012, 2013, 2014 Free Software Foundation, Inc.
+# Copyright 2008, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -39,9 +39,14 @@ if test -z "$srcdir"; then
    test $srcdir = $0 && srcdir=.
 fi
 
+# Use first line to run valgrind on the tests.  After "make check",
+# check for errors with "grep ERROR\ SUM *.log".
+#valgrind='valgrind '
+valgrind=
+
 # Two variables we use in the test scripts:
 top_builddir='@top_builddir@'
-install_info=${top_builddir}/install-info/ginstall-info
+install_info=${valgrind}${top_builddir}/install-info/ginstall-info
 export install_info
 #
 top_srcdir='@top_srcdir@'

@@ -1,8 +1,8 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c 6355 2015-06-23 19:12:56Z gavin $
+   $Id: echo-area.c 6660 2015-09-30 13:09:45Z gavin $
 
    Copyright 1993, 1997, 1998, 1999, 2001, 2004, 2007, 2008, 2011, 2013,
-   2014 Free Software Foundation, Inc.
+   2014, 2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -44,9 +44,6 @@ static char input_line[1 + EA_MAX_INPUT]; /* Contents of echo area, including
 static int input_line_point;     /* Offset into input_line of point */
 static int input_line_beg;       /* End of prompt, and start of user input. */
 static int input_line_end;       /* End of user input. */
-
-/* Current prompt.  FIXME: This variable is not actually used for anything. */
-static const char *input_line_prompt;
 
 static NODE input_line_node = {
   NULL, NULL, NULL, input_line,
@@ -127,7 +124,6 @@ restore_calling_window (void)
 static void
 initialize_input_line (const char *prompt)
 {
-  input_line_prompt = prompt;
   if (prompt)
     strcpy (input_line, prompt);
   else
@@ -463,7 +459,13 @@ DECLARE_INFO_COMMAND (ea_rubout, _("Delete the character behind the cursor"))
       int start;
 
       if (input_line_point == input_line_beg)
-        return;
+        {
+          /* Abort echo area read if backspace at start of area and user input 
+             is empty. */
+          if (input_line_beg == input_line_end)
+            info_aborted_echo_area = 1;
+          return;
+        }
 
       start = input_line_point;
       ea_backward (window, count);
@@ -1430,7 +1432,6 @@ echo_area_inform_of_deleted_window (WINDOW *window)
 /* Push and Pop the echo area. */
 typedef struct {
   char *line;
-  const char *prompt;
   REFERENCE **comp_items;
   int point, beg, end;
   int must_complete;
@@ -1450,7 +1451,6 @@ push_echo_area (void)
 
   pushed = xmalloc (sizeof (PUSHED_EA));
   pushed->line = xstrdup (input_line);
-  pushed->prompt = input_line_prompt;
   pushed->point = input_line_point;
   pushed->beg = input_line_beg;
   pushed->end = input_line_end;
@@ -1474,7 +1474,6 @@ pop_echo_area (void)
 
   strcpy (input_line, popped->line);
   free (popped->line);
-  input_line_prompt = popped->prompt;
   input_line_point = popped->point;
   input_line_beg = popped->beg;
   input_line_end = popped->end;

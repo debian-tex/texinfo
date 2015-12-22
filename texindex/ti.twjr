@@ -1,6 +1,6 @@
 \input texinfo   @c -*-texinfo-*-
 @c vim: filetype=texinfo tabstop=2 expandtab
-@c $Id: ti.twjr 6305 2015-06-03 22:29:56Z karl $
+@c $Id: ti.twjr 6566 2015-08-24 15:10:34Z gavin $
 @c %**start of header (This is for running Texinfo on a region.)
 @setfilename texindex.info
 @settitle Texindex @VERSION@: A program for sorting indices
@@ -411,7 +411,7 @@ The first character must be either @samp{\} or @samp{@@}
 @samp{entry}.
 
 @cindex @code{Special_chars} variable
-@code{Special_chars} are the three characters that must be preceded by
+@code{Special_chars} are the two characters that must be preceded by
 the command character inside the first key.
 
 @cindex @code{beginfile()} function
@@ -443,7 +443,7 @@ function beginfile(filename)
       || substr($0, 2, 5) != "entry")
     fatal(_"%s is not a Texinfo index file\n", filename)
 
-  Special_chars = "{}" Command_char
+  Special_chars = "{}"
 }
 @
 
@@ -512,11 +512,13 @@ $0 = substr($0, 7)  # remove leading \entry
 initial = extract_initial($0)
 @
 
-Extracting the initial is mildly complicated.  Braces can be nested, and
-in particular the very first field of the sort key can be an open brace.
-So it is necessary to skip leading open braces until we encounter the
-first real character.  This in turn could be @samp{@{} or @samp{@}}
-preceded by the command character, or another character.
+The key argument here is the rest of the line after @samp{\entry}, 
+starting with an open brace.
+
+The very first field character of the sort key can be an open brace.
+If so, we extract the component of the sort key surrounded by balanced 
+braces.  We don't account for \@{ or \@} inside this component, as 
+@file{texinfo.tex} isn't expected to produce such output.
 
 An example can be seen in what older versions of @file{texinfo.tex}
 generated if you needed to index a real backslash, namely an input line
@@ -526,8 +528,10 @@ something like the following:
 \entry@{@{\tt \indexbackslash @} (backslash)@}@{14@}@{\code @{@{\tt @dots{}
 @end example
 
-Fortunately, the first non-brace character is a backslash, and that is
-also the correct initial.
+Earlier versions of @command{texindex} took the the first non-brace 
+character as the initial, in this example @samp{\}, and output it as 
+@samp{\\}; this was not, however, a control sequence recognized by the 
+older versions of @file{texinfo.tex}.
 
 @cindex @code{extract_initial()} function
 @cindex @code{char_split()} function
@@ -535,17 +539,29 @@ also the correct initial.
 function extract_initial(key,  initial, nextchar, i, l, kchars)
 {
   l = char_split(key, kchars)
-  for (i = 1; i <= l; i++)
-    if (kchars[i] != "{")
-      break
-
-  if (i > l)
-    fatal(_"%s:%d: Bad key %s in record\n", FILENAME, FNR, key)
-
-  initial = toupper(kchars[i])
-  nextchar = kchars[i+1]
-  if (initial == Command_char && (nextchar == "{" || nextchar == "}"))
-    initial = nextchar
+  if (l >= 3 && kchars[2] == "{") {
+    bracecount = 1
+    i = 3
+    while (bracecount > 0 && i <= l) {
+      if (kchars[i] == "{")
+        bracecount++
+      else if (kchars[i] == "}")
+        bracecount--
+      i++
+    }
+    if (i > l)
+      fatal(_"%s:%d: Bad key %s in record\n", FILENAME, FNR, key)
+    initial = substr(key, 2, i - 2)
+  } else if (kchars[2] == Command_char) {
+    nextchar = kchars[3]
+    if (initial == Command_char && (nextchar == "{" || nextchar == "}"))
+      initial = substr(key, 2, 3)
+    else {
+      initial = toupper(nextchar)
+    }
+  } else {
+    initial = toupper(kchars[2])
+  }
 
   return initial
 }

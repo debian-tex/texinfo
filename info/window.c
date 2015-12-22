@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c 6019 2015-01-03 18:11:40Z gavin $
+   $Id: window.c 6608 2015-09-10 12:56:42Z gavin $
 
    Copyright 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008,
    2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -26,8 +26,6 @@
 #include "doc.h"
 #include "tag.h"
 #include "variables.h"
-
-static void calculate_line_starts (WINDOW *window);
 
 /* The window which describes the screen. */
 WINDOW *the_screen = NULL;
@@ -824,6 +822,9 @@ window_line_of_point (WINDOW *window)
 {
   register int i, start = 0;
 
+  if (!window->line_starts)
+    calculate_line_starts (window);
+
   /* Try to optimize.  Check to see if point is past the pagetop for
      this window, and if so, start searching forward from there. */
   if (window->pagetop > -1 && window->pagetop < window->line_count
@@ -898,7 +899,6 @@ window_make_modeline (WINDOW *window)
     int modeline_len = 0;
     char *parent = NULL, *filename = "*no file*";
     char *nodename = "*no node*";
-    const char *update_message = NULL;
     NODE *node = window->node;
 
     if (node)
@@ -916,9 +916,6 @@ window_make_modeline (WINDOW *window)
             parent = 0;
             filename = filename_non_directory (node->fullpath);
           }
-
-        if (node->flags & N_UpdateTags)
-          update_message = _("--*** Tags out of Date ***");
       }
 
     if (preprocess_nodes_p)
@@ -928,7 +925,7 @@ window_make_modeline (WINDOW *window)
 
         name = filename_non_directory (node->fullpath);
 
-        modeline_len += strlen ("--() --");
+        modeline_len += strlen ("--Info:() --");
         modeline_len += 3; /* strlen (location_indicator) */
         modeline_len += strlen (name);
         if (nodename) modeline_len += strlen (nodename);
@@ -937,25 +934,22 @@ window_make_modeline (WINDOW *window)
 
         modeline = xcalloc (1, 1 + modeline_len);
 
+        sprintf (modeline + strlen (modeline), "%s", location_indicator);
+        sprintf (modeline + strlen (modeline), "--Info: ");
+
         /* Omit any extension like ".info.gz" from file name. */
         dot = strcspn (name, ".");
 
-        sprintf (modeline, "%s--", location_indicator);
         if (name && strcmp ("", name))
           {
             sprintf (modeline + strlen (modeline), "(");
             strncpy (modeline + strlen (modeline), name, dot);
-            sprintf (modeline + strlen (modeline), ") ");
+            sprintf (modeline + strlen (modeline), ")");
           }
         sprintf (modeline + strlen (modeline), "%s--", nodename);
       }
     else
       {
-        if (node && node->subfile)
-            modeline_len += strlen ("Subfile: ") + strlen (node->subfile);
-
-        if (update_message)
-          modeline_len += strlen (update_message);
         modeline_len += strlen (filename);
         modeline_len += strlen (nodename);
         modeline_len += 4;          /* strlen (location_indicator). */
@@ -973,16 +967,10 @@ window_make_modeline (WINDOW *window)
                    (window->flags & W_NoWrap) ? "$" : "-",
                    nodename, window->line_count, location_indicator);
         else
-          sprintf (modeline, _("-%s%s-Info: (%s)%s, %ld lines --%s--"),
+          sprintf (modeline, _("-%s---Info: (%s)%s, %ld lines --%s--"),
                    (window->flags & W_NoWrap) ? "$" : "-",
-                   (node && (node->flags & N_IsCompressed)) ? "zz" : "--",
                    parent ? parent : filename,
                    nodename, window->line_count, location_indicator);
-        if (node->subfile)
-          sprintf (modeline + strlen (modeline), _(" Subfile: %s"), filename);
-
-        if (update_message)
-          sprintf (modeline + strlen (modeline), "%s", update_message);
       }
 
     i = strlen (modeline);
@@ -1146,6 +1134,7 @@ text_buffer_to_node (struct text_buffer *tb)
   text_buffer_add_char (tb, '\0');
 
   node->contents = text_buffer_base (tb);
+  node->flags |= N_IsInternal;
   return node;
 }
 
@@ -1169,7 +1158,7 @@ collect_line_starts (WINDOW *win, long ll_num, long pl_start)
 
    Note that this function must agree with what display_update_one_window
    in display.c does. */
-static void
+void
 calculate_line_starts (WINDOW *win)
 {
   long pl_chars = 0;     /* Number of characters in line so far. */
@@ -1246,7 +1235,11 @@ calculate_line_starts (WINDOW *win)
     }
 
   if (pl_chars)
-    collect_line_starts (win, ll_num, pl_start);
+    collect_line_starts (win, ll_num++, pl_start);
+
+  /* Have one line start at the end of the node. */
+  collect_line_starts (win, ll_num, mbi_cur_ptr (iter) - win->node->contents);
+  win->line_count--;
 
   /* Finally, initialize the line map for the current line. */
   window_line_map_init (win);

@@ -1665,6 +1665,12 @@ Second top.
 @contents
 @bye
 '],
+['loweredheading',
+'@lowersections
+@section Foo
+@heading Bar
+@bye
+'],
 ['menutextorder',
 '@menu
 * foo::

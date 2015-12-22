@@ -1,0 +1,805 @@
+% texinfo-tex-test.texi -- test file for texinfo.tex
+%
+% Copyright 2015 Free Software Foundation, Inc.
+%
+% This file is free software: you can redistribute it and/or
+% modify it under the terms of the GNU General Public License as
+% published by the Free Software Foundation, either version 3 of the
+% License, or (at your option) any later version.
+%
+% This file is distributed in the hope that it will be
+% useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+% of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+% General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%
+\input texinfo
+@settitle Test Document for @file{texinfo.tex}
+
+@everyheading @thischapter @| @| @thissection{} p@thispage
+@paragraphindent 0
+
+@showboxdepth=1000
+@showboxbreadth=1000
+
+@contents
+
+@part Part One@*Sample part page
+
+@chapter Macros
+@section Backslashes in macro arguments
+
+@macro Mac{x}
+A\x\A
+@end macro
+
+@macro Mactwo{x, y}
+<\x\>.<\y\>@.
+@end macro
+
+@rmacro RMac{x}
+Z\x\Z
+@end rmacro
+
+The number refers to the number of backslashes that should appear
+
+@tracingmacros=1
+0 @Mac{}
+
+0 @Mac{a}
+
+0 @Mac{a}X
+
+1 @Mac{a\\}
+
+1 @Mac{a\}X
+
+1 @Mac{a\\}X
+
+2 @Mac{a\\\}X
+
+1 @Mac{\}X
+
+1 @Mac{\a}X
+
+1 @Mac{\\a}X
+
+1 @Mac{\\}X
+
+2 @Mac{\\\}X
+
+2 and 1 @Mac{\\\aaa\}X
+
+1 and 1 @Mac{\a\\b}X
+
+one backslash outside \
+
+two backslashes outside \\
+
+three backslashes outside \\\
+
+0 @Mac a 
+
+1 @Mac a\
+
+2 @Mac a\\ 
+
+3 @Mac a\\\
+
+1 and 2 @Mac \a\\b
+
+in @@code:@*
+1 @code{@Mac{\}}@*
+1 @code{@Mac{\\}}@*
+2 @code{@Mac{\\\}}@*
+2 @code{@Mac{\\\\}}
+
+one backslash outside \
+
+two backslashes outside \\
+
+three backslashes outside \\\
+
+Macros with two arguments:
+0+0 @Mactwo{A,B}
+0+0 @Mactwo{A, B}
+1+0 @Mactwo{\A, B}
+0+1 @Mactwo{A, \\B}
+2+1 @Mactwo{\\\A, \\B}
+2+2 @Mactwo{\\\A, \\\\B}
+
+Space between macro name and opening brace (thus: @samp{@@Mactwo @{}):
+
+0+0 @Mactwo {A,B}
+0+0 @Mactwo {A, B}
+1+0 @Mactwo {\A, B}
+0+1 @Mactwo {A, \\B}
+2+1 @Mactwo {\\\A, \\B}
+2+2 @Mactwo {\\\A, \\\\B}
+
+space between backslashes: @Mac{\ \}@*
+space between backslashes line arg: @Mac \ \
+
+space after backslashes, two arguments:@*
+@Mactwo{\ \\, \ \\}@*
+@Mactwo{\\ \\, \\ \\}@*
+@Mactwo{\\ a, \\ b}@*
+@Mactwo{\ a, \ b}@*
+
+other spaces:@*
+@Mactwo{h \\, i \\}@*
+@Mactwo{h \\, i \\}@*
+@Mactwo{h a, i b}@*
+
+@section Spaces in macro bodies
+
+Distance between the two x's should be the same
+
+@macro Mac
+@example
+x  x
+@end example
+@end macro
+@example
+x  x
+@end example
+@Mac
+
+@section Macro use inside macro argument
+
+@macro Innermac{arg}
+xx \arg\ xx
+@end macro
+
+@macro Outermac{arg}
+\arg\
+@c
+@end macro
+
+@Outermac{@Innermac{e}}
+should be@*
+xx e xx
+
+@section Trailing newlines in macro bodies
+
+Output should be doubled:
+
+1y
+
+z
+x2
+
+@macro nbsp
+y
+              
+z
+x
+@end macro
+
+1@nbsp{}2
+
+Output should be doubled:
+
+
+@example
+1y
+
+z
+x2
+@end example
+
+@example
+1@nbsp{}2
+@end example
+
+@section Open or close a group in a macro
+
+Output should be doubled
+
+@macro Example
+@example
+@group
+@end macro
+
+@macro endExample
+@end group
+@end example
+@end macro
+
+x
+@Example
+groff [ -abceghijklpstvzCEGNRSUVXZ ]
+@endExample
+x
+
+x
+@example
+@group@comment
+groff [ -abceghijklpstvzCEGNRSUVXZ ]
+@end group
+@end example
+x
+
+@section @,c in macro argument
+
+@macro mactwo{argfirst, argsecond}
+\argfirst\+\argsecond\.
+@end macro
+
+@set fc Fran@,cois
+@mactwo{@value{fc},}@*
+@mactwo{Fran@,cois,}@*
+Fran@,cois+.
+
+@section Macro in argument to @@math
+
+@macro frac {a,b}
+\a\ @over \b\
+@end macro
+
+exceeds @math{@frac{1,16}} pt
+
+
+@section Trim whitespace from macro arguments
+
+@macro Mac{a}
+<X\a\X>
+@end macro
+
+@macro Mactwo{a,b}
+<X\a\X\b\X>
+@end macro
+
+No space should appear right after an `X':
+
+@noindent @Mac{b} @Mac{ b} @Mac{b  } @Mac{ b }
+
+@noindent @Mactwo{b,c} @Mactwo{ b, c} @Mactwo{b  ,c  } @Mactwo{ b , c }
+
+
+@section Multi-line macro argument
+
+@macro Mac{text}
+@cartouche
+<@b{FIXME}>
+@example
+\text\
+@end example
+\text\
+@noindent </>
+@end cartouche
+@end macro
+
+@Mac{
+Here's an extended
+macro argument, with
+newlines.
+
+And multiple paragraphs.
+Like an argument to @code{@@footnote}.
+}
+
+(The double space in the @code{@@example} is due to the way 
+@code{\scantokens} inserts spaces after control sequences.)
+
+
+@tex
+\gdef \commenceindex{%
+\page
+\begindoublecolumns
+\smallfonts \rm
+\tolerance = 9500
+\plainfrenchspacing
+\everypar = {}%
+\catcode`\\=0 \catcode`\@=12
+}
+
+\gdef \finishindex{%
+\catcode`\@=0 \catcode`\\=13
+\enddoublecolumns
+}
+@end tex
+
+@chapter Index display
+
+@section Long index entries
+
+@commenceindex
+\entry {\code {-c}}{18, 20, 22, 27, 28, 38, 43, 51, 54, 65, 83, 91, 105, 
+124, 125, 127, 129, 135, 139, 143, 145, 148, 187}
+\entry {\code {-c}}{18, 20, 22, 27, 28, 38, 43, 51, 54, 65, 83, 91, 105, 
+124, 125, 127, 129, 135, 139, 143, 145, 148}
+\entry{Testing for Texinfo Commands: \code {\@ifcommanddefined}, \code 
+{\@ifcommandnotdefined}}{148}
+\entry {\code {--dereference-command-line-symlink-to-dir}}{78}
+\entry {built-in shell commands, conflicts with}{119, 139, 144, 145, 
+148, 163, 191, 196, 197}
+\finishindex
+
+@section End-column glue
+
+See next page.  A little bit of space should appear at the bottom of the 
+second column, instead of flush bottoms and a conspicuous increase in 
+inter-baseline spacing.  This test only works if the `R' initial is at
+the start of a page.
+
+@commenceindex
+\initial {P}
+\entry {\code {PACKAGE}}{196}
+\entry {\code {PACKAGE_AND_VERSION}}{196}
+\entry {\code {PACKAGE_NAME}}{196}
+\entry {\code {PACKAGE_URL}}{196}
+\entry {\code {PACKAGE_VERSION}}{196}
+\entry {Page breaks, awkward}{124}
+\entry {Page breaks, forcing}{126}
+\entry {Page delimiter in Texinfo mode}{261}
+\entry {Page headings}{270}
+\entry {Page numbering}{270}
+\entry {Page sizes for books}{175}
+\entry {Page sizes, customized}{175}
+\entry {\code {page-delimiter}}{261}
+\entry {Pages, starting odd}{29}
+\entry {Paper size, A4}{175}
+\entry {Paragraph indentation control}{31}
+\entry {Paragraph, marking text within}{66}
+\entry {\code {paragraphindent}}{187}
+\entry {Parameters to macros}{154}
+\entry {Parentheses in node name}{37}
+\entry {Parsing errors}{202}
+\entry {Part of file formatting and printing}{266}
+\entry {Part pages}{50}
+\entry {Partial documents, formatting}{168}
+\entry {Parts of a cross reference}{54}
+\entry {Parts of a master menu}{28}
+\entry {Parts of a menu}{43}
+\entry {Patches, contributing}{4}
+\entry {PCL file, for printing}{170}
+\entry {\code {pdf image inclusions}}{97}
+\entry {PDF output}{176}
+\entry {PDF output of urls}{64}
+\entry {PDF output, overview}{5}
+\entry {\code {pdfetex}}{167}
+\entry {\code {pdftex}}{176}
+\entry {\code {pdftex\r {, and images}}}{97}
+\entry {\code {pdftexi2dvi}}{166}
+\entry {Period in node name}{37}
+\entry {Periods, inserting}{111}
+\entry {Perl format strings for translation}{199}
+\entry {Perl POD, converting to Texinfo}{200}
+\entry {Permissions text, including}{22}
+\entry {Permissions, printed}{25}
+\entry {\code {pg} (program) index}{102}
+\entry {Picas}{98}
+\entry {Pictures, inserting}{97}
+\entry {Pinard, Fran\,{c}ois}{7}
+\entry {Plain \TeX {}}{146}
+\entry {Plain text output with \option {--plaintext}}{183}
+\entry {Plain text output, overview}{4}
+\entry {\code {png image format}}{97}
+\entry {POD, converting to Texinfo}{200}
+\entry {\code {pod2texi}}{200}
+\entry {Point, indicating in a buffer}{121}
+\entry {Pointer creation with \code {makeinfo}}{40}
+\entry {Pointer validation with \code {makeinfo}}{185}
+\entry {Pointer validation, suppressing}{168}
+\entry {Pointer validation, suppressing from command line}{182}
+\entry {Points (dimension)}{98}
+\entry {PostScript output, overview}{4}
+\entry {Pounds symbol}{118}
+\entry {\code {PRE_ABOUT}}{192}
+\entry {\code {PRE_BODY_CLOSE}}{192}
+\entry {Preamble, in Info format}{283}
+\entry {Predefined names for indices}{105}
+\entry {Preface, etc., and Docbook}{48}
+\entry {\code {PREFIX}}{196}
+\entry {Preparing for \TeX {}}{173}
+\entry {Preserving HTML links to old nodes}{221}
+\entry {Prev node of Top node}{38}
+\entry {Preventing first paragraph indentation}{32}
+\entry {Preventing line and page breaks}{124}
+\entry {Print and format in Texinfo mode}{170}
+\entry {Print, format from Emacs shell}{170}
+\entry {Printed book and manual characteristics}{6}
+\entry {Printed output, indicating}{120}
+\entry {Printed output, through \command {texi2any}}{185}
+\entry {Printed permissions}{25}
+\entry {Printing a region or buffer}{266}
+\entry {Printing an index}{104}
+\entry {Printing cost, reducing}{75}
+\entry {Printing cropmarks}{176}
+\entry {Printing DVI files, on MS-DOS/MS-Windows}{170}
+\entry {Printing hardcopy}{166}
+\entry {Problems, catching}{275}
+\entry {\code {PROGRAM}}{196}
+\entry {Program names, indicating}{72}
+\entry {\code {PROGRAM_NAME_IN_FOOTER}}{192}
+\entry {Programming, glyphs for}{119}
+\entry {Pronunciation of Texinfo}{3}
+\entry {Prototype row, column widths defined by}{93}
+\initial {Q}
+\entry {Quotation characters (`'), in source}{114}
+\entry {Quotation marks, French}{115}
+\entry {Quotation marks, German}{115}
+\entry {Quotation marks, inserting}{114}
+\entry {Quotations}{78}
+\entry {Quotations in smaller fonts}{82}
+\entry {Quote characters, inserting}{110}
+\entry {Quoting, automatic for some macros}{156}
+\initial {R}
+\entry {Ragged left, without filling}{83}
+\entry {Ragged right, with filling}{84}
+\entry {Ragged right, without filling}{83}
+\entry {Raising and lowering sections}{51}
+\entry {Raw formatter commands}{146}
+\entry {Raw HTML}{213}
+\entry {raw text output}{188}
+\entry {RCS $Id}{253}
+\entry {Recommended names for keys}{69}
+\entry {Rectangle, black in hardcopy}{174}
+\entry {Recursive macro invocations}{155}
+\entry {Reducing font size}{75}
+\entry {Reference implementation}{178}
+\entry {Reference to @-commands}{223}
+\entry {References}{53}
+\entry {References using \code {@inforef}}{62}
+\finishindex
+
+@section Index page break not before initial
+
+The next index is to show the bottoms of columns when the next page 
+doesn't start with an initial.
+
+@commenceindex
+\initial {P}
+\entry {\code {PACKAGE}}{196}
+\entry {\code {PACKAGE_AND_VERSION}}{196}
+\entry {\code {PACKAGE_NAME}}{196}
+\entry {\code {PACKAGE_URL}}{196}
+\entry {\code {PACKAGE_VERSION}}{196}
+\entry {Page breaks, awkward}{124}
+\entry {Page breaks, forcing}{126}
+\entry {Page delimiter in Texinfo mode}{261}
+\entry {Page headings}{270}
+\entry {Page numbering}{270}
+\entry {Page sizes for books}{175}
+\entry {Page sizes, customized}{175}
+\entry {\code {page-delimiter}}{261}
+\entry {Pages, starting odd}{29}
+\entry {Paper size, A4}{175}
+\entry {Paragraph indentation control}{31}
+\entry {Paragraph, marking text within}{66}
+\entry {\code {paragraphindent}}{187}
+\entry {Parameters to macros}{154}
+\entry {Parentheses in node name}{37}
+\entry {Parsing errors}{202}
+\entry {Part of file formatting and printing}{266}
+\entry {Part pages}{50}
+\entry {Partial documents, formatting}{168}
+\entry {Parts of a cross reference}{54}
+\entry {Parts of a master menu}{28}
+\entry {Parts of a menu}{43}
+\entry {Patches, contributing}{4}
+\entry {PCL file, for printing}{170}
+\entry {\code {pdf image inclusions}}{97}
+\entry {PDF output}{176}
+\entry {PDF output of urls}{64}
+\entry {PDF output, overview}{5}
+\entry {\code {pdfetex}}{167}
+\entry {\code {pdftex}}{176}
+\entry {\code {pdftex\r {, and images}}}{97}
+\entry {\code {pdftexi2dvi}}{166}
+\entry {Period in node name}{37}
+\entry {Periods, inserting}{111}
+\entry {Perl format strings for translation}{199}
+\entry {Perl POD, converting to Texinfo}{200}
+\entry {Permissions text, including}{22}
+\entry {Permissions, printed}{25}
+\entry {\code {pg} (program) index}{102}
+\entry {Picas}{98}
+\entry {Pictures, inserting}{97}
+\entry {Pinard, Fran\,{c}ois}{7}
+\entry {Plain \TeX {}}{146}
+\entry {Plain text output with \option {--plaintext}}{183}
+\entry {Plain text output, overview}{4}
+\entry {\code {png image format}}{97}
+\entry {POD, converting to Texinfo}{200}
+\entry {\code {pod2texi}}{200}
+\entry {Point, indicating in a buffer}{121}
+\entry {Pointer creation with \code {makeinfo}}{40}
+\entry {Pointer validation with \code {makeinfo}}{185}
+\entry {Pointer validation, suppressing}{168}
+\entry {Pointer validation, suppressing from command line}{182}
+\entry {Points (dimension)}{98}
+\entry {PostScript output, overview}{4}
+\entry {Pounds symbol}{118}
+\entry {\code {PRE_ABOUT}}{192}
+\entry {\code {PRE_BODY_CLOSE}}{192}
+\entry {Preamble, in Info format}{283}
+\entry {Predefined names for indices}{105}
+\entry {Preface, etc., and Docbook}{48}
+\entry {\code {PREFIX}}{196}
+\entry {Preparing for \TeX {}}{173}
+\entry {Preserving HTML links to old nodes}{221}
+\entry {Prev node of Top node}{38}
+\entry {Preventing first paragraph indentation}{32}
+\entry {Preventing line and page breaks}{124}
+\entry {Print and format in Texinfo mode}{170}
+\entry {Print, format from Emacs shell}{170}
+\entry {Printed book and manual characteristics}{6}
+\entry {Printed output, indicating}{120}
+\entry {Printed output, through \command {texi2any}}{185}
+\entry {Printed permissions}{25}
+\entry {Printing a region or buffer}{266}
+\entry {Printing an index}{104}
+\entry {Printing cost, reducing}{75}
+\entry {Printing cropmarks}{176}
+\entry {Printing DVI files, on MS-DOS/MS-Windows}{170}
+\entry {Printing hardcopy}{166}
+\entry {Problems, catching}{275}
+\entry {\code {PROGRAM}}{196}
+\entry {Program names, indicating}{72}
+\entry {\code {PROGRAM_NAME_IN_FOOTER}}{192}
+\entry {Programming, glyphs for}{119}
+\entry {Pronunciation of Texinfo}{3}
+\entry {Prototype row, column widths defined by}{93}
+\initial {Q}
+\entry {Quotation characters (`'), in source}{114}
+\entry {Quotation marks, French}{115}
+\entry {Quotation marks, German}{115}
+\entry {Quotation marks, inserting}{114}
+\entry {Quotations}{78}
+\entry {Quotations in smaller fonts}{82}
+\entry {Quote characters, inserting}{110}
+\entry {Quoting, automatic for some macros}{156}
+\entry {Ragged left, without filling}{83}
+\entry {Ragged right, with filling}{84}
+\entry {Ragged right, without filling}{83}
+\entry {Raising and lowering sections}{51}
+\entry {Raw formatter commands}{146}
+\entry {Raw HTML}{213}
+\entry {raw text output}{188}
+\entry {RCS $Id}{253}
+\entry {Recommended names for keys}{69}
+\entry {Rectangle, black in hardcopy}{174}
+\entry {Recursive macro invocations}{155}
+\entry {Reducing font size}{75}
+\entry {Reference implementation}{178}
+\entry {Reference to @-commands}{223}
+\entry {References}{53}
+\entry {References using \code {@inforef}}{62}
+\entry {Raw formatter commands}{146}
+\entry {Raw HTML}{213}
+\entry {raw text output}{188}
+\entry {RCS $Id}{253}
+\entry {Recommended names for keys}{69}
+\entry {Rectangle, black in hardcopy}{174}
+\entry {Recursive macro invocations}{155}
+\entry {Reducing font size}{75}
+\entry {Reference implementation}{178}
+\entry {Reference to @-commands}{223}
+\entry {References}{53}
+\entry {References using \code {@inforef}}{62}
+\finishindex
+
+@section Short indices
+
+See following pages
+
+@commenceindex
+\initial{A}
+\entry{aaaa}{1}
+\initial{B}
+\entry{bbbb}{2}
+\finishindex
+
+@commenceindex
+\initial{A}
+\entry{aaaa}{1}
+\initial{B}
+\entry{bbbb}{2}
+\initial{C}
+\entry{cccc}{2}
+\finishindex
+
+@commenceindex
+\initial{A}
+\entry{aaaa}{1}
+\initial{B}
+\entry{bbbb}{2}
+\initial{C}
+\entry{cccc}{2}
+\entry{cccc}{2}
+\finishindex
+
+@commenceindex
+\initial{A}
+\entry{aaaa}{1}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\finishindex
+
+@commenceindex
+\initial{A}
+\entry{aaaa}{1}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{cccc}{17}
+\finishindex
+
+@section Non-alphanumeric Index Initials
+
+/ and \ should be mirror images.
+
+@commenceindex
+\initial{\\}
+\initial{/}
+\initial{|}
+\initial{\{}
+\initial{\}}
+\initial{F}
+\finishindex
+
+
+
+@part Another part@*Note no headline on this page
+
+@chapter First chapter after a part page
+
+Have a look at the headline.
+
+
+@chapter Cross-references
+
+Check commas surrounding page number:
+
+@noindent
+@xref{Target}, for more information (@code{@@xref})@*
+@xref{Target} for more information@*
+@xref{Target}.@*
+See @ref{Target}, for more information (@code{@@ref})@*
+See @ref{Target} for more information@*
+See @ref{Target}.@*
+(@pxref{Target}) (@code{@@pxref})@*
+(@pxref{Target,, Hurricanes})
+
+@node Target
+@section Target
+
+@chapter Document encoding
+
+@documentencoding UTF-8
+
+
+Test of a few UTF-8 sequences.
+
+∃x∈X, x < ∞, s.t. x ∧ y
+
+A∩B=C
+
+(spacing here doesn't matter because we're not in math mode)
+
+Greek text:
+
+Η Πρώτη σύνοδος της Κωνσταντινούπολης, γνωστή ως Β΄ οικουμενική, ήταν η 
+εκκλησιαστική σύνοδος που διενεργήθηκε το 381 μ.Χ. και συγκλήθηκε από 
+τον αυτοκράτορα Θεοδόσιο, μετά από προτροπή του Μελετίου Αντιοχείας.  
+Στόχος της ήταν η εκκλησιαστική ειρήνευση, αλλά και η «επίλυση των 
+αναφυέντων εν τη εκκλησία κρίσιμων θεολογικών και διοικητικών 
+προβλημάτων».
+
+(random text copied from Wikipedia)
+
+double accent --- ταΐζω
+
+
+@chapter PDF link colours
+
+For PDF only.
+
+
+Check that
+colour change continues on next page
+for @acronym{URL} split across pages,
+and doesn't change the colour of the heading line.
+
+Push down to end of page
+
+par
+
+@tex
+\global\def\urlcolor{0.32 0.39 0.50}%
+@end tex
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+@uref{aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/}
+
+par
+
+
+
+@bye

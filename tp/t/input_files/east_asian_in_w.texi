@@ -1,0 +1,9 @@
+@documentencoding utf-8
+
+This option overrides an include file name section and aaaaa aaaa
+(@w{包含文字}).
+
+@noindent
+This option overrides an include file name section and aaaaa aaaa
+(包含文字).
+

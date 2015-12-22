@@ -161,7 +161,7 @@ BEGIN {
   EXIT_SUCCESS = 0
   EXIT_FAILURE = 1
   
-  Texindex_version = "5.9.93"
+  Texindex_version = "6.0.90"
   if (! Invocation_name) {
     # provide fallback in case it's not passed in.
     Invocation_name = "texindex"
@@ -208,7 +208,7 @@ function beginfile(filename)
       || substr($0, 2, 5) != "entry")
     fatal(_"%s is not a Texinfo index file\n", filename)
 
-  Special_chars = "{}" Command_char
+  Special_chars = "{}"
 }
 function endfile(filename,    i, prev_initial, initial)
 {
@@ -268,17 +268,29 @@ function endfile(filename,    i, prev_initial, initial)
 function extract_initial(key,  initial, nextchar, i, l, kchars)
 {
   l = char_split(key, kchars)
-  for (i = 1; i <= l; i++)
-    if (kchars[i] != "{")
-      break
-
-  if (i > l)
-    fatal(_"%s:%d: Bad key %s in record\n", FILENAME, FNR, key)
-
-  initial = toupper(kchars[i])
-  nextchar = kchars[i+1]
-  if (initial == Command_char && (nextchar == "{" || nextchar == "}"))
-    initial = nextchar
+  if (l >= 3 && kchars[2] == "{") {
+    bracecount = 1
+    i = 3
+    while (bracecount > 0 && i <= l) {
+      if (kchars[i] == "{")
+        bracecount++
+      else if (kchars[i] == "}")
+        bracecount--
+      i++
+    }
+    if (i > l)
+      fatal(_"%s:%d: Bad key %s in record\n", FILENAME, FNR, key)
+    initial = substr(key, 2, i - 2)
+  } else if (kchars[2] == Command_char) {
+    nextchar = kchars[3]
+    if (initial == Command_char && (nextchar == "{" || nextchar == "}"))
+      initial = substr(key, 2, 3)
+    else {
+      initial = toupper(nextchar)
+    }
+  } else {
+    initial = toupper(kchars[2])
+  }
 
   return initial
 }

@@ -332,25 +332,25 @@ $result_trees{'comments_on_misc_command_line'} = {
     },
     {},
     {
-      'args' => [
-        {
-          'parent' => {},
-          'text' => ' indent (skipspace)
-',
-          'type' => 'misc_arg'
-        }
-      ],
-      'cmdname' => 'c',
-      'extra' => {
-        'misc_args' => [
-          ' indent (skipspace)
-'
-        ]
-      },
-      'parent' => {}
-    },
-    {
       'contents' => [
+        {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => ' indent (skipspace)
+',
+              'type' => 'misc_arg'
+            }
+          ],
+          'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' indent (skipspace)
+'
+            ]
+          },
+          'parent' => {}
+        },
         {
           'parent' => {},
           'text' => 'Para.
@@ -416,10 +416,10 @@ $result_trees{'comments_on_misc_command_line'}{'contents'}[10]{'extra'}{'spaces_
 $result_trees{'comments_on_misc_command_line'}{'contents'}[10]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'comments_on_misc_command_line'};
 $result_trees{'comments_on_misc_command_line'}{'contents'}[10]{'parent'} = $result_trees{'comments_on_misc_command_line'};
 $result_trees{'comments_on_misc_command_line'}{'contents'}[11] = $result_trees{'comments_on_misc_command_line'}{'contents'}[10]{'extra'}{'spaces_after_command'};
-$result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[12];
+$result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'contents'}[0];
+$result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[12];
+$result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'contents'}[1]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[12];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'parent'} = $result_trees{'comments_on_misc_command_line'};
-$result_trees{'comments_on_misc_command_line'}{'contents'}[13]{'contents'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[13];
-$result_trees{'comments_on_misc_command_line'}{'contents'}[13]{'parent'} = $result_trees{'comments_on_misc_command_line'};
 
 $result_texis{'comments_on_misc_command_line'} = '@setfilename  comments_on_misc_command_line.info  @c setfilename (text)
 @definfoenclose phoo,;,:  @c definfoenclose (number)
@@ -450,8 +450,8 @@ $result_converted{'xml'}->{'comments_on_misc_command_line'} = '<setfilename file
 <pagesizes spaces=" ">200mm </pagesizes><!-- c pagesizes  (line) -->
 <everyheading> @thispage @| aaa @c everyheading (lineraw)</everyheading>
 
-<indent></indent> <!-- c indent (skipspace) -->
-<para>Para.
+<indent></indent> <para><!-- c indent (skipspace) -->
+Para.
 </para>';
 
 1;

@@ -8,7 +8,8 @@ command=run_parser_all.sh
 one_test_logs_dir=test_log
 diffs_dir=diffs
 
-
+# Result is different for XS paragraph module
+TEXINFO_XS=omit ; export TEXINFO_XS
 
 if test "z$LONG_TESTS" != z"yes" && test "z$ALL_TESTS" != z"yes"; then
   echo "Skipping long tests that take a lot of time to run"

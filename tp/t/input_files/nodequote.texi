@@ -1,0 +1,43 @@
+@node Top
+@top
+
+@xref{normal node, the::caption and a word}
+@xref{normal node, the::caption}
+
+@xref{blah:blah, the::caption and a word}
+@xref{blah:blah, the::caption}
+
+@xref{blumpty.fump, the::caption and a word}
+@xref{blumpty.fump, the::caption}.mrmrmrmmrmrmr
+
+@xref{blah:blah}
+
+@xref{@asis{secret,node}}
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA @xref{blah:blah}.)
+
+@menu
+* blah@asis{:}blah::
+* the topic:blumpty@asis{.}fump.
+* normal node::
+* funny@asis{:}label:@asis{secret,node}.
+
+@end menu
+
+@node blah:blah
+@chapter blah:blah
+
+stuff here.
+
+@node blumpty.fump
+@chapter blumpty.fump
+
+@node normal node
+@chapter normal node
+
+@node @asis{secret,node}
+@chapter @asis{secret,node}
+
+@node top secret node
+
+stuff here.

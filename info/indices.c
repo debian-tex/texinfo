@@ -1,5 +1,5 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c 6327 2015-06-09 11:12:41Z gavin $
+   $Id: indices.c 6515 2015-08-12 15:59:05Z gavin $
 
    Copyright 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008, 2011,
    2013, 2014 Free Software Foundation, Inc.
@@ -148,7 +148,7 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
       for (i = 0; (tag = file_buffer->tags[i]); i++)
         {
           if (strcasestr (tag->nodename, "Index")
-              && tag->nodelen != 0) /* Not an anchor. */
+              && tag->cache.nodelen != 0) /* Not an anchor. */
             {
               NODE *node;
               REFERENCE **menu;
@@ -180,9 +180,6 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
                   free (old_result);
                   }
                 }
-              free (menu);
-              node->references = 0; /* Don't free the elements in the
-                                       reference list. */
               free_history_node (node);
             }
         }
@@ -564,12 +561,15 @@ apropos_in_all_indices (char *search_string, int inform)
       FILE_BUFFER *this_fb;
 
       this_item = dir_menu[dir_index];
+      if (!this_item->filename)
+        continue;
 
       /* If we already scanned this file, don't do that again.
          In addition to being faster, this also avoids having
          multiple identical entries in the *Apropos* menu.  */
       for (i = 0; i < dir_index; i++)
-        if (FILENAME_CMP (this_item->filename, dir_menu[i]->filename) == 0)
+        if (dir_menu[i]->filename
+            && FILENAME_CMP (this_item->filename, dir_menu[i]->filename) == 0)
           break;
       if (i < dir_index)
         continue;
@@ -678,7 +678,9 @@ DECLARE_INFO_COMMAND (info_index_apropos,
         {
           /* Create the node.  FIXME: Labels and node names taken from the
              indices of Info files may be in a different character encoding to 
-             the one currently being used. */
+             the one currently being used.
+             This problem is reduced by makeinfo not putting quotation marks 
+             from @samp, etc., into node names and index entries. */
           register int i;
 
           text_buffer_init (&message);
@@ -715,10 +717,14 @@ DECLARE_INFO_COMMAND (info_index_apropos,
         }
 
       apropos_node = text_buffer_to_node (&message);
-      scan_node_contents (apropos_node, 0, 0);
+      {
+        char *old_contents = apropos_node->contents;
+        scan_node_contents (apropos_node, 0, 0);
+        if (old_contents != apropos_node->contents)
+          free (old_contents);
+      }
 
       name_internal_node (apropos_node, xstrdup (apropos_list_nodename));
-      apropos_node->flags |= N_WasRewritten;
 
       /* Find/Create a window to contain this node. */
       {

@@ -1,8 +1,8 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c 5912 2014-11-07 10:49:13Z gavin $
+   $Id: variables.c 6877 2015-12-19 16:42:47Z gavin $
 
    Copyright 1993, 1997, 2001, 2002, 2004, 2007, 2008, 2011, 2013,
-   2014 Free Software Foundation, Inc.
+   2014, 2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,6 +23,8 @@
 #include "session.h"
 #include "echo-area.h"
 #include "variables.h"
+#include "terminal.h"
+#include "display.h"
 
 /* **************************************************************** */
 /*                                                                  */
@@ -36,6 +38,10 @@ static char *on_off_choices[] = { "Off", "On", NULL };
 
 static char *mouse_choices[] = { "Off", "normal-tracking", NULL };
 
+static char *follow_strategy_choices[] = { "remain", "path", NULL };
+
+static char *nodeline_choices[] = { "no", "print", "pointers", NULL };
+
 /* Choices used by the completer when reading a value for the user-visible
    variable "scroll-behaviour". */
 static char *info_scroll_choices[] = { "Continuous", "Next Only",
@@ -43,6 +49,14 @@ static char *info_scroll_choices[] = { "Continuous", "Next Only",
 
 /* Choices for the scroll-last-node variable */
 static char *scroll_last_node_choices[] = { "Stop", "Top", NULL };
+
+/* Set choices to address of this to indicate takes a value in the
+   format for specifying renditions.  Nothing is actually stored in
+   this variable. */
+char *rendition_variable = 0;
+
+/* Address of this indicates the 'highlight-searches' variable. */
+static int *highlight_searches;
 
 /* Note that the 'where_set' field of each element in the array is
    not given and defaults to 0. */
@@ -116,16 +130,37 @@ VARIABLE_ALIST info_variables[] = {
       N_("Length of time in milliseconds to wait for the next byte in a sequence indicating that a key has been pressed"),
     &key_time, NULL },
 
-  { "highlight-searches",
-      N_("Highlight search matches"),
-    &highlight_searches_p, (char **)on_off_choices },
-
   { "mouse",
       N_("Method to use to track mouse events"),
     &mouse_protocol, (char **)mouse_choices },
 
+  { "follow-strategy",
+      N_("How to follow a cross-reference"),
+    &follow_strategy, (char **)follow_strategy_choices },
+
+  { "highlight-searches",
+      N_("Highlight search matches"),
+    &highlight_searches, (char **)on_off_choices },
+
+  { "link-style",
+      N_("Styles for links"),
+    &ref_rendition, &rendition_variable },
+
+  { "active-link-style",
+      N_("Styles for active links"),
+    &hl_ref_rendition, &rendition_variable },
+
+  { "match-style",
+      N_("Styles for search matches"),
+    &match_rendition, &rendition_variable },
+
+  { "nodeline",
+      N_("How to print the information line at the start of a node"),
+    &nodeline_print, (char **)nodeline_choices },
+
   { NULL }
 };
+
 
 DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
 {
@@ -139,10 +174,10 @@ DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
 
   if (var->choices)
     asprintf (&description, "%s (%s): %s.",
-             var->name, var->choices[*var->value], _(var->doc));
+             var->name, var->choices[*(int *)var->value], _(var->doc));
   else
     asprintf (&description, "%s (%d): %s.",
-	     var->name, *var->value, _(var->doc));
+             var->name, *(int *)var->value, _(var->doc));
 
   window_message_in_echo_area ("%s", description);
   free (description);
@@ -169,7 +204,7 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
       if (info_explicit_arg || count != 1)
         potential_value = count;
       else
-        potential_value = *(var->value);
+        potential_value = *(int *)(var->value);
 
       sprintf (prompt, _("Set %s to value (%d): "),
                var->name, potential_value);
@@ -206,7 +241,7 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
         }
 
       sprintf (prompt, _("Set %s to value (%s): "),
-               var->name, var->choices[*(var->value)]);
+               var->name, var->choices[*(int *)(var->value)]);
 
       /* Ask the completer to read a variable value for us. */
       line = info_read_completing_in_echo_area (prompt, array);
@@ -305,6 +340,9 @@ make_variable_completions_array (void)
   return array;
 }
 
+/* VALUE is a string that is the value of the variable specified
+   by the user.  Update our internal data structure VAR using this
+   information. */
 int
 set_variable_to_value (VARIABLE_ALIST *var, char *value, int where)
 {
@@ -316,15 +354,92 @@ set_variable_to_value (VARIABLE_ALIST *var, char *value, int where)
   if (var->choices)
     {
       register int j;
-      
-      /* Find the choice in our list of choices. */
-      for (j = 0; var->choices[j]; j++)
-	if (strcmp (var->choices[j], value) == 0)
-	  {
-	    *var->value = j;
-            var->where_set = where;
-	    return 1;
-	  }
+
+      /* "highlight-searches=On" is equivalent to
+         "match-rendition=standout". */
+      if (var->value == &highlight_searches)
+        {
+          match_rendition.mask = STANDOUT_MASK;
+          match_rendition.value = STANDOUT_MASK;
+        }
+      else if (var->choices != (char **) &rendition_variable)
+        {
+          /* Find the choice in our list of choices. */
+          for (j = 0; var->choices[j]; j++)
+            if (strcmp (var->choices[j], value) == 0)
+              {
+                *(int *)var->value = j;
+                var->where_set = where;
+                return 1;
+              }
+        }
+      else
+        {
+          static struct {
+              unsigned long mask;
+              unsigned long value;
+              char *name;
+          } styles[] = {
+              COLOUR_MASK, COLOUR_BLACK,   "black",
+              COLOUR_MASK, COLOUR_RED,     "red",
+              COLOUR_MASK, COLOUR_GREEN,   "green",
+              COLOUR_MASK, COLOUR_YELLOW,  "yellow",
+              COLOUR_MASK, COLOUR_BLUE,    "blue",
+              COLOUR_MASK, COLOUR_MAGENTA, "magenta",
+              COLOUR_MASK, COLOUR_CYAN,    "cyan",
+              COLOUR_MASK, COLOUR_WHITE,   "white",
+              COLOUR_MASK, 0,           "nocolour",
+              COLOUR_MASK, 0,           "nocolor",
+              BGCOLOUR_MASK, BGCOLOUR_BLACK,   "bgblack",
+              BGCOLOUR_MASK, BGCOLOUR_RED,     "bgred",
+              BGCOLOUR_MASK, BGCOLOUR_GREEN,   "bggreen",
+              BGCOLOUR_MASK, BGCOLOUR_YELLOW,  "bgyellow",
+              BGCOLOUR_MASK, BGCOLOUR_BLUE,    "bgblue",
+              BGCOLOUR_MASK, BGCOLOUR_MAGENTA, "bgmagenta",
+              BGCOLOUR_MASK, BGCOLOUR_CYAN,    "bgcyan",
+              BGCOLOUR_MASK, BGCOLOUR_WHITE,   "bgwhite",
+              BGCOLOUR_MASK, 0,           "nobgcolour",
+              BGCOLOUR_MASK, 0,           "nobgcolor",
+              UNDERLINE_MASK, UNDERLINE_MASK, "underline",
+              UNDERLINE_MASK, 0,              "nounderline",
+              STANDOUT_MASK, STANDOUT_MASK, "standout",
+              STANDOUT_MASK, 0,             "nostandout",
+              BOLD_MASK, BOLD_MASK,         "bold",
+              BOLD_MASK, 0,                 "regular",
+              BOLD_MASK, 0,                 "nobold",
+              BLINK_MASK, BLINK_MASK,       "blink",
+              BLINK_MASK, 0,                "noblink",
+          };
+          int i;
+          char *component;
+          unsigned long rendition_mask = 0;
+          unsigned long rendition_value = 0;
+
+          component = strtok (value, ",");
+          while (component)
+            {
+              for (i = 0; (styles[i].name); i++)
+                {
+                  if (!strcmp (styles[i].name, component))
+                    break;
+                }
+              if (styles[i].name)
+                {
+                  rendition_mask |= styles[i].mask;
+                  rendition_value &= ~styles[i].mask;
+                  rendition_value |= styles[i].value;
+                }
+              /* If not found, silently ignore, in case more options are
+                 added in the future. */
+
+              component = strtok (0, ",");
+            }
+
+          /* Now all the specified styles are recorded in rendition_value. */
+          ((RENDITION *)var->value)->mask = rendition_mask;
+          ((RENDITION *)var->value)->value = rendition_value;
+        }
+      return 1;
     }
   else
     {
@@ -332,7 +447,7 @@ set_variable_to_value (VARIABLE_ALIST *var, char *value, int where)
       long n = strtol (value, &p, 10);
       if (*p == 0 && INT_MIN <= n && n <= INT_MAX)
 	{
-	  *var->value = n;
+          *(int *)var->value = n;
 	  return 1;
 	}
     }

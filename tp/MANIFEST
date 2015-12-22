@@ -1,5 +1,4 @@
 COPYING
-Changes
 DebugTexinfo/DebugCount.pm
 DebugTexinfo/DebugTree.pm
 LocaleData/ca.us-ascii/LC_MESSAGES/texinfo_document.mo
@@ -11,8 +10,8 @@ LocaleData/de/LC_MESSAGES/texinfo.mo
 LocaleData/de_AT/LC_MESSAGES/texinfo.mo
 LocaleData/eo/LC_MESSAGES/texinfo.mo
 LocaleData/eo/LC_MESSAGES/texinfo_document.mo
-LocaleData/es.us-ascii/LC_MESSAGES/texinfo_document.mo
 LocaleData/es/LC_MESSAGES/texinfo.mo
+LocaleData/es/LC_MESSAGES/texinfo_document.mo
 LocaleData/fr/LC_MESSAGES/texinfo.mo
 LocaleData/fr/LC_MESSAGES/texinfo_document.mo
 LocaleData/he/LC_MESSAGES/texinfo.mo
@@ -39,6 +38,7 @@ LocaleData/sl/LC_MESSAGES/texinfo.mo
 LocaleData/sv/LC_MESSAGES/texinfo.mo
 LocaleData/tr/LC_MESSAGES/texinfo.mo
 LocaleData/uk/LC_MESSAGES/texinfo.mo
+LocaleData/uk/LC_MESSAGES/texinfo_document.mo
 LocaleData/vi/LC_MESSAGES/texinfo.mo
 LocaleData/zh_CN/LC_MESSAGES/texinfo.mo
 LocaleData/zh_TW/LC_MESSAGES/texinfo.mo
@@ -56,6 +56,7 @@ Texinfo/Convert/Info.pm
 Texinfo/Convert/Line.pm
 Texinfo/Convert/NodeNameNormalization.pm
 Texinfo/Convert/Paragraph.pm
+Texinfo/Convert/ParagraphNonXS.pm
 Texinfo/Convert/PlainTexinfo.pm
 Texinfo/Convert/Plaintext.pm
 Texinfo/Convert/Texinfo.pm
@@ -65,8 +66,20 @@ Texinfo/Convert/Text.pm
 Texinfo/Convert/TextContent.pm
 Texinfo/Convert/UnFilled.pm
 Texinfo/Convert/Unicode.pm
+Texinfo/Convert/XSParagraph/MANIFEST
+Texinfo/Convert/XSParagraph/Makefile.PL
+Texinfo/Convert/XSParagraph/README
+Texinfo/Convert/XSParagraph/XSParagraph.pm
+Texinfo/Convert/XSParagraph/XSParagraph.xs
+Texinfo/Convert/XSParagraph/ppport.h
+Texinfo/Convert/XSParagraph/t/XSParagraph.t
+Texinfo/Convert/XSParagraph/text.c
+Texinfo/Convert/XSParagraph/text.h
+Texinfo/Convert/XSParagraph/xspara.c
+Texinfo/Convert/XSParagraph/xspara.h
 Texinfo/Documentlanguages.pm
 Texinfo/Encoding.pm
+Texinfo/ModulePath.pm
 Texinfo/Parser.pm
 Texinfo/Report.pm
 Texinfo/Structuring.pm
@@ -128,7 +141,7 @@ po_document/POTFILES.in
 po_document/ca.us-ascii.po
 po_document/de.us-ascii.po
 po_document/eo.po
-po_document/es.us-ascii.po
+po_document/es.po
 po_document/fr.po
 po_document/hu.po
 po_document/it.po
@@ -138,6 +151,7 @@ po_document/pl.po
 po_document/pt.us-ascii.po
 po_document/pt_BR.us-ascii.po
 po_document/texinfo_document.pot
+po_document/uk.po
 prove.sh
 t/01use.t
 t/02coverage.t
@@ -240,10 +254,12 @@ t/input_files/contents_in_document.texi
 t/input_files/contents_no_section.texi
 t/input_files/cpp_lines.texi
 t/input_files/delcomment.texi
+t/input_files/east_asian_in_w.texi
 t/input_files/empty_lines_at_beginning_no_setfilename.texi
 t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi
 t/input_files/japanese_shift_jis.texi
 t/input_files/japanese_utf8.texi
+t/input_files/nodequote.texi
 t/input_files/non_break_spaces.texi
 t/input_files/sample_utf8.texi
 t/input_files/things_before_setfilename.texi
@@ -707,6 +723,7 @@ t/results/indices/printindex_index_entry_in_copying_in_footnote.pl
 t/results/indices/printindex_index_entry_in_copying_no_insertcopying.pl
 t/results/indices/printindex_with_space_before.pl
 t/results/indices/recursive_synindex.pl
+t/results/indices/same_index_entry_merged_indices.pl
 t/results/indices/syncode_index_print_both.pl
 t/results/indices/syncodeindex_to_plain.pl
 t/results/indices/unknown_index_entry.pl
@@ -893,6 +910,7 @@ t/results/macro/implicit_quoting_one_arg.pl
 t/results/macro/implicit_quoting_recursion.pl
 t/results/macro/leading_spaces_ignore.pl
 t/results/macro/leading_spaces_no_ignore.pl
+t/results/macro/macro_expands_to_empty.pl
 t/results/macro/macro_expansion.pl
 t/results/macro/macro_for_end.pl
 t/results/macro/macro_for_ignored_line_command.pl
@@ -1063,6 +1081,8 @@ t/results/plaintext_tests/chinese_mixed_with_en/res_plaintext/chinese_mixed_with
 t/results/plaintext_tests/code_commands_and_punctuation.pl
 t/results/plaintext_tests/command_brace_no_arg_punctuation.pl
 t/results/plaintext_tests/commands_and_punctuation.pl
+t/results/plaintext_tests/east_asian_in_w.pl
+t/results/plaintext_tests/east_asian_in_w/res_plaintext/east_asian_in_w.txt
 t/results/plaintext_tests/empty_line_in_example_end.pl
 t/results/plaintext_tests/empty_multitable_in_itemize.pl
 t/results/plaintext_tests/end_sentence_space_protected.pl
@@ -1110,6 +1130,8 @@ t/results/plaintext_tests/punctuation_commands_frenchspacing.pl
 t/results/plaintext_tests/punctuation_frenchspacing.pl
 t/results/plaintext_tests/punctuation_in_command.pl
 t/results/plaintext_tests/punctuation_in_command_end_line.pl
+t/results/plaintext_tests/quote_node_names.pl
+t/results/plaintext_tests/quote_node_names/res_plaintext/quote_node_names.txt
 t/results/plaintext_tests/sc_with_utf8_enable_encoding.pl
 t/results/plaintext_tests/settitle_and_empty_top.pl
 t/results/plaintext_tests/sp_with_text_before_in_example.pl
@@ -1222,6 +1244,7 @@ t/results/sectioning/lone_Top_node.pl
 t/results/sectioning/lone_contents.pl
 t/results/sectioning/loop_nodes.pl
 t/results/sectioning/lowered_subsubsection.pl
+t/results/sectioning/loweredheading.pl
 t/results/sectioning/menutextorder.pl
 t/results/sectioning/more_sections_than_nodes.pl
 t/results/sectioning/next_in_menu_is_below.pl

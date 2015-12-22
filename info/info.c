@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c 6305 2015-06-03 22:29:56Z karl $
+   $Id: info.c 6864 2015-12-15 14:48:22Z gavin $
 
    Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
@@ -179,10 +179,9 @@ get_initial_file (int *argc, char ***argv, char **error)
   /* If there are any more arguments, the initial file is the
      dir entry given by the first one. */
     {
-      /* If they say info -O info, we want to show them the invocation node
-         for standalone info; there's nothing useful in info.texi.  */
-      if (goto_invocation_p && (*argv)[0]
-          && mbscasecmp ((*argv)[0], "info") == 0)
+      /* If they say info info, show them info-stnd.texi.  (Get
+         info.texi with info -f info.) */
+      if ((*argv)[0] && mbscasecmp ((*argv)[0], "info") == 0)
         (*argv)[0] = "info-stnd";
 
       entry = lookup_dir_entry ((*argv)[0], 0);
@@ -825,7 +824,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
      for a matching entry. */
   if (!user_filename && argv[0] && HAS_SLASH (argv[0]))
     {
-      user_filename = argv[0];
+      user_filename = xstrdup (argv[0]);
       argv++; /* Advance past first remaining argument. */
       argc--;
     }
@@ -873,7 +872,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       /* --all */
       if (!user_filename && argv[0])
         {
-          user_filename = argv[0];
+          user_filename = xstrdup (argv[0]);
           argv++; argc--;
         }
       else if (!user_filename)
@@ -904,9 +903,28 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       /* User used "--file". */
       if (user_filename)
         {
-          initial_file = info_find_fullpath (user_filename, 0);
-          if (!initial_file && filesys_error_number)
-            error = filesys_error_string (user_filename, filesys_error_number);
+          if (!IS_ABSOLUTE(user_filename) && HAS_SLASH(user_filename)
+              && !(user_filename[0] == '.' && IS_SLASH(user_filename[1])))
+            {
+              /* Prefix "./" to the filename to prevent a lookup
+                 in INFOPATH.  */
+              char *s;
+              asprintf (&s, "%s%s", "./", user_filename);
+              free (user_filename);
+              user_filename = s;
+            }
+          if (IS_ABSOLUTE(user_filename) || HAS_SLASH(user_filename))
+            initial_file = info_add_extension (0, user_filename, 0);
+          else
+            initial_file = info_find_fullpath (user_filename, 0);
+
+          if (!initial_file)
+            {
+              if (!filesys_error_number)
+                filesys_error_number = ENOENT;
+              error = filesys_error_string (user_filename, 
+                                            filesys_error_number);
+            }
           else
             add_pointer_to_array (info_new_reference (initial_file, "Top"),
                                   ref_index, ref_list, ref_slots, 2);

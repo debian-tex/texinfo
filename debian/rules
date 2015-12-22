@@ -24,6 +24,7 @@ build-stamp:
 	  --with-external-Text-Unidecode=yes \
 	  --with-external-libintl-perl=yes \
 	  --prefix=/usr \
+	  --libexecdir='$${prefix}/lib' \
 	  --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man' \
 	  --build=$(DEB_BUILD_GNU_TYPE) --host=$(DEB_HOST_GNU_TYPE)
 	# after dh_autotools-dev_updateconfig the man pages would

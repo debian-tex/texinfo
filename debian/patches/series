@@ -6,7 +6,7 @@ info-manpage-mentiones-nonfree
 do-not-require-automake-1.15
 upstream-svn6390-index-deterministic
 #texinfo-make-index-deterministic
-slash-in-dir-entry
+#slash-in-dir-entry
 follow-strategy-remain-svn6502
 disable-mouse-svn6715
 upstream-case-insensitive-tag-svn6711

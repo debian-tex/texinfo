@@ -1,12 +1,10 @@
-texinfo (6.0.0.dfsg.1-4~2) UNRELEASED; urgency=medium
+texinfo (6.0.0.dfsg.1-4) unstable; urgency=medium
 
-  * including a patch to allow for info files in subdir (Closes: #792328)
-    STILL IN TESTING
   * include upstream patch for follow strategies
   * switch back to default mouse behaviour (Closes: #797872)
   * include upstream patch for case sensitive info (Closes: #808869)
 
- -- Norbert Preining <preining@debian.org>  Thu, 24 Dec 2015 08:20:18 +0900
+ -- Norbert Preining <preining@debian.org>  Thu, 24 Dec 2015 08:24:42 +0900
 
 texinfo (6.0.0.dfsg.1-3) unstable; urgency=medium
 

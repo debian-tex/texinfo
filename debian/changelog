@@ -2,12 +2,18 @@ texinfo (6.0.90.dfsg.1-1~1) UNRELEASED; urgency=medium
 
   * new upstream (pre)release:
     . support info files in sub directories (Closes: #792328)
-    . switch back to default mouse behaviour (Closes: #797872)
-    . implement follow strategies (needed for subdir support)
   * update make-orig-tar for new prerelease, fix tar name
   * update and cleanup patches
 
- -- Norbert Preining <preining@debian.org>  Tue, 22 Dec 2015 20:13:02 +0900
+ -- Norbert Preining <preining@debian.org>  Thu, 24 Dec 2015 08:40:10 +0900
+
+texinfo (6.0.0.dfsg.1-4) unstable; urgency=medium
+
+  * include upstream patch for follow strategies
+  * switch back to default mouse behaviour (Closes: #797872)
+  * include upstream patch for case sensitive info (Closes: #808869)
+
+ -- Norbert Preining <preining@debian.org>  Thu, 24 Dec 2015 08:24:42 +0900
 
 texinfo (6.0.0.dfsg.1-3) unstable; urgency=medium
 

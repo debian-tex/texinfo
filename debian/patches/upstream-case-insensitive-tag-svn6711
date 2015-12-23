@@ -1,0 +1,15 @@
+---
+ info/search.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- texinfo.orig/info/search.c
++++ texinfo/info/search.c
+@@ -385,7 +385,7 @@
+   int len;
+ 
+   len = strlen (string);
+-  if (strncmp (pointer, string, len) != 0)
++  if (strncasecmp (pointer, string, len) != 0)
+     return 0;
+ 
+   pointer += len;

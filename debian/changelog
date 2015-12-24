@@ -5,8 +5,9 @@ texinfo (6.0.90.dfsg.1-1~1) UNRELEASED; urgency=medium
   * update make-orig-tar for new prerelease, fix tar name
   * update and cleanup patches
   * use bundled libintl-perl, as the Debian version breaks Texinfo
+  * do not patch out version number from automake calls
 
- -- Norbert Preining <preining@debian.org>  Fri, 25 Dec 2015 08:41:40 +0900
+ -- Norbert Preining <preining@debian.org>  Fri, 25 Dec 2015 08:45:12 +0900
 
 texinfo (6.0.0.dfsg.1-4) unstable; urgency=medium
 

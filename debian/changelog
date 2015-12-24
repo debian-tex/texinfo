@@ -4,8 +4,9 @@ texinfo (6.0.90.dfsg.1-1~1) UNRELEASED; urgency=medium
     . support info files in sub directories (Closes: #792328)
   * update make-orig-tar for new prerelease, fix tar name
   * update and cleanup patches
+  * use bundled libintl-perl, as the Debian version breaks Texinfo
 
- -- Norbert Preining <preining@debian.org>  Thu, 24 Dec 2015 08:40:10 +0900
+ -- Norbert Preining <preining@debian.org>  Fri, 25 Dec 2015 08:41:40 +0900
 
 texinfo (6.0.0.dfsg.1-4) unstable; urgency=medium
 

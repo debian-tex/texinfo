@@ -17,12 +17,17 @@ build: build-arch build-indep
 build-arch: build-stamp
 build-indep: build-stamp
 
+# The Debian provided libintl-perl breaks several tests and probably
+# also some of the behaviour. Disable it until these problems are fixed
+# on either side.
+#	  --with-external-libintl-perl=yes \
+
+
 build-stamp:
 	dh_testdir
 	dh_autotools-dev_updateconfig
 	AWK=awk ./configure $(shell dpkg-buildflags --export=configure) \
 	  --with-external-Text-Unidecode=yes \
-	  --with-external-libintl-perl=yes \
 	  --prefix=/usr \
 	  --libexecdir='$${prefix}/lib' \
 	  --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man' \

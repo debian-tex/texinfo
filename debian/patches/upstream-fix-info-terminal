@@ -1,0 +1,23 @@
+---
+ info/display.c |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- texinfo.orig/info/display.c
++++ texinfo/info/display.c
+@@ -540,7 +540,7 @@
+   mbi_avail (iter);
+   while (1)
+     {
+-      int delim = 0;
++      int delim;
+       mbi_copy (&bol_iter, &iter);
+       bol_ref_index = ref_index;
+       bol_match_index = match_index;
+@@ -552,6 +552,7 @@
+ 
+       text_buffer_reset (&tb_printed_line);
+ 
++      delim = 0;
+       /* Check if we have processed all the lines in the window. */
+       if (pl_num == win->height)
+         break;

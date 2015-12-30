@@ -13,10 +13,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 5.9.93\n"
+"Project-Id-Version: texinfo 6.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
-"PO-Revision-Date: 2015-06-07 12:37+0200\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
+"PO-Revision-Date: 2015-12-23 14:54+0100\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@orange.fr>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -388,7 +388,7 @@ msgstr "Sujet de l'index"
 msgid "No available info files have '%s' in their indices."
 msgstr "« %s » n'est présent dans aucun des index disponibles."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Erreur lors de la conversion d'encodage de caracères du fichier."
@@ -1067,7 +1067,7 @@ msgstr "Sélectionne un nœud visité : "
 msgid "The reference disappeared! (%s)."
 msgstr "La référence a disparu ! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Impossible d'initialiser le terminal : %s\n"
@@ -1514,29 +1514,29 @@ msgstr "Chaîne à rechercher trop courte"
 #: info/session.c:4462
 #, c-format
 msgid "Going back to last match from %s"
-msgstr ""
+msgstr "Va à la dernière correspondance à partir de %s"
 
 #: info/session.c:4486 info/session.c:4596
-#, fuzzy, c-format
+#, c-format
 msgid "No more matches."
-msgstr "Pas de correspondance"
+msgstr "Pas d'autre correspondance"
 
 #: info/session.c:4623
 msgid "Search this node and subnodes for a string."
-msgstr ""
+msgstr "Recherche une chaîne dans ce nœud et ses enfants."
 
 #: info/session.c:4644
 msgid "Go to next match in Info sub-tree"
-msgstr ""
+msgstr "Va à la correspondance suivante dans l'arborescence Info"
 
 #: info/session.c:4648 info/session.c:4660
 #, c-format
 msgid "No active search"
-msgstr ""
+msgstr "Pas de recherche en cours"
 
 #: info/session.c:4656
 msgid "Go to previous match in Info sub-tree"
-msgstr ""
+msgstr "Va à la correspondance précédante dans l'arborescence Info"
 
 #: info/session.c:4669
 msgid "Read a string and search for it case-sensitively"
@@ -1729,9 +1729,8 @@ msgid "Method to use to track mouse events"
 msgstr "Méthode à utiliser pour détecter les mouvements de souris"
 
 #: info/variables.c:138
-#, fuzzy
 msgid "How to follow a cross-reference"
-msgstr "Va au renvoi suivant"
+msgstr "Comment aller à un renvoi"
 
 #: info/variables.c:142
 msgid "Highlight search matches"
@@ -1739,20 +1738,19 @@ msgstr "Mettre en surbrillance les recherches fructueuses"
 
 #: info/variables.c:146
 msgid "Styles for links"
-msgstr ""
+msgstr "Styles pour liens"
 
 #: info/variables.c:150
 msgid "Styles for active links"
-msgstr ""
+msgstr "Styles pour liens actifs"
 
 #: info/variables.c:154
-#, fuzzy
 msgid "Styles for search matches"
-msgstr "Efface les mises en surbrillance"
+msgstr "Styles des recherches fructueuses"
 
 #: info/variables.c:158
 msgid "How to print the information line at the start of a node"
-msgstr ""
+msgstr "Comment afficher la ligne d'information en début de nœud"
 
 #: info/variables.c:165
 msgid "Explain the use of a variable"
@@ -1790,9 +1788,9 @@ msgid "-%s---Info: %s, %ld lines --%s--"
 msgstr "-%s---Info : %s, %ld lignes --%s--"
 
 #: info/window.c:970
-#, fuzzy, c-format
+#, c-format
 msgid "-%s---Info: (%s)%s, %ld lines --%s--"
-msgstr "-%s%s-Info : (%s)%s, %ld lignes --%s--"
+msgstr "-%s---Info : (%s)%s, %ld lignes --%s--"
 
 #: install-info/install-info.c:292
 #, c-format
@@ -3711,50 +3709,3 @@ msgstr "%s : erreur de fermeture du fichiers de liens internes %s : %s\n"
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s : impossible d'ouvrir %s en écriture : %s\n"
-
-#~ msgid "%s: unrecognized option `%s'\n"
-#~ msgstr "%s : l'option « %s » n'a pas été reconnue\n"
-
-#~ msgid "%s is not a Texinfo index file\n"
-#~ msgstr "%s n'est pas un fichier d'index Texinfo\n"
-
-#~ msgid "%s:%d: Bad key %s in record\n"
-#~ msgstr "%s:%d: Clé %s erronée dans le registre\n"
-
-#~ msgid "%s:%d: Bad entry; expected three fields, not %d\n"
-#~ msgstr "%s:%d: Entrée erronée : trois champs requis, pas %d\n"
-
-#~ msgid "%s:%d: Bad entry; expected %s at column %d\n"
-#~ msgstr "%s:%d: Entrée erronée : %s attendu en colonne %d\n"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Usage: %s [OPTION]... FILE...\n"
-#~ msgstr "Utilisation : %s [OPTION]... FICHIER...\n"
-
-#~ msgid "Generate a sorted index for each TeX output FILE."
-#~ msgstr "Génération d'un index trié pour chaque FICHIER de sortie TeX."
-
-#~ msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
-#~ msgstr ""
-#~ "FICHIER... se libelle normalement « foo.?? » pour un document « foo."
-#~ "texi »."
-
-#~ msgid "Options:"
-#~ msgstr "Options :"
-
-#~ msgid " -h, --help   display this help and exit"
-#~ msgstr " -h, --help   Affiche l'aide puis s'arrête."
-
-#~ msgid " --version    display version information and exit"
-#~ msgstr " --version    Affiche l'information de version et s'arrête."
-
-#~ msgid " --           end option processing"
-#~ msgstr " --           Termine la liste des options."
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Étiquettes obsolètes ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Sous-fichier : %s"

@@ -1,5 +1,5 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c 6877 2015-12-19 16:42:47Z gavin $
+   $Id: display.c 6884 2015-12-23 11:26:47Z gavin $
 
    Copyright 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012, 2013,
    2014, 2015 Free Software Foundation, Inc.
@@ -540,7 +540,7 @@ display_update_node_text (WINDOW *win)
   mbi_avail (iter);
   while (1)
     {
-      int delim = 0;
+      int delim;
       mbi_copy (&bol_iter, &iter);
       bol_ref_index = ref_index;
       bol_match_index = match_index;
@@ -552,6 +552,7 @@ start_of_line:
 
       text_buffer_reset (&tb_printed_line);
 
+      delim = 0;
       /* Check if we have processed all the lines in the window. */
       if (pl_num == win->height)
         break;

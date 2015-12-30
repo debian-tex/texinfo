@@ -1,5 +1,5 @@
 /* search.c -- searching large bodies of text.
-   $Id: search.c 6711 2015-10-19 18:17:21Z gavin $
+   $Id: search.c 6891 2015-12-23 15:08:30Z gavin $
 
    Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2008, 2009, 2011, 2013,
    2014 Free Software Foundation, Inc.
@@ -388,7 +388,7 @@ looking_at_line (char *string, char *pointer)
   int len;
 
   len = strlen (string);
-  if (strncmp (pointer, string, len) != 0)
+  if (strncasecmp (pointer, string, len) != 0)
     return 0;
 
   pointer += len;

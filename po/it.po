@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
 "PO-Revision-Date: 2013-09-20 13:31+0200\n"
 "Last-Translator: Francesco Groccia <frgroccia@gmail.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -47,9 +47,9 @@ msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: l'opzione «%s» richiede un argomento\n"
 
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
-#, fuzzy, c-format
+#, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: opzione non riconosciuta «%c%s»\n"
+msgstr "%s: opzione non riconosciuta «--%s»\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, c-format
@@ -384,7 +384,7 @@ msgstr "Argomento indice: "
 msgid "No available info files have '%s' in their indices."
 msgstr "Nessun file Info disponibile ha «%s» negli indici."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr ""
@@ -1071,7 +1071,7 @@ msgstr "Seleziona il nodo visitato: "
 msgid "The reference disappeared! (%s)."
 msgstr "Il riferimento è scomparso! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Il terminale non può essere inizializzato: %s\n"
@@ -2919,9 +2919,9 @@ msgid "non-hex digits in argument for @U: %s"
 msgstr "argomento errato per @%s: %s"
 
 #: tp/Texinfo/Parser.pm:5399
-#, fuzzy, perl-format
+#, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
-msgstr "argomento errato per @%s: %s"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:5412
 #, perl-format
@@ -3739,59 +3739,6 @@ msgstr ""
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: impossibile aprire %s per la scrittura: %s\n"
 
-#, fuzzy
-#~ msgid "%s: unrecognized option `%s'\n"
-#~ msgstr "%s: opzione non riconosciuta «--%s»\n"
-
-#, fuzzy
-#~ msgid "%s is not a Texinfo index file\n"
-#~ msgstr "%s: non è un file indice texinfo"
-
-#, fuzzy
-#~ msgid "Usage: %s [OPTION]... FILE...\n"
-#~ msgstr "Uso: %s [OPZIONE]... FILE...\n"
-
-#, fuzzy
-#~ msgid "Generate a sorted index for each TeX output FILE."
-#~ msgstr "Genera un indice ordinato per ogni file TeX di uscita.\n"
-
-#, fuzzy
-#~ msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
-#~ msgstr ""
-#~ "Solitamente FILE... viene indicato come «foo.%c%c» per un documento «foo."
-#~ "texi».\n"
-
-#, fuzzy
-#~ msgid "Options:"
-#~ msgstr ""
-#~ "\n"
-#~ "Opzioni:\n"
-
-#, fuzzy
-#~ msgid " -h, --help   display this help and exit"
-#~ msgstr "mostra questa guida ed esce"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Etichette non aggiornate ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Subfile: %s"
-
-#, fuzzy
-#~ msgid "Underline cross-references and menu entries"
-#~ msgstr "per i collegamenti nelle parentesi, usa @pxref"
-
-#~ msgid ""
-#~ "\n"
-#~ "Email bug reports to bug-texinfo@gnu.org,\n"
-#~ "general questions and discussion to help-texinfo@gnu.org.\n"
-#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
-#~ msgstr ""
-#~ "\n"
-#~ "Per segnalare un bug inviare un'email a bug-texinfo@gnu.org,\n"
-#~ "per domande generali e discussioni: help-texinfo@gnu.org.\n"
-#~ "Sito web di Texinfo: http://www.gnu.org/software/texinfo/"
-
 #~ msgid "Insert this character"
 #~ msgstr "Inserisci questo carattere"
 
@@ -3816,6 +3763,17 @@ msgstr "%s: impossibile aprire %s per la scrittura: %s\n"
 
 #~ msgid "File names matching `%s'"
 #~ msgstr "Nomi dei file corrispondenti a «%s»"
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Per segnalare un bug inviare un'email a bug-texinfo@gnu.org,\n"
+#~ "per domande generali e discussioni: help-texinfo@gnu.org.\n"
+#~ "Sito web di Texinfo: http://www.gnu.org/software/texinfo/"
 
 #~ msgid ""
 #~ "Basic Commands in Info Windows\n"
@@ -4065,17 +4023,45 @@ msgstr "%s: impossibile aprire %s per la scrittura: %s\n"
 #~ msgid "Internally used by \\[universal-argument]"
 #~ msgstr "Usato internamente da \\[universal-argument]"
 
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Etichette non aggiornate ***"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Subfile: %s"
+
 #~ msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "Uso: makeinfo [OPZIONE]... FILE-TEXINFO...\n"
 
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "  oppure:  texi2any [OPZIONE]... FILE-TEXINFO...\n"
 
+#~ msgid "display this help and exit"
+#~ msgstr "mostra questa guida ed esce"
+
 #~ msgid "send output to FILE"
 #~ msgstr "invia l'output al file FILE"
 
+#~ msgid "Generate a sorted index for each TeX output FILE.\n"
+#~ msgstr "Genera un indice ordinato per ogni file TeX di uscita.\n"
+
+#~ msgid ""
+#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+#~ msgstr ""
+#~ "Solitamente FILE... viene indicato come «foo.%c%c» per un documento «foo."
+#~ "texi».\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Options:\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Opzioni:\n"
+
 #~ msgid "failure reopening %s"
 #~ msgstr "riapertura di %s fallita"
+
+#~ msgid "%s: not a texinfo index file"
+#~ msgstr "%s: non è un file indice texinfo"
 
 #~ msgid "No page number in %s"
 #~ msgstr "Nessun numero di pagina in %s"
@@ -4490,6 +4476,9 @@ msgstr "%s: impossibile aprire %s per la scrittura: %s\n"
 
 #~ msgid "End of file reached while looking for `.' or `,'"
 #~ msgstr "Raggiunta la fine del file durante la ricerca di «.» o «,»"
+
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "per i collegamenti nelle parentesi, usa @pxref"
 
 #~ msgid "First argument to @inforef may not be empty"
 #~ msgstr "Il primo argomento di @inforef non dovrebbe essere vuoto"

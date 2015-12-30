@@ -1,6 +1,6 @@
 # Dutch translations of GNU Texinfo document strings.
 # Copyright (C) 2013 Free Software Foundation, Inc.
-# This file is distributed under the same license as the texinfo_document package.
+# This file is distributed under the same license as the texinfo package.
 #
 # To Lillian and her handkerchief.
 #
@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo_document-5.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
 "PO-Revision-Date: 2013-02-27 20:31+0100\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"

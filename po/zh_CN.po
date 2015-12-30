@@ -7,11 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
 "PO-Revision-Date: 2009-05-21 15:08中国标准时间\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
-"Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
-"sourceforge.net>\n"
+"Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +28,7 @@ msgstr "%s：选项“%s”含义不明确\n"
 #: gnulib/lib/getopt.c:619
 #, fuzzy, c-format
 msgid "%s: option '%s' is ambiguous\n"
-msgstr "%s：选项“-W %s”的含义不清\n"
+msgstr "%s：选项“%s”含义不明确\n"
 
 #: gnulib/lib/getopt.c:654 gnulib/lib/getopt.c:658
 #, fuzzy, c-format
@@ -49,7 +48,7 @@ msgstr "%s：选项“%s”需要一个参数\n"
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
 #, fuzzy, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s：不能识别的选项“%c%s”\n"
+msgstr "%s：不能识别的选项“--%s”\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, fuzzy, c-format
@@ -133,9 +132,8 @@ msgid "Invalid content of \\{\\}"
 msgstr ""
 
 #: gnulib/lib/regcomp.c:168
-#, fuzzy
 msgid "Invalid range end"
-msgstr "正则表达式“%s”中存在错误: %s"
+msgstr ""
 
 #: gnulib/lib/regcomp.c:171
 #, fuzzy
@@ -290,17 +288,17 @@ msgstr "滚动补齐窗口"
 #: info/filesys.c:90
 #, fuzzy, c-format
 msgid "looking for file \"%s\""
-msgstr "关闭输出文件“%s”时出错"
+msgstr "%s；文件“%s”。\n"
 
 #: info/filesys.c:152
 #, fuzzy, c-format
 msgid "looking for file %s in %s"
-msgstr "关闭输出文件“%s”时出错"
+msgstr "从“%3$s”创建 %1$s 文件“%2$s”。\n"
 
 #: info/filesys.c:238 info/filesys.c:252 info/filesys.c:273
 #, fuzzy, c-format
 msgid "found file %s"
-msgstr "关闭输出文件“%s”时出错"
+msgstr "寻找文件："
 
 #: info/footnotes.c:231
 #, c-format
@@ -392,7 +390,7 @@ msgstr "索引含有："
 msgid "No available info files have '%s' in their indices."
 msgstr "在可用的 info 文件的索引中均不含有“%s”。"
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr ""
@@ -428,9 +426,9 @@ msgid "malformed variable assignment: %s"
 msgstr ""
 
 #: info/info.c:764 info/infokey.c:537
-#, fuzzy, c-format
+#, c-format
 msgid "%s: no such variable"
-msgstr "未知的命令“%s”"
+msgstr ""
 
 #: info/info.c:770 info/infokey.c:539
 #, fuzzy, c-format
@@ -1052,7 +1050,7 @@ msgstr "选择已访问的节点："
 msgid "The reference disappeared! (%s)."
 msgstr "引用消失了！(%s)。"
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr ""
@@ -1067,9 +1065,9 @@ msgid "Show all matching files"
 msgstr ""
 
 #: info/session.c:66
-#, fuzzy, c-format
+#, c-format
 msgid "No file index"
-msgstr "没有索引条目。"
+msgstr ""
 
 #. TRANSLATORS: Try to keep this message (when "expanded") at most 79
 #. characters; anything after the 79th character will not actually be
@@ -1086,7 +1084,7 @@ msgstr ""
 #: info/session.c:776
 #, fuzzy, c-format
 msgid "can't open %s: %s"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr "无法删除文件“%s”：%s"
 
 #: info/session.c:782
 #, c-format
@@ -1590,9 +1588,9 @@ msgid "Display version of Info being run"
 msgstr "显示版本信息并退出"
 
 #: info/session.c:5335
-#, fuzzy, c-format
+#, c-format
 msgid "GNU Info version %s"
-msgstr "这是 %s，由 makeinfo 版本 %s 从 %s 生成。\n"
+msgstr ""
 
 #: info/session.c:5340
 msgid "Redraw the display"
@@ -2036,7 +2034,7 @@ msgstr "没有指定目录文件；试用 --help 以获得更多信息。"
 #: install-info/install-info.c:2304
 #, fuzzy, c-format
 msgid "Could not read %s."
-msgstr "无法创建目录“%s”：%s"
+msgstr "无法创建输出文件“%s”。"
 
 #: install-info/install-info.c:2451
 #, c-format
@@ -2080,14 +2078,14 @@ msgid "%s is not a valid region code"
 msgstr "%s 在 ISO 639 语言编码中是无效的"
 
 #: tp/Texinfo/Common.pm:1128
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s is not a valid split possibility"
-msgstr "%s 在 ISO 639 语言编码中是无效的"
+msgstr ""
 
 #: tp/Texinfo/Common.pm:1151
 #, fuzzy, perl-format
 msgid "could not read %s: %s"
-msgstr "无法创建目录“%s”：%s"
+msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/Texinfo/Common.pm:1170
 #, fuzzy, perl-format
@@ -2097,12 +2095,12 @@ msgstr "关闭输出文件“%s”时出错"
 #: tp/Texinfo/Common.pm:1176 tp/Texinfo/Parser.pm:3353
 #, fuzzy, perl-format
 msgid "@%s: could not find %s"
-msgstr "无法寻找“%s”。"
+msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/Texinfo/Common.pm:1520
 #, fuzzy, perl-format
 msgid "could not open html refs config file %s: %s"
-msgstr "无法删除文件“%s”：%s"
+msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/Texinfo/Common.pm:1548
 #, fuzzy
@@ -2117,7 +2115,7 @@ msgstr "%s：不能识别的选项“--%s”\n"
 #: tp/Texinfo/Common.pm:1568
 #, fuzzy, perl-format
 msgid "error on closing html refs config file %s: %s"
-msgstr "无法删除文件“%s”：%s"
+msgstr "关闭输出文件“%s”时出错"
 
 #: tp/Texinfo/Common.pm:1603
 msgid "no node to be renamed"
@@ -2133,9 +2131,9 @@ msgid "could not open %s: %s"
 msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/Texinfo/Common.pm:2144
-#, fuzzy, perl-format
+#, perl-format
 msgid "could not protect hash character in @%s"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/Texinfo/Convert/Converter.pm:395 tp/Texinfo/Convert/Converter.pm:414
 #, fuzzy, perl-format
@@ -2155,7 +2153,7 @@ msgstr ""
 #: tp/Texinfo/Convert/TexinfoXML.pm:476 tp/Texinfo/Parser.pm:2035
 #, fuzzy, perl-format
 msgid "error on closing %s: %s"
-msgstr "写入“%s”时出错"
+msgstr "关闭输出文件“%s”时出错"
 
 #: tp/Texinfo/Convert/Converter.pm:987
 #, fuzzy, perl-format
@@ -2201,9 +2199,9 @@ msgid "@import not finished in css file"
 msgstr ""
 
 #: tp/Texinfo/Convert/HTML.pm:4918
-#, fuzzy, perl-format
+#, perl-format
 msgid "CSS file %s not found"
-msgstr "找不到宏 %cend"
+msgstr ""
 
 #: tp/Texinfo/Convert/HTML.pm:4924
 #, fuzzy, perl-format
@@ -2255,19 +2253,18 @@ msgid "file empty for renamed node `%s'"
 msgstr "未引用的节点“%s”"
 
 #: tp/Texinfo/Convert/HTML.pm:7093
-#, fuzzy, perl-format
+#, perl-format
 msgid "target node (new name for `%s') not in document: %s"
-msgstr "在本文档中没有本节点的“上一个”或“上层”节点。"
+msgstr ""
 
 #: tp/Texinfo/Convert/HTML.pm:7125
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing renamed node redirection file %s: %s"
-msgstr "关闭输出文件“%s”时出错"
+msgstr ""
 
 #: tp/Texinfo/Convert/HTML.pm:7163
-#, fuzzy
 msgid "empty node name"
-msgstr "找不到含有“%s”的索引\n"
+msgstr ""
 
 #: tp/Texinfo/Convert/HTML.pm:7165 tp/Texinfo/Parser.pm:3697
 #, perl-format
@@ -2280,14 +2277,13 @@ msgid "document without nodes"
 msgstr "该节点中没有菜单。"
 
 #: tp/Texinfo/Convert/Info.pm:123
-#, fuzzy
 msgid "document without Top node"
-msgstr "该节点中没有菜单。"
+msgstr ""
 
 #: tp/Texinfo/Convert/Info.pm:171
-#, fuzzy, perl-format
+#, perl-format
 msgid "rename %s failed: %s"
-msgstr "无法寻找“%s”。"
+msgstr ""
 
 #: tp/Texinfo/Convert/Info.pm:247
 #, perl-format
@@ -2300,9 +2296,9 @@ msgid "@%s outside of any node"
 msgstr "(超出任何节点)"
 
 #: tp/Texinfo/Convert/Info.pm:422
-#, fuzzy, perl-format
+#, perl-format
 msgid "@node name should not contain `,': %s"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/Texinfo/Convert/Plaintext.pm:1334
 #, perl-format
@@ -2325,9 +2321,9 @@ msgid "@image file `%s' unreadable: %s"
 msgstr "@image 文件“%s”不可读：%s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:1523
-#, fuzzy, perl-format
+#, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
-msgstr "无法找到节点“%s”。"
+msgstr ""
 
 #: tp/Texinfo/Convert/Plaintext.pm:1931
 msgid ""
@@ -2336,19 +2332,19 @@ msgid ""
 msgstr "@strong{Note...} 在 Info 中形成了一个假的交叉引用；可通过重写避免此事"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2161
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s cross-reference name should not contain `:'"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/Texinfo/Convert/Plaintext.pm:2193
 #, fuzzy, perl-format
 msgid "@%s node name should not contain `%s'"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr "没有 %s索引条目含有“%s”。"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2226
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s node name should not contain `:'"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/Texinfo/Convert/Plaintext.pm:2272
 #, fuzzy, perl-format
@@ -2361,24 +2357,22 @@ msgid "`.' or `,' must follow @xref"
 msgstr "“.”或“,”之后必须为 @%s，而不是“%c”"
 
 #: tp/Texinfo/Convert/Plaintext.pm:3118
-#, fuzzy, perl-format
+#, perl-format
 msgid "menu entry node name should not contain `%s'"
-msgstr "@%s 的参数错误"
+msgstr ""
 
 #: tp/Texinfo/Convert/Plaintext.pm:3129
-#, fuzzy
 msgid "menu entry node name should not contain `:'"
-msgstr "@%s 的参数错误"
+msgstr ""
 
 #: tp/Texinfo/Convert/Plaintext.pm:3145
-#, fuzzy
 msgid "menu entry name should not contain `:'"
-msgstr "@%s 的参数错误"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:910
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s should only appear at beginning or end of document"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:1160 tp/Texinfo/Structuring.pm:594
 #, perl-format
@@ -2386,14 +2380,14 @@ msgid "multiple @%s"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:1194
-#, fuzzy, perl-format
+#, perl-format
 msgid "bad syntax for @%s argument: %s"
-msgstr "@%s 的参数错误"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:1210
-#, fuzzy, perl-format
+#, perl-format
 msgid "bad or empty @%s formal argument: %s"
-msgstr "@%s 的参数错误"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:1219 tp/Texinfo/Parser.pm:4856
 #: tp/Texinfo/Parser.pm:4882 tp/Texinfo/Parser.pm:5671
@@ -2410,14 +2404,14 @@ msgid "bad name for @%s"
 msgstr "@%s 的参数错误"
 
 #: tp/Texinfo/Parser.pm:1341
-#, fuzzy, perl-format
+#, perl-format
 msgid "@end %s seen before @%s closing brace"
-msgstr "在第一个节点之前遇到 @menu，正在创建“顶”节点"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:1345
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s seen before @%s closing brace"
-msgstr "在第一个节点之前遇到 @menu，正在创建“顶”节点"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:1350
 #, perl-format
@@ -2425,14 +2419,14 @@ msgid "%c%s missing close brace"
 msgstr "%c%s 遗漏闭合花括号"
 
 #: tp/Texinfo/Parser.pm:1354
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s missing closing delimiter sequence: %s}"
-msgstr "%c%s 遗漏闭合花括号"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:1476
-#, fuzzy, perl-format
+#, perl-format
 msgid "@itemx should not begin @%s"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:1544
 msgid "@itemx must follow @item"
@@ -2449,9 +2443,9 @@ msgid "`@end' expected `%s', but saw `%s'"
 msgstr "“@end”需要“%s”，但看到“%s”"
 
 #: tp/Texinfo/Parser.pm:1746
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s seen before @end %s"
-msgstr "在第一个节点之前遇到 @menu，正在创建“顶”节点"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:1750
 #, fuzzy, perl-format
@@ -2502,12 +2496,12 @@ msgstr "这里是“%s”前面的定义"
 #: tp/Texinfo/Parser.pm:3016
 #, fuzzy, perl-format
 msgid "missing name for @%s"
-msgstr "@def 的参数遗漏了“}”"
+msgstr "遗漏动作名称"
 
 #: tp/Texinfo/Parser.pm:3021
-#, fuzzy, perl-format
+#, perl-format
 msgid "missing category for @%s"
-msgstr "@def 的参数遗漏了“}”"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:3073
 #, fuzzy, perl-format
@@ -2536,14 +2530,14 @@ msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s 需要一个参数: %citem 的格式化参数"
 
 #: tp/Texinfo/Parser.pm:3167
-#, fuzzy, perl-format
+#, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
-msgstr "参数中不允许 @item 改为 @itemize"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:3202
 #, fuzzy, perl-format
 msgid "accent command `@%s' not allowed as @%s argument"
-msgstr "参数中不允许 @item 改为 @itemize"
+msgstr "%s：选项“--%s”不接受参数\n"
 
 #: tp/Texinfo/Parser.pm:3290 tp/Texinfo/Parser.pm:3429
 #: tp/Texinfo/Parser.pm:5777
@@ -2571,7 +2565,7 @@ msgstr "@%s 的错误参数: %s"
 #: tp/Texinfo/Parser.pm:3348
 #, fuzzy, perl-format
 msgid "@%s: could not open %s: %s"
-msgstr "无法寻找“%s”。"
+msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/Texinfo/Parser.pm:3360
 #, perl-format
@@ -2594,14 +2588,14 @@ msgid "@%s only meaningful on a @multitable line"
 msgstr "“@titlepage”环境变量外的 @%s 是没有意义的"
 
 #: tp/Texinfo/Parser.pm:3563
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s should not be associated with @top"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:3575
-#, fuzzy, perl-format
+#, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:3677
 #, fuzzy, perl-format
@@ -2609,19 +2603,18 @@ msgid "empty argument in @%s"
 msgstr "@%s 的参数错误"
 
 #: tp/Texinfo/Parser.pm:3681
-#, fuzzy, perl-format
+#, perl-format
 msgid "empty node name after expansion `%s'"
-msgstr "@%s 的参数错误"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:3724
 #, fuzzy, perl-format
 msgid "empty menu entry name in `%s'"
-msgstr "@%s 的参数错误"
+msgstr "节点“%s”中没有菜单。"
 
 #: tp/Texinfo/Parser.pm:3732
-#, fuzzy
 msgid "empty node name in menu entry"
-msgstr "找不到含有“%s”的索引\n"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:3805
 #, fuzzy, perl-format
@@ -2629,9 +2622,9 @@ msgid "@%s should not appear in @%s"
 msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/Texinfo/Parser.pm:3937
-#, fuzzy, perl-format
+#, perl-format
 msgid "@end %s should only appear at a line beginning"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:3960
 #, perl-format
@@ -2649,9 +2642,9 @@ msgid "redefining Texinfo language command: @%s"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:4017
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s without associated character"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:4087
 #, perl-format
@@ -2672,9 +2665,9 @@ msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:4176
-#, fuzzy, perl-format
+#, perl-format
 msgid "accent command `@%s' must not be followed by whitespace"
-msgstr "参数中不允许 @item 改为 @itemize"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:4182
 #, fuzzy, perl-format
@@ -2687,9 +2680,9 @@ msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s 的参数应为“i”或“j”，而不是“%c”"
 
 #: tp/Texinfo/Parser.pm:4207
-#, fuzzy, perl-format
+#, perl-format
 msgid "accent command `@%s' must not be followed by new line"
-msgstr "参数中不允许 @item 改为 @itemize"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:4218
 #, fuzzy, perl-format
@@ -2702,9 +2695,8 @@ msgid "undefined flag: %s"
 msgstr "未定义的标识: %s"
 
 #: tp/Texinfo/Parser.pm:4386
-#, fuzzy
 msgid "bad syntax for @value"
-msgstr "@%s 的参数错误"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:4393
 #, fuzzy, perl-format
@@ -2717,9 +2709,9 @@ msgid "%c%s is obsolete; %s"
 msgstr "%c%s 已过时"
 
 #: tp/Texinfo/Parser.pm:4405
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s should only appear at a line beginning"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:4496
 #, fuzzy, perl-format
@@ -2727,9 +2719,9 @@ msgid "@%s not allowed inside `@%s' block"
 msgstr "在“@%2$s”块中“@%1$s”是没有意义的"
 
 #: tp/Texinfo/Parser.pm:4505
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s should only appear in heading or footing"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:4631 tp/Texinfo/Parser.pm:4648
 #: tp/Texinfo/Parser.pm:4698
@@ -2743,9 +2735,8 @@ msgid "@%s in empty multitable"
 msgstr "%s：空文件"
 
 #: tp/Texinfo/Parser.pm:4664
-#, fuzzy
 msgid "@tab before @item"
-msgstr "在第一个节点之前遇到 @menu，正在创建“顶”节点"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:4667
 #, fuzzy, perl-format
@@ -2757,9 +2748,9 @@ msgid "ignoring @tab outside of multitable"
 msgstr "忽略多列表格外的 @tab"
 
 #: tp/Texinfo/Parser.pm:4708
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s outside of table or list"
-msgstr "(超出任何节点)"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:4745
 #, fuzzy, perl-format
@@ -2772,9 +2763,8 @@ msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "在“@titlepage”和“@quotation”环境变量外 @%s 无意义"
 
 #: tp/Texinfo/Parser.pm:4791
-#, fuzzy
 msgid "@dircategory after first node"
-msgstr "在第一个节点之前遇到 @menu，正在创建“顶”节点"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:4979
 #, fuzzy, perl-format
@@ -2782,9 +2772,8 @@ msgid "region %s inside region %s is not allowed"
 msgstr "脚注内的脚注是不允许的"
 
 #: tp/Texinfo/Parser.pm:4997
-#, fuzzy
 msgid "@direntry after first node"
-msgstr "在第一个节点之前遇到 @menu，正在创建“顶”节点"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:5005
 #, fuzzy, perl-format
@@ -2797,9 +2786,9 @@ msgid ""
 msgstr "您的 @top 节点可能应该包含在 @ifnottex 而不是 @ifinfo 中？"
 
 #: tp/Texinfo/Parser.pm:5070
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s should only appear in math context"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:5078
 #, fuzzy, perl-format
@@ -2822,29 +2811,29 @@ msgid "@%s should be right below `@float'"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:5130
-#, fuzzy, perl-format
+#, perl-format
 msgid "ignoring multiple @%s"
-msgstr "正在写入节点 %s..."
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:5249
-#, fuzzy, perl-format
+#, perl-format
 msgid "command @%s does not accept arguments"
-msgstr "参数中不允许 @item 改为 @itemize"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:5273
-#, fuzzy, perl-format
+#, perl-format
 msgid "command @%s missing a node or external manual argument"
-msgstr "%s：遗漏文件参数。\n"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:5292
-#, fuzzy, perl-format
+#, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
-msgstr "@%s 的参数错误"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:5303
-#, fuzzy, perl-format
+#, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
-msgstr "@%s 的参数错误"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:5316
 msgid "@image missing filename argument"
@@ -2858,12 +2847,12 @@ msgstr "%s：遗漏文件参数。\n"
 #: tp/Texinfo/Parser.pm:5393
 #, fuzzy, perl-format
 msgid "non-hex digits in argument for @U: %s"
-msgstr "参数中不允许 @item 改为 @itemize"
+msgstr "@%s 的错误参数: %s"
 
 #: tp/Texinfo/Parser.pm:5399
-#, fuzzy, perl-format
+#, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
-msgstr "参数中不允许 @item 改为 @itemize"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:5412
 #, perl-format
@@ -2876,9 +2865,8 @@ msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:5546
-#, fuzzy
 msgid "superfluous arguments for node"
-msgstr "@%s 的参数错误"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:5596
 #, fuzzy, perl-format
@@ -2901,9 +2889,9 @@ msgid "environment command %s as argument to @%s"
 msgstr "使用花括号将一个命令用作 @%s 的参数"
 
 #: tp/Texinfo/Parser.pm:5823
-#, fuzzy, perl-format
+#, perl-format
 msgid "empty @%s"
-msgstr "@%s 的参数错误"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:5831
 #, perl-format
@@ -2926,9 +2914,9 @@ msgid "unknown source index in @%s: %s"
 msgstr "未知的索引“%s”"
 
 #: tp/Texinfo/Parser.pm:5871
-#, fuzzy, perl-format
+#, perl-format
 msgid "unknown destination index in @%s: %s"
-msgstr "未知的索引“%s”"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:5901
 #, perl-format
@@ -2991,9 +2979,9 @@ msgid "expected @%s on or off, not `%s'"
 msgstr "应当 @%s 开启或关闭，而不是“%s”"
 
 #: tp/Texinfo/Parser.pm:6031
-#, fuzzy, perl-format
+#, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
-msgstr "%s：--footnote-style 的参数必须为“separate”或“end”，而不是“%s”。\n"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:6039
 #, fuzzy, perl-format
@@ -3026,9 +3014,9 @@ msgid "no sectioning command associated with @%s"
 msgstr ""
 
 #: tp/Texinfo/Structuring.pm:488
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s not empty"
-msgstr "%s：空文件"
+msgstr ""
 
 #: tp/Texinfo/Structuring.pm:544 tp/Texinfo/Structuring.pm:1326
 #, fuzzy, perl-format
@@ -3036,9 +3024,9 @@ msgid "@%s reference to nonexistent node `%s'"
 msgstr "%s 引用到不存在的节点“%s”(也许字段不正确？)"
 
 #: tp/Texinfo/Structuring.pm:557
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s entry node name `%s' different from %s name `%s'"
-msgstr "@%s 的参数错误"
+msgstr ""
 
 #: tp/Texinfo/Structuring.pm:662
 #, perl-format
@@ -3086,9 +3074,9 @@ msgid "@%s to `%s', different from %s name `%s'"
 msgstr ""
 
 #: tp/Texinfo/Structuring.pm:2070
-#, fuzzy, perl-format
+#, perl-format
 msgid "empty index key in @%s"
-msgstr "找不到含有“%s”的索引\n"
+msgstr ""
 
 #: tp/init/chm.pm:221 tp/init/chm.pm:277 tp/init/chm.pm:348
 #, fuzzy, perl-format
@@ -3096,9 +3084,9 @@ msgid "chm.pm: could not open %s for writing: %s\n"
 msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/init/chm.pm:267 tp/init/chm.pm:338 tp/init/chm.pm:399
-#, fuzzy, perl-format
+#, perl-format
 msgid "chm.pm: error on closing %s: %s"
-msgstr "写入“%s”时出错"
+msgstr ""
 
 #: tp/init/latex2html.pm:200
 #, fuzzy, perl-format
@@ -3114,9 +3102,9 @@ msgid "l2h: current directory contains a dot"
 msgstr ""
 
 #: tp/init/latex2html.pm:374
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: command did not succeed: %s"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/init/latex2html.pm:422
 #, perl-format
@@ -3146,9 +3134,9 @@ msgid ""
 msgstr ""
 
 #: tp/init/latex2html.pm:534
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: could not determine the fragment %d for @%s"
-msgstr "%s: 无法打开 --css-file: %s"
+msgstr ""
 
 #: tp/init/latex2html.pm:560
 #, perl-format
@@ -3170,12 +3158,12 @@ msgstr "%s: 无法打开 --css-file: %s"
 #: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
 #, fuzzy, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
-msgstr "无法寻找“%s”。"
+msgstr "%s: 无法打开 --css-file: %s"
 
 #: tp/init/tex4ht.pm:219
-#, fuzzy, perl-format
+#, perl-format
 msgid "tex4ht.pm: chdir %s failed: %s"
-msgstr "无法寻找“%s”。"
+msgstr ""
 
 #: tp/init/tex4ht.pm:232
 #, perl-format
@@ -3183,14 +3171,14 @@ msgid "tex4ht.pm: unable to return to initial directory: %s"
 msgstr ""
 
 #: tp/init/tex4ht.pm:244
-#, fuzzy, perl-format
+#, perl-format
 msgid "tex4ht.pm: output file missing: %s"
-msgstr "无法创建输出文件“%s”"
+msgstr ""
 
 #: tp/init/tex4ht.pm:260
-#, fuzzy, perl-format
+#, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr "无法寻找“%s”。"
+msgstr ""
 
 #: tp/init/tex4ht.pm:294
 #, perl-format
@@ -3205,9 +3193,9 @@ msgid ""
 msgstr ""
 
 #: tp/init/tex4ht.pm:321
-#, fuzzy, perl-format
+#, perl-format
 msgid "tex4ht.pm: output has no HTML item for @%s %s"
-msgstr "无法创建输出文件“%s”"
+msgstr ""
 
 #: tp/init/tex4ht.pm:336
 #, perl-format
@@ -3224,7 +3212,7 @@ msgstr "写入“%s”时出错"
 #: tp/texi2any.pl:395
 #, fuzzy, perl-format
 msgid "%s: unknown variable %s"
-msgstr "未知的命令“%s”"
+msgstr "未知的动作“%s”"
 
 #: tp/texi2any.pl:399
 #, fuzzy, perl-format
@@ -3234,7 +3222,7 @@ msgstr "设定变量："
 #: tp/texi2any.pl:414
 #, fuzzy, perl-format
 msgid "%s: unknown variable %s\n"
-msgstr "未知的命令“%s”"
+msgstr "未知的动作“%s”"
 
 #: tp/texi2any.pl:418
 #, fuzzy, perl-format
@@ -3244,7 +3232,7 @@ msgstr "设定变量："
 #: tp/texi2any.pl:483
 #, fuzzy, perl-format
 msgid "could not read init file %s"
-msgstr "无法打开输入文件“%s”"
+msgstr "无法创建输出文件“%s”。"
 
 #: tp/texi2any.pl:646
 #, fuzzy, perl-format
@@ -3252,9 +3240,9 @@ msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "%s: 忽略不可辨认的 TEXINFO_OUTPUT_FORMAT 值“%s”。\n"
 
 #: tp/texi2any.pl:729
-#, fuzzy, perl-format
+#, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
-msgstr "用法：%s [选项]... 文件...\n"
+msgstr "用法：%s [选项]... TEXINFO-文件...\n"
 
 #: tp/texi2any.pl:732
 #, fuzzy
@@ -3537,7 +3525,7 @@ msgstr ""
 #: tp/texi2any.pl:1082
 #, fuzzy, perl-format
 msgid "unknown tree transformation %s"
-msgstr "未知的命令“%s”"
+msgstr "未知的动作“%s”"
 
 #: tp/texi2any.pl:1089
 #, perl-format
@@ -3575,76 +3563,34 @@ msgid ""
 msgstr ""
 
 #: tp/texi2any.pl:1358 tp/texi2any.pl:1434
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: error on closing %s: %s\n"
-msgstr "写入“%s”时出错"
+msgstr ""
 
 #: tp/texi2any.pl:1381 tp/texi2any.pl:1415
 #, fuzzy, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
-msgstr "关闭输出文件“%s”时出错"
+msgstr "%s: 忽略二次内部连接输出“%s”。\n"
 
 #: tp/texi2any.pl:1387 tp/texi2any.pl:1421
 #, fuzzy, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: 无法打开 --css-file: %s"
 
-#, fuzzy
-#~ msgid "%s: unrecognized option `%s'\n"
-#~ msgstr "%s：不能识别的选项“--%s”\n"
-
-#, fuzzy
-#~ msgid "%s is not a Texinfo index file\n"
-#~ msgstr "%s：不是 texinfo 索引文件"
-
-#, fuzzy
-#~ msgid "Usage: %s [OPTION]... FILE...\n"
-#~ msgstr "用法：%s [选项]... 文件...\n"
-
-#, fuzzy
-#~ msgid "Generate a sorted index for each TeX output FILE."
-#~ msgstr "为每个 TeX 输出文件生成排序的索引。\n"
-
-#, fuzzy
-#~ msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
-#~ msgstr "对于文档“foo.texi”，FILE... 通常为“foo.%c%c”的形式。\n"
-
-#, fuzzy
-#~ msgid "Options:"
-#~ msgstr ""
-#~ "\n"
-#~ "选项：\n"
-
-#, fuzzy
-#~ msgid " -h, --help   display this help and exit"
-#~ msgstr "显示该求助信息并退出"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** 标记过期 ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " 子文件：%s"
-
-#, fuzzy
-#~ msgid "Underline cross-references and menu entries"
-#~ msgstr "要使用括号中的交叉引用，请使用 @pxref"
-
-#~ msgid ""
-#~ "\n"
-#~ "Email bug reports to bug-texinfo@gnu.org,\n"
-#~ "general questions and discussion to help-texinfo@gnu.org.\n"
-#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
-#~ msgstr ""
-#~ "\n"
-#~ "请将错误报告发送到 bug-texinfo@gnu.org，\n"
-#~ "一般的问题和讨论请发送到 help-texinfo@gnu.org。\n"
-#~ "Texinfo 主页：http://www.gnu.org/software/texinfo/"
+#~ msgid "%s: illegal option -- %c\n"
+#~ msgstr "%s：非法选项 -- %c\n"
 
 #~ msgid "Insert this character"
 #~ msgstr "插入该字符"
 
+#~ msgid "One completion:\n"
+#~ msgstr "一个补齐：\n"
+
 #~ msgid "No index entries."
 #~ msgstr "没有索引条目。"
+
+#~ msgid "more "
+#~ msgstr "更多 "
 
 #~ msgid "CAN'T SEE THIS"
 #~ msgstr "看不到这个"
@@ -3656,17 +3602,16 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ "\n"
 #~ "* 菜单：其索引含有“%s”的节点：\n"
 
-#, fuzzy
-#~ msgid "No index"
-#~ msgstr "没有索引条目。"
-
-#, fuzzy
-#~ msgid "Index for `%s'"
-#~ msgstr " %s"
-
-#, fuzzy
-#~ msgid "File names matching `%s'"
-#~ msgstr "没有匹配的“%cend %s”"
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "请将错误报告发送到 bug-texinfo@gnu.org，\n"
+#~ "一般的问题和讨论请发送到 help-texinfo@gnu.org。\n"
+#~ "Texinfo 主页：http://www.gnu.org/software/texinfo/"
 
 #~ msgid ""
 #~ "Basic Commands in Info Windows\n"
@@ -3802,17 +3747,8 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgid "incorrect number of arguments"
 #~ msgstr "错误的参数数"
 
-#~ msgid "cannot open input file `%s'"
-#~ msgstr "无法打开输入文件“%s”"
-
 #~ msgid "cannot create output file `%s'"
 #~ msgstr "无法创建输出文件“%s”"
-
-#~ msgid "error writing to `%s'"
-#~ msgstr "写入“%s”时出错"
-
-#~ msgid "error closing output file `%s'"
-#~ msgstr "关闭输出文件“%s”时出错"
 
 #~ msgid "section too long"
 #~ msgstr "节太长"
@@ -3888,75 +3824,20 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgid "Kill this node"
 #~ msgstr "删除本节点"
 
-#, fuzzy
-#~ msgid "closing file %s"
-#~ msgstr "关闭输出文件“%s”时出错"
+#~ msgid "Done."
+#~ msgstr "完成。"
 
 #~ msgid "Internally used by \\[universal-argument]"
 #~ msgstr "由 \\[universal-argument] 内部使用"
 
-#, fuzzy
-#~ msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
-#~ msgstr "用法：%s [选项]... TEXINFO-文件...\n"
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** 标记过期 ***"
 
-#, fuzzy
-#~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
-#~ msgstr "用法：%s [选项]... TEXINFO-文件...\n"
+#~ msgid " Subfile: %s"
+#~ msgstr " 子文件：%s"
 
-#~ msgid "send output to FILE"
-#~ msgstr "将输出送入 FILE"
-
-#~ msgid "failure reopening %s"
-#~ msgstr "重新打开 %s 失败"
-
-#~ msgid "No page number in %s"
-#~ msgstr "%s 中没有页码"
-
-#~ msgid "entry %s follows an entry with a secondary name"
-#~ msgstr "条目 %s 出现在具有次要名称的条目之后"
-
-#~ msgid "Done."
-#~ msgstr "完成。"
-
-#, fuzzy
-#~ msgid "tex4ht.pm: could not open %s"
-#~ msgstr "无法寻找“%s”。"
-
-#, fuzzy
-#~ msgid "menu reference to nonexistent node `%s'"
-#~ msgstr "未引用的节点“%s”"
-
-#, fuzzy
-#~ msgid "Can't create directories `%s': %s"
-#~ msgstr "无法创建目录“%s”：%s"
-
-#, fuzzy
-#~ msgid "Can't read file %s: %s"
-#~ msgstr "无法删除文件“%s”：%s"
-
-#, fuzzy
-#~ msgid "%s:%d: warning: %s (possibly involving @%s)\n"
-#~ msgstr "%s：%d：警告："
-
-#, fuzzy
-#~ msgid "%s:%d: warning: %s\n"
-#~ msgstr "%s：%d：警告："
-
-#, fuzzy
-#~ msgid "warning: %s\n"
-#~ msgstr "%s：%d：警告："
-
-#, fuzzy
-#~ msgid "chm.pm:%s: Cannot open for writing: %s\n"
-#~ msgstr "%s: 无法打开 --css-file: %s"
-
-#, fuzzy
-#~ msgid "tex4ht error opening %s: %s"
-#~ msgstr "写入“%s”时出错"
-
-#, fuzzy
-#~ msgid "Node `%s' that is to be renamed exists"
-#~ msgstr "索引“%s”已经存在"
+#~ msgid "%s: warning: "
+#~ msgstr "%s：警告："
 
 #~ msgid "ferror on stdout\n"
 #~ msgstr "标准输出上 ferror 错误\n"
@@ -4015,9 +3896,6 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgid "`}' expected, but saw `%c'"
 #~ msgstr "应为“}”，但看到了“%c”"
 
-#~ msgid "%c%s is obsolete"
-#~ msgstr "%c%s 已过时"
-
 #~ msgid "@sp requires a positive numeric argument, not `%s'"
 #~ msgstr "@sp 需要正数参数，而不是“%s”"
 
@@ -4035,9 +3913,6 @@ msgstr "%s: 无法打开 --css-file: %s"
 
 #~ msgid "Missing `}' in @def arg"
 #~ msgstr "@def 的参数遗漏了“}”"
-
-#~ msgid "Must be in `@%s' environment to use `@%s'"
-#~ msgstr "必须在“@%s”环境变量中使用“@%s”"
 
 #~ msgid "%s: getwd: %s, %s\n"
 #~ msgstr "%s：getwd：%s，%s\n"
@@ -4066,9 +3941,6 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgid "Footnote defined without parent node"
 #~ msgstr "定义的脚注没有父节点"
 
-#~ msgid "Footnotes inside footnotes are not allowed"
-#~ msgstr "脚注内的脚注是不允许的"
-
 #~ msgid "Footnotes"
 #~ msgstr "脚注"
 
@@ -4077,9 +3949,6 @@ msgstr "%s: 无法打开 --css-file: %s"
 
 #~ msgid "[unexpected] invalid node name: `%s'"
 #~ msgstr "[未预料到的] 无效的节点名称: “%s”"
-
-#~ msgid "Unknown index `%s'"
-#~ msgstr "未知的索引“%s”"
 
 #~ msgid "Info cannot handle `:' in index entry `%s'"
 #~ msgstr "Info 无法处理索引条目“%s”中的“:”"
@@ -4095,9 +3964,6 @@ msgstr "%s: 无法打开 --css-file: %s"
 
 #~ msgid "(line %*d)"
 #~ msgstr "(行 %*d)"
-
-#~ msgid "(outside of any node)"
-#~ msgstr "(超出任何节点)"
 
 #, fuzzy
 #~ msgid "@item not allowed in argument to @itemize"
@@ -4121,17 +3987,8 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgid "end of file inside verbatim block"
 #~ msgstr "文件在原文块中结束"
 
-#~ msgid "@%s not meaningful outside `@float' environment"
-#~ msgstr "“@float”环境变量外的 @%s 是没有意义的"
-
-#~ msgid "@menu seen before first @node, creating `Top' node"
-#~ msgstr "在第一个节点之前遇到 @menu，正在创建“顶”节点"
-
 #~ msgid "@detailmenu seen before first node, creating `Top' node"
 #~ msgstr "在第一个节点之前遇到 @detailmenu，正在创建“顶”节点"
-
-#~ msgid "@%s not meaningful outside `@titlepage' environment"
-#~ msgstr "“@titlepage”环境变量外的 @%s 是没有意义的"
 
 #~ msgid "`%c%s' needs something after it"
 #~ msgstr "“%c%s”之后需要有些什么"
@@ -4148,32 +4005,17 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgid "no default territory known for language `%s'"
 #~ msgstr "语言“%s”无已知的默认地区"
 
-#~ msgid "%s is not a valid ISO 639 language code"
-#~ msgstr "%s 在 ISO 639 语言编码中是无效的"
-
 #~ msgid "sorry, encoding `%s' not supported"
 #~ msgstr "抱歉，不支持编码“%s”"
 
-#~ msgid "%c%s expects `i' or `j' as argument, not `%c'"
-#~ msgstr "%c%s 的参数应为“i”或“j”，而不是“%c”"
-
 #~ msgid "%c%s expects a single character `i' or `j' as argument"
 #~ msgstr "%c%s 需要以单个字符“i”或“j”为参数"
-
-#~ msgid "\\ in macro expansion followed by `%s' instead of parameter name"
-#~ msgstr "\\ 以带有“%s”的宏展开式代替参数名称"
-
-#~ msgid "Macro `%s' called on line %d with too many args"
-#~ msgstr "在第 %2$d 行中以过多的参数调用宏“%1$s”"
 
 #~ msgid "%cend macro not found"
 #~ msgstr "找不到宏 %cend"
 
 #~ msgid "@allow-recursion is deprecated; please use @rmacro instead"
 #~ msgstr "不赞成使用 @allow-recursion；请使用 @rmacro 代替 "
-
-#~ msgid "@quote-arg is deprecated; arguments are quoted by default"
-#~ msgstr "不赞成使用 @quote-arg；参数是默认引用的"
 
 #~ msgid "mismatched @end %s with @%s"
 #~ msgstr "@end %s 和 @%s 不匹配"
@@ -4183,93 +4025,6 @@ msgstr "%s: 无法打开 --css-file: %s"
 
 #~ msgid "%s:%d: warning: "
 #~ msgstr "%s：%d：警告："
-
-#~ msgid ""
-#~ "General options:\n"
-#~ "      --error-limit=NUM       quit after NUM errors (default %d).\n"
-#~ "      --document-language=STR locale to use in translating Texinfo "
-#~ "keywords\n"
-#~ "                                for the output document (default C).\n"
-#~ "      --force                 preserve output even if errors.\n"
-#~ "      --help                  display this help and exit.\n"
-#~ "      --no-validate           suppress node cross-reference validation.\n"
-#~ "      --no-warn               suppress warnings (but not errors).\n"
-#~ "  -v, --verbose               explain what is being done.\n"
-#~ "      --version               display version information and exit.\n"
-#~ msgstr ""
-#~ "通用选项：\n"
-#~ "      --error-limit=NUM       在 NUM 个错误后退出 (默认为 %d)。\n"
-#~ "      --document-language=STR 为输出的文档翻译 Texinfo 关键字时所用\n"
-#~ "                               的地区代码(默认为 C)。\n"
-#~ "      --force                 即使出现错误也保留输出文件。\n"
-#~ "      --help                  显示该求助信息并退出。\n"
-#~ "      --no-validate           不进行交叉引用检查。\n"
-#~ "      --no-warn               不输出警告 (不涉及错误)。\n"
-#~ "  -v, --verbose               解释都做了些什么。\n"
-#~ "      --version               显示版本信息并退出。\n"
-
-#~ msgid ""
-#~ "Output format selection (default is to produce Info):\n"
-#~ "      --docbook               output Docbook XML rather than Info.\n"
-#~ "      --html                  output HTML rather than Info.\n"
-#~ "      --xml                   output Texinfo XML rather than Info.\n"
-#~ "      --plaintext             output plain text rather than Info.\n"
-#~ msgstr ""
-#~ "输出格式选择 (默认生成 Info 文件)：\n"
-#~ "      --docbook             输出 DocBook 而不是 Info。\n"
-#~ "      --html                输出 HTML 而不是 Info。\n"
-#~ "      --xml                 输出 XML (TexinfoML) 而不是 Info。\n"
-#~ "      --plaintext           输出普通文本而不是 Info。\n"
-
-#~ msgid ""
-#~ "General output options:\n"
-#~ "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
-#~ "                                ignoring any @setfilename.\n"
-#~ "      --no-headers            suppress node separators, Node: lines, and "
-#~ "menus\n"
-#~ "                                from Info output (thus producing plain "
-#~ "text)\n"
-#~ "                                or from HTML (thus producing shorter "
-#~ "output);\n"
-#~ "                                also, write to standard output by "
-#~ "default.\n"
-#~ "      --no-split              suppress the splitting of Info or HTML "
-#~ "output,\n"
-#~ "                                generate only one output file.\n"
-#~ "      --number-sections       output chapter and sectioning numbers.\n"
-#~ "  -o, --output=FILE           output to FILE (or directory if split "
-#~ "HTML).\n"
-#~ msgstr ""
-#~ "通用输出选项：\n"
-#~ "  -E, --macro-expand FILE   将宏扩展源输出到文件 FILE。\n"
-#~ "                            忽略所有 @setfilename。\n"
-#~ "      --no-headers          不在 Info 输出或 HTML 输出中生成节点分隔符，\n"
-#~ "                              节点：行，和菜单。从而生成普通文本(Info\n"
-#~ "                              输出)或较短的输出(HTML 输出)；\n"
-#~ "                              此外, 默认输出到标准输出。\n"
-#~ "      --no-split            不是生成分割的 Info 或 HTML 输出，\n"
-#~ "                            而是生成单个输出文件。\n"
-#~ "      --number-sections     输出章节编号。\n"
-#~ "  -o, --output=FILE         输出到文件 FILE (如果是分割的 HTML 则为目"
-#~ "录)。\n"
-
-#~ msgid ""
-#~ "Options for HTML:\n"
-#~ "      --css-include=FILE      include FILE in HTML <style> output;\n"
-#~ "                                read stdin if FILE is -.\n"
-#~ "      --css-ref=URL           generate reference to a CSS file.\n"
-#~ "      --internal-links=FILE   produce list of internal links in FILE.\n"
-#~ "      --transliterate-file-names\n"
-#~ "                              produce file names in ASCII "
-#~ "transliteration.\n"
-#~ msgstr ""
-#~ "HTML 选项:\n"
-#~ "      --css-include=FILE      在 HTML <style> 输出中包含 FILE；\n"
-#~ "                                如果 FILE 是 - 将从标准输入读取内容。\n"
-#~ "      --css-ref=URL           生成一个 CSS 文件的参考。\n"
-#~ "      --internal-links=FILE   生成 FILE 中内部连接列表。\n"
-#~ "      --transliterate-file-names\n"
-#~ "                              以 ASCII 字义生成文件名。\n"
 
 #~ msgid ""
 #~ "Options for XML and Docbook:\n"
@@ -4282,57 +4037,6 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ "      --output-indent=VAL     用 VAL 个空格缩进 XML 元素(默认 %d)。\n"
 #~ "                                如果 VAL 为 0，将丢弃可忽略的空格。\n"
 
-#~ msgid ""
-#~ "Input file options:\n"
-#~ "      --commands-in-node-names  allow @ commands in node names.\n"
-#~ "  -D VAR                        define the variable VAR, as with @set.\n"
-#~ "  -I DIR                        append DIR to the @include search path.\n"
-#~ "  -P DIR                        prepend DIR to the @include search path.\n"
-#~ "  -U VAR                        undefine the variable VAR, as with "
-#~ "@clear.\n"
-#~ msgstr ""
-#~ "输入文件选项：\n"
-#~ "      --commands-in-node-names   允许在节点名中使用 @ 命令。\n"
-#~ "  -D VAR                         定义变量 VAR，就象 @set。\n"
-#~ "  -I DIR                         将 DIR 附加到 @include 搜索路径之后。\n"
-#~ "  -P DIR                         将 DIR 追加到 @include 搜索路径之前。\n"
-#~ "  -U VAR                         取消变量 VAR 的定义，就象 @clear。\n"
-
-#~ msgid ""
-#~ "Conditional processing in input:\n"
-#~ "  --ifdocbook       process @ifdocbook and @docbook even if\n"
-#~ "                      not generating Docbook.\n"
-#~ "  --ifhtml          process @ifhtml and @html even if not generating "
-#~ "HTML.\n"
-#~ "  --ifinfo          process @ifinfo even if not generating Info.\n"
-#~ "  --ifplaintext     process @ifplaintext even if not generating plain "
-#~ "text.\n"
-#~ "  --iftex           process @iftex and @tex; implies --no-split.\n"
-#~ "  --ifxml           process @ifxml and @xml.\n"
-#~ "  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
-#~ "  --no-ifhtml       do not process @ifhtml and @html text.\n"
-#~ "  --no-ifinfo       do not process @ifinfo text.\n"
-#~ "  --no-ifplaintext  do not process @ifplaintext text.\n"
-#~ "  --no-iftex        do not process @iftex and @tex text.\n"
-#~ "  --no-ifxml        do not process @ifxml and @xml text.\n"
-#~ "\n"
-#~ "  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
-#~ msgstr ""
-#~ "输入中的条件处理：\n"
-#~ "  --ifdocbook       即使不生成 Docbook \n"
-#~ "                     也处理 @ifdocbook 和 @docbook。\n"
-#~ "  --ifhtml          即使不是生成 HTML 也处理 @ifhtml 和 @html。\n"
-#~ "  --ifinfo          即使不是生成 Info 也处理 @ifinfo。\n"
-#~ "  --ifplaintext     即使不是生成普通文本也处理 @ifplaintext。\n"
-#~ "  --iftex           处理 @iftex 和 @tex；隐含 --no-split。\n"
-#~ "  --no-ifhtml       不要处理 @ifhtml 和 @html 文本。\n"
-#~ "  --no-ifinfo       不要处理 @ifinfo 文本。\n"
-#~ "  --no-ifplaintext  不要处理 @ifplaintext 文本。\n"
-#~ "  --no-iftex        不要处理 @iftex 和 @tex 文本。\n"
-
-#~ msgid "%s: %s arg must be numeric, not `%s'.\n"
-#~ msgstr "%s：%s 参数必须为数值，而不是“%s”。\n"
-
 #~ msgid "%s: could not open macro expansion output `%s'"
 #~ msgstr "%s: 无法打开宏扩展输出“%s”"
 
@@ -4342,14 +4046,8 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgid "%s: could not open internal links output `%s'"
 #~ msgstr "%s: 无法打开宏扩展输出“%s”"
 
-#~ msgid "%s: ignoring second internal links output `%s'.\n"
-#~ msgstr "%s: 忽略二次内部连接输出“%s”。\n"
-
 #~ msgid "Multiline command %c%s used improperly"
 #~ msgstr "使用了不合适的多行命令 %c%s"
-
-#~ msgid "Expected `%s'"
-#~ msgstr "应为“%s”"
 
 #~ msgid "No `%s' found in `%s'"
 #~ msgstr "在“%2$s”中找不到“%1$s”"
@@ -4357,9 +4055,6 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgid ""
 #~ "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 #~ msgstr "%s: 跳过展开至标准输出的宏，由于 Info 的输出要使用标准输出。\n"
-
-#~ msgid "Making %s file `%s' from `%s'.\n"
-#~ msgstr "从“%3$s”创建 %1$s 文件“%2$s”。\n"
 
 #~ msgid ""
 #~ "%s: Removing macro output file `%s' due to errors; use --force to "
@@ -4375,14 +4070,8 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ "to preserve.\n"
 #~ msgstr "%s：由于错误删除内部连接输出文件“%s”；用 --force 保留。\n"
 
-#~ msgid "%c%s expected braces"
-#~ msgstr "%c%s 需要花括号"
-
 #~ msgid "NO_NAME!"
 #~ msgstr "无名字！"
-
-#~ msgid "@image file `%s' (for HTML) not readable: %s"
-#~ msgstr "@image 文件“%s”(对 HTML)不可读：%s"
 
 #~ msgid "No such file `%s'"
 #~ msgstr "没有那样的文件“%s”"
@@ -4442,10 +4131,6 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgstr "忽略 @anchor 命令；对它的引用将不能工作"
 
 #~ msgid ""
-#~ "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
-#~ msgstr "%s 引用到不存在的节点“%s”(也许字段不正确？)"
-
-#~ msgid ""
 #~ "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 #~ msgstr "节点“%s”的下一个域没有指向(也许字段不正确？)"
 
@@ -4461,8 +4146,8 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 #~ msgstr "“%s”无 Up 字段(也许字段不正确？)"
 
-#~ msgid "Can't remove file `%s': %s"
-#~ msgstr "无法删除文件“%s”：%s"
+#~ msgid "Appendix %c"
+#~ msgstr "附录 %c "
 
 #~ msgid "Internal error (search_sectioning) `%s'!"
 #~ msgstr "内部错误 (search_sectioning) “%s”！"
@@ -4504,307 +4189,46 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgid "End of file reached while looking for `.' or `,'"
 #~ msgstr "查找“。”或“，”时遇到了文件结尾"
 
-#~ msgid "`.' or `,' must follow @%s, not `%c'"
-#~ msgstr "“.”或“,”之后必须为 @%s，而不是“%c”"
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "要使用括号中的交叉引用，请使用 @pxref"
 
 #~ msgid "First argument to @inforef may not be empty"
 #~ msgstr "@inforef 的第一个参数不能为空"
 
-#, fuzzy
-#~ msgid "Encoding %s certainly poorly supported"
-#~ msgstr "抱歉，不支持编码“%s”"
+#~ msgid "display this help and exit"
+#~ msgstr "显示该求助信息并退出"
 
-#, fuzzy
+#~ msgid "send output to FILE"
+#~ msgstr "将输出送入 FILE"
+
+#~ msgid "Usage: %s [OPTION]... FILE...\n"
+#~ msgstr "用法：%s [选项]... 文件...\n"
+
+#~ msgid "Generate a sorted index for each TeX output FILE.\n"
+#~ msgstr "为每个 TeX 输出文件生成排序的索引。\n"
+
 #~ msgid ""
-#~ "General options:\n"
-#~ "      --error-limit=NUM       quit after NUM errors (default %d).\n"
-#~ "      --document-language=STR locale to use in translating Texinfo "
-#~ "keywords\n"
-#~ "                                for the output document (default C).\n"
-#~ "      --force                 preserve output even if errors.\n"
-#~ "      --help                  display this help and exit.\n"
-#~ "      --no-validate           suppress node cross-reference validation.\n"
-#~ "      --no-warn               suppress warnings (but not errors).\n"
-#~ "      --conf-dir=DIR          search also for initialization files in "
-#~ "DIR.\n"
-#~ "      --init-file=FILE        load FILE to modify the default behaviour.\n"
-#~ "      --set-init-variable VAR=VAL  set configuration variable VAR to "
-#~ "VAL.\n"
-#~ "  -v, --verbose               explain what is being done.\n"
-#~ "      --version               display version information and exit.\n"
-#~ msgstr ""
-#~ "通用选项：\n"
-#~ "      --error-limit=NUM       在 NUM 个错误后退出 (默认为 %d)。\n"
-#~ "      --document-language=STR 为输出的文档翻译 Texinfo 关键字时所用\n"
-#~ "                               的地区代码(默认为 C)。\n"
-#~ "      --force                 即使出现错误也保留输出文件。\n"
-#~ "      --help                  显示该求助信息并退出。\n"
-#~ "      --no-validate           不进行交叉引用检查。\n"
-#~ "      --no-warn               不输出警告 (不涉及错误)。\n"
-#~ "  -v, --verbose               解释都做了些什么。\n"
-#~ "      --version               显示版本信息并退出。\n"
+#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+#~ msgstr "对于文档“foo.texi”，FILE... 通常为“foo.%c%c”的形式。\n"
 
-#, fuzzy
 #~ msgid ""
-#~ "General output options:\n"
-#~ "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
-#~ "                                ignoring any @setfilename.\n"
-#~ "      --no-headers            suppress node separators, Node: lines, and "
-#~ "menus\n"
-#~ "                                from Info output (thus producing plain "
-#~ "text)\n"
-#~ "                                or from HTML (thus producing shorter "
-#~ "output);\n"
-#~ "                                also, write to standard output by default "
-#~ "if\n"
-#~ "                                producing Info.\n"
-#~ "      --split=SPLIT           split at SPLIT, where SPLIT may be "
-#~ "chapter, \n"
-#~ "                                section or node if output supports "
-#~ "splitting.\n"
-#~ "      --no-split              suppress the splitting of Info or HTML "
-#~ "output,\n"
-#~ "                                generate only one output file.\n"
-#~ "      --number-sections       output chapter and sectioning numbers.\n"
-#~ "  -o, --output=FILE           output to FILE (or directory if split).\n"
-#~ "                                If not split and FILE is a directory, put "
-#~ "the\n"
-#~ "                                resulting files in FILE.\n"
+#~ "\n"
+#~ "Options:\n"
 #~ msgstr ""
-#~ "通用输出选项：\n"
-#~ "  -E, --macro-expand FILE   将宏扩展源输出到文件 FILE。\n"
-#~ "                            忽略所有 @setfilename。\n"
-#~ "      --no-headers          不在 Info 输出或 HTML 输出中生成节点分隔符，\n"
-#~ "                              节点：行，和菜单。从而生成普通文本(Info\n"
-#~ "                              输出)或较短的输出(HTML 输出)；\n"
-#~ "                              此外, 默认输出到标准输出。\n"
-#~ "      --no-split            不是生成分割的 Info 或 HTML 输出，\n"
-#~ "                            而是生成单个输出文件。\n"
-#~ "      --number-sections     输出章节编号。\n"
-#~ "  -o, --output=FILE         输出到文件 FILE (如果是分割的 HTML 则为目"
-#~ "录)。\n"
+#~ "\n"
+#~ "选项：\n"
 
-#, fuzzy
-#~ msgid ""
-#~ "Options for HTML:\n"
-#~ "      --css-include=FILE      include FILE in HTML <style> output;\n"
-#~ "                                read stdin if FILE is -.\n"
-#~ "      --css-ref=URL           generate reference to a CSS file.\n"
-#~ "      --internal-links=FILE   produce list of internal links in FILE.\n"
-#~ "      --transliterate-file-names\n"
-#~ "                              produce file names in ASCII "
-#~ "transliteration.\n"
-#~ "      --node-files            produce redirection files for nodes and \n"
-#~ "                                anchors. Default is set only if split.\n"
-#~ msgstr ""
-#~ "HTML 选项:\n"
-#~ "      --css-include=FILE      在 HTML <style> 输出中包含 FILE；\n"
-#~ "                                如果 FILE 是 - 将从标准输入读取内容。\n"
-#~ "      --css-ref=URL           生成一个 CSS 文件的参考。\n"
-#~ "      --internal-links=FILE   生成 FILE 中内部连接列表。\n"
-#~ "      --transliterate-file-names\n"
-#~ "                              以 ASCII 字义生成文件名。\n"
+#~ msgid "failure reopening %s"
+#~ msgstr "重新打开 %s 失败"
 
-#, fuzzy
-#~ msgid "Cannot split output %s"
-#~ msgstr "无法创建输出文件“%s”"
+#~ msgid "%s: not a texinfo index file"
+#~ msgstr "%s：不是 texinfo 索引文件"
 
-#, fuzzy
-#~ msgid "%s not writable"
-#~ msgstr "%s：空文件"
+#~ msgid "No page number in %s"
+#~ msgstr "%s 中没有页码"
 
-#, fuzzy
-#~ msgid " end of file"
-#~ msgstr "寻找文件："
-
-#, fuzzy
-#~ msgid "Node `%s' previously defined %s"
-#~ msgstr "节点“%s”在前面的(第 %d 行)定义"
-
-#, fuzzy
-#~ msgid "@%s requires an argument"
-#~ msgstr "%c%s 需要一个名字"
-
-#, fuzzy
-#~ msgid "Node `%s' that is to be renamed exists "
-#~ msgstr "索引“%s”已经存在"
-
-#, fuzzy
-#~ msgid "%s: Removing output files due to errors; use --force to preserve.\n"
-#~ msgstr "%s：由于错误删除宏输出文件“%s”；用 --force 保留宏输出。\n"
-
-#, fuzzy
-#~ msgid "(in %s l. %d)"
-#~ msgstr "(行 %*d)"
-
-#, fuzzy
-#~ msgid "(l. %d)"
-#~ msgstr "(行 %*d)"
-
-#, fuzzy
-#~ msgid "Missing `}' on @%s line"
-#~ msgstr "@def 的参数遗漏了“}”"
-
-#, fuzzy
-#~ msgid "Anchor `%s' ignored in %s expanded more than once"
-#~ msgstr "Anchor“%s”和节点“%s”映射到同一个文件名"
-
-#, fuzzy
-#~ msgid "@%s (argument nr %d)"
-#~ msgstr "@%s 的参数错误"
-
-#, fuzzy
-#~ msgid "First argument to @%s may not be empty"
-#~ msgstr "@inforef 的第一个参数不能为空"
-
-#, fuzzy
-#~ msgid "@image file name"
-#~ msgstr "@image 文件“%s”不可读：%s"
-
-#, fuzzy
-#~ msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
-#~ msgstr "\\ 以带有“%s”的宏展开式代替参数名称"
-
-#, fuzzy
-#~ msgid "No index prefix found for @%s"
-#~ msgstr "找不到含有“%s”的索引\n"
-
-#, fuzzy
-#~ msgid "@%s already set"
-#~ msgstr "索引“%s”已经存在"
-
-#, fuzzy
-#~ msgid "Anchor `%s' previously defined %s"
-#~ msgstr "宏“%s”已在前面定义"
-
-#, fuzzy
-#~ msgid "No closing brace for specially handled command %s"
-#~ msgstr "脚注“%s”没有闭合花括号"
-
-#, fuzzy
-#~ msgid "Float label `%s' previously defined %s"
-#~ msgstr "宏“%s”已在前面定义"
-
-#, fuzzy
-#~ msgid "ignoring @tab in empty multitable"
-#~ msgstr "忽略多列表格外的 @tab"
-
-#, fuzzy
-#~ msgid "Unknown command with braces `@%s'"
-#~ msgstr "未知的命令“%s”"
-
-#, fuzzy
-#~ msgid "Unexpected command `%s' here"
-#~ msgstr "未定义的命令: %s"
-
-#, fuzzy
-#~ msgid "%s should not appear in %s"
-#~ msgstr "%s: 无法打开 --css-file: %s"
-
-#, fuzzy
-#~ msgid "%s: could not open --css-file %s: %s\n"
-#~ msgstr "%s: 无法打开 --css-file: %s"
-
-#, fuzzy
-#~ msgid "`.' or `,' must follow @xref."
-#~ msgstr "“.”或“,”之后必须为 @%s，而不是“%c”"
-
-#~ msgid "One completion:\n"
-#~ msgstr "一个补齐：\n"
-
-#~ msgid "more "
-#~ msgstr "更多 "
-
-#, fuzzy
-#~ msgid "\\@image file `%s' unreadable: %s"
-#~ msgstr "@image 文件“%s”不可读：%s"
-
-#, fuzzy
-#~ msgid "Cannot find \\@image file `%s.txt'"
-#~ msgstr "无法找到节点“%s”。"
-
-#, fuzzy
-#~ msgid ""
-#~ "\\@strong{Note...} produces a spurious cross-reference in Info; reword to "
-#~ "avoid that"
-#~ msgstr ""
-#~ "@strong{Note...} 在 Info 中形成了一个假的交叉引用；可通过重写避免此事"
-
-#, fuzzy
-#~ msgid "`.' or `,' must follow \\@xref, not %s"
-#~ msgstr "“.”或“,”之后必须为 @%s，而不是“%c”"
-
-#~ msgid "%s: warning: "
-#~ msgstr "%s：警告："
-
-#, fuzzy
-#~ msgid "@top already exists"
-#~ msgstr "索引“%s”已经存在"
-
-#~ msgid "%s: illegal option -- %c\n"
-#~ msgstr "%s：非法选项 -- %c\n"
-
-#~ msgid "Function"
-#~ msgstr "函数"
-
-#~ msgid "Macro"
-#~ msgstr "宏"
-
-#~ msgid "Special Form"
-#~ msgstr "特殊形式"
-
-#~ msgid "Variable"
-#~ msgstr "变量"
-
-#~ msgid "User Option"
-#~ msgstr "用户选项"
-
-#~ msgid "Instance Variable"
-#~ msgstr "实例变量"
-
-#~ msgid "Method"
-#~ msgstr "方法"
-
-#~ msgid "Untitled"
-#~ msgstr "无标题"
-
-#~ msgid "Next:"
-#~ msgstr "下一个："
-
-#~ msgid "Previous:"
-#~ msgstr "上一个："
-
-#~ msgid "Up:"
-#~ msgstr "上层："
-
-#~ msgid "Menu"
-#~ msgstr "菜单"
-
-#~ msgid "Cross"
-#~ msgstr "交叉引用"
-
-#~ msgid "Prev"
-#~ msgstr "上一个"
-
-#~ msgid "Up"
-#~ msgstr "上层"
-
-#~ msgid "see "
-#~ msgstr "参阅 "
-
-#~ msgid "Table of Contents"
-#~ msgstr "目录"
-
-#, fuzzy
-#~ msgid "Short Table of Contents"
-#~ msgstr "目录"
-
-#, fuzzy
-#~ msgid "@{No value for `{value}'@}"
-#~ msgstr "{没有“%s”的值}"
-
-#~ msgid "Appendix %c"
-#~ msgstr "附录 %c "
+#~ msgid "entry %s follows an entry with a secondary name"
+#~ msgstr "条目 %s 出现在具有次要名称的条目之后"
 
 #~ msgid ""
 #~ "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -4974,6 +4398,30 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgid "\"\" is invalid"
 #~ msgstr "“”为非法"
 
+#~ msgid "Function"
+#~ msgstr "函数"
+
+#~ msgid "Macro"
+#~ msgstr "宏"
+
+#~ msgid "Special Form"
+#~ msgstr "特殊形式"
+
+#~ msgid "Variable"
+#~ msgstr "变量"
+
+#~ msgid "User Option"
+#~ msgstr "用户选项"
+
+#~ msgid "Instance Variable"
+#~ msgstr "实例变量"
+
+#~ msgid "Method"
+#~ msgstr "方法"
+
+#~ msgid "Untitled"
+#~ msgstr "无标题"
+
 #~ msgid "%s is an invalid ISO code, using %c"
 #~ msgstr "%s 是非法的 ISO 码，使用 %c"
 
@@ -4986,17 +4434,44 @@ msgstr "%s: 无法打开 --css-file: %s"
 #~ msgid "File exists, but is not a directory"
 #~ msgstr "文件存在，但不是目录"
 
+#~ msgid "see "
+#~ msgstr "参阅 "
+
 #~ msgid "No `%s.png' or `.jpg', and no extension supplied"
 #~ msgstr "不是“%s.png”或“.jpg”，而且没有给出扩展名"
 
 #~ msgid "Node:"
 #~ msgstr "节点："
 
+#~ msgid "Next:"
+#~ msgstr "下一个："
+
+#~ msgid "Previous:"
+#~ msgstr "上一个："
+
+#~ msgid "Up:"
+#~ msgstr "上层："
+
+#~ msgid "Menu"
+#~ msgstr "菜单"
+
+#~ msgid "Cross"
+#~ msgstr "交叉引用"
+
+#~ msgid "Prev"
+#~ msgstr "上一个"
+
 #~ msgid "`%s' has no Up field"
 #~ msgstr "“%s”没有上层域"
 
+#~ msgid "Up"
+#~ msgstr "上层"
+
 #~ msgid "node `%s' has been referenced %d times"
 #~ msgstr "节点“%s”已被引用了 %d 次"
+
+#~ msgid "Table of Contents"
+#~ msgstr "目录"
 
 #~ msgid "Short Contents"
 #~ msgstr "简短目录"
@@ -5084,6 +4559,3 @@ msgstr "%s: 无法打开 --css-file: %s"
 
 #~ msgid "do not keep temporary files around after processing (default)"
 #~ msgstr "在处理之后删除临时文件 (默认)"
-
-#~ msgid "%s; for file `%s'.\n"
-#~ msgstr "%s；文件“%s”。\n"

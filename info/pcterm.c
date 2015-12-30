@@ -1,5 +1,5 @@
 /* pcterm.c -- How to handle the PC terminal for Info under MS-DOS/MS-Windows.
-   $Id: pcterm.c 6409 2015-07-11 07:15:10Z eliz $
+   $Id: pcterm.c 6893 2015-12-25 14:47:01Z eliz $
 
    Copyright 1998, 1999, 2003, 2004, 2007, 2008, 2012, 2013, 2014, 2015
    Free Software Foundation, Inc.
@@ -79,6 +79,7 @@ void redisplay_after_signal (void);
 
 #include "variables.h"
 #include "session.h"
+#include "terminal.h"
 
 extern int speech_friendly;	/* defined in info.c */
 
@@ -252,6 +253,34 @@ normvideo (void)
 
   GetConsoleScreenBufferInfo (hscreen, &csbi);
   attr = csbi.wAttributes & ~FOREGROUND_INTENSITY;
+  textattr (attr);
+}
+
+void
+blinkvideo (void)
+{
+  highvideo ();
+}
+
+void
+textcolor (int color)
+{
+  int attr;
+  CONSOLE_SCREEN_BUFFER_INFO csbi;
+
+  GetConsoleScreenBufferInfo (hscreen, &csbi);
+  attr = (csbi.wAttributes & 0xf0) | (color & 0x0f);
+  textattr (attr);
+}
+
+void
+textbackground (int color)
+{
+  int attr;
+  CONSOLE_SCREEN_BUFFER_INFO csbi;
+
+  GetConsoleScreenBufferInfo (hscreen, &csbi);
+  attr = (csbi.wAttributes & 0x0f) | ((color & 0x0f) << 4);
   textattr (attr);
 }
 
@@ -837,6 +866,50 @@ pc_end_standout (void)
   normvideo ();
 }
 
+static void
+pc_begin_blink (void)
+{
+  blinkvideo ();
+}
+
+static void
+pc_default_color (void)
+{
+  textattr (norm_attr);
+}
+
+/* Info definitions of 8 colors (see terminal.h) are in an order
+   that's different from Windows/DOS console colors.  This function
+   unscrambles the order, and also maps 8 standard ANSI colors to the
+   low-intensity shades of the 16 PC colors, so that "standout" works
+   by turning the intensity bit.  */
+static int
+convert_color (int terminal_color)
+{
+  /* The terminal.h order is:
+     black, red, green, yellow, blue, magenta, cyan, white.  */
+  static int pc_color_map[] = {
+    0, 4, 2, 6, 1, 5, 3, 7
+  };
+
+  if (terminal_color >= 0
+      && terminal_color < sizeof(pc_color_map) / sizeof (pc_color_map[0]))
+    return pc_color_map[terminal_color];
+  return 7;	/* lightgray */
+}
+
+static void
+pc_set_fg_color (int color)
+{
+  textcolor (convert_color (color));
+}
+
+static void
+pc_set_bg_color (int color)
+{
+  textbackground (convert_color (color));
+}
+
 /* Move the cursor up one line. */
 static void
 pc_up_line (void)
@@ -1077,7 +1150,7 @@ pc_initialize_terminal (term_name)
   xref_attr = CYAN;
 #endif
 #ifdef _WIN32
-  xref_attr = FOREGROUND_BLUE | FOREGROUND_GREEN;
+  xref_attr = FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY;
 #endif
 
   /* Does the user want non-default colors?  */
@@ -1151,6 +1224,12 @@ pc_initialize_terminal (term_name)
   terminal_end_standout_hook        = pc_end_standout;
   terminal_begin_underline_hook     = pc_begin_underline;
   terminal_end_underline_hook       = pc_end_underline;
+  terminal_begin_bold_hook          = pc_begin_standout;
+  terminal_begin_blink_hook         = pc_begin_blink;
+  terminal_end_all_modes_hook       = pc_end_standout;
+  terminal_default_colour_hook      = pc_default_color;
+  terminal_set_colour_hook          = pc_set_fg_color;
+  terminal_set_bgcolour_hook        = pc_set_bg_color;
   terminal_prep_terminal_hook       = pc_prep_terminal;
   terminal_unprep_terminal_hook     = pc_unprep_terminal;
   terminal_up_line_hook             = pc_up_line;

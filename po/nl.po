@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-5.9.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
 "PO-Revision-Date: 2015-06-07 10:11+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -389,7 +389,7 @@ msgstr "Index-onderwerp"
 msgid "No available info files have '%s' in their indices."
 msgstr "Geen van de beschikbare Info-bestanden heeft '%s' in z'n index."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Fout tijdens converteren van tekencodering van bestand."
@@ -1077,7 +1077,7 @@ msgstr "Te selecteren bezochte pagina: "
 msgid "The reference disappeared! (%s)."
 msgstr "De verwijzing is verdwenen! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Terminal kan niet geïnitialiseerd worden: %s\n"
@@ -3711,6 +3711,12 @@ msgstr "%s: fout bij sluiten van %s, bestand met interne koppelingen: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: kan %s niet openen om te schrijven: %s\n"
 
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Tags zijn verouderd ***"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Subbestand: %s"
+
 #~ msgid "%s: unrecognized option `%s'\n"
 #~ msgstr "%s: onbekende optie '--%s'\n"
 
@@ -3751,16 +3757,6 @@ msgstr "%s: kan %s niet openen om te schrijven: %s\n"
 
 #~ msgid " --           end option processing"
 #~ msgstr "  --                verder geen opties meer herkennen"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Tags zijn verouderd ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Subbestand: %s"
-
-#, fuzzy
-#~ msgid "Underline cross-references and menu entries"
-#~ msgstr "Gebruik @pxref voor kruisverwijzingen tussen haakjes"
 
 #~ msgid ""
 #~ "\n"
@@ -4445,6 +4441,9 @@ msgstr "%s: kan %s niet openen om te schrijven: %s\n"
 
 #~ msgid "End of file reached while looking for `.' or `,'"
 #~ msgstr "Einde van bestand werd bereikt tijdens zoeken naar '.' of ','"
+
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "Gebruik @pxref voor kruisverwijzingen tussen haakjes"
 
 #~ msgid "First argument to @inforef may not be empty"
 #~ msgstr "Het eerste argument van @inforef mag niet leeg zijn"

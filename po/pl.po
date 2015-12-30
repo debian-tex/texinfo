@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 5.9.93\n"
+"Project-Id-Version: texinfo 6.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
-"PO-Revision-Date: 2015-06-10 21:45+0200\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
+"PO-Revision-Date: 2015-12-22 18:32+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "Language: pl\n"
@@ -380,7 +380,7 @@ msgstr "Temat indeksu"
 msgid "No available info files have '%s' in their indices."
 msgstr "Żaden z dostępnych plików info nie zawiera '%s' w swoich indeksach."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Błąd przy konwersji kodowania znaków pliku."
@@ -1061,7 +1061,7 @@ msgstr "Wybranie widocznego węzła: "
 msgid "The reference disappeared! (%s)."
 msgstr "Odsyłacz zniknął! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Nie można zainicjować terminala: %s\n"
@@ -1511,29 +1511,29 @@ msgstr "Wyszukiwany łańcuch jest zbyt krótki"
 #: info/session.c:4462
 #, c-format
 msgid "Going back to last match from %s"
-msgstr ""
+msgstr "Powrót do ostatniego dopasowania z %s"
 
 #: info/session.c:4486 info/session.c:4596
-#, fuzzy, c-format
+#, c-format
 msgid "No more matches."
-msgstr "Nic nie pasuje"
+msgstr "Nic więcej nie pasuje."
 
 #: info/session.c:4623
 msgid "Search this node and subnodes for a string."
-msgstr ""
+msgstr "Wyszukanie łańcucha w tym węźle i podwęzłach."
 
 #: info/session.c:4644
 msgid "Go to next match in Info sub-tree"
-msgstr ""
+msgstr "Przejście do następnego dopasowania w poddrzewie Info"
 
 #: info/session.c:4648 info/session.c:4660
 #, c-format
 msgid "No active search"
-msgstr ""
+msgstr "Brak aktywnego wyszukiwania"
 
 #: info/session.c:4656
 msgid "Go to previous match in Info sub-tree"
-msgstr ""
+msgstr "Przejście do poprzedniego dopasowania w poddrzewie Info"
 
 #: info/session.c:4669
 msgid "Read a string and search for it case-sensitively"
@@ -1722,9 +1722,8 @@ msgid "Method to use to track mouse events"
 msgstr "Metoda śledzenie zdarzeń myszy"
 
 #: info/variables.c:138
-#, fuzzy
 msgid "How to follow a cross-reference"
-msgstr "Przejście do następnego odsyłacza"
+msgstr "Jak przechodzić do odsyłacza"
 
 #: info/variables.c:142
 msgid "Highlight search matches"
@@ -1732,20 +1731,19 @@ msgstr "Podświetlanie dopasowań szukanego tekstu"
 
 #: info/variables.c:146
 msgid "Styles for links"
-msgstr ""
+msgstr "Style odnośników"
 
 #: info/variables.c:150
 msgid "Styles for active links"
-msgstr ""
+msgstr "Style aktywnych odnośników"
 
 #: info/variables.c:154
-#, fuzzy
 msgid "Styles for search matches"
-msgstr "Wyczyszczenie wyświetlonych wyników wyszukiwania"
+msgstr "Style dla dopasowań wyszukiwania"
 
 #: info/variables.c:158
 msgid "How to print the information line at the start of a node"
-msgstr ""
+msgstr "Jak drukować wiersz informacyjny na początku węzła"
 
 #: info/variables.c:165
 msgid "Explain the use of a variable"
@@ -1783,9 +1781,9 @@ msgid "-%s---Info: %s, %ld lines --%s--"
 msgstr "-%s---Info: %s, %ld linii --%s--"
 
 #: info/window.c:970
-#, fuzzy, c-format
+#, c-format
 msgid "-%s---Info: (%s)%s, %ld lines --%s--"
-msgstr "-%s%s-Info: (%s)%s, %ld linii --%s--"
+msgstr "-%s---Info: (%s)%s, %ld linii --%s--"
 
 #: install-info/install-info.c:292
 #, c-format
@@ -3686,49 +3684,3 @@ msgstr "%s: błąd podczas zamykania pliku odnośników wewnętrznych %s: %s\n"
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: nie można otworzyć pliku %s do zapisu: %s\n"
-
-#~ msgid "%s: unrecognized option `%s'\n"
-#~ msgstr "%s: nieznana opcja `%s'\n"
-
-#~ msgid "%s is not a Texinfo index file\n"
-#~ msgstr "%s nie jest plikiem indeksu Texinfo\n"
-
-#~ msgid "%s:%d: Bad key %s in record\n"
-#~ msgstr "%s:%d: Błędny klucz %s w rekordzie\n"
-
-#~ msgid "%s:%d: Bad entry; expected three fields, not %d\n"
-#~ msgstr "%s:%d: Błędny wpis; oczekiwano trzech pól, a nie %d\n"
-
-#~ msgid "%s:%d: Bad entry; expected %s at column %d\n"
-#~ msgstr "%s:%d: Błędny wpis; oczekiwano %s w kolumnie %d\n"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Usage: %s [OPTION]... FILE...\n"
-#~ msgstr "Składnia: %s [OPCJA]... PLIK...\n"
-
-#~ msgid "Generate a sorted index for each TeX output FILE."
-#~ msgstr ""
-#~ "Wygenerowanie posortowanego indeksu dla każdego PLIKU wyjściowego TeXa."
-
-#~ msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
-#~ msgstr "Zwykle PLIK... podaje się jako `foo.??' dla dolumentu `foo.texi'."
-
-#~ msgid "Options:"
-#~ msgstr "Opcje:"
-
-#~ msgid " -h, --help   display this help and exit"
-#~ msgstr " -h, --help   wyświetlenie tego opisu i zakończenie"
-
-#~ msgid " --version    display version information and exit"
-#~ msgstr " --version    wyświetlenie informacji o wersji i zakończenie"
-
-#~ msgid " --           end option processing"
-#~ msgstr " --           koniec przetwarzania opcji"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Znaczniki są nieaktualne ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Podplik: %s"

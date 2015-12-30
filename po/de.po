@@ -35,7 +35,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
 "PO-Revision-Date: 2015-03-02 13:41+0100\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -76,9 +76,9 @@ msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: Option „%s“ benötigt ein Argument\n"
 
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
-#, fuzzy, c-format
+#, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: nicht erkannte Option „%c%s“\n"
+msgstr "%s: nicht erkannte Option „--%s“\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, c-format
@@ -411,7 +411,7 @@ msgstr "Index-Thema: "
 msgid "No available info files have '%s' in their indices."
 msgstr "Keine der verfügbaren Info-Dateien hat „%s“ in ihren Indizes."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Fehler bei der Umwandlung der Zeichenkodierung der Datei"
@@ -1094,7 +1094,7 @@ msgstr "Besuchten Knoten auswählen: "
 msgid "The reference disappeared! (%s)."
 msgstr "Der Verweis ist verschwunden! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Terminal kann nicht initialisiert werden: %s\n"
@@ -2141,9 +2141,9 @@ msgid "%s is not a valid language code"
 msgstr "%s ist kein gültiges Sprachkürzel"
 
 #: tp/Texinfo/Common.pm:1110
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s is not a valid region code"
-msgstr "%s ist kein gültiges Sprachkürzel"
+msgstr "%s ist kein gültiges Regionskürzel"
 
 #: tp/Texinfo/Common.pm:1128
 #, perl-format
@@ -3345,7 +3345,7 @@ msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "nicht erkannter Wert „%s“ für TEXINFO_OUTPUT_FORMAT wird ignoriert\n"
 
 #: tp/texi2any.pl:729
-#, fuzzy, perl-format
+#, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Aufruf: %s [OPTION]... TEXINFO-DATEI...\n"
 
@@ -3747,24 +3747,6 @@ msgstr "%s: Fehler beim Schließen der internen Verknüpfungsdatei %s: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: %s konnte nicht zum Schreiben geöffnet werden: %s\n"
 
-#, fuzzy
-#~ msgid "%s: unrecognized option `%s'\n"
-#~ msgstr "%s: nicht erkannte Option „--%s“\n"
-
-#, fuzzy
-#~ msgid "%s is not a Texinfo index file\n"
-#~ msgstr "%s ist kein gültiges Regionskürzel"
-
-#, fuzzy
-#~ msgid "Usage: %s [OPTION]... FILE...\n"
-#~ msgstr "Aufruf: %s [OPTION]... TEXINFO-DATEI...\n"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Veraltete Tags ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Unterdatei: %s"
-
 #~ msgid ""
 #~ "\n"
 #~ "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -3779,3 +3761,9 @@ msgstr "%s: %s konnte nicht zum Schreiben geöffnet werden: %s\n"
 #~ "Texinfos Homepage: http://www.gnu.org/software/texinfo/\n"
 #~ "Fehler in der Übersetzung bitte melden an:\n"
 #~ "<translation-team-de@lists.sourceforge.net>"
+
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Veraltete Tags ***"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Unterdatei: %s"

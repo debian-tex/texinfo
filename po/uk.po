@@ -7,10 +7,10 @@
 # Yuri Chornoivan <yurchor@ukr.net>, 2013, 2015.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 5.9.93\n"
+"Project-Id-Version: texinfo 6.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
-"PO-Revision-Date: 2015-06-07 16:37+0300\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
+"PO-Revision-Date: 2015-12-22 19:59+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
 "Language: uk\n"
@@ -385,7 +385,7 @@ msgstr "Тема покажчика"
 msgid "No available info files have '%s' in their indices."
 msgstr "Жоден доступний файл info не містить «%s» у покажчику."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Помилка під час спроби змінити кодування символів у файлі."
@@ -1064,7 +1064,7 @@ msgstr "Оберіть відвіданий вузол: "
 msgid "The reference disappeared! (%s)."
 msgstr "Посилання зникло! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Не вдалося ініціалізувати термінал: %s\n"
@@ -1515,29 +1515,29 @@ msgstr "Рядок пошуку є надто коротким"
 #: info/session.c:4462
 #, c-format
 msgid "Going back to last match from %s"
-msgstr ""
+msgstr "Повертаємося до останнього відповідника від %s"
 
 #: info/session.c:4486 info/session.c:4596
-#, fuzzy, c-format
+#, c-format
 msgid "No more matches."
-msgstr "Не знайдено"
+msgstr "Це був останній результат."
 
 #: info/session.c:4623
 msgid "Search this node and subnodes for a string."
-msgstr ""
+msgstr "Шукати рядок у цьому вузлі і усіх підлеглих вузлах."
 
 #: info/session.c:4644
 msgid "Go to next match in Info sub-tree"
-msgstr ""
+msgstr "Перейти до наступного відповідника у піддереві Info"
 
 #: info/session.c:4648 info/session.c:4660
 #, c-format
 msgid "No active search"
-msgstr ""
+msgstr "Немає активного пошуку"
 
 #: info/session.c:4656
 msgid "Go to previous match in Info sub-tree"
-msgstr ""
+msgstr "Перейти до попереднього відповідника у піддереві Info"
 
 #: info/session.c:4669
 msgid "Read a string and search for it case-sensitively"
@@ -1727,9 +1727,8 @@ msgid "Method to use to track mouse events"
 msgstr "Спосіб відстеження подій, пов’язаних із мишею"
 
 #: info/variables.c:138
-#, fuzzy
 msgid "How to follow a cross-reference"
-msgstr "Перейти до наступного перехресного посилання"
+msgstr "Спосіб переходу за перехресним посиланням"
 
 #: info/variables.c:142
 msgid "Highlight search matches"
@@ -1737,20 +1736,19 @@ msgstr "Позначити результати пошуку"
 
 #: info/variables.c:146
 msgid "Styles for links"
-msgstr ""
+msgstr "Стилі для посилань"
 
 #: info/variables.c:150
 msgid "Styles for active links"
-msgstr ""
+msgstr "Стилі для активних посилань"
 
 #: info/variables.c:154
-#, fuzzy
 msgid "Styles for search matches"
-msgstr "Явно показані результати пошуку"
+msgstr "Стилі для результатів пошуку"
 
 #: info/variables.c:158
 msgid "How to print the information line at the start of a node"
-msgstr ""
+msgstr "Спосіб виведення рядка інформації на початку вузла"
 
 #: info/variables.c:165
 msgid "Explain the use of a variable"
@@ -1788,9 +1786,9 @@ msgid "-%s---Info: %s, %ld lines --%s--"
 msgstr "-%s---Info: %s, %ld рядків --%s--"
 
 #: info/window.c:970
-#, fuzzy, c-format
+#, c-format
 msgid "-%s---Info: (%s)%s, %ld lines --%s--"
-msgstr "-%s%s-Info: (%s)%s, %ld рядків --%s--"
+msgstr "-%s---Info: (%s)%s, %ld рядків --%s--"
 
 #: install-info/install-info.c:292
 #, c-format
@@ -3706,6 +3704,12 @@ msgstr "%s: помилка під час спроби закрити файл в
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: не вдалося відкрити %s для запису даних: %s\n"
 
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Теґи застаріли ***"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Під-файл: %s"
+
 #~ msgid "%s: unrecognized option `%s'\n"
 #~ msgstr "%s: невідомий параметр «%s»\n"
 
@@ -3744,16 +3748,6 @@ msgstr "%s: не вдалося відкрити %s для запису дани
 
 #~ msgid " --           end option processing"
 #~ msgstr " --           кінець оброблюваних параметрів"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Теґи застаріли ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Під-файл: %s"
-
-#, fuzzy
-#~ msgid "Underline cross-references and menu entries"
-#~ msgstr "щоб отримати перехресне посилання у дужках, використовуйте @pxref"
 
 #~ msgid ""
 #~ "\n"
@@ -4435,6 +4429,9 @@ msgstr "%s: не вдалося відкрити %s для запису дани
 
 #~ msgid "End of file reached while looking for `.' or `,'"
 #~ msgstr "У пошуках `.' чи `,' досягнуто кінця файла"
+
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "щоб отримати перехресне посилання у дужках, використовуйте @pxref"
 
 #~ msgid "First argument to @inforef may not be empty"
 #~ msgstr "Перший аргумент до @inforef не може бути порожнім"

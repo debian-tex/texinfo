@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.0.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
 "PO-Revision-Date: 2013-04-18 00:43+0200\n"
 "Last-Translator: Tomislav Krznar <tomislav.krznar@gmail.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -51,9 +51,9 @@ msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: opcija „--%s” zahtijeva argument\n"
 
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
-#, fuzzy, c-format
+#, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: neprepoznata opcija „%c%s”\n"
+msgstr "%s: neprepoznata opcija „--%s”\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, c-format
@@ -280,19 +280,19 @@ msgid "Scroll the completions window"
 msgstr "Pomakni sadržaj prozora za varijante dovršavanja"
 
 #: info/filesys.c:90
-#, fuzzy, c-format
+#, c-format
 msgid "looking for file \"%s\""
-msgstr "greška pri zatvaranju izlazne datoteke „%s”"
+msgstr ""
 
 #: info/filesys.c:152
 #, fuzzy, c-format
 msgid "looking for file %s in %s"
-msgstr "greška pri zatvaranju izlazne datoteke „%s”"
+msgstr "greška pri zatvaranju datoteke okvira %s: %s"
 
 #: info/filesys.c:238 info/filesys.c:252 info/filesys.c:273
 #, fuzzy, c-format
 msgid "found file %s"
-msgstr "greška pri zatvaranju izlazne datoteke „%s”"
+msgstr "Pronađi datoteku: "
 
 #: info/footnotes.c:231
 #, c-format
@@ -385,7 +385,7 @@ msgstr "Tema indeksa: "
 msgid "No available info files have '%s' in their indices."
 msgstr "Niti jedna dostupna info datoteka nema „%s” u svom indeksu."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr ""
@@ -1058,7 +1058,7 @@ msgstr "Izaberi posjećeni čvor: "
 msgid "The reference disappeared! (%s)."
 msgstr "Referenca je nestala! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Terminal se ne može inicijalizirati: %s\n"
@@ -2354,9 +2354,9 @@ msgid "@%s node name should not contain `%s'"
 msgstr "@%s se ne bi trebao pojaviti u @%s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2226
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s node name should not contain `:'"
-msgstr "@%s se ne bi trebao pojaviti u @%s"
+msgstr ""
 
 #: tp/Texinfo/Convert/Plaintext.pm:2272
 #, perl-format
@@ -2373,9 +2373,8 @@ msgid "menu entry node name should not contain `%s'"
 msgstr "prazno ime stavke izbornika u „%s”"
 
 #: tp/Texinfo/Convert/Plaintext.pm:3129
-#, fuzzy
 msgid "menu entry node name should not contain `:'"
-msgstr "prazno ime stavke izbornika u „%s”"
+msgstr ""
 
 #: tp/Texinfo/Convert/Plaintext.pm:3145
 #, fuzzy
@@ -2868,9 +2867,9 @@ msgid "non-hex digits in argument for @U: %s"
 msgstr "neispravan argument za @%s: %s"
 
 #: tp/Texinfo/Parser.pm:5399
-#, fuzzy, perl-format
+#, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
-msgstr "neispravan argument za @%s: %s"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:5412
 #, perl-format
@@ -3657,59 +3656,6 @@ msgstr "%s: greška pri zatvaranju datoteke unutarnjih veza %s: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: ne mogu otvoriti %s za pisanje: %s\n"
 
-#, fuzzy
-#~ msgid "%s: unrecognized option `%s'\n"
-#~ msgstr "%s: neprepoznata opcija „--%s”\n"
-
-#, fuzzy
-#~ msgid "%s is not a Texinfo index file\n"
-#~ msgstr "%s: nije texinfo datoteka indeksa"
-
-#, fuzzy
-#~ msgid "Usage: %s [OPTION]... FILE...\n"
-#~ msgstr "Uporaba: %s [OPCIJA]... DATOTEKA...\n"
-
-#, fuzzy
-#~ msgid "Generate a sorted index for each TeX output FILE."
-#~ msgstr "Napravi razvrstani indeks za svaku TeX izlaznu DATOTEKU.\n"
-
-#, fuzzy
-#~ msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
-#~ msgstr ""
-#~ "Obično se DATOTEKA... navodi kao „foo.%c%c” za dokument „foo.texi”.\n"
-
-#, fuzzy
-#~ msgid "Options:"
-#~ msgstr ""
-#~ "\n"
-#~ "Opcije:\n"
-
-#, fuzzy
-#~ msgid " -h, --help   display this help and exit"
-#~ msgstr "prikaži ovu pomoć i izađi"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Zastarjele oznake ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Poddatoteka: %s"
-
-#, fuzzy
-#~ msgid "Underline cross-references and menu entries"
-#~ msgstr "za unakrsne reference u zagradama koristite @pxref"
-
-#~ msgid ""
-#~ "\n"
-#~ "Email bug reports to bug-texinfo@gnu.org,\n"
-#~ "general questions and discussion to help-texinfo@gnu.org.\n"
-#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
-#~ msgstr ""
-#~ "\n"
-#~ "Prijavite greške na bug-texinfo@gnu.org,\n"
-#~ "općenita pitanja i diskusije na help-texinfo@gnu.org.\n"
-#~ "Texinfo početna stranica: http://www.gnu.org/software/texinfo/\n"
-#~ "Prijavite greške prijevoda na lokalizacija@linux.hr."
-
 #~ msgid "Insert this character"
 #~ msgstr "Umetni ovaj znak"
 
@@ -3726,15 +3672,20 @@ msgstr "%s: ne mogu otvoriti %s za pisanje: %s\n"
 #~ "\n"
 #~ "* Izbornik: Čvorovi čiji indeksi sadrže „%s”:\n"
 
-#~ msgid "No index"
-#~ msgstr "Nema indeksa"
-
 #~ msgid "Index for `%s'"
 #~ msgstr "Indeks za „%s”"
 
-#, fuzzy
-#~ msgid "File names matching `%s'"
-#~ msgstr "nema odgovarajućeg „%cend %s”"
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Prijavite greške na bug-texinfo@gnu.org,\n"
+#~ "općenita pitanja i diskusije na help-texinfo@gnu.org.\n"
+#~ "Texinfo početna stranica: http://www.gnu.org/software/texinfo/\n"
+#~ "Prijavite greške prijevoda na lokalizacija@linux.hr."
 
 #~ msgid ""
 #~ "Basic Commands in Info Windows\n"
@@ -3878,9 +3829,6 @@ msgstr "%s: ne mogu otvoriti %s za pisanje: %s\n"
 #~ msgid "cannot create output file `%s'"
 #~ msgstr "ne mogu napraviti izlaznu datoteku „%s”"
 
-#~ msgid "error writing to `%s'"
-#~ msgstr "greška pri pisanju u „%s”"
-
 #~ msgid "error closing output file `%s'"
 #~ msgstr "greška pri zatvaranju izlazne datoteke „%s”"
 
@@ -3971,16 +3919,20 @@ msgstr "%s: ne mogu otvoriti %s za pisanje: %s\n"
 #~ msgid "Kill this node"
 #~ msgstr "Poništi ovaj čvor"
 
-#, fuzzy
-#~ msgid "writing file %s"
-#~ msgstr "Spremam čvor %s..."
-
-#, fuzzy
-#~ msgid "closing file %s"
-#~ msgstr "greška pri zatvaranju izlazne datoteke „%s”"
+#~ msgid "Done."
+#~ msgstr "Gotov."
 
 #~ msgid "Internally used by \\[universal-argument]"
 #~ msgstr "Interno koristi \\[universal-argument]"
+
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Zastarjele oznake ***"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Poddatoteka: %s"
+
+#~ msgid "tex4ht.pm: could not open %s"
+#~ msgstr "tex4ht.pm: ne mogu otvoriti %s"
 
 #~ msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "Uporaba: makeinfo [OPCIJA]... TEXINFO-DATOTEKA...\n"
@@ -3988,23 +3940,38 @@ msgstr "%s: ne mogu otvoriti %s za pisanje: %s\n"
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "  ili:  texi2any [OPCIJA]... TEXINFO-DATOTEKA...\n"
 
+#~ msgid "display this help and exit"
+#~ msgstr "prikaži ovu pomoć i izađi"
+
 #~ msgid "send output to FILE"
 #~ msgstr "spremi izlaz u DATOTEKU"
 
+#~ msgid "Generate a sorted index for each TeX output FILE.\n"
+#~ msgstr "Napravi razvrstani indeks za svaku TeX izlaznu DATOTEKU.\n"
+
+#~ msgid ""
+#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+#~ msgstr ""
+#~ "Obično se DATOTEKA... navodi kao „foo.%c%c” za dokument „foo.texi”.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Options:\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Opcije:\n"
+
 #~ msgid "failure reopening %s"
 #~ msgstr "greška pri ponovnom otvaranju %s"
+
+#~ msgid "%s: not a texinfo index file"
+#~ msgstr "%s: nije texinfo datoteka indeksa"
 
 #~ msgid "No page number in %s"
 #~ msgstr "Nema broja stranica u %s"
 
 #~ msgid "entry %s follows an entry with a secondary name"
 #~ msgstr "stavka %s slijedi nakon stavke sa sekundarnim imenom"
-
-#~ msgid "Done."
-#~ msgstr "Gotov."
-
-#~ msgid "tex4ht.pm: could not open %s"
-#~ msgstr "tex4ht.pm: ne mogu otvoriti %s"
 
 #~ msgid "protect_hashchar_at_line_beginning cannot protect in @%s"
 #~ msgstr "protect_hashchar_at_line_beginning ne može zaštititi u @%s"
@@ -4407,6 +4374,9 @@ msgstr "%s: ne mogu otvoriti %s za pisanje: %s\n"
 
 #~ msgid "End of file reached while looking for `.' or `,'"
 #~ msgstr "Dosegnut kraj datoteke pri traženju „.” ili „,”"
+
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "za unakrsne reference u zagradama koristite @pxref"
 
 #~ msgid "First argument to @inforef may not be empty"
 #~ msgstr "Prvi argument za @inforef ne smije biti prazan"

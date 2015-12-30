@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
 "PO-Revision-Date: 2015-06-07 05:40-0300\n"
 "Last-Translator: Jorge Barros de Abreu <ficmatin10@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldpbr-translation@lists.sourceforge."
@@ -387,7 +387,7 @@ msgstr ""
 "Nenhum dos arquivos dispon@'{i}veis no formato info possuem '%s' nos seus "
 "@'{i}ndices."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Erro na convers@~{a}o de codifica@,{c}@~{a}o de caractere do arquivo."
@@ -1074,7 +1074,7 @@ msgstr "Selecione nodo visitado: "
 msgid "The reference disappeared! (%s)."
 msgstr "A refer@^{e}ncia desaparceu! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "O terminal n@~{a}o pode ser inicializado: %s\n"
@@ -3768,11 +3768,19 @@ msgstr "%s: erro ao fechar o arquivo de links internos %s: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: n@~{a}o posso abrir %s para escrita: %s\n"
 
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Tags Desatualizadas ***"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Subarquivo: %s"
+
 #, fuzzy
+#~| msgid "%s: unrecognized option '--%s'\n"
 #~ msgid "%s: unrecognized option `%s'\n"
 #~ msgstr "%s: op@,{c}@~{a}o desconhecida '--%s'\n"
 
 #, fuzzy
+#~| msgid "%s is not a valid region code"
 #~ msgid "%s is not a Texinfo index file\n"
 #~ msgstr "%s @'{e} um c@'{o}digo de regi@~{a}o inv@'{a}lido"
 
@@ -3789,6 +3797,7 @@ msgstr "%s: n@~{a}o posso abrir %s para escrita: %s\n"
 #~ msgstr "..."
 
 #, fuzzy
+#~| msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 #~ msgid "Usage: %s [OPTION]... FILE...\n"
 #~ msgstr "Uso: %s [OP@,{C}@~{A}O]... ARQUIVO-TEXI...\n"
 
@@ -3810,9 +3819,3 @@ msgstr "%s: n@~{a}o posso abrir %s para escrita: %s\n"
 
 #~ msgid " --           end option processing"
 #~ msgstr " --           fim do tratamento de op@,{c}@~{a}o"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Tags Desatualizadas ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Subarquivo: %s"

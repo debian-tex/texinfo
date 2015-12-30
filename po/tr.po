@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
 "PO-Revision-Date: 2015-03-13 09:29-0500\n"
 "Last-Translator: Eyüp Hakan Duran <hakan_duran@hotmail.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -49,9 +49,9 @@ msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: '--%s' seçeneği bir argümanla kullanılır\n"
 
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
-#, fuzzy, c-format
+#, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: '%c%s' seçeneği bilinmiyor\n"
+msgstr "%s: '--%s' seçeneği bilinmiyor\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, c-format
@@ -384,7 +384,7 @@ msgstr "İndeks konusu"
 msgid "No available info files have '%s' in their indices."
 msgstr "Mevcut bilgi dosyalarından hiçbirisinin indisinde '%s' yok."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Dosya karakter kodlamasını dönüştürmede hata."
@@ -1054,7 +1054,7 @@ msgstr "Uğramış olduğunuz düğümü seçiniz: "
 msgid "The reference disappeared! (%s)."
 msgstr "Referans yokoldu! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Terminal ilklendirilemiyor: %s\n"
@@ -3265,7 +3265,7 @@ msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "tanınamayan TEXINFO_OUTPUT_FORMAT değeri `%s' yok sayılıyor.\n"
 
 #: tp/texi2any.pl:729
-#, fuzzy, perl-format
+#, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Kullanım: %s [SEÇENEK]... TEXINFO-DOSYASI...\n"
 
@@ -3657,48 +3657,6 @@ msgstr "%s: %s dahili bağlantı dosyasını kapatmada hata: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: %s yazmak için açılamıyorı: %s\n"
 
-#, fuzzy
-#~ msgid "%s: unrecognized option `%s'\n"
-#~ msgstr "%s: '--%s' seçeneği bilinmiyor\n"
-
-#, fuzzy
-#~ msgid "%s is not a Texinfo index file\n"
-#~ msgstr "%s: bir texinfo indeks dosyası değil"
-
-#, fuzzy
-#~ msgid "Usage: %s [OPTION]... FILE...\n"
-#~ msgstr "Kullanım: %s [SEÇENEK]... TEXINFO-DOSYASI...\n"
-
-#, fuzzy
-#~ msgid "Generate a sorted index for each TeX output FILE."
-#~ msgstr "Her TeX çıktı DOSYAsı için sıralanmış bir indeks oluşturur.\n"
-
-#, fuzzy
-#~ msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
-#~ msgstr ""
-#~ "Genellikle DOSYA... bir `foo.texi' belgesi için `foo.%c%c' olarak "
-#~ "belirtilir.\n"
-
-#, fuzzy
-#~ msgid "Options:"
-#~ msgstr ""
-#~ "\n"
-#~ "Seçenekler:\n"
-
-#, fuzzy
-#~ msgid " -h, --help   display this help and exit"
-#~ msgstr "bu yardımı görüntüler ve çıkar"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "..*** Eskimiş Etiketler ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Altdosya: %s"
-
-#, fuzzy
-#~ msgid "Underline cross-references and menu entries"
-#~ msgstr "parantez içindeki çapraz başvurular için @pxref kullanınız"
-
 #~ msgid ""
 #~ "\n"
 #~ "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -3709,6 +3667,12 @@ msgstr "%s: %s yazmak için açılamıyorı: %s\n"
 #~ "Yazılım hatalarını bug-texinfo@gnu.org'a,\n"
 #~ "genel soru ve tartışmaları help-texinfo@gnu.org'a gönderiniz.\n"
 #~ "Texinfo anasayfası: http://www.gnu.org/software/texinfo/"
+
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "..*** Eskimiş Etiketler ***"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Altdosya: %s"
 
 #~ msgid "Insert this character"
 #~ msgstr "Bu karakteri yerleştirir"
@@ -3991,11 +3955,33 @@ msgstr "%s: %s yazmak için açılamıyorı: %s\n"
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "ya da: texi2any [SEÇENEK]... TEXINFO-DOSYASI...\n"
 
+#~ msgid "display this help and exit"
+#~ msgstr "bu yardımı görüntüler ve çıkar"
+
 #~ msgid "send output to FILE"
 #~ msgstr "çıktıyı DOSYA'ya gönderir"
 
+#~ msgid "Generate a sorted index for each TeX output FILE.\n"
+#~ msgstr "Her TeX çıktı DOSYAsı için sıralanmış bir indeks oluşturur.\n"
+
+#~ msgid ""
+#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+#~ msgstr ""
+#~ "Genellikle DOSYA... bir `foo.texi' belgesi için `foo.%c%c' olarak "
+#~ "belirtilir.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Options:\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Seçenekler:\n"
+
 #~ msgid "failure reopening %s"
 #~ msgstr "%s'i yeniden açmada hata"
+
+#~ msgid "%s: not a texinfo index file"
+#~ msgstr "%s: bir texinfo indeks dosyası değil"
 
 #~ msgid "No page number in %s"
 #~ msgstr "%s'de sayfa numarası yok"
@@ -4372,6 +4358,9 @@ msgstr "%s: %s yazmak için açılamıyorı: %s\n"
 
 #~ msgid "End of file reached while looking for `.' or `,'"
 #~ msgstr "`.' ya da `,'ararken dosya sonuna ulaşıldı"
+
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "parantez içindeki çapraz başvurular için @pxref kullanınız"
 
 #~ msgid "First argument to @inforef may not be empty"
 #~ msgstr "@inforef'e ilk argüman boş olmayabilir"

@@ -241,16 +241,14 @@ FALLBACK:
 DONTFALLBACK: ;
 } # end BEGIN
 
+# NB Don't add more functions down here, because this can cause an error
+# with some versions of Perl, connected with the typeglob assignment just
+# above.  ("Can't call mro_method_changed_in() on anonymous symbol table").
+#
+# See http://perl5.git.perl.org/perl.git/commitdiff/03d9f026ae253e9e69212a3cf6f1944437e9f070?hp=ac73ea1ec401df889d312b067f78b618f7ffecc3
+#
+# (change to Perl interpreter on 22 Oct 2011)
 
-# Preloaded methods go here.
-
-#########################################################################
-
-# Used for debugging.  Not implemented.
-sub dump($)
-{
-  return "\n";
-}
 
 1;
 __END__

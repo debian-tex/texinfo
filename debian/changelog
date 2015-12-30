@@ -1,4 +1,4 @@
-texinfo (6.0.90.dfsg.1-1) unstable; urgency=medium
+texinfo (6.0.91.dfsg.1-1) unstable; urgency=medium
 
   * new upstream (pre)release:
     . support info files in sub directories (Closes: #792328)
@@ -8,7 +8,7 @@ texinfo (6.0.90.dfsg.1-1) unstable; urgency=medium
   * do not patch out version number from automake calls
   * warn_missing_tex: add remark to the original warning message
 
- -- Norbert Preining <preining@debian.org>  Fri, 25 Dec 2015 09:21:09 +0900
+ -- Norbert Preining <preining@debian.org>  Wed, 30 Dec 2015 15:32:32 +0900
 
 texinfo (6.0.0.dfsg.1-4) unstable; urgency=medium
 

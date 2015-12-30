@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
 "PO-Revision-Date: 2014-08-11 17:30+0700\n"
 "Last-Translator: Arif E. Nugroho <arif_endro@yahoo.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -47,9 +47,9 @@ msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: opsi '--%s' membutuhkan sebuah argumen\n"
 
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
-#, fuzzy, c-format
+#, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: opsi tidak dikenal '%c%s'\n"
+msgstr "%s: opsi tidak dikenal '--%s'\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, c-format
@@ -385,7 +385,7 @@ msgstr "Indeks apropos: "
 msgid "No available info files have '%s' in their indices."
 msgstr "Info berkas tidak tersedia memiliki `%s' dalam indicesnya."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr ""
@@ -1068,7 +1068,7 @@ msgstr "Pilih titik yang dikunjungi: "
 msgid "The reference disappeared! (%s)."
 msgstr "Referensi menghilang! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Terminal cannot be initialized: %s\n"
@@ -2892,9 +2892,9 @@ msgid "non-hex digits in argument for @U: %s"
 msgstr "Argumen ke @%s: %s buruk"
 
 #: tp/Texinfo/Parser.pm:5399
-#, fuzzy, perl-format
+#, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
-msgstr "Argumen ke @%s: %s buruk"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:5412
 #, perl-format
@@ -3662,59 +3662,6 @@ msgstr "%s: mengabaikan keluaran link internal kedua `%s'. %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: tidak dapat membuka %s --css-file: %s\n"
 
-#, fuzzy
-#~ msgid "%s: unrecognized option `%s'\n"
-#~ msgstr "%s: opsi tidak dikenal '--%s'\n"
-
-#, fuzzy
-#~ msgid "%s is not a Texinfo index file\n"
-#~ msgstr "%s: bukan sebuah berkas indeks texinfo"
-
-#, fuzzy
-#~ msgid "Usage: %s [OPTION]... FILE...\n"
-#~ msgstr "Penggunaan: %s [OPSI]... BERKAS...\n"
-
-#, fuzzy
-#~ msgid "Generate a sorted index for each TeX output FILE."
-#~ msgstr "Buat sebuah indeks terurut untuk setiap BERKAS keluaran Tex.\n"
-
-#, fuzzy
-#~ msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
-#~ msgstr ""
-#~ "Biasanya BERKAS... dispesifikasikan sebagai `foo.%c%c' untuk sebuah "
-#~ "dokumen `foo.texi'.\n"
-
-#, fuzzy
-#~ msgid "Options:"
-#~ msgstr ""
-#~ "\n"
-#~ "Opsi:\n"
-
-#, fuzzy
-#~ msgid " -h, --help   display this help and exit"
-#~ msgstr "tampilkan bantuan ini dan keluar"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Tags sudah kadaluarsa ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Subfile: %s"
-
-#, fuzzy
-#~ msgid "Underline cross-references and menu entries"
-#~ msgstr "untuk referensi silang dalam tanda kurung, gunakan @pxref"
-
-#~ msgid ""
-#~ "\n"
-#~ "Email bug reports to bug-texinfo@gnu.org,\n"
-#~ "general questions and discussion to help-texinfo@gnu.org.\n"
-#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
-#~ msgstr ""
-#~ "\n"
-#~ "Email laporan bug ke bug-texinfo@gnu.org,\n"
-#~ "pertanyaan umum dan diskusi ke help-texinfo@gnu.org.\n"
-#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
-
 #~ msgid "Insert this character"
 #~ msgstr "Masukan karakter ini"
 
@@ -3739,6 +3686,17 @@ msgstr "%s: tidak dapat membuka %s --css-file: %s\n"
 
 #~ msgid "File names matching `%s'"
 #~ msgstr "Tidak cocok `%s'"
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Email laporan bug ke bug-texinfo@gnu.org,\n"
+#~ "pertanyaan umum dan diskusi ke help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
 
 #~ msgid ""
 #~ "Basic Commands in Info Windows\n"
@@ -3983,17 +3941,45 @@ msgstr "%s: tidak dapat membuka %s --css-file: %s\n"
 #~ msgid "Internally used by \\[universal-argument]"
 #~ msgstr "Secara internal digunakan oleh \\[argumen-universal]"
 
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Tags sudah kadaluarsa ***"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Subfile: %s"
+
 #~ msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "Penggunaan: [OPSI]... BERKAS-TEXINFO...\n"
 
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "Penggunaan: [OPSI]... BERKAS-TEXINFO...\n"
 
+#~ msgid "display this help and exit"
+#~ msgstr "tampilkan bantuan ini dan keluar"
+
 #~ msgid "send output to FILE"
 #~ msgstr "kirim keluaran ke BERKAS"
 
+#~ msgid "Generate a sorted index for each TeX output FILE.\n"
+#~ msgstr "Buat sebuah indeks terurut untuk setiap BERKAS keluaran Tex.\n"
+
+#~ msgid ""
+#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+#~ msgstr ""
+#~ "Biasanya BERKAS... dispesifikasikan sebagai `foo.%c%c' untuk sebuah "
+#~ "dokumen `foo.texi'.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Options:\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Opsi:\n"
+
 #~ msgid "failure reopening %s"
 #~ msgstr "gagal membuka kembali %s"
+
+#~ msgid "%s: not a texinfo index file"
+#~ msgstr "%s: bukan sebuah berkas indeks texinfo"
 
 #~ msgid "No page number in %s"
 #~ msgstr "Tidak ada nomor halaman dalam %s"
@@ -4371,6 +4357,9 @@ msgstr "%s: tidak dapat membuka %s --css-file: %s\n"
 
 #~ msgid "End of file reached while looking for `.' or `,'"
 #~ msgstr "Akhir dari berkas tercapai ketika melihat untuk `.' atau `,'"
+
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "untuk referensi silang dalam tanda kurung, gunakan @pxref"
 
 #~ msgid "First argument to @inforef may not be empty"
 #~ msgstr "Argumen pertama ke @inforef tidak boleh kosong"

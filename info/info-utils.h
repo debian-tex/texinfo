@@ -1,5 +1,5 @@
 /* info-utils.h -- Exported functions and variables from info-utils.c.
-   $Id: info-utils.h 6528 2015-08-14 18:57:51Z gavin $   
+   $Id: info-utils.h 6892 2015-12-25 14:40:58Z eliz $   
 
    Copyright 1993, 1996, 1998, 2002, 2003, 2004, 2007, 2011, 2012, 2013,
    2014 Free Software Foundation, Inc.
@@ -123,7 +123,7 @@ size_t text_buffer_vprintf (struct text_buffer *buf, const char *format,
 size_t text_buffer_space_left (struct text_buffer *buf);
 #if HAVE_ICONV
 size_t text_buffer_iconv (struct text_buffer *buf, iconv_t iconv_state,
-                          char **inbuf, size_t *inbytesleft);
+                          ICONV_CONST char **inbuf, size_t *inbytesleft);
 #endif
 size_t text_buffer_add_string (struct text_buffer *buf, const char *str,
 			       size_t len);

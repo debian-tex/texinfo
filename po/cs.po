@@ -17,10 +17,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 5.9.93\n"
+"Project-Id-Version: texinfo 6.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
-"PO-Revision-Date: 2015-06-07 21:51+0200\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
+"PO-Revision-Date: 2015-12-28 16:11+0100\n"
 "Last-Translator: Petr Pisar <petr.pisar@atlas.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "Language: cs\n"
@@ -393,7 +393,7 @@ msgstr "Téma rejstříku"
 msgid "No available info files have '%s' in their indices."
 msgstr "Žádné dostupné info soubory nemají ve svých rejstřících „%s“."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Chyba při převodu kódování znaků souboru."
@@ -1064,7 +1064,7 @@ msgstr "Vyberte navštívený uzel: "
 msgid "The reference disappeared! (%s)."
 msgstr "Odkaz se ztratil! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Terminál nelze inicializovat: %s\n"
@@ -1515,29 +1515,29 @@ msgstr "Hledaný řetězec je příliš krátký"
 #: info/session.c:4462
 #, c-format
 msgid "Going back to last match from %s"
-msgstr ""
+msgstr "Návrat zpět na poslední shodu %s"
 
 #: info/session.c:4486 info/session.c:4596
-#, fuzzy, c-format
+#, c-format
 msgid "No more matches."
-msgstr "Žádná shoda"
+msgstr "Žádné další shody."
 
 #: info/session.c:4623
 msgid "Search this node and subnodes for a string."
-msgstr ""
+msgstr "Prohledání tohoto uzlu a poduzlů na řetězec."
 
 #: info/session.c:4644
 msgid "Go to next match in Info sub-tree"
-msgstr ""
+msgstr "Přesun na další shodu v podstromě Infa"
 
 #: info/session.c:4648 info/session.c:4660
 #, c-format
 msgid "No active search"
-msgstr ""
+msgstr "Hledání není aktivní"
 
 #: info/session.c:4656
 msgid "Go to previous match in Info sub-tree"
-msgstr ""
+msgstr "Přesun na předchozí shodu v podstromě Infa"
 
 #: info/session.c:4669
 msgid "Read a string and search for it case-sensitively"
@@ -1728,9 +1728,8 @@ msgid "Method to use to track mouse events"
 msgstr "Způsob sledování událostí myši"
 
 #: info/variables.c:138
-#, fuzzy
 msgid "How to follow a cross-reference"
-msgstr "Přesun na následující křížový odkaz"
+msgstr "Jak následovat křížový odkaz"
 
 #: info/variables.c:142
 msgid "Highlight search matches"
@@ -1738,20 +1737,19 @@ msgstr "Zvýrazní výsledky hledání"
 
 #: info/variables.c:146
 msgid "Styles for links"
-msgstr ""
+msgstr "Styly odkazů"
 
 #: info/variables.c:150
 msgid "Styles for active links"
-msgstr ""
+msgstr "Styly aktivních odkazů"
 
 #: info/variables.c:154
-#, fuzzy
 msgid "Styles for search matches"
-msgstr "Odstraní zobrazené výsledky hledání"
+msgstr "Styly výsledků hledání"
 
 #: info/variables.c:158
 msgid "How to print the information line at the start of a node"
-msgstr ""
+msgstr "Jak vypisovat řádek s údaji na začátku uzlu"
 
 #: info/variables.c:165
 msgid "Explain the use of a variable"
@@ -1789,9 +1787,9 @@ msgid "-%s---Info: %s, %ld lines --%s--"
 msgstr "-%s---Info: %s, řádků: %ld --%s--"
 
 #: info/window.c:970
-#, fuzzy, c-format
+#, c-format
 msgid "-%s---Info: (%s)%s, %ld lines --%s--"
-msgstr "-%s%s-Info: (%s)%s, řádků: %ld --%s--"
+msgstr "-%s---Info: (%s)%s, řádků: %ld --%s--"
 
 #: install-info/install-info.c:292
 #, c-format
@@ -3671,6 +3669,12 @@ msgstr "%s: chyba při zavírání souboru %s s vnitřními odkazy: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: %s nebylo možné otevřít pro zápis: %s\n"
 
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Značky jsou zastaralé ***"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Podsoubor: %s"
+
 #~ msgid "%s: unrecognized option `%s'\n"
 #~ msgstr "%s: nerozpoznaný přepínač „%s“\n"
 
@@ -3709,12 +3713,6 @@ msgstr "%s: %s nebylo možné otevřít pro zápis: %s\n"
 
 #~ msgid " --           end option processing"
 #~ msgstr " --           konec přepínačů"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Značky jsou zastaralé ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Podsoubor: %s"
 
 #~ msgid ""
 #~ "\n"

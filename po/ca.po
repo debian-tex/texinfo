@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
 "PO-Revision-Date: 2015-06-08 17:07+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan <ca@dodds.net>\n"
@@ -384,7 +384,7 @@ msgstr "Tema d'índex"
 msgid "No available info files have '%s' in their indices."
 msgstr "Cap dels fitxers info disponibles tenen `%s' als seus índexs."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr ""
@@ -1075,7 +1075,7 @@ msgstr "Node visitat seleccionat: "
 msgid "The reference disappeared! (%s)."
 msgstr "La referència ha desaparegut! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "La terminal no es pot inicialitzar: %s\n"
@@ -3734,6 +3734,12 @@ msgstr "%s: error en tancar els fitxers d'enllaços interns %s: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: no s'ha pogut obrir %s per a escriptura: %s\n"
 
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Etiquetes fora de Data ***"
+
+#~ msgid " Subfile: %s"
+#~ msgstr "Subfitxer: %s"
+
 #~ msgid "%s: unrecognized option `%s'\n"
 #~ msgstr "%s: opció no reconeguda '%s'\n"
 
@@ -3774,12 +3780,6 @@ msgstr "%s: no s'ha pogut obrir %s per a escriptura: %s\n"
 
 #~ msgid " --           end option processing"
 #~ msgstr " --           finalitza el processament d'opcions"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Etiquetes fora de Data ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr "Subfitxer: %s"
 
 #~ msgid ""
 #~ "\n"

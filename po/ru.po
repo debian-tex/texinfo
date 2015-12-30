@@ -7,12 +7,12 @@
 # Yuri Kozlov <yuray@komyakino.ru>, 2013, 2015.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 5.9.91\n"
+"Project-Id-Version: texinfo 6.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
-"PO-Revision-Date: 2015-05-05 19:05+0300\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
+"PO-Revision-Date: 2015-12-23 19:00+0300\n"
 "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
-"Language-Team: Russian <gnu@mx.ru>\n"
+"Language-Team: Russian <gnu@d07.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -51,9 +51,9 @@ msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: для параметра «--%s» требуется аргумент\n"
 
 #: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
-#, fuzzy, c-format
+#, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: нераспознанный параметр «%c%s»\n"
+msgstr "%s: нераспознанный параметр «--%s»\n"
 
 #: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
 #, c-format
@@ -386,7 +386,7 @@ msgstr "Указатель тем"
 msgid "No available info files have '%s' in their indices."
 msgstr "Ни один из info-файлов не содержит «%s» в алфавитных указателях."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Ошибка при преобразовании кодировки символов файла."
@@ -1057,7 +1057,7 @@ msgstr "Выбрать посещённую ранее ноду: "
 msgid "The reference disappeared! (%s)."
 msgstr "Ссылка исчезла! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Невозможно инициализировать терминал: %s\n"
@@ -1507,29 +1507,29 @@ msgstr "Слишком короткая строка поиска"
 #: info/session.c:4462
 #, c-format
 msgid "Going back to last match from %s"
-msgstr ""
+msgstr "Переходим обратно к последнему совпадению из %s"
 
 #: info/session.c:4486 info/session.c:4596
-#, fuzzy, c-format
+#, c-format
 msgid "No more matches."
-msgstr "Нет соответствия"
+msgstr "Больше нет совпадений."
 
 #: info/session.c:4623
 msgid "Search this node and subnodes for a string."
-msgstr ""
+msgstr "Искать строку в этой ноде и поднодах."
 
 #: info/session.c:4644
 msgid "Go to next match in Info sub-tree"
-msgstr ""
+msgstr "Перейти к следующему совпадению в поддереве Info"
 
 #: info/session.c:4648 info/session.c:4660
 #, c-format
 msgid "No active search"
-msgstr ""
+msgstr "Нет активного поиска"
 
 #: info/session.c:4656
 msgid "Go to previous match in Info sub-tree"
-msgstr ""
+msgstr "Перейти к предыдущему совпадению в поддереве Info"
 
 #: info/session.c:4669
 msgid "Read a string and search for it case-sensitively"
@@ -1725,9 +1725,8 @@ msgid "Method to use to track mouse events"
 msgstr "Метод отслеживания событий мыши"
 
 #: info/variables.c:138
-#, fuzzy
 msgid "How to follow a cross-reference"
-msgstr "Перейти к следующей перекрёстной ссылке"
+msgstr "Как переходить к следующей перекрёстной ссылке"
 
 #: info/variables.c:142
 msgid "Highlight search matches"
@@ -1735,20 +1734,19 @@ msgstr "Подсветить совпадения поиска"
 
 #: info/variables.c:146
 msgid "Styles for links"
-msgstr ""
+msgstr "Стили ссылок"
 
 #: info/variables.c:150
 msgid "Styles for active links"
-msgstr ""
+msgstr "Стили активных ссылок"
 
 #: info/variables.c:154
-#, fuzzy
 msgid "Styles for search matches"
-msgstr "Очистить показанные совпадения поиска"
+msgstr "Стили для совпадений поиска"
 
 #: info/variables.c:158
 msgid "How to print the information line at the start of a node"
-msgstr ""
+msgstr "Как показывать информационную строку в начале ноды"
 
 #: info/variables.c:165
 msgid "Explain the use of a variable"
@@ -1786,9 +1784,9 @@ msgid "-%s---Info: %s, %ld lines --%s--"
 msgstr "-%s---Info: %s, строк: %ld --%s--"
 
 #: info/window.c:970
-#, fuzzy, c-format
+#, c-format
 msgid "-%s---Info: (%s)%s, %ld lines --%s--"
-msgstr "-%s%s-Info: (%s)%s, %ld строк --%s--"
+msgstr "-%s---Info: (%s)%s, %ld строк --%s--"
 
 #: install-info/install-info.c:292
 #, c-format
@@ -3273,7 +3271,7 @@ msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "игнорируется неизвестное значение TEXINFO_OUTPUT_FORMAT «%s»\n"
 
 #: tp/texi2any.pl:729
-#, fuzzy, perl-format
+#, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Использование: %s [ПАРАМЕТР]… ФАЙЛ-TEXINFO…\n"
 
@@ -3663,44 +3661,6 @@ msgstr "%s: ошибка при закрытии файла внутренних
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: невозможно открыть %s для записи: %s\n"
 
-#, fuzzy
-#~ msgid "%s: unrecognized option `%s'\n"
-#~ msgstr "%s: нераспознанный параметр «--%s»\n"
-
-#, fuzzy
-#~ msgid "%s is not a Texinfo index file\n"
-#~ msgstr "%s: не texinfo-файл с алфавитным указателем"
-
-#, fuzzy
-#~ msgid "Usage: %s [OPTION]... FILE...\n"
-#~ msgstr "Использование: %s [ПАРАМЕТР]… ФАЙЛ-TEXINFO…\n"
-
-#, fuzzy
-#~ msgid "Generate a sorted index for each TeX output FILE."
-#~ msgstr ""
-#~ "Создаёт сортированный алфавитный указатель для\n"
-#~ "каждого выходного ФАЙЛА TeX.\n"
-
-#, fuzzy
-#~ msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
-#~ msgstr "Обычно, ФАЙЛ… для документа «foo.texi» задаётся как «foo.%c%c».\n"
-
-#, fuzzy
-#~ msgid "Options:"
-#~ msgstr ""
-#~ "\n"
-#~ "Параметры:\n"
-
-#, fuzzy
-#~ msgid " -h, --help   display this help and exit"
-#~ msgstr "показать эту справку и выйти"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Теги устарели ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Подфайл: %s"
-
 #~ msgid ""
 #~ "\n"
 #~ "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -3711,6 +3671,12 @@ msgstr "%s: невозможно открыть %s для записи: %s\n"
 #~ "Об ошибках сообщайте по адресу bug-texinfo@gnu.org,\n"
 #~ "общее обсуждение и вопросы направляйте по адресу help-texinfo@gnu.org.\n"
 #~ "Домашняя страница Texinfo: http://www.gnu.org/software/texinfo/"
+
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Теги устарели ***"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Подфайл: %s"
 
 #~ msgid "Insert this character"
 #~ msgstr "Вставить этот символ"
@@ -3983,11 +3949,33 @@ msgstr "%s: невозможно открыть %s для записи: %s\n"
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "  или:  texi2any [ПАРАМЕТР]… TEXINFO-ФАЙЛ…\n"
 
+#~ msgid "display this help and exit"
+#~ msgstr "показать эту справку и выйти"
+
 #~ msgid "send output to FILE"
 #~ msgstr "записать вывод в ФАЙЛ"
 
+#~ msgid "Generate a sorted index for each TeX output FILE.\n"
+#~ msgstr ""
+#~ "Создаёт сортированный алфавитный указатель для\n"
+#~ "каждого выходного ФАЙЛА TeX.\n"
+
+#~ msgid ""
+#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+#~ msgstr "Обычно, ФАЙЛ… для документа «foo.texi» задаётся как «foo.%c%c».\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Options:\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Параметры:\n"
+
 #~ msgid "failure reopening %s"
 #~ msgstr "ошибка повторного открытия %s"
+
+#~ msgid "%s: not a texinfo index file"
+#~ msgstr "%s: не texinfo-файл с алфавитным указателем"
 
 #~ msgid "No page number in %s"
 #~ msgstr "В %s нет номера страницы"

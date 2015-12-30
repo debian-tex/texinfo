@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c 6877 2015-12-19 16:42:47Z gavin $
+   $Id: info-utils.c 6896 2015-12-26 10:11:07Z gavin $
 
    Copyright 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012,
    2013, 2014, 2015 Free Software Foundation, Inc.
@@ -830,14 +830,14 @@ copy_converting (long n)
 #if !HAVE_ICONV
   return 0;
 #else
-  size_t bytes_left;
+  size_t bytes_left, orig_bytes_left;
   int extra_at_end;
   size_t iconv_ret;
   long output_start;
 
   size_t utf8_char_free; 
   char utf8_char[4]; /* Maximum 4 bytes in a UTF-8 character */
-  char *utf8_char_ptr;
+  char *utf8_char_ptr, *orig_inptr;
   size_t i;
   
   /* Use n as an estimate of how many bytes will be required
@@ -850,9 +850,15 @@ copy_converting (long n)
   while (bytes_left >= 0)
     {
       iconv_ret = text_buffer_iconv (&output_buf, iconv_to_output,
-                                     &inptr, &bytes_left);
+                                     (ICONV_CONST char **)&inptr, &bytes_left);
 
-      if (iconv_ret != (size_t) -1)
+      /* Make sure libiconv flushes out the last converted character.
+	 This is required when the conversion is stateful, in which
+	 case libiconv might not output the last charcater, waiting to
+	 see whether it should be combined with the next one.  */
+      if (iconv_ret != (size_t) -1
+	  && text_buffer_iconv (&output_buf, iconv_to_output,
+				NULL, NULL) != (size_t) -1)
         /* Success: all of input converted. */
         break;
 
@@ -864,9 +870,6 @@ copy_converting (long n)
              and try again. */
           text_buffer_alloc (&output_buf, n);
           continue;
-        case EILSEQ:
-          /* Byte sequence in input buffer not recognized. */
-          break;
         case EINVAL:
           /* Incomplete byte sequence at end of input buffer.  Try to read
              more. */
@@ -885,16 +888,21 @@ copy_converting (long n)
               bytes_left = 0;
             }
           continue;
-        default: /* Unknown error - abort */
+        default: /* Unknown error */
           info_error (_("Error converting file character encoding."));
 
           /* Skip past current input and hope we don't get an
              error next time. */
           inptr += bytes_left;
           return 0;
+        case EILSEQ:
+          /* Byte sequence in input not recognized.  Degrade to ASCII.  */
+          break;
         }
 
-      /* Degrade to ASCII. */
+      /* Flush any waiting input in iconv_to_output and enter the
+         default shift state. */
+      text_buffer_iconv (&output_buf, iconv_to_output, NULL, NULL);
       
       if (file_is_in_utf8)
         {
@@ -912,25 +920,47 @@ copy_converting (long n)
       /* We want to read exactly one character.  Do this by
          restricting size of output buffer. */
       utf8_char_ptr = utf8_char;
+      orig_inptr = inptr;
+      orig_bytes_left = bytes_left;
       for (i = 1; i <= 4; i++)
         {
           utf8_char_free = i;
-          iconv_ret = iconv (iconv_to_utf8, &inptr, &bytes_left,
-                             &utf8_char_ptr, &utf8_char_free);
-          /* If we managed to write a character: */
-          if (utf8_char_ptr > utf8_char) break;
+          errno = 0;
+          iconv_ret = iconv (iconv_to_utf8, (ICONV_CONST char **)&inptr,
+                             &bytes_left, &utf8_char_ptr, &utf8_char_free);
+          if ((iconv_ret == (size_t) -1 && errno != E2BIG)
+              /* If we managed to convert a character: */
+              || utf8_char_ptr > utf8_char)
+            break;
         }
 
       /* errno == E2BIG if iconv ran out of output buffer,
          which is expected. */
       if (iconv_ret == (size_t) -1 && errno != E2BIG)
-        /* Character is not recognized.  Copy a single byte. */
-        copy_direct (1);
+	{
+	  /* Character is not recognized.  Copy a single byte.  */
+	  inptr = orig_inptr;	/* iconv might have incremented inptr  */
+	  copy_direct (1);
+	  bytes_left = orig_bytes_left - 1;
+	}
       else
         {
           utf8_char_ptr = utf8_char;
           /* i is width of UTF-8 character */
           degrade_utf8 (&utf8_char_ptr, &i);
+	  /* If we are done, make sure iconv flushes the last character.  */
+	  if (bytes_left <= 0)
+	    {
+	      utf8_char_ptr = utf8_char;
+	      i = 4;
+	      iconv (iconv_to_utf8, NULL, NULL,
+		     &utf8_char_ptr, &utf8_char_free);
+	      if (utf8_char_ptr > utf8_char)
+		{
+		  utf8_char_ptr = utf8_char;
+		  degrade_utf8 (&utf8_char_ptr, &i);
+		}
+	    }
         }
     }
 
@@ -1925,7 +1955,7 @@ text_buffer_space_left (struct text_buffer *buf)
 /* Run iconv using text buffer as output buffer. */
 size_t
 text_buffer_iconv (struct text_buffer *buf, iconv_t iconv_state,
-                   char **inbuf, size_t *inbytesleft)
+                   ICONV_CONST char **inbuf, size_t *inbytesleft)
 {
   size_t out_bytes_left;
   char *outptr;
@@ -1933,7 +1963,7 @@ text_buffer_iconv (struct text_buffer *buf, iconv_t iconv_state,
 
   outptr = text_buffer_base (buf) + text_buffer_off (buf);
   out_bytes_left = text_buffer_space_left (buf);
-  iconv_ret = iconv (iconv_to_output, inbuf, inbytesleft,
+  iconv_ret = iconv (iconv_state, inbuf, inbytesleft,
                      &outptr, &out_bytes_left);
 
   text_buffer_off (buf) = outptr - text_buffer_base (buf);    

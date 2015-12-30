@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-5.9.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
 "PO-Revision-Date: 2015-06-07 11:04+0200\n"
 "Last-Translator: Antonio Ceballos <aceballos@gmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
@@ -393,7 +393,7 @@ msgstr "Tema del índice"
 msgid "No available info files have '%s' in their indices."
 msgstr "No existen ficheros Info que contengan la palabra '%s' en sus índices."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Error al convertir la codificación de caracteres del fichero."
@@ -1100,7 +1100,7 @@ msgstr "Seleccionar nodo visitado: "
 msgid "The reference disappeared! (%s)."
 msgstr "¡La referencia ha desaparecido! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "No se pudo inicializar el terminal: %s\n"
@@ -3899,6 +3899,12 @@ msgstr "%s: error al cerrar el fichero de enlaces internos %s: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: no se pudo abrir %s para escritura: %s\n"
 
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Etiquetas antiguas ***"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Sub-fichero: %s"
+
 #~ msgid "%s: unrecognized option `%s'\n"
 #~ msgstr "%s: opción desconocida '%s'\n"
 
@@ -3939,16 +3945,6 @@ msgstr "%s: no se pudo abrir %s para escritura: %s\n"
 
 #~ msgid " --           end option processing"
 #~ msgstr " --           fin del procesamiento de las opciones"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Etiquetas antiguas ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Sub-fichero: %s"
-
-#, fuzzy
-#~ msgid "Underline cross-references and menu entries"
-#~ msgstr "Para generar enlaces entre paréntesis utilize `@pxref'"
 
 #~ msgid ""
 #~ "\n"
@@ -4664,6 +4660,9 @@ msgstr "%s: no se pudo abrir %s para escritura: %s\n"
 
 #~ msgid "End of file reached while looking for `.' or `,'"
 #~ msgstr "Se alcanzó el fin de fichero mientras se esperaba ver `.' or `,'"
+
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "Para generar enlaces entre paréntesis utilize `@pxref'"
 
 #~ msgid "First argument to @inforef may not be empty"
 #~ msgstr "El primer argumento de `@inforef' siempre debería estar presente"

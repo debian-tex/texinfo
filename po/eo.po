@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
 "PO-Revision-Date: 2015-06-07 10:23+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -381,7 +381,7 @@ msgstr "Indeksa temo"
 msgid "No available info files have '%s' in their indices."
 msgstr "Malestas «%s» en la indeksoj de ĉiuj disponeblaj Info-dosieroj."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Eraro dum konverto de signara kodo."
@@ -1050,7 +1050,7 @@ msgstr "Elektu vizititan nodon: "
 msgid "The reference disappeared! (%s)."
 msgstr "La referenco malaperis! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Ne eblas agordi terminalon: %s\n"
@@ -3646,6 +3646,12 @@ msgstr "%s: eraro dum fermo de %s (dosiero de internaj ligoj): %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: ne eblas malfermi %s por skribi: %s\n"
 
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Etikedoj malaktualiĝis ***"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Subdosiero: %s"
+
 #~ msgid "%s: unrecognized option `%s'\n"
 #~ msgstr "%s: nekonata opcio «--%s»\n"
 
@@ -3684,16 +3690,6 @@ msgstr "%s: ne eblas malfermi %s por skribi: %s\n"
 
 #~ msgid " --           end option processing"
 #~ msgstr "  --                ne rekoni pluajn opciojn"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Etikedoj malaktualiĝis ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Subdosiero: %s"
-
-#, fuzzy
-#~ msgid "Underline cross-references and menu entries"
-#~ msgstr "por referencoj en krampoj, uzu „@pxref‟"
 
 #~ msgid ""
 #~ "\n"
@@ -4392,6 +4388,9 @@ msgstr "%s: ne eblas malfermi %s por skribi: %s\n"
 
 #~ msgid "End of file reached while looking for `.' or `,'"
 #~ msgstr "Dosierfino renkontiĝis dum serĉo de «.» aŭ «,»"
+
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "por referencoj en krampoj, uzu „@pxref‟"
 
 #~ msgid "First argument to @inforef may not be empty"
 #~ msgstr "La unua argumento de „@inforef‟ ne rajtas vaki"

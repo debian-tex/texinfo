@@ -7,10 +7,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 5.9.93\n"
+"Project-Id-Version: texinfo 6.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-19 16:34+0000\n"
-"PO-Revision-Date: 2015-06-07 15:47+0700\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
+"PO-Revision-Date: 2015-12-23 07:25+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
 "Language: vi\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: gnulib/lib/error.c:191
 msgid "Unknown system error"
-msgstr "Lỗi hệ thống không rõ"
+msgstr "Gặp lỗi hệ thống chưa biết"
 
 #: gnulib/lib/getopt.c:575 gnulib/lib/getopt.c:604
 #, c-format
@@ -386,7 +386,7 @@ msgstr "Mục lục theo chủ đề"
 msgid "No available info files have '%s' in their indices."
 msgstr "Không có tập tin thông tin sẵn sàng chứa “%s” trong chỉ mục ."
 
-#: info/info-utils.c:889
+#: info/info-utils.c:892
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Gặp lỗi khi chuyển đổi bộ mã ký tự tập tin."
@@ -446,10 +446,10 @@ msgid ""
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 "Tác quyền © %s Tổ chức Phần mềm Tự do.\n"
-"Giấy phép GPL pb3+: Giấy phép Công cộng GNU phiên bản 3 hay\n"
-"mới hơn <http://gnu.org/licenses/gpl.html>\n"
+"Giấy Phép Công Cộng GNU (GPL), phiên bản 3 hay sau <http://gnu.org/licenses/"
+"gpl.html>\n"
 "Đây là phần mềm tự do: bạn có quyền thay đổi và phát hành lại nó.\n"
-"KHÔNG CÓ BẢO HÀNH GÌ CẢ, với điều kiện được pháp luật cho phép\n"
+"KHÔNG CÓ BẢO HÀNH GÌ CẢ, với điều kiện được pháp luật cho phép.\n"
 
 #: info/info.c:981
 #, c-format
@@ -597,7 +597,7 @@ msgid ""
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
 "Hãy thông báo lỗi cho địa chỉ “bug-texinfo@gnu.org”,\n"
-"và gửi câu hỏi chung, thảo luận v.v. cho help-texinfo@gnu.org.\n"
+"và gửi câu hỏi chung, thảo luận v.v.. cho help-texinfo@gnu.org.\n"
 "Thông báo lỗi dịch cho: <http://translationproject.org/team/vi.html>.\n"
 "Trang chủ texinfo: http://www.gnu.org/software/texinfo/"
 
@@ -1053,7 +1053,7 @@ msgstr "Chọn nút đã xem: "
 msgid "The reference disappeared! (%s)."
 msgstr "Tham chiếu đã biến mất! (%s)."
 
-#: info/pcterm.c:211
+#: info/pcterm.c:212
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Thiết bị cuối không thể được khởi tạo: %s\n"
@@ -1503,29 +1503,29 @@ msgstr "Chuỗi tìm kiếm quá ngắn"
 #: info/session.c:4462
 #, c-format
 msgid "Going back to last match from %s"
-msgstr ""
+msgstr "Trở lại đến chỗ khớp cuối từ %s"
 
 #: info/session.c:4486 info/session.c:4596
-#, fuzzy, c-format
+#, c-format
 msgid "No more matches."
-msgstr "Không tìm thấy"
+msgstr "Không tìm thấy thêm nữa."
 
 #: info/session.c:4623
 msgid "Search this node and subnodes for a string."
-msgstr ""
+msgstr "Tìm một chuỗi trong nút này và nút con."
 
 #: info/session.c:4644
 msgid "Go to next match in Info sub-tree"
-msgstr ""
+msgstr "Đi đến chỗ khớp kế tiếp trong cây-con Info"
 
 #: info/session.c:4648 info/session.c:4660
 #, c-format
 msgid "No active search"
-msgstr ""
+msgstr "Không có tìm kiếm nào hiện đang hoạt động"
 
 #: info/session.c:4656
 msgid "Go to previous match in Info sub-tree"
-msgstr ""
+msgstr "Đi đến chỗ khớp kế trước trong cây-con Info"
 
 #: info/session.c:4669
 msgid "Read a string and search for it case-sensitively"
@@ -1714,9 +1714,8 @@ msgid "Method to use to track mouse events"
 msgstr "Phương thức dùng bám sát sự kiện con chuột"
 
 #: info/variables.c:138
-#, fuzzy
 msgid "How to follow a cross-reference"
-msgstr "Tới tham chiếu chéo kế"
+msgstr "Tới tham chiếu chéo thế nào"
 
 #: info/variables.c:142
 msgid "Highlight search matches"
@@ -1724,20 +1723,19 @@ msgstr "Tô sáng phần khớp mẫu"
 
 #: info/variables.c:146
 msgid "Styles for links"
-msgstr ""
+msgstr "Kiểu cho liên kết"
 
 #: info/variables.c:150
 msgid "Styles for active links"
-msgstr ""
+msgstr "Kiểu cho liên kết đang kích hoạt"
 
 #: info/variables.c:154
-#, fuzzy
 msgid "Styles for search matches"
-msgstr "Xóa trình bày khớp mẫu"
+msgstr "Kiểu cho khớp tìm kiếm"
 
 #: info/variables.c:158
 msgid "How to print the information line at the start of a node"
-msgstr ""
+msgstr "In dòng thông tin tại đầu của nút thế nào"
 
 #: info/variables.c:165
 msgid "Explain the use of a variable"
@@ -1775,9 +1773,9 @@ msgid "-%s---Info: %s, %ld lines --%s--"
 msgstr "-%s---Info: %s, %ld dòng  --%s--"
 
 #: info/window.c:970
-#, fuzzy, c-format
+#, c-format
 msgid "-%s---Info: (%s)%s, %ld lines --%s--"
-msgstr "-%s%s-Info: (%s)%s, %ld dòng  --%s--"
+msgstr "-%s---Info: (%s)%s, %ld dòng --%s--"
 
 #: install-info/install-info.c:292
 #, c-format
@@ -3711,6 +3709,12 @@ msgstr "%s: gặp lỗi khi đóng tập tin liên kết nội tại %s: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: không thể mở “%s” để ghi: %s\n"
 
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Thẻ quá cũ ***"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Tập tin phụ: %s"
+
 #~ msgid "%s: unrecognized option `%s'\n"
 #~ msgstr "%s: không nhận ra tùy chọn “--%s”\n"
 
@@ -3750,12 +3754,6 @@ msgstr "%s: không thể mở “%s” để ghi: %s\n"
 
 #~ msgid " --           end option processing"
 #~ msgstr " --           kết thúc xử lý tùy chọn"
-
-#~ msgid "--*** Tags out of Date ***"
-#~ msgstr "--*** Thẻ quá cũ ***"
-
-#~ msgid " Subfile: %s"
-#~ msgstr " Tập tin phụ: %s"
 
 #~ msgid ""
 #~ "\n"

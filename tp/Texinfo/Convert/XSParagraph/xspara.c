@@ -1,4 +1,5 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software
+   Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -125,13 +126,15 @@ size_t
 mbrtowc (wchar_t * __restrict__ pwc, const char * __restrict__ mbs, size_t n,
 	 mbstate_t * __restrict__ ps)
 {
+  int len = mbrlen (mbs, n, ps);
+
   if (mbs == NULL)
     return 0;
   else
     {
       wchar_t wc[2];
       size_t n_utf16 = MultiByteToWideChar (CP_UTF8, MB_ERR_INVALID_CHARS,
-					    mbs, n, wc, 2);
+					    mbs, len, wc, 2);
       if (n_utf16 == 0)
 	{
 	  errno = EILSEQ;
@@ -152,7 +155,7 @@ mbrtowc (wchar_t * __restrict__ pwc, const char * __restrict__ mbs, size_t n,
       if (pwc != NULL)
 	*pwc = wc[0];
 
-      return mbrlen (mbs, n, ps);
+      return len;
     }
 }
 
@@ -238,6 +241,37 @@ xspara_init (void)
   memcpy (dot, ".utf8", 6);
   if (setlocale (LC_CTYPE, utf8_locale))
     goto success;
+
+  /* Otherwise, look for any UTF-8 locale in the output of "locale -a". */
+  {
+  FILE *p;
+  char *line = 0;
+  size_t n = 0;
+  ssize_t ret;
+  p = popen ("locale -a", "r");
+  if (!p)
+    goto failure;
+  while (1)
+    {
+      ret = getline (&line, &n, p);
+      if (ret == (ssize_t) -1)
+        {
+          free (line);
+          pclose (p);
+          goto failure;
+        }
+      if (strstr (line, "UTF-8") || strstr (line, "utf8"))
+        {
+          line[ret - 1] = '\0';   /* Remove trailing newline. */
+          if (setlocale (LC_CTYPE, line))
+            {
+              free (line);
+              pclose (p);
+              goto success;
+            }
+        }
+    }
+  }
       
   if (1)
     {
@@ -264,11 +298,14 @@ xspara_new (HV *conf)
   dTHX; /* Perl boiler plate */
 
   /* Avoid leaking the memory used last time. */
-  free (state.space.text);
-  free (state.word.text);
+  TEXT saved_space = state.space, saved_word = state.word;
 
-  /* Default values for formatter. */
+  /* Default values for formatter, reusing storage. */
   memset (&state, 0, sizeof (state));
+  state.space = saved_space;
+  state.word = saved_word;
+  state.space.end = state.word.end = 0;
+
   state.max = 72;
   state.indent_length_next = -1; /* Special value meaning undefined. */
   state.end_sentence = -2; /* Special value meaning undefined. */
@@ -544,7 +581,7 @@ xspara__add_next (TEXT *result, char *word, int word_len, int transparent)
           wchar_t wc;
           size_t char_len;
 
-          char_len = mbrtowc (&wc, word, 10, NULL);
+          char_len = mbrtowc (&wc, word, word_len, NULL);
           if ((long) char_len > 0 && !iswspace (wc))
             {
               /* Make the pending space up to two spaces. */
@@ -569,13 +606,14 @@ xspara__add_next (TEXT *result, char *word, int word_len, int transparent)
         {
           /* Save last character in WORD */
           char *p = word + word_len;
+          int len = 0;
           while (p > word)
             {
-              p--;
-              if ((long) mbrlen(p, 10, NULL) > 0)
+              p--; len++;
+              if ((long) mbrlen(p, len, NULL) > 0)
                 {
                   wchar_t wc = L'\0';
-                  mbrtowc (&wc, p, 10, NULL);
+                  mbrtowc (&wc, p, len, NULL);
                   if (!wcschr (L".?!\"')]", wc))
                     {
                       state.last_letter = wc;
@@ -616,7 +654,7 @@ xspara__add_next (TEXT *result, char *word, int word_len, int transparent)
 
       while (left > 0)
         {
-          int char_len = mbrtowc (&w, p, 10, NULL);
+          int char_len = mbrtowc (&w, p, left, NULL);
           left -= char_len;
           p += char_len;
           len++;
@@ -746,6 +784,7 @@ char *
 xspara_add_text (char *text)
 {
   char *p = text;
+  int len;
   wchar_t wc;
   size_t char_len;
   TEXT result;
@@ -753,16 +792,17 @@ xspara_add_text (char *text)
 
   text_init (&result);
 
+  len = strlen (text); /* FIXME: Get this as an argument */
   state.end_line_count = 0;
 
-  while (*p)
+  while (len > 0)
     {
-      char_len = mbrtowc (&wc, p, 10, NULL);
+      char_len = mbrtowc (&wc, p, len, NULL);
       if ((long) char_len == 0)
         break; /* Null character. Shouldn't happen. */
       else if ((long) char_len < 0)
         {
-          p++; /* Invalid.  Just try to keep going. */
+          p++; len--; /* Invalid.  Just try to keep going. */
           continue;
         }
 
@@ -809,13 +849,14 @@ xspara_add_text (char *text)
                   if (state.end_sentence == 1
                       && !state.french_spacing)
                     {
-                      char *q = p + char_len;
                       wchar_t q_char;
                       size_t q_len;
                       int at_least_two = 0;
 
                       /* Check if the next character is whitespace as well. */
-                      q_len = mbrtowc (&q_char, q, 10, NULL);
+                      q_len = mbrtowc (&q_char,
+                                       p + char_len, len - char_len,
+                                       NULL);
                       if ((long) q_len > 0)
                         {
                           if (iswspace (q_char))
@@ -836,18 +877,20 @@ xspara_add_text (char *text)
 
                               TEXT new_space;
                               char *pspace;
+                              int pspace_left;
                               int len;
                               int i;
 
                               text_init (&new_space);
                               pspace = state.space.text;
+                              pspace_left = state.space.end;
                               state.space_counter = 0;
 
                               for (i = 0; i < 2; i++)
                                 {
                                   if (!*pspace)
                                     break;
-                                  len = mbrlen (pspace, 10, NULL);
+                                  len = mbrlen (pspace, pspace_left, NULL);
 
                                   /* Subtitute newlines in the pending space
                                      with spaces. */
@@ -858,12 +901,13 @@ xspara_add_text (char *text)
                                   state.space_counter++;
 
                                   pspace += len;
+                                  pspace_left -= len;
                                 }
 
                               state.space.end = 0;
                               text_append_n (&state.space,
                                              new_space.text, new_space.end);
-                              free (new_space.text);
+                              text_destroy (&new_space);
                             }
 
                           /* Now get characters from the input. */
@@ -875,8 +919,8 @@ xspara_add_text (char *text)
                                 text_append_n (&state.space, p, char_len);
                               state.space_counter++;
 
-                              p += char_len;
-                              char_len = mbrtowc (&wc, p, 10, NULL);
+                              p += char_len; len -= char_len;
+                              char_len = mbrtowc (&wc, p, len, NULL);
                               if ((long) char_len <= 0 || !iswspace (wc))
                                 break;
                             }
@@ -884,8 +928,8 @@ xspara_add_text (char *text)
                           /* Skip any more following whitespace. */
                           while ((long) char_len > 0 && iswspace (wc))
                             {
-                              p += char_len;
-                              char_len = mbrtowc (&wc, p, 10, NULL);
+                              p += char_len; len -= char_len;
+                              char_len = mbrtowc (&wc, p, len, NULL);
                             }
 
                           /* Make it up to two characters. */
@@ -1025,7 +1069,7 @@ xspara_add_text (char *text)
             }
         }
 
-      p += char_len;
+      p += char_len; len -= char_len;
     }
 
   if (result.space > 0)

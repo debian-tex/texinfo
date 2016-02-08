@@ -1,5 +1,5 @@
 /* terminal.h -- The external interface to terminal I/O.
-   $Id: terminal.h 6804 2015-11-22 22:55:04Z gavin $
+   $Id: terminal.h 6914 2016-01-02 17:36:03Z gavin $
 
    Copyright 1993, 1996, 1997, 2001, 2002, 2004, 2007, 2013, 2014, 2015
    Free Software Foundation, Inc.
@@ -35,9 +35,6 @@ extern int screenwidth, screenheight;
 /* Non-zero means this terminal can't really do anything. */
 extern int terminal_is_dumb_p;
 
-/* Non-zero means that this terminal has a meta key. */
-extern int terminal_has_meta_p;
-
 /* Non-zero means that this terminal can produce a visible bell. */
 extern int terminal_has_visible_bell_p;
 
@@ -53,8 +50,7 @@ extern int terminal_can_scroll_region;
 /* Initialize the terminal which is known as TERMINAL_NAME.  If this terminal
    doesn't have cursor addressability, TERMINAL_IS_DUMB_P becomes non-zero.
    The variables SCREENHEIGHT and SCREENWIDTH are set to the dimensions that
-   this terminal actually has.  The variable TERMINAL_HAS_META_P becomes non-
-   zero if this terminal supports a Meta key. */
+   this terminal actually has. */
 extern void terminal_initialize_terminal (char *terminal_name);
 extern VFunction *terminal_initialize_terminal_hook;
 

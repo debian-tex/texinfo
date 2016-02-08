@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo_document 5.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-29 17:15+0000\n"
+"POT-Creation-Date: 2016-02-06 11:35+0000\n"
 "PO-Revision-Date: 2013-02-28 21:35+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -208,17 +208,17 @@ msgstr "P. sekcja ``{section_name}'' w @cite{{book}}"
 msgid "see section ``{section_name}'' in @cite{{book}}"
 msgstr "p. sekcja ``{section_name}'' w @cite{{book}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:892 tp/Texinfo/Convert/HTML.pm:3292
+#: tp/Texinfo/Convert/DocBook.pm:892 tp/Texinfo/Convert/HTML.pm:3291
 #, perl-brace-format
 msgid "@cite{{book}}"
 msgstr "@cite{{book}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:896 tp/Texinfo/Convert/HTML.pm:3269
+#: tp/Texinfo/Convert/DocBook.pm:896 tp/Texinfo/Convert/HTML.pm:3268
 #, perl-brace-format
 msgid "See @cite{{book}}"
 msgstr "P. @cite{{book}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:900 tp/Texinfo/Convert/HTML.pm:3246
+#: tp/Texinfo/Convert/DocBook.pm:900 tp/Texinfo/Convert/HTML.pm:3245
 #, perl-brace-format
 msgid "see @cite{{book}}"
 msgstr "p. @cite{{book}}"
@@ -244,7 +244,7 @@ msgid "{abbr_or_acronym} ({explanation})"
 msgstr "{abbr_or_acronym} ({explanation})"
 
 #: tp/Texinfo/Convert/DocBook.pm:1223 tp/Texinfo/Convert/Plaintext.pm:2496
-#: tp/Texinfo/Convert/HTML.pm:3598
+#: tp/Texinfo/Convert/HTML.pm:3597
 #, perl-brace-format
 msgid "@b{{quotation_arg}:} "
 msgstr "@b{{quotation_arg}:} "
@@ -273,7 +273,7 @@ msgstr "{text} ({url})"
 msgid "@t{<{url}>}"
 msgstr "@t{<{url}>}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2421 tp/Texinfo/Convert/HTML.pm:1439
+#: tp/Texinfo/Convert/Plaintext.pm:2421 tp/Texinfo/Convert/HTML.pm:1438
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr "@{Brak wartości dla `{value}'@}"
@@ -368,7 +368,7 @@ msgstr "@tie{ }- {category} klasy {class}:@*{type}@*{name}"
 msgid "@tie{ }-- {category} of {class}: {type} {name}"
 msgstr "@tie{ }- {category} klasy {class}: {type} {name}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3403 tp/Texinfo/Convert/HTML.pm:2852
+#: tp/Texinfo/Convert/Plaintext.pm:3403 tp/Texinfo/Convert/HTML.pm:2851
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr "@center - @emph{{author}}\n"
@@ -591,120 +591,120 @@ msgstr "Skrócony spis treści"
 msgid "Footnotes"
 msgstr "Przypisy"
 
-#: tp/Texinfo/Convert/HTML.pm:1505
+#: tp/Texinfo/Convert/HTML.pm:1504
 #, perl-brace-format
 msgid "{explained_string} ({explanation})"
 msgstr "{explained_string} ({explanation})"
 
-#: tp/Texinfo/Convert/HTML.pm:3157
+#: tp/Texinfo/Convert/HTML.pm:3156
 #, perl-brace-format
 msgid "see section {reference_name}"
 msgstr "p. sekcja {reference_name}"
 
-#: tp/Texinfo/Convert/HTML.pm:3160
+#: tp/Texinfo/Convert/HTML.pm:3159
 #, perl-brace-format
 msgid "see {reference_name}"
 msgstr "p. {reference_name}"
 
-#: tp/Texinfo/Convert/HTML.pm:3165
+#: tp/Texinfo/Convert/HTML.pm:3164
 #, perl-brace-format
 msgid "See section {reference_name}"
 msgstr "P. sekcja {reference_name}"
 
-#: tp/Texinfo/Convert/HTML.pm:3168
+#: tp/Texinfo/Convert/HTML.pm:3167
 #, perl-brace-format
 msgid "See {reference_name}"
 msgstr "P. {reference_name}"
 
-#: tp/Texinfo/Convert/HTML.pm:3172
+#: tp/Texinfo/Convert/HTML.pm:3171
 #, perl-brace-format
 msgid "{reference_name}"
 msgstr "{reference_name}"
 
-#: tp/Texinfo/Convert/HTML.pm:3234
+#: tp/Texinfo/Convert/HTML.pm:3233
 #, perl-brace-format
 msgid "see {reference} in @cite{{book}}"
 msgstr "p. {reference} w @cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3238
+#: tp/Texinfo/Convert/HTML.pm:3237
 #, perl-brace-format
 msgid "see @cite{{book_reference}}"
 msgstr "p. @cite{{book_reference}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3242
+#: tp/Texinfo/Convert/HTML.pm:3241
 #, perl-brace-format
 msgid "see `{section}' in @cite{{book}}"
 msgstr "p. `{section}' w @cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3249
+#: tp/Texinfo/Convert/HTML.pm:3248
 #, perl-brace-format
 msgid "see {reference}"
 msgstr "p. {reference}"
 
-#: tp/Texinfo/Convert/HTML.pm:3252
+#: tp/Texinfo/Convert/HTML.pm:3251
 #, perl-brace-format
 msgid "see `{section}'"
 msgstr "p. `{section}'"
 
-#: tp/Texinfo/Convert/HTML.pm:3257
+#: tp/Texinfo/Convert/HTML.pm:3256
 #, perl-brace-format
 msgid "See {reference} in @cite{{book}}"
 msgstr "P. {reference} w @cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3261
+#: tp/Texinfo/Convert/HTML.pm:3260
 #, perl-brace-format
 msgid "See @cite{{book_reference}}"
 msgstr "P. @cite{{book_reference}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3265
+#: tp/Texinfo/Convert/HTML.pm:3264
 #, perl-brace-format
 msgid "See `{section}' in @cite{{book}}"
 msgstr "P. `{section}' w @cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3272
+#: tp/Texinfo/Convert/HTML.pm:3271
 #, perl-brace-format
 msgid "See {reference}"
 msgstr "P. {reference}"
 
-#: tp/Texinfo/Convert/HTML.pm:3275
+#: tp/Texinfo/Convert/HTML.pm:3274
 #, perl-brace-format
 msgid "See `{section}'"
 msgstr "P. `{section}'"
 
-#: tp/Texinfo/Convert/HTML.pm:3280
+#: tp/Texinfo/Convert/HTML.pm:3279
 #, perl-brace-format
 msgid "{reference} in @cite{{book}}"
 msgstr "{reference} w @cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3284
+#: tp/Texinfo/Convert/HTML.pm:3283
 #, perl-brace-format
 msgid "@cite{{book_reference}}"
 msgstr "@cite{{book_reference}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3288
+#: tp/Texinfo/Convert/HTML.pm:3287
 #, perl-brace-format
 msgid "`{section}' in @cite{{book}}"
 msgstr "`{section}' w @cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3295
+#: tp/Texinfo/Convert/HTML.pm:3294
 #, perl-brace-format
 msgid "{reference}"
 msgstr "{reference}"
 
-#: tp/Texinfo/Convert/HTML.pm:3298
+#: tp/Texinfo/Convert/HTML.pm:3297
 #, perl-brace-format
 msgid "`{section}'"
 msgstr "`{section}'"
 
-#: tp/Texinfo/Convert/HTML.pm:3411
+#: tp/Texinfo/Convert/HTML.pm:3410
 msgid "Jump to"
 msgstr "Skok do"
 
-#: tp/Texinfo/Convert/HTML.pm:3419
+#: tp/Texinfo/Convert/HTML.pm:3418
 msgid "Index Entry"
 msgstr "Wpis indeksu"
 
-#: tp/Texinfo/Convert/HTML.pm:3421
+#: tp/Texinfo/Convert/HTML.pm:3420
 msgid "Section"
 msgstr "Sekcja"
 

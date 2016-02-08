@@ -1,5 +1,5 @@
 /* install-info -- merge Info directory entries from an Info file.
-   $Id: install-info.c 6802 2015-11-22 21:16:44Z gavin $
+   $Id: install-info.c 6906 2016-01-01 18:33:45Z karl $
 
    Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
@@ -2240,7 +2240,7 @@ main (int argc, char *argv[])
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-              "2015");
+              "2016");
           exit (EXIT_SUCCESS);
 
         case 'W':

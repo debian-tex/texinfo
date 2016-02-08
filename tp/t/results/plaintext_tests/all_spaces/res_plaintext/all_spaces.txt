@@ -20,9 +20,9 @@ CHARACTER TABULATION: |	|
 
    MONGOLIAN VOWEL SEPARATOR: |᠎|
 
-   EN QUAD: | |
+   EN QUAD: | |
 
-   EM QUAD: | |
+   EM QUAD: | |
 
    EN SPACE: | |
 

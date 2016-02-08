@@ -1,6 +1,6 @@
 % texinfo-tex-test.texi -- test file for texinfo.tex
 %
-% Copyright 2015 Free Software Foundation, Inc.
+% Copyright 2015, 2016 Free Software Foundation, Inc.
 %
 % This file is free software: you can redistribute it and/or
 % modify it under the terms of the GNU General Public License as
@@ -45,7 +45,6 @@ Z\x\Z
 
 The number refers to the number of backslashes that should appear
 
-@tracingmacros=1
 0 @Mac{}
 
 0 @Mac{a}
@@ -664,7 +663,18 @@ Check commas surrounding page number:
 @noindent
 @xref{Target}, for more information (@code{@@xref})@*
 @xref{Target} for more information@*
+@xref{Target}	for more information@*
+@xref{Target}
+for more information@*
 @xref{Target}.@*
+@xref{Target}@ for more info.@*
+@xref{Target}@
+for more info.@*
+@xref{Target}@*
+for more info.@*
+@xref{Target}@	for more info.@*
+@xref{Target} --- for more info. (comma)@*
+@xref{Target}@: --- for more info. (no comma)@*
 See @ref{Target}, for more information (@code{@@ref})@*
 See @ref{Target} for more information@*
 See @ref{Target}.@*

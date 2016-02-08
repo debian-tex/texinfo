@@ -1,4 +1,4 @@
-# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2016 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -160,13 +160,4 @@ run_ginfo ()
     echo 'pgrep program not found - cannot get PID of ginfo process' >&2
     GINFO_PID=unknown
   fi
-}
-
-synch_with_program ()
-{
-  # Wait for the program to do its terminal initialization, so that
-  # bytes like C-u and C-s will not be special.
-  printf D >$PTY_TYPE
-  while test ! -f $GINFO_OUTPUT ; do sleep 1 ; done
-  rm -f $GINFO_OUTPUT
 }

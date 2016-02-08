@@ -1,9 +1,9 @@
-$Id: INSTALL 6124 2015-02-13 20:22:54Z gavin $
+$Id: INSTALL 6918 2016-01-03 21:27:43Z gavin $
 INSTALL file for texinfo.
 
      Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
      2001, 2002, 2003, 2004, 2005, 2006, 2007, 2010, 2011, 2013, 2014,
-     2015
+     2015, 2016
      Free Software Foundation, Inc.
 
      Copying and distribution of this file, with or without modification,
@@ -27,6 +27,20 @@ Installation notes specific to Texinfo:
   installation warnings.
   For that, run configure --disable-install-warnings, or set
   enable_install_warnings=no in the environment.
+
+* The `makeinfo' program is a Perl program that can use extension
+  modules, known as XS modules.  The configure script will attempt to
+  detect whether such modules can be built and loaded on your
+  installation.  If you want to disable the use of XS modules, you can
+  give the --disable-perl-xs flag to `configure'; likewise, to use them
+  without checking, give the --enable-perl-xs flag.  Some of the
+  environment variables listed in the output of `./configure --help' may
+  be of use for building the XS modules.
+      After building the program, the use of XS modules can be
+  controlled with the `TEXINFO_XS' environment variable, which may be
+  useful for troubleshooting.  Set TEXINFO_XS=debug to print some
+  information as the modules are looked for and loaded, TEXINFO=omit to
+  disable their use, and TEXINFO_XS=required to force their use.
 
 * For instructions on compiling this distribution with DJGPP tools
   for MS-DOS and MS-Windows, see the file djgpp/README.

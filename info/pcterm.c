@@ -1,5 +1,5 @@
 /* pcterm.c -- How to handle the PC terminal for Info under MS-DOS/MS-Windows.
-   $Id: pcterm.c 6893 2015-12-25 14:47:01Z eliz $
+   $Id: pcterm.c 6914 2016-01-02 17:36:03Z gavin $
 
    Copyright 1998, 1999, 2003, 2004, 2007, 2008, 2012, 2013, 2014, 2015
    Free Software Foundation, Inc.
@@ -1117,9 +1117,8 @@ pc_unprep_terminal (void)
 /* Initialize the terminal which is known as TERMINAL_NAME.  If this
    terminal doesn't have cursor addressability, `terminal_is_dumb_p'
    becomes nonzero.  The variables SCREENHEIGHT and SCREENWIDTH are set
-   to the dimensions that this terminal actually has.  The variable
-   TERMINAL_HAS_META_P becomes nonzero if this terminal supports a Meta
-   key.  Finally, the terminal screen is cleared. */
+   to the dimensions that this terminal actually has.  Finally, the
+   terminal screen is cleared. */
 static void
 pc_initialize_terminal (term_name)
     char *term_name;
@@ -1187,9 +1186,6 @@ pc_initialize_terminal (term_name)
   /* We know how to produce a visible bell, if somebody's looking...  */
   if (!speech_friendly)
     terminal_has_visible_bell_p = 1;
-
-  /* We have a Meta key.  */
-  terminal_has_meta_p = 1;
 
   /* We are *certainly* NOT dumb!  */
   terminal_is_dumb_p = 0;

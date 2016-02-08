@@ -1,5 +1,5 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c 6711 2015-10-19 18:17:21Z gavin $
+   $Id: nodes.c 6965 2016-01-30 14:38:35Z gavin $
 
    Copyright 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
    2008, 2009, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -812,7 +812,7 @@ static void
 forget_info_file (FILE_BUFFER *file_buffer)
 {
   file_buffer->flags |= N_Gone;
-  file_buffer->filename = "";
+  file_buffer->filename[0] = '\0';
   file_buffer->fullpath = "";
   memset (&file_buffer->finfo, 0, sizeof (struct stat));
 }
@@ -1409,7 +1409,7 @@ info_node_of_tag_ext (FILE_BUFFER *fb, TAG **tag_ptr, int fast)
       if (parent != subfile)
         cache->subfile = tag->filename;
 
-      if (!fast)
+      if (!fast && !tag->cache.references)
         {
           /* Read locations of references in node and similar.  Strip Info file
              syntax from node if preprocess_nodes=On.  Adjust the offsets of

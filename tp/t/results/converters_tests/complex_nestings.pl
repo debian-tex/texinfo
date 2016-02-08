@@ -1592,6 +1592,7 @@ $result_converted{'html_text'}->{'complex_nestings'} = '<a name="Top"></a>
 <dd><dl>
 <dt><a name="index-variables"></a>Variable: <strong>variables</strong> <em>variable-name</em></dt>
 <dd><pre class="example">
+
 </pre></dd><dt><a name="index-variables-too"></a>Variable: <strong>variables too</strong> <em>other-variable</em></dt>
 <dd><pre class="example">THis is the defvar
 
@@ -1605,11 +1606,13 @@ more text
 <dt><tt>second item</tt></dt>
 </dl>
 <pre class="example">
+
 explanation
 </pre></dd></dl>
 </dd></dl>
 </dd></dl>
 <pre class="example">
+
 </pre></div>
 <hr>
 ';

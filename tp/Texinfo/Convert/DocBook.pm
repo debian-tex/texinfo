@@ -1,4 +1,4 @@
-# $Id: DocBook.pm 6681 2015-10-08 18:18:05Z gavin $
+# $Id: DocBook.pm 6991 2016-02-06 12:16:13Z gavin $
 # DocBook.pm: output tree as DocBook.
 #
 # Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -55,7 +55,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.0dev';
+$VERSION = '6.1';
 
 my $nbsp = '&#'.hex('00A0').';';
 my $mdash = '&#'.hex('2014').';';
@@ -1408,7 +1408,7 @@ sub _convert($$;$)
 1;
 
 __END__
-# $Id: DocBook.pm 6681 2015-10-08 18:18:05Z gavin $
+# $Id: DocBook.pm 6991 2016-02-06 12:16:13Z gavin $
 # Automatically generated from maintain/template.pod
 
 =head1 NAME

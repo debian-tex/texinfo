@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2016 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ srcdir=${srcdir:-.}
 . $t/Init-inter.inc
 
 run_ginfo -f inc-sea-history
-synch_with_program
+
 # Check that we go back to the right node after an incremental search
 printf '\02301234\b4\b\b34\b\bqwerty\b\b\b\b\b\b34' >$PTY_TYPE
 printf '\rD' >$PTY_TYPE

@@ -1,4 +1,4 @@
-# $Id: GNUmakefile 6200 2015-04-04 16:15:24Z karl $
+# $Id: GNUmakefile 6960 2016-01-23 15:25:46Z karl $
 # Makefile to build Texinfo from the Perl POD documentation,
 # using pod2texi.
 #
@@ -52,6 +52,11 @@ $(texi_pod_doc_incl): $(perl_pod_subdir)/*.pod
 # We also omit perlunicook, since it necessarily has many binary Unicode
 # characters, and processing the whole thing in UTF-8 makes it less useful. 
 #
+# Because we start from the source directory, we also lose all the
+# generated .pods, such as perluniprops.  We would not want
+# all of them (e.g., perltw.pod), but some (like uniprops) might be nice.
+# Maybe someday.
+# 
 	cd $(perl_pod_subdir) \
 	&& perl -p -i.bak -e 's,X<.*?>>?,,g' *.pod \
 	&& $(pod2texi) -o $@ $(pod2texi_args) \
@@ -66,7 +71,7 @@ www_target = $(HOME)/gnu/www/www/software/perl/manual
 install:
 	cp -arf manual/. $(www_target)/.
 	rm -rf $(www_target)/html_chapter
-	cd $(www_target) && cvs update -P | grep -v '^M '
+	cd $(www_target) && cvs update -P
 
 mostlyclean:
 	rm -rf manual $(texi_pod_doc_incl)

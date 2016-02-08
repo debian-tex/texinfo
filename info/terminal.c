@@ -1,5 +1,5 @@
 /* terminal.c -- how to handle the physical terminal for Info.
-   $Id: terminal.c 6804 2015-11-22 22:55:04Z gavin $
+   $Id: terminal.c 6914 2016-01-02 17:36:03Z gavin $
 
    Copyright 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1997, 1998,
    1999, 2001, 2002, 2004, 2007, 2008, 2012, 2013, 2014, 2015
@@ -119,9 +119,6 @@ static char *audible_bell;
 
 /* A visible bell, if the terminal can be made to flash the screen. */
 static char *visible_bell;
-
-/* The string to write to turn on the meta key, if this term has one. */
-static char *term_mm;
 
 /* The string to turn on inverse mode, if this term has one. */
 static char *term_invbeg;
@@ -258,9 +255,6 @@ int screenwidth, screenheight;
 
 /* Non-zero means this terminal can't really do anything. */
 int terminal_is_dumb_p = 0;
-
-/* Non-zero means that this terminal has a meta key. */
-int terminal_has_meta_p = 0;
 
 /* Non-zero means that this terminal can produce a visible bell. */
 int terminal_has_visible_bell_p = 0;
@@ -903,9 +897,8 @@ initialize_byte_map (void)
 /* Initialize the terminal which is known as TERMINAL_NAME.  If this
    terminal doesn't have cursor addressability, `terminal_is_dumb_p'
    becomes nonzero.  The variables SCREENHEIGHT and SCREENWIDTH are set
-   to the dimensions that this terminal actually has.  The variable
-   TERMINAL_HAS_META_P becomes nonzero if this terminal supports a Meta
-   key.  Get and save various termcap strings. */
+   to the dimensions that this terminal actually has.  Get and save various
+   termcap strings. */
 void
 terminal_initialize_terminal (char *terminal_name)
 {
@@ -1051,17 +1044,6 @@ terminal_initialize_terminal (char *terminal_name)
 
   term_keypad_on = tgetstr ("ks", &buffer);
   term_keypad_off = tgetstr ("ke", &buffer);
-
-  /* Check to see if this terminal has a meta key. */
-  terminal_has_meta_p = (tgetflag ("km") || tgetflag ("MT"));
-  if (terminal_has_meta_p)
-    {
-      term_mm = tgetstr ("mm", &buffer);
-    }
-  else
-    {
-      term_mm = NULL;
-    }
 
   /* Attempt to find the arrow keys.  */
   term_ku = tgetstr ("ku", &buffer);

@@ -2,7 +2,7 @@
    standard output.  Read and ignore any data sent to terminal.  This
    is so we can run tests interactively without messing up the screen.
 
-   Copyright 2014, 2015 Free Software Foundation, Inc.
+   Copyright 2014, 2015, 2016 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,9 +20,7 @@
    Originally written by Gavin Smith.  */
 
 #define _XOPEN_SOURCE 600
-/* SunOS 5.10 on SPARC doesn't allow compilation in C99 mode with
-   _XOPEN_SOURCE with a smaller value (and the gnulib stdarg module
-   puts us in C99 mode. */
+/* for posix_openpt */
 
 #include <config.h>
 #include <errno.h>
@@ -87,6 +85,25 @@ main (int argc, char *argv[])
   close (slave);
   error (0, 0, "...closed");
   */
+#endif
+
+#if defined (HAVE_TERMIOS_H)
+  {
+  struct termios t;
+  long int disable;
+  disable = fpathconf (slave, _PC_VDISABLE);
+  if (tcgetattr (slave, &t) == -1)
+    error (0, 0, "error calling tcgetattr");
+  else
+    {
+      t.c_cc[VSTART] = disable; /* C-q */
+      t.c_cc[VSTOP] = disable;  /* C-s */
+      t.c_cc[VKILL] = disable;  /* C-u */
+      t.c_cc[VINTR] = disable;  /* C-c */
+      if (tcsetattr (slave, TCSANOW, &t) == -1)
+        error (0, 0, "error calling tcsetattr");
+    }
+  }
 #endif
 
 #if defined (TIOCSWINSZ)

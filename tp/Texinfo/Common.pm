@@ -1,4 +1,4 @@
-# $Id: Common.pm 6570 2015-08-25 14:53:32Z gavin $
+# $Id: Common.pm 6991 2016-02-06 12:16:13Z gavin $
 # Common.pm: definition of commands. Common code of other Texinfo modules.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -71,7 +71,7 @@ valid_tree_transformation
 @EXPORT = qw(
 );
 
-$VERSION = '6.0dev';
+$VERSION = '6.1';
 
 # i18n
 sub N__($)

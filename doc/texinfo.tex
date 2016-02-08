@@ -3,11 +3,11 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-12-20.12}
+\def\texinfoversion{2016-02-05.07}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
-% 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
+% 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016
 % Free Software Foundation, Inc.
 %
 % This texinfo.tex file is free software: you can redistribute it and/or
@@ -1449,6 +1449,56 @@ output) for that.)}
   \let\pdfmakeoutlines = \relax
 \fi  % \ifx\pdfoutput
 
+%
+% @image support for XeTeX
+%
+\newif\ifxeteximgpdf
+\ifx\XeTeXrevision\thisisundefined
+\else
+  %
+  % #1 is image name, #2 width (might be empty/whitespace), #3 height (ditto).
+  \def\doxeteximage#1#2#3{%
+    \def\xeteximagewidth{#2}\setbox0 = \hbox{\ignorespaces #2}%
+    \def\xeteximageheight{#3}\setbox2 = \hbox{\ignorespaces #3}%
+    %
+    % XeTeX (and the PDF format) support .pdf, .png, .jpg (among
+    % others).  Let's try in that order, PDF first since if
+    % someone has a scalable image, presumably better to use that than a
+    % bitmap.
+    \let\xeteximgext=\empty
+    \xeteximgpdffalse
+    \begingroup
+      \openin 1 #1.pdf \ifeof 1
+        \openin 1 #1.PDF \ifeof 1
+          \openin 1 #1.png \ifeof 1
+            \openin 1 #1.jpg \ifeof 1
+              \openin 1 #1.jpeg \ifeof 1
+                \openin 1 #1.JPG \ifeof 1
+                  \errmessage{Could not find image file #1 for XeTeX}%
+                \else \gdef\xeteximgext{JPG}%
+                \fi
+              \else \gdef\xeteximgext{jpeg}%
+              \fi
+            \else \gdef\xeteximgext{jpg}%
+            \fi
+          \else \gdef\xeteximgext{png}%
+          \fi
+        \else \gdef\xeteximgext{PDF} \global\xeteximgpdftrue%
+        \fi
+      \else \gdef\xeteximgext{pdf} \global\xeteximgpdftrue%
+      \fi
+      \closein 1
+    \endgroup
+    %
+    \ifxeteximgpdf
+      \XeTeXpdffile "#1".\xeteximgext ""
+    \else
+      \XeTeXpicfile "#1".\xeteximgext ""
+    \fi
+    \ifdim \wd0 >0pt width \xeteximagewidth \fi
+    \ifdim \wd2 >0pt height \xeteximageheight \fi \relax
+  }
+\fi
 
 \message{fonts,}
 
@@ -4737,11 +4787,10 @@ end
   \def\_{\normalunderscore}%
   \def\-{}% @- shouldn't affect sorting
   %
-  \def\lbracechar{{\indexlbrace}}%
-  \def\rbracechar{{\indexrbrace}}%
-  \let\{=\lbracechar
-  \let\}=\rbracechar
-  %
+  \uccode`\1=`\{ \uppercase{\def\{{1}}%
+  \uccode`\1=`\} \uppercase{\def\}{1}}%
+  \let\lbracechar\{%
+  \let\rbracechar\}%
   %
   % Non-English letters.
   \def\AA{AA}%
@@ -4901,9 +4950,15 @@ end
   \indexdummies % Must do this here, since \bf, etc expand at this stage
   \useindexbackslash % \indexbackslash isn't defined now so it will be output 
                      % as is; and it will print as backslash.
+  % The braces around \indexbrace are recognized by texindex.
+  %
   % Get the string to sort by, by processing the index entry with all
   % font commands turned off.
   {\indexnofonts
+   \def\lbracechar{{\indexlbrace}}%
+   \def\rbracechar{{\indexrbrace}}%
+   \let\{=\lbracechar
+   \let\}=\rbracechar
    \indexnonalnumdisappear
    \xdef\indexsortkey{}%
    \let\sortas=\indexwritesortas
@@ -6049,7 +6104,13 @@ end
 \def\Yomitfromtockeyword{Yomitfromtoc}
 %
 \def\chapmacro#1#2#3{%
-  \checkenv{}% chapters, etc., should not start inside an environment.
+  \expandafter\ifx\thisenv\titlepage\else
+    \checkenv{}% chapters, etc., should not start inside an environment.
+  \fi
+  % FIXME: \chapmacro is currently called from inside \titlepage when
+  % \setcontentsaftertitlepage to print the "Table of Contents" heading, but
+  % this should probably be done by \sectionheading with an option to print
+  % in chapter size.
   %
   % Insert the first mark before the heading break (see notes for \domark).
   \let\prevchapterdefs=\lastchapterdefs
@@ -8526,10 +8587,6 @@ end
     }%
     \setcolor{\linkcolor}%
   \fi
-  %
-  % Float references are printed completely differently: "Figure 1.2"
-  % instead of "[somenode], p.3".  We distinguish them by the
-  % LABEL-title being set to a magic string.
   {%
     % Have to otherify everything special to allow the \csname to
     % include an _ in the xref name, etc.
@@ -8538,6 +8595,10 @@ end
     \expandafter\global\expandafter\let\expandafter\Xthisreftitle
       \csname XR#1-title\endcsname
   }%
+  %
+  % Float references are printed completely differently: "Figure 1.2"
+  % instead of "[somenode], p.3".  \iffloat distinguishes them by
+  % \Xthisreftitle being set to a magic string.
   \iffloat\Xthisreftitle
     % If the user specified the print name (third arg) to the ref,
     % print it instead of our usual "Figure 1.2".
@@ -8596,12 +8657,15 @@ end
       %
       % output the `page 3'.
       \turnoffactive \putwordpage\tie\refx{#1-pg}{}%
-           \ifx,\tokenafterxref
-      \else\ifx.\tokenafterxref
-      \else\ifx;\tokenafterxref
-      \else\ifx)\tokenafterxref
-      \else,% add a , if xref not followed by punctuation
-      \fi\fi\fi\fi
+      % Add a , if xref followed by a space
+      \if\space\noexpand\tokenafterxref ,%
+      \else\ifx\	\tokenafterxref ,% @TAB
+      \else\ifx\*\tokenafterxref ,%   @*
+      \else\ifx\ \tokenafterxref ,%   @SPACE
+      \else\ifx\
+                \tokenafterxref ,%    @NL
+      \else\ifx\tie\tokenafterxref ,% @tie
+      \fi\fi\fi\fi\fi\fi
     \fi\fi
   \fi
   \endlink
@@ -9076,12 +9140,21 @@ end
   %
   % Output the image.
   \ifpdf
+    % For pdfTeX and LuaTeX <= 0.80
     \dopdfimage{#1}{#2}{#3}%
   \else
-    % \epsfbox itself resets \epsf?size at each figure.
-    \setbox0 = \hbox{\ignorespaces #2}\ifdim\wd0 > 0pt \epsfxsize=#2\relax \fi
-    \setbox0 = \hbox{\ignorespaces #3}\ifdim\wd0 > 0pt \epsfysize=#3\relax \fi
-    \epsfbox{#1.eps}%
+    \ifx\XeTeXrevision\thisisundefined
+      % For epsf.tex
+      % \epsfbox itself resets \epsf?size at each figure.
+      \setbox0 = \hbox{\ignorespaces #2}%
+        \ifdim\wd0 > 0pt \epsfxsize=#2\relax \fi
+      \setbox0 = \hbox{\ignorespaces #3}%
+        \ifdim\wd0 > 0pt \epsfysize=#3\relax \fi
+      \epsfbox{#1.eps}%
+    \else
+      % For XeTeX
+      \doxeteximage{#1}{#2}{#3}%
+    \fi
   \fi
   %
   \ifimagevmode
@@ -9428,6 +9501,45 @@ directory should work if nowhere else does.}
   \global\righthyphenmin = #3\relax
 }
 
+% Get input by bytes instead of by UTF-8 codepoints for XeTeX and LuaTeX, 
+% otherwise the encoding support is completely broken.
+\ifx\XeTeXrevision\thisisundefined
+\else
+\XeTeXdefaultencoding "bytes"  % For subsequent files to be read
+\XeTeXinputencoding "bytes"  % Effective in texinfo.tex only
+% Unfortunately, there seems to be no corresponding XeTeX command for
+% output encoding.  This is a problem for auxiliary index and TOC files.
+% The only solution would be perhaps to write out @U{...} sequences in
+% place of UTF-8 characters.
+\fi
+
+\ifx\luatexversion\thisisundefined
+\else
+\directlua{
+local utf8_char, byte, gsub = unicode.utf8.char, string.byte, string.gsub
+local function convert_char (char)
+  return utf8_char(byte(char))
+end
+
+local function convert_line (line)
+  return gsub(line, ".", convert_char)
+end
+
+callback.register("process_input_buffer", convert_line)
+
+local function convert_line_out (line)
+  local line_out = ""
+  for c in string.utfvalues(line) do
+     line_out = line_out .. string.char(c)
+  end
+  return line_out
+end
+
+callback.register("process_output_buffer", convert_line_out)
+}
+\fi
+
+
 % Helpers for encodings.
 % Set the catcode of characters 128 through 255 to the specified number.
 %
@@ -9452,6 +9564,14 @@ directory should work if nowhere else does.}
 %
 \def\documentencoding{\parseargusing\filenamecatcodes\documentencodingzzz}
 \def\documentencodingzzz#1{%
+  % Get input by bytes instead of by UTF-8 codepoints for XeTeX,
+  % otherwise the encoding support is completely broken.
+  % This settings is for the document root file.
+  \ifx\XeTeXrevision\thisisundefined
+  \else
+    \XeTeXinputencoding "bytes"
+  \fi
+  %
   % Encoding being declared for the document.
   \def\declaredencoding{\csname #1.enc\endcsname}%
   %
@@ -9901,7 +10021,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{00AD}{\-}
   \DeclareUnicodeCharacter{00AE}{\registeredsymbol}
   \DeclareUnicodeCharacter{00AF}{\={ }}
-
+  %
   \DeclareUnicodeCharacter{00B0}{\ringaccent{ }}
   \DeclareUnicodeCharacter{00B1}{\ensuremath\pm}
   \DeclareUnicodeCharacter{00B2}{$^2$}
@@ -9918,7 +10038,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{00BD}{$1\over2$}
   \DeclareUnicodeCharacter{00BE}{$3\over4$}
   \DeclareUnicodeCharacter{00BF}{\questiondown}
-
+  %
   \DeclareUnicodeCharacter{00C0}{\`A}
   \DeclareUnicodeCharacter{00C1}{\'A}
   \DeclareUnicodeCharacter{00C2}{\^A}
@@ -9935,7 +10055,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{00CD}{\'I}
   \DeclareUnicodeCharacter{00CE}{\^I}
   \DeclareUnicodeCharacter{00CF}{\"I}
-
+  %
   \DeclareUnicodeCharacter{00D0}{\DH}
   \DeclareUnicodeCharacter{00D1}{\~N}
   \DeclareUnicodeCharacter{00D2}{\`O}
@@ -9952,7 +10072,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{00DD}{\'Y}
   \DeclareUnicodeCharacter{00DE}{\TH}
   \DeclareUnicodeCharacter{00DF}{\ss}
-
+  %
   \DeclareUnicodeCharacter{00E0}{\`a}
   \DeclareUnicodeCharacter{00E1}{\'a}
   \DeclareUnicodeCharacter{00E2}{\^a}
@@ -9969,7 +10089,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{00ED}{\'{\dotless{i}}}
   \DeclareUnicodeCharacter{00EE}{\^{\dotless{i}}}
   \DeclareUnicodeCharacter{00EF}{\"{\dotless{i}}}
-
+  %
   \DeclareUnicodeCharacter{00F0}{\dh}
   \DeclareUnicodeCharacter{00F1}{\~n}
   \DeclareUnicodeCharacter{00F2}{\`o}
@@ -9986,7 +10106,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{00FD}{\'y}
   \DeclareUnicodeCharacter{00FE}{\th}
   \DeclareUnicodeCharacter{00FF}{\"y}
-
+  %
   \DeclareUnicodeCharacter{0100}{\=A}
   \DeclareUnicodeCharacter{0101}{\=a}
   \DeclareUnicodeCharacter{0102}{\u{A}}
@@ -10003,7 +10123,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{010D}{\v{c}}
   \DeclareUnicodeCharacter{010E}{\v{D}}
   \DeclareUnicodeCharacter{010F}{d'}
-
+  %
   \DeclareUnicodeCharacter{0110}{\DH}
   \DeclareUnicodeCharacter{0111}{\dh}
   \DeclareUnicodeCharacter{0112}{\=E}
@@ -10020,7 +10140,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{011D}{\^g}
   \DeclareUnicodeCharacter{011E}{\u{G}}
   \DeclareUnicodeCharacter{011F}{\u{g}}
-
+  %
   \DeclareUnicodeCharacter{0120}{\dotaccent{G}}
   \DeclareUnicodeCharacter{0121}{\dotaccent{g}}
   \DeclareUnicodeCharacter{0122}{\cedilla{G}}
@@ -10037,7 +10157,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{012D}{\u{\dotless{i}}}
   \DeclareUnicodeCharacter{012E}{\ogonek{I}}
   \DeclareUnicodeCharacter{012F}{\ogonek{i}}
-
+  %
   \DeclareUnicodeCharacter{0130}{\dotaccent{I}}
   \DeclareUnicodeCharacter{0131}{\dotless{i}}
   \DeclareUnicodeCharacter{0132}{IJ}
@@ -10054,7 +10174,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{013D}{L'}% should kern
   \DeclareUnicodeCharacter{013E}{l'}% should kern
   \DeclareUnicodeCharacter{013F}{L\U{00B7}}
-
+  %
   \DeclareUnicodeCharacter{0140}{l\U{00B7}}
   \DeclareUnicodeCharacter{0141}{\L}
   \DeclareUnicodeCharacter{0142}{\l}
@@ -10071,7 +10191,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{014D}{\=o}
   \DeclareUnicodeCharacter{014E}{\u{O}}
   \DeclareUnicodeCharacter{014F}{\u{o}}
-
+  %
   \DeclareUnicodeCharacter{0150}{\H{O}}
   \DeclareUnicodeCharacter{0151}{\H{o}}
   \DeclareUnicodeCharacter{0152}{\OE}
@@ -10088,7 +10208,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{015D}{\^s}
   \DeclareUnicodeCharacter{015E}{\cedilla{S}}
   \DeclareUnicodeCharacter{015F}{\cedilla{s}}
-
+  %
   \DeclareUnicodeCharacter{0160}{\v{S}}
   \DeclareUnicodeCharacter{0161}{\v{s}}
   \DeclareUnicodeCharacter{0162}{\cedilla{T}}
@@ -10105,7 +10225,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{016D}{\u{u}}
   \DeclareUnicodeCharacter{016E}{\ringaccent{U}}
   \DeclareUnicodeCharacter{016F}{\ringaccent{u}}
-
+  %
   \DeclareUnicodeCharacter{0170}{\H{U}}
   \DeclareUnicodeCharacter{0171}{\H{u}}
   \DeclareUnicodeCharacter{0172}{\ogonek{U}}
@@ -10122,7 +10242,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{017D}{\v{Z}}
   \DeclareUnicodeCharacter{017E}{\v{z}}
   \DeclareUnicodeCharacter{017F}{\missingcharmsg{LONG S}}
-
+  %
   \DeclareUnicodeCharacter{01C4}{D\v{Z}}
   \DeclareUnicodeCharacter{01C5}{D\v{z}}
   \DeclareUnicodeCharacter{01C6}{d\v{z}}
@@ -10135,20 +10255,20 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{01CD}{\v{A}}
   \DeclareUnicodeCharacter{01CE}{\v{a}}
   \DeclareUnicodeCharacter{01CF}{\v{I}}
-
+  %
   \DeclareUnicodeCharacter{01D0}{\v{\dotless{i}}}
   \DeclareUnicodeCharacter{01D1}{\v{O}}
   \DeclareUnicodeCharacter{01D2}{\v{o}}
   \DeclareUnicodeCharacter{01D3}{\v{U}}
   \DeclareUnicodeCharacter{01D4}{\v{u}}
-
+  %
   \DeclareUnicodeCharacter{01E2}{\={\AE}}
   \DeclareUnicodeCharacter{01E3}{\={\ae}}
   \DeclareUnicodeCharacter{01E6}{\v{G}}
   \DeclareUnicodeCharacter{01E7}{\v{g}}
   \DeclareUnicodeCharacter{01E8}{\v{K}}
   \DeclareUnicodeCharacter{01E9}{\v{k}}
-
+  %
   \DeclareUnicodeCharacter{01F0}{\v{\dotless{j}}}
   \DeclareUnicodeCharacter{01F1}{DZ}
   \DeclareUnicodeCharacter{01F2}{Dz}
@@ -10161,23 +10281,23 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{01FD}{\'{\ae}}
   \DeclareUnicodeCharacter{01FE}{\'{\O}}
   \DeclareUnicodeCharacter{01FF}{\'{\o}}
-
+  %
   \DeclareUnicodeCharacter{021E}{\v{H}}
   \DeclareUnicodeCharacter{021F}{\v{h}}
-
+  %
   \DeclareUnicodeCharacter{0226}{\dotaccent{A}}
   \DeclareUnicodeCharacter{0227}{\dotaccent{a}}
   \DeclareUnicodeCharacter{0228}{\cedilla{E}}
   \DeclareUnicodeCharacter{0229}{\cedilla{e}}
   \DeclareUnicodeCharacter{022E}{\dotaccent{O}}
   \DeclareUnicodeCharacter{022F}{\dotaccent{o}}
-
+  %
   \DeclareUnicodeCharacter{0232}{\=Y}
   \DeclareUnicodeCharacter{0233}{\=y}
   \DeclareUnicodeCharacter{0237}{\dotless{j}}
-
+  %
   \DeclareUnicodeCharacter{02DB}{\ogonek{ }}
-
+  %
   % Greek letters upper case
   \DeclareUnicodeCharacter{0391}{{\it A}}
   \DeclareUnicodeCharacter{0392}{{\it B}}
@@ -10204,7 +10324,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{03A7}{{\it X}}
   \DeclareUnicodeCharacter{03A8}{\ensuremath{\mit\Psi}}
   \DeclareUnicodeCharacter{03A9}{\ensuremath{\mit\Omega}}
-
+  %
   % Vowels with accents
   \DeclareUnicodeCharacter{0390}{\ensuremath{\ddot{\acute\iota}}}
   \DeclareUnicodeCharacter{03AC}{\ensuremath{\acute\alpha}}
@@ -10212,10 +10332,10 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{03AE}{\ensuremath{\acute\eta}}
   \DeclareUnicodeCharacter{03AF}{\ensuremath{\acute\iota}}
   \DeclareUnicodeCharacter{03B0}{\ensuremath{\acute{\ddot\upsilon}}}
-
+  %
   % Standalone accent
   \DeclareUnicodeCharacter{0384}{\ensuremath{\acute{\ }}}
-
+  %
   % Greek letters lower case
   \DeclareUnicodeCharacter{03B1}{\ensuremath\alpha}
   \DeclareUnicodeCharacter{03B2}{\ensuremath\beta}
@@ -10242,19 +10362,19 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{03C7}{\ensuremath\chi}
   \DeclareUnicodeCharacter{03C8}{\ensuremath\psi}
   \DeclareUnicodeCharacter{03C9}{\ensuremath\omega}
-
+  %
   % More Greek vowels with accents
   \DeclareUnicodeCharacter{03CA}{\ensuremath{\ddot\iota}}
   \DeclareUnicodeCharacter{03CB}{\ensuremath{\ddot\upsilon}}
   \DeclareUnicodeCharacter{03CC}{\ensuremath{\acute o}}
   \DeclareUnicodeCharacter{03CD}{\ensuremath{\acute\upsilon}}
   \DeclareUnicodeCharacter{03CE}{\ensuremath{\acute\omega}}
-
+  %
   % Variant Greek letters
   \DeclareUnicodeCharacter{03D1}{\ensuremath\vartheta}
   \DeclareUnicodeCharacter{03D6}{\ensuremath\varpi}
   \DeclareUnicodeCharacter{03F1}{\ensuremath\varrho}
-
+  %
   \DeclareUnicodeCharacter{1E02}{\dotaccent{B}}
   \DeclareUnicodeCharacter{1E03}{\dotaccent{b}}
   \DeclareUnicodeCharacter{1E04}{\udotaccent{B}}
@@ -10267,10 +10387,10 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{1E0D}{\udotaccent{d}}
   \DeclareUnicodeCharacter{1E0E}{\ubaraccent{D}}
   \DeclareUnicodeCharacter{1E0F}{\ubaraccent{d}}
-
+  %
   \DeclareUnicodeCharacter{1E1E}{\dotaccent{F}}
   \DeclareUnicodeCharacter{1E1F}{\dotaccent{f}}
-
+  %
   \DeclareUnicodeCharacter{1E20}{\=G}
   \DeclareUnicodeCharacter{1E21}{\=g}
   \DeclareUnicodeCharacter{1E22}{\dotaccent{H}}
@@ -10279,7 +10399,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{1E25}{\udotaccent{h}}
   \DeclareUnicodeCharacter{1E26}{\"H}
   \DeclareUnicodeCharacter{1E27}{\"h}
-
+  %
   \DeclareUnicodeCharacter{1E30}{\'K}
   \DeclareUnicodeCharacter{1E31}{\'k}
   \DeclareUnicodeCharacter{1E32}{\udotaccent{K}}
@@ -10292,7 +10412,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{1E3B}{\ubaraccent{l}}
   \DeclareUnicodeCharacter{1E3E}{\'M}
   \DeclareUnicodeCharacter{1E3F}{\'m}
-
+  %
   \DeclareUnicodeCharacter{1E40}{\dotaccent{M}}
   \DeclareUnicodeCharacter{1E41}{\dotaccent{m}}
   \DeclareUnicodeCharacter{1E42}{\udotaccent{M}}
@@ -10303,7 +10423,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{1E47}{\udotaccent{n}}
   \DeclareUnicodeCharacter{1E48}{\ubaraccent{N}}
   \DeclareUnicodeCharacter{1E49}{\ubaraccent{n}}
-
+  %
   \DeclareUnicodeCharacter{1E54}{\'P}
   \DeclareUnicodeCharacter{1E55}{\'p}
   \DeclareUnicodeCharacter{1E56}{\dotaccent{P}}
@@ -10314,7 +10434,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{1E5B}{\udotaccent{r}}
   \DeclareUnicodeCharacter{1E5E}{\ubaraccent{R}}
   \DeclareUnicodeCharacter{1E5F}{\ubaraccent{r}}
-
+  %
   \DeclareUnicodeCharacter{1E60}{\dotaccent{S}}
   \DeclareUnicodeCharacter{1E61}{\dotaccent{s}}
   \DeclareUnicodeCharacter{1E62}{\udotaccent{S}}
@@ -10325,12 +10445,12 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{1E6D}{\udotaccent{t}}
   \DeclareUnicodeCharacter{1E6E}{\ubaraccent{T}}
   \DeclareUnicodeCharacter{1E6F}{\ubaraccent{t}}
-
+  %
   \DeclareUnicodeCharacter{1E7C}{\~V}
   \DeclareUnicodeCharacter{1E7D}{\~v}
   \DeclareUnicodeCharacter{1E7E}{\udotaccent{V}}
   \DeclareUnicodeCharacter{1E7F}{\udotaccent{v}}
-
+  %
   \DeclareUnicodeCharacter{1E80}{\`W}
   \DeclareUnicodeCharacter{1E81}{\`w}
   \DeclareUnicodeCharacter{1E82}{\'W}
@@ -10347,7 +10467,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{1E8D}{\"x}
   \DeclareUnicodeCharacter{1E8E}{\dotaccent{Y}}
   \DeclareUnicodeCharacter{1E8F}{\dotaccent{y}}
-
+  %
   \DeclareUnicodeCharacter{1E90}{\^Z}
   \DeclareUnicodeCharacter{1E91}{\^z}
   \DeclareUnicodeCharacter{1E92}{\udotaccent{Z}}
@@ -10358,30 +10478,30 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{1E97}{\"t}
   \DeclareUnicodeCharacter{1E98}{\ringaccent{w}}
   \DeclareUnicodeCharacter{1E99}{\ringaccent{y}}
-
+  %
   \DeclareUnicodeCharacter{1EA0}{\udotaccent{A}}
   \DeclareUnicodeCharacter{1EA1}{\udotaccent{a}}
-
+  %
   \DeclareUnicodeCharacter{1EB8}{\udotaccent{E}}
   \DeclareUnicodeCharacter{1EB9}{\udotaccent{e}}
   \DeclareUnicodeCharacter{1EBC}{\~E}
   \DeclareUnicodeCharacter{1EBD}{\~e}
-
+  %
   \DeclareUnicodeCharacter{1ECA}{\udotaccent{I}}
   \DeclareUnicodeCharacter{1ECB}{\udotaccent{i}}
   \DeclareUnicodeCharacter{1ECC}{\udotaccent{O}}
   \DeclareUnicodeCharacter{1ECD}{\udotaccent{o}}
-
+  %
   \DeclareUnicodeCharacter{1EE4}{\udotaccent{U}}
   \DeclareUnicodeCharacter{1EE5}{\udotaccent{u}}
-
+  %
   \DeclareUnicodeCharacter{1EF2}{\`Y}
   \DeclareUnicodeCharacter{1EF3}{\`y}
   \DeclareUnicodeCharacter{1EF4}{\udotaccent{Y}}
-
+  %
   \DeclareUnicodeCharacter{1EF8}{\~Y}
   \DeclareUnicodeCharacter{1EF9}{\~y}
-
+  %
   % Punctuation
   \DeclareUnicodeCharacter{2013}{--}
   \DeclareUnicodeCharacter{2014}{---}
@@ -10398,12 +10518,12 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{2026}{\dots}
   \DeclareUnicodeCharacter{2039}{\guilsinglleft}
   \DeclareUnicodeCharacter{203A}{\guilsinglright}
-
+  %
   \DeclareUnicodeCharacter{20AC}{\euro}
-
+  %
   \DeclareUnicodeCharacter{2192}{\expansion}
   \DeclareUnicodeCharacter{21D2}{\result}
-
+  %
   % Mathematical symbols
   \DeclareUnicodeCharacter{2200}{\ensuremath\forall}
   \DeclareUnicodeCharacter{2203}{\ensuremath\exists}
@@ -10419,7 +10539,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{2265}{\ensuremath\geq}
   \DeclareUnicodeCharacter{2282}{\ensuremath\subset}
   \DeclareUnicodeCharacter{2287}{\ensuremath\supseteq}
-
+  %
   \DeclareUnicodeCharacter{2016}{\ensuremath\Vert}
   \DeclareUnicodeCharacter{2032}{\ensuremath\prime}
   \DeclareUnicodeCharacter{210F}{\ensuremath\hbar}
@@ -10519,7 +10639,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{230B}{\ensuremath\rfloor}
   \DeclareUnicodeCharacter{2322}{\ensuremath\frown}
   \DeclareUnicodeCharacter{2323}{\ensuremath\smile}
-
+  %
   \DeclareUnicodeCharacter{25A1}{\ensuremath\Box}
   \DeclareUnicodeCharacter{25B3}{\ensuremath\triangle}
   \DeclareUnicodeCharacter{25B7}{\ensuremath\triangleright}
@@ -10551,7 +10671,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{2A3F}{\ensuremath\amalg}
   \DeclareUnicodeCharacter{2AAF}{\ensuremath\preceq}
   \DeclareUnicodeCharacter{2AB0}{\ensuremath\succeq}
-
+  %
   \global\mathchardef\checkmark="1370 % actually the square root sign
   \DeclareUnicodeCharacter{2713}{\ensuremath\checkmark}
 }% end of \utfeightchardefs
@@ -11004,9 +11124,20 @@ directory should work if nowhere else does.}
 {@catcode`@^=7 @catcode`@^^M=13%
 @gdef@eatinput input texinfo#1^^M{@fixbackslash}}
 
+% Emergency active definition of newline, in case an active newline token
+% appears by mistake.
+{@catcode`@^=7 @catcode13=13%
+@gdef@enableemergencynewline{%
+  @gdef^^M{%
+    @par%
+    %<warning: active newline>@par%
+}}}
+
+
 @gdef@fixbackslash{%
   @ifx\@eatinput @let\ = @ttbackslash @fi
   @catcode13=5 % regular end of line
+  @enableemergencynewline
   @let@c=@texinfoc
   % Also turn back on active characters that might appear in the input
   % file name, in case not using a pre-dumped format.

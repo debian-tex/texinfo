@@ -842,9 +842,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
@@ -860,16 +859,20 @@ ul.no-bullet {list-style: none}
 <div class="example">
 <table class="menu" border="0" cellspacing="0"><tr><td>
 <pre class="menu-preformatted">&bull; <a href="entry.html#Top" accesskey="1">(entry)</a>::
+
 </pre><table class="cartouche" border="1"><tr><td>
 <pre class="menu-preformatted">in cartouche in description in menu in example
 </pre></td></tr></table>
 </pre><pre class="menu-comment">
+
 </pre><table class="cartouche" border="1"><tr><td>
 <pre class="menu-comment">in cartouche in menu comment in menu in example
 </pre></td></tr></table>
 <pre class="menu-comment">
+
 </pre><pre class="menu-preformatted">&bull; <a href="node.html#menu" accesskey="2">(node) menu</a>::      a node in menu
 </pre><pre class="menu-preformatted">&bull; a menu name:<a href="other.html#node" accesskey="3">(other) node</a>. 
+
 </pre></td></tr></table>
 </div>
 <hr>

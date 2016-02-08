@@ -1007,9 +1007,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
@@ -1027,14 +1026,17 @@ ul.no-bullet {list-style: none}
 <tr><td align="left" valign="top">&bull; <a href="manual.html#Top" accesskey="1">(manual)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 <ul>
 <li><pre class="menu-preformatted">
+
 </pre></li><li> <pre class="menu-preformatted">in item
 
 </pre></li></ul>
 <dl compact="compact">
 <dd><pre class="menu-preformatted">
+
 </pre></dd>
 <dt>table item</dt>
 <dd><pre class="menu-preformatted">
+
 Text.
 
 </pre></dd>

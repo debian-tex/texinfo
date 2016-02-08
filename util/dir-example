@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example 6235 2015-05-02 23:04:53Z karl $
+$Id: dir-example 6905 2016-01-01 18:33:25Z karl $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -532,7 +532,7 @@ Individual utilities
 * stty: (coreutils)stty invocation.             Print/change terminal settings.
 * su: (coreutils)su invocation.                 Modify user and group ID.
 * sum: (coreutils)sum invocation.               Print traditional checksum.
-* sync: (coreutils)sync invocation.             Synchronize memory and disk.
+* sync: (coreutils)sync invocation.             Synchronize memory to disk.
 * syslogd: (inetutils)syslogd invocation.       Syslog server.
 * tabs: (tput)Invoking tabs.                    Tab settings.
 * tac: (coreutils)tac invocation.               Reverse files.

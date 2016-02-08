@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-29 17:15+0000\n"
+"POT-Creation-Date: 2016-02-06 11:35+0000\n"
 "PO-Revision-Date: 2005-05-03 12:00+05\n"
 "Last-Translator: Laurentiu Buzdugan <lbuz@rolix.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -396,7 +396,7 @@ msgstr "Nici un fiºier info nu are `%s' în indexurile lor."
 msgid "Error converting file character encoding."
 msgstr ""
 
-#: info/info.c:222 info/session.c:2784
+#: info/info.c:222 info/session.c:2789
 #, fuzzy, c-format
 msgid "No menu item '%s' in node '%s'."
 msgstr "Nici un articol de meniu `%s' în nod `%s'."
@@ -441,7 +441,7 @@ msgstr "Seteazã valoarea unei variabile Info"
 msgid "Try --help for more information.\n"
 msgstr "Încercaþi --help pentru informaþii suplimentare.\n"
 
-#: info/info.c:804 install-info/install-info.c:2239 tp/texi2any.pl:872
+#: info/info.c:804 install-info/install-info.c:2239 tp/texi2any.pl:873
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -542,7 +542,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1099 install-info/install-info.c:616 tp/texi2any.pl:860
+#: info/info.c:1099 install-info/install-info.c:616 tp/texi2any.pl:861
 #, fuzzy
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -1032,7 +1032,7 @@ msgstr ""
 msgid "Select visited node: "
 msgstr "Selecteazã nodul vizitat: "
 
-#: info/nodemenu.c:278 info/session.c:2439
+#: info/nodemenu.c:278 info/session.c:2444
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "Referinþa a dispãrut! (%s)."
@@ -1173,457 +1173,457 @@ msgstr "Scroll-eazã cealaltã fereastrã"
 msgid "Scroll the other window backward"
 msgstr "Scroll-eazã cealaltã fereastrã înapoi"
 
-#: info/session.c:1821
+#: info/session.c:1826
 msgid "Select the next window"
 msgstr "Selecteazã fereastra urmãtoare"
 
-#: info/session.c:1858
+#: info/session.c:1863
 msgid "Select the previous window"
 msgstr "Selecteazã fereastra precedentã"
 
-#: info/session.c:1902
+#: info/session.c:1907
 msgid "Split the current window"
 msgstr "Împarte fereastra curentã"
 
-#: info/session.c:1947
+#: info/session.c:1952
 msgid "Delete the current window"
 msgstr "ªterge fereastra curentã"
 
-#: info/session.c:1952
+#: info/session.c:1957
 msgid "Cannot delete a permanent window"
 msgstr "Nu pot ºterge o fereastrã permanentã"
 
-#: info/session.c:1983
+#: info/session.c:1988
 msgid "Delete all other windows"
 msgstr "ªterge toate celelalte ferestre"
 
-#: info/session.c:2029
+#: info/session.c:2034
 msgid "Grow (or shrink) this window"
 msgstr "Creºte sau micºoreazã aceastã fereastrã"
 
-#: info/session.c:2040
+#: info/session.c:2045
 msgid "Divide the available screen space among the visible windows"
 msgstr "Împarte spaþiul de ecran disponibil între ferestrele vizibile"
 
-#: info/session.c:2047
+#: info/session.c:2052
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "Comutã starea reformatãrii de linie (wrapping) în fereastra curentã"
 
-#: info/session.c:2201
+#: info/session.c:2206
 msgid "Select this menu item"
 msgstr "Selecteazã acest articol de meniu"
 
-#: info/session.c:2231
+#: info/session.c:2236
 #, fuzzy, c-format
 msgid "There isn't %d item in this menu."
 msgid_plural "There aren't %d items in this menu."
 msgstr[0] "Nu existã %d articole în acest meniu"
 msgstr[1] "Nu existã %d articole în acest meniu"
 
-#: info/session.c:2240
+#: info/session.c:2245
 msgid "Select the last item in this node's menu"
 msgstr "Selecteazã ultimul articol din meniul acestui nod"
 
-#: info/session.c:2347 info/session.c:2348
+#: info/session.c:2352 info/session.c:2353
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Articol meniu (%s): "
 
-#: info/session.c:2351
+#: info/session.c:2356
 msgid "Menu item: "
 msgstr "Articol meniu: "
 
-#: info/session.c:2358 info/session.c:2359
+#: info/session.c:2363 info/session.c:2364
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Urmeazã ref (%s): "
 
-#: info/session.c:2362
+#: info/session.c:2367
 msgid "Follow xref: "
 msgstr "Urmeazã ref: "
 
-#: info/session.c:2451
+#: info/session.c:2456
 msgid "Read a menu item and select its node"
 msgstr "Citeºte un articol de meniu ºi selecteazã nodul sãu"
 
-#: info/session.c:2476
+#: info/session.c:2481
 msgid "Read a footnote or cross reference and select its node"
 msgstr "Citeºte o notã de subsol sau referinþã ºi selecteazã nodul sãu"
 
-#: info/session.c:2482
+#: info/session.c:2487
 msgid "Move to the start of this node's menu"
 msgstr "Mergi la începutul meniului acestui nod"
 
-#: info/session.c:2504
+#: info/session.c:2509
 msgid "Visit as many menu items at once as possible"
 msgstr "Viziteazã cât mai multe articole de meniu posibile deodatã"
 
-#: info/session.c:2604
+#: info/session.c:2609
 msgid "Move to the previous cross reference"
 msgstr "Mergi la referinþa precedentã"
 
-#: info/session.c:2667
+#: info/session.c:2672
 msgid "Move to the next cross reference"
 msgstr "Mergi la referinþa urmãtoare"
 
-#: info/session.c:2728
+#: info/session.c:2733
 msgid "Select reference or menu item appearing on this line"
 msgstr "Selecteazã referinþa sau articolul de meniu ce apare pe acestã linie"
 
-#: info/session.c:2762
+#: info/session.c:2767
 #, fuzzy, c-format
 msgid "No menu in node '%s'."
 msgstr "Nici un meniu în nod `%s'."
 
-#: info/session.c:2809
+#: info/session.c:2814
 #, fuzzy, c-format
 msgid "Unable to find node referenced by '%s' in '%s'."
 msgstr "Nu pot gãsi nodul referit de `%s' în `%s'."
 
-#: info/session.c:2859
+#: info/session.c:2864
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Citeºte o listã de meniuri pornind din dir ºi urmãreºte-le"
 
-#: info/session.c:2861
+#: info/session.c:2866
 msgid "Follow menus: "
 msgstr "Urmeazã meniurile: "
 
-#: info/session.c:2966
+#: info/session.c:2971
 msgid "Select the Next node"
 msgstr "Selecteazã nodul Urmãtor"
 
-#: info/session.c:2973
+#: info/session.c:2978
 msgid "Select the Prev node"
 msgstr "Selectezã nodul Prec"
 
-#: info/session.c:2980
+#: info/session.c:2985
 msgid "Select the Up node"
 msgstr "Selecteazã nodul Sus"
 
-#: info/session.c:2986
+#: info/session.c:2991
 msgid "Select the last node in this file"
 msgstr "Selecteazã ultimul nod din acest fiºier"
 
-#: info/session.c:3013 info/session.c:3046
+#: info/session.c:3018 info/session.c:3051
 msgid "This window has no additional nodes"
 msgstr "Acestã fereastrã nu mai are nici un nod"
 
-#: info/session.c:3019
+#: info/session.c:3024
 msgid "Select the first node in this file"
 msgstr "Selecteazã primul nod din acest fiºier"
 
-#: info/session.c:3153
+#: info/session.c:3158
 msgid "No more nodes within this document."
 msgstr "Nu mai sunt alte noduri în acest document."
 
-#: info/session.c:3198 info/session.c:3238
+#: info/session.c:3203 info/session.c:3243
 #, fuzzy
 msgid "No 'Prev' or 'Up' for this node within this document."
 msgstr "Nici un `Prec' sau `Sus' pentru acest nod în acest document."
 
-#: info/session.c:3251
+#: info/session.c:3256
 msgid "Move forwards or down through node structure"
 msgstr "Mergi înainte sau jos prin structura de noduri"
 
-#: info/session.c:3268
+#: info/session.c:3273
 msgid "Move backwards or up through node structure"
 msgstr "Mergi înapoi sau sus prin structura de noduri"
 
-#: info/session.c:3291
+#: info/session.c:3296
 msgid "Read a node name and select it"
 msgstr "Citeºte numele unui nod ºi selecteazã-l"
 
-#: info/session.c:3345 info/session.c:3349
+#: info/session.c:3350 info/session.c:3354
 msgid "Goto node: "
 msgstr "Du-te la nod: "
 
-#: info/session.c:3528
+#: info/session.c:3533
 msgid "Find the node describing program invocation"
 msgstr "Gãseºte nodul ce descrie invocarea programului"
 
-#: info/session.c:3530
+#: info/session.c:3535
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Gãseºte nodul Invocare pentru [%s]: "
 
-#: info/session.c:3575
+#: info/session.c:3580
 msgid "Read a manpage reference and select it"
 msgstr "Citeºte o referinþã de paginã de manul ºi selecteazã-o"
 
-#: info/session.c:3579
+#: info/session.c:3584
 msgid "Get Manpage: "
 msgstr "Obþine paginã manual (manpage): "
 
-#: info/session.c:3600
+#: info/session.c:3605
 #, fuzzy
 msgid "Select the node 'Top' in this file"
 msgstr "Selecteazã nodul `Vârf' în acest fiºier"
 
-#: info/session.c:3606
+#: info/session.c:3611
 #, fuzzy
 msgid "Select the node '(dir)'"
 msgstr "Selecteazã nodul `(dir)'"
 
-#: info/session.c:3612
+#: info/session.c:3617
 msgid "Show full file name of node being displayed"
 msgstr ""
 
-#: info/session.c:3629
+#: info/session.c:3634
 msgid "Select the most recently selected node"
 msgstr "Selecteazã cel mai recent nod selectat"
 
-#: info/session.c:3634
+#: info/session.c:3639
 #, c-format
 msgid "No earlier node in history"
 msgstr ""
 
-#: info/session.c:3638
+#: info/session.c:3643
 msgid "Read the name of a file and select it"
 msgstr "Citeºte numele unui fiºier ºi selecteazã-l"
 
-#: info/session.c:3642
+#: info/session.c:3647
 msgid "Find file: "
 msgstr "Gãseºte fiºier: "
 
-#: info/session.c:3659
+#: info/session.c:3664
 #, fuzzy, c-format
 msgid "Cannot find '%s'."
 msgstr "Nu pot gãsi `%s'."
 
-#: info/session.c:3708
+#: info/session.c:3713
 #, fuzzy, c-format
 msgid "Could not create output file '%s'."
 msgstr "Nu am putut crea fiºier ieºire `%s'."
 
-#: info/session.c:3722
+#: info/session.c:3727
 #, fuzzy, c-format
 msgid "error writing to %s: %s"
 msgstr "eroare la scrierea în `%s'"
 
-#: info/session.c:3731
+#: info/session.c:3736
 #, fuzzy, c-format
 msgid "closing %s"
 msgstr "ªterg %s\n"
 
-#: info/session.c:3780
+#: info/session.c:3785
 #, fuzzy, c-format
 msgid "writing node %s..."
 msgstr "Scriu nod %s..."
 
-#: info/session.c:3826
+#: info/session.c:3831
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "Conectez (pipe) conþinutul acestui nod prin INFO_PRINT_COMMAND"
 
-#: info/session.c:3854
+#: info/session.c:3859
 #, fuzzy, c-format
 msgid "Cannot open pipe to '%s'."
 msgstr "Nu pot deschide conexiune (pipe) cãtre `%s'."
 
-#: info/session.c:3859
+#: info/session.c:3864
 #, fuzzy, c-format
 msgid "printing node %s..."
 msgstr "Tipãresc nod %s..."
 
-#: info/session.c:3867
+#: info/session.c:3872
 #, fuzzy, c-format
 msgid "finished printing node %s"
 msgstr "Tipãresc nod %s..."
 
-#: info/session.c:3899
+#: info/session.c:3904
 msgid "Toggle the usage of regular expressions in searches"
 msgstr ""
 
-#: info/session.c:3903
+#: info/session.c:3908
 #, c-format
 msgid "Using regular expressions for searches."
 msgstr ""
 
-#: info/session.c:3904
+#: info/session.c:3909
 #, c-format
 msgid "Using literal strings for searches."
 msgstr ""
 
-#: info/session.c:4164
+#: info/session.c:4169
 msgid "Search continued from the end of the document."
 msgstr ""
 
-#: info/session.c:4169
+#: info/session.c:4174
 #, fuzzy
 msgid "Search continued from the beginning of the document."
 msgstr "ªterge (kill) pânã la începutul liniei"
 
-#: info/session.c:4189
+#: info/session.c:4194
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Caut subfiºier %s ..."
 
-#: info/session.c:4226
+#: info/session.c:4231
 msgid "Search failed."
 msgstr "Cãutare eºuatã."
 
-#: info/session.c:4243
+#: info/session.c:4248
 #, fuzzy, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%s pentru ºir [%s]: "
 
-#: info/session.c:4244 info/session.c:4250
+#: info/session.c:4249 info/session.c:4255
 msgid "Regexp search"
 msgstr ""
 
-#: info/session.c:4244 info/session.c:4250
+#: info/session.c:4249 info/session.c:4255
 msgid "Search"
 msgstr "Cautã"
 
-#: info/session.c:4245 info/session.c:4251
+#: info/session.c:4250 info/session.c:4256
 #, fuzzy
 msgid " case-sensitively"
 msgstr " þinând cont de litere mari/mici"
 
-#: info/session.c:4246 info/session.c:4252
+#: info/session.c:4251 info/session.c:4257
 #, fuzzy
 msgid " backward"
 msgstr "Cautã înapoi"
 
-#: info/session.c:4249
+#: info/session.c:4254
 #, c-format
 msgid "%s%s%s: "
 msgstr ""
 
-#: info/session.c:4269
+#: info/session.c:4274
 msgid "Search string too short"
 msgstr ""
 
-#: info/session.c:4462
+#: info/session.c:4467
 #, c-format
 msgid "Going back to last match from %s"
 msgstr ""
 
-#: info/session.c:4486 info/session.c:4596
+#: info/session.c:4491 info/session.c:4601
 #, c-format
 msgid "No more matches."
 msgstr ""
 
-#: info/session.c:4623
+#: info/session.c:4628
 msgid "Search this node and subnodes for a string."
 msgstr ""
 
-#: info/session.c:4644
+#: info/session.c:4649
 msgid "Go to next match in Info sub-tree"
 msgstr ""
 
-#: info/session.c:4648 info/session.c:4660
+#: info/session.c:4653 info/session.c:4665
 #, c-format
 msgid "No active search"
 msgstr ""
 
-#: info/session.c:4656
+#: info/session.c:4661
 msgid "Go to previous match in Info sub-tree"
 msgstr ""
 
-#: info/session.c:4669
+#: info/session.c:4674
 msgid "Read a string and search for it case-sensitively"
 msgstr "Citeºte un ºir ºi cautã-l þinând cont de litere mari/mici"
 
-#: info/session.c:4674
+#: info/session.c:4679
 msgid "Read a string and search for it"
 msgstr "Citeºte un ºir ºi cautã-l"
 
-#: info/session.c:4680
+#: info/session.c:4685
 msgid "Read a string and search backward for it"
 msgstr "Citeºte un ºir ºi cautã-l înapoi"
 
-#: info/session.c:4688
+#: info/session.c:4693
 msgid "Repeat last search in the same direction"
 msgstr "Repetã ultima cãutare în aceeaºi direcþie"
 
-#: info/session.c:4696 info/session.c:4741
+#: info/session.c:4701 info/session.c:4746
 msgid "No previous search string"
 msgstr "Nici un ºir cãutat anterior"
 
-#: info/session.c:4733
+#: info/session.c:4738
 msgid "Repeat last search in the reverse direction"
 msgstr "Repetã ultima cãutare în direcþie opusã"
 
-#: info/session.c:4780
+#: info/session.c:4785
 msgid "Clear displayed search matches"
 msgstr ""
 
-#: info/session.c:4797 info/session.c:4803
+#: info/session.c:4802 info/session.c:4808
 msgid "Search interactively for a string as you type it"
 msgstr "Cautã interactiv pentru un ºir pe mãsurã ce este introdus"
 
-#: info/session.c:4923
+#: info/session.c:4928
 #, fuzzy
 msgid "Regexp I-search backward: "
 msgstr "I-cautã înapoi: "
 
-#: info/session.c:4924
+#: info/session.c:4929
 msgid "I-search backward: "
 msgstr "I-cautã înapoi: "
 
-#: info/session.c:4926
+#: info/session.c:4931
 #, fuzzy
 msgid "Regexp I-search: "
 msgstr "I-cautã: "
 
-#: info/session.c:4927
+#: info/session.c:4932
 msgid "I-search: "
 msgstr "I-cautã: "
 
-#: info/session.c:4952 info/session.c:4955
+#: info/session.c:4957 info/session.c:4960
 msgid "Failing "
 msgstr "Eºuez "
 
-#: info/session.c:5321
+#: info/session.c:5326
 msgid "Cancel current operation"
 msgstr "Renunþã la operaþia curentã"
 
-#: info/session.c:5328
+#: info/session.c:5333
 msgid "Quit"
 msgstr "Ieºi"
 
-#: info/session.c:5333
+#: info/session.c:5338
 #, fuzzy
 msgid "Display version of Info being run"
 msgstr "afiºeazã informaþii despre versiune ºi terminã"
 
-#: info/session.c:5335
+#: info/session.c:5340
 #, c-format
 msgid "GNU Info version %s"
 msgstr ""
 
-#: info/session.c:5340
+#: info/session.c:5345
 msgid "Redraw the display"
 msgstr "Redeseneazã ecranul"
 
-#: info/session.c:5377
+#: info/session.c:5382
 msgid "Quit using Info"
 msgstr "Ieºi din Info"
 
-#: info/session.c:5393
+#: info/session.c:5398
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Ruleazã comanda legatã de litera micã de pe tastã"
 
-#: info/session.c:5404
+#: info/session.c:5409
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "Comandã necunoscutã (%s)."
 
-#: info/session.c:5407
+#: info/session.c:5412
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" este invalid"
 
-#: info/session.c:5408
+#: info/session.c:5413
 #, fuzzy, c-format
 msgid "'%s' is invalid"
 msgstr "`%s' este invalid"
 
-#: info/session.c:5726
+#: info/session.c:5731
 msgid "Add this digit to the current numeric argument"
 msgstr "Adaugã aceastã cifrã la argumentul numeric curent"
 
-#: info/session.c:5733
+#: info/session.c:5738
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Începe (sau înmulþeºte cu 4) argumentul numeric curent"
 
@@ -2127,12 +2127,12 @@ msgstr "Fiºierul @image `%s' nu poate fi citit: %s"
 msgid "no argument specified for @U"
 msgstr "Nici un nume specificat pentru comanda `%c%s'"
 
-#: tp/Texinfo/Convert/HTML.pm:1684
+#: tp/Texinfo/Convert/HTML.pm:1683
 #, fuzzy, perl-format
 msgid "@image file `%s' (for HTML) not found, using `%s'"
 msgstr "Fiºierul @image `%s' (pentru HTML) nu poate fi citit: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:2372
+#: tp/Texinfo/Convert/HTML.pm:2371
 #, perl-format
 msgid "raw format %s is not converted"
 msgstr ""
@@ -3166,47 +3166,47 @@ msgid ""
 "items found in the document for @%s"
 msgstr ""
 
-#: tp/texi2any.pl:382
+#: tp/texi2any.pl:383
 #, fuzzy, perl-format
 msgid "error loading %s: %s\n"
 msgstr "eroare la scrierea în `%s'"
 
-#: tp/texi2any.pl:395
+#: tp/texi2any.pl:396
 #, fuzzy, perl-format
 msgid "%s: unknown variable %s"
 msgstr "acþiune necunoscutã `%s'"
 
-#: tp/texi2any.pl:399
+#: tp/texi2any.pl:400
 #, fuzzy, perl-format
 msgid "%s: obsolete variable %s\n"
 msgstr "Seteazã variabilã: "
 
-#: tp/texi2any.pl:414
+#: tp/texi2any.pl:415
 #, fuzzy, perl-format
 msgid "%s: unknown variable %s\n"
 msgstr "acþiune necunoscutã `%s'"
 
-#: tp/texi2any.pl:418
+#: tp/texi2any.pl:419
 #, fuzzy, perl-format
 msgid "obsolete variable %s\n"
 msgstr "Seteazã variabilã: "
 
-#: tp/texi2any.pl:483
+#: tp/texi2any.pl:484
 #, fuzzy, perl-format
 msgid "could not read init file %s"
 msgstr "Nu am putut crea fiºier ieºire `%s'."
 
-#: tp/texi2any.pl:646
+#: tp/texi2any.pl:647
 #, fuzzy, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "%s: Ignor valoare nerecunoscutã TEXINFO_OUTPUT_FORMAT `%s'.\n"
 
-#: tp/texi2any.pl:729
+#: tp/texi2any.pl:730
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Folosire: %s [OPÞIUNE]... FIªIER-TEXINFO...\n"
 
-#: tp/texi2any.pl:732
+#: tp/texi2any.pl:733
 #, fuzzy
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
@@ -3218,7 +3218,7 @@ msgstr ""
 "Translateazã documentaþia sursã Texinfo în diferite alte formate, implicit\n"
 "fiºiere Info potrivite pentru citit online cu Emacs sau GNU Info.\n"
 
-#: tp/texi2any.pl:738
+#: tp/texi2any.pl:739
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -3248,7 +3248,7 @@ msgstr ""
 "      --version               afiºeazã informaþii despre versiune ºi "
 "terminã.\n"
 
-#: tp/texi2any.pl:754
+#: tp/texi2any.pl:755
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -3265,7 +3265,7 @@ msgstr ""
 "      --xml                 ieºire Texinfo XML în loc de Info.\n"
 "      --plaintext           ieºire text simplu în loc de Info.\n"
 
-#: tp/texi2any.pl:762
+#: tp/texi2any.pl:763
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -3306,7 +3306,7 @@ msgstr ""
 "      --number-sections     scrie numere de capitole ºi secþiuni.\n"
 "  -o, --output=FIªIER       scrie în FIªIER (director dacã multiple HTML),\n"
 
-#: tp/texi2any.pl:782
+#: tp/texi2any.pl:783
 #, fuzzy, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3346,7 +3346,7 @@ msgstr ""
 "      --split-size=NUM        împarte fiºierele Info de dimens. NUM "
 "(implicit %d).\n"
 
-#: tp/texi2any.pl:799
+#: tp/texi2any.pl:800
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3360,19 +3360,19 @@ msgid ""
 "                                anchors; default is set only if split.\n"
 msgstr ""
 
-#: tp/texi2any.pl:810
+#: tp/texi2any.pl:811
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:813
+#: tp/texi2any.pl:814
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:816
+#: tp/texi2any.pl:817
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -3390,7 +3390,7 @@ msgstr ""
 "  -P DIR                        prepend DIR la calea de cãutare @include.\n"
 "  -U VAR                        nedefineºte variabila VAR, ca ºi @clear.\n"
 
-#: tp/texi2any.pl:824
+#: tp/texi2any.pl:825
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -3430,7 +3430,7 @@ msgstr ""
 "  De asemenea, pentru opþiunile --no-ifFORMAT, proceseazã text "
 "@ifnotFORMAT.\n"
 
-#: tp/texi2any.pl:841
+#: tp/texi2any.pl:842
 #, fuzzy
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
@@ -3447,7 +3447,7 @@ msgstr ""
 "  dacã generaþi text simplu, --ifplaintext este selectat iar restul sunt "
 "deselectate;\n"
 
-#: tp/texi2any.pl:848
+#: tp/texi2any.pl:849
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -3479,78 +3479,78 @@ msgstr ""
 "  makeinfo --no-split foo.texi          scrie un singur fiºier Info "
 "indiferent cât de mare\n"
 
-#: tp/texi2any.pl:895
+#: tp/texi2any.pl:896
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: --footnote-style arg trebuie sã fie `separate' sau `end', nu `%s'.\n"
 
-#: tp/texi2any.pl:986
+#: tp/texi2any.pl:987
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: --paragraph-indent arg trebuie sã fie numeric/`none'/`asis', nu `%s'.\n"
 
-#: tp/texi2any.pl:1063
+#: tp/texi2any.pl:1064
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 
-#: tp/texi2any.pl:1067
+#: tp/texi2any.pl:1068
 msgid "--Xopt option without printed output"
 msgstr ""
 
-#: tp/texi2any.pl:1082
+#: tp/texi2any.pl:1083
 #, fuzzy, perl-format
 msgid "unknown tree transformation %s"
 msgstr "acþiune necunoscutã `%s'"
 
-#: tp/texi2any.pl:1089
+#: tp/texi2any.pl:1090
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:1149
+#: tp/texi2any.pl:1150
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: lipseºte fiºierul argument.\n"
 
-#: tp/texi2any.pl:1150
+#: tp/texi2any.pl:1151
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Încercaþi `%s --help' pentru informaþii suplimentare.\n"
 
-#: tp/texi2any.pl:1231
+#: tp/texi2any.pl:1232
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 
-#: tp/texi2any.pl:1254
+#: tp/texi2any.pl:1255
 #, fuzzy, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
-#: tp/texi2any.pl:1260
+#: tp/texi2any.pl:1261
 #, fuzzy, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/texi2any.pl:1285
+#: tp/texi2any.pl:1286
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
 msgstr ""
 
-#: tp/texi2any.pl:1358 tp/texi2any.pl:1434
+#: tp/texi2any.pl:1359 tp/texi2any.pl:1435
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr ""
 
-#: tp/texi2any.pl:1381 tp/texi2any.pl:1415
+#: tp/texi2any.pl:1382 tp/texi2any.pl:1416
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr ""
 
-#: tp/texi2any.pl:1387 tp/texi2any.pl:1421
+#: tp/texi2any.pl:1388 tp/texi2any.pl:1422
 #, fuzzy, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: nu am putut deschide --css-file: %s"

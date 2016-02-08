@@ -428,6 +428,7 @@ $result_converted{'plaintext'}->{'nested_formats'} = '
 $result_converted{'html_text'}->{'nested_formats'} = '<div class="format">
 <div class="example">
 <pre class="example">
+
 in -- format/example
 
 </pre></div>
@@ -436,6 +437,7 @@ in -- format/example
 <div class="example">
 <div class="format">
 <pre class="example">
+
 in -- example/format
 
 </pre></div>

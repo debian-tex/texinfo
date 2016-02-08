@@ -140,6 +140,7 @@ $result_converted{'plaintext'}->{'insertcopying_in_example'} = '
 
 $result_converted{'html_text'}->{'insertcopying_in_example'} = '<div class="example">
 <pre class="example">
+
 text
 </pre></div>
 ';

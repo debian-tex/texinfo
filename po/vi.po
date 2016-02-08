@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-29 17:15+0000\n"
+"POT-Creation-Date: 2016-02-06 11:35+0000\n"
 "PO-Revision-Date: 2015-12-23 07:25+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
@@ -391,7 +391,7 @@ msgstr "Không có tập tin thông tin sẵn sàng chứa “%s” trong chỉ 
 msgid "Error converting file character encoding."
 msgstr "Gặp lỗi khi chuyển đổi bộ mã ký tự tập tin."
 
-#: info/info.c:222 info/session.c:2784
+#: info/info.c:222 info/session.c:2789
 #, c-format
 msgid "No menu item '%s' in node '%s'."
 msgstr "Không có mục trình đơn “%s” trong nút “%s”."
@@ -436,7 +436,7 @@ msgstr "giá trị %s là không hợp lệ với biến %s"
 msgid "Try --help for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp “--help” để xem thông tin thêm.\n"
 
-#: info/info.c:804 install-info/install-info.c:2239 tp/texi2any.pl:872
+#: info/info.c:804 install-info/install-info.c:2239 tp/texi2any.pl:873
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -590,7 +590,7 @@ msgstr ""
 "  info -f ./foo.info         hiển thị tập tin “./foo.info”, không tìm kiếm "
 "thư mục"
 
-#: info/info.c:1099 install-info/install-info.c:616 tp/texi2any.pl:860
+#: info/info.c:1099 install-info/install-info.c:616 tp/texi2any.pl:861
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -1048,7 +1048,7 @@ msgstr "Chọn nút đã xem trước, trong cửa sổ hiện rõ"
 msgid "Select visited node: "
 msgstr "Chọn nút đã xem: "
 
-#: info/nodemenu.c:278 info/session.c:2439
+#: info/nodemenu.c:278 info/session.c:2444
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "Tham chiếu đã biến mất! (%s)."
@@ -1185,449 +1185,449 @@ msgstr "Cuộn cửa sổ khác"
 msgid "Scroll the other window backward"
 msgstr "Cuộn lùi cửa sổ khác"
 
-#: info/session.c:1821
+#: info/session.c:1826
 msgid "Select the next window"
 msgstr "Chọn cửa sổ kế"
 
-#: info/session.c:1858
+#: info/session.c:1863
 msgid "Select the previous window"
 msgstr "Chọn cửa sổ kế trước"
 
-#: info/session.c:1902
+#: info/session.c:1907
 msgid "Split the current window"
 msgstr "Chia tách cửa sổ hiện có"
 
-#: info/session.c:1947
+#: info/session.c:1952
 msgid "Delete the current window"
 msgstr "Xóa cửa sổ hiện có"
 
-#: info/session.c:1952
+#: info/session.c:1957
 msgid "Cannot delete a permanent window"
 msgstr "Không thể xóa cửa sổ vĩnh cửu"
 
-#: info/session.c:1983
+#: info/session.c:1988
 msgid "Delete all other windows"
 msgstr "Xóa các cửa sổ khác"
 
-#: info/session.c:2029
+#: info/session.c:2034
 msgid "Grow (or shrink) this window"
 msgstr "Phóng to (hay thu nhỏ) cửa sổ này"
 
-#: info/session.c:2040
+#: info/session.c:2045
 msgid "Divide the available screen space among the visible windows"
 msgstr "Chia chỗ màn hình sẵn sàng ra các cửa sổ hiện rõ"
 
-#: info/session.c:2047
+#: info/session.c:2052
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "Bật tắt tính trạng ngắt dòng trong cửa sổ hiện tại"
 
-#: info/session.c:2201
+#: info/session.c:2206
 msgid "Select this menu item"
 msgstr "Chọn mục trình đơn này"
 
-#: info/session.c:2231
+#: info/session.c:2236
 #, c-format
 msgid "There isn't %d item in this menu."
 msgid_plural "There aren't %d items in this menu."
 msgstr[0] "Không có %d mục nào trong trình đơn này."
 
-#: info/session.c:2240
+#: info/session.c:2245
 msgid "Select the last item in this node's menu"
 msgstr "Chọn mục cuối trong trình đơn nút này"
 
-#: info/session.c:2347 info/session.c:2348
+#: info/session.c:2352 info/session.c:2353
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Mục trình đơn (%s): "
 
-#: info/session.c:2351
+#: info/session.c:2356
 msgid "Menu item: "
 msgstr "Mục trình đơn: "
 
-#: info/session.c:2358 info/session.c:2359
+#: info/session.c:2363 info/session.c:2364
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Theo tham chiếu chéo (%s): "
 
-#: info/session.c:2362
+#: info/session.c:2367
 msgid "Follow xref: "
 msgstr "Theo tham chiếu chéo: "
 
-#: info/session.c:2451
+#: info/session.c:2456
 msgid "Read a menu item and select its node"
 msgstr "Đọc mục trình đơn và chọn nút của nó"
 
-#: info/session.c:2476
+#: info/session.c:2481
 msgid "Read a footnote or cross reference and select its node"
 msgstr "Đọc cước chú hay tham chiếu chéo và chọn nút của nó"
 
-#: info/session.c:2482
+#: info/session.c:2487
 msgid "Move to the start of this node's menu"
 msgstr "Về đầu trình đơn của nút này"
 
-#: info/session.c:2504
+#: info/session.c:2509
 msgid "Visit as many menu items at once as possible"
 msgstr "Xem đồng thời càng nhiều mục trình đơn càng có thể"
 
-#: info/session.c:2604
+#: info/session.c:2609
 msgid "Move to the previous cross reference"
 msgstr "Về tham chiếu chéo trước"
 
-#: info/session.c:2667
+#: info/session.c:2672
 msgid "Move to the next cross reference"
 msgstr "Tới tham chiếu chéo kế"
 
-#: info/session.c:2728
+#: info/session.c:2733
 msgid "Select reference or menu item appearing on this line"
 msgstr "Chọn tham chiếu hay mục trình đơn xuất hiện trên dòng này"
 
-#: info/session.c:2762
+#: info/session.c:2767
 #, c-format
 msgid "No menu in node '%s'."
 msgstr "Không có trình đơn trong nút “%s”."
 
-#: info/session.c:2809
+#: info/session.c:2814
 #, c-format
 msgid "Unable to find node referenced by '%s' in '%s'."
 msgstr "Không tìm thấy nút được tham chiếu bởi “%s” trong “%s”."
 
-#: info/session.c:2859
+#: info/session.c:2864
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Đọc danh sách các trình đơn bắt đầu từ “thư mục” và theo chúng"
 
-#: info/session.c:2861
+#: info/session.c:2866
 msgid "Follow menus: "
 msgstr "Theo trình đơn: "
 
-#: info/session.c:2966
+#: info/session.c:2971
 msgid "Select the Next node"
 msgstr "Chọn nút Kế"
 
-#: info/session.c:2973
+#: info/session.c:2978
 msgid "Select the Prev node"
 msgstr "Chọn nút Lùi"
 
-#: info/session.c:2980
+#: info/session.c:2985
 msgid "Select the Up node"
 msgstr "Chọn nút Lên"
 
-#: info/session.c:2986
+#: info/session.c:2991
 msgid "Select the last node in this file"
 msgstr "Chọn nút cuối trong tập tin này"
 
-#: info/session.c:3013 info/session.c:3046
+#: info/session.c:3018 info/session.c:3051
 msgid "This window has no additional nodes"
 msgstr "Cửa sổ này không có nút thêm"
 
-#: info/session.c:3019
+#: info/session.c:3024
 msgid "Select the first node in this file"
 msgstr "Chọn nút đầu trong tập tin này"
 
-#: info/session.c:3153
+#: info/session.c:3158
 msgid "No more nodes within this document."
 msgstr "Không có nút nữa trong tài liệu này."
 
-#: info/session.c:3198 info/session.c:3238
+#: info/session.c:3203 info/session.c:3243
 msgid "No 'Prev' or 'Up' for this node within this document."
 msgstr "Không có “Lùi” hay “Lên” cho nút này trong tài liệu này."
 
-#: info/session.c:3251
+#: info/session.c:3256
 msgid "Move forwards or down through node structure"
 msgstr "Chuyển tới hay xuống qua cấu trúc nút"
 
-#: info/session.c:3268
+#: info/session.c:3273
 msgid "Move backwards or up through node structure"
 msgstr "Chuyển lùi hay lên qua cấu trúc nút"
 
-#: info/session.c:3291
+#: info/session.c:3296
 msgid "Read a node name and select it"
 msgstr "Đọc tên nút và chọn nó"
 
-#: info/session.c:3345 info/session.c:3349
+#: info/session.c:3350 info/session.c:3354
 msgid "Goto node: "
 msgstr "Tới nút: "
 
-#: info/session.c:3528
+#: info/session.c:3533
 msgid "Find the node describing program invocation"
 msgstr "Tìm nút diễn tả cuộc gọi chương trình"
 
-#: info/session.c:3530
+#: info/session.c:3535
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Tìm nút gọi của [%s]: "
 
-#: info/session.c:3575
+#: info/session.c:3580
 msgid "Read a manpage reference and select it"
 msgstr "Đọc tham chiếu trang hướng dẫn (man) và chọn nó"
 
-#: info/session.c:3579
+#: info/session.c:3584
 msgid "Get Manpage: "
 msgstr "Lấy trang hướng dẫn: "
 
-#: info/session.c:3600
+#: info/session.c:3605
 msgid "Select the node 'Top' in this file"
 msgstr "Chọn nút “Đỉnh” trong tập tin này"
 
-#: info/session.c:3606
+#: info/session.c:3611
 msgid "Select the node '(dir)'"
 msgstr "Chọn nút “(dir)”"
 
-#: info/session.c:3612
+#: info/session.c:3617
 msgid "Show full file name of node being displayed"
 msgstr "Hiển thị tên tập tin dạng đầy đủ của nút đang được hiển thị"
 
-#: info/session.c:3629
+#: info/session.c:3634
 msgid "Select the most recently selected node"
 msgstr "Chọn nút mới chọn"
 
-#: info/session.c:3634
+#: info/session.c:3639
 #, c-format
 msgid "No earlier node in history"
 msgstr "Không có nút mới hơn trong lịch sử"
 
-#: info/session.c:3638
+#: info/session.c:3643
 msgid "Read the name of a file and select it"
 msgstr "Đọc tên tập tin và chọn nó"
 
-#: info/session.c:3642
+#: info/session.c:3647
 msgid "Find file: "
 msgstr "Tìm tập tin: "
 
-#: info/session.c:3659
+#: info/session.c:3664
 #, c-format
 msgid "Cannot find '%s'."
 msgstr "Không tìm thấy “%s”."
 
-#: info/session.c:3708
+#: info/session.c:3713
 #, c-format
 msgid "Could not create output file '%s'."
 msgstr "Không thể tạo tập tin xuất “%s”."
 
-#: info/session.c:3722
+#: info/session.c:3727
 #, c-format
 msgid "error writing to %s: %s"
 msgstr "gặp lỗi khi ghi vào “%s”: %s"
 
-#: info/session.c:3731
+#: info/session.c:3736
 #, c-format
 msgid "closing %s"
 msgstr "đang đóng %s"
 
-#: info/session.c:3780
+#: info/session.c:3785
 #, c-format
 msgid "writing node %s..."
 msgstr "đang ghi nút %s…"
 
-#: info/session.c:3826
+#: info/session.c:3831
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr ""
 "Gửi nội dung của nút nay qua ống dẫn kiểu “INFO_PRINT_COMMAND” (Info in ra "
 "lệnh)"
 
-#: info/session.c:3854
+#: info/session.c:3859
 #, c-format
 msgid "Cannot open pipe to '%s'."
 msgstr "Không thể mở ống dẫn đến “%s”."
 
-#: info/session.c:3859
+#: info/session.c:3864
 #, c-format
 msgid "printing node %s..."
 msgstr "đang in nút %s…"
 
-#: info/session.c:3867
+#: info/session.c:3872
 #, c-format
 msgid "finished printing node %s"
 msgstr "đã hoàn tất việc in nút %s"
 
-#: info/session.c:3899
+#: info/session.c:3904
 msgid "Toggle the usage of regular expressions in searches"
 msgstr "Bật/tắt khả năng sử dụng biểu thức chính quy khi tìm kiếm"
 
-#: info/session.c:3903
+#: info/session.c:3908
 #, c-format
 msgid "Using regular expressions for searches."
 msgstr "Dùng biểu thức chính quy khi tìm kiếm."
 
-#: info/session.c:3904
+#: info/session.c:3909
 #, c-format
 msgid "Using literal strings for searches."
 msgstr "Dùng chuỗi nghĩa chữ khi tìm kiếm."
 
-#: info/session.c:4164
+#: info/session.c:4169
 msgid "Search continued from the end of the document."
 msgstr "Tiến trình tìm kiếm đã tiếp tục từ cuối của tài liệu."
 
-#: info/session.c:4169
+#: info/session.c:4174
 msgid "Search continued from the beginning of the document."
 msgstr "Tiến trình tìm kiếm đã tiếp tục từ đầu của tài liệu."
 
-#: info/session.c:4189
+#: info/session.c:4194
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Đang tìm kiếm tập tin phụ %s…"
 
-#: info/session.c:4226
+#: info/session.c:4231
 msgid "Search failed."
 msgstr "Gặp lỗi khi tìm kiếm."
 
-#: info/session.c:4243
+#: info/session.c:4248
 #, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%s%s [%s]: "
 
-#: info/session.c:4244 info/session.c:4250
+#: info/session.c:4249 info/session.c:4255
 msgid "Regexp search"
 msgstr "Tìm kiếm dùng biểu thức chính quy"
 
-#: info/session.c:4244 info/session.c:4250
+#: info/session.c:4249 info/session.c:4255
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: info/session.c:4245 info/session.c:4251
+#: info/session.c:4250 info/session.c:4256
 msgid " case-sensitively"
 msgstr " phân biết chữ hoa/thường "
 
-#: info/session.c:4246 info/session.c:4252
+#: info/session.c:4251 info/session.c:4257
 msgid " backward"
 msgstr " ngược"
 
-#: info/session.c:4249
+#: info/session.c:4254
 #, c-format
 msgid "%s%s%s: "
 msgstr "%s%s%s: "
 
-#: info/session.c:4269
+#: info/session.c:4274
 msgid "Search string too short"
 msgstr "Chuỗi tìm kiếm quá ngắn"
 
-#: info/session.c:4462
+#: info/session.c:4467
 #, c-format
 msgid "Going back to last match from %s"
 msgstr "Trở lại đến chỗ khớp cuối từ %s"
 
-#: info/session.c:4486 info/session.c:4596
+#: info/session.c:4491 info/session.c:4601
 #, c-format
 msgid "No more matches."
 msgstr "Không tìm thấy thêm nữa."
 
-#: info/session.c:4623
+#: info/session.c:4628
 msgid "Search this node and subnodes for a string."
 msgstr "Tìm một chuỗi trong nút này và nút con."
 
-#: info/session.c:4644
+#: info/session.c:4649
 msgid "Go to next match in Info sub-tree"
 msgstr "Đi đến chỗ khớp kế tiếp trong cây-con Info"
 
-#: info/session.c:4648 info/session.c:4660
+#: info/session.c:4653 info/session.c:4665
 #, c-format
 msgid "No active search"
 msgstr "Không có tìm kiếm nào hiện đang hoạt động"
 
-#: info/session.c:4656
+#: info/session.c:4661
 msgid "Go to previous match in Info sub-tree"
 msgstr "Đi đến chỗ khớp kế trước trong cây-con Info"
 
-#: info/session.c:4669
+#: info/session.c:4674
 msgid "Read a string and search for it case-sensitively"
 msgstr "Đọc chuỗi và tìm kiếm nó, có phân biệt HOA/thường"
 
-#: info/session.c:4674
+#: info/session.c:4679
 msgid "Read a string and search for it"
 msgstr "Đọc chuỗi và tìm kiếm nó"
 
-#: info/session.c:4680
+#: info/session.c:4685
 msgid "Read a string and search backward for it"
 msgstr "Đọc chuỗi và tìm kiếm theo hướng ngược"
 
-#: info/session.c:4688
+#: info/session.c:4693
 msgid "Repeat last search in the same direction"
 msgstr "Làm lại việc tìm kiếm cuối với cùng hướng"
 
-#: info/session.c:4696 info/session.c:4741
+#: info/session.c:4701 info/session.c:4746
 msgid "No previous search string"
 msgstr "Không có chuỗi tìm kiếm trước"
 
-#: info/session.c:4733
+#: info/session.c:4738
 msgid "Repeat last search in the reverse direction"
 msgstr "Làm lại việc tìm kiếm cuối, về ngược phía hướng"
 
-#: info/session.c:4780
+#: info/session.c:4785
 msgid "Clear displayed search matches"
 msgstr "Xóa trình bày khớp mẫu"
 
-#: info/session.c:4797 info/session.c:4803
+#: info/session.c:4802 info/session.c:4808
 msgid "Search interactively for a string as you type it"
 msgstr "Tìm kiếm tương tác chuỗi đang gõ"
 
-#: info/session.c:4923
+#: info/session.c:4928
 msgid "Regexp I-search backward: "
 msgstr "Tìm kiếm ngược I dùng biểu thức chính quy: "
 
-#: info/session.c:4924
+#: info/session.c:4929
 msgid "I-search backward: "
 msgstr "Tìm kiếm ngược I: "
 
-#: info/session.c:4926
+#: info/session.c:4931
 msgid "Regexp I-search: "
 msgstr "Tìm kiếm I dùng biểu thức chính quy: "
 
-#: info/session.c:4927
+#: info/session.c:4932
 msgid "I-search: "
 msgstr "Tìm kiếm I: "
 
-#: info/session.c:4952 info/session.c:4955
+#: info/session.c:4957 info/session.c:4960
 msgid "Failing "
 msgstr "Đang thất bại "
 
-#: info/session.c:5321
+#: info/session.c:5326
 msgid "Cancel current operation"
 msgstr "Hủy thao tác đang chạy"
 
-#: info/session.c:5328
+#: info/session.c:5333
 msgid "Quit"
 msgstr "Thoát"
 
-#: info/session.c:5333
+#: info/session.c:5338
 msgid "Display version of Info being run"
 msgstr "Hiển thị thông tin phiên bản của Info đang chạy"
 
-#: info/session.c:5335
+#: info/session.c:5340
 #, c-format
 msgid "GNU Info version %s"
 msgstr "GNU Info phiên bản %s"
 
-#: info/session.c:5340
+#: info/session.c:5345
 msgid "Redraw the display"
 msgstr "Vẽ lại màn hình"
 
-#: info/session.c:5377
+#: info/session.c:5382
 msgid "Quit using Info"
 msgstr "Thoát khỏi Info"
 
-#: info/session.c:5393
+#: info/session.c:5398
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Chạy lệnh đã đóng kết đến biến thế chữ thường của phím này"
 
-#: info/session.c:5404
+#: info/session.c:5409
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "Lệnh lạ (%s)."
 
-#: info/session.c:5407
+#: info/session.c:5412
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "“%s” không hợp lệ"
 
-#: info/session.c:5408
+#: info/session.c:5413
 #, c-format
 msgid "'%s' is invalid"
 msgstr "“%s” không hợp lệ"
 
-#: info/session.c:5726
+#: info/session.c:5731
 msgid "Add this digit to the current numeric argument"
 msgstr "Thêm chữ số này vào đối số thuộc số hiện tại"
 
-#: info/session.c:5733
+#: info/session.c:5738
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Bắt đầu (hoặc nhân với 4) đối số thuộc số hiện tại)"
 
@@ -2185,12 +2185,12 @@ msgstr "không tìm thấy tập tin @image “%s”, đang dùng “%s”"
 msgid "no argument specified for @U"
 msgstr "chưa chỉ định đối số cho @U"
 
-#: tp/Texinfo/Convert/HTML.pm:1684
+#: tp/Texinfo/Convert/HTML.pm:1683
 #, perl-format
 msgid "@image file `%s' (for HTML) not found, using `%s'"
 msgstr "Tập tin @image “%s” (cho HTML) không đọc được, dùng “%s”"
 
-#: tp/Texinfo/Convert/HTML.pm:2372
+#: tp/Texinfo/Convert/HTML.pm:2371
 #, perl-format
 msgid "raw format %s is not converted"
 msgstr "định dạng thô %s không được chuyển đổi"
@@ -3262,49 +3262,49 @@ msgstr ""
 "tex4ht.pm: xử lý tìm lại %d mục trong HTML; cần %d, con số được tìm thấy "
 "trong tài liệu dành cho @%s"
 
-#: tp/texi2any.pl:382
+#: tp/texi2any.pl:383
 #, perl-format
 msgid "error loading %s: %s\n"
 msgstr "lỗi tải %s: %s\n"
 
-#: tp/texi2any.pl:395
+#: tp/texi2any.pl:396
 #, perl-format
 msgid "%s: unknown variable %s"
 msgstr "%s: không hiểu biến %s"
 
-#: tp/texi2any.pl:399
+#: tp/texi2any.pl:400
 #, perl-format
 msgid "%s: obsolete variable %s\n"
 msgstr "%s: biến %s đã lạc hậu\n"
 
-#: tp/texi2any.pl:414
+#: tp/texi2any.pl:415
 #, perl-format
 msgid "%s: unknown variable %s\n"
 msgstr "%s: không hiểu biến %s\n"
 
-#: tp/texi2any.pl:418
+#: tp/texi2any.pl:419
 #, perl-format
 msgid "obsolete variable %s\n"
 msgstr "biến %s đã lạc hậu\n"
 
-#: tp/texi2any.pl:483
+#: tp/texi2any.pl:484
 #, perl-format
 msgid "could not read init file %s"
 msgstr "không thể đọc tập tin khởi tạo %s"
 
-#: tp/texi2any.pl:646
+#: tp/texi2any.pl:647
 #, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr ""
 "bỏ qua giá trị không chấp nhận được “TEXINFO_OUTPUT_FORMAT” (định dạng xuất "
 "Texinfo) “%s”\n"
 
-#: tp/texi2any.pl:729
+#: tp/texi2any.pl:730
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Cách dùng: %s [TÙY-CHỌN]… TẬP-TIN-TEXTINFO…\n"
 
-#: tp/texi2any.pl:732
+#: tp/texi2any.pl:733
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -3319,7 +3319,7 @@ msgstr ""
 "Chương trình này thường được cài cùng cả “makeinfo” và “texi2any';\n"
 "chúng làm cùng nhiệm vụ, không phụ thuộc vào tên được cài đặt.\n"
 
-#: tp/texi2any.pl:738
+#: tp/texi2any.pl:739
 #, perl-format
 msgid ""
 "General options:\n"
@@ -3358,7 +3358,7 @@ msgstr ""
 "  -v, --verbose                diễn tả việc đang được làm \n"
 "      --version                hiển thị thông tin phiên bản rồi thoát.\n"
 
-#: tp/texi2any.pl:754
+#: tp/texi2any.pl:755
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3377,7 +3377,7 @@ msgstr ""
 "                               sau khi kiểm tra tính hợp lệ của TẬP-TIN-"
 "INFO\n"
 
-#: tp/texi2any.pl:762
+#: tp/texi2any.pl:763
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -3426,7 +3426,7 @@ msgstr ""
 "                                đặt tập tin kết xuất ở đây.\n"
 "                               Nếu không, tên ĐÍCH là tập tin kết xuất.\n"
 
-#: tp/texi2any.pl:782
+#: tp/texi2any.pl:783
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3470,7 +3470,7 @@ msgstr ""
 "      --split-size=SỐ        chia tách các tập tin Info ở kích cỡ SỐ (mặc "
 "định là %d).\n"
 
-#: tp/texi2any.pl:799
+#: tp/texi2any.pl:800
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3497,7 +3497,7 @@ msgstr ""
 "nút                               và điểm neo; mặc định chỉ được đặt nếu "
 "tách.\n"
 
-#: tp/texi2any.pl:810
+#: tp/texi2any.pl:811
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
@@ -3505,7 +3505,7 @@ msgstr ""
 "Các tùy chọn cho XML và Docbook:\n"
 "      --output-indent=VAL     chẳng làm gì, giữ lại để tương thích.\n"
 
-#: tp/texi2any.pl:813
+#: tp/texi2any.pl:814
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
@@ -3513,7 +3513,7 @@ msgstr ""
 "Tùy chọn cho DVI/PS/PDF:\n"
 "      --Xopt=OPT              chuyển OPT cho texi2dvi; có thể lặp lại.\n"
 
-#: tp/texi2any.pl:816
+#: tp/texi2any.pl:817
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3535,7 +3535,7 @@ msgstr ""
 "kiếm @include.\n"
 "  -U BIẾN                       hủy định nghĩa biến này, giống như @clear.\n"
 
-#: tp/texi2any.pl:824
+#: tp/texi2any.pl:825
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -3573,7 +3573,7 @@ msgstr ""
 "  Đồng thời, đối với các tùy chọn “--no-ifĐỊNH_DẠNG”, phải xử lý văn bản "
 "@ifnotĐỊNH_DẠNG.\n"
 
-#: tp/texi2any.pl:841
+#: tp/texi2any.pl:842
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating Docbook, --ifdocbook is on and the others are off;\n"
@@ -3589,7 +3589,7 @@ msgstr ""
 "  nếu tạo chữ dạng thô thì bật “--ifplaintext” và các cái khác bị tắt;\n"
 "  nếu tạo XML thì bật “--ifxml” và các cái khác bị tắt;\n"
 
-#: tp/texi2any.pl:848
+#: tp/texi2any.pl:849
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -3620,7 +3620,7 @@ msgstr ""
 "  makeinfo --no-split phu.texi           ghi một tập tin Info, bất chấp kích "
 "cỡ tối đa\n"
 
-#: tp/texi2any.pl:895
+#: tp/texi2any.pl:896
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
@@ -3629,7 +3629,7 @@ msgstr ""
 " * end        cuối\n"
 "không phải “%s”.\n"
 
-#: tp/texi2any.pl:986
+#: tp/texi2any.pl:987
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
@@ -3639,54 +3639,54 @@ msgstr ""
 " * asis       như thế\n"
 "không phải “%s”.\n"
 
-#: tp/texi2any.pl:1063
+#: tp/texi2any.pl:1064
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 "%s: khi đang tạo %s, chỉ một TẬP-TIN đầu vào có thể được chỉ ra cùng với tùy "
 "chọn -o\n"
 
-#: tp/texi2any.pl:1067
+#: tp/texi2any.pl:1068
 msgid "--Xopt option without printed output"
 msgstr "tùy chọn --Xopt không in ra kết xuất"
 
-#: tp/texi2any.pl:1082
+#: tp/texi2any.pl:1083
 #, perl-format
 msgid "unknown tree transformation %s"
 msgstr "không hiểu sự biến đổi cây %s"
 
-#: tp/texi2any.pl:1089
+#: tp/texi2any.pl:1090
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr "bỏ qua việc chia cắt cho định dạng %s"
 
-#: tp/texi2any.pl:1149
+#: tp/texi2any.pl:1150
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: thiếu đối số tập tin.\n"
 
-#: tp/texi2any.pl:1150
+#: tp/texi2any.pl:1151
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp “%s --help” để xem thông tin thêm.\n"
 
-#: tp/texi2any.pl:1231
+#: tp/texi2any.pl:1232
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 "chuyển đổi dạng fill_gaps_in_sectioning không trả về kết quả nào. Không có "
 "chương nào à?"
 
-#: tp/texi2any.pl:1254
+#: tp/texi2any.pl:1255
 #, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "gặp lỗi khi đóng tập tin vĩ lệnh mở rộng %s: %s\n"
 
-#: tp/texi2any.pl:1260
+#: tp/texi2any.pl:1261
 #, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "không thể mở “%s” để ghi: %s\n"
 
-#: tp/texi2any.pl:1285
+#: tp/texi2any.pl:1286
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
@@ -3694,17 +3694,17 @@ msgstr ""
 "sự biến đổi insert_nodes_for_sectioning_commands không trả về kết quả. Không "
 "có chương nào à?"
 
-#: tp/texi2any.pl:1358 tp/texi2any.pl:1434
+#: tp/texi2any.pl:1359 tp/texi2any.pl:1435
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "%s: lỗi đóng tập tin %s: %s\n"
 
-#: tp/texi2any.pl:1381 tp/texi2any.pl:1415
+#: tp/texi2any.pl:1382 tp/texi2any.pl:1416
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "%s: gặp lỗi khi đóng tập tin liên kết nội tại %s: %s\n"
 
-#: tp/texi2any.pl:1387 tp/texi2any.pl:1421
+#: tp/texi2any.pl:1388 tp/texi2any.pl:1422
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: không thể mở “%s” để ghi: %s\n"

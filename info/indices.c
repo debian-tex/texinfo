@@ -1,8 +1,8 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c 6515 2015-08-12 15:59:05Z gavin $
+   $Id: indices.c 6906 2016-01-01 18:33:45Z karl $
 
    Copyright 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008, 2011,
-   2013, 2014 Free Software Foundation, Inc.
+   2013, 2014, 2015, 2016 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

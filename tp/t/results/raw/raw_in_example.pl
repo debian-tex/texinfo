@@ -602,6 +602,7 @@ $result_converted{'html_text'}->{'raw_in_example'} = '<div class="example">
 <div class="example">
 <pre class="example">
 
+
 Some html <code>some code</code>.
 
 

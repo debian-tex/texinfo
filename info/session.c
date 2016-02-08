@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c 6844 2015-12-09 19:47:21Z gavin $
+   $Id: session.c 6965 2016-01-30 14:38:35Z gavin $
 
    Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015
@@ -1790,6 +1790,11 @@ gc_file_buffers_and_nodes (void)
 
           /* If this file's contents are not gc-able, move on. */
           if (fb->flags & N_CannotGC)
+            continue;
+
+          /* Don't free file buffers corresponding to files that aren't there 
+             any more, because a node may still refer to them. */
+          if (fb->flags & N_Gone)
             continue;
 
           free (fb->contents);

@@ -50,8 +50,8 @@ BEGIN {
 #
 # Other values are treated at the moment as 'default'.
 
-#my $TEXINFO_XS = 'debug';
-my $TEXINFO_XS;
+my $TEXINFO_XS = 'debug';
+#my $TEXINFO_XS = $ENV{'TEXINFO_XS'};
 if (!defined($TEXINFO_XS)) {
   $TEXINFO_XS = '';
 }

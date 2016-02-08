@@ -1248,9 +1248,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
@@ -1272,6 +1271,7 @@ Next: <a href="#NODE" accesskey="n" rel="next"><small>NODE</small></a>, Up: <a h
 <tr><td align="left" valign="top">&bull; <a href="#NODE" accesskey="1"><small>VALUE</small></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"><small>DESCRIP TION</small>
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 MENU COMMENT
 
 </pre><div class="example">
@@ -1293,6 +1293,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 <table class="menu" border="0" cellspacing="0"><tr><td>
 <pre class="menu-preformatted">&bull; EXAMPLE VALUE:<a href="dir.html#EXAMPLE-NODE" accesskey="1">(dir)EXAMPLE NODE</a>.   EXAMPLE DESCRIP TION
 </pre><pre class="menu-comment">
+
 EXAMPLE COMMENT
 </pre></td></tr></table>
 </div>

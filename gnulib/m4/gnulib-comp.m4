@@ -48,32 +48,26 @@ AC_DEFUN([gl_EARLY],
   # Code from module argz:
   # Code from module btowc:
   # Code from module configmake:
-  # Code from module dosname:
   # Code from module errno:
   # Code from module error:
   # Code from module exitfail:
   # Code from module extensions:
   # Code from module extern-inline:
-  # Code from module fcntl-h:
   # Code from module float:
   # Code from module getopt-gnu:
   # Code from module getopt-posix:
   # Code from module gettext:
   # Code from module gettext-h:
-  # Code from module gettimeofday:
   # Code from module havelib:
   # Code from module iconv:
   # Code from module include_next:
   # Code from module intprops:
   # Code from module iswblank:
   # Code from module langinfo:
-  # Code from module largefile:
-  AC_REQUIRE([AC_SYS_LARGEFILE])
   # Code from module localcharset:
   # Code from module locale:
   # Code from module localeconv:
   # Code from module lock:
-  # Code from module lstat:
   # Code from module malloc-posix:
   # Code from module malloca:
   # Code from module mbchar:
@@ -89,26 +83,20 @@ AC_DEFUN([gl_EARLY],
   # Code from module mbtowc:
   # Code from module mbuiter:
   # Code from module memchr:
-  # Code from module memmem:
-  # Code from module memmem-simple:
   # Code from module mempcpy:
   # Code from module memrchr:
-  # Code from module mkstemp:
   # Code from module msvc-inval:
   # Code from module msvc-nothrow:
   # Code from module multiarch:
   # Code from module nl_langinfo:
   # Code from module nocrash:
-  # Code from module pathmax:
   # Code from module regex:
-  # Code from module secure_getenv:
   # Code from module size_max:
   # Code from module snippet/_Noreturn:
   # Code from module snippet/arg-nonnull:
   # Code from module snippet/c++defs:
   # Code from module snippet/warn-on-use:
   # Code from module ssize_t:
-  # Code from module stat:
   # Code from module stdarg:
   dnl Some compilers (e.g., AIX 5.3 cc) need to be in c99 mode
   dnl for the builtin va_copy to work.  With Autoconf 2.60 or later,
@@ -135,13 +123,9 @@ AC_DEFUN([gl_EARLY],
   # Code from module strnlen1:
   # Code from module strstr:
   # Code from module strstr-simple:
-  # Code from module sys_stat:
-  # Code from module sys_time:
   # Code from module sys_types:
-  # Code from module tempname:
   # Code from module threadlib:
   gl_THREADLIB_EARLY
-  # Code from module time:
   # Code from module unistd:
   # Code from module unitypes:
   # Code from module uniwidth/base:
@@ -232,7 +216,6 @@ AC_DEFUN([gl_INIT],
     fi
   fi
   gl_WCTYPE_MODULE_INDICATOR([iswblank])
-  AC_REQUIRE([gl_LARGEFILE])
   gl_MALLOCA
   gl_MBCHAR
   gl_MBITER
@@ -262,27 +245,12 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_MEMCHR
   fi
   gl_STRING_MODULE_INDICATOR([memchr])
-  gl_FUNC_MEMMEM
-  if test $HAVE_MEMMEM = 0 || test $REPLACE_MEMMEM = 1; then
-    AC_LIBOBJ([memmem])
-  fi
-  gl_FUNC_MEMMEM_SIMPLE
-  if test $HAVE_MEMMEM = 0 || test $REPLACE_MEMMEM = 1; then
-    AC_LIBOBJ([memmem])
-  fi
-  gl_STRING_MODULE_INDICATOR([memmem])
   gl_FUNC_MEMRCHR
   if test $ac_cv_func_memrchr = no; then
     AC_LIBOBJ([memrchr])
     gl_PREREQ_MEMRCHR
   fi
   gl_STRING_MODULE_INDICATOR([memrchr])
-  gl_FUNC_MKSTEMP
-  if test $HAVE_MKSTEMP = 0 || test $REPLACE_MKSTEMP = 1; then
-    AC_LIBOBJ([mkstemp])
-    gl_PREREQ_MKSTEMP
-  fi
-  gl_STDLIB_MODULE_INDICATOR([mkstemp])
   gl_MULTIARCH
   gl_REGEX
   if test $ac_use_included_regex = yes; then
@@ -357,36 +325,25 @@ AC_DEFUN([gl_INIT],
   gl_XALLOC
   gl_gnulib_enabled_btowc=false
   gl_gnulib_enabled_configmake=false
-  gl_gnulib_enabled_dosname=false
-  gl_gnulib_enabled_deb6c5f14b16306a85c59bccf4d416d8=false
-  gl_gnulib_enabled_gettimeofday=false
   gl_gnulib_enabled_intprops=false
   gl_gnulib_enabled_langinfo=false
   gl_gnulib_enabled_localcharset=false
   gl_gnulib_enabled_locale=false
   gl_gnulib_enabled_localeconv=false
   gl_gnulib_enabled_lock=false
-  gl_gnulib_enabled_lstat=false
   gl_gnulib_enabled_ef455225c00f5049c808c2eda3e76866=false
   gl_gnulib_enabled_mbtowc=false
   gl_gnulib_enabled_mempcpy=false
   gl_gnulib_enabled_f691f076f650964c9f5598c3ee487616=false
   gl_gnulib_enabled_676220fa4366efa9bdbfccf11a857c07=false
   gl_gnulib_enabled_nl_langinfo=false
-  gl_gnulib_enabled_pathmax=false
-  gl_gnulib_enabled_secure_getenv=false
   gl_gnulib_enabled_size_max=false
-  gl_gnulib_enabled_stat=false
   gl_gnulib_enabled_stpcpy=false
   gl_gnulib_enabled_dbb57f49352be8fb86869629a254fb72=false
   gl_gnulib_enabled_strndup=false
   gl_gnulib_enabled_strstr=false
   gl_gnulib_enabled_f84f170cca5f5b09d22686d5b833aa41=false
-  gl_gnulib_enabled_sys_stat=false
-  gl_gnulib_enabled_sys_time=false
-  gl_gnulib_enabled_tempname=false
   gl_gnulib_enabled_threadlib=false
-  gl_gnulib_enabled_time=false
   gl_gnulib_enabled_vasnprintf=false
   gl_gnulib_enabled_wcrtomb=false
   gl_gnulib_enabled_xsize=false
@@ -410,32 +367,6 @@ AC_DEFUN([gl_INIT],
     if ! $gl_gnulib_enabled_configmake; then
       gl_CONFIGMAKE_PREP
       gl_gnulib_enabled_configmake=true
-    fi
-  }
-  func_gl_gnulib_m4code_dosname ()
-  {
-    if ! $gl_gnulib_enabled_dosname; then
-      gl_gnulib_enabled_dosname=true
-    fi
-  }
-  func_gl_gnulib_m4code_deb6c5f14b16306a85c59bccf4d416d8 ()
-  {
-    if ! $gl_gnulib_enabled_deb6c5f14b16306a85c59bccf4d416d8; then
-      gl_FCNTL_H
-      gl_gnulib_enabled_deb6c5f14b16306a85c59bccf4d416d8=true
-    fi
-  }
-  func_gl_gnulib_m4code_gettimeofday ()
-  {
-    if ! $gl_gnulib_enabled_gettimeofday; then
-      gl_FUNC_GETTIMEOFDAY
-      if test $HAVE_GETTIMEOFDAY = 0 || test $REPLACE_GETTIMEOFDAY = 1; then
-        AC_LIBOBJ([gettimeofday])
-        gl_PREREQ_GETTIMEOFDAY
-      fi
-      gl_SYS_TIME_MODULE_INDICATOR([gettimeofday])
-      gl_gnulib_enabled_gettimeofday=true
-      func_gl_gnulib_m4code_sys_time
     fi
   }
   func_gl_gnulib_m4code_intprops ()
@@ -488,25 +419,6 @@ AC_DEFUN([gl_INIT],
       gl_MODULE_INDICATOR([lock])
       gl_gnulib_enabled_lock=true
       func_gl_gnulib_m4code_threadlib
-    fi
-  }
-  func_gl_gnulib_m4code_lstat ()
-  {
-    if ! $gl_gnulib_enabled_lstat; then
-      gl_FUNC_LSTAT
-      if test $REPLACE_LSTAT = 1; then
-        AC_LIBOBJ([lstat])
-        gl_PREREQ_LSTAT
-      fi
-      gl_SYS_STAT_MODULE_INDICATOR([lstat])
-      gl_gnulib_enabled_lstat=true
-      if test $REPLACE_LSTAT = 1; then
-        func_gl_gnulib_m4code_dosname
-      fi
-      if test $REPLACE_LSTAT = 1; then
-        func_gl_gnulib_m4code_stat
-      fi
-      func_gl_gnulib_m4code_sys_stat
     fi
   }
   func_gl_gnulib_m4code_ef455225c00f5049c808c2eda3e76866 ()
@@ -580,49 +492,11 @@ AC_DEFUN([gl_INIT],
       fi
     fi
   }
-  func_gl_gnulib_m4code_pathmax ()
-  {
-    if ! $gl_gnulib_enabled_pathmax; then
-      gl_PATHMAX
-      gl_gnulib_enabled_pathmax=true
-    fi
-  }
-  func_gl_gnulib_m4code_secure_getenv ()
-  {
-    if ! $gl_gnulib_enabled_secure_getenv; then
-      gl_FUNC_SECURE_GETENV
-      if test $HAVE_SECURE_GETENV = 0; then
-        AC_LIBOBJ([secure_getenv])
-        gl_PREREQ_SECURE_GETENV
-      fi
-      gl_STDLIB_MODULE_INDICATOR([secure_getenv])
-      gl_gnulib_enabled_secure_getenv=true
-    fi
-  }
   func_gl_gnulib_m4code_size_max ()
   {
     if ! $gl_gnulib_enabled_size_max; then
       gl_SIZE_MAX
       gl_gnulib_enabled_size_max=true
-    fi
-  }
-  func_gl_gnulib_m4code_stat ()
-  {
-    if ! $gl_gnulib_enabled_stat; then
-      gl_FUNC_STAT
-      if test $REPLACE_STAT = 1; then
-        AC_LIBOBJ([stat])
-        gl_PREREQ_STAT
-      fi
-      gl_SYS_STAT_MODULE_INDICATOR([stat])
-      gl_gnulib_enabled_stat=true
-      if test $REPLACE_STAT = 1; then
-        func_gl_gnulib_m4code_dosname
-      fi
-      if test $REPLACE_STAT = 1; then
-        func_gl_gnulib_m4code_pathmax
-      fi
-      func_gl_gnulib_m4code_sys_stat
     fi
   }
   func_gl_gnulib_m4code_stpcpy ()
@@ -682,49 +556,11 @@ AC_DEFUN([gl_INIT],
       gl_gnulib_enabled_f84f170cca5f5b09d22686d5b833aa41=true
     fi
   }
-  func_gl_gnulib_m4code_sys_stat ()
-  {
-    if ! $gl_gnulib_enabled_sys_stat; then
-      gl_HEADER_SYS_STAT_H
-      AC_PROG_MKDIR_P
-      gl_gnulib_enabled_sys_stat=true
-      func_gl_gnulib_m4code_time
-    fi
-  }
-  func_gl_gnulib_m4code_sys_time ()
-  {
-    if ! $gl_gnulib_enabled_sys_time; then
-      gl_HEADER_SYS_TIME_H
-      AC_PROG_MKDIR_P
-      gl_gnulib_enabled_sys_time=true
-    fi
-  }
-  func_gl_gnulib_m4code_tempname ()
-  {
-    if ! $gl_gnulib_enabled_tempname; then
-      gl_FUNC_GEN_TEMPNAME
-      gl_gnulib_enabled_tempname=true
-      func_gl_gnulib_m4code_deb6c5f14b16306a85c59bccf4d416d8
-      func_gl_gnulib_m4code_gettimeofday
-      func_gl_gnulib_m4code_lstat
-      func_gl_gnulib_m4code_secure_getenv
-      func_gl_gnulib_m4code_sys_stat
-      func_gl_gnulib_m4code_sys_time
-    fi
-  }
   func_gl_gnulib_m4code_threadlib ()
   {
     if ! $gl_gnulib_enabled_threadlib; then
       gl_THREADLIB
       gl_gnulib_enabled_threadlib=true
-    fi
-  }
-  func_gl_gnulib_m4code_time ()
-  {
-    if ! $gl_gnulib_enabled_time; then
-      gl_HEADER_TIME_H
-      gl_gnulib_enabled_time=true
-      func_gl_gnulib_m4code_gettimeofday
     fi
   }
   func_gl_gnulib_m4code_vasnprintf ()
@@ -773,9 +609,6 @@ AC_DEFUN([gl_INIT],
   if test $HAVE_MBRTOWC = 0 || test $REPLACE_MBRTOWC = 1; then
     func_gl_gnulib_m4code_localcharset
   fi
-  if test $HAVE_MKSTEMP = 0 || test $REPLACE_MKSTEMP = 1; then
-    func_gl_gnulib_m4code_tempname
-  fi
   if test $ac_use_included_regex = yes; then
     func_gl_gnulib_m4code_btowc
   fi
@@ -806,36 +639,25 @@ AC_DEFUN([gl_INIT],
   m4_pattern_allow([^gl_GNULIB_ENABLED_])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_btowc], [$gl_gnulib_enabled_btowc])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_configmake], [$gl_gnulib_enabled_configmake])
-  AM_CONDITIONAL([gl_GNULIB_ENABLED_dosname], [$gl_gnulib_enabled_dosname])
-  AM_CONDITIONAL([gl_GNULIB_ENABLED_deb6c5f14b16306a85c59bccf4d416d8], [$gl_gnulib_enabled_deb6c5f14b16306a85c59bccf4d416d8])
-  AM_CONDITIONAL([gl_GNULIB_ENABLED_gettimeofday], [$gl_gnulib_enabled_gettimeofday])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_intprops], [$gl_gnulib_enabled_intprops])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_langinfo], [$gl_gnulib_enabled_langinfo])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_localcharset], [$gl_gnulib_enabled_localcharset])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_locale], [$gl_gnulib_enabled_locale])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_localeconv], [$gl_gnulib_enabled_localeconv])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_lock], [$gl_gnulib_enabled_lock])
-  AM_CONDITIONAL([gl_GNULIB_ENABLED_lstat], [$gl_gnulib_enabled_lstat])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_ef455225c00f5049c808c2eda3e76866], [$gl_gnulib_enabled_ef455225c00f5049c808c2eda3e76866])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_mbtowc], [$gl_gnulib_enabled_mbtowc])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_mempcpy], [$gl_gnulib_enabled_mempcpy])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_f691f076f650964c9f5598c3ee487616], [$gl_gnulib_enabled_f691f076f650964c9f5598c3ee487616])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_676220fa4366efa9bdbfccf11a857c07], [$gl_gnulib_enabled_676220fa4366efa9bdbfccf11a857c07])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_nl_langinfo], [$gl_gnulib_enabled_nl_langinfo])
-  AM_CONDITIONAL([gl_GNULIB_ENABLED_pathmax], [$gl_gnulib_enabled_pathmax])
-  AM_CONDITIONAL([gl_GNULIB_ENABLED_secure_getenv], [$gl_gnulib_enabled_secure_getenv])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_size_max], [$gl_gnulib_enabled_size_max])
-  AM_CONDITIONAL([gl_GNULIB_ENABLED_stat], [$gl_gnulib_enabled_stat])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_stpcpy], [$gl_gnulib_enabled_stpcpy])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_dbb57f49352be8fb86869629a254fb72], [$gl_gnulib_enabled_dbb57f49352be8fb86869629a254fb72])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_strndup], [$gl_gnulib_enabled_strndup])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_strstr], [$gl_gnulib_enabled_strstr])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_f84f170cca5f5b09d22686d5b833aa41], [$gl_gnulib_enabled_f84f170cca5f5b09d22686d5b833aa41])
-  AM_CONDITIONAL([gl_GNULIB_ENABLED_sys_stat], [$gl_gnulib_enabled_sys_stat])
-  AM_CONDITIONAL([gl_GNULIB_ENABLED_sys_time], [$gl_gnulib_enabled_sys_time])
-  AM_CONDITIONAL([gl_GNULIB_ENABLED_tempname], [$gl_gnulib_enabled_tempname])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_threadlib], [$gl_gnulib_enabled_threadlib])
-  AM_CONDITIONAL([gl_GNULIB_ENABLED_time], [$gl_gnulib_enabled_time])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_vasnprintf], [$gl_gnulib_enabled_vasnprintf])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_wcrtomb], [$gl_gnulib_enabled_wcrtomb])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_xsize], [$gl_gnulib_enabled_xsize])
@@ -992,13 +814,11 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/asprintf.c
   lib/btowc.c
   lib/config.charset
-  lib/dosname.h
   lib/errno.in.h
   lib/error.c
   lib/error.h
   lib/exitfail.c
   lib/exitfail.h
-  lib/fcntl.in.h
   lib/float+.h
   lib/float.c
   lib/float.in.h
@@ -1007,7 +827,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/getopt1.c
   lib/getopt_int.h
   lib/gettext.h
-  lib/gettimeofday.c
   lib/glthread/lock.c
   lib/glthread/lock.h
   lib/glthread/threadlib.c
@@ -1019,7 +838,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/localcharset.h
   lib/locale.in.h
   lib/localeconv.c
-  lib/lstat.c
   lib/malloc.c
   lib/malloca.c
   lib/malloca.h
@@ -1043,16 +861,13 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/mbuiter.h
   lib/memchr.c
   lib/memchr.valgrind
-  lib/memmem.c
   lib/mempcpy.c
   lib/memrchr.c
-  lib/mkstemp.c
   lib/msvc-inval.c
   lib/msvc-inval.h
   lib/msvc-nothrow.c
   lib/msvc-nothrow.h
   lib/nl_langinfo.c
-  lib/pathmax.h
   lib/printf-args.c
   lib/printf-args.h
   lib/printf-parse.c
@@ -1065,9 +880,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/regex_internal.c
   lib/regex_internal.h
   lib/regexec.c
-  lib/secure_getenv.c
   lib/size_max.h
-  lib/stat.c
   lib/stdarg.in.h
   lib/stdbool.in.h
   lib/stddef.in.h
@@ -1092,12 +905,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/strnlen1.c
   lib/strnlen1.h
   lib/strstr.c
-  lib/sys_stat.in.h
-  lib/sys_time.in.h
   lib/sys_types.in.h
-  lib/tempname.c
-  lib/tempname.h
-  lib/time.in.h
   lib/unistd.c
   lib/unistd.in.h
   lib/unitypes.in.h
@@ -1133,11 +941,9 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/extensions.m4
   m4/extern-inline.m4
   m4/fcntl-o.m4
-  m4/fcntl_h.m4
   m4/float_h.m4
   m4/getopt.m4
   m4/gettext.m4
-  m4/gettimeofday.m4
   m4/glibc2.m4
   m4/glibc21.m4
   m4/gnulib-common.m4
@@ -1153,7 +959,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/inttypes_h.m4
   m4/iswblank.m4
   m4/langinfo_h.m4
-  m4/largefile.m4
   m4/lcmessage.m4
   m4/lib-ld.m4
   m4/lib-link.m4
@@ -1167,7 +972,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/localeconv.m4
   m4/lock.m4
   m4/longlong.m4
-  m4/lstat.m4
   m4/malloc.m4
   m4/malloca.m4
   m4/math_h.m4
@@ -1180,10 +984,8 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/mbswidth.m4
   m4/mbtowc.m4
   m4/memchr.m4
-  m4/memmem.m4
   m4/mempcpy.m4
   m4/memrchr.m4
-  m4/mkstemp.m4
   m4/mmap-anon.m4
   m4/msvc-inval.m4
   m4/msvc-nothrow.m4
@@ -1193,16 +995,13 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/nocrash.m4
   m4/off_t.m4
   m4/onceonly.m4
-  m4/pathmax.m4
   m4/po.m4
   m4/printf-posix.m4
   m4/printf.m4
   m4/progtest.m4
   m4/regex.m4
-  m4/secure_getenv.m4
   m4/size_max.m4
   m4/ssize_t.m4
-  m4/stat.m4
   m4/stdarg.m4
   m4/stdbool.m4
   m4/stddef_h.m4
@@ -1221,12 +1020,8 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/strnlen.m4
   m4/strstr.m4
   m4/sys_socket_h.m4
-  m4/sys_stat_h.m4
-  m4/sys_time_h.m4
   m4/sys_types_h.m4
-  m4/tempname.m4
   m4/threadlib.m4
-  m4/time_h.m4
   m4/uintmax_t.m4
   m4/unistd_h.m4
   m4/vasnprintf.m4

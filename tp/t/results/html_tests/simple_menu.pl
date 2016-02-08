@@ -2351,9 +2351,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
@@ -2377,6 +2376,7 @@ CCC
 <li> <pre class="menu-preformatted">iaa
 </pre></li></ul>
 <pre class="menu-preformatted">
+
 in html title
 
 BBB
@@ -2405,6 +2405,7 @@ detailCCC
 <li> <pre class="menu-preformatted">detailiaa
 </pre></li></ul>
 <pre class="menu-preformatted">
+
 detailin html detailtitle
 
 detailBBB

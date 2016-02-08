@@ -483,6 +483,7 @@ $result_converted{'html_text'}->{'preformatted'} = '
 <a name="index-item-in-table-in-format"></a>
 </dt>
 <dd><pre class="format">
+
 in table in format
 </pre></dd>
 </dl>

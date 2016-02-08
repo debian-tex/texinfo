@@ -1,4 +1,4 @@
-# $Id: Plaintext.pm 6753 2015-11-03 17:40:20Z gavin $
+# $Id: Plaintext.pm 6991 2016-02-06 12:16:13Z gavin $
 # Plaintext.pm: output tree as text with filling.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -55,7 +55,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.0dev';
+$VERSION = '6.1';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -3543,7 +3543,7 @@ sub indent_menu_descriptions($;$)
 1;
 
 __END__
-# $Id: Plaintext.pm 6753 2015-11-03 17:40:20Z gavin $
+# $Id: Plaintext.pm 6991 2016-02-06 12:16:13Z gavin $
 # Automatically generated from maintain/template.pod
 
 =head1 NAME

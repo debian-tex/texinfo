@@ -1,3 +1,454 @@
+2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	6.1 release.
+	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf,
+	doc/refcard/txirefcard.tex, texindex/texindex.awk,
+	texindex/texindex.in: Version number.
+	* build-aux/texinfo.tex: Update from doc/texinfo.tex.
+
+2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Update notes about making a release.  Move 
+	"make po-check" line.  Remove "rm ti.texi" for updating texindex 
+	version.  Move gnulib-tool --add-import and util/srclist-txi, 
+	and say what the latter is for.  Move "official releases only" 
+	section only so that the "make distcheck" line above can be the 
+	final command to produce the release tarball.  Move upload 
+	instructions after this command.  Move instructions about 
+	tagging source tree.  Combine instructions about checking DTD.
+
+2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi,
+	* doc/Makefile.am,
+	* doc/info-stnd.texi,
+	* Makefile.am,
+	* info/Makefile.am: 2016.
+
+2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi: Change "cross reference" to "cross-reference"
+	throughout.
+
+2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Mention that behaviour is unchanged for comma or full 
+	stop following closing brace of @xref command.  Text from Karl Berry.
+	* NEWS: Change word 'makeinfo' to 'texi2any'.
+	* doc/texinfo.texi (Cross Reference Parts): Mention how to avoid 
+	an unwanted comma after the cross-reference when processing with 
+	TeX.
+
+	* NEWS, doc/texinfo.texi (Cross Reference Parts): Move example 
+	of comma insertion.  Suggestion from Karl Berry.
+
+2016-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\xrefX): Check for some commands following 
+	the closing brace of an @xref command which add space.  
+	Suggestion from Karl Berry.
+
+	* doc/texinfo-tex-test.texi (Cross-references): Add examples 
+	with tab, newline, @SPACE, @TAB, @NL, @*, and @: following 
+	@xref.
+
+2016-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (@inforef): Remove statement saying that 
+	@inforef must be followed by a comma or a full stop.  Reported 
+	by Karl Berry.
+
+2016-02-05  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+        * doc/texinfo.tex (\doxeteximage):
+        @image support for XeTeX.
+        (\image): @image support for XeTeX.
+
+2016-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Move NEWS about XS earlier and mention that pure Perl 
+	modules can still be used by default.  Suggestion from Karl Berry.
+
+2016-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* configure.ac: Add "(XS)" after "Perl extension" in message to 
+	make it easier to find in configure output.  Repeat message 
+	after output from trying to build and run an extension module so 
+	it's clear what 'yes' or 'no' refers to.  Possible confusion 
+	reported by Karl Berry.
+
+2016-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\chapmacro): Allow this macro to occur inside 
+	\titlepage, in case \setcontentsaftertitlepage is used.  Report 
+	of error message from Akim Demaille.
+
+2016-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\xrefX): Don't expand a control sequence 
+	following \if.  Report of possible problem from Karl Berry.
+
+2016-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\xrefX): Add a comma after the page number 
+	only if the cross-reference command is followed by a space, 
+	instead of listing possible punctuation characters.  Suggestion 
+	from Karl Berry.
+
+2016-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\indexnofonts): Add % after \} and \{ because 
+	spaces are not skipped there.
+
+2016-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	6.0.93 pretest.
+
+	* configure.ac: 6.0.93 pretest.
+
+2016-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\utfeightchardefs): Comment out empty lines 
+	to prevent an end of paragraph.  Reported by Masamichi Hosoda.
+
+2016-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/pseudotty.c: Call fpathconf to get value to disable a 
+	special character in the termios structure.
+
+2016-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/replace-viewed.sh: Skip test if no process could be 
+	found, because it may not have started properly.
+
+2016-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc: Remove line accidentally added on 2016-01-13.
+
+2016-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (gc_file_buffers_and_nodes): Don't free file 
+	buffers corresponding to files that aren't there any more, 
+	because a node may still refer to them.
+	* info/nodes.c (forget_info_file): Overwrite filename of field 
+	with empty string to avoid a memory leak.
+
+2016-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (info_node_of_tag_ext): Check that references for 
+	node haven't already been initialized before calling 
+	scan_node_contents, to prevent a memory leak if a node from a 
+	previously garbage collected file is loaded again.
+
+2016-01-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Clear cache 
+	variable with 'unset'.
+
+2016-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Paragraph.pm: Check if using Windows, and 
+	if so, bypass 'locale -a' check for a UTF-8 locale.
+
+2016-01-23  Karl Berry  <karl@freefriends.org>
+
+	* contrib/perldoc-all/GNUmakefile (install): no need for grep,
+	since we don't install the split HTML any more.
+	($(texi_pod_doc_incl)): mention failure to get uniprops et al.
+
+2016-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/lib,
+	* tp/Texinfo/Convert/XSParagraph/m4: Add gnulib module 'getline'.
+
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am (AM_CPPFLAGS): 
+	Change to right path to include directories.
+
+2016-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Paragraph.pm: Add a check for a UTF-8 
+	locale in output of "locale -a".  Change 'stand-alone' to 
+	'standalone' in a string.  Remove some commented-out code.
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_init): If we 
+	fail to set a UTF-8 locale by other means, look at the output of 
+	"locale -a" and use the first line of output with "UTF-8" in it 
+	as the name of the locale to use.  Failure when no UTF-8 locale 
+	could be set reported by Kiyoshi Kanazawa.
+
+2016-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Move note about @copying next to the news for the 
+	release it was added in (Texinfo 4.2, April 2002).
+
+2016-01-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (_protect_space_codebreak): Rename 
+	to '_protect_space'.  Remove check for 'allowcodebreaks', as 
+	this led to broken URL's and a broken <title>.  Report from 
+	Padraig Brady via Karl Berry.
+	(%css_map): Remove CSS style for 'span.nocodebreak'.
+
+2016-01-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\xrefX): Move and edit a comment.
+
+2016-01-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\indexnofonts): Replace definitions of @{ and
+	@} so that \indexnofonts can be used for constructing a control
+	sequence name with \csname, as is done in \xrefX.  Give them
+	different values in order not to cause problems should two xref
+	names differ only by replacing @{ with @}.
+	(\dosubindwrite): Override definitions of @{ and @} set in 
+	\indexnofonts to their previous definitions in \indexnofonts.
+	@{ in xref broken reported by Karl Berry.
+
+2016-01-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	6.0.92 pretest.
+
+	* configure.ac, README, NEWS: 2016.
+	* configure.ac: 6.0.92 pretest.
+
+2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Get Perl conf 
+	value 'ccdlflags' for flags for linking the extension.
+
+2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/TestXS.pm: Re-add line for 
+	debugging output, for better trouble-shooting.
+
+2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/README: Add example of how to update long tests.
+
+2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Get 'libperl' 
+	Perl config value, and transform it into a -l flag for libtool.
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am (AM_LDFLAGS): Use 
+	this flag along with -L$(PERL_INC).
+
+2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Info Format Specification): Mention that 
+	keywords in Info format should be read case-insensitively.  
+	Suggestion for manual from Karl Berry.
+	Move disclaimer about actual practice to the end of the node.
+
+2016-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Move check for 
+	xsubpp to before gl_INIT, in order not to waste time running the 
+	gnulib checks if the extension isn't going to be built anyway.
+
+2016-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc (synch_with_program): Remove function.
+	* info/t/c-u-m-x-scroll-forward.sh,
+	* info/t/inc-sea-forward.sh,
+	* info/t/inc-sea-history.sh,
+	* info/t/inc-sea-insensitive.sh,
+	* info/t/inc-sea-forward-nonregex.sh,
+	* info/t/gc-split.sh: Don't call it.  It could lead to an 
+	infinite loop if the program had already exited, and also slowed 
+	down the tests.
+	* info/pseudotty.c: Call tcsetattr to turn off special 
+	characters like C-u and C-s.
+
+2016-01-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Print error if 
+	"xsubpp" program is not found.  This avoids an attempt to later
+	execute a "typemap" program when $(XSUBPP) -typemap is done.
+
+2016-01-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex: For LuaTeX, output bytes instead of UTF-8 
+	multi-byte characters.  Add comment to say this is a problem 
+	with XeTeX which we haven't fixed.  Problem under LuaTeX and 
+	XeTeX reported by Masamichi Hosoda.
+
+2016-01-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* gnulib: Run gnulib-tool --add-import, omitting the "mkstemp" 
+	module which isn't used any where (possibly used in texindex.c, 
+	which isn't distributed any more).
+
+	* gnulib: Run gnulib-tool --add-import, omitting "memmem".
+
+2016-01-07  Masamichi Hosoda  <trueroad@trueroad.jp> (tiny change)
+
+        * doc/texinfo.tex: For XeTeX, fix input by bytes instead of
+        by UTF-8 codepoints. Settings for subsequent files to be read.
+	(\documentencoding): Settings for the document root file.
+
+2016-01-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am (install-data-hook):
+	Remove TestXS module files after they are installed.
+
+2016-01-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (_convert_preformatted_type): Add an
+	extra newline after a <pre> tag if the contents begins with a 
+	newline.
+
+2016-01-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/README,
+	* tp/tests/README: 2016 in copyright dates.
+
+2016-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\enableemergencynewline): New macro.
+	(\fixbackslash): Use it, in order to give newline a default
+	active definition.
+
+2016-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex, NEWS: For XeTeX and LuaTeX, use input by 
+	bytes instead of by UTF-8 codepoints.  Documents encoded in 
+	UTF-8 reported broken by Werner Lemberg.
+
+2016-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (%css_map): Use 'font-family: initial'
+	instead of 'font-family: serif' for @r.  Suggestion from Karl Berry.
+
+2016-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* INSTALL: Some words about XS.
+	* README-hacking: Words about translation updates.
+
+2016-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Makefile.am,
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am,
+	* tp/texi2any.pl: Replace uses of pkglibexecdir with pkglibdir.
+	Modules installed under pkglibexecdir weren't being found due 
+	not being substituted by configure script.  Reported by
+	Andreas Schwab.  Probably related to AC_SUBST in 'gl_CONFIGMAKE'
+	in 'configmake' gnulib module overriding the default definition.
+
+2016-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (copy_converting): Don't check whether a 
+	value of type size_t is negative in loop condition, because 
+	size_t is unsigned.  Always loop instead.
+
+2016-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/terminal.c (term_mm, terminal_has_meta_p): Remove unused 
+	variables.
+	* info/terminal.c (terminal_initialize_terminal),
+	* info/pcterm.c (pc_initialize_terminal): Don't refer to removed 
+	variables.
+
+2016-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Node Menu Illustration): Change "copy of 
+	diagram" to "diagram".
+
+2016-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/run_parser_all.sh: Run sed on file logging standard 
+	error of program to account for variant output under MS-Windows, 
+	reported by Eli Zaretskii.
+
+2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/text.c (text_destroy): New 
+	function.
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_add_text): Use 
+	it instead of calling free directly, because free may have been 
+	redirected to Perl's version.
+
+2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_new): Don't 
+	call free on TEXT objects, but reuse the storage.  Attempt at 
+	fixing 'Freed to wrong pool' error reported by Eli Zaretskii.
+
+2016-01-01  Eli Zaretskii  <eliz@gnu.org>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (mbrtowc): Don't try to
+	convert more bytes than a single UTF-8 sequence at the beginning
+	of the argument string: otherwise MultiByteToWideChar fails.
+
+2016-01-01  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/README,
+	* tp/Texinfo/Convert/Converter.pm,
+	* util/dir-example,
+	* build-aux/texinfo.tex: sync.
+	
+	* info/dir.c,
+	* info/echo-area.h,
+	* info/filesys.c,
+	* info/indices.c,
+	* info/indices.h,
+	* info/info-utils.h,
+	* info/infodoc.c,
+	* info/infomap.c,
+	* info/nodemenu.c,
+	* info/search.c,
+	* info/search.h,
+	* info/session.h,
+	* info/termdep.h,
+	* info/window.h,
+	* system.h,
+
+	* Pod-Simple-Texinfo/pod2texi.pl,
+	* doc/refcard/txirefcard.tex,
+	* doc/texinfo.texi,
+	* info/info.c,
+	* install-info/install-info.c,
+	* texindex/ti.twjr,
+	* tp/maintain/regenerate_cmd_tests.sh,
+	* tp/maintain/regenerate_docstr.sh,
+	* tp/maintain/regenerate_file_lists.pl,
+	* tp/maintain/template.pod,
+	* tp/texi2any.pl,
+	* util/pdftexi2dvi,
+	* util/texi-elements-by-size,
+	* util/texi2dvi,
+	* util/texi2pdf,
+	* util/texindex.bat: 2016.
+
+2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Remove out-of-date 
+	comment at start of file and add copyright notice.
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Add copyright 
+	notice.
+
+2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am
+	(XSParagraph_la_LDFLAGS, TestXS_la_LDFLAGS): Add -no-undefined flag,
+	for MS-Windows.  Report from Eli Zaretskii.
+
+2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_add_text)
+	(xspara__add_next): Supply third argument to mbrtowc to say how 
+	many bytes are left.  Same for second argument to mbrlen.
+	Suggestion from Eli Zaretskii.
+
+2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/run_parser_all.sh: Remove TEXINFO_XS=omit line.
+	* tp/tests/coverage/tests-parser.txt: Skip 
+	formatting_utf8_enable_encoding test.
+
+2015-12-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/run_parser_all.sh: Set TEXINFO_XS=omit to avoid failure
+	in test_scripts/coverage_formatting_utf8_enable_encoding.sh.
+
 2015-12-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* pretest 6.0.91.
@@ -17294,7 +17745,7 @@
 	* doc/texinfo.tex (\initial): when breaking the column before the
 	  initial, allow for some space at the bottom of the column, so
 	  the baselineskip is preserved (more or less).
-	  Don't give negative penalty, it encouradges creating of underfull
+	  Don't give negative penalty, it encourages creating of underfull
 	  columns with stretched baselineskip.
 	  At the end, the \nobreak should be before \vskip, not after it.
 
@@ -21866,7 +22317,7 @@
 
 
 Copyright 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
-2013, 2014, 2015
+2013, 2014, 2015, 2016
 Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification,

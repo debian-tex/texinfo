@@ -3314,6 +3314,7 @@ $result_converted{'html_text'}->{'table_nested'} = '
 <a name="index-second-itemx-1"></a>
 </dt>
 <dd><pre class="example">
+
 Text.
 
 </pre></dd>
@@ -3321,6 +3322,7 @@ Text.
 <a name="index-second-item-1"></a>
 </dt>
 <dd><pre class="example">
+
 Text 2
 
 </pre></dd>
@@ -3329,6 +3331,7 @@ Text 2
 </dt>
 </dl>
 <pre class="example">
+
 Something.
 </pre><dl compact="compact">
 <dt><tt><em>in item</em></tt></dt>

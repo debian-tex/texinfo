@@ -2,7 +2,8 @@
 
 # texi2any: Texinfo converter.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
+# Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -54,10 +55,10 @@ BEGIN
   # These are substituted by the Makefile to create "texi2any".
   my $datadir = '@datadir@';
   my $package = '@PACKAGE@';
-  my $packagedir = '@pkglibexecdir@';
+  my $packagedir = '@pkglibdir@';
 
   if ($datadir eq '@' .'datadir@' or $package eq '@' . 'PACKAGE@'
-      or $packagedir eq '@' .'pkglibexecdir@'
+      or $packagedir eq '@' .'pkglibdir@'
       or defined($ENV{'TEXINFO_DEV_SOURCE'})
          and $ENV{'TEXINFO_DEV_SOURCE'} ne '0')
   {
@@ -872,7 +873,7 @@ my $result_options = Getopt::Long::GetOptions (
     printf __("Copyright (C) %s Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.\n"), "2015";
+There is NO WARRANTY, to the extent permitted by law.\n"), "2016";
       exit 0;},
  'macro-expand|E=s' => sub { set_from_cmdline('MACRO_EXPAND', $_[1]); },
  'ifhtml!' => sub { set_expansion('html', $_[1]); },

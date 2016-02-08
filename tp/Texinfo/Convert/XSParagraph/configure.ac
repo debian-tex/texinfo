@@ -1,3 +1,15 @@
+# configure.ac for XSParagraph
+#
+# Copyright 2015, 2016 Free Software Foundation, Inc.
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
 AC_INIT([texinfo], [6.0])
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIR([m4])
@@ -59,12 +71,18 @@ if test x$disable_xs != xyes; then
   CC=$conf_value
 
   # Wipe the cache value in case -C was given at the top level
-  ac_cv_prog_CC=
+  ac_cv_prog_CC= ; unset ac_cv_prog_CC
 fi
 
 AC_PROG_CC
 
 gl_EARLY
+
+AC_PATH_PROG([XSUBPP], [xsubpp])
+if test x$ac_cv_path_XSUBPP = x ; then
+  AC_MSG_ERROR([xsubpp not found])
+fi
+
 gl_INIT
 
 LT_INIT
@@ -94,16 +112,25 @@ if test x$disable_xs != xyes; then
 lookup_perl_flags([ccflags])
 lookup_perl_flags([cccdlflags])
 
+# flags for linking the extension, e.g. -rpath.
+lookup_perl_conf([ccdlflags])
+
+lookup_perl_conf([libperl])
+# Change libperl.so into -lperl to indicate a library dependency to 
+# libtool.
+# Special case for Cygwin to change e.g. cygperl5_22.dll into -lperl
+PERL_CONF_libperl=`echo $PERL_CONF_libperl \
+           | sed -e 's/^lib/-l/' \
+                 -e 's/\..*//' \
+                 -e 's/^cygperl.*/-lperl/' `
+
+
 lookup_perl_conf([archlibexp])
 lookup_perl_conf([privlibexp])
-
 # TODO: would be nice to be able to do lookup_perl_conf([ccflags cccdlflags])
 # A for loop doesn't work; it has to be expanded at m4 time
 
-AC_PATH_PROG([XSUBPP], [xsubpp])
-
 AC_CONFIG_HEADERS([config.h:config.in])
-
 fi # not disable_xs
 
 AC_CONFIG_FILES([Makefile lib/Makefile])

@@ -1156,9 +1156,8 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space: nowrap}
 span.nolinebreak {white-space: nowrap}
-span.roman {font-family: serif; font-weight: normal}
+span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
@@ -1180,6 +1179,7 @@ ul.no-bullet {list-style: none}
 </dl>
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="info.html#Top" accesskey="2">(info)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 <pre class="verbatim">some @ verb{x atim
 * texinfo:: in @ verbatim
@@ -1193,11 +1193,13 @@ Log$
 * acronym::</acronym>
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre><div class="example">
 <pre class="example">* subsubsection::
 Menu comment
 </pre></div>
 <pre class="menu-comment">
+
 </pre></th></tr></table>
 <hr>
 

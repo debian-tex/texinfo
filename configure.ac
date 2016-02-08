@@ -1,8 +1,8 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac 6882 2015-12-20 12:57:21Z gavin $
+# $Id: configure.ac 6991 2016-02-06 12:16:13Z gavin $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
-# 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -12,7 +12,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [6.0.91], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [6.1], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -385,7 +385,8 @@ subdirs=tp/Texinfo/Convert/XSParagraph
 subdirs=$save_subdirs
 
 if test $enable_xs = check; then
-  AC_MSG_CHECKING([whether we can build Perl extension modules])
+  AC_MSG_CHECKING([whether we can build Perl extension (XS) modules])
+  AC_MSG_RESULT([])
   enable_xs=no
   (cd tp/Texinfo/Convert/XSParagraph \
    && make clean \
@@ -395,6 +396,7 @@ if test $enable_xs = check; then
               -w ${xs_srcdir}/fail.pl \
       | grep 'message from XS module') \
   && enable_xs=yes
+  AC_MSG_CHECKING([whether we can build Perl extension (XS) modules])
   AC_MSG_RESULT([$enable_xs])
 fi
 

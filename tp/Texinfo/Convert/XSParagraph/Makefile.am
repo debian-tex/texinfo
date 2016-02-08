@@ -1,19 +1,15 @@
-# Parts of this file derived from the output of MakeMaker version
-# 6.66 (Revision: 66600) from the contents of a Makefile.PL.
+# Makefile.am for XSParagraph
 #
-# Test with
-# make clean && make && (pushd ../../.. && ./texi2any.pl --version ; popd)
+# Copyright 2015, 2016 Free Software Foundation, Inc.
 #
-# Can use the MakeMaker makefile, for comparison with
-# "make -f Makefile.old"
-# "make -f Makefile.old install" gives
-# Installing /usr/local/lib/perl5/auto/XSParagraph/XSParagraph.so
-# Installing /usr/local/lib/perl5/auto/XSParagraph/XSParagraph.bs
-# Installing /usr/local/lib/perl5/XSParagraph.pm
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
 #
-# The *.bs is a "bootstrap" file which is empty, so we shouldn't have to
-# worry about it.
-
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
 AUTOMAKE_OPTIONS=foreign subdir-objects
 
 EXTRA_DIST=
@@ -22,8 +18,8 @@ EXTRA_DIST=
 
 AM_CPPFLAGS =                \
   -I$(srcdir)                \
-  -I$(srcdir)/gnulib/lib     \
-  -I$(builddir)/gnulib/lib
+  -I$(srcdir)/lib     \
+  -I$(builddir)/lib
 
 XSParagraph_la_LIBADD = $(builddir)/lib/libgnu.la \
 	                $(TERMLIBS) $(LIBINTL) $(LIBICONV)
@@ -37,7 +33,7 @@ EXTRA_DIST+=m4/gnulib-cache.m4
 ################### End Gnulib section #########################
 
 modulesdir = $(pkgdatadir)/Texinfo/Convert/XSParagraph
-xsdir = $(pkglibexecdir)
+xsdir = $(pkglibdir)
 
 dist_modules_DATA = TestXS.pm
 
@@ -59,6 +55,12 @@ XSParagraph_la_SOURCES = XSParagraph.c xspara.c xspara.h \
 			 text.c text.h ppport.h
 TestXS_la_SOURCES = TestXS.c ppport.h
 
+# TestXS has to be included in xs_LIBRARIES, and not noinst_LIBRARIES, 
+# otherwise dynamic libraries aren't built (a libtool bug).  Work around 
+# this by deleting it after it's installed.
+install-data-hook:
+	rm -f $(DESTDIR)$(xsdir)/TestXS*
+
 CLEANFILES += TestXS.c
 EXTRA_DIST += TestXS.xs
 
@@ -74,18 +76,19 @@ CFLAGS = $(PERL_EXT_CFLAGS)
 CPPFLAGS = $(PERL_EXT_CPPFLAGS)
 LDFLAGS = $(PERL_EXT_LDFLAGS)
 
-XSParagraph_la_CFLAGS = $(PERL_CONF_ccflags)
+AM_CFLAGS = $(PERL_CONF_ccflags)
 
+XSParagraph_la_CFLAGS = $(AM_CFLAGS)
 XSParagraph_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(XSPARAGRAPH_INTERFACE_VERSION)\"  "-I$(PERL_INC)"
 
-XSParagraph_la_LDFLAGS=-avoid-version -module $(PERL_CONF_cccdlflags)
-
-
-TestXS_la_CFLAGS = $(PERL_CONF_ccflags)
-
+TestXS_la_CFLAGS = $(AM_CFLAGS)
 TestXS_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"  "-I$(PERL_INC)"
 
-TestXS_la_LDFLAGS=-module $(PERL_CONF_cccdlflags)
+AM_LDFLAGS = -no-undefined -L$(PERL_INC) $(PERL_CONF_libperl)
+AM_LDFLAGS += -avoid-version -module $(PERL_CONF_ccdlflags)
+# The -no-undefined flag is for MS-Windows.  See info node
+# `(gnulib)Libtool and Windows'.  The -L and -l options after it show
+# where to find the undefined symbols.
 
 # only used to regenerate a stand-alone perl module
 perl_specific_files = \

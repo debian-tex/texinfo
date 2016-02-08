@@ -1,7 +1,8 @@
-# $Id: Makefile.am 6790 2015-11-21 14:50:34Z gavin $
+# $Id: Makefile.am 6916 2016-01-03 20:46:04Z gavin $
 # Makefile.am for texinfo/tp.
 #
-# Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
+# Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -46,7 +47,7 @@ do_subst = sed \
   -e 's,[@]prefix[@],$(prefix),g' \
   -e 's,[@]datarootdir[@],$(datarootdir),g' \
   -e 's,[@]datadir[@],$(datadir),g' \
-  -e 's,[@]pkglibexecdir[@],$(pkglibexecdir),g' \
+  -e 's,[@]pkglibdir[@],$(pkglibdir),g' \
   -e 's,[@]PACKAGE[@],$(PACKAGE),g' \
   -e 's,[@]USE_EXTERNAL_LIBINTL[@],$(USE_EXTERNAL_LIBINTL),g' \
   -e 's,[@]USE_EXTERNAL_EASTASIANWIDTH[@],$(USE_EXTERNAL_EASTASIANWIDTH),g' \

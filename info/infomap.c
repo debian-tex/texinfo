@@ -1,8 +1,8 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c 6655 2015-09-29 19:45:29Z gavin $
+   $Id: infomap.c 6906 2016-01-01 18:33:45Z karl $
 
    Copyright 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007,
-   2008, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
+   2008, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

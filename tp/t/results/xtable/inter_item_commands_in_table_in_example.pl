@@ -633,6 +633,7 @@ $result_converted{'html_text'}->{'inter_item_commands_in_table_in_example'} = '<
 <dd><pre class="example"><a name="index-index-entry-between-item-and-itemx"></a></pre></dd>
 <dt><tt><var>b</var></tt></dt>
 <dd><pre class="example">
+
 </pre></dd>
 <dt><tt><var>c</var></tt></dt>
 <dd><pre class="example">l--ine

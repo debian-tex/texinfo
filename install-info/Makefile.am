@@ -1,7 +1,8 @@
-# $Id: Makefile.am 6424 2015-07-12 12:01:24Z gavin $
+# $Id: Makefile.am 6906 2016-01-01 18:33:45Z karl $
 # Makefile.am for texinfo/install-info.
 #
-# Copyright 2008, 2009, 2010, 2012, 2013 Free Software Foundation, Inc.
+# Copyright 2008, 2009, 2010, 2012, 2013, 2015, 2016
+# Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without

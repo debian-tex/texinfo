@@ -26,7 +26,12 @@ cp $t/infodir/sample.info t/replace-viewed.info
 
 run_ginfo -f t/replace-viewed.info
 
-# Make sure ginfo is up and running
+# Make sure ginfo is up and running.  Skip test if no process could be found,
+# because it may not have started properly.
+if test $GINFO_PID = unknown ; then
+  RETVAL=77 # skip test
+  cleanup
+fi
 printf 'D' >$PTY_TYPE
 while test ! -f $GINFO_OUTPUT ; do sleep 1 ; done
 cat $GINFO_OUTPUT

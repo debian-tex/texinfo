@@ -389,6 +389,7 @@ $result_converted{'html_text'}->{'caption_in_example'} = '<div class="float">
 
 </pre><pre class="example">
 
+
 After caption
 </pre></div>
 <div class="float-caption"><p><strong>float: </strong>caption</p></div></div>';

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2016 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,6 @@ srcdir=${srcdir:-.}
 . $t/Init-inter.inc
 
 run_ginfo -f intera -n 'Incremental search case-insensitive'
-synch_with_program
 
 # Search for "match" with incremental search, adding an upper-case character
 # to make the search case-sensitive.  Delete it and check the search goes back

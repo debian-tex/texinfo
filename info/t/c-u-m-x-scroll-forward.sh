@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2016 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,8 +29,6 @@ LINES=7; export LINES
 COLUMNS=80; export COLUMNS
 
 run_ginfo -f intera -n 'Scroll four lines'
-
-synch_with_program
 
 # C-u M-x scroll-forward should scroll four lines, not four screens
 printf '\025\033xscroll-forward\r' >$PTY_TYPE

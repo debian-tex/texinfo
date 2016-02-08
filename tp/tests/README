@@ -1,7 +1,7 @@
-$Id: README 6734 2015-10-29 19:55:48Z gavin $
+$Id: README 6942 2016-01-15 18:21:28Z gavin $
 texinfo/tp/tests/README
 
-  Copyright 2010, 2011, 2012, 2013, 2014, 2015
+  Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
   Free Software Foundation, Inc.
 
   Copying and distribution of this README file, with or without
@@ -90,6 +90,10 @@ reference results for one particular test:
 $ ./parser_tests.sh -copy formatting
 The copy-* make targets update all the references for various large sets
 of tests via this method.
+
+To update a group of long tests:
+
+$ LONG_TESTS=yes ./parser_tests.sh -copy nested_formats
 
 Exception: in the many_input_files subdirectory, the *parser*.sh scripts
 can't be used for updating.  Instead, the Makefile's copy-tests and

@@ -42,6 +42,7 @@ build-stamp:
 	$(MAKE)
 	mv debian/texi2dvi.1 man/
 	touch man/texi2dvi.1
+	# finished
 	touch $@
 
 check-stamp: build-stamp
@@ -69,6 +70,10 @@ install-stamp: build-stamp check-stamp
 	$(MAKE) install install-tex prefix=$(tmpdir)/usr \
                                     TEXMF=$(tmpdir)/usr/share/texmf
 	find $(tmpdir) -type f -name dir | xargs rm -f
+	#
+	# clean out .la files as they contain references to libperl 
+	# which is not necessary
+	sed -i "/dependency_libs/ s/'.*'/''/" `find $(tmpdir) -name '*.la'`
 	#
 	# epsf.tex is in texlive
 	rm -rf $(tmpdir)/usr/share/texmf/tex/generic

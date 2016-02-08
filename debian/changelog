@@ -7,8 +7,9 @@ texinfo (6.1.0.dfsg.1-1) unstable; urgency=medium
   * use bundled libintl-perl, as the Debian version breaks Texinfo
   * do not patch out version number from automake calls
   * warn_missing_tex: add remark to the original warning message
+  * add libperl-dev to build-deps
 
- -- Norbert Preining <preining@debian.org>  Mon, 08 Feb 2016 13:47:48 +0900
+ -- Norbert Preining <preining@debian.org>  Mon, 08 Feb 2016 14:05:00 +0900
 
 texinfo (6.0.0.dfsg.1-4) unstable; urgency=medium
 

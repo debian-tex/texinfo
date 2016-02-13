@@ -64,7 +64,7 @@ mkdir texinfo-doc-nonfree-$fullversion
 mv texinfo-$version texinfo-${fullversion}.dfsg.1
 cd texinfo-${fullversion}.dfsg.1
 for i in $nonfreefiles $addcopyfiles ; do
-  cp $i ../../texinfo-doc-nonfree-$fullversion
+  cp $i ../texinfo-doc-nonfree-$fullversion
 done
 for i in $nonfreefiles $removefiles ; do
   rm $i

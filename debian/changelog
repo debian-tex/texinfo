@@ -1,8 +1,8 @@
-texinfo (6.1.0.dfsg.1-2) UNRELEASED; urgency=medium
+texinfo (6.1.0.dfsg.1-2) unstable; urgency=medium
 
   * cherrypick upstream svn 7021 for arg parsing (Closes: #814830)
 
- -- Norbert Preining <preining@debian.org>  Wed, 17 Feb 2016 10:09:33 +0900
+ -- Norbert Preining <preining@debian.org>  Sat, 20 Feb 2016 10:59:57 +0900
 
 texinfo (6.1.0.dfsg.1-1) unstable; urgency=medium
 

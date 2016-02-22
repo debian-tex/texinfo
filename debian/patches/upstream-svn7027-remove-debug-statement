@@ -1,0 +1,26 @@
+upstream svn 7027 -- remove debug statements in info
+---
+ info/dir.c  |    1 -
+ info/info.c |    1 -
+ 2 files changed, 2 deletions(-)
+
+--- texinfo.orig/info/dir.c
++++ texinfo/info/dir.c
+@@ -52,7 +52,6 @@
+ 
+   node = xmalloc (sizeof (NODE));
+   *node = *dir_node;
+-  fprintf(stderr, "%p\n", node);
+ 
+   return node;
+ }
+--- texinfo.orig/info/info.c
++++ texinfo/info/info.c
+@@ -518,7 +518,6 @@
+             }
+         }
+ 
+-      fprintf(stderr, "B %p\n", initial_node);
+       /* If there are arguments remaining, follow menus inexactly. */
+       if (argc != 0)
+         {

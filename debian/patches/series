@@ -5,3 +5,4 @@ info-manpage-mentiones-nonfree
 #do-not-require-automake-1.15
 upstream-svn7021-fix-parsing
 upstream-svn7022-fix-ouput
+upstream-svn7027-remove-debug-statement

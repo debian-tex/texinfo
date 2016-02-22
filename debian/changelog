@@ -2,10 +2,11 @@ texinfo (6.1.0.dfsg.1-3) unstable; urgency=medium
 
   * cherrypick upstream svn 7022: fix missing output when doing
     info --output - (Closes: #814743)
+  * cherrypick upstream svn 7027: remove debug statement
   * bump standards version, no changes necessary
   * adjust git browser address
 
- -- Norbert Preining <preining@debian.org>  Sun, 21 Feb 2016 23:04:07 +0900
+ -- Norbert Preining <preining@debian.org>  Mon, 22 Feb 2016 09:23:53 +0900
 
 texinfo (6.1.0.dfsg.1-2) unstable; urgency=medium
 

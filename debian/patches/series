@@ -6,3 +6,4 @@ info-manpage-mentiones-nonfree
 upstream-svn7021-fix-parsing
 upstream-svn7022-fix-ouput
 upstream-svn7027-remove-debug-statement
+upstream-svn7031-texi2dvi-fix

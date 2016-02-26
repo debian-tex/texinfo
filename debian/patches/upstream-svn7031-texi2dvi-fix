@@ -1,0 +1,22 @@
+upstream svn7031 fix for texi2dvi not rebuilding properly
+       * util/texi2dvi (filter_files): Ensure that this function does not
+       make any non zero return status when the list of new xref files is
+       empty. Otherwise that causes a prematurate exit of calling
+       function, notably run_index. Remember texi2dvi is running under
+       set -e regime.
+---
+ util/texi2dvi |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- texinfo.orig/util/texi2dvi
++++ texinfo/util/texi2dvi
+@@ -988,7 +988,8 @@
+ #                         that match PREDICATE.
+ filter_files ()
+ {
+-  test -n "$xref_files_new" && echo "$xref_files_new" |
++  test -n "$xref_files_new" || return 0
++  echo "$xref_files_new" |
+   # Filter existing files matching the criterion.
+   #
+   while read file; do

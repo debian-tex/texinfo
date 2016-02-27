@@ -1,0 +1,71 @@
+cherrypick upstream svn 7032 to fix case-insensitive info lookups (Closes: #815941)
+
+Changelog entry
+       * info/info-utils.c (info_get_menu_entry_by_label): Always check 
+       case-insensitively, so that manpages are not preferred to a 
+       case-insensitive dir match when invoking.  Problem reported by 
+       Vincent Lefevre.
+---
+ info/info-utils.c |   37 ++++++++++++-------------------------
+ 1 file changed, 12 insertions(+), 25 deletions(-)
+
+--- texinfo.orig/info/info-utils.c
++++ texinfo/info/info-utils.c
+@@ -215,45 +215,32 @@
+ 
+ /* Get the entry associated with LABEL in the menu of NODE.  Return a
+    pointer to the ENTRY if found, or null.  Return value should not
+-   be freed by caller. */
++   be freed by caller.  If SLOPPY, allow initial matches, like
++   "Buffers" for a LABEL "buffer". */
+ REFERENCE *
+ info_get_menu_entry_by_label (NODE *node, char *label, int sloppy) 
+ {
+   register int i;
++  int best_guess = -1;
+   REFERENCE *entry;
+   REFERENCE **references = node->references;
+ 
+   if (!references)
+     return 0;
+ 
+-  /* First look for an exact match. */
+   for (i = 0; (entry = references[i]); i++)
+     {
+-      if (REFERENCE_MENU_ITEM != entry->type) continue;
+-      if (strcmp (label, entry->label) == 0)
+-        return entry;
++      if (entry->type != REFERENCE_MENU_ITEM)
++        continue;
++      if (mbscasecmp (label, entry->label) == 0)
++        return entry; /* Exact, case-insensitive match. */
++      else if (sloppy && best_guess == -1
++               && (mbsncasecmp (entry->label, label, strlen (label)) == 0))
++        best_guess = i;
+     }
+ 
+-  /* If the item wasn't found, search the list sloppily.  Perhaps this
+-     user typed "buffer" when they really meant "Buffers". */
+-  if (sloppy)
+-    {
+-      int i;
+-      int best_guess = -1;
+-
+-      for (i = 0; (entry = references[i]); i++)
+-        {
+-          if (REFERENCE_MENU_ITEM != entry->type) continue;
+-          if (mbscasecmp (label, entry->label) == 0)
+-            return entry; /* Exact, case-insensitive match. */
+-          else if (best_guess == -1
+-                && (mbsncasecmp (entry->label, label, strlen (label)) == 0))
+-              best_guess = i;
+-        }
+-
+-      if (!entry && best_guess != -1)
+-        return references[best_guess];
+-    }
++  if (sloppy && best_guess != -1)
++    return references[best_guess];
+ 
+   return 0;
+ }

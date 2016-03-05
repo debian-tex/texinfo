@@ -1,11 +1,11 @@
-texinfo (6.1.0.dfsg.1-5) UNRELEASED; urgency=medium
+texinfo (6.1.0.dfsg.1-5) unstable; urgency=medium
 
   * cherrypick upstream svn 7032 to fix case-insensitive info 
     lookups (Closes: #815941)
   * cherrypick upstream svn 7041 to fix single arg macros
     (see #815734 for discussion)
 
- -- Norbert Preining <preining@debian.org>  Sat, 05 Mar 2016 23:30:15 +0900
+ -- Norbert Preining <preining@debian.org>  Sat, 05 Mar 2016 23:32:21 +0900
 
 texinfo (6.1.0.dfsg.1-4) unstable; urgency=medium
 

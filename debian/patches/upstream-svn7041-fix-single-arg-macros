@@ -1,0 +1,119 @@
+cherrypick fix for #815734 from upstream
+upstream changelog entry:
+2016-03-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+       * doc/texinfo.tex (\defmacro): Don't attempt to strip spaces at 
+       the start of the argument to a macro taking only one argument.  
+       This could lead to an error ("Argument of @gobblespaces has an 
+       extra }") for an empty argmuent.  Reported by Norbert Preining 
+       for ESS manual.
+       (\gobblespaces): Removed.
+       (\parsemargdef, \scanmacro, \defmacro): Put "\xeatspaces" in 
+       body of macro, instead of "\processmacroarg".  For 
+       single-argument macros, make it disappear instead of letting it 
+       equal to \eatspaces.
+---
+ doc/texinfo.tex |   36 ++++++++++--------------------------
+ 1 file changed, 10 insertions(+), 26 deletions(-)
+
+--- texinfo.orig/doc/texinfo.tex
++++ texinfo/doc/texinfo.tex
+@@ -3,7 +3,7 @@
+ % Load plain if necessary, i.e., if running under initex.
+ \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
+ %
+-\def\texinfoversion{2016-02-05.07.deb1}
++\def\texinfoversion{2016-02-05.07.deb2}
+ %
+ % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
+ % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+@@ -7685,7 +7685,7 @@
+ % Argument is macro body with arguments substituted
+ \def\scanmacro#1{%
+   \newlinechar`\^^M
+-  \def\xprocessmacroarg{\eatspaces}%
++  \def\xeatspaces{\eatspaces}%
+   %
+   % Process the macro body under the current catcode regime.
+   \scantokens{#1\texinfoc}\aftermacro%
+@@ -7915,7 +7915,7 @@
+   \paramno=0\def\paramlist{}%
+   \let\hash\relax
+   % \hash is redefined to `#' later to get it into definitions
+-  \let\processmacroarg\relax
++  \let\xeatspaces\relax
+   \parsemargdefxxx#1,;,%
+   \ifnum\paramno<10\relax\else
+     \paramno0\relax
+@@ -7927,7 +7927,7 @@
+   \else \let\next=\parsemargdefxxx
+     \advance\paramno by 1
+     \expandafter\edef\csname macarg.\eatspaces{#1}\endcsname
+-        {\processmacroarg{\hash\the\paramno}}%
++        {\xeatspaces{\hash\the\paramno}}%
+     \edef\paramlist{\paramlist\hash\the\paramno,}%
+   \fi\next}
+ 
+@@ -8153,16 +8153,9 @@
+ %%%%%%%%%%%%%% End of code for > 10 arguments %%%%%%%%%%%%%%%%%%
+ 
+ 
+-
+-% Remove following spaces at the expansion stage.
+-% This works because spaces are discarded before each argument when TeX is 
+-% getting the arguments for a macro.
+-% This must not be immediately followed by a }.
+-\long\def\gobblespaces#1{#1}
+-
+ % This defines a Texinfo @macro or @rmacro, called by \parsemacbody.
+ %    \macrobody has the body of the macro in it, with placeholders for
+-% its parameters, looking like "\processmacroarg{\hash 1}".
++% its parameters, looking like "\xeatspaces{\hash 1}".
+ %    \paramno is the number of parameters
+ %    \paramlist is a TeX parameter text, e.g. "#1,#2,#3,"
+ % There are eight cases: recursive and nonrecursive macros of zero, one,
+@@ -8173,14 +8166,13 @@
+ \def\defmacro{%
+   \let\hash=##% convert placeholders to macro parameter chars
+   \ifnum\paramno=1
+-    \def\processmacroarg{\gobblespaces}%
++    \def\xeatspaces##1{##1}%
+     % This removes the pair of braces around the argument.  We don't
+     % use \eatspaces, because this can cause ends of lines to be lost
+     % when the argument to \eatspaces is read, leading to line-based
+     % commands like "@itemize" not being read correctly.
+   \else
+-    \def\processmacroarg{\xprocessmacroarg}%
+-    \let\xprocessmacroarg\relax
++    \let\xeatspaces\relax % suppress expansion
+   \fi
+   \ifrecursive   %%%%%%%%%%%%%% Recursive %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     \ifcase\paramno
+@@ -8193,12 +8185,9 @@
+          \noexpand\braceorline
+          \expandafter\noexpand\csname\the\macname @@@\endcsname}%
+       \expandafter\xdef\csname\the\macname @@@\endcsname##1{%
+-         \expandafter\noexpand\csname\the\macname @@@@\endcsname{%
+-           \noexpand\gobblespaces##1\empty}%
+-           % The \empty is for \gobblespaces in case #1 is empty
+-         }%
+-      \expandafter\xdef\csname\the\macname @@@@\endcsname##1{%
+-         \egroup\noexpand\scanmacro{\macrobody}}%
++        \egroup
++        \noexpand\scanmacro{\macrobody}%
++        }%
+     \else
+       \ifnum\paramno<10\relax % at most 9
+         % See non-recursive section below for comments
+@@ -8237,11 +8226,6 @@
+          \noexpand\braceorline
+          \expandafter\noexpand\csname\the\macname @@@\endcsname}%
+       \expandafter\xdef\csname\the\macname @@@\endcsname##1{%
+-         \expandafter\noexpand\csname\the\macname @@@@\endcsname{%
+-           \noexpand\gobblespaces##1\empty}%
+-           % The \empty is for \gobblespaces in case #1 is empty
+-         }%
+-      \expandafter\xdef\csname\the\macname @@@@\endcsname##1{%
+         \egroup
+         \noexpand\scanmacro{\macrobody}%
+         }%

@@ -1,3 +1,11 @@
+texinfo (6.1.0.dfsg.1-6) UNRELEASED; urgency=medium
+
+  * UNRELEASED
+  * recommend texlive-fonts-recommended to reduce chances that
+    EC fonts are not installed, which are often needed
+
+ -- Norbert Preining <preining@debian.org>  Sun, 06 Mar 2016 13:18:30 +0900
+
 texinfo (6.1.0.dfsg.1-5) unstable; urgency=medium
 
   * cherrypick upstream svn 7032 to fix case-insensitive info 

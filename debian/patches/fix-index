@@ -1,0 +1,60 @@
+fix expansion of TeX macros in index entries, see bug #815205
+should be upstream as it was sent by Gavin
+---
+ doc/texinfo.tex |   17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+--- texinfo.orig/doc/texinfo.tex
++++ texinfo/doc/texinfo.tex
+@@ -3,7 +3,7 @@
+ % Load plain if necessary, i.e., if running under initex.
+ \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
+ %
+-\def\texinfoversion{2016-02-05.07.deb2}
++\def\texinfoversion{2016-02-05.07.deb3}
+ %
+ % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
+ % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
+@@ -5118,7 +5118,6 @@
+     \putwordIndexNonexistent
+   \else
+     \catcode`\\ = 0
+-    \escapechar = `\\
+     %
+     % If the index file exists but is empty, then \openin leaves \ifeof
+     % false.  We have to make TeX try to read something from the file, so
+@@ -6703,7 +6702,6 @@
+   \catcode `\>=\other
+   \catcode `\`=\other
+   \catcode `\'=\other
+-  \escapechar=`\\
+   %
+   % ' is active in math mode (mathcode"8000).  So reset it, and all our
+   % other math active characters (just in case), to plain's definitions.
+@@ -7681,14 +7679,25 @@
+ % alias because \c means cedilla in @tex or @math
+ \let\texinfoc=\c
+ 
++\newcount\savedcatcodeone
++\newcount\savedcatcodetwo
++
+ % Used at the time of macro expansion.
+ % Argument is macro body with arguments substituted
+ \def\scanmacro#1{%
+   \newlinechar`\^^M
+   \def\xeatspaces{\eatspaces}%
++  % Temporarily undo catcode changes of \printindex
++  \savedcatcodeone=\catcode`\@
++  \savedcatcodetwo=\catcode`\\
++  \catcode`\@=0
++  \catcode`\\=\active
+   %
+   % Process the macro body under the current catcode regime.
+-  \scantokens{#1\texinfoc}\aftermacro%
++  \scantokens{#1@texinfoc}\aftermacro%
++  %
++  \catcode`\@=\savedcatcodeone
++  \catcode`\\=\savedcatcodetwo
+   %
+   % The \c is to remove the \newlinechar added by \scantokens, and
+   % can be noticed by \parsearg.

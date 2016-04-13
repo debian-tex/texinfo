@@ -9,3 +9,4 @@ upstream-svn7027-remove-debug-statement
 upstream-svn7031-texi2dvi-fix
 upstream-svn7032-info-match-nocase
 upstream-svn7041-fix-single-arg-macros
+fix-index

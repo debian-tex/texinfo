@@ -1,0 +1,18 @@
+fix unprotected ~ in second pass (Closes: #822492)
+
+patch by Ted Ts'o, applied upstream
+---
+ util/texi2dvi |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- texinfo.orig/util/texi2dvi
++++ texinfo/util/texi2dvi
+@@ -812,7 +812,7 @@
+ 
+   # do the special catcode trick for ~ in filenames only for Texinfo,
+   # not LaTeX.
+-  if test x"$in_lang" = xtexinfo && test $catcode_special = maybe; then
++  if test x"$in_lang" = xtexinfo && test $catcode_special != false ; then
+     catcode_special=true
+   else
+     catcode_special=false

@@ -120,6 +120,7 @@ ifeq "$(findstring nostrip,$(DEB_BUILD_OPTIONS))" ""
 endif
 endif
 	dh_compress
+	dh_perl /usr/lib/texinfo
 	dh_fixperms
 	dh_installdeb
 	dh_shlibdeps

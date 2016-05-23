@@ -12,7 +12,7 @@ Package: texinfo
 Section: text
 Priority: optional
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libtext-unidecode-perl, libxml-libxml-perl, tex-common (>= 6)
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}, libtext-unidecode-perl, libxml-libxml-perl, tex-common (>= 6)
 Suggests: texlive-base, texlive-latex-base, texlive-generic-recommended, texinfo-doc-nonfree, texlive-fonts-recommended
 Breaks: tetex-bin (<< 3.0), tetex-base (<< 3.0), ja-trans (<= 0.7-3.1)
 Replaces: tetex-base (<< 1.0.2+20000804-9), tetex-bin (<< 3.0)

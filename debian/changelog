@@ -1,8 +1,9 @@
 texinfo (6.1.0.dfsg.1-7) UNRELEASED; urgency=medium
 
   * fix unprotected ~ in second pass (Closes: #822492)
+  * demote tl-fonts-recommended to suggests (Closes: #824876)
 
- -- Norbert Preining <preining@debian.org>  Tue, 26 Apr 2016 08:25:07 +0900
+ -- Norbert Preining <preining@debian.org>  Mon, 23 May 2016 14:47:13 +0900
 
 texinfo (6.1.0.dfsg.1-6) unstable; urgency=medium
 

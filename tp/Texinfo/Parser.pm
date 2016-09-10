@@ -1,4 +1,4 @@
-# $Id: Parser.pm 7313 2016-08-13 11:17:32Z gavin $
+# $Id: Parser.pm 7353 2016-09-10 13:03:54Z gavin $
 # Parser.pm: parse texinfo code into a tree.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 

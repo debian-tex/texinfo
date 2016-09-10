@@ -1,4 +1,4 @@
-$Id: README-hacking 7349 2016-09-07 06:55:18Z gavin $
+$Id: README-hacking 7355 2016-09-10 14:46:01Z gavin $
 This file describes the development environment for Texinfo.
 
   Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013,
@@ -176,6 +176,9 @@ version and date in NEWS.
 version number in texi2dvi, texi2pdf, txirefcard.tex.
 (cd tp && ./maintain/change_perl_modules_version.sh auto)
   -- this updates all the version numbers in the Perl modules
+version number in
+  tp/Texinfo/Convert/XSParagraph/configure.ac, and
+  tp/Texinfo/Convert/XSParagraph/TestXS.pm
 sync texi2html/test/ results with tp/.
 
 ensure building standalone modules for CPAN still works.

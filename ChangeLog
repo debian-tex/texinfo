@@ -1,5 +1,25 @@
 2016-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	6.3 release.
+	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf,
+	doc/refcard/txirefcard.tex, texindex/texindex.awk:
+	Version number.
+	* tp/Texinfo: Update version numbers in modules.
+	* tp/Texinfo/Convert/XSParagraph/TestXS.pm,
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Version number.
+
+2016-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/README: Mention that the tests must be run before the 
+	reference results can be updated.
+
+2016-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Add note about updating the version number 
+	under tp/Texinfo/Convert/XSParagraph.
+
+2016-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	6.2 release.
 	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf,
 	doc/refcard/txirefcard.tex, texindex/texindex.awk:

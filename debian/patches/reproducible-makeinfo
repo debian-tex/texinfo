@@ -11,7 +11,7 @@ patch by Alexis Bienvenüe (Closes: #826158)
    }
    my($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst)
 -   = localtime(time);
-+   = ($ENV{SOURCE_DATE_EPOCH} ? gmtime($ENV{SOURCE_DATE_EPOCH}) : localtime(time);
++   = ($ENV{SOURCE_DATE_EPOCH} ? gmtime($ENV{SOURCE_DATE_EPOCH}) : localtime(time));
    $year += ($year < 70) ? 2000 : 1900;
    return $self->gdt('{month} {day}, {year}',
            { 'month' => $self->gdt($MONTH_NAMES[$mon]),

@@ -28,6 +28,7 @@ $result_trees{'inlinefmt_with_empty_line'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_before_argument'
                 },
@@ -55,19 +56,15 @@ $result_trees{'inlinefmt_with_empty_line'} = {
                 {}
               ]
             ],
-            'format' => 'plaintext',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'expand_index' => 1,
+            'format' => 'plaintext'
           },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
             'macro' => ''
           },
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         }
       ],
       'parent' => {},
@@ -85,6 +82,11 @@ $result_trees{'inlinefmt_with_empty_line'} = {
           ],
           'cmdname' => 'lbracechar',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -107,6 +109,7 @@ $result_trees{'inlinefmt_with_empty_line'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_before_argument'
                 },
@@ -134,19 +137,15 @@ $result_trees{'inlinefmt_with_empty_line'} = {
                 {}
               ]
             ],
-            'format' => 'html',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'expand_index' => 1,
+            'format' => 'html'
           },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 4,
             'macro' => ''
           },
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         }
       ],
       'parent' => {},
@@ -178,12 +177,7 @@ $result_trees{'inlinefmt_with_empty_line'} = {
               [
                 {}
               ]
-            ],
-            'normalized' => 'HTML',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            ]
           },
           'line_nr' => {
             'file_name' => '',
@@ -207,6 +201,7 @@ $result_trees{'inlinefmt_with_empty_line'} = {
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1];
+$result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1];
@@ -218,6 +213,7 @@ $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[0]{'parent
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2];
+$result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2];
@@ -247,12 +243,12 @@ $result_texts{'inlinefmt_with_empty_line'} = 'A {  a.  Now html
 
 $result_errors{'inlinefmt_with_empty_line'} = [
   {
-    'error_line' => ':1: @inlinefmt missing close brace
+    'error_line' => ':1: @inlinefmt missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@inlinefmt missing close brace',
+    'text' => '@inlinefmt missing closing brace',
     'type' => 'error'
   },
   {
@@ -265,12 +261,12 @@ $result_errors{'inlinefmt_with_empty_line'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':4: @inlinefmt missing close brace
+    'error_line' => ':4: @inlinefmt missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => '@inlinefmt missing close brace',
+    'text' => '@inlinefmt missing closing brace',
     'type' => 'error'
   },
   {

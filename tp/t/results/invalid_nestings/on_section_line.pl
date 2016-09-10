@@ -70,11 +70,7 @@ $result_trees{'on_section_line'} = {
                     {}
                   ]
                 ],
-                'invalid_nesting' => 1,
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                'invalid_nesting' => 1
               },
               'line_nr' => {},
               'parent' => {}
@@ -108,11 +104,7 @@ $result_trees{'on_section_line'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'in-anchor',
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                'normalized' => 'in-anchor'
               },
               'line_nr' => {},
               'parent' => {}
@@ -139,12 +131,7 @@ $result_trees{'on_section_line'} = {
               'cmdname' => 'footnote',
               'contents' => [],
               'extra' => {
-                'invalid_nesting' => 1,
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                'invalid_nesting' => 1
               },
               'line_nr' => {},
               'parent' => {}
@@ -244,7 +231,6 @@ $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[6]{'paren
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7];
-$result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'line_nr'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
@@ -331,12 +317,12 @@ $result_errors{'on_section_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @exdent should only appear at a line beginning
+    'error_line' => ':1: warning: @exdent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@exdent should only appear at a line beginning',
+    'text' => '@exdent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

@@ -213,15 +213,7 @@ $result_trees{'misc_raw'} = {
         }
       ],
       'extra' => {
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -230,7 +222,15 @@ $result_trees{'misc_raw'} = {
       },
       'parent' => {}
     },
-    {}
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    }
   ],
   'type' => 'text_root'
 };
@@ -273,10 +273,10 @@ $result_trees{'misc_raw'}{'contents'}[5]{'contents'}[0]{'extra'}{'command'} = $r
 $result_trees{'misc_raw'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'misc_raw'}{'contents'}[5];
 $result_trees{'misc_raw'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'misc_raw'}{'contents'}[5];
 $result_trees{'misc_raw'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'misc_raw'}{'contents'}[5];
-$result_trees{'misc_raw'}{'contents'}[5]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'misc_raw'}{'contents'}[5];
-$result_trees{'misc_raw'}{'contents'}[5]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'misc_raw'};
+$result_trees{'misc_raw'}{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'misc_raw'}{'contents'}[5]{'contents'}[0];
 $result_trees{'misc_raw'}{'contents'}[5]{'parent'} = $result_trees{'misc_raw'};
-$result_trees{'misc_raw'}{'contents'}[6] = $result_trees{'misc_raw'}{'contents'}[5]{'extra'}{'spaces_after_command'};
+$result_trees{'misc_raw'}{'contents'}[6]{'extra'}{'command'} = $result_trees{'misc_raw'}{'contents'}[5];
+$result_trees{'misc_raw'}{'contents'}[6]{'parent'} = $result_trees{'misc_raw'};
 
 $result_texis{'misc_raw'} = '
 @html 
@@ -301,12 +301,12 @@ in verbatim2
 
 $result_errors{'misc_raw'} = [
   {
-    'error_line' => ':3: warning: @end should only appear at a line beginning
+    'error_line' => ':3: warning: @end should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@end should only appear at a line beginning',
+    'text' => '@end should only appear at the beginning of a line',
     'type' => 'warning'
   }
 ];

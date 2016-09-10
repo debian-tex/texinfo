@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6989 2016-02-06 10:38:22Z gavin $
+# $Id: Makefile.am 7290 2016-07-31 08:40:28Z gavin $
 # Makefile.am for texinfo/doc.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
@@ -27,9 +27,9 @@ MAKEINFO = $(MAKEINFO_ENVIRONMENT) $(PERL) $(top_builddir)/tp/texi2any
 # INSTALL_INFO = $(top_builddir)/$(native_tools)/util/ginstall-info
 
 TXI_XLATE = txi-ca.tex txi-cs.tex txi-de.tex txi-en.tex txi-es.tex \
-            txi-fr.tex txi-hu.tex txi-is.tex txi-it.tex txi-nb.tex \
-	    txi-nl.tex txi-nn.tex txi-pl.tex txi-pt.tex txi-ru.tex \
-	    txi-sr.tex txi-tr.tex txi-uk.tex
+            txi-fr.tex txi-hu.tex txi-is.tex txi-it.tex txi-ja.tex \
+            txi-nb.tex txi-nl.tex txi-nn.tex txi-pl.tex txi-pt.tex \
+            txi-ru.tex txi-sr.tex txi-tr.tex txi-uk.tex
 
 refcard_files = refcard/Makefile refcard/txicmdcheck \
                 refcard/txirefcard-a4.pdf refcard/txirefcard.pdf \
@@ -39,7 +39,8 @@ refcard_files = refcard/Makefile refcard/txicmdcheck \
 EXTRA_DIST = epsf.tex texinfo.tex \
              fdl.texi \
 	     $(man_MANS) $(TXI_XLATE) \
-	     $(refcard_files) texinfo-tex-test.texi
+             $(refcard_files) texinfo-tex-test.texi \
+             texinfo-ja.tex short-sample-ja.texi
 
 if INSTALL_WARNINGS
 install-data-local:

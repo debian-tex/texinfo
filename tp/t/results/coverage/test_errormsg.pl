@@ -36,6 +36,15 @@ $result_trees{'test_errormsg'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
+                  'extra' => {
+                    'invalid_nesting' => 1
+                  },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 2,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -57,11 +66,10 @@ $result_trees{'test_errormsg'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
+                  'extra' => {
+                    'invalid_nesting' => 1
                   },
+                  'line_nr' => {},
                   'parent' => {}
                 }
               ],
@@ -79,11 +87,7 @@ $result_trees{'test_errormsg'} = {
                 {},
                 {}
               ]
-            ],
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            ]
           },
           'line_nr' => {},
           'parent' => {}
@@ -108,13 +112,14 @@ $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'content
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3];
+$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'line_nr'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1];
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][1] = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][2] = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2];
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][3] = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'line_nr'};
+$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0];
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0];
 $result_trees{'test_errormsg'}{'contents'}[0]{'parent'} = $result_trees{'test_errormsg'};
@@ -130,12 +135,30 @@ $result_texts{'test_errormsg'} = 'Some text
 
 $result_errors{'test_errormsg'} = [
   {
-    'error_line' => ':2: Text e~ code
+    'error_line' => ':2: warning: @~ should not appear in @errormsg
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Text e~ code',
+    'text' => '@~ should not appear in @errormsg',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':2: warning: @code should not appear in @errormsg
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@code should not appear in @errormsg',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':2: Text 
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Text ',
     'type' => 'error'
   }
 ];

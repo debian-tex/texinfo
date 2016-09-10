@@ -1,5 +1,5 @@
 /* nodes.h -- How we represent nodes internally.
-   $Id: nodes.h 6711 2015-10-19 18:17:21Z gavin $
+   $Id: nodes.h 7264 2016-07-17 16:44:53Z gavin $
 
    Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2011, 2012, 2013,
    2014, 2015 Free Software Foundation, Inc.
@@ -106,7 +106,7 @@ typedef struct {
   char *filename;               /* The file where this node can be found. */
   char *nodename;               /* The node pointed to by this tag. */
   long nodestart;               /* The value read from the tag table. */
-  long nodestart_adjusted;
+  long nodestart_adjusted;      /* Where the node or anchor actually is. */
   int flags;                    /* Same as NODE.flags. */
   NODE cache;                   /* Saved information about pointed-to node. */
 } TAG;
@@ -115,9 +115,7 @@ typedef struct {
    of Info files that we have loaded at least once before.  The FINFO member
    is present so that we can reload the file if it has been modified since
    last being loaded.  All of the arrays appearing within this structure
-   are NULL terminated, and each array which can change size has a
-   corresponding SLOTS member which says how many slots have been allocated
-   (with malloc ()) for this array. */
+   are NULL terminated. */
 typedef struct {
   char *filename;               /* The filename used to find this file. */
   char *fullpath;               /* The full pathname of this info file. */
@@ -141,38 +139,40 @@ extern size_t info_loaded_files_slots;
    already, or it may not.  If it does not already appear, find the file,
    and add it to the list of loaded files.  If the file cannot be found,
    return a NULL FILE_BUFFER *. */
-extern FILE_BUFFER *info_find_file (char *filename);
+FILE_BUFFER *info_find_file (char *filename);
+
+FILE_BUFFER *check_loaded_file (char *filename);
 
 FILE_BUFFER *info_find_subfile (char *filename);
 
 TAG *info_create_tag (void);
 
 /* Return a pointer to a new NODE structure. */
-extern NODE *info_create_node (void);
+NODE *info_create_node (void);
 
 /* Return a pointer to a NODE structure for the Info node (FILENAME)NODENAME.
    FILENAME can be passed as NULL, in which case the filename of "dir" is used.
    NODENAME can be passed as NULL, in which case the nodename of "Top" is used.
    
    If the node cannot be found, return a NULL pointer. */
-extern NODE *info_get_node (char *filename, char *nodename);
+NODE *info_get_node (char *filename, char *nodename);
 
-extern NODE *info_get_node_with_defaults (char *filename, char *nodename,
+NODE *info_get_node_with_defaults (char *filename, char *nodename,
                                           NODE *defaults);
 
-extern NODE *info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr);
-extern NODE *info_node_of_tag_fast (FILE_BUFFER *fb, TAG **tag_ptr);
+NODE *info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr);
+NODE *info_node_of_tag_fast (FILE_BUFFER *fb, TAG **tag_ptr);
 
 /* Return a pointer to a NODE structure for the Info node NODENAME in
    FILE_BUFFER.  NODENAME can be passed as NULL, in which case the
    nodename of "Top" is used.  If the node cannot be found, return a
    NULL pointer. */
-extern NODE *info_get_node_of_file_buffer (FILE_BUFFER *file_buffer,
+NODE *info_get_node_of_file_buffer (FILE_BUFFER *file_buffer,
                                            char *nodename);
 
 /* Grovel FILE_BUFFER->contents finding tags and nodes, and filling in the
    various slots.  This can also be used to rebuild a tag or node table. */
-extern void build_tags_and_nodes (FILE_BUFFER *file_buffer);
+void build_tags_and_nodes (FILE_BUFFER *file_buffer);
 
 void free_history_node (NODE *n);
 
@@ -180,15 +180,15 @@ void free_history_node (NODE *n);
 extern char *info_recent_file_error;
 
 /* Create a new, empty file buffer. */
-extern FILE_BUFFER *make_file_buffer (void);
+FILE_BUFFER *make_file_buffer (void);
 
 /* Non-zero means don't try to be smart when searching for nodes.  */
 extern int strict_node_location_p;
 
 
 /* Found in dir.c */
-extern NODE *get_dir_node (void);
-extern REFERENCE *lookup_dir_entry (char *label, int sloppy);
-extern REFERENCE *dir_entry_of_infodir (char *label, char *searchdir);
+NODE *get_dir_node (void);
+REFERENCE *lookup_dir_entry (char *label, int sloppy);
+REFERENCE *dir_entry_of_infodir (char *label, char *searchdir);
 
 #endif /* not NODES_H */

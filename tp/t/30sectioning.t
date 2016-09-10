@@ -81,8 +81,6 @@ Text of chapter
 ';
 
 my $section_in_unnumbered_text = '
-@setcontentsaftertitlepage
-
 @node Top
 @top Test section in unnumbered
 
@@ -305,20 +303,6 @@ second node
 ';
 
 my @tests_converted = (
-['setcontentsaftertitlepage',
-'@setcontentsaftertitlepage
-'
-.$test_text.
-'
-@contents
-'],
-['setshortcontentsaftertitlepage',
-'@setshortcontentsaftertitlepage
-'
-.$test_text.
-'
-@shortcontents
-'],
 ['contents',
 $test_text.
 '

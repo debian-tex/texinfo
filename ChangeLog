@@ -1,3 +1,1697 @@
+2016-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	6.2 release.
+	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf,
+	doc/refcard/txirefcard.tex, texindex/texindex.awk:
+	Version number.
+	* tp/Texinfo: Update version numbers in modules.
+	* po, po_document: Synch with translationproject.org and run 
+	"make update_po".
+	* build-aux/texinfo.tex: Update from doc/texinfo.tex.
+
+2016-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* pretest 6.1.92
+
+2016-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Add note about checking svn checkout is 
+	up-to-date.
+
+2016-09-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* pretest 6.1.91
+
+2016-09-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* po, po_document: Synch with translationproject.org and run 
+	"make update_po".
+
+2016-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Mention LINGUAS files and "svn status .".
+
+2016-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/htmlxref-only_mono/test_scripts,
+	* tp/tests/htmlxref-only_split/test_scripts,
+	* tp/tests/htmlxref/test_scripts:
+	Remove unused directories.
+
+2016-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.c (window_make_modeline): Do not make modeline 
+	depend on whether preprocess_nodes_p is set.
+
+2016-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (scan_reference_target): Remove code that 
+	altered the line number of an index entry if 
+	preprocess_nodes_p=1, because this is is independent of whether 
+	the first line of the node is displayed or not.
+
+2016-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* po/el.po: Commit file.
+	* po/LINGUAS: List el.
+
+2016-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* po_document/LINGUAS: List ca, de, el, hr, pt, pt_BR.
+
+2016-08-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph: Run gnulib-tool --add-import.
+	* (top-level): Run gnulib-tool --add-import.
+
+2016-08-28  Emanuele Giaquinta  <emanuele.giaquinta@gmail.com>  (tiny change)
+
+	* util/texi2dvi (cleanup): Fix cleanup for "clean" build mode.  
+	Bug introduced on 2016-05-03.
+
+2016-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\entry): Disable output of marks for whole 
+	entry, instead of just for the page number.  This is intended to 
+	prevent an infinite loop in \ourunvbox when @uref is used in an 
+	index entry (reported by Karl Berry for latex refman manual).
+
+2016-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Mention gnulib import in XSParagraph subdirectory.
+
+2016-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* pretest 6.1.90
+
+2016-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Document encoding): Test glyph 
+	commands in section title.
+
+2016-08-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\indexnofonts): Eat the {} following glyph 
+	commands, and add definitions for \atchar, \lbracechar and 
+	\rbracechar.
+	(\definedummies): Add dummy for @atchar.
+	* doc/texinfo-tex-test.texi (Document encoding): Test some glyph 
+	commands in section title.
+
+2016-08-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\balancecolumns): When making bottoms of the 
+	two columns flush, use \unskip to remove glue from bottom of 
+	columns.  Remove code which ignored glue at the bottom of 
+	columns when balancing columns, because this glue was there to 
+	help to break before an index initial.
+
+	* doc/texinfo-tex-test.texi
+	(Final page initial at top of both columns): New example of 
+	index formatting.
+	(Short indices): Add text saying what to look at for short 
+	indices.
+	(\commenceindex, \finishindex): Move use of \smallfonts in order 
+	not to cancel the change to \baselineskip done in 
+	\begindoublecolumns.
+
+2016-08-08  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\setpdfdestname): New macro for XeTeX.
+	(\pdfdestname): Escaped PDF destination name
+	is set by \setpdfdestname.
+	(\setpdfoutlinetext): New macro for XeTeX.
+	(\pdfoutlinetext): Converted and escaped outline text
+	is set by \setpdfoutlinetext.
+	(\pdfmkdest): Use \setpdfdestname.
+	(\dopdfoutline): Use \setpdfdestname and \setpdfoutlinetext.
+	(\xrefX): Use \setpdfdestname.
+
+2016-08-08  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\setpdfdestname): New macro for pdfTeX and LuaTeX.
+	(\pdfdestname): Escaped PDF destination name
+	is set by \setpdfdestname.
+	(\setpdfoutlinetext): New macro for pdfTeX and LuaTeX.
+	(\pdfoutlinetext): Converted and escaped outline text
+	is set by \setpdfoutlinetext.
+	(\pdfmkdest): Use \setpdfdestname.
+	(\dopdfoutline): Use \setpdfdestname and \setpdfoutlinetext.
+	(\xrefX): Use \setpdfdestname.
+
+2016-08-07  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\pdfescapestrutfsixteen):
+	Rename from \pdfescapestring for LuaTeX.
+	(PDFescstr): New Lua function.
+	(\pdfescapestring): New macro for LuaTeX.
+	(\txiescapepdfutfsixteen): New macro.
+	(\dopdfoutline): LuaTeX:
+	Use UTF-8 encodings instead of UTF-16 for PDF destination names.
+
+2016-08-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\doublecolumntopgap, \pagesofar)
+	(\begindoublecolumns): Remove use of \doublecolumntopgap 
+	dimension.
+	(\begindoublecolumns): Don't touch \topskip or alter \vsize 
+	other than doubling it.
+	(\balancecolumns): Use a different height for boxes when 
+	splitting double column material roughly in two.
+	* doc/texinfo-tex-test.texi (Final page of index hard to balance):
+	Update so that test works properly.
+
+2016-08-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\entry): Remove stretch added before entry 
+	here.
+	(\begindoublecolumns): Put stretch into \baselineskip, so it can
+	appear between the lines of a multi-line entry as well as 
+	between entries.  This results in more even line spacing.
+	(\indexwidowpenalty): Remove \unskip, because the glue it 
+	removed isn't there anymore.
+	(\balancecolumns): Use \leftskip instead of indenting lines with
+	\parshape (which is equivalent to using \moveright), because 
+	this is lost when the box is taken apart with \lastbox.
+	Change comment about use of \parshape.  Do not set \hangindent 
+	either.
+	(\ourunvbox): New macro to take apart a vbox with \lastbox and 
+	re-add the boxes to the current vertical list.
+	(\insertindexentrybox): Use it to add the text of the index entry
+	to the current vertical list.
+	(\entrylinedepth): Remove \dimen.
+
+2016-08-05  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\pdfmkdest, \dopdfoutline, \xrefX):
+	Change the method of destination name switching
+	Unicode or ASCII for pdfTeX and LuaTeX.
+
+2016-08-04  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\iftxiuseunicodedestname):
+	Add initializing for pdfTeX and LuaTeX.
+
+2016-08-04  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\pdfmkdest, \dopdfoutline, \xrefX):
+	Change the method of destination name switching
+	Unicode or ASCII for XeTeX.
+
+2016-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Test of index widow elimination):
+	New test.
+	* doc/texinfo-tex-test.WIDOWs: Add file used in test.
+
+2016-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\indexdummies): Put "{}" after use of 
+	\lbracechar and \rbracechar in index in order to avoid 
+	whitespace following a @{ or @} command in an index being lost 
+	when the index file is read back in.
+
+2016-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\balancecolumns) <right-hand column higher>:
+	Use height of right-hand column to avoid possibly overlapping
+	following text.
+	(\indexwidowpenalty): Rename from \indexwidowpenalty.
+	(\documentencoding): Change the spelling of a word in a message.
+	
+2016-08-03  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\pdfmkdest):
+	Fix LuaTeX PDF destination names.
+	LuaTeX can handle Unicode characters for destination names.
+	So pass through Unicode characters for LuaTeX.
+
+2016-08-03  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\xref):
+	Fix pdfTeX PDF destination names.
+	In order to replace Unicode characters with ASCII,
+	it is necessary that \edef\pdfxrefdest{#1} is
+	before \turnoffactive.
+
+2016-08-03  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\documentencoding):
+	Add warning for XeTeX with non-UTF-8 encodings.
+
+2016-08-03  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\xref):
+	Fix XeTeX PDF destination names when \txiuseunicodedestnamefalse.
+	In order to replace Unicode characters with ASCII,
+	it is necessary that \edef\pdfxrefdest{#1} is
+	before \turnoffactive.
+
+2016-08-02  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\urlcolor, \linkcolor, \endlink):
+	Fix XeTeX PDF color support
+	by copying from the definition for pdfTeX.
+
+2016-08-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line) <"misc text" commands>:
+	Convert @@, @} and @{ commands, so there is a way to include 
+	these characters in filenames.  (Previously this was done by the
+	Texinfo::Convert::Text module.)
+
+2016-08-01  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex
+	(\rgbDarkRed, \rgbBlack, \setcolor, \maincolor, \thiscolor)
+	(\lastcolordefs, \makefootline, \makeheadline):
+	Copy from the definition for pdfTeX.
+	(\pdfsetcolor): Add XeTeX PDF color support.
+
+2016-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\balancecolumns): Reduce height limit for 
+	splitting the final double-column material.  Remove glue from 
+	bottom of both left and right columns when comparing heights.
+	Compare heights of columns differently.  When not making the 
+	bottoms of the two columns flush, use the obtained height of the 
+	taller left column for the height of both columns.  (Otherwise, 
+	an overful column box could overlap material below.)  An example
+	of broken formatting due to this was reported in the AucTeX manual
+	by Arash Esbati.
+	Change some comments and edit for clarity.
+
+2016-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/Makefile.am (TXI_XLATE): Add txi-ja.tex.
+	(EXTRA_DIST): Add texinfo-ja.tex and short-sample-ja.tex.
+
+2016-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\printindex): Set catcode of @ to 12 instead 
+	of 11 so that e.g. "\@math" is not viewed all as one control 
+	sequence when it should begin with the control letter "\@".
+
+2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/refcard/txicmdcheck: Ignore @setcontentsaftertitlepage.
+	* doc/refcard/txivarcheck: Ignore HTMLXREF.
+	* doc/texinfo.texi (Customization Variables for @-Commands): Remove
+	@setcontentsaftertitlepage.
+
+2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Test of @synindex): Add section.
+
+2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove --javascript-ref option, because nobody is using it.
+
+	* tp/texi2any.pl ($result_options): Remove option 
+	--javascript-ref.
+	($cmdline_options): Remove value 'JAVASCRIPT_REFS'.
+	* tp/Texinfo/Convert/HTML.pm
+	(default_javascript_lines): Remove function.
+	(%default_formatting_references): Remove 'javascript_lines'.
+	(output): Don't call default_javascript_lines.
+	(_file_header_informations): Don't use 'JAVASCRIPT_LINES' conf 
+	value.
+	(_default_begin_file, default_node_redirection_page): Don't 
+	include lines referring to a JavaScript file in the file header.
+	* tp/Texinfo/Common.pm (@variable_string_settables): Remove
+	'JAVASCRIPT_LINES'.
+	(@variable_other_settables): Remove 'JAVASCRIPT_REFS'.
+
+2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (%block_commands, %block_item_commands)
+	(%item_line_commands): Remove 'ktable'.
+	(%command_index): Remove 'ktable'.
+	* tp/Texinfo/Parser.pm (module documentation part): Remove @ktable.
+	* tp/Texinfo/Convert/HTML.pm (%default_commands_conversion):
+	Remove conversion for @ktable.
+	(_convert_before_item_type): Add 'ktable' to a condition.
+	* tp/Texinfo/Convert/Plaintext.pm (%item_indent_format_length):
+	Remove 'ktable'.
+	* tp/t/22xtable.t (ktable): Remove test.
+
+	@ktable is being removed because nobody wants it anymore.
+
+2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Remove @ktable.
+	* doc/texinfo.texi (Command List) <@asis, @ktable>: Remove
+	@ktable.
+	(@ftable @vtable): Remove mention of @ktable.
+
+2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\ktable): Remove.
+
+2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\dosynindex): Call \requireopenindexfile so 
+	that we copy a working file descriptor for the index.  Remove code
+	that closes the file for the index getting redefined.  Fixes 
+	broken @synindex and @syncodeindex commands, reported by
+	Ralph Schleicher.
+
+2016-07-28  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex
+	(\pdfdest, \dopdfoutline, \pdflink, \xrefX):
+	Fix XeTeX PDF destination name for consistent with pdfTeX.
+
+2016-07-27  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex:
+	Improve some Unicode and XeTeX, LuaTeX related comments
+	by Werner Lemberg's suggestion.
+
+2016-07-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\indexdummies): Use \definedummyletter\@ 
+	instead of outputting "@@" as "@" in index file.
+	(\mylbrace, \myrbrace): Remove out-of-date comment.
+	(\rbracecmd, \lbracecmd, \rbraceatcmd, \lbraceatcmd):
+	Remove unused macros.
+	(\atdummies): Use \definedummyletter for \{ and \} instead of 
+	using \lbraceatcmd and \rbraceatcmd.
+	(\atdummies, \indexdummies): Use \definedummyletter for 
+	\(SPACE).
+
+	* doc/texinfo-tex-test.texi (Test of macros with @ in index): 
+	New test.
+
+2016-07-20  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex:
+	Add XeTeX `dvipdfmx:config' special
+	for avoiding PDF destination name replacement.
+
+2016-07-20  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\pdfdest):
+	Fix XeTeX PDF destination.
+
+2016-07-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <misc commands>: Add 
+	condition on call to _register_global_command.
+
+2016-07-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <root commands>: Initialize 
+	contents here, so it will always be set.
+	(_end_line) <root commands>: Don't set contents here.
+
+2016-07-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (apropos_in_all_indices): Only free file buffer 
+	if we had to load it.  Otherwise the file buffer could still be 
+	referenced.  Fixes crash reported by "mtsio@cryptolab.net".
+	* info/nodes.c (check_loaded_file): Function split out from 
+	info_find_file.
+
+2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* dco/texinfo-tex-test.texi (Test of auxiliary files): Add test
+	of macro used in index entry.
+
+2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\macrolist, \addtomacrolist, \unmacro): Store
+	list of macros with "\commondummyword" instead of 
+	"\definedummyword", so that we remove the macro when writing an 
+	index sort key.  Otherwise, texindex can produce a broken sorted 
+	index file.  This fixes bug introduced on 2016-05-28, when the 
+	macros used in \commondummiesnofonts were changed.
+
+2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\ktable): Add to implement @ktable, following 
+	pattern of \ftable and \vtable.
+
+2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/dir.c (build_dir_node): Save contents of dir node.  This 
+	avoids a memory leak when hide-node-references=On due to 
+	scan_node_contents overwriting node->contents.
+
+2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/dir-merge.sh: New test.
+
+2016-07-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Command List) <@copying>: Correctly say
+	to end with "@end copying".  Reported by Daniel Birket.
+
+2016-07-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\defmacro): Remove separate code for 
+	recursive and non-recursive macros, because the code is 
+	identical now (except possibly for macros of more than 9 
+	arguments).
+
+2016-07-11  Brandon Invergo  <brandon@gnu.org>
+
+	* util/htmlxref.cnf (gnat_ugn_unw, gnat_ugn): Change manual name 
+	and location.
+
+2016-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (forward_to_info_syntax): Avoid reading past 
+	end of string.  Report by Hanno Böck.
+
+2016-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Mention @ktable.
+	* doc/texinfo.texi (Command List) <@asis, @ktable>: Mention 
+	@ktable.
+	(@ftable @vtable): Change section heading to "@ftable, @vtable 
+	and @ktable".  Keep node name the same.  Add index entry for 
+	@ktable.  Mention @ktable throughout.  Delete some unnecessary 
+	words.
+
+2016-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (%block_commands, %block_item_commands)
+	(%item_line_commands): Add 'ktable'.
+	(%command_index): Add 'ktable'.
+	* tp/Texinfo/Parser.pm (module documentation part): Mention 
+	@ktable and small grammar changes.
+	* tp/Texinfo/Convert/HTML.pm (%default_commands_conversion):
+	Add conversion for @ktable.
+	(_convert_before_item_type): Add 'ktable' to a condition.
+	* tp/Texinfo/Convert/Plaintext.pm (%item_indent_format_length):
+	Add 'ktable'.
+	* tp/t/22xtable.t (ktable): New test.
+
+	@ktable requested by Robert Weiner, following pattern of @vtable 
+	and @ftable.
+
+2016-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Texinfo.pm: Remove commented-out debugging 
+	statements.
+
+2016-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS, doc/texinfo.texi (Conditional Commands) <@errormsg>: 
+	Update to reflect fact that @-commands inside @errormsg is no 
+	longer supported.
+	* NEWS: Move a news item to the right place.
+
+2016-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@errormsg, @U>: Don't use
+	Texinfo::Convert::Text::convert to get argument, because the 
+	dependence on Texinfo::Convert::Text is a significant 
+	complication.
+	(top level): Remove "use Texinfo::Convert::Text" directive.
+	(%default_valid_nestings): Don't allow anything inside @errormsg 
+	or @U.
+	(__): Remove commented-out definition of '__' sub.
+	(parser): Remove commented-out loop printing values.
+
+2016-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm: Add "use" directive for 
+	Texinfo::Convert::NodeNameNormalization instead of relying on 
+	this module being pulled in indirectly.
+
+2016-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm: Remove comment referring to 
+	'raw_formats_stack'.
+	(_parse_texi): Add debugging statement if the condition in an 
+	inline command is missing.
+
+2016-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi, _register_global_command)
+	(_register_label, _enter_index_entry, _end_line)
+	(_parse_line_command_args, _parse_special_misc_commands): Remove 
+	uses of _ignore_global_commands.  Remove some commented-out 
+	lines of code.
+	(parser, simple_parser): Remove reference to 
+	$self->{'expanded_formats_stack'}.
+	(_ignore_global_commands): Removed.
+
+2016-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): For raw block commands 
+	(like @tex) and raw inline commands (@inlinefmt), skip over the 
+	part of the conditional that isn't expanded, instead of parsing 
+	it as usual and using a stack of expanded conditionals.  Add a 
+	dummy argument to the parse tree for the skipped-over argument.
+	This will mean that there is no use for the 
+	_ignore_global_commands function.  This change is intended to 
+	make implementation of the parser module in C easier, and should 
+	also make the Perl module itself simpler.
+
+	(_close_current, _close_commands): Do not refer to 
+	$self->{'expanded_formats_stack'}.
+
+	(_ignore_global_commands): Always return 0.
+
+2016-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/test_utils.pl (set_converter_option_defaults): Set 
+	default expanded formats hash for converter even if this was 
+	given in the parser options.  This helps to make the parser 
+	options and converter options separate.
+
+	(test) If expanded formats not defined in the parser options, 
+	expand all of the formats except 'tex'.
+
+	* t/16raw.t,
+	* t/50value.t,
+	* t/55conditionals.t,
+	* t/57invalid_nestings.t,
+	* t/60macro.t,
+	* t/converters_tests.t,
+	* t/html_tests.t,
+	* t/plaintext_tests.t:
+	Add 'expanded_formats' configuration values where required to 
+	minimize changes to the results of the tests.
+
+2016-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line, _parse_texi): Remove some 
+	commented-out code.
+
+2016-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@value>: Don't handle 
+	arrays or hashes as values any more.  These used to be used for 
+	string translation.
+
+2016-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Final page of index hard to balance):
+	Add section testing the problematic situation reported by Robert 
+	Weiner.
+
+2016-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Test of characters in section title):
+	New section testing characters in a section title.
+
+2016-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\balancecolumns): If the left column is 
+	longer than the page height, split the last double column 
+	material roughly in half.  Otherwise, a blank page could appear 
+	before the last page of an index.  Blank page in index reported 
+	by Robert Weiner.
+
+2016-06-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@U>: Change the error 
+	message given when argument exceeds size of integer.  (This is 
+	for consistency with the C implementation which may have a 
+	different size of integer.)
+
+2016-06-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <closed raw block command>: 
+	Do not call _start_empty_line_after_command, and add an 
+	'empty_line_after_command' element.  This led to an inconsistent 
+	meaning for the 'spaces_after_command' extra value, and an 
+	existing extra value could be overwritten, for example for a 
+	@verbatim block, where the 'spaces_after_command' could be 
+	immediately after the '@verbatim' line, or after the entire 
+	block.
+
+2016-06-13  Vincent Belaïche  <vincentb1@users.sourceforge.net>
+
+	* util/texi2dvi (run_tex): Inline function listing unusual 
+	characters and pass through literal backslash-newline sequence 
+	to sed by use of single quotes.  Also, pass input file as a 
+	separate argument for the benefit of MSYS path conversion.
+
+2016-06-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_print_tree),
+	* tp/Texinfo/Common.pm (print_tree): Move implementation
+	to Common.pm.
+
+2016-06-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/NodeNameNormalization.pm: Remove 
+	commented-out code.
+
+2016-06-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line) <@end, @include>
+	<@documentencoding, @documentlanguage>: Do not call 
+	Texinfo::Convert::Text::convert to get the argument to the 
+	command.  Instead, call _trim_spaces_comment_from_content to 
+	find the element containing the text for the command.  Give an 
+	error message if there are excessive elements in the argument 
+	(e.g. @-commands).
+
+	This has the consequence that @@ can no longer be used to
+	refer to an @-sign in an @include command (similarly for "@ " 
+	for " ", and some other @-commands).
+
+2016-06-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (@setfilename): Fix typo.
+
+2016-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/TextContent.pm: Remove commented-out and 
+	disabled code.
+
+2016-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-text-test.texi (@set and @value): Add a chapter 
+	for tests of @set and @value.  Add a test of a value in an index 
+	entry which is only defined after the index entry.
+
+2016-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Remove line referring to "parsetexi" 
+	subdirectory.
+
+2016-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (nodes_tree): Refer to
+	Texinfo::Common::parse_node_manual instead of
+	Texinfo::Parser::_parse_node_manual.
+	* tp/t/test_utils.pl (cmp_trimmed): Put module name "Test::Deep"
+	in front of function "cmp_deeply" which comes from it.
+
+2016-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+	
+	* doc/texinfo.tex (\dopdfoutline): For display string for PDF 
+	bookmark, check if encoding is Latin-1, and if so, call 
+	\passthroughcharstrue.
+
+2016-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\pdfmkdest): Call \passthroughcharsfalse in 
+	order to use ASCII approximations in destination names.
+
+2016-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\txiescapepdf) <\pdfescapestring not defined>:
+	Completely expand argument, as is done in the other case.
+
+2016-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (run_tex): Use \ followed by newline instead of 
+	"\n" in replacement text of 'sed' 's' command.  Problem with 
+	some versions of sed reported by Vincent Belaïche.
+
+2016-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\UTFviiiLoop): Add a missing % character in 
+	definition of non-initial bytes in UTF-8 sequences.
+	(\DeclareUnicodeCharacterUTFviii): Move definition of 
+	\UTFviiiTwoOctets (and others) out of this macro and rename 
+	them.  Add more comments.
+
+2016-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (run_tex): Only check for certain unusual 
+	characters in the filename, using 'sed'.  (Suggestion from 
+	Vincent Belaïche.)  Loop through any that occurred and change the
+	catcode to 12 within a TeX group.
+
+2016-05-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (cd_dir): Check if argument is absolute, and if 
+	so, make all the path variables absolute.  Fix test of whether a 
+	variable is absolute or not.  Absolute path given to --build-dir 
+	broken reported by Daniel Gerbert.
+	(cd_orig): If cdd_prefix is empty, don't try to remove it.
+
+2016-05-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/test-utils.pl (@avoided_keys_tree): Don't compare 
+	'remaining_args' values.  This is for the XS module, which 
+	doesn't output them.
+
+2016-05-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_macro_command_line): Order of 
+	error messages changed.
+
+2016-05-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@acronym, @abbr>: Don't
+	set 'explained_commands' hash or 'explanation_contents' extra 
+	value on elements.
+	* tp/Texinfo/Convert/HTML.pm (_convert_explained_command): Move 
+	the code for keeping track of previous acronym explanations
+	here.
+
+2016-05-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@novalidate>,
+	* texi2any.pl <option processing>,
+	* tp/Texinfo/Structuring.pm (nodes_tree)
+	(associate_internal_references),
+	* tp/Texinfo/Common.pm (%default_parser_state_configuration): 
+	Use $self->{'info'}->{'novalidate'} instead of
+	$self->{'novalidate'}.  Delete some commented-out code.
+
+2016-05-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\indexnofontsvalue): New definition for a 
+	@value when expanded in an index entry sort key.
+	(\indexnofonts): Call it.
+	(\dummyvalue): If @value is undefined, pass through an 
+	unexpanded @value command to the auxiliary file.
+
+2016-05-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\commondummies): Move definitions of 
+	\definedummyword, \definedummyletter, \definedummyaccent out of 
+	\commondummies.  Reorder a comment to put content about control 
+	words next to content about \definedummyword.  Rename this macro 
+	\definedummies, to reduce confusion with \commondummiesnofonts.
+
+	(\commondummiesnofonts): Use different names for the parameters.
+	Add a comment saying what is listed here.
+
+2016-05-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Test of auxiliary files): Note 
+	where cross-references should definitely work.  Add section 
+	testing `-' and `_' in a @value.
+
+2016-05-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\setref): Give \value a definition to match 
+	those in \xrdef, \refx and \xrefX, to fix @value in 
+	cross-reference targets.
+
+2016-05-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\dummyvalue): New definition of @value for 
+	writing to auxiliary files.  Expand the @value at the time of 
+	writing, reversing change on 2016-05-07.
+	(\commondummies): Use \dummyvalue definition for @value.
+	Files using @value's in section titles broken when value was 
+	@set after the table of contents, reported by Paul Eggert.
+
+2016-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_abort_empty_line): Look for a 
+	'spaces_after_command' empty extra value on the parent element 
+	as well to stop an 'empty_line_after_command' element lingering.
+
+2016-05-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@definfoenclose command>: 
+	Don't overwrite any 'extra' values, such as 'invalid_nesting'.
+
+2016-05-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Update with news since 6.1 release.
+
+2016-05-22  Ingo Feinerer  <feinerer@logic.at>  (tiny change)
+
+	* util/texi2dvi (run_tex, make_openout_test): Use parentheses 
+	around "eval" command in order not to exit prematurely due to 
+	"set -e" with ksh under OpenBSD.
+
+2016-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@abbr and @acronym>: Don't 
+	set 'normalized' values on elements.  Remove commented-out code.
+	(module documentation): Don't document that a list of the 
+	elements is kept in $self->{'explained_commands'}.  
+
+2016-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (associate_internal_references): 
+	Avoid adding an undefined 'label' value under certain 
+	circumstances.
+
+2016-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_abort_empty_line): Remove a 
+	'spaces_after_command' empty extra value, just as an empty
+	'spaces_before_argument' value is removed.  This stops an 
+	'empty_line_after_command' element lingering as an extra value.
+
+2016-05-07  John Collins  <jcc8@psu.edu>  (tiny change)
+
+	* doc/texinfo.tex (\typeout): New macro defined like in LaTeX for
+	ensuring message are identical in format as those output by
+	latex/pdflatex.
+	(\requireopenindexfile): \typeout trace Writing index file.
+	(\printindex) \typeout trace No file.
+
+2016-05-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\mylbrace, \myrbrace): Avoid use of \ecfont, 
+	because the user may not have it installed.  Use \lbrace and 
+	\rbrace from plain TeX instead.
+	* doc/texinfo-tex-test.texi (Test of non-alphanumeric characters):
+	New section.
+
+2016-05-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\commondummies): Define \value as a dummy.
+	Do not call \makevalueexpandable.
+	(\xrdef, \refx, \xrefX): Give \value a definition so we can get 
+	rid of it when making a control sequence name for a 
+	cross-reference target.  Comments changed.
+
+	* doc/texinfo-tex-test.texi (Test of auxiliary files): New 
+	section testing uses of @value in index entries and anchors.
+
+2016-05-07  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo-ja.tex (\writetocentry):
+	Fix XeTeX PDF link page number duplicates.
+	For XeTeX, change \pdfmakepagedesttrue timing to after TOC writing.
+
+2016-05-06  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo-ja.tex: New File.
+	Japanese texinfo.tex loader.
+	Some CJK packages are necessary to load before texinfo.tex.
+	* doc/txi-ja.tex: New File.
+	Japanese translations and font definitions for texinfo.tex.
+	* doc/short-sample-ja.tex: New File.
+	Short sample of Japanese Texinfo support files.
+
+2016-05-05  Vincent Belaïche  <vincentb1@users.sourceforge.net>, and
+	    Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (make_tex_cmd): Remove use of 'catcode_special'
+	variable for filenames containing a tilde.  Do not append
+	"\input" to the command-line to TeX.
+	(run_tex): Check whether the filename contains a funny character 
+	like a tilde.  If so, change the TeX category codes of some 
+	characters within a group, and use \expandafter to input a file 
+	outside of the group.  Append \input to the command-line.
+
+	(option parsing): Make -~ do nothing.
+	(make_openout_test): Don't refer to 'catcode_special' variable.
+
+2016-05-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (cd_orig, cd_dir): Use SED variable instead of 
+	sed directly.
+
+2016-05-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (usage): Change wording of documentation of 
+	--mostly-clean option.
+	(input_file_name_decode): Remove unused 'in_dir_abs' variable.
+	(cd_orig): Don't use ${VAR#WORD} feature because it doesn't 
+	exist in some older shells.  Use sed instead.
+	(cd_dir): Don't use \+ feature of sed because it is said not to 
+	be portable.
+	(move_to_dest): Remove commented-out echo line.
+
+2016-05-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (cd_dir): New function, to change directory
+	while updating variables containing paths.
+	(cd_orig): Reverse the changes to these variables made in cd_dir.
+
+	(run_tex_suite, make_openout_test): Use 'cd_dir' instead of 
+	'cd'.
+
+	(input_file_name_decode, main program loop): Don't change 
+	variables t2ddir, in_dir to be absolute.  This could cause 
+	problems passing filenames to TeX if the absolute path to the 
+	input file contained a space or another unusual character.  
+	(Problem found following report by Stephen Dawson.)
+
+	(run_tex) [--tidy]: Remove code that uses a symbolic link to the 
+	file being processed.  This meant that --command didn't work 
+	along with --tidy due to the path to the file with the inserted 
+	commands being overridden.  It is less necessary when absolute 
+	paths aren't used.  (Problem found following report by
+	Guo Yixuan).
+
+	(cleanup): Refer to 'clean' and 'tidy' variables instead of 
+	'build_mode'.  (No functional change.)
+	(compile): Change a comment.
+
+2016-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (usage): Streamline help message.  Don't mention 
+	option '-@' (but don't touch the implementation of this option 
+	to avoid breaking anything).  Don't mention pdftexi2dvi or 
+	--dvipdf in the summary.  Don't mention --silent as a synonym 
+	for --quiet, and don't mention --texinfo for --command.  Move 
+	mention of @setfilename next to --command.  Remove mention of 
+	AUC-TeX.  Only mention -E for --expand, and not -e.
+
+2016-04-25  Theodore Ts'o  <tytso@mit.edu>  (tiny change)
+
+	* util/texi2dvi (make_tex_cmd): Check whether 'catcode_special' 
+	variable is equal to 'false' instead of 'maybe', so it doesn't 
+	get set to 'false' on the second round when the variable has the 
+	value 'true'.  Otherwise it breaks if the path to the file 
+	contains a tilde.
+	
+2016-04-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (make_openout_test): Place double quotes around 
+	expansion of shell variable to be more resilient in case path to 
+	file contains spaces.  Problem reported by Stephen H. Dawson.
+
+2016-04-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_expand_macro_body, _parse_texi):
+	Place 'args_index' hash as a value in the elements of
+	$self->{'macro'}, instead of being stored as an 'extra' value.
+	This change is because the 'arg_index' hash is not used outside 
+	of Parser.pm.
+
+2016-04-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_expand_macro_arguments)
+	(_expand_macro_body, _end_line <insertcopying>, parse_texi):
+	Make $self->{'macros'} hash contain hashes which refer to the 
+	elements that define the macro with the 'element' key, instead 
+	of containing the elements themselves.  Define 'macrobody' on 
+	the elements of $self->{'macros'}, instead of defining it as an 
+	'extra' value.  This change is because the 'macrobody' is not 
+	used outside of Parser.pm.
+
+2016-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line),
+	* tp/Texinfo/Structuring.pm (number_floats): Set
+	$float->{'extra'}->{'float_section'} instead of
+	$float->{'float_section'}, where $float is a @float element.
+
+2016-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_next_bracketed_or_word): Don't set 
+	parent field on created bracketed_def_content element.
+
+2016-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\scanmacro): Set catcode of @ to 0 so that 
+	@-commands in macro expansions aren't printed literally in an 
+	index, where \ is the escape character.
+	(\tex, \printindex): Don't set \escapechar.
+	Broken formatting reported by Christophe Rhodes and Norbert Preining.
+
+2016-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_node_manual): Move implementation 
+	of function to tp/Texinfo/Common.pm.
+
+2016-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Reduce references to Texinfo::Parser module.
+
+	* tp/Texinfo/Parser.pm (_parse_def): Remove commented-out code.
+	* tp/Texinfo/Convert/HTML.pm: Refer to 
+	Texinfo::Common::_print_current instead of 
+	Texinfo::Parser::_print_current.
+	(command_filename, _convert_key_command) 
+	(_convert_indicateurl_command, _convert_ctrl_command)
+	(_convert_titlefont_command, _convert_style_command)
+	(_convert_float_command): Remove commented-out code.
+	* tp/Texinfo/Parser.pm (_parse_node_manual): Add a comment.
+
+	* tp/Texinfo/Convert/Converter.pm (_bug_message),
+	* tp/Texinfo/Convert/DocBook.pm (_convert),
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert):
+	Refer to Texinfo::Common::_print_current instead of 
+	Texinfo::Parser::_print_current.
+
+2016-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (%index_names): Don't set a 'prefix' 
+	array on each member.
+	(%command_index_prefix): Replace with a new variable called 
+	%command_index.
+	(definition_category, %index_type_def): Update.
+
+	* tp/Texinfo/Parser.pm (%command_index_prefix, %command_index): Update.
+	(_enter_index_entry, _register_index_commands): Don't use 
+	$self->{'prefix_to_index_name'}.  Don't set 'index_prefix' on 
+	index entry record.
+	(_end_line) <def commands>,
+	(_end_line) <@item, @itemx>,
+	(_parse_texi) <@ifcommanddefined>,
+	(parser, simple_parser): Use %command_index instead of 
+	%command_index_prefix.
+	(_register_index_commmands): Don't use 'prefix' array on index 
+	record.  Inline into calling sites.
+
+2016-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (parse_texi_file, _parse_texi): Set 
+	'parent' field on created elements in the main tree.
+
+2016-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <brace commands>: Define 
+	'contents' for all brace commands again (changed on 2016-03-28).  
+	(_end_line) <@itemize, @table>: Add 'contents' for @asis and 
+	@bullet elements.
+
+2016-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_line_command_args) <@exampleindent>:
+	Don't permit trailing text after a numeric argument.
+
+2016-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm: Use "closing brace" instead of "close 
+	brace" in messages, and use "the beginning of a line" instead of 
+	"a line beginning".
+
+2016-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line) <@multitable prototypes>: Don't
+	set parent field for created 'bracketed_multitable_prototype' 
+	element.
+
+2016-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line) <@multitable prototypes>: Don't
+	save a 'prototypes_line' extra value for the multitable element.
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert) <@multitable>: 
+	Reconstruct the information that was in 'prototypes_line'.
+
+2016-03-29  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\skipspaces, \getfilename):
+	Copy from the definition for pdfTeX.
+	(\xrefX): Add XeTeX @xref PDF link support.
+
+2016-03-29  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\pdfmkdest, \dopdfoutline):
+	Add \txiescapepdf for XeTeX.
+
+2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_node_extra_to_texi): Move to 
+	tp/Texinfo/Convert/Texinfo.pm and rename 'node_extra_to_texi'.
+
+2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_abort_empty_line): Check if 
+	'spaces_before_argument' extra value needs to be removed from 
+	parent as well as from current element.
+
+2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (parse_texi): Always set parent on 
+	element of type 'empty_spaces_before_argument'.
+
+2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (%keep_line_nr_brace_commands): Keep line 
+	number for all brace commands.
+	(_parse_texi) <open brace separator>: Don't save line number 
+	here.
+
+2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <commands with commands as 
+	arguments>: Don't remove 'contents'.
+
+2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (%keep_line_nr_brace_commands): Add 
+	accent commands, so that the line number always recorded for 
+	accent commands (previously only done if the accent command took 
+	an argument in braces).
+	(_parse_texi) <brace commands>: Never define 'contents' for an 
+	accent command.
+
+2016-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm: Add line
+	"use Texinfo::Convert::NodeNameNormalization" instead of relying 
+	on module being pulled in indirectly.
+
+2016-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* parsetexi, tp/parsetexi: Move subdirectory in preparation for 
+	integration into texi2any as an XS module.
+
+2016-03-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Report.pm (_subsititue, _substitute_element_array): 
+	New functions.
+	(gdt): Only pass @value's to parser if they are simple strings.
+	before running parser.  This will be necessary when we use the
+	XS parser, which we can't pass complex Perl data structures to.
+	Call _substitute afterwards on the resulting tree to fill in 
+	@value's.
+	* tp/Texinfo/Parser.pm (_parse_texi) <undefined @value>: Call 
+	_abort_empty_line as is done for the other cases.  Add a comment 
+	explaining when we'll get an undefined @value.
+	* tp/t: Update reference test results.  No empty elements ("{}") 
+	after value subsititutions any more.  Empty line elements before 
+	unknown values removed.
+
+2016-03-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac (lookup_perl_flags):
+	Remove AC_DEFUN and use lookup_perl_conf instead.  Processing of
+	flags broken if one of them took an argument, e.g. '-arch'.  
+	Broken build for Darwin reported by Jack Howart.
+
+2016-03-23  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\internalpagesizes):
+	Add XeTeX PDF paper size support.
+
+2016-03-23  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\urefbreakfinish):
+	Add XeTeX \urefurlonlylinktrue support.
+
+2016-03-23  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\email, \doemail):
+	Copy from the definition for pdfTeX.
+	Add XeTeX @email support.
+
+2016-03-23  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\pdfgettoks, \pdfaddtokens, \adn, \poptoks) 
+	(\maketoks, \makelink, \pdflink, \done):
+	Copy from the definition for pdfTeX and modify for XeTeX.
+	Add XeTeX PDF table of contents page number link support.
+
+2016-03-22  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\pdfurl, \endlink):
+	Copy from the definition for pdfTeX and modify for XeTeX.
+	Add XeTeX PDF URL link support.
+
+2016-03-22  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\iftxiuseunicodedestname): New switch.
+	(\pdfmkdest, \dopdfoutline, \pdfmakeoutlines):
+	Add XeTeX Unicode PDF destination name support.
+
+2016-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\scanexp): Simply call \scanmacro instead of 
+	expanding argument with \edef.
+	(\Efloat) <xref label for @float>: Don't call \scanexp.  Remove 
+	a comment.  Change some tabs to spaces.
+	* doc/test-texinfo-tex-texi.tex (Copying and captions): New 
+	section testing @float and @copying.
+
+	Broken Unicode character in @copying reported by Masamichi 
+	Hosoda.
+
+2016-03-21  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex: Combine sections with XeTeX support.
+
+2016-03-21  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\ifxeteximgpdf): Remove.
+	(\doxeteximage): Improve XeTeX @image support.
+
+2016-03-21  Thomas Klausner  <tk@giga.or.at> (tiny change)
+
+	*  tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_add_text):
+	Do not call text_append_n with (size_t)-1.  Fix typos.
+
+2016-03-20  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\ifpassthroughchars):
+	Remove duplicated definition.
+
+2016-03-07  Karl Berry  <karl@freefriends.org>
+
+	* util/texi2dvi (version): add +dev, since the release has happened.
+
+2016-03-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Control expansion of non-ASCII bytes with a conditional.
+
+	* doc/texinfo.tex (\gdefchar): New macro.  If 
+	\ifpassthroughchars, output a token with catcode "other" for 
+	each byte instead of expanding into the TeX code to display the 
+	character.
+	(\latonechardefs, \lattwochardefs): Use \gdefchar instead of 
+	\gdef.
+	(definitions for bytes in UTF-8 sequences): Check value of 
+	\ifpassthroughchars, and if true, output a token with catcode 
+	"other".  Give definitions for bytes that could appear after the 
+	first in a UTF-8 sequence.  Use \gdef instead of \xdef when 
+	using \UTFviiLoop.  Add some comments.
+
+	(\passthroughcharacters): Remove macro, and replace uses of it 
+	with "\passthroughcharstrue".
+	(\nonasciistringdefs): Remove.
+
+	(\setcharscatcodeothernonglobal): Remove.
+	(\nativeunicodecharscatcodeothernonglobal): Remove.
+	(\scanctxt): Replace use of \setcharscatcodeothernonglobal with 
+	\passthroughcharstrue.
+	(\setupdatafile): Don't call \setcharscatcodeothernonglobal.  
+	(The existing call appeared not to do anything because it took 
+	place within a group.)
+
+2016-03-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi: Add example with a closing brace 
+	following an empty macro argument.  Update remark about what is 
+	expected for space trimming from macro arguments.
+
+2016-03-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\defmacro): Don't attempt to strip spaces at 
+	the start of the argument to a macro taking only one argument.  
+	This could lead to an error ("Argument of @gobblespaces has an 
+	extra }") for an empty argmuent.  Reported by Norbert Preining 
+	for ESS manual.
+	(\gobblespaces): Removed.
+	(\parsemargdef, \scanmacro, \defmacro): Put "\xeatspaces" in 
+	body of macro, instead of "\processmacroarg".  For 
+	single-argument macros, make it disappear instead of letting it 
+	equal to \eatspaces.
+
+2016-03-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infokey.c (compile): Check if key sequence was defined as 
+	"invalid" in infokey file, and if so, record it by saving a 
+	pointer to a null InfoCommand structure.  Broken handling of 
+	"invalid" reported by Ken Brown.
+
+2016-03-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/dir-example,
+	* install-info/install-info.c (ensure_dirfile_exists): Update 
+	message in dir node.
+
+2015-03-04  Ken Brown  <kbrown@cornell.edu>
+
+	* info/dir.c (build_dir_node): Update message in dir node to 
+	account for change in binding for '?' key, and use 'H' instead.
+
+2016-02-27  Vincent Belaïche  <vincentb1@users.sourceforge.net>
+
+	* util/texi2dvi (make_openout_test): make compilation of openout
+	test in batch mode with using batch variable, rather than taking
+	input from /dev/null, so that there is no clash with --batch
+	command line option.
+
+2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/long-tests.sh,
+	* tp/tests/tex_html_tests.sh,
+	* tp/tests/parser_base_tests: Remove unused scripts for running 
+	tests.
+
+2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* po/Makevars, po_document/Makevars (DIST_DEPENDS_ON_UPDATE_PO): Set
+	to "no" to prevent "make distcheck" or "make dist" dirtying the
+	output of "svn diff".
+
+2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/htmlxref/Makefile.am,
+	* tp/tests/htmlxref-only_mono/Makefile.am,
+	* tp/tests/htmlxref-only_split/Makefile.am: Remove unused rules.  
+	Don't use Makefile.onetst (no longer created) to say what to 
+	distribute.
+
+2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (@variable_string_settables): New 
+	customization variable HTMLXREF.
+	* tp/texi2any.pl: If HTMLXREF given on the command line, use it 
+	as the location of the htmlxref.cnf file.
+	* tp/Texinfo/Common.pm (parse_htmlxref_files): Move function to 
+	tp/Texinfo/Convert/HTML.pm.
+
+	* tp/tests/htmlxref/tests-parser.txt,
+	* tp/tests/htmlxref-only_mono/tests-parser.txt,
+	* tp/tests/htmlxref-only_split/tests-parser.txt:
+	Set HTMLXREF customization variable.
+
+	* tp/tests/htmlxref/Makefile.am:
+	tp/tests/Makefile.am: Don't build in htmlxref, htmlxref-only_mono,
+	htmlxref-only_split directories using a recursive make.  Run the 
+	tests in those directories the same way that all of the others 
+	are, except many_input_files.
+
+	* tp/tests/README: Remove section on subdirectories.
+
+2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (info_get_menu_entry_by_label): Always check 
+	case-insensitively, so that manpages are not preferred to a 
+	case-insensitive dir match when invoking.  Problem reported by 
+	Vincent Lefevre.
+
+2016-02-24  Vincent Belaïche  <vincentb1@users.sourceforge.net>
+
+	* util/texi2dvi (filter_files): Ensure that this function does not
+	make any non zero return status when the list of new xref files is
+	empty. Otherwise that causes a prematurate exit of calling
+	function, notably run_index. Remember texi2dvi is running under
+	set -e regime.
+
+2016-02-22  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex: Fix PDF outline cmap for XeTeX.
+
+2016-02-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/contents/tests-parser.txt: Remove tests
+	'double_contents_setcontentsaftertitlepage',
+	'double_contents_setcontentsaftertitlepage_inline',
+	'double_contents_setcontentsaftertitlepage_book',
+	'double_contents_setcontentsaftertitlepage_book_chapter', and
+	'double_contents_setcontentsaftertitlepage_book_info'.
+
+2016-02-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/test_utils.pl (test): When using an out_ directory (like 
+	out_info or out_html), delete its contents to prevent test 
+	failures from left-over files.
+
+2016-02-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (%misc_commands): Move 
+	'setcontentsaftertitlepage' and 'setshortcontentsaftertitlepage'
+	to obsolete section.
+	(%deprecated_commands): Add these two commands.
+
+	* tp/Texinfo/Common.pm (%document_settable_unique_at_commands): 
+	Remove these two commands.
+	* tp/Texinfo/Convert/Converter.pm (converter): Remove handling 
+	of these two commands.
+
+	* tp/Texinfo/Convert/HTML.pm (@informative_global_commands): 
+	Remove these two commands.
+	* tp/Texinfo/Convert/Plaintext.pm (@informative_global_commands):
+	Remove these two commands.
+	(_convert) <sectioning commands, @contents, @shortcontents>:
+	Remove handling of these two commands.
+	(_prepare_special_element, _prepare_contents_elements)
+	(_convert_informative_command): Remove handling of these two 
+	commands.
+	(_contents_short_contents_in_title): Removed.
+
+	* tp/t/30sectioning.t (setcontentsaftertitlepage)
+	(setshortcontentsaftertitlepage): Remove tests.
+	(section_in_unnumbered_plaintext, section_in_unnumbered_info): Remove
+	use of @setcontentsaftertitlepage in tests.
+
+2016-02-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\setchapterstyle): Remove implementation.  
+	(Obsolete since at least 3.8 release, September 1996).
+
+2016-02-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\setcontentsaftertitlepage)
+	(\setshortcontentsaftertitlepage): Replace definitions with a 
+	message saying that these aren't Texinfo commands any more.
+	(\Etitlepage): Remove handling of @setcontentsaftertitlepage.
+	and @setshortcontentsaftertitlepage.
+	(Karl Berry, bug-texinfo 2016-02-03).
+
+	* doc/texinfo.texi (@-Command Details, Obsolete @-Commands): New 
+	section node of appendix.
+	(Obsolete @-Commands): Add @setcontentsaftertitlepage and
+	@setshortcontentsaftertitlepage.
+	(Command List): Remove the same.
+	(Contents): Move information about @setcontentsaftertitlepage 
+	and @setshortcontentsaftertitlepage to appendix.
+
+	NB not done in texi2any yet.
+
+2016-02-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (get_initial_file): Handle --file option here 
+	instead of in 'main', as well as handling invocation as "info 
+	'(FILE)NODE'", and the full path to FILE as the "initial file".  Use 
+	"dir" as the last resort for the initial file.  Don't add a node to the 
+	list of nodes to load.
+	(add_initial_nodes): Add "Top" node to list of nodes to load if no 
+	others are given.  Remove error message for initial_file undefined.
+	(main): Handle --where option separately for --all given and not given.
+	* info/session.c (info_follow_menus): Free initial node if following 
+	menus strictly and a menu entry is dangling.
+	* info/t/node-no-file.sh: Change expected error message.
+
+	This is so that "info --output -" outputs the dir node, as used to 
+	happen.  Vincent Lefevre reported that it doesn't happen for
+	Texinfo 6.1.
+
+2016-02-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\setchapterstyle, \headings, \setchapternewpage)
+	(\everyheadingmarks, \everyfootingmarks): Define with 
+	\parseargdef to read argument on the line instead of delimiting 
+	the argument with a space.  This is necessary in case newlines 
+	are active, which is the case at the very start of the file due 
+	to the definitions in \enablebackslashhack.  Broken 
+	@setchapternewpage reported by Norbert Preining.
+	(\enablebackslashhack): Turn off special meanings after two 
+	active newlines instead of after three, and add comments to 
+	explain what is going on.
+
+2016-02-15  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex: Add LuaTeX PDF outline Unicode strings 
+	support.
+	(UTF16oct): New Lua function.
+	(\pdfescapestring): New macro.
+	(\dopdfoutline): Add Unicode support for LuaTeX.
+
+2016-02-15  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex: Add LuaTeX >= 0.85 support.
+	(\txipagewidth): Rename from \pagewidth.
+	(\txipageheight): Rename from \pageheight.
+	(\pdfdest, \pdfoutput, \pdfliteral, \pdfcatalog, \pdftexversion)
+	(\pdfximage, \pdfrefximage, \pdflastximage, \pdfendlink, \pdfoutline)
+	(\pdfstartlink, \pdffontattr, \pdfobj, \pdflastobj)
+	(\pdfpagewidth, \pdfpageheight, \pdfhorigin, \pdfvorigin): 
+	Definitions for LuaTeX.
+
+2016-02-15  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex: Fix PDF outline cmap for XeTeX.
+
+2016-02-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/TexinfoXML.pm (output): Add a comment.
+
+2016-02-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Tips): Add missing word "to".
+
+2016-02-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (split_by_node): Add a comment.
+	* tp/Texinfo/Convert/HTML.pm (_prepare_elements, output)
+	(_convert_contents, _protect_space, _convert)
+	(_convert_element_type): Add some comments and blank lines in 
+	source.  Remove some commented-out lines of code.  Add some 
+	capital letters in comments.
+	(%ignored_types): Remove commented-out variable.
+	(%default_types_conversion): Add a comment.
+
+2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (dump_nodes_to_file): Argument changed from 
+	flags argument to a simple Boolean to say whether to dump 
+	subnodes.
+	* info/session.h (DUMP_SUBNODES): Remove definition.
+
+2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.h, info/echo-area.h, info/filesys.h, info/window.h,
+	info/indices.h, info/info-utils.h, info/search.h, info/session.h,
+	info/variables.h: Remove unnecessary "extern" modifier for 
+	function declarations.
+	
+	* info/window.h: Remove declaration of removed function 
+	'process_node_text'.
+
+2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.c (calculate_line_starts): Only look in first line 
+	of node for Info keywords.
+
+2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (nodeline_print): Move to info/window.c.
+	(parse_top_node_line): Remove code altering start of node 
+	depending on value of nodeline_print.
+	* info/window.c (calculate_line_starts): Use nodeline variable 
+	to decide where to start displaying the node.
+	(window_line_of_point): Comments changed.
+
+2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (info_node_of_tag_ext): Don't save a pointer into 
+	the file buffer in the tag table, because it could continue 
+	after the file buffer was garbage collected.  Change the logic 
+	around so that the NODE field of the TAG structure is 
+	initialized from the NODE object we return, instead of vice versa.
+	* info/nodes.h (FILE_BUFFER, TAG): Comments changed.
+	* info/t/search-split-after-index.sh: New test.
+
+2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Customization Variables and Options): Move 
+	@vindex commands after @item, so that the index entries refer to 
+	the right row of the @multitable.
+
+2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Implement --javascript-ref option, suggested by Per Bothner.
+
+	* tp/texi2any.pl ($result_options): New option --javascript-ref.
+	($cmdline_options): New value 'JAVASCRIPT_REFS'.
+	* tp/Texinfo/Convert/HTML.pm
+	(default_javascript_lines): New function.
+	(%default_formatting_references): Add 'javascript_lines', and 
+	comment changed.
+	(output): Call default_javascript_lines (indirectly).
+	(_file_header_informations): Look at and return 
+	'JAVASCRIPT_LINES' conf value.  Callers updated.
+	(_default_begin_file, default_node_redirection_page): Include 
+	lines referring to a JavaScript file in the file header.
+	* tp/Texinfo/Common.pm (@variable_string_settables): Add 
+	'JAVASCRIPT_LINES'.
+	(@variable_other_settables): Add 'JAVASCRIPT_REFS'.
+
+2016-02-09  Karl Berry  <karl@freefriends.org>
+
+	* doc/texinfo.texi (Output Formats) <XML>: explicitly mention that
+	web browsers cannot display our XML output, but just give an error.
+
+2016-02-09  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+        * doc/texinfo.tex: Fix XeTeX PDF outline support.
+        (\dopdfoutline): Add braces.
+
+2016-02-08  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex:
+	Native Unicode replace switching instead of re-definition.
+
+	(\ifpassthroughchars): New switch.
+	(\DeclareUnicodeCharacterNative):
+	Integrate \DeclareUnicodeCharacterNativeThru.
+	Add capable to switch replace / pass-through characters.
+	(\DeclareUnicodeCharacterNativeThru): Remove.
+	(\nativeunicodechardefsthru): Remove.
+	(\passthroughcharacters):
+	Use switch instead of \nativeunicodechardefsthru.
+
+2016-02-08  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex:
+	Improve XeTeX PDF outline support.
+	(\pdfmkdest): Add \indexnofonts and \makevalueexpandable.
+	(\dopdfoutline): Add \turnoffactive.
+	(\pdfmakeoutlines): Add some comments. Use \let instead of \def.
+
+2016-02-07  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\unicodechardefs): Comment out end of lines 
+	to prevent extra space at the start of the page when native 
+	Unicode support is used.
+
+2016-02-07  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+        * doc/texinfo.tex:
+	Add PDF outline support for XeTeX.
+	(\pdfdest): set destination.
+	(\pdfmkdest): set destination.
+	(\dopdfoutline): make outline element.
+	(\pdfmakeoutlines): make PDF outline.
+
+2016-02-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\throughcharactersdefs): Rename to 
+	\passthroughcharacters, and change comment.
+	(\nonasciistringdefs): Change comment.
+	(\documentencoding) <UTF-8>: Change comment.
+	(\DeclareUnicodeCharacterUTFviii): Change comment.
+	(\nativeunicodechardefsthru, \DeclareUnicodeCharacterNativeThru):
+	Change comment, and move definition.
+	(\DeclareUnicodeCharacterNativeAtU): Change comment, and move 
+	definition.
+	(\setcharscatcodeothernonglobal): Comment changed.
+	(\DeclareUnicodeCharacterNative): Move definition.
+
+2016-02-07  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+        * doc/texinfo.tex:
+	Add native Unicode support for XeTeX and LuaTex.
+
+	(\iftxinativeunicodecapable): New switch.
+	(\iftxiusebytewiseio): New switch.
+
+        (\setbytewiseio): Set I/O by bytes instead of UTF-8 sequence
+	for XeTeX and LuaTex non-UTF-8 (byte-wise) encodings.
+
+	(\documentencoding): Remove input by bytes settings for XeTeX.
+	Add I/O by bytes settings for single-byte encodings.
+	Add native Unicode settings for UTF-8 encoding.
+
+	(\U): Any Unicode characters can be used by native Unicode.
+
+	(\DeclareUnicodeCharacterUTFviii): Rename from
+	\DeclareUnicodeCharacter.
+	(\DeclareUnicodeCharacterNative): For native Unicode,
+	Definition macro to replace the Unicode character.
+	(\DeclareUnicodeCharacterNativeThru): For native Unicode,
+	Definition macro not to replace (through) the Unicode character.
+	(\DeclareUnicodeCharacterNativeAtU): For native Unicode,
+	Definition macro that is used by @U command.
+	(\DeclareUnicodeCharacterNativeOther): For native Unicode,
+	Definition macro that is set catcode other non global.
+
+	(\unicodechardefs): Rename from \utfeightchardefs.
+	(\utfeightchardefs): UTF-8 byte sequence definitions (replacing and
+	@U command). It makes the setting that replace UTF-8 byte sequence.
+	(\nativeunicodechardefs): Native Unicode character replacing
+	definitions. It makes the setting that replace the Unicode characters.
+	(\nativeunicodechardefsthru): Native Unicode character ``through''
+	definitions. It makes the setting that does not replace
+	the Unicode characters.
+	(\nativeunicodechardefsatu): Native Unicode @U command definitions.
+	(\nativeunicodecharscatcodeothernonglobal):
+	Native Unicode catcode other non global definitions.
+	(\setcharscatcodeothernonglobal):
+	Catcode (non-ascii or native Unicode) are set to other non global.
+
+	(\throughcharactersdefs): Character ``through'' definitions.
+	It makes the setting that does not replace the characters.
+
+2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* configure.ac: Update version to 6.1dev.
+
+2016-02-06  Eli Zaretskii  <eliz@gnu.org>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (popen, pclose)
+	[_WIN32]: Redefine to their non-Posix counterparts _popen and
+	_pclose, to countermand Perl redirections in XSUB.h.
+
 2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	6.1 release.

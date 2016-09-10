@@ -57,15 +57,7 @@ $result_trees{'verbatim_in_brace_command'} = {
       ],
       'extra' => {
         'invalid_nesting' => 1,
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -74,7 +66,15 @@ $result_trees{'verbatim_in_brace_command'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -90,10 +90,10 @@ $result_trees{'verbatim_in_brace_command'}{'contents'}[0]{'parent'} = $result_tr
 $result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'verbatim_in_brace_command'}{'contents'}[1];
 $result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_brace_command'}{'contents'}[1];
 $result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_brace_command'}{'contents'}[1];
-$result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'verbatim_in_brace_command'}{'contents'}[1];
-$result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'verbatim_in_brace_command'};
+$result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'contents'}[0];
 $result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_brace_command'};
-$result_trees{'verbatim_in_brace_command'}{'contents'}[2] = $result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'extra'}{'spaces_after_command'};
+$result_trees{'verbatim_in_brace_command'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'verbatim_in_brace_command'}{'contents'}[1];
+$result_trees{'verbatim_in_brace_command'}{'contents'}[2]{'parent'} = $result_trees{'verbatim_in_brace_command'};
 $result_trees{'verbatim_in_brace_command'}{'contents'}[3]{'parent'} = $result_trees{'verbatim_in_brace_command'};
 
 $result_texis{'verbatim_in_brace_command'} = '@samp{
@@ -111,12 +111,12 @@ in verbatim
 
 $result_errors{'verbatim_in_brace_command'} = [
   {
-    'error_line' => ':1: @samp missing close brace
+    'error_line' => ':1: @samp missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@samp missing close brace',
+    'text' => '@samp missing closing brace',
     'type' => 'error'
   },
   {

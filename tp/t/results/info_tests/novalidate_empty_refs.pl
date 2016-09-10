@@ -100,16 +100,11 @@ $result_trees{'novalidate_empty_refs'} = {
                     {}
                   ]
                 ],
-                'label' => undef,
                 'node_argument' => {
                   'node_content' => [
                     {}
                   ],
                   'normalized' => ''
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -163,16 +158,11 @@ $result_trees{'novalidate_empty_refs'} = {
                     {}
                   ]
                 ],
-                'label' => undef,
                 'node_argument' => {
                   'node_content' => [
                     {}
                   ],
                   'normalized' => '-'
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},

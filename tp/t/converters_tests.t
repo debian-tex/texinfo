@@ -599,16 +599,20 @@ fff2
 @end deffn
 '],
 ['raw_block_commands',
-$raw_commands_text
+$raw_commands_text,
+{'expanded_formats' => ['tex', 'docbook', 'html', 'xml']}
 ],
 ['raw_block_commands_expand_tex',
-$raw_commands_text, {'expanded_formats' => ['tex']},
+$raw_commands_text,
+{'expanded_formats' => ['tex', 'docbook', 'html', 'xml']},
+{'expanded_formats' => ['tex']},
 ],
 ['inline',
-$inline_text
+$inline_text,
 ],
 ['inline_expand_tex',
 $inline_text, {'expanded_formats' => ['tex']},
+{'expanded_formats' => ['tex']},
 ],
 ['inlinefmtifelse',
 '@inlinefmtifelse{html,,else html no if}.
@@ -626,7 +630,9 @@ $inline_text, {'expanded_formats' => ['tex']},
 @inlinefmtifelse{docbook,if docbook,else docbook}.
 
 @inlinefmtifelse{tex,if tex,else tex}.
-'],
+',
+{'expanded_formats' => []}
+],
 ['inlineifsetifclear',
 '@inlineifclear{aaa, iclear first }.
 
@@ -946,7 +952,8 @@ Macro not unmacroed @othermacro{}.
 
 Macros that should not be defined: @mymacro{}. @macroarg{with arg}.
 
-', {'expanded_formats' => ['html']}], 
+', {'expanded_formats' => ['html']}, {'expanded_formats' => ['html']}
+], 
 );
 
 my @html_text_cases = (

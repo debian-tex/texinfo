@@ -649,21 +649,21 @@ $result_menus{'style_not_closed_root_commands'}{'menu_child'}{'menu_up'} = $resu
 
 $result_errors{'style_not_closed_root_commands'} = [
   {
-    'error_line' => ':8: @code missing close brace
+    'error_line' => ':8: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   },
   {
-    'error_line' => ':13: @code missing close brace
+    'error_line' => ':13: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   }
 ];

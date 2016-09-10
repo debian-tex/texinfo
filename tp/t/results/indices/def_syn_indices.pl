@@ -203,7 +203,6 @@ $result_trees{'def_syn_indices'} = {
               'in_code' => 0,
               'index_at_command' => 'trucindex',
               'index_name' => 'truc',
-              'index_prefix' => 'truc',
               'index_type_command' => 'trucindex',
               'key' => 'index truc',
               'node' => {},
@@ -329,6 +328,8 @@ $result_trees{'def_syn_indices'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
+                  'line_nr' => {},
                   'parent' => {}
                 },
                 {
@@ -394,7 +395,6 @@ $result_trees{'def_syn_indices'} = {
               'in_code' => 1,
               'index_at_command' => 'codeidxindex',
               'index_name' => 'codeidx',
-              'index_prefix' => 'codeidx',
               'index_type_command' => 'codeidxindex',
               'key' => 'a index entry te~ i^',
               'node' => {},
@@ -451,7 +451,6 @@ $result_trees{'def_syn_indices'} = {
               'in_code' => 1,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => 'cindex entry',
               'node' => {},
@@ -560,7 +559,6 @@ $result_trees{'def_syn_indices'} = {
               'in_code' => 1,
               'index_at_command' => 'kindex',
               'index_name' => 'ky',
-              'index_prefix' => 'k',
               'index_type_command' => 'kindex',
               'key' => 'truc kindex',
               'node' => {},
@@ -615,7 +613,6 @@ $result_trees{'def_syn_indices'} = {
               'in_code' => 1,
               'index_at_command' => 'pindex',
               'index_name' => 'pg',
-              'index_prefix' => 'p',
               'index_type_command' => 'pindex',
               'key' => 'pindex codeidx',
               'node' => {},
@@ -902,7 +899,6 @@ $result_trees{'def_syn_indices'} = {
               'in_code' => 0,
               'index_at_command' => 'defgindex',
               'index_name' => 'defg',
-              'index_prefix' => 'defg',
               'index_type_command' => 'defgindex',
               'key' => 'defg index entry',
               'node' => {},
@@ -963,7 +959,6 @@ $result_trees{'def_syn_indices'} = {
               'in_code' => 0,
               'index_at_command' => 'abcindex',
               'index_name' => 'abc',
-              'index_prefix' => 'abc',
               'index_type_command' => 'abcindex',
               'key' => 'abc index entry',
               'node' => {},
@@ -1583,6 +1578,7 @@ $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'conte
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[4]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[4];
+$result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[4]{'line_nr'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'args'}[0];
@@ -2014,20 +2010,14 @@ $result_indices{'def_syn_indices'} = {
       },
       'in_code' => 0,
       'merged_in' => 'pg',
-      'name' => 'abc',
-      'prefix' => [
-        'abc'
-      ]
+      'name' => 'abc'
     },
     'codeidx' => {
       'contained_indices' => {
         'codeidx' => 1
       },
       'in_code' => 1,
-      'name' => 'codeidx',
-      'prefix' => [
-        'codeidx'
-      ]
+      'name' => 'codeidx'
     },
     'cp' => {
       'contained_indices' => {
@@ -2035,11 +2025,7 @@ $result_indices{'def_syn_indices'} = {
       },
       'in_code' => 1,
       'merged_in' => 'fn',
-      'name' => 'cp',
-      'prefix' => [
-        'c',
-        'cp'
-      ]
+      'name' => 'cp'
     },
     'defg' => {
       'contained_indices' => {
@@ -2048,10 +2034,7 @@ $result_indices{'def_syn_indices'} = {
       },
       'in_code' => 0,
       'merged_in' => 'pg',
-      'name' => 'defg',
-      'prefix' => [
-        'defg'
-      ]
+      'name' => 'defg'
     },
     'fn' => {
       'contained_indices' => {
@@ -2060,11 +2043,7 @@ $result_indices{'def_syn_indices'} = {
         'truc' => 1
       },
       'in_code' => 1,
-      'name' => 'fn',
-      'prefix' => [
-        'f',
-        'fn'
-      ]
+      'name' => 'fn'
     },
     'ky' => {
       'contained_indices' => {
@@ -2072,11 +2051,7 @@ $result_indices{'def_syn_indices'} = {
       },
       'in_code' => 1,
       'merged_in' => 'pg',
-      'name' => 'ky',
-      'prefix' => [
-        'k',
-        'ky'
-      ]
+      'name' => 'ky'
     },
     'pg' => {
       'contained_indices' => {
@@ -2086,22 +2061,14 @@ $result_indices{'def_syn_indices'} = {
         'pg' => 1
       },
       'in_code' => 1,
-      'name' => 'pg',
-      'prefix' => [
-        'p',
-        'pg'
-      ]
+      'name' => 'pg'
     },
     'tp' => {
       'contained_indices' => {
         'tp' => 1
       },
       'in_code' => 1,
-      'name' => 'tp',
-      'prefix' => [
-        't',
-        'tp'
-      ]
+      'name' => 'tp'
     },
     'truc' => {
       'contained_indices' => {
@@ -2109,21 +2076,14 @@ $result_indices{'def_syn_indices'} = {
       },
       'in_code' => 0,
       'merged_in' => 'fn',
-      'name' => 'truc',
-      'prefix' => [
-        'truc'
-      ]
+      'name' => 'truc'
     },
     'vr' => {
       'contained_indices' => {
         'vr' => 1
       },
       'in_code' => 1,
-      'name' => 'vr',
-      'prefix' => [
-        'v',
-        'vr'
-      ]
+      'name' => 'vr'
     }
   },
   'merged_indices' => {

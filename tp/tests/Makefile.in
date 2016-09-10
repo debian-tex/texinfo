@@ -14,9 +14,9 @@
 
 @SET_MAKE@
 
-# $Id: Makefile.am 6745 2015-11-01 19:18:52Z gavin $
+# $Id: Makefile.am 7036 2016-02-27 17:17:09Z gavin $
 # Makefile.am for texinfo/tp/tests.
-# Copyright 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -132,6 +132,7 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/glibc21.m4 \
 	$(top_srcdir)/gnulib/m4/gnulib-common.m4 \
 	$(top_srcdir)/gnulib/m4/gnulib-comp.m4 \
+	$(top_srcdir)/gnulib/m4/hard-locale.m4 \
 	$(top_srcdir)/gnulib/m4/iconv.m4 \
 	$(top_srcdir)/gnulib/m4/include_next.m4 \
 	$(top_srcdir)/gnulib/m4/intlmacosx.m4 \
@@ -1254,7 +1255,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 
 # List of files that describe tests.  See tp/tests/README.
-test_driving_files_generated_list = sectioning/tests-parser.txt coverage/tests-parser.txt indices/tests-parser.txt nested_formats/tests-parser.txt contents/tests-parser.txt layout/tests-parser.txt formatting/tests-parser.txt tex_html/tests-parser.txt
+test_driving_files_generated_list = sectioning/tests-parser.txt coverage/tests-parser.txt indices/tests-parser.txt nested_formats/tests-parser.txt contents/tests-parser.txt layout/tests-parser.txt formatting/tests-parser.txt htmlxref/tests-parser.txt htmlxref-only_mono/tests-parser.txt htmlxref-only_split/tests-parser.txt tex_html/tests-parser.txt
 
 # List of test scripts that only run one test
 one_test_files_generated_list = \
@@ -1332,7 +1333,6 @@ one_test_files_generated_list = \
      test_scripts/contents_contents_in_middle_chapter.sh \
      test_scripts/contents_contents_in_middle_section.sh \
      test_scripts/contents_double_contents.sh \
-     test_scripts/contents_double_contents_setcontentsaftertitlepage.sh \
      test_scripts/contents_double_contents_chapter.sh \
      test_scripts/contents_double_contents_section.sh \
      test_scripts/contents_double_contents_nodes.sh \
@@ -1345,7 +1345,6 @@ one_test_files_generated_list = \
      test_scripts/contents_contents_in_middle_chapter_inline.sh \
      test_scripts/contents_contents_in_middle_section_inline.sh \
      test_scripts/contents_double_contents_inline.sh \
-     test_scripts/contents_double_contents_setcontentsaftertitlepage_inline.sh \
      test_scripts/contents_double_contents_inline_chapter.sh \
      test_scripts/contents_double_contents_inline_section.sh \
      test_scripts/contents_double_contents_inline_nodes.sh \
@@ -1354,15 +1353,12 @@ one_test_files_generated_list = \
      test_scripts/contents_no_content_setcatpage_inline.sh \
      test_scripts/contents_no_content_setcatpage_do_contents_inline.sh \
      test_scripts/contents_double_contents_book.sh \
-     test_scripts/contents_double_contents_setcontentsaftertitlepage_book.sh \
-     test_scripts/contents_double_contents_setcontentsaftertitlepage_book_chapter.sh \
      test_scripts/contents_contents_and_parts.sh \
      test_scripts/contents_contents_at_begin_info.sh \
      test_scripts/contents_contents_at_end_info.sh \
      test_scripts/contents_contents_in_middle_chapter_info.sh \
      test_scripts/contents_contents_in_middle_section_info.sh \
      test_scripts/contents_double_contents_info.sh \
-     test_scripts/contents_double_contents_setcontentsaftertitlepage_info.sh \
      test_scripts/layout_no_monolithic.sh \
      test_scripts/layout_no_monolithic_only_toc_out.sh \
      test_scripts/layout_navigation.sh \
@@ -1427,6 +1423,12 @@ one_test_files_generated_list = \
      test_scripts/formatting_float_copying.sh \
      test_scripts/formatting_simple_with_menu_docbook_info.sh \
      test_scripts/formatting_split_for_format_not_split.sh \
+     test_scripts/htmlxref_htmlxref.sh \
+     test_scripts/htmlxref_htmlxref_nodes.sh \
+     test_scripts/htmlxref-only_mono_htmlxref.sh \
+     test_scripts/htmlxref-only_mono_htmlxref_nodes.sh \
+     test_scripts/htmlxref-only_split_htmlxref.sh \
+     test_scripts/htmlxref-only_split_htmlxref_nodes.sh \
      test_scripts/tex_html_block_EOL_tex.sh \
      test_scripts/tex_html_simplest_httex.sh \
      test_scripts/tex_html_tex.sh \
@@ -1441,21 +1443,19 @@ one_test_files_generated_list = \
      test_scripts/tex_html_tex_in_copying.sh \
      test_scripts/tex_html_formatting_singular.sh
 
-base_tests = formatting 
+base_tests = formatting htmlxref htmlxref-only_mono htmlxref-only_split
 long_tests = sectioning coverage indices nested_formats contents layout
 tex_html_tests = tex_html
-test_subdirs = htmlxref htmlxref-only_mono htmlxref-only_split
-DIST_SUBDIRS = many_input_files $(test_subdirs) $(base_tests) $(long_tests) $(tex_html_tests)
-SUBDIRS = . many_input_files $(test_subdirs)
+DIST_SUBDIRS = many_input_files $(base_tests) $(long_tests) $(tex_html_tests)
+SUBDIRS = . many_input_files
 other_tests = \
 	t/stdout.sh \
 	t/stdout_split.sh
 
 TESTS = $(one_test_files_generated_list) $(other_tests)
 AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir; builddir="$(builddir)"; export buildir; top_builddir="$(top_builddir)"; export top_builddir;
-old_test_scripts = parser_base_tests long_tests.sh tex_html_tests.sh
 EXTRA_DIST = run_parser_all.sh parser_tests.sh \
- $(old_test_scripts) $(one_test_files_generated_list) coverage_macro.texi \
+ $(one_test_files_generated_list) coverage_macro.texi \
  coverage_macro-cr.texi $(other_tests) reference
 
 DISTCLEANFILES = unknown_nodes_renamed-noderename.cnf \
@@ -2254,13 +2254,6 @@ test_scripts/contents_double_contents.sh.log: test_scripts/contents_double_conte
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
-test_scripts/contents_double_contents_setcontentsaftertitlepage.sh.log: test_scripts/contents_double_contents_setcontentsaftertitlepage.sh
-	@p='test_scripts/contents_double_contents_setcontentsaftertitlepage.sh'; \
-	b='test_scripts/contents_double_contents_setcontentsaftertitlepage.sh'; \
-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
-	--log-file $$b.log --trs-file $$b.trs \
-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
-	"$$tst" $(AM_TESTS_FD_REDIRECT)
 test_scripts/contents_double_contents_chapter.sh.log: test_scripts/contents_double_contents_chapter.sh
 	@p='test_scripts/contents_double_contents_chapter.sh'; \
 	b='test_scripts/contents_double_contents_chapter.sh'; \
@@ -2345,13 +2338,6 @@ test_scripts/contents_double_contents_inline.sh.log: test_scripts/contents_doubl
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
-test_scripts/contents_double_contents_setcontentsaftertitlepage_inline.sh.log: test_scripts/contents_double_contents_setcontentsaftertitlepage_inline.sh
-	@p='test_scripts/contents_double_contents_setcontentsaftertitlepage_inline.sh'; \
-	b='test_scripts/contents_double_contents_setcontentsaftertitlepage_inline.sh'; \
-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
-	--log-file $$b.log --trs-file $$b.trs \
-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
-	"$$tst" $(AM_TESTS_FD_REDIRECT)
 test_scripts/contents_double_contents_inline_chapter.sh.log: test_scripts/contents_double_contents_inline_chapter.sh
 	@p='test_scripts/contents_double_contents_inline_chapter.sh'; \
 	b='test_scripts/contents_double_contents_inline_chapter.sh'; \
@@ -2408,20 +2394,6 @@ test_scripts/contents_double_contents_book.sh.log: test_scripts/contents_double_
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
-test_scripts/contents_double_contents_setcontentsaftertitlepage_book.sh.log: test_scripts/contents_double_contents_setcontentsaftertitlepage_book.sh
-	@p='test_scripts/contents_double_contents_setcontentsaftertitlepage_book.sh'; \
-	b='test_scripts/contents_double_contents_setcontentsaftertitlepage_book.sh'; \
-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
-	--log-file $$b.log --trs-file $$b.trs \
-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
-	"$$tst" $(AM_TESTS_FD_REDIRECT)
-test_scripts/contents_double_contents_setcontentsaftertitlepage_book_chapter.sh.log: test_scripts/contents_double_contents_setcontentsaftertitlepage_book_chapter.sh
-	@p='test_scripts/contents_double_contents_setcontentsaftertitlepage_book_chapter.sh'; \
-	b='test_scripts/contents_double_contents_setcontentsaftertitlepage_book_chapter.sh'; \
-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
-	--log-file $$b.log --trs-file $$b.trs \
-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
-	"$$tst" $(AM_TESTS_FD_REDIRECT)
 test_scripts/contents_contents_and_parts.sh.log: test_scripts/contents_contents_and_parts.sh
 	@p='test_scripts/contents_contents_and_parts.sh'; \
 	b='test_scripts/contents_contents_and_parts.sh'; \
@@ -2460,13 +2432,6 @@ test_scripts/contents_contents_in_middle_section_info.sh.log: test_scripts/conte
 test_scripts/contents_double_contents_info.sh.log: test_scripts/contents_double_contents_info.sh
 	@p='test_scripts/contents_double_contents_info.sh'; \
 	b='test_scripts/contents_double_contents_info.sh'; \
-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
-	--log-file $$b.log --trs-file $$b.trs \
-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
-	"$$tst" $(AM_TESTS_FD_REDIRECT)
-test_scripts/contents_double_contents_setcontentsaftertitlepage_info.sh.log: test_scripts/contents_double_contents_setcontentsaftertitlepage_info.sh
-	@p='test_scripts/contents_double_contents_setcontentsaftertitlepage_info.sh'; \
-	b='test_scripts/contents_double_contents_setcontentsaftertitlepage_info.sh'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
@@ -2919,6 +2884,48 @@ test_scripts/formatting_split_for_format_not_split.sh.log: test_scripts/formatti
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test_scripts/htmlxref_htmlxref.sh.log: test_scripts/htmlxref_htmlxref.sh
+	@p='test_scripts/htmlxref_htmlxref.sh'; \
+	b='test_scripts/htmlxref_htmlxref.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test_scripts/htmlxref_htmlxref_nodes.sh.log: test_scripts/htmlxref_htmlxref_nodes.sh
+	@p='test_scripts/htmlxref_htmlxref_nodes.sh'; \
+	b='test_scripts/htmlxref_htmlxref_nodes.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test_scripts/htmlxref-only_mono_htmlxref.sh.log: test_scripts/htmlxref-only_mono_htmlxref.sh
+	@p='test_scripts/htmlxref-only_mono_htmlxref.sh'; \
+	b='test_scripts/htmlxref-only_mono_htmlxref.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test_scripts/htmlxref-only_mono_htmlxref_nodes.sh.log: test_scripts/htmlxref-only_mono_htmlxref_nodes.sh
+	@p='test_scripts/htmlxref-only_mono_htmlxref_nodes.sh'; \
+	b='test_scripts/htmlxref-only_mono_htmlxref_nodes.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test_scripts/htmlxref-only_split_htmlxref.sh.log: test_scripts/htmlxref-only_split_htmlxref.sh
+	@p='test_scripts/htmlxref-only_split_htmlxref.sh'; \
+	b='test_scripts/htmlxref-only_split_htmlxref.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test_scripts/htmlxref-only_split_htmlxref_nodes.sh.log: test_scripts/htmlxref-only_split_htmlxref_nodes.sh
+	@p='test_scripts/htmlxref-only_split_htmlxref_nodes.sh'; \
+	b='test_scripts/htmlxref-only_split_htmlxref_nodes.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 test_scripts/tex_html_block_EOL_tex.sh.log: test_scripts/tex_html_block_EOL_tex.sh
 	@p='test_scripts/tex_html_block_EOL_tex.sh'; \
 	b='test_scripts/tex_html_block_EOL_tex.sh'; \
@@ -3234,7 +3241,6 @@ $(srcdir)/Makefile.onetst: \
 
 copy-tests: copy-base copy-long
 	cd many_input_files && $(MAKE) copy-tests
-	for dir in $(test_subdirs); do (cd $$dir && $(MAKE) copy-tests); done
 
 copy-base:
 	$(srcdir)/parser_tests.sh -copy $(base_tests)

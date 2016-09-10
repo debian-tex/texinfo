@@ -114,7 +114,6 @@ $result_trees{'heading_in_footnote'} = {
                       'in_code' => 0,
                       'index_at_command' => 'cindex',
                       'index_name' => 'cp',
-                      'index_prefix' => 'c',
                       'index_type_command' => 'cindex',
                       'key' => 'ind e',
                       'number' => 1

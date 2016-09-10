@@ -151,6 +151,7 @@ $result_trees{'simple_menu'} = {
                           [
                             {
                               'cmdname' => 'bullet',
+                              'contents' => [],
                               'parent' => {},
                               'type' => 'command_as_argument'
                             }
@@ -392,6 +393,7 @@ $result_trees{'simple_menu'} = {
               [
                 {
                   'cmdname' => 'bullet',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 }
@@ -606,6 +608,7 @@ $result_trees{'simple_menu'} = {
               [
                 {
                   'cmdname' => 'bullet',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 }
@@ -978,6 +981,7 @@ $result_trees{'simple_menu'} = {
                               [
                                 {
                                   'cmdname' => 'bullet',
+                                  'contents' => [],
                                   'parent' => {},
                                   'type' => 'command_as_argument'
                                 }
@@ -1219,6 +1223,7 @@ $result_trees{'simple_menu'} = {
                   [
                     {
                       'cmdname' => 'bullet',
+                      'contents' => [],
                       'parent' => {},
                       'type' => 'command_as_argument'
                     }
@@ -1433,6 +1438,7 @@ $result_trees{'simple_menu'} = {
                   [
                     {
                       'cmdname' => 'bullet',
+                      'contents' => [],
                       'parent' => {},
                       'type' => 'command_as_argument'
                     }

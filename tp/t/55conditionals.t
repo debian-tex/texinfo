@@ -462,6 +462,12 @@ strongalias @@alias is wrongly not defined
 '],
 );
 
+for my $test (@test_cases) {
+  if (!defined $test->[2]->{'expanded_formats'}) {
+    $test->[2]->{'expanded_formats'} = [];
+  }
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
 run_all ('conditionals', \@test_cases, $arg_test_case,

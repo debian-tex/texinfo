@@ -1,5 +1,5 @@
 /* dir.c -- how to build a special "dir" node from "localdir" files.
-   $Id: dir.c 6906 2016-01-01 18:33:45Z karl $
+   $Id: dir.c 7260 2016-07-16 11:07:44Z gavin $
 
    Copyright 1993, 1997, 1998, 2004, 2007, 2008, 2009, 2012,
    2013, 2014, 2015, 2016 Free Software Foundation, Inc.
@@ -56,6 +56,8 @@ get_dir_node (void)
   return node;
 }
 
+static char *dir_contents;
+
 static NODE *
 build_dir_node (void)
 {
@@ -74,7 +76,7 @@ build_dir_node (void)
 "A few useful Info commands:\n"
 "\n"
 "  'q' quits;\n"
-"  '?' lists all Info commands;\n"
+"  'H' lists all Info commands;\n"
 "  'h' starts the Info tutorial;\n"
 "  'mTexinfo RET' visits the Texinfo manual, etc.\n"
 
@@ -139,6 +141,7 @@ build_dir_node (void)
     }
 
   node->flags |= N_IsDir;
+  dir_contents = node->contents;
   scan_node_contents (node, 0, 0);
   return node;
 }

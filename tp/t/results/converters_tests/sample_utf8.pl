@@ -14,6 +14,7 @@ $result_trees{'sample_utf8'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => '\\input texinfo   @c -*-texinfo-*-
 ',
                   'type' => 'preamble_text'
@@ -999,7 +1000,6 @@ $result_trees{'sample_utf8'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => 'chapter, first',
               'node' => {},
@@ -1067,7 +1067,6 @@ $result_trees{'sample_utf8'} = {
                   'in_code' => 0,
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
-                  'index_prefix' => 'c',
                   'index_type_command' => 'cindex',
                   'key' => "\x{53e6}\x{4e00}\x{4e2a}\x{ff0c}index entry",
                   'node' => {},
@@ -1122,7 +1121,6 @@ $result_trees{'sample_utf8'} = {
                   'in_code' => 0,
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
-                  'index_prefix' => 'c',
                   'index_type_command' => 'cindex',
                   'key' => "\x{104}\x{118} ae \x{105}\x{119}",
                   'node' => {},
@@ -1177,7 +1175,6 @@ $result_trees{'sample_utf8'} = {
                   'in_code' => 0,
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
-                  'index_prefix' => 'c',
                   'index_type_command' => 'cindex',
                   'key' => "\x{e9} \x{c2}",
                   'node' => {},
@@ -1671,6 +1668,7 @@ $result_trees{'sample_utf8'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0];

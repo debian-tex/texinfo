@@ -1,5 +1,5 @@
 /* info-utils.h -- Exported functions and variables from info-utils.c.
-   $Id: info-utils.h 6906 2016-01-01 18:33:45Z karl $   
+   $Id: info-utils.h 7013 2016-02-13 21:19:19Z gavin $   
 
    Copyright 1993, 1996, 1998, 2002, 2003, 2004, 2007, 2011, 2012, 2013,
    2014, 2015, 2016 Free Software Foundation, Inc.
@@ -49,7 +49,7 @@ void scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr);
 /* Get the menu entry associated with LABEL in NODE.  Return a
    pointer to the reference if found, or NULL.  If SLOPPY, accept
    initial substrings and check insensitively to case. */
-extern REFERENCE *info_get_menu_entry_by_label (NODE *node, char *label,
+REFERENCE *info_get_menu_entry_by_label (NODE *node, char *label,
                                                 int sloppy);
 
 /* A utility function for concatenating REFERENCE **.  Returns a new
@@ -58,19 +58,19 @@ extern REFERENCE *info_get_menu_entry_by_label (NODE *node, char *label,
 REFERENCE **info_concatenate_references (REFERENCE **ref1, REFERENCE **ref2);
 
 /* Copy an existing reference into new memory.  */
-extern REFERENCE *info_copy_reference (REFERENCE *src);
+REFERENCE *info_copy_reference (REFERENCE *src);
 
 /* Copy a list of existing references into new memory.  */
-extern REFERENCE **info_copy_references (REFERENCE **ref1);
+REFERENCE **info_copy_references (REFERENCE **ref1);
 
 /* Free the data associated with a single REF */
 void info_reference_free (REFERENCE *ref);
 
 /* Free the data associated with REFERENCES. */
-extern void info_free_references (REFERENCE **references);
+void info_free_references (REFERENCE **references);
 
 /* Create new REFERENCE structure. */
-extern REFERENCE *info_new_reference (char *filename, char *nodename);
+REFERENCE *info_new_reference (char *filename, char *nodename);
 
 /* Search for sequences of whitespace or newlines in STRING, replacing
    all such sequences with just a single space.  Remove whitespace from
@@ -81,11 +81,11 @@ void canonicalize_whitespace (char *string);
 #define ITER_SETBYTES(iter,n) ((iter).cur.bytes = n)
 #define ITER_LIMIT(iter) ((iter).limit - (iter).cur.ptr)
 
-extern int ansi_escape (mbi_iterator_t iter, size_t *plen);
+int ansi_escape (mbi_iterator_t iter, size_t *plen);
 
 /* Return a pointer to a string which is the printed representation
    of CHARACTER if it were printed at HPOS. */
-extern char *printed_representation (mbi_iterator_t *iter,
+char *printed_representation (mbi_iterator_t *iter,
                                      int *delim, size_t pl_chars,
                                      size_t *pchars, size_t *pbytes);
 
@@ -94,17 +94,17 @@ FILE_BUFFER *file_buffer_of_window (WINDOW *window);
 char *node_printed_rep (NODE *node);
 
 /* Return a pointer to the part of PATHNAME that simply defines the file. */
-extern char *filename_non_directory (char *pathname);
+char *filename_non_directory (char *pathname);
 
 /* Return non-zero if NODE is one especially created by Info. */
-extern int internal_info_node_p (NODE *node);
+int internal_info_node_p (NODE *node);
 
 /* Make NODE appear to be one especially created by Info, and give it NAME. */
-extern void name_internal_node (NODE *node, char *name);
+void name_internal_node (NODE *node, char *name);
 
 /* Return the window displaying NAME, the name of an internally created
    Info window. */
-extern WINDOW *get_internal_info_window (char *name);
+WINDOW *get_internal_info_window (char *name);
 
 struct text_buffer
 {

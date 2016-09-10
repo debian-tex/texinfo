@@ -51,21 +51,7 @@ $result_trees{'def_in_copying'} = {
           ],
           'extra' => {
             'arg_line' => ' mymacro
-',
-            'macrobody' => '@deffn aa bb cc
-@deffnx aax bbx ccx
-deffnx lines
-@end deffn
-',
-            'spaces_after_command' => {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            }
+'
           },
           'line_nr' => {
             'file_name' => '',
@@ -74,7 +60,15 @@ deffnx lines
           },
           'parent' => {}
         },
-        {},
+        {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        },
         {
           'parent' => {},
           'text' => '
@@ -268,7 +262,6 @@ deffnx lines
                       'in_code' => 1,
                       'index_at_command' => 'deffn',
                       'index_name' => 'fn',
-                      'index_prefix' => 'f',
                       'index_type_command' => 'deffn',
                       'key' => 'bb',
                       'number' => 1,
@@ -358,7 +351,6 @@ deffnx lines
                       'in_code' => 1,
                       'index_at_command' => 'deffnx',
                       'index_name' => 'fn',
-                      'index_prefix' => 'f',
                       'index_type_command' => 'deffn',
                       'key' => 'bbx',
                       'number' => 2,
@@ -587,7 +579,6 @@ deffnx lines
                   'in_code' => 1,
                   'index_at_command' => 'deffn',
                   'index_name' => 'fn',
-                  'index_prefix' => 'f',
                   'index_type_command' => 'deffn',
                   'key' => 'bb',
                   'node' => {},
@@ -677,7 +668,6 @@ deffnx lines
                   'in_code' => 1,
                   'index_at_command' => 'deffnx',
                   'index_name' => 'fn',
-                  'index_prefix' => 'f',
                   'index_type_command' => 'deffn',
                   'key' => 'bbx',
                   'node' => {},
@@ -831,10 +821,9 @@ $result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'pa
 $result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[0];
-$result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[0];
-$result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'def_in_copying'}{'contents'}[0];
 $result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_in_copying'}{'contents'}[0];
-$result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[1] = $result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[0];
+$result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'def_in_copying'}{'contents'}[0];
 $result_trees{'def_in_copying'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'def_in_copying'}{'contents'}[0];
 $result_trees{'def_in_copying'}{'contents'}[0]{'parent'} = $result_trees{'def_in_copying'};
 $result_trees{'def_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'def_in_copying'}{'contents'}[1];

@@ -41,22 +41,7 @@ $result_trees{'implicit_quoting_recursion'} = {
       ],
       'extra' => {
         'arg_line' => ' cat{a,b}
-',
-        'args_index' => {
-          'a' => 0,
-          'b' => 1
-        },
-        'macrobody' => '\\a\\\\b\\
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -65,7 +50,15 @@ $result_trees{'implicit_quoting_recursion'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -91,10 +84,9 @@ $result_trees{'implicit_quoting_recursion'}{'contents'}[0]{'args'}[1]{'parent'} 
 $result_trees{'implicit_quoting_recursion'}{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'implicit_quoting_recursion'}{'contents'}[0];
 $result_trees{'implicit_quoting_recursion'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_recursion'}{'contents'}[0];
 $result_trees{'implicit_quoting_recursion'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'implicit_quoting_recursion'}{'contents'}[0];
-$result_trees{'implicit_quoting_recursion'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'implicit_quoting_recursion'}{'contents'}[0];
-$result_trees{'implicit_quoting_recursion'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'implicit_quoting_recursion'};
 $result_trees{'implicit_quoting_recursion'}{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_recursion'};
-$result_trees{'implicit_quoting_recursion'}{'contents'}[1] = $result_trees{'implicit_quoting_recursion'}{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'implicit_quoting_recursion'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'implicit_quoting_recursion'}{'contents'}[0];
+$result_trees{'implicit_quoting_recursion'}{'contents'}[1]{'parent'} = $result_trees{'implicit_quoting_recursion'};
 $result_trees{'implicit_quoting_recursion'}{'contents'}[2]{'parent'} = $result_trees{'implicit_quoting_recursion'};
 $result_trees{'implicit_quoting_recursion'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_recursion'}{'contents'}[3];
 $result_trees{'implicit_quoting_recursion'}{'contents'}[3]{'parent'} = $result_trees{'implicit_quoting_recursion'};

@@ -31,18 +31,7 @@ $result_trees{'macro_definition_in_include'} = {
       ],
       'extra' => {
         'arg_line' => ' themacro
-',
-        'macrobody' => 'in themacro
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => 't/include_dir/macro_included.texi',
@@ -51,7 +40,15 @@ $result_trees{'macro_definition_in_include'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -80,10 +77,9 @@ $result_trees{'macro_definition_in_include'} = {
 $result_trees{'macro_definition_in_include'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'macro_definition_in_include'}{'contents'}[0];
 $result_trees{'macro_definition_in_include'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_definition_in_include'}{'contents'}[0];
 $result_trees{'macro_definition_in_include'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_definition_in_include'}{'contents'}[0];
-$result_trees{'macro_definition_in_include'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'macro_definition_in_include'}{'contents'}[0];
-$result_trees{'macro_definition_in_include'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'macro_definition_in_include'};
 $result_trees{'macro_definition_in_include'}{'contents'}[0]{'parent'} = $result_trees{'macro_definition_in_include'};
-$result_trees{'macro_definition_in_include'}{'contents'}[1] = $result_trees{'macro_definition_in_include'}{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'macro_definition_in_include'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'macro_definition_in_include'}{'contents'}[0];
+$result_trees{'macro_definition_in_include'}{'contents'}[1]{'parent'} = $result_trees{'macro_definition_in_include'};
 $result_trees{'macro_definition_in_include'}{'contents'}[2]{'parent'} = $result_trees{'macro_definition_in_include'};
 $result_trees{'macro_definition_in_include'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_definition_in_include'}{'contents'}[3];
 $result_trees{'macro_definition_in_include'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'macro_definition_in_include'}{'contents'}[3];

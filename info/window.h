@@ -1,5 +1,5 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
-   $Id: window.h 6906 2016-01-01 18:33:45Z karl $
+   $Id: window.h 7013 2016-02-13 21:19:19Z gavin $
 
    Copyright 1993, 1997, 2004, 2007, 2011 2013, 2014, 2015, 2016
    Free Software Foundation, Inc.
@@ -123,82 +123,82 @@ extern int show_malformed_multibyte_p; /* Show malformed multibyte sequences */
 extern int window_scroll_step;
 
  /* Make the modeline member for WINDOW. */
-extern void window_make_modeline (WINDOW *window);
+void window_make_modeline (WINDOW *window);
 
 /* Initalize the window system by creating THE_SCREEN and THE_ECHO_AREA.
    Create the first window ever, and make it permanent.
    You pass WIDTH and HEIGHT; the dimensions of the total screen size. */
-extern void window_initialize_windows (int width, int height);
+void window_initialize_windows (int width, int height);
 
 /* Make a new window by splitting an existing one. If the window could
    not be made return a null pointer.  The active window is not changed .*/
-extern WINDOW *window_make_window (void);
+WINDOW *window_make_window (void);
 
 /* Delete WINDOW from the list of known windows.  If this window was the
    active window, make the next window in the chain be the active window,
    or the previous window in the chain if there is no next window. */
-extern void window_delete_window (WINDOW *window);
+void window_delete_window (WINDOW *window);
 
 /* Set WINDOW to display NODE. */
-extern void window_set_node_of_window (WINDOW *window, NODE *node);
+void window_set_node_of_window (WINDOW *window, NODE *node);
 
 /* Tell the window system that the size of the screen has changed.  This
    causes lots of interesting things to happen.  The permanent windows
    are resized, as well as every visible window.  You pass WIDTH and HEIGHT;
    the dimensions of the total screen size. */
-extern void window_new_screen_size (int width, int height);
+void window_new_screen_size (int width, int height);
 
 /* Change the height of WINDOW by AMOUNT.  This also automagically adjusts
    the previous and next windows in the chain.  If there is only one user
    window, then no change takes place. */
-extern void window_change_window_height (WINDOW *window, int amount);
+void window_change_window_height (WINDOW *window, int amount);
 
-extern void set_window_pagetop (WINDOW *window, int desired_top);
+void set_window_pagetop (WINDOW *window, int desired_top);
 
 /* Adjust the pagetop of WINDOW such that the cursor point will be visible. */
-extern void window_adjust_pagetop (WINDOW *window);
+void window_adjust_pagetop (WINDOW *window);
 
 /* Tile all of the windows currently displayed in the global variable
    WINDOWS.  If argument DO_INTERNALS is non-zero, tile windows displaying
    internal nodes as well. */
 #define DONT_TILE_INTERNALS 0
 #define TILE_INTERNALS      1
-extern void window_tile_windows (int style);
+void window_tile_windows (int style);
 
 /* Toggle the state of line wrapping in WINDOW.  This can do a bit of fancy
    redisplay. */
-extern void window_toggle_wrap (WINDOW *window);
+void window_toggle_wrap (WINDOW *window);
 
 /* For every window in CHAIN, set the flags member to have FLAG set. */
-extern void window_mark_chain (WINDOW *chain, int flag);
+void window_mark_chain (WINDOW *chain, int flag);
 
 /* For every window in CHAIN, clear the flags member of FLAG. */
-extern void window_unmark_chain (WINDOW *chain, int flag);
+void window_unmark_chain (WINDOW *chain, int flag);
 
 /* Make WINDOW start displaying at PERCENT percentage of its node. */
-extern void window_goto_percentage (WINDOW *window, int percent);
+void window_goto_percentage (WINDOW *window, int percent);
 
 /* Build a new node which has AP printed according to FORMAT as the
    contents. */
-extern NODE *build_message_node (const char *format, va_list ap);
+NODE *build_message_node (const char *format, va_list ap);
 
-extern NODE *format_message_node (const char *format, ...)
+NODE *format_message_node (const char *format, ...)
   TEXINFO_PRINTFLIKE(1,2);
 
 struct text_buffer;
-extern NODE *text_buffer_to_node (struct text_buffer *tb);
+NODE *text_buffer_to_node (struct text_buffer *tb);
 
 /* Make a message appear in the echo area, built from arguments formatted
    according to FORMAT.
 
    The message appears immediately.  If there was
    already a message appearing in the echo area, it is removed. */
-extern void window_message_in_echo_area (const char *format, ...)
+void window_message_in_echo_area (const char *format, ...)
   TEXINFO_PRINTFLIKE(1,2);
 
-extern void vwindow_message_in_echo_area (const char *format, va_list ap);
+void vwindow_message_in_echo_area (const char *format, va_list ap);
 
-extern void free_echo_area (void);
+void free_echo_area (void);
 
 /* Place a temporary message in the echo area built from arguments
    formatted as per FORMAT.
@@ -206,33 +206,28 @@ extern void free_echo_area (void);
    The message appears immediately, but does not destroy
    any existing message.  A future call to unmessage_in_echo_area ()
    restores the old contents. */
-extern void message_in_echo_area (const char *format, ...)
+void message_in_echo_area (const char *format, ...)
   TEXINFO_PRINTFLIKE(1,2);
 
-extern void unmessage_in_echo_area (void);
+void unmessage_in_echo_area (void);
 
 /* Clear the echo area, removing any message that is already present.
    The echo area is cleared immediately. */
-extern void window_clear_echo_area (void);
+void window_clear_echo_area (void);
 
 /* Return the index of the line containing point. */
-extern int window_line_of_point (WINDOW *window);
+int window_line_of_point (WINDOW *window);
 
 /* Get and return the printed column offset of the cursor in this window. */
-extern int window_get_cursor_column (WINDOW *window);
+int window_get_cursor_column (WINDOW *window);
 
-extern size_t process_node_text
-        (WINDOW *win, char *start,
-         int (*fun) (WINDOW *, size_t, size_t, size_t, char *,
-		     size_t, size_t));
+void window_compute_line_map (WINDOW *win);
 
-extern void window_compute_line_map (WINDOW *win);
+int window_point_to_column (WINDOW *win, long point, long *np);
 
-extern int window_point_to_column (WINDOW *win, long point, long *np);
+void window_line_map_init (WINDOW *win);
 
-extern void window_line_map_init (WINDOW *win);
-
-extern long window_log_to_phys_line (WINDOW *window, long ln);
+long window_log_to_phys_line (WINDOW *window, long ln);
 
 void calculate_line_starts (WINDOW *window);
 

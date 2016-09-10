@@ -192,7 +192,8 @@ in detaildescription
 aa
 @end tex
 @end copying
-', {'expanded_formats' => ['tex']}
+', {'expanded_formats' => ['tex']},
+{'expanded_formats' => ['tex']}
 ],
 ['titles',
 '@setfilename html-title.info

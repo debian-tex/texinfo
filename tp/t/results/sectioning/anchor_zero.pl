@@ -71,11 +71,7 @@ $result_trees{'anchor_zero'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => '0',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'normalized' => '0'
           },
           'line_nr' => {
             'file_name' => '',
@@ -130,10 +126,6 @@ $result_trees{'anchor_zero'} = {
                     {}
                   ],
                   'normalized' => '0'
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {

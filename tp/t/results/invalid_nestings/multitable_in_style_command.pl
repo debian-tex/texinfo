@@ -216,30 +216,11 @@ $result_trees{'multitable_in_style_command'} = {
         'prototypes' => [
           {
             'contents' => [],
-            'parent' => {},
             'type' => 'bracketed_multitable_prototype'
           },
           {
             'contents' => [],
-            'parent' => {},
             'type' => 'bracketed_multitable_prototype'
-          }
-        ],
-        'prototypes_line' => [
-          {
-            'text' => ' ',
-            'type' => 'prototype_space'
-          },
-          {},
-          {
-            'text' => ' ',
-            'type' => 'prototype_space'
-          },
-          {},
-          {
-            'text' => '
-',
-            'type' => 'prototype_space'
           }
         ],
         'spaces_after_command' => {}
@@ -293,11 +274,7 @@ $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[1]{'extr
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_in_style_command'}{'contents'}[1];
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[1];
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'};
-$result_trees{'multitable_in_style_command'}{'contents'}[1]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'args'}[0];
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'contents'};
-$result_trees{'multitable_in_style_command'}{'contents'}[1]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'args'}[0];
-$result_trees{'multitable_in_style_command'}{'contents'}[1]{'extra'}{'prototypes_line'}[1] = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'multitable_in_style_command'}{'contents'}[1]{'extra'}{'prototypes_line'}[3] = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[3];
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'parent'} = $result_trees{'multitable_in_style_command'};
 
@@ -316,12 +293,12 @@ truc machin
 
 $result_errors{'multitable_in_style_command'} = [
   {
-    'error_line' => ':1: @code missing close brace
+    'error_line' => ':1: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   },
   {

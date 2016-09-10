@@ -136,7 +136,6 @@ $result_trees{'heading_in_copying'} = {
                   'in_code' => 0,
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
-                  'index_prefix' => 'c',
                   'index_type_command' => 'cindex',
                   'key' => 'cindex copying',
                   'number' => 1,

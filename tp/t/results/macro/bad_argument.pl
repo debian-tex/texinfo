@@ -25,18 +25,7 @@ $result_trees{'bad_argument'} = {
       'extra' => {
         'arg_line' => '
 ',
-        'invalid_syntax' => 1,
-        'macrobody' => 'in macro
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+        'invalid_syntax' => 1
       },
       'line_nr' => {
         'file_name' => '',
@@ -45,7 +34,15 @@ $result_trees{'bad_argument'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -77,18 +74,7 @@ $result_trees{'bad_argument'} = {
       'extra' => {
         'arg_line' => ' abar aaa
 ',
-        'invalid_syntax' => 1,
-        'macrobody' => 'in
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+        'invalid_syntax' => 1
       },
       'line_nr' => {
         'file_name' => '',
@@ -97,7 +83,15 @@ $result_trees{'bad_argument'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -134,21 +128,7 @@ $result_trees{'bad_argument'} = {
       'extra' => {
         'arg_line' => ' aftername {ggg} more
 ',
-        'args_index' => {
-          'ggg' => 0
-        },
-        'invalid_syntax' => 1,
-        'macrobody' => 'in macro
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+        'invalid_syntax' => 1
       },
       'line_nr' => {
         'file_name' => '',
@@ -157,7 +137,15 @@ $result_trees{'bad_argument'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -182,18 +170,7 @@ $result_trees{'bad_argument'} = {
       'extra' => {
         'arg_line' => ' #badname
 ',
-        'invalid_syntax' => 1,
-        'macrobody' => 'in #
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+        'invalid_syntax' => 1
       },
       'line_nr' => {
         'file_name' => '',
@@ -202,40 +179,44 @@ $result_trees{'bad_argument'} = {
       },
       'parent' => {}
     },
-    {}
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    }
   ],
   'type' => 'text_root'
 };
 $result_trees{'bad_argument'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_argument'}{'contents'}[0];
 $result_trees{'bad_argument'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_argument'}{'contents'}[0];
-$result_trees{'bad_argument'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'bad_argument'}{'contents'}[0];
-$result_trees{'bad_argument'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'bad_argument'};
 $result_trees{'bad_argument'}{'contents'}[0]{'parent'} = $result_trees{'bad_argument'};
-$result_trees{'bad_argument'}{'contents'}[1] = $result_trees{'bad_argument'}{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'bad_argument'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'bad_argument'}{'contents'}[0];
+$result_trees{'bad_argument'}{'contents'}[1]{'parent'} = $result_trees{'bad_argument'};
 $result_trees{'bad_argument'}{'contents'}[2]{'parent'} = $result_trees{'bad_argument'};
 $result_trees{'bad_argument'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'bad_argument'}{'contents'}[3];
 $result_trees{'bad_argument'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'bad_argument'}{'contents'}[3];
 $result_trees{'bad_argument'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'bad_argument'}{'contents'}[3];
-$result_trees{'bad_argument'}{'contents'}[3]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'bad_argument'}{'contents'}[3];
-$result_trees{'bad_argument'}{'contents'}[3]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'bad_argument'};
 $result_trees{'bad_argument'}{'contents'}[3]{'parent'} = $result_trees{'bad_argument'};
-$result_trees{'bad_argument'}{'contents'}[4] = $result_trees{'bad_argument'}{'contents'}[3]{'extra'}{'spaces_after_command'};
+$result_trees{'bad_argument'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'bad_argument'}{'contents'}[3];
+$result_trees{'bad_argument'}{'contents'}[4]{'parent'} = $result_trees{'bad_argument'};
 $result_trees{'bad_argument'}{'contents'}[5]{'parent'} = $result_trees{'bad_argument'};
 $result_trees{'bad_argument'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'bad_argument'}{'contents'}[6];
 $result_trees{'bad_argument'}{'contents'}[6]{'args'}[1]{'parent'} = $result_trees{'bad_argument'}{'contents'}[6];
 $result_trees{'bad_argument'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'bad_argument'}{'contents'}[6];
 $result_trees{'bad_argument'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'bad_argument'}{'contents'}[6];
-$result_trees{'bad_argument'}{'contents'}[6]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'bad_argument'}{'contents'}[6];
-$result_trees{'bad_argument'}{'contents'}[6]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'bad_argument'};
 $result_trees{'bad_argument'}{'contents'}[6]{'parent'} = $result_trees{'bad_argument'};
-$result_trees{'bad_argument'}{'contents'}[7] = $result_trees{'bad_argument'}{'contents'}[6]{'extra'}{'spaces_after_command'};
+$result_trees{'bad_argument'}{'contents'}[7]{'extra'}{'command'} = $result_trees{'bad_argument'}{'contents'}[6];
+$result_trees{'bad_argument'}{'contents'}[7]{'parent'} = $result_trees{'bad_argument'};
 $result_trees{'bad_argument'}{'contents'}[8]{'parent'} = $result_trees{'bad_argument'};
 $result_trees{'bad_argument'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'bad_argument'}{'contents'}[9];
 $result_trees{'bad_argument'}{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'bad_argument'}{'contents'}[9];
-$result_trees{'bad_argument'}{'contents'}[9]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'bad_argument'}{'contents'}[9];
-$result_trees{'bad_argument'}{'contents'}[9]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'bad_argument'};
 $result_trees{'bad_argument'}{'contents'}[9]{'parent'} = $result_trees{'bad_argument'};
-$result_trees{'bad_argument'}{'contents'}[10] = $result_trees{'bad_argument'}{'contents'}[9]{'extra'}{'spaces_after_command'};
+$result_trees{'bad_argument'}{'contents'}[10]{'extra'}{'command'} = $result_trees{'bad_argument'}{'contents'}[9];
+$result_trees{'bad_argument'}{'contents'}[10]{'parent'} = $result_trees{'bad_argument'};
 
 $result_texis{'bad_argument'} = '@macro
 in macro

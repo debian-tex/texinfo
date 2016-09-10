@@ -12,6 +12,7 @@ $result_trees{'delcomment'} = {
         {
           'contents' => [
             {
+              'parent' => {},
               'text' => '\\input texinfo
 ',
               'type' => 'preamble_text'
@@ -149,6 +150,7 @@ $result_trees{'delcomment'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'delcomment'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'delcomment'}{'contents'}[0]{'contents'}[0];
 $result_trees{'delcomment'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'delcomment'}{'contents'}[0];
 $result_trees{'delcomment'}{'contents'}[0]{'parent'} = $result_trees{'delcomment'};
 $result_trees{'delcomment'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'delcomment'}{'contents'}[1];

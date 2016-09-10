@@ -12,6 +12,7 @@ $result_trees{'space_in_anchor'} = {
         {
           'contents' => [
             {
+              'parent' => {},
               'text' => '   ',
               'type' => 'empty_spaces_before_argument'
             },
@@ -64,6 +65,7 @@ $result_trees{'space_in_anchor'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'space_in_anchor'}{'contents'}[0];

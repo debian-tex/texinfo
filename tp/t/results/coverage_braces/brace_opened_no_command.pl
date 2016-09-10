@@ -45,11 +45,7 @@ $result_trees{'brace_opened_no_command'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'truc',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'normalized' => 'truc'
           },
           'line_nr' => {
             'file_name' => '',

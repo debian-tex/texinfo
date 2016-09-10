@@ -1308,9 +1308,7 @@ t/results/sectioning/sectioning_part_appendix.pl
 t/results/sectioning/sectioning_part_appendix_no_top.pl
 t/results/sectioning/sections.pl
 t/results/sectioning/semi_auto.pl
-t/results/sectioning/setcontentsaftertitlepage.pl
 t/results/sectioning/setfilename_on_top_and_after_node.pl
-t/results/sectioning/setshortcontentsaftertitlepage.pl
 t/results/sectioning/shortcontents.pl
 t/results/sectioning/space_in_node.pl
 t/results/sectioning/top_chapter_sections.pl

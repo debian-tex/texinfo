@@ -103,12 +103,12 @@ $result_errors{'unclosed_verb_end_of_line_on_misc_line'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: @verb missing close brace
+    'error_line' => ':1: @verb missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@verb missing close brace',
+    'text' => '@verb missing closing brace',
     'type' => 'error'
   }
 ];

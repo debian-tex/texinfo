@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2015 Free Software Foundation, Inc.
+# Copyright (C) 2002-2016 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -58,6 +58,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module getopt-posix:
   # Code from module gettext:
   # Code from module gettext-h:
+  # Code from module hard-locale:
   # Code from module havelib:
   # Code from module iconv:
   # Code from module include_next:
@@ -325,6 +326,7 @@ AC_DEFUN([gl_INIT],
   gl_XALLOC
   gl_gnulib_enabled_btowc=false
   gl_gnulib_enabled_configmake=false
+  gl_gnulib_enabled_30838f5439487421042f2225bed3af76=false
   gl_gnulib_enabled_intprops=false
   gl_gnulib_enabled_langinfo=false
   gl_gnulib_enabled_localcharset=false
@@ -367,6 +369,13 @@ AC_DEFUN([gl_INIT],
     if ! $gl_gnulib_enabled_configmake; then
       gl_CONFIGMAKE_PREP
       gl_gnulib_enabled_configmake=true
+    fi
+  }
+  func_gl_gnulib_m4code_30838f5439487421042f2225bed3af76 ()
+  {
+    if ! $gl_gnulib_enabled_30838f5439487421042f2225bed3af76; then
+      gl_HARD_LOCALE
+      gl_gnulib_enabled_30838f5439487421042f2225bed3af76=true
     fi
   }
   func_gl_gnulib_m4code_intprops ()
@@ -459,7 +468,7 @@ AC_DEFUN([gl_INIT],
   func_gl_gnulib_m4code_f691f076f650964c9f5598c3ee487616 ()
   {
     if ! $gl_gnulib_enabled_f691f076f650964c9f5598c3ee487616; then
-      gl_MSVC_INVAL
+      AC_REQUIRE([gl_MSVC_INVAL])
       if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
         AC_LIBOBJ([msvc-inval])
       fi
@@ -469,7 +478,7 @@ AC_DEFUN([gl_INIT],
   func_gl_gnulib_m4code_676220fa4366efa9bdbfccf11a857c07 ()
   {
     if ! $gl_gnulib_enabled_676220fa4366efa9bdbfccf11a857c07; then
-      gl_MSVC_NOTHROW
+      AC_REQUIRE([gl_MSVC_NOTHROW])
       if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
         AC_LIBOBJ([msvc-nothrow])
       fi
@@ -607,6 +616,9 @@ AC_DEFUN([gl_INIT],
     func_gl_gnulib_m4code_676220fa4366efa9bdbfccf11a857c07
   fi
   if test $HAVE_MBRTOWC = 0 || test $REPLACE_MBRTOWC = 1; then
+    func_gl_gnulib_m4code_30838f5439487421042f2225bed3af76
+  fi
+  if test $HAVE_MBRTOWC = 0 || test $REPLACE_MBRTOWC = 1; then
     func_gl_gnulib_m4code_localcharset
   fi
   if test $ac_use_included_regex = yes; then
@@ -639,6 +651,7 @@ AC_DEFUN([gl_INIT],
   m4_pattern_allow([^gl_GNULIB_ENABLED_])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_btowc], [$gl_gnulib_enabled_btowc])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_configmake], [$gl_gnulib_enabled_configmake])
+  AM_CONDITIONAL([gl_GNULIB_ENABLED_30838f5439487421042f2225bed3af76], [$gl_gnulib_enabled_30838f5439487421042f2225bed3af76])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_intprops], [$gl_gnulib_enabled_intprops])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_langinfo], [$gl_gnulib_enabled_langinfo])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_localcharset], [$gl_gnulib_enabled_localcharset])
@@ -830,6 +843,8 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/glthread/lock.c
   lib/glthread/lock.h
   lib/glthread/threadlib.c
+  lib/hard-locale.c
+  lib/hard-locale.h
   lib/intprops.h
   lib/iswblank.c
   lib/itold.c
@@ -947,6 +962,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/glibc2.m4
   m4/glibc21.m4
   m4/gnulib-common.m4
+  m4/hard-locale.m4
   m4/iconv.m4
   m4/include_next.m4
   m4/intdiv0.m4

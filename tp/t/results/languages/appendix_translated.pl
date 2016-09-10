@@ -359,11 +359,11 @@ $result_errors{'appendix_translated'} = [];
 $result_converted{'plaintext'}->{'appendix_translated'} = 'top
 ***
 
-Appendice A dernier
-*******************
+Annexe A dernier
+****************
 
 top
-Appendice A dernier
+Annexe A dernier
 ';
 
 
@@ -375,8 +375,8 @@ File: ,  Node: Top,  Up: (dir)
 top
 ***
 
-Appendice A dernier
-*******************
+Annexe A dernier
+****************
 
 
 
@@ -438,7 +438,7 @@ ul.no-bullet {list-style: none}
 <h1 class="top">top</h1>
 
 <a name="dernier"></a>
-<h2 class="appendix">Appendice A dernier</h2>
+<h2 class="appendix">Annexe A dernier</h2>
 
 <a name="SEC_Contents"></a>
 <h2 class="contents-heading">Table des mati&egrave;res</h2>
@@ -446,7 +446,7 @@ ul.no-bullet {list-style: none}
 <div class="contents">
 
 <ul class="no-bullet">
-  <li><a name="toc-dernier" href="#dernier">Appendice A dernier</a></li>
+  <li><a name="toc-dernier" href="#dernier">Annexe A dernier</a></li>
 </ul>
 </div>
 

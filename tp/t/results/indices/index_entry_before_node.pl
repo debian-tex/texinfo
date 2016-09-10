@@ -368,7 +368,6 @@ $result_trees{'index_entry_before_node'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => 'lone entry',
               'node' => {},

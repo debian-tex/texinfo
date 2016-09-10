@@ -35,6 +35,11 @@ $result_trees{'exdent_and_formats'} = {
               ],
               'cmdname' => 'TeX',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {

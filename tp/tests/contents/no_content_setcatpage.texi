@@ -2,8 +2,6 @@
 
 @setfilename no_contents_setcatpage.info
 
-@setcontentsaftertitlepage
-
 @node Top
 @top No ccontent
 

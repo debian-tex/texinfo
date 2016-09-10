@@ -1,6 +1,6 @@
 ## DO NOT EDIT! GENERATED AUTOMATICALLY!
 ## Process this file with automake to produce Makefile.in.
-# Copyright (C) 2002-2015 Free Software Foundation, Inc.
+# Copyright (C) 2002-2016 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -294,6 +294,16 @@ EXTRA_DIST += $(top_srcdir)/build-aux/config.rpath
 libgnu_a_SOURCES += gettext.h
 
 ## end   gnulib module gettext-h
+
+## begin gnulib module hard-locale
+
+if gl_GNULIB_ENABLED_30838f5439487421042f2225bed3af76
+libgnu_a_SOURCES += hard-locale.c
+
+endif
+EXTRA_DIST += hard-locale.h
+
+## end   gnulib module hard-locale
 
 ## begin gnulib module havelib
 

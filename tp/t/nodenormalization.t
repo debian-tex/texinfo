@@ -33,10 +33,11 @@ Locale::Messages->select_package ('gettext_pp');
 Locale::Messages::bindtextdomain ('texinfo_document', 't/locales');
 
 my $parser = Texinfo::Parser::parser({'TEST' => 1,
-                                        'include_directories' => [
+                                      'include_directories' => [
                                           't/include_dir/',
                                           't/include/',
-                                          $srcdir.'t/include/'],});
+                                          $srcdir.'t/include/'],
+                                      'expanded_formats' => ['html', 'tex']});
 
 my $invalid_line = '@noindent Text @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent';
 

@@ -603,48 +603,48 @@ exdent line after exdent
 
 $result_errors{'also_not_line'} = [
   {
-    'error_line' => ':3: warning: @page should only appear at a line beginning
+    'error_line' => ':3: warning: @page should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@page should only appear at a line beginning',
+    'text' => '@page should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':14: warning: @page should only appear at a line beginning
+    'error_line' => ':14: warning: @page should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 14,
     'macro' => '',
-    'text' => '@page should only appear at a line beginning',
+    'text' => '@page should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':16: warning: @novalidate should only appear at a line beginning
+    'error_line' => ':16: warning: @novalidate should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 16,
     'macro' => '',
-    'text' => '@novalidate should only appear at a line beginning',
+    'text' => '@novalidate should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: warning: @cropmarks should only appear at a line beginning
+    'error_line' => ':22: warning: @cropmarks should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => '@cropmarks should only appear at a line beginning',
+    'text' => '@cropmarks should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':24: warning: @exdent should only appear at a line beginning
+    'error_line' => ':24: warning: @exdent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 24,
     'macro' => '',
-    'text' => '@exdent should only appear at a line beginning',
+    'text' => '@exdent should only appear at the beginning of a line',
     'type' => 'warning'
   }
 ];

@@ -74,6 +74,7 @@ $result_trees{'unclosed_verb_on_section_line'} = {
         }
       ],
       'cmdname' => 'section',
+      'contents' => [],
       'extra' => {
         'spaces_after_command' => {}
       },

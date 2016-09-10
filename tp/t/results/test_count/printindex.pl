@@ -85,7 +85,6 @@ $result_trees{'printindex'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => 'index entry',
               'node' => {},
@@ -140,7 +139,6 @@ $result_trees{'printindex'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => 'index entry',
               'node' => {},
@@ -195,7 +193,6 @@ $result_trees{'printindex'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => 'looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry',
               'node' => {},
@@ -303,7 +300,6 @@ $result_trees{'printindex'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => 'after index',
               'node' => {},
@@ -397,11 +393,7 @@ $result_trees{'printindex'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'a-counting-anchor',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'normalized' => 'a-counting-anchor'
           },
           'line_nr' => {
             'file_name' => '',
@@ -411,6 +403,7 @@ $result_trees{'printindex'} = {
           'parent' => {}
         },
         {
+          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_spaces_after_close_brace'
@@ -517,6 +510,7 @@ $result_trees{'printindex'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'parent'} 
 $result_trees{'printindex'}{'contents'}[1]{'contents'}[11]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'printindex'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0];
 $result_trees{'printindex'}{'contents'}[1]{'contents'}[11]{'extra'}{'node_content'}[0] = $result_trees{'printindex'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0];
 $result_trees{'printindex'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'printindex'}{'contents'}[1];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[12]{'parent'} = $result_trees{'printindex'}{'contents'}[1];
 $result_trees{'printindex'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'printindex'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'printindex'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'printindex'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'printindex'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'printindex'}{'contents'}[1]{'args'}[0]{'contents'}[0];

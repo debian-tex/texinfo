@@ -21,6 +21,12 @@ $result_trees{'accent_argument'} = {
             },
             {
               'cmdname' => '~',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -130,6 +136,7 @@ $result_trees{'accent_argument'} = {
           [
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }
@@ -139,11 +146,7 @@ $result_trees{'accent_argument'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -166,6 +169,12 @@ $result_trees{'accent_argument'} = {
             },
             {
               'cmdname' => '~',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -263,6 +272,7 @@ $result_trees{'accent_argument'} = {
           [
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }
@@ -272,11 +282,7 @@ $result_trees{'accent_argument'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -306,6 +312,7 @@ $result_trees{'accent_argument'}{'contents'}[0]{'extra'}{'block_command_line_con
 $result_trees{'accent_argument'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'accent_argument'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
 $result_trees{'accent_argument'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1];
 $result_trees{'accent_argument'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'accent_argument'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'accent_argument'}{'contents'}[0]{'line_nr'} = $result_trees{'accent_argument'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'accent_argument'}{'contents'}[0]{'parent'} = $result_trees{'accent_argument'};
 $result_trees{'accent_argument'}{'contents'}[1]{'parent'} = $result_trees{'accent_argument'};
 $result_trees{'accent_argument'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'accent_argument'}{'contents'}[2];
@@ -331,6 +338,7 @@ $result_trees{'accent_argument'}{'contents'}[2]{'extra'}{'block_command_line_con
 $result_trees{'accent_argument'}{'contents'}[2]{'extra'}{'command_as_argument'} = $result_trees{'accent_argument'}{'contents'}[2]{'extra'}{'block_command_line_contents'}[0][0];
 $result_trees{'accent_argument'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1];
 $result_trees{'accent_argument'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'accent_argument'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'accent_argument'}{'contents'}[2]{'line_nr'} = $result_trees{'accent_argument'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'accent_argument'}{'contents'}[2]{'parent'} = $result_trees{'accent_argument'};
 
 $result_texis{'accent_argument'} = '@itemize @~@comment

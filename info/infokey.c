@@ -1,5 +1,5 @@
 /* infokey.c -- compile ~/.infokey to ~/.info.
-   $Id: infokey.c 5927 2014-11-14 13:32:00Z gavin $
+   $Id: infokey.c 7040 2016-03-04 19:33:07Z gavin $
 
    Copyright 1999, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009,
    2010, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
@@ -463,9 +463,12 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
                       int keymap_bind_keyseq (Keymap, int *, KEYMAP_ENTRY *);
 
                       KEYMAP_ENTRY ke;
+                      static InfoCommand invalid_function = { 0 };
                       
                       ke.type = ISFUNC;
-                      ke.value.function = &function_doc_array[a];
+                      ke.value.function = a != A_INVALID
+                                            ? &function_doc_array[a]
+                                            : &invalid_function;
                       To_seq (0);
 
                       if (section == info)

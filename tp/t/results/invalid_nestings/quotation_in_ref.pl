@@ -64,6 +64,7 @@ $result_trees{'quotation_in_ref'} = {
                 {
                   'contents' => [
                     {
+                      'parent' => {},
                       'text' => '
 ',
                       'type' => 'empty_spaces_before_argument'
@@ -80,19 +81,14 @@ $result_trees{'quotation_in_ref'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 3,
                 'macro' => ''
               },
-              'parent' => {},
-              'remaining_args' => 3
+              'parent' => {}
             }
           ],
           'parent' => {},
@@ -219,6 +215,7 @@ $result_trees{'quotation_in_ref'}{'contents'}[1]{'args'}[0]{'parent'} = $result_
 $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'quotation_in_ref'}{'contents'}[1];
 $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1];
 $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -290,12 +287,12 @@ $result_menus{'quotation_in_ref'} = {
 
 $result_errors{'quotation_in_ref'} = [
   {
-    'error_line' => ':3: @xref missing close brace
+    'error_line' => ':3: @xref missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@xref missing close brace',
+    'text' => '@xref missing closing brace',
     'type' => 'error'
   },
   {

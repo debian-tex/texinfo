@@ -8,7 +8,6 @@
 <node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 
 <html endspaces=" ">
-This is html text.
 </html>
 
 
@@ -20,7 +19,6 @@ This is html text.
 </para>
 
 <tex endspaces=" ">
-This is tex text.
 </tex>
 
 

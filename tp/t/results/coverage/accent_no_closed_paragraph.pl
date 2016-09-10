@@ -77,12 +77,12 @@ $result_texts{'accent_no_closed_paragraph'} = 'e
 
 $result_errors{'accent_no_closed_paragraph'} = [
   {
-    'error_line' => ':1: @~ missing close brace
+    'error_line' => ':1: @~ missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@~ missing close brace',
+    'text' => '@~ missing closing brace',
     'type' => 'error'
   }
 ];

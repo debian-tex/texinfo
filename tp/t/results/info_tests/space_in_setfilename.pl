@@ -69,8 +69,8 @@ $result_trees{'space_in_setfilename'} = {
           ],
           'cmdname' => 'setfilename',
           'extra' => {
-            'spaces_after_command' => {},
-            'text_arg' => '  name  '
+            'missing_argument' => 1,
+            'spaces_after_command' => {}
           },
           'line_nr' => {},
           'parent' => {}
@@ -207,20 +207,29 @@ $result_errors{'space_in_setfilename'} = [
     'macro' => '',
     'text' => '@verb should not appear in @setfilename',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: bad argument to @setfilename: @ @verb{: name :}@
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'bad argument to @setfilename: @ @verb{: name :}@',
+    'type' => 'error'
   }
 ];
 
 
 
-$result_converted{'info'}->{'space_in_setfilename'} = 'This is   name  , produced from .
+$result_converted{'info'}->{'space_in_setfilename'} = 'This is , produced from .
 
 
-File:   name  ,  Node: Top,  Up: (dir)
+File: ,  Node: Top,  Up: (dir)
 
 
 
 Tag Table:
-Node: Top35
+Node: Top27
 
 End Tag Table
 ';

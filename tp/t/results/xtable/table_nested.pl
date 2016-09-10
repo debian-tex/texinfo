@@ -151,38 +151,7 @@ $result_trees{'table_nested'} = {
       ],
       'extra' => {
         'arg_line' => ' myvtable
-',
-        'macrobody' => '@vtable @asis
-@item first item
-@itemx second itemx
-
-Text.
-
-@item second item
-
-Text 2
-
-@item last
-@end vtable
-
-Something.
-@table @emph
-@item in item
-Text without blank line
-@item second item
-Text without blank line 2
-@end table
-After table.
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -191,7 +160,15 @@ After table.
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -235,6 +212,12 @@ After table.
                 },
                 {
                   'cmdname' => 'asis',
+                  'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 27,
+                    'macro' => 'myvtable'
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -293,7 +276,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'first item',
                           'number' => 1
@@ -346,7 +328,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'itemx',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'second itemx',
                           'number' => 2
@@ -440,7 +421,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'second item',
                           'number' => 3
@@ -534,7 +514,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'last',
                           'number' => 4
@@ -609,11 +588,7 @@ After table.
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 27,
-            'macro' => 'myvtable'
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -647,6 +622,12 @@ After table.
                 },
                 {
                   'cmdname' => 'emph',
+                  'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 27,
+                    'macro' => 'myvtable'
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -855,11 +836,7 @@ After table.
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 27,
-            'macro' => 'myvtable'
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -969,6 +946,12 @@ After table.
                 },
                 {
                   'cmdname' => 'asis',
+                  'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 32,
+                    'macro' => 'myvtable'
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -1027,7 +1010,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'first item',
                           'number' => 5
@@ -1080,7 +1062,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'itemx',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'second itemx',
                           'number' => 6
@@ -1174,7 +1155,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'second item',
                           'number' => 7
@@ -1268,7 +1248,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'last',
                           'number' => 8
@@ -1343,11 +1322,7 @@ After table.
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 32,
-            'macro' => 'myvtable'
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -1381,6 +1356,12 @@ After table.
                 },
                 {
                   'cmdname' => 'emph',
+                  'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 32,
+                    'macro' => 'myvtable'
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -1589,11 +1570,7 @@ After table.
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 32,
-            'macro' => 'myvtable'
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -1715,6 +1692,12 @@ After table.
                     },
                     {
                       'cmdname' => 'asis',
+                      'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 38,
+                        'macro' => 'myvtable'
+                      },
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },
@@ -1773,7 +1756,6 @@ After table.
                               'in_code' => 1,
                               'index_at_command' => 'item',
                               'index_name' => 'vr',
-                              'index_prefix' => 'v',
                               'index_type_command' => 'vtable',
                               'key' => 'first item',
                               'number' => 9
@@ -1826,7 +1808,6 @@ After table.
                               'in_code' => 1,
                               'index_at_command' => 'itemx',
                               'index_name' => 'vr',
-                              'index_prefix' => 'v',
                               'index_type_command' => 'vtable',
                               'key' => 'second itemx',
                               'number' => 10
@@ -1920,7 +1901,6 @@ After table.
                               'in_code' => 1,
                               'index_at_command' => 'item',
                               'index_name' => 'vr',
-                              'index_prefix' => 'v',
                               'index_type_command' => 'vtable',
                               'key' => 'second item',
                               'number' => 11
@@ -2014,7 +1994,6 @@ After table.
                               'in_code' => 1,
                               'index_at_command' => 'item',
                               'index_name' => 'vr',
-                              'index_prefix' => 'v',
                               'index_type_command' => 'vtable',
                               'key' => 'last',
                               'number' => 12
@@ -2089,11 +2068,7 @@ After table.
                 'end_command' => {},
                 'spaces_after_command' => {}
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 38,
-                'macro' => 'myvtable'
-              },
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -2127,6 +2102,12 @@ After table.
                     },
                     {
                       'cmdname' => 'emph',
+                      'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 38,
+                        'macro' => 'myvtable'
+                      },
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },
@@ -2335,11 +2316,7 @@ After table.
                 'end_command' => {},
                 'spaces_after_command' => {}
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 38,
-                'macro' => 'myvtable'
-              },
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -2485,10 +2462,9 @@ $result_trees{'table_nested'}{'contents'}[0]{'contents'}[18]{'parent'} = $result
 $result_trees{'table_nested'}{'contents'}[0]{'contents'}[19]{'parent'} = $result_trees{'table_nested'}{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[0]{'contents'}[20]{'parent'} = $result_trees{'table_nested'}{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[0]{'contents'}[21]{'parent'} = $result_trees{'table_nested'}{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'table_nested'}{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'table_nested'};
 $result_trees{'table_nested'}{'contents'}[0]{'parent'} = $result_trees{'table_nested'};
-$result_trees{'table_nested'}{'contents'}[1] = $result_trees{'table_nested'}{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'table_nested'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'table_nested'}{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[1]{'parent'} = $result_trees{'table_nested'};
 $result_trees{'table_nested'}{'contents'}[2]{'parent'} = $result_trees{'table_nested'};
 $result_trees{'table_nested'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[3];
 $result_trees{'table_nested'}{'contents'}[3]{'parent'} = $result_trees{'table_nested'};
@@ -2571,6 +2547,7 @@ $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'extra'}{'block_comm
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'contents'}[3];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'table_nested'}{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'table_nested'}{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[3];
@@ -2618,6 +2595,7 @@ $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'extra'}{'block_comm
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'contents'}[2];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'table_nested'}{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[5];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[5]{'parent'} = $result_trees{'table_nested'}{'contents'}[4];
@@ -2714,6 +2692,7 @@ $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'extra'}{'block_comm
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'contents'}[3];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'table_nested'}{'contents'}[7];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[2];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[2];
@@ -2761,6 +2740,7 @@ $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'extra'}{'block_comm
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'contents'}[2];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'parent'} = $result_trees{'table_nested'}{'contents'}[7];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[4]{'parent'} = $result_trees{'table_nested'}{'contents'}[7];
@@ -2859,6 +2839,7 @@ $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'ext
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'contents'}[3];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[3];
@@ -2906,6 +2887,7 @@ $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'ext
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'contents'}[2];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[5];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1];

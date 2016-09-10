@@ -24,6 +24,7 @@ $result_trees{'inlineifsetifclear'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_before_argument'
                 },
@@ -48,11 +49,7 @@ $result_trees{'inlineifsetifclear'} = {
               ]
             ],
             'expand_index' => 1,
-            'format' => 'aaa',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'format' => 'aaa'
           },
           'line_nr' => {
             'file_name' => '',
@@ -91,18 +88,9 @@ $result_trees{'inlineifsetifclear'} = {
               'type' => 'brace_command_arg'
             },
             {
-              'contents' => [
-                {
-                  'text' => ' ',
-                  'type' => 'empty_spaces_before_argument'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'ifset first '
-                }
-              ],
+              'contents' => [],
               'parent' => {},
-              'type' => 'brace_command_arg'
+              'type' => 'elided'
             }
           ],
           'cmdname' => 'inlineifset',
@@ -112,15 +100,9 @@ $result_trees{'inlineifsetifclear'} = {
               [
                 {}
               ],
-              [
-                {}
-              ]
+              undef
             ],
-            'format' => 'aaa',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'format' => 'aaa'
           },
           'line_nr' => {
             'file_name' => '',
@@ -189,18 +171,9 @@ $result_trees{'inlineifsetifclear'} = {
               'type' => 'brace_command_arg'
             },
             {
-              'contents' => [
-                {
-                  'text' => ' ',
-                  'type' => 'empty_spaces_before_argument'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'ifclear second '
-                }
-              ],
+              'contents' => [],
               'parent' => {},
-              'type' => 'brace_command_arg'
+              'type' => 'elided'
             }
           ],
           'cmdname' => 'inlineifclear',
@@ -210,15 +183,9 @@ $result_trees{'inlineifsetifclear'} = {
               [
                 {}
               ],
-              [
-                {}
-              ]
+              undef
             ],
-            'format' => 'aaa',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'format' => 'aaa'
           },
           'line_nr' => {
             'file_name' => '',
@@ -259,6 +226,7 @@ $result_trees{'inlineifsetifclear'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_before_argument'
                 },
@@ -283,11 +251,7 @@ $result_trees{'inlineifsetifclear'} = {
               ]
             ],
             'expand_index' => 1,
-            'format' => 'aaa',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'format' => 'aaa'
           },
           'line_nr' => {
             'file_name' => '',
@@ -310,6 +274,7 @@ $result_trees{'inlineifsetifclear'} = {
 };
 $result_trees{'inlineifsetifclear'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'inlineifsetifclear'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[0]{'contents'}[0];
+$result_trees{'inlineifsetifclear'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[0]{'contents'}[0]{'args'}[1];
 $result_trees{'inlineifsetifclear'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[0]{'contents'}[0]{'args'}[1];
 $result_trees{'inlineifsetifclear'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[0]{'contents'}[0];
 $result_trees{'inlineifsetifclear'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'inlineifsetifclear'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
@@ -320,10 +285,8 @@ $result_trees{'inlineifsetifclear'}{'contents'}[0]{'parent'} = $result_trees{'in
 $result_trees{'inlineifsetifclear'}{'contents'}[1]{'parent'} = $result_trees{'inlineifsetifclear'};
 $result_trees{'inlineifsetifclear'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'inlineifsetifclear'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[2]{'contents'}[0];
-$result_trees{'inlineifsetifclear'}{'contents'}[2]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[2]{'contents'}[0]{'args'}[1];
 $result_trees{'inlineifsetifclear'}{'contents'}[2]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[2]{'contents'}[0];
 $result_trees{'inlineifsetifclear'}{'contents'}[2]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'inlineifsetifclear'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'inlineifsetifclear'}{'contents'}[2]{'contents'}[0]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'inlineifsetifclear'}{'contents'}[2]{'contents'}[0]{'args'}[1]{'contents'}[1];
 $result_trees{'inlineifsetifclear'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[2];
 $result_trees{'inlineifsetifclear'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[2];
 $result_trees{'inlineifsetifclear'}{'contents'}[2]{'parent'} = $result_trees{'inlineifsetifclear'};
@@ -334,16 +297,15 @@ $result_trees{'inlineifsetifclear'}{'contents'}[4]{'parent'} = $result_trees{'in
 $result_trees{'inlineifsetifclear'}{'contents'}[5]{'parent'} = $result_trees{'inlineifsetifclear'};
 $result_trees{'inlineifsetifclear'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[6]{'contents'}[0]{'args'}[0];
 $result_trees{'inlineifsetifclear'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[6]{'contents'}[0];
-$result_trees{'inlineifsetifclear'}{'contents'}[6]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[6]{'contents'}[0]{'args'}[1];
 $result_trees{'inlineifsetifclear'}{'contents'}[6]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[6]{'contents'}[0];
 $result_trees{'inlineifsetifclear'}{'contents'}[6]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'inlineifsetifclear'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'inlineifsetifclear'}{'contents'}[6]{'contents'}[0]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'inlineifsetifclear'}{'contents'}[6]{'contents'}[0]{'args'}[1]{'contents'}[1];
 $result_trees{'inlineifsetifclear'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[6];
 $result_trees{'inlineifsetifclear'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[6];
 $result_trees{'inlineifsetifclear'}{'contents'}[6]{'parent'} = $result_trees{'inlineifsetifclear'};
 $result_trees{'inlineifsetifclear'}{'contents'}[7]{'parent'} = $result_trees{'inlineifsetifclear'};
 $result_trees{'inlineifsetifclear'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[8]{'contents'}[0]{'args'}[0];
 $result_trees{'inlineifsetifclear'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[8]{'contents'}[0];
+$result_trees{'inlineifsetifclear'}{'contents'}[8]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[8]{'contents'}[0]{'args'}[1];
 $result_trees{'inlineifsetifclear'}{'contents'}[8]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[8]{'contents'}[0]{'args'}[1];
 $result_trees{'inlineifsetifclear'}{'contents'}[8]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'inlineifsetifclear'}{'contents'}[8]{'contents'}[0];
 $result_trees{'inlineifsetifclear'}{'contents'}[8]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'inlineifsetifclear'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[0];
@@ -354,11 +316,11 @@ $result_trees{'inlineifsetifclear'}{'contents'}[8]{'parent'} = $result_trees{'in
 
 $result_texis{'inlineifsetifclear'} = '@inlineifclear{aaa, iclear first }.
 
-@inlineifset{aaa, ifset first }.
+@inlineifset{aaa,}.
 
 @set aaa
 
-@inlineifclear{aaa, ifclear second }.
+@inlineifclear{aaa,}.
 
 @inlineifset{aaa, ifset second }.
 ';
@@ -401,11 +363,11 @@ $result_converted{'html_text'}->{'inlineifsetifclear'} = '<p>iclear first .
 
 $result_converted{'xml'}->{'inlineifsetifclear'} = '<para><inlineifclear><inlineifclearformat>aaa</inlineifclearformat><inlineifclearcontent spaces=" ">iclear first </inlineifclearcontent></inlineifclear>.
 </para>
-<para><inlineifset><inlineifsetformat>aaa</inlineifsetformat><inlineifsetcontent spaces=" ">ifset first </inlineifsetcontent></inlineifset>.
+<para><inlineifset><inlineifsetformat>aaa</inlineifsetformat></inlineifset>.
 </para>
 <set name="aaa" line=" aaa"></set>
 
-<para><inlineifclear><inlineifclearformat>aaa</inlineifclearformat><inlineifclearcontent spaces=" ">ifclear second </inlineifclearcontent></inlineifclear>.
+<para><inlineifclear><inlineifclearformat>aaa</inlineifclearformat></inlineifclear>.
 </para>
 <para><inlineifset><inlineifsetformat>aaa</inlineifsetformat><inlineifsetcontent spaces=" ">ifset second </inlineifsetcontent></inlineifset>.
 </para>';

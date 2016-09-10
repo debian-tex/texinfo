@@ -14,11 +14,13 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => '\\input texinfo
 ',
                   'type' => 'preamble_text'
                 },
                 {
+                  'parent' => {},
                   'text' => '
 ',
                   'type' => 'preamble_text'
@@ -1142,10 +1144,6 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_00e4-_00eb-_00ef-_00f6-_00fc-_00ff-_00c4-_00cb-_00cf-_00d6-_00dc'
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -1187,10 +1185,6 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_00e9'
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -1232,10 +1226,6 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_00e0-_00e8-_00f9'
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -1277,10 +1267,6 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_00e2-_00ea-_00ee-_00f4-_00fb-_00c2-_00ca-_00ce-_00d4-_00db'
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -1322,10 +1308,6 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_00e7'
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -1388,7 +1370,6 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => "\x{e4} \x{eb} \x{ef} \x{f6} \x{fc} \x{ff}",
               'node' => {},
@@ -1443,7 +1424,6 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => "\x{c4} \x{cb} \x{cf} \x{d6} \x{dc}",
               'node' => {},
@@ -1498,7 +1478,6 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => "\x{e9}",
               'node' => {},
@@ -1553,7 +1532,6 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => "\x{e8}",
               'node' => {},
@@ -1608,7 +1586,6 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => "\x{e2} \x{ea} \x{ee} \x{f4} \x{fb} \x{c2} \x{ca} \x{ce} \x{d4} \x{db}",
               'node' => {},
@@ -1663,7 +1640,6 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => "\x{e7}",
               'node' => {},
@@ -1717,6 +1693,8 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'char_latin1_utf8_in_refs'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'char_latin1_utf8_in_refs'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[0]{'contents'}[0];
 $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[0];
 $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[0]{'contents'}[1];

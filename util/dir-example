@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example 6905 2016-01-01 18:33:25Z karl $
+$Id: dir-example 7140 2016-04-26 16:50:27Z karl $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -17,7 +17,7 @@ This is the Info main menu (aka directory node).
 A few useful Info commands:
 
   `q' quits;
-  `?' lists all Info commands;
+  `H' lists all Info commands;
   `h' starts the Info tutorial;
   `mTexinfo RET' visits the Texinfo manual, etc.
 
@@ -306,12 +306,13 @@ TeX
 * EpsPDF: (epspdf).             Portable GUI&cmdline EPS-to-PDF conversion.
 * Kpathsea: (kpathsea).         File lookup along search paths.
 * LaTeX2e: (latex2e).           LaTeX2e unofficial reference manual.
-* LaTeX2e-es: (latex2e-es).     Spanish translation of LaTeX2e.
+* LaTeX2e-es: (latex2e-es).     Spanish translation of latex2e.
+* LaTeX2e-fr: (latex2e-fr).     French translation of latex2e.
 * Mf2pt1: (mf2pt1).             Make PostScript Type 1 fonts from Metafont.
 * Naming TeX fonts: (fontname). Filenames for TeX fonts.
 * TDS: (tds).                   Standard TeX directory structure.
 * TeXDraw: (texdraw).           Drawing PostScript diagrams within TeX.
-* TL-build: (tlbuild).          TeX Live configuration and development.
+* TLbuild: (tlbuild).           TeX Live configuration and development.
 * Web2C: (web2c).               TeX, Metafont, and companion programs.
 
 Typesetting
@@ -349,6 +350,7 @@ Individual utilities
 * autoscan: (autoconf)autoscan Invocation.     Semi-automated `configure.ac'.
 * autoupdate: (autoconf)autoupdate Invocation.  Automatic configure.ac update.
 * awk: (gawk)Invoking gawk.                     Text scanning and processing.
+* base32: (coreutils)base32 invocation.         Base32 encode/decode data.
 * base64: (coreutils)base64 invocation.         Base64 encode/decode data.
 * basename: (coreutils)basename invocation.     Strip directory and suffix.
 * bibtex: (web2c)BibTeX invocation.             Maintaining bibliographies.

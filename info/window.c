@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c 6608 2015-09-10 12:56:42Z gavin $
+   $Id: window.c 7334 2016-09-03 16:47:27Z gavin $
 
    Copyright 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008,
    2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -825,8 +825,8 @@ window_line_of_point (WINDOW *window)
   if (!window->line_starts)
     calculate_line_starts (window);
 
-  /* Try to optimize.  Check to see if point is past the pagetop for
-     this window, and if so, start searching forward from there. */
+  /* Check if point is past the pagetop for this window, and if so, start 
+     searching forward from there. */
   if (window->pagetop > -1 && window->pagetop < window->line_count
       && window->line_starts[window->pagetop] <= window->point)
     start = window->pagetop;
@@ -837,13 +837,10 @@ window_line_of_point (WINDOW *window)
         break;
     }
 
-  /* Something is wrong with the above logic as it allows a negative
-     index to be returned for small windows.  Until someone figures it
-     out, at least don&#39;t core dump. */
   if (i > 0)
     return i - 1;
   else
-    return 0;
+    return 0; /* Shouldn't happen */
 }
 
 /* Get and return the printed column offset of the cursor in this window. */
@@ -897,81 +894,42 @@ window_make_modeline (WINDOW *window)
   /* Calculate the maximum size of the information to stick in MODELINE. */
   {
     int modeline_len = 0;
-    char *parent = NULL, *filename = "*no file*";
     char *nodename = "*no node*";
     NODE *node = window->node;
+    char *name;
+    int dot;
 
-    if (node)
+    if (node && node->nodename)
+      nodename = node->nodename;
+
+    name = filename_non_directory (node->fullpath);
+
+    /* 10 for the decimal representation of the number of lines in this
+       node, and the remainder of the text that can appear in the line. */
+    modeline_len += 10 + strlen (_("-----Info: (), lines ----, "));
+    modeline_len += 3; /* strlen (location_indicator) */
+    modeline_len += strlen (name);
+    if (nodename)
+      modeline_len += strlen (nodename);
+    if (modeline_len < window->width)
+      modeline_len = window->width;
+
+    modeline = xcalloc (1, 1 + modeline_len);
+
+    sprintf (modeline + strlen (modeline), "-----Info: ");
+
+    /* Omit any extension like ".info.gz" from file name. */
+    dot = strcspn (name, ".");
+
+    if (name && strcmp ("", name))
       {
-        if (node->nodename)
-          nodename = node->nodename;
-
-        if (node->subfile)
-          {
-            parent = filename_non_directory (node->fullpath);
-            filename = filename_non_directory (node->subfile);
-          }
-        else
-          {
-            parent = 0;
-            filename = filename_non_directory (node->fullpath);
-          }
+        sprintf (modeline + strlen (modeline), "(");
+        strncpy (modeline + strlen (modeline), name, dot);
+        sprintf (modeline + strlen (modeline), ")");
       }
-
-    if (preprocess_nodes_p)
-      {
-        char *name;
-        int dot;
-
-        name = filename_non_directory (node->fullpath);
-
-        modeline_len += strlen ("--Info:() --");
-        modeline_len += 3; /* strlen (location_indicator) */
-        modeline_len += strlen (name);
-        if (nodename) modeline_len += strlen (nodename);
-        if (modeline_len < window->width)
-          modeline_len = window->width;
-
-        modeline = xcalloc (1, 1 + modeline_len);
-
-        sprintf (modeline + strlen (modeline), "%s", location_indicator);
-        sprintf (modeline + strlen (modeline), "--Info: ");
-
-        /* Omit any extension like ".info.gz" from file name. */
-        dot = strcspn (name, ".");
-
-        if (name && strcmp ("", name))
-          {
-            sprintf (modeline + strlen (modeline), "(");
-            strncpy (modeline + strlen (modeline), name, dot);
-            sprintf (modeline + strlen (modeline), ")");
-          }
-        sprintf (modeline + strlen (modeline), "%s--", nodename);
-      }
-    else
-      {
-        modeline_len += strlen (filename);
-        modeline_len += strlen (nodename);
-        modeline_len += 4;          /* strlen (location_indicator). */
-
-        /* 10 for the decimal representation of the number of lines in this
-           node, and the remainder of the text that can appear in the line. */
-        modeline_len += 10 + strlen (_("-----Info: (), lines ----, "));
-        modeline_len += window->width;
-
-        modeline = xmalloc (1 + modeline_len);
-
-        /* Special internal windows have no filename. */
-        if (!filename || !*filename)
-          sprintf (modeline, _("-%s---Info: %s, %ld lines --%s--"),
-                   (window->flags & W_NoWrap) ? "$" : "-",
-                   nodename, window->line_count, location_indicator);
-        else
-          sprintf (modeline, _("-%s---Info: (%s)%s, %ld lines --%s--"),
-                   (window->flags & W_NoWrap) ? "$" : "-",
-                   parent ? parent : filename,
-                   nodename, window->line_count, location_indicator);
-      }
+    sprintf (modeline + strlen (modeline),
+             "%s, %ld lines --%s",
+             nodename, window->line_count, location_indicator);
 
     i = strlen (modeline);
 
@@ -1153,6 +1111,11 @@ collect_line_starts (WINDOW *win, long ll_num, long pl_start)
   win->log_line_no[win->line_count - 1] = ll_num;
 }
 
+#define NO_NODELINE 0
+#define PRINT_NODELINE 1
+#define NODELINE_POINTERS_ONLY 2
+int nodeline_print = 2;
+
 /* Calculate a list of line starts for the node belonging to WINDOW.  The
    line starts are offsets within WINDOW->node->contents.
 
@@ -1162,7 +1125,7 @@ void
 calculate_line_starts (WINDOW *win)
 {
   long pl_chars = 0;     /* Number of characters in line so far. */
-  long pl_start = 0;     /* Offset of start of current physical line. */
+  long pl_start;         /* Offset of start of current physical line. */
   long ll_num = 0;       /* Number of logical lines */
   mbi_iterator_t iter;
 
@@ -1177,7 +1140,34 @@ calculate_line_starts (WINDOW *win)
   if (!win->node)
     return;
 
-  for (mbi_init (iter, win->node->contents, win->node->nodelen);
+  pl_start = 0;
+  if (nodeline_print != PRINT_NODELINE
+      && !memcmp (win->node->contents, "File:", strlen ("File:")))
+    {
+      char *s = strchr (win->node->contents, '\n');
+      if (s && nodeline_print == NO_NODELINE)
+        {
+          pl_start = s - win->node->contents + 1;
+        }
+      else if (s && nodeline_print == NODELINE_POINTERS_ONLY)
+        {
+          char *s2;
+          char saved = *s;
+          *s = '\0';
+          s2 = strstr (win->node->contents, "Next: ");
+          if (!s2)
+            s2 = strstr (win->node->contents, "Prev: ");
+          if (!s2)
+            s2 = strstr (win->node->contents, "Up: ");
+          if (s2)
+            pl_start = s2 - win->node->contents;
+          *s = saved;
+        }
+    }
+
+  for (mbi_init (iter,
+                 win->node->contents + pl_start,
+                 win->node->nodelen - pl_start);
        mbi_avail (iter);
        mbi_advance (iter))
     {

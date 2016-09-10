@@ -36,21 +36,7 @@ $result_trees{'expansion_order'} = {
       ],
       'extra' => {
         'arg_line' => ' bidule{arg}
-',
-        'args_index' => {
-          'arg' => 0
-        },
-        'macrobody' => '@machin{}
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -59,7 +45,15 @@ $result_trees{'expansion_order'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -96,19 +90,7 @@ $result_trees{'expansion_order'} = {
       ],
       'extra' => {
         'arg_line' => ' machin
-',
-        'macrobody' => '\\\\arg\\\\
-
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -117,7 +99,15 @@ $result_trees{'expansion_order'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -148,19 +138,17 @@ $result_trees{'expansion_order'}{'contents'}[0]{'args'}[0]{'parent'} = $result_t
 $result_trees{'expansion_order'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'expansion_order'}{'contents'}[0];
 $result_trees{'expansion_order'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'expansion_order'}{'contents'}[0];
 $result_trees{'expansion_order'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'expansion_order'}{'contents'}[0];
-$result_trees{'expansion_order'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'expansion_order'}{'contents'}[0];
-$result_trees{'expansion_order'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'expansion_order'};
 $result_trees{'expansion_order'}{'contents'}[0]{'parent'} = $result_trees{'expansion_order'};
-$result_trees{'expansion_order'}{'contents'}[1] = $result_trees{'expansion_order'}{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'expansion_order'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'expansion_order'}{'contents'}[0];
+$result_trees{'expansion_order'}{'contents'}[1]{'parent'} = $result_trees{'expansion_order'};
 $result_trees{'expansion_order'}{'contents'}[2]{'parent'} = $result_trees{'expansion_order'};
 $result_trees{'expansion_order'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'expansion_order'}{'contents'}[3];
 $result_trees{'expansion_order'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'expansion_order'}{'contents'}[3];
 $result_trees{'expansion_order'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'expansion_order'}{'contents'}[3];
 $result_trees{'expansion_order'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'expansion_order'}{'contents'}[3];
-$result_trees{'expansion_order'}{'contents'}[3]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'expansion_order'}{'contents'}[3];
-$result_trees{'expansion_order'}{'contents'}[3]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'expansion_order'};
 $result_trees{'expansion_order'}{'contents'}[3]{'parent'} = $result_trees{'expansion_order'};
-$result_trees{'expansion_order'}{'contents'}[4] = $result_trees{'expansion_order'}{'contents'}[3]{'extra'}{'spaces_after_command'};
+$result_trees{'expansion_order'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'expansion_order'}{'contents'}[3];
+$result_trees{'expansion_order'}{'contents'}[4]{'parent'} = $result_trees{'expansion_order'};
 $result_trees{'expansion_order'}{'contents'}[5]{'parent'} = $result_trees{'expansion_order'};
 $result_trees{'expansion_order'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'expansion_order'}{'contents'}[6];
 $result_trees{'expansion_order'}{'contents'}[6]{'parent'} = $result_trees{'expansion_order'};

@@ -155,12 +155,12 @@ $result_sectioning{'section_on_index_entry_line'}{'section_childs'}[0]{'section_
 
 $result_errors{'section_on_index_entry_line'} = [
   {
-    'error_line' => ':1: warning: @section should only appear at a line beginning
+    'error_line' => ':1: warning: @section should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@section should only appear at a line beginning',
+    'text' => '@section should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

@@ -96,12 +96,12 @@ $result_texts{'footnote_not_closed'} = 'AAA';
 
 $result_errors{'footnote_not_closed'} = [
   {
-    'error_line' => ':1: @footnote missing close brace
+    'error_line' => ':1: @footnote missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@footnote missing close brace',
+    'text' => '@footnote missing closing brace',
     'type' => 'error'
   }
 ];

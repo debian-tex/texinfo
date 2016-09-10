@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c 6906 2016-01-01 18:33:45Z karl $
+   $Id: info.c 7027 2016-02-21 14:24:56Z gavin $
 
    Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
@@ -165,7 +165,9 @@ static void info_short_help (void);
 static void init_messages (void);
 
 
-/* Interpret the first non-option argument, either by looking it up as a dir 
+/* Find the first file to load (and possibly the first node as well).
+   If the --file option is given, use that as the file, otherwise try to
+   interpret the first non-option argument, either by looking it up as a dir 
    entry, looking for a file by that name, or finding a man page by that name.  
    Set INITIAL_FILE to the name of the initial Info file. */
 static void
@@ -173,14 +175,69 @@ get_initial_file (int *argc, char ***argv, char **error)
 {
   REFERENCE *entry;
 
+  /* User used "--file". */
+  if (user_filename)
+    {
+      if (!IS_ABSOLUTE(user_filename) && HAS_SLASH(user_filename)
+          && !(user_filename[0] == '.' && IS_SLASH(user_filename[1])))
+        {
+          /* Prefix "./" to the filename to prevent a lookup
+             in INFOPATH.  */
+          char *s;
+          asprintf (&s, "%s%s", "./", user_filename);
+          free (user_filename);
+          user_filename = s;
+        }
+      if (IS_ABSOLUTE(user_filename) || HAS_SLASH(user_filename))
+        initial_file = info_add_extension (0, user_filename, 0);
+      else
+        initial_file = info_find_fullpath (user_filename, 0);
+
+      if (!initial_file)
+        {
+          if (!filesys_error_number)
+            filesys_error_number = ENOENT;
+          *error = filesys_error_string (user_filename, filesys_error_number);
+        }
+
+      return;
+    }
+
   if (!(*argv)[0])
-    return;
+    {
+      /* No more non-option arguments. */
+      initial_file = xstrdup("dir");
+      return;
+    }
+
+  /* If first argument begins with '(', add it as if it were given with 
+     '--node'.  This is to support invoking like
+     "info '(emacs)Buffers'".  If it is a well-formed node spec then
+     the rest of the arguments are menu entries to follow, or an
+     index entry.  */
+  if ((*argv)[0][0] == '(')
+    {
+      info_parse_node ((*argv)[0]);
+      if (info_parsed_filename)
+        {
+          initial_file = info_find_fullpath (info_parsed_filename, 0);
+          if (initial_file)
+            {
+              add_pointer_to_array (info_new_reference (initial_file,
+                                                        info_parsed_nodename),
+                                    ref_index, ref_list, ref_slots, 2);
+              /* Remove this argument from the argument list. */
+              memmove (*argv, *argv + 1, *argc-- * sizeof (char *));
+              return;
+            }
+        }
+    }
 
   /* If there are any more arguments, the initial file is the
      dir entry given by the first one. */
     {
-      /* If they say info info, show them info-stnd.texi.  (Get
-         info.texi with info -f info.) */
+      /* If they say info info (or info -O info, etc.), show them 
+         info-stnd.texi.  (Get info.texi with info -f info.) */
       if ((*argv)[0] && mbscasecmp ((*argv)[0], "info") == 0)
         (*argv)[0] = "info-stnd";
 
@@ -267,8 +324,8 @@ get_initial_file (int *argc, char ***argv, char **error)
         }
     }
 
-  /* Otherwise, we want the dir node.  The only node to be displayed
-     or output will be "Top". */
+  /* Otherwise, use the dir node. */
+  initial_file = xstrdup("dir");
   return;
 }
 
@@ -310,12 +367,7 @@ add_initial_nodes (int argc, char **argv, char **error)
               int j;
 
               if (!initial_file)
-                {
-                  free (*error);
-                  asprintf (error, _("No file given for node '%s'."),
-                            user_nodenames[i]);
-                  continue;
-                }
+                continue; /* Shouldn't happen. */
 
               /* Check for a node by this name, and if there isn't one
                  look for an inexact match. */
@@ -413,9 +465,16 @@ add_initial_nodes (int argc, char **argv, char **error)
       free (program);
     }
 
+  /* Default is the "Top" node if there were no other nodes. */
+  if (ref_index == 0 && initial_file)
+    {
+       add_pointer_to_array (info_new_reference (initial_file, "Top"), 
+                             ref_index, ref_list, ref_slots, 2);
+    }
+
   /* If there are arguments remaining, they are the names of menu items
      in sequential info files starting from the first one loaded. */
-  else if (*argv && ref_index > 0)
+  if (*argv && ref_index > 0)
     {
       NODE *initial_node; /* Node to start following menus from. */
       NODE *node_via_menus;
@@ -793,9 +852,6 @@ main (int argc, char *argv[])
       dump_subnodes = 1;
     }
 
-  if (dump_subnodes)
-    dump_subnodes = DUMP_SUBNODES;
-  
   /* If the user specified --version, then show the version and exit. */
   if (print_version_p)
     {
@@ -883,6 +939,18 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       /* If only one match, don't start in a menu of matches. */
       if (ref_index == 1)
         all_matches_p = 0;
+
+      /* --where */
+      if (print_where_p)
+        {
+          int i;
+          if (!ref_list)
+            exit (1);
+
+          for (i = 0; ref_list[i]; i++)
+            printf ("%s\n", ref_list[i]->filename);
+          exit (0);
+        }
     }
   else
     {
@@ -900,57 +968,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
             }
         }
 
-      /* User used "--file". */
-      if (user_filename)
-        {
-          if (!IS_ABSOLUTE(user_filename) && HAS_SLASH(user_filename)
-              && !(user_filename[0] == '.' && IS_SLASH(user_filename[1])))
-            {
-              /* Prefix "./" to the filename to prevent a lookup
-                 in INFOPATH.  */
-              char *s;
-              asprintf (&s, "%s%s", "./", user_filename);
-              free (user_filename);
-              user_filename = s;
-            }
-          if (IS_ABSOLUTE(user_filename) || HAS_SLASH(user_filename))
-            initial_file = info_add_extension (0, user_filename, 0);
-          else
-            initial_file = info_find_fullpath (user_filename, 0);
-
-          if (!initial_file)
-            {
-              if (!filesys_error_number)
-                filesys_error_number = ENOENT;
-              error = filesys_error_string (user_filename, 
-                                            filesys_error_number);
-            }
-          else
-            add_pointer_to_array (info_new_reference (initial_file, "Top"),
-                                  ref_index, ref_list, ref_slots, 2);
-          goto skip_get_initial_file;
-        }
-
-      /* If first argument begins with '(', add it as if it were given with 
-         '--node'.  This is to support invoking like
-         "info '(emacs)Buffers'".  If it is a well-formed node spec then
-         the rest of the arguments are menu entries to follow, or an
-         index entry.  */
-      if (argv[0] && argv[0][0] == '(')
-        {
-          info_parse_node (argv[0]);
-          if (info_parsed_filename)
-            {
-              add_pointer_to_array (info_new_reference (info_parsed_filename,
-                                                        info_parsed_nodename),
-                                    ref_index, ref_list, ref_slots, 2);
-              memmove (argv, argv + 1, argc-- * sizeof (char *));
-              goto skip_get_initial_file;
-            }
-        }
-
       get_initial_file (&argc, &argv, &error);
-skip_get_initial_file:
 
       /* If the user specified `--index-search=STRING', 
          start the info session in the node corresponding
@@ -990,18 +1008,15 @@ skip_get_initial_file:
         {
           add_initial_nodes (argc, argv, &error);
         }
-    }
 
-  /* --where */
-  if (print_where_p)
-    {
-      int i;
-      if (!ref_list)
-        exit (1);
+      /* --where */
+      if (print_where_p)
+        {
+          if (initial_file)
+            printf ("%s\n", initial_file);
+          exit (0);
+        }
 
-      for (i = 0; ref_list[i]; i++)
-        printf ("%s\n", ref_list[i]->filename);
-      exit (0);
     }
 
   /* --output */

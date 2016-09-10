@@ -91,9 +91,6 @@ it came from texinfo code; for example, allow setting aliases (as with
 An array reference of the output formats for which @code{@@if@emph{FORMAT}} 
 conditional blocks should be expanded.  Default is empty.
 
-The raw block formats (within @code{@@html} blocks, for example) are 
-always kept.
-
 @item gettext
 @anchor{Texinfo::Parser gettext}
 
@@ -265,6 +262,11 @@ in the document.
 
 An array of menus that are not associated with a node.
 
+@item novalidate
+@anchor{Texinfo::Parser novalidate}
+
+If set, it is as if @code{@@novalidate} was set in the document.
+
 @end table
 
 @end table
@@ -385,11 +387,6 @@ The keys of the index entry structures are
 
 The index name.
 
-@item index_prefix
-@anchor{Texinfo::Parser index_prefix}
-
-The associated index prefix.
-
 @item index_at_command
 @anchor{Texinfo::Parser index_at_command}
 
@@ -438,7 +435,7 @@ if it is in such an environement.
 
 @end table
 
-The following shows the references corresponding with the default indexes
+The following shows the references corresponding to the default indexes
 @emph{cp} and @emph{fn}, the @emph{fn} index having its entries formatted as code and 
 the indices corresponding to the following texinfo
 
@@ -446,16 +443,13 @@ the indices corresponding to the following texinfo
   @defindex some
   @defcodeindex code
 
-  $index_names = {'cp' => {'name' => 'cp', 'in_code' => 0, 
-                                           'prefix' => ['c', 'cp']},
-                  'fn' => {'name' => 'fn', 'in_code' => 1, 
-                                           'prefix' => ['f', 'fn']},
+  $index_names = {'cp' => {'name' => 'cp', 'in_code' => 0, },
+                  'fn' => {'name' => 'fn', 'in_code' => 1, },
                   'some' => {'in_code' => 0},
                   'code' => {'in_code' => 1}};
 @end verbatim
 
-If @code{name} is not set, it is set to the index name.  If @code{prefix} is 
-not set, it is set to an array containing the index name.
+If @code{name} is not set, it is set to the index name.
 
 @emph{$merged_indices_hash} is a hash reference, the key is an index
 name merged in the value.
@@ -484,27 +478,6 @@ A string, the command name associated with @code{@@clickstyle}.
 @anchor{Texinfo::Parser documentlanguage}
 
 A string corresponding to a document language set by @code{@@documentlanguage}.
-
-@item explained_commands
-@anchor{Texinfo::Parser explained_commands}
-
-A hash reference of explained commands (currently abbr or acronym).
-The value is also a hash reference.  The key of this hash is a normalized
-first argument of these commands, the value is a content array
-corresponding to the explanation associated with this first argument.
-
-For example giving as an option:
-
-@verbatim
-  'explained_commands' 
-    => {'acronym' => {'EU' => [{'text' => 'European Union'}]} 
-@end verbatim
-
-is the same as having the following texinfo code in the document:
-
-@verbatim
-  @acronym{EU, European Union}
-@end verbatim
 
 @item INPUT_ENCODING_NAME
 @anchor{Texinfo::Parser INPUT_ENCODING_NAME}
@@ -565,19 +538,13 @@ Is associated to a macro definition element
    'args' => [{'text' => 'mymacro', 'type' => 'macro_name'},
               {'text' => 'arg', 'type' => 'macro_arg}],
    'contents' => [{'text' => "coucou \arg\ after arg\n", 'type' => 'raw'}],
-   'extra' => {'arg_line' => " mymacro{arg}\n",
-               'macrobody' => "coucou \arg\ after arg\n"}}
+   'extra' => {'arg_line' => " mymacro{arg}\n", }}
 @end verbatim
 
 = item merged_indices
 
 The associated hash reference holds merged indices information, each key 
 is merged in the value.  Same as setting @code{@@synindex} or @code{syncodeindex}.
-
-@item novalidate
-@anchor{Texinfo::Parser novalidate}
-
-If set, it is as if @code{@@novalidate} was set in the document.
 
 @item sections_level
 @anchor{Texinfo::Parser sections_level}
@@ -1272,10 +1239,7 @@ the command and the argument.
 @anchor{Texinfo::Parser @code{@@macro}}
 
 @emph{invalid_syntax} is set if there was an error on the @code{@@macro}
-line.  The key @emph{args_index} associates format arguments with
-their index on the @@macro line formal arguments definition.
-The @emph{macrobody} holds the @@macro body.  @emph{arg_line} holds the
-line after @code{@@macro}.
+line.  @emph{arg_line} holds the line after @code{@@macro}.
 
 @item @code{@@node}
 @anchor{Texinfo::Parser @code{@@node}}
@@ -1353,10 +1317,7 @@ the one appearing in the @emph{nodes_manuals} array for @code{@@node}.
 @item @code{@@acronym}
 @anchor{Texinfo::Parser @code{@@acronym}}
 
-The first argument normalized is in @emph{normalized}.  If there is no
-second argument, but a second argument appeared previously for the
-same first argument, the second argument content of the previous
-command is stored in @emph{explanation_contents}.
+The first argument normalized is in @emph{normalized}.
 
 @item definition command
 @anchor{Texinfo::Parser definition command}
@@ -1388,9 +1349,7 @@ of the definition, and as value the corresponding content tree.
 
 The key @emph{max_columns} holds the maximal number of columns.  If there
 are prototypes on the line they are in the array associated with 
-@emph{prototypes}.  In that case, @emph{prototypes_line} also holds this 
-information, and, in addition, keeps spaces with type @code{prototype_space}.  
-If there is a @code{@@columnfractions} as argument, then the 
+@emph{prototypes}.  If there is a @code{@@columnfractions} as argument, then the 
 @emph{columnfractions} key is associated with the array of columnfractions
 arguments, holding all the column fractions.
 

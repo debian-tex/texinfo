@@ -181,7 +181,6 @@ $result_trees{'printindex_merged_indices_code_style'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => 'c"b',
               'node' => {},
@@ -242,7 +241,6 @@ $result_trees{'printindex_merged_indices_code_style'} = {
               'in_code' => 0,
               'index_at_command' => 'vindex',
               'index_name' => 'vr',
-              'index_prefix' => 'v',
               'index_type_command' => 'vindex',
               'key' => 'v"j',
               'node' => {},
@@ -303,7 +301,6 @@ $result_trees{'printindex_merged_indices_code_style'} = {
               'in_code' => 1,
               'index_at_command' => 'findex',
               'index_name' => 'fn',
-              'index_prefix' => 'f',
               'index_type_command' => 'findex',
               'key' => 'f``g',
               'node' => {},
@@ -459,7 +456,6 @@ $result_trees{'printindex_merged_indices_code_style'} = {
               'in_code' => 0,
               'index_at_command' => 'cdiindex',
               'index_name' => 'cdi',
-              'index_prefix' => 'cdi',
               'index_type_command' => 'cdiindex',
               'key' => 'cdi"h',
               'node' => {},
@@ -615,7 +611,6 @@ $result_trees{'printindex_merged_indices_code_style'} = {
               'in_code' => 1,
               'index_at_command' => 'ddiindex',
               'index_name' => 'ddi',
-              'index_prefix' => 'ddi',
               'index_type_command' => 'ddiindex',
               'key' => 'ddi``g',
               'node' => {},
@@ -916,10 +911,7 @@ $result_indices{'printindex_merged_indices_code_style'} = {
       },
       'in_code' => 0,
       'merged_in' => 'fn',
-      'name' => 'cdi',
-      'prefix' => [
-        'cdi'
-      ]
+      'name' => 'cdi'
     },
     'cp' => {
       'contained_indices' => {
@@ -927,11 +919,7 @@ $result_indices{'printindex_merged_indices_code_style'} = {
       },
       'in_code' => 0,
       'merged_in' => 'fn',
-      'name' => 'cp',
-      'prefix' => [
-        'c',
-        'cp'
-      ]
+      'name' => 'cp'
     },
     'ddi' => {
       'contained_indices' => {
@@ -939,10 +927,7 @@ $result_indices{'printindex_merged_indices_code_style'} = {
       },
       'in_code' => 1,
       'merged_in' => 'fn',
-      'name' => 'ddi',
-      'prefix' => [
-        'ddi'
-      ]
+      'name' => 'ddi'
     },
     'fn' => {
       'contained_indices' => {
@@ -953,44 +938,28 @@ $result_indices{'printindex_merged_indices_code_style'} = {
         'vr' => 1
       },
       'in_code' => 1,
-      'name' => 'fn',
-      'prefix' => [
-        'f',
-        'fn'
-      ]
+      'name' => 'fn'
     },
     'ky' => {
       'contained_indices' => {
         'ky' => 1
       },
       'in_code' => 1,
-      'name' => 'ky',
-      'prefix' => [
-        'k',
-        'ky'
-      ]
+      'name' => 'ky'
     },
     'pg' => {
       'contained_indices' => {
         'pg' => 1
       },
       'in_code' => 1,
-      'name' => 'pg',
-      'prefix' => [
-        'p',
-        'pg'
-      ]
+      'name' => 'pg'
     },
     'tp' => {
       'contained_indices' => {
         'tp' => 1
       },
       'in_code' => 1,
-      'name' => 'tp',
-      'prefix' => [
-        't',
-        'tp'
-      ]
+      'name' => 'tp'
     },
     'vr' => {
       'contained_indices' => {
@@ -998,11 +967,7 @@ $result_indices{'printindex_merged_indices_code_style'} = {
       },
       'in_code' => 0,
       'merged_in' => 'fn',
-      'name' => 'vr',
-      'prefix' => [
-        'v',
-        'vr'
-      ]
+      'name' => 'vr'
     }
   },
   'merged_indices' => {

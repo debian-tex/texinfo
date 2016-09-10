@@ -151,24 +151,15 @@ $result_trees{'many_conditionals'} = {
       'cmdname' => 'tex',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
+          'contents' => [],
+          'parent' => {},
+          'type' => 'elided_block'
+        },
+        {
           'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line_after_command'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'This is tex text.
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'rawpreformatted'
         },
         {
           'args' => [
@@ -213,13 +204,7 @@ $result_trees{'many_conditionals'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 23,
-        'macro' => ''
+        'end_command' => {}
       },
       'parent' => {}
     },
@@ -275,9 +260,7 @@ $result_trees{'many_conditionals'}{'contents'}[6]{'parent'} = $result_trees{'man
 $result_trees{'many_conditionals'}{'contents'}[7]{'parent'} = $result_trees{'many_conditionals'};
 $result_trees{'many_conditionals'}{'contents'}[8]{'parent'} = $result_trees{'many_conditionals'};
 $result_trees{'many_conditionals'}{'contents'}[9]{'parent'} = $result_trees{'many_conditionals'};
-$result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[0]{'extra'}{'command'} = $result_trees{'many_conditionals'}{'contents'}[10];
 $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[10];
-$result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[1];
 $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[10];
 $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2];
 $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'args'}[0];
@@ -288,7 +271,6 @@ $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'extra'}{'comm
 $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[10];
 $result_trees{'many_conditionals'}{'contents'}[10]{'extra'}{'end_command'} = $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2];
-$result_trees{'many_conditionals'}{'contents'}[10]{'extra'}{'spaces_after_command'} = $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[0];
 $result_trees{'many_conditionals'}{'contents'}[10]{'parent'} = $result_trees{'many_conditionals'};
 $result_trees{'many_conditionals'}{'contents'}[11]{'parent'} = $result_trees{'many_conditionals'};
 $result_trees{'many_conditionals'}{'contents'}[12]{'parent'} = $result_trees{'many_conditionals'};
@@ -308,7 +290,6 @@ This is ifinfo text.
 
 
 @tex
-This is tex text.
 @end tex
 
 

@@ -1328,15 +1328,12 @@ in verbatim ''
 <para> xml para </para> ''
 
 <html endspaces=" ">
-html &textrdquo;
 </html>
 
 <tex endspaces=" ">
-$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$ &textrdquo;
 </tex>
 
 <docbook endspaces=" ">
-docbook &textrdquo;
 </docbook>
 
 <majorheading spaces=" ">majorheading</majorheading>
@@ -1931,15 +1928,12 @@ in verbatim ''
 <para> xml para </para> ''
 
 <html endspaces=" ">
-html &textrdquo;
 </html>
 
 <tex endspaces=" ">
-$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$ &textrdquo;
 </tex>
 
 <docbook endspaces=" ">
-docbook &textrdquo;
 </docbook>
 
 <majorheading spaces=" ">majorheading</majorheading>
@@ -2534,15 +2528,12 @@ in verbatim ''
 <para> xml para </para> ''
 
 <html endspaces=" ">
-html &textrdquo;
 </html>
 
 <tex endspaces=" ">
-$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$ &textrdquo;
 </tex>
 
 <docbook endspaces=" ">
-docbook &textrdquo;
 </docbook>
 
 <majorheading spaces=" ">majorheading</majorheading>
@@ -3131,15 +3122,12 @@ in verbatim ''
 <para> xml para </para> ''
 
 <html endspaces=" ">
-html ''
 </html>
 
 <tex endspaces=" ">
-$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$ ''
 </tex>
 
 <docbook endspaces=" ">
-docbook ''
 </docbook>
 
 </pre><majorheading spaces=" ">majorheading</majorheading>

@@ -100,6 +100,7 @@ $result_trees{'itemize_in_headitem_in_example'} = {
               [
                 {
                   'cmdname' => 'bullet',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 }
@@ -237,6 +238,7 @@ $result_trees{'itemize_in_headitem_in_example'} = {
               [
                 {
                   'cmdname' => 'bullet',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 }
@@ -380,6 +382,7 @@ $result_trees{'itemize_in_headitem_in_example'} = {
               [
                 {
                   'cmdname' => 'bullet',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 }
@@ -551,6 +554,7 @@ $result_trees{'itemize_in_headitem_in_example'} = {
               [
                 {
                   'cmdname' => 'bullet',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 }

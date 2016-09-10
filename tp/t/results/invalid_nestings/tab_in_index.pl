@@ -159,7 +159,6 @@ $result_trees{'tab_in_index'} = {
                               'in_code' => 1,
                               'index_at_command' => 'vindex',
                               'index_name' => 'vr',
-                              'index_prefix' => 'v',
                               'index_type_command' => 'vindex',
                               'key' => 'in index entry in tab',
                               'number' => 1
@@ -246,30 +245,11 @@ $result_trees{'tab_in_index'} = {
         'prototypes' => [
           {
             'contents' => [],
-            'parent' => {},
             'type' => 'bracketed_multitable_prototype'
           },
           {
             'contents' => [],
-            'parent' => {},
             'type' => 'bracketed_multitable_prototype'
-          }
-        ],
-        'prototypes_line' => [
-          {
-            'text' => ' ',
-            'type' => 'prototype_space'
-          },
-          {},
-          {
-            'text' => ' ',
-            'type' => 'prototype_space'
-          },
-          {},
-          {
-            'text' => '
-',
-            'type' => 'prototype_space'
           }
         ],
         'spaces_after_command' => {}
@@ -333,11 +313,7 @@ $result_trees{'tab_in_index'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_aft
 $result_trees{'tab_in_index'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'tab_in_index'}{'contents'}[0];
 $result_trees{'tab_in_index'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'tab_in_index'}{'contents'}[0]{'contents'}[1];
 $result_trees{'tab_in_index'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'tab_in_index'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
-$result_trees{'tab_in_index'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'tab_in_index'}{'contents'}[0]{'args'}[0];
 $result_trees{'tab_in_index'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'tab_in_index'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'};
-$result_trees{'tab_in_index'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'tab_in_index'}{'contents'}[0]{'args'}[0];
-$result_trees{'tab_in_index'}{'contents'}[0]{'extra'}{'prototypes_line'}[1] = $result_trees{'tab_in_index'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'tab_in_index'}{'contents'}[0]{'extra'}{'prototypes_line'}[3] = $result_trees{'tab_in_index'}{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'tab_in_index'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'tab_in_index'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'tab_in_index'}{'contents'}[0]{'parent'} = $result_trees{'tab_in_index'};
 

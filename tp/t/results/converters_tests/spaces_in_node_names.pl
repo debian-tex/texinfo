@@ -590,10 +590,6 @@ $result_trees{'spaces_in_node_names'} = {
                     {}
                   ],
                   'normalized' => 'a--'
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -676,10 +672,6 @@ $result_trees{'spaces_in_node_names'} = {
                     {}
                   ],
                   'normalized' => 'b-'
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -753,10 +745,6 @@ $result_trees{'spaces_in_node_names'} = {
                     {}
                   ],
                   'normalized' => 'c-'
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},

@@ -1,8 +1,8 @@
 /* variables.h -- Description of user visible variables in Info.
-   $Id: variables.h 6742 2015-10-31 22:17:34Z gavin $
+   $Id: variables.h 7013 2016-02-13 21:19:19Z gavin $
 
-   Copyright 1993, 1997, 2004, 2007, 2011, 2013, 2014, 2015
-   Free Software Foundation, Inc.
+   Copyright 1993, 1997, 2004, 2007, 2011, 2013, 2014, 2015,
+   2016 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -49,19 +49,19 @@ typedef struct {
 /* Read the name of an Info variable in the echo area and return the
    address of a VARIABLE_ALIST member.  A return value of NULL indicates
    that no variable could be read. */
-extern VARIABLE_ALIST *read_variable_name (char *prompt, WINDOW *window);
+VARIABLE_ALIST *read_variable_name (char *prompt, WINDOW *window);
 
-extern VARIABLE_ALIST *variable_by_name (char *name);
+VARIABLE_ALIST *variable_by_name (char *name);
 
 /* Make an array of REFERENCE which actually contains the names of the
    variables available in Info. */
-extern REFERENCE **make_variable_completions_array (void);
+REFERENCE **make_variable_completions_array (void);
 
 /* Set the value of an info variable. */
-extern void set_variable (WINDOW *window, int count);
-extern int set_variable_to_value (VARIABLE_ALIST *var, char *value, int where);
+void set_variable (WINDOW *window, int count);
+int set_variable_to_value (VARIABLE_ALIST *var, char *value, int where);
 
-extern void describe_variable (WINDOW *window, int count);
+void describe_variable (WINDOW *window, int count);
 
 /* The list of user-visible variables. */
 extern int auto_footnotes_p;

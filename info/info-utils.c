@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c 6915 2016-01-02 17:45:27Z gavin $
+   $Id: info-utils.c 7332 2016-09-03 16:20:45Z gavin $
 
    Copyright 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012,
    2013, 2014, 2015 Free Software Foundation, Inc.
@@ -215,45 +215,32 @@ read_quoted_string (char *start, char *terminator, int lines, char **output)
 
 /* Get the entry associated with LABEL in the menu of NODE.  Return a
    pointer to the ENTRY if found, or null.  Return value should not
-   be freed by caller. */
+   be freed by caller.  If SLOPPY, allow initial matches, like
+   "Buffers" for a LABEL "buffer". */
 REFERENCE *
 info_get_menu_entry_by_label (NODE *node, char *label, int sloppy) 
 {
   register int i;
+  int best_guess = -1;
   REFERENCE *entry;
   REFERENCE **references = node->references;
 
   if (!references)
     return 0;
 
-  /* First look for an exact match. */
   for (i = 0; (entry = references[i]); i++)
     {
-      if (REFERENCE_MENU_ITEM != entry->type) continue;
-      if (strcmp (label, entry->label) == 0)
-        return entry;
+      if (entry->type != REFERENCE_MENU_ITEM)
+        continue;
+      if (mbscasecmp (label, entry->label) == 0)
+        return entry; /* Exact, case-insensitive match. */
+      else if (sloppy && best_guess == -1
+               && (mbsncasecmp (entry->label, label, strlen (label)) == 0))
+        best_guess = i;
     }
 
-  /* If the item wasn't found, search the list sloppily.  Perhaps this
-     user typed "buffer" when they really meant "Buffers". */
-  if (sloppy)
-    {
-      int i;
-      int best_guess = -1;
-
-      for (i = 0; (entry = references[i]); i++)
-        {
-          if (REFERENCE_MENU_ITEM != entry->type) continue;
-          if (mbscasecmp (label, entry->label) == 0)
-            return entry; /* Exact, case-insensitive match. */
-          else if (best_guess == -1
-                && (mbsncasecmp (entry->label, label, strlen (label)) == 0))
-              best_guess = i;
-        }
-
-      if (!entry && best_guess != -1)
-        return references[best_guess];
-    }
+  if (sloppy && best_guess != -1)
+    return references[best_guess];
 
   return 0;
 }
@@ -1103,19 +1090,13 @@ skip_tag_contents (long n)
     }
 }
 
-#define NO_NODELINE 0
-#define PRINT_NODELINE 1
-#define NODELINE_POINTERS_ONLY 2
-int nodeline_print = 2;
-
 /* Read first line of node and set next, prev and up. */
 static void
 parse_top_node_line (NODE *node)
 {
   char **store_in = 0;
   char *nodename;
-  char *ptr, *ptr2;
-  char *display_start = 0;
+  char *ptr;
   int value_length;
 
   /* If the first line is empty, leave it in.  This is the case
@@ -1135,44 +1116,38 @@ parse_top_node_line (NODE *node)
       /* Check what field we are looking at */
       if (!strncasecmp (ptr, INFO_FILE_LABEL, strlen(INFO_FILE_LABEL)))
         {
-          ptr2 = ptr + strlen (INFO_FILE_LABEL);
+          ptr += strlen (INFO_FILE_LABEL);
         }
       else if (!strncasecmp (ptr, INFO_NODE_LABEL, strlen(INFO_NODE_LABEL)))
         {
-          ptr2 = ptr + strlen (INFO_NODE_LABEL);
+          ptr += strlen (INFO_NODE_LABEL);
         }
       else if (!strncasecmp (ptr, INFO_PREV_LABEL, strlen(INFO_PREV_LABEL)))
         {
-          ptr2 = ptr + strlen (INFO_PREV_LABEL);
+          ptr += strlen (INFO_PREV_LABEL);
           store_in = &node->prev;
         }
       else if (!strncasecmp (ptr, INFO_ALTPREV_LABEL, 
                              strlen(INFO_ALTPREV_LABEL)))
         {
-          ptr2 = ptr + strlen (INFO_ALTPREV_LABEL);
+          ptr += strlen (INFO_ALTPREV_LABEL);
           store_in = &node->prev;
         }
       else if (!strncasecmp (ptr, INFO_NEXT_LABEL, strlen(INFO_NEXT_LABEL)))
         {
-          ptr2 = ptr + strlen (INFO_NEXT_LABEL);
+          ptr += strlen (INFO_NEXT_LABEL);
           store_in = &node->next;
         }
       else if (!strncasecmp (ptr, INFO_UP_LABEL, strlen(INFO_UP_LABEL)))
         {
-          ptr2 = ptr + strlen (INFO_UP_LABEL);
+          ptr += strlen (INFO_UP_LABEL);
           store_in = &node->up;
         }
       else 
         {
-          ptr2 = ptr;
           store_in = 0;
           /* Not recognized - code below will skip to next comma */
         }
-        
-      if (nodeline_print==NODELINE_POINTERS_ONLY && !display_start && store_in)
-        display_start = ptr;
-      ptr = ptr2;
-
       ptr += skip_whitespace (ptr);
 
       if (*ptr != '(')
@@ -1201,20 +1176,6 @@ parse_top_node_line (NODE *node)
         }
 
       ptr += 1; /* Point after field terminator */
-    }
-  if (display_start)
-    {
-      output_bytes_difference = display_start - node->contents;
-      node_offset += output_bytes_difference;
-      node->nodelen -= display_start - node->contents;
-      node->contents = display_start;
-    }
-  else if (nodeline_print == NO_NODELINE)
-    {
-      output_bytes_difference = ptr - node->contents;
-      node_offset += output_bytes_difference;
-      node->nodelen -= ptr - node->contents;
-      node->contents = ptr;
     }
 }
 
@@ -1534,14 +1495,6 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
         else
           entry->line_number = 0;
       }
-
-      if (preprocess_nodes_p && entry->line_number > 1)
-        /* Adjust line offset in file to one in displayed text.  This
-           does not work perfectly because we can't know exactly what
-           text will be inserted/removed: for example, due to expansion
-           of an image tag.  This subtracts 1 for a removed node information
-           line. */
-        entry->line_number--;
     }
 
   return 1;
@@ -1615,7 +1568,10 @@ scan_info_tag (NODE *node, int *in_index, FILE_BUFFER *fb)
 static char *
 forward_to_info_syntax (char *contents)
 {
-  while (contents < input_start + input_length)
+  /* Loop until just before the end of the input.  The '- 3' prevents us
+     accessing memory after the end of the input, and none of the strings we 
+     are looking for are shorter than 3 bytes. */
+  while (contents < input_start + input_length - 3)
     {
       /* Menu entry comes first to optimize for the case of looking through a 
          long index node. */

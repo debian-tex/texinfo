@@ -114,11 +114,7 @@ $result_trees{'anchor_and_spaces'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'anchor-0',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'normalized' => 'anchor-0'
           },
           'line_nr' => {
             'file_name' => '',
@@ -128,6 +124,7 @@ $result_trees{'anchor_and_spaces'} = {
           'parent' => {}
         },
         {
+          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_spaces_after_close_brace'
@@ -168,11 +165,7 @@ $result_trees{'anchor_and_spaces'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'anchor1',
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                'normalized' => 'anchor1'
               },
               'line_nr' => {
                 'file_name' => '',
@@ -226,11 +219,7 @@ $result_trees{'anchor_and_spaces'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'anchor2',
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                'normalized' => 'anchor2'
               },
               'line_nr' => {
                 'file_name' => '',
@@ -286,6 +275,7 @@ $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'par
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2];
+$result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0];

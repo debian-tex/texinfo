@@ -1,4 +1,4 @@
-$Id: NEWS 6991 2016-02-06 12:16:13Z gavin $
+$Id: NEWS 7281 2016-07-30 18:55:22Z gavin $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -11,6 +11,44 @@ See the manual for detailed information.
   notice and this notice are preserved.
 
 -------------------------------------------------------------------------------
+6.2 (10 September 2016)
+
+* Language:
+  . The commands `@setcontentsaftertitlepage' and
+    `@setshortcontentsaftertitlepage' have been removed.
+  . @-commands are no longer supported within `@errormsg'.
+
+* texinfo.tex:
+  . For a couple of characters (opening and closing braces), use glyphs
+    from the standard TeX math fonts instead of using EC fonts which are 
+    less likely to be installed.
+  . Use of user-defined macros in the text of an index entry is more
+    reliable when the text contains Texinfo @-commands.
+  . @synindex and @syncodeindex have been fixed (broken in the last
+    release).
+  . Support added for native UTF-8 support with XeTeX and LuaTeX.
+  . Support of PDF output with XeTeX improved.
+  . You can use a new file doc/texinfo-ja.tex for Texinfo documents in
+    Japanese.  doc/short-sample-ja.tex is a sample document.  New 
+    support file doc/txi-ja.tex for Japanese.
+
+* texi2any:
+  . Fix handling of compiler options when building Perl extension modules.
+
+* texi2dvi:
+  . Can now process files whose absolute paths contain space characters,
+    as long a relative path to the file is given.  Better support of 
+    files with unusual characters in their names.
+  . No longer exits prematurely in some circumstances (due to the script
+    running under "set -e").
+  . Bug fixed which made the `--command' and `--tidy' options
+    incompatible.
+
+* info:
+  . Handling of "invalid" value in infokey file fixed.
+
+
+
 6.1 (06 February 2016)
 
 * Language:

@@ -36,6 +36,7 @@ $result_trees{'hyphenation'} = {
       'parent' => {}
     },
     {
+      'parent' => {},
       'text' => '
 ',
       'type' => 'empty_spaces_after_close_brace'
@@ -53,6 +54,7 @@ $result_trees{'hyphenation'}{'contents'}[0]{'parent'} = $result_trees{'hyphenati
 $result_trees{'hyphenation'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'hyphenation'}{'contents'}[1]{'args'}[0];
 $result_trees{'hyphenation'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'hyphenation'}{'contents'}[1];
 $result_trees{'hyphenation'}{'contents'}[1]{'parent'} = $result_trees{'hyphenation'};
+$result_trees{'hyphenation'}{'contents'}[2]{'parent'} = $result_trees{'hyphenation'};
 $result_trees{'hyphenation'}{'contents'}[3]{'parent'} = $result_trees{'hyphenation'};
 
 $result_texis{'hyphenation'} = '

@@ -59,6 +59,7 @@ $result_trees{'not_closed_item'} = {
           [
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }

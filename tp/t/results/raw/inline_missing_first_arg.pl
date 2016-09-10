@@ -14,6 +14,7 @@ $result_trees{'inline_missing_first_arg'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_before_argument'
                 }
@@ -22,18 +23,9 @@ $result_trees{'inline_missing_first_arg'} = {
               'type' => 'brace_command_arg'
             },
             {
-              'contents' => [
-                {
-                  'text' => ' ',
-                  'type' => 'empty_spaces_before_argument'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'aaa'
-                }
-              ],
+              'contents' => [],
               'parent' => {},
-              'type' => 'brace_command_arg'
+              'type' => 'elided'
             }
           ],
           'cmdname' => 'inlinefmt',
@@ -41,11 +33,9 @@ $result_trees{'inline_missing_first_arg'} = {
           'extra' => {
             'brace_command_contents' => [
               undef,
-              [
-                {}
-              ]
+              undef
             ],
-            'format' => '',
+            'format' => undef,
             'spaces_before_argument' => {}
           },
           'line_nr' => {
@@ -67,18 +57,9 @@ $result_trees{'inline_missing_first_arg'} = {
               'type' => 'brace_command_arg'
             },
             {
-              'contents' => [
-                {
-                  'text' => ' ',
-                  'type' => 'empty_spaces_before_argument'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'bbb'
-                }
-              ],
+              'contents' => [],
               'parent' => {},
-              'type' => 'brace_command_arg'
+              'type' => 'elided'
             }
           ],
           'cmdname' => 'inlineraw',
@@ -86,15 +67,9 @@ $result_trees{'inline_missing_first_arg'} = {
           'extra' => {
             'brace_command_contents' => [
               undef,
-              [
-                {}
-              ]
+              undef
             ],
-            'format' => '',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'format' => undef
           },
           'line_nr' => {},
           'parent' => {}
@@ -111,23 +86,20 @@ $result_trees{'inline_missing_first_arg'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0];
-$result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[1];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0];
-$result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_before_argument'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[2];
-$result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[2]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[2]{'args'}[1];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[2];
-$result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[2]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[2]{'args'}[1]{'contents'}[1];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'parent'} = $result_trees{'inline_missing_first_arg'};
 
-$result_texis{'inline_missing_first_arg'} = '@inlinefmt{ , aaa}. @inlineraw{, bbb}.
+$result_texis{'inline_missing_first_arg'} = '@inlinefmt{ ,}. @inlineraw{,}.
 ';
 
 

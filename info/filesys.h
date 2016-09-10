@@ -1,8 +1,8 @@
 /* filesys.h -- external declarations for filesys.c.
-   $Id: filesys.h 5609 2014-05-27 12:49:23Z gavin $
+   $Id: filesys.h 7013 2016-02-13 21:19:19Z gavin $
 
    Copyright 1993, 1997, 1998, 2002, 2004, 2005, 2007, 2009, 2012, 2013,
-   2014 Free Software Foundation, Inc.
+   2014, 2016 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ extern char *infopath_string ();
 void infopath_init (void);
 
 /* Add PATH to the list of paths found in INFOPATH. */
-extern void infopath_add (char *path);
+void infopath_add (char *path);
 
 /* Iterate over INFOPATH */
 char *infopath_first (int *idx);
@@ -38,33 +38,32 @@ char *infopath_next (int *idx);
 /* Expand the filename in PARTIAL to make a real name for this operating
    system.  This looks in INFO_PATHS in order to find the correct file.
    If it can't find the file, it returns NULL. */
-extern char *info_find_fullpath (char *partial, struct stat *finfo);
+char *info_find_fullpath (char *partial, struct stat *finfo);
 
 /* Scan the list of directories in PATH looking for FILENAME.  If we find
    one that is a regular file, return it as a new string.  Otherwise, return
    a NULL pointer. */
-extern char *info_file_find_next_in_path (char *filename,
-					  int *diridx, struct stat *finfo);
+char *info_file_find_next_in_path (char *filename, int *diridx,
+                                   struct stat *finfo);
 
-extern char *info_add_extension (char *dirname, char *filename,
-                                 struct stat *finfo);
+char *info_add_extension (char *dirname, char *filename, struct stat *finfo);
 
 /* Read the contents of PATHNAME, returning a buffer with the contents of
    that file in it, and returning the size of that buffer in FILESIZE.
    FINFO is a stat struct which has already been filled in by the caller.
    If the file cannot be read, return a NULL pointer. */
-extern char *filesys_read_info_file (char *pathname, size_t *filesize,
+char *filesys_read_info_file (char *pathname, size_t *filesize,
     struct stat *finfo, int *is_compressed);
 
 /* A function which returns a pointer to a static buffer containing
    an error message for FILENAME and ERROR_NUM. */
-extern char *filesys_error_string (char *filename, int error_num);
+char *filesys_error_string (char *filename, int error_num);
 
 /* The number of the most recent file system error. */
 extern int filesys_error_number;
 
 /* Return true if FILENAME is `dir', with a possible compression suffix.  */
-extern int is_dir_name (char *filename);
+int is_dir_name (char *filename);
 
 /* The default value of INFOPATH. */
 #if !defined (DEFAULT_INFOPATH)

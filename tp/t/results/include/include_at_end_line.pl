@@ -36,7 +36,7 @@ $result_trees{'include_at_end_line'} = {
       'cmdname' => 'include',
       'extra' => {
         'spaces_after_command' => {},
-        'text_arg' => 'inc_file.texi '
+        'text_arg' => 'inc_file.texi'
       },
       'line_nr' => {
         'file_name' => '',
@@ -85,12 +85,12 @@ After.';
 
 $result_errors{'include_at_end_line'} = [
   {
-    'error_line' => ':1: @include: could not find inc_file.texi 
+    'error_line' => ':1: bad argument to @include: inc_file.texi@
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@include: could not find inc_file.texi ',
+    'text' => 'bad argument to @include: inc_file.texi@',
     'type' => 'error'
   }
 ];

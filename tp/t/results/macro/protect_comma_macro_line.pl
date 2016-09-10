@@ -54,24 +54,7 @@ $result_trees{'protect_comma_macro_line'} = {
       ],
       'extra' => {
         'arg_line' => ' macrotwo { arg }
-',
-        'args_index' => {
-          'arg' => 0
-        },
-        'macrobody' => 'we get \\arg\\ and another \\arg\\
-and another one on another line \\arg\\
-
-and a last in another paragraph
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -80,7 +63,15 @@ and a last in another paragraph
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -130,10 +121,9 @@ $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'contents'}[1]{'parent'
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
-$result_trees{'protect_comma_macro_line'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
-$result_trees{'protect_comma_macro_line'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'protect_comma_macro_line'};
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'parent'} = $result_trees{'protect_comma_macro_line'};
-$result_trees{'protect_comma_macro_line'}{'contents'}[1] = $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'protect_comma_macro_line'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
+$result_trees{'protect_comma_macro_line'}{'contents'}[1]{'parent'} = $result_trees{'protect_comma_macro_line'};
 $result_trees{'protect_comma_macro_line'}{'contents'}[2]{'parent'} = $result_trees{'protect_comma_macro_line'};
 $result_trees{'protect_comma_macro_line'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[3];
 $result_trees{'protect_comma_macro_line'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[3];

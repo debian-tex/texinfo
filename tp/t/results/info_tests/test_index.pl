@@ -143,11 +143,7 @@ $result_trees{'test_index'} = {
                     'node_content' => [
                       {}
                     ],
-                    'normalized' => 'a-counting-anchor',
-                    'spaces_before_argument' => {
-                      'text' => '',
-                      'type' => 'empty_spaces_before_argument'
-                    }
+                    'normalized' => 'a-counting-anchor'
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -227,7 +223,6 @@ $result_trees{'test_index'} = {
                             'in_code' => 0,
                             'index_at_command' => 'cindex',
                             'index_name' => 'cp',
-                            'index_prefix' => 'c',
                             'index_type_command' => 'cindex',
                             'key' => 'index in chapter end',
                             'node' => {
@@ -300,6 +295,7 @@ $result_trees{'test_index'} = {
                       },
                       {},
                       {
+                        'parent' => {},
                         'text' => '
 ',
                         'type' => 'empty_spaces_after_close_brace'
@@ -332,10 +328,6 @@ $result_trees{'test_index'} = {
                     {}
                   ],
                   'normalized' => 'a-counting-anchor'
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -405,7 +397,6 @@ $result_trees{'test_index'} = {
                   'in_code' => 0,
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
-                  'index_prefix' => 'c',
                   'index_type_command' => 'cindex',
                   'key' => 'in Top',
                   'node' => {},
@@ -460,7 +451,6 @@ $result_trees{'test_index'} = {
                   'in_code' => 0,
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
-                  'index_prefix' => 'c',
                   'index_type_command' => 'cindex',
                   'key' => '@',
                   'node' => {},
@@ -499,6 +489,11 @@ $result_trees{'test_index'} = {
                       ],
                       'cmdname' => 'exclamdown',
                       'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 9,
+                        'macro' => ''
+                      },
                       'parent' => {}
                     },
                     {
@@ -523,7 +518,6 @@ $result_trees{'test_index'} = {
                   'in_code' => 0,
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
-                  'index_prefix' => 'c',
                   'index_type_command' => 'cindex',
                   'key' => '!',
                   'node' => {},
@@ -532,11 +526,7 @@ $result_trees{'test_index'} = {
                 'misc_content' => [],
                 'spaces_after_command' => {}
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
-              },
+              'line_nr' => {},
               'parent' => {},
               'type' => 'index_entry_command'
             },
@@ -578,7 +568,6 @@ $result_trees{'test_index'} = {
                   'in_code' => 0,
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
-                  'index_prefix' => 'c',
                   'index_type_command' => 'cindex',
                   'key' => '"',
                   'node' => {},
@@ -718,7 +707,6 @@ $result_trees{'test_index'} = {
                   'in_code' => 1,
                   'index_at_command' => 'deffn',
                   'index_name' => 'fn',
-                  'index_prefix' => 'f',
                   'index_type_command' => 'deffn',
                   'key' => 'i',
                   'node' => {},
@@ -817,7 +805,6 @@ $result_trees{'test_index'} = {
                   'in_code' => 1,
                   'index_at_command' => 'deffnx',
                   'index_name' => 'fn',
-                  'index_prefix' => 'f',
                   'index_type_command' => 'deffn',
                   'key' => 'machin',
                   'node' => {},
@@ -915,6 +902,12 @@ $result_trees{'test_index'} = {
                 },
                 {
                   'cmdname' => 'emph',
+                  'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 17,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -973,7 +966,6 @@ $result_trees{'test_index'} = {
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'fn',
-                          'index_prefix' => 'f',
                           'index_type_command' => 'ftable',
                           'key' => 'a fun',
                           'node' => {},
@@ -1062,7 +1054,6 @@ $result_trees{'test_index'} = {
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'fn',
-                          'index_prefix' => 'f',
                           'index_type_command' => 'ftable',
                           'key' => 'second fun',
                           'node' => {},
@@ -1116,7 +1107,6 @@ $result_trees{'test_index'} = {
                           'in_code' => 1,
                           'index_at_command' => 'itemx',
                           'index_name' => 'fn',
-                          'index_prefix' => 'f',
                           'index_type_command' => 'ftable',
                           'key' => 'itemx fun',
                           'node' => {},
@@ -1204,11 +1194,7 @@ $result_trees{'test_index'} = {
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 17,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -1539,7 +1525,6 @@ $result_trees{'test_index'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => 'index entry looooooooooooooooooooooooooooooooooooooooooooooooooooooooong',
               'node' => {},
@@ -1594,7 +1579,6 @@ $result_trees{'test_index'} = {
               'in_code' => 1,
               'index_at_command' => 'findex',
               'index_name' => 'fn',
-              'index_prefix' => 'f',
               'index_type_command' => 'findex',
               'key' => 'function index entry',
               'node' => {},
@@ -1662,7 +1646,6 @@ $result_trees{'test_index'} = {
                   'in_code' => 1,
                   'index_at_command' => 'findex',
                   'index_name' => 'fn',
-                  'index_prefix' => 'f',
                   'index_type_command' => 'findex',
                   'key' => 'other function',
                   'node' => {},
@@ -1817,7 +1800,6 @@ $result_trees{'test_index'} = {
               'in_code' => 1,
               'index_at_command' => 'findex',
               'index_name' => 'fn',
-              'index_prefix' => 'f',
               'index_type_command' => 'findex',
               'key' => 'after lines.',
               'node' => {},
@@ -3153,7 +3135,6 @@ $result_trees{'test_index'} = {
               'in_code' => 1,
               'index_at_command' => 'findex',
               'index_name' => 'fn',
-              'index_prefix' => 'f',
               'index_type_command' => 'findex',
               'key' => 'after more than 100 lines',
               'node' => {},
@@ -3266,7 +3247,6 @@ $result_trees{'test_index'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => 'index entry in appendix before para',
               'node' => {},
@@ -3396,7 +3376,6 @@ $result_trees{'test_index'} = {
               'in_code' => 1,
               'index_at_command' => 'findex',
               'index_name' => 'fn',
-              'index_prefix' => 'f',
               'index_type_command' => 'findex',
               'key' => 'index entry between indices',
               'node' => {},
@@ -3811,6 +3790,7 @@ $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'}{'contents'}[1]{'parent'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'};
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'}{'contents'}[2]{'parent'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'};
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'}{'contents'}[3] = $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'};
+$result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'}{'contents'}[4]{'parent'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'};
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'}{'contents'}[5]{'parent'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'};
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'}{'extra'}{'misc_content'}[0] = $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'}{'args'}[0]{'contents'}[1];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'}{'extra'}{'spaces_after_command'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'}{'args'}[0]{'contents'}[0];
@@ -3857,6 +3837,7 @@ $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'extra'
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'node'} = $result_trees{'test_index'}{'contents'}[1];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'extra'}{'misc_content'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'content'};
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'line_nr'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[3];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[4];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[4]{'args'}[0];
@@ -3979,6 +3960,7 @@ $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'extra'}{'block_comman
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'extra'}{'command_as_argument'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'contents'}[1];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'extra'}{'end_command'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'contents'}[2];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'extra'}{'spaces_after_command'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'contents'}[0];
+$result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'line_nr'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'test_index'}{'contents'}[2];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[8]{'parent'} = $result_trees{'test_index'}{'contents'}[2];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[9]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[9];

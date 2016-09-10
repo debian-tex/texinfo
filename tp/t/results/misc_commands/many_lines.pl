@@ -809,9 +809,6 @@ $result_trees{'many_lines'} = {
           ],
           'cmdname' => 'exampleindent',
           'extra' => {
-            'misc_args' => [
-              '6'
-            ],
             'spaces_after_command' => {}
           },
           'line_nr' => {
@@ -1702,39 +1699,39 @@ Line after finalout
 
 $result_errors{'many_lines'} = [
   {
-    'error_line' => ':1: warning: @pagesizes should only appear at a line beginning
+    'error_line' => ':1: warning: @pagesizes should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@pagesizes should only appear at a line beginning',
+    'text' => '@pagesizes should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':2: warning: @afourpaper should only appear at a line beginning
+    'error_line' => ':2: warning: @afourpaper should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@afourpaper should only appear at a line beginning',
+    'text' => '@afourpaper should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: @smallbook should only appear at a line beginning
+    'error_line' => ':3: warning: @smallbook should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@smallbook should only appear at a line beginning',
+    'text' => '@smallbook should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: @headings should only appear at a line beginning
+    'error_line' => ':4: warning: @headings should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => '@headings should only appear at a line beginning',
+    'text' => '@headings should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -1747,66 +1744,66 @@ $result_errors{'many_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':5: warning: @oddfooting should only appear at a line beginning
+    'error_line' => ':5: warning: @oddfooting should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@oddfooting should only appear at a line beginning',
+    'text' => '@oddfooting should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: @everyheading should only appear at a line beginning
+    'error_line' => ':6: warning: @everyheading should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => '@everyheading should only appear at a line beginning',
+    'text' => '@everyheading should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':7: warning: @everyfooting should only appear at a line beginning
+    'error_line' => ':7: warning: @everyfooting should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => '@everyfooting should only appear at a line beginning',
+    'text' => '@everyfooting should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':8: warning: @evenheading should only appear at a line beginning
+    'error_line' => ':8: warning: @evenheading should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => '@evenheading should only appear at a line beginning',
+    'text' => '@evenheading should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: warning: @evenfooting should only appear at a line beginning
+    'error_line' => ':9: warning: @evenfooting should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => '@evenfooting should only appear at a line beginning',
+    'text' => '@evenfooting should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':10: warning: @oddheading should only appear at a line beginning
+    'error_line' => ':10: warning: @oddheading should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => '@oddheading should only appear at a line beginning',
+    'text' => '@oddheading should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':11: warning: @need should only appear at a line beginning
+    'error_line' => ':11: warning: @need should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => '@need should only appear at a line beginning',
+    'text' => '@need should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -1819,21 +1816,21 @@ $result_errors{'many_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':12: warning: @need should only appear at a line beginning
+    'error_line' => ':12: warning: @need should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 12,
     'macro' => '',
-    'text' => '@need should only appear at a line beginning',
+    'text' => '@need should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':13: warning: @setchapternewpage should only appear at a line beginning
+    'error_line' => ':13: warning: @setchapternewpage should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => '@setchapternewpage should only appear at a line beginning',
+    'text' => '@setchapternewpage should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -1846,30 +1843,30 @@ $result_errors{'many_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':14: warning: @raisesections should only appear at a line beginning
+    'error_line' => ':14: warning: @raisesections should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 14,
     'macro' => '',
-    'text' => '@raisesections should only appear at a line beginning',
+    'text' => '@raisesections should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':15: warning: @lowersections should only appear at a line beginning
+    'error_line' => ':15: warning: @lowersections should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => '@lowersections should only appear at a line beginning',
+    'text' => '@lowersections should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':16: warning: @kbdinputstyle should only appear at a line beginning
+    'error_line' => ':16: warning: @kbdinputstyle should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 16,
     'macro' => '',
-    'text' => '@kbdinputstyle should only appear at a line beginning',
+    'text' => '@kbdinputstyle should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -1882,111 +1879,120 @@ $result_errors{'many_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':17: warning: @afourpaper should only appear at a line beginning
+    'error_line' => ':17: warning: @afourpaper should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 17,
     'macro' => '',
-    'text' => '@afourpaper should only appear at a line beginning',
+    'text' => '@afourpaper should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':18: warning: @afourlatex should only appear at a line beginning
+    'error_line' => ':18: warning: @afourlatex should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 18,
     'macro' => '',
-    'text' => '@afourlatex should only appear at a line beginning',
+    'text' => '@afourlatex should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':19: warning: @afourwide should only appear at a line beginning
+    'error_line' => ':19: warning: @afourwide should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 19,
     'macro' => '',
-    'text' => '@afourwide should only appear at a line beginning',
+    'text' => '@afourwide should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':20: warning: @paragraphindent should only appear at a line beginning
+    'error_line' => ':20: warning: @paragraphindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 20,
     'macro' => '',
-    'text' => '@paragraphindent should only appear at a line beginning',
+    'text' => '@paragraphindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':21: warning: @paragraphindent should only appear at a line beginning
+    'error_line' => ':21: warning: @paragraphindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 21,
     'macro' => '',
-    'text' => '@paragraphindent should only appear at a line beginning',
+    'text' => '@paragraphindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: warning: @paragraphindent should only appear at a line beginning
+    'error_line' => ':22: warning: @paragraphindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => '@paragraphindent should only appear at a line beginning',
+    'text' => '@paragraphindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':23: warning: @paragraphindent should only appear at a line beginning
+    'error_line' => ':23: warning: @paragraphindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 23,
     'macro' => '',
-    'text' => '@paragraphindent should only appear at a line beginning',
+    'text' => '@paragraphindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':24: warning: @firstparagraphindent should only appear at a line beginning
+    'error_line' => ':24: warning: @firstparagraphindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 24,
     'macro' => '',
-    'text' => '@firstparagraphindent should only appear at a line beginning',
+    'text' => '@firstparagraphindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':25: warning: @exampleindent should only appear at a line beginning
+    'error_line' => ':25: warning: @exampleindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 25,
     'macro' => '',
-    'text' => '@exampleindent should only appear at a line beginning',
+    'text' => '@exampleindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':26: warning: @exampleindent should only appear at a line beginning
+    'error_line' => ':25: @exampleindent arg must be numeric/`asis\', not `6 on line following exampleindent\'
+',
+    'file_name' => '',
+    'line_nr' => 25,
+    'macro' => '',
+    'text' => '@exampleindent arg must be numeric/`asis\', not `6 on line following exampleindent\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':26: warning: @exampleindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 26,
     'macro' => '',
-    'text' => '@exampleindent should only appear at a line beginning',
+    'text' => '@exampleindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':27: warning: @footnotestyle should only appear at a line beginning
+    'error_line' => ':27: warning: @footnotestyle should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 27,
     'macro' => '',
-    'text' => '@footnotestyle should only appear at a line beginning',
+    'text' => '@footnotestyle should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':28: warning: @footnotestyle should only appear at a line beginning
+    'error_line' => ':28: warning: @footnotestyle should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 28,
     'macro' => '',
-    'text' => '@footnotestyle should only appear at a line beginning',
+    'text' => '@footnotestyle should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -1999,12 +2005,12 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':29: warning: @documentencoding should only appear at a line beginning
+    'error_line' => ':29: warning: @documentencoding should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 29,
     'macro' => '',
-    'text' => '@documentencoding should only appear at a line beginning',
+    'text' => '@documentencoding should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -2026,39 +2032,39 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':31: warning: @frenchspacing should only appear at a line beginning
+    'error_line' => ':31: warning: @frenchspacing should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 31,
     'macro' => '',
-    'text' => '@frenchspacing should only appear at a line beginning',
+    'text' => '@frenchspacing should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':32: warning: @frenchspacing should only appear at a line beginning
+    'error_line' => ':32: warning: @frenchspacing should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 32,
     'macro' => '',
-    'text' => '@frenchspacing should only appear at a line beginning',
+    'text' => '@frenchspacing should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':33: warning: @fonttextsize should only appear at a line beginning
+    'error_line' => ':33: warning: @fonttextsize should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 33,
     'macro' => '',
-    'text' => '@fonttextsize should only appear at a line beginning',
+    'text' => '@fonttextsize should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':34: warning: @everyheadingmarks should only appear at a line beginning
+    'error_line' => ':34: warning: @everyheadingmarks should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 34,
     'macro' => '',
-    'text' => '@everyheadingmarks should only appear at a line beginning',
+    'text' => '@everyheadingmarks should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -2071,21 +2077,21 @@ $result_errors{'many_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':38: warning: @finalout should only appear at a line beginning
+    'error_line' => ':38: warning: @finalout should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 38,
     'macro' => '',
-    'text' => '@finalout should only appear at a line beginning',
+    'text' => '@finalout should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':40: warning: @finalout should only appear at a line beginning
+    'error_line' => ':40: warning: @finalout should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 40,
     'macro' => '',
-    'text' => '@finalout should only appear at a line beginning',
+    'text' => '@finalout should only appear at the beginning of a line',
     'type' => 'warning'
   }
 ];

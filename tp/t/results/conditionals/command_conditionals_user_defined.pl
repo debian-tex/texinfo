@@ -31,18 +31,7 @@ $result_trees{'command_conditionals_user_defined'} = {
       ],
       'extra' => {
         'arg_line' => ' truc
-',
-        'macrobody' => 'machin
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -51,7 +40,15 @@ $result_trees{'command_conditionals_user_defined'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -298,10 +295,9 @@ $result_trees{'command_conditionals_user_defined'} = {
 $result_trees{'command_conditionals_user_defined'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'command_conditionals_user_defined'}{'contents'}[0];
 $result_trees{'command_conditionals_user_defined'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'command_conditionals_user_defined'}{'contents'}[0];
 $result_trees{'command_conditionals_user_defined'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'command_conditionals_user_defined'}{'contents'}[0];
-$result_trees{'command_conditionals_user_defined'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'command_conditionals_user_defined'}{'contents'}[0];
-$result_trees{'command_conditionals_user_defined'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'command_conditionals_user_defined'};
 $result_trees{'command_conditionals_user_defined'}{'contents'}[0]{'parent'} = $result_trees{'command_conditionals_user_defined'};
-$result_trees{'command_conditionals_user_defined'}{'contents'}[1] = $result_trees{'command_conditionals_user_defined'}{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'command_conditionals_user_defined'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'command_conditionals_user_defined'}{'contents'}[0];
+$result_trees{'command_conditionals_user_defined'}{'contents'}[1]{'parent'} = $result_trees{'command_conditionals_user_defined'};
 $result_trees{'command_conditionals_user_defined'}{'contents'}[2]{'parent'} = $result_trees{'command_conditionals_user_defined'};
 $result_trees{'command_conditionals_user_defined'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'command_conditionals_user_defined'}{'contents'}[3];
 $result_trees{'command_conditionals_user_defined'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'command_conditionals_user_defined'}{'contents'}[3]{'args'}[0];
@@ -389,76 +385,49 @@ $result_indices{'command_conditionals_user_defined'} = {
         'auth' => 1
       },
       'in_code' => 0,
-      'name' => 'auth',
-      'prefix' => [
-        'auth'
-      ]
+      'name' => 'auth'
     },
     'cp' => {
       'contained_indices' => {
         'cp' => 1
       },
       'in_code' => 0,
-      'name' => 'cp',
-      'prefix' => [
-        'c',
-        'cp'
-      ]
+      'name' => 'cp'
     },
     'fn' => {
       'contained_indices' => {
         'fn' => 1
       },
       'in_code' => 1,
-      'name' => 'fn',
-      'prefix' => [
-        'f',
-        'fn'
-      ]
+      'name' => 'fn'
     },
     'ky' => {
       'contained_indices' => {
         'ky' => 1
       },
       'in_code' => 1,
-      'name' => 'ky',
-      'prefix' => [
-        'k',
-        'ky'
-      ]
+      'name' => 'ky'
     },
     'pg' => {
       'contained_indices' => {
         'pg' => 1
       },
       'in_code' => 1,
-      'name' => 'pg',
-      'prefix' => [
-        'p',
-        'pg'
-      ]
+      'name' => 'pg'
     },
     'tp' => {
       'contained_indices' => {
         'tp' => 1
       },
       'in_code' => 1,
-      'name' => 'tp',
-      'prefix' => [
-        't',
-        'tp'
-      ]
+      'name' => 'tp'
     },
     'vr' => {
       'contained_indices' => {
         'vr' => 1
       },
       'in_code' => 1,
-      'name' => 'vr',
-      'prefix' => [
-        'v',
-        'vr'
-      ]
+      'name' => 'vr'
     }
   }
 };

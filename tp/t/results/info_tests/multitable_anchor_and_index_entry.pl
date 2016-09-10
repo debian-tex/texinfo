@@ -369,7 +369,6 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                                   'in_code' => 0,
                                   'index_at_command' => 'cindex',
                                   'index_name' => 'cp',
-                                  'index_prefix' => 'c',
                                   'index_type_command' => 'cindex',
                                   'key' => 'index entry within multitable',
                                   'node' => {},
@@ -410,11 +409,7 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                                 'node_content' => [
                                   {}
                                 ],
-                                'normalized' => 'anchor-in-multitable',
-                                'spaces_before_argument' => {
-                                  'text' => '',
-                                  'type' => 'empty_spaces_before_argument'
-                                }
+                                'normalized' => 'anchor-in-multitable'
                               },
                               'line_nr' => {
                                 'file_name' => '',
@@ -424,6 +419,7 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                               'parent' => {}
                             },
                             {
+                              'parent' => {},
                               'text' => '
 ',
                               'type' => 'empty_spaces_after_close_brace'
@@ -763,7 +759,6 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                                   'in_code' => 0,
                                   'index_at_command' => 'cindex',
                                   'index_name' => 'cp',
-                                  'index_prefix' => 'c',
                                   'index_type_command' => 'cindex',
                                   'key' => 'index entry',
                                   'node' => {},
@@ -890,11 +885,7 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                                 'node_content' => [
                                   {}
                                 ],
-                                'normalized' => 'mark',
-                                'spaces_before_argument' => {
-                                  'text' => '',
-                                  'type' => 'empty_spaces_before_argument'
-                                }
+                                'normalized' => 'mark'
                               },
                               'line_nr' => {
                                 'file_name' => '',
@@ -904,6 +895,7 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                               'parent' => {}
                             },
                             {
+                              'parent' => {},
                               'text' => '
 ',
                               'type' => 'empty_spaces_after_close_brace'
@@ -1006,30 +998,11 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
             'prototypes' => [
               {
                 'contents' => [],
-                'parent' => {},
                 'type' => 'bracketed_multitable_prototype'
               },
               {
                 'contents' => [],
-                'parent' => {},
                 'type' => 'bracketed_multitable_prototype'
-              }
-            ],
-            'prototypes_line' => [
-              {
-                'text' => ' ',
-                'type' => 'prototype_space'
-              },
-              {},
-              {
-                'text' => ' ',
-                'type' => 'prototype_space'
-              },
-              {},
-              {
-                'text' => '
-',
-                'type' => 'prototype_space'
               }
             ],
             'spaces_after_command' => {}
@@ -1117,10 +1090,6 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                     {}
                   ],
                   'normalized' => 'mark'
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -1162,10 +1131,6 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                     {}
                   ],
                   'normalized' => 'anchor-in-multitable'
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -1282,6 +1247,7 @@ $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'line_nr'};
@@ -1371,6 +1337,7 @@ $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[3];
@@ -1390,11 +1357,7 @@ $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'contents'};
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[3]{'contents'};
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'prototypes_line'}[1] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'prototypes_line'}[3] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[3];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1];

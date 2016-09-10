@@ -50,12 +50,12 @@ In included file.
 
 $result_errors{'double_include'} = [
   {
-    'error_line' => ':2: warning: @include should only appear at a line beginning
+    'error_line' => ':2: warning: @include should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@include should only appear at a line beginning',
+    'text' => '@include should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

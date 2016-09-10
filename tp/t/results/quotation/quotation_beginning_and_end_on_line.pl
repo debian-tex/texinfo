@@ -108,12 +108,12 @@ $result_texts{'quotation_beginning_and_end_on_line'} = 'in quotation
 
 $result_errors{'quotation_beginning_and_end_on_line'} = [
   {
-    'error_line' => ':1: warning: @end should only appear at a line beginning
+    'error_line' => ':1: warning: @end should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@end should only appear at a line beginning',
+    'text' => '@end should only appear at the beginning of a line',
     'type' => 'warning'
   }
 ];

@@ -521,7 +521,9 @@ macroseven defined
 Call macroseven
 @macroseven{aaa}
 
-'],
+',
+{'expanded_formats' => []}
+],
 ['expansion_order',
 '@macro bidule{arg}
 @machin{}

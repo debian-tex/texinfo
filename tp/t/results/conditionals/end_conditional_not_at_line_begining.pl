@@ -17,12 +17,12 @@ $result_texts{'end_conditional_not_at_line_begining'} = '';
 
 $result_errors{'end_conditional_not_at_line_begining'} = [
   {
-    'error_line' => ':3: warning: @end ifhtml should only appear at a line beginning
+    'error_line' => ':3: warning: @end ifhtml should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@end ifhtml should only appear at a line beginning',
+    'text' => '@end ifhtml should only appear at the beginning of a line',
     'type' => 'warning'
   }
 ];

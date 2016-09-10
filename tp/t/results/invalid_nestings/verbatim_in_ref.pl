@@ -64,6 +64,7 @@ $result_trees{'verbatim_in_ref'} = {
                 {
                   'contents' => [
                     {
+                      'parent' => {},
                       'text' => ' 
 ',
                       'type' => 'empty_spaces_before_argument'
@@ -80,19 +81,14 @@ $result_trees{'verbatim_in_ref'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 3,
                 'macro' => ''
               },
-              'parent' => {},
-              'remaining_args' => 3
+              'parent' => {}
             }
           ],
           'parent' => {},
@@ -119,15 +115,7 @@ $result_trees{'verbatim_in_ref'} = {
           ],
           'extra' => {
             'invalid_nesting' => 1,
-            'spaces_after_command' => {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            }
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -136,7 +124,15 @@ $result_trees{'verbatim_in_ref'} = {
           },
           'parent' => {}
         },
-        {},
+        {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        },
         {
           'parent' => {},
           'text' => '
@@ -186,6 +182,7 @@ $result_trees{'verbatim_in_ref'}{'contents'}[1]{'args'}[0]{'parent'} = $result_t
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -193,10 +190,10 @@ $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[1]{'parent'} = $resu
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2];
-$result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2];
-$result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1];
+$result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2]{'contents'}[0];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1];
-$result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[3] = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'};
+$result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[3]{'extra'}{'command'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2];
+$result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[5];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1];
@@ -249,12 +246,12 @@ $result_menus{'verbatim_in_ref'} = {
 
 $result_errors{'verbatim_in_ref'} = [
   {
-    'error_line' => ':3: @xref missing close brace
+    'error_line' => ':3: @xref missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@xref missing close brace',
+    'text' => '@xref missing closing brace',
     'type' => 'error'
   },
   {

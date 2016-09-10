@@ -77,10 +77,6 @@ $result_trees{'ref_in_anchor'} = {
                         {}
                       ],
                       'normalized' => 'Top'
-                    },
-                    'spaces_before_argument' => {
-                      'text' => '',
-                      'type' => 'empty_spaces_before_argument'
                     }
                   },
                   'line_nr' => {
@@ -108,16 +104,13 @@ $result_trees{'ref_in_anchor'} = {
               {},
               {}
             ],
-            'normalized' => 'TOP-Top',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'normalized' => 'TOP-Top'
           },
           'line_nr' => {},
           'parent' => {}
         },
         {
+          'parent' => {},
           'text' => '',
           'type' => 'empty_spaces_after_close_brace'
         }
@@ -165,6 +158,7 @@ $result_trees{'ref_in_anchor'}{'contents'}[1]{'contents'}[0]{'extra'}{'node_cont
 $result_trees{'ref_in_anchor'}{'contents'}[1]{'contents'}[0]{'extra'}{'node_content'}[1] = $result_trees{'ref_in_anchor'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'ref_in_anchor'}{'contents'}[1]{'contents'}[0]{'line_nr'} = $result_trees{'ref_in_anchor'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'ref_in_anchor'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_in_anchor'}{'contents'}[1];
+$result_trees{'ref_in_anchor'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_in_anchor'}{'contents'}[1];
 $result_trees{'ref_in_anchor'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_anchor'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'ref_in_anchor'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'ref_in_anchor'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'ref_in_anchor'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'ref_in_anchor'}{'contents'}[1]{'args'}[0]{'contents'}[0];

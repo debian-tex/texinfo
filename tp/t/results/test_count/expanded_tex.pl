@@ -292,12 +292,12 @@ After2.
 
 $result_errors{'expanded_tex'} = [
   {
-    'error_line' => ':10: warning: @end should only appear at a line beginning
+    'error_line' => ':10: warning: @end should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => '@end should only appear at a line beginning',
+    'text' => '@end should only appear at the beginning of a line',
     'type' => 'warning'
   }
 ];

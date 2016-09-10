@@ -21,6 +21,12 @@ $result_trees{'asis_as_itemize_argument'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -123,11 +129,7 @@ $result_trees{'asis_as_itemize_argument'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -156,6 +158,7 @@ $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'extra'}{'block_command
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[1];
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'line_nr'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'parent'} = $result_trees{'asis_as_itemize_argument'};
 
 $result_texis{'asis_as_itemize_argument'} = '@itemize @asis

@@ -29,6 +29,11 @@ $result_trees{'itemize_line_commands_with_brace'} = {
               ],
               'cmdname' => 'bullet',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -131,11 +136,7 @@ $result_trees{'itemize_line_commands_with_brace'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -166,6 +167,11 @@ $result_trees{'itemize_line_commands_with_brace'} = {
               ],
               'cmdname' => 'minus',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -268,11 +274,7 @@ $result_trees{'itemize_line_commands_with_brace'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -302,6 +304,7 @@ $result_trees{'itemize_line_commands_with_brace'}{'contents'}[0]{'extra'}{'block
 $result_trees{'itemize_line_commands_with_brace'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'itemize_line_commands_with_brace'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'itemize_line_commands_with_brace'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'itemize_line_commands_with_brace'}{'contents'}[0]{'contents'}[1];
 $result_trees{'itemize_line_commands_with_brace'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'itemize_line_commands_with_brace'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'itemize_line_commands_with_brace'}{'contents'}[0]{'line_nr'} = $result_trees{'itemize_line_commands_with_brace'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'itemize_line_commands_with_brace'}{'contents'}[0]{'parent'} = $result_trees{'itemize_line_commands_with_brace'};
 $result_trees{'itemize_line_commands_with_brace'}{'contents'}[1]{'parent'} = $result_trees{'itemize_line_commands_with_brace'};
 $result_trees{'itemize_line_commands_with_brace'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'itemize_line_commands_with_brace'}{'contents'}[2];
@@ -328,6 +331,7 @@ $result_trees{'itemize_line_commands_with_brace'}{'contents'}[2]{'extra'}{'block
 $result_trees{'itemize_line_commands_with_brace'}{'contents'}[2]{'extra'}{'command_as_argument'} = $result_trees{'itemize_line_commands_with_brace'}{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'itemize_line_commands_with_brace'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'itemize_line_commands_with_brace'}{'contents'}[2]{'contents'}[1];
 $result_trees{'itemize_line_commands_with_brace'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'itemize_line_commands_with_brace'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'itemize_line_commands_with_brace'}{'contents'}[2]{'line_nr'} = $result_trees{'itemize_line_commands_with_brace'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'itemize_line_commands_with_brace'}{'contents'}[2]{'parent'} = $result_trees{'itemize_line_commands_with_brace'};
 
 $result_texis{'itemize_line_commands_with_brace'} = '@itemize @bullet{}

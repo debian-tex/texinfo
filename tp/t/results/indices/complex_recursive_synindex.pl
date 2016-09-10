@@ -466,7 +466,6 @@ $result_trees{'complex_recursive_synindex'} = {
               'in_code' => 0,
               'index_at_command' => 'eeeindex',
               'index_name' => 'eee',
-              'index_prefix' => 'eee',
               'index_type_command' => 'eeeindex',
               'key' => 'e before synindex',
               'node' => {},
@@ -613,7 +612,6 @@ $result_trees{'complex_recursive_synindex'} = {
               'in_code' => 0,
               'index_at_command' => 'cccindex',
               'index_name' => 'ccc',
-              'index_prefix' => 'ccc',
               'index_type_command' => 'cccindex',
               'key' => 'c index',
               'node' => {},
@@ -668,7 +666,6 @@ $result_trees{'complex_recursive_synindex'} = {
               'in_code' => 0,
               'index_at_command' => 'bbbindex',
               'index_name' => 'bbb',
-              'index_prefix' => 'bbb',
               'index_type_command' => 'bbbindex',
               'key' => 'b entry',
               'node' => {},
@@ -723,7 +720,6 @@ $result_trees{'complex_recursive_synindex'} = {
               'in_code' => 0,
               'index_at_command' => 'aaaindex',
               'index_name' => 'aaa',
-              'index_prefix' => 'aaa',
               'index_type_command' => 'aaaindex',
               'key' => 'a entry',
               'node' => {},
@@ -778,7 +774,6 @@ $result_trees{'complex_recursive_synindex'} = {
               'in_code' => 0,
               'index_at_command' => 'dddindex',
               'index_name' => 'ddd',
-              'index_prefix' => 'ddd',
               'index_type_command' => 'dddindex',
               'key' => 'd index',
               'node' => {},
@@ -833,7 +828,6 @@ $result_trees{'complex_recursive_synindex'} = {
               'in_code' => 0,
               'index_at_command' => 'eeeindex',
               'index_name' => 'eee',
-              'index_prefix' => 'eee',
               'index_type_command' => 'eeeindex',
               'key' => 'e index',
               'node' => {},
@@ -1531,10 +1525,7 @@ $result_indices{'complex_recursive_synindex'} = {
       },
       'in_code' => 0,
       'merged_in' => 'bbb',
-      'name' => 'aaa',
-      'prefix' => [
-        'aaa'
-      ]
+      'name' => 'aaa'
     },
     'bbb' => {
       'contained_indices' => {
@@ -1545,10 +1536,7 @@ $result_indices{'complex_recursive_synindex'} = {
         'eee' => 1
       },
       'in_code' => 0,
-      'name' => 'bbb',
-      'prefix' => [
-        'bbb'
-      ]
+      'name' => 'bbb'
     },
     'ccc' => {
       'contained_indices' => {
@@ -1556,21 +1544,14 @@ $result_indices{'complex_recursive_synindex'} = {
       },
       'in_code' => 0,
       'merged_in' => 'bbb',
-      'name' => 'ccc',
-      'prefix' => [
-        'ccc'
-      ]
+      'name' => 'ccc'
     },
     'cp' => {
       'contained_indices' => {
         'cp' => 1
       },
       'in_code' => 0,
-      'name' => 'cp',
-      'prefix' => [
-        'c',
-        'cp'
-      ]
+      'name' => 'cp'
     },
     'ddd' => {
       'contained_indices' => {
@@ -1578,10 +1559,7 @@ $result_indices{'complex_recursive_synindex'} = {
       },
       'in_code' => 0,
       'merged_in' => 'bbb',
-      'name' => 'ddd',
-      'prefix' => [
-        'ddd'
-      ]
+      'name' => 'ddd'
     },
     'eee' => {
       'contained_indices' => {
@@ -1589,65 +1567,42 @@ $result_indices{'complex_recursive_synindex'} = {
       },
       'in_code' => 0,
       'merged_in' => 'bbb',
-      'name' => 'eee',
-      'prefix' => [
-        'eee'
-      ]
+      'name' => 'eee'
     },
     'fn' => {
       'contained_indices' => {
         'fn' => 1
       },
       'in_code' => 1,
-      'name' => 'fn',
-      'prefix' => [
-        'f',
-        'fn'
-      ]
+      'name' => 'fn'
     },
     'ky' => {
       'contained_indices' => {
         'ky' => 1
       },
       'in_code' => 1,
-      'name' => 'ky',
-      'prefix' => [
-        'k',
-        'ky'
-      ]
+      'name' => 'ky'
     },
     'pg' => {
       'contained_indices' => {
         'pg' => 1
       },
       'in_code' => 1,
-      'name' => 'pg',
-      'prefix' => [
-        'p',
-        'pg'
-      ]
+      'name' => 'pg'
     },
     'tp' => {
       'contained_indices' => {
         'tp' => 1
       },
       'in_code' => 1,
-      'name' => 'tp',
-      'prefix' => [
-        't',
-        'tp'
-      ]
+      'name' => 'tp'
     },
     'vr' => {
       'contained_indices' => {
         'vr' => 1
       },
       'in_code' => 1,
-      'name' => 'vr',
-      'prefix' => [
-        'v',
-        'vr'
-      ]
+      'name' => 'vr'
     }
   },
   'merged_indices' => {

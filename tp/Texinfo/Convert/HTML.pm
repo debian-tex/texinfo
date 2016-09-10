@@ -1,4 +1,4 @@
-# $Id: HTML.pm 7313 2016-08-13 11:17:32Z gavin $
+# $Id: HTML.pm 7353 2016-09-10 13:03:54Z gavin $
 # HTML.pm: output tree as HTML.
 #
 # Copyright 2011, 2012, 2013, 2014, 2015,
@@ -7718,7 +7718,7 @@ sub _set_variables_texi2html()
 1;
 
 __END__
-# $Id: HTML.pm 7313 2016-08-13 11:17:32Z gavin $
+# $Id: HTML.pm 7353 2016-09-10 13:03:54Z gavin $
 # Automatically generated from maintain/template.pod
 
 =head1 NAME

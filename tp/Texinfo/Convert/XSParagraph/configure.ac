@@ -10,7 +10,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([texinfo], [6.2])
+AC_INIT([texinfo], [6.3])
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIR([m4])
 

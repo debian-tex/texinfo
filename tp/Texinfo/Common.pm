@@ -1,4 +1,4 @@
-# $Id: Common.pm 7313 2016-08-13 11:17:32Z gavin $
+# $Id: Common.pm 7353 2016-09-10 13:03:54Z gavin $
 # Common.pm: definition of commands. Common code of other Texinfo modules.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.

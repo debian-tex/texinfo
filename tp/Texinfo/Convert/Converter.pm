@@ -1,4 +1,4 @@
-# $Id: Converter.pm 7313 2016-08-13 11:17:32Z gavin $
+# $Id: Converter.pm 7353 2016-09-10 13:03:54Z gavin $
 # Converter.pm: Common code for Converters.
 #
 # Copyright 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.

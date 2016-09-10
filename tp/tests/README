@@ -1,4 +1,4 @@
-$Id: README 7033 2016-02-27 15:31:55Z gavin $
+$Id: README 7356 2016-09-10 15:49:59Z gavin $
 texinfo/tp/tests/README
 
   Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
@@ -80,12 +80,15 @@ tests.log.
 Regenerating test results
 =========================
 
+To update the test results, first the tests must be run as above.
+
 Giving -copy as the first argument to ../run_parser_all.sh or
 parser_tests.sh (or long_tests.sh or tex_html_tests.sh, which need
 environment variables LONG_TESTS resp. TEX_HTML_TESTS, or ALL_TESTS, to
 be set to "yes", but otherwise operate similarly) will cause the 
-reference results to be regenerated.  For example, to update the 
-reference results for one particular test:
+reference results to be copied from the results the last time the tests 
+were run.  For example, to update the reference results for one 
+particular test:
 
 $ ./parser_tests.sh -copy formatting
 The copy-* make targets update all the references for various large sets

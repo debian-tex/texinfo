@@ -1,4 +1,4 @@
-$Id: NEWS 7281 2016-07-30 18:55:22Z gavin $
+$Id: NEWS 7353 2016-09-10 13:03:54Z gavin $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -11,7 +11,7 @@ See the manual for detailed information.
   notice and this notice are preserved.
 
 -------------------------------------------------------------------------------
-6.2 (10 September 2016)
+6.3 (10 September 2016)
 
 * Language:
   . The commands `@setcontentsaftertitlepage' and
@@ -46,6 +46,8 @@ See the manual for detailed information.
 
 * info:
   . Handling of "invalid" value in infokey file fixed.
+
+6.2 (withdrawn)
 
 
 

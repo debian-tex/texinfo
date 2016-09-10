@@ -1,8 +1,9 @@
-texinfo (6.1.0.dfsg.1-9) UNRELEASED; urgency=medium
+texinfo (6.2.0.dfsg.1-1) unstable; urgency=medium
 
   * make makeinfo honor S_D_E (patch by Alexis Bienvenüe) (Closes: #826158)
+  * new upstream release
 
- -- Norbert Preining <preining@debian.org>  Fri, 03 Jun 2016 20:49:23 +0900
+ -- Norbert Preining <preining@debian.org>  Sat, 10 Sep 2016 23:04:59 +0900
 
 texinfo (6.1.0.dfsg.1-8) unstable; urgency=medium
 

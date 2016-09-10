@@ -206,21 +206,6 @@ $result_trees{'multitable_in_example_extraneous_tab'} = {
                 'type' => 'row_prototype'
               }
             ],
-            'prototypes_line' => [
-              {
-                'text' => ' ',
-                'type' => 'prototype_space'
-              },
-              {
-                'text' => 'a',
-                'type' => 'row_prototype'
-              },
-              {
-                'text' => '
-',
-                'type' => 'prototype_space'
-              }
-            ],
             'spaces_after_command' => {}
           },
           'line_nr' => {

@@ -65,7 +65,7 @@ $result_trees{'spaces_after_braced_command'} = {
           'contents' => [],
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 4,
+            'line_nr' => 3,
             'macro' => ''
           },
           'parent' => {}

@@ -33,6 +33,12 @@ $result_trees{'itemize_in_example'} = {
                 },
                 {
                   'cmdname' => 'bullet',
+                  'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 2,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -146,11 +152,7 @@ $result_trees{'itemize_in_example'} = {
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -179,6 +181,12 @@ $result_trees{'itemize_in_example'} = {
                 },
                 {
                   'cmdname' => 'asis',
+                  'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 8,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -281,11 +289,7 @@ $result_trees{'itemize_in_example'} = {
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -455,6 +459,11 @@ $result_trees{'itemize_in_example'} = {
                   ],
                   'cmdname' => 'bullet',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 16,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -560,11 +569,7 @@ $result_trees{'itemize_in_example'} = {
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 16,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -650,6 +655,7 @@ $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'bloc
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'itemize_in_example'}{'contents'}[0];
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[2];
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'itemize_in_example'}{'contents'}[0];
@@ -676,6 +682,7 @@ $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[3]{'extra'}{'bloc
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[3]{'contents'}[1];
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[3]{'line_nr'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'itemize_in_example'}{'contents'}[0];
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[4];
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'itemize_in_example'}{'contents'}[0];
@@ -729,6 +736,7 @@ $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[7]{'extra'}{'bloc
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[7]{'extra'}{'block_command_line_contents'}[0][1] = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'contents'}[2];
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[7]{'extra'}{'end_command'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[7]{'contents'}[1];
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[7]{'extra'}{'spaces_after_command'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0];
+$result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[7]{'line_nr'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'itemize_in_example'}{'contents'}[0];
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[8];
 $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'itemize_in_example'}{'contents'}[0]{'contents'}[8]{'args'}[0];

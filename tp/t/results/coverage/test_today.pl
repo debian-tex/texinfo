@@ -19,6 +19,11 @@ $result_trees{'test_today'} = {
           ],
           'cmdname' => 'today',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

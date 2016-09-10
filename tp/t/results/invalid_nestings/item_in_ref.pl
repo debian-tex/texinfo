@@ -21,6 +21,12 @@ $result_trees{'item_in_ref'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -127,6 +133,7 @@ $result_trees{'item_in_ref'} = {
                         {
                           'contents' => [
                             {
+                              'parent' => {},
                               'text' => ' ',
                               'type' => 'empty_spaces_before_argument'
                             },
@@ -148,19 +155,14 @@ $result_trees{'item_in_ref'} = {
                             {}
                           ],
                           undef
-                        ],
-                        'spaces_before_argument' => {
-                          'text' => '',
-                          'type' => 'empty_spaces_before_argument'
-                        }
+                        ]
                       },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 5,
                         'macro' => ''
                       },
-                      'parent' => {},
-                      'remaining_args' => 2
+                      'parent' => {}
                     }
                   ],
                   'parent' => {},
@@ -280,11 +282,7 @@ $result_trees{'item_in_ref'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -310,6 +308,7 @@ $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'conte
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0];
+$result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[2];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[2];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
@@ -339,6 +338,7 @@ $result_trees{'item_in_ref'}{'contents'}[0]{'extra'}{'block_command_line_content
 $result_trees{'item_in_ref'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'item_in_ref'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'item_in_ref'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2];
 $result_trees{'item_in_ref'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'item_in_ref'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'item_in_ref'}{'contents'}[0]{'line_nr'} = $result_trees{'item_in_ref'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'item_in_ref'}{'contents'}[0]{'parent'} = $result_trees{'item_in_ref'};
 
 $result_texis{'item_in_ref'} = '@table @asis
@@ -359,12 +359,12 @@ Topsecond item
 
 $result_errors{'item_in_ref'} = [
   {
-    'error_line' => ':5: @ref missing close brace
+    'error_line' => ':5: @ref missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@ref missing close brace',
+    'text' => '@ref missing closing brace',
     'type' => 'error'
   },
   {

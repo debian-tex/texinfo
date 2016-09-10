@@ -10,19 +10,13 @@ diffs_dir=diffs
 
 
 
-if test "z$LONG_TESTS" != z"yes" && test "z$ALL_TESTS" != z"yes"; then
-  echo "Skipping long tests that take a lot of time to run"
+if test "z$LONG_TESTS" = z"yes"; then
+  echo "Skipping short tests because we are only doing long tests"
   exit 77
 fi
-
-if test "z$TEX_HTML_TESTS" = z"yes"; then
-  echo "Skipping long tests, only doing HTML TeX tests"
-  exit 77
-fi
-
-dir=contents
-arg='double_contents_setcontentsaftertitlepage'
-name='double_contents_setcontentsaftertitlepage'
+dir=htmlxref-only_split
+arg='htmlxref'
+name='htmlxref'
 [ -d "$dir" ] || mkdir $dir
 
 srcdir_test=$dir; export srcdir_test;

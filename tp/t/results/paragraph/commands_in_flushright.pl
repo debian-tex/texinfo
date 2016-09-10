@@ -371,6 +371,12 @@ $result_trees{'commands_in_flushright'} = {
                 },
                 {
                   'cmdname' => 'emph',
+                  'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 17,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -567,11 +573,7 @@ $result_trees{'commands_in_flushright'} = {
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 17,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -900,6 +902,7 @@ $result_trees{'commands_in_flushright'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_before_argument'
                 },
@@ -965,12 +968,7 @@ $result_trees{'commands_in_flushright'} = {
               'cmdname' => 'caption',
               'contents' => [],
               'extra' => {
-                'float' => {},
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                'float' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -1577,6 +1575,7 @@ $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[8]{'extra'}{'
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[8]{'extra'}{'command_as_argument'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[8]{'args'}[0]{'contents'}[1];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[8]{'extra'}{'end_command'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[8]{'contents'}[1];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[8]{'extra'}{'spaces_after_command'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0];
+$result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[8]{'line_nr'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[8]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10];
@@ -1639,6 +1638,7 @@ $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'args'}[0
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'args'}[0];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'args'}[0];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12];
+$result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'args'}[1];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'args'}[1];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'args'}[1];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'args'}[1]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12];
@@ -1650,7 +1650,6 @@ $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'contents
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'contents'}[3]{'args'}[0];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'contents'}[3];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'contents'}[3]{'extra'}{'float'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12];
-$result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'contents'}[3]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'contents'}[3]{'args'}[0];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'contents'}[3]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'contents'}[4]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[12]{'contents'}[5];
@@ -1865,11 +1864,7 @@ $result_floats{'commands_in_flushright'} = {
         'caption' => {
           'cmdname' => 'caption',
           'extra' => {
-            'float' => {},
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'float' => {}
           }
         },
         'end_command' => {

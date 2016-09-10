@@ -20,11 +20,7 @@ $result_trees{'empty_images'} = {
       'extra' => {
         'brace_command_contents' => [
           undef
-        ],
-        'spaces_before_argument' => {
-          'text' => '',
-          'type' => 'empty_spaces_before_argument'
-        }
+        ]
       },
       'line_nr' => {
         'file_name' => '',
@@ -49,6 +45,7 @@ $result_trees{'empty_images'} = {
         {
           'contents' => [
             {
+              'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_before_argument'
             }
@@ -178,11 +175,7 @@ $result_trees{'empty_images'} = {
           [
             {}
           ]
-        ],
-        'spaces_before_argument' => {
-          'text' => '',
-          'type' => 'empty_spaces_before_argument'
-        }
+        ]
       },
       'line_nr' => {
         'file_name' => '',
@@ -234,11 +227,7 @@ $result_trees{'empty_images'} = {
           [
             {}
           ]
-        ],
-        'spaces_before_argument' => {
-          'text' => '',
-          'type' => 'empty_spaces_before_argument'
-        }
+        ]
       },
       'line_nr' => {
         'file_name' => '',
@@ -259,6 +248,7 @@ $result_trees{'empty_images'}{'contents'}[0]{'args'}[0]{'parent'} = $result_tree
 $result_trees{'empty_images'}{'contents'}[0]{'parent'} = $result_trees{'empty_images'};
 $result_trees{'empty_images'}{'contents'}[1]{'parent'} = $result_trees{'empty_images'};
 $result_trees{'empty_images'}{'contents'}[2]{'parent'} = $result_trees{'empty_images'};
+$result_trees{'empty_images'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_images'}{'contents'}[3]{'args'}[0];
 $result_trees{'empty_images'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'empty_images'}{'contents'}[3];
 $result_trees{'empty_images'}{'contents'}[3]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_images'}{'contents'}[3]{'args'}[1];
 $result_trees{'empty_images'}{'contents'}[3]{'args'}[1]{'parent'} = $result_trees{'empty_images'}{'contents'}[3];

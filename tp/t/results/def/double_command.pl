@@ -194,7 +194,6 @@ $result_trees{'double_command'} = {
                       'in_code' => 1,
                       'index_at_command' => 'deffnx',
                       'index_name' => 'fn',
-                      'index_prefix' => 'f',
                       'index_type_command' => 'deffn',
                       'key' => 'plot2',
                       'number' => 1
@@ -353,7 +352,6 @@ $result_trees{'double_command'} = {
               'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f',
               'index_type_command' => 'deffn',
               'key' => 'plot',
               'number' => 2
@@ -518,7 +516,6 @@ $result_trees{'double_command'} = {
                           'in_code' => 1,
                           'index_at_command' => 'defvr',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'defvr',
                           'key' => 'd--efvr_name',
                           'number' => 1
@@ -608,7 +605,6 @@ $result_trees{'double_command'} = {
               'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f',
               'index_type_command' => 'deffn',
               'key' => 'aaaa',
               'number' => 3
@@ -789,12 +785,12 @@ bbb
 
 $result_errors{'double_command'} = [
   {
-    'error_line' => ':1: warning: @deffnx should only appear at a line beginning
+    'error_line' => ':1: warning: @deffnx should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@deffnx should only appear at a line beginning',
+    'text' => '@deffnx should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -834,12 +830,12 @@ $result_errors{'double_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: @defvr should only appear at a line beginning
+    'error_line' => ':5: warning: @defvr should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@defvr should only appear at a line beginning',
+    'text' => '@defvr should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

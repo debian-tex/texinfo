@@ -76,12 +76,12 @@ $result_texts{'invalid_kbdinputstyle'} = 'kbdinputstyle ';
 
 $result_errors{'invalid_kbdinputstyle'} = [
   {
-    'error_line' => ':1: warning: @kbdinputstyle should only appear at a line beginning
+    'error_line' => ':1: warning: @kbdinputstyle should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@kbdinputstyle should only appear at a line beginning',
+    'text' => '@kbdinputstyle should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

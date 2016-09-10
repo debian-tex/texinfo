@@ -1,4 +1,4 @@
-$Id: README 6942 2016-01-15 18:21:28Z gavin $
+$Id: README 7033 2016-02-27 15:31:55Z gavin $
 texinfo/tp/tests/README
 
   Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
@@ -163,16 +163,6 @@ example with coverage_macro.texi).
 Init files
 ----------
 Init files are searched for in ../t/init/.
-
-Subdirectories
---------------
-
-There are three subdirectories containing tests, each of which is 
-organized like this one: htmlxref, htmlxref-only_mono and htmlxref-only_split.
-These groups of tests are in their own subdirectorie so they can use 
-their own htmlxref.cnf init file (which is copied to the build dir in 
-tests/Makefile.am).  In htmlxref-only_split, using a .texinfo directory 
-is tested.
 
 
 Creating a new test

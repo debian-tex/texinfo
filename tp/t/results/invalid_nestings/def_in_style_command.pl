@@ -112,7 +112,6 @@ $result_trees{'def_in_style_command'} = {
               'in_code' => 1,
               'index_at_command' => 'defun',
               'index_name' => 'fn',
-              'index_prefix' => 'f',
               'index_type_command' => 'defun',
               'key' => 'name',
               'number' => 1
@@ -241,12 +240,12 @@ text
 
 $result_errors{'def_in_style_command'} = [
   {
-    'error_line' => ':1: @code missing close brace
+    'error_line' => ':1: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   },
   {

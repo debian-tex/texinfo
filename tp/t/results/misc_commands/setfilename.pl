@@ -213,8 +213,8 @@ $result_trees{'setfilename'} = {
       ],
       'cmdname' => 'setfilename',
       'extra' => {
-        'spaces_after_command' => {},
-        'text_arg' => '  name  '
+        'missing_argument' => 1,
+        'spaces_after_command' => {}
       },
       'line_nr' => {},
       'parent' => {}
@@ -313,6 +313,15 @@ $result_errors{'setfilename'} = [
     'macro' => '',
     'text' => '@verb should not appear in @setfilename',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: bad argument to @setfilename: @ @verb{: name :}@
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'bad argument to @setfilename: @ @verb{: name :}@',
+    'type' => 'error'
   }
 ];
 
@@ -352,7 +361,7 @@ $result_converted_errors{'info'}->{'setfilename'} = [
 $result_converted{'xml'}->{'setfilename'} = '<setfilename file="file_comment" spaces=" ">file_comment</setfilename><!-- c comment -->
 <setfilename file="file_and_spaces" spaces=" ">file_and_spaces   </setfilename>
 <setfilename file="file_space_comment" spaces=" ">file_space_comment </setfilename><!-- c comment -->
-<setfilename file="  name  " spaces=" "><spacecmd type="spc"/><verb delimiter=":"> name </verb><spacecmd type="spc"/></setfilename>
+<setfilename spaces=" "><spacecmd type="spc"/><verb delimiter=":"> name </verb><spacecmd type="spc"/></setfilename>
 
 ';
 

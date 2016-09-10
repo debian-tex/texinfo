@@ -137,7 +137,7 @@ $result_trees{'bad_documentlanguage'} = {
       'cmdname' => 'documentlanguage',
       'extra' => {
         'spaces_after_command' => {},
-        'text_arg' => 'en'
+        'text_arg' => 'en '
       },
       'line_nr' => {},
       'parent' => {}
@@ -241,21 +241,21 @@ documentlanguage
 
 $result_errors{'bad_documentlanguage'} = [
   {
-    'error_line' => ':2: warning: @documentlanguage should only appear at a line beginning
+    'error_line' => ':2: warning: @documentlanguage should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@documentlanguage should only appear at a line beginning',
+    'text' => '@documentlanguage should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: @documentlanguage should only appear at a line beginning
+    'error_line' => ':4: warning: @documentlanguage should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => '@documentlanguage should only appear at a line beginning',
+    'text' => '@documentlanguage should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -266,6 +266,15 @@ $result_errors{'bad_documentlanguage'} = [
     'macro' => '',
     'text' => '@documentlanguage should not appear in @documentlanguage',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: bad argument to @documentlanguage: en @documentlanguage  en
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'bad argument to @documentlanguage: en @documentlanguage  en',
+    'type' => 'error'
   },
   {
     'error_line' => ':6: warning: en  after documentlanguage is not a valid language code

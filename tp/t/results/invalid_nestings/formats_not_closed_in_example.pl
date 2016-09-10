@@ -45,6 +45,12 @@ $result_trees{'formats_not_closed_in_example'} = {
                 },
                 {
                   'cmdname' => 'asis',
+                  'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 3,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -268,11 +274,7 @@ $result_trees{'formats_not_closed_in_example'} = {
             'command_as_argument' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -378,6 +380,7 @@ $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'co
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'extra'}{'command_as_argument'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0];

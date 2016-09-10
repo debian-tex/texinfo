@@ -530,6 +530,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/info_tests/before_node_and_section.pl \
   t/results/info_tests/center_flush.pl \
   t/results/info_tests/colon_in_index_entry.pl \
+  t/results/info_tests/colon_in_index_entry.pl \
   t/results/info_tests/contents_setcontentsaftertitlepage_before_node.pl \
   t/results/info_tests/def_in_copying.pl \
   t/results/info_tests/direntry_dircategory_and_commands.pl \
@@ -1102,9 +1103,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/sectioning/sectioning_part_appendix_no_top.pl \
   t/results/sectioning/sections.pl \
   t/results/sectioning/semi_auto.pl \
-  t/results/sectioning/setcontentsaftertitlepage.pl \
   t/results/sectioning/setfilename_on_top_and_after_node.pl \
-  t/results/sectioning/setshortcontentsaftertitlepage.pl \
   t/results/sectioning/shortcontents.pl \
   t/results/sectioning/space_in_node.pl \
   t/results/sectioning/top_chapter_sections.pl \

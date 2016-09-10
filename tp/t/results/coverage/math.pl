@@ -59,13 +59,6 @@ $result_trees{'math'} = {
           ],
           'cmdname' => 'math',
           'contents' => [],
-          'extra' => {
-            'spaces_before_argument' => {
-              'parent' => {},
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
-          },
           'line_nr' => {},
           'parent' => {}
         },
@@ -176,13 +169,6 @@ $result_trees{'math'} = {
           ],
           'cmdname' => 'math',
           'contents' => [],
-          'extra' => {
-            'spaces_before_argument' => {
-              'parent' => {},
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
-          },
           'line_nr' => {},
           'parent' => {}
         },
@@ -441,7 +427,6 @@ $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'c
 $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'line_nr'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1];
-$result_trees{'math'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'math'}{'contents'}[0];
 $result_trees{'math'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'math'}{'contents'}[0];
@@ -464,7 +449,6 @@ $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4]{'a
 $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4]{'line_nr'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3];
-$result_trees{'math'}{'contents'}[2]{'contents'}[3]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'line_nr'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'math'}{'contents'}[2];
 $result_trees{'math'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'math'}{'contents'}[2];

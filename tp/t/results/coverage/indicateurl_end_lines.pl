@@ -35,11 +35,7 @@ $result_trees{'indicateurl_end_lines'} = {
                 {},
                 {}
               ]
-            ],
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            ]
           },
           'line_nr' => {
             'file_name' => '',
@@ -87,12 +83,6 @@ $result_trees{'indicateurl_end_lines'} = {
           ],
           'cmdname' => 'indicateurl',
           'contents' => [],
-          'extra' => {
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 4,
@@ -154,12 +144,12 @@ cut by blank line
 
 $result_errors{'indicateurl_end_lines'} = [
   {
-    'error_line' => ':4: @indicateurl missing close brace
+    'error_line' => ':4: @indicateurl missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => '@indicateurl missing close brace',
+    'text' => '@indicateurl missing closing brace',
     'type' => 'error'
   },
   {

@@ -48,23 +48,7 @@ $result_trees{'ifset_in_macro_set'} = {
       ],
       'extra' => {
         'arg_line' => ' note {arg}
-',
-        'args_index' => {
-          'arg' => 0
-        },
-        'macrobody' => '@ifset notes 
-\\arg\\
-@end ifset
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -73,7 +57,15 @@ $result_trees{'ifset_in_macro_set'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -106,10 +98,9 @@ $result_trees{'ifset_in_macro_set'}{'contents'}[0]{'contents'}[0]{'parent'} = $r
 $result_trees{'ifset_in_macro_set'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'ifset_in_macro_set'}{'contents'}[0];
 $result_trees{'ifset_in_macro_set'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'ifset_in_macro_set'}{'contents'}[0];
 $result_trees{'ifset_in_macro_set'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'ifset_in_macro_set'}{'contents'}[0];
-$result_trees{'ifset_in_macro_set'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'ifset_in_macro_set'}{'contents'}[0];
-$result_trees{'ifset_in_macro_set'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'ifset_in_macro_set'};
 $result_trees{'ifset_in_macro_set'}{'contents'}[0]{'parent'} = $result_trees{'ifset_in_macro_set'};
-$result_trees{'ifset_in_macro_set'}{'contents'}[1] = $result_trees{'ifset_in_macro_set'}{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'ifset_in_macro_set'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'ifset_in_macro_set'}{'contents'}[0];
+$result_trees{'ifset_in_macro_set'}{'contents'}[1]{'parent'} = $result_trees{'ifset_in_macro_set'};
 $result_trees{'ifset_in_macro_set'}{'contents'}[2]{'parent'} = $result_trees{'ifset_in_macro_set'};
 $result_trees{'ifset_in_macro_set'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'ifset_in_macro_set'}{'contents'}[3];
 $result_trees{'ifset_in_macro_set'}{'contents'}[3]{'parent'} = $result_trees{'ifset_in_macro_set'};

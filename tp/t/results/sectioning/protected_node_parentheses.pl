@@ -370,16 +370,13 @@ $result_trees{'protected_node_parentheses'} = {
               {},
               {}
             ],
-            'normalized' => '_0028manual2_0029-name2',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'normalized' => '_0028manual2_0029-name2'
           },
           'line_nr' => {},
           'parent' => {}
         },
         {
+          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_spaces_after_close_brace'
@@ -443,10 +440,6 @@ $result_trees{'protected_node_parentheses'} = {
                     {}
                   ],
                   'normalized' => '_0028manual2_0029-name2'
-                },
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -551,6 +544,7 @@ $result_trees{'protected_node_parentheses'}{'contents'}[3]{'contents'}[1]{'extra
 $result_trees{'protected_node_parentheses'}{'contents'}[3]{'contents'}[1]{'extra'}{'node_content'}[1] = $result_trees{'protected_node_parentheses'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'protected_node_parentheses'}{'contents'}[3]{'contents'}[1]{'line_nr'} = $result_trees{'protected_node_parentheses'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'protected_node_parentheses'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'protected_node_parentheses'}{'contents'}[3];
+$result_trees{'protected_node_parentheses'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'protected_node_parentheses'}{'contents'}[3];
 $result_trees{'protected_node_parentheses'}{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'protected_node_parentheses'}{'contents'}[3];
 $result_trees{'protected_node_parentheses'}{'contents'}[3]{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'protected_node_parentheses'}{'contents'}[3]{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'protected_node_parentheses'}{'contents'}[3]{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'protected_node_parentheses'}{'contents'}[3]{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0];

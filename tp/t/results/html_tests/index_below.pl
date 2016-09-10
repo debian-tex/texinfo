@@ -206,7 +206,6 @@ $result_trees{'index_below'} = [
                 'in_code' => 0,
                 'index_at_command' => 'cindex',
                 'index_name' => 'cp',
-                'index_prefix' => 'c',
                 'index_type_command' => 'cindex',
                 'key' => 'entry',
                 'number' => 1

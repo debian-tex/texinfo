@@ -292,12 +292,12 @@ $result_menus{'setfilename_on_top_and_after_node'} = {
 
 $result_errors{'setfilename_on_top_and_after_node'} = [
   {
-    'error_line' => ':2: warning: @setfilename should only appear at a line beginning
+    'error_line' => ':2: warning: @setfilename should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@setfilename should only appear at a line beginning',
+    'text' => '@setfilename should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

@@ -24,6 +24,8 @@
 @showboxdepth=1000
 @showboxbreadth=1000
 
+@documentencoding UTF-8
+
 @contents
 
 @part Part One@*Sample part page
@@ -161,6 +163,16 @@ xx \arg\ xx
 should be@*
 xx e xx
 
+@section Closing brace following empty macro argument
+
+@macro Mac{x}
+A@acronym{\x\}A
+@end macro
+
+@Mac{}
+
+AA
+
 @section Trailing newlines in macro bodies
 
 Output should be doubled:
@@ -251,7 +263,7 @@ exceeds @math{@frac{1,16}} pt
 <X\a\X\b\X>
 @end macro
 
-No space should appear right after an `X':
+No trimming for single-arg macros.
 
 @noindent @Mac{b} @Mac{ b} @Mac{b  } @Mac{ b }
 
@@ -286,9 +298,10 @@ Like an argument to @code{@@footnote}.
 
 @tex
 \gdef \commenceindex{%
+\begingroup
 \page
-\begindoublecolumns
 \smallfonts \rm
+\begindoublecolumns
 \tolerance = 9500
 \plainfrenchspacing
 \everypar = {}%
@@ -298,10 +311,16 @@ Like an argument to @code{@@footnote}.
 \gdef \finishindex{%
 \catcode`\@=0 \catcode`\\=13
 \enddoublecolumns
+\endgroup
+\hrule
 }
 @end tex
 
 @chapter Index display
+
+In these examples, a horizontal rule is at the end of each run of double 
+column material in order to show if any material extends below the
+box containing it.
 
 @section Long index entries
 
@@ -362,7 +381,7 @@ the start of a page.
 \entry {\code {pdfetex}}{167}
 \entry {\code {pdftex}}{176}
 \entry {\code {pdftex\r {, and images}}}{97}
-\entry {\code {pdftexi2dvi}}{166}
+\entry {\code {pdftxei2dvi}}{166}
 \entry {Period in node name}{37}
 \entry {Periods, inserting}{111}
 \entry {Perl format strings for translation}{199}
@@ -417,6 +436,13 @@ the start of a page.
 \entry {Programming, glyphs for}{119}
 \entry {Pronunciation of Texinfo}{3}
 \entry {Prototype row, column widths defined by}{93}
+\entry {Ragged left, without filling}{83}
+\entry {Ragged right, with filling}{84}
+\entry {Ragged right, without filling}{83}
+\entry {Raising and lowering sections}{51}
+\entry {Raw formatter commands}{146}
+\entry {Raw HTML}{213}
+\entry {raw text output}{188}
 \initial {Q}
 \entry {Quotation characters (`'), in source}{114}
 \entry {Quotation marks, French}{115}
@@ -427,13 +453,6 @@ the start of a page.
 \entry {Quote characters, inserting}{110}
 \entry {Quoting, automatic for some macros}{156}
 \initial {R}
-\entry {Ragged left, without filling}{83}
-\entry {Ragged right, with filling}{84}
-\entry {Ragged right, without filling}{83}
-\entry {Raising and lowering sections}{51}
-\entry {Raw formatter commands}{146}
-\entry {Raw HTML}{213}
-\entry {raw text output}{188}
 \entry {RCS $Id}{253}
 \entry {Recommended names for keys}{69}
 \entry {Rectangle, black in hardcopy}{174}
@@ -488,7 +507,7 @@ doesn't start with an initial.
 \entry {\code {pdfetex}}{167}
 \entry {\code {pdftex}}{176}
 \entry {\code {pdftex\r {, and images}}}{97}
-\entry {\code {pdftexi2dvi}}{166}
+\entry {\code {pdftxei2dvi}}{166}
 \entry {Period in node name}{37}
 \entry {Periods, inserting}{111}
 \entry {Perl format strings for translation}{199}
@@ -593,6 +612,9 @@ See following pages
 \entry{bbbb}{2}
 \finishindex
 
+If the above is in two columns, check that the space below the initials
+`A' and `B' is even.
+
 @commenceindex
 \initial{A}
 \entry{aaaa}{1}
@@ -634,6 +656,323 @@ See following pages
 \entry{cccc}{17}
 \finishindex
 
+@section Final page of index hard to balance
+
+The left column of the final page of the index should be shorter than the
+right column here, and no empty page should appear in the middle of the 
+index.  All index material should fit on the page within the margins.
+
+@commenceindex
+\entry {outline, importing into}{39}
+\entry {outline, inserting into}{39}
+\entry {outline, label separator}{35}
+\entry {outline, label type}{35}
+\entry {outline, mailing}{37}
+\entry {outline, motion}{38}
+\entry {outline, overview}{40}
+\entry {outline, show levels}{40}
+\entry {outline, showing}{40}
+\entry {outline, top-level}{40}
+\entry {outline, view specs}{41}
+\entry {outline, viewing}{40}
+\entry {outliner}{32}
+\entry {outliner commands}{33}
+\entry {outliner keys}{90}
+\entry {overview}{40}
+\initial {P}
+\entry {paragraph, filling}{38}
+\entry {Paste Key}{8}
+\entry {paste region}{11}
+\entry {pasting a region}{70, 71, 76}
+\entry {patch output}{15}
+\entry {pathname}{15}
+\entry {permanent identifier}{32, 36}
+\entry {pipe character}{41}
+\entry {posting buttons}{23}
+\entry {posting news}{24}
+\entry {programming interface}{57}
+\entry {promotion}{36}
+\entry {proportional scrolling}{62, 74}
+\initial {R}
+\entry {rdb-mode}{77}
+\entry {README file}{65}
+\entry {reference}{16}
+\entry {refilling}{38}
+\entry {region selection}{11}
+\entry {region, active}{72}
+\entry {relative autonumber}{32}
+\entry {relative identifier}{35}
+\entry {remote file}{15}
+\entry {remote path}{15}
+\entry {remote pathnames}{68}
+\entry {remove lines}{27}
+\entry {removing Hyperbole menu}{25}
+\entry {Request For Comment}{15, 16}
+\entry {restoring windows}{50}
+\entry {RFC}{15, 16}
+\entry {Rmail}{23}
+\entry {rolo}{44}
+\entry {rolo address}{14}
+\entry {rolo commands}{45}
+\entry {rolo entry}{44}
+\entry {rolo file}{44}
+\entry {rolo keys}{47}
+\entry {rolo menu}{45}
+\entry {rolo searching}{46}
+\entry {rolo, buttons in}{44}
+\entry {rolo, datestamps}{48}
+\entry {rolo, editing}{48}
+\entry {rolo, extending a match}{47}
+\entry {rolo, finding matches}{47}
+\entry {rolo, highlighting matches}{47, 49}
+\entry {rolo, interactive searching}{47}
+\entry {rolo, locating a name}{47}
+\entry {rolo, moving through matches}{47}
+\entry {rolo, moving to entries}{48}
+\entry {rolo, outlining}{47}
+\entry {rolo, personal}{48}
+\entry {rolo, quitting}{48}
+\entry {root cell}{34, 36}
+\initial {S}
+\entry {save lines}{27}
+\entry {saving window configurations}{50}
+\entry {screen}{29}
+\entry {Screen}{62}
+\entry {scrolling}{62, 74}
+\entry {search}{26, 69}
+\entry {searching, rolo}{46}
+\entry {selection}{11}
+\entry {set}{70, 76}
+\entry {setting the view spec}{41}
+\entry {sexp selection}{11}
+\entry {SGML tag pair}{11}
+\entry {show subtree}{40}
+\entry {show tree}{40}
+\entry {showing}{40}
+\entry {side drag}{71}
+\entry {signatures, hiding}{14}
+\entry {site initialization}{66}
+\entry {Smart Key}{8, 62, 99}
+\entry {smart key assignments}{8}
+\entry {smart key commands}{8}
+\entry {Smart Key help}{11}
+\entry {Smart Key operation}{9}
+\entry {Smart Key, default context}{11, 89}
+\entry {Smart Keyboard Keys}{73}
+\entry {smart marking}{11}
+\entry {Smart Menu}{74}
+\entry {Smart Mouse Key}{70, 76}
+\entry {Smart Mouse Key drag}{22}
+\entry {Smart Mouse Key toggle}{8}
+\entry {Smart Mouse Keys}{70}
+\entry {smart selection}{11}
+\entry {source line}{15}
+\entry {splitting a cell}{39}
+\entry {stack frame}{15}
+\entry {star outline}{39}
+\entry {starting Hyperbole}{65}
+\entry {storage manager}{56}
+\entry {string}{70, 76}
+\entry {submenus}{27}
+\entry {submodes}{29}
+\entry {subtree, hide}{40}
+\entry {subtree, show}{40}
+\entry {swapping}{31}
+\entry {system encapsulation}{57}
+\initial {T}
+\entry {table of contents}{16, 19}
+\entry {tabs, inserting}{37}
+\entry {tag}{16}
+\entry {tags file}{16}
+\entry {TAGS file}{16}
+\entry {tar archive}{66}
+\entry {tar archive browsing}{87}
+\entry {terminal use}{4}
+\entry {Texinfo cross-reference}{14}
+\entry {Texinfo manual}{65}
+\entry {text file}{39}
+\entry {thing}{70, 76}
+\entry {things}{11}
+\entry {toc action type}{19}
+\entry {toc implicit button type}{16}
+\entry {toggling blank lines}{41}
+\entry {top-level cell}{34, 36}
+\entry {top-level view}{40}
+\entry {Tramp}{15, 68}
+\entry {transposing cells}{38}
+\entry {tree, copying}{37}
+\entry {tree, demoting}{36}
+\entry {tree, exporting}{37}
+\entry {tree, filling}{38}
+\entry {tree, hide subtree}{40}
+\entry {tree, killing}{36}
+\entry {tree, mailing}{37}
+\entry {tree, moving}{37}
+\entry {tree, promoting}{36}
+\entry {tree, show}{40}
+\entry {tree, show subtree}{40}
+\entry {type definition}{53}
+\entry {type redefinition}{19, 53}
+\initial {U}
+\entry {unburying}{30}
+\entry {uncompressing archives}{66}
+\entry {UNIX manual}{15}
+\entry {unpacking archives}{66}
+\entry {URL}{14, 19, 87}
+\entry {URLs, abbreviated}{68}
+\entry {URLs, using with find-file}{68}
+\entry {USENET}{23, 24}
+\initial {V}
+\entry {variables}{52}
+\entry {vector}{70, 76}
+\entry {version description}{98}
+\entry {vertical drag}{72}
+\entry {view}{40}
+\entry {view mode}{75}
+\entry {view spec}{41}
+\entry {view spec klink}{42}
+\entry {view spec, all lines and levels}{41}
+\entry {view spec, blank lines}{41}
+\entry {view spec, changing}{41}
+\entry {view spec, characters}{41}
+\entry {view spec, ellipses}{41}
+\entry {view spec, example}{41}
+\entry {view spec, label type}{41}
+\entry {view spec, lines per cell}{41}
+\entry {view spec, setting}{41}
+\entry {view spec, show levels}{41}
+\entry {VM}{23}
+\initial {W}
+\entry {W3}{87}
+\entry {wconfig commands}{50}
+\entry {web pages, displaying}{68}
+\entry {window configuration commands}{50}
+\entry {window configuration ring}{50}
+\entry {window configurations}{50}
+\entry {window control}{29}
+\entry {window system}{68}
+\entry {windows}{58}
+\entry {word wrap}{38}
+\entry {world-wide web}{87}
+\entry {World-wide Web}{14, 19}
+\entry {wrolo}{44}
+\entry {wrolo commands}{45}
+\entry {wrolo matches}{88}
+\entry {wrolo menu}{47}
+\entry {WWW}{14, 19}
+\initial {X}
+\entry {xdb}{15}
+\entry {XEmacs}{2, 25}
+\entry {XEmacs support}{69}
+\initial {Y}
+\entry {yank region}{11}
+\entry {yank, reformatting}{53}
+\entry {yanking}{70, 71, 76}
+\initial {Z}
+\entry {zcat}{66}
+\entry {zip file}{66}
+\entry {zooming}{31}
+\finishindex
+
+@section Final page initial at top of both columns
+
+@commenceindex
+\initial {P}
+\entry {\code {phi}}{397}
+\entry {\code {pi}}{397}
+\entry {\code {pi-over-180}}{397}
+\entry {\code {pi-over-2}}{397}
+\entry {\code {pi-over-4}}{397}
+\entry {\code {polar-complexp}}{392}
+\entry {\code {poly-mix}}{408}
+\entry {\code {poly-mul}}{408}
+\entry {\code {poly-simplify}}{408}
+\entry {\code {polynomial-base}}{408}
+\entry {\code {polynomial-p}}{408}
+\entry {\code {posp}}{391}
+\entry {\code {pow}}{397}
+\entry {\code {pow-mod}}{398}
+\entry {\code {power-of-2}}{398}
+\entry {\code {prime-test}}{399}
+\entry {\code {primp}}{393}
+\initial {Q}
+\entry {\code {quarter-circle}}{397}
+\entry {\code {quarter-integer}}{399}
+\entry {\code {quotient}}{397}
+\initial {R}
+\entry {\code {random-digit}}{398}
+\entry {\code {random-digits}}{399}
+\entry {\code {random-float}}{399}
+\entry {\code {ratp}}{392}
+\entry {\code {read-expr}}{409}
+\entry {\code {read-exprs}}{410}
+\entry {\code {read-number}}{409}
+\entry {\code {realp}}{392}
+\entry {\code {rect-complexp}}{392}
+\entry {\code {reduce-cols}}{400}
+\entry {\code {reduce-vec}}{400}
+\entry {\code {reject-arg}}{394}
+\entry {\code {remove-units}}{409}
+\entry {\code {rewrite}}{405}
+\entry {\code {rewrite-heads}}{405}
+\entry {\code {row-matrix}}{400}
+\initial {S}
+\entry {\code {scalarp}}{392}
+\entry {\code {scale-int}}{396}
+\entry {\code {scale-rounding}}{396}
+\entry {\code {simplify}}{403}
+\entry {\code {simplify-extended}}{403}
+\entry {\code {simplify-units}}{403}
+\entry {\code {single-units-in-expr-p}}{409}
+\entry {\code {solve-eqn}}{407}
+\entry {\code {solve-for}}{406}
+\entry {\code {solve-system}}{407}
+\entry {\code {sort-intv}}{396}
+\entry {\code {sqr}}{397}
+\entry {\code {sqrt-e}}{397}
+\entry {\code {sqrt-two-pi}}{397}
+\entry {\code {square-matrixp}}{393}
+\entry {\code {swap-rows}}{401}
+\initial {T}
+\entry {\code {tderiv}}{406}
+\entry {\code {to-fraction}}{399}
+\entry {\code {to-hms}}{398}
+\entry {\code {to-radians}}{398}
+\entry {\code {to-radians-2}}{398}
+\entry {\code {to-simple-fraction}}{399}
+\entry {\code {to-standard-units}}{409}
+\entry {\code {transpose}}{401}
+\entry {\code {two-pi}}{397}
+\initial {U}
+\entry {\code {underflow}}{394}
+\entry {\code {units-in-expr-p}}{409}
+\initial {V}
+\entry {\code {vec-length}}{399}
+\entry {\code {vectorp}}{393}
+\initial {W}
+\entry {\code {with-extra-prec}}{395}
+\initial {Z}
+\entry {\code {zerop}}{391}
+\finishindex
+
+
+@section Test of index widow elimination
+
+First time shows without widow elimination.  Second time shows it with
+(uses @file{texinfo-tex-test.WIDOWs} file).  For test to work properly,
+@code{ordm} should be a widow in the first case, and not in the second 
+case.
+
+@commenceindex
+\input texinfo-tex-test.WIDOWs
+\finishindex
+
+
+@page
+
+@printindex WIDOW
+
+
 @section Non-alphanumeric Index Initials
 
 / and \ should be mirror images.
@@ -654,6 +993,100 @@ See following pages
 @chapter First chapter after a part page
 
 Have a look at the headline.
+
+
+@chapter Test of non-alphanumeric characters
+
+Not in code: @{@}@@#\
+
+In code @t{@{@}@@#\}
+
+
+@chapter Test of auxiliary files
+
+Need to test with @command{texi2dvi}.
+
+Undefined value in anchor: @anchor{@value{ho} ho}
+
+Xref to said anchor: @xref{@value{ho} ho}.
+
+@set auxvalue this is the value
+Defined value in anchor: @anchor{@value{auxvalue} ho}
+
+Xref to said anchor: @xref{@value{auxvalue} ho}.  (Should definitely 
+work.)
+
+@defindex ax
+
+value in index entry
+@axindex @value{ho} in index entry
+
+defined value in index entry (this should definitely work)
+@axindex @value{auxvalue} in index entry
+
+value in index entry, but only defined afterwards
+@axindex @value{definedafter} index entry
+
+@axindex @b{another}
+
+some more text.
+
+test of macro in index entry:
+@macro MyMac {arg}
+ffff\arg\ggggg
+@end macro
+
+@axindex @MyMac{bah}
+
+@page
+
+@set definedafter Defining this now
+@set definedafter Defining this again
+
+@printindex ax
+
+@section Test of macros with @samp{@@} in index
+
+@defindex BB
+
+@macro Mac {arg}
+\arg\@}
+@end macro
+
+@macro MacTwo {arg}
+@{@}
+@end macro
+
+@BBindex @Mac{CCCC @@}
+
+@BBindex @MacTwo{DDDD @@}
+@printindex BB
+
+
+@section Test of @code{@@synindex}
+
+@defindex foo
+@defindex bar
+
+@synindex foo bar
+
+@fooindex One
+@barindex Two
+
+Should be two entries, not one below.
+
+@printindex bar
+
+
+@chapter @code{@@set} and @code{@@value}
+
+@section Another test of @t{@@value}
+
+Underscores and hyphens in value
+
+@set foo-bar_ neenaw
+
+The value is @value{foo-bar_}.
 
 
 @chapter Cross-references
@@ -684,6 +1117,52 @@ See @ref{Target}.@*
 @node Target
 @section Target
 
+@chapter Copying and captions
+
+@section Copying
+
+@documentencoding UTF-8
+
+@copying
+This manual is for blah-de-blah.@*
+Backslash \@*
+
+Copyrite @copyright{} 201X@*
+þ þ þ þ þ þ þ þ
+@end copying
+
+Now for the @@insertcopying:
+
+@insertcopying
+
+
+@section Captions
+
+
+There's a float in this section.
+
+@float Figure,fig:ex1
+This is a float.
+
+@caption{This is a caption.
+Multiple paragraphs are allowed here.  Here are some ``special'' 
+characters: \ à.
+
+Paragraph breaks allowed.
+}
+
+@shortcaption{short caption text.}
+
+This float should have a caption somewhere.
+@end float
+
+List of floats now:
+
+@listoffloats Figure
+
+
+
+
 @chapter Document encoding
 
 @documentencoding UTF-8
@@ -709,6 +1188,23 @@ Greek text:
 (random text copied from Wikipedia)
 
 double accent --- ταΐζω
+
+
+@section Test of characters in section title
+
+Check table of contents.
+
+For PDF output, check the bookmarks pane in the reader.
+(Currently plain ASCII approximations are used for the UTF-8 encoding.)
+
+@section --- übersicht
+
+@section --- @"Ubersicht
+
+@section @{ @} @@ @{@ @} @arrow{} @atchar{} @lbracechar{}
+
+This section should be called ``@{ @} @@ @{ @} @arrow{} @@ @{''.
+
 
 
 @chapter PDF link colours

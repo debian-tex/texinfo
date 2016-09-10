@@ -30,6 +30,7 @@ $result_trees{'ref_to_float'} = {
         {
           'contents' => [
             {
+              'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_before_argument'
             },
@@ -158,6 +159,7 @@ $result_trees{'ref_to_float'} = {
         {
           'contents' => [
             {
+              'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_before_argument'
             },
@@ -291,10 +293,6 @@ $result_trees{'ref_to_float'} = {
                 {}
               ],
               'normalized' => 'Label1'
-            },
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {
@@ -348,10 +346,6 @@ $result_trees{'ref_to_float'} = {
                 {}
               ],
               'normalized' => 'Label2'
-            },
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {
@@ -377,6 +371,7 @@ $result_trees{'ref_to_float'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{
 $result_trees{'ref_to_float'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_to_float'}{'contents'}[0]{'args'}[0];
 $result_trees{'ref_to_float'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_to_float'}{'contents'}[0]{'args'}[0];
 $result_trees{'ref_to_float'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'ref_to_float'}{'contents'}[0];
+$result_trees{'ref_to_float'}{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_to_float'}{'contents'}[0]{'args'}[1];
 $result_trees{'ref_to_float'}{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_to_float'}{'contents'}[0]{'args'}[1];
 $result_trees{'ref_to_float'}{'contents'}[0]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'ref_to_float'}{'contents'}[0]{'args'}[1];
 $result_trees{'ref_to_float'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'ref_to_float'}{'contents'}[0];
@@ -401,6 +396,7 @@ $result_trees{'ref_to_float'}{'contents'}[1]{'parent'} = $result_trees{'ref_to_f
 $result_trees{'ref_to_float'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_to_float'}{'contents'}[2];
 $result_trees{'ref_to_float'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_to_float'}{'contents'}[2]{'args'}[0];
 $result_trees{'ref_to_float'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'ref_to_float'}{'contents'}[2];
+$result_trees{'ref_to_float'}{'contents'}[2]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_to_float'}{'contents'}[2]{'args'}[1];
 $result_trees{'ref_to_float'}{'contents'}[2]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_to_float'}{'contents'}[2]{'args'}[1];
 $result_trees{'ref_to_float'}{'contents'}[2]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'ref_to_float'}{'contents'}[2]{'args'}[1];
 $result_trees{'ref_to_float'}{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'ref_to_float'}{'contents'}[2];

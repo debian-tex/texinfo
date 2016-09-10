@@ -55,6 +55,11 @@ $result_trees{'clickstyle'} = {
           'extra' => {
             'clickstyle' => 'result'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

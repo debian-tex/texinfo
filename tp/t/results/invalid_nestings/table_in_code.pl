@@ -55,6 +55,12 @@ $result_trees{'table_in_code'} = {
             },
             {
               'cmdname' => 'emph',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -194,11 +200,7 @@ $result_trees{'table_in_code'} = {
         'invalid_nesting' => 1,
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -244,6 +246,7 @@ $result_trees{'table_in_code'}{'contents'}[1]{'extra'}{'block_command_line_conte
 $result_trees{'table_in_code'}{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_in_code'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'table_in_code'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1];
 $result_trees{'table_in_code'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'table_in_code'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'table_in_code'}{'contents'}[1]{'line_nr'} = $result_trees{'table_in_code'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table_in_code'}{'contents'}[1]{'parent'} = $result_trees{'table_in_code'};
 $result_trees{'table_in_code'}{'contents'}[2]{'parent'} = $result_trees{'table_in_code'};
 
@@ -266,12 +269,12 @@ text
 
 $result_errors{'table_in_code'} = [
   {
-    'error_line' => ':1: @code missing close brace
+    'error_line' => ':1: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   },
   {

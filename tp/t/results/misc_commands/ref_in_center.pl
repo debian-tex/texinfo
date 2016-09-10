@@ -86,10 +86,6 @@ $result_trees{'ref_in_center'} = {
                         {}
                       ],
                       'normalized' => 'Top'
-                    },
-                    'spaces_before_argument' => {
-                      'text' => '',
-                      'type' => 'empty_spaces_before_argument'
                     }
                   },
                   'line_nr' => {
@@ -153,6 +149,7 @@ $result_trees{'ref_in_center'} = {
                     {
                       'contents' => [
                         {
+                          'parent' => {},
                           'text' => ' ',
                           'type' => 'empty_spaces_before_argument'
                         }
@@ -180,19 +177,14 @@ $result_trees{'ref_in_center'} = {
                         {}
                       ],
                       undef
-                    ],
-                    'spaces_before_argument' => {
-                      'text' => '',
-                      'type' => 'empty_spaces_before_argument'
-                    }
+                    ]
                   },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 5,
                     'macro' => ''
                   },
-                  'parent' => {},
-                  'remaining_args' => 2
+                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -270,6 +262,7 @@ $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'content
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0];
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[1];
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[2];
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1];
@@ -333,12 +326,12 @@ $result_menus{'ref_in_center'} = {
 
 $result_errors{'ref_in_center'} = [
   {
-    'error_line' => ':5: @ref missing close brace
+    'error_line' => ':5: @ref missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@ref missing close brace',
+    'text' => '@ref missing closing brace',
     'type' => 'error'
   },
   {

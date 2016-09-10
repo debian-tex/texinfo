@@ -154,6 +154,12 @@ $result_trees{'item_container'} = {
             },
             {
               'cmdname' => 'bullet',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -262,11 +268,7 @@ $result_trees{'item_container'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 6,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -368,6 +370,7 @@ $result_trees{'item_container'} = {
           [
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }
@@ -436,6 +439,7 @@ $result_trees{'item_container'}{'contents'}[3]{'extra'}{'block_command_line_cont
 $result_trees{'item_container'}{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'item_container'}{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'item_container'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'item_container'}{'contents'}[3]{'contents'}[1];
 $result_trees{'item_container'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'item_container'}{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'item_container'}{'contents'}[3]{'line_nr'} = $result_trees{'item_container'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'item_container'}{'contents'}[3]{'parent'} = $result_trees{'item_container'};
 $result_trees{'item_container'}{'contents'}[4]{'parent'} = $result_trees{'item_container'};
 $result_trees{'item_container'}{'contents'}[5]{'contents'}[0]{'extra'}{'command'} = $result_trees{'item_container'}{'contents'}[5];

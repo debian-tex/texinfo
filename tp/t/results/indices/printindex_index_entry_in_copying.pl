@@ -65,7 +65,6 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                   'in_code' => 1,
                   'index_at_command' => 'findex',
                   'index_name' => 'fn',
-                  'index_prefix' => 'f',
                   'index_type_command' => 'findex',
                   'key' => 'Copying this document',
                   'number' => 1,
@@ -164,7 +163,6 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                       'in_code' => 1,
                       'index_at_command' => 'defun',
                       'index_name' => 'fn',
-                      'index_prefix' => 'f',
                       'index_type_command' => 'defun',
                       'key' => 'fun',
                       'number' => 2,
@@ -254,7 +252,6 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                       'in_code' => 1,
                       'index_at_command' => 'defunx',
                       'index_name' => 'fn',
-                      'index_prefix' => 'f',
                       'index_type_command' => 'defun',
                       'key' => 'xf',
                       'number' => 3,
@@ -357,6 +354,12 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                     },
                     {
                       'cmdname' => 'asis',
+                      'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 10,
+                        'macro' => ''
+                      },
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },
@@ -415,7 +418,6 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                               'in_code' => 1,
                               'index_at_command' => 'item',
                               'index_name' => 'fn',
-                              'index_prefix' => 'f',
                               'index_type_command' => 'ftable',
                               'key' => 'ftable item',
                               'number' => 4,
@@ -469,7 +471,6 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                               'in_code' => 1,
                               'index_at_command' => 'itemx',
                               'index_name' => 'fn',
-                              'index_prefix' => 'f',
                               'index_type_command' => 'ftable',
                               'key' => 'xftable xitem',
                               'number' => 5,
@@ -545,11 +546,7 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                 'end_command' => {},
                 'spaces_after_command' => {}
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
-              },
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1194,6 +1191,7 @@ $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'extra'}{'command_as_argument'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[1];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'extra'}{'end_command'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'contents'}[1];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'extra'}{'spaces_after_command'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
+$result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'line_nr'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[8];

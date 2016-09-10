@@ -14,11 +14,13 @@ $result_trees{'contents_at_end_document_after_node'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => '\\input texinfo @c -*-texinfo-*-
 ',
                   'type' => 'preamble_text'
                 },
                 {
+                  'parent' => {},
                   'text' => '
 ',
                   'type' => 'preamble_text'
@@ -480,6 +482,8 @@ $result_trees{'contents_at_end_document_after_node'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'contents_at_end_document_after_node'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_at_end_document_after_node'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'contents_at_end_document_after_node'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'contents_at_end_document_after_node'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'contents_at_end_document_after_node'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_at_end_document_after_node'}{'contents'}[0]{'contents'}[0];
 $result_trees{'contents_at_end_document_after_node'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_at_end_document_after_node'}{'contents'}[0];
 $result_trees{'contents_at_end_document_after_node'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'contents_at_end_document_after_node'}{'contents'}[0]{'contents'}[1];

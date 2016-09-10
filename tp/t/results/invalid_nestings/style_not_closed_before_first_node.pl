@@ -172,12 +172,12 @@ $result_menus{'style_not_closed_before_first_node'} = {
 
 $result_errors{'style_not_closed_before_first_node'} = [
   {
-    'error_line' => ':1: @code missing close brace
+    'error_line' => ':1: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   }
 ];

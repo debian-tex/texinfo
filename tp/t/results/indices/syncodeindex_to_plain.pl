@@ -134,7 +134,6 @@ $result_trees{'syncodeindex_to_plain'} = {
               'in_code' => 1,
               'index_at_command' => 'kindex',
               'index_name' => 'ky',
-              'index_prefix' => 'k',
               'index_type_command' => 'kindex',
               'key' => '--k1',
               'node' => {},
@@ -189,7 +188,6 @@ $result_trees{'syncodeindex_to_plain'} = {
               'in_code' => 1,
               'index_at_command' => 'vindex',
               'index_name' => 'vr',
-              'index_prefix' => 'v',
               'index_type_command' => 'vindex',
               'key' => '--v',
               'node' => {},
@@ -244,7 +242,6 @@ $result_trees{'syncodeindex_to_plain'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => '-c',
               'node' => {},
@@ -540,22 +537,14 @@ $result_indices{'syncodeindex_to_plain'} = {
         'ky' => 1
       },
       'in_code' => 0,
-      'name' => 'cp',
-      'prefix' => [
-        'c',
-        'cp'
-      ]
+      'name' => 'cp'
     },
     'fn' => {
       'contained_indices' => {
         'fn' => 1
       },
       'in_code' => 1,
-      'name' => 'fn',
-      'prefix' => [
-        'f',
-        'fn'
-      ]
+      'name' => 'fn'
     },
     'ky' => {
       'contained_indices' => {
@@ -563,44 +552,28 @@ $result_indices{'syncodeindex_to_plain'} = {
       },
       'in_code' => 1,
       'merged_in' => 'cp',
-      'name' => 'ky',
-      'prefix' => [
-        'k',
-        'ky'
-      ]
+      'name' => 'ky'
     },
     'pg' => {
       'contained_indices' => {
         'pg' => 1
       },
       'in_code' => 1,
-      'name' => 'pg',
-      'prefix' => [
-        'p',
-        'pg'
-      ]
+      'name' => 'pg'
     },
     'tp' => {
       'contained_indices' => {
         'tp' => 1
       },
       'in_code' => 1,
-      'name' => 'tp',
-      'prefix' => [
-        't',
-        'tp'
-      ]
+      'name' => 'tp'
     },
     'vr' => {
       'contained_indices' => {
         'vr' => 1
       },
       'in_code' => 1,
-      'name' => 'vr',
-      'prefix' => [
-        'v',
-        'vr'
-      ]
+      'name' => 'vr'
     }
   },
   'merged_indices' => {

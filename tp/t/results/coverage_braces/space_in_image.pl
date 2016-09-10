@@ -12,6 +12,7 @@ $result_trees{'space_in_image'} = {
         {
           'contents' => [
             {
+              'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_before_argument'
             },
@@ -41,6 +42,7 @@ $result_trees{'space_in_image'} = {
         {
           'contents' => [
             {
+              'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_before_argument'
             },
@@ -123,6 +125,7 @@ $result_trees{'space_in_image'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_before_argument'
                 },
@@ -164,11 +167,13 @@ $result_trees{'space_in_image'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'space_in_image'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_image'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_image'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_image'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0];
 $result_trees{'space_in_image'}{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[1];
 $result_trees{'space_in_image'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0];
+$result_trees{'space_in_image'}{'contents'}[0]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[2];
 $result_trees{'space_in_image'}{'contents'}[0]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[2];
 $result_trees{'space_in_image'}{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0];
 $result_trees{'space_in_image'}{'contents'}[0]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[3];
@@ -185,6 +190,7 @@ $result_trees{'space_in_image'}{'contents'}[0]{'extra'}{'brace_command_contents'
 $result_trees{'space_in_image'}{'contents'}[0]{'extra'}{'spaces_before_argument'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'space_in_image'}{'contents'}[0]{'parent'} = $result_trees{'space_in_image'};
 $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1];
+$result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1];

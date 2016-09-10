@@ -1143,6 +1143,7 @@ $result_trees{'itemize_and_empty_lines'} = {
           [
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }
@@ -1190,6 +1191,12 @@ $result_trees{'itemize_and_empty_lines'} = {
             },
             {
               'cmdname' => 'minus',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 57,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -1297,11 +1304,7 @@ $result_trees{'itemize_and_empty_lines'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 57,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -1352,6 +1355,12 @@ $result_trees{'itemize_and_empty_lines'} = {
             },
             {
               'cmdname' => 'minus',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 65,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -1409,6 +1418,12 @@ $result_trees{'itemize_and_empty_lines'} = {
                     },
                     {
                       'cmdname' => 'bullet',
+                      'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 68,
+                        'macro' => ''
+                      },
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },
@@ -1511,11 +1526,7 @@ $result_trees{'itemize_and_empty_lines'} = {
                 'end_command' => {},
                 'spaces_after_command' => {}
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 68,
-                'macro' => ''
-              },
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1593,11 +1604,7 @@ $result_trees{'itemize_and_empty_lines'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 65,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -1631,6 +1638,12 @@ $result_trees{'itemize_and_empty_lines'} = {
             },
             {
               'cmdname' => 'bullet',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 75,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -1806,11 +1819,7 @@ $result_trees{'itemize_and_empty_lines'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 75,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -2060,6 +2069,7 @@ $result_trees{'itemize_and_empty_lines'}{'contents'}[5]{'extra'}{'block_command_
 $result_trees{'itemize_and_empty_lines'}{'contents'}[5]{'extra'}{'command_as_argument'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[5]{'args'}[0]{'contents'}[1];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[5]{'extra'}{'end_command'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[5]{'contents'}[1];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[5]{'args'}[0]{'contents'}[0];
+$result_trees{'itemize_and_empty_lines'}{'contents'}[5]{'line_nr'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[5]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'itemize_and_empty_lines'}{'contents'}[5]{'parent'} = $result_trees{'itemize_and_empty_lines'};
 $result_trees{'itemize_and_empty_lines'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[6];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[6]{'parent'} = $result_trees{'itemize_and_empty_lines'};
@@ -2100,6 +2110,7 @@ $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0]{'content
 $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0]{'contents'}[2]{'extra'}{'command_as_argument'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0]{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0]{'contents'}[2]{'contents'}[1];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0]{'contents'}[3];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[0];
@@ -2117,6 +2128,7 @@ $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'extra'}{'block_command
 $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'extra'}{'command_as_argument'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'args'}[0]{'contents'}[1];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'extra'}{'end_command'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'contents'}[1];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'extra'}{'spaces_after_command'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'args'}[0]{'contents'}[0];
+$result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'line_nr'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'itemize_and_empty_lines'}{'contents'}[10]{'parent'} = $result_trees{'itemize_and_empty_lines'};
 $result_trees{'itemize_and_empty_lines'}{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[11];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[11]{'parent'} = $result_trees{'itemize_and_empty_lines'};
@@ -2157,6 +2169,7 @@ $result_trees{'itemize_and_empty_lines'}{'contents'}[13]{'extra'}{'block_command
 $result_trees{'itemize_and_empty_lines'}{'contents'}[13]{'extra'}{'command_as_argument'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[13]{'args'}[0]{'contents'}[1];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[13]{'extra'}{'end_command'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[13]{'contents'}[3];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[13]{'extra'}{'spaces_after_command'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[13]{'args'}[0]{'contents'}[0];
+$result_trees{'itemize_and_empty_lines'}{'contents'}[13]{'line_nr'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'itemize_and_empty_lines'}{'contents'}[13]{'parent'} = $result_trees{'itemize_and_empty_lines'};
 
 $result_texis{'itemize_and_empty_lines'} = '@itemize youhou

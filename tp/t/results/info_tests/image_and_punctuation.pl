@@ -73,11 +73,7 @@ $result_trees{'image_and_punctuation'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => '',
@@ -127,11 +123,7 @@ $result_trees{'image_and_punctuation'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => '',
@@ -182,11 +174,7 @@ $result_trees{'image_and_punctuation'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => '',
@@ -236,11 +224,7 @@ $result_trees{'image_and_punctuation'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => '',
@@ -290,11 +274,7 @@ $result_trees{'image_and_punctuation'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => '',
@@ -345,11 +325,7 @@ $result_trees{'image_and_punctuation'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => '',

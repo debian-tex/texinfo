@@ -1,5 +1,5 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c 6965 2016-01-30 14:38:35Z gavin $
+   $Id: nodes.c 7264 2016-07-17 16:44:53Z gavin $
 
    Copyright 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
    2008, 2009, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -544,24 +544,17 @@ static void get_file_character_encoding (FILE_BUFFER *fb);
 static void forget_info_file (FILE_BUFFER *file_buffer);
 static void info_reload_file_buffer_contents (FILE_BUFFER *fb);
 
-/* Locate the file named by FILENAME, and return the information structure
-   describing this file.  The file may appear in our list of loaded files
-   already, or it may not.  If it does not already appear, find the file,
-   and add it to the list of loaded files.  If the file cannot be found,
-   return a NULL FILE_BUFFER *. */
+/* Try to find a file in our list of already loaded files. */
 FILE_BUFFER *
-info_find_file (char *filename)
+check_loaded_file (char *filename)
 {
-  int i;
+  int is_fullpath, i;
   FILE_BUFFER *file_buffer;
-  char *fullpath;
-  int is_fullpath;
   
   /* If full path to the file has been given, we must find it exactly. */
   is_fullpath = IS_ABSOLUTE (filename)
                 || filename[0] == '.' && IS_SLASH(filename[1]);
 
-  /* First try to find the file in our list of already loaded files. */
   if (info_loaded_files)
     {
       for (i = 0; (file_buffer = info_loaded_files[i]); i++)
@@ -601,11 +594,31 @@ info_find_file (char *filename)
             return file_buffer;
           }
     }
+  return 0;
+}
+
+/* Locate the file named by FILENAME, and return the information structure
+   describing this file.  The file may appear in our list of loaded files
+   already, or it may not.  If it does not already appear, find the file,
+   and add it to the list of loaded files.  If the file cannot be found,
+   return a NULL FILE_BUFFER *. */
+FILE_BUFFER *
+info_find_file (char *filename)
+{
+  FILE_BUFFER *file_buffer;
+  char *fullpath;
+  int is_fullpath;
+  
+  file_buffer = check_loaded_file (filename);
+  if (file_buffer)
+    return file_buffer;
 
   /* The file wasn't loaded.  Try to load it now. */
 
   /* Get the full pathname of this file, as known by the info system.
      That is to say, search along INFOPATH and expand tildes, etc. */
+  is_fullpath = IS_ABSOLUTE (filename)
+                || filename[0] == '.' && IS_SLASH(filename[1]);
   if (!is_fullpath)
     fullpath = info_find_fullpath (filename, 0);
   else
@@ -1384,8 +1397,6 @@ info_node_of_tag_ext (FILE_BUFFER *fb, TAG **tag_ptr, int fast)
       tag_ptr = &fb->tags[node_pos];
     }
 
-  /* Get the node. */
-
   /* We haven't checked the entry pointer yet.  Look for the node
      around about it and adjust it if necessary. */
   if (tag->cache.nodelen == -1)
@@ -1396,41 +1407,47 @@ info_node_of_tag_ext (FILE_BUFFER *fb, TAG **tag_ptr, int fast)
       set_tag_nodelen (subfile, tag);
     }
 
-  if (!tag->cache.contents || (tag->cache.flags & N_Simple))
+  node = xmalloc (sizeof (NODE));
+  memset (node, 0, sizeof (NODE));
+  if (tag->cache.references)
+    {
+      /* Initialize the node from the cache. */
+      *node = tag->cache;
+      if (!node->contents)
+        {
+          node->contents = subfile->contents + tag->nodestart_adjusted;
+          node->contents += skip_node_separator (node->contents);
+        }
+    }
+  else
     {
       /* Data for node has not been generated yet. */
-      NODE *cache = &tag->cache;
-      cache->contents = subfile->contents + tag->nodestart_adjusted;
-      cache->contents += skip_node_separator (cache->contents);
-      cache->nodename = tag->nodename;
-      cache->flags = tag->flags;
+      node->contents = subfile->contents + tag->nodestart_adjusted;
+      node->contents += skip_node_separator (node->contents);
+      node->nodelen = tag->cache.nodelen;
+      node->nodename = tag->nodename;
+      node->flags = tag->flags;
 
-      cache->fullpath = parent->fullpath;
+      node->fullpath = parent->fullpath;
       if (parent != subfile)
-        cache->subfile = tag->filename;
+        node->subfile = tag->filename;
 
-      if (!fast && !tag->cache.references)
+      if (fast)
+        node->flags |= N_Simple;
+      else
         {
           /* Read locations of references in node and similar.  Strip Info file
              syntax from node if preprocess_nodes=On.  Adjust the offsets of
              anchors that occur within the node. */
-          scan_node_contents (cache, parent, tag_ptr);
-          cache->flags &= ~N_Simple;
+          scan_node_contents (node, parent, tag_ptr);
+
+          if (!preprocess_nodes_p)
+            node_set_body_start (node);
+          tag->cache = *node;
+          if (!(node->flags & N_WasRewritten))
+            tag->cache.contents = 0; /* Pointer into file buffer
+                                        is not saved.  */
         }
-      else
-        cache->flags |= N_Simple;
-
-      if (!preprocess_nodes_p)
-        node_set_body_start (cache);
-    }
-
-  /* Initialize the node from the tag. */
-  node = xmalloc (sizeof (NODE));
-  memcpy (node, &tag->cache, sizeof (NODE));
-  if (!node->contents)
-    {
-      node->contents = subfile->contents + tag->nodestart_adjusted;
-      node->contents += skip_node_separator (node->contents);
     }
 
   /* We can't set this when tag table is built, because

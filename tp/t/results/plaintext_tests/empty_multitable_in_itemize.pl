@@ -122,13 +122,6 @@ $result_trees{'empty_multitable_in_itemize'} = {
                 'end_command' => {},
                 'max_columns' => 0,
                 'prototypes' => [],
-                'prototypes_line' => [
-                  {
-                    'text' => '
-',
-                    'type' => 'prototype_space'
-                  }
-                ],
                 'spaces_after_command' => {}
               },
               'line_nr' => {

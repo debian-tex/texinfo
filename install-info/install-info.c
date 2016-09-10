@@ -1,8 +1,8 @@
 /* install-info -- merge Info directory entries from an Info file.
-   $Id: install-info.c 6906 2016-01-01 18:33:45Z karl $
+   $Id: install-info.c 7038 2016-03-04 17:46:30Z gavin $
 
    Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
-   2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
+   2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -646,7 +646,7 @@ The first time you invoke Info you start off looking at this node.\n\
 %s\tThis is the top of the INFO tree\n\
 \n\
   This (the Directory node) gives a menu of major topics.\n\
-  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n\
+  Typing \"q\" exits, \"H\" lists all Info commands, \"d\" returns here,\n\
   \"h\" gives a primer for first-timers,\n\
   \"mEmacs<Return>\" visits the Emacs manual, etc.\n\
 \n\

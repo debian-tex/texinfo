@@ -200,30 +200,11 @@ $result_trees{'bad_tab_nesting'} = {
         'prototypes' => [
           {
             'contents' => [],
-            'parent' => {},
             'type' => 'bracketed_multitable_prototype'
           },
           {
             'contents' => [],
-            'parent' => {},
             'type' => 'bracketed_multitable_prototype'
-          }
-        ],
-        'prototypes_line' => [
-          {
-            'text' => ' ',
-            'type' => 'prototype_space'
-          },
-          {},
-          {
-            'text' => ' ',
-            'type' => 'prototype_space'
-          },
-          {},
-          {
-            'text' => '
-',
-            'type' => 'prototype_space'
           }
         ],
         'spaces_after_command' => {}
@@ -274,11 +255,7 @@ $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
-$result_trees{'bad_tab_nesting'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'};
-$result_trees{'bad_tab_nesting'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0];
-$result_trees{'bad_tab_nesting'}{'contents'}[0]{'extra'}{'prototypes_line'}[1] = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'bad_tab_nesting'}{'contents'}[0]{'extra'}{'prototypes_line'}[3] = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'};
 
@@ -295,12 +272,12 @@ bidule
 
 $result_errors{'bad_tab_nesting'} = [
   {
-    'error_line' => ':3: @code missing close brace
+    'error_line' => ':3: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   },
   {

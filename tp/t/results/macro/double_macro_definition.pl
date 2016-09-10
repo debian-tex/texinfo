@@ -19,17 +19,7 @@ $result_trees{'double_macro_definition'} = {
       'contents' => [],
       'extra' => {
         'arg_line' => ' foo
-',
-        'macrobody' => '',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -38,7 +28,15 @@ $result_trees{'double_macro_definition'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -57,17 +55,7 @@ $result_trees{'double_macro_definition'} = {
       'contents' => [],
       'extra' => {
         'arg_line' => ' foo
-',
-        'macrobody' => '',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -76,21 +64,27 @@ $result_trees{'double_macro_definition'} = {
       },
       'parent' => {}
     },
-    {}
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    }
   ],
   'type' => 'text_root'
 };
 $result_trees{'double_macro_definition'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'double_macro_definition'}{'contents'}[0];
-$result_trees{'double_macro_definition'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'double_macro_definition'}{'contents'}[0];
-$result_trees{'double_macro_definition'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'double_macro_definition'};
 $result_trees{'double_macro_definition'}{'contents'}[0]{'parent'} = $result_trees{'double_macro_definition'};
-$result_trees{'double_macro_definition'}{'contents'}[1] = $result_trees{'double_macro_definition'}{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'double_macro_definition'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'double_macro_definition'}{'contents'}[0];
+$result_trees{'double_macro_definition'}{'contents'}[1]{'parent'} = $result_trees{'double_macro_definition'};
 $result_trees{'double_macro_definition'}{'contents'}[2]{'parent'} = $result_trees{'double_macro_definition'};
 $result_trees{'double_macro_definition'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'double_macro_definition'}{'contents'}[3];
-$result_trees{'double_macro_definition'}{'contents'}[3]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'double_macro_definition'}{'contents'}[3];
-$result_trees{'double_macro_definition'}{'contents'}[3]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'double_macro_definition'};
 $result_trees{'double_macro_definition'}{'contents'}[3]{'parent'} = $result_trees{'double_macro_definition'};
-$result_trees{'double_macro_definition'}{'contents'}[4] = $result_trees{'double_macro_definition'}{'contents'}[3]{'extra'}{'spaces_after_command'};
+$result_trees{'double_macro_definition'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'double_macro_definition'}{'contents'}[3];
+$result_trees{'double_macro_definition'}{'contents'}[4]{'parent'} = $result_trees{'double_macro_definition'};
 
 $result_texis{'double_macro_definition'} = '@macro foo
 @end macro

@@ -1,4 +1,4 @@
-# $Id: test_utils.pl 6791 2015-11-21 14:57:34Z gavin $
+# $Id: test_utils.pl 7235 2016-06-25 20:20:46Z gavin $
 # t/* test support for the Perl modules.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015
@@ -374,7 +374,7 @@ sub cmp_trimmed($$$$)
   my $test_name = shift;
   my $trimmed = remove_keys($compared, $deleted_keys);
 no warnings 'recursion';
-  cmp_deeply($trimmed, $reference, $test_name);
+  Test::Deep::cmp_deeply($trimmed, $reference, $test_name);
 }
 
 sub new_test($;$$$)
@@ -404,7 +404,7 @@ my @node_keys = ('node_next', 'node_prev', 'node_up', 'menus',
   'associated_section');
 my %avoided_keys_tree;
 our @avoided_keys_tree = (@sections_keys, @menus_keys, @node_keys, 
-   'menu_child', 'element_next', 'directions', 'page_next');
+   'menu_child', 'element_next', 'directions', 'page_next', 'remaining_args');
 foreach my $avoided_key(@avoided_keys_tree) {
   $avoided_keys_tree{$avoided_key} = 1;
 }
@@ -462,8 +462,7 @@ sub set_converter_option_defaults($$$)
   my $parser_options = shift;
   my $format = shift;
   $converter_options = {} if (!defined($converter_options));
-  if (!defined($parser_options->{'expanded_formats'})
-      and !defined($converter_options->{'expanded_formats'})) {
+  if (!defined($converter_options->{'expanded_formats'})) {
     $converter_options->{'expanded_formats'} = [$format];
   }
   return $converter_options;
@@ -685,6 +684,15 @@ sub test($$)
   $parser_options = shift @$test_case if (@$test_case);
   $converter_options = shift @$test_case if (@$test_case);
 
+  if (!defined $parser_options->{'expanded_formats'}) {
+    $parser_options->{'expanded_formats'} = [
+      'docbook', 'html', 'xml', 'info', 'plaintext'];
+    #  'tex' is missed out here so that @ifnottex is expanded
+    # in the tests.  Put
+    #   {'expanded_formats' => ['tex']}
+    # where you need @tex expanded in the t/*.t files.
+  }
+
   my $test_file;
   if ($parser_options->{'test_file'}) {
     $test_file = $input_files_dir . $parser_options->{'test_file'};
@@ -809,8 +817,12 @@ sub test($$)
         if (!defined($format_converter_options->{'SUBDIR'})) {
           mkdir ($base) 
             if (! -d $base);
-          mkdir ($base."$test_out_dir/") 
-            if (! -d $base."$test_out_dir/");
+          if (! -d $base."$test_out_dir/") {
+            mkdir ($base."$test_out_dir/"); 
+          } else {
+            # remove any files from previous runs
+            unlink glob ($base."$test_out_dir/*"); 
+          }
           $format_converter_options->{'SUBDIR'} 
              = $base."$test_out_dir/";
         }

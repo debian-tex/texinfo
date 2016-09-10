@@ -105,7 +105,6 @@ $result_trees{'section_on_defx_line'} = {
                   'in_code' => 1,
                   'index_at_command' => 'deffn',
                   'index_name' => 'fn',
-                  'index_prefix' => 'f',
                   'index_type_command' => 'deffn',
                   'key' => 'j',
                   'number' => 1
@@ -309,12 +308,12 @@ $result_errors{'section_on_defx_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':2: warning: @section should only appear at a line beginning
+    'error_line' => ':2: warning: @section should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@section should only appear at a line beginning',
+    'text' => '@section should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

@@ -102,7 +102,6 @@ $result_trees{'index_entry_in_footnote'} = {
                               'in_code' => 0,
                               'index_at_command' => 'cindex',
                               'index_name' => 'cp',
-                              'index_prefix' => 'c',
                               'index_type_command' => 'cindex',
                               'key' => 'index entry in footnote',
                               'node' => {},
@@ -130,13 +129,6 @@ $result_trees{'index_entry_in_footnote'} = {
               ],
               'cmdname' => 'footnote',
               'contents' => [],
-              'extra' => {
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
-              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 3,
@@ -247,7 +239,6 @@ $result_trees{'index_entry_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents
 $result_trees{'index_entry_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'index_entry_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'index_entry_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entry_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'index_entry_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'index_entry_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'index_entry_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'index_entry_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'index_entry_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'index_entry_in_footnote'}{'contents'}[1]{'contents'}[1];
 $result_trees{'index_entry_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'index_entry_in_footnote'}{'contents'}[1]{'contents'}[1];
 $result_trees{'index_entry_in_footnote'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'index_entry_in_footnote'}{'contents'}[1];

@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c 6965 2016-01-30 14:38:35Z gavin $
+   $Id: session.c 7022 2016-02-20 20:29:27Z gavin $
 
    Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015
@@ -2815,7 +2815,13 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
                         entry->label,
                         node_printed_rep (initial_node));
             }
-          return strict ? 0 : initial_node;
+          if (strict)
+            {
+              free_history_node (initial_node);
+              return 0;
+            }
+          else
+            return initial_node;
         }
 
       debug (3, ("node: %s, %s", node->fullpath, node->nodename));
@@ -3693,7 +3699,7 @@ static void initialize_dumping (void);
    the nodes which appear in the menu of each node dumped. */
 void
 dump_nodes_to_file (REFERENCE **references,
-		    char *output_filename, int flags)
+                    char *output_filename, int dump_subnodes)
 {
   int i;
   FILE *output_stream;
@@ -3722,7 +3728,7 @@ dump_nodes_to_file (REFERENCE **references,
       if (dump_node_to_stream (references[i]->filename,
                                references[i]->nodename,
                                output_stream,
-			       flags & DUMP_SUBNODES) == DUMP_SYS_ERROR)
+                               dump_subnodes) == DUMP_SYS_ERROR)
 	{
 	  info_error (_("error writing to %s: %s"), output_filename,
                       strerror (errno));

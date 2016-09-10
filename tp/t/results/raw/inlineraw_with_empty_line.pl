@@ -28,6 +28,7 @@ $result_trees{'inlineraw_with_empty_line'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_before_argument'
                 },
@@ -52,6 +53,11 @@ $result_trees{'inlineraw_with_empty_line'} = {
                   ],
                   'cmdname' => 'lbracechar',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 3,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -77,11 +83,8 @@ $result_trees{'inlineraw_with_empty_line'} = {
                 {}
               ]
             ],
-            'format' => 'plaintext',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'expand_index' => 1,
+            'format' => 'plaintext'
           },
           'line_nr' => {
             'file_name' => '',
@@ -110,6 +113,7 @@ $result_trees{'inlineraw_with_empty_line'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_before_argument'
                 },
@@ -148,12 +152,7 @@ $result_trees{'inlineraw_with_empty_line'} = {
                       [
                         {}
                       ]
-                    ],
-                    'normalized' => 'HTML',
-                    'spaces_before_argument' => {
-                      'text' => '',
-                      'type' => 'empty_spaces_before_argument'
-                    }
+                    ]
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -186,11 +185,8 @@ $result_trees{'inlineraw_with_empty_line'} = {
                 {}
               ]
             ],
-            'format' => 'html',
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'expand_index' => 1,
+            'format' => 'html'
           },
           'line_nr' => {
             'file_name' => '',
@@ -214,6 +210,7 @@ $result_trees{'inlineraw_with_empty_line'} = {
 $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0];
 $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1];
+$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1];
 $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1];
 $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1];
 $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[3];
@@ -229,6 +226,7 @@ $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'parent
 $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0];
 $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3];
+$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1];
 $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1];
 $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1];
 $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'contents'}[3]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1];

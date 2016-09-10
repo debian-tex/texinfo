@@ -14,6 +14,7 @@ $result_trees{'japanese_shift_jis'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => '\\input texinfo @c -*- coding: utf-8; mode: texinfo; -*-
 ',
                   'type' => 'preamble_text'
@@ -314,6 +315,11 @@ $result_trees{'japanese_shift_jis'} = {
                   ],
                   'cmdname' => 'copyright',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => 'japanese_shift_jis.texi',
+                    'line_nr' => 12,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -955,6 +961,7 @@ $result_trees{'japanese_shift_jis'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];

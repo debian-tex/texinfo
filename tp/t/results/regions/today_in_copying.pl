@@ -33,6 +33,11 @@ $result_trees{'today_in_copying'} = {
                   ],
                   'cmdname' => 'today',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 2,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {

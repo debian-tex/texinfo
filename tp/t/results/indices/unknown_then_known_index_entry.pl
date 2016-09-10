@@ -93,7 +93,6 @@ $result_trees{'unknown_then_known_index_entry'} = {
               'in_code' => 0,
               'index_at_command' => 'someindex',
               'index_name' => 'some',
-              'index_prefix' => 'some',
               'index_type_command' => 'someindex',
               'key' => 'someindex entry.',
               'number' => 1
@@ -175,76 +174,49 @@ $result_indices{'unknown_then_known_index_entry'} = {
         'cp' => 1
       },
       'in_code' => 0,
-      'name' => 'cp',
-      'prefix' => [
-        'c',
-        'cp'
-      ]
+      'name' => 'cp'
     },
     'fn' => {
       'contained_indices' => {
         'fn' => 1
       },
       'in_code' => 1,
-      'name' => 'fn',
-      'prefix' => [
-        'f',
-        'fn'
-      ]
+      'name' => 'fn'
     },
     'ky' => {
       'contained_indices' => {
         'ky' => 1
       },
       'in_code' => 1,
-      'name' => 'ky',
-      'prefix' => [
-        'k',
-        'ky'
-      ]
+      'name' => 'ky'
     },
     'pg' => {
       'contained_indices' => {
         'pg' => 1
       },
       'in_code' => 1,
-      'name' => 'pg',
-      'prefix' => [
-        'p',
-        'pg'
-      ]
+      'name' => 'pg'
     },
     'some' => {
       'contained_indices' => {
         'some' => 1
       },
       'in_code' => 0,
-      'name' => 'some',
-      'prefix' => [
-        'some'
-      ]
+      'name' => 'some'
     },
     'tp' => {
       'contained_indices' => {
         'tp' => 1
       },
       'in_code' => 1,
-      'name' => 'tp',
-      'prefix' => [
-        't',
-        'tp'
-      ]
+      'name' => 'tp'
     },
     'vr' => {
       'contained_indices' => {
         'vr' => 1
       },
       'in_code' => 1,
-      'name' => 'vr',
-      'prefix' => [
-        'v',
-        'vr'
-      ]
+      'name' => 'vr'
     }
   }
 };

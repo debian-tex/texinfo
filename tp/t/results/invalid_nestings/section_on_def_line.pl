@@ -177,12 +177,12 @@ $result_sectioning{'section_on_def_line'}{'section_childs'}[0]{'section_up'} = $
 
 $result_errors{'section_on_def_line'} = [
   {
-    'error_line' => ':1: warning: @section should only appear at a line beginning
+    'error_line' => ':1: warning: @section should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@section should only appear at a line beginning',
+    'text' => '@section should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

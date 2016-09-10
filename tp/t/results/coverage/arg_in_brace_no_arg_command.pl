@@ -24,6 +24,11 @@ $result_trees{'arg_in_brace_no_arg_command'} = {
           ],
           'cmdname' => 'TeX',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

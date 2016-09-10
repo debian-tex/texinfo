@@ -659,30 +659,30 @@ $result_menus{'value_expansion_in_include'} = {
 
 $result_errors{'value_expansion_in_include'} = [
   {
-    'error_line' => ':12: warning: @include should only appear at a line beginning
+    'error_line' => ':12: warning: @include should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 12,
     'macro' => '',
-    'text' => '@include should only appear at a line beginning',
+    'text' => '@include should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':17: warning: @include should only appear at a line beginning
+    'error_line' => ':17: warning: @include should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 17,
     'macro' => '',
-    'text' => '@include should only appear at a line beginning',
+    'text' => '@include should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: warning: @include should only appear at a line beginning
+    'error_line' => ':22: warning: @include should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => '@include should only appear at a line beginning',
+    'text' => '@include should only appear at the beginning of a line',
     'type' => 'warning'
   }
 ];

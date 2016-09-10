@@ -276,6 +276,12 @@ $result_trees{'line_breaks'} = {
             },
             {
               'cmdname' => 'strong',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 10,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -475,11 +481,7 @@ $result_trees{'line_breaks'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 10,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -701,6 +703,7 @@ $result_trees{'line_breaks'}{'contents'}[7]{'extra'}{'block_command_line_content
 $result_trees{'line_breaks'}{'contents'}[7]{'extra'}{'command_as_argument'} = $result_trees{'line_breaks'}{'contents'}[7]{'args'}[0]{'contents'}[1];
 $result_trees{'line_breaks'}{'contents'}[7]{'extra'}{'end_command'} = $result_trees{'line_breaks'}{'contents'}[7]{'contents'}[1];
 $result_trees{'line_breaks'}{'contents'}[7]{'extra'}{'spaces_after_command'} = $result_trees{'line_breaks'}{'contents'}[7]{'args'}[0]{'contents'}[0];
+$result_trees{'line_breaks'}{'contents'}[7]{'line_nr'} = $result_trees{'line_breaks'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'line_breaks'}{'contents'}[7]{'parent'} = $result_trees{'line_breaks'};
 $result_trees{'line_breaks'}{'contents'}[8]{'parent'} = $result_trees{'line_breaks'};
 $result_trees{'line_breaks'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'line_breaks'}{'contents'}[9];

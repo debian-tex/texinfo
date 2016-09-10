@@ -52,11 +52,7 @@ $result_trees{'punctuation_at_end_command'} = {
               [
                 {}
               ]
-            ],
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            ]
           },
           'line_nr' => {
             'file_name' => '',
@@ -89,11 +85,7 @@ $result_trees{'punctuation_at_end_command'} = {
               [
                 {}
               ]
-            ],
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            ]
           },
           'line_nr' => {},
           'parent' => {}
@@ -122,11 +114,7 @@ $result_trees{'punctuation_at_end_command'} = {
               [
                 {}
               ]
-            ],
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            ]
           },
           'line_nr' => {},
           'parent' => {}
@@ -181,13 +169,6 @@ $result_trees{'punctuation_at_end_command'} = {
           ],
           'cmdname' => 'math',
           'contents' => [],
-          'extra' => {
-            'spaces_before_argument' => {
-              'parent' => {},
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
-          },
           'line_nr' => {},
           'parent' => {}
         },
@@ -343,7 +324,6 @@ $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[8]{'paren
 $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
 $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[10]{'args'}[0];
 $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[10];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[10]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[10]{'args'}[0];
 $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[10]{'line_nr'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[8]{'line_nr'};
 $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
 $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];

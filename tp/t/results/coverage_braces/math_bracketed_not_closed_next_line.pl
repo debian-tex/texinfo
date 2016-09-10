@@ -46,13 +46,6 @@ $result_trees{'math_bracketed_not_closed_next_line'} = {
           ],
           'cmdname' => 'math',
           'contents' => [],
-          'extra' => {
-            'spaces_before_argument' => {
-              'parent' => {},
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
-          },
           'line_nr' => {},
           'parent' => {}
         }
@@ -68,7 +61,6 @@ $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[
 $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0];
-$result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0];
 $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'parent'} = $result_trees{'math_bracketed_not_closed_next_line'};
@@ -93,12 +85,12 @@ $result_errors{'math_bracketed_not_closed_next_line'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: @math missing close brace
+    'error_line' => ':1: @math missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@math missing close brace',
+    'text' => '@math missing closing brace',
     'type' => 'error'
   }
 ];

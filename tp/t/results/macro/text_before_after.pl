@@ -37,17 +37,7 @@ $result_trees{'text_before_after'} = {
           ],
           'extra' => {
             'arg_line' => ' mymacro
-',
-            'macrobody' => 'in macro
-',
-            'spaces_after_command' => {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            }
+'
           },
           'line_nr' => {
             'file_name' => '',
@@ -56,7 +46,14 @@ $result_trees{'text_before_after'} = {
           },
           'parent' => {}
         },
-        {},
+        {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => ' ',
+          'type' => 'empty_spaces_after_command'
+        },
         {
           'parent' => {},
           'text' => 'after
@@ -73,10 +70,9 @@ $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[0]{'parent'} = $re
 $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1];
 $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1];
 $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1];
-$result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1];
-$result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'text_before_after'}{'contents'}[0];
 $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'text_before_after'}{'contents'}[0];
-$result_trees{'text_before_after'}{'contents'}[0]{'contents'}[2] = $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'};
+$result_trees{'text_before_after'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1];
+$result_trees{'text_before_after'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'text_before_after'}{'contents'}[0];
 $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'text_before_after'}{'contents'}[0];
 $result_trees{'text_before_after'}{'contents'}[0]{'parent'} = $result_trees{'text_before_after'};
 
@@ -91,12 +87,12 @@ $result_texts{'text_before_after'} = 'before after
 
 $result_errors{'text_before_after'} = [
   {
-    'error_line' => ':1: warning: @macro should only appear at a line beginning
+    'error_line' => ':1: warning: @macro should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@macro should only appear at a line beginning',
+    'text' => '@macro should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

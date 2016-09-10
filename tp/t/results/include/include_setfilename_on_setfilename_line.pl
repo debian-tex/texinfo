@@ -98,7 +98,7 @@ $result_trees{'include_setfilename_on_setfilename_line'} = {
               'extra' => {
                 'invalid_nesting' => 1,
                 'spaces_after_command' => {},
-                'text_arg' => 'other file'
+                'text_arg' => 'other file '
               },
               'line_nr' => {},
               'parent' => {}
@@ -111,7 +111,7 @@ $result_trees{'include_setfilename_on_setfilename_line'} = {
       'cmdname' => 'setfilename',
       'extra' => {
         'spaces_after_command' => {},
-        'text_arg' => 'file'
+        'text_arg' => 'file '
       },
       'line_nr' => {},
       'parent' => {}
@@ -151,12 +151,12 @@ $result_texts{'include_setfilename_on_setfilename_line'} = '';
 
 $result_errors{'include_setfilename_on_setfilename_line'} = [
   {
-    'error_line' => ':1: warning: @setfilename should only appear at a line beginning
+    'error_line' => ':1: warning: @setfilename should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@setfilename should only appear at a line beginning',
+    'text' => '@setfilename should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -178,12 +178,12 @@ $result_errors{'include_setfilename_on_setfilename_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @include should only appear at a line beginning
+    'error_line' => ':1: warning: @include should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@include should only appear at a line beginning',
+    'text' => '@include should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -202,6 +202,24 @@ $result_errors{'include_setfilename_on_setfilename_line'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => '@include: could not find are you joking!',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':1: bad argument to @setfilename: other file @include are you joking!
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'bad argument to @setfilename: other file @include are you joking!',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':1: bad argument to @setfilename: file @setfilename other file @include are you joking!
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'bad argument to @setfilename: file @setfilename other file @include are you joking!',
     'type' => 'error'
   }
 ];

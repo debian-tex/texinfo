@@ -42,22 +42,7 @@ $result_trees{'expand_two_same'} = {
       ],
       'extra' => {
         'arg_line' => ' macrotwo { arg }
-',
-        'args_index' => {
-          'arg' => 0
-        },
-        'macrobody' => 'With a doubles arg \\arg\\ and re \\arg\\
-
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -66,7 +51,15 @@ $result_trees{'expand_two_same'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'contents' => [
         {
@@ -192,10 +185,9 @@ $result_trees{'expand_two_same'}{'contents'}[0]{'args'}[1]{'parent'} = $result_t
 $result_trees{'expand_two_same'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[0];
 $result_trees{'expand_two_same'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[0];
 $result_trees{'expand_two_same'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[0];
-$result_trees{'expand_two_same'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'expand_two_same'}{'contents'}[0];
-$result_trees{'expand_two_same'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'expand_two_same'};
 $result_trees{'expand_two_same'}{'contents'}[0]{'parent'} = $result_trees{'expand_two_same'};
-$result_trees{'expand_two_same'}{'contents'}[1] = $result_trees{'expand_two_same'}{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'expand_two_same'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'expand_two_same'}{'contents'}[0];
+$result_trees{'expand_two_same'}{'contents'}[1]{'parent'} = $result_trees{'expand_two_same'};
 $result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2];
 $result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2];
 $result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[2]{'args'}[0];

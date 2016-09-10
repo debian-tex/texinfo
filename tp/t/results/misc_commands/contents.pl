@@ -250,48 +250,48 @@ shortcontents shortcontents summarycontents ';
 
 $result_errors{'contents'} = [
   {
-    'error_line' => ':2: warning: @contents should only appear at a line beginning
+    'error_line' => ':2: warning: @contents should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@contents should only appear at a line beginning',
+    'text' => '@contents should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: @contents should only appear at a line beginning
+    'error_line' => ':3: warning: @contents should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@contents should only appear at a line beginning',
+    'text' => '@contents should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':7: warning: @shortcontents should only appear at a line beginning
+    'error_line' => ':7: warning: @shortcontents should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => '@shortcontents should only appear at a line beginning',
+    'text' => '@shortcontents should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':8: warning: @shortcontents should only appear at a line beginning
+    'error_line' => ':8: warning: @shortcontents should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => '@shortcontents should only appear at a line beginning',
+    'text' => '@shortcontents should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: warning: @summarycontents should only appear at a line beginning
+    'error_line' => ':9: warning: @summarycontents should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => '@summarycontents should only appear at a line beginning',
+    'text' => '@summarycontents should only appear at the beginning of a line',
     'type' => 'warning'
   }
 ];

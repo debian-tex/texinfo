@@ -14,13 +14,13 @@ if test "z$LONG_TESTS" = z"yes"; then
   echo "Skipping short tests because we are only doing long tests"
   exit 77
 fi
-dir=.
-arg='htmlxref'
-name='htmlxref'
+dir=htmlxref-only_split
+arg='htmlxref_nodes'
+name='htmlxref_nodes'
 [ -d "$dir" ] || mkdir $dir
 
 srcdir_test=$dir; export srcdir_test;
-"$srcdir"/../"$command" -dir $dir $arg
+"$srcdir"/"$command" -dir $dir $arg
 exit_status=$?
 cat $dir/$one_test_logs_dir/$name.log
 if test -f $dir/$diffs_dir/$name.diff; then

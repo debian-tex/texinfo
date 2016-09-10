@@ -35,10 +35,6 @@ $result_trees{'ref_to_unknown_node'} = {
                 {}
               ],
               'normalized' => 'unknown-node'
-            },
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {

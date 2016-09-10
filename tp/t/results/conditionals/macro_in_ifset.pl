@@ -37,18 +37,7 @@ $result_trees{'macro_in_ifset'} = {
       ],
       'extra' => {
         'arg_line' => ' truc {}
-',
-        'macrobody' => 'truc
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -57,7 +46,15 @@ $result_trees{'macro_in_ifset'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -88,10 +85,9 @@ $result_trees{'macro_in_ifset'}{'contents'}[0]{'parent'} = $result_trees{'macro_
 $result_trees{'macro_in_ifset'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'macro_in_ifset'}{'contents'}[1];
 $result_trees{'macro_in_ifset'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'macro_in_ifset'}{'contents'}[1];
 $result_trees{'macro_in_ifset'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'macro_in_ifset'}{'contents'}[1];
-$result_trees{'macro_in_ifset'}{'contents'}[1]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'macro_in_ifset'}{'contents'}[1];
-$result_trees{'macro_in_ifset'}{'contents'}[1]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'macro_in_ifset'};
 $result_trees{'macro_in_ifset'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_ifset'};
-$result_trees{'macro_in_ifset'}{'contents'}[2] = $result_trees{'macro_in_ifset'}{'contents'}[1]{'extra'}{'spaces_after_command'};
+$result_trees{'macro_in_ifset'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'macro_in_ifset'}{'contents'}[1];
+$result_trees{'macro_in_ifset'}{'contents'}[2]{'parent'} = $result_trees{'macro_in_ifset'};
 $result_trees{'macro_in_ifset'}{'contents'}[3]{'parent'} = $result_trees{'macro_in_ifset'};
 $result_trees{'macro_in_ifset'}{'contents'}[4]{'parent'} = $result_trees{'macro_in_ifset'};
 $result_trees{'macro_in_ifset'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'macro_in_ifset'}{'contents'}[5];

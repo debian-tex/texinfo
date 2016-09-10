@@ -118,21 +118,21 @@ Second para.
 
 $result_errors{'double_style_paragraph'} = [
   {
-    'error_line' => ':1: @strong missing close brace
+    'error_line' => ':1: @strong missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@strong missing close brace',
+    'text' => '@strong missing closing brace',
     'type' => 'error'
   },
   {
-    'error_line' => ':1: @emph missing close brace
+    'error_line' => ':1: @emph missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@emph missing close brace',
+    'text' => '@emph missing closing brace',
     'type' => 'error'
   },
   {

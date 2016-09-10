@@ -69,6 +69,12 @@ $result_trees{'alias_table_command'} = {
             },
             {
               'cmdname' => 'code',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -190,11 +196,7 @@ $result_trees{'alias_table_command'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -235,6 +237,7 @@ $result_trees{'alias_table_command'}{'contents'}[2]{'extra'}{'block_command_line
 $result_trees{'alias_table_command'}{'contents'}[2]{'extra'}{'command_as_argument'} = $result_trees{'alias_table_command'}{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'alias_table_command'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'alias_table_command'}{'contents'}[2]{'contents'}[1];
 $result_trees{'alias_table_command'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'alias_table_command'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'alias_table_command'}{'contents'}[2]{'line_nr'} = $result_trees{'alias_table_command'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'alias_table_command'}{'contents'}[2]{'parent'} = $result_trees{'alias_table_command'};
 
 $result_texis{'alias_table_command'} = '@alias myalias = code

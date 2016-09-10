@@ -19,6 +19,11 @@ $result_trees{'command_brace_no_arg_punctuation'} = {
           ],
           'cmdname' => 'TeX',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -35,6 +40,7 @@ $result_trees{'command_brace_no_arg_punctuation'} = {
           ],
           'cmdname' => 'LaTeX',
           'contents' => [],
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -51,6 +57,7 @@ $result_trees{'command_brace_no_arg_punctuation'} = {
           ],
           'cmdname' => 'copyright',
           'contents' => [],
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -67,6 +74,7 @@ $result_trees{'command_brace_no_arg_punctuation'} = {
           ],
           'cmdname' => 'registeredsymbol',
           'contents' => [],
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -85,12 +93,15 @@ $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[0]{
 $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0];
 $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0];
 $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[2];
+$result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0];
 $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0];
 $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[4];
+$result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[4]{'line_nr'} = $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0];
 $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0];
 $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[6];
+$result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[6]{'line_nr'} = $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0];
 $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0];
 $result_trees{'command_brace_no_arg_punctuation'}{'contents'}[0]{'parent'} = $result_trees{'command_brace_no_arg_punctuation'};

@@ -149,12 +149,12 @@ in quotation
 
 $result_errors{'bad_style_nesting'} = [
   {
-    'error_line' => ':1: @code missing close brace
+    'error_line' => ':1: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   },
   {

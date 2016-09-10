@@ -189,7 +189,9 @@ Para
 @xml
 <in />
 @end xml
-'],
+',
+{'expanded_formats' => ['tex', 'xml']}
+],
 ['raw_and_comments',
 '@tex  @c comment
 in <tex>
@@ -199,7 +201,9 @@ Para
 @xml @c in xml comment
 <in />
 @end xml  @comment end xml comment
-'],
+',
+{'expanded_formats' => ['tex', 'xml']}
+],
 ['node_no_section',
 '@node Top
 '],
@@ -280,7 +284,9 @@ Math @math{ \\underline{ a, b} }.
 T
 @end deffn
 
-'],
+',
+{'expanded_formats' => ['tex'] }
+],
 ['spaces_info_lost',
 '@example  text on example line 
 in bad example

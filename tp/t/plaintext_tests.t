@@ -1,4 +1,4 @@
-# $Id: plaintext_tests.t 6790 2015-11-21 14:50:34Z gavin $
+# $Id: plaintext_tests.t 7235 2016-06-25 20:20:46Z gavin $
 use strict;
 
 use File::Spec;
@@ -90,14 +90,14 @@ Before samp. @samp{a}. after samp, w @w{in   w. after dot}  afterw
 html
 @end html
 after.
-',{'expanded_formats' => ['html']}
+',{'expanded_formats' => ['html']}, {'expanded_formats' => ['html']}
 ],
 ['isolated_html_expanded',
 '
 @html
 html
 @end html
-',{'expanded_formats' => ['html']}
+',{'expanded_formats' => ['html']}, {'expanded_formats' => ['html']}
 ],
 ['star_at_command_formatting',
 '@macro mymacro
@@ -477,7 +477,7 @@ GGG
 HHH
 @end tex
 bbbbbbbbb1 bbbbbbbbbbb2 bbbbbbbbbb3 bbbbbbbbbbbbbb4.
-', {'expanded_formats' => ['tex']}
+', {'expanded_formats' => ['tex']}, {'expanded_formats' => ['tex']}
 ],
 ['paragraphindent',
 'First

@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# Copyright (C) 2002-2015 Free Software Foundation, Inc.
+# Copyright (C) 2002-2016 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -114,18 +114,19 @@ build_triplet = @build@
 host_triplet = @host@
 @gl_GNULIB_ENABLED_configmake_TRUE@am__append_1 = configmake.h
 @gl_GNULIB_ENABLED_configmake_TRUE@am__append_2 = configmake.h configmake.h-t
-@gl_GNULIB_ENABLED_langinfo_TRUE@am__append_3 = langinfo.h
-@gl_GNULIB_ENABLED_langinfo_TRUE@am__append_4 = langinfo.h langinfo.h-t
-@gl_GNULIB_ENABLED_localcharset_TRUE@am__append_5 = localcharset.h localcharset.c
-@gl_GNULIB_ENABLED_localcharset_TRUE@am__append_6 = .sed .sin
-@gl_GNULIB_ENABLED_localcharset_TRUE@am__append_7 = charset.alias ref-add.sed ref-del.sed
-@gl_GNULIB_ENABLED_locale_TRUE@am__append_8 = locale.h
-@gl_GNULIB_ENABLED_locale_TRUE@am__append_9 = locale.h locale.h-t
-@gl_GNULIB_ENABLED_lock_TRUE@am__append_10 = glthread/lock.h glthread/lock.c
-@gl_GNULIB_ENABLED_size_max_TRUE@am__append_11 = size_max.h
-@gl_GNULIB_ENABLED_threadlib_TRUE@am__append_12 = glthread/threadlib.c
-@LIBUNISTRING_COMPILE_UNIWIDTH_WIDTH_TRUE@am__append_13 = uniwidth/width.c
-@gl_GNULIB_ENABLED_xsize_TRUE@am__append_14 = xsize.h xsize.c
+@gl_GNULIB_ENABLED_30838f5439487421042f2225bed3af76_TRUE@am__append_3 = hard-locale.c
+@gl_GNULIB_ENABLED_langinfo_TRUE@am__append_4 = langinfo.h
+@gl_GNULIB_ENABLED_langinfo_TRUE@am__append_5 = langinfo.h langinfo.h-t
+@gl_GNULIB_ENABLED_localcharset_TRUE@am__append_6 = localcharset.h localcharset.c
+@gl_GNULIB_ENABLED_localcharset_TRUE@am__append_7 = .sed .sin
+@gl_GNULIB_ENABLED_localcharset_TRUE@am__append_8 = charset.alias ref-add.sed ref-del.sed
+@gl_GNULIB_ENABLED_locale_TRUE@am__append_9 = locale.h
+@gl_GNULIB_ENABLED_locale_TRUE@am__append_10 = locale.h locale.h-t
+@gl_GNULIB_ENABLED_lock_TRUE@am__append_11 = glthread/lock.h glthread/lock.c
+@gl_GNULIB_ENABLED_size_max_TRUE@am__append_12 = size_max.h
+@gl_GNULIB_ENABLED_threadlib_TRUE@am__append_13 = glthread/threadlib.c
+@LIBUNISTRING_COMPILE_UNIWIDTH_WIDTH_TRUE@am__append_14 = uniwidth/width.c
+@gl_GNULIB_ENABLED_xsize_TRUE@am__append_15 = xsize.h xsize.c
 subdir = gnulib/lib
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
@@ -148,6 +149,7 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/glibc21.m4 \
 	$(top_srcdir)/gnulib/m4/gnulib-common.m4 \
 	$(top_srcdir)/gnulib/m4/gnulib-comp.m4 \
+	$(top_srcdir)/gnulib/m4/hard-locale.m4 \
 	$(top_srcdir)/gnulib/m4/iconv.m4 \
 	$(top_srcdir)/gnulib/m4/include_next.m4 \
 	$(top_srcdir)/gnulib/m4/intlmacosx.m4 \
@@ -242,29 +244,30 @@ am__v_AR_0 = @echo "  AR      " $@;
 am__v_AR_1 = 
 libgnu_a_AR = $(AR) $(ARFLAGS)
 am__DEPENDENCIES_1 =
-am__libgnu_a_SOURCES_DIST = exitfail.c gettext.h localcharset.h \
-	localcharset.c glthread/lock.h glthread/lock.c malloca.c \
-	mbchar.c mbiter.h mbiter.c mbscasecmp.c mbschr.c mbslen.c \
-	mbsncasecmp.c mbsstr.c mbswidth.h mbswidth.c mbuiter.h \
-	mbuiter.c size_max.h strnlen1.h strnlen1.c \
+am__libgnu_a_SOURCES_DIST = exitfail.c gettext.h hard-locale.c \
+	localcharset.h localcharset.c glthread/lock.h glthread/lock.c \
+	malloca.c mbchar.c mbiter.h mbiter.c mbscasecmp.c mbschr.c \
+	mbslen.c mbsncasecmp.c mbsstr.c mbswidth.h mbswidth.c \
+	mbuiter.h mbuiter.c size_max.h strnlen1.h strnlen1.c \
 	glthread/threadlib.c unistd.c uniwidth/width.c wctype-h.c \
 	xmalloc.c xalloc-die.c xsize.h xsize.c
-@gl_GNULIB_ENABLED_localcharset_TRUE@am__objects_1 =  \
+@gl_GNULIB_ENABLED_30838f5439487421042f2225bed3af76_TRUE@am__objects_1 = hard-locale.$(OBJEXT)
+@gl_GNULIB_ENABLED_localcharset_TRUE@am__objects_2 =  \
 @gl_GNULIB_ENABLED_localcharset_TRUE@	localcharset.$(OBJEXT)
 am__dirstamp = $(am__leading_dot)dirstamp
-@gl_GNULIB_ENABLED_lock_TRUE@am__objects_2 = glthread/lock.$(OBJEXT)
-am__objects_3 =
-@gl_GNULIB_ENABLED_threadlib_TRUE@am__objects_4 = glthread/threadlib.$(OBJEXT)
-@LIBUNISTRING_COMPILE_UNIWIDTH_WIDTH_TRUE@am__objects_5 = uniwidth/width.$(OBJEXT)
-@gl_GNULIB_ENABLED_xsize_TRUE@am__objects_6 = xsize.$(OBJEXT)
+@gl_GNULIB_ENABLED_lock_TRUE@am__objects_3 = glthread/lock.$(OBJEXT)
+am__objects_4 =
+@gl_GNULIB_ENABLED_threadlib_TRUE@am__objects_5 = glthread/threadlib.$(OBJEXT)
+@LIBUNISTRING_COMPILE_UNIWIDTH_WIDTH_TRUE@am__objects_6 = uniwidth/width.$(OBJEXT)
+@gl_GNULIB_ENABLED_xsize_TRUE@am__objects_7 = xsize.$(OBJEXT)
 am_libgnu_a_OBJECTS = exitfail.$(OBJEXT) $(am__objects_1) \
-	$(am__objects_2) malloca.$(OBJEXT) mbchar.$(OBJEXT) \
-	mbiter.$(OBJEXT) mbscasecmp.$(OBJEXT) mbschr.$(OBJEXT) \
-	mbslen.$(OBJEXT) mbsncasecmp.$(OBJEXT) mbsstr.$(OBJEXT) \
-	mbswidth.$(OBJEXT) mbuiter.$(OBJEXT) $(am__objects_3) \
-	strnlen1.$(OBJEXT) $(am__objects_4) unistd.$(OBJEXT) \
-	$(am__objects_5) wctype-h.$(OBJEXT) xmalloc.$(OBJEXT) \
-	xalloc-die.$(OBJEXT) $(am__objects_6)
+	$(am__objects_2) $(am__objects_3) malloca.$(OBJEXT) \
+	mbchar.$(OBJEXT) mbiter.$(OBJEXT) mbscasecmp.$(OBJEXT) \
+	mbschr.$(OBJEXT) mbslen.$(OBJEXT) mbsncasecmp.$(OBJEXT) \
+	mbsstr.$(OBJEXT) mbswidth.$(OBJEXT) mbuiter.$(OBJEXT) \
+	$(am__objects_4) strnlen1.$(OBJEXT) $(am__objects_5) \
+	unistd.$(OBJEXT) $(am__objects_6) wctype-h.$(OBJEXT) \
+	xmalloc.$(OBJEXT) xalloc-die.$(OBJEXT) $(am__objects_7)
 libgnu_a_OBJECTS = $(am_libgnu_a_OBJECTS)
 LTLIBRARIES = $(noinst_LTLIBRARIES)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -1135,7 +1138,7 @@ noinst_LTLIBRARIES =
 EXTRA_DIST = alloca.in.h argz.c argz.in.h btowc.c errno.in.h error.c \
 	error.h exitfail.h float.c float.in.h itold.c getopt.c \
 	getopt.in.h getopt1.c getopt_int.h \
-	$(top_srcdir)/build-aux/config.rpath \
+	$(top_srcdir)/build-aux/config.rpath hard-locale.h \
 	$(top_srcdir)/build-aux/config.rpath intprops.h iswblank.c \
 	langinfo.in.h config.charset ref-add.sin ref-del.sin \
 	locale.in.h localeconv.c malloc.c malloca.h malloca.valgrind \
@@ -1169,15 +1172,15 @@ EXTRA_DIST = alloca.in.h argz.c argz.in.h btowc.c errno.in.h error.c \
 # present in all Makefile.am that need it. This is ensured by the applicability
 # 'all' defined above.
 BUILT_SOURCES = $(ALLOCA_H) $(ARGZ_H) $(am__append_1) $(ERRNO_H) \
-	$(FLOAT_H) $(GETOPT_H) $(am__append_3) $(am__append_8) \
+	$(FLOAT_H) $(GETOPT_H) $(am__append_4) $(am__append_9) \
 	arg-nonnull.h c++defs.h warn-on-use.h $(STDARG_H) $(STDBOOL_H) \
 	$(STDDEF_H) $(STDINT_H) stdio.h stdlib.h string.h strings.h \
 	sys/types.h unistd.h $(LIBUNISTRING_UNITYPES_H) \
 	$(LIBUNISTRING_UNIWIDTH_H) wchar.h wctype.h
-SUFFIXES = $(am__append_6)
+SUFFIXES = $(am__append_7)
 MOSTLYCLEANFILES = core *.stackdump alloca.h alloca.h-t argz.h \
 	argz.h-t errno.h errno.h-t float.h float.h-t getopt.h \
-	getopt.h-t $(am__append_4) $(am__append_9) arg-nonnull.h \
+	getopt.h-t $(am__append_5) $(am__append_10) arg-nonnull.h \
 	arg-nonnull.h-t c++defs.h c++defs.h-t warn-on-use.h \
 	warn-on-use.h-t stdarg.h stdarg.h-t stdbool.h stdbool.h-t \
 	stddef.h stddef.h-t stdint.h stdint.h-t stdio.h stdio.h-t \
@@ -1186,18 +1189,18 @@ MOSTLYCLEANFILES = core *.stackdump alloca.h alloca.h-t argz.h \
 	unitypes.h-t uniwidth.h uniwidth.h-t wchar.h wchar.h-t \
 	wctype.h wctype.h-t
 MOSTLYCLEANDIRS = 
-CLEANFILES = $(am__append_2) $(am__append_7)
+CLEANFILES = $(am__append_2) $(am__append_8)
 DISTCLEANFILES = 
 MAINTAINERCLEANFILES = 
 AM_CPPFLAGS = 
 AM_CFLAGS = 
-libgnu_a_SOURCES = exitfail.c gettext.h $(am__append_5) \
-	$(am__append_10) malloca.c mbchar.c mbiter.h mbiter.c \
-	mbscasecmp.c mbschr.c mbslen.c mbsncasecmp.c mbsstr.c \
-	mbswidth.h mbswidth.c mbuiter.h mbuiter.c $(am__append_11) \
-	strnlen1.h strnlen1.c $(am__append_12) unistd.c \
-	$(am__append_13) wctype-h.c xmalloc.c xalloc-die.c \
-	$(am__append_14)
+libgnu_a_SOURCES = exitfail.c gettext.h $(am__append_3) \
+	$(am__append_6) $(am__append_11) malloca.c mbchar.c mbiter.h \
+	mbiter.c mbscasecmp.c mbschr.c mbslen.c mbsncasecmp.c mbsstr.c \
+	mbswidth.h mbswidth.c mbuiter.h mbuiter.c $(am__append_12) \
+	strnlen1.h strnlen1.c $(am__append_13) unistd.c \
+	$(am__append_14) wctype-h.c xmalloc.c xalloc-die.c \
+	$(am__append_15)
 libgnu_a_LIBADD = $(gl_LIBOBJS)
 libgnu_a_DEPENDENCIES = $(gl_LIBOBJS)
 EXTRA_libgnu_a_SOURCES = argz.c btowc.c error.c float.c itold.c \
@@ -1312,6 +1315,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/float.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/getopt.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/getopt1.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hard-locale.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/iswblank.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/itold.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/localcharset.Po@am__quote@

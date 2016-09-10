@@ -78,12 +78,12 @@ $result_errors{'verb_at_end_of_line_not_closed'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: @verb missing close brace
+    'error_line' => ':1: @verb missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@verb missing close brace',
+    'text' => '@verb missing closing brace',
     'type' => 'error'
   }
 ];

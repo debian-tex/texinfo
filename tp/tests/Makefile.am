@@ -1,6 +1,6 @@
-# $Id: Makefile.am 6745 2015-11-01 19:18:52Z gavin $
+# $Id: Makefile.am 7036 2016-02-27 17:17:09Z gavin $
 # Makefile.am for texinfo/tp/tests.
-# Copyright 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -22,18 +22,15 @@ $(srcdir)/Makefile.onetst: \
 	  -long '$(long_tests)' \
 	  -tex_html '$(tex_html_tests)'
 
-base_tests = formatting 
+base_tests = formatting htmlxref htmlxref-only_mono htmlxref-only_split
 long_tests = sectioning coverage indices nested_formats contents layout
 tex_html_tests = tex_html
 
-test_subdirs = htmlxref htmlxref-only_mono htmlxref-only_split
-
-DIST_SUBDIRS = many_input_files $(test_subdirs) $(base_tests) $(long_tests) $(tex_html_tests)
-SUBDIRS = . many_input_files $(test_subdirs)
+DIST_SUBDIRS = many_input_files $(base_tests) $(long_tests) $(tex_html_tests)
+SUBDIRS = . many_input_files
 
 copy-tests: copy-base copy-long
 	cd many_input_files && $(MAKE) copy-tests
-	for dir in $(test_subdirs); do (cd $$dir && $(MAKE) copy-tests); done
 
 copy-base:
 	$(srcdir)/parser_tests.sh -copy $(base_tests)
@@ -107,9 +104,8 @@ unknown_nodes_renamed-noderename.cnf: formatting/unknown_nodes_renamed-noderenam
 coverage_macro-cr.texi: coverage_macro.texi
 	sed 's/$$/\r/' $(srcdir)/coverage_macro.texi > $@
 
-old_test_scripts = parser_base_tests long_tests.sh tex_html_tests.sh
 EXTRA_DIST = run_parser_all.sh parser_tests.sh \
- $(old_test_scripts) $(one_test_files_generated_list) coverage_macro.texi \
+ $(one_test_files_generated_list) coverage_macro.texi \
  coverage_macro-cr.texi $(other_tests) reference
 
 DISTCLEANFILES = unknown_nodes_renamed-noderename.cnf \

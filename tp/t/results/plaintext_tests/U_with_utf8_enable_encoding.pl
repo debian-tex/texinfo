@@ -70,11 +70,7 @@ $result_trees{'U_with_utf8_enable_encoding'} = {
               [
                 {}
               ]
-            ],
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            ]
           },
           'line_nr' => {
             'file_name' => '',

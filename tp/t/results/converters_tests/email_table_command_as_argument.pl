@@ -21,6 +21,7 @@ $result_trees{'email_table_command_as_argument'} = {
             },
             {
               'cmdname' => 'email',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,

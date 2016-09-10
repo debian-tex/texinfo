@@ -12,16 +12,19 @@ $result_trees{'empty_lines_at_beginning_no_setfilename'} = {
         {
           'contents' => [
             {
+              'parent' => {},
               'text' => '\\input texinfo
 ',
               'type' => 'preamble_text'
             },
             {
+              'parent' => {},
               'text' => '
 ',
               'type' => 'preamble_text'
             },
             {
+              'parent' => {},
               'text' => '
 ',
               'type' => 'preamble_text'
@@ -171,6 +174,9 @@ $result_trees{'empty_lines_at_beginning_no_setfilename'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[0]{'contents'}[0];
+$result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[0]{'contents'}[0];
+$result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[0]{'contents'}[0];
 $result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[0]{'contents'}[1];
 $result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[0];
 $result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[0];

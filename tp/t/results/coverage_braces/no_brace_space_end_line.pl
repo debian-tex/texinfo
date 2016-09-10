@@ -51,6 +51,11 @@ $result_trees{'no_brace_space_end_line'} = {
         {
           'cmdname' => 'TeX',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -61,6 +66,11 @@ $result_trees{'no_brace_space_end_line'} = {
         {
           'cmdname' => 'code',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

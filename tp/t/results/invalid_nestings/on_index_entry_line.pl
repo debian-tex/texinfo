@@ -61,11 +61,7 @@ $result_trees{'on_index_entry_line'} = {
                     {}
                   ]
                 ],
-                'invalid_nesting' => 1,
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                'invalid_nesting' => 1
               },
               'line_nr' => {},
               'parent' => {}
@@ -99,11 +95,7 @@ $result_trees{'on_index_entry_line'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'in-anchor',
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                'normalized' => 'in-anchor'
               },
               'line_nr' => {},
               'parent' => {}
@@ -130,12 +122,7 @@ $result_trees{'on_index_entry_line'} = {
               'cmdname' => 'footnote',
               'contents' => [],
               'extra' => {
-                'invalid_nesting' => 1,
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                'invalid_nesting' => 1
               },
               'line_nr' => {},
               'parent' => {}
@@ -206,7 +193,6 @@ $result_trees{'on_index_entry_line'} = {
           'in_code' => 0,
           'index_at_command' => 'cindex',
           'index_name' => 'cp',
-          'index_prefix' => 'c',
           'index_type_command' => 'cindex',
           'key' => 'in titlefont exdent
 ',
@@ -243,7 +229,6 @@ $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[5]{'p
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6];
-$result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'line_nr'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0];
@@ -316,12 +301,12 @@ $result_errors{'on_index_entry_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @exdent should only appear at a line beginning
+    'error_line' => ':1: warning: @exdent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@exdent should only appear at a line beginning',
+    'text' => '@exdent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

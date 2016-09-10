@@ -12,6 +12,11 @@ $result_trees{'no_brace'} = {
         {
           'cmdname' => 'TeX',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -21,6 +26,7 @@ $result_trees{'no_brace'} = {
         {
           'cmdname' => 'code',
           'contents' => [],
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -30,11 +36,7 @@ $result_trees{'no_brace'} = {
         {
           'cmdname' => 'footnote',
           'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -50,8 +52,10 @@ $result_trees{'no_brace'} = {
 };
 $result_trees{'no_brace'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_brace'}{'contents'}[0];
 $result_trees{'no_brace'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_brace'}{'contents'}[0];
+$result_trees{'no_brace'}{'contents'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'no_brace'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'no_brace'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'no_brace'}{'contents'}[0];
 $result_trees{'no_brace'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'no_brace'}{'contents'}[0];
+$result_trees{'no_brace'}{'contents'}[0]{'contents'}[4]{'line_nr'} = $result_trees{'no_brace'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'no_brace'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'no_brace'}{'contents'}[0];
 $result_trees{'no_brace'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'no_brace'}{'contents'}[0];
 $result_trees{'no_brace'}{'contents'}[0]{'parent'} = $result_trees{'no_brace'};

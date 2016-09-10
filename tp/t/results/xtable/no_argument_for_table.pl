@@ -136,6 +136,7 @@ $result_trees{'no_argument_for_table'} = {
           [
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }

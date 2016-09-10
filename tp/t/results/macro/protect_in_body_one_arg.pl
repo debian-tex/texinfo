@@ -41,22 +41,7 @@ $result_trees{'protect_in_body_one_arg'} = {
       ],
       'extra' => {
         'arg_line' => ' macroone { arg1 , arg2 }
-',
-        'args_index' => {
-          'arg1' => 0,
-          'arg2' => 1
-        },
-        'macrobody' => 'result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -65,7 +50,15 @@ $result_trees{'protect_in_body_one_arg'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -148,10 +141,9 @@ $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'args'}[1]{'parent'} = $
 $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];
 $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];
 $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];
-$result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];
-$result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'protect_in_body_one_arg'};
 $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'parent'} = $result_trees{'protect_in_body_one_arg'};
-$result_trees{'protect_in_body_one_arg'}{'contents'}[1] = $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'protect_in_body_one_arg'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];
+$result_trees{'protect_in_body_one_arg'}{'contents'}[1]{'parent'} = $result_trees{'protect_in_body_one_arg'};
 $result_trees{'protect_in_body_one_arg'}{'contents'}[2]{'parent'} = $result_trees{'protect_in_body_one_arg'};
 $result_trees{'protect_in_body_one_arg'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[3];
 $result_trees{'protect_in_body_one_arg'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];

@@ -36,21 +36,7 @@ $result_trees{'arg_not_closed'} = {
       ],
       'extra' => {
         'arg_line' => ' foo {arg}
-',
-        'args_index' => {
-          'arg' => 0
-        },
-        'macrobody' => 'foo
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -59,7 +45,15 @@ $result_trees{'arg_not_closed'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -84,10 +78,9 @@ $result_trees{'arg_not_closed'}{'contents'}[0]{'args'}[0]{'parent'} = $result_tr
 $result_trees{'arg_not_closed'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'arg_not_closed'}{'contents'}[0];
 $result_trees{'arg_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'arg_not_closed'}{'contents'}[0];
 $result_trees{'arg_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'arg_not_closed'}{'contents'}[0];
-$result_trees{'arg_not_closed'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'arg_not_closed'}{'contents'}[0];
-$result_trees{'arg_not_closed'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'arg_not_closed'};
 $result_trees{'arg_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'arg_not_closed'};
-$result_trees{'arg_not_closed'}{'contents'}[1] = $result_trees{'arg_not_closed'}{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'arg_not_closed'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'arg_not_closed'}{'contents'}[0];
+$result_trees{'arg_not_closed'}{'contents'}[1]{'parent'} = $result_trees{'arg_not_closed'};
 $result_trees{'arg_not_closed'}{'contents'}[2]{'parent'} = $result_trees{'arg_not_closed'};
 $result_trees{'arg_not_closed'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'arg_not_closed'}{'contents'}[3];
 $result_trees{'arg_not_closed'}{'contents'}[3]{'parent'} = $result_trees{'arg_not_closed'};
@@ -106,12 +99,12 @@ call foo
 
 $result_errors{'arg_not_closed'} = [
   {
-    'error_line' => ':5: @foo missing close brace
+    'error_line' => ':5: @foo missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@foo missing close brace',
+    'text' => '@foo missing closing brace',
     'type' => 'error'
   }
 ];

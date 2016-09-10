@@ -1,5 +1,5 @@
 /* echo-area.h -- Functions used in reading information from the echo area.
-   $Id: echo-area.h 6906 2016-01-01 18:33:45Z karl $
+   $Id: echo-area.h 7013 2016-02-13 21:19:19Z gavin $
 
    Copyright 1993, 1997, 2004, 2007, 2008, 2011, 2013, 2014, 2015, 2016
    Free Software Foundation, Inc.
@@ -32,19 +32,19 @@ extern int echo_area_last_command_was_kill;
 
 extern REFERENCE **echo_area_completion_items;
 
-extern void inform_in_echo_area (const char *message);
-extern void echo_area_inform_of_deleted_window (WINDOW *window);
-extern void echo_area_prep_read (void);
+void inform_in_echo_area (const char *message);
+void echo_area_inform_of_deleted_window (WINDOW *window);
+void echo_area_prep_read (void);
 
 typedef int (*reference_bool_fn) (REFERENCE *);
 
-extern char *info_read_completing_internal (const char *prompt,
+char *info_read_completing_internal (const char *prompt,
     REFERENCE **completions, int force, reference_bool_fn exclude);
 
 /* Read a line of text in the echo area.  Return a malloc ()'ed string,
    or NULL if the user aborted out of this read.  PROMPT, if
    non-null, is a prompt to print before reading the line. */
-extern char *info_read_in_echo_area (const char *prompt);
+char *info_read_in_echo_area (const char *prompt);
 
 /* Read a line in the echo area with completion over COMPLETIONS. */
 char *info_read_completing_in_echo_area (const char *prompt,
@@ -52,8 +52,7 @@ char *info_read_completing_in_echo_area (const char *prompt,
 
 /* Read a line in the echo area allowing completion over COMPLETIONS, but
    not requiring it. */
-extern char *info_read_maybe_completing (const char *prompt,
-                                         REFERENCE **completions);
+char *info_read_maybe_completing (const char *prompt, REFERENCE **completions);
 
 /* Read a line in the echo area with completion over COMPLETIONS, using
    EXCLUDE to exclude items from the completion list. */
@@ -61,28 +60,28 @@ char *
 info_read_completing_in_echo_area_with_exclusions (const char *prompt,
     REFERENCE **completions, reference_bool_fn exclude);
 
-extern void ea_insert (WINDOW *window, int count, int key);
-extern void ea_quoted_insert (WINDOW *window, int count);
-extern void ea_beg_of_line (WINDOW *window, int count);
-extern void ea_backward (WINDOW *window, int count);
-extern void ea_delete (WINDOW *window, int count);
-extern void ea_end_of_line (WINDOW *window, int count);
-extern void ea_forward (WINDOW *window, int count);
-extern void ea_abort (WINDOW *window, int count);
-extern void ea_rubout (WINDOW *window, int count);
-extern void ea_complete (WINDOW *window, int count);
-extern void ea_newline (WINDOW *window, int count);
-extern void ea_kill_line (WINDOW *window, int count);
-extern void ea_backward_kill_line (WINDOW *window, int count);
-extern void ea_transpose_chars (WINDOW *window, int count);
-extern void ea_yank (WINDOW *window, int count);
-extern void ea_tab_insert (WINDOW *window, int count);
-extern void ea_possible_completions (WINDOW *window, int count);
-extern void ea_backward_word (WINDOW *window, int count);
-extern void ea_kill_word (WINDOW *window, int count);
-extern void ea_forward_word (WINDOW *window, int count);
-extern void ea_yank_pop (WINDOW *window, int count);
-extern void ea_backward_kill_word (WINDOW *window, int count);
-extern void ea_scroll_completions_window (WINDOW *window, int count);
+void ea_insert (WINDOW *window, int count, int key);
+void ea_quoted_insert (WINDOW *window, int count);
+void ea_beg_of_line (WINDOW *window, int count);
+void ea_backward (WINDOW *window, int count);
+void ea_delete (WINDOW *window, int count);
+void ea_end_of_line (WINDOW *window, int count);
+void ea_forward (WINDOW *window, int count);
+void ea_abort (WINDOW *window, int count);
+void ea_rubout (WINDOW *window, int count);
+void ea_complete (WINDOW *window, int count);
+void ea_newline (WINDOW *window, int count);
+void ea_kill_line (WINDOW *window, int count);
+void ea_backward_kill_line (WINDOW *window, int count);
+void ea_transpose_chars (WINDOW *window, int count);
+void ea_yank (WINDOW *window, int count);
+void ea_tab_insert (WINDOW *window, int count);
+void ea_possible_completions (WINDOW *window, int count);
+void ea_backward_word (WINDOW *window, int count);
+void ea_kill_word (WINDOW *window, int count);
+void ea_forward_word (WINDOW *window, int count);
+void ea_yank_pop (WINDOW *window, int count);
+void ea_backward_kill_word (WINDOW *window, int count);
+void ea_scroll_completions_window (WINDOW *window, int count);
 
 #endif /* not INFO_ECHO_AREA_H */

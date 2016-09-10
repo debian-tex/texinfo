@@ -27,6 +27,12 @@ $result_trees{'table'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -212,11 +218,7 @@ $result_trees{'table'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -239,6 +241,12 @@ $result_trees{'table'} = {
             },
             {
               'cmdname' => 'samp',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 9,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -325,7 +333,6 @@ $result_trees{'table'} = {
                   'in_code' => 0,
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
-                  'index_prefix' => 'c',
                   'index_type_command' => 'cindex',
                   'key' => 'index entry',
                   'number' => 1
@@ -393,7 +400,6 @@ $result_trees{'table'} = {
                       'in_code' => 1,
                       'index_at_command' => 'item',
                       'index_name' => 'vr',
-                      'index_prefix' => 'v',
                       'index_type_command' => 'vtable',
                       'key' => 'vtable item',
                       'number' => 1
@@ -466,7 +472,6 @@ $result_trees{'table'} = {
                           'in_code' => 1,
                           'index_at_command' => 'kindex',
                           'index_name' => 'ky',
-                          'index_prefix' => 'k',
                           'index_type_command' => 'kindex',
                           'key' => 'key',
                           'number' => 1
@@ -541,7 +546,6 @@ $result_trees{'table'} = {
                       'in_code' => 1,
                       'index_at_command' => 'itemx',
                       'index_name' => 'vr',
-                      'index_prefix' => 'v',
                       'index_type_command' => 'vtable',
                       'key' => 'itemx vtable',
                       'number' => 2
@@ -628,11 +632,7 @@ $result_trees{'table'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 9,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -678,6 +678,7 @@ $result_trees{'table'}{'contents'}[1]{'extra'}{'block_command_line_contents'}[0]
 $result_trees{'table'}{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'table'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table'}{'contents'}[1]{'contents'}[1];
 $result_trees{'table'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'table'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'table'}{'contents'}[1]{'line_nr'} = $result_trees{'table'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table'}{'contents'}[1]{'parent'} = $result_trees{'table'};
 $result_trees{'table'}{'contents'}[2]{'parent'} = $result_trees{'table'};
 $result_trees{'table'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'table'}{'contents'}[3];
@@ -755,6 +756,7 @@ $result_trees{'table'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0]
 $result_trees{'table'}{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'table'}{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'table'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'table'}{'contents'}[3]{'contents'}[2];
 $result_trees{'table'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'table'}{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'table'}{'contents'}[3]{'line_nr'} = $result_trees{'table'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table'}{'contents'}[3]{'parent'} = $result_trees{'table'};
 
 $result_texis{'table'} = '

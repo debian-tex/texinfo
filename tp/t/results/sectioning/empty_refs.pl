@@ -35,10 +35,6 @@ $result_trees{'empty_refs'} = {
                 {}
               ],
               'normalized' => ''
-            },
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {
@@ -97,10 +93,6 @@ $result_trees{'empty_refs'} = {
                 {}
               ],
               'normalized' => '-'
-            },
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},

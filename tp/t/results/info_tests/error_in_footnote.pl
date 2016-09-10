@@ -77,6 +77,7 @@ $result_trees{'error_in_footnote'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_before_argument'
                 },
@@ -133,6 +134,11 @@ $result_trees{'error_in_footnote'} = {
                         {
                           'cmdname' => 'TeX',
                           'contents' => [],
+                          'line_nr' => {
+                            'file_name' => '',
+                            'line_nr' => 8,
+                            'macro' => ''
+                          },
                           'parent' => {}
                         },
                         {
@@ -184,6 +190,11 @@ $result_trees{'error_in_footnote'} = {
                                     {
                                       'cmdname' => 'LaTeX',
                                       'contents' => [],
+                                      'line_nr' => {
+                                        'file_name' => '',
+                                        'line_nr' => 10,
+                                        'macro' => ''
+                                      },
                                       'parent' => {}
                                     },
                                     {
@@ -232,18 +243,7 @@ $result_trees{'error_in_footnote'} = {
                           ],
                           'cmdname' => 'footnote',
                           'contents' => [],
-                          'extra' => {
-                            'spaces_before_argument' => {
-                              'parent' => {},
-                              'text' => '',
-                              'type' => 'empty_spaces_before_argument'
-                            }
-                          },
-                          'line_nr' => {
-                            'file_name' => '',
-                            'line_nr' => 10,
-                            'macro' => ''
-                          },
+                          'line_nr' => {},
                           'parent' => {}
                         }
                       ],
@@ -258,18 +258,9 @@ $result_trees{'error_in_footnote'} = {
               'cmdname' => 'caption',
               'contents' => [],
               'extra' => {
-                'float' => {},
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                'float' => {}
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
-              },
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -486,6 +477,7 @@ $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'con
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1];
+$result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'args'}[1];
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'args'}[1];
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'args'}[1];
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1];
@@ -511,12 +503,12 @@ $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0];
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[7]{'args'}[0];
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[7];
-$result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[7]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[7]{'args'}[0];
+$result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[7]{'line_nr'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0];
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3];
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'extra'}{'float'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1];
-$result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0];
+$result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'line_nr'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1];
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1];
 $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'error_in_footnote'}{'contents'}[1]{'contents'}[1]{'contents'}[5];
@@ -646,11 +638,7 @@ $result_floats{'error_in_footnote'} = {
         'caption' => {
           'cmdname' => 'caption',
           'extra' => {
-            'float' => {},
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'float' => {}
           }
         },
         'end_command' => {

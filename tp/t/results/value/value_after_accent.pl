@@ -39,6 +39,11 @@ $result_trees{'value_after_accent'} = {
           'extra' => {
             'spaces' => ' '
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -49,6 +54,11 @@ $result_trees{'value_after_accent'} = {
         {
           'cmdname' => '~',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

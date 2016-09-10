@@ -25,6 +25,7 @@ $result_trees{'not_closed_itemize'} = {
           [
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }

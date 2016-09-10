@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6989 2016-02-06 10:38:22Z gavin $
+# $Id: Makefile.am 7259 2016-07-16 10:56:08Z gavin $
 # Makefile.am for texinfo/info.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012,
@@ -97,6 +97,7 @@ TESTS = \
 	t/dir.sh \
 	t/dir-file.sh \
 	t/dir-file-sloppily.sh \
+	t/dir-merge.sh \
 	t/dir-nondir.sh \
 	t/dir-no-file.sh \
 	t/dir-file-menu.sh \
@@ -133,6 +134,7 @@ TESTS = \
 	t/xref-to-anchor.sh \
 	t/search-after-tag.sh \
 	t/split-file-menu.sh \
+	t/search-split-after-index.sh \
 	t/index.sh \
 	t/no-index.sh \
 	t/index-apropos.sh \

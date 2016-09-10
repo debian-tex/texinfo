@@ -60,11 +60,7 @@ $result_trees{'center'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {},
               'parent' => {}
@@ -97,11 +93,7 @@ $result_trees{'center'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'in-anchor',
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                'normalized' => 'in-anchor'
               },
               'line_nr' => {},
               'parent' => {}
@@ -127,13 +119,6 @@ $result_trees{'center'} = {
               ],
               'cmdname' => 'footnote',
               'contents' => [],
-              'extra' => {
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
-              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -228,7 +213,6 @@ $result_trees{'center'} = {
                   'in_code' => 0,
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
-                  'index_prefix' => 'c',
                   'index_type_command' => 'cindex',
                   'key' => 'cindex',
                   'number' => 1
@@ -675,6 +659,12 @@ $result_trees{'center'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 21,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -801,11 +791,7 @@ $result_trees{'center'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 21,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -828,6 +814,12 @@ $result_trees{'center'} = {
             },
             {
               'cmdname' => 'emph',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 25,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -1007,11 +999,7 @@ $result_trees{'center'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 25,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -1579,30 +1567,11 @@ $result_trees{'center'} = {
         'prototypes' => [
           {
             'contents' => [],
-            'parent' => {},
             'type' => 'bracketed_multitable_prototype'
           },
           {
             'contents' => [],
-            'parent' => {},
             'type' => 'bracketed_multitable_prototype'
-          }
-        ],
-        'prototypes_line' => [
-          {
-            'text' => ' ',
-            'type' => 'prototype_space'
-          },
-          {},
-          {
-            'text' => '  ',
-            'type' => 'prototype_space'
-          },
-          {},
-          {
-            'text' => '
-',
-            'type' => 'prototype_space'
           }
         ],
         'spaces_after_command' => {}
@@ -1650,6 +1619,12 @@ $result_trees{'center'} = {
                     },
                     {
                       'cmdname' => 'asis',
+                      'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 45,
+                        'macro' => ''
+                      },
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },
@@ -1682,11 +1657,7 @@ $result_trees{'center'} = {
                 'invalid_nesting' => 1,
                 'spaces_after_command' => {}
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 45,
-                'macro' => ''
-              },
+              'line_nr' => {},
               'parent' => {}
             }
           ],
@@ -1772,7 +1743,6 @@ $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[5]{'parent'} = $re
 $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6];
-$result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'line_nr'} = $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'center'}{'contents'}[0]{'args'}[0];
 $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'center'}{'contents'}[0]{'args'}[0];
@@ -1923,6 +1893,7 @@ $result_trees{'center'}{'contents'}[20]{'extra'}{'block_command_line_contents'}[
 $result_trees{'center'}{'contents'}[20]{'extra'}{'command_as_argument'} = $result_trees{'center'}{'contents'}[20]{'args'}[0]{'contents'}[1];
 $result_trees{'center'}{'contents'}[20]{'extra'}{'end_command'} = $result_trees{'center'}{'contents'}[20]{'contents'}[1];
 $result_trees{'center'}{'contents'}[20]{'extra'}{'spaces_after_command'} = $result_trees{'center'}{'contents'}[20]{'args'}[0]{'contents'}[0];
+$result_trees{'center'}{'contents'}[20]{'line_nr'} = $result_trees{'center'}{'contents'}[20]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'center'}{'contents'}[20]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[21]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[22]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'center'}{'contents'}[22];
@@ -1965,6 +1936,7 @@ $result_trees{'center'}{'contents'}[22]{'extra'}{'block_command_line_contents'}[
 $result_trees{'center'}{'contents'}[22]{'extra'}{'command_as_argument'} = $result_trees{'center'}{'contents'}[22]{'args'}[0]{'contents'}[1];
 $result_trees{'center'}{'contents'}[22]{'extra'}{'end_command'} = $result_trees{'center'}{'contents'}[22]{'contents'}[1];
 $result_trees{'center'}{'contents'}[22]{'extra'}{'spaces_after_command'} = $result_trees{'center'}{'contents'}[22]{'args'}[0]{'contents'}[0];
+$result_trees{'center'}{'contents'}[22]{'line_nr'} = $result_trees{'center'}{'contents'}[22]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'center'}{'contents'}[22]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[23]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[24]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[24];
@@ -2086,11 +2058,7 @@ $result_trees{'center'}{'contents'}[33]{'contents'}[1]{'extra'}{'spaces_after_co
 $result_trees{'center'}{'contents'}[33]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[33];
 $result_trees{'center'}{'contents'}[33]{'extra'}{'end_command'} = $result_trees{'center'}{'contents'}[33]{'contents'}[1];
 $result_trees{'center'}{'contents'}[33]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'center'}{'contents'}[33]{'args'}[0]{'contents'}[1]{'contents'};
-$result_trees{'center'}{'contents'}[33]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'center'}{'contents'}[33]{'args'}[0];
 $result_trees{'center'}{'contents'}[33]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'center'}{'contents'}[33]{'args'}[0]{'contents'}[3]{'contents'};
-$result_trees{'center'}{'contents'}[33]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'center'}{'contents'}[33]{'args'}[0];
-$result_trees{'center'}{'contents'}[33]{'extra'}{'prototypes_line'}[1] = $result_trees{'center'}{'contents'}[33]{'args'}[0]{'contents'}[1];
-$result_trees{'center'}{'contents'}[33]{'extra'}{'prototypes_line'}[3] = $result_trees{'center'}{'contents'}[33]{'args'}[0]{'contents'}[3];
 $result_trees{'center'}{'contents'}[33]{'extra'}{'spaces_after_command'} = $result_trees{'center'}{'contents'}[33]{'args'}[0]{'contents'}[0];
 $result_trees{'center'}{'contents'}[33]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[34]{'parent'} = $result_trees{'center'};
@@ -2106,12 +2074,13 @@ $result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[2]{'contents'}[0]
 $result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[2]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[2]{'extra'}{'command_as_argument'} = $result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'center'}{'contents'}[35]{'args'}[0];
 $result_trees{'center'}{'contents'}[35]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[35];
 $result_trees{'center'}{'contents'}[35]{'extra'}{'misc_content'}[0] = $result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[1];
 $result_trees{'center'}{'contents'}[35]{'extra'}{'misc_content'}[1] = $result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[2];
 $result_trees{'center'}{'contents'}[35]{'extra'}{'spaces_after_command'} = $result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[0];
-$result_trees{'center'}{'contents'}[35]{'line_nr'} = $result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[2]{'line_nr'};
+$result_trees{'center'}{'contents'}[35]{'line_nr'} = $result_trees{'center'}{'contents'}[35]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'center'}{'contents'}[35]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[36]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[37]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[37];
@@ -2228,12 +2197,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: @cindex should only appear at a line beginning
+    'error_line' => ':3: warning: @cindex should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@cindex should only appear at a line beginning',
+    'text' => '@cindex should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -2282,12 +2251,12 @@ $result_errors{'center'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':9: warning: @center should only appear at a line beginning
+    'error_line' => ':9: warning: @center should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => '@center should only appear at a line beginning',
+    'text' => '@center should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -2300,12 +2269,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':11: @code missing close brace
+    'error_line' => ':11: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   },
   {
@@ -2318,21 +2287,21 @@ $result_errors{'center'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':15: warning: @center should only appear at a line beginning
+    'error_line' => ':15: warning: @center should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => '@center should only appear at a line beginning',
+    'text' => '@center should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':15: @code missing close brace
+    'error_line' => ':15: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   },
   {
@@ -2354,21 +2323,21 @@ $result_errors{'center'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':19: warning: @center should only appear at a line beginning
+    'error_line' => ':19: warning: @center should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 19,
     'macro' => '',
-    'text' => '@center should only appear at a line beginning',
+    'text' => '@center should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':19: @code missing close brace
+    'error_line' => ':19: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 19,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   },
   {
@@ -2453,21 +2422,21 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':33: warning: @center should only appear at a line beginning
+    'error_line' => ':33: warning: @center should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 33,
     'macro' => '',
-    'text' => '@center should only appear at a line beginning',
+    'text' => '@center should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':33: @samp missing close brace
+    'error_line' => ':33: @samp missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 33,
     'macro' => '',
-    'text' => '@samp missing close brace',
+    'text' => '@samp missing closing brace',
     'type' => 'error'
   },
   {
@@ -2489,21 +2458,21 @@ $result_errors{'center'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':35: warning: @center should only appear at a line beginning
+    'error_line' => ':35: warning: @center should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 35,
     'macro' => '',
-    'text' => '@center should only appear at a line beginning',
+    'text' => '@center should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':35: @samp missing close brace
+    'error_line' => ':35: @samp missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 35,
     'macro' => '',
-    'text' => '@samp missing close brace',
+    'text' => '@samp missing closing brace',
     'type' => 'error'
   },
   {
@@ -2579,12 +2548,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':45: warning: @table should only appear at a line beginning
+    'error_line' => ':45: warning: @table should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 45,
     'macro' => '',
-    'text' => '@table should only appear at a line beginning',
+    'text' => '@table should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

@@ -1325,19 +1325,15 @@ in verbatim ''
 @end verbatim
 
 @xml
-<para> xml para </para> ''
 @end xml
 
 @html
-html ''
 @end html
 
 @tex
-$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$ ''
 @end tex
 
 @docbook
-docbook ''
 @end docbook
 
 @majorheading majorheading
@@ -1932,19 +1928,15 @@ in verbatim ''
 @end verbatim
 
 @xml
-<para> xml para </para> ''
 @end xml
 
 @html
-html ''
 @end html
 
 @tex
-$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$ ''
 @end tex
 
 @docbook
-docbook ''
 @end docbook
 
 @majorheading majorheading
@@ -2539,19 +2531,15 @@ in verbatim ''
 @end verbatim
 
 @xml
-<para> xml para </para> ''
 @end xml
 
 @html
-html ''
 @end html
 
 @tex
-$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$ ''
 @end tex
 
 @docbook
-docbook ''
 @end docbook
 
 @majorheading majorheading
@@ -3140,19 +3128,15 @@ in verbatim ''
 @end verbatim
 
 @xml
-<para> xml para </para> ''
 @end xml
 
 @html
-html ''
 @end html
 
 @tex
-$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$ ''
 @end tex
 
 @docbook
-docbook ''
 @end docbook
 
 @majorheading majorheading

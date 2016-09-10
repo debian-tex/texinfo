@@ -98,7 +98,6 @@ $result_trees{'empty_string_index_entry'} = {
               'in_code' => 1,
               'index_at_command' => 'findex',
               'index_name' => 'fn',
-              'index_prefix' => 'f',
               'index_type_command' => 'findex',
               'key' => '',
               'node' => {},
@@ -131,6 +130,12 @@ $result_trees{'empty_string_index_entry'} = {
                 },
                 {
                   'cmdname' => 'code',
+                  'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -202,7 +207,6 @@ $result_trees{'empty_string_index_entry'} = {
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'fn',
-                          'index_prefix' => 'f',
                           'index_type_command' => 'ftable',
                           'key' => '',
                           'node' => {},
@@ -274,11 +278,7 @@ $result_trees{'empty_string_index_entry'} = {
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -375,7 +375,6 @@ $result_trees{'empty_string_index_entry'} = {
                     'name',
                     {
                       'contents' => [],
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -390,7 +389,6 @@ $result_trees{'empty_string_index_entry'} = {
                     'arg',
                     {
                       'contents' => [],
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -405,7 +403,6 @@ $result_trees{'empty_string_index_entry'} = {
                     'arg',
                     {
                       'contents' => [],
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ]
@@ -426,7 +423,6 @@ $result_trees{'empty_string_index_entry'} = {
                   'in_code' => 1,
                   'index_at_command' => 'defun',
                   'index_name' => 'fn',
-                  'index_prefix' => 'f',
                   'index_type_command' => 'defun',
                   'key' => '',
                   'node' => {},
@@ -524,7 +520,6 @@ $result_trees{'empty_string_index_entry'} = {
                     'name',
                     {
                       'contents' => [],
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -539,7 +534,6 @@ $result_trees{'empty_string_index_entry'} = {
                     'arg',
                     {
                       'contents' => [],
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -554,7 +548,6 @@ $result_trees{'empty_string_index_entry'} = {
                     'arg',
                     {
                       'contents' => [],
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ]
@@ -575,7 +568,6 @@ $result_trees{'empty_string_index_entry'} = {
                   'in_code' => 1,
                   'index_at_command' => 'defunx',
                   'index_name' => 'fn',
-                  'index_prefix' => 'f',
                   'index_type_command' => 'defun',
                   'key' => '',
                   'node' => {},
@@ -763,6 +755,7 @@ $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[3]{'line_nr'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'empty_string_index_entry'}{'contents'}[1];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'empty_string_index_entry'}{'contents'}[1];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5];
@@ -780,11 +773,8 @@ $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'content
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'extra'}{'def_args'}[2][1]{'contents'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
-$result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'extra'}{'def_args'}[2][1]{'parent'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'extra'}{'def_args'}[4][1]{'contents'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'};
-$result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'extra'}{'def_args'}[4][1]{'parent'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'extra'}{'def_args'}[6][1]{'contents'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'};
-$result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'extra'}{'def_args'}[6][1]{'parent'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[0];
@@ -808,11 +798,8 @@ $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'content
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[0];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'extra'}{'def_args'}[2][1]{'contents'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'};
-$result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'extra'}{'def_args'}[2][1]{'parent'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[0];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'extra'}{'def_args'}[4][1]{'contents'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[3]{'contents'};
-$result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'extra'}{'def_args'}[4][1]{'parent'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[0];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'extra'}{'def_args'}[6][1]{'contents'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[5]{'contents'};
-$result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'extra'}{'def_args'}[6][1]{'parent'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[0];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'extra'}{'def_args'}[0][1];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'extra'}{'def_args'}[2][1];
 $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'extra'}{'index_entry'}{'command'} = $result_trees{'empty_string_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1];

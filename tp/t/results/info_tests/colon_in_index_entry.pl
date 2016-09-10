@@ -133,7 +133,6 @@ $result_trees{'colon_in_index_entry'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => 'a:b',
               'node' => {},
@@ -170,6 +169,12 @@ $result_trees{'colon_in_index_entry'} = {
                 },
                 {
                   'cmdname' => 'emph',
+                  'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 7,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -228,7 +233,6 @@ $result_trees{'colon_in_index_entry'} = {
                           'in_code' => 0,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => '%main::value',
                           'node' => {},
@@ -304,11 +308,7 @@ $result_trees{'colon_in_index_entry'} = {
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -378,7 +378,6 @@ $result_trees{'colon_in_index_entry'} = {
                     'category',
                     {
                       'contents' => [],
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -393,7 +392,6 @@ $result_trees{'colon_in_index_entry'} = {
                     'name',
                     {
                       'contents' => [],
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -440,7 +438,6 @@ $result_trees{'colon_in_index_entry'} = {
                   'in_code' => 0,
                   'index_at_command' => 'defvr',
                   'index_name' => 'vr',
-                  'index_prefix' => 'v',
                   'index_type_command' => 'defvr',
                   'key' => 'c:d',
                   'node' => {},
@@ -511,7 +508,6 @@ $result_trees{'colon_in_index_entry'} = {
                     'category',
                     {
                       'contents' => [],
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -526,7 +522,6 @@ $result_trees{'colon_in_index_entry'} = {
                     'name',
                     {
                       'contents' => [],
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -586,7 +581,6 @@ $result_trees{'colon_in_index_entry'} = {
                   'in_code' => 0,
                   'index_at_command' => 'defvrx',
                   'index_name' => 'vr',
-                  'index_prefix' => 'v',
                   'index_type_command' => 'defvr',
                   'key' => 'z:t',
                   'node' => {},
@@ -778,6 +772,7 @@ $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[5]{'extra'}{'bl
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[5]{'extra'}{'command_as_argument'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[1];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[5]{'extra'}{'end_command'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[5]{'contents'}[1];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0];
+$result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[5]{'line_nr'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'colon_in_index_entry'}{'contents'}[1];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'colon_in_index_entry'}{'contents'}[1];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7];
@@ -791,9 +786,7 @@ $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[0];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
-$result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'parent'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[0];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'extra'}{'def_args'}[2][1]{'contents'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'};
-$result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'extra'}{'def_args'}[2][1]{'parent'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[0];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0];
@@ -813,9 +806,7 @@ $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'args'}[0];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'extra'}{'def_args'}[0][1]{'contents'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'};
-$result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'extra'}{'def_args'}[0][1]{'parent'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'args'}[0];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'extra'}{'def_args'}[2][1]{'contents'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[3]{'contents'};
-$result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'extra'}{'def_args'}[2][1]{'parent'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'args'}[0];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'extra'}{'def_args'}[0][1];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'extra'}{'def_args'}[2][1];
 $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'extra'}{'index_entry'}{'command'} = $result_trees{'colon_in_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[1];
@@ -917,55 +908,35 @@ $result_indices{'colon_in_index_entry'} = {
         'vr' => 1
       },
       'in_code' => 0,
-      'name' => 'cp',
-      'prefix' => [
-        'c',
-        'cp'
-      ]
+      'name' => 'cp'
     },
     'fn' => {
       'contained_indices' => {
         'fn' => 1
       },
       'in_code' => 1,
-      'name' => 'fn',
-      'prefix' => [
-        'f',
-        'fn'
-      ]
+      'name' => 'fn'
     },
     'ky' => {
       'contained_indices' => {
         'ky' => 1
       },
       'in_code' => 1,
-      'name' => 'ky',
-      'prefix' => [
-        'k',
-        'ky'
-      ]
+      'name' => 'ky'
     },
     'pg' => {
       'contained_indices' => {
         'pg' => 1
       },
       'in_code' => 1,
-      'name' => 'pg',
-      'prefix' => [
-        'p',
-        'pg'
-      ]
+      'name' => 'pg'
     },
     'tp' => {
       'contained_indices' => {
         'tp' => 1
       },
       'in_code' => 1,
-      'name' => 'tp',
-      'prefix' => [
-        't',
-        'tp'
-      ]
+      'name' => 'tp'
     },
     'vr' => {
       'contained_indices' => {
@@ -973,11 +944,7 @@ $result_indices{'colon_in_index_entry'} = {
       },
       'in_code' => 0,
       'merged_in' => 'cp',
-      'name' => 'vr',
-      'prefix' => [
-        'v',
-        'vr'
-      ]
+      'name' => 'vr'
     }
   },
   'merged_indices' => {

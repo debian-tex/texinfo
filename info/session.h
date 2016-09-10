@@ -1,5 +1,5 @@
 /* session.h -- Functions found in session.c.
-   $Id: session.h 6906 2016-01-01 18:33:45Z karl $
+   $Id: session.h 7014 2016-02-13 21:26:11Z gavin $
 
    Copyright 1993, 1998, 1999, 2001, 2002, 2004, 2007, 2011, 2013, 2014,
    2015, 2016
@@ -63,32 +63,30 @@ int get_another_input_key (void);
 
 VFunction *read_key_sequence (Keymap map, int menu, int mouse,
                               int insert, int *count);
-extern unsigned char info_input_pending_p (void);
-extern void info_set_node_of_window (WINDOW *window, NODE *node);
-extern void info_set_node_of_window_fast (WINDOW *window, NODE *node);
-extern void initialize_keyseq (void);
-extern void add_char_to_keyseq (int character);
-extern FILE_BUFFER *file_buffer_of_window (WINDOW *window);
-extern int info_select_reference (WINDOW *window, REFERENCE *entry);
-extern int info_any_buffered_input_p (void);
+unsigned char info_input_pending_p (void);
+void info_set_node_of_window (WINDOW *window, NODE *node);
+void info_set_node_of_window_fast (WINDOW *window, NODE *node);
+void initialize_keyseq (void);
+void add_char_to_keyseq (int character);
+FILE_BUFFER *file_buffer_of_window (WINDOW *window);
+int info_select_reference (WINDOW *window, REFERENCE *entry);
+int info_any_buffered_input_p (void);
 
-#define DUMP_SUBNODES 0x02
-
-extern void dump_nodes_to_file (REFERENCE **references,
+void dump_nodes_to_file (REFERENCE **references,
 				char *output_filename, int flags);
 
-extern char *program_name_from_file_name (char *file_name);
+char *program_name_from_file_name (char *file_name);
 
 /* Do the physical deletion of WINDOW, and forget this window and
    associated nodes. */
-extern void info_delete_window_internal (WINDOW *window);
+void info_delete_window_internal (WINDOW *window);
 
 void forget_window_and_nodes (WINDOW *window);
 void forget_node (WINDOW *win);
 int forget_node_fast (WINDOW *win);
 
 /* Tell Info that input is coming from the file FILENAME. */
-extern void info_set_input_from_file (char *filename);
+void info_set_input_from_file (char *filename);
 
 /* Error and debugging messages */
 extern unsigned debug_level;
@@ -101,19 +99,19 @@ extern unsigned debug_level;
     }									\
   while (0)
 
-extern void info_debug (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
+void info_debug (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
   
 /* Print args as per FORMAT.  If the window system was initialized,
    then the message is printed in the echo area.  Otherwise, a message is
    output to stderr. */
-extern void info_error (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
+void info_error (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
 
 void initialize_info_session (void);
 void info_read_and_dispatch (void);
 void close_info_session (void);
 void info_session (REFERENCE **ref_list, char *user_filename, char *error);
-extern void initialize_terminal_and_keymaps (char *init_file);
-extern REFERENCE *info_intuit_options_node (NODE *initial_node, char *program);
+void initialize_terminal_and_keymaps (char *init_file);
+REFERENCE *info_intuit_options_node (NODE *initial_node, char *program);
 
 void info_scroll_forward (WINDOW *window, int count);
 void info_abort_key (WINDOW *window, int count);
@@ -124,11 +122,11 @@ NODE *info_follow_menus (NODE *initial_node, char **menus,
 /* Adding numeric arguments. */
 extern int info_explicit_arg;
 extern int ea_explicit_arg;
-extern void info_initialize_numeric_arg (void);
+void info_initialize_numeric_arg (void);
 
 /* Found in m-x.c.  */
-extern char *read_function_name (char *prompt, WINDOW *window);
+char *read_function_name (char *prompt, WINDOW *window);
 
-extern void show_error_node (char *error_msg);
+void show_error_node (char *error_msg);
 
 #endif /* not SESSION_H */

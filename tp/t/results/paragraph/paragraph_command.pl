@@ -128,11 +128,7 @@ $result_trees{'paragraph_command'} = {
               [
                 {}
               ]
-            ],
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            ]
           },
           'line_nr' => {
             'file_name' => '',
@@ -178,11 +174,7 @@ $result_trees{'paragraph_command'} = {
               [
                 {}
               ]
-            ],
-            'spaces_before_argument' => {
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            ]
           },
           'line_nr' => {
             'file_name' => '',
@@ -315,13 +307,6 @@ $result_trees{'paragraph_command'} = {
           ],
           'cmdname' => 'footnote',
           'contents' => [],
-          'extra' => {
-            'spaces_before_argument' => {
-              'parent' => {},
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 14,
@@ -394,7 +379,6 @@ $result_trees{'paragraph_command'}{'contents'}[12]{'parent'} = $result_trees{'pa
 $result_trees{'paragraph_command'}{'contents'}[13]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[13]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'paragraph_command'}{'contents'}[13]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[13]{'contents'}[0]{'args'}[0];
 $result_trees{'paragraph_command'}{'contents'}[13]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[13]{'contents'}[0];
-$result_trees{'paragraph_command'}{'contents'}[13]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'paragraph_command'}{'contents'}[13]{'contents'}[0]{'args'}[0];
 $result_trees{'paragraph_command'}{'contents'}[13]{'contents'}[0]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[13];
 $result_trees{'paragraph_command'}{'contents'}[13]{'contents'}[1]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[13];
 $result_trees{'paragraph_command'}{'contents'}[13]{'parent'} = $result_trees{'paragraph_command'};

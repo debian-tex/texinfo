@@ -34,13 +34,6 @@ $result_trees{'transparent_text'} = {
           ],
           'cmdname' => 'footnote',
           'contents' => [],
-          'extra' => {
-            'spaces_before_argument' => {
-              'parent' => {},
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
@@ -86,7 +79,6 @@ $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[0]{'parent'} = $res
 $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[1];
-$result_trees{'transparent_text'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'transparent_text'}{'contents'}[0];
 $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'transparent_text'}{'contents'}[0];
 $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[3]{'args'}[0];

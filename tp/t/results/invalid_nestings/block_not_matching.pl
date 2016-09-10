@@ -93,7 +93,6 @@ $result_trees{'block_not_matching'} = {
                 'category',
                 {
                   'contents' => [],
-                  'parent' => {},
                   'type' => 'bracketed_def_content'
                 }
               ],
@@ -140,7 +139,6 @@ $result_trees{'block_not_matching'} = {
               'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f',
               'index_type_command' => 'deffn',
               'key' => 'print_navigation',
               'number' => 1
@@ -195,6 +193,12 @@ $result_trees{'block_not_matching'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 9,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -291,11 +295,7 @@ $result_trees{'block_not_matching'} = {
         'command_as_argument' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 9,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -318,6 +318,12 @@ $result_trees{'block_not_matching'} = {
             },
             {
               'cmdname' => 'emph',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 14,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -437,11 +443,7 @@ $result_trees{'block_not_matching'} = {
         'command_as_argument' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 14,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -621,7 +623,6 @@ $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'co
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
-$result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0];
@@ -657,6 +658,7 @@ $result_trees{'block_not_matching'}{'contents'}[4]{'contents'}[0]{'parent'} = $r
 $result_trees{'block_not_matching'}{'contents'}[4]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'block_not_matching'}{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'block_not_matching'}{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'block_not_matching'}{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'block_not_matching'}{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'block_not_matching'}{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'block_not_matching'}{'contents'}[4]{'line_nr'} = $result_trees{'block_not_matching'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'block_not_matching'}{'contents'}[4]{'parent'} = $result_trees{'block_not_matching'};
 $result_trees{'block_not_matching'}{'contents'}[5]{'parent'} = $result_trees{'block_not_matching'};
 $result_trees{'block_not_matching'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'block_not_matching'}{'contents'}[6];
@@ -684,6 +686,7 @@ $result_trees{'block_not_matching'}{'contents'}[6]{'contents'}[0]{'parent'} = $r
 $result_trees{'block_not_matching'}{'contents'}[6]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'block_not_matching'}{'contents'}[6]{'args'}[0]{'contents'}[1];
 $result_trees{'block_not_matching'}{'contents'}[6]{'extra'}{'command_as_argument'} = $result_trees{'block_not_matching'}{'contents'}[6]{'args'}[0]{'contents'}[1];
 $result_trees{'block_not_matching'}{'contents'}[6]{'extra'}{'spaces_after_command'} = $result_trees{'block_not_matching'}{'contents'}[6]{'args'}[0]{'contents'}[0];
+$result_trees{'block_not_matching'}{'contents'}[6]{'line_nr'} = $result_trees{'block_not_matching'}{'contents'}[6]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'block_not_matching'}{'contents'}[6]{'parent'} = $result_trees{'block_not_matching'};
 $result_trees{'block_not_matching'}{'contents'}[7]{'parent'} = $result_trees{'block_not_matching'};
 $result_trees{'block_not_matching'}{'contents'}[8]{'contents'}[0]{'extra'}{'command'} = $result_trees{'block_not_matching'}{'contents'}[8];

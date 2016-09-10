@@ -42,11 +42,6 @@ $result_trees{'contents_setcontentsaftertitlepage_before_node'} = {
             }
           ],
           'cmdname' => 'setcontentsaftertitlepage',
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
           'parent' => {}
         },
         {
@@ -245,7 +240,17 @@ $result_menus{'contents_setcontentsaftertitlepage_before_node'} = {
   }
 };
 
-$result_errors{'contents_setcontentsaftertitlepage_before_node'} = [];
+$result_errors{'contents_setcontentsaftertitlepage_before_node'} = [
+  {
+    'error_line' => ':3: warning: @setcontentsaftertitlepage is obsolete; move your @contents command if you want the contents after the title page
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@setcontentsaftertitlepage is obsolete; move your @contents command if you want the contents after the title page',
+    'type' => 'warning'
+  }
+];
 
 
 

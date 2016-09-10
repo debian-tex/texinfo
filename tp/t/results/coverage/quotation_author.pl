@@ -104,6 +104,12 @@ $result_trees{'quotation_author'} = {
                         }
                       ],
                       'cmdname' => '~',
+                      'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 5,
+                        'macro' => ''
+                      },
                       'parent' => {}
                     },
                     {
@@ -131,11 +137,7 @@ $result_trees{'quotation_author'} = {
                 'quotation' => {},
                 'spaces_after_command' => {}
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
-              },
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -240,6 +242,7 @@ $result_trees{'quotation_author'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'
 $result_trees{'quotation_author'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'extra'}{'misc_content'}[2] = $result_trees{'quotation_author'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[3];
 $result_trees{'quotation_author'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'extra'}{'quotation'} = $result_trees{'quotation_author'}{'contents'}[0];
 $result_trees{'quotation_author'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'quotation_author'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'quotation_author'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'line_nr'} = $result_trees{'quotation_author'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'quotation_author'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'quotation_author'}{'contents'}[0]{'contents'}[3];
 $result_trees{'quotation_author'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'quotation_author'}{'contents'}[0]{'contents'}[3];
 $result_trees{'quotation_author'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'quotation_author'}{'contents'}[0];

@@ -234,11 +234,7 @@ $result_trees{'no_empty_line_after_section'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => '',

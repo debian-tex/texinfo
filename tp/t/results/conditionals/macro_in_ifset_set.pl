@@ -67,18 +67,7 @@ $result_trees{'macro_in_ifset_set'} = {
       ],
       'extra' => {
         'arg_line' => ' truc {}
-',
-        'macrobody' => 'truc
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -87,7 +76,15 @@ $result_trees{'macro_in_ifset_set'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -136,18 +133,7 @@ $result_trees{'macro_in_ifset_set'} = {
       ],
       'extra' => {
         'arg_line' => ' truc{}
-',
-        'macrobody' => 'in ifset
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -156,7 +142,15 @@ $result_trees{'macro_in_ifset_set'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -185,20 +179,18 @@ $result_trees{'macro_in_ifset_set'}{'contents'}[2]{'parent'} = $result_trees{'ma
 $result_trees{'macro_in_ifset_set'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[3];
 $result_trees{'macro_in_ifset_set'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[3];
 $result_trees{'macro_in_ifset_set'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[3];
-$result_trees{'macro_in_ifset_set'}{'contents'}[3]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'macro_in_ifset_set'}{'contents'}[3];
-$result_trees{'macro_in_ifset_set'}{'contents'}[3]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'macro_in_ifset_set'};
 $result_trees{'macro_in_ifset_set'}{'contents'}[3]{'parent'} = $result_trees{'macro_in_ifset_set'};
-$result_trees{'macro_in_ifset_set'}{'contents'}[4] = $result_trees{'macro_in_ifset_set'}{'contents'}[3]{'extra'}{'spaces_after_command'};
+$result_trees{'macro_in_ifset_set'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'macro_in_ifset_set'}{'contents'}[3];
+$result_trees{'macro_in_ifset_set'}{'contents'}[4]{'parent'} = $result_trees{'macro_in_ifset_set'};
 $result_trees{'macro_in_ifset_set'}{'contents'}[5]{'parent'} = $result_trees{'macro_in_ifset_set'};
 $result_trees{'macro_in_ifset_set'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[6];
 $result_trees{'macro_in_ifset_set'}{'contents'}[6]{'parent'} = $result_trees{'macro_in_ifset_set'};
 $result_trees{'macro_in_ifset_set'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[7];
 $result_trees{'macro_in_ifset_set'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[7];
 $result_trees{'macro_in_ifset_set'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[7];
-$result_trees{'macro_in_ifset_set'}{'contents'}[7]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'macro_in_ifset_set'}{'contents'}[7];
-$result_trees{'macro_in_ifset_set'}{'contents'}[7]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'macro_in_ifset_set'};
 $result_trees{'macro_in_ifset_set'}{'contents'}[7]{'parent'} = $result_trees{'macro_in_ifset_set'};
-$result_trees{'macro_in_ifset_set'}{'contents'}[8] = $result_trees{'macro_in_ifset_set'}{'contents'}[7]{'extra'}{'spaces_after_command'};
+$result_trees{'macro_in_ifset_set'}{'contents'}[8]{'extra'}{'command'} = $result_trees{'macro_in_ifset_set'}{'contents'}[7];
+$result_trees{'macro_in_ifset_set'}{'contents'}[8]{'parent'} = $result_trees{'macro_in_ifset_set'};
 $result_trees{'macro_in_ifset_set'}{'contents'}[9]{'parent'} = $result_trees{'macro_in_ifset_set'};
 $result_trees{'macro_in_ifset_set'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[10];
 $result_trees{'macro_in_ifset_set'}{'contents'}[10]{'parent'} = $result_trees{'macro_in_ifset_set'};

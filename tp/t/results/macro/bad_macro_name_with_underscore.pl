@@ -11,8 +11,18 @@ $result_trees{'bad_macro_name_with_underscore'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'the',
+          'text' => 'the_macro',
           'type' => 'macro_name'
+        },
+        {
+          'parent' => {},
+          'text' => 'arg1',
+          'type' => 'macro_arg'
+        },
+        {
+          'parent' => {},
+          'text' => 'arg2',
+          'type' => 'macro_arg'
         }
       ],
       'cmdname' => 'macro',
@@ -31,8 +41,7 @@ $result_trees{'bad_macro_name_with_underscore'} = {
       ],
       'extra' => {
         'arg_line' => ' the_macro {arg1, arg2}
-',
-        'invalid_syntax' => 1
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -54,6 +63,8 @@ $result_trees{'bad_macro_name_with_underscore'} = {
   'type' => 'text_root'
 };
 $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0];
+$result_trees{'bad_macro_name_with_underscore'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0];
+$result_trees{'bad_macro_name_with_underscore'}{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0];
 $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0];
 $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0];
 $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0]{'parent'} = $result_trees{'bad_macro_name_with_underscore'};
@@ -68,17 +79,7 @@ In macro
 
 $result_texts{'bad_macro_name_with_underscore'} = '';
 
-$result_errors{'bad_macro_name_with_underscore'} = [
-  {
-    'error_line' => ':1: bad syntax for @macro argument: _macro {arg1, arg2}
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'bad syntax for @macro argument: _macro {arg1, arg2}',
-    'type' => 'error'
-  }
-];
+$result_errors{'bad_macro_name_with_underscore'} = [];
 
 
 1;

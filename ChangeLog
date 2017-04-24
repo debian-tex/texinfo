@@ -1,3 +1,1990 @@
+2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* pretest 6.3.90.
+	* configure.ac: Update version.  Add dist-xz to options.
+
+2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* texindex/ti.twjr,
+	* info/info.c,
+	* tp/texi2any.pl: Copyright 2017.
+
+2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* po/POTFILES.in: Remove info/tilde.c and add 
+	tp/Texinfo/Convert/Text.pm.
+
+2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Macro Details): Mention possibility of 
+	interchanging a macro and a conditional.
+
+2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* Makefile.am (po-check): Change parsetexi/ to tp/parsetexi.
+
+2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_complete_indices): New function.
+	* tp/Texinfo/Structuring.pm (do_index_keys): Move code from
+	do_index_keys to _complete_indices to complete index entries for 
+	@defop and similar, and also code to set the 'in_code' value for 
+	index entries.
+	* tp/Texinfo/Parser.pm (_parse_texi): Call it after parsing
+	the whole input.
+	* tp/Texinfo/Structuring.pm, tp/Texinfo/Parser.pm
+	(_non_bracketed_contents): Move function to Parser.pm.
+
+	* tp/texi2any.pl: Do not call do_index_keys.  This avoids a 
+	duplicate error message for an empty index entry sort key.
+
+2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/maintain/regenerate_cmd_tests.sh: In test scripts generated 
+	in tp/tests/test_scripts directory, include a comment saying
+	it is a generated file
+
+2017-04-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/XSLoader.pm: Add more debugging messages.
+
+2017-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Inserting Quotation Marks): Include sort 
+	keys for two index entries (< and <<).
+
+2017-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* Makefile.am, README-hacking: Remove mention of 'long-checks',
+	as these don't exist anymore.
+
+2017-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Makefile.am: Correct the name of an included file in a 
+	comment.
+
+2017-04-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/maintain/regenerate_docstr.sh: Use Makefile in build 
+	directory to build .gmo files.  Report from Hans Bernhard-Bröker.
+
+2017-04-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS.pm: Call Texinfo::XSLoader::init with the
+	real name of the package with the XS routines.
+
+2017-04-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm,
+	* tp/Texinfo/Parser.pm,
+	* tp/Texinfo/Convert/Unicode.pm:
+	Move calls to Texinfo::XSLoader::override to a custom 'import'
+	method, wrapping the one from the Exporter module, instead of 
+	occurring inside a UNITCHECK block.  This is to try to work
+	on older versions of Perl where UNITCHECK didn't exist.
+
+2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph: Run gnulib-tool --add-import.
+	* (top-level): Run gnulib-tool --add-import.
+
+2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* po_document/LINGUAS: Add cs, da.
+
+2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Update instructions for updating translation
+	files.
+
+2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* configure.ac, README-hacking: Change instructions for
+	upgrading gettext.
+
+2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Add news items.
+
+2017-04-14  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* gnulib/m4/progtest.m4: Upgrade to gettext-0.19.8.
+	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.19.8.
+
+2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\enablebackslashhack, \fixbackslash):
+	Revert to usual definitions after a line command parsed with
+	\parsearg.  This led to an error when a @synindex command was
+	used near the start of a file, reported by Mathieu Lirzin.
+
+2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (_convert_enumerate_command): 
+	Handle case of labelling list entries with letters, using 'type' 
+	and 'start' attributes on the <ol> tag.  This worked in the 
+	makeinfo implementation from Texinfo 4.13 and earlier.  Report
+	from Andreas Schwab.
+
+2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (_convert_enumerate_command):
+	Check if the 'enumerate_specification' is defined, rather than
+	true, as if the value is '0', this is considered to be false.
+	Enumerated lists starting at 0 broken reported by Andreas Schwab.
+
+2017-04-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (match_in_match_list): Take a argument to say
+	which direction to search in, instead of using the order of the
+	start and end arguments.
+	(info_search_in_node_internal): Update, and make sure that both
+	the start and end of the search area are after the 'body_start'
+	of the node.
+
+2017-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/search.c (match_in_match_list): Use helper functions
+	at_end_of_matches and match_by_index.
+
+2017-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_search_in_node_internal): Always save
+	the updated match state for a window.
+
+2017-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/search.c (match_in_match_list): Combine code for 
+	searching backwards and forwards, and do not get all the matches 
+	in the node if searching backwards.
+
+2017-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/file-index-colons.sh: New test of reading an index 
+	entry with a colon.
+
+2017-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/display.c (display_update_one_window): Update modeline 
+	before anything else.
+
+2017-04-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (scan_reference_label): If inside an index 
+	node, scan forward to the last colon on the line to get the
+	index entry, instead of the first colon.
+
+2017-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (do_index_keys): Strip '-', '\',
+	'<', '@' if there has been @set txiindexhyphenignore,
+	txiindexbackslashignore, txiindexlessthanignore,
+	or txiindexatsignignore respectively.
+
+2017-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (%command_ignore_space_after): Add 
+	'sortas', in order to ignore spaces after its argument.
+
+2017-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@sortas>: Check if inside 
+	index entry differently.
+
+2017-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/09indices.t (explicit_sort_key): New test.
+
+2017-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <close brace, @sortas>: Set 
+	'sortas' value on index entry element.
+	(_enter_index_entry): Set 'sortas' value on index entry from 
+	'extra' value on element.
+
+	* tp/Texinfo/Structuring.pm (_do_index_keys): Check for 'sortas' 
+	value on index entry and, if present, use that as the sort key 
+	instead of using the text of the index entry.
+
+	* tp/Texinfo/Parser.pm (%in_index_commands): New hash,
+	containing 'sortas'.
+	(_parse_line_command_args) <@defindex, @defcodeindex>: Use 
+	%in_index_commands instead of %in_simple_text_commands for valid 
+	nestings hash.
+	(%no_command_cmds): Add 'sortas'.
+	(%in_full_text_commands, %full_text_commands): Remove 'sortas'.
+
+2017-03-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Test of index sort keys): New example.
+
+2017-03-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\smallbook, \smallerbook, \afourpaper)
+	\afivepaper): Remove paper-size-specific values of \hfuzz.  Set 
+	\hfuzz at top-level to 1pt.  Suggestion from Karl Berry.
+
+2017-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/search.c (at_end_of_matches): Avoid calling 
+	'extend_matches' if not necessary.
+
+2017-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Implement lazy search match lists.
+
+	* info/window.h (MATCH_STATE): Add 'regex' field of type regex_t.
+	Add fields 'match_alloc', 'finished', 'buffer' and 'buflen'.
+	* info/search.c (free_matches): Update for new fields.
+	(regexp_search): Do not call regfree on regex_t variable; copy
+	it to MATCH_STATE object instead.  Set new fields on MATCH_STATE.
+	(extend_matches): New function, split out from regexp_search.
+	(regexp_search, match_in_match_list, match_by_index)
+	(at_end_of_matches): Call extend_matches as necessary.
+
+2017-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/search.c (copy_binding): Remove this function, which is
+	not used much.  Remove comment before this function.
+	* info/nodes.c (get_nodes_of_tags_table): Use struct assignment 
+	to a local struct instead of copy_binding.
+
+2017-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Access list of search matches through accessor functions only.
+
+	* info/window.h (MATCH_STATE): New struct type.
+	(WINDOW): Use it for new field 'matches', replacing previous 
+	'matches' and 'match_count' fields.
+
+	* info/search.c (match_by_index, free_matches, matches_ready)
+	(at_end_of_matches):
+	New functions.
+	* info/session.c (info_search_in_node_internal, put_node_in_window)
+	(info_search_internal, info_clear_search, incremental_search),
+	* info/window.c (window_set_node_of_window, tree_search_check_node),
+	* info/display.c (display_process_line): Use them.
+
+	* info/session.c, info/search.c (match_in_match_list): Move 
+	function to search.c, and take MATCH_STATE argument.
+	* info/search.c (regexp_search): Return result via a pointer to 
+	a MATCH_STATE.
+
+	* info/display.c, info/search.c (decide_if_in_match): Move to
+	search.c.
+	* info/display.c (matches): Variable is of type MATCH_STATE *.
+
+	This opens the way to not calculating an entire list of matches
+	in one go, which may take a long time if there are too many (thus
+	leading to the need for the 'min-search-length' variable).
+
+2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (HTML Customization Variable) <WORDS_IN_PAGE>:
+	Add index entry "Navigation footer" to make this information 
+	easier to find.
+
+2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c: If not loading any nodes at all, and outputting
+	an error message, exit with a non-zero status.
+
+2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Invoking Info): Mention combination of 
+	--all and --index-search.
+	* NEWS: Mention this feature.
+
+2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (virtual_index_p): Remove variable.
+	(long_options): Remove "--virtual-index".
+	(main): Don't check for --virtual-index option.  Use the
+	combination of --index-search and --all for this functionality.
+
+2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/ModulePath.pm.in ($VERSION): Define variable.
+
+2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/texi2any.pl: Compare version of this file and the version
+	of loaded modules.  If they differ, abort.
+
+2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp: Run maintain/change_perl_modules.sh.
+
+2017-03-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS.pm: Check for UTF-8 locale, copied from
+	tp/Texinfo/Convert/Paragraph.pm.
+	* tp/Texinfo/XSLoader.pm (init): Allow argument with name of
+	XS module to be undefined.
+
+2017-03-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Cursor Commands): Move text out of 
+	footnote into main text.
+	(Searching Commands): Add a missing ')'.
+
+2017-03-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Update with news since last release.
+
+2017-03-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (texi2any Environment Variables): New node.
+	Document TEXINFO_XS.
+
+2017-03-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\begindoublecolumns): Reduce \vsize to
+	account for what has appeared on the page so far.
+	(\doublecolumnout): Do not subtract the height of what has
+	appeared on the page so far before dividing \vsize in two.
+	Add it back on again before exiting the output routine.
+	(\enddoublecolumns): Restore \vsize from \txipageheight.
+
+	This fixes a problem with the formatting when the index material 
+	would not fit on the page after the partial page, but there was
+	not enough of it to make the output routine (\doublecolumnout)
+	fire before the output routine was changed to \balancecolumns.
+	Hence \balancecolumns was caused to balance too much material 
+	and would output a box that was too tall for the page.
+
+2017-03-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Medium length index): New test
+	of index formatting.
+
+2017-03-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\doublecolumnout, \balancecolumns):
+	Use \PAGE instead of literal 255 for the box number.
+
+2017-03-06  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo-ja.tex: Fix error message for XeTeX.
+
+2017-03-05  Mathieu Lirzin  <mthl@gnu.org>  (tiny change)
+
+	* util/tests/texi2dvi_empty_text.sh: New test.
+	* util/Makefile.am (AM_TESTS_ENVIRONMENT): Use 'texinfo.tex'
+	from "$(top_srcdir)/doc".
+
+2017-03-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\internalpagesizes) <dvi output>: Output
+	a \special setting the page size.  This has the effect that a
+	completely empty page can be output if a document has nothing in
+	it.  This changed on 2015-08-25 when index files were no longer 
+	opened automatically.  This made a test in the Automake 
+	distribution fail, reported by Mathieu Lirzin.
+
+2017-03-04  Thien-Thi Nguyen  <ttn@gnu.org>  (tiny change)
+
+	* doc/texinfo.texi (@noindent): Spell "@noindent" correctly.
+
+2017-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infomap.c (default_vi_like_ea_keys): Add ESC as an
+	abort key, and remove bindings ESC 1 ... ESC 9 that conflict
+	with this.
+
+2017-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infomap.c (default_vi_like_ea_keys): Interchange the 
+	meanings of M-h and M-l to match line editing commands of GNU 
+	Less.  (The former bindings appear to have been in place since 
+	the beginning, so likely no-one has ever used them).
+	* doc/info-stnd.texi (infokey format): Interchange M-h and M-l
+	in sample infokey file.
+
+2017-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Cursor Commands, Scrolling Commands)
+	(Node Commands, Selecting Xrefs, Miscellaneous):
+	Remove documentation of --vi-keys key bindings, except for
+	M-1 ... M-9 as these can't be specified in .infokey.
+
+2017-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (infokey format): Document the --vi-keys 
+	key bindings here.
+	(Invoking Info) <--vi-keys>: Refer to 'infokey format' node.
+	(Miscellaneous Commands) <get-info-help-node>: Don't say that
+	info.texi is distributed with GNU Info.
+
+2017-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (forward_move_node_structure) 
+	(backward_move_node_structure): Don't do anything for a man page.
+
+2017-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/tilde.c (tilde_expand): Delete function, as it is not 
+	actually called anywhere.
+	(tilde_additional_prefixes, tilde_additional_suffixes)
+	(tilde_find_prefix, tilde_find_suffix): Remove.
+
+2017-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/tilde.c (tilde_additional_prefixes, tilde_additional_suffixes):
+	Declare as static arrays, as they are not set anywhere else.
+
+2017-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/tilde.c (tilde_expansion_failure_hook): Remove unused 
+	variable.
+	(tilde_expand_word): Do not look at tilde_expansion_failure_hook.
+
+2017-02-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/tilde.c [TEST] (main, xmalloc, xrealloc): Remove.
+
+2017-02-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/echo-area.c (initialize_input_line): Don't consider
+	possibility that the prompt argument is null.  This removes the
+	appearance that we call 'strlen' on a pointer when it could be 
+	null.  (Report from Hans-Bernhard Bröker.)
+	(info_read_in_echo_area): Don't mention the possibility of a 
+	null prompt argument in a comment.
+	* info/variables.c (read_variable_name): Declare as static.
+
+2017-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infodoc.c (replace_in_documentation): Remove redundant 
+	assignment.  (Report from Hans-Bernhard Bröker.)
+
+2017-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/m-x.c (info_execute_command): Remove code printing an 
+	error message that would use a freed pointer.  (It is not 
+	actually executed because info_read_completing_in_echo_area will 
+	not return anything outside the list of permissible completions.)
+	(Report from Hans-Bernhard Bröker.)
+
+2017-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_search_internal): Initialize some 
+	variables so they do not appear to be used uninitialized.  (They 
+	were not actually used uninitialized because if they were not 
+	initialized, the loop where they were used was broken out of 
+	beforehand.)  (Report from Hans-Bernhard Bröker.)
+
+2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_intuit_options_node): Do not free a 
+	pointer to a node record if following a menu entry to the next 
+	node failed.  (Report from Hans-Bernhard Bröker.)
+
+2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (add_initial_nodes): Avoid a condition on an 
+	uninitialized value.  (Report from Hans-Bernhard Bröker.)
+
+2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.c (window_change_window_height): Simplify some 
+	conditions to avoid appearing to possibly dereference a pointer
+	after it has been checked for being null.
+	(Report from Hans-Bernhard Bröker.)
+
+2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/search.c (skip_line): Remove unused function (which had a
+	useless null pointer check in it.) (Report from Hans-Bernhard Bröker.)
+
+2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (next_index_match): Return a value instead of
+	passing a pointer to a value to be set so that it is clear that
+	calling code does not depend on an uninitialized value.  All 
+	callers updated.  (Report from Hans-Bernhard Bröker.)
+
+2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/display.c (display_update_one_window): Remove a useless
+	check of a null pointer.  Report from Hans-Bernhard Bröker, 
+	found using static code analysis with clang.
+
+2017-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/tag.c (tag_expand): Take a pointer as an argument 
+	pointing to the end of the buffer that is being processed, and 
+	check against this pointer to make sure we don't read too far.  
+	Invalid read reported by Hanno Böck.
+
+2017-01-29  Jason Hood  <jadoxa@yahoo.com.au>
+
+	* info/pcterm.c
+	(norm_attr, inv_attr, xref_attr, current_attr): Define as WORD 
+	instead of SHORT.
+	(w32_info_prep): Enable underline, if available.
+	(highvideo): Invert the normal foreground intensity, instead of
+	just setting it.
+	(normvideo): Remove underline attribute.  Use the normal
+	intensities, instead of just removing them.
+	(blinkvideo): Invert the normal background intensity, instead of
+	using highvideo.
+	(underline): New function.
+	(textcolor, textbackground): Preserve underline attribute.
+	(pc_begin_underline, pc_end_underline): Use underline if it is
+	available, instead of the colour blue.
+	(convert_color, pc_set_fg_color, pc_set_bg_color): Use the 
+	normal intensities.
+	(pc_initialize_terminal): Use the normal background for 
+	'xref_attr', instead of black.  Support underline in 
+	INFO_COLORS.  Really end all modes, not just standout.
+
+	* info/terminal.c (terminal_begin_blink): Use
+	'terminal_begin_blink_hook'.
+
+2017-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_init): Remove
+	error message printed if a UTF-8 locale couldn't be found, so
+	that we fall back to the pure Perl module.  This error message
+	caused tests comparing the output on standard error to fail on 
+	systems where a UTF-8 locale couldn't be found.  Reported by
+	Michael Deutschmann for uClibc with locales compiled out.
+
+2017-01-29  Jason Hood  <jadoxa@yahoo.com.au>
+
+	* info/echo-area.c (pause_or_input) [__MINGW32__]: Add a
+	working implementation of this function, allowing echo area 
+	messages to be seen.
+	* info/pcterm.c (gettextinfo):  Windows 10 can now apparently 
+	seek console input, so just use GetConsoleMode to determine 
+	that.
+	(pc_initialize_terminal) [_WIN32]: Sets the 'term_??'
+	definitions for KEY_HOME, KEY_END (and KEY_INSERT), allowing 
+	Home and End to be used in the echo area (rather than having to
+	explicitly define 'M-<' and 'M->').
+	(w32_our_tty): Shorten function.
+
+2017-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (scan_node_contents): Use 'strncmp' instead 
+	of 'memcmp' when checking for "* Menu:" string to avoid possibly 
+	looking past the end of the file buffer, detected with 
+	'-fsanitize=address' passed to gcc.  Invalid read reported by 
+	Hanno Böck.
+
+2017-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (scan_reference_label): Properly check 
+	return value of 'read_quoted_string' to avoid reading past the 
+	end of the buffer.  Invalid read reported by Hanno Böck.
+
+2017-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (adjust_nodestart): Check that both the start and 
+	end of the region where we search for the node separator are
+	within the file buffer, to avoid invalidly reading memory in 
+	case the file tags table had an incorrect offset.  Invalid read
+	reported by Hanno Böck.
+
+2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (get_tags_of_indirect_tags_table): Check if 
+	'tags' field of file buffer record is null.  This avoids 
+	dereferencing a null pointer.  (Report from Hanno Böck.)
+
+2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (_file_header_information):
+	Place name of manual in parentheses after the name of the page, 
+	instead of before it.  This is so that if several pages from a 
+	single manual are displayed in separate browser tabs, the user
+	will be able to distinguish them if only part of each page title 
+	is shown in each tab.
+	Suggestion from Bryan Ferris <saffronsnail@hushmail.com>.
+
+2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (build_tags_and_nodes): Check that a buffer 
+	offset isn't 0 before subtracting 1 from it.  This is to avoid 
+	reading outside allocated memory for malformed input.  (Report 
+	from Hanno Böck.)
+
+2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (build_tags_and_nodes): Simplify code by moving 
+	code inside a 'while' loop up one level, as the loop never 
+	executes more than once.
+
+2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (read_quoted_string): If no 177 byte is
+	found to close a string, return 0 as intended.  This is intended 
+	to avoid reading past the end of allocated memory, which could 
+	happen for malformed input.  (Hanno Böck, bug-texinfo 2016-10-18.)
+
+2017-01-21  Jason Hood  <jadoxa@yahoo.com.au>  (tiny change)
+
+	* info/infomap.c (fetch_user_maps) [__MINGW32__]: Try to get
+	home directory from value of 'USERPROFILE' environment variable.
+
+2017-01-21  Jason Hood  <jadoxa@yahoo.com.au>  (tiny change)
+
+	 * doc/info-stnd.texi (Colors and Styles): Correct "nocolour" to 
+	 "bgnocolour".
+
+2017-01-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/man.c (xrefs_of_manpage): Check that names of man pages
+	only contain certain characters, and don't allow "0" as the 
+	section number.  This reduces the chance of incorrectly
+	identifying text in a man page as a cross-reference.
+
+2017-01-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/man.c (xrefs_of_manpage): Fix code finding end of the
+	name of a man page (broken on 2016-10-09).
+
+2017-01-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/run_parser_all: Include ${srcdir} when replacing
+	"@PATH_SEPARATOR@" so that test will work when run out-of-source
+	(used only in tp/tests/sectioning/tests-parser.txt).  Include 
+	$srcdir/$testdir as well as $test dir when running texi2any.pl.
+
+2017-01-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS/configure.ac: Remove calls to gl_EARLY and 
+	gl_INIT.  (Report from Hans Bernhard Bröker.)
+
+2017-01-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Open or close group in a macro): 
+	More examples with @comment.
+	(Braceless at end of line) New section.
+
+2017-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Paragraph.pm (import): New function to
+	export symbols.  Set it in the symbol table of the paragraph 
+	formatting module.
+	* tp/Texinfo/XSLoader.pm (init): Return name of module that was 
+	loaded as a string.  Override module the same way regardless of
+	whether it is the XS or non-XS module that was loaded.
+	* tp/t/paragraph.t, tp/Texinfo/Convert/Plaintext.pm,
+	tp/Texinfo/Convert/Info.pm: Do not import symbols from 
+	Texinfo::Convert::Paragraph explicitly.
+
+2017-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (new_formatter): Call 
+	Texinfo::Convert::Paragraph::new directly instead of using 
+	Texinfo::Convert::Line or Texinfo::Convert::UnFilled.
+
+2017-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert, _convert_element)
+	(_process_text): Remove debugging statements.
+
+2017-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Macro Details): Remove mention of a 
+	difference between @comment and @c.
+
+2017-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\endlineisspace): New.
+	(\defmacro) <0 arguments> Skip any whitespace after the macro 
+	name.
+	(\scanmacro): Remove code for propagating a final @comment in
+	a macro body.
+	(\comment): Give the same definition as \c.
+
+2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_set_state),
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.xs (xspara_new):
+	Use an integer-valued SV to represent a paragraph formatting
+	state instead of a blessed reference to an integer-valued SV.
+
+2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Info.pm:  Remove usage of method call
+	syntax when calling subroutines in the 
+	Texinfo::Convert::Paragraph module.
+
+2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/paragraph.t: Avoid using method call syntax to call 
+	subroutines in Texinfo::Convert::Paragraph.  Only run each test 
+	once.  Remove tests using 'lines_counter' value on paragraph 
+	hash.
+
+2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm:  Remove remaining usage
+	of method call syntax when calling subroutines in the
+	Texinfo::Convert::Paragraph module.
+
+2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS/Makefile.am,
+	* tp/Texinfo/MiscXS/configure.ac: Remove code for using gnulib, 
+	as it isn't required for this module, and this saves the 
+	complication of having an extra gnulib checkout.
+	* tp/Texinfo/MiscXS/lib,
+	* tp/Texinfo/MiscXS/snippet: Remove all files.
+	* tp/Texinfo/MiscXS/m4: Remove all gnulib files.
+
+2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm: Import some symbols for 
+	subroutines from the Texinfo::Convert::Paragraph module.  Reduce
+	usage of method call syntax when calling subroutines in the
+	Texinfo::Convert::Paragraph module.
+
+2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_end): Clear
+	'in_use' on 'state' structure as well as in the 'saved_states'.
+	This avoids the storage being lost if 'xspara__switch_state' 
+	copies 'state' into 'saved_states'.
+
+2017-01-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS/miscxs.c,
+	* tp/Texinfo/MiscXS/misc.c: Rename file in order to avoid 
+	clashing with MiscXS.c (file generated from MiscXS.xs by xsubpp)
+	on case-insensitive file systems.
+
+2017-01-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (PARAGRAPH): New 
+	configuration fields 'no_final_newline' and 'add_final_space'.
+	(xspara_new): Set 'in_use' on state so that it is saved properly.
+	(xspara_init_state): Remove some out-of-date comments.  Retrieve
+	'no_final_newline' and 'add_final_space' values.
+	(xspara_end): Use 'no_final_newline' to decide whether to add
+	a final newline, and pass value of 'add_final_space' to
+	_add_pending_word.
+
+	* tp/Texinfo/Convert/ParagraphNonXS.pm (end): Use 
+	'no_final_newline' to decide whether to add a final newline, and 
+	pass value of 'add_final_space' to _add_pending_word.
+
+	* tp/Texinfo/Convert/Line.pm: Replace with wrapper around 
+	Texinfo::Paragraph.
+	* tp/Texinfo/Convert/UnFilled.pm (new): Use 'no_final_newline'
+	option.
+
+	* tp/t/paragraph.t (line count line tests): Remove, as the
+	'lines_counter' information isn't available any more.
+
+2017-01-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (add_next): If given
+	empty argument, set 'invisible_pending_word'.
+
+2017-01-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert) <@image>: Call
+	'add_next' with an empty string argument so that any spaces 
+	following the command aren't lost.
+
+2017-01-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/ParagraphNonXS.pm,
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (add_text): If
+	there is an empty pending word at the very start of a line,
+	allow spaces to be output after it.
+
+2017-01-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.xs: Uncomment calls
+	to xspara_set_state, and remove calls to xspara_get-state.  
+	Receive paragraph object as an SV *, not an HV *.
+	(xspara_new): Create and return a reference to an integer scalar 
+	value.
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c
+	(xspara_set_state, xspara_init_state): Rename function.
+	(xspara_set_state, xspara_new): Keep array of paragraph 
+	formatting states, and copy them to and from 'state' depending 
+	on which is currently active.
+	(state_array, state_array_size, current_state, xspara__switch_state):
+	New.
+	(PARAGRAPH): New field 'in_use'.
+
+2017-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/ParagraphNonXS.pm
+	(add_pending_word) <unfilled>: Include leading spaces after 
+	indent.
+	(add_text) <unfilled>:
+	Do not detect end of sentence, save spaces at beginnings of 
+	lines, do not condense multiple spaces to one space.
+	(add_next): Call '_add_pending_word' to make sure a leading line
+	indent is added.
+	(end) <unfilled>: No newline at end of output.
+	(new): Initialize 'unfilled' value.
+
+	These changes nearly match the behaviour of the C 
+	implementation, except for a test failure where the C code 
+	doesn't handle nested formatters correctly
+	(t/results/raw/raw_expanded_in_style.pl).
+
+2017-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert, convert_unfilled): 
+	Remove commented-out code incrementing and decrementing a 'code' value.
+
+2017-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (PARAGRAPH): New
+	configuration field 'unfilled'.
+	(xspara_set_state): Set 'unfilled' from argument.
+
+	(xspara__add_pending_word): Include leading spaces after indent 
+	if 'unfilled' is on.
+
+	(xspara__add_next): Call 'xspara__add_pending_word'.  This 
+	shortens the code and makes sure that a leading line indent is added.
+
+	(xspara_add_text) <unfilled>: Record spaces at the beginning of 
+	lines, do not convert newlines to spaces, and no end of sentence 
+	detection.
+
+	(xspara_end) <unfilled>: Don't append a newline.
+
+	Note: ParagraphNonXS.pm not done yet.
+
+	* tp/Texinfo/Convert/UnFilled.pm: Remove code of module, and 
+	replace with wrapper around Texinfo::Paragraph using the 
+	'unfilled' option.
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert)
+	<@sp, node names in menus>: Call 'add_pending_word' to flush 
+	output.
+
+	This change leads to some changes in output:
+	  Spaces included at ends of lines in @verbatiminclude.
+	  Spaces lost at ends of lines in most other contexts, like
+	menus.  Spaces were already removed at the end of a line,
+	but not consistently.
+
+	* tp/t/paragraph.t (unfilled lines_counter tests): Remove tests,
+	as 'lines_counter' is not available any more.
+
+2017-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS/miscxs.c (xs_parse_texi_regex): Use malloc
+	and memcpy instead of strndup for better portability.
+
+2017-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_output_old): Remove unused 
+	function.
+	Whole file: Get subroutine arguments by assigning from @_.
+
+2017-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi, _parse_texi_regex): Split 
+	out several regexes used at the start of the remaining part of 
+	the line.
+	* tp/Texinfo/MiscXS/MiscXS.xs,
+	* tp/Texinfo/MiscXS/miscxs.c (xs_parse_texi_regex): New function.
+	* tp/Texinfo/Parser.pm: Add a 'UNITCHECK' section to override 
+	'_parse_texi_regex'.
+
+2017-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/automatic_nodes.t: Use the "Texinfo::ModulePath" module.
+
+2017-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS/MiscXS.xs,
+	* tp/Texinfo/MiscXS/miscxs.c (xs_process_text): New function.
+	* tp/Texinfo/Convert/Plaintext.pm: Add a 'UNITCHECK' section to 
+	use 'Texinfo::MiscXS::process_text' inside '_process_text' function.
+
+2016-12-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS/miscxs.c (xs_abort_empty_line)
+	(xs_merge_text): Use 'bytes_to_utf8' instead of calling 
+	'sv_utf8_upgrade'.  The latter appears to cause strange results 
+	under perl 5.10.1 (possibly involving the value of $1), and 
+	there is a warning about using 'sv_utf8_upgrade' in the perlguts
+	man page.
+	* tp/Texinfo/MiscXS/MiscXS.xs (xs_abort_empty_line): Check
+	if an argument is defined with SvOK.
+
+2016-12-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac,
+	* tp/Texinfo/MiscXS/configure.ac: Use 'test -n' instead of
+	'test -v' for better portability.  Clear another cache variable 
+	used internally by autoconf.
+
+2016-12-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS/miscxs.c (xs_merge_text, xs_abort_empty_line):
+	Use 'av_len' instead of 'av_top_index' for compatibility with 
+	older versions of Perl.
+
+2016-12-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* configure.ac: If XS modules are enabled, configure in 
+	tp/Texinfo/MiscXS directory.
+	* autogen.sh: Run autoreconf in MiscXS directory.
+
+2016-12-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/fail.pl: Change path given for 
+	TestXS module so that it will be found when source is configured
+	for an out-of-source build.
+	* tp/Makefile.am (SUBDIRS, DIST_SUBDIRS): List MiscXS.pm and 
+	MiscXS subdirectory.
+
+2016-12-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/TestXS.pm: Use 
+	Texinfo::XSLoader module.
+	* configure.ac: Change path passed with "-I" to perl so 
+	Texinfo::XSLoader module can be found.
+
+2016-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert): Don't use method 
+	call syntax for recursive calls.
+	* tp/DebugTexinfo/DebugCount.pm: Remove, as it isn't used much.
+	* doc/texinfo.texi (Customization Variables and Options) 
+	<TEXINFO_OUTPUT_FORMAT>: Remove mention of
+	'debugcount'.
+	* tp/t/test_count.t: Delete test.
+	* tp/t/test_utils.pl: Don't use "DebugTexinfo::DebugCount" 
+	module.
+
+2016-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (whole file): Use assignment from @_
+	for subroutine arguments instead of "shift".  This shortens the
+	code and may be slightly more efficient.
+
+2016-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS/miscxs.c (merge_text): Call C function
+	'xs_abort_empty_line' directly instead of going through Perl 
+	subroutine call infrastructure.
+
+2016-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS/MiscXS.xs,
+	* tp/Texinfo/MiscXS/miscxs.c (abort_empty_line): New function.
+	* tp/Texinfo/Parser.pm: Add a 'UNITCHECK' section to override
+	'_abort_empty_line' with Texinfo::MiscXS::abort_empty_line.
+
+2016-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_convert): Remove some statements for 
+	debugging.  Shorten access to data structures by using 
+	variables.
+
+2016-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS/MiscXS.xs,
+	* tp/Texinfo/MiscXS/miscxs.c (merge_text): New function.
+	* tp/Texinfo/Parser.pm: Add a 'UNITCHECK' section to override
+	'_merge_text' with Texinfo::MiscXS::merge_text.
+	(_merge_text): Reorder a condition to make executing a regex
+	less likely.
+
+2016-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/protect_character_in_texinfo.t,
+	tp/t/reference_to_text_in_tree.t, tp/t/test_brace_count.t, 
+	tp/t/test_fill_gaps_in_sectioning.t, 
+	tp/t/test_is_content_empty.t,
+	tp/t/test_protect_hashchar_at_line_beginning.t: Use 
+	Texinfo::ModulePath.
+
+2016-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@menu> Check if parent
+	command is defined before using it as a hash key.
+
+2016-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/ModulePath.pm.in (init): Take extra argument 'updirs'
+	allowing to find 'top_srcdir' from the path of the currently
+	running Perl script.
+
+	* tp/t/test_sort.t, tp/t/accents.t, tp/t/automatic_menus.t, 
+	t/collect_spaces.t, tp/t/do_master_menu.t, tp/t/fix_texinfo.t, 
+	t/index_before_item.t, tp/t/nodenormalization.t: Use 
+	Texinfo::ModulePath module instead of adding directories to @INC
+	manually.
+
+2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/XSLoader (override): Check if source subroutine is
+	defined.
+
+2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS.pm: New file.
+	* tp/Texinfo/MiscXS/,
+	tp/Texinfo/MiscXS/configure.ac,
+	tp/Texinfo/MiscXS/Makefile.am,
+	tp/Texinfo/MiscXS/MiscXS.xs,
+	tp/Texinfo/MiscXS/miscxs.c,
+	tp/Texinfo/MiscXS/miscxs.h: New files.
+	* tp/Texinfo/ModulePath.pm.in: Add 'Texinfo/MiscXS' directory to
+	module search path.
+	* tp/Texinfo/XSLoader (override): New function.
+	* tp/Texinfo/Convert/Unicode.pm: Add 'UNITCHECK' section calling
+	'Texinfo::MiscXS::unicode_text' to override 'unicode_text'.
+
+2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_count_added): Inline call
+	to _add_lines_count and use variable to shorten expressions.
+
+2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/texi2any.pl: Set '$Texinfo::XSLoader::disable_XS'
+	instead of '$Texinfo::Paragraph::disable_XS'.
+
+2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_def): Avoid an unnecessary
+	call to 'parse_texi_line'.
+
+2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line) <@include> If in the tests, 
+	strip off leading directories when recording filename.  This is 
+	to be consistent with what is done in 'parse_texi_file'.
+
+2016-12-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_def): Instead of calling 'gdt' on 
+	inserted text, add an 'untranslated' element containing the 
+	untranslated text.
+	* tp/Texinfo/Convert/HTML.pm (_convert),
+	* tp/Texinfo/Convert/Text.pm (_convert):,
+	For 'untranslated' elements, call 'gdt' on the text.
+
+	This results in some changes to the test results:
+	  Strings not translated in the results from Text.pm, but they
+	weren't properly translated before either.
+	  Strings inside @copying translated according to document
+	language at time of @insertcopying, not time of @copying.
+
+
+2016-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (%def_map): Don't surround values 
+	containing spaces with braces.
+	* tp/Texinfo/Parser.pm (_parse_def): Always create a 'bracketed' 
+	element to contain prepended text.
+
+2016-12-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Text.pm (_convert): Delete disabled code 
+	used for debugging.
+
+2016-12-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (do_index_keys): Explicitly list the 
+	commands to get the text of index entries for.
+
+2016-12-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line): For some index commands
+	(e.g., @defcv), do not record the text of the index entry in
+	order to avoid needing to call Texinfo::Report::gdt, which
+	would be difficult to do in the XS rewrite.  Store
+	the current document language for the index entry.
+
+	* tp/Texinfo/Structuring.pm (do_index_keys): Fill in the text
+	of the index entries where missing.  Account for the $self 
+	argument being either a Texinfo::Parser object or a converter 
+	object.
+
+	* tp/Texinfo/Parser.pm, tp/Texinfo/Structuring.pm 
+	(_non_bracketed_contents): Move function to Structuring.pm.
+
+2016-12-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (merge_indices): Remove some 
+	commented-out statements for debugging.
+
+2016-12-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/XSLoader.pm,
+	* tp/Texinfo/Convert/Paragraph.pm: Move check for UTF-8 locale 
+	into Paragraph.pm, and allow it to pass strings into XSLoader.pm 
+	to print messages for debugging purposes.
+
+2016-12-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/XSLoader.pm: New file.
+	* tp/Texinfo/Convert/Paragraph.pm: Move all the code into 
+	XSLoader.pm.  This is intended to allow the code for loading XS 
+	modules to be shared among multiple modules.
+
+2016-12-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/terminal.c (terminal_switch_rendition): If turning off 
+	either foreground or background colour, call 
+	'terminal_default_colour' and reinstate any remaining foreground 
+	or background colour afterwards.  This fixes a bug where 
+	foreground colour might not be turned on again if background 
+	colour was turned off.
+
+2016-12-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert): Remove extra blank 
+	line inserted after a menu that has been created.
+
+2016-12-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): Call 'labels_information' 
+	to initialize some data for the first time.
+	(labels_information): Use presence of $self->{'targets'} to 
+	decide whether 'labels' has been initialized, because it is 
+	possible that 'labels' could be initialized to an empty hash, 
+	which would still test as false.
+
+2016-12-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc: Always use ':' as the path separator, 
+	instead of trying to check whether ';' should be used.  Ken Brown
+	reported that this check was broken due to an undefined variable.
+
+2016-12-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc: Use mkfifo instead of mknod for better 
+	portability.
+
+2016-12-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Report.pm (errors): Do not sort errors by line 
+	number, as this can cause error continuations to be separated 
+	from the first error line.
+
+2016-12-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/paragraph.t (two_words_dot_paren_dot, two_words_dot_dot)
+	(three_newlines): New tests.
+	* tp/t/plaintext.t (punctuation_in_sc): New test.
+
+2016-12-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/ParagraphNonXS.pm
+	(add_text): Do not remove end-of-sentence flag here, as adding 
+	more spaces later on would cancel the doubled space.
+	    When adding spaces, leave existing spaces untouched.
+	    Do not handle end-of-sentence disinhibition in this
+	function, as it is dealt with in '_add_next'.
+	    Use 'last_char' value from before calling '_add_next' to
+	decide whether we've reached the end of a sentence, along with a 
+	different regular expression.
+	(_add_next): Remove any backspace marker characters, not just 
+	the last one.
+
+	These changes are intended to match the implementation under 
+	tp/Texinfo/Convert/XSParagraph.
+
+2016-11-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (_do_index_keys, do_index_keys): 
+	Rename, and remove second argument.
+	* tp/texi2any.pl: Call 'do_index_keys' so that the data set in 
+	this function, for example the 'in_code' value on index entries, 
+	will be set in case 'do_index_keys' is not called again.
+
+2016-11-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/ModulePath.pm.in: Correct a condition.
+
+2016-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_expand_macro_arguments, _parse_texi):
+	Treat form feed as other whitespace when parsing macro usage.
+
+2016-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (@obsolete_variables): Add 
+	'MACRO_BODY_IGNORES_LEADING_SPACE'.
+	(@variable_string_settables): Remove the same.
+
+	* tp/Texinfo/Parser.pm (%default_customization_values): Remove 
+	'MACRO_BODY_IGNORES_LEADING_SPACE'.
+	(_strip_macrobody_leading_space): Remove function.
+	* tp/t/60macro.t (leading_spaces_ignore): Remove test.
+
+	* doc/texinfo.texi (Other Customization Variables): Remove 
+	mention of this variable.
+
+	The 'MACRO_BODY_IGNORES_LEADING_SPACE' variable attempted to
+	match a failing of the implementation of macros in texinfo.tex
+	where spaces at the start of a line could be ignored, but it 
+	didn't match it perfectly: specifically, a macro used inside
+	a command like @example where the catcode of space had been 
+	changed didn't have leading spaces skipped.
+
+2016-11-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_macro_command_line): Permit _ in 
+	macro name.
+
+2016-11-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_special_misc_command) <@set>: 
+	Treat form feed characters the same as any other whitespace.
+
+2016-11-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): Supply 'contents' and 
+	'parent' for empty @value element.
+	* tp/Texinfo/Report.pm (_substitute_element_array): Add a case
+	for values not defined.
+
+2016-11-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/test_brace_count.t: Disable some tests.
+
+2016-11-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (_count_opened_tree_braces): Don't
+	check for parentheses in the arguments or contents when 
+	balancing parentheses.
+	(parse_node_manual): If parentheses do not balance, consider the 
+	whole argument to be the node name.
+
+2016-11-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_abort_empty_line): Include element type
+	in "ABORT EMPTY" debugging message.
+	(_parse_node_manual): Update comment.
+	(_parse_texi): Remove unnecessary deletion of 'normalized'
+	value.
+	* tp/Texinfo/Structuring.pm (nodes_tree): Create a new parser 
+	object to parse the "TOP_NODE_UP" string.
+
+2016-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (@example): Add missing ) after @pxref.
+	(@cartouche): Make example and output match.
+	(@table): Remove superfluous closing quote (`indicating'' to 
+	`indicating').
+	(Internationalization): Change the word "yourself" to "the one".
+	(@documentlanguage): Add missing closing quote.
+	(Testing for Texinfo Commands): Change "consider true X" to
+	"consider X to be true".
+	(Format with texi2dvi): Add missing ) after @pxref.
+	(Invoking texi2any): Change "texi2any accept" to "texi2any 
+	accepts".
+	(HTML Translation): Add missing ) after @pxref.
+
+	All reports by Wensheng Xie <xiewensheng@gmail.com>.
+
+2016-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Top): In @detailmenu for Info format 
+	description, refer to nodes with their names instead of shorter 
+	labels.  This is so that, for example, "info texinfo printindex"
+	goes to the index entry for "printindex" instead of the
+	"Info Format Printindex" node.
+	(Other Customization Variables): Remove 
+	'TEXINFO_COLUMN_FOR_DESCRIPTION' and 'indent_menu_descriptions'.
+
+2016-11-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Delay node name normalization until after parser is finished.
+
+	* tp/Texinfo/Common.pm (parse_node_manual): Do not record 
+	'normalized' value in return value.
+	(%default_parser_state_configuration): Add array value 'targets'.
+
+	* tp/Texinfo/Convert/HTML.pm (_parse_node_and_warn_external):
+	Call 'normalize_node' and set 'normalized' value on return value.
+
+	* tp/Texinfo/Parser.pm
+	(_register_label): Store target in 'targets' array, instead
+	of in 'labels' hash.  Don't do any error checking.
+	(labels_information): If 'labels' hash is not already set on 
+	parser object, generate it from the 'targets' array.  Check for 
+	empty and duplicate node names.  Create 'nodes' array.
+	(_check_empty_node): Remove check for empty node name after
+	expansion.
+
+	(_end_line) <@float, @node>: Always call _register_label, with
+	less error checking.  Do not record node in 'nodes' array.
+
+	* tp/Texinfo/Transformations.pm (_new_node): Set 'normalized'
+	for the new node that is being created, and store it in the
+	'labels' hash.
+	* tp/Texinfo/Structuring.pm (nodes_tree)
+	(associate_internal_references, new_node_menu_entry): Set 
+	'normalized' values on tree elements.
+
+	* tp/t/automatic_nodes.t: Add several calls to 
+	'associate_internal_references'.
+	(index entry reassociated duplicate node ignored): Disable test.
+
+2016-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (create_virtual_index): Split function out from
+	'info_virtual_index'.
+	* info/info.c (virtual_index_p): New variable.
+	(long_options): New option "--virtual-index".
+	(main): If --virtual-index given, then call create_virtual_index
+	and output the result, either in an interactive session or to
+	an output file.
+
+2016-11-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_register_extra_menu_entry_information):
+	Delete 'normalized' value of 'menu_entry_node' hash.
+	(_enter_menu_entry_node): Add menu entry to 'internal_references'
+	array.
+	* tp/Texinfo/Structuring.pm (associate_internal_references): 
+	Check for menu entries in the 'internal_references' array
+	and set 'normalized' on them.  Shorten code by storing a 
+	reference in a variable.
+	* t/automatic_menus.t,  t/do_master_menu.t: Call 
+	'associate_internal_references' in order to have the 'normalized'
+	values set.
+
+2016-11-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_register_label): Remove exemption for
+	recording 'normalized' names for floats.  Reverses change on
+	2016-11-01.
+
+2016-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Report.pm (errors): Sort the errors by filename and 
+	line number.
+
+2016-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <cross-reference commands>:
+	Don't record 'normalized' for @inforef, and for any reference 
+	that is not recorded in the 'internal_references' array.
+
+2016-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <cross-reference commands>:
+	Don't record 'normalized' value on command if cross-reference is
+	to another manual.
+	(_check_empty_node): Check that 'normalized' value is defined.
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert): Call normalize_node
+	to compensate.
+
+2016-11-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/DocBook.pm (_convert) <xref commands>: 
+	Instead of using 'normalized' value to see if the 
+	cross-reference refers to the "Top" node, convert the first 
+	argument to the command (into DocBook) and check if the 
+	resulting string is "Top".  Later on in function, re-use this
+	value for the contents of the <link> element.
+
+2016-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (associate_internal_references): 
+	Remove unused arguments.
+
+2016-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/ModulePath.pm.in: Set $top_builddir from 
+	$top_srcdir as well as the other way around.  This is so that
+	XS modules can be used from tests run from the command-line.
+
+2016-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (output): Check for existence of a 
+	string before testing equality.
+
+2016-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Experimental change to reduce use of normalized labels.
+
+	* tp/Texinfo/Parser.pm (_register_label): For @float's only,
+	do not save the normalized HTML target name.  (This does not
+	gain anything at the moment because the normalized name is still
+	calculated in Parser.pm.)
+	* tp/Texinfo/Structuring.pm (number_floats): Check that 
+	'node_content' value exists for float instead of 'normalized'.
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert) <@float>,
+	* tp/Texinfo/Convert/DocBook.pm (_convert) <@float>: Call
+	Texinfo::Convert::NodeNameNormalization::normalize_node to 
+	compensate for loss of 'normalized' value.
+	* tp/Texinfo/Convert/HTML.pm (_node_id_file),
+	* tp/Texinfo/Convert/Converter.pm (_node_filename): Fall back to
+	use 'node_content' if 'normalized' is not available.
+
+2016-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (_get_target, command_text)
+	(_node_id_file): Comments added or changed.
+
+2016-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* configure.ac (TEXINFO_DTD_VERSION): Bump version to 6.3dev.
+	Although the DTD hasn't changed, the meaning has due to change
+	in 'type' attribute of 'float' element on 2016-10-16.
+	* util/texinfo.dtd: Add 2016 copyright year.
+
+2016-10-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm,
+	* tp/Texinfo/Transformations.pm
+	(fill_gaps_in_sectioning, insert_nodes_for_sectioning_commands)
+	(add_node_menu_if_missing, complete_node_menu)
+	(complete_tree_nodes_menus, new_master_menu, regenerate_master_menu)
+	(menu_to_simple_menu, set_menus_to_simple_menu): Move some 
+	less-used functions out into a new file, Transformations.pm.
+
+	* tp/Texinfo/Structuring.pm,
+	(_new_block_command, new_block_command): Rename.
+	(_new_node_menu_entry, new_node_menu_entry): Rename.
+	(add_missing_menus): Remove, as it isn't used anywhere.
+
+	* Pod-Simple-Texinfo/pod2texi.pl: Call functions in their new 
+	locations.
+
+2016-10-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (nodes_tree): Use a hash reference
+	that is inside a variable for brevity.
+
+2016-10-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm: Rename 'ids' hash to 'seen_ids'
+	and use 1 as its values instead of references to tree elements.
+
+2016-10-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm
+	(_new_sectioning_command_target): Do not set 'id' on target 
+	record: only set 'target'.  Do not set 'contents_id' or
+	'shortcontents_id'.
+	(_prepare_special_elements): Don't call 
+	Texinfo::Config::special_element_target_file_name with $id
+	argument, and don't set 'id' on target record.
+	(_prepare_index_entries): Don't set 'id' on target record 
+	separately from 'target'.
+	(_prepare_contents_element): Don't set 'id' on target records.
+	Don't call Texinfo::Config::special_element_target_file_name
+	with 'id' argument.
+	(_get_target): Comment updated.
+
+	(_node_id_file): Don't call Texinfo::Config::node_target_name with
+	$id argument, and don't include $id in return value.
+	(_set_root_commands_targets_node_files): Don't get $id from 
+	return value of '_node_id_file', and don't set 'id' on target 
+	records for the "root commands".
+
+	(command_target): Check if the element has an 'associated_node',
+	and if so, use it instead.
+	(command_id): Use 'target' value on target record instead of 'id'.
+	(command_contents_id): Remove function.
+	(_default_contents): Call command_contents_target instead.
+	(_element_direction): Do not accept 'id' as the $type argument.
+	(_convert_printindex_command): Pass 'target' to 
+	_element_direction instead of 'id'.
+
+	(_prepare_footnotes): Previously, in the 'targets' record for 
+	the footnote, the anchor name for the footnote was in 'target' 
+	and the anchor name for linking back to the main text was in 
+	'id'.  Now, only store the anchor name for the footnote itself.
+	(_convert_footnote_command): Get the anchor name for linking 
+	back to the main text from the anchor name for the footnote.
+
+	* tp/t/init/only_toc_out.init (special_element_target_file_name):
+	Remove '$id' from both argument list and return value.
+
+2016-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (_get_target, command_href)
+	(label_command, _node_id_file): Comments added.
+
+2016-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert),
+	* tp/Texinfo/Convert/HTML.pm (convert_heading_command):
+	Call 'menu_of_node' with first argument undef instead of 
+	creating a new Texinfo::Parser object.
+
+2016-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (_new_node_menu_entry): Set 
+	'menu_entry_node' and 'menu_entry_separator' extra values on 
+	menu entry directly instead of calling 
+	'Texinfo::Parser::_register_extra_menu_entry_information'.
+
+2016-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Reinstate change made on 2016-10-08 and reverted on 2016-10-23.
+
+	* tp/Texinfo/Parser.pm (_parse_texi): If 'menu' element is not 
+	directly under a "root element" (@node or sectioning), don't 
+	record it in the list of menus for that node, and issue a warning.
+
+2016-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/texi2any.pl: Remove code for calling 'add_missing_menus' if 
+	'validatemenus' is off.  It can add menus incorrectly if all the 
+	menus in the node are not recorded, which could be the case
+	for menus incorrectly nested inside another command.
+
+	* tp/Texinfo/Convert/Structuring.pm (add_node_menu_if_missing)
+	Split out new function 'menu_of_node'.
+
+	* tp/Texinfo/Convert/HTML.pm
+	(_convert_menu_command): Record that a menu has been seen in the
+	current node.
+	(_convert_heading_command): If no menu has been seen in the 
+	node, call 'menu_of_node' and convert the result.
+
+	* tp/Texinfo/Convert/Plaintext.pm
+	(_menu): Record that a menu has been seen in the current node.
+	(_convert): If no menu has been seen in the node, call 
+	menu_of_node and convert the result.
+
+	* tp/t/30sectioning.t (no_menu): Test 'info' format instead of
+	'plaintext'.
+
+2016-10-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (count_bytes): Call throughout
+	without using method call syntax.
+	(_align_lines): Remove some commented-out lines of code.
+
+2016-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (nodes_tree): If 'validatemenus' is 
+	not on, do not complain about a node lacking a menu item if that 
+	node has no menu at all.  If 'validatemenus' is not on, in order 
+	to complain about the menu structure not matching the section 
+	structure, the nodes must be associated with sections and 
+	contain menus.  Some comments changed.
+
+2016-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (nodes_tree): Only check whether 
+	node is in a menu if 'validatemenus' is on.
+
+2016-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/30sectioning.t (no_menu): New test.
+
+2016-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/Makefile.am (long-checks, long-checks-all): Remove.
+	(tex-html-checks tex-html-check): Remove use of LONG_TESTS.
+	(long_tests): Add contents to 'base_tests' variable and 
+	remove.
+	(copy-long): Remove.
+	(Makefile.onetst, DIST_SUBDIRS, clean-tests): Remove use of 
+	'long_tests' variable.
+	* tp/tests/README: Remove discussion of "long tests".
+
+	* tp/Makefile.am (long-checks): Remove target.
+	* tp/maintain/regenerate_cmd_tests.sh: Remove handling of "long 
+	tests".
+
+2016-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): Record menu regardless of 
+	where it occurred.  (Revert change on 2016-10-08 in order to 
+	avoid failure of "long tests" under tp/tests.)
+
+2016-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (sectioning_structure): Use 'next' 
+	instead of putting whole body of loop within a condition.  
+	Change comment at start of function.  Delete some code used for 
+	debugging.
+
+2016-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (_next_content, _collect_structure):
+	Remove unused functions.
+
+2016-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (_check_menu_entry): Remove 
+	'$check_menu_entries' argument, and don't return anything.  
+	Callers updated.
+	(nodes_tree): Some comments changed.
+
+2016-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_float_type): Convert type of
+	float with Texinfo::Convert::Texinfo instead of with 
+	Texinfo::Convert::NodeNameNormalization.
+	* tp/Texinfo/Parser.pm (_end_line) <@listoffloats>: Remove 
+	commented-out code.
+
+2016-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Info.pm (output) <anchors and nodes>,
+	(_node): Don't refer to 'normalized' value on an element defining an
+	xref target; use 'node_content' instead.
+	(output) <anchors and nodes>: Convert the anchor with _node_line
+	to check for duplicates, instead of using the 'normalized' value.
+	* tp/Texinfo/Convert/Plaintext.pm:
+	Remove "use Texinfo::Convert::NodeNameNormalization".
+	(_footnotes): Don't set 'normalized' on the elements we create
+	representing footnote anchors.
+	(_convert) <float>: Use 'node_content' instead of 'normalized'
+	to check if this float should be an anchor.
+
+2016-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert): For 'float'
+	elements, change check on 'content' value back to check on 
+	'normalized' value on 'type' hash.
+
+2016-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_align_lines, _convert):
+	Remove some commented-out lines for debugging purposes.  Reduce 
+	references to 'normalized' values on elements.  For 'float' 
+	elements, use the 'content' key instead.
+
+2016-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (get_initial_file): Don't fall back to the dir node.
+	(main): Quit if there are no nodes to show.
+	* info/t/dir-dangling-entry.sh: Update to match this new behaviour.
+
+2016-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (parse_top_node_line):  Check if the
+	buffer ends before the end of the first line.  Out-of-bounds
+	read reported by Hanno Böck.  Some comments changed.
+	* info/nodes.c (node_set_body_start): Don't try to advance the
+	'body_start' past the end of the first line of the node: it is 
+	not necessary, and the current code breaks if the buffer ends 
+	during the first line.
+
+2016-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/man.c (xrefs_of_manpage): Allow SGR sequence in manpage
+	name, and fix code checking for two-character manpage section.
+
+2016-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* Texinfo/Parser.pm (_next_bracketed_or_word): When returning
+	a bracketed element, change the type of the in-tree element
+	from 'bracketed' to 'bracketed_def_content' instead of creating
+	a new 'bracketed_def_content' with the same contents.  Do not
+	pass 'empty_space_at_end_def_bracketed' to _isolate_last_space.
+
+	* Texinfo/Convert/Texinfo.pm (convert): Handle 
+	'bracketed_def_content' the same as 'bracketed'.
+
+	* Texinfo/Convert/DocBook.pm (%ignored_types),
+	* Texinfo/Convert/HTML.pm (%ignored_types),
+	* Texinfo/Convert/NodeNameNormalization.pm (%ignored_types),
+	* Texinfo/Convert/Plaintext.pm (%ignored_types),
+	* Texinfo/Convert/Text.pm (%ignored_types),
+	* Texinfo/Convert/TextContent.pm (%ignored_types):
+	Remove 'empty_spaces_at_end_def_bracketed'.
+
+2016-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/man.c (find_reference_section): Remove this unused function.
+	(xrefs_of_manpage): Allow only two characters in manpage section.
+
+2016-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line) <def commands>: Remove parent 
+	values pointing to 'root_line' element returned from 'gdt'.
+
+2016-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): Include 'parent' on 
+	'menu_star' element.
+
+2016-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): If 'menu' element is not 
+	directly under a "root element" (@node or sectioning), don't record
+	it in the list of menus for that node, and issue a warning.
+
+2016-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm
+	(indent_menu_descriptions, indent_one_menu_descriptions):
+	Remove.  This feature has not worked in any released version of 
+	Texinfo due to calling 'indent_menu_descriptions' (itself) 
+	instead of 'indent_one_menu_descriptions'.  This also simplifies
+	matters, as the 'menus' list for each node is not used anywhere
+	else in the modules under tp/Texinfo/Convert/.
+	* tp/texi2any.pl: Don't call indent_menu_descriptions if 
+	'indent_menu_descriptions' was present in TREE_TRANSFORMATIONS.
+	* tp/t/indent_menu_descriptions.t: Remove.
+	* doc/texinfo.texi (Other Customization Variables) 
+	<TREE_TRANSFORMATIONS>: Remove mention of 'indent_menu_descriptions'
+	feature.
+	<TEXINFO_COLUMN_FOR_DESCRIPTION>: Remove mention.
+	* tp/Texinfo/Converter/Converter.pm (%all_converters_defaults),
+	* tp/Texinfo/Converter/Common.pm (@variable_string_settables):
+	Remove 'TEXINFO_COLUMN_FOR_DESCRIPTION'.
+
+2016-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (build_tag_table): Check if node name in tag table
+	is empty (possible for malformed input).  Crash reported
+	by Hanno Böck.
+
+2016-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/t/XSParagraph.t: Remove unused 
+	file.
+	* tp/tests/htmlxref-only_split/Makefile.am,
+	* tp/tests/Makefile.am: Remove reference to removed .texinfo 
+	subdirectory.
+
+2016-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm,
+	* tp/Texinfo/Convert/Plaintext.pm,
+	* tp/Texinfo/Structuring.pm: Remove 'use locale' directives for 
+	older Perl versions.  There were subtle differences,
+	for example whether German eszet uppercased to "SS" or
+	itself.  It would also need the locale to be set and restored 
+	everywhere it mattered.
+	* tp/Texinfo/Structuring.pm (_do_index_strings): Call 
+	utf8::upgrade on the index entry sort key.
+
+2016-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm: Remove commented out "use POSIX" 
+	declaration.
+	* tp/Texinfo/Report.pm (gdt): Remove commented-out calls to 
+	POSIX::setlocale.
+
+2016-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm,
+	* tp/Texinfo/Convert/Plaintext.pm,
+	* tp/Texinfo/Structuring.pm: Test perl version and only
+	"use feature 'unicode_strings'" if perl version is at
+	least 5.012.  Otherwise, "use locale;" and try to set a
+	Latin-1 locale.
+
+2016-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Fonts): More tests of fonts.  Add 
+	section testing glyph commands.
+
+2016-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Remove note about updating texi2html tests, 
+	and note about building standalone modules for CPAN.  Move
+	advice on updating web pages together.
+
+2016-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac,
+	tp/Texinfo/Convert/XSParagraph/TestXS.pm: Change version number 
+	to "0" as (a) alphabetic characters in the version don't work 
+	here, and (b) this saves us having to update the version here.
+	* README-hacking: Remove note to update the version number in 
+	these two files.
+
+2016-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* configure.ac, tp/Texinfo/Convert/XSParagraph/configure.ac,
+	tp/Texinfo/Convert/XSParagraph/TestXS.pm: Bump version to 6.3dev.
+	Remove "dist-xz" option for testing.
+
+2016-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac, configure.ac
+	(PERL_EXT_CC): New variable to override compiler used to build 
+	XS extension.
+
+2016-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Customization Variables and Options): Remove 
+	index entries for some customization variables with index 
+	entries duplicated elsewhere.  These variables are 
+	'documentlanguage', 'HEADERS', and 'SHOW_MENU'.
+	(Other Customization Variables): Add index entry for 'HEADERS'.
+
+2016-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (indices_information): Do not return
+	'merged_indices' hash, as this information is not used anywhere.  
+	Callers updated.
+	* tp/t/test_utils.pl: Don't use 'merged_indices' hash.
+
+2016-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Report.pm (line_error): Remove 'error continuation' 
+	functionality.  Callers updated.  This has few user-visible 
+	changes, except that the continuation lines will be printed for
+	'-c NO_WARN=1', and that processing may be aborted sooner when
+	'ERROR_LIMIT' is used due to multi-line errors counting as more
+	than one.
+	(gdt): Remove some commented-out statements for debugging.
+
+2016-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm,
+	* tp/Texinfo/Convert/Plaintext.pm,
+	* tp/Texinfo/Structuring.pm: Add a "use feature 'unicode_strings'"
+	directive.
+
+2016-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_line_command_args) <@synindex>: 
+	Update $self->{'merged_indices'} for any indices already merged
+	into the source index.
+
+2016-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_line_command_args) <@synindex>:
+	Remove 'contained_indices' hash when an index is merged into 
+	another index.  This simplifies the result in the following 
+	situation: Index B is merged into index A, then index C is 
+	merged into index B.  Previously, index C would not be in the 
+	'contained_indices' of index B: it would only be in those of 
+	index A.  Had index C been merged into index B first, index C 
+	would have been recorded as being in both.  Eliminating the 
+	'contained_indices' hash on the intermediate indices removes the 
+	dependency on the order that the '@synindex' commands occurred.
+
+2016-09-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_line_command_args): Add a comma 
+	to a message.
+
+2016-09-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): Don't store the line 
+	number for a command defined with @definfoenclose, even if it 
+	was previously a built-in command.
+	(_parse_line_command_args) <@definfoenclose>: Add a comment 
+	warning about redefining a built-in command.
+
+2016-09-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Documentlanguages.pm: Regenerate by running
+	maintain/regenerate_documentlanguages.pl.
+	* README-hacking: Mention running this command for a new 
+	release.
+
+2016-09-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_check_contents_location): Remove unused 
+	function.
+
+2016-09-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_special_misc_command): Change
+	"a @-command" to "an @-command" in a message.
+	(_parse_line_command_args): Comment changed.
+
+2016-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_compute_spaces_align_line):
+	Change a ">" to a ">=" to avoid the possibility of a negative 
+	return value when $line_width equals $max_column exactly.  Error 
+	message "Negative repeat count does nothing" reported by
+	Paul Eggert.
+
+2016-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (info_virtual_index): Put text within a
+	call to gettext so that it can be translated.
+
+2016-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\definefontsetatsize): New macro to reduce 
+	repetition in \textfonts, \titlefonts etc.
+	(\reducedrm): Comment changed.
+
+2016-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\ifrmisbold): Define with \newif.
+	(\switchtolsize, \switchtolllsize): Define for each font size.  
+	If \ifrmisbold is true, override \rmfont with \bffont.  This 
+	guarantees that the roman font will be overridden, instead of 
+	having to call \rmisbold everywhere large font sizes are used.
+	It also ensures that superscripts are in bold for large font 
+	sizes when style commands are nested.
+	(\textfonts, \titlefonts, \chapfonts, \secfonts, \subsecfonts)
+	(\reducedfonts and \smallfonts, \smallerfonts \textfonts)
+	(\titlefonts, \chapfonts, \secfonts): Specify \rmisboldtrue or
+	\rmisboldfalse.
+	(\rmisbold): Remove macro, and replace with \rm everywhere it is 
+	used.
+	(\selectfonts): Use \switchtolllsize, \switchtolsize instead.
+
+2016-09-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\assignfonts): New macro, in order to reduce
+	duplicated code in \textfonts, \titlefonts, \chapfonts, 
+	\secfonts, \subsecfonts, \reducedfonts and \smallfonts, 
+	(\smallerfonts \textfonts, \titlefonts, \chapfonts, \secfonts)
+	(\subsecfonts, \reducedfonts, \smallfonts, \smallerfonts):
+	Use \assignfonts.
+	(\ttslfont): Assign correctly (previous patch called it \ttfontsl
+	by mistake).
+	(\df): Refer to \ttslfont.
+
+2016-09-17  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex
+	(\latonechardefs, \latninechardefs)
+	(\lattwochardefs, \unicodechardefs):
+	Add missing braces for symbol insertion commands with no arguments.
+
+2016-09-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex
+	(\tenrm, \tenit, \tensl, \tenbf, \tentt, \tensf, \teni)
+	(\tensy, \tenttsl):
+	Rename as \rmfont, \itfont, \slfont, \bffont, \ttfont, \sffont,
+	\ifont, \syfont and \ttslfont respectively, because these fonts 
+	are not always ten points in size.  No functional changes intended.
+	(\setfontstyle, \selectfonts, \rmisbold)
+	(\rm, \it, \sl, \bf, \tt, \sf, \ttsl): Move after section on PDF 
+	CMaps and font definitions so that \setfontstyle is closer to 
+	the definition of the fonts it uses, and \rm etc. are closer to 
+	\textfonts etc. which use them.
+	(\li): Remove synonym of \sf.
+	(\shortcontrm, \shortcontbf, \shortcontsl, \shortconttt): Move 
+	to be with the other fonts defined with \setfont.
+
+2016-09-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Non-existent target): New example 
+	of an @xref.
+	(Fonts): New test of the fonts used.
+
+2016-09-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\|): Remove definition for changebars, as it is
+	not used, doesn't work for multiple lines, and isn't supported 
+	in texi2any.
+
+2016-09-11  Gavin Smith  <gavinsmith0123@gmail.com>
+	
+	* doc/texinfo.tex: Remove 'arch-tag' marker at end of file.
+	(Added on 2003-10-09 for use by Miles Bader in arch mirror of 
+	emacs sources.)
+
 2016-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	6.3 release.

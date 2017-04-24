@@ -23718,7 +23718,7 @@ Top
 * Menu:
 
 *  { }::
-*     ! 
+*     !
  .  . ? @::
 * @ { } \\ #::
 * LaTeX TeX * , (C) ... ...::
@@ -23935,34 +23935,34 @@ in r SC *str* t VAR dfn i:: *note env code option samp command file C-x
 
 Tag Table:
 Node: Top27
-Node: { }839
+Node: { }838
 Node:     !
-. . ? @918
-Node: @ { } \\ #1023
-Node: LaTeX TeX * , (C) ... ...1142
-Node: == error-> Euro ! ==> -1303
-Node: >= <= ->1459
-Node: a o -!- # -| ? (R)1578
-Node: => o a b a sunny day aa1717
-Node: AA ae oe AE OE /o /O ss /l /L D d TH th1897
-Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2124
-Node: e. e( e_ .e e< j ee[2338
-Node: i E=` C\',2496
-Node: `` \'\' ` \' ,, ,2613
-Node: << >> << >> < >2735
-Node: `` \'\' --- -- ` \'2866
-Node: AAA (fff) AAA BBB2994
-Node: CCC (rrr) CCC DDD3134
-Node: the someone <someone@somewher> <no_explain@there>3307
-Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]3607
-Node:  @ {} . 3957
-Node: cite asis in @w b in r SC *str* t VAR dfn i4160
-Node: env code option samp command file C-x <ESC>4404
-Node: 8.27in4666
-Node: sansserif slanted4800
-Node: indicateurl4924
-Node: _{g}H 3^{rd}5046
-Node: <http://somewhere_aaa> text (url) ls5185
+. . ? @917
+Node: @ { } \\ #1022
+Node: LaTeX TeX * , (C) ... ...1141
+Node: == error-> Euro ! ==> -1302
+Node: >= <= ->1458
+Node: a o -!- # -| ? (R)1577
+Node: => o a b a sunny day aa1716
+Node: AA ae oe AE OE /o /O ss /l /L D d TH th1896
+Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2123
+Node: e. e( e_ .e e< j ee[2337
+Node: i E=` C\',2495
+Node: `` \'\' ` \' ,, ,2612
+Node: << >> << >> < >2734
+Node: `` \'\' --- -- ` \'2865
+Node: AAA (fff) AAA BBB2993
+Node: CCC (rrr) CCC DDD3133
+Node: the someone <someone@somewher> <no_explain@there>3306
+Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]3606
+Node:  @ {} . 3956
+Node: cite asis in @w b in r SC *str* t VAR dfn i4159
+Node: env code option samp command file C-x <ESC>4403
+Node: 8.27in4665
+Node: sansserif slanted4799
+Node: indicateurl4923
+Node: _{g}H 3^{rd}5045
+Node: <http://somewhere_aaa> text (url) ls5184
 
 End Tag Table
 ';

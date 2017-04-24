@@ -81,6 +81,17 @@ typedef struct {
                            Used by @flushleft and @flushright. */
     int french_spacing; /* Only one space, not two, after a full stop. */
     int double_width_no_break; /* No line break between double width chars. */
+
+    /* No wrapping of lines and spaces are kept as-is. */
+    int unfilled;
+
+    /* Do not terminate with a final newline. */
+    int no_final_newline;
+
+    /* Terminate with any trailing space. */
+    int add_final_space;
+
+    int in_use;
 } PARAGRAPH;
 
 static PARAGRAPH state;
@@ -286,7 +297,6 @@ xspara_init (void)
   if (1)
     {
 failure:
-      fprintf (stderr, "Couldn't set UTF-8 character type in locale.\n");
       return 0; /* failure */
     }
   else
@@ -302,36 +312,85 @@ success: ;
     }
 }
 
+/* Array for storing paragraph states which aren't in use. */
+static PARAGRAPH *state_array;
+static int state_array_size;
+
+/* The slot in state_array for saving the current state. */
+static int current_state;
+
+static void
+xspara__switch_state (int id)
+{
+  if (current_state == id)
+    return;
+  if (current_state != -1)
+    memcpy (&state_array[current_state], &state, sizeof (PARAGRAPH));
+
+  memcpy (&state, &state_array[id], sizeof (PARAGRAPH));
+  current_state = id;
+}
+
 int
 xspara_new (HV *conf)
 {
+  int i;
+
   dTHX; /* Perl boiler plate */
 
-  /* Avoid leaking the memory used last time. */
-  TEXT saved_space = state.space, saved_word = state.word;
+  TEXT saved_space, saved_word;
 
-  /* Default values for formatter, reusing storage. */
+  /* Find an unused slot in state_array */
+  for (i = 0; i < state_array_size; i++)
+    {
+      if (!state_array[i].in_use)
+        break;
+    }
+  if (i == state_array_size)
+    {
+      state_array = realloc (state_array,
+                             (state_array_size += 10) * sizeof (PARAGRAPH));
+      memset (state_array + i, 0, 10 * sizeof (PARAGRAPH));
+    }
+
+  state_array[i].in_use = 1;
+  xspara__switch_state (i);
+
+  /* Zero formatter, reusing storage. */
+  saved_space = state.space;
+  saved_word = state.word;
   memset (&state, 0, sizeof (state));
   state.space = saved_space;
   state.word = saved_word;
   state.space.end = state.word.end = 0;
+  state.in_use = 1;
 
+  /* Default values. */
   state.max = 72;
   state.indent_length_next = -1; /* Special value meaning undefined. */
   state.end_sentence = -2; /* Special value meaning undefined. */
   state.last_letter = L'\0';
 
   if (conf)
-    xspara_set_state (conf);
+    xspara_init_state (conf);
 
-  /* This could be a paragraph ID. */
-  return 0;
+  /* The paragraph ID. */
+  return i;
 }
 
 
+/* SV is a blessed reference to an integer containing the paragraph ID. */
+void
+xspara_set_state (SV *sv)
+{
+  dTHX;
+
+  xspara__switch_state (SvIV (sv));
+}
+
 /* Set the state internal to this C module from the Perl hash. */
 void
-xspara_set_state (HV *hash)
+xspara_init_state (HV *hash)
 {
 #define FETCH(key) hv_fetch (hash, key, strlen (key), 0)
 #define FETCH_INT(key,where) { val = FETCH(key); \
@@ -340,15 +399,6 @@ xspara_set_state (HV *hash)
   SV **val;
   
   dTHX; /* This is boilerplate for interacting with Perl. */
-
-  /* None of this is really needed, under the big assumption that
-     we only have one "paragraph" object going at once. */
-
-  /* If we did need it, the "paragraph" object could be an integer giving
-     an index into an array of PARAGRAPH objects. */
-
-  /* You might imagine we would have multiple paragraphs going at once for a 
-     footnote, but this appears not to happen.  */
 
   /* Fetch all these so they are set, and reset for each paragraph. */
   FETCH_INT("end_sentence", state.end_sentence);
@@ -367,6 +417,10 @@ xspara_set_state (HV *hash)
   FETCH_INT("ignore_columns", state.ignore_columns);
   FETCH_INT("keep_end_lines", state.keep_end_lines);
   FETCH_INT("frenchspacing", state.french_spacing);
+
+  FETCH_INT("unfilled", state.unfilled);
+  FETCH_INT("no_final_newline", state.no_final_newline);
+  FETCH_INT("add_final_space", state.add_final_space);
 
   val = FETCH("word");
   if (val)
@@ -499,8 +553,14 @@ xspara__add_pending_word (TEXT *result, int add_spaces)
       for (i = 0; i < state.indent_length - state.counter; i++)
         text_append (result, " ");
       state.counter = state.indent_length;
+
+      /* Do not output leading spaces after the indent, unless 'unfilled'
+         is on.  */
+      if (!state.unfilled)
+        state.space.end = 0;
     }
-  else if (state.space.end > 0)
+
+  if (state.space.end > 0)
     {
       text_append_n (result, state.space.text, state.space.end);
 
@@ -542,13 +602,21 @@ xspara_end (void)
   TEXT ret;
   text_init (&ret);
   state.end_line_count = 0;
-  xspara__add_pending_word (&ret, 0);
-  if (state.counter != 0)
+  xspara__add_pending_word (&ret, state.add_final_space);
+  if (!state.no_final_newline && state.counter != 0)
     {
       text_append (&ret, "\n");
       state.lines_counter++;
       state.end_line_count++;
     }
+
+  /* Now it's time to forget about the state. */
+  state_array[current_state].in_use = 0;
+  state.in_use = 0;
+
+  /* Don't do this so we can get the closing line counts. */
+  /* current_state = -1; */
+
   if (ret.text)
     return ret.text;
   else
@@ -607,6 +675,8 @@ xspara__add_next (TEXT *result, char *word, int word_len, int transparent)
     }
 
   text_append_n (&state.word, word, word_len);
+  if (word_len == 0 && word)
+    state.invisible_pending_word = 1;
 
   if (!transparent)
     {
@@ -638,18 +708,8 @@ xspara__add_next (TEXT *result, char *word, int word_len, int transparent)
   if (strchr (word, '\n'))
     {
       /* If there was a newline in the word we just added, put the entire
-         pending ouput in the results string, and start a new line.
-         TODO: Does line_counter get incremented properly in this 
-         circumstance? */
-      /* TODO: Could we just call _add_pending_word here? */
-      text_append_n (result, state.space.text, state.space.end);
-      state.space.end = 0;
-      state.space_counter = 0;
-      text_append_n (result, state.word.text, state.word.end);
-      state.word.end = 0;
-      state.word_counter = 0;
-      state.invisible_pending_word = 0;
-
+         pending ouput in the results string, and start a new line. */
+      xspara__add_pending_word (result, 0);
       xspara__end_line ();
     }
   else
@@ -850,14 +910,16 @@ xspara_add_text (char *text)
             }
           else /* protect_spaces off */
             {
+              int pending = state.invisible_pending_word;
               xspara__add_pending_word (&result, 0);
 
-              if (state.counter != 0)
+              if (state.counter != 0 || state.unfilled || pending)
                 {
                   /* If we are at the end of a sentence where two spaces
                      are required. */
                   if (state.end_sentence == 1
-                      && !state.french_spacing)
+                      && !state.french_spacing
+                      && !state.unfilled)
                     {
                       wchar_t q_char;
                       size_t q_len;
@@ -974,13 +1036,27 @@ xspara_add_text (char *text)
                   else /* Not at end of sentence. */
                     {
                       /* Only save the first space. */
-                      if (state.space_counter < 1)
+                      if (state.unfilled || state.space_counter < 1)
                         {
                           if (*p == '\n' || *p == '\r')
-                            text_append_n (&state.space, " ", 1);
+                            {
+                              if (!state.unfilled)
+                                {
+                                  text_append_n (&state.space, " ", 1);
+                                  state.space_counter++;
+                                }
+                              else if (*p == '\n')
+                                {
+                                  xspara__add_pending_word (&result, 0);
+                                  xspara__end_line ();
+                                  text_append (&result, "\n");
+                                }
+                            }
                           else
-                            text_append_n (&state.space, p, char_len);
-                          state.space_counter++;
+                            {
+                              text_append_n (&state.space, p, char_len);
+                              state.space_counter++;
+                            }
                         }
                     }
                 }
@@ -993,7 +1069,7 @@ xspara_add_text (char *text)
               xspara__cut_line (&result);
             }
 
-          if (*p == '\n' && state.keep_end_lines)
+          if (!state.unfilled && *p == '\n' && state.keep_end_lines)
             {
               xspara__end_line ();
               text_append (&result, "\n");
@@ -1043,7 +1119,7 @@ xspara_add_text (char *text)
               /* Now check if it is considered as an end of sentence, and
                  set state.end_sentence if it is. */
 
-              if (strchr (".?!", *p))
+              if (strchr (".?!", *p) && !state.unfilled)
                 {
                   /* Doesn't count if preceded by an upper-case letter. */
                   if (!iswupper (state.last_letter))

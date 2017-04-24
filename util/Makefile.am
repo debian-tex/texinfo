@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6399 2015-07-07 12:16:26Z gavin $
+# $Id: Makefile.am 7679 2017-03-05 14:17:08Z gavin $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -64,4 +64,11 @@ EXTRA_DIST = README detexinfo dir-example \
 
 DISTCLEANFILES = txixml2texi
 
-TESTS=tests/texi2dvi_helpversion.sh
+# Use 'texinfo.tex' from "$(top_srcdir)/doc"
+AM_TESTS_ENVIRONMENT = \
+  TEXINPUTS="$(top_srcdir)/doc$(PATH_SEPARATOR)$$TEXINPUTS"; \
+  export TEXINPUTS;
+
+TESTS= \
+  tests/texi2dvi_helpversion.sh \
+  tests/texi2dvi_empty_text.sh

@@ -1,19 +1,14 @@
 use strict;
 
-use Test::More;
-use File::Spec;
-BEGIN { plan tests => 11;
-        if (defined($ENV{'top_srcdir'})) {
-          unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
-          my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp', 'maintain');
-          unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'libintl-perl', 'lib'),
-                         File::Spec->catdir($lib_dir, 'lib', 'Unicode-EastAsianWidth', 'lib'),
-                         File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'));
-      }};
+BEGIN {
+  require Texinfo::ModulePath;
+  Texinfo::ModulePath::init(undef, undef, 'updirs' => 2);
+}
 
-use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
-use lib 'maintain/lib/libintl-perl/lib/';
-use lib 'maintain/lib/Text-Unidecode/lib/';
+use Test::More;
+
+BEGIN { plan tests => 7; }
+
 use Texinfo::Parser qw(parse_texi_text);
 use Texinfo::Common;
 
@@ -59,9 +54,12 @@ sub run_test($$$$)
   }
 }
 
-run_test('@code{(sdffsd)} other @code{(gg} ))', 1, 0, 'brace in code');
-run_test('@code{(sdffsd)) aaa}', 1, 0, 'too much braces');
-run_test(' aaa) @asis{)}  @code{( (}', 2, 0, 'more reopened');
-run_test(' aaa) @asis{}  @code{( (}', 2, 3, 'still open');
+# Note: these tests are disabled because the code doesn't look at
+# parentheses nested inside commands anymore.
+
+# run_test('@code{(sdffsd)} other @code{(gg} ))', 1, 0, 'brace in code');
+# run_test('@code{(sdffsd)) aaa}', 1, 0, 'too much braces');
+# run_test(' aaa) @asis{)}  @code{( (}', 2, 0, 'more reopened');
+# run_test(' aaa) @asis{}  @code{( (}', 2, 3, 'still open');
 
 

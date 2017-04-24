@@ -987,7 +987,7 @@ $result_errors{'no_element'} = [
     'line_nr' => 28,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   },
   {
     'error_line' => ':32: warning: entry for index `cp\' outside of any node

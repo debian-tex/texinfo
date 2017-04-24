@@ -274,13 +274,13 @@ $result_errors{'invalid_clickstyle'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':10: @clickstyle should only accept a @-command as argument, not ` something
+    'error_line' => ':10: @clickstyle should only accept an @-command as argument, not ` something
 \'
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => '@clickstyle should only accept a @-command as argument, not ` something
+    'text' => '@clickstyle should only accept an @-command as argument, not ` something
 \'',
     'type' => 'error'
   }

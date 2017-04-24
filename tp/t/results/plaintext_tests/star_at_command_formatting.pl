@@ -1487,23 +1487,23 @@ And now with * asis with space @asis:
 And end para.
 
      Example
-     Some text 
+     Some text
 
-     more text.  Even more text. 
+     more text.  Even more text.
       not at eol.
 
      Now followed by @ : followed
- 
-     And now followed by a space and @ : follow 
-  
-     And now followed by a space and @ and text: follow 
+      
+     And now followed by a space and @ : follow
+       
+     And now followed by a space and @ and text: follow
        text
-     Followed by empty asis and a space 
-     Followed by asis with space and a space  
-     And now with * empty @asis: 
+     Followed by empty asis and a space
+     Followed by asis with space and a space
+     And now with * empty @asis:
 
-     And now with * asis with space @asis: 
-  
+     And now with * asis with space @asis:
+
      And end para.
 
      Quotation Some text

@@ -289,7 +289,7 @@ $result_errors{'menu_entry_no_entry'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   }
 ];
 
@@ -300,7 +300,7 @@ $result_converted{'plaintext'}->{'menu_entry_no_entry'} = '* Menu:
 * a1:
 * a2:
 * a1c:* a2c:  * a4a:
-* a5b: 
+* a5b:
 ';
 
 

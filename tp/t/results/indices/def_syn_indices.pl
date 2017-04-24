@@ -1937,66 +1937,66 @@ $result_menus{'def_syn_indices'} = {
 
 $result_errors{'def_syn_indices'} = [
   {
-    'error_line' => ':39: warning: printing an index `ky\' merged in another one `pg\'
+    'error_line' => ':39: warning: printing an index `ky\' merged in another one, `pg\'
 ',
     'file_name' => '',
     'line_nr' => 39,
     'macro' => '',
-    'text' => 'printing an index `ky\' merged in another one `pg\'',
+    'text' => 'printing an index `ky\' merged in another one, `pg\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':42: warning: printing an index `truc\' merged in another one `fn\'
+    'error_line' => ':42: warning: printing an index `truc\' merged in another one, `fn\'
 ',
     'file_name' => '',
     'line_nr' => 42,
     'macro' => '',
-    'text' => 'printing an index `truc\' merged in another one `fn\'',
+    'text' => 'printing an index `truc\' merged in another one, `fn\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':45: warning: printing an index `truc\' merged in another one `fn\'
+    'error_line' => ':45: warning: printing an index `truc\' merged in another one, `fn\'
 ',
     'file_name' => '',
     'line_nr' => 45,
     'macro' => '',
-    'text' => 'printing an index `truc\' merged in another one `fn\'',
+    'text' => 'printing an index `truc\' merged in another one, `fn\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':48: warning: printing an index `cp\' merged in another one `fn\'
+    'error_line' => ':48: warning: printing an index `cp\' merged in another one, `fn\'
 ',
     'file_name' => '',
     'line_nr' => 48,
     'macro' => '',
-    'text' => 'printing an index `cp\' merged in another one `fn\'',
+    'text' => 'printing an index `cp\' merged in another one, `fn\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':51: warning: printing an index `cp\' merged in another one `fn\'
+    'error_line' => ':51: warning: printing an index `cp\' merged in another one, `fn\'
 ',
     'file_name' => '',
     'line_nr' => 51,
     'macro' => '',
-    'text' => 'printing an index `cp\' merged in another one `fn\'',
+    'text' => 'printing an index `cp\' merged in another one, `fn\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':54: warning: printing an index `defg\' merged in another one `pg\'
+    'error_line' => ':54: warning: printing an index `defg\' merged in another one, `pg\'
 ',
     'file_name' => '',
     'line_nr' => 54,
     'macro' => '',
-    'text' => 'printing an index `defg\' merged in another one `pg\'',
+    'text' => 'printing an index `defg\' merged in another one, `pg\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':57: warning: printing an index `abc\' merged in another one `defg\'
+    'error_line' => ':57: warning: printing an index `abc\' merged in another one, `pg\'
 ',
     'file_name' => '',
     'line_nr' => 57,
     'macro' => '',
-    'text' => 'printing an index `abc\' merged in another one `defg\'',
+    'text' => 'printing an index `abc\' merged in another one, `pg\'',
     'type' => 'warning'
   }
 ];
@@ -2005,9 +2005,6 @@ $result_errors{'def_syn_indices'} = [
 $result_indices{'def_syn_indices'} = {
   'index_names' => {
     'abc' => {
-      'contained_indices' => {
-        'abc' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'pg',
       'name' => 'abc'
@@ -2020,18 +2017,11 @@ $result_indices{'def_syn_indices'} = {
       'name' => 'codeidx'
     },
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'fn',
       'name' => 'cp'
     },
     'defg' => {
-      'contained_indices' => {
-        'abc' => 1,
-        'defg' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'pg',
       'name' => 'defg'
@@ -2046,9 +2036,6 @@ $result_indices{'def_syn_indices'} = {
       'name' => 'fn'
     },
     'ky' => {
-      'contained_indices' => {
-        'ky' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'pg',
       'name' => 'ky'
@@ -2071,9 +2058,6 @@ $result_indices{'def_syn_indices'} = {
       'name' => 'tp'
     },
     'truc' => {
-      'contained_indices' => {
-        'truc' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'fn',
       'name' => 'truc'
@@ -2085,13 +2069,6 @@ $result_indices{'def_syn_indices'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'abc' => 'defg',
-    'cp' => 'fn',
-    'defg' => 'pg',
-    'ky' => 'pg',
-    'truc' => 'fn'
   }
 };
 

@@ -599,7 +599,7 @@ Text.
 
 * Menu:
 
-* node::           
+* node::
 
 
 File: ,  Node: node,  Prev: Top,  Up: Top
@@ -612,7 +612,7 @@ in chapter.
 
 Tag Table:
 Node: Top27
-Node: node128
+Node: node117
 
 End Tag Table
 ';

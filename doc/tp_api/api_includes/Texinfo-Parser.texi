@@ -29,8 +29,7 @@ Texinfo::Parser - Parse Texinfo code into a Perl tree
     warn $error_message->{'error_line'};
   }
 
-  my ($index_names, $merged_indices_hash)
-      = $parser->indices_information();
+  my $index_names = $parser->indices_information();
   my $float_types_arrays = $parser->floats_information();
   my $internal_references_array
     = $parser->internal_references_information();
@@ -130,11 +129,6 @@ This option is set in the default case.
 
 If set, spaces after an @@-command name that take braces are ignored.
 Default on.
-
-@item MACRO_BODY_IGNORES_LEADING_SPACE
-@anchor{Texinfo::Parser MACRO_BODY_IGNORES_LEADING_SPACE}
-
-If set, leading spaces are stripped from user-defined macro bodies.
 
 @item MAX_MACRO_CALL_NESTING
 @anchor{Texinfo::Parser MAX_MACRO_CALL_NESTING}
@@ -335,8 +329,7 @@ also available through the @code{indices_information} method.
 @anchor{Texinfo::Parser indices_information}
 
 @verbatim
-  ($index_names, $merged_indices_hash)
-    = indices_information($parser);
+  $index_names = indices_information($parser);
 @end verbatim
 
 The index names is a hash reference.  The keys are
@@ -367,9 +360,9 @@ merged indices.
 @item contained_indices
 @anchor{Texinfo::Parser contained_indices}
 
-An hash reference holding names of indices that are merged to the index,
+An hash reference holding names of indices that are merged into the index,
 including itself.  It also contains indirectly merged indices.  This key 
-is present even if the index is itself later merged to another index.
+is removed if the index is itself later merged to another index.
 
 @item index_entries
 @anchor{Texinfo::Parser index_entries}
@@ -450,9 +443,6 @@ the indices corresponding to the following texinfo
 @end verbatim
 
 If @code{name} is not set, it is set to the index name.
-
-@emph{$merged_indices_hash} is a hash reference, the key is an index
-name merged in the value.
 
 @end table
 
@@ -826,12 +816,7 @@ comma separating a command's arguments.
 
 Space at the end of an argument to a line command, at the end of an
 comma-separated argument for some brace commands, or at the end of
-bracketed content on a @code{@@multitable} line.
-
-@item empty_space_at_end_def_bracketed
-@anchor{Texinfo::Parser empty_space_at_end_def_bracketed}
-
-Space at the end of a bracketed content on definition line.
+bracketed content on a @code{@@multitable} line or definition line.
 
 @item space_at_end_block_command
 @anchor{Texinfo::Parser space_at_end_block_command}

@@ -2286,15 +2286,6 @@ $result_errors{'quote_node_names'} = [
     'macro' => '',
     'text' => '@menu entry node name `blumpty@asis{.}fump\' different from node name `blumpty.fump\'',
     'type' => 'warning'
-  },
-  {
-    'error_line' => 'nodequote.texi:41: warning: unreferenced node `top secret node\'
-',
-    'file_name' => 'nodequote.texi',
-    'line_nr' => 41,
-    'macro' => '',
-    'text' => 'unreferenced node `top secret node\'',
-    'type' => 'warning'
   }
 ];
 

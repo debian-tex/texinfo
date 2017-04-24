@@ -906,25 +906,16 @@ $result_errors{'printindex_merged_indices_code_style'} = [];
 $result_indices{'printindex_merged_indices_code_style'} = {
   'index_names' => {
     'cdi' => {
-      'contained_indices' => {
-        'cdi' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'fn',
       'name' => 'cdi'
     },
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'fn',
       'name' => 'cp'
     },
     'ddi' => {
-      'contained_indices' => {
-        'ddi' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'fn',
       'name' => 'ddi'
@@ -962,19 +953,10 @@ $result_indices{'printindex_merged_indices_code_style'} = {
       'name' => 'tp'
     },
     'vr' => {
-      'contained_indices' => {
-        'vr' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'fn',
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'cdi' => 'fn',
-    'cp' => 'fn',
-    'ddi' => 'fn',
-    'vr' => 'fn'
   }
 };
 

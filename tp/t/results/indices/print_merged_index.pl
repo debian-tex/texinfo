@@ -204,12 +204,12 @@ $result_menus{'print_merged_index'} = {
 
 $result_errors{'print_merged_index'} = [
   {
-    'error_line' => ':3: warning: printing an index `fn\' merged in another one `cp\'
+    'error_line' => ':3: warning: printing an index `fn\' merged in another one, `cp\'
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'printing an index `fn\' merged in another one `cp\'',
+    'text' => 'printing an index `fn\' merged in another one, `cp\'',
     'type' => 'warning'
   }
 ];
@@ -226,9 +226,6 @@ $result_indices{'print_merged_index'} = {
       'name' => 'cp'
     },
     'fn' => {
-      'contained_indices' => {
-        'fn' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'cp',
       'name' => 'fn'
@@ -261,9 +258,6 @@ $result_indices{'print_merged_index'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'fn' => 'cp'
   }
 };
 

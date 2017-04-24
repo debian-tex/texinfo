@@ -1,4 +1,4 @@
-# $Id: Makefile.am 7259 2016-07-16 10:56:08Z gavin $
+# $Id: Makefile.am 7710 2017-04-09 09:37:33Z gavin $
 # Makefile.am for texinfo/info.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012,
@@ -88,6 +88,7 @@ TESTS = \
 	t/file-nodes.sh \
 	t/file-node-with-dot.sh \
 	t/file-index.sh \
+	t/file-index-colons.sh \
 	t/file-file-with-dot.sh \
 	t/no-file.sh \
 	t/node-no-file.sh \

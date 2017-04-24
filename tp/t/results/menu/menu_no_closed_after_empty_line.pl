@@ -164,7 +164,7 @@ $result_errors{'menu_no_closed_after_empty_line'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   },
   {
     'error_line' => ':4: no matching `@end menu\'

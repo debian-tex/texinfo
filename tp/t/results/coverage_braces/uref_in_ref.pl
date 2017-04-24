@@ -274,8 +274,7 @@ $result_trees{'uref_in_ref'} = {
                   'parent' => {},
                   'text' => 'node'
                 }
-              ],
-              'normalized' => 'node'
+              ]
             }
           },
           'line_nr' => {},

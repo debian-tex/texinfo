@@ -1,16 +1,48 @@
-$Id: NEWS 7353 2016-09-10 13:03:54Z gavin $
+$Id: NEWS 7721 2017-04-14 15:43:04Z gavin $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
   Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
   2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
-  2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+  2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
 -------------------------------------------------------------------------------
+* texi2any:
+  . for HTML output, place section names before the manual in page
+    titles, instead of after them, so it is easier to distinguish pages
+    if titles are truncated
+  . starting points for ordered lists beginning with 0 or a letter of
+    the alphabet are output as attributes on the <ol> tag, as was
+    case for Texinfo 4.13 and earlier
+  . a bit faster
+  . some discrepancies in paragraph formatting between Perl extension
+    modules and interpreted Perl modules have been fixed
+  . `MACRO_BODY_IGNORES_LEADING_SPACE' customization variable removed,
+    and `indent_menu_descriptions' is no longer a possible value for
+    `TREE_TRANSFORMATIONS' (as these features did not work as
+    documented)
+
+* info:
+  . supplying the --all option with --index-search displays a list
+    of matching index entries
+  . display bug fixed where color could be turned off prematurely
+  . several other bugs fixed
+  . better portability in test suite
+  . do not fall back to showing the dir node if a manual isn't found
+
+* texinfo.tex
+  . a DVI file with a single empty page can be output again, which
+    restores the behavior from Texinfo 6.0 and earlier
+
+* Distribution
+  . autoconf 2.69, automake 1.15, gettext 0.19.8
+
+
+
 6.3 (10 September 2016)
 
 * Language:

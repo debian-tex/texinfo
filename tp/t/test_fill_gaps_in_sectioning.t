@@ -1,20 +1,15 @@
 use strict;
 
-use Test::More;
-use File::Spec;
-BEGIN { plan tests => 8;
-        if (defined($ENV{'top_srcdir'})) {
-          unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
-          my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp', 'maintain');
-          unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'libintl-perl', 'lib'),
-                         File::Spec->catdir($lib_dir, 'lib', 'Unicode-EastAsianWidth', 'lib'),
-                         File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'));
-      }};
+BEGIN {
+  require Texinfo::ModulePath;
+  Texinfo::ModulePath::init(undef, undef, 'updirs' => 2);
+}
 
-use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
-use lib 'maintain/lib/libintl-perl/lib/';
-use lib 'maintain/lib/Text-Unidecode/lib/';
-use Texinfo::Structuring;
+use Test::More;
+
+BEGIN { plan tests => 8; }
+
+use Texinfo::Transformations;
 use Texinfo::Parser qw(parse_texi_text);
 use Texinfo::Convert::Texinfo;
 
@@ -26,7 +21,7 @@ my $tree = parse_texi_text(undef, '@raisesections
 
 my $section = $tree->{'contents'}->[1];
 my @correct_level_offset_commands 
-   = Texinfo::Structuring::_correct_level($section, $tree->{'contents'}->[0]);
+ = Texinfo::Transformations::_correct_level($section, $tree->{'contents'}->[0]);
 
 # 2 because there is also an empty line
 ok (scalar(@correct_level_offset_commands) == 2,"one lowersection");
@@ -39,7 +34,7 @@ $tree = parse_texi_text(undef, '@lowersections
 ');
 $section = $tree->{'contents'}->[1];
 @correct_level_offset_commands 
-   = Texinfo::Structuring::_correct_level($section, $tree->{'contents'}->[0], -1);
+   = Texinfo::Transformations::_correct_level($section, $tree->{'contents'}->[0], -1);
 ok (scalar(@correct_level_offset_commands) == 4,"two lowersection");
 ok ($correct_level_offset_commands[0]->{'cmdname'} eq 'lowersection' ,
     "command is lowersection");
@@ -51,7 +46,7 @@ sub test_correction($$$)
   my $name = shift;
   my $tree = parse_texi_text(undef, $in);
   my ($corrected_content, $added_sections) 
-      = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
+      = Texinfo::Transformations::fill_gaps_in_sectioning($tree);
   $tree->{'contents'} = $corrected_content;
   {
   local $Data::Dumper::Purity = 1;

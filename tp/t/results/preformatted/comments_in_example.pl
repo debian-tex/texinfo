@@ -466,13 +466,13 @@ $result_errors{'comments_in_example'} = [];
 
 
 $result_converted{'plaintext'}->{'comments_in_example'} = 'Example with comments 2 lines
-     line second line 
+     line second line
 
    Example with comments 1 line
-     line 
+     line
 
    Example with newline after comment
-     line 
+     line
      second line
 ';
 

@@ -1,5 +1,5 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c 6660 2015-09-30 13:09:45Z gavin $
+   $Id: echo-area.c 7666 2017-02-04 00:52:09Z gavin $
 
    Copyright 1993, 1997, 1998, 1999, 2001, 2004, 2007, 2008, 2011, 2013,
    2014, 2015 Free Software Foundation, Inc.
@@ -124,11 +124,7 @@ restore_calling_window (void)
 static void
 initialize_input_line (const char *prompt)
 {
-  if (prompt)
-    strcpy (input_line, prompt);
-  else
-    input_line[0] = '\0';
-
+  strcpy (input_line, prompt);
   input_line_beg = input_line_end = input_line_point = strlen (prompt);
 }
 
@@ -200,8 +196,8 @@ read_and_dispatch_in_echo_area (void)
 }
 
 /* Read a line of text in the echo area.  Return a malloc ()'ed string,
-   or NULL if the user aborted out of this read.  PROMPT, if
-   non-null, is a prompt to print before reading the line. */
+   or NULL if the user aborted out of this read.  PROMPT is the prompt
+   to print before reading the line. */
 char *
 info_read_in_echo_area (const char *prompt)
 {
@@ -1525,6 +1521,11 @@ echo_area_stack_contains_completions_p (void)
 #  define HAVE_STRUCT_TIMEVAL
 #endif /* HAVE_SYS_TIME_H */
 
+#if !defined (FD_SET) && defined (__MINGW32__)
+#  define WIN32_LEAN_AND_MEAN
+#  include <windows.h>
+#endif
+
 static void
 pause_or_input (void)
 {
@@ -1537,6 +1538,11 @@ pause_or_input (void)
   timer.tv_sec = 2;
   timer.tv_usec = 0;
   select (fileno (stdin) + 1, &readfds, NULL, NULL, &timer);
+#elif defined (__MINGW32__)
+  /* This is signalled on key release, so flush it and wait again. */
+  WaitForSingleObject (GetStdHandle (STD_INPUT_HANDLE), 2000);
+  FlushConsoleInputBuffer (GetStdHandle (STD_INPUT_HANDLE));
+  WaitForSingleObject (GetStdHandle (STD_INPUT_HANDLE), 2000);
 #endif /* FD_SET */
 }
 

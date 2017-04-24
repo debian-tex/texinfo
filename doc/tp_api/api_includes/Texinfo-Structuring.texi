@@ -14,7 +14,7 @@
 @node Texinfo::Structuring NAME
 @section NAME
 
-Texinfo::Structuring - informations and transformations in Texinfo::Parser tree
+Texinfo::Structuring - information on Texinfo::Parser tree
 
 @node Texinfo::Structuring SYNOPSIS
 @section SYNOPSIS
@@ -39,8 +39,7 @@ Texinfo::Structuring - informations and transformations in Texinfo::Parser tree
   elements_directions($parser, $elements);
   elements_file_directions($parser, $elements);
 
-  my ($index_names, $merged_indices) 
-     = $parser->indices_information();
+  my $index_names = $parser->indices_information();
   my $merged_index_entries
      = merge_indices($index_names);
   my $index_entries_sorted;
@@ -400,60 +399,6 @@ reference of sorted index entries beginning with the letter.
 
 When simply sorting, the array of the sorted indes entries is associated
 with the index name.
-
-@item ($root_content, $added_sections) = fill_gaps_in_sectioning ($root)
-@anchor{Texinfo::Structuring ($root_content@comma{} $added_sections) = fill_gaps_in_sectioning ($root)}
-
-This function adds empty @code{@@unnumbered} and similar commands in a tree
-to fill gaps in sectioning.  This may be used, for example, when converting 
-from a format that can handle gaps in sectioning.  @emph{$root} is the tree
-root.  An array reference is returned, containing the root contents
-with added sectioning commands, as well as an array reference containing 
-the added sectioning commands.
-
-If the sectioning commands are lowered or raised (with @code{@@raisesections},
-@code{@@lowersection}) the tree may be modified with @code{@@raisesections} or
-@code{@@lowersection} added to some tree elements.
-
-@item menu_to_simple_menu ($menu)
-@anchor{Texinfo::Structuring menu_to_simple_menu ($menu)}
-
-@item set_menus_to_simple_menu ($parser)
-@anchor{Texinfo::Structuring set_menus_to_simple_menu ($parser)}
-
-@code{menu_to_simple_menu} transforms the tree of a menu tree element.  
-@code{set_menus_to_simple_menu} calls @code{menu_to_simple_menu} for all the
-menus of the document.
-
-A simple menu has no @emph{menu_comment}, @emph{menu_entry} or @emph{menu_entry_description}
-container anymore, their content are merged directly in the menu in 
-@emph{preformatted} container.
-
-@item ($root_content, $added_nodes) = insert_nodes_for_sectioning_commands ($parser, $tree)
-@anchor{Texinfo::Structuring ($root_content@comma{} $added_nodes) = insert_nodes_for_sectioning_commands ($parser@comma{} $tree)}
-
-Insert nodes for sectioning commands without node in @code{$tree}.
-An array reference is returned, containing the root contents
-with added nodes, as well as an array reference containing the 
-added nodes.
-
-@item complete_tree_nodes_menus ($parser, $tree)
-@anchor{Texinfo::Structuring complete_tree_nodes_menus ($parser@comma{} $tree)}
-
-Add menu entries or whole menus for nodes associated with sections,
-based on the sectioning tree.  This function should therefore be
-called after @ref{,,, sectioning_structure}.
-
-@item $detailmenu = new_master_menu ($parser)
-@anchor{Texinfo::Structuring $detailmenu = new_master_menu ($parser)}
-
-Returns a detailmenu tree element formatted as a master node.
-
-@item regenerate_master_menu ($parser)
-@anchor{Texinfo::Structuring regenerate_master_menu ($parser)}
-
-Regenerate the Top node master menu, replacing the first detailmenu
-in Top node menus or appending at the end of the Top node menu.
 
 @end table
 

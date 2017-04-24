@@ -1,4 +1,4 @@
-# $Id: test_utils.pl 7235 2016-06-25 20:20:46Z gavin $
+# $Id: test_utils.pl 7582 2016-12-26 17:48:06Z gavin $
 # t/* test support for the Perl modules.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015
@@ -23,21 +23,10 @@ use strict;
 
 use 5.006;
 
-use File::Basename;
-use File::Spec;
-
 BEGIN {
 
-if (!$ENV{'top_srcdir'}) {
-  my ($real_command_name, $command_directory, $command_suffix) 
-     = fileparse($0, '.pl');
-  my $updir = File::Spec->updir();
-
-  # tp/t -> tp/t/../..
-  $ENV{'top_srcdir'} = File::Spec->catdir($command_directory, $updir, $updir);
-}
 require Texinfo::ModulePath;
-Texinfo::ModulePath::init();
+Texinfo::ModulePath::init(undef, undef, 'updirs' => 2);
 
 } # end BEGIN
 
@@ -52,7 +41,6 @@ use Texinfo::Convert::Info;
 use Texinfo::Convert::HTML;
 use Texinfo::Convert::TexinfoXML;
 use Texinfo::Convert::DocBook;
-use DebugTexinfo::DebugCount;
 use File::Basename;
 use File::Copy;
 use File::Compare; # standard since 5.004
@@ -143,12 +131,10 @@ our %formats = (
   'file_xml' => \&convert_to_xml,
   'docbook' => \&convert_to_docbook,
   'file_docbook' => \&convert_to_docbook,
-  'debugcount' => \&debugcount,
 );
 
 our %extensions = (
   'plaintext' => 'txt',
-  'debugcount' => 'txt',
   'html_text' => 'html',
   'xml' => 'xml',
   'docbook' => 'dbk',
@@ -645,26 +631,6 @@ sub convert_to_docbook($$$$$$;$)
   return ($errors, $result);
 }
 
-sub debugcount($$$$$$;$)
-{
-  my $self = shift;
-  my $test_name = shift;
-  my $format = shift;
-  my $tree = shift;
-  my $parser = shift;
-  my $parser_options = shift;
-  my $converter_options = shift;
-  $converter_options = {} if (!defined($converter_options));
-  my $converter =
-     DebugTexinfo::DebugCount->converter({'DEBUG' => $self->{'DEBUG'},
-                                         'parser' => $parser,
-                                         'output_format' => 'info',
-                                          %$converter_options });
-  my $result = $converter->convert($tree);
-  my ($errors, $error_nrs) = $converter->errors();
-  return ($errors, $result);
-}
-
 # Run a single test case.  Each test case is an array
 # [TEST_NAME, TEST_TEXT, PARSER_OPTIONS, CONVERTER_OPTIONS]
 sub test($$) 
@@ -738,11 +704,9 @@ sub test($$)
                                         'DEBUG' => $self->{'DEBUG'},
                                        %$parser_options});
   # take the initial values to record only if there is something new
-  my ($initial_index_names, $initial_merged_indices) 
-    = $parser->indices_information();
+  my $initial_index_names = $parser->indices_information();
   # do a copy to compare the values and not the references
   $initial_index_names = dclone($initial_index_names);
-  $initial_merged_indices = { %{$initial_merged_indices} };
   print STDERR "  TEST $test_name\n" if ($self->{'DEBUG'});
   my $result;
   if (!$test_file) {
@@ -766,8 +730,7 @@ sub test($$)
   my $top_node = Texinfo::Structuring::nodes_tree($parser);
 
   my ($errors, $error_nrs) = $parser->errors();
-  my ($index_names, $merged_indices) 
-       = $parser->indices_information();
+  my $index_names = $parser->indices_information();
   # FIXME maybe it would be good to compare $merged_index_entries?
   my $merged_index_entries 
      = Texinfo::Structuring::merge_indices($index_names);
@@ -778,8 +741,6 @@ sub test($$)
   my $trimmed_index_names = remove_keys($index_names, ['index_entries']);
   $indices->{'index_names'} = $trimmed_index_names
     unless (Data::Compare::Compare($trimmed_index_names, $initial_index_names));
-  $indices->{'merged_indices'} = $merged_indices
-    unless (Data::Compare::Compare($merged_indices, $initial_merged_indices));
 
   my $sorted_index_entries;
   if ($merged_index_entries) {
@@ -789,7 +750,8 @@ sub test($$)
                                                      $index_names);
   }
   if ($parser_options->{'SIMPLE_MENU'}) {
-    $parser->Texinfo::Structuring::set_menus_to_simple_menu();
+    require Texinfo::Transformations;
+    $parser->Texinfo::Transformations::set_menus_to_simple_menu();
   }
 
   my $converted_text = Texinfo::Convert::Text::convert($result, {'TEST' => 1});

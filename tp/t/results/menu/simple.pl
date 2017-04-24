@@ -632,7 +632,7 @@ $result_errors{'simple'} = [
     'line_nr' => 4,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   }
 ];
 
@@ -645,7 +645,7 @@ $result_converted{'plaintext'}->{'simple'} = 'Before menu.
 comment
 * menu entry name : node.    description
 * node name::                description new
-* other entry: node,    
+* other entry: node,
 * last::
                  description next line
                  still description

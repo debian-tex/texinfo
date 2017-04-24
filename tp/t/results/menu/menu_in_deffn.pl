@@ -429,31 +429,6 @@ $result_nodes{'menu_in_deffn'} = {
   'extra' => {
     'normalized' => 'Top'
   },
-  'menu_child' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'mynode'
-        }
-      ]
-    }
-  },
-  'menus' => [
-    {
-      'cmdname' => 'menu',
-      'extra' => {
-        'end_command' => {
-          'cmdname' => 'end',
-          'extra' => {
-            'command' => {},
-            'command_argument' => 'menu',
-            'text_arg' => 'menu'
-          }
-        }
-      }
-    }
-  ],
-  'node_next' => {},
   'node_up' => {
     'extra' => {
       'manual_content' => [
@@ -466,27 +441,26 @@ $result_nodes{'menu_in_deffn'} = {
     'type' => 'top_node_up'
   }
 };
-$result_nodes{'menu_in_deffn'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'menu_in_deffn'}{'menus'}[0];
-$result_nodes{'menu_in_deffn'}{'node_next'} = $result_nodes{'menu_in_deffn'}{'menu_child'};
 $result_nodes{'menu_in_deffn'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'menu_in_deffn'};
 
 $result_menus{'menu_in_deffn'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
-  },
-  'menu_child' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'mynode'
-        }
-      ]
-    }
   }
 };
 
-$result_errors{'menu_in_deffn'} = [];
+$result_errors{'menu_in_deffn'} = [
+  {
+    'error_line' => ':4: warning: @menu in invalid context
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => '@menu in invalid context',
+    'type' => 'warning'
+  }
+];
 
 
 1;

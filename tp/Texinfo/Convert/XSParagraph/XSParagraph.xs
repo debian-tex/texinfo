@@ -35,11 +35,7 @@ xspara_init ()
 
 void
 xspara_set_state (state)
-     HV * state
-
-void
-xspara_get_state (state)
-     HV * state
+     SV * state
 
 # Return a reference blessed into the XSParagraph class
 # CLASS is ignored because we know it is "XSParagraph".  Optional
@@ -48,7 +44,6 @@ SV *
 xspara_new (class, ...)
         SV * class
     PREINIT:
-        HV *hv;
         HV *pkg;
         HV *conf = 0;
         int id;
@@ -59,63 +54,54 @@ xspara_new (class, ...)
             if (SvROK(ST(1)) && SvTYPE(SvRV(ST(1))) == SVt_PVHV)
               conf = (HV *) SvRV(ST(1));
           }
-        /* id is ignored at the moment.  This call simply
-           resets the state of the paragraph formatter. */
         id = xspara_new (conf);
 
-        /* Create a new blessed hash reference, which the other functions
+        /* Create a blessed integer, which the other functions
            need as their first argument. */
-        /* Note that nothing is actually put in the hash yet. */
         pkg = gv_stashpv ("Texinfo::Convert::XSParagraph::XSParagraph", 0);
-        hv = newHV ();
-        RETVAL = newRV_inc ((SV *) hv);
-        sv_bless (RETVAL, pkg);
+        RETVAL = newSViv (id);
     OUTPUT:
         RETVAL
 
 
 int
 xspara_end_line_count (paragraph)
-        HV * paragraph
+        SV *paragraph
     CODE:
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         RETVAL = xspara_end_line_count ();
-        xspara_get_state (paragraph);
     OUTPUT:
         RETVAL
 
 void
 xspara__end_line (paragraph)
-        HV * paragraph
+        SV *paragraph
     CODE:
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         xspara__end_line ();
-        xspara_get_state (paragraph);
 
 char *
 xspara_end_line (paragraph)
-        HV * paragraph
+        SV *paragraph
     CODE:
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         RETVAL = xspara_end_line ();
-        xspara_get_state (paragraph);
     OUTPUT:
         RETVAL
 
 char *
 xspara_get_pending (paragraph)
-        HV * paragraph
+        SV *paragraph
     CODE:
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         RETVAL = xspara_get_pending ();
-        xspara_get_state (paragraph);
     OUTPUT:
         RETVAL
 
 # ... is for add_spaces
 SV *
 xspara_add_pending_word (paragraph, ...)
-        HV * paragraph
+        SV *paragraph
     PREINIT:
         int add_spaces = 0;
         char *retval;
@@ -128,9 +114,8 @@ xspara_add_pending_word (paragraph, ...)
                 add_spaces = (int)SvIV(ST(1));;
               }
           }
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         retval = xspara_add_pending_word (add_spaces);
-        xspara_get_state (paragraph);
 
         RETVAL = newSVpv (retval, 0);
         SvUTF8_on (RETVAL);
@@ -139,13 +124,12 @@ xspara_add_pending_word (paragraph, ...)
 
 SV *
 xspara_end (paragraph)
-        HV * paragraph
+        SV *paragraph
     PREINIT:
         char *retval;
     CODE:
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         retval = xspara_end ();
-        xspara_get_state (paragraph);
 
         RETVAL = newSVpv (retval, 0);
         SvUTF8_on (RETVAL);
@@ -155,7 +139,7 @@ xspara_end (paragraph)
 
 SV *
 xspara_add_text (paragraph, text_in)
-        HV * paragraph
+        SV *paragraph
         SV * text_in
     PREINIT:
         char *text;
@@ -168,9 +152,8 @@ xspara_add_text (paragraph, text_in)
 
         text = SvPV_nolen (text_in);
 
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         retval = xspara_add_text (text);
-        xspara_get_state (paragraph);
 
         RETVAL = newSVpv (retval, 0);
         SvUTF8_on (RETVAL);
@@ -180,7 +163,7 @@ xspara_add_text (paragraph, text_in)
 
 SV *
 xspara_add_next (paragraph, text_in, ...)
-        HV * paragraph
+        SV *paragraph
         SV * text_in
     PREINIT:
         char *text;
@@ -204,9 +187,8 @@ xspara_add_next (paragraph, text_in, ...)
           sv_utf8_upgrade (text_in);
         text = SvPV (text_in, text_len);
 
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         retval = xspara_add_next (text, text_len, transparent);
-        xspara_get_state (paragraph);
 
         RETVAL = newSVpv (retval, 0);
         SvUTF8_on (RETVAL);
@@ -217,30 +199,28 @@ xspara_add_next (paragraph, text_in, ...)
 
 void
 xspara_remove_end_sentence (paragraph)
-        HV * paragraph
+        SV *paragraph
     CODE:
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         xspara_remove_end_sentence ();
-        xspara_get_state (paragraph);
 
 void
 xspara_add_end_sentence (paragraph, value)
-        HV * paragraph
+        SV *paragraph
         SV * value
     PREINIT:
         int intvalue = 0;
     CODE:
         if (SvOK(value))
           intvalue = (int)SvIV(value);
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         xspara_add_end_sentence (intvalue);
-        xspara_get_state (paragraph);
 
 void
 xspara_allow_end_sentence (paragraph)
-        HV * paragraph
+        SV *paragraph
     CODE:
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         xspara_allow_end_sentence ();
   
 # Optional parameters are IGNORE_COLUMNS, KEEP_END_LINES, FRENCHSPACING,
@@ -248,7 +228,7 @@ xspara_allow_end_sentence (paragraph)
 # Pass them to the C function as -1 if not given or undef.
 char *
 xspara_set_space_protection (paragraph, space_protection_in, ...)
-        HV * paragraph
+        SV *paragraph
         SV * space_protection_in
     PREINIT:
         int space_protection = -1;
@@ -291,11 +271,10 @@ xspara_set_space_protection (paragraph, space_protection_in, ...)
               double_width_no_break = (int)SvIV(arg_in);
           }
 
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         RETVAL = xspara_set_space_protection
           (space_protection, ignore_columns, keep_end_lines,
            french_spacing, double_width_no_break);
-        xspara_get_state (paragraph);
     OUTPUT:
         RETVAL
 

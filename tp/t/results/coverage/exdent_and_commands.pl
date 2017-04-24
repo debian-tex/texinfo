@@ -553,7 +553,7 @@ and following
      example
 in exdented protected eol  
      following
-in exdented a @* 
+in exdented a @*
  and following
      after exdented
 ';

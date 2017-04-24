@@ -2645,7 +2645,7 @@ $result_trees{'numbering_captions_listoffloats'} = {
                 {},
                 {}
               ],
-              'normalized' => 'th_00e9or_00e8me'
+              'normalized' => 'th@\'eor@`eme'
             }
           },
           'line_nr' => {},
@@ -6061,8 +6061,7 @@ $result_trees{'numbering_captions_listoffloats'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'text-with-a-lot-of-features'
+                  ]
                 }
               },
               'line_nr' => {
@@ -6178,8 +6177,7 @@ $result_trees{'numbering_captions_listoffloats'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'text-with-a-lot-of-features'
+                  ]
                 }
               },
               'line_nr' => {
@@ -6391,7 +6389,7 @@ $result_trees{'numbering_captions_listoffloats'} = {
                 {},
                 {}
               ],
-              'normalized' => 'th_00e9or_00e8me'
+              'normalized' => 'th@\'eor@`eme'
             }
           },
           'line_nr' => {},
@@ -9204,7 +9202,7 @@ $result_floats{'numbering_captions_listoffloats'} = {
       'number' => '1.1'
     }
   ],
-  'th_00e9or_00e8me' => [
+  'th@\'eor@`eme' => [
     {
       'cmdname' => 'float',
       'extra' => {
@@ -9242,7 +9240,7 @@ $result_floats{'numbering_captions_listoffloats'} = {
               'text' => 'me'
             }
           ],
-          'normalized' => 'th_00e9or_00e8me'
+          'normalized' => 'th@\'eor@`eme'
         }
       },
       'number' => '1.1'
@@ -9313,9 +9311,9 @@ $result_floats{'numbering_captions_listoffloats'}{'Warning'}[1]{'extra'}{'captio
 $result_floats{'numbering_captions_listoffloats'}{'Warning'}[1]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'numbering_captions_listoffloats'}{'Warning'}[1];
 $result_floats{'numbering_captions_listoffloats'}{'Warning'}[1]{'extra'}{'float_section'} = $result_floats{'numbering_captions_listoffloats'}{''}[5]{'extra'}{'float_section'};
 $result_floats{'numbering_captions_listoffloats'}{'Warning'}[1]{'extra'}{'shortcaption'}{'extra'}{'float'} = $result_floats{'numbering_captions_listoffloats'}{'Warning'}[1];
-$result_floats{'numbering_captions_listoffloats'}{'th_00e9or_00e8me'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'numbering_captions_listoffloats'}{'th_00e9or_00e8me'}[0];
-$result_floats{'numbering_captions_listoffloats'}{'th_00e9or_00e8me'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'numbering_captions_listoffloats'}{'th_00e9or_00e8me'}[0];
-$result_floats{'numbering_captions_listoffloats'}{'th_00e9or_00e8me'}[0]{'extra'}{'float_section'} = $result_floats{'numbering_captions_listoffloats'}{''}[5]{'extra'}{'float_section'};
+$result_floats{'numbering_captions_listoffloats'}{'th@\'eor@`eme'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'numbering_captions_listoffloats'}{'th@\'eor@`eme'}[0];
+$result_floats{'numbering_captions_listoffloats'}{'th@\'eor@`eme'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'numbering_captions_listoffloats'}{'th@\'eor@`eme'}[0];
+$result_floats{'numbering_captions_listoffloats'}{'th@\'eor@`eme'}[0]{'extra'}{'float_section'} = $result_floats{'numbering_captions_listoffloats'}{''}[5]{'extra'}{'float_section'};
 
 
 

@@ -1,9 +1,9 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c 7027 2016-02-21 14:24:56Z gavin $
+   $Id: info.c 7754 2017-04-23 13:32:01Z gavin $
 
    Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-   2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-   Free Software Foundation, Inc.
+   2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015,
+   2016, 2017 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -117,6 +117,7 @@ int speech_friendly = 0;
 #define RESTORE_OPTION 3
 #define IDXSRCH_OPTION 4
 #define INITFLE_OPTION 5
+#define VIRTIDX_OPTION 6
 
 static struct option long_options[] = {
   { "all", 0, 0, 'a' },
@@ -324,8 +325,6 @@ get_initial_file (int *argc, char ***argv, char **error)
         }
     }
 
-  /* Otherwise, use the dir node. */
-  initial_file = xstrdup("dir");
   return;
 }
 
@@ -428,7 +427,7 @@ add_initial_nodes (int argc, char **argv, char **error)
 
   if (goto_invocation_p)
     {
-      NODE *top_node;
+      NODE *top_node = 0;
       REFERENCE *invoc_ref = 0;
 
       char *program;
@@ -861,7 +860,7 @@ main (int argc, char *argv[])
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-	      "2016");
+	      "2017");
       exit (EXIT_SUCCESS);
     }
 
@@ -923,7 +922,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   add_pointer_to_array (0, ref_index, ref_list, ref_slots, 2);
   ref_index--;
 
-  if (all_matches_p)
+  if (all_matches_p && !index_search_p)
     {
       /* --all */
       if (!user_filename && argv[0])
@@ -970,10 +969,47 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
 
       get_initial_file (&argc, &argv, &error);
 
+      /* If the user specified `--index-search=STRING --all', create
+         and display the menu of results. */
+      if (index_search_p && all_matches_p && initial_file)
+        {
+          FILE_BUFFER *initial_fb;
+          initial_fb = info_find_file (initial_file);
+          if (initial_fb)
+            {
+              NODE *node = create_virtual_index (initial_fb,
+                                                 index_search_string);
+              if (node)
+                {
+                  if (user_output_filename)
+                    {
+                      FILE *output_stream = 0;
+                      if (strcmp (user_output_filename, "-") == 0)
+                        output_stream = stdout;
+                      else
+                        output_stream = fopen (user_output_filename, "w");
+                      if (output_stream)
+                        {
+                          write_node_to_stream (node, output_stream);
+                        }
+                      exit (0);
+                    }
+                  else
+                    {
+                      initialize_info_session ();
+                      info_set_node_of_window (active_window, node);
+                      info_read_and_dispatch ();
+                      close_info_session ();
+                      exit (0);
+                    }
+                }
+            }
+        }
+
       /* If the user specified `--index-search=STRING', 
          start the info session in the node corresponding
          to what they want. */
-      if (index_search_p && initial_file && !user_output_filename)
+      else if (index_search_p && initial_file && !user_output_filename)
         {
           FILE_BUFFER *initial_fb;
           initial_fb = info_find_file (initial_file);
@@ -982,8 +1018,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
               REFERENCE *result;
               int i, match_offset;
 
-              next_index_match (initial_fb, index_search_string, 0, 1,
-                                  &result, &i, &match_offset);
+              result = next_index_match (initial_fb, index_search_string, 0, 1,
+                                         &i, &match_offset);
 
               if (result)
                 {
@@ -1030,9 +1066,13 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       exit (0);
     }
 
-  if (user_filename && error)
+  if (ref_index == 0)
     {
-      info_error ("%s", error);
+      if (error)
+        {
+          info_error ("%s", error);
+          exit (1);
+        }
       exit (0);
     }
     

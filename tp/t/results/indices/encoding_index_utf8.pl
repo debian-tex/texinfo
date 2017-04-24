@@ -228,7 +228,7 @@ $result_trees{'encoding_index_utf8'} = {
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
               'index_type_command' => 'cindex',
-              'key' => 'é é',
+              'key' => "\x{e9} \x{e9}",
               'node' => {},
               'number' => 1
             },

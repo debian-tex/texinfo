@@ -297,8 +297,7 @@ $result_trees{'ref_in_sectioning'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'Top'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -621,8 +620,7 @@ $result_trees{'ref_in_sectioning'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'node'
+                  ]
                 }
               },
               'line_nr' => {
@@ -1123,8 +1121,7 @@ $result_trees{'ref_in_sectioning'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'node'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -1243,8 +1240,7 @@ $result_trees{'ref_in_sectioning'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'node'
+                  ]
                 }
               },
               'line_nr' => {
@@ -1367,8 +1363,7 @@ $result_trees{'ref_in_sectioning'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'Top'
+                  ]
                 }
               },
               'line_nr' => {
@@ -1697,8 +1692,7 @@ $result_trees{'ref_in_sectioning'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'a'
+                  ]
                 }
               },
               'line_nr' => {
@@ -1829,8 +1823,7 @@ $result_trees{'ref_in_sectioning'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'Top'
+                  ]
                 },
                 'spaces_before_argument' => {}
               },
@@ -2049,8 +2042,7 @@ $result_trees{'ref_in_sectioning'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'Top'
+                  ]
                 }
               },
               'line_nr' => {

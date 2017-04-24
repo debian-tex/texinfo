@@ -709,13 +709,13 @@ In example.
 
      ``simple-double--three---four----''
 
-     code: ``simple-double--three---four----'' 
+     code: ``simple-double--three---four----''
 
-     asis: ``simple-double--three---four----'' 
+     asis: ``simple-double--three---four----''
 
-     strong: *``simple-double--three---four----''* 
+     strong: *``simple-double--three---four----''*
 
-     kbd: ``simple-double--three---four----'' 
+     kbd: ``simple-double--three---four----''
 
 
      ``simple-double--three---four----''
@@ -737,28 +737,28 @@ In example.
      @l{} /l
      @,{@'C} C',
      @,c c,
-     @,c@"u c,u" 
+     @,c@"u c,u"
 
 
      @U{0075} U+0075
 
-     @* 
+     @*
 
      @ followed by a space
- 
+      
      @ followed by a tab
- 
+      
      @ followed by a new line
-      @- 
-     @| 
-     @: 
+      @-
+     @|
+     @:
      @! !
      @? ?
      @. .
      @@ @
      @} }
      @{ {
-     @/ 
+     @/
 
      foo vs. bar.
      colon :And something else.
@@ -851,7 +851,7 @@ In example.
      @t{--a} --a
      @sansserif{--a} -a
      @slanted{--a} -a
-     @titlefont{--a} 
+     @titlefont{--a}
      -a
      **
 
@@ -1159,13 +1159,13 @@ aaa
                             ce-ntered line
 
      \input texinfo @c -*-texinfo-*-
-
+     
      @setfilename simplest.info
-
+     
      @node Top
-
+     
      This is a very simple texi manual @  <>.
-
+     
      @bye
 
      in verbatim ''

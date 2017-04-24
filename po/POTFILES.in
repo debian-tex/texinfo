@@ -28,7 +28,6 @@ info/nodemenu.c
 info/pcterm.c
 info/search.c
 info/session.c
-info/tilde.c
 info/variables.c
 info/window.c
 install-info/install-info.c
@@ -40,6 +39,7 @@ tp/Texinfo/Convert/HTML.pm
 tp/Texinfo/Convert/IXIN.pm
 tp/Texinfo/Convert/Info.pm
 tp/Texinfo/Convert/Plaintext.pm
+tp/Texinfo/Convert/Text.pm
 tp/Texinfo/Convert/TexinfoXML.pm
 tp/Texinfo/Parser.pm
 tp/Texinfo/Report.pm

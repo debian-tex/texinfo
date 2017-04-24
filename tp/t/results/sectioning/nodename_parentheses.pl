@@ -659,8 +659,7 @@ $result_trees{'nodename_parentheses'} = {
                       'parent' => {},
                       'text' => 'node'
                     }
-                  ],
-                  'normalized' => 'node'
+                  ]
                 }
               },
               'line_nr' => {
@@ -1336,15 +1335,6 @@ $result_errors{'nodename_parentheses'} = [
     'line_nr' => 15,
     'macro' => '',
     'text' => 'node next `Other node\' in menu `(manual)node\' and in sectioning `node\' differ',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':22: warning: unreferenced node `node\'
-',
-    'file_name' => '',
-    'line_nr' => 22,
-    'macro' => '',
-    'text' => 'unreferenced node `node\'',
     'type' => 'warning'
   },
   {

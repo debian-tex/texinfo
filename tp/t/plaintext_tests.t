@@ -1,4 +1,4 @@
-# $Id: plaintext_tests.t 7235 2016-06-25 20:20:46Z gavin $
+# $Id: plaintext_tests.t 7536 2016-12-03 17:10:59Z gavin $
 use strict;
 
 use File::Spec;
@@ -50,6 +50,7 @@ And ? ?@:. ?@:
 Now ! !@:@@ !@:
 but , ,@:
 '],
+['punctuation_in_sc', 'one @sc{two.} three @sc{FOUR.} five'],
 ['accent_command_punctuation',
 '@dotaccent{e} after'],
 ['empty_line_in_example_end',

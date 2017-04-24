@@ -1,4 +1,4 @@
-$Id: README 7356 2016-09-10 15:49:59Z gavin $
+$Id: README 7464 2016-10-23 09:09:40Z gavin $
 texinfo/tp/tests/README
 
   Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
@@ -26,9 +26,8 @@ Running the testsuite
 =====================
 This testsuite can be run one of the following ways:
 
-* Using the makefile rules: "make check" (in this directory) for the 
-base tests, "make long-checks" for the long tests, or "make all-checks" 
-for both.  These use the scripts under the test_scripts directory.
+* Using the makefile rules: "make check" (in this directory)
+These tests use the scripts under the test_scripts directory.
 
 * Using ./parser_tests.sh with the directories one want to run the tests 
 in given as arguments, for example "./parser_tests.sh formatting".
@@ -83,9 +82,8 @@ Regenerating test results
 To update the test results, first the tests must be run as above.
 
 Giving -copy as the first argument to ../run_parser_all.sh or
-parser_tests.sh (or long_tests.sh or tex_html_tests.sh, which need
-environment variables LONG_TESTS resp. TEX_HTML_TESTS, or ALL_TESTS, to
-be set to "yes", but otherwise operate similarly) will cause the 
+parser_tests.sh (tex_html_tests.sh, which needs TEX_HTML_TESTS or ALL_TESTS
+to be set to "yes", but otherwise operates similarly) will cause the 
 reference results to be copied from the results the last time the tests 
 were run.  For example, to update the reference results for one 
 particular test:
@@ -93,10 +91,6 @@ particular test:
 $ ./parser_tests.sh -copy formatting
 The copy-* make targets update all the references for various large sets
 of tests via this method.
-
-To update a group of long tests:
-
-$ LONG_TESTS=yes ./parser_tests.sh -copy nested_formats
 
 Exception: in the many_input_files subdirectory, the *parser*.sh scripts
 can't be used for updating.  Instead, the Makefile's copy-tests and
@@ -194,7 +188,7 @@ For even more, use sh -vx to show exactly what run_parser_all is doing.
 
 When satisfied, add the .texi in subdir/Makefile.am.
 
-Of course commit all the files and try a make check (or long-checks,
-as needed) afterward to verify it gets run, and passes.
+Of course commit all the files and try a make check afterward to verify
+it gets run, and passes.
 
 See tp/t/README for info about those tests.

@@ -1,4 +1,4 @@
-$Id: README-hacking 7355 2016-09-10 14:46:01Z gavin $
+$Id: README-hacking 7736 2017-04-17 07:43:48Z gavin $
 This file describes the development environment for Texinfo.
 
   Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013,
@@ -141,6 +141,10 @@ Steps for making a release (pretest or official):
 
 - When close to official release:
 check at latest automake/autoconf/gettext version, and mention in NEWS
+(to upgrade gettext, run
+  gettextize -f --po-dir=po --po-dir=po_document
+after installing new version of gettext)
+
 special pleading with bug-texinfo / beebe / platform-testers to try.
 check OpenCSW build reports at
   https://buildfarm.opencsw.org/buildbot/waterfall?category=texinfo
@@ -176,12 +180,9 @@ version and date in NEWS.
 version number in texi2dvi, texi2pdf, txirefcard.tex.
 (cd tp && ./maintain/change_perl_modules_version.sh auto)
   -- this updates all the version numbers in the Perl modules
-version number in
-  tp/Texinfo/Convert/XSParagraph/configure.ac, and
-  tp/Texinfo/Convert/XSParagraph/TestXS.pm
-sync texi2html/test/ results with tp/.
+(cd tp && maintain/regenerate_documentlanguages.pl)
+  -- regenerates tp/Texinfo/Documentlanguages.pm
 
-ensure building standalone modules for CPAN still works.
 make V=1 pdf and fix underfull/overfull boxes.
 
 - Changes to sources:
@@ -189,17 +190,14 @@ update version in configure.ac, notice in ChangeLog.
 check that texindex version is updated properly
   (rm texindex.awk ; make)
 Check that translations have been updated, e.g.:
-  rsync  -Lrtzv  translationproject.org::tp/latest/texinfo/  texinfo
+  rsync  -Lrtzv  translationproject.org::tp/latest/texinfo/ po
   rsync  -Lrtzv  translationproject.org::tp/latest/texinfo_document/ \
-                 texinfo_document
-    followed by copying updated translation files to po/ and po_document/.
+                 po_document # note the trailing slashes in these commands
 pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
 
 check that the svn checkout is up-to-date (run "svnversion" and "svn update")
 make
 make update-po            # both po and po_document needed, build a dist first
-make -C doc wwwdoc-build  # and -install for official (and eventual commit)
-make long-checks          # distcheck does not do this
 (export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
 svn commit                # when clean, then distcheck to be sure
 
@@ -257,6 +255,9 @@ update home page (texinfo.html) and commit as needed.
 including:
   pod2html $txi/Pod-Simple-Texinfo/pod2texi.pl \
   | fgrep -v 'rev="made"' >manual/pod2texi.html
+
+Build web documentation with
+  make -C doc wwwdoc-build
 Copy documentation files to web checkout with, e.g.
   make -C doc \
   wwwdoc-install www_target=../../TEXINFO_WEB_PAGES/texinfo/manual/

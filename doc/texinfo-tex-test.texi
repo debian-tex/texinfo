@@ -28,7 +28,68 @@
 
 @contents
 
-@part Part One@*Sample part page
+@part Part One@*Sample part page@sup{superscript}
+
+@chapter Fonts
+
+@macro headerline
+@r{roman} @i{italic} @b{bold} @t{typewriter} @slanted{slant} @*
+@sansserif{`sans serif'} @sc{`small caps'} {@ensuremath@clubsuit}
+@hrule
+@end macro
+
+A test of the fonts used in @file{texinfo.tex}.
+
+{@titlefonts @headerline}
+
+{@textfonts @headerline}
+
+{@reducedfonts @headerline}
+
+{@chapfonts @headerline}
+
+{@secfonts @headerline}
+
+{@subsecfonts @headerline}
+
+{@smallfonts @headerline}
+
+{@smallerfonts @headerline}
+
+@majorheading Test of @LaTeX{} logo
+
+{@rm @LaTeX{}}
+
+{@it @LaTeX{}}
+
+{@sl @LaTeX{}}
+
+{@bf @LaTeX{}}
+
+{@tt @LaTeX{}}
+
+@majorheading roman @b{bold}@sup{superscript} @LaTeX{}
+
+@majorheading roman@sup{sup} @b{now bold@sup{sup}@r{now roman@sup{superscript}}}
+
+
+@heading roman @b{bold} @LaTeX{}
+
+@subheading roman @b{bold} @LaTeX{}
+
+roman@sub{sub} @b{bold@sub{sub}}
+
+@section Acronyms
+
+Test of @acronym{ACRONYM}'s.  {ACRONYM}'s.
+
+@majorheading Test of @acronym{ACRONYM}'s.  ACRONYM's hippopotamus
+
+
+@chapter Glyph commands
+
+@ordf{} @ordm{}
+
 
 @chapter Macros
 @section Backslashes in macro arguments
@@ -233,6 +294,69 @@ groff [ -abceghijklpstvzCEGNRSUVXZ ]
 @end example
 x
 
+x
+@example
+@group
+groff [ -abceghijklpstvzCEGNRSUVXZ ]
+@end group
+@end example
+x
+
+x
+@example
+@group@c
+groff [ -abceghijklpstvzCEGNRSUVXZ ]
+@end group
+@end example
+x
+
+xxxxxxxxxxxxxxxxxxxxxx
+
+@example
+@group@c
+groff [ -abceghijklpstvzCEGNRSUVXZ ]
+@end group
+@end example
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+xxxxxxxxxxxxxxxxxxxxxx
+
+@Example
+groff [ -abceghijklpstvzCEGNRSUVXZ ]
+@endExample
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+@section Braceless at end of line
+
+@macro Mac
+value
+@end macro
+
+Okay, we are here. The @Mac
+on next line now.
+
+With spaces and newline. The @Mac       
+on next line now.
+
+With braces. The @Mac{}
+on next line now.
+
+With space and braces. The @Mac {}
+on next line now.
+
+With two spaces and braces. The @Mac  {}
+on next line now.
+
+With braces and two newlines. The @Mac{}
+
+in next paragraph now.
+
+With two newlines. The @Mac
+
+in next paragraph now.
+
 @section @,c in macro argument
 
 @macro mactwo{argfirst, argsecond}
@@ -297,15 +421,19 @@ Like an argument to @code{@@footnote}.
 
 
 @tex
-\gdef \commenceindex{%
+\gdef \commenceindexnopage{%
 \begingroup
-\page
 \smallfonts \rm
 \begindoublecolumns
 \tolerance = 9500
 \plainfrenchspacing
 \everypar = {}%
 \catcode`\\=0 \catcode`\@=12
+}
+
+\gdef \commenceindex{%
+\page
+\commenceindexnopage
 }
 
 \gdef \finishindex{%
@@ -433,7 +561,7 @@ the start of a page.
 \entry {\code {PROGRAM}}{196}
 \entry {Program names, indicating}{72}
 \entry {\code {PROGRAM_NAME_IN_FOOTER}}{192}
-\entry {Programming, glyphs for}{119}
+\entry {Programming, glyhs for}{119}
 \entry {Pronunciation of Texinfo}{3}
 \entry {Prototype row, column widths defined by}{93}
 \entry {Ragged left, without filling}{83}
@@ -559,7 +687,7 @@ doesn't start with an initial.
 \entry {\code {PROGRAM}}{196}
 \entry {Program names, indicating}{72}
 \entry {\code {PROGRAM_NAME_IN_FOOTER}}{192}
-\entry {Programming, glyphs for}{119}
+\entry {Programming, glyhs for}{119}
 \entry {Pronunciation of Texinfo}{3}
 \entry {Prototype row, column widths defined by}{93}
 \initial {Q}
@@ -955,6 +1083,149 @@ index.  All index material should fit on the page within the margins.
 \entry {\code {zerop}}{391}
 \finishindex
 
+@section Medium length index
+
+Check that no blank pages appear and that index text fits within page 
+margins.  The text of the index is not short enough to fit on the page
+after the text before the index.
+
+@page
+
+
+Text before index.
+
+More text before index.
+
+More text before index.
+
+More text before index.
+
+More text before index.
+
+More text before index.
+
+More text before index.
+
+More text before index.
+
+More text before index.
+
+
+@commenceindexnopage
+\entry {\code {ac_cv_alignof_\var {type-or-expr}}}{152}
+\entry {\code {ac_cv_c_const}}{157}
+\entry {\code {ac_cv_c_int16_t}}{178}
+\entry {\code {ac_cv_c_int32_t}}{179}
+\entry {\code {ac_cv_c_int64_t}}{179}
+\entry {\code {ac_cv_c_int8_t}}{178}
+\entry {\code {ac_cv_c_restrict}}{157}
+\entry {\code {ac_cv_c_uint16_t}}{180}
+\entry {\code {ac_cv_c_uint32_t}}{180}
+\entry {\code {ac_cv_c_uint64_t}}{180}
+\entry {\code {ac_cv_c_uint8_t}}{180}
+\entry {\code {ac_cv_f77_compiler_gnu}}{191}
+\entry {\code {ac_cv_f77_dummy_main}}{193}
+\entry {\code {ac_cv_f77_implicit_none}}{198}
+\entry {\code {ac_cv_f77_libs}}{193}
+\entry {\code {ac_cv_f77_main}}{194}
+\entry {\code {ac_cv_f77_mangling}}{194}
+\entry {\code {ac_cv_fc_check_bounds}}{198}
+\entry {\code {ac_cv_fc_compiler_gnu}}{192}
+\entry {\code {ac_cv_fc_dummy_main}}{193}
+\entry {\code {ac_cv_fc_fixedform}}{197}
+\entry {\code {ac_cv_fc_freeform}}{197}
+\entry {\code {ac_cv_fc_implicit_none}}{198}
+\entry {\code {ac_cv_fc_libs}}{193}
+\entry {\code {ac_cv_fc_line_length}}{197}
+\entry {\code {ac_cv_fc_main}}{194}
+\entry {\code {ac_cv_fc_mangling}}{194}
+\entry {\code {ac_cv_fc_module_ext}}{198}
+\entry {\code {ac_cv_fc_module_flag}}{198}
+\entry {\code {ac_cv_fc_module_output_flag}}{199}
+\entry {\code {ac_cv_fc_pp_define}}{196}
+\entry {\code {ac_cv_fc_pp_srcext_\var {ext}}}{196}
+\entry {\code {ac_cv_fc_srcext_\var {ext}}}{196}
+\entry {\code {ac_cv_file_\var {file}}}{91}
+\entry {\code {ac_cv_func_chown_works}}{160}
+\entry {\code {ac_cv_func_closedir_void}}{160}
+\entry {\code {ac_cv_func_fnmatch_gnu}}{161}
+\entry {\code {ac_cv_func_fnmatch_works}}{161, 166}
+\entry {\code {ac_cv_func_\var {function}}}{166}
+\entry {\code {ac_cv_func_getgroups_works}}{161}
+\entry {\code {ac_cv_func_getpgrp_void}}{162}
+\entry {\code {ac_cv_func_lstat_dereferences_slashed_symlink}}{163}
+\entry {\code {ac_cv_func_lstat_empty_string_bug}}{165}
+\entry {\code {ac_cv_func_malloc_0_nonnull}}{163}
+\entry {\code {ac_cv_func_mbrtowc}}{163}
+\entry {\code {ac_cv_func_memcmp_working}}{163}
+\entry {\code {ac_cv_func_mmap_fixed_mapped}}{164}
+\entry {\code {ac_cv_func_obstack}}{164}
+\entry {\code {ac_cv_func_pow}}{165}
+\entry {\code {ac_cv_func_realloc_0_nonnull}}{164}
+\entry {\code {ac_cv_func_setpgrp_void}}{164}
+\entry {\code {ac_cv_func_stat_empty_string_bug}}{165}
+\entry {\code {ac_cv_func_strcoll_works}}{165}
+\entry {\code {ac_cv_func_strerror_r_char_p}}{165}
+\entry {\code {ac_cv_func_strnlen_working}}{166}
+\entry {\code {ac_cv_func_strtod}}{165}
+\entry {\code {ac_cv_func_strtold}}{165}
+\entry {\code {ac_cv_func_utime_null}}{166}
+\entry {\code {ac_cv_func_working_mktime}}{164}
+\entry {\code {ac_cv_have_decl_\var {symbol}}}{175}
+\entry {\code {ac_cv_header_\var {header-file}}}{174}
+\entry {\code {ac_cv_header_stdbool_h}}{170, 172}
+\entry {\code {ac_cv_header_stdc}}{172}
+\entry {\code {ac_cv_header_sys_wait_h}}{172}
+\entry {\code {ac_cv_header_time}}{424}
+\entry {\code {ac_cv_lib_error_at_line}}{160}
+\entry {\code {ac_cv_lib_\var {library}_\var {function}}}{91}
+\entry {\code {ac_cv_member_\var {aggregate}_\var {member}}}{177}
+\entry {\code {ac_cv_member_struct_stat_st_blocks}}{177}
+\entry {\code {ac_cv_path_install}}{85}
+\entry {\code {ac_cv_path_mkdir}}{86}
+\entry {\code {ac_cv_path_SED}}{88}
+\entry {\code {ac_cv_path_\var {variable}}}{90}
+\entry {\code {ac_cv_prog_AWK}}{85}
+\entry {\code {ac_cv_prog_c_openmp}}{153}
+\entry {\code {ac_cv_prog_cc_\var {compiler}_c_o}}{156}
+\entry {\code {ac_cv_prog_cc_stdc}}{155}
+\entry {\code {ac_cv_prog_cxx_openmp}}{153}
+\entry {\code {ac_cv_prog_EGREP}}{85}
+\entry {\code {ac_cv_prog_f77_c_o}}{192}
+\entry {\code {ac_cv_prog_f77_g}}{191}
+\entry {\code {ac_cv_prog_f77_openmp}}{153}
+\entry {\code {ac_cv_prog_f77_v}}{193}
+\entry {\code {ac_cv_prog_fc_c_o}}{192}
+\entry {\code {ac_cv_prog_fc_g}}{192}
+\entry {\code {ac_cv_prog_fc_openmp}}{153}
+\entry {\code {ac_cv_prog_fc_v}}{193}
+\entry {\code {ac_cv_prog_FGREP}}{85}
+\entry {\code {ac_cv_prog_GREP}}{85}
+\entry {\code {ac_cv_prog_LEX}}{87}
+\entry {\code {ac_cv_prog_\var {variable}}}{88, 89}
+\entry {\code {ac_cv_prog_YACC}}{88}
+\entry {\code {ac_cv_search_\var {function}}}{92}
+\entry {\code {ac_cv_search_getmntent}}{162}
+\entry {\code {ac_cv_sizeof_\var {type-or-expr}}}{152}
+\entry {\code {ac_cv_sys_posix_termios}}{96}
+\entry {\code {ac_cv_type_getgroups}}{178}
+\entry {\code {ac_cv_type_long_double}}{179}
+\entry {\code {ac_cv_type_long_double_wider}}{179}
+\entry {\code {ac_cv_type_long_long_int}}{179}
+\entry {\code {ac_cv_type_mbstate_t}}{179}
+\entry {\code {ac_cv_type_mode_t}}{179}
+\entry {\code {ac_cv_type_off_t}}{179}
+\entry {\code {ac_cv_type_pid_t}}{179}
+\entry {\code {ac_cv_type_size_t}}{180}
+\entry {\code {ac_cv_type_ssize_t}}{180}
+\entry {\code {ac_cv_type_\var {type}}}{180}
+\entry {\code {ac_cv_type_uid_t}}{180}
+\entry {\code {ac_cv_type_unsigned_long_long_int}}{180}
+\finishindex
+
+
+
+
 
 @section Test of index widow elimination
 
@@ -1078,6 +1349,16 @@ Should be two entries, not one below.
 @printindex bar
 
 
+@section Test of index sort keys
+
+@defindex SK
+
+@SKindex @sortas{A} bbbbbbb (first)
+@SKindex @sortas{B} aaaaaaa (second)
+
+@printindex SK
+
+
 @chapter @code{@@set} and @code{@@value}
 
 @section Another test of @t{@@value}
@@ -1090,6 +1371,8 @@ The value is @value{foo-bar_}.
 
 
 @chapter Cross-references
+
+@section Comma insertion
 
 Check commas surrounding page number:
 
@@ -1114,8 +1397,13 @@ See @ref{Target}.@*
 (@pxref{Target}) (@code{@@pxref})@*
 (@pxref{Target,, Hurricanes})
 
+
 @node Target
 @section Target
+
+@section Non-existent target
+
+@xref{blllllllrrrrrrghhh}.
 
 @chapter Copying and captions
 

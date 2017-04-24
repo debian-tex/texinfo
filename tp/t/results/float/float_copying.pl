@@ -660,7 +660,7 @@ $result_trees{'float_copying'} = {
                   'content' => [
                     {}
                   ],
-                  'normalized' => 'Copyright-notice'
+                  'normalized' => 'Copyright notice'
                 }
               },
               'line_nr' => {
@@ -1085,7 +1085,7 @@ $result_trees{'float_copying'} = {
               'content' => [
                 {}
               ],
-              'normalized' => 'Copyright-notice'
+              'normalized' => 'Copyright notice'
             }
           },
           'line_nr' => {
@@ -1613,7 +1613,7 @@ $result_errors{'float_copying'} = [];
 
 
 $result_floats{'float_copying'} = {
-  'Copyright-notice' => [
+  'Copyright notice' => [
     {
       'cmdname' => 'float',
       'extra' => {
@@ -1638,15 +1638,15 @@ $result_floats{'float_copying'} = {
               'text' => 'Copyright notice'
             }
           ],
-          'normalized' => 'Copyright-notice'
+          'normalized' => 'Copyright notice'
         }
       },
       'number' => 1
     }
   ]
 };
-$result_floats{'float_copying'}{'Copyright-notice'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'float_copying'}{'Copyright-notice'}[0];
-$result_floats{'float_copying'}{'Copyright-notice'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'float_copying'}{'Copyright-notice'}[0];
+$result_floats{'float_copying'}{'Copyright notice'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'float_copying'}{'Copyright notice'}[0];
+$result_floats{'float_copying'}{'Copyright notice'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'float_copying'}{'Copyright notice'}[0];
 
 
 

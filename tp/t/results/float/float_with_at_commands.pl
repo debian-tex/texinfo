@@ -346,7 +346,7 @@ $result_trees{'float_with_at_commands'} = {
             {},
             {}
           ],
-          'normalized' => 'entr_00e9e'
+          'normalized' => 'entr@\'ee'
         }
       },
       'line_nr' => {},
@@ -427,7 +427,7 @@ $result_trees{'float_with_at_commands'} = {
             {},
             {}
           ],
-          'normalized' => 'entr_00e9e'
+          'normalized' => 'entr@\'ee'
         }
       },
       'line_nr' => {},
@@ -559,7 +559,7 @@ $result_errors{'float_with_at_commands'} = [];
 
 
 $result_floats{'float_with_at_commands'} = {
-  'entr_00e9e' => [
+  'entr@\'ee' => [
     {
       'cmdname' => 'float',
       'extra' => {
@@ -590,15 +590,15 @@ $result_floats{'float_with_at_commands'} = {
               'text' => 'e'
             }
           ],
-          'normalized' => 'entr_00e9e'
+          'normalized' => 'entr@\'ee'
         }
       },
       'number' => 1
     }
   ]
 };
-$result_floats{'float_with_at_commands'}{'entr_00e9e'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'float_with_at_commands'}{'entr_00e9e'}[0];
-$result_floats{'float_with_at_commands'}{'entr_00e9e'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'float_with_at_commands'}{'entr_00e9e'}[0];
+$result_floats{'float_with_at_commands'}{'entr@\'ee'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'float_with_at_commands'}{'entr@\'ee'}[0];
+$result_floats{'float_with_at_commands'}{'entr@\'ee'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'float_with_at_commands'}{'entr@\'ee'}[0];
 
 
 

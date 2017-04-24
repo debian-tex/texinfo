@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6916 2016-01-03 20:46:04Z gavin $
+# $Id: Makefile.am 7735 2017-04-17 07:41:19Z gavin $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
@@ -29,12 +29,12 @@ $(srcdir)/Makefile.docstr: maintain/regenerate_docstr.sh \
 
 SUBDIRS =
 if ! DISABLE_XS
-SUBDIRS += Texinfo/Convert/XSParagraph
+SUBDIRS += Texinfo/Convert/XSParagraph Texinfo/MiscXS
 endif
 
 SUBDIRS += . tests
 
-DIST_SUBDIRS = Texinfo/Convert/XSParagraph tests
+DIST_SUBDIRS = Texinfo/Convert/XSParagraph Texinfo/MiscXS tests
 
 
 bin_SCRIPTS = texi2any
@@ -71,6 +71,9 @@ dist_modules_DATA = \
  Texinfo/Common.pm \
  Texinfo/Encoding.pm \
  Texinfo/Structuring.pm \
+ Texinfo/Transformations.pm \
+ Texinfo/MiscXS.pm \
+ Texinfo/XSLoader.pm \
  Texinfo/Documentlanguages.pm
 
 dist_noinst_DATA = \
@@ -103,7 +106,6 @@ dist_converters_DATA = \
 
 debugmodulesdir = $(pkgdatadir)/DebugTexinfo
 dist_debugmodules_DATA = \
- DebugTexinfo/DebugCount.pm \
  DebugTexinfo/DebugTree.pm
 
 initdir = $(datadir)/texinfo/init
@@ -180,7 +182,7 @@ test_files = \
 document_domain = $(PACKAGE)_document
 
 # $(document_strings_mo_files) and $(test_copied_include_files) come from
-# generated makefiles, Makefile.tres and Makefile.documents_strings_mo_files
+# the generated makefiles Makefile.docstr and Makefile.tres.
 all-local: maintain/catalog.xml $(document_strings_mo_files) \
            $(test_copied_include_files)
 
@@ -199,10 +201,6 @@ AM_T_LOG_FLAGS += -ITexinfo/Convert/XSParagraph
 AM_T_LOG_FLAGS += -I$(srcdir)/Texinfo/Convert/XSParagraph
 
 AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir; builddir="$(builddir)"; export buildir; top_builddir="$(top_builddir)"; export top_builddir;
-
-# just a convenience for running these additional tests.
-long-checks:
-	cd tests && $(MAKE) long-checks
 
 maintenance_files = \
   maintain/all_tests.sh \

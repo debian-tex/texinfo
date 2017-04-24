@@ -1101,31 +1101,6 @@ $result_nodes{'sc_in_menu'} = {
     'extra' => {
       'normalized' => 'NODE'
     },
-    'menu_child' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'dir'
-          }
-        ],
-        'normalized' => 'EXAMPLE-NODE'
-      }
-    },
-    'menus' => [
-      {
-        'cmdname' => 'menu',
-        'extra' => {
-          'end_command' => {
-            'cmdname' => 'end',
-            'extra' => {
-              'command' => {},
-              'command_argument' => 'menu',
-              'text_arg' => 'menu'
-            }
-          }
-        }
-      }
-    ],
     'node_prev' => {},
     'node_up' => {}
   },
@@ -1157,7 +1132,6 @@ $result_nodes{'sc_in_menu'} = {
     'type' => 'top_node_up'
   }
 };
-$result_nodes{'sc_in_menu'}{'menu_child'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'sc_in_menu'}{'menu_child'}{'menus'}[0];
 $result_nodes{'sc_in_menu'}{'menu_child'}{'node_prev'} = $result_nodes{'sc_in_menu'};
 $result_nodes{'sc_in_menu'}{'menu_child'}{'node_up'} = $result_nodes{'sc_in_menu'};
 $result_nodes{'sc_in_menu'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'sc_in_menu'}{'menus'}[0];
@@ -1174,16 +1148,6 @@ $result_menus{'sc_in_menu'} = {
     'extra' => {
       'normalized' => 'NODE'
     },
-    'menu_child' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'dir'
-          }
-        ],
-        'normalized' => 'EXAMPLE-NODE'
-      }
-    },
     'menu_up' => {},
     'menu_up_hash' => {
       'Top' => 1
@@ -1192,7 +1156,17 @@ $result_menus{'sc_in_menu'} = {
 };
 $result_menus{'sc_in_menu'}{'menu_child'}{'menu_up'} = $result_menus{'sc_in_menu'};
 
-$result_errors{'sc_in_menu'} = [];
+$result_errors{'sc_in_menu'} = [
+  {
+    'error_line' => ':19: warning: @menu in invalid context
+',
+    'file_name' => '',
+    'line_nr' => 19,
+    'macro' => '',
+    'text' => '@menu in invalid context',
+    'type' => 'warning'
+  }
+];
 
 
 

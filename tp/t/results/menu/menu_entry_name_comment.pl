@@ -679,7 +679,7 @@ $result_errors{'menu_entry_name_comment'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   }
 ];
 
@@ -690,7 +690,7 @@ $result_converted{'plaintext'}->{'menu_entry_name_comment'} = '* Menu:
 * a: (f)b
 * a: (f)b 
 * a: (f)b1c.c,
-* a: (f)b2c.c,     
+* a: (f)b2c.c,
 * a: (f)b3c.c,    d
 ';
 

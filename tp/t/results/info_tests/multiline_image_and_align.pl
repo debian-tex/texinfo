@@ -1857,7 +1857,7 @@ fffffffffffffffffffffffffffffffffffffff   1  A  B
                                                                     HHH
                                                              1  A  B  
                                                              2  C  D
-                         3  E  FJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+                        3  E  F JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
 
  [image src="figure.txt" text="  1  A  B  
   2  C  D
@@ -1889,7 +1889,7 @@ BBB  [image src="figure.txt" text="  1  A  B
                                                                     HHH
  [image src="figure.txt" text="  1  A  B  
   2  C  D
-  3  E  F" ]JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+  3  E  F" ] JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
 
 
 Tag Table:

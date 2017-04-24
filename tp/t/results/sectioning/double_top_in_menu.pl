@@ -539,7 +539,7 @@ $result_errors{'double_top_in_menu'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => 'here is the previous definition as @node',
-    'type' => 'error continuation'
+    'type' => 'error'
   },
   {
     'error_line' => ':5: warning: @menu entry node name `top\' different from node name `ToP\'

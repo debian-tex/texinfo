@@ -807,26 +807,7 @@ $result_menus{'value_node_directions'} = {
   }
 };
 
-$result_errors{'value_node_directions'} = [
-  {
-    'error_line' => ':7: warning: unreferenced node `bar\'
-',
-    'file_name' => '',
-    'line_nr' => 7,
-    'macro' => '',
-    'text' => 'unreferenced node `bar\'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':10: warning: unreferenced node `BarFoo\'
-',
-    'file_name' => '',
-    'line_nr' => 10,
-    'macro' => '',
-    'text' => 'unreferenced node `BarFoo\'',
-    'type' => 'warning'
-  }
-];
+$result_errors{'value_node_directions'} = [];
 
 
 1;

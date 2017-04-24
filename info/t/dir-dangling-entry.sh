@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2016 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,17 +16,9 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 # Try to load a dir entry referring to a non-existing file
-
-run_ginfo non-existent
-
-printf 'Dq' >$PTY_TYPE
-
-. $t/Timeout-test.inc
-
-grep 'File: dir' $GINFO_OUTPUT
+$GINFO non-existent 2>&1 | grep 'No menu item'
 RETVAL=$?
 
 cleanup

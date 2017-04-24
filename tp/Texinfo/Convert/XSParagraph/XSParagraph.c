@@ -188,52 +188,10 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_set_state)
     if (items != 1)
        croak_xs_usage(cv,  "state");
     {
-	HV *	state;
-
-	STMT_START {
-		SV* const xsub_tmp_sv = ST(0);
-		SvGETMAGIC(xsub_tmp_sv);
-		if (SvROK(xsub_tmp_sv) && SvTYPE(SvRV(xsub_tmp_sv)) == SVt_PVHV){
-		    state = (HV*)SvRV(xsub_tmp_sv);
-		}
-		else{
-		    Perl_croak(aTHX_ "%s: %s is not a HASH reference",
-				"Texinfo::Convert::XSParagraph::XSParagraph::set_state",
-				"state");
-		}
-	} STMT_END
+	SV *	state = ST(0)
 ;
 
 	xspara_set_state(state);
-    }
-    XSRETURN_EMPTY;
-}
-
-
-XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_get_state); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_get_state)
-{
-    dVAR; dXSARGS;
-    if (items != 1)
-       croak_xs_usage(cv,  "state");
-    {
-	HV *	state;
-
-	STMT_START {
-		SV* const xsub_tmp_sv = ST(0);
-		SvGETMAGIC(xsub_tmp_sv);
-		if (SvROK(xsub_tmp_sv) && SvTYPE(SvRV(xsub_tmp_sv)) == SVt_PVHV){
-		    state = (HV*)SvRV(xsub_tmp_sv);
-		}
-		else{
-		    Perl_croak(aTHX_ "%s: %s is not a HASH reference",
-				"Texinfo::Convert::XSParagraph::XSParagraph::get_state",
-				"state");
-		}
-	} STMT_END
-;
-
-	xspara_get_state(state);
     }
     XSRETURN_EMPTY;
 }
@@ -248,32 +206,26 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_new)
     {
 	SV *	class = ST(0)
 ;
-#line 51 "XSParagraph.xs"
-        HV *hv;
+#line 47 "XSParagraph.xs"
         HV *pkg;
         HV *conf = 0;
         int id;
-#line 257 "XSParagraph.c"
+#line 214 "XSParagraph.c"
 	SV *	RETVAL;
-#line 56 "XSParagraph.xs"
+#line 51 "XSParagraph.xs"
         items--;
         if (items > 0)
           {
             if (SvROK(ST(1)) && SvTYPE(SvRV(ST(1))) == SVt_PVHV)
               conf = (HV *) SvRV(ST(1));
           }
-        /* id is ignored at the moment.  This call simply
-           resets the state of the paragraph formatter. */
         id = xspara_new (conf);
 
-        /* Create a new blessed hash reference, which the other functions
+        /* Create a blessed integer, which the other functions
            need as their first argument. */
-        /* Note that nothing is actually put in the hash yet. */
         pkg = gv_stashpv ("Texinfo::Convert::XSParagraph::XSParagraph", 0);
-        hv = newHV ();
-        RETVAL = newRV_inc ((SV *) hv);
-        sv_bless (RETVAL, pkg);
-#line 277 "XSParagraph.c"
+        RETVAL = newSViv (id);
+#line 229 "XSParagraph.c"
 	ST(0) = RETVAL;
 	sv_2mortal(ST(0));
     }
@@ -288,28 +240,14 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_end_line_count)
     if (items != 1)
        croak_xs_usage(cv,  "paragraph");
     {
-	HV *	paragraph;
+	SV *	paragraph = ST(0)
+;
 	int	RETVAL;
 	dXSTARG;
-
-	STMT_START {
-		SV* const xsub_tmp_sv = ST(0);
-		SvGETMAGIC(xsub_tmp_sv);
-		if (SvROK(xsub_tmp_sv) && SvTYPE(SvRV(xsub_tmp_sv)) == SVt_PVHV){
-		    paragraph = (HV*)SvRV(xsub_tmp_sv);
-		}
-		else{
-		    Perl_croak(aTHX_ "%s: %s is not a HASH reference",
-				"Texinfo::Convert::XSParagraph::XSParagraph::end_line_count",
-				"paragraph");
-		}
-	} STMT_END
-;
-#line 81 "XSParagraph.xs"
-        //xspara_set_state (paragraph);
+#line 71 "XSParagraph.xs"
+        xspara_set_state (paragraph);
         RETVAL = xspara_end_line_count ();
-        xspara_get_state (paragraph);
-#line 313 "XSParagraph.c"
+#line 251 "XSParagraph.c"
 	XSprePUSH; PUSHi((IV)RETVAL);
     }
     XSRETURN(1);
@@ -323,26 +261,12 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph__end_line)
     if (items != 1)
        croak_xs_usage(cv,  "paragraph");
     {
-	HV *	paragraph;
-
-	STMT_START {
-		SV* const xsub_tmp_sv = ST(0);
-		SvGETMAGIC(xsub_tmp_sv);
-		if (SvROK(xsub_tmp_sv) && SvTYPE(SvRV(xsub_tmp_sv)) == SVt_PVHV){
-		    paragraph = (HV*)SvRV(xsub_tmp_sv);
-		}
-		else{
-		    Perl_croak(aTHX_ "%s: %s is not a HASH reference",
-				"Texinfo::Convert::XSParagraph::XSParagraph::_end_line",
-				"paragraph");
-		}
-	} STMT_END
+	SV *	paragraph = ST(0)
 ;
-#line 91 "XSParagraph.xs"
-        //xspara_set_state (paragraph);
+#line 80 "XSParagraph.xs"
+        xspara_set_state (paragraph);
         xspara__end_line ();
-        xspara_get_state (paragraph);
-#line 346 "XSParagraph.c"
+#line 270 "XSParagraph.c"
     }
     XSRETURN_EMPTY;
 }
@@ -355,28 +279,14 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_end_line)
     if (items != 1)
        croak_xs_usage(cv,  "paragraph");
     {
-	HV *	paragraph;
+	SV *	paragraph = ST(0)
+;
 	char *	RETVAL;
 	dXSTARG;
-
-	STMT_START {
-		SV* const xsub_tmp_sv = ST(0);
-		SvGETMAGIC(xsub_tmp_sv);
-		if (SvROK(xsub_tmp_sv) && SvTYPE(SvRV(xsub_tmp_sv)) == SVt_PVHV){
-		    paragraph = (HV*)SvRV(xsub_tmp_sv);
-		}
-		else{
-		    Perl_croak(aTHX_ "%s: %s is not a HASH reference",
-				"Texinfo::Convert::XSParagraph::XSParagraph::end_line",
-				"paragraph");
-		}
-	} STMT_END
-;
-#line 99 "XSParagraph.xs"
-        //xspara_set_state (paragraph);
+#line 87 "XSParagraph.xs"
+        xspara_set_state (paragraph);
         RETVAL = xspara_end_line ();
-        xspara_get_state (paragraph);
-#line 380 "XSParagraph.c"
+#line 290 "XSParagraph.c"
 	sv_setpv(TARG, RETVAL); XSprePUSH; PUSHTARG;
     }
     XSRETURN(1);
@@ -390,28 +300,14 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_get_pending)
     if (items != 1)
        croak_xs_usage(cv,  "paragraph");
     {
-	HV *	paragraph;
+	SV *	paragraph = ST(0)
+;
 	char *	RETVAL;
 	dXSTARG;
-
-	STMT_START {
-		SV* const xsub_tmp_sv = ST(0);
-		SvGETMAGIC(xsub_tmp_sv);
-		if (SvROK(xsub_tmp_sv) && SvTYPE(SvRV(xsub_tmp_sv)) == SVt_PVHV){
-		    paragraph = (HV*)SvRV(xsub_tmp_sv);
-		}
-		else{
-		    Perl_croak(aTHX_ "%s: %s is not a HASH reference",
-				"Texinfo::Convert::XSParagraph::XSParagraph::get_pending",
-				"paragraph");
-		}
-	} STMT_END
-;
-#line 109 "XSParagraph.xs"
-        //xspara_set_state (paragraph);
+#line 96 "XSParagraph.xs"
+        xspara_set_state (paragraph);
         RETVAL = xspara_get_pending ();
-        xspara_get_state (paragraph);
-#line 415 "XSParagraph.c"
+#line 311 "XSParagraph.c"
 	sv_setpv(TARG, RETVAL); XSprePUSH; PUSHTARG;
     }
     XSRETURN(1);
@@ -425,27 +321,14 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_add_pending_word)
     if (items < 1)
        croak_xs_usage(cv,  "paragraph, ...");
     {
-	HV *	paragraph;
-#line 120 "XSParagraph.xs"
+	SV *	paragraph = ST(0)
+;
+#line 106 "XSParagraph.xs"
         int add_spaces = 0;
         char *retval;
-#line 433 "XSParagraph.c"
+#line 330 "XSParagraph.c"
 	SV *	RETVAL;
-
-	STMT_START {
-		SV* const xsub_tmp_sv = ST(0);
-		SvGETMAGIC(xsub_tmp_sv);
-		if (SvROK(xsub_tmp_sv) && SvTYPE(SvRV(xsub_tmp_sv)) == SVt_PVHV){
-		    paragraph = (HV*)SvRV(xsub_tmp_sv);
-		}
-		else{
-		    Perl_croak(aTHX_ "%s: %s is not a HASH reference",
-				"Texinfo::Convert::XSParagraph::XSParagraph::add_pending_word",
-				"paragraph");
-		}
-	} STMT_END
-;
-#line 123 "XSParagraph.xs"
+#line 109 "XSParagraph.xs"
         items -= 1;
         if (items > 0)
           {
@@ -454,13 +337,12 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_add_pending_word)
                 add_spaces = (int)SvIV(ST(1));;
               }
           }
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         retval = xspara_add_pending_word (add_spaces);
-        xspara_get_state (paragraph);
 
         RETVAL = newSVpv (retval, 0);
         SvUTF8_on (RETVAL);
-#line 464 "XSParagraph.c"
+#line 346 "XSParagraph.c"
 	ST(0) = RETVAL;
 	sv_2mortal(ST(0));
     }
@@ -475,33 +357,19 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_end)
     if (items != 1)
        croak_xs_usage(cv,  "paragraph");
     {
-	HV *	paragraph;
-#line 144 "XSParagraph.xs"
-        char *retval;
-#line 482 "XSParagraph.c"
-	SV *	RETVAL;
-
-	STMT_START {
-		SV* const xsub_tmp_sv = ST(0);
-		SvGETMAGIC(xsub_tmp_sv);
-		if (SvROK(xsub_tmp_sv) && SvTYPE(SvRV(xsub_tmp_sv)) == SVt_PVHV){
-		    paragraph = (HV*)SvRV(xsub_tmp_sv);
-		}
-		else{
-		    Perl_croak(aTHX_ "%s: %s is not a HASH reference",
-				"Texinfo::Convert::XSParagraph::XSParagraph::end",
-				"paragraph");
-		}
-	} STMT_END
+	SV *	paragraph = ST(0)
 ;
-#line 146 "XSParagraph.xs"
-        //xspara_set_state (paragraph);
+#line 129 "XSParagraph.xs"
+        char *retval;
+#line 365 "XSParagraph.c"
+	SV *	RETVAL;
+#line 131 "XSParagraph.xs"
+        xspara_set_state (paragraph);
         retval = xspara_end ();
-        xspara_get_state (paragraph);
 
         RETVAL = newSVpv (retval, 0);
         SvUTF8_on (RETVAL);
-#line 505 "XSParagraph.c"
+#line 373 "XSParagraph.c"
 	ST(0) = RETVAL;
 	sv_2mortal(ST(0));
     }
@@ -516,29 +384,16 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_add_text)
     if (items != 2)
        croak_xs_usage(cv,  "paragraph, text_in");
     {
-	HV *	paragraph;
+	SV *	paragraph = ST(0)
+;
 	SV *	text_in = ST(1)
 ;
-#line 161 "XSParagraph.xs"
+#line 145 "XSParagraph.xs"
         char *text;
         char *retval;
-#line 526 "XSParagraph.c"
+#line 395 "XSParagraph.c"
 	SV *	RETVAL;
-
-	STMT_START {
-		SV* const xsub_tmp_sv = ST(0);
-		SvGETMAGIC(xsub_tmp_sv);
-		if (SvROK(xsub_tmp_sv) && SvTYPE(SvRV(xsub_tmp_sv)) == SVt_PVHV){
-		    paragraph = (HV*)SvRV(xsub_tmp_sv);
-		}
-		else{
-		    Perl_croak(aTHX_ "%s: %s is not a HASH reference",
-				"Texinfo::Convert::XSParagraph::XSParagraph::add_text",
-				"paragraph");
-		}
-	} STMT_END
-;
-#line 164 "XSParagraph.xs"
+#line 148 "XSParagraph.xs"
         /* Always convert the input to UTF8 with sv_utf8_upgrade, so we can 
            process it properly in xspara_add_next. */
         if (!SvUTF8 (text_in))
@@ -546,14 +401,13 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_add_text)
 
         text = SvPV_nolen (text_in);
 
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         retval = xspara_add_text (text);
-        xspara_get_state (paragraph);
 
         RETVAL = newSVpv (retval, 0);
         SvUTF8_on (RETVAL);
 
-#line 557 "XSParagraph.c"
+#line 411 "XSParagraph.c"
 	ST(0) = RETVAL;
 	sv_2mortal(ST(0));
     }
@@ -568,32 +422,19 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_add_next)
     if (items < 2)
        croak_xs_usage(cv,  "paragraph, text_in, ...");
     {
-	HV *	paragraph;
+	SV *	paragraph = ST(0)
+;
 	SV *	text_in = ST(1)
 ;
-#line 186 "XSParagraph.xs"
+#line 169 "XSParagraph.xs"
         char *text;
         STRLEN text_len;
         char *retval;
         SV *arg_in;
         int transparent = 0;
-#line 581 "XSParagraph.c"
+#line 436 "XSParagraph.c"
 	SV *	RETVAL;
-
-	STMT_START {
-		SV* const xsub_tmp_sv = ST(0);
-		SvGETMAGIC(xsub_tmp_sv);
-		if (SvROK(xsub_tmp_sv) && SvTYPE(SvRV(xsub_tmp_sv)) == SVt_PVHV){
-		    paragraph = (HV*)SvRV(xsub_tmp_sv);
-		}
-		else{
-		    Perl_croak(aTHX_ "%s: %s is not a HASH reference",
-				"Texinfo::Convert::XSParagraph::XSParagraph::add_next",
-				"paragraph");
-		}
-	} STMT_END
-;
-#line 192 "XSParagraph.xs"
+#line 175 "XSParagraph.xs"
         items -= 2;
         if (items > 0)
           {
@@ -609,14 +450,13 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_add_next)
           sv_utf8_upgrade (text_in);
         text = SvPV (text_in, text_len);
 
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         retval = xspara_add_next (text, text_len, transparent);
-        xspara_get_state (paragraph);
 
         RETVAL = newSVpv (retval, 0);
         SvUTF8_on (RETVAL);
 
-#line 620 "XSParagraph.c"
+#line 460 "XSParagraph.c"
 	ST(0) = RETVAL;
 	sv_2mortal(ST(0));
     }
@@ -631,26 +471,12 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_remove_end_sentence)
     if (items != 1)
        croak_xs_usage(cv,  "paragraph");
     {
-	HV *	paragraph;
-
-	STMT_START {
-		SV* const xsub_tmp_sv = ST(0);
-		SvGETMAGIC(xsub_tmp_sv);
-		if (SvROK(xsub_tmp_sv) && SvTYPE(SvRV(xsub_tmp_sv)) == SVt_PVHV){
-		    paragraph = (HV*)SvRV(xsub_tmp_sv);
-		}
-		else{
-		    Perl_croak(aTHX_ "%s: %s is not a HASH reference",
-				"Texinfo::Convert::XSParagraph::XSParagraph::remove_end_sentence",
-				"paragraph");
-		}
-	} STMT_END
+	SV *	paragraph = ST(0)
 ;
-#line 222 "XSParagraph.xs"
-        //xspara_set_state (paragraph);
+#line 204 "XSParagraph.xs"
+        xspara_set_state (paragraph);
         xspara_remove_end_sentence ();
-        xspara_get_state (paragraph);
-#line 654 "XSParagraph.c"
+#line 480 "XSParagraph.c"
     }
     XSRETURN_EMPTY;
 }
@@ -663,33 +489,19 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_add_end_sentence)
     if (items != 2)
        croak_xs_usage(cv,  "paragraph, value");
     {
-	HV *	paragraph;
+	SV *	paragraph = ST(0)
+;
 	SV *	value = ST(1)
 ;
-#line 231 "XSParagraph.xs"
+#line 212 "XSParagraph.xs"
         int intvalue = 0;
-#line 672 "XSParagraph.c"
-
-	STMT_START {
-		SV* const xsub_tmp_sv = ST(0);
-		SvGETMAGIC(xsub_tmp_sv);
-		if (SvROK(xsub_tmp_sv) && SvTYPE(SvRV(xsub_tmp_sv)) == SVt_PVHV){
-		    paragraph = (HV*)SvRV(xsub_tmp_sv);
-		}
-		else{
-		    Perl_croak(aTHX_ "%s: %s is not a HASH reference",
-				"Texinfo::Convert::XSParagraph::XSParagraph::add_end_sentence",
-				"paragraph");
-		}
-	} STMT_END
-;
-#line 233 "XSParagraph.xs"
+#line 499 "XSParagraph.c"
+#line 214 "XSParagraph.xs"
         if (SvOK(value))
           intvalue = (int)SvIV(value);
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         xspara_add_end_sentence (intvalue);
-        xspara_get_state (paragraph);
-#line 693 "XSParagraph.c"
+#line 505 "XSParagraph.c"
     }
     XSRETURN_EMPTY;
 }
@@ -702,25 +514,12 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_allow_end_sentence)
     if (items != 1)
        croak_xs_usage(cv,  "paragraph");
     {
-	HV *	paragraph;
-
-	STMT_START {
-		SV* const xsub_tmp_sv = ST(0);
-		SvGETMAGIC(xsub_tmp_sv);
-		if (SvROK(xsub_tmp_sv) && SvTYPE(SvRV(xsub_tmp_sv)) == SVt_PVHV){
-		    paragraph = (HV*)SvRV(xsub_tmp_sv);
-		}
-		else{
-		    Perl_croak(aTHX_ "%s: %s is not a HASH reference",
-				"Texinfo::Convert::XSParagraph::XSParagraph::allow_end_sentence",
-				"paragraph");
-		}
-	} STMT_END
+	SV *	paragraph = ST(0)
 ;
-#line 243 "XSParagraph.xs"
-        //xspara_set_state (paragraph);
+#line 223 "XSParagraph.xs"
+        xspara_set_state (paragraph);
         xspara_allow_end_sentence ();
-#line 724 "XSParagraph.c"
+#line 523 "XSParagraph.c"
     }
     XSRETURN_EMPTY;
 }
@@ -733,34 +532,21 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_set_space_protection)
     if (items < 2)
        croak_xs_usage(cv,  "paragraph, space_protection_in, ...");
     {
-	HV *	paragraph;
+	SV *	paragraph = ST(0)
+;
 	SV *	space_protection_in = ST(1)
 ;
-#line 254 "XSParagraph.xs"
+#line 234 "XSParagraph.xs"
         int space_protection = -1;
         int ignore_columns = -1;
         int keep_end_lines = -1;
         int french_spacing = -1;
         int double_width_no_break = -1;
         SV *arg_in;
-#line 747 "XSParagraph.c"
+#line 547 "XSParagraph.c"
 	char *	RETVAL;
 	dXSTARG;
-
-	STMT_START {
-		SV* const xsub_tmp_sv = ST(0);
-		SvGETMAGIC(xsub_tmp_sv);
-		if (SvROK(xsub_tmp_sv) && SvTYPE(SvRV(xsub_tmp_sv)) == SVt_PVHV){
-		    paragraph = (HV*)SvRV(xsub_tmp_sv);
-		}
-		else{
-		    Perl_croak(aTHX_ "%s: %s is not a HASH reference",
-				"Texinfo::Convert::XSParagraph::XSParagraph::set_space_protection",
-				"paragraph");
-		}
-	} STMT_END
-;
-#line 261 "XSParagraph.xs"
+#line 241 "XSParagraph.xs"
         if (SvOK(space_protection_in))
           space_protection = (int)SvIV(space_protection_in);
         /* Get optional arguments from stack. */
@@ -794,12 +580,11 @@ XS_EUPXS(XS_Texinfo__Convert__XSParagraph__XSParagraph_set_space_protection)
               double_width_no_break = (int)SvIV(arg_in);
           }
 
-        //xspara_set_state (paragraph);
+        xspara_set_state (paragraph);
         RETVAL = xspara_set_space_protection
           (space_protection, ignore_columns, keep_end_lines,
            french_spacing, double_width_no_break);
-        xspara_get_state (paragraph);
-#line 803 "XSParagraph.c"
+#line 588 "XSParagraph.c"
 	sv_setpv(TARG, RETVAL); XSprePUSH; PUSHTARG;
     }
     XSRETURN(1);
@@ -827,7 +612,6 @@ XS_EXTERNAL(boot_Texinfo__Convert__XSParagraph__XSParagraph)
 
         (void)newXSproto_portable("Texinfo::Convert::XSParagraph::XSParagraph::init", XS_Texinfo__Convert__XSParagraph__XSParagraph_init, file, "");
         (void)newXSproto_portable("Texinfo::Convert::XSParagraph::XSParagraph::set_state", XS_Texinfo__Convert__XSParagraph__XSParagraph_set_state, file, "$");
-        (void)newXSproto_portable("Texinfo::Convert::XSParagraph::XSParagraph::get_state", XS_Texinfo__Convert__XSParagraph__XSParagraph_get_state, file, "$");
         (void)newXSproto_portable("Texinfo::Convert::XSParagraph::XSParagraph::new", XS_Texinfo__Convert__XSParagraph__XSParagraph_new, file, "$;@");
         (void)newXSproto_portable("Texinfo::Convert::XSParagraph::XSParagraph::end_line_count", XS_Texinfo__Convert__XSParagraph__XSParagraph_end_line_count, file, "$");
         (void)newXSproto_portable("Texinfo::Convert::XSParagraph::XSParagraph::_end_line", XS_Texinfo__Convert__XSParagraph__XSParagraph__end_line, file, "$");

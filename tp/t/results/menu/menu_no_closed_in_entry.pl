@@ -93,7 +93,7 @@ $result_errors{'menu_no_closed_in_entry'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   },
   {
     'error_line' => ':2: no matching `@end menu\'

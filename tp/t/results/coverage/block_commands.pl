@@ -381,7 +381,7 @@ $result_trees{'block_commands'} = {
           'content' => [
             {}
           ],
-          'normalized' => 'a-float'
+          'normalized' => 'a float'
         }
       },
       'line_nr' => {
@@ -507,7 +507,7 @@ $result_errors{'block_commands'} = [];
 
 
 $result_floats{'block_commands'} = {
-  'a-float' => [
+  'a float' => [
     {
       'cmdname' => 'float',
       'extra' => {
@@ -532,15 +532,15 @@ $result_floats{'block_commands'} = {
               'text' => 'a float'
             }
           ],
-          'normalized' => 'a-float'
+          'normalized' => 'a float'
         }
       },
       'number' => 1
     }
   ]
 };
-$result_floats{'block_commands'}{'a-float'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'block_commands'}{'a-float'}[0];
-$result_floats{'block_commands'}{'a-float'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'block_commands'}{'a-float'}[0];
+$result_floats{'block_commands'}{'a float'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'block_commands'}{'a float'}[0];
+$result_floats{'block_commands'}{'a float'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'block_commands'}{'a float'}[0];
 
 
 
@@ -582,7 +582,7 @@ $result_converted{'xml'}->{'block_commands'} = '
 <para>in quotation
 </para></quotation>
 
-<float name="b-float" type="a-float" number="1" spaces=" " endspaces=" "><floattype>a float</floattype><floatname spaces=" ">b float</floatname>
+<float name="b-float" type="a float" number="1" spaces=" " endspaces=" "><floattype>a float</floattype><floatname spaces=" ">b float</floatname>
 <para>In float
 </para>
 

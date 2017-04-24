@@ -1,4 +1,4 @@
-# $Id: Makefile.am 6989 2016-02-06 10:38:22Z gavin $
+# $Id: Makefile.am 7749 2017-04-23 12:35:37Z gavin $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
@@ -79,10 +79,6 @@ install:
 
 endif
 
-# just a convenience for running these additional tests.
-long-checks:
-	cd tp/tests && $(MAKE) long-checks
-
 # to be run before making a distribution: ensure that the texinfo.dtd on
 # the web is what we will be releasing.  See README-hacking.
 wget = wget
@@ -115,7 +111,7 @@ po-check:
 	    case $$file in						\
 	      contrib/* ) continue;;					\
 	      djgpp/* | makeinfo/* | man/* | texi2html/* ) continue;;	\
-	      parsetexi/*) continue;;					\
+	      tp/parsetexi/*) continue;;				\
 	      texinfo-*/*) continue;;					\
               tp/maintain/* ) continue;;				\
 	    esac;							\

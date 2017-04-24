@@ -9,7 +9,6 @@ sub toc_out_element_file_name($$$$$)
     my $converter = shift;
     my $element = shift;
     my $target = shift;
-    my $id = shift;
     my $filename = shift;
 
     my $prefix = $converter->{'document_name'};
@@ -18,7 +17,7 @@ sub toc_out_element_file_name($$$$$)
     {
         $filename = "$prefix.".$converter->get_conf('EXTENSION');
     }
-    return ($target, $id, $filename);
+    return ($target, $filename);
 }
 
 1;

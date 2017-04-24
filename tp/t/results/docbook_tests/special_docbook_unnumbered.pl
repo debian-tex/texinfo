@@ -1382,15 +1382,6 @@ $result_errors{'special_docbook_unnumbered'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':23: warning: unreferenced node `colophon\'
-',
-    'file_name' => '',
-    'line_nr' => 23,
-    'macro' => '',
-    'text' => 'unreferenced node `colophon\'',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':23: warning: node `acknowledgements\' is next for `colophon\' in sectioning but not in menu
 ',
     'file_name' => '',

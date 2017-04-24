@@ -736,31 +736,6 @@ $result_nodes{'menu_in_example'} = {
   'extra' => {
     'normalized' => 'Top'
   },
-  'menu_child' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'entry'
-        }
-      ]
-    }
-  },
-  'menus' => [
-    {
-      'cmdname' => 'menu',
-      'extra' => {
-        'end_command' => {
-          'cmdname' => 'end',
-          'extra' => {
-            'command' => {},
-            'command_argument' => 'menu',
-            'text_arg' => 'menu'
-          }
-        }
-      }
-    }
-  ],
-  'node_next' => {},
   'node_up' => {
     'extra' => {
       'manual_content' => [
@@ -773,27 +748,26 @@ $result_nodes{'menu_in_example'} = {
     'type' => 'top_node_up'
   }
 };
-$result_nodes{'menu_in_example'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'menu_in_example'}{'menus'}[0];
-$result_nodes{'menu_in_example'}{'node_next'} = $result_nodes{'menu_in_example'}{'menu_child'};
 $result_nodes{'menu_in_example'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'menu_in_example'};
 
 $result_menus{'menu_in_example'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
-  },
-  'menu_child' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'entry'
-        }
-      ]
-    }
   }
 };
 
-$result_errors{'menu_in_example'} = [];
+$result_errors{'menu_in_example'} = [
+  {
+    'error_line' => ':4: warning: @menu in invalid context
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => '@menu in invalid context',
+    'type' => 'warning'
+  }
+];
 
 
 
@@ -805,7 +779,7 @@ $result_converted{'plaintext'}->{'menu_in_example'} = '* Menu:
      in cartouche in menu comment in menu in example
 
      * (node) menu::      a node in menu
-     * a menu name:(other) node. 
+     * a menu name:(other) node.
 ';
 
 
@@ -894,7 +868,7 @@ $result_converted_errors{'html'}->{'menu_in_example'} = [
 
 
 
-$result_converted{'xml'}->{'menu_in_example'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(entry)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'menu_in_example'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 
 <example endspaces=" ">
 <menu endspaces=" ">

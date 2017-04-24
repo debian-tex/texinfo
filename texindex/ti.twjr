@@ -1,6 +1,6 @@
 \input texinfo   @c -*-texinfo-*-
 @c vim: filetype=texinfo tabstop=2 expandtab
-@c $Id: ti.twjr 6906 2016-01-01 18:33:45Z karl $
+@c $Id: ti.twjr 7753 2017-04-23 13:07:53Z gavin $
 @c %**start of header (This is for running Texinfo on a region.)
 @setfilename texindex.info
 @settitle Texindex @VERSION@: A program for sorting indices
@@ -25,7 +25,8 @@ This @command{texindex} program (version @VERSION@, @UPDATED@) sorts the
 raw index files created by @file{texinfo.tex}.  (This Texinfo source is
 a literate program written using TexiWeb@tie{}Jr., not a user manual.)
 
-Copyright @copyright{} 2014, 2015, 2016 Free Software Foundation, Inc.
+Copyright @copyright{} 2014, 2015, 2016, 2017 Free Software Foundation, 
+Inc.
 
 @quotation
 This program is free software: you can redistribute it and/or modify
@@ -1309,7 +1310,7 @@ function version()
   printf _"Copyright (C) %s Free Software Foundation, Inc.\n\
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
-There is NO WARRANTY, to the extent permitted by law.\n", "2016";
+There is NO WARRANTY, to the extent permitted by law.\n", "2017";
 
   exit EXIT_SUCCESS
 }

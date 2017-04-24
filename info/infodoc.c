@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c 6906 2016-01-01 18:33:45Z karl $
+   $Id: infodoc.c 7665 2017-02-03 23:47:25Z gavin $
 
    Copyright 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
    2007, 2008, 2011, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
@@ -661,7 +661,7 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
   free (result);
   result = xmalloc (1 + reslen);
 
-  i = next = start = 0;
+  next = start = 0;
 
   /* Skip to the beginning of a replaceable function. */
   for (i = start; string[i]; i++)

@@ -17,7 +17,6 @@ top
 * @:                                     Top.                   (line 3)
 * ' <1>:                                 Top.                   (line 3)
 * ``:                                    Top.                   (line 3)
-* é é:                                   Top.                   (line 3)
 * a:                                     Top.                   (line 3)
 * A:                                     Top.                   (line 3)
 * AE:                                    Top.                   (line 3)
@@ -58,4 +57,5 @@ top
 * x:                                     Top.                   (line 3)
 * y:                                     Top.                   (line 3)
 * z:                                     Top.                   (line 3)
+* é é:                                   Top.                   (line 3)
 

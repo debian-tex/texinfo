@@ -659,12 +659,12 @@ $result_converted{'html_text'}->{'enumerate_argument_item'} = '<ol>
 </li><li> numeric second
 </li></ol>
 
-<ol>
+<ol type="A" start="1">
 <li> upper case first
 </li><li> upper case second
 </li></ol>
 
-<ol>
+<ol type="a" start="26">
 <li> lower case first
 </li><li> lower case second
 </li></ol>

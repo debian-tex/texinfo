@@ -968,11 +968,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'begin' => '(strong:',
                 'end' => ':)'
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 51,
-                'macro' => ''
-              },
               'parent' => {},
               'type' => 'definfoenclose_command'
             },

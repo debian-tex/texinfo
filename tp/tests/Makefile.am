@@ -1,4 +1,4 @@
-# $Id: Makefile.am 7036 2016-02-27 17:17:09Z gavin $
+# $Id: Makefile.am 7464 2016-10-23 09:09:40Z gavin $
 # Makefile.am for texinfo/tp/tests.
 # Copyright 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
 #
@@ -19,31 +19,27 @@ $(srcdir)/Makefile.onetst: \
 	cd $(srcdir) \
 	&& $(SHELL) ../maintain/regenerate_cmd_tests.sh "$@" . \
 	  -base '$(base_tests)' \
-	  -long '$(long_tests)' \
 	  -tex_html '$(tex_html_tests)'
 
-base_tests = formatting htmlxref htmlxref-only_mono htmlxref-only_split
-long_tests = sectioning coverage indices nested_formats contents layout
+base_tests = formatting htmlxref htmlxref-only_mono htmlxref-only_split \
+	     sectioning coverage indices nested_formats contents layout
 tex_html_tests = tex_html
 
-DIST_SUBDIRS = many_input_files $(base_tests) $(long_tests) $(tex_html_tests)
+DIST_SUBDIRS = many_input_files $(base_tests) $(tex_html_tests)
 SUBDIRS = . many_input_files
 
-copy-tests: copy-base copy-long
+copy-tests: copy-base
 	cd many_input_files && $(MAKE) copy-tests
 
 copy-base:
 	$(srcdir)/parser_tests.sh -copy $(base_tests)
-
-copy-long:
-	$(srcdir)/parser_tests.sh -copy $(long_tests)
 
 copy-tex-html:
 	$(srcdir)/parser_tests.sh -copy $(tex_html_tests)
 	cd many_input_files && $(MAKE) copy-tex-html
 
 clean-tests:
-	$(srcdir)/parser_tests.sh -clean $(base_tests) $(long_tests) $(tex_html_tests)
+	$(srcdir)/parser_tests.sh -clean $(base_tests) $(tex_html_tests)
 
 other_tests = \
 	t/stdout.sh \
@@ -53,14 +49,11 @@ TESTS = $(one_test_files_generated_list) $(other_tests)
 
 AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir; builddir="$(builddir)"; export buildir; top_builddir="$(top_builddir)"; export top_builddir;
 
-long-checks long-check: all
-	$(MAKE) $(AM_MAKEFLAGS) check LONG_TESTS=yes
-
 all-checks all-check: all
 	$(MAKE) $(AM_MAKEFLAGS) check ALL_TESTS=yes
 
 tex-html-checks tex-html-check: all
-	$(MAKE) $(AM_MAKEFLAGS) check TEX_HTML_TESTS=yes LONG_TESTS=yes
+	$(MAKE) $(AM_MAKEFLAGS) check TEX_HTML_TESTS=yes
 
 # this is in order to have the htmlxref.cnf files in the build dir.
 # This is done in this directory to be sure that the files are there
@@ -68,7 +61,7 @@ tex-html-checks tex-html-check: all
 # Some files are in 2 directories in order to get the same result
 # in both test run locations.
 all-local: htmlxref/htmlxref.cnf htmlxref-only_mono/htmlxref.cnf \
- htmlxref-only_split/htmlxref.cnf htmlxref-only_split/.texinfo/htmlxref.cnf \
+ htmlxref-only_split/htmlxref.cnf \
  equivalent_nodes-noderename.cnf sectioning/equivalent_nodes-noderename.cnf \
  unknown_nodes_renamed-noderename.cnf \
  formatting/unknown_nodes_renamed-noderename.cnf coverage_macro-cr.texi
@@ -81,13 +74,6 @@ htmlxref-only_mono/htmlxref.cnf: htmlxref-only_mono/htmlxref.cnf-ref
 
 htmlxref-only_split/htmlxref.cnf: htmlxref-only_split/htmlxref.cnf-ref
 	${INSTALL_DATA} $(srcdir)/htmlxref-only_split/htmlxref.cnf-ref $@
-
-htmlxref-only_split/.texinfo/htmlxref.cnf: \
- htmlxref-only_split/htmlxref.cnf-texinfo htmlxref-only_split/.texinfo
-	${INSTALL_DATA} $(srcdir)/htmlxref-only_split/htmlxref.cnf-texinfo $@
-
-htmlxref-only_split/.texinfo:
-	$(MKDIR_P) $@
 
 sectioning/equivalent_nodes-noderename.cnf: sectioning/renamednodes.cnf-ref
 	${INSTALL_DATA} $(srcdir)/sectioning/renamednodes.cnf-ref $@

@@ -1,8 +1,8 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c 6877 2015-12-19 16:42:47Z gavin $
+   $Id: variables.c 7666 2017-02-04 00:52:09Z gavin $
 
    Copyright 1993, 1997, 2001, 2002, 2004, 2007, 2008, 2011, 2013,
-   2014, 2015 Free Software Foundation, Inc.
+   2014, 2015, 2017 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -25,6 +25,8 @@
 #include "variables.h"
 #include "terminal.h"
 #include "display.h"
+
+static VARIABLE_ALIST *read_variable_name (char *prompt, WINDOW *window);
 
 /* **************************************************************** */
 /*                                                                  */
@@ -285,7 +287,7 @@ variable_by_name (char *name)
 /* Read the name of an Info variable in the echo area and return the
    address of a VARIABLE_ALIST member.  A return value of NULL indicates
    that no variable could be read. */
-VARIABLE_ALIST *
+static VARIABLE_ALIST *
 read_variable_name (char *prompt, WINDOW *window)
 {
   char *line;

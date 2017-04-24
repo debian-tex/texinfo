@@ -494,6 +494,24 @@ This variable represents MMM Mode.
 @end defvar
 
 @printindex fn
+'],
+['explicit_sort_key',
+'@node Top
+@top
+
+@defindex SK
+
+@SKindex @sortas{A} bbbbbbb (first)
+@SKindex @sortas{B} aaaaaaa (second)
+@SKindex @sortas{0} zero sort key
+@SKindex @b{aaa @sortas{invalid nesting}}
+
+in a reuglar para @sortas{foo}. @code{inside another @sortas{command}}.
+
+@sortas{and cmd @b{inside}}.
+@url{and cmd @sortas{inside}}.
+
+@printindex SK
 ']
 );
 

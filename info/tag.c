@@ -1,6 +1,6 @@
 /* tag.c -- Functions to handle Info tags (that is, the special
    construct for images, not the "tag table" of starting position.)
-   $Id: tag.c 5884 2014-10-22 22:19:04Z gavin $
+   $Id: tag.c 7656 2017-01-30 19:26:05Z gavin $
 
    Copyright 2012, 2013, 2014 Free Software Foundation, Inc.
 
@@ -204,21 +204,26 @@ find_tag_handler (char *tag, size_t taglen)
 
 /* Expand \b[...\b] construct at *INPUT.  If encountered, append the
    expanded text to OUTBUF, advance *INPUT past the tag, and return 1.
-   Otherwise, return 0.  If it is an index tag, set IS_INDEX to 1. */
+   Otherwise, return 0.  If it is an index tag, set IS_INDEX to 1.
+   *INPUT points into a null-terminated area which may however contain other 
+   null characters.  INPUT_END points to the end of this area. */
 int
-tag_expand (char **input, struct text_buffer *outbuf, int *is_index)
+tag_expand (char **input, char *input_end,
+            struct text_buffer *outbuf, int *is_index)
 {
   char *p = *input;
   char *q;
   size_t len;
   struct tag_handler *tp;
 
-  if (memcmp(p, "\0\b[", 3) != 0)       /* opening magic? */
+  if (p >= input_end - 3
+    || memcmp(p, "\0\b[", 3) != 0)       /* opening magic? */
     return 0;
 
   p += 3;
   q = p + strlen (p);
-  if (memcmp (q + 1, "\b]", 2)) /* closing magic? */
+  if (q >= input_end - 3
+      || memcmp (q + 1, "\b]", 2)) /* closing magic? */
     return 0; /* Not a proper tag. */
 
   /* Output is different for index nodes */

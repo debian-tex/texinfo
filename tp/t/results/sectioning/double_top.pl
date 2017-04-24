@@ -310,7 +310,7 @@ $result_errors{'double_top'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => 'here is the previous definition as @node',
-    'type' => 'error continuation'
+    'type' => 'error'
   },
   {
     'error_line' => ':5: @anchor `TOP\' previously defined
@@ -328,7 +328,7 @@ $result_errors{'double_top'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => 'here is the previous definition as @node',
-    'type' => 'error continuation'
+    'type' => 'error'
   },
   {
     'error_line' => ':1: warning: Next pointer `top\' (for node `ToP\') different from node name `ToP\'

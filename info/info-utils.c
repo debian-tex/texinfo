@@ -1,8 +1,8 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c 7332 2016-09-03 16:20:45Z gavin $
+   $Id: info-utils.c 7708 2017-04-08 21:39:32Z gavin $
 
    Copyright 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012,
-   2013, 2014, 2015 Free Software Foundation, Inc.
+   2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -188,6 +188,7 @@ read_quoted_string (char *start, char *terminator, int lines, char **output)
 
       if (*terminator && !(start + 1)[len])
         {
+          /* No closing 177 byte. */
           len = 0;
           *output = 0;
         }
@@ -196,9 +197,9 @@ read_quoted_string (char *start, char *terminator, int lines, char **output)
           *output = xmalloc (len + 1);
           strncpy (*output, start + 1, len);
           (*output)[len] = '\0';
+          len += 2; /* Count the two 177 bytes. */
         }
 
-      len += 2;
     }
 
   if (nl)
@@ -1150,13 +1151,15 @@ parse_top_node_line (NODE *node)
         }
       ptr += skip_whitespace (ptr);
 
+      /* Get length of a bracketed filename component. */
       if (*ptr != '(')
         value_length = 0;
       else
         value_length = read_bracketed_filename (ptr, 0);
 
-      /* Separate at commas or newlines, so it will work for
-         filenames including full stops. */
+      /* Get length of node name, or filename if following "File:".  Note 
+         that .  is not included in the second argument here in order to 
+         support this character in file names. */
       value_length += read_quoted_string (ptr + value_length,
                                           "\n\r\t,", 1, &nodename);
       if (store_in)
@@ -1169,11 +1172,8 @@ parse_top_node_line (NODE *node)
       free (nodename);
       ptr += value_length;
 
-      if (*ptr == '\n')
-        {
-          ptr++;
-          break;
-        }
+      if (*ptr == '\n' || !*ptr)
+        break;
 
       ptr += 1; /* Point after field terminator */
     }
@@ -1259,10 +1259,11 @@ scan_reference_marker (REFERENCE *entry, int in_parentheses)
    at the first character after the colon terminating the label.  Return 0 if
    invalid syntax is encountered. */
 static int
-scan_reference_label (REFERENCE *entry)
+scan_reference_label (REFERENCE *entry, int in_index)
 {
   char *dummy;
-  int label_len = 0;
+  int max_lines;
+  int len, label_len = 0;
 
   /* Handle case of cross-reference like (FILE)^?NODE^?::. */
   if (inptr[0] == '(')
@@ -1271,13 +1272,43 @@ scan_reference_label (REFERENCE *entry)
   /* Search forward to ":" to get label name.  Cross-references may have
      a newline in the middle. */
   if (entry->type == REFERENCE_MENU_ITEM)
-    label_len += read_quoted_string (inptr + label_len, ":", 1, &dummy);
+    max_lines = 1;
   else
-    label_len += read_quoted_string (inptr + label_len, ":", 2, &dummy);
-  free (dummy);
-    
-  if (label_len == 0)
-    return 0;
+    max_lines = 2;
+  if (!in_index || inptr[label_len] == '\177')
+    {
+      len = read_quoted_string (inptr + label_len, ":", max_lines, &dummy);
+      free (dummy);
+      if (!len)
+        return 0; /* Input invalid. */
+      label_len += len;
+    }
+  else
+    {
+      /* If in an index node, go forward to the last colon on the line
+         (not preceded by a newline, NUL or DEL).  This is in order to
+         support index entries containing colons.  This should work fine
+         as long as the node name does not contain a colon as well. */
+
+      char *p;
+      int n, m = 0;
+      p = inptr + label_len;
+
+      while (1)
+        {
+          n = strcspn (p, ":\n\177");
+          if (p[n] == ':')
+            {
+              m += n + 1;
+              p += n + 1;
+              continue;
+            }
+          break;
+        }
+      if (m == 0)
+        return 0; /* no : found */
+      label_len += m - 1;
+    }
 
   entry->label = xmalloc (label_len + 1);
   memcpy (entry->label, inptr, label_len);
@@ -1528,7 +1559,7 @@ scan_info_tag (NODE *node, int *in_index, FILE_BUFFER *fb)
 
   text_buffer_init (expansion);
 
-  if (tag_expand (&p1, expansion, in_index))
+  if (tag_expand (&p1, input_start + input_length, expansion, in_index))
     {
       if (*in_index)
         node->flags |= N_IsIndex;
@@ -1675,7 +1706,7 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
           save_conversion_state ();
           
           if (!scan_reference_marker (entry, in_parentheses)
-              || !scan_reference_label (entry)
+              || !scan_reference_label (entry, in_index)
               || !scan_reference_target (entry, node, in_parentheses))
             {
               /* This is not a menu entry or reference.  Do not add to our 
@@ -1691,7 +1722,7 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
           add_pointer_to_array (entry, refs_index, refs, refs_slots, 50);
         }
       /* Was "* Menu:" seen?  If so, search for menu entries hereafter. */
-      else if (!in_menu && !memcmp (match, INFO_MENU_LABEL,
+      else if (!in_menu && !strncmp (match, INFO_MENU_LABEL,
                                strlen (INFO_MENU_LABEL)))
         {
           in_menu = 1;

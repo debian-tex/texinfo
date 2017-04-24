@@ -9,6 +9,7 @@
 
 tp/Texinfo/Common.pm
 tp/Texinfo/Parser.pm
+tp/Texinfo/Structuring.pm
 tp/Texinfo/Convert/Converter.pm
 tp/Texinfo/Convert/DocBook.pm
 tp/Texinfo/Convert/IXIN.pm

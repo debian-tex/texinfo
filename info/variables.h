@@ -1,8 +1,8 @@
 /* variables.h -- Description of user visible variables in Info.
-   $Id: variables.h 7013 2016-02-13 21:19:19Z gavin $
+   $Id: variables.h 7666 2017-02-04 00:52:09Z gavin $
 
    Copyright 1993, 1997, 2004, 2007, 2011, 2013, 2014, 2015,
-   2016 Free Software Foundation, Inc.
+   2016, 2017 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -45,11 +45,6 @@ typedef struct {
 #define SET_IN_CONFIG_FILE 1
 #define SET_ON_COMMAND_LINE 2
 #define SET_IN_SESSION 4
-
-/* Read the name of an Info variable in the echo area and return the
-   address of a VARIABLE_ALIST member.  A return value of NULL indicates
-   that no variable could be read. */
-VARIABLE_ALIST *read_variable_name (char *prompt, WINDOW *window);
 
 VARIABLE_ALIST *variable_by_name (char *name);
 

@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2016 Free Software Foundation, Inc.
+# Copyright (C) 2002-2017 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -47,7 +47,11 @@ AC_DEFUN([gl_EARLY],
   # Code from module alloca-opt:
   # Code from module argz:
   # Code from module btowc:
+  # Code from module builtin-expect:
   # Code from module configmake:
+  # Code from module dirname-lgpl:
+  # Code from module dosname:
+  # Code from module double-slash-root:
   # Code from module errno:
   # Code from module error:
   # Code from module exitfail:
@@ -56,6 +60,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module float:
   # Code from module getopt-gnu:
   # Code from module getopt-posix:
+  # Code from module getprogname:
   # Code from module gettext:
   # Code from module gettext-h:
   # Code from module hard-locale:
@@ -65,6 +70,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module intprops:
   # Code from module iswblank:
   # Code from module langinfo:
+  # Code from module limits-h:
   # Code from module localcharset:
   # Code from module locale:
   # Code from module localeconv:
@@ -165,6 +171,8 @@ AC_DEFUN([gl_INIT],
   if test -n "$ARGZ_H"; then
     AC_LIBOBJ([argz])
   fi
+  gl_DIRNAME_LGPL
+  gl_DOUBLE_SLASH_ROOT
   gl_HEADER_ERRNO_H
   gl_ERROR
   if test $ac_cv_lib_error_at_line = no; then
@@ -183,24 +191,15 @@ AC_DEFUN([gl_INIT],
     AC_LIBOBJ([itold])
   fi
   gl_FUNC_GETOPT_GNU
-  if test $REPLACE_GETOPT = 1; then
-    AC_LIBOBJ([getopt])
-    AC_LIBOBJ([getopt1])
-    gl_PREREQ_GETOPT
-    dnl Arrange for unistd.h to include getopt.h.
-    GNULIB_GL_UNISTD_H_GETOPT=1
-  fi
-  AC_SUBST([GNULIB_GL_UNISTD_H_GETOPT])
-  gl_MODULE_INDICATOR_FOR_TESTS([getopt-gnu])
   gl_FUNC_GETOPT_POSIX
   if test $REPLACE_GETOPT = 1; then
     AC_LIBOBJ([getopt])
     AC_LIBOBJ([getopt1])
-    gl_PREREQ_GETOPT
     dnl Arrange for unistd.h to include getopt.h.
     GNULIB_GL_UNISTD_H_GETOPT=1
   fi
   AC_SUBST([GNULIB_GL_UNISTD_H_GETOPT])
+  gl_FUNC_GETPROGNAME
   dnl you must add AM_GNU_GETTEXT([external]) or similar to configure.ac.
   AM_GNU_GETTEXT_VERSION([0.18.1])
   AC_SUBST([LIBINTL])
@@ -217,6 +216,12 @@ AC_DEFUN([gl_INIT],
     fi
   fi
   gl_WCTYPE_MODULE_INDICATOR([iswblank])
+  gl_LIMITS_H
+  gl_FUNC_MALLOC_POSIX
+  if test $REPLACE_MALLOC = 1; then
+    AC_LIBOBJ([malloc])
+  fi
+  gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   gl_MALLOCA
   gl_MBCHAR
   gl_MBITER
@@ -325,6 +330,7 @@ AC_DEFUN([gl_INIT],
   gl_WCHAR_MODULE_INDICATOR([wcwidth])
   gl_XALLOC
   gl_gnulib_enabled_btowc=false
+  gl_gnulib_enabled_37f71b604aa9c54446783d80f42fe547=false
   gl_gnulib_enabled_configmake=false
   gl_gnulib_enabled_30838f5439487421042f2225bed3af76=false
   gl_gnulib_enabled_intprops=false
@@ -333,7 +339,6 @@ AC_DEFUN([gl_INIT],
   gl_gnulib_enabled_locale=false
   gl_gnulib_enabled_localeconv=false
   gl_gnulib_enabled_lock=false
-  gl_gnulib_enabled_ef455225c00f5049c808c2eda3e76866=false
   gl_gnulib_enabled_mbtowc=false
   gl_gnulib_enabled_mempcpy=false
   gl_gnulib_enabled_f691f076f650964c9f5598c3ee487616=false
@@ -362,6 +367,13 @@ AC_DEFUN([gl_INIT],
       if test $HAVE_BTOWC = 0 || test $REPLACE_BTOWC = 1; then
         func_gl_gnulib_m4code_mbtowc
       fi
+    fi
+  }
+  func_gl_gnulib_m4code_37f71b604aa9c54446783d80f42fe547 ()
+  {
+    if ! $gl_gnulib_enabled_37f71b604aa9c54446783d80f42fe547; then
+      gl___BUILTIN_EXPECT
+      gl_gnulib_enabled_37f71b604aa9c54446783d80f42fe547=true
     fi
   }
   func_gl_gnulib_m4code_configmake ()
@@ -428,17 +440,6 @@ AC_DEFUN([gl_INIT],
       gl_MODULE_INDICATOR([lock])
       gl_gnulib_enabled_lock=true
       func_gl_gnulib_m4code_threadlib
-    fi
-  }
-  func_gl_gnulib_m4code_ef455225c00f5049c808c2eda3e76866 ()
-  {
-    if ! $gl_gnulib_enabled_ef455225c00f5049c808c2eda3e76866; then
-      gl_FUNC_MALLOC_POSIX
-      if test $REPLACE_MALLOC = 1; then
-        AC_LIBOBJ([malloc])
-      fi
-      gl_STDLIB_MODULE_INDICATOR([malloc-posix])
-      gl_gnulib_enabled_ef455225c00f5049c808c2eda3e76866=true
     fi
   }
   func_gl_gnulib_m4code_mbtowc ()
@@ -563,6 +564,9 @@ AC_DEFUN([gl_INIT],
       fi
       gl_STRING_MODULE_INDICATOR([strstr])
       gl_gnulib_enabled_f84f170cca5f5b09d22686d5b833aa41=true
+      if test $REPLACE_STRSTR = 1; then
+        func_gl_gnulib_m4code_37f71b604aa9c54446783d80f42fe547
+      fi
     fi
   }
   func_gl_gnulib_m4code_threadlib ()
@@ -624,6 +628,12 @@ AC_DEFUN([gl_INIT],
   if test $ac_use_included_regex = yes; then
     func_gl_gnulib_m4code_btowc
   fi
+  if test $ac_use_included_regex = yes; then
+    func_gl_gnulib_m4code_37f71b604aa9c54446783d80f42fe547
+  fi
+  if test $ac_use_included_regex = yes; then
+    func_gl_gnulib_m4code_intprops
+  fi
   if test "$ac_cv_gnu_library_2_1:$ac_use_included_regex" = no:yes; then
     func_gl_gnulib_m4code_lock
   fi
@@ -632,9 +642,6 @@ AC_DEFUN([gl_INIT],
   fi
   if test $ac_use_included_regex = yes; then
     func_gl_gnulib_m4code_wcrtomb
-  fi
-  if test $ac_cv_func_strdup = no || test $REPLACE_STRDUP = 1; then
-    func_gl_gnulib_m4code_ef455225c00f5049c808c2eda3e76866
   fi
   if test $REPLACE_STRERROR = 1; then
     func_gl_gnulib_m4code_intprops
@@ -650,6 +657,7 @@ AC_DEFUN([gl_INIT],
   fi
   m4_pattern_allow([^gl_GNULIB_ENABLED_])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_btowc], [$gl_gnulib_enabled_btowc])
+  AM_CONDITIONAL([gl_GNULIB_ENABLED_37f71b604aa9c54446783d80f42fe547], [$gl_gnulib_enabled_37f71b604aa9c54446783d80f42fe547])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_configmake], [$gl_gnulib_enabled_configmake])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_30838f5439487421042f2225bed3af76], [$gl_gnulib_enabled_30838f5439487421042f2225bed3af76])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_intprops], [$gl_gnulib_enabled_intprops])
@@ -658,7 +666,6 @@ AC_DEFUN([gl_INIT],
   AM_CONDITIONAL([gl_GNULIB_ENABLED_locale], [$gl_gnulib_enabled_locale])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_localeconv], [$gl_gnulib_enabled_localeconv])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_lock], [$gl_gnulib_enabled_lock])
-  AM_CONDITIONAL([gl_GNULIB_ENABLED_ef455225c00f5049c808c2eda3e76866], [$gl_gnulib_enabled_ef455225c00f5049c808c2eda3e76866])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_mbtowc], [$gl_gnulib_enabled_mbtowc])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_mempcpy], [$gl_gnulib_enabled_mempcpy])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_f691f076f650964c9f5598c3ee487616], [$gl_gnulib_enabled_f691f076f650964c9f5598c3ee487616])
@@ -816,17 +823,20 @@ AC_DEFUN([gltests_LIBSOURCES], [
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
   build-aux/config.rpath
-  build-aux/snippet/_Noreturn.h
-  build-aux/snippet/arg-nonnull.h
-  build-aux/snippet/c++defs.h
-  build-aux/snippet/warn-on-use.h
+  lib/_Noreturn.h
   lib/alloca.in.h
+  lib/arg-nonnull.h
   lib/argz.c
   lib/argz.in.h
   lib/asnprintf.c
   lib/asprintf.c
+  lib/basename-lgpl.c
   lib/btowc.c
+  lib/c++defs.h
   lib/config.charset
+  lib/dirname-lgpl.c
+  lib/dirname.h
+  lib/dosname.h
   lib/errno.in.h
   lib/error.c
   lib/error.h
@@ -835,10 +845,17 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/float+.h
   lib/float.c
   lib/float.in.h
+  lib/getopt-cdefs.in.h
+  lib/getopt-core.h
+  lib/getopt-ext.h
+  lib/getopt-pfx-core.h
+  lib/getopt-pfx-ext.h
   lib/getopt.c
   lib/getopt.in.h
   lib/getopt1.c
   lib/getopt_int.h
+  lib/getprogname.c
+  lib/getprogname.h
   lib/gettext.h
   lib/glthread/lock.c
   lib/glthread/lock.h
@@ -849,6 +866,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/iswblank.c
   lib/itold.c
   lib/langinfo.in.h
+  lib/limits.in.h
   lib/localcharset.c
   lib/localcharset.h
   lib/locale.in.h
@@ -914,6 +932,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/strerror.c
   lib/string.in.h
   lib/strings.in.h
+  lib/stripslash.c
   lib/strncasecmp.c
   lib/strndup.c
   lib/strnlen.c
@@ -931,6 +950,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/vasnprintf.h
   lib/vasprintf.c
   lib/verify.h
+  lib/warn-on-use.h
   lib/wchar.in.h
   lib/wcrtomb.c
   lib/wctype-h.c
@@ -947,8 +967,11 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/alloca.m4
   m4/argz.m4
   m4/btowc.m4
+  m4/builtin-expect.m4
   m4/codeset.m4
   m4/configmake.m4
+  m4/dirname.m4
+  m4/double-slash-root.m4
   m4/eealloc.m4
   m4/errno_h.m4
   m4/error.m4
@@ -958,6 +981,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/fcntl-o.m4
   m4/float_h.m4
   m4/getopt.m4
+  m4/getprogname.m4
   m4/gettext.m4
   m4/glibc2.m4
   m4/glibc21.m4
@@ -980,6 +1004,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/lib-link.m4
   m4/lib-prefix.m4
   m4/libunistring-base.m4
+  m4/limits-h.m4
   m4/localcharset.m4
   m4/locale-fr.m4
   m4/locale-ja.m4
@@ -1015,6 +1040,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/printf-posix.m4
   m4/printf.m4
   m4/progtest.m4
+  m4/pthread_rwlock_rdlock.m4
   m4/regex.m4
   m4/size_max.m4
   m4/ssize_t.m4

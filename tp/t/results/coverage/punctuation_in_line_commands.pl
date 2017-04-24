@@ -552,7 +552,7 @@ $result_trees{'punctuation_in_line_commands'} = {
               'content' => [
                 {}
               ],
-              'normalized' => 'float-type_0021-After-punc'
+              'normalized' => 'float type! After punc'
             }
           },
           'line_nr' => {
@@ -723,7 +723,7 @@ $result_trees{'punctuation_in_line_commands'} = {
               'content' => [
                 {}
               ],
-              'normalized' => 'float-type_0021-After-punc'
+              'normalized' => 'float type! After punc'
             }
           },
           'line_nr' => {
@@ -774,7 +774,7 @@ $result_trees{'punctuation_in_line_commands'} = {
               'content' => [
                 {}
               ],
-              'normalized' => 'float-type_0021-After-punc'
+              'normalized' => 'float type! After punc'
             }
           },
           'line_nr' => {
@@ -1391,7 +1391,7 @@ $result_errors{'punctuation_in_line_commands'} = [];
 
 
 $result_floats{'punctuation_in_line_commands'} = {
-  'float-type_0021-After-punc' => [
+  'float type! After punc' => [
     {
       'cmdname' => 'float',
       'extra' => {
@@ -1421,7 +1421,7 @@ $result_floats{'punctuation_in_line_commands'} = {
               'text' => 'float type! After punc'
             }
           ],
-          'normalized' => 'float-type_0021-After-punc'
+          'normalized' => 'float type! After punc'
         }
       },
       'number' => 1
@@ -1451,18 +1451,18 @@ $result_floats{'punctuation_in_line_commands'} = {
               'text' => 'float type! After punc'
             }
           ],
-          'normalized' => 'float-type_0021-After-punc'
+          'normalized' => 'float type! After punc'
         }
       },
       'number' => 2
     }
   ]
 };
-$result_floats{'punctuation_in_line_commands'}{'float-type_0021-After-punc'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'punctuation_in_line_commands'}{'float-type_0021-After-punc'}[0];
-$result_floats{'punctuation_in_line_commands'}{'float-type_0021-After-punc'}[0]{'extra'}{'shortcaption'}{'extra'}{'float'} = $result_floats{'punctuation_in_line_commands'}{'float-type_0021-After-punc'}[0];
-$result_floats{'punctuation_in_line_commands'}{'float-type_0021-After-punc'}[1]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'punctuation_in_line_commands'}{'float-type_0021-After-punc'}[1];
-$result_floats{'punctuation_in_line_commands'}{'float-type_0021-After-punc'}[1]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'punctuation_in_line_commands'}{'float-type_0021-After-punc'}[1];
-$result_floats{'punctuation_in_line_commands'}{'float-type_0021-After-punc'}[1]{'extra'}{'float_section'} = $result_floats{'punctuation_in_line_commands'}{'float-type_0021-After-punc'}[0]{'extra'}{'float_section'};
+$result_floats{'punctuation_in_line_commands'}{'float type! After punc'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'punctuation_in_line_commands'}{'float type! After punc'}[0];
+$result_floats{'punctuation_in_line_commands'}{'float type! After punc'}[0]{'extra'}{'shortcaption'}{'extra'}{'float'} = $result_floats{'punctuation_in_line_commands'}{'float type! After punc'}[0];
+$result_floats{'punctuation_in_line_commands'}{'float type! After punc'}[1]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'punctuation_in_line_commands'}{'float type! After punc'}[1];
+$result_floats{'punctuation_in_line_commands'}{'float type! After punc'}[1]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'punctuation_in_line_commands'}{'float type! After punc'}[1];
+$result_floats{'punctuation_in_line_commands'}{'float type! After punc'}[1]{'extra'}{'float_section'} = $result_floats{'punctuation_in_line_commands'}{'float type! After punc'}[0]{'extra'}{'float_section'};
 
 
 
@@ -1573,17 +1573,17 @@ $result_converted{'xml'}->{'punctuation_in_line_commands'} = '
 </para><exdent spaces=" ">exdent quotation! After punc</exdent>
 </quotation>
 
-<float name="float-label_0021-After-punc" type="float-type_0021-After-punc" number="1" spaces=" " endspaces=" "><floattype>float type! After punc</floattype><floatname spaces=" ">float label! After punc</floatname>
+<float name="float-label_0021-After-punc" type="float type! After punc" number="1" spaces=" " endspaces=" "><floattype>float type! After punc</floattype><floatname spaces=" ">float label! After punc</floatname>
 <para>In float
 </para><shortcaption><para>shortcaption! After punc</para></shortcaption>
 </float>
 
-<float name="label-with-caption" type="float-type_0021-After-punc" number="2" spaces=" " endspaces=" "><floattype>float type! After punc</floattype><floatname spaces=" ">label with caption</floatname>
+<float name="label-with-caption" type="float type! After punc" number="2" spaces=" " endspaces=" "><floattype>float type! After punc</floattype><floatname spaces=" ">label with caption</floatname>
 <para>In float with caption.
 </para><caption><para>caption! After punc</para></caption>
 </float>
 
-<listoffloats type="float-type_0021-After-punc" spaces=" ">float type! After punc</listoffloats>
+<listoffloats type="float type! After punc" spaces=" ">float type! After punc</listoffloats>
 
 <cindex index="cp" spaces=" "><indexterm index="cp" number="1">index! After punc</indexterm></cindex>
 

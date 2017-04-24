@@ -1162,7 +1162,7 @@ $result_errors{'before_node_and_section'} = [
     'line_nr' => 7,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   }
 ];
 

@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac 7353 2016-09-10 13:03:54Z gavin $
+# $Id: configure.ac 7722 2017-04-14 15:47:15Z gavin $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
 # 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
@@ -12,7 +12,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [6.3], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [6.3.90], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -35,7 +35,7 @@ AC_CONFIG_SRCDIR([info/info.c])
 # 3. It may be kept as is in case there were no change in the DTD
 #    between releases.  This is rare, but has happened.
 #
-TEXINFO_DTD_VERSION=6.0
+TEXINFO_DTD_VERSION=6.3dev
 AC_SUBST([TEXINFO_DTD_VERSION])
 
 # Conditional texi2html support.
@@ -63,6 +63,7 @@ fi
 AC_ARG_VAR([PERL_EXT_CFLAGS], [Compiler flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_CPPFLAGS], [C preprocessor flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_LDFLAGS], [Linker flags for a Perl extension])
+AC_ARG_VAR([PERL_EXT_CC], [Compiler for a Perl extension])
 
 AC_MSG_CHECKING([Perl version and Encode module])
 if $PERL -e "use 5.007_003; use Encode;" > /dev/null 2>&1; then
@@ -336,9 +337,9 @@ AC_SUBST([USE_UNICODE])
 AC_SUBST([USE_EXTERNAL_UNIDECODE])
 
 # i18n support.  To update to a new version of gettext, run:
-#   gettextize -f -c
+#   gettextize -f --po-dir=po --po-dir=po_document 
 # See http://gnu.org/s/gnulib/manual/html_node/gettextize-and-autopoint.html.
-AM_GNU_GETTEXT_VERSION([0.19.6])
+AM_GNU_GETTEXT_VERSION([0.19.8])
 AM_GNU_GETTEXT([external])
 
 USE_EXTERNAL_LIBINTL=no
@@ -361,11 +362,11 @@ AC_ARG_ENABLE([perl-xs],
 # Set xs_srcdir to the path from XSParagraph builddir to srcdir
 case $srcdir in
   .)  # We are building in place.
-    xs_srcdir=. ;;
+    xs_srcdir=../../.. ;;
   [[\\/]]* | ?:[[\\/]]* )  # Absolute name.
-    xs_srcdir=$srcdir/tp/Texinfo/Convert/XSParagraph ;;
+    xs_srcdir=$srcdir/tp ;;
   *) # Relative name.
-    xs_srcdir=../../../../$srcdir/tp/Texinfo/Convert/XSParagraph ;;
+    xs_srcdir=../../../../$srcdir/tp ;;
 esac
 
 # Pass on all the options we were given to the subsidiary configure 
@@ -393,7 +394,7 @@ if test $enable_xs = check; then
    && make TestXS.la \
    && ${PERL} -I . \
               -I ${xs_srcdir} \
-              -w ${xs_srcdir}/fail.pl \
+              -w ${xs_srcdir}/Texinfo/Convert/XSParagraph/fail.pl \
       | grep 'message from XS module') \
   && enable_xs=yes
   AC_MSG_CHECKING([whether we can build Perl extension (XS) modules])
@@ -403,6 +404,10 @@ fi
 AC_SUBST([enable_xs])
 
 AM_CONDITIONAL([DISABLE_XS], [test "z$enable_xs" = zno])
+
+if test $enable_xs = yes; then
+  AC_CONFIG_SUBDIRS([tp/Texinfo/MiscXS])
+fi
 
 
 # Tests.

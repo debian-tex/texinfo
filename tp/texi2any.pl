@@ -2,7 +2,7 @@
 
 # texi2any: Texinfo converter.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
 # Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
@@ -100,7 +100,7 @@ BEGIN
 BEGIN {
   my $enable_xs = '@enable_xs@';
   if ($enable_xs eq 'no') {
-    package Texinfo::Convert::Paragraph;
+    package Texinfo::XSLoader;
     our $disable_XS;
     $disable_XS = 1;
   }
@@ -277,6 +277,21 @@ if ($configured_version eq '@' . 'PACKAGE_VERSION@') {
     $configured_version = $Texinfo::Parser::VERSION;
   }
 }
+
+# Compare the version of this file with the version of the modules
+# it is using.  If they are different, don't go any further.  This
+# can happen if multiple versions of texi2any are installed under a
+# different names, e.g. with the --program-suffix option to 'configure'.
+# The version in Common.pm is checked because that file has been present
+# since Texinfo 5.0 (the first release with texi2any in Perl).
+if ($configured_version ne $Texinfo::Common::VERSION
+    and $configured_version ne $Texinfo::Common::VERSION."+dev") {
+  warn "This is texi2any $configured_version but modules ".
+       "for texi2any $Texinfo::Common::VERSION found!\n";
+  die "Your installation of Texinfo is broken; aborting.\n";
+}
+
+
 my $configured_package = '@PACKAGE@';
 $configured_package = 'Texinfo' if ($configured_package eq '@' . 'PACKAGE@');
 my $configured_name = '@PACKAGE_NAME@';
@@ -873,7 +888,7 @@ my $result_options = Getopt::Long::GetOptions (
     printf __("Copyright (C) %s Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.\n"), "2016";
+There is NO WARRANTY, to the extent permitted by law.\n"), "2017";
       exit 0;},
  'macro-expand|E=s' => sub { set_from_cmdline('MACRO_EXPAND', $_[1]); },
  'ifhtml!' => sub { set_expansion('html', $_[1]); },
@@ -1070,6 +1085,7 @@ if ($call_texi2dvi) {
 
 require Texinfo::Parser;
 require Texinfo::Structuring;
+require Texinfo::Transformations;
 # Avoid loading these modules until down here to speed up the case
 # when they are not needed.
 
@@ -1234,7 +1250,7 @@ while(@input_files) {
 
   if ($tree_transformations{'fill_gaps_in_sectioning'}) {
     my ($filled_contents, $added_sections) 
-      = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
+      = Texinfo::Transformations::fill_gaps_in_sectioning($tree);
     if (!defined($filled_contents)) {
       document_warn(__("fill_gaps_in_sectioning transformation return no result. No section?"));
     } else {
@@ -1244,7 +1260,7 @@ while(@input_files) {
   if ((get_conf('SIMPLE_MENU')
        and $formats_table{$format}->{'simple_menu'})
       or $tree_transformations{'simple_menus'}) {
-    $parser->Texinfo::Structuring::set_menus_to_simple_menu();
+    $parser->Texinfo::Transformations::set_menus_to_simple_menu();
   }
 
   if (defined(get_conf('MACRO_EXPAND')) and $file_number == 0) {
@@ -1287,7 +1303,7 @@ while(@input_files) {
 
   if ($tree_transformations{'insert_nodes_for_sectioning_commands'}) {
     my ($modified_contents, $added_nodes)
-     = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
+     = Texinfo::Transformations::insert_nodes_for_sectioning_commands($parser, $tree);
     if (!defined($modified_contents)) {
       document_warn(__(
        "insert_nodes_for_sectioning_commands transformation return no result. No section?"));
@@ -1308,17 +1324,11 @@ while(@input_files) {
   }
 
   if ($tree_transformations{'complete_tree_nodes_menus'}) {
-    Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree);
-  } elsif (!$parser->{'validatemenus'}) {
-    Texinfo::Structuring::add_missing_menus($parser, $tree);
-  }
-
-  if ($tree_transformations{'indent_menu_descriptions'}) {
-    Texinfo::Convert::Plaintext::indent_menu_descriptions(undef, $parser);
+    Texinfo::Transformations::complete_tree_nodes_menus($parser, $tree);
   }
 
   if ($tree_transformations{'regenerate_master_menu'}) {
-    Texinfo::Structuring::regenerate_master_menu($parser);
+    Texinfo::Transformations::regenerate_master_menu($parser);
   }
 
   # this can be done for every format, since information is already gathered
@@ -1331,6 +1341,7 @@ while(@input_files) {
   if ($formats_table{$format}->{'floats'}) {
     Texinfo::Structuring::number_floats($floats);
   }
+
   $error_count = handle_errors($parser, $error_count, \@opened_files);
 
   if ($format eq 'structure') {

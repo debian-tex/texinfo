@@ -1,4 +1,4 @@
-# $Id: Common.pm 7353 2016-09-10 13:03:54Z gavin $
+# $Id: Common.pm 7689 2017-03-19 18:17:39Z gavin $
 # Common.pm: definition of commands. Common code of other Texinfo modules.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -71,7 +71,7 @@ valid_tree_transformation
 @EXPORT = qw(
 );
 
-$VERSION = '6.2';
+$VERSION = '6.3.90';
 
 # i18n
 sub N__($)
@@ -122,6 +122,7 @@ our %default_parser_state_configuration = (
   'labels'          => {},    # keys are normalized label names, as described
                               # in the `HTML Xref' node.  Value should be
                               # a node/anchor or float in the tree.
+  'targets' => [],            # array of elements used to build 'labels'
   'macros' => {},             # the key is the user-defined macro name.  The 
                               # value is the reference on a macro element 
                               # as obtained by parsing the @macro
@@ -203,8 +204,8 @@ my @obsolete_variables = ('TOP_HEADING_AT_BEGINNING', 'USE_SECTIONS',
   'IDX_SUMMARY', 'I18N_PERL_HASH', 'USE_UNICODE', 'USE_NLS',
   'USE_UP_FOR_ADJACENT_NODES', 'SEPARATE_DESCRIPTION', 
   'NEW_CROSSREF_STYLE', 'SHORT_REF', 'IGNORE_PREAMBLE_TEXT',
-  'OUT_ENCODING', 
-  'IN_ENCODING', 'DEFAULT_ENCODING');
+  'OUT_ENCODING', 'IN_ENCODING', 'DEFAULT_ENCODING',
+  'MACRO_BODY_IGNORES_LEADING_SPACE');
 
 my @variable_settables_not_used = ('COMPLETE_IMAGE_PATHS', 'TOC_FILE',
   'SPLIT_INDEX');
@@ -253,10 +254,10 @@ my @variable_string_settables = (
   'KEEP_TOP_EXTERNAL_REF',
   'TEXI2HTML', 'IMAGE_LINK_PREFIX', 'FIX_TEXINFO',
   'TREE_TRANSFORMATIONS', 'BASEFILENAME_LENGTH',
-  'TEXTCONTENT_COMMENT', 'XREF_USE_FLOAT_LABEL', 'XREF_USE_NODE_NAME_ARG',
-  'MACRO_BODY_IGNORES_LEADING_SPACE', 'CHECK_HTMLXREF',
-  'TEXINFO_DTD_VERSION', 'TEXINFO_COLUMN_FOR_DESCRIPTION',
-  'TEXINFO_OUTPUT_FORMAT', 'INFO_SPECIAL_CHARS_WARNING',
+  'TEXTCONTENT_COMMENT', 'XREF_USE_FLOAT_LABEL',
+  'XREF_USE_NODE_NAME_ARG', 'CHECK_HTMLXREF',
+  'TEXINFO_DTD_VERSION', 'TEXINFO_OUTPUT_FORMAT',
+  'INFO_SPECIAL_CHARS_WARNING',
   'INDEX_SPECIAL_CHARS_WARNING', 'INFO_SPECIAL_CHARS_QUOTE',
   'HTMLXREF'
 );
@@ -696,13 +697,13 @@ our %def_map = (
     # shortcuts
     'defun',         {'deffn'     => gdt('Function')},
     'defmac',        {'deffn'     => gdt('Macro')},
-    'defspec',       {'deffn'     => '{'.gdt('Special Form').'}'},
+    'defspec',       {'deffn'     => gdt('Special Form')},
     'defvar',        {'defvr'     => gdt('Variable')},
-    'defopt',        {'defvr'     => '{'.gdt('User Option').'}'},
+    'defopt',        {'defvr'     => gdt('User Option')},
     'deftypefun',    {'deftypefn' => gdt('Function')},
     'deftypevar',    {'deftypevr' => gdt('Variable')},
-    'defivar',       {'defcv'     => '{'.gdt('Instance Variable').'}'},
-    'deftypeivar',   {'deftypecv' => '{'.gdt('Instance Variable').'}'},
+    'defivar',       {'defcv'     => gdt('Instance Variable')},
+    'deftypeivar',   {'deftypecv' => gdt('Instance Variable')},
     'defmethod',     {'defop'     => gdt('Method')},
     'deftypemethod', {'deftypeop' => gdt('Method')},
 );
@@ -1338,7 +1339,6 @@ sub trim_spaces_comment_from_content($)
        and ($contents->[0]->{'type'} eq 'empty_line_after_command'
             or $contents->[0]->{'type'} eq 'empty_spaces_after_command'
             or $contents->[0]->{'type'} eq 'empty_spaces_before_argument'
-            or $contents->[0]->{'type'} eq 'empty_space_at_end_def_bracketed'
             or $contents->[0]->{'type'} eq 'empty_spaces_after_close_brace'));
 
   while (@$contents 
@@ -1390,29 +1390,15 @@ sub _count_opened_tree_braces($$)
     ($before, $after, $braces_count) = _find_end_brace($current->{'text'},
                                                           $braces_count);
   }
-  if ($current->{'args'}) {
-    foreach my $arg (@{$current->{'args'}}) {
-      $braces_count = _count_opened_tree_braces($arg, $braces_count);
-      return $braces_count if ($braces_count == 0);
-    }
-  }
-  if ($current->{'contents'}) {
-    foreach my $content (@{$current->{'contents'}}) {
-      $braces_count = _count_opened_tree_braces($content, $braces_count);
-      return $braces_count if ($braces_count == 0);
-    }
-  }
   return $braces_count;
 }
 
-# $NODE->{'contents'} is the Texinfo fo the specification of a node.
-# Returned object is a hash with three fields:
+# $NODE->{'contents'} is the Texinfo for the specification of a node.
+# Returned object is a hash with two fields:
 #
 #     manual_content - Texinfo tree for a manual name extracted from the
 #                      node specification.
 #     node_content - Texinfo tree for the node name on its own
-#     normalized - a string with the node name after HTML node name
-#                  normalization is applied
 #
 # retrieve a leading manual name in parentheses, if there is one.
 sub parse_node_manual($)
@@ -1461,12 +1447,14 @@ sub parse_node_manual($)
         }
       }
     }
-    $result->{'manual_content'} = $manual if (defined($manual));
+    if ($braces_count == 0) {
+      $result->{'manual_content'} = $manual if (defined($manual));
+    } else {
+      @contents = @$manual;
+    }
   }
   if (@contents) {
     $result->{'node_content'} = \@contents;
-    $result->{'normalized'} =
-      Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => \@contents});
   }
   return $result;
 }

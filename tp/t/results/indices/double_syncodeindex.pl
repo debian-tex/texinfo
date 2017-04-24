@@ -472,12 +472,12 @@ $result_menus{'double_syncodeindex'} = {
 
 $result_errors{'double_syncodeindex'} = [
   {
-    'error_line' => ':10: warning: printing an index `cp\' merged in another one `fn\'
+    'error_line' => ':10: warning: printing an index `cp\' merged in another one, `fn\'
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'printing an index `cp\' merged in another one `fn\'',
+    'text' => 'printing an index `cp\' merged in another one, `fn\'',
     'type' => 'warning'
   }
 ];
@@ -486,9 +486,6 @@ $result_errors{'double_syncodeindex'} = [
 $result_indices{'double_syncodeindex'} = {
   'index_names' => {
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'fn',
       'name' => 'cp'
@@ -529,9 +526,6 @@ $result_indices{'double_syncodeindex'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'cp' => 'fn'
   }
 };
 

@@ -547,9 +547,6 @@ $result_indices{'syncodeindex_to_plain'} = {
       'name' => 'fn'
     },
     'ky' => {
-      'contained_indices' => {
-        'ky' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'cp',
       'name' => 'ky'
@@ -575,9 +572,6 @@ $result_indices{'syncodeindex_to_plain'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'ky' => 'cp'
   }
 };
 

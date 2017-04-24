@@ -387,6 +387,8 @@ $result_trees{'at_commands_in_raw'} = {
         },
         {
           'cmdname' => 'value',
+          'contents' => [],
+          'parent' => {},
           'type' => 'flag'
         },
         {
@@ -964,6 +966,7 @@ $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[7]{'parent'} = $r
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1];
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1];
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1];
+$result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1];
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[12];
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[12]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1];
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[13]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1];

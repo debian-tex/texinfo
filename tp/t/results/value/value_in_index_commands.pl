@@ -1146,12 +1146,12 @@ $result_menus{'value_in_index_commands'} = {
 
 $result_errors{'value_in_index_commands'} = [
   {
-    'error_line' => ':35: warning: printing an index `cp\' merged in another one `fn\'
+    'error_line' => ':35: warning: printing an index `cp\' merged in another one, `fn\'
 ',
     'file_name' => '',
     'line_nr' => 35,
     'macro' => '',
-    'text' => 'printing an index `cp\' merged in another one `fn\'',
+    'text' => 'printing an index `cp\' merged in another one, `fn\'',
     'type' => 'warning'
   }
 ];
@@ -1167,9 +1167,6 @@ $result_indices{'value_in_index_commands'} = {
       'name' => 'codeidx'
     },
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'fn',
       'name' => 'cp'
@@ -1217,9 +1214,6 @@ $result_indices{'value_in_index_commands'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'cp' => 'fn'
   }
 };
 

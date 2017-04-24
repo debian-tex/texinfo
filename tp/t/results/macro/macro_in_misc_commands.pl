@@ -1372,11 +1372,6 @@ $result_trees{'macro_in_misc_commands'} = {
                 'begin' => '(strong:',
                 'end' => ':)'
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 80,
-                'macro' => 'strongmacro'
-              },
               'parent' => {},
               'type' => 'definfoenclose_command'
             },

@@ -1,8 +1,8 @@
 /* window.c -- windows in Info.
-   $Id: window.c 7334 2016-09-03 16:47:27Z gavin $
+   $Id: window.c 7696 2017-03-21 14:00:55Z gavin $
 
    Copyright 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008,
-   2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+   2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -415,9 +415,9 @@ window_change_window_height (WINDOW *window, int amount)
 
       /* If there aren't two neighboring windows, or if one of the neighbors
          is larger than the other one by at least AMOUNT, grow that one. */
-      if ((next && !prev) || ((next_avail - amount) >= prev_avail))
+      if (next_avail - amount >= prev_avail)
         grow_me_shrinking_next (window, next, amount);
-      else if ((prev && !next) || ((prev_avail - amount) >= next_avail))
+      else if (prev_avail - amount >= next_avail)
         grow_me_shrinking_prev (window, prev, amount);
       else
         {
@@ -575,10 +575,8 @@ window_set_node_of_window (WINDOW *window, NODE *node)
   calculate_line_starts (window);
   window_compute_line_map (window);
 
-  /* Clear displayed search matches if any.  TODO: do search again in new
-     node? */
-  free (window->matches);
-  window->matches = 0;
+  /* Clear displayed search matches if any. */
+  free_matches (&window->matches);
 
   window->flags |= W_UpdateWindow;
   if (node)

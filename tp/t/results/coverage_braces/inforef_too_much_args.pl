@@ -109,8 +109,7 @@ $result_trees{'inforef_too_much_args'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'chapter'
+                  ]
                 }
               },
               'line_nr' => {

@@ -363,7 +363,7 @@ $result_errors{'detailmenu'} = [
     'line_nr' => 2,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   },
   {
     'error_line' => ':5: @detailmenu seen before first @node
@@ -381,7 +381,7 @@ $result_errors{'detailmenu'} = [
     'line_nr' => 5,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   }
 ];
 

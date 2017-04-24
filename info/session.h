@@ -1,5 +1,5 @@
 /* session.h -- Functions found in session.c.
-   $Id: session.h 7014 2016-02-13 21:26:11Z gavin $
+   $Id: session.h 7499 2016-11-07 20:29:49Z gavin $
 
    Copyright 1993, 1998, 1999, 2001, 2002, 2004, 2007, 2011, 2013, 2014,
    2015, 2016
@@ -74,6 +74,7 @@ int info_any_buffered_input_p (void);
 
 void dump_nodes_to_file (REFERENCE **references,
 				char *output_filename, int flags);
+int write_node_to_stream (NODE *node, FILE *stream);
 
 char *program_name_from_file_name (char *file_name);
 

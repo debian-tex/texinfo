@@ -325,7 +325,7 @@ $result_errors{'table_not_closed_in_menu_description'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   },
   {
     'error_line' => ':2: warning: @table should only appear at the beginning of a line

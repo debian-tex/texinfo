@@ -1199,7 +1199,7 @@ $result_errors{'placed_things_before_node'} = [
     'line_nr' => 24,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   },
   {
     'error_line' => ':28: warning: entry for index `cp\' outside of any node

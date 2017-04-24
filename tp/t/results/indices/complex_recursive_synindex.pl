@@ -1479,39 +1479,39 @@ $result_errors{'complex_recursive_synindex'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':29: warning: printing an index `aaa\' merged in another one `bbb\'
+    'error_line' => ':29: warning: printing an index `aaa\' merged in another one, `bbb\'
 ',
     'file_name' => '',
     'line_nr' => 29,
     'macro' => '',
-    'text' => 'printing an index `aaa\' merged in another one `bbb\'',
+    'text' => 'printing an index `aaa\' merged in another one, `bbb\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':32: warning: printing an index `ccc\' merged in another one `bbb\'
+    'error_line' => ':32: warning: printing an index `ccc\' merged in another one, `bbb\'
 ',
     'file_name' => '',
     'line_nr' => 32,
     'macro' => '',
-    'text' => 'printing an index `ccc\' merged in another one `bbb\'',
+    'text' => 'printing an index `ccc\' merged in another one, `bbb\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':35: warning: printing an index `ddd\' merged in another one `bbb\'
+    'error_line' => ':35: warning: printing an index `ddd\' merged in another one, `bbb\'
 ',
     'file_name' => '',
     'line_nr' => 35,
     'macro' => '',
-    'text' => 'printing an index `ddd\' merged in another one `bbb\'',
+    'text' => 'printing an index `ddd\' merged in another one, `bbb\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':38: warning: printing an index `eee\' merged in another one `bbb\'
+    'error_line' => ':38: warning: printing an index `eee\' merged in another one, `bbb\'
 ',
     'file_name' => '',
     'line_nr' => 38,
     'macro' => '',
-    'text' => 'printing an index `eee\' merged in another one `bbb\'',
+    'text' => 'printing an index `eee\' merged in another one, `bbb\'',
     'type' => 'warning'
   }
 ];
@@ -1520,9 +1520,6 @@ $result_errors{'complex_recursive_synindex'} = [
 $result_indices{'complex_recursive_synindex'} = {
   'index_names' => {
     'aaa' => {
-      'contained_indices' => {
-        'aaa' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'bbb',
       'name' => 'aaa'
@@ -1539,9 +1536,6 @@ $result_indices{'complex_recursive_synindex'} = {
       'name' => 'bbb'
     },
     'ccc' => {
-      'contained_indices' => {
-        'ccc' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'bbb',
       'name' => 'ccc'
@@ -1554,17 +1548,11 @@ $result_indices{'complex_recursive_synindex'} = {
       'name' => 'cp'
     },
     'ddd' => {
-      'contained_indices' => {
-        'ddd' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'bbb',
       'name' => 'ddd'
     },
     'eee' => {
-      'contained_indices' => {
-        'eee' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'bbb',
       'name' => 'eee'
@@ -1604,12 +1592,6 @@ $result_indices{'complex_recursive_synindex'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'aaa' => 'bbb',
-    'ccc' => 'bbb',
-    'ddd' => 'bbb',
-    'eee' => 'bbb'
   }
 };
 

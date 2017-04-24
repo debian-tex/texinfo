@@ -251,8 +251,7 @@ $result_trees{'check_htmlxref'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'a'
+                  ]
                 }
               },
               'line_nr' => {
@@ -345,8 +344,7 @@ $result_trees{'check_htmlxref'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'a'
+                  ]
                 }
               },
               'line_nr' => {

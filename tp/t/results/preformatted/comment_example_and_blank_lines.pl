@@ -567,11 +567,11 @@ $result_errors{'comment_example_and_blank_lines'} = [];
 
 $result_converted{'plaintext'}->{'comment_example_and_blank_lines'} = 'Para.
 
-     comment, blank after 
+     comment, blank after
 
    Para.
 
-     comment, no blank after 
+     comment, no blank after
    Para.
 
      no comment, blank after

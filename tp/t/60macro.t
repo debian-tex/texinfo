@@ -956,14 +956,6 @@ a
 
 @mymacro{}
 '],
-['leading_spaces_ignore',
-'@macro mymacro
-  Some  here
-  text
-@end macro
-
-@mymacro{}
-', {'MACRO_BODY_IGNORES_LEADING_SPACE' => 1}],
 ['form_feeds',
 '@macro mymacro{a, b}
 f \a\ n \b\

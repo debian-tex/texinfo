@@ -1,5 +1,5 @@
 /* terminal.c -- how to handle the physical terminal for Info.
-   $Id: terminal.c 6914 2016-01-02 17:36:03Z gavin $
+   $Id: terminal.c 7652 2017-01-29 13:48:32Z gavin $
 
    Copyright 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1997, 1998,
    1999, 2001, 2002, 2004, 2007, 2008, 2012, 2013, 2014, 2015
@@ -454,7 +454,7 @@ void
 terminal_begin_blink (void)
 {
   if (terminal_begin_blink_hook)
-    (*terminal_begin_underline_hook) ();
+    (*terminal_begin_blink_hook) ();
   else
     {
       send_to_terminal (term_mb);
@@ -648,16 +648,16 @@ terminal_switch_rendition (unsigned long new)
       terminal_end_all_modes ();
       old = 0;
     }
+  else if (!(new & COLOUR_MASK) && (old & COLOUR_MASK)
+           || !(new & BGCOLOUR_MASK) && (old & BGCOLOUR_MASK))
+    {
+      terminal_default_colour ();
+      old &= ~(COLOUR_MASK|BGCOLOUR_MASK);
+    }
 
   if ((new & COLOUR_MASK) != (old & COLOUR_MASK))
     {
-      /* Switch colour. */
-      if ((new & COLOUR_MASK) == 00)
-        {
-          terminal_default_colour ();
-          old &= ~BGCOLOUR_MASK;
-        }
-      else if ((new & COLOUR_MASK) >= 8)
+      if ((new & COLOUR_MASK) >= 8)
         {
           terminal_set_colour ((new & COLOUR_MASK) - 8);
         }
@@ -666,16 +666,13 @@ terminal_switch_rendition (unsigned long new)
   if ((new & BGCOLOUR_MASK) != (old & BGCOLOUR_MASK))
     {
       /* Switch colour. */
-      if ((new & BGCOLOUR_MASK) == 00)
-        {
-          terminal_default_colour ();
-        }
-      else if ((new & BGCOLOUR_MASK) >> 9 >= 8)
+      if ((new & BGCOLOUR_MASK) >> 9 >= 8)
         {
           terminal_set_bgcolour (((new & BGCOLOUR_MASK) >> 9) - 8);
         }
       /* Colour values from 1 to 7 don't do anything right now. */
     }
+
   if ((new & UNDERLINE_MASK) != (old & UNDERLINE_MASK))
     {
       if ((new & UNDERLINE_MASK))

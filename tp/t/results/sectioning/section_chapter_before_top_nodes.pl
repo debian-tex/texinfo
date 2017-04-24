@@ -908,39 +908,12 @@ $result_errors{'section_chapter_before_top_nodes'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: node `chapter node\' is next for `section node\' in sectioning but not in menu
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'node `chapter node\' is next for `section node\' in sectioning but not in menu',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':1: warning: node `chapter node\' is up for `section node\' in menu but not in sectioning
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => 'node `chapter node\' is up for `section node\' in menu but not in sectioning',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':4: warning: node `Top\' is next for `chapter node\' in sectioning but not in menu
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => 'node `Top\' is next for `chapter node\' in sectioning but not in menu',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':4: warning: node `section node\' is prev for `chapter node\' in sectioning but not in menu
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => 'node `section node\' is prev for `chapter node\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {

@@ -179,8 +179,7 @@ $result_trees{'nested_args'} = {
                 {},
                 {},
                 {}
-              ],
-              'normalized' => '_0040-in-samp'
+              ]
             }
           },
           'line_nr' => {},

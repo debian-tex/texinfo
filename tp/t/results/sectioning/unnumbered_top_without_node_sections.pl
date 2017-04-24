@@ -584,15 +584,6 @@ $result_errors{'unnumbered_top_without_node_sections'} = [
     'macro' => '',
     'text' => 'lowering the section level of @top appearing after a lower element',
     'type' => 'warning'
-  },
-  {
-    'error_line' => ':9: warning: unreferenced node `second\'
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => 'unreferenced node `second\'',
-    'type' => 'warning'
   }
 ];
 

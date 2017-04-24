@@ -1868,25 +1868,7 @@ $result_errors{'menutextorder'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
-  },
-  {
-    'error_line' => ':6: warning: node `foo\' is next for `bar\' in sectioning but not in menu
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => 'node `foo\' is next for `bar\' in sectioning but not in menu',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':13: warning: unreferenced node `onesub1\'
-',
-    'file_name' => '',
-    'line_nr' => 13,
-    'macro' => '',
-    'text' => 'unreferenced node `onesub1\'',
-    'type' => 'warning'
+    'type' => 'error'
   },
   {
     'error_line' => ':13: warning: node `onesub2\' is next for `onesub1\' in sectioning but not in menu
@@ -1922,24 +1904,6 @@ $result_errors{'menutextorder'} = [
     'line_nr' => 16,
     'macro' => '',
     'text' => 'node `onesub1\' is prev for `onesub2\' in sectioning but not in menu',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':20: warning: unreferenced node `foo\'
-',
-    'file_name' => '',
-    'line_nr' => 20,
-    'macro' => '',
-    'text' => 'unreferenced node `foo\'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':20: warning: node `bar\' is prev for `foo\' in sectioning but not in menu
-',
-    'file_name' => '',
-    'line_nr' => 20,
-    'macro' => '',
-    'text' => 'node `bar\' is prev for `foo\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {

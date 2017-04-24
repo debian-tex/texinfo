@@ -1,8 +1,9 @@
 /* man.c: How to read and format man files.
-   $Id: man.c 6877 2015-12-19 16:42:47Z gavin $
+   $Id: man.c 7636 2017-01-19 20:55:22Z gavin $
 
    Copyright 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 2007, 2008, 
-   2009, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+   2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software Foundation, 
+   Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -471,64 +472,6 @@ read_from_fd (int fd)
   return buffer;
 }
 
-/* Search in the whole man page for references now. */
-#if 0
-static char *reference_section_starters[] =
-{
-  "\nRELATED INFORMATION",
-  "\nRELATED\tINFORMATION",
-  "RELATED INFORMATION\n",
-  "RELATED\tINFORMATION\n",
-  "\nSEE ALSO",
-  "\nSEE\tALSO",
-  "SEE ALSO\n",
-  "SEE\tALSO\n",
-  NULL
-};
-
-static SEARCH_BINDING frs_binding;
-
-static SEARCH_BINDING *
-find_reference_section (NODE *node)
-{
-  register int i;
-  long position = -1;
-
-  frs_binding.buffer = node->contents;
-  frs_binding.start = 0;
-  frs_binding.end = node->nodelen;
-  frs_binding.flags = S_SkipDest;
-
-  for (i = 0; reference_section_starters[i] != NULL; i++)
-    {
-      if (search_forward (reference_section_starters[i], &frs_binding,
-			  &position) == search_success)
-        break;
-    }
-
-  if (position == -1)
-    return NULL;
-
-  /* We found the start of the reference section, and point is right after
-     the string which starts it.  The text from here to the next header
-     (or end of buffer) contains the only references in this manpage. */
-  frs_binding.start = position;
-
-  for (i = frs_binding.start; i < frs_binding.end - 2; i++)
-    {
-      if ((frs_binding.buffer[i] == '\n') &&
-          (!whitespace (frs_binding.buffer[i + 1])))
-        {
-          frs_binding.end = i;
-          break;
-        }
-    }
-
-  return &frs_binding;
-}
-
-#endif
-
 static REFERENCE **
 xrefs_of_manpage (NODE *node)
 {
@@ -560,18 +503,41 @@ CAT(1)                           User Commands                          CAT(1)
       register int name, name_end;
       int section, section_end;
 
-      for (name = position; name > 0; name--)
-        if (whitespace_or_newline (s.buffer[name]))
-          break;
-
+      name = position;
       if (name == 0)
         goto skip;
+      else
+        name--;
+
+      /* Go to the start of a sequence of non-whitespace characters,
+         checking the characters are those that should appear in a man
+         page name. */
+      for (; name > 0; name--)
+        if (whitespace_or_newline (s.buffer[name])
+            || (!isalnum (s.buffer[name])
+                && s.buffer[name] != '_'
+                && s.buffer[name] != '.'
+                && s.buffer[name] != '-'
+                && s.buffer[name] != '\033'
+                && s.buffer[name] != '['))
+          break;
+
+      /* Check if reached start of buffer. */
+      if (name == 0)
+        goto skip;
+
+      /* Check for invalid sequence in name. */
+      if (!whitespace_or_newline (s.buffer[name]))
+        goto skip;
+
       name++;
 
       if (name == position)
         goto skip; /* Whitespace immediately before '('. */
 
-      /* If we are on an ECMA-48 SGR escape sequence, skip past it. */
+      /* 'name' is now at the start of a sequence of non-whitespace
+         characters.  If we are on an ECMA-48 SGR escape sequence, skip
+         past it. */
       if (s.buffer[name] == '\033' && s.buffer[name + 1] == '[')
         {
           name += 2;
@@ -582,6 +548,7 @@ CAT(1)                           User Commands                          CAT(1)
             goto skip;
         }
 
+      /* Set name_end to the end of the name, but before any SGR sequence. */
       for (name_end = name; name_end < position; name_end++)
         if (!isalnum (s.buffer[name_end])
             && s.buffer[name_end] != '_'
@@ -590,44 +557,43 @@ CAT(1)                           User Commands                          CAT(1)
           break;
 
       section = position;
-      if (!isdigit (s.buffer[section + 1]))
-        goto skip; /* Could be ordinary text in parentheses. */
+      section_end = 0;
 
-      for (section_end = section + 1; section_end < s.end; section_end++)
+      /* Look for one or two characters within the brackets, the
+         first of which must be a non-zero digit and the second a letter. */
+      if (!isdigit (s.buffer[section + 1])
+          || s.buffer[section + 1] == '0')
+        ;
+      else if (!s.buffer[section + 2])
+        ; /* end of buffer */
+      else if (s.buffer[section + 2] == ')')
+        section_end = section + 3;
+      else if (!isalpha(s.buffer[section + 2]))
+        ;
+      else if (s.buffer[section + 3] == ')')
+        section_end = section + 4;
+
+      if (section_end)
         {
-          if (whitespace (s.buffer[section_end]))
-            {
-              continue;
-              break;
-            }
+          REFERENCE *entry;
+          int len = name_end - name + section_end - section;
 
-          if (s.buffer[section_end] == ')')
-            {
-              section_end++;
-              break;
-            }
+          entry = xmalloc (sizeof (REFERENCE));
+          entry->label = xcalloc (1, 1 + len);
+          strncpy (entry->label, s.buffer + name, name_end - name);
+          strncpy (entry->label + strlen (entry->label),
+                   s.buffer + section,
+                   section_end - section);
+
+          entry->filename = xstrdup (MANPAGE_FILE_BUFFER_NAME);
+          entry->nodename = xstrdup (entry->label);
+          entry->line_number = 0;
+          entry->start = name;
+          entry->end = section_end;
+          entry->type = REFERENCE_XREF;
+
+          add_pointer_to_array (entry, refs_index, refs, refs_slots, 10);
         }
-
-      {
-        REFERENCE *entry;
-        int len = name_end - name + section_end - section;
-
-        entry = xmalloc (sizeof (REFERENCE));
-        entry->label = xcalloc (1, 1 + len);
-        strncpy (entry->label, s.buffer + name, name_end - name);
-        strncpy (entry->label + strlen (entry->label),
-                 s.buffer + section,
-                 section_end - section);
-
-        entry->filename = xstrdup (MANPAGE_FILE_BUFFER_NAME);
-        entry->nodename = xstrdup (entry->label);
-        entry->line_number = 0;
-        entry->start = name;
-        entry->end = section_end;
-        entry->type = REFERENCE_XREF;
-
-        add_pointer_to_array (entry, refs_index, refs, refs_slots, 10);
-      }
 
 skip:
       s.start = position + 1;

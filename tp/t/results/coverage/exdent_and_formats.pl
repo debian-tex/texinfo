@@ -2341,7 +2341,7 @@ $result_errors{'exdent_and_formats'} = [];
 
 
 
-$result_converted{'plaintext'}->{'exdent_and_formats'} = '      Example   Hoho. TeX . 
+$result_converted{'plaintext'}->{'exdent_and_formats'} = '      Example   Hoho. TeX .
       @.
 
 Other line

@@ -218,9 +218,6 @@ $result_errors{'recursive_synindex'} = [
 $result_indices{'recursive_synindex'} = {
   'index_names' => {
     'aaa' => {
-      'contained_indices' => {
-        'aaa' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'bbb',
       'name' => 'aaa'
@@ -275,9 +272,6 @@ $result_indices{'recursive_synindex'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'aaa' => 'bbb'
   }
 };
 

@@ -187,7 +187,7 @@ $result_trees{'comment_space_comand_in_float'} = {
                 {},
                 {}
               ],
-              'normalized' => 'Text--'
+              'normalized' => 'Text @ '
             }
           },
           'line_nr' => {
@@ -255,7 +255,7 @@ $result_trees{'comment_space_comand_in_float'} = {
                 {},
                 {}
               ],
-              'normalized' => 'Text--'
+              'normalized' => 'Text @ '
             }
           },
           'line_nr' => {
@@ -393,7 +393,7 @@ $result_errors{'comment_space_comand_in_float'} = [];
 
 
 $result_floats{'comment_space_comand_in_float'} = {
-  'Text--' => [
+  'Text @ ' => [
     {
       'cmdname' => 'float',
       'extra' => {
@@ -415,14 +415,14 @@ $result_floats{'comment_space_comand_in_float'} = {
               'cmdname' => ' '
             }
           ],
-          'normalized' => 'Text--'
+          'normalized' => 'Text @ '
         }
       },
       'number' => 1
     }
   ]
 };
-$result_floats{'comment_space_comand_in_float'}{'Text--'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'comment_space_comand_in_float'}{'Text--'}[0];
+$result_floats{'comment_space_comand_in_float'}{'Text @ '}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'comment_space_comand_in_float'}{'Text @ '}[0];
 
 
 

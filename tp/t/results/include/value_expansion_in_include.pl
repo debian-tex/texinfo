@@ -202,7 +202,7 @@ $result_trees{'value_expansion_in_include'} = {
               'cmdname' => 'emph',
               'contents' => [],
               'line_nr' => {
-                'file_name' => 't/include_dir/incl-incl.txi',
+                'file_name' => 'incl-incl.txi',
                 'line_nr' => 1,
                 'macro' => ''
               },
@@ -306,7 +306,7 @@ $result_trees{'value_expansion_in_include'} = {
               'cmdname' => 'emph',
               'contents' => [],
               'line_nr' => {
-                'file_name' => 't/include_dir/incl-incl.txi',
+                'file_name' => 'incl-incl.txi',
                 'line_nr' => 1,
                 'macro' => ''
               },
@@ -410,7 +410,7 @@ $result_trees{'value_expansion_in_include'} = {
               'cmdname' => 'emph',
               'contents' => [],
               'line_nr' => {
-                'file_name' => 't/include_dir/incl-incl.txi',
+                'file_name' => 'incl-incl.txi',
                 'line_nr' => 1,
                 'macro' => ''
               },

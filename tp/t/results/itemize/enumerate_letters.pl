@@ -8988,7 +8988,7 @@ $result_converted{'plaintext'}->{'enumerate_letters'} = '  c. aaa
 ';
 
 
-$result_converted{'html_text'}->{'enumerate_letters'} = '<ol>
+$result_converted{'html_text'}->{'enumerate_letters'} = '<ol type="a" start="3">
 <li> aaa
 </li><li> aaa
 </li><li> aaa

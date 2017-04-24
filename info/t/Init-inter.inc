@@ -21,15 +21,7 @@ test -x pseudotty || exit 77
 
 #  we may look up whether a couple of utilities exist.
 
-# Systems which define $COMSPEC or $ComSpec use semicolons to separate
-# directories in TEXINPUTS -- except for Cygwin et al., where COMSPEC
-# might be inherited, but : is used.
-if test -n "$COMSPEC$ComSpec" \
-   && uname | $EGREP -iv 'cygwin|mingw|djgpp' >/dev/null; then
-  path_sep=";"
-else
-  path_sep=":"
-fi
+path_sep=":"
 
 # findprog PROG - Return true if PROG is somewhere in PATH, else false.
 findprog ()
@@ -67,17 +59,17 @@ test $reset_required=yes && { $STTY | grep [-]echo ; } && reset_required=no
 
 # Create named pipes to communicate with pseudotty program, or quit.
 rm -f $PIPEIN $PTY_TYPE # must already be defined
-if findprog mknod; then # check for mknod to give a better error msg
-  mknod $PIPEIN p
-  mknod $PTY_TYPE p
+if findprog mkfifo; then
+  mkfifo $PIPEIN
+  mkfifo $PTY_TYPE
   #
   if test ! -r $PIPEIN || test ! -r $PTY_TYPE; then
-    echo "$0: could not mknod pipes" >&2
+    echo "$0: could not mkfifo pipes" >&2
     exit 77
   fi
   # ok, we'll proceed with the test.
 else
-  echo "$0: mknod program not found - cannot make named pipes" >&2
+  echo "$0: mkfifo program not found - cannot make named pipes" >&2
   exit 77
 fi
 

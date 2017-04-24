@@ -11,10 +11,49 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 # List of files that describe tests.  See tp/tests/README.
-test_driving_files_generated_list = sectioning/tests-parser.txt coverage/tests-parser.txt indices/tests-parser.txt nested_formats/tests-parser.txt contents/tests-parser.txt layout/tests-parser.txt formatting/tests-parser.txt htmlxref/tests-parser.txt htmlxref-only_mono/tests-parser.txt htmlxref-only_split/tests-parser.txt tex_html/tests-parser.txt
+test_driving_files_generated_list = formatting/tests-parser.txt htmlxref/tests-parser.txt htmlxref-only_mono/tests-parser.txt htmlxref-only_split/tests-parser.txt sectioning/tests-parser.txt coverage/tests-parser.txt indices/tests-parser.txt nested_formats/tests-parser.txt contents/tests-parser.txt layout/tests-parser.txt tex_html/tests-parser.txt
 
 # List of test scripts that only run one test
 one_test_files_generated_list =  \
+     test_scripts/formatting_texi_glossary.sh \
+     test_scripts/formatting_texi_bib-example.sh \
+     test_scripts/formatting_texi_cond.sh \
+     test_scripts/formatting_cond.sh \
+     test_scripts/formatting_cond_xml.sh \
+     test_scripts/formatting_cond_no-ifhtml_no-ifinfo_no-iftex.sh \
+     test_scripts/formatting_cond_ifhtml_ifinfo_iftex.sh \
+     test_scripts/formatting_cond_info.sh \
+     test_scripts/formatting_cond_info_no-ifhtml_no-ifinfo_no-iftex.sh \
+     test_scripts/formatting_cond_info_ifhtml_ifinfo_iftex.sh \
+     test_scripts/formatting_defcondx_Dbar.sh \
+     test_scripts/formatting_defcondx_Ubar.sh \
+     test_scripts/formatting_unknown_nodes_renamed.sh \
+     test_scripts/formatting_texi_ignore_and_comments.sh \
+     test_scripts/formatting_ignore_and_comments_output.sh \
+     test_scripts/formatting_test_redefine_need.sh \
+     test_scripts/formatting_one_line_no_content.sh \
+     test_scripts/formatting_one_line.sh \
+     test_scripts/formatting_empty.sh \
+     test_scripts/formatting_direntry_dircategory_info_split.sh \
+     test_scripts/formatting_split_nocopying.sh \
+     test_scripts/formatting_split_nocopying_split.sh \
+     test_scripts/formatting_split_nocopying_split_dev_null.sh \
+     test_scripts/formatting_simplest_test_prefix.sh \
+     test_scripts/formatting_simplest_test_prefix_info.sh \
+     test_scripts/formatting_simplest_test_css.sh \
+     test_scripts/formatting_simplest_test_date_in_header.sh \
+     test_scripts/formatting_documentlanguage_set_option.sh \
+     test_scripts/formatting_documentlanguage_set_unknown.sh \
+     test_scripts/formatting_documentlanguage_set_option_info.sh \
+     test_scripts/formatting_float_copying.sh \
+     test_scripts/formatting_simple_with_menu_docbook_info.sh \
+     test_scripts/formatting_split_for_format_not_split.sh \
+     test_scripts/htmlxref_htmlxref.sh \
+     test_scripts/htmlxref_htmlxref_nodes.sh \
+     test_scripts/htmlxref-only_mono_htmlxref.sh \
+     test_scripts/htmlxref-only_mono_htmlxref_nodes.sh \
+     test_scripts/htmlxref-only_split_htmlxref.sh \
+     test_scripts/htmlxref-only_split_htmlxref_nodes.sh \
      test_scripts/sectioning_node_footnote_end.sh \
      test_scripts/sectioning_node_footnote_use_node.sh \
      test_scripts/sectioning_node_footnote_separated.sh \
@@ -146,45 +185,6 @@ one_test_files_generated_list =  \
      test_scripts/layout_formatting_fr_icons.sh \
      test_scripts/layout_formatting_chm.sh \
      test_scripts/layout_formatting_nodes.sh \
-     test_scripts/formatting_texi_glossary.sh \
-     test_scripts/formatting_texi_bib-example.sh \
-     test_scripts/formatting_texi_cond.sh \
-     test_scripts/formatting_cond.sh \
-     test_scripts/formatting_cond_xml.sh \
-     test_scripts/formatting_cond_no-ifhtml_no-ifinfo_no-iftex.sh \
-     test_scripts/formatting_cond_ifhtml_ifinfo_iftex.sh \
-     test_scripts/formatting_cond_info.sh \
-     test_scripts/formatting_cond_info_no-ifhtml_no-ifinfo_no-iftex.sh \
-     test_scripts/formatting_cond_info_ifhtml_ifinfo_iftex.sh \
-     test_scripts/formatting_defcondx_Dbar.sh \
-     test_scripts/formatting_defcondx_Ubar.sh \
-     test_scripts/formatting_unknown_nodes_renamed.sh \
-     test_scripts/formatting_texi_ignore_and_comments.sh \
-     test_scripts/formatting_ignore_and_comments_output.sh \
-     test_scripts/formatting_test_redefine_need.sh \
-     test_scripts/formatting_one_line_no_content.sh \
-     test_scripts/formatting_one_line.sh \
-     test_scripts/formatting_empty.sh \
-     test_scripts/formatting_direntry_dircategory_info_split.sh \
-     test_scripts/formatting_split_nocopying.sh \
-     test_scripts/formatting_split_nocopying_split.sh \
-     test_scripts/formatting_split_nocopying_split_dev_null.sh \
-     test_scripts/formatting_simplest_test_prefix.sh \
-     test_scripts/formatting_simplest_test_prefix_info.sh \
-     test_scripts/formatting_simplest_test_css.sh \
-     test_scripts/formatting_simplest_test_date_in_header.sh \
-     test_scripts/formatting_documentlanguage_set_option.sh \
-     test_scripts/formatting_documentlanguage_set_unknown.sh \
-     test_scripts/formatting_documentlanguage_set_option_info.sh \
-     test_scripts/formatting_float_copying.sh \
-     test_scripts/formatting_simple_with_menu_docbook_info.sh \
-     test_scripts/formatting_split_for_format_not_split.sh \
-     test_scripts/htmlxref_htmlxref.sh \
-     test_scripts/htmlxref_htmlxref_nodes.sh \
-     test_scripts/htmlxref-only_mono_htmlxref.sh \
-     test_scripts/htmlxref-only_mono_htmlxref_nodes.sh \
-     test_scripts/htmlxref-only_split_htmlxref.sh \
-     test_scripts/htmlxref-only_split_htmlxref_nodes.sh \
      test_scripts/tex_html_block_EOL_tex.sh \
      test_scripts/tex_html_simplest_httex.sh \
      test_scripts/tex_html_tex.sh \

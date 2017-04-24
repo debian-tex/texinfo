@@ -376,9 +376,6 @@ $result_errors{'default_cp_index_and_one_letter_syncodeindex'} = [];
 $result_indices{'default_cp_index_and_one_letter_syncodeindex'} = {
   'index_names' => {
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'fn',
       'name' => 'cp'
@@ -419,9 +416,6 @@ $result_indices{'default_cp_index_and_one_letter_syncodeindex'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'cp' => 'fn'
   }
 };
 

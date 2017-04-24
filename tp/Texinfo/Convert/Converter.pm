@@ -1,4 +1,4 @@
-# $Id: Converter.pm 7353 2016-09-10 13:03:54Z gavin $
+# $Id: Converter.pm 7689 2017-03-19 18:17:39Z gavin $
 # Converter.pm: Common code for Converters.
 #
 # Copyright 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
@@ -60,7 +60,7 @@ xml_accents
 @EXPORT = qw(
 );
 
-$VERSION = '6.2';
+$VERSION = '6.3.90';
 
 my %defaults = (
   'ENABLE_ENCODING'      => 1,
@@ -101,7 +101,6 @@ our %all_converters_defaults = (
   'DEBUG'                => 0,
   'TEST'                 => 0,
   'translated_commands'  => {'error' => 'error@arrow{}',},
-  'TEXINFO_COLUMN_FOR_DESCRIPTION' => 32, # same as emacs
 );
 
 # For translation of in document string.
@@ -571,6 +570,9 @@ sub _node_filename($$)
     } else {
       $filename = $node_info->{'normalized'};
     }
+  } elsif (defined($node_info->{'node_content'})) { 
+    $filename = Texinfo::Convert::NodeNameNormalization::normalize_node (
+             { 'contents' => $node_info->{'node_content'} });
   } else {
     $filename = '';
   }

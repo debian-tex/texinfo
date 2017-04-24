@@ -93,7 +93,7 @@ $result_trees{'listoffloats_with_commands'} = {
             {},
             {}
           ],
-          'normalized' => 'th_00e9or_00e8me'
+          'normalized' => 'th@\'eor@`eme'
         }
       },
       'line_nr' => {},

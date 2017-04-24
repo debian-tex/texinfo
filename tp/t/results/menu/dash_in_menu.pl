@@ -252,7 +252,7 @@ $result_errors{'dash_in_menu'} = [
     'line_nr' => 2,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   }
 ];
 

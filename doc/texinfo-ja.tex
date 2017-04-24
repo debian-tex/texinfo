@@ -1,7 +1,7 @@
 % texinfo-ja.tex -- Japanese texinfo.tex loader
 % Some CJK packages are necessary to load before texinfo.tex.
 %
-% Copyright 2016 Free Software Foundation, Inc.
+% Copyright 2016, 2017 Free Software Foundation, Inc.
 %
 % This program is free software; you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
@@ -57,7 +57,7 @@
   %
   \openin 1 zhspacing.sty \ifeof 1
     \errmessage{zhspacing is not found.
-    It is required for Japanese Texinfo files with LuaTeX.
+    It is required for Japanese Texinfo files with XeTeX.
     http://www.ctan.org/tex-archive/macros/xetex/generic/zhspacing
     It might be contained in texlive-lang-chinese.
     (This package is for Chinese, but can also used in Japanese)}

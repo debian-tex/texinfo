@@ -66,7 +66,13 @@ $result_trees{'def_in_style_command'} = {
               [
                 'category',
                 {
-                  'text' => 'Function'
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'Function'
+                    }
+                  ],
+                  'type' => 'bracketed_def_content'
                 }
               ],
               [
@@ -204,6 +210,7 @@ $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0];
+$result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0];

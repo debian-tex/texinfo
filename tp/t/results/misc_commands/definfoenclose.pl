@@ -318,11 +318,6 @@ $result_trees{'definfoenclose'} = {
             'begin' => '(strong:',
             'end' => ':)'
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 14,
-            'macro' => ''
-          },
           'parent' => {},
           'type' => 'definfoenclose_command'
         },

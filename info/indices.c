@@ -1,8 +1,8 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c 7264 2016-07-17 16:44:53Z gavin $
+   $Id: indices.c 7658 2017-02-02 20:58:04Z gavin $
 
    Copyright 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008, 2011,
-   2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+   2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -300,17 +300,18 @@ index_entry_matches (REFERENCE *ent, const char *str, size_t len)
    initial matches, then non-initial substrings, updating the values of 
    INDEX_INITIAL and INDEX_PARTIAL.
 
-   If a match is found, set *RESULT to the matching index entry, and
-   *FOUND_OFFSET to its offset in INDEX_INDEX.  Otherwise set *RESULT to null.  
+   If a match is found, return a pointer to the matching index entry, and
+   set *FOUND_OFFSET to its offset in INDEX_INDEX.  Otherwise, return null.
    If we found a partial match, set *MATCH_OFFSET to the end of the match 
    within the index entry text, else to 0.  */
-void
+REFERENCE *
 next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
-                  REFERENCE **result, int *found_offset, int *match_offset)
+                  int *found_offset, int *match_offset)
 {
   int i;
   int partial_match;
   size_t search_len;
+  REFERENCE *result;
 
   partial_match = 0;
   search_len = strlen (string);
@@ -319,7 +320,7 @@ next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
   if (!index_index)
     {
       info_error (_("No indices found."));
-      return;
+      return 0;
     }
 
   if (index_search != string)
@@ -382,14 +383,15 @@ next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
     }
 
   if (i < 0 || !index_index[i])
-    *result = 0;
+    result = 0;
   else
     {
       index_offset = i;
-      *result = index_index[i];
+      result = index_index[i];
     }
 
   *found_offset = i;
+  return result;
 }
 
 /* Display a message saying where the index match was found. */
@@ -465,8 +467,8 @@ DECLARE_INFO_COMMAND (info_next_index_match,
   else
     dir = 1;
 
-  next_index_match (file_buffer_of_window (window), index_search, index_offset,
-                    dir, &result, &i, &match_offset);
+  result = next_index_match (file_buffer_of_window (window), index_search, 
+                             index_offset, dir, &i, &match_offset);
 
   /* If that failed, print an error. */
   if (!result)
@@ -803,15 +805,70 @@ format_reference (REFERENCE *ref, const char *filename, struct text_buffer *buf)
   text_buffer_printf (buf, "(line %4d)\n", ref->line_number);
 }
 
+NODE *
+create_virtual_index (FILE_BUFFER *file_buffer, char *index_search)
+{
+  struct text_buffer text;
+  int i;
+  size_t cnt;
+  NODE *node;
+
+  text_buffer_init (&text);
+  text_buffer_printf (&text,
+                      "File: %s,  Node: Index for '%s'\n\n",
+                      file_buffer->filename, index_search);
+  text_buffer_printf (&text, _("Virtual Index\n"
+                               "*************\n\n"
+                               "Index entries that match '%s':\n"),
+                      index_search);
+  text_buffer_add_string (&text, "\0\b[index\0\b]", 11);
+  text_buffer_printf (&text, "\n* Menu:\n\n");
+
+  cnt = 0;
+
+  index_offset = 0;
+  index_initial = 0;
+  index_partial = 0;
+  while (1)
+    {
+      REFERENCE *result;
+      int match_offset;
+
+      result = next_index_match (file_buffer, index_search, index_offset, 1,
+                                 &i, &match_offset);
+      if (!result)
+        break;
+      format_reference (index_index[i],
+                        file_buffer->filename, &text);
+      cnt++;
+    }
+  text_buffer_add_char (&text, '\0');
+
+  if (cnt == 0)
+    {
+      text_buffer_free (&text);
+      return 0;
+    }
+
+  node = info_create_node ();
+  asprintf (&node->nodename, "Index for '%s'", index_search);
+  node->fullpath = file_buffer->filename;
+  node->contents = text_buffer_base (&text);
+  node->nodelen = text_buffer_off (&text) - 1;
+  node->body_start = strcspn (node->contents, "\n");
+  node->flags |= N_IsInternal | N_WasRewritten;
+
+  scan_node_contents (node, 0, 0);
+
+  return node;
+}
+
 DECLARE_INFO_COMMAND (info_virtual_index,
    _("List all matches of a string in the index"))
 {
   char *prompt, *line;
   FILE_BUFFER *fb;
   NODE *node;
-  struct text_buffer text;
-  int i;
-  size_t cnt;
   
   fb = file_buffer_of_window (window);
 
@@ -855,50 +912,11 @@ DECLARE_INFO_COMMAND (info_virtual_index,
       return; /* No previous search string, and no string given. */
     }
   
-  text_buffer_init (&text);
-  text_buffer_printf (&text,
-		      "File: %s,  Node: Index for '%s'\n\n"
-		      "Virtual Index\n"
-		      "*************\n\n"
-                      "Index entries that match '%s':\n",
-                      fb->filename, index_search, index_search);
-  text_buffer_add_string (&text, "\0\b[index\0\b]", 11);
-  text_buffer_printf (&text, "\n* Menu:\n\n");
-
-  cnt = 0;
-
-  index_offset = 0;
-  index_initial = 0;
-  index_partial = 0;
-  while (1)
+  node = create_virtual_index (fb, index_search);
+  if (!node)
     {
-      REFERENCE *result;
-      int match_offset;
-
-      next_index_match (file_buffer_of_window (window), index_search, 
-                        index_offset, 1, &result, &i, &match_offset);
-      if (!result)
-        break;
-      format_reference (index_index[i], fb->filename, &text);
-      cnt++;
-    }
-  text_buffer_add_char (&text, '\0');
-
-  if (cnt == 0)
-    {
-      text_buffer_free (&text);
       info_error (_("No index entries containing '%s'."), index_search);
       return;
     }
-
-  node = info_create_node ();
-  asprintf (&node->nodename, "Index for '%s'", index_search);
-  node->fullpath = fb->filename;
-  node->contents = text_buffer_base (&text);
-  node->nodelen = text_buffer_off (&text) - 1;
-  node->body_start = strcspn (node->contents, "\n");
-  node->flags |= N_IsInternal | N_WasRewritten;
-
-  scan_node_contents (node, 0, 0);
   info_set_node_of_window (window, node);
 }

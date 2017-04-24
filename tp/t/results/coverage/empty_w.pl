@@ -78,7 +78,7 @@ $result_errors{'empty_w'} = [];
 
 
 
-$result_converted{'plaintext'}->{'empty_w'} = 'a b.
+$result_converted{'plaintext'}->{'empty_w'} = ' a b.
 ';
 
 

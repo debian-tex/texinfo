@@ -974,17 +974,7 @@ $result_menus{'nodes_before_top'} = {
 };
 $result_menus{'nodes_before_top'}{'menu_child'}{'menu_up'} = $result_menus{'nodes_before_top'};
 
-$result_errors{'nodes_before_top'} = [
-  {
-    'error_line' => ':1: warning: unreferenced node `first\'
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'unreferenced node `first\'',
-    'type' => 'warning'
-  }
-];
+$result_errors{'nodes_before_top'} = [];
 
 
 1;

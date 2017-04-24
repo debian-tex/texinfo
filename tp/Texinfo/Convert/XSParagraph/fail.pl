@@ -1,1 +1,1 @@
-require 'TestXS.pm';
+require Texinfo::Convert::XSParagraph::TestXS;

@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c 6906 2016-01-01 18:33:45Z karl $
+   $Id: infomap.c 7676 2017-02-19 13:35:05Z gavin $
 
    Copyright 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007,
    2008, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
@@ -490,16 +490,6 @@ static int default_vi_like_info_keys[] =
 
 static int default_vi_like_ea_keys[] =
 {
-  ESC, '1', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '2', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '3', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '4', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '5', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '6', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '7', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '8', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '9', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '-', NUL,                  A_info_add_digit_to_numeric_arg,
   KEYMAP_META('1'), NUL,                 A_info_add_digit_to_numeric_arg,
   KEYMAP_META('2'), NUL,                 A_info_add_digit_to_numeric_arg,
   KEYMAP_META('3'), NUL,                 A_info_add_digit_to_numeric_arg,
@@ -518,8 +508,8 @@ static int default_vi_like_ea_keys[] =
   KEYMAP_META('b'), NUL,                 A_ea_backward_word,
   KEYMAP_META('d'), NUL,                 A_ea_kill_word,
   KEYMAP_META('f'), NUL,                 A_ea_forward_word,
-  KEYMAP_META('h'), NUL,                 A_ea_forward,
-  KEYMAP_META('l'), NUL,                 A_ea_backward,
+  KEYMAP_META('h'), NUL,                 A_ea_backward,
+  KEYMAP_META('l'), NUL,                 A_ea_forward,
   KEYMAP_META('w'), NUL,                 A_ea_forward_word,
   KEYMAP_META('x'), NUL,                 A_ea_delete,
   KEYMAP_META('X'), NUL,                 A_ea_kill_word,
@@ -533,6 +523,7 @@ static int default_vi_like_ea_keys[] =
   CONTROL('e'), NUL,              A_ea_end_of_line,
   CONTROL('f'), NUL,              A_ea_forward,
   CONTROL('g'), NUL,              A_ea_abort,
+  ESC, NUL,                       A_ea_abort,
   CONTROL('h'), NUL,              A_ea_rubout,
   CONTROL('k'), NUL,              A_ea_kill_line,
   CONTROL('l'), NUL,              A_info_redraw_display,
@@ -583,7 +574,11 @@ fetch_user_maps (char *init_file)
   /* Find and open file. */
   if (init_file)
     filename = xstrdup (init_file);
-  else if ((homedir = getenv ("HOME")) != NULL)
+  else if ((homedir = getenv ("HOME")) != NULL
+#ifdef __MINGW32__
+	    || (homedir = getenv ("USERPROFILE")) != NULL
+#endif
+	  )
     {
       filename = xmalloc (strlen (homedir) + 2 + strlen (INFOKEY_FILE));
       strcpy (filename, homedir);

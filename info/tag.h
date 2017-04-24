@@ -1,5 +1,5 @@
 /* tag.c -- Functions to handle Info tags.
-   $Id: tag.h 5823 2014-09-12 17:22:40Z gavin $
+   $Id: tag.h 7656 2017-01-30 19:26:05Z gavin $
 
    Copyright 2012, 2013, 2014 Free Software Foundation, Inc.
 
@@ -21,6 +21,7 @@
 
 #include "info-utils.h"
 
-int tag_expand (char **input, struct text_buffer *outbuf, int *is_index);
+int tag_expand (char **input, char *input_end,
+                struct text_buffer *outbuf, int *is_index);
 
 #endif

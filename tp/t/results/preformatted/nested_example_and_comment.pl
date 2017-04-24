@@ -761,17 +761,17 @@ $result_errors{'nested_example_and_comment'} = [];
 
 
 
-$result_converted{'plaintext'}->{'nested_example_and_comment'} = '     First line 0 
+$result_converted{'plaintext'}->{'nested_example_and_comment'} = '     First line 0
           Nested example
      In first one
 
-     First line 1 
-          Nested example 
+     First line 1
+          Nested example
      In first one
 
-     First line 2 
-          Nested example 
-     In first one 
+     First line 2
+          Nested example
+     In first one
 ';
 
 

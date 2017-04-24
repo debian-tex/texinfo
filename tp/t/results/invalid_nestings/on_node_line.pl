@@ -103,8 +103,7 @@ $result_trees{'on_node_line'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'a'
+                  ]
                 }
               },
               'line_nr' => {
@@ -163,8 +162,7 @@ $result_trees{'on_node_line'} = {
                       'parent' => {},
                       'text' => 'Top'
                     }
-                  ],
-                  'normalized' => 'Top'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -407,8 +405,7 @@ $result_nodes{'on_node_line'} = {
                 {
                   'text' => 'somemanual'
                 }
-              ],
-              'normalized' => 'Top'
+              ]
             }
           }
         }

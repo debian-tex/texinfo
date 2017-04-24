@@ -445,7 +445,7 @@ $result_errors{'menu_entry_node'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   }
 ];
 
@@ -454,9 +454,9 @@ $result_errors{'menu_entry_node'} = [
 $result_converted{'plaintext'}->{'menu_entry_node'} = '* Menu:
 
 * (f)a1::
-* (f)a2::  
+* (f)a2::
 * (f)a3::         d
-* (f)@a:: 
+* (f)@a::
 ';
 
 

@@ -142,8 +142,7 @@ the following keys:
 @item type
 @anchor{Texinfo::Report type}
 
-May be @code{warning}, @code{error}, or @code{error continuation} (for a continuation of
-an error line).
+May be @code{warning}, or @code{error}.
 
 @item text
 @anchor{Texinfo::Report text}
@@ -177,16 +176,15 @@ the error or warning.
 @item $converter->line_warn($text, $line_nr)
 @anchor{Texinfo::Report $converter->line_warn($text@comma{} $line_nr)}
 
-@item $converter->line_error($text, $line_nr, $continuation)
-@anchor{Texinfo::Report $converter->line_error($text@comma{} $line_nr@comma{} $continuation)}
+@item $converter->line_error($text, $line_nr)
+@anchor{Texinfo::Report $converter->line_error($text@comma{} $line_nr)}
 
 Register a warning or an error.  The @emph{$text} is the text of the
 error or warning.  The optional @emph{$line_nr} holds the information
 on the error or warning location.  It is associated with the @emph{line_nr} 
 key of Texinfo tree elements as described in @ref{Texinfo::Parser line_nr}
 for the @@-commands.  The @emph{$line_nr} structure is described in @ref{, errors,, error_warnings_list_error_count__errors_converter}
-above.  If @emph{$continuation} is set, the line is an error message continuation
-line and not a new error.
+above.
 
 @item $converter->document_warn($text)
 @anchor{Texinfo::Report $converter->document_warn($text)}

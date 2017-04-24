@@ -116,6 +116,8 @@ $result_trees{'bad_syntax'} = {
     },
     {
       'cmdname' => 'value',
+      'contents' => [],
+      'parent' => {},
       'type' => 'unknown'
     },
     {
@@ -141,6 +143,7 @@ $result_trees{'bad_syntax'}{'contents'}[11]{'parent'} = $result_trees{'bad_synta
 $result_trees{'bad_syntax'}{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'bad_syntax'}{'contents'}[12];
 $result_trees{'bad_syntax'}{'contents'}[12]{'parent'} = $result_trees{'bad_syntax'};
 $result_trees{'bad_syntax'}{'contents'}[13]{'parent'} = $result_trees{'bad_syntax'};
+$result_trees{'bad_syntax'}{'contents'}[14]{'parent'} = $result_trees{'bad_syntax'};
 $result_trees{'bad_syntax'}{'contents'}[15]{'parent'} = $result_trees{'bad_syntax'};
 
 $result_texis{'bad_syntax'} = '

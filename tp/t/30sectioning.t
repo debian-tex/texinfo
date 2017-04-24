@@ -1831,6 +1831,20 @@ $top_chapter_sections_text,
 }
 '
 ],
+['no_menu',
+'@node Top
+@top
+
+@node c1
+@chapter c1
+
+@node c2
+@chapter c2
+
+@node c3
+@chapter c3
+', {'test_formats' => ['info', 'html']}
+],
 ['contents_at_document_begin',
 undef, {'test_file' => 'contents_at_document_begin.texi'}],
 ['contents_at_end_document_after_node',

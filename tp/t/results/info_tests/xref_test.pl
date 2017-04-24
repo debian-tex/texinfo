@@ -89,8 +89,7 @@ $result_trees{'xref_test'} = {
                       'parent' => {},
                       'text' => 'in xref'
                     }
-                  ],
-                  'normalized' => 'in-xref'
+                  ]
                 }
               },
               'line_nr' => {
@@ -137,8 +136,7 @@ $result_trees{'xref_test'} = {
                       'parent' => {},
                       'text' => 'bad xref'
                     }
-                  ],
-                  'normalized' => 'bad-xref'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -186,8 +184,7 @@ $result_trees{'xref_test'} = {
                               'parent' => {},
                               'text' => 'bad nested xref'
                             }
-                          ],
-                          'normalized' => 'bad-nested-xref'
+                          ]
                         }
                       },
                       'line_nr' => {
@@ -263,8 +260,7 @@ $result_trees{'xref_test'} = {
                       'parent' => {},
                       'text' => 'in ref ending with a dot.'
                     }
-                  ],
-                  'normalized' => 'in-ref-ending-with-a-dot_002e'
+                  ]
                 }
               },
               'line_nr' => {
@@ -312,8 +308,7 @@ $result_trees{'xref_test'} = {
                       'parent' => {},
                       'text' => 'in ref followed by symbol'
                     }
-                  ],
-                  'normalized' => 'in-ref-followed-by-symbol'
+                  ]
                 }
               },
               'line_nr' => {

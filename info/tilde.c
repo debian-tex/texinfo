@@ -1,8 +1,9 @@
 /* tilde.c -- tilde expansion code (~/foo := $HOME/foo).
-   $Id: tilde.c 5337 2013-08-22 17:54:06Z karl $
+   $Id: tilde.c 7670 2017-02-05 13:00:17Z gavin $
 
    Copyright 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1998, 1999,
-   2002, 2004, 2006, 2007, 2008, 2012, 2013 Free Software Foundation, Inc.
+   2002, 2004, 2006, 2007, 2008, 2012, 2013, 2017 Free Software
+   Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,157 +23,8 @@
 #include "info.h"
 #include "tilde.h"
 
-#if defined (TEST) || defined (STATIC_MALLOC)
-static void *xmalloc (), *xrealloc ();
-#endif /* TEST || STATIC_MALLOC */
-
-/* The default value of tilde_additional_prefixes.  This is set to
-   whitespace preceding a tilde so that simple programs which do not
-   perform any word separation get desired behaviour. */
-static char *default_prefixes[] =
-  { " ~", "\t~", NULL };
-
-/* The default value of tilde_additional_suffixes.  This is set to
-   whitespace or newline so that simple programs which do not
-   perform any word separation get desired behaviour. */
-static char *default_suffixes[] =
-  { " ", "\n", NULL };
-
-/* If non-null, this contains the address of a function to call if the
-   standard meaning for expanding a tilde fails.  The function is called
-   with the text (sans tilde, as in "foo"), and returns a malloc()'ed string
-   which is the expansion, or a NULL pointer if there is no expansion. */
-CFunction *tilde_expansion_failure_hook = NULL;
-
-/* When non-null, this is a NULL terminated array of strings which
-   are duplicates for a tilde prefix.  Bash uses this to expand
-   `=~' and `:~'. */
-char **tilde_additional_prefixes = default_prefixes;
-
-/* When non-null, this is a NULL terminated array of strings which match
-   the end of a username, instead of just "/".  Bash sets this to
-   `:' and `=~'. */
-char **tilde_additional_suffixes = default_suffixes;
-
-/* Find the start of a tilde expansion in STRING, and return the index of
-   the tilde which starts the expansion.  Place the length of the text
-   which identified this tilde starter in LEN, excluding the tilde itself. */
-static int
-tilde_find_prefix (char *string, int *len)
-{
-  register int i, j, string_len;
-  register char **prefixes = tilde_additional_prefixes;
-
-  string_len = strlen (string);
-  *len = 0;
-
-  if (!*string || *string == '~')
-    return 0;
-
-  if (prefixes)
-    {
-      for (i = 0; i < string_len; i++)
-        {
-          for (j = 0; prefixes[j]; j++)
-            {
-              if (strncmp (string + i, prefixes[j], strlen (prefixes[j])) == 0)
-                {
-                  *len = strlen (prefixes[j]) - 1;
-                  return i + *len;
-                }
-            }
-        }
-    }
-  return string_len;
-}
-
-/* Find the end of a tilde expansion in STRING, and return the index of
-   the character which ends the tilde definition.  */
-static int
-tilde_find_suffix (char *string)
-{
-  register int i, j, string_len;
-  register char **suffixes = tilde_additional_suffixes;
-
-  string_len = strlen (string);
-
-  for (i = 0; i < string_len; i++)
-    {
-      if (IS_SLASH (string[i]) || !string[i])
-        break;
-
-      for (j = 0; suffixes && suffixes[j]; j++)
-        {
-          if (strncmp (string + i, suffixes[j], strlen (suffixes[j])) == 0)
-            return i;
-        }
-    }
-  return i;
-}
-
-/* Return a new string which is the result of tilde expanding STRING. */
-char *
-tilde_expand (char *string)
-{
-  char *result;
-  int result_size, result_index;
-
-  result_size = result_index = 0;
-  result = NULL;
-
-  /* Scan through STRING expanding tildes as we come to them. */
-  while (1)
-    {
-      register int start, end;
-      char *tilde_word, *expansion;
-      int len;
-
-      /* Make START point to the tilde which starts the expansion. */
-      start = tilde_find_prefix (string, &len);
-
-      /* Copy the skipped text into the result. */
-      if ((result_index + start + 1) > result_size)
-        result = xrealloc (result, 1 + (result_size += (start + 20)));
-
-      strncpy (result + result_index, string, start);
-      result_index += start;
-
-      /* Advance STRING to the starting tilde. */
-      string += start;
-
-      /* Make END be the index of one after the last character of the
-         username. */
-      end = tilde_find_suffix (string);
-
-      /* If both START and END are zero, we are all done. */
-      if (!start && !end)
-        break;
-
-      /* Expand the entire tilde word, and copy it into RESULT. */
-      tilde_word = xmalloc (1 + end);
-      strncpy (tilde_word, string, end);
-      tilde_word[end] = '\0';
-      string += end;
-
-      expansion = tilde_expand_word (tilde_word);
-      free (tilde_word);
-
-      len = strlen (expansion);
-      if ((result_index + len + 1) > result_size)
-        result = xrealloc (result, 1 + (result_size += (len + 20)));
-
-      strcpy (result + result_index, expansion);
-      result_index += len;
-      free (expansion);
-    }
-
-  result[result_index] = '\0';
-
-  return result;
-}
-
 /* Do the work of tilde expansion on FILENAME.  FILENAME starts with a
-   tilde.  If there is no expansion, call tilde_expansion_failure_hook. */
+   tilde. */
 char *
 tilde_expand_word (const char *filename)
 {
@@ -230,35 +82,14 @@ tilde_expand_word (const char *filename)
           username[i - 1] = 0;
 
 #ifndef __MINGW32__
-          if (!(user_entry = (struct passwd *) getpwnam (username)))
-            {
-              /* If the calling program has a special syntax for
-                 expanding tildes, and we couldn't find a standard
-                 expansion, then let them try. */
-              if (tilde_expansion_failure_hook)
-                {
-                  char *expansion = (*tilde_expansion_failure_hook) (username);
-
-                  if (expansion)
-                    {
-                      temp_name = xmalloc (1 + strlen (expansion)
-                                           + strlen (&dirname[i])); 
-                      strcpy (temp_name, expansion);
-                      strcat (temp_name, &dirname[i]);
-                      free (expansion);
-                      goto return_name;
-                    }
-                }
-              /* We shouldn't report errors. */
-            }
-          else
+          user_entry = (struct passwd *) getpwnam (username);
+          if (user_entry)
             {
               temp_name = xmalloc (1 + strlen (user_entry->pw_dir)
                                    + strlen (&dirname[i])); 
               strcpy (temp_name, user_entry->pw_dir);
               strcat (temp_name, &dirname[i]);
 
-            return_name:
               free (dirname);
               dirname = xstrdup (temp_name);
               free (temp_name);
@@ -267,19 +98,6 @@ tilde_expand_word (const char *filename)
           endpwent ();
           free (username);
 #else
-	  if (tilde_expansion_failure_hook)
-	    {
-	      char *expansion = (*tilde_expansion_failure_hook) (username);
-
-	      if (expansion)
-		{
-		  temp_name = xmalloc (1 + strlen (expansion)
-				       + strlen (&dirname[i]));
-		  strcpy (temp_name, expansion);
-		  strcat (temp_name, &dirname[i]);
-		  free (expansion);
-		}
-	    }
 	  free (dirname);
 	  dirname = xstrdup (temp_name);
 	  free (temp_name);
@@ -288,78 +106,3 @@ tilde_expand_word (const char *filename)
     }
   return dirname;
 }
-
-
-#if defined (TEST)
-#undef NULL
-#include <stdio.h>
-
-main (argc, argv)
-     int argc;
-     char **argv;
-{
-  char *result, line[512];
-  int done = 0;
-
-  while (!done)
-    {
-      printf ("~expand: ");
-      fflush (stdout);
-
-      if (!gets (line))
-        strcpy (line, "done");
-
-      if ((strcmp (line, "done") == 0) ||
-          (strcmp (line, "quit") == 0) ||
-          (strcmp (line, "exit") == 0))
-        {
-          done = 1;
-          break;
-        }
-
-      result = tilde_expand (line);
-      printf ("  --> %s\n", result);
-      free (result);
-    }
-  exit (EXIT_SUCCESS);
-}
-
-static void memory_error_and_abort ();
-
-static void *
-xmalloc (bytes)
-     int bytes;
-{
-  void *temp = (void *)malloc (bytes);
-
-  if (!temp)
-    memory_error_and_abort ();
-  return temp;
-}
-
-static void *
-xrealloc (pointer, bytes)
-     void *pointer;
-     int bytes;
-{
-  void *temp;
-
-  if (!pointer)
-    temp = (char *)malloc (bytes);
-  else
-    temp = (char *)realloc (pointer, bytes);
-
-  if (!temp)
-    memory_error_and_abort ();
-
-  return temp;
-}
-
-static void
-memory_error_and_abort ()
-{
-  fprintf (stderr, _("readline: Out of virtual memory!\n"));
-  abort ();
-}
-#endif /* TEST */
-

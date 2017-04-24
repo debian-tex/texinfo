@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2016 Free Software Foundation, Inc.
+# Copyright (C) 2002-2017 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -51,6 +51,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module getdelim:
   # Code from module getline:
   # Code from module include_next:
+  # Code from module limits-h:
   # Code from module memchr:
   # Code from module multiarch:
   # Code from module size_max:
@@ -106,6 +107,7 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_GETLINE
   fi
   gl_STDIO_MODULE_INDICATOR([getline])
+  gl_LIMITS_H
   gl_FUNC_MEMCHR
   if test $HAVE_MEMCHR = 0 || test $REPLACE_MEMCHR = 1; then
     AC_LIBOBJ([memchr])
@@ -265,12 +267,11 @@ AC_DEFUN([gltests_LIBSOURCES], [
 # This macro records the list of files which have been installed by
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
-  build-aux/snippet/arg-nonnull.h
-  build-aux/snippet/c++defs.h
-  build-aux/snippet/warn-on-use.h
   lib/alloca.in.h
+  lib/arg-nonnull.h
   lib/asnprintf.c
   lib/asprintf.c
+  lib/c++defs.h
   lib/errno.in.h
   lib/float+.h
   lib/float.c
@@ -278,6 +279,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/getdelim.c
   lib/getline.c
   lib/itold.c
+  lib/limits.in.h
   lib/memchr.c
   lib/memchr.valgrind
   lib/printf-args.c
@@ -294,6 +296,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/vasnprintf.h
   lib/vasprintf.c
   lib/verify.h
+  lib/warn-on-use.h
   lib/wchar.in.h
   lib/xsize.c
   lib/xsize.h
@@ -311,6 +314,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/include_next.m4
   m4/intmax_t.m4
   m4/inttypes_h.m4
+  m4/limits-h.m4
   m4/longlong.m4
   m4/math_h.m4
   m4/memchr.m4

@@ -13,7 +13,6 @@ nonfreefiles="				\
 	"
 
 removefiles="				\
-	info/t/infodir/info.info	\
 	"
 
 addcopyfiles="				\

@@ -4,8 +4,9 @@ texinfo (6.4.0.dfsg.1-1) unstable; urgency=medium
   * New upstream version 6.4.0
   * update patches
   * bump standards version to 4.0.0, no changes necessary
+  * debhelper compat level 9
 
- -- Norbert Preining <preining@debian.org>  Sat, 24 Jun 2017 11:31:43 +0900
+ -- Norbert Preining <preining@debian.org>  Sat, 24 Jun 2017 11:32:31 +0900
 
 texinfo (6.3.0.dfsg.1-1) unstable; urgency=medium
 

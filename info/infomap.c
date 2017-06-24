@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c 7676 2017-02-19 13:35:05Z gavin $
+   $Id: infomap.c 7787 2017-05-15 16:34:53Z gavin $
 
    Copyright 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007,
    2008, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
@@ -386,7 +386,7 @@ static int default_vi_like_info_keys[] =
   '[', NUL,                       A_info_global_prev_node,
   ']', NUL,                       A_info_global_next_node,
   '\'', NUL,                      A_info_history_node,
-  'b', NUL,                       A_info_scroll_backward,
+  'b', NUL,                       A_info_scroll_backward_page_only,
   'd', NUL,                       A_info_scroll_half_screen_down,
   'e', NUL,                       A_info_down_line,
   'E', NUL,                       A_info_view_file,
@@ -460,6 +460,7 @@ static int default_vi_like_info_keys[] =
   CONTROL('x'), 'g', NUL,         A_info_goto_node,
   CONTROL('x'), 'i', NUL,         A_info_index_search,
   CONTROL('x'), 'I', NUL,         A_info_goto_invocation_node,
+  CONTROL('x'), 'n', NUL,         A_info_next_node,
   CONTROL('x'), 'o', NUL,         A_info_next_window,
   CONTROL('x'), 'O', NUL,         A_info_goto_invocation_node,
   CONTROL('x'), 'p', NUL,         A_info_prev_node,

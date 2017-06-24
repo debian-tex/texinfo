@@ -1,5 +1,5 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c 7658 2017-02-02 20:58:04Z gavin $
+   $Id: indices.c 7782 2017-05-14 11:39:19Z gavin $
 
    Copyright 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008, 2011,
    2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
@@ -212,7 +212,7 @@ DECLARE_INFO_COMMAND (info_index_search,
 
   if (!fb || !index_index)
     {
-      info_error (_("No indices found."));
+      info_error (_("No indices found"));
       return;
     }
 
@@ -456,7 +456,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
      yet. */
   if (!index_search)
     {
-      info_error (_("No previous index search string."));
+      info_error (_("No previous index search string"));
       return;
     }
 
@@ -474,9 +474,9 @@ DECLARE_INFO_COMMAND (info_next_index_match,
   if (!result)
     {
       info_error (index_offset > 0 ?
-		  _("No more index entries containing '%s'.") :
-		  _("No index entries containing '%s'."),
-		  index_search);
+                  _("No more index entries containing '%s'") :
+                  _("No index entries containing '%s'"),
+                  index_search);
       index_offset = 0;
       return;
     }

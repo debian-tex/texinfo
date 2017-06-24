@@ -1,5 +1,5 @@
 /* filesys.c -- filesystem specific functions.
-   $Id: filesys.c 6906 2016-01-01 18:33:45Z karl $
+   $Id: filesys.c 7794 2017-05-18 20:59:43Z gavin $
 
    Copyright 1993, 1997, 1998, 2000, 2002, 2003, 2004, 2007, 2008, 2009, 2011,
    2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
@@ -281,6 +281,35 @@ info_add_extension (char *dirname, char *filename, struct stat *finfo)
   return 0;
 }
 
+#if defined (__MSDOS__) || defined (__MINGW32__)
+/* Given a chunk of text and its length, convert all CRLF pairs at every
+   end-of-line into a single Newline character.  Return the length of
+   produced text.
+
+   This is required because the rest of code is too entrenched in having
+   a single newline at each EOL; in particular, searching for various
+   Info headers and cookies can become extremely tricky if that assumption
+   breaks. */
+static long
+convert_eols (char *text, long int textlen)
+{
+  register char *s = text;
+  register char *d = text;
+
+  while (textlen--)
+    {
+      if (*s == '\r' && textlen && s[1] == '\n')
+       {
+         s++;
+         textlen--;
+       }
+      *d++ = *s++;
+    }
+
+  return d - text;
+}
+#endif
+
 /* Read the contents of PATHNAME, returning a buffer with the contents of
    that file in it, and returning the size of that buffer in FILESIZE.
    If the file turns out to be compressed, set IS_COMPRESSED to non-zero.
@@ -329,6 +358,28 @@ filesys_read_info_file (char *pathname, size_t *filesize,
       contents[fsize] = 0;
       close (descriptor);
     }
+
+#if defined (__MSDOS__) || defined (__MINGW32__)
+  /* Old versions of makeinfo on MS-DOS or MS-Windows generated Info files
+     with CR-LF line endings which are only counted as one byte in the file
+     tag table.  Convert any of these DOS-style CRLF EOLs into Unix-style NL
+     so that these files can be read correctly on such operating systems.
+
+     Don't do this on GNU/Linux (or other Unix-type operating system), so
+     as not to encourage Info files with CR-LF line endings to be distributed
+     widely beyond their native operating system, which would cause only
+     problems.  (If someone really needs to, they can convert the line endings
+     themselves with a separate program.)
+     Also, this will allow any Info files that contain any CR-LF endings by
+     mistake to work as expected (except on MS-DOS/Windows). */
+
+  fsize = convert_eols (contents, fsize);
+
+  /* EOL conversion can shrink the text quite a bit.  We don't
+     want to waste storage.  */
+  contents = xrealloc (contents, 1 + fsize);
+  contents[fsize] = '\0';
+#endif
 
   *filesize = fsize;
 

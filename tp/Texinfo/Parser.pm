@@ -1,4 +1,4 @@
-# $Id: Parser.pm 7748 2017-04-23 12:07:59Z gavin $
+# $Id: Parser.pm 7836 2017-06-18 18:44:13Z gavin $
 # Parser.pm: parse texinfo code into a tree.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
@@ -106,7 +106,7 @@ sub import {
 @EXPORT = qw(
 );
 
-$VERSION = '6.3.90';
+$VERSION = '6.4';
 
 sub N__($)
 {
@@ -3626,7 +3626,7 @@ sub _parse_texi_regex {
     = ($line =~ /^\@([[:alnum:]][[:alnum:]-]*)
                 |^(\{)
                 |^(\*)
-                |^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])
+                |^\@(["'~\@\}\{,\.!\? \t\n\*\-\^`=:\|\/\\])
                 |^([{}@,:\t.\f])
                 |^([^{}@,:\t.\n\f]+)
                 /x);
@@ -4218,8 +4218,10 @@ sub _parse_texi($;$)
                                                 'type' => $value,
                                                 'contents' => [],
                                                 'parent' => $current };
-              $self->line_warn(
-                  sprintf($self->__("undefined flag: %s"), $value), $line_nr);
+              if (!$self->{'in_gdt'}) {
+                $self->line_warn(
+                   sprintf($self->__("undefined flag: %s"), $value), $line_nr);
+              }
             }
           } else {
             $self->line_error($self->__("bad syntax for \@value"), $line_nr);
@@ -5106,9 +5108,12 @@ sub _parse_texi($;$)
             if (defined($brace_commands{$closed_command}) 
                  and $brace_commands{$closed_command} == 0
                  and @{$current->{'contents'}}) {
-              $self->line_warn(sprintf($self->__(
-                                 "command \@%s does not accept arguments"), 
-                                       $closed_command), $line_nr);
+              if (!($self->{'in_gdt'} and $closed_command eq 'tie')) {
+                $self->line_warn(sprintf($self->__(
+                                   "command \@%s does not accept arguments"), 
+                                         $closed_command), $line_nr);
+              }
+              # TODO: Change @tie{ } to @tie{} in Plaintext.pm
             }
             if ($current->{'parent'}->{'cmdname'} eq 'anchor') {
               $current->{'parent'}->{'line_nr'} = $line_nr;

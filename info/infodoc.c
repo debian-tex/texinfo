@@ -1,8 +1,9 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c 7665 2017-02-03 23:47:25Z gavin $
+   $Id: infodoc.c 7801 2017-05-20 13:33:45Z gavin $
 
    Copyright 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
-   2007, 2008, 2011, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+   2007, 2008, 2011, 2013, 2014, 2015, 2016, 2017 Free Software Foundation, 
+   Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -470,7 +471,7 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
 
       if (map[keystroke].value.function == NULL)
         {
-          message_in_echo_area (_("%s is undefined."), pretty_keyseq (keys));
+          message_in_echo_area (_("%s is undefined"), pretty_keyseq (keys));
           return;
         }
       else if (map[keystroke].type == ISKMAP)
@@ -506,7 +507,7 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
 
               if (map[lowerkey].value.function == NULL)
                 {
-                  message_in_echo_area (_("%s is undefined."),
+                  message_in_echo_area (_("%s is undefined"),
 					pretty_keyseq (keys));
                   return;
                 }
@@ -634,34 +635,19 @@ pretty_keyseq (int *keyseq)
   return text_buffer_base (&rep);
 }
 
-/* Return a pointer to the last character in s that is found in f. */
-static const char *
-strrpbrk (const char *s, const char *f)
-{
-  register const char *e = s + strlen(s);
-  register const char *t;
-
-  while (e-- != s)
-    {
-      for (t = f; *t; t++)
-        if (*e == *t)
-          return e;
-    }
-  return NULL;
-}
-
-/* Replace the names of functions with the key that invokes them. */
+/* Replace the names of functions with the key that invokes them.
+   Return value should not be freed by caller. */
 char *
 replace_in_documentation (const char *string, int help_is_only_window_p)
 {
-  unsigned reslen = strlen (string);
-  register int i, start, next;
-  static char *result = NULL;
+  register int i, start;
+  static struct text_buffer txtresult = {0};
 
-  free (result);
-  result = xmalloc (1 + reslen);
+  text_buffer_free (&txtresult);
+  text_buffer_init (&txtresult);
+  text_buffer_alloc (&txtresult, strlen (string));
 
-  next = start = 0;
+  start = 0;
 
   /* Skip to the beginning of a replaceable function. */
   for (i = start; string[i]; i++)
@@ -672,8 +658,6 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
       if (string[i] == '\\')
         {
           char *fmt = NULL;
-          unsigned min = 0;
-          unsigned max = 0;
 
           if(string[j] == '%')
             {
@@ -681,13 +665,11 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
                 j++;
               if (isdigit(string[j]))
                 {
-                  min = atoi(string + j);
                   while (isdigit(string[j]))
                     j++;
                   if (string[j] == '.' && isdigit(string[j + 1]))
                     {
                       j += 1;
-                      max = atoi(string + j);
                       while (isdigit(string[j]))
                         j++;
                     }
@@ -701,30 +683,13 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
             }
           if (string[j] == '[')
             {
-              unsigned arg = 0;
-              char *argstr = NULL;
               char *rep_name, *fun_name, *rep;
               InfoCommand *command;
-              char *repstr = NULL;
               unsigned replen;
 
               /* Copy in the old text. */
-              strncpy (result + next, string + start, i - start);
-              next += (i - start);
+              text_buffer_add_string (&txtresult, string + start, i - start);
               start = j + 1;
-
-              /* Look for an optional numeric arg. */
-              i = start;
-              if (isdigit(string[i])
-                  || (string[i] == '-' && isdigit(string[i + 1])) )
-                {
-                  arg = atoi(string + i);
-                  if (string[i] == '-')
-                    i++;
-                  while (isdigit(string[i]))
-                    i++;
-                }
-              start = i;
 
               /* Move to the end of the function name. */
               for (i = start; string[i] && (string[i] != ']'); i++);
@@ -733,18 +698,24 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
               strncpy (rep_name, string + start, i - start);
               rep_name[i - start] = '\0';
 
-            /* If we have only one window (because the window size was too
-               small to split it), we have to quit help by going back one
-               node in the history list, not deleting the window.  */
+              start = i;
+              if (string[start] == ']')
+                start++;
+
+              fun_name = rep_name;
               if (strcmp (rep_name, "quit-help") == 0)
-                fun_name = help_is_only_window_p ? "history-node"
-                                                 : "get-help-window";
-              else
-                fun_name = rep_name;
+                {
+                  /* Special case for help window.  If we have only one window 
+                     (because the window size was too small to split it), we 
+                     have to quit help by going back one node in the history 
+                     list, not deleting the window.  */
+
+                  fun_name = help_is_only_window_p ? "history-node"
+                                                   : "get-help-window";
+                }
 
               /* Find a key which invokes this function in the info_keymap. */
               command = named_function (fun_name);
-
               free (rep_name);
 
               /* If the internal documentation string fails, there is a
@@ -753,67 +724,23 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
               if (!command)
                 abort ();
 
-              if (arg)
-                {
-                  char *argrep;
-		  const char *p;
-
-                  argrep = where_is (info_keymap, InfoCmd(info_add_digit_to_numeric_arg));
-                  p = argrep ? strrpbrk (argrep, "0123456789-") : NULL;
-                  if (p)
-                    {
-                      argstr = xmalloc (p - argrep + 21);
-                      strncpy (argstr, argrep, p - argrep);
-                      sprintf (argstr + (p - argrep), "%d", arg);
-                    }
-                  else
-                    command = NULL;
-                }
-              rep = command ? where_is (info_keymap, command) : NULL;
+              rep = where_is (info_keymap, command);
               if (!rep)
                 rep = "N/A";
-              replen = (argstr ? strlen (argstr) : 0) + strlen (rep) + 1;
-              repstr = xmalloc (replen);
-              repstr[0] = '\0';
-              if (argstr)
-                {
-                  strcat(repstr, argstr);
-                  strcat(repstr, " ");
-                  free (argstr);
-                }
-              strcat(repstr, rep);
+              replen = strlen (rep);
 
               if (fmt)
-                {
-                  if (replen > max)
-                    replen = max;
-                  if (replen < min)
-                    replen = min;
-                }
-              if (next + replen > reslen)
-                {
-                  reslen = next + replen + 1;
-                  result = xrealloc (result, reslen + 1);
-                }
-
-              if (fmt)
-                  sprintf (result + next, fmt, repstr);
+                text_buffer_printf (&txtresult, fmt, rep);
               else
-                  strcpy (result + next, repstr);
-
-              next = strlen (result);
-              free (repstr);
-
-              start = i;
-              if (string[i])
-                start++;
+                text_buffer_add_string (&txtresult, rep, replen);
             }
 
           free (fmt);
         }
     }
-  strcpy (result + next, string + start);
-  return result;
+  text_buffer_add_string (&txtresult,
+                          string + start, strlen (string + start) + 1);
+  return text_buffer_base (&txtresult);
 }
 
 /* Return a string of characters which could be typed from the keymap
@@ -900,11 +827,11 @@ DECLARE_INFO_COMMAND (info_where_is,
             {
               if (strstr (location, function_name (command)))
                 window_message_in_echo_area
-                  (_("%s can only be invoked via %s."),
+                  (_("%s can only be invoked via %s"),
                    command_name, location);
               else
                 window_message_in_echo_area
-                  (_("%s can be invoked via %s."),
+                  (_("%s can be invoked via %s"),
                    command_name, location);
             }
         }

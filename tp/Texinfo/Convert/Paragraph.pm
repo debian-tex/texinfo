@@ -20,7 +20,7 @@ use 5.00405;
 use strict;
 use warnings;
 
-our $VERSION = '6.3.90';
+our $VERSION = '6.4';
 
 use Texinfo::XSLoader;
 
@@ -51,18 +51,6 @@ sub import {
 BEGIN {
   our $warning_message = undef;
   our $fatal_message = undef;
- # Check for a UTF-8 locale.  Skip the check if the 'locale' command doesn't
- # work.
-  our $a;
-  if ($^O ne 'MSWin32') {
-    $a = `locale -a 2>/dev/null`;
-  }
-  if ($a and $a !~ /UTF-8/ and $a !~ /utf8/) {
-    $fatal_message = "couldn't find a UTF-8 locale";
-  }
-  if (!$a) {
-    $warning_message = "couldn't run 'locale -a': skipping check for a UTF-8 locale";
-  }
 
   # Save reference to subroutine before we do anything.
   my $import_fn = \&import;

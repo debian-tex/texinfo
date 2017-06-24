@@ -1,4 +1,4 @@
-# $Id: Makefile.am 7710 2017-04-09 09:37:33Z gavin $
+# $Id: Makefile.am 7804 2017-05-20 15:51:33Z gavin $
 # Makefile.am for texinfo/info.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012,
@@ -115,8 +115,6 @@ TESTS = \
 	t/spec-menu.sh \
 	t/all-only.sh \
 	t/empty.sh \
-	t/cr-tag-table.sh \
-	t/inc-sea-bs-after-strip-cr.sh \
 	t/tab.sh \
 	t/tab-argument.sh \
 	t/tab-no-xref.sh \
@@ -150,6 +148,7 @@ TESTS = \
 	t/replace-viewed.sh \
 	t/search-skip-screen.sh \
 	t/search-empty.sh \
+	t/close-window-after-search.sh \
 	t/inc-sea-forward.sh \
 	t/inc-sea-forward-nonregex.sh \
 	t/inc-sea-insensitive.sh \

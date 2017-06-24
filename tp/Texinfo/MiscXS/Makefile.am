@@ -48,8 +48,14 @@ AM_CFLAGS = $(PERL_CONF_ccflags)
 MiscXS_la_CFLAGS = $(AM_CFLAGS)
 MiscXS_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"  "-I$(PERL_INC)"
 
-AM_LDFLAGS = -no-undefined -L$(PERL_INC) $(PERL_CONF_libperl)
-AM_LDFLAGS += -avoid-version -module $(PERL_CONF_ccdlflags)
-# The -no-undefined flag is for MS-Windows.  See info node
-# `(gnulib)Libtool and Windows'.  The -L and -l options after it show
-# where to find the undefined symbols.
+if HOST_NEEDS_NO_UNDEFINED
+  PLATFORM_LDFLAGS = -no-undefined -L$(PERL_INC) $(PERL_CONF_libperl)
+  # The -no-undefined flag is for MS-Windows.  See info node
+  # `(gnulib)Libtool and Windows'.  The -L and -l options after it show
+  # where to find the undefined symbols.
+else
+  PLATFORM_LDFLAGS =
+endif
+
+AM_LDFLAGS = -avoid-version -module $(PERL_CONF_ccdlflags)
+AM_LDFLAGS += $(PLATFORM_LDFLAGS)

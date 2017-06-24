@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c 7754 2017-04-23 13:32:01Z gavin $
+   $Id: info.c 7817 2017-05-27 17:01:01Z gavin $
 
    Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015,
@@ -277,7 +277,7 @@ get_initial_file (int *argc, char ***argv, char **error)
           return;
         }
       else
-        asprintf (error, _("No menu item '%s' in node '%s'."),
+        asprintf (error, _("No menu item '%s' in node '%s'"),
             (*argv)[0], "(dir)Top");
     }
 
@@ -412,7 +412,7 @@ add_initial_nodes (int argc, char **argv, char **error)
               if (!node_nodename)
                 {
                   free (*error);
-                  asprintf (error, _("Cannot find node '%s'."),
+                  asprintf (error, _("Cannot find node '%s'"),
                             user_nodenames[i]);
                   continue;
                 }
@@ -434,7 +434,7 @@ add_initial_nodes (int argc, char **argv, char **error)
 
       if (ref_index == 0)
         {
-          info_error (_("No program name given."));
+          info_error (_("No program name given"));
           exit (1);
         }
 
@@ -1093,38 +1093,31 @@ Read documentation in Info format.\n"), program_name);
   puts ("");
 
   puts (_("\
-Options:\n\
-  -a, --all                    use all matching manuals.\n\
-  -k, --apropos=STRING         look up STRING in all indices of all manuals.\n\
-  -d, --directory=DIR          add DIR to INFOPATH.\n\
-      --dribble=FILE           remember user keystrokes in FILENAME.\n\
-  -f, --file=MANUAL            specify Info manual to visit."));
+Frequently-used options:\n\
+  -a, --all                    use all matching manuals\n\
+  -k, --apropos=STRING         look up STRING in all indices of all manuals\n\
+  -d, --directory=DIR          add DIR to INFOPATH\n\
+  -f, --file=MANUAL            specify Info manual to visit"));
 
   puts (_("\
-  -h, --help                   display this help and exit.\n\
-      --index-search=STRING    go to node pointed by index entry STRING.\n\
-  -n, --node=NODENAME          specify nodes in first visited Info file.\n\
-  -o, --output=FILE            output selected nodes to FILE."));
+  -h, --help                   display this help and exit\n\
+      --index-search=STRING    go to node pointed by index entry STRING\n\
+  -n, --node=NODENAME          specify nodes in first visited Info file\n\
+  -o, --output=FILE            output selected nodes to FILE"));
 
   puts (_("\
-  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n\
-      --no-raw-escapes         output escapes as literal text.\n\
-      --restore=FILE           read initial keystrokes from FILE.\n\
-  -O, --show-options, --usage  go to command-line options node."));
+  -O, --show-options, --usage  go to command-line options node"));
 
 #if defined(__MSDOS__) || defined(__MINGW32__)
   puts (_("\
-  -b, --speech-friendly        be friendly to speech synthesizers."));
+  -b, --speech-friendly        be friendly to speech synthesizers"));
 #endif
 
   puts (_("\
-      --strict-node-location   (for debugging) use Info file pointers as-is.\n\
-      --subnodes               recursively output menu items.\n\
-  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR.\n\
-      --vi-keys                use vi-like and less-like key bindings.\n\
-      --version                display version information and exit.\n\
-  -w, --where, --location      print physical location of Info file.\n\
-  -x, --debug=NUMBER           set debugging level (-1 for all).\n"));
+      --subnodes               recursively output menu items\n\
+  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR\n\
+      --version                display version information and exit\n\
+  -w, --where, --location      print physical location of Info file"));
 
   puts (_("\n\
 The first non-option argument, if present, is the menu entry to start from;\n\
@@ -1138,16 +1131,16 @@ For a summary of key bindings, type H within Info."));
 
   puts (_("\n\
 Examples:\n\
-  info                       show top-level dir menu\n\
-  info info                  show the general manual for Info readers\n\
-  info info-stnd             show the manual specific to this Info program\n\
-  info emacs                 start at emacs node from top-level dir\n\
-  info emacs buffers         select buffers menu entry in emacs manual\n\
-  info emacs -n Files        start at Files node within emacs manual\n\
-  info '(emacs)Files'        alternative way to start at Files node\n\
-  info --show-options emacs  start at node with emacs' command line options\n\
-  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n\
-  info -f ./foo.info         show file ./foo.info, not searching dir"));
+  info                         show top-level dir menu\n\
+  info info-stnd               show the manual for this Info program\n\
+  info emacs                   start at emacs node from top-level dir\n\
+  info emacs buffers           select buffers menu entry in emacs manual\n\
+  info emacs -n Files          start at Files node within emacs manual\n\
+  info '(emacs)Files'          alternative way to start at Files node\n\
+  info --show-options emacs    start at node with emacs' command line options\n\
+  info --subnodes -o out.txt emacs\n\
+                               dump entire emacs manual to out.txt\n\
+  info -f ./foo.info           show file ./foo.info, not searching dir"));
 
   puts ("");
 
@@ -1185,20 +1178,20 @@ const char *msg_cant_make_help;
 static void
 init_messages (void)
 {
-  msg_cant_find_node   = _("Cannot find node '%s'.");
-  msg_cant_file_node   = _("Cannot find node '(%s)%s'.");
+  msg_cant_find_node   = _("Cannot find node '%s'");
+  msg_cant_file_node   = _("Cannot find node '(%s)%s'");
   msg_cant_find_window = _("Cannot find a window!");
   msg_cant_find_point  = _("Point doesn't appear within this window's node!");
-  msg_cant_kill_last   = _("Cannot delete the last window.");
-  msg_no_menu_node     = _("No menu in this node.");
-  msg_no_foot_node     = _("No footnotes in this node.");
-  msg_no_xref_node     = _("No cross references in this node.");
-  msg_no_pointer       = _("No '%s' pointer for this node.");
-  msg_unknown_command  = _("Unknown Info command '%c'; try '?' for help.");
-  msg_term_too_dumb    = _("Terminal type '%s' is not smart enough to run Info.");
-  msg_at_node_bottom   = _("You are already at the last page of this node.");
-  msg_at_node_top      = _("You are already at the first page of this node.");
-  msg_one_window       = _("Only one window.");
-  msg_win_too_small    = _("Resulting window would be too small.");
-  msg_cant_make_help   = _("Not enough room for a help window, please delete a window.");
+  msg_cant_kill_last   = _("Cannot delete the last window");
+  msg_no_menu_node     = _("No menu in this node");
+  msg_no_foot_node     = _("No footnotes in this node");
+  msg_no_xref_node     = _("No cross references in this node");
+  msg_no_pointer       = _("No '%s' pointer for this node");
+  msg_unknown_command  = _("Unknown Info command '%c'; try '?' for help");
+  msg_term_too_dumb    = _("Terminal type '%s' is not smart enough to run Info");
+  msg_at_node_bottom   = _("You are already at the last page of this node");
+  msg_at_node_top      = _("You are already at the first page of this node");
+  msg_one_window       = _("Only one window");
+  msg_win_too_small    = _("Resulting window would be too small");
+  msg_cant_make_help   = _("Not enough room for a help window, please delete a window");
 }

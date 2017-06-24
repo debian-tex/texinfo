@@ -1,8 +1,8 @@
 /* m-x.c -- Meta-x minibuffer reader.
-   $Id: m-x.c 7664 2017-02-03 23:31:30Z gavin $
+   $Id: m-x.c 7778 2017-05-14 10:54:47Z gavin $
 
    Copyright 1993, 1997, 1998, 2001, 2002, 2004, 2007, 2008, 2011, 2013,
-   2014, 2017 Free Software Foundation, Inc.
+   2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -133,7 +133,7 @@ DECLARE_INFO_COMMAND (info_execute_command,
         (strncmp (line, "echo-area-", 10) == 0))
       {
         free (line);
-        info_error (_("Cannot execute an 'echo-area' command here."));
+        info_error (_("Cannot execute an 'echo-area' command here"));
         return;
       }
 

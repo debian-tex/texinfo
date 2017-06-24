@@ -1,4 +1,4 @@
-$Id: NEWS 7721 2017-04-14 15:43:04Z gavin $
+$Id: NEWS 7802 2017-05-20 13:44:26Z gavin $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -11,6 +11,7 @@ See the manual for detailed information.
   notice and this notice are preserved.
 
 -------------------------------------------------------------------------------
+6.4 (23 June 2017)
 * texi2any:
   . for HTML output, place section names before the manual in page
     titles, instead of after them, so it is easier to distinguish pages
@@ -27,12 +28,26 @@ See the manual for detailed information.
     documented)
 
 * info:
+  . the `up-line' and `down-line' commands now are like the other
+    scrolling commands and are no longer confined to a single node
+    (depending on the value of `scroll-behaviour')
   . supplying the --all option with --index-search displays a list
     of matching index entries
+  . the style variables like `link-style' can now be set while info
+    is running
   . display bug fixed where color could be turned off prematurely
   . several other bugs fixed
   . better portability in test suite
   . do not fall back to showing the dir node if a manual isn't found
+  . Do not attempt any kind of conversion of CR LF line endings,
+    except on MS-DOS/Windows, when it is done unconditionally.  (This 
+    replaces a more complicated approach, where this conversion would 
+    take place if there was a problem finding a node in a file.)  The 
+    main effect of this change is that Info files with CR LF line 
+    endings, which would have been produced on MS-DOS/Windows with old 
+    versions of makeinfo, are only supported on such operating systems.
+  . a few of the key bindings under --vi-keys have been changed for
+    consistency or to match the documentation
 
 * texinfo.tex
   . a DVI file with a single empty page can be output again, which

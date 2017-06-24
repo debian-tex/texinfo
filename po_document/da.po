@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-04-23 13:58+0100\n"
+"POT-Creation-Date: 2017-06-23 06:53+0100\n"
 "PO-Revision-Date: 2015-12-28 09:13GMT\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -23,90 +23,90 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: tp/Texinfo/Common.pm:698 tp/Texinfo/Common.pm:703
+#: tp/Texinfo/Common.pm:699 tp/Texinfo/Common.pm:704
 msgid "Function"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:699
+#: tp/Texinfo/Common.pm:700
 msgid "Macro"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:700
+#: tp/Texinfo/Common.pm:701
 msgid "Special Form"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:701 tp/Texinfo/Common.pm:704
+#: tp/Texinfo/Common.pm:702 tp/Texinfo/Common.pm:705
 #, fuzzy
 msgid "Variable"
 msgstr "Angiv variabel: "
 
-#: tp/Texinfo/Common.pm:702
+#: tp/Texinfo/Common.pm:703
 #, fuzzy
 msgid "User Option"
 msgstr "Indsæt færdiggørelse"
 
-#: tp/Texinfo/Common.pm:705 tp/Texinfo/Common.pm:706
+#: tp/Texinfo/Common.pm:706 tp/Texinfo/Common.pm:707
 #, fuzzy
 msgid "Instance Variable"
 msgstr "Beskriv variabel: "
 
-#: tp/Texinfo/Common.pm:707 tp/Texinfo/Common.pm:708
+#: tp/Texinfo/Common.pm:708 tp/Texinfo/Common.pm:709
 msgid "Method"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1187
+#: tp/Texinfo/Common.pm:1188
 #, perl-brace-format
 msgid "{category} on {class}"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1194
+#: tp/Texinfo/Common.pm:1195
 #, perl-brace-format
 msgid "{category} of {class}"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1211
+#: tp/Texinfo/Common.pm:1212
 #, perl-brace-format
 msgid "{month} {day}, {year}"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1242 tp/Texinfo/Convert/Plaintext.pm:1055
+#: tp/Texinfo/Common.pm:1243 tp/Texinfo/Convert/Plaintext.pm:1055
 #: tp/Texinfo/Convert/HTML.pm:532
 #, perl-brace-format
 msgid "Appendix {number} {section_title}"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1246 tp/Texinfo/Convert/Plaintext.pm:1060
+#: tp/Texinfo/Common.pm:1247 tp/Texinfo/Convert/Plaintext.pm:1060
 #: tp/Texinfo/Convert/HTML.pm:538
 #, perl-brace-format
 msgid "{number} {section_title}"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1487
+#: tp/Texinfo/Common.pm:1488
 #, perl-brace-format
 msgid "{float_type} {float_number}: "
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1491
+#: tp/Texinfo/Common.pm:1492
 #, perl-brace-format
 msgid "{float_type}: "
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1496
+#: tp/Texinfo/Common.pm:1497
 #, perl-brace-format
 msgid "{float_type} {float_number}\n"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1500
+#: tp/Texinfo/Common.pm:1501
 #, perl-brace-format
 msgid "{float_type}\n"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1506
+#: tp/Texinfo/Common.pm:1507
 #, perl-brace-format
 msgid "{float_number}: "
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1509
+#: tp/Texinfo/Common.pm:1510
 #, perl-brace-format
 msgid "{float_number}\n"
 msgstr ""

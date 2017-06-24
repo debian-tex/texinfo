@@ -27,14 +27,14 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --lib=libgnu --source-base=gnulib/lib --m4-base=gnulib/m4 --doc-base=doc --tests-base=tests --aux-dir=build-aux --conditional-dependencies --no-libtool --macro-prefix=gl --no-vc-files argz getopt-gnu gettext iconv mbchar mbiter mbscasecmp mbschr mbslen mbsncasecmp mbsstr mbswidth memrchr regex stdarg strcasestr strdup-posix strerror vasprintf xalloc
+#   gnulib-tool --import --lib=libgnu --source-base=gnulib/lib --m4-base=gnulib/m4 --doc-base=doc --tests-base=tests --aux-dir=build-aux --conditional-dependencies --no-libtool --macro-prefix=gl --no-vc-files argz getopt-gnu gettext-h iconv mbchar mbiter mbscasecmp mbschr mbslen mbsncasecmp mbsstr mbswidth memrchr regex stdarg strcasestr strdup-posix strerror vasprintf xalloc
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([])
 gl_MODULES([
   argz
   getopt-gnu
-  gettext
+  gettext-h
   iconv
   mbchar
   mbiter

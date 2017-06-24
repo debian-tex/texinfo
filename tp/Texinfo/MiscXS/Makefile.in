@@ -387,8 +387,10 @@ MiscXS_la_SOURCES = MiscXS.c misc.c miscxs.h ppport.h
 AM_CFLAGS = $(PERL_CONF_ccflags)
 MiscXS_la_CFLAGS = $(AM_CFLAGS) -DVERSION=\"$(VERSION)\" \
 	-DXS_VERSION=\"$(VERSION)\" "-I$(PERL_INC)"
-AM_LDFLAGS = -no-undefined -L$(PERL_INC) $(PERL_CONF_libperl) \
-	-avoid-version -module $(PERL_CONF_ccdlflags)
+@HOST_NEEDS_NO_UNDEFINED_FALSE@PLATFORM_LDFLAGS = 
+@HOST_NEEDS_NO_UNDEFINED_TRUE@PLATFORM_LDFLAGS = -no-undefined -L$(PERL_INC) $(PERL_CONF_libperl)
+AM_LDFLAGS = -avoid-version -module $(PERL_CONF_ccdlflags) \
+	$(PLATFORM_LDFLAGS)
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -895,9 +897,9 @@ uninstall-am: uninstall-xsLTLIBRARIES
 
 .xs.c:
 	$(XSUBPP) $(XSUBPPARGS) $< > $*.xsc && mv $*.xsc $*.c
-# The -no-undefined flag is for MS-Windows.  See info node
-# `(gnulib)Libtool and Windows'.  The -L and -l options after it show
-# where to find the undefined symbols.
+@HOST_NEEDS_NO_UNDEFINED_TRUE@  # The -no-undefined flag is for MS-Windows.  See info node
+@HOST_NEEDS_NO_UNDEFINED_TRUE@  # `(gnulib)Libtool and Windows'.  The -L and -l options after it show
+@HOST_NEEDS_NO_UNDEFINED_TRUE@  # where to find the undefined symbols.
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

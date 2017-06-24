@@ -1,4 +1,4 @@
-# $Id: Makefile.am 7679 2017-03-05 14:17:08Z gavin $
+# $Id: Makefile.am 7757 2017-04-24 06:48:05Z gavin $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -69,6 +69,4 @@ AM_TESTS_ENVIRONMENT = \
   TEXINPUTS="$(top_srcdir)/doc$(PATH_SEPARATOR)$$TEXINPUTS"; \
   export TEXINPUTS;
 
-TESTS= \
-  tests/texi2dvi_helpversion.sh \
-  tests/texi2dvi_empty_text.sh
+TESTS = tests/texi2dvi_helpversion.sh

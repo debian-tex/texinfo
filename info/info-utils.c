@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c 7708 2017-04-08 21:39:32Z gavin $
+   $Id: info-utils.c 7818 2017-06-03 20:52:27Z gavin $
 
    Copyright 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012,
    2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
@@ -877,7 +877,7 @@ copy_converting (long n)
             }
           continue;
         default: /* Unknown error */
-          info_error (_("Error converting file character encoding."));
+          info_error (_("Error converting file character encoding"));
 
           /* Skip past current input and hope we don't get an
              error next time. */
@@ -1261,13 +1261,12 @@ scan_reference_marker (REFERENCE *entry, int in_parentheses)
 static int
 scan_reference_label (REFERENCE *entry, int in_index)
 {
-  char *dummy;
   int max_lines;
   int len, label_len = 0;
 
-  /* Handle case of cross-reference like (FILE)^?NODE^?::. */
+  /* Handle case of cross-reference like (FILE)NODE::. */
   if (inptr[0] == '(')
-    label_len = read_bracketed_filename (inptr, 0);
+    label_len = read_bracketed_filename (inptr, &entry->filename);
 
   /* Search forward to ":" to get label name.  Cross-references may have
      a newline in the middle. */
@@ -1277,8 +1276,8 @@ scan_reference_label (REFERENCE *entry, int in_index)
     max_lines = 2;
   if (!in_index || inptr[label_len] == '\177')
     {
-      len = read_quoted_string (inptr + label_len, ":", max_lines, &dummy);
-      free (dummy);
+      len = read_quoted_string (inptr + label_len, ":", max_lines,
+                                &entry->nodename);
       if (!len)
         return 0; /* Input invalid. */
       label_len += len;
@@ -1341,38 +1340,6 @@ static int
 scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
 {
   int i;
-  int label_len;
-
-  /* If this reference entry continues with another ':' then the target
-     of the reference is given by the label. */
-  if (*inptr == ':')
-    info_parse_node (entry->label);
-
-  label_len = strlen (entry->label);
-  if (label_len >= 2 && entry->label[label_len - 1] == 0177)
-    {
-      /* Remove the DEL bytes.  We don't do this until after calling
-         info_parse_node so that ^?(FOO)BAR^?:: refers to a node called 
-         "(FOO)BAR" within the current manual. */
-      char *p = strchr (entry->label, '\177');
-      memmove (p, p + 1, label_len - (p - entry->label) - 1);
-      entry->label[label_len - 2] = '\0';
-    }
-
-  if (*inptr == ':')
-    {
-      skip_input (1);
-      if (entry->type == REFERENCE_MENU_ITEM)
-        write_extra_bytes_to_output (" ", 1);
-
-      if (info_parsed_filename)
-        entry->filename = xstrdup (info_parsed_filename);
-      if (info_parsed_nodename)
-        entry->nodename = xstrdup (info_parsed_nodename);
-
-      return 1;
-    }
-
 
   /* This entry continues with a specific target.  Parse the
      file name and node name from the specification. */
@@ -1705,13 +1672,51 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
 
           save_conversion_state ();
           
-          if (!scan_reference_marker (entry, in_parentheses)
-              || !scan_reference_label (entry, in_index)
-              || !scan_reference_target (entry, node, in_parentheses))
+          if (!scan_reference_marker (entry, in_parentheses))
+            goto not_a_reference;
+
+          if (!scan_reference_label (entry, in_index))
+            goto not_a_reference;
+
+          /* If this reference entry continues with another ':' then the target
+             of the reference is given by the label. */
+          if (*inptr == ':')
             {
+              int label_len;
+              skip_input (1);
+              if (entry->type == REFERENCE_MENU_ITEM)
+                write_extra_bytes_to_output (" ", 1);
+
+              /* Remove the DEL bytes from a label like "(FOO)^?BAR^?::". */
+              label_len = strlen (entry->label);
+              if (label_len >= 2 && entry->label[label_len - 1] == 0177)
+                {
+                  char *p = strchr (entry->label, '\177');
+                  memmove (p, p + 1, label_len - (p - entry->label) - 1);
+                  entry->label[label_len - 2] = '\0';
+                }
+            }
+          else
+            {
+              /* Proceed to read the rest of the reference. */
+              /* TODO: we should probably not allow references of the form 
+                 "(file)node1:node2." or "(file1)node1:(file2)node2", so
+                 bail out here if entry->filename is non-null. */
+
+              free (entry->filename); entry->filename = 0;
+              free (entry->nodename); entry->nodename = 0;
+              if (!scan_reference_target (entry, node, in_parentheses))
+                goto not_a_reference;
+            }
+
+          if (0)
+            {
+              char *cur_inptr;
+
+not_a_reference:
               /* This is not a menu entry or reference.  Do not add to our 
                  list. */
-              char *cur_inptr = inptr;
+              cur_inptr = inptr;
               reset_conversion ();
               copy_input_to_output (cur_inptr - inptr);
 

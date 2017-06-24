@@ -54,6 +54,10 @@
    whether the gnulib module lock shall be considered present. */
 #undef GNULIB_LOCK
 
+/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
+   whether the gnulib module msvc-nothrow shall be considered present. */
+#undef GNULIB_MSVC_NOTHROW
+
 /* Define to 1 if printf and friends should be labeled with attribute
    "__gnu_printf__" instead of "__printf__" */
 #undef GNULIB_PRINTF_ATTRIBUTE_FLAVOR_GNU
@@ -164,13 +168,8 @@
 /* Define to 1 if you have the `bzero' function. */
 #undef HAVE_BZERO
 
-/* Define to 1 if you have the Mac OS X function CFLocaleCopyCurrent in the
-   CoreFoundation framework. */
-#undef HAVE_CFLOCALECOPYCURRENT
-
-/* Define to 1 if you have the Mac OS X function CFPreferencesCopyAppValue in
-   the CoreFoundation framework. */
-#undef HAVE_CFPREFERENCESCOPYAPPVALUE
+/* Define to 1 if you have the <crtdefs.h> header file. */
+#undef HAVE_CRTDEFS_H
 
 /* Define if the GNU dcgettext() function is already present or preinstalled.
    */
@@ -765,6 +764,9 @@
 /* Define to 1 if towctrans is declared even after undefining macros. */
 #undef HAVE_RAW_DECL_TOWCTRANS
 
+/* Define to 1 if truncate is declared even after undefining macros. */
+#undef HAVE_RAW_DECL_TRUNCATE
+
 /* Define to 1 if ttyname_r is declared even after undefining macros. */
 #undef HAVE_RAW_DECL_TTYNAME_R
 
@@ -821,6 +823,9 @@
 
 /* Define to 1 if wcsdup is declared even after undefining macros. */
 #undef HAVE_RAW_DECL_WCSDUP
+
+/* Define to 1 if wcsftime is declared even after undefining macros. */
+#undef HAVE_RAW_DECL_WCSFTIME
 
 /* Define to 1 if wcslen is declared even after undefining macros. */
 #undef HAVE_RAW_DECL_WCSLEN

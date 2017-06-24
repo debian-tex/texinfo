@@ -1,5 +1,5 @@
 /* nodes.h -- How we represent nodes internally.
-   $Id: nodes.h 7264 2016-07-17 16:44:53Z gavin $
+   $Id: nodes.h 7794 2017-05-18 20:59:43Z gavin $
 
    Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2011, 2012, 2013,
    2014, 2015 Free Software Foundation, Inc.
@@ -67,10 +67,9 @@ typedef struct {
 #define N_IsIndex      0x200    /* An index node. */
 #define N_IsDir        0x400    /* A dir node. */
 #define N_Subfile      0x800    /* File buffer is a subfile of a split file. */
-#define N_EOLs_Converted 0x1000 /* CR bytes were stripped before LF. */
-#define N_Gone         0x2000   /* File is no more. */
-#define N_Simple       0x4000   /* Data about cross-references is missing. */
-#define N_SeenBySearch 0x8000   /* Node has already been seen in a search. */
+#define N_Gone         0x1000   /* File is no more. */
+#define N_Simple       0x2000   /* Data about cross-references is missing. */
+#define N_SeenBySearch 0x4000   /* Node has already been seen in a search. */
 
 /* String constants. */
 #define INFO_FILE_LABEL                 "File:"

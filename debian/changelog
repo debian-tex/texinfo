@@ -1,10 +1,10 @@
-texinfo (6.3.90.dfsg.1-1) experimental; urgency=medium
+texinfo (6.4.0.dfsg.1-1) unstable; urgency=medium
 
-  * adapt make-orig-tar for new prerelease
-  * New upstream version 6.3.90.dfsg.1
+  * adapt make-orig-tar for new release
+  * New upstream version 6.4.0
   * update patches
 
- -- Norbert Preining <preining@debian.org>  Mon, 24 Apr 2017 09:59:20 +0900
+ -- Norbert Preining <preining@debian.org>  Sat, 24 Jun 2017 11:29:26 +0900
 
 texinfo (6.3.0.dfsg.1-1) unstable; urgency=medium
 

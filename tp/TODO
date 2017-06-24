@@ -67,6 +67,10 @@ would allow to catch many other dubious nesting, such as @table in @menu,
 @caption in @caption and also would certainly allow to handle the 2 cases 
 below.  This should, however, slow down the computation even more.
 
+maybe checking for incorrectly nested @titlepage, @copying and 
+@documentdescription (which is already done in the "regions stack") 
+could be done the same way.
+
 warn nested footnotes.
 
 Following should be an error:

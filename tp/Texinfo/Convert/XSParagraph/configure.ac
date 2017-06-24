@@ -84,6 +84,13 @@ LT_INIT
 # aren't really used: otherwise, configure complains about undefined
 # variables.
 
+host_needs_no_undefined=no
+case "$host" in *-mingw32 | *-mingw64 | *-msdosdjgpp | *-cygwin )
+  host_needs_no_undefined=yes ;;
+esac     
+AM_CONDITIONAL([HOST_NEEDS_NO_UNDEFINED],
+               [test "x$host_needs_no_undefined" = "xyes"])
+
 # User variables for a Perl XS extension, which may be different, for
 # example if the Perl interpreter being used was compiled with a
 # different compiler.  Also in top-level configure.ac.

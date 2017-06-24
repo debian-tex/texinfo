@@ -1,4 +1,4 @@
-$Id: README-hacking 7736 2017-04-17 07:43:48Z gavin $
+$Id: README-hacking 7788 2017-05-15 18:56:25Z gavin $
 This file describes the development environment for Texinfo.
 
   Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013,
@@ -178,8 +178,6 @@ util/srclist-txi          # for pretest, to sync files with other sources
 - Official releases only:
 version and date in NEWS.
 version number in texi2dvi, texi2pdf, txirefcard.tex.
-(cd tp && ./maintain/change_perl_modules_version.sh auto)
-  -- this updates all the version numbers in the Perl modules
 (cd tp && maintain/regenerate_documentlanguages.pl)
   -- regenerates tp/Texinfo/Documentlanguages.pm
 
@@ -187,6 +185,8 @@ make V=1 pdf and fix underfull/overfull boxes.
 
 - Changes to sources:
 update version in configure.ac, notice in ChangeLog.
+(cd tp && ./maintain/change_perl_modules_version.sh auto)
+  -- this updates all the version numbers in the Perl modules
 check that texindex version is updated properly
   (rm texindex.awk ; make)
 Check that translations have been updated, e.g.:

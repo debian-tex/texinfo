@@ -1,14 +1,14 @@
 # Polish translation for texinfo_document
-# Copyright (C) 2013 Free Software Foundation, Inc.
+# Copyright (C) 2013, 2017 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
-# Jakub Bogusz <qboosh@pld-linux.org>, 2013.
+# Jakub Bogusz <qboosh@pld-linux.org>, 2013-2017.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document 5.0\n"
+"Project-Id-Version: texinfo_document 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-04-23 13:58+0100\n"
-"PO-Revision-Date: 2013-02-28 21:35+0100\n"
+"POT-Creation-Date: 2017-06-23 06:53+0100\n"
+"PO-Revision-Date: 2017-04-26 21:40+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "Language: pl\n"
@@ -17,87 +17,87 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 
-#: tp/Texinfo/Common.pm:698 tp/Texinfo/Common.pm:703
+#: tp/Texinfo/Common.pm:699 tp/Texinfo/Common.pm:704
 msgid "Function"
 msgstr "Funkcja"
 
-#: tp/Texinfo/Common.pm:699
+#: tp/Texinfo/Common.pm:700
 msgid "Macro"
 msgstr "Makro"
 
-#: tp/Texinfo/Common.pm:700
+#: tp/Texinfo/Common.pm:701
 msgid "Special Form"
 msgstr "Postać specjalna"
 
-#: tp/Texinfo/Common.pm:701 tp/Texinfo/Common.pm:704
+#: tp/Texinfo/Common.pm:702 tp/Texinfo/Common.pm:705
 msgid "Variable"
 msgstr "Zmienna"
 
-#: tp/Texinfo/Common.pm:702
+#: tp/Texinfo/Common.pm:703
 msgid "User Option"
 msgstr "Opcja użytkownika"
 
-#: tp/Texinfo/Common.pm:705 tp/Texinfo/Common.pm:706
+#: tp/Texinfo/Common.pm:706 tp/Texinfo/Common.pm:707
 msgid "Instance Variable"
 msgstr "Przykład zmiennej"
 
-#: tp/Texinfo/Common.pm:707 tp/Texinfo/Common.pm:708
+#: tp/Texinfo/Common.pm:708 tp/Texinfo/Common.pm:709
 msgid "Method"
 msgstr "Metoda"
 
-#: tp/Texinfo/Common.pm:1187
+#: tp/Texinfo/Common.pm:1188
 #, perl-brace-format
 msgid "{category} on {class}"
 msgstr "{category} dla klasy {class}"
 
-#: tp/Texinfo/Common.pm:1194
+#: tp/Texinfo/Common.pm:1195
 #, perl-brace-format
 msgid "{category} of {class}"
 msgstr "{category} klasy {class}"
 
-#: tp/Texinfo/Common.pm:1211
+#: tp/Texinfo/Common.pm:1212
 #, perl-brace-format
 msgid "{month} {day}, {year}"
 msgstr "{day} {month} {year}"
 
-#: tp/Texinfo/Common.pm:1242 tp/Texinfo/Convert/Plaintext.pm:1055
+#: tp/Texinfo/Common.pm:1243 tp/Texinfo/Convert/Plaintext.pm:1055
 #: tp/Texinfo/Convert/HTML.pm:532
 #, perl-brace-format
 msgid "Appendix {number} {section_title}"
 msgstr "Załącznik {number} {section_title}"
 
-#: tp/Texinfo/Common.pm:1246 tp/Texinfo/Convert/Plaintext.pm:1060
+#: tp/Texinfo/Common.pm:1247 tp/Texinfo/Convert/Plaintext.pm:1060
 #: tp/Texinfo/Convert/HTML.pm:538
 #, perl-brace-format
 msgid "{number} {section_title}"
 msgstr "{number} {section_title}"
 
-#: tp/Texinfo/Common.pm:1487
+#: tp/Texinfo/Common.pm:1488
 #, perl-brace-format
 msgid "{float_type} {float_number}: "
 msgstr "{float_type} {float_number}: "
 
-#: tp/Texinfo/Common.pm:1491
+#: tp/Texinfo/Common.pm:1492
 #, perl-brace-format
 msgid "{float_type}: "
 msgstr "{float_type}: "
 
-#: tp/Texinfo/Common.pm:1496
+#: tp/Texinfo/Common.pm:1497
 #, perl-brace-format
 msgid "{float_type} {float_number}\n"
 msgstr "{float_type} {float_number}\n"
 
-#: tp/Texinfo/Common.pm:1500
+#: tp/Texinfo/Common.pm:1501
 #, perl-brace-format
 msgid "{float_type}\n"
 msgstr "{float_type}\n"
 
-#: tp/Texinfo/Common.pm:1506
+#: tp/Texinfo/Common.pm:1507
 #, perl-brace-format
 msgid "{float_number}: "
 msgstr "{float_number}: "
 
-#: tp/Texinfo/Common.pm:1509
+#: tp/Texinfo/Common.pm:1510
 #, perl-brace-format
 msgid "{float_number}\n"
 msgstr "{float_number}\n"
@@ -822,9 +822,9 @@ msgid "This document was generated on @emph{@today{}}."
 msgstr "Ten dokument został wygenerowany @emph{@today{}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6216
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "{element_text} ({title})"
-msgstr "{text} ({url})"
+msgstr "{element_text} ({title})"
 
 #: tp/Texinfo/Convert/HTML.pm:6360
 #, perl-brace-format
@@ -904,6 +904,3 @@ msgstr "Podsekcja Jeden-Cztery"
 #: tp/Texinfo/Convert/HTML.pm:6908
 msgid "Untitled Document"
 msgstr "Dokument bez tytułu"
-
-#~ msgid "{title}: {element_text}"
-#~ msgstr "{title}: {element_text}"

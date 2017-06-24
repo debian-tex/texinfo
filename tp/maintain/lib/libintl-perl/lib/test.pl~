@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+
+use Locale::Messages;
+use POSIX;
+
+Locale::Messages::textdomain ("texinfo");
+POSIX::setlocale (LC_MESSAGES, "C");
+
+print Locale::Messages::gettext("vefvf"), "\n";

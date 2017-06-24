@@ -23,6 +23,12 @@
 #include <locale.h>
 #ifndef _WIN32
 #include <langinfo.h>
+#else  /* _WIN32 */
+/* Workaround for problems caused in mingw.org's MinGW build by
+   Gnulib's wchar.h overriding the wint_t type definition, which
+   causes compilation errors when perl.h is included below, because
+   perl.h includes ctype.h.  */
+#include <ctype.h>
 #endif
 #include <wchar.h>
 #include <wctype.h>
@@ -461,6 +467,8 @@ xs_unicode_text (char *text, int in_code)
   char *new;
   int new_space, new_len;
 
+  dTHX; /* Perl boilerplate. */
+
   if (in_code)
     return text;
 
@@ -510,7 +518,7 @@ xs_unicode_text (char *text, int in_code)
           else if (!memcmp (q, "--", 2))
             {
               p = q + 2;
-              /* Unicode em dash U+2013 (0xE2 0x80 0x93) */
+              /* Unicode en dash U+2013 (0xE2 0x80 0x93) */
               ADD3("\xE2\x80\x93");
             }
           else
@@ -598,7 +606,7 @@ void xs_parse_texi_regex (SV *text_in,
 
       else if (*text == '@'
                  && text[1] && strchr ("([\"'~@}{,.!?"
-                                       " \f\n\r\t"
+                                       " \t\n"
                                        "*-^`=:|/\\",
                                        text[1]))
         {

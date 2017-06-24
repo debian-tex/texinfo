@@ -1,3 +1,554 @@
+2017-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	6.4 release.
+	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf,
+	doc/refcard/txirefcard.tex: Version number.
+	* configure.ac (TEXINFO_DTD_VERSION): Change to 6.4.
+
+2017-06-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (sorted_index_filter) <latex input>: Don't
+	print the name of a *.fls recorder file, as then 
+	'xref_files_changed' would require one to exist, which it may 
+	not.
+
+2017-06-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (xref_files_changed): Call 'sorted_index_files'
+	to get a list of the sorted index files that should exist, and
+	if any of them are missing, go around another cycle of 
+	processing.
+
+2017-06-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (filter_files): Comment changed.
+	(add_all_filter): Do not print the argument of the file, so 
+	using this with filter_files only prints secondary files.
+	(add_all_filter, sorted_index_filter): Rename.
+	(sorted_index_files): New function.
+	(all_files): Use sorted_index_files instead of add_all_filter.
+
+	No functional changes intended.
+
+2017-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/TODO: Mention that some checks for incorrect nesting
+	is done already.
+
+2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Report.pm (gdt): Set an 'in_gdt' flag
+	on the parser.
+	* tp/Texinfo/Common.pm (%default_parser_state_configuration):
+	Allow 'in_gdt' as a config value.
+	* tp/Texinfo/Parser.pm (_parse_texi): Avoid issuing an error
+	message in a couple of situations when being called from 'gdt'.
+	(It would be thrown away anyway.)  This avoids the need for the 
+	error message to be translated, so is slightly faster.
+
+2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Report.pm (gdt): Remove code dealing with a
+	'translated_paragraph' argument.  Condense code dealing
+	with subroutine arguments to a single line.
+
+2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Paragraph.pm: Remove check for UTF-8 locale 
+	that runs "locale -a".
+	xspara_init in tp/Texinfo/Convert/XSParagraph/xspara.c does its 
+	own check which should be enough.
+
+2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS.pm: Remove check for UTF-8 locale, as
+	"locale -a" can be slow to run (about 4.5 seconds on my computer 
+	after disk caches are cleared), and tp/Texinfo/MiscXS/misc.c may
+	not need it.  (Reverses change on 2017-03-12.)
+
+2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* pretest 6.3.92
+	* configure.ac: Update version.
+
+2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (find_node_from_tag): Remove some unused 
+	variables.
+
+2017-06-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac,
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am,
+	* tp/Texinfo/MiscXS/configure.ac,
+	* tp/Texinfo/MiscXS/Makefile.am:
+	Change name of conditional from HOST_IS_WINDOWS to 
+	HOST_NEEDS_NO_UNDEFINED.  Suggestion from Ken Brown.
+
+2017-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* Texinfo/Convert/XSParagraph/configure.ac,
+	* Texinfo/MiscXS/configure.ac: Check for cygwin when setting 
+	HOST_IS_WINDOWS conditional.
+
+2017-06-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac,
+	* tp/Texinfo/MiscXS/configure.ac: Copy code for HOST_IS_WINDOWS
+	Automake conditional from top-level configure.ac.
+
+	* tp/Texinfo/MiscXS/Makefile.am,
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Only put 
+	-no-undefined -lperl in AM_FLAGS on MS-Windows systems.
+	Li Er reported that linking against libperl is not necessary,
+	and it won't work if perl is not built with a shared libperl
+	library.
+
+2017-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex
+	(\dotheinsertindexentrybox, \dotheinsertentrybox)
+	(\dotheinsertindexentryboxwithpenalty, \dotheinsertentryboxwithpenalty)
+	(\insertindexentrybox, \insertentrybox)
+	(\entryindexbox, \entrybox): Rename.
+
+	(\dotheinsertentryboxwithpenalty): Simplify by not using 
+	\aftergroup.  Move constant string definition outside of macro.
+	Remove useless \long prefix from definition.
+
+2017-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\finishentry, \dotheinsertindexentrybox):
+	Use a control sequence \dotheinsertindexentrybox instead of 
+	calling \insertindexentrybox and \entrywidowpenalty.  Do not 
+	open a new group and then use \entrywidowpenalty to close the 
+	group, (\entrywidowpenalty could be \let either to \egroup or 
+	our macro \indexwidowpenalty which itself closed the group), as 
+	this requires the reader of the code to understand the 
+	definition of \entrywidowpenalty to follow what is going on.  No 
+	functional changes intended; this change is for clarity only.
+	(\entrywidowpenalty, \indexwidowpenalty): Remove.
+	(\dotheinsertindexentryboxwithpenalty): Code from 
+	\indexwidowpenalty moved here.  This is one possible value
+	for \dotheinsertindexentrybox.
+	(\printindex): Use \dotheinsertindexentryboxwithpenalty for
+	\dotheinsertindexentrybox.  Do not set a value for 
+	\entrywidowpenalty.
+
+	(\printindex, \indexinputprocessing): Split code that checks the 
+	first token of the next line into a new macro.  This should 
+	improve clarity.
+
+2017-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (scan_reference_label): Save filename
+	and nodename components of the label separately.
+	(scan_node_contents): Move code dealing with xrefs ending in
+	"::" into this function out of 'scan_reference_target'.  Do
+	not call 'info_parse_node' to get the filename and nodename
+	of the target from the 'label' field; use the data that was
+	already saved in 'scan_reference_label' instead.  Add a comment
+	about possibly ill-formed xrefs.
+
+	This change is to simplify the code slightly, and shouldn't
+	result in any significant functional changes.
+
+2017-05-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (info_short_help): Move right-hand column of 
+	descriptions so that a word in an example in the left-hand 
+	column doesn't line up with the edge of the right-hand column.
+
+2017-05-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (info_short_help): Change "options" to 
+	"frequently-used options" and remove documentation of several 
+	options: --dribble, --raw-escapes, --no-raw-escapes, --restore,
+	--strict-node-location, --vi-keys, --debug.  (All of these are
+	still documented in full in the manual.)  Only show one example
+	of loading a manual for the Info program.  Reformat one example.
+	Remove a blank line from the output.
+
+	* info/t/help.sh: Update.
+
+2017-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (@code): Fix grammar.  Change "variable such 
+	as" to "variables, such as", and add commas around other uses of
+	"such as".
+
+2017-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (@emph @strong): Make output of example 
+	Texinfo code consistent with the input, as was the case before
+	2012-09-06.  Inconsistency reported by Matan Nassau.
+
+2017-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (tree_search_check_node) <no more matches>: Add
+	the "Top" node to the window history, instead of using a
+	menu entry in the current node (as the current node may not
+	have a menu).  Otherwise, if a tree search was rooted at a node
+	without a menu, 'active_menu' would be left with an invalid 
+	value, leading to a crash if it was used again when the user did 
+	a 'tree-search-next' command.  Report from Benno Schulenberg.
+
+2017-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (info_short_help): Remove full stops from the ends 
+	of lines describing options.
+
+2017-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_xref_item): Give an error message if
+	there are no cross-references in the node, to be consistent
+	with 'menu-item'.  This happened in Texinfo 5.2 and earlier.
+	Report from Benno Schulenberg.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Custom Key Bindings): Correct '\xr' to 
+	'^xr'.  Report from Benno Schulenberg.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* pretest 6.3.91.
+	* configure.ac: Update version.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.c (window_delete_window): Call 'free_matches' and 
+	free 'search_string' field in order to avoid a memory leak.
+	* info/t/close-window-after-search.sh: New test.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_search_in_node_internal): Call
+	free_matches even after a failing search in order to avoid a 
+	memory leak.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS (info): Add items about setting style variables and 
+	--vi-keys.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infodoc.c (replace_in_documentation): Remove code
+	setting variables whose value is no longer used anywhere.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS (info): Add item about the handling of Info files
+	with CR-LF line endings.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infodoc.c (replace_in_documentation): Use functions 
+	operating on a struct text_buffer object to keep track of
+	whether there is enough space in the output buffer.
+	Benno Schulenberg reported that there would be an out-of-bounds
+	write when a message reporting an index match was output if the
+	binding of ',' had been changed away from 'next-index-match'.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infodoc.c (replace_in_documentation): Explicitly compare 
+	a pointed-to character to the only character value it can be 
+	equal to other than null, for clarity.  Move code near other 
+	code that uses the same variables.  Change comment for a special
+	case to make it easier to ignore, and move the default case 
+	before the conditional for the special case.  No functional 
+	changes.
+
+2017-05-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infodoc.c (replace_in_documentation):
+	Remove code to handle numbers before command name, like
+	"\\[6next-line]" meaning "M-6 M-x next-line", as it is not used 
+	anywhere, and this simplifies the code.
+
+2017-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/cr-tag-table.sh: Remove test.
+	* info/t/inc-sea-bs-after-strip-cr: Remove test.
+
+2017-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c, info/filesys.c (convert_eols): Function moved 
+	between files.  Change arguments and modify text in place.  Do
+	not realloc the buffer to make it smaller.
+	* info/filesys.c (filesys_read_info_file)
+	[__MSDOS__, __MINGW32__]: Call convert_eols and realloc buffer.
+	This reinstates call that was removed on 2014-10-24, except now 
+	it is MS-DOS/Windows only.
+
+	* info/nodes.c (find_node_from_tag): Remove most of the code
+	here that deals with conversion of end-of-lines, including
+	code updating pointers to node contents in currently-displayed 
+	windows.
+	* info/nodes.c (adjust_nodestart): Do not take extra argument 
+	giving the slack to search for a node.
+	* info/nodes.h (N_EOLs_Converted): Remove.
+
+	This reverses changes made on 2014-12-29.  Although there has 
+	not been a report of any problems with this code, it is too 
+	complicated and difficult to understand for what it achieves 
+	(allow reading Info files whether CR bytes before LF bytes are 
+	counted in the tag table or not).  It updates global data across 
+	the program which could cause problems in the future if there 
+	are changes elsewhere in the program.
+
+2017-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_next_text):
+	Do not strip \r from end of line.  This reverses the change
+	on 2017-04-29.
+	* tp/tests/test_scripts/coverage_formatting_cr.sh,
+	* tp/tests/coverage (formatting_cr): Remove test.
+	texi2any does not support CR LF line endings on GNU/Linux.
+	* tp/tests/coverage/formatting_cr.texi: Removed.
+
+2017-05-17  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* gnulib/m4/gettext.m4: New file, from gettext-0.19.8.
+	* gnulib/m4/iconv.m4: Upgrade to gettext-0.19.8.
+	* gnulib/m4/lib-ld.m4: Upgrade to gettext-0.19.8.
+	* gnulib/m4/lib-link.m4: Upgrade to gettext-0.19.8.
+	* gnulib/m4/lib-prefix.m4: Upgrade to gettext-0.19.8.
+	* gnulib/m4/nls.m4: New file, from gettext-0.19.8.
+	* gnulib/m4/po.m4: New file, from gettext-0.19.8.
+	* gnulib/m4/progtest.m4: New file, from gettext-0.19.8.
+
+2017-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* gnulib: run gnulib-tool to import 'gettext-h' module instead
+	of 'gettext' module, as the 'gettext' module is deprecated in 
+	Gnulib. run gettexize again to put the files back.
+
+2017-05-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Node Commands) <global-prev-node>: Change 
+	'forward or down' to just 'forward'.
+
+2017-05-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Node Commands) <goto-node>:
+	Re-write, describing completion and selection of nodes in other 
+	files separately.  The old text implied that you could select a 
+	node in another file without using a filename if that file had 
+	been loaded already in the current Info session.
+	Benno Schuleberg noticed that the text contained the phrase
+	"the Info file of the other file", which was wrong.
+
+2017-05-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Node Commands) <global-next-node>: Change 
+	'forward or down' to just 'forward'.  Explain that the menu is 
+	checked before the Next pointer, rather than the other way 
+	around as it incorrectly stated.  Benno Schulenberg reported 
+	that this was documented to happen the wrong way around.  In 
+	addition, correct description of what happens when neither a 
+	menu or a Next pointer is present.
+
+2017-05-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Mention to always run change_perl_modules.sh
+	even if it is a pretest release, as this is needed now there is
+	module version checking.
+
+2017-05-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infomap.c (default_vi_like_info_keys),
+	* doc/info-stnd.texi (Custom Key Bindings):
+	Bind 'b' to 'scroll-backward-page-only' instead of 
+	'scroll-backward' for consistency with f, C-f and C-b.
+
+2017-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (point_backwards_word): Remove unused variable.
+
+2017-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_down_line, info_up_line): Call
+	_scroll_backward and _scroll_forward with argument so that it
+	possible for scrolling to change node, depending on the value
+	of 'scroll-behaviour'.
+	(mouse_event_handler): Call _scroll_backward and _scroll_forward
+	instead of info_down_line, info_up_line so that mouse scrollwheel
+	scrolling continues to be confined to an single node.
+	* NEWS: Mention that 'down-line' and 'up-line' are affected by
+	the value of 'scroll-behaviour'.
+
+2017-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (infokey format): Add missing documentation 
+	for 'C-x p' for 'prev-node' under --vi-keys.  Correct bindings
+	of 'g' and 'G' to 'first-node' and 'last-node' respectively.
+	* info/infomap.c (default_vi_like_info_keys): Re-add 'C-x n' for
+	'next-node' (removed accidentally on 2014-06-10).
+
+	Reports from Benno Schulenberg.
+
+2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\xrdef): Place a \gdef using a \csname
+	within a group to avoid save stack build-up for long aux files.
+
+2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (info_next_index_match): Remove full stop from 
+	end of message.  (Missed on 2017-05-13.  Report from Benno 
+	Schulenberg.)
+
+2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/sesson.c (point_backward_char): Change return type to int
+	and return 0 on failure.  Make sure we always go backwards.
+	(point_backward_word): Use point_backward_char to simplify code.
+
+	This continues the fix of the bug of the point getting stuck
+	at the start of a node (partially fixed on 2017-05-11).
+
+2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Xref Commands, Parts of an Xref)
+	(Selecting Xrefs): Change 'cross reference' to 'cross-reference'.
+
+2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Variables) <scroll-last-node>: Remove full 
+	stop from a quoted message.
+
+2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.c (calculate_line_starts, window_compute_line_map):
+	Add a comment and cast return value of a function to void to 
+	make it clear that the return value is being discarded.
+
+2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (info_index_search, info_next_index_match),
+	* info/indices.h (APROPOS_NONE),
+	* info/info-utils.c (copy_converting),
+	* info/info.c (get_initial_file, add_initial_nodes, init_messages),
+	* info/infodoc.c (describe_key, info_where_is),
+	* info/m-x.c (info_execute_command),
+	* info/session.c
+	(menu_digit, info_menu_or_ref_item, info_follow_menus)
+	(forward_move_node_structure, backward_move_node_structure)
+	(info_view_file, dump_nodes_to_file, info_print_node)
+	(info_toggle_regexp, info_search_internal)
+	(tree_search_check_node, tree_search_check_node_backwards)
+	(wipe_seen_flags, dispatch_error): Remove full stop from end
+	of messages given to the user.  Inconsistent use of full stops
+	reported by Benno Schulenberg.
+
+2017-05-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (infokey format): Correct documentation of
+	key binding for 'select-reference-this-line' command under --vi-keys.
+
+2017-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (point_forward_char): Make sure that we always 
+	advance the position of the point on the display.  The point 
+	could get stuck at the very start of a node if the 'nodeline' 
+	variable was set to 'pointers'.  Report from Benno Schulenberg 
+	on 2017-04-27.
+
+2017-05-03  Jason Hood  <jadoxa@yahoo.com.au>
+
+	Allow style variables to be described and set.
+	(Patch originally submitted 2017-01-29 on bug-texinfo.)
+
+	* info/variables.c (rendition_variable): Remove.
+	(rendition_choices): New variable.
+	(info_variables): Use rendition_choices for the style variables.
+	(rendition_to_string): New variable.
+	(describe_variable, set_variable, set_variable_to_value): 
+	Special handling for style variables.
+
+2017-05-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* configure.ac: When checking for Perl XS support, set
+	TEXINFO_XS environment variable in order to get more
+	information printed (and also to negate any pre-existing
+	definition for this variable).
+
+2017-05-01  Eli Zaretskii  <eliz@gnu.org>
+
+	* tp/Texinfo/MiscXS/misc.c (xs_unicode_text): Fix a typo in a
+	comment.
+
+2017-04-30  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/terminal.c [HAVE_TERMCAP_H]: Don't take this branch for
+	MinGW, as some MinGW ports of ncurses install termcap.h in
+	addition to ncurses/termcap.h.
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c [_WIN32]: Include
+	ctype.h, to work around MinGW compilation errors due to Gnulib
+	replacement of wint_t type.
+	(iswspace, iswupper) [_WIN32]: Rename to call w32_iswspace and
+	w32_iswupper, to avoid conflicts with system headers, due to
+	Gnulib replacement of wint_t type.
+	(iswupper) [_WIN32]: Copy argument from wint_t variable to a
+	wchar_t variable, which is what GetStringTypeW expects.
+
+	* tp/Texinfo/MiscXS/misc.c [_WIN32]: Include ctype.h, to work
+	around MinGW compilation errors due to Gnulib replacement of
+	wint_t type.
+	(xs_unicode_text): Use dTHX to avoid perl error about undefined
+	"my_perl" due to Perl's 'malloc' being used.
+
+2017-04-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_next_text): Strip \r from end of line.
+	This produces changes in the results of the
+	test_scripts/coverage_formatting_cr.sh test.  (Eli Zaretskii
+	reported that the results of this test were different under 
+	MinGW on MS-Windows.)
+
+2017-04-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi_regex),
+	* tp/Texinfo/MiscXS/misc.c (xs_parse_texi_regex): Do not
+	consider any whitespace other than space, tab or newline
+	to be a possible Texinfo command.
+
+2017-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (tree_search_check_node)
+	(tree_search_check_node_backwards): Adjust failure message 
+	according to whether a search match was previously found.  
+	Suggestion by Benno Schulenberg.
+
+2017-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/display.c (display_process_line): Avoid possibly
+	dereferencing a null pointer.  This could happen if the 
+	'match-rendition' value was set to an empty value in .infokey.
+	Report by Benno Schulenberg.
+
+2017-04-26  Benno Schulenberg  <bensberg@justemail.net>  (tiny change)
+
+	* info/session.c (info_tree_search): Mark a message for 
+	translation and add note for translators.
+
+2017-04-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_search_internal): Search starting node at 
+	most twice in order to be able to find matches before starting 
+	offset in starting node.  Otherwise searches do not wrap around 
+	the first and last nodes in a file if all the matches are in a 
+	single node.  Report from Benno Schulenberg.
+
+2017-04-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/tests/texi2dvi_empty_text.sh: Remove test, as it does not
+	work if TeX is not installed.  Report by Assaf Gordon.
+
 2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* pretest 6.3.90.

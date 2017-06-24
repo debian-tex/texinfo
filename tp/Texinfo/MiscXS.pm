@@ -1,4 +1,4 @@
-# Copyright 2016 Free Software Foundation, Inc.
+# Copyright 2016, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,26 +22,14 @@ use 5.00405;
 use strict;
 use warnings;
 
-our $VERSION = '6.3.90';
+our $VERSION = '6.4';
 
 use Texinfo::XSLoader;
 
 BEGIN {
-  our $xsmodule = "Texinfo::MiscXSXS";
- # Check for a UTF-8 locale.  Skip the check if the 'locale' command doesn't
- # work.
-  our $a;
-  if ($^O ne 'MSWin32') {
-    $a = `locale -a 2>/dev/null`;
-  }
-  if ($a and $a !~ /UTF-8/ and $a !~ /utf8/) {
-    # Do not use XS module
-    $xsmodule = undef;
-  }
-
   Texinfo::XSLoader::init (
     "Texinfo::MiscXS",
-    $xsmodule,
+    "Texinfo::MiscXSXS",
     "Texinfo::MiscXS",
     "MiscXS",
     0,

@@ -1,4 +1,4 @@
-# $Id: HTML.pm 7716 2017-04-14 08:59:26Z gavin $
+# $Id: HTML.pm 7832 2017-06-18 13:06:10Z gavin $
 # HTML.pm: output tree as HTML.
 #
 # Copyright 2011, 2012, 2013, 2014, 2015,
@@ -64,7 +64,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.3.90';
+$VERSION = '6.4';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -7734,7 +7734,7 @@ sub _set_variables_texi2html()
 1;
 
 __END__
-# $Id: HTML.pm 7716 2017-04-14 08:59:26Z gavin $
+# $Id: HTML.pm 7832 2017-06-18 13:06:10Z gavin $
 # Automatically generated from maintain/template.pod
 
 =head1 NAME

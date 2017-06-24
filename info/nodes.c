@@ -1,5 +1,5 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c 7697 2017-03-21 14:15:24Z gavin $
+   $Id: nodes.c 7831 2017-06-18 12:50:18Z gavin $
 
    Copyright 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
    2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software 
@@ -865,6 +865,7 @@ static void get_filename_and_nodename (NODE *node,
                                       char **filename, char **nodename,
                                       char *filename_in, char *nodename_in);
 static void node_set_body_start (NODE *node);
+static int adjust_nodestart (FILE_BUFFER *file_buffer, TAG *tag);
 
 /* Return a pointer to a newly allocated TAG structure, with
    fields filled in. */
@@ -1119,35 +1120,6 @@ info_get_node_of_file_buffer (FILE_BUFFER *file_buffer, char *nodename)
 }
 
 
-/* Convert any CRLF pairs in the SOURCE file and place the converted buffer in 
-   DESTINATION.  DESTINATION->contents must be allocated on the heap and at 
-   least as big as SOURCE->contents, including a terminating null.  DESTINATION 
-   is allowed to be the same as SOURCE to convert in place. */
-void
-convert_eols (FILE_BUFFER *destination, FILE_BUFFER *source)
-{
-  register char *d = destination->contents;
-  register char *s = source->contents;
-
-  long textlen = source->filesize;
-  while (textlen--)
-    {
-      if (*s == '\r' && textlen && s[1] == '\n')
-        {
-          s++;
-          textlen--;
-        }
-      *d++ = *s++;
-    }
-  *d = '\0';
-
-  destination->filesize = d - destination->contents;
-  /* EOL conversion can shrink the text quite a bit.  We don't
-     want to waste storage.  */
-  destination->contents = xrealloc (destination->contents,
-                                    d - destination->contents + 1);
-}
-
 /* Magic number that RMS used to decide how much a tags table pointer could
    be off by.  I feel that it should be much smaller, like 4.  */
 #define DEFAULT_INFO_FUDGE 1000
@@ -1159,7 +1131,7 @@ convert_eols (FILE_BUFFER *destination, FILE_BUFFER *source)
    Set NODE->nodestart_adjusted directly on the separator that precedes this 
    node.  If the node could not be found, return 0. */
 static int
-adjust_nodestart (FILE_BUFFER *fb, TAG *node, int slack)
+adjust_nodestart (FILE_BUFFER *fb, TAG *node)
 {
   long position = -1;
   SEARCH_BINDING s;
@@ -1185,8 +1157,8 @@ adjust_nodestart (FILE_BUFFER *fb, TAG *node, int slack)
 
       /* Oh well, I guess we have to try to find it in a larger area. */
 
-      s.start -= slack;
-      s.end += slack;
+      s.start -= DEFAULT_INFO_FUDGE;
+      s.end += DEFAULT_INFO_FUDGE;
 
       if (s.start < 0)
         s.start = 0;
@@ -1220,107 +1192,14 @@ static int
 find_node_from_tag (FILE_BUFFER *parent, FILE_BUFFER *fb, TAG *tag)
 {
   int success;
-  int slack;
-  TAG **t;
-  WINDOW *w;
-
-  /* Start off with a small fudge to reduce chance of finding a node and then
-     later having to convert the EOL's, leaving us with the question of what to
-     do with the existing buffer and the nodes that refer to it. */
-  if (!(fb->flags & N_EOLs_Converted))
-    slack = 4;
-  else
-    slack = DEFAULT_INFO_FUDGE;
 
   if (tag->nodestart_adjusted != -1)
     success = 1;
   else
-    success = adjust_nodestart (fb, tag, slack);
+    success = adjust_nodestart (fb, tag);
 
   if (success)
     return success;
-
-  if (fb->flags & N_EOLs_Converted || strict_node_location_p)
-    return 0;
-
-  /* Convert EOL's.  If the Info file was produced under MS-Windows with
-     some versions of makeinfo, it's possible that it has CR-LF line endings 
-     with the CR bytes not counted in the tag table. */
-
-  convert_eols (fb, fb);
-  fb->flags |= N_EOLs_Converted;
-
-  /* Restore tags table to what was read from the file. */
-  for (t = parent->tags; *t; t++)
-    {
-      /* For split files, only restore the part of the tag table for
-         the subfile. */
-      if (!FILENAME_CMP ((*t)->filename, fb->fullpath))
-        {
-          NODE *n = &(*t)->cache;
-          int is_anchor = n->nodelen == 0;
-          (*t)->nodestart_adjusted = -1;
-          if (n->flags & N_WasRewritten)
-            free (n->contents);
-          info_free_references (n->references);
-          free (n->next); free (n->prev); free (n->up);
-          memset (n, 0, sizeof (NODE));
-          if (!is_anchor)
-            n->nodelen = -1;
-        }
-    }
-
-  /* Look for the node again. */
-  success = adjust_nodestart (fb, tag, DEFAULT_INFO_FUDGE);
-
-  /* For each window, check for file buffer being used in window history, 
-     including currently displayed node, and amend it to refer properly to the 
-     converted file buffer.  (Window history was set in info_set_node_of_window 
-     in session.c. )
-
-     There is a chance that there is a NODE in some local variable 
-     somewhere, which we can't update. */
-
-  for (w = windows; w; w = w->next)
-    {
-      WINDOW_STATE **h;
-
-      if (!w->hist)
-        continue;
-
-      w->node = 0;
-      for (h = w->hist; *h; h++)
-        {
-          NODE *n = (*h)->node;;
-          if (!(n->flags & N_IsInternal)
-              && (n->subfile ? (!FILENAME_CMP (n->subfile, fb->fullpath))
-                             : (!FILENAME_CMP (n->fullpath, fb->fullpath))))
-            {
-              /* The call to info_get_node is indirectly recursive, but it 
-                 should not recurse twice because of the N_EOLs_Converted 
-                 conditional above. */
-              (*h)->node = info_get_node (n->fullpath, n->nodename);
-              if ((*h)->node)
-                {
-                  (*h)->node->active_menu = n->active_menu;
-                  free_history_node (n);
-                }
-              else
-                {
-                  /* We found the node before, but now we can't.  Just leave
-                     the node as it was (possibly with its contents pointer
-                     pointing to the wrong place). */
-                  (*h)->node = n;
-                }
-            }
-        }
-      if (h > w->hist)
-        w->node = (*(h - 1))->node;
-    }
-
-  if (success)
-    return success;
-
   return 0;
 }
 

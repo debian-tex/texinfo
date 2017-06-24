@@ -96,12 +96,6 @@ In that case the string is not considered to be Texinfo, a plain string
 that is returned after translation and substitution.  The substitutions
 may only be strings in that case.
 
-@item translated_paragraph
-@anchor{Texinfo::Report translated_paragraph}
-
-In that case, the parsing of the Texinfo string is done in a 
-context of a paragraph, not in the context of an inline text.
-
 @end table
 
 For example in the following call, the string 

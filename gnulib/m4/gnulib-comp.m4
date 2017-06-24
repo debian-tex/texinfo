@@ -61,7 +61,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module getopt-gnu:
   # Code from module getopt-posix:
   # Code from module getprogname:
-  # Code from module gettext:
   # Code from module gettext-h:
   # Code from module hard-locale:
   # Code from module havelib:
@@ -191,6 +190,9 @@ AC_DEFUN([gl_INIT],
     AC_LIBOBJ([itold])
   fi
   gl_FUNC_GETOPT_GNU
+  dnl Because of the way gl_FUNC_GETOPT_GNU is implemented (the gl_getopt_required
+  dnl mechanism), there is no need to do any AC_LIBOBJ or AC_SUBST here; they are
+  dnl done in the getopt-posix module.
   gl_FUNC_GETOPT_POSIX
   if test $REPLACE_GETOPT = 1; then
     AC_LIBOBJ([getopt])
@@ -200,8 +202,6 @@ AC_DEFUN([gl_INIT],
   fi
   AC_SUBST([GNULIB_GL_UNISTD_H_GETOPT])
   gl_FUNC_GETPROGNAME
-  dnl you must add AM_GNU_GETTEXT([external]) or similar to configure.ac.
-  AM_GNU_GETTEXT_VERSION([0.18.1])
   AC_SUBST([LIBINTL])
   AC_SUBST([LTLIBINTL])
   AM_ICONV
@@ -483,6 +483,7 @@ AC_DEFUN([gl_INIT],
       if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
         AC_LIBOBJ([msvc-nothrow])
       fi
+      gl_MODULE_INDICATOR([msvc-nothrow])
       gl_gnulib_enabled_676220fa4366efa9bdbfccf11a857c07=true
       func_gl_gnulib_m4code_f691f076f650964c9f5598c3ee487616
     fi
@@ -982,24 +983,15 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/float_h.m4
   m4/getopt.m4
   m4/getprogname.m4
-  m4/gettext.m4
-  m4/glibc2.m4
   m4/glibc21.m4
   m4/gnulib-common.m4
   m4/hard-locale.m4
   m4/iconv.m4
   m4/include_next.m4
-  m4/intdiv0.m4
-  m4/intl.m4
-  m4/intldir.m4
-  m4/intlmacosx.m4
-  m4/intmax.m4
   m4/intmax_t.m4
-  m4/inttypes-pri.m4
   m4/inttypes_h.m4
   m4/iswblank.m4
   m4/langinfo_h.m4
-  m4/lcmessage.m4
   m4/lib-ld.m4
   m4/lib-link.m4
   m4/lib-prefix.m4
@@ -1032,14 +1024,10 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/msvc-nothrow.m4
   m4/multiarch.m4
   m4/nl_langinfo.m4
-  m4/nls.m4
   m4/nocrash.m4
   m4/off_t.m4
   m4/onceonly.m4
-  m4/po.m4
-  m4/printf-posix.m4
   m4/printf.m4
-  m4/progtest.m4
   m4/pthread_rwlock_rdlock.m4
   m4/regex.m4
   m4/size_max.m4
@@ -1064,11 +1052,9 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/sys_socket_h.m4
   m4/sys_types_h.m4
   m4/threadlib.m4
-  m4/uintmax_t.m4
   m4/unistd_h.m4
   m4/vasnprintf.m4
   m4/vasprintf.m4
-  m4/visibility.m4
   m4/warn-on-use.m4
   m4/wchar_h.m4
   m4/wchar_t.m4

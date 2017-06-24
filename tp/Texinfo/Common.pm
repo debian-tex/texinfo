@@ -1,4 +1,4 @@
-# $Id: Common.pm 7689 2017-03-19 18:17:39Z gavin $
+# $Id: Common.pm 7836 2017-06-18 18:44:13Z gavin $
 # Common.pm: definition of commands. Common code of other Texinfo modules.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -71,7 +71,7 @@ valid_tree_transformation
 @EXPORT = qw(
 );
 
-$VERSION = '6.3.90';
+$VERSION = '6.4';
 
 # i18n
 sub N__($)
@@ -134,7 +134,8 @@ our %default_parser_state_configuration = (
                               # argument.  A Texinfo tree may also be used.
   'info' => {
     'novalidate' => 0,        # same as setting @novalidate.
-  }
+  },
+  'in_gdt' => 0 # whether we are being called by gdt
 );
 
 # customization options

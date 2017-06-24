@@ -1,5 +1,5 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c 7709 2017-04-09 09:27:24Z gavin $
+   $Id: display.c 7760 2017-04-27 18:06:21Z gavin $
 
    Copyright 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012, 2013,
    2014, 2015, 2016, 2017 Free Software Foundation, Inc.
@@ -357,7 +357,7 @@ display_process_line (WINDOW *win,
         break;
       cur_ptr = mbi_cur_ptr (iter);
 
-      if (matches_ready (matches)
+      if (matches && matches_ready (matches)
           && !at_end_of_matches (matches, match_index))
         {
           int was_in_match = in_match;

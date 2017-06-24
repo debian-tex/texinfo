@@ -1,5 +1,5 @@
 /* terminal.c -- how to handle the physical terminal for Info.
-   $Id: terminal.c 7652 2017-01-29 13:48:32Z gavin $
+   $Id: terminal.c 7766 2017-04-30 15:01:01Z eliz $
 
    Copyright 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1997, 1998,
    1999, 2001, 2002, 2004, 2007, 2008, 2012, 2013, 2014, 2015
@@ -30,13 +30,13 @@
 #include <signal.h>
 
 /* The Unix termcap interface code. */
-/* With MinGW, if the user has ncurses installed, including
-   ncurses/termcap.h will cause the Info binary depend on the ncurses
+/* With MinGW, if the user has ncurses installed, including termcap.h
+   or ncurses/termcap.h will cause the Info binary depend on the ncurses
    DLL, just because BC and PC are declared there, although they are
    never used in the MinGW build.  Avoid that useless dependency.  */
 #if defined (HAVE_NCURSES_TERMCAP_H) && !defined (__MINGW32__)
 #include <ncurses/termcap.h>
-#elif defined (HAVE_TERMCAP_H)
+#elif defined (HAVE_TERMCAP_H) && !defined (__MINGW32__)
 #include <termcap.h>
 #else  /* (!HAVE_NCURSES_TERMCAP_H || __MINGW32__) && !HAVE_TERMCAP_H */
 /* On Solaris2, sys/types.h #includes sys/reg.h, which #defines PC.

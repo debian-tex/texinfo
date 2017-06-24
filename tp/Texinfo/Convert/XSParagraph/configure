@@ -649,6 +649,8 @@ PERL_EXT_CC
 PERL_EXT_LDFLAGS
 PERL_EXT_CPPFLAGS
 PERL_EXT_CFLAGS
+HOST_NEEDS_NO_UNDEFINED_FALSE
+HOST_NEEDS_NO_UNDEFINED_TRUE
 LT_SYS_LIBRARY_PATH
 OTOOL64
 OTOOL
@@ -668,9 +670,11 @@ FGREP
 SED
 LIBTOOL
 gltests_WITNESS
+HAVE_CRTDEFS_H
 HAVE_WINT_T
 NEXT_AS_FIRST_DIRECTIVE_WCHAR_H
 NEXT_WCHAR_H
+REPLACE_WCSFTIME
 REPLACE_WCSWIDTH
 REPLACE_WCWIDTH
 REPLACE_WCSNRTOMBS
@@ -686,6 +690,7 @@ REPLACE_BTOWC
 REPLACE_MBSTATE_T
 HAVE_DECL_WCWIDTH
 HAVE_DECL_WCTOB
+HAVE_WCSFTIME
 HAVE_WCSWIDTH
 HAVE_WCSTOK
 HAVE_WCSSTR
@@ -723,6 +728,7 @@ HAVE_MBRLEN
 HAVE_MBRTOWC
 HAVE_MBSINIT
 HAVE_BTOWC
+GNULIB_WCSFTIME
 GNULIB_WCSWIDTH
 GNULIB_WCSTOK
 GNULIB_WCSSTR
@@ -2809,6 +2815,7 @@ gl_header_list="$gl_header_list stdint.h"
 gl_func_list="$gl_func_list vasnprintf"
 gl_header_list="$gl_header_list features.h"
 gl_func_list="$gl_func_list snprintf"
+gl_header_list="$gl_header_list crtdefs.h"
 # Check that the precious variables saved in the cache have kept the same
 # value.
 ac_cache_corrupted=false
@@ -8910,6 +8917,7 @@ $as_echo "#define HAVE_SNPRINTF_RETVAL_C99 1" >>confdefs.h
   GNULIB_WCSSTR=0;
   GNULIB_WCSTOK=0;
   GNULIB_WCSWIDTH=0;
+  GNULIB_WCSFTIME=0;
     HAVE_BTOWC=1;
   HAVE_MBSINIT=1;
   HAVE_MBRTOWC=1;
@@ -8947,6 +8955,7 @@ $as_echo "#define HAVE_SNPRINTF_RETVAL_C99 1" >>confdefs.h
   HAVE_WCSSTR=1;
   HAVE_WCSTOK=1;
   HAVE_WCSWIDTH=1;
+  HAVE_WCSFTIME=1;
   HAVE_DECL_WCTOB=1;
   HAVE_DECL_WCWIDTH=1;
   REPLACE_MBSTATE_T=0;
@@ -8962,6 +8971,7 @@ $as_echo "#define HAVE_SNPRINTF_RETVAL_C99 1" >>confdefs.h
   REPLACE_WCSNRTOMBS=0;
   REPLACE_WCWIDTH=0;
   REPLACE_WCSWIDTH=0;
+  REPLACE_WCSFTIME=0;
 
 
             { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether <wchar.h> uses 'inline' correctly" >&5
@@ -9038,6 +9048,26 @@ C99 mode. You have four options:
   - Don't use the flags -std=c99 or -std=gnu99.
 Configuration aborted." "$LINENO" 5
   fi
+
+
+
+
+
+
+
+
+  :
+
+
+
+
+
+  if test $ac_cv_header_crtdefs_h = yes; then
+    HAVE_CRTDEFS_H=1
+  else
+    HAVE_CRTDEFS_H=0
+  fi
+
 
 
    if true; then
@@ -10404,7 +10434,9 @@ $as_echo "$gl_cv_next_wchar_h" >&6; }
 
 
 
-    for gl_func in btowc wctob mbsinit mbrtowc mbrlen mbsrtowcs mbsnrtowcs wcrtomb      wcsrtombs wcsnrtombs wcwidth wmemchr wmemcmp wmemcpy wmemmove wmemset      wcslen wcsnlen wcscpy wcpcpy wcsncpy wcpncpy wcscat wcsncat wcscmp      wcsncmp wcscasecmp wcsncasecmp wcscoll wcsxfrm wcsdup wcschr wcsrchr      wcscspn wcsspn wcspbrk wcsstr wcstok wcswidth     ; do
+
+
+    for gl_func in btowc wctob mbsinit mbrtowc mbrlen mbsrtowcs mbsnrtowcs wcrtomb      wcsrtombs wcsnrtombs wcwidth wmemchr wmemcmp wmemcpy wmemmove wmemset      wcslen wcsnlen wcscpy wcpcpy wcsncpy wcpncpy wcscat wcsncat wcscmp      wcsncmp wcscasecmp wcsncasecmp wcscoll wcsxfrm wcsdup wcschr wcsrchr      wcscspn wcsspn wcspbrk wcsstr wcstok wcswidth wcsftime     ; do
     as_gl_Symbol=`$as_echo "gl_cv_have_raw_decl_$gl_func" | $as_tr_sh`
     { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether $gl_func is declared without a macro" >&5
 $as_echo_n "checking whether $gl_func is declared without a macro... " >&6; }
@@ -18110,6 +18142,19 @@ CC=$lt_save_CC
 # aren't really used: otherwise, configure complains about undefined
 # variables.
 
+host_needs_no_undefined=no
+case "$host" in *-mingw32 | *-mingw64 | *-msdosdjgpp | *-cygwin )
+  host_needs_no_undefined=yes ;;
+esac
+ if test "x$host_needs_no_undefined" = "xyes"; then
+  HOST_NEEDS_NO_UNDEFINED_TRUE=
+  HOST_NEEDS_NO_UNDEFINED_FALSE='#'
+else
+  HOST_NEEDS_NO_UNDEFINED_TRUE='#'
+  HOST_NEEDS_NO_UNDEFINED_FALSE=
+fi
+
+
 # User variables for a Perl XS extension, which may be different, for
 # example if the Perl interpreter being used was compiled with a
 # different compiler.  Also in top-level configure.ac.
@@ -18397,6 +18442,10 @@ fi
     gltests_LTLIBOBJS=$gltests_ltlibobjs
 
 
+if test -z "${HOST_NEEDS_NO_UNDEFINED_TRUE}" && test -z "${HOST_NEEDS_NO_UNDEFINED_FALSE}"; then
+  as_fn_error $? "conditional \"HOST_NEEDS_NO_UNDEFINED\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
 
 : "${CONFIG_STATUS=./config.status}"
 ac_write_fail=0

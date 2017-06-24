@@ -1,5 +1,5 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c 7666 2017-02-04 00:52:09Z gavin $
+   $Id: variables.c 7769 2017-05-03 19:47:57Z gavin $
 
    Copyright 1993, 1997, 2001, 2002, 2004, 2007, 2008, 2011, 2013,
    2014, 2015, 2017 Free Software Foundation, Inc.
@@ -52,10 +52,12 @@ static char *info_scroll_choices[] = { "Continuous", "Next Only",
 /* Choices for the scroll-last-node variable */
 static char *scroll_last_node_choices[] = { "Stop", "Top", NULL };
 
-/* Set choices to address of this to indicate takes a value in the
-   format for specifying renditions.  Nothing is actually stored in
-   this variable. */
-char *rendition_variable = 0;
+/* Choices for, and indicator of, renditions. */
+static char *rendition_choices[] = { "black", "red", "green", "yellow", "blue",
+    "magenta", "cyan", "white", "nocolour", "bgblack", "bgred", "bggreen",
+    "bgyellow", "bgblue", "bgmagenta", "bgcyan", "bgwhite", "nobgcolour",
+    "underline", "nounderline", "standout", "nostandout", "bold", "regular",
+    "blink", "noblink", NULL };
 
 /* Address of this indicates the 'highlight-searches' variable. */
 static int *highlight_searches;
@@ -146,15 +148,15 @@ VARIABLE_ALIST info_variables[] = {
 
   { "link-style",
       N_("Styles for links"),
-    &ref_rendition, &rendition_variable },
+    &ref_rendition, (char **)rendition_choices },
 
   { "active-link-style",
       N_("Styles for active links"),
-    &hl_ref_rendition, &rendition_variable },
+    &hl_ref_rendition, (char **)rendition_choices },
 
   { "match-style",
       N_("Styles for search matches"),
-    &match_rendition, &rendition_variable },
+    &match_rendition, (char **)rendition_choices },
 
   { "nodeline",
       N_("How to print the information line at the start of a node"),
@@ -163,6 +165,60 @@ VARIABLE_ALIST info_variables[] = {
   { NULL }
 };
 
+static char *
+rendition_to_string (RENDITION *rendition)
+{
+  static char string[8 /* nocolour */ + 1 /* comma */
+                     + 10 /* nobgcolour */ + 1
+                     + 11 /* nounderline */ + 1
+                     + 10 /* nostandout */ + 1
+                     + 7 /* regular */ + 1
+                     + 7 /* noblink */ + 1];
+  unsigned long style;
+  static const char* fg[] = { "black", "red", "green", "yellow", "blue",
+      "magenta", "cyan", "white" };
+  static const char* bg[] = { "bgblack", "bgred", "bggreen", "bgyellow",
+      "bgblue", "bgmagenta", "bgcyan", "bgwhite" };
+
+  *string = '\0';
+
+  if (rendition->mask & BLINK_MASK)
+    strcat (string, rendition->value & BLINK_MASK ? "blink" : "noblink");
+  if (rendition->mask & BOLD_MASK)
+    {
+      if (*string != '\0')
+        strcat (string, ",");
+      strcat (string, rendition->value & BOLD_MASK ? "bold" : "nobold");
+    }
+  if (rendition->mask & STANDOUT_MASK)
+    {
+      if (*string != '\0')
+        strcat (string, ",");
+      strcat (string, rendition->value & STANDOUT_MASK ? "standout" : "nostandout");
+    }
+  if (rendition->mask & UNDERLINE_MASK)
+    {
+      if (*string != '\0')
+        strcat (string, ",");
+      strcat (string, rendition->value & UNDERLINE_MASK ? "underline" : "nounderline");
+    }
+  if (rendition->mask & COLOUR_MASK)
+    {
+      if (*string != '\0')
+        strcat (string, ",");
+      style = rendition->value & COLOUR_MASK;
+      strcat (string, style >= 8 ? fg[style - 8] : "nocolour");
+    }
+  if (rendition->mask & BGCOLOUR_MASK)
+    {
+      if (*string != '\0')
+        strcat (string, ",");
+      style = (rendition->value & BGCOLOUR_MASK) >> 9;
+      strcat (string, style >= 8 ? bg[style - 8] : "nobgcolour");
+    }
+
+  return string;
+}
 
 DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
 {
@@ -176,7 +232,12 @@ DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
 
   if (var->choices)
     asprintf (&description, "%s (%s): %s.",
-             var->name, var->choices[*(int *)var->value], _(var->doc));
+             var->name,
+             var->value == &highlight_searches
+             ? on_off_choices[match_rendition.mask != 0]
+             : var->choices == (char **) &rendition_choices
+             ? rendition_to_string (var->value)
+             : var->choices[*(int *)var->value], _(var->doc));
   else
     asprintf (&description, "%s (%d): %s.",
              var->name, *(int *)var->value, _(var->doc));
@@ -243,10 +304,18 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
         }
 
       sprintf (prompt, _("Set %s to value (%s): "),
-               var->name, var->choices[*(int *)(var->value)]);
+               var->name,
+               var->value == &highlight_searches
+               ? on_off_choices[match_rendition.mask != 0]
+               : var->choices == (char **) &rendition_choices
+               ? rendition_to_string (var->value)
+               : var->choices[*(int *)(var->value)]);
 
       /* Ask the completer to read a variable value for us. */
-      line = info_read_completing_in_echo_area (prompt, array);
+      if (var->choices == (char **) &rendition_choices)
+        line = info_read_maybe_completing (prompt, array);
+      else
+        line = info_read_completing_in_echo_area (prompt, array);
 
       info_free_references (array);
 
@@ -361,10 +430,18 @@ set_variable_to_value (VARIABLE_ALIST *var, char *value, int where)
          "match-rendition=standout". */
       if (var->value == &highlight_searches)
         {
-          match_rendition.mask = STANDOUT_MASK;
-          match_rendition.value = STANDOUT_MASK;
+          if (strcmp (on_off_choices[0], value) == 0)
+            {
+              match_rendition.mask = 0;
+              match_rendition.value = 0;
+            }
+          else
+            {
+              match_rendition.mask = STANDOUT_MASK;
+              match_rendition.value = STANDOUT_MASK;
+            }
         }
-      else if (var->choices != (char **) &rendition_variable)
+      else if (var->choices != (char **) &rendition_choices)
         {
           /* Find the choice in our list of choices. */
           for (j = 0; var->choices[j]; j++)

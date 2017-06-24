@@ -23,6 +23,12 @@
 #include <locale.h>
 #ifndef _WIN32
 #include <langinfo.h>
+#else  /* _WIN32 */
+/* Workaround for problems caused in mingw.org's MinGW build by
+   Gnulib's wchar.h overriding the wint_t type definition, which
+   causes compilation errors when perl.h is included below, because
+   perl.h includes ctype.h.  */
+#include <ctype.h>
 #endif
 #include <wchar.h>
 #include <wctype.h>
@@ -101,6 +107,16 @@ static PARAGRAPH state;
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <errno.h>
+
+/* If Gnulib overrides wint_t with a wider type, we cannot use
+   iswspace etc. names, whose prototypes were seen with the original
+   wint_t in effect.  */
+#ifdef GNULIB_defined_wint_t
+# undef iswspace
+# define iswspace(w) w32_iswspace(w)
+# undef iswupper
+# define iswupper(w) w32_iswupper(w)
+#endif
 
 char *
 w32_setlocale (int category, const char *value)
@@ -198,9 +214,10 @@ wcwidth (const wchar_t wc)
 }
 
 int
-iswupper (wint_t wc)
+iswupper (wint_t wi)
 {
   WORD char_type;
+  wchar_t wc = wi;
   BOOL status = GetStringTypeW (CT_CTYPE1, &wc, 1, &char_type);
 
   if (!status || (char_type & C1_UPPER) == 0)

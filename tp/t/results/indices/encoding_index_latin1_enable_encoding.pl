@@ -203,7 +203,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                 },
                 {
                   'parent' => {},
-                  'text' => 'é é'
+                  'text' => "\x{e9} \x{e9}"
                 },
                 {
                   'parent' => {},

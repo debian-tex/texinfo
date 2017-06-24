@@ -643,6 +643,8 @@ PERL_EXT_CC
 PERL_EXT_LDFLAGS
 PERL_EXT_CPPFLAGS
 PERL_EXT_CFLAGS
+HOST_NEEDS_NO_UNDEFINED_FALSE
+HOST_NEEDS_NO_UNDEFINED_TRUE
 CPP
 LT_SYS_LIBRARY_PATH
 OTOOL64
@@ -12009,6 +12011,19 @@ CC=$lt_save_CC
 # aren't really used: otherwise, configure complains about undefined
 # variables.
 
+host_needs_no_undefined=no
+case "$host" in *-mingw32 | *-mingw64 | *-msdosdjgpp | *-cygwin )
+  host_needs_no_undefined=yes ;;
+esac
+ if test "x$host_needs_no_undefined" = "xyes"; then
+  HOST_NEEDS_NO_UNDEFINED_TRUE=
+  HOST_NEEDS_NO_UNDEFINED_FALSE='#'
+else
+  HOST_NEEDS_NO_UNDEFINED_TRUE='#'
+  HOST_NEEDS_NO_UNDEFINED_FALSE=
+fi
+
+
 # User variables for a Perl XS extension, which may be different, for
 # example if the Perl interpreter being used was compiled with a
 # different compiler.  Also in top-level configure.ac.
@@ -12229,6 +12244,10 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${am__fastdepCC_TRUE}" && test -z "${am__fastdepCC_FALSE}"; then
   as_fn_error $? "conditional \"am__fastdepCC\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${HOST_NEEDS_NO_UNDEFINED_TRUE}" && test -z "${HOST_NEEDS_NO_UNDEFINED_FALSE}"; then
+  as_fn_error $? "conditional \"HOST_NEEDS_NO_UNDEFINED\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 

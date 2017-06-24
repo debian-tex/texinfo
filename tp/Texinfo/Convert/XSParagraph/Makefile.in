@@ -452,6 +452,7 @@ GNULIB_WCSCOLL = @GNULIB_WCSCOLL@
 GNULIB_WCSCPY = @GNULIB_WCSCPY@
 GNULIB_WCSCSPN = @GNULIB_WCSCSPN@
 GNULIB_WCSDUP = @GNULIB_WCSDUP@
+GNULIB_WCSFTIME = @GNULIB_WCSFTIME@
 GNULIB_WCSLEN = @GNULIB_WCSLEN@
 GNULIB_WCSNCASECMP = @GNULIB_WCSNCASECMP@
 GNULIB_WCSNCAT = @GNULIB_WCSNCAT@
@@ -477,6 +478,7 @@ GNULIB_WMEMSET = @GNULIB_WMEMSET@
 GREP = @GREP@
 HAVE_BTOWC = @HAVE_BTOWC@
 HAVE_C99_STDINT_H = @HAVE_C99_STDINT_H@
+HAVE_CRTDEFS_H = @HAVE_CRTDEFS_H@
 HAVE_DECL_FPURGE = @HAVE_DECL_FPURGE@
 HAVE_DECL_FSEEKO = @HAVE_DECL_FSEEKO@
 HAVE_DECL_FTELLO = @HAVE_DECL_FTELLO@
@@ -546,6 +548,7 @@ HAVE_WCSCOLL = @HAVE_WCSCOLL@
 HAVE_WCSCPY = @HAVE_WCSCPY@
 HAVE_WCSCSPN = @HAVE_WCSCSPN@
 HAVE_WCSDUP = @HAVE_WCSDUP@
+HAVE_WCSFTIME = @HAVE_WCSFTIME@
 HAVE_WCSLEN = @HAVE_WCSLEN@
 HAVE_WCSNCASECMP = @HAVE_WCSNCASECMP@
 HAVE_WCSNCAT = @HAVE_WCSNCAT@
@@ -691,6 +694,7 @@ REPLACE_VPRINTF = @REPLACE_VPRINTF@
 REPLACE_VSNPRINTF = @REPLACE_VSNPRINTF@
 REPLACE_VSPRINTF = @REPLACE_VSPRINTF@
 REPLACE_WCRTOMB = @REPLACE_WCRTOMB@
+REPLACE_WCSFTIME = @REPLACE_WCSFTIME@
 REPLACE_WCSNRTOMBS = @REPLACE_WCSNRTOMBS@
 REPLACE_WCSRTOMBS = @REPLACE_WCSRTOMBS@
 REPLACE_WCSWIDTH = @REPLACE_WCSWIDTH@
@@ -817,11 +821,10 @@ XSParagraph_la_CFLAGS = $(AM_CFLAGS) -DVERSION=\"$(VERSION)\" \
 	"-I$(PERL_INC)"
 TestXS_la_CFLAGS = $(AM_CFLAGS) -DVERSION=\"$(VERSION)\" \
 	-DXS_VERSION=\"$(VERSION)\" "-I$(PERL_INC)"
-AM_LDFLAGS = -no-undefined -L$(PERL_INC) $(PERL_CONF_libperl) \
-	-avoid-version -module $(PERL_CONF_ccdlflags)
-# The -no-undefined flag is for MS-Windows.  See info node
-# `(gnulib)Libtool and Windows'.  The -L and -l options after it show
-# where to find the undefined symbols.
+@HOST_NEEDS_NO_UNDEFINED_FALSE@PLATFORM_LDFLAGS = 
+@HOST_NEEDS_NO_UNDEFINED_TRUE@PLATFORM_LDFLAGS = -no-undefined -L$(PERL_INC) $(PERL_CONF_libperl)
+AM_LDFLAGS = -avoid-version -module $(PERL_CONF_ccdlflags) \
+	$(PLATFORM_LDFLAGS)
 
 # only used to regenerate a stand-alone perl module
 perl_specific_files = \
@@ -1459,6 +1462,9 @@ uninstall-am: uninstall-dist_modulesDATA uninstall-xsLTLIBRARIES
 # this by deleting it after it's installed.
 install-data-hook:
 	rm -f $(DESTDIR)$(xsdir)/TestXS*
+@HOST_NEEDS_NO_UNDEFINED_TRUE@  # The -no-undefined flag is for MS-Windows.  See info node
+@HOST_NEEDS_NO_UNDEFINED_TRUE@  # `(gnulib)Libtool and Windows'.  The -L and -l options after it show
+@HOST_NEEDS_NO_UNDEFINED_TRUE@  # where to find the undefined symbols.
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

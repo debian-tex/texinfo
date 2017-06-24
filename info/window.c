@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c 7696 2017-03-21 14:00:55Z gavin $
+   $Id: window.c 7804 2017-05-20 15:51:33Z gavin $
 
    Copyright 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008,
    2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
@@ -618,6 +618,8 @@ window_delete_window (WINDOW *window)
   free (window->log_line_no);
   free (window->line_map.map);
   free (window->modeline);
+  free_matches (&window->matches);
+  free (window->search_string);
 
   if (window == active_window)
     {
@@ -1173,7 +1175,9 @@ calculate_line_starts (WINDOW *win)
       size_t pbytes = 0; /* Not used. */
       int delim = 0;
 
-      printed_representation (&iter, &delim, pl_chars, &pchars, &pbytes);
+      /* Set pchars. */
+      (void) printed_representation (&iter, &delim, pl_chars,
+                                     &pchars, &pbytes);
 
       /* If this character can be printed without passing the width of
          the line, then include it in the line. */
@@ -1298,8 +1302,9 @@ window_compute_line_map (WINDOW *win)
       if (cur_ptr >= endp)
 	break;
       
-      printed_representation (&iter, &delim, win->line_map.used,
-                              &pchars, &pbytes);
+      /* Set pchars */
+      (void) printed_representation (&iter, &delim, win->line_map.used,
+                                     &pchars, &pbytes);
 
       while (pchars--)
         line_map_add (&win->line_map, cur_ptr - win->node->contents);

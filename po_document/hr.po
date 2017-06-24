@@ -2,13 +2,13 @@
 # Copyright (C) 2015 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
 #
-# Božidar Putanec <bozidarp@yahoo.com>, 2016.
+# Božidar Putanec <bozidarp@yahoo.com>, 2016, 2017.
 msgid ""
 msgstr ""
-"Project-Id-Version: GNU texinfo_document 6.1.92\n"
+"Project-Id-Version: GNU texinfo_document 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-04-23 13:58+0100\n"
-"PO-Revision-Date: 2016-09-09 20:30+0200\n"
+"POT-Creation-Date: 2017-06-23 06:53+0100\n"
+"PO-Revision-Date: 2017-04-25 20:36-0800\n"
 "Last-Translator: Božidar Putanec <bozidarp@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -18,90 +18,90 @@ msgstr ""
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Lokalize 2.0\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: tp/Texinfo/Common.pm:698 tp/Texinfo/Common.pm:703
+#: tp/Texinfo/Common.pm:699 tp/Texinfo/Common.pm:704
 msgid "Function"
 msgstr "Funkcija"
 
-#: tp/Texinfo/Common.pm:699
+#: tp/Texinfo/Common.pm:700
 msgid "Macro"
 msgstr "Makro"
 
-#: tp/Texinfo/Common.pm:700
+#: tp/Texinfo/Common.pm:701
 msgid "Special Form"
 msgstr "Specijalna forma (oblik)"
 
-#: tp/Texinfo/Common.pm:701 tp/Texinfo/Common.pm:704
+#: tp/Texinfo/Common.pm:702 tp/Texinfo/Common.pm:705
 msgid "Variable"
 msgstr "Varijabla"
 
-#: tp/Texinfo/Common.pm:702
+#: tp/Texinfo/Common.pm:703
 msgid "User Option"
 msgstr "Korisnička opcija"
 
-#: tp/Texinfo/Common.pm:705 tp/Texinfo/Common.pm:706
+#: tp/Texinfo/Common.pm:706 tp/Texinfo/Common.pm:707
 msgid "Instance Variable"
 msgstr "Instanca (pojava ili primjer) varijable"
 
-#: tp/Texinfo/Common.pm:707 tp/Texinfo/Common.pm:708
+#: tp/Texinfo/Common.pm:708 tp/Texinfo/Common.pm:709
 msgid "Method"
 msgstr "Metoda"
 
-#: tp/Texinfo/Common.pm:1187
+#: tp/Texinfo/Common.pm:1188
 #, perl-brace-format
 msgid "{category} on {class}"
 msgstr "{category} u {class}"
 
-#: tp/Texinfo/Common.pm:1194
+#: tp/Texinfo/Common.pm:1195
 #, perl-brace-format
 msgid "{category} of {class}"
 msgstr "{category} od {class}"
 
-#: tp/Texinfo/Common.pm:1211
+#: tp/Texinfo/Common.pm:1212
 #, perl-brace-format
 msgid "{month} {day}, {year}"
 msgstr "{day}. {month} {year}."
 
-#: tp/Texinfo/Common.pm:1242 tp/Texinfo/Convert/Plaintext.pm:1055
+#: tp/Texinfo/Common.pm:1243 tp/Texinfo/Convert/Plaintext.pm:1055
 #: tp/Texinfo/Convert/HTML.pm:532
 #, perl-brace-format
 msgid "Appendix {number} {section_title}"
 msgstr "Privitak {number} {section_title}"
 
-#: tp/Texinfo/Common.pm:1246 tp/Texinfo/Convert/Plaintext.pm:1060
+#: tp/Texinfo/Common.pm:1247 tp/Texinfo/Convert/Plaintext.pm:1060
 #: tp/Texinfo/Convert/HTML.pm:538
 #, perl-brace-format
 msgid "{number} {section_title}"
 msgstr "{number} {section_title}"
 
-#: tp/Texinfo/Common.pm:1487
+#: tp/Texinfo/Common.pm:1488
 #, perl-brace-format
 msgid "{float_type} {float_number}: "
 msgstr "{float_type} {float_number}: "
 
-#: tp/Texinfo/Common.pm:1491
+#: tp/Texinfo/Common.pm:1492
 #, perl-brace-format
 msgid "{float_type}: "
 msgstr "{float_type}: "
 
-#: tp/Texinfo/Common.pm:1496
+#: tp/Texinfo/Common.pm:1497
 #, perl-brace-format
 msgid "{float_type} {float_number}\n"
 msgstr "{float_type} {float_number}\n"
 
-#: tp/Texinfo/Common.pm:1500
+#: tp/Texinfo/Common.pm:1501
 #, perl-brace-format
 msgid "{float_type}\n"
 msgstr "{float_type}\n"
 
-#: tp/Texinfo/Common.pm:1506
+#: tp/Texinfo/Common.pm:1507
 #, perl-brace-format
 msgid "{float_number}: "
 msgstr "{float_number}: "
 
-#: tp/Texinfo/Common.pm:1509
+#: tp/Texinfo/Common.pm:1510
 #, perl-brace-format
 msgid "{float_number}\n"
 msgstr "{float_number}\n"
@@ -825,9 +825,9 @@ msgid "This document was generated on @emph{@today{}}."
 msgstr "Ovaj dokument je napravljen na @emph{@today{}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6216
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "{element_text} ({title})"
-msgstr "{text} ({url})"
+msgstr "{element_text} ({title})"
 
 #: tp/Texinfo/Convert/HTML.pm:6360
 #, perl-brace-format

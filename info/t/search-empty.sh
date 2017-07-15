@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,6 +22,6 @@ run_ginfo -f intera
 # Search without specifying a search string, and check we don't crash.
 printf 's\rq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 cleanup
 

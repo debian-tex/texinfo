@@ -1,6 +1,6 @@
 # configure.ac for XSParagraph
 #
-# Copyright 2015, 2016 Free Software Foundation, Inc.
+# Copyright 2015, 2016, 2017 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -14,19 +14,26 @@ AC_INIT([texinfo], [0])
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIR([m4])
 
+b='\'
+d='$'
+o='@<:@' dnl quadrigraph for [ - see autoconf documentatoin
+c='@:>@' dnl quadrigraph for ]
+
+# This turns a string like "cc='cc';" into a string like "cc".
+# Afterwards, convert \ into / in case \ is a path separator,
+# so it is not interpreted as a special character by the shell.
+
+sed_script="
+s/^$o^=$c*= *//
+s/^'//
+s/ *; *$//
+s/'$d//
+s/$b$b/$b//g"
+
 fetch_conf ()
 {
           conf_value=`${PERL} -V:$1`
-          # This turns a string like "cc='cc';" into a string like "cc".
-          # Afterwards, convert \ into / in case \ is a path separator,
-          # so it is not interpreted as a special character by the shell.
-          conf_value=`echo $conf_value \
-              | sed -e 's/^@<:@^=@:>@*= *//'   \
-                    -e 's/^'\\''//'            \
-                    -e 's/ *; *$//'            \
-                    -e 's/'\\''$//'            \
-                    -e 's/\\\\/\\//g'          `
-          #echo got "$conf_value"
+          conf_value=`echo $conf_value | sed "$sed_script"`
 } 
 
 AC_DEFUN([lookup_perl_conf],

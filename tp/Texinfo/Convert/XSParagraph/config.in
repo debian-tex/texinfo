@@ -609,6 +609,9 @@
 /* Define to 1 if you need to in order for 'stat' and other things to work. */
 #undef _POSIX_SOURCE
 
+/* For standard stat data types on VMS. */
+#undef _USE_STD_STAT
+
 /* Define to 1 if the system <stdint.h> predates C++11. */
 #undef __STDC_CONSTANT_MACROS
 

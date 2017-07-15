@@ -83,11 +83,14 @@ sub fill_gaps_in_sectioning($)
       next;
     }
     my $current_section = shift @sections_list;
-    my $current_section_level = $current_section->{'level'};
+    my $current_section_level
+       = Texinfo::Structuring::section_level($current_section);
     my $next_section = $sections_list[0];
     
     if (defined($next_section)) {
-      my $next_section_level = $next_section->{'level'};
+      my $next_section_level
+                        = Texinfo::Structuring::section_level($next_section);
+
       if ($next_section_level - $current_section_level > 1) {
         my @correct_level_offset_commands = _correct_level($next_section,
                                                           $contents[-1]);
@@ -279,17 +282,6 @@ sub _reassociate_to_node($$$$)
       } else {
         @{$previous_node->{'menus'}} = grep {$_ ne $current} @{$previous_node->{'menus'}};
         delete $previous_node->{'menus'} if !(@{$previous_node->{'menus'}});
-      }
-    } else {
-      my $info = $self->global_informations();
-      if (!$info or !$info->{'unassociated_menus'} 
-          or !@{$info->{'unassociated_menus'}}
-          or !grep {$current eq $_} @{$info->{'unassociated_menus'}}) {
-        print STDERR "Bug: menu $current not in unassociated menus\n";
-      } else {
-        @{$info->{'unassociated_menus'}} 
-          = grep {$_ ne $current} @{$info->{'unassociated_menus'}};
-        delete $info->{'unassociated_menus'} if !(@{$info->{'unassociated_menus'}});
       }
     }
     push @{$new_node->{'menus'}}, $current;
@@ -715,11 +707,6 @@ sub set_menus_to_simple_menu($)
 {
   my $self = shift;
 
-  if ($self->{'info'} and $self->{'info'}->{'unassociated_menus'}) {
-    foreach my $menu (@{$self->{'info'}->{'unassociated_menus'}}) {
-      menu_to_simple_menu($menu);
-    }
-  }
   if ($self->{'nodes'} and @{$self->{'nodes'}}) {
     foreach my $node (@{$self->{'nodes'}}) {
       if ($node->{'menus'}) {

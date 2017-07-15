@@ -1,4 +1,4 @@
-# $Id: Plaintext.pm 7832 2017-06-18 13:06:10Z gavin $
+# $Id: Plaintext.pm 7897 2017-07-02 10:13:28Z gavin $
 # Plaintext.pm: output tree as text with filling.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015,
@@ -70,7 +70,7 @@ sub import {
 @EXPORT = qw(
 );
 
-$VERSION = '6.4';
+$VERSION = '6.4.90';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -1393,9 +1393,9 @@ sub _image_text($$$)
   } else {
     my $filehandle = do { local *FH };
     if (open ($filehandle, $txt_file)) {
-      binmode($filehandle, ":encoding("
-                         .$self->get_conf('INPUT_PERL_ENCODING').")")
-                if (defined($self->get_conf('INPUT_PERL_ENCODING')));
+      my $enc = $root->{'extra'}->{'input_perl_encoding'};
+      binmode($filehandle, ":encoding($enc)")
+        if ($enc);
       my $result = '';
       my $max_width = 0;
       while (<$filehandle>) {
@@ -2755,12 +2755,12 @@ sub _convert($$)
                  or $command eq 'deftypevr')
                 and !$root->{'extra'}->{'def_parsed_hash'}->{'type'})) {
           if ($arguments) {
-            $tree = $self->gdt("\@tie{ }-- {category}: {name} {arguments}", {
+            $tree = $self->gdt("\@tie{}-- {category}: {name} {arguments}", {
                     'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
                     'name' => $name,
                     'arguments' => $arguments});
           } else {
-            $tree = $self->gdt("\@tie{ }-- {category}: {name}", {
+            $tree = $self->gdt("\@tie{}-- {category}: {name}", {
                     'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
                     'name' => $name});
           }
@@ -2773,10 +2773,10 @@ sub _convert($$)
                     'type' => $root->{'extra'}->{'def_parsed_hash'}->{'type'},
                     'arguments' => $arguments};
             if ($self->get_conf('deftypefnnewline') eq 'on') {
-              $tree = $self->gdt("\@tie{ }-- {category}:\@*{type}\@*{name} {arguments}",
+              $tree = $self->gdt("\@tie{}-- {category}:\@*{type}\@*{name} {arguments}",
                                  $strings);
             } else {
-              $tree = $self->gdt("\@tie{ }-- {category}: {type} {name} {arguments}",
+              $tree = $self->gdt("\@tie{}-- {category}: {type} {name} {arguments}",
                                  $strings);
             }
           } else {
@@ -2785,10 +2785,10 @@ sub _convert($$)
                     'type' => $root->{'extra'}->{'def_parsed_hash'}->{'type'},
                     'name' => $name};
             if ($self->get_conf('deftypefnnewline') eq 'on') {
-              $tree = $self->gdt("\@tie{ }-- {category}:\@*{type}\@*{name}",
+              $tree = $self->gdt("\@tie{}-- {category}:\@*{type}\@*{name}",
                                  $strings);
             } else {
-              $tree = $self->gdt("\@tie{ }-- {category}: {type} {name}",
+              $tree = $self->gdt("\@tie{}-- {category}: {type} {name}",
                                  $strings);
             }
           }
@@ -2796,13 +2796,13 @@ sub _convert($$)
                  or ($command eq 'deftypecv'
                      and !$root->{'extra'}->{'def_parsed_hash'}->{'type'})) {
           if ($arguments) {
-            $tree = $self->gdt("\@tie{ }-- {category} of {class}: {name} {arguments}", {
+            $tree = $self->gdt("\@tie{}-- {category} of {class}: {name} {arguments}", {
                     'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
                     'name' => $name,
                     'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
                     'arguments' => $arguments});
           } else {
-            $tree = $self->gdt("\@tie{ }-- {category} of {class}: {name}", {
+            $tree = $self->gdt("\@tie{}-- {category} of {class}: {name}", {
                     'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
                     'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
                     'name' => $name});
@@ -2811,13 +2811,13 @@ sub _convert($$)
                  or ($command eq 'deftypeop'
                      and !$root->{'extra'}->{'def_parsed_hash'}->{'type'})) {
           if ($arguments) {
-            $tree = $self->gdt("\@tie{ }-- {category} on {class}: {name} {arguments}", {
+            $tree = $self->gdt("\@tie{}-- {category} on {class}: {name} {arguments}", {
                     'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
                     'name' => $name,
                     'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
                     'arguments' => $arguments});
           } else {
-            $tree = $self->gdt("\@tie{ }-- {category} on {class}: {name}", {
+            $tree = $self->gdt("\@tie{}-- {category} on {class}: {name}", {
                     'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
                     'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
                     'name' => $name});
@@ -2832,11 +2832,11 @@ sub _convert($$)
                     'arguments' => $arguments};
             if ($self->get_conf('deftypefnnewline') eq 'on') {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} on {class}:\@*{type}\@*{name} {arguments}",
+                = $self->gdt("\@tie{}-- {category} on {class}:\@*{type}\@*{name} {arguments}",
                              $strings);
             } else {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} on {class}: {type} {name} {arguments}",
+                = $self->gdt("\@tie{}-- {category} on {class}: {type} {name} {arguments}",
                              $strings);
             }
           } else {
@@ -2847,11 +2847,11 @@ sub _convert($$)
                     'name' => $name};
             if ($self->get_conf('deftypefnnewline') eq 'on') {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} on {class}:\@*{type}\@*{name}",
+                = $self->gdt("\@tie{}-- {category} on {class}:\@*{type}\@*{name}",
                              $strings);
             } else {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} on {class}: {type} {name}",
+                = $self->gdt("\@tie{}-- {category} on {class}: {type} {name}",
                              $strings);
             }
           }
@@ -2865,11 +2865,11 @@ sub _convert($$)
                     'arguments' => $arguments};
             if ($self->get_conf('deftypefnnewline') eq 'on') {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} of {class}:\@*{type}\@*{name} {arguments}",
+                = $self->gdt("\@tie{}-- {category} of {class}:\@*{type}\@*{name} {arguments}",
                              $strings);
             } else {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} of {class}: {type} {name} {arguments}",
+                = $self->gdt("\@tie{}-- {category} of {class}: {type} {name} {arguments}",
                              $strings);
             }
           } else {
@@ -2880,11 +2880,11 @@ sub _convert($$)
                     'name' => $name};
             if ($self->get_conf('deftypefnnewline') eq 'on') {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} of {class}:\@*{type}\@*{name}",
+                = $self->gdt("\@tie{}-- {category} of {class}:\@*{type}\@*{name}",
                              $strings);
             } else {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} of {class}: {type} {name}",
+                = $self->gdt("\@tie{}-- {category} of {class}: {type} {name}",
                              $strings);
             }
           }
@@ -3267,7 +3267,7 @@ sub _convert($$)
 1;
 
 __END__
-# $Id: Plaintext.pm 7832 2017-06-18 13:06:10Z gavin $
+# $Id: Plaintext.pm 7897 2017-07-02 10:13:28Z gavin $
 # Automatically generated from maintain/template.pod
 
 =head1 NAME

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ srcdir=${srcdir:-.}
 run_ginfo
 # Split it in two, go to the new window, and make it the only window.
 printf '\0302\030o\0301Dq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 grep '^File: dir' $GINFO_OUTPUT
 RETVAL=$?

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,10 +18,10 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
-run_ginfo -f intera -n 'Node with footnotes' -v automatic-footnotes=On
+run_ginfo "-f intera -n 'Node with footnotes' -v automatic-footnotes=On"
 # Move to automatic footnotes window and split it.  Check we don't crash.
 printf '\030o\0302qqqq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 cleanup
 

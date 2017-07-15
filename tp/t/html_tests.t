@@ -77,7 +77,11 @@ in @code{documentdescri---ption} --- @bullet{} @enddots{} @verb{:"verb:} @aa{} @
 @printindex cp
 ', {'test_split' => 'section'}, {'USE_NODES', 0}],
 ['simple_menu',
-'@menu
+'
+@node Top
+@top
+
+@menu
 * (ggg):: description
 @itemize
 @item idescr

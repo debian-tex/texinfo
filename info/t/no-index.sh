@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f sample
 # Try to search in the indices when there aren't any
 printf 'ia\rq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 cleanup
 

@@ -769,6 +769,7 @@ GNULIB_MBSINIT
 GNULIB_WCTOB
 GNULIB_BTOWC
 HAVE_FEATURES_H
+WINDOWS_STAT_INODES
 WINDOWS_64_BIT_OFF_T
 NEXT_AS_FIRST_DIRECTIVE_SYS_TYPES_H
 NEXT_SYS_TYPES_H
@@ -3494,19 +3495,24 @@ fi
 
 
 
+b='\'
+d='$'
+o='[' c=']'
+# This turns a string like "cc='cc';" into a string like "cc".
+# Afterwards, convert \ into / in case \ is a path separator,
+# so it is not interpreted as a special character by the shell.
+
+sed_script="
+s/^$o^=$c*= *//
+s/^'//
+s/ *; *$//
+s/'$d//
+s/$b$b/$b//g"
+
 fetch_conf ()
 {
           conf_value=`${PERL} -V:$1`
-          # This turns a string like "cc='cc';" into a string like "cc".
-          # Afterwards, convert \ into / in case \ is a path separator,
-          # so it is not interpreted as a special character by the shell.
-          conf_value=`echo $conf_value \
-              | sed -e 's/^[^=]*= *//'   \
-                    -e 's/^'\\''//'            \
-                    -e 's/ *; *$//'            \
-                    -e 's/'\\''$//'            \
-                    -e 's/\\\\/\\//g'          `
-          #echo got "$conf_value"
+          conf_value=`echo $conf_value | sed "$sed_script"`
 }
 
 
@@ -8163,6 +8169,10 @@ fi
 
 
 
+$as_echo "#define _USE_STD_STAT 1" >>confdefs.h
+
+
+
 
 
 
@@ -8238,6 +8248,11 @@ $as_echo "$gl_cv_next_sys_types_h" >&6; }
 
 
 
+
+
+
+
+    WINDOWS_STAT_INODES=0
 
 
 
@@ -9156,7 +9171,7 @@ fi
     aix* | beos* | openbsd* | mirbsd* | irix*)
       FLOAT_H=float.h
       ;;
-    freebsd*)
+    freebsd* | dragonfly*)
       case "$host_cpu" in
         i[34567]86 )
           FLOAT_H=float.h
@@ -9190,7 +9205,7 @@ rm -f conftest*
       ;;
   esac
   case "$host_os" in
-    aix* | freebsd* | linux*)
+    aix* | freebsd* | dragonfly* | linux*)
       if test -n "$FLOAT_H"; then
         REPLACE_FLOAT_LDBL=1
       fi
@@ -9435,7 +9450,7 @@ else
         size_t siz = 0;
         int len = getdelim (&line, &siz, '\n', in);
         if (!(len == 4 && line && strcmp (line, "foo\n") == 0))
-          return 2;
+          { free (line); fclose (in); return 2; }
       }
       {
         /* Test result for a NULL buffer and a non-zero size.
@@ -9443,7 +9458,7 @@ else
         char *line = NULL;
         size_t siz = (size_t)(~0) / 4;
         if (getdelim (&line, &siz, '\n', in) == -1)
-          return 3;
+          { fclose (in); return 3; }
         free (line);
       }
       fclose (in);
@@ -9596,7 +9611,7 @@ else
         size_t siz = 0;
         int len = getline (&line, &siz, in);
         if (!(len == 4 && line && strcmp (line, "foo\n") == 0))
-          return 2;
+          { free (line); fclose (in); return 2; }
         free (line);
       }
       {
@@ -9605,7 +9620,7 @@ else
         char *line = NULL;
         size_t siz = (size_t)(~0) / 4;
         if (getline (&line, &siz, in) == -1)
-          return 3;
+          { fclose (in); return 3; }
         free (line);
       }
       fclose (in);

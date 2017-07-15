@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2016 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -28,13 +28,13 @@ srcdir=${srcdir:-.}
 LINES=7; export LINES
 COLUMNS=80; export COLUMNS
 
-run_ginfo -f intera -n 'Scroll four lines'
+run_ginfo "-f intera -n 'Scroll four lines'"
 
 # C-u M-x scroll-forward should scroll four lines, not four screens
 printf '\025\033xscroll-forward\r' >$PTY_TYPE
 printf '\rDq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 # Return non-zero (test failure) if files differ
 diff $GINFO_OUTPUT $t/node-target

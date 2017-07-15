@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2016 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,6 +24,6 @@ INFOPATH=$INFOPATH:$t/infodir/subdir
 run_ginfo -v hide-note-references=On file-in-subdir
 
 printf q >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 cleanup

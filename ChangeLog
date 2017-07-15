@@ -1,3 +1,297 @@
+2017-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* pretest 6.4.90
+	* configure.ac: Update version.  Add dist-xz to options.
+
+2017-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph: Run gnulib-tool --add-import.
+	* (top-level): Run gnulib-tool --add-import.
+
+2017-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/Makefile.am (wwwdoc-build): Remove commands that could
+	build the "info" manual.
+
+2017-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Update with various news items.
+
+2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (info_find_subfile): When looking for an 
+	already-loaded file, check that the names match either exactly, 
+	or as an initial substring followed by a period.  Previously,
+	any loaded file which had an initial substring that was the name 
+	of the sought file would be accepted, which would be incorrect
+	for a case like "libc.info-11" matching when it was "libc.info-1"
+	that was wanted.  Vitezslav Crhonek reported that this could 
+	lead to failure when following cross-references.
+
+	* info/t/subfile-initial-match.sh: New test.
+
+2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (info_get_node_with_defaults): Only use the
+	directory from the current node's fullpath if this function was 
+	passed a filename as an argument.
+
+2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c
+	(get_filename_and_nodename, info_get_node_with_defaults):
+	Merge get_filename_and_nodename into caller.
+
+2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (build_tags_and_nodes): Call 'skip_node_separator'
+	in order not to start reading the tag table in the middle of an
+	"Indirect:" string.
+
+2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (info_load_file): If calling 
+	'build_tags_and_nodes' didn't set the 'tags' array for the file 
+	buffer, fail to load the file.
+	* info/info.c (add_initial_nodes): Check if info_load_file failed.
+
+	* info/t/malformed-split.sh: New test.
+
+2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc (run_ginfo): Shorten a comment.
+
+2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (info_find_file): Do not convert the filename to 
+	lowercase and check for it again if a file was not found.
+
+2017-07-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/inc-sea-bs.sh: New test.
+
+2017-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/search.c (regexp_search): Call free_matches if the regex
+	could be compiled, but there were no matches.  Free a string
+	buffer used for displaying an error message.
+	* info/session.c (info_search_in_node_internal): Do not call
+	free_matches.  It could be called on uninitialised data leading
+	to a crash if the regex had an error in it.  Marco Maggi reported
+	a crash for incremental search when a single \ was entered.
+
+2017-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (sorted_index_filter): Remove code to list files 
+	created with bibtex, as then xref_files_changed requires them to 
+	exist (since change on 2017-06-21) and they won't if bibtex is 
+	not being used.  Report from Daniel Gerbet.
+
+2017-07-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\unicodechardefs):
+	Define U+25C7 as \diamond and remove definitions for U+25A1,
+	U+2A1D, U+2201, U+2127, U+21BE, U+2290, U+22B4, and U+22B5 which 
+	didn't work.  (Benno Schulenberg reported that U+25C7 didn't 
+	work.)
+
+2017-07-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@image>: Save 
+	'input_perl_encoding' value on @image element.
+	* tp/Texinfo/Convert/Plaintext.pm (_image_text): Use it instead
+	of looking at the current value of INPUT_PERL_ENCODING.
+
+2017-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi_file): Set the parent key on 
+	a created 'preamble' element.
+
+2017-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac (fetch_conf): Put
+	all sed commands within an environment variable, 'sed_script'.
+	Assign 'sed_script' from a double-quoted string, using shell 
+	variables to include awkward characters.  This avoids there 
+	being multiple level of quoting present which can be extremely 
+	confusing, i.e., autoconf's quadrigraphs, quoting within the 
+	backquoted string where sed is called, as well as sed's own 
+	escaping of special characters.
+
+	* tp/Texinfo/MiscXS/configure.ac (fetch_conf): Make the same 
+	change.
+
+2017-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/c-u-m-x-scroll-forward.sh, info/t/inc-sea-insensitive.sh, 
+	info/t/search-split-after-index.sh, info/t/split-footnotes.sh, 
+	info/t/star-note-non-whitespace.sh, info/t/tab-argument.sh, 
+	info/t/xref-across-lines.sh: Quote argument to run_ginfo so that 
+	quoting characters are preseved in the subshell that execs ginfo.
+
+2017-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/xref-across-lines-2.sh: New test.
+
+2017-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (scan_reference_label): Canonicalize the 
+	whitespace in the nodename, otherwise links can't be followed if 
+	the nodename is split across a line.
+
+2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Converter.pm (_register_command_arg):
+	Copy function here from Parser.pm.
+	(_table_item_content_tree): Call it.
+
+2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <menu>: Don't store
+	a list of menus in 'unassociated_menus' array.
+	* tp/Texinfo/Transformations.pm (_reassociate_to_node)
+	(set_menus_to_simple_menu): Remove checks of 
+	'unassociated_menus' array.
+
+2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <macro expansion>:
+	Add a check for the return value of _text_to_lines being empty.
+
+2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/html_tests.t (simple_menu): Add @node and @top commands
+	so that the menu is inside a node.
+
+2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Transformations.pm (fill_gaps_in_sectioning): Call 
+	Texinfo::Structuring::section_level to get sectioning level
+	(used in tp/t/test_fill_gaps_in_sectioning.t).
+
+2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_section_level),
+	* tp/Texinfo/Structuring.pm (section_level): Move function to
+	Structuring.pm.
+
+2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): Do not add 'level' value
+	on sectioning commands.
+	* tp/Texinfo/Structuring.pm (sectioning_structure): Add 'level' 
+	value on element.
+	* tp/Texinfo/Convert/HTML.pm (_convert_heading_command),
+	* tp/Texinfo/Convert/Text.pm (heading):
+	Account for the case when 'level' is not set.
+	* texi2any.pl: Remove a comment.
+
+2017-06-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line) <@copying>: Removing handling
+	of INLINE_INSERTCOPYING variable.  Also remove from the module 
+	documentation section at the end of the file.
+	(%default_customization_variables): Remove INLINE_INSERTCOPYING.
+	* tp/Texinfo/Parser.pm (@variable_string_settables)
+	(@obsolete_variables): Move 'INLINE_INSERTCOPYING' to 
+	@obsolete_variables.
+	* tp/t/plaintext_tests.t (inline_copying_inline_and_paragraph):
+	Remove.
+	* NEWS: Mention removal.
+	* doc/texinfo.texi (Other Customization Variables) 
+	<INLINE_INSERTCOPYING>: Remove.
+
+2017-06-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_text_to_lines): Do not return an array 
+	containing a single empty string if the input is an empty 
+	string; instead, return a completely empty array.  This means
+	that parse_texi_line does not get as far into parsing for an
+	empty input.
+	
+2017-06-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm <root commands>: Do not associate a @part 
+	command with a following sectioning command if another @part 
+	command appears first.  This means there is no special support
+	for @part pages following each other immediately.
+
+2017-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Timeout-test.inc,
+	* info/t/Init-test.inc (timeout-test): Move code to timeout the
+	test to a shell function.
+
+2017-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc (run_ginfo): Time out test by running a 
+	subshell in the background that kills the current shell inside 
+	an "sh -c" command, and execing the ginfo program.  Do not use a 
+	FIFO to communicate that the process has finished.
+
+	* info/t/Timeout-test.inc: Do not use "read -t" to read from a 
+	FIFO with a timeout.  Use the "wait" shell builtin to wait for
+	the process to finish.
+
+	* info/t/Init-test.inc (cleanup): Eliminate use of SUBSHELL,
+	TIMED_OUT and FINISHEDFIFO variables.
+
+2017-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc (run_ginfo): Remove use of pgrep to get 
+	PID of process.  Get PID of ginfo process by running a subshell 
+	with "sh -c", printing the value of $$ (the shell PID), and then
+	exec'ing the ginfo program.
+
+2017-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfor/Parser.pm, tp/Texinfo/Common.pm
+	(complete_indices, _complete_indices): Move function to 
+	Common.pm and rename.
+
+2017-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line) <@verbatiminclude>: Save 
+	value of 'input_perl_encoding' on the element.
+	* tp/Texinfo/Common.pm (expand_verbatiminclude): Use the
+	saved value of 'input_perl_encoding' instead of looking at
+	'INPUT_PERL_ENCODING' conf value.
+
+2017-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (info_get_node_with_defaults): Remove code that
+	fell back to a man page.  This got in the way of the code in
+	info_get_info_help_node that fell back to info-stnd.info if 
+	info.info couldn't be loaded.  Also, this code is called from 
+	many places where falling back to a man page would definitely 
+	not be what was wanted, so removing the manpage fallback option 
+	makes the program more robust and easy to understand.
+	* NEWS: Mention info will not try to fall back to a man page if
+	it failed to follow a cross-reference.
+
+2017-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert) <def commands>:
+	Change "@tie{ }" to "@tie{}" in document strings passed to gdt.
+	* tp/Texinfo/Parser.pm (_parse_texi) <closing a brace command>:
+	Don't check if we are being called from gdt and the closed 
+	command was @tie.
+
+2017-06-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): Remove debugging code
+	to dump parse tree every time a new line is read.
+
+2017-06-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* configure.ac: Increase version to 6.4dev.  Remove "dist-xz" 
+	option.
+
+2017-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Change some instructions and remove some 
+	others.
+
 2017-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	6.4 release.

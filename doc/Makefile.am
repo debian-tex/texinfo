@@ -1,4 +1,4 @@
-# $Id: Makefile.am 7290 2016-07-31 08:40:28Z gavin $
+# $Id: Makefile.am 7918 2017-07-10 17:59:21Z gavin $
 # Makefile.am for texinfo/doc.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
@@ -89,14 +89,11 @@ gendocs_invoke = env $(gendocs_envvars) $(gendocs) --email $(gendocs_email) \
 # A nice side effect of using --html is to eliminate the fancy css default;
 # otherwise, we could use gendocs_template_min.
 #
-manual1 = info
-manual1_title = "GNU Info manual"
+manual1 = info-stnd
+manual1_title = "GNU standalone info manual"
 #
-manual2 = info-stnd
-manual2_title = "GNU standalone info manual"
-#
-manual3 = texinfo
-manual3_title = "GNU Texinfo manual"
+manual2 = texinfo
+manual2_title = "GNU Texinfo manual"
 #
 # We also make a little HTML document for pod2texi script.
 pod2texi_pl = $(abs_top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl
@@ -111,7 +108,6 @@ wwwdoc-build:
 	&& ln -s ../*.texi . \
 	&& $(gendocs_invoke) -o $(manual1) $(manual1) $(manual1_title) \
 	&& $(gendocs_invoke) -o $(manual2) $(manual2) $(manual2_title) \
-	&& $(gendocs_invoke) -o $(manual3) $(manual3) $(manual3_title) \
 	&& pod2html $(pod2texi_pl) >pod2texi.html \
 	&& echo "Manuals ready for web distribution under: $(doctemp)/"
 #
@@ -119,7 +115,7 @@ wwwdoc-build:
 # http://www.gnu.org/software/texinfo/manual/
 wwwdoc-install:
 	cp -arf $(doctemp)/$(manual1) $(doctemp)/$(manual2) \
-                $(doctemp)/$(manual3) $(doctemp)/pod2texi.html \
+                $(doctemp)/pod2texi.html \
                 $(www_target)
 	ls -ltu $(www_target)/*/html_node | tail  # cvs rm -f obsolete files
 # followed by cvs add of new files and cvs commit.

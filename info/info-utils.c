@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c 7818 2017-06-03 20:52:27Z gavin $
+   $Id: info-utils.c 7888 2017-07-01 13:51:33Z gavin $
 
    Copyright 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012,
    2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
@@ -1278,6 +1278,7 @@ scan_reference_label (REFERENCE *entry, int in_index)
     {
       len = read_quoted_string (inptr + label_len, ":", max_lines,
                                 &entry->nodename);
+      canonicalize_whitespace (entry->nodename);
       if (!len)
         return 0; /* Input invalid. */
       label_len += len;

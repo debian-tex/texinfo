@@ -110,13 +110,6 @@ through @ref{Texinfo::Parser $info = global_informations($parser), global_inform
 An array reference of directories in which @code{@@include} files should be 
 searched for.  Default contains the working directory, @file{.}.
 
-@item INLINE_INSERTCOPYING
-@anchor{Texinfo::Parser INLINE_INSERTCOPYING}
-
-If set, @code{@@insertcopying} is replaced by the @code{@@copying} content as if
-@code{@@insertcopying} was a user-defined macro.  In the default case, it is 
-considered to be a simple @@-command and kept as-is in the tree.
-
 @item IGNORE_BEFORE_SETFILENAME
 @anchor{Texinfo::Parser IGNORE_BEFORE_SETFILENAME}
 
@@ -250,11 +243,6 @@ Texinfo code.
 
 An array of successive @code{@@dircategory} and @code{@@direntry} as they appear
 in the document.
-
-@item unassociated_menus
-@anchor{Texinfo::Parser unassociated_menus}
-
-An array of menus that are not associated with a node.
 
 @item novalidate
 @anchor{Texinfo::Parser novalidate}

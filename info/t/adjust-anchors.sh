@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ run_ginfo -f anchors
 printf 'ganchor-2\r\002\002\002\002\002\002' >$PTY_TYPE
 printf '\002\002\002\002\002\002\002\002\rDq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

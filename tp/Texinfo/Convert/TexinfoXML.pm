@@ -52,7 +52,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.4';
+$VERSION = '6.4.90';
 
 # XML specific
 my %defaults = (

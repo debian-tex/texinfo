@@ -1,7 +1,7 @@
 # Text.pm: output tree as simple text.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
-# Inc., 
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software 
+# Foundation, Inc., 
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -53,7 +53,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.4';
+$VERSION = '6.4.90';
 
 # this is in fact not needed for 'footnote', 'shortcaption', 'caption'
 # when they have no brace_command_arg, see below.
@@ -309,6 +309,9 @@ sub heading($$$;$$)
     $result .= (' ' x $indent_length);
   } else {
     $indent_length = 0;
+  }
+  if (!defined $current->{'level'}) {
+    $current->{'level'} = Texinfo::Structuring::section_level($current);
   }
   $result .=($underline_symbol{$current->{'level'}} 
      x (Texinfo::Convert::Unicode::string_width($text) - $indent_length))."\n";

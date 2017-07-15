@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2016 Free Software Foundation, Inc.
+# Copyright (C) 2016, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,10 +20,10 @@ srcdir=${srcdir:-.}
 
 # Search for text in a split file after loading an index entry from the
 # command-line.
-run_ginfo -f split 'Link to node'
+run_ginfo "-f split 'Link to node'"
 printf '/node\r}}}}}q' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 cleanup
 

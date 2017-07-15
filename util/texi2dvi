@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi 7840 2017-06-21 20:26:32Z gavin $
+# $Id: texi2dvi 7906 2017-07-05 17:56:51Z gavin $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002,
 # 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,
@@ -37,7 +37,7 @@ set -e
 : ${SED=sed}
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 7840 $'
+rcs_revision='$Revision: 7906 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | $SED -e 's!.*/!!'`
 
@@ -1659,6 +1659,15 @@ sorted_index_filter ()
         echo $1s
       fi
       ;;
+  esac
+}
+
+
+# Not currently used - use with filter_files to add secondary files created by 
+# bibtex
+bibtex_secondary_files ()
+{
+  case $in_lang in
     latex)
       if test -n "`aux_file_p $1`"; then
         # bibtex: *.aux -> *.bbl and *.blg.

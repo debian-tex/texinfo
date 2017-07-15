@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ run_ginfo -f intera
 # Check that typing C-e on an empty line doesn't go to previous line
 printf '\x0e\x0e\x0e\x0e\x0e\x05\x0e\rDq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

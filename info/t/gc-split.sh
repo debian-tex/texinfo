@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2016 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ run_ginfo -f split
 # incremental search.  Refresh the screen afterwards to increase the 
 # chances of trying to access freed file contents.
 printf '\023aa\033[B\014q' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 cleanup
 

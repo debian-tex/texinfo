@@ -993,34 +993,34 @@ $result_errors{'multiple'} = [];
 
 
 
-$result_converted{'plaintext'}->{'multiple'} = ' -- Variable d\'instance de fr : BBB CCC
+$result_converted{'plaintext'}->{'multiple'} = ' -- Variable d\'instance of fr: BBB CCC
 
- -- Variable d\'instance de copying : a b
+ -- Variable d\'instance of copying: a b
 
- -- Instance Variable da pt: BBB CCC
+ -- Instance Variable of pt: BBB CCC
 
- -- Instance Variable da copying: a b
+ -- Instance Variable of copying: a b
 ';
 
 
 $result_converted{'info'}->{'multiple'} = 'This is , produced from .
 
- -- Variable d\'instance de copying : a b
+ -- Variable d\'instance of copying: a b
 
 
 File: ,  Node: Top,  Up: (dir)
 
- -- Variable d\'instance de fr : BBB CCC
+ -- Variable d\'instance of fr: BBB CCC
 
- -- Variable d\'instance de copying : a b
+ -- Variable d\'instance of copying: a b
 
- -- Instance Variable da pt: BBB CCC
+ -- Instance Variable of pt: BBB CCC
 
- -- Instance Variable da copying: a b
+ -- Instance Variable of copying: a b
 
 
 Tag Table:
-Node: Top69
+Node: Top68
 
 End Tag Table
 ';

@@ -1,4 +1,4 @@
-# $Id: Parser.pm 7836 2017-06-18 18:44:13Z gavin $
+# $Id: Parser.pm 7897 2017-07-02 10:13:28Z gavin $
 # Parser.pm: parse texinfo code into a tree.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
@@ -106,7 +106,7 @@ sub import {
 @EXPORT = qw(
 );
 
-$VERSION = '6.4';
+$VERSION = '6.4.90';
 
 sub N__($)
 {
@@ -119,7 +119,6 @@ our %default_customization_values = (
   'DEBUG' => 0,     # if >= 10, tree is printed in texi2any.pl after parsing.
                     # If >= 100 tree is printed every line.
   'SHOW_MENU' => 1,             # if false no menu error related.
-  'INLINE_INSERTCOPYING' => 0,
   'IGNORE_BEFORE_SETFILENAME' => 1,
   'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME' => 1,
   'INPUT_PERL_ENCODING' => undef, # input perl encoding name, set from 
@@ -253,7 +252,6 @@ my %deprecated_commands       = %Texinfo::Common::deprecated_commands;
 my %root_commands             = %Texinfo::Common::root_commands;
 my %sectioning_commands       = %Texinfo::Common::sectioning_commands;
 my %command_index             = %Texinfo::Common::command_index;
-my %command_structuring_level = %Texinfo::Common::command_structuring_level;
 my %ref_commands              = %Texinfo::Common::ref_commands;
 my %region_commands           = %Texinfo::Common::region_commands;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
@@ -786,8 +784,7 @@ sub _text_to_lines($)
   die if (!defined($text));
   my $had_final_end_line = chomp($text);
   my $lines = [ map {$_."\n"} split (/\n/, $text, -1) ];
-  $lines = [''] if (!@$lines);
-  chomp($lines->[-1]) unless ($had_final_end_line);
+  chomp($lines->[-1]) unless (!@$lines or $had_final_end_line);
   return $lines;
 }
 
@@ -882,7 +879,8 @@ sub parse_texi_file($$)
   }
   my $root = { 'contents' => [], 'type' => 'text_root' };
   if (@first_lines) {
-    push @{$root->{'contents'}}, { 'type' => 'preamble', 'contents' => [] };
+    push @{$root->{'contents'}}, { 'type' => 'preamble', 'contents' => [],
+                                   'parent' => $root };
     foreach my $line (@first_lines) {
       push @{$root->{'contents'}->[-1]->{'contents'}}, 
                                    { 'text' => $line,
@@ -956,84 +954,6 @@ sub parse_texi_line($$;$$$$)
   return $tree;
 }
 
-sub _non_bracketed_contents {
-  my $current = shift;
-
-  if ($current->{'type'} and $current->{'type'} eq 'bracketed') {
-    my $new = {};
-    $new->{'contents'} = $current->{'contents'} if ($current->{'parent'});
-    $new->{'parent'} = $current->{'parent'} if ($current->{'parent'});
-    return $new;
-  } else {
-    return $current;
-  }
-}
-
-# In a handful of cases, we delay storing the contents of the
-# index entry until now to avoid needing Texinfo::Report::gdt
-# in the main code of Parser.pm.  Also set 'in_code' value on
-# index entries.
-sub _complete_indices {
-  my $self = shift;
-
-  my ($index_entry, $index_contents_normalized);
-    
-  my $save_lang = $self->get_conf('documentlanguage');
-
-  foreach my $index_name (keys(%{$self->{'index_names'}})) {
-    next if !defined $self->{'index_names'}->{$index_name}->{'index_entries'};
-    foreach my $entry (@{$self->{'index_names'}->{$index_name}->{'index_entries'}}) {
-      $entry->{'in_code'} = $self->{'index_names'}->{$index_name}->{'in_code'};
-      
-      if (!defined $entry->{'content'}) {
-        my $def_command = $entry->{'command'}->{'extra'}->{'def_command'};
-
-        my $def_parsed_hash = $entry->{'command'}->{'extra'}->{'def_parsed_hash'}; 
-        if ($def_parsed_hash and $def_parsed_hash->{'class'}
-            and $def_command) {
-          # Use the document language that was current when the command was
-          # used for getting the translation.
-          $self->{'documentlanguage'} = $entry->{'command'}->{'extra'}->{'documentlanguage'};
-          delete $entry->{'command'}->{'extra'}->{'documentlanguage'};
-          if ($def_command eq 'defop'
-              or $def_command eq 'deftypeop'
-              or $def_command eq 'defmethod'
-              or $def_command eq 'deftypemethod') {
-            $index_entry = $self->gdt('{name} on {class}',
-                                  {'name' => $def_parsed_hash->{'name'},
-                                   'class' => $def_parsed_hash->{'class'}});
-           $index_contents_normalized
-             = [_non_bracketed_contents($def_parsed_hash->{'name'}),
-                { 'text' => ' on '},
-                _non_bracketed_contents($def_parsed_hash->{'class'})];
-          } elsif ($def_command eq 'defivar'
-                   or $def_command eq 'deftypeivar'
-                   or $def_command eq 'deftypecv') {
-            $index_entry = $self->gdt('{name} of {class}',
-                                     {'name' => $def_parsed_hash->{'name'},
-                                     'class' => $def_parsed_hash->{'class'}});
-            $index_contents_normalized
-              = [_non_bracketed_contents($def_parsed_hash->{'name'}),
-                 { 'text' => ' of '},
-                 _non_bracketed_contents($def_parsed_hash->{'class'})];
-          }
-        }
-        # 'root_line' is the container returned by gdt.
-        if ($index_entry->{'type'} and $index_entry->{'type'} eq 'root_line') {
-          for my $child (@{$index_entry->{'contents'}}) {
-            delete $child->{'parent'};
-          }
-        }
-        if ($index_entry->{'contents'}) {
-          $entry->{'content'} = [@{$index_entry->{'contents'}}];
-          $entry->{'content_normalized'} = $index_contents_normalized;
-        }
-      }
-    }
-  }
-  $self->{'documentlanguage'} = $save_lang;
-}
-
 # return indices informations
 sub indices_information($)
 {
@@ -1060,7 +980,6 @@ sub global_commands_information($)
 }
 
 # @ dircategory_direntry
-# @ unassociated_menus
 # perl_encoding
 # input_encoding_name
 # input_file_name
@@ -3178,6 +3097,10 @@ sub _end_line($$$)
                               $self->__("\@%s: could not find %s"),
                               $command, $text);
           }
+        } elsif ($command eq 'verbatiminclude') {
+          $current->{'extra'}->{'input_perl_encoding'}
+                                          = $self->{'INPUT_PERL_ENCODING'}
+            if defined $self->{'INPUT_PERL_ENCODING'};
         } elsif ($command eq 'documentencoding') {
           my ($texinfo_encoding, $perl_encoding, $input_encoding)
             = Texinfo::Encoding::encoding_alias($text);
@@ -3286,27 +3209,6 @@ sub _end_line($$$)
           _close_command_cleanup($self, $closed_command);
           $end->{'parent'} = $closed_command;
 
-          # register @insertcopying as a macro if INLINE_INSERTCOPYING is set.
-          if ($end_command eq 'copying' and $self->{'INLINE_INSERTCOPYING'}) {
-            # remove the end of line following @copying.
-            my @contents = @{$closed_command->{'contents'}};
-            shift @contents if ($contents[0] and $contents[0]->{'type'}
-               and ($contents[0]->{'type'} eq 'empty_line_after_command'
-                    or $contents[0]->{'type'} eq 'empty_spaces_after_command'));
-            # the macrobody is the @copying content converted to Texinfo.
-            my $body = Texinfo::Convert::Texinfo::convert(
-                         {'contents' => \@contents});
-            
-            #chomp ($body);
-            $self->{'macros'}->{'insertcopying'} =
-            { 'element' => {
-                    'args' => [{'text' => 'insertcopying', 'type' => 'macro_name'}],
-                    'cmdname' => 'macro', },
-              'macrobody' => $body
-            };
-            $inline_copying = 1;
-            print STDERR "INLINE_INSERTCOPYING as macro\n" if ($self->{'DEBUG'});
-          }
           push @{$closed_command->{'contents'}}, $end;
 
           # closing a menu command, but still in a menu. Open a menu_comment
@@ -3377,21 +3279,19 @@ sub _end_line($$$)
           $self->{'current_node'}->{'extra'}->{'associated_section'} = $current;
           $current->{'extra'}->{'associated_node'} = $self->{'current_node'};
         }
-        if ($self->{'current_parts'}) {
-          $current->{'extra'}->{'associated_part'} = $self->{'current_parts'}->[-1];
-          foreach my $part (@{$self->{'current_parts'}}) {
-            $part->{'extra'}->{'part_associated_section'} = $current;
-            if ($current->{'cmdname'} eq 'top') {
-              $self->line_warn(sprintf($self->__(
-                  "\@%s should not be associated with \@top"),
-                   $part->{'cmdname'}), $part->{'line_nr'});
-            }
+        if ($self->{'current_part'}) {
+          $current->{'extra'}->{'associated_part'} = $self->{'current_part'};
+          $self->{'current_part'}->{'extra'}->{'part_associated_section'}
+                                                   = $current;
+          if ($current->{'cmdname'} eq 'top') {
+            $self->line_warn("\@part should not be associated with \@top",
+                             $self->{'current_part'}->{'line_nr'});
           }
-          delete $self->{'current_parts'};
+          delete $self->{'current_part'};
         }
         $self->{'current_section'} = $current;
       } elsif ($command eq 'part') {
-        push @{$self->{'current_parts'}}, $current;
+        $self->{'current_part'} = $current;
         if ($self->{'current_node'}
            and !$self->{'current_node'}->{'extra'}->{'associated_section'}) {
           $self->line_warn (sprintf($self->__(
@@ -3685,17 +3585,10 @@ sub _parse_texi($;$)
     last if (!defined($line));
 
     if ($self->{'DEBUG'}) {
-      $current->{'HERE !!!!'} = 1; # marks where we are in the tree
-      if ($self->{'DEBUG'} >= 100) {
-        local $Data::Dumper::Indent = 1;
-        local $Data::Dumper::Purity = 1;
-        print STDERR "".Data::Dumper->Dump([$root], ['$root']);
-      }
       my $line_text = '';
       $line_text = "$line_nr->{'line_nr'}.$line_nr->{'macro'}" if ($line_nr);
       print STDERR "NEW LINE(".join('|', @{$self->{'context_stack'}}).":@{$self->{'conditionals_stack'}}:$line_text): $line";
       #print STDERR "CONTEXT_STACK ".join('|',@{$self->{'context_stack'}})."\n";
-      delete $current->{'HERE !!!!'};
     }
 
     if (not 
@@ -3976,6 +3869,7 @@ sub _parse_texi($;$)
         }
 
         my $expanded_lines = _text_to_lines($expanded);
+        next if (!@$expanded_lines);
         chomp ($expanded_lines->[-1]);
         pop @$expanded_lines if ($expanded_lines->[-1] eq '');
         print STDERR "MACRO EXPANSION LINES: ".join('|', @$expanded_lines)
@@ -4557,7 +4451,6 @@ sub _parse_texi($;$)
                   $current->{'contents'}->[-1]->{'extra'}->{'sections_level'}
                     = $self->{'sections_level'};
                 }
-                $misc->{'level'} = _section_level($misc);
               }
               if ($root_commands{$command}) {
                 $misc->{'contents'} = [];
@@ -4872,9 +4765,6 @@ sub _parse_texi($;$)
       "perhaps your \@top node should be wrapped in \@ifnottex rather than \@ifinfo?"), 
                                   $line_nr);
                   }
-                  if ($command eq 'menu') {
-                    push @{$self->{'info'}->{'unassociated_menus'}}, $current;
-                  }
                 }
               }
               $current->{'args'} = [ {
@@ -5108,12 +4998,9 @@ sub _parse_texi($;$)
             if (defined($brace_commands{$closed_command}) 
                  and $brace_commands{$closed_command} == 0
                  and @{$current->{'contents'}}) {
-              if (!($self->{'in_gdt'} and $closed_command eq 'tie')) {
-                $self->line_warn(sprintf($self->__(
-                                   "command \@%s does not accept arguments"), 
-                                         $closed_command), $line_nr);
-              }
-              # TODO: Change @tie{ } to @tie{} in Plaintext.pm
+              $self->line_warn(sprintf($self->__(
+                                 "command \@%s does not accept arguments"), 
+                                       $closed_command), $line_nr);
             }
             if ($current->{'parent'}->{'cmdname'} eq 'anchor') {
               $current->{'parent'}->{'line_nr'} = $line_nr;
@@ -5181,6 +5068,9 @@ sub _parse_texi($;$)
                 $self->line_error(
                    $self->__("\@image missing filename argument"), $line_nr);
               }
+              $image->{'extra'}->{'input_perl_encoding'}
+                           = $self->{'INPUT_PERL_ENCODING'}
+                                  if defined $self->{'INPUT_PERL_ENCODING'};
             } elsif($current->{'parent'}->{'cmdname'} eq 'dotless') {
               my $dotless = $current->{'parent'};
               if (@{$current->{'contents'}}) {
@@ -5526,32 +5416,8 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
 
   # Call 'labels_information' to initialize labels.
   my $labels = labels_information($self);
-  _complete_indices($self);
+  Texinfo::Common::complete_indices($self);
   return $root;
-}
-
-my $min_level = $command_structuring_level{'chapter'};
-my $max_level = $command_structuring_level{'subsubsection'};
-
-# Return numbered level of an element
-sub _section_level($)
-{
-  my $section = shift;
-  my $level = $command_structuring_level{$section->{'cmdname'}};
-  # correct level according to raise/lowersections
-  if ($section->{'extra'} and $section->{'extra'}->{'sections_level'}) {
-    $level -= $section->{'extra'}->{'sections_level'};
-    if ($level < $min_level) {
-      if ($command_structuring_level{$section->{'cmdname'}} < $min_level) {
-        $level = $command_structuring_level{$section->{'cmdname'}};
-      } else {
-        $level = $min_level;
-      }
-    } elsif ($level > $max_level) {
-      $level = $max_level;
-    }
-  }
-  return $level;
 }
 
 # parse special line @-commands, unmacro, set, clear, clickstyle.
@@ -6055,12 +5921,6 @@ through L<global_informations|/$info = global_informations($parser)>.
 An array reference of directories in which C<@include> files should be 
 searched for.  Default contains the working directory, F<.>.
 
-=item INLINE_INSERTCOPYING
-
-If set, C<@insertcopying> is replaced by the C<@copying> content as if
-C<@insertcopying> was a user-defined macro.  In the default case, it is 
-considered to be a simple @-command and kept as-is in the tree.
-
 =item IGNORE_BEFORE_SETFILENAME
 
 If set, and C<@setfilename> exists, everything before C<@setfilename>
@@ -6198,10 +6058,6 @@ C<input_perl_encoding> string is a corresponding perl encoding name.
 
 An array of successive C<@dircategory> and C<@direntry> as they appear
 in the document.
-
-=item unassociated_menus
-
-An array of menus that are not associated with a node.
 
 =item novalidate
 

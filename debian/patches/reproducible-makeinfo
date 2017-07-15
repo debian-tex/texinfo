@@ -6,7 +6,7 @@ patch by Alexis Bienvenüe (Closes: #826158)
 
 --- texinfo.orig/tp/Texinfo/Common.pm
 +++ texinfo/tp/Texinfo/Common.pm
-@@ -1207,7 +1207,7 @@
+@@ -1209,7 +1209,7 @@
      return {'text' => 'a sunny day'};
    }
    my($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst)

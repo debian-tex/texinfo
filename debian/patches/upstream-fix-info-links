@@ -4,8 +4,8 @@
 
 --- texinfo.orig/info/info-utils.c
 +++ texinfo/info/info-utils.c
-@@ -1280,6 +1280,7 @@
-                                 &entry->nodename);
+@@ -1281,6 +1281,7 @@
+       canonicalize_whitespace (entry->nodename);
        if (!len)
          return 0; /* Input invalid. */
 +      canonicalize_whitespace (entry->nodename);

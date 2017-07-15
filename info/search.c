@@ -1,5 +1,5 @@
 /* search.c -- searching large bodies of text.
-   $Id: search.c 7714 2017-04-11 06:40:52Z gavin $
+   $Id: search.c 7907 2017-07-05 19:16:44Z gavin $
 
    Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2008, 2009, 2011, 2013,
    2014, 2015, 2016, 2017 Free Software Foundation, Inc.
@@ -174,8 +174,8 @@ extend_matches (MATCH_STATE *state)
   state->match_count = match_count;
 }
 
-/* Search BUFFER for REGEXP.  Pass back the list of matches
-   in MATCH_STATE. */
+/* Search BUFFER for REGEXP.  If matches are found, pass back the list of 
+   matches in MATCH_STATE. */
 enum search_result
 regexp_search (char *regexp, int is_literal, int is_insensitive,
                char *buffer, size_t buflen,
@@ -201,6 +201,7 @@ regexp_search (char *regexp, int is_literal, int is_insensitive,
       char *buf = xmalloc (size);
       regerror (result, &preg, buf, size);
       info_error (_("regexp error: %s"), buf);
+      free (buf);
       return search_invalid;
     }
 
@@ -215,7 +216,10 @@ regexp_search (char *regexp, int is_literal, int is_insensitive,
   extend_matches (match_state);
 
   if (match_state->match_count == 0)
-    return search_not_found;
+    {
+      free_matches (match_state);
+      return search_not_found;
+    }
   else
     return search_success;
 }

@@ -1,8 +1,8 @@
-# $Id: HTML.pm 7832 2017-06-18 13:06:10Z gavin $
+# $Id: HTML.pm 7877 2017-06-29 14:39:26Z gavin $
 # HTML.pm: output tree as HTML.
 #
-# Copyright 2011, 2012, 2013, 2014, 2015,
-# 2016 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software Foundation, 
+# Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -64,7 +64,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.4';
+$VERSION = '6.4.90';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -2367,8 +2367,10 @@ sub _convert_heading_command($$$$$)
         $heading_level = 3;
       }
     }
-  } else {
+  } elsif (defined $command->{'level'}) {
     $heading_level = $command->{'level'};
+  } else {
+    $heading_level = Texinfo::Structuring::section_level($command);
   }
 
   my $heading = $self->command_text($command);
@@ -7734,7 +7736,7 @@ sub _set_variables_texi2html()
 1;
 
 __END__
-# $Id: HTML.pm 7832 2017-06-18 13:06:10Z gavin $
+# $Id: HTML.pm 7877 2017-06-29 14:39:26Z gavin $
 # Automatically generated from maintain/template.pod
 
 =head1 NAME

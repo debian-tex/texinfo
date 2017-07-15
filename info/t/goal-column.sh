@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ run_ginfo -f intera -n 'Goal column'
 printf '/^Goal column test\r\016' >$PTY_TYPE
 printf '\005\016\016\006\006' >$PTY_TYPE
 printf '\rDq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 diff $GINFO_OUTPUT $t/node-target
 RETVAL=$?

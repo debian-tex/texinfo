@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,6 +25,6 @@ run_ginfo -f file-menu
 printf '\0302\t\t\t\r' >$PTY_TYPE
 printf '\030o\0301\t\t\t\rq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 cleanup
 

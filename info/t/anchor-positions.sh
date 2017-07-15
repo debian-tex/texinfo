@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,6 +24,6 @@ LANG=en_US.iso8859-1; export LANG
 run_ginfo -f anchor-positions
 printf q >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 cleanup
 

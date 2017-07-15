@@ -392,7 +392,7 @@ $result_errors{'unknown_region'} = [
 
 
 
-$result_converted{'plaintext'}->{'unknown_region'} = ' -- Variable d\'instance de AAA : BBB CCC
+$result_converted{'plaintext'}->{'unknown_region'} = ' -- Variable d\'instance of AAA: BBB CCC
 ';
 
 
@@ -401,7 +401,7 @@ $result_converted{'info'}->{'unknown_region'} = 'This is , produced from .
 
 File: ,  Node: Top,  Up: (dir)
 
- -- Variable d\'instance de AAA : BBB CCC
+ -- Variable d\'instance of AAA: BBB CCC
 
 
 Tag Table:

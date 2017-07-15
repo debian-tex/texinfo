@@ -1,5 +1,5 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c 7831 2017-06-18 12:50:18Z gavin $
+   $Id: nodes.c 7915 2017-07-09 18:51:00Z gavin $
 
    Copyright 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
    2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software 
@@ -129,6 +129,7 @@ build_tags_and_nodes (FILE_BUFFER *file_buffer)
         return;
 
       /* Skip "Indirect:" line. */
+      position += skip_node_separator (file_buffer->contents + position);
       position += strlen (INDIRECT_TABLE_LABEL);
       position += strspn (file_buffer->contents + position, "\r\n");
 
@@ -631,35 +632,6 @@ info_find_file (char *filename)
   else
     fullpath = xstrdup (filename);
 
-  /* FIXME: Put the following in info_find_fullpath, or remove
-     it altogether. */
-  /* If the file referenced by the name returned from info_find_fullpath ()
-     doesn't exist, then try again with the last part of the filename
-     appearing in lowercase. */
-  /* This is probably not needed at all on those systems which define
-     FILENAME_CMP to be mbscasecmp.  But let's do it anyway, lest some
-     network redirector supports case sensitivity.  */
-  if (!fullpath)
-    {
-      char *lowered_name;
-      char *tmp_basename;
-
-      lowered_name = xstrdup (filename);
-      tmp_basename = filename_non_directory (lowered_name);
-
-      while (*tmp_basename)
-        {
-          if (isupper (*tmp_basename))
-            *tmp_basename = tolower (*tmp_basename);
-
-          tmp_basename++;
-        }
-
-      fullpath = info_find_fullpath (lowered_name, 0);
-
-      free (lowered_name);
-    }
-
   /* If the file wasn't found, give up, returning a NULL pointer. */
   if (!fullpath)
     return NULL;
@@ -678,6 +650,7 @@ info_find_subfile (char *fullpath)
   char *with_extension = 0;
   int i;
   FILE_BUFFER *file_buffer = 0;
+  int fullpath_len = strlen (fullpath);
 
   /* First try to find the file in our list of already loaded files. */
   if (info_loaded_files)
@@ -685,7 +658,9 @@ info_find_subfile (char *fullpath)
       for (i = 0; (file_buffer = info_loaded_files[i]); i++)
         /* Check if fullpath starts the name of the recorded file (extra
            extensions like ".info.gz" could be added.) */
-        if (!strncmp (file_buffer->fullpath, fullpath, strlen (fullpath)))
+        if (!strncmp (file_buffer->fullpath, fullpath, fullpath_len)
+            && (file_buffer->fullpath[fullpath_len] == '\0'
+                || file_buffer->fullpath[fullpath_len] == '.'))
           {
             struct stat new_info, *old_info;
 
@@ -754,7 +729,16 @@ info_load_file (char *fullpath, int is_subfile)
   get_file_character_encoding (file_buffer);
 
   if (!is_subfile)
-    build_tags_and_nodes (file_buffer);
+    {
+      build_tags_and_nodes (file_buffer);
+      if (!file_buffer->tags)
+        {
+          free (file_buffer->fullpath);
+          free (file_buffer->filename);
+          free (file_buffer);
+          return 0;
+        }
+    }
   else
     file_buffer->flags |= N_Subfile;
 
@@ -861,9 +845,6 @@ info_reload_file_buffer_contents (FILE_BUFFER *fb)
 /* Functions for node creation and retrieval. */
 
 static long get_node_length (SEARCH_BINDING *binding);
-static void get_filename_and_nodename (NODE *node,
-                                      char **filename, char **nodename,
-                                      char *filename_in, char *nodename_in);
 static void node_set_body_start (NODE *node);
 static int adjust_nodestart (FILE_BUFFER *file_buffer, TAG *tag);
 
@@ -943,8 +924,50 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
 
   info_recent_file_error = NULL;
 
-  get_filename_and_nodename (defaults, &filename, &nodename,
-                             filename_in, nodename_in);
+  filename = filename_in;
+  if (filename_in)
+    {
+      filename = xstrdup (filename_in);
+      if (follow_strategy == FOLLOW_REMAIN
+          && defaults && defaults->fullpath
+          && filename_in)
+        {
+          /* Find the directory in the filename for defaults, and look in
+             that directory first. */
+          char *file_in_same_dir;
+          char saved_char, *p;
+
+          p = defaults->fullpath + strlen (defaults->fullpath);
+          while (p > defaults->fullpath && !IS_SLASH (*p))
+            p--;
+
+          if (p > defaults->fullpath)
+            {
+              saved_char = *p;
+              *p = 0;
+
+              file_in_same_dir = info_add_extension (defaults->fullpath,
+                                                     filename, 0);
+              if (file_in_same_dir)
+                file_buffer = info_find_file (file_in_same_dir);
+              free (file_in_same_dir);
+              *p = saved_char;
+            }
+        }
+    }
+  else
+    {
+      if (defaults)
+        filename = xstrdup (defaults->fullpath);
+      else
+        filename = xstrdup ("dir");
+    }
+
+  if (nodename_in && *nodename_in)
+    nodename = xstrdup (nodename_in);
+  else
+    /* If NODENAME is not specified, it defaults to "Top". */
+    nodename = xstrdup ("Top");
 
   /* If the file to be looked up is "dir", build the contents from all of
      the "dir"s and "localdir"s found in INFOPATH. */
@@ -960,33 +983,6 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
       goto cleanup_and_exit;
     }
 
-
-  if (follow_strategy == FOLLOW_REMAIN
-      && defaults && defaults->fullpath)
-    {
-      /* Find the directory in the filename for defaults, and look in
-         that directory first. */
-      char *file_in_same_dir;
-      char saved_char, *p;
-
-      p = defaults->fullpath + strlen (defaults->fullpath);
-      while (p > defaults->fullpath && !IS_SLASH (*p))
-        p--;
-
-      if (p > defaults->fullpath)
-        {
-          saved_char = *p;
-          *p = 0;
-
-          file_in_same_dir = info_add_extension (defaults->fullpath,
-                                                 filename, 0);
-          if (file_in_same_dir)
-            file_buffer = info_find_file (file_in_same_dir);
-          free (file_in_same_dir);
-          *p = saved_char;
-        }
-    }
-
   if (!file_buffer)
     file_buffer = info_find_file (filename);
 
@@ -994,18 +990,6 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
     {
       /* Look for the node.  */
       node = info_get_node_of_file_buffer (file_buffer, nodename);
-    }
-
-  if (!file_buffer)
-    {
-      /* Try to find a man page with this name as a fall back. */
-      node = get_manpage_node (filename);
-      if (!node)
-        {
-          if (filesys_error_number)
-            info_recent_file_error =
-              filesys_error_string (filename, filesys_error_number);
-        }
     }
 
   /* If the node not found was "Top", try again with different case. */
@@ -1029,33 +1013,6 @@ NODE *
 info_get_node (char *filename_in, char *nodename_in)
 {
   return info_get_node_with_defaults (filename_in, nodename_in, 0);
-}
-
-/* Get filename and nodename of node to load using defaults from NODE.
-   Output values should be freed by caller. */
-static void
-get_filename_and_nodename (NODE *node,
-                           char **filename, char **nodename,
-                           char *filename_in, char *nodename_in)
-{
-  *filename = filename_in;
-
-  /* If FILENAME is not specified, it defaults to "dir". */
-  if (filename_in)
-    *filename = xstrdup (filename_in);
-  else
-    {
-      if (node)
-        *filename = xstrdup (node->fullpath);
-      else
-        *filename = xstrdup ("dir");
-    }
-
-  if (nodename_in && *nodename_in)
-    *nodename = xstrdup (nodename_in);
-  else
-    /* If NODENAME is not specified, it defaults to "Top". */
-    *nodename = xstrdup ("Top");
 }
 
 static void

@@ -382,7 +382,7 @@ $result_errors{'simple'} = [];
 
 
 
-$result_converted{'plaintext'}->{'simple'} = ' -- Variable d\'instance de AAA : BBB CCC
+$result_converted{'plaintext'}->{'simple'} = ' -- Variable d\'instance of AAA: BBB CCC
 ';
 
 1;

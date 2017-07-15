@@ -1,8 +1,8 @@
-# $Id: Makefile.am 7804 2017-05-20 15:51:33Z gavin $
+# $Id: Makefile.am 7911 2017-07-09 15:12:16Z gavin $
 # Makefile.am for texinfo/info.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012,
-# 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+# 2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -93,6 +93,7 @@ TESTS = \
 	t/no-file.sh \
 	t/node-no-file.sh \
 	t/split.sh \
+	t/malformed-split.sh \
 	t/relative-path.sh \
 	t/file-relative-path.sh \
 	t/dir.sh \
@@ -120,6 +121,7 @@ TESTS = \
 	t/tab-no-xref.sh \
 	t/tab-skip-node.sh \
 	t/xref-across-lines.sh \
+	t/xref-across-lines-2.sh \
 	t/body-start.sh \
 	t/end-of-line.sh \
 	t/goal-column.sh \
@@ -153,6 +155,7 @@ TESTS = \
 	t/inc-sea-forward-nonregex.sh \
 	t/inc-sea-insensitive.sh \
 	t/inc-sea-history.sh \
+	t/inc-sea-bs.sh \
 	t/gc-split.sh \
 	t/anchor-positions.sh \
 	t/quoted-label-as-target.sh \
@@ -166,7 +169,7 @@ TESTS = \
 
 EXTRA_DIST += $(TESTS) $(XFAIL_TESTS) \
   t/README t/infodir \
-  t/Init-inter.inc t/Init-test.inc t/Timeout-test.inc \
+  t/Init-inter.inc t/Init-test.inc \
   t/Infokey-config t/node-target
 dist-hook:
 	rm -rf `find $(distdir)/t/infodir -name '*~'`

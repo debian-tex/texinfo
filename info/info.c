@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c 7817 2017-05-27 17:01:01Z gavin $
+   $Id: info.c 7911 2017-07-09 15:12:16Z gavin $
 
    Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015,
@@ -375,6 +375,8 @@ add_initial_nodes (int argc, char **argv, char **error)
               node_nodename = 0;
 
               file_buffer = info_find_file (node_filename);
+              if (!file_buffer)
+                continue;
 
               /* First look for an exact match. */
               for (j = 0; (tag = file_buffer->tags[j]); j++)

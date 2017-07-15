@@ -1314,8 +1314,7 @@ while(@input_files) {
 
   Texinfo::Structuring::associate_internal_references($parser);
   # every format needs the sectioning structure
-  # FIXME this adjusts the level of sectioning commands.  Maybe should be
-  # done before dumping the tree?
+
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $tree);
 
   if ($structure

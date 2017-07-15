@@ -1,4 +1,4 @@
-# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -50,7 +50,6 @@ INFO_PRINT_COMMAND=">$GINFO_OUTPUT"; export INFO_PRINT_COMMAND
 
 # Not an interactive test
 PTY_PID=0
-SUBSHELL=0
 
 # Get error messages in English
 LC_ALL=C; export LC_ALL
@@ -71,21 +70,15 @@ cleanup ()
 {
   # Delete created files and kill spawned processes if any.
   test $PTY_PID -ne 0 && kill $PTY_PID
-  test $SUBSHELL -ne 0 && kill $SUBSHELL
 
   rm -f $GINFO_OUTPUT
   rm -f $PIPEIN $PTY_TYPE
-  rm -f $FINISHEDFIFO
   
   # We do this because some versions of ksh93 (including that in
   # Solaris 11) have a bug where a timed-out "read -t" can mess up
   # the terminal settings, leading to characters not being echoed.
   # This is only done if we don't start with "-echo" at the beginning.
   test $reset_required = yes && { $STTY | grep '[-]echo' ; } && $STTY sane
-
-  if test -n "$TIMED_OUT"; then
-    exit 1
-  fi
 
   #killall `basename $0`  # see below
   exit $RETVAL
@@ -95,4 +88,18 @@ cleanup ()
 # cleaned up properly, and rerun "make check".
 
 #cleanup
+
+timeout_test ()
+{
+  wait $GINFO_PID
+  status=$?
+  
+  RETVAL=0
+  if test $status != 0; then
+    RETVAL=1
+  fi
+  
+  # Program is gone, so avoid trying to kill it in cleanup
+  GINFO_PID=0
+}
 

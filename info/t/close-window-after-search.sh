@@ -24,6 +24,6 @@ run_ginfo -f intera
 # place in.
 printf '\0302sblah\r\0300q' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 cleanup
 

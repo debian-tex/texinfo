@@ -1,0 +1,11 @@
+
+Indirect:
+subfile-initial-match-1: 1000
+subfile-initial-match-10: 2000
+
+Tag Table:
+(Indirect)
+Node: One1000
+Node: Two2000
+
+End Tag Table

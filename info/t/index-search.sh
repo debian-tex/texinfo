@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ run_ginfo -f intera
 # entry and select it.
 printf 'Ibc\r\016\016\016\016\016\016\016\016\016\rDq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 # Return non-zero (test failure) if files differ
 diff $GINFO_OUTPUT $t/node-target

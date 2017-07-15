@@ -1,4 +1,4 @@
-$Id: NEWS 7802 2017-05-20 13:44:26Z gavin $
+$Id: NEWS 7916 2017-07-10 17:52:54Z gavin $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -10,7 +10,33 @@ See the manual for detailed information.
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
--------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+
+* info:
+  . some bugs fixed:
+    . a bug where a segfault could happen in the regex search, for
+      example when the user entered a single \ as the search string
+    . another bug which could make nodes inaccessible in long "split"
+      info files
+    . a bug where it was not possible to follow a cross-reference
+      that was split across more than one line has been fixed
+  . do not fall back to a man page if following a cross-reference in an
+    info file failed
+  . if looking for a file failed, do not convert the name of a file to
+    lower-case and look for it again
+
+* texinfo.tex
+  . some faulty definitions for Unicode characters have been changed or
+    removed
+
+* texi2dvi
+  . a bug that broke the processing of LaTeX files that did not
+    use BibTeX has been fixed
+
+* texi2any
+  . `INLINE_INSERTCOPYING' removed as a customization variable
+
+
 6.4 (23 June 2017)
 * texi2any:
   . for HTML output, place section names before the manual in page

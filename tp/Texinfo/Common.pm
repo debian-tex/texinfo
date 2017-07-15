@@ -1,4 +1,4 @@
-# $Id: Common.pm 7836 2017-06-18 18:44:13Z gavin $
+# $Id: Common.pm 7872 2017-06-28 21:08:26Z gavin $
 # Common.pm: definition of commands. Common code of other Texinfo modules.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -71,7 +71,7 @@ valid_tree_transformation
 @EXPORT = qw(
 );
 
-$VERSION = '6.4';
+$VERSION = '6.4.90';
 
 # i18n
 sub N__($)
@@ -206,7 +206,8 @@ my @obsolete_variables = ('TOP_HEADING_AT_BEGINNING', 'USE_SECTIONS',
   'USE_UP_FOR_ADJACENT_NODES', 'SEPARATE_DESCRIPTION', 
   'NEW_CROSSREF_STYLE', 'SHORT_REF', 'IGNORE_PREAMBLE_TEXT',
   'OUT_ENCODING', 'IN_ENCODING', 'DEFAULT_ENCODING',
-  'MACRO_BODY_IGNORES_LEADING_SPACE');
+  'MACRO_BODY_IGNORES_LEADING_SPACE', 'INLINE_INSERTCOPYING'
+);
 
 my @variable_settables_not_used = ('COMPLETE_IMAGE_PATHS', 'TOC_FILE',
   'SPLIT_INDEX');
@@ -222,7 +223,7 @@ my @variable_string_settables = (
   'L2H_HTML_VERSION', 'EXTERNAL_DIR', 'USE_ISO',
   'VERTICAL_HEAD_NAVIGATION', 'INLINE_CONTENTS', 'NODE_FILE_EXTENSION',
   'NO_CSS', 'INLINE_CSS_STYLE', 'USE_TITLEPAGE_FOR_TITLE',
-  'SIMPLE_MENU', 'EXTENSION', 'INLINE_INSERTCOPYING', 'USE_NUMERIC_ENTITY',
+  'SIMPLE_MENU', 'EXTENSION', 'USE_NUMERIC_ENTITY',
   'ENABLE_ENCODING_USE_ENTITY', 'ICONS',
   'USE_UNIDECODE', 'DATE_IN_HEADER', 'OPEN_QUOTE_SYMBOL',
   'CLOSE_QUOTE_SYMBOL', 'TOP_NODE_UP', 'TOP_NODE_UP_URL', 'TOP_NODE_FILE',
@@ -1142,9 +1143,10 @@ sub expand_verbatiminclude($$)
                             $current->{'line_nr'});
       }
     } else {
-      if ($self and defined($self->get_conf('INPUT_PERL_ENCODING'))) {
-        binmode(VERBINCLUDE, ":encoding(".
-                            $self->get_conf('INPUT_PERL_ENCODING').")");
+      if (defined $current->{'extra'}->{'input_perl_encoding'}) {
+        binmode(VERBINCLUDE, ":encoding("
+                             . $current->{'extra'}->{'input_perl_encoding'}
+                             . ")");
       }
       $verbatiminclude = { 'cmdname' => 'verbatim',
                            'parent' => $current->{'parent'},
@@ -2434,6 +2436,88 @@ sub print_tree($)
 
   return Data::Dumper->Dump([$tree]);
 }
+
+# common parser functions
+
+sub _non_bracketed_contents {
+  my $current = shift;
+
+  if ($current->{'type'} and $current->{'type'} eq 'bracketed') {
+    my $new = {};
+    $new->{'contents'} = $current->{'contents'} if ($current->{'parent'});
+    $new->{'parent'} = $current->{'parent'} if ($current->{'parent'});
+    return $new;
+  } else {
+    return $current;
+  }
+}
+
+# In a handful of cases, we delay storing the contents of the
+# index entry until now to avoid needing Texinfo::Report::gdt
+# in the main code of Parser.pm.  Also set 'in_code' value on
+# index entries.
+
+sub complete_indices {
+  my $self = shift;
+
+  my ($index_entry, $index_contents_normalized);
+    
+  my $save_lang = $self->get_conf('documentlanguage');
+
+  foreach my $index_name (keys(%{$self->{'index_names'}})) {
+    next if !defined $self->{'index_names'}->{$index_name}->{'index_entries'};
+    foreach my $entry (@{$self->{'index_names'}->{$index_name}->{'index_entries'}}) {
+      $entry->{'in_code'} = $self->{'index_names'}->{$index_name}->{'in_code'};
+      
+      if (!defined $entry->{'content'}) {
+        my $def_command = $entry->{'command'}->{'extra'}->{'def_command'};
+
+        my $def_parsed_hash = $entry->{'command'}->{'extra'}->{'def_parsed_hash'}; 
+        if ($def_parsed_hash and $def_parsed_hash->{'class'}
+            and $def_command) {
+          # Use the document language that was current when the command was
+          # used for getting the translation.
+          $self->{'documentlanguage'} = $entry->{'command'}->{'extra'}->{'documentlanguage'};
+          delete $entry->{'command'}->{'extra'}->{'documentlanguage'};
+          if ($def_command eq 'defop'
+              or $def_command eq 'deftypeop'
+              or $def_command eq 'defmethod'
+              or $def_command eq 'deftypemethod') {
+            $index_entry = $self->gdt('{name} on {class}',
+                                  {'name' => $def_parsed_hash->{'name'},
+                                   'class' => $def_parsed_hash->{'class'}});
+           $index_contents_normalized
+             = [_non_bracketed_contents($def_parsed_hash->{'name'}),
+                { 'text' => ' on '},
+                _non_bracketed_contents($def_parsed_hash->{'class'})];
+          } elsif ($def_command eq 'defivar'
+                   or $def_command eq 'deftypeivar'
+                   or $def_command eq 'deftypecv') {
+            $index_entry = $self->gdt('{name} of {class}',
+                                     {'name' => $def_parsed_hash->{'name'},
+                                     'class' => $def_parsed_hash->{'class'}});
+            $index_contents_normalized
+              = [_non_bracketed_contents($def_parsed_hash->{'name'}),
+                 { 'text' => ' of '},
+                 _non_bracketed_contents($def_parsed_hash->{'class'})];
+          }
+        }
+        # 'root_line' is the container returned by gdt.
+        if ($index_entry->{'type'} and $index_entry->{'type'} eq 'root_line') {
+          for my $child (@{$index_entry->{'contents'}}) {
+            delete $child->{'parent'};
+          }
+        }
+        if ($index_entry->{'contents'}) {
+          $entry->{'content'} = [@{$index_entry->{'contents'}}];
+          $entry->{'content_normalized'} = $index_contents_normalized;
+        }
+      }
+    }
+  }
+  $self->{'documentlanguage'} = $save_lang;
+}
+
 1;
 
 __END__

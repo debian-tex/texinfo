@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2016 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
-run_ginfo -f intera -n 'Incremental search case-insensitive'
+run_ginfo "-f intera -n 'Incremental search case-insensitive'"
 
 # Search for "match" with incremental search, adding an upper-case character
 # to make the search case-sensitive.  Delete it and check the search goes back
@@ -26,7 +26,7 @@ run_ginfo -f intera -n 'Incremental search case-insensitive'
 printf '\023matchX\010' >$PTY_TYPE
 printf '\023\023\r\rDq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 # Return non-zero (test failure) if files differ
 diff $GINFO_OUTPUT $t/node-target

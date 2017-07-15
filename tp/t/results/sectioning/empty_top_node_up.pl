@@ -418,7 +418,6 @@ $result_nodes{'empty_top_node_up'} = {
   'node_next' => {},
   'node_up' => {
     'extra' => {
-      'normalized' => '',
       'top_node_up' => {}
     },
     'type' => 'top_node_up'

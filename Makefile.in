@@ -296,8 +296,8 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.in \
 	$(top_srcdir)/build-aux/missing \
 	$(top_srcdir)/build-aux/tap-driver.sh \
 	$(top_srcdir)/tp/Texinfo/ModulePath.pm.in ABOUT-NLS AUTHORS \
-	COPYING ChangeLog INSTALL NEWS README TODO build-aux/ar-lib \
-	build-aux/compile build-aux/config.guess \
+	COPYING ChangeLog INSTALL NEWS README README-alpha TODO \
+	build-aux/ar-lib build-aux/compile build-aux/config.guess \
 	build-aux/config.rpath build-aux/config.sub build-aux/depcomp \
 	build-aux/install-sh build-aux/mdate-sh build-aux/missing \
 	build-aux/texinfo.tex
@@ -1044,6 +1044,7 @@ USE_UNICODE = @USE_UNICODE@
 VERSION = @VERSION@
 WCHAR_T_SUFFIX = @WCHAR_T_SUFFIX@
 WINDOWS_64_BIT_OFF_T = @WINDOWS_64_BIT_OFF_T@
+WINDOWS_STAT_INODES = @WINDOWS_STAT_INODES@
 WINT_T_SUFFIX = @WINT_T_SUFFIX@
 XGETTEXT = @XGETTEXT@
 XGETTEXT_015 = @XGETTEXT_015@

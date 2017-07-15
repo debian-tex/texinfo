@@ -74,7 +74,8 @@ $result_trees{'image_text_encoded'} = {
           [
             {}
           ]
-        ]
+        ],
+        'input_perl_encoding' => 'utf-8-strict'
       },
       'line_nr' => {
         'file_name' => '',

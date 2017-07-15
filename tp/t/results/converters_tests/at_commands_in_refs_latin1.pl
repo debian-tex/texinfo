@@ -3193,7 +3193,8 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'input_perl_encoding' => 'iso-8859-15'
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -3278,7 +3279,8 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'input_perl_encoding' => 'iso-8859-15'
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -10258,7 +10260,8 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'input_perl_encoding' => 'iso-8859-15'
               },
               'line_nr' => {
                 'file_name' => '',
@@ -10343,7 +10346,8 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'input_perl_encoding' => 'iso-8859-15'
               },
               'line_nr' => {},
               'parent' => {}
@@ -10411,7 +10415,8 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'input_perl_encoding' => 'iso-8859-15'
               },
               'line_nr' => {
                 'file_name' => '',
@@ -10496,7 +10501,8 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'input_perl_encoding' => 'iso-8859-15'
               },
               'line_nr' => {},
               'parent' => {}
@@ -15603,7 +15609,8 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'input_perl_encoding' => 'iso-8859-15'
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -15688,7 +15695,8 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'input_perl_encoding' => 'iso-8859-15'
                       },
                       'line_nr' => {},
                       'parent' => {}

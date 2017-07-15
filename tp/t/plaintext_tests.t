@@ -1,4 +1,4 @@
-# $Id: plaintext_tests.t 7536 2016-12-03 17:10:59Z gavin $
+# $Id: plaintext_tests.t 7872 2017-06-28 21:08:26Z gavin $
 use strict;
 
 use File::Spec;
@@ -638,9 +638,6 @@ Insertcopying
 
 push @test_cases, ['insert_copying_and_paragraph', 
                     $insert_copying_and_paragraph];
-push @test_cases, ['insert_copying_inline_and_paragraph', 
-                    $insert_copying_and_paragraph, 
-                    {'INLINE_INSERTCOPYING' => 1}];
 
 my $at_commands_glued_text = 'at@@.
 TeX@TeX{}TeX.

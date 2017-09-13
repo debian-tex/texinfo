@@ -5,7 +5,7 @@ dont build the info documentation, it has been removed
 
 --- texinfo.orig/doc/Makefile.in
 +++ texinfo/doc/Makefile.in
-@@ -258,14 +258,16 @@
+@@ -259,14 +259,16 @@
  am__v_texidevnull_ = $(am__v_texidevnull_@AM_DEFAULT_V@)
  am__v_texidevnull_0 = > /dev/null
  am__v_texidevnull_1 = 
@@ -24,7 +24,7 @@ dont build the info documentation, it has been removed
  TEXI2DVI = texi2dvi
  TEXI2PDF = $(TEXI2DVI) --pdf --batch
  MAKEINFOHTML = $(MAKEINFO) --html
-@@ -1136,8 +1138,10 @@
+@@ -1138,8 +1140,10 @@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
  SUBDIRS = tp_api

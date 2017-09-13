@@ -22931,13 +22931,13 @@ $result_converted{'html'}->{'at_commands_in_refs'} = '<!DOCTYPE html PUBLIC "-//
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Top</title>
 
 <meta name="description" content="Top">
 <meta name="keywords" content="Top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--

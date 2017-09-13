@@ -1,4 +1,4 @@
-# $Id: Makefile.am 7735 2017-04-17 07:41:19Z gavin $
+# $Id: Makefile.am 7948 2017-09-04 18:23:18Z gavin $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
@@ -197,6 +197,7 @@ T_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) \
                        $(top_srcdir)/build-aux/tap-driver.sh
 T_LOG_COMPILER = $(PERL)
 AM_T_LOG_FLAGS = -w
+AM_T_LOG_FLAGS += -I .
 AM_T_LOG_FLAGS += -ITexinfo/Convert/XSParagraph
 AM_T_LOG_FLAGS += -I$(srcdir)/Texinfo/Convert/XSParagraph
 

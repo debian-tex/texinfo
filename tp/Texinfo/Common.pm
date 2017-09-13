@@ -1,4 +1,4 @@
-# $Id: Common.pm 7872 2017-06-28 21:08:26Z gavin $
+# $Id: Common.pm 7942 2017-08-28 20:42:04Z gavin $
 # Common.pm: definition of commands. Common code of other Texinfo modules.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -71,7 +71,7 @@ valid_tree_transformation
 @EXPORT = qw(
 );
 
-$VERSION = '6.4.90';
+$VERSION = '6.5';
 
 # i18n
 sub N__($)
@@ -1208,8 +1208,13 @@ sub expand_today($)
   if ($self->get_conf('TEST')) {
     return {'text' => 'a sunny day'};
   }
-  my($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst)
-   = localtime(time);
+
+  my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst)
+    = ($ENV{SOURCE_DATE_EPOCH}
+        ? gmtime($ENV{SOURCE_DATE_EPOCH})
+        : localtime(time));
+  # See https://reproducible-builds.org/specs/source-date-epoch/.
+
   $year += ($year < 70) ? 2000 : 1900;
   return $self->gdt('{month} {day}, {year}',
           { 'month' => $self->gdt($MONTH_NAMES[$mon]),

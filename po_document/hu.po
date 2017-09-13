@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo_document 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-07-10 19:41+0100\n"
+"POT-Creation-Date: 2017-09-04 19:27+0100\n"
 "PO-Revision-Date: 2017-04-27 22:08+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -58,59 +58,59 @@ msgstr "{category} ezen: {class}"
 msgid "{category} of {class}"
 msgstr "{category} - {class}"
 
-#: tp/Texinfo/Common.pm:1214
+#: tp/Texinfo/Common.pm:1219
 #, perl-brace-format
 msgid "{month} {day}, {year}"
 msgstr "{year}. {month} {day}."
 
-#: tp/Texinfo/Common.pm:1245 tp/Texinfo/Convert/Plaintext.pm:1055
+#: tp/Texinfo/Common.pm:1250 tp/Texinfo/Convert/Plaintext.pm:1055
 #: tp/Texinfo/Convert/HTML.pm:532
 #, perl-brace-format
 msgid "Appendix {number} {section_title}"
 msgstr "Függelék {number} {section_title}"
 
-#: tp/Texinfo/Common.pm:1249 tp/Texinfo/Convert/Plaintext.pm:1060
+#: tp/Texinfo/Common.pm:1254 tp/Texinfo/Convert/Plaintext.pm:1060
 #: tp/Texinfo/Convert/HTML.pm:538
 #, perl-brace-format
 msgid "{number} {section_title}"
 msgstr "{number} {section_title}"
 
-#: tp/Texinfo/Common.pm:1490
+#: tp/Texinfo/Common.pm:1495
 #, perl-brace-format
 msgid "{float_type} {float_number}: "
 msgstr "{float_type} {float_number}: "
 
-#: tp/Texinfo/Common.pm:1494
+#: tp/Texinfo/Common.pm:1499
 #, perl-brace-format
 msgid "{float_type}: "
 msgstr "{float_type}: "
 
-#: tp/Texinfo/Common.pm:1499
+#: tp/Texinfo/Common.pm:1504
 #, perl-brace-format
 msgid "{float_type} {float_number}\n"
 msgstr "{float_type} {float_number}\n"
 
-#: tp/Texinfo/Common.pm:1503
+#: tp/Texinfo/Common.pm:1508
 #, perl-brace-format
 msgid "{float_type}\n"
 msgstr "{float_type}\n"
 
-#: tp/Texinfo/Common.pm:1509
+#: tp/Texinfo/Common.pm:1514
 #, perl-brace-format
 msgid "{float_number}: "
 msgstr "{float_number}: "
 
-#: tp/Texinfo/Common.pm:1512
+#: tp/Texinfo/Common.pm:1517
 #, perl-brace-format
 msgid "{float_number}\n"
 msgstr "{float_number}\n"
 
-#: tp/Texinfo/Common.pm:2486
+#: tp/Texinfo/Common.pm:2491
 #, perl-brace-format
 msgid "{name} on {class}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Common.pm:2496
+#: tp/Texinfo/Common.pm:2501
 #, perl-brace-format
 msgid "{name} of {class}"
 msgstr "{name} típusa: {class}"
@@ -283,92 +283,92 @@ msgid "@{No value for `{value}'@}"
 msgstr "@{Nincs érték ehhez: „{value}”@}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2758
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category}: {name} {arguments}"
 msgstr "@tie{ }-- {category}: {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2763
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category}: {name}"
 msgstr "@tie{ }-- {category}: {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2776
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category}:@*{type}@*{name} {arguments}"
 msgstr "@tie{ }-- {category}:@*{type}@*{name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2779
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category}: {type} {name} {arguments}"
 msgstr "@tie{ }-- {category}: {type} {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2788
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category}:@*{type}@*{name}"
 msgstr "@tie{ }-- {category}:@*{type}@*{name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2791
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category}: {type} {name}"
 msgstr "@tie{ }-- {category}: {type} {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2799
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {name} {arguments}"
 msgstr "@tie{ }-- {category} - {class}: {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2805
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {name}"
 msgstr "@tie{ }-- {category} - {class}: {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2814
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {name} {arguments}"
 msgstr "@tie{ }-- {category} ezen: {class}: {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2820
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {name}"
 msgstr "@tie{ }-- {category} ezen: {class}: {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2835
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} on {class}:@*{type}@*{name} {arguments}"
 msgstr "@tie{ }-- {category} ezen: {class}:@*{type}@*{name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2839
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {type} {name} {arguments}"
 msgstr "@tie{ }-- {category} ezen: {class}: {type} {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2850
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} on {class}:@*{type}@*{name}"
 msgstr "@tie{ }-- {category} ezen: {class}:@*{type}@*{name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2854
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {type} {name}"
 msgstr "@tie{ }-- {category} ezen: {class}: {type} {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2868
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} of {class}:@*{type}@*{name} {arguments}"
 msgstr "@tie{ }-- {category} - {class}:@*{type}@*{name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2872
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {type} {name} {arguments}"
 msgstr "@tie{ }-- {category} - {class}: {type} {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2883
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} of {class}:@*{type}@*{name}"
 msgstr "@tie{ }-- {category} - {class}:@*{type}@*{name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2887
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {type} {name}"
 msgstr "@tie{ }-- {category} - {class}: {type} {name}"
 

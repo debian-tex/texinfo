@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# $Id: Makefile.am 7911 2017-07-09 15:12:16Z gavin $
+# $Id: Makefile.am 7921 2017-07-16 18:52:25Z gavin $
 # Makefile.am for texinfo/info.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012,
@@ -132,6 +132,7 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/hard-locale.m4 \
 	$(top_srcdir)/gnulib/m4/iconv.m4 \
 	$(top_srcdir)/gnulib/m4/include_next.m4 \
+	$(top_srcdir)/gnulib/m4/intlmacosx.m4 \
 	$(top_srcdir)/gnulib/m4/intmax_t.m4 \
 	$(top_srcdir)/gnulib/m4/inttypes_h.m4 \
 	$(top_srcdir)/gnulib/m4/iswblank.m4 \
@@ -986,6 +987,7 @@ INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 INTLLIBS = @INTLLIBS@
+INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
 LDFLAGS = @LDFLAGS@
 LIBGNU_LIBDEPS = @LIBGNU_LIBDEPS@
 LIBGNU_LTLIBDEPS = @LIBGNU_LTLIBDEPS@

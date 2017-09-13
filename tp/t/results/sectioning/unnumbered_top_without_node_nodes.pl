@@ -715,13 +715,13 @@ $result_converted{'html'}->{'unnumbered_top_without_node_nodes'} = '<!DOCTYPE ht
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>top section</title>
 
 <meta name="description" content="top section">
 <meta name="keywords" content="top section">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#a-node" rel="start" title="a node">
 <style type="text/css">
 <!--

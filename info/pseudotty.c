@@ -2,7 +2,7 @@
    standard output.  Read and ignore any data sent to terminal.  This
    is so we can run tests interactively without messing up the screen.
 
-   Copyright 2014, 2015, 2016 Free Software Foundation, Inc.
+   Copyright 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -64,11 +64,12 @@ main (int argc, char *argv[])
     exit (1);
   error (0, 0, "%s", name);
 
-#ifdef HAVE_STROPTS_H
   error (0, 0, "opening slave device");
   slave = open (name, O_RDWR);
   if (slave == -1)
     exit (1);
+
+#ifdef HAVE_STROPTS_H
   if (!isatty (slave))
     {
       error (0, 0, "performing STREAMS ioctl's on slave");

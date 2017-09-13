@@ -333,13 +333,13 @@ $result_converted{'html'}->{'one_node_explicit_directions_anchor'} = '<!DOCTYPE 
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
 
 <meta name="description" content="Untitled Document">
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#one-node" rel="start" title="one node">
 <style type="text/css">
 <!--

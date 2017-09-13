@@ -1,4 +1,4 @@
-# $Id: Parser.pm 7897 2017-07-02 10:13:28Z gavin $
+# $Id: Parser.pm 7942 2017-08-28 20:42:04Z gavin $
 # Parser.pm: parse texinfo code into a tree.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
@@ -106,7 +106,7 @@ sub import {
 @EXPORT = qw(
 );
 
-$VERSION = '6.4.90';
+$VERSION = '6.5';
 
 sub N__($)
 {

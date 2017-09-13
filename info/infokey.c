@@ -1,5 +1,5 @@
 /* infokey.c -- compile ~/.infokey to ~/.info.
-   $Id: infokey.c 7040 2016-03-04 19:33:07Z gavin $
+   $Id: infokey.c 7947 2017-09-02 13:07:20Z gavin $
 
    Copyright 1999, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009,
    2010, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
@@ -440,14 +440,36 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
 		}
 	      else
 		{
+                  int keymap_bind_keyseq (Keymap, int *, KEYMAP_ENTRY *);
+
 		  act[alen] = '\0';
 		  a = lookup_action (act);
                   if (a == A_info_menu_digit)
 		    {
-                      /* It does not make sense for menu-digit to be anything
-                         other than '0' .. '9'. */
-		      syntax_error (filename, lnum,
-                        _("cannot bind key sequence to menu-digit"));
+                      /* Only allow "1 menu-digit".  (This is useful if
+                         this default binding is disabled with "#stop".)
+                         E.g. do not allow "b menu-digit".  */
+                      if (seq[0] != '1' || seq[1] != '\0'
+                          || section != info)
+                        {
+                          syntax_error (filename, lnum,
+                                 _("cannot bind key sequence to menu-digit"));
+                        }
+                      else
+                        {
+                          /* Bind each key from '1' to '9' to 'menu-digit'. */
+                          KEYMAP_ENTRY ke;
+                          int i;
+                      
+                          ke.type = ISFUNC;
+                          ke.value.function = &function_doc_array[a];
+
+                          for (i = '1'; i <= '9'; i++)
+                            {
+                              seq[0] = i;
+                              keymap_bind_keyseq (info_keymap, seq, &ke);
+                            }
+                        }
 		    }
 		  else if (a == -1)
 		    {
@@ -460,8 +482,6 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
 		    }
                   else
 		    {
-                      int keymap_bind_keyseq (Keymap, int *, KEYMAP_ENTRY *);
-
                       KEYMAP_ENTRY ke;
                       static InfoCommand invalid_function = { 0 };
                       

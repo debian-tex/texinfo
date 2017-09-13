@@ -1012,13 +1012,13 @@ $result_converted{'html'}->{'non_automatic_top_node_up_and_url'} = '<!DOCTYPE ht
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>internal top node up</title>
 
 <meta name="description" content="internal top node up">
 <meta name="keywords" content="internal top node up">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--

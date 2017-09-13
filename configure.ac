@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac 7845 2017-06-24 19:17:18Z gavin $
+# $Id: configure.ac 7942 2017-08-28 20:42:04Z gavin $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
 # 2012, 2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
@@ -12,7 +12,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [6.4.90], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [6.5], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])

@@ -993,34 +993,34 @@ $result_errors{'multiple'} = [];
 
 
 
-$result_converted{'plaintext'}->{'multiple'} = ' -- Variable d\'instance of fr: BBB CCC
+$result_converted{'plaintext'}->{'multiple'} = ' -- Variable d\'instance de fr : BBB CCC
 
- -- Variable d\'instance of copying: a b
+ -- Variable d\'instance de copying : a b
 
- -- Instance Variable of pt: BBB CCC
+ -- Instance Variable da pt: BBB CCC
 
- -- Instance Variable of copying: a b
+ -- Instance Variable da copying: a b
 ';
 
 
 $result_converted{'info'}->{'multiple'} = 'This is , produced from .
 
- -- Variable d\'instance of copying: a b
+ -- Variable d\'instance de copying : a b
 
 
 File: ,  Node: Top,  Up: (dir)
 
- -- Variable d\'instance of fr: BBB CCC
+ -- Variable d\'instance de fr : BBB CCC
 
- -- Variable d\'instance of copying: a b
+ -- Variable d\'instance de copying : a b
 
- -- Instance Variable of pt: BBB CCC
+ -- Instance Variable da pt: BBB CCC
 
- -- Instance Variable of copying: a b
+ -- Instance Variable da copying: a b
 
 
 Tag Table:
-Node: Top68
+Node: Top69
 
 End Tag Table
 ';
@@ -1031,13 +1031,13 @@ $result_converted{'html'}->{'multiple'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HT
 <!-- Instance Variable da copying: a b -->
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Documento Sem Nome</title>
 
 <meta name="description" content="Documento Sem Nome">
 <meta name="keywords" content="Documento Sem Nome">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--

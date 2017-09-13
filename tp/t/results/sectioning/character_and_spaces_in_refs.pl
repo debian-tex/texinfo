@@ -2267,13 +2267,13 @@ $result_converted{'html'}->{'character_and_spaces_in_refs'} = '<!DOCTYPE html PU
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Test refs</title>
 
 <meta name="description" content="Test refs">
 <meta name="keywords" content="Test refs">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--

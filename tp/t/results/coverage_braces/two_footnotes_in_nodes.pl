@@ -884,13 +884,13 @@ $result_converted{'html'}->{'two_footnotes_in_nodes'} = '<!DOCTYPE html PUBLIC "
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>2 footnotes in 2 nodes</title>
 
 <meta name="description" content="2 footnotes in 2 nodes">
 <meta name="keywords" content="2 footnotes in 2 nodes">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--

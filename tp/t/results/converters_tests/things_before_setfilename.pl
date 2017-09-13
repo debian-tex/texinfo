@@ -1760,13 +1760,13 @@ $result_converted{'html'}->{'things_before_setfilename'} = '<!DOCTYPE html PUBLI
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>top section</title>
 
 <meta name="description" content="top section">
 <meta name="keywords" content="top section">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <link href="#Top" rel="index" title="Top">
 <style type="text/css">

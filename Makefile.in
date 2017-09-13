@@ -141,6 +141,7 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/hard-locale.m4 \
 	$(top_srcdir)/gnulib/m4/iconv.m4 \
 	$(top_srcdir)/gnulib/m4/include_next.m4 \
+	$(top_srcdir)/gnulib/m4/intlmacosx.m4 \
 	$(top_srcdir)/gnulib/m4/intmax_t.m4 \
 	$(top_srcdir)/gnulib/m4/inttypes_h.m4 \
 	$(top_srcdir)/gnulib/m4/iswblank.m4 \
@@ -296,8 +297,8 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.in \
 	$(top_srcdir)/build-aux/missing \
 	$(top_srcdir)/build-aux/tap-driver.sh \
 	$(top_srcdir)/tp/Texinfo/ModulePath.pm.in ABOUT-NLS AUTHORS \
-	COPYING ChangeLog INSTALL NEWS README README-alpha TODO \
-	build-aux/ar-lib build-aux/compile build-aux/config.guess \
+	COPYING ChangeLog INSTALL NEWS README TODO build-aux/ar-lib \
+	build-aux/compile build-aux/config.guess \
 	build-aux/config.rpath build-aux/config.sub build-aux/depcomp \
 	build-aux/install-sh build-aux/mdate-sh build-aux/missing \
 	build-aux/texinfo.tex
@@ -816,6 +817,7 @@ INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 INTLLIBS = @INTLLIBS@
+INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
 LDFLAGS = @LDFLAGS@
 LIBGNU_LIBDEPS = @LIBGNU_LIBDEPS@
 LIBGNU_LTLIBDEPS = @LIBGNU_LTLIBDEPS@

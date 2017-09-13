@@ -392,7 +392,7 @@ $result_errors{'unknown_region'} = [
 
 
 
-$result_converted{'plaintext'}->{'unknown_region'} = ' -- Variable d\'instance of AAA: BBB CCC
+$result_converted{'plaintext'}->{'unknown_region'} = ' -- Variable d\'instance de AAA : BBB CCC
 ';
 
 
@@ -401,7 +401,7 @@ $result_converted{'info'}->{'unknown_region'} = 'This is , produced from .
 
 File: ,  Node: Top,  Up: (dir)
 
- -- Variable d\'instance of AAA: BBB CCC
+ -- Variable d\'instance de AAA : BBB CCC
 
 
 Tag Table:
@@ -415,13 +415,13 @@ $result_converted{'html'}->{'unknown_region'} = '<!DOCTYPE html PUBLIC "-//W3C//
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Document sans titre</title>
 
 <meta name="description" content="Document sans titre">
 <meta name="keywords" content="Document sans titre">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--

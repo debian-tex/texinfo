@@ -31,9 +31,11 @@ use Texinfo::Convert::Texinfo;
 use Data::Dumper;
 use Carp qw(cluck carp);
 
+use File::Basename;
+
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-@ISA = qw(Exporter);
+@ISA = qw(Exporter Texinfo::Convert::Converter);
 
 # Items to export into callers namespace by default. Note: do not export
 # names by default without a very good reason. Use EXPORT_OK instead.
@@ -53,7 +55,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.4.90';
+$VERSION = '6.5';
 
 # this is in fact not needed for 'footnote', 'shortcaption', 'caption'
 # when they have no brace_command_arg, see below.

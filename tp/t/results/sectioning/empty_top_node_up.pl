@@ -480,13 +480,13 @@ $result_converted{'html'}->{'empty_top_node_up'} = '<!DOCTYPE html PUBLIC "-//W3
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>empty top node up</title>
 
 <meta name="description" content="empty top node up">
 <meta name="keywords" content="empty top node up">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--

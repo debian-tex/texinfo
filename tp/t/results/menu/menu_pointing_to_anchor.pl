@@ -494,13 +494,13 @@ $result_converted{'html'}->{'menu_pointing_to_anchor'} = '<!DOCTYPE html PUBLIC 
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>top</title>
 
 <meta name="description" content="top">
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--

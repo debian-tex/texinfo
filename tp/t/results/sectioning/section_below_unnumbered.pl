@@ -1016,13 +1016,13 @@ $result_converted{'html'}->{'section_below_unnumbered'} = '<!DOCTYPE html PUBLIC
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Top</title>
 
 <meta name="description" content="Top">
 <meta name="keywords" content="Top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <style type="text/css">

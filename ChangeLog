@@ -1,3 +1,142 @@
+2017-09-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	6.5 release.
+	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf,
+	doc/refcard/txirefcard.tex: Version number.
+
+2017-09-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* pretest 6.4.92
+	* configure.ac: Update version.
+
+2017-09-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Makefile.am (AM_T_LOG_FLAGS): Add "-I .".
+	* tp/tests/run_parser_all.sh: Add "-I ." to perl invocations.
+	Attempt at getting tests to work if . is not in @INC.  Report 
+	from Patrice Dumas.
+
+2017-09-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infokey.c (compile): Support "1 menu-digit" in .infokey
+	file in case this default binding is disabled for some reason.
+	Clark Wang reported that "1 menu-digit" didn't work.
+
+2017-08-29  Patrice Dumas  <pertusus@free.fr>
+
+	* autogen.sh: update regeneration of tests makefile fragment to
+	match the change in tp/Makefile.am associated with the removal
+	of "long tests" in 2016-10-23.
+
+2017-08-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/pseudotty.c: Open slave end of pseudoterminal outside of 
+	a conditional block so that it will be open even if that block 
+	is not executed.  Otherwise we could fail to turn off the 
+	special interpretation of some characters (C-u, C-s) to the 
+	terminal in time, leading some tests to fail.  Assaf Gordon 
+	reported test failures for several platforms.
+
+2017-08-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* pretest 6.4.91
+	* configure.ac: Update version.
+
+2017-08-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Add a couple of news items.
+
+2017-08-25  Mathieu Lirzin  <mthl@gnu.org>
+
+	* tp/Texinfo/Convert/HTML.pm (_default_node_redirection_page)
+	(_default_begin_file): Move '$encoding' to the top of the '<head>'
+	element.  This removes a warning in recent browsers that check if
+	the encoding declaration is present in the first 1024 bytes of the
+	file.  See
+	https://www.w3.org/TR/html5/document-metadata.html#character-encoding-declaration
+
+2017-08-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\entry): When splitting the text across 
+	multiple lines, do not simply set \leftskip and \parindent to 
+	values, alter the existing values instead.  Otherwise, long 
+	entries in a table of contents would not be indented properly, 
+	because \leftskip had been set to a positive value.  Arnold 
+	Robbins reported that this happened for the gawk manual.  Add or 
+	change some comments.
+
+2017-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\partentry): Add stretch and a bonus for 
+	breaking the page before the part heading in the table of 
+	contents.  Arnold Robbins reported that the page could be broken
+	immediately after the part heading, which separated it from the 
+	entry for the first chapter in that part, which didn't look 
+	good.
+
+2017-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* po_document: Run fix-translations.sh.
+	* tp/t: Update test results.
+
+2017-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* po_document/fix-translations.sh: Add file.
+
+2017-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/maintain/change_perl_modules.sh: Get version number from
+	configure.ac instead of from Makefile, as then Makefile doesn't
+	have to be regenerated before it runs.  (Otherwise, there could
+	be a failure in 'make distcheck' due to a version number 
+	mismatch.)
+
+2017-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Text.pm (@ISA). Add Texinfo::Convert::Converter.
+	Report from Randall Sawyer 2017-07-31.
+
+2017-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/texi2any.pl <DUMP_TREE>: Check if tree is defined, as 
+	happened before.
+
+2017-07-31  Randall Sawyer  <strandallsawyer@hushmail.me>  (tiny change)
+
+	* tp/texi2any.pl: Exchange two conditional blocks, so that we 
+	check if 'DUMP_TREE' was given as an option before 'parse' being 
+	the output format, so that
+
+	  makeinfo -c DUMP_TREE=1 -c TEXINFO_OUTPUT_FORMAT=parse document.texi
+
+	works to dump the parse tree, as mentioned in the comments at 
+	the end of Parser.pm.
+
+2017-07-31  Randall Sawyer  <strandallsawyer@hushmail.me>  (tiny change)
+
+	* tp/texi2any.pl (%formats_table)
+	<textcontent, rawtext, plaintexinfo>: Change to use 'module' 
+	value instead of a 'converter' value so that these values for 
+	TEXINFO_OUTPUT_FORMAT work again.
+	* tp/Texinfo/Convert/Text.pm: Add missing 'use File::Basename' line.
+
+2017-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/texi2any.pl (%formats_table): Remove 'debugcount' section
+	as the corresponding module doesn't exist any more.
+
+2017-07-23   Alexis Bienvenüe <pado@passoire.fr>  (tiny change)
+
+	* tp/Texinfo/Common.pm (expand_today):
+	Honour the SOURCE_DATE_EPOCH environment variable to get a 
+	reproducible @today value for info output when it is set.
+	See https://reproducible-builds.org/specs/source-date-epoch/.
+
+2017-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* gnulib/m4/intlmacos.m4: Add this file, as gettextize doesn't 
+	copy it.
+
 2017-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* pretest 6.4.90
@@ -65,6 +204,11 @@
 
 	* info/nodes.c (info_find_file): Do not convert the filename to 
 	lowercase and check for it again if a file was not found.
+
+	Note added 2017-08-30: This change was made for code 
+	simplification, and not to fix anything.  The thinking behind 
+	the original code was to support a case-insensitive filesystem
+	that was mounted in a way that was not case-insensitive.
 
 2017-07-06  Gavin Smith  <gavinsmith0123@gmail.com>
 

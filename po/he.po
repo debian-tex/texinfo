@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-07-10 19:41+0100\n"
+"POT-Creation-Date: 2017-08-19 19:55+0100\n"
 "PO-Revision-Date: 2002-04-03 12:31+0300\n"
 "Last-Translator: Eli Zaretskii <eliz@gnu.org>\n"
 "Language-Team: Hebrew <eliz@gnu.org>\n"
@@ -426,7 +426,7 @@ msgstr "Info הנתשמ לש ךרע הנש"
 msgid "Try --help for more information.\n"
 msgstr ".רתוי בר עדימ תגצהל --help הסנ\n"
 
-#: info/info.c:861 install-info/install-info.c:2239 tp/texi2any.pl:888
+#: info/info.c:861 install-info/install-info.c:2239 tp/texi2any.pl:883
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -517,7 +517,7 @@ msgid ""
 "  info -f ./foo.info           show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1149 install-info/install-info.c:616 tp/texi2any.pl:876
+#: info/info.c:1149 install-info/install-info.c:616 tp/texi2any.pl:871
 #, fuzzy
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -2016,20 +2016,20 @@ msgstr "`%s' טלפ ץבוק תריגסב הלקת"
 msgid "@%s: could not find %s"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1628
+#: tp/Texinfo/Common.pm:1633
 msgid "no node to be renamed"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1639
+#: tp/Texinfo/Common.pm:1644
 msgid "nodes without a new name at the end of file"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1649 tp/Texinfo/Parser.pm:859
+#: tp/Texinfo/Common.pm:1654 tp/Texinfo/Parser.pm:859
 #, perl-format
 msgid "could not open %s: %s"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:2169
+#: tp/Texinfo/Common.pm:2174
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr ""
@@ -3148,17 +3148,17 @@ msgstr "Set variable: "
 msgid "could not read init file %s"
 msgstr ".`%s' טלפ ץבוק תריציב הלקת"
 
-#: tp/texi2any.pl:662
+#: tp/texi2any.pl:657
 #, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr ""
 
-#: tp/texi2any.pl:745
+#: tp/texi2any.pl:740
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "%s [םינייפאמ]... TEXINFO-ץבוק... :שומישה ןפוא\n"
 
-#: tp/texi2any.pl:748
+#: tp/texi2any.pl:743
 #, fuzzy
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
@@ -3170,7 +3170,7 @@ msgstr ""
 " לדחמ תרירבכ ,םירחא םינוש םיטמרופל Texinfo רוקמ תפשב דועית םגרת\n"
 ".GNU Info  תינכת וא Emacs תרזעב האירקל םימיאתמה Info יצבק רציימ \n"
 
-#: tp/texi2any.pl:754
+#: tp/texi2any.pl:749
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -3198,7 +3198,7 @@ msgstr ""
 "                    .תינכתה תלועפ לע טורפ גצה  -v, --verbose\n"
 "               .אצו הנכתה תסריג יבגל עדימ גצה      --version\n"
 
-#: tp/texi2any.pl:770
+#: tp/texi2any.pl:765
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -3214,7 +3214,7 @@ msgstr ""
 "              .Info םוקמב HTML טמרופב טלפ ןכה      --html\n"
 "               .Info םוקמב XML טמרופב טלפ ןכה      --xml\n"
 
-#: tp/texi2any.pl:778
+#: tp/texi2any.pl:773
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -3252,7 +3252,7 @@ msgstr ""
 "               .טלפ ץבוקב תואקסיפו םיקרפ ררפס      --number-sections\n"
 "     .(HTML טלפ םא היקית) FILE ץבוקל טלפ בותכ  -o, --output=FILE\n"
 
-#: tp/texi2any.pl:798
+#: tp/texi2any.pl:793
 #, fuzzy, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3286,7 +3286,7 @@ msgstr ""
 "      .רוקמב התיהש יפכ הזזה לע רומש ,`asis'\n"
 "     .(%d ח\"מרב) NUM לדוגב םיצבק-תתל Info קלח      --split-size=NUM\n"
 
-#: tp/texi2any.pl:815
+#: tp/texi2any.pl:810
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3300,19 +3300,19 @@ msgid ""
 "                                anchors; default is set only if split.\n"
 msgstr ""
 
-#: tp/texi2any.pl:826
+#: tp/texi2any.pl:821
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:829
+#: tp/texi2any.pl:824
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:832
+#: tp/texi2any.pl:827
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -3330,7 +3330,7 @@ msgstr ""
 "       .@include לש שופיח תמישר שארב DIR ףסוה  -P DIR\n"
 "      .@clear תדוקפב ומכ ,VAR הנתשמ תרדגה לטב  -U VAR\n"
 
-#: tp/texi2any.pl:840
+#: tp/texi2any.pl:835
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -3360,7 +3360,7 @@ msgstr ""
 "                 .@ifplaintext-ב טסכט דבעת לא       --no-ifplaintext\n"
 "                .@tex-ו @iftex-ב טסכט דבעת לא       --no-iftex\n"
 
-#: tp/texi2any.pl:857
+#: tp/texi2any.pl:852
 #, fuzzy
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
@@ -3375,7 +3375,7 @@ msgstr ""
 "        .םילעפומ םניא רתיה לכו לעפומ --ifinfo  ,טסכט וא Info אוה טלפה םא\n"
 "           .םילעפומ םניא רתיה לכו לעפומ --ifplaintext  ,טסכט אוה טלפה םא\n"
 
-#: tp/texi2any.pl:864
+#: tp/texi2any.pl:859
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -3403,78 +3403,78 @@ msgstr ""
 "             תואקסיפ רורפס םע Info טלפ  makeinfo --number-sections foo.texi\n"
 "   היהיש לככ לודג ,דיחי ץבוקב Info טלפ  makeinfo --no-split foo.texi\n"
 
-#: tp/texi2any.pl:911
+#: tp/texi2any.pl:906
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: `%s' אל ,`end' וא `separate' תויהל --footnote-style לש טנמוגרא לע\n"
 
-#: tp/texi2any.pl:1002
+#: tp/texi2any.pl:997
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: `%s' אל ,`asis'/`none'/ירמונ תויהל --paragraph-indent לש טנמוגרא לע\n"
 
-#: tp/texi2any.pl:1079
+#: tp/texi2any.pl:1074
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 
-#: tp/texi2any.pl:1083
+#: tp/texi2any.pl:1078
 msgid "--Xopt option without printed output"
 msgstr ""
 
-#: tp/texi2any.pl:1099
+#: tp/texi2any.pl:1094
 #, fuzzy, perl-format
 msgid "unknown tree transformation %s"
 msgstr "העודי הנניא `%s' הדוקפ"
 
-#: tp/texi2any.pl:1106
+#: tp/texi2any.pl:1101
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:1166
+#: tp/texi2any.pl:1161
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr ".ץבוק םש רסח %s תינכתל\n"
 
-#: tp/texi2any.pl:1167
+#: tp/texi2any.pl:1162
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr ".`%s --help' הסנ רתי טורפל\n"
 
-#: tp/texi2any.pl:1255
+#: tp/texi2any.pl:1251
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 
-#: tp/texi2any.pl:1278
+#: tp/texi2any.pl:1274
 #, fuzzy, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "`%s' טלפ ץבוק תריגסב הלקת"
 
-#: tp/texi2any.pl:1284
+#: tp/texi2any.pl:1280
 #, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr ""
 
-#: tp/texi2any.pl:1309
+#: tp/texi2any.pl:1305
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
 msgstr ""
 
-#: tp/texi2any.pl:1376 tp/texi2any.pl:1452
+#: tp/texi2any.pl:1372 tp/texi2any.pl:1448
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr ""
 
-#: tp/texi2any.pl:1399 tp/texi2any.pl:1433
+#: tp/texi2any.pl:1395 tp/texi2any.pl:1429
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr ""
 
-#: tp/texi2any.pl:1405 tp/texi2any.pl:1439
+#: tp/texi2any.pl:1401 tp/texi2any.pl:1435
 #, fuzzy, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s ץבוק לש (%s) האירקב ןהו (%s) הריציב ןה הלקת\n"

@@ -350,13 +350,13 @@ $result_converted{'html'}->{'setfilename_on_top_and_after_node'} = '<!DOCTYPE ht
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>In top</title>
 
 <meta name="description" content="In top">
 <meta name="keywords" content="In top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--

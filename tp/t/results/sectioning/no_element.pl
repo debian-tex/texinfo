@@ -1117,13 +1117,13 @@ $result_converted{'html'}->{'no_element'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD 
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title>no_element test</title>
 
 <meta name="description" content="no_element test">
 <meta name="keywords" content="no_element test">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}

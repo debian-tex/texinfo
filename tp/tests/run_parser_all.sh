@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Id: run_parser_all.sh 7634 2017-01-17 02:20:47Z gavin $
+# $Id: run_parser_all.sh 7948 2017-09-04 18:23:18Z gavin $
 # Run all Texinfo tests.
 # 
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015
@@ -274,7 +274,7 @@ while read line; do
       # @setfilename
       echo "$command $dir" >>$logfile
       #echo "$dir($format)"
-      cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 --output ${outdir}$dir/ -I $srcdir/testdir -I $testdir/ -I $srcdir/ --set-customization-variable=DUMP_TEXI=1 --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2" >> $logfile
+      cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 --output ${outdir}$dir/ -I $srcdir/testdir -I $testdir/ -I $srcdir/ -I . --set-customization-variable=DUMP_TEXI=1 --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2" >> $logfile
       echo "$cmd" >>$logfile
       eval $cmd
       ret=$?
@@ -325,7 +325,7 @@ while read line; do
       mkdir "${outdir}$dir"
       remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
       echo "$command $dir -> ${outdir}$dir" >> $logfile
-      cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init -I $srcdir/$testdir -I $testdir/ -I $srcdir/ --set-customization-variable L2H_FILE=$srcdir/../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
+      cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init -I $srcdir/$testdir -I $testdir/ -I $srcdir/ -I . --set-customization-variable L2H_FILE=$srcdir/../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
       echo "$cmd" >>$logfile
       eval $cmd
       ret=$?

@@ -156,6 +156,7 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/hard-locale.m4 \
 	$(top_srcdir)/gnulib/m4/iconv.m4 \
 	$(top_srcdir)/gnulib/m4/include_next.m4 \
+	$(top_srcdir)/gnulib/m4/intlmacosx.m4 \
 	$(top_srcdir)/gnulib/m4/intmax_t.m4 \
 	$(top_srcdir)/gnulib/m4/inttypes_h.m4 \
 	$(top_srcdir)/gnulib/m4/iswblank.m4 \
@@ -852,6 +853,7 @@ INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 INTLLIBS = @INTLLIBS@
+INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
 LDFLAGS = @LDFLAGS@
 LIBGNU_LIBDEPS = @LIBGNU_LIBDEPS@
 LIBGNU_LTLIBDEPS = @LIBGNU_LTLIBDEPS@
@@ -1607,8 +1609,8 @@ maintainer-clean-generic:
 	@echo "it deletes files that may require special tools to rebuild."
 	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 	-test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
-@gl_GNULIB_ENABLED_localcharset_FALSE@uninstall-local:
 @gl_GNULIB_ENABLED_localcharset_FALSE@install-exec-local:
+@gl_GNULIB_ENABLED_localcharset_FALSE@uninstall-local:
 clean: clean-recursive
 
 clean-am: clean-generic clean-noinstLIBRARIES clean-noinstLTLIBRARIES \

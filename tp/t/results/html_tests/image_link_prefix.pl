@@ -57,13 +57,13 @@ $result_converted{'html'}->{'image_link_prefix'} = '<!DOCTYPE html PUBLIC "-//W3
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
 
 <meta name="description" content="Untitled Document">
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}

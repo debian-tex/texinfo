@@ -1,4 +1,4 @@
-# $Id: Converter.pm 7884 2017-06-29 19:48:28Z gavin $
+# $Id: Converter.pm 7942 2017-08-28 20:42:04Z gavin $
 # Converter.pm: Common code for Converters.
 #
 # Copyright 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
@@ -60,7 +60,7 @@ xml_accents
 @EXPORT = qw(
 );
 
-$VERSION = '6.4.90';
+$VERSION = '6.5';
 
 my %defaults = (
   'ENABLE_ENCODING'      => 1,

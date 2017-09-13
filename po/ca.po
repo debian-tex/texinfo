@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.1.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-07-10 19:41+0100\n"
+"POT-Creation-Date: 2017-08-19 19:55+0100\n"
 "PO-Revision-Date: 2016-12-30 07:10+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan <ca@dodds.net>\n"
@@ -424,7 +424,7 @@ msgstr "el valor %s no és vàlid per a la variable %s"
 msgid "Try --help for more information.\n"
 msgstr "Proveu --help per a més informació.\n"
 
-#: info/info.c:861 install-info/install-info.c:2239 tp/texi2any.pl:888
+#: info/info.c:861 install-info/install-info.c:2239 tp/texi2any.pl:883
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -581,7 +581,7 @@ msgstr ""
 "sencer a sortida.txt\n"
 "  info -f ./bla.info         mostra el fitxer ./bla.info, sense buscar a dir"
 
-#: info/info.c:1149 install-info/install-info.c:616 tp/texi2any.pl:876
+#: info/info.c:1149 install-info/install-info.c:616 tp/texi2any.pl:871
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -2150,20 +2150,20 @@ msgstr "error en tancar fitxer @verbatiminclude %s: %s"
 msgid "@%s: could not find %s"
 msgstr "@%s: no s'ha pogut trobar %s"
 
-#: tp/Texinfo/Common.pm:1628
+#: tp/Texinfo/Common.pm:1633
 msgid "no node to be renamed"
 msgstr "no hi ha un node a reanomenar"
 
-#: tp/Texinfo/Common.pm:1639
+#: tp/Texinfo/Common.pm:1644
 msgid "nodes without a new name at the end of file"
 msgstr "hi ha nodes sense un nom nou al final del fitxer"
 
-#: tp/Texinfo/Common.pm:1649 tp/Texinfo/Parser.pm:859
+#: tp/Texinfo/Common.pm:1654 tp/Texinfo/Parser.pm:859
 #, perl-format
 msgid "could not open %s: %s"
 msgstr "no s'ha pogut obrir %s: %s"
 
-#: tp/Texinfo/Common.pm:2169
+#: tp/Texinfo/Common.pm:2174
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr "no s'ha pogut protegir el caràcter coixinet a @%s"
@@ -3300,17 +3300,17 @@ msgstr "variable obsoleta %s\n"
 msgid "could not read init file %s"
 msgstr "no s'ha pogut llegir el fitxer d'inicialització %s"
 
-#: tp/texi2any.pl:662
+#: tp/texi2any.pl:657
 #, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "s'ignorarà l'ordre no reconeguda TEXINFO_OUTPUT_FORMAT valor `%s'\n"
 
-#: tp/texi2any.pl:745
+#: tp/texi2any.pl:740
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Ús: %s [OPCIÓ]... FITXER-TEXINFO...\n"
 
-#: tp/texi2any.pl:748
+#: tp/texi2any.pl:743
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -3326,7 +3326,7 @@ msgstr ""
 "el comportament és idèntic, i no depèn del nom instal·lat.\n"
 "\n"
 
-#: tp/texi2any.pl:754
+#: tp/texi2any.pl:749
 #, perl-format
 msgid ""
 "General options:\n"
@@ -3366,7 +3366,7 @@ msgstr ""
 "  -v, --verbose               explica el que es fa.\n"
 "      --version               mostra la informació de versió i surt.\n"
 
-#: tp/texi2any.pl:770
+#: tp/texi2any.pl:765
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3386,7 +3386,7 @@ msgstr ""
 "                               després de verificar la validesa de FITXER-"
 "TEXINFO.\n"
 
-#: tp/texi2any.pl:778
+#: tp/texi2any.pl:773
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -3438,7 +3438,7 @@ msgstr ""
 "                                En cas contrari, DEST anomena el fitxer de "
 "sortida.\n"
 
-#: tp/texi2any.pl:798
+#: tp/texi2any.pl:793
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3480,7 +3480,7 @@ msgstr ""
 "      --split-size=NUM        divideix els fitxers Info a la mida NUM "
 "(predeterminat %d).\n"
 
-#: tp/texi2any.pl:815
+#: tp/texi2any.pl:810
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3507,7 +3507,7 @@ msgstr ""
 "      --node-files            produeix fitxers de redirecció per a nodes i "
 "àncores; de forma predeterminada està activat sols si hi ha divisió.\n"
 
-#: tp/texi2any.pl:826
+#: tp/texi2any.pl:821
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
@@ -3515,7 +3515,7 @@ msgstr ""
 "Opcions per a XML i Docbook:\n"
 "      --output-indent=VAL     no fa res, es manté per compatibilitat.\n"
 
-#: tp/texi2any.pl:829
+#: tp/texi2any.pl:824
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
@@ -3523,7 +3523,7 @@ msgstr ""
 "Opcions per a DVI/PS/PDF:\n"
 "      --Xopt=OPT              passa OPT a texi2dvi: es pot repetir.\n"
 
-#: tp/texi2any.pl:832
+#: tp/texi2any.pl:827
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3544,7 +3544,7 @@ msgstr ""
 "  -U VAR                        anul·la la definició de la variable VAR, "
 "igual que amb @clear\n"
 
-#: tp/texi2any.pl:840
+#: tp/texi2any.pl:835
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -3583,7 +3583,7 @@ msgstr ""
 "  A més, per les opcions --noifFORMAT, processa igualment el text "
 "@ifnotFORMAT.\n"
 
-#: tp/texi2any.pl:857
+#: tp/texi2any.pl:852
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating Docbook, --ifdocbook is on and the others are off;\n"
@@ -3607,7 +3607,7 @@ msgstr ""
 "  si s'està generant XML, --ifxml està activat i els altres estan "
 "desactivats\n"
 
-#: tp/texi2any.pl:864
+#: tp/texi2any.pl:859
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -3638,66 +3638,66 @@ msgstr ""
 "  makeinfo --no-split foo.texi           escriu un sol fitxer Info, no "
 "importa la mida\n"
 
-#: tp/texi2any.pl:911
+#: tp/texi2any.pl:906
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: l'argument --footnote-style ha de ser  `separate' o `end', no `%s'.\n"
 
-#: tp/texi2any.pl:1002
+#: tp/texi2any.pl:997
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: l'argument --paragraph-indent arg ha de ser numeric/`none'/`asis', no `"
 "%s'.\n"
 
-#: tp/texi2any.pl:1079
+#: tp/texi2any.pl:1074
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 "%s: quan s'estigui generant %s, sols es pot especificar un FITXER amb -o\n"
 
-#: tp/texi2any.pl:1083
+#: tp/texi2any.pl:1078
 msgid "--Xopt option without printed output"
 msgstr "opció --Xopt sense sortida impresa"
 
-#: tp/texi2any.pl:1099
+#: tp/texi2any.pl:1094
 #, perl-format
 msgid "unknown tree transformation %s"
 msgstr "transformació d'arbre desconeguda %s"
 
-#: tp/texi2any.pl:1106
+#: tp/texi2any.pl:1101
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr "s'ignorarà la divisió per al format %s"
 
-#: tp/texi2any.pl:1166
+#: tp/texi2any.pl:1161
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: falta l'argument de fitxer.\n"
 
-#: tp/texi2any.pl:1167
+#: tp/texi2any.pl:1162
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Proveu `%s --help' per a més informació.\n"
 
-#: tp/texi2any.pl:1255
+#: tp/texi2any.pl:1251
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 "la transformació fill_gaps_in_sectioning no ha retornat cap resultat. No hi "
 "ha cap secció?"
 
-#: tp/texi2any.pl:1278
+#: tp/texi2any.pl:1274
 #, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "error en tancar el fitxer d'expansió de macros %s: %s\n"
 
-#: tp/texi2any.pl:1284
+#: tp/texi2any.pl:1280
 #, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "no s'ha pogut obrir %s per a escriptura: %s\n"
 
-#: tp/texi2any.pl:1309
+#: tp/texi2any.pl:1305
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
@@ -3705,17 +3705,17 @@ msgstr ""
 "la transformació insert_nodes_for_sectioning_commands no ha retornat cap "
 "resultat. No hi ha cap secció?"
 
-#: tp/texi2any.pl:1376 tp/texi2any.pl:1452
+#: tp/texi2any.pl:1372 tp/texi2any.pl:1448
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "%s: error en tancar %s: %s\n"
 
-#: tp/texi2any.pl:1399 tp/texi2any.pl:1433
+#: tp/texi2any.pl:1395 tp/texi2any.pl:1429
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "%s: error en tancar els fitxers d'enllaços interns %s: %s\n"
 
-#: tp/texi2any.pl:1405 tp/texi2any.pl:1439
+#: tp/texi2any.pl:1401 tp/texi2any.pl:1435
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: no s'ha pogut obrir %s per a escriptura: %s\n"

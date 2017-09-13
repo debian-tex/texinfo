@@ -1,4 +1,4 @@
-# $Id: HTML.pm 7877 2017-06-29 14:39:26Z gavin $
+# $Id: HTML.pm 7942 2017-08-28 20:42:04Z gavin $
 # HTML.pm: output tree as HTML.
 #
 # Copyright 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software Foundation, 
@@ -64,7 +64,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.4.90';
+$VERSION = '6.5';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -6328,13 +6328,13 @@ sub _default_begin_file($$$)
 <html>
 $copying_comment<!-- Created by $program_and_version, $program_homepage -->
 <head>
+$encoding
 <title>$title</title>
 
 $description
 <meta name=\"keywords\" content=\"$title\">
 <meta name=\"resource-type\" content=\"document\">
 <meta name=\"distribution\" content=\"global\">${generator}$date
-$encoding
 ${links}$css_lines
 $extra_head
 </head>
@@ -6366,13 +6366,13 @@ sub _default_node_redirection_page($$)
 $copying_comment<!-- Created by $program_and_version, $program_homepage -->
 <!-- This file redirects to the location of a node or anchor -->
 <head>
+$encoding
 <title>$title</title>
 
 $description
 <meta name=\"keywords\" content=\"$title\">
 <meta name=\"resource-type\" content=\"document\">
 <meta name=\"distribution\" content=\"global\">${generator}$date
-$encoding
 $css_lines
 <meta http-equiv=\"Refresh\" content=\"0; url=$href\">
 $extra_head
@@ -7736,7 +7736,7 @@ sub _set_variables_texi2html()
 1;
 
 __END__
-# $Id: HTML.pm 7877 2017-06-29 14:39:26Z gavin $
+# $Id: HTML.pm 7942 2017-08-28 20:42:04Z gavin $
 # Automatically generated from maintain/template.pod
 
 =head1 NAME

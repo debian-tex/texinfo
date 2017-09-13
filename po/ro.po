@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-07-10 19:41+0100\n"
+"POT-Creation-Date: 2017-08-19 19:55+0100\n"
 "PO-Revision-Date: 2005-05-03 12:00+05\n"
 "Last-Translator: Laurentiu Buzdugan <lbuz@rolix.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -429,7 +429,7 @@ msgstr "Seteazã valoarea unei variabile Info"
 msgid "Try --help for more information.\n"
 msgstr "Încercaþi --help pentru informaþii suplimentare.\n"
 
-#: info/info.c:861 install-info/install-info.c:2239 tp/texi2any.pl:888
+#: info/info.c:861 install-info/install-info.c:2239 tp/texi2any.pl:883
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -521,7 +521,7 @@ msgid ""
 "  info -f ./foo.info           show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1149 install-info/install-info.c:616 tp/texi2any.pl:876
+#: info/info.c:1149 install-info/install-info.c:616 tp/texi2any.pl:871
 #, fuzzy
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -2040,20 +2040,20 @@ msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 msgid "@%s: could not find %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Common.pm:1628
+#: tp/Texinfo/Common.pm:1633
 msgid "no node to be renamed"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1639
+#: tp/Texinfo/Common.pm:1644
 msgid "nodes without a new name at the end of file"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1649 tp/Texinfo/Parser.pm:859
+#: tp/Texinfo/Common.pm:1654 tp/Texinfo/Parser.pm:859
 #, fuzzy, perl-format
 msgid "could not open %s: %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Common.pm:2169
+#: tp/Texinfo/Common.pm:2174
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr ""
@@ -3177,17 +3177,17 @@ msgstr "Seteazã variabilã: "
 msgid "could not read init file %s"
 msgstr "Nu am putut crea fiºier ieºire `%s'."
 
-#: tp/texi2any.pl:662
+#: tp/texi2any.pl:657
 #, fuzzy, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "%s: Ignor valoare nerecunoscutã TEXINFO_OUTPUT_FORMAT `%s'.\n"
 
-#: tp/texi2any.pl:745
+#: tp/texi2any.pl:740
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Folosire: %s [OPÞIUNE]... FIªIER-TEXINFO...\n"
 
-#: tp/texi2any.pl:748
+#: tp/texi2any.pl:743
 #, fuzzy
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
@@ -3199,7 +3199,7 @@ msgstr ""
 "Translateazã documentaþia sursã Texinfo în diferite alte formate, implicit\n"
 "fiºiere Info potrivite pentru citit online cu Emacs sau GNU Info.\n"
 
-#: tp/texi2any.pl:754
+#: tp/texi2any.pl:749
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -3229,7 +3229,7 @@ msgstr ""
 "      --version               afiºeazã informaþii despre versiune ºi "
 "terminã.\n"
 
-#: tp/texi2any.pl:770
+#: tp/texi2any.pl:765
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -3246,7 +3246,7 @@ msgstr ""
 "      --xml                 ieºire Texinfo XML în loc de Info.\n"
 "      --plaintext           ieºire text simplu în loc de Info.\n"
 
-#: tp/texi2any.pl:778
+#: tp/texi2any.pl:773
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -3287,7 +3287,7 @@ msgstr ""
 "      --number-sections     scrie numere de capitole ºi secþiuni.\n"
 "  -o, --output=FIªIER       scrie în FIªIER (director dacã multiple HTML),\n"
 
-#: tp/texi2any.pl:798
+#: tp/texi2any.pl:793
 #, fuzzy, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3327,7 +3327,7 @@ msgstr ""
 "      --split-size=NUM        împarte fiºierele Info de dimens. NUM "
 "(implicit %d).\n"
 
-#: tp/texi2any.pl:815
+#: tp/texi2any.pl:810
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3341,19 +3341,19 @@ msgid ""
 "                                anchors; default is set only if split.\n"
 msgstr ""
 
-#: tp/texi2any.pl:826
+#: tp/texi2any.pl:821
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:829
+#: tp/texi2any.pl:824
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:832
+#: tp/texi2any.pl:827
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -3371,7 +3371,7 @@ msgstr ""
 "  -P DIR                        prepend DIR la calea de cãutare @include.\n"
 "  -U VAR                        nedefineºte variabila VAR, ca ºi @clear.\n"
 
-#: tp/texi2any.pl:840
+#: tp/texi2any.pl:835
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -3411,7 +3411,7 @@ msgstr ""
 "  De asemenea, pentru opþiunile --no-ifFORMAT, proceseazã text "
 "@ifnotFORMAT.\n"
 
-#: tp/texi2any.pl:857
+#: tp/texi2any.pl:852
 #, fuzzy
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
@@ -3428,7 +3428,7 @@ msgstr ""
 "  dacã generaþi text simplu, --ifplaintext este selectat iar restul sunt "
 "deselectate;\n"
 
-#: tp/texi2any.pl:864
+#: tp/texi2any.pl:859
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -3460,78 +3460,78 @@ msgstr ""
 "  makeinfo --no-split foo.texi          scrie un singur fiºier Info "
 "indiferent cât de mare\n"
 
-#: tp/texi2any.pl:911
+#: tp/texi2any.pl:906
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: --footnote-style arg trebuie sã fie `separate' sau `end', nu `%s'.\n"
 
-#: tp/texi2any.pl:1002
+#: tp/texi2any.pl:997
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: --paragraph-indent arg trebuie sã fie numeric/`none'/`asis', nu `%s'.\n"
 
-#: tp/texi2any.pl:1079
+#: tp/texi2any.pl:1074
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 
-#: tp/texi2any.pl:1083
+#: tp/texi2any.pl:1078
 msgid "--Xopt option without printed output"
 msgstr ""
 
-#: tp/texi2any.pl:1099
+#: tp/texi2any.pl:1094
 #, fuzzy, perl-format
 msgid "unknown tree transformation %s"
 msgstr "acþiune necunoscutã `%s'"
 
-#: tp/texi2any.pl:1106
+#: tp/texi2any.pl:1101
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:1166
+#: tp/texi2any.pl:1161
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: lipseºte fiºierul argument.\n"
 
-#: tp/texi2any.pl:1167
+#: tp/texi2any.pl:1162
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Încercaþi `%s --help' pentru informaþii suplimentare.\n"
 
-#: tp/texi2any.pl:1255
+#: tp/texi2any.pl:1251
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 
-#: tp/texi2any.pl:1278
+#: tp/texi2any.pl:1274
 #, fuzzy, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
-#: tp/texi2any.pl:1284
+#: tp/texi2any.pl:1280
 #, fuzzy, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/texi2any.pl:1309
+#: tp/texi2any.pl:1305
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
 msgstr ""
 
-#: tp/texi2any.pl:1376 tp/texi2any.pl:1452
+#: tp/texi2any.pl:1372 tp/texi2any.pl:1448
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr ""
 
-#: tp/texi2any.pl:1399 tp/texi2any.pl:1433
+#: tp/texi2any.pl:1395 tp/texi2any.pl:1429
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr ""
 
-#: tp/texi2any.pl:1405 tp/texi2any.pl:1439
+#: tp/texi2any.pl:1401 tp/texi2any.pl:1435
 #, fuzzy, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: nu am putut deschide --css-file: %s"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.3.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-07-10 19:41+0100\n"
+"POT-Creation-Date: 2017-08-19 19:55+0100\n"
 "PO-Revision-Date: 2017-05-21 18:07+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -424,7 +424,7 @@ msgstr "valoro %s ne estas valida por variablo %s"
 msgid "Try --help for more information.\n"
 msgstr "Por ricevi pli da informoj uzu la opcion “--help”.\n"
 
-#: info/info.c:861 install-info/install-info.c:2239 tp/texi2any.pl:888
+#: info/info.c:861 install-info/install-info.c:2239 tp/texi2any.pl:883
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -571,7 +571,7 @@ msgstr ""
 "  info --sub -o ELO.txt emacs  eligi tutan Emaksan manlibron al ELO.txt\n"
 "  info -f ./UMO.info         eligi la dosieron ./UMO.info sen atenti «dir»"
 
-#: info/info.c:1149 install-info/install-info.c:616 tp/texi2any.pl:876
+#: info/info.c:1149 install-info/install-info.c:616 tp/texi2any.pl:871
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -2090,20 +2090,20 @@ msgstr "eraro dum fermo de '@verbatiminclude'-dosiero %s: %s"
 msgid "@%s: could not find %s"
 msgstr "@%s: ne eblas trovi %s"
 
-#: tp/Texinfo/Common.pm:1628
+#: tp/Texinfo/Common.pm:1633
 msgid "no node to be renamed"
 msgstr "neniu nodo por alinomi"
 
-#: tp/Texinfo/Common.pm:1639
+#: tp/Texinfo/Common.pm:1644
 msgid "nodes without a new name at the end of file"
 msgstr "nodoj sen novaj nomoj je la fino de dosiero"
 
-#: tp/Texinfo/Common.pm:1649 tp/Texinfo/Parser.pm:859
+#: tp/Texinfo/Common.pm:1654 tp/Texinfo/Parser.pm:859
 #, perl-format
 msgid "could not open %s: %s"
 msgstr "ne eblas malfermi %s por skribi: %s"
 
-#: tp/Texinfo/Common.pm:2169
+#: tp/Texinfo/Common.pm:2174
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr "ne eblas ŝirmi kradon en '@%s'"
@@ -3232,17 +3232,17 @@ msgstr "arkaika variablo %s\n"
 msgid "could not read init file %s"
 msgstr "ne eblas legi agordan dosieron %s"
 
-#: tp/texi2any.pl:662
+#: tp/texi2any.pl:657
 #, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "ignoriĝas nekonata valoro de TEXINFO_OUTPUT_FORMAT: «%s»\n"
 
-#: tp/texi2any.pl:745
+#: tp/texi2any.pl:740
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Uzmaniero:  %s [OPCIO...] TEXINFO-DOSIERO...\n"
 
-#: tp/texi2any.pl:748
+#: tp/texi2any.pl:743
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -3256,7 +3256,7 @@ msgstr ""
 "Ĉi tiu programo kutime instaliĝis kiel ambaŭ 'makeinfo' kaj 'texi2any';\n"
 "ilia konduto tute samas kaj ne dependas je la nomo.\n"
 
-#: tp/texi2any.pl:754
+#: tp/texi2any.pl:749
 #, perl-format
 msgid ""
 "General options:\n"
@@ -3290,7 +3290,7 @@ msgstr ""
 "  -v, --verbose               rakonti kio estas farata\n"
 "      --version               montri informon pri versio kaj fini\n"
 
-#: tp/texi2any.pl:770
+#: tp/texi2any.pl:765
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3311,7 +3311,7 @@ msgstr ""
 "                                post kontrolo de valideco de TEXINFO-"
 "DOSIERO\n"
 
-#: tp/texi2any.pl:778
+#: tp/texi2any.pl:773
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -3357,7 +3357,7 @@ msgstr ""
 "                                aŭ finas per '/', meti eligdosierojn tien;\n"
 "                                alikaze, CELO estas la eligdosiero\n"
 
-#: tp/texi2any.pl:798
+#: tp/texi2any.pl:793
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3395,7 +3395,7 @@ msgstr ""
 "      --split-size=NOMBRO     fendi en dosieroj po NOMBRO bajtoj (defaŭlte "
 "%d)\n"
 
-#: tp/texi2any.pl:815
+#: tp/texi2any.pl:810
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3423,7 +3423,7 @@ msgstr ""
 "                                    ankroj; estas defaŭlta nur dum "
 "disfendado\n"
 
-#: tp/texi2any.pl:826
+#: tp/texi2any.pl:821
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
@@ -3431,7 +3431,7 @@ msgstr ""
 "Opcioj por XML kaj Docbook:\n"
 "      --output-indent=VALORO  (faras nenion; rekoniĝas por kongruo)\n"
 
-#: tp/texi2any.pl:829
+#: tp/texi2any.pl:824
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
@@ -3439,7 +3439,7 @@ msgstr ""
 "Opcioj por DVI/PS/PDF:\n"
 "      --Xopt=OPCIO            doni tiu OPCIO al 'texi2dvi'; ripeteblas\n"
 
-#: tp/texi2any.pl:832
+#: tp/texi2any.pl:827
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3457,7 +3457,7 @@ msgstr ""
 "  -P UJO        antaŭmeti dosierUJOn al la serĉvojo de @include\n"
 "  -U VAR        maldifini la variablon VAR, kiel per @clear\n"
 
-#: tp/texi2any.pl:840
+#: tp/texi2any.pl:835
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -3495,7 +3495,7 @@ msgstr ""
 "\n"
 "  Krome, ĉe la opcioj --no-ifFORMO, ja traktiĝas la pecoj sub @ifnotFORMO.\n"
 
-#: tp/texi2any.pl:857
+#: tp/texi2any.pl:852
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating Docbook, --ifdocbook is on and the others are off;\n"
@@ -3512,7 +3512,7 @@ msgstr ""
 "malaktivas;\n"
 "  kiam XML generiĝas, --ifxml aktivas kaj la ceteraj malaktivas.\n"
 
-#: tp/texi2any.pl:864
+#: tp/texi2any.pl:859
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -3545,63 +3545,63 @@ msgstr ""
 "  makeinfo --no-split UM.texi           Kreas unu Info-dosieron, kiom ajn "
 "grandan.\n"
 
-#: tp/texi2any.pl:911
+#: tp/texi2any.pl:906
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr "%s: Post “--footnote-style” estu “separate” aŭ “end”, ne “%s”.\n"
 
-#: tp/texi2any.pl:1002
+#: tp/texi2any.pl:997
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: Post “--paragraph-indent” estu nombro, “none” aŭ “asis”, ne “%s”.\n"
 
-#: tp/texi2any.pl:1079
+#: tp/texi2any.pl:1074
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 "%s: dum generado de %s, eblas indiki nur unu enigan DOSIEROn kun opcio '-o'\n"
 
-#: tp/texi2any.pl:1083
+#: tp/texi2any.pl:1078
 msgid "--Xopt option without printed output"
 msgstr "opcio '--Xopt' indikatas sed ne fariĝas preseligo"
 
-#: tp/texi2any.pl:1099
+#: tp/texi2any.pl:1094
 #, perl-format
 msgid "unknown tree transformation %s"
 msgstr "nekonata arbotransformo %s"
 
-#: tp/texi2any.pl:1106
+#: tp/texi2any.pl:1101
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr "ignoriĝas disfendo por aranĝo %s"
 
-#: tp/texi2any.pl:1166
+#: tp/texi2any.pl:1161
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: mankas dosiera argumento.\n"
 
-#: tp/texi2any.pl:1167
+#: tp/texi2any.pl:1162
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Por pluaj detaloj tajpu “%s --help”.\n"
 
-#: tp/texi2any.pl:1255
+#: tp/texi2any.pl:1251
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 "Transformo 'fill_gaps_in_sectioning()' ne donis rezulton.  Neniu sekcio?"
 
-#: tp/texi2any.pl:1278
+#: tp/texi2any.pl:1274
 #, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "eraro dum fermo de %s (dosiero de makroaj etendoj): %s\n"
 
-#: tp/texi2any.pl:1284
+#: tp/texi2any.pl:1280
 #, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "ne eblas malfermi %s por skribi: %s\n"
 
-#: tp/texi2any.pl:1309
+#: tp/texi2any.pl:1305
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
@@ -3609,17 +3609,17 @@ msgstr ""
 "transformo 'insert_nodes_for_sectioning_commands()' ne donis rezulton.  "
 "Neniu sekcio?"
 
-#: tp/texi2any.pl:1376 tp/texi2any.pl:1452
+#: tp/texi2any.pl:1372 tp/texi2any.pl:1448
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "%s: eraro dum fermo de %s: %s\n"
 
-#: tp/texi2any.pl:1399 tp/texi2any.pl:1433
+#: tp/texi2any.pl:1395 tp/texi2any.pl:1429
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "%s: eraro dum fermo de %s (dosiero de internaj ligoj): %s\n"
 
-#: tp/texi2any.pl:1405 tp/texi2any.pl:1439
+#: tp/texi2any.pl:1401 tp/texi2any.pl:1435
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: ne eblas malfermi %s por skribi: %s\n"

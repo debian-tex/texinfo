@@ -160,13 +160,13 @@ $result_converted{'html'}->{'contents_with_only_top_node'} = '<!DOCTYPE html PUB
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
 
 <meta name="description" content="Untitled Document">
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--

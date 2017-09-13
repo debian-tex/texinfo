@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-07-10 19:41+0100\n"
+"POT-Creation-Date: 2017-08-19 19:55+0100\n"
 "PO-Revision-Date: 2017-04-24 18:04+02:00\n"
 "Last-Translator: Petr Pisar <petr.pisar@atlas.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -436,7 +436,7 @@ msgstr "hodnota %s není platná pro proměnnou %s"
 msgid "Try --help for more information.\n"
 msgstr "Více informací můžete získat pomocí přepínače --help.\n"
 
-#: info/info.c:861 install-info/install-info.c:2239 tp/texi2any.pl:888
+#: info/info.c:861 install-info/install-info.c:2239 tp/texi2any.pl:883
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -583,7 +583,7 @@ msgstr ""
 "  info -f ./foo.info         zobrazí soubor ./foo.info, adresář se "
 "neprohledává"
 
-#: info/info.c:1149 install-info/install-info.c:616 tp/texi2any.pl:876
+#: info/info.c:1149 install-info/install-info.c:616 tp/texi2any.pl:871
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -2123,20 +2123,20 @@ msgstr "chyba při zavírání @verbatiminclude souboru %s: %s"
 msgid "@%s: could not find %s"
 msgstr "@%s: nebylo možné nalézt %s"
 
-#: tp/Texinfo/Common.pm:1628
+#: tp/Texinfo/Common.pm:1633
 msgid "no node to be renamed"
 msgstr "žádný uzel nemá být přejmenován"
 
-#: tp/Texinfo/Common.pm:1639
+#: tp/Texinfo/Common.pm:1644
 msgid "nodes without a new name at the end of file"
 msgstr "uzly bez nového názvu na konci souboru"
 
-#: tp/Texinfo/Common.pm:1649 tp/Texinfo/Parser.pm:859
+#: tp/Texinfo/Common.pm:1654 tp/Texinfo/Parser.pm:859
 #, perl-format
 msgid "could not open %s: %s"
 msgstr "%s nebylo možné otevřít: %s"
 
-#: tp/Texinfo/Common.pm:2169
+#: tp/Texinfo/Common.pm:2174
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr "v @%s nebylo možno ochránit znak křížku"
@@ -3260,17 +3260,17 @@ msgstr "zastaralá proměnná %s\n"
 msgid "could not read init file %s"
 msgstr "inicializační soubor %s nebylo možné přečíst"
 
-#: tp/texi2any.pl:662
+#: tp/texi2any.pl:657
 #, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "nerozpoznaná hodnota TEXINFO_OUTPUT_FORMAT „%s“ se ignoruje\n"
 
-#: tp/texi2any.pl:745
+#: tp/texi2any.pl:740
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Použití: %s [PŘEPÍNAČ]… SOUBOR_TEXINFA…\n"
 
-#: tp/texi2any.pl:748
+#: tp/texi2any.pl:743
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -3286,7 +3286,7 @@ msgstr ""
 "Tento program je obvykle nainstalován i pod názvy „makeinfo“ a „texi2any“.\n"
 "Jejich chování je shodné a nezávisí na názvu.\n"
 
-#: tp/texi2any.pl:754
+#: tp/texi2any.pl:749
 #, perl-format
 msgid ""
 "General options:\n"
@@ -3320,7 +3320,7 @@ msgstr ""
 "  -v, --verbose               vysvětlí, co právě provádí.\n"
 "      --version               zobrazí údaje o verzi a skončí.\n"
 
-#: tp/texi2any.pl:770
+#: tp/texi2any.pl:765
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3340,7 +3340,7 @@ msgstr ""
 "                              po té, co zkontroluje platnost "
 "SOUBORU_TEXINFA.\n"
 
-#: tp/texi2any.pl:778
+#: tp/texi2any.pl:773
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -3388,7 +3388,7 @@ msgstr ""
 "tam.\n"
 "                              Jinak CÍL určuje název výstupního souboru.\n"
 
-#: tp/texi2any.pl:798
+#: tp/texi2any.pl:793
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3429,7 +3429,7 @@ msgstr ""
 "      --split-size=ČÍSLO      rozdělí Info soubory na velikosti POČET\n"
 "                              (výchozí %d).\n"
 
-#: tp/texi2any.pl:815
+#: tp/texi2any.pl:810
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3457,7 +3457,7 @@ msgstr ""
 "kotvy;\n"
 "                              standardně je zapnuto jen při dělení.\n"
 
-#: tp/texi2any.pl:826
+#: tp/texi2any.pl:821
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
@@ -3465,7 +3465,7 @@ msgstr ""
 "Přepínače pro XML a DocBook:\n"
 "      --output-indent=HODNOTA nic nedělá, zachováno pro kompatibilitu.\n"
 
-#: tp/texi2any.pl:829
+#: tp/texi2any.pl:824
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
@@ -3474,7 +3474,7 @@ msgstr ""
 "      --Xopt=PŘEPÍNAČ         předá PŘEPÍNAČ programu texi2dvi; lze "
 "opakovat.\n"
 
-#: tp/texi2any.pl:832
+#: tp/texi2any.pl:827
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3498,7 +3498,7 @@ msgstr ""
 "  -U PROMĚNNÁ                   zruší proměnnou PROMĚNNÁ jako příkaz "
 "@clear.\n"
 
-#: tp/texi2any.pl:840
+#: tp/texi2any.pl:835
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -3534,7 +3534,7 @@ msgstr ""
 "\n"
 "  Rovněž přepínače --no-ifFORMÁT zpracují text podmíněný @ifnotFORMÁT.\n"
 
-#: tp/texi2any.pl:857
+#: tp/texi2any.pl:852
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating Docbook, --ifdocbook is on and the others are off;\n"
@@ -3550,7 +3550,7 @@ msgstr ""
 "  vytváří-li se prostý text, --ifplaintext se zapne a ostatní se vypnou;\n"
 "  vytváří-li se XML, --ifxml se zapne a ostatní se vypnou.\n"
 
-#: tp/texi2any.pl:864
+#: tp/texi2any.pl:859
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -3581,64 +3581,64 @@ msgstr ""
 "  makeinfo --number-sections foo.texi    zapíše Info číslovanými oddíly\n"
 "  makeinfo --no-split foo.texi           zapíše jeden velký soubor Info\n"
 
-#: tp/texi2any.pl:911
+#: tp/texi2any.pl:906
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: argument k --footnote-style musí být „separate“ nebo „end“, ne „%s“.\n"
 
-#: tp/texi2any.pl:1002
+#: tp/texi2any.pl:997
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: argument pro --paragraph-indent musí být číslo, „none“ nebo „asis“, ne "
 "„%s“.\n"
 
-#: tp/texi2any.pl:1079
+#: tp/texi2any.pl:1074
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr "%s: při vytváření %s lze pomocí -o zadat pouze jeden vstupní SOUBOR\n"
 
-#: tp/texi2any.pl:1083
+#: tp/texi2any.pl:1078
 msgid "--Xopt option without printed output"
 msgstr "přepínač --Xopt bez tisknutelného výstupu"
 
-#: tp/texi2any.pl:1099
+#: tp/texi2any.pl:1094
 #, perl-format
 msgid "unknown tree transformation %s"
 msgstr "neznámá transformace stromu %s"
 
-#: tp/texi2any.pl:1106
+#: tp/texi2any.pl:1101
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr "dělení u formátu %s se ignoruje"
 
-#: tp/texi2any.pl:1166
+#: tp/texi2any.pl:1161
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: chybí argument jména souboru.\n"
 
-#: tp/texi2any.pl:1167
+#: tp/texi2any.pl:1162
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Více informací získáte příkazem „%s --help“.\n"
 
-#: tp/texi2any.pl:1255
+#: tp/texi2any.pl:1251
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 "Transformace fill_gaps_in_sectioning nevrátila žádný výsledek. Nechybí oddíl?"
 
-#: tp/texi2any.pl:1278
+#: tp/texi2any.pl:1274
 #, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "chyba při zavírání makrem expandovaného souboru %s: %s\n"
 
-#: tp/texi2any.pl:1284
+#: tp/texi2any.pl:1280
 #, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "%s nebylo možné otevřít pro zápis: %s\n"
 
-#: tp/texi2any.pl:1309
+#: tp/texi2any.pl:1305
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
@@ -3646,17 +3646,17 @@ msgstr ""
 "Transformace insert_nodes_for_sectioning_commands nevrátila žádný výsledek. "
 "Nechybí oddíl?"
 
-#: tp/texi2any.pl:1376 tp/texi2any.pl:1452
+#: tp/texi2any.pl:1372 tp/texi2any.pl:1448
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "%s: chyba při zavírání %s: %s\n"
 
-#: tp/texi2any.pl:1399 tp/texi2any.pl:1433
+#: tp/texi2any.pl:1395 tp/texi2any.pl:1429
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "%s: chyba při zavírání souboru %s s vnitřními odkazy: %s\n"
 
-#: tp/texi2any.pl:1405 tp/texi2any.pl:1439
+#: tp/texi2any.pl:1401 tp/texi2any.pl:1435
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: %s nebylo možné otevřít pro zápis: %s\n"

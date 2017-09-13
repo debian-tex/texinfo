@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-07-10 19:41+0100\n"
+"POT-Creation-Date: 2017-08-19 19:55+0100\n"
 "PO-Revision-Date: 2009-05-21 15:08中国标准时间\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
@@ -428,7 +428,7 @@ msgstr "设定 Info 变量的值"
 msgid "Try --help for more information.\n"
 msgstr "尝试 --更多的求助信息。\n"
 
-#: info/info.c:861 install-info/install-info.c:2239 tp/texi2any.pl:888
+#: info/info.c:861 install-info/install-info.c:2239 tp/texi2any.pl:883
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -563,7 +563,7 @@ msgstr ""
 "  info --subnodes -o out.txt emacs  将整个手册页输出至 out.txt\n"
 "  info -f ./foo.info         显示文件 ./foo.info，而不是查找目录"
 
-#: info/info.c:1149 install-info/install-info.c:616 tp/texi2any.pl:876
+#: info/info.c:1149 install-info/install-info.c:616 tp/texi2any.pl:871
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -2085,20 +2085,20 @@ msgstr "关闭输出文件“%s”时出错"
 msgid "@%s: could not find %s"
 msgstr "%s: 无法打开 --css-file: %s"
 
-#: tp/Texinfo/Common.pm:1628
+#: tp/Texinfo/Common.pm:1633
 msgid "no node to be renamed"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1639
+#: tp/Texinfo/Common.pm:1644
 msgid "nodes without a new name at the end of file"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1649 tp/Texinfo/Parser.pm:859
+#: tp/Texinfo/Common.pm:1654 tp/Texinfo/Parser.pm:859
 #, fuzzy, perl-format
 msgid "could not open %s: %s"
 msgstr "%s: 无法打开 --css-file: %s"
 
-#: tp/Texinfo/Common.pm:2169
+#: tp/Texinfo/Common.pm:2174
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr ""
@@ -3212,17 +3212,17 @@ msgstr "设定变量："
 msgid "could not read init file %s"
 msgstr "无法创建输出文件“%s”。"
 
-#: tp/texi2any.pl:662
+#: tp/texi2any.pl:657
 #, fuzzy, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "%s: 忽略不可辨认的 TEXINFO_OUTPUT_FORMAT 值“%s”。\n"
 
-#: tp/texi2any.pl:745
+#: tp/texi2any.pl:740
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "用法：%s [选项]... TEXINFO-文件...\n"
 
-#: tp/texi2any.pl:748
+#: tp/texi2any.pl:743
 #, fuzzy
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
@@ -3234,7 +3234,7 @@ msgstr ""
 "将 Texinfo 源文件转换为其它各种格式，默认转换为适于\n"
 "由 Emacs 或独立 GNU Info 在线浏览的 Info 文件。\n"
 
-#: tp/texi2any.pl:754
+#: tp/texi2any.pl:749
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -3263,7 +3263,7 @@ msgstr ""
 "  -v, --verbose               解释都做了些什么。\n"
 "      --version               显示版本信息并退出。\n"
 
-#: tp/texi2any.pl:770
+#: tp/texi2any.pl:765
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -3280,7 +3280,7 @@ msgstr ""
 "      --xml                 输出 XML (TexinfoML) 而不是 Info。\n"
 "      --plaintext           输出普通文本而不是 Info。\n"
 
-#: tp/texi2any.pl:778
+#: tp/texi2any.pl:773
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -3319,7 +3319,7 @@ msgstr ""
 "      --number-sections     输出章节编号。\n"
 "  -o, --output=FILE         输出到文件 FILE (如果是分割的 HTML 则为目录)。\n"
 
-#: tp/texi2any.pl:798
+#: tp/texi2any.pl:793
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3353,7 +3353,7 @@ msgstr ""
 "                                “asis”，保留现有的对齐。\n"
 "      --split-size=NUM        在大小 NUM 的时候拆分 Info 文件 (默认为 %d)。\n"
 
-#: tp/texi2any.pl:815
+#: tp/texi2any.pl:810
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -3375,19 +3375,19 @@ msgstr ""
 "      --transliterate-file-names\n"
 "                              以 ASCII 字义生成文件名。\n"
 
-#: tp/texi2any.pl:826
+#: tp/texi2any.pl:821
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:829
+#: tp/texi2any.pl:824
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:832
+#: tp/texi2any.pl:827
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -3405,7 +3405,7 @@ msgstr ""
 "  -P DIR                         将 DIR 追加到 @include 搜索路径之前。\n"
 "  -U VAR                         取消变量 VAR 的定义，就象 @clear。\n"
 
-#: tp/texi2any.pl:840
+#: tp/texi2any.pl:835
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -3437,7 +3437,7 @@ msgstr ""
 "  --no-ifplaintext  不要处理 @ifplaintext 文本。\n"
 "  --no-iftex        不要处理 @iftex 和 @tex 文本。\n"
 
-#: tp/texi2any.pl:857
+#: tp/texi2any.pl:852
 #, fuzzy
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
@@ -3453,7 +3453,7 @@ msgstr ""
 "  如果生成普通文本，则 --ifplaintext 默认开启而其它默认关闭；\n"
 "  如果生成 XML，则 --ifxml 默认开启而其它默认关闭。\n"
 
-#: tp/texi2any.pl:864
+#: tp/texi2any.pl:859
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -3481,76 +3481,76 @@ msgstr ""
 "  makeinfo --number-sections foo.texi   输出带有编号的节的 Info\n"
 "  makeinfo --no-split foo.texi          输出单个 Info 文件而不论大小\n"
 
-#: tp/texi2any.pl:911
+#: tp/texi2any.pl:906
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr "%s：--footnote-style 的参数必须为“separate”或“end”，而不是“%s”。\n"
 
-#: tp/texi2any.pl:1002
+#: tp/texi2any.pl:997
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr "%s：--paragraph-indent 的参数必须为数值/“none”/“asis”，而不是“%s”。\n"
 
-#: tp/texi2any.pl:1079
+#: tp/texi2any.pl:1074
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 
-#: tp/texi2any.pl:1083
+#: tp/texi2any.pl:1078
 msgid "--Xopt option without printed output"
 msgstr ""
 
-#: tp/texi2any.pl:1099
+#: tp/texi2any.pl:1094
 #, fuzzy, perl-format
 msgid "unknown tree transformation %s"
 msgstr "未知的动作“%s”"
 
-#: tp/texi2any.pl:1106
+#: tp/texi2any.pl:1101
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:1166
+#: tp/texi2any.pl:1161
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s：遗漏文件参数。\n"
 
-#: tp/texi2any.pl:1167
+#: tp/texi2any.pl:1162
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "试用“%s --help”以获取更多信息。\n"
 
-#: tp/texi2any.pl:1255
+#: tp/texi2any.pl:1251
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 
-#: tp/texi2any.pl:1278
+#: tp/texi2any.pl:1274
 #, fuzzy, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "关闭输出文件“%s”时出错"
 
-#: tp/texi2any.pl:1284
+#: tp/texi2any.pl:1280
 #, fuzzy, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "%s: 无法打开 --css-file: %s"
 
-#: tp/texi2any.pl:1309
+#: tp/texi2any.pl:1305
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
 msgstr ""
 
-#: tp/texi2any.pl:1376 tp/texi2any.pl:1452
+#: tp/texi2any.pl:1372 tp/texi2any.pl:1448
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr ""
 
-#: tp/texi2any.pl:1399 tp/texi2any.pl:1433
+#: tp/texi2any.pl:1395 tp/texi2any.pl:1429
 #, fuzzy, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "%s: 忽略二次内部连接输出“%s”。\n"
 
-#: tp/texi2any.pl:1405 tp/texi2any.pl:1439
+#: tp/texi2any.pl:1401 tp/texi2any.pl:1435
 #, fuzzy, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: 无法打开 --css-file: %s"

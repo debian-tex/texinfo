@@ -1,4 +1,4 @@
-# $Id: Plaintext.pm 7897 2017-07-02 10:13:28Z gavin $
+# $Id: Plaintext.pm 7942 2017-08-28 20:42:04Z gavin $
 # Plaintext.pm: output tree as text with filling.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015,
@@ -70,7 +70,7 @@ sub import {
 @EXPORT = qw(
 );
 
-$VERSION = '6.4.90';
+$VERSION = '6.5';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -3267,7 +3267,7 @@ sub _convert($$)
 1;
 
 __END__
-# $Id: Plaintext.pm 7897 2017-07-02 10:13:28Z gavin $
+# $Id: Plaintext.pm 7942 2017-08-28 20:42:04Z gavin $
 # Automatically generated from maintain/template.pod
 
 =head1 NAME

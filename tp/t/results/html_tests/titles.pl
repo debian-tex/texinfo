@@ -481,13 +481,13 @@ $result_converted{'html'}->{'titles'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>@title HTML test</title>
 
 <meta name="description" content="@title HTML test">
 <meta name="keywords" content="@title HTML test">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--

@@ -2,7 +2,8 @@
 
 VERS=$1
 if test z"$VERS" = "zauto" ; then 
-  VERS=`grep '^VERSION = ' Makefile | sed 's/^VERSION = *//'` 
+  VERS=`grep '^AC_INIT' ../configure.ac | sed -e 's/^[^0-9]*//' -e 's/[^0-9]*$//'`
+  echo vers is $VERS
 fi
 if test z"$VERS" = "z" ; then
   exit 1

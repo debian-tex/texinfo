@@ -1,3 +1,10 @@
+texinfo (6.5.0.dfsg.1-1) unstable; urgency=medium
+
+  * New upstream version 6.5.0.dfsg.1
+  * update patches, remove upstream applied ones
+
+ -- Norbert Preining <preining@debian.org>  Wed, 13 Sep 2017 12:44:49 +0900
+
 texinfo (6.4.90.dfsg.1-1) unstable; urgency=medium
 
   * New upstream version 6.4.90.dfsg.1

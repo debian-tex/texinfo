@@ -4,9 +4,9 @@ texinfo (6.5.0.dfsg.1-2) unstable; urgency=medium
   * switch from autotool-dev_{update/restore}config to 
     dh_update_autotools_config
   * accept pre-initialized DEB_HOST_GNU_TYPE
-  * update texinfo.tex
+  * update texinfo.tex (Closes: #889647)
 
- -- Norbert Preining <preining@debian.org>  Mon, 05 Feb 2018 23:46:29 +0900
+ -- Norbert Preining <preining@debian.org>  Mon, 05 Feb 2018 23:48:18 +0900
 
 texinfo (6.5.0.dfsg.1-1) unstable; urgency=medium
 

@@ -2,3 +2,4 @@ warn_missing_tex
 numerical-signal-names
 dont_build_info
 info-manpage-mentiones-nonfree
+update-texinfo-tex

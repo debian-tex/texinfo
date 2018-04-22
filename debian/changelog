@@ -1,3 +1,9 @@
+texinfo (6.5.0.dfsg.1-3) UNRELEASED; urgency=medium
+
+  * add Homepage fields (Closes: #896558)
+
+ -- Norbert Preining <preining@debian.org>  Sun, 22 Apr 2018 19:27:05 +0900
+
 texinfo (6.5.0.dfsg.1-2) unstable; urgency=medium
 
   * switch vcs to salsa

@@ -1,8 +1,10 @@
-texinfo (6.5.0.dfsg.1-3) UNRELEASED; urgency=medium
+texinfo (6.5.0.dfsg.1-3) unstable; urgency=medium
 
   * add Homepage fields (Closes: #896558)
+  * fix building with upcoming Perl 5.28, thanks Niko Tyni for the patch
+    (Closes: #898994)
 
- -- Norbert Preining <preining@debian.org>  Sun, 22 Apr 2018 19:27:05 +0900
+ -- Norbert Preining <preining@debian.org>  Fri, 18 May 2018 23:00:54 +0900
 
 texinfo (6.5.0.dfsg.1-2) unstable; urgency=medium
 

@@ -4,3 +4,4 @@ dont_build_info
 info-manpage-mentiones-nonfree
 update-texinfo-tex
 perl-528-fixes
+Update-locale-handling-for-Perl-5.28

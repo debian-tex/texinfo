@@ -1,3 +1,9 @@
+texinfo (6.5.0.dfsg.1-4) UNRELEASED; urgency=medium
+
+  * fix infinite loop with Perl 5.28, thanks Niko Tyni (Closes: #902771)
+
+ -- Norbert Preining <preining@debian.org>  Mon, 02 Jul 2018 06:45:28 +0900
+
 texinfo (6.5.0.dfsg.1-3) unstable; urgency=medium
 
   * add Homepage fields (Closes: #896558)

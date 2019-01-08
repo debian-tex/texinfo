@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,18 +16,17 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
-run_ginfo "-f intera -n 'Star note non-whitespace'"
+run_ginfo -f intera -n 'Star note non-whitespace'
 
 # Check that "*note" is not interpreted as a cross-reference marker if
 # it is followed by a non-whitespace character.
-printf '\t\rDq' >$PTY_TYPE
+printf '\t\rDq' >$pty_type
 
 timeout_test
 
 # Return non-zero (test failure) if files differ
-diff $GINFO_OUTPUT $t/node-target
-RETVAL=$?
+diff $ginfo_output $t/node-target
+retval=$?
 
 cleanup

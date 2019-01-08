@@ -37,9 +37,6 @@ $result_trees{'group_not_closed'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_after_command' => {}
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -55,7 +52,6 @@ $result_trees{'group_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $res
 $result_trees{'group_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'group_not_closed'}{'contents'}[0];
 $result_trees{'group_not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'group_not_closed'}{'contents'}[0]{'contents'}[2];
 $result_trees{'group_not_closed'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'group_not_closed'}{'contents'}[0];
-$result_trees{'group_not_closed'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'group_not_closed'}{'contents'}[0]{'contents'}[0];
 $result_trees{'group_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'group_not_closed'};
 
 $result_texis{'group_not_closed'} = '@group

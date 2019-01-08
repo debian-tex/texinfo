@@ -44,9 +44,6 @@ $result_trees{'command_in_heading_footing'} = {
         },
         {
           'cmdname' => 'thispage',
-          'extra' => {
-            'invalid_nesting' => 1
-          },
           'parent' => {}
         },
         {
@@ -55,9 +52,6 @@ $result_trees{'command_in_heading_footing'} = {
         },
         {
           'cmdname' => 'thischapternum',
-          'extra' => {
-            'invalid_nesting' => 1
-          },
           'parent' => {}
         },
         {

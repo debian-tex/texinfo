@@ -30,14 +30,6 @@ $result_trees{'heading_in_quotation'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'in quotation '
                 },
@@ -70,27 +62,19 @@ $result_trees{'heading_in_quotation'} = {
                     'macro' => ''
                   },
                   'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'heading',
           'extra' => {
-            'misc_content' => [
-              {},
-              {},
-              {},
-              {}
-            ],
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'level' => 2,
           'line_nr' => {},
@@ -107,33 +91,22 @@ $result_trees{'heading_in_quotation'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'quotation'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'quotation',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'quotation'
           },
           'line_nr' => {
@@ -145,8 +118,7 @@ $result_trees{'heading_in_quotation'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -161,34 +133,20 @@ $result_trees{'heading_in_quotation'} = {
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'heading_in_quotation'}{'contents'}[0];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0];
+$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[3];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[4];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'}[1] = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'}[2] = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[3];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'}[3] = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[4];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[4]{'line_nr'};
+$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[3]{'line_nr'};
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4]{'extra'}{'command'} = $result_trees{'heading_in_quotation'}{'contents'}[0];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[4];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[0];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'parent'} = $result_trees{'heading_in_quotation'};
 
 $result_texis{'heading_in_quotation'} = '@quotation
@@ -260,8 +218,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <blockquote>
 
-<a name="in-quotation-_0040-heading"></a>
-<h3 class="heading">in quotation @ <em>heading</em></h3>
+<span id="in-quotation-_0040-heading"></span><h3 class="heading">in quotation @ <em>heading</em></h3>
 
 </blockquote>
 

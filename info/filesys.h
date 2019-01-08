@@ -1,8 +1,6 @@
 /* filesys.h -- external declarations for filesys.c.
-   $Id: filesys.h 7013 2016-02-13 21:19:19Z gavin $
 
-   Copyright 1993, 1997, 1998, 2002, 2004, 2005, 2007, 2009, 2012, 2013,
-   2014, 2016 Free Software Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

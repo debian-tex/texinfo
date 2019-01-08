@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,25 +16,24 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f inc-sea-history
 
 # Check that we go back to the right node after an incremental search
-printf '\02301234\b4\b\b34\b\bqwerty\b\b\b\b\b\b34' >$PTY_TYPE
-printf '\rD' >$PTY_TYPE
+printf '\02301234\b4\b\b34\b\bqwerty\b\b\b\b\b\b34' >$pty_type
+printf '\rD' >$pty_type
 
 # Check we reached node with "01234" in it
 sleep 1
-grep 'Node: Four' $GINFO_OUTPUT
-RETVAL=$?
+grep 'Node: Four' $ginfo_output
+retval=$?
 
-printf 'lDq' >$PTY_TYPE
+printf 'lDq' >$pty_type
 timeout_test
 
-if test $RETVAL = 0; then
-  grep 'Node: Top' $GINFO_OUTPUT
-  RETVAL=$?
+if test $retval = 0; then
+  grep 'Node: Top' $ginfo_output
+  retval=$?
 fi
 
 cleanup

@@ -41,9 +41,6 @@ $result_trees{'macro_for_ignored_line_command'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -74,7 +71,6 @@ $result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'args'}[0]{'paren
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_for_ignored_line_command'}{'contents'}[0];
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_for_ignored_line_command'}{'contents'}[0];
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'parent'} = $result_trees{'macro_for_ignored_line_command'};
-$result_trees{'macro_for_ignored_line_command'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'macro_for_ignored_line_command'}{'contents'}[0];
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[1]{'parent'} = $result_trees{'macro_for_ignored_line_command'};
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[2]{'parent'} = $result_trees{'macro_for_ignored_line_command'};
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'macro_for_ignored_line_command'}{'contents'}[3];

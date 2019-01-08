@@ -29,31 +29,21 @@ $result_trees{'include_with_setfilename'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'main_file.info'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'setfilename',
       'extra' => {
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => 'main_file.info'
       },
       'line_nr' => {
@@ -69,12 +59,8 @@ $result_trees{'include_with_setfilename'} = {
 $result_trees{'include_with_setfilename'}{'contents'}[0]{'parent'} = $result_trees{'include_with_setfilename'};
 $result_trees{'include_with_setfilename'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'include_with_setfilename'}{'contents'}[1];
 $result_trees{'include_with_setfilename'}{'contents'}[1]{'parent'} = $result_trees{'include_with_setfilename'};
-$result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'include_with_setfilename'}{'contents'}[2];
 $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0];
-$result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0];
-$result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0];
 $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'include_with_setfilename'}{'contents'}[2];
-$result_trees{'include_with_setfilename'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'include_with_setfilename'}{'contents'}[2]{'parent'} = $result_trees{'include_with_setfilename'};
 
 $result_texis{'include_with_setfilename'} = '

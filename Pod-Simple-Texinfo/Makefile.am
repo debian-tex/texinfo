@@ -1,6 +1,5 @@
-# $Id: Makefile.am 5191 2013-02-23 00:11:18Z karl $
 # Makefile.am for texinfo/Pod-Simple_Texinfo.
-# Copyright 2012 Free Software Foundation, Inc.
+# Copyright 2012-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without

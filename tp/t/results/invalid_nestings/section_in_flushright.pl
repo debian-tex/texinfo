@@ -45,9 +45,6 @@ $result_trees{'section_in_flushright'} = {
               'type' => 'empty_line'
             }
           ],
-          'extra' => {
-            'spaces_after_command' => {}
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
@@ -64,35 +61,22 @@ $result_trees{'section_in_flushright'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'a section'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
       'contents' => [],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 2,
       'line_nr' => {
@@ -112,16 +96,10 @@ $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}
 $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
 $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0];
-$result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'};
-$result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_in_flushright'}{'contents'}[1];
 $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0];
-$result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0];
-$result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[1];
-$result_trees{'section_in_flushright'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'section_in_flushright'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[1]{'parent'} = $result_trees{'section_in_flushright'};
 
 $result_texis{'section_in_flushright'} = '@flushright
@@ -144,7 +122,9 @@ $result_sectioning{'section_in_flushright'} = {
   'section_childs' => [
     {
       'cmdname' => 'section',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 2,
       'number' => 1,
       'section_up' => {}

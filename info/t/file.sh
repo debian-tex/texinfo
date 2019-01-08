@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,17 +18,17 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
 # Check that we can reach a file with --file
-$GINFO --file file-menu >$GINFO_OUTPUT
+$ginfo --file file-menu >$ginfo_output
 
 # Check that the entire file was dumped, and not just the Top node
-grep 'Node: Top' $GINFO_OUTPUT \
-  && grep 'Node: Node 1' $GINFO_OUTPUT \
-  && grep 'Node: Node 2' $GINFO_OUTPUT \
-  && grep 'Node: Node 3' $GINFO_OUTPUT \
-  && grep 'Node: Has\.dot' $GINFO_OUTPUT
+grep 'Node: Top' $ginfo_output \
+  && grep 'Node: Node 1' $ginfo_output \
+  && grep 'Node: Node 2' $ginfo_output \
+  && grep 'Node: Node 3' $ginfo_output \
+  && grep 'Node: Has\.dot' $ginfo_output
 # Don't look for node "Unreachable" which is not in any menus and not dumped
 
-RETVAL=$?
+retval=$?
 
 cleanup
 

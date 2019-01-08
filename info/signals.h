@@ -1,8 +1,6 @@
 /* signals.h -- header to include system dependent signal definitions.
-   $Id: signals.h 5824 2014-09-12 17:26:27Z gavin $
 
-   Copyright 1993, 1994, 1995, 1997, 2002, 2004, 2007, 2013, 2014
-   Free Software Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

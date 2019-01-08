@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,18 +16,17 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -v search-skip-screen=Off -f search
 
 # Go back to previous match when search-skip-screen=On
-printf 'smatch\r}{Dq' >$PTY_TYPE
+printf 'smatch\r}{Dq' >$pty_type
 
 timeout_test
 
 # Check we went back to the right node.
-grep '^File: search\.info, Node: Top' $GINFO_OUTPUT
-RETVAL=$?
+grep '^File: search\.info, Node: Top' $ginfo_output
+retval=$?
 
 cleanup
 

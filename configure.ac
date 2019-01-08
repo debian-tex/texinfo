@@ -1,8 +1,6 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac 7942 2017-08-28 20:42:04Z gavin $
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
-# 2012, 2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
+# Copyright 2002-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -12,7 +10,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [6.5], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [6.5.90], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -35,11 +33,8 @@ AC_CONFIG_SRCDIR([info/info.c])
 # 3. It may be kept as is in case there were no change in the DTD
 #    between releases.  This is rare, but has happened.
 #
-TEXINFO_DTD_VERSION=6.4
+TEXINFO_DTD_VERSION=6.6
 AC_SUBST([TEXINFO_DTD_VERSION])
-
-# Conditional texi2html support.
-AM_CONDITIONAL([TEXI2HTML],[false])
 
 # Package date.
 PACKAGE_DATE=`${SHELL} "$srcdir"/build-aux/mdate-sh "$srcdir"/configure.ac`
@@ -59,7 +54,7 @@ fi
 
 # User variables for a Perl XS extension, which may be different, for
 # example if the Perl interpreter being used was compiled with a
-# different compiler.  Also in tp/Texinfo/Convert/XSParagraph/configure.ac.
+# different compiler.  Also in tp/Texinfo/XS/configure.ac.
 AC_ARG_VAR([PERL_EXT_CFLAGS], [Compiler flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_CPPFLAGS], [C preprocessor flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_LDFLAGS], [Linker flags for a Perl extension])
@@ -359,14 +354,14 @@ AC_ARG_ENABLE([perl-xs],
     [ enable_xs=$enableval],
     [ enable_xs=check])
 
-# Set xs_srcdir to the path from XSParagraph builddir to srcdir
+# Set xs_srcdir to the path from XS builddir to srcdir
 case $srcdir in
   .)  # We are building in place.
-    xs_srcdir=../../.. ;;
+    xs_srcdir=../.. ;;
   [[\\/]]* | ?:[[\\/]]* )  # Absolute name.
     xs_srcdir=$srcdir/tp ;;
   *) # Relative name.
-    xs_srcdir=../../../../$srcdir/tp ;;
+    xs_srcdir=../../../$srcdir/tp ;;
 esac
 
 # Pass on all the options we were given to the subsidiary configure 
@@ -381,7 +376,7 @@ esac
 # not to work.
 #
 save_subdirs=$subdirs
-subdirs=tp/Texinfo/Convert/XSParagraph
+subdirs=tp/Texinfo/XS
 ( _AC_OUTPUT_SUBDIRS ) || enable_xs=no
 subdirs=$save_subdirs
 
@@ -389,13 +384,13 @@ if test $enable_xs = check; then
   AC_MSG_CHECKING([whether we can build Perl extension (XS) modules])
   AC_MSG_RESULT([])
   enable_xs=no
-  (cd tp/Texinfo/Convert/XSParagraph \
+  (cd tp/Texinfo/XS \
    && make clean \
    && make TestXS.la \
    && TEXINFO_XS=debug ; export TEXINFO_XS \
    && ${PERL} -I . \
               -I ${xs_srcdir} \
-              -w ${xs_srcdir}/Texinfo/Convert/XSParagraph/fail.pl \
+              -w ${xs_srcdir}/Texinfo/XS/fail.pl \
       | grep 'message from XS module') \
   && enable_xs=yes
   AC_MSG_CHECKING([whether we can build Perl extension (XS) modules])
@@ -405,11 +400,6 @@ fi
 AC_SUBST([enable_xs])
 
 AM_CONDITIONAL([DISABLE_XS], [test "z$enable_xs" = zno])
-
-if test $enable_xs = yes; then
-  AC_CONFIG_SUBDIRS([tp/Texinfo/MiscXS])
-fi
-
 
 # Tests.
 AC_CONFIG_FILES([install-info/tests/defs])
@@ -516,19 +506,18 @@ AC_CONFIG_FILES([\
   tp/tests/Makefile
   tp/tests/many_input_files/Makefile
   tp/tests/sectioning/Makefile
-  tp/tests/coverage/Makefile
   tp/tests/formatting/Makefile
   tp/tests/indices/Makefile
   tp/tests/contents/Makefile   
-  tp/tests/htmlxref/Makefile
-  tp/tests/htmlxref-only_mono/Makefile
-  tp/tests/htmlxref-only_split/Makefile
   tp/tests/nested_formats/Makefile
   tp/tests/layout/Makefile
   tp/tests/tex_html/Makefile
   tp/defs
   Pod-Simple-Texinfo/Makefile
 ])
+
+AC_CONFIG_FILES([pre-inst-env:build-aux/pre-inst-env.in],
+  [chmod +x pre-inst-env])
 
 AC_OUTPUT
 

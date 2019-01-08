@@ -12,14 +12,6 @@ $result_trees{'set_flag_command_equivalent'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'on'
             },
@@ -31,7 +23,7 @@ $result_trees{'set_flag_command_equivalent'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'codequoteundirected',
@@ -39,7 +31,7 @@ $result_trees{'set_flag_command_equivalent'} = {
         'misc_args' => [
           'on'
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -76,14 +68,6 @@ $result_trees{'set_flag_command_equivalent'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'off'
             },
@@ -95,7 +79,7 @@ $result_trees{'set_flag_command_equivalent'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'codequoteundirected',
@@ -103,7 +87,7 @@ $result_trees{'set_flag_command_equivalent'} = {
         'misc_args' => [
           'off'
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -115,23 +99,17 @@ $result_trees{'set_flag_command_equivalent'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'set_flag_command_equivalent'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'set_flag_command_equivalent'}{'contents'}[0];
 $result_trees{'set_flag_command_equivalent'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'set_flag_command_equivalent'}{'contents'}[0]{'args'}[0];
 $result_trees{'set_flag_command_equivalent'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'set_flag_command_equivalent'}{'contents'}[0]{'args'}[0];
-$result_trees{'set_flag_command_equivalent'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'set_flag_command_equivalent'}{'contents'}[0]{'args'}[0];
 $result_trees{'set_flag_command_equivalent'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'set_flag_command_equivalent'}{'contents'}[0];
-$result_trees{'set_flag_command_equivalent'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'set_flag_command_equivalent'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'set_flag_command_equivalent'}{'contents'}[0]{'parent'} = $result_trees{'set_flag_command_equivalent'};
 $result_trees{'set_flag_command_equivalent'}{'contents'}[1]{'parent'} = $result_trees{'set_flag_command_equivalent'};
 $result_trees{'set_flag_command_equivalent'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'set_flag_command_equivalent'}{'contents'}[2];
 $result_trees{'set_flag_command_equivalent'}{'contents'}[2]{'parent'} = $result_trees{'set_flag_command_equivalent'};
 $result_trees{'set_flag_command_equivalent'}{'contents'}[3]{'parent'} = $result_trees{'set_flag_command_equivalent'};
-$result_trees{'set_flag_command_equivalent'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'set_flag_command_equivalent'}{'contents'}[4];
 $result_trees{'set_flag_command_equivalent'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'set_flag_command_equivalent'}{'contents'}[4]{'args'}[0];
 $result_trees{'set_flag_command_equivalent'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'set_flag_command_equivalent'}{'contents'}[4]{'args'}[0];
-$result_trees{'set_flag_command_equivalent'}{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'set_flag_command_equivalent'}{'contents'}[4]{'args'}[0];
 $result_trees{'set_flag_command_equivalent'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'set_flag_command_equivalent'}{'contents'}[4];
-$result_trees{'set_flag_command_equivalent'}{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'set_flag_command_equivalent'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'set_flag_command_equivalent'}{'contents'}[4]{'parent'} = $result_trees{'set_flag_command_equivalent'};
 
 $result_texis{'set_flag_command_equivalent'} = '@codequoteundirected on

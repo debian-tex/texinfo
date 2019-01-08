@@ -1,0 +1,20 @@
+$Id$
+texinfo/contrib/nontests/README
+
+  Copyright 2015, 2016 Free Software Foundation, Inc.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+These tests were for the util directory.
+
+Perhaps some day we will actually make these work.  We can't just invoke
+them unconditionally, since people may or may not have working TeX
+installations.  And even checking whether it is working or not is not
+simple.
+
+The txitextest script compares old and new results of running manuals
+through texinfo.tex.  The texinfo.tex developer(s) run this from cron
+nightly as an imperfect check against errors and/or reversions creeping
+in.

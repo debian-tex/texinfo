@@ -1,8 +1,6 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c 7666 2017-02-04 00:52:09Z gavin $
 
-   Copyright 1993, 1997, 1998, 1999, 2001, 2004, 2007, 2008, 2011, 2013,
-   2014, 2015 Free Software Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -979,6 +977,7 @@ info_read_completing_internal (const char *prompt, REFERENCE **completions,
                 inform_in_echo_area (_("No completions"));
               else
                 inform_in_echo_area (_("Not complete"));
+              free (line);
               continue;
             }
         }
@@ -1515,36 +1514,6 @@ echo_area_stack_contains_completions_p (void)
 /*             Error Messages While Reading in Echo Area            */
 /*                                                                  */
 /* **************************************************************** */
-
-#if defined (HAVE_SYS_TIME_H)
-#  include <sys/time.h>
-#  define HAVE_STRUCT_TIMEVAL
-#endif /* HAVE_SYS_TIME_H */
-
-#if !defined (FD_SET) && defined (__MINGW32__)
-#  define WIN32_LEAN_AND_MEAN
-#  include <windows.h>
-#endif
-
-static void
-pause_or_input (void)
-{
-#ifdef FD_SET
-  struct timeval timer;
-  fd_set readfds;
-
-  FD_ZERO (&readfds);
-  FD_SET (fileno (stdin), &readfds);
-  timer.tv_sec = 2;
-  timer.tv_usec = 0;
-  select (fileno (stdin) + 1, &readfds, NULL, NULL, &timer);
-#elif defined (__MINGW32__)
-  /* This is signalled on key release, so flush it and wait again. */
-  WaitForSingleObject (GetStdHandle (STD_INPUT_HANDLE), 2000);
-  FlushConsoleInputBuffer (GetStdHandle (STD_INPUT_HANDLE));
-  WaitForSingleObject (GetStdHandle (STD_INPUT_HANDLE), 2000);
-#endif /* FD_SET */
-}
 
 /* Print MESSAGE right after the end of the current line, and wait
    for input or a couple of seconds, whichever comes first.  Then flush the

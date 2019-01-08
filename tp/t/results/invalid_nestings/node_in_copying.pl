@@ -22,9 +22,6 @@ $result_trees{'node_in_copying'} = {
               'type' => 'empty_line_after_command'
             }
           ],
-          'extra' => {
-            'spaces_after_command' => {}
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
@@ -41,26 +38,16 @@ $result_trees{'node_in_copying'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'node'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -83,7 +70,7 @@ $result_trees{'node_in_copying'} = {
           }
         ],
         'normalized' => 'node',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -97,18 +84,13 @@ $result_trees{'node_in_copying'} = {
 };
 $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0];
-$result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[0];
 $result_trees{'node_in_copying'}{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'};
-$result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'node_in_copying'}{'contents'}[1];
 $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0];
-$result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0];
-$result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0];
 $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1];
 $result_trees{'node_in_copying'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1];
-$result_trees{'node_in_copying'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'node_in_copying'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_in_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'node_in_copying'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'node_in_copying'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_in_copying'}{'contents'}[1]{'parent'} = $result_trees{'node_in_copying'};
 
 $result_texis{'node_in_copying'} = '@copying
@@ -125,14 +107,16 @@ $result_sectioning{'node_in_copying'} = {};
 $result_nodes{'node_in_copying'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'node'
+    'normalized' => 'node',
+    'spaces_before_argument' => ' '
   }
 };
 
 $result_menus{'node_in_copying'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'node'
+    'normalized' => 'node',
+    'spaces_before_argument' => ' '
   }
 };
 

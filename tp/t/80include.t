@@ -1,7 +1,7 @@
 use strict;
 
-use File::Spec;
-BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} }
+use lib '.';
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -112,29 +112,6 @@ macro_included.texi
 
 @verbatiminclude inc_@@f--ile.texi
 '],
-['test_paths',
-'@include inc_file.texi
-
-@include ./t/include_dir/inc_file.texi
-
-@@include dot path.
-@include ./inc_file.texi 
-'],
-['test_include_directories',
-'
-@@include dot full path.
-@include ./t/include_dir/inc_file.texi
-
-@@include parent
-@include ../include_dir/inc_file.texi
-
-@@include dot full parent path
-@include ./tp/t/include_dir/inc_file.texi
-
-@c does not work in the standalone perl module
-@c @@include full parent path
-@c @include tp/t/include_dir/inc_file.texi
-',{'include_directories' => ['.', '..', 't/include_dir']}],
 ['include_comment',
 '@include inc_file.texi@c comment'],
 ['include_space_comment',

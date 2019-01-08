@@ -1,4 +1,4 @@
-# $Id: Makefile.am 7921 2017-07-16 18:52:25Z gavin $
+# $Id$
 # Makefile.am for texinfo/info.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012,
@@ -165,11 +165,13 @@ TESTS = \
 	t/quoted-manual-in-label.sh \
 	t/goto-quoted.sh \
 	t/next-quoted.sh \
+	t/echo-area-no-completions.sh \
+	t/multiple-completions.sh \
 	t/help.sh
 
 EXTRA_DIST += $(TESTS) $(XFAIL_TESTS) \
   t/README t/infodir \
-  t/Init-inter.inc t/Init-test.inc \
+  t/Init-test.inc \
   t/Infokey-config t/node-target
 dist-hook:
 	rm -rf `find $(distdir)/t/infodir -name '*~'`

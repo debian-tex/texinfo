@@ -1,8 +1,6 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c 7888 2017-07-01 13:51:33Z gavin $
 
-   Copyright 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012,
-   2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

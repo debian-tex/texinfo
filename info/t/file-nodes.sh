@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,10 +19,10 @@ srcdir=${srcdir:-.}
 
 # Load more than one node in loaded file using --node.
 
-$GINFO --output $GINFO_OUTPUT --file file-menu --node 'Node 1' --node 'Node 2'
+$ginfo --output $ginfo_output --file file-menu --node 'Node 1' --node 'Node 2'
 
-RETVAL=0
-grep 'Arrived at Node 1' $GINFO_OUTPUT || RETVAL=1
-grep 'Arrived at Node 2' $GINFO_OUTPUT || RETVAL=1
+retval=0
+grep 'Arrived at Node 1' $ginfo_output || retval=1
+grep 'Arrived at Node 2' $ginfo_output || retval=1
 
 cleanup

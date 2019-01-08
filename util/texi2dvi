@@ -1,10 +1,7 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi 7906 2017-07-05 17:56:51Z gavin $
 #
-# Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002,
-# 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,
-# 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
+# Copyright 1992-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -36,9 +33,6 @@ set -e
 # In case the default sed doesn't suffice.
 : ${SED=sed}
 
-# This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 7906 $'
-rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | $SED -e 's!.*/!!'`
 
 build_mode=${TEXI2DVI_BUILD_MODE:-local}
@@ -81,7 +75,6 @@ newline='
 '
 IFS="$space$tab$newline"
 
-# In case someone pedantic insists on using grep -E.
 : ${EGREP=egrep}
 
 # Systems which define $COMSPEC or $ComSpec use semicolons to separate
@@ -219,9 +212,9 @@ EOF
 version ()
 {
   cat <<EOF
-texi2dvi (GNU Texinfo 6.5) $rcs_version
+texi2dvi (GNU Texinfo 6.5dev)
 
-Copyright (C) 2017 Free Software Foundation, Inc.
+Copyright (C) 2019 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -1928,8 +1921,6 @@ fi
 # 0 standard input
 # 1 standard output (--verbose messages)
 # 2 standard error
-# 3 some systems may open it to /dev/tty
-# 4 used on the Kubota Titan
 # 5 tools output (turned off by --quiet)
 # 6 tracing/debugging (set -x output, etc.)
 

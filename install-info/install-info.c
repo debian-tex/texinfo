@@ -1,9 +1,6 @@
 /* install-info -- merge Info directory entries from an Info file.
-   $Id: install-info.c 7038 2016-03-04 17:46:30Z gavin $
 
-   Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
-   2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016
-   Free Software Foundation, Inc.
+   Copyright 1996-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -2240,7 +2237,7 @@ main (int argc, char *argv[])
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-              "2016");
+              "2019");
           exit (EXIT_SUCCESS);
 
         case 'W':

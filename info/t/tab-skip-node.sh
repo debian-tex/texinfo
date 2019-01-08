@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,17 +16,16 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f tab-skip-node
 # Check that skipping over a node with no cross-references in it
 # when pressing tab, and then going back in the window history, goes
 # back to the last node that was actually displayed, and not to the
 # skipped node.
-printf '\t\t\tlDq' >$PTY_TYPE
+printf '\t\t\tlDq' >$pty_type
 timeout_test
 
-grep 'Node: Top' $GINFO_OUTPUT
-RETVAL=$?
+grep 'Node: Top' $ginfo_output
+retval=$?
 
 cleanup

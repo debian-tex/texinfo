@@ -8,7 +8,6 @@
 * Texinfo@asis{::}Convert@asis{::}Converter METHODS::
 * Texinfo@asis{::}Convert@asis{::}Converter SEE ALSO::
 * Texinfo@asis{::}Convert@asis{::}Converter AUTHOR::
-* Texinfo@asis{::}Convert@asis{::}Converter COPYRIGHT AND LICENSE::
 * Texinfo@asis{::}Convert@asis{::}Converter POD ERRORS::
 @end menu
 
@@ -240,24 +239,14 @@ and @ref{Texinfo::Parser NAME}.
 
 Patrice Dumas, <pertusus@@free.fr>
 
-@node Texinfo::Convert::Converter COPYRIGHT AND LICENSE
-@section COPYRIGHT AND LICENSE
-
-Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
-
-This library is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or (at 
-your option) any later version.
-
 @node Texinfo::Convert::Converter POD ERRORS
 @section POD ERRORS
 
 Hey! @strong{The above document had some coding errors, which are explained below:}
 
 @table @asis
-@item Around line 1810:
-@anchor{Texinfo::Convert::Converter Around line 1810:}
+@item Around line 1760:
+@anchor{Texinfo::Convert::Converter Around line 1760:}
 
 '=item' outside of any '=over'
 

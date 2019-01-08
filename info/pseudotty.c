@@ -2,7 +2,7 @@
    standard output.  Read and ignore any data sent to terminal.  This
    is so we can run tests interactively without messing up the screen.
 
-   Copyright 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
+   Copyright 2014-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

@@ -40,11 +40,6 @@ $result_trees{'anchor_and_empty_lines'} = {
       'cmdname' => 'anchor',
       'contents' => [],
       'extra' => {
-        'brace_command_contents' => [
-          [
-            {}
-          ]
-        ],
         'node_content' => [
           {}
         ],
@@ -88,7 +83,6 @@ $result_trees{'anchor_and_empty_lines'}{'contents'}[0]{'parent'} = $result_trees
 $result_trees{'anchor_and_empty_lines'}{'contents'}[1]{'parent'} = $result_trees{'anchor_and_empty_lines'};
 $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'args'}[0];
 $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'anchor_and_empty_lines'}{'contents'}[2];
-$result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'parent'} = $result_trees{'anchor_and_empty_lines'};
 $result_trees{'anchor_and_empty_lines'}{'contents'}[3]{'parent'} = $result_trees{'anchor_and_empty_lines'};

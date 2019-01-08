@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,14 +16,13 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 # Split window with C-x 2, follow menu entry with a slash in the filename.
 # Close window (so destination file will be forgotten), and do it again with
 # the other window.
 run_ginfo -f file-menu
-printf '\0302\t\t\t\r' >$PTY_TYPE
-printf '\030o\0301\t\t\t\rq' >$PTY_TYPE
+printf '\0302\t\t\t\r' >$pty_type
+printf '\030o\0301\t\t\t\rq' >$pty_type
 
 timeout_test
 cleanup

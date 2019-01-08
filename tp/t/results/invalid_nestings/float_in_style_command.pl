@@ -41,14 +41,6 @@ $result_trees{'float_in_style_command'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'A'
             }
@@ -60,20 +52,14 @@ $result_trees{'float_in_style_command'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_before_argument'
-            },
-            {
-              'parent' => {},
               'text' => 'B'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'space_at_end_block_command'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+',
+            'spaces_before_argument' => ' '
+          },
           'parent' => {},
           'type' => 'block_line_arg'
         }
@@ -132,33 +118,22 @@ $result_trees{'float_in_style_command'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'float'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'float',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'float'
           },
           'line_nr' => {
@@ -170,26 +145,15 @@ $result_trees{'float_in_style_command'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ],
-          [
-            {}
-          ]
-        ],
         'caption' => {},
         'end_command' => {},
-        'invalid_nesting' => 1,
         'node_content' => [
           {}
         ],
         'normalized' => 'B',
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'type' => {
-          'content' => [
-            {}
-          ],
+          'content' => [],
           'normalized' => 'A'
         }
       },
@@ -208,13 +172,9 @@ $result_trees{'float_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]
 $result_trees{'float_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[0]{'contents'}[0];
 $result_trees{'float_in_style_command'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[0];
 $result_trees{'float_in_style_command'}{'contents'}[0]{'parent'} = $result_trees{'float_in_style_command'};
-$result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'float_in_style_command'}{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[0];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1];
@@ -224,21 +184,13 @@ $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0]
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1]{'extra'}{'float'} = $result_trees{'float_in_style_command'}{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'extra'}{'command'} = $result_trees{'float_in_style_command'}{'contents'}[1];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'block_command_line_contents'}[1][0] = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1]{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'caption'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1]{'contents'}[1];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'type'}{'content'}[0] = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1]{'contents'}[0];
+$result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'type'}{'content'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'float_in_style_command'}{'contents'}[1]{'parent'} = $result_trees{'float_in_style_command'};
 
 $result_texis{'float_in_style_command'} = '@code{
@@ -257,15 +209,6 @@ in float
 
 $result_errors{'float_in_style_command'} = [
   {
-    'error_line' => ':1: @code missing closing brace
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@code missing closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':2: warning: @float should not appear in @code
 ',
     'file_name' => '',
@@ -273,6 +216,15 @@ $result_errors{'float_in_style_command'} = [
     'macro' => '',
     'text' => '@float should not appear in @code',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: @code missing closing brace
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@code missing closing brace',
+    'type' => 'error'
   },
   {
     'error_line' => ':6: misplaced }
@@ -300,12 +252,13 @@ $result_floats{'float_in_style_command'} = {
         'end_command' => {
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'float',
+            'spaces_before_argument' => ' ',
             'text_arg' => 'float'
           }
         },
         'normalized' => 'B',
+        'spaces_before_argument' => ' ',
         'type' => {
           'content' => [
             {
@@ -320,7 +273,6 @@ $result_floats{'float_in_style_command'} = {
   ]
 };
 $result_floats{'float_in_style_command'}{'A'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'float_in_style_command'}{'A'}[0];
-$result_floats{'float_in_style_command'}{'A'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'float_in_style_command'}{'A'}[0];
 
 
 1;

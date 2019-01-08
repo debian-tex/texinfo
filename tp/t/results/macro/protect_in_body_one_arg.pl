@@ -51,9 +51,6 @@ $result_trees{'protect_in_body_one_arg'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -142,7 +139,6 @@ $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'args'}[2]{'parent'} = $
 $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];
 $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];
 $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'parent'} = $result_trees{'protect_in_body_one_arg'};
-$result_trees{'protect_in_body_one_arg'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];
 $result_trees{'protect_in_body_one_arg'}{'contents'}[1]{'parent'} = $result_trees{'protect_in_body_one_arg'};
 $result_trees{'protect_in_body_one_arg'}{'contents'}[2]{'parent'} = $result_trees{'protect_in_body_one_arg'};
 $result_trees{'protect_in_body_one_arg'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[3];

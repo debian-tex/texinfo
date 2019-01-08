@@ -12,25 +12,17 @@ $result_trees{'defindex_too_much_args'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'chose    machin'
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'defindex',
       'extra' => {
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -42,11 +34,8 @@ $result_trees{'defindex_too_much_args'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'defindex_too_much_args'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'defindex_too_much_args'}{'contents'}[0];
 $result_trees{'defindex_too_much_args'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'defindex_too_much_args'}{'contents'}[0]{'args'}[0];
-$result_trees{'defindex_too_much_args'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'defindex_too_much_args'}{'contents'}[0]{'args'}[0];
 $result_trees{'defindex_too_much_args'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'defindex_too_much_args'}{'contents'}[0];
-$result_trees{'defindex_too_much_args'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'defindex_too_much_args'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'defindex_too_much_args'}{'contents'}[0]{'parent'} = $result_trees{'defindex_too_much_args'};
 
 $result_texis{'defindex_too_much_args'} = '@defindex chose    machin';

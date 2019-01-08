@@ -1,5 +1,3 @@
-$Id: README 6028 2015-01-09 00:09:08Z karl $
-
 This is texindex.awk, a replacement for the texindex.c implementation
 previously used in Texinfo.  It's written in a literate style using TexiWebJr.
 

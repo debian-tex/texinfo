@@ -28,33 +28,23 @@ $result_trees{'japanese_utf8'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
                       'parent' => {},
                       'text' => 'UTF-8'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentencoding',
               'extra' => {
                 'input_encoding_name' => 'utf-8',
                 'input_perl_encoding' => 'utf-8-strict',
-                'spaces_after_command' => {},
+                'spaces_before_argument' => ' ',
                 'text_arg' => 'UTF-8'
               },
               'line_nr' => {
@@ -73,31 +63,21 @@ $result_trees{'japanese_utf8'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'japanese_utf8.info'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
           'extra' => {
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'japanese_utf8.info'
           },
           'line_nr' => {
@@ -112,34 +92,21 @@ $result_trees{'japanese_utf8'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'GNU LilyPond -- Manuel d\'initiation japanese'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'settitle',
           'extra' => {
-            'misc_content' => [
-              {}
-            ],
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => 'japanese_utf8.texi',
@@ -159,31 +126,21 @@ $result_trees{'japanese_utf8'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'ja'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'ja'
           },
           'line_nr' => {
@@ -208,26 +165,16 @@ $result_trees{'japanese_utf8'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -243,7 +190,7 @@ $result_trees{'japanese_utf8'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => 'japanese_utf8.texi',
@@ -257,26 +204,16 @@ $result_trees{'japanese_utf8'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => "GNU LilyPond --- \x{5b66}\x{7fd2}\x{30de}\x{30cb}\x{30e5}\x{30a2}\x{30eb}"
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -429,33 +366,22 @@ $result_trees{'japanese_utf8'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
                       'parent' => {},
                       'text' => 'copying'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'copying',
-                'spaces_after_command' => {},
+                'spaces_before_argument' => ' ',
                 'text_arg' => 'copying'
               },
               'line_nr' => {
@@ -467,8 +393,7 @@ $result_trees{'japanese_utf8'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => 'japanese_utf8.texi',
@@ -637,33 +562,22 @@ $result_trees{'japanese_utf8'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
                       'parent' => {},
                       'text' => 'menu'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'menu',
-                'spaces_after_command' => {},
+                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
               },
               'line_nr' => {
@@ -675,8 +589,7 @@ $result_trees{'japanese_utf8'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => 'japanese_utf8.texi',
@@ -693,10 +606,7 @@ $result_trees{'japanese_utf8'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'line_nr' => {
@@ -711,26 +621,16 @@ $result_trees{'japanese_utf8'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Preface'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -746,7 +646,7 @@ $result_trees{'japanese_utf8'} = {
           }
         ],
         'normalized' => 'Preface',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => 'japanese_utf8.texi',
@@ -760,26 +660,16 @@ $result_trees{'japanese_utf8'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Preface'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -815,10 +705,7 @@ $result_trees{'japanese_utf8'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 1,
       'line_nr' => {
@@ -834,26 +721,16 @@ $result_trees{'japanese_utf8'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Introduction'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -869,7 +746,7 @@ $result_trees{'japanese_utf8'} = {
           }
         ],
         'normalized' => 'Introduction',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => 'japanese_utf8.texi',
@@ -883,26 +760,16 @@ $result_trees{'japanese_utf8'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Introduction'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -932,10 +799,7 @@ $result_trees{'japanese_utf8'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 1,
       'line_nr' => {
@@ -963,52 +827,28 @@ $result_trees{'japanese_utf8'} = {
 };
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[1];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[1];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[4];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[4]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[4];
-$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'};
-$result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[1];
 $result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[1];
-$result_trees{'japanese_utf8'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'japanese_utf8'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'japanese_utf8'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'japanese_utf8'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'};
-$result_trees{'japanese_utf8'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[2];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1];
@@ -1033,16 +873,10 @@ $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[5]{'con
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[5];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[5];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[6];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2];
@@ -1071,63 +905,37 @@ $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'arg
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'extra'}{'menu_entry_description'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'args'}[3];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'args'}[1]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'extra'}{'end_command'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[3];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'};
-$result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[3];
 $result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[3];
-$result_trees{'japanese_utf8'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'japanese_utf8'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'japanese_utf8'}{'contents'}[3]{'extra'}{'node_content'};
-$result_trees{'japanese_utf8'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[3]{'parent'} = $result_trees{'japanese_utf8'};
-$result_trees{'japanese_utf8'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[4];
 $result_trees{'japanese_utf8'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[4]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[4]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[4]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[4];
 $result_trees{'japanese_utf8'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[4];
 $result_trees{'japanese_utf8'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[4]{'contents'}[1];
 $result_trees{'japanese_utf8'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[4];
 $result_trees{'japanese_utf8'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[4];
 $result_trees{'japanese_utf8'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[4];
-$result_trees{'japanese_utf8'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[4]{'args'}[0]{'contents'}[1];
-$result_trees{'japanese_utf8'}{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_utf8'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[4]{'parent'} = $result_trees{'japanese_utf8'};
-$result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[5];
 $result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[5];
-$result_trees{'japanese_utf8'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0]{'contents'}[1];
+$result_trees{'japanese_utf8'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'japanese_utf8'}{'contents'}[5]{'extra'}{'node_content'};
-$result_trees{'japanese_utf8'}{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[5]{'parent'} = $result_trees{'japanese_utf8'};
-$result_trees{'japanese_utf8'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[6];
 $result_trees{'japanese_utf8'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[6]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[6]{'args'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[6]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[6]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[6];
 $result_trees{'japanese_utf8'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[6];
 $result_trees{'japanese_utf8'}{'contents'}[6]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[6]{'contents'}[1];
 $result_trees{'japanese_utf8'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[6];
 $result_trees{'japanese_utf8'}{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[6];
-$result_trees{'japanese_utf8'}{'contents'}[6]{'extra'}{'misc_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[6]{'args'}[0]{'contents'}[1];
-$result_trees{'japanese_utf8'}{'contents'}[6]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_utf8'}{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[6]{'parent'} = $result_trees{'japanese_utf8'};
 $result_trees{'japanese_utf8'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[7];
 $result_trees{'japanese_utf8'}{'contents'}[7]{'parent'} = $result_trees{'japanese_utf8'};
@@ -1210,9 +1018,11 @@ $result_sectioning{'japanese_utf8'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
-            'normalized' => 'Top'
+            'normalized' => 'Top',
+            'spaces_before_argument' => ' '
           }
-        }
+        },
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'section_childs' => [
@@ -1222,9 +1032,11 @@ $result_sectioning{'japanese_utf8'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
-                'normalized' => 'Preface'
+                'normalized' => 'Preface',
+                'spaces_before_argument' => ' '
               }
-            }
+            },
+            'spaces_before_argument' => ' '
           },
           'level' => 1,
           'number' => 1,
@@ -1238,9 +1050,11 @@ $result_sectioning{'japanese_utf8'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
-                'normalized' => 'Introduction'
+                'normalized' => 'Introduction',
+                'spaces_before_argument' => ' '
               }
-            }
+            },
+            'spaces_before_argument' => ' '
           },
           'level' => 1,
           'number' => 2,
@@ -1268,32 +1082,41 @@ $result_nodes{'japanese_utf8'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 0
     },
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
       'associated_section' => {
         'cmdname' => 'chapter',
-        'extra' => {},
+        'extra' => {
+          'spaces_before_argument' => ' '
+        },
         'level' => 1,
         'number' => 1
       },
-      'normalized' => 'Preface'
+      'normalized' => 'Preface',
+      'spaces_before_argument' => ' '
     },
     'node_next' => {
       'cmdname' => 'node',
       'extra' => {
         'associated_section' => {
           'cmdname' => 'chapter',
-          'extra' => {},
+          'extra' => {
+            'spaces_before_argument' => ' '
+          },
           'level' => 1,
           'number' => 2
         },
-        'normalized' => 'Introduction'
+        'normalized' => 'Introduction',
+        'spaces_before_argument' => ' '
       },
       'node_prev' => {},
       'node_up' => {}
@@ -1308,8 +1131,8 @@ $result_nodes{'japanese_utf8'} = {
         'end_command' => {
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'menu',
+            'spaces_before_argument' => ' ',
             'text_arg' => 'menu'
           }
         }
@@ -1333,24 +1156,26 @@ $result_nodes{'japanese_utf8'}{'menu_child'}{'node_next'}{'node_prev'} = $result
 $result_nodes{'japanese_utf8'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'japanese_utf8'};
 $result_nodes{'japanese_utf8'}{'menu_child'}{'node_prev'} = $result_nodes{'japanese_utf8'};
 $result_nodes{'japanese_utf8'}{'menu_child'}{'node_up'} = $result_nodes{'japanese_utf8'};
-$result_nodes{'japanese_utf8'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'japanese_utf8'}{'menus'}[0];
 $result_nodes{'japanese_utf8'}{'node_next'} = $result_nodes{'japanese_utf8'}{'menu_child'};
 $result_nodes{'japanese_utf8'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'japanese_utf8'};
 
 $result_menus{'japanese_utf8'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
-      'normalized' => 'Preface'
+      'normalized' => 'Preface',
+      'spaces_before_argument' => ' '
     },
     'menu_next' => {
       'cmdname' => 'node',
       'extra' => {
-        'normalized' => 'Introduction'
+        'normalized' => 'Introduction',
+        'spaces_before_argument' => ' '
       },
       'menu_prev' => {},
       'menu_up' => {},

@@ -1,9 +1,6 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c 7915 2017-07-09 18:51:00Z gavin $
 
-   Copyright 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
-   2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software 
-   Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -735,6 +732,8 @@ info_load_file (char *fullpath, int is_subfile)
         {
           free (file_buffer->fullpath);
           free (file_buffer->filename);
+          free (file_buffer->contents);
+          free (file_buffer->encoding);
           free (file_buffer);
           return 0;
         }
@@ -945,13 +944,13 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
             {
               saved_char = *p;
               *p = 0;
-
               file_in_same_dir = info_add_extension (defaults->fullpath,
                                                      filename, 0);
+              *p = saved_char;
+
               if (file_in_same_dir)
                 file_buffer = info_find_file (file_in_same_dir);
               free (file_in_same_dir);
-              *p = saved_char;
             }
         }
     }
@@ -1284,8 +1283,7 @@ info_node_of_tag_ext (FILE_BUFFER *fb, TAG **tag_ptr, int fast)
              anchors that occur within the node. */
           scan_node_contents (node, parent, tag_ptr);
 
-          if (!preprocess_nodes_p)
-            node_set_body_start (node);
+          node_set_body_start (node);
           tag->cache = *node;
           if (!(node->flags & N_WasRewritten))
             tag->cache.contents = 0; /* Pointer into file buffer

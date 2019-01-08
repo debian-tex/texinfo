@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,14 +16,13 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 INFOPATH=$INFOPATH:$t/infodir/subdir
 
 # Follow a reference to file in merged dir
 run_ginfo -v hide-note-references=On file-in-subdir
 
-printf q >$PTY_TYPE
+printf q >$pty_type
 timeout_test
 
 cleanup

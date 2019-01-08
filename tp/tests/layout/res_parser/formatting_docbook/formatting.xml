@@ -146,7 +146,6 @@ but , ,
 <literal>@cite{--a}</literal> <citetitle>&#8211;a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
-<literal>@ctrl{--a}</literal> 
 <literal>@dfn{--a}</literal> <firstterm>&#8211;a</firstterm>
 <literal>@dmn{--a}</literal> &#8211;a
 <literal>@email{--a,--b}</literal> <ulink url="mailto:--a">&#8211;b</ulink>
@@ -204,17 +203,17 @@ but , ,
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote</para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2</para></footnote>
 </para>
-<para><literal>@image{f--ile}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<para><literal>@image{f--ile}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,l--i}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,l--i}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 <literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
@@ -307,11 +306,11 @@ After clickstyle &#8658;
 <indexterm role="cp"><primary>index entry within deffn</primary></indexterm>
 <synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable>  </synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase>    </synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
 <synopsis></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
@@ -646,7 +645,6 @@ but , ,
 <literal>@cite{--a}</literal> <citetitle>&#8211;a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
-<literal>@ctrl{--a}</literal> 
 <literal>@dfn{--a}</literal> <firstterm>&#8211;a</firstterm>
 <literal>@dmn{--a}</literal> &#8211;a
 <literal>@email{--a,--b}</literal> <ulink url="mailto:--a">&#8211;b</ulink>
@@ -704,17 +702,17 @@ but , ,
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote</para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2</para></footnote>
 </para>
-<para><literal>@image{f--ile}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<para><literal>@image{f--ile}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,l--i}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,l--i}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 <literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
@@ -807,11 +805,11 @@ After clickstyle &#8658;
 <indexterm role="cp"><primary>index entry within deffn</primary></indexterm>
 <synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable>  </synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase>    </synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
 <synopsis></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
@@ -1147,7 +1145,6 @@ but , ,
 <literal>@cite{--a}</literal> <citetitle>&#8211;a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
-<literal>@ctrl{--a}</literal> 
 <literal>@dfn{--a}</literal> <firstterm>&#8211;a</firstterm>
 <literal>@dmn{--a}</literal> &#8211;a
 <literal>@email{--a,--b}</literal> <ulink url="mailto:--a">&#8211;b</ulink>
@@ -1205,17 +1202,17 @@ but , ,
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote</para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2</para></footnote>
 </para>
-<para><literal>@image{f--ile}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<para><literal>@image{f--ile}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,l--i}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,l--i}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 <literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
@@ -1308,11 +1305,11 @@ After clickstyle &#8658;
 <indexterm role="cp"><primary>index entry within deffn</primary></indexterm>
 <synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable>  </synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase>    </synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
 <synopsis></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
@@ -1509,7 +1506,6 @@ docbook ''
 
 
 <!-- invalid texinfo -->
-
 
 
 <para>Insertcopying in normal text
@@ -1649,7 +1645,6 @@ but , ,
 <literal>@cite{--a}</literal> <citetitle>&#8211;a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
-<literal>@ctrl{--a}</literal> 
 <literal>@dfn{--a}</literal> <firstterm>&#8211;a</firstterm>
 <literal>@dmn{--a}</literal> &#8211;a
 <literal>@email{--a,--b}</literal> <ulink url="mailto:--a">&#8211;b</ulink>
@@ -1707,17 +1702,17 @@ but , ,
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote</para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2</para></footnote>
 </para>
-<para><literal>@image{f--ile}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<para><literal>@image{f--ile}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,l--i}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,l--i}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 <literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
@@ -1810,11 +1805,11 @@ After clickstyle &#8658;
 <indexterm role="cp"><primary>index entry within deffn</primary></indexterm>
 <synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable>  </synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase>    </synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
 <synopsis></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
@@ -2013,7 +2008,6 @@ docbook ''
 <!-- invalid texinfo -->
 
 
-
 <para>Normal text
 </para>
 <para>&lt;
@@ -2150,7 +2144,6 @@ but , ,
 <literal>@cite{--a}</literal> <citetitle>&#8211;a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
-<literal>@ctrl{--a}</literal> 
 <literal>@dfn{--a}</literal> <firstterm>&#8211;a</firstterm>
 <literal>@dmn{--a}</literal> &#8211;a
 <literal>@email{--a,--b}</literal> <ulink url="mailto:--a">&#8211;b</ulink>
@@ -2208,17 +2201,17 @@ but , ,
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote</para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2</para></footnote>
 </para>
-<para><literal>@image{f--ile}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<para><literal>@image{f--ile}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,l--i}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,l--i}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 <literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
@@ -2311,11 +2304,11 @@ After clickstyle &#8658;
 <indexterm role="cp"><primary>index entry within deffn</primary></indexterm>
 <synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable>  </synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase>    </synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
 <synopsis></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
@@ -2646,7 +2639,6 @@ but , ,
 <literal>@cite{--a}</literal> <citetitle>--a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
-<literal>@ctrl{--a}</literal> 
 <literal>@dfn{--a}</literal> <firstterm>--a</firstterm>
 <literal>@dmn{--a}</literal> --a
 <literal>@email{--a,--b}</literal> <ulink url="mailto:--a">--b</ulink>
@@ -2704,17 +2696,17 @@ but , ,
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote</para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2</para></footnote>
 
-<literal>@image{f--ile}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,l--i}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,l--i}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 <literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
@@ -2804,11 +2796,11 @@ After clickstyle &#8658;
 </screen><synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
 <screen><indexterm role="cp"><primary>index entry within deffn</primary></indexterm></screen><synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable>  </synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase>    </synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
 <synopsis></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
 <synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>

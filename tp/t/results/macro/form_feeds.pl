@@ -51,9 +51,6 @@ $result_trees{'form_feeds'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -104,9 +101,6 @@ $result_trees{'form_feeds'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -189,7 +183,6 @@ $result_trees{'form_feeds'}{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{
 $result_trees{'form_feeds'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'form_feeds'}{'contents'}[0];
 $result_trees{'form_feeds'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'form_feeds'}{'contents'}[0];
 $result_trees{'form_feeds'}{'contents'}[0]{'parent'} = $result_trees{'form_feeds'};
-$result_trees{'form_feeds'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'form_feeds'}{'contents'}[0];
 $result_trees{'form_feeds'}{'contents'}[1]{'parent'} = $result_trees{'form_feeds'};
 $result_trees{'form_feeds'}{'contents'}[2]{'parent'} = $result_trees{'form_feeds'};
 $result_trees{'form_feeds'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'form_feeds'}{'contents'}[3];
@@ -197,7 +190,6 @@ $result_trees{'form_feeds'}{'contents'}[3]{'args'}[1]{'parent'} = $result_trees{
 $result_trees{'form_feeds'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'form_feeds'}{'contents'}[3];
 $result_trees{'form_feeds'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'form_feeds'}{'contents'}[3];
 $result_trees{'form_feeds'}{'contents'}[3]{'parent'} = $result_trees{'form_feeds'};
-$result_trees{'form_feeds'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'form_feeds'}{'contents'}[3];
 $result_trees{'form_feeds'}{'contents'}[4]{'parent'} = $result_trees{'form_feeds'};
 $result_trees{'form_feeds'}{'contents'}[5]{'parent'} = $result_trees{'form_feeds'};
 $result_trees{'form_feeds'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'form_feeds'}{'contents'}[6];

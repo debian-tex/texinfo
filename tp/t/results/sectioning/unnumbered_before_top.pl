@@ -17,26 +17,16 @@ $result_trees{'unnumbered_before_top'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'before top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'unnumbered',
@@ -49,10 +39,7 @@ $result_trees{'unnumbered_before_top'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 1,
       'line_nr' => {
@@ -67,35 +54,22 @@ $result_trees{'unnumbered_before_top'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
       'contents' => [],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 1,
       'line_nr' => {
@@ -109,22 +83,12 @@ $result_trees{'unnumbered_before_top'} = {
   'type' => 'document_root'
 };
 $result_trees{'unnumbered_before_top'}{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top'};
-$result_trees{'unnumbered_before_top'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'unnumbered_before_top'}{'contents'}[1];
 $result_trees{'unnumbered_before_top'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top'}{'contents'}[1]{'args'}[0];
-$result_trees{'unnumbered_before_top'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unnumbered_before_top'}{'contents'}[1]{'args'}[0];
-$result_trees{'unnumbered_before_top'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_before_top'}{'contents'}[1]{'args'}[0];
 $result_trees{'unnumbered_before_top'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unnumbered_before_top'}{'contents'}[1];
 $result_trees{'unnumbered_before_top'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top'}{'contents'}[1];
-$result_trees{'unnumbered_before_top'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'unnumbered_before_top'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'unnumbered_before_top'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'unnumbered_before_top'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_before_top'}{'contents'}[1]{'parent'} = $result_trees{'unnumbered_before_top'};
-$result_trees{'unnumbered_before_top'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'unnumbered_before_top'}{'contents'}[2];
 $result_trees{'unnumbered_before_top'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top'}{'contents'}[2]{'args'}[0];
-$result_trees{'unnumbered_before_top'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unnumbered_before_top'}{'contents'}[2]{'args'}[0];
-$result_trees{'unnumbered_before_top'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_before_top'}{'contents'}[2]{'args'}[0];
 $result_trees{'unnumbered_before_top'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unnumbered_before_top'}{'contents'}[2];
-$result_trees{'unnumbered_before_top'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'unnumbered_before_top'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'unnumbered_before_top'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'unnumbered_before_top'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_before_top'}{'contents'}[2]{'parent'} = $result_trees{'unnumbered_before_top'};
 
 $result_texis{'unnumbered_before_top'} = '@unnumbered before top
@@ -145,13 +109,17 @@ $result_sectioning{'unnumbered_before_top'} = {
   'section_childs' => [
     {
       'cmdname' => 'unnumbered',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 1,
       'section_up' => {}
     },
     {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 1,
       'section_prev' => {},
       'section_up' => {},

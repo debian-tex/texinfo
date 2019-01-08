@@ -18,31 +18,21 @@ $result_trees{'verbatiminclude_paths'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'inc_file.texi'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
       ],
       'cmdname' => 'verbatiminclude',
       'extra' => {
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => 'inc_file.texi'
       },
       'line_nr' => {
@@ -78,31 +68,21 @@ $result_trees{'verbatiminclude_paths'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => './t/include_dir/inc_file.texi'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
       ],
       'cmdname' => 'verbatiminclude',
       'extra' => {
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => './t/include_dir/inc_file.texi'
       },
       'line_nr' => {
@@ -138,31 +118,21 @@ $result_trees{'verbatiminclude_paths'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => '../include_dir/inc_file.texi'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
       ],
       'cmdname' => 'verbatiminclude',
       'extra' => {
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => '../include_dir/inc_file.texi'
       },
       'line_nr' => {
@@ -198,31 +168,21 @@ $result_trees{'verbatiminclude_paths'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => './tp/t/include_dir/inc_file.texi'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
       ],
       'cmdname' => 'verbatiminclude',
       'extra' => {
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => './tp/t/include_dir/inc_file.texi'
       },
       'line_nr' => {
@@ -296,45 +256,29 @@ $result_trees{'verbatiminclude_paths'} = {
   'type' => 'text_root'
 };
 $result_trees{'verbatiminclude_paths'}{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude_paths'};
-$result_trees{'verbatiminclude_paths'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'verbatiminclude_paths'}{'contents'}[1];
 $result_trees{'verbatiminclude_paths'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[1]{'args'}[0];
-$result_trees{'verbatiminclude_paths'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[1]{'args'}[0];
-$result_trees{'verbatiminclude_paths'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[1]{'args'}[0];
 $result_trees{'verbatiminclude_paths'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[1];
-$result_trees{'verbatiminclude_paths'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'verbatiminclude_paths'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'verbatiminclude_paths'}{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude_paths'};
 $result_trees{'verbatiminclude_paths'}{'contents'}[2]{'parent'} = $result_trees{'verbatiminclude_paths'};
 $result_trees{'verbatiminclude_paths'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[3];
 $result_trees{'verbatiminclude_paths'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[3];
 $result_trees{'verbatiminclude_paths'}{'contents'}[3]{'parent'} = $result_trees{'verbatiminclude_paths'};
-$result_trees{'verbatiminclude_paths'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'verbatiminclude_paths'}{'contents'}[4];
 $result_trees{'verbatiminclude_paths'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[4]{'args'}[0];
-$result_trees{'verbatiminclude_paths'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[4]{'args'}[0];
-$result_trees{'verbatiminclude_paths'}{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[4]{'args'}[0];
 $result_trees{'verbatiminclude_paths'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[4];
-$result_trees{'verbatiminclude_paths'}{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'verbatiminclude_paths'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'verbatiminclude_paths'}{'contents'}[4]{'parent'} = $result_trees{'verbatiminclude_paths'};
 $result_trees{'verbatiminclude_paths'}{'contents'}[5]{'parent'} = $result_trees{'verbatiminclude_paths'};
 $result_trees{'verbatiminclude_paths'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[6];
 $result_trees{'verbatiminclude_paths'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[6];
 $result_trees{'verbatiminclude_paths'}{'contents'}[6]{'parent'} = $result_trees{'verbatiminclude_paths'};
-$result_trees{'verbatiminclude_paths'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'verbatiminclude_paths'}{'contents'}[7];
 $result_trees{'verbatiminclude_paths'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[7]{'args'}[0];
-$result_trees{'verbatiminclude_paths'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[7]{'args'}[0];
-$result_trees{'verbatiminclude_paths'}{'contents'}[7]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[7]{'args'}[0];
 $result_trees{'verbatiminclude_paths'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[7];
-$result_trees{'verbatiminclude_paths'}{'contents'}[7]{'extra'}{'spaces_after_command'} = $result_trees{'verbatiminclude_paths'}{'contents'}[7]{'args'}[0]{'contents'}[0];
 $result_trees{'verbatiminclude_paths'}{'contents'}[7]{'parent'} = $result_trees{'verbatiminclude_paths'};
 $result_trees{'verbatiminclude_paths'}{'contents'}[8]{'parent'} = $result_trees{'verbatiminclude_paths'};
 $result_trees{'verbatiminclude_paths'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[9];
 $result_trees{'verbatiminclude_paths'}{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[9];
 $result_trees{'verbatiminclude_paths'}{'contents'}[9]{'parent'} = $result_trees{'verbatiminclude_paths'};
-$result_trees{'verbatiminclude_paths'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'verbatiminclude_paths'}{'contents'}[10];
 $result_trees{'verbatiminclude_paths'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[10]{'args'}[0];
-$result_trees{'verbatiminclude_paths'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[10]{'args'}[0];
-$result_trees{'verbatiminclude_paths'}{'contents'}[10]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[10]{'args'}[0];
 $result_trees{'verbatiminclude_paths'}{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[10];
-$result_trees{'verbatiminclude_paths'}{'contents'}[10]{'extra'}{'spaces_after_command'} = $result_trees{'verbatiminclude_paths'}{'contents'}[10]{'args'}[0]{'contents'}[0];
 $result_trees{'verbatiminclude_paths'}{'contents'}[10]{'parent'} = $result_trees{'verbatiminclude_paths'};
 $result_trees{'verbatiminclude_paths'}{'contents'}[11]{'parent'} = $result_trees{'verbatiminclude_paths'};
 $result_trees{'verbatiminclude_paths'}{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'verbatiminclude_paths'}{'contents'}[12];

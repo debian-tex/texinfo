@@ -1,0 +1,18 @@
+For inspecting execution of installed makeinfo:
+
+perl -d `which makeinfo` sample.texi
+
+b  /usr/local/share/texinfo/Texinfo/Parser.pm:5344
+
+p _print_tree ($current)
+
+-----
+For inspecting execution of Parsetexi module:
+
+Uncomment DEBUG line in ./makeinfo.
+
+b Parsetexi/lib/Parsetexi.pm:227
+
+With _print_tree exported from Texinfo::Parser, can do
+
+p Texinfo::Parser::_print_tree ($VAR1->{'contents'}[1])

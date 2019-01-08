@@ -22,13 +22,6 @@ $result_trees{'image_link_prefix'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
-      'extra' => {
-        'brace_command_contents' => [
-          [
-            {}
-          ]
-        ]
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -41,7 +34,6 @@ $result_trees{'image_link_prefix'} = {
 };
 $result_trees{'image_link_prefix'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_link_prefix'}{'contents'}[0]{'args'}[0];
 $result_trees{'image_link_prefix'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'image_link_prefix'}{'contents'}[0];
-$result_trees{'image_link_prefix'}{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_link_prefix'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'image_link_prefix'}{'contents'}[0]{'parent'} = $result_trees{'image_link_prefix'};
 
 $result_texis{'image_link_prefix'} = '@image{image}';

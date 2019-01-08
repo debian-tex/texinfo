@@ -1,0 +1,60 @@
+This is an experimental program intended to replicate the functionality 
+in tp/Texinfo/Parser.pm.
+
+
+Set TEXINFO_XS_PARSER in environment to use.
+
+=====================================================================
+Notes -
+
+should be able to debug with gdb.  Add
+
+./configure PERL_EXT_CFLAGS='-g -O0'
+
+For individual tests can do "gdb perl" followed by e.g.
+
+(gdb) r -w t/27float.t comment_space_comand_in_float
+
+After a single run can set breakpoints.
+
+How to debug with valgrind -
+export PERL5LIB to the value in the makeinfo script
+
+with alias VAL='valgrind --log-file=val.log', can do e.g.
+
+VAL perl ./texi2any-C.pl texinfo.texi
+
+also
+
+valgrind --vgdb-error=0 perl texi2any-C.pl texinfo.texi
+
+=====================================================================
+
+To see contents of leaked memory
+
+Run with valgrind, e.g.
+
+s=../../tp
+export srcdir=$s builddir=. top_srcdir=../../ top_builddir=..
+export TEXINFO_XS_PARSER=1
+valgrind --leak-check=full --vgdb-error=0 --vgdb-stop-at=exit \
+  perl -w $s/t/18itemize.t
+
+at end of run, in gdb:
+
+(gdb) monitor leak_check definiteleak any
+==10409== 480 (80 direct, 400 indirect) bytes in 1 blocks are definitely lost in loss record 3,261 of 4,374
+
+...
+
+(gbd) monitor block_list 3261
+
+
+Get log files specific to tests with
+
+$ grep '^\['\' $s/t/18itemize.t | sed -e 's/^..//' -e 's/..$//' >test-list
+$ for t in `cat test-list` ;  do valgrind --log-file=val.log.$t  \
+--leak-check=full perl -w $s/t/18itemize.t $t ; done
+
+
+

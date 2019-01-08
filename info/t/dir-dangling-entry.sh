@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2016, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
 # Try to load a dir entry referring to a non-existing file
-$GINFO non-existent 2>&1 | grep 'No menu item'
-RETVAL=$?
+$ginfo non-existent 2>&1 | grep 'No menu item'
+retval=$?
 
 cleanup

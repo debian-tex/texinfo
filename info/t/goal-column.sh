@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,17 +16,16 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f intera -n 'Goal column'
 
-printf '/^Goal column test\r\016' >$PTY_TYPE
-printf '\005\016\016\006\006' >$PTY_TYPE
-printf '\rDq' >$PTY_TYPE
+printf '/^Goal column test\r\016' >$pty_type
+printf '\005\016\016\006\006' >$pty_type
+printf '\rDq' >$pty_type
 timeout_test
 
-diff $GINFO_OUTPUT $t/node-target
-RETVAL=$?
+diff $ginfo_output $t/node-target
+retval=$?
 
 cleanup
 

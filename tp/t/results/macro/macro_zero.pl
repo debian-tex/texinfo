@@ -41,9 +41,6 @@ $result_trees{'macro_zero'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -78,7 +75,6 @@ $result_trees{'macro_zero'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{
 $result_trees{'macro_zero'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_zero'}{'contents'}[0];
 $result_trees{'macro_zero'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_zero'}{'contents'}[0];
 $result_trees{'macro_zero'}{'contents'}[0]{'parent'} = $result_trees{'macro_zero'};
-$result_trees{'macro_zero'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'macro_zero'}{'contents'}[0];
 $result_trees{'macro_zero'}{'contents'}[1]{'parent'} = $result_trees{'macro_zero'};
 $result_trees{'macro_zero'}{'contents'}[2]{'parent'} = $result_trees{'macro_zero'};
 $result_trees{'macro_zero'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_zero'}{'contents'}[3];

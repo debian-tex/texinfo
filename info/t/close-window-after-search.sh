@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2017 Free Software Foundation, Inc.
+# Copyright (C) 2017-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,13 +16,12 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f intera
 
 # Split window, do a search, and then close the window the search took
 # place in.
-printf '\0302sblah\r\0300q' >$PTY_TYPE
+printf '\0302sblah\r\0300q' >$pty_type
 
 timeout_test
 cleanup

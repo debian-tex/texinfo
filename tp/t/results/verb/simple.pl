@@ -25,13 +25,15 @@ $result_trees{'simple'} = {
           ],
           'cmdname' => 'verb',
           'contents' => [],
+          'extra' => {
+            'delimiter' => '.'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
             'macro' => ''
           },
-          'parent' => {},
-          'type' => '.'
+          'parent' => {}
         }
       ],
       'parent' => {},

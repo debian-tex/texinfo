@@ -1,7 +1,7 @@
 use strict;
 
-use File::Spec;
-BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} }
+use lib '.';
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -200,18 +200,6 @@ Para.
 '@node Top
 @image{n_f_image}
 '],
-['image_file_search',
-'@node Top
-
-@c does not work in the standalone perl module
-@c @image{tp/t/include_dir/f--ile}
-
-@@image dot.
-@image{./tp/t/include_dir/f--ile}
-
-@@image dot parent.
-@image{../include_dir/f--ile}
-',{'include_directories' => ['.', '..', 't/include_dir']}],
 ['image_extension',
 '@node Top
 

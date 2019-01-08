@@ -17,14 +17,6 @@ $result_trees{'section_on_def_line'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
                       'parent' => {},
                       'text' => 'a b '
                     }
@@ -47,7 +39,7 @@ $result_trees{'section_on_def_line'} = {
             }
           ],
           'extra' => {
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {},
           'parent' => {}
@@ -61,26 +53,16 @@ $result_trees{'section_on_def_line'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 's'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
@@ -110,11 +92,7 @@ $result_trees{'section_on_def_line'} = {
         }
       ],
       'extra' => {
-        'invalid_nesting' => 1,
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 2,
       'line_nr' => {},
@@ -124,26 +102,18 @@ $result_trees{'section_on_def_line'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0];
 $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0];
-$result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[0];
 $result_trees{'section_on_def_line'}{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'};
-$result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_on_def_line'}{'contents'}[1];
 $result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0];
-$result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0];
-$result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1];
 $result_trees{'section_on_def_line'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1];
 $result_trees{'section_on_def_line'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1]{'contents'}[1];
 $result_trees{'section_on_def_line'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1];
 $result_trees{'section_on_def_line'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1];
-$result_trees{'section_on_def_line'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'section_on_def_line'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'section_on_def_line'}{'contents'}[1]{'line_nr'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'section_on_def_line'}{'contents'}[1]{'parent'} = $result_trees{'section_on_def_line'};
 
@@ -166,7 +136,9 @@ $result_sectioning{'section_on_def_line'} = {
   'section_childs' => [
     {
       'cmdname' => 'section',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 2,
       'number' => 1,
       'section_up' => {}
@@ -186,15 +158,6 @@ $result_errors{'section_on_def_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: @section seen before @end deffn
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@section seen before @end deffn',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':1: warning: @section should not appear in @deffn
 ',
     'file_name' => '',
@@ -202,6 +165,15 @@ $result_errors{'section_on_def_line'} = [
     'macro' => '',
     'text' => '@section should not appear in @deffn',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: @section seen before @end deffn
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@section seen before @end deffn',
+    'type' => 'error'
   },
   {
     'error_line' => ':5: unmatched `@end deffn\'

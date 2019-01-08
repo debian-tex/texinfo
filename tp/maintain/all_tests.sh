@@ -1,8 +1,7 @@
 #! /bin/sh
-# $Id: all_tests.sh 6139 2015-02-22 22:53:33Z karl $
 # Helper script for tests.
 #
-# Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2011-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -53,7 +52,8 @@ else
   . ./defs || exit 1
 
   if [ "$command" = 'generate' ]; then
-    for file in t/*.t; do
+    for file in $srcdir/t/*.t; do
+      set -e
       $PERL -w $file -g
     done
   elif [ "$command" = 'output' ]; then

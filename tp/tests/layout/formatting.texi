@@ -1,0 +1,137 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename formatting.info
+
+@dircategory Formatting @'e @code{@@ @TeX{}} test
+@direntry
+* Truc: (formatting).           The GNU documentation truc.
+* @code{@@ @'e @equiv{}}: (formatting).  ``@asis{--- something}'' 
+                           @command{cmd} @`a
+@end direntry
+@node Top
+@top Top section
+
+@menu
+* chapter::               chapter
+
+Menu comment
+
+* description:chapter2.   Chapter 2
+@end menu
+
+@include coverage_macro.texi
+
+@copying
+In copying
+@mymacro{}
+@end copying
+
+@titlepage
+@title title --a
+@subtitle formatting subtitle --a
+@subtitle subtitle 2 --a
+@author author1 --a with accents in name T@'e@,ca
+@author author2 --a
+In titlepage
+@mymacro{}
+
+Insercopying in titlepage
+@insertcopying
+@end titlepage
+
+Insertcopying in normal text
+@insertcopying
+
+Normal text
+@mymacro{}
+
+In example.
+@example
+@mymacro{}
+@end example
+
+@cindex t--ruc
+@cindex T--ruc
+@cindex .
+@cindex ?
+@cindex a
+@findex t--ruc
+@findex T--ruc
+@findex .
+@findex ?
+@findex a
+
+
+cp
+@printindex cp
+
+fn
+@printindex fn
+
+vr
+@printindex vr
+
+ky
+@printindex ky
+
+pg
+@printindex pg
+
+tp
+@printindex tp
+
+
+
+@node chapter
+@chapter chapter
+
+@footnote{in footnote}
+
+@format
+@menu 
+* s--ect@comma{}ion:: s--ect@comma{}ion
+
+Menu comment
+``simple-double--three---four----''@*
+
+@end menu
+@end format
+
+@node s--ect@comma{}ion
+@section A section
+
+@menu
+* subsection:: 
+
+@detailmenu
+In detailmenu
+
+* subsubsection ``simple-double--::
+* subsubsection three---four----''::
+@end detailmenu
+@end menu
+
+@node subsection
+@subsection subsection
+
+@menu
+* subsubsection ``simple-double--::
+* subsubsection three---four----''::
+@end menu
+
+@anchor{anchor}
+
+@node subsubsection ``simple-double--
+@subsubsection subsubsection ``simple-double--
+
+@node subsubsection three---four----''
+@subsubsection three---four----''
+
+@node chapter2
+@centerchap chapter 2
+
+@printindex cp
+@printindex fn
+
+@contents
+@shortcontents
+@bye

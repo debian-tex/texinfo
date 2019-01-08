@@ -1,8 +1,7 @@
-# $Id: 02coverage.t 6132 2015-02-18 00:07:53Z karl $
 use strict;
 
-use File::Spec;
-BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} }
+use lib '.';
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -544,10 +543,12 @@ In float with caption.
 '],
 ['invalid_U',
 '@U @U{} @U{z} @U{abc} @U{9999999999999} @U{110000} @U{10FFFF}
+@U{ 0023 } @U{ wxyz }
 '],
 ['test_errormsg',
 'Some text
 @errormsg{Text @~e @code{code}}
+@errormsg{  with surrounding spaces   }
 '],
 ['unknown_accents',
 '@"X @"x @"Q @"Y

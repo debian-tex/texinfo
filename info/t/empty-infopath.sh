@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2015, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2015-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $srcdir/t/Init-inter.inc
 
 # Check that an empty search path doesn't break.  There are no search
 # directories here because infopath-no-defaults=On in
@@ -24,7 +23,7 @@ srcdir=${srcdir:-.}
 INFOPATH=
 export INFOPATH
 run_ginfo
-printf q >$PTY_TYPE
+printf q >$pty_type
 timeout_test
 
 cleanup

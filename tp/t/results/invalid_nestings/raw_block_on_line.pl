@@ -12,14 +12,6 @@ $result_trees{'raw_block_on_line'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'cmdname' => 'tex',
               'contents' => [
                 {
@@ -32,9 +24,6 @@ $result_trees{'raw_block_on_line'} = {
                   'type' => 'empty_line_after_command'
                 }
               ],
-              'extra' => {
-                'spaces_after_command' => {}
-              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,
@@ -44,12 +33,12 @@ $result_trees{'raw_block_on_line'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'cindex',
       'extra' => {
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {},
       'parent' => {}
@@ -57,15 +46,11 @@ $result_trees{'raw_block_on_line'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_block_on_line'}{'contents'}[0];
+$result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'raw_block_on_line'}{'contents'}[0];
-$result_trees{'raw_block_on_line'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'raw_block_on_line'}{'contents'}[0]{'line_nr'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
+$result_trees{'raw_block_on_line'}{'contents'}[0]{'line_nr'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'raw_block_on_line'}{'contents'}[0]{'parent'} = $result_trees{'raw_block_on_line'};
 
 $result_texis{'raw_block_on_line'} = '@cindex @tex

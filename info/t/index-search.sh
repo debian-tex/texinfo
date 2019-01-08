@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,16 +16,15 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc 
 
 run_ginfo -f intera
 # Search in indices with 'virtual-index' command.  Go down to index
 # entry and select it.
-printf 'Ibc\r\016\016\016\016\016\016\016\016\016\rDq' >$PTY_TYPE
+printf 'Ibc\r\016\016\016\016\016\016\016\016\016\rDq' >$pty_type
 
 timeout_test
 
 # Return non-zero (test failure) if files differ
-diff $GINFO_OUTPUT $t/node-target
+diff $ginfo_output $t/node-target
 
 cleanup

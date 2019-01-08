@@ -57,31 +57,21 @@ $result_trees{'test_paths'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => './inc_file.texi'
-                },
-                {
-                  'parent' => {},
-                  'text' => ' 
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => ' 
+'
+              },
               'parent' => {},
               'type' => 'misc_line_arg'
             }
           ],
           'cmdname' => 'include',
           'extra' => {
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => './inc_file.texi'
           },
           'line_nr' => {
@@ -106,12 +96,8 @@ $result_trees{'test_paths'}{'contents'}[2]{'parent'} = $result_trees{'test_paths
 $result_trees{'test_paths'}{'contents'}[3]{'parent'} = $result_trees{'test_paths'};
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'test_paths'}{'contents'}[4];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'test_paths'}{'contents'}[4];
-$result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0];
-$result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0];
-$result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2];
-$result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'test_paths'}{'contents'}[4];
 $result_trees{'test_paths'}{'contents'}[4]{'parent'} = $result_trees{'test_paths'};
 

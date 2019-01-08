@@ -41,9 +41,6 @@ $result_trees{'macro_definition_in_include'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -78,7 +75,6 @@ $result_trees{'macro_definition_in_include'}{'contents'}[0]{'args'}[0]{'parent'}
 $result_trees{'macro_definition_in_include'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_definition_in_include'}{'contents'}[0];
 $result_trees{'macro_definition_in_include'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_definition_in_include'}{'contents'}[0];
 $result_trees{'macro_definition_in_include'}{'contents'}[0]{'parent'} = $result_trees{'macro_definition_in_include'};
-$result_trees{'macro_definition_in_include'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'macro_definition_in_include'}{'contents'}[0];
 $result_trees{'macro_definition_in_include'}{'contents'}[1]{'parent'} = $result_trees{'macro_definition_in_include'};
 $result_trees{'macro_definition_in_include'}{'contents'}[2]{'parent'} = $result_trees{'macro_definition_in_include'};
 $result_trees{'macro_definition_in_include'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_definition_in_include'}{'contents'}[3];

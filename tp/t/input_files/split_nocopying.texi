@@ -1,0 +1,18 @@
+\input texinfo
+@setfilename split-nocopying.info
+
+@node Top
+@top Top
+
+This is the top node.
+
+@menu
+* Ch1::
+@end menu
+
+@node Ch1
+@chapter Ch1
+
+First chapter.
+
+@bye

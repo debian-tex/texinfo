@@ -1,8 +1,6 @@
 /* window.c -- windows in Info.
-   $Id: window.c 7804 2017-05-20 15:51:33Z gavin $
 
-   Copyright 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008,
-   2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

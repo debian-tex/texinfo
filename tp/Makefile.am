@@ -1,8 +1,6 @@
-# $Id: Makefile.am 7948 2017-09-04 18:23:18Z gavin $
 # Makefile.am for texinfo/tp.
 #
-# Copyright 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
-# Inc.
+# Copyright 2011-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -12,7 +10,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-# Generated lists of tests and of test result files, and some rules.
+# Generated lists of tests and of test result files
 include $(srcdir)/Makefile.tres
 
 # Generated list of document string locale files and associated rules.
@@ -24,17 +22,17 @@ $(srcdir)/Makefile.tres: maintain/regenerate_file_lists.pl
 $(srcdir)/Makefile.docstr: maintain/regenerate_docstr.sh \
                            $(srcdir)/../po_document/LINGUAS
 	cd $(srcdir) \
-	&& $(SHELL) ./maintain/regenerate_docstr.sh "$@"
+	&& $(SHELL) ./maintain/regenerate_docstr.sh Makefile.docstr
 
 
 SUBDIRS =
 if ! DISABLE_XS
-SUBDIRS += Texinfo/Convert/XSParagraph Texinfo/MiscXS
+SUBDIRS += Texinfo/XS
 endif
 
 SUBDIRS += . tests
 
-DIST_SUBDIRS = Texinfo/Convert/XSParagraph Texinfo/MiscXS tests
+DIST_SUBDIRS = Texinfo/XS tests
 
 
 bin_SCRIPTS = texi2any
@@ -120,6 +118,7 @@ test_files = \
  t/README \
  t/include/a.txt \
  t/include/aa.txt \
+ t/include/my-bib-macros.texi \
  t/include/count_image.png \
  t/include/count_image.txt \
  t/include/count_image_text.txt \
@@ -142,6 +141,13 @@ test_files = \
  t/include/verbatim_encoded.texi \
  t/include/verbatim_encoded_latin1.texi \
  t/include/words.txt \
+ t/include_reference/f--ile.png \
+ t/include_reference/f--ile.txt \
+ t/include_reference/figure.txt \
+ t/include_reference/inc_file.texi \
+ t/include_reference/incl-incl.txi \
+ t/include_reference/macro_included.texi \
+ t/include_reference/section_file.texi \
  t/init/only_toc_out.init \
  t/init/cvs.init \
  t/init/redefine_need.init \
@@ -153,9 +159,11 @@ test_files = \
  t/init/test_renamed_nodes.init \
  t/init/misc_file_collision.init \
  t/init/l2h.init \
- t/manual_tree.pl \
  t/test_utils.pl \
  t/input_files/all_spaces.texi \
+ t/input_files/at_commands_in_refs.texi \
+ t/input_files/bib-example.texi \
+ t/input_files/cond.texi \
  t/input_files/char_latin1_utf8_in_refs.texi \
  t/input_files/char_latin1_latin1_in_refs.texi \
  t/input_files/char_latin2_latin2_in_refs.texi \
@@ -166,25 +174,61 @@ test_files = \
  t/input_files/contents_in_document.texi \
  t/input_files/contents_no_section.texi \
  t/input_files/cpp_lines.texi \
+ t/input_files/defxcond.texi \
  t/input_files/delcomment.texi \
+ t/input_files/direntry_dircategory.texi \
+ t/input_files/documentlanguage_set.texi \
+ t/input_files/double_index_entry.texi \
  t/input_files/east_asian_in_w.texi \
+ t/input_files/empty.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi \
+ t/input_files/equivalent_nodes.texi \
+ t/input_files/float_copying.texi \
+ t/input_files/formatting.texi \
+ t/input_files/glossary.texi \
+ t/input_files/index_no_node.texi \
+ t/input_files/index_split.texi \
  t/input_files/japanese_utf8.texi \
  t/input_files/japanese_shift_jis.texi \
+ t/input_files/more_sections_than_nodes.texi \
+ t/input_files/navigation.texi \
  t/input_files/nodequote.texi \
+ t/input_files/nodes_before_top.texi \
+ t/input_files/nodes_before_top_and_sections.texi \
+ t/input_files/no_monolithic.texi \
+ t/input_files/no_node.texi \
+ t/input_files/node_footnote.texi \
+ t/input_files/nodes_after_top_before_chapter.texi \
+ t/input_files/nodes_after_top_before_section.texi \
  t/input_files/non_break_spaces.texi \
+ t/input_files/one_line.texi \
+ t/input_files/one_line_no_content.texi \
+ t/input_files/placed_things_before_element.texi \
  t/input_files/sample_utf8.texi \
+ t/input_files/sectioning.texi \
+ t/input_files/simplest.texi \
+ t/input_files/split_chapter_index.texi \
+ t/input_files/split_nocopying.texi \
+ t/input_files/test_refs.texi \
+ t/input_files/test_two_include.texi \
+ t/input_files/top_node_up_explicit.texi \
+ t/input_files/top_node_up_implicit.texi \
+ t/input_files/two_footnotes_in_nodes.texi \
  t/input_files/things_before_setfilename_no_element.texi \
  t/input_files/things_before_setfilename.texi \
+ t/input_files/unknown_nodes_renamed.texi \
+ t/input_files/unknown_nodes_renamed-noderename.cnf \
+ t/input_files/version.texi \
+ t/input_files/htmlxref.cnf \
+ t/input_files/htmlxref-mono.cnf \
+ t/input_files/htmlxref-split.cnf \
  #
 
 document_domain = $(PACKAGE)_document
 
-# $(document_strings_mo_files) and $(test_copied_include_files) come from
-# the generated makefiles Makefile.docstr and Makefile.tres.
-all-local: maintain/catalog.xml $(document_strings_mo_files) \
-           $(test_copied_include_files)
+# $(document_strings_mo_files) comes from the generated Makefile.docstr.
+all-local: maintain/catalog.xml $(document_strings_mo_files)
 
 tp_tests = prove.sh
 
@@ -197,9 +241,6 @@ T_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) \
                        $(top_srcdir)/build-aux/tap-driver.sh
 T_LOG_COMPILER = $(PERL)
 AM_T_LOG_FLAGS = -w
-AM_T_LOG_FLAGS += -I .
-AM_T_LOG_FLAGS += -ITexinfo/Convert/XSParagraph
-AM_T_LOG_FLAGS += -I$(srcdir)/Texinfo/Convert/XSParagraph
 
 AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir; builddir="$(builddir)"; export buildir; top_builddir="$(top_builddir)"; export top_builddir;
 
@@ -230,8 +271,8 @@ EXTRA_DIST = \
   $(test_files) \
   $(tp_tests) \
   $(maintenance_files) \
-  $(perl_specific_files) \
   maintain/lib
+# $(perl_specific_files)
 
 # MANIFEST is used for the Perl module.
 # maintain/MANIFEST_generated_files is used for dist(check).
@@ -293,7 +334,7 @@ install-exec-hook:
 	-makeinfo_f=`echo makeinfo | sed -e '$(transform)'`; texi2any_f=`echo texi2any| sed -e '$(transform)'`; $(LN_S) $$texi2any_f $(DESTDIR)$(bindir)/$$makeinfo_f
 
 dist-hook:
-	rm -rf `find $(distdir)/maintain/lib -name .svn`
+	rm -rf `find $(distdir)/maintain/lib -name .git`
 
 uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/

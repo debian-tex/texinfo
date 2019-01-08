@@ -1,7 +1,6 @@
 /* tag.c -- Functions to handle Info tags.
-   $Id: tag.h 7656 2017-01-30 19:26:05Z gavin $
 
-   Copyright 2012, 2013, 2014 Free Software Foundation, Inc.
+   Copyright 2012-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

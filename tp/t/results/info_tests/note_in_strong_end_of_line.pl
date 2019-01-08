@@ -17,26 +17,16 @@ $result_trees{'note_in_strong_end_of_line'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -144,7 +134,7 @@ $result_trees{'note_in_strong_end_of_line'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -157,10 +147,7 @@ $result_trees{'note_in_strong_end_of_line'} = {
   'type' => 'document_root'
 };
 $result_trees{'note_in_strong_end_of_line'}{'contents'}[0]{'parent'} = $result_trees{'note_in_strong_end_of_line'};
-$result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1];
 $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0];
-$result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0];
-$result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1];
 $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1];
 $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'contents'}[1];
@@ -177,9 +164,8 @@ $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'contents'}[3]{'conte
 $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'contents'}[3];
 $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'contents'}[3];
 $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1];
-$result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'parent'} = $result_trees{'note_in_strong_end_of_line'};
 
 $result_texis{'note_in_strong_end_of_line'} = '@node Top
@@ -203,7 +189,8 @@ $result_sectioning{'note_in_strong_end_of_line'} = {};
 $result_nodes{'note_in_strong_end_of_line'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -222,7 +209,8 @@ $result_nodes{'note_in_strong_end_of_line'}{'node_up'}{'extra'}{'top_node_up'} =
 $result_menus{'note_in_strong_end_of_line'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

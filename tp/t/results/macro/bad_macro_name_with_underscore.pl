@@ -51,9 +51,6 @@ $result_trees{'bad_macro_name_with_underscore'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -68,7 +65,6 @@ $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0]{'args'}[2]{'paren
 $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0];
 $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0];
 $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0]{'parent'} = $result_trees{'bad_macro_name_with_underscore'};
-$result_trees{'bad_macro_name_with_underscore'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0];
 $result_trees{'bad_macro_name_with_underscore'}{'contents'}[1]{'parent'} = $result_trees{'bad_macro_name_with_underscore'};
 
 $result_texis{'bad_macro_name_with_underscore'} = '@macro the_macro {arg1, arg2}

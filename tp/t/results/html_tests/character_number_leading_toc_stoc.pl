@@ -17,35 +17,22 @@ $result_trees{'character_number_leading_toc_stoc'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
       'contents' => [],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'line_nr' => {
@@ -60,35 +47,22 @@ $result_trees{'character_number_leading_toc_stoc'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => '0'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
       'contents' => [],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 1,
       'line_nr' => {
@@ -104,35 +78,22 @@ $result_trees{'character_number_leading_toc_stoc'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => '_'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'unnumbered',
       'contents' => [],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 1,
       'line_nr' => {
@@ -147,26 +108,16 @@ $result_trees{'character_number_leading_toc_stoc'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => '?'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
@@ -225,10 +176,7 @@ $result_trees{'character_number_leading_toc_stoc'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 2,
       'line_nr' => {
@@ -242,34 +190,16 @@ $result_trees{'character_number_leading_toc_stoc'} = {
   'type' => 'document_root'
 };
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[0]{'parent'} = $result_trees{'character_number_leading_toc_stoc'};
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[1];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[1]{'args'}[0];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[1]{'args'}[0];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[1]{'args'}[0];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[1];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[1]{'parent'} = $result_trees{'character_number_leading_toc_stoc'};
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[2];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[2]{'args'}[0];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[2]{'args'}[0];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[2]{'args'}[0];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[2];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[2]{'parent'} = $result_trees{'character_number_leading_toc_stoc'};
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[3];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[3]{'args'}[0];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[3]{'args'}[0];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[3]{'args'}[0];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[3];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[3]{'args'}[0]{'contents'}[1];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[3]{'parent'} = $result_trees{'character_number_leading_toc_stoc'};
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'args'}[0];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'args'}[0];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'args'}[0];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'contents'}[1];
@@ -278,8 +208,6 @@ $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'contents'}[2]
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'contents'}[3];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'args'}[0]{'contents'}[1];
-$result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'character_number_leading_toc_stoc'}{'contents'}[4]{'parent'} = $result_trees{'character_number_leading_toc_stoc'};
 
 $result_texis{'character_number_leading_toc_stoc'} = '@top top
@@ -312,12 +240,16 @@ $result_sectioning{'character_number_leading_toc_stoc'} = {
   'section_childs' => [
     {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 0,
       'section_childs' => [
         {
           'cmdname' => 'chapter',
-          'extra' => {},
+          'extra' => {
+            'spaces_before_argument' => ' '
+          },
           'level' => 1,
           'number' => 1,
           'section_up' => {},
@@ -326,12 +258,16 @@ $result_sectioning{'character_number_leading_toc_stoc'} = {
         },
         {
           'cmdname' => 'unnumbered',
-          'extra' => {},
+          'extra' => {
+            'spaces_before_argument' => ' '
+          },
           'level' => 1,
           'section_childs' => [
             {
               'cmdname' => 'section',
-              'extra' => {},
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
               'level' => 2,
               'section_up' => {}
             }
@@ -404,16 +340,12 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="top"></a>
-<h1 class="top">top</h1>
-<a name="g_t0"></a>
-<h2 class="chapter">1 0</h2>
-<a name="g_t_005f"></a>
-<h2 class="unnumbered">_</h2>
-<a name="g_t_003f"></a>
-<h3 class="section">?</h3>
+<span id="top"></span><h1 class="top">top</h1>
+<span id="g_t0"></span><h2 class="chapter">1 0</h2>
+<span id="g_t_005f"></span><h2 class="unnumbered">_</h2>
+<span id="g_t_003f"></span><h3 class="section">?</h3>
 
-<a name="SEC_Contents"></a>
+<span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
@@ -428,7 +360,7 @@ ul.no-bullet {list-style: none}
 </div>
 
 
-<a name="SEC_Overview"></a>
+<span id="SEC_Overview"></span>
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
 
 <div class="shortcontents">

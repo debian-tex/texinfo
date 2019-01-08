@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 # Try to stop a "man" command finding a man page called "intera"
 MANPATH=.; export MANPATH
@@ -25,11 +24,11 @@ MANPATH=.; export MANPATH
 # to that file without loading a menu of matching files.  This relies
 # on there being no "intera" entry in "dir".
 run_ginfo --all intera
-printf 'Dq' >$PTY_TYPE
+printf 'Dq' >$pty_type
 timeout_test
 
-grep '^File: intera.info,  Node: Top' $GINFO_OUTPUT
-RETVAL=$?
+grep '^File: intera.info,  Node: Top' $ginfo_output
+retval=$?
 
 cleanup
 

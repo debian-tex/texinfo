@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,12 +16,11 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -v scroll-last-node=Top -f no-xref.info
 # Check that pressing tab in a file with no cross-references or menus
 # doesn't cause an infinite loop
-printf '\tq' >$PTY_TYPE
+printf '\tq' >$pty_type
 timeout_test
 
 cleanup

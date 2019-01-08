@@ -74,26 +74,16 @@ $result_trees{'section_in_math'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'sec1'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
@@ -116,11 +106,6 @@ $result_trees{'section_in_math'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_before_argument'
-                    },
-                    {
-                      'parent' => {},
                       'text' => 'in math
 '
                     },
@@ -138,7 +123,7 @@ $result_trees{'section_in_math'} = {
               'cmdname' => 'math',
               'contents' => [],
               'extra' => {
-                'spaces_before_argument' => {}
+                'spaces_before_argument' => ' '
               },
               'line_nr' => {
                 'file_name' => '',
@@ -153,10 +138,7 @@ $result_trees{'section_in_math'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 2,
       'line_nr' => {
@@ -172,36 +154,22 @@ $result_trees{'section_in_math'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'sec2'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
       'contents' => [],
       'extra' => {
-        'invalid_nesting' => 1,
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 2,
       'line_nr' => {
@@ -226,30 +194,18 @@ $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'l
 $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[0];
 $result_trees{'section_in_math'}{'contents'}[0]{'parent'} = $result_trees{'section_in_math'};
-$result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_in_math'}{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0];
-$result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0];
-$result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1];
-$result_trees{'section_in_math'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'section_in_math'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'section_in_math'}{'contents'}[1]{'parent'} = $result_trees{'section_in_math'};
-$result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_in_math'}{'contents'}[2];
 $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0];
-$result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0];
-$result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0];
 $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[2];
-$result_trees{'section_in_math'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'section_in_math'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'section_in_math'}{'contents'}[2]{'parent'} = $result_trees{'section_in_math'};
 
 $result_texis{'section_in_math'} = '
@@ -280,14 +236,18 @@ $result_sectioning{'section_in_math'} = {
   'section_childs' => [
     {
       'cmdname' => 'section',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 2,
       'number' => 1,
       'section_up' => {}
     },
     {
       'cmdname' => 'section',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 2,
       'number' => 2,
       'section_prev' => {},
@@ -321,15 +281,6 @@ $result_errors{'section_in_math'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':6: @section seen before @math closing brace
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => '@section seen before @math closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':8: warning: @section should not appear in @math
 ',
     'file_name' => '',
@@ -337,6 +288,15 @@ $result_errors{'section_in_math'} = [
     'macro' => '',
     'text' => '@section should not appear in @math',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':6: @section seen before @math closing brace
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => '@section seen before @math closing brace',
+    'type' => 'error'
   }
 ];
 

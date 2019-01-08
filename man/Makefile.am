@@ -1,8 +1,6 @@
-# $Id: Makefile.am 6772 2015-11-09 22:46:37Z gavin $
 # Makefile.am for texinfo/man.
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
-# 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2002-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without

@@ -18,31 +18,21 @@ $result_trees{'bad_line'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'garbage-on-line =cmd garbage'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'alias',
       'extra' => {
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -61,14 +51,6 @@ $result_trees{'bad_line'} = {
       'args' => [
         {
           'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'parent' => {},
               'text' => 'garbage-on-line =cmd '
@@ -94,21 +76,19 @@ $result_trees{'bad_line'} = {
                 'macro' => ''
               },
               'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'alias',
       'extra' => {
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {},
       'parent' => {}
@@ -117,24 +97,16 @@ $result_trees{'bad_line'} = {
   'type' => 'text_root'
 };
 $result_trees{'bad_line'}{'contents'}[0]{'parent'} = $result_trees{'bad_line'};
-$result_trees{'bad_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'bad_line'}{'contents'}[1];
 $result_trees{'bad_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_line'}{'contents'}[1]{'args'}[0];
-$result_trees{'bad_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_line'}{'contents'}[1]{'args'}[0];
-$result_trees{'bad_line'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'bad_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'bad_line'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad_line'}{'contents'}[1];
-$result_trees{'bad_line'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'bad_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'bad_line'}{'contents'}[1]{'parent'} = $result_trees{'bad_line'};
 $result_trees{'bad_line'}{'contents'}[2]{'parent'} = $result_trees{'bad_line'};
-$result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'bad_line'}{'contents'}[3];
 $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_line'}{'contents'}[3]{'args'}[0];
+$result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_line'}{'contents'}[3]{'args'}[0];
-$result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[2];
-$result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'bad_line'}{'contents'}[3]{'args'}[0];
-$result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'bad_line'}{'contents'}[3]{'args'}[0];
 $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'bad_line'}{'contents'}[3];
-$result_trees{'bad_line'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'bad_line'}{'contents'}[3]{'line_nr'} = $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'line_nr'};
+$result_trees{'bad_line'}{'contents'}[3]{'line_nr'} = $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'bad_line'}{'contents'}[3]{'parent'} = $result_trees{'bad_line'};
 
 $result_texis{'bad_line'} = '

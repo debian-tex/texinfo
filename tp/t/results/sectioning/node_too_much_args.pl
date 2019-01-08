@@ -17,57 +17,49 @@ $result_trees{'node_too_much_args'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Top'
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_before_argument'
-            }
-          ],
+          'contents' => [],
+          'extra' => {
+            'spaces_before_argument' => ' '
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_before_argument'
-            }
-          ],
+          'contents' => [],
+          'extra' => {
+            'spaces_before_argument' => ' '
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
             {
               'parent' => {},
-              'text' => '  ',
-              'type' => 'empty_spaces_before_argument'
+              'text' => '('
             },
             {
               'parent' => {},
-              'text' => '(dir)'
+              'text' => 'dir'
+            },
+            {
+              'parent' => {},
+              'text' => ')'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => '  '
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -85,16 +77,13 @@ $result_trees{'node_too_much_args'} = {
           undef,
           {
             'manual_content' => [
-              {
-                'parent' => {},
-                'text' => 'dir'
-              }
+              {}
             ],
             'top_node_up' => {}
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -107,22 +96,18 @@ $result_trees{'node_too_much_args'} = {
   'type' => 'document_root'
 };
 $result_trees{'node_too_much_args'}{'contents'}[0]{'parent'} = $result_trees{'node_too_much_args'};
-$result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'node_too_much_args'}{'contents'}[1];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[0];
-$result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[0];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node_too_much_args'}{'contents'}[1];
-$result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[1];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'node_too_much_args'}{'contents'}[1];
-$result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[2];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'node_too_much_args'}{'contents'}[1];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3];
+$result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'node_too_much_args'}{'contents'}[1];
-$result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0]{'parent'} = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3];
+$result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'contents'}[1];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'top_node_up'} = $result_trees{'node_too_much_args'}{'contents'}[1];
-$result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'parent'} = $result_trees{'node_too_much_args'};
 
 $result_texis{'node_too_much_args'} = '@node Top, , ,  (dir)';
@@ -135,7 +120,8 @@ $result_sectioning{'node_too_much_args'} = {};
 $result_nodes{'node_too_much_args'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -153,7 +139,8 @@ $result_nodes{'node_too_much_args'}{'node_up'}{'extra'}{'top_node_up'} = $result
 $result_menus{'node_too_much_args'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

@@ -7,7 +7,6 @@
 * Texinfo@asis{::}Convert@asis{::}TexinfoXML DESCRIPTION::
 * Texinfo@asis{::}Convert@asis{::}TexinfoXML METHODS::
 * Texinfo@asis{::}Convert@asis{::}TexinfoXML AUTHOR::
-* Texinfo@asis{::}Convert@asis{::}TexinfoXML COPYRIGHT AND LICENSE::
 @end menu
 
 @node Texinfo::Convert::TexinfoXML NAME
@@ -74,14 +73,4 @@ portions.  For a full document use @code{convert}.
 @section AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
-
-@node Texinfo::Convert::TexinfoXML COPYRIGHT AND LICENSE
-@section COPYRIGHT AND LICENSE
-
-Copyright 2015 Free Software Foundation, Inc.
-
-This library is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or (at 
-your option) any later version.
 

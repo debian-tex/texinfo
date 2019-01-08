@@ -1,7 +1,7 @@
 use strict;
 
-use File::Spec;
-BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} }
+use lib '.';
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -222,8 +222,6 @@ Para
 @unmacro  ggg
 
 @clickstyle  @arrow
-
-@cropmarks  after  cropmarks.
 
 @node a ,(b),(c) , (d)   
 

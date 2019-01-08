@@ -17,11 +17,6 @@ $result_trees{'empty_commands'} = {
       ],
       'cmdname' => 'titlefont',
       'contents' => [],
-      'extra' => {
-        'brace_command_contents' => [
-          undef
-        ]
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -52,11 +47,6 @@ $result_trees{'empty_commands'} = {
           ],
           'cmdname' => 'uref',
           'contents' => [],
-          'extra' => {
-            'brace_command_contents' => [
-              undef
-            ]
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 3,
@@ -79,9 +69,6 @@ $result_trees{'empty_commands'} = {
           'cmdname' => 'abbr',
           'contents' => [],
           'extra' => {
-            'brace_command_contents' => [
-              undef
-            ],
             'explanation_contents' => []
           },
           'line_nr' => {},
@@ -101,11 +88,6 @@ $result_trees{'empty_commands'} = {
           ],
           'cmdname' => 'email',
           'contents' => [],
-          'extra' => {
-            'brace_command_contents' => [
-              undef
-            ]
-          },
           'line_nr' => {},
           'parent' => {}
         },
@@ -187,9 +169,11 @@ $result_trees{'empty_commands'} = {
           ],
           'cmdname' => 'verb',
           'contents' => [],
+          'extra' => {
+            'delimiter' => ';'
+          },
           'line_nr' => {},
-          'parent' => {},
-          'type' => ';'
+          'parent' => {}
         },
         {
           'parent' => {},

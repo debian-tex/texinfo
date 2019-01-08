@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,21 +16,20 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f split 'Second'
 
 # Follow a menu entry in a split file to a node in a different subfile from
 # the one containing "Top".  Check that we arrived properly and remembered
 # that we are in a split file by going back to "Top" with "t".
-printf tDq >$PTY_TYPE
+printf tDq >$pty_type
 timeout_test
 
-if test ! -f $GINFO_OUTPUT; then
-  RETVAL=1
+if test ! -f $ginfo_output; then
+  retval=1
 else
-  grep 'Node: Top' $GINFO_OUTPUT
-  RETVAL=$?
+  grep 'Node: Top' $ginfo_output
+  retval=$?
 fi
 
 cleanup

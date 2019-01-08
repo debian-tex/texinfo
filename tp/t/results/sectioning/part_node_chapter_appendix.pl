@@ -18,26 +18,16 @@ $result_trees{'part_node_chapter_appendix'} = [
           {
             'contents' => [
               {
-                'extra' => {
-                  'command' => {}
-                },
-                'parent' => {},
-                'text' => ' ',
-                'type' => 'empty_spaces_after_command'
-              },
-              {
                 'parent' => {},
                 'text' => 'Top'
-              },
-              {
-                'parent' => {},
-                'text' => '
-',
-                'type' => 'spaces_at_end'
               }
             ],
+            'extra' => {
+              'spaces_after_argument' => '
+'
+            },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -53,7 +43,7 @@ $result_trees{'part_node_chapter_appendix'} = [
             }
           ],
           'normalized' => 'Top',
-          'spaces_after_command' => {}
+          'spaces_before_argument' => ' '
         },
         'line_nr' => {
           'file_name' => '',
@@ -67,26 +57,16 @@ $result_trees{'part_node_chapter_appendix'} = [
           {
             'contents' => [
               {
-                'extra' => {
-                  'command' => {}
-                },
-                'parent' => {},
-                'text' => ' ',
-                'type' => 'empty_spaces_after_command'
-              },
-              {
                 'parent' => {},
                 'text' => 'top'
-              },
-              {
-                'parent' => {},
-                'text' => '
-',
-                'type' => 'spaces_at_end'
               }
             ],
+            'extra' => {
+              'spaces_after_argument' => '
+'
+            },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'top',
@@ -171,33 +151,22 @@ $result_trees{'part_node_chapter_appendix'} = [
                   {
                     'contents' => [
                       {
-                        'extra' => {
-                          'command' => {}
-                        },
-                        'parent' => {},
-                        'text' => ' ',
-                        'type' => 'empty_spaces_after_command'
-                      },
-                      {
                         'parent' => {},
                         'text' => 'menu'
-                      },
-                      {
-                        'parent' => {},
-                        'text' => '
-',
-                        'type' => 'spaces_at_end'
                       }
                     ],
+                    'extra' => {
+                      'spaces_after_argument' => '
+'
+                    },
                     'parent' => {},
-                    'type' => 'misc_line_arg'
+                    'type' => 'line_arg'
                   }
                 ],
                 'cmdname' => 'end',
                 'extra' => {
-                  'command' => {},
                   'command_argument' => 'menu',
-                  'spaces_after_command' => {},
+                  'spaces_before_argument' => ' ',
                   'text_arg' => 'menu'
                 },
                 'line_nr' => {
@@ -209,8 +178,7 @@ $result_trees{'part_node_chapter_appendix'} = [
               }
             ],
             'extra' => {
-              'end_command' => {},
-              'spaces_after_command' => {}
+              'end_command' => {}
             },
             'line_nr' => {
               'file_name' => '',
@@ -227,10 +195,7 @@ $result_trees{'part_node_chapter_appendix'} = [
           }
         ],
         'extra' => {
-          'misc_content' => [
-            {}
-          ],
-          'spaces_after_command' => {}
+          'spaces_before_argument' => ' '
         },
         'level' => 0,
         'line_nr' => {
@@ -255,26 +220,16 @@ $result_trees{'part_node_chapter_appendix'} = [
           {
             'contents' => [
               {
-                'extra' => {
-                  'command' => {}
-                },
-                'parent' => {},
-                'text' => ' ',
-                'type' => 'empty_spaces_after_command'
-              },
-              {
                 'parent' => {},
                 'text' => 'Part 1'
-              },
-              {
-                'parent' => {},
-                'text' => '
-',
-                'type' => 'spaces_at_end'
               }
             ],
+            'extra' => {
+              'spaces_after_argument' => '
+'
+            },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'part',
@@ -287,10 +242,7 @@ $result_trees{'part_node_chapter_appendix'} = [
           }
         ],
         'extra' => {
-          'misc_content' => [
-            {}
-          ],
-          'spaces_after_command' => {}
+          'spaces_before_argument' => ' '
         },
         'level' => 0,
         'line_nr' => {
@@ -305,26 +257,16 @@ $result_trees{'part_node_chapter_appendix'} = [
           {
             'contents' => [
               {
-                'extra' => {
-                  'command' => {}
-                },
-                'parent' => {},
-                'text' => ' ',
-                'type' => 'empty_spaces_after_command'
-              },
-              {
                 'parent' => {},
                 'text' => 'chapter node'
-              },
-              {
-                'parent' => {},
-                'text' => '
-',
-                'type' => 'spaces_at_end'
               }
             ],
+            'extra' => {
+              'spaces_after_argument' => '
+'
+            },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -340,7 +282,7 @@ $result_trees{'part_node_chapter_appendix'} = [
             }
           ],
           'normalized' => 'chapter-node',
-          'spaces_after_command' => {}
+          'spaces_before_argument' => ' '
         },
         'line_nr' => {
           'file_name' => '',
@@ -354,26 +296,16 @@ $result_trees{'part_node_chapter_appendix'} = [
           {
             'contents' => [
               {
-                'extra' => {
-                  'command' => {}
-                },
-                'parent' => {},
-                'text' => ' ',
-                'type' => 'empty_spaces_after_command'
-              },
-              {
                 'parent' => {},
                 'text' => 'chapter'
-              },
-              {
-                'parent' => {},
-                'text' => '
-',
-                'type' => 'spaces_at_end'
               }
             ],
+            'extra' => {
+              'spaces_after_argument' => '
+'
+            },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'chapter',
@@ -387,10 +319,7 @@ $result_trees{'part_node_chapter_appendix'} = [
         ],
         'extra' => {
           'associated_part' => {},
-          'misc_content' => [
-            {}
-          ],
-          'spaces_after_command' => {}
+          'spaces_before_argument' => ' '
         },
         'level' => 1,
         'line_nr' => {
@@ -417,35 +346,22 @@ $result_trees{'part_node_chapter_appendix'} = [
           {
             'contents' => [
               {
-                'extra' => {
-                  'command' => {}
-                },
-                'parent' => {},
-                'text' => ' ',
-                'type' => 'empty_spaces_after_command'
-              },
-              {
                 'parent' => {},
                 'text' => 'Appendix'
-              },
-              {
-                'parent' => {},
-                'text' => '
-',
-                'type' => 'spaces_at_end'
               }
             ],
+            'extra' => {
+              'spaces_after_argument' => '
+'
+            },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'appendix',
         'contents' => [],
         'extra' => {
-          'misc_content' => [
-            {}
-          ],
-          'spaces_after_command' => {}
+          'spaces_before_argument' => ' '
         },
         'level' => 1,
         'line_nr' => {
@@ -466,19 +382,12 @@ $result_trees{'part_node_chapter_appendix'} = [
   }
 ];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1];
@@ -493,63 +402,36 @@ $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'co
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[3];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2]{'parent'} = $result_trees{'part_node_chapter_appendix'}[0];
 $result_trees{'part_node_chapter_appendix'}[0]{'extra'}{'element_command'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2];
 $result_trees{'part_node_chapter_appendix'}[0]{'extra'}{'node'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[1];
 $result_trees{'part_node_chapter_appendix'}[0]{'extra'}{'section'} = $result_trees{'part_node_chapter_appendix'}[0]{'contents'}[2];
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0];
 $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0];
 $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0];
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1];
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1];
 $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1];
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1];
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2];
 $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2];
 $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2];
 $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'extra'}{'associated_part'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[0];
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2]{'parent'} = $result_trees{'part_node_chapter_appendix'}[1];
 $result_trees{'part_node_chapter_appendix'}[1]{'element_prev'} = $result_trees{'part_node_chapter_appendix'}[0];
 $result_trees{'part_node_chapter_appendix'}[1]{'extra'}{'element_command'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2];
 $result_trees{'part_node_chapter_appendix'}[1]{'extra'}{'node'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[1];
 $result_trees{'part_node_chapter_appendix'}[1]{'extra'}{'section'} = $result_trees{'part_node_chapter_appendix'}[1]{'contents'}[2];
-$result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0];
 $result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0];
-$result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0]{'parent'} = $result_trees{'part_node_chapter_appendix'}[2];
 $result_trees{'part_node_chapter_appendix'}[2]{'element_prev'} = $result_trees{'part_node_chapter_appendix'}[1];
 $result_trees{'part_node_chapter_appendix'}[2]{'extra'}{'element_command'} = $result_trees{'part_node_chapter_appendix'}[2]{'contents'}[0];
@@ -595,9 +477,11 @@ $result_sectioning{'part_node_chapter_appendix'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
-            'normalized' => 'Top'
+            'normalized' => 'Top',
+            'spaces_before_argument' => ' '
           }
-        }
+        },
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'section_up' => {}
@@ -611,17 +495,20 @@ $result_sectioning{'part_node_chapter_appendix'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
-                'normalized' => 'chapter-node'
+                'normalized' => 'chapter-node',
+                'spaces_before_argument' => ' '
               }
             },
-            'associated_part' => {}
+            'associated_part' => {},
+            'spaces_before_argument' => ' '
           },
           'level' => 1,
           'number' => 1,
           'section_up' => {},
           'toplevel_prev' => {},
           'toplevel_up' => {}
-        }
+        },
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'section_childs' => [
@@ -632,7 +519,9 @@ $result_sectioning{'part_node_chapter_appendix'} = {
     },
     {
       'cmdname' => 'appendix',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 1,
       'number' => 'A',
       'section_prev' => {},
@@ -660,10 +549,13 @@ $result_nodes{'part_node_chapter_appendix'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 0
     },
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'menu_child' => {
     'cmdname' => 'node',
@@ -673,14 +565,18 @@ $result_nodes{'part_node_chapter_appendix'} = {
         'extra' => {
           'associated_part' => {
             'cmdname' => 'part',
-            'extra' => {},
+            'extra' => {
+              'spaces_before_argument' => ' '
+            },
             'level' => 0
-          }
+          },
+          'spaces_before_argument' => ' '
         },
         'level' => 1,
         'number' => 1
       },
-      'normalized' => 'chapter-node'
+      'normalized' => 'chapter-node',
+      'spaces_before_argument' => ' '
     },
     'node_prev' => {},
     'node_up' => {}
@@ -692,8 +588,8 @@ $result_nodes{'part_node_chapter_appendix'} = {
         'end_command' => {
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'menu',
+            'spaces_before_argument' => ' ',
             'text_arg' => 'menu'
           }
         }
@@ -715,19 +611,20 @@ $result_nodes{'part_node_chapter_appendix'} = {
 };
 $result_nodes{'part_node_chapter_appendix'}{'menu_child'}{'node_prev'} = $result_nodes{'part_node_chapter_appendix'};
 $result_nodes{'part_node_chapter_appendix'}{'menu_child'}{'node_up'} = $result_nodes{'part_node_chapter_appendix'};
-$result_nodes{'part_node_chapter_appendix'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'part_node_chapter_appendix'}{'menus'}[0];
 $result_nodes{'part_node_chapter_appendix'}{'node_next'} = $result_nodes{'part_node_chapter_appendix'}{'menu_child'};
 $result_nodes{'part_node_chapter_appendix'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'part_node_chapter_appendix'};
 
 $result_menus{'part_node_chapter_appendix'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
-      'normalized' => 'chapter-node'
+      'normalized' => 'chapter-node',
+      'spaces_before_argument' => ' '
     },
     'menu_up' => {},
     'menu_up_hash' => {
@@ -759,7 +656,9 @@ $result_elements{'part_node_chapter_appendix'} = [
                   },
                   'element_command' => {
                     'cmdname' => 'appendix',
-                    'extra' => {},
+                    'extra' => {
+                      'spaces_before_argument' => ' '
+                    },
                     'level' => 1,
                     'number' => 'A'
                   },
@@ -778,9 +677,12 @@ $result_elements{'part_node_chapter_appendix'} = [
               'extra' => {
                 'associated_part' => {
                   'cmdname' => 'part',
-                  'extra' => {},
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
                   'level' => 0
-                }
+                },
+                'spaces_before_argument' => ' '
               },
               'level' => 1,
               'number' => 1
@@ -788,12 +690,14 @@ $result_elements{'part_node_chapter_appendix'} = [
             'node' => {
               'cmdname' => 'node',
               'extra' => {
-                'normalized' => 'chapter-node'
+                'normalized' => 'chapter-node',
+                'spaces_before_argument' => ' '
               },
               'menu_up' => {
                 'cmdname' => 'node',
                 'extra' => {
-                  'normalized' => 'Top'
+                  'normalized' => 'Top',
+                  'spaces_before_argument' => ' '
                 },
                 'menu_child' => {}
               },
@@ -824,7 +728,9 @@ $result_elements{'part_node_chapter_appendix'} = [
       },
       'element_command' => {
         'cmdname' => 'top',
-        'extra' => {},
+        'extra' => {
+          'spaces_before_argument' => ' '
+        },
         'level' => 0
       },
       'node' => {},
@@ -962,13 +868,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="top"></span><h1 class="top">top</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#chapter-node" accesskey="1">chapter node</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -976,20 +880,16 @@ Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a>, Up: <a 
 </table>
 
 <hr>
-<a name="Part-1"></a>
-<div class="header">
+<span id="Part-1"></span><div class="header">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h1 class="part">Part 1</h1>
 <hr>
 
-<a name="chapter-node"></a>
-<a name="chapter"></a>
-<h2 class="chapter">1 chapter</h2>
+<span id="chapter-node"></span><span id="chapter"></span><h2 class="chapter">1 chapter</h2>
 
-<a name="Appendix"></a>
-<h2 class="appendix">Appendix A Appendix</h2>
+<span id="Appendix"></span><h2 class="appendix">Appendix A Appendix</h2>
 <hr>
 
 

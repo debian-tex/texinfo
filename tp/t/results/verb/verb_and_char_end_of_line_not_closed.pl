@@ -42,13 +42,15 @@ $result_trees{'verb_and_char_end_of_line_not_closed'} = {
           ],
           'cmdname' => 'verb',
           'contents' => [],
+          'extra' => {
+            'delimiter' => '*'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
             'macro' => ''
           },
-          'parent' => {},
-          'type' => '*'
+          'parent' => {}
         }
       ],
       'parent' => {},

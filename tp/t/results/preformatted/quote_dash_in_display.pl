@@ -47,33 +47,22 @@ $result_trees{'quote_dash_in_display'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'display'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'display',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'display'
           },
           'line_nr' => {
@@ -85,8 +74,7 @@ $result_trees{'quote_dash_in_display'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -104,16 +92,10 @@ $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[0]{'parent'} =
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[1];
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[1];
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1];
-$result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2];
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2];
-$result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'quote_dash_in_display'}{'contents'}[1];
-$result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1];
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2];
-$result_trees{'quote_dash_in_display'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[0];
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'parent'} = $result_trees{'quote_dash_in_display'};
 
 $result_texis{'quote_dash_in_display'} = '

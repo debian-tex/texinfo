@@ -1,13 +1,11 @@
 use strict;
 
-BEGIN {
-  require Texinfo::ModulePath;
-  Texinfo::ModulePath::init(undef, undef, 'updirs' => 2);
-}
+use lib '.';
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
 use Test::More;
 
-BEGIN { plan tests => 63; }
+BEGIN { plan tests => 59; }
 
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Converter;
@@ -23,10 +21,11 @@ sub test_accent_stack ($)
   my $texi = $test->[0];
   my $name = $test->[1]; 
   my $reference = $test->[2]; 
-  my $parser = Texinfo::Parser::parser({'context' => 'preformatted'});
-  my $tree = $parser->parse_texi_text($texi);
+  my $parser = Texinfo::Parser::parser();
+  my $text_root = $parser->parse_texi_text($texi);
+  my $tree = $text_root->{'contents'}->[0]->{'contents'}->[0];
   my ($contents, $commands_stack) = 
-    Texinfo::Common::find_innermost_accent_contents($tree->{'contents'}->[0]);
+    Texinfo::Common::find_innermost_accent_contents($tree);
   my $text = Texinfo::Convert::Text::convert({'contents' => $contents});
   my @stack = map {$_->{'cmdname'}} @$commands_stack;
   if (defined($reference)) {
@@ -71,9 +70,9 @@ sub test_enable_encoding ($)
   my $reference_xml = $test->[3];
   my $reference_xml_entity = $test->[4];
   my $reference_unicode = $test->[5];
-  my $parser = Texinfo::Parser::parser({'context' => 'preformatted'});
+  my $parser = Texinfo::Parser::parser();
   my $text_root = $parser->parse_texi_text($texi);
-  my $tree = $text_root->{'contents'}->[0];
+  my $tree = $text_root->{'contents'}->[0]->{'contents'}->[0];
 
   my ($contents, $commands_stack) = 
     Texinfo::Common::find_innermost_accent_contents($tree);
@@ -167,7 +166,6 @@ foreach my $test (
   ['@v{@\'{r}}',            'utf8 possible inside', 'r\'<', 'r\'&lt;', 
                                                     '&#341;&lt;', 
                                                     chrx('0155','030c')],
-  ['@={@code{@\'{@`{r}}}}', 'command in accent',   '=', '=', '=', chrx('0304')]
             ) {
   test_enable_encoding($test);
 }

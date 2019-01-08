@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,5 +19,5 @@ srcdir=${srcdir:-.}
 
 # Load a node with a full stop in its name in loaded file using --node.
 
-$GINFO --output - --file file-menu --node Has.dot \
+$ginfo --output - --file file-menu --node Has.dot \
   | grep 'Node: Has.dot'

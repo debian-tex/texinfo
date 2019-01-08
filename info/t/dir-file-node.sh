@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,5 +20,5 @@ srcdir=${srcdir:-.}
 # Load a node in loaded file using --node, without using --file to
 # specify the desired file.
 
-$GINFO --output - file-menu --node Unreachable \
+$ginfo --output - file-menu --node Unreachable \
   | grep 'not linked to elsewhere'

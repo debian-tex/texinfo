@@ -1,8 +1,6 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c 7769 2017-05-03 19:47:57Z gavin $
 
-   Copyright 1993, 1997, 2001, 2002, 2004, 2007, 2008, 2011, 2013,
-   2014, 2015, 2017 Free Software Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -52,7 +50,7 @@ static char *info_scroll_choices[] = { "Continuous", "Next Only",
 /* Choices for the scroll-last-node variable */
 static char *scroll_last_node_choices[] = { "Stop", "Top", NULL };
 
-/* Choices for, and indicator of, renditions. */
+/* Choices for, and indicator of, rendition. */
 static char *rendition_choices[] = { "black", "red", "green", "yellow", "blue",
     "magenta", "cyan", "white", "nocolour", "bgblack", "bgred", "bggreen",
     "bgyellow", "bgblue", "bgmagenta", "bgcyan", "bgwhite", "nobgcolour",

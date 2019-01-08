@@ -8,6 +8,14 @@ use utf8;
 $result_trees{'not_closed_itemize'} = {
   'contents' => [
     {
+      'args' => [
+        {
+          'cmdname' => 'bullet',
+          'contents' => [],
+          'parent' => {},
+          'type' => 'command_as_argument_inserted'
+        }
+      ],
       'cmdname' => 'itemize',
       'contents' => [
         {
@@ -21,18 +29,7 @@ $result_trees{'not_closed_itemize'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {
-              'cmdname' => 'bullet',
-              'contents' => [],
-              'parent' => {},
-              'type' => 'command_as_argument'
-            }
-          ]
-        ],
-        'command_as_argument' => {},
-        'spaces_after_command' => {}
+        'command_as_argument' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -44,11 +41,10 @@ $result_trees{'not_closed_itemize'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'not_closed_itemize'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_closed_itemize'}{'contents'}[0];
 $result_trees{'not_closed_itemize'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'not_closed_itemize'}{'contents'}[0];
 $result_trees{'not_closed_itemize'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_closed_itemize'}{'contents'}[0];
-$result_trees{'not_closed_itemize'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'not_closed_itemize'}{'contents'}[0];
-$result_trees{'not_closed_itemize'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'not_closed_itemize'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
-$result_trees{'not_closed_itemize'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'not_closed_itemize'}{'contents'}[0]{'contents'}[0];
+$result_trees{'not_closed_itemize'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'not_closed_itemize'}{'contents'}[0]{'args'}[0];
 $result_trees{'not_closed_itemize'}{'contents'}[0]{'parent'} = $result_trees{'not_closed_itemize'};
 
 $result_texis{'not_closed_itemize'} = '@itemize

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,18 +16,17 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f intera
 # M-x menu-sequence
-printf '\033xmenu-sequence\rfile-menu,first,no,nod\rDq' >$PTY_TYPE
+printf '\033xmenu-sequence\rfile-menu,first,no,nod\rDq' >$pty_type
 timeout_test
 
-if test ! -f $GINFO_OUTPUT; then
-  RETVAL=1
+if test ! -f $ginfo_output; then
+  retval=1
 else
-  grep 'Arrived at Node 3.' $GINFO_OUTPUT 
-  RETVAL=$?
+  grep 'Arrived at Node 3.' $ginfo_output
+  retval=$?
 fi
 
 cleanup

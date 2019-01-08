@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,4 +18,4 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
 # Load a file given relative to the current directory using --file.
-$GINFO --output - --file $t/infodir/sample.info | grep "^File: sample.info,"
+$ginfo --output - --file $t/infodir/sample.info | grep "^File: sample.info,"

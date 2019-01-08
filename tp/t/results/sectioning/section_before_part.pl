@@ -17,26 +17,16 @@ $result_trees{'section_before_part'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'section'
-            },
-            {
-              'parent' => {},
-              'text' => ' 
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => ' 
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
@@ -49,10 +39,7 @@ $result_trees{'section_before_part'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 2,
       'line_nr' => {
@@ -68,26 +55,16 @@ $result_trees{'section_before_part'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'part'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'part',
@@ -117,10 +94,7 @@ $result_trees{'section_before_part'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'line_nr' => {
@@ -134,25 +108,15 @@ $result_trees{'section_before_part'} = {
   'type' => 'document_root'
 };
 $result_trees{'section_before_part'}{'contents'}[0]{'parent'} = $result_trees{'section_before_part'};
-$result_trees{'section_before_part'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_before_part'}{'contents'}[1];
 $result_trees{'section_before_part'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[1]{'args'}[0];
-$result_trees{'section_before_part'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_before_part'}{'contents'}[1]{'args'}[0];
-$result_trees{'section_before_part'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_before_part'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_before_part'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[1];
 $result_trees{'section_before_part'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[1];
-$result_trees{'section_before_part'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_before_part'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'section_before_part'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'section_before_part'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'section_before_part'}{'contents'}[1]{'parent'} = $result_trees{'section_before_part'};
-$result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_before_part'}{'contents'}[2];
 $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0];
-$result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0];
-$result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0];
 $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2];
 $result_trees{'section_before_part'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2];
 $result_trees{'section_before_part'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2]{'contents'}[1];
 $result_trees{'section_before_part'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2];
-$result_trees{'section_before_part'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'section_before_part'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'section_before_part'}{'contents'}[2]{'parent'} = $result_trees{'section_before_part'};
 
 $result_texis{'section_before_part'} = '@section section 
@@ -176,14 +140,18 @@ $result_sectioning{'section_before_part'} = {
   'section_childs' => [
     {
       'cmdname' => 'section',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 2,
       'number' => 1,
       'section_up' => {}
     },
     {
       'cmdname' => 'part',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 0,
       'section_up' => {}
     }
@@ -276,14 +244,12 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="section"></a>
-<h3 class="section">1 section</h3>
+<span id="section"></span><h3 class="section">1 section</h3>
 
-<a name="part"></a>
-<h1 class="part">part</h1>
+<span id="part"></span><h1 class="part">part</h1>
 <hr>
 
-<a name="SEC_Contents"></a>
+<span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">

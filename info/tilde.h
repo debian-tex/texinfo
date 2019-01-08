@@ -1,8 +1,6 @@
 /* tilde.h: tilde expansion.
-   $Id: tilde.h 7670 2017-02-05 13:00:17Z gavin $
 
-   Copyright 1988, 1989, 1990, 1991, 1992, 1993, 2004, 2007, 2013, 2017
-   Free Software Foundation, Inc.
+   Copyright 1988-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

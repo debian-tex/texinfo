@@ -41,9 +41,6 @@ $result_trees{'nested_macro_call'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -95,9 +92,6 @@ $result_trees{'nested_macro_call'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -132,7 +126,6 @@ $result_trees{'nested_macro_call'}{'contents'}[0]{'args'}[0]{'parent'} = $result
 $result_trees{'nested_macro_call'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_macro_call'}{'contents'}[0];
 $result_trees{'nested_macro_call'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'nested_macro_call'}{'contents'}[0];
 $result_trees{'nested_macro_call'}{'contents'}[0]{'parent'} = $result_trees{'nested_macro_call'};
-$result_trees{'nested_macro_call'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'nested_macro_call'}{'contents'}[0];
 $result_trees{'nested_macro_call'}{'contents'}[1]{'parent'} = $result_trees{'nested_macro_call'};
 $result_trees{'nested_macro_call'}{'contents'}[2]{'parent'} = $result_trees{'nested_macro_call'};
 $result_trees{'nested_macro_call'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'nested_macro_call'}{'contents'}[3];
@@ -140,7 +133,6 @@ $result_trees{'nested_macro_call'}{'contents'}[3]{'contents'}[0]{'parent'} = $re
 $result_trees{'nested_macro_call'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'nested_macro_call'}{'contents'}[3];
 $result_trees{'nested_macro_call'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'nested_macro_call'}{'contents'}[3];
 $result_trees{'nested_macro_call'}{'contents'}[3]{'parent'} = $result_trees{'nested_macro_call'};
-$result_trees{'nested_macro_call'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'nested_macro_call'}{'contents'}[3];
 $result_trees{'nested_macro_call'}{'contents'}[4]{'parent'} = $result_trees{'nested_macro_call'};
 $result_trees{'nested_macro_call'}{'contents'}[5]{'parent'} = $result_trees{'nested_macro_call'};
 $result_trees{'nested_macro_call'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'nested_macro_call'}{'contents'}[6];

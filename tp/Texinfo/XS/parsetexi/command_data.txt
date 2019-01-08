@@ -1,0 +1,497 @@
+# Copyright 2010-2018 Free Software Foundation, Inc.
+#
+# This file is part of GNU Texinfo.
+#
+# GNU Texinfo is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License,
+# or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Information from tp/Texinfo/Common.pm
+
+# Not in Common.pm
+value	brace
+
+##############################################################
+# line 353 - no brace commands - single letter commands
+
+*	nobrace
+# space
+\x20	nobrace
+\t	nobrace
+\n	nobrace
+-	nobrace
+|	nobrace
+/	nobrace
+:	nobrace
+!	nobrace
+?	nobrace
+.	nobrace
+@	nobrace
+&	nobrace
+}	nobrace
+{	nobrace
+\\	nobrace
+
+##########################################################
+#
+# line commands
+#
+##########################################################
+node    		line		LINE_line
+bye     		line		LINE_skipline
+end     		line		LINE_text
+# set, clear
+set     		line		LINE_special
+clear   		line		LINE_special
+unmacro 		line		LINE_special
+# comments
+c	 		line		LINE_lineraw
+comment 		line		LINE_lineraw
+# special
+definfoenclose		line		3
+alias   		line		2
+# number of arguments is not known in advance.
+columnfractions		line		1
+# file names
+setfilename		line,global_unique		LINE_text
+verbatiminclude		line		LINE_text
+include 		line		LINE_text
+
+raisesections			line		LINE_skipline
+lowersections			line		LINE_skipline
+contents			line,global		LINE_skipline
+shortcontents			line,global		LINE_skipline
+summarycontents			line,global		LINE_skipline
+insertcopying			line,global		LINE_skipline
+clickstyle			line,global		LINE_special
+# more relevant in preamble
+setcontentsaftertitlepage	line,deprecated 	LINE_skipline
+setshortcontentsaftertitlepage	line,deprecated 	LINE_skipline
+documentencoding		line,global		LINE_text
+novalidate			line,global_unique	LINE_skipline
+validatemenus			line,global_unique     	1
+dircategory			line		LINE_line
+# with direntry is significant
+pagesizes			line,global_unique	LINE_line
+# or one? 200mm,150mm 11.5in
+finalout			line		LINE_skipline
+paragraphindent			line,global		1
+# or a number and forbids anything else on the line
+firstparagraphindent		line,global		1
+frenchspacing			line,global		1
+codequoteundirected		line,global		1
+codequotebacktick		line,global		1
+xrefautomaticsectiontitle	line,global		1
+deftypefnnewline		line,global		1
+fonttextsize			line,global_unique		1
+allowcodebreaks			line,global       		1
+exampleindent			line,global		1
+footnotestyle			line,global_unique		1
+urefbreakstyle			line,global		1
+afourpaper			line		LINE_skipline
+afivepaper			line		LINE_skipline
+afourlatex			line		LINE_skipline
+afourwide			line		LINE_skipline
+headings			line,global		1
+setchapternewpage		line,global_unique		1
+
+# only relevant in TeX, and special
+everyheading			line,global_unique		LINE_lineraw
+everyfooting			line,global_unique		LINE_lineraw
+evenheading			line,global_unique		LINE_lineraw
+evenfooting			line,global_unique		LINE_lineraw
+oddheading			line,global_unique		LINE_lineraw
+oddfooting			line,global_unique		LINE_lineraw
+
+smallbook			line		LINE_skipline
+syncodeindex			line		2
+synindex			line		2
+defindex			line		1
+defcodeindex			line		1
+documentlanguage		line,global		LINE_text
+kbdinputstyle			line,global		1
+everyheadingmarks		line,global_unique		1
+everyfootingmarks		line,global_unique		1
+evenheadingmarks		line,global_unique		1
+oddheadingmarks			line,global_unique		1
+evenfootingmarks		line,global_unique		1
+oddfootingmarks			line,global_unique		1
+
+# formatting
+center				line		LINE_line
+printindex			line,global		1
+listoffloats			line,global		LINE_line
+# especially in titlepage
+#  shorttitle
+shorttitlepage			line,global_unique	LINE_line
+settitle			line,global_unique	LINE_line
+author				line,global		LINE_line
+subtitle			line,global		LINE_line
+title				line,global_unique	LINE_line
+sp				line		1
+page				line		LINE_skipline
+need				line		1
+
+# not valid for info (should be in @iftex)
+vskip				line		LINE_lineraw
+
+exdent				line		LINE_line
+
+item_LINE			line    	LINE_line
+itemx				line		LINE_line
+
+##########################################################
+#
+# miscellaneous commands
+#
+##########################################################
+
+# formatting
+noindent			other		OTHER_skipspace
+indent				other		OTHER_skipspace
+headitem			other		OTHER_skipspace
+item    			other		OTHER_skipspace
+tab				other		OTHER_skipspace
+# only valid in heading or footing
+thischapter			other,in_heading	OTHER_noarg
+thischaptername			other,in_heading	OTHER_noarg
+thischapternum			other,in_heading	OTHER_noarg
+thisfile			other,in_heading	OTHER_noarg
+thispage			other,in_heading	OTHER_noarg
+thistitle			other,in_heading	OTHER_noarg
+# obsolete @-commands.
+refill				other		OTHER_noarg
+
+
+
+##########################################################
+#
+# brace commands
+#
+##########################################################
+
+# letter_no_arg_commands
+aa		brace		0
+AA		brace		0
+ae		brace		0
+oe		brace		0
+AE		brace		0
+OE		brace		0
+o		brace		0
+O		brace		0
+ss		brace		0
+l		brace		0
+L		brace		0
+DH		brace		0
+dh		brace		0
+TH		brace		0
+th		brace		0
+
+# no arg commands
+TeX		brace		0
+LaTeX		brace		0
+bullet		brace		0
+copyright	brace		0
+registeredsymbol brace		0
+dots		brace		0
+enddots		brace		0
+equiv		brace		0
+error		brace		0
+expansion	brace		0
+arrow		brace		0
+minus		brace		0
+point		brace		0
+print		brace		0
+result		brace		0
+today		brace		0
+exclamdown	brace		0
+questiondown	brace		0
+pounds		brace		0
+ordf		brace		0
+ordm		brace		0
+atchar		brace		0
+ampchar		brace		0
+lbracechar	brace		0
+rbracechar	brace		0
+backslashchar	brace		0
+hashchar	brace		0
+comma		brace		0
+euro		brace		0
+geq		brace		0
+leq		brace		0
+tie		brace		0
+textdegree	brace		0
+click		brace		0
+quotedblleft	brace		0
+quotedblright	brace		0
+quoteleft   	brace		0
+quoteright  	brace		0
+quotedblbase	brace		0
+quotesinglbase	brace		0
+guillemetleft	brace		0
+guillemetright	brace		0
+guillemotleft	brace		0
+guillemotright	brace		0
+guilsinglleft	brace		0
+guilsinglright	brace		0
+
+# accent commands - can be called with or without braces
+# TODO do we need "brace" here as well?
+\"		brace,accent	BRACE_accent
+~ 		brace,accent	BRACE_accent
+^ 		brace,accent	BRACE_accent
+` 		brace,accent	BRACE_accent
+' 		brace,accent	BRACE_accent
+, 		brace,accent	BRACE_accent
+= 		brace,accent	BRACE_accent
+ringaccent	brace,accent	BRACE_accent
+H		brace,accent	BRACE_accent
+dotaccent	brace,accent	BRACE_accent
+u		brace,accent	BRACE_accent
+ubaraccent	brace,accent	BRACE_accent
+udotaccent	brace,accent	BRACE_accent
+v		brace,accent	BRACE_accent
+ogonek		brace,accent	BRACE_accent
+tieaccent	brace,accent	BRACE_accent
+dotless		brace,accent	BRACE_accent
+
+# Style commands
+asis		brace	BRACE_style
+cite		brace	BRACE_style
+clicksequence	brace	BRACE_style
+dfn		brace	BRACE_style
+emph		brace	BRACE_style
+sc		brace	BRACE_style
+t		brace	BRACE_style
+var		brace	BRACE_style
+headitemfont	brace	BRACE_style
+code		brace,code_style	BRACE_style
+command		brace,code_style	BRACE_style
+env		brace,code_style	BRACE_style
+file		brace,code_style	BRACE_style
+kbd		brace,code_style	BRACE_style
+option		brace,code_style	BRACE_style
+samp		brace,code_style	BRACE_style
+strong		brace	BRACE_style
+sub		brace	BRACE_style
+sup		brace	BRACE_style
+
+# Regular font style commands 595
+r		brace	BRACE_style
+i		brace	BRACE_style
+b		brace	BRACE_style
+sansserif	brace	BRACE_style
+slanted		brace	BRACE_style
+
+U		brace	1
+dmn		brace	1
+titlefont	brace,global	1
+
+w		brace	BRACE_other
+key		brace	BRACE_other
+
+hyphenation	brace,global	BRACE_other
+anchor		brace	1
+errormsg	brace	1
+sortas  	brace	1
+
+# more code style commands
+indicateurl	brace,code_style	1
+verb		brace,code_style	BRACE_other
+t		brace,code_style	BRACE_other
+
+# context brace commands - commands that enclose full texts
+footnote	brace,global	BRACE_context
+caption		brace	BRACE_context
+shortcaption	brace	BRACE_context
+math		brace	BRACE_context
+
+# explained commands 624
+abbr		brace	2
+acronym		brace	2
+
+# inline format command
+inlineraw		brace,inline	2
+inlinefmt		brace,inline	2
+inlinefmtifelse		brace,inline	3
+
+# inline conditional commands
+inlineifclear		brace,inline	2
+inlineifset		brace,inline	2
+
+email			brace	2
+
+uref		brace		3
+url		brace		3
+inforef		brace,ref	3
+
+xref		brace,ref	5
+ref		brace,ref	5
+pxref		brace,ref	5
+image		brace		5
+
+# line 660
+
+
+##########################################################
+# line 687 - "block commands"
+
+# def* commands
+deffn			block,def
+defvr			block,def
+deftypefn		block,def
+deftypeop		block,def
+deftypevr		block,def
+defcv			block,def
+deftypecv		block,def
+defop			block,def
+deftp			block,def
+#   shortcuts
+defun			block,def,def_alias
+defmac			block,def,def_alias
+defspec			block,def,def_alias
+defvar			block,def,def_alias
+defopt			block,def,def_alias
+deftypefun		block,def,def_alias
+deftypevar		block,def,def_alias
+defivar			block,def,def_alias
+deftypeivar		block,def,def_alias
+defmethod		block,def,def_alias
+deftypemethod		block,def,def_alias
+
+# def*x
+deffnx			line,def                LINE_line
+defvrx			line,def                LINE_line
+deftypefnx		line,def                LINE_line
+deftypeopx		line,def                LINE_line
+deftypevrx		line,def                LINE_line
+defcvx			line,def                LINE_line
+deftypecvx		line,def                LINE_line
+defopx			line,def                LINE_line
+deftpx			line,def                LINE_line
+#   shortcuts
+defunx			line,def,def_alias              LINE_line
+defmacx			line,def,def_alias              LINE_line
+defspecx		line,def,def_alias              LINE_line
+defvarx			line,def,def_alias              LINE_line
+defoptx			line,def,def_alias              LINE_line
+deftypefunx		line,def,def_alias              LINE_line
+deftypevarx		line,def,def_alias              LINE_line
+defivarx		line,def,def_alias              LINE_line
+deftypeivarx		line,def,def_alias              LINE_line
+defmethodx		line,def,def_alias              LINE_line
+deftypemethodx		line,def,def_alias              LINE_line
+
+# 760
+multitable		block,blockitem		BLOCK_multitable
+
+# menu commands
+menu			block,menu
+detailmenu		block,menu,global
+direntry		block,menu
+
+# align commands
+raggedright		block
+flushleft		block
+flushright		block
+
+# 777
+cartouche		block
+group			block
+indentedblock		block
+smallindentedblock	block
+
+# region commands
+titlepage		block,global_unique     BLOCK_region
+copying			block,global_unique     BLOCK_region
+documentdescription	block,global_unique     BLOCK_region
+
+# preformatted commands
+example			block,preformatted,preformatted_code
+smallexample		block,preformatted,preformatted_code
+lisp			block,preformatted,preformatted_code
+smalllisp		block,preformatted,preformatted_code
+display			block,preformatted
+smalldisplay		block,preformatted
+format			block,preformatted
+smallformat		block,preformatted
+
+# format raw commands
+html			block,format_raw
+tex			block,format_raw
+xml			block,format_raw
+docbook			block,format_raw
+
+# raw commands 811
+verbatim		block		BLOCK_raw
+ignore			block		BLOCK_raw
+macro			block		BLOCK_raw
+rmacro			block		BLOCK_raw
+
+# line 815
+
+# line 831
+table		block,blockitem		1
+ftable		block,blockitem		1
+vtable		block,blockitem		1
+itemize		block,blockitem		1
+enumerate	block,blockitem		1
+quotation	block			1
+smallquotation	block			1
+
+float	block	2
+
+##################################################################
+# Conditional commands
+ifhtml			block		BLOCK_conditional
+ifnothtml		block		BLOCK_conditional
+iftex			block		BLOCK_conditional
+ifnottex		block		BLOCK_conditional
+ifxml			block		BLOCK_conditional
+ifnotxml		block		BLOCK_conditional
+ifdocbook		block		BLOCK_conditional
+ifnotdocbook		block		BLOCK_conditional
+ifinfo			block		BLOCK_conditional
+ifnotinfo		block		BLOCK_conditional
+ifplaintext		block		BLOCK_conditional
+ifnotplaintext		block		BLOCK_conditional
+ifset			block		BLOCK_conditional
+ifclear			block		BLOCK_conditional
+ifcommanddefined	block		BLOCK_conditional
+ifcommandnotdefined	block		BLOCK_conditional
+
+##########################################################
+# Root commands - line 887
+node			root,line			LINE_line
+top			root,line,sectioning,global_unique	LINE_line
+chapter			root,line,sectioning		LINE_line
+unnumbered		root,line,sectioning		LINE_line
+chapheading		line,sectioning			LINE_line
+appendix		root,line,sectioning		LINE_line
+section			root,line,sectioning		LINE_line
+unnumberedsec		root,line,sectioning		LINE_line
+heading			line,sectioning			LINE_line
+appendixsec		root,line,sectioning		LINE_line
+subsection		root,line,sectioning		LINE_line
+unnumberedsubsec	root,line,sectioning		LINE_line
+subheading		line,sectioning			LINE_line
+appendixsubsec		root,line,sectioning		LINE_line
+subsubsection		root,line,sectioning		LINE_line
+unnumberedsubsubsec	root,line,sectioning		LINE_line
+subsubheading		line,sectioning			LINE_line
+appendixsubsubsec	root,line,sectioning		LINE_line
+
+part			root,line,sectioning,global	LINE_line
+appendixsection		root,line,sectioning	LINE_line
+majorheading		line,sectioning		LINE_line
+centerchap		root,line,sectioning	LINE_line
+

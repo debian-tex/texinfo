@@ -36,34 +36,21 @@ $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'centered'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => 'empty_lines_at_beginning_no_setfilename_no_element.texi',
@@ -114,13 +101,8 @@ $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[
 $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[0];
 $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[0];
 $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[0]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'};
-$result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1];
 $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1]{'args'}[0];
-$result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1]{'args'}[0];
-$result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1]{'args'}[0];
 $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1];
-$result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[1]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'};
 $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[2]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'};
 $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[3];

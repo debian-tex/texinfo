@@ -1,9 +1,7 @@
 use strict;
 
-BEGIN {
-  require Texinfo::ModulePath;
-  Texinfo::ModulePath::init(undef, undef, 'updirs' => 2);
-}
+use lib '.';
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
 use Test::More;
 

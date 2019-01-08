@@ -1,8 +1,8 @@
 use Test::More;
 use strict;
 
-use File::Spec;
-BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} }
+use lib '.';
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -14,6 +14,8 @@ my @test_cases = (
 [ 'good_space_comment', '@multitable @columnfractions 0 1  @c space comment
 @end multitable' ],
 [ 'not_fraction','@multitable @columnfractions aaa
+@end multitable' ],
+[ 'invalid','@multitable @columnfractions 2x.2 2.23x
 @end multitable' ],
 [ 'empty', '@multitable @columnfractions 
 @end multitable' ],

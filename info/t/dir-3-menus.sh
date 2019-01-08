@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,6 +18,6 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
 # Follow several menus in a file to get to desired node
-$GINFO --output - file-menu 'First entry' 'Node 2' 'Node 3' \
+$ginfo --output - file-menu 'First entry' 'Node 2' 'Node 3' \
   | grep 'Arrived at Node 3.'
 

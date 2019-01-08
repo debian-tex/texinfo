@@ -1,7 +1,7 @@
-$Id: README 7464 2016-10-23 09:09:40Z gavin $
+$Id$
 texinfo/tp/tests/README
 
-  Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
+  Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
   Free Software Foundation, Inc.
 
   Copying and distribution of this README file, with or without
@@ -29,8 +29,10 @@ This testsuite can be run one of the following ways:
 * Using the makefile rules: "make check" (in this directory)
 These tests use the scripts under the test_scripts directory.
 
-* Using ./parser_tests.sh with the directories one want to run the tests 
-in given as arguments, for example "./parser_tests.sh formatting".
+* Using ./run_parser_all.sh with the directories one want to run the 
+tests in given as arguments, for example "./run_parser_all.sh -dir formatting".
+To run just one test, give the test name, e.g.
+"./run_parser_all.sh -dir formatting cond".
 
 Checking test results
 ---------------------
@@ -113,7 +115,7 @@ the directory is passed through on the command line.
 
 Tests specification
 ===================
-Test runs are driven by the contents of the tests-parser.txt file in
+Test runs are driven by the contents of the list-of-tests file in
 each subdirectory. This is a line-oriented file. A # starts a
 comment, except that the very first line of the file can be, e.g.,
 # formats :html
@@ -139,18 +141,6 @@ specifies that the results of the processing of manual.texi with additional
 command line arguments --split chapter will be in the a_test_split_chapter
 directory.
 
-Using "texi" as the test name is special. In that case the directory name 
-is constructed by appending _ followed by the manual name without the .texi
-extension to "texi". And the result is not processed normally, but instead
-macros are expanded and regions that are not processed removed and the 
-result is put in a file with the same name as the manual. 
-
-texi manual.texi
-
-results in the following: in the directory out_parser/texi_manual the file
-manual.texi will have macros expanded and ignored regions removed.
-
-
 Common .texi
 ------------
 A common .texi file should be in the top-level directory (there is such an
@@ -166,10 +156,10 @@ Creating a new test
 ===================
 - choose the subdir here for the new test.  Each subdir only generates
 output in one or two formats (according to the `formats' line in
-its tests-parser.txt), so if you want to test a particular output
+its list-of-tests), so if you want to test a particular output
 format, use the right place.
 
-- add the line to subdir/tests-parser.txt as described above.
+- add the line to subdir/list-of-tests as described above.
 - most probably, create the needed subdir/*.texi file
 - cd subdir; ../run_parser_all.sh newtest
 
@@ -192,3 +182,20 @@ Of course commit all the files and try a make check afterward to verify
 it gets run, and passes.
 
 See tp/t/README for info about those tests.
+
+Deleting a test
+===============
+
+Run "make" to recreate the test scripts (which runs
+../maintain/regenerate_cmd_tests.sh).
+
+svn status test_scripts/
+
+Then "svn rm" the missing files.
+
+Delete directories containing reference test results, e.g.
+
+ls -d formatting/*/unknown_nodes_renamed
+rm -r formatting/out_parser/unknown_nodes_renamed
+svn rm formatting/res_parser/unknown_nodes_renamed
+

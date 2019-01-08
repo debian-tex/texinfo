@@ -58,9 +58,6 @@ $result_trees{'ifclear_in_macro'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -99,7 +96,6 @@ $result_trees{'ifclear_in_macro'}{'contents'}[0]{'contents'}[1]{'parent'} = $res
 $result_trees{'ifclear_in_macro'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'ifclear_in_macro'}{'contents'}[0];
 $result_trees{'ifclear_in_macro'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'ifclear_in_macro'}{'contents'}[0];
 $result_trees{'ifclear_in_macro'}{'contents'}[0]{'parent'} = $result_trees{'ifclear_in_macro'};
-$result_trees{'ifclear_in_macro'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'ifclear_in_macro'}{'contents'}[0];
 $result_trees{'ifclear_in_macro'}{'contents'}[1]{'parent'} = $result_trees{'ifclear_in_macro'};
 $result_trees{'ifclear_in_macro'}{'contents'}[2]{'parent'} = $result_trees{'ifclear_in_macro'};
 $result_trees{'ifclear_in_macro'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'ifclear_in_macro'}{'contents'}[3];

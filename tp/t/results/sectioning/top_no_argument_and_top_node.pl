@@ -17,26 +17,16 @@ $result_trees{'top_no_argument_and_top_node'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -52,7 +42,7 @@ $result_trees{'top_no_argument_and_top_node'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -64,27 +54,18 @@ $result_trees{'top_no_argument_and_top_node'} = {
     {
       'args' => [
         {
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            }
-          ],
+          'contents' => [],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
       'contents' => [],
-      'extra' => {
-        'misc_content' => [],
-        'spaces_after_command' => {}
-      },
+      'extra' => {},
       'level' => 0,
       'line_nr' => {
         'file_name' => '',
@@ -97,19 +78,12 @@ $result_trees{'top_no_argument_and_top_node'} = {
   'type' => 'document_root'
 };
 $result_trees{'top_no_argument_and_top_node'}{'contents'}[0]{'parent'} = $result_trees{'top_no_argument_and_top_node'};
-$result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'top_no_argument_and_top_node'}{'contents'}[1];
 $result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'args'}[0];
-$result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'args'}[0];
-$result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'top_no_argument_and_top_node'}{'contents'}[1];
-$result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'top_no_argument_and_top_node'}{'contents'}[1]{'parent'} = $result_trees{'top_no_argument_and_top_node'};
-$result_trees{'top_no_argument_and_top_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'top_no_argument_and_top_node'}{'contents'}[2];
-$result_trees{'top_no_argument_and_top_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_no_argument_and_top_node'}{'contents'}[2]{'args'}[0];
 $result_trees{'top_no_argument_and_top_node'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'top_no_argument_and_top_node'}{'contents'}[2];
-$result_trees{'top_no_argument_and_top_node'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'top_no_argument_and_top_node'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'top_no_argument_and_top_node'}{'contents'}[2]{'parent'} = $result_trees{'top_no_argument_and_top_node'};
 
 $result_texis{'top_no_argument_and_top_node'} = '@node Top
@@ -128,7 +102,8 @@ $result_sectioning{'top_no_argument_and_top_node'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
-            'normalized' => 'Top'
+            'normalized' => 'Top',
+            'spaces_before_argument' => ' '
           }
         }
       },
@@ -147,7 +122,8 @@ $result_nodes{'top_no_argument_and_top_node'} = {
       'extra' => {},
       'level' => 0
     },
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -166,7 +142,8 @@ $result_nodes{'top_no_argument_and_top_node'}{'node_up'}{'extra'}{'top_node_up'}
 $result_menus{'top_no_argument_and_top_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 
@@ -232,9 +209,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<a name="SEC_Top"></a>
-<hr>
+<span id="Top"></span><span id="SEC_Top"></span><hr>
 
 
 

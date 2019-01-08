@@ -17,26 +17,16 @@ $result_trees{'accent'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -52,7 +42,7 @@ $result_trees{'accent'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -66,26 +56,16 @@ $result_trees{'accent'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -2426,10 +2406,7 @@ $result_trees{'accent'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'line_nr' => {
@@ -2443,19 +2420,12 @@ $result_trees{'accent'} = {
   'type' => 'document_root'
 };
 $result_trees{'accent'}{'contents'}[0]{'parent'} = $result_trees{'accent'};
-$result_trees{'accent'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'accent'}{'contents'}[1];
 $result_trees{'accent'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[1]{'args'}[0];
-$result_trees{'accent'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[1]{'args'}[0];
-$result_trees{'accent'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[1]{'args'}[0];
 $result_trees{'accent'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[1];
-$result_trees{'accent'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'accent'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'accent'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'accent'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'accent'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'accent'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'accent'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'accent'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'accent'}{'contents'}[1]{'parent'} = $result_trees{'accent'};
-$result_trees{'accent'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'args'}[0];
-$result_trees{'accent'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'args'}[0];
-$result_trees{'accent'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[1];
@@ -2875,8 +2845,6 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[1]{'line_nr'}
 $result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[75];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[75];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'parent'} = $result_trees{'accent'}{'contents'}[2];
-$result_trees{'accent'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'accent'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'accent'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'accent'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'accent'}{'contents'}[2]{'parent'} = $result_trees{'accent'};
 
 $result_texis{'accent'} = '@node Top
@@ -3047,9 +3015,11 @@ $result_sectioning{'accent'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
-            'normalized' => 'Top'
+            'normalized' => 'Top',
+            'spaces_before_argument' => ' '
           }
-        }
+        },
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'section_up' => {}
@@ -3063,10 +3033,13 @@ $result_nodes{'accent'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 0
     },
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -3085,7 +3058,8 @@ $result_nodes{'accent'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'acce
 $result_menus{'accent'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 
@@ -3172,9 +3146,7 @@ should be e\': e` e`
 ';
 
 
-$result_converted{'html_text'}->{'accent'} = '<a name="Top"></a>
-<a name="top"></a>
-<h1 class="top">top</h1>
+$result_converted{'html_text'}->{'accent'} = '<span id="Top"></span><span id="top"></span><h1 class="top">top</h1>
 
 <p>should be e&lsquo;: &egrave; &egrave;
 </p>

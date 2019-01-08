@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,20 +16,19 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f quoting
 
 # Follow a cross-reference with both the label and destination quoted.
-printf '\t\t\t\r\t\rDq' >$PTY_TYPE &
+printf '\t\t\t\r\t\rDq' >$pty_type &
 timeout_test
 
-if test ! -f $GINFO_OUTPUT; then
-  RETVAL=1
+if test ! -f $ginfo_output; then
+  retval=1
 else
   # Return non-zero (test failure) if files differ
-  diff $GINFO_OUTPUT $t/node-target
-  RETVAL=$?
+  diff $ginfo_output $t/node-target
+  retval=$?
 fi
 
 cleanup

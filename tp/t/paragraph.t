@@ -4,22 +4,10 @@ use Test::More;
 use File::Spec;
 use File::Basename;
 
-BEGIN {
+use lib '.';
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
-plan tests => 119;
-
-my ($real_command_name, $command_directory, $command_suffix)
-  = fileparse($0, '.t');
-my $updir = File::Spec->updir();
-my $up = File::Spec->catdir($command_directory, $updir);
-push @INC, $up;
-if (!defined($ENV{'top_srcdir'})) {
-  $ENV{'top_srcdir'} = File::Spec->catdir($up, $updir);
-}
-require Texinfo::ModulePath;
-Texinfo::ModulePath::init();
-
-}; # end BEGIN
+BEGIN { plan tests => 119 ; }
 
 use Texinfo::Convert::Paragraph;
 use Texinfo::Convert::Line;

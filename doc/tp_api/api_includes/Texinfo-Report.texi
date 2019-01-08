@@ -7,7 +7,6 @@
 * Texinfo@asis{::}Report DESCRIPTION::
 * Texinfo@asis{::}Report METHODS::
 * Texinfo@asis{::}Report AUTHOR::
-* Texinfo@asis{::}Report COPYRIGHT AND LICENSE::
 @end menu
 
 @node Texinfo::Report NAME
@@ -207,14 +206,4 @@ the line @emph{$line_nr} in the file.
 @section AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
-
-@node Texinfo::Report COPYRIGHT AND LICENSE
-@section COPYRIGHT AND LICENSE
-
-Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
-
-This library is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
 

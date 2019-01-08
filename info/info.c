@@ -1,9 +1,6 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c 7911 2017-07-09 15:12:16Z gavin $
 
-   Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-   2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015,
-   2016, 2017 Free Software Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -295,6 +292,7 @@ get_initial_file (int *argc, char ***argv, char **error)
              ref_index, ref_list, ref_slots, 2);
 
           initial_file = MANPAGE_FILE_BUFFER_NAME;
+          free (man_node);
           return;
         }
     }
@@ -862,7 +860,7 @@ main (int argc, char *argv[])
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-	      "2017");
+	      "2019");
       exit (EXIT_SUCCESS);
     }
 

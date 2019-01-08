@@ -14,26 +14,16 @@ $result_trees{'syncodeindex_to_plain'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'ky cp'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'syncodeindex',
@@ -42,7 +32,7 @@ $result_trees{'syncodeindex_to_plain'} = {
               'ky',
               'cp'
             ],
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -66,26 +56,16 @@ $result_trees{'syncodeindex_to_plain'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -101,35 +81,23 @@ $result_trees{'syncodeindex_to_plain'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => '--k1'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'kindex',
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 1,
               'index_at_command' => 'kindex',
@@ -139,8 +107,7 @@ $result_trees{'syncodeindex_to_plain'} = {
               'node' => {},
               'number' => 1
             },
-            'misc_content' => [],
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -155,35 +122,23 @@ $result_trees{'syncodeindex_to_plain'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => '--v'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'vindex',
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 1,
               'index_at_command' => 'vindex',
@@ -193,8 +148,7 @@ $result_trees{'syncodeindex_to_plain'} = {
               'node' => {},
               'number' => 1
             },
-            'misc_content' => [],
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -209,35 +163,23 @@ $result_trees{'syncodeindex_to_plain'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => '--c'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 0,
               'index_at_command' => 'cindex',
@@ -247,8 +189,7 @@ $result_trees{'syncodeindex_to_plain'} = {
               'node' => {},
               'number' => 1
             },
-            'misc_content' => [],
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -280,26 +221,16 @@ $result_trees{'syncodeindex_to_plain'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'cp'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -307,7 +238,7 @@ $result_trees{'syncodeindex_to_plain'} = {
             'misc_args' => [
               'cp'
             ],
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -338,26 +269,16 @@ $result_trees{'syncodeindex_to_plain'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'vr'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -365,7 +286,7 @@ $result_trees{'syncodeindex_to_plain'} = {
             'misc_args' => [
               'vr'
             ],
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -386,7 +307,7 @@ $result_trees{'syncodeindex_to_plain'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -398,80 +319,49 @@ $result_trees{'syncodeindex_to_plain'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'contents'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'contents'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'};
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'args'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'args'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'args'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content'};
+$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'};
+$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'node'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content'};
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content'};
+$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'};
+$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'node'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content'};
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'args'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'args'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'args'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'extra'}{'index_entry'}{'command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'extra'}{'index_entry'}{'content'};
+$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'extra'}{'index_entry'}{'content'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'};
+$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'};
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'extra'}{'index_entry'}{'node'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'extra'}{'misc_content'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'extra'}{'index_entry'}{'content'};
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[5];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[6];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[6]{'args'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[6]{'args'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[6]{'args'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[6];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[6]{'extra'}{'spaces_after_command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[8];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[9];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[9]{'args'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[9]{'args'}[0];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[9]{'args'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[9];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[9]{'extra'}{'spaces_after_command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1];
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'syncodeindex_to_plain'}{'contents'}[1]{'parent'} = $result_trees{'syncodeindex_to_plain'};
 
 $result_texis{'syncodeindex_to_plain'} = '@syncodeindex ky cp
@@ -503,7 +393,8 @@ $result_sectioning{'syncodeindex_to_plain'} = {};
 $result_nodes{'syncodeindex_to_plain'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -522,7 +413,8 @@ $result_nodes{'syncodeindex_to_plain'}{'node_up'}{'extra'}{'top_node_up'} = $res
 $result_menus{'syncodeindex_to_plain'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 
@@ -623,12 +515,11 @@ $result_converted{'plaintext'}->{'syncodeindex_to_plain'} = 'cp index.
 
 
 $result_converted{'html_text'}->{'syncodeindex_to_plain'} = '
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
-<a name="index-_002d_002dk1"></a>
-<a name="index-_002d_002dv"></a>
-<a name="index-_002d_002dc"></a>
+<span id="index-_002d_002dk1"></span>
+<span id="index-_002d_002dv"></span>
+<span id="index-_002d_002dc"></span>
 
 <p>cp index.
 </p><table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_symbol-1"><b>-</b></a>
@@ -636,7 +527,7 @@ $result_converted{'html_text'}->{'syncodeindex_to_plain'} = '
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_symbol-1">-</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_symbol-1">-</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dk1"><code>--k1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dc">&ndash;c</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -650,7 +541,7 @@ $result_converted{'html_text'}->{'syncodeindex_to_plain'} = '
 <table class="index-vr" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_vr_symbol-1">-</a></th><td></td><td></td></tr>
+<tr><th id="t_h_vr_symbol-1">-</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dv"><code>--v</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

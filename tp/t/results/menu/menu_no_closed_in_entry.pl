@@ -46,9 +46,6 @@ $result_trees{'menu_no_closed_in_entry'} = {
           'type' => 'menu_entry'
         }
       ],
-      'extra' => {
-        'spaces_after_command' => {}
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -66,7 +63,6 @@ $result_trees{'menu_no_closed_in_entry'}{'contents'}[0]{'contents'}[1]{'args'}[1
 $result_trees{'menu_no_closed_in_entry'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'menu_no_closed_in_entry'}{'contents'}[0]{'contents'}[1];
 $result_trees{'menu_no_closed_in_entry'}{'contents'}[0]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'menu_no_closed_in_entry'}{'contents'}[0]{'contents'}[1];
 $result_trees{'menu_no_closed_in_entry'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'menu_no_closed_in_entry'}{'contents'}[0];
-$result_trees{'menu_no_closed_in_entry'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'menu_no_closed_in_entry'}{'contents'}[0]{'contents'}[0];
 $result_trees{'menu_no_closed_in_entry'}{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_in_entry'};
 
 $result_texis{'menu_no_closed_in_entry'} = '@menu

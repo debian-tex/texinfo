@@ -60,12 +60,6 @@ $result_trees{'ignored_value_definition'} = {
           'cmdname' => 'inlinefmt',
           'contents' => [],
           'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ],
-              undef
-            ],
             'format' => 'tex'
           },
           'line_nr' => {
@@ -111,7 +105,6 @@ $result_trees{'ignored_value_definition'}{'contents'}[1]{'parent'} = $result_tre
 $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0];
 $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0];
-$result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'ignored_value_definition'}{'contents'}[2];
 $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'ignored_value_definition'}{'contents'}[2];
 $result_trees{'ignored_value_definition'}{'contents'}[2]{'parent'} = $result_trees{'ignored_value_definition'};

@@ -12,33 +12,23 @@ $result_trees{'image_text_encoded'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'utf-8'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentencoding',
       'extra' => {
         'input_encoding_name' => 'utf-8',
         'input_perl_encoding' => 'utf-8-strict',
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => 'utf-8'
       },
       'line_nr' => {
@@ -70,11 +60,6 @@ $result_trees{'image_text_encoded'} = {
       'cmdname' => 'image',
       'contents' => [],
       'extra' => {
-        'brace_command_contents' => [
-          [
-            {}
-          ]
-        ],
         'input_perl_encoding' => 'utf-8-strict'
       },
       'line_nr' => {
@@ -92,17 +77,12 @@ $result_trees{'image_text_encoded'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'image_text_encoded'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'image_text_encoded'}{'contents'}[0];
 $result_trees{'image_text_encoded'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_text_encoded'}{'contents'}[0]{'args'}[0];
-$result_trees{'image_text_encoded'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'image_text_encoded'}{'contents'}[0]{'args'}[0];
-$result_trees{'image_text_encoded'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'image_text_encoded'}{'contents'}[0]{'args'}[0];
 $result_trees{'image_text_encoded'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'image_text_encoded'}{'contents'}[0];
-$result_trees{'image_text_encoded'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'image_text_encoded'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'image_text_encoded'}{'contents'}[0]{'parent'} = $result_trees{'image_text_encoded'};
 $result_trees{'image_text_encoded'}{'contents'}[1]{'parent'} = $result_trees{'image_text_encoded'};
 $result_trees{'image_text_encoded'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_text_encoded'}{'contents'}[2]{'args'}[0];
 $result_trees{'image_text_encoded'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'image_text_encoded'}{'contents'}[2];
-$result_trees{'image_text_encoded'}{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_text_encoded'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'image_text_encoded'}{'contents'}[2]{'parent'} = $result_trees{'image_text_encoded'};
 $result_trees{'image_text_encoded'}{'contents'}[3]{'parent'} = $result_trees{'image_text_encoded'};
 

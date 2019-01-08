@@ -1,8 +1,6 @@
-# $Id: test_utils.pl 7582 2016-12-26 17:48:06Z gavin $
 # t/* test support for the Perl modules.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015
-# Free Software Foundation, Inc.
+# Copyright 2010-2019 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -84,7 +82,9 @@ foreach my $dir ("LocaleData", "$locales_srcdir/LocaleData") {
 if (! defined($localesdir)) {
   warn "No locales directory found, some tests will fail\n";
 }
+
 Locale::Messages::bindtextdomain ('texinfo_document', $localesdir);
+Locale::Messages::bindtextdomain ('texinfo', $localesdir);
 
 my $generated_texis_dir = 't_texis';
 
@@ -98,22 +98,6 @@ foreach my $dir ('t', 't/results', $output_files_dir) {
   mkdir $dir or $error = $!;
   if (! -d $dir) {
     die "mkdir $dir: $error\n";
-  }
-}
-
-my $include_reference_dir = 't/include_reference';
-my $include_dir = 't/include_dir';
-if (! -d $include_dir) {
-  mkdir $include_dir or die "mkdir $include_dir: $!\n";
-  if (opendir DIR, $include_reference_dir) {
-    my @files = grep {-f "$include_reference_dir/$_"} readdir DIR;
-    closedir DIR;
-    foreach my $file (@files) {
-      copy ("$include_reference_dir/$file", "$include_dir/$file")
-        or die "Copy $include_reference_dir/$file $include_dir/$file failed: $!\n";
-    }
-  } else {
-    die "Opendir $include_reference_dir failed: $!\n";
   }
 }
 
@@ -373,7 +357,7 @@ sub new_test($;$$$)
               'DEBUG' => $debug, 'test_formats' => $test_formats};
   
   if ($generate) {
-    mkdir "t/results/$name" if (! -d "t/results/$name");
+    mkdir $srcdir."t/results/$name" if (! -d $srcdir."t/results/$name");
   }
   bless $test;
   return $test;
@@ -677,6 +661,14 @@ sub test($$)
     }
     delete $parser_options->{'test_split'};
   }
+
+  if (!$self->{'generate'}) {
+    mkdir "t/results/$self->{'name'}" if (! -d "t/results/$self->{'name'}");
+  } else {
+    mkdir $srcdir."t/results/$self->{'name'}"
+      if (! -d $srcdir."t/results/$self->{'name'}");
+  }
+
   my %todos;
   if ($parser_options->{'todo'}) {
     %todos = %{$parser_options->{'todo'}};
@@ -696,13 +688,13 @@ sub test($$)
   #  push @tested_formats, @{$self->{'test_formats'}};
   }
 
-  my $parser = Texinfo::Parser->parser({'TEST' => 1,
+  my $parser = Texinfo::Parser::parser({'TEST' => 1,
                                         'include_directories' => [
-                                          't/include_dir/',
-                                          't/include/',
+                                          $srcdir.'t/include_reference',
                                           $srcdir.'t/include/'],
                                         'DEBUG' => $self->{'DEBUG'},
                                        %$parser_options});
+
   # take the initial values to record only if there is something new
   my $initial_index_names = $parser->indices_information();
   # do a copy to compare the values and not the references
@@ -769,35 +761,41 @@ sub test($$)
         my $base = "t/results/$self->{'name'}/$test_name/";
         my $test_out_dir;
         if ($self->{'generate'}) {
-          $test_out_dir = 'res_'.$format_type;
-          if (-d $base."$test_out_dir/") {
-             unlink_dir_files("t/results/$self->{'name'}/$test_name/$test_out_dir/");
+          $base = $srcdir.$base;
+          $test_out_dir = $base.'res_'.$format_type;
+          if (-d $test_out_dir) {
+            unlink_dir_files($test_out_dir);
           }
         } else {
-          $test_out_dir = 'out_'.$format_type;
+          $test_out_dir = $base.'out_'.$format_type;
         }
         if (!defined($format_converter_options->{'SUBDIR'})) {
           mkdir ($base) 
             if (! -d $base);
-          if (! -d $base."$test_out_dir/") {
-            mkdir ($base."$test_out_dir/"); 
+          if (! -d $test_out_dir) {
+            mkdir ($test_out_dir); 
           } else {
             # remove any files from previous runs
-            unlink glob ($base."$test_out_dir/*"); 
+            unlink glob ("$test_out_dir/*"); 
           }
-          $format_converter_options->{'SUBDIR'} 
-             = $base."$test_out_dir/";
+          $format_converter_options->{'SUBDIR'} = "$test_out_dir/";
         }
       } elsif (!defined($format_converter_options->{'OUTFILE'})) {
         $format_converter_options->{'OUTFILE'} = '';
       }
+      $format_converter_options->{'TEST'} = 1;
       ($converted_errors{$format}, $converted{$format})
            = &{$formats{$format}}($self, $test_name, $format_type, 
                                   $result, $parser, 
                                   $parser_options, $format_converter_options);
+
+      # TODO: is it really useful to give this warning?
       $converted_errors{$format} = undef if (!@{$converted_errors{$format}});
       if (defined($converted{$format}) and $format =~ /^file_/) {
-        warn "Warning: output generated for $format by $test_name\n";
+        warn "Warning: errors printed for $format by $test_name\n";
+        foreach my $error_message (@{$converted_errors{$format}}) {
+          warn $error_message->{'error_line'};
+        }
       }
       #print STDERR "$format: \n$converted{$format}";
 
@@ -885,10 +883,12 @@ sub test($$)
     local $Data::Dumper::Purity = 1;
     local $Data::Dumper::Indent = 1;
 
-    my $out_file = $new_file;
-    $out_file = $file if ($self->{'generate'});
-
-    mkdir "t/results/$self->{'name'}" if (! -d "t/results/$self->{'name'}");
+    my $out_file;
+    if (!$self->{'generate'}) {
+      $out_file = $new_file;
+    } else {
+      $out_file = $srcdir.$file;
+    }
     open (OUT, ">$out_file") or die "Open $out_file: $!\n";
     binmode (OUT, ":encoding(utf8)");
     print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors '."\n".

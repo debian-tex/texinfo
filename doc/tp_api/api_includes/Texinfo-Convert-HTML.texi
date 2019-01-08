@@ -7,7 +7,6 @@
 * Texinfo@asis{::}Convert@asis{::}HTML DESCRIPTION::
 * Texinfo@asis{::}Convert@asis{::}HTML METHODS::
 * Texinfo@asis{::}Convert@asis{::}HTML AUTHOR::
-* Texinfo@asis{::}Convert@asis{::}HTML COPYRIGHT AND LICENSE::
 @end menu
 
 @node Texinfo::Convert::HTML NAME
@@ -82,14 +81,4 @@ specification.  This is only supported in (and relevant for) HTML.
 @section AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
-
-@node Texinfo::Convert::HTML COPYRIGHT AND LICENSE
-@section COPYRIGHT AND LICENSE
-
-Copyright 2015 Free Software Foundation, Inc.
-
-This library is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or (at 
-your option) any later version.
 

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2016, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,5 +18,5 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
 # Ask for a node without saying which file it's in
-$GINFO --output - --node nodename \
+$ginfo --output - --node nodename \
   2>&1 | grep 'Cannot find node'

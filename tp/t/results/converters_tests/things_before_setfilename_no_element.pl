@@ -43,11 +43,6 @@ $result_trees{'things_before_setfilename_no_element'} = {
           'cmdname' => 'anchor',
           'contents' => [],
           'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ],
             'node_content' => [
               {}
             ],
@@ -95,11 +90,6 @@ $result_trees{'things_before_setfilename_no_element'} = {
               'cmdname' => 'ref',
               'contents' => [],
               'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ],
                 'label' => {},
                 'node_argument' => {
                   'node_content' => [
@@ -153,11 +143,6 @@ $result_trees{'things_before_setfilename_no_element'} = {
               'cmdname' => 'ref',
               'contents' => [],
               'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ],
                 'label' => {
                   'args' => [
                     {
@@ -174,11 +159,6 @@ $result_trees{'things_before_setfilename_no_element'} = {
                   'cmdname' => 'anchor',
                   'contents' => [],
                   'extra' => {
-                    'brace_command_contents' => [
-                      [
-                        {}
-                      ]
-                    ],
                     'node_content' => [
                       {}
                     ],
@@ -244,11 +224,6 @@ $result_trees{'things_before_setfilename_no_element'} = {
                             'cmdname' => 'ref',
                             'contents' => [],
                             'extra' => {
-                              'brace_command_contents' => [
-                                [
-                                  {}
-                                ]
-                              ],
                               'label' => {},
                               'node_argument' => {
                                 'node_content' => [
@@ -340,16 +315,7 @@ $result_trees{'things_before_setfilename_no_element'} = {
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                }
-              ],
+              'contents' => [],
               'parent' => {},
               'type' => 'block_line_arg'
             },
@@ -357,20 +323,14 @@ $result_trees{'things_before_setfilename_no_element'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_before_argument'
-                },
-                {
-                  'parent' => {},
                   'text' => 'float anchor'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'space_at_end_block_command'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+',
+                'spaces_before_argument' => ' '
+              },
               'parent' => {},
               'type' => 'block_line_arg'
             }
@@ -393,33 +353,22 @@ $result_trees{'things_before_setfilename_no_element'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
                       'parent' => {},
                       'text' => 'float'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'float',
-                'spaces_after_command' => {},
+                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
               },
               'line_nr' => {
@@ -431,18 +380,12 @@ $result_trees{'things_before_setfilename_no_element'} = {
             }
           ],
           'extra' => {
-            'block_command_line_contents' => [
-              undef,
-              [
-                {}
-              ]
-            ],
             'end_command' => {},
             'node_content' => [
               {}
             ],
             'normalized' => 'float-anchor',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'type' => {
               'normalized' => ''
             }
@@ -484,11 +427,6 @@ $result_trees{'things_before_setfilename_no_element'} = {
               'cmdname' => 'ref',
               'contents' => [],
               'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ],
                 'label' => {},
                 'node_argument' => {
                   'node_content' => [
@@ -524,14 +462,6 @@ $result_trees{'things_before_setfilename_no_element'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'Text'
                 }
@@ -543,20 +473,14 @@ $result_trees{'things_before_setfilename_no_element'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_before_argument'
-                },
-                {
-                  'parent' => {},
                   'text' => 'ta'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'space_at_end_block_command'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+',
+                'spaces_before_argument' => ' '
+              },
               'parent' => {},
               'type' => 'block_line_arg'
             }
@@ -621,33 +545,22 @@ $result_trees{'things_before_setfilename_no_element'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
                       'parent' => {},
                       'text' => 'float'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'float',
-                'spaces_after_command' => {},
+                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
               },
               'line_nr' => {
@@ -659,25 +572,15 @@ $result_trees{'things_before_setfilename_no_element'} = {
             }
           ],
           'extra' => {
-            'block_command_line_contents' => [
-              [
-                {}
-              ],
-              [
-                {}
-              ]
-            ],
             'caption' => {},
             'end_command' => {},
             'node_content' => [
               {}
             ],
             'normalized' => 'ta',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'type' => {
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'normalized' => 'Text'
             }
           },
@@ -792,33 +695,22 @@ $result_trees{'things_before_setfilename_no_element'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
                       'parent' => {},
                       'text' => 'menu'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'menu',
-                'spaces_after_command' => {},
+                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
               },
               'line_nr' => {
@@ -830,8 +722,7 @@ $result_trees{'things_before_setfilename_no_element'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => 'things_before_setfilename_no_element.texi',
@@ -851,35 +742,23 @@ $result_trees{'things_before_setfilename_no_element'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'index entry'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 0,
               'index_at_command' => 'cindex',
@@ -888,8 +767,7 @@ $result_trees{'things_before_setfilename_no_element'} = {
               'key' => 'index entry',
               'number' => 1
             },
-            'misc_content' => [],
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => 'things_before_setfilename_no_element.texi',
@@ -910,26 +788,16 @@ $result_trees{'things_before_setfilename_no_element'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'cp'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -937,7 +805,7 @@ $result_trees{'things_before_setfilename_no_element'} = {
             'misc_args' => [
               'cp'
             ],
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => 'things_before_setfilename_no_element.texi',
@@ -957,35 +825,23 @@ $result_trees{'things_before_setfilename_no_element'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'Text'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'listoffloats',
           'extra' => {
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'type' => {
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'normalized' => 'Text'
             }
           },
@@ -1011,31 +867,21 @@ $result_trees{'things_before_setfilename_no_element'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'things_before_setfilename_no_element.info'
-            },
-            {
-              'parent' => {},
-              'text' => ' 
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => ' 
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'setfilename',
       'extra' => {
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => 'things_before_setfilename_no_element.info'
       },
       'line_nr' => {
@@ -1074,11 +920,6 @@ $result_trees{'things_before_setfilename_no_element'} = {
           'cmdname' => 'ref',
           'contents' => [],
           'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ],
             'label' => {},
             'node_argument' => {
               'node_content' => [
@@ -1132,11 +973,6 @@ $result_trees{'things_before_setfilename_no_element'} = {
           'cmdname' => 'ref',
           'contents' => [],
           'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ],
             'label' => {},
             'node_argument' => {
               'node_content' => [
@@ -1175,7 +1011,6 @@ $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
@@ -1183,7 +1018,6 @@ $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[4];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[4]{'contents'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'extra'}{'label'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[1];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[4];
@@ -1193,10 +1027,8 @@ $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'};
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'};
@@ -1207,7 +1039,6 @@ $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5]{'contents'}[1]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5]{'contents'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5]{'contents'}[1]{'extra'}{'label'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[1];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5];
@@ -1224,46 +1055,30 @@ $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[8] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'parent'}{'parent'}{'parent'};
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[1];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'extra'}{'command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'extra'}{'block_command_line_contents'}[1][0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[1]{'contents'}[1];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'extra'}{'end_command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'contents'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[1]{'contents'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'extra'}{'spaces_after_command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[0]{'contents'}[0];
+$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'args'}[1]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[11]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12]{'contents'}[1]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12]{'contents'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12]{'contents'}[1]{'extra'}{'label'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[10];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12]{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[12]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[13]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[1];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14];
@@ -1274,21 +1089,13 @@ $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[2]{'extra'}{'float'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[3]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4]{'extra'}{'command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[0]{'contents'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'extra'}{'block_command_line_contents'}[1][0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[1]{'contents'}[1];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'extra'}{'caption'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[2];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'extra'}{'end_command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'contents'}[4];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[1]{'contents'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'extra'}{'spaces_after_command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[0]{'contents'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'extra'}{'type'}{'content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[0]{'contents'}[1];
+$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[1]{'contents'}[0];
+$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'extra'}{'type'}{'content'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'args'}[0]{'contents'};
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[14]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[15]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[16]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[16];
@@ -1306,60 +1113,36 @@ $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[1]{'args'}[3];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2]{'extra'}{'command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'extra'}{'end_command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[2];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'extra'}{'spaces_after_command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[18]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[19]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'extra'}{'index_entry'}{'command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'args'}[0]{'contents'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'extra'}{'index_entry'}{'content'};
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'extra'}{'misc_content'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'extra'}{'index_entry'}{'content'};
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'extra'}{'spaces_after_command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'args'}[0]{'contents'}[0];
+$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'extra'}{'index_entry'}{'content'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'args'}[0]{'contents'};
+$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'args'}[0]{'contents'};
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[20]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[21]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[22];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[22]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[22]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[22]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[22];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[22]{'extra'}{'spaces_after_command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[22]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[23]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'extra'}{'spaces_after_command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'args'}[0]{'contents'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'extra'}{'type'}{'content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'args'}[0]{'contents'}[1];
+$result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'extra'}{'type'}{'content'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'args'}[0]{'contents'};
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[24]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[25]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'};
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[1];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[1]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[1]{'args'}[0];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[1]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'};
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename_no_element'};
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[3];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[3]{'contents'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[3]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[3]{'contents'}[1]{'extra'}{'label'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[1];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[3]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[3];
@@ -1369,7 +1152,6 @@ $result_trees{'things_before_setfilename_no_element'}{'contents'}[4]{'parent'} =
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[5];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[5]{'contents'}[1]{'args'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[5]{'contents'}[1];
-$result_trees{'things_before_setfilename_no_element'}{'contents'}[5]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[5]{'contents'}[1]{'extra'}{'label'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'};
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[5]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'things_before_setfilename_no_element'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename_no_element'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'things_before_setfilename_no_element'}{'contents'}[5];
@@ -1514,12 +1296,13 @@ $result_floats{'things_before_setfilename_no_element'} = {
         'end_command' => {
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'float',
+            'spaces_before_argument' => ' ',
             'text_arg' => 'float'
           }
         },
         'normalized' => 'float-anchor',
+        'spaces_before_argument' => ' ',
         'type' => {
           'normalized' => ''
         }
@@ -1540,12 +1323,13 @@ $result_floats{'things_before_setfilename_no_element'} = {
         'end_command' => {
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'float',
+            'spaces_before_argument' => ' ',
             'text_arg' => 'float'
           }
         },
         'normalized' => 'ta',
+        'spaces_before_argument' => ' ',
         'type' => {
           'content' => [
             {
@@ -1559,9 +1343,7 @@ $result_floats{'things_before_setfilename_no_element'} = {
     }
   ]
 };
-$result_floats{'things_before_setfilename_no_element'}{''}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'things_before_setfilename_no_element'}{''}[0];
 $result_floats{'things_before_setfilename_no_element'}{'Text'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'things_before_setfilename_no_element'}{'Text'}[0];
-$result_floats{'things_before_setfilename_no_element'}{'Text'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'things_before_setfilename_no_element'}{'Text'}[0];
 
 
 
@@ -1679,7 +1461,7 @@ $result_converted{'xml'}->{'things_before_setfilename_no_element'} = '<preamble>
 
 <cindex index="cp" spaces=" "><indexterm index="cp" number="1">index entry</indexterm></cindex>
 
-<printindex value="cp" line=" cp"></printindex>
+<printindex value="cp" line="cp"></printindex>
 
 <listoffloats type="Text" spaces=" ">Text</listoffloats>
 

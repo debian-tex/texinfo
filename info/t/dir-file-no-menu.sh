@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,5 +18,5 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
 # Try to select a non-existent menu item
-$GINFO --output - file-menu 'Not an entry' 2>&1 | grep 'No menu item'
+$ginfo --output - file-menu 'Not an entry' 2>&1 | grep 'No menu item'
 

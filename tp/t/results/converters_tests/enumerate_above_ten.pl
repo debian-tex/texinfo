@@ -12,24 +12,14 @@ $result_trees{'enumerate_above_ten'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => '14'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'space_at_end_block_command'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'block_line_arg'
         }
@@ -39,14 +29,6 @@ $result_trees{'enumerate_above_ten'} = {
         {
           'cmdname' => 'item',
           'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'contents' => [
                 {
@@ -61,7 +43,7 @@ $result_trees{'enumerate_above_ten'} = {
           ],
           'extra' => {
             'item_number' => 1,
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -75,33 +57,22 @@ $result_trees{'enumerate_above_ten'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'enumerate'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'enumerate',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'enumerate'
           },
           'line_nr' => {
@@ -113,14 +84,9 @@ $result_trees{'enumerate_above_ten'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'end_command' => {},
         'enumerate_specification' => '14',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -132,28 +98,15 @@ $result_trees{'enumerate_above_ten'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'enumerate_above_ten'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'enumerate_above_ten'}{'contents'}[0];
 $result_trees{'enumerate_above_ten'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'args'}[0];
-$result_trees{'enumerate_above_ten'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'args'}[0];
-$result_trees{'enumerate_above_ten'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'args'}[0];
 $result_trees{'enumerate_above_ten'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'enumerate_above_ten'}{'contents'}[0];
-$result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[0];
+$result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[0];
-$result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[0];
-$result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_above_ten'}{'contents'}[0];
-$result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1];
 $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1];
-$result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'enumerate_above_ten'}{'contents'}[0];
-$result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'enumerate_above_ten'}{'contents'}[0];
-$result_trees{'enumerate_above_ten'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'enumerate_above_ten'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'contents'}[1];
-$result_trees{'enumerate_above_ten'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'enumerate_above_ten'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'enumerate_above_ten'}{'contents'}[0]{'parent'} = $result_trees{'enumerate_above_ten'};
 
 $result_texis{'enumerate_above_ten'} = '@enumerate 14

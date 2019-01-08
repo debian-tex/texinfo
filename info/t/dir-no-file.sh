@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,4 +24,4 @@ srcdir=${srcdir:-.}
 # the dir node, but the former does not output the dir node, just an
 # error message.
 
-$GINFO --output - not-a-file 2>&1 | grep 'No menu item'
+$ginfo --output - not-a-file 2>&1 | grep 'No menu item'

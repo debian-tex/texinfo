@@ -47,9 +47,6 @@ $result_trees{'leading_spaces_no_ignore'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -90,7 +87,6 @@ $result_trees{'leading_spaces_no_ignore'}{'contents'}[0]{'contents'}[0]{'parent'
 $result_trees{'leading_spaces_no_ignore'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'leading_spaces_no_ignore'}{'contents'}[0];
 $result_trees{'leading_spaces_no_ignore'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'leading_spaces_no_ignore'}{'contents'}[0];
 $result_trees{'leading_spaces_no_ignore'}{'contents'}[0]{'parent'} = $result_trees{'leading_spaces_no_ignore'};
-$result_trees{'leading_spaces_no_ignore'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'leading_spaces_no_ignore'}{'contents'}[0];
 $result_trees{'leading_spaces_no_ignore'}{'contents'}[1]{'parent'} = $result_trees{'leading_spaces_no_ignore'};
 $result_trees{'leading_spaces_no_ignore'}{'contents'}[2]{'parent'} = $result_trees{'leading_spaces_no_ignore'};
 $result_trees{'leading_spaces_no_ignore'}{'contents'}[3]{'parent'} = $result_trees{'leading_spaces_no_ignore'};

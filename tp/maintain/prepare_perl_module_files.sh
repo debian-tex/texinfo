@@ -1,9 +1,8 @@
 #! /bin/sh
-# $Id: prepare_perl_module_files.sh 6543 2015-08-18 06:50:34Z pertusus $
 # Regenerate lists of t/ files, used for make dist(check)
 # and the Perl modules.
 #
-# Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2011-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without

@@ -12,26 +12,16 @@ $result_trees{'wrong_synindex'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'aaa'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'defindex',
@@ -39,7 +29,7 @@ $result_trees{'wrong_synindex'} = {
         'misc_args' => [
           'aaa'
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -53,25 +43,17 @@ $result_trees{'wrong_synindex'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'aaa aaa'
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'synindex',
       'extra' => {
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -83,18 +65,11 @@ $result_trees{'wrong_synindex'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'wrong_synindex'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'wrong_synindex'}{'contents'}[0];
 $result_trees{'wrong_synindex'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_synindex'}{'contents'}[0]{'args'}[0];
-$result_trees{'wrong_synindex'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'wrong_synindex'}{'contents'}[0]{'args'}[0];
-$result_trees{'wrong_synindex'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'wrong_synindex'}{'contents'}[0]{'args'}[0];
 $result_trees{'wrong_synindex'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'wrong_synindex'}{'contents'}[0];
-$result_trees{'wrong_synindex'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'wrong_synindex'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'wrong_synindex'}{'contents'}[0]{'parent'} = $result_trees{'wrong_synindex'};
-$result_trees{'wrong_synindex'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'wrong_synindex'}{'contents'}[1];
 $result_trees{'wrong_synindex'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_synindex'}{'contents'}[1]{'args'}[0];
-$result_trees{'wrong_synindex'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'wrong_synindex'}{'contents'}[1]{'args'}[0];
 $result_trees{'wrong_synindex'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'wrong_synindex'}{'contents'}[1];
-$result_trees{'wrong_synindex'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'wrong_synindex'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'wrong_synindex'}{'contents'}[1]{'parent'} = $result_trees{'wrong_synindex'};
 
 $result_texis{'wrong_synindex'} = '@defindex aaa

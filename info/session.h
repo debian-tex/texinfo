@@ -1,9 +1,6 @@
 /* session.h -- Functions found in session.c.
-   $Id: session.h 7499 2016-11-07 20:29:49Z gavin $
 
-   Copyright 1993, 1998, 1999, 2001, 2002, 2004, 2007, 2011, 2013, 2014,
-   2015, 2016
-   Free Software Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -71,6 +68,7 @@ void add_char_to_keyseq (int character);
 FILE_BUFFER *file_buffer_of_window (WINDOW *window);
 int info_select_reference (WINDOW *window, REFERENCE *entry);
 int info_any_buffered_input_p (void);
+void pause_or_input (void);
 
 void dump_nodes_to_file (REFERENCE **references,
 				char *output_filename, int flags);

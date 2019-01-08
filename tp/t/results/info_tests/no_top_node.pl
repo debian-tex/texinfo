@@ -17,26 +17,16 @@ $result_trees{'no_top_node'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'node Top not Top node'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -52,7 +42,7 @@ $result_trees{'no_top_node'} = {
           }
         ],
         'normalized' => 'node-Top-not-Top-node',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -65,14 +55,10 @@ $result_trees{'no_top_node'} = {
   'type' => 'document_root'
 };
 $result_trees{'no_top_node'}{'contents'}[0]{'parent'} = $result_trees{'no_top_node'};
-$result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'no_top_node'}{'contents'}[1];
 $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0];
-$result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0];
-$result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'no_top_node'}{'contents'}[1];
-$result_trees{'no_top_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'no_top_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'no_top_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'no_top_node'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'no_top_node'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'no_top_node'}{'contents'}[1]{'parent'} = $result_trees{'no_top_node'};
 
 $result_texis{'no_top_node'} = '@node node Top not Top node
@@ -86,14 +72,16 @@ $result_sectioning{'no_top_node'} = {};
 $result_nodes{'no_top_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'node-Top-not-Top-node'
+    'normalized' => 'node-Top-not-Top-node',
+    'spaces_before_argument' => ' '
   }
 };
 
 $result_menus{'no_top_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'node-Top-not-Top-node'
+    'normalized' => 'node-Top-not-Top-node',
+    'spaces_before_argument' => ' '
   }
 };
 

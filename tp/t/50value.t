@@ -1,7 +1,7 @@
 use strict;
 
-use File::Spec;
-BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} }
+use lib '.';
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -270,9 +270,6 @@ After page on it\'s own line.
 @value{contents_macro}
 
 @vskip @value{text}
-
-@set cropmarks_command @cropmarks
-@value{cropmarks_command}
 
 @set exdent_macro @exdent
 @value{exdent_macro} line after exdent

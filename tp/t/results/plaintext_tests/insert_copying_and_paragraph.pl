@@ -35,33 +35,22 @@ $result_trees{'insert_copying_and_paragraph'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'copying'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'copying',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'copying'
           },
           'line_nr' => {
@@ -73,8 +62,7 @@ $result_trees{'insert_copying_and_paragraph'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -101,6 +89,14 @@ $result_trees{'insert_copying_and_paragraph'} = {
       'type' => 'paragraph'
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'insertcopying',
       'line_nr' => {
         'file_name' => '',
@@ -108,11 +104,6 @@ $result_trees{'insert_copying_and_paragraph'} = {
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-'
     }
   ],
   'type' => 'text_root'
@@ -121,22 +112,16 @@ $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[0]{'ext
 $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[0];
 $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[1];
 $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[0];
-$result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2];
 $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2];
-$result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[0];
-$result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[0];
 $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[2];
-$result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'contents'}[0];
 $result_trees{'insert_copying_and_paragraph'}{'contents'}[0]{'parent'} = $result_trees{'insert_copying_and_paragraph'};
 $result_trees{'insert_copying_and_paragraph'}{'contents'}[1]{'parent'} = $result_trees{'insert_copying_and_paragraph'};
 $result_trees{'insert_copying_and_paragraph'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[2];
 $result_trees{'insert_copying_and_paragraph'}{'contents'}[2]{'parent'} = $result_trees{'insert_copying_and_paragraph'};
+$result_trees{'insert_copying_and_paragraph'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'insert_copying_and_paragraph'}{'contents'}[3];
 $result_trees{'insert_copying_and_paragraph'}{'contents'}[3]{'parent'} = $result_trees{'insert_copying_and_paragraph'};
-$result_trees{'insert_copying_and_paragraph'}{'contents'}[4]{'parent'} = $result_trees{'insert_copying_and_paragraph'};
 
 $result_texis{'insert_copying_and_paragraph'} = '@copying
 In copying.
@@ -149,7 +134,6 @@ Insertcopying
 
 $result_texts{'insert_copying_and_paragraph'} = '
 Insertcopying
-
 ';
 
 $result_errors{'insert_copying_and_paragraph'} = [];

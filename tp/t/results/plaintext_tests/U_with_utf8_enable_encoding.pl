@@ -12,33 +12,23 @@ $result_trees{'U_with_utf8_enable_encoding'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'utf-8'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentencoding',
       'extra' => {
         'input_encoding_name' => 'utf-8',
         'input_perl_encoding' => 'utf-8-strict',
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => 'utf-8'
       },
       'line_nr' => {
@@ -65,13 +55,6 @@ $result_trees{'U_with_utf8_enable_encoding'} = {
           ],
           'cmdname' => 'U',
           'contents' => [],
-          'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ]
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 2,
@@ -91,16 +74,11 @@ $result_trees{'U_with_utf8_enable_encoding'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'U_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[0];
 $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0];
-$result_trees{'U_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0];
-$result_trees{'U_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0];
 $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[0];
-$result_trees{'U_with_utf8_enable_encoding'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[0]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'};
 $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0];
-$result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1];
 $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1];
 $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'};

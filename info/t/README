@@ -19,16 +19,13 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
 to allow running at the command line, or with either an in-source or
-out-of-source build with "make check".  Tests of interactive operation
-should follow with the line.
-
-. $t/Init-inter.inc
+out-of-source build with "make check".
 
 Any interactive test should also finish with
 
-. $t/Cleanup.inc
+cleanup
 
-to cleanup temporary files and spawned processes.  This shell snippet
+to cleanup temporary files and spawned processes.  This function
 will exit with whatever the value of RETVAL is, so you can set the
 exit status of the script indicating success or failure.
 

@@ -10,16 +10,9 @@ $result_trees{'raw_and_comments'} = {
     {
       'args' => [
         {
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '  ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
+          'contents' => [],
+          'extra' => {
+            'comment_at_end' => {
               'args' => [
                 {
                   'parent' => {},
@@ -37,7 +30,7 @@ $result_trees{'raw_and_comments'} = {
               },
               'parent' => {}
             }
-          ],
+          },
           'parent' => {},
           'type' => 'block_line_arg'
         }
@@ -60,23 +53,12 @@ $result_trees{'raw_and_comments'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'tex'
-                },
-                {
-                  'parent' => {},
-                  'text' => '  ',
-                  'type' => 'spaces_at_end'
-                },
-                {
+                }
+              ],
+              'extra' => {
+                'comment_at_end' => {
                   'args' => [
                     {
                       'parent' => {},
@@ -93,17 +75,17 @@ $result_trees{'raw_and_comments'} = {
                     ]
                   },
                   'parent' => {}
-                }
-              ],
+                },
+                'spaces_after_argument' => '  '
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'tex',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'tex'
           },
           'line_nr' => {
@@ -116,7 +98,7 @@ $result_trees{'raw_and_comments'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'spaces_after_command' => {}
+        'spaces_before_argument' => '  '
       },
       'line_nr' => {
         'file_name' => '',
@@ -141,16 +123,9 @@ $result_trees{'raw_and_comments'} = {
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
+              'contents' => [],
+              'extra' => {
+                'comment_at_end' => {
                   'args' => [
                     {
                       'parent' => {},
@@ -168,7 +143,7 @@ $result_trees{'raw_and_comments'} = {
                   },
                   'parent' => {}
                 }
-              ],
+              },
               'parent' => {},
               'type' => 'block_line_arg'
             }
@@ -191,23 +166,12 @@ $result_trees{'raw_and_comments'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
                       'parent' => {},
                       'text' => 'xml'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '  ',
-                      'type' => 'spaces_at_end'
-                    },
-                    {
+                    }
+                  ],
+                  'extra' => {
+                    'comment_at_end' => {
                       'args' => [
                         {
                           'parent' => {},
@@ -224,17 +188,17 @@ $result_trees{'raw_and_comments'} = {
                         ]
                       },
                       'parent' => {}
-                    }
-                  ],
+                    },
+                    'spaces_after_argument' => '  '
+                  },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'xml',
-                'spaces_after_command' => {},
+                'spaces_before_argument' => ' ',
                 'text_arg' => 'xml'
               },
               'line_nr' => {
@@ -247,7 +211,7 @@ $result_trees{'raw_and_comments'} = {
           ],
           'extra' => {
             'end_command' => {},
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -263,47 +227,31 @@ $result_trees{'raw_and_comments'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'raw_and_comments'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_and_comments'}{'contents'}[0];
-$result_trees{'raw_and_comments'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'args'}[0];
-$result_trees{'raw_and_comments'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'raw_and_comments'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'args'}[0];
+$result_trees{'raw_and_comments'}{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'raw_and_comments'}{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'args'}[0];
 $result_trees{'raw_and_comments'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0];
 $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[0];
 $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0];
-$result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1];
 $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3];
-$result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1];
-$result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'raw_and_comments'}{'contents'}[0];
-$result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[0];
 $result_trees{'raw_and_comments'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'contents'}[1];
-$result_trees{'raw_and_comments'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'raw_and_comments'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'raw_and_comments'}{'contents'}[0]{'parent'} = $result_trees{'raw_and_comments'};
 $result_trees{'raw_and_comments'}{'contents'}[1]{'parent'} = $result_trees{'raw_and_comments'};
 $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2];
-$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1];
-$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0];
-$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0];
+$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1];
 $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1];
-$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
 $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[3];
-$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'command'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1];
-$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1];
 $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'raw_and_comments'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'raw_and_comments'}{'contents'}[2];
 $result_trees{'raw_and_comments'}{'contents'}[2]{'parent'} = $result_trees{'raw_and_comments'};
 

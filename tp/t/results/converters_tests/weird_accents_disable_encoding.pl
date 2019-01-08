@@ -14,33 +14,23 @@ $result_trees{'weird_accents_disable_encoding'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'ISO-8859-1'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
             'input_encoding_name' => 'iso-8859-1',
             'input_perl_encoding' => 'iso-8859-1',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'ISO-8859-1'
           },
           'line_nr' => {
@@ -65,26 +55,16 @@ $result_trees{'weird_accents_disable_encoding'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -100,7 +80,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -114,26 +94,16 @@ $result_trees{'weird_accents_disable_encoding'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -461,10 +431,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'line_nr' => {
@@ -477,28 +444,17 @@ $result_trees{'weird_accents_disable_encoding'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'contents'}[0];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'contents'}[0];
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[0];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[0];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[0]{'parent'} = $result_trees{'weird_accents_disable_encoding'};
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[1];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'args'}[0];
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'args'}[0];
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'args'}[0];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[1];
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[1]{'parent'} = $result_trees{'weird_accents_disable_encoding'};
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'args'}[0];
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'args'}[0];
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'args'}[0];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
@@ -557,8 +513,6 @@ $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[9]{'c
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[9];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[9];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[9]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2];
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'parent'} = $result_trees{'weird_accents_disable_encoding'};
 
 $result_texis{'weird_accents_disable_encoding'} = '@documentencoding ISO-8859-1
@@ -602,9 +556,11 @@ $result_sectioning{'weird_accents_disable_encoding'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
-            'normalized' => 'Top'
+            'normalized' => 'Top',
+            'spaces_before_argument' => ' '
           }
-        }
+        },
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'section_up' => {}
@@ -618,10 +574,13 @@ $result_nodes{'weird_accents_disable_encoding'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 0
     },
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -640,7 +599,8 @@ $result_nodes{'weird_accents_disable_encoding'}{'node_up'}{'extra'}{'top_node_up
 $result_menus{'weird_accents_disable_encoding'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 
@@ -664,9 +624,7 @@ i~=
 
 
 $result_converted{'html_text'}->{'weird_accents_disable_encoding'} = '
-<a name="Top"></a>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="Top"></span><span id="top"></span><h1 class="top">top</h1>
 
 <p>&#297;=
 </p>

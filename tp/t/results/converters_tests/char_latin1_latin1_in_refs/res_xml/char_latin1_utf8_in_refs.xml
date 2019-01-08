@@ -11,7 +11,7 @@
 <node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">ä ë ï ö ü ÿ Ä Ë Ï Ö Ü</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
-<printindex value="cp" line=" cp"></printindex>
+<printindex value="cp" line="cp"></printindex>
 
 <menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">ä ë ï ö ü ÿ Ä Ë Ï Ö Ü</menunode><menudescription><pre xml:space="preserve">

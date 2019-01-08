@@ -58,9 +58,6 @@ $result_trees{'ifset_in_macro_set'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -99,7 +96,6 @@ $result_trees{'ifset_in_macro_set'}{'contents'}[0]{'contents'}[1]{'parent'} = $r
 $result_trees{'ifset_in_macro_set'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'ifset_in_macro_set'}{'contents'}[0];
 $result_trees{'ifset_in_macro_set'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'ifset_in_macro_set'}{'contents'}[0];
 $result_trees{'ifset_in_macro_set'}{'contents'}[0]{'parent'} = $result_trees{'ifset_in_macro_set'};
-$result_trees{'ifset_in_macro_set'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'ifset_in_macro_set'}{'contents'}[0];
 $result_trees{'ifset_in_macro_set'}{'contents'}[1]{'parent'} = $result_trees{'ifset_in_macro_set'};
 $result_trees{'ifset_in_macro_set'}{'contents'}[2]{'parent'} = $result_trees{'ifset_in_macro_set'};
 $result_trees{'ifset_in_macro_set'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'ifset_in_macro_set'}{'contents'}[3];

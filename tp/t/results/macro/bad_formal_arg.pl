@@ -58,9 +58,6 @@ $result_trees{'bad_formal_arg'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -117,9 +114,6 @@ $result_trees{'bad_formal_arg'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -174,9 +168,6 @@ $result_trees{'bad_formal_arg'} = {
           'parent' => {}
         },
         {
-          'extra' => {
-            'command' => {}
-          },
           'parent' => {},
           'text' => '
 ',
@@ -196,9 +187,6 @@ $result_trees{'bad_formal_arg'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -214,7 +202,6 @@ $result_trees{'bad_formal_arg'}{'contents'}[1]{'args'}[2]{'parent'} = $result_tr
 $result_trees{'bad_formal_arg'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
 $result_trees{'bad_formal_arg'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
 $result_trees{'bad_formal_arg'}{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'};
-$result_trees{'bad_formal_arg'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
 $result_trees{'bad_formal_arg'}{'contents'}[2]{'parent'} = $result_trees{'bad_formal_arg'};
 $result_trees{'bad_formal_arg'}{'contents'}[3]{'parent'} = $result_trees{'bad_formal_arg'};
 $result_trees{'bad_formal_arg'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
@@ -223,7 +210,6 @@ $result_trees{'bad_formal_arg'}{'contents'}[4]{'args'}[2]{'parent'} = $result_tr
 $result_trees{'bad_formal_arg'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
 $result_trees{'bad_formal_arg'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
 $result_trees{'bad_formal_arg'}{'contents'}[4]{'parent'} = $result_trees{'bad_formal_arg'};
-$result_trees{'bad_formal_arg'}{'contents'}[5]{'extra'}{'command'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
 $result_trees{'bad_formal_arg'}{'contents'}[5]{'parent'} = $result_trees{'bad_formal_arg'};
 $result_trees{'bad_formal_arg'}{'contents'}[6]{'parent'} = $result_trees{'bad_formal_arg'};
 $result_trees{'bad_formal_arg'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
@@ -232,10 +218,8 @@ $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[0]{'parent'} = $resul
 $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1];
 $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1];
 $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
-$result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[2]{'extra'}{'command'} = $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1];
 $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[2]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
 $result_trees{'bad_formal_arg'}{'contents'}[7]{'parent'} = $result_trees{'bad_formal_arg'};
-$result_trees{'bad_formal_arg'}{'contents'}[8]{'extra'}{'command'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
 $result_trees{'bad_formal_arg'}{'contents'}[8]{'parent'} = $result_trees{'bad_formal_arg'};
 
 $result_texis{'bad_formal_arg'} = '

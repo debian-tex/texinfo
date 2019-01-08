@@ -1,0 +1,24 @@
+This is the README-alpha file for GNU Texinfo.
+
+  Copyright 1992-2019 Free Software Foundation, Inc.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+This is a test release!
+
+The latest test release (if any) is available at
+ftp://alpha.gnu.org/gnu/texinfo/
+
+Please email comments and problem reports to bug-texinfo@gnu.org. You
+are welcome to join that mailing list; to do so, please visit
+http://lists.gnu.org/mailman/listinfo/bug-texinfo.  (There is no
+dedicated mailing list for pretests any more.)
+
+If you see a problem in this release that you've already reported, feel
+free to re-report it -- it's good to get a reminder.  If you sent a
+patch for a previous release, and you haven't received any feedback
+about it, please do re-send it, it likely got lost.
+
+For development environment information, see README-hacking.

@@ -1,5 +1,5 @@
 /* Routines for dealing with '\0' separated arg vectors.
-   Copyright (C) 1995-2000, 2004, 2007, 2009-2017 Free Software Foundation,
+   Copyright (C) 1995-2000, 2004, 2007, 2009-2019 Free Software Foundation,
    Inc.
    This file is part of the GNU C Library.
 
@@ -14,7 +14,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 #ifndef _ARGZ_H
 #define _ARGZ_H 1

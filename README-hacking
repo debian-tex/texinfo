@@ -1,16 +1,14 @@
-$Id: README-hacking 7843 2017-06-23 17:58:55Z gavin $
 This file describes the development environment for Texinfo.
 
-  Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013,
-  2014, 2015, 2016 Free Software Foundation, Inc.
+  Copyright 2002-2019 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
-The development sources for GNU Texinfo are available through anonymous
-Subversion at Savannah:
-  http://savannah.gnu.org/svn/?group=texinfo
+The development sources for GNU Texinfo are available through git
+at Savannah:
+  https://savannah.gnu.org/git/?group=texinfo
 
 This distribution uses whatever versions of Automake, Autoconf, and
 Gettext are listed in NEWS; usually the latest official releases.  If
@@ -71,22 +69,19 @@ recorded in gnulib/m4/gnulib-cache.m4.  Given a source checkout of
 gnulib, you can update the files with gnulib-tool --add-import.
 
 When running gnulib-tool --add-import or otherwise adding modules, it is
-necessary to check what files were added (e.g., run "svn status
-build-aux gnulib") and add them to the repository with "svn add";
-likewise for removals, likewise for adding new generated files
-(typically gnulib/lib/foo.h from foo.h.in) to the ignore list (e.g.,
-  svn propedit svn:ignore gnulib/lib).
+necessary to check what files were added or removed (e.g., run "git
+status -u") and add new files to the repository with "git add".
+Add any new generated files (typically gnulib/lib/foo.h from foo.h.in) 
+to the ignore list in .gitignore.
 
 
 Subdirectories in repository
 ----------------------------
 
-In addition to the subdirectories listed in README, there are these 
-directories in the source control repository:
+In addition to the subdirectories listed in README, there is the 
+following directory in the source control repository:
 
-makeinfo/  - Implementation of makeinfo in C, distributed before version 5.0
-texi2html/ - Perl program to generate HTML from Texinfo, superseded by texi2any
-
+js/ - Work on enhanced browsing of HTML manuals with JavaScript
 
 
 
@@ -151,11 +146,13 @@ check OpenCSW build reports at
 try groff.texinfo from groff source repo.
 process doc/texinfo-tex-test.texi with TeX and check that output is good.
 
+change instructions below to use git instead of svn.
+
 - First checks:
 Ensure texinfo.tex, texi2dvi, and htmlxref.cnf are updated on ftp.gnu.org.
 Ensure TXI_XLATE in doc/Makefile.am matches actual file list.
 Check that LINGUAS under po and po_document match actual file list.
-Have a look at the output of "svn status ." to check for files that
+Have a look at the output of "git status -u" to check for files that
   should be tracked in SVN or ignored.
 Check that TEXINFO_DTD_VERSION has been updated to the next version in
   configure.ac if the DTD has been modified since the last release.
@@ -169,8 +166,8 @@ Update copyright years in many files for release; best to grep -r for
   ones relevant to --version calls, etc., such as texindex.awk and info.c.
 make po-check             # update po/POTFILES.in as needed
 
-# Under the top level, and also under tp/Texinfo/Convert/XSParagraph, which
-# uses a separate gnulib import.
+# Under the top level, and also under tp/Texinfo/XS, which uses
+# a separate gnulib import.
 gnulib-tool --add-import
 
 util/srclist-txi          # for pretest, to sync files with other sources
@@ -256,17 +253,7 @@ Check for removed files with, e.g. ls -ltu $(www_target)/*/html_node,
 followed by cvs rm -f.  Likewise, check for added files with
 cvs -qn update, followed by cvs add.  When done, run cvs commit.
 
-#  Official releases only: ... update texinfo at tug.org
-#  (contact root@tug.org):
-prev=6.0
-ver=6.1
-cd ~ftp/tex
-rm -rf texinfo-$prev*
-cp ~/texinfo-$ver.tar.{gz,xz} .
-tar xzf texinfo-$ver.tar.gz
-ln -s texinfo-$ver.tar.gz texinfo.tar.gz
-!!:gs/gz/xz
-relink texinfo $ver
+#  Official releases only: Contact root@tug.org to update texinfo at tug.org
 
 #  For pretest release, send announcement to bug-texinfo and
 bcc coordinator@translationproject.org.
@@ -279,7 +266,3 @@ news item at savannah.
 #  ... post-release, or when development resumes:
 configure.ac, util/texi2dvi: add "dev" to versions for clarity,
 until it's time to do pretests again.
-
-#  ... [personal for karl] move mail:
-mv ~/mail/txi.done $ver.mail
-bzip2 $ver.mail

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,14 +16,13 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
-run_ginfo "-f intera -n 'Argument to tab'"
+run_ginfo -f intera -n 'Argument to tab'
 # C-u 2 TAB to go to second link
-printf '\0252\t\rDq' >$PTY_TYPE
+printf '\0252\t\rDq' >$pty_type
 timeout_test
 
-diff $GINFO_OUTPUT $t/node-target
-RETVAL=$?
+diff $ginfo_output $t/node-target
+retval=$?
 
 cleanup

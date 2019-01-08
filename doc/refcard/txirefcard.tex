@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex 7842 2017-06-23 06:47:27Z gavin $
+% $Id$
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -14,8 +14,7 @@
 \newcount\letterpaper
 \ifx\undefined\afour\letterpaper=1 \else\letterpaper=0 \fi
 
-% Copyright 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-% Free Software Foundation, Inc.
+% Copyright 2008-2019 Free Software Foundation, Inc.
 %
 % This file is part of GNU Texinfo.
 %
@@ -49,13 +48,13 @@
 % Much of the text is based on, and sometimes copied from, the @-Command
 % Summary node in the Texinfo manual, originally written by Bob Chassell.
 
-\def\versionyear{2017}          % year manual was updated
-\def\versionTexinfo{6.5}        % version of Texinfo this manual is for
+\def\versionyear{2019}          % year manual was updated
+\def\versionTexinfo{6.5.90}     % version of Texinfo this manual is for
 
 \def\copyrightnotice{%
 \vskip 1ex plus 1filll\begingroup\small
 \advance\baselineskip by 1pt
-\centerline{Copyright \copyright\ 2016 Free Software Foundation, Inc.}
+\centerline{Copyright \copyright\ 2019 Free Software Foundation, Inc.}
 \centerline{for Texinfo version \versionTexinfo, \versionyear}
 \centerline{by Robert D. Solimeno}
 \centerline{and the Texinfo maintainers}
@@ -417,7 +416,8 @@ ending with:\linebreak
 The commands in this section are given approximately in the order in
 which they conventionally appear.
 
-\txicmd{@setfilename}{info-file-name}{Provide a name to be used for the output files. This command is essential for \TeX\  formatting as well, even though it produces no output.  Should be the first command in the input.}
+\txicmd{@setfilename}{info-file-name}{Provide a name to be used for the 
+output files.  Should be the first command in the input.}
 \txicmd{@settitle}{title}{Specify document \var{title}.}
 \txicmd{@copying}{}{Specify copyright and licensing text. Pair with \code{@end copying}.}
 \txicmd{@insertcopying}{}{Insert text defined by \code{@copying}.}
@@ -456,8 +456,12 @@ which they conventionally appear.
 
 \section{Nodes}
 
-\txicmd{@node}{name\rmbrack[, next, previous, up]}{Begin a new node.  The \var{next}, \var{previous}, and \var{up} pointers are usually omitted in a normally-structured document.}
-\txicmd{@top}{title}{Mark the topmost \code{@node} in the file, which must be defined on the line immediately preceding \code{@top}. The \var{title} is formatted as a chapter-level heading.  The entire top node, including the \code{@node} and \code{@top} lines, are normally enclosed with \code{@ifnottex ... @end ifnottex}.}
+\txicmd{@node}{name}{Begin a new node.}
+\txicmd{@top}{title}{Mark the topmost \code{@node} in the file, which 
+must be defined on the line immediately preceding \code{@top}. The 
+\var{title} is formatted as a chapter-level heading.  The entire top 
+node, including the \code{@node} and \code{@top} lines, are normally 
+enclosed with \code{@ifnottex ... @end ifnottex}.}
 \txicmd{@anchor}{\ttbraced{\var{name}}}{Define \var{name} as the current location, for use as a cross-reference target.}
 \txicmd{@novalidate}{}{Suppress validation of node references and omit creation of auxiliary files with \TeX. Use before \code{@setfilename}.}
 
@@ -506,7 +510,6 @@ which they conventionally appear.
 
 \txicmd{@menu}{}{Mark the beginning of a menu of nodes in Info. No effect in a printed manual. Pair with \code{@end menu}.}
 \txicmd{@detailmenu}{}{Mark the (optional) detailed node listing in a master menu.}
-\txicmd{@validatemenus}{}{Specify whether menus can be automatically generated.}
 
 
 \section{Cross references}
@@ -677,6 +680,7 @@ index entry.}
 \txicmd{@\lbracechar}{, \code{@lbracechar\ttbraced{}}}{Insert a left brace, `$\{$'.}
 \txicmd{@\rbracechar}{, \code{@rbracechar\ttbraced{}}}{Insert a right brace, `$\}$'.}
 \txicmd{@backslashchar}{\ttbraced{}}{Insert a typewriter backslash, {\tt\char`\\}.}
+\txicmd{@\&}{, \code{@ampchar\ttbraced{}}}{Insert an ampersand, `\&'.}
 \txicmd{@comma}{\ttbraced{}}{Insert a comma character; needed only when a literal comma would be an argument separator, as in \code{@xref}.}
 \txicmd{@hashchar}{\ttbraced{}}{Insert a hash character, \#; needed only when a literal hash would introduce a \code{\#line} directive.}
 \txicmd{@\var{whitespace}}{}{An \code{@} followed by a space, tab, or newline produces a normal, stretchable, interword space.}

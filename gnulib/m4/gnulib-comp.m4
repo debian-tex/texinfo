@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2017 Free Software Foundation, Inc.
+# Copyright (C) 2002-2019 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this file.  If not, see <http://www.gnu.org/licenses/>.
+# along with this file.  If not, see <https://www.gnu.org/licenses/>.
 #
 # As a special exception to the GNU General Public License,
 # this file may be distributed as part of a program that
@@ -48,7 +48,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module argz:
   # Code from module btowc:
   # Code from module builtin-expect:
-  # Code from module configmake:
   # Code from module dirname-lgpl:
   # Code from module dosname:
   # Code from module double-slash-root:
@@ -69,6 +68,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module intprops:
   # Code from module iswblank:
   # Code from module langinfo:
+  # Code from module libc-config:
   # Code from module limits-h:
   # Code from module localcharset:
   # Code from module locale:
@@ -105,9 +105,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module ssize_t:
   # Code from module stdarg:
   dnl Some compilers (e.g., AIX 5.3 cc) need to be in c99 mode
-  dnl for the builtin va_copy to work.  With Autoconf 2.60 or later,
-  dnl gl_PROG_CC_C99 arranges for this.  With older Autoconf gl_PROG_CC_C99
-  dnl shouldn't hurt, though installers are on their own to set c99 mode.
+  dnl for the builtin va_copy to work.  gl_PROG_CC_C99 arranges for this.
   gl_PROG_CC_C99
   # Code from module stdbool:
   # Code from module stddef:
@@ -315,7 +313,7 @@ AC_DEFUN([gl_INIT],
   gl_UNISTD_H
   gl_LIBUNISTRING_LIBHEADER([0.9.4], [unitypes.h])
   gl_LIBUNISTRING_LIBHEADER([0.9.4], [uniwidth.h])
-  gl_LIBUNISTRING_MODULE([0.9.6], [uniwidth/width])
+  gl_LIBUNISTRING_MODULE([0.9.8], [uniwidth/width])
   gl_FUNC_VASPRINTF
   gl_STDIO_MODULE_INDICATOR([vasprintf])
   m4_ifdef([AM_XGETTEXT_OPTION],
@@ -326,15 +324,16 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_WCWIDTH
   if test $HAVE_WCWIDTH = 0 || test $REPLACE_WCWIDTH = 1; then
     AC_LIBOBJ([wcwidth])
+    gl_PREREQ_WCWIDTH
   fi
   gl_WCHAR_MODULE_INDICATOR([wcwidth])
   gl_XALLOC
   gl_gnulib_enabled_btowc=false
   gl_gnulib_enabled_37f71b604aa9c54446783d80f42fe547=false
-  gl_gnulib_enabled_configmake=false
   gl_gnulib_enabled_30838f5439487421042f2225bed3af76=false
   gl_gnulib_enabled_intprops=false
   gl_gnulib_enabled_langinfo=false
+  gl_gnulib_enabled_21ee726a3540c09237a8e70c0baf7467=false
   gl_gnulib_enabled_localcharset=false
   gl_gnulib_enabled_locale=false
   gl_gnulib_enabled_localeconv=false
@@ -376,17 +375,9 @@ AC_DEFUN([gl_INIT],
       gl_gnulib_enabled_37f71b604aa9c54446783d80f42fe547=true
     fi
   }
-  func_gl_gnulib_m4code_configmake ()
-  {
-    if ! $gl_gnulib_enabled_configmake; then
-      gl_CONFIGMAKE_PREP
-      gl_gnulib_enabled_configmake=true
-    fi
-  }
   func_gl_gnulib_m4code_30838f5439487421042f2225bed3af76 ()
   {
     if ! $gl_gnulib_enabled_30838f5439487421042f2225bed3af76; then
-      gl_HARD_LOCALE
       gl_gnulib_enabled_30838f5439487421042f2225bed3af76=true
     fi
   }
@@ -403,14 +394,21 @@ AC_DEFUN([gl_INIT],
       gl_gnulib_enabled_langinfo=true
     fi
   }
+  func_gl_gnulib_m4code_21ee726a3540c09237a8e70c0baf7467 ()
+  {
+    if ! $gl_gnulib_enabled_21ee726a3540c09237a8e70c0baf7467; then
+      gl___INLINE
+      gl_gnulib_enabled_21ee726a3540c09237a8e70c0baf7467=true
+    fi
+  }
   func_gl_gnulib_m4code_localcharset ()
   {
     if ! $gl_gnulib_enabled_localcharset; then
       gl_LOCALCHARSET
-      LOCALCHARSET_TESTS_ENVIRONMENT="CHARSETALIASDIR=\"\$(abs_top_builddir)/$gl_source_base\""
+      dnl For backward compatibility. Some packages still use this.
+      LOCALCHARSET_TESTS_ENVIRONMENT=
       AC_SUBST([LOCALCHARSET_TESTS_ENVIRONMENT])
       gl_gnulib_enabled_localcharset=true
-      func_gl_gnulib_m4code_configmake
     fi
   }
   func_gl_gnulib_m4code_locale ()
@@ -635,6 +633,12 @@ AC_DEFUN([gl_INIT],
   if test $ac_use_included_regex = yes; then
     func_gl_gnulib_m4code_intprops
   fi
+  if test $ac_use_included_regex = yes; then
+    func_gl_gnulib_m4code_langinfo
+  fi
+  if test $ac_use_included_regex = yes; then
+    func_gl_gnulib_m4code_21ee726a3540c09237a8e70c0baf7467
+  fi
   if test "$ac_cv_gnu_library_2_1:$ac_use_included_regex" = no:yes; then
     func_gl_gnulib_m4code_lock
   fi
@@ -659,10 +663,10 @@ AC_DEFUN([gl_INIT],
   m4_pattern_allow([^gl_GNULIB_ENABLED_])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_btowc], [$gl_gnulib_enabled_btowc])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_37f71b604aa9c54446783d80f42fe547], [$gl_gnulib_enabled_37f71b604aa9c54446783d80f42fe547])
-  AM_CONDITIONAL([gl_GNULIB_ENABLED_configmake], [$gl_gnulib_enabled_configmake])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_30838f5439487421042f2225bed3af76], [$gl_gnulib_enabled_30838f5439487421042f2225bed3af76])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_intprops], [$gl_gnulib_enabled_intprops])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_langinfo], [$gl_gnulib_enabled_langinfo])
+  AM_CONDITIONAL([gl_GNULIB_ENABLED_21ee726a3540c09237a8e70c0baf7467], [$gl_gnulib_enabled_21ee726a3540c09237a8e70c0baf7467])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_localcharset], [$gl_gnulib_enabled_localcharset])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_locale], [$gl_gnulib_enabled_locale])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_localeconv], [$gl_gnulib_enabled_localeconv])
@@ -834,7 +838,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/basename-lgpl.c
   lib/btowc.c
   lib/c++defs.h
-  lib/config.charset
+  lib/cdefs.h
   lib/dirname-lgpl.c
   lib/dirname.h
   lib/dosname.h
@@ -867,6 +871,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/iswblank.c
   lib/itold.c
   lib/langinfo.in.h
+  lib/libc-config.h
   lib/limits.in.h
   lib/localcharset.c
   lib/localcharset.h
@@ -875,7 +880,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/malloc.c
   lib/malloca.c
   lib/malloca.h
-  lib/malloca.valgrind
   lib/mbchar.c
   lib/mbchar.h
   lib/mbiter.c
@@ -906,8 +910,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/printf-args.h
   lib/printf-parse.c
   lib/printf-parse.h
-  lib/ref-add.sin
-  lib/ref-del.sin
   lib/regcomp.c
   lib/regex.c
   lib/regex.h
@@ -964,13 +966,13 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/xsize.c
   lib/xsize.h
   m4/00gnulib.m4
+  m4/__inline.m4
   m4/absolute-header.m4
   m4/alloca.m4
   m4/argz.m4
   m4/btowc.m4
   m4/builtin-expect.m4
   m4/codeset.m4
-  m4/configmake.m4
   m4/dirname.m4
   m4/double-slash-root.m4
   m4/eealloc.m4
@@ -979,13 +981,12 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/exponentd.m4
   m4/extensions.m4
   m4/extern-inline.m4
-  m4/fcntl-o.m4
   m4/float_h.m4
   m4/getopt.m4
   m4/getprogname.m4
   m4/glibc21.m4
   m4/gnulib-common.m4
-  m4/hard-locale.m4
+  m4/host-cpu-c-abi.m4
   m4/iconv.m4
   m4/include_next.m4
   m4/intmax_t.m4
@@ -1026,7 +1027,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/nl_langinfo.m4
   m4/nocrash.m4
   m4/off_t.m4
-  m4/onceonly.m4
   m4/printf.m4
   m4/pthread_rwlock_rdlock.m4
   m4/regex.m4

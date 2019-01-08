@@ -1,8 +1,7 @@
-# $Id: GNUmakefile 6960 2016-01-23 15:25:46Z karl $
 # Makefile to build Texinfo from the Perl POD documentation,
 # using pod2texi.
 #
-# Copyright 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2013-2019 Free Software Foundation, Inc.
 # 
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without

@@ -1,9 +1,7 @@
 use strict;
 
-BEGIN {
-  require Texinfo::ModulePath;
-  Texinfo::ModulePath::init(undef, undef, 'updirs' => 2);
-}
+use lib '.';
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
 use Test::More;
 
@@ -29,8 +27,7 @@ Locale::Messages::bindtextdomain ('texinfo_document', 't/locales');
 
 my $parser = Texinfo::Parser::parser({'TEST' => 1,
                                       'include_directories' => [
-                                          't/include_dir/',
-                                          't/include/',
+                                        $srcdir.'t/include_reference/',
                                           $srcdir.'t/include/'],
                                       'expanded_formats' => ['html', 'tex']});
 

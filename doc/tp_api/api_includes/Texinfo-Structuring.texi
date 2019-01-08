@@ -8,7 +8,6 @@
 * Texinfo@asis{::}Structuring METHODS::
 * Texinfo@asis{::}Structuring SEE ALSO::
 * Texinfo@asis{::}Structuring AUTHOR::
-* Texinfo@asis{::}Structuring COPYRIGHT AND LICENSE::
 @end menu
 
 @node Texinfo::Structuring NAME
@@ -412,14 +411,4 @@ with the index name.
 @section AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
-
-@node Texinfo::Structuring COPYRIGHT AND LICENSE
-@section COPYRIGHT AND LICENSE
-
-Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
-
-This library is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
 

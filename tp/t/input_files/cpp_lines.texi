@@ -25,7 +25,18 @@
 
 @macr{}
 
-@email{after macro call}. 
+@email{after macro call}.
+
+@macro macrtwo
+line before
+# line 666 "x"
+@end macro
+
+@email{after macrotwo def}
+
+@macrtwo{}
+
+@email{after macrotwo call}. 
 
 @include file_with_cpp_lines.texi
 @email{after inc}. 

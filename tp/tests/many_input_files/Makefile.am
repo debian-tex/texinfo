@@ -1,6 +1,5 @@
-# $Id: Makefile.am 6488 2015-07-31 22:50:37Z gavin $
 # Makefile.am for texinfo/tp/tests/many_input_files
-# Copyright 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2012-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -28,13 +27,13 @@ tex-html-checks: all
 copy-tests:
 	for dir in $(test_dirs); do \
 		if [ -d "$$dir" ]; then \
-			if [ -d "$${dir}_res" ]; then \
-				rm -f "$${dir}_res/"*.* ;\
+			if [ -d "${srcdir}/$${dir}_res" ]; then \
+				rm -f "${srcdir}/$${dir}_res/"*.* ;\
 			else \
-				mkdir "$${dir}_res/" ; \
+				mkdir ${srcdir}/"$${dir}_res/" ; \
 			fi ;\
-			cp -p "$$dir/"*.* "$${dir}_res/"; \
-			rm -f "$${dir}_res/"*.png "$${dir}_res/"*_l2h.css; \
+			cp -p "$$dir/"*.* "${srcdir}/$${dir}_res/"; \
+			rm -f ${srcdir}/"$${dir}_res/"*.png ${srcdir}/"$${dir}_res/"*_l2h.css; \
 		else \
 			echo "No dir $$dir/"; \
 		fi; \
@@ -43,13 +42,13 @@ copy-tests:
 copy-tex-html:
 	for dir in $(tex_html_dirs); do \
 		if [ -d "$$dir" ]; then \
-			if [ -d "$${dir}_res" ]; then \
-				rm -f "$${dir}_res/"*.* ;\
+			if [ -d "${srcdir}/$${dir}_res" ]; then \
+				rm -f "${srcdir}/$${dir}_res/"*.* ;\
 			else \
-				mkdir "$${dir}_res/" ; \
+				mkdir "${srcdir}/$${dir}_res/" ; \
 			fi ;\
-			cp -p "$$dir/"*.* "$${dir}_res/"; \
-			rm -f "$${dir}_res/"*.png "$${dir}_res/"*_l2h.css; \
+			cp -p "$$dir/"*.* "${srcdir}/$${dir}_res/"; \
+			rm -f "${srcdir}/$${dir}_res/"*.png "${srcdir}/$${dir}_res/"*_l2h.css; \
 		else \
 			echo "No dir $$dir/"; \
 		fi; \
@@ -62,5 +61,5 @@ distclean-local:
 
 dist-hook:
 	for dir in $(test_dirs) $(tex_html_dirs); do \
-		rm -rf `find "$(distdir)/$${dir}_res" -name .svn` ;\
+		rm -rf `find "$(distdir)/$${dir}_res" -name .git` ;\
 	done

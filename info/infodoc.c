@@ -1,9 +1,6 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c 7801 2017-05-20 13:33:45Z gavin $
 
-   Copyright 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
-   2007, 2008, 2011, 2013, 2014, 2015, 2016, 2017 Free Software Foundation, 
-   Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

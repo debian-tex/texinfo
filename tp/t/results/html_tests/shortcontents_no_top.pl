@@ -17,26 +17,16 @@ $result_trees{'shortcontents_no_top'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'chap'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -49,10 +39,7 @@ $result_trees{'shortcontents_no_top'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 1,
       'line_nr' => {
@@ -68,26 +55,16 @@ $result_trees{'shortcontents_no_top'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'chap2'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -100,10 +77,7 @@ $result_trees{'shortcontents_no_top'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 1,
       'line_nr' => {
@@ -119,26 +93,16 @@ $result_trees{'shortcontents_no_top'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'sec'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
@@ -168,10 +132,7 @@ $result_trees{'shortcontents_no_top'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 2,
       'line_nr' => {
@@ -186,34 +147,19 @@ $result_trees{'shortcontents_no_top'} = {
   'type' => 'document_root'
 };
 $result_trees{'shortcontents_no_top'}{'contents'}[0]{'parent'} = $result_trees{'shortcontents_no_top'};
-$result_trees{'shortcontents_no_top'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'shortcontents_no_top'}{'contents'}[1];
 $result_trees{'shortcontents_no_top'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[1]{'args'}[0];
-$result_trees{'shortcontents_no_top'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[1]{'args'}[0];
-$result_trees{'shortcontents_no_top'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[1]{'args'}[0];
 $result_trees{'shortcontents_no_top'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[1];
 $result_trees{'shortcontents_no_top'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[1];
-$result_trees{'shortcontents_no_top'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'shortcontents_no_top'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'shortcontents_no_top'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'shortcontents_no_top'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'shortcontents_no_top'}{'contents'}[1]{'parent'} = $result_trees{'shortcontents_no_top'};
-$result_trees{'shortcontents_no_top'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'shortcontents_no_top'}{'contents'}[2];
 $result_trees{'shortcontents_no_top'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[2]{'args'}[0];
-$result_trees{'shortcontents_no_top'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[2]{'args'}[0];
-$result_trees{'shortcontents_no_top'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[2]{'args'}[0];
 $result_trees{'shortcontents_no_top'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[2];
 $result_trees{'shortcontents_no_top'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[2];
-$result_trees{'shortcontents_no_top'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'shortcontents_no_top'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'shortcontents_no_top'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'shortcontents_no_top'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'shortcontents_no_top'}{'contents'}[2]{'parent'} = $result_trees{'shortcontents_no_top'};
-$result_trees{'shortcontents_no_top'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'shortcontents_no_top'}{'contents'}[3];
 $result_trees{'shortcontents_no_top'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[3]{'args'}[0];
-$result_trees{'shortcontents_no_top'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[3]{'args'}[0];
-$result_trees{'shortcontents_no_top'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[3]{'args'}[0];
 $result_trees{'shortcontents_no_top'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[3];
 $result_trees{'shortcontents_no_top'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[3];
 $result_trees{'shortcontents_no_top'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[3]{'contents'}[1];
 $result_trees{'shortcontents_no_top'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[3];
-$result_trees{'shortcontents_no_top'}{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'shortcontents_no_top'}{'contents'}[3]{'args'}[0]{'contents'}[1];
-$result_trees{'shortcontents_no_top'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'shortcontents_no_top'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'shortcontents_no_top'}{'contents'}[3]{'parent'} = $result_trees{'shortcontents_no_top'};
 
 $result_texis{'shortcontents_no_top'} = '@chapter chap
@@ -242,20 +188,26 @@ $result_sectioning{'shortcontents_no_top'} = {
   'section_childs' => [
     {
       'cmdname' => 'chapter',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 1,
       'number' => 1,
       'section_up' => {}
     },
     {
       'cmdname' => 'chapter',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 1,
       'number' => 2,
       'section_childs' => [
         {
           'cmdname' => 'section',
-          'extra' => {},
+          'extra' => {
+            'spaces_before_argument' => ' '
+          },
           'level' => 2,
           'number' => '2.1',
           'section_up' => {}
@@ -320,16 +272,13 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="chap"></a>
-<h2 class="chapter">1 chap</h2>
+<span id="chap"></span><h2 class="chapter">1 chap</h2>
 
-<a name="chap2"></a>
-<h2 class="chapter">2 chap2</h2>
+<span id="chap2"></span><h2 class="chapter">2 chap2</h2>
 
-<a name="sec"></a>
-<h3 class="section">2.1 sec</h3>
+<span id="sec"></span><h3 class="section">2.1 sec</h3>
 
-<a name="SEC_Overview"></a>
+<span id="SEC_Overview"></span>
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
 
 <div class="shortcontents">

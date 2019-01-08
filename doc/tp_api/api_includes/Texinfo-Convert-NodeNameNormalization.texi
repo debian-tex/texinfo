@@ -7,7 +7,6 @@
 * Texinfo@asis{::}Convert@asis{::}NodeNameNormalization DESCRIPTION::
 * Texinfo@asis{::}Convert@asis{::}NodeNameNormalization METHODS::
 * Texinfo@asis{::}Convert@asis{::}NodeNameNormalization AUTHOR::
-* Texinfo@asis{::}Convert@asis{::}NodeNameNormalization COPYRIGHT AND LICENSE::
 @end menu
 
 @node Texinfo::Convert::NodeNameNormalization NAME
@@ -71,14 +70,4 @@ is not used for characters whose transliteration is not built-in.
 @section AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
-
-@node Texinfo::Convert::NodeNameNormalization COPYRIGHT AND LICENSE
-@section COPYRIGHT AND LICENSE
-
-Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
-
-This library is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or (at 
-your option) any later version.
 

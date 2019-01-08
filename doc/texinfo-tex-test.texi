@@ -786,9 +786,8 @@ If the above is in two columns, check that the space below the initials
 
 @section Final page of index hard to balance
 
-The left column of the final page of the index should be shorter than the
-right column here, and no empty page should appear in the middle of the 
-index.  All index material should fit on the page within the margins.
+No empty page should appear in the middle of the index.  All index 
+material should fit on the page within the margins.
 
 @commenceindex
 \entry {outline, importing into}{39}

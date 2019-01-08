@@ -127,7 +127,6 @@ but , ,@:
 @code{@@cite@{--a@}} @cite{--a}
 @code{@@code@{--a@}} @code{--a}
 @code{@@command@{--a@}} @command{--a}
-@code{@@ctrl@{--a@}} @ctrl{--a}
 @code{@@dfn@{--a@}} @dfn{--a}
 @code{@@dmn@{--a@}} @dmn{--a}
 @code{@@email@{--a,--b@}} @email{--a,--b}

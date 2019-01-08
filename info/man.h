@@ -1,7 +1,6 @@
 /* man.h: Defines and external function declarations for man.c.
-   $Id: man.h 5526 2014-05-07 14:37:33Z karl $
 
-   Copyright 1993, 1997, 2004, 2007, 2013, 2014 Free Software Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

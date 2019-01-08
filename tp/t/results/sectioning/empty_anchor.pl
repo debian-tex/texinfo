@@ -17,11 +17,6 @@ $result_trees{'empty_anchor'} = {
       ],
       'cmdname' => 'anchor',
       'contents' => [],
-      'extra' => {
-        'brace_command_contents' => [
-          undef
-        ]
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -39,25 +34,16 @@ $result_trees{'empty_anchor'} = {
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '   ',
-                  'type' => 'empty_spaces_before_argument'
-                }
-              ],
+              'contents' => [],
+              'extra' => {
+                'spaces_before_argument' => '   '
+              },
               'parent' => {},
               'type' => 'brace_command_arg'
             }
           ],
           'cmdname' => 'anchor',
           'contents' => [],
-          'extra' => {
-            'brace_command_contents' => [
-              undef
-            ],
-            'spaces_before_argument' => {}
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 2,
@@ -80,9 +66,7 @@ $result_trees{'empty_anchor'} = {
 $result_trees{'empty_anchor'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[0];
 $result_trees{'empty_anchor'}{'contents'}[0]{'parent'} = $result_trees{'empty_anchor'};
 $result_trees{'empty_anchor'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[1];
-$result_trees{'empty_anchor'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'empty_anchor'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[1]{'contents'}[1];
-$result_trees{'empty_anchor'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'empty_anchor'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_anchor'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[1];
 $result_trees{'empty_anchor'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[1];
 $result_trees{'empty_anchor'}{'contents'}[1]{'parent'} = $result_trees{'empty_anchor'};

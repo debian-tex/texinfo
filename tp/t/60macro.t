@@ -1,7 +1,7 @@
 use strict;
 
-use File::Spec;
-BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} }
+use lib '.';
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -863,11 +863,6 @@ two spaces   @@noindent @noindentmacro{}    @@refill @refillmacro{}
 
 @vskip @atext{}
 
-@macro cropmarksmacro
-@cropmarks
-@end macro
-@cropmarksmacro{}
-
 @macro exdentmacro 
 @exdent
 @end macro
@@ -931,6 +926,13 @@ a
 
 @mactwo{}
 '],
+['line_after_recursive_call',
+'@macro mac
+ggg
+@mac xxx
+fff
+@end macro
+@mac'],
 ['unknown_macro_on_line_command',
 '@setfilename @begin{}file'
 ],
@@ -985,7 +987,20 @@ in inlinefmt tex
 }
 
 @mymacro{}.
-']
+'],
+['empty_macro_argument',
+'@macro mymacro{}
+text
+@end macro
+
+@mymacro{} @mymacro{ } @mymacro{  } @mymacro{  x}
+
+@macro mytwo{arg}
+X\arg\X
+@end macro
+
+@mytwo{} @mytwo{ } @mytwo{  } @mytwo{  x}'
+],
 );
 
 my @todo =(

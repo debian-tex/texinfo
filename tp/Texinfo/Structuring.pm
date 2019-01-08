@@ -1,8 +1,8 @@
 # Structuring.pm: extract informations about a document structure based on the 
 #                 document tree.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
-# Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software 
+# Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,6 +29,8 @@ use if $] >= 5.012, feature => 'unicode_strings';
 
 use strict;
 
+use Texinfo::Common;
+
 # for debugging.  Also for index entries sorting.
 use Texinfo::Convert::Text;
 # for error messages 
@@ -42,13 +44,6 @@ require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);
 
-# Items to export into callers namespace by default. Note: do not export
-# names by default without a very good reason. Use EXPORT_OK instead.
-# Do not simply export all your public functions/methods/constants.
-
-# This allows declaration       use Texinfo::Structuring ':all';
-# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
-# will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
   associate_internal_references
   elements_directions
@@ -70,11 +65,11 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.5';
+$VERSION = '6.5.90';
 
 
 my %types_to_enter;
-foreach my $type_to_enter ('brace_command_arg', 'misc_line_arg',
+foreach my $type_to_enter ('brace_command_arg', 'line_arg',
     'paragraph') {
   $types_to_enter{$type_to_enter} = 1;
 }
@@ -177,7 +172,7 @@ sub sectioning_structure($$)
       # new command is below
       if ($previous_section->{'level'} < $level) {
         if ($level - $previous_section->{'level'} > 1) {
-          $self->line_error(sprintf($self->
+          $self->line_error(sprintf(
               __("raising the section level of \@%s which is too low"), 
               $content->{'cmdname'}), $content->{'line_nr'});
           $content->{'level'} = $previous_section->{'level'} + 1;
@@ -209,12 +204,12 @@ sub sectioning_structure($$)
             if ($content->{'cmdname'} eq 'part') {
               $new_upper_part_element = 1;
               if ($level < $up->{'level'}) {
-                $self->line_warn(sprintf($self->__(
+                $self->line_warn(sprintf(__(
                       "no chapter-level command before \@%s"),
                     $content->{'cmdname'}), $content->{'line_nr'});
               }
             } else {
-              $self->line_warn(sprintf($self->__(
+              $self->line_warn(sprintf(__(
                     "lowering the section level of \@%s appearing after a lower element"), 
                   $content->{'cmdname'}), $content->{'line_nr'});
               $content->{'level'} = $up->{'level'} + 1;
@@ -303,7 +298,7 @@ sub sectioning_structure($$)
       }
     } elsif ($content->{'cmdname'} eq 'part' 
         and !$content->{'extra'}->{'part_associated_section'}) {
-      $self->line_warn(sprintf($self->__(
+      $self->line_warn(sprintf(__(
             "no sectioning command associated with \@%s"),
           $content->{'cmdname'}), $content->{'line_nr'});
     }
@@ -332,7 +327,7 @@ sub warn_non_empty_parts($)
   if ($global_commands->{'part'}) {
     foreach my $part (@{$global_commands->{'part'}}) {
       if (!Texinfo::Common::is_content_empty($part)) {
-        $self->line_warn(sprintf($self->__("\@%s not empty"),
+        $self->line_warn(sprintf(__("\@%s not empty"),
                          $part->{'cmdname'}), $part->{'line_nr'});
       }
     }
@@ -388,14 +383,14 @@ sub _check_menu_entry($$$)
   my $menu_node = $self->{'labels'}->{$normalized_menu_node};
 
   if (!$menu_node) {
-    $self->line_error(sprintf($self->
+    $self->line_error(sprintf(
      __("\@%s reference to nonexistent node `%s'"), $command,
         node_extra_to_texi($menu_content->{'extra'}->{'menu_entry_node'})), 
      $menu_content->{'line_nr'});
   } else {
     if (!_check_node_same_texinfo_code($menu_node, 
                            $menu_content->{'extra'}->{'menu_entry_node'})) {
-      $self->line_warn(sprintf($self->
+      $self->line_warn(sprintf(
        __("\@%s entry node name `%s' different from %s name `%s'"), 
          $command,
          node_extra_to_texi($menu_content->{'extra'}->{'menu_entry_node'}),
@@ -439,7 +434,7 @@ sub nodes_tree($)
     if ($node->{'menus'}) {
       if ($self->{'SHOW_MENU'} and @{$node->{'menus'}} > 1) {
         foreach my $menu (@{$node->{'menus'}}[1 .. $#{$node->{'menus'}}]) {
-          $self->line_warn(sprintf($self->__("multiple \@%s"), 
+          $self->line_warn(sprintf(__("multiple \@%s"), 
                         $menu->{'cmdname'}), $menu->{'line_nr'});
         }
       }
@@ -515,7 +510,7 @@ sub nodes_tree($)
     if ($self->{'SHOW_MENU'}
         and $self->{'validatemenus'}
         and $node ne $top_node and !$node->{'menu_up'}) {
-      $self->line_warn(sprintf($self->__("unreferenced node `%s'"), 
+      $self->line_warn(sprintf(__("unreferenced node `%s'"), 
                     node_extra_to_texi($node->{'extra'})), $node->{'line_nr'});
     }
    
@@ -565,7 +560,7 @@ sub nodes_tree($)
           and @{$section->{'section_up'}{'extra'}{'associated_node'}{'menus'}}
                      or $self->{'validatemenus'})
                     and !$node->{'menu_'.$direction}) {
-                  $self->line_warn(sprintf($self->
+                  $self->line_warn(sprintf(
                __("node `%s' is %s for `%s' in sectioning but not in menu"), 
                     node_extra_to_texi($node->{'node_'.$direction}->{'extra'}), 
                                        $direction,
@@ -574,7 +569,7 @@ sub nodes_tree($)
                 } elsif ($node->{'menu_'.$direction}
                          and $node->{'menu_'.$direction}
                              ne $node->{'node_'.$direction}) {
-                  $self->line_warn(sprintf($self->
+                  $self->line_warn(sprintf(
                     __("node %s `%s' in menu `%s' and in sectioning `%s' differ"), 
                     $direction,
                     node_extra_to_texi($node->{'extra'}),
@@ -592,7 +587,7 @@ sub nodes_tree($)
           if ($node->{'menu_'.$direction} 
               and !$node->{'menu_'.$direction}->{'extra'}->{'manual_content'}) {
             if ($self->{'SHOW_MENU'} and $node->{'extra'}->{'associated_section'}) {
-              $self->line_warn(sprintf($self->
+              $self->line_warn(sprintf(
                   __("node `%s' is %s for `%s' in menu but not in sectioning"), 
                 node_extra_to_texi($node->{'menu_'.$direction}->{'extra'}),
                                    $direction,
@@ -647,7 +642,7 @@ sub nodes_tree($)
             if (!$self->{'info'}->{'novalidate'}
                 and !_check_node_same_texinfo_code($node_target,
                                                    $node_direction)) {
-              $self->line_warn(sprintf($self->
+              $self->line_warn(sprintf(
                 __("%s pointer `%s' (for node `%s') different from %s name `%s'"),
                   $direction_texts{$direction},
                   node_extra_to_texi($node_direction),
@@ -671,7 +666,7 @@ sub nodes_tree($)
               $node->{'node_'.$direction}->{'extra'}->{'top_node_up'} 
                 = $node;
             } else {
-              $self->line_error(sprintf($self->
+              $self->line_error(sprintf(
                                   __("%s reference to nonexistent `%s'"),
                     $direction_texts{$direction},
                     node_extra_to_texi($node_direction)), $node->{'line_nr'});
@@ -692,7 +687,7 @@ sub nodes_tree($)
            or $self->{'validatemenus'})
           and !$node->{'node_up'}->{'extra'}->{'manual_content'}) {
       # up node is a real node but has no menu entry
-        $self->line_error(sprintf($self->
+        $self->line_error(sprintf(
            __("node `%s' lacks menu item for `%s' despite being its Up target"), 
            node_extra_to_texi($node->{'node_up'}->{'extra'}), 
            node_extra_to_texi($node->{'extra'})),
@@ -700,7 +695,7 @@ sub nodes_tree($)
       # This leads to an error when there is an external nodes as up, and 
       # not in Top node.
       } elsif ($node->{'menu_up'}) {
-        $self->line_warn(sprintf($self->
+        $self->line_warn(sprintf(
            __("for `%s', up in menu `%s' and up `%s' don't match"), 
           node_extra_to_texi($node->{'extra'}),
           node_extra_to_texi($node->{'menu_up'}->{'extra'}), 
@@ -1103,7 +1098,7 @@ sub _print_root_command_texi($)
     if ($command->{'cmdname'} eq 'node') {
       $tree = $command->{'extra'}->{'node_content'};
     } elsif ($sectioning_commands{$command->{'cmdname'}}) {
-      $tree = $command->{'extra'}->{'misc_content'};
+      $tree = $command->{'args'}->[0]->{'contents'};
     }
   } else {
     return "Not a root command";
@@ -1210,7 +1205,7 @@ sub associate_internal_references($)
     }
     if (!defined($labels->{$node_arg->{'normalized'}})) {
       if (!$self->{'info'}->{'novalidate'}) {
-        $self->line_error(sprintf($self->__("\@%s reference to nonexistent node `%s'"),
+        $self->line_error(sprintf(__("\@%s reference to nonexistent node `%s'"),
                 $ref->{'cmdname'}, node_extra_to_texi($node_arg)),
                 $ref->{'line_nr'});
       }
@@ -1219,7 +1214,7 @@ sub associate_internal_references($)
       $ref->{'extra'}->{'label'} = $node_target;
       if (!$self->{'info'}->{'novalidate'}
           and !_check_node_same_texinfo_code($node_target, $node_arg)) {
-        $self->line_warn(sprintf($self->
+        $self->line_warn(sprintf(
            __("\@%s to `%s', different from %s name `%s'"), 
            $ref->{'cmdname'},
            node_extra_to_texi($node_arg),
@@ -1325,22 +1320,16 @@ sub new_block_command($$$)
                  {'command_argument' => $command_name,
                   'text_arg' => $command_name}};
   push @{$end->{'args'}},
-    {'type' => 'misc_line_arg', 'parent' => $end};
+    {'type' => 'line_arg', 'parent' => $end};
   push @{$end->{'args'}->[0]->{'contents'}},
-          ({'type' => 'empty_spaces_after_command',
-           'text' => ' ',
-           'extra' => {'command' => $end},
-           'parent' => $end->{'args'}->[0]},
-          {'text' => $command_name, 'parent' => $end->{'args'}->[0]},
+         ({'text' => $command_name, 'parent' => $end->{'args'}->[0]},
           {'type' => 'spaces_at_end', 'text' => "\n", 
            'parent' => $end->{'args'}->[0]});
+  $end->{'args'}->[0]->{'extra'} = {'spaces_before_argument' => ' '};
   my $new_block = {'cmdname' => $command_name, 'parent' => $parent,
                   'extra'=>{'end_command' => $end}};
-  $end->{'extra'}->{'command'} = $new_block;
-  $new_block->{'contents'} = [{'extra' => 
-                                     {'command' => $new_block},
-                              'type' => 'empty_line_after_command',
-                              'text' => "\n"},
+  $new_block->{'contents'} = [{'type' => 'empty_line_after_command',
+                               'text' => "\n"},
                               @$block_contents, $end];
   foreach my $content (@{$new_block->{'contents'}}) {
     $content->{'parent'} = $new_block;
@@ -1472,7 +1461,7 @@ sub do_index_keys($$)
         }
       }
       if ($entry->{'key'} !~ /\S/) {
-        $self->line_warn(sprintf($self->__("empty index key in \@%s"), 
+        $self->line_warn(sprintf(__("empty index key in \@%s"), 
                                  $entry->{'index_at_command'}),
                         $entry->{'command'}->{'line_nr'});
       }
@@ -1899,14 +1888,5 @@ L<Texinfo::Parser>.
 =head1 AUTHOR
 
 Patrice Dumas, E<lt>pertusus@free.frE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
-
-This library is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
 
 =cut

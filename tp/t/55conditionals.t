@@ -1,7 +1,7 @@
 use strict;
 
-use File::Spec;
-BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} }
+use lib '.';
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -88,6 +88,10 @@ not tex
 @end ifnottex
 
 After.'],
+['false_format_not_closed',
+'@html
+blah blah
+'],
 ['many_conditionals',
 '@html
 This is html text.
@@ -459,6 +463,18 @@ strongalias @@alias is defined.
 @ifcommandnotdefined strongalias
 strongalias @@alias is wrongly not defined
 @end ifcommandnotdefined
+'],
+['inlineiffmtifelse_not_closed',
+'@inlinefmtifelse{html,
+'],
+['inlineiffmtifelse_not_closed_two_arg',
+'@inlinefmtifelse{html, hhhhh
+'],
+['inlineiffmtifelse_not_closed_three_arg',
+'@inlinefmtifelse{html, hhhhh, ggggg
+'],
+['inlineifset_false_not_closed',
+'@inlineifset{aaa, bbb
 '],
 );
 

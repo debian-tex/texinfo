@@ -10,24 +10,17 @@ $result_trees{'empty_listoffloats'} = {
     {
       'args' => [
         {
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            }
-          ],
+          'contents' => [],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'listoffloats',
       'extra' => {
-        'spaces_after_command' => {},
         'type' => {
           'normalized' => ''
         }
@@ -42,10 +35,7 @@ $result_trees{'empty_listoffloats'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'empty_listoffloats'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_listoffloats'}{'contents'}[0];
-$result_trees{'empty_listoffloats'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats'}{'contents'}[0]{'args'}[0];
 $result_trees{'empty_listoffloats'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats'}{'contents'}[0];
-$result_trees{'empty_listoffloats'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'empty_listoffloats'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_listoffloats'}{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats'};
 
 $result_texis{'empty_listoffloats'} = '@listoffloats

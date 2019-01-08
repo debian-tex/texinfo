@@ -1,9 +1,7 @@
-# $Id: Makefile.am 7749 2017-04-23 12:35:37Z gavin $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
-# 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+# Copyright 2002-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -16,20 +14,18 @@
 # Find our headers and gnulib headers.
 ACLOCAL_AMFLAGS = -I gnulib/m4
 
+# Wrapper for the build environment.
+noinst_SCRIPTS = pre-inst-env
+
 # Additional files to distribute.
 EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
   system.h gnulib/m4/gnulib-cache.m4 \
   contrib djgpp
 
-# include contrib perl manual, exclude .svn.
+# include contrib perl manual, exclude .git.
 dist-hook:
 	cd $(top_distdir)/contrib/perldoc-all && $(MAKE) distclean
-	rm -rf `find $(distdir) -type d -name .svn`
-
-# update texi2html translations.
-dist-local:
-	cp -fpR $(srcdir)/po_document/*.po $(srcdir)/po_document/LINGUAS texi2html/po_document/
-	cp -fpR $(srcdir)/po/*.po $(srcdir)/po/LINGUAS texi2html/po_messages/
+	rm -rf `find $(distdir) -type d -name .git`
 
 # This is to prevent texinfo.tex from being included in the top-level
 # distribution directory.
@@ -110,8 +106,7 @@ po-check:
 	    # don't look at sources from some subdirs.			\
 	    case $$file in						\
 	      contrib/* ) continue;;					\
-	      djgpp/* | makeinfo/* | man/* | texi2html/* ) continue;;	\
-	      tp/parsetexi/*) continue;;				\
+	      djgpp/* | man/* ) continue;;	\
 	      texinfo-*/*) continue;;					\
               tp/maintain/* ) continue;;				\
 	    esac;							\

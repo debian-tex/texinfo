@@ -1,7 +1,7 @@
 use strict;
 
-use File::Spec;
-BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} }
+use lib '.';
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -121,12 +121,6 @@ anchor}
 '],
 ['space_in_anchor',
 '@anchor{   anchor  name   }.
-'],
-['ctrl',
-'
-@ctrl{A}
-
-With @ctrl{B}.
 '],
 ['test_w',
 '@w{aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbb bbbbb bbb b b b b b b b b b bb .

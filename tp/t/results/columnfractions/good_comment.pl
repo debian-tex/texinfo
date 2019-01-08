@@ -12,30 +12,16 @@ $result_trees{'good_comment'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
                       'parent' => {},
                       'text' => '0.4 .6 5.'
-                    },
-                    {
+                    }
+                  ],
+                  'extra' => {
+                    'comment_at_end' => {
                       'args' => [
                         {
                           'parent' => {},
@@ -53,9 +39,9 @@ $result_trees{'good_comment'} = {
                       },
                       'parent' => {}
                     }
-                  ],
+                  },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'columnfractions',
@@ -65,7 +51,7 @@ $result_trees{'good_comment'} = {
                   '.6',
                   '5.'
                 ],
-                'spaces_after_command' => {}
+                'spaces_before_argument' => ' '
               },
               'line_nr' => {
                 'file_name' => '',
@@ -86,27 +72,18 @@ $result_trees{'good_comment'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'multitable'
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'multitable',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'multitable'
           },
           'line_nr' => {
@@ -118,10 +95,10 @@ $result_trees{'good_comment'} = {
         }
       ],
       'extra' => {
-        'columnfractions' => [],
+        'columnfractions' => {},
         'end_command' => {},
         'max_columns' => 3,
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {},
       'parent' => {}
@@ -129,28 +106,18 @@ $result_trees{'good_comment'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'good_comment'}{'contents'}[0];
+$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'good_comment'}{'contents'}[0]{'contents'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'contents'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'good_comment'}{'contents'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'extra'}{'misc_args'};
+$result_trees{'good_comment'}{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'good_comment'}{'contents'}[0]{'contents'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'line_nr'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
+$result_trees{'good_comment'}{'contents'}[0]{'line_nr'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'good_comment'}{'contents'}[0]{'parent'} = $result_trees{'good_comment'};
 
 $result_texis{'good_comment'} = '@multitable @columnfractions 0.4 .6 5.@c comment

@@ -25,11 +25,6 @@ $result_trees{'ref_to_unknown_node'} = {
           'cmdname' => 'xref',
           'contents' => [],
           'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ],
             'node_argument' => {
               'node_content' => [
                 {}
@@ -57,7 +52,6 @@ $result_trees{'ref_to_unknown_node'} = {
 };
 $result_trees{'ref_to_unknown_node'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_to_unknown_node'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'ref_to_unknown_node'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'ref_to_unknown_node'}{'contents'}[0]{'contents'}[0];
-$result_trees{'ref_to_unknown_node'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'ref_to_unknown_node'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_to_unknown_node'}{'contents'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_to_unknown_node'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_to_unknown_node'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_to_unknown_node'}{'contents'}[0];
 $result_trees{'ref_to_unknown_node'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_to_unknown_node'}{'contents'}[0];

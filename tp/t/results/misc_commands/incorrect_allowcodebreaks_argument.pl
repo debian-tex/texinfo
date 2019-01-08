@@ -12,31 +12,21 @@ $result_trees{'incorrect_allowcodebreaks_argument'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => '_arg'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'allowcodebreaks',
       'extra' => {
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -81,12 +71,8 @@ $result_trees{'incorrect_allowcodebreaks_argument'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[0];
 $result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[0]{'args'}[0];
-$result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[0]{'args'}[0];
-$result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[0]{'args'}[0];
 $result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[0];
-$result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[0]{'parent'} = $result_trees{'incorrect_allowcodebreaks_argument'};
 $result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'incorrect_allowcodebreaks_argument'}{'contents'}[1]{'contents'}[0];

@@ -1,9 +1,6 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c 7907 2017-07-05 19:16:44Z gavin $
 
-   Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-   2004, 2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-   Free Software Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -739,6 +736,42 @@ get_input_key_internal (void)
         }
     }
 }
+
+#if defined (HAVE_SYS_TIME_H)
+#  include <sys/time.h>
+#  define HAVE_STRUCT_TIMEVAL
+#endif /* HAVE_SYS_TIME_H */
+
+#if !defined (FD_SET) && defined (__MINGW32__)
+#  define WIN32_LEAN_AND_MEAN
+#  include <windows.h>
+#endif
+
+void
+pause_or_input (void)
+{
+#ifdef FD_SET
+  struct timeval timer;
+  fd_set readfds;
+#endif
+
+  if (pop_index != push_index)
+    return; /* Input is already waiting. */
+
+#ifdef FD_SET
+  FD_ZERO (&readfds);
+  FD_SET (fileno (stdin), &readfds);
+  timer.tv_sec = 2;
+  timer.tv_usec = 0;
+  select (fileno (stdin) + 1, &readfds, NULL, NULL, &timer);
+#elif defined (__MINGW32__)
+  /* This is signalled on key release, so flush it and wait again. */
+  WaitForSingleObject (GetStdHandle (STD_INPUT_HANDLE), 2000);
+  FlushConsoleInputBuffer (GetStdHandle (STD_INPUT_HANDLE));
+  WaitForSingleObject (GetStdHandle (STD_INPUT_HANDLE), 2000);
+#endif /* FD_SET */
+}
+
 
 /* **************************************************************** */
 /*                                                                  */
@@ -2311,10 +2344,9 @@ info_menu_or_ref_item (WINDOW *window, int menu_item, int xref, int ask_p)
         {
           closest = which;
 
-          /* If a reference contains the point, prefer it.  Otherwise prefer a
-             reference after the cursor to one before it. */
-          if (window->point >= refs[which]->start
-              && window->point < refs[which]->end)
+          /* Use the first reference that either contains the point
+             or is after the point. */
+          if (refs[which]->end > window->point)
             break;
         }
     }

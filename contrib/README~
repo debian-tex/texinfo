@@ -1,0 +1,30 @@
+$Id$
+texinfo/contrib/README
+
+  Copyright 2013 Free Software Foundation, Inc.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+The items here are for your amusement and/or hacking pleasure.
+See comments and/or --help strings in each for their purpose(s).
+
+They are all free software, but not officially part of Texinfo, and the
+Texinfo maintainers don't support them (and generally have no knowledge
+about them, just passing them on).
+
+The texifont/ subdirectory was an attempt at implementing a generalized
+font system, but it remains incomplete.  See the README there.
+
+In contrast, the two txipsfonts-* files are attempts by Torsten Bronger
+and Stephen Gildea, respectively, to use base PostScript fonts instead
+of Computer Modern, in the simplest way.  (I could not find the right
+version of the original texinfo.tex on which Torsten's file was based.)
+Adapting one of these to actually be installable would doubtless be much
+simpler (which is not to say simple) than finalizing texifont/, though
+of course much less featureful.
+
+The perldoc-all subdirectory is about making Texinfo out of the standard
+Perl *.pod files.  The results are at
+http://www.gnu.org/software/perl/manual.

@@ -8,6 +8,14 @@ use utf8;
 $result_trees{'headitem_itemx_in_itemize'} = {
   'contents' => [
     {
+      'args' => [
+        {
+          'cmdname' => 'bullet',
+          'contents' => [],
+          'parent' => {},
+          'type' => 'command_as_argument_inserted'
+        }
+      ],
       'cmdname' => 'itemize',
       'contents' => [
         {
@@ -23,14 +31,6 @@ $result_trees{'headitem_itemx_in_itemize'} = {
           'cmdname' => 'item',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'contents' => [
                 {
                   'parent' => {},
@@ -42,20 +42,32 @@ $result_trees{'headitem_itemx_in_itemize'} = {
               'type' => 'paragraph'
             },
             {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'itemx
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'itemx'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
 '
+                  },
+                  'parent' => {},
+                  'type' => 'line_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'paragraph'
+              'cmdname' => 'itemx',
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              },
+              'parent' => {}
             },
             {
               'parent' => {},
@@ -76,7 +88,7 @@ $result_trees{'headitem_itemx_in_itemize'} = {
           ],
           'extra' => {
             'item_number' => 1,
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -90,33 +102,22 @@ $result_trees{'headitem_itemx_in_itemize'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'itemize'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'itemize',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'itemize'
           },
           'line_nr' => {
@@ -128,19 +129,8 @@ $result_trees{'headitem_itemx_in_itemize'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {
-              'cmdname' => 'bullet',
-              'contents' => [],
-              'parent' => {},
-              'type' => 'command_as_argument'
-            }
-          ]
-        ],
         'command_as_argument' => {},
-        'end_command' => {},
-        'spaces_after_command' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -152,37 +142,28 @@ $result_trees{'headitem_itemx_in_itemize'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[3];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[5];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'args'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'};
 
 $result_texis{'headitem_itemx_in_itemize'} = '@itemize
 @item item
- itemx
+@itemx itemx
  headitem
 @end itemize
 ';
@@ -195,12 +176,12 @@ headitem
 
 $result_errors{'headitem_itemx_in_itemize'} = [
   {
-    'error_line' => ':3: @itemx not meaningful inside `@itemize\' block
+    'error_line' => ':3: @itemx outside of table or list
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@itemx not meaningful inside `@itemize\' block',
+    'text' => '@itemx outside of table or list',
     'type' => 'error'
   },
   {

@@ -95,15 +95,24 @@ $result_trees{'insert_copying_inline_and_paragraph'} = {
           'parent' => {},
           'text' => 'Insertcopying
 '
-        },
-        {
-          'parent' => {},
-          'text' => 'In copying.
-'
         }
       ],
       'parent' => {},
       'type' => 'paragraph'
+    },
+    {
+      'cmdname' => 'insertcopying',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 6,
+        'macro' => ''
+      },
+      'parent' => {}
+    },
+    {
+      'parent' => {},
+      'text' => '
+'
     }
   ],
   'type' => 'text_root'
@@ -125,28 +134,33 @@ $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'extra'}{'sp
 $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'parent'} = $result_trees{'insert_copying_inline_and_paragraph'};
 $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[1]{'parent'} = $result_trees{'insert_copying_inline_and_paragraph'};
 $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[2];
-$result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[2];
 $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[2]{'parent'} = $result_trees{'insert_copying_inline_and_paragraph'};
+$result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[3]{'parent'} = $result_trees{'insert_copying_inline_and_paragraph'};
+$result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[4]{'parent'} = $result_trees{'insert_copying_inline_and_paragraph'};
 
 $result_texis{'insert_copying_inline_and_paragraph'} = '@copying
 In copying.
 @end copying
 
 Insertcopying
-In copying.
+@insertcopying
 ';
 
 
 $result_texts{'insert_copying_inline_and_paragraph'} = '
 Insertcopying
-In copying.
+
 ';
 
 $result_errors{'insert_copying_inline_and_paragraph'} = [];
 
 
+$result_floats{'insert_copying_inline_and_paragraph'} = {};
 
-$result_converted{'plaintext'}->{'insert_copying_inline_and_paragraph'} = 'Insertcopying In copying.
+
+
+$result_converted{'plaintext'}->{'insert_copying_inline_and_paragraph'} = 'Insertcopying
+   In copying.
 ';
 
 1;

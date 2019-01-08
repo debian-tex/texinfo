@@ -1,0 +1,8 @@
+# api
+texi_ignore_and_comments ignore_and_comments.texi --init ignore_and_comments_output.init -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
+ignore_and_comments_output ignore_and_comments.texi --init ignore_and_comments_output.init
+test_redefine_need test_need.texi --init redefine_need.init
+
+# FIXME /dev/null not portable
+split_nocopying_split_dev_null split_nocopying.texi --info --split-size 1 -o /dev/null
+simplest_test_css simplest.texi --css-include file.css

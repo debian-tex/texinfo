@@ -37,11 +37,6 @@ $result_trees{'brace_opened_no_command'} = {
           'cmdname' => 'anchor',
           'contents' => [],
           'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ],
             'node_content' => [
               {}
             ],
@@ -82,7 +77,6 @@ $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[1]{'parent'}
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'brace_opened_no_command'}{'contents'}[0];
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3];
-$result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'brace_opened_no_command'}{'contents'}[0];
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'brace_opened_no_command'}{'contents'}[0];

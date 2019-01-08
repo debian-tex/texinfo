@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f search
 
@@ -24,14 +23,14 @@ run_ginfo -f search
 # search string with backspace.  Go forward to match in next node.  Test
 # we end up at the end of the match string by trying to wrap to the next line
 # with C-f.
-printf '\023matchxy\010\010' >$PTY_TYPE
-printf '\023\023\023\r\006\rDq' >$PTY_TYPE
+printf '\023matchxy\010\010' >$pty_type
+printf '\023\023\023\r\006\rDq' >$pty_type
 
 timeout_test
 
 # Return non-zero (test failure) if files differ
-diff $GINFO_OUTPUT $t/node-target
-RETVAL=$?
+diff $ginfo_output $t/node-target
+retval=$?
 
 cleanup
 

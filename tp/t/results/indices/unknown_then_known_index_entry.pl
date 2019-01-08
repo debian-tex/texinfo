@@ -19,26 +19,16 @@ $result_trees{'unknown_then_known_index_entry'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'some'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'defindex',
@@ -46,7 +36,7 @@ $result_trees{'unknown_then_known_index_entry'} = {
             'misc_args' => [
               'some'
             ],
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -60,35 +50,23 @@ $result_trees{'unknown_then_known_index_entry'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'someindex entry.'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'someindex',
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 0,
               'index_at_command' => 'someindex',
@@ -97,8 +75,7 @@ $result_trees{'unknown_then_known_index_entry'} = {
               'key' => 'someindex entry.',
               'number' => 1
             },
-            'misc_content' => [],
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -116,23 +93,14 @@ $result_trees{'unknown_then_known_index_entry'} = {
   'type' => 'text_root'
 };
 $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0];
-$result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[1];
 $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[1];
-$result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0];
-$result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2];
 $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2];
 $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'command'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2];
-$result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content'};
-$result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content'};
-$result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'};
+$result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'unknown_then_known_index_entry'}{'contents'}[0];
 $result_trees{'unknown_then_known_index_entry'}{'contents'}[0]{'parent'} = $result_trees{'unknown_then_known_index_entry'};
 

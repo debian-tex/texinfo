@@ -1,0 +1,98 @@
+# Copyright 2010-2018 Free Software Foundation, Inc.
+#
+# This file is part of GNU Texinfo.
+#
+# GNU Texinfo is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License,
+# or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Types for @-commands
+command_as_argument
+command_as_argument_inserted
+index_entry_command
+following_arg
+space_command_arg
+definfoenclose_command
+
+# For text elements
+empty_line
+raw
+last_raw_newline
+empty_line_after_command
+empty_spaces_after_command
+spaces_at_end
+empty_space_at_end_def_bracketed
+space_at_end_block_command
+empty_spaces_before_argument
+empty_spaces_after_close_brace
+empty_spaces_before_paragraph
+preamble_text
+space_at_end_menu_node
+after_description_line
+spaces
+spaces_inserted
+
+# Other special types
+text_root
+document_root
+root_line
+preamble
+preamble_before_setfilename
+paragraph
+preformatted
+rawpreformatted
+brace_command_arg
+brace_command_context
+block_line_arg
+line_arg
+misc_arg
+
+menu_entry
+menu_entry_leading_text
+menu_entry_name
+menu_entry_separator
+menu_entry_node
+menu_entry_description
+menu_comment
+# Used internally
+menu_star
+
+macro_name
+macro_arg
+before_item
+table_entry
+table_term
+table_item
+inter_item
+def_line
+def_item
+inter_def_item
+multitable_head
+multitable_body
+row
+bracketed
+bracketed_def_content
+def_aggregate
+bracketed_inserted
+bracketed_multitable_prototype
+row_prototype
+
+# for unexpanded parts of conditionals
+elided
+elided_block
+
+# for def commands
+delimiter
+
+# for inserted text in def commands
+untranslated
+

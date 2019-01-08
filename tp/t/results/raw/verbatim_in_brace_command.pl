@@ -55,10 +55,6 @@ $result_trees{'verbatim_in_brace_command'} = {
           'type' => 'raw'
         }
       ],
-      'extra' => {
-        'invalid_nesting' => 1,
-        'spaces_after_command' => {}
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 2,
@@ -67,9 +63,6 @@ $result_trees{'verbatim_in_brace_command'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -90,9 +83,7 @@ $result_trees{'verbatim_in_brace_command'}{'contents'}[0]{'parent'} = $result_tr
 $result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'verbatim_in_brace_command'}{'contents'}[1];
 $result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_brace_command'}{'contents'}[1];
 $result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_brace_command'}{'contents'}[1];
-$result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'contents'}[0];
 $result_trees{'verbatim_in_brace_command'}{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_brace_command'};
-$result_trees{'verbatim_in_brace_command'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'verbatim_in_brace_command'}{'contents'}[1];
 $result_trees{'verbatim_in_brace_command'}{'contents'}[2]{'parent'} = $result_trees{'verbatim_in_brace_command'};
 $result_trees{'verbatim_in_brace_command'}{'contents'}[3]{'parent'} = $result_trees{'verbatim_in_brace_command'};
 
@@ -111,15 +102,6 @@ in verbatim
 
 $result_errors{'verbatim_in_brace_command'} = [
   {
-    'error_line' => ':1: @samp missing closing brace
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@samp missing closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':2: warning: @verbatim should not appear in @samp
 ',
     'file_name' => '',
@@ -127,6 +109,15 @@ $result_errors{'verbatim_in_brace_command'} = [
     'macro' => '',
     'text' => '@verbatim should not appear in @samp',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: @samp missing closing brace
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@samp missing closing brace',
+    'type' => 'error'
   },
   {
     'error_line' => ':5: misplaced }

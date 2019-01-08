@@ -9,7 +9,6 @@
 * Texinfo@asis{::}Parser TEXINFO TREE::
 * Texinfo@asis{::}Parser SEE ALSO::
 * Texinfo@asis{::}Parser AUTHOR::
-* Texinfo@asis{::}Parser COPYRIGHT AND LICENSE::
 @end menu
 
 @node Texinfo::Parser NAME
@@ -89,20 +88,6 @@ it came from texinfo code; for example, allow setting aliases (as with
 
 An array reference of the output formats for which @code{@@if@emph{FORMAT}} 
 conditional blocks should be expanded.  Default is empty.
-
-@item gettext
-@anchor{Texinfo::Parser gettext}
-
-If set, the function reference is used to translate error and warning
-messages.  It takes a string as argument and returns a string.  The default 
-function returns the error message as-is.
-
-@item GLOBAL_COMMANDS
-@anchor{Texinfo::Parser GLOBAL_COMMANDS}
-
-The associated value is a reference on an array.  All the commands in the
-array are collected during parsing.  They are afterwards available 
-through @ref{Texinfo::Parser $info = global_informations($parser), global_informations, global_informations}.
 
 @item include_directories
 @anchor{Texinfo::Parser include_directories}
@@ -292,7 +277,7 @@ This information is available through the method @code{floats_information}.
 
 @emph{$float_types} is a hash reference whose keys are normalized float
 types (the first float argument, or the @code{@@listoffloats} argument).
-The normalization is the same than for node names. The value is the list
+The normalization is the same as for node names. The value is the list
 of float tree elements appearing in the texinfo document.
 
 @end table
@@ -607,7 +592,7 @@ The type of the element.  For @code{@@verb} it is the delimiter.  But otherwise
 it is the type of element considered as a container.  Frequent types 
 encountered are @emph{paragraph} for a paragraph container, 
 @emph{brace_command_arg} for the container holding the brace @@-commands 
-contents, @emph{misc_line_arg} and @emph{block_line_arg} contain the arguments 
+contents, @emph{line_arg} and @emph{block_line_arg} contain the arguments 
 appearing on the line of @@-commands.  Text fragments may have a type to
 give an information of the kind of text fragment, for example 
 @code{empty_spaces_before_argument} is associated to spaces after a brace 
@@ -806,11 +791,6 @@ Space at the end of an argument to a line command, at the end of an
 comma-separated argument for some brace commands, or at the end of
 bracketed content on a @code{@@multitable} line or definition line.
 
-@item space_at_end_block_command
-@anchor{Texinfo::Parser space_at_end_block_command}
-
-Space at the end of a block @@-command line.
-
 @item empty_spaces_after_close_brace
 @anchor{Texinfo::Parser empty_spaces_after_close_brace}
 
@@ -906,8 +886,8 @@ menu comments...).
 @item brace_command_context
 @anchor{Texinfo::Parser brace_command_context}
 
-@item misc_line_arg
-@anchor{Texinfo::Parser misc_line_arg}
+@item line_arg
+@anchor{Texinfo::Parser line_arg}
 
 @item block_line_arg
 @anchor{Texinfo::Parser block_line_arg}
@@ -918,7 +898,7 @@ taking arguments surrounded by braces (and in some cases separated by
 commas).  @emph{brace_command_context} is used for @@-commands with braces 
 that start a new context (@code{@@footnote}, @code{@@caption}, @code{@@math}).
 
-@emph{misc_line_arg} is used for commands that take the texinfo code on the
+@emph{line_arg} is used for commands that take the texinfo code on the
 rest of the line as their argument (for example (@code{@@settitle}, @code{@@node}, 
 @code{@@section} and similar).  @emph{block_line_arg} is similar but is used for 
 commands that start a new block (which is to be ended with @code{@@end}).
@@ -1089,6 +1069,11 @@ where they are valid, in @code{@@math}.
 
 Content in brackets on definition command lines.
 
+@item def_aggregate
+@anchor{Texinfo::Parser def_aggregate}
+
+Contains several elements that together are a single unit on a @@def* line.
+
 @item bracketed_multitable_prototype
 @anchor{Texinfo::Parser bracketed_multitable_prototype}
 
@@ -1113,24 +1098,6 @@ is in @emph{row_prototype}.
 @subsubsection Extra keys available for more than one @@-command
 
 @table @asis
-@item block_command_line_contents
-@anchor{Texinfo::Parser block_command_line_contents}
-
-@item brace_command_contents
-@anchor{Texinfo::Parser brace_command_contents}
-
-An array associated with block @@-commands or @@-commands with braces
-taking more than one argument or with simple text content
-(@code{@@anchor}, @code{@@titlefont}, @code{@@dmn}).  Each of the elements of the
-array is either undef, if there is no argument at that place,
-or an array reference holding the argument contents.
-
-@item misc_content
-@anchor{Texinfo::Parser misc_content}
-
-The contents of an @@-command taking regular Texinfo code as
-argument, like @code{@@settitle} or @code{@@exdent}.
-
 @item end_command
 @anchor{Texinfo::Parser end_command}
 
@@ -1140,12 +1107,6 @@ The @code{@@end} associated to the block @@-command.
 @anchor{Texinfo::Parser missing_argument}
 
 Set for some @@-commands with line arguments and a missing argument.
-
-@item invalid_nesting
-@anchor{Texinfo::Parser invalid_nesting}
-
-Set if the @@-command appears in a context it shouldn't appear in,
-like a block @@-command on sectioning @@-command line.
 
 @item arg_line
 @anchor{Texinfo::Parser arg_line}
@@ -1177,17 +1138,11 @@ textual arguments as arguments, like @code{@@everyheadingmarks},
 Also filled for @code{@@set}, @code{@@clickstyle}, @code{@@unmacro} or @code{@@comment}
 arguments.
 
-@item spaces_after_command
-@anchor{Texinfo::Parser spaces_after_command}
-
-For @@-commands followed by spaces, a reference to the corresponding
-text element.
-
 @item spaces_before_argument
 @anchor{Texinfo::Parser spaces_before_argument}
 
 For @@-commands with opening brace followed by spaces held in a 
-@code{empty_spaces_before_argument} element, a reference to that element.
+@code{empty_spaces_before_argument} element, a reference to those spaces.
 
 @item spaces
 @anchor{Texinfo::Parser spaces}
@@ -1305,17 +1260,13 @@ appearing after the definition command without x.
 @item def_line
 @anchor{Texinfo::Parser def_line 2}
 
-The @emph{def_arg} extra key holds an array reference corresponding to
-the parsed definition line argument.  Each of the elements of the
-array is a two-element array reference.  The first element is the type,
-which could be @emph{spaces} for a space, types specific of the 
-definition, like @emph{category}, @emph{name}, @emph{class}, @emph{type}, and, at the
-end, a mix of @emph{arg}, @emph{typearg}, @emph{delimiter} depending on the definition.
-The second element is a hash reference holding the content of the 
-type.
+For each element in a def_line, the key @emph{def_role} holds a string
+describing the meaning of the element.  It is one of
+@emph{category}, @emph{name}, @emph{class}, @emph{type}, @emph{arg}, @emph{typearg}, 
+@emph{spaces} or @emph{delimiter}, depending on the definition.
 
-The @emph{def_parsed_hash} hash reference has as key the type specific
-of the definition, and as value the corresponding content tree.
+The @emph{def_parsed_hash} hash reference has these strings as keys,
+and the values are the corresponding elements.
 
 @item @code{@@multitable}
 @anchor{Texinfo::Parser @code{@@multitable}}
@@ -1323,8 +1274,8 @@ of the definition, and as value the corresponding content tree.
 The key @emph{max_columns} holds the maximal number of columns.  If there
 are prototypes on the line they are in the array associated with 
 @emph{prototypes}.  If there is a @code{@@columnfractions} as argument, then the 
-@emph{columnfractions} key is associated with the array of columnfractions
-arguments, holding all the column fractions.
+@emph{columnfractions} key is associated with the element for the
+@@columnfractions command.
 
 @item @code{@@enumerate}
 @anchor{Texinfo::Parser @code{@@enumerate}}
@@ -1474,14 +1425,4 @@ These are both used by the @code{Texinfo::Structuring} module.
 @section AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
-
-@node Texinfo::Parser COPYRIGHT AND LICENSE
-@section COPYRIGHT AND LICENSE
-
-Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
-
-This library is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
 

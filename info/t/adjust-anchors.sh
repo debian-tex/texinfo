@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 LC_ALL=en_US.ISO8859-1; export LC_ALL
 # "ISO8859-1" is what it's known as on NetBSD 5.1 (and not "iso-8859-1"
@@ -27,17 +26,17 @@ run_ginfo -f anchors
 
 # Go to anchor in a UTF-8 encoded file when the current character encoding is
 # supposed to be ISO-8859-1
-printf 'ganchor-2\r\002\002\002\002\002\002' >$PTY_TYPE
-printf '\002\002\002\002\002\002\002\002\rDq' >$PTY_TYPE
+printf 'ganchor-2\r\002\002\002\002\002\002' >$pty_type
+printf '\002\002\002\002\002\002\002\002\rDq' >$pty_type
 
 timeout_test
 
-if test ! -f $GINFO_OUTPUT; then
-  RETVAL=1
+if test ! -f $ginfo_output; then
+  retval=1
 else
   # Return non-zero (test failure) if files differ
-  diff $GINFO_OUTPUT $t/node-target
-  RETVAL=$?
+  diff $ginfo_output $t/node-target
+  retval=$?
 fi
 
 cleanup

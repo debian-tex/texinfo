@@ -1,8 +1,6 @@
 /* dir.c -- how to build a special "dir" node from "localdir" files.
-   $Id: dir.c 7260 2016-07-16 11:07:44Z gavin $
 
-   Copyright 1993, 1997, 1998, 2004, 2007, 2008, 2009, 2012,
-   2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -284,6 +282,13 @@ dir_entry_of_infodir (char *label, char *searchdir)
       if (!dir_fullpath)
         continue;
 
+      if (!IS_ABSOLUTE(dir_fullpath))
+        {
+          char *tmp;
+          asprintf (&tmp, "./%s", dir_fullpath);
+          free (dir_fullpath);
+          dir_fullpath = tmp;
+        }
       dir_node = info_get_node (dir_fullpath, "Top");
       free (dir_fullpath);
       entry = info_get_menu_entry_by_label (dir_node, label, 1);

@@ -39,9 +39,6 @@ $result_trees{'macro_and_args'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -91,9 +88,6 @@ $result_trees{'macro_and_args'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -106,7 +100,6 @@ $result_trees{'macro_and_args'}{'contents'}[0]{'args'}[0]{'parent'} = $result_tr
 $result_trees{'macro_and_args'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'macro_and_args'}{'contents'}[0];
 $result_trees{'macro_and_args'}{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'macro_and_args'}{'contents'}[0];
 $result_trees{'macro_and_args'}{'contents'}[0]{'parent'} = $result_trees{'macro_and_args'};
-$result_trees{'macro_and_args'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'macro_and_args'}{'contents'}[0];
 $result_trees{'macro_and_args'}{'contents'}[1]{'parent'} = $result_trees{'macro_and_args'};
 $result_trees{'macro_and_args'}{'contents'}[2]{'parent'} = $result_trees{'macro_and_args'};
 $result_trees{'macro_and_args'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'macro_and_args'}{'contents'}[3];
@@ -114,7 +107,6 @@ $result_trees{'macro_and_args'}{'contents'}[3]{'args'}[1]{'parent'} = $result_tr
 $result_trees{'macro_and_args'}{'contents'}[3]{'args'}[2]{'parent'} = $result_trees{'macro_and_args'}{'contents'}[3];
 $result_trees{'macro_and_args'}{'contents'}[3]{'args'}[3]{'parent'} = $result_trees{'macro_and_args'}{'contents'}[3];
 $result_trees{'macro_and_args'}{'contents'}[3]{'parent'} = $result_trees{'macro_and_args'};
-$result_trees{'macro_and_args'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'macro_and_args'}{'contents'}[3];
 $result_trees{'macro_and_args'}{'contents'}[4]{'parent'} = $result_trees{'macro_and_args'};
 
 $result_texis{'macro_and_args'} = '@macro good { aaa, 2b-bb}

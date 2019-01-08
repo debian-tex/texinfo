@@ -47,41 +47,27 @@ $result_trees{'novalidate'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'first'
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_before_argument'
-            },
-            {
-              'parent' => {},
               'text' => 'unknown node'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+',
+            'spaces_before_argument' => ' '
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -166,33 +152,22 @@ $result_trees{'novalidate'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
                       'parent' => {},
                       'text' => 'menu'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'menu',
-                'spaces_after_command' => {},
+                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
               },
               'line_nr' => {
@@ -204,8 +179,7 @@ $result_trees{'novalidate'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -238,11 +212,6 @@ $result_trees{'novalidate'} = {
               'cmdname' => 'xref',
               'contents' => [],
               'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ],
                 'node_argument' => {
                   'node_content' => [
                     {}
@@ -284,7 +253,7 @@ $result_trees{'novalidate'} = {
           }
         ],
         'normalized' => 'first',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -301,13 +270,9 @@ $result_trees{'novalidate'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} =
 $result_trees{'novalidate'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'novalidate'}{'contents'}[0];
 $result_trees{'novalidate'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'novalidate'}{'contents'}[0];
 $result_trees{'novalidate'}{'contents'}[0]{'parent'} = $result_trees{'novalidate'};
-$result_trees{'novalidate'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'novalidate'}{'contents'}[1];
 $result_trees{'novalidate'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'args'}[0];
-$result_trees{'novalidate'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'args'}[0];
 $result_trees{'novalidate'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'novalidate'}{'contents'}[1];
 $result_trees{'novalidate'}{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'args'}[1];
-$result_trees{'novalidate'}{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'args'}[1];
-$result_trees{'novalidate'}{'contents'}[1]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'args'}[1];
 $result_trees{'novalidate'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'novalidate'}{'contents'}[1];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'novalidate'}{'contents'}[1];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1];
@@ -322,29 +287,21 @@ $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[3];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1];
-$result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
-$result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1];
-$result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
-$result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'novalidate'}{'contents'}[1];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'novalidate'}{'contents'}[1];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'args'}[0];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3]{'contents'}[0];
-$result_trees{'novalidate'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'novalidate'}{'contents'}[1];
-$result_trees{'novalidate'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'novalidate'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'novalidate'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'novalidate'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'novalidate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'novalidate'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'novalidate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'novalidate'}{'contents'}[1]{'args'}[1]{'contents'}[1];
-$result_trees{'novalidate'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'novalidate'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'novalidate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'novalidate'}{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'novalidate'}{'contents'}[1]{'parent'} = $result_trees{'novalidate'};
 
 $result_texis{'novalidate'} = '
@@ -373,7 +330,8 @@ $result_sectioning{'novalidate'} = {};
 $result_nodes{'novalidate'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'first'
+    'normalized' => 'first',
+    'spaces_before_argument' => ' '
   },
   'menus' => [
     {
@@ -382,8 +340,8 @@ $result_nodes{'novalidate'} = {
         'end_command' => {
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'menu',
+            'spaces_before_argument' => ' ',
             'text_arg' => 'menu'
           }
         }
@@ -396,12 +354,12 @@ $result_nodes{'novalidate'} = {
     }
   }
 };
-$result_nodes{'novalidate'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'novalidate'}{'menus'}[0];
 
 $result_menus{'novalidate'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'first'
+    'normalized' => 'first',
+    'spaces_before_argument' => ' '
   }
 };
 

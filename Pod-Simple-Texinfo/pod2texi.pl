@@ -1,7 +1,6 @@
 #! /usr/bin/env perl
-# $Id: pod2texi.pl 7481 2016-10-30 16:08:48Z gavin $
 # pod2texi -- convert Pod to Texinfo.
-# Copyright 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+# Copyright 2012-2019 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -282,9 +281,7 @@ sub _fix_texinfo_tree($$$$;$)
           my $parsed_node = Texinfo::Parser::_parse_node_manual($node_arg);
           #push @{$node->{'extra'}->{'nodes_manuals'}}, $parsed_node;
           @{$node->{'extra'}->{'nodes_manuals'}} = ($parsed_node);
-          if (!Texinfo::Parser::_register_label($parser, $node, $parsed_node, undef)) {
-            print STDERR "BUG: node not unique, register failed:  $parsed_node->{'normalized'}\n";
-          }
+          Texinfo::Parser::_register_label($parser, $node, $parsed_node);
         }
       }
     }

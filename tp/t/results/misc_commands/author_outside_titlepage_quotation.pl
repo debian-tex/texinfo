@@ -12,34 +12,21 @@ $result_trees{'author_outside_titlepage_quotation'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Some One'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'author',
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -51,13 +38,8 @@ $result_trees{'author_outside_titlepage_quotation'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'author_outside_titlepage_quotation'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'author_outside_titlepage_quotation'}{'contents'}[0];
 $result_trees{'author_outside_titlepage_quotation'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'author_outside_titlepage_quotation'}{'contents'}[0]{'args'}[0];
-$result_trees{'author_outside_titlepage_quotation'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'author_outside_titlepage_quotation'}{'contents'}[0]{'args'}[0];
-$result_trees{'author_outside_titlepage_quotation'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'author_outside_titlepage_quotation'}{'contents'}[0]{'args'}[0];
 $result_trees{'author_outside_titlepage_quotation'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'author_outside_titlepage_quotation'}{'contents'}[0];
-$result_trees{'author_outside_titlepage_quotation'}{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'author_outside_titlepage_quotation'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'author_outside_titlepage_quotation'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'author_outside_titlepage_quotation'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'author_outside_titlepage_quotation'}{'contents'}[0]{'parent'} = $result_trees{'author_outside_titlepage_quotation'};
 
 $result_texis{'author_outside_titlepage_quotation'} = '@author Some One

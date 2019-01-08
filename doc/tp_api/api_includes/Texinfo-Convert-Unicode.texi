@@ -7,7 +7,6 @@
 * Texinfo@asis{::}Convert@asis{::}Unicode DESCRIPTION::
 * Texinfo@asis{::}Convert@asis{::}Unicode METHODS::
 * Texinfo@asis{::}Convert@asis{::}Unicode AUTHOR::
-* Texinfo@asis{::}Convert@asis{::}Unicode COPYRIGHT AND LICENSE::
 @end menu
 
 @node Texinfo::Convert::Unicode NAME
@@ -101,14 +100,4 @@ have a zero width (like composing accents) while some have a width of 2
 @section AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
-
-@node Texinfo::Convert::Unicode COPYRIGHT AND LICENSE
-@section COPYRIGHT AND LICENSE
-
-Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
-
-This library is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
 

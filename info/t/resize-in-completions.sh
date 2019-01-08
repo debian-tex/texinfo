@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2015, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,22 +16,21 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 # Indicate a window resize while showing a completions window
 
 run_ginfo -f file-menu
-if test $GINFO_PID = unknown; then
-  printf 'q' >$PTY_TYPE
+if test $ginfo_pid = unknown; then
+  printf 'q' >$pty_type
   echo 'test skipped - do not have PID of ginfo process' >&2
-  RETVAL=77 # automake code for skipped test
+  retval=77 # automake code for skipped test
 else
-  printf 'g\t' >$PTY_TYPE
+  printf 'g\t' >$pty_type
   sleep 1 # Give ginfo time to process above keystrokes
-  kill -s WINCH $GINFO_PID
+  kill -s WINCH $ginfo_pid
   sleep 1 # Give ginfo time to process signal
   # C-g to exit completions, q to quit
-  printf '\007q' >$PTY_TYPE
+  printf '\007q' >$pty_type
 fi
 
 timeout_test

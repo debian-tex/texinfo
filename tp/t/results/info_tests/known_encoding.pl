@@ -20,33 +20,23 @@ $result_trees{'known_encoding'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'latin1'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
             'input_encoding_name' => 'iso-8859-1',
             'input_perl_encoding' => 'iso-8859-1',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'latin1'
           },
           'line_nr' => {
@@ -71,26 +61,16 @@ $result_trees{'known_encoding'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -113,7 +93,7 @@ $result_trees{'known_encoding'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -126,24 +106,16 @@ $result_trees{'known_encoding'} = {
   'type' => 'document_root'
 };
 $result_trees{'known_encoding'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'known_encoding'}{'contents'}[0];
-$result_trees{'known_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'known_encoding'}{'contents'}[0]{'contents'}[1];
 $result_trees{'known_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'known_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'known_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'known_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'known_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'known_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'known_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'known_encoding'}{'contents'}[0]{'contents'}[1];
-$result_trees{'known_encoding'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'known_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'known_encoding'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'known_encoding'}{'contents'}[0];
 $result_trees{'known_encoding'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'known_encoding'}{'contents'}[0];
 $result_trees{'known_encoding'}{'contents'}[0]{'parent'} = $result_trees{'known_encoding'};
-$result_trees{'known_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'known_encoding'}{'contents'}[1];
 $result_trees{'known_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'known_encoding'}{'contents'}[1]{'args'}[0];
-$result_trees{'known_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'known_encoding'}{'contents'}[1]{'args'}[0];
-$result_trees{'known_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'known_encoding'}{'contents'}[1]{'args'}[0];
 $result_trees{'known_encoding'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'known_encoding'}{'contents'}[1];
 $result_trees{'known_encoding'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'known_encoding'}{'contents'}[1];
-$result_trees{'known_encoding'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'known_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'known_encoding'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'known_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'known_encoding'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'known_encoding'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'known_encoding'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'known_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'known_encoding'}{'contents'}[1]{'parent'} = $result_trees{'known_encoding'};
 
 $result_texis{'known_encoding'} = '
@@ -164,7 +136,8 @@ $result_sectioning{'known_encoding'} = {};
 $result_nodes{'known_encoding'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -183,7 +156,8 @@ $result_nodes{'known_encoding'}{'node_up'}{'extra'}{'top_node_up'} = $result_nod
 $result_menus{'known_encoding'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

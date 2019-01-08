@@ -1,0 +1,33 @@
+contents_at_begin contents_at_begin.texi
+contents_at_end contents_at_end.texi
+contents_in_middle_chapter contents_in_middle_chapter.texi
+contents_in_middle_section contents_in_middle_section.texi
+double_contents double_contents.texi
+double_contents_chapter double_contents.texi --split chapter
+double_contents_section double_contents.texi --split section
+double_contents_nodes double_contents.texi --split node
+no_content no_content.texi
+no_content_do_contents no_content.texi -c 'contents 1'
+no_content_setcatpage no_content_setcatpage.texi
+no_content_setcatpage_do_contents no_content_setcatpage.texi -c 'contents 1'
+contents_at_begin_inline contents_at_begin.texi -c 'INLINE_CONTENTS 1'
+contents_at_end_inline contents_at_end.texi -c 'INLINE_CONTENTS 1'
+contents_in_middle_chapter_inline contents_in_middle_chapter.texi -c 'INLINE_CONTENTS 1'
+contents_in_middle_section_inline contents_in_middle_section.texi -c 'INLINE_CONTENTS 1'
+double_contents_inline double_contents.texi -c 'INLINE_CONTENTS 1'
+double_contents_inline_chapter double_contents.texi -c 'INLINE_CONTENTS 1' --split chapter
+double_contents_inline_section double_contents.texi -c 'INLINE_CONTENTS 1' --split section
+double_contents_inline_nodes double_contents.texi -c 'INLINE_CONTENTS 1' --split node
+no_content_inline no_content.texi -c 'INLINE_CONTENTS 1'
+no_content_do_contents_inline no_content.texi -c 'INLINE_CONTENTS 1' -c 'contents 1'
+no_content_setcatpage_inline no_content_setcatpage.texi -c 'INLINE_CONTENTS 1'
+no_content_setcatpage_do_contents_inline no_content_setcatpage.texi -c 'INLINE_CONTENTS 1' -c 'contents 1'
+double_contents_book double_contents.texi --init book.pm
+contents_and_parts contents_and_parts.texi
+
+contents_at_begin_info contents_at_begin.texi --info
+contents_at_end_info contents_at_end.texi  --info
+contents_in_middle_chapter_info contents_in_middle_chapter.texi --info
+contents_in_middle_section_info contents_in_middle_section.texi --info
+double_contents_info double_contents.texi --info
+

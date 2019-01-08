@@ -1,0 +1,21 @@
+no_monolithic_only_toc_out no_monolithic.texi -c 'MONOLITHIC 0' --init only_toc_out.init
+#navigation_noheaders_init navigation.texi --init noheaders.pm
+navigation_test_misc_file_collision navigation.texi --split node --init misc_file_collision.init
+
+formatting_docbook formatting.texi --docbook -U texi2html
+formatting_xml formatting.texi --xml -U texi2html
+formatting_weird_quotes formatting.texi -c 'OPEN_QUOTE_SYMBOL @' -c "CLOSE_QUOTE_SYMBOL '&lsquo;"
+#lightweight_markups_mediawiki lightweight_markups.texi --init mediawiki.pm
+formatting_html formatting.texi --html --no-split
+formatting_html_nodes formatting.texi --html --split node --node-files -c 'TOP_FILE index.html'
+formatting_plaintext formatting.texi --plaintext -U texi2html
+#formatting_mediawiki formatting.texi --init mediawiki.pm
+formatting_html32 formatting.texi --init html32.pm
+formatting_regions formatting_regions.texi
+formatting_exotic formatting.texi --split section --no-header --no-number-sections -c 'TOC_LINKS 1' -c 'DEF_TABLE 1' -c 'XREF_USE_NODE_NAME_ARG 1' --footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css --internal-links=/dev/null -c 'USE_TITLEPAGE_FOR_TITLE 0'
+formatting_fr_icons formatting.texi --document-language fr --init icons.init
+#formatting_makeinfo formatting.texi --init makeinfo.pm --no-warn
+formatting_chm formatting.texi --init chm.pm
+formatting_nodes formatting.texi --split node
+formatting formatting.texi --internal-links=@OUT_DIR@internal_links_formatting.txt
+

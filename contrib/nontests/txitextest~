@@ -1,0 +1,94 @@
+#!/bin/sh
+# $Id$
+# Copyright 2006, 2011, 2012, 2013 Free Software Foundation, Inc.
+# 
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License,
+# or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Original author: Karl Berry.
+# 
+# Test texinfo.tex changes by running various manuals through with an
+# old version, saving the .ps result from dvips, doing the same with a
+# new version, and comparing.  Idea from Stepan Kasal.
+# 
+# Another option is to run the manuals all the way through using
+# texi2dvi, which tests in another way.
+
+tsrc=`cd \`dirname $0\` && pwd`/../..
+PATH=$tsrc/util:$PATH
+
+tdoc=$tsrc/doc
+default_manuals="$tdoc/texinfo.texi $tdoc/info.texi $tdoc/info-stnd.texi"
+
+olddir=$tsrc/../gnulib/config
+newdir=$tdoc
+tempdir=$tsrc/@tests/test
+full=false
+manuals=
+
+while test $# -gt 0; do
+  case $1 in
+  --f*) full=true;;
+  --o*) shift; olddir="$1";;
+  --n*) shift; newdir="$1";;
+  --t*) shift; tempdir="$1";;
+  -*) echo "$0: unknown option \`$1'." >&2; exit 1;;
+  *) manuals="$manuals $1";;
+  esac
+  shift
+done
+
+test -z "$manuals" && manuals=$default_manuals
+initial_dir=`pwd`
+
+cd $tempdir || exit 1
+rm -f *
+
+run_tex() \
+{
+  TEXINPUTS=.:$mandir: tex $manual \
+  || { echo "$0: tex $manual failed." >&2; exit 1; }
+}
+
+for manual in $manuals; do
+  mandir=`dirname $manual`
+  test $mandir = . && mandir=$initial_dir
+  manual_base=`basename "$manual" | sed 's/\.[^.]*$//'`
+  
+  rm -rf $manual_base.* texinfo.tex
+  ln -s $newdir/texinfo.tex texinfo.tex
+
+  if $full; then
+    # instead of comparing, do full test of just the new texinfo.tex.
+    echo "$0: testing $manual_base... (tex)"
+    texi2dvi $manual || { echo "texi2dvi $manual failed." >&2; exit 1; }
+    echo "$0: testing $manual_base... (pdf)"
+    texi2dvi --pdf $manual \
+    || { echo "texi2dvi --pdf $manual failed." >&2; exit 1; }
+   
+  else
+    echo "$0: testing $manual_base... (new)"
+    run_tex
+    dvips $manual_base -o || exit 1
+    mv $manual_base.ps new.$manual_base.ps
+
+    echo "$0: testing $manual_base... (old)"
+    rm -rf $manual_base.* texinfo.tex
+    ln -s $olddir/texinfo.tex texinfo.tex
+    run_tex
+    dvips $manual_base -o || exit 1
+    mv $manual_base.ps old.$manual_base.ps
+
+    diff -U0 old.$manual_base.ps new.$manual_base.ps
+  fi
+done

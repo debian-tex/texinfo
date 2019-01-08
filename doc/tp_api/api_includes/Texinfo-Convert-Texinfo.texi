@@ -7,7 +7,6 @@
 * Texinfo@asis{::}Convert@asis{::}Texinfo DESCRIPTION::
 * Texinfo@asis{::}Convert@asis{::}Texinfo METHODS::
 * Texinfo@asis{::}Convert@asis{::}Texinfo AUTHOR::
-* Texinfo@asis{::}Convert@asis{::}Texinfo COPYRIGHT AND LICENSE::
 @end menu
 
 @node Texinfo::Convert::Texinfo NAME
@@ -48,14 +47,4 @@ Converts the Texinfo tree @emph{$tree} to Texinfo code.
 @section AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
-
-@node Texinfo::Convert::Texinfo COPYRIGHT AND LICENSE
-@section COPYRIGHT AND LICENSE
-
-Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
-
-This library is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or (at 
-your option) any later version.
 

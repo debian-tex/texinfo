@@ -12,22 +12,16 @@ $result_trees{'comment_on_quotation_line'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'truc'
             },
             {
               'cmdname' => ' ',
               'parent' => {}
-            },
-            {
+            }
+          ],
+          'extra' => {
+            'comment_at_end' => {
               'args' => [
                 {
                   'parent' => {},
@@ -45,7 +39,7 @@ $result_trees{'comment_on_quotation_line'} = {
               },
               'parent' => {}
             }
-          ],
+          },
           'parent' => {},
           'type' => 'block_line_arg'
         }
@@ -68,33 +62,22 @@ $result_trees{'comment_on_quotation_line'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'quotation'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'quotation',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'quotation'
           },
           'line_nr' => {
@@ -106,14 +89,8 @@ $result_trees{'comment_on_quotation_line'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {},
-            {}
-          ]
-        ],
         'end_command' => {},
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -125,27 +102,17 @@ $result_trees{'comment_on_quotation_line'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[3];
-$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0];
+$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[0];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0];
-$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0];
-$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0];
-$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][1] = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'parent'} = $result_trees{'comment_on_quotation_line'};
 
 $result_texis{'comment_on_quotation_line'} = '@quotation truc@ @c quotation 

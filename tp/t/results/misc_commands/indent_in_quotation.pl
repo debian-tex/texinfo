@@ -21,17 +21,6 @@ $result_trees{'indent_in_quotation'} = {
         },
         {
           'cmdname' => 'indent',
-          'extra' => {
-            'spaces_after_command' => {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            }
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 2,
@@ -39,7 +28,15 @@ $result_trees{'indent_in_quotation'} = {
           },
           'parent' => {}
         },
-        {},
+        {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        },
         {
           'contents' => [
             {
@@ -59,33 +56,22 @@ $result_trees{'indent_in_quotation'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'quotation'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'quotation',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'quotation'
           },
           'line_nr' => {
@@ -97,8 +83,7 @@ $result_trees{'indent_in_quotation'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -112,22 +97,15 @@ $result_trees{'indent_in_quotation'} = {
 };
 $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'indent_in_quotation'}{'contents'}[0];
 $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'indent_in_quotation'}{'contents'}[0];
-$result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[1];
-$result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'indent_in_quotation'}{'contents'}[0];
 $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'indent_in_quotation'}{'contents'}[0];
-$result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[2] = $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'};
+$result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[1];
+$result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'indent_in_quotation'}{'contents'}[0];
 $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[3];
 $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'indent_in_quotation'}{'contents'}[0];
-$result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4];
 $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0];
 $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4];
-$result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4]{'extra'}{'command'} = $result_trees{'indent_in_quotation'}{'contents'}[0];
-$result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'indent_in_quotation'}{'contents'}[0];
 $result_trees{'indent_in_quotation'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[4];
-$result_trees{'indent_in_quotation'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'indent_in_quotation'}{'contents'}[0]{'contents'}[0];
 $result_trees{'indent_in_quotation'}{'contents'}[0]{'parent'} = $result_trees{'indent_in_quotation'};
 
 $result_texis{'indent_in_quotation'} = '@quotation

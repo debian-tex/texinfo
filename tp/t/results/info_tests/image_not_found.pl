@@ -17,26 +17,16 @@ $result_trees{'image_not_found'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -56,13 +46,6 @@ $result_trees{'image_not_found'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
-          'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ]
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 2,
@@ -87,7 +70,7 @@ $result_trees{'image_not_found'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -100,19 +83,14 @@ $result_trees{'image_not_found'} = {
   'type' => 'document_root'
 };
 $result_trees{'image_not_found'}{'contents'}[0]{'parent'} = $result_trees{'image_not_found'};
-$result_trees{'image_not_found'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'image_not_found'}{'contents'}[1];
 $result_trees{'image_not_found'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_not_found'}{'contents'}[1]{'args'}[0];
-$result_trees{'image_not_found'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'image_not_found'}{'contents'}[1]{'args'}[0];
-$result_trees{'image_not_found'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'image_not_found'}{'contents'}[1]{'args'}[0];
 $result_trees{'image_not_found'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_not_found'}{'contents'}[1];
 $result_trees{'image_not_found'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_not_found'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'image_not_found'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'image_not_found'}{'contents'}[1]{'contents'}[0];
-$result_trees{'image_not_found'}{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_not_found'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'image_not_found'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'image_not_found'}{'contents'}[1];
 $result_trees{'image_not_found'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'image_not_found'}{'contents'}[1];
-$result_trees{'image_not_found'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_not_found'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'image_not_found'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_not_found'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_not_found'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'image_not_found'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'image_not_found'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'image_not_found'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_not_found'}{'contents'}[1]{'parent'} = $result_trees{'image_not_found'};
 
 $result_texis{'image_not_found'} = '@node Top
@@ -128,7 +106,8 @@ $result_sectioning{'image_not_found'} = {};
 $result_nodes{'image_not_found'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -147,7 +126,8 @@ $result_nodes{'image_not_found'}{'node_up'}{'extra'}{'top_node_up'} = $result_no
 $result_menus{'image_not_found'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

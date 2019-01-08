@@ -1,8 +1,6 @@
-# $Id: Makefile.am 7918 2017-07-10 17:59:21Z gavin $
 # Makefile.am for texinfo/doc.
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
-# 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+# Copyright 2002-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -39,7 +37,8 @@ refcard_files = refcard/Makefile refcard/txicmdcheck \
 EXTRA_DIST = epsf.tex texinfo.tex \
              fdl.texi \
 	     $(man_MANS) $(TXI_XLATE) \
-             $(refcard_files) texinfo-tex-test.texi \
+             $(refcard_files) \
+	     texinfo-tex-test.texi texinfo-tex-test.WIDOWs \
              texinfo-ja.tex short-sample-ja.texi
 
 if INSTALL_WARNINGS

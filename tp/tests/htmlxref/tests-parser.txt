@@ -1,3 +1,0 @@
-htmlxref ../sectioning/test_refs.texi --set-customization-variable CHECK_HTMLXREF -c HTMLXREF=htmlxref.cnf-ref --set-customization-variable 'HTMLXREF=htmlxref/htmlxref.cnf'
-
-htmlxref_nodes ../sectioning/test_refs.texi --split node --set-customization-variable 'USE_NODES 1' --node-files --set-customization-variable 'HTMLXREF=htmlxref/htmlxref.cnf'

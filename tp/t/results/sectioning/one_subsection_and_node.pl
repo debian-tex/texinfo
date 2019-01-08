@@ -17,26 +17,16 @@ $result_trees{'one_subsection_and_node'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'one node'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -52,7 +42,7 @@ $result_trees{'one_subsection_and_node'} = {
           }
         ],
         'normalized' => 'one-node',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -66,35 +56,22 @@ $result_trees{'one_subsection_and_node'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'The subsection'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'subsection',
       'contents' => [],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 3,
       'line_nr' => {
@@ -109,22 +86,13 @@ $result_trees{'one_subsection_and_node'} = {
   'type' => 'document_root'
 };
 $result_trees{'one_subsection_and_node'}{'contents'}[0]{'parent'} = $result_trees{'one_subsection_and_node'};
-$result_trees{'one_subsection_and_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'one_subsection_and_node'}{'contents'}[1];
 $result_trees{'one_subsection_and_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'one_subsection_and_node'}{'contents'}[1]{'args'}[0];
-$result_trees{'one_subsection_and_node'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'one_subsection_and_node'}{'contents'}[1]{'args'}[0];
-$result_trees{'one_subsection_and_node'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'one_subsection_and_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'one_subsection_and_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'one_subsection_and_node'}{'contents'}[1];
-$result_trees{'one_subsection_and_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'one_subsection_and_node'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'one_subsection_and_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'one_subsection_and_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'one_subsection_and_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'one_subsection_and_node'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'one_subsection_and_node'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'one_subsection_and_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'one_subsection_and_node'}{'contents'}[1]{'parent'} = $result_trees{'one_subsection_and_node'};
-$result_trees{'one_subsection_and_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'one_subsection_and_node'}{'contents'}[2];
 $result_trees{'one_subsection_and_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'one_subsection_and_node'}{'contents'}[2]{'args'}[0];
-$result_trees{'one_subsection_and_node'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'one_subsection_and_node'}{'contents'}[2]{'args'}[0];
-$result_trees{'one_subsection_and_node'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'one_subsection_and_node'}{'contents'}[2]{'args'}[0];
 $result_trees{'one_subsection_and_node'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'one_subsection_and_node'}{'contents'}[2];
-$result_trees{'one_subsection_and_node'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'one_subsection_and_node'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'one_subsection_and_node'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'one_subsection_and_node'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'one_subsection_and_node'}{'contents'}[2]{'parent'} = $result_trees{'one_subsection_and_node'};
 
 $result_texis{'one_subsection_and_node'} = '@node one node
@@ -145,9 +113,11 @@ $result_sectioning{'one_subsection_and_node'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
-            'normalized' => 'one-node'
+            'normalized' => 'one-node',
+            'spaces_before_argument' => ' '
           }
-        }
+        },
+        'spaces_before_argument' => ' '
       },
       'level' => 3,
       'number' => 1,
@@ -162,18 +132,22 @@ $result_nodes{'one_subsection_and_node'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'subsection',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 3,
       'number' => 1
     },
-    'normalized' => 'one-node'
+    'normalized' => 'one-node',
+    'spaces_before_argument' => ' '
   }
 };
 
 $result_menus{'one_subsection_and_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'one-node'
+    'normalized' => 'one-node',
+    'spaces_before_argument' => ' '
   }
 };
 
@@ -252,9 +226,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="one-node"></a>
-<a name="The-subsection"></a>
-<h4 class="subsection">1 The subsection</h4>
+<span id="one-node"></span><span id="The-subsection"></span><h4 class="subsection">1 The subsection</h4>
 <hr>
 
 

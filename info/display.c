@@ -1,8 +1,6 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c 7760 2017-04-27 18:06:21Z gavin $
 
-   Copyright 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012, 2013,
-   2014, 2015, 2016, 2017 Free Software Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

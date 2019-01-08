@@ -1,8 +1,6 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c 7787 2017-05-15 16:34:53Z gavin $
 
-   Copyright 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007,
-   2008, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -304,9 +302,7 @@ static int default_emacs_like_ea_keys[] =
   CONTROL('y'), NUL,              A_ea_yank,
   LFD, NUL,                       A_ea_newline,
   RET, NUL,                       A_ea_newline,
-  SPC, NUL,                       A_ea_complete,
   TAB, NUL,                       A_ea_complete,
-  '?', NUL,                       A_ea_possible_completions,
 #ifdef __MSDOS__
   /* PC users will lynch me if I don't give them their usual DEL
      effect...  */
@@ -314,16 +310,12 @@ static int default_emacs_like_ea_keys[] =
 #else
   KEY_DELETE, NUL,                       A_ea_rubout,
 #endif
-  CONTROL('x'), 'o', NUL,         A_info_next_window,
   CONTROL('x'), KEY_DELETE, NUL,         A_ea_backward_kill_line,
 
   KEY_RIGHT_ARROW, NUL,           A_ea_forward,
   KEY_LEFT_ARROW, NUL,            A_ea_backward,
-  ESC, KEY_RIGHT_ARROW, NUL,   A_ea_forward_word,
-  ESC, KEY_LEFT_ARROW, NUL,    A_ea_backward_word,
   KEY_HOME, NUL,                 A_ea_beg_of_line,
   KEY_END, NUL,                  A_ea_end_of_line,
-  ESC, KEY_DELETE, NUL,  A_ea_backward_kill_word,
 };
 
 
@@ -535,10 +527,7 @@ static int default_vi_like_ea_keys[] =
   CONTROL('y'), NUL,              A_ea_yank,
   LFD, NUL,                       A_ea_newline,
   RET, NUL,                       A_ea_newline,
-  SPC, NUL,                       A_ea_complete,
   TAB, NUL,                       A_ea_complete,
-  '?', NUL,                       A_ea_possible_completions,
-  CONTROL('x'), 'o', NUL,         A_info_next_window,
   
   KEY_RIGHT_ARROW, NUL,         A_ea_forward,
   KEY_LEFT_ARROW, NUL,          A_ea_backward,
@@ -549,9 +538,6 @@ static int default_vi_like_ea_keys[] =
 #else
   KEY_DELETE, NUL,              A_ea_rubout,
 #endif
-  ESC, KEY_RIGHT_ARROW, NUL,    A_ea_forward_word,
-  ESC, KEY_LEFT_ARROW, NUL,     A_ea_backward_word,
-  ESC, KEY_DELETE, NUL,         A_ea_kill_word,
   CONTROL('x'), KEY_DELETE, NUL,A_ea_backward_kill_line,
 };
 

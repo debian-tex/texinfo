@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2017 Free Software Foundation, Inc.
+# Copyright (C) 2017-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,13 +16,12 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
-run_ginfo '-f intera -n "Xref target crosses lines 2"'
-printf '\t\rDq' >$PTY_TYPE
+run_ginfo -f intera -n "Xref target crosses lines 2"
+printf '\t\rDq' >$pty_type
 timeout_test
 
-grep 'Node: target node two' $GINFO_OUTPUT
-RETVAL=$?
+grep 'Node: target node two' $ginfo_output
+retval=$?
 
 cleanup

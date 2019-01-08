@@ -1,0 +1,31 @@
+$Id$
+texinfo/contrib/texifont/README
+
+Everything in this directory is public domain.
+
+The main source file is fsel.tex, tested by ftest.tex, documentation
+(such as it is) in texifont.txi.
+
+The story here is that Oleg Katsitadze and I (Karl Berry) collaborated
+in the mid-2000s on a new font system for Texinfo (and that could work
+with Eplain).  Oleg wrote essentially all the code, while I advised on
+the design, etc.
+
+The idea was to support all the widely-available free font families and
+widely used input encodings.  getting away from of the current
+hardwiring of Computer Modern in texinfo.tex.  The example at the end of
+documentation gives the basic flavor.  As it stands, it is not hooked
+into texinfo.tex or Texinfo documents at all.  That is not the hard part :).
+
+Unfortunately, it never came to fruition.  Even more unfortunately, Oleg
+and I can't even give any real specifics of what the "next thing" to do
+is, we've lost the details in the haze of time.  As I recall, the
+current problem was something about caching of glyphs to avoid
+unnecessary (and greatly excessive) switching of fonts.  In addition,
+"attributes" (fattr.tex) were starting to come into play.  But it all
+remains a work in progress.
+
+Anyway, I'm not sanguine about anyone ever doing anything with this, but
+just in case some super-duper TeX hacker has too much time on their
+hands :) and wants to pick it up, here it is.  Contact
+bug-texinfo@gnu.org ...

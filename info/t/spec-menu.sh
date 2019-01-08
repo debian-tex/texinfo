@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,5 +19,5 @@ srcdir=${srcdir:-.}
 
 # Starting at a node given as a specification, follow several menus in a 
 # file to get to desired node
-$GINFO '(file-menu)Node 1' 'Node 2' 'Node 3' | grep 'Arrived at Node 3.'
+$ginfo '(file-menu)Node 1' 'Node 2' 'Node 3' | grep 'Arrived at Node 3.'
 

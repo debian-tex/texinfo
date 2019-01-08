@@ -14,33 +14,23 @@ $result_trees{'non_break_spaces'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'utf-8'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
             'input_encoding_name' => 'utf-8',
             'input_perl_encoding' => 'utf-8-strict',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'utf-8'
           },
           'line_nr' => {
@@ -65,26 +55,16 @@ $result_trees{'non_break_spaces'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -123,7 +103,7 @@ $result_trees{'non_break_spaces'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => 'non_break_spaces.texi',
@@ -135,27 +115,19 @@ $result_trees{'non_break_spaces'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0];
-$result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[0]{'parent'} = $result_trees{'non_break_spaces'};
-$result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'non_break_spaces'}{'contents'}[1];
 $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0];
-$result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0];
-$result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[1];
 $result_trees{'non_break_spaces'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[1];
 $result_trees{'non_break_spaces'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[1]{'contents'}[1];
 $result_trees{'non_break_spaces'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[1]{'contents'}[1];
 $result_trees{'non_break_spaces'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[1];
-$result_trees{'non_break_spaces'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'non_break_spaces'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'non_break_spaces'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'non_break_spaces'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[1]{'parent'} = $result_trees{'non_break_spaces'};
 
 $result_texis{'non_break_spaces'} = '@documentencoding utf-8
@@ -178,7 +150,8 @@ $result_sectioning{'non_break_spaces'} = {};
 $result_nodes{'non_break_spaces'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -197,7 +170,8 @@ $result_nodes{'non_break_spaces'}{'node_up'}{'extra'}{'top_node_up'} = $result_n
 $result_menus{'non_break_spaces'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014, 2017 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,5 +18,5 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
 # Follow an index entry in a file specified with --file
-$GINFO --output - --file split 'entry text' \
+$ginfo --output - --file split 'entry text' \
   | grep 'Node: Target node'

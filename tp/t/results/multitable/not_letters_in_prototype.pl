@@ -12,19 +12,14 @@ $result_trees{'not_letters_in_prototype'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
-              'text' => '  ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
-              'text' => '1.3  5-6
-'
+              'text' => '1.3  5-6'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'block_line_arg'
         }
@@ -39,14 +34,6 @@ $result_trees{'not_letters_in_prototype'} = {
                   'cmdname' => 'item',
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
                       'contents' => [
                         {
                           'parent' => {},
@@ -59,7 +46,7 @@ $result_trees{'not_letters_in_prototype'} = {
                   ],
                   'extra' => {
                     'cell_number' => 1,
-                    'spaces_after_command' => {}
+                    'spaces_before_argument' => ' '
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -71,14 +58,6 @@ $result_trees{'not_letters_in_prototype'} = {
                 {
                   'cmdname' => 'tab',
                   'contents' => [
-                    {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
                     {
                       'contents' => [
                         {
@@ -93,7 +72,7 @@ $result_trees{'not_letters_in_prototype'} = {
                   ],
                   'extra' => {
                     'cell_number' => 2,
-                    'spaces_after_command' => {}
+                    'spaces_before_argument' => ' '
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -114,33 +93,22 @@ $result_trees{'not_letters_in_prototype'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
                   'parent' => {},
                   'text' => 'multitable'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'multitable',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'multitable'
           },
           'line_nr' => {
@@ -166,10 +134,6 @@ $result_trees{'not_letters_in_prototype'} = {
         ],
         'prototypes_line' => [
           {
-            'text' => '  ',
-            'type' => 'prototype_space'
-          },
-          {
             'text' => '1.3',
             'type' => 'row_prototype'
           },
@@ -180,14 +144,9 @@ $result_trees{'not_letters_in_prototype'} = {
           {
             'text' => '5-6',
             'type' => 'row_prototype'
-          },
-          {
-            'text' => '
-',
-            'type' => 'prototype_space'
           }
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => '  '
       },
       'line_nr' => {
         'file_name' => '',
@@ -199,35 +158,21 @@ $result_trees{'not_letters_in_prototype'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'args'}[0];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'args'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
+$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[1];
-$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'};
 
 $result_texis{'not_letters_in_prototype'} = '@multitable  1.3  5-6

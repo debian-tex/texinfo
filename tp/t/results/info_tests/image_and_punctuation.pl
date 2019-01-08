@@ -17,26 +17,16 @@ $result_trees{'image_and_punctuation'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'parent' => {},
               'text' => 'Top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -68,13 +58,7 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ]
-              },
+              'extra' => {},
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 3,
@@ -118,13 +102,7 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ]
-              },
+              'extra' => {},
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -169,13 +147,7 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ]
-              },
+              'extra' => {},
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 8,
@@ -219,13 +191,7 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ]
-              },
+              'extra' => {},
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 10,
@@ -269,13 +235,7 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ]
-              },
+              'extra' => {},
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 12,
@@ -320,13 +280,7 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ]
-              },
+              'extra' => {},
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 15,
@@ -355,7 +309,7 @@ $result_trees{'image_and_punctuation'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -368,16 +322,12 @@ $result_trees{'image_and_punctuation'} = {
   'type' => 'document_root'
 };
 $result_trees{'image_and_punctuation'}{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'};
-$result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'image_and_punctuation'}{'contents'}[1];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0];
-$result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0];
-$result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1];
@@ -385,7 +335,6 @@ $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[2]{'parent'} =
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[3];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[3];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[3];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1];
@@ -393,7 +342,6 @@ $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[4]{'parent'} =
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[5];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[5]{'contents'}[1];
-$result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[5];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[5];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1];
@@ -401,7 +349,6 @@ $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[6]{'parent'} =
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[7];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'args'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[7]{'contents'}[1];
-$result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[7];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[7]{'contents'}[2]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[7];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1];
@@ -409,7 +356,6 @@ $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[8]{'parent'} =
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[9];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[9]{'contents'}[1]{'args'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[9]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[9]{'contents'}[1];
-$result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[9]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[9];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[9]{'contents'}[2]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[9];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1];
@@ -417,13 +363,11 @@ $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[10]{'parent'} 
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11]{'contents'}[1]{'args'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11]{'contents'}[1];
-$result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11]{'contents'}[1]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11]{'contents'}[2]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1];
-$result_trees{'image_and_punctuation'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'image_and_punctuation'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'image_and_punctuation'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'parent'} = $result_trees{'image_and_punctuation'};
 
 $result_texis{'image_and_punctuation'} = '@node Top
@@ -465,7 +409,8 @@ $result_sectioning{'image_and_punctuation'} = {};
 $result_nodes{'image_and_punctuation'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -484,7 +429,8 @@ $result_nodes{'image_and_punctuation'}{'node_up'}{'extra'}{'top_node_up'} = $res
 $result_menus{'image_and_punctuation'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

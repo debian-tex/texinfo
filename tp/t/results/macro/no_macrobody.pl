@@ -34,9 +34,6 @@ $result_trees{'no_macrobody'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -77,7 +74,6 @@ $result_trees{'no_macrobody'} = {
 $result_trees{'no_macrobody'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'no_macrobody'}{'contents'}[0];
 $result_trees{'no_macrobody'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'no_macrobody'}{'contents'}[0];
 $result_trees{'no_macrobody'}{'contents'}[0]{'parent'} = $result_trees{'no_macrobody'};
-$result_trees{'no_macrobody'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'no_macrobody'}{'contents'}[0];
 $result_trees{'no_macrobody'}{'contents'}[1]{'parent'} = $result_trees{'no_macrobody'};
 $result_trees{'no_macrobody'}{'contents'}[2]{'parent'} = $result_trees{'no_macrobody'};
 $result_trees{'no_macrobody'}{'contents'}[3]{'parent'} = $result_trees{'no_macrobody'};

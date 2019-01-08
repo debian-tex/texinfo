@@ -36,9 +36,6 @@ $result_trees{'menu_no_closed_star'} = {
           'type' => 'menu_comment'
         }
       ],
-      'extra' => {
-        'spaces_after_command' => {}
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -54,7 +51,6 @@ $result_trees{'menu_no_closed_star'}{'contents'}[0]{'contents'}[0]{'parent'} = $
 $result_trees{'menu_no_closed_star'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_star'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'menu_no_closed_star'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_star'}{'contents'}[0]{'contents'}[1];
 $result_trees{'menu_no_closed_star'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'menu_no_closed_star'}{'contents'}[0];
-$result_trees{'menu_no_closed_star'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'menu_no_closed_star'}{'contents'}[0]{'contents'}[0];
 $result_trees{'menu_no_closed_star'}{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_star'};
 
 $result_texis{'menu_no_closed_star'} = '@menu

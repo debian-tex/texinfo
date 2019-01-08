@@ -1,8 +1,6 @@
 /* indices.h -- Functions defined in indices.c.
-   $Id: indices.h 7773 2017-05-13 13:38:44Z gavin $
 
-   Copyright 1993, 1997, 2004, 2007, 2013, 2014, 2015, 2016, 2017
-   Free Software Foundation, Inc.
+   Copyright 1993-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

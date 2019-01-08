@@ -4,7 +4,7 @@
 
 --- texinfo.orig/man/ginfo.h2m
 +++ texinfo/man/ginfo.h2m
-@@ -9,9 +9,10 @@
+@@ -8,9 +8,10 @@
  [SEE ALSO]
  The full documentation for
  .B info

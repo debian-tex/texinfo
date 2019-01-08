@@ -7,7 +7,7 @@ replace numerical signal names with symbolical
 
 --- texinfo.orig/util/texi2dvi
 +++ texinfo/util/texi2dvi
-@@ -1985,7 +1985,7 @@
+@@ -1976,7 +1976,7 @@ do
               $SED "s,^$orig_pwd/,,;s,^\./,,;s,/,!,g"`
    esac
    # Remove it at exit if clean mode.
@@ -18,7 +18,7 @@ replace numerical signal names with symbolical
  
 --- texinfo.orig/contrib/fix-info-dir
 +++ texinfo/contrib/fix-info-dir
-@@ -255,13 +255,13 @@
+@@ -255,13 +255,13 @@ fi
  
  trap ' eval "$DEBUG"; rm -f $TMP_FILE_LIST; exit ' 0
  trap ' rm -f $TMP_FILE_LIST
@@ -37,7 +37,7 @@ replace numerical signal names with symbolical
  |sed -n -e '/\* /{
 --- texinfo.orig/contrib/fixfonts
 +++ texinfo/contrib/fixfonts
-@@ -33,7 +33,7 @@
+@@ -33,7 +33,7 @@ tempfile="${TMPDIR}/circ$$"
  tempfile2="${TMPDIR}/circ2$$"
  
  # EXIT SIGHUP SIGINT SIGQUIT SIGTERM

@@ -1,3 +1,10 @@
+texinfo (6.5.90.dfsg.1-1~1) unstable; urgency=medium
+
+  * New upstream version 6.5.90.dfsg.1
+  * update/cleanup patches
+
+ -- Norbert Preining <preining@debian.org>  Tue, 08 Jan 2019 16:42:44 +0900
+
 texinfo (6.5.0.dfsg.1-4) unstable; urgency=medium
 
   * fix infinite loop with Perl 5.28, thanks Niko Tyni (Closes: #902771)

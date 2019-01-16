@@ -33,4 +33,4 @@ AM_CPPFLAGS = 					\
   -I$(top_srcdir)/gnulib/lib			\
   -I$(top_builddir)/gnulib/lib			\
   -DLOCALEDIR=\"$(localedir)\"
-LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
+LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL) $(LIBTHREAD)

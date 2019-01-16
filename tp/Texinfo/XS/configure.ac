@@ -1,6 +1,6 @@
 # configure.ac for XSParagraph
 #
-# Copyright 2015, 2016, 2017 Free Software Foundation, Inc.
+# Copyright 2015-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -58,6 +58,9 @@ AC_ARG_ENABLE([perl-xs],
 # "make dist" will work.
 if test x$disable_xs != xyes; then
   AC_PATH_PROG([PERL], [perl])
+
+  # PERL_EXT_var are user variables, allowing configuring at the top-level 
+  # with e.g. "./configure CFLAGS='-g -O0' PERL_EXT_CFLAGS='-g'".
   
   if test -n "$PERL_EXT_CC" ; then
     CC=$PERL_EXT_CC
@@ -68,6 +71,14 @@ if test x$disable_xs != xyes; then
     lookup_perl_conf([cc])
     CC=$conf_value
   fi
+
+  # Override these variables set by configure at the top level, because 
+  # the compiler used in this subdirectory might be different.  Change 
+  # these now so they are used in the gnulib checks.
+  
+  CFLAGS=$PERL_EXT_CFLAGS
+  CPPFLAGS=$PERL_EXT_CPPFLAGS
+  LDFLAGS=$PERL_EXT_LDFLAGS
 
   # Wipe cache values in case -C was given at the top level
   ac_cv_prog_CC= ; unset ac_cv_prog_CC
@@ -97,6 +108,9 @@ case "$host" in *-mingw32 | *-mingw64 | *-msdosdjgpp | *-cygwin )
 esac     
 AM_CONDITIONAL([HOST_NEEDS_NO_UNDEFINED],
                [test "x$host_needs_no_undefined" = "xyes"])
+
+AM_CONDITIONAL([HAVE_ICONV],
+               [test "x$am_func_iconv" = "xyes"])
 
 # User variables for a Perl XS extension, which may be different, for
 # example if the Perl interpreter being used was compiled with a
@@ -141,5 +155,5 @@ lookup_perl_conf([privlibexp])
 AC_CONFIG_HEADERS([config.h:config.in])
 fi # not disable_xs
 
-AC_CONFIG_FILES([Makefile gnulib/lib/Makefile parsetexi/Makefile])
+AC_CONFIG_FILES([Makefile gnulib/lib/Makefile])
 AC_OUTPUT

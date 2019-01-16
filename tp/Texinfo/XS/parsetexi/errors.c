@@ -22,7 +22,6 @@
 #include "tree_types.h"
 #include "input.h"
 #include "text.h"
-#include "errors.h"
 
 typedef struct {
     char *message;

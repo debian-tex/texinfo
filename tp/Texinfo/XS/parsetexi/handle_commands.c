@@ -21,7 +21,6 @@
 #include "parser.h"
 #include "input.h"
 #include "text.h"
-#include "errors.h"
 
 /* Return a containing @itemize or @enumerate if inside it. */
 // 1847
@@ -95,12 +94,10 @@ handle_other_command (ELEMENT *current, char **line_inout,
   arg_spec = command_data(cmd).data;
   if (arg_spec == OTHER_noarg)
     {
-      int only_in_headings = 0;
       if (command_data(cmd).flags & CF_in_heading)
         {
           line_error ("@%s should only appear in heading or footing",
                       command_name(cmd));
-          only_in_headings = 1;
         }
 
       misc = new_element (ET_NONE);
@@ -263,7 +260,6 @@ handle_other_command (ELEMENT *current, char **line_inout,
         {
           /* Start a new paragraph if not in one already. */
           int spaces;
-          enum element_type t;
           ELEMENT *paragraph;
 
           /* Check if if we should change an ET_empty_line_after_command

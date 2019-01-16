@@ -1,4 +1,4 @@
-/* end_line.c -- what to do at the end of a whole line of input
+/* end_line.c -- what to do at the end of a whole line of input */
 /* Copyright 2010-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -26,7 +26,6 @@
 #include "convert.h"
 #include "labels.h"
 #include "indices.h"
-#include "errors.h"
 
 void
 check_internal_node (NODE_SPEC_EXTRA *nse)
@@ -47,6 +46,7 @@ check_empty_node (NODE_SPEC_EXTRA *nse,
   if (!nse || !nse->node_content || nse->node_content->contents.number == 0)
     {
       line_error ("empty argument in @%s", command_name(cmd));
+      return 0;
     }
   else
     return 1;
@@ -286,7 +286,6 @@ clickstyle_invalid:
    is an array of the arguments.  For some commands, there is further 
    processing of the arguments (for example, for an @alias, remember the
    alias.) */
-// 5475
 ELEMENT *
 parse_line_command_args (ELEMENT *line_command)
 {
@@ -300,7 +299,6 @@ parse_line_command_args (ELEMENT *line_command)
   ELEMENT *line_args;
   enum command_id cmd;
   char *line;
-  int i;
 
   cmd = line_command->cmd;
   if (arg->contents.number == 0)
@@ -1243,13 +1241,13 @@ end_line_starting_block (ELEMENT *current)
             }
         }
 
-      /* 3052 - if no command_as_argument given, default to @bullet for
+      /* if no command_as_argument given, default to @bullet for
          @itemize, and @asis for @table. */
       if (current->cmd == CM_itemize
           && (current->args.number == 0
               || current->args.list[0]->contents.number == 0))
         {
-          ELEMENT *e, *contents, *contents2;
+          ELEMENT *e;
 
           e = new_element (ET_command_as_argument_inserted);
           e->cmd = CM_bullet;
@@ -1259,7 +1257,7 @@ end_line_starting_block (ELEMENT *current)
       else if (item_line_command (current->cmd)
           && !lookup_extra (current, "command_as_argument"))
         {
-          ELEMENT *e, *contents, *contents2;
+          ELEMENT *e;
 
           e = new_element (ET_command_as_argument_inserted);
           e->cmd = CM_asis;
@@ -1274,7 +1272,6 @@ end_line_starting_block (ELEMENT *current)
       }
     } /* CF_blockitem */
 
-  // 3077
   if (command_flags(current) & CF_menu)
     {
       /* Start reading a menu.  Processing will continue in
@@ -1291,7 +1288,6 @@ end_line_starting_block (ELEMENT *current)
   return current;
 }
 
-// 3100
 /* Actions to be taken at the end of an argument to a line command
    not starting a block.  @end is processed in here. */
 static ELEMENT *
@@ -1323,7 +1319,6 @@ end_line_misc_line (ELEMENT *current)
       abort ();
     }
 
-  // 3114
   debug ("MISC END %s", command_name(cmd));
 
   if (arg_type > 0)
@@ -1332,11 +1327,10 @@ end_line_misc_line (ELEMENT *current)
       if (args)
         add_extra_misc_args (current, "misc_args", args);
     }
-  else if (arg_type == LINE_text) /* 3118 */
+  else if (arg_type == LINE_text)
     {
       char *text = 0;
       int superfluous_arg = 0;
-      int i;
 
       if (current->args.number > 0)
         text = convert_to_text (current->args.list[0], &superfluous_arg);
@@ -1344,7 +1338,7 @@ end_line_misc_line (ELEMENT *current)
       if (!text || !strcmp (text, ""))
         {
           if (!superfluous_arg)
-            line_warn ("@%s missing argument", command_name(cmd)); // 3123
+            line_warn ("@%s missing argument", command_name(cmd));
           add_extra_integer (current, "missing_argument", 1);
           free (text);
         }
@@ -1760,10 +1754,6 @@ end_line_misc_line (ELEMENT *current)
           /* Index commands */
           if (command_flags(current) & CF_index_entry_command)
             {
-              ELEMENT *contents;
-              contents = last_args_child(current);
-
-              // 3274
               enter_index_entry (current->cmd, current->cmd, current,
                                  current->args.list[0]);
               current->type = ET_index_entry_command;
@@ -2160,8 +2150,6 @@ end_line (ELEMENT *current)
       else
         {
           ELEMENT *index_entry = 0; /* Index entry text. */
-          char *label;
-          int i;
 
           add_extra_def_info (current->parent, "def_parsed_hash", def_info);
 

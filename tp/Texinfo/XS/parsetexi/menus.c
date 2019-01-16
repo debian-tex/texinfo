@@ -20,6 +20,8 @@
 #include "parser.h"
 #include "input.h"
 #include "text.h"
+#include "convert.h"
+#include "labels.h"
 
 /* Save 'menu_entry_name' 'menu_entry_node', and 'menu_entry_description'
    extra keys on the top-level @menu element. */

@@ -19,7 +19,6 @@
 #include <string.h>
 
 #include "parser.h"
-#include "errors.h"
 
 /* Possibly print an error message, and return CURRENT->parent. */
 static ELEMENT *
@@ -163,7 +162,7 @@ close_command_cleanup (ELEMENT *current)
       && current->contents.number > 0)
     {
       int have_leading_spaces = 0;
-      ELEMENT *before_item;
+      ELEMENT *before_item = 0;
       if (current->contents.number >= 2
           && current->contents.list[0]->type == ET_empty_line_after_command
           && current->contents.list[1]->type == ET_before_item)

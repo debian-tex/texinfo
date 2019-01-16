@@ -92,7 +92,6 @@ expand_cmd_args_to_texi (ELEMENT *e, TEXT *result)
   if (e->args.number > 0)
     {
       int braces, arg_nr, i;
-      static char s[2];
       braces = (e->args.list[0]->type == ET_brace_command_arg
                 || e->args.list[0]->type == ET_brace_command_context);
       if (braces)

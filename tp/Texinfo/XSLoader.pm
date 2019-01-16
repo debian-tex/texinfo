@@ -23,7 +23,7 @@ use warnings;
 
 our $TEXINFO_XS;
 
-our $VERSION = '6.5.90';
+our $VERSION = '6.5.91';
 
 our $disable_XS;
 
@@ -239,7 +239,9 @@ FALLBACK:
     warn "falling back to pure Perl module\n";
   }
   if (!defined $fallback_module) {
-    die "no fallback module for $full_module_name";
+    warn "no fallback module for $full_module_name\n";
+    die "unset the TEXINFO_XS and TEXINFO_XS_PARSER environment variables "
+       ."to use the pure Perl modules\n";
   }
 
   # Fall back to using the Perl code.

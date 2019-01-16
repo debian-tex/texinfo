@@ -10,7 +10,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [6.5.90], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [6.5.91], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -60,16 +60,17 @@ AC_ARG_VAR([PERL_EXT_CPPFLAGS], [C preprocessor flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_LDFLAGS], [Linker flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_CC], [Compiler for a Perl extension])
 
-AC_MSG_CHECKING([Perl version and Encode module])
-if $PERL -e "use 5.007_003; use Encode;" > /dev/null 2>&1; then
+AC_MSG_CHECKING([Perl version and modules])
+if $PERL -e "use 5.007_003; use Encode; use Data::Dumper" >/dev/null 2>&1; then
   perl_version_requirement='yes'
 else
   perl_version_requirement='no'
 fi
 AC_MSG_RESULT($perl_version_requirement)
 if test z"$perl_version_requirement" = 'zno' ; then
-  AC_MSG_ERROR([perl >= 5.7.3 with Encode required by Texinfo.])
+  AC_MSG_ERROR([perl >= 5.7.3 with Encode and Data::Dumper required by Texinfo.])
 fi
+
 
 AC_REQUIRE_AUX_FILE([tap-driver.sh])
 AC_PROG_AWK
@@ -141,7 +142,7 @@ AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])
 AC_HEADER_STAT
 AC_HEADER_STDC
 AC_CHECK_HEADERS(fcntl.h io.h limits.h pwd.h string.h strings.h \
-  stropts.h termcap.h termio.h termios.h unistd.h \
+  termcap.h termio.h termios.h unistd.h \
   sys/fcntl.h sys/file.h sys/ioctl.h sys/stream.h \
   sys/time.h sys/ttold.h sys/wait.h)
 

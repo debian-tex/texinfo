@@ -16,9 +16,7 @@
 #include <config.h>
 #include <stdlib.h>
 
-#include "tree_types.h"
-#include "context_stack.h"
-#include "api.h"
+#include "parser.h"
 
 static enum context *stack;
 static size_t top; /* One above last pushed context. */

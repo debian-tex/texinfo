@@ -41,6 +41,9 @@ See the manual for detailed information.
   . `FIX_TEXINFO' removed as a customization variable
   . do not recognise or warn about obsolete customization variables
 
+* info
+  . debugging output with -x is not diverted to a separated infodebug file
+
 * Development:
   . switch from Subversion to git
      - https://savannah.gnu.org/git/?group=texinfo

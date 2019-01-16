@@ -221,7 +221,7 @@ ginstall_info_OBJECTS = $(am_ginstall_info_OBJECTS)
 ginstall_info_LDADD = $(LDADD)
 am__DEPENDENCIES_1 =
 ginstall_info_DEPENDENCIES = $(top_builddir)/gnulib/lib/libgnu.a \
-	$(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am__dist_bin_SCRIPTS_DIST = ginstall-info.exe.manifest
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
@@ -1148,7 +1148,7 @@ AM_CPPFLAGS = \
   -I$(top_builddir)/gnulib/lib			\
   -DLOCALEDIR=\"$(localedir)\"
 
-LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
+LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL) $(LIBTHREAD)
 all: all-recursive
 
 .SUFFIXES:

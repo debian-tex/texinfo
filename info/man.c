@@ -26,6 +26,7 @@
 #if defined (HAVE_SYS_WAIT_H)
 #include <sys/wait.h>
 #endif
+#include <stdio.h>
 
 #include "tilde.h"
 #include "nodes.h"

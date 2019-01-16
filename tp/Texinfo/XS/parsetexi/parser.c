@@ -24,7 +24,6 @@
 #include "input.h"
 #include "tree.h"
 #include "api.h"
-#include "errors.h"
 
 
 /* Utility functions */
@@ -172,6 +171,9 @@ register_global_command (ELEMENT *current)
         GLOBAL_CASE(urefbreakstyle);
         GLOBAL_CASE(xrefautomaticsectiontitle);
 #undef GLOBAL_CASE
+        default:
+          /* do nothing; just silence -Wswitch about lots of un-covered cases */
+          break;
         }
       /* TODO: Check if all of these are necessary. */
       return 1;
@@ -186,7 +188,6 @@ register_global_command (ELEMENT *current)
         current->line_nr = line_nr;
       switch (cmd)
         {
-          extern int input_number;
         case CM_setfilename:
           /* Check if we are inside an @include, and if so, do nothing. */
           if (top_file_index () > 0)
@@ -226,6 +227,9 @@ register_global_command (ELEMENT *current)
         GLOBAL_UNIQUE_CASE(title);
 #undef GLOBAL_UNIQUE_CASE
         /* NOTE: Same list in api.c:build_global_info2 and wipe_global_info. */
+        default:
+          /* do nothing; just silence -Wswitch about lots of un-covered cases */
+          break;
         }
       if (where)
         {
@@ -973,7 +977,6 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
     }
 }
 
-/* line 3725 */
 /* *LINEP is a pointer into the line being processed.  It is advanced past any
    bytes processed.  Return 0 when we need to read a new line. */
 int
@@ -990,11 +993,10 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
 
   /********* BLOCK_raw or (ignored) BLOCK_conditional ******************/
   /* If in raw block, or ignored conditional block. */
-  // 3727
   if (command_flags(current) & CF_block
       && (command_data(current->cmd).data == BLOCK_raw
           || command_data(current->cmd).data == BLOCK_conditional))
-    { /* 3730 */
+    {
       /* Check if we are using a macro within a macro. */
       if (current->cmd == CM_macro || current->cmd == CM_rmacro)
         {
@@ -1054,7 +1056,6 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
       if (is_end_current_command (current, &line, &end_cmd))
         {
           ELEMENT *last_child;
-          ELEMENT *raw_command = current;
           char *tmp = 0;
 
           last_child = last_contents_child (current);
@@ -1566,6 +1567,8 @@ value_invalid:
             case CM_setshortcontentsaftertitlepage:
               msg = "move your @shortcontents and @contents command if "
                     "you want the contents after the title page";
+              break;
+            default:
               break;
             }
           if (!msg)

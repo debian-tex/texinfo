@@ -6,7 +6,7 @@
  *
  */
 
-#line 1 "Parsetexi.xs"
+#line 1 "parsetexi/Parsetexi.xs"
 #define PERL_NO_GET_CONTEXT
 #include "EXTERN.h"
 #include "perl.h"
@@ -19,6 +19,7 @@
 #include "api.h"
 #include "errors.h"
 #include "macro.h"
+#include "handle_commands.h"
 
 HV *build_texinfo_tree (void);
 AV *build_label_list (void);
@@ -28,7 +29,7 @@ HV *build_index_data (void);
 HV *build_global_info (void);
 HV *build_global_info2 (void);
 
-#line 32 "Parsetexi.c"
+#line 33 "parsetexi/Parsetexi.c"
 #ifndef PERL_UNUSED_VAR
 #  define PERL_UNUSED_VAR(var) if (0) var = var
 #endif
@@ -172,7 +173,7 @@ S_croak_xs_usage(const CV *const cv, const char *const params)
 #  define newXS_deffile(a,b) Perl_newXS_deffile(aTHX_ a,b)
 #endif
 
-#line 176 "Parsetexi.c"
+#line 177 "parsetexi/Parsetexi.c"
 
 XS_EUPXS(XS_Parsetexi_dump_errors); /* prototype to pass -Wmissing-prototypes */
 XS_EUPXS(XS_Parsetexi_dump_errors)

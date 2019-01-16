@@ -448,13 +448,13 @@ BEGIN {
   Texinfo::XSLoader::init (
     "Texinfo::Parser",
     "Parsetexi",
-    undef,
+    "Texinfo::ParserNonXS",
     "Parsetexi",
     1);
 } # end BEGIN
 
 END {
-  reset_parser (); # for debugging memory leaks
+  #reset_parser (); # for debugging memory leaks
 }
 
 # This "use" statement is all the way down here because Texinfo::Report

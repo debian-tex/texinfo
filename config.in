@@ -501,9 +501,6 @@
 /* Define to 1 if you have the `strnlen' function. */
 #undef HAVE_STRNLEN
 
-/* Define to 1 if you have the <stropts.h> header file. */
-#undef HAVE_STROPTS_H
-
 /* Define to 1 if `decimal_point' is a member of `struct lconv'. */
 #undef HAVE_STRUCT_LCONV_DECIMAL_POINT
 

@@ -4,6 +4,7 @@
 #include "commands.h"
 #include "handle_commands.h"
 #include "def.h"
+#include "errors.h"
 
 /* In commands.c */
 int close_paragraph_command (enum command_id cmd_id);
@@ -68,6 +69,8 @@ void start_empty_line_after_command (ELEMENT *current, char **line_inout,
                                      ELEMENT *command);
 ELEMENT *begin_paragraph (ELEMENT *current);
 int format_expanded_p (char *format);
+int is_end_current_command (ELEMENT *current, char **line,
+                            enum command_id *end_cmd);
 
 /* Return values */
 #define GET_A_NEW_LINE 0
@@ -114,6 +117,7 @@ void add_extra_def_info (ELEMENT *e, char *key, DEF_INFO *value);
 void add_extra_float_type (ELEMENT *e, char *key, EXTRA_FLOAT_TYPE *value);
 void add_extra_string (ELEMENT *e, char *key, char *value);
 void add_extra_string_dup (ELEMENT *e, char *key, char *value);
+void add_extra_integer (ELEMENT *e, char *key, int value);
 KEY_PAIR *lookup_extra (ELEMENT *e, char *key);
 
 /* In menus.c */

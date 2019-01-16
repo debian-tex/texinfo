@@ -18,7 +18,7 @@
 # Makefile.am for texinfo/info.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012,
-# 2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
+# 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -233,20 +233,20 @@ ginfo_LDADD = $(LDADD)
 am__DEPENDENCIES_1 =
 ginfo_DEPENDENCIES = $(top_builddir)/gnulib/lib/libgnu.a \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_makedoc_OBJECTS = makedoc.$(OBJEXT)
 makedoc_OBJECTS = $(am_makedoc_OBJECTS)
 makedoc_LDADD = $(LDADD)
 makedoc_DEPENDENCIES = $(top_builddir)/gnulib/lib/libgnu.a \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am__pseudotty_SOURCES_DIST = pseudotty.c
 @have_ptys_TRUE@am_pseudotty_OBJECTS = pseudotty.$(OBJEXT)
 pseudotty_OBJECTS = $(am_pseudotty_OBJECTS)
 pseudotty_LDADD = $(LDADD)
 pseudotty_DEPENDENCIES = $(top_builddir)/gnulib/lib/libgnu.a \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -1313,7 +1313,7 @@ AM_CPPFLAGS = \
   -DINFODIR=\"$(infodir)\"                      \
   -DINFODIR2=\"$(datadir)/info\"
 
-LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(TERMLIBS) $(LIBINTL) $(LIBICONV)
+LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(TERMLIBS) $(LIBINTL) $(LIBICONV) $(LIBTHREAD)
 EXTRA_DIST = pcterm.c $(TESTS) $(XFAIL_TESTS) t/README t/infodir \
 	t/Init-test.inc t/Infokey-config t/node-target
 ginfo_SOURCES = dir.c display.c display.h doc.h dribble.c dribble.h \

@@ -1,8 +1,7 @@
 # $Id$
 # Makefile.am for texinfo/doc/tp_api.
 #
-# Copyright 2012
-# Free Software Foundation, Inc.
+# Copyright 2012-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -29,7 +28,7 @@ BUILT_SOURCES = tp_api.texi
 #DISTCLEANFILES = tp_api.info
 
 tp_api_dependencies = \
-  $(top_srcdir)/tp/Texinfo/Common.pm $(top_srcdir)/tp/Texinfo/Parser.pm \
+  $(top_srcdir)/tp/Texinfo/Common.pm $(top_srcdir)/tp/Texinfo/ParserNonXS.pm \
   $(top_srcdir)/tp/Texinfo/Structuring.pm $(top_srcdir)/tp/Texinfo/Report.pm \
   $(top_srcdir)/tp/Texinfo/Encoding.pm \
   $(top_srcdir)/tp/Texinfo/Convert/NodeNameNormalization.pm \

@@ -13,6 +13,7 @@ void input_reset_input_stack (void);
 int expanding_macro (char *macro);
 int top_file_index (void);
 char *locate_include_file (char *filename);
+void set_input_encoding (char *encoding);
 
 char *save_string (char *string);
 void free_small_strings (void);

@@ -20,9 +20,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#if HAVE_ICONV
-# include <iconv.h>
-#endif
+#include <iconv.h>
 #include <errno.h>
 #include <sys/stat.h>
 
@@ -106,9 +104,6 @@ new_line (void)
     return 0;
 }
 
-
-/* TODO: integrate with gnulib */
-#define ICONV_CONST
 
 static iconv_t iconv_from_latin1 = (iconv_t) 0;
 static iconv_t iconv_from_latin2;

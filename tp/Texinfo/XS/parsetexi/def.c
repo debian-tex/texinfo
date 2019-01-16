@@ -173,7 +173,6 @@ split_delimiters (ELEMENT *current, int starting_idx)
   for (i = starting_idx; i < current->contents.number; i++)
     {
       ELEMENT *e = current->contents.list[i];
-      int j;
       char *p;
       ELEMENT *new;
       int len;
@@ -220,7 +219,6 @@ split_def_args (ELEMENT *current, int starting_idx)
   for (i = starting_idx; i < current->contents.number; i++)
     {
       ELEMENT *e = current->contents.list[i];
-      int j;
       char *p;
       ELEMENT *new;
       int len;
@@ -271,8 +269,7 @@ parse_def (enum command_id command, ELEMENT *current)
   int contents_idx = 0;
   int type, next_type;
   int i;
-  ELEMENT *e, *e1;
-  enum command_id original_command = CM_NONE;
+  ELEMENT *e, *e1; 
 
   ret = malloc (sizeof (DEF_INFO));
   memset (ret, 0, sizeof (DEF_INFO));
@@ -285,7 +282,7 @@ parse_def (enum command_id command, ELEMENT *current)
   split_def_args (current, contents_idx);
 
   /* Check for "def alias" - for example @defun for @deffn. */
-  if (command_data(command).flags & CF_def_alias) // 2387
+  if (command_data(command).flags & CF_def_alias)
     {
       char *category;
       int i;
@@ -301,7 +298,6 @@ found:
          @deffn Function */
 
       category = def_aliases[i].category;
-      original_command = command;
       command = def_aliases[i].command;
 
       /* Used when category text has a space in it. */

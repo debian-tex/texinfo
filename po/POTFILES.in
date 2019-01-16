@@ -1,5 +1,4 @@
-# Copyright 2005, 2006, 2007, 2008, 2011, 2012, 2013, 2014, 2015
-# Free Software Foundation, Inc.
+# Copyright 2005-2019 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -41,7 +40,7 @@ tp/Texinfo/Convert/Info.pm
 tp/Texinfo/Convert/Plaintext.pm
 tp/Texinfo/Convert/Text.pm
 tp/Texinfo/Convert/TexinfoXML.pm
-tp/Texinfo/Parser.pm
+tp/Texinfo/ParserNonXS.pm
 tp/Texinfo/Report.pm
 tp/Texinfo/Structuring.pm
 tp/init/chm.pm

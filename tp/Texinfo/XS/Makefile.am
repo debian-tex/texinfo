@@ -1,6 +1,6 @@
 # Makefile.am for XS modules
 #
-# Copyright 2015, 2016, 2017, 2018 Free Software Foundation, Inc.
+# Copyright 2015-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -36,12 +36,14 @@ xsdir = $(pkglibdir)
 
 PERL_INC = $(PERL_CONF_archlibexp)/CORE
 
-XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
-
-EXTRA_DIST+= TestXS.pm fail.pl
+# note that passing `-typemap parsetexi/typemap' doesn't work as xsubpp 
+# seems to work relative to the subdirectory
+XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap -typemap typemap
 
 .xs.c:
 	$(XSUBPP) $(XSUBPPARGS) $< > $*.xsc && mv $*.xsc $*.c
+
+EXTRA_DIST+= TestXS.pm fail.pl typemap
 
 # -------------------------------------------------------
 
@@ -71,15 +73,6 @@ EXTRA_DIST += XSParagraph.xs
 CLEANFILES += MiscXS.c
 EXTRA_DIST += MiscXS.xs
 
-
-# Override these variables set by configure at the top level, because 
-# the compiler used in this subdirectory might be different.  
-# PERL_EXT_var are user variables, allowing configuring at the top-level 
-# with e.g. "./configure CFLAGS='-g -O0' PERL_EXT_CFLAGS='-g'".
-
-CFLAGS = $(PERL_EXT_CFLAGS)
-CPPFLAGS = $(PERL_EXT_CPPFLAGS)
-LDFLAGS = $(PERL_EXT_LDFLAGS)
 
 AM_CFLAGS = $(PERL_CONF_ccflags)
 
@@ -113,6 +106,91 @@ perl_specific_files = \
 
 # EXTRA_DIST += $(perl_specific_files)
 
-##########################
-SUBDIRS += parsetexi
+########################## parsetexi
+
+p=parsetexi
+
+modulesdir = $(pkgdatadir)/Texinfo/XS/parsetexi
+dist_modules_DATA = $p/Parsetexi.pm
+
+
+if HAVE_ICONV
+xs_LTLIBRARIES += Parsetexi.la
+endif
+
+Parsetexi_la_CFLAGS = $(AM_CFLAGS)
+Parsetexi_la_CFLAGS += -DVERSION=\"$(VERSION)\" "-I$(PERL_INC)"
+
+
+Parsetexi_la_SOURCES= parsetexi/Parsetexi.c \
+                      parsetexi/api.c \
+		      parsetexi/api.h \
+		      parsetexi/parser.c \
+		      parsetexi/parser.h \
+		      parsetexi/tree_types.h \
+		      parsetexi/element_types.c \
+		      parsetexi/element_types.h \
+		      parsetexi/commands.c \
+		      parsetexi/commands.h \
+		      parsetexi/command_ids.h \
+		      parsetexi/input.c \
+		      parsetexi/input.h \
+		      parsetexi/tree.c \
+		      parsetexi/tree.h \
+		      parsetexi/close.c \
+		      parsetexi/text.c \
+		      parsetexi/text.h \
+		      parsetexi/context_stack.c \
+		      parsetexi/context_stack.h \
+		      parsetexi/debug.c \
+		      parsetexi/convert.c \
+		      parsetexi/convert.h \
+		      parsetexi/end_line.c \
+		      parsetexi/separator.c \
+		      parsetexi/multitable.c \
+		      parsetexi/indices.c \
+		      parsetexi/indices.h \
+		      parsetexi/macro.c \
+		      parsetexi/macro.h \
+		      parsetexi/handle_commands.c \
+		      parsetexi/handle_commands.h \
+		      parsetexi/def.c \
+		      parsetexi/def.h \
+		      parsetexi/extra.c \
+		      parsetexi/menus.c \
+		      parsetexi/labels.c \
+		      parsetexi/labels.h \
+		      parsetexi/errors.c \
+		      parsetexi/errors.h \
+		      parsetexi/counter.c \
+		      parsetexi/counter.h
+EXTRA_DIST += $p/command_data.c
+
+Parsetexi_la_LIBADD = $(top_builddir)/gnulib/lib/libgnu.la
+Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBICONV)
+
+BUILT_SOURCES=parsetexi/element_types.c \
+              parsetexi/element_types.h \
+              parsetexi/command_data.c \
+	      parsetexi/command_ids.h
+
+# Need to be distributed
+EXTRA_DIST+=$p/element_types.txt $p/element_types.awk \
+	   $p/command_data.txt $p/command_data.awk
+
+# For reference
+EXTRA_DIST+=$p/Common.pm $p/Parser-5556.pm
+
+EXTRA_DIST+=$p/complete_tree.pl
+
+# Notes
+EXTRA_DIST+=$p/debug_perl.txt $p/makeinfo-debug.txt
+
+$(srcdir)/$p/element_types.c $(srcdir)/$p/element_types.h: $p/element_types.txt $p/element_types.awk
+	awk -v srcdir=$(srcdir)/$p -f $(srcdir)/$p/element_types.awk \
+	     $(srcdir)/$p/element_types.txt
+
+$(srcdir)/$p/command_data.c $(srcdir)/$p/command_ids.h: $p/command_data.txt $p/command_data.awk
+	awk -v srcdir=$(srcdir)/$p -f $(srcdir)/$p/command_data.awk \
+	     $(srcdir)/$p/command_data.txt
 

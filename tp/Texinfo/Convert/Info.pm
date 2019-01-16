@@ -43,7 +43,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.5.90';
+$VERSION = '6.5.91';
 
 my $STDIN_DOCU_NAME = 'stdin';
 

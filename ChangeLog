@@ -1,5 +1,237 @@
 2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	pretest 6.5.91.
+
+	* configure.ac: version
+
+2019-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/man.c: Include stdio.h.
+
+2019-01-12  Hans-Bernhard Bröker  <HBBroeker@t-online.de>  (tiny change)
+
+	Fix some warnings.
+
+	* tp/Texinfo/XS/parsetexi/close.c: Initialize a variable.
+
+2019-01-12  Hans-Bernhard Bröker  <HBBroeker@t-online.de>  (tiny change)
+
+	Fix some warnings.
+
+	* tp/Texinfo/XS/parsetexi/end_line.c: Fix an unterminated 
+	comment.
+	(check_empty_node): Avoid reaching end of undefined function.
+	* tp/Texinfo/XS/parsetexi/parser.c (register_global_command): 
+	Add default cases.
+	* tp/Texinfo/XS/parsetexi/multitable.c (gather_previous_item):
+	Correct enum type in variable declaration.
+
+2019-01-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove unused variables.
+
+	* tp/Texinfo/XS/parsetexi/api.c (element_to_perl_hash),
+	* tp/Texinfo/XS/parsetexi/parser.c (register_global_command)
+	(process_remaining_on_line),
+	* tp/Texinfo/XS/parsetexi/convert.c (expand_cmd_args_to_texi),
+	* tp/Texinfo/XS/parsetexi/end_line.c (parse_line_command_args)
+	(end_line_starting_block, end_line_misc_line),
+	* tp/Texinfo/XS/parsetexi/macro.c (expand_macro_body),
+	* tp/Texinfo/XS/parsetexi/handle_commands.c (handle_other_command),
+	* tp/Texinfo/XS/parsetexi/def.c (split_delimiters, split_def_args)
+	(parse_def): Remove declarations of unused variables.
+
+2019-01-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove an unused variable.
+
+	* tp/Texinfo/ParserNonXS.pm (_parse_texi): Remove an unused 
+	variable.
+
+2019-01-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Add a default case.
+
+	* tp/Texinfo/XS/parsetexi/parser.c (process_remaining_on_line): 
+	Add an empty default clause in switch block.
+
+2019-01-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/XS/parsetexi: Fix implicit function declarations.
+
+2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Make Parsetexi XS module conditional on iconv.
+
+	* tp/Texinfo/XS/configure.ac: Add an AM_CONDITIONAL checking 
+	whether gnulib found that iconv worked.
+	* tp/Texinfo/XS/Makefile.am: Make building Parsetexi module 
+	conditional.
+
+2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Set PERL_EXT_var in configure.ac.
+
+	* tp/Texinfo/XS/configure.ac,
+	* tp/Texinfo/XS/Makefile.am: Move setting of CFLAGS, CPPFLAGS 
+	and LDFLAGS from PERL_EXT_CFLAGS, PERL_EXT_CPPFLAGS and 
+	PERL_EXT_LDFLAGS from Makefile.am to configure.ac in order that 
+	they are used during the Gnulib checks.  Report from Bruno Haible.
+
+2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	No buffering for pseudotty output.
+
+	* info/pseudotty.c: Set VMIN value on the c_cc array in the 
+	termios structure to 1, meaning 'read' can return with a single 
+	byte.  (The default value on Solaris 10 was found to be 4, which 
+	may be C-d for end-of-file.)  Also set VTIME to 0.
+
+2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Turn off canonical input processing in pseudotty.
+
+	* info/pseudotty.c [HAVE_TERMIOS_H]: Clear the ICANON and ECHO 
+	flags.
+
+	In the test suite, if bytes were passed through the pseudotty 
+	program before ginfo could make this change, they could be 
+	subject to undesired processing.  This was not apparent as info 
+	treated '\n' the same as '\r'.  This could be shown by using a 
+	"dribble" file and inserting a "sleep" in one of the test scripts.
+	Tests were failing on Solaris 10 and Solaris 11 because bytes 
+	that were supposed to be sent to ginfo were being buffered, 
+	awaiting a newline.
+
+2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Do not send debug output to infodebug file.
+
+	* info/session.c (vinfo_debug): Always sent debugging output to 
+	stderr.
+	(close_debugfile, debug_file): Remove.
+	* doc/info-stnd.texi (Invoking Info): Update.
+	* NEWS: Mention change.
+
+	This is to make all the debugging output from info appear 
+	together in a log files when output is diverted from a test 
+	script.
+
+2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Avoid possible infinite loop in info test suite.
+
+	* info/t/replace-viewed.sh: Replace a loop that waits for ginfo 
+	to create a file with a "sleep" statement.  If the file weren't 
+	created, this would be an infinte loop.
+
+2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove useless code in info test suite.
+
+	* info/t/replace-viewed.sh,
+	* info/t/resize-in-completions: Do not check for a variable 
+	having a value that no code sets it to.  This has been the case 
+	since the way the PID of the process was found changed.
+
+2019-01-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix info tests under Solaris.
+
+	* info/pseudotty.c [__sun]: Additionally perform a "ttycompat"
+	ioctl on the slave fd.  This is what is done in the gnulib 
+	openpty module.  Since these ioctls were no longer guarded by 
+	isatty, it would lead to some of the info tests failing.  I 
+	don't know under what conditions the ioctls are actually needed 
+	under Solaris: possibly they aren't needed at all.
+
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Include iconv.h unconditionally.
+
+	* tp/Texinfo/XS/parsetexi/input.c: Do not depend on HAVE_ICONV 
+	for #include <iconv.h>.  Use of iconv_t, iconv_open etc. later 
+	on in the file is not conditional, and we don't have a way to 
+	avoid using these.  It's possible that gnulib set HAVE_ICONV to 
+	0 because it found that iconv.h was buggy, even if it existed.
+
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Don't use variable in SOURCES in Makefile.am.
+
+	* tp/Texinfo/XS/Makefile.am (Parsetexi_la_SOURCES, BUILT_SOURCES):
+	Write out "parsetexi" explicitly instead of hiding it inside $p.
+	Although the latter works with automake 1.16 (which we are 
+	using), the OpenCSW buildbot still uses automake 1.15.1, leading 
+	to build failures.
+
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Integrate parsetexi with gnulib.
+
+	* tp/Texinfo/XS/parsetexi/input.c: Do not define ICONV_CONST.
+
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fall back to pure Perl module when TEXINFO_XS_PARSER is set.
+
+	* tp/Texinfo/Parser.pm, tp/Texinfo/ParserNonXS.pm: Rename file.
+	* tp/Texinfo/ParserNonXS.pm: Make module symbols available under 
+	both Texinfo::Parser and Texinfo::ParserNonXS.
+	* tp/Texinfo/ModulePath.pm.in: If TEXINFO_XS_PARSER is not set, 
+	load Texinfo/ParserNonXS.pm instead of Texinfo/Parser.pm.
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm: Pass Texinfo::ParserNonXS
+	as a fallback module to Texinfo::XSLoader::init.  Comment out 
+	line to reset_parser in END block, as this won't work if 
+	Texinfo::ParserNonXS is loaded.
+
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix info test suite hang under HP-UX 11.31.
+
+	* info/pseudotty.c [HAVE_STROPTS_H]: Do not call isatty on 
+	pseudoterminal file descriptor.  Bruno Haible reported that this 
+	made a test hang.  Do not use HAVE_STROPTS_H condition: replace 
+	with "#if defined(__hpux) || defined(__sun)", as is done in 
+	gnulib.  Remove some commented-out code.
+	* configure.ac (AC_CHECK_HEADERS): Do not check for stropts.h.
+
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Improve XS loading error message.
+
+	* tp/Texinfo/XSLoader.pm: Improve error message in the case that 
+	a module couldn't be loaded.
+
+2019-01-05  Bruno Haible  <bruno@clisp.org>
+
+	Fix build errors on AIX 7.1.
+
+	* info/Makefile.am (LDADD),
+	* install-info/Makefile.am (LDADD): Add $(LIBTHREAD).
+
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Check for Data::Dumper.
+
+	* configure.ac: Check for Data::Dumper as well as Encode.  Bruno 
+	Haible reported that Data::Dumper was missing on CentOS 7.3.
+
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Combine Makefiles for XS modules.
+
+	* tp/Texinfo/XS/configure.ac (AC_CONFIG_FILES): Remove Makefile 
+	in parsetexi subdirectory.
+	* tp/Texinfo/XS/Makefile.am: Merge in contents of 
+	tp/Texinfo/XS/parsetexi/Makefile.am.
+	* tp/Texinfo/XS/parsetexi/Makefile.am: Remove file.
+
+	This means that passing -lperl when linking will always be 
+	conditional on HOST_NEEDS_NO_UNDEFINED.
+
+2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	pretest 6.5.90.
 
 	* configure.ac: version

@@ -782,46 +782,12 @@ pause_or_input (void)
 /* Debugging level */
 unsigned debug_level;
 
-static FILE *debug_file;
-
-static void
-close_debugfile (void)
-{
-  fclose (debug_file);
-}
-
-#define INFODEBUG_FILE "infodebug"
-
 static void
 vinfo_debug (const char *format, va_list ap)
 {
-  FILE *fp;
-
-  if (!debug_file)
-    {
-      if (!info_windows_initialized_p || display_inhibited)
-	fp = stderr;
-      else
-	{
-	  debug_file = fopen (INFODEBUG_FILE, "w");
-	  if (!debug_file)
-	    {
-	      info_error (_("can't open %s: %s"), INFODEBUG_FILE,
-			  strerror (errno));
-	      exit (EXIT_FAILURE);
-	    }
-	  atexit (close_debugfile);
-	  fp = debug_file;
-	  info_error (_("debugging output diverted to \"%s\""),
-		      INFODEBUG_FILE);
-	}
-    }
-  else
-    fp = debug_file;
-  
-  fprintf (fp, "%s: ", program_name);
-  vfprintf (fp, format, ap);
-  fprintf (fp, "\n");
+  fprintf (stderr, "%s: ", program_name);
+  vfprintf (stderr, format, ap);
+  fprintf (stderr, "\n");
   fflush (stderr);
 }
 

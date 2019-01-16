@@ -18,12 +18,12 @@
 #include <config.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "parser.h"
 #include "tree.h"
 #include "text.h"
 #include "input.h"
-#include "errors.h"
 #include "convert.h"
 
 static MACRO *macro_list;
@@ -377,15 +377,12 @@ funexit:
   return arg_list;
 }
 
-// 2063
 /* ARGUMENTS are the arguments used in the macro invocation.  EXPANDED gets the 
    result of the expansion. */
 static void
 expand_macro_body (MACRO *macro_record, char *arguments[], TEXT *expanded)
 {
-  char *arg;
   int pos; /* Index into arguments. */
-  int i; /* Index into macro contents. */
   ELEMENT *macro;
   char *macrobody;
   char *ptext;
@@ -424,7 +421,7 @@ expand_macro_body (MACRO *macro_record, char *arguments[], TEXT *expanded)
           bs = strchr (ptext, '\\');
           if (!bs)
             {
-              // error - malformed
+              // TODO: error - malformed
               return;
               abort ();
             }

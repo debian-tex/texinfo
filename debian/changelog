@@ -1,3 +1,10 @@
+texinfo (6.5.0.dfsg.1-5) unstable; urgency=medium
+
+  * Fix manual page of texi2any/makeinfo by patching texi2any.pl
+    (Closes: #919435)
+
+ -- Norbert Preining <norbert@preining.info>  Mon, 04 Mar 2019 09:22:24 +0900
+
 texinfo (6.5.0.dfsg.1-4) unstable; urgency=medium
 
   * fix infinite loop with Perl 5.28, thanks Niko Tyni (Closes: #902771)

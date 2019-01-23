@@ -3,6 +3,8 @@ texinfo (6.5.91.dfsg.1-1~1) unstable; urgency=medium
   * New upstream version 6.5.91.dfsg.1
   * New upstream version 6.5.90.dfsg.1
   * update/cleanup patches
+  * Fix manual page of texi2any/makeinfo by patching texi2any.pl
+    (Closes: #919435)
 
  -- Norbert Preining <preining@debian.org>  Wed, 16 Jan 2019 15:59:07 +0900
 

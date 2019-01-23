@@ -1,0 +1,16 @@
+--- texinfo.orig/tp/texi2any.pl
++++ texinfo/tp/texi2any.pl
+@@ -720,10 +720,10 @@
+                                 default is on.
+   -o, --output=DEST           output to DEST.
+                                 With split output, create DEST as a directory
+-                                 and put the output files there.
++                                and put the output files there.
+                                 With non-split output, if DEST is already
+-                                 a directory or ends with a /,
+-                                 put the output file there.
++                                a directory or ends with a /,
++                                put the output file there.
+                                 Otherwise, DEST names the output file.\n")
+ ."\n";
+   $makeinfo_help .= sprintf(__("Options for Info and plain text:

@@ -2479,21 +2479,21 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
 <div class="contents">
 
 <ul class="no-bullet">
-  <li><a name="toc-node_002e" href="#node">1 See <a href="file name.html#node">title</a> in <cite>Manual</cite>.</a></li>
-  <li><a name="toc-node-just-node" href="#chap">2 <a href="#node">node</a> just node</a>
+  <li><a id="toc-node_002e" href="#node">1 See <a href="file name.html#node">title</a> in <cite>Manual</cite>.</a></li>
+  <li><a id="toc-node-just-node" href="#chap">2 <a href="#node">node</a> just node</a>
   <ul class="no-bullet">
-    <li><a name="toc-node-node_002c-crossref-arg2" href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
-    <li><a name="toc-node-code-node_002c-samptitle-arg3" href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
-    <li><a name="toc-node-code-node_002c-file-name" href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
-    <li><a name="toc-node-node-and-manual" href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
-    <li><a name="toc-Top-Top-and-manual" href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
-    <li><a name="toc-Manual-no-node-just-manual" href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
-    <li><a name="toc-file-name-no-node-just-file-name" href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
-    <li><a name="toc-a-inforef-a-b-c" href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
-    <li><a name="toc-_0028Top_0029-pxref-Top-file-name_002c-spaces" href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
-    <li><a name="toc-_0028file-name_0029-pxref-file-name-only_002c-spaces" href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
-    <li><a name="toc-Top_002c-xref-Top-filename-only_002c-no-spaces" href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
-    <li><a name="toc-filename_002e-xref-filename-only_002c-no-spaces" href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
+    <li><a id="toc-node-node_002c-crossref-arg2" href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+    <li><a id="toc-node-code-node_002c-samptitle-arg3" href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+    <li><a id="toc-node-code-node_002c-file-name" href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+    <li><a id="toc-node-node-and-manual" href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+    <li><a id="toc-Top-Top-and-manual" href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+    <li><a id="toc-Manual-no-node-just-manual" href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+    <li><a id="toc-file-name-no-node-just-file-name" href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+    <li><a id="toc-a-inforef-a-b-c" href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+    <li><a id="toc-_0028Top_0029-pxref-Top-file-name_002c-spaces" href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+    <li><a id="toc-_0028file-name_0029-pxref-file-name-only_002c-spaces" href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+    <li><a id="toc-Top_002c-xref-Top-filename-only_002c-no-spaces" href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+    <li><a id="toc-filename_002e-xref-filename-only_002c-no-spaces" href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
   </ul></li>
 </ul>
 </div>

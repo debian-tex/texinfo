@@ -8,23 +8,6 @@
 # notice and this notice are preserved.
 
 
-# Explanation: on Solaris 5.10 (and other?), /bin/sh is the original
-# Bourne shell, where redirecting a while loop (or any compound command)
-# causes execution in a subshell.
-# http://unix.stackexchange.com/questions/137680/variable-scope-in-while-read-loop-on-solaris
-# 
-# The result for us being that the assignment to $one_test_done inside
-# the loop is ineffective, causing the test to seemingly fail.  Let's
-# try running under the POSIX sh available on Solaris instead (which
-# sets $RANDOM, whereas /bin/sh does not).
-# 
-# If more problems arise, perhaps we'll be better off just detecting the
-# original Bourne sh and skipping the test.
-#
-test -f /usr/xpg4/bin/sh && test -z "$RANDOM" \
-&& exec /usr/xpg4/bin/sh "$0" "$@"
-
-
 check_latex2html_and_tex4ht ()
 {
     use_latex2html=no
@@ -279,22 +262,23 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
   exit 0
 fi
 
-test -d $testdir/$diffs_dir || mkdir $testdir/$diffs_dir
+mkdir -p $testdir/$diffs_dir
 staging_dir_res=$testdir/$diffs_dir/staging_res/
 if test z"$clean" = 'zyes' ; then
   rm -rf $staging_dir_res
 else
-  test -d $staging_dir_res || mkdir $staging_dir_res
+  mkdir -p $staging_dir_res
 fi
 
 for command_dir in $commands; do
   dir_suffix=`echo $command_dir | cut -d':' -f2`
   outdir="$testdir/${out_dir}${dir_suffix}/"
-  test -d "${outdir}" || mkdir "${outdir}"
+  mkdir -p "${outdir}"
 done
 
 return_code=0
 
+exec <"$driving_file"
 while read line; do
   # skip comments.
   if echo $line | grep '^ *#' >/dev/null; then continue; fi
@@ -377,7 +361,7 @@ while read line; do
 
         # store raw output
         raw_outdir="$testdir/raw_out_parser${dir_suffix}/"
-        test -d "${raw_outdir}" || mkdir "${raw_outdir}"
+        mkdir -p "${raw_outdir}"
         rm -rf "${raw_outdir}$dir"
 
         post_process_output
@@ -402,10 +386,9 @@ while read line; do
       return_code=1
     fi
   done
-done <"$driving_file"
+done
 
 test -n "$tmp_dir" && rm -rf $tmp_dir
-rm -rf $staging_dir_res
 
 if test "$one_test" = 'yes' && test "z$one_test_done" != "zyes"; then
   echo "$0: test not found: $the_test (file: $the_file) " >&2

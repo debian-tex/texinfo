@@ -23,7 +23,6 @@
 #include "text.h"
 
 /* Return a containing @itemize or @enumerate if inside it. */
-// 1847
 ELEMENT *
 item_container_parent (ELEMENT *current)
 {
@@ -38,7 +37,6 @@ item_container_parent (ELEMENT *current)
   return 0;
 }
 
-// 1352
 /* Check that there are no text holding environments (currently
    checking only paragraphs and preformatted) in contents. */
 int
@@ -148,17 +146,17 @@ handle_other_command (ELEMENT *current, char **line_inout,
               current = begin_preformatted (current);
             }
           /* In a @multitable */
-          else if ((parent = item_multitable_parent (current))) // 4477
+          else if ((parent = item_multitable_parent (current)))
             {
               if (cmd != CM_item && cmd != CM_headitem
                   && cmd != CM_tab)
                 {
                   line_error ("@%s not meaningful inside @%s block",
                               command_name(cmd),
-                              command_name(parent->cmd)); // 4521
+                              command_name(parent->cmd));
                 }
               else
-                { /* 4480 */
+                {
                   int max_columns = 0;
                   KEY_PAIR *prototypes;
 
@@ -207,7 +205,7 @@ handle_other_command (ELEMENT *current, char **line_inout,
                                              counter_value (&count_cells, row));
                         }
                     }
-                  else /* 4505 @item or @headitem */
+                  else /* @item or @headitem */
                     {
                       ELEMENT *row;
 
@@ -234,7 +232,7 @@ handle_other_command (ELEMENT *current, char **line_inout,
                 }
               current = begin_preformatted (current);
             } /* In @multitable */
-          else if (cmd == CM_tab) // 4526
+          else if (cmd == CM_tab)
             {
               line_error ("ignoring @tab outside of multitable");
               current = begin_preformatted (current);
@@ -246,7 +244,7 @@ handle_other_command (ELEMENT *current, char **line_inout,
               current = begin_preformatted (current);
             }
           if (misc)
-            misc->line_nr = line_nr; // 4535
+            misc->line_nr = line_nr;
         }
       else
         {
@@ -317,7 +315,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
 
   *status = STILL_MORE_TO_PROCESS;
 
-  /* Root commands (like @node) and @bye 4290 */
+  /* Root commands (like @node) and @bye */
   if (command_data(cmd).flags & CF_root || cmd == CM_bye)
     {
       ELEMENT *closed_elt; /* Not used */
@@ -371,7 +369,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
             }
         }
 
-      /* 4350 If the current input is the result of a macro expansion,
+      /* If the current input is the result of a macro expansion,
          it may not be a complete line.  Check for this and acquire the rest
          of the line if necessary. */
       if (!strchr (line, '\n'))
@@ -403,7 +401,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
         }
       else /* arg_spec == LINE_special */
         {
-          args = parse_special_misc_command (line, cmd, &has_comment); //4362
+          args = parse_special_misc_command (line, cmd, &has_comment);
           add_extra_string (misc, "arg_line", strdup (line));
         }
 
@@ -527,7 +525,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
     {
       ELEMENT *arg;
 
-      /* line 4435 - text, line, or a number.
+      /* text, line, or a number.
          (This includes handling of "@end", which is LINE_text.) */
       if (cmd == CM_item_LINE || cmd == CM_itemx)
         {
@@ -566,7 +564,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
                 }
             }
 
-          /* 4546 - def*x */
+          /* @def*x */
           if (command_data(cmd).flags & CF_def)
             {
               enum command_id base_command;
@@ -591,7 +589,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
 
               after_paragraph = check_no_text (current);
               push_context (ct_def);
-              misc->type = ET_def_line; // 4553
+              misc->type = ET_def_line;
               if (current->cmd == base_command)
                 {
                   ELEMENT *e = pop_element_from_contents (current);
@@ -609,15 +607,14 @@ handle_line_command (ELEMENT *current, char **line_inout,
                   add_extra_integer (misc, "not_after_command", 1);
                 }
             }
-        } /* 4571 */
+        }
 
-      /* 4576 - change 'current' to its last child.  This is ELEMENT *misc 
-         above.  */
+      /* change 'current' to its last child.  This is ELEMENT *misc above.  */
       current = last_contents_child (current);
       arg = new_element (ET_line_arg);
       add_to_element_args (current, arg);
 
-      if (cmd == CM_node) // 4584
+      if (cmd == CM_node)
         {
           /* At most three comma-separated arguments to @node.  This
              is the only (non-block) line command taking comma-separated
@@ -755,7 +752,6 @@ handle_block_command (ELEMENT *current, char **line_inout,
       add_to_element_contents (current, macro);
       current = macro;
 
-      /* 4640 */
       /* A new line should be read immediately after this.  */
       line = strchr (line, '\0');
       *get_new_line = 1;
@@ -866,7 +862,6 @@ handle_block_command (ELEMENT *current, char **line_inout,
   else
     {
       ELEMENT *block = 0;
-      // 4715
       if (flags & CF_menu
           && (current->type == ET_menu_comment
               || current->type == ET_menu_entry_description))
@@ -883,7 +878,6 @@ handle_block_command (ELEMENT *current, char **line_inout,
           current = menu;
         }
 
-      // 4740
       if (flags & CF_def)
         {
           ELEMENT *def_line;
@@ -903,7 +897,6 @@ handle_block_command (ELEMENT *current, char **line_inout,
         }
       else
         {
-          /*  line 4756 */
           block = new_element (ET_NONE);
 
           block->cmd = cmd;
@@ -911,7 +904,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
           current = block;
         }
 
-      /* 4763 Check if 'block args command' */
+      /* Check if 'block args command' */
       if (command_data(cmd).data != BLOCK_raw)
         {
           if (command_data(cmd).flags & CF_preformatted)
@@ -949,8 +942,6 @@ handle_block_command (ELEMENT *current, char **line_inout,
                   goto funexit;
                 }
             }
-
-          // 4775
           else if (command_data(cmd).data == BLOCK_region)
             {
               if (current_region_cmd ())
@@ -962,7 +953,6 @@ handle_block_command (ELEMENT *current, char **line_inout,
               push_region (block);
             }
 
-          // 4784 menu commands
           if (command_data(cmd).flags & CF_menu)
             {
               if (current_context () == ct_preformatted)
@@ -974,7 +964,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
                 add_to_contents_as_array (&global_info.dircategory_direntry, 
                                           block);
 
-              if (current_node) // 4793
+              if (current_node)
                 {
                   if (cmd == CM_direntry && conf.show_menu)
                     {
@@ -1006,7 +996,6 @@ handle_block_command (ELEMENT *current, char **line_inout,
           /* Note that no equivalent thing is done in the Perl code, because
              'item_count' is assumed to start at 0. */
 
-          // 4816
           {
             ELEMENT *bla = new_element (ET_block_line_arg);
             add_to_element_args (current, bla);
@@ -1037,7 +1026,6 @@ funexit:
   return current;
 }
 
-/* 4835 */
 ELEMENT *
 handle_brace_command (ELEMENT *current, char **line_inout, enum command_id cmd)
 {
@@ -1047,9 +1035,6 @@ handle_brace_command (ELEMENT *current, char **line_inout, enum command_id cmd)
   e = new_element (ET_NONE);
   e->cmd = cmd;
 
-  // 4841
-  // 258 keep_line_nr_brace_commands
-  // also 4989 sets line_nr.
   /* The line number information is only ever used for brace commands
      if the command is given with braces, but it's easier just to always
      store the information. */
@@ -1082,9 +1067,7 @@ handle_brace_command (ELEMENT *current, char **line_inout, enum command_id cmd)
         }
       else if (global_kbdinputstyle == kbd_example)
         {
-          // _in_code line 1277
-          // TODO: Understand what is going on here.
-
+          /* TODO: Understand what is going on here. */
           ELEMENT *tmp = current->parent;
           while (tmp->parent
                  && (command_flags(tmp->parent) & CF_brace)

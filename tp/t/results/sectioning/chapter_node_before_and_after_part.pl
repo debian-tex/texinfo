@@ -698,10 +698,10 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 
 <div class="contents">
 <ul class="no-bullet">
-  <li><a name="toc-chapter" href="#Top">1 chapter</a></li>
-<li><a name="toc-part" href="#part">part</a>
+  <li><a id="toc-chapter" href="#Top">1 chapter</a></li>
+<li><a id="toc-part" href="#part">part</a>
 <ul class="no-bullet">
-  <li><a name="toc-chapter-2" href="#after">2 chapter 2</a></li>
+  <li><a id="toc-chapter-2" href="#after">2 chapter 2</a></li>
 </ul></li>
 
 </ul>

@@ -16,9 +16,9 @@
 #include <config.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "parser.h"
-#include "tree.h"
 #include "text.h"
 #include "convert.h"
 #include "input.h"
@@ -36,7 +36,6 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       ELEMENT *arg;
 
       command = current->cmd;
-      /* 4896 */
       counter_push (&count_remaining_args, current,
                     command_data(current->cmd).data);
       counter_dec (&count_remaining_args);
@@ -62,7 +61,6 @@ handle_open_brace (ELEMENT *current, char **line_inout)
               add_extra_string_dup (current->parent, "delimiter", c);
             }
         }
-        /* 4903 */
       else if (command_data(command).data == BRACE_context)
         {
           if (command == CM_caption || command == CM_shortcaption)
@@ -134,8 +132,6 @@ handle_open_brace (ELEMENT *current, char **line_inout)
           }
           current->type = ET_brace_command_context;
         }
-
-      /* 4945 */
       else /* not context brace */
         {
           current->type = ET_brace_command_arg;
@@ -157,8 +153,6 @@ handle_open_brace (ELEMENT *current, char **line_inout)
         }
       debug ("OPENED");
     }
-
-  /* 4967 */
   else if (current->parent && (current->parent->cmd == CM_multitable
            || current->parent->type == ET_def_line))
     {
@@ -184,8 +178,6 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       text_append (&e->text, "{");
       add_to_element_contents (current, e);
     }
-
-  // 4993
   else if (current_context() == ct_math
            || current_context() == ct_rawpreformatted
            || current_context() == ct_inlineraw)
@@ -246,7 +238,6 @@ check_empty_expansion (ELEMENT *e)
   return 1;
 }
 
-/* 5007 */
 ELEMENT *
 handle_close_brace (ELEMENT *current, char **line_inout)
 {
@@ -263,11 +254,9 @@ handle_close_brace (ELEMENT *current, char **line_inout)
   else if (command_flags(current->parent) & CF_brace)
     {
       enum command_id closed_command;
-      // 5019
       if (command_data(current->parent->cmd).data == BRACE_context)
         {
-          enum context c;
-          c = pop_context ();
+          (void) pop_context ();
           /* The Perl code here checks that the popped context and the
              parent command match as strings. */
         }
@@ -282,13 +271,12 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       debug ("CLOSING(brace) %s", command_data(closed_command).cmdname);
       counter_pop (&count_remaining_args);
 
-      // 5044
       if (current->contents.number > 0
           && command_data(closed_command).data == 0)
         line_warn ("command @%s does not accept arguments",
                    command_name(closed_command));
 
-      if (closed_command == CM_anchor) // 5051
+      if (closed_command == CM_anchor)
         {
           NODE_SPEC_EXTRA *parsed_anchor;
           current->parent->line_nr = line_nr;
@@ -413,7 +401,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       else if ((command_data(closed_command).flags & CF_inline)
                || closed_command == CM_abbr
                || closed_command == CM_acronym)
-        { // 5129
+        {
           if (current->parent->cmd == CM_inlineraw)
             {
               if (ct_inlineraw != pop_context ())
@@ -426,7 +414,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                          command_name(current->parent->cmd));
             }
         }
-      else if (closed_command == CM_errormsg) // 5173
+      else if (closed_command == CM_errormsg)
         {
           char *arg = current->contents.list[0]->text.text;
           if (arg)
@@ -482,7 +470,6 @@ handle_close_brace (ELEMENT *current, char **line_inout)
         }
       else if (current->parent->cmd == CM_sortas)
         {
-          int i;
           ELEMENT *e = current->contents.list[0];
 
           if (e->text.end > 0)
@@ -501,7 +488,6 @@ handle_close_brace (ELEMENT *current, char **line_inout)
         }
       register_global_command (current->parent);
 
-      // 5190
       if (current->parent->cmd == CM_anchor
           || current->parent->cmd == CM_hyphenation
           || current->parent->cmd == CM_caption
@@ -518,7 +504,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       if (close_preformatted_command(closed_command))
         current = begin_preformatted (current);
     } /* CF_brace */
-  else if (current->type == ET_rawpreformatted) // 5199
+  else if (current->type == ET_rawpreformatted)
     {
       /* lone right braces are accepted in a rawpreformatted */
       ELEMENT *e = new_element (ET_NONE);
@@ -526,32 +512,29 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       add_to_element_contents (current, e);
       goto funexit;
     }
-  // 5203 -- context brace command (e.g. @footnote)
+  /* context brace command (e.g. @footnote) */
   else if (current_context() == ct_footnote
            || current_context() == ct_caption
            || current_context() == ct_shortcaption
            || current_context() == ct_math)
     {
-      enum context c;
-
       current = end_paragraph (current, 0, 0);
       if (current->parent
           && (command_flags(current->parent) & CF_brace)
           && (command_data(current->parent->cmd).data == BRACE_context))
         {
           enum command_id closed_command;
-          c = pop_context ();
+          (void) pop_context ();
           debug ("CLOSING(context command)");
           closed_command = current->parent->cmd;
 
           register_global_command (current->parent);
-          // 5220
           current = current->parent->parent;
           if (close_preformatted_command(closed_command))
             current = begin_preformatted (current);
         }
     }
-  else // 5224
+  else
     {
       line_error ("misplaced }");
       goto funexit;

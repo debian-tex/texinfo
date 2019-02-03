@@ -351,10 +351,10 @@ ul.no-bullet {list-style: none}
 <div class="contents">
 
 <ul class="no-bullet">
-  <li><a name="toc-0" href="#g_t0">1 0</a></li>
-  <li><a name="toc-_005f" href="#g_t_005f">_</a>
+  <li><a id="toc-0" href="#g_t0">1 0</a></li>
+  <li><a id="toc-_005f" href="#g_t_005f">_</a>
   <ul class="no-bullet">
-    <li><a name="toc-_003f" href="#g_t_003f">?</a></li>
+    <li><a id="toc-_003f" href="#g_t_003f">?</a></li>
   </ul></li>
 </ul>
 </div>
@@ -365,8 +365,8 @@ ul.no-bullet {list-style: none}
 
 <div class="shortcontents">
 <ul class="no-bullet">
-<li><a name="stoc-0" href="#toc-0">1 0</a></li>
-<li><a name="stoc-_005f" href="#toc-_005f">_</a></li>
+<li><a id="stoc-0" href="#toc-0">1 0</a></li>
+<li><a id="stoc-_005f" href="#toc-_005f">_</a></li>
 </ul>
 </div>
 

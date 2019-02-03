@@ -183,58 +183,38 @@ am__uninstall_files_from_dir = { \
 am__installdirs = "$(DESTDIR)$(xsdir)" "$(DESTDIR)$(modulesdir)"
 LTLIBRARIES = $(xs_LTLIBRARIES)
 MiscXS_la_LIBADD =
-am_MiscXS_la_OBJECTS = MiscXS_la-MiscXS.lo MiscXS_la-misc.lo
+am_MiscXS_la_OBJECTS = MiscXS.lo misc.lo
 MiscXS_la_OBJECTS = $(am_MiscXS_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-MiscXS_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(MiscXS_la_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 Parsetexi_la_DEPENDENCIES = $(top_builddir)/gnulib/lib/libgnu.la
 am__dirstamp = $(am__leading_dot)dirstamp
-am_Parsetexi_la_OBJECTS = parsetexi/Parsetexi_la-Parsetexi.lo \
-	parsetexi/Parsetexi_la-api.lo parsetexi/Parsetexi_la-parser.lo \
-	parsetexi/Parsetexi_la-element_types.lo \
-	parsetexi/Parsetexi_la-commands.lo \
-	parsetexi/Parsetexi_la-input.lo parsetexi/Parsetexi_la-tree.lo \
-	parsetexi/Parsetexi_la-close.lo parsetexi/Parsetexi_la-text.lo \
-	parsetexi/Parsetexi_la-context_stack.lo \
-	parsetexi/Parsetexi_la-debug.lo \
-	parsetexi/Parsetexi_la-convert.lo \
-	parsetexi/Parsetexi_la-end_line.lo \
-	parsetexi/Parsetexi_la-separator.lo \
-	parsetexi/Parsetexi_la-multitable.lo \
-	parsetexi/Parsetexi_la-indices.lo \
-	parsetexi/Parsetexi_la-macro.lo \
-	parsetexi/Parsetexi_la-handle_commands.lo \
-	parsetexi/Parsetexi_la-def.lo parsetexi/Parsetexi_la-extra.lo \
-	parsetexi/Parsetexi_la-menus.lo \
-	parsetexi/Parsetexi_la-labels.lo \
-	parsetexi/Parsetexi_la-errors.lo \
-	parsetexi/Parsetexi_la-counter.lo
+am_Parsetexi_la_OBJECTS = parsetexi/Parsetexi.lo parsetexi/api.lo \
+	parsetexi/parser.lo parsetexi/element_types.lo \
+	parsetexi/commands.lo parsetexi/input.lo parsetexi/tree.lo \
+	parsetexi/close.lo parsetexi/text.lo parsetexi/conf.lo \
+	parsetexi/context_stack.lo parsetexi/debug.lo \
+	parsetexi/convert.lo parsetexi/end_line.lo \
+	parsetexi/separator.lo parsetexi/multitable.lo \
+	parsetexi/indices.lo parsetexi/macro.lo \
+	parsetexi/handle_commands.lo parsetexi/def.lo \
+	parsetexi/extra.lo parsetexi/menus.lo parsetexi/labels.lo \
+	parsetexi/errors.lo parsetexi/counter.lo
 Parsetexi_la_OBJECTS = $(am_Parsetexi_la_OBJECTS)
 Parsetexi_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(Parsetexi_la_CFLAGS) \
-	$(CFLAGS) $(Parsetexi_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(Parsetexi_la_LDFLAGS) $(LDFLAGS) -o $@
 @HAVE_ICONV_TRUE@am_Parsetexi_la_rpath = -rpath $(xsdir)
 TestXS_la_LIBADD =
-am_TestXS_la_OBJECTS = TestXS_la-TestXS.lo
+am_TestXS_la_OBJECTS = TestXS.lo
 TestXS_la_OBJECTS = $(am_TestXS_la_OBJECTS)
-TestXS_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(TestXS_la_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 am__DEPENDENCIES_1 =
 XSParagraph_la_DEPENDENCIES = $(builddir)/gnulib/lib/libgnu.la \
 	$(am__DEPENDENCIES_1)
-am_XSParagraph_la_OBJECTS = XSParagraph_la-XSParagraph.lo \
-	XSParagraph_la-xspara.lo XSParagraph_la-text.lo
+am_XSParagraph_la_OBJECTS = XSParagraph.lo xspara.lo text.lo
 XSParagraph_la_OBJECTS = $(am_XSParagraph_la_OBJECTS)
-XSParagraph_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(XSParagraph_la_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o \
-	$@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -250,36 +230,27 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/MiscXS_la-MiscXS.Plo \
-	./$(DEPDIR)/MiscXS_la-misc.Plo \
-	./$(DEPDIR)/TestXS_la-TestXS.Plo \
-	./$(DEPDIR)/XSParagraph_la-XSParagraph.Plo \
-	./$(DEPDIR)/XSParagraph_la-text.Plo \
-	./$(DEPDIR)/XSParagraph_la-xspara.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-Parsetexi.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-api.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-close.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-commands.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-context_stack.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-convert.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-counter.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-debug.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-def.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-element_types.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-end_line.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-errors.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-extra.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-handle_commands.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-indices.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-input.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-labels.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-macro.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-menus.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-multitable.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-parser.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-separator.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-text.Plo \
-	parsetexi/$(DEPDIR)/Parsetexi_la-tree.Plo
+am__depfiles_remade = ./$(DEPDIR)/MiscXS.Plo ./$(DEPDIR)/TestXS.Plo \
+	./$(DEPDIR)/XSParagraph.Plo ./$(DEPDIR)/misc.Plo \
+	./$(DEPDIR)/text.Plo ./$(DEPDIR)/xspara.Plo \
+	parsetexi/$(DEPDIR)/Parsetexi.Plo parsetexi/$(DEPDIR)/api.Plo \
+	parsetexi/$(DEPDIR)/close.Plo parsetexi/$(DEPDIR)/commands.Plo \
+	parsetexi/$(DEPDIR)/conf.Plo \
+	parsetexi/$(DEPDIR)/context_stack.Plo \
+	parsetexi/$(DEPDIR)/convert.Plo \
+	parsetexi/$(DEPDIR)/counter.Plo parsetexi/$(DEPDIR)/debug.Plo \
+	parsetexi/$(DEPDIR)/def.Plo \
+	parsetexi/$(DEPDIR)/element_types.Plo \
+	parsetexi/$(DEPDIR)/end_line.Plo \
+	parsetexi/$(DEPDIR)/errors.Plo parsetexi/$(DEPDIR)/extra.Plo \
+	parsetexi/$(DEPDIR)/handle_commands.Plo \
+	parsetexi/$(DEPDIR)/indices.Plo parsetexi/$(DEPDIR)/input.Plo \
+	parsetexi/$(DEPDIR)/labels.Plo parsetexi/$(DEPDIR)/macro.Plo \
+	parsetexi/$(DEPDIR)/menus.Plo \
+	parsetexi/$(DEPDIR)/multitable.Plo \
+	parsetexi/$(DEPDIR)/parser.Plo \
+	parsetexi/$(DEPDIR)/separator.Plo parsetexi/$(DEPDIR)/text.Plo \
+	parsetexi/$(DEPDIR)/tree.Plo
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -723,6 +694,7 @@ PERL_CONF_cccdlflags = @PERL_CONF_cccdlflags@
 PERL_CONF_ccdlflags = @PERL_CONF_ccdlflags@
 PERL_CONF_ccflags = @PERL_CONF_ccflags@
 PERL_CONF_libperl = @PERL_CONF_libperl@
+PERL_CONF_optimize = @PERL_CONF_optimize@
 PERL_CONF_privlibexp = @PERL_CONF_privlibexp@
 PERL_EXT_CC = @PERL_EXT_CC@
 PERL_EXT_CFLAGS = @PERL_EXT_CFLAGS@
@@ -808,7 +780,6 @@ WCHAR_T_SUFFIX = @WCHAR_T_SUFFIX@
 WINDOWS_64_BIT_OFF_T = @WINDOWS_64_BIT_OFF_T@
 WINDOWS_STAT_INODES = @WINDOWS_STAT_INODES@
 WINT_T_SUFFIX = @WINT_T_SUFFIX@
-XSPARAGRAPH_INTERFACE_VERSION = @XSPARAGRAPH_INTERFACE_VERSION@
 XSUBPP = @XSUBPP@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
@@ -885,13 +856,10 @@ AUTOMAKE_OPTIONS = foreign subdir-objects
 # Need to be distributed
 
 # For reference
-
-# Notes
-EXTRA_DIST = gnulib/m4/gnulib-cache.m4 TestXS.pm fail.pl typemap \
-	TestXS.xs XSParagraph.xs MiscXS.xs $p/command_data.c \
+EXTRA_DIST = gnulib/m4/gnulib-cache.m4 TestXS.pm typemap TestXS.xs \
+	XSParagraph.xs MiscXS.xs $p/command_data.c \
 	$p/element_types.txt $p/element_types.awk $p/command_data.txt \
-	$p/command_data.awk $p/Common.pm $p/Parser-5556.pm \
-	$p/complete_tree.pl $p/debug_perl.txt $p/makeinfo-debug.txt
+	$p/command_data.awk $p/Parser-5556.pm
 
 ######################## Gnulib ################################
 AM_CPPFLAGS = \
@@ -921,34 +889,18 @@ XSParagraph_la_SOURCES = XSParagraph.c xspara.c xspara.h \
 
 TestXS_la_SOURCES = TestXS.c ppport.h
 MiscXS_la_SOURCES = MiscXS.c misc.c miscxs.h ppport.h
-AM_CFLAGS = $(PERL_CONF_ccflags)
-XSParagraph_la_CFLAGS = $(AM_CFLAGS) -DVERSION=\"$(VERSION)\" \
-	-DXS_VERSION=\"$(XSPARAGRAPH_INTERFACE_VERSION)\" \
-	"-I$(PERL_INC)"
-TestXS_la_CFLAGS = $(AM_CFLAGS) -DVERSION=\"$(VERSION)\" \
-	-DXS_VERSION=\"$(VERSION)\" "-I$(PERL_INC)"
-MiscXS_la_CFLAGS = $(AM_CFLAGS) -DVERSION=\"$(VERSION)\" \
-	-DXS_VERSION=\"$(VERSION)\" "-I$(PERL_INC)"
+AM_CFLAGS = $(PERL_CONF_ccflags) $(PERL_CONF_optimize) \
+	-DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\" \
+	-I$(PERL_INC)
 @HOST_NEEDS_NO_UNDEFINED_FALSE@PLATFORM_LDFLAGS = 
 @HOST_NEEDS_NO_UNDEFINED_TRUE@PLATFORM_LDFLAGS = -no-undefined -L$(PERL_INC) $(PERL_CONF_libperl)
 AM_LDFLAGS = -avoid-version -module $(PERL_CONF_ccdlflags) \
 	$(PLATFORM_LDFLAGS)
 
-# only used to regenerate a stand-alone perl module
-perl_specific_files = \
-  Makefile.PL \
-  MANIFEST \
-  prepare_standalone_perl_module.sh
-
-
-# EXTRA_DIST += $(perl_specific_files)
-
 ########################## parsetexi
 p = parsetexi
 modulesdir = $(pkgdatadir)/Texinfo/XS/parsetexi
 dist_modules_DATA = $p/Parsetexi.pm
-Parsetexi_la_CFLAGS = $(AM_CFLAGS) -DVERSION=\"$(VERSION)\" \
-	"-I$(PERL_INC)"
 Parsetexi_la_SOURCES = parsetexi/Parsetexi.c \
                       parsetexi/api.c \
 		      parsetexi/api.h \
@@ -967,6 +919,8 @@ Parsetexi_la_SOURCES = parsetexi/Parsetexi.c \
 		      parsetexi/close.c \
 		      parsetexi/text.c \
 		      parsetexi/text.h \
+		      parsetexi/conf.c \
+		      parsetexi/conf.h \
 		      parsetexi/context_stack.c \
 		      parsetexi/context_stack.h \
 		      parsetexi/debug.c \
@@ -1089,70 +1043,72 @@ clean-xsLTLIBRARIES:
 	}
 
 MiscXS.la: $(MiscXS_la_OBJECTS) $(MiscXS_la_DEPENDENCIES) $(EXTRA_MiscXS_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(MiscXS_la_LINK) -rpath $(xsdir) $(MiscXS_la_OBJECTS) $(MiscXS_la_LIBADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK) -rpath $(xsdir) $(MiscXS_la_OBJECTS) $(MiscXS_la_LIBADD) $(LIBS)
 parsetexi/$(am__dirstamp):
 	@$(MKDIR_P) parsetexi
 	@: > parsetexi/$(am__dirstamp)
 parsetexi/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) parsetexi/$(DEPDIR)
 	@: > parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-Parsetexi.lo: parsetexi/$(am__dirstamp) \
+parsetexi/Parsetexi.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-api.lo: parsetexi/$(am__dirstamp) \
+parsetexi/api.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-parser.lo: parsetexi/$(am__dirstamp) \
+parsetexi/parser.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-element_types.lo: parsetexi/$(am__dirstamp) \
+parsetexi/element_types.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-commands.lo: parsetexi/$(am__dirstamp) \
+parsetexi/commands.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-input.lo: parsetexi/$(am__dirstamp) \
+parsetexi/input.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-tree.lo: parsetexi/$(am__dirstamp) \
+parsetexi/tree.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-close.lo: parsetexi/$(am__dirstamp) \
+parsetexi/close.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-text.lo: parsetexi/$(am__dirstamp) \
+parsetexi/text.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-context_stack.lo: parsetexi/$(am__dirstamp) \
+parsetexi/conf.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-debug.lo: parsetexi/$(am__dirstamp) \
+parsetexi/context_stack.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-convert.lo: parsetexi/$(am__dirstamp) \
+parsetexi/debug.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-end_line.lo: parsetexi/$(am__dirstamp) \
+parsetexi/convert.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-separator.lo: parsetexi/$(am__dirstamp) \
+parsetexi/end_line.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-multitable.lo: parsetexi/$(am__dirstamp) \
+parsetexi/separator.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-indices.lo: parsetexi/$(am__dirstamp) \
+parsetexi/multitable.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-macro.lo: parsetexi/$(am__dirstamp) \
+parsetexi/indices.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-handle_commands.lo: parsetexi/$(am__dirstamp) \
+parsetexi/macro.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-def.lo: parsetexi/$(am__dirstamp) \
+parsetexi/handle_commands.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-extra.lo: parsetexi/$(am__dirstamp) \
+parsetexi/def.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-menus.lo: parsetexi/$(am__dirstamp) \
+parsetexi/extra.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-labels.lo: parsetexi/$(am__dirstamp) \
+parsetexi/menus.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-errors.lo: parsetexi/$(am__dirstamp) \
+parsetexi/labels.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
-parsetexi/Parsetexi_la-counter.lo: parsetexi/$(am__dirstamp) \
+parsetexi/errors.lo: parsetexi/$(am__dirstamp) \
+	parsetexi/$(DEPDIR)/$(am__dirstamp)
+parsetexi/counter.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
 
 Parsetexi.la: $(Parsetexi_la_OBJECTS) $(Parsetexi_la_DEPENDENCIES) $(EXTRA_Parsetexi_la_DEPENDENCIES) 
 	$(AM_V_CCLD)$(Parsetexi_la_LINK) $(am_Parsetexi_la_rpath) $(Parsetexi_la_OBJECTS) $(Parsetexi_la_LIBADD) $(LIBS)
 
 TestXS.la: $(TestXS_la_OBJECTS) $(TestXS_la_DEPENDENCIES) $(EXTRA_TestXS_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(TestXS_la_LINK) -rpath $(xsdir) $(TestXS_la_OBJECTS) $(TestXS_la_LIBADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK) -rpath $(xsdir) $(TestXS_la_OBJECTS) $(TestXS_la_LIBADD) $(LIBS)
 
 XSParagraph.la: $(XSParagraph_la_OBJECTS) $(XSParagraph_la_DEPENDENCIES) $(EXTRA_XSParagraph_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(XSParagraph_la_LINK) -rpath $(xsdir) $(XSParagraph_la_OBJECTS) $(XSParagraph_la_LIBADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK) -rpath $(xsdir) $(XSParagraph_la_OBJECTS) $(XSParagraph_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -1162,36 +1118,37 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MiscXS_la-MiscXS.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MiscXS_la-misc.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TestXS_la-TestXS.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/XSParagraph_la-XSParagraph.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/XSParagraph_la-text.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/XSParagraph_la-xspara.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-Parsetexi.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-api.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-close.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-commands.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-context_stack.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-convert.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-counter.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-debug.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-def.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-element_types.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-end_line.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-errors.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-extra.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-handle_commands.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-indices.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-input.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-labels.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-macro.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-menus.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-multitable.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-parser.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-separator.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-text.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-tree.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MiscXS.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TestXS.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/XSParagraph.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/misc.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/text.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xspara.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/api.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/close.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/commands.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/conf.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/context_stack.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/convert.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/counter.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/debug.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/def.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/element_types.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/end_line.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/errors.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/extra.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/handle_commands.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/indices.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/input.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/labels.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/macro.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/menus.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/multitable.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/parser.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/separator.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/text.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/tree.Plo@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -1222,216 +1179,6 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
-
-MiscXS_la-MiscXS.lo: MiscXS.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(MiscXS_la_CFLAGS) $(CFLAGS) -MT MiscXS_la-MiscXS.lo -MD -MP -MF $(DEPDIR)/MiscXS_la-MiscXS.Tpo -c -o MiscXS_la-MiscXS.lo `test -f 'MiscXS.c' || echo '$(srcdir)/'`MiscXS.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/MiscXS_la-MiscXS.Tpo $(DEPDIR)/MiscXS_la-MiscXS.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='MiscXS.c' object='MiscXS_la-MiscXS.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(MiscXS_la_CFLAGS) $(CFLAGS) -c -o MiscXS_la-MiscXS.lo `test -f 'MiscXS.c' || echo '$(srcdir)/'`MiscXS.c
-
-MiscXS_la-misc.lo: misc.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(MiscXS_la_CFLAGS) $(CFLAGS) -MT MiscXS_la-misc.lo -MD -MP -MF $(DEPDIR)/MiscXS_la-misc.Tpo -c -o MiscXS_la-misc.lo `test -f 'misc.c' || echo '$(srcdir)/'`misc.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/MiscXS_la-misc.Tpo $(DEPDIR)/MiscXS_la-misc.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='misc.c' object='MiscXS_la-misc.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(MiscXS_la_CFLAGS) $(CFLAGS) -c -o MiscXS_la-misc.lo `test -f 'misc.c' || echo '$(srcdir)/'`misc.c
-
-parsetexi/Parsetexi_la-Parsetexi.lo: parsetexi/Parsetexi.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-Parsetexi.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-Parsetexi.Tpo -c -o parsetexi/Parsetexi_la-Parsetexi.lo `test -f 'parsetexi/Parsetexi.c' || echo '$(srcdir)/'`parsetexi/Parsetexi.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-Parsetexi.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-Parsetexi.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/Parsetexi.c' object='parsetexi/Parsetexi_la-Parsetexi.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-Parsetexi.lo `test -f 'parsetexi/Parsetexi.c' || echo '$(srcdir)/'`parsetexi/Parsetexi.c
-
-parsetexi/Parsetexi_la-api.lo: parsetexi/api.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-api.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-api.Tpo -c -o parsetexi/Parsetexi_la-api.lo `test -f 'parsetexi/api.c' || echo '$(srcdir)/'`parsetexi/api.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-api.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-api.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/api.c' object='parsetexi/Parsetexi_la-api.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-api.lo `test -f 'parsetexi/api.c' || echo '$(srcdir)/'`parsetexi/api.c
-
-parsetexi/Parsetexi_la-parser.lo: parsetexi/parser.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-parser.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-parser.Tpo -c -o parsetexi/Parsetexi_la-parser.lo `test -f 'parsetexi/parser.c' || echo '$(srcdir)/'`parsetexi/parser.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-parser.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-parser.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/parser.c' object='parsetexi/Parsetexi_la-parser.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-parser.lo `test -f 'parsetexi/parser.c' || echo '$(srcdir)/'`parsetexi/parser.c
-
-parsetexi/Parsetexi_la-element_types.lo: parsetexi/element_types.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-element_types.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-element_types.Tpo -c -o parsetexi/Parsetexi_la-element_types.lo `test -f 'parsetexi/element_types.c' || echo '$(srcdir)/'`parsetexi/element_types.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-element_types.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-element_types.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/element_types.c' object='parsetexi/Parsetexi_la-element_types.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-element_types.lo `test -f 'parsetexi/element_types.c' || echo '$(srcdir)/'`parsetexi/element_types.c
-
-parsetexi/Parsetexi_la-commands.lo: parsetexi/commands.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-commands.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-commands.Tpo -c -o parsetexi/Parsetexi_la-commands.lo `test -f 'parsetexi/commands.c' || echo '$(srcdir)/'`parsetexi/commands.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-commands.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-commands.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/commands.c' object='parsetexi/Parsetexi_la-commands.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-commands.lo `test -f 'parsetexi/commands.c' || echo '$(srcdir)/'`parsetexi/commands.c
-
-parsetexi/Parsetexi_la-input.lo: parsetexi/input.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-input.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-input.Tpo -c -o parsetexi/Parsetexi_la-input.lo `test -f 'parsetexi/input.c' || echo '$(srcdir)/'`parsetexi/input.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-input.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-input.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/input.c' object='parsetexi/Parsetexi_la-input.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-input.lo `test -f 'parsetexi/input.c' || echo '$(srcdir)/'`parsetexi/input.c
-
-parsetexi/Parsetexi_la-tree.lo: parsetexi/tree.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-tree.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-tree.Tpo -c -o parsetexi/Parsetexi_la-tree.lo `test -f 'parsetexi/tree.c' || echo '$(srcdir)/'`parsetexi/tree.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-tree.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-tree.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/tree.c' object='parsetexi/Parsetexi_la-tree.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-tree.lo `test -f 'parsetexi/tree.c' || echo '$(srcdir)/'`parsetexi/tree.c
-
-parsetexi/Parsetexi_la-close.lo: parsetexi/close.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-close.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-close.Tpo -c -o parsetexi/Parsetexi_la-close.lo `test -f 'parsetexi/close.c' || echo '$(srcdir)/'`parsetexi/close.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-close.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-close.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/close.c' object='parsetexi/Parsetexi_la-close.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-close.lo `test -f 'parsetexi/close.c' || echo '$(srcdir)/'`parsetexi/close.c
-
-parsetexi/Parsetexi_la-text.lo: parsetexi/text.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-text.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-text.Tpo -c -o parsetexi/Parsetexi_la-text.lo `test -f 'parsetexi/text.c' || echo '$(srcdir)/'`parsetexi/text.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-text.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-text.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/text.c' object='parsetexi/Parsetexi_la-text.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-text.lo `test -f 'parsetexi/text.c' || echo '$(srcdir)/'`parsetexi/text.c
-
-parsetexi/Parsetexi_la-context_stack.lo: parsetexi/context_stack.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-context_stack.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-context_stack.Tpo -c -o parsetexi/Parsetexi_la-context_stack.lo `test -f 'parsetexi/context_stack.c' || echo '$(srcdir)/'`parsetexi/context_stack.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-context_stack.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-context_stack.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/context_stack.c' object='parsetexi/Parsetexi_la-context_stack.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-context_stack.lo `test -f 'parsetexi/context_stack.c' || echo '$(srcdir)/'`parsetexi/context_stack.c
-
-parsetexi/Parsetexi_la-debug.lo: parsetexi/debug.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-debug.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-debug.Tpo -c -o parsetexi/Parsetexi_la-debug.lo `test -f 'parsetexi/debug.c' || echo '$(srcdir)/'`parsetexi/debug.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-debug.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-debug.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/debug.c' object='parsetexi/Parsetexi_la-debug.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-debug.lo `test -f 'parsetexi/debug.c' || echo '$(srcdir)/'`parsetexi/debug.c
-
-parsetexi/Parsetexi_la-convert.lo: parsetexi/convert.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-convert.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-convert.Tpo -c -o parsetexi/Parsetexi_la-convert.lo `test -f 'parsetexi/convert.c' || echo '$(srcdir)/'`parsetexi/convert.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-convert.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-convert.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/convert.c' object='parsetexi/Parsetexi_la-convert.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-convert.lo `test -f 'parsetexi/convert.c' || echo '$(srcdir)/'`parsetexi/convert.c
-
-parsetexi/Parsetexi_la-end_line.lo: parsetexi/end_line.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-end_line.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-end_line.Tpo -c -o parsetexi/Parsetexi_la-end_line.lo `test -f 'parsetexi/end_line.c' || echo '$(srcdir)/'`parsetexi/end_line.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-end_line.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-end_line.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/end_line.c' object='parsetexi/Parsetexi_la-end_line.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-end_line.lo `test -f 'parsetexi/end_line.c' || echo '$(srcdir)/'`parsetexi/end_line.c
-
-parsetexi/Parsetexi_la-separator.lo: parsetexi/separator.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-separator.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-separator.Tpo -c -o parsetexi/Parsetexi_la-separator.lo `test -f 'parsetexi/separator.c' || echo '$(srcdir)/'`parsetexi/separator.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-separator.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-separator.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/separator.c' object='parsetexi/Parsetexi_la-separator.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-separator.lo `test -f 'parsetexi/separator.c' || echo '$(srcdir)/'`parsetexi/separator.c
-
-parsetexi/Parsetexi_la-multitable.lo: parsetexi/multitable.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-multitable.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-multitable.Tpo -c -o parsetexi/Parsetexi_la-multitable.lo `test -f 'parsetexi/multitable.c' || echo '$(srcdir)/'`parsetexi/multitable.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-multitable.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-multitable.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/multitable.c' object='parsetexi/Parsetexi_la-multitable.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-multitable.lo `test -f 'parsetexi/multitable.c' || echo '$(srcdir)/'`parsetexi/multitable.c
-
-parsetexi/Parsetexi_la-indices.lo: parsetexi/indices.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-indices.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-indices.Tpo -c -o parsetexi/Parsetexi_la-indices.lo `test -f 'parsetexi/indices.c' || echo '$(srcdir)/'`parsetexi/indices.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-indices.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-indices.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/indices.c' object='parsetexi/Parsetexi_la-indices.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-indices.lo `test -f 'parsetexi/indices.c' || echo '$(srcdir)/'`parsetexi/indices.c
-
-parsetexi/Parsetexi_la-macro.lo: parsetexi/macro.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-macro.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-macro.Tpo -c -o parsetexi/Parsetexi_la-macro.lo `test -f 'parsetexi/macro.c' || echo '$(srcdir)/'`parsetexi/macro.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-macro.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-macro.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/macro.c' object='parsetexi/Parsetexi_la-macro.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-macro.lo `test -f 'parsetexi/macro.c' || echo '$(srcdir)/'`parsetexi/macro.c
-
-parsetexi/Parsetexi_la-handle_commands.lo: parsetexi/handle_commands.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-handle_commands.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-handle_commands.Tpo -c -o parsetexi/Parsetexi_la-handle_commands.lo `test -f 'parsetexi/handle_commands.c' || echo '$(srcdir)/'`parsetexi/handle_commands.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-handle_commands.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-handle_commands.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/handle_commands.c' object='parsetexi/Parsetexi_la-handle_commands.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-handle_commands.lo `test -f 'parsetexi/handle_commands.c' || echo '$(srcdir)/'`parsetexi/handle_commands.c
-
-parsetexi/Parsetexi_la-def.lo: parsetexi/def.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-def.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-def.Tpo -c -o parsetexi/Parsetexi_la-def.lo `test -f 'parsetexi/def.c' || echo '$(srcdir)/'`parsetexi/def.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-def.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-def.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/def.c' object='parsetexi/Parsetexi_la-def.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-def.lo `test -f 'parsetexi/def.c' || echo '$(srcdir)/'`parsetexi/def.c
-
-parsetexi/Parsetexi_la-extra.lo: parsetexi/extra.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-extra.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-extra.Tpo -c -o parsetexi/Parsetexi_la-extra.lo `test -f 'parsetexi/extra.c' || echo '$(srcdir)/'`parsetexi/extra.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-extra.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-extra.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/extra.c' object='parsetexi/Parsetexi_la-extra.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-extra.lo `test -f 'parsetexi/extra.c' || echo '$(srcdir)/'`parsetexi/extra.c
-
-parsetexi/Parsetexi_la-menus.lo: parsetexi/menus.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-menus.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-menus.Tpo -c -o parsetexi/Parsetexi_la-menus.lo `test -f 'parsetexi/menus.c' || echo '$(srcdir)/'`parsetexi/menus.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-menus.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-menus.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/menus.c' object='parsetexi/Parsetexi_la-menus.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-menus.lo `test -f 'parsetexi/menus.c' || echo '$(srcdir)/'`parsetexi/menus.c
-
-parsetexi/Parsetexi_la-labels.lo: parsetexi/labels.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-labels.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-labels.Tpo -c -o parsetexi/Parsetexi_la-labels.lo `test -f 'parsetexi/labels.c' || echo '$(srcdir)/'`parsetexi/labels.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-labels.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-labels.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/labels.c' object='parsetexi/Parsetexi_la-labels.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-labels.lo `test -f 'parsetexi/labels.c' || echo '$(srcdir)/'`parsetexi/labels.c
-
-parsetexi/Parsetexi_la-errors.lo: parsetexi/errors.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-errors.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-errors.Tpo -c -o parsetexi/Parsetexi_la-errors.lo `test -f 'parsetexi/errors.c' || echo '$(srcdir)/'`parsetexi/errors.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-errors.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-errors.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/errors.c' object='parsetexi/Parsetexi_la-errors.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-errors.lo `test -f 'parsetexi/errors.c' || echo '$(srcdir)/'`parsetexi/errors.c
-
-parsetexi/Parsetexi_la-counter.lo: parsetexi/counter.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-counter.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-counter.Tpo -c -o parsetexi/Parsetexi_la-counter.lo `test -f 'parsetexi/counter.c' || echo '$(srcdir)/'`parsetexi/counter.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-counter.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-counter.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/counter.c' object='parsetexi/Parsetexi_la-counter.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Parsetexi_la_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-counter.lo `test -f 'parsetexi/counter.c' || echo '$(srcdir)/'`parsetexi/counter.c
-
-TestXS_la-TestXS.lo: TestXS.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(TestXS_la_CFLAGS) $(CFLAGS) -MT TestXS_la-TestXS.lo -MD -MP -MF $(DEPDIR)/TestXS_la-TestXS.Tpo -c -o TestXS_la-TestXS.lo `test -f 'TestXS.c' || echo '$(srcdir)/'`TestXS.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/TestXS_la-TestXS.Tpo $(DEPDIR)/TestXS_la-TestXS.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='TestXS.c' object='TestXS_la-TestXS.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(TestXS_la_CFLAGS) $(CFLAGS) -c -o TestXS_la-TestXS.lo `test -f 'TestXS.c' || echo '$(srcdir)/'`TestXS.c
-
-XSParagraph_la-XSParagraph.lo: XSParagraph.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(XSParagraph_la_CFLAGS) $(CFLAGS) -MT XSParagraph_la-XSParagraph.lo -MD -MP -MF $(DEPDIR)/XSParagraph_la-XSParagraph.Tpo -c -o XSParagraph_la-XSParagraph.lo `test -f 'XSParagraph.c' || echo '$(srcdir)/'`XSParagraph.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/XSParagraph_la-XSParagraph.Tpo $(DEPDIR)/XSParagraph_la-XSParagraph.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='XSParagraph.c' object='XSParagraph_la-XSParagraph.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(XSParagraph_la_CFLAGS) $(CFLAGS) -c -o XSParagraph_la-XSParagraph.lo `test -f 'XSParagraph.c' || echo '$(srcdir)/'`XSParagraph.c
-
-XSParagraph_la-xspara.lo: xspara.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(XSParagraph_la_CFLAGS) $(CFLAGS) -MT XSParagraph_la-xspara.lo -MD -MP -MF $(DEPDIR)/XSParagraph_la-xspara.Tpo -c -o XSParagraph_la-xspara.lo `test -f 'xspara.c' || echo '$(srcdir)/'`xspara.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/XSParagraph_la-xspara.Tpo $(DEPDIR)/XSParagraph_la-xspara.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='xspara.c' object='XSParagraph_la-xspara.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(XSParagraph_la_CFLAGS) $(CFLAGS) -c -o XSParagraph_la-xspara.lo `test -f 'xspara.c' || echo '$(srcdir)/'`xspara.c
-
-XSParagraph_la-text.lo: text.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(XSParagraph_la_CFLAGS) $(CFLAGS) -MT XSParagraph_la-text.lo -MD -MP -MF $(DEPDIR)/XSParagraph_la-text.Tpo -c -o XSParagraph_la-text.lo `test -f 'text.c' || echo '$(srcdir)/'`text.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/XSParagraph_la-text.Tpo $(DEPDIR)/XSParagraph_la-text.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='text.c' object='XSParagraph_la-text.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(XSParagraph_la_CFLAGS) $(CFLAGS) -c -o XSParagraph_la-text.lo `test -f 'text.c' || echo '$(srcdir)/'`text.c
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -1812,36 +1559,37 @@ clean-am: clean-generic clean-libtool clean-xsLTLIBRARIES \
 
 distclean: distclean-recursive
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
-		-rm -f ./$(DEPDIR)/MiscXS_la-MiscXS.Plo
-	-rm -f ./$(DEPDIR)/MiscXS_la-misc.Plo
-	-rm -f ./$(DEPDIR)/TestXS_la-TestXS.Plo
-	-rm -f ./$(DEPDIR)/XSParagraph_la-XSParagraph.Plo
-	-rm -f ./$(DEPDIR)/XSParagraph_la-text.Plo
-	-rm -f ./$(DEPDIR)/XSParagraph_la-xspara.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-Parsetexi.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-api.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-close.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-commands.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-context_stack.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-convert.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-counter.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-debug.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-def.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-element_types.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-end_line.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-errors.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-extra.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-handle_commands.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-indices.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-input.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-labels.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-macro.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-menus.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-multitable.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-parser.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-separator.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-text.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-tree.Plo
+		-rm -f ./$(DEPDIR)/MiscXS.Plo
+	-rm -f ./$(DEPDIR)/TestXS.Plo
+	-rm -f ./$(DEPDIR)/XSParagraph.Plo
+	-rm -f ./$(DEPDIR)/misc.Plo
+	-rm -f ./$(DEPDIR)/text.Plo
+	-rm -f ./$(DEPDIR)/xspara.Plo
+	-rm -f parsetexi/$(DEPDIR)/Parsetexi.Plo
+	-rm -f parsetexi/$(DEPDIR)/api.Plo
+	-rm -f parsetexi/$(DEPDIR)/close.Plo
+	-rm -f parsetexi/$(DEPDIR)/commands.Plo
+	-rm -f parsetexi/$(DEPDIR)/conf.Plo
+	-rm -f parsetexi/$(DEPDIR)/context_stack.Plo
+	-rm -f parsetexi/$(DEPDIR)/convert.Plo
+	-rm -f parsetexi/$(DEPDIR)/counter.Plo
+	-rm -f parsetexi/$(DEPDIR)/debug.Plo
+	-rm -f parsetexi/$(DEPDIR)/def.Plo
+	-rm -f parsetexi/$(DEPDIR)/element_types.Plo
+	-rm -f parsetexi/$(DEPDIR)/end_line.Plo
+	-rm -f parsetexi/$(DEPDIR)/errors.Plo
+	-rm -f parsetexi/$(DEPDIR)/extra.Plo
+	-rm -f parsetexi/$(DEPDIR)/handle_commands.Plo
+	-rm -f parsetexi/$(DEPDIR)/indices.Plo
+	-rm -f parsetexi/$(DEPDIR)/input.Plo
+	-rm -f parsetexi/$(DEPDIR)/labels.Plo
+	-rm -f parsetexi/$(DEPDIR)/macro.Plo
+	-rm -f parsetexi/$(DEPDIR)/menus.Plo
+	-rm -f parsetexi/$(DEPDIR)/multitable.Plo
+	-rm -f parsetexi/$(DEPDIR)/parser.Plo
+	-rm -f parsetexi/$(DEPDIR)/separator.Plo
+	-rm -f parsetexi/$(DEPDIR)/text.Plo
+	-rm -f parsetexi/$(DEPDIR)/tree.Plo
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-libtool distclean-tags
@@ -1890,36 +1638,37 @@ installcheck-am:
 maintainer-clean: maintainer-clean-recursive
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -rf $(top_srcdir)/autom4te.cache
-		-rm -f ./$(DEPDIR)/MiscXS_la-MiscXS.Plo
-	-rm -f ./$(DEPDIR)/MiscXS_la-misc.Plo
-	-rm -f ./$(DEPDIR)/TestXS_la-TestXS.Plo
-	-rm -f ./$(DEPDIR)/XSParagraph_la-XSParagraph.Plo
-	-rm -f ./$(DEPDIR)/XSParagraph_la-text.Plo
-	-rm -f ./$(DEPDIR)/XSParagraph_la-xspara.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-Parsetexi.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-api.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-close.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-commands.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-context_stack.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-convert.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-counter.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-debug.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-def.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-element_types.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-end_line.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-errors.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-extra.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-handle_commands.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-indices.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-input.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-labels.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-macro.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-menus.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-multitable.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-parser.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-separator.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-text.Plo
-	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-tree.Plo
+		-rm -f ./$(DEPDIR)/MiscXS.Plo
+	-rm -f ./$(DEPDIR)/TestXS.Plo
+	-rm -f ./$(DEPDIR)/XSParagraph.Plo
+	-rm -f ./$(DEPDIR)/misc.Plo
+	-rm -f ./$(DEPDIR)/text.Plo
+	-rm -f ./$(DEPDIR)/xspara.Plo
+	-rm -f parsetexi/$(DEPDIR)/Parsetexi.Plo
+	-rm -f parsetexi/$(DEPDIR)/api.Plo
+	-rm -f parsetexi/$(DEPDIR)/close.Plo
+	-rm -f parsetexi/$(DEPDIR)/commands.Plo
+	-rm -f parsetexi/$(DEPDIR)/conf.Plo
+	-rm -f parsetexi/$(DEPDIR)/context_stack.Plo
+	-rm -f parsetexi/$(DEPDIR)/convert.Plo
+	-rm -f parsetexi/$(DEPDIR)/counter.Plo
+	-rm -f parsetexi/$(DEPDIR)/debug.Plo
+	-rm -f parsetexi/$(DEPDIR)/def.Plo
+	-rm -f parsetexi/$(DEPDIR)/element_types.Plo
+	-rm -f parsetexi/$(DEPDIR)/end_line.Plo
+	-rm -f parsetexi/$(DEPDIR)/errors.Plo
+	-rm -f parsetexi/$(DEPDIR)/extra.Plo
+	-rm -f parsetexi/$(DEPDIR)/handle_commands.Plo
+	-rm -f parsetexi/$(DEPDIR)/indices.Plo
+	-rm -f parsetexi/$(DEPDIR)/input.Plo
+	-rm -f parsetexi/$(DEPDIR)/labels.Plo
+	-rm -f parsetexi/$(DEPDIR)/macro.Plo
+	-rm -f parsetexi/$(DEPDIR)/menus.Plo
+	-rm -f parsetexi/$(DEPDIR)/multitable.Plo
+	-rm -f parsetexi/$(DEPDIR)/parser.Plo
+	-rm -f parsetexi/$(DEPDIR)/separator.Plo
+	-rm -f parsetexi/$(DEPDIR)/text.Plo
+	-rm -f parsetexi/$(DEPDIR)/tree.Plo
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

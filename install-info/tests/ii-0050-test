@@ -19,12 +19,26 @@ chmod u+rw $outputdirfile || exit $?
 ${install_info} --remove ${testdir}/ii-0050-input-info-file $outputdirfile \
 || exit $?
 
-if findprog zdiff; then
-  zdiff ${testdir}/ii-0050-expected-dir-file.gz $outputdirfile
-  retval=$?
+# Simulate 'zdiff'.  zdiff on HP-UX does not support the gzip format.
+expectedfile=${testdir}/ii-0050-expected-dir-file.gz
+expectedfile_uncompressed=$tempfile.exp
+outputdirfile_uncompressed=$tempfile.act
+if cmp $expectedfile $outputdirfile >/dev/null; then
+  retval=0
 else
-  retval=77
+  if gzip -d -c < $expectedfile > $expectedfile_uncompressed; then
+    if gzip -d -c < $outputdirfile > $outputdirfile_uncompressed; then
+      diff $expectedfile_uncompressed $outputdirfile_uncompressed
+      retval=$?
+    else
+      # $outputdirfile is not in gzip format
+      retval=1
+    fi
+  else
+    # gzip not found or not working
+    retval=77
+  fi
 fi
 
-rm -f $tempfile $outputdirfile
+rm -f $tempfile $outputdirfile $expectedfile_uncompressed $outputdirfile_uncompressed
 exit $retval

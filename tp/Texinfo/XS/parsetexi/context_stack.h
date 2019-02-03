@@ -1,5 +1,5 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
-   Free Software Foundation, Inc.
+/* context_stack.h - declarations for context_stack.c */
+/* Copyright 2010-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,7 +29,6 @@ enum context {
 };
 
 /* Contexts where an empty line doesn't start a new paragraph. */
-/* line 492 */
 #define in_paragraph_context(c) \
   !((c) == ct_math \
    || (c) == ct_menu \

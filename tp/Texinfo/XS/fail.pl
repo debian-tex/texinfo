@@ -1,1 +1,0 @@
-require Texinfo::XS::TestXS;

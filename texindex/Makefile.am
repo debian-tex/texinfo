@@ -54,7 +54,7 @@ texindex: texindex.in Makefile
 # texindex.awk (hardwired).  Then we substitute configure-time variables
 # to avoid manual updates of the version number.
 texindex.awk: ti.twjr
-	$(AWK) -f $(srcdir)/jrtangle $(srcdir)/ti.twjr || rm -f texindex.awk
+	$(GAWK) -f $(srcdir)/jrtangle $(srcdir)/ti.twjr || rm -f texindex.awk
 	$(do_subst) <texindex.awk >texindex.awk-tmp
 	mv texindex.awk-tmp texindex.awk
 
@@ -69,7 +69,7 @@ ti.html: ti.texi
 # unlike jrtangle, jrweave outputs to stdout; use the usual UPDATED string.
 ti.texi: ti.twjr
 	UPDATED=`$(top_srcdir)/build-aux/mdate-sh $(srcdir)/ti.twjr`; \
-	  $(AWK) -f $(srcdir)/jrweave $(srcdir)/ti.twjr \
+	  $(GAWK) -f $(srcdir)/jrweave $(srcdir)/ti.twjr \
 	  | $(do_subst) -e "s,[@]UPDATED[@],$$UPDATED,g" \
 	  >ti.texi || rm -f ti.texi
 

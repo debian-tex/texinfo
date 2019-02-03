@@ -5008,7 +5008,7 @@ Menu comment
 </tr></table>
 <span id="chapter-1"></span><h1 class="chapter">1 chapter</h1>
 
-<p><a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
+<p><a id="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
 <div class="format">
 <table class="menu" border="0" cellspacing="0"><tr><td>

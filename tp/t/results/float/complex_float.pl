@@ -4793,7 +4793,7 @@ line
 <p>A ref 2.
 See <a href="#Top">xref Text with features caption</a>.
 A footnote 2.
-<a name="t_hlistoffloats_DOCF3_1" href="#t_hlistoffloats_FOOT3_1"><sup>1</sup></a>.
+<a id="t_hlistoffloats_DOCF3_1" href="#t_hlistoffloats_FOOT3_1"><sup>1</sup></a>.
 </p>
 <p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
 </p></dd>
@@ -4828,7 +4828,7 @@ line
 <p>A ref.
 See <a href="#Top">xref Text with features</a>.
 A footnote.
-<a name="DOCF1" href="#FOOT1"><sup>2</sup></a>.
+<a id="DOCF1" href="#FOOT1"><sup>2</sup></a>.
 </p>
 <p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
 </p>
@@ -4867,7 +4867,7 @@ line
 <p>A ref.
 See <a href="#Top">xref Text with features caption</a>.
 A footnote.
-<a name="DOCF2" href="#FOOT2"><sup>3</sup></a>.
+<a id="DOCF2" href="#FOOT2"><sup>3</sup></a>.
 </p>
 <p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
 </p></div></div>
@@ -4915,7 +4915,7 @@ line
 <p>A ref 2.
 See <a href="#Top">xref Text with features caption</a>.
 A footnote 2.
-<a name="DOCF3" href="#FOOT3"><sup>4</sup></a>.
+<a id="DOCF3" href="#FOOT3"><sup>4</sup></a>.
 </p>
 <p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
 </p></div></div>
@@ -4925,13 +4925,13 @@ A footnote 2.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="t_hlistoffloats_FOOT3_1" href="#t_hlistoffloats_DOCF3_1">(1)</a></h3>
+<h3><a id="t_hlistoffloats_FOOT3_1" href="#t_hlistoffloats_DOCF3_1">(1)</a></h3>
 <p>footnote Text with features caption 2</p>
-<h3><a name="FOOT1" href="#DOCF1">(2)</a></h3>
+<h3><a id="FOOT1" href="#DOCF1">(2)</a></h3>
 <p>footnote Text with features</p>
-<h3><a name="FOOT2" href="#DOCF2">(3)</a></h3>
+<h3><a id="FOOT2" href="#DOCF2">(3)</a></h3>
 <p>footnote Text with features caption</p>
-<h3><a name="FOOT3" href="#DOCF3">(4)</a></h3>
+<h3><a id="FOOT3" href="#DOCF3">(4)</a></h3>
 <p>footnote Text with features caption 2</p>
 </div>
 <hr>

@@ -110,7 +110,6 @@ wipe_user_commands (void)
   user_defined_number = 0;
 }
 
-/* Common.pm:841. */
 /* Commands that terminate a paragraph. */
 /* We may replace this function with a macro, or represent this infomation in
    command_data. */
@@ -133,7 +132,6 @@ close_paragraph_command (enum command_id cmd)
       return 1;
     }
 
-  /* several others Common.pm:852 */
   if (cmd == CM_titlefont
      || cmd == CM_insertcopying
      || cmd == CM_sp
@@ -156,19 +154,16 @@ close_paragraph_command (enum command_id cmd)
      || cmd == CM_exdent)
     return 1;
 
-  /* headings Common.pm:954 */
   if ((command_data(cmd).flags & CF_sectioning)
       && !(command_data(cmd).flags & CF_root))
     return 1;
 
-  /* def commands 866 */
   if ((command_data(cmd).flags & CF_def))
     return 1;
 
   return 0;
 }
 
-// Parser.pm:348
 int
 close_preformatted_command (enum command_id cmd_id)
 {

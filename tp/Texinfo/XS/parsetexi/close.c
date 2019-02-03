@@ -63,7 +63,6 @@ yes:
   return current;
 }
 
-// 1292
 /* Close out any brace commands that mark text, not allowing multiple
    paragraphs. */
 ELEMENT *
@@ -221,7 +220,7 @@ close_command_cleanup (ELEMENT *current)
                       if (e->cmd != CM_NONE
                           && (e->cmd != CM_c && e->cmd != CM_comment
                               && e->cmd != CM_end)
-                          || e->type != CM_NONE
+                          || e->type != ET_NONE
                           && e->type != ET_empty_line_after_command)
                         {
                           empty_format = 0;
@@ -238,7 +237,6 @@ close_command_cleanup (ELEMENT *current)
     }
 }
 
-/* 1642 */
 ELEMENT *
 close_current (ELEMENT *current,
                enum command_id closed_command,
@@ -328,7 +326,7 @@ close_current (ELEMENT *current,
           if (c != ct_preformatted)
             abort ();
 
-          /* 1700 Remove empty menu_comment */
+          /* Remove empty menu_comment */
           if (current->contents.number == 0)
             {
               current = current->parent;
@@ -363,7 +361,6 @@ close_current (ELEMENT *current,
   return current;
 }
 
-/* 1725 */
 /* Return lowest level ancestor of CURRENT containing a CLOSED_COMMAND
    element.  Set CLOSED_ELEMENT to the element itself.  INTERRUPTING is used in 
    close_brace_command to display an error message.  Remove a context from 
@@ -411,7 +408,7 @@ close_commands (ELEMENT *current, enum command_id closed_command,
         pop_region ();
 
       *closed_element = current;
-      current = current->parent; /* 1788 */
+      current = current->parent;
     }
   else if (closed_command)
     {

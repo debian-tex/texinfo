@@ -254,8 +254,8 @@ ul.no-bullet {list-style: none}
 
 <div class="contents">
 <ul class="no-bullet">
-    <li><a name="toc-section" href="#section">1 section</a></li>
-<li><a name="toc-part" href="#part">part</a></li>
+    <li><a id="toc-section" href="#section">1 section</a></li>
+<li><a id="toc-part" href="#part">part</a></li>
 
 </ul>
 </div>

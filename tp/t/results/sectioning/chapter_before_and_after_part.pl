@@ -388,10 +388,10 @@ ul.no-bullet {list-style: none}
 
 <div class="contents">
 <ul class="no-bullet">
-  <li><a name="toc-chapter" href="#chapter">1 chapter</a></li>
-<li><a name="toc-part" href="#part">part</a>
+  <li><a id="toc-chapter" href="#chapter">1 chapter</a></li>
+<li><a id="toc-part" href="#part">part</a>
 <ul class="no-bullet">
-  <li><a name="toc-chapter-2" href="#chapter-2">2 chapter 2</a></li>
+  <li><a id="toc-chapter-2" href="#chapter-2">2 chapter 2</a></li>
 </ul></li>
 
 </ul>

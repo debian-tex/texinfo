@@ -1,3 +1,4 @@
+/* tree_types.h - types for the parse tree that are used in many places */
 /* Copyright 2010-2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -48,12 +49,6 @@ typedef struct KEY_PAIR {
     struct ELEMENT *value;
 } KEY_PAIR;
 
-typedef struct {
-    enum command_id cmd;
-    char *begin;
-    char *end;
-} INFO_ENCLOSE;
-
 typedef struct ELEMENT_LIST {
     struct ELEMENT **list;
     size_t number;
@@ -65,10 +60,6 @@ typedef struct LINE_NR {
     char *file_name;
     char *macro;
 } LINE_NR;
-
-/* Type of a link in the route from the root of the tree to an element. */
-enum route_element_type { route_uninitialized, route_contents, route_args,
-    route_not_in_tree };
 
 typedef struct ELEMENT {
     enum command_id cmd;
@@ -83,87 +74,11 @@ typedef struct ELEMENT {
     size_t extra_number;
     size_t extra_space;
 
-    /* Set to route_not_in_tree if element not in main tree. */
-    enum route_element_type parent_type;
-
     /********* Used when building Perl tree only ********************/
-    /* should be HV *hv; */
     void *hv;
+    /* This should be HV *hv, but we don't want to include the Perl headers 
+       everywhere; */
 } ELEMENT;
-
-typedef struct GLOBAL_INFO {
-    char *input_file_name;
-    char *input_encoding_name;
-    char *input_perl_encoding;
-    int sections_level;
-    ELEMENT dircategory_direntry; /* an array of elements */
-
-    /* Elements that should be unique. */
-    // 288 and Common.pm:164
-    ELEMENT *settitle; /* Title of document. */
-    ELEMENT *copying;
-    ELEMENT *title;
-    ELEMENT *titlepage;
-    ELEMENT *top;
-    ELEMENT *setfilename;
-    ELEMENT *documentdescription;
-    ELEMENT *setcontentsaftertitlepage;
-    ELEMENT *setshortcontentsaftertitlepage;
-    ELEMENT *novalidate;
-    ELEMENT *validatemenus;
-    ELEMENT *pagesizes;
-    ELEMENT *fonttextsize;
-    ELEMENT *footnotestyle;
-    ELEMENT *setchapternewpage;
-    ELEMENT *everyheading;
-    ELEMENT *everyfooting;
-    ELEMENT *evenheading;
-    ELEMENT *evenfooting;
-    ELEMENT *oddheading;
-    ELEMENT *oddfooting;
-    ELEMENT *everyheadingmarks;
-    ELEMENT *everyfootingmarks;
-    ELEMENT *evenheadingmarks;
-    ELEMENT *oddheadingmarks;
-    ELEMENT *evenfootingmarks;
-    ELEMENT *oddfootingmarks;
-    ELEMENT *shorttitlepage;
-
-    /* Arrays of elements */
-    ELEMENT footnotes;
-    ELEMENT hyphenation;
-    ELEMENT insertcopying;
-    ELEMENT printindex;
-    ELEMENT subtitle;
-    ELEMENT titlefont;
-    ELEMENT listoffloats;
-    ELEMENT detailmenu;
-    ELEMENT part;
-
-    ELEMENT allowcodebreaks;
-    ELEMENT clickstyle;
-    ELEMENT codequotebacktick;
-    ELEMENT codequoteundirected;
-    ELEMENT contents;
-    ELEMENT deftypefnnewline;
-    ELEMENT documentencoding;
-    ELEMENT documentlanguage;
-    ELEMENT exampleindent;
-    ELEMENT firstparagraphindent;
-    ELEMENT frenchspacing;
-    ELEMENT headings;
-    ELEMENT kbdinputstyle;
-    ELEMENT paragraphindent;
-    ELEMENT shortcontents;
-    ELEMENT urefbreakstyle;
-    ELEMENT xrefautomaticsectiontitle;
-} GLOBAL_INFO;
-
-typedef struct CONF {
-    int show_menu;
-    int cpp_line_directives;
-    int ignore_space_after_braced_command_name;
-} CONF;
 
 typedef struct {
     char *index_name;
@@ -196,20 +111,11 @@ typedef struct INDEX {
     void *contained_hv;
 } INDEX;
 
-/* Used when dumping to a text stream only.  A reference to an
-   index entry, in the "index_entry" extra key of an element.
-   index->index_entries[entry] is the referred-to index entry. */
-typedef struct {
-    INDEX *index;
-    int entry;
-} INDEX_ENTRY_REF;
-
 /* See parse_node_manual function. */
 typedef struct {
     ELEMENT *manual_content;
     ELEMENT *node_content;
 } NODE_SPEC_EXTRA;
-
 
 /* For 'def_parsed_hash'. */
 typedef struct {
@@ -220,24 +126,8 @@ typedef struct {
 } DEF_INFO;
 
 typedef struct {
-    char **labels;
-    ELEMENT **elements;
-    int nelements;
-    int space;
-} DEF_ARGS_EXTRA;
-
-typedef struct {
     ELEMENT *content;
     char *normalized;
 } EXTRA_FLOAT_TYPE;
-
-enum error_type { error, warning };
-
-typedef struct {
-    char *macro_name;
-    ELEMENT *element;
-    enum command_id cmd;
-    char *macrobody;
-} MACRO;
 
 

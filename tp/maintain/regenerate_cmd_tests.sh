@@ -103,7 +103,7 @@ fi
 
     echo "dir=$test_dir
 name='$name'
-"'[ -d "$dir" ] || mkdir $dir
+"'mkdir -p $dir
 
 "$srcdir"'"$relative_command_dir"'/run_parser_all.sh -dir $dir $name
 exit_status=$?

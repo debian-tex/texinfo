@@ -1,4 +1,4 @@
-# Copyright 2014-2018 Free Software Foundation, Inc.
+# Copyright 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,13 +30,6 @@ use Texinfo::Encoding;
 use Texinfo::Convert::NodeNameNormalization;
 
 our @ISA = qw(Exporter DynaLoader Texinfo::Report);
-# Items to export into callers namespace by default. Note: do not export
-# names by default without a very good reason. Use EXPORT_OK instead.
-# Do not simply export all your public functions/methods/constants.
-
-# This allows declaration	use XSParagraph ':all';
-# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
-# will save memory.
 our %EXPORT_TAGS = ( 'all' => [ qw(
     parser
     parse_texi_text
@@ -57,39 +50,9 @@ sub get_conf($$)
   return $self->{$var};
 }
 
-# Copied from Parser.pm
-# Customization variables obeyed by the Parser, and the default values.
-# TODO: delete these, as they are not used by the XS module itself.
-our %default_customization_values = (
-  'TEST' => 0,
-  'DEBUG' => 0,     # if >= 10, tree is printed in texi2any.pl after parsing.
-		    # If >= 100 tree is printed every line.
-  'SHOW_MENU' => 1,             # if false no menu error related.
-  'INLINE_INSERTCOPYING' => 0,
-  'IGNORE_BEFORE_SETFILENAME' => 1,
-  'MACRO_BODY_IGNORES_LEADING_SPACE' => 0,
-  'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME' => 1,
-  'INPUT_PERL_ENCODING' => undef, # input perl encoding name, set from 
-			      # @documentencoding in the default case
-  'INPUT_ENCODING_NAME' => undef, # encoding name normalized as preferred
-			      # IANA, set from @documentencoding in the default
-			      # case
-  'CPP_LINE_DIRECTIVES' => 1, # handle cpp like synchronization lines
-  'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
-  # This is not used directly, but passed to Convert::Text through 
-  # Texinfo::Common::_convert_text_options
-  'ENABLE_ENCODING' => 1,     # output accented and special characters
-			      # based on @documentencoding
-  # following are used in Texinfo::Structuring
-  'TOP_NODE_UP' => '(dir)',   # up node of Top node
-  'SIMPLE_MENU' => 0,         # not used in the parser but in structuring
-  'USE_UP_NODE_FOR_ELEMENT_UP' => 0, # Use node up for Up if there is no 
-				     # section up.
-);
-  
 my %parser_default_configuration =
   (%Texinfo::Common::default_parser_state_configuration,
-   %default_customization_values);
+   %Texinfo::Common::default_customization_values);
 
 my %tree_informations;
 foreach my $tree_information ('values', 'macros', 'explained_commands', 'labels') {
@@ -450,7 +413,7 @@ BEGIN {
     "Parsetexi",
     "Texinfo::ParserNonXS",
     "Parsetexi",
-    1);
+    0);
 } # end BEGIN
 
 END {

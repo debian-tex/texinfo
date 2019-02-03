@@ -24,7 +24,7 @@ EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
 
 # include contrib perl manual, exclude .git.
 dist-hook:
-	cd $(top_distdir)/contrib/perldoc-all && $(MAKE) distclean
+	cd $(top_distdir)/contrib/perldoc-all && $(MAKE) dist-hook
 	rm -rf `find $(distdir) -type d -name .git`
 
 # This is to prevent texinfo.tex from being included in the top-level

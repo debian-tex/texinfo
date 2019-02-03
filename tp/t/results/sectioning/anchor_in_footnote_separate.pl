@@ -755,7 +755,7 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 </div>
 <span id="Top-1"></span><h1 class="top">Top</h1>
 
-<p>In top node<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
+<p>In top node<a id="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">

@@ -387,7 +387,7 @@ ul.no-bullet {list-style: none}
 <div class="contents">
 
 <ul class="no-bullet">
-  <li><a name="toc-dernier" href="#dernier">Annexe A dernier</a></li>
+  <li><a id="toc-dernier" href="#dernier">Annexe A dernier</a></li>
 </ul>
 </div>
 

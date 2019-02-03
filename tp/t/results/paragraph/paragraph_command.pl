@@ -425,13 +425,13 @@ $result_converted{'html_text'}->{'paragraph_command'} = '<p>@
 </p>
 <p>\\@definfoenclose// should work at the beginning of a new paragraph.
 </p>
-<p><a name="DOCF1" href="#FOOT1"><sup>1</sup></a>.
+<p><a id="DOCF1" href="#FOOT1"><sup>1</sup></a>.
 </p>
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>lone footnote</p>
 </div>
 ';

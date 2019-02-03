@@ -160,9 +160,6 @@ TeX tuning:
       --translate-file=FILE  use given charset translation file for TeX
   -t, --command=CMD          insert CMD in copy of input file
 
-Any CMD strings are added after @setfilename for Texinfo input, or in
-the first line for LaTeX input.  Multiple values accumulate.
-
 Build modes:
   --build=MODE         specify the treatment of auxiliary files [$build_mode]
       --tidy           same as --build=tidy
@@ -1332,9 +1329,8 @@ uncomment_iftex=\
 }'
 
 
-# insert_commands - Insert $textra commands after @setfilename (Texinfo)
-# or at the beginning of the file (LaTeX).  Recommended to be used for
-# @finalout, @smallbook, etc.
+# insert_commands - Insert $textra commands at the beginning of the file. 
+# Recommended to be used for @finalout, @smallbook, etc.
 insert_commands ()
 {
   if test -n "$textra"; then
@@ -1345,7 +1341,13 @@ insert_commands ()
     verbose "Inserting extra commands: $textra"
     case $in_lang in
       latex)   textra_cmd=1i;;
-      texinfo) textra_cmd='/^@setfilename/a';;
+      texinfo)
+        textra_cmd='/^\\input texinfo/a'
+        # insert after @setfilename line if present
+        if head -n 10 $in_input | grep '^@setfilename' ; then
+          textra_cmd='/^@setfilename/a'
+        fi
+        ;;
       *)       error 1 "internal error, unknown language: $in_lang";;
     esac
     $SED "$textra_cmd\\

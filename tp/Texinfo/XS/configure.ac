@@ -43,6 +43,10 @@ AC_DEFUN([lookup_perl_conf],
           AC_SUBST([PERL_CONF_$1], [$conf_value])
 ])
 
+AC_DEFUN([lookup_perl_conf_values],
+          [m4_foreach([var], [$1], [lookup_perl_conf(var)])
+])
+
 AC_ARG_ENABLE([perl-xs],
     AC_HELP_STRING([--enable-perl-xs],
               [build Perl XS modules for speed (default: yes)]),
@@ -89,10 +93,7 @@ AC_PROG_CC
 
 gl_EARLY
 
-AC_PATH_PROG([XSUBPP], [xsubpp])
-if test x$ac_cv_path_XSUBPP = x ; then
-  AC_MSG_ERROR([xsubpp not found])
-fi
+AM_MISSING_PROG([XSUBPP], [xsubpp])
 
 gl_INIT
 
@@ -120,39 +121,24 @@ AC_ARG_VAR([PERL_EXT_CPPFLAGS], [C preprocessor flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_LDFLAGS], [Linker flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_CC], [Compiler for a Perl extension])
 
-# version of the XSParagraph interface
-XSPARAGRAPH_INTERFACE_VERSION=1
-AC_ARG_WITH([interface-version],
-  AC_HELP_STRING([--with-interface-version],
-   dnl FIXME $XSPARAGRAPH_INTERFACE_VERSION is not expanded
-   [interface version (default: 1)]),
-   [XSPARAGRAPH_INTERFACE_VERSION=$with_interface_version])
-
-AC_SUBST([XSPARAGRAPH_INTERFACE_VERSION])
-
 if test x$disable_xs != xyes; then
-lookup_perl_conf([ccflags])
-lookup_perl_conf([cccdlflags])
-
-# flags for linking the extension, e.g. -rpath.
-lookup_perl_conf([ccdlflags])
-
-lookup_perl_conf([libperl])
-# Change libperl.so into -lperl to indicate a library dependency to 
-# libtool.
-# Special case for Cygwin to change e.g. cygperl5_22.dll into -lperl
-PERL_CONF_libperl=`echo $PERL_CONF_libperl \
-           | sed -e 's/^lib/-l/' \
-                 -e 's/\..*//' \
-                 -e 's/^cygperl.*/-lperl/' `
-
-
-lookup_perl_conf([archlibexp])
-lookup_perl_conf([privlibexp])
-# TODO: would be nice to be able to do lookup_perl_conf([ccflags cccdlflags])
-# A for loop doesn't work; it has to be expanded at m4 time
-
-AC_CONFIG_HEADERS([config.h:config.in])
+    lookup_perl_conf_values([[ccflags], [cccdlflags], [optimize]])
+    
+    # flags for linking the extension, e.g. -rpath.
+    lookup_perl_conf([ccdlflags])
+    
+    lookup_perl_conf([libperl])
+    # Change libperl.so into -lperl to indicate a library dependency to 
+    # libtool.
+    # Special case for Cygwin to change e.g. cygperl5_22.dll into -lperl
+    PERL_CONF_libperl=`echo $PERL_CONF_libperl \
+               | sed -e 's/^lib/-l/' \
+                     -e 's/\..*//' \
+                     -e 's/^cygperl.*/-lperl/' `
+    
+    lookup_perl_conf_values([[archlibexp], [privlibexp]])
+    
+    AC_CONFIG_HEADERS([config.h:config.in])
 fi # not disable_xs
 
 AC_CONFIG_FILES([Makefile gnulib/lib/Makefile])

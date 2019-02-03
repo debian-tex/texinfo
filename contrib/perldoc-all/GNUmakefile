@@ -33,10 +33,12 @@ gendocs_args += --tex "--batch -t @finalout"
 gendocs_title = "Perl documentation in Texinfo"
 
 all: $(texi_pod_doc_incl)
-	rm -rf manual *.aux *.toc *.??
+	rm -rf manual *.aux *.toc
 # turns out the combined docs overflow one of TeX's arrays; increase it.
 	env save_size=100000 \
-	  gendocs.sh $(gendocs_args) $(texi_pod_doc) $(gendocs_title)
+	  ./gendocs-sh $(gendocs_args) $(texi_pod_doc) $(gendocs_title)
+
+EXTRA_DIST += gendocs-sh
 
 $(texi_pod_doc_incl): $(perl_pod_subdir)/*.pod
 	rm -rf $(texi_pod_subdir)
@@ -75,8 +77,9 @@ install:
 mostlyclean:
 	rm -rf manual $(texi_pod_doc_incl)
 
+# run directly from top-level Makefile.am
 # when running make dist, ensure we have none of the build files,
 # since the whole contrib/ directory is included in its entirety.
-distclean:
-	rm -rf manual perl-5.*.* $(texi_pod_doc) $(texi_pod_doc_incl)
+dist-hook:
+	rm -rf manual perl-5.*.* $(texi_pod_doc) $(texi_pod_doc_incl) && \
 	rm -rf *.?? *.??? *.info *~ \#*

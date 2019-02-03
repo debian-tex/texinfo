@@ -1165,11 +1165,11 @@ Previous: <a href="#chapter-node" accesskey="p" rel="prev">chapter node</a>, Up:
 <ul class="no-bullet">
 <li>
 <ul class="no-bullet">
-  <li><a name="toc-chapter-node-1" href="#chapter-node">1 chapter node</a></li>
+  <li><a id="toc-chapter-node-1" href="#chapter-node">1 chapter node</a></li>
 </ul></li>
-<li><a name="toc-part" href="#part">part</a>
+<li><a id="toc-part" href="#part">part</a>
 <ul class="no-bullet">
-  <li><a name="toc-chapter-with-part-node" href="#part-chapter-node">2 chapter with part node</a></li>
+  <li><a id="toc-chapter-with-part-node" href="#part-chapter-node">2 chapter with part node</a></li>
 </ul></li>
 
 </ul>

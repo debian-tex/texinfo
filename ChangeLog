@@ -1,4 +1,430 @@
-2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	pretest 6.5.92.
+
+	* configure.ac: version
+
+2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Improve txicmdcheck.
+
+	* doc/refcard/txicmdcheck: Special case for @& and @ampchar{}.
+	* doc/refcard/txirefcard.tex: Add commands we deliberately 
+	ignored at the end of the file.
+	* doc/texinfo.texi (Command List): Add @&, @ampchar{}.
+
+2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Automatically build pod2texi.1 man page.
+
+	* man/Makefile.am (pod2texi.1): Add rule.
+	* configure.ac: Check for pod2man with AM_MISSING_PROG.
+	* README-hacking: Remove instruction.
+
+2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Update.
+
+2019-02-01  Werner Lemberg  <wl@gnu.org>
+
+	* doc/texinfo.tex (\setupverbatim): Fix a comment.
+
+2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix too wide space in @verbatiminclude.
+
+	* doc/texinfo.tex (\verbatiminclude): Confine the effect of 
+	\indexnofonts to a group where the filename is read, as is done 
+	in \include.  Otherwise, there is an inappropriate definition of 
+	'\ ' while the file is being input.  Werner Lemberg reported 
+	that a wider space would be output after a colon in a file input 
+	with @verbatiminclude.
+
+2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Use 'id' instead of 'name'.
+
+	* js/info.js (add_header, scan_toc): Use 'id' instead of 'name' 
+	attribute.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Inline test script.
+
+	* configure.ac: Load test module with "perl -e" instead of 
+	running a separate script.
+	* tp/Texinfo/XS/fail.pl: Remove this short file.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Unify AM_CFLAGS for XS modules.
+
+	* tp/Texinfo/XS/Makefile.am (AM_CFLAGS): Put flags for C 
+	compiler in here, rather than in target-specific variables.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix loading of XS module.
+
+	* tp/Texinfo/Conver/Paragraph.pm: Use 0 as the XS interface 
+	version number instead of 1.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Reorganize parsetexi header files.
+
+	* tp/Texinfo/XS/parsetexi/tree_types.h,
+	* tp/Texinfo/XS/parsetexi/parser.h (GLOBAL_INFO): Move to 
+	parser.h.
+	* tp/Texinfo/XS/parsetexi/extra.c (add_extra_index_entry): 
+	Comment out function with preprocessor.
+	* tp/Texinfo/XS/parsetexi/indices.c (enter_index_entry): Don't 
+	call add_extra_index_entry.
+	* tp/Texinfo/XS/parsetexi/tree_types.h,
+	* tp/Texinfo/XS/parsetexi/indices.c (INDEX_ENTRY_REF):
+	Move to indices.c.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Avoid a warning.
+
+	* tp/Texinfo/XS/configure.ac: Get perl conf value 'optimize'.
+	* tp/Texinfo/XS/Makefile.am (AM_CFLAGS): Add it.  This can avoid 
+	a preprocessor warning about -DFORTIFY_SOURCE.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove ununused output variable.
+
+	* tp/Texinfo/XS/configure.ac (XSPARAGRAPH_INTERFACE_VERSION):
+	Do not set with AC_SUBST.  This was intended to be used when 
+	building XSParagraph as a stand-alone module.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Use an m4 loop.
+
+	* tp/Texinfo/XS/configure.ac (lookup_perl_conf_values): New 
+	macro, to use m4_foreach (from autoconf m4sugar) to look up 
+	several values with lookup_perl_conf.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Do not require xsubpp.
+
+	* tp/Texinfo/XS/configure.ac: Check for xsubpp with 
+	AM_MISSING_PROG instead of AC_PATH_PROG, as xsubpp is not 
+	required unless a *.xs file is modified.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove unused type.
+
+	* tp/Texinfo/XS/parsetexi/tree_types.h (DEF_ARGS_EXTRA): Remove.
+	(Suggestion from Hans-Bernhard Bröker.)
+	(INDEX_ENTRY_REF): Update comment.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Centralise parser configuration values.
+
+	* tp/texi2any.pl: Refer to %default_customization_values in 
+	Texinfo::Common instead of Texinfo::Parser.  Continues change 
+	made on 2019-01-29.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	perldoc-all Makefile change
+
+	* contrib/perldoc-all/GNUmakefile: Change distclean target to 
+	dist-hook to avoid deleting inappropriate files with distclean.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Continue search after a node wasn't found.
+
+	* info/session.c (info_search_internal): If a node couldn't be 
+	found, go onto the next node.
+	This could happen if there was a comma in a node name.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove duplicate sub definition.
+
+	* Pod-Simple-Texinfo/pod2texi.pl (__): Remove definition as 
+	there is already one exported by Texinfo::Common (for translated 
+	strings).
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Try to fix contrib/perldoc-all.
+
+	* contrib/perldoc-all/gendocs-sh: Add, from gendocs.sh in gnulib 
+	project.
+	* contrib/perldoc-all/Makefile.am: Access it instead of relying 
+	on gendocs.sh being in path.  Do not remove *.?? (intending to 
+	remove auxiliary index files) as this may delete the *.tar.gz 
+	file the user has just downloaded.
+
+	Keith Thompson reported problems with building Perl manuals with 
+	this system.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Centralise parser configuration values.
+
+	* tp/Texinfo/ParserNonXS.pm,
+	* tp/Texinfo/Common.pm (%default_customization_values):
+	Move to Common.pm.
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm: Use this hash instead of 
+	having a separate copy for this module.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove 'parent_type' field.
+
+	* tp/Texinfo/XS/parsetexi/tree_types.h (ELEMENT):
+	Remove field 'parent_type'.
+	(enum route_element_type): Remove.
+	* tp/Texinfo/XS/parsetexi/end_line.c (end_line_starting_block)
+	(end_line),
+	* tp/Texinfo/XS/parsetexi/indices.c (wipe_index),
+	* tp/Texinfo/XS/parsetexi/api.c (build_perl_array)
+	(build_single_index_data): Check whether 'parent' is null to see 
+	if an element is in tree.  This should work for all elements 
+	except the root of the tree.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove reference line numbers in parsetexi.
+
+	* tp/Texinfo/XS/parsetexi: Remove most of the comments with what 
+	the line numbers were of the corresponding Perl code at the time 
+	that parsetexi was first started.  Leave some where more work 
+	might be needed.
+	* tp/Texinfo/XS/parsetexi/main.c: Remove.
+	* tp/Texinfo/XS/parsetexi/Common.pm: Remove.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove old files from parsetexi subdirectory.
+
+	* tp/Texinfo/XS/parsetexi/complete_tree.pl,
+	* tp/Texinfo/XS/parsetexi/debug_perl.txt,
+	* tp/Texinfo/XS/parsetexi/makeinfo-debug.txt: Remove.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove relics of ExtUtils::MakeMaker build system.
+
+	* tp/Texinfo/XS/Makefile.PL,
+	* tp/Texinfo/XS/MANIFEST,
+	* tp/Texinfo/XS/prepare_standalone_perl_module.sh: Remove.
+	* tp/Texinfo/XS/Makefile.am (perl_specific_files): Remove.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove relics of ExtUtils::MakeMaker build system.
+
+	* tp/Makefile.PL, tp/MANIFEST: Remove.
+	* tp/maintain/MANIFEST_generated_files: Remove.
+	* tp/maintain/MANIFEST_perl_po: Remove.
+	* tp/maintain/prepare_perl_module_files.sh,
+	* tp/maintain/prepare_perl_standalone_module_archive.sh,
+	* tp/maintain/clean_perl_module_files.sh: Remove.
+
+	* tp/Makefile.am (MANIFEST, perl_specific_files): Remove.
+
+	This was for creating "standalone modules", but it is 
+	out-of-date, doesn't work and has never been used.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove test from 'many_input_files' subdirectory.
+
+	* tp/tests/many_input_files/indices.sh: Remove.
+	* tp/tests/indices/list_of_tests (index_table): New test to 
+	partially replace indices.sh.  Only one input file is tested.
+
+	This test tested that texi2any would work with several manuals 
+	to process given to it on the command line.  I suspect this 
+	feature is rarely used.  The extra complexity this gave to the 
+	test suite is not worth it IMHO.
+	Now the many_input_files subdirectory only contains the 
+	latex2html and tex4ht tests, which are not run by default.
+
+	I checks that the output for the index_table.texi file was the 
+	same by checking the same files were output and that the 
+	contents were the same, with a command like
+	  for f in * ; do echo DIFF $f ;
+	  diff $f ../../../many_input_files/indices_res/$f ; done
+
+2019-01-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Use 'id' instead of 'name' attribute.
+
+	* tp/Texinfo/Convert/HTML.pm (_convert_footnote_command),
+	(_default_contents):
+	Use 'id' instead of 'name' attribute on <a> tag.
+
+2019-01-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Comments in parsetexi header files.
+
+	* tp/Texinfo/XS/parsetexi: Add a brief comment at the start of 
+	each header file.
+	* tp/Texinfo/XS/parsetexi/tree_types.h,
+	* tp/Texinfo/XS/parsetexi/conf.h (CONF): Move to conf.h.
+	* tp/Texinfo/XS/parsetexi/errors.c: Remove #define _GNU_SOURCE.
+
+2019-01-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Header file changes and small fixes for parsetexi.
+
+	* tp/Texinfo/XS/parsetexi/tree_types.h,
+	* tp/Texinfo/XS/parsetexi/macro.h (INFO_ENCLOSE, MACRO):
+	Move to text.h.
+	* tp/Texinfo/XS/parsetexi/close.c (close_command_cleanup): Fix 
+	incorrect comparison of enum values.
+	* tp/Texinfo/XS/parsetexi/separator.c (handle_close_brace): 
+	Remove an unused variable.
+	* tp/Texinfo/XS/parsetexi/tree_types.h,
+	* tp/Texinfo/XS/parsetexi/errors.h (enum error_type):
+	Move to text.h.
+
+2019-01-26  Bruno Haible  <bruno@clisp.org>
+
+	Fix test failures on HP-UX.
+
+	Reported by Richard Lloyd in
+	<https://lists.gnu.org/archive/html/bug-texinfo/2013-02/msg00030.html>.
+
+	* install-info/tests/ii-0041-test: Simulate zdiff.
+	* install-info/tests/ii-0050-test: Likewise.
+
+2019-01-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Make "texi2dvi --command" work without @setfilename in file.
+
+	* util/texi2dvi (insert_commands, usage):  Insert commands given 
+	with --command even if no @setfilename line is present.
+	* doc/texinfo.texi (Format with texi2dvi) <--command>: Remove 
+	mention of @setfilename.
+
+2019-01-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Attempt to make test suite parallel safe.
+
+	* tp/maintain/regenerate_cmd_tests.sh: Use 'mkdir -p' instead
+	of testing whether directory exists.
+	* tp/tests/run_parser_all.sh: Use 'mkdir -p' instead of testing 
+	if a directory exists.  Do not delete a temporary directory at 
+	the end.  Redirect stdin with "exec" instead of just redirecting 
+	a "while" loop in order to avoid problem with redirecting output 
+	under Solaris 10 shell.
+
+	Andreas Schwab reported that the test suite was not parallel 
+	safe.
+
+2019-01-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Pass on -D flags to texi2dvi.
+
+	* tp/texi2any.pl: If calling texi2dvi, only pass along the 
+	values of flags before the file is parsed: not the values after 
+	the file is parsed.  These values might be wrong for the start 
+	of the file.
+
+	Stefan Husmann found that the Tramp manual wouldn't build with 
+	pretest texinfo-6.5.91
+
+2019-01-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Check for gawk version for rebuilding texindex.awk.
+
+	* configure.ac: Use AM_MISSING_PROG to look for gawk.
+	* texindex/Makefile.am (texindex.awk, ti.twjr): Use $(GAWK) 
+	instead of $(AWK).
+	* texindex/jrtangle: Add a check for the version number of gawk 
+	and, if too old, exit with status 63 in order to let the 
+	"missing" script know it is too old.
+
+	Bruno Haible reported that the rule to regenerate texindex.awk
+	was being run on OpenBSD 6.3 where there was no gawk.
+
+2019-01-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Documentation of colons in index entries.
+
+	* doc/texinfo.texi (Index Commands):
+	Water down the proscription of colons in an index entry, as this
+	works with some Info readers.
+
+2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Split code into separate file.
+
+	* tp/Texinfo/XS/parsetexi/conf.c: New file, along with header.  
+	This helps us to avoid declaring the 'conf' variable in two 
+	different header files.
+
+2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Rearrange header files.
+
+	* tp/Texinfo/XS/parsetexi/debug.c: Include header file 
+	containing declarations of functions in this file.
+	* tp/Texinfo/XS/parsetexi/end_line.c,
+	* tp/Texinfo/XS/parsetexi/separator.c: Remove an unnecessary #include.
+
+2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove unused API functions.
+
+	* tp/Texinfo/XS/parsetexi/Parsetexi.xs (element_type_name)
+	(num_contents_children, num_args_children, contents_child_by_index):
+	Remove ununused XSUB's.
+
+	* tp/Texinfo/XS/parsetexi/api.c (num_contents_children) 
+	(num_args_children): Remove unused.
+
+2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm: Remove a generated comment.
+
+2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Move function declarations to header file.
+
+	* tp/Texinfo/XS/parsetexi/Parsetexi.xs: Move function 
+	declarations to header file, api.h.  This means the compiler can 
+	check the declarations are consistent with the definitions in 
+	api.c.
+
+2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove an unnecessary #include.
+
+	* tp/Texinfo/XS/parsetexi/input.c,
+	* tp/Texinfo/XS/parsetexi/parser.c: Remove an unnecessary 
+	#include "api.h".
+
+2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Move a function between files.
+
+	* tp/Texinfo/XS/parsetexi/api.c,
+	* tp/Texinfo/XS/parsetexi/parser.c (element_type_name): Move to 
+	parser.c.
+
+2019-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove some unused variables.
+
+	* tp/Texinfo/XS/parsetexi/separator.c (handle_close_brace):
+	Remove some unused variables.
+
+2019-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	pretest 6.5.91.
 

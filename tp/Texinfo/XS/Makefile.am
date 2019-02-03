@@ -43,7 +43,7 @@ XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap -typemap typemap
 .xs.c:
 	$(XSUBPP) $(XSUBPPARGS) $< > $*.xsc && mv $*.xsc $*.c
 
-EXTRA_DIST+= TestXS.pm fail.pl typemap
+EXTRA_DIST += TestXS.pm typemap
 
 # -------------------------------------------------------
 
@@ -74,17 +74,9 @@ CLEANFILES += MiscXS.c
 EXTRA_DIST += MiscXS.xs
 
 
-AM_CFLAGS = $(PERL_CONF_ccflags)
-
-XSParagraph_la_CFLAGS = $(AM_CFLAGS)
-XSParagraph_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(XSPARAGRAPH_INTERFACE_VERSION)\"  "-I$(PERL_INC)"
-
-TestXS_la_CFLAGS = $(AM_CFLAGS)
-TestXS_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"  "-I$(PERL_INC)"
-
-MiscXS_la_CFLAGS = $(AM_CFLAGS)
-MiscXS_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"  "-I$(PERL_INC)"
-
+AM_CFLAGS = $(PERL_CONF_ccflags) $(PERL_CONF_optimize)
+AM_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"
+AM_CFLAGS += -I$(PERL_INC)
 
 if HOST_NEEDS_NO_UNDEFINED
   PLATFORM_LDFLAGS = -no-undefined -L$(PERL_INC) $(PERL_CONF_libperl)
@@ -98,14 +90,6 @@ endif
 AM_LDFLAGS = -avoid-version -module $(PERL_CONF_ccdlflags)
 AM_LDFLAGS += $(PLATFORM_LDFLAGS)
 
-# only used to regenerate a stand-alone perl module
-perl_specific_files = \
-  Makefile.PL \
-  MANIFEST \
-  prepare_standalone_perl_module.sh
-
-# EXTRA_DIST += $(perl_specific_files)
-
 ########################## parsetexi
 
 p=parsetexi
@@ -113,14 +97,9 @@ p=parsetexi
 modulesdir = $(pkgdatadir)/Texinfo/XS/parsetexi
 dist_modules_DATA = $p/Parsetexi.pm
 
-
 if HAVE_ICONV
 xs_LTLIBRARIES += Parsetexi.la
 endif
-
-Parsetexi_la_CFLAGS = $(AM_CFLAGS)
-Parsetexi_la_CFLAGS += -DVERSION=\"$(VERSION)\" "-I$(PERL_INC)"
-
 
 Parsetexi_la_SOURCES= parsetexi/Parsetexi.c \
                       parsetexi/api.c \
@@ -140,6 +119,8 @@ Parsetexi_la_SOURCES= parsetexi/Parsetexi.c \
 		      parsetexi/close.c \
 		      parsetexi/text.c \
 		      parsetexi/text.h \
+		      parsetexi/conf.c \
+		      parsetexi/conf.h \
 		      parsetexi/context_stack.c \
 		      parsetexi/context_stack.h \
 		      parsetexi/debug.c \
@@ -179,12 +160,7 @@ EXTRA_DIST+=$p/element_types.txt $p/element_types.awk \
 	   $p/command_data.txt $p/command_data.awk
 
 # For reference
-EXTRA_DIST+=$p/Common.pm $p/Parser-5556.pm
-
-EXTRA_DIST+=$p/complete_tree.pl
-
-# Notes
-EXTRA_DIST+=$p/debug_perl.txt $p/makeinfo-debug.txt
+EXTRA_DIST+=$p/Parser-5556.pm
 
 $(srcdir)/$p/element_types.c $(srcdir)/$p/element_types.h: $p/element_types.txt $p/element_types.awk
 	awk -v srcdir=$(srcdir)/$p -f $(srcdir)/$p/element_types.awk \

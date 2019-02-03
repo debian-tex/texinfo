@@ -134,7 +134,8 @@ wipe_index (INDEX *idx)
   for (i = 0; i < idx->index_number; i++)
     {
       ie = &idx->index_entries[i];
-      if (ie->content && ie->content->parent_type == route_not_in_tree)
+      /* Destroy element if it is not in the main tree */
+      if (ie->content && !ie->content->parent)
         destroy_element (ie->content);
     }
   free (idx->name);
@@ -251,7 +252,15 @@ init_index_commands (void)
 }
 
 
-// 2530
+/* A reference to an index entry, in the "index_entry" extra key of
+   an element.  index->index_entries[entry] is the referred-to index
+   entry.  Not actually used in api.c (element_to_perl_hash). */
+typedef struct {
+    INDEX *index;
+    int entry;
+} INDEX_ENTRY_REF;
+
+
 /* INDEX_TYPE_COMMAND is used to determine which index to enter the entry in.
    INDEX_AT_COMMAND is the Texinfo @-command defining the index entry.
    CONTENT is an element whose contents represent the text of the
@@ -267,7 +276,6 @@ enter_index_entry (enum command_id index_type_command,
 {
   INDEX *idx;
   INDEX_ENTRY *entry;
-  INDEX_ENTRY_REF *ier;
   KEY_PAIR *k;
 
   idx = index_of_command (index_type_command);
@@ -281,7 +289,6 @@ enter_index_entry (enum command_id index_type_command,
   entry = &idx->index_entries[idx->index_number++];
   memset (entry, 0, sizeof (INDEX_ENTRY));
 
-
   entry->index_name = idx->name;
   entry->index_at_command = index_at_command;
   entry->index_type_command = index_type_command;
@@ -292,9 +299,7 @@ enter_index_entry (enum command_id index_type_command,
 
   k = lookup_extra (current, "sortas");
   if (k)
-    {
-      entry->sortas = (char *) k->value;
-    }
+    entry->sortas = (char *) k->value;
 
   if (current_region ())
     entry->region = current_region ();
@@ -303,11 +308,17 @@ enter_index_entry (enum command_id index_type_command,
 
   entry->number = idx->index_number;
 
+#if 0
+  /* This reference is not used in api.c when the Perl tree is output. */
+  {
+  INDEX_ENTRY_REF *ier;
   ier = malloc (sizeof (INDEX_ENTRY_REF));
   ier->index = idx;
   ier->entry = idx->index_number - 1;
 
   add_extra_index_entry (current, "index_entry", ier);
+  }
+#endif
 
   if (!current_region () && !current_node && !current_section)
     line_warn ("entry for index `%s' outside of any node", idx->name);

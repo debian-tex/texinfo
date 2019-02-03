@@ -146,14 +146,12 @@ check OpenCSW build reports at
 try groff.texinfo from groff source repo.
 process doc/texinfo-tex-test.texi with TeX and check that output is good.
 
-change instructions below to use git instead of svn.
-
 - First checks:
 Ensure texinfo.tex, texi2dvi, and htmlxref.cnf are updated on ftp.gnu.org.
 Ensure TXI_XLATE in doc/Makefile.am matches actual file list.
 Check that LINGUAS under po and po_document match actual file list.
 Have a look at the output of "git status -u" to check for files that
-  should be tracked in SVN or ignored.
+  should be tracked in git or ignored.
 Check that TEXINFO_DTD_VERSION has been updated to the next version in
   configure.ac if the DTD has been modified since the last release.
   See comments in configure.ac, and run (at the top level) make dtd-check.
@@ -165,6 +163,8 @@ Update copyright years in many files for release; best to grep -r for
   No need (though it's ok) to change every source file at once, just the
   ones relevant to --version calls, etc., such as texindex.awk and info.c.
 make po-check             # update po/POTFILES.in as needed
+check for C compiler warnings by configuring with -Wall (not all have to 
+be fixed)
 
 # Under the top level, and also under tp/Texinfo/XS, which uses
 # a separate gnulib import.
@@ -190,13 +190,12 @@ Check that translations have been updated, e.g.:
   rsync  -Lrtzv  translationproject.org::tp/latest/texinfo/ po
   rsync  -Lrtzv  translationproject.org::tp/latest/texinfo_document/ \
                  po_document # note the trailing slashes in these commands
-pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
 
-check that the svn checkout is up-to-date (run "svnversion" and "svn update")
 make
 make update-po            # both po and po_document needed, build a dist first
+TEXINFO_XS_PARSER=1 make distcheck # to check XS parser is good
 (export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
-svn commit                # when clean, then distcheck to be sure
+git commit and push
 
 - To do the actual upload:
 pkg=texinfo
@@ -208,6 +207,8 @@ gnupload --to ftp.gnu.org:$pkg   $pkg-$ver.tar.{gz,xz} *.diff.xz #official
    Use --user option if not using default key
    texinfo.tex and texi2dvi should already be up to date, but check.  Use
 gnupload --replace --to ftp.gnu.org:texinfo texi2dvi
+
+change instructions below to use git instead of svn.
 
 #  Official releases only: tag source tree (use your own username before @):
 svn copy -r 6363 -m'texinfo_6_0 tag based on r6363' \

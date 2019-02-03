@@ -64,7 +64,7 @@ valid_tree_transformation
 __ __p print_tree
 );
 
-$VERSION = '6.5.91';
+$VERSION = '6.5.92';
 
 # i18n
 sub N__($)
@@ -139,6 +139,35 @@ our %default_parser_state_configuration = (
   },
   'in_gdt' => 0 # whether we are being called by gdt
 );
+
+
+# Customization variables obeyed by the parser and other modules, and the 
+# default values.
+our %default_customization_values = (
+  'TEST' => 0,
+  'DEBUG' => 0,     # if >= 10, tree is printed in texi2any.pl after parsing.
+                    # If >= 100 tree is printed every line.
+  'SHOW_MENU' => 1,             # if false no menu error related.
+  'IGNORE_BEFORE_SETFILENAME' => 1,
+  'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME' => 1,
+  'INPUT_PERL_ENCODING' => undef, # input perl encoding name, set from 
+                              # @documentencoding in the default case
+  'INPUT_ENCODING_NAME' => undef, # encoding name normalized as preferred
+                              # IANA, set from @documentencoding in the default
+                              # case
+  'CPP_LINE_DIRECTIVES' => 1, # handle cpp like synchronization lines
+  'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
+  # This is not used directly, but passed to Convert::Text through 
+  # Texinfo::Common::_convert_text_options
+  'ENABLE_ENCODING' => 1,     # output accented and special characters
+                              # based on @documentencoding
+  # following are used in Texinfo::Structuring
+  'TOP_NODE_UP' => '(dir)',   # up node of Top node
+  'SIMPLE_MENU' => 0,         # not used in the parser but in structuring
+  'USE_UP_NODE_FOR_ELEMENT_UP' => 0, # Use node up for Up if there is no 
+                                     # section up.
+);
+
 
 # customization options
 our %document_settable_at_commands = (

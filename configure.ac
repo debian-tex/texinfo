@@ -10,7 +10,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [6.5.91], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [6.5.92], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -75,6 +75,9 @@ fi
 AC_REQUIRE_AUX_FILE([tap-driver.sh])
 AC_PROG_AWK
 
+# for generating texindex.awk
+AM_MISSING_PROG(GAWK, gawk)
+
 # Checks for programs.
 AC_PROG_CC
 
@@ -86,8 +89,9 @@ gl_EARLY
 # Rest of Gnulib.
 gl_INIT
 
-# help2man to generate man pages.
+# To generate man pages.
 AM_MISSING_PROG(HELP2MAN, help2man)
+AM_MISSING_PROG(POD2MAN, pod2man)
 
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
@@ -391,7 +395,7 @@ if test $enable_xs = check; then
    && TEXINFO_XS=debug ; export TEXINFO_XS \
    && ${PERL} -I . \
               -I ${xs_srcdir} \
-              -w ${xs_srcdir}/Texinfo/XS/fail.pl \
+              -e 'require Texinfo::XS::TestXS;' \
       | grep 'message from XS module') \
   && enable_xs=yes
   AC_MSG_CHECKING([whether we can build Perl extension (XS) modules])

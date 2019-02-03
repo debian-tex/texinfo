@@ -55,7 +55,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.5.91';
+$VERSION = '6.5.92';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -1649,7 +1649,7 @@ sub _convert_footnote_command($$$$)
   }
 
   $foot_lines .= '<h3>' .
-   "<a name=\"$footid\" href=\"$document_filename#$docid\">($number_in_doc)</a></h3>\n"
+   "<a id=\"$footid\" href=\"$document_filename#$docid\">($number_in_doc)</a></h3>\n"
    . $footnote_text;
 
   my $footnote_number_text;
@@ -1658,7 +1658,7 @@ sub _convert_footnote_command($$$$)
   } else {
     $footnote_number_text = "<sup>$number_in_doc</sup>";
   }
-  return "<a name=\"$docid\" href=\"$footnote_filename#$footid\">$footnote_number_text</a>";
+  return "<a id=\"$docid\" href=\"$footnote_filename#$footid\">$footnote_number_text</a>";
 }
 $default_commands_conversion{'footnote'} = \&_convert_footnote_command;
 
@@ -6122,7 +6122,7 @@ sub _default_contents($$;$$)
           if ($toc_id ne '' or $href ne '') {
             my $toc_name_attribute = '';
             if ($toc_id ne '') {
-              $toc_name_attribute = "name=\"$toc_id\" ";
+              $toc_name_attribute = "id=\"$toc_id\" ";
             }
             my $href_attribute = '';
             if ($href ne '') {

@@ -17,7 +17,7 @@ fi
 
 dir=tex_html
 name='math_not_closed'
-[ -d "$dir" ] || mkdir $dir
+mkdir -p $dir
 
 "$srcdir"/run_parser_all.sh -dir $dir $name
 exit_status=$?

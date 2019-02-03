@@ -4985,7 +4985,7 @@ Next: <a href="#chapter2" accesskey="n" rel="next">chapter2</a>, Previous: <a hr
 </div>
 <span id="chapter-1"></span><h2 class="chapter">1 chapter</h2>
 
-<p><a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
+<p><a id="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
 <div class="format">
 <table class="menu" border="0" cellspacing="0"><tr><td>
@@ -5136,18 +5136,18 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
 <div class="contents">
 
 <ul class="no-bullet">
-  <li><a name="toc-chapter-1" href="#chapter">1 chapter</a>
+  <li><a id="toc-chapter-1" href="#chapter">1 chapter</a>
   <ul class="no-bullet">
-    <li><a name="toc-A-section" href="#s_002d_002dect_002cion">1.1 A section</a>
+    <li><a id="toc-A-section" href="#s_002d_002dect_002cion">1.1 A section</a>
     <ul class="no-bullet">
-      <li><a name="toc-subsection-1" href="#subsection">1.1.1 subsection</a>
+      <li><a id="toc-subsection-1" href="#subsection">1.1.1 subsection</a>
       <ul class="no-bullet">
-        <li><a name="toc-subsubsection-_0060_0060simple_002ddouble_002d_002d-1" href="#subsubsection-_0060_0060simple_002ddouble_002d_002d">1.1.1.1 subsubsection &ldquo;simple-double&ndash;</a></li>
-        <li><a name="toc-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027" href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">1.1.1.2 three&mdash;four&mdash;-&rdquo;</a></li>
+        <li><a id="toc-subsubsection-_0060_0060simple_002ddouble_002d_002d-1" href="#subsubsection-_0060_0060simple_002ddouble_002d_002d">1.1.1.1 subsubsection &ldquo;simple-double&ndash;</a></li>
+        <li><a id="toc-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027" href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">1.1.1.2 three&mdash;four&mdash;-&rdquo;</a></li>
       </ul></li>
     </ul></li>
   </ul></li>
-  <li><a name="toc-chapter-2" href="#chapter2">chapter 2</a></li>
+  <li><a id="toc-chapter-2" href="#chapter2">chapter 2</a></li>
 </ul>
 </div>
 
@@ -5156,8 +5156,8 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
 
 <div class="shortcontents">
 <ul class="no-bullet">
-<li><a name="stoc-chapter-1" href="#toc-chapter-1">1 chapter</a></li>
-<li><a name="stoc-chapter-2" href="#toc-chapter-2">chapter 2</a></li>
+<li><a id="stoc-chapter-1" href="#toc-chapter-1">1 chapter</a></li>
+<li><a id="stoc-chapter-2" href="#toc-chapter-2">chapter 2</a></li>
 </ul>
 </div>
 
@@ -5165,7 +5165,7 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>in footnote</p>
 </div>
 <hr>

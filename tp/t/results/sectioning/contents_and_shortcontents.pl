@@ -872,14 +872,14 @@ ul.no-bullet {list-style: none}
 <div class="shortcontents">
 <ul class="no-bullet">
 <li><ul class="no-bullet">
-<li><a name="stoc-chapter" href="#toc-chapter">1 chapter</a></li>
+<li><a id="stoc-chapter" href="#toc-chapter">1 chapter</a></li>
 </ul></li>
-<li><a name="stoc-part" href="#toc-part">part</a><ul class="no-bullet">
-<li><a name="stoc-chapter-in-part" href="#toc-chapter-in-part">2 chapter in part</a></li>
-<li><a name="stoc-second-chapter-in-part" href="#toc-second-chapter-in-part">3 second chapter in part</a></li>
-<li><a name="stoc-unnumbered" href="#toc-unnumbered">unnumbered</a></li>
+<li><a id="stoc-part" href="#toc-part">part</a><ul class="no-bullet">
+<li><a id="stoc-chapter-in-part" href="#toc-chapter-in-part">2 chapter in part</a></li>
+<li><a id="stoc-second-chapter-in-part" href="#toc-second-chapter-in-part">3 second chapter in part</a></li>
+<li><a id="stoc-unnumbered" href="#toc-unnumbered">unnumbered</a></li>
 </ul></li>
-<li><a name="stoc-appendix" href="#toc-appendix">Appendix A appendix</a></li>
+<li><a id="stoc-appendix" href="#toc-appendix">Appendix A appendix</a></li>
 
 </ul>
 </div>
@@ -892,26 +892,26 @@ ul.no-bullet {list-style: none}
 <ul class="no-bullet">
 <li>
 <ul class="no-bullet">
-  <li><a name="toc-chapter" href="#chapter">1 chapter</a>
+  <li><a id="toc-chapter" href="#chapter">1 chapter</a>
   <ul class="no-bullet">
-    <li><a name="toc-section" href="#section">1.1 section</a>
+    <li><a id="toc-section" href="#section">1.1 section</a>
     <ul class="no-bullet">
-      <li><a name="toc-subsection" href="#subsection">1.1.1 subsection</a>
+      <li><a id="toc-subsection" href="#subsection">1.1.1 subsection</a>
       <ul class="no-bullet">
-        <li><a name="toc-subsubsection" href="#subsubsection">1.1.1.1 subsubsection</a></li>
+        <li><a id="toc-subsubsection" href="#subsubsection">1.1.1.1 subsubsection</a></li>
       </ul></li>
     </ul></li>
   </ul></li>
 </ul></li>
-<li><a name="toc-part" href="#part">part</a>
+<li><a id="toc-part" href="#part">part</a>
 <ul class="no-bullet">
-  <li><a name="toc-chapter-in-part" href="#chapter-in-part">2 chapter in part</a></li>
-  <li><a name="toc-second-chapter-in-part" href="#second-chapter-in-part">3 second chapter in part</a></li>
-  <li><a name="toc-unnumbered" href="#unnumbered">unnumbered</a></li>
+  <li><a id="toc-chapter-in-part" href="#chapter-in-part">2 chapter in part</a></li>
+  <li><a id="toc-second-chapter-in-part" href="#second-chapter-in-part">3 second chapter in part</a></li>
+  <li><a id="toc-unnumbered" href="#unnumbered">unnumbered</a></li>
 </ul></li>
-  <li><a name="toc-appendix" href="#appendix">Appendix A appendix</a>
+  <li><a id="toc-appendix" href="#appendix">Appendix A appendix</a>
   <ul class="no-bullet">
-    <li><a name="toc-appendixsec" href="#appendixsec">A.1 appendixsec</a></li>
+    <li><a id="toc-appendixsec" href="#appendixsec">A.1 appendixsec</a></li>
   </ul></li>
 
 </ul>

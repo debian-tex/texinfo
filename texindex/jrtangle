@@ -1,6 +1,7 @@
 #! /usr/local/bin/gawk -f
 #
 # Copyright (C) 2013, 2014, 2015 Arnold David Robbins
+# Copyright (C) 2019 Free Software Foundation
 # 
 # This file is part of TexiWeb Jr., a literate programming system.
 # 
@@ -23,6 +24,19 @@
 #
 #	git clone http://github.com/arnoldrobbins/texiwebjr
 #
+
+BEGIN {
+        v[0] = 0
+        if ("version" in PROCINFO) {
+            match(PROCINFO["version"], /^[0-9]+\./, v);
+        }
+
+        if (v[0] < 4) {
+                print("gawk >= 4.0 required") > "/dev/stderr"
+                exit 63 # for "missing" script
+        }
+}
+
 BEGIN {
 	TRUE = 1
 	FALSE = 0

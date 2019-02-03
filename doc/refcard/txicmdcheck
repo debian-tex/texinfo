@@ -127,13 +127,14 @@ sub read_refcard {
       $c = '@\\' if $c eq '@\bschar';  # TeX
       $c = '@{' if $c eq '@\lbracechar';  # TeX
       $c = '@}' if $c eq '@\rbracechar';  # TeX
+      $c = '@&' if $c eq '@\&';  # TeX
       push (@ret, $c);
       push (@ret, "${c}x") if $xcmd;
     }
   }
   push (@ret, '@end', '@uref', '@appendixsection');  # described in text
   push (@ret, '@,');  # our non-parsing above lost these
-  push (@ret, qw(@atchar @lbracechar @rbracechar @backslashchar));
+  push (@ret, qw(@atchar @ampchar @lbracechar @rbracechar @backslashchar));
   close (FILE) || warn "close($FILE) failed: $!";
   
   my %ret; @ret{@ret} = ();

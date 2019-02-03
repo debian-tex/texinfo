@@ -518,11 +518,11 @@ ul.no-bullet {list-style: none}
 <span id="Top"></span><h1 class="node-heading">Top</h1>
 
 
-<p>Copying<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>.
+<p>Copying<a id="DOCF1" href="#FOOT1"><sup>1</sup></a>.
 </p>
 
 
-<p>Copying<a name="DOCF1_2" href="#FOOT1_2"><sup>2</sup></a>.
+<p>Copying<a id="DOCF1_2" href="#FOOT1_2"><sup>2</sup></a>.
 </p>
 
 <p>See <a href="#Copying-footnote">Copying footnote</a>.
@@ -531,10 +531,10 @@ ul.no-bullet {list-style: none}
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>In footnote.
 <span id="Copying-footnote"></span></p>
-<h3><a name="FOOT1_2" href="#DOCF1_2">(2)</a></h3>
+<h3><a id="FOOT1_2" href="#DOCF1_2">(2)</a></h3>
 <p>In footnote.
 <span id="Copying-footnote"></span></p>
 </div>

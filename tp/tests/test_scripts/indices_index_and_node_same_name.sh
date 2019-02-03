@@ -11,7 +11,7 @@ diffs_dir=diffs
 
 dir=indices
 name='index_and_node_same_name'
-[ -d "$dir" ] || mkdir $dir
+mkdir -p $dir
 
 "$srcdir"/run_parser_all.sh -dir $dir $name
 exit_status=$?

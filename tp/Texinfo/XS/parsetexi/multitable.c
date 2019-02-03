@@ -51,7 +51,6 @@ item_multitable_parent (ELEMENT *current)
   return 0;
 }
 
-// 1381
 /* Put the contents of a @table row in a ET_table_entry container, containing
    a ET_table_term element and a ET_table_item element.  The elements of
    this row currently occur the end of the contents of CURRENT as immediate
@@ -95,7 +94,7 @@ gather_previous_item (ELEMENT *current, enum command_id next_command)
      speed is an issue then we could move all the elements at once instead
      of calling insert_into_contents multiple times. */
 
-  if (type == ET_table_item) // 1423
+  if (type == ET_table_item)
     {
       ELEMENT *table_entry = new_element (ET_table_entry);
       ELEMENT *table_term = new_element (ET_table_term);
@@ -122,7 +121,7 @@ gather_previous_item (ELEMENT *current, enum command_id next_command)
       else
         destroy_element (gathered);
     }
-  else /* Gathering ET_inter_item between @item and @itemx */ // 1457
+  else /* Gathering ET_inter_item between @item and @itemx */
     {
       /* Text between @item and @itemx is only allowed in a few cases:
          comments, empty lines, or index entries. */

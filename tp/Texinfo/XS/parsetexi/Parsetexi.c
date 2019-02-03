@@ -7,29 +7,24 @@
  */
 
 #line 1 "parsetexi/Parsetexi.xs"
+/* Avoid namespace conflicts. */
+#define context perl_context
+
 #define PERL_NO_GET_CONTEXT
 #include "EXTERN.h"
 #include "perl.h"
 #include "XSUB.h"
 
+#undef context
+
 #include "ppport.h"
 
-#include "tree_types.h"
-#include "tree.h"
+#include "parser.h"
 #include "api.h"
-#include "errors.h"
-#include "macro.h"
-#include "handle_commands.h"
+#include "indices.h"
+#include "input.h"
 
-HV *build_texinfo_tree (void);
-AV *build_label_list (void);
-AV *build_internal_xref_list (void);
-HV *build_float_list (void);
-HV *build_index_data (void);
-HV *build_global_info (void);
-HV *build_global_info2 (void);
-
-#line 33 "parsetexi/Parsetexi.c"
+#line 28 "parsetexi/Parsetexi.c"
 #ifndef PERL_UNUSED_VAR
 #  define PERL_UNUSED_VAR(var) if (0) var = var
 #endif
@@ -173,7 +168,7 @@ S_croak_xs_usage(const CV *const cv, const char *const params)
 #  define newXS_deffile(a,b) Perl_newXS_deffile(aTHX_ a,b)
 #endif
 
-#line 177 "parsetexi/Parsetexi.c"
+#line 172 "parsetexi/Parsetexi.c"
 
 XS_EUPXS(XS_Parsetexi_dump_errors); /* prototype to pass -Wmissing-prototypes */
 XS_EUPXS(XS_Parsetexi_dump_errors)
@@ -328,84 +323,6 @@ XS_EUPXS(XS_Parsetexi_get_root)
 	dXSTARG;
 
 	RETVAL = get_root();
-	XSprePUSH; PUSHu((UV)RETVAL);
-    }
-    XSRETURN(1);
-}
-
-
-XS_EUPXS(XS_Parsetexi_element_type_name); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Parsetexi_element_type_name)
-{
-    dVAR; dXSARGS;
-    if (items != 1)
-       croak_xs_usage(cv,  "e");
-    {
-	ELEMENT *	e = (ELEMENT *)SvUV(ST(0))
-;
-	char *	RETVAL;
-	dXSTARG;
-
-	RETVAL = element_type_name(e);
-	sv_setpv(TARG, RETVAL); XSprePUSH; PUSHTARG;
-    }
-    XSRETURN(1);
-}
-
-
-XS_EUPXS(XS_Parsetexi_num_contents_children); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Parsetexi_num_contents_children)
-{
-    dVAR; dXSARGS;
-    if (items != 1)
-       croak_xs_usage(cv,  "e");
-    {
-	ELEMENT *	e = (ELEMENT *)SvUV(ST(0))
-;
-	int	RETVAL;
-	dXSTARG;
-
-	RETVAL = num_contents_children(e);
-	XSprePUSH; PUSHi((IV)RETVAL);
-    }
-    XSRETURN(1);
-}
-
-
-XS_EUPXS(XS_Parsetexi_num_args_children); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Parsetexi_num_args_children)
-{
-    dVAR; dXSARGS;
-    if (items != 1)
-       croak_xs_usage(cv,  "e");
-    {
-	ELEMENT *	e = (ELEMENT *)SvUV(ST(0))
-;
-	int	RETVAL;
-	dXSTARG;
-
-	RETVAL = num_args_children(e);
-	XSprePUSH; PUSHi((IV)RETVAL);
-    }
-    XSRETURN(1);
-}
-
-
-XS_EUPXS(XS_Parsetexi_contents_child_by_index); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Parsetexi_contents_child_by_index)
-{
-    dVAR; dXSARGS;
-    if (items != 2)
-       croak_xs_usage(cv,  "e, index");
-    {
-	ELEMENT *	e = (ELEMENT *)SvUV(ST(0))
-;
-	int	index = (int)SvIV(ST(1))
-;
-	ELEMENT *	RETVAL;
-	dXSTARG;
-
-	RETVAL = contents_child_by_index(e, index);
 	XSprePUSH; PUSHu((UV)RETVAL);
     }
     XSRETURN(1);
@@ -736,10 +653,6 @@ XS_EXTERNAL(boot_Parsetexi)
         (void)newXSproto_portable("Parsetexi::reset_context_stack", XS_Parsetexi_reset_context_stack, file, "");
         (void)newXSproto_portable("Parsetexi::init_index_commands", XS_Parsetexi_init_index_commands, file, "");
         (void)newXSproto_portable("Parsetexi::get_root", XS_Parsetexi_get_root, file, "");
-        (void)newXSproto_portable("Parsetexi::element_type_name", XS_Parsetexi_element_type_name, file, "$");
-        (void)newXSproto_portable("Parsetexi::num_contents_children", XS_Parsetexi_num_contents_children, file, "$");
-        (void)newXSproto_portable("Parsetexi::num_args_children", XS_Parsetexi_num_args_children, file, "$");
-        (void)newXSproto_portable("Parsetexi::contents_child_by_index", XS_Parsetexi_contents_child_by_index, file, "$$");
         (void)newXSproto_portable("Parsetexi::add_include_directory", XS_Parsetexi_add_include_directory, file, "$");
         (void)newXSproto_portable("Parsetexi::build_texinfo_tree", XS_Parsetexi_build_texinfo_tree, file, "");
         (void)newXSproto_portable("Parsetexi::build_label_list", XS_Parsetexi_build_label_list, file, "");

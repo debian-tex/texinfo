@@ -40,6 +40,7 @@ one_test_files_generated_list =  \
      test_scripts/indices_index_no_node_no_top.sh \
      test_scripts/indices_index_entry_in_footnote_info.sh \
      test_scripts/indices_index_entry_in_footnote_separated_info.sh \
+     test_scripts/indices_index_table.sh \
      test_scripts/nested_formats_texi_nested_formats.sh \
      test_scripts/nested_formats_nested_group.sh \
      test_scripts/nested_formats_nested_itemize.sh \

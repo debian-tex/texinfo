@@ -1204,8 +1204,8 @@ $result_converted{'plaintext'}->{'at_commands_in_raw'} = '<b>in b(1).</b>
 $result_converted{'html_text'}->{'at_commands_in_raw'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 
-<b>in b<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>.</b>
-<span id="anchor-in-html"></span><p><kbd>in kbd before tex</kbd><a name="DOCF2" href="#FOOT2"><sup>2</sup></a>.
+<b>in b<a id="DOCF1" href="#FOOT1"><sup>1</sup></a>.</b>
+<span id="anchor-in-html"></span><p><kbd>in kbd before tex</kbd><a id="DOCF2" href="#FOOT2"><sup>2</sup></a>.
 </p>
 
 
@@ -1250,9 +1250,9 @@ $result_converted{'html_text'}->{'at_commands_in_raw'} = '<span id="Top"></span>
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>in footnote</p>
-<h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
+<h3><a id="FOOT2" href="#DOCF2">(2)</a></h3>
 <p>second footnote</p>
 </div>
 <hr>

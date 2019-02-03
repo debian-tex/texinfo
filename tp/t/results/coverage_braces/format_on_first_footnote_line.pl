@@ -276,18 +276,18 @@ $result_converted{'plaintext'}->{'format_on_first_footnote_line'} = 'Texte(1).
 ';
 
 
-$result_converted{'html_text'}->{'format_on_first_footnote_line'} = '<p>Texte<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>.
+$result_converted{'html_text'}->{'format_on_first_footnote_line'} = '<p>Texte<a id="DOCF1" href="#FOOT1"><sup>1</sup></a>.
 </p>
-<p>Last text <a name="DOCF2" href="#FOOT2"><sup>2</sup></a>
+<p>Last text <a id="DOCF2" href="#FOOT2"><sup>2</sup></a>
 </p><div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <blockquote>
 <p>in quotation on the first footnote line
 </p></blockquote>
-<h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
+<h3><a id="FOOT2" href="#DOCF2">(2)</a></h3>
 <div class="example">
 <pre class="example">in example
 </pre></div>

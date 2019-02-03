@@ -17,6 +17,8 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+#include "parser.h"
+
 /* Whether to dump debugging output on stderr. */
 int debug_output = 0;
 

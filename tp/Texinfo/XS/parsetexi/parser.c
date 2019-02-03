@@ -22,8 +22,6 @@
 #include "parser.h"
 #include "text.h"
 #include "input.h"
-#include "tree.h"
-#include "api.h"
 
 
 /* Utility functions */
@@ -63,6 +61,13 @@ read_command_name (char **ptr)
   *ptr = p;
   return ret;
 }
+
+char *
+element_type_name (ELEMENT *e)
+{
+  return element_type_names[(e)->type];
+}
+
 
 
 /* Current node, section and part. */
@@ -442,7 +447,6 @@ begin_preformatted (ELEMENT *current)
   return current;
 }
 
-/* 1310 */
 ELEMENT *
 end_paragraph (ELEMENT *current,
                enum command_id closed_command,
@@ -459,7 +463,6 @@ end_paragraph (ELEMENT *current,
   return current;
 }
 
-/* 1328 */
 ELEMENT *
 end_preformatted (ELEMENT *current,
                   enum command_id closed_command,
@@ -485,7 +488,6 @@ end_preformatted (ELEMENT *current,
   return current;
 }
 
-/* Line 1798 */
 /* Add TEXT to the contents of CURRENT, maybe starting a new paragraph. */
 ELEMENT *
 merge_text (ELEMENT *current, char *text)
@@ -857,8 +859,8 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
            && command_data(outer).data > 0)
       || outer == CM_shortcaption
       || outer == CM_math
-      || (outer_flags & CF_index_entry_command) // 563
-      || (outer_flags & CF_block // 475
+      || (outer_flags & CF_index_entry_command)
+      || (outer_flags & CF_block
           && !(outer_flags & CF_def)
           && command_data(outer).data != BLOCK_raw
           && command_data(outer).data != BLOCK_conditional))
@@ -867,15 +869,15 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
     }
 
   if (outer_flags & CF_root && current->type != ET_line_arg)
-    ok = 1; // 4242
+    ok = 1;
   else if (outer_flags & CF_block
            && current->type != ET_block_line_arg)
-    ok = 1; // 4247
+    ok = 1;
   else if ((outer == CM_item
            || outer == CM_itemx)
            && current->type != ET_line_arg)
-    ok = 1; // 4252
-  else if (outer_flags & CF_accent) // 358
+    ok = 1;
+  else if (outer_flags & CF_accent)
     {
       if (cmd_flags & (CF_nobrace | CF_accent))
         ok = 1;
@@ -897,16 +899,15 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
 
            || (!current->parent->cmd && current_context () == ct_def)
 
-  // 420 "full line no refs commands"
+           /* "full line no refs commands" */
            || (outer_flags & (CF_sectioning | CF_def))
-  // 4261
            || (!current->parent->cmd && current_context () == ct_def))
     {
       /* Start by checking if the command is allowed inside a "full text 
          command" - this is the most permissive. */
-      if (cmd_flags & CF_nobrace) // 370
+      if (cmd_flags & CF_nobrace)
         ok = 1;
-      if (cmd_flags & CF_brace && !(cmd_flags & CF_INFOENCLOSE)) // 370
+      if (cmd_flags & CF_brace && !(cmd_flags & CF_INFOENCLOSE))
         ok = 1;
       else if (cmd == CM_c
                || cmd == CM_comment
@@ -914,20 +915,19 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
                || cmd == CM_columnfractions
                || cmd == CM_set
                || cmd == CM_clear
-               || cmd == CM_end) // 373
+               || cmd == CM_end)
         ok = 1;
       else if (cmd_flags & CF_format_raw)
-        ok = 1; // 379
+        ok = 1;
       if (cmd == CM_caption || cmd == CM_shortcaption)
-        ok = 0; // 381
+        ok = 0;
       if (cmd_flags & CF_block
           && command_data(cmd).data == BLOCK_conditional)
-        ok = 1; // 384
+        ok = 1;
 
       /* Now add more restrictions for "full line no refs" commands and "simple 
          text" commands. */
       if (outer_flags & (CF_sectioning | CF_def)
-          // 4261
           || (!current->parent->cmd && current_context () == ct_def)
           || simple_text_command)
         {
@@ -945,7 +945,7 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
           if (cmd == CM_xref
               || cmd == CM_ref
               || cmd == CM_pxref
-              || cmd == CM_inforef) // 404
+              || cmd == CM_inforef)
             ok = 0;
         }
     }
@@ -963,7 +963,7 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
       if (!invalid_parent)
         {
           /* current_context () == ct_def.  Find def block containing 
-             command.  4258 */
+             command. */
           ELEMENT *d = current;
           while (d->parent
                  && d->parent->type != ET_def_line)
@@ -1086,7 +1086,6 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
                 }
             }
 
-          // 3779
           /* 'line' is now advanced past the "@end ...".  Check if
              there's anything after it. */
           p = line + strspn (line, whitespace_chars);
@@ -1143,7 +1142,7 @@ superfluous_arg:
                     }
                   if (!lookup_extra (current, "invalid_syntax"))
                     {
-                      new_macro (name, current); // 3808
+                      new_macro (name, current);
                     }
                 }
             }
@@ -1154,7 +1153,7 @@ superfluous_arg:
           if (command_data(end_cmd).flags & CF_block
               && command_data(end_cmd).data == BLOCK_conditional)
             {
-              // 3813 Remove an ignored block.
+              /* Remove an ignored block. */
               ELEMENT *popped;
               popped = pop_element_from_contents (current);
               if (popped->cmd != end_cmd)
@@ -1177,7 +1176,7 @@ superfluous_arg:
               ELEMENT *e;
               int n;
 
-              debug ("CLOSED raw %s", command_name(end_cmd)); // 3830
+              debug ("CLOSED raw %s", command_name(end_cmd));
               e = new_element (ET_empty_line_after_command);
               n = strspn (line, whitespace_chars_except_newline);
               text_append_n (&e->text, line, n);
@@ -1185,7 +1184,7 @@ superfluous_arg:
               add_to_element_contents (current, e);
             }
         }
-      else /* 3833 save the line verbatim */
+      else /* save the line verbatim */
         {
           ELEMENT *last = last_contents_child (current);
           /* Append to existing element only if the text is all
@@ -1204,13 +1203,13 @@ superfluous_arg:
               add_to_element_contents (current, e);
             }
 
-          retval = GET_A_NEW_LINE; /* 3844 */
+          retval = GET_A_NEW_LINE;
           goto funexit;
         }
-    } /********* BLOCK_raw or (ignored) BLOCK_conditional 3897 *************/
+    } /********* BLOCK_raw or (ignored) BLOCK_conditional *************/
 
   /* Check if parent element is 'verb' */
-  else if (current->parent && current->parent->cmd == CM_verb) /* 3847 */
+  else if (current->parent && current->parent->cmd == CM_verb)
     {
       char c;
       char *q;
@@ -1274,7 +1273,6 @@ superfluous_arg:
      get it in the top-level loop in parse_texi - this is mostly
      (always?) when we don't want to start a new, empty line, and
      need to get more from the current, incomplete line of input. */
-  // 3878
   while (*line == '\0')
     {
       static char *allocated_text;
@@ -1349,7 +1347,7 @@ superfluous_arg:
 
   /* Handle user-defined macros before anything else because their expansion 
      may lead to changes in the line. */
-  if (cmd && (command_data(cmd).flags & CF_MACRO)) // 3894
+  if (cmd && (command_data(cmd).flags & CF_MACRO))
     {
       static char *allocated_line;
       line = line_after_command;
@@ -1359,7 +1357,7 @@ superfluous_arg:
       line = allocated_line;
     }
 
-  /* 3983 Cases that may "lead to command closing": brace commands that don't 
+  /* Cases that may "lead to command closing": brace commands that don't 
      need a brace: accent commands.
      @definfoenclose. */
   /* This condition is only checked immediately after the command opening, 
@@ -1367,7 +1365,7 @@ superfluous_arg:
      command container. */
   else if (command_flags(current) & CF_brace && *line != '{')
     {
-      if (command_with_command_as_argument (current->parent)) // 3988
+      if (command_with_command_as_argument (current->parent))
         {
           debug ("FOR PARENT @%s command_as_argument @%s",
                  command_name(current->parent->parent->cmd),
@@ -1378,7 +1376,7 @@ superfluous_arg:
                                  "command_as_argument", current);
           current = current->parent;
         }
-      else if (command_flags (current) & CF_accent) // 3996 - accent commands
+      else if (command_flags(current) & CF_accent)
         {
           if (strchr (whitespace_chars_except_newline, *line))
             {
@@ -1440,7 +1438,7 @@ superfluous_arg:
               line++;
               current = current->parent;
             }
-          else // 4032
+          else
             {
               debug ("STRANGE ACC");
               line_warn ("accent command `@%s' must not be followed by "
@@ -1449,7 +1447,7 @@ superfluous_arg:
             }
           goto funexit;
         }
-      else // 4041
+      else
         {
           if (conf.ignore_space_after_braced_command_name)
             {
@@ -1478,7 +1476,7 @@ superfluous_arg:
       line = line_after_command;
       debug ("COMMAND %s", command_name(cmd));
 
-      /* 4172 @value */
+      /* @value */
       if (cmd == CM_value)
         {
           char *arg_start;
@@ -1581,9 +1579,8 @@ value_invalid:
 
       def_line_continuation = (current_context() == ct_def
                                && cmd == CM_NEWLINE);
-      /* warn on not appearing at line beginning 4226 */
-      // begin line commands 315
-      // TODO maybe have a command flag for this
+      /* warn on not appearing at line beginning */
+      /* TODO maybe have a command flag for "begin line commands" */
       if (!def_line_continuation
           && !abort_empty_line (&current, NULL)
           && ((cmd == CM_node || cmd == CM_bye)
@@ -1612,7 +1609,7 @@ value_invalid:
           goto funexit;
         }
 
-      /* 4276 check command doesn't start a paragraph */
+      /* check command doesn't start a paragraph */
       /* TODO store this in cmd->flags. */
       if (!(command_data(cmd).flags & (CF_line | CF_other | CF_block)
             || cmd == CM_titlefont
@@ -1760,7 +1757,7 @@ value_invalid:
         }
 
       /* '@end' is processed in here. */
-      current = end_line (current); /* 5344 */
+      current = end_line (current);
       retval = GET_A_NEW_LINE;
     }
 
@@ -1906,7 +1903,7 @@ finished_totally:
     }
 
     {
-      ELEMENT *dummy; // 5254
+      ELEMENT *dummy;
       current = close_commands (current, CM_NONE, &dummy, CM_NONE);
 
       /* Make sure we are at the very top - we could have stopped at the "top" 

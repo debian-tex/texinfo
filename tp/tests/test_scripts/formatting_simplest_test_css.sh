@@ -11,7 +11,7 @@ diffs_dir=diffs
 
 dir=formatting
 name='simplest_test_css'
-[ -d "$dir" ] || mkdir $dir
+mkdir -p $dir
 
 "$srcdir"/run_parser_all.sh -dir $dir $name
 exit_status=$?

@@ -548,6 +548,7 @@ EOVERFLOW_VALUE = @EOVERFLOW_VALUE@
 ERRNO_H = @ERRNO_H@
 EXEEXT = @EXEEXT@
 FLOAT_H = @FLOAT_H@
+GAWK = @GAWK@
 GETOPT_CDEFS_H = @GETOPT_CDEFS_H@
 GETOPT_H = @GETOPT_H@
 GETTEXT_MACRO_VERSION = @GETTEXT_MACRO_VERSION@
@@ -1073,6 +1074,7 @@ PERL_EXT_CC = @PERL_EXT_CC@
 PERL_EXT_CFLAGS = @PERL_EXT_CFLAGS@
 PERL_EXT_CPPFLAGS = @PERL_EXT_CPPFLAGS@
 PERL_EXT_LDFLAGS = @PERL_EXT_LDFLAGS@
+POD2MAN = @POD2MAN@
 POSUB = @POSUB@
 PRAGMA_COLUMNS = @PRAGMA_COLUMNS@
 PRAGMA_SYSTEM_HEADER = @PRAGMA_SYSTEM_HEADER@
@@ -1317,6 +1319,7 @@ one_test_files_generated_list = \
      test_scripts/indices_index_no_node_no_top.sh \
      test_scripts/indices_index_entry_in_footnote_info.sh \
      test_scripts/indices_index_entry_in_footnote_separated_info.sh \
+     test_scripts/indices_index_table.sh \
      test_scripts/nested_formats_texi_nested_formats.sh \
      test_scripts/nested_formats_nested_group.sh \
      test_scripts/nested_formats_nested_itemize.sh \
@@ -1851,6 +1854,13 @@ test_scripts/indices_index_entry_in_footnote_info.sh.log: test_scripts/indices_i
 test_scripts/indices_index_entry_in_footnote_separated_info.sh.log: test_scripts/indices_index_entry_in_footnote_separated_info.sh
 	@p='test_scripts/indices_index_entry_in_footnote_separated_info.sh'; \
 	b='test_scripts/indices_index_entry_in_footnote_separated_info.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test_scripts/indices_index_table.sh.log: test_scripts/indices_index_table.sh
+	@p='test_scripts/indices_index_table.sh'; \
+	b='test_scripts/indices_index_table.sh'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \

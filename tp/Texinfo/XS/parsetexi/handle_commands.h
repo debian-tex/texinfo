@@ -1,3 +1,4 @@
+/* handle_commands.h - declarations for handle_commands.c */
 
 ELEMENT *handle_other_command (ELEMENT *current, char **line_inout,
                      enum command_id cmd_id, int *status);

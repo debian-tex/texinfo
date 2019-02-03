@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo_document 6.4.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-01-04 15:41+0000\n"
+"POT-Creation-Date: 2019-02-01 15:24+0000\n"
 "PO-Revision-Date: 2018-01-20 14:27+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -20,97 +20,97 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: tp/Texinfo/Common.pm:698 tp/Texinfo/Common.pm:703
+#: tp/Texinfo/Common.pm:727 tp/Texinfo/Common.pm:732
 msgid "Function"
 msgstr "Függvény"
 
-#: tp/Texinfo/Common.pm:699
+#: tp/Texinfo/Common.pm:728
 msgid "Macro"
 msgstr "Makró"
 
-#: tp/Texinfo/Common.pm:700
+#: tp/Texinfo/Common.pm:729
 msgid "Special Form"
 msgstr "Speciális űrlap"
 
-#: tp/Texinfo/Common.pm:701 tp/Texinfo/Common.pm:704
+#: tp/Texinfo/Common.pm:730 tp/Texinfo/Common.pm:733
 msgid "Variable"
 msgstr "Változó"
 
-#: tp/Texinfo/Common.pm:702
+#: tp/Texinfo/Common.pm:731
 msgid "User Option"
 msgstr "Felhasználói beállítás"
 
-#: tp/Texinfo/Common.pm:705 tp/Texinfo/Common.pm:706
+#: tp/Texinfo/Common.pm:734 tp/Texinfo/Common.pm:735
 msgid "Instance Variable"
 msgstr "Példányváltozó"
 
-#: tp/Texinfo/Common.pm:707 tp/Texinfo/Common.pm:708
+#: tp/Texinfo/Common.pm:736 tp/Texinfo/Common.pm:737
 msgid "Method"
 msgstr "Metódus"
 
-#: tp/Texinfo/Common.pm:1216
+#: tp/Texinfo/Common.pm:1245
 #, perl-brace-format
 msgid "{category} on {class}"
 msgstr "{category} ezen: {class}"
 
-#: tp/Texinfo/Common.pm:1223
+#: tp/Texinfo/Common.pm:1252
 #, perl-brace-format
 msgid "{category} of {class}"
 msgstr "{category} - {class}"
 
-#: tp/Texinfo/Common.pm:1245
+#: tp/Texinfo/Common.pm:1274
 #, perl-brace-format
 msgid "{month} {day}, {year}"
 msgstr "{year}. {month} {day}."
 
-#: tp/Texinfo/Common.pm:1276 tp/Texinfo/Convert/Plaintext.pm:1046
+#: tp/Texinfo/Common.pm:1305 tp/Texinfo/Convert/Plaintext.pm:1046
 #: tp/Texinfo/Convert/HTML.pm:523
 #, perl-brace-format
 msgid "Appendix {number} {section_title}"
 msgstr "Függelék {number} {section_title}"
 
-#: tp/Texinfo/Common.pm:1280 tp/Texinfo/Convert/Plaintext.pm:1051
+#: tp/Texinfo/Common.pm:1309 tp/Texinfo/Convert/Plaintext.pm:1051
 #: tp/Texinfo/Convert/HTML.pm:529
 #, perl-brace-format
 msgid "{number} {section_title}"
 msgstr "{number} {section_title}"
 
-#: tp/Texinfo/Common.pm:1541
+#: tp/Texinfo/Common.pm:1570
 #, perl-brace-format
 msgid "{float_type} {float_number}: "
 msgstr "{float_type} {float_number}: "
 
-#: tp/Texinfo/Common.pm:1545
+#: tp/Texinfo/Common.pm:1574
 #, perl-brace-format
 msgid "{float_type}: "
 msgstr "{float_type}: "
 
-#: tp/Texinfo/Common.pm:1550
+#: tp/Texinfo/Common.pm:1579
 #, perl-brace-format
 msgid "{float_type} {float_number}\n"
 msgstr "{float_type} {float_number}\n"
 
-#: tp/Texinfo/Common.pm:1554
+#: tp/Texinfo/Common.pm:1583
 #, perl-brace-format
 msgid "{float_type}\n"
 msgstr "{float_type}\n"
 
-#: tp/Texinfo/Common.pm:1560
+#: tp/Texinfo/Common.pm:1589
 #, perl-brace-format
 msgid "{float_number}: "
 msgstr "{float_number}: "
 
-#: tp/Texinfo/Common.pm:1563
+#: tp/Texinfo/Common.pm:1592
 #, perl-brace-format
 msgid "{float_number}\n"
 msgstr "{float_number}\n"
 
-#: tp/Texinfo/Common.pm:2548
+#: tp/Texinfo/Common.pm:2577
 #, perl-brace-format
 msgid "{name} on {class}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Common.pm:2558
+#: tp/Texinfo/Common.pm:2587
 #, perl-brace-format
 msgid "{name} of {class}"
 msgstr "{name} típusa: {class}"

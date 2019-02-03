@@ -34,3 +34,5 @@ index_no_node_no_top index_no_node_no_top.texi
 
 index_entry_in_footnote_info index_entry_in_footnote.texi --info
 index_entry_in_footnote_separated_info index_entry_in_footnote.texi --info --footnote-style=separate
+
+index_table index_table.texi -c 'TEXI2HTML 1' --split chapter

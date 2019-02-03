@@ -20,7 +20,7 @@ use 5.00405;
 use strict;
 use warnings;
 
-our $VERSION = '6.5.91';
+our $VERSION = '6.5.92';
 
 use Texinfo::XSLoader;
 
@@ -60,7 +60,7 @@ BEGIN {
     "Texinfo::XS::XSParagraph",
     "Texinfo::Convert::ParagraphNonXS",
     "XSParagraph",
-    1,
+    0,
     $warning_message,
     $fatal_message
   );

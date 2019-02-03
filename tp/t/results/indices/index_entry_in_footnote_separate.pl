@@ -698,7 +698,7 @@ $result_converted{'html_text'}->{'index_entry_in_footnote_separate'} = '<span id
 </td></tr>
 </table>
 
-<p>Top node<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
+<p>Top node<a id="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
 <hr>
 <span id="First"></span><div class="header">

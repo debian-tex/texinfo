@@ -91,11 +91,14 @@ add_extra_text (ELEMENT *e, char *key, ELEMENT *value)
   add_extra_key (e, key, value, extra_text);
 }
 
+#if 0
+/* Function not used */
 void
 add_extra_index_entry (ELEMENT *e, char *key, INDEX_ENTRY_REF *value)
 {
   add_extra_key (e, key, (ELEMENT *) value, extra_index_entry);
 }
+#endif
 
 void
 add_extra_misc_args (ELEMENT *e, char *key, ELEMENT *value)

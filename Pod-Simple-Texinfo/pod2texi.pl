@@ -99,12 +99,6 @@ sub run(){};
 
 my ($real_command_name, $directories, $suffix) = fileparse($0);
 
-# placeholder for string translations, not used for now
-sub __($)
-{
-  return $_[0];
-}
-
 sub pod2texi_help()
 {
   return __("Usage: pod2texi [OPTION]... POD...

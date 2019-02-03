@@ -478,6 +478,7 @@ EOVERFLOW_VALUE = @EOVERFLOW_VALUE@
 ERRNO_H = @ERRNO_H@
 EXEEXT = @EXEEXT@
 FLOAT_H = @FLOAT_H@
+GAWK = @GAWK@
 GETOPT_CDEFS_H = @GETOPT_CDEFS_H@
 GETOPT_H = @GETOPT_H@
 GETTEXT_MACRO_VERSION = @GETTEXT_MACRO_VERSION@
@@ -1003,6 +1004,7 @@ PERL_EXT_CC = @PERL_EXT_CC@
 PERL_EXT_CFLAGS = @PERL_EXT_CFLAGS@
 PERL_EXT_CPPFLAGS = @PERL_EXT_CPPFLAGS@
 PERL_EXT_LDFLAGS = @PERL_EXT_LDFLAGS@
+POD2MAN = @POD2MAN@
 POSUB = @POSUB@
 PRAGMA_COLUMNS = @PRAGMA_COLUMNS@
 PRAGMA_SYSTEM_HEADER = @PRAGMA_SYSTEM_HEADER@
@@ -1217,11 +1219,10 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 EXTRA_DIST = $(TESTS) \
-  indices_res index_split_res tex_l2h_res tex_t4ht_res
+  tex_l2h_res tex_t4ht_res
 
-TESTS = indices.sh tex_l2h.sh tex_t4ht.sh
+TESTS = tex_l2h.sh tex_t4ht.sh
 AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir; builddir="$(builddir)"; export buildir; top_builddir="$(top_builddir)"; export top_builddir;
-test_dirs = indices index_split
 tex_html_dirs = tex_l2h tex_t4ht
 DISTCLEANFILES = *.log *.out
 all: all-am
@@ -1405,13 +1406,6 @@ recheck: all
 	        am__force_recheck=am--force-recheck \
 	        TEST_LOGS="$$log_list"; \
 	exit $$?
-indices.sh.log: indices.sh
-	@p='indices.sh'; \
-	b='indices.sh'; \
-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
-	--log-file $$b.log --trs-file $$b.trs \
-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
-	"$$tst" $(AM_TESTS_FD_REDIRECT)
 tex_l2h.sh.log: tex_l2h.sh
 	@p='tex_l2h.sh'; \
 	b='tex_l2h.sh'; \
@@ -1605,21 +1599,6 @@ long-checks: all
 tex-html-checks: all
 	$(MAKE) $(AM_MAKEFLAGS) check LONG_TESTS=yes TEX_HTML_TESTS=yes
 
-copy-tests:
-	for dir in $(test_dirs); do \
-		if [ -d "$$dir" ]; then \
-			if [ -d "${srcdir}/$${dir}_res" ]; then \
-				rm -f "${srcdir}/$${dir}_res/"*.* ;\
-			else \
-				mkdir ${srcdir}/"$${dir}_res/" ; \
-			fi ;\
-			cp -p "$$dir/"*.* "${srcdir}/$${dir}_res/"; \
-			rm -f ${srcdir}/"$${dir}_res/"*.png ${srcdir}/"$${dir}_res/"*_l2h.css; \
-		else \
-			echo "No dir $$dir/"; \
-		fi; \
-	done
-
 copy-tex-html:
 	for dir in $(tex_html_dirs); do \
 		if [ -d "$$dir" ]; then \
@@ -1636,10 +1615,10 @@ copy-tex-html:
 	done
 
 distclean-local:
-	rm -rf diffs $(test_dirs) $(tex_html_dirs)
+	rm -rf diffs $(tex_html_dirs)
 
 dist-hook:
-	for dir in $(test_dirs) $(tex_html_dirs); do \
+	for dir in $(tex_html_dirs); do \
 		rm -rf `find "$(distdir)/$${dir}_res" -name .git` ;\
 	done
 

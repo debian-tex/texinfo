@@ -324,8 +324,8 @@ $result_converted{'html_text'}->{'contents_in_html_text'} = '<span id="top"></sp
 
 <div class="shortcontents">
 <ul class="no-bullet">
-<li><a name="stoc-Chap1" href="#toc-Chap1">1 Chap1</a></li>
-<li><a name="stoc-Chap2" href="#toc-Chap2">2 Chap2</a></li>
+<li><a id="stoc-Chap1" href="#toc-Chap1">1 Chap1</a></li>
+<li><a id="stoc-Chap2" href="#toc-Chap2">2 Chap2</a></li>
 </ul>
 </div>
 
@@ -334,11 +334,11 @@ $result_converted{'html_text'}->{'contents_in_html_text'} = '<span id="top"></sp
 <div class="contents">
 
 <ul class="no-bullet">
-  <li><a name="toc-Chap1" href="#Chap1">1 Chap1</a>
+  <li><a id="toc-Chap1" href="#Chap1">1 Chap1</a>
   <ul class="no-bullet">
-    <li><a name="toc-Sec-1" href="#Sec-1">1.1 Sec 1</a></li>
+    <li><a id="toc-Sec-1" href="#Sec-1">1.1 Sec 1</a></li>
   </ul></li>
-  <li><a name="toc-Chap2" href="#Chap2">2 Chap2</a></li>
+  <li><a id="toc-Chap2" href="#Chap2">2 Chap2</a></li>
 </ul>
 </div>
 

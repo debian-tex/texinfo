@@ -73,7 +73,6 @@ new_macro (char *name, ELEMENT *macro)
   m->macrobody = convert_to_texinfo (&tmp);
 }
 
-// 1088
 /* CMD will be either CM_macro or CM_rmacro.  Read the line defining a macro's 
    name and the arguments it takes, and return this information in a new 
    ELEMENT. */
@@ -154,7 +153,7 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
 
       if (q2 == args_ptr)
         {
-          // 1126 - argument is completely whitespace
+          /* argument is completely whitespace */
           if (*q == ',')
             {
               line_error ("bad or empty @%s formal argument: ",
@@ -243,7 +242,6 @@ lookup_macro_parameter (char *name, ELEMENT *macro)
 /* LINE points the first non-whitespace character after the opening brace in a 
    macro invocation.  CMD is the command identifier of the macro command.  
    Return array of the arguments.  Return value to be freed by caller.  */
-// 1984
 char **
 expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
 {
@@ -287,7 +285,6 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
 
       text_append_n (&arg, pline, sep - pline);
 
-      // 2002
       switch (*sep)
         {
         case '\\':
@@ -494,7 +491,6 @@ wipe_macros (void)
   macro_number = 0;
 }
 
-// 3898
 /* Handle macro expansion.  CMD is the macro command. */
 ELEMENT *
 handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
@@ -514,7 +510,7 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
     abort ();
   macro = macro_record->element;
 
-  // 3907 Get number of args. - 1 for the macro name.
+  /* Get number of args. - 1 for the macro name. */
   args_number = macro->args.number - 1;
 
   p = line + strspn (line, whitespace_chars);
@@ -572,6 +568,7 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
          "macro call nested too deeply "
          "(set MAX_NESTED_MACROS to override; current value %d)", 1000);
       goto funexit;
+      /* TODO: actually check MAX_NESTED_MACROS? */
     }
 
   if (macro->cmd == CM_macro)
@@ -599,7 +596,6 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
 
   // 3958 Pop macro stack
 
-  // 3961
   /* Put expansion in front of the current line. */
   input_push_text (strdup (line), 0);
   line = strchr (line, '\0');

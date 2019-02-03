@@ -4096,6 +4096,7 @@ info_search_internal (char *string, WINDOW *window,
       if (!search_other_nodes)
         break;
 
+search_next_node:
       /* If we've searched our starting node twice, there are no matches.
          Bail out.  (We searched the second time in case there were matches 
          before the starting offset.) */
@@ -4144,13 +4145,18 @@ info_search_internal (char *string, WINDOW *window,
           if (!echo_area_is_active)
             {
               if (info_recent_file_error)
-                info_error ("%s", info_recent_file_error);
+                {
+                  info_error ("%s", info_recent_file_error);
+                  return -1;
+                }
               else
-                info_error (msg_cant_file_node,
-                            filename_non_directory (file_buffer->filename),
-                            tag->nodename);
+                {
+                  info_error (msg_cant_file_node,
+                              filename_non_directory (file_buffer->filename),
+                              tag->nodename);
+                  goto search_next_node;
+                }
             }
-          return -1;
         }
 
       if (dir < 0)

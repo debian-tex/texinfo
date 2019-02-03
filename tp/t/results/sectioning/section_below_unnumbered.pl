@@ -948,9 +948,9 @@ ul.no-bullet {list-style: none}
 <div class="contents">
 
 <ul class="no-bullet">
-  <li><a name="toc-Unn-1" href="#Unn">Unn</a>
+  <li><a id="toc-Unn-1" href="#Unn">Unn</a>
   <ul class="no-bullet">
-    <li><a name="toc-Sec-1" href="#Sec">Sec</a></li>
+    <li><a id="toc-Sec-1" href="#Sec">Sec</a></li>
   </ul></li>
 </ul>
 </div>

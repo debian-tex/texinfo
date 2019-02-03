@@ -45,7 +45,9 @@ reset_floats ()
 void
 reset_parser_except_conf (void)
 {
-  wipe_indices (); /* do before destroying tree to check route_not_in_tree */
+  /* do before destroying tree because index entries usually refer to in-tree
+     elements. */
+  wipe_indices ();
   if (Root)
     {
       destroy_element_and_children (Root);
@@ -115,29 +117,12 @@ parse_text (char *string)
 }
 
 
-char *
-element_type_name (ELEMENT *e)
-{
-  return element_type_names[(e)->type];
-}
-
-int
-num_contents_children (ELEMENT *e)
-{
-  return e->contents.number;
-}
-
-int
-num_args_children (ELEMENT *e)
-{
-  return e->args.number;
-}
-
 static void element_to_perl_hash (ELEMENT *e);
 
 /* Return reference to Perl array built from e.  If any of
    the elements in E don't have 'hv' set, set it to an empty
-   hash table, or create it if route_not_in_tree. */
+   hash table, or create it if there is no parent element, indicating the 
+   element is not in the tree. */
 static SV *
 build_perl_array (ELEMENT_LIST *e)
 {
@@ -155,10 +140,11 @@ build_perl_array (ELEMENT_LIST *e)
         av_push (av, newSV (0));
       if (!e->list[i]->hv)
         {
-          if (e->list[i]->parent_type != route_not_in_tree)
+          if (e->list[i]->parent)
             e->list[i]->hv = newHV ();
           else
             {
+              /* Out-of-tree element */
               /* WARNING: This is possibly recursive. */
               element_to_perl_hash (e->list[i]);
             }
@@ -715,8 +701,8 @@ build_single_index_data (INDEX *i)
           SV **contents_array;
           if (!e->content->hv)
             {
-              if (e->content->parent_type != route_not_in_tree)
-                abort ();
+              if (e->content->parent)
+                abort (); /* element should not be in-tree */
               element_to_perl_hash (e->content);
             }
           contents_array = hv_fetch (e->content->hv,
@@ -951,40 +937,10 @@ build_global_info2 (void)
   return hv;
 }
 
-
-/* Configuration values. */
-CONF conf;
-
-void
-conf_set_show_menu (int i)
-{
-  conf.show_menu = i;
-}
-
-void
-conf_set_CPP_LINE_DIRECTIVES (int i)
-{
-  conf.cpp_line_directives = i;
-}
-
-void
-conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME (int i)
-{
-  conf.ignore_space_after_braced_command_name = i;
-}
-
-void
-reset_conf (void)
-{
-  memset (&conf, 0, sizeof (conf));
-  conf.show_menu = 1;
-  conf.cpp_line_directives = 1;
-  conf.ignore_space_after_braced_command_name = 1;
-}
-
 /* for debugging */
 void
 set_debug (int value)
 {
   debug_output = value;
 }
+

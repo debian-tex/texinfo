@@ -469,19 +469,19 @@ ul.no-bullet {list-style: none}
 <span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <dl class="listoffloats">
-<dt><a href="#label">fl 1</a></dt><dd><p>in caption<a name="t_hlistoffloats_DOCF1_1" href="#t_hlistoffloats_FOOT1_1"><sup>1</sup></a></p></dd>
+<dt><a href="#label">fl 1</a></dt><dd><p>in caption<a id="t_hlistoffloats_DOCF1_1" href="#t_hlistoffloats_FOOT1_1"><sup>1</sup></a></p></dd>
 </dl>
 
 <div class="float"><span id="label"></span>
 <p>In float.
 </p>
-<div class="float-caption"><p><strong>fl 1: </strong>in caption<a name="DOCF1" href="#FOOT1"><sup>2</sup></a></p></div></div><div class="footnote">
+<div class="float-caption"><p><strong>fl 1: </strong>in caption<a id="DOCF1" href="#FOOT1"><sup>2</sup></a></p></div></div><div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="t_hlistoffloats_FOOT1_1" href="#t_hlistoffloats_DOCF1_1">(1)</a></h3>
+<h3><a id="t_hlistoffloats_FOOT1_1" href="#t_hlistoffloats_DOCF1_1">(1)</a></h3>
 <p>in footnote</p>
-<h3><a name="FOOT1" href="#DOCF1">(2)</a></h3>
+<h3><a id="FOOT1" href="#DOCF1">(2)</a></h3>
 <p>in footnote</p>
 </div>
 <hr>

@@ -1,4 +1,4 @@
-#include <stdio.h>
+/* input.h - declarations for input.c */
 
 char *new_line (void);
 char *next_text (void);
@@ -14,6 +14,7 @@ int expanding_macro (char *macro);
 int top_file_index (void);
 char *locate_include_file (char *filename);
 void set_input_encoding (char *encoding);
+void add_include_directory (char *filename);
 
 char *save_string (char *string);
 void free_small_strings (void);

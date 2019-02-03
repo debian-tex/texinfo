@@ -248,12 +248,7 @@ AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcd
 maintenance_files = \
   maintain/all_tests.sh \
   maintain/change_perl_modules_version.sh \
-  maintain/clean_perl_module_files.sh \
   maintain/language-subtag-registry \
-  maintain/Makefile_perl_po \
-  maintain/MANIFEST_generated_files \
-  maintain/prepare_perl_module_files.sh \
-  maintain/prepare_perl_standalone_module_archive.sh \
   maintain/regenerate_cmd_tests.sh \
   maintain/regenerate_converters_documentation.sh \
   maintain/regenerate_docstr.sh \
@@ -262,10 +257,6 @@ maintenance_files = \
   maintain/template.pod \
   maintain/catalog.xml.in
 
-perl_specific_files = \
-  Makefile.PL \
-  MANIFEST
-
 EXTRA_DIST = \
   texi2any.pl \
   $(test_files_generated_list) \
@@ -273,21 +264,6 @@ EXTRA_DIST = \
   $(tp_tests) \
   $(maintenance_files) \
   maintain/lib
-# $(perl_specific_files)
-
-# MANIFEST is used for the Perl module.
-# maintain/MANIFEST_generated_files is used for dist(check).
-# They are made by maintain/prepare_perl_module_files.sh.
-MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
-	LC_ALL=C; export LC_ALL; LANGUAGE=C; export LANGUAGE; \
-	echo "$(dist_modules_DATA) $(dist_converters_DATA)" \
-	"$(dist_debugmodules_DATA) $(dist_init_DATA)" \
-	"$(test_files) $(tp_tests) $(test_files_generated_list)" \
-	"texi2any README TODO COPYING $(modules_DATA)" \
-	"$(maintenance_files) $(perl_specific_files)" \
-	 | sed 's/  */\n/g' \
-	 | cat - $(srcdir)/maintain/MANIFEST_generated_files $(srcdir)/maintain/MANIFEST_XSParagraph_files \
-	 | sort >$@
 
 # template.pod is the basis for the .pm documentation, and the script
 # invoked here updates them; to be run when template.pod changes.

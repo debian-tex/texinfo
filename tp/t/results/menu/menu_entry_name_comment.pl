@@ -737,23 +737,14 @@ $result_converted{'html'}->{'menu_entry_name_comment'} = '<!DOCTYPE html PUBLIC 
 <!--
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
-blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smalllisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
@@ -766,11 +757,11 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="f.html#b" accesskey="1">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b" accesskey="2">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b1c_002ec" accesskey="3">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b2c_002ec" accesskey="4">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b3c_002ec" accesskey="5">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">d</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b" accesskey="1">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b" accesskey="2">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b1c_002ec" accesskey="3">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b2c_002ec" accesskey="4">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b3c_002ec" accesskey="5">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">d</td></tr>
 </table>
 
 

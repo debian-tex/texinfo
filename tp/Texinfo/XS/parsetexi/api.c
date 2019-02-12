@@ -91,12 +91,6 @@ parse_file (char *filename)
   return 1;
 }
 
-ELEMENT *
-get_root (void)
-{
-  return Root;
-}
-
 /* Set ROOT to root of tree obtained by parsing the Texinfo code in STRING.
    STRING should be a UTF-8 buffer.  Used for parse_texi_line. */
 void

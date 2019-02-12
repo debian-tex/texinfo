@@ -408,7 +408,7 @@ $result_converted{'html_text'}->{'quotation_and_author'} = '<blockquote>
 </p></blockquote>
 <div align="center">&mdash; <em>Some One</em>
 </div>
-<blockquote class="smallquotation">
+<blockquote>
 <p>in small&mdash;quotation.
 </p></blockquote>
 <div align="center">&mdash; <em>An Author Name</em>

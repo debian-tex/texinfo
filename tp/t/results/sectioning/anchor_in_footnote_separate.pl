@@ -721,23 +721,14 @@ $result_converted{'html'}->{'anchor_in_footnote_separate'} = '<!DOCTYPE html PUB
 <!--
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
-blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smalllisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
@@ -758,7 +749,7 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 <p>In top node<a id="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

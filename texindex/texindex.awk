@@ -162,7 +162,7 @@ BEGIN {
   EXIT_SUCCESS = 0
   EXIT_FAILURE = 1
   
-  Texindex_version = "6.5.92"
+  Texindex_version = "6.5.93"
   if (! Invocation_name) {
     # provide fallback in case it's not passed in.
     Invocation_name = "texindex"

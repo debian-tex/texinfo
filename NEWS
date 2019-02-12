@@ -27,10 +27,15 @@ See the manual for detailed information.
   . A native-code implementation of the Texinfo parser has been included
     on an experimental basis, which makes texi2any a lot faster.  Set the
     `TEXINFO_XS_PARSER' environment variable to 1 to use.
-  . for HTML output, new customization variable `SECTION_NAME_IN_TITLE'
-    to use the argument to @chapter, @section etc. as the document 
-    <title>
+  . changes to HTML output:
+     . omit colon after node name in menus by default (use
+       `MENU_ENTRY_COLON' to add it back)
+     . no special CSS for commands like @smallexample
+     . new customization variable `SECTION_NAME_IN_TITLE' to use the
+       section name as the document <title>
+     . use section names instead of node names in generated menus
   . pass on flags set with -D to TeX.
+  . useless static libraries are not installed
   . the newline after an @insertcopying is not output
   . warning given for @multitable prototypes not in braces
   . @indent and @noindent are not allowed inside the arguments to

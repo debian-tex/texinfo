@@ -55,7 +55,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.5.92';
+$VERSION = '6.5.93';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -1000,7 +1000,7 @@ my %defaults = (
   'DEFAULT_RULE'         => '<hr>',
   'BIG_RULE'             => '<hr>',
   'MENU_SYMBOL'          => '&bull;',
-  'MENU_ENTRY_COLON'     => ':',
+  'MENU_ENTRY_COLON'     => '',
   'INDEX_ENTRY_COLON'    => ':',
   'BODYTEXT'             => undef,
   'documentlanguage'     => 'en',
@@ -1059,10 +1059,7 @@ my %css_map = (
      'pre.menu-comment'       => "$MENU_PRE_STYLE",
      'pre.menu-preformatted'  => "$MENU_PRE_STYLE",
      'a.summary-letter'       => 'text-decoration: none',
-     'blockquote.smallquotation' => 'font-size: smaller',
      'pre.display'            => 'font-family: inherit',
-     'pre.smalldisplay'       => 'font-family: inherit; font-size: smaller',
-     'pre.smallexample'       => 'font-size: smaller',
      'span.sansserif'     => 'font-family: sans-serif; font-weight: normal',
      'span.roman'         => 'font-family: initial; font-weight: normal',
      'span.nolinebreak'   => 'white-space: nowrap',
@@ -1070,8 +1067,6 @@ my %css_map = (
 );
 
 $css_map{'pre.format'} = $css_map{'pre.display'};
-$css_map{'pre.smallformat'} = $css_map{'pre.smalldisplay'};
-$css_map{'pre.smalllisp'} = $css_map{'pre.smallexample'};
 
 my %preformatted_commands_context = %preformatted_commands;
 $preformatted_commands_context{'verbatim'} = 1;
@@ -1089,12 +1084,9 @@ foreach my $indented_format ('example', 'display', 'lisp') {
   $indented_preformatted_commands{"small$indented_format"} = 1;
 
   $css_map{"div.$indented_format"} = 'margin-left: 3.2em';
-  $css_map{"div.small$indented_format"} = 'margin-left: 3.2em';
 }
 
 $css_map{"blockquote.indentedblock"} = 'margin-right: 0em';
-$css_map{"blockquote.smallindentedblock"}
-  = 'margin-right: 0em; font-size: smaller';
 
 # types that are in code style in the default case
 my %default_code_types = (
@@ -2382,7 +2374,7 @@ sub _convert_heading_command($$$$$)
     $self->{'seenmenus'}->{$self->{'current_node'}} = 1;
     # Generate a menu for this node.
     my $menu_text;
-    my $menu_node = Texinfo::Structuring::menu_of_node (undef,
+    my $menu_node = Texinfo::Structuring::section_menu_of_node (undef,
       $command->{'extra'}{'associated_node'});
     if ($menu_node) {
       $menu_text = _convert ($self, $menu_node);
@@ -2520,9 +2512,6 @@ sub _convert_indented_command($$$$)
 }
 
 $default_commands_conversion{'indentedblock'} = \&_convert_indented_command;
-$default_commands_conversion{'smallindentedblock'}
-  = \&_convert_indented_command;
-
 
 sub _convert_verbatim_command($$$$)
 {
@@ -2884,9 +2873,6 @@ sub _convert_quotation_command($$$$$)
   my $args = shift;
   my $content = shift;
 
-  my $class = '';
-  $class = $cmdname if ($cmdname ne 'quotation');
-
   my $attribution = '';
   if ($command->{'extra'} and $command->{'extra'}->{'authors'}) {
     foreach my $author (@{$command->{'extra'}->{'authors'}}) {
@@ -2897,14 +2883,12 @@ sub _convert_quotation_command($$$$$)
     }
   }
   if (!$self->in_string()) {
-    return $self->_attribute_class('blockquote', $class).">\n" .$content 
-      ."</blockquote>\n" . $attribution;
+    return "<blockquote>\n" . $content . "</blockquote>\n" . $attribution;
   } else {
     return $content.$attribution;
   }
 }
 $default_commands_conversion{'quotation'} = \&_convert_quotation_command;
-$default_commands_conversion{'smallquotation'} = \&_convert_quotation_command;
 
 sub _convert_cartouche_command($$$$)
 {
@@ -7370,6 +7354,12 @@ sub _protect_space($$)
 # Convert tree element $ROOT, and return HTML text for the output files.
 sub _convert($$;$);
 
+my %small_alias;
+for my $cmd ('example', 'display', 'format', 'lisp', 'quotation',
+             'indentedblock') {
+  $small_alias{'small'.$cmd} = $cmd;
+};
+
 sub _convert($$;$)
 {
   my $self = shift;
@@ -7456,6 +7446,8 @@ sub _convert($$;$)
       and $root->{'cmdname'} and $root->{'cmdname'} =~ /index$/) {
       $command_name = 'cindex';
     }
+    $command_name = $small_alias{$command_name}
+      if $small_alias{$command_name};
     if ($root_commands{$command_name}) {
       $self->{'current_root_command'} = $root;
     }

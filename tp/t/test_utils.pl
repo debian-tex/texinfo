@@ -690,7 +690,6 @@ sub test($$)
 
   my $parser = Texinfo::Parser::parser({'TEST' => 1,
                                         'include_directories' => [
-                                          $srcdir.'t/include_reference',
                                           $srcdir.'t/include/'],
                                         'DEBUG' => $self->{'DEBUG'},
                                        %$parser_options});

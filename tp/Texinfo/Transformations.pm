@@ -1,7 +1,6 @@
 # Transformations.pm: some transformations of the document tree
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
-# Free Software Foundation, Inc.
+# Copyright 2010-2019 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -415,7 +414,7 @@ sub complete_node_menu($$)
         }
       } else {
         my $entry = Texinfo::Structuring::new_node_menu_entry($self, 
-                              $node_entry->{'extra'}->{'node_content'});
+                              $node_entry, 0);
         push @pending, $entry;
       }
     }

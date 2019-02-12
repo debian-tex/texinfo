@@ -1950,23 +1950,14 @@ $result_converted{'html'}->{'detailmenu_on_subnodes'} = '<!DOCTYPE html PUBLIC "
 <!--
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
-blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smalllisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
@@ -1985,21 +1976,21 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 <span id="top"></span><h1 class="top">top</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#chapter-2" accesskey="2">chapter 2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#chapter-2" accesskey="2">chapter 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#section" accesskey="3">section</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#section" accesskey="3">section</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
 </pre></th></tr><tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">Chap 2
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#section-chap-2" accesskey="4">section chap 2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#section-chap-2" accesskey="4">section chap 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec" accesskey="5">unnumberedsec</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec" accesskey="5">unnumberedsec</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -2011,7 +2002,7 @@ Next: <a href="#chapter-2" accesskey="n" rel="next">chapter 2</a>, Previous: <a 
 <span id="chapter-1"></span><h2 class="chapter">1 chapter</h2>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#section" accesskey="1">section</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#section" accesskey="1">section</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -2030,9 +2021,9 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
 <span id="chapter-2-1"></span><h2 class="chapter">2 chapter 2</h2>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#section-chap-2" accesskey="1">section chap 2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#section-chap-2" accesskey="1">section chap 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec" accesskey="2">unnumberedsec</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec" accesskey="2">unnumberedsec</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

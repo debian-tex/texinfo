@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-6.5.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-02-01 15:23+0000\n"
+"POT-Creation-Date: 2019-02-11 20:22+0000\n"
 "PO-Revision-Date: 2019-01-05 13:30+0100\n"
 "Last-Translator: Antonio Ceballos <aceballos@gmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
@@ -2122,10 +2122,10 @@ msgstr "No se encontraron entradas para '%s'; no se borrará nada"
 
 #: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:833
 #: tp/Texinfo/Convert/Converter.pm:871 tp/Texinfo/Convert/Converter.pm:1159
-#: tp/Texinfo/Convert/DocBook.pm:318 tp/Texinfo/Convert/HTML.pm:6612
-#: tp/Texinfo/Convert/HTML.pm:6636 tp/Texinfo/Convert/HTML.pm:7017
-#: tp/Texinfo/Convert/HTML.pm:7076 tp/Texinfo/Convert/HTML.pm:7155
-#: tp/Texinfo/Convert/HTML.pm:7233 tp/Texinfo/Convert/IXIN.pm:286
+#: tp/Texinfo/Convert/DocBook.pm:318 tp/Texinfo/Convert/HTML.pm:6596
+#: tp/Texinfo/Convert/HTML.pm:6620 tp/Texinfo/Convert/HTML.pm:7001
+#: tp/Texinfo/Convert/HTML.pm:7060 tp/Texinfo/Convert/HTML.pm:7139
+#: tp/Texinfo/Convert/HTML.pm:7217 tp/Texinfo/Convert/IXIN.pm:286
 #: tp/Texinfo/Convert/Info.pm:296 tp/Texinfo/Convert/TexinfoXML.pm:451
 #, perl-format
 msgid "could not open %s for writing: %s"
@@ -2189,27 +2189,32 @@ msgstr "hay nodos sin nombre nuevo al final del fichero"
 msgid "could not open %s: %s"
 msgstr "no se pudo abrir %s: %s"
 
-#: tp/Texinfo/Common.pm:2253
+#: tp/Texinfo/Common.pm:1755
+#, perl-format
+msgid "using a renamed nodes file (`%s') is deprecated"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:2254
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr "no se ha podido proteger el carácter almohadilla en @%s"
 
-#: tp/Texinfo/Common.pm:2635
+#: tp/Texinfo/Common.pm:2636
 #, perl-format
 msgid "empty node name after expansion `%s'"
 msgstr "nombre de nodo vacío tras expandir `%s'"
 
-#: tp/Texinfo/Common.pm:2643
+#: tp/Texinfo/Common.pm:2644
 #, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "@%s '%s' ya ha sido definido anteriormente"
 
-#: tp/Texinfo/Common.pm:2649
+#: tp/Texinfo/Common.pm:2650
 #, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "la definición previa de `@%s' se encuentra aquí"
 
-#: tp/Texinfo/Common.pm:2668 tp/Texinfo/ParserNonXS.pm:3273
+#: tp/Texinfo/Common.pm:2669 tp/Texinfo/ParserNonXS.pm:3273
 #, perl-format
 msgid "empty argument in @%s"
 msgstr "argumento vacío en @%s"
@@ -2220,8 +2225,8 @@ msgid "%s: output incompatible with split"
 msgstr "%s: salida incompatible con división"
 
 #: tp/Texinfo/Convert/Converter.pm:854 tp/Texinfo/Convert/Converter.pm:887
-#: tp/Texinfo/Convert/DocBook.pm:354 tp/Texinfo/Convert/HTML.pm:7043
-#: tp/Texinfo/Convert/HTML.pm:7102 tp/Texinfo/Convert/IXIN.pm:909
+#: tp/Texinfo/Convert/DocBook.pm:354 tp/Texinfo/Convert/HTML.pm:7027
+#: tp/Texinfo/Convert/HTML.pm:7086 tp/Texinfo/Convert/IXIN.pm:909
 #: tp/Texinfo/Convert/Info.pm:159 tp/Texinfo/Convert/Info.pm:185
 #: tp/Texinfo/Convert/Info.pm:213 tp/Texinfo/Convert/Info.pm:276
 #: tp/Texinfo/Convert/TexinfoXML.pm:470 tp/Texinfo/ParserNonXS.pm:1827
@@ -2248,119 +2253,119 @@ msgstr "El fichero @image '%s' no se ha encontrado; se utilizará '%s'"
 msgid "no argument specified for @U"
 msgstr "no se ha especificado argumento alguno para @U"
 
-#: tp/Texinfo/Convert/HTML.pm:1727
+#: tp/Texinfo/Convert/HTML.pm:1719
 #, perl-format
 msgid "@image file `%s' (for HTML) not found, using `%s'"
 msgstr ""
 "El fichero @image '%s' (para HTML) no se ha encontrado; se utilizará '%s'"
 
-#: tp/Texinfo/Convert/HTML.pm:2412
+#: tp/Texinfo/Convert/HTML.pm:2404
 #, perl-format
 msgid "raw format %s is not converted"
 msgstr "el formato en bruto %s no se ha convertido"
 
-#: tp/Texinfo/Convert/HTML.pm:4663
+#: tp/Texinfo/Convert/HTML.pm:4647
 #, perl-format
 msgid "could not open html refs config file %s: %s"
 msgstr ""
 "no se pudo abrir el fichero de configuración de referencias html %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:4691
+#: tp/Texinfo/Convert/HTML.pm:4675
 msgid "missing type"
 msgstr "tipo ausente"
 
-#: tp/Texinfo/Convert/HTML.pm:4694
+#: tp/Texinfo/Convert/HTML.pm:4678
 #, perl-format
 msgid "unrecognized type: %s"
 msgstr "tipo desconocido: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:4711
+#: tp/Texinfo/Convert/HTML.pm:4695
 #, perl-format
 msgid "error on closing html refs config file %s: %s"
 msgstr "error cerrando el fichero de configuración de referencias html %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5038
+#: tp/Texinfo/Convert/HTML.pm:5022
 msgid "string not closed in css file"
 msgstr "cadena de texto sin cerrar en el fichero css"
 
-#: tp/Texinfo/Convert/HTML.pm:5040
+#: tp/Texinfo/Convert/HTML.pm:5024
 msgid "--css-include ended in comment"
 msgstr "'--css-include' finaliza con un comentario"
 
-#: tp/Texinfo/Convert/HTML.pm:5042
+#: tp/Texinfo/Convert/HTML.pm:5026
 msgid "@import not finished in css file"
 msgstr "@import no finalizado en el fichero css"
 
-#: tp/Texinfo/Convert/HTML.pm:5068
+#: tp/Texinfo/Convert/HTML.pm:5052
 #, perl-format
 msgid "CSS file %s not found"
 msgstr "No se ha encontrado el fichero CSS %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5074
+#: tp/Texinfo/Convert/HTML.pm:5058
 #, perl-format
 msgid "could not open --include-file %s: %s"
 msgstr "no se pudo abrir '--include-file' %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5084
+#: tp/Texinfo/Convert/HTML.pm:5068
 #, perl-format
 msgid "error on closing CSS file %s: %s"
 msgstr "error cerrando el fichero CSS '%s': %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5898 tp/Texinfo/Convert/HTML.pm:5902
+#: tp/Texinfo/Convert/HTML.pm:5882 tp/Texinfo/Convert/HTML.pm:5886
 #, perl-format
 msgid "no htmlxref.cnf entry found for `%s'"
 msgstr "no se encontraron entradas htmlxref.cnf para `%s'"
 
-#: tp/Texinfo/Convert/HTML.pm:6607
+#: tp/Texinfo/Convert/HTML.pm:6591
 #, perl-format
 msgid "error on closing frame file %s: %s"
 msgstr "error al cerrar el fichero marco %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:6631
+#: tp/Texinfo/Convert/HTML.pm:6615
 #, perl-format
 msgid "error on closing TOC frame file %s: %s"
 msgstr "error al cerrar el fichero de tabla de contenidos %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:6746
+#: tp/Texinfo/Convert/HTML.pm:6730
 #, perl-format
 msgid "handler %s of stage %s priority %s failed"
 msgstr "el manejador %s de la etapa %s con prioridad %s ha fallado"
 
-#: tp/Texinfo/Convert/HTML.pm:6951
+#: tp/Texinfo/Convert/HTML.pm:6935
 msgid "must specify a title with a title command or @top"
 msgstr ""
 "hay que especificar un título mediante una orden de título o mediante @top"
 
-#: tp/Texinfo/Convert/HTML.pm:7162
+#: tp/Texinfo/Convert/HTML.pm:7146
 #, perl-format
 msgid "error on closing redirection node file %s: %s"
 msgstr "error al cerrar el fichero de redirección de nodos %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:7188
+#: tp/Texinfo/Convert/HTML.pm:7172
 #, perl-format
 msgid "old name for `%s' is a node of the document"
 msgstr "el antiguo nombre de '%s' es un nodo del documento"
 
-#: tp/Texinfo/Convert/HTML.pm:7194
+#: tp/Texinfo/Convert/HTML.pm:7178
 #, perl-format
 msgid "file empty for renamed node `%s'"
 msgstr "fichero vacío para el nodo renombrado '%s'"
 
-#: tp/Texinfo/Convert/HTML.pm:7208
+#: tp/Texinfo/Convert/HTML.pm:7192
 #, perl-format
 msgid "target node (new name for `%s') not in document: %s"
 msgstr "el nodo objetivo (nuevo nombre para '%s') no está en el documento: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:7240
+#: tp/Texinfo/Convert/HTML.pm:7224
 #, perl-format
 msgid "error on closing renamed node redirection file %s: %s"
 msgstr "error al cerrar el fichero de redirección de nodos renombrados %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:7278
+#: tp/Texinfo/Convert/HTML.pm:7262
 msgid "empty node name"
 msgstr "nombre de nodo vacío"
 
-#: tp/Texinfo/Convert/HTML.pm:7280 tp/Texinfo/ParserNonXS.pm:3286
+#: tp/Texinfo/Convert/HTML.pm:7264 tp/Texinfo/ParserNonXS.pm:3286
 #, perl-format
 msgid "syntax for an external node used for `%s'"
 msgstr "se ha utilizado la sintaxis de nodo externo para `%s'"
@@ -2466,7 +2471,7 @@ msgstr "el nombre de nodo de una entrada de menú no debe contener ':'"
 msgid "menu entry name should not contain `:'"
 msgstr "el nombre de una entrada de menú no debe contener ':'"
 
-#: tp/Texinfo/ParserNonXS.pm:997 tp/Texinfo/Structuring.pm:437
+#: tp/Texinfo/ParserNonXS.pm:997 tp/Texinfo/Structuring.pm:436
 #, perl-format
 msgid "multiple @%s"
 msgstr "@%s múltiple"
@@ -3085,91 +3090,91 @@ msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr ""
 "el argumento de @urefbreakstyle debe ser `after'/`before'/`none', no '%s'"
 
-#: tp/Texinfo/Structuring.pm:176
+#: tp/Texinfo/Structuring.pm:175
 #, perl-format
 msgid "raising the section level of @%s which is too low"
 msgstr "se sube el nivel de sección de @%s, que es demasiado bajo"
 
-#: tp/Texinfo/Structuring.pm:208
+#: tp/Texinfo/Structuring.pm:207
 #, perl-format
 msgid "no chapter-level command before @%s"
 msgstr "no hay órdenes de nivel de capítulo antes de @%s"
 
-#: tp/Texinfo/Structuring.pm:213
+#: tp/Texinfo/Structuring.pm:212
 #, perl-format
 msgid "lowering the section level of @%s appearing after a lower element"
 msgstr ""
 "se desciende el nivel de sección de @%s que aparece tras un elemento inferior"
 
-#: tp/Texinfo/Structuring.pm:302
+#: tp/Texinfo/Structuring.pm:301
 #, perl-format
 msgid "no sectioning command associated with @%s"
 msgstr "no hay ninguna orden de seccionamiento asociada a @%s"
 
-#: tp/Texinfo/Structuring.pm:330
+#: tp/Texinfo/Structuring.pm:329
 #, perl-format
 msgid "@%s not empty"
 msgstr "@%s no vacío"
 
-#: tp/Texinfo/Structuring.pm:387 tp/Texinfo/Structuring.pm:1208
+#: tp/Texinfo/Structuring.pm:386 tp/Texinfo/Structuring.pm:1207
 #, perl-format
 msgid "@%s reference to nonexistent node `%s'"
 msgstr "@%s hace referencia a un nodo inexistente (`%s')"
 
-#: tp/Texinfo/Structuring.pm:394
+#: tp/Texinfo/Structuring.pm:393
 #, perl-format
 msgid "@%s entry node name `%s' different from %s name `%s'"
 msgstr "el nombre de nodo `%s' de la entrada @%s difiere del nombre de %s `%s'"
 
-#: tp/Texinfo/Structuring.pm:513
+#: tp/Texinfo/Structuring.pm:512
 #, perl-format
 msgid "unreferenced node `%s'"
 msgstr "Nodo '%s' no referenciado"
 
-#: tp/Texinfo/Structuring.pm:564
+#: tp/Texinfo/Structuring.pm:563
 #, perl-format
 msgid "node `%s' is %s for `%s' in sectioning but not in menu"
 msgstr "el nodo `%s' es %s para `%s' en el seccionamiento pero no en el menú"
 
-#: tp/Texinfo/Structuring.pm:573
+#: tp/Texinfo/Structuring.pm:572
 #, perl-format
 msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
 msgstr "el nodo %s `%s' en el menú `%s' y en el seccionamiento `%s' difieren"
 
-#: tp/Texinfo/Structuring.pm:591
+#: tp/Texinfo/Structuring.pm:590
 #, perl-format
 msgid "node `%s' is %s for `%s' in menu but not in sectioning"
 msgstr "el nodo `%s' es %s para `%s' en menú pero no en seccionamiento"
 
-#: tp/Texinfo/Structuring.pm:646
+#: tp/Texinfo/Structuring.pm:645
 #, perl-format
 msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
 msgstr ""
 "el puntero %s `%s' (para el nodo `%s') es diferente del nombre de %s `%s'"
 
-#: tp/Texinfo/Structuring.pm:670
+#: tp/Texinfo/Structuring.pm:669
 #, perl-format
 msgid "%s reference to nonexistent `%s'"
 msgstr "%s hace referencia a algo que no existe (`%s')"
 
-#: tp/Texinfo/Structuring.pm:691
+#: tp/Texinfo/Structuring.pm:690
 #, perl-format
 msgid "node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "El nodo `%s' carece de elemento de menú alguno para `%s' aunque consta como "
 "su destino para `Up'"
 
-#: tp/Texinfo/Structuring.pm:699
+#: tp/Texinfo/Structuring.pm:698
 #, perl-format
 msgid "for `%s', up in menu `%s' and up `%s' don't match"
 msgstr "para `%s', subir en el menú `%s' y subir `%s' no concuerdan"
 
-#: tp/Texinfo/Structuring.pm:1218
+#: tp/Texinfo/Structuring.pm:1217
 #, perl-format
 msgid "@%s to `%s', different from %s name `%s'"
 msgstr "@%s para `%s', diferente del nombre de %s `%s'"
 
-#: tp/Texinfo/Structuring.pm:1464
+#: tp/Texinfo/Structuring.pm:1503
 #, perl-format
 msgid "empty index key in @%s"
 msgstr "clave de índice vacía en @%s"

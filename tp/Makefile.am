@@ -142,13 +142,13 @@ test_files = \
  t/include/verbatim_encoded.texi \
  t/include/verbatim_encoded_latin1.texi \
  t/include/words.txt \
- t/include_reference/f--ile.png \
- t/include_reference/f--ile.txt \
- t/include_reference/figure.txt \
- t/include_reference/inc_file.texi \
- t/include_reference/incl-incl.txi \
- t/include_reference/macro_included.texi \
- t/include_reference/section_file.texi \
+ t/include/f--ile.png \
+ t/include/f--ile.txt \
+ t/include/figure.txt \
+ t/include/inc_file.texi \
+ t/include/incl-incl.txi \
+ t/include/macro_included.texi \
+ t/include/section_file.texi \
  t/init/only_toc_out.init \
  t/init/cvs.init \
  t/init/redefine_need.init \

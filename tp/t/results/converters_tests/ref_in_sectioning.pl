@@ -2506,9 +2506,9 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
 <span id="for-example-node-_0028node_0029-_0028Top_0029"></span><h1 class="top">for example <a href="#node">node</a> (see <a href="#node">node</a>) (see <cite><a href="file.html#Top">Manual</a></cite>)</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#node" accesskey="1">node</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#node" accesskey="1">node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#chap" accesskey="2">chap</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#chap" accesskey="2">chap</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

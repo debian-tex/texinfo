@@ -1030,23 +1030,14 @@ $result_converted{'html'}->{'formats_in_menu'} = '<!DOCTYPE html PUBLIC "-//W3C/
 <!--
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
-blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smalllisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
@@ -1061,7 +1052,7 @@ ul.no-bullet {list-style: none}
 <span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="gcc.html#Top" accesskey="1">(gcc)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">text
+<tr><td align="left" valign="top">&bull; <a href="gcc.html#Top" accesskey="1">(gcc)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">text
 <dl compact="compact">
 <dt>item</dt>
 <dd><pre class="menu-preformatted">* table line::
@@ -1070,16 +1061,16 @@ ul.no-bullet {list-style: none}
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="info.html#Top" accesskey="2">(info)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="info.html#Top" accesskey="2">(info)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 <pre class="verbatim">some @ verb{x atim
 * texinfo:: in @ verbatim
 </pre></td></tr>
-<tr><td align="left" valign="top">&bull; <a href="manual2.html#Top" accesskey="3">(manual2)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">%
+<tr><td align="left" valign="top">&bull; <a href="manual2.html#Top" accesskey="3">(manual2)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">%
 
 <i></i>
 Log$
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="truc.html#Top" accesskey="4">(truc)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"><acronym>description
+<tr><td align="left" valign="top">&bull; <a href="truc.html#Top" accesskey="4">(truc)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"><acronym>description
 * acronym::</acronym>
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">

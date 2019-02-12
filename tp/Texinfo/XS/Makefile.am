@@ -36,14 +36,12 @@ xsdir = $(pkglibdir)
 
 PERL_INC = $(PERL_CONF_archlibexp)/CORE
 
-# note that passing `-typemap parsetexi/typemap' doesn't work as xsubpp 
-# seems to work relative to the subdirectory
-XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap -typemap typemap
+XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
 
 .xs.c:
 	$(XSUBPP) $(XSUBPPARGS) $< > $*.xsc && mv $*.xsc $*.c
 
-EXTRA_DIST += TestXS.pm typemap
+EXTRA_DIST += TestXS.pm
 
 # -------------------------------------------------------
 
@@ -146,6 +144,8 @@ Parsetexi_la_SOURCES= parsetexi/Parsetexi.c \
 		      parsetexi/counter.c \
 		      parsetexi/counter.h
 EXTRA_DIST += $p/command_data.c
+
+EXTRA_DIST += $p/Parsetexi.xs
 
 Parsetexi_la_LIBADD = $(top_builddir)/gnulib/lib/libgnu.la
 Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBICONV)

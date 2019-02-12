@@ -1675,7 +1675,7 @@ $result_converted{'html_text'}->{'some_at_commands_in_ref_nodes'} = '
 <span id="Top-1"></span><h1 class="top">Top</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#A-SC-_00d1-_00c5-TeX-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1" accesskey="1">A <small>SC &Ntilde; &Aring; TeX</small> node &iuml; &iuml; &#274;` &#322; &#262;, &iexcl;</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#A-SC-_00d1-_00c5-TeX-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1" accesskey="1">A <small>SC &Ntilde; &Aring; TeX</small> node &iuml; &iuml; &#274;` &#322; &#262;, &iexcl;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

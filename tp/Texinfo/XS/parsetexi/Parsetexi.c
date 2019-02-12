@@ -312,23 +312,6 @@ XS_EUPXS(XS_Parsetexi_init_index_commands)
 }
 
 
-XS_EUPXS(XS_Parsetexi_get_root); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Parsetexi_get_root)
-{
-    dVAR; dXSARGS;
-    if (items != 0)
-       croak_xs_usage(cv,  "");
-    {
-	ELEMENT *	RETVAL;
-	dXSTARG;
-
-	RETVAL = get_root();
-	XSprePUSH; PUSHu((UV)RETVAL);
-    }
-    XSRETURN(1);
-}
-
-
 XS_EUPXS(XS_Parsetexi_add_include_directory); /* prototype to pass -Wmissing-prototypes */
 XS_EUPXS(XS_Parsetexi_add_include_directory)
 {
@@ -652,7 +635,6 @@ XS_EXTERNAL(boot_Parsetexi)
         (void)newXSproto_portable("Parsetexi::wipe_values", XS_Parsetexi_wipe_values, file, "");
         (void)newXSproto_portable("Parsetexi::reset_context_stack", XS_Parsetexi_reset_context_stack, file, "");
         (void)newXSproto_portable("Parsetexi::init_index_commands", XS_Parsetexi_init_index_commands, file, "");
-        (void)newXSproto_portable("Parsetexi::get_root", XS_Parsetexi_get_root, file, "");
         (void)newXSproto_portable("Parsetexi::add_include_directory", XS_Parsetexi_add_include_directory, file, "$");
         (void)newXSproto_portable("Parsetexi::build_texinfo_tree", XS_Parsetexi_build_texinfo_tree, file, "");
         (void)newXSproto_portable("Parsetexi::build_label_list", XS_Parsetexi_build_label_list, file, "");

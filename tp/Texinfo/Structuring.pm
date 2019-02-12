@@ -1,8 +1,7 @@
 # Structuring.pm: extract informations about a document structure based on the 
 #                 document tree.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software 
-# Foundation, Inc.
+# Copyright 2010-2019 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -65,7 +64,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.5.92';
+$VERSION = '6.5.93';
 
 
 my %types_to_enter;
@@ -1267,12 +1266,30 @@ sub _copy_contents($)
   return $copy->{'contents'};
 }
 
-sub new_node_menu_entry($$)
+sub new_node_menu_entry
 {
-  my $self = shift;
-  my $node_contents = shift;
+  my ($self, $node, $use_sections) = @_;
+
+  my $node_contents = $node->{'extra'}->{'node_content'};
+  
+  my ($name_contents, $menu_entry_name);
+  if ($use_sections) {
+    if (defined $node->{'extra'}->{'associated_section'}) {
+      $name_contents = $node->{'extra'}->{'associated_section'}->{'args'}->[0]->{'contents'};
+    } else {
+      $name_contents = $node_contents; # shouldn't happen
+    }
+  }
 
   my $entry = {'type' => 'menu_entry'};
+
+  if ($use_sections) {
+    $menu_entry_name = {'type' => 'menu_entry_name'};
+    $menu_entry_name->{'contents'} = _copy_contents ($name_contents);
+    foreach my $content (@{$menu_entry_name->{'contents'}}) {
+      $content->{'parent'} = $menu_entry_name;
+    }
+  }
 
   my $menu_entry_node = {'type' => 'menu_entry_node'};
   $menu_entry_node->{'contents'}
@@ -1288,14 +1305,28 @@ sub new_node_menu_entry($$)
                                      'parent' => $description};
   $description->{'contents'}->[0]->{'contents'}->[0] = {'text' =>"\n",
          'parent' => $description->{'contents'}->[0]};
-  $entry->{'args'} 
-   = [{'text' => '* ', 'type' => 'menu_entry_leading_text'},
-     $menu_entry_node, 
-     {'text' => '::', 'type' => 'menu_entry_separator'},
-     $description];
+
+  if ($use_sections) {
+    $entry->{'args'} 
+     = [{'text' => '* ', 'type' => 'menu_entry_leading_text'},
+       $menu_entry_name, 
+       {'text' => ': ', 'type' => 'menu_entry_separator'},
+       $menu_entry_node, 
+       {'text' => '.', 'type' => 'menu_entry_separator'},
+       $description];
+  } else {
+    $entry->{'args'} 
+     = [{'text' => '* ', 'type' => 'menu_entry_leading_text'},
+       $menu_entry_node, 
+       {'text' => '::', 'type' => 'menu_entry_separator'},
+       $description];
+  }
+
   foreach my $arg(@{$entry->{'args'}}) {
     $arg->{'parent'} = $entry;
   }
+  $entry->{'extra'}->{'menu_entry_name'} = $menu_entry_name;
+
   $entry->{'extra'}->{'menu_entry_node'} =
     Texinfo::Common::parse_node_manual($menu_entry_node);
   my $content = $entry->{'extra'}->{'menu_entry_node'}->{'node_content'};
@@ -1337,10 +1368,9 @@ sub new_block_command($$$)
   return $new_block;
 }
 
-sub menu_of_node
+sub _menu_of_node
 {
-  my $self = shift;
-  my $node = shift;
+  my ($self, $node, $use_sections) = @_;
 
   if (!$node->{'extra'}->{'associated_section'}->{'section_childs'}) {
     return;
@@ -1359,8 +1389,7 @@ sub menu_of_node
 
   my @pending;
   for my $child (@node_childs) {
-    my $entry = new_node_menu_entry($self, 
-                                     $child->{'extra'}->{'node_content'});
+    my $entry = new_node_menu_entry($self, $child, $use_sections);
     push @pending, $entry;
   }
 
@@ -1368,6 +1397,16 @@ sub menu_of_node
   my $current_menu = new_block_command (\@pending, $section, 'menu');
 
   return $current_menu;
+}
+
+sub node_menu_of_node
+{
+  return _menu_of_node (@_, 0);
+}
+
+sub section_menu_of_node
+{
+  return _menu_of_node (@_, 1);
 }
 
 

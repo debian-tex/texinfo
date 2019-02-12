@@ -856,8 +856,8 @@ AUTOMAKE_OPTIONS = foreign subdir-objects
 # Need to be distributed
 
 # For reference
-EXTRA_DIST = gnulib/m4/gnulib-cache.m4 TestXS.pm typemap TestXS.xs \
-	XSParagraph.xs MiscXS.xs $p/command_data.c \
+EXTRA_DIST = gnulib/m4/gnulib-cache.m4 TestXS.pm TestXS.xs \
+	XSParagraph.xs MiscXS.xs $p/command_data.c $p/Parsetexi.xs \
 	$p/element_types.txt $p/element_types.awk $p/command_data.txt \
 	$p/command_data.awk $p/Parser-5556.pm
 
@@ -876,10 +876,7 @@ SUBDIRS = gnulib/lib
 ################### End Gnulib section #########################
 xsdir = $(pkglibdir)
 PERL_INC = $(PERL_CONF_archlibexp)/CORE
-
-# note that passing `-typemap parsetexi/typemap' doesn't work as xsubpp 
-# seems to work relative to the subdirectory
-XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap -typemap typemap
+XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
 
 # -------------------------------------------------------
 CLEANFILES = TestXS.c XSParagraph.c MiscXS.c

@@ -24,6 +24,9 @@
 #define CM_hex_7d CM_CLOSE_BRACE
 #define CM_hex_7e CM_TILDE
 
+/* Defined on MS-Windows */
+#undef CM_NONE
+
 enum command_id {
 CM_NONE,
 

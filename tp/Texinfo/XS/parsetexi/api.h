@@ -4,7 +4,6 @@ extern ELEMENT *Root;
 void parse_text (char *);
 void parse_string(char *);
 int parse_file (char *filename);
-ELEMENT *get_root (void);
 void reset_parser (void);
 void reset_parser_except_conf (void);
 void set_debug (int);

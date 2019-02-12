@@ -105,6 +105,12 @@ $result_converted{'file_html'}->{'unknown_nodes_renamed'} = '';
 
 $result_converted_errors{'file_html'}->{'unknown_nodes_renamed'} = [
   {
+    'error_line' => 'texi2any: warning: using a renamed nodes file (`unknown_nodes_renamed-noderename.cnf\') is deprecated
+',
+    'text' => 'using a renamed nodes file (`unknown_nodes_renamed-noderename.cnf\') is deprecated',
+    'type' => 'warning'
+  },
+  {
     'error_line' => 'unknown_nodes_renamed.texi: warning: must specify a title with a title command or @top
 ',
     'text' => 'must specify a title with a title command or @top',

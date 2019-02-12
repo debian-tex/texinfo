@@ -61,7 +61,7 @@ sub import {
 @EXPORT = qw(
 );
 
-$VERSION = '6.5.92';
+$VERSION = '6.5.93';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -3240,7 +3240,8 @@ sub _convert($$)
       if ($node) {
         if (!$self->{'seenmenus'}->{$node}) {
           $self->{'seenmenus'}->{$node} = 1;
-          my $menu_node = Texinfo::Structuring::menu_of_node (undef, $node);
+          my $menu_node
+            = Texinfo::Structuring::node_menu_of_node (undef, $node);
           if ($menu_node) {
             my $menu_text = $self->_convert ($menu_node);
             if ($menu_text) {

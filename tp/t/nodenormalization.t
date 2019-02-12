@@ -27,7 +27,6 @@ Locale::Messages::bindtextdomain ('texinfo_document', 't/locales');
 
 my $parser = Texinfo::Parser::parser({'TEST' => 1,
                                       'include_directories' => [
-                                        $srcdir.'t/include_reference/',
                                           $srcdir.'t/include/'],
                                       'expanded_formats' => ['html', 'tex']});
 

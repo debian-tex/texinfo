@@ -1,3 +1,142 @@
+2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	pretest 6.5.93.
+
+	* configure.ac: version
+
+2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Be less optimistic about HTML 3.2 compatibility.
+
+	* doc/texinfo.texi (HTML Translation): Mention that <span> is 
+	used.  Mention that 'id' atttibute is used.  Say that html32.pm 
+	hasn't been tested recently.
+
+2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix make update-po in out-of-source build.
+
+	* Makefile.am (update-po): Remove reference to $srcdir.
+
+2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Use a single include directory in test suite.
+
+	* tp/t/include_reference: Move all files to tp/t/include.
+
+	* tp/Makefile.am,
+	* tp/t/test_utils.pl (test),
+	* tp/t/nodenormalization.t: Do not refer to tp/t/include_reference.
+
+2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Use section names in generated HTML menus.
+
+	* tp/Texinfo/Structuring.pm (new_node_menu_entry): Add argument 
+	saying whether to use the section name in the menu entry.
+	(menu_of_node, _menu_of_node): Rename.
+	(node_menu_of_node, section_menu_of_node): Two new functions 
+	wrapping _menu_of_node.
+	* tp/Texinfo/Convert/HTML.pm (_convert_heading_command):
+	Call section_menu_of_node instead of menu_of_node.
+	* tp/Texinfo/Convert/Plaintext.pm (_convert): Call 
+	node_menu_of_node instead of menu_of_node.  This is the existing 
+	behaviour.
+	* NEWS: Mention change.
+
+	* tp/Texinfo/Transformations.pm (complete_node_menu): Update.
+
+2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Advice on node names.
+
+	* doc/texinfo.texi (Node Names): Mention that HTML filenames are 
+	based on the node names.  Do not link to 'HTML Xref Link 
+	Preservation' node.
+	(@anchor): Remove link to the same node.
+
+2019-02-10  Robert Pluim  <rpluim@gmail.com>
+
+	* doc/texinfo.texi (Inserting):
+	Document 'M-x texinfo-insert-dwim-@ref'.
+
+2019-02-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Deprecate MANUAL-noderename.cnf.
+
+	* tp/Texinfo/Common.pm (collect_renamed_nodes): Give a warning 
+	if a renamed nodes file is being used.
+	* doc/texinfo.texi (HTML Xref Link Preservation),
+	* NEWS: Document deprecation.
+
+2019-02-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	No special CSS for @small* commands.
+
+	* tp/Texinfo/Convert/HTML.pm
+	(%css_map): Remove css for @smallexample etc.
+	(%small_alias): New hash.
+	(_convert): Use %small_alias to treat e.g. @smallexample exactly 
+	the same as @example, so that no extra CSS is needed.
+	(%default_commands_conversion): Do not add entries for some 
+	@small* commands.
+	(_convert_quotation_command): Do not check if the passed command 
+	name is different to 'quotation', as it will not be.
+
+	* doc/texinfo.texi (@small...): Do not say that @small...  
+	commands produce a smaller font in HTML output.
+	* NEWS: Mention change.
+
+2019-02-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi: Wrap introductory comment in @ifinfo block.
+
+2019-02-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	No colon in HTML menus.
+
+	* tp/Texinfo/Convert/HTML.pm (%defaults) <MENU_ENTRY_COLON>:
+	Set to ''.
+	* doc/texinfo.texi (Other Customization Variables): Update.
+	* NEWS: Mention change.
+
+2019-02-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Do not install useless static libraries.
+
+	* tp/Texinfo/XS/Makefile.am (LT_INIT): Use option 'disable-static'.
+	* NEWS: Mention change.
+
+	Report from Eli Zaretskii.
+
+2019-02-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove parsetexi typemap.
+
+	* tp/Texinfo/XS/parsetexi/Parsetexi.xs,
+	* tp/Texinfo/XS/parsetexi/api.c (get_root): Remove, as it is 
+	unused and relies on casting a pointer to an integer.
+	* tp/Texinfo/XS/parsetexi/typemap: Remove.
+	* tp/Texinfo/XS/Makefile.am (XSUBPPARGS): Remove reference to 
+	typemap file.
+	(EXTRA_DIST): Distribute Parsetexi.xs.
+
+	Eli Zaretskii reported a warning "cast from pointer to integer 
+	of different size" when compiling on MS-Windows.
+
+2019-02-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fixes for MS-Windows.
+
+	* tp/Texinfo/XS/misc.c (xs_process_text): Add dTHX at start so 
+	that realloc will work.
+	* tp/Texinfo/XS/parsetexi/command_data.awk:
+	Output "#undef CM_NONE" in command_ids.h.
+	* tp/Texinfo/XS/parsetexi/input.c (convert_to_utf8): Use 
+	ICONV_CONST in a variable declaration.
+
+	All reported by Eli Zaretskii.
+
 2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	pretest 6.5.92.

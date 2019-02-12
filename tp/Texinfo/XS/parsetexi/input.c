@@ -140,7 +140,7 @@ convert_to_utf8 (char *s, char *input_encoding)
 {
   iconv_t our_iconv;
   static TEXT t;
-  char *inptr; size_t bytes_left;
+  ICONV_CONST char *inptr; size_t bytes_left;
   size_t iconv_ret;
   enum character_encoding enc;
 

@@ -97,7 +97,7 @@ AM_MISSING_PROG([XSUBPP], [xsubpp])
 
 gl_INIT
 
-LT_INIT
+LT_INIT([disable-static])
 
 # The above are still necessary for --disable-perl-xs even though they 
 # aren't really used: otherwise, configure complains about undefined

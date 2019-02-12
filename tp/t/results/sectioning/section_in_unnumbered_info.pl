@@ -8180,23 +8180,14 @@ $result_converted{'html'}->{'section_in_unnumbered_info'} = '<!DOCTYPE html PUBL
 <!--
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
-blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smalllisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
@@ -8283,15 +8274,15 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 <p>Menu:
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#unnumbered" accesskey="2">unnumbered</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumbered" accesskey="2">unnumbered</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#chapter-2" accesskey="3">chapter 2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#chapter-2" accesskey="3">chapter 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#chapter-3" accesskey="4">chapter 3</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#chapter-3" accesskey="4">chapter 3</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#unnumbered-4" accesskey="5">unnumbered 4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumbered-4" accesskey="5">unnumbered 4</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8303,7 +8294,7 @@ Next: <a href="#unnumbered" accesskey="n" rel="next">unnumbered</a>, Previous: <
 <span id="chapter-1"></span><h2 class="chapter">1 chapter</h2>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#section-in-chapter" accesskey="1">section in chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#section-in-chapter" accesskey="1">section in chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8322,7 +8313,7 @@ Next: <a href="#chapter-2" accesskey="n" rel="next">chapter 2</a>, Previous: <a 
 <span id="unnumbered-1"></span><h2 class="unnumbered">unnumbered</h2>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#section-in-unnumbered" accesskey="1">section in unnumbered</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#section-in-unnumbered" accesskey="1">section in unnumbered</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8341,9 +8332,9 @@ Next: <a href="#chapter-3" accesskey="n" rel="next">chapter 3</a>, Previous: <a 
 <span id="chapter-2-1"></span><h2 class="chapter">2 chapter 2</h2>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec-2" accesskey="1">unnumberedsec 2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec-2" accesskey="1">unnumberedsec 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec-2_002d1" accesskey="2">unnumberedsec 2-1</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec-2_002d1" accesskey="2">unnumberedsec 2-1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8355,13 +8346,13 @@ Next: <a href="#unnumberedsec-2_002d1" accesskey="n" rel="next">unnumberedsec 2-
 <span id="unnumbered-section-2"></span><h3 class="unnumberedsec">unnumbered section 2</h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sub-2" accesskey="1">unnumbered sub 2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sub-2" accesskey="1">unnumbered sub 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#numbered-sub-2" accesskey="2">numbered sub 2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#numbered-sub-2" accesskey="2">numbered sub 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sub2-2" accesskey="3">unnumbered sub2 2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sub2-2" accesskey="3">unnumbered sub2 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#numbered-sub2-2" accesskey="4">numbered sub2 2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#numbered-sub2-2" accesskey="4">numbered sub2 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8401,7 +8392,7 @@ Previous: <a href="#unnumberedsec-2" accesskey="p" rel="prev">unnumberedsec 2</a
 <span id="unnumberedsec-2_002d1-1"></span><h3 class="unnumberedsec">unnumberedsec 2-1</h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#numbered-sub-2_002d1" accesskey="1">numbered sub 2-1</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#numbered-sub-2_002d1" accesskey="1">numbered sub 2-1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8421,15 +8412,15 @@ Next: <a href="#unnumbered-4" accesskey="n" rel="next">unnumbered 4</a>, Previou
 <span id="chapter-3-1"></span><h2 class="chapter">3 chapter 3</h2>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec-3" accesskey="1">unnumberedsec 3</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec-3" accesskey="1">unnumberedsec 3</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#section-3_002d1" accesskey="2">section 3-1</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#section-3_002d1" accesskey="2">section 3-1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec-3_002d2" accesskey="3">unnumberedsec 3-2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec-3_002d2" accesskey="3">unnumberedsec 3-2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#section-3_002d3" accesskey="4">section 3-3</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#section-3_002d3" accesskey="4">section 3-3</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec-3_002d4" accesskey="5">unnumberedsec 3-4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec-3_002d4" accesskey="5">unnumberedsec 3-4</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8441,13 +8432,13 @@ Next: <a href="#section-3_002d1" accesskey="n" rel="next">section 3-1</a>, Up: <
 <span id="unnumbered-section-3"></span><h3 class="unnumberedsec">unnumbered section 3</h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sub-3" accesskey="1">unnumbered sub 3</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sub-3" accesskey="1">unnumbered sub 3</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#numbered-sub-3" accesskey="2">numbered sub 3</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#numbered-sub-3" accesskey="2">numbered sub 3</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sub2-3" accesskey="3">unnumbered sub2 3</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sub2-3" accesskey="3">unnumbered sub2 3</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#numbered-sub2-3" accesskey="4">numbered sub2 3</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#numbered-sub2-3" accesskey="4">numbered sub2 3</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8494,7 +8485,7 @@ Next: <a href="#section-3_002d3" accesskey="n" rel="next">section 3-3</a>, Previ
 <span id="unnumberedsec-3_002d2-1"></span><h3 class="unnumberedsec">unnumberedsec 3-2</h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#numbered-sub-3_002d2" accesskey="1">numbered sub 3-2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#numbered-sub-3_002d2" accesskey="1">numbered sub 3-2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8513,7 +8504,7 @@ Next: <a href="#unnumberedsec-3_002d4" accesskey="n" rel="next">unnumberedsec 3-
 <span id="section-3_002d3-1"></span><h3 class="section">3.2 section 3-3</h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#subsection-3_002d3" accesskey="1">subsection 3-3</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#subsection-3_002d3" accesskey="1">subsection 3-3</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8532,7 +8523,7 @@ Previous: <a href="#section-3_002d3" accesskey="p" rel="prev">section 3-3</a>, U
 <span id="unnumberedsec-3_002d4-1"></span><h3 class="unnumberedsec">unnumberedsec 3-4</h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#numbered-sub-3_002d4" accesskey="1">numbered sub 3-4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#numbered-sub-3_002d4" accesskey="1">numbered sub 3-4</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8551,7 +8542,7 @@ Previous: <a href="#chapter-3" accesskey="p" rel="prev">chapter 3</a>, Up: <a hr
 <span id="unnumbered-4-1"></span><h2 class="unnumbered">unnumbered  4</h2>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec-4" accesskey="1">unnumberedsec 4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumberedsec-4" accesskey="1">unnumberedsec 4</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8563,13 +8554,13 @@ Up: <a href="#unnumbered-4" accesskey="u" rel="up">unnumbered 4</a> &nbsp; [<a h
 <span id="unnumbered-section-4"></span><h3 class="unnumberedsec">unnumbered section 4</h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sub-4" accesskey="1">unnumbered sub 4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sub-4" accesskey="1">unnumbered sub 4</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#numbered-sub-4" accesskey="2">numbered sub 4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#numbered-sub-4" accesskey="2">numbered sub 4</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sub2-4" accesskey="3">unnumbered sub2 4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sub2-4" accesskey="3">unnumbered sub2 4</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#numbered-sub2-4" accesskey="4">numbered sub2 4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#numbered-sub2-4" accesskey="4">numbered sub2 4</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

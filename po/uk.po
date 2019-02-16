@@ -1,4 +1,4 @@
-# Texinfo ukrainian message strings.
+# Texinfo Ukrainian message strings.
 # Copyright (C) 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
 #
@@ -7,10 +7,10 @@
 # Yuri Chornoivan <yurchor@ukr.net>, 2013, 2015, 2016, 2017, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 6.5.90\n"
+"Project-Id-Version: texinfo 6.5.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-02-11 20:22+0000\n"
-"PO-Revision-Date: 2019-01-04 20:59+0200\n"
+"POT-Creation-Date: 2019-02-16 17:15+0000\n"
+"PO-Revision-Date: 2019-02-12 21:27+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
 "Language: uk\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 19.03.70\n"
 
 #: gnulib/lib/error.c:195
 msgid "Unknown system error"
@@ -2098,7 +2098,7 @@ msgstr "не вдалося відкрити %s: %s"
 #: tp/Texinfo/Common.pm:1755
 #, perl-format
 msgid "using a renamed nodes file (`%s') is deprecated"
-msgstr ""
+msgstr "використання файла перейменованих вузлів («%s») вважається застарілим"
 
 #: tp/Texinfo/Common.pm:2254
 #, perl-format
@@ -2352,25 +2352,25 @@ msgstr "У назві вузла @%s не повинно міститися «%s
 msgid "@%s node name should not contain `:'"
 msgstr "у назві вузла @%s не повинно міститися «:»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2153
+#: tp/Texinfo/Convert/Plaintext.pm:2154
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "після @xref має бути «.» або «,», але не %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2156
+#: tp/Texinfo/Convert/Plaintext.pm:2157
 msgid "`.' or `,' must follow @xref"
 msgstr "після @xref має бути «.» або «,»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2948
+#: tp/Texinfo/Convert/Plaintext.pm:2952
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "у назві вузла пункту меню не повинно бути «%s»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2959
+#: tp/Texinfo/Convert/Plaintext.pm:2963
 msgid "menu entry node name should not contain `:'"
 msgstr "у назві вузла пункту меню не повинно бути «:»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2979
+#: tp/Texinfo/Convert/Plaintext.pm:2983
 msgid "menu entry name should not contain `:'"
 msgstr "у назві пункту меню не повинно бути «:»"
 

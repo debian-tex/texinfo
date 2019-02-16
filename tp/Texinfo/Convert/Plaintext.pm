@@ -61,7 +61,7 @@ sub import {
 @EXPORT = qw(
 );
 
-$VERSION = '6.5.93';
+$VERSION = '6.6';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -2140,6 +2140,7 @@ sub _convert($$)
         # If command is @xref, the punctuation must always follow the
         # command, for other commands it may be in the argument, hence the
         # use of $pending.
+        # FIXME: is @xref really special here?
         if ($name and ($command eq 'xref'
             or ($pending !~ /[\.,]$/ and $pending !~ /::$/))) {
           my $next = $self->{'current_contents'}->[-1]->[0];
@@ -2158,8 +2159,11 @@ sub _convert($$)
               }
             }
             my @added = ({'text' => '.'});
-            # the added dot do not end a sentence for pxref or ref.
-            push @added, {'cmdname' => ':'} if ($command ne 'xref');
+            # The added full stop does not end a sentence.  Info readers will
+            # have a chance of guessing correctly whether the full stop was
+            # added by whether it is followed by 2 spaces (although this
+            # doesn't help at the end of a line).
+            push @added, {'cmdname' => ':'};
             unshift @{$self->{'current_contents'}->[-1]}, @added;
           }
         }

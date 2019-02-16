@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 6.5.90\n"
+"Project-Id-Version: texinfo 6.5.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-02-11 20:22+0000\n"
-"PO-Revision-Date: 2019-01-04 20:02+0100\n"
+"POT-Creation-Date: 2019-02-16 17:15+0000\n"
+"PO-Revision-Date: 2019-02-12 21:02+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "Language: pl\n"
@@ -2087,7 +2087,7 @@ msgstr "nie można otworzyć %s: %s"
 #: tp/Texinfo/Common.pm:1755
 #, perl-format
 msgid "using a renamed nodes file (`%s') is deprecated"
-msgstr ""
+msgstr "używanie pliku węzłów przemianowanych (`%s') jest przestarzałe"
 
 #: tp/Texinfo/Common.pm:2254
 #, perl-format
@@ -2339,25 +2339,25 @@ msgstr "nazwa węzła @%s nie powinna zawierać `%s'"
 msgid "@%s node name should not contain `:'"
 msgstr "nazwa węzła @%s nie powinna zawierać `:'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2153
+#: tp/Texinfo/Convert/Plaintext.pm:2154
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "Po @xref musi wystąpić `.' lub `,', a nie %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2156
+#: tp/Texinfo/Convert/Plaintext.pm:2157
 msgid "`.' or `,' must follow @xref"
 msgstr "Po @xref musi wystąpić `.' lub `,'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2948
+#: tp/Texinfo/Convert/Plaintext.pm:2952
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "nazwa węzła wpisu menu nie powinna zawierać `%s'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2959
+#: tp/Texinfo/Convert/Plaintext.pm:2963
 msgid "menu entry node name should not contain `:'"
 msgstr "nazwa węzła wpisu menu nie powinna zawierać `:'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2979
+#: tp/Texinfo/Convert/Plaintext.pm:2983
 msgid "menu entry name should not contain `:'"
 msgstr "nazwa wpisu menu nie powinna zawierać `:'"
 
@@ -3627,9 +3627,3 @@ msgstr "%s: błąd podczas zamykania pliku odnośników wewnętrznych %s: %s\n"
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: nie można otworzyć pliku %s do zapisu: %s\n"
-
-#~ msgid "can't open %s: %s"
-#~ msgstr "nie można otworzyć %s: %s"
-
-#~ msgid "debugging output diverted to \"%s\""
-#~ msgstr "wyjście diagnostyczne przekierowane do \"%s\""

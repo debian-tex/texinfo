@@ -5,9 +5,10 @@
 # Joe Hansen <joedalton2@yahoo.dk>, 2015, 2016, 2017, 2019.
 #
 # argument -> parameter
-# brace -> It refers to the {} characters. { is the opening brace and } the closing brace. -> tuborgklamme
-#  Is there a difference between closing brace and close brace? There's no difference, and in my opinion we 
-#  should use "closing brace" consistently.
+# brace -> It refers to the {} characters. { is the opening brace and }
+# the closing brace. -> tuborgklamme
+# Is there a difference between closing brace and close brace? There's
+# no difference, and in my opinion we should use "closing brace" consistently.
 # dump -> skriv
 # entry -> post
 # expansion -> udfoldning
@@ -16,10 +17,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 6.5.90\n"
+"Project-Id-Version: texinfo 6.5.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-02-11 20:22+0000\n"
-"PO-Revision-Date: 2019-01-12 10:09+0100\n"
+"POT-Creation-Date: 2019-02-16 17:15+0000\n"
+"PO-Revision-Date: 2019-02-14 10:09+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -566,8 +567,8 @@ msgstr ""
 "  info emacs                 start ved emacs-emne fra mappe på øverste "
 "niveau\n"
 "  info emacs buffers         vælg menupunktet buffers i emacs-manualen\n"
-"  info emacs -n filer        start ved filer-emne inden i emacs-manualen\n"
-"  info '(emacs)filer'        alternativ måde at starte ved filer-emne\n"
+"  info emacs -n Files        start ved filer-emne inden i emacs-manualen\n"
+"  info '(emacs)Files'        alternativ måde at starte ved filer-emne\n"
 "  info --show-options emacs  start ved emne med emacs' kommandolinjetilvalg\n"
 "  info --subnodes -o ud.txt emacs\n"
 "                             skriv hele manualen til ud.txt\n"
@@ -2074,7 +2075,7 @@ msgstr "kunne ikke åbne %s: %s"
 #: tp/Texinfo/Common.pm:1755
 #, perl-format
 msgid "using a renamed nodes file (`%s') is deprecated"
-msgstr ""
+msgstr "brug af en omdøbt emnefil (»%s«) er forældet"
 
 #: tp/Texinfo/Common.pm:2254
 #, perl-format
@@ -2331,25 +2332,25 @@ msgstr "@%s-emnenavn må ikke indeholde »%s«"
 msgid "@%s node name should not contain `:'"
 msgstr "@%s-emnenavn må ikke indeholde »:«"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2153
+#: tp/Texinfo/Convert/Plaintext.pm:2154
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "en @xref skal efterfølges af ».« eller »,«, ikke %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2156
+#: tp/Texinfo/Convert/Plaintext.pm:2157
 msgid "`.' or `,' must follow @xref"
 msgstr "en @xref skal efterfølges af ».« eller »,«"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2948
+#: tp/Texinfo/Convert/Plaintext.pm:2952
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "emnenavn for menupunkt må ikke indeholde »%s«"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2959
+#: tp/Texinfo/Convert/Plaintext.pm:2963
 msgid "menu entry node name should not contain `:'"
 msgstr "menupostens emnenavn må ikke indeholde »:«"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2979
+#: tp/Texinfo/Convert/Plaintext.pm:2983
 msgid "menu entry name should not contain `:'"
 msgstr "menupostens navn må ikke indeholde »:«"
 

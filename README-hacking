@@ -208,13 +208,9 @@ gnupload --to ftp.gnu.org:$pkg   $pkg-$ver.tar.{gz,xz} *.diff.xz #official
    texinfo.tex and texi2dvi should already be up to date, but check.  Use
 gnupload --replace --to ftp.gnu.org:texinfo texi2dvi
 
-change instructions below to use git instead of svn.
-
-#  Official releases only: tag source tree (use your own username before @):
-svn copy -r 6363 -m'texinfo_6_0 tag based on r6363' \
-  svn+ssh://gavin@svn.savannah.gnu.org/texinfo/trunk \
-  svn+ssh://gavin@svn.savannah.gnu.org/texinfo/tags/texinfo_6_0
-[for karl: /srv/svn/texinfo]  
+#  Official releases only: tag source tree
+git tag texinfo-6.6
+git push --tags
 
 #  ... set up dtd directory on web pages:
 cd $HOME/gnu/www/texinfo/dtd # or wherever webpages checkout is
@@ -222,12 +218,6 @@ mkdir $ver && cvs add $ver
 cp $tutil/texinfo.dtd $ver
 cvs add -kb $ver $ver/texinfo.dtd
 cvs commit -m$ver $ver
-
-# If -kb is forgotten, CVS will do its own $Id expansion.
-# Recover by editing and committing a new version of texinfo.dtd in svn,
-# copying it again to the cvs dir, then:
-#   cvs admin -kb texinfo.dtd; cvs update -A
-# (See the "How to store binary files" node in the CVS manual.)
 
 #  ... make diffs at official release:
 prev=5.2

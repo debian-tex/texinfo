@@ -413,11 +413,23 @@ macro argument, with
 newlines.
 
 And multiple paragraphs.
-Like an argument to @code{@@footnote}.
+Like an argument to @b{@@footnote}.
 }
 
-(The double space in the @code{@@example} is due to the way 
-@code{\scantokens} inserts spaces after control sequences.)
+(The double space in the @code{@@example} and the fact the text is not 
+in bold is due to the way @code{\scantokens} inserts spaces after 
+control sequences.  This could be worked around like
+
+@verbatim
+@tex
+@gdef@coolb#1#{@b}%
+@end tex
+@end verbatim
+
+@noindent and using @samp{@@coolb} instead of @samp{@@b}.  This skips 
+the active space token before the opening brace.  In theory this could 
+be done automatically, but this would be a lot of work in 
+@file{texinfo.tex} to do for all commands.)
 
 
 @tex

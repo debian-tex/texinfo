@@ -209,7 +209,7 @@ EOF
 version ()
 {
   cat <<EOF
-texi2dvi (GNU Texinfo 6.5dev)
+texi2dvi (GNU Texinfo 6.6)
 
 Copyright (C) 2019 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>

@@ -6,10 +6,10 @@
 # Antonio Ceballos <aceballos@gmail.com>, 2015, 2016, 2017, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo-6.5.90\n"
+"Project-Id-Version: texinfo-6.5.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-02-11 20:22+0000\n"
-"PO-Revision-Date: 2019-01-05 13:30+0100\n"
+"POT-Creation-Date: 2019-02-16 17:15+0000\n"
+"PO-Revision-Date: 2019-02-15 22:27+0100\n"
 "Last-Translator: Antonio Ceballos <aceballos@gmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
 "Language: es\n"
@@ -2192,7 +2192,7 @@ msgstr "no se pudo abrir %s: %s"
 #: tp/Texinfo/Common.pm:1755
 #, perl-format
 msgid "using a renamed nodes file (`%s') is deprecated"
-msgstr ""
+msgstr "el uso de un fichero de nodos renombrados (`%s') está obsoleto"
 
 #: tp/Texinfo/Common.pm:2254
 #, perl-format
@@ -2449,25 +2449,25 @@ msgstr "el nombre de un nodo @%s no puede contener `%s'"
 msgid "@%s node name should not contain `:'"
 msgstr "el nombre de un nodo @%s no puede contener `:'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2153
+#: tp/Texinfo/Convert/Plaintext.pm:2154
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "`.' o `,' tiene que ir precedido de @xref, no de %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2156
+#: tp/Texinfo/Convert/Plaintext.pm:2157
 msgid "`.' or `,' must follow @xref"
 msgstr "`.' o `,' tiene que ir precedido de @xref"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2948
+#: tp/Texinfo/Convert/Plaintext.pm:2952
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "el nombre de nodo de una entrada de menú no debe contener '%s'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2959
+#: tp/Texinfo/Convert/Plaintext.pm:2963
 msgid "menu entry node name should not contain `:'"
 msgstr "el nombre de nodo de una entrada de menú no debe contener ':'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2979
+#: tp/Texinfo/Convert/Plaintext.pm:2983
 msgid "menu entry name should not contain `:'"
 msgstr "el nombre de una entrada de menú no debe contener ':'"
 

@@ -6,10 +6,10 @@
 # Mehmet Kececi <mkececi@mehmetkececi.com>, 2017, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 6.5.92\n"
+"Project-Id-Version: texinfo 6.5.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-02-11 20:22+0000\n"
-"PO-Revision-Date: 2019-02-05 13:07+0300\n"
+"POT-Creation-Date: 2019-02-16 17:15+0000\n"
+"PO-Revision-Date: 2019-02-13 12:57+0300\n"
 "Last-Translator: Mehmet Kececi <mkececi@mehmetkececi.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
 "Language: tr\n"
@@ -2083,7 +2083,7 @@ msgstr "%s açılamıyor: %s"
 #: tp/Texinfo/Common.pm:1755
 #, perl-format
 msgid "using a renamed nodes file (`%s') is deprecated"
-msgstr ""
+msgstr "yeniden adlandırılmış düğüm dosyası (`%s') kullanımdan kaldırıldı"
 
 #: tp/Texinfo/Common.pm:2254
 #, perl-format
@@ -2336,25 +2336,25 @@ msgstr "@%s düğüm adı `%s' içermemeli"
 msgid "@%s node name should not contain `:'"
 msgstr "@%s düğüm adı `:' içermemeli"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2153
+#: tp/Texinfo/Convert/Plaintext.pm:2154
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "`.' ya da `,' @xref'i izlemelidir, `%s'i değil"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2156
+#: tp/Texinfo/Convert/Plaintext.pm:2157
 msgid "`.' or `,' must follow @xref"
 msgstr "`.' ya da `,' @xref'i izlemelidir"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2948
+#: tp/Texinfo/Convert/Plaintext.pm:2952
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "menü girdisi düğüm adı `%s' içermemeli"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2959
+#: tp/Texinfo/Convert/Plaintext.pm:2963
 msgid "menu entry node name should not contain `:'"
 msgstr "menü girdisi düğüm adı `:' içermemeli"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2979
+#: tp/Texinfo/Convert/Plaintext.pm:2983
 msgid "menu entry name should not contain `:'"
 msgstr "menü girdi adı `:' içermemeli"
 

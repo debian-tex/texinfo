@@ -1,3 +1,67 @@
+2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	6.6.
+
+	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf,
+	doc/refcard/txirefcard.tex.
+
+2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Update for git, no keyword expansion.
+
+2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Tweak index formatting.
+
+	* doc/texinfo.tex (\balancecolumns): Increase length that the 
+	final column of an index can be without being split.  Move some 
+	code and add a comment.
+	(\doublecolumnout, \begindoublecolumns): Move a comment to where 
+	it was supposed to be.  Add another comment.
+
+2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Multi-line macro argument):
+	Add note on how a bug might be fixed.
+
+2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Do not end a sentence after an inserted '.'.
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert) <ref commands>:
+	Do not end a sentence after an inserted '.' after @xref.  @xref
+	can easily constitute only the first part of a sentence.
+
+2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Documentation of @pxref.
+
+	* doc/texinfo.texi (@pxref): Do not encourage using @pxref 
+	outside of parentheses.  "see @ref" is often preferable to 
+	"@pxref".
+
+2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Minor changes to info-stnd.texi.
+
+	* doc/info-stnd.texi
+	(Invoking Info): Use a consistent name for menu arguments.
+	(Moving the Cursor): Change 'imprinted on' to 'printed on'.  
+	Move a footnote reference to the end of a sentence.
+	(Node Commands): Correct key used in description.
+	(The Echo Area) <printing characters>: Do not mention this 
+	command, as self-inserting characters are inserted with a 
+	different part of the code.  Do not mention about checking 
+	whether a Meta key is bound, as this only applies if ISO-Latin 
+	is 'Off'.
+	<echo-area-complete>: SPC is not bound to this command any more.
+	<echo-area-possible-completions>: Merge text with documentation 
+	of 'echo-area-complete'.  '?' does not run this command any 
+	more.
+	(Colors and Styles): Privilege American spelling of "color".
+	Fix typo ("a cross-references").
+	(Variables): Privilege American spelling of "behavior".
+
 2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	pretest 6.5.93.

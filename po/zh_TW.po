@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-02-11 20:22+0000\n"
+"POT-Creation-Date: 2019-02-16 17:15+0000\n"
 "PO-Revision-Date: 2002-03-08 04:56+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -2252,26 +2252,26 @@ msgstr ""
 msgid "@%s node name should not contain `:'"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2153
+#: tp/Texinfo/Convert/Plaintext.pm:2154
 #, fuzzy, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "`.' 或 `,' 必須跟著交互參照, 而不是 %c"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2156
+#: tp/Texinfo/Convert/Plaintext.pm:2157
 #, fuzzy
 msgid "`.' or `,' must follow @xref"
 msgstr "`.' 或 `,' 必須跟著交互參照, 而不是 %c"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2948
+#: tp/Texinfo/Convert/Plaintext.pm:2952
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2959
+#: tp/Texinfo/Convert/Plaintext.pm:2963
 msgid "menu entry node name should not contain `:'"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2979
+#: tp/Texinfo/Convert/Plaintext.pm:2983
 msgid "menu entry name should not contain `:'"
 msgstr ""
 

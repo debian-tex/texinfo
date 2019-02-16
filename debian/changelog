@@ -1,11 +1,11 @@
-texinfo (6.5.93.dfsg.1-1) experimental; urgency=medium
+texinfo (6.6.0.dfsg.1-1) experimental; urgency=medium
 
-  * New upstream version 6.5.9{0,1,2,3}.dfsg.1
+  * New upstream version 6.{6.0,5.9{0,1,2,3}}.dfsg.1
   * update/cleanup patches
   * Fix manual page of texi2any/makeinfo by patching texi2any.pl
     (Closes: #919435)
 
- -- Norbert Preining <norbert@preining.info>  Wed, 13 Feb 2019 05:43:17 +0900
+ -- Norbert Preining <norbert@preining.info>  Sun, 17 Feb 2019 08:21:15 +0900
 
 texinfo (6.5.0.dfsg.1-4) unstable; urgency=medium
 

@@ -1,9 +1,13 @@
 texinfo (6.5.0.dfsg.1-5) unstable; urgency=medium
 
+  [ Hilmar Preuße ]
   * Fix manual page of texi2any/makeinfo by patching texi2any.pl
-    (Closes: #919435)
+    (Closes: #919435) (cherry-picked from master)
 
- -- Norbert Preining <norbert@preining.info>  Mon, 04 Mar 2019 09:22:24 +0900
+  [ Norbert Preining ]
+  * Update VCS and my email (cherry-picked from master)
+
+ -- Norbert Preining <norbert@preining.info>  Mon, 04 Mar 2019 09:25:14 +0900
 
 texinfo (6.5.0.dfsg.1-4) unstable; urgency=medium
 

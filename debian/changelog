@@ -1,3 +1,10 @@
+texinfo (6.6.0.dfsg.1-2) UNRELEASED; urgency=medium
+
+  * Use dh_missing instead of dh_install --fail-missing
+  * Add Hilmar Preusse to uploaders.
+
+ -- Hilmar Preusse <hille42@web.de>  Tue, 21 May 2019 21:45:30 +0200
+
 texinfo (6.6.0.dfsg.1-1) experimental; urgency=medium
 
   * New upstream version 6.{6.0,5.9{0,1,2,3}}.dfsg.1

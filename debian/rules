@@ -83,7 +83,10 @@ install-stamp: build-stamp check-stamp
 	# epsf.tex is in texlive
 	rm -rf $(tmpdir)/usr/share/texmf/tex/generic
 	# install all the files
-	dh_install --fail-missing --sourcedir=debian/tmp -X share/info
+	#dh_install --fail-missing --sourcedir=debian/tmp -X share/info
+	dh_install
+	#
+	dh_missing --fail-missing --sourcedir=debian/tmp -X share/info
 	#
 	# install additional files that are not installed by default
 	install -m 0755 util/txixml2texi $(texinfo)/usr/bin/txixml2texi

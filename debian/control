@@ -2,7 +2,9 @@ Source: texinfo
 Section: doc
 Priority: standard
 Maintainer: Debian TeX maintainers <debian-tex-maint@lists.debian.org>
-Uploaders: Norbert Preining <norbert@preining.info>, Frank Küster <frank@debian.org>
+Uploaders: Norbert Preining <norbert@preining.info>,
+	   Frank Küster <frank@debian.org>,
+	   Hilmar Preusse <hille42@web.de>
 Build-Depends: debhelper (>= 9), libncurses5-dev | libncurses-dev, gettext, libtext-unidecode-perl, help2man, autotools-dev, libperl-dev
 Standards-Version: 4.0.0
 Vcs-Git: https://github.com/debian-tex/texinfo.git

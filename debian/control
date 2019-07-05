@@ -5,7 +5,7 @@ Maintainer: Debian TeX maintainers <debian-tex-maint@lists.debian.org>
 Uploaders: Norbert Preining <norbert@preining.info>,
 	   Frank Küster <frank@debian.org>,
 	   Hilmar Preusse <hille42@web.de>
-Build-Depends: debhelper (>= 9), libncurses5-dev | libncurses-dev, gettext, libtext-unidecode-perl, help2man, autotools-dev, libperl-dev
+Build-Depends: debhelper (>= 9), libncurses5-dev | libncurses-dev, gettext, libtext-unidecode-perl, help2man, autotools-dev, libperl-dev, desktop-file-utils
 Standards-Version: 4.0.0
 Vcs-Git: https://github.com/debian-tex/texinfo.git
 Vcs-Browser: https://github.com/debian-tex/texinfo
@@ -34,6 +34,7 @@ Section: doc
 Priority: important
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, install-info
+Recommends: gnome-icon-theme
 Provides: info-browser
 Suggests: texinfo-doc-nonfree
 Replaces: texinfo (<< 4.7-2)

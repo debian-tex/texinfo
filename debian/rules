@@ -76,6 +76,8 @@ install-stamp: build-stamp check-stamp
                                     TEXMF=$(tmpdir)/usr/share/texmf
 	find $(tmpdir) -type f -name dir | xargs rm -f
 	#
+	desktop-file-install --dir=$(tmpdir)/usr/share/applications debian/info.desktop
+	#
 	# clean out .la files as they contain references to libperl 
 	# which is not necessary
 	sed -i "/dependency_libs/ s/'.*'/''/" `find $(tmpdir) -name '*.la'`
@@ -119,7 +121,7 @@ binary-arch: install
 	dh_installdocs -p texinfo debian/README.cyrtexinfo \
 		doc/refcard/txirefcard*.pdf
 		
-	dh_installmenu
+	#dh_installmenu
 	dh_installmime
 	dh_installchangelogs ChangeLog
 ifeq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))

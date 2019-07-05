@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=TeXInfo
+Comment=The viewer for TexInfo documents
+Exec=info
+Icon=info
+Type=Application
+Categories=Utility;Documentation
+Terminal=true

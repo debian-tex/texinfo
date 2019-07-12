@@ -34,7 +34,6 @@ Section: doc
 Priority: important
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, install-info
-Recommends: gnome-icon-theme
 Provides: info-browser
 Suggests: texinfo-doc-nonfree
 Replaces: texinfo (<< 4.7-2)

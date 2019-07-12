@@ -2,7 +2,7 @@
 Name=TeXInfo
 Comment=The viewer for TexInfo documents
 Exec=info
-Icon=info
+Icon=dialog-information
 Type=Application
 Categories=Utility;Documentation
 Terminal=true

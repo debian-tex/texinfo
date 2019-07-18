@@ -2,8 +2,10 @@
  man/ginfo.h2m |    7 ++++---
  1 file changed, 4 insertions(+), 3 deletions(-)
 
---- texinfo.orig/man/ginfo.h2m
-+++ texinfo/man/ginfo.h2m
+Index: texinfo/man/ginfo.h2m
+===================================================================
+--- texinfo.orig/man/ginfo.h2m	2019-07-18 09:14:03.624491071 +0200
++++ texinfo/man/ginfo.h2m	2019-07-18 09:16:27.220493839 +0200
 @@ -8,9 +8,10 @@
  [SEE ALSO]
  The full documentation for
@@ -12,7 +14,7 @@
 -.B info
 -program is properly installed at your site, the command
 +is provided by the
-+.B texinfo-doc-nonfree
++.B emacs-common-non-dfsg
 +package as a Texinfo manual.  If this package is installed at your site, 
 +the command
  .IP

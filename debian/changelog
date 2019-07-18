@@ -2,8 +2,10 @@ texinfo (6.6.0.dfsg.1-3) UNRELEASED; urgency=medium
 
   * Use generic icon name for info, drop Recommends against gnome-icon-theme.
     (Closes: #931912).
+  * Manual page of info now refers to emacs-common-non-dfsg.
+    (Closes: #484303).
 
- -- Hilmar Preuße <hille42@web.de>  Fri, 12 Jul 2019 15:38:06 +0200
+ -- Hilmar Preusse <hille42@web.de>  Fri, 12 Jul 2019 15:38:06 +0200
 
 texinfo (6.6.0.dfsg.1-2) unstable; urgency=medium
 

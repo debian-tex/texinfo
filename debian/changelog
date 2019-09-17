@@ -1,11 +1,15 @@
 texinfo (6.6.0.dfsg.1-3) UNRELEASED; urgency=medium
 
+  [ Hilmar Preusse ]
   * Use generic icon name for info, drop Recommends against gnome-icon-theme.
     (Closes: #931912).
   * Manual page of info now refers to emacs-common-non-dfsg.
     (Closes: #484303).
 
- -- Hilmar Preusse <hille42@web.de>  Fri, 12 Jul 2019 15:38:06 +0200
+  [ Norbert Preining ]
+  * Add ConsoleOnly to the info.desktop categories (Closes: #940209)
+
+ -- Norbert Preining <norbert@preining.info>  Tue, 17 Sep 2019 10:08:59 +0900
 
 texinfo (6.6.0.dfsg.1-2) unstable; urgency=medium
 

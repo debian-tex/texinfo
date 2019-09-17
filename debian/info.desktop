@@ -4,5 +4,5 @@ Comment=The viewer for TexInfo documents
 Exec=info
 Icon=dialog-information
 Type=Application
-Categories=Utility;Documentation
+Categories=Utility;Documentation;ConsoleOnly;
 Terminal=true

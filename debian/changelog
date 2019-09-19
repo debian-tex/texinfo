@@ -10,8 +10,9 @@ texinfo (6.6.91.dfsg.1-1) unstable; urgency=medium
   * Add ConsoleOnly to the info.desktop categories (Closes: #940209)
   * New upstream version 6.6.91.dfsg.1
   * update patches
+  * bump standards version, no changes necessary
 
- -- Norbert Preining <norbert@preining.info>  Thu, 19 Sep 2019 10:46:59 +0900
+ -- Norbert Preining <norbert@preining.info>  Thu, 19 Sep 2019 10:51:35 +0900
 
 texinfo (6.6.0.dfsg.1-2) unstable; urgency=medium
 

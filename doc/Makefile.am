@@ -64,6 +64,7 @@ install-tex:
 	test -n "$(TEXMF)" || (echo "TEXMF must be set." >&2; exit 1)
 	$(mkinstalldirs) $(DESTDIR)$(texmf_texinfo) $(DESTDIR)$(texmf_dvips)
 	$(INSTALL_DATA) $(srcdir)/texinfo.tex $(DESTDIR)$(texmf_texinfo)/texinfo.tex
+	$(INSTALL_DATA) $(srcdir)/texinfo-ja.tex $(DESTDIR)$(texmf_texinfo)/texinfo-ja.tex
 	$(INSTALL_DATA) $(srcdir)/epsf.tex $(DESTDIR)$(texmf_dvips)/epsf.tex
 	for f in $(TXI_XLATE); do \
 	  $(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(texmf_texinfo)/$$f; done

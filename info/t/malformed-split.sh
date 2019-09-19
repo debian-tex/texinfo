@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2017-2018 Free Software Foundation, Inc.
+# Copyright (C) 2017-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ srcdir=${srcdir:-.}
 # Load a split file with a malformed or missing tag table.
 
 run_ginfo --file malformed-split --node Two
-printf q >$pty_type
+printf q >&7
 
 timeout_test
 

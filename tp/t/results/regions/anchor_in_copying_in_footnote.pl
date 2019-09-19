@@ -392,20 +392,8 @@ $result_nodes{'anchor_in_copying_in_footnote'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'anchor_in_copying_in_footnote'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'anchor_in_copying_in_footnote'};
 
 $result_menus{'anchor_in_copying_in_footnote'} = {
   'cmdname' => 'node',
@@ -451,6 +439,11 @@ Ref: Copying footnote245
 Ref: Top-Footnote-2247
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'anchor_in_copying_in_footnote'} = [
@@ -522,10 +515,10 @@ ul.no-bullet {list-style: none}
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>In footnote.
 <span id="Copying-footnote"></span></p>
-<h3><a id="FOOT1_2" href="#DOCF1_2">(2)</a></h3>
+<h5><a id="FOOT1_2" href="#DOCF1_2">(2)</a></h3>
 <p>In footnote.
 <span id="Copying-footnote"></span></p>
 </div>

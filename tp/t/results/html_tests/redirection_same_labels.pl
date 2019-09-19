@@ -1491,18 +1491,7 @@ $result_nodes{'redirection_same_labels'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'redirection_same_labels'}{'menu_child'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'redirection_same_labels'}{'menu_child'}{'menu_child'};
 $result_nodes{'redirection_same_labels'}{'menu_child'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'redirection_same_labels'}{'menu_child'};
@@ -1513,7 +1502,6 @@ $result_nodes{'redirection_same_labels'}{'menu_child'}{'node_next'}{'node_up'} =
 $result_nodes{'redirection_same_labels'}{'menu_child'}{'node_prev'} = $result_nodes{'redirection_same_labels'};
 $result_nodes{'redirection_same_labels'}{'menu_child'}{'node_up'} = $result_nodes{'redirection_same_labels'};
 $result_nodes{'redirection_same_labels'}{'node_next'} = $result_nodes{'redirection_same_labels'}{'menu_child'};
-$result_nodes{'redirection_same_labels'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'redirection_same_labels'};
 
 $result_menus{'redirection_same_labels'} = {
   'cmdname' => 'node',
@@ -1714,17 +1702,6 @@ $result_elements{'redirection_same_labels'} = [
         'Forward' => {},
         'NodeForward' => {},
         'NodeNext' => {},
-        'NodeUp' => {
-          'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'dir'
-              }
-            ],
-            'top_node_up' => {}
-          },
-          'type' => 'external_node'
-        },
         'This' => {}
       },
       'element_command' => {
@@ -1775,7 +1752,6 @@ $result_elements{'redirection_same_labels'}[0]{'extra'}{'directions'}{'FastForwa
 $result_elements{'redirection_same_labels'}[0]{'extra'}{'directions'}{'Forward'} = $result_elements{'redirection_same_labels'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'redirection_same_labels'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'redirection_same_labels'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'redirection_same_labels'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'redirection_same_labels'}[0]{'extra'}{'directions'}{'FastForward'};
-$result_elements{'redirection_same_labels'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'redirection_same_labels'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_prev'}{'menu_up'};
 $result_elements{'redirection_same_labels'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'redirection_same_labels'}[0];
 $result_elements{'redirection_same_labels'}[0]{'extra'}{'node'} = $result_elements{'redirection_same_labels'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_prev'}{'menu_up'};
 $result_elements{'redirection_same_labels'}[0]{'extra'}{'section'} = $result_elements{'redirection_same_labels'}[0]{'extra'}{'element_command'};
@@ -1789,7 +1765,6 @@ $result_directions_text{'redirection_same_labels'} = 'element: @top the top
   Forward: @chapter umlaut
   NodeForward: @chapter umlaut
   NodeNext: @chapter umlaut
-  NodeUp: (dir)
   This: @top the top
 element: @chapter umlaut
   Back: @top the top

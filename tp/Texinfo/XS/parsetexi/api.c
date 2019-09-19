@@ -25,8 +25,12 @@
 
 #undef context
 
+#include <libintl.h>
+
 #include <stdlib.h>
 #include <stdio.h>
+#include <dirent.h>
+#include <string.h>
 
 #include "parser.h"
 #include "input.h"
@@ -35,6 +39,54 @@
 #include "api.h"
 
 ELEMENT *Root;
+
+
+#define LOCALEDIR DATADIR "/locale"
+
+/* Use the uninstalled locales dir.
+   NB the texinfo.mo files are not actually created here, only the
+   texinfo_document.mo files, which aren't used by parsetexi.
+   Hence, error messages will be translated only when the program is 
+   installed. */
+static void
+find_locales_dir (char *builddir)
+{
+  DIR *dir;
+  char *s;
+
+  dTHX;
+
+  asprintf (&s, "%s/LocaleData", builddir);
+  dir = opendir (s);
+  if (!dir)
+    {
+      free (s);
+      fprintf (stderr, "Locales dir for document strings not found: %s\n",
+               strerror (errno));
+    }
+  else
+    {
+      bindtextdomain (PACKAGE, s);
+      free (s);
+      closedir (dir);
+    }
+}
+
+int
+init (int texinfo_uninstalled, char *builddir)
+{
+  setlocale (LC_ALL, "");
+
+  /* Use installed or uninstalled translation files for gettext. */
+  if (texinfo_uninstalled)
+    find_locales_dir (builddir);
+  else
+    bindtextdomain (PACKAGE, LOCALEDIR);
+
+  textdomain (PACKAGE);
+
+  return 1;
+}
 
 static void
 reset_floats ()
@@ -61,6 +113,7 @@ reset_parser_except_conf (void)
   reset_region_stack ();
   reset_floats ();
   wipe_global_info ();
+  set_input_encoding ("utf-8");
   reset_internal_xrefs ();
   reset_labels ();
   input_reset_input_stack ();
@@ -601,6 +654,7 @@ build_single_index_data (INDEX *i)
   HV *hv;
   AV *entries;
   int j;
+  int entry_number;
 
   dTHX;
 
@@ -667,6 +721,7 @@ build_single_index_data (INDEX *i)
     }
 #undef STORE
 
+  entry_number = 1;
   if (i->index_number > 0)
   for (j = 0; j < i->index_number; j++)
     {
@@ -676,7 +731,6 @@ build_single_index_data (INDEX *i)
 
       e = &i->index_entries[j];
       entry = newHV ();
-      av_push (entries, newRV_inc ((SV *)entry));
 
       STORE2("index_name", newSVpv (i->name, 0));
       STORE2("index_at_command",
@@ -685,7 +739,7 @@ build_single_index_data (INDEX *i)
              newSVpv (command_name(e->index_type_command), 0));
       STORE2("command",
              newRV_inc ((SV *)e->command->hv));
-      STORE2("number", newSViv (j + 1));
+      STORE2("number", newSViv (entry_number));
       if (e->region)
         {
           STORE2("region", newRV_inc ((SV *)e->region->hv));
@@ -730,6 +784,15 @@ build_single_index_data (INDEX *i)
         STORE2("node", newRV_inc ((SV *)e->node->hv));
       if (e->sortas)
         STORE2("sortas", newSVpv (e->sortas, 0));
+
+      /* Skip these as these entries do not refer to the place in the document 
+         where the index commands occurred. */
+      if (!lookup_extra (e->command, "seeentry")
+          && !lookup_extra (e->command, "seealso"))
+        {
+          av_push (entries, newRV_inc ((SV *)entry));
+          entry_number++;
+        }
 
       /* We set this now because the index data structures don't
          exist at the time that the main tree is built. */

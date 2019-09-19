@@ -54,7 +54,7 @@ $result_errors{'empty_accent'} = [];
 
 
 
-$result_converted{'plaintext'}->{'empty_accent'} = '`
+$result_converted{'plaintext'}->{'empty_accent'} = '̀
 ';
 
 

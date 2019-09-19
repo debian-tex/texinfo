@@ -308,7 +308,7 @@ $result_errors{'double_top'} = [
 $result_converted{'info'}->{'double_top'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: Top
+File: ,  Node: Top,  Next: Top,  Up: (dir)
 
 .
 
@@ -317,6 +317,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

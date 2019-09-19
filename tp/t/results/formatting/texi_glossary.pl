@@ -1487,23 +1487,11 @@ $result_nodes{'texi_glossary'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'texi_glossary'}{'menu_child'}{'node_prev'} = $result_nodes{'texi_glossary'};
 $result_nodes{'texi_glossary'}{'menu_child'}{'node_up'} = $result_nodes{'texi_glossary'};
 $result_nodes{'texi_glossary'}{'node_next'} = $result_nodes{'texi_glossary'}{'menu_child'};
-$result_nodes{'texi_glossary'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'texi_glossary'};
 
 $result_menus{'texi_glossary'} = {
   'cmdname' => 'node',

@@ -1040,6 +1040,11 @@ Ref: float anchor109
 Ref: Anchor in footnote401
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'placed_things_before_element'} = [
@@ -1157,7 +1162,7 @@ ul.no-bullet {list-style: none}
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>In footnote.
 </p>
 <span id="Anchor-in-footnote"></span>

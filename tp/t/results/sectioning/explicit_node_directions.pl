@@ -596,25 +596,13 @@ $result_nodes{'explicit_node_directions'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'explicit_node_directions'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'explicit_node_directions'}{'menu_child'};
 $result_nodes{'explicit_node_directions'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'explicit_node_directions'};
 $result_nodes{'explicit_node_directions'}{'menu_child'}{'node_prev'} = $result_nodes{'explicit_node_directions'};
 $result_nodes{'explicit_node_directions'}{'menu_child'}{'node_up'} = $result_nodes{'explicit_node_directions'};
 $result_nodes{'explicit_node_directions'}{'node_next'} = $result_nodes{'explicit_node_directions'}{'menu_child'};
-$result_nodes{'explicit_node_directions'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'explicit_node_directions'};
 
 $result_menus{'explicit_node_directions'} = {
   'cmdname' => 'node',
@@ -718,17 +706,6 @@ $result_elements{'explicit_node_directions'} = [
         },
         'NodeForward' => {},
         'NodeNext' => {},
-        'NodeUp' => {
-          'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'dir'
-              }
-            ],
-            'top_node_up' => {}
-          },
-          'type' => 'external_node'
-        },
         'This' => {}
       },
       'element_command' => {},
@@ -759,7 +736,6 @@ $result_elements{'explicit_node_directions'}[0]{'extra'}{'directions'}{'Forward'
 $result_elements{'explicit_node_directions'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'node'} = $result_elements{'explicit_node_directions'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'};
 $result_elements{'explicit_node_directions'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'explicit_node_directions'}[0]{'extra'}{'directions'}{'Forward'};
 $result_elements{'explicit_node_directions'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'explicit_node_directions'}[0]{'extra'}{'directions'}{'Forward'};
-$result_elements{'explicit_node_directions'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'explicit_node_directions'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'}{'menu_up'};
 $result_elements{'explicit_node_directions'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'explicit_node_directions'}[0];
 $result_elements{'explicit_node_directions'}[0]{'extra'}{'element_command'} = $result_elements{'explicit_node_directions'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'}{'menu_up'};
 $result_elements{'explicit_node_directions'}[0]{'extra'}{'node'} = $result_elements{'explicit_node_directions'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'}{'menu_up'};
@@ -772,7 +748,6 @@ $result_directions_text{'explicit_node_directions'} = 'element: @node Top
   Forward: @node second node
   NodeForward: @node second node
   NodeNext: @node second node
-  NodeUp: (dir)
   This: @node Top
 element: @node second node
   Back: @node Top
@@ -819,6 +794,11 @@ Node: second node131
 Node: third node215
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -859,7 +839,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#second-node" accesskey="n" rel="next">second node</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#second-node" accesskey="n" rel="next">second node</a> &nbsp; </p>
 </div>
 <h1 class="node-heading">Top</h1>
 <p>Top node
@@ -904,7 +884,7 @@ $result_converted_errors{'html'}->{'explicit_node_directions'} = [
 
 
 
-$result_converted{'xml'}->{'explicit_node_directions'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">second node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'explicit_node_directions'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">second node</nodenext></node>
 <para>Top node
 </para><menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">second node</menunode><menudescription><pre xml:space="preserve">

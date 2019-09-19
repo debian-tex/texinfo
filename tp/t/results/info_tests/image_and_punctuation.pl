@@ -58,7 +58,9 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 3,
@@ -102,7 +104,9 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -147,7 +151,9 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 8,
@@ -191,7 +197,9 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 10,
@@ -235,7 +243,9 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 12,
@@ -280,7 +290,9 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 15,
@@ -411,20 +423,8 @@ $result_nodes{'image_and_punctuation'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'image_and_punctuation'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'image_and_punctuation'};
 
 $result_menus{'image_and_punctuation'} = {
   'cmdname' => 'node',
@@ -460,6 +460,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

@@ -27,43 +27,11 @@ void initialize_info_signal_handler (void);
 
 /* **************************************************************** */
 /*                                                                  */
-/*              Pretending That We Have POSIX Signals               */
-/*                                                                  */
-/* **************************************************************** */
-
-#if !defined (HAVE_SIGPROCMASK) && defined (HAVE_SIGSETMASK)
-/* Perform OPERATION on NEWSET, perhaps leaving information in OLDSET. */
-static void
-sigprocmask (int operation, int *newset, int *oldset)
-{
-  switch (operation)
-    {
-    case SIG_UNBLOCK:
-      sigsetmask (sigblock (0) & ~(*newset));
-      break;
-
-    case SIG_BLOCK:
-      *oldset = sigblock (*newset);
-      break;
-
-    case SIG_SETMASK:
-      sigsetmask (*newset);
-      break;
-
-    default:
-      abort ();
-    }
-}
-#endif /* !HAVE_SIGPROCMASK && HAVE_SIGSETMASK */
-
-/* **************************************************************** */
-/*                                                                  */
 /*                  Signal Handling for Info                        */
 /*                                                                  */
 /* **************************************************************** */
 
-#if defined (HAVE_SIGACTION) || defined (HAVE_SIGPROCMASK) ||\
-  defined (HAVE_SIGSETMASK)
+#if defined (HAVE_SIGACTION) || defined (HAVE_SIGPROCMASK)
 static void
 mask_termsig (sigset_t *set)
 {
@@ -88,9 +56,9 @@ mask_termsig (sigset_t *set)
   sigaddset (set, SIGUSR1);
 # endif
 }
-#endif /* HAVE_SIGACTION || HAVE_SIGPROCMASK || HAVE_SIGSETMASK */
+#endif /* HAVE_SIGACTION || HAVE_SIGPROCMASK */
 
-static RETSIGTYPE info_signal_proc (int sig);
+static void info_signal_proc (int sig);
 #if defined (HAVE_SIGACTION)
 typedef struct sigaction signal_info;
 signal_info info_signal_handler;
@@ -107,7 +75,7 @@ restore_termsig (int sig, const signal_info *saved)
   sigaction (sig, saved, NULL);
 }
 #else /* !HAVE_SIGACTION */
-typedef RETSIGTYPE (*signal_info) ();
+typedef void (*signal_info) ();
 #define set_termsig(sig, old) (void)(*(old) = signal (sig, info_signal_proc))
 #define restore_termsig(sig, saved) (void)signal (sig, *(saved))
 #define info_signal_handler info_signal_proc
@@ -204,7 +172,7 @@ signal_unblock_winch (void)
 #endif
 }
 
-static RETSIGTYPE
+static void
 info_signal_proc (int sig)
 {
   signal_info *old_signal_handler = NULL;
@@ -214,14 +182,14 @@ info_signal_proc (int sig)
   if (term_conf_busy)
     return;
   term_conf_busy++;
-#if defined (HAVE_SIGPROCMASK) || defined (HAVE_SIGSETMASK)
+#if defined (HAVE_SIGPROCMASK)
     {
       sigset_t nvar, ovar;
       sigemptyset (&nvar);
       mask_termsig (&nvar);
       sigprocmask (SIG_BLOCK, &nvar, &ovar);
     }
-#endif /* HAVE_SIGPROCMASK || HAVE_SIGSETMASK */
+#endif /* HAVE_SIGPROCMASK */
 #endif /* !HAVE_SIGACTION */
   switch (sig)
     {
@@ -330,14 +298,14 @@ info_signal_proc (int sig)
 #if !defined (HAVE_SIGACTION)
   /* at this time it is safer to perform unblock after decrement */
   term_conf_busy--;
-#if defined (HAVE_SIGPROCMASK) || defined (HAVE_SIGSETMASK)
+#if defined (HAVE_SIGPROCMASK)
     {
       sigset_t nvar, ovar;
       sigemptyset (&nvar);
       mask_termsig (&nvar);
       sigprocmask (SIG_UNBLOCK, &nvar, &ovar);
     }
-#endif /* HAVE_SIGPROCMASK || HAVE_SIGSETMASK */
+#endif /* HAVE_SIGPROCMASK */
 #endif /* !HAVE_SIGACTION */
 }
 

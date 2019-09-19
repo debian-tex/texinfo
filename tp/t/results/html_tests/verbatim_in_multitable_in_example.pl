@@ -213,6 +213,7 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                           ],
                           'cmdname' => 'verbatiminclude',
                           'extra' => {
+                            'input_perl_encoding' => 'utf-8',
                             'spaces_before_argument' => ' ',
                             'text_arg' => 'inc_file.texi'
                           },

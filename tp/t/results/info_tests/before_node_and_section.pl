@@ -613,6 +613,7 @@ $result_trees{'before_node_and_section'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -888,6 +889,7 @@ $result_sectioning{'before_node_and_section'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'node1',
                 'spaces_before_argument' => ' '
               }
@@ -934,6 +936,7 @@ $result_nodes{'before_node_and_section'} = {
         'level' => 1,
         'number' => 1
       },
+      'isindex' => 1,
       'normalized' => 'node1',
       'spaces_before_argument' => ' '
     },
@@ -955,23 +958,11 @@ $result_nodes{'before_node_and_section'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'before_node_and_section'}{'menu_child'}{'node_prev'} = $result_nodes{'before_node_and_section'};
 $result_nodes{'before_node_and_section'}{'menu_child'}{'node_up'} = $result_nodes{'before_node_and_section'};
 $result_nodes{'before_node_and_section'}{'node_next'} = $result_nodes{'before_node_and_section'}{'menu_child'};
-$result_nodes{'before_node_and_section'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'before_node_and_section'};
 
 $result_menus{'before_node_and_section'} = {
   'cmdname' => 'node',
@@ -982,6 +973,7 @@ $result_menus{'before_node_and_section'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'node1',
       'spaces_before_argument' => ' '
     },
@@ -1073,6 +1065,11 @@ Ref: Top-Footnote-2336
 Node: node1361
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'before_node_and_section'} = [

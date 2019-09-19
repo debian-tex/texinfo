@@ -381,23 +381,11 @@ $result_nodes{'comment_on_menu_line'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'comment_on_menu_line'}{'menu_child'}{'node_prev'} = $result_nodes{'comment_on_menu_line'};
 $result_nodes{'comment_on_menu_line'}{'menu_child'}{'node_up'} = $result_nodes{'comment_on_menu_line'};
 $result_nodes{'comment_on_menu_line'}{'node_next'} = $result_nodes{'comment_on_menu_line'}{'menu_child'};
-$result_nodes{'comment_on_menu_line'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'comment_on_menu_line'};
 
 $result_menus{'comment_on_menu_line'} = {
   'cmdname' => 'node',
@@ -470,7 +458,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#first" accesskey="n" rel="next">first</a> &nbsp; </p>
 </div>
 
 <table class="menu" border="0" cellspacing="0">
@@ -504,7 +492,7 @@ $result_converted_errors{'html'}->{'comment_on_menu_line'} = [
 
 
 
-$result_converted{'xml'}->{'comment_on_menu_line'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">first</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'comment_on_menu_line'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">first</nodenext></node>
 
 <menu spaces="  " endspaces=" "><!-- c -->
 <menuentry leadingtext="* "><menunode separator="::">first</menunode><menudescription><pre xml:space="preserve">

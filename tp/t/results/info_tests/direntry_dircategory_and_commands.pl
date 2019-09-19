@@ -646,20 +646,8 @@ $result_nodes{'direntry_dircategory_and_commands'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'direntry_dircategory_and_commands'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'direntry_dircategory_and_commands'};
 
 $result_menus{'direntry_dircategory_and_commands'} = {
   'cmdname' => 'node',
@@ -701,6 +689,11 @@ Tag Table:
 Node: Top264
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

@@ -1651,20 +1651,8 @@ $result_nodes{'block_commands_in_table'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'block_commands_in_table'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'block_commands_in_table'};
 
 $result_menus{'block_commands_in_table'} = {
   'cmdname' => 'node',
@@ -1793,7 +1781,7 @@ end example.
 ';
 
 
-$result_converted{'xml'}->{'block_commands_in_table'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'block_commands_in_table'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 <top spaces=" "><sectiontitle>Element</sectiontitle>
 
 <table commandarg="emph" spaces=" " endspaces=" ">

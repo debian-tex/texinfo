@@ -10,7 +10,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [6.6], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [6.6.91], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -139,44 +139,17 @@ if test "z$diff_accepts_a_option" = 'zyes' ; then
 fi
 AC_SUBST([DIFF_A_OPTION])
 
-# Needed on sysV68 for sigblock, sigsetmask.  But check for it in libc first.
-AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])
-
 # Checks for header files.
-AC_HEADER_STAT
-AC_HEADER_STDC
-AC_CHECK_HEADERS(fcntl.h io.h limits.h pwd.h string.h strings.h \
-  termcap.h termio.h termios.h unistd.h \
-  sys/fcntl.h sys/file.h sys/ioctl.h sys/stream.h \
-  sys/time.h sys/ttold.h sys/wait.h)
-
-# sys/ptem.h requires sys/stream.h for mblk_t on Solaris.
-AC_CHECK_HEADERS([sys/ptem.h],,,
-[#if HAVE_SYS_STREAM_H
-#include <sys/stream.h>
-#endif
-])
+AC_CHECK_HEADERS(io.h pwd.h \
+  termcap.h termios.h unistd.h \
+  sys/ioctl.h sys/time.h sys/wait.h)
 
 AC_SYS_POSIX_TERMIOS
 
-# Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_OFF_T
-AC_TYPE_SIGNAL
-AC_C_CONST
-AC_STRUCT_TM
-
-# Checks for function declarations.
-AC_CHECK_DECLS([memchr, strcoll, strerror])
 
 # Checks for library functions.
-AC_FUNC_STRCOLL
-AC_FUNC_VPRINTF
-# in theory only pre-sysvr3 systems needed this and it's not likely
-# that anyone compiling new texinfo still has such a thing? we'll see.
-# AC_FUNC_SETVBUF_REVERSED
-AC_CHECK_FUNCS(bzero getcwd memset setlocale setvbuf sigaction sigprocmask \
-	       sigsetmask strchr posix_openpt)
-AC_REPLACE_FUNCS(memcpy memmove strdup strerror)
+AC_CHECK_FUNCS(setlocale sigaction sigprocmask posix_openpt)
 
 # Used for Info tests
 AM_CONDITIONAL([have_ptys], [test x$ac_cv_func_posix_openpt = xyes])
@@ -339,7 +312,7 @@ AC_SUBST([USE_EXTERNAL_UNIDECODE])
 # i18n support.  To update to a new version of gettext, run:
 #   gettextize -f --po-dir=po --po-dir=po_document 
 # See http://gnu.org/s/gnulib/manual/html_node/gettextize-and-autopoint.html.
-AM_GNU_GETTEXT_VERSION([0.19.8])
+AM_GNU_GETTEXT_VERSION([0.20])
 AM_GNU_GETTEXT([external])
 
 USE_EXTERNAL_LIBINTL=no
@@ -507,7 +480,6 @@ AC_CONFIG_FILES([\
   util/Makefile
   texindex/Makefile
   tp/Makefile
-  tp/Texinfo/ModulePath.pm
   tp/tests/Makefile
   tp/tests/many_input_files/Makefile
   tp/tests/sectioning/Makefile

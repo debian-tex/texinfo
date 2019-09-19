@@ -664,25 +664,13 @@ $result_nodes{'nodes_after_top_before_chapter_nodes'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'nodes_after_top_before_chapter_nodes'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'nodes_after_top_before_chapter_nodes'}{'menu_child'};
 $result_nodes{'nodes_after_top_before_chapter_nodes'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'nodes_after_top_before_chapter_nodes'};
 $result_nodes{'nodes_after_top_before_chapter_nodes'}{'menu_child'}{'node_prev'} = $result_nodes{'nodes_after_top_before_chapter_nodes'};
 $result_nodes{'nodes_after_top_before_chapter_nodes'}{'menu_child'}{'node_up'} = $result_nodes{'nodes_after_top_before_chapter_nodes'};
 $result_nodes{'nodes_after_top_before_chapter_nodes'}{'node_next'} = $result_nodes{'nodes_after_top_before_chapter_nodes'}{'menu_child'};
-$result_nodes{'nodes_after_top_before_chapter_nodes'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'nodes_after_top_before_chapter_nodes'};
 
 $result_menus{'nodes_after_top_before_chapter_nodes'} = {
   'cmdname' => 'node',
@@ -794,17 +782,6 @@ $result_elements{'nodes_after_top_before_chapter_nodes'} = [
         },
         'NodeForward' => {},
         'NodeNext' => {},
-        'NodeUp' => {
-          'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'dir'
-              }
-            ],
-            'top_node_up' => {}
-          },
-          'type' => 'external_node'
-        },
         'This' => {}
       },
       'element_command' => {},
@@ -835,7 +812,6 @@ $result_elements{'nodes_after_top_before_chapter_nodes'}[0]{'extra'}{'directions
 $result_elements{'nodes_after_top_before_chapter_nodes'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'node'} = $result_elements{'nodes_after_top_before_chapter_nodes'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'};
 $result_elements{'nodes_after_top_before_chapter_nodes'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'nodes_after_top_before_chapter_nodes'}[0]{'extra'}{'directions'}{'Forward'};
 $result_elements{'nodes_after_top_before_chapter_nodes'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'nodes_after_top_before_chapter_nodes'}[0]{'extra'}{'directions'}{'Forward'};
-$result_elements{'nodes_after_top_before_chapter_nodes'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'nodes_after_top_before_chapter_nodes'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'}{'menu_up'};
 $result_elements{'nodes_after_top_before_chapter_nodes'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'nodes_after_top_before_chapter_nodes'}[0];
 $result_elements{'nodes_after_top_before_chapter_nodes'}[0]{'extra'}{'element_command'} = $result_elements{'nodes_after_top_before_chapter_nodes'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'}{'menu_up'};
 $result_elements{'nodes_after_top_before_chapter_nodes'}[0]{'extra'}{'node'} = $result_elements{'nodes_after_top_before_chapter_nodes'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'}{'menu_up'};
@@ -848,7 +824,6 @@ $result_directions_text{'nodes_after_top_before_chapter_nodes'} = 'element: @nod
   Forward: @node second node
   NodeForward: @node second node
   NodeNext: @node second node
-  NodeUp: (dir)
   This: @node Top
 element: @node second node
   Back: @node Top
@@ -898,6 +873,11 @@ Node: second node131
 Node: third node215
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -938,7 +918,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#second-node" accesskey="n" rel="next">second node</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#second-node" accesskey="n" rel="next">second node</a> &nbsp; </p>
 </div>
 <h1 class="node-heading">Top</h1>
 <p>Top node
@@ -983,7 +963,7 @@ $result_converted_errors{'html'}->{'nodes_after_top_before_chapter_nodes'} = [
 
 
 
-$result_converted{'xml'}->{'nodes_after_top_before_chapter_nodes'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">second node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'nodes_after_top_before_chapter_nodes'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">second node</nodenext></node>
 <para>Top node
 </para><menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">second node</menunode><menudescription><pre xml:space="preserve">

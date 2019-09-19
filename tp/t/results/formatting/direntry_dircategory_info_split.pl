@@ -1246,23 +1246,11 @@ $result_nodes{'direntry_dircategory_info_split'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'direntry_dircategory_info_split'}{'menu_child'}{'node_prev'} = $result_nodes{'direntry_dircategory_info_split'};
 $result_nodes{'direntry_dircategory_info_split'}{'menu_child'}{'node_up'} = $result_nodes{'direntry_dircategory_info_split'};
 $result_nodes{'direntry_dircategory_info_split'}{'node_next'} = $result_nodes{'direntry_dircategory_info_split'}{'menu_child'};
-$result_nodes{'direntry_dircategory_info_split'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'direntry_dircategory_info_split'};
 
 $result_menus{'direntry_dircategory_info_split'} = {
   'cmdname' => 'node',

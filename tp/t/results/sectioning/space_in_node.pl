@@ -598,18 +598,7 @@ $result_nodes{'space_in_node'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'space_in_node'}{'menu_child'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'space_in_node'}{'menu_child'}{'node_next'};
 $result_nodes{'space_in_node'}{'menu_child'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'space_in_node'};
@@ -618,7 +607,6 @@ $result_nodes{'space_in_node'}{'menu_child'}{'node_next'}{'node_up'} = $result_n
 $result_nodes{'space_in_node'}{'menu_child'}{'node_prev'} = $result_nodes{'space_in_node'};
 $result_nodes{'space_in_node'}{'menu_child'}{'node_up'} = $result_nodes{'space_in_node'};
 $result_nodes{'space_in_node'}{'node_next'} = $result_nodes{'space_in_node'}{'menu_child'};
-$result_nodes{'space_in_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'space_in_node'};
 
 $result_menus{'space_in_node'} = {
   'cmdname' => 'node',
@@ -701,6 +689,11 @@ Node: Test title253
 Node: Last with spaces341
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -742,7 +735,7 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#Chap-first-here" accesskey="n" rel="next">Chap first  here</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#Chap-first-here" accesskey="n" rel="next">Chap first  here</a> &nbsp; </p>
 </div>
 <h1 class="node-heading">Top</h1>
 

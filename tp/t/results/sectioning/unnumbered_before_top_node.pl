@@ -199,20 +199,8 @@ $result_nodes{'unnumbered_before_top_node'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'unnumbered_before_top_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'unnumbered_before_top_node'};
 
 $result_menus{'unnumbered_before_top_node'} = {
   'cmdname' => 'node',
@@ -271,6 +259,11 @@ Tag Table:
 Node: Top54
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

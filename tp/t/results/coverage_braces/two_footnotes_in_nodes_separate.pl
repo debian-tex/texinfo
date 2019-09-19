@@ -803,23 +803,11 @@ $result_nodes{'two_footnotes_in_nodes_separate'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'two_footnotes_in_nodes_separate'}{'menu_child'}{'node_prev'} = $result_nodes{'two_footnotes_in_nodes_separate'};
 $result_nodes{'two_footnotes_in_nodes_separate'}{'menu_child'}{'node_up'} = $result_nodes{'two_footnotes_in_nodes_separate'};
 $result_nodes{'two_footnotes_in_nodes_separate'}{'node_next'} = $result_nodes{'two_footnotes_in_nodes_separate'}{'menu_child'};
-$result_nodes{'two_footnotes_in_nodes_separate'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'two_footnotes_in_nodes_separate'};
 
 $result_menus{'two_footnotes_in_nodes_separate'} = {
   'cmdname' => 'node',
@@ -882,7 +870,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 </div>
 <span id="g_t2-footnotes-in-2-nodes"></span><h1 class="top">2 footnotes in 2 nodes</h1>
 
@@ -976,6 +964,11 @@ Ref: chapter-Footnote-1511
 Ref: chapter-Footnote-2548
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

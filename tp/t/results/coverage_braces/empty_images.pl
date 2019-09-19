@@ -17,6 +17,9 @@ $result_trees{'empty_images'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
+      'extra' => {
+        'input_perl_encoding' => 'utf-8'
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -91,6 +94,9 @@ $result_trees{'empty_images'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
+      'extra' => {
+        'input_perl_encoding' => 'utf-8'
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 3,
@@ -139,6 +145,9 @@ $result_trees{'empty_images'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
+      'extra' => {
+        'input_perl_encoding' => 'utf-8'
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 5,
@@ -181,6 +190,9 @@ $result_trees{'empty_images'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
+      'extra' => {
+        'input_perl_encoding' => 'utf-8'
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 6,

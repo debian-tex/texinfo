@@ -193,6 +193,7 @@ $result_trees{'test_index'} = {
                               'cmdname' => 'node',
                               'contents' => [],
                               'extra' => {
+                                'isindex' => 1,
                                 'node_content' => [
                                   {}
                                 ],
@@ -415,7 +416,7 @@ $result_trees{'test_index'} = {
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
                   'index_type_command' => 'cindex',
-                  'key' => '!',
+                  'key' => "\x{a1}",
                   'node' => {},
                   'number' => 3
                 },
@@ -4350,6 +4351,7 @@ $result_sectioning{'test_index'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'name1-looooooooooooooooooooooooooooooooooooooooooooooooooooooooong',
                 'spaces_before_argument' => ' '
               }
@@ -4482,6 +4484,7 @@ $result_nodes{'test_index'} = {
           'level' => 1,
           'number' => 'A'
         },
+        'isindex' => 1,
         'normalized' => 'name1-looooooooooooooooooooooooooooooooooooooooooooooooooooooooong',
         'spaces_before_argument' => ' '
       },
@@ -4506,25 +4509,13 @@ $result_nodes{'test_index'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'test_index'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'test_index'}{'menu_child'};
 $result_nodes{'test_index'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'test_index'};
 $result_nodes{'test_index'}{'menu_child'}{'node_prev'} = $result_nodes{'test_index'};
 $result_nodes{'test_index'}{'menu_child'}{'node_up'} = $result_nodes{'test_index'};
 $result_nodes{'test_index'}{'node_next'} = $result_nodes{'test_index'}{'menu_child'};
-$result_nodes{'test_index'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'test_index'};
 
 $result_menus{'test_index'} = {
   'cmdname' => 'node',
@@ -4541,6 +4532,7 @@ $result_menus{'test_index'} = {
     'menu_next' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'name1-looooooooooooooooooooooooooooooooooooooooooooooooooooooooong',
         'spaces_before_argument' => ' '
       },
@@ -4771,9 +4763,9 @@ Para.
  [index ]
 * Menu:
 
-* !:                                     Top.                   (line 8)
 * ":                                     Top.                   (line 8)
 * @:                                     Top.                   (line 8)
+* ¡:                                     Top.                   (line 8)
 * in Top:                                Top.                   (line 8)
 * index entry in appendix before para:   name1 looooooooooooooooooooooooooooooooooooooooooooooooooooooooong.
                                                                 (line 6)
@@ -4823,9 +4815,14 @@ Tag Table:
 Node: Top27
 Node: name330
 Node: name1 looooooooooooooooooooooooooooooooooooooooooooooooooooooooong982
-Ref: a counting anchor3070
+Ref: a counting anchor3071
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

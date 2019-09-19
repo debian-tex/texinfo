@@ -719,18 +719,7 @@ $result_nodes{'section_chapter_before_top_nodes'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'section_chapter_before_top_nodes'}{'menu_child'}{'menu_child'}{'node_next'} = $result_nodes{'section_chapter_before_top_nodes'}{'menu_child'};
 $result_nodes{'section_chapter_before_top_nodes'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'section_chapter_before_top_nodes'}{'menu_child'};
@@ -738,7 +727,6 @@ $result_nodes{'section_chapter_before_top_nodes'}{'menu_child'}{'node_next'} = $
 $result_nodes{'section_chapter_before_top_nodes'}{'menu_child'}{'node_prev'} = $result_nodes{'section_chapter_before_top_nodes'};
 $result_nodes{'section_chapter_before_top_nodes'}{'menu_child'}{'node_up'} = $result_nodes{'section_chapter_before_top_nodes'};
 $result_nodes{'section_chapter_before_top_nodes'}{'node_next'} = $result_nodes{'section_chapter_before_top_nodes'}{'menu_child'};
-$result_nodes{'section_chapter_before_top_nodes'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'section_chapter_before_top_nodes'};
 
 $result_menus{'section_chapter_before_top_nodes'} = {
   'cmdname' => 'node',
@@ -849,6 +837,11 @@ Node: chapter node119
 Node: Top232
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -908,7 +901,7 @@ Next: <a href="#Top" accesskey="n" rel="next">Top</a>, Previous: <a href="#Top" 
 <hr>
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a> &nbsp; </p>
 </div>
 <span id="top"></span><h3 class="unnumberedsec">top</h3>
 

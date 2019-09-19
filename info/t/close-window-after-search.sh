@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2017-2018 Free Software Foundation, Inc.
+# Copyright (C) 2017-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ run_ginfo -f intera
 
 # Split window, do a search, and then close the window the search took
 # place in.
-printf '\0302sblah\r\0300q' >$pty_type
+printf '\0302sblah\r\0300q' >&7
 
 timeout_test
 cleanup

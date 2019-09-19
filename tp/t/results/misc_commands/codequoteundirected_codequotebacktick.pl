@@ -5007,20 +5007,8 @@ $result_nodes{'codequoteundirected_codequotebacktick'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'codequoteundirected_codequotebacktick'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'codequoteundirected_codequotebacktick'};
 
 $result_menus{'codequoteundirected_codequotebacktick'} = {
   'cmdname' => 'node',
@@ -5092,72 +5080,72 @@ $result_errors{'codequoteundirected_codequotebacktick'} = [
 $result_converted{'plaintext'}->{'codequoteundirected_codequotebacktick'} = 'test quotes
 ***********
 
-"simple-double-three--four---" \'simple\' quotedblleft: ``
-code: \'``simple-double--three---four----\'\' `simple\' quotedblleft: ``\'
-asis: "simple-double-three--four---" \'simple\' quotedblleft: ``
-strong: *"simple-double-three--four---" \'simple\' quotedblleft: ``*
-kbd: \'``simple-double--three---four----\'\' `simple\' quotedblleft: ``\'
-samp: \'``simple-double--three---four----\'\' `simple\' quotedblleft: ``\'
+"simple-double-three--four---" \'simple\' quotedblleft: “
+code: \'``simple-double--three---four----\'\' `simple\' quotedblleft: “\'
+asis: "simple-double-three--four---" \'simple\' quotedblleft: “
+strong: *"simple-double-three--four---" \'simple\' quotedblleft: “*
+kbd: \'``simple-double--three---four----\'\' `simple\' quotedblleft: “\'
+samp: \'``simple-double--three---four----\'\' `simple\' quotedblleft: “\'
 
      @codequoteundirected on
      @codequotebacktick on
-   "simple-double-three--four---" \'simple\' quotedblleft: ``
-code: \'``simple-double--three---four----\'\' `simple\' quotedblleft: ``\'
-asis: "simple-double-three--four---" \'simple\' quotedblleft: ``
-strong: *"simple-double-three--four---" \'simple\' quotedblleft: ``*
-kbd: \'``simple-double--three---four----\'\' `simple\' quotedblleft: ``\'
-samp: \'``simple-double--three---four----\'\' `simple\' quotedblleft: ``\'
+   "simple-double-three--four---" \'simple\' quotedblleft: “
+code: \'``simple-double--three---four----\'\' `simple\' quotedblleft: “\'
+asis: "simple-double-three--four---" \'simple\' quotedblleft: “
+strong: *"simple-double-three--four---" \'simple\' quotedblleft: “*
+kbd: \'``simple-double--three---four----\'\' `simple\' quotedblleft: “\'
+samp: \'``simple-double--three---four----\'\' `simple\' quotedblleft: “\'
 
      @codequoteundirected off
      @codequotebacktick off
-   "simple-double-three--four---" \'simple\' quotedblleft: ``
-code: \'``simple-double--three---four----\'\' `simple\' quotedblleft: ``\'
-asis: "simple-double-three--four---" \'simple\' quotedblleft: ``
-strong: *"simple-double-three--four---" \'simple\' quotedblleft: ``*
-kbd: \'``simple-double--three---four----\'\' `simple\' quotedblleft: ``\'
-samp: \'``simple-double--three---four----\'\' `simple\' quotedblleft: ``\'
+   "simple-double-three--four---" \'simple\' quotedblleft: “
+code: \'``simple-double--three---four----\'\' `simple\' quotedblleft: “\'
+asis: "simple-double-three--four---" \'simple\' quotedblleft: “
+strong: *"simple-double-three--four---" \'simple\' quotedblleft: “*
+kbd: \'``simple-double--three---four----\'\' `simple\' quotedblleft: “\'
+samp: \'``simple-double--three---four----\'\' `simple\' quotedblleft: “\'
 
-     ``simple-double--three---four----\'\' `simple\' quotedblleft: ``
+     ``simple-double--three---four----\'\' `simple\' quotedblleft: “
 
-     code: ``simple-double--three---four----\'\' `simple\' quotedblleft: ``
+     code: ``simple-double--three---four----\'\' `simple\' quotedblleft: “
 
-     asis: ``simple-double--three---four----\'\' `simple\' quotedblleft: ``
+     asis: ``simple-double--three---four----\'\' `simple\' quotedblleft: “
 
-     strong: *``simple-double--three---four----\'\' `simple\' quotedblleft: ``*
+     strong: *``simple-double--three---four----\'\' `simple\' quotedblleft: “*
 
-     kbd: ``simple-double--three---four----\'\' `simple\' quotedblleft: ``
+     kbd: ``simple-double--three---four----\'\' `simple\' quotedblleft: “
 
-     samp: \'``simple-double--three---four----\'\' `simple\' quotedblleft: ``\'
+     samp: \'``simple-double--three---four----\'\' `simple\' quotedblleft: “\'
 
 
           @codequoteundirected on
           @codequotebacktick on
-     ``simple-double--three---four----\'\' `simple\' quotedblleft: ``
+     ``simple-double--three---four----\'\' `simple\' quotedblleft: “
 
-     code: ``simple-double--three---four----\'\' `simple\' quotedblleft: ``
+     code: ``simple-double--three---four----\'\' `simple\' quotedblleft: “
 
-     asis: ``simple-double--three---four----\'\' `simple\' quotedblleft: ``
+     asis: ``simple-double--three---four----\'\' `simple\' quotedblleft: “
 
-     strong: *``simple-double--three---four----\'\' `simple\' quotedblleft: ``*
+     strong: *``simple-double--three---four----\'\' `simple\' quotedblleft: “*
 
-     kbd: ``simple-double--three---four----\'\' `simple\' quotedblleft: ``
+     kbd: ``simple-double--three---four----\'\' `simple\' quotedblleft: “
 
-     samp: \'``simple-double--three---four----\'\' `simple\' quotedblleft: ``\'
+     samp: \'``simple-double--three---four----\'\' `simple\' quotedblleft: “\'
 
 
           @codequoteundirected off
           @codequotebacktick off
-     ``simple-double--three---four----\'\' `simple\' quotedblleft: ``
+     ``simple-double--three---four----\'\' `simple\' quotedblleft: “
 
-     code: ``simple-double--three---four----\'\' `simple\' quotedblleft: ``
+     code: ``simple-double--three---four----\'\' `simple\' quotedblleft: “
 
-     asis: ``simple-double--three---four----\'\' `simple\' quotedblleft: ``
+     asis: ``simple-double--three---four----\'\' `simple\' quotedblleft: “
 
-     strong: *``simple-double--three---four----\'\' `simple\' quotedblleft: ``*
+     strong: *``simple-double--three---four----\'\' `simple\' quotedblleft: “*
 
-     kbd: ``simple-double--three---four----\'\' `simple\' quotedblleft: ``
+     kbd: ``simple-double--three---four----\'\' `simple\' quotedblleft: “
 
-     samp: \'``simple-double--three---four----\'\' `simple\' quotedblleft: ``\'
+     samp: \'``simple-double--three---four----\'\' `simple\' quotedblleft: “\'
 
 
 ';

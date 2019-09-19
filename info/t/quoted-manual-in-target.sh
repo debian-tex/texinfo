@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2015-2018 Free Software Foundation, Inc.
+# Copyright (C) 2015-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f quoting
 # Follow a cross-reference with a manual and quoted nodename in the target,
 # after the colon.
-printf '\t\t\t\t\r\t\rDq' >$pty_type
+printf '\t\t\t\t\r\t\rDq' >&7
 timeout_test
 
 if test ! -f $ginfo_output; then

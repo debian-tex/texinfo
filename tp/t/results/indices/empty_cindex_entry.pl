@@ -101,20 +101,8 @@ $result_nodes{'empty_cindex_entry'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'empty_cindex_entry'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'empty_cindex_entry'};
 
 $result_menus{'empty_cindex_entry'} = {
   'cmdname' => 'node',
@@ -149,6 +137,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

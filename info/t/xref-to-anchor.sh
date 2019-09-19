@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2015-2018 Free Software Foundation, Inc.
+# Copyright (C) 2015-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,10 +19,10 @@ srcdir=${srcdir:-.}
 
 run_ginfo -f xref_to_anchor
 # Follow cross-reference to an anchor
-printf '\t\r' >$pty_type
+printf '\t\r' >&7
 
 # Follow the cross-reference on the line after the anchor
-printf '\6\6\rDq' >$pty_type
+printf '\6\6\rDq' >&7
 
 timeout_test
 

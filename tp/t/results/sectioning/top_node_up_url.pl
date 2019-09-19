@@ -380,19 +380,11 @@ $result_nodes{'top_node_up_url'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'normalized' => 'GNU-manuals',
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'top_node_up_url'}{'menu_child'}{'node_prev'} = $result_nodes{'top_node_up_url'};
 $result_nodes{'top_node_up_url'}{'menu_child'}{'node_up'} = $result_nodes{'top_node_up_url'};
 $result_nodes{'top_node_up_url'}{'node_next'} = $result_nodes{'top_node_up_url'}{'menu_child'};
-$result_nodes{'top_node_up_url'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'top_node_up_url'};
 
 $result_menus{'top_node_up_url'} = {
   'cmdname' => 'node',
@@ -455,13 +447,6 @@ $result_elements{'top_node_up_url'} = [
         },
         'NodeForward' => {},
         'NodeNext' => {},
-        'NodeUp' => {
-          'extra' => {
-            'normalized' => 'GNU-manuals',
-            'top_node_up' => {}
-          },
-          'type' => 'top_node_up'
-        },
         'This' => {}
       },
       'element_command' => {},
@@ -488,7 +473,6 @@ $result_elements{'top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'
 $result_elements{'top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'node'} = $result_elements{'top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'};
 $result_elements{'top_node_up_url'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'};
 $result_elements{'top_node_up_url'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'};
-$result_elements{'top_node_up_url'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
 $result_elements{'top_node_up_url'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'top_node_up_url'}[0];
 $result_elements{'top_node_up_url'}[0]{'extra'}{'element_command'} = $result_elements{'top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
 $result_elements{'top_node_up_url'}[0]{'extra'}{'node'} = $result_elements{'top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
@@ -500,7 +484,6 @@ $result_directions_text{'top_node_up_url'} = 'element: @node Top
   Forward: @node first
   NodeForward: @node first
   NodeNext: @node first
-  NodeUp: No associated command (type top_node_up)
   This: @node Top
 element: @node first
   Back: @node Top
@@ -515,7 +498,7 @@ element: @node first
 $result_converted{'info'}->{'top_node_up_url'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: first,  Up: GNU (GNU\'s Not Unix) manuals
+File: ,  Node: Top,  Next: first,  Up: @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals
 
 internal top node up
 ********************
@@ -531,9 +514,14 @@ File: ,  Node: first,  Prev: Top,  Up: Top
 
 Tag Table:
 Node: Top27
-Node: first161
+Node: first180
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -549,6 +537,7 @@ $result_converted{'html'}->{'top_node_up_url'} = '<!DOCTYPE html PUBLIC "-//W3C/
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <link href="#Top" rel="start" title="Top">
+<link href="http://www.gnu.org/manual/" rel="up" title="@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -574,7 +563,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="http://www.gnu.org/manual/" accesskey="u" rel="up"><acronym title="GNU&rsquo;s Not Unix">GNU</acronym> (<acronym>GNU</acronym>\'s Not Unix) manuals</a> &nbsp; </p>
+Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="http://www.gnu.org/manual/" accesskey="u" rel="up">@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals</a> &nbsp; </p>
 </div>
 <span id="internal-top-node-up"></span><h1 class="top">internal top node up</h1>
 

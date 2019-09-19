@@ -816,20 +816,8 @@ $result_nodes{'spaces_in_empty_node_names'} = {
         }
       }
     }
-  ],
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  ]
 };
-$result_nodes{'spaces_in_empty_node_names'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'spaces_in_empty_node_names'};
 
 $result_menus{'spaces_in_empty_node_names'} = {
   'cmdname' => 'node',
@@ -993,7 +981,7 @@ $result_converted{'html_text'}->{'spaces_in_empty_node_names'} = '<span id="Top"
 ';
 
 
-$result_converted{'xml'}->{'spaces_in_empty_node_names'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'spaces_in_empty_node_names'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::"><spacecmd type="spc"/><spacecmd type="spc"/></menunode><menudescription><pre xml:space="preserve">
@@ -1051,6 +1039,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

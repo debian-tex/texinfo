@@ -197,20 +197,8 @@ $result_nodes{'footnote_no_number_separate'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'footnote_no_number_separate'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'footnote_no_number_separate'};
 
 $result_menus{'footnote_no_number_separate'} = {
   'cmdname' => 'node',
@@ -244,16 +232,16 @@ $result_converted{'html_text'}->{'footnote_no_number_separate'} = '<span id="Top
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(*)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(*)</a></h3>
 <p>Footnote 1.</p>
-<h3><a id="FOOT2" href="#DOCF2">(*)</a></h3>
+<h5><a id="FOOT2" href="#DOCF2">(*)</a></h3>
 <p>Footnote 2.</p>
 </div>
 <hr>
 ';
 
 
-$result_converted{'xml'}->{'footnote_no_number_separate'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'footnote_no_number_separate'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <para>Para<footnote><para>Footnote 1.</para></footnote>.
 </para>
@@ -294,6 +282,11 @@ Ref: Top-Footnote-1177
 Ref: Top-Footnote-2197
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

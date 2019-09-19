@@ -75,7 +75,9 @@ $result_trees{'space_in_image'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
-      'extra' => {},
+      'extra' => {
+        'input_perl_encoding' => 'utf-8'
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -108,7 +110,9 @@ $result_trees{'space_in_image'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
-          'extra' => {},
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
           'line_nr' => {},
           'parent' => {}
         },

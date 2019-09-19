@@ -279,6 +279,12 @@ maintain/catalog.xml: maintain/catalog.xml.in Makefile
 	    -e 's|[@]TEXINFO_DTD_VERSION[@]|$(TEXINFO_DTD_VERSION)|' \
 	  $(srcdir)/maintain/catalog.xml.in >$@
 
+Texinfo/ModulePath.pm: Texinfo/ModulePath.pm.in Makefile
+	$(MKDIR_P) Texinfo
+	sed -e 's|[@]USE_EXTERNAL_LIBINTL[@]|$(USE_EXTERNAL_LIBINTL)|' \
+	    -e 's|[@]USE_EXTERNAL_EASTASIANWIDTH[@]|$(USE_EXTERNAL_EASTASIANWIDTH)|' \
+	    -e 's|[@]USE_EXTERNAL_UNIDECODE[@]|$(USE_EXTERNAL_UNIDECODE)|' \
+	  $(srcdir)/Texinfo/ModulePath.pm.in >$@
 
 libsrcdir = $(srcdir)/maintain/lib
 
@@ -323,5 +329,5 @@ distclean-local:
 	rm -rf t/include_dir
 	rm -rf blib po po_document
 
-CLEANFILES = texi2any makeinfo texi2any-perl
+CLEANFILES = texi2any makeinfo texi2any-perl Texinfo/ModulePath.pm
 DISTCLEANFILES = maintain/catalog.xml pm_to_blib Makefile.old

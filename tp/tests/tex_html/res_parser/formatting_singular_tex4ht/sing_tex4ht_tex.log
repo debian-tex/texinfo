@@ -1,0 +1,187 @@
+This is TeX, Version 3.14159265 (TeX Live 2019/dev/Debian) (preloaded format=tex 2019.3.19)  14 JUN 2019 08:33
+**\def\Link#1.a.b.c.{\expandafter\def\csname tex4ht\endcsname{\expandafter\def\
+csname tex4ht\endcsname{#1,html}\input tex4ht.sty }}\def\HCode{\futurelet\HCode
+\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\e
+xpandafter\Link\fi}\HCode .a.b.c.\input  sing_tex4ht_tex.tex
+(./sing_tex4ht_tex.tex
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/tex4ht.sty
+version 2018-06-12-16:01
+\tmp:toks=\toks12
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/tex4ht.4ht
+version 2018-12-30-09:29
+--------------------------------------
+--- Note --- for additional information, use the command line option `info'
+--------------------------------------
+
+::::::::::::::::::::::::::::::::::::::::::
+ TeX4ht info is available in the log file 
+::::::::::::::::::::::::::::::::::::::::::
+) (/usr/share/texlive/texmf-dist/tex/generic/tex4ht/tex4ht.sty
+version 2018-06-12-16:01
+
+--- needs --- tex4ht sing_tex4ht_tex ---
+\tmp:cnt=\count26
+\openout15 = `sing_tex4ht_tex.tmp'.
+
+(./sing_tex4ht_tex.tmp)
+\tmp:dim=\skip18
+--------------------------------------
+--- Note --- for XML code, use the command line option `xml' or `xhtml'
+--------------------------------------
+ (./sing_tex4ht_tex.xref)
+\:refout=\write0
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2019-01-30-15:45
+--------------------------------------
+--- Note --- to remove the <?xml version=...?> processing instruction use the c
+ommand line option `no-VERSION'
+--------------------------------------
+--------------------------------------
+--- Note --- to remove the DOCTYPE declaration use the command line option `no-
+DOCTYPE'
+--------------------------------------
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2018-12-05-18:11
+)
+--------------------------------------
+--- Note --- for marking of the base font, use the command line option `fonts+'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for non active _, use the command line option `no_'
+--------------------------------------
+--------------------------------------
+--- Note --- for _ of catcode 13, use the command line option `_13'
+--------------------------------------
+--------------------------------------
+--- Note --- for non active ^, use the command line option `no^'
+--------------------------------------
+--------------------------------------
+--- Note --- for ^ of catcode 13, use the command line option `^13'
+--------------------------------------
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2019-01-30-15:45
+--------------------------------------
+--- Note --- for alternative charset, use the command line option `charset=...'
+
+--------------------------------------
+--------------------------------------
+--- Note --- to ignore CSS font decoration, use the `NoFonts' command line opti
+on
+--------------------------------------
+--------------------------------------
+--- Note --- for jpg bitmaps of pictures, use the `jpg' command line option. (C
+haracter bitmaps are controled only by `g' records of tex4ht.env and `-g' switc
+hes of tex4ht.c) 
+--------------------------------------
+--------------------------------------
+--- Note --- for gif bitmaps of pictures, use the `gif' command line option. (C
+haracter bitmaps are controled only by `g' records of tex4ht.env and `-g' switc
+hes of tex4ht.c) 
+--------------------------------------
+--------------------------------------
+--- Note --- for content and toc in 2 frames, use the command line option `fram
+es'
+--------------------------------------
+--------------------------------------
+--- Note --- for content, toc, and footnotes in 3 frames, use the command line 
+option `frames-fn'
+--------------------------------------
+--------------------------------------
+--- Note --- for file extension name xht, use the command line option `xht'
+--------------------------------------
+TeX4ht package options: html
+--------------------------------------
+--- Note --- To print a timestamp, use the command line option timestamp
+--------------------------------------
+--------------------------------------
+--- Note --- to ignore CSS code, use the command line option `-css
+--------------------------------------
+--------------------------------------
+--- Note --- for inline CSS code, use the command line option `css-in'
+--------------------------------------
+--------------------------------------
+--- Note --- for pop ups on mouse over, use the command line option `mouseover'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for addressing images in a subdirectory, use the command line opti
+on `imgdir:.../'
+--------------------------------------
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2018-12-05-18:11
+)
+\:tokwrite=\toks13
+\:tokpage=\toks14
+--------------------------------------
+--- Note --- for back links to toc, use the command line option `sections+'
+--------------------------------------
+--------------------------------------
+--- Note --- for linear crosslinks of pages, use the command line option `next'
+
+--------------------------------------
+\openout15 = `sing_tex4ht_tex.4ct'.
+
+\:tocout=\write1
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/plain.4ht
+version 2018-11-06-15:55
+--------------------------------------
+--- Note --- for reduced implementation, use the command line option `plain-'
+--------------------------------------
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2019-01-30-15:45
+--------------------------------------
+--- Note --- for inline footnotes, use the command line option `fn-in'
+--------------------------------------
+--------------------------------------
+--- Note --- for automatic sectioning pagination, use the command line option `
+1'
+--------------------------------------
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2018-12-05-18:11
+--------------------------------------
+--- Note --- for pictorial $...$ environments, use the command line option `pic
+-m' (not recommended!!)
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial $...$ and $$...$$ environments with latex alt, use t
+he command line option `pic-m+' (not safe!!)
+--------------------------------------
+))
+--- file sing_tex4ht_tex.css ---
+ [1
+\openout0 = `sing_tex4ht_tex.xref'.
+
+\openout1 = `sing_tex4ht_tex.4tc'.
+
+]
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2019-01-30-15:45
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2018-12-05-18:11
+)))
+l. 4 Writing sing_tex4ht_tex.idv[1] (sing_tex4ht_tex0x.png)
+l. 7 Writing sing_tex4ht_tex.idv[2] (sing_tex4ht_tex1x.png)
+l. 10 Writing sing_tex4ht_tex.idv[3] (sing_tex4ht_tex2x.png)
+l. 13 Writing sing_tex4ht_tex.idv[4] (sing_tex4ht_tex3x.png)
+ [1]
+[2] ) 
+Here is how much of TeX's memory you used:
+ 2021 strings out of 497973
+ 19340 string characters out of 6220704
+ 138169 words of memory out of 5000000
+ 2904 multiletter control sequences out of 15000+600000
+ 14794 words of font info for 50 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 25i,2n,21p,592b,527s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on sing_tex4ht_tex.dvi (3 pages, 6880 bytes).

@@ -308,20 +308,8 @@ $result_nodes{'anchor_in_titlepage'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'anchor_in_titlepage'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'anchor_in_titlepage'};
 
 $result_menus{'anchor_in_titlepage'} = {
   'cmdname' => 'node',
@@ -350,6 +338,11 @@ Tag Table:
 Node: Top36
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

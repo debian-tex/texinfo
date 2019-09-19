@@ -462,6 +462,7 @@ $result_trees{'index_entry_before_node'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -620,6 +621,7 @@ $result_nodes{'index_entry_before_node'} = {
     'node_next' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'second',
         'spaces_before_argument' => ' '
       },
@@ -644,25 +646,13 @@ $result_nodes{'index_entry_before_node'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'index_entry_before_node'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'index_entry_before_node'}{'menu_child'};
 $result_nodes{'index_entry_before_node'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'index_entry_before_node'};
 $result_nodes{'index_entry_before_node'}{'menu_child'}{'node_prev'} = $result_nodes{'index_entry_before_node'};
 $result_nodes{'index_entry_before_node'}{'menu_child'}{'node_up'} = $result_nodes{'index_entry_before_node'};
 $result_nodes{'index_entry_before_node'}{'node_next'} = $result_nodes{'index_entry_before_node'}{'menu_child'};
-$result_nodes{'index_entry_before_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'index_entry_before_node'};
 
 $result_menus{'index_entry_before_node'} = {
   'cmdname' => 'node',
@@ -679,6 +669,7 @@ $result_menus{'index_entry_before_node'} = {
     'menu_next' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'second',
         'spaces_before_argument' => ' '
       },
@@ -733,6 +724,11 @@ Node: first106
 Node: second174
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -754,7 +750,7 @@ $result_converted{'html_text'}->{'index_entry_before_node'} = '<span id="Top"></
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#first" accesskey="1">first</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#second" accesskey="2">second</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#second" rel="index" accesskey="2">second</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

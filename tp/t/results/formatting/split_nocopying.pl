@@ -563,23 +563,11 @@ $result_nodes{'split_nocopying'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'split_nocopying'}{'menu_child'}{'node_prev'} = $result_nodes{'split_nocopying'};
 $result_nodes{'split_nocopying'}{'menu_child'}{'node_up'} = $result_nodes{'split_nocopying'};
 $result_nodes{'split_nocopying'}{'node_next'} = $result_nodes{'split_nocopying'}{'menu_child'};
-$result_nodes{'split_nocopying'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'split_nocopying'};
 
 $result_menus{'split_nocopying'} = {
   'cmdname' => 'node',

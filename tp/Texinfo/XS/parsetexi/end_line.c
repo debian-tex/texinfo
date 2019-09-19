@@ -1585,7 +1585,7 @@ end_line_misc_line (ELEMENT *current)
                   add_extra_string_dup (current, "input_encoding_name",
                                         input_encoding);
 
-                  global_info.input_encoding_name = input_encoding;
+                  global_info.input_encoding_name = strdup (input_encoding);
                   set_input_encoding (input_encoding);
                 }
             }

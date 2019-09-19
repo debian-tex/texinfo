@@ -863,18 +863,7 @@ $result_nodes{'two_nodes_between_chapters'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'two_nodes_between_chapters'}{'menu_child'}{'node_next'} = $result_nodes{'two_nodes_between_chapters'};
 $result_nodes{'two_nodes_between_chapters'}{'menu_child'}{'node_prev'}{'node_next'}{'node_prev'} = $result_nodes{'two_nodes_between_chapters'}{'menu_child'};
@@ -883,7 +872,6 @@ $result_nodes{'two_nodes_between_chapters'}{'menu_child'}{'node_prev'}{'node_pre
 $result_nodes{'two_nodes_between_chapters'}{'menu_child'}{'node_prev'}{'node_up'} = $result_nodes{'two_nodes_between_chapters'};
 $result_nodes{'two_nodes_between_chapters'}{'menu_child'}{'node_up'} = $result_nodes{'two_nodes_between_chapters'};
 $result_nodes{'two_nodes_between_chapters'}{'node_next'} = $result_nodes{'two_nodes_between_chapters'}{'menu_child'};
-$result_nodes{'two_nodes_between_chapters'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'two_nodes_between_chapters'};
 
 $result_menus{'two_nodes_between_chapters'} = {
   'cmdname' => 'node',
@@ -1047,17 +1035,6 @@ $result_elements{'two_nodes_between_chapters'} = [
         'NodeBack' => {},
         'NodeForward' => {},
         'NodeNext' => {},
-        'NodeUp' => {
-          'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'dir'
-              }
-            ],
-            'top_node_up' => {}
-          },
-          'type' => 'external_node'
-        },
         'This' => {}
       },
       'element_command' => {
@@ -1105,7 +1082,6 @@ $result_elements{'two_nodes_between_chapters'}[0]{'extra'}{'directions'}{'Forwar
 $result_elements{'two_nodes_between_chapters'}[0]{'extra'}{'directions'}{'NodeBack'} = $result_elements{'two_nodes_between_chapters'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'two_nodes_between_chapters'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'two_nodes_between_chapters'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'two_nodes_between_chapters'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'two_nodes_between_chapters'}[0]{'extra'}{'directions'}{'FastForward'};
-$result_elements{'two_nodes_between_chapters'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'two_nodes_between_chapters'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_prev'}{'menu_prev'}{'menu_up'};
 $result_elements{'two_nodes_between_chapters'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'two_nodes_between_chapters'}[0];
 $result_elements{'two_nodes_between_chapters'}[0]{'extra'}{'node'} = $result_elements{'two_nodes_between_chapters'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_prev'}{'menu_prev'}{'menu_up'};
 $result_elements{'two_nodes_between_chapters'}[0]{'extra'}{'section'} = $result_elements{'two_nodes_between_chapters'}[0]{'extra'}{'element_command'};
@@ -1120,7 +1096,6 @@ $result_directions_text{'two_nodes_between_chapters'} = 'element: @top top
   NodeBack: @chapter chapter c1
   NodeForward: @chapter chapter c1
   NodeNext: @chapter chapter c1
-  NodeUp: (dir)
   This: @top top
 element: @chapter chapter c1
   Back: @top top
@@ -1195,7 +1170,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter-1" accesskey="n" rel="next">chapter 1</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#chapter-1" accesskey="n" rel="next">chapter 1</a> &nbsp; </p>
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 
@@ -1237,7 +1212,7 @@ Previous: <a href="#chapter-1" accesskey="p" rel="prev">chapter 1</a>, Up: <a hr
 ';
 
 
-$result_converted{'xml'}->{'two_nodes_between_chapters'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter 1</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'two_nodes_between_chapters'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter 1</nodenext></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu endspaces=" ">

@@ -16,8 +16,7 @@ These scripts actually get installed:
 
 These are examples of wrapping makeinfo invocation to achieve their
 various jobs:
-  detexinfo texi2html texi-elements-by-size 
-  txicmdlist txicustomvars txixml2texi
+  detexinfo texi-elements-by-size txicmdlist txicustomvars txixml2texi
 
 The srclist.txt file specifies common source files to keep in sync; see
 the srclist-update script in gnulib.

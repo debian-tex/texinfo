@@ -20,7 +20,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f intera
 # Ask for completions multiple times, and then cancel.  Check we went back
 # to the original node.
-printf 'm\t\t\t\t\030\030Dq' >$pty_type
+printf 'm\t\t\t\t\030\030Dq' >&7
 timeout_test
 
 grep '^File: intera\.info, *Node: Top' $ginfo_output

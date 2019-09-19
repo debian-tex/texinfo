@@ -742,25 +742,13 @@ $result_nodes{'entry_after_detailmenu'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'entry_after_detailmenu'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'entry_after_detailmenu'}{'menu_child'};
 $result_nodes{'entry_after_detailmenu'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'entry_after_detailmenu'};
 $result_nodes{'entry_after_detailmenu'}{'menu_child'}{'node_prev'} = $result_nodes{'entry_after_detailmenu'};
 $result_nodes{'entry_after_detailmenu'}{'menu_child'}{'node_up'} = $result_nodes{'entry_after_detailmenu'};
 $result_nodes{'entry_after_detailmenu'}{'node_next'} = $result_nodes{'entry_after_detailmenu'}{'menu_child'};
-$result_nodes{'entry_after_detailmenu'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'entry_after_detailmenu'};
 
 $result_menus{'entry_after_detailmenu'} = {
   'cmdname' => 'node',
@@ -851,7 +839,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#first" accesskey="n" rel="next">first</a> &nbsp; </p>
 </div>
 <h1 class="node-heading">Top</h1>
 
@@ -903,7 +891,7 @@ $result_converted_errors{'html'}->{'entry_after_detailmenu'} = [
 
 
 
-$result_converted{'xml'}->{'entry_after_detailmenu'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">first</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'entry_after_detailmenu'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">first</nodenext></node>
 
 <menu endspaces=" ">
 <detailmenu endspaces=" ">

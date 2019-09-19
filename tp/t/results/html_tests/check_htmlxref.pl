@@ -114,8 +114,7 @@ $result_trees{'check_htmlxref'} = {
           {
             'manual_content' => [
               {}
-            ],
-            'top_node_up' => {}
+            ]
           }
         ],
         'normalized' => 'Top',
@@ -588,7 +587,6 @@ $result_trees{'check_htmlxref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'nod
 $result_trees{'check_htmlxref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[1]{'manual_content'}[0] = $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[1]{'contents'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[2]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[3]{'contents'}[1];
-$result_trees{'check_htmlxref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'top_node_up'} = $result_trees{'check_htmlxref'}{'contents'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'parent'} = $result_trees{'check_htmlxref'};
 $result_trees{'check_htmlxref'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'args'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2];
@@ -769,13 +767,11 @@ $result_nodes{'check_htmlxref'} = {
         {
           'text' => 'dir'
         }
-      ],
-      'top_node_up' => {}
+      ]
     }
   }
 };
 $result_nodes{'check_htmlxref'}{'node_prev'} = $result_nodes{'check_htmlxref'}{'menu_child'};
-$result_nodes{'check_htmlxref'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'check_htmlxref'};
 
 $result_menus{'check_htmlxref'} = {
   'cmdname' => 'node',
@@ -848,7 +844,7 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="..html#Top" accesskey="n" rel="next">(../there/no_existing_no_manual_direction)</a>, Previous: <a href="#first" accesskey="p" rel="prev">first</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="no_existing_no_manual_direction.html#Top" accesskey="n" rel="next">(../there/no_existing_no_manual_direction)</a>, Previous: <a href="#first" accesskey="p" rel="prev">first</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 
@@ -881,6 +877,12 @@ $result_converted_errors{'html'}->{'check_htmlxref'} = [
     'error_line' => 'warning: no htmlxref.cnf entry found for `../there/no_existing_no_manual_direction\'
 ',
     'text' => 'no htmlxref.cnf entry found for `../there/no_existing_no_manual_direction\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: no htmlxref.cnf entry found for `dir\'
+',
+    'text' => 'no htmlxref.cnf entry found for `dir\'',
     'type' => 'warning'
   },
   {

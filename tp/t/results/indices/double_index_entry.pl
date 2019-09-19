@@ -410,6 +410,7 @@ $result_trees{'double_index_entry'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -549,6 +550,7 @@ $result_nodes{'double_index_entry'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'other-node',
       'spaces_before_argument' => ' '
     },
@@ -570,23 +572,11 @@ $result_nodes{'double_index_entry'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'double_index_entry'}{'menu_child'}{'node_prev'} = $result_nodes{'double_index_entry'};
 $result_nodes{'double_index_entry'}{'menu_child'}{'node_up'} = $result_nodes{'double_index_entry'};
 $result_nodes{'double_index_entry'}{'node_next'} = $result_nodes{'double_index_entry'}{'menu_child'};
-$result_nodes{'double_index_entry'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'double_index_entry'};
 
 $result_menus{'double_index_entry'} = {
   'cmdname' => 'node',
@@ -597,6 +587,7 @@ $result_menus{'double_index_entry'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'other-node',
       'spaces_before_argument' => ' '
     },
@@ -640,6 +631,11 @@ Node: Top27
 Node: other node111
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -667,7 +663,7 @@ $result_converted{'html_text'}->{'double_index_entry'} = '<span id="Top"></span>
 <span id="index-aaa-1"></span>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#other-node" accesskey="1">other node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#other-node" rel="index" accesskey="1">other node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

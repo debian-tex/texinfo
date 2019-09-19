@@ -11,7 +11,7 @@
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menutitle separator=": "><code>&arobase; <accent type="acute" bracketed="off">e</accent> &equiv;</code></menutitle><menunode separator=".  ">(formatting)</menunode><menudescription><pre xml:space="preserve">&textldquo;<asis>&textmdash; something</asis>&textrdquo; 
                            <command>cmd</command> <accent type="grave" bracketed="off">a</accent>
 </pre></menudescription></menuentry></direntry>
-<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter</nodenext></node>
 <top spaces=" "><sectiontitle>Top section</sectiontitle>
 
 <menu endspaces=" ">

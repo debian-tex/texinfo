@@ -495,20 +495,8 @@ $result_nodes{'character_and_spaces_in_node'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'character_and_spaces_in_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'character_and_spaces_in_node'};
 
 $result_menus{'character_and_spaces_in_node'} = {
   'cmdname' => 'node',
@@ -549,6 +537,11 @@ Node: /;<=>?[\\]^_`|~230
 Node: local node323
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -590,7 +583,7 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><div class="header">
 <p>
-Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+ &nbsp; </p>
 </div>
 <h1 class="node-heading">Top</h1>
 <hr>

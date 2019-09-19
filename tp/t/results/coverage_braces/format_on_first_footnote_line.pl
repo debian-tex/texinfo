@@ -283,11 +283,11 @@ $result_converted{'html_text'}->{'format_on_first_footnote_line'} = '<p>Texte<a 
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <blockquote>
 <p>in quotation on the first footnote line
 </p></blockquote>
-<h3><a id="FOOT2" href="#DOCF2">(2)</a></h3>
+<h5><a id="FOOT2" href="#DOCF2">(2)</a></h3>
 <div class="example">
 <pre class="example">in example
 </pre></div>

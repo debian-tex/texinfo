@@ -400,6 +400,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           ],
           'cmdname' => 'verbatiminclude',
           'extra' => {
+            'input_perl_encoding' => 'utf-8',
             'spaces_before_argument' => ' ',
             'text_arg' => 'inc_@f--ile.texi'
           },
@@ -561,20 +562,8 @@ $result_nodes{'macro_and_commands_in_early_commands'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'macro_and_commands_in_early_commands'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'macro_and_commands_in_early_commands'};
 
 $result_menus{'macro_and_commands_in_early_commands'} = {
   'cmdname' => 'node',

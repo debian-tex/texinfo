@@ -675,18 +675,7 @@ $result_nodes{'transliterated_split_equivalent_nodes'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'transliterated_split_equivalent_nodes'}{'menu_child'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'transliterated_split_equivalent_nodes'}{'menu_child'}{'node_next'};
 $result_nodes{'transliterated_split_equivalent_nodes'}{'menu_child'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'transliterated_split_equivalent_nodes'};
@@ -695,7 +684,6 @@ $result_nodes{'transliterated_split_equivalent_nodes'}{'menu_child'}{'node_next'
 $result_nodes{'transliterated_split_equivalent_nodes'}{'menu_child'}{'node_prev'} = $result_nodes{'transliterated_split_equivalent_nodes'};
 $result_nodes{'transliterated_split_equivalent_nodes'}{'menu_child'}{'node_up'} = $result_nodes{'transliterated_split_equivalent_nodes'};
 $result_nodes{'transliterated_split_equivalent_nodes'}{'node_next'} = $result_nodes{'transliterated_split_equivalent_nodes'}{'menu_child'};
-$result_nodes{'transliterated_split_equivalent_nodes'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'transliterated_split_equivalent_nodes'};
 
 $result_menus{'transliterated_split_equivalent_nodes'} = {
   'cmdname' => 'node',
@@ -841,17 +829,6 @@ $result_elements{'transliterated_split_equivalent_nodes'} = [
         },
         'NodeForward' => {},
         'NodeNext' => {},
-        'NodeUp' => {
-          'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'dir'
-              }
-            ],
-            'top_node_up' => {}
-          },
-          'type' => 'external_node'
-        },
         'This' => {}
       },
       'element_command' => {},
@@ -894,7 +871,6 @@ $result_elements{'transliterated_split_equivalent_nodes'}[0]{'extra'}{'direction
 $result_elements{'transliterated_split_equivalent_nodes'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'node'} = $result_elements{'transliterated_split_equivalent_nodes'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'}{'menu_prev'};
 $result_elements{'transliterated_split_equivalent_nodes'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'transliterated_split_equivalent_nodes'}[0]{'extra'}{'directions'}{'Forward'};
 $result_elements{'transliterated_split_equivalent_nodes'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'transliterated_split_equivalent_nodes'}[0]{'extra'}{'directions'}{'Forward'};
-$result_elements{'transliterated_split_equivalent_nodes'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'transliterated_split_equivalent_nodes'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'}{'menu_prev'}{'menu_up'};
 $result_elements{'transliterated_split_equivalent_nodes'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'transliterated_split_equivalent_nodes'}[0];
 $result_elements{'transliterated_split_equivalent_nodes'}[0]{'extra'}{'element_command'} = $result_elements{'transliterated_split_equivalent_nodes'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'}{'menu_prev'}{'menu_up'};
 $result_elements{'transliterated_split_equivalent_nodes'}[0]{'extra'}{'node'} = $result_elements{'transliterated_split_equivalent_nodes'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'}{'menu_prev'}{'menu_up'};
@@ -908,7 +884,6 @@ $result_directions_text{'transliterated_split_equivalent_nodes'} = 'element: @no
   Forward: @node @~a
   NodeForward: @node @~a
   NodeNext: @node @~a
-  NodeUp: (dir)
   This: @node Top
 element: @node @~a
   Back: @node Top

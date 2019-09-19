@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ run_ginfo -f split
 # Cause the garbage collector to run in a split file by cancelling an 
 # incremental search.  Refresh the screen afterwards to increase the 
 # chances of trying to access freed file contents.
-printf '\023aa\033[B\014q' >$pty_type
+printf '\023aa\033[B\014q' >&7
 timeout_test
 
 cleanup

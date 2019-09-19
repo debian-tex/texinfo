@@ -21,12 +21,12 @@ srcdir=${srcdir:-.}
 
 run_ginfo -f file-menu
 
-printf 'g\t' >$pty_type
+printf 'g\t' >&7
 sleep 1 # Give ginfo time to process above keystrokes
 kill -s WINCH $ginfo_pid
 sleep 1 # Give ginfo time to process signal
 # C-g to exit completions, q to quit
-printf '\007q' >$pty_type
+printf '\007q' >&7
 
 timeout_test
 cleanup

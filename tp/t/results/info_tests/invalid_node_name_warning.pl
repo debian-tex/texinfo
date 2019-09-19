@@ -990,18 +990,7 @@ $result_nodes{'invalid_node_name_warning'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'invalid_node_name_warning'}{'menu_child'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'invalid_node_name_warning'}{'menu_child'}{'node_next'};
 $result_nodes{'invalid_node_name_warning'}{'menu_child'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'invalid_node_name_warning'};
@@ -1010,7 +999,6 @@ $result_nodes{'invalid_node_name_warning'}{'menu_child'}{'node_next'}{'node_up'}
 $result_nodes{'invalid_node_name_warning'}{'menu_child'}{'node_prev'} = $result_nodes{'invalid_node_name_warning'};
 $result_nodes{'invalid_node_name_warning'}{'menu_child'}{'node_up'} = $result_nodes{'invalid_node_name_warning'};
 $result_nodes{'invalid_node_name_warning'}{'node_next'} = $result_nodes{'invalid_node_name_warning'}{'menu_child'};
-$result_nodes{'invalid_node_name_warning'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'invalid_node_name_warning'};
 
 $result_menus{'invalid_node_name_warning'} = {
   'cmdname' => 'node',
@@ -1094,6 +1082,11 @@ Node: node,comma221
 Node: bidule:296
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'invalid_node_name_warning'} = [

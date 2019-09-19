@@ -20,7 +20,6 @@ one_test_files_generated_list =  \
      test_scripts/formatting_test_redefine_need.sh \
      test_scripts/formatting_split_nocopying_split_dev_null.sh \
      test_scripts/formatting_simplest_test_css.sh \
-     test_scripts/sectioning_equivalent_nodes_test_renamed_nodes.sh \
      test_scripts/sectioning_sectioning_directions.sh \
      test_scripts/indices_nodes_before_top_and_sections_html_chapter.sh \
      test_scripts/indices_nodes_before_top_and_sections_html_chapter_nodes.sh \

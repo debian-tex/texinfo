@@ -646,6 +646,11 @@ Node: a node27
 Node: second140
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'unnumbered_top_without_node_nodes'} = [

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ srcdir=${srcdir:-.}
 
 run_ginfo -f intera -n 'Argument to tab'
 # C-u 2 TAB to go to second link
-printf '\0252\t\rDq' >$pty_type
+printf '\0252\t\rDq' >&7
 timeout_test
 
 diff $ginfo_output $t/node-target

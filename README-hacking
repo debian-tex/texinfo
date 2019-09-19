@@ -26,8 +26,6 @@ and then, for example,
 and then
  make
 
-After the initial autogen && configure, simply running make should suffice.
-
 The -C tells configure to cache test results, which usually speeds
 things up a bit.
 
@@ -40,6 +38,17 @@ specify that option.
 Other -W options can be useful too, and patches are welcome to resolve
 diagnostics; however, removing all possible warning messages, or
 warnings with nonfree compilers, is explicitly not a goal.
+
+After the initial autogen && configure, simply running make should suffice.
+
+Gettext or help2man not installed do not cause configure to fail,
+though configure shows if they were found.  This is because a release
+does not require those tools.  Indeed, both prerequisites and
+result files are shipped in a release, such that the tools are only
+needed if the prerequisite changed.  The tools are needed when building
+from developpement sources, however, as result files are not under version
+control.  Make will fail with an explicit missing command for help2man,
+and with a command not found error for a Gettext utility command.
 
 Running make in one particular subdirectory is possible, for example
 make -C info.  However there are interdependencies between the 

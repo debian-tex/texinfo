@@ -26,7 +26,7 @@ cp $t/infodir/sample.info t/replace-viewed.info
 run_ginfo -f t/replace-viewed.info
 
 # for debugging - show what node we got to
-printf 'D' >$pty_type
+printf 'D' >&7
 
 # give ginfo time to load the node
 sleep 1
@@ -37,8 +37,8 @@ rm -f t/replace-viewed.info
 cp $t/infodir/sample.info t/replace-viewed.info
 
 # Do a search.  This triggers ginfo's internal garbage collection.
-printf '/what\r' >$pty_type
-printf q >$pty_type
+printf '/what\r' >&7
+printf q >&7
 
 rm -f t/replace-viewed.info
 timeout_test

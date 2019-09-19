@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2015-2018 Free Software Foundation, Inc.
+# Copyright (C) 2015-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ srcdir=${srcdir:-.}
 
 # Follow a dir entry to a file in a subdirectory of infodir
 run_ginfo subdir
-printf 'Dq' >$pty_type
+printf 'Dq' >&7
 timeout_test
 
 cat $ginfo_output

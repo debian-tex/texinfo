@@ -293,20 +293,8 @@ $result_nodes{'comment_space_comand_in_float'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'comment_space_comand_in_float'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'comment_space_comand_in_float'};
 
 $result_menus{'comment_space_comand_in_float'} = {
   'cmdname' => 'node',
@@ -384,6 +372,11 @@ Node: Top27
 Ref: label  61
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

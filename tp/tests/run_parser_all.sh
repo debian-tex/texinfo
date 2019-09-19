@@ -64,8 +64,8 @@ post_process_output ()
     cp -pr ${outdir}$dir/ "${raw_outdir}"
 
     # remove files that are not reproducible
-    rm -f "${outdir}$dir/$basename.1" ${outdir}$dir/*.png \
-          ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
+    rm -f "${outdir}$dir/$basename.1" ${outdir}$dir/*.png ${outdir}$dir/*.svg \
+          ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_l2h_images.pdf ${outdir}$dir/*_tex4ht_*.log \
           ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
           ${outdir}$dir/*_l2h.html.* \
           ${outdir}$dir/*_tex4ht_tex.html*
@@ -245,12 +245,7 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
         outdir="$testdir/${out_dir}${dir_suffix}/"
         resdir="$srcdir/$testdir/${res_dir}${dir_suffix}/"
         if [ -d "${outdir}$dir" ]; then
-          if [ -d "${resdir}$dir" ]; then
-          # ugly hack to avoid CVS and .svn
-            rm -f "${resdir}$dir/"?*.*
-          else
-            mkdir "${resdir}$dir/"
-          fi
+          mkdir -p "${resdir}$dir/"
           cp -r "${outdir}$dir/"* "${resdir}$dir/"
         else
           echo "$0: No dir ${outdir}$dir" >&2
@@ -263,12 +258,6 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
 fi
 
 mkdir -p $testdir/$diffs_dir
-staging_dir_res=$testdir/$diffs_dir/staging_res/
-if test z"$clean" = 'zyes' ; then
-  rm -rf $staging_dir_res
-else
-  mkdir -p $staging_dir_res
-fi
 
 for command_dir in $commands; do
   dir_suffix=`echo $command_dir | cut -d':' -f2`
@@ -353,12 +342,6 @@ while read line; do
         res_dir_used="$results_dir/$dir"
       fi
       if test "z$res_dir_used" != 'z' ; then
-        # use a staging dir to be able to remove CVS directory
-        rm -rf $staging_dir_res/$dir
-        cp -pr "$res_dir_used" $staging_dir_res
-        chmod -R u+w "$staging_dir_res/$dir"
-        rm -rf $staging_dir_res$dir/CVS $staging_dir_res$dir/.svn
-
         # store raw output
         raw_outdir="$testdir/raw_out_parser${dir_suffix}/"
         mkdir -p "${raw_outdir}"
@@ -369,7 +352,7 @@ while read line; do
         test -d "$raw_outdir$dir" && rm -rf "$raw_outdir$dir"
         # This directory isn't cleaned anywhere else.
 
-        diff $DIFF_A_OPTION $DIFF_U_OPTION -r "${staging_dir_res}$dir" "${outdir}$dir" 2>>$logfile > "$testdir/$diffs_dir/$diff_base.diff"
+        diff $DIFF_A_OPTION $DIFF_U_OPTION -r "$res_dir_used" "${outdir}$dir" 2>>$logfile > "$testdir/$diffs_dir/$diff_base.diff"
         dif_ret=$?
         if [ $dif_ret != 0 ]; then
           echo "D: $testdir/$diffs_dir/$diff_base.diff"

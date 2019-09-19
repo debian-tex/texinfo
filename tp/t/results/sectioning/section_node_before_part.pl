@@ -205,20 +205,8 @@ $result_nodes{'section_node_before_part'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'section_node_before_part'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'section_node_before_part'};
 
 $result_menus{'section_node_before_part'} = {
   'cmdname' => 'node',
@@ -265,6 +253,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -328,7 +321,7 @@ $result_converted_errors{'html'}->{'section_node_before_part'} = [
 
 
 $result_converted{'xml'}->{'section_node_before_part'} = '
-<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename></node>
 <section spaces=" "><sectiontitle>section </sectiontitle>
 
 </section>

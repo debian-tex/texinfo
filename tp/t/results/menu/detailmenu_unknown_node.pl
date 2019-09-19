@@ -292,20 +292,8 @@ $result_nodes{'detailmenu_unknown_node'} = {
         }
       }
     }
-  ],
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  ]
 };
-$result_nodes{'detailmenu_unknown_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'detailmenu_unknown_node'};
 
 $result_menus{'detailmenu_unknown_node'} = {
   'cmdname' => 'node',
@@ -395,7 +383,7 @@ $result_converted_errors{'html'}->{'detailmenu_unknown_node'} = [
 
 
 
-$result_converted{'xml'}->{'detailmenu_unknown_node'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'detailmenu_unknown_node'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <menu endspaces=" ">
 <detailmenu endspaces=" ">

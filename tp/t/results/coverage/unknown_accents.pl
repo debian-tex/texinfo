@@ -830,17 +830,17 @@ $result_errors{'unknown_accents'} = [];
 
 
 
-$result_converted{'plaintext'}->{'unknown_accents'} = 'X" x" Q" Y"
+$result_converted{'plaintext'}->{'unknown_accents'} = 'Ẍ ẍ Q̈ Ÿ
 
-   z\' q\' r\' Z\' Q\' R\'
+   ź q́ ŕ Ź Q́ Ŕ
 
-   H, h,
+   Ḩ ḩ
 
-   z^ r^ t^ k^ Z^ R^ T^ K^
+   ẑ r̂ t̂ k̂ Ẑ R̂ T̂ K̂
 
-   z` m` p`
+   z̀ m̀ p̀
 
-   Z~ s~
+   Z̃ s̃
 ';
 
 

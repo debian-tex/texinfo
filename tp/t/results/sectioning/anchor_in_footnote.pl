@@ -588,23 +588,11 @@ $result_nodes{'anchor_in_footnote'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'anchor_in_footnote'}{'menu_child'}{'node_prev'} = $result_nodes{'anchor_in_footnote'};
 $result_nodes{'anchor_in_footnote'}{'menu_child'}{'node_up'} = $result_nodes{'anchor_in_footnote'};
 $result_nodes{'anchor_in_footnote'}{'node_next'} = $result_nodes{'anchor_in_footnote'}{'menu_child'};
-$result_nodes{'anchor_in_footnote'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'anchor_in_footnote'};
 
 $result_menus{'anchor_in_footnote'} = {
   'cmdname' => 'node',
@@ -664,6 +652,11 @@ Ref: Anchor in footnote178
 Node: chapter182
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -704,7 +697,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 </div>
 <span id="Top-1"></span><h1 class="top">Top</h1>
 
@@ -727,7 +720,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>in footnote
 <span id="Anchor-in-footnote"></span>.
 </p>

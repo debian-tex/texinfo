@@ -649,20 +649,8 @@ $result_nodes{'ref_tests'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'ref_tests'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'ref_tests'};
 
 $result_menus{'ref_tests'} = {
   'cmdname' => 'node',
@@ -694,6 +682,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'ref_tests'} = [

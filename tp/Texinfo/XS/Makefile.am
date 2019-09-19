@@ -21,9 +21,6 @@ AM_CPPFLAGS =                \
   -I$(srcdir)/gnulib/lib     \
   -I$(builddir)/gnulib/lib
 
-XSParagraph_la_LIBADD = $(builddir)/gnulib/lib/libgnu.la \
-	                $(TERMLIBS) $(LIBINTL) $(LIBICONV)
-
 ACLOCAL_AMFLAGS = -I gnulib/m4
 
 SUBDIRS=gnulib/lib
@@ -31,6 +28,8 @@ SUBDIRS=gnulib/lib
 EXTRA_DIST+=gnulib/m4/gnulib-cache.m4
 
 ################### End Gnulib section #########################
+
+AM_CPPFLAGS += -DDATADIR=\"$(datadir)\"
 
 xsdir = $(pkglibdir)
 
@@ -87,6 +86,11 @@ endif
 
 AM_LDFLAGS = -avoid-version -module $(PERL_CONF_ccdlflags)
 AM_LDFLAGS += $(PLATFORM_LDFLAGS)
+
+XSParagraph_la_LIBADD = $(builddir)/gnulib/lib/libgnu.la
+XSParagraph_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBINTL) $(LTLIBICONV)
+
+
 
 ########################## parsetexi
 
@@ -148,7 +152,7 @@ EXTRA_DIST += $p/command_data.c
 EXTRA_DIST += $p/Parsetexi.xs
 
 Parsetexi_la_LIBADD = $(top_builddir)/gnulib/lib/libgnu.la
-Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBICONV)
+Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBINTL) $(LTLIBICONV)
 
 BUILT_SOURCES=parsetexi/element_types.c \
               parsetexi/element_types.h \

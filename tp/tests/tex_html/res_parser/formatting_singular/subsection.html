@@ -42,6 +42,8 @@ kbd: ``simple-double-three-four-''
 @,c@"u c,u" 
 
 
+@U{0075} 0075
+
 @* 
 
 @ followed by a space
@@ -130,7 +132,6 @@ but , ,
 @cite{-a} -a
 @code{-a} -a
 @command{-a} -a
-@ctrl{-a} -a
 @dfn{-a} -a
 @dmn{-a} -a
 @email{-a,-b} -b
@@ -302,7 +303,7 @@ def-fn
 fset: i a g
 cmde: truc 
 Command: log trap 
-Command: log trap1   
+Command: log trap1 
 Command: log trap2 
 cmde: id ule truc
 cmde2: id i ule truc
@@ -531,6 +532,12 @@ Invalid use of @':
 @dotless{-a} -a
 @dotless{a} a
 
+@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg z
+@U{abc}, with <4 hex digits abc
+@U{FFFFFFFFFFFFFF}, value much too large FFFFFFFFFFFFFF
+@U{110000}, value just beyond Unicode 110000
+
 @TeX, but without brace TeX@# #
 
 @w{-a} -a
@@ -546,7 +553,7 @@ i-tem 1
 i-tem 2
 
 fun: 
-truc: machin bidule chose and 
+truc: machin bidule chose and
 truc: machin bidule chose and  after
 truc: machin bidule chose and 
 truc: machin bidule chose and and after
@@ -594,39 +601,29 @@ truc: after a deff item
  -->
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>title &ndash;a: 1.1.1 subsection</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>1.1.1 subsection (title &ndash;a)</title>
 
-<meta name="description" content="title &ndash;a: 1.1.1 subsection">
-<meta name="keywords" content="title &ndash;a: 1.1.1 subsection">
+<meta name="description" content="1.1.1 subsection (title &ndash;a)">
+<meta name="keywords" content="1.1.1 subsection (title &ndash;a)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
-blockquote.smallquotation {font-size: smaller}
+blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
-div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -636,8 +633,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="subsection"></a>
-<table border="0" cellpadding="0" cellspacing="0">
+<span id="subsection"></span><table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -648,28 +644,28 @@ ul.no-bullet {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="s_002d_002dect_002cion.html#s_002d_002dect_002cion" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 1.1 A section" align="middle"></a></td>
+<td valign="middle" align="left"><a href="s_002d_002dect_002cion.html" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 1.1 A section" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="subsubsection-_0060_0060simple_002ddouble_002d_002d.html#subsubsection-_0060_0060simple_002ddouble_002d_002d" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 1.1.1.1 subsubsection &ldquo;simple-double&ndash;" align="middle"></a></td>
+<td valign="middle" align="left"><a href="subsubsection-_0060_0060simple_002ddouble_002d_002d.html" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 1.1.1.1 subsubsection &ldquo;simple-double&ndash;" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="chapter.html#chapter" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 1 chapter" align="middle"></a></td>
+<td valign="middle" align="left"><a href="chapter.html" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 1 chapter" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="chapter2.html#chapter2" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: chapter 2" align="middle"></a></td>
+<td valign="middle" align="left"><a href="chapter2.html" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: chapter 2" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="s_002d_002dect_002cion.html#s_002d_002dect_002cion" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 1.1 A section" align="middle"></a></td>
+<td valign="middle" align="left"><a href="s_002d_002dect_002cion.html" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 1.1 A section" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Top section" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Top section" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: Top section" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: Top section" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -677,17 +673,16 @@ ul.no-bullet {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="subsection-1"></a>
-<h3 class="subsection">1.1.1 subsection</h3>
+<span id="subsection-1"></span><h3 class="subsection">1.1.1 subsection</h3>
 
 <blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="subsubsection-_0060_0060simple_002ddouble_002d_002d.html#subsubsection-_0060_0060simple_002ddouble_002d_002d">1.1.1.1 subsubsection &ldquo;simple-double&ndash;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="subsubsection-_0060_0060simple_002ddouble_002d_002d.html">1.1.1.1 subsubsection &ldquo;simple-double&ndash;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027.html#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">1.1.1.2 three&mdash;four&mdash;-&rdquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027.html">1.1.1.2 three&mdash;four&mdash;-&rdquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table></blockquote>
 
-<a name="anchor"></a>
+<span id="anchor"></span>
 </td>
 </tr>
 </table>
@@ -697,14 +692,14 @@ ul.no-bullet {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="s_002d_002dect_002cion.html#s_002d_002dect_002cion" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 1.1 A section" align="middle"></a></td>
-<td valign="middle" align="left"><a href="subsubsection-_0060_0060simple_002ddouble_002d_002d.html#subsubsection-_0060_0060simple_002ddouble_002d_002d" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 1.1.1.1 subsubsection &ldquo;simple-double&ndash;" align="middle"></a></td>
-<td valign="middle" align="left"><a href="chapter.html#chapter" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 1 chapter" align="middle"></a></td>
-<td valign="middle" align="left"><a href="chapter2.html#chapter2" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: chapter 2" align="middle"></a></td>
-<td valign="middle" align="left"><a href="s_002d_002dect_002cion.html#s_002d_002dect_002cion" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 1.1 A section" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Top section" align="middle"></a></td>
+<td valign="middle" align="left"><a href="s_002d_002dect_002cion.html" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 1.1 A section" align="middle"></a></td>
+<td valign="middle" align="left"><a href="subsubsection-_0060_0060simple_002ddouble_002d_002d.html" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 1.1.1.1 subsubsection &ldquo;simple-double&ndash;" align="middle"></a></td>
+<td valign="middle" align="left"><a href="chapter.html" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 1 chapter" align="middle"></a></td>
+<td valign="middle" align="left"><a href="chapter2.html" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: chapter 2" align="middle"></a></td>
+<td valign="middle" align="left"><a href="s_002d_002dect_002cion.html" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 1.1 A section" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Top section" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: Top section" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: Top section" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 

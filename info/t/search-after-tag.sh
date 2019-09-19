@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ srcdir=${srcdir:-.}
 
 run_ginfo -f intera -n Searching
 # Search for text in a node that appears after an Info tag
-printf '/match\r\x06\x06\x06\x06\x06\x06\x06\x06\x06\x06\x06\rDq' >$pty_type
+printf '/match\r\x06\x06\x06\x06\x06\x06\x06\x06\x06\x06\x06\rDq' >&7
 
 timeout_test
 

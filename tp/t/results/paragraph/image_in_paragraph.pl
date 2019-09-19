@@ -68,7 +68,9 @@ $result_trees{'image_in_paragraph'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
-          'extra' => {},
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,

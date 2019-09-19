@@ -46,6 +46,9 @@ $result_trees{'image_not_found'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 2,
@@ -108,20 +111,8 @@ $result_nodes{'image_not_found'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'image_not_found'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'image_not_found'};
 
 $result_menus{'image_not_found'} = {
   'cmdname' => 'node',
@@ -146,6 +137,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'image_not_found'} = [

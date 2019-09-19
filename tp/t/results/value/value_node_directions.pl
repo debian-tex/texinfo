@@ -138,8 +138,7 @@ $result_trees{'value_node_directions'} = {
           {
             'manual_content' => [
               {}
-            ],
-            'top_node_up' => {}
+            ]
           }
         ],
         'normalized' => 'Top',
@@ -486,7 +485,6 @@ $result_trees{'value_node_directions'}{'contents'}[1]{'extra'}{'nodes_manuals'}[
 $result_trees{'value_node_directions'}{'contents'}[1]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'value_node_directions'}{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'value_node_directions'}{'contents'}[1]{'extra'}{'nodes_manuals'}[2]{'manual_content'}[0] = $result_trees{'value_node_directions'}{'contents'}[1]{'args'}[2]{'contents'}[1];
 $result_trees{'value_node_directions'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'value_node_directions'}{'contents'}[1]{'args'}[3]{'contents'}[1];
-$result_trees{'value_node_directions'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'top_node_up'} = $result_trees{'value_node_directions'}{'contents'}[1];
 $result_trees{'value_node_directions'}{'contents'}[1]{'parent'} = $result_trees{'value_node_directions'};
 $result_trees{'value_node_directions'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[2]{'args'}[0];
 $result_trees{'value_node_directions'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[2];
@@ -704,14 +702,12 @@ $result_nodes{'value_node_directions'} = {
         {
           'text' => 'dir'
         }
-      ],
-      'top_node_up' => {}
+      ]
     }
   }
 };
 $result_nodes{'value_node_directions'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'value_node_directions'}{'node_next'};
 $result_nodes{'value_node_directions'}{'node_next'}{'node_prev'} = $result_nodes{'value_node_directions'};
-$result_nodes{'value_node_directions'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'value_node_directions'};
 
 $result_menus{'value_node_directions'} = {
   'cmdname' => 'node',

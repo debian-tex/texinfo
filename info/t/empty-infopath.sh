@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2015-2018 Free Software Foundation, Inc.
+# Copyright (C) 2015-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ srcdir=${srcdir:-.}
 INFOPATH=
 export INFOPATH
 run_ginfo
-printf q >$pty_type
+printf q >&7
 timeout_test
 
 cleanup

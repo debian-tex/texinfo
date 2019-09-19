@@ -284,21 +284,9 @@ $result_nodes{'menu_in_style_command'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'menu_in_style_command'}{'node_next'} = $result_nodes{'menu_in_style_command'}{'menu_child'};
-$result_nodes{'menu_in_style_command'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'menu_in_style_command'};
 
 $result_menus{'menu_in_style_command'} = {
   'cmdname' => 'node',

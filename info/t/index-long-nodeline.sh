@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f split
 # Follow an menu item from the index node to a node where physical lines
 # don't match logical lines.
-printf 'gIndex\r\t\t\r\rDq' >$pty_type
+printf 'gIndex\r\t\t\r\rDq' >&7
 timeout_test
 
 if test ! -f $ginfo_output; then

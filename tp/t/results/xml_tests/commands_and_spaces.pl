@@ -432,6 +432,9 @@ $result_trees{'commands_and_spaces'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 21,
@@ -522,6 +525,9 @@ $result_trees{'commands_and_spaces'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 23,

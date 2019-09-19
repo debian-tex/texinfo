@@ -316,23 +316,11 @@ $result_nodes{'menu_title_before_entries'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'menu_title_before_entries'}{'menu_child'}{'node_prev'} = $result_nodes{'menu_title_before_entries'};
 $result_nodes{'menu_title_before_entries'}{'menu_child'}{'node_up'} = $result_nodes{'menu_title_before_entries'};
 $result_nodes{'menu_title_before_entries'}{'node_next'} = $result_nodes{'menu_title_before_entries'}{'menu_child'};
-$result_nodes{'menu_title_before_entries'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'menu_title_before_entries'};
 
 $result_menus{'menu_title_before_entries'} = {
   'cmdname' => 'node',
@@ -403,7 +391,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#subnode" accesskey="n" rel="next">subnode</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#subnode" accesskey="n" rel="next">subnode</a> &nbsp; </p>
 </div>
 <h1 class="node-heading">Top</h1>
 
@@ -438,7 +426,7 @@ $result_converted_errors{'html'}->{'menu_title_before_entries'} = [
 
 
 
-$result_converted{'xml'}->{'menu_title_before_entries'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">subnode</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'menu_title_before_entries'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">subnode</nodenext></node>
 
 <menu endspaces=" ">
 <menucomment><pre xml:space="preserve">Horizontal space

@@ -586,23 +586,11 @@ $result_nodes{'ref_in_copying'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'ref_in_copying'}{'menu_child'}{'node_prev'} = $result_nodes{'ref_in_copying'};
 $result_nodes{'ref_in_copying'}{'menu_child'}{'node_up'} = $result_nodes{'ref_in_copying'};
 $result_nodes{'ref_in_copying'}{'node_next'} = $result_nodes{'ref_in_copying'}{'menu_child'};
-$result_nodes{'ref_in_copying'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'ref_in_copying'};
 
 $result_menus{'ref_in_copying'} = {
   'cmdname' => 'node',
@@ -657,6 +645,11 @@ Node: Top41
 Node: GFDL130
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -699,7 +692,7 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#GFDL" accesskey="n" rel="next">GFDL</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#GFDL" accesskey="n" rel="next">GFDL</a> &nbsp; </p>
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 

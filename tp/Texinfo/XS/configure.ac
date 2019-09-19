@@ -93,6 +93,7 @@ AC_PROG_CC
 
 gl_EARLY
 
+AM_GNU_GETTEXT([external])
 AM_MISSING_PROG([XSUBPP], [xsubpp])
 
 gl_INIT

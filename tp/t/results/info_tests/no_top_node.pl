@@ -100,6 +100,11 @@ Tag Table:
 Node: node Top not Top node27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'no_top_node'} = [

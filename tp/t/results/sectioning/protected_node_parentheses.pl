@@ -573,23 +573,11 @@ $result_nodes{'protected_node_parentheses'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'protected_node_parentheses'}{'menu_child'}{'node_prev'} = $result_nodes{'protected_node_parentheses'};
 $result_nodes{'protected_node_parentheses'}{'menu_child'}{'node_up'} = $result_nodes{'protected_node_parentheses'};
 $result_nodes{'protected_node_parentheses'}{'node_next'} = $result_nodes{'protected_node_parentheses'}{'menu_child'};
-$result_nodes{'protected_node_parentheses'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'protected_node_parentheses'};
 
 $result_menus{'protected_node_parentheses'} = {
   'cmdname' => 'node',
@@ -639,6 +627,11 @@ Node: (manual) name120
 Ref: (manual2) name2174
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -680,7 +673,7 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#g_t_0028manual_0029-name" accesskey="n" rel="next">(manual) name</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#g_t_0028manual_0029-name" accesskey="n" rel="next">(manual) name</a> &nbsp; </p>
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 

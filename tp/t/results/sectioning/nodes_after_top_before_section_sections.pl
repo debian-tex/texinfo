@@ -638,25 +638,13 @@ $result_nodes{'nodes_after_top_before_section_sections'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'nodes_after_top_before_section_sections'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'nodes_after_top_before_section_sections'}{'menu_child'};
 $result_nodes{'nodes_after_top_before_section_sections'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'nodes_after_top_before_section_sections'};
 $result_nodes{'nodes_after_top_before_section_sections'}{'menu_child'}{'node_prev'} = $result_nodes{'nodes_after_top_before_section_sections'};
 $result_nodes{'nodes_after_top_before_section_sections'}{'menu_child'}{'node_up'} = $result_nodes{'nodes_after_top_before_section_sections'};
 $result_nodes{'nodes_after_top_before_section_sections'}{'node_next'} = $result_nodes{'nodes_after_top_before_section_sections'}{'menu_child'};
-$result_nodes{'nodes_after_top_before_section_sections'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'nodes_after_top_before_section_sections'};
 
 $result_menus{'nodes_after_top_before_section_sections'} = {
   'cmdname' => 'node',
@@ -795,6 +783,11 @@ Node: second node131
 Node: third node215
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -835,7 +828,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#second-node" accesskey="n" rel="next">second node</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#second-node" accesskey="n" rel="next">second node</a> &nbsp; </p>
 </div>
 <h1 class="node-heading">Top</h1>
 <p>Top node

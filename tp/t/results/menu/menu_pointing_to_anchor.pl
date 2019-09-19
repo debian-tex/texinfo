@@ -374,22 +374,10 @@ $result_nodes{'menu_pointing_to_anchor'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'menu_pointing_to_anchor'}{'menu_child'}{'node_prev'} = $result_nodes{'menu_pointing_to_anchor'};
 $result_nodes{'menu_pointing_to_anchor'}{'node_next'} = $result_nodes{'menu_pointing_to_anchor'}{'menu_child'};
-$result_nodes{'menu_pointing_to_anchor'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'menu_pointing_to_anchor'};
 
 $result_menus{'menu_pointing_to_anchor'} = {
   'cmdname' => 'node',
@@ -478,7 +466,7 @@ ul.no-bullet {list-style: none}
 ';
 
 
-$result_converted{'xml'}->{'menu_pointing_to_anchor'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">An anchor</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'menu_pointing_to_anchor'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">An anchor</nodenext></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <para>Text

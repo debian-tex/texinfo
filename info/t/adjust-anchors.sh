@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,8 +26,8 @@ run_ginfo -f anchors
 
 # Go to anchor in a UTF-8 encoded file when the current character encoding is
 # supposed to be ISO-8859-1
-printf 'ganchor-2\r\002\002\002\002\002\002' >$pty_type
-printf '\002\002\002\002\002\002\002\002\rDq' >$pty_type
+printf 'ganchor-2\r\002\002\002\002\002\002' >&7
+printf '\002\002\002\002\002\002\002\002\rDq' >&7
 
 timeout_test
 

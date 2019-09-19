@@ -129,6 +129,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -1713,6 +1714,7 @@ $result_sectioning{'char_latin1_latin1_in_refs'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -1851,6 +1853,7 @@ $result_nodes{'char_latin1_latin1_in_refs'} = {
       },
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   },
@@ -1954,18 +1957,7 @@ $result_nodes{'char_latin1_latin1_in_refs'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'char_latin1_latin1_in_refs'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'char_latin1_latin1_in_refs'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'};
 $result_nodes{'char_latin1_latin1_in_refs'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'char_latin1_latin1_in_refs'};
@@ -1978,11 +1970,11 @@ $result_nodes{'char_latin1_latin1_in_refs'}{'menu_child'}{'node_next'}{'node_up'
 $result_nodes{'char_latin1_latin1_in_refs'}{'menu_child'}{'node_prev'} = $result_nodes{'char_latin1_latin1_in_refs'};
 $result_nodes{'char_latin1_latin1_in_refs'}{'menu_child'}{'node_up'} = $result_nodes{'char_latin1_latin1_in_refs'};
 $result_nodes{'char_latin1_latin1_in_refs'}{'node_next'} = $result_nodes{'char_latin1_latin1_in_refs'}{'menu_child'};
-$result_nodes{'char_latin1_latin1_in_refs'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'char_latin1_latin1_in_refs'};
 
 $result_menus{'char_latin1_latin1_in_refs'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   },

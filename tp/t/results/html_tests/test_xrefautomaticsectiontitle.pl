@@ -634,23 +634,11 @@ $result_nodes{'test_xrefautomaticsectiontitle'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'test_xrefautomaticsectiontitle'}{'menu_child'}{'node_prev'} = $result_nodes{'test_xrefautomaticsectiontitle'};
 $result_nodes{'test_xrefautomaticsectiontitle'}{'menu_child'}{'node_up'} = $result_nodes{'test_xrefautomaticsectiontitle'};
 $result_nodes{'test_xrefautomaticsectiontitle'}{'node_next'} = $result_nodes{'test_xrefautomaticsectiontitle'}{'menu_child'};
-$result_nodes{'test_xrefautomaticsectiontitle'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'test_xrefautomaticsectiontitle'};
 
 $result_menus{'test_xrefautomaticsectiontitle'} = {
   'cmdname' => 'node',
@@ -713,7 +701,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chap" accesskey="n" rel="next">chap</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#chap" accesskey="n" rel="next">chap</a> &nbsp; </p>
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 

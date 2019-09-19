@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f intera
 # Search in indices with 'virtual-index' command.  Go down to index
 # entry and select it.
-printf 'Ibc\r\016\016\016\016\016\016\016\016\016\rDq' >$pty_type
+printf 'Ibc\r\016\016\016\016\016\016\016\016\016\rDq' >&7
 
 timeout_test
 

@@ -283,6 +283,7 @@ $result_trees{'float_copying'} = {
                                               'cmdname' => 'node',
                                               'contents' => [],
                                               'extra' => {
+                                                'isindex' => 1,
                                                 'node_content' => [
                                                   {}
                                                 ],
@@ -1233,6 +1234,7 @@ $result_sectioning{'float_copying'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'Copying-and-floats',
                 'spaces_before_argument' => ' '
               }
@@ -1279,6 +1281,7 @@ $result_nodes{'float_copying'} = {
         'level' => 1,
         'number' => 'A'
       },
+      'isindex' => 1,
       'normalized' => 'Copying-and-floats',
       'spaces_before_argument' => ' '
     },
@@ -1300,23 +1303,11 @@ $result_nodes{'float_copying'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'float_copying'}{'menu_child'}{'node_prev'} = $result_nodes{'float_copying'};
 $result_nodes{'float_copying'}{'menu_child'}{'node_up'} = $result_nodes{'float_copying'};
 $result_nodes{'float_copying'}{'node_next'} = $result_nodes{'float_copying'}{'menu_child'};
-$result_nodes{'float_copying'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'float_copying'};
 
 $result_menus{'float_copying'} = {
   'cmdname' => 'node',
@@ -1327,6 +1318,7 @@ $result_menus{'float_copying'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'Copying-and-floats',
       'spaces_before_argument' => ' '
     },
@@ -1522,6 +1514,11 @@ Ref: Copying and floats-Footnote-11479
 Ref: Copying and floats-Footnote-21552
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'float_copying'} = [
@@ -1628,7 +1625,7 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#Copying-and-floats" accesskey="n" rel="next">Copying and floats</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#Copying-and-floats" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Copying-and-floats" accesskey="n" rel="next">Copying and floats</a> &nbsp; [<a href="#Copying-and-floats" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Top-1"></span><h1 class="top">Top</h1>
 
@@ -1644,7 +1641,7 @@ the author abandon his copyright.
 <span id="index-copying-indexed-caption-function"></span>
 </div></div>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Copying-and-floats" accesskey="1">Copying and floats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Copying-and-floats" rel="index" accesskey="1">Copying and floats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -1720,7 +1717,7 @@ the author abandon his copyright.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>The caption copying footnote
 <span id="caption-copying-footnote-anchor"></span></p>
 <span id="index-copying-indexed-caption-copying-footnote"></span>
@@ -1728,7 +1725,7 @@ the author abandon his copyright.
 
 <p>see <a href="#Copying-and-floats">Copying and floats</a>.
 </p>
-<h3><a id="FOOT1_2" href="#DOCF1_2">(2)</a></h3>
+<h5><a id="FOOT1_2" href="#DOCF1_2">(2)</a></h3>
 <p>The caption copying footnote
 <span id="caption-copying-footnote-anchor"></span></p>
 <span id="index-copying-indexed-caption-copying-footnote"></span>
@@ -1736,7 +1733,7 @@ the author abandon his copyright.
 
 <p>see <a href="#Copying-and-floats">Copying and floats</a>.
 </p>
-<h3><a id="FOOT1_3" href="#DOCF1_3">(3)</a></h3>
+<h5><a id="FOOT1_3" href="#DOCF1_3">(3)</a></h3>
 <p>The caption copying footnote
 <span id="caption-copying-footnote-anchor"></span></p>
 <span id="index-copying-indexed-caption-copying-footnote"></span>
@@ -1744,7 +1741,7 @@ the author abandon his copyright.
 
 <p>see <a href="#Copying-and-floats">Copying and floats</a>.
 </p>
-<h3><a id="t_hlistoffloats_FOOT1_4" href="#t_hlistoffloats_DOCF1_4">(4)</a></h3>
+<h5><a id="t_hlistoffloats_FOOT1_4" href="#t_hlistoffloats_DOCF1_4">(4)</a></h3>
 <p>The caption copying footnote
 </p>
 

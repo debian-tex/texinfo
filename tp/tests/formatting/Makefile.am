@@ -5,7 +5,7 @@ EXTRA_DIST = \
  lightweight_markups.texi   japanese_long_name.texi  \
  file.css list-of-tests  res_parser
 
-DISTCLEANFILES = tests.log tests.out unknown_nodes_renamed-noderename.cnf
+DISTCLEANFILES = tests.log tests.out
 
 distclean-local:
 	rm -rf out_parser diffs test_log

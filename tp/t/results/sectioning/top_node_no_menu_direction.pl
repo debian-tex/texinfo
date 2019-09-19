@@ -408,23 +408,11 @@ $result_nodes{'top_node_no_menu_direction'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'top_node_no_menu_direction'}{'menu_child'}{'node_prev'} = $result_nodes{'top_node_no_menu_direction'};
 $result_nodes{'top_node_no_menu_direction'}{'menu_child'}{'node_up'} = $result_nodes{'top_node_no_menu_direction'};
 $result_nodes{'top_node_no_menu_direction'}{'node_next'} = $result_nodes{'top_node_no_menu_direction'}{'menu_child'};
-$result_nodes{'top_node_no_menu_direction'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'top_node_no_menu_direction'};
 
 $result_menus{'top_node_no_menu_direction'} = {
   'cmdname' => 'node',
@@ -463,15 +451,6 @@ $result_errors{'top_node_no_menu_direction'} = [
     'line_nr' => 5,
     'macro' => '',
     'text' => '@menu entry node name `TOP\' different from node name `Top\'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':1: warning: for `Top\', up in menu `Top\' and up `(dir)\' don\'t match
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'for `Top\', up in menu `Top\' and up `(dir)\' don\'t match',
     'type' => 'warning'
   },
   {
@@ -516,6 +495,11 @@ Node: Top27
 Node: second node122
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -556,7 +540,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#second-node" accesskey="n" rel="next">second node</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#second-node" accesskey="n" rel="next">second node</a> &nbsp; </p>
 </div>
 <h1 class="node-heading">Top</h1>
 

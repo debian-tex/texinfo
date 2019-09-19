@@ -428,8 +428,8 @@ $result_errors{'abbr_acronym'} = [];
 
 
 
-$result_converted{'plaintext'}->{'abbr_acronym'} = '-a (an accronym) -a -a (an accronym , ...)  E\'-a. ,A. (E\'tude-,
-Autonome) E\'-a. ,A.
+$result_converted{'plaintext'}->{'abbr_acronym'} = '-a (an accronym) -a -a (an accronym , ...)  É-a. ,A. (Étude-, Autonome)
+É-a. ,A.
 ';
 
 

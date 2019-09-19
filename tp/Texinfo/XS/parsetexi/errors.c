@@ -14,6 +14,8 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include <config.h>
+#include <libintl.h>
+
 #include <stdlib.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -38,7 +40,7 @@ line_error_internal (enum error_type type, LINE_NR *cmd_line_nr,
                      char *format, va_list v)
 {
   char *message;
-  vasprintf (&message, format, v);
+  vasprintf (&message, gettext(format), v);
   if (!message) abort ();
   if (error_number == error_space)
     {

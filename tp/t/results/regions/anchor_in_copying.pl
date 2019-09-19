@@ -357,20 +357,8 @@ $result_nodes{'anchor_in_copying'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'anchor_in_copying'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'anchor_in_copying'};
 
 $result_menus{'anchor_in_copying'} = {
   'cmdname' => 'node',
@@ -404,6 +392,11 @@ Node: Top37
 Ref: Copying information79
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'anchor_in_copying'} = [

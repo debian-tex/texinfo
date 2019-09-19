@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,8 +23,8 @@ run_ginfo -f search
 # search string with backspace.  Go forward to match in next node.  Test
 # we end up at the end of the match string by trying to wrap to the next line
 # with C-f.
-printf '\023matchxy\010\010' >$pty_type
-printf '\023\023\023\r\006\rDq' >$pty_type
+printf '\023matchxy\010\010' >&7
+printf '\023\023\023\r\006\rDq' >&7
 
 timeout_test
 

@@ -293,6 +293,11 @@ $result_converted{'info'}->{'setfilename'} = 'This is file_comment, produced fro
 Tag Table:
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'setfilename'} = [

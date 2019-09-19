@@ -1,6 +1,8 @@
 /* api.h - declarations for api.c */
 extern ELEMENT *Root;
 
+int init (int texinfo_uninstalled, char *srcdir_in);
+
 void parse_text (char *);
 void parse_string(char *);
 int parse_file (char *filename);

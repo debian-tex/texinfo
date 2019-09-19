@@ -3149,6 +3149,7 @@ $result_trees{'all_commands_printindex'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -3820,26 +3821,16 @@ $result_sectioning{'all_commands_printindex'} = {};
 $result_nodes{'all_commands_printindex'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'all_commands_printindex'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'all_commands_printindex'};
 
 $result_menus{'all_commands_printindex'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -3953,6 +3944,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

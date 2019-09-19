@@ -436,6 +436,7 @@ $result_trees{'index_entry_in_footnote_separate'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -567,6 +568,7 @@ $result_nodes{'index_entry_in_footnote_separate'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'First',
       'spaces_before_argument' => ' '
     },
@@ -588,23 +590,11 @@ $result_nodes{'index_entry_in_footnote_separate'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'index_entry_in_footnote_separate'}{'menu_child'}{'node_prev'} = $result_nodes{'index_entry_in_footnote_separate'};
 $result_nodes{'index_entry_in_footnote_separate'}{'menu_child'}{'node_up'} = $result_nodes{'index_entry_in_footnote_separate'};
 $result_nodes{'index_entry_in_footnote_separate'}{'node_next'} = $result_nodes{'index_entry_in_footnote_separate'}{'menu_child'};
-$result_nodes{'index_entry_in_footnote_separate'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'index_entry_in_footnote_separate'};
 
 $result_menus{'index_entry_in_footnote_separate'} = {
   'cmdname' => 'node',
@@ -615,6 +605,7 @@ $result_menus{'index_entry_in_footnote_separate'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'First',
       'spaces_before_argument' => ' '
     },
@@ -668,6 +659,11 @@ Ref: Top-Footnote-1175
 Node: First213
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -694,7 +690,7 @@ $result_converted{'html_text'}->{'index_entry_in_footnote_separate'} = '<span id
 <h1 class="node-heading">Top</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#First" accesskey="1">First</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#First" rel="index" accesskey="1">First</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

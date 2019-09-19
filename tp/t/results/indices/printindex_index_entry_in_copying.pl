@@ -823,6 +823,7 @@ $result_trees{'printindex_index_entry_in_copying'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -1156,6 +1157,7 @@ $result_sectioning{'printindex_index_entry_in_copying'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'chapter',
                 'spaces_before_argument' => ' '
               }
@@ -1202,6 +1204,7 @@ $result_nodes{'printindex_index_entry_in_copying'} = {
         'level' => 1,
         'number' => 1
       },
+      'isindex' => 1,
       'normalized' => 'chapter',
       'spaces_before_argument' => ' '
     },
@@ -1223,23 +1226,11 @@ $result_nodes{'printindex_index_entry_in_copying'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'printindex_index_entry_in_copying'}{'menu_child'}{'node_prev'} = $result_nodes{'printindex_index_entry_in_copying'};
 $result_nodes{'printindex_index_entry_in_copying'}{'menu_child'}{'node_up'} = $result_nodes{'printindex_index_entry_in_copying'};
 $result_nodes{'printindex_index_entry_in_copying'}{'node_next'} = $result_nodes{'printindex_index_entry_in_copying'}{'menu_child'};
-$result_nodes{'printindex_index_entry_in_copying'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'printindex_index_entry_in_copying'};
 
 $result_menus{'printindex_index_entry_in_copying'} = {
   'cmdname' => 'node',
@@ -1250,6 +1241,7 @@ $result_menus{'printindex_index_entry_in_copying'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'chapter',
       'spaces_before_argument' => ' '
     },
@@ -1344,6 +1336,11 @@ Node: Top131
 Node: chapter687
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -1454,7 +1451,7 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying'} = '
 
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#chapter" rel="index" accesskey="1">chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

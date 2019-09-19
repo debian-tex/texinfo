@@ -91,7 +91,7 @@ $result_errors{'at_after_accent_command'} = [
 
 
 
-$result_converted{'plaintext'}->{'at_after_accent_command'} = '*@.  ^@.
+$result_converted{'plaintext'}->{'at_after_accent_command'} = '̊@.  ̂@.
 ';
 
 

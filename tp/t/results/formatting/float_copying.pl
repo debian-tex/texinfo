@@ -342,6 +342,7 @@ $result_trees{'float_copying'} = {
                                               'cmdname' => 'node',
                                               'contents' => [],
                                               'extra' => {
+                                                'isindex' => 1,
                                                 'node_content' => [
                                                   {}
                                                 ],
@@ -1807,6 +1808,7 @@ $result_sectioning{'float_copying'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'Copying-and-floats',
                 'spaces_before_argument' => ' '
               }
@@ -1853,6 +1855,7 @@ $result_nodes{'float_copying'} = {
         'level' => 1,
         'number' => 'A'
       },
+      'isindex' => 1,
       'normalized' => 'Copying-and-floats',
       'spaces_before_argument' => ' '
     },
@@ -1874,23 +1877,11 @@ $result_nodes{'float_copying'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'float_copying'}{'menu_child'}{'node_prev'} = $result_nodes{'float_copying'};
 $result_nodes{'float_copying'}{'menu_child'}{'node_up'} = $result_nodes{'float_copying'};
 $result_nodes{'float_copying'}{'node_next'} = $result_nodes{'float_copying'}{'menu_child'};
-$result_nodes{'float_copying'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'float_copying'};
 
 $result_menus{'float_copying'} = {
   'cmdname' => 'node',
@@ -1901,6 +1892,7 @@ $result_menus{'float_copying'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'Copying-and-floats',
       'spaces_before_argument' => ' '
     },

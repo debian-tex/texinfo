@@ -771,20 +771,8 @@ $result_nodes{'ref_in_def'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'ref_in_def'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'ref_in_def'};
 
 $result_menus{'ref_in_def'} = {
   'cmdname' => 'node',

@@ -300,20 +300,8 @@ $result_nodes{'anchor_and_spaces'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'anchor_and_spaces'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'anchor_and_spaces'};
 
 $result_menus{'anchor_and_spaces'} = {
   'cmdname' => 'node',
@@ -347,6 +335,11 @@ Ref: anchor181
 Ref: anchor296
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

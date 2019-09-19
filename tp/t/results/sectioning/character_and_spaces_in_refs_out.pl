@@ -481,7 +481,7 @@ $result_trees{'character_and_spaces_in_refs_out'} = [
                     'contents' => [
                       {
                         'parent' => {},
-                        'text' => '../manual/doc.texi'
+                        'text' => '../manual/doc'
                       }
                     ],
                     'extra' => {
@@ -1675,7 +1675,7 @@ $result_texis{'character_and_spaces_in_refs_out'} = '@node Top
 @ref{:,,,manual}
 @ref{ top ,,, manual}
 @ref{(texinfo)Cross References}
-@ref{node,,, ../manual/doc.texi}
+@ref{node,,, ../manual/doc}
 
 @subheading Testing local nodes
 
@@ -1870,18 +1870,7 @@ $result_nodes{'character_and_spaces_in_refs_out'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'character_and_spaces_in_refs_out'}{'menu_child'}{'menu_child'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'character_and_spaces_in_refs_out'}{'menu_child'}{'menu_child'}{'node_next'};
 $result_nodes{'character_and_spaces_in_refs_out'}{'menu_child'}{'menu_child'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'character_and_spaces_in_refs_out'}{'menu_child'};
@@ -1893,7 +1882,6 @@ $result_nodes{'character_and_spaces_in_refs_out'}{'menu_child'}{'node_next'} = $
 $result_nodes{'character_and_spaces_in_refs_out'}{'menu_child'}{'node_prev'} = $result_nodes{'character_and_spaces_in_refs_out'};
 $result_nodes{'character_and_spaces_in_refs_out'}{'menu_child'}{'node_up'} = $result_nodes{'character_and_spaces_in_refs_out'};
 $result_nodes{'character_and_spaces_in_refs_out'}{'node_next'} = $result_nodes{'character_and_spaces_in_refs_out'}{'menu_child'};
-$result_nodes{'character_and_spaces_in_refs_out'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'character_and_spaces_in_refs_out'};
 
 $result_menus{'character_and_spaces_in_refs_out'} = {
   'cmdname' => 'node',
@@ -2093,17 +2081,6 @@ $result_elements{'character_and_spaces_in_refs_out'} = [
         'Forward' => {},
         'NodeForward' => {},
         'NodeNext' => {},
-        'NodeUp' => {
-          'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'dir'
-              }
-            ],
-            'top_node_up' => {}
-          },
-          'type' => 'external_node'
-        },
         'This' => {}
       },
       'element_command' => {},
@@ -2171,7 +2148,6 @@ $result_elements{'character_and_spaces_in_refs_out'}[0]{'extra'}{'directions'}{'
 $result_elements{'character_and_spaces_in_refs_out'}[0]{'extra'}{'directions'}{'Forward'} = $result_elements{'character_and_spaces_in_refs_out'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'character_and_spaces_in_refs_out'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'character_and_spaces_in_refs_out'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'character_and_spaces_in_refs_out'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'character_and_spaces_in_refs_out'}[0]{'extra'}{'directions'}{'FastForward'};
-$result_elements{'character_and_spaces_in_refs_out'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'character_and_spaces_in_refs_out'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'}{'menu_prev'}{'menu_up'}{'menu_up'};
 $result_elements{'character_and_spaces_in_refs_out'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'character_and_spaces_in_refs_out'}[0];
 $result_elements{'character_and_spaces_in_refs_out'}[0]{'extra'}{'element_command'} = $result_elements{'character_and_spaces_in_refs_out'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'}{'menu_prev'}{'menu_up'}{'menu_up'};
 $result_elements{'character_and_spaces_in_refs_out'}[0]{'extra'}{'node'} = $result_elements{'character_and_spaces_in_refs_out'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_prev'}{'menu_prev'}{'menu_up'}{'menu_up'};
@@ -2187,7 +2163,6 @@ $result_directions_text{'character_and_spaces_in_refs_out'} = 'element: @node To
   Forward: @node other nodes
   NodeForward: @node other nodes
   NodeNext: @node other nodes
-  NodeUp: (dir)
   This: @node Top
 element: @node other nodes
   Back: @node Top

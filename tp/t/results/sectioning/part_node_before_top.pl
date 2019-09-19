@@ -477,24 +477,12 @@ $result_nodes{'part_node_before_top'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'part_node_before_top'}{'menu_child'}{'node_next'} = $result_nodes{'part_node_before_top'};
 $result_nodes{'part_node_before_top'}{'menu_child'}{'node_prev'} = $result_nodes{'part_node_before_top'};
 $result_nodes{'part_node_before_top'}{'menu_child'}{'node_up'} = $result_nodes{'part_node_before_top'};
 $result_nodes{'part_node_before_top'}{'node_next'} = $result_nodes{'part_node_before_top'}{'menu_child'};
-$result_nodes{'part_node_before_top'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'part_node_before_top'};
 
 $result_menus{'part_node_before_top'} = {
   'cmdname' => 'node',
@@ -545,34 +533,6 @@ $result_elements{'part_node_before_top'} = [
         'NodeBack' => {},
         'NodeForward' => {},
         'NodeNext' => {},
-        'NodeUp' => {
-          'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'dir'
-              }
-            ],
-            'top_node_up' => {
-              'cmdname' => 'node',
-              'extra' => {
-                'normalized' => 'Top',
-                'spaces_before_argument' => ' '
-              },
-              'menu_child' => {
-                'cmdname' => 'node',
-                'extra' => {
-                  'normalized' => 'part-node-before-top',
-                  'spaces_before_argument' => ' '
-                },
-                'menu_up' => {},
-                'menu_up_hash' => {
-                  'Top' => 1
-                }
-              }
-            }
-          },
-          'type' => 'external_node'
-        },
         'This' => {}
       },
       'element_command' => {
@@ -589,7 +549,24 @@ $result_elements{'part_node_before_top'} = [
         },
         'level' => 0
       },
-      'node' => {},
+      'node' => {
+        'cmdname' => 'node',
+        'extra' => {
+          'normalized' => 'Top',
+          'spaces_before_argument' => ' '
+        },
+        'menu_child' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'part-node-before-top',
+            'spaces_before_argument' => ' '
+          },
+          'menu_up' => {},
+          'menu_up_hash' => {
+            'Top' => 1
+          }
+        }
+      },
       'section' => {}
     },
     'type' => 'element'
@@ -598,9 +575,8 @@ $result_elements{'part_node_before_top'} = [
 $result_elements{'part_node_before_top'}[0]{'extra'}{'directions'}{'NodeBack'} = $result_elements{'part_node_before_top'}[0];
 $result_elements{'part_node_before_top'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'part_node_before_top'}[0];
 $result_elements{'part_node_before_top'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'part_node_before_top'}[0];
-$result_elements{'part_node_before_top'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'}{'menu_child'}{'menu_up'} = $result_elements{'part_node_before_top'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'};
 $result_elements{'part_node_before_top'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'part_node_before_top'}[0];
-$result_elements{'part_node_before_top'}[0]{'extra'}{'node'} = $result_elements{'part_node_before_top'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'};
+$result_elements{'part_node_before_top'}[0]{'extra'}{'node'}{'menu_child'}{'menu_up'} = $result_elements{'part_node_before_top'}[0]{'extra'}{'node'};
 $result_elements{'part_node_before_top'}[0]{'extra'}{'section'} = $result_elements{'part_node_before_top'}[0]{'extra'}{'element_command'};
 
 
@@ -609,7 +585,6 @@ $result_directions_text{'part_node_before_top'} = 'element: @top top
   NodeBack: @top top
   NodeForward: @top top
   NodeNext: @top top
-  NodeUp: (dir)
   This: @top top
 ';
 
@@ -635,6 +610,11 @@ Node: part node before top27
 Node: Top100
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -681,7 +661,7 @@ Next: <a href="#Top" accesskey="n" rel="next">Top</a>, Previous: <a href="#Top" 
 <hr>
 <span id="part"></span><div class="header">
 <p>
-Next: <a href="#part-node-before-top" accesskey="n" rel="next">part node before top</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#part-node-before-top" accesskey="n" rel="next">part node before top</a> &nbsp; </p>
 </div>
 <h1 class="part">part</h1>
 <hr>
@@ -705,7 +685,7 @@ $result_converted{'xml'}->{'part_node_before_top'} = '<node name="part-node-befo
 <part spaces=" "><sectiontitle>part</sectiontitle>
 
 </part>
-<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">part node before top</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">part node before top</nodenext></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu endspaces=" ">

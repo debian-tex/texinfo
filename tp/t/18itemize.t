@@ -492,6 +492,22 @@ Title
 @item enum
 @end enumerate
 '],
+['table_in_itemize',
+'@itemize @bullet
+@item item one
+@item
+@table @asis
+@item table one
+aaaaa
+
+New para.
+@item table two
+Five
+
+New para.
+@end table
+@item item three
+@end itemize']
 );
 
 my @test_invalid = (

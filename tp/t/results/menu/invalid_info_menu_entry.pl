@@ -777,21 +777,9 @@ $result_nodes{'invalid_info_menu_entry'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'invalid_info_menu_entry'}{'node_next'} = $result_nodes{'invalid_info_menu_entry'}{'menu_child'};
-$result_nodes{'invalid_info_menu_entry'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'invalid_info_menu_entry'};
 
 $result_menus{'invalid_info_menu_entry'} = {
   'cmdname' => 'node',
@@ -942,7 +930,7 @@ $result_converted_errors{'html'}->{'invalid_info_menu_entry'} = [
 
 
 
-$result_converted{'xml'}->{'invalid_info_menu_entry'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(f)<asis>a:</asis></nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'invalid_info_menu_entry'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(f)<asis>a:</asis></nodenext></node>
 
 <menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">(f)<asis>a:</asis></menunode><menudescription><pre xml:space="preserve">

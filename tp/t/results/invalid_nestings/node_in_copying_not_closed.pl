@@ -230,20 +230,8 @@ $result_nodes{'node_in_copying_not_closed'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'node_in_copying_not_closed'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'node_in_copying_not_closed'};
 
 $result_menus{'node_in_copying_not_closed'} = {
   'cmdname' => 'node',

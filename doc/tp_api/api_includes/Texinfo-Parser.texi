@@ -442,17 +442,6 @@ A string, the command name associated with @code{@@clickstyle}.
 
 A string corresponding to a document language set by @code{@@documentlanguage}.
 
-@item INPUT_ENCODING_NAME
-@anchor{Texinfo::Parser INPUT_ENCODING_NAME}
-
-@item INPUT_PERL_ENCODING
-@anchor{Texinfo::Parser INPUT_PERL_ENCODING}
-
-@code{INPUT_ENCODING_NAME} string is the encoding name as set 
-by @code{@@documentencoding}.
-@code{INPUT_PERL_ENCODING} string is a corresponding perl encoding name.  
-In general those two strings should be set simultaneously.
-
 @item indices
 @anchor{Texinfo::Parser indices}
 

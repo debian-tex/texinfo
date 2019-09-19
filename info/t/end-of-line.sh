@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ srcdir=${srcdir:-.}
 
 run_ginfo -f intera
 # Check that typing C-e on an empty line doesn't go to previous line
-printf '\x0e\x0e\x0e\x0e\x0e\x05\x0e\rDq' >$pty_type
+printf '\x0e\x0e\x0e\x0e\x0e\x05\x0e\rDq' >&7
 
 timeout_test
 

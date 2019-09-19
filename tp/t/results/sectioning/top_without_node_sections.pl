@@ -431,6 +431,11 @@ Tag Table:
 Node: second65
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'top_without_node_sections'} = [

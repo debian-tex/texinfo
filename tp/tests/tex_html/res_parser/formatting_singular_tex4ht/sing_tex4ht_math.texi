@@ -1,0 +1,77 @@
+\input texinfo
+@setfilename sing_tex4ht_math.info
+@c Automatically generated
+@verbatim
+
+<!-- tex4ht_begin sing_tex4ht_math math 1 -->
+@end verbatim
+@math{--a {\frac{1}{2}} @minus{}}
+@verbatim
+<!-- tex4ht_end sing_tex4ht_math math 1 -->
+
+@end verbatim
+@verbatim
+
+<!-- tex4ht_begin sing_tex4ht_math math 2 -->
+@end verbatim
+@math{--a@minus{} {\frac{1}{2}}}
+@verbatim
+<!-- tex4ht_end sing_tex4ht_math math 2 -->
+
+@end verbatim
+@verbatim
+
+<!-- tex4ht_begin sing_tex4ht_math math 3 -->
+@end verbatim
+@math{--a {\frac{1}{2}} @minus{}}
+@verbatim
+<!-- tex4ht_end sing_tex4ht_math math 3 -->
+
+@end verbatim
+@verbatim
+
+<!-- tex4ht_begin sing_tex4ht_math math 4 -->
+@end verbatim
+@math{--a@minus{} {\frac{1}{2}}}
+@verbatim
+<!-- tex4ht_end sing_tex4ht_math math 4 -->
+
+@end verbatim
+@verbatim
+
+<!-- tex4ht_begin sing_tex4ht_math math 5 -->
+@end verbatim
+@math{--a {\frac{1}{2}} @minus{}}
+@verbatim
+<!-- tex4ht_end sing_tex4ht_math math 5 -->
+
+@end verbatim
+@verbatim
+
+<!-- tex4ht_begin sing_tex4ht_math math 6 -->
+@end verbatim
+@math{--a@minus{} {\frac{1}{2}}}
+@verbatim
+<!-- tex4ht_end sing_tex4ht_math math 6 -->
+
+@end verbatim
+@verbatim
+
+<!-- tex4ht_begin sing_tex4ht_math math 7 -->
+@end verbatim
+@math{--a {\frac{1}{2}} @minus{}}
+@verbatim
+<!-- tex4ht_end sing_tex4ht_math math 7 -->
+
+@end verbatim
+@verbatim
+
+<!-- tex4ht_begin sing_tex4ht_math math 8 -->
+@end verbatim
+@math{--a@minus{} {\frac{1}{2}}}
+@verbatim
+<!-- tex4ht_end sing_tex4ht_math math 8 -->
+
+@end verbatim
+
+@bye

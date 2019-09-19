@@ -516,6 +516,7 @@ $result_trees{'texi_formatting'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -3303,6 +3304,7 @@ $result_trees{'texi_formatting'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -4241,6 +4243,7 @@ $result_sectioning{'texi_formatting'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -4344,6 +4347,7 @@ $result_sectioning{'texi_formatting'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'chapter2',
                 'spaces_before_argument' => ' '
               }
@@ -4385,6 +4389,7 @@ $result_nodes{'texi_formatting'} = {
       },
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   },
@@ -4412,6 +4417,7 @@ $result_nodes{'texi_formatting'} = {
           },
           'level' => 1
         },
+        'isindex' => 1,
         'normalized' => 'chapter2',
         'spaces_before_argument' => ' '
       },
@@ -4436,29 +4442,18 @@ $result_nodes{'texi_formatting'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'texi_formatting'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'texi_formatting'}{'menu_child'};
 $result_nodes{'texi_formatting'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'texi_formatting'};
 $result_nodes{'texi_formatting'}{'menu_child'}{'node_prev'} = $result_nodes{'texi_formatting'};
 $result_nodes{'texi_formatting'}{'menu_child'}{'node_up'} = $result_nodes{'texi_formatting'};
 $result_nodes{'texi_formatting'}{'node_next'} = $result_nodes{'texi_formatting'}{'menu_child'};
-$result_nodes{'texi_formatting'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'texi_formatting'};
 
 $result_menus{'texi_formatting'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   },
@@ -4471,6 +4466,7 @@ $result_menus{'texi_formatting'} = {
     'menu_next' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'chapter2',
         'spaces_before_argument' => ' '
       },
@@ -4624,11 +4620,11 @@ $result_errors{'texi_formatting'} = [
 $result_converted{'info'}->{'texi_formatting'} = 'This is formatting.info, produced from formatting.texi.
 
 In copying
-INFO-DIR-SECTION Formatting e\' \'@ TeX\' test
+INFO-DIR-SECTION Formatting é \'@ TeX\' test
 START-INFO-DIR-ENTRY
 * Truc: (formatting).           The GNU documentation truc.
-* \'@ e\' ==\': (formatting).  "-- something"
-                           \'cmd\' a`
+* \'@ é ==\': (formatting).  "-- something"
+                           \'cmd\' à
 END-INFO-DIR-ENTRY
 
 
@@ -4780,6 +4776,11 @@ Node: subsubsection three---four----\'\'2194
 Node: chapter22366
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'texi_formatting'} = [
@@ -4838,7 +4839,7 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Top-section"></span><h1 class="top">Top section</h1>
 
@@ -4849,7 +4850,7 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 
 Menu comment
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#chapter2" accesskey="2">description</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Chapter 2
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#chapter2" rel="index" accesskey="2">description</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Chapter 2
 </td></tr>
 </table>
 
@@ -5138,7 +5139,7 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
       </ul></li>
     </ul></li>
   </ul></li>
-  <li><a id="toc-chapter-2" href="#chapter2">chapter 2</a></li>
+  <li><a id="toc-chapter-2" href="#chapter2" rel="index">chapter 2</a></li>
 </ul>
 </div>
 
@@ -5148,7 +5149,7 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
 <div class="shortcontents">
 <ul class="no-bullet">
 <li><a id="stoc-chapter-1" href="#toc-chapter-1">1 chapter</a></li>
-<li><a id="stoc-chapter-2" href="#toc-chapter-2">chapter 2</a></li>
+<li><a id="stoc-chapter-2" href="#toc-chapter-2" rel="index">chapter 2</a></li>
 </ul>
 </div>
 
@@ -5156,7 +5157,7 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>in footnote</p>
 </div>
 <hr>

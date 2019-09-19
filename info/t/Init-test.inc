@@ -158,8 +158,7 @@ init_interactive_test ()
   # Get name of pseudo-terminal slave device
   read pts_device <$pipein
   
-  # Keeping the FIFO open for writing prevents the select call in
-  # pseudotty returning EOF after a single "printf something >$pty_type".
+  # For passing bytes to the program
   exec 7>$pty_type
   
   # glibc can kill a running process if it detects a condition like a

@@ -404,6 +404,7 @@ $result_trees{'index_entry_in_footnote_different_node_end'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -531,6 +532,7 @@ $result_nodes{'index_entry_in_footnote_different_node_end'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'First',
       'spaces_before_argument' => ' '
     },
@@ -552,23 +554,11 @@ $result_nodes{'index_entry_in_footnote_different_node_end'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'index_entry_in_footnote_different_node_end'}{'menu_child'}{'node_prev'} = $result_nodes{'index_entry_in_footnote_different_node_end'};
 $result_nodes{'index_entry_in_footnote_different_node_end'}{'menu_child'}{'node_up'} = $result_nodes{'index_entry_in_footnote_different_node_end'};
 $result_nodes{'index_entry_in_footnote_different_node_end'}{'node_next'} = $result_nodes{'index_entry_in_footnote_different_node_end'}{'menu_child'};
-$result_nodes{'index_entry_in_footnote_different_node_end'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'index_entry_in_footnote_different_node_end'};
 
 $result_menus{'index_entry_in_footnote_different_node_end'} = {
   'cmdname' => 'node',
@@ -579,6 +569,7 @@ $result_menus{'index_entry_in_footnote_different_node_end'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'First',
       'spaces_before_argument' => ' '
     },
@@ -630,6 +621,11 @@ Ref: Top-Footnote-1144
 Node: First182
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -658,7 +654,7 @@ $result_converted{'html_text'}->{'index_entry_in_footnote_different_node_end'} =
 <h1 class="node-heading">Top</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#First" accesskey="1">First</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#First" rel="index" accesskey="1">First</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -695,7 +691,7 @@ $result_converted{'html_text'}->{'index_entry_in_footnote_different_node_end'} =
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>in footnote
 <span id="index-index-entry-in-footnote"></span>
 </p>

@@ -85,6 +85,11 @@ In included file.
 Tag Table:
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'include_with_setfilename'} = [

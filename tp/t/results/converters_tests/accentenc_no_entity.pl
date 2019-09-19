@@ -3085,20 +3085,8 @@ $result_nodes{'accentenc_no_entity'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'accentenc_no_entity'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'accentenc_no_entity'};
 
 $result_menus{'accentenc_no_entity'} = {
   'cmdname' => 'node',

@@ -1436,25 +1436,13 @@ $result_nodes{'navigation_node_no_header_vertical'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'navigation_node_no_header_vertical'}{'menu_child'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'navigation_node_no_header_vertical'}{'menu_child'}{'menu_child'};
 $result_nodes{'navigation_node_no_header_vertical'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'navigation_node_no_header_vertical'}{'menu_child'};
 $result_nodes{'navigation_node_no_header_vertical'}{'menu_child'}{'node_prev'} = $result_nodes{'navigation_node_no_header_vertical'};
 $result_nodes{'navigation_node_no_header_vertical'}{'menu_child'}{'node_up'} = $result_nodes{'navigation_node_no_header_vertical'};
 $result_nodes{'navigation_node_no_header_vertical'}{'node_next'} = $result_nodes{'navigation_node_no_header_vertical'}{'menu_child'};
-$result_nodes{'navigation_node_no_header_vertical'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'navigation_node_no_header_vertical'};
 
 $result_menus{'navigation_node_no_header_vertical'} = {
   'cmdname' => 'node',

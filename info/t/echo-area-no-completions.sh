@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2018 Free Software Foundation, Inc.
+# Copyright (C) 2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,8 +20,8 @@ srcdir=${srcdir:-.}
 run_ginfo -f intera -n xrefnode
 # Enter echo area and try to follow a cross-reference that doesn't exist
 
-printf 'fs\r\r\r\r\r\r' >$pty_type
-printf '\030\030q' >$pty_type
+printf 'fs\r\r\r\r\r\r' >&7
+printf '\030\030q' >&7
 
 timeout_test
 cleanup

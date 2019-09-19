@@ -457,23 +457,11 @@ $result_nodes{'section_before_top'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'section_before_top'}{'menu_child'}{'node_prev'} = $result_nodes{'section_before_top'};
 $result_nodes{'section_before_top'}{'menu_child'}{'node_up'} = $result_nodes{'section_before_top'};
 $result_nodes{'section_before_top'}{'node_next'} = $result_nodes{'section_before_top'}{'menu_child'};
-$result_nodes{'section_before_top'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'section_before_top'};
 
 $result_menus{'section_before_top'} = {
   'cmdname' => 'node',
@@ -533,6 +521,11 @@ Node: section node27
 Node: Top101
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -580,7 +573,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 <hr>
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#section-node" accesskey="n" rel="next">section node</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#section-node" accesskey="n" rel="next">section node</a> &nbsp; </p>
 </div>
 <span id="top"></span><h3 class="unnumberedsec">top</h3>
 
@@ -601,7 +594,7 @@ $result_converted{'xml'}->{'section_before_top'} = '<node name="section-node" sp
 <section spaces=" "><sectiontitle>section </sectiontitle>
 
 </section>
-<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">section node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">section node</nodenext></node>
 <unnumberedsec originalcommand="top" spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu endspaces=" ">

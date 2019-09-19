@@ -35,14 +35,8 @@ open_dribble_file (char *name)
   /* Keystrokes can be non-printable characters, so we need binary I/O.  */
   info_dribble_file = fopen (name, FOPEN_WBIN);
 
-#if defined (HAVE_SETVBUF)
   if (info_dribble_file)
-#  if defined (SETVBUF_REVERSED)
-    setvbuf (info_dribble_file, _IONBF, NULL, 1);
-#  else
     setvbuf (info_dribble_file, NULL, _IONBF, 1);
-#  endif /* !SETVBUF_REVERSED */
-#endif /* HAVE_SETVBUF */
 }
 
 /* If there is a dribble file already open, close it. */

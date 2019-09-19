@@ -5528,25 +5528,13 @@ $result_nodes{'texi_bib_example'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'texi_bib_example'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'texi_bib_example'}{'menu_child'};
 $result_nodes{'texi_bib_example'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'texi_bib_example'};
 $result_nodes{'texi_bib_example'}{'menu_child'}{'node_prev'} = $result_nodes{'texi_bib_example'};
 $result_nodes{'texi_bib_example'}{'menu_child'}{'node_up'} = $result_nodes{'texi_bib_example'};
 $result_nodes{'texi_bib_example'}{'node_next'} = $result_nodes{'texi_bib_example'}{'menu_child'};
-$result_nodes{'texi_bib_example'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'texi_bib_example'};
 
 $result_menus{'texi_bib_example'} = {
   'cmdname' => 'node',

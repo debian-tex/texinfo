@@ -15,4 +15,4 @@ tex_complex_l2h tex_complex.texi -c 'L2H 1' --iftex
 math_not_closed math_not_closed.texi -c 'L2H 1' --iftex
 tex_not_closed tex_not_closed.texi -c 'L2H 1' --iftex
 tex_in_copying tex_in_copying.texi -c 'L2H 1' --iftex
-formatting_singular ../layout/formatting.texi --init-file t2h_singular.init -c 'L2H 1' -c 'SHORTEXTN 1' -c 'PREFIX sing' -c 'TOP_FILE index.htm' --no-verbose
+formatting_singular ../layout/formatting.texi --init-file t2h_singular.init -c 'L2H 1' -c 'EXTENSION htm' -c 'PREFIX sing' -c 'TOP_FILE index.htm' --no-verbose

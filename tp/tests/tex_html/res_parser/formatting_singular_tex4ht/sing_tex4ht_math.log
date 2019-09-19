@@ -1,0 +1,183 @@
+This is TeX, Version 3.14159265 (TeX Live 2019/dev/Debian) (preloaded format=tex 2019.3.19)  14 JUN 2019 08:33
+**\def\Link#1.a.b.c.{\expandafter\def\csname tex4ht\endcsname{\expandafter\def\
+csname tex4ht\endcsname{#1,html}\input tex4ht.sty }}\def\HCode{\futurelet\HCode
+\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\e
+xpandafter\Link\fi}\let\svrm=\rm\def\rm{\svrm\ifx\c\comment\def\rm{\let\rm=\svr
+m\catcode`\@=12\catcode`\\=0 \csname tex4ht\endcsname\catcode`\@=0\catcode`\\=1
+3 }\expandafter\rm\fi}\HCode .a.b.c.\input  sing_tex4ht_math.texi
+(./sing_tex4ht_math.texi (/usr/share/texmf/tex/texinfo/texinfo.tex
+Loading texinfo [version 2018-01-09.11]:
+\outerhsize=\dimen16
+\outervsize=\dimen17
+\cornerlong=\dimen18
+\cornerthick=\dimen19
+\topandbottommargin=\dimen20
+\bindingoffset=\dimen21
+\normaloffset=\dimen22
+\txipagewidth=\dimen23
+\txipageheight=\dimen24
+\headlinebox=\box16
+\footlinebox=\box17
+\margin=\insert252
+\EMsimple=\toks12
+\groupbox=\box18
+\groupinvalidhelp=\toks13
+\mil=\dimen25
+\exdentamount=\skip18
+\inmarginspacing=\skip19
+\centerpenalty=\count26
+ pdf,
+\tempnum=\count27
+\lnkcount=\count28
+\filename=\toks14
+\filenamelength=\count29
+\pgn=\count30
+\toksA=\toks15
+\toksB=\toks16
+\toksC=\toks17
+\toksD=\toks18
+\boxA=\box19
+\boxB=\box20
+\countA=\count31
+\nopdfimagehelp=\toks19
+ fonts,
+\textleading=\dimen26
+\sffam=\fam8
+ markup,
+\fontdepth=\count32
+ glyphs,
+\errorbox=\box21
+
+page headings,
+\titlepagetopglue=\skip20
+\titlepagebottomglue=\skip21
+\evenheadline=\toks20
+\oddheadline=\toks21
+\evenfootline=\toks22
+\oddfootline=\toks23
+ tables,
+\tableindent=\dimen27
+\itemindent=\dimen28
+\itemmargin=\dimen29
+\itemmax=\dimen30
+\itemno=\count33
+\multitableparskip=\skip22
+\multitableparindent=\skip23
+\multitablecolspace=\dimen31
+\multitablelinespace=\skip24
+\colcount=\count34
+\everytab=\toks24
+ conditionals,
+\doignorecount=\count35
+ indexing,
+\dummybox=\box22
+\whatsitskip=\skip25
+\whatsitpenalty=\count36
+\entryrightmargin=\dimen32
+\thinshrinkable=\skip26
+\entrybox=\box23
+\delayedbox=\box24
+\interbox=\box25
+\secondaryindent=\skip27
+\partialpage=\box26
+\doublecolumnhsize=\dimen33
+\savedtopmark=\toks25
+\savedfirstmark=\toks26
+\balancedcolumns=\box27
+ sectioning,
+\unnumberedno=\count37
+\chapno=\count38
+\secno=\count39
+\subsecno=\count40
+\subsubsecno=\count41
+\appendixno=\count42
+\absseclevel=\count43
+\secbase=\count44
+\chapheadingskip=\skip28
+\secheadingskip=\skip29
+\subsecheadingskip=\skip30
+ toc,
+\tocfile=\write0
+\contentsrightmargin=\skip31
+\savepageno=\count45
+\lastnegativepageno=\count46
+\tocindent=\dimen34
+ environments,
+\lispnarrowing=\skip32
+\envskipamount=\skip33
+\circthick=\dimen35
+\cartouter=\dimen36
+\cartinner=\dimen37
+\normbskip=\skip34
+\normpskip=\skip35
+\normlskip=\skip36
+\lskip=\skip37
+\rskip=\skip38
+\nonfillparindent=\dimen38
+\tabw=\dimen39
+\verbbox=\box28
+
+defuns,
+\defbodyindent=\skip39
+\defargsindent=\skip40
+\deflastargmargin=\skip41
+\defunpenalty=\count47
+\parencount=\count48
+\brackcount=\count49
+ macros,
+\macscribble=\write1
+\savedcatcodeone=\count50
+\savedcatcodetwo=\count51
+\paramno=\count52
+\macname=\toks27
+ cross references,
+\auxfile=\write2
+\savesfregister=\count53
+\toprefbox=\box29
+\printedrefnamebox=\box30
+\infofilenamebox=\box31
+\printedmanualbox=\box32
+ insertions,
+\footnoteno=\count54
+\SAVEfootins=\box33
+\SAVEmargin=\box34
+
+(/usr/share/texlive/texmf-dist/tex/generic/epsf/epsf.tex
+This is `epsf.tex' v2.7.4 <14 February 2011>
+\epsffilein=\read0
+\epsfframemargin=\dimen40
+\epsfframethickness=\dimen41
+\epsfrsize=\dimen42
+\epsftmp=\dimen43
+\epsftsize=\dimen44
+\epsfxsize=\dimen45
+\epsfysize=\dimen46
+\pspoints=\dimen47
+)
+\noepsfhelp=\toks28
+ localization,
+\nolanghelp=\toks29
+\countUTFx=\count55
+\countUTFy=\count56
+\countUTFz=\count57
+ formatting,
+\defaultparindent=\dimen48
+ and turning on texinfo input format.)
+! Undefined control sequence.
+<argument> --a {@frac 
+                      {1}{2}} @minus {}
+@finishmath #1->#1
+                  $@endgroup 
+l.8 @math{--a {\frac{1}{2}} @minus{}}
+                                     
+? 
+! Emergency stop.
+<argument> --a {@frac 
+                      {1}{2}} @minus {}
+@finishmath #1->#1
+                  $@endgroup 
+l.8 @math{--a {\frac{1}{2}} @minus{}}
+                                     
+End of file on the terminal!
+
+No pages of output.

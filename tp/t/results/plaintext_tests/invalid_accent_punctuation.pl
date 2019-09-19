@@ -58,7 +58,7 @@ $result_errors{'invalid_accent_punctuation'} = [
 
 
 
-$result_converted{'plaintext'}->{'invalid_accent_punctuation'} = 'a.  ^@
+$result_converted{'plaintext'}->{'invalid_accent_punctuation'} = 'a.  ̂@
 ';
 
 1;

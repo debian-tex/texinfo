@@ -2,6 +2,7 @@
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Tests</title>
 
 <meta name="description" content="Tests">
@@ -9,32 +10,21 @@
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
-blockquote.smallquotation {font-size: smaller}
+blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
-div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -42,15 +32,13 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<a name="Top"></a>
-<a name="Tests"></a>
-<h1 class="top">Tests</h1>
+<body lang="en">
+<span id="Top"></span><span id="Tests"></span><h1 class="top">Tests</h1>
 
 <p>Now tex on the same line 
 <P>
 <BR><P></P>
-<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<DIV CLASS="mathdisplay">
 <!-- MATH
  \begin{displaymath}
 \chi^2 = \sum_{i=1}^N
@@ -59,9 +47,8 @@ ul.no-bullet {list-style: none}
 \end{displaymath}
  -->
 
-<IMG
- WIDTH="100" HEIGHT="50" BORDER="0"
- SRC="tex_1.png"
+<IMG STYLE=""
+ SRC="tex_1.svg"
  ALT="\begin{displaymath}\chi^2 = \sum_{i=1}^N
 \left(y_i - (a + b x_i)
 \over \sigma_i\right)^2 \end{displaymath}">
@@ -81,15 +68,11 @@ tex <SPAN CLASS="logo-TeX">T<SMALL>E</SMALL>X</SPAN>
 Here some <!-- MATH
  ${x^i}\over{\tan y}$
  -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="tex_2.png"
+<SPAN CLASS="MATH"><IMG STYLE="height: 3.73ex; vertical-align: -1.23ex; " SRC="tex_2.svg"
  ALT="${x^i}\over{\tan y}$"></SPAN>.
 </p>
 <p>Maths with protected \:
-<SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
- SRC="tex_3.png"
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.84ex; vertical-align: -0.12ex; " SRC="tex_3.svg"
  ALT="$a @\ b$"></SPAN>.
 </p>
 <p>Maths with code @-command:
@@ -97,9 +80,7 @@ Here some <!-- MATH
 <p><!-- MATH
  $@code{math code} a < b$
  -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
- SRC="tex_4.png"
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.93ex; vertical-align: -0.21ex; " SRC="tex_4.svg"
  ALT="$@code{math code} a &lt; b$"></SPAN>
 </p>
 <p>Maths with code @-command and braces:
@@ -107,10 +88,8 @@ Here some <!-- MATH
 <p><!-- MATH
  $\underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}$
  -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="tex_5.png"
- ALT="$ \underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}$"></SPAN>
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.88ex; vertical-align: -1.03ex; " SRC="tex_5.svg"
+ ALT="$\underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}$"></SPAN>
 </p>
 <p>@\ outside of math
 </p>

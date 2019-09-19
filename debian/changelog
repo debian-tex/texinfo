@@ -1,4 +1,4 @@
-texinfo (6.6.0.dfsg.1-3) UNRELEASED; urgency=medium
+texinfo (6.6.91.dfsg.1-1) unstable; urgency=medium
 
   [ Hilmar Preusse ]
   * Use generic icon name for info, drop Recommends against gnome-icon-theme.
@@ -8,8 +8,10 @@ texinfo (6.6.0.dfsg.1-3) UNRELEASED; urgency=medium
 
   [ Norbert Preining ]
   * Add ConsoleOnly to the info.desktop categories (Closes: #940209)
+  * New upstream version 6.6.91.dfsg.1
+  * update patches
 
- -- Norbert Preining <norbert@preining.info>  Tue, 17 Sep 2019 10:08:59 +0900
+ -- Norbert Preining <norbert@preining.info>  Thu, 19 Sep 2019 10:46:59 +0900
 
 texinfo (6.6.0.dfsg.1-2) unstable; urgency=medium
 

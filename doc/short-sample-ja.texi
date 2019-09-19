@@ -3,6 +3,8 @@
 @documentencoding UTF-8
 @documentlanguage ja
 
+@include version.texi
+
 @settitle サンプル マニュアル 1.0 日本語版
 
 @copying

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2017-2018 Free Software Foundation, Inc.
+# Copyright (C) 2017-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,9 +21,9 @@ run_ginfo -f intera -n Top
 
 # Do a incremental search and enter a single backslash.  This is to
 # test that it doesn't crash when the input is not valid.
-printf '\023' >$pty_type
-printf '\\\n' >$pty_type
-printf q >$pty_type
+printf '\023' >&7
+printf '\\\n' >&7
+printf q >&7
 
 timeout_test
 

@@ -206,20 +206,8 @@ $result_nodes{'simplest_test_prefix_info'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'simplest_test_prefix_info'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'simplest_test_prefix_info'};
 
 $result_menus{'simplest_test_prefix_info'} = {
   'cmdname' => 'node',

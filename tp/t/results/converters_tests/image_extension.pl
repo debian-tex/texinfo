@@ -47,6 +47,9 @@ $result_trees{'image_extension'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
+      'extra' => {
+        'input_perl_encoding' => 'utf-8'
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -144,6 +147,11 @@ $result_converted{'info'}->{'image_extension'} = 'This is , produced from .
 Tag Table:
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'image_extension'} = [

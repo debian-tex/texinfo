@@ -421,20 +421,8 @@ $result_nodes{'float_long_captions'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'float_long_captions'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'float_long_captions'};
 
 $result_menus{'float_long_captions'} = {
   'cmdname' => 'node',
@@ -538,6 +526,11 @@ Ref: text161
 Ref: text2105
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

@@ -219,20 +219,8 @@ $result_nodes{'quotation_in_ref'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'quotation_in_ref'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'quotation_in_ref'};
 
 $result_menus{'quotation_in_ref'} = {
   'cmdname' => 'node',

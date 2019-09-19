@@ -1436,25 +1436,13 @@ $result_nodes{'navigation_section'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'navigation_section'}{'menu_child'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'navigation_section'}{'menu_child'}{'menu_child'};
 $result_nodes{'navigation_section'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'navigation_section'}{'menu_child'};
 $result_nodes{'navigation_section'}{'menu_child'}{'node_prev'} = $result_nodes{'navigation_section'};
 $result_nodes{'navigation_section'}{'menu_child'}{'node_up'} = $result_nodes{'navigation_section'};
 $result_nodes{'navigation_section'}{'node_next'} = $result_nodes{'navigation_section'}{'menu_child'};
-$result_nodes{'navigation_section'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'navigation_section'};
 
 $result_menus{'navigation_section'} = {
   'cmdname' => 'node',

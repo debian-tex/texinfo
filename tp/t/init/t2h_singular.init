@@ -6,6 +6,8 @@
 
 use strict;
 
+use vars qw($node_file_name);
+
 my $T2H_BLUE_BUTTONS = 0;
 
 # we only redefine things which ar of relevance to singular
@@ -290,5 +292,32 @@ sub t2h_sing_menu($)
   }
   return '';
 }
+
+# We want to use EXTENSION for non node files only
+sub t2h_node_file_name($$$)
+{
+  my $self = shift;
+  my $element = shift;
+  my $filename = shift;
+
+  my $external_file_extension = '.html';
+
+  my $orig_filename = $filename;
+
+  my $extension = '';
+  $extension = '.'.$self->get_conf('EXTENSION')
+          if (defined($self->get_conf('EXTENSION'))
+              and $self->get_conf('EXTENSION') ne '');
+  if ($extension eq '') {
+    $filename .= $external_file_extension;
+  } else {
+    my $quoted_extension = quotemeta($extension);
+    $filename =~ s/${quoted_extension}$/${external_file_extension}/;
+  }
+
+  return $filename;
+}
+
+$node_file_name = \&t2h_node_file_name;
 
 1;    # This must be the last line

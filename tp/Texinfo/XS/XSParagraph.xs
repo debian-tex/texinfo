@@ -13,7 +13,7 @@
 
 MODULE = Texinfo::XS::XSParagraph PACKAGE = Texinfo::XS::XSParagraph PREFIX = xspara_
 
-#  Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+#  Copyright 2010-2019 Free Software Foundation, Inc.
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -31,7 +31,9 @@ MODULE = Texinfo::XS::XSParagraph PACKAGE = Texinfo::XS::XSParagraph PREFIX = xs
 PROTOTYPES: ENABLE
 
 int
-xspara_init ()
+xspara_init (unused, unused2)
+     int unused
+     char *unused2
 
 void
 xspara_set_state (state)

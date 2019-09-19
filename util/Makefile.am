@@ -58,7 +58,7 @@ EXTRA_DIST = README detexinfo dir-example \
   pdftexi2dvi \
   texi2dvi texi2pdf \
   $(dist_pkgdata_DATA) texinfo-cat.in texi-elements-by-size \
-  texi2html txixml2texi.pl $(w32_bat) $(TESTS)
+  txixml2texi.pl $(w32_bat) $(TESTS)
 
 DISTCLEANFILES = txixml2texi
 

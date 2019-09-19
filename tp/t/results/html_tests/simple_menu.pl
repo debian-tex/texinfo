@@ -2137,21 +2137,9 @@ $result_nodes{'simple_menu'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'simple_menu'}{'node_next'} = $result_nodes{'simple_menu'}{'menu_child'};
-$result_nodes{'simple_menu'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'simple_menu'};
 
 $result_menus{'simple_menu'} = {
   'cmdname' => 'node',
@@ -2227,6 +2215,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

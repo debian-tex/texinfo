@@ -6,7 +6,7 @@
 
 </preamble><setfilename file="simplest.info" spaces=" ">simplest.info</setfilename>
 
-<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <para>This is a very simple texi manual <spacecmd type="spc"/> &lt;&gt;.
 </para>

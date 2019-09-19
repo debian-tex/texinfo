@@ -74,13 +74,6 @@ my @test_cases = (
    'test_formats' => ['file_html'],
   'values' => {}}
 ],
-['unknown_nodes_renamed',
-  undef, {'test_file' => 'unknown_nodes_renamed.texi', 
-   'test_formats' => ['file_html']
-  },
-  {'RENAMED_NODES_FILE' => 'unknown_nodes_renamed-noderename.cnf',
-  }
-],
 ['one_line_no_content',
   undef, {'test_file' => 'one_line_no_content.texi',
   },

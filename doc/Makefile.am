@@ -19,6 +19,7 @@ MAKEINFO_ENVIRONMENT = TEXINFO_DEV_SOURCE=1 ; export TEXINFO_DEV_SOURCE ; \
                        top_srcdir="$(top_srcdir)" ; export top_srcdir ; \
                        top_builddir="$(top_builddir)" ; export top_builddir ;
 MAKEINFO = $(MAKEINFO_ENVIRONMENT) $(PERL) $(top_builddir)/tp/texi2any
+TEXI2DVI = $(top_srcdir)/util/texi2dvi
 
 # We'd also like to use something like this, but Automake calls
 # "install-info" directly.

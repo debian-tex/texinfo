@@ -550,7 +550,7 @@ $result_trees{'value_in_index_commands'} = {
               'index_at_command' => 'codeidxindex',
               'index_name' => 'codeidx',
               'index_type_command' => 'codeidxindex',
-              'key' => 'a index entry te\' i^',
+              'key' => "a index entry t\x{e9} \x{ee}",
               'node' => {},
               'number' => 1
             },
@@ -746,6 +746,7 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -941,26 +942,16 @@ $result_sectioning{'value_in_index_commands'} = {};
 $result_nodes{'value_in_index_commands'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'value_in_index_commands'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'value_in_index_commands'};
 
 $result_menus{'value_in_index_commands'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

@@ -248,6 +248,9 @@ $result_trees{'test_image'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -557,6 +560,9 @@ $result_trees{'test_image'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -808,6 +814,9 @@ $result_trees{'test_image'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
           'line_nr' => {},
           'parent' => {}
         },
@@ -1113,6 +1122,9 @@ $result_trees{'test_image'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -1342,6 +1354,9 @@ $result_trees{'test_image'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -1645,6 +1660,9 @@ $result_trees{'test_image'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -1897,6 +1915,9 @@ $result_trees{'test_image'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -2202,6 +2223,9 @@ $result_trees{'test_image'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -2387,6 +2411,9 @@ $result_trees{'test_image'} = {
                       ],
                       'cmdname' => 'image',
                       'contents' => [],
+                      'extra' => {
+                        'input_perl_encoding' => 'utf-8'
+                      },
                       'line_nr' => {},
                       'parent' => {}
                     },
@@ -2692,6 +2719,9 @@ $result_trees{'test_image'} = {
                           ],
                           'cmdname' => 'image',
                           'contents' => [],
+                          'extra' => {
+                            'input_perl_encoding' => 'utf-8'
+                          },
                           'line_nr' => {},
                           'parent' => {}
                         },
@@ -3471,20 +3501,8 @@ $result_nodes{'test_image'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'test_image'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'test_image'};
 
 $result_menus{'test_image'} = {
   'cmdname' => 'node',
@@ -3951,26 +3969,26 @@ $result_converted_errors{'html'}->{'test_image'} = [
 
 
 $result_converted{'plaintext'}->{'test_image'} = '[f@i--le..  a@<"%@  < & @ % " ]
-In text [alt i^-le..  a
+In text [alt î-le..  a
 <"%@  < & @ % " ].
 
    Insertcopying
    Text in copying. [f@i--le..  a@<"%@  < & @ % " ]
 
-   In text [alt i^-le..  a
+   In text [alt î-le..  a
 <"%@  < & @ % " ].
 
      [f@i--le..  a@<"%@  < & @ % " ]
 
-     In text [alt i^-le..  a
+     In text [alt î-le..  a
 <"%@  < & @ % " ].
 
 [f@i--le..  a@<"%@  < & @ % " ]
-In text [alt i^-le..  a
+In text [alt î-le..  a
 <"%@  < & @ % " ].
 
 Image 1: [f@i--le..  a@<"%@  < & @ % " ]
-In text [alt i^-le..  a
+In text [alt î-le..  a
 <"%@  < & @ % " ].
 
 * Menu:

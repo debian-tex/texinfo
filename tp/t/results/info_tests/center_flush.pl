@@ -600,6 +600,11 @@ Ref: anchor in flushright607
 Ref: second anchor in flushright677
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'center_flush'} = [

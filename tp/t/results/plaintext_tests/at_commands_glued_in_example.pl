@@ -697,7 +697,7 @@ $result_converted{'plaintext'}->{'at_commands_glued_in_example'} = '     at@.
      emailmali <somebody>email.
      ref*note Top::ref.
      Foornote(1)after footnote.
-     accenti^accent.
+     accentîaccent.
      and star
      star.
      noindentafter noindent

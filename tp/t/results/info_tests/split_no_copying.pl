@@ -556,23 +556,11 @@ $result_nodes{'split_no_copying'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'split_no_copying'}{'menu_child'}{'node_prev'} = $result_nodes{'split_no_copying'};
 $result_nodes{'split_no_copying'}{'menu_child'}{'node_up'} = $result_nodes{'split_no_copying'};
 $result_nodes{'split_no_copying'}{'node_next'} = $result_nodes{'split_no_copying'}{'menu_child'};
-$result_nodes{'split_no_copying'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'split_no_copying'};
 
 $result_menus{'split_no_copying'} = {
   'cmdname' => 'node',
@@ -629,6 +617,11 @@ Node: Top63
 Node: Ch1179
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

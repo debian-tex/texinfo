@@ -26,7 +26,9 @@ $result_trees{'multiline_image_and_align'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,
@@ -79,7 +81,9 @@ $result_trees{'multiline_image_and_align'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 3,
@@ -132,7 +136,9 @@ $result_trees{'multiline_image_and_align'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -185,7 +191,9 @@ $result_trees{'multiline_image_and_align'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 7,
@@ -253,7 +261,9 @@ $result_trees{'multiline_image_and_align'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 11,
@@ -297,7 +307,9 @@ $result_trees{'multiline_image_and_align'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 13,
@@ -324,7 +336,9 @@ $result_trees{'multiline_image_and_align'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -365,7 +379,9 @@ $result_trees{'multiline_image_and_align'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 16,

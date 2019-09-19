@@ -41,6 +41,8 @@
 #include <getopt.h>
 #include <unistd.h>
 
+#include <fcntl.h>
+
 /* For gettext (NLS).  */
 #include "gettext.h"
 
@@ -67,18 +69,13 @@ extern int errno;
 extern char *strerror ();
 #endif
 
-#ifdef HAVE_LIMITS_H
 #include <limits.h>
-#endif
+
 #ifndef PATH_MAX
 #ifndef _POSIX_PATH_MAX
 # define _POSIX_PATH_MAX 255
 #endif
 #define PATH_MAX _POSIX_PATH_MAX
-#endif
-
-#ifndef HAVE_DECL_STRCOLL
-extern int strcoll ();
 #endif
 
 #include <sys/stat.h>
@@ -88,22 +85,6 @@ extern int strcoll ();
 #if !defined(S_ISDIR) && defined(S_IFDIR)
 # define S_ISDIR(mode) (((mode) & S_IFMT) == S_IFDIR)
 #endif
-
-#ifdef HAVE_SYS_FILE_H
-#include <sys/file.h>
-#endif /* HAVE_SYS_FILE_H */
-
-#ifndef O_RDONLY
-/* Since <fcntl.h> is POSIX, prefer that to <sys/fcntl.h>.
-   This also avoids some useless warnings on (at least) Linux.  */
-#ifdef HAVE_FCNTL_H
-#include <fcntl.h>
-#else /* not HAVE_FCNTL_H */
-#ifdef HAVE_SYS_FCNTL_H
-#include <sys/fcntl.h>
-#endif /* not HAVE_SYS_FCNTL_H */
-#endif /* not HAVE_FCNTL_H */
-#endif /* not O_RDONLY */
 
 /* MS-DOS and similar non-Posix systems have some peculiarities:
     - they distinguish between binary and text files;

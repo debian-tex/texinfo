@@ -222,7 +222,7 @@ $result_errors{'accent_with_text'} = [
 
 
 
-$result_converted{'plaintext'}->{'accent_with_text'} = '-a( -b i^ j^ -a^
+$result_converted{'plaintext'}->{'accent_with_text'} = '-ă -b î ĵ -â
 ';
 
 

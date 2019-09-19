@@ -431,23 +431,11 @@ $result_nodes{'ref_in_preformatted'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'ref_in_preformatted'}{'menu_child'}{'node_prev'} = $result_nodes{'ref_in_preformatted'};
 $result_nodes{'ref_in_preformatted'}{'menu_child'}{'node_up'} = $result_nodes{'ref_in_preformatted'};
 $result_nodes{'ref_in_preformatted'}{'node_next'} = $result_nodes{'ref_in_preformatted'}{'menu_child'};
-$result_nodes{'ref_in_preformatted'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'ref_in_preformatted'};
 
 $result_menus{'ref_in_preformatted'} = {
   'cmdname' => 'node',

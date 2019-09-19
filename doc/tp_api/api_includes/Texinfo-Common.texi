@@ -355,6 +355,14 @@ Return true if the @emph{$name} is a known tree transformation name
 that may be passed with @code{TREE_TRANSFORMATIONS} to modify a texinfo
 tree.
 
+@item collect_commands_in_tree($tree, $commands_list)
+@anchor{Texinfo::Common collect_commands_in_tree($tree@comma{} $commands_list)}
+
+Returns a hash reference with keys @@-commands names specified
+in the @emph{$commands_list} array reference and values arrays of
+tree elements corresponding to those @@-command found in @emph{$tree}
+by traversing the tree.
+
 @end table
 
 @node Texinfo::Common SEE ALSO

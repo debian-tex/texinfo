@@ -494,20 +494,8 @@ $result_nodes{'error_in_footnote'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'error_in_footnote'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'error_in_footnote'};
 
 $result_menus{'error_in_footnote'} = {
   'cmdname' => 'node',
@@ -606,6 +594,11 @@ Ref: label61
 Ref: Top-Footnote-1343
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'error_in_footnote'} = [

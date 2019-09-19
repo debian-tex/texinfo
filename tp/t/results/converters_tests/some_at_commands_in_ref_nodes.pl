@@ -1614,23 +1614,11 @@ $result_nodes{'some_at_commands_in_ref_nodes'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'some_at_commands_in_ref_nodes'}{'menu_child'}{'node_prev'} = $result_nodes{'some_at_commands_in_ref_nodes'};
 $result_nodes{'some_at_commands_in_ref_nodes'}{'menu_child'}{'node_up'} = $result_nodes{'some_at_commands_in_ref_nodes'};
 $result_nodes{'some_at_commands_in_ref_nodes'}{'node_next'} = $result_nodes{'some_at_commands_in_ref_nodes'}{'menu_child'};
-$result_nodes{'some_at_commands_in_ref_nodes'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'some_at_commands_in_ref_nodes'};
 
 $result_menus{'some_at_commands_in_ref_nodes'} = {
   'cmdname' => 'node',
@@ -1659,11 +1647,11 @@ $result_errors{'some_at_commands_in_ref_nodes'} = [];
 $result_converted{'plaintext'}->{'some_at_commands_in_ref_nodes'} = 'Top
 ***
 
-1 A SC node i" i" E=` /l C\', !
-******************************
+1 A SC node ï ï Ḕ ł Ḉ ¡
+***********************
 
-see *note (manual)a *strong* ref with SC, a i trema i", a dotless i
-trema i" E=` and exclamdown !::.
+see *note (manual)a *strong* ref with SC, a i trema ï, a dotless i trema
+ï Ḕ and exclamdown ¡::.
 ';
 
 
@@ -1692,7 +1680,7 @@ $result_converted{'html_text'}->{'some_at_commands_in_ref_nodes'} = '
 
 
 $result_converted{'xml'}->{'some_at_commands_in_ref_nodes'} = '
-<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">A <sc>sc <accent type="tilde" bracketed="off">n</accent> &aring; &tex;</sc> node <accent type="uml" bracketed="off">i</accent> <accent type="uml"><dotless>i</dotless></accent> <accent type="grave"><accent type="macr" bracketed="off">E</accent></accent> &lslash; <accent type="cedil"><accent type="acute" bracketed="off">C</accent></accent> &iexcl;</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">A <sc>sc <accent type="tilde" bracketed="off">n</accent> &aring; &tex;</sc> node <accent type="uml" bracketed="off">i</accent> <accent type="uml"><dotless>i</dotless></accent> <accent type="grave"><accent type="macr" bracketed="off">E</accent></accent> &lslash; <accent type="cedil"><accent type="acute" bracketed="off">C</accent></accent> &iexcl;</nodenext></node>
 <top spaces=" "><sectiontitle>Top</sectiontitle>
 
 <menu endspaces=" ">
@@ -1725,43 +1713,35 @@ $result_converted{'docbook'}->{'some_at_commands_in_ref_nodes'} = '
 $result_converted{'info'}->{'some_at_commands_in_ref_nodes'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: A SC N~ AA TeX node i" i" E=` /l C\', !,  Up: (dir)
+File: ,  Node: Top,  Next: A SC Ñ Å TeX node ï ï Ḕ ł Ḉ ¡,  Up: (dir)
 
 Top
 ***
 
 * Menu:
 
-* A SC N~ AA TeX node i" i" E=` /l C\', !::
+* A SC Ñ Å TeX node ï ï Ḕ ł Ḉ ¡::
 
 
-File: ,  Node: A SC N~ AA TeX node i" i" E=` /l C\', !,  Prev: Top,  Up: Top
+File: ,  Node: A SC Ñ Å TeX node ï ï Ḕ ł Ḉ ¡,  Prev: Top,  Up: Top
 
-1 A SC node i" i" E=` /l C\', !
-******************************
+1 A SC node ï ï Ḕ ł Ḉ ¡
+***********************
 
-see *note (manual)a *strong* ref with SC, a i trema i", a dotless i
-trema i" E=` and exclamdown !::.
+see *note (manual)a *strong* ref with SC, a i trema ï, a dotless i trema
+ï Ḕ and exclamdown ¡::.
 
 
 Tag Table:
 Node: Top27
-Node: A SC N~ AA TeX node i" i" E=` /l C\', !170
+Node: A SC Ñ Å TeX node ï ï Ḕ ł Ḉ ¡172
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
-
-$result_converted_errors{'info'}->{'some_at_commands_in_ref_nodes'} = [
-  {
-    'error_line' => ':9: warning: @node name should not contain `,\': A SC N~ AA TeX node i" i" E=` /l C\', !
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => '@node name should not contain `,\': A SC N~ AA TeX node i" i" E=` /l C\', !',
-    'type' => 'warning'
-  }
-];
-
 
 1;

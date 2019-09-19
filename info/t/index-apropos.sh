@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ run_ginfo
 # result. Then type "i" followed by <TAB> to check the indices in the
 # file are still there.
 
-printf '\033xindex-apropos\rlink\r\t\ri\t\030qq' >$pty_type
+printf '\033xindex-apropos\rlink\r\t\ri\t\030qq' >&7
 
 timeout_test
 

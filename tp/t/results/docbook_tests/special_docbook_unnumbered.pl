@@ -1140,18 +1140,7 @@ $result_nodes{'special_docbook_unnumbered'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'special_docbook_unnumbered'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'special_docbook_unnumbered'}{'menu_child'}{'node_next'}{'node_next'};
 $result_nodes{'special_docbook_unnumbered'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'special_docbook_unnumbered'};
@@ -1162,7 +1151,6 @@ $result_nodes{'special_docbook_unnumbered'}{'menu_child'}{'node_next'}{'node_up'
 $result_nodes{'special_docbook_unnumbered'}{'menu_child'}{'node_prev'} = $result_nodes{'special_docbook_unnumbered'};
 $result_nodes{'special_docbook_unnumbered'}{'menu_child'}{'node_up'} = $result_nodes{'special_docbook_unnumbered'};
 $result_nodes{'special_docbook_unnumbered'}{'node_next'} = $result_nodes{'special_docbook_unnumbered'}{'menu_child'};
-$result_nodes{'special_docbook_unnumbered'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'special_docbook_unnumbered'};
 
 $result_menus{'special_docbook_unnumbered'} = {
   'cmdname' => 'node',

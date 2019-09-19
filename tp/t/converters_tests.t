@@ -300,36 +300,59 @@ my $at_commands_in_refs_text = '@node Top
 @ref{@- @{ @}}
 
 @ref{@  @	 @! @* @. @: .@: @? @@}
+
 @ref{@atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}}
+
 @ref{@LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}}
+
 @ref{@equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}}
 
 @ref{@geq{} @leq{} @arrow{}}
 
 @ref{@ordf{} @ordm{} @point{} @pounds{} @print{} @questiondown{} @registeredsymbol{}}
+
 @ref{@result{} @textdegree{} a@tie{}b @today{} @aa{}}
+
 @ref{@AA{} @ae{} @oe{} @AE{} @OE{} @o{} @O{} @ss{} @l{} @L{} @DH{} @dh{} @TH{} @th{}}
+
 @ref{@"{a} @~{e} @^{@dotless{i}} @^{a} @`{a} @\'e @,{c} @={e} @ringaccent{e} @H{e} @ogonek{e}}
+
 @ref{@dotaccent{e} @u{e} @ubaraccent{e} @udotaccent{e} @v{e} @dotless{j} @tieaccent{ee}}
+
 @ref{@dotless{i} @`{@=E} @,{@\'C}}
+
 @ref{@quotedblleft{} @quotedblright{} @quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{}}
+
 @ref{@guillemetleft{} @guillemetright{} @guillemotleft{} @guillemotright{} @guilsinglleft{} @guilsinglright{}}
+
 @ref{`` \'\' --- -- ` \'}
+
 @ref{@acronym{AAA, fff} @acronym{AAA} @acronym{BBB}}
+
 @ifnottex
 @ref{@abbr{CCC, rrr} @abbr{CCC} @abbr{DDD}}
 @end ifnottex
+
 @ref{@email{someone@@somewher, the someone} @email{no_explain@@there}}
+
 @ifnottex
 @ref{@image{f--ile1}  @image{f--ile,aze,az,alt,e--xt}}
+
 @ref{@verb{. @ {} . .}}
 @end ifnottex
+
 @ref{@cite{cite @asis{asis}} @w{in @@w @b{b}} @r{in r} @sc{sc} @strong{str} @t{t} @var{var} @dfn{dfn} @i{i}}
+
 @ref{@env{env} @code{code} @option{option} @samp{samp} @command{command} @file{file} @kbd{C-x @key{ESC}}}
+
 @ref{8.27@dmn{in}}
+
 @ref{@sansserif{sansserif} @slanted{slanted}}
+
 @ref{@indicateurl{indicateurl}}
+
 @ref{@sub{g}H 3@sup{rd}}
+
 @ref{@url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}}
 
 @bye
@@ -370,7 +393,8 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 '],
 ['at_commands_in_refs',
 $at_commands_in_refs_text, 
-{}, {'TEST' => 1}], # TEST => 1 triggers @today constant expansion for diffs
+ {},
+ {'TEST' => 1}], # TEST => 1 triggers @today constant expansion for diffs
 ['refs_formatting',
 '@node chapter
 @chapter chapter
@@ -974,9 +998,8 @@ undef, {'test_file' => 'sample_utf8.texi'}
 
 '.
 $at_commands_in_refs_text, 
-{'todo' =>
-   {'file_info' => 'different results from XS and pure Perl modules',
-  }}, {'TEST' => 1}], # TEST => 1 triggers @today constant expansion for diffs
+  {},
+  {'TEST' => 1}], # TEST => 1 triggers @today constant expansion for diffs
 ['at_commands_in_refs_latin1',
 '@setfilename at_commands_in_refs_latin1.info
 @documentencoding ISO-8859-15

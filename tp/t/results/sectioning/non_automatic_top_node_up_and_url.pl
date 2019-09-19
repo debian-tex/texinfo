@@ -204,8 +204,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
                 {},
                 {}
               ],
-              'normalized' => 'GNU-manuals',
-              'top_node_up' => {}
+              'normalized' => 'GNU-manuals'
             }
           ],
           'normalized' => 'Top',
@@ -559,7 +558,6 @@ $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[1]{'extra'}{'n
 $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[2]{'node_content'}[1] = $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[1]{'args'}[2]{'contents'}[1];
 $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[1]{'args'}[3]{'contents'}[0];
 $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'node_content'}[1] = $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[1]{'args'}[3]{'contents'}[1];
-$result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'top_node_up'} = $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[1];
 $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[1]{'args'}[2]{'contents'}[0]{'args'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[1]{'parent'} = $result_trees{'non_automatic_top_node_up_and_url'}[0];
 $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[2]{'args'}[0];
@@ -691,18 +689,10 @@ $result_nodes{'non_automatic_top_node_up_and_url'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'normalized' => 'GNU-manuals',
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'non_automatic_top_node_up_and_url'}{'menu_child'}{'node_prev'} = $result_nodes{'non_automatic_top_node_up_and_url'};
 $result_nodes{'non_automatic_top_node_up_and_url'}{'node_next'} = $result_nodes{'non_automatic_top_node_up_and_url'}{'menu_child'};
-$result_nodes{'non_automatic_top_node_up_and_url'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'non_automatic_top_node_up_and_url'};
 
 $result_menus{'non_automatic_top_node_up_and_url'} = {
   'cmdname' => 'node',
@@ -732,6 +722,15 @@ $result_errors{'non_automatic_top_node_up_and_url'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => 'Prev reference to nonexistent `@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':1: Up reference to nonexistent `@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals\'
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Up reference to nonexistent `@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals\'',
     'type' => 'error'
   },
   {
@@ -783,13 +782,6 @@ $result_elements{'non_automatic_top_node_up_and_url'} = [
         },
         'NodeForward' => {},
         'NodeNext' => {},
-        'NodeUp' => {
-          'extra' => {
-            'normalized' => 'GNU-manuals',
-            'top_node_up' => {}
-          },
-          'type' => 'top_node_up'
-        },
         'This' => {}
       },
       'element_command' => {},
@@ -815,7 +807,6 @@ $result_elements{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'directions'}{
 $result_elements{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'node'} = $result_elements{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'};
 $result_elements{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'directions'}{'Forward'};
 $result_elements{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'directions'}{'Forward'};
-$result_elements{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
 $result_elements{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'non_automatic_top_node_up_and_url'}[0];
 $result_elements{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'element_command'} = $result_elements{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
 $result_elements{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'node'} = $result_elements{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
@@ -827,7 +818,6 @@ $result_directions_text{'non_automatic_top_node_up_and_url'} = 'element: @node T
   Forward: @node first
   NodeForward: @node first
   NodeNext: @node first
-  NodeUp: No associated command (type top_node_up)
   This: @node Top
 element: @node first
   Back: @node Top
@@ -841,7 +831,7 @@ element: @node first
 $result_converted{'info'}->{'non_automatic_top_node_up_and_url'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: first,  Up: GNU (GNU\'s Not Unix) manuals
+File: ,  Node: Top,  Next: first,  Up: @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals
 
 internal top node up
 ********************
@@ -857,9 +847,14 @@ File: ,  Node: first,  Prev: Top
 
 Tag Table:
 Node: Top27
-Node: first161
+Node: first180
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -875,6 +870,7 @@ $result_converted{'html'}->{'non_automatic_top_node_up_and_url'} = '<!DOCTYPE ht
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <link href="#Top" rel="start" title="Top">
+<link href="http://www.gnu.org/manual/" rel="up" title="@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -900,7 +896,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="http://www.gnu.org/manual/" accesskey="u" rel="up"><acronym title="GNU&rsquo;s Not Unix">GNU</acronym> (<acronym title="GNU&rsquo;s Not Unix">GNU</acronym>\'s Not Unix) manuals</a> &nbsp; </p>
+Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="http://www.gnu.org/manual/" accesskey="u" rel="up">@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals</a> &nbsp; </p>
 </div>
 <span id="internal-top-node-up"></span><h1 class="top">internal top node up</h1>
 

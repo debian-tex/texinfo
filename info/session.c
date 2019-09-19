@@ -4257,6 +4257,9 @@ info_search_1 (WINDOW *window, int count, int case_sensitive)
       || !search_string)
     return;
 
+  /* Disable any active tree search. */
+  window->node->active_menu = 0;
+
   start_off = window->point + direction;
   
   /* If the search string includes upper-case letters, make the search
@@ -4647,6 +4650,12 @@ DECLARE_INFO_COMMAND (info_search_next,
   NODE *starting_node = window->node;
   int result;
 
+  if (window->search_string && window->node->active_menu)
+    {
+      tree_search_check_node (window);
+      return;
+    }
+
   if (!last_search_direction || !search_string)
     {
       info_error ("%s", _("No previous search string"));
@@ -4691,6 +4700,12 @@ DECLARE_INFO_COMMAND (info_search_previous,
   long start_off = window->point - 1;
   NODE *starting_node = window->node;
   int result;
+
+  if (window->search_string && window->node->active_menu)
+    {
+      tree_search_check_node_backwards (window);
+      return;
+    }
 
   if (!last_search_direction || !search_string)
     {

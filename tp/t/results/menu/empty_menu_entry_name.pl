@@ -400,21 +400,9 @@ $result_nodes{'empty_menu_entry_name'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'empty_menu_entry_name'}{'node_next'} = $result_nodes{'empty_menu_entry_name'}{'menu_child'};
-$result_nodes{'empty_menu_entry_name'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'empty_menu_entry_name'};
 
 $result_menus{'empty_menu_entry_name'} = {
   'cmdname' => 'node',

@@ -839,6 +839,11 @@ Ref: anchor151
 Ref: float163
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'double_node_anchor_float'} = [

@@ -227,20 +227,8 @@ $result_nodes{'top_node_part_top'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'top_node_part_top'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'top_node_part_top'};
 
 $result_menus{'top_node_part_top'} = {
   'cmdname' => 'node',
@@ -276,23 +264,6 @@ $result_elements{'top_node_part_top'} = [
   {
     'extra' => {
       'directions' => {
-        'NodeUp' => {
-          'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'dir'
-              }
-            ],
-            'top_node_up' => {
-              'cmdname' => 'node',
-              'extra' => {
-                'normalized' => 'Top',
-                'spaces_before_argument' => ' '
-              }
-            }
-          },
-          'type' => 'external_node'
-        },
         'This' => {}
       },
       'element_command' => {
@@ -309,20 +280,24 @@ $result_elements{'top_node_part_top'} = [
         },
         'level' => 0
       },
-      'node' => {},
+      'node' => {
+        'cmdname' => 'node',
+        'extra' => {
+          'normalized' => 'Top',
+          'spaces_before_argument' => ' '
+        }
+      },
       'section' => {}
     },
     'type' => 'element'
   }
 ];
 $result_elements{'top_node_part_top'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'top_node_part_top'}[0];
-$result_elements{'top_node_part_top'}[0]{'extra'}{'node'} = $result_elements{'top_node_part_top'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'};
 $result_elements{'top_node_part_top'}[0]{'extra'}{'section'} = $result_elements{'top_node_part_top'}[0]{'extra'}{'element_command'};
 
 
 
 $result_directions_text{'top_node_part_top'} = 'element: @top top
-  NodeUp: (dir)
   This: @top top
 ';
 
@@ -341,6 +316,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -393,7 +373,7 @@ ul.no-bullet {list-style: none}
 ';
 
 
-$result_converted{'xml'}->{'top_node_part_top'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'top_node_part_top'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <part spaces=" "><sectiontitle>part</sectiontitle>
 

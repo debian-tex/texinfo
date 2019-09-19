@@ -353,20 +353,8 @@ $result_nodes{'unknown_language'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'unknown_language'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'unknown_language'};
 
 $result_menus{'unknown_language'} = {
   'cmdname' => 'node',
@@ -434,6 +422,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

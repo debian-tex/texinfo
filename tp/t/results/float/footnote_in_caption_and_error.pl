@@ -323,20 +323,8 @@ $result_nodes{'footnote_in_caption_and_error'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'footnote_in_caption_and_error'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'footnote_in_caption_and_error'};
 
 $result_menus{'footnote_in_caption_and_error'} = {
   'cmdname' => 'node',
@@ -460,9 +448,9 @@ ul.no-bullet {list-style: none}
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="t_hlistoffloats_FOOT1_1" href="#t_hlistoffloats_DOCF1_1">(1)</a></h3>
+<h5><a id="t_hlistoffloats_FOOT1_1" href="#t_hlistoffloats_DOCF1_1">(1)</a></h3>
 <p>in footnote error&rarr;</p>
-<h3><a id="FOOT1" href="#DOCF1">(2)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(2)</a></h3>
 <p>in footnote error&rarr;</p>
 </div>
 <hr>

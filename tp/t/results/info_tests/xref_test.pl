@@ -427,20 +427,8 @@ $result_nodes{'xref_test'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'xref_test'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'xref_test'};
 
 $result_menus{'xref_test'} = {
   'cmdname' => 'node',
@@ -468,6 +456,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'xref_test'} = [

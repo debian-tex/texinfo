@@ -1,14 +1,12 @@
 # sectioning/Makefile.am - public domain.
  
 EXTRA_DIST = \
- equivalent_nodes.texi \
  sectioning.texi \
  \
- renamednodes.cnf-ref \
  list-of-tests \
  res_parser
 
-DISTCLEANFILES = tests.log tests.out equivalent_nodes-noderename.cnf
+DISTCLEANFILES = tests.log tests.out
 
 distclean-local:
 	rm -rf out_parser diffs test_log

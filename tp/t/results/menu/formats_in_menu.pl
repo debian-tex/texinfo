@@ -957,21 +957,9 @@ $result_nodes{'formats_in_menu'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'formats_in_menu'}{'node_next'} = $result_nodes{'formats_in_menu'}{'menu_child'};
-$result_nodes{'formats_in_menu'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'formats_in_menu'};
 
 $result_menus{'formats_in_menu'} = {
   'cmdname' => 'node',
@@ -1101,7 +1089,7 @@ $result_converted_errors{'html'}->{'formats_in_menu'} = [
 
 
 
-$result_converted{'xml'}->{'formats_in_menu'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(gcc)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'formats_in_menu'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(gcc)</nodenext></node>
 
 <menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator=":: ">(gcc)</menunode><menudescription><pre xml:space="preserve">text

@@ -4487,23 +4487,11 @@ $result_nodes{'complex_float'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'complex_float'}{'menu_child'}{'node_prev'} = $result_nodes{'complex_float'};
 $result_nodes{'complex_float'}{'menu_child'}{'node_up'} = $result_nodes{'complex_float'};
 $result_nodes{'complex_float'}{'node_next'} = $result_nodes{'complex_float'}{'menu_child'};
-$result_nodes{'complex_float'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'complex_float'};
 
 $result_menus{'complex_float'} = {
   'cmdname' => 'node',
@@ -4628,7 +4616,7 @@ A list of floats at the beginning.
 
 * Menu:
 
-* Text 1: text with a lot of features.   TeX and _te\'i^<an_url>_ AND ...
+* Text 1: text with a lot of features.   TeX and _téî<an_url>_ AND ...
 * Text 1.1: float with a lot of features and no shortcaption.
                                          An example of float ...
 
@@ -4647,7 +4635,7 @@ An itemize.
 
 A ref.  *Note xref Text with features: Top.  A footnote.  (1).
 
-TeX and _te\'i^<an_url>_ AND it is @verb  a word !@ AE.
+TeX and _téî<an_url>_ AND it is @verb  a word !@ Æ.
 
 Text 1: An example of float caption...  An example.
      example
@@ -4666,7 +4654,7 @@ An itemize.
 
 A ref.  *Note xref Text with features caption: Top.  A footnote.  (2).
 
-TeX and _te\'i^<an_url>_ AND it is @verb  a word !@ AE.
+TeX and _téî<an_url>_ AND it is @verb  a word !@ Æ.
 
    ---------- Footnotes ----------
 
@@ -4699,7 +4687,7 @@ An itemize 2.
 A ref 2.  *Note xref Text with features caption: Top.  A footnote 2.
 (1).
 
-TeX and _te\'i^<an_url>_ AND it is @verb  a word !@ AE.
+TeX and _téî<an_url>_ AND it is @verb  a word !@ Æ.
 
 *Note Text 1: text with a lot of features.
 
@@ -4747,7 +4735,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 </div>
 <span id="Test-floats"></span><h1 class="top">Test floats</h1>
 
@@ -4916,13 +4904,13 @@ A footnote 2.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="t_hlistoffloats_FOOT3_1" href="#t_hlistoffloats_DOCF3_1">(1)</a></h3>
+<h5><a id="t_hlistoffloats_FOOT3_1" href="#t_hlistoffloats_DOCF3_1">(1)</a></h3>
 <p>footnote Text with features caption 2</p>
-<h3><a id="FOOT1" href="#DOCF1">(2)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(2)</a></h3>
 <p>footnote Text with features</p>
-<h3><a id="FOOT2" href="#DOCF2">(3)</a></h3>
+<h5><a id="FOOT2" href="#DOCF2">(3)</a></h3>
 <p>footnote Text with features caption</p>
-<h3><a id="FOOT3" href="#DOCF3">(4)</a></h3>
+<h5><a id="FOOT3" href="#DOCF3">(4)</a></h3>
 <p>footnote Text with features caption 2</p>
 </div>
 <hr>

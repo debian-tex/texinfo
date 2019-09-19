@@ -776,6 +776,7 @@ $result_trees{'at_commands_in_raw'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -999,26 +1000,16 @@ $result_sectioning{'at_commands_in_raw'} = {};
 $result_nodes{'at_commands_in_raw'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'at_commands_in_raw'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'at_commands_in_raw'};
 
 $result_menus{'at_commands_in_raw'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -1250,16 +1241,16 @@ $result_converted{'html_text'}->{'at_commands_in_raw'} = '<span id="Top"></span>
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>in footnote</p>
-<h3><a id="FOOT2" href="#DOCF2">(2)</a></h3>
+<h5><a id="FOOT2" href="#DOCF2">(2)</a></h3>
 <p>second footnote</p>
 </div>
 <hr>
 ';
 
 
-$result_converted{'xml'}->{'at_commands_in_raw'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'at_commands_in_raw'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <macro name="othermacro" line=" othermacro{}">Other macro
 </macro>

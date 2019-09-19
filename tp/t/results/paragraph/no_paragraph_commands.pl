@@ -98,7 +98,9 @@ $result_trees{'no_paragraph_commands'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
-      'extra' => {},
+      'extra' => {
+        'input_perl_encoding' => 'utf-8'
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 3,

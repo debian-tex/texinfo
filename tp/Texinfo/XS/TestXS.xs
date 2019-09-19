@@ -14,6 +14,9 @@ MODULE = TestXS PACKAGE = TestXS PREFIX = xspara_
 PROTOTYPES: ENABLE
 
 int
-xspara_init ()
+xspara_init (int, char *)
     CODE:
         puts ("message from XS module\n");
+        RETVAL = 1;
+    OUTPUT:
+        RETVAL

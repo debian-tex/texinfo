@@ -2343,25 +2343,13 @@ $result_nodes{'ref_in_sectioning'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'ref_in_sectioning'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'ref_in_sectioning'}{'menu_child'};
 $result_nodes{'ref_in_sectioning'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'ref_in_sectioning'};
 $result_nodes{'ref_in_sectioning'}{'menu_child'}{'node_prev'} = $result_nodes{'ref_in_sectioning'};
 $result_nodes{'ref_in_sectioning'}{'menu_child'}{'node_up'} = $result_nodes{'ref_in_sectioning'};
 $result_nodes{'ref_in_sectioning'}{'node_next'} = $result_nodes{'ref_in_sectioning'}{'menu_child'};
-$result_nodes{'ref_in_sectioning'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'ref_in_sectioning'};
 
 $result_menus{'ref_in_sectioning'} = {
   'cmdname' => 'node',
@@ -2556,7 +2544,7 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
 
 $result_converted{'xml'}->{'ref_in_sectioning'} = '<contents></contents>
 
-<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">node</nodenext></node>
 <top spaces=" "><sectiontitle>for example <ref label="node"><xrefnodename>node</xrefnodename></ref> (<pxref label="node"><xrefnodename>node</xrefnodename></pxref>) (<pxref label="Top" manual="file"><xrefnodename>Top</xrefnodename><xrefinfofile spaces=" ">file</xrefinfofile><xrefprintedname spaces=" ">Manual</xrefprintedname></pxref>)</sectiontitle>
 
 <menu endspaces=" ">

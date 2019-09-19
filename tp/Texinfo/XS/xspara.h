@@ -1,7 +1,7 @@
 int xspara_new (HV *conf);
 void xspara_init_state (HV *hash);
 void xspara_set_state (SV *state);
-int xspara_init (void);
+int xspara_init (int, char *);
 void xspara_get_state (HV *state);
 char *xspara_add_next (char *, int, int transparent);
 char *xspara_add_text (char *);

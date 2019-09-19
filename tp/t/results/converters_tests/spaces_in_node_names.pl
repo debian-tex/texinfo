@@ -922,18 +922,7 @@ $result_nodes{'spaces_in_node_names'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'spaces_in_node_names'}{'menu_child'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'spaces_in_node_names'}{'menu_child'}{'node_next'};
 $result_nodes{'spaces_in_node_names'}{'menu_child'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'spaces_in_node_names'};
@@ -942,7 +931,6 @@ $result_nodes{'spaces_in_node_names'}{'menu_child'}{'node_next'}{'node_up'} = $r
 $result_nodes{'spaces_in_node_names'}{'menu_child'}{'node_prev'} = $result_nodes{'spaces_in_node_names'};
 $result_nodes{'spaces_in_node_names'}{'menu_child'}{'node_up'} = $result_nodes{'spaces_in_node_names'};
 $result_nodes{'spaces_in_node_names'}{'node_next'} = $result_nodes{'spaces_in_node_names'}{'menu_child'};
-$result_nodes{'spaces_in_node_names'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'spaces_in_node_names'};
 
 $result_menus{'spaces_in_node_names'} = {
   'cmdname' => 'node',
@@ -1077,7 +1065,7 @@ $result_converted{'html_text'}->{'spaces_in_node_names'} = '<span id="Top"></spa
 ';
 
 
-$result_converted{'xml'}->{'spaces_in_node_names'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">a<spacecmd type="spc"/><spacecmd type="spc"/></nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'spaces_in_node_names'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">a<spacecmd type="spc"/><spacecmd type="spc"/></nodenext></node>
 
 <menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">a<spacecmd type="spc"/><spacecmd type="spc"/></menunode><menudescription><pre xml:space="preserve">
@@ -1150,6 +1138,11 @@ Node: b  162
 Node: c  218
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

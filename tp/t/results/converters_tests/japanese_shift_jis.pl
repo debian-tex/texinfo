@@ -1139,25 +1139,13 @@ $result_nodes{'japanese_shift_jis'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'japanese_shift_jis'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'japanese_shift_jis'}{'menu_child'};
 $result_nodes{'japanese_shift_jis'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'japanese_shift_jis'};
 $result_nodes{'japanese_shift_jis'}{'menu_child'}{'node_prev'} = $result_nodes{'japanese_shift_jis'};
 $result_nodes{'japanese_shift_jis'}{'menu_child'}{'node_up'} = $result_nodes{'japanese_shift_jis'};
 $result_nodes{'japanese_shift_jis'}{'node_next'} = $result_nodes{'japanese_shift_jis'}{'menu_child'};
-$result_nodes{'japanese_shift_jis'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'japanese_shift_jis'};
 
 $result_menus{'japanese_shift_jis'} = {
   'cmdname' => 'node',

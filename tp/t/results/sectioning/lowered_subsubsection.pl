@@ -1820,18 +1820,7 @@ $result_nodes{'lowered_subsubsection'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'lowered_subsubsection'}{'menu_child'}{'menu_child'}{'menu_child'}{'menu_child'}{'node_next'}{'menu_child'}{'node_prev'} = $result_nodes{'lowered_subsubsection'}{'menu_child'}{'menu_child'}{'menu_child'}{'menu_child'}{'node_next'};
 $result_nodes{'lowered_subsubsection'}{'menu_child'}{'menu_child'}{'menu_child'}{'menu_child'}{'node_next'}{'menu_child'}{'node_up'} = $result_nodes{'lowered_subsubsection'}{'menu_child'}{'menu_child'}{'menu_child'};
@@ -1844,7 +1833,6 @@ $result_nodes{'lowered_subsubsection'}{'menu_child'}{'menu_child'}{'node_up'} = 
 $result_nodes{'lowered_subsubsection'}{'menu_child'}{'node_prev'} = $result_nodes{'lowered_subsubsection'};
 $result_nodes{'lowered_subsubsection'}{'menu_child'}{'node_up'} = $result_nodes{'lowered_subsubsection'};
 $result_nodes{'lowered_subsubsection'}{'node_next'} = $result_nodes{'lowered_subsubsection'}{'menu_child'};
-$result_nodes{'lowered_subsubsection'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'lowered_subsubsection'};
 
 $result_menus{'lowered_subsubsection'} = {
   'cmdname' => 'node',

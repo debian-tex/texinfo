@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,8 +21,8 @@ srcdir=${srcdir:-.}
 # Close window (so destination file will be forgotten), and do it again with
 # the other window.
 run_ginfo -f file-menu
-printf '\0302\t\t\t\r' >$pty_type
-printf '\030o\0301\t\t\t\rq' >$pty_type
+printf '\0302\t\t\t\r' >&7
+printf '\030o\0301\t\t\t\rq' >&7
 
 timeout_test
 cleanup

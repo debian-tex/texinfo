@@ -1380,20 +1380,8 @@ $result_nodes{'things_before_setfilename'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'things_before_setfilename'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'things_before_setfilename'};
 
 $result_menus{'things_before_setfilename'} = {
   'cmdname' => 'node',
@@ -1611,7 +1599,7 @@ $result_converted{'xml'}->{'things_before_setfilename'} = '<preamble>\\input tex
 
 <setfilename file="things_before_setfilename.info" spaces=" ">things_before_setfilename.info </setfilename>
 
-<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename></node>
 <top spaces=" "><sectiontitle>top section</sectiontitle>
 
 <para>Ref to anchor
@@ -1657,6 +1645,11 @@ Tag Table:
 Node: Top87
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

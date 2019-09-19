@@ -453,20 +453,8 @@ $result_nodes{'empty_ref_arg'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'empty_ref_arg'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'empty_ref_arg'};
 
 $result_menus{'empty_ref_arg'} = {
   'cmdname' => 'node',

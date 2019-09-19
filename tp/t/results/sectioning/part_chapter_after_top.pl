@@ -520,23 +520,11 @@ $result_nodes{'part_chapter_after_top'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'part_chapter_after_top'}{'menu_child'}{'node_prev'} = $result_nodes{'part_chapter_after_top'};
 $result_nodes{'part_chapter_after_top'}{'menu_child'}{'node_up'} = $result_nodes{'part_chapter_after_top'};
 $result_nodes{'part_chapter_after_top'}{'node_next'} = $result_nodes{'part_chapter_after_top'}{'menu_child'};
-$result_nodes{'part_chapter_after_top'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'part_chapter_after_top'};
 
 $result_menus{'part_chapter_after_top'} = {
   'cmdname' => 'node',
@@ -616,17 +604,6 @@ $result_elements{'part_chapter_after_top'} = [
         'Next' => {},
         'NodeForward' => {},
         'NodeNext' => {},
-        'NodeUp' => {
-          'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'dir'
-              }
-            ],
-            'top_node_up' => {}
-          },
-          'type' => 'external_node'
-        },
         'This' => {}
       },
       'element_command' => {
@@ -655,7 +632,6 @@ $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'Forward'} 
 $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'Next'} = $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'};
-$result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_up'};
 $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'part_chapter_after_top'}[0];
 $result_elements{'part_chapter_after_top'}[0]{'extra'}{'node'} = $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_up'};
 $result_elements{'part_chapter_after_top'}[0]{'extra'}{'section'} = $result_elements{'part_chapter_after_top'}[0]{'extra'}{'element_command'};
@@ -669,7 +645,6 @@ $result_directions_text{'part_chapter_after_top'} = 'element: @top top
   Next: @chapter chapter
   NodeForward: @chapter chapter
   NodeNext: @chapter chapter
-  NodeUp: (dir)
   This: @top top
 element: @chapter chapter
   Back: @top top
@@ -706,6 +681,11 @@ Node: Top27
 Node: chapter108
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -746,7 +726,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 
@@ -773,7 +753,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 ';
 
 
-$result_converted{'xml'}->{'part_chapter_after_top'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'part_chapter_after_top'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter</nodenext></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu endspaces=" ">

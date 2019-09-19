@@ -1926,18 +1926,7 @@ $result_nodes{'quote_node_names'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'quote_node_names'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'quote_node_names'}{'menu_child'}{'node_next'}{'node_next'};
 $result_nodes{'quote_node_names'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'quote_node_names'};
@@ -1948,7 +1937,6 @@ $result_nodes{'quote_node_names'}{'menu_child'}{'node_next'}{'node_up'} = $resul
 $result_nodes{'quote_node_names'}{'menu_child'}{'node_prev'} = $result_nodes{'quote_node_names'};
 $result_nodes{'quote_node_names'}{'menu_child'}{'node_up'} = $result_nodes{'quote_node_names'};
 $result_nodes{'quote_node_names'}{'node_next'} = $result_nodes{'quote_node_names'}{'menu_child'};
-$result_nodes{'quote_node_names'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'quote_node_names'};
 
 $result_menus{'quote_node_names'} = {
   'cmdname' => 'node',

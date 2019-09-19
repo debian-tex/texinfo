@@ -57,7 +57,7 @@ $result_errors{'accent_command_punctuation'} = [];
 
 
 
-$result_converted{'plaintext'}->{'accent_command_punctuation'} = 'e. after
+$result_converted{'plaintext'}->{'accent_command_punctuation'} = 'ė after
 ';
 
 1;

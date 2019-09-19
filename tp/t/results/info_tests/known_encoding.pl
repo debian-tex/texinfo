@@ -138,20 +138,8 @@ $result_nodes{'known_encoding'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'known_encoding'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'known_encoding'};
 
 $result_menus{'known_encoding'} = {
   'cmdname' => 'node',

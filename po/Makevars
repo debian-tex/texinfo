@@ -21,6 +21,11 @@ XGETTEXT_OPTIONS = \
  -k__nx:1,2\
  -k__xn:1,2\
  -kN__\
+ -kline_error:1 \
+ -kline_warn:1 \
+ -kcommand_error:2 \
+ -kcommand_warn:2 \
+ -kline_error_ext:3
  --flag=error:1:c-format\
  --flag=warning:1:c-format\
  --flag=fatal:1:c-format\

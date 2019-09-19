@@ -417,20 +417,8 @@ $result_nodes{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'cond_no-ifhtml_no-ifinfo_no-iftex'};
 
 $result_menus{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
   'cmdname' => 'node',

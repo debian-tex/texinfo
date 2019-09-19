@@ -150,6 +150,11 @@ Tag Table:
 Node: start27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'top_no_argument_and_node'} = [

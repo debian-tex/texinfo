@@ -468,7 +468,9 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           add_extra_element (current->parent->parent->parent,
                              "command_as_argument", current->parent);
         }
-      else if (current->parent->cmd == CM_sortas)
+      else if (current->parent->cmd == CM_sortas
+               || current->parent->cmd == CM_seeentry
+               || current->parent->cmd == CM_seealso)
         {
           ELEMENT *e = current->contents.list[0];
 
@@ -477,11 +479,13 @@ handle_close_brace (ELEMENT *current, char **line_inout)
               ELEMENT *index_elt;
               if (current->parent->parent
                   && current->parent->parent->parent
-                  && (command_flags(current->parent->parent->parent)
-                      & CF_index_entry_command))
+                  && ((command_flags(current->parent->parent->parent)
+                        & CF_index_entry_command)
+                      || current->parent->parent->parent->cmd == CM_subentry))
                 {
                   index_elt = current->parent->parent->parent;
-                  add_extra_string_dup (index_elt, "sortas",
+                  add_extra_string_dup (index_elt,
+                                        command_name(current->parent->cmd),
                                         e->text.text);
                 }
             }
@@ -492,7 +496,9 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           || current->parent->cmd == CM_hyphenation
           || current->parent->cmd == CM_caption
           || current->parent->cmd == CM_shortcaption
-          || current->parent->cmd == CM_sortas)
+          || current->parent->cmd == CM_sortas
+          || current->parent->cmd == CM_seeentry
+          || current->parent->cmd == CM_seealso)
         {
           ELEMENT *e;
           e = new_element (ET_empty_spaces_after_close_brace);

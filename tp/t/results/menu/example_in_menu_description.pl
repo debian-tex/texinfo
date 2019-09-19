@@ -429,21 +429,9 @@ $result_nodes{'example_in_menu_description'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'example_in_menu_description'}{'node_next'} = $result_nodes{'example_in_menu_description'}{'menu_child'};
-$result_nodes{'example_in_menu_description'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'example_in_menu_description'};
 
 $result_menus{'example_in_menu_description'} = {
   'cmdname' => 'node',
@@ -536,7 +524,7 @@ example
 ';
 
 
-$result_converted{'xml'}->{'example_in_menu_description'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(manual)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'example_in_menu_description'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(manual)</nodenext></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu endspaces=" ">

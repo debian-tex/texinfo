@@ -519,13 +519,13 @@ $result_floats{'float_with_at_commands'}{'entr@\'ee'}[0]{'extra'}{'caption'}{'ex
 
 
 
-$result_converted{'plaintext'}->{'float_with_at_commands'} = 'Ceci est notre premie`re entre\'e.
+$result_converted{'plaintext'}->{'float_with_at_commands'} = 'Ceci est notre première entrée.
 
-entre\'e 1: La premie`re entre\'e est importante
+entrée 1: La première entrée est importante
 
 * Menu:
 
-* entre\'e 1: premie`re entre\'e.          La premie`re entre\'e est ...
+* entrée 1: première entrée.             La première entrée est ...
 
 ';
 

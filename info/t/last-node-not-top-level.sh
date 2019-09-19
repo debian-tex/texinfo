@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f last-node-not-top-level -v scroll-last-node=Top
 
 # Wrap round to top node when last node does not have Top as Up
-printf ']]]Dq' >$pty_type
+printf ']]]Dq' >&7
 timeout_test
 
 grep 'Node: Top' $ginfo_output

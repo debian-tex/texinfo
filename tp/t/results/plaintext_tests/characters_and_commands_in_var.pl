@@ -478,7 +478,7 @@ $result_converted{'plaintext'}->{'characters_and_commands_in_var'} = 'AAA.  DLKS
 
    SOMETHINGF VVAR.
 
-   AAC, R( E` AA.
+   AAÇ R̆ È Å.
 
    AAA(1)
 

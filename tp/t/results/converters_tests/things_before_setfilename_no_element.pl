@@ -1489,6 +1489,11 @@ Ref to anchor *note An anchor::
 Tag Table:
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'things_before_setfilename_no_element'} = [

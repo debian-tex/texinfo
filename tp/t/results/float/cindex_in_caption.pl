@@ -291,6 +291,7 @@ $result_trees{'cindex_in_caption'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -388,26 +389,16 @@ $result_sectioning{'cindex_in_caption'} = {};
 $result_nodes{'cindex_in_caption'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'cindex_in_caption'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'cindex_in_caption'};
 
 $result_menus{'cindex_in_caption'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -494,6 +485,11 @@ Node: Top27
 Ref: label123
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

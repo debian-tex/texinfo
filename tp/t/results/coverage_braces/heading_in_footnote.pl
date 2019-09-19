@@ -202,7 +202,7 @@ $result_converted{'html_text'}->{'heading_in_footnote'} = '<p>T<a id="DOCF1" hre
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>AAA
 </p><span id="H1"></span><h3 class="heading">H1</h3>
 <span id="index-ind-e"></span>

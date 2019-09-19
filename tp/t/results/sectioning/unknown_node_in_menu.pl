@@ -230,20 +230,8 @@ $result_nodes{'unknown_node_in_menu'} = {
         }
       }
     }
-  ],
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  ]
 };
-$result_nodes{'unknown_node_in_menu'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'unknown_node_in_menu'};
 
 $result_menus{'unknown_node_in_menu'} = {
   'cmdname' => 'node',

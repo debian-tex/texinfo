@@ -1,4 +1,4 @@
-# Copyright 2010-2018 Free Software Foundation, Inc.
+# Copyright 2010-2019 Free Software Foundation, Inc.
 #
 # This file is part of GNU Texinfo.
 #
@@ -21,7 +21,7 @@
 value	brace
 
 ##############################################################
-# line 353 - no brace commands - single letter commands
+# no brace commands - single letter commands
 
 *	nobrace
 # space
@@ -148,6 +148,8 @@ exdent				line		LINE_line
 
 item_LINE			line    	LINE_line
 itemx				line		LINE_line
+
+subentry                        line            LINE_line
 
 ##########################################################
 #
@@ -285,7 +287,7 @@ strong		brace	BRACE_style
 sub		brace	BRACE_style
 sup		brace	BRACE_style
 
-# Regular font style commands 595
+# Regular font style commands
 r		brace	BRACE_style
 i		brace	BRACE_style
 b		brace	BRACE_style
@@ -303,6 +305,8 @@ hyphenation	brace,global	BRACE_other
 anchor		brace	1
 errormsg	brace	1
 sortas  	brace	1
+seeentry        brace	1
+seealso  	brace	1
 
 # more code style commands
 indicateurl	brace,code_style	1
@@ -315,7 +319,7 @@ caption		brace	BRACE_context
 shortcaption	brace	BRACE_context
 math		brace	BRACE_context
 
-# explained commands 624
+# explained commands
 abbr		brace	2
 acronym		brace	2
 
@@ -339,11 +343,8 @@ ref		brace,ref	5
 pxref		brace,ref	5
 image		brace		5
 
-# line 660
-
 
 ##########################################################
-# line 687 - "block commands"
 
 # def* commands
 deffn			block,def
@@ -391,7 +392,6 @@ deftypeivarx		line,def,def_alias              LINE_line
 defmethodx		line,def,def_alias              LINE_line
 deftypemethodx		line,def,def_alias              LINE_line
 
-# 760
 multitable		block,blockitem		BLOCK_multitable
 
 # menu commands
@@ -404,7 +404,6 @@ raggedright		block
 flushleft		block
 flushright		block
 
-# 777
 cartouche		block
 group			block
 indentedblock		block
@@ -431,15 +430,12 @@ tex			block,format_raw
 xml			block,format_raw
 docbook			block,format_raw
 
-# raw commands 811
+# raw commands
 verbatim		block		BLOCK_raw
 ignore			block		BLOCK_raw
 macro			block		BLOCK_raw
 rmacro			block		BLOCK_raw
 
-# line 815
-
-# line 831
 table		block,blockitem		1
 ftable		block,blockitem		1
 vtable		block,blockitem		1
@@ -470,7 +466,7 @@ ifcommanddefined	block		BLOCK_conditional
 ifcommandnotdefined	block		BLOCK_conditional
 
 ##########################################################
-# Root commands - line 887
+# Root commands
 node			root,line			LINE_line
 top			root,line,sectioning,global_unique	LINE_line
 chapter			root,line,sectioning		LINE_line

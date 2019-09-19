@@ -2238,18 +2238,7 @@ $result_nodes{'multiple_lang_chapters_texi2html'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'multiple_lang_chapters_texi2html'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'multiple_lang_chapters_texi2html'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'};
 $result_nodes{'multiple_lang_chapters_texi2html'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'multiple_lang_chapters_texi2html'};
@@ -2262,7 +2251,6 @@ $result_nodes{'multiple_lang_chapters_texi2html'}{'menu_child'}{'node_next'}{'no
 $result_nodes{'multiple_lang_chapters_texi2html'}{'menu_child'}{'node_prev'} = $result_nodes{'multiple_lang_chapters_texi2html'};
 $result_nodes{'multiple_lang_chapters_texi2html'}{'menu_child'}{'node_up'} = $result_nodes{'multiple_lang_chapters_texi2html'};
 $result_nodes{'multiple_lang_chapters_texi2html'}{'node_next'} = $result_nodes{'multiple_lang_chapters_texi2html'}{'menu_child'};
-$result_nodes{'multiple_lang_chapters_texi2html'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'multiple_lang_chapters_texi2html'};
 
 $result_menus{'multiple_lang_chapters_texi2html'} = {
   'cmdname' => 'node',

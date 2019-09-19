@@ -1613,7 +1613,7 @@ kill (pid_t pid, int sig)
     {
       switch (sig)
 	{
-	RETSIGTYPE (*old_INT)(int), (*old_QUIT)(int);
+	  void (*old_INT)(int), (*old_QUIT)(int);
 
 	case SIGINT:
 #ifdef __DJGPP__

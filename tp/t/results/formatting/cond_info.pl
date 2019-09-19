@@ -417,20 +417,8 @@ $result_nodes{'cond_info'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'cond_info'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'cond_info'};
 
 $result_menus{'cond_info'} = {
   'cmdname' => 'node',
@@ -461,6 +449,11 @@ Tag Table:
 Node: Top65
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

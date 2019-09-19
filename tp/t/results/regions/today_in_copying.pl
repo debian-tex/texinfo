@@ -272,20 +272,8 @@ $result_nodes{'today_in_copying'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'today_in_copying'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'today_in_copying'};
 
 $result_menus{'today_in_copying'} = {
   'cmdname' => 'node',
@@ -316,6 +304,11 @@ Tag Table:
 Node: Top41
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

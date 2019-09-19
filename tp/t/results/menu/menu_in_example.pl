@@ -685,20 +685,8 @@ $result_nodes{'menu_in_example'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'menu_in_example'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'menu_in_example'};
 
 $result_menus{'menu_in_example'} = {
   'cmdname' => 'node',
@@ -809,7 +797,7 @@ $result_converted_errors{'html'}->{'menu_in_example'} = [
 
 
 
-$result_converted{'xml'}->{'menu_in_example'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'menu_in_example'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <example endspaces=" ">
 <menu endspaces=" ">

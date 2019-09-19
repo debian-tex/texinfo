@@ -855,23 +855,11 @@ $result_nodes{'two_footnotes_in_nodes_separated'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'two_footnotes_in_nodes_separated'}{'menu_child'}{'node_prev'} = $result_nodes{'two_footnotes_in_nodes_separated'};
 $result_nodes{'two_footnotes_in_nodes_separated'}{'menu_child'}{'node_up'} = $result_nodes{'two_footnotes_in_nodes_separated'};
 $result_nodes{'two_footnotes_in_nodes_separated'}{'node_next'} = $result_nodes{'two_footnotes_in_nodes_separated'}{'menu_child'};
-$result_nodes{'two_footnotes_in_nodes_separated'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'two_footnotes_in_nodes_separated'};
 
 $result_menus{'two_footnotes_in_nodes_separated'} = {
   'cmdname' => 'node',

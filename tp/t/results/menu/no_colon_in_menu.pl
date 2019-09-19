@@ -183,20 +183,8 @@ $result_nodes{'no_colon_in_menu'} = {
         }
       }
     }
-  ],
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  ]
 };
-$result_nodes{'no_colon_in_menu'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'no_colon_in_menu'};
 
 $result_menus{'no_colon_in_menu'} = {
   'cmdname' => 'node',
@@ -275,7 +263,7 @@ $result_converted_errors{'html'}->{'no_colon_in_menu'} = [
 
 
 
-$result_converted{'xml'}->{'no_colon_in_menu'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'no_colon_in_menu'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <menu endspaces=" ">
 <menucomment><pre xml:space="preserve">* a

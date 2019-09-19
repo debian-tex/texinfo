@@ -104,20 +104,8 @@ $result_nodes{'node_and_bye'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'node_and_bye'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'node_and_bye'};
 
 $result_menus{'node_and_bye'} = {
   'cmdname' => 'node',
@@ -150,7 +138,7 @@ $result_directions_text{'node_and_bye'} = 'element: No associated command (type 
 ';
 
 
-$result_converted{'xml'}->{'node_and_bye'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'node_and_bye'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <bye></bye>
 ';

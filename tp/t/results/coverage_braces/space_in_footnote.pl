@@ -80,7 +80,7 @@ $result_converted{'html_text'}->{'space_in_footnote'} = '<p>text<a id="DOCF1" hr
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>in footnote.</p>
 </div>
 ';

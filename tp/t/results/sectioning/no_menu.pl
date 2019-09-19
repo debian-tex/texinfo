@@ -469,20 +469,8 @@ $result_nodes{'no_menu'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'no_menu'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'no_menu'};
 
 $result_menus{'no_menu'} = {
   'cmdname' => 'node',
@@ -534,6 +522,11 @@ Node: c2145
 Node: c3209
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -574,7 +567,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+ &nbsp; </p>
 </div>
 <span id="SEC_Top"></span>
 <table class="menu" border="0" cellspacing="0">

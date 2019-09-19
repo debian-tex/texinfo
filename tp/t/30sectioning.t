@@ -500,7 +500,7 @@ my $character_and_spaces_in_refs_text = '@node Top
 @ref{:,,,manual}
 @ref{ top ,,, manual}
 @ref{(texinfo)Cross References}
-@ref{node,,, ../manual/doc.texi}
+@ref{node,,, ../manual/doc}
 
 @subheading Testing local nodes
 
@@ -1128,7 +1128,7 @@ $unnumbered_top_without_node_text,
 @end menu
 
 @node first
-',{'TOP_NODE_UP' => ''}
+',{},{'TOP_NODE_UP' => ''}
 ],
 ['node_up_direction_for_top_with_manual',
 '@node Top,,,(dir)top
@@ -1142,7 +1142,7 @@ $unnumbered_top_without_node_text,
 @end menu
 
 @node first
-',{'TOP_NODE_UP' => 'node@@ node', 'test_split' => 'node'}
+',{'test_split' => 'node'}, {'TOP_NODE_UP' => 'node@@ node'}
 ],
 ['top_node_up_url',
 '@node Top
@@ -1153,8 +1153,9 @@ $unnumbered_top_without_node_text,
 @end menu
 
 @node first
-',{'TOP_NODE_UP' => '@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals', 
-   'test_split' => 'node'}, {'TOP_NODE_UP_URL' => 'http://www.gnu.org/manual/'}
+',{'test_split' => 'node'}, 
+  {'TOP_NODE_UP' => '@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals', 
+   'TOP_NODE_UP_URL' => 'http://www.gnu.org/manual/'}
 ],
 ['non_automatic_top_node_up_url',
 '@node Top, first, (dir), (dir)
@@ -1176,8 +1177,8 @@ $unnumbered_top_without_node_text,
 @end menu
 
 @node first, , Top, @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals
-',{'TOP_NODE_UP' => '@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals',
-   'test_split' => 'node'}
+',{'test_split' => 'node'}, 
+  {'TOP_NODE_UP' => '@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals'}
 ],
 ['non_automatic_top_node_up_and_url',
 '@node Top, first, @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals, @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals
@@ -1188,9 +1189,9 @@ $unnumbered_top_without_node_text,
 @end menu
 
 @node first, , Top, @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals
-',{'TOP_NODE_UP' => '@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals',
-  'test_split' => 'node'},
-  {'TOP_NODE_UP_URL' => 'http://www.gnu.org/manual/'}
+',{'test_split' => 'node'},
+  {'TOP_NODE_UP' => '@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals',
+   'TOP_NODE_UP_URL' => 'http://www.gnu.org/manual/'}
 ],
 ['protected_node_parentheses',
 '

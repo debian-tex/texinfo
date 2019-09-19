@@ -17,10 +17,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 6.5.93\n"
+"Project-Id-Version: texinfo 6.6.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-02-16 17:15+0000\n"
-"PO-Revision-Date: 2019-02-12 21:44+01:00\n"
+"POT-Creation-Date: 2019-09-17 18:48+0100\n"
+"PO-Revision-Date: 2019-08-20 20:35+02:00\n"
 "Last-Translator: Petr Pisar <petr.pisar@atlas.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "Language: cs\n"
@@ -254,7 +254,6 @@ msgid "Insert completion"
 msgstr "Vložení doplnění"
 
 #: info/echo-area.c:1268
-#, c-format
 msgid "Building completions..."
 msgstr "Sestavují se doplnění…"
 
@@ -278,7 +277,6 @@ msgid "found file %s"
 msgstr "soubor %s nalezen"
 
 #: info/footnotes.c:229
-#, c-format
 msgid "Footnotes could not be displayed"
 msgstr "Poznámky pod čarou nebylo možné zobrazit"
 
@@ -292,7 +290,6 @@ msgid "---------- Footnotes ----------"
 msgstr "---------- Poznámky pod čarou ----------"
 
 #: info/indices.c:121 info/indices.c:877
-#, c-format
 msgid "Finding index entries..."
 msgstr "Hledají se položky rejstříku…"
 
@@ -301,7 +298,6 @@ msgid "Look up a string in the index for this file"
 msgstr "Vyhledání řetězce v rejstříku tohoto souboru"
 
 #: info/indices.c:213
-#, c-format
 msgid "No indices found"
 msgstr "Nenalezen žádný rejstřík"
 
@@ -310,7 +306,6 @@ msgid "Index entry: "
 msgstr "Položka rejstříku: "
 
 #: info/indices.c:320 info/indices.c:883
-#, c-format
 msgid "No indices found."
 msgstr "Žádný rejstřík nebyl nalezen."
 
@@ -327,7 +322,6 @@ msgstr ""
 "„\\[index-search]“"
 
 #: info/indices.c:457
-#, c-format
 msgid "No previous index search string"
 msgstr "Žádný předchozí řetězec, který se měl vyhledávat v rejstříku"
 
@@ -392,7 +386,6 @@ msgid "No available info files have '%s' in their indices"
 msgstr "Žádné dostupné info soubory nemají ve svých rejstřících „%s“"
 
 #: info/info-utils.c:878
-#, c-format
 msgid "Error converting file character encoding"
 msgstr "Chyba při převodu kódování znaků souboru"
 
@@ -407,7 +400,6 @@ msgid "Cannot find node '%s'"
 msgstr "Uzel „%s“ nelze nalézt"
 
 #: info/info.c:437
-#, c-format
 msgid "No program name given"
 msgstr "Nezadán žádný název programu"
 
@@ -436,7 +428,7 @@ msgstr "hodnota %s není platná pro proměnnou %s"
 msgid "Try --help for more information.\n"
 msgstr "Více informací můžete získat pomocí přepínače --help.\n"
 
-#: info/info.c:859 install-info/install-info.c:2236 tp/texi2any.pl:819
+#: info/info.c:859 install-info/install-info.c:2236 tp/texi2any.pl:795
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -572,7 +564,7 @@ msgstr ""
 "  info -f ./foo.info           zobrazí soubor ./foo.info, adresář se\n"
 "                               neprohledává"
 
-#: info/info.c:1147 install-info/install-info.c:613 tp/texi2any.pl:807
+#: info/info.c:1147 install-info/install-info.c:613 tp/texi2any.pl:783
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -882,17 +874,14 @@ msgid "could not open init file %s"
 msgstr "inicializační soubor %s nebylo možné otevřít"
 
 #: info/infokey.c:227
-#, c-format
 msgid "key sequence too long"
 msgstr "posloupnost kláves je příliš dlouhá"
 
 #: info/infokey.c:304
-#, c-format
 msgid "missing key sequence"
 msgstr "chybí posloupnost kláves"
 
 #: info/infokey.c:384
-#, c-format
 msgid "NUL character (\\000) not permitted"
 msgstr "znak NULL (\\000) není dovolen"
 
@@ -902,12 +891,10 @@ msgid "NUL character (^%c) not permitted"
 msgstr "znak NULL (^%c) není dovolen"
 
 #: info/infokey.c:436
-#, c-format
 msgid "missing action name"
 msgstr "chybí název úkonu"
 
 #: info/infokey.c:454
-#, c-format
 msgid "cannot bind key sequence to menu-digit"
 msgstr "posloupnost kláves nelze navázat na číslici nabídky"
 
@@ -917,7 +904,6 @@ msgid "unknown action `%s'"
 msgstr "neznámý úkon „%s“"
 
 #: info/infokey.c:503
-#, c-format
 msgid "action name too long"
 msgstr "název úkonu je příliš dlouhý"
 
@@ -927,22 +913,18 @@ msgid "extra characters following action `%s'"
 msgstr "po úkonu „%s“ následují zbytečné znaky"
 
 #: info/infokey.c:527
-#, c-format
 msgid "missing variable name"
 msgstr "chybí název proměnné"
 
 #: info/infokey.c:536
-#, c-format
 msgid "missing `=' immediately after variable name"
 msgstr "bezprostředně po názvu proměnné chybí „=“"
 
 #: info/infokey.c:543
-#, c-format
 msgid "variable name too long"
 msgstr "název proměnné je příliš dlouhý"
 
 #: info/infokey.c:567
-#, c-format
 msgid "value too long"
 msgstr "hodnota je příliš dlouhá"
 
@@ -964,7 +946,6 @@ msgid "Read a command name in the echo area and execute it"
 msgstr "Zadání jména příkazu v zobrazovacím poli a jeho vykonání"
 
 #: info/m-x.c:134
-#, c-format
 msgid "Cannot execute an 'echo-area' command here"
 msgstr "Zde nelze vykonat příkaz zobrazovacího pole"
 
@@ -1047,7 +1028,6 @@ msgid "Show all matching files"
 msgstr "Zobrazit všechny odpovídající soubory"
 
 #: info/session.c:63
-#, c-format
 msgid "No file index"
 msgstr "Žádný rejstřík souborů"
 
@@ -1358,7 +1338,6 @@ msgid "Select the most recently selected node"
 msgstr "Zobrazení poslední dobou nejvíce navštěvovaných uzlů"
 
 #: info/session.c:3640
-#, c-format
 msgid "No earlier node in history"
 msgstr "V historii není dřívější uzel"
 
@@ -1419,12 +1398,10 @@ msgid "Toggle the usage of regular expressions in searches"
 msgstr "Změna použití regulárních výrazů v hledání"
 
 #: info/session.c:3908
-#, c-format
 msgid "Using regular expressions for searches"
 msgstr "Vyhledávání regulárním výrazem"
 
 #: info/session.c:3909
-#, c-format
 msgid "Using literal strings for searches"
 msgstr "Vyhledávání doslovným řetězcem"
 
@@ -1441,8 +1418,7 @@ msgstr "Hledání pokračovalo od začátku dokumentu"
 msgid "Searching subfile %s ..."
 msgstr "Probíhá hledání podsouboru %s…"
 
-#: info/session.c:4175 info/session.c:4438 info/session.c:4551
-#, c-format
+#: info/session.c:4175 info/session.c:4441 info/session.c:4554
 msgid "Search failed"
 msgstr "Hledání selhalo"
 
@@ -1476,140 +1452,138 @@ msgstr "%s%s%s: "
 msgid "Search string too short"
 msgstr "Hledaný řetězec je příliš krátký"
 
-#: info/session.c:4409
+#: info/session.c:4412
 #, c-format
 msgid "Going back to last match from %s"
 msgstr "Návrat zpět na poslední shodu %s"
 
-#: info/session.c:4438 info/session.c:4551
-#, c-format
+#: info/session.c:4441 info/session.c:4554
 msgid "No more matches"
 msgstr "Žádné další shody"
 
-#: info/session.c:4578
+#: info/session.c:4581
 msgid "Search this node and subnodes for a string"
 msgstr "Prohledat tento uzel a poduzly na řetězec"
 
 #. TRANSLATORS: %s is the title of a node.
-#: info/session.c:4585
+#: info/session.c:4588
 #, c-format
 msgid "Search under %s: "
 msgstr "Hledání pod %s: "
 
-#: info/session.c:4600
+#: info/session.c:4603
 msgid "Go to next match in Info sub-tree"
 msgstr "Přesun na další shodu v podstromě Infa"
 
-#: info/session.c:4604 info/session.c:4616
-#, c-format
+#: info/session.c:4607 info/session.c:4619
 msgid "No active search"
 msgstr "Hledání není aktivní"
 
-#: info/session.c:4612
+#: info/session.c:4615
 msgid "Go to previous match in Info sub-tree"
 msgstr "Přesun na předchozí shodu v podstromě Infa"
 
-#: info/session.c:4625
+#: info/session.c:4628
 msgid "Read a string and search for it case-sensitively"
 msgstr "Přečtení řetězce a jeho vyhledání (záleží na velikosti písmen)"
 
-#: info/session.c:4630
+#: info/session.c:4633
 msgid "Read a string and search for it"
 msgstr "Přečtení řetězce a jeho vyhledání"
 
-#: info/session.c:4636
+#: info/session.c:4639
 msgid "Read a string and search backward for it"
 msgstr "Přečtení řetězce a jeho vyhledání (zpětné)"
 
-#: info/session.c:4644
+#: info/session.c:4647
 msgid "Repeat last search in the same direction"
 msgstr "Opakování posledního hledání tím samým směrem"
 
-#: info/session.c:4652 info/session.c:4697
+#: info/session.c:4661 info/session.c:4712
 msgid "No previous search string"
 msgstr "Není předchozí hledaný řetězec"
 
-#: info/session.c:4689
+#: info/session.c:4698
 msgid "Repeat last search in the reverse direction"
 msgstr "Opakování posledního hledání opačným směrem"
 
-#: info/session.c:4736
+#: info/session.c:4751
 msgid "Clear displayed search matches"
 msgstr "Odstraní zobrazené výsledky hledání"
 
-#: info/session.c:4752 info/session.c:4758
+#: info/session.c:4767 info/session.c:4773
 msgid "Search interactively for a string as you type it"
 msgstr "Vyhledávání zadávaného řetězce hned při zadávání"
 
-#: info/session.c:4878
+#: info/session.c:4893
 msgid "Regexp I-search backward: "
 msgstr "Zpětné interaktivní hledání regulárním výrazem: "
 
-#: info/session.c:4879
+#: info/session.c:4894
 msgid "I-search backward: "
 msgstr "Zpětné interaktivní hledání: "
 
-#: info/session.c:4881
+#: info/session.c:4896
 msgid "Regexp I-search: "
 msgstr "Interaktivní hledání regulárním výrazem: "
 
-#: info/session.c:4882
+#: info/session.c:4897
 msgid "I-search: "
 msgstr "Interaktivní hledání: "
 
-#: info/session.c:4907 info/session.c:4910
+#: info/session.c:4922 info/session.c:4925
 msgid "Failing "
 msgstr "Bezvýsledné "
 
-#: info/session.c:5275
+#: info/session.c:5290
 msgid "Cancel current operation"
 msgstr "Zrušení aktuální operace"
 
-#: info/session.c:5282
+#: info/session.c:5297
 msgid "Quit"
 msgstr "Ukončení operace"
 
-#: info/session.c:5287
+#: info/session.c:5302
 msgid "Display version of Info being run"
 msgstr "Zobrazí verzi spuštěného Infa"
 
-#: info/session.c:5289
+#: info/session.c:5304
 #, c-format
 msgid "GNU Info version %s"
 msgstr "GNU Info verze %s"
 
-#: info/session.c:5294
+#: info/session.c:5309
 msgid "Redraw the display"
 msgstr "Překreslení obrazovky"
 
-#: info/session.c:5331
+#: info/session.c:5346
 msgid "Quit using Info"
 msgstr "Ukončení Infa"
 
-#: info/session.c:5347
+#: info/session.c:5362
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Spuštění příkazu navázaného na malý znak této klávesy"
 
-#: info/session.c:5358
+#: info/session.c:5373
 #, c-format
 msgid "Unknown command (%s)"
 msgstr "Neznámý příkaz (%s)"
 
-#: info/session.c:5361
+#: info/session.c:5376
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "„%s“ je neplatné"
 
-#: info/session.c:5362
+#: info/session.c:5377
 #, c-format
 msgid "'%s' is invalid"
 msgstr "„%s“ je neplatné"
 
-#: info/session.c:5680
+#: info/session.c:5695
 msgid "Add this digit to the current numeric argument"
 msgstr "Přidání této číslice do aktuálního číselného argumentu"
 
-#: info/session.c:5687
+#: info/session.c:5702
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Začátek (nebo dělení čtyřmi) aktuálního číselného argumentu"
 
@@ -1965,12 +1939,10 @@ msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: nebylo možno přečíst (%s) a vytvořit (%s)"
 
 #: install-info/install-info.c:1151 install-info/install-info.c:1191
-#, c-format
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY bez odpovídajícího END-INFO-DIR-ENTRY"
 
 #: install-info/install-info.c:1186
-#, c-format
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY bez předchozího START-INFO-DIR-ENTRY"
 
@@ -2000,13 +1972,11 @@ msgid "excess command line argument `%s'"
 msgstr "nadbytečný argument „%s“ v příkazovém řádku"
 
 #: install-info/install-info.c:2278
-#, c-format
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Vstupní soubor nezadán; použitím přepínače --help získáte bližší informace."
 
 #: install-info/install-info.c:2280
-#, c-format
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Adresář nebyl zadán; použitím přepínače „--help“ získáte bližší informace"
@@ -2026,23 +1996,23 @@ msgstr "v Info adresáři „%s“ není žádná položka"
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "pro „%s“ nebyly nalezeny žádné položky"
 
-#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:833
-#: tp/Texinfo/Convert/Converter.pm:871 tp/Texinfo/Convert/Converter.pm:1159
-#: tp/Texinfo/Convert/DocBook.pm:318 tp/Texinfo/Convert/HTML.pm:6596
-#: tp/Texinfo/Convert/HTML.pm:6620 tp/Texinfo/Convert/HTML.pm:7001
-#: tp/Texinfo/Convert/HTML.pm:7060 tp/Texinfo/Convert/HTML.pm:7139
-#: tp/Texinfo/Convert/HTML.pm:7217 tp/Texinfo/Convert/IXIN.pm:286
-#: tp/Texinfo/Convert/Info.pm:296 tp/Texinfo/Convert/TexinfoXML.pm:451
+#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:796
+#: tp/Texinfo/Convert/Converter.pm:834 tp/Texinfo/Convert/Converter.pm:1109
+#: tp/Texinfo/Convert/DocBook.pm:318 tp/Texinfo/Convert/HTML.pm:6607
+#: tp/Texinfo/Convert/HTML.pm:6631 tp/Texinfo/Convert/HTML.pm:7009
+#: tp/Texinfo/Convert/HTML.pm:7068 tp/Texinfo/Convert/HTML.pm:7146
+#: tp/Texinfo/Convert/IXIN.pm:286 tp/Texinfo/Convert/Info.pm:297
+#: tp/Texinfo/Convert/TexinfoXML.pm:451
 #, perl-format
 msgid "could not open %s for writing: %s"
 msgstr "%s nebylo možno otevřít pro zápis: %s"
 
-#: tp/Texinfo/Common.pm:892
+#: tp/Texinfo/Common.pm:887
 msgid ""
 "move your @contents command if you want the contents after the title page"
 msgstr "přesune příkaz @contents, chcete-li obsah za stránkou s nadpisem"
 
-#: tp/Texinfo/Common.pm:895
+#: tp/Texinfo/Common.pm:890
 msgid ""
 "move your @shortcontents and @contents commands if you want the contents "
 "after the title page"
@@ -2050,580 +2020,561 @@ msgstr ""
 "přesune příkazy @shortcontents a @contents, chcete-li obsah za stránkou "
 "s nadpisem"
 
-#: tp/Texinfo/Common.pm:1152
-#, perl-format
+#: tp/Texinfo/Common.pm:1149 tp/Texinfo/XS/parsetexi/end_line.c:1607
+#: tp/Texinfo/XS/parsetexi/end_line.c:1617
+#, c-format, perl-format
 msgid "%s is not a valid language code"
 msgstr "%s není platný kód jazyka"
 
-#: tp/Texinfo/Common.pm:1157
-#, perl-format
+#: tp/Texinfo/Common.pm:1154 tp/Texinfo/XS/parsetexi/end_line.c:1634
+#, c-format, perl-format
 msgid "%s is not a valid region code"
 msgstr "%s není platný kód oblasti"
 
-#: tp/Texinfo/Common.pm:1174
+#: tp/Texinfo/Common.pm:1171
 #, perl-format
 msgid "%s is not a valid split possibility"
 msgstr "%s není platná možnost dělení"
 
-#: tp/Texinfo/Common.pm:1196
+#: tp/Texinfo/Common.pm:1193
 #, perl-format
 msgid "could not read %s: %s"
 msgstr "%s nebylo možné přečíst: %s"
 
-#: tp/Texinfo/Common.pm:1216
+#: tp/Texinfo/Common.pm:1213
 #, perl-format
 msgid "error on closing @verbatiminclude file %s: %s"
 msgstr "chyba při zavírání @verbatiminclude souboru %s: %s"
 
-#: tp/Texinfo/Common.pm:1222 tp/Texinfo/ParserNonXS.pm:2980
+#: tp/Texinfo/Common.pm:1219 tp/Texinfo/ParserNonXS.pm:2971
 #, perl-format
 msgid "@%s: could not find %s"
 msgstr "@%s: nebylo možné nalézt %s"
 
-#: tp/Texinfo/Common.pm:1714
-msgid "no node to be renamed"
-msgstr "žádný uzel nemá být přejmenován"
-
-#: tp/Texinfo/Common.pm:1725
-msgid "nodes without a new name at the end of file"
-msgstr "uzly bez nového názvu na konci souboru"
-
-#: tp/Texinfo/Common.pm:1735 tp/Texinfo/ParserNonXS.pm:777
-#, perl-format
-msgid "could not open %s: %s"
-msgstr "%s nebylo možné otevřít: %s"
-
-#: tp/Texinfo/Common.pm:1755
-#, perl-format
-msgid "using a renamed nodes file (`%s') is deprecated"
-msgstr "používání souborů s přejmenovanými uzly („%s“) je zastaralé"
-
-#: tp/Texinfo/Common.pm:2254
+#: tp/Texinfo/Common.pm:2198
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr "v @%s nebylo možno ochránit znak křížku"
 
-#: tp/Texinfo/Common.pm:2636
+#: tp/Texinfo/Common.pm:2580
 #, perl-format
 msgid "empty node name after expansion `%s'"
 msgstr "prázdný název uzly po expanzi „%s“"
 
-#: tp/Texinfo/Common.pm:2644
+#: tp/Texinfo/Common.pm:2588
 #, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "@%s „%s“ již bylo definováno"
 
-#: tp/Texinfo/Common.pm:2650
+#: tp/Texinfo/Common.pm:2594
 #, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "zde je předchozí definice jako @%s"
 
-#: tp/Texinfo/Common.pm:2669 tp/Texinfo/ParserNonXS.pm:3273
-#, perl-format
+#: tp/Texinfo/Common.pm:2613 tp/Texinfo/ParserNonXS.pm:3258
+#: tp/Texinfo/XS/parsetexi/end_line.c:47
+#, c-format, perl-format
 msgid "empty argument in @%s"
 msgstr "špatný argument v @%s"
 
-#: tp/Texinfo/Convert/Converter.pm:772
+#: tp/Texinfo/Convert/Converter.pm:742
 #, perl-format
 msgid "%s: output incompatible with split"
 msgstr "%s: výstup není kompatibilní s dělením"
 
-#: tp/Texinfo/Convert/Converter.pm:854 tp/Texinfo/Convert/Converter.pm:887
-#: tp/Texinfo/Convert/DocBook.pm:354 tp/Texinfo/Convert/HTML.pm:7027
-#: tp/Texinfo/Convert/HTML.pm:7086 tp/Texinfo/Convert/IXIN.pm:909
-#: tp/Texinfo/Convert/Info.pm:159 tp/Texinfo/Convert/Info.pm:185
-#: tp/Texinfo/Convert/Info.pm:213 tp/Texinfo/Convert/Info.pm:276
-#: tp/Texinfo/Convert/TexinfoXML.pm:470 tp/Texinfo/ParserNonXS.pm:1827
+#: tp/Texinfo/Convert/Converter.pm:817 tp/Texinfo/Convert/Converter.pm:850
+#: tp/Texinfo/Convert/DocBook.pm:354 tp/Texinfo/Convert/HTML.pm:7035
+#: tp/Texinfo/Convert/HTML.pm:7094 tp/Texinfo/Convert/IXIN.pm:909
+#: tp/Texinfo/Convert/Info.pm:160 tp/Texinfo/Convert/Info.pm:186
+#: tp/Texinfo/Convert/Info.pm:214 tp/Texinfo/Convert/Info.pm:277
+#: tp/Texinfo/Convert/TexinfoXML.pm:470 tp/Texinfo/ParserNonXS.pm:1813
 #, perl-format
 msgid "error on closing %s: %s"
 msgstr "chyba při zavírání %s: %s"
 
-#: tp/Texinfo/Convert/Converter.pm:965
+#: tp/Texinfo/Convert/Converter.pm:928
 #, perl-format
 msgid "could not create directories `%s' or `%s': %s"
 msgstr "adresáře „%s“ nebo „%s„ nebylo možné vytvořit: %s"
 
-#: tp/Texinfo/Convert/Converter.pm:973
+#: tp/Texinfo/Convert/Converter.pm:936
 #, perl-format
 msgid "could not create directory `%s': %s"
 msgstr "adresář „%s“ nebylo možno vytvořit: %s"
 
-#: tp/Texinfo/Convert/DocBook.pm:993
+#: tp/Texinfo/Convert/DocBook.pm:1022
 #, perl-format
 msgid "@image file `%s' not found, using `%s'"
 msgstr "@image soubor „%s“ nenalezen, použije se „%s“"
 
-#: tp/Texinfo/Convert/DocBook.pm:1113 tp/Texinfo/ParserNonXS.pm:4982
+#: tp/Texinfo/Convert/DocBook.pm:1142 tp/Texinfo/ParserNonXS.pm:5016
+#: tp/Texinfo/XS/parsetexi/separator.c:427
 msgid "no argument specified for @U"
 msgstr "pro @U nebyl zadán žádný argument"
 
-#: tp/Texinfo/Convert/HTML.pm:1719
+#: tp/Texinfo/Convert/HTML.pm:1752
 #, perl-format
 msgid "@image file `%s' (for HTML) not found, using `%s'"
 msgstr "@image soubor „%s“ (pro HTML) nenalezen, použije se „%s“"
 
-#: tp/Texinfo/Convert/HTML.pm:2404
+#: tp/Texinfo/Convert/HTML.pm:2421
 #, perl-format
 msgid "raw format %s is not converted"
 msgstr "syrový formát %s není převeden"
 
-#: tp/Texinfo/Convert/HTML.pm:4647
+#: tp/Texinfo/Convert/HTML.pm:4665
 #, perl-format
 msgid "could not open html refs config file %s: %s"
 msgstr "nebylo možné otevřít konfigurační soubor s HTML odkazy %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:4675
+#: tp/Texinfo/Convert/HTML.pm:4693
 msgid "missing type"
 msgstr "chybí typ"
 
-#: tp/Texinfo/Convert/HTML.pm:4678
+#: tp/Texinfo/Convert/HTML.pm:4696
 #, perl-format
 msgid "unrecognized type: %s"
 msgstr "nerozpoznaný typ: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:4695
+#: tp/Texinfo/Convert/HTML.pm:4713
 #, perl-format
 msgid "error on closing html refs config file %s: %s"
 msgstr "chyba při zavírání konfiguračního souboru s HTML odkazy %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5022
+#: tp/Texinfo/Convert/HTML.pm:5034
 msgid "string not closed in css file"
 msgstr "řetězec nebí uzavřen v souboru CSS"
 
-#: tp/Texinfo/Convert/HTML.pm:5024
+#: tp/Texinfo/Convert/HTML.pm:5036
 msgid "--css-include ended in comment"
 msgstr "--css-include končil v komentáři"
 
-#: tp/Texinfo/Convert/HTML.pm:5026
+#: tp/Texinfo/Convert/HTML.pm:5038
 msgid "@import not finished in css file"
 msgstr "@import nebyl dokončen v souboru CSS"
 
-#: tp/Texinfo/Convert/HTML.pm:5052
+#: tp/Texinfo/Convert/HTML.pm:5064
 #, perl-format
 msgid "CSS file %s not found"
 msgstr "CSS soubor %s nenalezen"
 
-#: tp/Texinfo/Convert/HTML.pm:5058
+#: tp/Texinfo/Convert/HTML.pm:5070
 #, perl-format
 msgid "could not open --include-file %s: %s"
 msgstr "nebylo možné otevřít --include-file %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5068
+#: tp/Texinfo/Convert/HTML.pm:5080
 #, perl-format
 msgid "error on closing CSS file %s: %s"
 msgstr "chyba při zavírání CSS souboru %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5882 tp/Texinfo/Convert/HTML.pm:5886
+#: tp/Texinfo/Convert/HTML.pm:5867 tp/Texinfo/Convert/HTML.pm:5871
 #, perl-format
 msgid "no htmlxref.cnf entry found for `%s'"
 msgstr "pro „%s“ nenalezena žádná položka htmlxref.cnf"
 
-#: tp/Texinfo/Convert/HTML.pm:6591
+#: tp/Texinfo/Convert/HTML.pm:6602
 #, perl-format
 msgid "error on closing frame file %s: %s"
 msgstr "chyba při zavírání rámcového souboru %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:6615
+#: tp/Texinfo/Convert/HTML.pm:6626
 #, perl-format
 msgid "error on closing TOC frame file %s: %s"
 msgstr "chyba při zavírání rámcového souboru s obsahem %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:6730
+#: tp/Texinfo/Convert/HTML.pm:6742
 #, perl-format
 msgid "handler %s of stage %s priority %s failed"
 msgstr "deskriptor %s úrovně %s priority %s selhal"
 
-#: tp/Texinfo/Convert/HTML.pm:6935
+#: tp/Texinfo/Convert/HTML.pm:6943
 msgid "must specify a title with a title command or @top"
 msgstr "je třeba určit název pomocí příkazu title nebo @top"
 
-#: tp/Texinfo/Convert/HTML.pm:7146
+#: tp/Texinfo/Convert/HTML.pm:7153
 #, perl-format
 msgid "error on closing redirection node file %s: %s"
 msgstr "chyba při zavírání souboru s uzly přesměrování %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:7172
-#, perl-format
-msgid "old name for `%s' is a node of the document"
-msgstr "starý název pro „%s“ je uzel dokumentu"
-
-#: tp/Texinfo/Convert/HTML.pm:7178
-#, perl-format
-msgid "file empty for renamed node `%s'"
-msgstr "soubor pro přejmenovaný uzel „%s“ je prázdný"
-
-#: tp/Texinfo/Convert/HTML.pm:7192
-#, perl-format
-msgid "target node (new name for `%s') not in document: %s"
-msgstr "cílový uzel (nový název pro „%s“ není v dokumentu: %s"
-
-#: tp/Texinfo/Convert/HTML.pm:7224
-#, perl-format
-msgid "error on closing renamed node redirection file %s: %s"
-msgstr "chyba při zavírání souboru %s s přejmenovanými uzly přesměrování: %s"
-
-#: tp/Texinfo/Convert/HTML.pm:7262
-msgid "empty node name"
-msgstr "prázdný název uzlu"
-
-#: tp/Texinfo/Convert/HTML.pm:7264 tp/Texinfo/ParserNonXS.pm:3286
-#, perl-format
-msgid "syntax for an external node used for `%s'"
-msgstr "syntaxe pro vnější uzel použitý pro „%s“"
-
-#: tp/Texinfo/Convert/Info.pm:104
+#: tp/Texinfo/Convert/Info.pm:105
 msgid "document without nodes"
 msgstr "dokument bez uzlů"
 
-#: tp/Texinfo/Convert/Info.pm:121
+#: tp/Texinfo/Convert/Info.pm:122
 msgid "document without Top node"
 msgstr "dokument bez vrcholového uzlu"
 
-#: tp/Texinfo/Convert/Info.pm:169
+#: tp/Texinfo/Convert/Info.pm:170
 #, perl-format
 msgid "rename %s failed: %s"
 msgstr "přejmenování %s selhalo: %s"
 
-#: tp/Texinfo/Convert/Info.pm:250
+#: tp/Texinfo/Convert/Info.pm:251
 #, perl-format
 msgid "@%s output more than once: %s"
 msgstr "@%s výstup více než jednou: %s"
 
-#: tp/Texinfo/Convert/Info.pm:380
+#: tp/Texinfo/Convert/Info.pm:381
 #, perl-format
 msgid "@%s outside of any node"
 msgstr "@%s mimo jakýkoliv uzel"
 
-#: tp/Texinfo/Convert/Info.pm:423
+#: tp/Texinfo/Convert/Info.pm:424
 #, perl-format
 msgid "@node name should not contain `,': %s"
 msgstr "název @node by neměl obsahovat „,“: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1243
+#: tp/Texinfo/Convert/Plaintext.pm:1259
 #, perl-format
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr "Položka rejstříku v @%s s : vytváří neplatné Info: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1290 tp/Texinfo/ParserNonXS.pm:2412
-#, perl-format
+#: tp/Texinfo/Convert/Plaintext.pm:1306 tp/Texinfo/ParserNonXS.pm:2398
+#: tp/Texinfo/XS/parsetexi/indices.c:324
+#, c-format, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "položka pro rejstřík „%s“ je mimo všechny uzly"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1402
+#: tp/Texinfo/Convert/Plaintext.pm:1419
 #, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "chyba při zavírání textového souboru obrazu %s: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1407
+#: tp/Texinfo/Convert/Plaintext.pm:1424
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "soubor „%s“ v příkazu @image je nečitelný: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1428
+#: tp/Texinfo/Convert/Plaintext.pm:1445
 #, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr "nebylo možné najít ani @image soubor „%s.txt“, ani náhradní text"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1788
+#: tp/Texinfo/Convert/Plaintext.pm:1805
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
 msgstr ""
 "@strong{Note…} vytváří nepatřičné křížové odkazy do Infa; přeformulujte text"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2036
+#: tp/Texinfo/Convert/Plaintext.pm:2053
 #, perl-format
 msgid "@%s cross-reference name should not contain `:'"
 msgstr "název křížového odkazu @%s by neměl obsahovat „:“"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2074
+#: tp/Texinfo/Convert/Plaintext.pm:2091
 #, perl-format
 msgid "@%s node name should not contain `%s'"
 msgstr "název uzlu @%s by neměl obsahovat „%s“"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2107
+#: tp/Texinfo/Convert/Plaintext.pm:2124
 #, perl-format
 msgid "@%s node name should not contain `:'"
 msgstr "název uzlu @%s by neměl obsahovat „:“"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2154
+#: tp/Texinfo/Convert/Plaintext.pm:2171
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "„.“ nebo „,“ musí následovat za @xref, ne za %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2157
+#: tp/Texinfo/Convert/Plaintext.pm:2174
 msgid "`.' or `,' must follow @xref"
 msgstr "„.“ nebo „,“ musí následovat za @xref"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2952
+#: tp/Texinfo/Convert/Plaintext.pm:2978
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "název uzlu položky nabídky by neměl obsahovat „%s“"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2963
+#: tp/Texinfo/Convert/Plaintext.pm:2989
 msgid "menu entry node name should not contain `:'"
 msgstr "název uzlu položky nabídky by neměl obsahovat „:“"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2983
+#: tp/Texinfo/Convert/Plaintext.pm:3009
 msgid "menu entry name should not contain `:'"
 msgstr "název položky nabídky by neměl obsahovat „:“"
 
-#: tp/Texinfo/ParserNonXS.pm:997 tp/Texinfo/Structuring.pm:436
+#: tp/Texinfo/ParserNonXS.pm:762
 #, perl-format
+msgid "could not open %s: %s"
+msgstr "%s nebylo možné otevřít: %s"
+
+#: tp/Texinfo/ParserNonXS.pm:983 tp/Texinfo/Structuring.pm:422
+#: tp/Texinfo/XS/parsetexi/parser.c:242
+#, c-format, perl-format
 msgid "multiple @%s"
 msgstr "násobný @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:1035
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1021 tp/Texinfo/XS/parsetexi/macro.c:181
+#, c-format, perl-format
 msgid "bad or empty @%s formal argument: %s"
 msgstr "chybný nebo prázdný formální argument @%s: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:1045
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1031 tp/Texinfo/XS/parsetexi/macro.c:204
+#, c-format, perl-format
 msgid "bad syntax for @%s argument: %s"
 msgstr "chybná syntaxe v argumentu @%s: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:1052 tp/Texinfo/ParserNonXS.pm:4456
-#: tp/Texinfo/ParserNonXS.pm:4482 tp/Texinfo/ParserNonXS.pm:5289
-#: tp/Texinfo/ParserNonXS.pm:5302 tp/Texinfo/ParserNonXS.pm:5316
+#: tp/Texinfo/ParserNonXS.pm:1038 tp/Texinfo/ParserNonXS.pm:4493
+#: tp/Texinfo/ParserNonXS.pm:4519 tp/Texinfo/ParserNonXS.pm:5325
+#: tp/Texinfo/ParserNonXS.pm:5338 tp/Texinfo/ParserNonXS.pm:5352
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s požaduje jméno"
 
-#: tp/Texinfo/ParserNonXS.pm:1056 tp/Texinfo/ParserNonXS.pm:4459
-#: tp/Texinfo/ParserNonXS.pm:4485 tp/Texinfo/ParserNonXS.pm:5292
-#: tp/Texinfo/ParserNonXS.pm:5305 tp/Texinfo/ParserNonXS.pm:5319
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1042 tp/Texinfo/ParserNonXS.pm:4496
+#: tp/Texinfo/ParserNonXS.pm:4522 tp/Texinfo/ParserNonXS.pm:5328
+#: tp/Texinfo/ParserNonXS.pm:5341 tp/Texinfo/ParserNonXS.pm:5355
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:848
+#: tp/Texinfo/XS/parsetexi/macro.c:101
+#, c-format, perl-format
 msgid "bad name for @%s"
 msgstr "chybný název pro @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:1170
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1156 tp/Texinfo/XS/parsetexi/close.c:42
+#, c-format, perl-format
 msgid "@end %s seen before @%s closing brace"
 msgstr "@end %s se vyskytuje přes uzavírací závorkou @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:1174
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1160 tp/Texinfo/XS/parsetexi/close.c:47
+#, c-format, perl-format
 msgid "@%s seen before @%s closing brace"
 msgstr "@%s se vyskytuje před uzavírací závorkou @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:1179
+#: tp/Texinfo/ParserNonXS.pm:1165
 #, perl-format
 msgid "%c%s missing closing brace"
 msgstr "%c%s chybějící uzavírací závorka"
 
-#: tp/Texinfo/ParserNonXS.pm:1183
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1169 tp/Texinfo/XS/parsetexi/close.c:58
+#, c-format, perl-format
 msgid "@%s missing closing delimiter sequence: %s}"
 msgstr "@%s chybějící uzavírací oddělovací posloupnost: %s}"
 
-#: tp/Texinfo/ParserNonXS.pm:1292
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1278 tp/Texinfo/XS/parsetexi/multitable.c:73
+#, c-format, perl-format
 msgid "@itemx should not begin @%s"
 msgstr "@itemx by nemělo začínat příkazem @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:1358
+#: tp/Texinfo/ParserNonXS.pm:1344 tp/Texinfo/XS/parsetexi/multitable.c:129
 msgid "@itemx must follow @item"
 msgstr "@itemx musí následovat příkaz @item"
 
-#: tp/Texinfo/ParserNonXS.pm:1523
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1509 tp/Texinfo/XS/parsetexi/close.c:232
+#, c-format, perl-format
 msgid "@%s has text but no @item"
 msgstr "@%s má text ale nemá @item"
 
-#: tp/Texinfo/ParserNonXS.pm:1551
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1537 tp/Texinfo/XS/parsetexi/close.c:262
+#, c-format, perl-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "„@end“ vyžadoval „%s“, ale viděl „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:1554
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1540 tp/Texinfo/XS/parsetexi/close.c:268
+#, c-format, perl-format
 msgid "@%s seen before @end %s"
 msgstr "@%s viděn před @end %s"
 
-#: tp/Texinfo/ParserNonXS.pm:1558
+#: tp/Texinfo/ParserNonXS.pm:1544
 #, perl-format
 msgid "no matching `%cend %s'"
 msgstr "chybí odpovídající „%cend %s“"
 
-#: tp/Texinfo/ParserNonXS.pm:1582 tp/Texinfo/ParserNonXS.pm:4822
-#: tp/Texinfo/ParserNonXS.pm:5071
+#: tp/Texinfo/ParserNonXS.pm:1568 tp/Texinfo/ParserNonXS.pm:4856
+#: tp/Texinfo/ParserNonXS.pm:5107
 #, perl-format
 msgid "misplaced %c"
 msgstr "špatně umístěný znak %c"
 
-#: tp/Texinfo/ParserNonXS.pm:1683 tp/Texinfo/ParserNonXS.pm:2932
+#: tp/Texinfo/ParserNonXS.pm:1669 tp/Texinfo/ParserNonXS.pm:2925
 #, perl-format
 msgid "unmatched `%c%s'"
 msgstr "nepárový „%c%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:1900
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1886 tp/Texinfo/XS/parsetexi/macro.c:351
+#, c-format, perl-format
 msgid "macro `%s' called with too many args"
 msgstr "makro „%s“ volané s příliš mnoha argumenty"
 
-#: tp/Texinfo/ParserNonXS.pm:1922
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1908 tp/Texinfo/XS/parsetexi/close.c:52
+#: tp/Texinfo/XS/parsetexi/macro.c:277
+#, c-format, perl-format
 msgid "@%s missing closing brace"
 msgstr "@%s chybějící uzavírací závorka"
 
-#: tp/Texinfo/ParserNonXS.pm:1930
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1916 tp/Texinfo/XS/parsetexi/macro.c:367
+#, c-format, perl-format
 msgid "macro `%s' declared without argument called with an argument"
 msgstr "makro „%s“ deklarované bez argumentu volané s argumentem"
 
-#: tp/Texinfo/ParserNonXS.pm:1963
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1949 tp/Texinfo/XS/parsetexi/macro.c:430
+#, c-format, perl-format
 msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
 msgstr "\\ při expanzi @%s následováno „%s“ místo názvu parametru nebo \\"
 
-#: tp/Texinfo/ParserNonXS.pm:2650
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2643 tp/Texinfo/XS/parsetexi/end_line.c:2182
+#, c-format, perl-format
 msgid "missing name for @%s"
 msgstr "chybí název pro @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:2655
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2648 tp/Texinfo/XS/parsetexi/end_line.c:2128
+#, c-format, perl-format
 msgid "missing category for @%s"
 msgstr "chybí kategorie pro @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:2694
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2687 tp/Texinfo/XS/parsetexi/end_line.c:1054
+#, c-format, perl-format
 msgid "unexpected argument on @%s line: %s"
 msgstr "neočekávaný argument na řádku @%s: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2705
+#: tp/Texinfo/ParserNonXS.pm:2698 tp/Texinfo/XS/parsetexi/end_line.c:1066
 msgid "empty multitable"
 msgstr "prázdná multitabulka"
 
-#: tp/Texinfo/ParserNonXS.pm:2750 tp/Texinfo/ParserNonXS.pm:5386
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2743 tp/Texinfo/ParserNonXS.pm:5422
+#: tp/Texinfo/XS/parsetexi/end_line.c:311
+#: tp/Texinfo/XS/parsetexi/end_line.c:1134
+#, c-format, perl-format
 msgid "superfluous argument to @%s"
 msgstr "přebývající argument u @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:2756 tp/Texinfo/ParserNonXS.pm:5407
-#: tp/Texinfo/ParserNonXS.pm:5424
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2749 tp/Texinfo/ParserNonXS.pm:5443
+#: tp/Texinfo/ParserNonXS.pm:5460 tp/Texinfo/XS/parsetexi/end_line.c:1147
+#, c-format, perl-format
 msgid "bad argument to @%s"
 msgstr "špatný argument u @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:2767
+#: tp/Texinfo/ParserNonXS.pm:2760
 #, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s vyžaduje argument : formátovač pro %citem"
 
-#: tp/Texinfo/ParserNonXS.pm:2771
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2764 tp/Texinfo/XS/parsetexi/end_line.c:1167
+#, c-format, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
 msgstr "příkaz @%s nepřijímající argument v závorce by neměl být na řádku @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:2805
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2798 tp/Texinfo/XS/parsetexi/end_line.c:1225
+#, c-format, perl-format
 msgid "accent command `@%s' not allowed as @%s argument"
 msgstr "zdůrazňovací příkaz „@%s“ není dovolen jako argument @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:2908 tp/Texinfo/ParserNonXS.pm:3056
-#: tp/Texinfo/ParserNonXS.pm:5379
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2901 tp/Texinfo/ParserNonXS.pm:3041
+#: tp/Texinfo/ParserNonXS.pm:5415 tp/Texinfo/XS/parsetexi/end_line.c:304
+#: tp/Texinfo/XS/parsetexi/end_line.c:1333
+#: tp/Texinfo/XS/parsetexi/end_line.c:1724
+#, c-format, perl-format
 msgid "@%s missing argument"
 msgstr "@%s postrádá argument"
 
-#: tp/Texinfo/ParserNonXS.pm:2922
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2915 tp/Texinfo/XS/parsetexi/end_line.c:1352
+#, c-format, perl-format
 msgid "unknown @end %s"
 msgstr "neznámý @end %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2945 tp/Texinfo/ParserNonXS.pm:3559
+#: tp/Texinfo/ParserNonXS.pm:2938 tp/Texinfo/ParserNonXS.pm:3555
 #, perl-format
 msgid "superfluous argument to @%s %s: %s"
 msgstr "přebývající argument u @%s %s: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2951 tp/Texinfo/ParserNonXS.pm:3035
-#: tp/Texinfo/ParserNonXS.pm:5474 tp/Texinfo/ParserNonXS.pm:5519
-#: tp/Texinfo/ParserNonXS.pm:5548 tp/Texinfo/ParserNonXS.pm:5589
-#: tp/Texinfo/ParserNonXS.pm:5667
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2944 tp/Texinfo/ParserNonXS.pm:3020
+#: tp/Texinfo/ParserNonXS.pm:5510 tp/Texinfo/ParserNonXS.pm:5555
+#: tp/Texinfo/ParserNonXS.pm:5584 tp/Texinfo/ParserNonXS.pm:5625
+#: tp/Texinfo/ParserNonXS.pm:5703 tp/Texinfo/XS/parsetexi/end_line.c:515
+#: tp/Texinfo/XS/parsetexi/end_line.c:583
+#: tp/Texinfo/XS/parsetexi/end_line.c:1662
+#, c-format, perl-format
 msgid "bad argument to @%s: %s"
 msgstr "špatný argument u @%s: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2975
+#: tp/Texinfo/ParserNonXS.pm:2966
 #, perl-format
 msgid "@%s: could not open %s: %s"
 msgstr "@%s: nebylo možné otevřít %s: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2991
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2982 tp/Texinfo/XS/parsetexi/end_line.c:1485
+#, c-format, perl-format
 msgid "encoding `%s' is not a canonical texinfo encoding"
 msgstr "kódování „%s“ není kanonické kódování texinfa"
 
-#: tp/Texinfo/ParserNonXS.pm:2999
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2990 tp/Texinfo/XS/parsetexi/end_line.c:1539
+#, c-format, perl-format
 msgid "unrecognized encoding name `%s'"
 msgstr "nerozpoznaný název kódování „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:3121
+#: tp/Texinfo/ParserNonXS.pm:3106
 #, perl-format
 msgid "@%s after the first element"
 msgstr "@%s po prvním elementu"
 
-#: tp/Texinfo/ParserNonXS.pm:3128
+#: tp/Texinfo/ParserNonXS.pm:3113
 #, perl-format
 msgid "@%s only meaningful on a @multitable line"
 msgstr "@%s má smysl jen na řádku @multitable"
 
-#: tp/Texinfo/ParserNonXS.pm:3175
+#: tp/Texinfo/ParserNonXS.pm:3149 tp/Texinfo/XS/parsetexi/end_line.c:1879
+msgid "@part should not be associated with @top"
+msgstr "@part by neměl být spojen s @top"
+
+#: tp/Texinfo/ParserNonXS.pm:3160
 #, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgstr "@node předchází @%s, ale části nesmí být spojeny s uzly"
 
-#: tp/Texinfo/ParserNonXS.pm:3309
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3271 tp/Texinfo/XS/parsetexi/end_line.c:36
+#, c-format, perl-format
+msgid "syntax for an external node used for `%s'"
+msgstr "syntaxe pro vnější uzel použitý pro „%s“"
+
+#: tp/Texinfo/ParserNonXS.pm:3294 tp/Texinfo/XS/parsetexi/menus.c:43
+#, c-format, perl-format
 msgid "empty menu entry name in `%s'"
 msgstr "prázdný název položky nabídky v „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:3317
+#: tp/Texinfo/ParserNonXS.pm:3302 tp/Texinfo/XS/parsetexi/menus.c:57
 msgid "empty node name in menu entry"
 msgstr "prázdný název uzlu v položce nabídky"
 
-#: tp/Texinfo/ParserNonXS.pm:3446
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3442 tp/Texinfo/XS/parsetexi/parser.c:979
+#, c-format, perl-format
 msgid "@%s should not appear in @%s"
 msgstr "@%s by se neměl objevit v @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:3553
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3549 tp/Texinfo/XS/parsetexi/parser.c:1076
+#, c-format, perl-format
 msgid "@end %s should only appear at the beginning of a line"
 msgstr "@end %s by se měl objevit pouze na začátku řádku"
 
-#: tp/Texinfo/ParserNonXS.pm:3574
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3570 tp/Texinfo/XS/parsetexi/parser.c:1137
+#, c-format, perl-format
 msgid "macro `%s' previously defined"
 msgstr "makro „%s“ již bylo definováno"
 
-#: tp/Texinfo/ParserNonXS.pm:3577
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3573 tp/Texinfo/XS/parsetexi/parser.c:1139
+#, c-format, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "zde je předchozí definice „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:3582
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3578 tp/Texinfo/XS/parsetexi/parser.c:1144
+#, c-format, perl-format
 msgid "redefining Texinfo language command: @%s"
 msgstr "předefinovává se příkaz jazyka Texinfo: @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:3650
+#: tp/Texinfo/ParserNonXS.pm:3646
 #, perl-format
 msgid "@%s without associated character"
 msgstr "@%s bez spojeného znaku"
 
-#: tp/Texinfo/ParserNonXS.pm:3720
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3716 tp/Texinfo/XS/parsetexi/macro.c:529
+#, c-format, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr ""
 "@%s definováno s nula nebo více jak jedním argumentem by se mělo volat s {}"
 
-#: tp/Texinfo/ParserNonXS.pm:3745
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3741 tp/Texinfo/XS/parsetexi/macro.c:568
+#, c-format, perl-format
 msgid ""
 "macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
 "value %d)"
@@ -2631,343 +2582,356 @@ msgstr ""
 "volání makra je příliš zanořené (lze přebít nastavením MAX_NESTED_MACROS, "
 "současná hodnota %d)"
 
-#: tp/Texinfo/ParserNonXS.pm:3754
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3750 tp/Texinfo/XS/parsetexi/macro.c:578
+#, c-format, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr ""
 "rekurzivní volání makra %s není dovoleno; je-li třeba, použijte @rmacro"
 
-#: tp/Texinfo/ParserNonXS.pm:3809
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3805 tp/Texinfo/XS/parsetexi/parser.c:1412
+#, c-format, perl-format
 msgid "accent command `@%s' must not be followed by whitespace"
 msgstr "zdůrazňovací příkaz „@%s“ nesmí být následován bílým místem"
 
-#: tp/Texinfo/ParserNonXS.pm:3815
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3811 tp/Texinfo/XS/parsetexi/parser.c:1419
+#, c-format, perl-format
 msgid "use braces to give a command as an argument to @%s"
 msgstr "použijte závorky k zadání příkazu jako argumentu @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:3828 tp/Texinfo/ParserNonXS.pm:4947
+#: tp/Texinfo/ParserNonXS.pm:3824 tp/Texinfo/ParserNonXS.pm:4981
 #, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
-msgstr "%c%s vyžaduje „i“ nebo „j“ jako argument, ne „%s“"
+msgstr "%c%s vyžaduje jako argument „i“ nebo „j“, ne „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:3839
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3835 tp/Texinfo/XS/parsetexi/parser.c:1449
+#, c-format, perl-format
 msgid "accent command `@%s' must not be followed by new line"
 msgstr "zdůrazňovací příkaz „@%s“ nesmí být následován novým řádkem"
 
-#: tp/Texinfo/ParserNonXS.pm:3850
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3846 tp/Texinfo/XS/parsetexi/parser.c:1467
+#, c-format, perl-format
 msgid "@%s expected braces"
 msgstr "@%s očekávalo závorky"
 
-#: tp/Texinfo/ParserNonXS.pm:3979
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3975 tp/Texinfo/XS/parsetexi/parser.c:1328
+#, c-format, perl-format
 msgid "unknown command `%s'"
 msgstr "neznámý příkaz „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:4021
+#: tp/Texinfo/ParserNonXS.pm:4017
 #, perl-format
 msgid "undefined flag: %s"
 msgstr "nedefinovaný příznak: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:4025
+#: tp/Texinfo/ParserNonXS.pm:4021 tp/Texinfo/XS/parsetexi/parser.c:1554
 msgid "bad syntax for @value"
 msgstr "chybná skladba ve @value"
 
-#: tp/Texinfo/ParserNonXS.pm:4032
+#: tp/Texinfo/ParserNonXS.pm:4028
 #, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s je zastaralé."
 
-#: tp/Texinfo/ParserNonXS.pm:4035
+#: tp/Texinfo/ParserNonXS.pm:4031
 #, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s je zastaralé; %s"
 
-#: tp/Texinfo/ParserNonXS.pm:4050
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4046 tp/Texinfo/XS/parsetexi/parser.c:1605
+#, c-format, perl-format
 msgid "@%s should only appear at the beginning of a line"
 msgstr "@%s by se mělo pouze objevit na začátku řádku"
 
-#: tp/Texinfo/ParserNonXS.pm:4079
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4087 tp/Texinfo/XS/parsetexi/handle_commands.c:97
+#, c-format, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr "@%s by se měl objevit pouze záhlaví nebo zápatí"
 
-#: tp/Texinfo/ParserNonXS.pm:4104 tp/Texinfo/ParserNonXS.pm:4111
-#: tp/Texinfo/ParserNonXS.pm:4160
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4112 tp/Texinfo/ParserNonXS.pm:4119
+#: tp/Texinfo/ParserNonXS.pm:4168 tp/Texinfo/XS/parsetexi/handle_commands.c:134
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:143
+#, c-format, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s není myslitelné uvnitř bloku „@%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:4120
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4128 tp/Texinfo/XS/parsetexi/handle_commands.c:180
+#, c-format, perl-format
 msgid "@%s in empty multitable"
 msgstr "@%s v prázdné multitabulce"
 
-#: tp/Texinfo/ParserNonXS.pm:4126
+#: tp/Texinfo/ParserNonXS.pm:4134 tp/Texinfo/XS/parsetexi/handle_commands.c:188
 msgid "@tab before @item"
 msgstr "@tab před @item"
 
-#: tp/Texinfo/ParserNonXS.pm:4129
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4137 tp/Texinfo/XS/parsetexi/handle_commands.c:192
+#, c-format, perl-format
 msgid "too many columns in multitable item (max %d)"
 msgstr "příliš mnoho sloupců v multitabulkové položce (max. %d)"
 
-#: tp/Texinfo/ParserNonXS.pm:4166
+#: tp/Texinfo/ParserNonXS.pm:4174 tp/Texinfo/XS/parsetexi/handle_commands.c:237
 msgid "ignoring @tab outside of multitable"
 msgstr "příkaz @tab ignorován, je mimo multitabulku"
 
-#: tp/Texinfo/ParserNonXS.pm:4170 tp/Texinfo/ParserNonXS.pm:4337
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4178 tp/Texinfo/ParserNonXS.pm:4345
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:242
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:541
+#, c-format, perl-format
 msgid "@%s outside of table or list"
 msgstr "@%s mimo tabulku nebo seznam"
 
-#: tp/Texinfo/ParserNonXS.pm:4236
+#: tp/Texinfo/ParserNonXS.pm:4244
 #, perl-format
 msgid "@%s not allowed inside `@%s' block"
 msgstr "@%s není dovoleno uvnitř bloku „@%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:4378
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4357 tp/Texinfo/ParserNonXS.pm:4699
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1085
+#, c-format, perl-format
+msgid "@%s should only appear in an index entry"
+msgstr "@%s by se mělo objevit jen v položce rejstříku"
+
+#: tp/Texinfo/ParserNonXS.pm:4368 tp/Texinfo/XS/parsetexi/handle_commands.c:580
+msgid "no more than two levels of index subentry are allowed"
+msgstr "není dovoleno více než dvě úrovně podpoložek rejstříku"
+
+#: tp/Texinfo/ParserNonXS.pm:4409 tp/Texinfo/XS/parsetexi/handle_commands.c:637
+#, c-format, perl-format
 msgid "must be after `@%s' to use `@%s'"
 msgstr "musí následovat po „@%s“, aby šlo použít „@%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:4416
+#: tp/Texinfo/ParserNonXS.pm:4447
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "@%s nemá smysl mimo prostředí „@titlepage“ a „@quotation“"
 
-#: tp/Texinfo/ParserNonXS.pm:4420
+#: tp/Texinfo/ParserNonXS.pm:4451 tp/Texinfo/XS/parsetexi/handle_commands.c:694
 msgid "@dircategory after first node"
 msgstr "@dircategory po prvním uzlu"
 
-#: tp/Texinfo/ParserNonXS.pm:4596
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4633 tp/Texinfo/XS/parsetexi/handle_commands.c:984
+#, c-format, perl-format
 msgid "region %s inside region %s is not allowed"
 msgstr "oblast %s uvnitř oblasti %s není dovolena"
 
-#: tp/Texinfo/ParserNonXS.pm:4613
+#: tp/Texinfo/ParserNonXS.pm:4650
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1006
 msgid "@direntry after first node"
 msgstr "@direntry po prvním uzlu"
 
-#: tp/Texinfo/ParserNonXS.pm:4621
+#: tp/Texinfo/ParserNonXS.pm:4658
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1011
 msgid "@menu in invalid context"
 msgstr "@menu v neplatném kontextu"
 
-#: tp/Texinfo/ParserNonXS.pm:4627
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4664
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1020
+#, c-format, perl-format
 msgid "@%s seen before first @node"
 msgstr "@%s spatřeno před prvním @node"
 
-#: tp/Texinfo/ParserNonXS.pm:4630
+#: tp/Texinfo/ParserNonXS.pm:4667
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1022
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr ""
 "protože váš uzel @top by měl být uzavřen v @ifnottex spíše než v @ifinfo?"
 
-#: tp/Texinfo/ParserNonXS.pm:4665
-#, perl-format
-msgid "@%s should only appear in an index entry"
-msgstr "@%s by se mělo objevit jen v položce rejstříku"
-
-#: tp/Texinfo/ParserNonXS.pm:4694
+#: tp/Texinfo/ParserNonXS.pm:4728
 #, perl-format
 msgid "@%s should only appear in math context"
 msgstr "@%s by se mělo objevit jen v matematickém kontextu"
 
-#: tp/Texinfo/ParserNonXS.pm:4709
+#: tp/Texinfo/ParserNonXS.pm:4743 tp/Texinfo/XS/parsetexi/parser.c:1721
 msgid "unexpected @"
 msgstr "neočekávaný @"
 
-#: tp/Texinfo/ParserNonXS.pm:4738
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4772 tp/Texinfo/XS/parsetexi/separator.c:78
+#, c-format, perl-format
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "@%s nemá smysl mimo prostředí „@float“"
 
-#: tp/Texinfo/ParserNonXS.pm:4743
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4777 tp/Texinfo/XS/parsetexi/separator.c:84
+#, c-format, perl-format
 msgid "@%s should be right below `@float'"
 msgstr "@%s by mělo být právě pod „@float"
 
-#: tp/Texinfo/ParserNonXS.pm:4751
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4785 tp/Texinfo/XS/parsetexi/separator.c:92
+#, c-format, perl-format
 msgid "ignoring multiple @%s"
 msgstr "ignoruje se násobný @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:4862
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4896 tp/Texinfo/XS/parsetexi/separator.c:276
+#, c-format, perl-format
 msgid "command @%s does not accept arguments"
 msgstr "příkaz @%s nepřijímá argumenty"
 
-#: tp/Texinfo/ParserNonXS.pm:4892
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4926 tp/Texinfo/XS/parsetexi/separator.c:312
+#, c-format, perl-format
 msgid "command @%s missing a node or external manual argument"
 msgstr "příkaz @%s postrádá uzel nebo argument externího manuálu"
 
-#: tp/Texinfo/ParserNonXS.pm:4911
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4945 tp/Texinfo/XS/parsetexi/separator.c:350
+#, c-format, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
 msgstr "v @%s prázdný název křížového odkazu po expanzi „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:4922
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4956 tp/Texinfo/XS/parsetexi/separator.c:368
+#, c-format, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
 msgstr "v @%s prázdný nadpis křížkového odkazu po expanzi „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:4935
+#: tp/Texinfo/ParserNonXS.pm:4969 tp/Texinfo/XS/parsetexi/separator.c:383
 msgid "@image missing filename argument"
 msgstr "příkaz @image postrádá jméno souboru"
 
-#: tp/Texinfo/ParserNonXS.pm:4969
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5003 tp/Texinfo/XS/parsetexi/separator.c:413
+#, c-format, perl-format
 msgid "@%s missing first argument"
 msgstr "@%s postrádá první argument"
 
-#: tp/Texinfo/ParserNonXS.pm:4987
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5021 tp/Texinfo/XS/parsetexi/separator.c:435
+#, c-format, perl-format
 msgid "non-hex digits in argument for @U: %s"
 msgstr "argument u @U nemá žádné šestnáctkové číslice: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:4992
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5026 tp/Texinfo/XS/parsetexi/separator.c:440
+#, c-format, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
 msgstr "argument u @U má méně než čtyři šestnáctkové číslice: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5009
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5043 tp/Texinfo/XS/parsetexi/separator.c:455
+#, c-format, perl-format
 msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
 msgstr "argument u @U přesahuje maximám Unicodu 0x10FFFF: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5195
+#: tp/Texinfo/ParserNonXS.pm:5231 tp/Texinfo/XS/parsetexi/separator.c:755
 msgid "superfluous arguments for node"
 msgstr "nadbytečné argumenty uzlu"
 
-#: tp/Texinfo/ParserNonXS.pm:5244
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5280 tp/Texinfo/XS/parsetexi/parser.c:1915
+#, c-format, perl-format
 msgid "expected @end %s"
 msgstr "očekáváno @end %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5331
+#: tp/Texinfo/ParserNonXS.pm:5367
 #, perl-format
 msgid "@%s should only accept an @-command as argument, not `%s'"
 msgstr "@%s by pouze mělo přijímat příkaz @ jako argument, nikoliv „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:5341
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5377 tp/Texinfo/XS/parsetexi/end_line.c:275
+#, c-format, perl-format
 msgid "remaining argument on @%s line: %s"
 msgstr "zbývající argumenty na řádku @%s: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5402
+#: tp/Texinfo/ParserNonXS.pm:5438
 #, perl-format
 msgid "environment command %s as argument to @%s"
 msgstr "příkaz prostředí %s jako argument @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:5429
+#: tp/Texinfo/ParserNonXS.pm:5465
 #, perl-format
 msgid "empty @%s"
 msgstr "prázdné @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:5437
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5473 tp/Texinfo/XS/parsetexi/end_line.c:456
+#, c-format, perl-format
 msgid "column fraction not a number: %s"
 msgstr "podíl sloupce není číslo: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5446
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5482 tp/Texinfo/XS/parsetexi/end_line.c:478
+#, c-format, perl-format
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "@sp argument musí být číslo, ne „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:5455
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5491 tp/Texinfo/XS/parsetexi/end_line.c:520
+#, c-format, perl-format
 msgid "reserved index name %s"
 msgstr "vyhrazený název rejstříku %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5481
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5517 tp/Texinfo/XS/parsetexi/end_line.c:551
+#, c-format, perl-format
 msgid "unknown source index in @%s: %s"
 msgstr "neznámý rejstřík zdrojů v @%s: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5484
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5520 tp/Texinfo/XS/parsetexi/end_line.c:554
+#, c-format, perl-format
 msgid "unknown destination index in @%s: %s"
 msgstr "neznámý rejstřík cílů v @%s: %s "
 
-#: tp/Texinfo/ParserNonXS.pm:5514
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5550 tp/Texinfo/XS/parsetexi/end_line.c:574
+#, c-format, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr "@%s vede ke spojení %s do sebe, ignoruje se"
 
-#: tp/Texinfo/ParserNonXS.pm:5527
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5563 tp/Texinfo/XS/parsetexi/end_line.c:599
+#, c-format, perl-format
 msgid "unknown index `%s' in @printindex"
 msgstr "neznámý rejstřík „%s“ v @printindex"
 
-#: tp/Texinfo/ParserNonXS.pm:5533
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5569 tp/Texinfo/XS/parsetexi/end_line.c:608
+#, c-format, perl-format
 msgid "printing an index `%s' merged in another one, `%s'"
 msgstr "vypisuje se rejstřík „%s“ spojený do jiného „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:5541
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5577 tp/Texinfo/XS/parsetexi/end_line.c:613
+#, c-format, perl-format
 msgid "printindex before document beginning: @printindex %s"
 msgstr "printindex před začátkem dokumentu: @printindex %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5557
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5593 tp/Texinfo/XS/parsetexi/end_line.c:634
+#, c-format, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr "@%s argument musí být „top“ nebo „bottom“, ne „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:5565
+#: tp/Texinfo/ParserNonXS.pm:5601
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "Je podporováno pouze @%s 10 nebo 11, ne %s“"
 
-#: tp/Texinfo/ParserNonXS.pm:5573
+#: tp/Texinfo/ParserNonXS.pm:5609
 #, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr "@%s argument musí být „separate“ nebo „end“, ne „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:5581
+#: tp/Texinfo/ParserNonXS.pm:5617
 #, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr "@%s argument musí být „on“, „off“ nebo „odd“, ne „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:5599 tp/Texinfo/ParserNonXS.pm:5604
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5635 tp/Texinfo/ParserNonXS.pm:5640
+#: tp/Texinfo/XS/parsetexi/end_line.c:690
+#, c-format, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr "argument @paragraphindent musí být číslo, „none“ nebo „asis“, ne „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:5612
+#: tp/Texinfo/ParserNonXS.pm:5648
 #, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr "argument @firstparagraphindent musí být „none“ nebo „insert“, ne „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:5622
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5658 tp/Texinfo/XS/parsetexi/end_line.c:711
+#, c-format, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr "argument @exampleindent musí být číslo nebo „asis“, ne „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:5634
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5670 tp/Texinfo/XS/parsetexi/end_line.c:726
+#, c-format, perl-format
 msgid "expected @%s on or off, not `%s'"
 msgstr "očekáváno @%s on nebo off, ne „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:5643
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5679 tp/Texinfo/XS/parsetexi/end_line.c:746
+#, c-format, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
 "argument @kbdinputstyle musí být „code“, „example“ nebo „distinct“, ne „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:5651
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5687 tp/Texinfo/XS/parsetexi/end_line.c:758
+#, c-format, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr "argument @allowcodebreaks musí být „true“ nebo „false“, ne „%s“"
 
-#: tp/Texinfo/ParserNonXS.pm:5659
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5695 tp/Texinfo/XS/parsetexi/end_line.c:770
+#, c-format, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr ""
 "argument @urefbreakstyle musí být „after“, „before“ nebo „none“, ne „%s“"
@@ -2997,7 +2961,7 @@ msgstr "s @%s se nepojí žádný příkaz oddílu"
 msgid "@%s not empty"
 msgstr "@%s není prázdný"
 
-#: tp/Texinfo/Structuring.pm:386 tp/Texinfo/Structuring.pm:1207
+#: tp/Texinfo/Structuring.pm:386 tp/Texinfo/Structuring.pm:1160
 #, perl-format
 msgid "@%s reference to nonexistent node `%s'"
 msgstr "@%s odkazuje na neexistující uzel „%s“"
@@ -3007,107 +2971,107 @@ msgstr "@%s odkazuje na neexistující uzel „%s“"
 msgid "@%s entry node name `%s' different from %s name `%s'"
 msgstr "název uzlu položky @%s „%s“ se liší od %s názvu „%s“"
 
-#: tp/Texinfo/Structuring.pm:512
+#: tp/Texinfo/Structuring.pm:498
 #, perl-format
 msgid "unreferenced node `%s'"
 msgstr "na uzel „%s“ nesměřuje žádný odkaz"
 
-#: tp/Texinfo/Structuring.pm:563
+#: tp/Texinfo/Structuring.pm:549
 #, perl-format
 msgid "node `%s' is %s for `%s' in sectioning but not in menu"
 msgstr "uzel „%s“ je %s pro „%s“ v oddílech, ale ne v nabídce"
 
-#: tp/Texinfo/Structuring.pm:572
+#: tp/Texinfo/Structuring.pm:558
 #, perl-format
 msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
 msgstr "uzel %s „%s“ v nabídce „%s“ se liší od toho v oddílech „%s“"
 
-#: tp/Texinfo/Structuring.pm:590
+#: tp/Texinfo/Structuring.pm:576
 #, perl-format
 msgid "node `%s' is %s for `%s' in menu but not in sectioning"
 msgstr "uzel „%s“ je %s pro „%s“ v nabídce ale ne v oddílech"
 
-#: tp/Texinfo/Structuring.pm:645
+#: tp/Texinfo/Structuring.pm:614
 #, perl-format
 msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
 msgstr "%s ukazatel „%s“ (pro uzel „%s“) se liší od %s názvu „%s“"
 
-#: tp/Texinfo/Structuring.pm:669
+#: tp/Texinfo/Structuring.pm:627
 #, perl-format
 msgid "%s reference to nonexistent `%s'"
 msgstr "%s se odkazuje na neexistující „%s“"
 
-#: tp/Texinfo/Structuring.pm:690
+#: tp/Texinfo/Structuring.pm:648
 #, perl-format
 msgid "node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "uzel „%s“ postrádá položku nabídky pro „%s“ navzdory tomu, že je jeho "
 "nadřazeným uzlem"
 
-#: tp/Texinfo/Structuring.pm:698
+#: tp/Texinfo/Structuring.pm:656
 #, perl-format
 msgid "for `%s', up in menu `%s' and up `%s' don't match"
 msgstr "u „%s“ nahoru v menu „%s“ a nahoru „%s“ se neshodují"
 
-#: tp/Texinfo/Structuring.pm:1217
+#: tp/Texinfo/Structuring.pm:1170
 #, perl-format
 msgid "@%s to `%s', different from %s name `%s'"
 msgstr "@%s do „%s“ se liší od %s názvu „%s“"
 
-#: tp/Texinfo/Structuring.pm:1503
+#: tp/Texinfo/Structuring.pm:1456
 #, perl-format
 msgid "empty index key in @%s"
 msgstr "prázdný klíč rejstříku v @%s"
 
-#: tp/init/chm.pm:221 tp/init/chm.pm:277 tp/init/chm.pm:347
+#: tp/init/chm.pm:223 tp/init/chm.pm:279 tp/init/chm.pm:349
 #, perl-format
 msgid "chm.pm: could not open %s for writing: %s\n"
 msgstr "chm.pm: %s nebylo možné otevřít pro zápis: %s\n"
 
-#: tp/init/chm.pm:267 tp/init/chm.pm:337 tp/init/chm.pm:398
+#: tp/init/chm.pm:269 tp/init/chm.pm:339 tp/init/chm.pm:400
 #, perl-format
 msgid "chm.pm: error on closing %s: %s"
 msgstr "chm.pm: chyba při zavírání %s: %s"
 
-#: tp/init/latex2html.pm:200
+#: tp/init/latex2html.pm:197
 #, perl-format
 msgid "l2h: could not open latex file %s for writing: %s"
 msgstr "l2h: latexový soubor %s nebylo možné otevřít pro zápis: %s"
 
-#: tp/init/latex2html.pm:341
+#: tp/init/latex2html.pm:343
 msgid "l2h: L2H_TMP directory contains a dot"
 msgstr "l2h: adresář L2H_TMP obsahuje tečku"
 
-#: tp/init/latex2html.pm:346
+#: tp/init/latex2html.pm:348
 msgid "l2h: current directory contains a dot"
 msgstr "l2h: současný adresář obsahuje tečku"
 
-#: tp/init/latex2html.pm:374
+#: tp/init/latex2html.pm:376
 #, perl-format
 msgid "l2h: command did not succeed: %s"
 msgstr "l2h: příkaz neuspěl: %s"
 
-#: tp/init/latex2html.pm:422
+#: tp/init/latex2html.pm:424
 #, perl-format
 msgid "l2h: image has invalid extension: %s"
 msgstr "l2h: obrázek má neplatnou příponu: %s"
 
-#: tp/init/latex2html.pm:438
+#: tp/init/latex2html.pm:440
 #, perl-format
 msgid "l2h: rename %s as %s failed: %s"
 msgstr "l2h: přejmenování %s na %s selhalo: %s"
 
-#: tp/init/latex2html.pm:460
+#: tp/init/latex2html.pm:462
 #, perl-format
 msgid "l2h: could not open %s: %s"
 msgstr "l2h: %s nebylo možné otevřít: %s"
 
-#: tp/init/latex2html.pm:493
+#: tp/init/latex2html.pm:495
 #, perl-format
 msgid "latex2html.pm: end of @%s item %d not found"
 msgstr "latex2html.pm: konec @%s položky %d nebyl nalezen"
 
-#: tp/init/latex2html.pm:504
+#: tp/init/latex2html.pm:506
 #, perl-format
 msgid ""
 "latex2html.pm: processing produced %d items in HTML; expected %d, the number "
@@ -3116,12 +3080,12 @@ msgstr ""
 "latex2html.pm: zpracování vyrobilo %d položek v HTML; očekáváno %d, počet "
 "položek nalezených v dokumentu"
 
-#: tp/init/latex2html.pm:534
+#: tp/init/latex2html.pm:536
 #, perl-format
 msgid "l2h: could not determine the fragment %d for @%s"
 msgstr "l2h: nebylo možné určit fragment %d pro @%s"
 
-#: tp/init/latex2html.pm:560
+#: tp/init/latex2html.pm:562
 #, perl-format
 msgid ""
 "l2h: could not extract the fragment %d for @%s with output counter %d from "
@@ -3129,47 +3093,47 @@ msgid ""
 msgstr ""
 "l2h: z HTML nebylo možné získat fragment %d pro @%s s výstupním počítadlem %d"
 
-#: tp/init/latex2html.pm:621
+#: tp/init/latex2html.pm:623
 #, perl-format
 msgid "l2h: could not load %s: %s"
 msgstr "l2h: %s nebylo možné zavést: %s"
 
-#: tp/init/latex2html.pm:634
+#: tp/init/latex2html.pm:636
 #, perl-format
 msgid "l2h: could not open %s for writing: %s"
 msgstr "l2h: %s nebylo možné otevřít pro zápis: %s"
 
-#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
+#: tp/init/tex4ht.pm:125 tp/init/tex4ht.pm:270
 #, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "tex4ht.pm: %s nebylo možné otevřít: %s"
 
-#: tp/init/tex4ht.pm:219
+#: tp/init/tex4ht.pm:222
 #, perl-format
 msgid "tex4ht.pm: chdir %s failed: %s"
 msgstr "tex4ht.pm: změna pracovního adresáře do %s selhala: %s"
 
-#: tp/init/tex4ht.pm:232
+#: tp/init/tex4ht.pm:235
 #, perl-format
 msgid "tex4ht.pm: unable to return to initial directory: %s"
 msgstr "tex4ht.pm: nelze se vrátit do původního adresáře: %s"
 
-#: tp/init/tex4ht.pm:244
+#: tp/init/tex4ht.pm:247
 #, perl-format
 msgid "tex4ht.pm: output file missing: %s"
 msgstr "tex4ht.pm: výstupní soubor chybí: %s"
 
-#: tp/init/tex4ht.pm:260
+#: tp/init/tex4ht.pm:263
 #, perl-format
 msgid "tex4ht.pm: command failed: %s"
 msgstr "tex4ht.pm: příkaz selhal: %s"
 
-#: tp/init/tex4ht.pm:294
+#: tp/init/tex4ht.pm:297
 #, perl-format
 msgid "tex4ht.pm: end of @%s item %d not found"
 msgstr "tex4ht.pm: konec @%s položky %d nenalezen"
 
-#: tp/init/tex4ht.pm:301
+#: tp/init/tex4ht.pm:304
 #, perl-format
 msgid ""
 "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
@@ -3178,12 +3142,12 @@ msgstr ""
 "tex4ht.pm: zpracování vyrobilo %d položek v HTML; očekáváno %d, počet "
 "položek nalezených v dokumentu pro @%s"
 
-#: tp/init/tex4ht.pm:321
+#: tp/init/tex4ht.pm:324
 #, perl-format
 msgid "tex4ht.pm: output has no HTML item for @%s %s"
 msgstr "tex4ht.pm: výstup nemá žádnou HTML položku pro @%s %s"
 
-#: tp/init/tex4ht.pm:336
+#: tp/init/tex4ht.pm:339
 #, perl-format
 msgid ""
 "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
@@ -3192,37 +3156,37 @@ msgstr ""
 "tex4ht.pm: zpracování získalo %d položek v HTML; očekáváno %d, počet položek "
 "nalezených v dokumentu pro @%s"
 
-#: tp/texi2any.pl:372
+#: tp/texi2any.pl:348
 #, perl-format
 msgid "error loading %s: %s\n"
 msgstr "chyba při zavádění %s: %s\n"
 
-#: tp/texi2any.pl:385
+#: tp/texi2any.pl:361
 #, perl-format
 msgid "%s: unknown variable %s"
 msgstr "%s: neznámá proměnná %s"
 
-#: tp/texi2any.pl:401
+#: tp/texi2any.pl:377
 #, perl-format
 msgid "%s: unknown variable %s\n"
 msgstr "%s: neznámá proměnná %s\n"
 
-#: tp/texi2any.pl:437
+#: tp/texi2any.pl:413
 #, perl-format
 msgid "could not read init file %s"
 msgstr "inicializační soubor %s nebylo možné přečíst"
 
-#: tp/texi2any.pl:593
+#: tp/texi2any.pl:569
 #, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "nerozpoznaná hodnota TEXINFO_OUTPUT_FORMAT „%s“ se ignoruje\n"
 
-#: tp/texi2any.pl:676
+#: tp/texi2any.pl:652
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Použití: %s [PŘEPÍNAČ]… SOUBOR_TEXINFA…\n"
 
-#: tp/texi2any.pl:679
+#: tp/texi2any.pl:655
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -3238,7 +3202,7 @@ msgstr ""
 "Tento program je obvykle nainstalován i pod názvy „makeinfo“ a „texi2any“.\n"
 "Jejich chování je shodné a nezávisí na názvu.\n"
 
-#: tp/texi2any.pl:685
+#: tp/texi2any.pl:661
 #, perl-format
 msgid ""
 "General options:\n"
@@ -3272,7 +3236,7 @@ msgstr ""
 "  -v, --verbose               vysvětlí, co právě provádí.\n"
 "      --version               zobrazí údaje o verzi a skončí.\n"
 
-#: tp/texi2any.pl:701
+#: tp/texi2any.pl:677
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3292,7 +3256,7 @@ msgstr ""
 "                              po té, co zkontroluje platnost "
 "SOUBORU_TEXINFA.\n"
 
-#: tp/texi2any.pl:709
+#: tp/texi2any.pl:685
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -3340,7 +3304,7 @@ msgstr ""
 "tam.\n"
 "                              Jinak CÍL určuje název výstupního souboru.\n"
 
-#: tp/texi2any.pl:729
+#: tp/texi2any.pl:705
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3381,7 +3345,7 @@ msgstr ""
 "      --split-size=ČÍSLO      rozdělí Info soubory na velikosti POČET\n"
 "                              (výchozí %d).\n"
 
-#: tp/texi2any.pl:746
+#: tp/texi2any.pl:722
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3409,7 +3373,7 @@ msgstr ""
 "kotvy;\n"
 "                              standardně je zapnuto jen při dělení.\n"
 
-#: tp/texi2any.pl:757
+#: tp/texi2any.pl:733
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
@@ -3417,7 +3381,7 @@ msgstr ""
 "Přepínače pro XML a DocBook:\n"
 "      --output-indent=HODNOTA nic nedělá, zachováno pro kompatibilitu.\n"
 
-#: tp/texi2any.pl:760
+#: tp/texi2any.pl:736
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
@@ -3426,7 +3390,7 @@ msgstr ""
 "      --Xopt=PŘEPÍNAČ         předá PŘEPÍNAČ programu texi2dvi; lze "
 "opakovat.\n"
 
-#: tp/texi2any.pl:763
+#: tp/texi2any.pl:739
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3450,7 +3414,7 @@ msgstr ""
 "  -U PROMĚNNÁ                   zruší proměnnou PROMĚNNÁ jako příkaz "
 "@clear.\n"
 
-#: tp/texi2any.pl:771
+#: tp/texi2any.pl:747
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -3486,7 +3450,7 @@ msgstr ""
 "\n"
 "  Rovněž přepínače --no-ifFORMÁT zpracují text podmíněný @ifnotFORMÁT.\n"
 
-#: tp/texi2any.pl:788
+#: tp/texi2any.pl:764
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating Docbook, --ifdocbook is on and the others are off;\n"
@@ -3502,7 +3466,7 @@ msgstr ""
 "  vytváří-li se prostý text, --ifplaintext se zapne a ostatní se vypnou;\n"
 "  vytváří-li se XML, --ifxml se zapne a ostatní se vypnou.\n"
 
-#: tp/texi2any.pl:795
+#: tp/texi2any.pl:771
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -3533,64 +3497,64 @@ msgstr ""
 "  makeinfo --number-sections foo.texi    zapíše Info číslovanými oddíly\n"
 "  makeinfo --no-split foo.texi           zapíše jeden velký soubor Info\n"
 
-#: tp/texi2any.pl:842
+#: tp/texi2any.pl:818
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: argument k --footnote-style musí být „separate“ nebo „end“, ne „%s“.\n"
 
-#: tp/texi2any.pl:938
+#: tp/texi2any.pl:913
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: argument pro --paragraph-indent musí být číslo, „none“ nebo „asis“, ne "
 "„%s“.\n"
 
-#: tp/texi2any.pl:1015
+#: tp/texi2any.pl:990
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr "%s: při vytváření %s lze pomocí -o zadat pouze jeden vstupní SOUBOR\n"
 
-#: tp/texi2any.pl:1019
+#: tp/texi2any.pl:994
 msgid "--Xopt option without printed output"
 msgstr "přepínač --Xopt bez tisknutelného výstupu"
 
-#: tp/texi2any.pl:1035
+#: tp/texi2any.pl:1010
 #, perl-format
 msgid "unknown tree transformation %s"
 msgstr "neznámá transformace stromu %s"
 
-#: tp/texi2any.pl:1042
+#: tp/texi2any.pl:1017
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr "dělení u formátu %s se ignoruje"
 
-#: tp/texi2any.pl:1101
+#: tp/texi2any.pl:1076
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: chybí argument jména souboru.\n"
 
-#: tp/texi2any.pl:1102
+#: tp/texi2any.pl:1077
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Více informací získáte příkazem „%s --help“.\n"
 
-#: tp/texi2any.pl:1169
+#: tp/texi2any.pl:1144
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 "Transformace fill_gaps_in_sectioning nevrátila žádný výsledek. Nechybí oddíl?"
 
-#: tp/texi2any.pl:1192
+#: tp/texi2any.pl:1166
 #, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "chyba při zavírání makrem expandovaného souboru %s: %s\n"
 
-#: tp/texi2any.pl:1198
+#: tp/texi2any.pl:1172
 #, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "%s nebylo možné otevřít pro zápis: %s\n"
 
-#: tp/texi2any.pl:1223
+#: tp/texi2any.pl:1197
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
@@ -3598,20 +3562,250 @@ msgstr ""
 "Transformace insert_nodes_for_sectioning_commands nevrátila žádný výsledek. "
 "Nechybí oddíl?"
 
-#: tp/texi2any.pl:1292 tp/texi2any.pl:1368
+#: tp/texi2any.pl:1265 tp/texi2any.pl:1341
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "%s: chyba při zavírání %s: %s\n"
 
-#: tp/texi2any.pl:1315 tp/texi2any.pl:1349
+#: tp/texi2any.pl:1288 tp/texi2any.pl:1322
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "%s: chyba při zavírání souboru %s s vnitřními odkazy: %s\n"
 
-#: tp/texi2any.pl:1321 tp/texi2any.pl:1355
+#: tp/texi2any.pl:1294 tp/texi2any.pl:1328
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: %s nebylo možné otevřít pro zápis: %s\n"
+
+#: tp/Texinfo/XS/parsetexi/close.c:274
+#, c-format
+msgid "no matching `@end %s'"
+msgstr "chybí odpovídající „@end %s“"
+
+#: tp/Texinfo/XS/parsetexi/close.c:312 tp/Texinfo/XS/parsetexi/separator.c:193
+msgid "misplaced {"
+msgstr "špatně umístěný znak {"
+
+#: tp/Texinfo/XS/parsetexi/close.c:415
+#, c-format
+msgid "unmatched `@end %s'"
+msgstr "nepárový „@end %s“"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:191
+msgid "@set requires a name"
+msgstr "@set vyžaduje název"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:194
+msgid "bad name for @set"
+msgstr "chybný název pro @set"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:218
+msgid "@clear requires a name"
+msgstr "@clear vyžaduje název"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:221
+msgid "bad name for @clear"
+msgstr "chybný název pro @clear"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:240
+msgid "@unmacro requires a name"
+msgstr "@unmacro vyžaduje název"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:243
+msgid "bad name for @unmacro"
+msgstr "chybný název pro @unmacro"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:262
+#, c-format
+msgid "@clickstyle should only accept an @-command as argument, not `%s'"
+msgstr ""
+"@clickstyle by pouze mělo přijímat příkaz @ jako argument, nikoliv „%s“"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:355
+#, c-format
+msgid "environment command %s as argument to @alias"
+msgstr "příkaz prostředí %s jako argument u @alias"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:373
+msgid "bad argument to @alias"
+msgstr "špatný argument u @alias"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:424
+msgid "bad argument to @definfoenclose"
+msgstr "špatný argument u @definfoenclose"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:436
+msgid "empty @columnfractions"
+msgstr "prázdný @columnfractions"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:594
+#, c-format
+msgid "bad argument to @printindex: %s"
+msgstr "špatný argument u @printindex: %s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:646
+#, c-format
+msgid "Only @fonttextsize 10 or 11 is supported, not `%s'"
+msgstr "Je podporován pouze @fonttextsize 10 nebo 11, ne %s“"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:657
+#, c-format
+msgid "@footnotestyle arg must be `separate' or `end', not `%s'"
+msgstr "argument u @footnotestyle musí být „separate“ nebo „end“, ne „%s“"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:669
+#, c-format
+msgid "@setchapternewpage arg must be `on', `off' or `odd', not `%s'"
+msgstr "argument u @setchapternewpage musí být „on“, „off“ nebo „odd“, ne „%s“"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:680
+#, c-format
+msgid "bad argument to @need: %s"
+msgstr "špatný argument u @need: %s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:701
+#, c-format
+msgid "@firstparagraph arg must be `none' or `insert', not `%s'"
+msgstr "argument u @firstparagraph musí být „none“ nebo „insert“, ne „%s“"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:783
+#, c-format
+msgid "bad argument to @headings: %s"
+msgstr "špatný argument u @headings: %s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1158
+#, c-format
+msgid "%s requires an argument: the formatter for @item"
+msgstr "%s vyžaduje argument: formátovač pro @item"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1379
+msgid "unmatched `@end'"
+msgstr "nepárový „@end“"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1399
+#: tp/Texinfo/XS/parsetexi/parser.c:1109
+#, c-format
+msgid "superfluous argument to @end %s: %s"
+msgstr "přebytečný argument u @end %s: %s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1409
+#, c-format
+msgid "bad argument to @end: %s"
+msgstr "špatný argument u @end: %s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1426
+#, c-format
+msgid "@include: could not find %s"
+msgstr "@include: nebylo možné nalézt %s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1434
+#, c-format
+msgid "@include: could not open %s:"
+msgstr "@include: nebylo možné otevřít %s:"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1815
+msgid "@setfilename after the first element"
+msgstr "@setfilename po prvním elementu"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1825
+msgid "@columnfractions only meaningful on a @multitable line"
+msgstr "@columnfractions má smysl jen na řádku s @multitable"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1892
+msgid "@node precedes @part, but parts may not be associated with nodes"
+msgstr "@node předchází @part, ale části nesmí být spojeny s uzly"
+
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:154
+#, c-format
+msgid "@%s not meaningful inside @%s block"
+msgstr "@%s nemá smysl uvnitř bloku @%s"
+
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:363
+#, c-format
+msgid "@%s not allowed inside `@copying' block"
+msgstr "@%s není dovoleno uvnitř bloku „@copying“"
+
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:565
+msgid "@subentry should only occur in an index entry"
+msgstr "@subentry by se mělo objevit jen v položce rejstříku"
+
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:690
+msgid ""
+"@author not meaningful outside `@titlepage' and `@quotation' environments"
+msgstr "@author nemá smysl mimo prostředí „@titlepage“ a „@quotation“"
+
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:804
+#: tp/Texinfo/XS/parsetexi/macro.c:107
+#, c-format
+msgid "@%s requires a name"
+msgstr "@%s vyžaduje název"
+
+#: tp/Texinfo/XS/parsetexi/macro.c:159
+#, c-format
+msgid "bad or empty @%s formal argument: "
+msgstr "chybný nebo prázdný formální argument u @%s: "
+
+#: tp/Texinfo/XS/parsetexi/parser.c:1436
+#, c-format
+msgid "@dotless expects `i' or `j' as argument, not `%c'"
+msgstr "@dotless vyžaduje „i“ nebo „j“ jako argument, ne „%c“"
+
+#: tp/Texinfo/XS/parsetexi/parser.c:1523
+#, c-format
+msgid "undefined flag: %.*s"
+msgstr "nedefinovaný příznak: %.*s"
+
+#: tp/Texinfo/XS/parsetexi/parser.c:1578
+#, c-format
+msgid "@%s is obsolete."
+msgstr "@%s je zastaralý."
+
+#: tp/Texinfo/XS/parsetexi/parser.c:1580
+#, c-format
+msgid "@%s is obsolete; %s"
+msgstr "@%s je zastaralý; %s"
+
+#: tp/Texinfo/XS/parsetexi/parser.c:1705
+msgid "@\\ should only appear in math context"
+msgstr "@\\ by se mělo objevit jen v matematickém kontextu"
+
+#: tp/Texinfo/XS/parsetexi/separator.c:53
+msgid "@verb without associated character"
+msgstr "@verb bez spojeného znaku"
+
+#: tp/Texinfo/XS/parsetexi/separator.c:396
+#, c-format
+msgid "@dotless expects `i' or `j' as argument, not `%s'"
+msgstr "@dotless vyžaduje jako argument „i“ nebo „j“, ne „%s“"
+
+#: tp/Texinfo/XS/parsetexi/separator.c:545
+msgid "misplaced }"
+msgstr "špatně umístěný znak }"
+
+#~ msgid "no node to be renamed"
+#~ msgstr "žádný uzel nemá být přejmenován"
+
+#~ msgid "nodes without a new name at the end of file"
+#~ msgstr "uzly bez nového názvu na konci souboru"
+
+#~ msgid "using a renamed nodes file (`%s') is deprecated"
+#~ msgstr "používání souborů s přejmenovanými uzly („%s“) je zastaralé"
+
+#~ msgid "old name for `%s' is a node of the document"
+#~ msgstr "starý název pro „%s“ je uzel dokumentu"
+
+#~ msgid "file empty for renamed node `%s'"
+#~ msgstr "soubor pro přejmenovaný uzel „%s“ je prázdný"
+
+#~ msgid "target node (new name for `%s') not in document: %s"
+#~ msgstr "cílový uzel (nový název pro „%s“ není v dokumentu: %s"
+
+#~ msgid "error on closing renamed node redirection file %s: %s"
+#~ msgstr ""
+#~ "chyba při zavírání souboru %s s přejmenovanými uzly přesměrování: %s"
+
+#~ msgid "empty node name"
+#~ msgstr "prázdný název uzlu"
 
 #~ msgid "can't open %s: %s"
 #~ msgstr "%s nelze otevřít: %s"
@@ -3627,9 +3821,6 @@ msgstr "%s: %s nebylo možné otevřít pro zápis: %s\n"
 
 #~ msgid "Obsolete variable %s\n"
 #~ msgstr "Zastaralá proměnná %s\n"
-
-#~ msgid "@%s should not be associated with @top"
-#~ msgstr "@%s by neměl být spojen s @top"
 
 #~ msgid "%s: obsolete variable %s\n"
 #~ msgstr "%s: zastaralá proměnná %s\n"

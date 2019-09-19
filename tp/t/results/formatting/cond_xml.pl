@@ -417,20 +417,8 @@ $result_nodes{'cond_xml'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'cond_xml'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'cond_xml'};
 
 $result_menus{'cond_xml'} = {
   'cmdname' => 'node',
@@ -447,7 +435,7 @@ $result_errors{'cond_xml'} = [];
 $result_converted{'xml'}->{'cond_xml'} = '<preamble>\\input texinfo
 </preamble><setfilename file="cond.info" spaces=" ">cond.info</setfilename>
 
-<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <html endspaces=" ">
 </html>

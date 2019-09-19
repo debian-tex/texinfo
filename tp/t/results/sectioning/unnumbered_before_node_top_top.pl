@@ -259,20 +259,8 @@ $result_nodes{'unnumbered_before_node_top_top'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'unnumbered_before_node_top_top'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'unnumbered_before_node_top_top'};
 
 $result_menus{'unnumbered_before_node_top_top'} = {
   'cmdname' => 'node',
@@ -304,23 +292,6 @@ $result_elements{'unnumbered_before_node_top_top'} = [
             'directions' => {
               'Back' => {},
               'FastBack' => {},
-              'NodeUp' => {
-                'extra' => {
-                  'manual_content' => [
-                    {
-                      'text' => 'dir'
-                    }
-                  ],
-                  'top_node_up' => {
-                    'cmdname' => 'node',
-                    'extra' => {
-                      'normalized' => 'Top',
-                      'spaces_before_argument' => ' '
-                    }
-                  }
-                },
-                'type' => 'external_node'
-              },
               'Prev' => {},
               'This' => {}
             },
@@ -331,7 +302,13 @@ $result_elements{'unnumbered_before_node_top_top'} = [
               },
               'level' => 1
             },
-            'node' => {},
+            'node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'Top',
+                'spaces_before_argument' => ' '
+              }
+            },
             'section' => {}
           },
           'type' => 'element'
@@ -357,7 +334,6 @@ $result_elements{'unnumbered_before_node_top_top'}[0]{'extra'}{'directions'}{'Fa
 $result_elements{'unnumbered_before_node_top_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'FastBack'} = $result_elements{'unnumbered_before_node_top_top'}[0];
 $result_elements{'unnumbered_before_node_top_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'Prev'} = $result_elements{'unnumbered_before_node_top_top'}[0];
 $result_elements{'unnumbered_before_node_top_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'This'} = $result_elements{'unnumbered_before_node_top_top'}[0]{'extra'}{'directions'}{'FastForward'};
-$result_elements{'unnumbered_before_node_top_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'} = $result_elements{'unnumbered_before_node_top_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'};
 $result_elements{'unnumbered_before_node_top_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'section'} = $result_elements{'unnumbered_before_node_top_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'element_command'};
 $result_elements{'unnumbered_before_node_top_top'}[0]{'extra'}{'directions'}{'Forward'} = $result_elements{'unnumbered_before_node_top_top'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'unnumbered_before_node_top_top'}[0]{'extra'}{'directions'}{'Next'} = $result_elements{'unnumbered_before_node_top_top'}[0]{'extra'}{'directions'}{'FastForward'};
@@ -375,7 +351,6 @@ $result_directions_text{'unnumbered_before_node_top_top'} = 'element: @unnumbere
 element: @top top section
   Back: @unnumbered before nodes
   FastBack: @unnumbered before nodes
-  NodeUp: (dir)
   Prev: @unnumbered before nodes
   This: @top top section
 ';
@@ -401,6 +376,11 @@ Tag Table:
 Node: Top69
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

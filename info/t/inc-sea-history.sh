@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,15 +20,15 @@ srcdir=${srcdir:-.}
 run_ginfo -f inc-sea-history
 
 # Check that we go back to the right node after an incremental search
-printf '\02301234\b4\b\b34\b\bqwerty\b\b\b\b\b\b34' >$pty_type
-printf '\rD' >$pty_type
+printf '\02301234\b4\b\b34\b\bqwerty\b\b\b\b\b\b34' >&7
+printf '\rD' >&7
 
 # Check we reached node with "01234" in it
 sleep 1
 grep 'Node: Four' $ginfo_output
 retval=$?
 
-printf 'lDq' >$pty_type
+printf 'lDq' >&7
 timeout_test
 
 if test $retval = 0; then

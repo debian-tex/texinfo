@@ -344,20 +344,8 @@ $result_nodes{'index_entry_in_preformatted'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'index_entry_in_preformatted'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'index_entry_in_preformatted'};
 
 $result_menus{'index_entry_in_preformatted'} = {
   'cmdname' => 'node',
@@ -388,7 +376,7 @@ $result_converted{'html_text'}->{'index_entry_in_preformatted'} = '<span id="Top
 ';
 
 
-$result_converted{'xml'}->{'index_entry_in_preformatted'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'index_entry_in_preformatted'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <example endspaces=" ">
 <pre xml:space="preserve"><cindex index="cp" spaces=" "><indexterm index="cp" number="1">first</indexterm></cindex>

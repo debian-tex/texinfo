@@ -435,23 +435,11 @@ $result_nodes{'text_before_node'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'text_before_node'}{'menu_child'}{'node_prev'} = $result_nodes{'text_before_node'};
 $result_nodes{'text_before_node'}{'menu_child'}{'node_up'} = $result_nodes{'text_before_node'};
 $result_nodes{'text_before_node'}{'node_next'} = $result_nodes{'text_before_node'}{'menu_child'};
-$result_nodes{'text_before_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'text_before_node'};
 
 $result_menus{'text_before_node'} = {
   'cmdname' => 'node',
@@ -504,6 +492,11 @@ Node: Top27
 Node: chapter node125
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

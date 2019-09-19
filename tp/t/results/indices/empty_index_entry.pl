@@ -178,6 +178,7 @@ $result_trees{'empty_index_entry'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -247,26 +248,16 @@ $result_sectioning{'empty_index_entry'} = {};
 $result_nodes{'empty_index_entry'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'empty_index_entry'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'empty_index_entry'};
 
 $result_menus{'empty_index_entry'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -299,6 +290,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

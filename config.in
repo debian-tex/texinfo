@@ -165,12 +165,13 @@
 /* Define to 1 if you have the `btowc' function. */
 #undef HAVE_BTOWC
 
-/* Define to 1 if you have the `bzero' function. */
-#undef HAVE_BZERO
-
 /* Define to 1 if you have the Mac OS X function CFLocaleCopyCurrent in the
    CoreFoundation framework. */
 #undef HAVE_CFLOCALECOPYCURRENT
+
+/* Define to 1 if you have the Mac OS X function
+   CFLocaleCopyPreferredLanguages in the CoreFoundation framework. */
+#undef HAVE_CFLOCALECOPYPREFERREDLANGUAGES
 
 /* Define to 1 if you have the Mac OS X function CFPreferencesCopyAppValue in
    the CoreFoundation framework. */
@@ -207,10 +208,6 @@
    otherwise. */
 #undef HAVE_DECL_MBSWIDTH_IN_WCHAR_H
 
-/* Define to 1 if you have the declaration of `memchr', and to 0 if you don't.
-   */
-#undef HAVE_DECL_MEMCHR
-
 /* Define to 1 if you have the declaration of `memrchr', and to 0 if you
    don't. */
 #undef HAVE_DECL_MEMRCHR
@@ -223,17 +220,9 @@
    and to 0 if you don't. */
 #undef HAVE_DECL_PROGRAM_INVOCATION_SHORT_NAME
 
-/* Define to 1 if you have the declaration of `strcoll', and to 0 if you
-   don't. */
-#undef HAVE_DECL_STRCOLL
-
 /* Define to 1 if you have the declaration of `strdup', and to 0 if you don't.
    */
 #undef HAVE_DECL_STRDUP
-
-/* Define to 1 if you have the declaration of `strerror', and to 0 if you
-   don't. */
-#undef HAVE_DECL_STRERROR
 
 /* Define to 1 if you have the declaration of `strerror_r', and to 0 if you
    don't. */
@@ -271,20 +260,11 @@
    */
 #undef HAVE_DECL___ARGV
 
-/* Define to 1 if you don't have `vprintf' but do have `_doprnt.' */
-#undef HAVE_DOPRNT
-
 /* Define to 1 if the system has the type `error_t'. */
 #undef HAVE_ERROR_T
 
-/* Define to 1 if you have the <fcntl.h> header file. */
-#undef HAVE_FCNTL_H
-
 /* Define to 1 if you have the <features.h> header file. */
 #undef HAVE_FEATURES_H
-
-/* Define to 1 if you have the `getcwd' function. */
-#undef HAVE_GETCWD
 
 /* Define to 1 if you have the `getexecname' function. */
 #undef HAVE_GETEXECNAME
@@ -338,9 +318,6 @@
 /* Define to 1 if you have the <langinfo.h> header file. */
 #undef HAVE_LANGINFO_H
 
-/* Define to 1 if you have the `bsd' library (-lbsd). */
-#undef HAVE_LIBBSD
-
 /* Define to 1 if you have the <libintl.h> header file. */
 #undef HAVE_LIBINTL_H
 
@@ -372,12 +349,6 @@
 /* Define to 1 if <wchar.h> declares mbstate_t. */
 #undef HAVE_MBSTATE_T
 
-/* Define to 1 if you have the `memcpy' function. */
-#undef HAVE_MEMCPY
-
-/* Define to 1 if you have the `memmove' function. */
-#undef HAVE_MEMMOVE
-
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
 
@@ -386,9 +357,6 @@
 
 /* Define to 1 if you have the `memrchr' function. */
 #undef HAVE_MEMRCHR
-
-/* Define to 1 if you have the `memset' function. */
-#undef HAVE_MEMSET
 
 /* Define to 1 if you have the `mprotect' function. */
 #undef HAVE_MPROTECT
@@ -422,9 +390,6 @@
 /* Define to 1 if you have the `setlocale' function. */
 #undef HAVE_SETLOCALE
 
-/* Define to 1 if you have the `setvbuf' function. */
-#undef HAVE_SETVBUF
-
 /* Define to 1 if you have the `sigaction' function. */
 #undef HAVE_SIGACTION
 
@@ -439,9 +404,6 @@
 
 /* Define to 1 if you have the `sigprocmask' function. */
 #undef HAVE_SIGPROCMASK
-
-/* Define to 1 if you have the `sigsetmask' function. */
-#undef HAVE_SIGSETMASK
 
 /* Define to 1 if you have the `snprintf' function. */
 #undef HAVE_SNPRINTF
@@ -470,18 +432,8 @@
 /* Define to 1 if you have the `strcasestr' function. */
 #undef HAVE_STRCASESTR
 
-/* Define to 1 if you have the `strchr' function. */
-#undef HAVE_STRCHR
-
-/* Define to 1 if you have the `strcoll' function and it is properly defined.
-   */
-#undef HAVE_STRCOLL
-
 /* Define to 1 if you have the `strdup' function. */
 #undef HAVE_STRDUP
-
-/* Define to 1 if you have the `strerror' function. */
-#undef HAVE_STRERROR
 
 /* Define to 1 if you have the `strerror_r' function. */
 #undef HAVE_STRERROR_R
@@ -510,12 +462,6 @@
 /* Define to 1 if you have the <sys/cdefs.h> header file. */
 #undef HAVE_SYS_CDEFS_H
 
-/* Define to 1 if you have the <sys/fcntl.h> header file. */
-#undef HAVE_SYS_FCNTL_H
-
-/* Define to 1 if you have the <sys/file.h> header file. */
-#undef HAVE_SYS_FILE_H
-
 /* Define to 1 if you have the <sys/inttypes.h> header file. */
 #undef HAVE_SYS_INTTYPES_H
 
@@ -525,23 +471,14 @@
 /* Define to 1 if you have the <sys/mman.h> header file. */
 #undef HAVE_SYS_MMAN_H
 
-/* Define to 1 if you have the <sys/ptem.h> header file. */
-#undef HAVE_SYS_PTEM_H
-
 /* Define to 1 if you have the <sys/socket.h> header file. */
 #undef HAVE_SYS_SOCKET_H
 
 /* Define to 1 if you have the <sys/stat.h> header file. */
 #undef HAVE_SYS_STAT_H
 
-/* Define to 1 if you have the <sys/stream.h> header file. */
-#undef HAVE_SYS_STREAM_H
-
 /* Define to 1 if you have the <sys/time.h> header file. */
 #undef HAVE_SYS_TIME_H
-
-/* Define to 1 if you have the <sys/ttold.h> header file. */
-#undef HAVE_SYS_TTOLD_H
 
 /* Define to 1 if you have the <sys/types.h> header file. */
 #undef HAVE_SYS_TYPES_H
@@ -554,9 +491,6 @@
 
 /* Define to 1 if you have the <termios.h> header file. */
 #undef HAVE_TERMIOS_H
-
-/* Define to 1 if you have the <termio.h> header file. */
-#undef HAVE_TERMIO_H
 
 /* Define to 1 if you have the `towlower' function. */
 #undef HAVE_TOWLOWER
@@ -575,9 +509,6 @@
 
 /* Define to 1 if you have the `vasprintf' function. */
 #undef HAVE_VASPRINTF
-
-/* Define to 1 if you have the `vprintf' function. */
-#undef HAVE_VPRINTF
 
 /* Define to 1 if you have the <wchar.h> header file. */
 #undef HAVE_WCHAR_H
@@ -699,9 +630,6 @@
 /* Define if vasnprintf exists but is overridden by gnulib. */
 #undef REPLACE_VASNPRINTF
 
-/* Define as the return type of signal handlers (`int' or `void'). */
-#undef RETSIGTYPE
-
 /* Define to l, ll, u, ul, ull, etc., as suitable for constants of type
    'sig_atomic_t'. */
 #undef SIG_ATOMIC_T_SUFFIX
@@ -724,17 +652,11 @@
 	STACK_DIRECTION = 0 => direction of growth unknown */
 #undef STACK_DIRECTION
 
-/* Define to 1 if the `S_IS*' macros in <sys/stat.h> do not work properly. */
-#undef STAT_MACROS_BROKEN
-
 /* Define to 1 if you have the ANSI C header files. */
 #undef STDC_HEADERS
 
 /* Define to 1 if strerror_r returns char *. */
 #undef STRERROR_R_CHAR_P
-
-/* Define to 1 if your <sys/time.h> declares `struct tm'. */
-#undef TM_IN_SYS_TIME
 
 /* Define if the POSIX multithreading library can be used. */
 #undef USE_POSIX_THREADS
@@ -911,9 +833,6 @@
 
 /* Define so that glibc/gnulib argp.h does not typedef error_t. */
 #undef __error_t_defined
-
-/* Define to empty if `const' does not conform to ANSI C. */
-#undef const
 
 /* Define to a type to use for 'error_t' if it is not otherwise available. */
 #undef error_t

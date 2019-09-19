@@ -534,23 +534,11 @@ $result_nodes{'chapter_node_before_and_after_part'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'chapter_node_before_and_after_part'}{'menu_child'}{'node_prev'} = $result_nodes{'chapter_node_before_and_after_part'};
 $result_nodes{'chapter_node_before_and_after_part'}{'menu_child'}{'node_up'} = $result_nodes{'chapter_node_before_and_after_part'};
 $result_nodes{'chapter_node_before_and_after_part'}{'node_next'} = $result_nodes{'chapter_node_before_and_after_part'}{'menu_child'};
-$result_nodes{'chapter_node_before_and_after_part'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'chapter_node_before_and_after_part'};
 
 $result_menus{'chapter_node_before_and_after_part'} = {
   'cmdname' => 'node',
@@ -623,6 +611,11 @@ Node: Top27
 Node: after116
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -665,7 +658,7 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#after" accesskey="n" rel="next">after</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="#after" accesskey="n" rel="next">after</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <span id="chapter"></span><h2 class="chapter">1 chapter</h2>
 
@@ -718,7 +711,7 @@ $result_converted_errors{'html'}->{'chapter_node_before_and_after_part'} = [
 
 
 $result_converted{'xml'}->{'chapter_node_before_and_after_part'} = '
-<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">after</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">after</nodenext></node>
 <chapter spaces=" "><sectiontitle>chapter</sectiontitle>
 
 <menu endspaces=" ">

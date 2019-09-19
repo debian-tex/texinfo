@@ -357,18 +357,11 @@ $result_nodes{'empty_top_node_up'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'empty_top_node_up'}{'menu_child'}{'node_prev'} = $result_nodes{'empty_top_node_up'};
 $result_nodes{'empty_top_node_up'}{'menu_child'}{'node_up'} = $result_nodes{'empty_top_node_up'};
 $result_nodes{'empty_top_node_up'}{'node_next'} = $result_nodes{'empty_top_node_up'}{'menu_child'};
-$result_nodes{'empty_top_node_up'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'empty_top_node_up'};
 
 $result_menus{'empty_top_node_up'} = {
   'cmdname' => 'node',
@@ -416,6 +409,11 @@ Node: Top27
 Node: first127
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

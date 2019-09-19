@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ MANPATH=.; export MANPATH
 # to that file without loading a menu of matching files.  This relies
 # on there being no "intera" entry in "dir".
 run_ginfo --all intera
-printf 'Dq' >$pty_type
+printf 'Dq' >&7
 timeout_test
 
 grep '^File: intera.info,  Node: Top' $ginfo_output

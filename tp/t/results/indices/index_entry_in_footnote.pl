@@ -161,6 +161,7 @@ $result_trees{'index_entry_in_footnote'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -229,26 +230,16 @@ $result_sectioning{'index_entry_in_footnote'} = {};
 $result_nodes{'index_entry_in_footnote'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'index_entry_in_footnote'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'index_entry_in_footnote'};
 
 $result_menus{'index_entry_in_footnote'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -281,6 +272,11 @@ Node: Top27
 Ref: Top-Footnote-1205
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -318,7 +314,7 @@ $result_converted{'html_text'}->{'index_entry_in_footnote'} = '<span id="Top"></
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>in footnote
 <span id="index-index-entry-in-footnote"></span>
 </p>

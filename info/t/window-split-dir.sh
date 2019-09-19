@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ srcdir=${srcdir:-.}
 # Load dir node
 run_ginfo
 # Split it in two, go to the new window, and make it the only window.
-printf '\0302\030o\0301Dq' >$pty_type
+printf '\0302\030o\0301Dq' >&7
 timeout_test
 
 grep '^File: dir' $ginfo_output

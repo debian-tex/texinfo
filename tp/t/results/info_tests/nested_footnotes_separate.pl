@@ -233,20 +233,8 @@ $result_nodes{'nested_footnotes_separate'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'nested_footnotes_separate'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'nested_footnotes_separate'};
 
 $result_menus{'nested_footnotes_separate'} = {
   'cmdname' => 'node',
@@ -285,6 +273,11 @@ Ref: Top-Footnote-1134
 Ref: Top-Footnote-2189
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

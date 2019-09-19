@@ -867,20 +867,8 @@ $result_nodes{'multiple'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'multiple'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'multiple'};
 
 $result_menus{'multiple'} = {
   'cmdname' => 'node',
@@ -898,9 +886,9 @@ $result_converted{'plaintext'}->{'multiple'} = ' -- Variable d\'instance de fr :
 
  -- Variable d\'instance de copying : a b
 
- -- VariÃ¡vel de instÃ¢ncia da pt: BBB CCC
+ -- Variável de instância da pt: BBB CCC
 
- -- VariÃ¡vel de instÃ¢ncia da copying: a b
+ -- Variável de instância da copying: a b
 ';
 
 
@@ -915,15 +903,20 @@ File: ,  Node: Top,  Up: (dir)
 
  -- Variable d\'instance de copying : a b
 
- -- VariÃ¡vel de instÃ¢ncia da pt: BBB CCC
+ -- Variável de instância da pt: BBB CCC
 
- -- VariÃ¡vel de instÃ¢ncia da copying: a b
+ -- Variável de instância da copying: a b
 
 
 Tag Table:
 Node: Top69
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

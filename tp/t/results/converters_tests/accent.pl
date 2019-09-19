@@ -3040,20 +3040,8 @@ $result_nodes{'accent'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'accent'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'accent'};
 
 $result_menus{'accent'} = {
   'cmdname' => 'node',
@@ -3070,79 +3058,79 @@ $result_errors{'accent'} = [];
 $result_converted{'plaintext'}->{'accent'} = 'top
 ***
 
-should be e\': e` e`
+should be e\': è è
 
-   should be e\': e\' e\'
+   should be e\': é é
 
-   should be e^: e^ e^
+   should be e^: ê ê
 
-   should be u": u" u"
+   should be u": ü ü
 
-   should be i\': i` i`
+   should be i\': ì ì
 
-   should be i\': i\' i\'
+   should be i\': í í
 
-   should be i^: i^ i^
+   should be i^: î î
 
-   should be u": u" u"
+   should be u": ü ü
 
-   should be c,: c, c,
+   should be c,: ç ç
 
-   should be n~: n~ n~
+   should be n~: ñ ñ
 
-   should be e=: e= e=
+   should be e=: ē ē
 
-   should be e\'\': e\'\' e\'\'
+   should be e\'\': e̋ e̋
 
-   should be e.: e. e.
+   should be e.: ė ė
 
-   should be e*: e* e*
+   should be e*: e̊ e̊
 
-   should be ee[: ee[
+   should be ee[: ee͡
 
-   should be e(: e( e(
+   should be e(: ĕ ĕ
 
-   should be e_: e_ e_
+   should be e_: e̲ e̲
 
-   should be .e: .e .e
+   should be .e: ẹ ẹ
 
-   should be e<: e< e<
+   should be e<: ě ě
 
-   should be a; : a; a;
+   should be a; : ą ą
 
-   should be e; : e; e;
+   should be e; : ę ę
 
-   upside down: ?  !
+   upside down: ¿  ¡
 
-   A-with-circle: aa,AA
+   A-with-circle: å,Å
 
-   AE, OE ligatures: ae AE oe OE
+   AE, OE ligatures: æ Æ œ Œ
 
-   dotless i, j: i j
+   dotless i, j: ı j
 
-   Polish suppressed-L: /l /L
+   Polish suppressed-L: ł Ł
 
-   O-with-slash: /o /O
+   O-with-slash: ø Ø
 
-   es-zet or sharp S: ss
+   es-zet or sharp S: ß
 
-   pounds sterling: #
+   pounds sterling: £
 
-   should be dotless i\': i`
+   should be dotless i\': ì
 
-   should be dotless i\': i\'
+   should be dotless i\': í
 
-   should be dotless i^: i^
+   should be dotless i^: î
 
-   should be dotless i": i"
+   should be dotless i": ï
 
-   should be dotless j\': j`
+   should be dotless j\': j̀
 
-   should be dotless j\': j\'
+   should be dotless j\': j́
 
-   should be dotless j^: j^
+   should be dotless j^: ĵ
 
-   should be dotless j": j"
+   should be dotless j": j̈
 ';
 
 
@@ -3225,7 +3213,7 @@ $result_converted{'html_text'}->{'accent'} = '<span id="Top"></span><span id="to
 ';
 
 
-$result_converted{'xml'}->{'accent'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'accent'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <para>should be e&textlsquo;: <accent type="grave">e</accent> <accent type="grave" bracketed="off">e</accent>

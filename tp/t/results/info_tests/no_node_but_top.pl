@@ -87,6 +87,11 @@ top
 Tag Table:
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'no_node_but_top'} = [

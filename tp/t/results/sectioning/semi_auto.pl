@@ -954,18 +954,7 @@ $result_nodes{'semi_auto'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'semi_auto'}{'menu_child'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'semi_auto'}{'menu_child'};
 $result_nodes{'semi_auto'}{'menu_child'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'semi_auto'};
@@ -974,7 +963,6 @@ $result_nodes{'semi_auto'}{'menu_child'}{'node_next'} = $result_nodes{'semi_auto
 $result_nodes{'semi_auto'}{'menu_child'}{'node_prev'} = $result_nodes{'semi_auto'};
 $result_nodes{'semi_auto'}{'menu_child'}{'node_up'} = $result_nodes{'semi_auto'};
 $result_nodes{'semi_auto'}{'node_next'} = $result_nodes{'semi_auto'}{'menu_child'};
-$result_nodes{'semi_auto'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'semi_auto'};
 
 $result_menus{'semi_auto'} = {
   'cmdname' => 'node',

@@ -170,7 +170,7 @@ output_character_function (int c)
 static void
 terminal_begin_using_terminal (void)
 {
-  RETSIGTYPE (*sigsave) (int signum);
+  void (*sigsave) (int signum);
 
   /* Turn on mouse reporting.  This is "normal tracking mode" supported by
      xterm.  The presence of the Km capability may not be a reliable way to
@@ -211,7 +211,7 @@ terminal_begin_using_terminal (void)
 static void
 terminal_end_using_terminal (void)
 {
-  RETSIGTYPE (*sigsave) (int signum);
+  void (*sigsave) (int signum);
 
   /* Turn off mouse reporting ("normal tracking mode"). */
   if (term_Km)
@@ -953,21 +953,6 @@ terminal_initialize_terminal (char *terminal_name)
     else
       ospeed = B9600;
   }
-#else
-# if defined (TIOCGETP)
-  {
-    struct sgttyb sg;
-
-    if (ioctl (fileno (stdout), TIOCGETP, &sg) != -1)
-      ospeed = sg.sg_ospeed;
-    else
-      ospeed = B9600;
-  }
-# else
-#ifndef __MINGW32__
-  ospeed = B9600;
-#endif
-# endif /* !TIOCGETP */
 #endif
 
   term_cr = tgetstr ("cr", &buffer);
@@ -1069,38 +1054,7 @@ terminal_initialize_terminal (char *terminal_name)
 
 #if defined (HAVE_TERMIOS_H)
 struct termios original_termios, ttybuff;
-#else
-#  if defined (HAVE_TERMIO_H)
-/* A buffer containing the terminal mode flags upon entry to info. */
-struct termio original_termio, ttybuff;
-#  else /* !HAVE_TERMIO_H */
-/* Buffers containing the terminal mode flags upon entry to info. */
-int original_tty_flags = 0;
-int original_lmode;
-#ifndef __MINGW32__
-struct sgttyb ttybuff;
 #endif
-
-#    if defined(TIOCGETC) && defined(M_XENIX)
-/* SCO 3.2v5.0.2 defines but does not support TIOCGETC.  Gak.  Maybe
-   better fix would be to use Posix termios in preference.  --gildea,
-   1jul99.  */
-#      undef TIOCGETC
-#    endif
-
-#    if defined (TIOCGETC)
-/* A buffer containing the terminal interrupt characters upon entry
-   to Info. */
-struct tchars original_tchars;
-#    endif
-
-#    if defined (TIOCGLTC)
-/* A buffer containing the local terminal mode characters upon entry
-   to Info. */
-struct ltchars original_ltchars;
-#    endif
-#  endif /* !HAVE_TERMIO_H */
-#endif /* !HAVE_TERMIOS_H */
 
 /* Prepare to start using the terminal to read characters singly.  Return
    0 if terminal is too dumb to run Info interactively. */
@@ -1125,14 +1079,7 @@ terminal_prep_terminal (void)
 #if defined (HAVE_TERMIOS_H)
   tcgetattr (tty, &original_termios);
   tcgetattr (tty, &ttybuff);
-#else
-#  if defined (HAVE_TERMIO_H)
-  ioctl (tty, TCGETA, &original_termio);
-  ioctl (tty, TCGETA, &ttybuff);
-#  endif
-#endif
 
-#if defined (HAVE_TERMIOS_H) || defined (HAVE_TERMIO_H)
   ttybuff.c_iflag &= (~ISTRIP & ~INLCR & ~IGNCR & ~ICRNL & ~IXON);
 /* These output flags are not part of POSIX, so only use them if they
    are defined.  */
@@ -1157,10 +1104,7 @@ terminal_prep_terminal (void)
   if (ttybuff.c_cc[VLNEXT] == '\026')
     ttybuff.c_cc[VLNEXT] = -1;
 #endif /* VLNEXT */
-#endif /* TERMIOS or TERMIO */
 
-/* cf. emacs/src/sysdep.c for being sure output is on. */
-#if defined (HAVE_TERMIOS_H)
   /* linux kernel 2.2.x needs a TCOFF followed by a TCOON to turn output
      back on if the user presses ^S at the very beginning; just a TCOON
      doesn't work.  --Kevin Ryde <user42@zip.com.au>, 16jun2000.  */
@@ -1169,82 +1113,8 @@ terminal_prep_terminal (void)
   tcflow (tty, TCOOFF);
   tcflow (tty, TCOON);
 #  endif
-#else
-#  if defined (HAVE_TERMIO_H)
-  ioctl (tty, TCSETA, &ttybuff);
-#    ifdef TCXONC
-  ioctl (tty, TCXONC, 1);
-#    endif
-#  endif
 #endif
 
-#if !defined (HAVE_TERMIOS_H) && !defined (HAVE_TERMIO_H) && !defined(__MINGW32__)
-  ioctl (tty, TIOCGETP, &ttybuff);
-
-  if (!original_tty_flags)
-    original_tty_flags = ttybuff.sg_flags;
-
-  /* Make this terminal pass 8 bits around while we are using it. */
-#  if defined (PASS8)
-  ttybuff.sg_flags |= PASS8;
-#  endif /* PASS8 */
-
-#  if defined (TIOCLGET) && defined (LPASS8)
-  {
-    int flags;
-    ioctl (tty, TIOCLGET, &flags);
-    original_lmode = flags;
-    flags |= LPASS8;
-    ioctl (tty, TIOCLSET, &flags);
-  }
-#  endif /* TIOCLGET && LPASS8 */
-
-#  if defined (TIOCGETC)
-  {
-    struct tchars temp;
-
-    ioctl (tty, TIOCGETC, &original_tchars);
-    temp = original_tchars;
-
-    /* C-s and C-q. */
-    temp.t_startc = temp.t_stopc = -1;
-
-    /* Often set to C-d. */
-    temp.t_eofc = -1;
-
-    /* If the a quit or interrupt character conflicts with one of our
-       commands, then make it go away. */
-    if (temp.t_intrc == '\177')
-      temp.t_intrc = -1;
-
-    if (temp.t_quitc == '\177')
-      temp.t_quitc = -1;
-
-    ioctl (tty, TIOCSETC, &temp);
-  }
-#  endif /* TIOCGETC */
-
-#  if defined (TIOCGLTC)
-  {
-    struct ltchars temp;
-
-    ioctl (tty, TIOCGLTC, &original_ltchars);
-    temp = original_ltchars;
-
-    /* Make the interrupt keys go away.  Just enough to make people happy. */
-    temp.t_lnextc = -1;         /* C-v. */
-    temp.t_dsuspc = -1;         /* C-y. */
-    temp.t_flushc = -1;         /* C-o. */
-    ioctl (tty, TIOCSLTC, &temp);
-  }
-#  endif /* TIOCGLTC */
-
-# ifndef __MINGW32__
-  ttybuff.sg_flags &= ~ECHO;
-  ttybuff.sg_flags |= CBREAK;
-  ioctl (tty, TIOCSETN, &ttybuff);
-# endif
-#endif /* !HAVE_TERMIOS_H && !HAVE_TERMIO_H */
   return 1;
 }
 
@@ -1265,30 +1135,7 @@ terminal_unprep_terminal (void)
 
 #if defined (HAVE_TERMIOS_H)
   tcsetattr (tty, TCSANOW, &original_termios);
-#else
-#  if defined (HAVE_TERMIO_H)
-  ioctl (tty, TCSETA, &original_termio);
-#  else /* !HAVE_TERMIO_H */
-#   ifndef __MINGW32__
-  ioctl (tty, TIOCGETP, &ttybuff);
-  ttybuff.sg_flags = original_tty_flags;
-  ioctl (tty, TIOCSETN, &ttybuff);
-#   endif
-
-#  if defined (TIOCGETC)
-  ioctl (tty, TIOCSETC, &original_tchars);
-#  endif /* TIOCGETC */
-
-#  if defined (TIOCGLTC)
-  ioctl (tty, TIOCSLTC, &original_ltchars);
-#  endif /* TIOCGLTC */
-
-#  if defined (TIOCLGET) && defined (LPASS8)
-  ioctl (tty, TIOCLSET, &original_lmode);
-#  endif /* TIOCLGET && LPASS8 */
-
-#  endif /* !HAVE_TERMIO_H */
-#endif /* !HAVE_TERMIOS_H */
+#endif
   terminal_end_using_terminal ();
 }
 

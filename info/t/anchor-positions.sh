@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ srcdir=${srcdir:-.}
 # encoding conversion doesn't cause the program to freeze.
 LANG=en_US.iso8859-1; export LANG
 run_ginfo -f anchor-positions
-printf q >$pty_type
+printf q >&7
 
 timeout_test
 cleanup

@@ -69,6 +69,11 @@ $result_converted{'info'}->{'def_existing_index'} = 'This is , produced from .
 Tag Table:
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'def_existing_index'} = [

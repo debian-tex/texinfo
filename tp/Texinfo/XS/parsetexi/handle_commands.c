@@ -553,6 +553,39 @@ handle_line_command (ELEMENT *current, char **line_inout,
           misc = new_element (ET_NONE);
           misc->cmd = cmd;
           misc->line_nr = line_nr;
+
+          if (cmd == CM_subentry)
+            {
+              int level = 1;
+              ELEMENT *parent = current->parent;
+
+              if (!(command_flags(parent) & CF_index_entry_command)
+                  && parent->cmd != CM_subentry)
+                {
+                  line_warn ("@subentry should only occur in an index entry");
+                }
+
+              add_extra_element (parent, "subentry", misc);
+
+              if (parent->cmd == CM_subentry)
+                {
+                  KEY_PAIR *k = lookup_extra (parent, "level");
+                  if (k && k->value)
+                    level = (int) k->value + 1;
+                }
+              add_extra_integer (misc, "level", level);
+              if (level > 2)
+                {
+                  line_error
+                    ("no more than two levels of index subentry are allowed");
+                }
+
+              /* Do not make the @subentry element a child of the index
+                 command.  This means that spaces are preserved properly
+                 when converting back to Texinfo. */
+              current = end_line (current);
+            }
+
           add_to_element_contents (current, misc);
 
           if (command_data(cmd).flags & CF_sectioning)
@@ -659,6 +692,8 @@ handle_line_command (ELEMENT *current, char **line_inout,
         }
       else if (cmd == CM_dircategory && current_node)
         line_warn ("@dircategory after first node");
+      else if (cmd == CM_printindex && current_node)
+        add_extra_integer (current_node, "isindex", 1);
 
       current = last_args_child (current);
 
@@ -1044,7 +1079,8 @@ handle_brace_command (ELEMENT *current, char **line_inout, enum command_id cmd)
 
   if (cmd == CM_sortas)
     {
-      if (!(command_flags(current->parent) & CF_index_entry_command))
+      if (!(command_flags(current->parent) & CF_index_entry_command)
+          && current->parent->cmd != CM_subentry)
         {
           line_warn ("@%s should only appear in an index entry",
                      command_name(cmd));

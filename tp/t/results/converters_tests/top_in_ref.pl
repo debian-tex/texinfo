@@ -4201,20 +4201,8 @@ $result_nodes{'top_in_ref'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'top_in_ref'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'top_in_ref'};
 
 $result_menus{'top_in_ref'} = {
   'cmdname' => 'node',
@@ -4306,7 +4294,7 @@ $result_converted{'html_text'}->{'top_in_ref'} = '<span id="Top"></span><h1 clas
 ';
 
 
-$result_converted{'xml'}->{'top_in_ref'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'top_in_ref'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <para><code>&arobase;ref&lbrace;Top,cross ref name&rbrace;</code> <ref label="Top"><xrefnodename>Top</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></ref>
 <code>&arobase;ref&lbrace;Top,,title&rbrace;</code> <ref label="Top"><xrefnodename>Top</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></ref>

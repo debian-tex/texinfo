@@ -1495,18 +1495,7 @@ $result_nodes{'node_footnote_use_node'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'node_footnote_use_node'}{'menu_child'}{'node_next'}{'node_next'}{'menu_child'}{'node_prev'} = $result_nodes{'node_footnote_use_node'}{'menu_child'}{'node_next'}{'node_next'};
 $result_nodes{'node_footnote_use_node'}{'menu_child'}{'node_next'}{'node_next'}{'menu_child'}{'node_up'} = $result_nodes{'node_footnote_use_node'}{'menu_child'}{'node_next'}{'node_next'};
@@ -1518,7 +1507,6 @@ $result_nodes{'node_footnote_use_node'}{'menu_child'}{'node_next'}{'node_up'} = 
 $result_nodes{'node_footnote_use_node'}{'menu_child'}{'node_prev'} = $result_nodes{'node_footnote_use_node'};
 $result_nodes{'node_footnote_use_node'}{'menu_child'}{'node_up'} = $result_nodes{'node_footnote_use_node'};
 $result_nodes{'node_footnote_use_node'}{'node_next'} = $result_nodes{'node_footnote_use_node'}{'menu_child'};
-$result_nodes{'node_footnote_use_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'node_footnote_use_node'};
 
 $result_menus{'node_footnote_use_node'} = {
   'cmdname' => 'node',

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ srcdir=${srcdir:-.}
 
 run_ginfo -f intera -n 'Node with footnotes' -v automatic-footnotes=On
 # Move to automatic footnotes window and split it.  Check we don't crash.
-printf '\030o\0302qqqq' >$pty_type
+printf '\030o\0302qqqq' >&7
 timeout_test
 
 cleanup

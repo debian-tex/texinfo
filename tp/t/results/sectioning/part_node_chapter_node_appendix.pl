@@ -736,25 +736,13 @@ $result_nodes{'part_node_chapter_node_appendix'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'part_node_chapter_node_appendix'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'part_node_chapter_node_appendix'}{'menu_child'};
 $result_nodes{'part_node_chapter_node_appendix'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'part_node_chapter_node_appendix'};
 $result_nodes{'part_node_chapter_node_appendix'}{'menu_child'}{'node_prev'} = $result_nodes{'part_node_chapter_node_appendix'};
 $result_nodes{'part_node_chapter_node_appendix'}{'menu_child'}{'node_up'} = $result_nodes{'part_node_chapter_node_appendix'};
 $result_nodes{'part_node_chapter_node_appendix'}{'node_next'} = $result_nodes{'part_node_chapter_node_appendix'}{'menu_child'};
-$result_nodes{'part_node_chapter_node_appendix'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'part_node_chapter_node_appendix'};
 
 $result_menus{'part_node_chapter_node_appendix'} = {
   'cmdname' => 'node',
@@ -887,17 +875,6 @@ $result_elements{'part_node_chapter_node_appendix'} = [
         'Next' => {},
         'NodeForward' => {},
         'NodeNext' => {},
-        'NodeUp' => {
-          'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'dir'
-              }
-            ],
-            'top_node_up' => {}
-          },
-          'type' => 'external_node'
-        },
         'This' => {}
       },
       'element_command' => {
@@ -941,7 +918,6 @@ $result_elements{'part_node_chapter_node_appendix'}[0]{'extra'}{'directions'}{'F
 $result_elements{'part_node_chapter_node_appendix'}[0]{'extra'}{'directions'}{'Next'} = $result_elements{'part_node_chapter_node_appendix'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'part_node_chapter_node_appendix'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'part_node_chapter_node_appendix'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'part_node_chapter_node_appendix'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'part_node_chapter_node_appendix'}[0]{'extra'}{'directions'}{'FastForward'};
-$result_elements{'part_node_chapter_node_appendix'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'part_node_chapter_node_appendix'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_prev'}{'menu_up'};
 $result_elements{'part_node_chapter_node_appendix'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'part_node_chapter_node_appendix'}[0];
 $result_elements{'part_node_chapter_node_appendix'}[0]{'extra'}{'node'} = $result_elements{'part_node_chapter_node_appendix'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_prev'}{'menu_up'};
 $result_elements{'part_node_chapter_node_appendix'}[0]{'extra'}{'section'} = $result_elements{'part_node_chapter_node_appendix'}[0]{'extra'}{'element_command'};
@@ -956,7 +932,6 @@ $result_directions_text{'part_node_chapter_node_appendix'} = 'element: @top top
   Next: @chapter chapter
   NodeForward: @chapter chapter
   NodeNext: @chapter chapter
-  NodeUp: (dir)
   This: @top top
 element: @chapter chapter
   Back: @top top
@@ -1013,6 +988,11 @@ Node: chapter node136
 Node: appendix node232
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -1053,7 +1033,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a> &nbsp; </p>
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 
@@ -1089,7 +1069,7 @@ Previous: <a href="#chapter-node" accesskey="p" rel="prev">chapter node</a>, Up:
 ';
 
 
-$result_converted{'xml'}->{'part_node_chapter_node_appendix'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'part_node_chapter_node_appendix'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter node</nodenext></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu endspaces=" ">

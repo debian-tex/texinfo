@@ -910,20 +910,8 @@ $result_nodes{'test_deftypefnnewline'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'test_deftypefnnewline'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'test_deftypefnnewline'};
 
 $result_menus{'test_deftypefnnewline'} = {
   'cmdname' => 'node',
@@ -983,7 +971,7 @@ $result_converted{'html_text'}->{'test_deftypefnnewline'} = '
 $result_converted{'xml'}->{'test_deftypefnnewline'} = '
 <deftypefnnewline value="on" line="on"></deftypefnnewline>
 
-<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename></node>
 <deftypefun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="1">name</indexterm><defcategory automatic="on" bracketed="on">Function</defcategory> <deftype>data-type</deftype> <deffunction>name</deffunction> <defparamtype>arguments...</defparamtype></definitionterm>
 <definitionitem><para>aaa
 </para></definitionitem></deftypefun>

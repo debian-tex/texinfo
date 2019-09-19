@@ -380,19 +380,11 @@ $result_nodes{'internal_top_node_up'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'normalized' => 'node_0040-node',
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'internal_top_node_up'}{'menu_child'}{'node_prev'} = $result_nodes{'internal_top_node_up'};
 $result_nodes{'internal_top_node_up'}{'menu_child'}{'node_up'} = $result_nodes{'internal_top_node_up'};
 $result_nodes{'internal_top_node_up'}{'node_next'} = $result_nodes{'internal_top_node_up'}{'menu_child'};
-$result_nodes{'internal_top_node_up'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'internal_top_node_up'};
 
 $result_menus{'internal_top_node_up'} = {
   'cmdname' => 'node',
@@ -455,13 +447,6 @@ $result_elements{'internal_top_node_up'} = [
         },
         'NodeForward' => {},
         'NodeNext' => {},
-        'NodeUp' => {
-          'extra' => {
-            'normalized' => 'node_0040-node',
-            'top_node_up' => {}
-          },
-          'type' => 'top_node_up'
-        },
         'This' => {}
       },
       'element_command' => {},
@@ -488,7 +473,6 @@ $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'e
 $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'node'} = $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'};
 $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'};
 $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'};
-$result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
 $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'internal_top_node_up'}[0];
 $result_elements{'internal_top_node_up'}[0]{'extra'}{'element_command'} = $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
 $result_elements{'internal_top_node_up'}[0]{'extra'}{'node'} = $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
@@ -500,7 +484,6 @@ $result_directions_text{'internal_top_node_up'} = 'element: @node Top
   Forward: @node first
   NodeForward: @node first
   NodeNext: @node first
-  NodeUp: No associated command (type top_node_up)
   This: @node Top
 element: @node first
   Back: @node Top
@@ -515,7 +498,7 @@ element: @node first
 $result_converted{'info'}->{'internal_top_node_up'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: first,  Up: node@ node
+File: ,  Node: Top,  Next: first,  Up: node@@ node
 
 internal top node up
 ********************
@@ -531,9 +514,14 @@ File: ,  Node: first,  Prev: Top,  Up: Top
 
 Tag Table:
 Node: Top27
-Node: first143
+Node: first144
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -574,7 +562,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="#node_0040-node" accesskey="u" rel="up">node@ node</a> &nbsp; </p>
+Next: <a href="#first" accesskey="n" rel="next">first</a> &nbsp; </p>
 </div>
 <span id="internal-top-node-up"></span><h1 class="top">internal top node up</h1>
 

@@ -1698,18 +1698,7 @@ $result_nodes{'more_sections_than_nodes'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'more_sections_than_nodes'}{'menu_child'}{'node_next'}{'menu_child'}{'node_up'} = $result_nodes{'more_sections_than_nodes'}{'menu_child'}{'node_next'};
 $result_nodes{'more_sections_than_nodes'}{'menu_child'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'more_sections_than_nodes'}{'menu_child'}{'node_next'};
@@ -1719,7 +1708,6 @@ $result_nodes{'more_sections_than_nodes'}{'menu_child'}{'node_next'}{'node_up'} 
 $result_nodes{'more_sections_than_nodes'}{'menu_child'}{'node_prev'} = $result_nodes{'more_sections_than_nodes'};
 $result_nodes{'more_sections_than_nodes'}{'menu_child'}{'node_up'} = $result_nodes{'more_sections_than_nodes'};
 $result_nodes{'more_sections_than_nodes'}{'node_next'} = $result_nodes{'more_sections_than_nodes'}{'menu_child'};
-$result_nodes{'more_sections_than_nodes'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'more_sections_than_nodes'};
 
 $result_menus{'more_sections_than_nodes'} = {
   'cmdname' => 'node',
@@ -1785,7 +1773,7 @@ $result_errors{'more_sections_than_nodes'} = [];
 
 
 
-$result_converted{'xml'}->{'more_sections_than_nodes'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">n c2</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'more_sections_than_nodes'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">n c2</nodenext></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu endspaces=" ">

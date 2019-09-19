@@ -63,7 +63,7 @@ $result_errors{'lettered_accent_and_spaces'} = [];
 
 
 
-$result_converted{'plaintext'}->{'lettered_accent_and_spaces'} = 'a*
+$result_converted{'plaintext'}->{'lettered_accent_and_spaces'} = 'å
 ';
 
 

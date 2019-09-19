@@ -1361,20 +1361,8 @@ $result_nodes{'complex_nestings'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'complex_nestings'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'complex_nestings'};
 
 $result_menus{'complex_nestings'} = {
   'cmdname' => 'node',
@@ -1447,7 +1435,7 @@ explanation
 ';
 
 
-$result_converted{'xml'}->{'complex_nestings'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'complex_nestings'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <example endspaces=" ">
 <pre xml:space="preserve">deffs

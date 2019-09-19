@@ -1006,20 +1006,8 @@ $result_nodes{'placed_things_before_node'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'placed_things_before_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'placed_things_before_node'};
 
 $result_menus{'placed_things_before_node'} = {
   'cmdname' => 'node',
@@ -1130,6 +1118,11 @@ Ref: Top-Footnote-1445
 Ref: Anchor in footnote466
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'placed_things_before_node'} = [
@@ -1233,7 +1226,7 @@ ul.no-bullet {list-style: none}
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>In footnote.
 </p>
 <span id="Anchor-in-footnote"></span>

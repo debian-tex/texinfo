@@ -284,6 +284,7 @@ $result_trees{'backslash_in_arg'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -375,26 +376,16 @@ $result_sectioning{'backslash_in_arg'} = {};
 $result_nodes{'backslash_in_arg'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'backslash_in_arg'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'backslash_in_arg'};
 
 $result_menus{'backslash_in_arg'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

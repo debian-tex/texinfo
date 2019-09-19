@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ run_ginfo -f intera -n 'Star note non-whitespace'
 
 # Check that "*note" is not interpreted as a cross-reference marker if
 # it is followed by a non-whitespace character.
-printf '\t\rDq' >$pty_type
+printf '\t\rDq' >&7
 
 timeout_test
 

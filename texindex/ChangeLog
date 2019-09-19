@@ -1,3 +1,108 @@
+2019-05-19         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Prose updates.
+
+2019-05-14         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Typo fixes in main menu.
+
+2019-05-12         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Add escape function and call, fixes things when
+	backslash is the command character.  Remove @code around the
+	names of the nodes for the helper functions.
+	* jrweave: Merge with latest version in TexiWeb Jr. (This
+	version use @subentry.)
+
+2019-04-11         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Update about testing - works on 5 different awks!
+
+2019-04-10         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Simplify comparison algorithm.
+
+2019-04-09         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Final polish.
+
+2019-04-08         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Lots of polish.
+
+2019-04-07         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Improve commentary on sorting. Index TRUE and FALSE.
+	Make fatal() function more portable.
+
+2019-04-05         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* jrweave: Use @sortas for chunk index entries to avoid < and >.
+	Use @subentry also.
+	* ti.twjr: Print see also after page numbers. Adjust logic and
+	sorting.
+
+2019-04-03         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Revise sorting to use the subkeys.
+	Add `@set txiindexlessthanignore'.
+
+2019-04-01         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Finish adding indexing of program variables etc.
+	* jrweave: Fix 'do not edit' banner.
+	* ti.twjr: Bug fixes in page numbers, seealso mixed with multilevel
+	entries.
+
+2019-03-28         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Lots of polish to code and doc. Almost done.
+	* ti.twjr: Make sure all chunk names start with an upper case
+	letter.
+
+2019-03-27         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Finish up new code. Some initial testing.
+	* jrweave, jrtangle: Update to latest versions.
+
+2019-03-25         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Rearrange, start on line parsing.
+
+2019-03-18         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Finish up printing code.
+
+2019-03-17         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Reformat code.
+
+2019-03-15         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Outline algorithm for printing entries.
+
+2019-03-14         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Very initial start at printing entries.
+
+2019-03-13         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Pretty much finish off the requirements chapter.
+
+2019-03-12         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Started expansion of requirements chapter.
+
+2019-03-08         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Fix "the the", http --> https, remove unnecessary
+	semicolons, add History section. Remove references to unimplemented
+	-o option.
+
+2019-03-06         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Add Command_char to list of special characters.
+
 2015-02-27         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* jrweave, jrtangle: Updated to current version. In particular,

@@ -396,6 +396,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -627,6 +628,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -873,6 +875,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -1564,6 +1567,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -1847,6 +1851,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -2355,6 +2360,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -2432,6 +2438,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -3251,6 +3258,7 @@ $result_sectioning{'nodes_before_top_and_sections_monolithic'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -3265,6 +3273,7 @@ $result_sectioning{'nodes_before_top_and_sections_monolithic'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'chapter',
                 'spaces_before_argument' => ' '
               }
@@ -3297,24 +3306,28 @@ $result_nodes{'nodes_before_top_and_sections_monolithic'} = {
       },
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   },
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'first',
       'spaces_before_argument' => ' '
     },
     'menu_child' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'second',
         'spaces_before_argument' => ' '
       },
       'menu_child' => {
         'cmdname' => 'node',
         'extra' => {
+          'isindex' => 1,
           'normalized' => 'a-node',
           'spaces_before_argument' => ' '
         },
@@ -3382,12 +3395,14 @@ $result_nodes{'nodes_before_top_and_sections_monolithic'} = {
   'node_prev' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'first-before-top',
       'spaces_before_argument' => ' '
     },
     'menu_child' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'node-in-menu-before-top',
         'spaces_before_argument' => ' '
       },
@@ -3432,24 +3447,28 @@ $result_nodes{'nodes_before_top_and_sections_monolithic'}{'node_prev'}{'node_nex
 $result_menus{'nodes_before_top_and_sections_monolithic'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   },
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'first',
       'spaces_before_argument' => ' '
     },
     'menu_child' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'second',
         'spaces_before_argument' => ' '
       },
       'menu_child' => {
         'cmdname' => 'node',
         'extra' => {
+          'isindex' => 1,
           'normalized' => 'a-node',
           'spaces_before_argument' => ' '
         },
@@ -3478,6 +3497,7 @@ $result_menus{'nodes_before_top_and_sections_monolithic'} = {
     'menu_next' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'chapter',
         'spaces_before_argument' => ' '
       },

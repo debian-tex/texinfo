@@ -78,8 +78,7 @@ $result_trees{'node_too_much_args'} = {
           {
             'manual_content' => [
               {}
-            ],
-            'top_node_up' => {}
+            ]
           }
         ],
         'normalized' => 'Top',
@@ -107,7 +106,6 @@ $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'parent'} = $resul
 $result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'contents'}[1];
-$result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'top_node_up'} = $result_trees{'node_too_much_args'}{'contents'}[1];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'parent'} = $result_trees{'node_too_much_args'};
 
 $result_texis{'node_too_much_args'} = '@node Top, , ,  (dir)';
@@ -129,12 +127,10 @@ $result_nodes{'node_too_much_args'} = {
         {
           'text' => 'dir'
         }
-      ],
-      'top_node_up' => {}
+      ]
     }
   }
 };
-$result_nodes{'node_too_much_args'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'node_too_much_args'};
 
 $result_menus{'node_too_much_args'} = {
   'cmdname' => 'node',

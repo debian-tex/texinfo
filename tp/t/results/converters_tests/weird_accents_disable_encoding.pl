@@ -581,20 +581,8 @@ $result_nodes{'weird_accents_disable_encoding'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'weird_accents_disable_encoding'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'weird_accents_disable_encoding'};
 
 $result_menus{'weird_accents_disable_encoding'} = {
   'cmdname' => 'node',
@@ -641,7 +629,7 @@ $result_converted{'html_text'}->{'weird_accents_disable_encoding'} = '
 
 $result_converted{'xml'}->{'weird_accents_disable_encoding'} = '<documentencoding encoding="ISO-8859-1" spaces=" ">ISO-8859-1</documentencoding>
 
-<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <para><accent type="macr"><accent type="tilde"><dotless>i</dotless></accent></accent>

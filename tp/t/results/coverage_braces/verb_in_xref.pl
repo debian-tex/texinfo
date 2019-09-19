@@ -195,20 +195,8 @@ $result_nodes{'verb_in_xref'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'verb_in_xref'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'verb_in_xref'};
 
 $result_menus{'verb_in_xref'} = {
   'cmdname' => 'node',

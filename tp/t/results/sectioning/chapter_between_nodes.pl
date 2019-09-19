@@ -620,23 +620,11 @@ $result_nodes{'chapter_between_nodes'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'chapter_between_nodes'}{'menu_child'}{'node_prev'} = $result_nodes{'chapter_between_nodes'};
 $result_nodes{'chapter_between_nodes'}{'menu_child'}{'node_up'} = $result_nodes{'chapter_between_nodes'};
 $result_nodes{'chapter_between_nodes'}{'node_next'} = $result_nodes{'chapter_between_nodes'}{'menu_child'};
-$result_nodes{'chapter_between_nodes'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'chapter_between_nodes'};
 
 $result_menus{'chapter_between_nodes'} = {
   'cmdname' => 'node',
@@ -696,6 +684,11 @@ Node: Top27
 Node: section node177
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -738,7 +731,7 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#section-node" accesskey="n" rel="next">section node</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="#section-node" accesskey="n" rel="next">section node</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <span id="top-section"></span><h1 class="top">top section</h1>
 <p>Top node
@@ -784,7 +777,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 
 
 $result_converted{'xml'}->{'chapter_between_nodes'} = '
-<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">section node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">section node</nodenext></node>
 <top spaces=" "><sectiontitle>top section</sectiontitle>
 <para>Top node
 </para>

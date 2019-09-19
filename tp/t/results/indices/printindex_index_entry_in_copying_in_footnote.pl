@@ -754,23 +754,11 @@ $result_nodes{'printindex_index_entry_in_copying_in_footnote'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'printindex_index_entry_in_copying_in_footnote'}{'menu_child'}{'node_prev'} = $result_nodes{'printindex_index_entry_in_copying_in_footnote'};
 $result_nodes{'printindex_index_entry_in_copying_in_footnote'}{'menu_child'}{'node_up'} = $result_nodes{'printindex_index_entry_in_copying_in_footnote'};
 $result_nodes{'printindex_index_entry_in_copying_in_footnote'}{'node_next'} = $result_nodes{'printindex_index_entry_in_copying_in_footnote'}{'menu_child'};
-$result_nodes{'printindex_index_entry_in_copying_in_footnote'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'printindex_index_entry_in_copying_in_footnote'};
 
 $result_menus{'printindex_index_entry_in_copying_in_footnote'} = {
   'cmdname' => 'node',
@@ -856,6 +844,11 @@ Node: chapter299
 Ref: chapter-Footnote-1512
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -949,11 +942,11 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying_in_footnote'
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>In footnote
 <span id="index-copying-Copying-this-document"></span>
 </p>
-<h3><a id="FOOT1_2" href="#DOCF1_2">(2)</a></h3>
+<h5><a id="FOOT1_2" href="#DOCF1_2">(2)</a></h3>
 <p>In footnote
 <span id="index-copying-Copying-this-document"></span>
 </p>

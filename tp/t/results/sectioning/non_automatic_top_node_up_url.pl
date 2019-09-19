@@ -108,8 +108,7 @@ $result_trees{'non_automatic_top_node_up_url'} = [
             {
               'manual_content' => [
                 {}
-              ],
-              'top_node_up' => {}
+              ]
             }
           ],
           'normalized' => 'Top',
@@ -403,7 +402,6 @@ $result_trees{'non_automatic_top_node_up_url'}[0]{'contents'}[1]{'extra'}{'nodes
 $result_trees{'non_automatic_top_node_up_url'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'non_automatic_top_node_up_url'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'non_automatic_top_node_up_url'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[2]{'manual_content'}[0] = $result_trees{'non_automatic_top_node_up_url'}[0]{'contents'}[1]{'args'}[2]{'contents'}[1];
 $result_trees{'non_automatic_top_node_up_url'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'non_automatic_top_node_up_url'}[0]{'contents'}[1]{'args'}[3]{'contents'}[1];
-$result_trees{'non_automatic_top_node_up_url'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'top_node_up'} = $result_trees{'non_automatic_top_node_up_url'}[0]{'contents'}[1];
 $result_trees{'non_automatic_top_node_up_url'}[0]{'contents'}[1]{'parent'} = $result_trees{'non_automatic_top_node_up_url'}[0];
 $result_trees{'non_automatic_top_node_up_url'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'non_automatic_top_node_up_url'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'non_automatic_top_node_up_url'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'non_automatic_top_node_up_url'}[0]{'contents'}[2];
@@ -549,14 +547,12 @@ $result_nodes{'non_automatic_top_node_up_url'} = {
         {
           'text' => 'dir'
         }
-      ],
-      'top_node_up' => {}
+      ]
     }
   }
 };
 $result_nodes{'non_automatic_top_node_up_url'}{'menu_child'}{'node_prev'} = $result_nodes{'non_automatic_top_node_up_url'};
 $result_nodes{'non_automatic_top_node_up_url'}{'node_next'} = $result_nodes{'non_automatic_top_node_up_url'}{'menu_child'};
-$result_nodes{'non_automatic_top_node_up_url'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'non_automatic_top_node_up_url'};
 
 $result_menus{'non_automatic_top_node_up_url'} = {
   'cmdname' => 'node',
@@ -654,8 +650,7 @@ $result_elements{'non_automatic_top_node_up_url'} = [
               {
                 'text' => 'dir'
               }
-            ],
-            'top_node_up' => {}
+            ]
           },
           'type' => 'external_node'
         },
@@ -684,7 +679,6 @@ $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'For
 $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'node'} = $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'};
 $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'};
 $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'};
-$result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
 $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'non_automatic_top_node_up_url'}[0];
 $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'element_command'} = $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
 $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'node'} = $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
@@ -731,6 +725,11 @@ Node: Top27
 Node: first152
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -746,6 +745,7 @@ $result_converted{'html'}->{'non_automatic_top_node_up_url'} = '<!DOCTYPE html P
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <link href="#Top" rel="start" title="Top">
+<link href="http://www.gnu.org/manual/" rel="up" title="(dir)">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -771,7 +771,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#first" accesskey="n" rel="next">first</a>, Previous: <a href="http://www.gnu.org/manual/" accesskey="p" rel="prev">(dir)</a>, Up: <a href="http://www.gnu.org/manual/" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#first" accesskey="n" rel="next">first</a>, Previous: <a href="dir.html#Top" accesskey="p" rel="prev">(dir)</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
 <span id="internal-top-node-up"></span><h1 class="top">internal top node up</h1>
 
@@ -783,7 +783,7 @@ Next: <a href="#first" accesskey="n" rel="next">first</a>, Previous: <a href="ht
 <hr>
 <span id="first"></span><div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="http://www.gnu.org/manual/" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">first</h4>
 <hr>

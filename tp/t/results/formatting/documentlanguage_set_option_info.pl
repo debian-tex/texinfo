@@ -352,20 +352,8 @@ $result_nodes{'documentlanguage_set_option_info'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'documentlanguage_set_option_info'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'documentlanguage_set_option_info'};
 
 $result_menus{'documentlanguage_set_option_info'} = {
   'cmdname' => 'node',

@@ -224,20 +224,8 @@ $result_nodes{'empty_lines_at_beginning_no_setfilename'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'empty_lines_at_beginning_no_setfilename'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'empty_lines_at_beginning_no_setfilename'};
 
 $result_menus{'empty_lines_at_beginning_no_setfilename'} = {
   'cmdname' => 'node',

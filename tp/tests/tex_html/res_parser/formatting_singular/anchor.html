@@ -42,6 +42,8 @@ kbd: ``simple-double-three-four-''
 @,c@"u c,u" 
 
 
+@U{0075} 0075
+
 @* 
 
 @ followed by a space
@@ -130,7 +132,6 @@ but , ,
 @cite{-a} -a
 @code{-a} -a
 @command{-a} -a
-@ctrl{-a} -a
 @dfn{-a} -a
 @dmn{-a} -a
 @email{-a,-b} -b
@@ -302,7 +303,7 @@ def-fn
 fset: i a g
 cmde: truc 
 Command: log trap 
-Command: log trap1   
+Command: log trap1 
 Command: log trap2 
 cmde: id ule truc
 cmde2: id i ule truc
@@ -531,6 +532,12 @@ Invalid use of @':
 @dotless{-a} -a
 @dotless{a} a
 
+@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg z
+@U{abc}, with <4 hex digits abc
+@U{FFFFFFFFFFFFFF}, value much too large FFFFFFFFFFFFFF
+@U{110000}, value just beyond Unicode 110000
+
 @TeX, but without brace TeX@# #
 
 @w{-a} -a
@@ -546,7 +553,7 @@ i-tem 1
 i-tem 2
 
 fun: 
-truc: machin bidule chose and 
+truc: machin bidule chose and
 truc: machin bidule chose and  after
 truc: machin bidule chose and 
 truc: machin bidule chose and and after
@@ -595,39 +602,29 @@ truc: after a deff item
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <!-- This file redirects to the location of a node or anchor -->
 <head>
-<title>title &ndash;a: anchor</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>anchor (title &ndash;a)</title>
 
-<meta name="description" content="title &ndash;a: anchor">
-<meta name="keywords" content="title &ndash;a: anchor">
+<meta name="description" content="anchor (title &ndash;a)">
+<meta name="keywords" content="anchor (title &ndash;a)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
-blockquote.smallquotation {font-size: smaller}
+blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
-div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>

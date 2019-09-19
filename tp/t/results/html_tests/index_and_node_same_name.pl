@@ -147,6 +147,7 @@ $result_trees{'index_and_node_same_name'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -224,6 +225,7 @@ $result_sectioning{'index_and_node_same_name'}{'section_childs'}[0]{'section_up'
 $result_nodes{'index_and_node_same_name'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'index-node',
     'spaces_before_argument' => ' '
   }
@@ -232,6 +234,7 @@ $result_nodes{'index_and_node_same_name'} = {
 $result_menus{'index_and_node_same_name'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'index-node',
     'spaces_before_argument' => ' '
   }

@@ -71,6 +71,7 @@ $result_trees{'same_index_entry_merged_indices'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -588,6 +589,7 @@ $result_sectioning{'same_index_entry_merged_indices'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -608,26 +610,16 @@ $result_nodes{'same_index_entry_merged_indices'} = {
       'extra' => {},
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'same_index_entry_merged_indices'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'same_index_entry_merged_indices'};
 
 $result_menus{'same_index_entry_merged_indices'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -709,6 +701,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

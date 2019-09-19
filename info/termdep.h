@@ -20,40 +20,13 @@
 #ifndef INFO_TERMDEP_H
 #define INFO_TERMDEP_H
 
-/* NeXT supplies <termios.h> but it is broken.  Probably Autoconf should
-   have a separate test, but anyway ... */
-#ifdef NeXT
-#undef HAVE_TERMIOS_H
-#endif
-
 #ifdef HAVE_TERMIOS_H
 #  include <termios.h>
-#else
-#  if defined (HAVE_TERMIO_H)
-#    include <termio.h>
-#    if defined (HAVE_SYS_PTEM_H)
-#      if defined (M_UNIX) || !defined (M_XENIX)
-#        include <sys/stream.h>
-#        include <sys/ptem.h>
-#        undef TIOCGETC
-#      else /* M_XENIX */
-#        define tchars tc
-#      endif /* M_XENIX */
-#    endif /* HAVE_SYS_PTEM_H */
-#  else /* !HAVE_TERMIO_H */
-#    ifndef __MINGW32__
-#    include <sgtty.h>
-#    endif
-#  endif /* !HAVE_TERMIO_H */
-#endif /* !HAVE_TERMIOS_H */
+#endif
 
 #ifdef HAVE_SYS_IOCTL_H
 #  include <sys/ioctl.h>
 #endif
-
-#ifdef HAVE_SYS_TTOLD_H
-#  include <sys/ttold.h>
-#endif /* HAVE_SYS_TTOLD_H */
 
 #ifdef _WIN32
 extern unsigned sleep (unsigned);

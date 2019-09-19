@@ -684,8 +684,6 @@ sub test($$)
   if ($parser_options and $parser_options->{'test_formats'}) {
     push @tested_formats, @{$parser_options->{'test_formats'}};
     delete $parser_options->{'test_formats'};
-  #} elsif ($self->{'test_formats'}) {
-  #  push @tested_formats, @{$self->{'test_formats'}};
   }
 
   my $parser = Texinfo::Parser::parser({'TEST' => 1,
@@ -787,16 +785,7 @@ sub test($$)
            = &{$formats{$format}}($self, $test_name, $format_type, 
                                   $result, $parser, 
                                   $parser_options, $format_converter_options);
-
-      # TODO: is it really useful to give this warning?
       $converted_errors{$format} = undef if (!@{$converted_errors{$format}});
-      if (defined($converted{$format}) and $format =~ /^file_/) {
-        warn "Warning: errors printed for $format by $test_name\n";
-        foreach my $error_message (@{$converted_errors{$format}}) {
-          warn $error_message->{'error_line'};
-        }
-      }
-      #print STDERR "$format: \n$converted{$format}";
 
       # output converted result and errors in files if $arg_output is set
       if ($arg_output) {
@@ -943,25 +932,17 @@ sub test($$)
       if (defined($converted{$format})) {
         $out_result .= "\n".'$result_converted{\''.$format.'\'}->{\''
           .$test_name.'\'} = \''.protect_perl_string($converted{$format})."';\n\n";
-      #print STDERR "$format: \n$converted{$format}";
       }
       if (defined($converted_errors{$format})) {
         local $Data::Dumper::Sortkeys = 1;
         $out_result .= Data::Dumper->Dump([$converted_errors{$format}], 
                  ['$result_converted_errors{\''.$format.'\'}->{\''.$test_name.'\'}']) ."\n\n";
-        #print STDERR "".Data::Dumper->Dump([$converted_errors{$format}]);
       }
     }
 
     $out_result .= "1;\n";
     print OUT $out_result;
     close (OUT);
-    #if (ref($test_case) ne 'ARRAY') {
-    #  my $out_texi_file = "t/results/$self->{'name'}/$test_name.texi";
-    #  open (OUT, ">$out_texi_file") or die "Open $out_texi_file: $!\n";
-    #  print OUT $texi_string_result;
-    #  close (OUT);
-    #}
     
     print STDERR "--> $test_name\n".Texinfo::Convert::Texinfo::convert($result)."\n" 
             if ($self->{'generate'});
@@ -986,8 +967,6 @@ sub test($$)
     ok (Texinfo::Convert::Texinfo::convert($result) eq $result_texis{$test_name}, 
          $test_name.' texi');
     if ($todos{'text'}) {
-      #TODO: {
-        #local $TODO = $todos{'text'};
       SKIP: {
         skip $todos{'text'}, 1;
         ok ($converted_text eq $result_texts{$test_name}, $test_name.' text');
@@ -1017,8 +996,6 @@ sub test($$)
             $tests_count += 1;
             my $errors = compare_dirs_files($reference_dir, $results_dir);
             if ($todos{$format}) {
-              #TODO: {
-              #  local $TODO = $todos{$format};
               SKIP: {
                 skip $todos{$format}, 1;
                 ok (!defined($errors), $test_name.' converted '.$format)
@@ -1043,8 +1020,8 @@ sub test($$)
           $reference_exists = 1;
           $tests_count += 1;
           if ($todos{$format}) {
-            TODO: {
-              local $TODO = $todos{$format};
+            SKIP: {
+              skip $todos{$format}, 1;
               ok ($converted{$format} 
                               eq $result_converted{$format}->{$test_name},
                    $test_name.' converted '.$format);
@@ -1061,12 +1038,9 @@ sub test($$)
                $result_converted_errors{$format}->{$test_name}),
                $test_name.' errors '.$format);
         }
-      #print STDERR "$format: \n$converted{$format}";
       }
     }
-    #is (Texinfo::Convert::Texinfo::convert($result), $result_texis{$test_name}, $test_name.' text');
   }
-  #exit;
   return $tests_count;
 }
 

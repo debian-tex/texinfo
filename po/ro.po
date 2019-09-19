@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-02-16 17:15+0000\n"
+"POT-Creation-Date: 2019-09-17 18:48+0100\n"
 "PO-Revision-Date: 2005-05-03 12:00+05\n"
 "Last-Translator: Laurentiu Buzdugan <lbuz@rolix.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -25,36 +25,43 @@ msgstr ""
 
 #: gnulib/lib/getopt.c:278
 #, fuzzy, c-format
+#| msgid "%s: option `%s' is ambiguous\n"
 msgid "%s: option '%s%s' is ambiguous\n"
 msgstr "%s: opþiunea `%s' este ambiguã\n"
 
 #: gnulib/lib/getopt.c:284
 #, fuzzy, c-format
+#| msgid "%s: option `%s' is ambiguous\n"
 msgid "%s: option '%s%s' is ambiguous; possibilities:"
 msgstr "%s: opþiunea `%s' este ambiguã\n"
 
 #: gnulib/lib/getopt.c:319
 #, fuzzy, c-format
+#| msgid "%s: unrecognized option `%c%s'\n"
 msgid "%s: unrecognized option '%s%s'\n"
 msgstr "%s: opþiune nerecunoscutã `%c%s'\n"
 
 #: gnulib/lib/getopt.c:345
 #, fuzzy, c-format
+#| msgid "%s: option `%c%s' doesn't allow an argument\n"
 msgid "%s: option '%s%s' doesn't allow an argument\n"
 msgstr "%s: opþiunea `%c%s' nu permite un argument\n"
 
 #: gnulib/lib/getopt.c:360
 #, fuzzy, c-format
+#| msgid "%s: option `%s' requires an argument\n"
 msgid "%s: option '%s%s' requires an argument\n"
 msgstr "%s: opþiunea `%s' necesitã un argument\n"
 
 #: gnulib/lib/getopt.c:621
 #, fuzzy, c-format
+#| msgid "%s: invalid option -- %c\n"
 msgid "%s: invalid option -- '%c'\n"
 msgstr "%s: opþiune invalidã -- %c\n"
 
 #: gnulib/lib/getopt.c:636 gnulib/lib/getopt.c:682
 #, fuzzy, c-format
+#| msgid "%s: option requires an argument -- %c\n"
 msgid "%s: option requires an argument -- '%c'\n"
 msgstr "%s: opþiunea necesitã un argument -- %c\n"
 
@@ -72,11 +79,13 @@ msgstr ""
 
 #: gnulib/lib/regcomp.c:144
 #, fuzzy
+#| msgid "invalid encoded character `%s'"
 msgid "Invalid collation character"
 msgstr "caracter codat invalid `%s'"
 
 #: gnulib/lib/regcomp.c:147
 #, fuzzy
+#| msgid "unlikely character %c in @var"
 msgid "Invalid character class name"
 msgstr "caracter neverosimil %c în @var"
 
@@ -94,11 +103,13 @@ msgstr ""
 
 #: gnulib/lib/regcomp.c:159
 #, fuzzy
+#| msgid "Unmatched }"
 msgid "Unmatched ( or \\("
 msgstr "} fãrã pereche"
 
 #: gnulib/lib/regcomp.c:162
 #, fuzzy
+#| msgid "Unmatched }"
 msgid "Unmatched \\{"
 msgstr "} fãrã pereche"
 
@@ -128,11 +139,13 @@ msgstr ""
 
 #: gnulib/lib/regcomp.c:183
 #, fuzzy
+#| msgid "Unmatched }"
 msgid "Unmatched ) or \\)"
 msgstr "} fãrã pereche"
 
 #: gnulib/lib/regcomp.c:676
 #, fuzzy
+#| msgid "No previous search string"
 msgid "No previous regular expression"
 msgstr "Nici un ºir cãutat anterior"
 
@@ -238,6 +251,7 @@ msgstr "O singurã completare"
 
 #: info/echo-area.c:1049
 #, fuzzy, c-format
+#| msgid "%d completions:\n"
 msgid "%d completion:\n"
 msgid_plural "%d completions:\n"
 msgstr[0] "%d completãri:\n"
@@ -248,7 +262,6 @@ msgid "Insert completion"
 msgstr "Insereazã completarea"
 
 #: info/echo-area.c:1268
-#, c-format
 msgid "Building completions..."
 msgstr "Construim completãrile..."
 
@@ -263,16 +276,17 @@ msgstr ""
 
 #: info/filesys.c:150
 #, fuzzy, c-format
+#| msgid "Making %s file `%s' from `%s'.\n"
 msgid "looking for file %s in %s"
 msgstr "Creez fiºierul %s `%s' din `%s'.\n"
 
 #: info/filesys.c:236 info/filesys.c:250 info/filesys.c:271
 #, fuzzy, c-format
+#| msgid "Find file: "
 msgid "found file %s"
 msgstr "Gãseºte fiºier: "
 
 #: info/footnotes.c:229
-#, c-format
 msgid "Footnotes could not be displayed"
 msgstr "Notele de subsol nu pot fi afiºate"
 
@@ -285,7 +299,6 @@ msgid "---------- Footnotes ----------"
 msgstr "------- Note de subsol  -------"
 
 #: info/indices.c:121 info/indices.c:877
-#, c-format
 msgid "Finding index entries..."
 msgstr "Cãutãm intrãri în index..."
 
@@ -294,7 +307,8 @@ msgid "Look up a string in the index for this file"
 msgstr "Cautã un ºir în indexul acestui fiºier"
 
 #: info/indices.c:213
-#, fuzzy, c-format
+#, fuzzy
+#| msgid "No indices found."
 msgid "No indices found"
 msgstr "Nici am gãsit nici un index."
 
@@ -303,18 +317,21 @@ msgid "Index entry: "
 msgstr "Intrare în index: "
 
 #: info/indices.c:320 info/indices.c:883
-#, c-format
 msgid "No indices found."
 msgstr "Nici am gãsit nici un index."
 
 #: info/indices.c:436
 #, fuzzy, c-format
+#| msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
 msgid "Found '%s' in %s. ('\\[next-index-match]' tries to find next.)"
 msgstr ""
 "Am gãsit `%s' în %s. (`\\[next-index-match]' încearcã sã gãseascã urmãtorul.)"
 
 #: info/indices.c:446
 #, fuzzy
+#| msgid ""
+#| "Go to the next matching index item from the last `\\[index-search]' "
+#| "command"
 msgid ""
 "Go to the next matching index item from the last '\\[index-search]' command"
 msgstr ""
@@ -322,22 +339,26 @@ msgstr ""
 "\\[index-search]'"
 
 #: info/indices.c:457
-#, fuzzy, c-format
+#, fuzzy
+#| msgid "No previous index search string."
 msgid "No previous index search string"
 msgstr "Nu existã nici un ºir cãutat anterior."
 
 #: info/indices.c:475
 #, fuzzy, c-format
+#| msgid "No %sindex entries containing `%s'."
 msgid "No more index entries containing '%s'"
 msgstr "Nici o intrare în %sindex conþinând `%s'."
 
 #: info/indices.c:476
 #, fuzzy, c-format
+#| msgid "No %sindex entries containing `%s'."
 msgid "No index entries containing '%s'"
 msgstr "Nici o intrare în %sindex conþinând `%s'."
 
 #: info/indices.c:586
 #, fuzzy, c-format
+#| msgid "Scanning indices of `%s'..."
 msgid "Scanning indices of '%s'..."
 msgstr "Scanãm indexurile pentru `%s'..."
 
@@ -348,11 +369,13 @@ msgstr ""
 
 #: info/indices.c:654 info/indices.c:656
 #, fuzzy
+#| msgid "Index apropos: "
 msgid "Index apropos"
 msgstr "Index apropos: "
 
 #: info/indices.c:698
 #, fuzzy, c-format
+#| msgid "No %sindex entries containing `%s'."
 msgid "Index entries containing '%s':\n"
 msgstr "Nici o intrare în %sindex conþinând `%s'."
 
@@ -371,36 +394,39 @@ msgstr ""
 
 #: info/indices.c:889 info/indices.c:891
 #, fuzzy
+#| msgid "Index apropos: "
 msgid "Index topic"
 msgstr "Index apropos: "
 
 #: info/indices.c:916
 #, fuzzy, c-format
+#| msgid "No %sindex entries containing `%s'."
 msgid "No index entries containing '%s'."
 msgstr "Nici o intrare în %sindex conþinând `%s'."
 
 #: info/indices.h:40
 #, fuzzy, c-format
+#| msgid "No available info files have `%s' in their indices."
 msgid "No available info files have '%s' in their indices"
 msgstr "Nici un fiºier info nu are `%s' în indexurile lor."
 
 #: info/info-utils.c:878
-#, c-format
 msgid "Error converting file character encoding"
 msgstr ""
 
 #: info/info.c:277 info/session.c:2786
 #, fuzzy, c-format
+#| msgid "No menu item `%s' in node `%s'."
 msgid "No menu item '%s' in node '%s'"
 msgstr "Nici un articol de meniu `%s' în nod `%s'."
 
 #: info/info.c:415 info/info.c:1181
 #, fuzzy, c-format
+#| msgid "Cannot find node `%s'."
 msgid "Cannot find node '%s'"
 msgstr "Nu pot gãsi nodul `%s'."
 
 #: info/info.c:437
-#, c-format
 msgid "No program name given"
 msgstr ""
 
@@ -421,6 +447,7 @@ msgstr ""
 
 #: info/info.c:828 info/infokey.c:560
 #, fuzzy, c-format
+#| msgid "Set the value of an Info variable"
 msgid "value %s is not valid for variable %s"
 msgstr "Seteazã valoarea unei variabile Info"
 
@@ -429,7 +456,7 @@ msgstr "Seteazã valoarea unei variabile Info"
 msgid "Try --help for more information.\n"
 msgstr "Încercaþi --help pentru informaþii suplimentare.\n"
 
-#: info/info.c:859 install-info/install-info.c:2236 tp/texi2any.pl:819
+#: info/info.c:859 install-info/install-info.c:2236 tp/texi2any.pl:795
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -441,6 +468,7 @@ msgstr ""
 
 #: info/info.c:1035
 #, fuzzy, c-format
+#| msgid "no index entries found for `%s'\n"
 msgid "no index entries found for '%s'\n"
 msgstr "nici o intrare de index a fost gãsitã pentru `%s'\n"
 
@@ -475,6 +503,7 @@ msgstr ""
 
 #: info/info.c:1112
 #, fuzzy
+#| msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers"
 msgstr ""
 "  -b, --speech-friendly        fii prietenos cu sintetizatoarele de "
@@ -521,8 +550,13 @@ msgid ""
 "  info -f ./foo.info           show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1147 install-info/install-info.c:613 tp/texi2any.pl:807
+#: info/info.c:1147 install-info/install-info.c:613 tp/texi2any.pl:783
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "Email bug reports to bug-texinfo@gnu.org,\n"
+#| "general questions and discussion to help-texinfo@gnu.org.\n"
+#| "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -535,6 +569,7 @@ msgstr ""
 
 #: info/info.c:1182
 #, fuzzy, c-format
+#| msgid "Cannot find node `(%s)%s'."
 msgid "Cannot find node '(%s)%s'"
 msgstr "Nu pot gãsi nodul `(%s)%s'."
 
@@ -548,61 +583,73 @@ msgstr "Punctul nu apare în interiorul nodului acestei ferestre!"
 
 #: info/info.c:1185
 #, fuzzy
+#| msgid "Cannot delete the last window."
 msgid "Cannot delete the last window"
 msgstr "Nu pot ºterge ultima fereastrã."
 
 #: info/info.c:1186
 #, fuzzy
+#| msgid "No menu in this node."
 msgid "No menu in this node"
 msgstr "Nici un meniu în acest nod"
 
 #: info/info.c:1187
 #, fuzzy
+#| msgid "No footnotes in this node."
 msgid "No footnotes in this node"
 msgstr "Nici o notã de subsol în acest nod."
 
 #: info/info.c:1188
 #, fuzzy
+#| msgid "No cross references in this node."
 msgid "No cross references in this node"
 msgstr "Nici o referinþã la acelaºi pasaj în acest nod."
 
 #: info/info.c:1189
 #, fuzzy, c-format
+#| msgid "No `%s' pointer for this node."
 msgid "No '%s' pointer for this node"
 msgstr "Nici un pointer `%s' pentru acest nod."
 
 #: info/info.c:1190
 #, fuzzy, c-format
+#| msgid "Unknown Info command `%c'; try `?' for help."
 msgid "Unknown Info command '%c'; try '?' for help"
 msgstr "Comandã Info necunoscutã `%c';încercaþi `?' pentru ajutor."
 
 #: info/info.c:1191
 #, fuzzy, c-format
+#| msgid "Terminal type `%s' is not smart enough to run Info."
 msgid "Terminal type '%s' is not smart enough to run Info"
 msgstr "Terminalul de tip `%s' nu e destul de deºtept sã ruleze Info."
 
 #: info/info.c:1192
 #, fuzzy
+#| msgid "You are already at the last page of this node."
 msgid "You are already at the last page of this node"
 msgstr "Sunteþi deja la ultima paginã a acestui nod."
 
 #: info/info.c:1193
 #, fuzzy
+#| msgid "You are already at the first page of this node."
 msgid "You are already at the first page of this node"
 msgstr "Sunteþi deja la prima paginã a acestui nod."
 
 #: info/info.c:1194
 #, fuzzy
+#| msgid "Only one window."
 msgid "Only one window"
 msgstr "O singurã fereastrã."
 
 #: info/info.c:1195
 #, fuzzy
+#| msgid "Resulting window would be too small."
 msgid "Resulting window would be too small"
 msgstr "Fereastra rezultantã ar fi prea micã."
 
 #: info/info.c:1196
 #, fuzzy
+#| msgid "Not enough room for a help window, please delete a window."
 msgid "Not enough room for a help window, please delete a window"
 msgstr "Nu e destul spaþiu pentru o fereastrã de ajutor, ºtergeþi o fereastrã."
 
@@ -612,6 +659,7 @@ msgstr ""
 
 #: info/infodoc.c:40
 #, fuzzy
+#| msgid "\\%-10[quit-help]  Quit this help.\n"
 msgid "\\%-10[quit-help]  Close this help window.\n"
 msgstr "\\%-10[quit-help]  Terminã acest ajutor.\n"
 
@@ -625,21 +673,25 @@ msgstr "\\%-10[get-info-help-node]  Invocaþi tutorialul Info.\n"
 
 #: info/infodoc.c:44
 #, fuzzy
+#| msgid "\\%-10[prev-line]  Scroll backward 1 line.\n"
 msgid "\\%-10[prev-line]  Move up one line.\n"
 msgstr "\\%-10[prev-line]  Scroll înapoi 1 linie.\n"
 
 #: info/infodoc.c:45
 #, fuzzy
+#| msgid "\\%-10[next-line]  Scroll forward 1 line.\n"
 msgid "\\%-10[next-line]  Move down one line.\n"
 msgstr "\\%-10[next-line]  Scroll înainte 1 linie.\n"
 
 #: info/infodoc.c:46
 #, fuzzy
+#| msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
 msgid "\\%-10[scroll-backward]  Scroll backward one screenful.\n"
 msgstr "\\%-10[scroll-backward]  Scroll înapoi o paginã.\n"
 
 #: info/infodoc.c:47
 #, fuzzy
+#| msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
 msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
 msgstr "\\%-10[scroll-forward]  Scroll înainte o paginã.\n"
 
@@ -653,6 +705,8 @@ msgstr "\\%-10[end-of-node]  Mergi la sfârºitul acestui nod.\n"
 
 #: info/infodoc.c:51
 #, fuzzy
+#| msgid ""
+#| "\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
 msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
 msgstr ""
 "\\%-10[move-to-next-xref]  Sari la urmãtoarea legãturã hypertext din acest "
@@ -660,6 +714,9 @@ msgstr ""
 
 #: info/infodoc.c:52
 #, fuzzy
+#| msgid ""
+#| "\\%-10[select-reference-this-line]  Follow the hypertext link under "
+#| "cursor.\n"
 msgid ""
 "\\%-10[select-reference-this-line]  Follow the hypertext link under the "
 "cursor.\n"
@@ -669,62 +726,75 @@ msgstr ""
 
 #: info/infodoc.c:53
 #, fuzzy
+#| msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
 msgid "\\%-10[history-node]  Go back to the last node seen in this window.\n"
 msgstr ""
 "\\%-10[history-node]  Mergi la ultimul nod vãzut în aceastã fereastrã.\n"
 
 #: info/infodoc.c:55
 #, fuzzy
+#| msgid "\\%-10[prev-node]  Move to the \"previous\" node of this node.\n"
 msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
 msgstr "\\%-10[prev-node]  Mergi la nodul \"precedent\" al acestui nod.\n"
 
 #: info/infodoc.c:56
 #, fuzzy
+#| msgid "\\%-10[next-node]  Move to the \"next\" node of this node.\n"
 msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
 msgstr "\\%-10[next-node]  Mergi la \"urmãtorul\" nod al acestui nod.\n"
 
 #: info/infodoc.c:57
 #, fuzzy
+#| msgid "\\%-10[prev-node]  Move to the \"previous\" node of this node.\n"
 msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
 msgstr "\\%-10[prev-node]  Mergi la nodul \"precedent\" al acestui nod.\n"
 
 #: info/infodoc.c:58
 #, fuzzy
+#| msgid "\\%-10[next-node]  Move to the \"next\" node of this node.\n"
 msgid "\\%-10[next-node]  Go to the next node on this level.\n"
 msgstr "\\%-10[next-node]  Mergi la \"urmãtorul\" nod al acestui nod.\n"
 
 #: info/infodoc.c:59
 #, fuzzy
+#| msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
 msgid "\\%-10[up-node]  Go up one level.\n"
 msgstr "\\%-10[up-node]  Mergi în \"sus\" de la acest nod.\n"
 
 #: info/infodoc.c:60
 #, fuzzy
+#| msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgid "\\%-10[top-node]  Go to the top node of this document.\n"
 msgstr "\\%-10[end-of-node]  Mergi la sfârºitul acestui nod.\n"
 
 #: info/infodoc.c:61
 #, fuzzy
+#| msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgid "\\%-10[dir-node]  Go to the main 'directory' node.\n"
 msgstr "\\%-10[end-of-node]  Mergi la sfârºitul acestui nod.\n"
 
 #: info/infodoc.c:63
 #, fuzzy
+#| msgid "  %-10s  Pick first ... ninth item in node's menu.\n"
 msgid "1...9       Pick the first...ninth item in this node's menu.\n"
 msgstr "  %-10s  Alege primul ... al nouãlea articol în meniul nodului.\n"
 
 #: info/infodoc.c:64
 #, fuzzy
+#| msgid "\\%-10[last-menu-item]  Pick last item in node's menu.\n"
 msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
 msgstr "\\%-10[last-menu-item]  Alege ultimul articol în meniul nodului.\n"
 
 #: info/infodoc.c:65
 #, fuzzy
+#| msgid "  %-10s  Pick menu item specified by name.\n"
 msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
 msgstr "  %-10s  Alege articolul de meniu specificat prin nume.\n"
 
 #: info/infodoc.c:66
 #, fuzzy
+#| msgid ""
+#| "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
 msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
 msgstr ""
 "\\%-10[xref-item]  Urmeazã o referinþã încruciºatã. Citeºte numele "
@@ -732,11 +802,13 @@ msgstr ""
 
 #: info/infodoc.c:67
 #, fuzzy
+#| msgid "  %-10s  Move to node specified by name.\n"
 msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
 msgstr "  %-10s  Mergi la nodul specificat prin nume.\n"
 
 #: info/infodoc.c:69
 #, fuzzy
+#| msgid "  %-10s  Search forward for a specified string,\n"
 msgid "\\%-10[search]  Search forward for a specified string.\n"
 msgstr "  %-10s  Cautã înainte un ºir specificat,\n"
 
@@ -750,6 +822,11 @@ msgstr ""
 
 #: info/infodoc.c:72
 #, fuzzy
+#| msgid ""
+#| "\\%-10[index-search]  Search for a specified string in the index entries "
+#| "of this Info\n"
+#| "              file, and select the node referenced by the first entry "
+#| "found.\n"
 msgid ""
 "\\%-10[index-search]  Search for a specified string in the index, and\n"
 "              select the node referenced by the first entry found.\n"
@@ -764,11 +841,13 @@ msgstr ""
 
 #: info/infodoc.c:76
 #, fuzzy
+#| msgid "Cancel current operation"
 msgid "\\%-10[abort-key]  Cancel the current operation.\n"
 msgstr "Renunþã la operaþia curentã"
 
 #: info/infodoc.c:195
 #, fuzzy, c-format
+#| msgid "This is %s, produced by makeinfo version %s from %s.\n"
 msgid "This is GNU Info version %s.  "
 msgstr "Acesta este %s, produs de makeinfo versiunea %s din %s.\n"
 
@@ -815,6 +894,7 @@ msgstr "Afiºeazã mesaj de ajutor"
 
 #: info/infodoc.c:346
 #, fuzzy
+#| msgid "Visit Info node `(info)Help'"
 msgid "Visit Info node '(info)Help'"
 msgstr "Viziteazã nodul Info `(info)Ajutor'"
 
@@ -829,6 +909,7 @@ msgstr "Descrie tastã (key): %s"
 
 #: info/infodoc.c:471 info/infodoc.c:507
 #, fuzzy, c-format
+#| msgid "%s is undefined."
 msgid "%s is undefined"
 msgstr "%s nu este definit(ã)."
 
@@ -842,41 +923,43 @@ msgstr "Unde este comanda: "
 
 #: info/infodoc.c:821
 #, fuzzy, c-format
+#| msgid "`%s' is not on any keys"
 msgid "'%s' is not on any keys"
 msgstr "`%s' nu este pe nici o tastã"
 
 #: info/infodoc.c:827
 #, fuzzy, c-format
+#| msgid "%s can only be invoked via %s."
 msgid "%s can only be invoked via %s"
 msgstr "%s poate fi invocat doar via %s."
 
 #: info/infodoc.c:831
 #, fuzzy, c-format
+#| msgid "%s can be invoked via %s."
 msgid "%s can be invoked via %s"
 msgstr "%s poate fi invocat via %s."
 
 #: info/infodoc.c:836
 #, fuzzy, c-format
+#| msgid "There is no function named `%s'"
 msgid "There is no function named '%s'"
 msgstr "Nu existã nii o funcþie numitã `%s'"
 
 #: info/infomap.c:585
 #, fuzzy, c-format
+#| msgid "cannot open input file `%s'"
 msgid "could not open init file %s"
 msgstr "nu pot deschide fiºierul de intrare `%s'"
 
 #: info/infokey.c:227
-#, c-format
 msgid "key sequence too long"
 msgstr "secvenþã de taste prea lungã"
 
 #: info/infokey.c:304
-#, c-format
 msgid "missing key sequence"
 msgstr "secvenþã de taste inexistentã"
 
 #: info/infokey.c:384
-#, c-format
 msgid "NUL character (\\000) not permitted"
 msgstr "caracterul NUL (\\000) nu este permis"
 
@@ -886,12 +969,12 @@ msgid "NUL character (^%c) not permitted"
 msgstr "caracterul NUL (^%c) nu este permis"
 
 #: info/infokey.c:436
-#, c-format
 msgid "missing action name"
 msgstr "nume de acþiune inexistent"
 
 #: info/infokey.c:454
-#, fuzzy, c-format
+#, fuzzy
+#| msgid "key sequence too long"
 msgid "cannot bind key sequence to menu-digit"
 msgstr "secvenþã de taste prea lungã"
 
@@ -901,7 +984,6 @@ msgid "unknown action `%s'"
 msgstr "acþiune necunoscutã `%s'"
 
 #: info/infokey.c:503
-#, c-format
 msgid "action name too long"
 msgstr "nume de acþiune prea lung"
 
@@ -911,22 +993,18 @@ msgid "extra characters following action `%s'"
 msgstr "extra caractere dupã acþiunea `%s'"
 
 #: info/infokey.c:527
-#, c-format
 msgid "missing variable name"
 msgstr "nume de variabilã inexistent"
 
 #: info/infokey.c:536
-#, c-format
 msgid "missing `=' immediately after variable name"
 msgstr "caracterul `=' lipseºte imediat dupã numele de variabilã"
 
 #: info/infokey.c:543
-#, c-format
 msgid "variable name too long"
 msgstr "nume de variabilã prea lung"
 
 #: info/infokey.c:567
-#, c-format
 msgid "value too long"
 msgstr "valoare prea lungã"
 
@@ -948,7 +1026,8 @@ msgid "Read a command name in the echo area and execute it"
 msgstr "Citeºte un nume de comandã în zona ecou ºi executã-o"
 
 #: info/m-x.c:134
-#, fuzzy, c-format
+#, fuzzy
+#| msgid "Cannot execute an `echo-area' command here."
 msgid "Cannot execute an 'echo-area' command here"
 msgstr "Nu pot executa o comandã `zonã ecou' aici."
 
@@ -979,6 +1058,11 @@ msgstr "Nu ap putut manipula fiºierul %s.\n"
 #. it is part of the Info syntax.
 #: info/nodemenu.c:33
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "* Menu:\n"
+#| "  (File)Node                        Lines   Size   Containing File\n"
+#| "  ----------                        -----   ----   ---------------"
 msgid ""
 "\n"
 "* Menu:\n"
@@ -993,6 +1077,9 @@ msgstr ""
 
 #: info/nodemenu.c:185
 #, fuzzy
+#| msgid ""
+#| "Here is the menu of nodes you have recently visited.\n"
+#| "Select one from this menu, or use `\\[history-node]' in another window.\n"
 msgid ""
 "Here is the menu of nodes you have recently visited.\n"
 "Select one from this menu, or use '\\[history-node]' in another window.\n"
@@ -1035,7 +1122,6 @@ msgid "Show all matching files"
 msgstr ""
 
 #: info/session.c:63
-#, c-format
 msgid "No file index"
 msgstr ""
 
@@ -1044,6 +1130,9 @@ msgstr ""
 #. displayed on an 80-column terminal.
 #: info/session.c:189
 #, fuzzy, c-format
+#| msgid ""
+#| "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-"
+#| "item] for menu item."
 msgid ""
 "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
 "help-node] for tutorial."
@@ -1188,6 +1277,7 @@ msgstr "Selecteazã acest articol de meniu"
 
 #: info/session.c:2217
 #, fuzzy, c-format
+#| msgid "There aren't %d items in this menu."
 msgid "There isn't %d item in this menu"
 msgid_plural "There aren't %d items in this menu"
 msgstr[0] "Nu existã %d articole în acest meniu"
@@ -1217,6 +1307,7 @@ msgstr "Urmeazã ref: "
 
 #: info/session.c:2424
 #, fuzzy, c-format
+#| msgid "The reference disappeared! (%s)."
 msgid "The reference disappeared! (%s)"
 msgstr "Referinþa a dispãrut! (%s)."
 
@@ -1250,11 +1341,13 @@ msgstr "Selecteazã referinþa sau articolul de meniu ce apare pe acestã linie"
 
 #: info/session.c:2764
 #, fuzzy, c-format
+#| msgid "No menu in node `%s'."
 msgid "No menu in node '%s'"
 msgstr "Nici un meniu în nod `%s'."
 
 #: info/session.c:2811
 #, fuzzy, c-format
+#| msgid "Unable to find node referenced by `%s' in `%s'."
 msgid "Unable to find node referenced by '%s' in '%s'"
 msgstr "Nu pot gãsi nodul referit de `%s' în `%s'."
 
@@ -1292,11 +1385,13 @@ msgstr "Selecteazã primul nod din acest fiºier"
 
 #: info/session.c:3161
 #, fuzzy
+#| msgid "No more nodes within this document."
 msgid "No more nodes within this document"
 msgstr "Nu mai sunt alte noduri în acest document."
 
 #: info/session.c:3205 info/session.c:3244
 #, fuzzy
+#| msgid "No `Prev' or `Up' for this node within this document."
 msgid "No 'Prev' or 'Up' for this node within this document"
 msgstr "Nici un `Prec' sau `Sus' pentru acest nod în acest document."
 
@@ -1335,11 +1430,13 @@ msgstr "Obþine paginã manual (manpage): "
 
 #: info/session.c:3606
 #, fuzzy
+#| msgid "Select the node `Top' in this file"
 msgid "Select the node 'Top' in this file"
 msgstr "Selecteazã nodul `Vârf' în acest fiºier"
 
 #: info/session.c:3612
 #, fuzzy
+#| msgid "Select the node `(dir)'"
 msgid "Select the node '(dir)'"
 msgstr "Selecteazã nodul `(dir)'"
 
@@ -1352,7 +1449,6 @@ msgid "Select the most recently selected node"
 msgstr "Selecteazã cel mai recent nod selectat"
 
 #: info/session.c:3640
-#, c-format
 msgid "No earlier node in history"
 msgstr ""
 
@@ -1366,26 +1462,31 @@ msgstr "Gãseºte fiºier: "
 
 #: info/session.c:3665
 #, fuzzy, c-format
+#| msgid "Cannot find `%s'."
 msgid "Cannot find '%s'"
 msgstr "Nu pot gãsi `%s'."
 
 #: info/session.c:3713
 #, fuzzy, c-format
+#| msgid "Could not create output file `%s'."
 msgid "Could not create output file '%s'"
 msgstr "Nu am putut crea fiºier ieºire `%s'."
 
 #: info/session.c:3727
 #, fuzzy, c-format
+#| msgid "error writing to `%s'"
 msgid "error writing to %s: %s"
 msgstr "eroare la scrierea în `%s'"
 
 #: info/session.c:3736
 #, fuzzy, c-format
+#| msgid "Removing %s\n"
 msgid "closing %s"
 msgstr "ªterg %s\n"
 
 #: info/session.c:3785
 #, fuzzy, c-format
+#| msgid "Writing node %s..."
 msgid "writing node %s..."
 msgstr "Scriu nod %s..."
 
@@ -1395,16 +1496,19 @@ msgstr "Conectez (pipe) conþinutul acestui nod prin INFO_PRINT_COMMAND"
 
 #: info/session.c:3859
 #, fuzzy, c-format
+#| msgid "Cannot open pipe to `%s'."
 msgid "Cannot open pipe to '%s'"
 msgstr "Nu pot deschide conexiune (pipe) cãtre `%s'."
 
 #: info/session.c:3864
 #, fuzzy, c-format
+#| msgid "Printing node %s..."
 msgid "printing node %s..."
 msgstr "Tipãresc nod %s..."
 
 #: info/session.c:3872
 #, fuzzy, c-format
+#| msgid "Printing node %s..."
 msgid "finished printing node %s"
 msgstr "Tipãresc nod %s..."
 
@@ -1413,12 +1517,10 @@ msgid "Toggle the usage of regular expressions in searches"
 msgstr ""
 
 #: info/session.c:3908
-#, c-format
 msgid "Using regular expressions for searches"
 msgstr ""
 
 #: info/session.c:3909
-#, c-format
 msgid "Using literal strings for searches"
 msgstr ""
 
@@ -1428,6 +1530,7 @@ msgstr ""
 
 #: info/session.c:4117
 #, fuzzy
+#| msgid "Kill to the beginning of the line"
 msgid "Search continued from the beginning of the document"
 msgstr "ªterge (kill) pânã la începutul liniei"
 
@@ -1436,13 +1539,15 @@ msgstr "ªterge (kill) pânã la începutul liniei"
 msgid "Searching subfile %s ..."
 msgstr "Caut subfiºier %s ..."
 
-#: info/session.c:4175 info/session.c:4438 info/session.c:4551
-#, fuzzy, c-format
+#: info/session.c:4175 info/session.c:4441 info/session.c:4554
+#, fuzzy
+#| msgid "Search failed."
 msgid "Search failed"
 msgstr "Cãutare eºuatã."
 
 #: info/session.c:4192
 #, fuzzy, c-format
+#| msgid "%s%sfor string [%s]: "
 msgid "%s%s%s [%s]: "
 msgstr "%s%s pentru ºir [%s]: "
 
@@ -1456,11 +1561,13 @@ msgstr "Cautã"
 
 #: info/session.c:4194 info/session.c:4200
 #, fuzzy
+#| msgid " case-sensitively "
 msgid " case-sensitively"
 msgstr " þinând cont de litere mari/mici"
 
 #: info/session.c:4195 info/session.c:4201
 #, fuzzy
+#| msgid "Search backward"
 msgid " backward"
 msgstr "Cautã înapoi"
 
@@ -1473,143 +1580,147 @@ msgstr ""
 msgid "Search string too short"
 msgstr ""
 
-#: info/session.c:4409
+#: info/session.c:4412
 #, c-format
 msgid "Going back to last match from %s"
 msgstr ""
 
-#: info/session.c:4438 info/session.c:4551
-#, c-format
+#: info/session.c:4441 info/session.c:4554
 msgid "No more matches"
 msgstr ""
 
-#: info/session.c:4578
+#: info/session.c:4581
 msgid "Search this node and subnodes for a string"
 msgstr ""
 
 #. TRANSLATORS: %s is the title of a node.
-#: info/session.c:4585
+#: info/session.c:4588
 #, fuzzy, c-format
+#| msgid "Searching subfile %s ..."
 msgid "Search under %s: "
 msgstr "Caut subfiºier %s ..."
 
-#: info/session.c:4600
+#: info/session.c:4603
 msgid "Go to next match in Info sub-tree"
 msgstr ""
 
-#: info/session.c:4604 info/session.c:4616
-#, c-format
+#: info/session.c:4607 info/session.c:4619
 msgid "No active search"
 msgstr ""
 
-#: info/session.c:4612
+#: info/session.c:4615
 msgid "Go to previous match in Info sub-tree"
 msgstr ""
 
-#: info/session.c:4625
+#: info/session.c:4628
 msgid "Read a string and search for it case-sensitively"
 msgstr "Citeºte un ºir ºi cautã-l þinând cont de litere mari/mici"
 
-#: info/session.c:4630
+#: info/session.c:4633
 msgid "Read a string and search for it"
 msgstr "Citeºte un ºir ºi cautã-l"
 
-#: info/session.c:4636
+#: info/session.c:4639
 msgid "Read a string and search backward for it"
 msgstr "Citeºte un ºir ºi cautã-l înapoi"
 
-#: info/session.c:4644
+#: info/session.c:4647
 msgid "Repeat last search in the same direction"
 msgstr "Repetã ultima cãutare în aceeaºi direcþie"
 
-#: info/session.c:4652 info/session.c:4697
+#: info/session.c:4661 info/session.c:4712
 msgid "No previous search string"
 msgstr "Nici un ºir cãutat anterior"
 
-#: info/session.c:4689
+#: info/session.c:4698
 msgid "Repeat last search in the reverse direction"
 msgstr "Repetã ultima cãutare în direcþie opusã"
 
-#: info/session.c:4736
+#: info/session.c:4751
 msgid "Clear displayed search matches"
 msgstr ""
 
-#: info/session.c:4752 info/session.c:4758
+#: info/session.c:4767 info/session.c:4773
 msgid "Search interactively for a string as you type it"
 msgstr "Cautã interactiv pentru un ºir pe mãsurã ce este introdus"
 
-#: info/session.c:4878
+#: info/session.c:4893
 #, fuzzy
+#| msgid "I-search backward: "
 msgid "Regexp I-search backward: "
 msgstr "I-cautã înapoi: "
 
-#: info/session.c:4879
+#: info/session.c:4894
 msgid "I-search backward: "
 msgstr "I-cautã înapoi: "
 
-#: info/session.c:4881
+#: info/session.c:4896
 #, fuzzy
+#| msgid "I-search: "
 msgid "Regexp I-search: "
 msgstr "I-cautã: "
 
-#: info/session.c:4882
+#: info/session.c:4897
 msgid "I-search: "
 msgstr "I-cautã: "
 
-#: info/session.c:4907 info/session.c:4910
+#: info/session.c:4922 info/session.c:4925
 msgid "Failing "
 msgstr "Eºuez "
 
-#: info/session.c:5275
+#: info/session.c:5290
 msgid "Cancel current operation"
 msgstr "Renunþã la operaþia curentã"
 
-#: info/session.c:5282
+#: info/session.c:5297
 msgid "Quit"
 msgstr "Ieºi"
 
-#: info/session.c:5287
+#: info/session.c:5302
 #, fuzzy
+#| msgid "display version information and exit"
 msgid "Display version of Info being run"
 msgstr "afiºeazã informaþii despre versiune ºi terminã"
 
-#: info/session.c:5289
+#: info/session.c:5304
 #, c-format
 msgid "GNU Info version %s"
 msgstr ""
 
-#: info/session.c:5294
+#: info/session.c:5309
 msgid "Redraw the display"
 msgstr "Redeseneazã ecranul"
 
-#: info/session.c:5331
+#: info/session.c:5346
 msgid "Quit using Info"
 msgstr "Ieºi din Info"
 
-#: info/session.c:5347
+#: info/session.c:5362
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Ruleazã comanda legatã de litera micã de pe tastã"
 
-#: info/session.c:5358
+#: info/session.c:5373
 #, fuzzy, c-format
+#| msgid "Unknown command (%s)."
 msgid "Unknown command (%s)"
 msgstr "Comandã necunoscutã (%s)."
 
-#: info/session.c:5361
+#: info/session.c:5376
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" este invalid"
 
-#: info/session.c:5362
+#: info/session.c:5377
 #, fuzzy, c-format
+#| msgid "`%s' is invalid"
 msgid "'%s' is invalid"
 msgstr "`%s' este invalid"
 
-#: info/session.c:5680
+#: info/session.c:5695
 msgid "Add this digit to the current numeric argument"
 msgstr "Adaugã aceastã cifrã la argumentul numeric curent"
 
-#: info/session.c:5687
+#: info/session.c:5702
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Începe (sau înmulþeºte cu 4) argumentul numeric curent"
 
@@ -1665,6 +1776,8 @@ msgstr "Când \"Activ\", Info acceptã ºi afiºeazã caractere ISO Latin"
 
 #: info/variables.c:111
 #, fuzzy
+#| msgid ""
+#| "Controls what happens when scrolling is requested at the end of a node"
 msgid ""
 "What to do when a scrolling command is issued at the end of the last node"
 msgstr ""
@@ -1698,6 +1811,7 @@ msgstr ""
 
 #: info/variables.c:140
 #, fuzzy
+#| msgid "Move to the next cross reference"
 msgid "How to follow a cross-reference"
 msgstr "Mergi la referinþa urmãtoare"
 
@@ -1758,6 +1872,7 @@ msgstr "%s: fiºier gol"
 
 #: install-info/install-info.c:291
 #, fuzzy, c-format
+#| msgid " for %s"
 msgid "%s for %s"
 msgstr " pentru %s"
 
@@ -1768,6 +1883,7 @@ msgstr "\tÎncercaþi `%s --help' pentru o lipsã completã de opþiuni.\n"
 
 #: install-info/install-info.c:538
 #, fuzzy, c-format
+#| msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 msgstr "Folosire: %s [OPÞIUNE]... FIªIER-TEXINFO...\n"
 
@@ -1866,6 +1982,23 @@ msgstr ""
 
 #: install-info/install-info.c:639
 #, fuzzy, c-format
+#| msgid ""
+#| "This is the file .../info/dir, which contains the\n"
+#| "topmost node of the Info hierarchy, called (dir)Top.\n"
+#| "The first time you invoke Info you start off looking at this node.\n"
+#| "\n"
+#| "%s\tThis is the top of the INFO tree\n"
+#| "\n"
+#| "  This (the Directory node) gives a menu of major topics.\n"
+#| "  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
+#| "  \"h\" gives a primer for first-timers,\n"
+#| "  \"mEmacs<Return>\" visits the Emacs manual, etc.\n"
+#| "\n"
+#| "  In Emacs, you can click mouse button 2 on a menu item or cross "
+#| "reference\n"
+#| "  to select it.\n"
+#| "\n"
+#| "%s\n"
 msgid ""
 "This is the file .../info/dir, which contains the\n"
 "topmost node of the Info hierarchy, called (dir)Top.\n"
@@ -1903,16 +2036,15 @@ msgstr ""
 
 #: install-info/install-info.c:663
 #, fuzzy, c-format
+#| msgid "%s: could not read (%s) and could not create (%s)\n"
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: nu am putut citi (%s) ºi nu am putut crea (%s)\n"
 
 #: install-info/install-info.c:1151 install-info/install-info.c:1191
-#, c-format
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY fãrã un END-INFO-DIR-ENTRY corespunzãtor"
 
 #: install-info/install-info.c:1186
-#, c-format
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY fãrã un  START-INFO-DIR-ENTRY corespunzãtor"
 
@@ -1942,14 +2074,12 @@ msgid "excess command line argument `%s'"
 msgstr "argument suplimentar în linia de comandã `%s'"
 
 #: install-info/install-info.c:2278
-#, c-format
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Nici un fiºier de intrare specificat; încercaþi --help pentru informaþii "
 "suplimentare."
 
 #: install-info/install-info.c:2280
-#, c-format
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Nici un fiºier dir specificat; încercaþi --help pentru informaþii "
@@ -1957,6 +2087,7 @@ msgstr ""
 
 #: install-info/install-info.c:2301
 #, fuzzy, c-format
+#| msgid "Could not create output file `%s'."
 msgid "Could not read %s."
 msgstr "Nu am putut crea fiºier ieºire `%s'."
 
@@ -1970,307 +2101,294 @@ msgstr "nici o intrare dir info în `%s'"
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "nici o intrare gãsitã pentru `%s'; n-am ºters nimic"
 
-#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:833
-#: tp/Texinfo/Convert/Converter.pm:871 tp/Texinfo/Convert/Converter.pm:1159
-#: tp/Texinfo/Convert/DocBook.pm:318 tp/Texinfo/Convert/HTML.pm:6596
-#: tp/Texinfo/Convert/HTML.pm:6620 tp/Texinfo/Convert/HTML.pm:7001
-#: tp/Texinfo/Convert/HTML.pm:7060 tp/Texinfo/Convert/HTML.pm:7139
-#: tp/Texinfo/Convert/HTML.pm:7217 tp/Texinfo/Convert/IXIN.pm:286
-#: tp/Texinfo/Convert/Info.pm:296 tp/Texinfo/Convert/TexinfoXML.pm:451
+#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:796
+#: tp/Texinfo/Convert/Converter.pm:834 tp/Texinfo/Convert/Converter.pm:1109
+#: tp/Texinfo/Convert/DocBook.pm:318 tp/Texinfo/Convert/HTML.pm:6607
+#: tp/Texinfo/Convert/HTML.pm:6631 tp/Texinfo/Convert/HTML.pm:7009
+#: tp/Texinfo/Convert/HTML.pm:7068 tp/Texinfo/Convert/HTML.pm:7146
+#: tp/Texinfo/Convert/IXIN.pm:286 tp/Texinfo/Convert/Info.pm:297
+#: tp/Texinfo/Convert/TexinfoXML.pm:451
 #, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "could not open %s for writing: %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Common.pm:892
+#: tp/Texinfo/Common.pm:887
 msgid ""
 "move your @contents command if you want the contents after the title page"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:895
+#: tp/Texinfo/Common.pm:890
 msgid ""
 "move your @shortcontents and @contents commands if you want the contents "
 "after the title page"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1152
-#, fuzzy, perl-format
+#: tp/Texinfo/Common.pm:1149 tp/Texinfo/XS/parsetexi/end_line.c:1607
+#: tp/Texinfo/XS/parsetexi/end_line.c:1617
+#, fuzzy, c-format, perl-format
+#| msgid "%s is not a valid ISO 639 language code"
 msgid "%s is not a valid language code"
 msgstr "%s nu este un cod de limbã valid conform ISO 639"
 
-#: tp/Texinfo/Common.pm:1157
-#, fuzzy, perl-format
+#: tp/Texinfo/Common.pm:1154 tp/Texinfo/XS/parsetexi/end_line.c:1634
+#, fuzzy, c-format, perl-format
+#| msgid "%s is not a valid ISO 639 language code"
 msgid "%s is not a valid region code"
 msgstr "%s nu este un cod de limbã valid conform ISO 639"
 
-#: tp/Texinfo/Common.pm:1174
+#: tp/Texinfo/Common.pm:1171
 #, perl-format
 msgid "%s is not a valid split possibility"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1196
+#: tp/Texinfo/Common.pm:1193
 #, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "could not read %s: %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Common.pm:1216
+#: tp/Texinfo/Common.pm:1213
 #, fuzzy, perl-format
+#| msgid "error closing output file `%s'"
 msgid "error on closing @verbatiminclude file %s: %s"
 msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
-#: tp/Texinfo/Common.pm:1222 tp/Texinfo/ParserNonXS.pm:2980
+#: tp/Texinfo/Common.pm:1219 tp/Texinfo/ParserNonXS.pm:2971
 #, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "@%s: could not find %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Common.pm:1714
-msgid "no node to be renamed"
-msgstr ""
-
-#: tp/Texinfo/Common.pm:1725
-msgid "nodes without a new name at the end of file"
-msgstr ""
-
-#: tp/Texinfo/Common.pm:1735 tp/Texinfo/ParserNonXS.pm:777
-#, fuzzy, perl-format
-msgid "could not open %s: %s"
-msgstr "%s: nu am putut deschide --css-file: %s"
-
-#: tp/Texinfo/Common.pm:1755
-#, perl-format
-msgid "using a renamed nodes file (`%s') is deprecated"
-msgstr ""
-
-#: tp/Texinfo/Common.pm:2254
+#: tp/Texinfo/Common.pm:2198
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:2636
+#: tp/Texinfo/Common.pm:2580
 #, perl-format
 msgid "empty node name after expansion `%s'"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:2644
+#: tp/Texinfo/Common.pm:2588
 #, fuzzy, perl-format
+#| msgid "macro `%s' previously defined"
 msgid "@%s `%s' previously defined"
 msgstr "macro-ul `%s' definit anterior"
 
-#: tp/Texinfo/Common.pm:2650
+#: tp/Texinfo/Common.pm:2594
 #, fuzzy, perl-format
+#| msgid "here is the previous definition of `%s'"
 msgid "here is the previous definition as @%s"
 msgstr "aici este definiþia anterioarã a lui `%s'"
 
-#: tp/Texinfo/Common.pm:2669 tp/Texinfo/ParserNonXS.pm:3273
-#, fuzzy, perl-format
+#: tp/Texinfo/Common.pm:2613 tp/Texinfo/ParserNonXS.pm:3258
+#: tp/Texinfo/XS/parsetexi/end_line.c:47
+#, fuzzy, c-format, perl-format
+#| msgid "Bad argument to @%s"
 msgid "empty argument in @%s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Convert/Converter.pm:772
+#: tp/Texinfo/Convert/Converter.pm:742
 #, perl-format
 msgid "%s: output incompatible with split"
 msgstr ""
 
-#: tp/Texinfo/Convert/Converter.pm:854 tp/Texinfo/Convert/Converter.pm:887
-#: tp/Texinfo/Convert/DocBook.pm:354 tp/Texinfo/Convert/HTML.pm:7027
-#: tp/Texinfo/Convert/HTML.pm:7086 tp/Texinfo/Convert/IXIN.pm:909
-#: tp/Texinfo/Convert/Info.pm:159 tp/Texinfo/Convert/Info.pm:185
-#: tp/Texinfo/Convert/Info.pm:213 tp/Texinfo/Convert/Info.pm:276
-#: tp/Texinfo/Convert/TexinfoXML.pm:470 tp/Texinfo/ParserNonXS.pm:1827
+#: tp/Texinfo/Convert/Converter.pm:817 tp/Texinfo/Convert/Converter.pm:850
+#: tp/Texinfo/Convert/DocBook.pm:354 tp/Texinfo/Convert/HTML.pm:7035
+#: tp/Texinfo/Convert/HTML.pm:7094 tp/Texinfo/Convert/IXIN.pm:909
+#: tp/Texinfo/Convert/Info.pm:160 tp/Texinfo/Convert/Info.pm:186
+#: tp/Texinfo/Convert/Info.pm:214 tp/Texinfo/Convert/Info.pm:277
+#: tp/Texinfo/Convert/TexinfoXML.pm:470 tp/Texinfo/ParserNonXS.pm:1813
 #, fuzzy, perl-format
+#| msgid "error closing output file `%s'"
 msgid "error on closing %s: %s"
 msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
-#: tp/Texinfo/Convert/Converter.pm:965
+#: tp/Texinfo/Convert/Converter.pm:928
 #, fuzzy, perl-format
+#| msgid "Can't create directory `%s': %s"
 msgid "could not create directories `%s' or `%s': %s"
 msgstr "Nu pot crea directorul `%s': %s"
 
-#: tp/Texinfo/Convert/Converter.pm:973
+#: tp/Texinfo/Convert/Converter.pm:936
 #, fuzzy, perl-format
+#| msgid "Can't create directory `%s': %s"
 msgid "could not create directory `%s': %s"
 msgstr "Nu pot crea directorul `%s': %s"
 
-#: tp/Texinfo/Convert/DocBook.pm:993
+#: tp/Texinfo/Convert/DocBook.pm:1022
 #, fuzzy, perl-format
+#| msgid "@image file `%s' unreadable: %s"
 msgid "@image file `%s' not found, using `%s'"
 msgstr "Fiºierul @image `%s' nu poate fi citit: %s"
 
-#: tp/Texinfo/Convert/DocBook.pm:1113 tp/Texinfo/ParserNonXS.pm:4982
+#: tp/Texinfo/Convert/DocBook.pm:1142 tp/Texinfo/ParserNonXS.pm:5016
+#: tp/Texinfo/XS/parsetexi/separator.c:427
 #, fuzzy
+#| msgid "No node name specified for `%c%s' command"
 msgid "no argument specified for @U"
 msgstr "Nici un nume specificat pentru comanda `%c%s'"
 
-#: tp/Texinfo/Convert/HTML.pm:1719
+#: tp/Texinfo/Convert/HTML.pm:1752
 #, fuzzy, perl-format
+#| msgid "@image file `%s' (for HTML) not readable: %s"
 msgid "@image file `%s' (for HTML) not found, using `%s'"
 msgstr "Fiºierul @image `%s' (pentru HTML) nu poate fi citit: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:2404
+#: tp/Texinfo/Convert/HTML.pm:2421
 #, perl-format
 msgid "raw format %s is not converted"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:4647
+#: tp/Texinfo/Convert/HTML.pm:4665
 #, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "could not open html refs config file %s: %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:4675
+#: tp/Texinfo/Convert/HTML.pm:4693
 #, fuzzy
+#| msgid "missing action name"
 msgid "missing type"
 msgstr "nume de acþiune inexistent"
 
-#: tp/Texinfo/Convert/HTML.pm:4678
+#: tp/Texinfo/Convert/HTML.pm:4696
 #, fuzzy, perl-format
+#| msgid "%s: unrecognized option `--%s'\n"
 msgid "unrecognized type: %s"
 msgstr "%s: opþiune nerecunoscutã `--%s'\n"
 
-#: tp/Texinfo/Convert/HTML.pm:4695
+#: tp/Texinfo/Convert/HTML.pm:4713
 #, fuzzy, perl-format
+#| msgid "error closing output file `%s'"
 msgid "error on closing html refs config file %s: %s"
 msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
-#: tp/Texinfo/Convert/HTML.pm:5022
+#: tp/Texinfo/Convert/HTML.pm:5034
 msgid "string not closed in css file"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:5024
+#: tp/Texinfo/Convert/HTML.pm:5036
 #, fuzzy
+#| msgid "%s:%d: --css-file ended in comment"
 msgid "--css-include ended in comment"
 msgstr "%s:%d: --css-file s-a terminat cu un comentariu"
 
-#: tp/Texinfo/Convert/HTML.pm:5026
+#: tp/Texinfo/Convert/HTML.pm:5038
 msgid "@import not finished in css file"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:5052
+#: tp/Texinfo/Convert/HTML.pm:5064
 #, perl-format
 msgid "CSS file %s not found"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:5058
+#: tp/Texinfo/Convert/HTML.pm:5070
 #, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "could not open --include-file %s: %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5068
+#: tp/Texinfo/Convert/HTML.pm:5080
 #, fuzzy, perl-format
+#| msgid "error closing output file `%s'"
 msgid "error on closing CSS file %s: %s"
 msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
-#: tp/Texinfo/Convert/HTML.pm:5882 tp/Texinfo/Convert/HTML.pm:5886
+#: tp/Texinfo/Convert/HTML.pm:5867 tp/Texinfo/Convert/HTML.pm:5871
 #, fuzzy, perl-format
+#| msgid "no index entries found for `%s'\n"
 msgid "no htmlxref.cnf entry found for `%s'"
 msgstr "nici o intrare de index a fost gãsitã pentru `%s'\n"
 
-#: tp/Texinfo/Convert/HTML.pm:6591
+#: tp/Texinfo/Convert/HTML.pm:6602
 #, fuzzy, perl-format
+#| msgid "error closing output file `%s'"
 msgid "error on closing frame file %s: %s"
 msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
-#: tp/Texinfo/Convert/HTML.pm:6615
+#: tp/Texinfo/Convert/HTML.pm:6626
 #, fuzzy, perl-format
+#| msgid "error closing output file `%s'"
 msgid "error on closing TOC frame file %s: %s"
 msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
-#: tp/Texinfo/Convert/HTML.pm:6730
+#: tp/Texinfo/Convert/HTML.pm:6742
 #, perl-format
 msgid "handler %s of stage %s priority %s failed"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6935
+#: tp/Texinfo/Convert/HTML.pm:6943
 msgid "must specify a title with a title command or @top"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:7146
+#: tp/Texinfo/Convert/HTML.pm:7153
 #, fuzzy, perl-format
+#| msgid "error closing output file `%s'"
 msgid "error on closing redirection node file %s: %s"
 msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
-#: tp/Texinfo/Convert/HTML.pm:7172
-#, fuzzy, perl-format
-msgid "old name for `%s' is a node of the document"
-msgstr "Nici un `Prec' sau `Sus' pentru acest nod în acest document."
-
-#: tp/Texinfo/Convert/HTML.pm:7178
-#, fuzzy, perl-format
-msgid "file empty for renamed node `%s'"
-msgstr "nod nereferit `%s'"
-
-#: tp/Texinfo/Convert/HTML.pm:7192
-#, perl-format
-msgid "target node (new name for `%s') not in document: %s"
-msgstr ""
-
-#: tp/Texinfo/Convert/HTML.pm:7224
-#, perl-format
-msgid "error on closing renamed node redirection file %s: %s"
-msgstr ""
-
-#: tp/Texinfo/Convert/HTML.pm:7262
-msgid "empty node name"
-msgstr ""
-
-#: tp/Texinfo/Convert/HTML.pm:7264 tp/Texinfo/ParserNonXS.pm:3286
-#, perl-format
-msgid "syntax for an external node used for `%s'"
-msgstr ""
-
-#: tp/Texinfo/Convert/Info.pm:104
+#: tp/Texinfo/Convert/Info.pm:105
 #, fuzzy
+#| msgid "No menu in this node."
 msgid "document without nodes"
 msgstr "Nici un meniu în acest nod"
 
-#: tp/Texinfo/Convert/Info.pm:121
+#: tp/Texinfo/Convert/Info.pm:122
 msgid "document without Top node"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:169
+#: tp/Texinfo/Convert/Info.pm:170
 #, perl-format
 msgid "rename %s failed: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:250
+#: tp/Texinfo/Convert/Info.pm:251
 #, perl-format
 msgid "@%s output more than once: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:380
+#: tp/Texinfo/Convert/Info.pm:381
 #, fuzzy, perl-format
+#| msgid "(outside of any node)"
 msgid "@%s outside of any node"
 msgstr "(în afara oricãrui nod)"
 
-#: tp/Texinfo/Convert/Info.pm:423
+#: tp/Texinfo/Convert/Info.pm:424
 #, perl-format
 msgid "@node name should not contain `,': %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1243
+#: tp/Texinfo/Convert/Plaintext.pm:1259
 #, perl-format
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1290 tp/Texinfo/ParserNonXS.pm:2412
-#, fuzzy, perl-format
+#: tp/Texinfo/Convert/Plaintext.pm:1306 tp/Texinfo/ParserNonXS.pm:2398
+#: tp/Texinfo/XS/parsetexi/indices.c:324
+#, fuzzy, c-format, perl-format
+#| msgid "Entry for index `%s' outside of any node"
 msgid "entry for index `%s' outside of any node"
 msgstr "Intrarea pentru index-ul `%s' în afara oricãrui nod"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1402
+#: tp/Texinfo/Convert/Plaintext.pm:1419
 #, fuzzy, perl-format
+#| msgid "error closing output file `%s'"
 msgid "error on closing image text file %s: %s"
 msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1407
+#: tp/Texinfo/Convert/Plaintext.pm:1424
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "Fiºierul @image `%s' nu poate fi citit: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1428
+#: tp/Texinfo/Convert/Plaintext.pm:1445
 #, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1788
+#: tp/Texinfo/Convert/Plaintext.pm:1805
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -2278,646 +2396,743 @@ msgstr ""
 "@strong{Notã...] produce o referinþã încruciºatã falsã în Info; reformulaþi "
 "pentru a o evita"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2036
+#: tp/Texinfo/Convert/Plaintext.pm:2053
 #, perl-format
 msgid "@%s cross-reference name should not contain `:'"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2074
+#: tp/Texinfo/Convert/Plaintext.pm:2091
 #, fuzzy, perl-format
+#| msgid "No %sindex entries containing `%s'."
 msgid "@%s node name should not contain `%s'"
 msgstr "Nici o intrare în %sindex conþinând `%s'."
 
-#: tp/Texinfo/Convert/Plaintext.pm:2107
+#: tp/Texinfo/Convert/Plaintext.pm:2124
 #, perl-format
 msgid "@%s node name should not contain `:'"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2154
+#: tp/Texinfo/Convert/Plaintext.pm:2171
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2157
+#: tp/Texinfo/Convert/Plaintext.pm:2174
 msgid "`.' or `,' must follow @xref"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2952
+#: tp/Texinfo/Convert/Plaintext.pm:2978
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2963
+#: tp/Texinfo/Convert/Plaintext.pm:2989
 msgid "menu entry node name should not contain `:'"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2983
+#: tp/Texinfo/Convert/Plaintext.pm:3009
 msgid "menu entry name should not contain `:'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:997 tp/Texinfo/Structuring.pm:436
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:762
+#, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
+msgid "could not open %s: %s"
+msgstr "%s: nu am putut deschide --css-file: %s"
+
+#: tp/Texinfo/ParserNonXS.pm:983 tp/Texinfo/Structuring.pm:422
+#: tp/Texinfo/XS/parsetexi/parser.c:242
+#, c-format, perl-format
 msgid "multiple @%s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:1035
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1021 tp/Texinfo/XS/parsetexi/macro.c:181
+#, c-format, perl-format
 msgid "bad or empty @%s formal argument: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:1045
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1031 tp/Texinfo/XS/parsetexi/macro.c:204
+#, c-format, perl-format
 msgid "bad syntax for @%s argument: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:1052 tp/Texinfo/ParserNonXS.pm:4456
-#: tp/Texinfo/ParserNonXS.pm:4482 tp/Texinfo/ParserNonXS.pm:5289
-#: tp/Texinfo/ParserNonXS.pm:5302 tp/Texinfo/ParserNonXS.pm:5316
+#: tp/Texinfo/ParserNonXS.pm:1038 tp/Texinfo/ParserNonXS.pm:4493
+#: tp/Texinfo/ParserNonXS.pm:4519 tp/Texinfo/ParserNonXS.pm:5325
+#: tp/Texinfo/ParserNonXS.pm:5338 tp/Texinfo/ParserNonXS.pm:5352
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s necesitã un nume"
 
-#: tp/Texinfo/ParserNonXS.pm:1056 tp/Texinfo/ParserNonXS.pm:4459
-#: tp/Texinfo/ParserNonXS.pm:4485 tp/Texinfo/ParserNonXS.pm:5292
-#: tp/Texinfo/ParserNonXS.pm:5305 tp/Texinfo/ParserNonXS.pm:5319
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1042 tp/Texinfo/ParserNonXS.pm:4496
+#: tp/Texinfo/ParserNonXS.pm:4522 tp/Texinfo/ParserNonXS.pm:5328
+#: tp/Texinfo/ParserNonXS.pm:5341 tp/Texinfo/ParserNonXS.pm:5355
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:848
+#: tp/Texinfo/XS/parsetexi/macro.c:101
+#, fuzzy, c-format, perl-format
+#| msgid "Bad argument to @%s"
 msgid "bad name for @%s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:1170
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1156 tp/Texinfo/XS/parsetexi/close.c:42
+#, c-format, perl-format
 msgid "@end %s seen before @%s closing brace"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:1174
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1160 tp/Texinfo/XS/parsetexi/close.c:47
+#, c-format, perl-format
 msgid "@%s seen before @%s closing brace"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:1179
+#: tp/Texinfo/ParserNonXS.pm:1165
 #, fuzzy, perl-format
+#| msgid "%c%s missing close brace"
 msgid "%c%s missing closing brace"
 msgstr "%c%s lipseºte paranteza de închidere"
 
-#: tp/Texinfo/ParserNonXS.pm:1183
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1169 tp/Texinfo/XS/parsetexi/close.c:58
+#, c-format, perl-format
 msgid "@%s missing closing delimiter sequence: %s}"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:1292
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1278 tp/Texinfo/XS/parsetexi/multitable.c:73
+#, c-format, perl-format
 msgid "@itemx should not begin @%s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:1358
+#: tp/Texinfo/ParserNonXS.pm:1344 tp/Texinfo/XS/parsetexi/multitable.c:129
 msgid "@itemx must follow @item"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:1523
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1509 tp/Texinfo/XS/parsetexi/close.c:232
+#, c-format, perl-format
 msgid "@%s has text but no @item"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:1551
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1537 tp/Texinfo/XS/parsetexi/close.c:262
+#, c-format, perl-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "`@end' a aºteptat `%s', dar a vãzut `%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:1554
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1540 tp/Texinfo/XS/parsetexi/close.c:268
+#, c-format, perl-format
 msgid "@%s seen before @end %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:1558
+#: tp/Texinfo/ParserNonXS.pm:1544
 #, fuzzy, perl-format
+#| msgid "No matching `%cend %s'"
 msgid "no matching `%cend %s'"
 msgstr "Nici o potrivire %cend %s'"
 
-#: tp/Texinfo/ParserNonXS.pm:1582 tp/Texinfo/ParserNonXS.pm:4822
-#: tp/Texinfo/ParserNonXS.pm:5071
+#: tp/Texinfo/ParserNonXS.pm:1568 tp/Texinfo/ParserNonXS.pm:4856
+#: tp/Texinfo/ParserNonXS.pm:5107
 #, fuzzy, perl-format
+#| msgid "Misplaced %c"
 msgid "misplaced %c"
 msgstr "%c nelalocul lui"
 
-#: tp/Texinfo/ParserNonXS.pm:1683 tp/Texinfo/ParserNonXS.pm:2932
+#: tp/Texinfo/ParserNonXS.pm:1669 tp/Texinfo/ParserNonXS.pm:2925
 #, fuzzy, perl-format
+#| msgid "Unmatched `%c%s'"
 msgid "unmatched `%c%s'"
 msgstr "`%c%s' fãrã pereche"
 
-#: tp/Texinfo/ParserNonXS.pm:1900
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1886 tp/Texinfo/XS/parsetexi/macro.c:351
+#, fuzzy, c-format, perl-format
+#| msgid "Macro `%s' called on line %d with too many args"
 msgid "macro `%s' called with too many args"
 msgstr "Macro `%s' chemat pe linia %d cu prea multe argumente"
 
-#: tp/Texinfo/ParserNonXS.pm:1922
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1908 tp/Texinfo/XS/parsetexi/close.c:52
+#: tp/Texinfo/XS/parsetexi/macro.c:277
+#, fuzzy, c-format, perl-format
+#| msgid "%c%s missing close brace"
 msgid "@%s missing closing brace"
 msgstr "%c%s lipseºte paranteza de închidere"
 
-#: tp/Texinfo/ParserNonXS.pm:1930
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1916 tp/Texinfo/XS/parsetexi/macro.c:367
+#, fuzzy, c-format, perl-format
+#| msgid "Macro `%s' called on line %d with too many args"
 msgid "macro `%s' declared without argument called with an argument"
 msgstr "Macro `%s' chemat pe linia %d cu prea multe argumente"
 
-#: tp/Texinfo/ParserNonXS.pm:1963
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:1949 tp/Texinfo/XS/parsetexi/macro.c:430
+#, fuzzy, c-format, perl-format
+#| msgid "\\ in macro expansion followed by `%s' instead of parameter name"
 msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
 msgstr "\\ in expansiunea macro urmatã de `%s' în loc de nume parametru"
 
-#: tp/Texinfo/ParserNonXS.pm:2650
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2643 tp/Texinfo/XS/parsetexi/end_line.c:2182
+#, fuzzy, c-format, perl-format
+#| msgid "missing action name"
 msgid "missing name for @%s"
 msgstr "nume de acþiune inexistent"
 
-#: tp/Texinfo/ParserNonXS.pm:2655
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2648 tp/Texinfo/XS/parsetexi/end_line.c:2128
+#, c-format, perl-format
 msgid "missing category for @%s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:2694
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2687 tp/Texinfo/XS/parsetexi/end_line.c:1054
+#, fuzzy, c-format, perl-format
+#| msgid "arguments to @%s ignored"
 msgid "unexpected argument on @%s line: %s"
 msgstr "argumentele pentru @%s ignorate"
 
-#: tp/Texinfo/ParserNonXS.pm:2705
+#: tp/Texinfo/ParserNonXS.pm:2698 tp/Texinfo/XS/parsetexi/end_line.c:1066
 #, fuzzy
+#| msgid "%s: empty file"
 msgid "empty multitable"
 msgstr "%s: fiºier gol"
 
-#: tp/Texinfo/ParserNonXS.pm:2750 tp/Texinfo/ParserNonXS.pm:5386
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2743 tp/Texinfo/ParserNonXS.pm:5422
+#: tp/Texinfo/XS/parsetexi/end_line.c:311
+#: tp/Texinfo/XS/parsetexi/end_line.c:1134
+#, fuzzy, c-format, perl-format
+#| msgid "Bad argument to @%s"
 msgid "superfluous argument to @%s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:2756 tp/Texinfo/ParserNonXS.pm:5407
-#: tp/Texinfo/ParserNonXS.pm:5424
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2749 tp/Texinfo/ParserNonXS.pm:5443
+#: tp/Texinfo/ParserNonXS.pm:5460 tp/Texinfo/XS/parsetexi/end_line.c:1147
+#, fuzzy, c-format, perl-format
+#| msgid "Bad argument to @%s"
 msgid "bad argument to @%s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:2767
+#: tp/Texinfo/ParserNonXS.pm:2760
 #, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s necesitã un argument: formatatorul pentru %citem"
 
-#: tp/Texinfo/ParserNonXS.pm:2771
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2764 tp/Texinfo/XS/parsetexi/end_line.c:1167
+#, c-format, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:2805
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2798 tp/Texinfo/XS/parsetexi/end_line.c:1225
+#, fuzzy, c-format, perl-format
+#| msgid "%s: option `--%s' doesn't allow an argument\n"
 msgid "accent command `@%s' not allowed as @%s argument"
 msgstr "%s: opþiunea `--%s' nu permite un argument\n"
 
-#: tp/Texinfo/ParserNonXS.pm:2908 tp/Texinfo/ParserNonXS.pm:3056
-#: tp/Texinfo/ParserNonXS.pm:5379
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2901 tp/Texinfo/ParserNonXS.pm:3041
+#: tp/Texinfo/ParserNonXS.pm:5415 tp/Texinfo/XS/parsetexi/end_line.c:304
+#: tp/Texinfo/XS/parsetexi/end_line.c:1333
+#: tp/Texinfo/XS/parsetexi/end_line.c:1724
+#, fuzzy, c-format, perl-format
+#| msgid "%s: missing file argument.\n"
 msgid "@%s missing argument"
 msgstr "%s: lipseºte fiºierul argument.\n"
 
-#: tp/Texinfo/ParserNonXS.pm:2922
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2915 tp/Texinfo/XS/parsetexi/end_line.c:1352
+#, fuzzy, c-format, perl-format
+#| msgid "Unknown index `%s'"
 msgid "unknown @end %s"
 msgstr "Index necunoscut `%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:2945 tp/Texinfo/ParserNonXS.pm:3559
+#: tp/Texinfo/ParserNonXS.pm:2938 tp/Texinfo/ParserNonXS.pm:3555
 #, fuzzy, perl-format
+#| msgid "Bad argument to @%s"
 msgid "superfluous argument to @%s %s: %s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:2951 tp/Texinfo/ParserNonXS.pm:3035
-#: tp/Texinfo/ParserNonXS.pm:5474 tp/Texinfo/ParserNonXS.pm:5519
-#: tp/Texinfo/ParserNonXS.pm:5548 tp/Texinfo/ParserNonXS.pm:5589
-#: tp/Texinfo/ParserNonXS.pm:5667
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2944 tp/Texinfo/ParserNonXS.pm:3020
+#: tp/Texinfo/ParserNonXS.pm:5510 tp/Texinfo/ParserNonXS.pm:5555
+#: tp/Texinfo/ParserNonXS.pm:5584 tp/Texinfo/ParserNonXS.pm:5625
+#: tp/Texinfo/ParserNonXS.pm:5703 tp/Texinfo/XS/parsetexi/end_line.c:515
+#: tp/Texinfo/XS/parsetexi/end_line.c:583
+#: tp/Texinfo/XS/parsetexi/end_line.c:1662
+#, fuzzy, c-format, perl-format
+#| msgid "Bad argument to @%s"
 msgid "bad argument to @%s: %s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:2975
+#: tp/Texinfo/ParserNonXS.pm:2966
 #, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "@%s: could not open %s: %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2991
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2982 tp/Texinfo/XS/parsetexi/end_line.c:1485
+#, c-format, perl-format
 msgid "encoding `%s' is not a canonical texinfo encoding"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:2999
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:2990 tp/Texinfo/XS/parsetexi/end_line.c:1539
+#, c-format, perl-format
 msgid "unrecognized encoding name `%s'"
 msgstr "nume de codare nerecunoscut `%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:3121
+#: tp/Texinfo/ParserNonXS.pm:3106
 #, perl-format
 msgid "@%s after the first element"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:3128
+#: tp/Texinfo/ParserNonXS.pm:3113
 #, fuzzy, perl-format
+#| msgid "@%s not meaningful outside `@titlepage' environment"
 msgid "@%s only meaningful on a @multitable line"
 msgstr "@%s nu are sens în exteriorul mediului `@titlepage'"
 
-#: tp/Texinfo/ParserNonXS.pm:3175
+#: tp/Texinfo/ParserNonXS.pm:3149 tp/Texinfo/XS/parsetexi/end_line.c:1879
+msgid "@part should not be associated with @top"
+msgstr ""
+
+#: tp/Texinfo/ParserNonXS.pm:3160
 #, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:3309
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3271 tp/Texinfo/XS/parsetexi/end_line.c:36
+#, c-format, perl-format
+msgid "syntax for an external node used for `%s'"
+msgstr ""
+
+#: tp/Texinfo/ParserNonXS.pm:3294 tp/Texinfo/XS/parsetexi/menus.c:43
+#, fuzzy, c-format, perl-format
+#| msgid "No menu in node `%s'."
 msgid "empty menu entry name in `%s'"
 msgstr "Nici un meniu în nod `%s'."
 
-#: tp/Texinfo/ParserNonXS.pm:3317
+#: tp/Texinfo/ParserNonXS.pm:3302 tp/Texinfo/XS/parsetexi/menus.c:57
 msgid "empty node name in menu entry"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:3446
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3442 tp/Texinfo/XS/parsetexi/parser.c:979
+#, fuzzy, c-format, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "@%s should not appear in @%s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:3553
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3549 tp/Texinfo/XS/parsetexi/parser.c:1076
+#, fuzzy, c-format, perl-format
+#| msgid "Kill to the beginning of the line"
 msgid "@end %s should only appear at the beginning of a line"
 msgstr "ªterge (kill) pânã la începutul liniei"
 
-#: tp/Texinfo/ParserNonXS.pm:3574
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3570 tp/Texinfo/XS/parsetexi/parser.c:1137
+#, c-format, perl-format
 msgid "macro `%s' previously defined"
 msgstr "macro-ul `%s' definit anterior"
 
-#: tp/Texinfo/ParserNonXS.pm:3577
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3573 tp/Texinfo/XS/parsetexi/parser.c:1139
+#, c-format, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "aici este definiþia anterioarã a lui `%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:3582
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3578 tp/Texinfo/XS/parsetexi/parser.c:1144
+#, c-format, perl-format
 msgid "redefining Texinfo language command: @%s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:3650
+#: tp/Texinfo/ParserNonXS.pm:3646
 #, perl-format
 msgid "@%s without associated character"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:3720
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3716 tp/Texinfo/XS/parsetexi/macro.c:529
+#, c-format, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:3745
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3741 tp/Texinfo/XS/parsetexi/macro.c:568
+#, c-format, perl-format
 msgid ""
 "macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
 "value %d)"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:3754
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3750 tp/Texinfo/XS/parsetexi/macro.c:578
+#, c-format, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:3809
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3805 tp/Texinfo/XS/parsetexi/parser.c:1412
+#, c-format, perl-format
 msgid "accent command `@%s' must not be followed by whitespace"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:3815
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3811 tp/Texinfo/XS/parsetexi/parser.c:1419
+#, fuzzy, c-format, perl-format
+#| msgid "Use braces to give a command as an argument to @%s"
 msgid "use braces to give a command as an argument to @%s"
 msgstr "Folosiþi paranteze pentru a da o comandã ca argument lui @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:3828 tp/Texinfo/ParserNonXS.pm:4947
+#: tp/Texinfo/ParserNonXS.pm:3824 tp/Texinfo/ParserNonXS.pm:4981
 #, fuzzy, perl-format
+#| msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s aºteaptã `i' sau `j' ca argument, nu `%c'"
 
-#: tp/Texinfo/ParserNonXS.pm:3839
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3835 tp/Texinfo/XS/parsetexi/parser.c:1449
+#, c-format, perl-format
 msgid "accent command `@%s' must not be followed by new line"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:3850
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3846 tp/Texinfo/XS/parsetexi/parser.c:1467
+#, fuzzy, c-format, perl-format
+#| msgid "%c%s expected braces"
 msgid "@%s expected braces"
 msgstr "%c%s am aºteptat paranteze"
 
-#: tp/Texinfo/ParserNonXS.pm:3979
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:3975 tp/Texinfo/XS/parsetexi/parser.c:1328
+#, fuzzy, c-format, perl-format
+#| msgid "Unknown command `%s'"
 msgid "unknown command `%s'"
 msgstr "Comandã necunoscutã `%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:4021
+#: tp/Texinfo/ParserNonXS.pm:4017
 #, perl-format
 msgid "undefined flag: %s"
 msgstr "marcaj nedefinit: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:4025
+#: tp/Texinfo/ParserNonXS.pm:4021 tp/Texinfo/XS/parsetexi/parser.c:1554
 msgid "bad syntax for @value"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4032
+#: tp/Texinfo/ParserNonXS.pm:4028
 #, fuzzy, perl-format
+#| msgid "%c%s is obsolete"
 msgid "%c%s is obsolete."
 msgstr "%c%s este depãsit"
 
-#: tp/Texinfo/ParserNonXS.pm:4035
+#: tp/Texinfo/ParserNonXS.pm:4031
 #, fuzzy, perl-format
+#| msgid "%c%s is obsolete"
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s este depãsit"
 
-#: tp/Texinfo/ParserNonXS.pm:4050
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4046 tp/Texinfo/XS/parsetexi/parser.c:1605
+#, fuzzy, c-format, perl-format
+#| msgid "Kill to the beginning of the line"
 msgid "@%s should only appear at the beginning of a line"
 msgstr "ªterge (kill) pânã la începutul liniei"
 
-#: tp/Texinfo/ParserNonXS.pm:4079
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4087 tp/Texinfo/XS/parsetexi/handle_commands.c:97
+#, c-format, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4104 tp/Texinfo/ParserNonXS.pm:4111
-#: tp/Texinfo/ParserNonXS.pm:4160
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4112 tp/Texinfo/ParserNonXS.pm:4119
+#: tp/Texinfo/ParserNonXS.pm:4168 tp/Texinfo/XS/parsetexi/handle_commands.c:134
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:143
+#, c-format, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s nu are sens în interiorul blocului `@%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:4120
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4128 tp/Texinfo/XS/parsetexi/handle_commands.c:180
+#, fuzzy, c-format, perl-format
+#| msgid "%s: empty file"
 msgid "@%s in empty multitable"
 msgstr "%s: fiºier gol"
 
-#: tp/Texinfo/ParserNonXS.pm:4126
+#: tp/Texinfo/ParserNonXS.pm:4134 tp/Texinfo/XS/parsetexi/handle_commands.c:188
 msgid "@tab before @item"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4129
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4137 tp/Texinfo/XS/parsetexi/handle_commands.c:192
+#, fuzzy, c-format, perl-format
+#| msgid "Too many columns in multitable item (max %d)"
 msgid "too many columns in multitable item (max %d)"
 msgstr "Prea multe coloane în articol multitabel (max %d)"
 
-#: tp/Texinfo/ParserNonXS.pm:4166
+#: tp/Texinfo/ParserNonXS.pm:4174 tp/Texinfo/XS/parsetexi/handle_commands.c:237
 msgid "ignoring @tab outside of multitable"
 msgstr "ignor @tab în afara multitabelului"
 
-#: tp/Texinfo/ParserNonXS.pm:4170 tp/Texinfo/ParserNonXS.pm:4337
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4178 tp/Texinfo/ParserNonXS.pm:4345
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:242
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:541
+#, c-format, perl-format
 msgid "@%s outside of table or list"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4236
+#: tp/Texinfo/ParserNonXS.pm:4244
 #, fuzzy, perl-format
+#| msgid "@%s not meaningful inside `@%s' block"
 msgid "@%s not allowed inside `@%s' block"
 msgstr "@%s nu are sens în interiorul blocului `@%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:4378
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4357 tp/Texinfo/ParserNonXS.pm:4699
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1085
+#, c-format, perl-format
+msgid "@%s should only appear in an index entry"
+msgstr ""
+
+#: tp/Texinfo/ParserNonXS.pm:4368 tp/Texinfo/XS/parsetexi/handle_commands.c:580
+msgid "no more than two levels of index subentry are allowed"
+msgstr ""
+
+#: tp/Texinfo/ParserNonXS.pm:4409 tp/Texinfo/XS/parsetexi/handle_commands.c:637
+#, fuzzy, c-format, perl-format
+#| msgid "Must be in `@%s' environment to use `@%s'"
 msgid "must be after `@%s' to use `@%s'"
 msgstr "Trebuie sã fiþi în mediul `@%s' pentru a folosi `@%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:4416
+#: tp/Texinfo/ParserNonXS.pm:4447
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "@%s nu are sens în exteriorul mediilor `@titlepage' ºi `@quotation'"
 
-#: tp/Texinfo/ParserNonXS.pm:4420
+#: tp/Texinfo/ParserNonXS.pm:4451 tp/Texinfo/XS/parsetexi/handle_commands.c:694
 msgid "@dircategory after first node"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4596
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4633 tp/Texinfo/XS/parsetexi/handle_commands.c:984
+#, fuzzy, c-format, perl-format
+#| msgid "Footnotes inside footnotes are not allowed"
 msgid "region %s inside region %s is not allowed"
 msgstr "Nu sun permise note de subsol în note de subsol"
 
-#: tp/Texinfo/ParserNonXS.pm:4613
+#: tp/Texinfo/ParserNonXS.pm:4650
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1006
 msgid "@direntry after first node"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4621
+#: tp/Texinfo/ParserNonXS.pm:4658
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1011
 msgid "@menu in invalid context"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4627
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4664
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1020
+#, fuzzy, c-format, perl-format
+#| msgid "@menu seen before first @node, creating `Top' node"
 msgid "@%s seen before first @node"
 msgstr "@menu vãzut înainte de primul @node, creez nodul `Vârf'"
 
-#: tp/Texinfo/ParserNonXS.pm:4630
+#: tp/Texinfo/ParserNonXS.pm:4667
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1022
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr ""
 "probabil cã nodul d-voastrã @top ar trebui împachetat în @ifnottex în loc de "
 "@ifinfo?"
 
-#: tp/Texinfo/ParserNonXS.pm:4665
-#, perl-format
-msgid "@%s should only appear in an index entry"
-msgstr ""
-
-#: tp/Texinfo/ParserNonXS.pm:4694
+#: tp/Texinfo/ParserNonXS.pm:4728
 #, perl-format
 msgid "@%s should only appear in math context"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4709
+#: tp/Texinfo/ParserNonXS.pm:4743 tp/Texinfo/XS/parsetexi/parser.c:1721
 #, fuzzy
+#| msgid "Expected `%s'"
 msgid "unexpected @"
 msgstr "Am aºteptat `%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:4738
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4772 tp/Texinfo/XS/parsetexi/separator.c:78
+#, fuzzy, c-format, perl-format
+#| msgid "@%s not meaningful outside `@float' environment"
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "@%s nu are sens în exteriorul mediului `@float'"
 
-#: tp/Texinfo/ParserNonXS.pm:4743
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4777 tp/Texinfo/XS/parsetexi/separator.c:84
+#, c-format, perl-format
 msgid "@%s should be right below `@float'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4751
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4785 tp/Texinfo/XS/parsetexi/separator.c:92
+#, c-format, perl-format
 msgid "ignoring multiple @%s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4862
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4896 tp/Texinfo/XS/parsetexi/separator.c:276
+#, c-format, perl-format
 msgid "command @%s does not accept arguments"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4892
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4926 tp/Texinfo/XS/parsetexi/separator.c:312
+#, c-format, perl-format
 msgid "command @%s missing a node or external manual argument"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4911
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4945 tp/Texinfo/XS/parsetexi/separator.c:350
+#, c-format, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4922
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4956 tp/Texinfo/XS/parsetexi/separator.c:368
+#, c-format, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4935
+#: tp/Texinfo/ParserNonXS.pm:4969 tp/Texinfo/XS/parsetexi/separator.c:383
 msgid "@image missing filename argument"
 msgstr "@image lipseºte fiºierul argument."
 
-#: tp/Texinfo/ParserNonXS.pm:4969
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5003 tp/Texinfo/XS/parsetexi/separator.c:413
+#, fuzzy, c-format, perl-format
+#| msgid "%s: missing file argument.\n"
 msgid "@%s missing first argument"
 msgstr "%s: lipseºte fiºierul argument.\n"
 
-#: tp/Texinfo/ParserNonXS.pm:4987
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5021 tp/Texinfo/XS/parsetexi/separator.c:435
+#, c-format, perl-format
 msgid "non-hex digits in argument for @U: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4992
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5026 tp/Texinfo/XS/parsetexi/separator.c:440
+#, c-format, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5009
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5043 tp/Texinfo/XS/parsetexi/separator.c:455
+#, c-format, perl-format
 msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5195
+#: tp/Texinfo/ParserNonXS.pm:5231 tp/Texinfo/XS/parsetexi/separator.c:755
 msgid "superfluous arguments for node"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5244
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5280 tp/Texinfo/XS/parsetexi/parser.c:1915
+#, fuzzy, c-format, perl-format
+#| msgid "Expected `%s'"
 msgid "expected @end %s"
 msgstr "Am aºteptat `%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:5331
+#: tp/Texinfo/ParserNonXS.pm:5367
 #, fuzzy, perl-format
+#| msgid "Use braces to give a command as an argument to @%s"
 msgid "@%s should only accept an @-command as argument, not `%s'"
 msgstr "Folosiþi paranteze pentru a da o comandã ca argument lui @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:5341
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5377 tp/Texinfo/XS/parsetexi/end_line.c:275
+#, fuzzy, c-format, perl-format
+#| msgid "arguments to @%s ignored"
 msgid "remaining argument on @%s line: %s"
 msgstr "argumentele pentru @%s ignorate"
 
-#: tp/Texinfo/ParserNonXS.pm:5402
+#: tp/Texinfo/ParserNonXS.pm:5438
 #, fuzzy, perl-format
+#| msgid "Use braces to give a command as an argument to @%s"
 msgid "environment command %s as argument to @%s"
 msgstr "Folosiþi paranteze pentru a da o comandã ca argument lui @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:5429
+#: tp/Texinfo/ParserNonXS.pm:5465
 #, perl-format
 msgid "empty @%s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5437
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5473 tp/Texinfo/XS/parsetexi/end_line.c:456
+#, c-format, perl-format
 msgid "column fraction not a number: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5446
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5482 tp/Texinfo/XS/parsetexi/end_line.c:478
+#, fuzzy, c-format, perl-format
+#| msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "%s: %s arg trebuie sã fie numeric, nu `%s'.\n"
 
-#: tp/Texinfo/ParserNonXS.pm:5455
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5491 tp/Texinfo/XS/parsetexi/end_line.c:520
+#, c-format, perl-format
 msgid "reserved index name %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5481
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5517 tp/Texinfo/XS/parsetexi/end_line.c:551
+#, fuzzy, c-format, perl-format
+#| msgid "Unknown index `%s'"
 msgid "unknown source index in @%s: %s"
 msgstr "Index necunoscut `%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:5484
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5520 tp/Texinfo/XS/parsetexi/end_line.c:554
+#, c-format, perl-format
 msgid "unknown destination index in @%s: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5514
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5550 tp/Texinfo/XS/parsetexi/end_line.c:574
+#, c-format, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5527
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5563 tp/Texinfo/XS/parsetexi/end_line.c:599
+#, fuzzy, c-format, perl-format
+#| msgid "Unknown index `%s' in @printindex"
 msgid "unknown index `%s' in @printindex"
 msgstr "Index necunoscut `%s' în @printindex"
 
-#: tp/Texinfo/ParserNonXS.pm:5533
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5569 tp/Texinfo/XS/parsetexi/end_line.c:608
+#, c-format, perl-format
 msgid "printing an index `%s' merged in another one, `%s'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5541
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5577 tp/Texinfo/XS/parsetexi/end_line.c:613
+#, c-format, perl-format
 msgid "printindex before document beginning: @printindex %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5557
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5593 tp/Texinfo/XS/parsetexi/end_line.c:634
+#, fuzzy, c-format, perl-format
+#| msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr "%s: %s arg trebuie sã fie numeric, nu `%s'.\n"
 
-#: tp/Texinfo/ParserNonXS.pm:5565
+#: tp/Texinfo/ParserNonXS.pm:5601
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5573
+#: tp/Texinfo/ParserNonXS.pm:5609
 #, fuzzy, perl-format
+#| msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr ""
 "%s: --footnote-style arg trebuie sã fie `separate' sau `end', nu `%s'.\n"
 
-#: tp/Texinfo/ParserNonXS.pm:5581
+#: tp/Texinfo/ParserNonXS.pm:5617
 #, fuzzy, perl-format
+#| msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr "%s: %s arg trebuie sã fie numeric, nu `%s'.\n"
 
-#: tp/Texinfo/ParserNonXS.pm:5599 tp/Texinfo/ParserNonXS.pm:5604
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5635 tp/Texinfo/ParserNonXS.pm:5640
+#: tp/Texinfo/XS/parsetexi/end_line.c:690
+#, fuzzy, c-format, perl-format
+#| msgid ""
+#| "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr ""
 "%s: --paragraph-indent arg trebuie sã fie numeric/`none'/`asis', nu `%s'.\n"
 
-#: tp/Texinfo/ParserNonXS.pm:5612
+#: tp/Texinfo/ParserNonXS.pm:5648
 #, fuzzy, perl-format
+#| msgid ""
+#| "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr ""
 "%s: --paragraph-indent arg trebuie sã fie numeric/`none'/`asis', nu `%s'.\n"
 
-#: tp/Texinfo/ParserNonXS.pm:5622
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5658 tp/Texinfo/XS/parsetexi/end_line.c:711
+#, fuzzy, c-format, perl-format
+#| msgid ""
+#| "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr ""
 "%s: --paragraph-indent arg trebuie sã fie numeric/`none'/`asis', nu `%s'.\n"
 
-#: tp/Texinfo/ParserNonXS.pm:5634
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5670 tp/Texinfo/XS/parsetexi/end_line.c:726
+#, c-format, perl-format
 msgid "expected @%s on or off, not `%s'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5643
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5679 tp/Texinfo/XS/parsetexi/end_line.c:746
+#, c-format, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5651
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5687 tp/Texinfo/XS/parsetexi/end_line.c:758
+#, fuzzy, c-format, perl-format
+#| msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr ""
 "%s: --footnote-style arg trebuie sã fie `separate' sau `end', nu `%s'.\n"
 
-#: tp/Texinfo/ParserNonXS.pm:5659
-#, fuzzy, perl-format
+#: tp/Texinfo/ParserNonXS.pm:5695 tp/Texinfo/XS/parsetexi/end_line.c:770
+#, fuzzy, c-format, perl-format
+#| msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr ""
 "%s: --footnote-style arg trebuie sã fie `separate' sau `end', nu `%s'.\n"
@@ -2947,8 +3162,10 @@ msgstr ""
 msgid "@%s not empty"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:386 tp/Texinfo/Structuring.pm:1207
+#: tp/Texinfo/Structuring.pm:386 tp/Texinfo/Structuring.pm:1160
 #, fuzzy, perl-format
+#| msgid ""
+#| "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgid "@%s reference to nonexistent node `%s'"
 msgstr ""
 "referinþa %s cãtre nodul inexistent `%s' (probabil secþionare incorectã?)"
@@ -2958,214 +3175,232 @@ msgstr ""
 msgid "@%s entry node name `%s' different from %s name `%s'"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:512
+#: tp/Texinfo/Structuring.pm:498
 #, perl-format
 msgid "unreferenced node `%s'"
 msgstr "nod nereferit `%s'"
 
-#: tp/Texinfo/Structuring.pm:563
+#: tp/Texinfo/Structuring.pm:549
 #, perl-format
 msgid "node `%s' is %s for `%s' in sectioning but not in menu"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:572
+#: tp/Texinfo/Structuring.pm:558
 #, perl-format
 msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:590
+#: tp/Texinfo/Structuring.pm:576
 #, perl-format
 msgid "node `%s' is %s for `%s' in menu but not in sectioning"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:645
+#: tp/Texinfo/Structuring.pm:614
 #, perl-format
 msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:669
+#: tp/Texinfo/Structuring.pm:627
 #, fuzzy, perl-format
+#| msgid "unreferenced node `%s'"
 msgid "%s reference to nonexistent `%s'"
 msgstr "nod nereferit `%s'"
 
-#: tp/Texinfo/Structuring.pm:690
+#: tp/Texinfo/Structuring.pm:648
 #, fuzzy, perl-format
+#| msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgid "node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr "Nodului `%s' îi lipseºte articolul pentru `%s' deºi îi este þinta Sus"
 
-#: tp/Texinfo/Structuring.pm:698
+#: tp/Texinfo/Structuring.pm:656
 #, perl-format
 msgid "for `%s', up in menu `%s' and up `%s' don't match"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:1217
+#: tp/Texinfo/Structuring.pm:1170
 #, perl-format
 msgid "@%s to `%s', different from %s name `%s'"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:1503
+#: tp/Texinfo/Structuring.pm:1456
 #, perl-format
 msgid "empty index key in @%s"
 msgstr ""
 
-#: tp/init/chm.pm:221 tp/init/chm.pm:277 tp/init/chm.pm:347
+#: tp/init/chm.pm:223 tp/init/chm.pm:279 tp/init/chm.pm:349
 #, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "chm.pm: could not open %s for writing: %s\n"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/init/chm.pm:267 tp/init/chm.pm:337 tp/init/chm.pm:398
+#: tp/init/chm.pm:269 tp/init/chm.pm:339 tp/init/chm.pm:400
 #, perl-format
 msgid "chm.pm: error on closing %s: %s"
 msgstr ""
 
-#: tp/init/latex2html.pm:200
+#: tp/init/latex2html.pm:197
 #, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "l2h: could not open latex file %s for writing: %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/init/latex2html.pm:341
+#: tp/init/latex2html.pm:343
 msgid "l2h: L2H_TMP directory contains a dot"
 msgstr ""
 
-#: tp/init/latex2html.pm:346
+#: tp/init/latex2html.pm:348
 msgid "l2h: current directory contains a dot"
 msgstr ""
 
-#: tp/init/latex2html.pm:374
+#: tp/init/latex2html.pm:376
 #, perl-format
 msgid "l2h: command did not succeed: %s"
 msgstr ""
 
-#: tp/init/latex2html.pm:422
+#: tp/init/latex2html.pm:424
 #, perl-format
 msgid "l2h: image has invalid extension: %s"
 msgstr ""
 
-#: tp/init/latex2html.pm:438
+#: tp/init/latex2html.pm:440
 #, perl-format
 msgid "l2h: rename %s as %s failed: %s"
 msgstr ""
 
-#: tp/init/latex2html.pm:460
+#: tp/init/latex2html.pm:462
 #, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "l2h: could not open %s: %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/init/latex2html.pm:493
+#: tp/init/latex2html.pm:495
 #, perl-format
 msgid "latex2html.pm: end of @%s item %d not found"
 msgstr ""
 
-#: tp/init/latex2html.pm:504
+#: tp/init/latex2html.pm:506
 #, perl-format
 msgid ""
 "latex2html.pm: processing produced %d items in HTML; expected %d, the number "
 "of items found in the document"
 msgstr ""
 
-#: tp/init/latex2html.pm:534
+#: tp/init/latex2html.pm:536
 #, perl-format
 msgid "l2h: could not determine the fragment %d for @%s"
 msgstr ""
 
-#: tp/init/latex2html.pm:560
+#: tp/init/latex2html.pm:562
 #, perl-format
 msgid ""
 "l2h: could not extract the fragment %d for @%s with output counter %d from "
 "HTML"
 msgstr ""
 
-#: tp/init/latex2html.pm:621
+#: tp/init/latex2html.pm:623
 #, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "l2h: could not load %s: %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/init/latex2html.pm:634
+#: tp/init/latex2html.pm:636
 #, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "l2h: could not open %s for writing: %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
+#: tp/init/tex4ht.pm:125 tp/init/tex4ht.pm:270
 #, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/init/tex4ht.pm:219
+#: tp/init/tex4ht.pm:222
 #, perl-format
 msgid "tex4ht.pm: chdir %s failed: %s"
 msgstr ""
 
-#: tp/init/tex4ht.pm:232
+#: tp/init/tex4ht.pm:235
 #, perl-format
 msgid "tex4ht.pm: unable to return to initial directory: %s"
 msgstr ""
 
-#: tp/init/tex4ht.pm:244
+#: tp/init/tex4ht.pm:247
 #, perl-format
 msgid "tex4ht.pm: output file missing: %s"
 msgstr ""
 
-#: tp/init/tex4ht.pm:260
+#: tp/init/tex4ht.pm:263
 #, perl-format
 msgid "tex4ht.pm: command failed: %s"
 msgstr ""
 
-#: tp/init/tex4ht.pm:294
+#: tp/init/tex4ht.pm:297
 #, perl-format
 msgid "tex4ht.pm: end of @%s item %d not found"
 msgstr ""
 
-#: tp/init/tex4ht.pm:301
+#: tp/init/tex4ht.pm:304
 #, perl-format
 msgid ""
 "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
 "items found in the document for @%s"
 msgstr ""
 
-#: tp/init/tex4ht.pm:321
+#: tp/init/tex4ht.pm:324
 #, perl-format
 msgid "tex4ht.pm: output has no HTML item for @%s %s"
 msgstr ""
 
-#: tp/init/tex4ht.pm:336
+#: tp/init/tex4ht.pm:339
 #, perl-format
 msgid ""
 "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
 "items found in the document for @%s"
 msgstr ""
 
-#: tp/texi2any.pl:372
+#: tp/texi2any.pl:348
 #, fuzzy, perl-format
+#| msgid "error writing to `%s'"
 msgid "error loading %s: %s\n"
 msgstr "eroare la scrierea în `%s'"
 
-#: tp/texi2any.pl:385
+#: tp/texi2any.pl:361
 #, fuzzy, perl-format
+#| msgid "unknown action `%s'"
 msgid "%s: unknown variable %s"
 msgstr "acþiune necunoscutã `%s'"
 
-#: tp/texi2any.pl:401
+#: tp/texi2any.pl:377
 #, fuzzy, perl-format
+#| msgid "unknown action `%s'"
 msgid "%s: unknown variable %s\n"
 msgstr "acþiune necunoscutã `%s'"
 
-#: tp/texi2any.pl:437
+#: tp/texi2any.pl:413
 #, fuzzy, perl-format
+#| msgid "Could not create output file `%s'."
 msgid "could not read init file %s"
 msgstr "Nu am putut crea fiºier ieºire `%s'."
 
-#: tp/texi2any.pl:593
+#: tp/texi2any.pl:569
 #, fuzzy, perl-format
+#| msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "%s: Ignor valoare nerecunoscutã TEXINFO_OUTPUT_FORMAT `%s'.\n"
 
-#: tp/texi2any.pl:676
+#: tp/texi2any.pl:652
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Folosire: %s [OPÞIUNE]... FIªIER-TEXINFO...\n"
 
-#: tp/texi2any.pl:679
+#: tp/texi2any.pl:655
 #, fuzzy
+#| msgid ""
+#| "Translate Texinfo source documentation to various other formats, by "
+#| "default\n"
+#| "Info files suitable for reading online with Emacs or standalone GNU "
+#| "Info.\n"
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -3176,8 +3411,19 @@ msgstr ""
 "Translateazã documentaþia sursã Texinfo în diferite alte formate, implicit\n"
 "fiºiere Info potrivite pentru citit online cu Emacs sau GNU Info.\n"
 
-#: tp/texi2any.pl:685
+#: tp/texi2any.pl:661
 #, fuzzy, perl-format
+#| msgid ""
+#| "General options:\n"
+#| "      --error-limit=NUM       quit after NUM errors (default %d).\n"
+#| "      --force                 preserve output even if errors.\n"
+#| "      --help                  display this help and exit.\n"
+#| "      --no-validate           suppress node cross-reference validation.\n"
+#| "      --no-warn               suppress warnings (but not errors).\n"
+#| "      --reference-limit=NUM   warn about at most NUM references (default "
+#| "%d).\n"
+#| "  -v, --verbose               explain what is being done.\n"
+#| "      --version               display version information and exit.\n"
 msgid ""
 "General options:\n"
 "      --document-language=STR locale to use in translating Texinfo keywords\n"
@@ -3206,8 +3452,14 @@ msgstr ""
 "      --version               afiºeazã informaþii despre versiune ºi "
 "terminã.\n"
 
-#: tp/texi2any.pl:701
+#: tp/texi2any.pl:677
 #, fuzzy
+#| msgid ""
+#| "Output format selection (default is to produce Info):\n"
+#| "      --docbook             output Docbook XML rather than Info.\n"
+#| "      --html                output HTML rather than Info.\n"
+#| "      --xml                 output Texinfo XML rather than Info.\n"
+#| "      --plaintext           output plain text rather than Info.\n"
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3223,8 +3475,23 @@ msgstr ""
 "      --xml                 ieºire Texinfo XML în loc de Info.\n"
 "      --plaintext           ieºire text simplu în loc de Info.\n"
 
-#: tp/texi2any.pl:709
+#: tp/texi2any.pl:685
 #, fuzzy
+#| msgid ""
+#| "General output options:\n"
+#| "  -E, --macro-expand FILE   output macro-expanded source to FILE.\n"
+#| "                            ignoring any @setfilename.\n"
+#| "      --no-headers          suppress node separators, Node: lines, and "
+#| "menus\n"
+#| "                              from Info output (thus producing plain "
+#| "text)\n"
+#| "                              or from HTML (thus producing shorter "
+#| "output);\n"
+#| "                              also, write to standard output by default.\n"
+#| "      --no-split            suppress splitting of Info or HTML output,\n"
+#| "                            generate only one output file.\n"
+#| "      --number-sections     output chapter and sectioning numbers.\n"
+#| "  -o, --output=FILE         output to FILE (directory if split HTML),\n"
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -3264,8 +3531,26 @@ msgstr ""
 "      --number-sections     scrie numere de capitole ºi secþiuni.\n"
 "  -o, --output=FIªIER       scrie în FIªIER (director dacã multiple HTML),\n"
 
-#: tp/texi2any.pl:729
+#: tp/texi2any.pl:705
 #, fuzzy, perl-format
+#| msgid ""
+#| "Options for Info and plain text:\n"
+#| "      --enable-encoding       output accented and special characters in\n"
+#| "                                Info output based on @documentencoding.\n"
+#| "      --fill-column=NUM       break Info lines at NUM characters (default "
+#| "%d).\n"
+#| "      --footnote-style=STYLE  output footnotes in Info according to "
+#| "STYLE:\n"
+#| "                                `separate' to put them in their own "
+#| "node;\n"
+#| "                                `end' to put them at the end of the node\n"
+#| "                                  in which they are defined (default).\n"
+#| "      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces "
+#| "(default %d).\n"
+#| "                                If VAL is `none', do not indent; if VAL "
+#| "is\n"
+#| "                                `asis', preserve existing indentation.\n"
+#| "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgid ""
 "Options for Info and plain text:\n"
 "      --disable-encoding      do not output accented and special characters\n"
@@ -3304,7 +3589,7 @@ msgstr ""
 "      --split-size=NUM        împarte fiºierele Info de dimens. NUM "
 "(implicit %d).\n"
 
-#: tp/texi2any.pl:746
+#: tp/texi2any.pl:722
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3318,20 +3603,28 @@ msgid ""
 "                                anchors; default is set only if split.\n"
 msgstr ""
 
-#: tp/texi2any.pl:757
+#: tp/texi2any.pl:733
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:760
+#: tp/texi2any.pl:736
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:763
+#: tp/texi2any.pl:739
 #, fuzzy
+#| msgid ""
+#| "Input file options:\n"
+#| "      --commands-in-node-names  allow @ commands in node names.\n"
+#| "  -D VAR                        define the variable VAR, as with @set.\n"
+#| "  -I DIR                        append DIR to the @include search path.\n"
+#| "  -P DIR                        prepend DIR to the @include search path.\n"
+#| "  -U VAR                        undefine the variable VAR, as with "
+#| "@clear.\n"
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3348,8 +3641,27 @@ msgstr ""
 "  -P DIR                        prepend DIR la calea de cãutare @include.\n"
 "  -U VAR                        nedefineºte variabila VAR, ca ºi @clear.\n"
 
-#: tp/texi2any.pl:771
+#: tp/texi2any.pl:747
 #, fuzzy
+#| msgid ""
+#| "Conditional processing in input:\n"
+#| "  --ifdocbook       process @ifdocbook and @docbook even if\n"
+#| "                      not generating Docbook.\n"
+#| "  --ifhtml          process @ifhtml and @html even if not generating "
+#| "HTML.\n"
+#| "  --ifinfo          process @ifinfo even if not generating Info.\n"
+#| "  --ifplaintext     process @ifplaintext even if not generating plain "
+#| "text.\n"
+#| "  --iftex           process @iftex and @tex; implies --no-split.\n"
+#| "  --ifxml           process @ifxml and @xml.\n"
+#| "  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
+#| "  --no-ifhtml       do not process @ifhtml and @html text.\n"
+#| "  --no-ifinfo       do not process @ifinfo text.\n"
+#| "  --no-ifplaintext  do not process @ifplaintext text.\n"
+#| "  --no-iftex        do not process @iftex and @tex text.\n"
+#| "  --no-ifxml        do not process @ifxml and @xml text.\n"
+#| "\n"
+#| "  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -3388,8 +3700,14 @@ msgstr ""
 "  De asemenea, pentru opþiunile --no-ifFORMAT, proceseazã text "
 "@ifnotFORMAT.\n"
 
-#: tp/texi2any.pl:788
+#: tp/texi2any.pl:764
 #, fuzzy
+#| msgid ""
+#| "  The defaults for the @if... conditionals depend on the output format:\n"
+#| "  if generating HTML, --ifhtml is on and the others are off;\n"
+#| "  if generating Info, --ifinfo is on and the others are off;\n"
+#| "  if generating plain text, --ifplaintext is on and the others are off;\n"
+#| "  if generating XML, --ifxml is on and the others are off.\n"
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating Docbook, --ifdocbook is on and the others are off;\n"
@@ -3405,8 +3723,24 @@ msgstr ""
 "  dacã generaþi text simplu, --ifplaintext este selectat iar restul sunt "
 "deselectate;\n"
 
-#: tp/texi2any.pl:795
+#: tp/texi2any.pl:771
 #, fuzzy
+#| msgid ""
+#| "Examples:\n"
+#| "  makeinfo foo.texi                     write Info to foo's @setfilename\n"
+#| "  makeinfo --html foo.texi              write HTML to @setfilename\n"
+#| "  makeinfo --xml foo.texi               write Texinfo XML to "
+#| "@setfilename\n"
+#| "  makeinfo --docbook foo.texi           write DocBook XML to "
+#| "@setfilename\n"
+#| "  makeinfo --no-headers foo.texi        write plain text to standard "
+#| "output\n"
+#| "\n"
+#| "  makeinfo --html --no-headers foo.texi write html without node lines, "
+#| "menus\n"
+#| "  makeinfo --number-sections foo.texi   write Info with numbered "
+#| "sections\n"
+#| "  makeinfo --no-split foo.texi          write one Info file however big\n"
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -3437,81 +3771,331 @@ msgstr ""
 "  makeinfo --no-split foo.texi          scrie un singur fiºier Info "
 "indiferent cât de mare\n"
 
-#: tp/texi2any.pl:842
+#: tp/texi2any.pl:818
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: --footnote-style arg trebuie sã fie `separate' sau `end', nu `%s'.\n"
 
-#: tp/texi2any.pl:938
+#: tp/texi2any.pl:913
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: --paragraph-indent arg trebuie sã fie numeric/`none'/`asis', nu `%s'.\n"
 
-#: tp/texi2any.pl:1015
+#: tp/texi2any.pl:990
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 
-#: tp/texi2any.pl:1019
+#: tp/texi2any.pl:994
 msgid "--Xopt option without printed output"
 msgstr ""
 
-#: tp/texi2any.pl:1035
+#: tp/texi2any.pl:1010
 #, fuzzy, perl-format
+#| msgid "unknown action `%s'"
 msgid "unknown tree transformation %s"
 msgstr "acþiune necunoscutã `%s'"
 
-#: tp/texi2any.pl:1042
+#: tp/texi2any.pl:1017
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:1101
+#: tp/texi2any.pl:1076
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: lipseºte fiºierul argument.\n"
 
-#: tp/texi2any.pl:1102
+#: tp/texi2any.pl:1077
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Încercaþi `%s --help' pentru informaþii suplimentare.\n"
 
-#: tp/texi2any.pl:1169
+#: tp/texi2any.pl:1144
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 
-#: tp/texi2any.pl:1192
+#: tp/texi2any.pl:1166
 #, fuzzy, perl-format
+#| msgid "error closing output file `%s'"
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
-#: tp/texi2any.pl:1198
+#: tp/texi2any.pl:1172
 #, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "could not open %s for writing: %s\n"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/texi2any.pl:1223
+#: tp/texi2any.pl:1197
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
 msgstr ""
 
-#: tp/texi2any.pl:1292 tp/texi2any.pl:1368
+#: tp/texi2any.pl:1265 tp/texi2any.pl:1341
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr ""
 
-#: tp/texi2any.pl:1315 tp/texi2any.pl:1349
+#: tp/texi2any.pl:1288 tp/texi2any.pl:1322
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr ""
 
-#: tp/texi2any.pl:1321 tp/texi2any.pl:1355
+#: tp/texi2any.pl:1294 tp/texi2any.pl:1328
 #, fuzzy, perl-format
+#| msgid "%s: could not open --css-file: %s"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: nu am putut deschide --css-file: %s"
+
+#: tp/Texinfo/XS/parsetexi/close.c:274
+#, fuzzy, c-format
+#| msgid "No matching `%cend %s'"
+msgid "no matching `@end %s'"
+msgstr "Nici o potrivire %cend %s'"
+
+#: tp/Texinfo/XS/parsetexi/close.c:312 tp/Texinfo/XS/parsetexi/separator.c:193
+#, fuzzy
+#| msgid "Misplaced %c"
+msgid "misplaced {"
+msgstr "%c nelalocul lui"
+
+#: tp/Texinfo/XS/parsetexi/close.c:415
+#, fuzzy, c-format
+#| msgid "Unmatched `%c%s'"
+msgid "unmatched `@end %s'"
+msgstr "`%c%s' fãrã pereche"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:191
+#, fuzzy
+#| msgid "%c%s requires a name"
+msgid "@set requires a name"
+msgstr "%c%s necesitã un nume"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:194
+msgid "bad name for @set"
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:218
+#, fuzzy
+#| msgid "%c%s requires a name"
+msgid "@clear requires a name"
+msgstr "%c%s necesitã un nume"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:221
+msgid "bad name for @clear"
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:240
+#, fuzzy
+#| msgid "%c%s requires a name"
+msgid "@unmacro requires a name"
+msgstr "%c%s necesitã un nume"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:243
+msgid "bad name for @unmacro"
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:262
+#, fuzzy, c-format
+#| msgid "Use braces to give a command as an argument to @%s"
+msgid "@clickstyle should only accept an @-command as argument, not `%s'"
+msgstr "Folosiþi paranteze pentru a da o comandã ca argument lui @%s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:355
+#, fuzzy, c-format
+#| msgid "Use braces to give a command as an argument to @%s"
+msgid "environment command %s as argument to @alias"
+msgstr "Folosiþi paranteze pentru a da o comandã ca argument lui @%s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:373
+#, fuzzy
+#| msgid "Bad argument to @%s"
+msgid "bad argument to @alias"
+msgstr "Argument nepotrivit pentru @%s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:424
+#, fuzzy
+#| msgid "Bad argument to @%s"
+msgid "bad argument to @definfoenclose"
+msgstr "Argument nepotrivit pentru @%s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:436
+msgid "empty @columnfractions"
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:594
+#, fuzzy, c-format
+#| msgid "Bad argument to @%s"
+msgid "bad argument to @printindex: %s"
+msgstr "Argument nepotrivit pentru @%s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:646
+#, c-format
+msgid "Only @fonttextsize 10 or 11 is supported, not `%s'"
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:657
+#, fuzzy, c-format
+#| msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+msgid "@footnotestyle arg must be `separate' or `end', not `%s'"
+msgstr ""
+"%s: --footnote-style arg trebuie sã fie `separate' sau `end', nu `%s'.\n"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:669
+#, c-format
+msgid "@setchapternewpage arg must be `on', `off' or `odd', not `%s'"
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:680
+#, fuzzy, c-format
+#| msgid "Bad argument to @%s"
+msgid "bad argument to @need: %s"
+msgstr "Argument nepotrivit pentru @%s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:701
+#, fuzzy, c-format
+#| msgid ""
+#| "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
+msgid "@firstparagraph arg must be `none' or `insert', not `%s'"
+msgstr ""
+"%s: --paragraph-indent arg trebuie sã fie numeric/`none'/`asis', nu `%s'.\n"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:783
+#, fuzzy, c-format
+#| msgid "Bad argument to @%s"
+msgid "bad argument to @headings: %s"
+msgstr "Argument nepotrivit pentru @%s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1158
+#, fuzzy, c-format
+#| msgid "%s requires an argument: the formatter for %citem"
+msgid "%s requires an argument: the formatter for @item"
+msgstr "%s necesitã un argument: formatatorul pentru %citem"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1379
+#, fuzzy
+#| msgid "Unmatched `%c%s'"
+msgid "unmatched `@end'"
+msgstr "`%c%s' fãrã pereche"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1399
+#: tp/Texinfo/XS/parsetexi/parser.c:1109
+#, c-format
+msgid "superfluous argument to @end %s: %s"
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1409
+#, fuzzy, c-format
+#| msgid "Bad argument to @%s"
+msgid "bad argument to @end: %s"
+msgstr "Argument nepotrivit pentru @%s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1426
+#, c-format
+msgid "@include: could not find %s"
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1434
+#, fuzzy, c-format
+#| msgid "%s: could not open --css-file: %s"
+msgid "@include: could not open %s:"
+msgstr "%s: nu am putut deschide --css-file: %s"
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1815
+msgid "@setfilename after the first element"
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1825
+msgid "@columnfractions only meaningful on a @multitable line"
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/end_line.c:1892
+msgid "@node precedes @part, but parts may not be associated with nodes"
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:154
+#, fuzzy, c-format
+#| msgid "@%s not meaningful inside `@%s' block"
+msgid "@%s not meaningful inside @%s block"
+msgstr "@%s nu are sens în interiorul blocului `@%s'"
+
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:363
+#, fuzzy, c-format
+#| msgid "@%s not meaningful inside `@%s' block"
+msgid "@%s not allowed inside `@copying' block"
+msgstr "@%s nu are sens în interiorul blocului `@%s'"
+
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:565
+msgid "@subentry should only occur in an index entry"
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:690
+#, fuzzy
+#| msgid ""
+#| "@%s not meaningful outside `@titlepage' and `@quotation' environments"
+msgid ""
+"@author not meaningful outside `@titlepage' and `@quotation' environments"
+msgstr "@%s nu are sens în exteriorul mediilor `@titlepage' ºi `@quotation'"
+
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:804
+#: tp/Texinfo/XS/parsetexi/macro.c:107
+#, fuzzy, c-format
+#| msgid "%c%s requires a name"
+msgid "@%s requires a name"
+msgstr "%c%s necesitã un nume"
+
+#: tp/Texinfo/XS/parsetexi/macro.c:159
+#, c-format
+msgid "bad or empty @%s formal argument: "
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/parser.c:1436
+#, fuzzy, c-format
+#| msgid "%c%s expects `i' or `j' as argument, not `%c'"
+msgid "@dotless expects `i' or `j' as argument, not `%c'"
+msgstr "%c%s aºteaptã `i' sau `j' ca argument, nu `%c'"
+
+#: tp/Texinfo/XS/parsetexi/parser.c:1523
+#, fuzzy, c-format
+#| msgid "undefined flag: %s"
+msgid "undefined flag: %.*s"
+msgstr "marcaj nedefinit: %s"
+
+#: tp/Texinfo/XS/parsetexi/parser.c:1578
+#, fuzzy, c-format
+#| msgid "%c%s is obsolete"
+msgid "@%s is obsolete."
+msgstr "%c%s este depãsit"
+
+#: tp/Texinfo/XS/parsetexi/parser.c:1580
+#, fuzzy, c-format
+#| msgid "%c%s is obsolete"
+msgid "@%s is obsolete; %s"
+msgstr "%c%s este depãsit"
+
+#: tp/Texinfo/XS/parsetexi/parser.c:1705
+msgid "@\\ should only appear in math context"
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/separator.c:53
+msgid "@verb without associated character"
+msgstr ""
+
+#: tp/Texinfo/XS/parsetexi/separator.c:396
+#, fuzzy, c-format
+#| msgid "%c%s expects `i' or `j' as argument, not `%c'"
+msgid "@dotless expects `i' or `j' as argument, not `%s'"
+msgstr "%c%s aºteaptã `i' sau `j' ca argument, nu `%c'"
+
+#: tp/Texinfo/XS/parsetexi/separator.c:545
+#, fuzzy
+#| msgid "Misplaced %c"
+msgid "misplaced }"
+msgstr "%c nelalocul lui"
 
 #~ msgid "Insert this character"
 #~ msgstr "Insereazã acest caracter"
@@ -3528,6 +4112,7 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "CAN'T SEE THIS"
 #~ msgstr "NU POT VEDEA ACEASTA"
 
+#, c-format
 #~ msgid ""
 #~ "\n"
 #~ "* Menu: Nodes whose indices contain `%s':\n"
@@ -3535,6 +4120,7 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ "\n"
 #~ "* Meniu: Noduri a cãror indexurile conþin `%s':\n"
 
+#, c-format
 #~ msgid ""
 #~ "There is NO warranty.  You may redistribute this software\n"
 #~ "under the terms of the GNU General Public License.\n"
@@ -3544,6 +4130,7 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ "termenilor Licenþei Publice Generale GNU (GNU GPL). Pentru informaþii\n"
 #~ "suplimentare despre aceste chestiuni, vedeþi fiºierul numit COPYING.\n"
 
+#, c-format
 #~ msgid ""
 #~ "Usage: %s [OPTION]... [MENU-ITEM...]\n"
 #~ "\n"
@@ -3719,21 +4306,27 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ "\\%-10[search-backward]  Cautã înapoi un ºir specificat\n"
 #~ "              ºi selecteazã nodul în care acesta este gãsit.\n"
 
+#, c-format
 #~ msgid "  %-10s  Quit this help.\n"
 #~ msgstr "  %-10s  Terminã acest ajutor.\n"
 
+#, c-format
 #~ msgid "  %-10s  Quit Info altogether.\n"
 #~ msgstr "  %-10s  Terminã Info complet.\n"
 
+#, c-format
 #~ msgid "  %-10s  Invoke the Info tutorial.\n"
 #~ msgstr "  %-10s  Invocã tuturialul Info.\n"
 
+#, c-format
 #~ msgid "  %-10s  Move to the `next' node of this node.\n"
 #~ msgstr "  %-10s  Mergi la nodul `urmãtor' acestui nod.\n"
 
+#, c-format
 #~ msgid "  %-10s  Move to the `previous' node of this node.\n"
 #~ msgstr "  %-10s  Mergi la nodul `precedent' acestui nod.\n"
 
+#, c-format
 #~ msgid "  %-10s  Move `up' from this node.\n"
 #~ msgstr "  %-10s  Mergi în `sus' de la acest nod.\n"
 
@@ -3743,46 +4336,60 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ "              Alegând un articol de meniu face ca alt nod sã fie "
 #~ "selectat.\n"
 
+#, c-format
 #~ msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
 #~ msgstr ""
 #~ "  %-10s  Urmeazã referinþã la acelaºi pasaj. Citeºte numele referinþei.\n"
 
+#, c-format
 #~ msgid "  %-10s  Move to the last node seen in this window.\n"
 #~ msgstr "  %-10s  Mergi la ultimul nod vãzut în aceastã fereastrã.\n"
 
+#, c-format
 #~ msgid "  %-10s  Skip to next hypertext link within this node.\n"
 #~ msgstr "  %-10s  Sari la urmãtoarea legãturã hypertext din acest nod.\n"
 
+#, c-format
 #~ msgid "  %-10s  Follow the hypertext link under cursor.\n"
 #~ msgstr "  %-10s  Sari la legãtura hypertext de sub cursor.\n"
 
+#, c-format
 #~ msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
 #~ msgstr "  %-10s  Mergi la nodul `director'.  Echivalent cu `g (DIR)'.\n"
 
+#, c-format
 #~ msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
 #~ msgstr "  %-10s  Mergi la nodul Vârf.  Echivalent cu `g Top'.\n"
 
+#, c-format
 #~ msgid "  %-10s  Scroll forward a page.\n"
 #~ msgstr "  %-10s  Scroll înainte o paginã.\n"
 
+#, c-format
 #~ msgid "  %-10s  Scroll backward a page.\n"
 #~ msgstr "  %-10s  Scroll înapoi o paginã.\n"
 
+#, c-format
 #~ msgid "  %-10s  Go to the beginning of this node.\n"
 #~ msgstr "  %-10s  Mergi la începutul acestui nod.\n"
 
+#, c-format
 #~ msgid "  %-10s  Go to the end of this node.\n"
 #~ msgstr "  %-10s  Mergi la sfârºitul acestui nod.\n"
 
+#, c-format
 #~ msgid "  %-10s  Scroll forward 1 line.\n"
 #~ msgstr "  %-10s  Scroll înainte 1 linie.\n"
 
+#, c-format
 #~ msgid "  %-10s  Scroll backward 1 line.\n"
 #~ msgstr "  %-10s  Scroll înapoi 1 linie.\n"
 
+#, c-format
 #~ msgid "  %-10s  Pick last item in node's menu.\n"
 #~ msgstr "  %-10s  Alege ultimul articol în meniul nodului.\n"
 
+#, c-format
 #~ msgid ""
 #~ "  %-10s  Search for a specified string in the index entries of this Info\n"
 #~ msgstr ""
@@ -3806,6 +4413,7 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ "              and select the node in which the next occurrence is found.\n"
 #~ msgstr "              ºi selecteazã nodul în care acesta este gãsit.\n"
 
+#, c-format
 #~ msgid "  %-10s  Search backward for a specified string\n"
 #~ msgstr "  %-10s  Cautã înapoi un ºir specificat\n"
 
@@ -3813,12 +4421,15 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgstr ""
 #~ "--- Folosiþi `\\[history-node]' sau `\\[kill-node]' pentru a termina ---\n"
 
+#, c-format
 #~ msgid "ESC %s is undefined."
 #~ msgstr "ESC %s nu este definit(ã)."
 
+#, c-format
 #~ msgid "%s is defined to %s."
 #~ msgstr "%s este definit(ã) ca %s."
 
+#, c-format
 #~ msgid ""
 #~ "Copyright (C) %s Free Software Foundation, Inc.\n"
 #~ "There is NO warranty.  You may redistribute this software\n"
@@ -3833,12 +4444,14 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "incorrect number of arguments"
 #~ msgstr "numãr incorect de argumente"
 
+#, c-format
 #~ msgid "cannot create output file `%s'"
 #~ msgstr "nu pot crea fiºierul de ieºire `%s'"
 
 #~ msgid "section too long"
 #~ msgstr "secþiune prea lungã"
 
+#, c-format
 #~ msgid ""
 #~ "Usage: %s [OPTION]... [INPUT-FILE]\n"
 #~ "\n"
@@ -3863,32 +4476,39 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ "  --help\t\tafiºeazã acest ajutor ºi terminã.\n"
 #~ "  --version\t\tafiºeazã informaþii versiune ºi terminã.\n"
 
+#, c-format
 #~ msgid "Ignoring invalid infokey file `%s' - too small"
 #~ msgstr "Ignorãm fiºier infokey incorect `%s' - prea mic"
 
+#, c-format
 #~ msgid "Ignoring invalid infokey file `%s' - too big"
 #~ msgstr "Ignorãm fiºier infokey incorect `%s' - prea mare"
 
+#, c-format
 #~ msgid "Error reading infokey file `%s' - short read"
 #~ msgstr "Eroare la citirea fiºierului infokey `%s' - citit scurt"
 
+#, c-format
 #~ msgid ""
 #~ "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
 #~ msgstr ""
 #~ "Fiºier infokey incorect `%s' (bad magic numbers) -- rulaþi infokey pentru "
 #~ "a-l actualiza"
 
+#, c-format
 #~ msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 #~ msgstr ""
 #~ "Fiºierul d-voastrã infokey `%s' este vechi - rulaþi infokey pentru a-l "
 #~ "actualiza"
 
+#, c-format
 #~ msgid ""
 #~ "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
 #~ msgstr ""
 #~ "Fiºier infokey incorect `%s' (bad section length) -- rulaþi infokey "
 #~ "pentru a-l actualiza"
 
+#, c-format
 #~ msgid ""
 #~ "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
 #~ msgstr ""
@@ -3903,6 +4523,7 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgstr ""
 #~ "Date incorecte în fiºierul infokey -- unele setãri de variabile ignorate"
 
+#, c-format
 #~ msgid "Undefined command: %s"
 #~ msgstr "Comandã nedefinitã: %s"
 
@@ -3918,6 +4539,7 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "Selecting Next node..."
 #~ msgstr "Selectare nod Urmãtor..."
 
+#, c-format
 #~ msgid "Moving Up %d time(s), then Next."
 #~ msgstr "Merg în Sus %d ori, apoi Urmãtor."
 
@@ -3933,9 +4555,11 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "Moving to `Prev's last menu item."
 #~ msgstr "Merg la ultimul articol din meniul `Prec'"
 
+#, c-format
 #~ msgid "Kill node (%s): "
 #~ msgstr "Distruge nodul (%s): "
 
+#, c-format
 #~ msgid "Cannot kill node `%s'"
 #~ msgstr "Nu pot distruge nodul `%s'"
 
@@ -3954,27 +4578,34 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "Internally used by \\[universal-argument]"
 #~ msgstr "Folosit intern de \\[argument-universal]"
 
+#, c-format
 #~ msgid "readline: Out of virtual memory!\n"
 #~ msgstr "readline: Nu mai am memorie virtualã!\n"
 
 #~ msgid "--*** Tags out of Date ***"
 #~ msgstr "--*** Tag-uri Vechi ***"
 
+#, c-format
 #~ msgid "-%s---Info: %s, %d lines --%s--"
 #~ msgstr "-%s---Info: %s, %d linii --%s--"
 
+#, c-format
 #~ msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
 #~ msgstr "-%s%s-Info: (%s)%s, %d linii --%s--"
 
+#, c-format
 #~ msgid " Subfile: %s"
 #~ msgstr " Subfiºier: %s"
 
+#, c-format
 #~ msgid "%s: illegal option -- %c\n"
 #~ msgstr "%s: opþiune ilegalã -- %c\n"
 
+#, c-format
 #~ msgid "%s: option `-W %s' is ambiguous\n"
 #~ msgstr "%s: opþiunea `-W %s' este ambiguã\n"
 
+#, c-format
 #~ msgid "%s: option `-W %s' doesn't allow an argument\n"
 #~ msgstr "%s: opþiunea `-W %s' nu permite un argument\n"
 
@@ -4017,18 +4648,22 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "@sc argument all uppercase, thus no effect"
 #~ msgstr "argumentul @sc în litere mari, prin urmare fãrã efect"
 
+#, c-format
 #~ msgid "`{' expected, but saw `%c'"
 #~ msgstr "`{' aºteptat, dar am vãzut `%c'"
 
 #~ msgid "end of file inside verb block"
 #~ msgstr "sfârºit de fiºier în interiorul blocului de verb"
 
+#, c-format
 #~ msgid "`}' expected, but saw `%c'"
 #~ msgstr "`}' aºteptat, dar am vãzut `%c'"
 
+#, c-format
 #~ msgid "@sp requires a positive numeric argument, not `%s'"
 #~ msgstr "@sp necesitã un argument numeric pozitiv, nu `%s'"
 
+#, c-format
 #~ msgid "Bad argument to %c%s"
 #~ msgstr "Argument nepotrivit pentru %c%s"
 
@@ -4071,21 +4706,26 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "on"
 #~ msgstr "pe"
 
+#, c-format
 #~ msgid "%s: getwd: %s, %s\n"
 #~ msgstr "%s: getwd: %s, %s\n"
 
+#, c-format
 #~ msgid "`%s' omitted before output filename"
 #~ msgstr "`%s' omis înainte de numele fiºierului de ieºire"
 
+#, c-format
 #~ msgid "`%s' omitted since writing to stdout"
 #~ msgstr "`%s' omis întrucât scriu la ieºirea standard (stdout)"
 
 #~ msgid "Output buffer not empty."
 #~ msgstr "Buffer-ul de ieºire nu este gol."
 
+#, c-format
 #~ msgid "`%c%s' needs an argument `{...}', not just `%s'"
 #~ msgstr "`%c%s' necesitã un argument `{...}', nu numai `%s'"
 
+#, c-format
 #~ msgid "No closing brace for footnote `%s'"
 #~ msgstr "Nici o parantezã de închidere pentru nota de subsol `%s'"
 
@@ -4101,21 +4741,26 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "[unexpected] no html tag to pop"
 #~ msgstr "[neaºteptat] nici un tag html de ridicat"
 
+#, c-format
 #~ msgid "[unexpected] invalid node name: `%s'"
 #~ msgstr "[neaºteptat] nume de nod invalid: `%s'"
 
+#, c-format
 #~ msgid "Info cannot handle `:' in index entry `%s'"
 #~ msgstr "Info nu poate folosi `:' în intrarea de index `%s'"
 
+#, c-format
 #~ msgid "Index `%s' already exists"
 #~ msgstr "Indez-ul `%s' existã deja"
 
+#, c-format
 #~ msgid "Unknown index `%s' and/or `%s' in @synindex"
 #~ msgstr "Index-ul necunoscut `%s' ºi/sau `%s' în @synindex"
 
 #~ msgid "(line )"
 #~ msgstr "(linie )"
 
+#, c-format
 #~ msgid "(line %*d)"
 #~ msgstr "(linia %*d)"
 
@@ -4131,12 +4776,15 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "Enumeration stack overflow"
 #~ msgstr "Stivã de enumerare inundatã (overflow)"
 
+#, c-format
 #~ msgid "lettering overflow, restarting at %c"
 #~ msgstr "inundate (overflow) la tipãrire, reîncep la %c"
 
+#, c-format
 #~ msgid "%cfloat environments cannot be nested"
 #~ msgstr "mediile %cfloat nu pot fi încuibãrite"
 
+#, c-format
 #~ msgid "%s requires letter or digit"
 #~ msgstr "%s necesitã litere sau cifre"
 
@@ -4146,36 +4794,46 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "@detailmenu seen before first node, creating `Top' node"
 #~ msgstr "@detailmenu vãzut înainte de primul nod, creez nodul `Vârf'"
 
+#, c-format
 #~ msgid "`%c%s' needs something after it"
 #~ msgstr "`%c%s' necesitã ceva dupã el"
 
+#, c-format
 #~ msgid "Bad argument `%s' to `@%s', using `%s'"
 #~ msgstr "Argument greºit `%s' pentru `@%s', folosesc `%s'"
 
+#, c-format
 #~ msgid "@itemx not meaningful inside `%s' block"
 #~ msgstr "@itemx nu are sens în interiorul blocului `%s'"
 
+#, c-format
 #~ msgid "%c%s found outside of an insertion block"
 #~ msgstr "%c%s gãsit în afara unui bloc de inserare"
 
+#, c-format
 #~ msgid "sorry, encoding `%s' not supported"
 #~ msgstr "ne pare rãu, codarea `%s' nu este suportatã"
 
+#, c-format
 #~ msgid "%c%s expects a single character `i' or `j' as argument"
 #~ msgstr "%c%s aºteaptã un singur caracter `i' sau `j' ca argument"
 
+#, c-format
 #~ msgid "%cend macro not found"
 #~ msgstr "%cend macro nu a fost gãsit"
 
 #~ msgid "@quote-arg only useful for single-argument macros"
 #~ msgstr "@quote-arg folositor numai pentru macro-uri cu un singur argument"
 
+#, c-format
 #~ msgid "mismatched @end %s with @%s"
 #~ msgstr "nepotrivire @end %s cu @%s"
 
+#, c-format
 #~ msgid "Too many errors!  Gave up.\n"
 #~ msgstr "Prea multe erori!  Am renunþat.\n"
 
+#, c-format
 #~ msgid "%s:%d: warning: "
 #~ msgstr "%s:%d: avertisment: "
 
@@ -4188,6 +4846,7 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ "      --css-include=FIªIER      include FIªIER în HTML <stil> ieºire;\n"
 #~ "                                  citeºte stdin dacã FIªIER este -.\n"
 
+#, c-format
 #~ msgid ""
 #~ "Options for XML and Docbook:\n"
 #~ "      --output-indent=VAL       indent XML elements by VAL spaces "
@@ -4201,23 +4860,29 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ "                                  dacã VAL e 0, spaþiile goale ce pot fi "
 #~ "ignorate nu sunt afiºate.\n"
 
+#, c-format
 #~ msgid "%s: could not open macro expansion output `%s'"
 #~ msgstr "%s: nu am putut deschide ieºirea expansiunii macro-ului `%s'"
 
+#, c-format
 #~ msgid "%s: ignoring second macro expansion output `%s'.\n"
 #~ msgstr "%s: nu am putut deschide ieºirea expansiunii macro-ului `%s'.\n"
 
+#, c-format
 #~ msgid "Multiline command %c%s used improperly"
 #~ msgstr "Comandã pe multiple linii %c%s folositã incorect"
 
+#, c-format
 #~ msgid "No `%s' found in `%s'"
 #~ msgstr "Nici un `%s' nu a fost gãsit în `%s'"
 
+#, c-format
 #~ msgid ""
 #~ "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 #~ msgstr ""
 #~ "%s: Omite expasiunea macro la ieºire întrucât ieºirea Info merge acolo.\n"
 
+#, c-format
 #~ msgid ""
 #~ "%s: Removing macro output file `%s' due to errors; use --force to "
 #~ "preserve.\n"
@@ -4225,6 +4890,7 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ "%s: ªterg fiºierul de ieºire macro `%s' din cauza erorilor; folosiþi --"
 #~ "force pentru a-l pãstra.\n"
 
+#, c-format
 #~ msgid ""
 #~ "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 #~ msgstr ""
@@ -4234,45 +4900,58 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "NO_NAME!"
 #~ msgstr "NICI_UN_NUME!"
 
+#, c-format
 #~ msgid "No such file `%s'"
 #~ msgstr "Nici un fiºier `%s'"
 
+#, c-format
 #~ msgid "@image file `%s' (for text) unreadable: %s"
 #~ msgstr "Fiºierul @image `%s' (pentru text) nu poate fi citit: %s"
 
+#, c-format
 #~ msgid "{No value for `%s'}"
 #~ msgstr "{Nici o valoare pentru `%s'}"
 
+#, c-format
 #~ msgid "Reached eof before matching @end %s"
 #~ msgstr "Am ajuns la eof înainte de a potrivi @end %s"
 
+#, c-format
 #~ msgid "`%.40s...' is too long for expansion; not expanded"
 #~ msgstr "`%.40s...' este prea lung pentru expansiune; nu a fost expandat"
 
 #~ msgid "Missing } in @multitable template"
 #~ msgstr "} lipsã în ºablonul @multitable"
 
+#, c-format
 #~ msgid "ignoring stray text `%s' after @multitable"
 #~ msgstr "ignor text aiurea `%s' dupã @multitable"
 
+#, c-format
 #~ msgid "[unexpected] cannot select column #%d in multitable"
 #~ msgstr "[neaºteptat] nu pot selecta coloana #%d în multitabel"
 
+#, c-format
 #~ msgid "** Multicolumn output from last row:\n"
 #~ msgstr "** Ieºirea multitabel din ultimul rând:\n"
 
+#, c-format
 #~ msgid "* column #%d: output = %s\n"
 #~ msgstr "* coloana #%d: ieºire = %s\n"
 
+#, c-format
 #~ msgid "Node `%s' previously defined at line %d"
 #~ msgstr "Nodul `%s' definit anterior la linia %d"
 
+#, c-format
 #~ msgid "Formatting node %s...\n"
 #~ msgstr "Formatez nodul %s...\n"
 
+#, c-format
 #~ msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
 #~ msgstr "Nodul `%s' cere o comandã de secþionare (ex., %c%s)"
 
+#, c-format
 #~ msgid "Anchor `%s' and node `%s' map to the same file name"
 #~ msgstr "Ancoraj `%s' ºi nodul `%s' aratã cãtre acelaºi nume de fiºier"
 
@@ -4283,6 +4962,7 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "Rename this anchor or use the `--no-split' option"
 #~ msgstr "Redenumeºte acest ancoraj sau foloseºte opþiunea `--no-split'"
 
+#, c-format
 #~ msgid "Unexpected string at end of split-HTML file `%s'"
 #~ msgstr "ªir neaºteptat la sfârºitul fiºierului HTML spart `%s'"
 
@@ -4295,6 +4975,7 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "Up:"
 #~ msgstr "Sus:"
 
+#, c-format
 #~ msgid "Anchors `%s' and `%s' map to the same file name"
 #~ msgstr "Ancoraj `%s' ºi `%s' aratã cãtre acelaºi nume de fiºier"
 
@@ -4307,54 +4988,68 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "Cross"
 #~ msgstr "Traverseazã"
 
+#, c-format
 #~ msgid ""
 #~ "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 #~ msgstr ""
 #~ "Urmãtorul câmp de nod `%s' nu este referit (probabil secþionare "
 #~ "incorectã?)"
 
+#, c-format
 #~ msgid "This node (%s) has the bad Prev"
 #~ msgstr "Acest nod (%s) are un Prec incorect"
 
 #~ msgid "Prev"
 #~ msgstr "Prec"
 
+#, c-format
 #~ msgid "Prev field of node `%s' not pointed to"
 #~ msgstr "Câmpul Prec al nodului `%s' nu este referit"
 
+#, c-format
 #~ msgid "This node (%s) has the bad Next"
 #~ msgstr "Acest nod (%s) are referinþa Urmãtor incorectã"
 
+#, c-format
 #~ msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 #~ msgstr "`%s' nu are nici un câmp Sus (probabil secþionare incorectã?)"
 
 #~ msgid "Up"
 #~ msgstr "Sus"
 
+#, c-format
 #~ msgid "node `%s' has been referenced %d times"
 #~ msgstr "nodul `%s' a fost referit de %d ori"
 
+#, c-format
 #~ msgid "Can't remove file `%s': %s"
 #~ msgstr "Nu pot ºterge fisierul `%s': %s"
 
+#, c-format
 #~ msgid "Appendix %c"
 #~ msgstr "Anexã %c"
 
+#, c-format
 #~ msgid "Internal error (search_sectioning) `%s'!"
 #~ msgstr "Eroare internã (search_sectioning) `%s'!"
 
+#, c-format
 #~ msgid "Internal error (search_sectioning) \"%s\"!"
 #~ msgstr "Eroare internã (search_sectioning) \"%s\"!"
 
+#, c-format
 #~ msgid "%c%s is obsolete; use %c%s instead"
 #~ msgstr "%c%s este depãºitã; foloseºte %c%s în schimb"
 
+#, c-format
 #~ msgid "Node with %ctop as a section already exists"
 #~ msgstr "Nodul cu %ctop ca ºi secþiune existã deja"
 
+#, c-format
 #~ msgid "Here is the %ctop node"
 #~ msgstr "Aici este nodul %ctop"
 
+#, c-format
 #~ msgid "%ctop used before %cnode, defaulting to %s"
 #~ msgstr "%ctop folosit înaintea lui %cnode, implicit cãtre %s"
 
@@ -4371,9 +5066,11 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ "@headitem ca ultimul articol din @multitable produce documenteDocbook "
 #~ "invalide"
 
+#, c-format
 #~ msgid "%s: warning: "
 #~ msgstr "%s: avertisment: "
 
+#, c-format
 #~ msgid ""
 #~ "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 #~ "\n"
@@ -4450,6 +5147,7 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ "                     determinate din informaþiile din fiºierul Info.\n"
 #~ " --version         afiºeazã informaþii depre versiune ºi terminã.\n"
 
+#, c-format
 #~ msgid "menu item `%s' already exists, for file `%s'"
 #~ msgstr "articol meniu `%s' existã deja, pentru fiºier `%s'"
 
@@ -4465,18 +5163,22 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ msgid "send output to FILE"
 #~ msgstr "trimite ieºire în FIªIER"
 
+#, c-format
 #~ msgid "Usage: %s [OPTION]... FILE...\n"
 #~ msgstr "Folosire: %s [OPÞIUNI]... FIªIER...\n"
 
+#, c-format
 #~ msgid "Generate a sorted index for each TeX output FILE.\n"
 #~ msgstr "Genereazã un index sortat pentru fiecare FIªIER de ieºire TeX.\n"
 
+#, c-format
 #~ msgid ""
 #~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
 #~ msgstr ""
 #~ "De obicei FIªIER... este specificat ca `foo.%c%c' pentru un document 'foo."
 #~ "texi'.\n"
 
+#, c-format
 #~ msgid ""
 #~ "\n"
 #~ "Options:\n"
@@ -4484,14 +5186,18 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 #~ "\n"
 #~ "Opþiuni:\n"
 
+#, c-format
 #~ msgid "%s: not a texinfo index file"
 #~ msgstr "%s: nu este un fiºier index texinfo"
 
+#, c-format
 #~ msgid "failure reopening %s"
 #~ msgstr "am eºuat sã redeschid %s"
 
+#, c-format
 #~ msgid "No page number in %s"
 #~ msgstr "Nici un numãr de paginã în %s"
 
+#, c-format
 #~ msgid "entry %s follows an entry with a secondary name"
 #~ msgstr "intrarea %s urmeazã o intrare cu nume secundar"

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,8 +22,8 @@ run_ginfo -f intera -n 'Incremental search case-insensitive'
 # Search for "match" with incremental search, adding an upper-case character
 # to make the search case-sensitive.  Delete it and check the search goes back
 # to being case insensitive by checking that a "Match" is included.
-printf '\023matchX\010' >$pty_type
-printf '\023\023\r\rDq' >$pty_type
+printf '\023matchX\010' >&7
+printf '\023\023\r\rDq' >&7
 
 timeout_test
 

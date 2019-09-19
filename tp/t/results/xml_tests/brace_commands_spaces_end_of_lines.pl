@@ -26,6 +26,9 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
+      'extra' => {
+        'input_perl_encoding' => 'utf-8'
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -63,6 +66,9 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
+      'extra' => {
+        'input_perl_encoding' => 'utf-8'
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 4,
@@ -110,6 +116,9 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
+      'extra' => {
+        'input_perl_encoding' => 'utf-8'
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 7,
@@ -157,6 +166,9 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
+      'extra' => {
+        'input_perl_encoding' => 'utf-8'
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 10,
@@ -204,6 +216,9 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
+      'extra' => {
+        'input_perl_encoding' => 'utf-8'
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 13,
@@ -251,6 +266,9 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
+      'extra' => {
+        'input_perl_encoding' => 'utf-8'
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 16,

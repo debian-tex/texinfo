@@ -38,10 +38,10 @@ copy-tex-html:
 		fi; \
 	done
 
-DISTCLEANFILES = *.log *.out
+DISTCLEANFILES = *.log
 
 distclean-local:
-	rm -rf diffs $(tex_html_dirs)
+	rm -rf diffs $(tex_html_dirs) raw_out
 
 dist-hook:
 	for dir in $(tex_html_dirs); do \

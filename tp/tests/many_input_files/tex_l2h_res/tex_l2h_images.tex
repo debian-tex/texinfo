@@ -7,10 +7,7 @@
 \usepackage{html}
 
 
-\usepackage[dvips]{color}
-
-
-\pagecolor[gray]{.7}
+\usepackage{xcolor}
 
 \usepackage[]{inputenc}
 
@@ -56,56 +53,40 @@
  \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
  \def\phantompar{\csname par\endcsname}\normalsize}%
 \def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
-\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
-\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
-\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
- \let\ifinner=\iffalse \let\)\liih@math }%
-\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
- \expandafter\box\next\egroup}%
-\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
-\newcommand\lthtmllogmath{\dimen0\ht\sizebox \advance\dimen0\dp\sizebox
-  \ifdim\dimen0>.95\vsize
-   \lthtmltypeout{%
-*** image for \lthtmlmathenv\space is too tall at \the\dimen0, reducing to .95 vsize ***}%
-   \ht\sizebox.95\vsize \dp\sizebox\z@ \fi
-  \lthtmltypeout{l2hSize %
-:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
-\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
-       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
-\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
-\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
-       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
-\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
-\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
-       \global\let\@freelist\@savefreelist}%
-\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
-\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
-\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
-  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
-\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
-\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
-\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
-  \vrule height1.5ex width0pt }%
-\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
-\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
-\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
-  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
-\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
-  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
-\newcommand\lthtmlindisplaymathZ{\egroup %
-  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
-\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
-  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
-  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
-\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
-  \kern.1em\kern0.75 pt\hbox{\hglue.17em\copy\sizebox\hglue0.75 pt}}\kern.3pt%
-  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.75 pt%
-  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
-\def\centerinlinemath{%
-  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
-  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
- \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
-
+\usepackage[tightpage,active]{preview}
+\newbox\lthtmlPageBox
+\newdimen\lthtmlCropMarkHeight
+\newdimen\lthtmlCropMarkDepth
+\long\def\lthtmlTightVBox#1#2{%
+    \setbox\lthtmlPageBox\vbox{\hbox{\catcode`\_=8 #2}}%
+    \lthtmlCropMarkHeight=\ht\lthtmlPageBox \advance \lthtmlCropMarkHeight 6pt
+    \lthtmlCropMarkDepth=\dp\lthtmlPageBox
+    \lthtmltypeout{^^J:#1:lthtmlCropMarkHeight:=\the\lthtmlCropMarkHeight}%
+    \lthtmltypeout{^^J:#1:lthtmlCropMarkDepth:=\the\lthtmlCropMarkDepth:1ex:=\the \dimexpr 1ex}%
+    \begin{preview}\copy\lthtmlPageBox\end{preview}}}%
+\long\def\lthtmlTightFBox#1#2{%
+    \adjustnormalsize\setbox\lthtmlPageBox=\vbox\bgroup %
+    \let\ifinner=\iffalse \let\)\liih@math %
+    {\catcode`\_=8 #2}%
+    \@next\next\@currlist{}{\def\next{\voidb@x}}%
+    \expandafter\box\next\egroup %
+    \lthtmlCropMarkHeight=\ht\lthtmlPageBox \advance \lthtmlCropMarkHeight 6pt
+    \lthtmlCropMarkDepth=\dp\lthtmlPageBox
+    \lthtmltypeout{^^J:#1:lthtmlCropMarkHeight:=\the\lthtmlCropMarkHeight}%
+    \lthtmltypeout{^^J:#1:lthtmlCropMarkDepth:=\the\lthtmlCropMarkDepth:1ex:=\the \dimexpr 1ex}%
+    \begin{preview}\copy\lthtmlPageBox\end{preview}}%
+    \long\def\lthtmlinlinemathA#1#2\lthtmlindisplaymathZ{\lthtmlTightVBox{#1}{#2}}
+    \def\lthtmlinlineA#1#2\lthtmlinlineZ{\lthtmlTightVBox{#1}{#2}}
+    \long\def\lthtmldisplayA#1#2\lthtmldisplayZ{\lthtmlTightVBox{#1}{#2}}
+    \long\def\lthtmlinlinemathA#1#2\lthtmlindisplaymathZ{\lthtmlTightVBox{#1}{#2}}
+    \def\lthtmlinlineA#1#2\lthtmlinlineZ{\lthtmlTightVBox{#1}{#2}}
+    \long\def\lthtmldisplayA#1#2\lthtmldisplayZ{\lthtmlTightVBox{#1}{#2}}
+    \long\def\lthtmldisplayB#1#2\lthtmldisplayZ{\\edef\preveqno{(\theequation)}%
+        \lthtmlTightVBox{#1}{\let\@eqnnum\relax#2}}
+    \long\def\lthtmlfigureA#1#2\lthtmlfigureZ{\let\@savefreelist\@freelist
+        \lthtmlTightFBox{#1}{#2}\global\let\@freelist\@savefreelist}
+    \long\def\lthtmlpictureA#1#2\lthtmlpictureZ{\let\@savefreelist\@freelist
+        \lthtmlTightVBox{#1}{#2}\global\let\@freelist\@savefreelist}
 \def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
   \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
   \else\expandafter\vss\fi}%
@@ -146,25 +127,25 @@
 {\newpage\clearpage
 \lthtmlinlinemathA{tex2html_wrap_inline17}%
 ${x^i}\over{\tan y}$%
-\lthtmlinlinemathZ
+\lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
 \lthtmlinlinemathA{tex2html_wrap_inline19}%
 $a @\ b$%
-\lthtmlinlinemathZ
+\lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
 \lthtmlinlinemathA{tex2html_wrap_inline21}%
 $@code{math code} a < b$%
-\lthtmlinlinemathZ
+\lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
 \lthtmlinlinemathA{tex2html_wrap_inline23}%
-$ \underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}$%
-\lthtmlinlinemathZ
+$\underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}$%
+\lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 

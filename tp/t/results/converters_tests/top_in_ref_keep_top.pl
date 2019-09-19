@@ -4201,20 +4201,8 @@ $result_nodes{'top_in_ref_keep_top'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'top_in_ref_keep_top'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'top_in_ref_keep_top'};
 
 $result_menus{'top_in_ref_keep_top'} = {
   'cmdname' => 'node',

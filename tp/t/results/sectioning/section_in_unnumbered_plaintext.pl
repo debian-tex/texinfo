@@ -7371,18 +7371,7 @@ $result_nodes{'section_in_unnumbered_plaintext'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'section_in_unnumbered_plaintext'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'section_in_unnumbered_plaintext'}{'menu_child'};
 $result_nodes{'section_in_unnumbered_plaintext'}{'menu_child'}{'node_next'}{'menu_child'}{'node_up'} = $result_nodes{'section_in_unnumbered_plaintext'}{'menu_child'}{'node_next'};
@@ -7435,7 +7424,6 @@ $result_nodes{'section_in_unnumbered_plaintext'}{'menu_child'}{'node_next'}{'nod
 $result_nodes{'section_in_unnumbered_plaintext'}{'menu_child'}{'node_prev'} = $result_nodes{'section_in_unnumbered_plaintext'};
 $result_nodes{'section_in_unnumbered_plaintext'}{'menu_child'}{'node_up'} = $result_nodes{'section_in_unnumbered_plaintext'};
 $result_nodes{'section_in_unnumbered_plaintext'}{'node_next'} = $result_nodes{'section_in_unnumbered_plaintext'}{'menu_child'};
-$result_nodes{'section_in_unnumbered_plaintext'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'section_in_unnumbered_plaintext'};
 
 $result_menus{'section_in_unnumbered_plaintext'} = {
   'cmdname' => 'node',
@@ -8029,7 +8017,7 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <span id="Test-section-in-unnumbered"></span><h1 class="top">Test section in unnumbered</h1>
 
@@ -8428,7 +8416,7 @@ Previous: <a href="#unnumbered-sub2-4" accesskey="p" rel="prev">unnumbered sub2 
 
 
 $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
-<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter</nodenext></node>
 <top spaces=" "><sectiontitle>Test section in unnumbered</sectiontitle>
 
 <contents></contents>

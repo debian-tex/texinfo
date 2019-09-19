@@ -44,7 +44,7 @@ results are in res_parser directories.  There can be these pairs.
 and diffs are put in the diffs/ subdir.
 
 For example, to investigate a failure in the 
-test_scripts/layout_formaatting_docbook.sh test, compare the contents of the
+test_scripts/layout_formatting_docbook.sh test, compare the contents of the
 files in the layout_res_parser/formatting_docbook and 
 layout_out_parser/formatting_docbook directories, e.g.
 
@@ -84,11 +84,9 @@ Regenerating test results
 To update the test results, first the tests must be run as above.
 
 Giving -copy as the first argument to ../run_parser_all.sh or
-parser_tests.sh (tex_html_tests.sh, which needs TEX_HTML_TESTS or ALL_TESTS
-to be set to "yes", but otherwise operates similarly) will cause the 
-reference results to be copied from the results the last time the tests 
-were run.  For example, to update the reference results for one 
-particular test:
+parser_tests.sh will cause the reference results to be copied
+from the results the last time the tests were run.  For example,
+to update the reference results for one particular test:
 
 $ ./parser_tests.sh -copy formatting
 The copy-* make targets update all the references for various large sets
@@ -189,13 +187,13 @@ Deleting a test
 Run "make" to recreate the test scripts (which runs
 ../maintain/regenerate_cmd_tests.sh).
 
-svn status test_scripts/
+git status test_scripts/
 
-Then "svn rm" the missing files.
+Then "git rm" the missing files.
 
 Delete directories containing reference test results, e.g.
 
 ls -d formatting/*/unknown_nodes_renamed
 rm -r formatting/out_parser/unknown_nodes_renamed
-svn rm formatting/res_parser/unknown_nodes_renamed
+git rm formatting/res_parser/unknown_nodes_renamed
 

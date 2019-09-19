@@ -105,6 +105,7 @@ $result_trees{'encoding_index_utf8'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -3410,6 +3411,7 @@ $result_sectioning{'encoding_index_utf8'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -3433,26 +3435,16 @@ $result_nodes{'encoding_index_utf8'} = {
       },
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'encoding_index_utf8'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'encoding_index_utf8'};
 
 $result_menus{'encoding_index_utf8'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

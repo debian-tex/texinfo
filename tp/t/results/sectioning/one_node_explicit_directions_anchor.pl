@@ -299,6 +299,11 @@ Node: one node27
 Ref: ref89
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'one_node_explicit_directions_anchor'} = [

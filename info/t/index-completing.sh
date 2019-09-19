@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014-2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ srcdir=${srcdir:-.}
 
 run_ginfo -f index-search
 # Check that pressing tab to complete works for index search
-printf 'i\t\rDq' >$pty_type
+printf 'i\t\rDq' >&7
 timeout_test
 
 grep '^Node: Node 2' $ginfo_output

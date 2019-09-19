@@ -9,6 +9,43 @@ See the manual for detailed information.
 
 ------------------------------------------------------------------------------
 
+* Language:
+  . support of index subentries and sub-subentries with @subentry
+  . new commands @seeentry and @seealso in index entries
+  . no need to wrap Top node in @ifnottex - omitted automatically when
+    processed with TeX
+  . UTF-8 is the default input encoding
+
+* texi2any
+  . for HTML output, mark index nodes in menus and tables of contents
+    with the 'rel' attribute of the 'a' tag.
+  . TOP_NODE_UP is now only used in HTML if TOP_NODE_UP_URL is set.
+    Also TOP_NODE_UP should now be formatted in the output format.
+    In HTML TOP_NODE_UP should be suitable for inclusion in HTML 
+    element attributes, so for instance should not contain elements.
+  . support of noderename.cnf files has been removed
+  . INPUT_PERL_ENCODING, INPUT_ENCODING_NAME, NODE_FILE_EXTENSION,
+    NODE_FILENAMES, SHORTEXTN and TOP_NODE_FILE removed as customization
+    variables.
+  . TOP_NODE_FILE_TARGET now contains the extension.
+  . error messages translated when the XS parser module is in use
+
+* texi2dvi
+  . unconditionally run in --batch mode, i.e. without stopping if there
+    is a TeX error
+  . keep on going after a TeX error if the index files changed
+  . with --tidy (or --build-dir), avoid reading index files from previous
+    runs where --tidy was not used
+
+* info
+  . for a tree search (with M-/), '}' and '{' work as well as 'M-}' and
+    'M-{' to go through the results
+
+* Distribution:
+  . Several obsolete portability checks removed
+  . gettext 0.20.1, automake 1.16.1
+
+
 6.6 (16 February 2019)
 * Language:
   . new commands @&, @ampchar{}

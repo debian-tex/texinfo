@@ -780,18 +780,7 @@ $result_nodes{'two_nodes_at_the_end'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'two_nodes_at_the_end'}{'menu_child'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'two_nodes_at_the_end'}{'menu_child'}{'node_next'};
 $result_nodes{'two_nodes_at_the_end'}{'menu_child'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'two_nodes_at_the_end'};
@@ -800,7 +789,6 @@ $result_nodes{'two_nodes_at_the_end'}{'menu_child'}{'node_next'}{'node_up'} = $r
 $result_nodes{'two_nodes_at_the_end'}{'menu_child'}{'node_prev'} = $result_nodes{'two_nodes_at_the_end'};
 $result_nodes{'two_nodes_at_the_end'}{'menu_child'}{'node_up'} = $result_nodes{'two_nodes_at_the_end'};
 $result_nodes{'two_nodes_at_the_end'}{'node_next'} = $result_nodes{'two_nodes_at_the_end'}{'menu_child'};
-$result_nodes{'two_nodes_at_the_end'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'two_nodes_at_the_end'};
 
 $result_menus{'two_nodes_at_the_end'} = {
   'cmdname' => 'node',
@@ -927,17 +915,6 @@ $result_elements{'two_nodes_at_the_end'} = [
         'Forward' => {},
         'NodeForward' => {},
         'NodeNext' => {},
-        'NodeUp' => {
-          'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'dir'
-              }
-            ],
-            'top_node_up' => {}
-          },
-          'type' => 'external_node'
-        },
         'This' => {}
       },
       'element_command' => {
@@ -972,7 +949,6 @@ $result_elements{'two_nodes_at_the_end'}[0]{'extra'}{'directions'}{'FastForward'
 $result_elements{'two_nodes_at_the_end'}[0]{'extra'}{'directions'}{'Forward'} = $result_elements{'two_nodes_at_the_end'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'two_nodes_at_the_end'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'two_nodes_at_the_end'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'two_nodes_at_the_end'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'two_nodes_at_the_end'}[0]{'extra'}{'directions'}{'FastForward'};
-$result_elements{'two_nodes_at_the_end'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'two_nodes_at_the_end'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_next'}{'menu_next'}{'menu_up'};
 $result_elements{'two_nodes_at_the_end'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'two_nodes_at_the_end'}[0];
 $result_elements{'two_nodes_at_the_end'}[0]{'extra'}{'node'} = $result_elements{'two_nodes_at_the_end'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_next'}{'menu_next'}{'menu_up'};
 $result_elements{'two_nodes_at_the_end'}[0]{'extra'}{'section'} = $result_elements{'two_nodes_at_the_end'}[0]{'extra'}{'element_command'};
@@ -985,7 +961,6 @@ $result_directions_text{'two_nodes_at_the_end'} = 'element: @top top
   Forward: @chapter chapter c1
   NodeForward: @chapter chapter c1
   NodeNext: @chapter chapter c1
-  NodeUp: (dir)
   This: @top top
 element: @chapter chapter c1
   Back: @top top
@@ -1046,7 +1021,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter-1" accesskey="n" rel="next">chapter 1</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#chapter-1" accesskey="n" rel="next">chapter 1</a> &nbsp; </p>
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 

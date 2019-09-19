@@ -940,6 +940,7 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -1163,26 +1164,16 @@ $result_sectioning{'multitable_anchor_and_index_entry'} = {};
 $result_nodes{'multitable_anchor_and_index_entry'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'multitable_anchor_and_index_entry'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'multitable_anchor_and_index_entry'};
 
 $result_menus{'multitable_anchor_and_index_entry'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -1235,6 +1226,11 @@ Ref: anchor in multitable269
 Ref: mark388
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

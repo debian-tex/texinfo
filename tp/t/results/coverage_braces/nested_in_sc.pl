@@ -297,7 +297,7 @@ $result_converted{'docbook'}->{'nested_in_sc'} = '<para>AAA &#209; &#197; &tex; 
 </para>';
 
 
-$result_converted{'plaintext'}->{'nested_in_sc'} = 'AAA N~ AA TeX AA~ (1), ABR (EXPL), in verb
+$result_converted{'plaintext'}->{'nested_in_sc'} = 'AAA Ñ Å TeX Å̃ (1), ABR (EXPL), in verb
 
    ---------- Footnotes ----------
 
@@ -312,7 +312,7 @@ $result_converted{'html_text'}->{'nested_in_sc'} = '<p><small><small>AAA &Ntilde
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>In footnote</p>
 </div>
 ';

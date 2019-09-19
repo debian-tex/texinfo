@@ -145,8 +145,7 @@ $result_trees{'value_in_node'} = {
           {
             'manual_content' => [
               {}
-            ],
-            'top_node_up' => {}
+            ]
           }
         ],
         'normalized' => 'Top',
@@ -743,7 +742,6 @@ $result_trees{'value_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node
 $result_trees{'value_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[1]{'manual_content'}[0] = $result_trees{'value_in_node'}{'contents'}[1]{'args'}[1]{'contents'}[1];
 $result_trees{'value_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[2]{'manual_content'}[0] = $result_trees{'value_in_node'}{'contents'}[1]{'args'}[2]{'contents'}[1];
 $result_trees{'value_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'value_in_node'}{'contents'}[1]{'args'}[3]{'contents'}[1];
-$result_trees{'value_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'top_node_up'} = $result_trees{'value_in_node'}{'contents'}[1];
 $result_trees{'value_in_node'}{'contents'}[1]{'parent'} = $result_trees{'value_in_node'};
 $result_trees{'value_in_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_node'}{'contents'}[2]{'args'}[0];
 $result_trees{'value_in_node'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'value_in_node'}{'contents'}[2];
@@ -1006,8 +1004,7 @@ $result_nodes{'value_in_node'} = {
         {
           'text' => 'dir'
         }
-      ],
-      'top_node_up' => {}
+      ]
     }
   }
 };
@@ -1015,7 +1012,6 @@ $result_nodes{'value_in_node'}{'menu_child'}{'menu_child'}{'node_prev'} = $resul
 $result_nodes{'value_in_node'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'value_in_node'}{'menu_child'};
 $result_nodes{'value_in_node'}{'menu_child'}{'node_prev'} = $result_nodes{'value_in_node'};
 $result_nodes{'value_in_node'}{'menu_child'}{'node_up'} = $result_nodes{'value_in_node'};
-$result_nodes{'value_in_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'value_in_node'};
 
 $result_menus{'value_in_node'} = {
   'cmdname' => 'node',

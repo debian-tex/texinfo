@@ -480,7 +480,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => '../manual/doc.texi'
+                      'text' => '../manual/doc'
                     }
                   ],
                   'extra' => {
@@ -1611,7 +1611,7 @@ $result_texis{'character_and_spaces_in_refs'} = '@node Top
 @ref{:,,,manual}
 @ref{ top ,,, manual}
 @ref{(texinfo)Cross References}
-@ref{node,,, ../manual/doc.texi}
+@ref{node,,, ../manual/doc}
 
 @subheading Testing local nodes
 
@@ -1806,18 +1806,7 @@ $result_nodes{'character_and_spaces_in_refs'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'character_and_spaces_in_refs'}{'menu_child'}{'menu_child'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'character_and_spaces_in_refs'}{'menu_child'}{'menu_child'}{'node_next'};
 $result_nodes{'character_and_spaces_in_refs'}{'menu_child'}{'menu_child'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'character_and_spaces_in_refs'}{'menu_child'};
@@ -1829,7 +1818,6 @@ $result_nodes{'character_and_spaces_in_refs'}{'menu_child'}{'node_next'} = $resu
 $result_nodes{'character_and_spaces_in_refs'}{'menu_child'}{'node_prev'} = $result_nodes{'character_and_spaces_in_refs'};
 $result_nodes{'character_and_spaces_in_refs'}{'menu_child'}{'node_up'} = $result_nodes{'character_and_spaces_in_refs'};
 $result_nodes{'character_and_spaces_in_refs'}{'node_next'} = $result_nodes{'character_and_spaces_in_refs'}{'menu_child'};
-$result_nodes{'character_and_spaces_in_refs'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'character_and_spaces_in_refs'};
 
 $result_menus{'character_and_spaces_in_refs'} = {
   'cmdname' => 'node',
@@ -1911,7 +1899,7 @@ Testing distant nodes
 ---------------------
 
 *note (manual)a node:: *note (manual)::: *note (manual)top:: *note
-(texinfo)Cross References:: *note (../manual/doc.texi)node::
+(texinfo)Cross References:: *note (../manual/doc)node::
 
 Testing local nodes
 -------------------
@@ -1944,12 +1932,17 @@ File: ,  Node: local node,  Prev: /;<=>?[\\]^_`|~,  Up: other nodes
 
 Tag Table:
 Node: Top27
-Node: other nodes421
-Node: !_"#$%&\'()*+-.602
-Node: /;<=>?[\\]^_`|~696
-Node: local node789
+Node: other nodes416
+Node: !_"#$%&\'()*+-.597
+Node: /;<=>?[\\]^_`|~691
+Node: local node784
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'character_and_spaces_in_refs'} = [
@@ -2003,7 +1996,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#other-nodes" accesskey="n" rel="next">other nodes</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#other-nodes" accesskey="n" rel="next">other nodes</a> &nbsp; </p>
 </div>
 <span id="Test-refs"></span><h1 class="top">Test refs</h1>
 
@@ -2018,7 +2011,7 @@ Next: <a href="#other-nodes" accesskey="n" rel="next">other nodes</a>, Up: <a hr
 <a href="manual.html#g_t_003a">(manual):</a>
 <a href="manual.html#Top">(manual)top</a>
 <a href="texinfo.html#Cross-References">(texinfo)Cross References</a>
-<a href="doc.html#node">(../manual/doc.texi)node</a>
+<a href="doc.html#node">(../manual/doc)node</a>
 </p>
 <span id="Testing-local-nodes"></span><h4 class="subheading">Testing local nodes</h4>
 

@@ -74,20 +74,8 @@ $result_nodes{'node_no_section'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'node_no_section'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'node_no_section'};
 
 $result_menus{'node_no_section'} = {
   'cmdname' => 'node',
@@ -101,7 +89,7 @@ $result_errors{'node_no_section'} = [];
 
 
 
-$result_converted{'xml'}->{'node_no_section'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'node_no_section'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 ';
 
 1;

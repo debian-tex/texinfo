@@ -767,23 +767,11 @@ $result_nodes{'two_footnotes_in_nodes'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'two_footnotes_in_nodes'}{'menu_child'}{'node_prev'} = $result_nodes{'two_footnotes_in_nodes'};
 $result_nodes{'two_footnotes_in_nodes'}{'menu_child'}{'node_up'} = $result_nodes{'two_footnotes_in_nodes'};
 $result_nodes{'two_footnotes_in_nodes'}{'node_next'} = $result_nodes{'two_footnotes_in_nodes'}{'menu_child'};
-$result_nodes{'two_footnotes_in_nodes'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'two_footnotes_in_nodes'};
 
 $result_menus{'two_footnotes_in_nodes'} = {
   'cmdname' => 'node',
@@ -846,7 +834,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 </div>
 <span id="g_t2-footnotes-in-2-nodes"></span><h1 class="top">2 footnotes in 2 nodes</h1>
 
@@ -874,19 +862,19 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>Footnote Top/1
 </p>
 <p>para2</p>
-<h3><a id="FOOT2" href="#DOCF2">(2)</a></h3>
+<h5><a id="FOOT2" href="#DOCF2">(2)</a></h3>
 <p>Footnote Top/2
 </p>
 <p>para2</p>
-<h3><a id="FOOT3" href="#DOCF3">(3)</a></h3>
+<h5><a id="FOOT3" href="#DOCF3">(3)</a></h3>
 <p>Footnote chapter/1
 </p>
 <p>para2</p>
-<h3><a id="FOOT4" href="#DOCF4">(4)</a></h3>
+<h5><a id="FOOT4" href="#DOCF4">(4)</a></h3>
 <p>Footnote chapter/2
 </p>
 <p>para2</p>
@@ -957,6 +945,11 @@ Ref: chapter-Footnote-1383
 Ref: chapter-Footnote-2420
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 
@@ -1027,19 +1020,19 @@ $result_converted{'html_text'}->{'two_footnotes_in_nodes'} = '<span id="Top"></s
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>Footnote Top/1
 </p>
 <p>para2</p>
-<h3><a id="FOOT2" href="#DOCF2">(2)</a></h3>
+<h5><a id="FOOT2" href="#DOCF2">(2)</a></h3>
 <p>Footnote Top/2
 </p>
 <p>para2</p>
-<h3><a id="FOOT3" href="#DOCF3">(3)</a></h3>
+<h5><a id="FOOT3" href="#DOCF3">(3)</a></h3>
 <p>Footnote chapter/1
 </p>
 <p>para2</p>
-<h3><a id="FOOT4" href="#DOCF4">(4)</a></h3>
+<h5><a id="FOOT4" href="#DOCF4">(4)</a></h3>
 <p>Footnote chapter/2
 </p>
 <p>para2</p>

@@ -255,20 +255,8 @@ $result_nodes{'anchor_in_command'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'anchor_in_command'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'anchor_in_command'};
 
 $result_menus{'anchor_in_command'} = {
   'cmdname' => 'node',
@@ -295,6 +283,11 @@ Node: Top27
 Ref: anchor in emph97
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

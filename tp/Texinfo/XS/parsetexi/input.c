@@ -42,13 +42,21 @@ typedef struct {
     enum input_type type;
 
     FILE *file;
-    char *input_encoding;
     LINE_NR line_nr;
 
     char *text;  /* Input text to be parsed as Texinfo. */
     char *ptext; /* How far we are through 'text'.  Used to split 'text'
                     into lines. */
 } INPUT;
+
+static char *input_encoding;
+
+void
+set_input_encoding (char *encoding)
+{
+  input_encoding = encoding;
+}
+
 
 static INPUT *input_stack = 0;
 int input_number = 0;
@@ -134,9 +142,9 @@ text_buffer_iconv (TEXT *buf, iconv_t iconv_state,
 
 
 
-/* Return conversion of S according to ENC.  This function frees S. */
+/* Return conversion of S according to ENCODING.  This function frees S. */
 static char *
-convert_to_utf8 (char *s, char *input_encoding)
+convert_to_utf8 (char *s, char *encoding)
 {
   iconv_t our_iconv;
   static TEXT t;
@@ -184,13 +192,13 @@ convert_to_utf8 (char *s, char *input_encoding)
     }
 
   enc = ce_latin1;
-  if (!input_encoding)
+  if (!encoding)
     ;
-  else if (!strcmp (input_encoding, "utf-8"))
+  else if (!strcmp (encoding, "utf-8"))
     enc = ce_utf8;
-  else if (!strcmp (input_encoding, "iso-8859-2"))
+  else if (!strcmp (encoding, "iso-8859-2"))
     enc = ce_latin2;
-  else if (!strcmp (input_encoding, "shift_jis"))
+  else if (!strcmp (encoding, "shift_jis"))
     enc = ce_shiftjis;
 
   switch (enc)
@@ -325,7 +333,7 @@ next_text (void)
               i->line_nr.line_nr++;
               line_nr = i->line_nr;
 
-              return convert_to_utf8 (line, i->input_encoding);
+              return convert_to_utf8 (line, input_encoding);
             }
           free (line); line = 0;
           break;
@@ -368,7 +376,6 @@ input_push (char *text, char *macro, char *filename, int line_number)
   input_stack[input_number].file = 0;
   input_stack[input_number].text = text;
   input_stack[input_number].ptext = text;
-  input_stack[input_number].input_encoding = 0;
 
   if (!macro)
     line_number--;
@@ -473,17 +480,6 @@ top_file_index (void)
   return i;
 }
 
-void
-set_input_encoding (char *encoding)
-{
-  int i;
-
-  /* Set encoding of top file in stack. */
-  i = top_file_index ();
-  if (i >= 0)
-    input_stack[i].input_encoding = encoding;
-}
-
 
 static char **include_dirs;
 static size_t include_dirs_number;
@@ -578,7 +574,6 @@ input_push_file (char *filename)
   input_stack[input_number].line_nr.macro = 0;
   input_stack[input_number].text = 0;
   input_stack[input_number].ptext = 0;
-  input_stack[input_number].input_encoding = 0;
   input_number++;
 
   return 0;

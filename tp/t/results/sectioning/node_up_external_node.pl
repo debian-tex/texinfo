@@ -432,21 +432,9 @@ $result_nodes{'node_up_external_node'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'node_up_external_node'}{'node_next'} = $result_nodes{'node_up_external_node'}{'menu_child'};
-$result_nodes{'node_up_external_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'node_up_external_node'};
 
 $result_menus{'node_up_external_node'} = {
   'cmdname' => 'node',
@@ -552,17 +540,6 @@ $result_elements{'node_up_external_node'} = [
         },
         'NodeForward' => {},
         'NodeNext' => {},
-        'NodeUp' => {
-          'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'dir'
-              }
-            ],
-            'top_node_up' => {}
-          },
-          'type' => 'external_node'
-        },
         'This' => {}
       },
       'element_command' => {},
@@ -580,7 +557,6 @@ $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'}{'
 $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'node'} = $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'};
 $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'};
 $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'};
-$result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
 $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'node_up_external_node'}[0];
 $result_elements{'node_up_external_node'}[0]{'extra'}{'element_command'} = $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
 $result_elements{'node_up_external_node'}[0]{'extra'}{'node'} = $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
@@ -592,7 +568,6 @@ $result_directions_text{'node_up_external_node'} = 'element: @node Top
   Forward: @node first
   NodeForward: @node first
   NodeNext: @node first
-  NodeUp: (dir)
   This: @node Top
 element: @node first
   Back: @node Top
@@ -645,7 +620,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#first" accesskey="n" rel="next">first</a> &nbsp; </p>
 </div>
 <h1 class="node-heading">Top</h1>
 

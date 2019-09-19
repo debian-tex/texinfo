@@ -315,20 +315,8 @@ $result_nodes{'anchor_in_caption'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'anchor_in_caption'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'anchor_in_caption'};
 
 $result_menus{'anchor_in_caption'} = {
   'cmdname' => 'node',
@@ -409,6 +397,11 @@ Ref: label123
 Ref: in anchor150
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

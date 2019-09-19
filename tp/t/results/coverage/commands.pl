@@ -525,8 +525,8 @@ $result_errors{'commands'} = [
 
 
 
-$result_converted{'plaintext'}->{'commands'} = '@ TeX  e" i^ a~ a* File -> Open.  b <a> \'code --- -- \'\' ``\' -- - " ".
-SMALL CAPS.
+$result_converted{'plaintext'}->{'commands'} = '@ TeX  ë î ã å File -> Open.  b <a> \'code --- -- \'\' ``\' -- - " ".  SMALL
+CAPS.
 
 majorheading in b
 *****************

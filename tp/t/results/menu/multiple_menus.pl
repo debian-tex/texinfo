@@ -432,21 +432,9 @@ $result_nodes{'multiple_menus'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'multiple_menus'}{'node_next'} = $result_nodes{'multiple_menus'}{'menu_child'};
-$result_nodes{'multiple_menus'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'multiple_menus'};
 
 $result_menus{'multiple_menus'} = {
   'cmdname' => 'node',

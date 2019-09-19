@@ -516,6 +516,7 @@ $result_trees{'formatting_fr'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -3303,6 +3304,7 @@ $result_trees{'formatting_fr'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -4241,6 +4243,7 @@ $result_sectioning{'formatting_fr'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -4344,6 +4347,7 @@ $result_sectioning{'formatting_fr'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'chapter2',
                 'spaces_before_argument' => ' '
               }
@@ -4385,6 +4389,7 @@ $result_nodes{'formatting_fr'} = {
       },
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   },
@@ -4412,6 +4417,7 @@ $result_nodes{'formatting_fr'} = {
           },
           'level' => 1
         },
+        'isindex' => 1,
         'normalized' => 'chapter2',
         'spaces_before_argument' => ' '
       },
@@ -4436,29 +4442,18 @@ $result_nodes{'formatting_fr'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'formatting_fr'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'formatting_fr'}{'menu_child'};
 $result_nodes{'formatting_fr'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'formatting_fr'};
 $result_nodes{'formatting_fr'}{'menu_child'}{'node_prev'} = $result_nodes{'formatting_fr'};
 $result_nodes{'formatting_fr'}{'menu_child'}{'node_up'} = $result_nodes{'formatting_fr'};
 $result_nodes{'formatting_fr'}{'node_next'} = $result_nodes{'formatting_fr'}{'menu_child'};
-$result_nodes{'formatting_fr'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'formatting_fr'};
 
 $result_menus{'formatting_fr'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   },
@@ -4471,6 +4466,7 @@ $result_menus{'formatting_fr'} = {
     'menu_next' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'chapter2',
         'spaces_before_argument' => ' '
       },
@@ -4624,11 +4620,11 @@ $result_errors{'formatting_fr'} = [
 $result_converted{'info'}->{'formatting_fr'} = 'This is formatting.info, produced from formatting.texi.
 
 In copying
-INFO-DIR-SECTION Formatting e\' \'@ TeX\' test
+INFO-DIR-SECTION Formatting é \'@ TeX\' test
 START-INFO-DIR-ENTRY
 * Truc: (formatting).           The GNU documentation truc.
-* \'@ e\' ==\': (formatting).  "-- something"
-                           \'cmd\' a`
+* \'@ é ==\': (formatting).  "-- something"
+                           \'cmd\' à
 END-INFO-DIR-ENTRY
 
 
@@ -4780,6 +4776,11 @@ Node: subsubsection three---four----\'\'2194
 Node: chapter22366
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'formatting_fr'} = [
@@ -4861,7 +4862,7 @@ ul.no-bullet {list-style: none}
 
 Menu comment
 
-</pre></th></tr><tr><td align="left" valign="top"><a href="#chapter2">chapter 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Chapter 2
+</pre></th></tr><tr><td align="left" valign="top"><a href="#chapter2" rel="index">chapter 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Chapter 2
 </td></tr>
 </table>
 

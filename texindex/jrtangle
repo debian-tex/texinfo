@@ -1,7 +1,6 @@
-#! /usr/local/bin/gawk -f
+#! /usr/bin/gawk -f
 #
-# Copyright (C) 2013, 2014, 2015 Arnold David Robbins
-# Copyright (C) 2019 Free Software Foundation
+# Copyright (C) 2013, 2014, 2015, 2016, 2019 Arnold David Robbins
 # 
 # This file is part of TexiWeb Jr., a literate programming system.
 # 
@@ -24,19 +23,17 @@
 #
 #	git clone http://github.com/arnoldrobbins/texiwebjr
 #
-
 BEGIN {
-        v[0] = 0
-        if ("version" in PROCINFO) {
-            match(PROCINFO["version"], /^[0-9]+\./, v);
-        }
+	v[0] = 0
+	if ("version" in PROCINFO) {
+		match(PROCINFO["version"], /^[0-9]+\./, v);
+	}
 
-        if (v[0] < 4) {
-                print("gawk >= 4.0 required") > "/dev/stderr"
-                exit 63 # for "missing" script
-        }
+	if (v[0] < 4) {
+		print("gawk >= 4.0 required") > "/dev/stderr"
+		exit 63	# for "missing" script
+	}
 }
-
 BEGIN {
 	TRUE = 1
 	FALSE = 0
@@ -170,6 +167,7 @@ function join(array, start, end, sep,    result, i)
 
 	# otherwise fall through into the rest of the code
 }
+/^@ignore/, /^@end ignore/ { next }
 $0 ~ Code_chunk_pattern {
 	Chunk_type = "code chunk"
 	Pattern = Code_chunk_pattern

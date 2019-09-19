@@ -888,6 +888,7 @@ $result_trees{'complex_recursive_synindex'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -1090,26 +1091,16 @@ $result_sectioning{'complex_recursive_synindex'} = {};
 $result_nodes{'complex_recursive_synindex'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'complex_recursive_synindex'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'complex_recursive_synindex'};
 
 $result_menus{'complex_recursive_synindex'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

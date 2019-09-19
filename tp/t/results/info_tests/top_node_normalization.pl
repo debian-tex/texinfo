@@ -331,23 +331,11 @@ $result_nodes{'top_node_normalization'} = {
     }
   ],
   'node_next' => {},
-  'node_prev' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_prev' => {}
 };
 $result_nodes{'top_node_normalization'}{'menu_child'} = $result_nodes{'top_node_normalization'};
 $result_nodes{'top_node_normalization'}{'node_next'} = $result_nodes{'top_node_normalization'};
 $result_nodes{'top_node_normalization'}{'node_prev'} = $result_nodes{'top_node_normalization'};
-$result_nodes{'top_node_normalization'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'top_node_normalization'};
 
 $result_menus{'top_node_normalization'} = {
   'cmdname' => 'node',
@@ -391,15 +379,6 @@ $result_errors{'top_node_normalization'} = [
     'macro' => '',
     'text' => '@menu entry node name `tOP\' different from node name `ToP\'',
     'type' => 'warning'
-  },
-  {
-    'error_line' => ':1: warning: for `ToP\', up in menu `ToP\' and up `(dir)\' don\'t match
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'for `ToP\', up in menu `ToP\' and up `(dir)\' don\'t match',
-    'type' => 'warning'
   }
 ];
 
@@ -421,6 +400,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

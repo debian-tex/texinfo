@@ -52,7 +52,9 @@ $result_trees{'image_and_spaces_formatting'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
-          'extra' => {},
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 3,
@@ -79,7 +81,9 @@ $result_trees{'image_and_spaces_formatting'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
-          'extra' => {},
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
           'line_nr' => {},
           'parent' => {}
         },
@@ -102,7 +106,9 @@ $result_trees{'image_and_spaces_formatting'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
-          'extra' => {},
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
           'line_nr' => {},
           'parent' => {}
         },
@@ -125,7 +131,9 @@ $result_trees{'image_and_spaces_formatting'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
-          'extra' => {},
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
           'line_nr' => {},
           'parent' => {}
         },
@@ -148,7 +156,9 @@ $result_trees{'image_and_spaces_formatting'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
-          'extra' => {},
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
           'line_nr' => {},
           'parent' => {}
         },
@@ -171,7 +181,9 @@ $result_trees{'image_and_spaces_formatting'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
-          'extra' => {},
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
           'line_nr' => {},
           'parent' => {}
         },
@@ -194,7 +206,9 @@ $result_trees{'image_and_spaces_formatting'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
-          'extra' => {},
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
           'line_nr' => {},
           'parent' => {}
         },
@@ -230,7 +244,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -257,7 +273,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -280,7 +298,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -303,7 +323,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -326,7 +348,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -349,7 +373,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -372,7 +398,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -412,7 +440,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 7,
@@ -439,7 +469,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -462,7 +494,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -485,7 +519,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -508,7 +544,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -531,7 +569,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -554,7 +594,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -594,7 +636,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 9,
@@ -638,7 +682,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 11,
@@ -682,7 +728,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 13,
@@ -709,7 +757,9 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -934,20 +984,8 @@ $result_nodes{'image_and_spaces_formatting'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'image_and_spaces_formatting'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'image_and_spaces_formatting'};
 
 $result_menus{'image_and_spaces_formatting'} = {
   'cmdname' => 'node',
@@ -984,6 +1022,11 @@ Tag Table:
 Node: Top27
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

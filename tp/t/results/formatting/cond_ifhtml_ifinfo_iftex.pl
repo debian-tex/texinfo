@@ -451,20 +451,8 @@ $result_nodes{'cond_ifhtml_ifinfo_iftex'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'cond_ifhtml_ifinfo_iftex'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'cond_ifhtml_ifinfo_iftex'};
 
 $result_menus{'cond_ifhtml_ifinfo_iftex'} = {
   'cmdname' => 'node',

@@ -575,6 +575,11 @@ Node: first27
 Node: second node101
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'nodes_no_node_top_explicit_directions'} = [

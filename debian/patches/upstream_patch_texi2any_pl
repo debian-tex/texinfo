@@ -1,6 +1,10 @@
+---
+ tp/texi2any.pl |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
 --- texinfo.orig/tp/texi2any.pl
 +++ texinfo/tp/texi2any.pl
-@@ -720,10 +720,10 @@
+@@ -696,10 +696,10 @@ the behavior is identical, and does not
                                  default is on.
    -o, --output=DEST           output to DEST.
                                  With split output, create DEST as a directory

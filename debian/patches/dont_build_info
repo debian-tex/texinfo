@@ -10,7 +10,7 @@ don't build the info documentation, it has been removed
  am__v_texidevnull_0 = > /dev/null
  am__v_texidevnull_1 = 
 -INFO_DEPS = texinfo.info info-stnd.info
-+#INFO_DEPS = texinfo.info info-stnd.info
++# INFO_DEPS = texinfo.info info-stnd.info
 +INFO_DEPS =
  TEXINFO_TEX = $(top_srcdir)/build-aux/texinfo.tex
  am__TEXINFO_TEX_DIR = $(top_srcdir)/build-aux
@@ -21,9 +21,9 @@ don't build the info documentation, it has been removed
 -TEXINFOS = texinfo.texi info-stnd.texi
 +#TEXINFOS = texinfo.texi info-stnd.texi
 +TEXINFOS =
- TEXI2DVI = texi2dvi
  TEXI2PDF = $(TEXI2DVI) --pdf --batch
  MAKEINFOHTML = $(MAKEINFO) --html
+ AM_MAKEINFOHTMLFLAGS = $(AM_MAKEINFOFLAGS)
 @@ -1148,8 +1150,10 @@ top_build_prefix = @top_build_prefix@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@

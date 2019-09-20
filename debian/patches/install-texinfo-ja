@@ -8,8 +8,10 @@ See GH PR https://github.com/debian-tex/texinfo/pull/1
  doc/short-sample-ja.texi |    2 ++
  3 files changed, 4 insertions(+)
 
---- texinfo.orig/doc/Makefile.am
-+++ texinfo/doc/Makefile.am
+Index: b/doc/Makefile.am
+===================================================================
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
 @@ -64,6 +64,7 @@ install-tex:
  	test -n "$(TEXMF)" || (echo "TEXMF must be set." >&2; exit 1)
  	$(mkinstalldirs) $(DESTDIR)$(texmf_texinfo) $(DESTDIR)$(texmf_dvips)
@@ -18,8 +20,10 @@ See GH PR https://github.com/debian-tex/texinfo/pull/1
  	$(INSTALL_DATA) $(srcdir)/epsf.tex $(DESTDIR)$(texmf_dvips)/epsf.tex
  	for f in $(TXI_XLATE); do \
  	  $(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(texmf_texinfo)/$$f; done
---- texinfo.orig/doc/Makefile.in
-+++ texinfo/doc/Makefile.in
+Index: b/doc/Makefile.in
+===================================================================
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
 @@ -1855,6 +1855,7 @@ install-tex:
  	test -n "$(TEXMF)" || (echo "TEXMF must be set." >&2; exit 1)
  	$(mkinstalldirs) $(DESTDIR)$(texmf_texinfo) $(DESTDIR)$(texmf_dvips)
@@ -28,8 +32,10 @@ See GH PR https://github.com/debian-tex/texinfo/pull/1
  	$(INSTALL_DATA) $(srcdir)/epsf.tex $(DESTDIR)$(texmf_dvips)/epsf.tex
  	for f in $(TXI_XLATE); do \
  	  $(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(texmf_texinfo)/$$f; done
---- texinfo.orig/doc/short-sample-ja.texi
-+++ texinfo/doc/short-sample-ja.texi
+Index: b/doc/short-sample-ja.texi
+===================================================================
+--- a/doc/short-sample-ja.texi
++++ b/doc/short-sample-ja.texi
 @@ -3,6 +3,8 @@
  @documentencoding UTF-8
  @documentlanguage ja
@@ -39,3 +45,18 @@ See GH PR https://github.com/debian-tex/texinfo/pull/1
  @settitle サンプル マニュアル 1.0 日本語版
  
  @copying
+@@ -21,14 +23,12 @@ Copyright @copyright{} 2016 Free Softwar
+ @c 最初に目次を出力します。
+ @contents
+ 
+-@ifnottex
+ @node Top
+ @top GNU サンプル
+ 
+ このマニュアルは GNU サンプル
+ (version @value{VERSION}, @value{UPDATED})
+ 用です。
+-@end ifnottex
+ 
+ @menu
+ * 第一章::           第一章は

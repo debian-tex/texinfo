@@ -5,3 +5,4 @@ info-manpage-mentiones-nonfree
 #Update-locale-handling-for-Perl-5.28
 upstream_patch_texi2any_pl
 install-texinfo-ja
+Update-LuaTeX-support

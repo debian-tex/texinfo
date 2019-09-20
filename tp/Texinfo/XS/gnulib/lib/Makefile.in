@@ -143,6 +143,7 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/gettext.m4 \
 	$(top_srcdir)/gnulib/m4/gnulib-common.m4 \
 	$(top_srcdir)/gnulib/m4/gnulib-comp.m4 \
+	$(top_srcdir)/gnulib/m4/host-cpu-c-abi.m4 \
 	$(top_srcdir)/gnulib/m4/iconv.m4 \
 	$(top_srcdir)/gnulib/m4/include_next.m4 \
 	$(top_srcdir)/gnulib/m4/intmax_t.m4 \
@@ -495,6 +496,7 @@ GNULIB_WMEMCPY = @GNULIB_WMEMCPY@
 GNULIB_WMEMMOVE = @GNULIB_WMEMMOVE@
 GNULIB_WMEMSET = @GNULIB_WMEMSET@
 GREP = @GREP@
+HAVE_ALLOCA_H = @HAVE_ALLOCA_H@
 HAVE_BTOWC = @HAVE_BTOWC@
 HAVE_C99_STDINT_H = @HAVE_C99_STDINT_H@
 HAVE_CRTDEFS_H = @HAVE_CRTDEFS_H@
@@ -1298,7 +1300,7 @@ uninstall-am:
 @GL_GENERATE_ALLOCA_H_TRUE@alloca.h: alloca.in.h $(top_builddir)/config.status
 @GL_GENERATE_ALLOCA_H_TRUE@	$(AM_V_GEN)rm -f $@-t $@ && \
 @GL_GENERATE_ALLOCA_H_TRUE@	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
-@GL_GENERATE_ALLOCA_H_TRUE@	  cat $(srcdir)/alloca.in.h; \
+@GL_GENERATE_ALLOCA_H_TRUE@	  sed -e 's|@''HAVE_ALLOCA_H''@|$(HAVE_ALLOCA_H)|g' < $(srcdir)/alloca.in.h; \
 @GL_GENERATE_ALLOCA_H_TRUE@	} > $@-t && \
 @GL_GENERATE_ALLOCA_H_TRUE@	mv -f $@-t $@
 @GL_GENERATE_ALLOCA_H_FALSE@alloca.h: $(top_builddir)/config.status

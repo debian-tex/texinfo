@@ -1,3 +1,11 @@
+texinfo (6.6.92.dfsg.1-1) unstable; urgency=medium
+
+  * New upstream version 6.6.92.dfsg.1
+  * update patches
+  * install texinfo-ja, thanks to qykth-git on GH
+
+ -- Norbert Preining <norbert@preining.info>  Fri, 20 Sep 2019 10:23:12 +0900
+
 texinfo (6.6.91.dfsg.1-1) unstable; urgency=medium
 
   [ Hilmar Preusse ]

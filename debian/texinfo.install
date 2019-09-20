@@ -17,4 +17,5 @@ usr/share/man/man1/pdftexi2dvi.1
 usr/share/man/man5/texinfo.5
 usr/share/texinfo
 usr/share/texmf/tex/texinfo/texinfo.tex
+usr/share/texmf/tex/texinfo/texinfo-ja.tex
 usr/share/texmf/tex/texinfo/txi-??.tex

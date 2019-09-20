@@ -1,4 +1,4 @@
-# threadlib.m4 serial 15
+# threadlib.m4 serial 20
 dnl Copyright (C) 2005-2019 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
@@ -16,8 +16,7 @@ dnl (it must be placed before the invocation of gl_THREADLIB_EARLY!), then the
 dnl default is 'no', otherwise it is system dependent. In both cases, the user
 dnl can change the choice through the options --enable-threads=choice or
 dnl --disable-threads.
-dnl Defines at most one of the macros USE_POSIX_THREADS, USE_SOLARIS_THREADS,
-dnl USE_PTH_THREADS, USE_WINDOWS_THREADS
+dnl Defines at most one of the macros USE_POSIX_THREADS, USE_WINDOWS_THREADS.
 dnl Sets the variables LIBTHREAD and LTLIBTHREAD to the linker options for use
 dnl in a Makefile (LIBTHREAD for use without libtool, LTLIBTHREAD for use with
 dnl libtool).
@@ -27,6 +26,9 @@ dnl between LIBTHREAD and LIBMULTITHREAD is that on platforms supporting weak
 dnl symbols, typically LIBTHREAD is empty whereas LIBMULTITHREAD is not.
 dnl Adds to CPPFLAGS the flag -D_REENTRANT or -D_THREAD_SAFE if needed for
 dnl multithread-safe programs.
+dnl Since support for GNU pth was removed, $LTLIBTHREAD and $LIBTHREAD have the
+dnl same value, and similarly $LTLIBMULTITHREAD and $LIBMULTITHREAD have the
+dnl same value. Only system libraries are needed.
 
 AC_DEFUN([gl_THREADLIB_EARLY],
 [
@@ -50,8 +52,9 @@ AC_DEFUN([gl_THREADLIB_EARLY_BODY],
   m4_ifdef([gl_THREADLIB_DEFAULT_NO],
     [m4_divert_text([DEFAULTS], [gl_use_threads_default=no])],
     [m4_divert_text([DEFAULTS], [gl_use_threads_default=])])
+  m4_divert_text([DEFAULTS], [gl_use_winpthreads_default=])
   AC_ARG_ENABLE([threads],
-AC_HELP_STRING([--enable-threads={posix|solaris|pth|windows}], [specify multithreading API])m4_ifdef([gl_THREADLIB_DEFAULT_NO], [], [
+AC_HELP_STRING([--enable-threads={posix|windows}], [specify multithreading API])m4_ifdef([gl_THREADLIB_DEFAULT_NO], [], [
 AC_HELP_STRING([--disable-threads], [build without multithread safety])]),
     [gl_use_threads=$enableval],
     [if test -n "$gl_use_threads_default"; then
@@ -62,14 +65,22 @@ changequote(,)dnl
          dnl Disable multithreading by default on OSF/1, because it interferes
          dnl with fork()/exec(): When msgexec is linked with -lpthread, its
          dnl child process gets an endless segmentation fault inside execvp().
+         osf*) gl_use_threads=no ;;
          dnl Disable multithreading by default on Cygwin 1.5.x, because it has
          dnl bugs that lead to endless loops or crashes. See
          dnl <https://cygwin.com/ml/cygwin/2009-08/msg00283.html>.
-         osf*) gl_use_threads=no ;;
          cygwin*)
                case `uname -r` in
                  1.[0-5].*) gl_use_threads=no ;;
                  *)         gl_use_threads=yes ;;
+               esac
+               ;;
+         dnl Obey gl_AVOID_WINPTHREAD on mingw.
+         mingw*)
+               case "$gl_use_winpthreads_default" in
+                 yes) gl_use_threads=posix ;;
+                 no)  gl_use_threads=windows ;;
+                 *)   gl_use_threads=yes ;;
                esac
                ;;
          *)    gl_use_threads=yes ;;
@@ -151,36 +162,13 @@ int main ()
          *" -static "*) gl_cv_have_weak=no ;;
        esac
       ])
-    dnl Check whether the linker supports the --as-needed/--no-as-needed options.
-    dnl Assume GCC, so that we can use the -Wl option.
-    AC_CACHE_CHECK([whether the linker supports --as-needed],
-      [gl_cv_linker_have_as_needed],
-      [if test -n "$GCC"; then
-         gl_saved_ldflags="$LDFLAGS"
-         LDFLAGS="$gl_saved_ldflags -Wl,--as-needed -Wl,--no-as-needed"
-         AC_LINK_IFELSE([AC_LANG_PROGRAM()],
-           [gl_cv_linker_have_as_needed=yes],
-           [gl_cv_linker_have_as_needed=no])
-         LDFLAGS="$gl_saved_ldflags"
-       else
-         gl_cv_linker_have_as_needed=no
-       fi
-      ])
-    dnl Check whether the linker supports the --push-state/--pop-state options.
-    dnl Assume GCC, so that we can use the -Wl option.
-    AC_CACHE_CHECK([whether the linker supports --push-state],
-      [gl_cv_linker_have_push_state],
-      [if test -n "$GCC"; then
-         gl_saved_ldflags="$LDFLAGS"
-         LDFLAGS="$gl_saved_ldflags -Wl,--push-state -Wl,--pop-state"
-         AC_LINK_IFELSE([AC_LANG_PROGRAM()],
-           [gl_cv_linker_have_push_state=yes],
-           [gl_cv_linker_have_push_state=no])
-         LDFLAGS="$gl_saved_ldflags"
-       else
-         gl_cv_linker_have_push_state=no
-       fi
-      ])
+    if case "$gl_cv_have_weak" in *yes) true;; *) false;; esac; then
+      dnl If we use weak symbols to implement pthread_in_use / pth_in_use /
+      dnl thread_in_use, we also need to test whether the ISO C 11 thrd_create
+      dnl facility is in use.
+      AC_CHECK_HEADERS_ONCE([threads.h])
+      :
+    fi
     if test "$gl_use_threads" = yes || test "$gl_use_threads" = posix; then
       # On OSF/1, the compiler needs the flag -pthread or -D_REENTRANT so that
       # it groks <pthread.h>. It's added above, in gl_THREADLIB_EARLY_BODY.
@@ -259,120 +247,9 @@ int main ()
                 [Define if references to the POSIX multithreading library should be made weak.])
               LIBTHREAD=
               LTLIBTHREAD=
-              dnl On platforms where GCC enables --as-needed by default, attempt
-              dnl to make sure that LIBMULTITHREAD really links with -lpthread.
-              dnl Otherwise linking with LIBMULTITHREAD has no effect; then
-              dnl the weak symbols are not defined and thus evaluate to NULL.
-              case "$LIBMULTITHREAD" in
-                "") ;;
-                -pthread)
-                  if test $gl_cv_linker_have_as_needed = yes; then
-                    if test $gl_cv_linker_have_push_state = yes; then
-                      LIBMULTITHREAD="$LIBMULTITHREAD -Wl,--push-state -Wl,--no-as-needed -lpthread -Wl,--pop-state"
-                    else
-                      LIBMULTITHREAD="$LIBMULTITHREAD -Wl,--no-as-needed -lpthread"
-                    fi
-                  fi
-                  ;;
-                *)
-                  if test $gl_cv_linker_have_as_needed = yes; then
-                    if test $gl_cv_linker_have_push_state = yes; then
-                      LIBMULTITHREAD="-Wl,--push-state -Wl,--no-as-needed $LIBMULTITHREAD -Wl,--pop-state"
-                    else
-                      LIBMULTITHREAD="-Wl,--no-as-needed $LIBMULTITHREAD"
-                    fi
-                  fi
-                  ;;
-              esac
-              # TODO: May need to modify LTLIBMULTITHREAD similarly.
             fi
           fi
         fi
-      fi
-    fi
-    if test -z "$gl_have_pthread"; then
-      if test "$gl_use_threads" = yes || test "$gl_use_threads" = solaris; then
-        gl_have_solaristhread=
-        gl_save_LIBS="$LIBS"
-        LIBS="$LIBS -lthread"
-        AC_LINK_IFELSE(
-          [AC_LANG_PROGRAM(
-             [[
-#include <thread.h>
-#include <synch.h>
-             ]],
-             [[thr_self();]])],
-          [gl_have_solaristhread=yes])
-        LIBS="$gl_save_LIBS"
-        if test -n "$gl_have_solaristhread"; then
-          gl_threads_api=solaris
-          LIBTHREAD=-lthread
-          LTLIBTHREAD=-lthread
-          LIBMULTITHREAD="$LIBTHREAD"
-          LTLIBMULTITHREAD="$LTLIBTHREAD"
-          AC_DEFINE([USE_SOLARIS_THREADS], [1],
-            [Define if the old Solaris multithreading library can be used.])
-          if case "$gl_cv_have_weak" in *yes) true;; *) false;; esac; then
-            AC_DEFINE([USE_SOLARIS_THREADS_WEAK], [1],
-              [Define if references to the old Solaris multithreading library should be made weak.])
-            LIBTHREAD=
-            LTLIBTHREAD=
-            dnl On platforms where GCC enables --as-needed by default, attempt
-            dnl to make sure that LIBMULTITHREAD really links with -lthread.
-            dnl Otherwise linking with LIBMULTITHREAD has no effect; then
-            dnl the weak symbols are not defined and thus evaluate to NULL.
-            if test $gl_cv_linker_have_as_needed = yes; then
-              if test $gl_cv_linker_have_push_state = yes; then
-                LIBMULTITHREAD="-Wl,--push-state -Wl,--no-as-needed $LIBMULTITHREAD -Wl,--pop-state"
-              else
-                LIBMULTITHREAD="-Wl,--no-as-needed $LIBMULTITHREAD"
-              fi
-            fi
-            # TODO: May need to modify LTLIBMULTITHREAD similarly.
-          fi
-        fi
-      fi
-    fi
-    if test "$gl_use_threads" = pth; then
-      gl_save_CPPFLAGS="$CPPFLAGS"
-      AC_LIB_LINKFLAGS([pth])
-      gl_have_pth=
-      gl_save_LIBS="$LIBS"
-      LIBS="$LIBS $LIBPTH"
-      AC_LINK_IFELSE(
-        [AC_LANG_PROGRAM([[#include <pth.h>]], [[pth_self();]])],
-        [gl_have_pth=yes])
-      LIBS="$gl_save_LIBS"
-      if test -n "$gl_have_pth"; then
-        gl_threads_api=pth
-        LIBTHREAD="$LIBPTH"
-        LTLIBTHREAD="$LTLIBPTH"
-        LIBMULTITHREAD="$LIBTHREAD"
-        LTLIBMULTITHREAD="$LTLIBTHREAD"
-        AC_DEFINE([USE_PTH_THREADS], [1],
-          [Define if the GNU Pth multithreading library can be used.])
-        if test -n "$LIBMULTITHREAD" || test -n "$LTLIBMULTITHREAD"; then
-          if case "$gl_cv_have_weak" in *yes) true;; *) false;; esac; then
-            AC_DEFINE([USE_PTH_THREADS_WEAK], [1],
-              [Define if references to the GNU Pth multithreading library should be made weak.])
-            LIBTHREAD=
-            LTLIBTHREAD=
-            dnl On platforms where GCC enables --as-needed by default, attempt
-            dnl to make sure that LIBMULTITHREAD really links with -lpth.
-            dnl Otherwise linking with LIBMULTITHREAD has no effect; then
-            dnl the weak symbols are not defined and thus evaluate to NULL.
-            if test $gl_cv_linker_have_as_needed = yes; then
-              if test $gl_cv_linker_have_push_state = yes; then
-                LIBMULTITHREAD="-Wl,--push-state -Wl,--no-as-needed $LIBMULTITHREAD -Wl,--pop-state"
-              else
-                LIBMULTITHREAD="-Wl,--no-as-needed $LIBMULTITHREAD"
-              fi
-            fi
-            # TODO: May need to modify LTLIBMULTITHREAD similarly.
-          fi
-        fi
-      else
-        CPPFLAGS="$gl_save_CPPFLAGS"
       fi
     fi
     if test -z "$gl_have_pthread"; then
@@ -417,6 +294,18 @@ AC_DEFUN([gl_DISABLE_THREADS], [
 ])
 
 
+dnl gl_AVOID_WINPTHREAD
+dnl -------------------
+dnl Sets the gl_THREADLIB default so that on mingw, a dependency to the
+dnl libwinpthread DLL (mingw-w64 winpthreads library) is avoided.
+dnl The user can still override it at installation time, by using the
+dnl configure option '--enable-threads'.
+
+AC_DEFUN([gl_AVOID_WINPTHREAD], [
+  m4_divert_text([INIT_PREPARE], [gl_use_winpthreads_default=no])
+])
+
+
 dnl Survey of platforms:
 dnl
 dnl Platform           Available  Compiler    Supports   test-lock
@@ -446,7 +335,6 @@ dnl
 dnl Mac OS X 10.[123]  posix      -lpthread       Y      OK
 dnl
 dnl Solaris 7,8,9      posix      -lpthread       Y      Sol 7,8: 0.0; Sol 9: OK
-dnl                    solaris    -lthread        Y      Sol 7,8: 0.0; Sol 9: OK
 dnl
 dnl HP-UX 11           posix      -lpthread       N (cc) OK
 dnl                                               Y (gcc)
@@ -459,8 +347,6 @@ dnl OSF/1 4.0,5.1      posix      -pthread (cc)   N      OK
 dnl                               -lpthread (gcc) Y
 dnl
 dnl Cygwin             posix      -lpthread       Y      OK
-dnl
-dnl Any of the above   pth        -lpth                  0.0
 dnl
 dnl Mingw              windows                    N      OK
 dnl

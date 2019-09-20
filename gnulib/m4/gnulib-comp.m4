@@ -141,6 +141,10 @@ AC_DEFUN([gl_EARLY],
   # Code from module wcrtomb:
   # Code from module wctype-h:
   # Code from module wcwidth:
+  # Code from module windows-mutex:
+  # Code from module windows-once:
+  # Code from module windows-recmutex:
+  # Code from module windows-rwlock:
   # Code from module xalloc:
   # Code from module xalloc-die:
   # Code from module xalloc-oversized:
@@ -352,6 +356,10 @@ AC_DEFUN([gl_INIT],
   gl_gnulib_enabled_threadlib=false
   gl_gnulib_enabled_vasnprintf=false
   gl_gnulib_enabled_wcrtomb=false
+  gl_gnulib_enabled_503a4cb75d69c787103d0aa2ab7d8440=false
+  gl_gnulib_enabled_68a4501daeca58988392c7e60b4917ab=false
+  gl_gnulib_enabled_f0efff84a70f4afba30902bb8ffe9354=false
+  gl_gnulib_enabled_8bb827fe37eaccf1b97feb0c87bc92ef=false
   gl_gnulib_enabled_xsize=false
   func_gl_gnulib_m4code_btowc ()
   {
@@ -438,13 +446,25 @@ AC_DEFUN([gl_INIT],
       gl_MODULE_INDICATOR([lock])
       gl_gnulib_enabled_lock=true
       func_gl_gnulib_m4code_threadlib
+      if test $gl_threads_api = windows; then
+        func_gl_gnulib_m4code_503a4cb75d69c787103d0aa2ab7d8440
+      fi
+      if test $gl_threads_api = windows; then
+        func_gl_gnulib_m4code_68a4501daeca58988392c7e60b4917ab
+      fi
+      if test $gl_threads_api = windows; then
+        func_gl_gnulib_m4code_f0efff84a70f4afba30902bb8ffe9354
+      fi
+      if test $gl_threads_api = windows; then
+        func_gl_gnulib_m4code_8bb827fe37eaccf1b97feb0c87bc92ef
+      fi
     fi
   }
   func_gl_gnulib_m4code_mbtowc ()
   {
     if ! $gl_gnulib_enabled_mbtowc; then
       gl_FUNC_MBTOWC
-      if test $REPLACE_MBTOWC = 1; then
+      if test $HAVE_MBTOWC = 0 || test $REPLACE_MBTOWC = 1; then
         AC_LIBOBJ([mbtowc])
         gl_PREREQ_MBTOWC
       fi
@@ -571,7 +591,7 @@ AC_DEFUN([gl_INIT],
   func_gl_gnulib_m4code_threadlib ()
   {
     if ! $gl_gnulib_enabled_threadlib; then
-      gl_THREADLIB
+      AC_REQUIRE([gl_THREADLIB])
       gl_gnulib_enabled_threadlib=true
     fi
   }
@@ -593,6 +613,54 @@ AC_DEFUN([gl_INIT],
       fi
       gl_WCHAR_MODULE_INDICATOR([wcrtomb])
       gl_gnulib_enabled_wcrtomb=true
+    fi
+  }
+  func_gl_gnulib_m4code_503a4cb75d69c787103d0aa2ab7d8440 ()
+  {
+    if ! $gl_gnulib_enabled_503a4cb75d69c787103d0aa2ab7d8440; then
+      AC_REQUIRE([AC_CANONICAL_HOST])
+      case "$host_os" in
+        mingw*)
+          AC_LIBOBJ([windows-mutex])
+          ;;
+      esac
+      gl_gnulib_enabled_503a4cb75d69c787103d0aa2ab7d8440=true
+    fi
+  }
+  func_gl_gnulib_m4code_68a4501daeca58988392c7e60b4917ab ()
+  {
+    if ! $gl_gnulib_enabled_68a4501daeca58988392c7e60b4917ab; then
+      AC_REQUIRE([AC_CANONICAL_HOST])
+      case "$host_os" in
+        mingw*)
+          AC_LIBOBJ([windows-once])
+          ;;
+      esac
+      gl_gnulib_enabled_68a4501daeca58988392c7e60b4917ab=true
+    fi
+  }
+  func_gl_gnulib_m4code_f0efff84a70f4afba30902bb8ffe9354 ()
+  {
+    if ! $gl_gnulib_enabled_f0efff84a70f4afba30902bb8ffe9354; then
+      AC_REQUIRE([AC_CANONICAL_HOST])
+      case "$host_os" in
+        mingw*)
+          AC_LIBOBJ([windows-recmutex])
+          ;;
+      esac
+      gl_gnulib_enabled_f0efff84a70f4afba30902bb8ffe9354=true
+    fi
+  }
+  func_gl_gnulib_m4code_8bb827fe37eaccf1b97feb0c87bc92ef ()
+  {
+    if ! $gl_gnulib_enabled_8bb827fe37eaccf1b97feb0c87bc92ef; then
+      AC_REQUIRE([AC_CANONICAL_HOST])
+      case "$host_os" in
+        mingw*)
+          AC_LIBOBJ([windows-rwlock])
+          ;;
+      esac
+      gl_gnulib_enabled_8bb827fe37eaccf1b97feb0c87bc92ef=true
     fi
   }
   func_gl_gnulib_m4code_xsize ()
@@ -623,6 +691,9 @@ AC_DEFUN([gl_INIT],
   fi
   if test $HAVE_MBRTOWC = 0 || test $REPLACE_MBRTOWC = 1; then
     func_gl_gnulib_m4code_localcharset
+  fi
+  if test $HAVE_MBRTOWC = 0 || { test $REPLACE_MBRTOWC = 1 && { test $HAVE_MBSINIT = 0 || test $REPLACE_MBSTATE_T = 1; }; }; then
+    func_gl_gnulib_m4code_lock
   fi
   if test $ac_use_included_regex = yes; then
     func_gl_gnulib_m4code_btowc
@@ -685,6 +756,10 @@ AC_DEFUN([gl_INIT],
   AM_CONDITIONAL([gl_GNULIB_ENABLED_threadlib], [$gl_gnulib_enabled_threadlib])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_vasnprintf], [$gl_gnulib_enabled_vasnprintf])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_wcrtomb], [$gl_gnulib_enabled_wcrtomb])
+  AM_CONDITIONAL([gl_GNULIB_ENABLED_503a4cb75d69c787103d0aa2ab7d8440], [$gl_gnulib_enabled_503a4cb75d69c787103d0aa2ab7d8440])
+  AM_CONDITIONAL([gl_GNULIB_ENABLED_68a4501daeca58988392c7e60b4917ab], [$gl_gnulib_enabled_68a4501daeca58988392c7e60b4917ab])
+  AM_CONDITIONAL([gl_GNULIB_ENABLED_f0efff84a70f4afba30902bb8ffe9354], [$gl_gnulib_enabled_f0efff84a70f4afba30902bb8ffe9354])
+  AM_CONDITIONAL([gl_GNULIB_ENABLED_8bb827fe37eaccf1b97feb0c87bc92ef], [$gl_gnulib_enabled_8bb827fe37eaccf1b97feb0c87bc92ef])
   AM_CONDITIONAL([gl_GNULIB_ENABLED_xsize], [$gl_gnulib_enabled_xsize])
   # End of code from modules
   m4_ifval(gl_LIBSOURCES_LIST, [
@@ -959,6 +1034,15 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/wctype-h.c
   lib/wctype.in.h
   lib/wcwidth.c
+  lib/windows-initguard.h
+  lib/windows-mutex.c
+  lib/windows-mutex.h
+  lib/windows-once.c
+  lib/windows-once.h
+  lib/windows-recmutex.c
+  lib/windows-recmutex.h
+  lib/windows-rwlock.c
+  lib/windows-rwlock.h
   lib/xalloc-die.c
   lib/xalloc-oversized.h
   lib/xalloc.h

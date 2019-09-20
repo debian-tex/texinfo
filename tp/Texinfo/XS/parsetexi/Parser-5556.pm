@@ -87,7 +87,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.6.91';
+$VERSION = '6.6.92';
 
 sub N__($)
 {

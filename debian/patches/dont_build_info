@@ -24,7 +24,7 @@ don't build the info documentation, it has been removed
  TEXI2PDF = $(TEXI2DVI) --pdf --batch
  MAKEINFOHTML = $(MAKEINFO) --html
  AM_MAKEINFOHTMLFLAGS = $(AM_MAKEINFOFLAGS)
-@@ -1148,8 +1150,10 @@ top_build_prefix = @top_build_prefix@
+@@ -1157,8 +1159,10 @@ top_build_prefix = @top_build_prefix@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
  SUBDIRS = tp_api

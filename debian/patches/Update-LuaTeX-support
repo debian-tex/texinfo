@@ -5,9 +5,9 @@ Subject: [PATCH] Update LuaTeX support
 * Update LuaTeX hack
 
 ---
- doc/texinfo.tex |  8 ++++----
- doc/txi-ja.tex  | 28 ----------------------------
- 2 files changed, 4 insertions(+), 32 deletions(-)
+ doc/texinfo.tex |    8 ++++----
+ doc/txi-ja.tex  |   22 ++++++----------------
+ 2 files changed, 10 insertions(+), 20 deletions(-)
 
 Index: b/doc/texinfo.tex
 ===================================================================

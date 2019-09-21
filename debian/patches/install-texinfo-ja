@@ -5,8 +5,8 @@ See GH PR https://github.com/debian-tex/texinfo/pull/1
 ---
  doc/Makefile.am          |    1 +
  doc/Makefile.in          |    1 +
- doc/short-sample-ja.texi |    2 ++
- 3 files changed, 4 insertions(+)
+ doc/short-sample-ja.texi |    4 ++--
+ 3 files changed, 4 insertions(+), 2 deletions(-)
 
 Index: b/doc/Makefile.am
 ===================================================================

@@ -1,3 +1,45 @@
+2019-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	6.7.
+
+	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf,
+	doc/refcard/txirefcard.tex: version
+
+2019-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Avoid gcc warnings about strncat.
+
+	* install-info/install-info.c (split_entry, format_entry):
+	Replace some calls to strncat with strcat.  This avoids a
+	"'strncat' specified bound 2 equals source length 
+	[-Wstringop-overflow=]" warning with gcc 8.
+
+2019-09-21  YOKOTA Hiroshi  <yokota.hgml@gmail.com>  (tiny change)
+
+	Japanese language support changes.
+
+	* doc/short-sample-ja.texi: Include version.texi.
+	* doc/Makefile.am: Install texinfo-ja.tex.
+
+	* doc/texinfo.tex: Support Lua 5.3+ number syntax
+    
+	Lua 5.3 and newer supports floating point number.
+	But some old code doesn't know that Lua supports floating point numbers.
+    
+	This patch avoids some unexpected floating point numbers in Lua 
+	code.
+
+	* doc/txi-ja.tex: Update LuaTeX hack
+    
+	"comment" command is now unified to "c" command.
+    
+	Origin of this hack:
+	  https://ja.osdn.net/projects/luatex-ja/ticket/36096
+
+	* doc/info-fr.texi: Change encoding to UTF-8.
+	* doc/info-fr.texi, doc/info-stnd.texi, doc/short-sample-ja.texi:
+	Do not wrap @top node in @ifnottex.
+
 2019-09-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	pretest 6.6.92

@@ -9,6 +9,7 @@ See the manual for detailed information.
 
 ------------------------------------------------------------------------------
 
+6.7 (23 September 2019)
 * Language:
   . support of index subentries and sub-subentries with @subentry
   . new commands @seeentry and @seealso in index entries

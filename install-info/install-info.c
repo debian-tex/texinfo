@@ -1434,12 +1434,12 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
       /* Name is too long to have description on the same line. */
       if (desc_len > 1)
         {
-          strncat (outstr, "\n", 1);
+          strcat (outstr, "\n");
           column = 0;
           for (j = 0; j < calign - 1; j++)
             {
               column = adjust_column (column, ' ');
-              strncat (outstr, " ", 1);
+              strcat (outstr, " ");
             }
         }
     }
@@ -1449,7 +1449,7 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
         if (desc_len <= 2)
           break;
         column = adjust_column (column, ' ');
-        strncat (outstr, " ", 1);
+        strcat (outstr, " ");
       }
 
   for (i = 0; i < desc_len; i++)
@@ -1505,11 +1505,11 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
               /* Found a blank.  Don't output the part after it. */
               logical_end++;
               strncat (outstr, line_out, logical_end);
-              strncat (outstr, "\n", 1);
+              strcat (outstr, "\n");
               for (j = 0; j < align - 1; j++)
                 {
                   column = adjust_column (column, ' ');
-                  strncat (outstr, " ", 1);
+                  strcat (outstr, " ");
                 }
 
               /* Move the remainder to the beginning of the next 
@@ -1538,7 +1538,7 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
     }
 
   if (desc_len <= 2)
-    strncat (outstr, "\n", 1);
+    strcat (outstr, "\n");
 
   if (offset_out)
     strncat (outstr, line_out, offset_out);
@@ -1621,9 +1621,9 @@ split_entry (const char *entry, char **name, size_t *name_len,
               endptr--;
               /* *ENDPTR is the 2nd last character */
               if (*endptr == '.')
-                strncat (*description, "  ", 2);
+                strcat (*description, "  ");
               else if (!isspace (*endptr))
-                strncat (*description, " ", 1);
+                strcat (*description, " ");
             }
         }
       /* Or the description continues to the end of the string. */
@@ -1636,7 +1636,7 @@ split_entry (const char *entry, char **name, size_t *name_len,
         }
     }
   /* Descriptions end in a new line. */
-  strncat (*description, "\n", 1);
+  strcat (*description, "\n");
   *description_len = strlen (*description);
 }
 

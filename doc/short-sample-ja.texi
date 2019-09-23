@@ -3,6 +3,8 @@
 @documentencoding UTF-8
 @documentlanguage ja
 
+@include version.texi
+
 @settitle サンプル マニュアル 1.0 日本語版
 
 @copying
@@ -21,14 +23,12 @@ Copyright @copyright{} 2016 Free Software Foundation, Inc.
 @c 最初に目次を出力します。
 @contents
 
-@ifnottex
 @node Top
 @top GNU サンプル
 
 このマニュアルは GNU サンプル
 (version @value{VERSION}, @value{UPDATED})
 用です。
-@end ifnottex
 
 @menu
 * 第一章::           第一章は

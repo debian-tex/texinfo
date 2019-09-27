@@ -1,11 +1,12 @@
-texinfo (6.7.0.dfsg.2-1) UNRELEASED; urgency=medium
+texinfo (6.7.0.dfsg.2-1) unstable; urgency=medium
 
   * New upstream version 6.7.0.dfsg.2 which is actually the upstream
     distributed 6.7 -- the documentation is now GFDL without any
     invariant section and thus can be included into main.
   * don't disable info building, docs are now dfsg
+  * install info and html documentations into texinfo and info pkgs
 
- -- Norbert Preining <norbert@preining.info>  Sat, 28 Sep 2019 00:22:01 +0900
+ -- Norbert Preining <norbert@preining.info>  Sat, 28 Sep 2019 01:05:36 +0900
 
 texinfo (6.7.0.dfsg.1-1) unstable; urgency=medium
 

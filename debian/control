@@ -16,9 +16,11 @@ Section: text
 Priority: optional
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}, libtext-unidecode-perl, libxml-libxml-perl, tex-common (>= 6)
-Suggests: texlive-base, texlive-latex-base, texlive-plain-generic, texinfo-doc-nonfree, texlive-fonts-recommended
+Suggests: texlive-base, texlive-latex-base, texlive-plain-generic, texlive-fonts-recommended
+Conflicts: texinfo-doc-nonfree
+Provides: texinfo-doc-nonfree
 Breaks: tetex-bin (<< 3.0), tetex-base (<< 3.0), ja-trans (<= 0.7-3.1)
-Replaces: tetex-base (<< 1.0.2+20000804-9), tetex-bin (<< 3.0)
+Replaces: tetex-base (<< 1.0.2+20000804-9), tetex-bin (<< 3.0), texinfo-doc-nonfree
 Multi-Arch: foreign
 Description: Documentation system for on-line information and printed output
  Texinfo is a documentation system that uses a single source file to
@@ -35,8 +37,8 @@ Priority: important
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, install-info
 Provides: info-browser
-Suggests: texinfo-doc-nonfree
-Replaces: texinfo (<< 4.7-2)
+Replaces: texinfo (<< 4.7-2), texinfo-doc-nonfree
+Conflicts: texinfo-doc-nonfree
 Multi-Arch: foreign
 Description: Standalone GNU Info documentation browser
  The Info file format is an easily-parsable representation for online

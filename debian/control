@@ -38,7 +38,6 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, install-info
 Provides: info-browser
 Replaces: texinfo (<< 4.7-2), texinfo-doc-nonfree
-Conflicts: texinfo-doc-nonfree
 Multi-Arch: foreign
 Description: Standalone GNU Info documentation browser
  The Info file format is an easily-parsable representation for online

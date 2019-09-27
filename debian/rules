@@ -48,8 +48,8 @@ build-stamp:
 	cp man/texi2dvi.1 debian
 	$(MAKE)
 	# build html docs
-	cd doc && ../tp/texi2any --html info-stnd
-	cd doc && ../tp/texi2any --html texinfo
+	cd doc && env TEXINFO_DEV_SOURCE=1 ../tp/texi2any --html info-stnd
+	cd doc && env TEXINFO_DEV_SOURCE=1 ../tp/texi2any --html texinfo
 	mv debian/texi2dvi.1 man/
 	touch man/texi2dvi.1
 	# finished

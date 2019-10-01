@@ -1,0 +1,18 @@
+enable XS parser by default, can be disabled by setting 
+TEXINFO_XS_PARSER=0 in the environment
+---
+ tp/Texinfo/ModulePath.pm.in |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- texinfo.orig/tp/Texinfo/ModulePath.pm.in
++++ texinfo/tp/Texinfo/ModulePath.pm.in
+@@ -101,7 +101,8 @@ sub init {
+     my ($coderef, $filename) = @_;
+     if ($filename eq 'Texinfo/Parser.pm') {
+       my $replacement;
+-      if ($ENV{TEXINFO_XS_PARSER}) {
++      if (!defined $ENV{TEXINFO_XS_PARSER}
++	or $ENV{TEXINFO_XS_PARSER} ne '0') {
+         $replacement = 'Texinfo/XS/parsetexi/Parsetexi.pm';
+       } else {
+         $replacement = 'Texinfo/ParserNonXS.pm';

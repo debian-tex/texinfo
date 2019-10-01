@@ -1,3 +1,10 @@
+texinfo (6.7.0.dfsg.2-2) unstable; urgency=medium
+
+  * Enable XS parser by default, can be disabled by setting the
+    env var TEXINFO_XS_PARSER to 1.
+
+ -- Norbert Preining <norbert@preining.info>  Tue, 01 Oct 2019 21:22:10 +0900
+
 texinfo (6.7.0.dfsg.2-1) unstable; urgency=medium
 
   * New upstream version 6.7.0.dfsg.2 which is actually the upstream

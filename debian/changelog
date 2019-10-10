@@ -1,3 +1,10 @@
+texinfo (6.7.0.dfsg.2-4) unstable; urgency=medium
+
+  * info needs to break against ti-doc-nonfree (Closes: #942147)
+  * change texinfo/ti-doc-nofree from conflicts to breaks
+
+ -- Norbert Preining <norbert@preining.info>  Fri, 11 Oct 2019 07:20:29 +0900
+
 texinfo (6.7.0.dfsg.2-3) unstable; urgency=medium
 
   * Disable XS parser again, it is not feature complete.

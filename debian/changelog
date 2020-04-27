@@ -2,6 +2,7 @@ texinfo (6.7.0.dfsg.2-6) UNRELEASED; urgency=medium
 
   * Trim trailing whitespace.
   * Bump debhelper from deprecated 9 to 12.
+  * Set debhelper-compat version in Build-Depends.
 
  -- Debian Janitor <janitor@jelmer.uk>  Mon, 27 Apr 2020 03:58:22 +0000
 

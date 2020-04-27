@@ -82,7 +82,7 @@ install-stamp: build-stamp check-stamp
 	#
 	desktop-file-install --dir=$(tmpdir)/usr/share/applications debian/info.desktop
 	#
-	# clean out .la files as they contain references to libperl 
+	# clean out .la files as they contain references to libperl
 	# which is not necessary
 	sed -i "/dependency_libs/ s/'.*'/''/" `find $(tmpdir) -name '*.la'`
 	#

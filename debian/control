@@ -25,7 +25,7 @@ Description: Documentation system for on-line information and printed output
  produce both on-line information and printed output.
  .
  Using Texinfo, you can create a printed document with the normal features
- of a book, including chapters, sections, cross references, and indices. 
+ of a book, including chapters, sections, cross references, and indices.
  From the same Texinfo source file, you can create a menu-driven, on-line
  Info file with nodes, menus, cross references, and indices.
 

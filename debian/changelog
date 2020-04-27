@@ -1,3 +1,9 @@
+texinfo (6.7.0.dfsg.2-6) UNRELEASED; urgency=medium
+
+  * Trim trailing whitespace.
+
+ -- Debian Janitor <janitor@jelmer.uk>  Mon, 27 Apr 2020 03:58:22 +0000
+
 texinfo (6.7.0.dfsg.2-5) unstable; urgency=medium
 
   * remove provides, doesn't work with breaks of info
@@ -102,7 +108,7 @@ texinfo (6.5.0.dfsg.1-3) unstable; urgency=medium
 texinfo (6.5.0.dfsg.1-2) unstable; urgency=medium
 
   * switch vcs to salsa
-  * switch from autotool-dev_{update/restore}config to 
+  * switch from autotool-dev_{update/restore}config to
     dh_update_autotools_config
   * accept pre-initialized DEB_HOST_GNU_TYPE
   * update texinfo.tex (Closes: #889647)
@@ -172,7 +178,7 @@ texinfo (6.1.0.dfsg.1-6) unstable; urgency=medium
 
 texinfo (6.1.0.dfsg.1-5) unstable; urgency=medium
 
-  * cherrypick upstream svn 7032 to fix case-insensitive info 
+  * cherrypick upstream svn 7032 to fix case-insensitive info
     lookups (Closes: #815941)
   * cherrypick upstream svn 7041 to fix single arg macros
     (see #815734 for discussion)
@@ -474,7 +480,7 @@ texinfo (4.13a.dfsg.1-7) unstable; urgency=low
 
 texinfo (4.13a.dfsg.1-6) unstable; urgency=low
 
-  * update-info-dir: load not only /etc/environment, but also 
+  * update-info-dir: load not only /etc/environment, but also
     /etc/default/locale for correct setup of languages (Closes: #536476)
   * info: fix a segfault due to unchecked node computation in nodes.c, patch
     included upstream (Closes: #598932)
@@ -485,8 +491,8 @@ texinfo (4.13a.dfsg.1-6) unstable; urgency=low
 
 texinfo (4.13a.dfsg.1-5) unstable; urgency=low
 
-  * update-info-dir: reset $LANGUAGE to the system wide setting in 
-    /etc/environment making sure that the generated dir file does not 
+  * update-info-dir: reset $LANGUAGE to the system wide setting in
+    /etc/environment making sure that the generated dir file does not
     contain strings in foreign language (Closes: #536476)
   * corrected typo in install-info.sh (Closes: #545783)
   * install-info.sh: do not warn on --remove and --remove-exactely, we
@@ -518,14 +524,14 @@ texinfo (4.13a.dfsg.1-2) experimental; urgency=low
     - make info depend on install-info
     - adjust rules file
     - add a wrapper /usr/bin/install-info that calls ginstall-info
-      when called outside maintainer scripts, and nothing (due to trigger 
+      when called outside maintainer scripts, and nothing (due to trigger
       support, see below) when called from maintainer scripts.
-      dpkg will ship a similar trigger in /usr/sbin to make sure 
+      dpkg will ship a similar trigger in /usr/sbin to make sure
       packages that still call i-i with the full path in the maintainer
       scripts still work
   * trigger support
     - make i-i show interest in /usr/share/info
-    - add update-info-dir script that recreates /usr/share/info/dir from 
+    - add update-info-dir script that recreates /usr/share/info/dir from
       all installed info files
     - add trigger code to install-info's postinst calling update-info-dir
   * add a patch for texi2dvi to allow tilde (~) in path (Closes: #495577)
@@ -538,7 +544,7 @@ texinfo (4.13a.dfsg.1-1) unstable; urgency=low
   * new upstream releases (Closes: #500301)
     - fix (wrongly) added leading spaces in direntries (Closes: #457741)
     - works with ~ in the path (Closes: #495577)
-    - disable the patch fix-direntry and fix-texi2dvi-bashism, 
+    - disable the patch fix-direntry and fix-texi2dvi-bashism,
       included upstream
   * update the list of files to be installed (new translations, pdftexi2dvi)
   * mange version in the watch file to remove the .dfsg.N part
@@ -623,7 +629,7 @@ texinfo (4.8.dfsg.1-4) unstable; urgency=high
 
   * Apply patch by Josh Bressers <bressers@redhat.com> to fix
     CVE-2006-4810, added as 33_texindex_CVE-2006-4810.dpatch
-  * Add myself to Uploaders so this doesn't look like an NMU.  
+  * Add myself to Uploaders so this doesn't look like an NMU.
 
  -- Frank Küster <frank@debian.org>  Wed, 22 Nov 2006 12:04:54 +0100
 
@@ -756,7 +762,7 @@ texinfo (4.8-1) unstable; urgency=medium
   * Urgency medium because we fix security bug #328365, see second last
     item.
   * New maintainer: Taking over from Josip Rodin <joy-packages@debian.org>
-    as he seems to have abandoned texinfo. 
+    as he seems to have abandoned texinfo.
   * Acknowledge previous NMU (Closes: #267497, #259280)
   * new upstream release, fixing several bugs. Some of these bugs may
     already be fixed by previous versions, but we include it here for
@@ -768,7 +774,7 @@ texinfo (4.8-1) unstable; urgency=medium
     - adds commands for sans serif fonts (Closes: #277754)
     - fixes crash on first backspace (Closes: #259561)
     - fixes buffer overflow in 'Follow xref' (Closes: #263853)
-    - fixes various navigation crashes (Closes: #265605, #293337, #308280, 
+    - fixes various navigation crashes (Closes: #265605, #293337, #308280,
       #314513)
     - fixes segfault with --xml and -D (Closes: #330219)
     - fixes segfault with -f'*manpages*' (Closes: #193856)
@@ -791,7 +797,7 @@ texinfo (4.8-1) unstable; urgency=medium
   * install install-info as ginstall-info (Closes: #285983)
   * bumped Standards-Version to 3.6.2.1 (no changes necessary)
   * change debian compat version to 4
-  * dump most patches from previous versions as they are incorporated 
+  * dump most patches from previous versions as they are incorporated
     upstream, and change to dpatch system, adding Build-Depends on dpatch
   * fixes to bashism in postinst scripts, fix wrong adress of FSF
   * add manpage for texi2pdf from teTeX 2.0.2
@@ -799,7 +805,7 @@ texinfo (4.8-1) unstable; urgency=medium
   * texinfo formats are not necessary anymore, since texi2* do not use
     the formats, and the new teTeX will not need to generate texinfo formats.
     Thus bug #253124 will not be fixed. (Closes: #253124)
-  * Include a tempfile race fix based on the patch by Henry Jensen 
+  * Include a tempfile race fix based on the patch by Henry Jensen
     (CAN-2005-3011) (Closes: #328365)
   * Warns user of no TeX system is installed (Closes: #212206)
   * Upload sponsored by Frank Küster <frank@debian.org>
@@ -814,7 +820,7 @@ texinfo (4.7-2.2) unstable; urgency=high
     (Closes: #267497)
   * Move the Replaces: from the last upload to the right binary
     package, d'oh!
-  
+
  -- Frank Lichtenheld <djpig@debian.org>  Sun, 26 Sep 2004 03:40:48 +0200
 
 texinfo (4.7-2.1) unstable; urgency=high
@@ -1081,12 +1087,12 @@ texinfo (3.12h-1) unstable; urgency=low
 
 texinfo (3.12-0.1) unstable; urgency=low
 
-  * Upgraded from 3.9 to new upstream release 3.12 
+  * Upgraded from 3.9 to new upstream release 3.12
   * Non-maintainer release, this time with a proper -0.1 version.
   * This does not use the patches against the files info/infomap.c,
     info/session.c and util/texi2dvi from the previous Debian version.
     According to James Troup, their functionality has been integrated into
-    the upstream source so that the patches are indeed obsolete.    
+    the upstream source so that the patches are indeed obsolete.
 
  -- Dirk Eddelbuettel <edd@debian.org>  Fri, 17 Apr 1998 18:26:24 -0400
 
@@ -1129,7 +1135,7 @@ texinfo (3.9-1) unstable; urgency=low
 
 texinfo (3.7-1); priority=LOW
 
-  * Added architecture fields 
+  * Added architecture fields
 
  -- Erick Branderhorst <branderhorst@heel.fgg.eur.nl>  Tue Mar 12 16:26:41 MET 1996
 

@@ -5,6 +5,7 @@ texinfo (6.7.0.dfsg.2-6) UNRELEASED; urgency=medium
   * Set debhelper-compat version in Build-Depends.
   * Set upstream metadata fields: Bug-Submit (from ./configure), Name
     (from ./configure).
+  * Rely on pre-initialized dpkg-architecture variables.
 
  -- Debian Janitor <janitor@jelmer.uk>  Mon, 27 Apr 2020 03:58:22 +0000
 

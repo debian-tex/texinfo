@@ -7,7 +7,7 @@ DEB_CFLAGS_MAINT_APPEND=-Wall
 # needed for correct building of new texinfo
 DEB_CFLAGS_MAINT_STRIP=-Werror=format-security
 
-DEB_HOST_GNU_TYPE?=$(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+include /usr/share/dpkg/architecture.mk
 
 include /usr/share/dpkg/buildflags.mk
 export CPPFLAGS CFLAGS LDFLAGS

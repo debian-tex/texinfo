@@ -5,8 +5,8 @@ Maintainer: Debian TeX maintainers <debian-tex-maint@lists.debian.org>
 Uploaders: Norbert Preining <norbert@preining.info>,
 	   Frank Küster <frank@debian.org>,
 	   Hilmar Preusse <hille42@web.de>
-Build-Depends: debhelper (>= 9), libncurses5-dev | libncurses-dev, gettext, libtext-unidecode-perl, help2man, autotools-dev, libperl-dev, desktop-file-utils
-Standards-Version: 4.4.0
+Build-Depends: debhelper-compat (= 12), libncurses5-dev | libncurses-dev, gettext, libtext-unidecode-perl, help2man, autotools-dev, libperl-dev, desktop-file-utils
+Standards-Version: 4.5.0
 Vcs-Git: https://github.com/debian-tex/texinfo.git
 Vcs-Browser: https://github.com/debian-tex/texinfo
 Homepage: https://www.gnu.org/software/texinfo/
@@ -25,7 +25,7 @@ Description: Documentation system for on-line information and printed output
  produce both on-line information and printed output.
  .
  Using Texinfo, you can create a printed document with the normal features
- of a book, including chapters, sections, cross references, and indices. 
+ of a book, including chapters, sections, cross references, and indices.
  From the same Texinfo source file, you can create a menu-driven, on-line
  Info file with nodes, menus, cross references, and indices.
 

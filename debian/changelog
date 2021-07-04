@@ -1,4 +1,4 @@
-texinfo (6.8-1~pre1) UNRELEASED; urgency=medium
+texinfo (6.8-1) experimental; urgency=medium
 
   [ Marriott NZ <marriott99@gmx.com> ]
   * W: quoted-placeholder-in-mailcap-entry (Closes: #982620)
@@ -10,8 +10,10 @@ texinfo (6.8-1~pre1) UNRELEASED; urgency=medium
   * Override incorrect lintian error detection.
   * Drop unneeded autotools-dev B-D.
   * Override lintian warning.
+  * Drop outdated make-orig-tar script
+  * Disable failing test due to missing locales.
 
- -- Norbert Preining <norbert@preining.info>  Mon, 05 Jul 2021 05:44:30 +0900
+ -- Norbert Preining <norbert@preining.info>  Mon, 05 Jul 2021 06:21:00 +0900
 
 texinfo (6.7.0.dfsg.2-6) unstable; urgency=medium
 

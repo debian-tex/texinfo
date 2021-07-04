@@ -1,0 +1,3 @@
+# -*- mode: conf -*-
+# wrong detection, it only gives pointers to RFC
+texinfo source: license-problem-non-free-RFC js/examples/kawa/kawa.texi

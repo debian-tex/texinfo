@@ -1,9 +1,17 @@
-texinfo (6.7.0.dfsg.2-7) UNRELEASED; urgency=medium
+texinfo (6.8-1~pre1) UNRELEASED; urgency=medium
 
   [ Marriott NZ <marriott99@gmx.com> ]
-    W: quoted-placeholder-in-mailcap-entry (Closes: #982620)
+  * W: quoted-placeholder-in-mailcap-entry (Closes: #982620)
 
- -- Hilmar Preusse <hille42@web.de>  Fri, 12 Feb 2021 23:26:20 +0100
+  [ Norbert Preining ]
+  * New upstream version 6.8
+  * Adjust patches for new upstream.
+  * Recode transition plan to UTF-8.
+  * Override incorrect lintian error detection.
+  * Drop unneeded autotools-dev B-D.
+  * Override lintian warning.
+
+ -- Norbert Preining <norbert@preining.info>  Mon, 05 Jul 2021 05:44:30 +0900
 
 texinfo (6.7.0.dfsg.2-6) unstable; urgency=medium
 

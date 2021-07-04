@@ -320,6 +320,16 @@ $test_text.
 
 @contents
 '],
+# used as a possible comparison with the next two
+['sections_test',
+$test_text
+],
+['sections_test_no_use_nodes',
+$test_text
+,{},{'USE_NODES' => 0}],
+['sections_test_no_use_nodes_use_node_directions',
+$test_text
+,{},{'USE_NODES' => 0, 'USE_NODE_DIRECTIONS' => 1}],
 ['one_subsection',
 '@subsection The subsection
 '],
@@ -366,7 +376,7 @@ A.
 @part part
 
 @contents
-'],
+', {}, {'CONTENTS_OUTPUT_LOCATION' => 'inline'}],
 ['chapter_before_part',
 '@chapter chapter
 
@@ -448,7 +458,7 @@ $section_in_unnumbered_text
 
 @node chapter 2
 @chapter chapter c2
-', {'test_split' => 'section'}],
+', {'test_split' => 'section', 'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['two_nodes_at_the_end',
 '@node Top
 @top top
@@ -474,7 +484,7 @@ $section_in_unnumbered_text
 @chapter chapter 2
 
 @contents
-', {'test_split' => 'section'}
+', {'test_split' => 'section'}, {'CONTENTS_OUTPUT_LOCATION' => 'inline'}
 ],
 ['lone_contents',
 '@contents
@@ -485,6 +495,15 @@ $section_in_unnumbered_text
 
 @contents
 '],
+# also used below to test splitting, here used for
+# comparison with next test
+['nodes_after_top_before_chapter_not_split',
+$nodes_after_top_before_chapter_text
+],
+['nodes_after_top_before_chapter_not_split_no_use_node_directions',
+$nodes_after_top_before_chapter_text
+,{}, {'USE_NODE_DIRECTIONS' => 0}
+]
 );
 
 my $character_and_spaces_in_refs_text = '@node Top
@@ -812,7 +831,7 @@ In chapter
 section.
 
 @contents
-'],
+', {}, {'CONTENTS_OUTPUT_LOCATION' => 'inline'}],
 ['part_node_before_top',
 '@node part node before top, Top,,Top
 @part part
@@ -1031,7 +1050,7 @@ Top node
 * chapter node::
 @end menu
 
-'],
+', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['section_node_before_part',
 '
 @node Top
@@ -1061,7 +1080,7 @@ Top node
 @chapter chapter 2
 
 @contents
-',{'test_formats' => ['plaintext']}],
+', {'test_formats' => ['plaintext'], 'CHECK_NORMAL_MENU_STRUCTURE' => 1}, {'CONTENTS_OUTPUT_LOCATION' => 'inline'}],
 ['section_in_unnumbered_info',
 $section_in_unnumbered_text
 ],
@@ -1093,6 +1112,22 @@ $unnumbered_top_without_node_text,
 
 @node   Last with spaces 
 '],
+['external_node_in_menu',
+'@node Top
+@top top
+
+@menu
+* nchapter1::
+* (aaa)other::
+* nchapter2::
+@end menu
+
+@node nchapter1
+@chapter chap1
+
+@node nchapter2
+@chapter chap2
+'],
 ['next_in_menu_is_below',
 '@node Top
 @top top
@@ -1118,7 +1153,7 @@ $unnumbered_top_without_node_text,
 
 @node subsection
 @subsection subsection
-'],
+', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['empty_top_node_up',
 '@node Top
 @top empty top node up
@@ -1301,7 +1336,7 @@ my @test_cases = (
 ['node_too_much_args',
 '@node Top, , , , (dir)'
 ],
-[ 'node',
+[ 'node_line_arguments',
 '
 @node one arg1 
 @node one arg2, two arg
@@ -1320,6 +1355,19 @@ my @test_cases = (
 @node @
 @node @:
 @node @asis{ }
+'],
+['node_referenced_in_ref',
+'@node Top
+
+@menu
+* first level node::
+@end menu
+
+@ref{second level node}.
+
+@node first level node
+
+@node second level node
 '],
 ['empty_refs',
 '@xref{@:}.
@@ -1371,7 +1419,7 @@ Dummy section with (manual)node node syntax.
 
 @anchor{(manual)anchor}.
 
-'],
+', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['node_nested_parentheses',
 '@node Top
 
@@ -1510,7 +1558,7 @@ in node following second
 
 @node Section non auto,, Chap1, Top
 @section Section
-'],
+', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['next_no_prev_to_node',
 '@node Top
 
@@ -1557,7 +1605,7 @@ in node following second
 @end menu
 
 @node node down
-'],
+', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['complex',
 $complex_case,
 {'test_split' => 'section'}
@@ -1600,7 +1648,7 @@ Second top.
 
 @node First
 @chapter chap
-', {'test_split' => 'section'}
+', {'test_split' => 'section', 'CHECK_NORMAL_MENU_STRUCTURE' => 1}
 ],
 ['lowered_subsubsection',
 '@node Top
@@ -1649,7 +1697,9 @@ Second top.
 
 @contents
 @bye
-'],
+', # use CHECK_NORMAL_MENU_STRUCTURE to check that lowering leads to
+   # inconsistent menu with sectioning
+{'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['loweredheading',
 '@lowersections
 @section Foo
@@ -1693,7 +1743,7 @@ Second top.
 
 @node sub3
 @section Sub3
-'],
+', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['nodes_before_top',
 '@node first, Top, ,(dir)
 
@@ -1774,7 +1824,7 @@ $top_chapter_sections_text,
 
 @shortcontents
 @contents
-', {'test_formats' => ['html_text']}
+', {'test_formats' => ['html_text']}, {'CONTENTS_OUTPUT_LOCATION' => 'inline'}
 ],
 ['more_sections_than_nodes',
 '@node Top

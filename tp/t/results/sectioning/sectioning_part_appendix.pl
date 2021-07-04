@@ -813,6 +813,9 @@ $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[2]{'toplevel_up
 $result_errors{'sectioning_part_appendix'} = [];
 
 
+$result_floats{'sectioning_part_appendix'} = {};
+
+
 $result_elements{'sectioning_part_appendix'} = [
   {
     'extra' => {

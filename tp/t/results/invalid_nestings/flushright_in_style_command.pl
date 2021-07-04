@@ -159,4 +159,7 @@ $result_errors{'flushright_in_style_command'} = [
 ];
 
 
+$result_floats{'flushright_in_style_command'} = {};
+
+
 1;

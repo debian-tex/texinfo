@@ -40,7 +40,11 @@ $result_trees{'raw_block_on_line'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -50,7 +54,6 @@ $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'con
 $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'raw_block_on_line'}{'contents'}[0];
-$result_trees{'raw_block_on_line'}{'contents'}[0]{'line_nr'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'raw_block_on_line'}{'contents'}[0]{'parent'} = $result_trees{'raw_block_on_line'};
 
 $result_texis{'raw_block_on_line'} = '@cindex @tex
@@ -70,6 +73,9 @@ $result_errors{'raw_block_on_line'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'raw_block_on_line'} = {};
 
 
 1;

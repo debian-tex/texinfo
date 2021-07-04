@@ -71,4 +71,7 @@ $result_texts{'empty_set'} = '
 $result_errors{'empty_set'} = [];
 
 
+$result_floats{'empty_set'} = {};
+
+
 1;

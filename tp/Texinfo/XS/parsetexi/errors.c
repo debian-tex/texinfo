@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,16 +14,31 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include <config.h>
+
+
+#ifdef ENABLE_NLS
 #include <libintl.h>
+#endif
 
 #include <stdlib.h>
 #include <stdarg.h>
 #include <stdio.h>
 
-#include "tree_types.h"
 #include "errors.h"
 #include "input.h"
 #include "text.h"
+
+void bug (char *message)
+{
+  fprintf (stderr, "texi2any (XS parser): bug: %s\n", message);
+}
+
+void fatal (char *message)
+{
+  bug (message);
+  abort ();
+}
+
 
 typedef struct {
     char *message;
@@ -40,8 +55,13 @@ line_error_internal (enum error_type type, LINE_NR *cmd_line_nr,
                      char *format, va_list v)
 {
   char *message;
+#ifdef ENABLE_NLS
   vasprintf (&message, gettext(format), v);
-  if (!message) abort ();
+#else
+  vasprintf (&message, format, v);
+#endif
+  if (!message) fatal ("vasprintf failed");
+
   if (error_number == error_space)
     {
       error_list = realloc (error_list,

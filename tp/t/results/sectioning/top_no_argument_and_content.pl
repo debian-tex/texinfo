@@ -89,6 +89,9 @@ $result_sectioning{'top_no_argument_and_content'}{'section_childs'}[0]{'section_
 $result_errors{'top_no_argument_and_content'} = [];
 
 
+$result_floats{'top_no_argument_and_content'} = {};
+
+
 
 $result_converted{'plaintext'}->{'top_no_argument_and_content'} = 'A.
 ';
@@ -105,13 +108,15 @@ $result_converted{'html'}->{'top_no_argument_and_content'} = '<!DOCTYPE html PUB
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -120,6 +125,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -128,9 +134,10 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="SEC_Top"></span>
+<div class="top" id="SEC_Top">
+
 <p>A.
-</p><hr>
+</p><hr></div>
 
 
 

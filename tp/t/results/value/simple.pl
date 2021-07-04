@@ -101,4 +101,7 @@ the value b After value.
 $result_errors{'simple'} = [];
 
 
+$result_floats{'simple'} = {};
+
+
 1;

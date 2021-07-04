@@ -117,7 +117,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
               push_context (ct_math);
               break;
             default:
-              abort ();
+              fatal ("no context for command");
             }
 
           {
@@ -405,7 +405,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           if (current->parent->cmd == CM_inlineraw)
             {
               if (ct_inlineraw != pop_context ())
-                abort ();
+                fatal ("expected inlineraw context");
             }
           if (current->parent->args.number == 0
               || current->parent->args.list[0]->contents.number == 0)
@@ -441,15 +441,15 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                 }
               else
                 {
-                  int val;
-                  int ret = sscanf (arg, "%d", &val);
+                  unsigned long int val;
+                  int ret = sscanf (arg, "%lx", &val);
                   if (ret != 1)
                     {
                       debug ("hex sscanf failed %s", arg);
                       /* unknown error.  possibly argument is too large
                          for an int. */
                     }
-                  if (ret != 1 || val > 0x10FFF)
+                  if (ret != 1 || val > 0x10FFFF)
                     {
                       line_error
                        ("argument for @U exceeds Unicode maximum 0x10FFFF: %s",
@@ -472,21 +472,30 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                || current->parent->cmd == CM_seeentry
                || current->parent->cmd == CM_seealso)
         {
-          ELEMENT *e = current->contents.list[0];
-
-          if (e->text.end > 0)
+          ELEMENT *index_elt;
+          if (current->parent->parent
+              && current->parent->parent->parent
+              && ((command_flags(current->parent->parent->parent)
+                    & CF_index_entry_command)
+                  || current->parent->parent->parent->cmd == CM_subentry))
             {
-              ELEMENT *index_elt;
-              if (current->parent->parent
-                  && current->parent->parent->parent
-                  && ((command_flags(current->parent->parent->parent)
-                        & CF_index_entry_command)
-                      || current->parent->parent->parent->cmd == CM_subentry))
+              index_elt = current->parent->parent->parent;
+              if (current->parent->cmd == CM_sortas)
                 {
-                  index_elt = current->parent->parent->parent;
-                  add_extra_string_dup (index_elt,
+                  int superfluous_arg;
+                  char *arg = convert_to_text (current, &superfluous_arg);
+                  if (arg && *arg)
+                    {
+                      add_extra_string (index_elt,
                                         command_name(current->parent->cmd),
-                                        e->text.text);
+                                        arg);
+                    }
+                }
+              else
+                {
+                  add_extra_element (index_elt,
+                                     command_name(current->parent->cmd),
+                                     current->parent);
                 }
             }
         }
@@ -518,7 +527,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       add_to_element_contents (current, e);
       goto funexit;
     }
-  /* context brace command (e.g. @footnote) */
+  /* context brace command (e.g. @footnote) when there is a paragraph inside */
   else if (current_context() == ct_footnote
            || current_context() == ct_caption
            || current_context() == ct_shortcaption
@@ -533,6 +542,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           (void) pop_context ();
           debug ("CLOSING(context command)");
           closed_command = current->parent->cmd;
+          counter_pop (&count_remaining_args);
 
           register_global_command (current->parent);
           current = current->parent->parent;
@@ -606,7 +616,7 @@ handle_comma (ELEMENT *current, char **line_inout)
                    || current->cmd == CM_inlineifclear)
             {
               expandp = 0;
-              if (fetch_value (inline_type, strlen (inline_type)))
+              if (fetch_value (inline_type))
                 expandp = 1;
               if (current->cmd == CM_inlineifclear)
                 expandp = !expandp;
@@ -714,7 +724,8 @@ inlinefmtifelse_done:
         }
     }
 
-  counter_dec (&count_remaining_args);
+  if (counter_value (&count_remaining_args, current) != COUNTER_VARIADIC)
+    counter_dec (&count_remaining_args);
   new_arg = new_element (type);
   add_to_element_args (current, new_arg);
   current = new_arg;

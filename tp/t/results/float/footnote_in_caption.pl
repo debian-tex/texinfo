@@ -58,7 +58,9 @@ $result_trees{'footnote_in_caption'} = {
           'extra' => {
             'spaces_before_argument' => ' ',
             'type' => {
-              'content' => [],
+              'content' => [
+                {}
+              ],
               'normalized' => 'fl'
             }
           },
@@ -168,7 +170,11 @@ $result_trees{'footnote_in_caption'} = {
               'extra' => {
                 'float' => {}
               },
-              'line_nr' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -216,7 +222,9 @@ $result_trees{'footnote_in_caption'} = {
             'normalized' => 'label',
             'spaces_before_argument' => ' ',
             'type' => {
-              'content' => [],
+              'content' => [
+                {}
+              ],
               'normalized' => 'fl'
             }
           },
@@ -235,7 +243,9 @@ $result_trees{'footnote_in_caption'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -258,7 +268,7 @@ $result_trees{'footnote_in_caption'}{'contents'}[1]{'args'}[0]{'parent'} = $resu
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[1];
-$result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[1]{'extra'}{'type'}{'content'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'};
+$result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[1]{'extra'}{'type'}{'content'}[0] = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'args'}[0];
@@ -275,7 +285,6 @@ $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'float'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3];
-$result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'line_nr'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0];
@@ -284,10 +293,10 @@ $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'caption'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'args'}[1]{'contents'}[0];
-$result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'type'}{'content'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'};
+$result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'type'}{'content'}[0] = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'footnote_in_caption'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'footnote_in_caption'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'footnote_in_caption'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'footnote_in_caption'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'parent'} = $result_trees{'footnote_in_caption'};
 
 $result_texis{'footnote_in_caption'} = '@node Top
@@ -373,6 +382,7 @@ $result_converted{'plaintext'}->{'footnote_in_caption'} = '* Menu:
 
 In float.
 
+
 fl 1: in caption(1)
 
    ---------- Footnotes ----------
@@ -393,6 +403,7 @@ File: ,  Node: Top,  Up: (dir)
 
 In float.
 
+
 fl 1: in caption(1)
 
    ---------- Footnotes ----------
@@ -404,7 +415,7 @@ fl 1: in caption(1)
 Tag Table:
 Node: Top27
 Ref: label126
-Ref: Top-Footnote-1194
+Ref: Top-Footnote-1195
 
 End Tag Table
 
@@ -426,14 +437,16 @@ $result_converted{'html'}->{'footnote_in_caption'} = '<!DOCTYPE html PUBLIC "-//
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -442,6 +455,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -463,13 +477,12 @@ ul.no-bullet {list-style: none}
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="t_hlistoffloats_FOOT1_1" href="#t_hlistoffloats_DOCF1_1">(1)</a></h3>
+<h5><a id="t_hlistoffloats_FOOT1_1" href="#t_hlistoffloats_DOCF1_1">(1)</a></h5>
 <p>in footnote</p>
-<h5><a id="FOOT1" href="#DOCF1">(2)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(2)</a></h5>
 <p>in footnote</p>
 </div>
 <hr>
-
 
 
 </body>

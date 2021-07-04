@@ -358,7 +358,20 @@ $result_texts{'comments_on_misc_command_line'} = '
 Para.
 ';
 
-$result_errors{'comments_on_misc_command_line'} = [];
+$result_errors{'comments_on_misc_command_line'} = [
+  {
+    'error_line' => ':2: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
+    'type' => 'warning'
+  }
+];
+
+
+$result_floats{'comments_on_misc_command_line'} = {};
 
 
 

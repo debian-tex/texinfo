@@ -536,12 +536,30 @@ $result_errors{'also_not_line'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':4: warning: @refill is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => '@refill is obsolete.',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':14: warning: @page should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 14,
     'macro' => '',
     'text' => '@page should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':15: warning: @refill is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 15,
+    'macro' => '',
+    'text' => '@refill is obsolete.',
     'type' => 'warning'
   },
   {
@@ -563,6 +581,9 @@ $result_errors{'also_not_line'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'also_not_line'} = {};
 
 
 1;

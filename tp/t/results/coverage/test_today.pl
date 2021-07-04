@@ -50,6 +50,9 @@ $result_texts{'test_today'} = 'a sunny day.';
 $result_errors{'test_today'} = [];
 
 
+$result_floats{'test_today'} = {};
+
+
 
 $result_converted{'plaintext'}->{'test_today'} = 'a sunny day.
 ';

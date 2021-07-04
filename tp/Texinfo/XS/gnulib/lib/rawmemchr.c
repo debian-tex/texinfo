@@ -1,5 +1,5 @@
 /* Searching in a string.
-   Copyright (C) 2008-2019 Free Software Foundation, Inc.
+   Copyright (C) 2008-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,6 +18,9 @@
 
 /* Specification.  */
 #include <string.h>
+
+/* A function definition is only needed if HAVE_RAWMEMCHR is not defined.  */
+#if !HAVE_RAWMEMCHR
 
 /* Find the first occurrence of C in S.  */
 void *
@@ -134,3 +137,5 @@ rawmemchr (const void *s, int c_in)
     char_ptr++;
   return (void *) char_ptr;
 }
+
+#endif

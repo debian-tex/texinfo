@@ -129,7 +129,9 @@ $result_trees{'verbatim_in_ref'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -164,7 +166,7 @@ $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[4]{'parent'} = $resu
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[5];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'verbatim_in_ref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'verbatim_in_ref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_ref'};
 
 $result_texis{'verbatim_in_ref'} = '@node Top
@@ -228,6 +230,9 @@ $result_errors{'verbatim_in_ref'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'verbatim_in_ref'} = {};
 
 
 1;

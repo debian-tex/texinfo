@@ -19,7 +19,7 @@ my @test_cases = (
 ],
 ['navigation_no_header',
   undef, {'test_file' => 'navigation.texi' },
-  {'HEADERS' => 0, 'SHOW_MENU' => 0}
+  {'HEADERS' => 0, }
 ],
 ['navigation_vertical',
   undef, {'test_file' => 'navigation.texi' },
@@ -45,17 +45,17 @@ my @test_cases = (
 ['navigation_chapter_no_header',
   undef, {'test_file' => 'navigation.texi' },
   {'SPLIT' => 'chapter',
-   'HEADERS' => 0, 'SHOW_MENU' => 0}
+   'HEADERS' => 0, }
 ],
 ['navigation_section_no_header',
   undef, {'test_file' => 'navigation.texi' },
   {'SPLIT' => 'section',
-   'HEADERS' => 0, 'SHOW_MENU' => 0}
+   'HEADERS' => 0, }
 ],
 ['navigation_node_no_header',
   undef, {'test_file' => 'navigation.texi' },
   {'SPLIT' => 'node',
-   'HEADERS' => 0, 'SHOW_MENU' => 0}
+   'HEADERS' => 0, }
 ],
 ['navigation_chapter_vertical',
   undef, {'test_file' => 'navigation.texi' },

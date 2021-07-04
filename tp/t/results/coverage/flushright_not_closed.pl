@@ -77,4 +77,7 @@ $result_errors{'flushright_not_closed'} = [
 ];
 
 
+$result_floats{'flushright_not_closed'} = {};
+
+
 1;

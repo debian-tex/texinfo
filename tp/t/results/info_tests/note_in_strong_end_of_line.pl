@@ -129,7 +129,9 @@ $result_trees{'note_in_strong_end_of_line'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -165,7 +167,7 @@ $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'contents'}[3]{'conte
 $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'contents'}[3];
 $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1];
 $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'parent'} = $result_trees{'note_in_strong_end_of_line'};
 
 $result_texis{'note_in_strong_end_of_line'} = '@node Top
@@ -203,6 +205,9 @@ $result_menus{'note_in_strong_end_of_line'} = {
 };
 
 $result_errors{'note_in_strong_end_of_line'} = [];
+
+
+$result_floats{'note_in_strong_end_of_line'} = {};
 
 
 

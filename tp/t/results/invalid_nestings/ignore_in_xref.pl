@@ -133,7 +133,9 @@ $result_trees{'ignore_in_xref'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -169,7 +171,7 @@ $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'pa
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ignore_in_xref'}{'contents'}[1];
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ignore_in_xref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ignore_in_xref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'ignore_in_xref'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'ignore_in_xref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ignore_in_xref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'parent'} = $result_trees{'ignore_in_xref'};
 
 $result_texis{'ignore_in_xref'} = '@node Top
@@ -215,6 +217,9 @@ $result_errors{'ignore_in_xref'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'ignore_in_xref'} = {};
 
 
 1;

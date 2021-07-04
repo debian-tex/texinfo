@@ -56,7 +56,11 @@ $result_trees{'center'} = {
       'extra' => {
         'spaces_before_argument' => '  '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -74,7 +78,6 @@ $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'con
 $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[1]{'args'}[0];
 $result_trees{'center'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[1];
-$result_trees{'center'}{'contents'}[1]{'line_nr'} = $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'center'}{'contents'}[1]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[2]{'parent'} = $result_trees{'center'};
 
@@ -90,6 +93,9 @@ in center in code
 ';
 
 $result_errors{'center'} = [];
+
+
+$result_floats{'center'} = {};
 
 
 

@@ -149,6 +149,9 @@ $result_errors{'section_before_chapter'} = [
 ];
 
 
+$result_floats{'section_before_chapter'} = {};
+
+
 
 $result_converted{'xml'}->{'section_before_chapter'} = '<section spaces=" "><sectiontitle>section </sectiontitle>
 

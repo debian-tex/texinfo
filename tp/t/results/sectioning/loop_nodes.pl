@@ -44,7 +44,9 @@ $result_trees{'loop_nodes'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -379,7 +381,9 @@ $result_trees{'loop_nodes'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'node-up'
           },
           undef,
@@ -569,7 +573,9 @@ $result_trees{'loop_nodes'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'node-middle'
           },
           undef,
@@ -616,7 +622,9 @@ $result_trees{'loop_nodes'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'node-down'
           }
         ],
@@ -638,7 +646,7 @@ $result_trees{'loop_nodes'}{'contents'}[0]{'parent'} = $result_trees{'loop_nodes
 $result_trees{'loop_nodes'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'loop_nodes'}{'contents'}[1]{'args'}[0];
 $result_trees{'loop_nodes'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'loop_nodes'}{'contents'}[1];
 $result_trees{'loop_nodes'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'loop_nodes'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'loop_nodes'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'loop_nodes'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'loop_nodes'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'loop_nodes'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'loop_nodes'}{'contents'}[1]{'parent'} = $result_trees{'loop_nodes'};
 $result_trees{'loop_nodes'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'loop_nodes'}{'contents'}[2]{'args'}[0];
 $result_trees{'loop_nodes'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'loop_nodes'}{'contents'}[2];
@@ -688,7 +696,7 @@ $result_trees{'loop_nodes'}{'contents'}[3]{'contents'}[1]{'extra'}{'end_command'
 $result_trees{'loop_nodes'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'loop_nodes'}{'contents'}[3];
 $result_trees{'loop_nodes'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'loop_nodes'}{'contents'}[3];
 $result_trees{'loop_nodes'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'loop_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'loop_nodes'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'loop_nodes'}{'contents'}[3]{'extra'}{'node_content'};
+$result_trees{'loop_nodes'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'loop_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'loop_nodes'}{'contents'}[3]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'loop_nodes'}{'contents'}[3]{'args'}[3]{'contents'}[0];
 $result_trees{'loop_nodes'}{'contents'}[3]{'parent'} = $result_trees{'loop_nodes'};
 $result_trees{'loop_nodes'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'loop_nodes'}{'contents'}[4]{'args'}[0];
@@ -717,13 +725,13 @@ $result_trees{'loop_nodes'}{'contents'}[4]{'contents'}[1]{'extra'}{'end_command'
 $result_trees{'loop_nodes'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'loop_nodes'}{'contents'}[4];
 $result_trees{'loop_nodes'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'loop_nodes'}{'contents'}[4];
 $result_trees{'loop_nodes'}{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'loop_nodes'}{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'loop_nodes'}{'contents'}[4]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'loop_nodes'}{'contents'}[4]{'extra'}{'node_content'};
+$result_trees{'loop_nodes'}{'contents'}[4]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'loop_nodes'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'loop_nodes'}{'contents'}[4]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'loop_nodes'}{'contents'}[4]{'args'}[3]{'contents'}[0];
 $result_trees{'loop_nodes'}{'contents'}[4]{'parent'} = $result_trees{'loop_nodes'};
 $result_trees{'loop_nodes'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'loop_nodes'}{'contents'}[5]{'args'}[0];
 $result_trees{'loop_nodes'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'loop_nodes'}{'contents'}[5];
 $result_trees{'loop_nodes'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'loop_nodes'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'loop_nodes'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'loop_nodes'}{'contents'}[5]{'extra'}{'node_content'};
+$result_trees{'loop_nodes'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'loop_nodes'}{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'loop_nodes'}{'contents'}[5]{'parent'} = $result_trees{'loop_nodes'};
 
 $result_texis{'loop_nodes'} = '
@@ -923,15 +931,18 @@ $result_menus{'loop_nodes'}{'menu_child'}{'menu_up'} = $result_menus{'loop_nodes
 
 $result_errors{'loop_nodes'} = [
   {
-    'error_line' => ':9: warning: for `node up\', up in menu `Top\' and up `node down\' don\'t match
+    'error_line' => ':9: warning: node up pointer for `node up\' is `node down\' but up is `Top\' in menu
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'for `node up\', up in menu `Top\' and up `node down\' don\'t match',
+    'text' => 'node up pointer for `node up\' is `node down\' but up is `Top\' in menu',
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'loop_nodes'} = {};
 
 
 1;

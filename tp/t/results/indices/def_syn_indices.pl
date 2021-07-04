@@ -268,7 +268,11 @@ $result_trees{'def_syn_indices'} = {
                   ],
                   'cmdname' => '~',
                   'contents' => [],
-                  'line_nr' => {},
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 14,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -294,7 +298,11 @@ $result_trees{'def_syn_indices'} = {
                           ],
                           'cmdname' => 'dotless',
                           'contents' => [],
-                          'line_nr' => {},
+                          'line_nr' => {
+                            'file_name' => '',
+                            'line_nr' => 14,
+                            'macro' => ''
+                          },
                           'parent' => {}
                         }
                       ],
@@ -304,7 +312,11 @@ $result_trees{'def_syn_indices'} = {
                   ],
                   'cmdname' => '^',
                   'contents' => [],
-                  'line_nr' => {},
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 14,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 }
               ],
@@ -326,13 +338,17 @@ $result_trees{'def_syn_indices'} = {
               'index_at_command' => 'codeidxindex',
               'index_name' => 'codeidx',
               'index_type_command' => 'codeidxindex',
-              'key' => 'a index entry te~ i^',
+              'key' => "a index entry t\x{1ebd} \x{ee}",
               'node' => {},
               'number' => 1
             },
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 14,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'index_entry_command'
         },
@@ -1219,7 +1235,9 @@ $result_trees{'def_syn_indices'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -1271,22 +1289,18 @@ $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'conte
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[3];
-$result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[3]{'line_nr'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[5];
-$result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[5]{'line_nr'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'command'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'content'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'};
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'};
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'node'} = $result_trees{'def_syn_indices'}{'contents'}[1];
-$result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'line_nr'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[9]{'args'}[0];
@@ -1404,7 +1418,7 @@ $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[53]{'args'}[0]{'cont
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[53]{'args'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[53];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[53]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'def_syn_indices'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'def_syn_indices'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'def_syn_indices'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'def_syn_indices'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'parent'} = $result_trees{'def_syn_indices'};
 
 $result_texis{'def_syn_indices'} = '
@@ -1664,6 +1678,9 @@ $result_indices{'def_syn_indices'} = {
 };
 
 
+$result_floats{'def_syn_indices'} = {};
+
+
 
 $result_converted{'info'}->{'def_syn_indices'} = 'This is , produced from .
 
@@ -1849,7 +1866,6 @@ after
 <a class="summary-letter" href="#t_h_fn_letter-I"><b>I</b></a>
  &nbsp; 
 </td></tr></table>
-<hr>
-';
+<hr>';
 
 1;

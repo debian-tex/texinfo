@@ -152,8 +152,10 @@ my %arg_elements;
 foreach my $command (keys(%Texinfo::Convert::TexinfoXML::commands_args_elements)) {
   my $arg_index = 0;
   foreach my $element_argument (@{$Texinfo::Convert::TexinfoXML::commands_args_elements{$command}}) {
-    $arg_elements{$element_argument} = [$arg_index, $command];
-    $arg_index++;
+    if ($element_argument ne '*') {
+      $arg_elements{$element_argument} = [$arg_index, $command];
+      $arg_index++;
+    }
   }
 }
 
@@ -272,7 +274,7 @@ while ($reader->read) {
         }
       }
     } elsif (exists($Texinfo::Common::brace_commands{$name})) {
-      print "\@${name}{";
+      print "\@${name}\{";
       if ($name eq 'verb' and $reader->hasAttributes() 
           and defined($reader->getAttribute('delimiter'))) {
         print $reader->getAttribute('delimiter');

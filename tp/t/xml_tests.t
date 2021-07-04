@@ -107,6 +107,22 @@ in gr
 in ex
 @end example
 
+@example in @code{first} arg, second arg @c comm
+in ex with arg
+@end example
+
+@example first, second, third @c comm
+in ex 3 args
+@end example
+
+@example first,second, third, fourth @c comm
+in ex 4 args
+@end example
+
+@display @c comm
+in display
+@end display
+
 @multitable @columnfractions 0.4 0.6 @c comm
 @item a @tab b
 @end multitable
@@ -286,9 +302,9 @@ T
 {'expanded_formats' => ['tex'] }
 ],
 ['spaces_info_lost',
-'@example  text on example line 
-in bad example
-@end  example 
+'@display  text on display line 
+in bad display
+@end  display 
 
 @verbatim  
 in verbatim @g 

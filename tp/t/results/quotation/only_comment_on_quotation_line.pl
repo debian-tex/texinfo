@@ -116,6 +116,9 @@ $result_texts{'only_comment_on_quotation_line'} = 'In quotation
 $result_errors{'only_comment_on_quotation_line'} = [];
 
 
+$result_floats{'only_comment_on_quotation_line'} = {};
+
+
 
 $result_converted{'plaintext'}->{'only_comment_on_quotation_line'} = '     In quotation
 ';

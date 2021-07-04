@@ -1,5 +1,7 @@
 /* tree_types.h - types for the parse tree that are used in many places */
-/* Copyright 2010-2018 Free Software Foundation, Inc.
+#ifndef TREE_TYPES_H
+#define TREE_TYPES_H
+/* Copyright 2010-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,12 +20,7 @@
 
 #include "command_ids.h"
 #include "element_types.h"
-
-typedef struct TEXT {
-    char *text;
-    size_t space; /* Allocated bytes in 'text', including terminating null. */
-    size_t end;
-} TEXT;
+#include "text.h"
 
 enum extra_type {
     extra_element,
@@ -131,3 +128,4 @@ typedef struct {
 } EXTRA_FLOAT_TYPE;
 
 
+#endif

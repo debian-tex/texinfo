@@ -188,6 +188,9 @@ Comment at the end of the line ';
 $result_errors{'comments_in_text'} = [];
 
 
+$result_floats{'comments_in_text'} = {};
+
+
 
 $result_converted{'plaintext'}->{'comments_in_text'} = 'Text line followed by a comment on the same line and another below Text
 line after the comment followed by a comment Text line after the text

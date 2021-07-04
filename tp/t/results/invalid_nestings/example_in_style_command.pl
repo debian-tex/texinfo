@@ -159,4 +159,7 @@ $result_errors{'example_in_style_command'} = [
 ];
 
 
+$result_floats{'example_in_style_command'} = {};
+
+
 1;

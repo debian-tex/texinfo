@@ -70,6 +70,9 @@ $result_texts{'space_in_anchor'} = '.
 $result_errors{'space_in_anchor'} = [];
 
 
+$result_floats{'space_in_anchor'} = {};
+
+
 
 $result_converted{'plaintext'}->{'space_in_anchor'} = '.
 ';

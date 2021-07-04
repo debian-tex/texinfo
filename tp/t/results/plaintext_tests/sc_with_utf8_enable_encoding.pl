@@ -94,6 +94,9 @@ $result_texts{'sc_with_utf8_enable_encoding'} = 'IN SC.
 $result_errors{'sc_with_utf8_enable_encoding'} = [];
 
 
+$result_floats{'sc_with_utf8_enable_encoding'} = {};
+
+
 
 $result_converted{'plaintext'}->{'sc_with_utf8_enable_encoding'} = 'IN SC.
 ';

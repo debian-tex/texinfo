@@ -164,4 +164,7 @@ $result_errors{'double_titlepage_not_closed'} = [
 ];
 
 
+$result_floats{'double_titlepage_not_closed'} = {};
+
+
 1;

@@ -1,6 +1,6 @@
 /* dir.c -- how to build a special "dir" node from "localdir" files.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2020 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,17 +22,9 @@
 #include "filesys.h"
 #include "tilde.h"
 
-/* The "dir" node can be built from the contents of a file called "dir",
-   with the addition of the menus of every file named in the array
-   dirs_to_add which are found in INFOPATH. */
-
 static void add_menu_to_node (char *contents, size_t size, NODE *node);
 static void insert_text_into_node (NODE *node, long start,
     char *text, int textlen);
-
-static char *dirs_to_add[] = {
-  "dir", "localdir", NULL
-};
 
 static NODE *dir_node = 0;
 
@@ -59,8 +51,9 @@ static char *dir_contents;
 static NODE *
 build_dir_node (void)
 {
-  int path_index;
   char *this_dir;
+  int path_index = 0;
+
   NODE *node;
 
   node = info_create_node ();
@@ -82,60 +75,39 @@ build_dir_node (void)
 
   node->nodelen = strlen (node->contents);
 
-  /* Using each element of the path, check for one of the files in
-     DIRS_TO_ADD.  Do not check for "localdir.info.Z" or anything else.
-     Only files explictly named are eligible.  This is a design decision.
-     There can be an info file name "localdir.info" which contains
-     information on the setting up of "localdir" files. */
-  for (this_dir = infopath_first (&path_index); this_dir; 
-       this_dir = infopath_next (&path_index))
-    {
-      register int da_index;
-      char *from_file;
+ for (this_dir = infopath_first (&path_index); this_dir; 
+        this_dir = infopath_next (&path_index))
+   {
+     char *result;
+     char *fullpath;
+     int len;
+     size_t filesize;
+     struct stat finfo;
+     int compressed;
+     char *contents;
 
-      /* Expand a leading tilde if one is present. */
-      if (*this_dir == '~')
+/* Space for an appended compressed file extension, like ".gz". */
+#define PADDING "XXXXXXXXX"
+
+     len = asprintf (&fullpath, "%s/dir%s", this_dir, PADDING);
+     fullpath[len - strlen(PADDING)] = '\0';
+
+     result = info_check_compressed (fullpath, &finfo);
+     if (!result)
+       {
+         free (fullpath);
+         continue;
+       }
+
+      contents = filesys_read_info_file (fullpath, &filesize,
+                                         &finfo, &compressed);
+      if (contents)
         {
-          char *tilde_expanded_dirname;
-
-          tilde_expanded_dirname = tilde_expand_word (this_dir);
-          if (tilde_expanded_dirname != this_dir)
-            {
-              this_dir = tilde_expanded_dirname;
-            }
+          add_menu_to_node (contents, filesize, node);
+          free (contents);
         }
 
-      /* For every different file named in DIRS_TO_ADD found in the
-         search path, add that file's menu to our "dir" node. */
-      for (da_index = 0; (from_file = dirs_to_add[da_index]); da_index++)
-        {
-          struct stat finfo;
-          int statable;
-          int namelen = strlen (from_file);
-          char *fullpath = xmalloc (3 + strlen (this_dir) + namelen);
-          
-          strcpy (fullpath, this_dir);
-          if (!IS_SLASH (fullpath[strlen (fullpath) - 1]))
-            strcat (fullpath, "/");
-          strcat (fullpath, from_file);
-
-          statable = (stat (fullpath, &finfo) == 0);
-
-          if (statable && S_ISREG (finfo.st_mode))
-            {
-              size_t filesize;
-	      int compressed;
-              char *contents = filesys_read_info_file (fullpath, &filesize,
-                                                       &finfo, &compressed);
-              if (contents)
-                {
-                  add_menu_to_node (contents, filesize, node);
-                  free (contents);
-                }
-            }
-
-          free (fullpath);
-        }
+      free (fullpath);
     }
 
   node->flags |= N_IsDir;
@@ -261,14 +233,14 @@ lookup_dir_entry (char *label, int sloppy)
   return entry;
 }
 
-/* Look up entry in "dir" and "localdir" in search directory.  Return
+/* Look up entry in "dir" in search directory.  Return
    value is a pointer to a newly allocated REFERENCE. */
 REFERENCE *
 dir_entry_of_infodir (char *label, char *searchdir)
 {
-  int da_index;
-  char *dir_filename;
   char *dir_fullpath;
+  int len;
+  char *result;
 
   struct stat dummy;
   char *entry_fullpath;
@@ -276,40 +248,42 @@ dir_entry_of_infodir (char *label, char *searchdir)
   NODE *dir_node;
   REFERENCE *entry;
 
-  for (da_index = 0; (dir_filename = dirs_to_add[da_index]); da_index++)
+  len = asprintf (&dir_fullpath, "%s/dir%s", searchdir, PADDING);
+  dir_fullpath[len - strlen(PADDING)] = '\0';
+
+  if (!IS_ABSOLUTE(dir_fullpath))
     {
-      dir_fullpath = info_add_extension (searchdir, dir_filename, &dummy);
-      if (!dir_fullpath)
-        continue;
-
-      if (!IS_ABSOLUTE(dir_fullpath))
-        {
-          char *tmp;
-          asprintf (&tmp, "./%s", dir_fullpath);
-          free (dir_fullpath);
-          dir_fullpath = tmp;
-        }
-      dir_node = info_get_node (dir_fullpath, "Top");
+      char *tmp;
+      asprintf (&tmp, "./%s", dir_fullpath);
       free (dir_fullpath);
-      entry = info_get_menu_entry_by_label (dir_node, label, 1);
-      if (!entry || !entry->filename)
-        {
-          free_history_node (dir_node);
-          continue;
-          /* A dir entry with no filename is unlikely, but not impossible. */
-        }
-
-      entry = info_copy_reference (entry);
-      entry_fullpath = info_add_extension (searchdir, entry->filename, &dummy);
-      if (entry_fullpath)
-        {
-          free (entry->filename);
-          entry->filename = entry_fullpath;
-        }
-
-      free_history_node (dir_node);
-      return entry;
+      dir_fullpath = tmp;
     }
-  return 0;
+  result = info_check_compressed (dir_fullpath, &dummy);
+  if (!result)
+    {
+      free (dir_fullpath);
+      return 0;
+    }
+
+  dir_node = info_get_node (dir_fullpath, "Top");
+  free (dir_fullpath);
+  entry = info_get_menu_entry_by_label (dir_node, label, 1);
+  if (!entry || !entry->filename)
+    {
+      free_history_node (dir_node);
+      return 0;
+      /* A dir entry with no filename is unlikely, but not impossible. */
+    }
+
+  entry = info_copy_reference (entry);
+  entry_fullpath = info_add_extension (searchdir, entry->filename, &dummy);
+  if (entry_fullpath)
+    {
+      free (entry->filename);
+      entry->filename = entry_fullpath;
+    }
+
+  free_history_node (dir_node);
+  return entry;
 }
 

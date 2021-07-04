@@ -1,4 +1,8 @@
 /* tree.h - declarations for tree.c */
+#ifndef TREE_H
+#define TREE_H
+
+#include "tree_types.h"
 
 ELEMENT *new_element (enum element_type type);
 void add_to_element_contents (ELEMENT *parent, ELEMENT *e);
@@ -22,3 +26,4 @@ void destroy_element_and_children (ELEMENT *e);
 #define element_args_number(e) ((e)->args.number)
 #define element_text(e) (text_base (&(e)->text))
 
+#endif

@@ -345,6 +345,9 @@ sp after para
 $result_errors{'test_sp'} = [];
 
 
+$result_floats{'test_sp'} = {};
+
+
 
 $result_converted{'plaintext'}->{'test_sp'} = 'Para
 

@@ -82,4 +82,7 @@ $result_errors{'raw_not_closed'} = [
 ];
 
 
+$result_floats{'raw_not_closed'} = {};
+
+
 1;

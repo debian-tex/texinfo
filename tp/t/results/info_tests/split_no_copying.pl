@@ -84,7 +84,9 @@ $result_trees{'split_no_copying'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -293,7 +295,9 @@ $result_trees{'split_no_copying'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Ch1'
           }
         ],
@@ -387,7 +391,7 @@ $result_trees{'split_no_copying'}{'contents'}[0]{'parent'} = $result_trees{'spli
 $result_trees{'split_no_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[1]{'args'}[0];
 $result_trees{'split_no_copying'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[1];
 $result_trees{'split_no_copying'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'split_no_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'split_no_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'split_no_copying'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'split_no_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'split_no_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'split_no_copying'}{'contents'}[1]{'parent'} = $result_trees{'split_no_copying'};
 $result_trees{'split_no_copying'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[2]{'args'}[0];
 $result_trees{'split_no_copying'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[2];
@@ -417,7 +421,7 @@ $result_trees{'split_no_copying'}{'contents'}[2]{'parent'} = $result_trees{'spli
 $result_trees{'split_no_copying'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[3]{'args'}[0];
 $result_trees{'split_no_copying'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[3];
 $result_trees{'split_no_copying'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'split_no_copying'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'split_no_copying'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'split_no_copying'}{'contents'}[3]{'extra'}{'node_content'};
+$result_trees{'split_no_copying'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'split_no_copying'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'split_no_copying'}{'contents'}[3]{'parent'} = $result_trees{'split_no_copying'};
 $result_trees{'split_no_copying'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[4]{'args'}[0];
 $result_trees{'split_no_copying'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[4];
@@ -583,6 +587,9 @@ $result_menus{'split_no_copying'} = {
 $result_menus{'split_no_copying'}{'menu_child'}{'menu_up'} = $result_menus{'split_no_copying'};
 
 $result_errors{'split_no_copying'} = [];
+
+
+$result_floats{'split_no_copying'} = {};
 
 
 

@@ -1075,24 +1075,6 @@ $result_sectioning{'placed_things_before_element'}{'section_childs'}[0]{'section
 
 $result_errors{'placed_things_before_element'} = [
   {
-    'error_line' => 'placed_things_before_element.texi:29: @menu seen before first @node
-',
-    'file_name' => 'placed_things_before_element.texi',
-    'line_nr' => 29,
-    'macro' => '',
-    'text' => '@menu seen before first @node',
-    'type' => 'error'
-  },
-  {
-    'error_line' => 'placed_things_before_element.texi:29: perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?
-',
-    'file_name' => 'placed_things_before_element.texi',
-    'line_nr' => 29,
-    'macro' => '',
-    'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error'
-  },
-  {
     'error_line' => 'placed_things_before_element.texi:33: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => 'placed_things_before_element.texi',

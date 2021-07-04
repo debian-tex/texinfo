@@ -129,4 +129,7 @@ $result_errors{'no_brace_space_end_line'} = [
 ];
 
 
+$result_floats{'no_brace_space_end_line'} = {};
+
+
 1;

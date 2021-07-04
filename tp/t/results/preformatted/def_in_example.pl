@@ -166,7 +166,11 @@ $result_trees{'def_in_example'} = {
             'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -236,7 +240,6 @@ $result_trees{'def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'ar
 $result_trees{'def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
 $result_trees{'def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'def_in_example'}{'contents'}[0]{'contents'}[1];
 $result_trees{'def_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
-$result_trees{'def_in_example'}{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'def_in_example'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'def_in_example'}{'contents'}[0];
 $result_trees{'def_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'def_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'def_in_example'}{'contents'}[0]{'contents'}[2];
@@ -269,6 +272,9 @@ $result_errors{'def_in_example'} = [
 ];
 
 
+$result_floats{'def_in_example'} = {};
+
+
 
 $result_converted{'plaintext'}->{'def_in_example'} = '      -- Function: name arg
           in defun
@@ -276,8 +282,8 @@ $result_converted{'plaintext'}->{'def_in_example'} = '      -- Function: name ar
 
 
 $result_converted{'html_text'}->{'def_in_example'} = '<div class="example">
-<dl>
-<dt id="index-name">Function: <strong>name</strong> <em>arg</em></dt>
+<dl class="def">
+<dt id="index-name"><span class="category">Function: </span><span><strong>name</strong> <em>arg</em><a href=\'#index-name\' class=\'copiable-anchor\'> &para;</a></span></dt>
 <dd><pre class="example">in defun
 </pre></dd></dl>
 </div>

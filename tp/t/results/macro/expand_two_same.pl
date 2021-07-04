@@ -237,4 +237,7 @@ With a doubles arg arg with comma , here  and re arg with comma , here
 $result_errors{'expand_two_same'} = [];
 
 
+$result_floats{'expand_two_same'} = {};
+
+
 1;

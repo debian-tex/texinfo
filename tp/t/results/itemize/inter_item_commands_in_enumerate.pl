@@ -108,7 +108,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'enumerate_specification' => 1
+        'enumerate_specification' => '1'
       },
       'line_nr' => {
         'file_name' => '',
@@ -251,7 +251,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'enumerate_specification' => 1
+        'enumerate_specification' => '1'
       },
       'line_nr' => {
         'file_name' => '',
@@ -330,6 +330,9 @@ $result_errors{'inter_item_commands_in_enumerate'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'inter_item_commands_in_enumerate'} = {};
 
 
 

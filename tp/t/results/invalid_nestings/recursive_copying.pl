@@ -150,4 +150,7 @@ $result_errors{'recursive_copying'} = [
 ];
 
 
+$result_floats{'recursive_copying'} = {};
+
+
 1;

@@ -61,6 +61,9 @@ $result_texts{'no_use_iso'} = 'AA e^ -- - \'` " "';
 $result_errors{'no_use_iso'} = [];
 
 
+$result_floats{'no_use_iso'} = {};
+
+
 
 $result_converted{'html_text'}->{'no_use_iso'} = '<p>AA &ecirc; -- - \'` &quot; &quot;</p>';
 

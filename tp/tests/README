@@ -68,8 +68,8 @@ is printed. If there are no reference to compare with, then
 is printed.
 
 If a whole directory check run using './parser_tests.sh' had no failure, 
-the directory name is printed followed by a fail; it is followed 
-by a ok if there was a failure.
+the directory name is printed followed by a ok; it is followed
+by a fail if there was a failure.
 
 The test results are in a directory below the out directories. This 
 directory name can be considered as the test name. Let's call it a_test
@@ -97,6 +97,21 @@ can't be used for updating.  Instead, the Makefile's copy-tests and
 copy-tex-html targets do it directly.
 
 
+Testsuite and document strings translations
+===========================================
+
+At least one test, layout/formatting_fr_icons, depends heavily on
+the translation of strings that can be translated and incorporated in
+output documents.  The translations are in the po_document directory.
+These translations are managed by the translation project and only
+updated for the release.  They may lag behind the changes in code,
+which may be problematic for test results.  The translations in
+po_document should never be changed, as they will be overwritten by
+the translation project.  If the translations need to be modified
+for the test results, a filter script should be used instead.  An
+example of such a script can be seen in po_document/fix-translations.sh.
+
+
 TeX4ht and LaTeX2HTML tests
 ===========================
 The tex4ht and latex2HTML related tests are not run automatically, as
@@ -117,7 +132,9 @@ Test runs are driven by the contents of the list-of-tests file in
 each subdirectory. This is a line-oriented file. A # starts a
 comment, except that the very first line of the file can be, e.g.,
 # formats :html
-which says which formats to generate.
+which says which formats to generate.  If no format is specified
+on the first line, -c TEXI2HTML is passed, which sets html
+to be output and some formatting options.
 
 Otherwise, each non-empty non-comment line describes a test.  The first
 word on the line is the test name which corresponds also with the
@@ -159,7 +176,7 @@ format, use the right place.
 
 - add the line to subdir/list-of-tests as described above.
 - most probably, create the needed subdir/*.texi file
-- cd subdir; ../run_parser_all.sh newtest
+- ./run_parser_all.sh -dir subdir newtest
 
 This will create subdir/out_parser*/newtest/ with the test results
 (as explained above), as well as stdout in newtest.1 and stderr in newtest.2.

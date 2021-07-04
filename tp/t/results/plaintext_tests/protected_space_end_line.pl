@@ -214,6 +214,9 @@ This is a very simple texi manual followed by tab a <>.           text.
 $result_errors{'protected_space_end_line'} = [];
 
 
+$result_floats{'protected_space_end_line'} = {};
+
+
 
 $result_converted{'plaintext'}->{'protected_space_end_line'} = 'First para
 

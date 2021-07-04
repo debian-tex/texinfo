@@ -37,7 +37,7 @@ register_label (ELEMENT *current, ELEMENT *label)
       labels_space *= 1.5;
       labels_list = realloc (labels_list, labels_space * sizeof (LABEL));
       if (!labels_list)
-        abort ();
+        fatal ("realloc failed");
     }
   labels_list[labels_number++].target = current;
 

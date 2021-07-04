@@ -96,7 +96,7 @@ $result_trees{'comment_first_on_enumerate_line'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'enumerate_specification' => 1,
+        'enumerate_specification' => '1',
         'spaces_before_argument' => ' '
       },
       'line_nr' => {
@@ -131,6 +131,9 @@ $result_texts{'comment_first_on_enumerate_line'} = '1. first
 ';
 
 $result_errors{'comment_first_on_enumerate_line'} = [];
+
+
+$result_floats{'comment_first_on_enumerate_line'} = {};
 
 
 

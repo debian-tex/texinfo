@@ -99,10 +99,14 @@ image_encoded
 $result_errors{'image_text_encoded'} = [];
 
 
+$result_floats{'image_text_encoded'} = {};
+
+
 
 $result_converted{'info'}->{'image_text_encoded'} = 'This is , produced from .
 
 îmage encodée
+
 
 Tag Table:
 

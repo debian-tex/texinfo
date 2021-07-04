@@ -492,6 +492,9 @@ Para.
 $result_errors{'comment_example_and_blank_lines'} = [];
 
 
+$result_floats{'comment_example_and_blank_lines'} = {};
+
+
 
 $result_converted{'plaintext'}->{'comment_example_and_blank_lines'} = 'Para.
 

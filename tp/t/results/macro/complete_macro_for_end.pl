@@ -132,4 +132,7 @@ $result_texts{'complete_macro_for_end'} = '
 $result_errors{'complete_macro_for_end'} = [];
 
 
+$result_floats{'complete_macro_for_end'} = {};
+
+
 1;

@@ -113,7 +113,7 @@ BBB
 
 F@footnote{In footnote}.
 '],
-['space_in_image','@image{ a ,bb, cc,dd ,e }. @image{ f }.'],
+['space_in_image','@image{ a ,bb, cc,dd ,.e }. @image{ f }.'],
 ['space_command_in_image', '@image{f--ile,,,@ } @image{f--ile,,,@:}'],
 ['end_line_in_anchor',
 '@anchor{an
@@ -160,11 +160,13 @@ begin and end quotations: @w{@t{`@w{}`@dots{}\'@w{}\'}}.  This
 convention should be followed in Texinfo files.  TeX converts
 two single quotes to left- and right-hand doubled.
 '],
+['w_end_sentence',
+'a. @w{b}'],
 ['test_image',
 '@macro files-char
-@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
 
-In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
 @end macro
 
 @copying
@@ -281,6 +283,9 @@ as much as possible is closed in order to find the @@float beginning.
 
 Second paragraph.
 '],
+['empty_line_in_math','@math{a
+
+b}'],
 ['math_not_closed','@math{\delta + 2'],
 ['math_bracketed_not_closed','@math{{x^i}\over{\tan '],
 ['math_bracketed_inside_not_closed','@math{{x^i}\over{\tan}'],

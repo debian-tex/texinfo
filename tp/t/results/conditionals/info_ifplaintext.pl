@@ -28,4 +28,7 @@ $result_texts{'info_ifplaintext'} = '
 $result_errors{'info_ifplaintext'} = [];
 
 
+$result_floats{'info_ifplaintext'} = {};
+
+
 1;

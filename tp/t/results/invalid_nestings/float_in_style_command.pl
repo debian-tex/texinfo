@@ -153,7 +153,9 @@ $result_trees{'float_in_style_command'} = {
         'normalized' => 'B',
         'spaces_before_argument' => ' ',
         'type' => {
-          'content' => [],
+          'content' => [
+            {}
+          ],
           'normalized' => 'A'
         }
       },
@@ -190,7 +192,7 @@ $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'parent'} 
 $result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'caption'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'type'}{'content'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'};
+$result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'type'}{'content'}[0] = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'parent'} = $result_trees{'float_in_style_command'};
 
 $result_texis{'float_in_style_command'} = '@code{

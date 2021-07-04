@@ -73,7 +73,9 @@ $result_trees{'appendix_translated'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -190,7 +192,7 @@ $result_trees{'appendix_translated'}{'contents'}[0]{'parent'} = $result_trees{'a
 $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0];
 $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[1];
 $result_trees{'appendix_translated'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'appendix_translated'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'appendix_translated'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'appendix_translated'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'appendix_translated'}{'contents'}[1]{'parent'} = $result_trees{'appendix_translated'};
 $result_trees{'appendix_translated'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[2]{'args'}[0];
 $result_trees{'appendix_translated'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[2];
@@ -287,6 +289,9 @@ $result_menus{'appendix_translated'} = {
 $result_errors{'appendix_translated'} = [];
 
 
+$result_floats{'appendix_translated'} = {};
+
+
 
 $result_converted{'plaintext'}->{'appendix_translated'} = 'top
 ***
@@ -335,15 +340,17 @@ $result_converted{'html'}->{'appendix_translated'} = '<!DOCTYPE html PUBLIC "-//
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <link href="#SEC_Contents" rel="contents" title="Table des mati&egrave;res">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -352,6 +359,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -361,11 +369,10 @@ ul.no-bullet {list-style: none}
 
 <body lang="fr">
 
-<span id="Top"></span><span id="top"></span><h1 class="top">top</h1>
+<div class="top" id="Top">
+<span id="top"></span><h1 class="top">top</h1>
 
-<span id="dernier"></span><h2 class="appendix">Annexe A dernier</h2>
-
-<span id="SEC_Contents"></span>
+<div class="Contents_element" id="SEC_Contents">
 <h2 class="contents-heading">Table des mati&egrave;res</h2>
 
 <div class="contents">
@@ -374,8 +381,12 @@ ul.no-bullet {list-style: none}
   <li><a id="toc-dernier" href="#dernier">Annexe A dernier</a></li>
 </ul>
 </div>
+</div>
+<div class="appendix" id="dernier">
+<h2 class="appendix">Annexe A dernier</h2>
 
-<hr>
+<hr></div>
+</div>
 
 
 

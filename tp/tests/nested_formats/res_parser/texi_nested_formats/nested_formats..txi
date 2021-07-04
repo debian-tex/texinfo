@@ -235,7 +235,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -394,7 +393,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -554,7 +552,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -712,7 +709,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -871,7 +867,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -1032,7 +1027,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -1190,7 +1184,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -1349,7 +1342,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -1512,7 +1504,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -1670,7 +1661,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -1829,7 +1819,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -1990,7 +1979,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -2149,7 +2137,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -2309,7 +2296,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -2475,7 +2461,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -2634,7 +2619,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -2795,7 +2779,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -2956,7 +2939,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -3114,7 +3096,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -3273,7 +3254,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -3434,7 +3414,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -3592,7 +3571,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -3750,7 +3728,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -3911,7 +3888,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -4070,7 +4046,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -4230,7 +4205,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex
@@ -4388,7 +4362,6 @@ in verbatim
 @end xml
 
 @html
-html
 @end html
 
 @tex

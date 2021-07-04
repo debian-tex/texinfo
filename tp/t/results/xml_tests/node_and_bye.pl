@@ -45,7 +45,9 @@ $result_trees{'node_and_bye'} = [
           ],
           'nodes_manuals' => [
             {
-              'node_content' => [],
+              'node_content' => [
+                {}
+              ],
               'normalized' => 'Top'
             }
           ],
@@ -83,7 +85,7 @@ $result_trees{'node_and_bye'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'paren
 $result_trees{'node_and_bye'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node_and_bye'}[0]{'contents'}[1];
 $result_trees{'node_and_bye'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'node_and_bye'}[0]{'contents'}[1];
 $result_trees{'node_and_bye'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_and_bye'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'node_and_bye'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'node_and_bye'}[0]{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'node_and_bye'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_and_bye'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_and_bye'}[0]{'contents'}[1]{'parent'} = $result_trees{'node_and_bye'}[0];
 $result_trees{'node_and_bye'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'node_and_bye'}[0]{'contents'}[2];
 $result_trees{'node_and_bye'}[0]{'contents'}[2]{'parent'} = $result_trees{'node_and_bye'}[0];
@@ -116,6 +118,9 @@ $result_menus{'node_and_bye'} = {
 };
 
 $result_errors{'node_and_bye'} = [];
+
+
+$result_floats{'node_and_bye'} = {};
 
 
 $result_elements{'node_and_bye'} = [

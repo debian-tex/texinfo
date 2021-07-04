@@ -246,7 +246,9 @@ $result_trees{'empty_menu_entry_name'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -285,7 +287,9 @@ $result_trees{'empty_menu_entry_name'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'aaa'
           }
         ],
@@ -343,12 +347,12 @@ $result_trees{'empty_menu_entry_name'}{'contents'}[1]{'contents'}[1]{'extra'}{'e
 $result_trees{'empty_menu_entry_name'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'empty_menu_entry_name'}{'contents'}[1];
 $result_trees{'empty_menu_entry_name'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'empty_menu_entry_name'}{'contents'}[1];
 $result_trees{'empty_menu_entry_name'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'empty_menu_entry_name'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_menu_entry_name'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'empty_menu_entry_name'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'empty_menu_entry_name'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_menu_entry_name'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_menu_entry_name'}{'contents'}[1]{'parent'} = $result_trees{'empty_menu_entry_name'};
 $result_trees{'empty_menu_entry_name'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_menu_entry_name'}{'contents'}[2]{'args'}[0];
 $result_trees{'empty_menu_entry_name'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_menu_entry_name'}{'contents'}[2];
 $result_trees{'empty_menu_entry_name'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'empty_menu_entry_name'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_menu_entry_name'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'empty_menu_entry_name'}{'contents'}[2]{'extra'}{'node_content'};
+$result_trees{'empty_menu_entry_name'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_menu_entry_name'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_menu_entry_name'}{'contents'}[2]{'parent'} = $result_trees{'empty_menu_entry_name'};
 
 $result_texis{'empty_menu_entry_name'} = '@node Top
@@ -441,6 +445,9 @@ $result_errors{'empty_menu_entry_name'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'empty_menu_entry_name'} = {};
 
 
 1;

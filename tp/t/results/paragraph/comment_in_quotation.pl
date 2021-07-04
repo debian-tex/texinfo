@@ -227,6 +227,9 @@ Quotation no space';
 $result_errors{'comment_in_quotation'} = [];
 
 
+$result_floats{'comment_in_quotation'} = {};
+
+
 
 $result_converted{'plaintext'}->{'comment_in_quotation'} = '     Quotation
 

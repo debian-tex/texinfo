@@ -101,6 +101,9 @@ $result_errors{'incorrect_allowcodebreaks_argument'} = [
 ];
 
 
+$result_floats{'incorrect_allowcodebreaks_argument'} = {};
+
+
 
 $result_converted{'plaintext'}->{'incorrect_allowcodebreaks_argument'} = '\'b a\'
 ';

@@ -159,7 +159,7 @@ handle_menu (ELEMENT **current_inout, char **line_inout)
         }
 
       if (pop_context () != ct_preformatted)
-        abort (); /* bug */
+        fatal ("preformatted context expected");
 
       menu_entry = new_element (ET_menu_entry);
       leading_text = new_element (ET_menu_entry_leading_text);

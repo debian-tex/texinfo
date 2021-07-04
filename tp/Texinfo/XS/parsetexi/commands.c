@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,6 +20,8 @@
 
 #include "command_ids.h"
 #include "commands.h"
+#include "errors.h"
+
 #include "command_data.c"
 
 COMMAND *user_defined_command_data = 0;
@@ -82,7 +84,7 @@ add_texinfo_command (char *name)
         = realloc (user_defined_command_data,
                    (user_defined_space += 10) * sizeof (COMMAND));
       if (!user_defined_command_data)
-        abort ();
+        fatal ("could not realloc");
     }
 
   user_defined_command_data[user_defined_number].cmdname = strdup (name);

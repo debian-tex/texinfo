@@ -162,4 +162,7 @@ Before (machin)
 $result_errors{'nested_macro_call'} = [];
 
 
+$result_floats{'nested_macro_call'} = {};
+
+
 1;

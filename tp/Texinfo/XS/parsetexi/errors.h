@@ -1,4 +1,11 @@
 /* errors.h - declarations for error.c */
+#ifndef ERRORS_H
+#define ERRORS_H
+
+#include "tree_types.h"
+
+void fatal (char *);
+void bug (char *);
 
 enum error_type { error, warning };
 
@@ -12,3 +19,4 @@ void line_error_ext (enum error_type type, LINE_NR *cmd_line_nr,
 void bug_message (char *format, ...);
 
 char *dump_errors (void);
+#endif

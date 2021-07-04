@@ -90,4 +90,7 @@ res1 abc
 $result_errors{'macro_no_arg_bad_expansion'} = [];
 
 
+$result_floats{'macro_no_arg_bad_expansion'} = {};
+
+
 1;

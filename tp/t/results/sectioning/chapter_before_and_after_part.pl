@@ -251,6 +251,9 @@ $result_sectioning{'chapter_before_and_after_part'}{'section_childs'}[1]{'sectio
 $result_errors{'chapter_before_and_after_part'} = [];
 
 
+$result_floats{'chapter_before_and_after_part'} = {};
+
+
 $result_elements{'chapter_before_and_after_part'} = [
   {
     'extra' => {
@@ -343,14 +346,16 @@ $result_converted{'html'}->{'chapter_before_and_after_part'} = '<!DOCTYPE html P
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -359,6 +364,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -367,14 +373,21 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="chapter"></span><h2 class="chapter">1 chapter</h2>
+<div class="chapter" id="chapter">
+<h2 class="chapter">1 chapter</h2>
 
-<span id="part"></span><h1 class="part">part</h1>
+</div>
+<div class="part" id="part">
+<h1 class="part">part</h1>
 <hr>
 
-<span id="chapter-2"></span><h2 class="chapter">2 chapter 2</h2>
+<ul class="section-toc">
+<li><a href="#chapter-2" accesskey="1">chapter 2</a></li>
+</ul>
+<div class="chapter" id="chapter-2">
+<h2 class="chapter">2 chapter 2</h2>
 
-<span id="SEC_Contents"></span>
+<div class="Contents_element" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
@@ -387,8 +400,9 @@ ul.no-bullet {list-style: none}
 
 </ul>
 </div>
-
-<hr>
+</div>
+<hr></div>
+</div>
 
 
 

@@ -130,6 +130,9 @@ $result_texts{'raw_in_style'} = '
 $result_errors{'raw_in_style'} = [];
 
 
+$result_floats{'raw_in_style'} = {};
+
+
 
 $result_converted{'plaintext'}->{'raw_in_style'} = '\' \'
 ';

@@ -2029,6 +2029,9 @@ After quotation sp b a
 $result_errors{'nested_block_commands'} = [];
 
 
+$result_floats{'nested_block_commands'} = {};
+
+
 
 $result_converted{'plaintext'}->{'nested_block_commands'} = 'In group
      in quotation

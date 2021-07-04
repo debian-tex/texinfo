@@ -69,7 +69,9 @@ $result_trees{'two_footnotes_in_nodes_separate'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -393,7 +395,9 @@ $result_trees{'two_footnotes_in_nodes_separate'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'chapter'
           }
         ],
@@ -587,7 +591,7 @@ $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[0]{'parent'} = $res
 $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[1]{'args'}[0];
 $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[1];
 $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[1]{'parent'} = $result_trees{'two_footnotes_in_nodes_separate'};
 $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[2]{'args'}[0];
 $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[2];
@@ -636,7 +640,7 @@ $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[2]{'parent'} = $res
 $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[3]{'args'}[0];
 $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[3];
 $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[3]{'extra'}{'node_content'};
+$result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[3]{'parent'} = $result_trees{'two_footnotes_in_nodes_separate'};
 $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[4]{'args'}[0];
 $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'two_footnotes_in_nodes_separate'}{'contents'}[4];
@@ -832,6 +836,9 @@ $result_menus{'two_footnotes_in_nodes_separate'}{'menu_child'}{'menu_up'} = $res
 $result_errors{'two_footnotes_in_nodes_separate'} = [];
 
 
+$result_floats{'two_footnotes_in_nodes_separate'} = {};
+
+
 
 $result_converted{'html'}->{'two_footnotes_in_nodes_separate'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -844,14 +851,16 @@ $result_converted{'html'}->{'two_footnotes_in_nodes_separate'} = '<!DOCTYPE html
 <meta name="keywords" content="2 footnotes in 2 nodes">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -860,6 +869,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -868,7 +878,8 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Top"></span><div class="header">
+<div class="top" id="Top">
+<div class="header">
 <p>
 Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 </div>
@@ -878,15 +889,15 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 </p>
 <p>B<a id="DOCF2" href="#FOOT2"><sup>2</sup></a>
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="section-toc">
+<li><a href="#chapter" accesskey="1">chapter</a></li>
+</ul>
 <hr>
-<span id="chapter"></span><div class="header">
+<div class="chapter" id="chapter">
+<div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#Top" accesskey="p" rel="prev">2 footnotes in 2 nodes</a>, Up: <a href="#Top" accesskey="u" rel="up">2 footnotes in 2 nodes</a> &nbsp; </p>
 </div>
 <span id="chapter-1"></span><h2 class="chapter">1 chapter</h2>
 
@@ -894,7 +905,8 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 </p>
 <p>D<a id="DOCF4" href="#FOOT4"><sup>4</sup></a>
 </p>
-<hr>
+</div>
+</div>
 
 
 
@@ -1005,7 +1017,8 @@ C(1) (*note chapter-Footnote-1::)
 ';
 
 
-$result_converted{'html_text'}->{'two_footnotes_in_nodes_separate'} = '<span id="Top"></span><div class="header">
+$result_converted{'html_text'}->{'two_footnotes_in_nodes_separate'} = '<div class="top" id="Top">
+<div class="header">
 <p>
  &nbsp; </p>
 </div>
@@ -1015,13 +1028,13 @@ $result_converted{'html_text'}->{'two_footnotes_in_nodes_separate'} = '<span id=
 </p>
 <p>B<a id="DOCF2" href="#FOOT2"><sup>2</sup></a>
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="section-toc">
+<li><a href="#chapter" accesskey="1">chapter</a></li>
+</ul>
 <hr>
-<span id="chapter"></span><div class="header">
+<div class="chapter" id="chapter">
+<div class="header">
 <p>
  &nbsp; </p>
 </div>
@@ -1031,7 +1044,8 @@ $result_converted{'html_text'}->{'two_footnotes_in_nodes_separate'} = '<span id=
 </p>
 <p>D<a id="DOCF4" href="#FOOT4"><sup>4</sup></a>
 </p>
-<hr>
+</div>
+</div>
 ';
 
 1;

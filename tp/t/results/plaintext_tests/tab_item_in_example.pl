@@ -142,6 +142,9 @@ $result_errors{'tab_item_in_example'} = [
 ];
 
 
+$result_floats{'tab_item_in_example'} = {};
+
+
 
 $result_converted{'plaintext'}->{'tab_item_in_example'} = '     in tab
      in item

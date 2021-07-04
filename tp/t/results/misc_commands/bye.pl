@@ -34,4 +34,7 @@ $result_texts{'bye'} = '';
 $result_errors{'bye'} = [];
 
 
+$result_floats{'bye'} = {};
+
+
 1;

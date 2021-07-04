@@ -544,7 +544,9 @@ $result_trees{'all_spaces'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -652,7 +654,7 @@ $result_trees{'all_spaces'}{'contents'}[1]{'contents'}[53]{'contents'}[0]{'paren
 $result_trees{'all_spaces'}{'contents'}[1]{'contents'}[53]{'parent'} = $result_trees{'all_spaces'}{'contents'}[1];
 $result_trees{'all_spaces'}{'contents'}[1]{'contents'}[54]{'parent'} = $result_trees{'all_spaces'}{'contents'}[1];
 $result_trees{'all_spaces'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'all_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'all_spaces'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'all_spaces'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'all_spaces'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'all_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'all_spaces'}{'contents'}[1]{'parent'} = $result_trees{'all_spaces'};
 
 $result_texis{'all_spaces'} = '@documentencoding utf-8
@@ -791,6 +793,9 @@ $result_menus{'all_spaces'} = {
 };
 
 $result_errors{'all_spaces'} = [];
+
+
+$result_floats{'all_spaces'} = {};
 
 
 1;

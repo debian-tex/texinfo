@@ -111,4 +111,7 @@ $result_errors{'value_after_accent'} = [
 ];
 
 
+$result_floats{'value_after_accent'} = {};
+
+
 1;

@@ -209,7 +209,9 @@ $result_trees{'image_extension'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -258,7 +260,7 @@ $result_trees{'image_extension'}{'contents'}[1]{'contents'}[5]{'args'}[4]{'paren
 $result_trees{'image_extension'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'image_extension'}{'contents'}[1];
 $result_trees{'image_extension'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'image_extension'}{'contents'}[1];
 $result_trees{'image_extension'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_extension'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'image_extension'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'image_extension'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'image_extension'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'image_extension'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_extension'}{'contents'}[1]{'parent'} = $result_trees{'image_extension'};
 
 $result_texis{'image_extension'} = '@node Top
@@ -296,6 +298,9 @@ $result_menus{'image_extension'} = {
 $result_errors{'image_extension'} = [];
 
 
+$result_floats{'image_extension'} = {};
+
+
 
 $result_converted{'info'}->{'image_extension'} = 'This is , produced from .
 
@@ -303,8 +308,11 @@ $result_converted{'info'}->{'image_extension'} = 'This is , produced from .
 File: ,  Node: Top,  Up: (dir)
 
  [image src="fextext" text="t" ]
+
  [image src="fdotext.ext" text="t" ]
+
  [image src="f--ile.png" text="Image description\\"\\"\\\\." ]
+
 
 
 Tag Table:

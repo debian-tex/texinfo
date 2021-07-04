@@ -186,4 +186,7 @@ $result_errors{'value_in_macro_formal_arg'} = [
 ];
 
 
+$result_floats{'value_in_macro_formal_arg'} = {};
+
+
 1;

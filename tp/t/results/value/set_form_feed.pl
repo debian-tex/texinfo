@@ -152,6 +152,9 @@ a\\a\\f\\\\. . .
 $result_errors{'set_form_feed'} = [];
 
 
+$result_floats{'set_form_feed'} = {};
+
+
 
 $result_converted{'xml'}->{'set_form_feed'} = '<set name="gg" line=" gg &attrformfeed; a\\\\a\\\\f\\\\\\\\">a\\a\\f\\\\</set>
 <set name="hh" line=" hh&attrformfeed;"></set>

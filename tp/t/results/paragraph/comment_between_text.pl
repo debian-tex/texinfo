@@ -60,6 +60,9 @@ end para';
 $result_errors{'comment_between_text'} = [];
 
 
+$result_floats{'comment_between_text'} = {};
+
+
 
 $result_converted{'plaintext'}->{'comment_between_text'} = 'text end para
 ';

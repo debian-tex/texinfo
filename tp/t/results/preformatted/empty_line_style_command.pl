@@ -143,4 +143,7 @@ after empty line
 $result_errors{'empty_line_style_command'} = [];
 
 
+$result_floats{'empty_line_style_command'} = {};
+
+
 1;

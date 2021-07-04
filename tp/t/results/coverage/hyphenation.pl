@@ -70,6 +70,9 @@ $result_texts{'hyphenation'} = '
 $result_errors{'hyphenation'} = [];
 
 
+$result_floats{'hyphenation'} = {};
+
+
 
 $result_converted{'plaintext'}->{'hyphenation'} = '';
 

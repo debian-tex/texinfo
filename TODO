@@ -1,53 +1,40 @@
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
-  Copyright 1992-2019 Free Software Foundation.
+  Copyright 1992-2021 Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
 * Language:
-  - Remove the need for @if[not]tex at the beginning of the document.
-  - Allow : in node names for info files, for names such as
-    `class::method'.  Likewise index entries.  A quoting mechanism such
-    as surrounding node names with SPACE BACKSPACE is probably the best
-    solution, although this is an incompatible change to Info format.
-    This would also allow references without any *note and :: in text,
-    (pace goptical, Alexandre Becoulet, 18 Jan 2011 00:31:42).
-  - consider doing some @inline version of @set, @ifset, like 
-    @inlineset{flag, ...}, @inlineifset{flag, if set} or @inlineifset{flag,
-    if set, if not set} in analogy with @inlinefmt.
-  - @xindexterm [def] primary [,secondary [,tertiary]]  or some such?
-  - Allow subitems and `see' and `see also' in indices.
-  - generalize @vtable/@htable to any defined index.
   - generalize @deffn/etc. with variants that don't make index entries.
+    - could use "@deffn @index{IX} ..." to use index IX instead of default
+  - Better def... command syntax, explicitly marking variables, etc.
+  - generalize @vtable/@ftable to any defined index.
+    - maybe "@ftable @asis @index{IX}"
   - @mergeindex to do @syn*index without changing fonts.
   - multicolumn * width to take up `the rest'.
   - Allow @hsep/@vsep at @item, instead of just in template.
   - another table command to take N succeeding items and split them
     into M columns (see eplain).
   - support bibliographies with BibTeX (see web2c/doc for kludge prototype).
-  - @flushboth to combine @flushleft and @flushright, for RFC's.
-  - @exercise/@answer command for, e.g., gawk.
   - Support automatic line numbering of examples.
-  - Better def... command syntax, explicitly marking variables, etc.
   - Glossary/general definition support (dumas msg 28 Nov 2003 17:09:57 +0100).
-  - Add support for other Latin 9 (and Latin 2 and Latin 1) characters.
 
-* Makeinfo:
+* texi2any:
+  - give a warning for "makeinfo FOO.info" when "makeinfo FOO.texi" was meant
   - Improve the HTML customization API.
   - HTML: support thumbnails.
   - HTML: have a library of different CSS styles.
     http://mail.gnu.org/archive/html/bug-texinfo/2004-01/msg00025.html
-  - XML: cannot be loaded directly in a browser; browsers are supposed to
-    be able to look up the DTD and do something.
-  - add --output-encoding, to set OUTPUT_ENCODING_NAME.
   - Support output formats retaining the tree structure of Texinfo documents
     as parsed by the Parser.  A lisp-like format for GUILE? Maybe JSON?
   - Support LaTeX as a backend.
+  - Support other graphical documentation browsers like GNOME DevHelp
+    (https://lists.gnu.org/archive/html/bug-texinfo/2015-03/msg00041.html)
   - Support the epub output format, http://en.wikipedia.org/wiki/OEBPS.
-    Suggested by Sean Young, 30 Nov 2008 20:13:11.
+    Suggested by Sean Young, 30 Nov 2008 20:13:11 (Savannah bug tracker)
   - Support the MediaWiki output format.
 
 * TeX:
@@ -61,26 +48,26 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - @multitable: repeat table headings if multiple pages long.
   - @multitable: support a heading line concept (<thead> in HTML).
   - Introduce new command to change \bindingoffset.
-  - Use marks to define a real @thissection.
   - Include synctex support.
   - Include hyperlink \special's in the DVI output for xdvi, etc.
   - PDF: make each letter of the index (A, B, ...) a section in the TOC.
     From Carsten Dominik.
-  - PDF: use the PageLabels dictionary to allow jumping to logical
-    pages, presumably after xpdf/gv support it.  Section 8.3.1 of the
-    PDF reference.  From Werner Lemberg, texinfo-pretest mail of
-    27 Feb 2006 22:55:13 +0100.
   - Use @ as the escape character in index files by default,
-    after new texindex is deployed (2020?).
+    after new texi2dvi is deployed (2022?).
 
 * Doc:
-  - New section on doing dedication pages. See gawk.texi
-    for an example of doing it in both the tex and info versions.
   - Use/distribute pod2texi generated documentation of the perl modules in 
     tp generated in doc/tp_api -- when api is stable.
   - Documentation of the HTML customization is missing.
 
 * Info:
+  - For 'u' command, position cursor on the menu entry for the node
+    we just came from
+  - If K is describe-key, K M-left changes the node as M-left is
+    analysed as multiple keys
+  - unnecessary screen redrawing when scroll-last-node=Stop and you
+    try to scroll at the bottom of the last node
+  - a line continuation backslash sometimes flickers when moving a cursor
   - Perhaps comply with LANGUAGE setting on a per-node basis, to allow
     incremental translation of Texinfo files.
   - Display images when running under X, as Emacs 22+ can.
@@ -92,7 +79,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Global dir file (as in /etc/conf/dir) and texinfo config file
     specifying which info directories to search.  From Dale Mellor.
     http://mail.gnu.org/mailman/private/gnu-prog-discuss/2003q4/000439.html
-  - More sample .infokey files, so people can choose without writing their own.
   - Incorporate an X-based viewer, perhaps the old GNU xinfo widget
      (http://www.gnu.org/software/xinfo) or saxinfo
      or tkinfo (http://www.math.ucsb.edu/~boldt/tkinfo/).
@@ -104,12 +90,11 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
 
 * install-info:
+  - replace dir file atomically in case install-info is interrupted
+    (Pedrum Mohageri,
+    https://lists.gnu.org/archive/html/bug-texinfo/2015-11/msg00027.html)
   - install-info --dir-file=dir2 --entry=info foo.info installs garbage
     from the misformatted --entry (and no entries from foo.info).
-  - be able to copy the info file to compile-time $infodir, to
-    simplify by-hand installation.
-  - also support installing HTML files, etc., along with subsidiary
-    @image (or other) files.  In subdirs.  Or something.
   - support info dir entries for other than the current info file name;
     see comments in menu_item_equal.
   - Monitor and improve the dir categories in existing manuals,
@@ -125,11 +110,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
       http://lists.gnu.org/archive/html/emacs-devel/2002-10/msg00090.html
       http://lists.gnu.org/archive/html/emacs-devel/2002-10/msg00137.html
 
-* texindex:
-  - read source file (specified by new option) for @documentlanguage
-    and/or @documentencoding, and change the sorting appropriately.
-  From: Wojciech Polak, 26 Apr 2003 11:30:59 +0200.
-
 * Distribution:
   - generate txi-??.tex from .po's to make translators' jobs easier.
     From Akim and Karl E.
@@ -137,6 +117,13 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
 ***********************************************************************
 
 * Ideas that will not be implemented:
+
+- Allow : in node names for info files, for names such as
+  `class::method'.  Likewise index entries.  A quoting mechanism
+  with DEL characters was implemented, but it is simpler to avoid : 
+  altogether in node names and support : in index entries by changing
+  the interpretation of index nodes slightly.  See
+  https://lists.gnu.org/archive/html/bug-gnu-emacs/2019-01/msg00235.html
 
 - Support general reference card creation.
   [Reference cards are too different from normal Texinfo.]

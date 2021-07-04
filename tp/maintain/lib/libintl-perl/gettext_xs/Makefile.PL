@@ -1,10 +1,9 @@
 #! /usr/local/bin/perl -w # -*- perl -*-
 
 # vim: tabstop=4
-# $Id: Makefile.PL,v 1.1 2011-10-12 23:51:25 pertusus Exp $
 
 # Makefile generator for libintl-perl.
-# Copyright (C) 2002-2009 Guido Flohr <guido@imperia.net>, 
+# Copyright (C) 2002-2017 Guido Flohr <guido.flohr@cantanea.com>, 
 # all rights reserved.
 
 # This program is free software; you can redistribute it and/or modify it
@@ -19,7 +18,7 @@
 
 # You should have received a copy of the GNU Library General Public
 # License along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1335,
 # USA.use ExtUtils::MakeMaker;
 
 use 5.004;
@@ -33,7 +32,7 @@ WriteMakefile (
     VERSION_FROM	=> '../lib/Locale/Messages.pm',
     ($] >= 5.005 ?
 		(ABSTRACT	=> 'XS Interface to Uniforum Message Translation',
-	 	 AUTHOR		=> 'Guido Flohr <guido@imperia.net>',
+	 	 AUTHOR		=> 'Guido Flohr <guido.flohr@cantanea.com>',
     ) : (),
     ),
     PREREQ_PM => { File::Spec => 0 },

@@ -1,7 +1,7 @@
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
-  Copyright 1992-2019 Free Software Foundation, Inc.
+  Copyright 1992-2020 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -9,6 +9,52 @@ See the manual for detailed information.
 
 ------------------------------------------------------------------------------
 
+6.8 (3 July 2021)
+* Language
+  . new command @displaymath for formatting of mathematical notation
+  . @example takes an argument to specify the language
+  . mark these commands as deprecated, not to be used:
+    @centerchap, @definfoenclose, @refill, @inforef.
+  . new paper size @bsixpaper
+
+* texi2any
+  . should be faster as Perl XS parser is enabled by default
+  . SHOW_MENU customization variable replaced by FORMAT_MENU.
+    FORMAT_MENU set to 'menu' is the same as SHOW_MENU set to 1, and
+    FORMAT_MENU set to 'nomenu' is the same as SHOW_MENU set to 0.
+  . only check menu structure if CHECK_NORMAL_MENU_STRUCTURE variable is set
+  . changes to HTML output:
+      . MathJax support for display of math.  new variables HTML_MATH,
+        MATHJAX_SCRIPT and MATHJAX_SOURCE.
+      . new variables JS_WEBLABELS and JS_WEBLABELS_FILE to support
+        JavaScript License Web Labels
+      . by default, use sectional tables of contents instead of menus
+      . use section names in links by default (configure with
+        xrefautomaticsectiontitle customization variable)
+      . CONTENTS_OUTPUT_LOCATION sets location of table of contents
+      . document sections wrapped in <div> elements
+      . new variable USE_NODE_DIRECTIONS to use node or section structure
+        for node directions
+      . copiable anchor links for definitions with COPIABLE_ANCHORS variable
+      . experimental JavaScript browsing interface enabled with INFO_JS_DIR
+      . don't add an extra period before file extension given as an argument
+        to @image if image file is not found
+
+* info
+  . support compressed dir files
+
+* texi2dvi
+  . stop on first error in input file
+
+* texinfo.tex
+  . put logical page numbers into PDF's ('page labels')
+  . put chapter numbers in the PDF outline
+  . new Finnish translation
+
+* Distribution
+  . autoconf 2.71, automake 1.16.3, gettext 0.21
+
+
 6.7 (23 September 2019)
 * Language:
   . support of index subentries and sub-subentries with @subentry

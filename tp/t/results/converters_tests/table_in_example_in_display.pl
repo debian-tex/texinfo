@@ -150,7 +150,11 @@ $result_trees{'table_in_example_in_display'} = {
                 'end_command' => {},
                 'spaces_before_argument' => ' '
               },
-              'line_nr' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -257,7 +261,6 @@ $result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1]{'cont
 $result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1];
 $result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'table_in_example_in_display'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
@@ -288,6 +291,9 @@ Line
 $result_errors{'table_in_example_in_display'} = [];
 
 
+$result_floats{'table_in_example_in_display'} = {};
+
+
 
 $result_converted{'plaintext'}->{'table_in_example_in_display'} = '          item
                Line
@@ -297,7 +303,7 @@ $result_converted{'plaintext'}->{'table_in_example_in_display'} = '          ite
 $result_converted{'html_text'}->{'table_in_example_in_display'} = '<div class="display">
 <div class="example">
 <dl compact="compact">
-<dt><tt>item</tt></dt>
+<dt><span><tt>item</tt></span></dt>
 <dd><pre class="example">Line
 </pre></dd>
 </dl>

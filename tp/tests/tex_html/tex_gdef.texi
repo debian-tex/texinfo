@@ -1,0 +1,16 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top Tests
+
+@tex
+  \gdef\Desig{\buildrel \rm def \over \equiv}
+@end tex
+
+@math{\Desig}
+
+@displaymath
+ \Desig
+@end displaymath
+
+@bye

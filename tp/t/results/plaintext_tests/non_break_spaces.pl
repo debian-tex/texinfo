@@ -98,7 +98,9 @@ $result_trees{'non_break_spaces'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -127,7 +129,7 @@ $result_trees{'non_break_spaces'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'
 $result_trees{'non_break_spaces'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[1]{'contents'}[1];
 $result_trees{'non_break_spaces'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[1];
 $result_trees{'non_break_spaces'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'non_break_spaces'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'non_break_spaces'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'non_break_spaces'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[1]{'parent'} = $result_trees{'non_break_spaces'};
 
 $result_texis{'non_break_spaces'} = '@documentencoding utf-8
@@ -164,6 +166,9 @@ $result_menus{'non_break_spaces'} = {
 };
 
 $result_errors{'non_break_spaces'} = [];
+
+
+$result_floats{'non_break_spaces'} = {};
 
 
 1;

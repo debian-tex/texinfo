@@ -144,7 +144,9 @@ $result_trees{'caption_not_closed'} = {
         'end_command' => {},
         'spaces_before_argument' => ' ',
         'type' => {
-          'content' => [],
+          'content' => [
+            {}
+          ],
           'normalized' => 'Text'
         }
       },
@@ -198,7 +200,7 @@ $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'pa
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'extra'}{'caption'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2];
-$result_trees{'caption_not_closed'}{'contents'}[0]{'extra'}{'type'}{'content'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'args'}[0]{'contents'};
+$result_trees{'caption_not_closed'}{'contents'}[0]{'extra'}{'type'}{'content'}[0] = $result_trees{'caption_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'caption_not_closed'};
 $result_trees{'caption_not_closed'}{'contents'}[1]{'parent'} = $result_trees{'caption_not_closed'};
 $result_trees{'caption_not_closed'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[2];

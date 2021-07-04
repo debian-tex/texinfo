@@ -275,7 +275,11 @@ $result_trees{'end_of_lines_protected'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -317,7 +321,6 @@ $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'args'}[0]
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2];
-$result_trees{'end_of_lines_protected'}{'contents'}[0]{'line_nr'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'parent'} = $result_trees{'end_of_lines_protected'};
 
 $result_texis{'end_of_lines_protected'} = '@deffn category deffn_name arguments    more {args   with end of line within} with 3 @@ @@ {one last arg}
@@ -341,6 +344,9 @@ $result_errors{'end_of_lines_protected'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'end_of_lines_protected'} = {};
 
 
 

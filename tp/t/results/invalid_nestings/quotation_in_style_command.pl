@@ -159,4 +159,7 @@ $result_errors{'quotation_in_style_command'} = [
 ];
 
 
+$result_floats{'quotation_in_style_command'} = {};
+
+
 1;

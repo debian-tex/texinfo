@@ -1,4 +1,4 @@
-/* Copyright 2015-2019 Free Software Foundation, Inc.
+/* Copyright 2015-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,8 +15,9 @@
 
 #include <config.h>
 
-#include "tree_types.h"
 #include "counter.h"
+#include "parser.h"
+
 
 void
 counter_push (COUNTER *c, ELEMENT *elt, int num)
@@ -27,7 +28,7 @@ counter_push (COUNTER *c, ELEMENT *elt, int num)
       c->values = realloc (c->values, c->space * sizeof (int));
       c->elts = realloc (c->elts, c->space * sizeof (ELEMENT *));
       if (!c->values)
-        abort ();
+        fatal ("could not realloc");
     }
   c->values[c->nvalues] = num;
   c->elts[c->nvalues] = elt;
@@ -41,7 +42,7 @@ void
 counter_pop (COUNTER *c)
 {
   if (!c->nvalues)
-    abort ();
+    fatal ("could not realloc");
 
   c->nvalues--;
   c->values[c->nvalues] = 0;

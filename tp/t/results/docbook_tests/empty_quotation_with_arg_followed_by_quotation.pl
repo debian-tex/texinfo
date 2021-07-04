@@ -176,6 +176,9 @@ In quotation
 $result_errors{'empty_quotation_with_arg_followed_by_quotation'} = [];
 
 
+$result_floats{'empty_quotation_with_arg_followed_by_quotation'} = {};
+
+
 
 $result_converted{'docbook'}->{'empty_quotation_with_arg_followed_by_quotation'} = '<blockquote></blockquote>
 <blockquote><para>In quotation

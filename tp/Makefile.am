@@ -113,7 +113,8 @@ dist_init_DATA = \
  init/chm.pm \
  init/html32.pm \
  init/tex4ht.pm \
- init/latex2html.pm
+ init/latex2html.pm \
+ init/highlight_syntax.pm
 
 test_files = \
  t/README \
@@ -184,6 +185,8 @@ test_files = \
  t/input_files/empty.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi \
+ t/input_files/encoding_index_latin1.texi \
+ t/input_files/encoding_index_utf8.texi \
  t/input_files/equivalent_nodes.texi \
  t/input_files/float_copying.texi \
  t/input_files/formatting.texi \

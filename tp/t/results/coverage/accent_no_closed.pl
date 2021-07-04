@@ -61,4 +61,7 @@ $result_errors{'accent_no_closed'} = [
 ];
 
 
+$result_floats{'accent_no_closed'} = {};
+
+
 1;

@@ -299,6 +299,9 @@ ifset second .
 $result_errors{'inlineifsetifclear'} = [];
 
 
+$result_floats{'inlineifsetifclear'} = {};
+
+
 
 $result_converted{'plaintext'}->{'inlineifsetifclear'} = 'iclear first .
 

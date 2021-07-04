@@ -78,4 +78,7 @@ $result_sectioning{'sections'}{'section_childs'}[0]{'section_up'} = $result_sect
 $result_errors{'sections'} = [];
 
 
+$result_floats{'sections'} = {};
+
+
 1;

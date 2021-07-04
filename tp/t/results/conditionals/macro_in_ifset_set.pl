@@ -213,4 +213,7 @@ in ifset
 $result_errors{'macro_in_ifset_set'} = [];
 
 
+$result_floats{'macro_in_ifset_set'} = {};
+
+
 1;

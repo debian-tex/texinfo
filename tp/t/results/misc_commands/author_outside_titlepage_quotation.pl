@@ -61,4 +61,7 @@ $result_errors{'author_outside_titlepage_quotation'} = [
 ];
 
 
+$result_floats{'author_outside_titlepage_quotation'} = {};
+
+
 1;

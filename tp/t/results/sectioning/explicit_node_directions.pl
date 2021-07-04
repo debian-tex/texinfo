@@ -223,7 +223,9 @@ $result_trees{'explicit_node_directions'} = [
           ],
           'nodes_manuals' => [
             {
-              'node_content' => [],
+              'node_content' => [
+                {}
+              ],
               'normalized' => 'Top'
             }
           ],
@@ -328,7 +330,9 @@ $result_trees{'explicit_node_directions'} = [
           ],
           'nodes_manuals' => [
             {
-              'node_content' => [],
+              'node_content' => [
+                {}
+              ],
               'normalized' => 'second-node'
             },
             {
@@ -420,7 +424,9 @@ $result_trees{'explicit_node_directions'} = [
           ],
           'nodes_manuals' => [
             {
-              'node_content' => [],
+              'node_content' => [
+                {}
+              ],
               'normalized' => 'third-node'
             },
             undef,
@@ -490,7 +496,7 @@ $result_trees{'explicit_node_directions'}[0]{'contents'}[1]{'contents'}[1]{'extr
 $result_trees{'explicit_node_directions'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'explicit_node_directions'}[0]{'contents'}[1];
 $result_trees{'explicit_node_directions'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'explicit_node_directions'}[0]{'contents'}[1];
 $result_trees{'explicit_node_directions'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'explicit_node_directions'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'explicit_node_directions'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'explicit_node_directions'}[0]{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'explicit_node_directions'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'explicit_node_directions'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'explicit_node_directions'}[0]{'contents'}[1]{'parent'} = $result_trees{'explicit_node_directions'}[0];
 $result_trees{'explicit_node_directions'}[0]{'extra'}{'element_command'} = $result_trees{'explicit_node_directions'}[0]{'contents'}[1];
 $result_trees{'explicit_node_directions'}[0]{'extra'}{'node'} = $result_trees{'explicit_node_directions'}[0]{'contents'}[1];
@@ -507,7 +513,7 @@ $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'contents'}[1]{'cont
 $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'explicit_node_directions'}[1]{'contents'}[0];
 $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'explicit_node_directions'}[1]{'contents'}[0];
 $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'extra'}{'node_content'};
+$result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
 $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[2]{'contents'}[0];
 $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[3]{'contents'}[0];
@@ -523,7 +529,7 @@ $result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'args'}[2]{'parent'}
 $result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'args'}[3];
 $result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'explicit_node_directions'}[2]{'contents'}[0];
 $result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'extra'}{'node_content'};
+$result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'args'}[2]{'contents'}[0];
 $result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'args'}[3]{'contents'}[0];
 $result_trees{'explicit_node_directions'}[2]{'contents'}[0]{'parent'} = $result_trees{'explicit_node_directions'}[2];
@@ -639,6 +645,9 @@ $result_menus{'explicit_node_directions'}{'menu_child'}{'menu_next'}{'menu_up'} 
 $result_menus{'explicit_node_directions'}{'menu_child'}{'menu_up'} = $result_menus{'explicit_node_directions'};
 
 $result_errors{'explicit_node_directions'} = [];
+
+
+$result_floats{'explicit_node_directions'} = {};
 
 
 $result_elements{'explicit_node_directions'} = [
@@ -813,14 +822,16 @@ $result_converted{'html'}->{'explicit_node_directions'} = '<!DOCTYPE html PUBLIC
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -829,6 +840,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -843,13 +855,7 @@ Next: <a href="#second-node" accesskey="n" rel="next">second node</a> &nbsp; </p
 </div>
 <h1 class="node-heading">Top</h1>
 <p>Top node
-</p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#second-node" accesskey="1">second node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#third-node" accesskey="2">third node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
-
+</p>
 <hr>
 <span id="second-node"></span><div class="header">
 <p>
@@ -865,7 +871,6 @@ Next: <a href="#third-node" accesskey="n" rel="next">third node</a>, Previous: <
 Previous: <a href="#second-node" accesskey="p" rel="prev">second node</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">third node</h4>
-<hr>
 
 
 

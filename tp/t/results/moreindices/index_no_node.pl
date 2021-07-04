@@ -1542,4 +1542,7 @@ $result_errors{'index_no_node'} = [
 ];
 
 
+$result_floats{'index_no_node'} = {};
+
+
 1;

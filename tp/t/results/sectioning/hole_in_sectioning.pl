@@ -326,4 +326,7 @@ $result_errors{'hole_in_sectioning'} = [
 ];
 
 
+$result_floats{'hole_in_sectioning'} = {};
+
+
 1;

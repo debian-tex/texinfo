@@ -276,4 +276,7 @@ $result_errors{'bad_formal_arg'} = [
 ];
 
 
+$result_floats{'bad_formal_arg'} = {};
+
+
 1;

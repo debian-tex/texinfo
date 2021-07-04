@@ -46,8 +46,11 @@ $result_texts{'end_sentence_space_protected'} = 'Some text.  Next sentence.
 $result_errors{'end_sentence_space_protected'} = [];
 
 
+$result_floats{'end_sentence_space_protected'} = {};
 
-$result_converted{'plaintext'}->{'end_sentence_space_protected'} = 'Some text.  Next sentence.
+
+
+$result_converted{'plaintext'}->{'end_sentence_space_protected'} = 'Some text.   Next sentence.
 ';
 
 1;

@@ -78,7 +78,11 @@ $result_trees{'not_fraction'} = {
         'max_columns' => 0,
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -92,7 +96,6 @@ $result_trees{'not_fraction'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents
 $result_trees{'not_fraction'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'contents'}[0];
 $result_trees{'not_fraction'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0];
 $result_trees{'not_fraction'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'not_fraction'}{'contents'}[0]{'contents'}[0];
-$result_trees{'not_fraction'}{'contents'}[0]{'line_nr'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'not_fraction'}{'contents'}[0]{'parent'} = $result_trees{'not_fraction'};
 
 $result_texis{'not_fraction'} = '@multitable @columnfractions aaa
@@ -112,6 +115,9 @@ $result_errors{'not_fraction'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'not_fraction'} = {};
 
 
 1;

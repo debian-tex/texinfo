@@ -34,4 +34,7 @@ $result_texts{'text_on_conditional_line_expanded'} = 'a
 $result_errors{'text_on_conditional_line_expanded'} = [];
 
 
+$result_floats{'text_on_conditional_line_expanded'} = {};
+
+
 1;

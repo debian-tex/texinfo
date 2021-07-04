@@ -45,7 +45,11 @@ $result_trees{'empty_w'} = {
           ],
           'cmdname' => 'w',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -64,7 +68,6 @@ $result_trees{'empty_w'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees
 $result_trees{'empty_w'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_w'}{'contents'}[0];
 $result_trees{'empty_w'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_w'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'empty_w'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_w'}{'contents'}[0]{'contents'}[2];
-$result_trees{'empty_w'}{'contents'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'empty_w'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_w'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_w'}{'contents'}[0];
 $result_trees{'empty_w'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'empty_w'}{'contents'}[0];
 $result_trees{'empty_w'}{'contents'}[0]{'parent'} = $result_trees{'empty_w'};
@@ -75,6 +78,9 @@ $result_texis{'empty_w'} = '@w{} @w{a b}.';
 $result_texts{'empty_w'} = ' a b.';
 
 $result_errors{'empty_w'} = [];
+
+
+$result_floats{'empty_w'} = {};
 
 
 

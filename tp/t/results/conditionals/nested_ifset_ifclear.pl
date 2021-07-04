@@ -393,4 +393,7 @@ Somevar is set, anothervar is not.
 $result_errors{'nested_ifset_ifclear'} = [];
 
 
+$result_floats{'nested_ifset_ifclear'} = {};
+
+
 1;

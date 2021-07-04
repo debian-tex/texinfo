@@ -143,4 +143,7 @@ $result_errors{'section_in_copying'} = [
 ];
 
 
+$result_floats{'section_in_copying'} = {};
+
+
 1;

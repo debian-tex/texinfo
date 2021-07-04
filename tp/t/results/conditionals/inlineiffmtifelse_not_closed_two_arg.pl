@@ -71,4 +71,7 @@ $result_errors{'inlineiffmtifelse_not_closed_two_arg'} = [
 ];
 
 
+$result_floats{'inlineiffmtifelse_not_closed_two_arg'} = {};
+
+
 1;

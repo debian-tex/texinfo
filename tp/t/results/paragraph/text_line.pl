@@ -52,6 +52,9 @@ text
 $result_errors{'text_line'} = [];
 
 
+$result_floats{'text_line'} = {};
+
+
 
 $result_converted{'plaintext'}->{'text_line'} = 'text
 

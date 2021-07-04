@@ -82,4 +82,7 @@ $result_errors{'accent_no_closed_comment'} = [
 ];
 
 
+$result_floats{'accent_no_closed_comment'} = {};
+
+
 1;

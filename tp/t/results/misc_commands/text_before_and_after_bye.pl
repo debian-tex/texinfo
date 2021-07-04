@@ -56,4 +56,7 @@ $result_errors{'text_before_and_after_bye'} = [
 ];
 
 
+$result_floats{'text_before_and_after_bye'} = {};
+
+
 1;

@@ -62,7 +62,11 @@ $result_trees{'recursive_acronym'} = {
           ],
           'cmdname' => 'acronym',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -84,7 +88,6 @@ $result_trees{'recursive_acronym'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'con
 $result_trees{'recursive_acronym'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'recursive_acronym'}{'contents'}[0]{'contents'}[0]{'args'}[1];
 $result_trees{'recursive_acronym'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'recursive_acronym'}{'contents'}[0]{'contents'}[0]{'args'}[1];
 $result_trees{'recursive_acronym'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'recursive_acronym'}{'contents'}[0]{'contents'}[0];
-$result_trees{'recursive_acronym'}{'contents'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'recursive_acronym'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'recursive_acronym'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'recursive_acronym'}{'contents'}[0];
 $result_trees{'recursive_acronym'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'recursive_acronym'}{'contents'}[0];
 $result_trees{'recursive_acronym'}{'contents'}[0]{'parent'} = $result_trees{'recursive_acronym'};
@@ -97,6 +100,9 @@ $result_texts{'recursive_acronym'} = 'GNU (GNU\'s Not Unix)
 ';
 
 $result_errors{'recursive_acronym'} = [];
+
+
+$result_floats{'recursive_acronym'} = {};
 
 
 

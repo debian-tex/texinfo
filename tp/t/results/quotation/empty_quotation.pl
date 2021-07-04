@@ -200,7 +200,11 @@ $result_trees{'empty_quotation'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 7,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -296,7 +300,6 @@ $result_trees{'empty_quotation'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'conte
 $result_trees{'empty_quotation'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_quotation'}{'contents'}[4]{'contents'}[0];
 $result_trees{'empty_quotation'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'empty_quotation'}{'contents'}[4];
 $result_trees{'empty_quotation'}{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'empty_quotation'}{'contents'}[4]{'contents'}[0];
-$result_trees{'empty_quotation'}{'contents'}[4]{'line_nr'} = $result_trees{'empty_quotation'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_quotation'}{'contents'}[4]{'parent'} = $result_trees{'empty_quotation'};
 $result_trees{'empty_quotation'}{'contents'}[5]{'parent'} = $result_trees{'empty_quotation'};
 $result_trees{'empty_quotation'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_quotation'}{'contents'}[6]{'args'}[0];
@@ -328,6 +331,9 @@ Empty
 ';
 
 $result_errors{'empty_quotation'} = [];
+
+
+$result_floats{'empty_quotation'} = {};
 
 
 

@@ -40,6 +40,9 @@ $result_texts{'vskip'} = '';
 $result_errors{'vskip'} = [];
 
 
+$result_floats{'vskip'} = {};
+
+
 
 $result_converted{'plaintext'}->{'vskip'} = '';
 

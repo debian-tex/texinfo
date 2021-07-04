@@ -223,4 +223,7 @@ $result_errors{'empty_multitable_with_cells'} = [
 ];
 
 
+$result_floats{'empty_multitable_with_cells'} = {};
+
+
 1;

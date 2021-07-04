@@ -93,7 +93,11 @@ $result_trees{'kbd'} = {
           ],
           'cmdname' => 'code',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -154,7 +158,11 @@ $result_trees{'kbd'} = {
           ],
           'cmdname' => 'kbd',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -426,7 +434,6 @@ $result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'ar
 $result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[2]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'line_nr'} = $result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[2];
 $result_trees{'kbd'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[2];
 $result_trees{'kbd'}{'contents'}[2]{'parent'} = $result_trees{'kbd'};
@@ -437,7 +444,6 @@ $result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'ar
 $result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0];
 $result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[4]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'line_nr'} = $result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[4];
 $result_trees{'kbd'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[4];
 $result_trees{'kbd'}{'contents'}[4]{'parent'} = $result_trees{'kbd'};
@@ -520,6 +526,9 @@ in format in kbd.
 ';
 
 $result_errors{'kbd'} = [];
+
+
+$result_floats{'kbd'} = {};
 
 
 

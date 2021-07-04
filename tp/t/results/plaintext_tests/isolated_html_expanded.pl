@@ -104,6 +104,9 @@ $result_texts{'isolated_html_expanded'} = '
 $result_errors{'isolated_html_expanded'} = [];
 
 
+$result_floats{'isolated_html_expanded'} = {};
+
+
 
 $result_converted{'plaintext'}->{'isolated_html_expanded'} = 'html
 ';

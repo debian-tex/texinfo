@@ -111,4 +111,7 @@ Y6
 $result_errors{'comment_on_ifset_line'} = [];
 
 
+$result_floats{'comment_on_ifset_line'} = {};
+
+
 1;

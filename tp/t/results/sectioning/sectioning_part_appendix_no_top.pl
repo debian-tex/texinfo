@@ -729,6 +729,9 @@ $result_sectioning{'sectioning_part_appendix_no_top'}{'section_childs'}[2]{'topl
 $result_errors{'sectioning_part_appendix_no_top'} = [];
 
 
+$result_floats{'sectioning_part_appendix_no_top'} = {};
+
+
 $result_elements{'sectioning_part_appendix_no_top'} = [
   {
     'extra' => {

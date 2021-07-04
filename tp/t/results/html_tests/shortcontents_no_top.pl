@@ -228,6 +228,9 @@ $result_sectioning{'shortcontents_no_top'}{'section_childs'}[1]{'toplevel_prev'}
 $result_errors{'shortcontents_no_top'} = [];
 
 
+$result_floats{'shortcontents_no_top'} = {};
+
+
 
 $result_converted{'html'}->{'shortcontents_no_top'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -240,13 +243,15 @@ $result_converted{'html'}->{'shortcontents_no_top'} = '<!DOCTYPE html PUBLIC "-/
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -255,6 +260,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -263,13 +269,20 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="chap"></span><h2 class="chapter">1 chap</h2>
+<div class="chapter" id="chap">
+<h2 class="chapter">1 chap</h2>
 
-<span id="chap2"></span><h2 class="chapter">2 chap2</h2>
+</div>
+<div class="chapter" id="chap2">
+<h2 class="chapter">2 chap2</h2>
 
-<span id="sec"></span><h3 class="section">2.1 sec</h3>
+<ul class="section-toc">
+<li><a href="#sec" accesskey="1">sec</a></li>
+</ul>
+<div class="section" id="sec">
+<h3 class="section">2.1 sec</h3>
 
-<span id="SEC_Overview"></span>
+<div class="Overview_element" id="SEC_Overview">
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
 
 <div class="shortcontents">
@@ -279,8 +292,9 @@ ul.no-bullet {list-style: none}
 
 </ul>
 </div>
-
-<hr>
+</div>
+<hr></div>
+</div>
 
 
 

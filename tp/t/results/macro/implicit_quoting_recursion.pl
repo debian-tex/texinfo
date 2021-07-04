@@ -102,4 +102,7 @@ natopocotuototam
 $result_errors{'implicit_quoting_recursion'} = [];
 
 
+$result_floats{'implicit_quoting_recursion'} = {};
+
+
 1;

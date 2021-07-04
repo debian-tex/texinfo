@@ -250,6 +250,9 @@ $result_errors{'misc_raw'} = [
 ];
 
 
+$result_floats{'misc_raw'} = {};
+
+
 
 $result_converted{'plaintext'}->{'misc_raw'} = 'in  v---erbatim`` <>
 in verbatim2

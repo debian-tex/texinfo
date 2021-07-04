@@ -76,6 +76,9 @@ $result_sectioning{'no_node_but_top'}{'section_childs'}[0]{'section_up'} = $resu
 $result_errors{'no_node_but_top'} = [];
 
 
+$result_floats{'no_node_but_top'} = {};
+
+
 
 $result_converted{'info'}->{'no_node_but_top'} = 'This is , produced from .
 

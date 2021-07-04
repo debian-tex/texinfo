@@ -352,6 +352,9 @@ $result_texts{'braces_in_tex'} = '
 $result_errors{'braces_in_tex'} = [];
 
 
+$result_floats{'braces_in_tex'} = {};
+
+
 
 $result_converted{'plaintext'}->{'braces_in_tex'} = '
 ';

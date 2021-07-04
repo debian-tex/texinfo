@@ -214,6 +214,9 @@ $result_sectioning{'no_empty_line_between_headings'}{'section_childs'}[0]{'secti
 $result_errors{'no_empty_line_between_headings'} = [];
 
 
+$result_floats{'no_empty_line_between_headings'} = {};
+
+
 
 $result_converted{'plaintext'}->{'no_empty_line_between_headings'} = 'Top
 ***
@@ -230,11 +233,22 @@ Subheading
 ';
 
 
-$result_converted{'html_text'}->{'no_empty_line_between_headings'} = '<span id="Top"></span><h1 class="top">Top</h1>
+$result_converted{'html_text'}->{'no_empty_line_between_headings'} = '<div class="top" id="Top">
+<h1 class="top">Top</h1>
 <span id="Subheading"></span><h4 class="subheading">Subheading</h4>
-<span id="Chapter"></span><h2 class="chapter">1 Chapter</h2>
-<span id="Section"></span><h3 class="section">1.1 Section</h3>
-<hr>
+<ul class="section-toc">
+<li><a href="#Chapter" accesskey="1">Chapter</a></li>
+</ul>
+<div class="chapter" id="Chapter">
+<h2 class="chapter">1 Chapter</h2>
+<ul class="section-toc">
+<li><a href="#Section" accesskey="1">Section</a></li>
+</ul>
+<div class="section" id="Section">
+<h3 class="section">1.1 Section</h3>
+<hr></div>
+</div>
+</div>
 ';
 
 

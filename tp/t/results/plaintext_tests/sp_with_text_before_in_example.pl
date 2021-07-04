@@ -149,6 +149,9 @@ text
 $result_errors{'sp_with_text_before_in_example'} = [];
 
 
+$result_floats{'sp_with_text_before_in_example'} = {};
+
+
 
 $result_converted{'plaintext'}->{'sp_with_text_before_in_example'} = '     sp
 

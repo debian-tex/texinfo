@@ -894,7 +894,9 @@ $result_trees{'complex_recursive_synindex'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -1025,7 +1027,7 @@ $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[36]{'args
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[36]{'args'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[36];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[36]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'};
 
 $result_texis{'complex_recursive_synindex'} = '@node Top
@@ -1241,6 +1243,9 @@ $result_indices{'complex_recursive_synindex'} = {
     }
   }
 };
+
+
+$result_floats{'complex_recursive_synindex'} = {};
 
 
 1;

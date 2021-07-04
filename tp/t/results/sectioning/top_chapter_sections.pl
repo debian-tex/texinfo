@@ -674,6 +674,9 @@ $result_sectioning{'top_chapter_sections'}{'section_childs'}[0]{'section_up'} = 
 $result_errors{'top_chapter_sections'} = [];
 
 
+$result_floats{'top_chapter_sections'} = {};
+
+
 $result_elements{'top_chapter_sections'} = [
   {
     'extra' => {

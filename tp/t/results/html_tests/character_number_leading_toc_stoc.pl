@@ -295,6 +295,9 @@ $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0]{'se
 $result_errors{'character_number_leading_toc_stoc'} = [];
 
 
+$result_floats{'character_number_leading_toc_stoc'} = {};
+
+
 
 $result_converted{'html'}->{'character_number_leading_toc_stoc'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -307,14 +310,16 @@ $result_converted{'html'}->{'character_number_leading_toc_stoc'} = '<!DOCTYPE ht
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -323,6 +328,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -331,12 +337,9 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="top"></span><h1 class="top">top</h1>
-<span id="g_t0"></span><h2 class="chapter">1 0</h2>
-<span id="g_t_005f"></span><h2 class="unnumbered">_</h2>
-<span id="g_t_003f"></span><h3 class="section">?</h3>
-
-<span id="SEC_Contents"></span>
+<div class="top" id="top">
+<h1 class="top">top</h1>
+<div class="Contents_element" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
@@ -349,9 +352,8 @@ ul.no-bullet {list-style: none}
   </ul></li>
 </ul>
 </div>
-
-
-<span id="SEC_Overview"></span>
+</div>
+<div class="Overview_element" id="SEC_Overview">
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
 
 <div class="shortcontents">
@@ -360,9 +362,23 @@ ul.no-bullet {list-style: none}
 <li><a id="stoc-_005f" href="#toc-_005f">_</a></li>
 </ul>
 </div>
+</div>
+<div class="chapter" id="g_t0">
+<h2 class="chapter">1 0</h2>
+</div>
+<div class="unnumbered" id="g_t_005f">
+<h2 class="unnumbered">_</h2>
+<ul class="section-toc">
+<li><a href="#g_t_003f" accesskey="1">?</a></li>
+</ul>
+<div class="section" id="g_t_003f">
+<h3 class="section">?</h3>
 
 
-<hr>
+
+<hr></div>
+</div>
+</div>
 
 
 

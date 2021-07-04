@@ -464,7 +464,9 @@ $result_trees{'sample_utf8'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -804,7 +806,9 @@ $result_trees{'sample_utf8'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => '_7b2c_4e00_7ae0_ff08First-Chapter_ff09'
           }
         ],
@@ -1160,7 +1164,7 @@ $result_trees{'sample_utf8'} = {
           ],
           'extra' => {
             'end_command' => {},
-            'enumerate_specification' => 1
+            'enumerate_specification' => '1'
           },
           'line_nr' => {
             'file_name' => 'sample_utf8.texi',
@@ -1213,7 +1217,9 @@ $result_trees{'sample_utf8'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Second-Chapter-AE-_0104_0118-ae-_0105_0119'
           }
         ],
@@ -1308,7 +1314,9 @@ $result_trees{'sample_utf8'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Index-node'
           }
         ],
@@ -1470,7 +1478,7 @@ $result_trees{'sample_utf8'}{'contents'}[0]{'parent'} = $result_trees{'sample_ut
 $result_trees{'sample_utf8'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[1]{'args'}[0];
 $result_trees{'sample_utf8'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[1];
 $result_trees{'sample_utf8'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'sample_utf8'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'sample_utf8'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'sample_utf8'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'sample_utf8'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'sample_utf8'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'sample_utf8'}{'contents'}[1]{'parent'} = $result_trees{'sample_utf8'};
 $result_trees{'sample_utf8'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[2]{'args'}[0];
 $result_trees{'sample_utf8'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[2];
@@ -1522,7 +1530,7 @@ $result_trees{'sample_utf8'}{'contents'}[2]{'parent'} = $result_trees{'sample_ut
 $result_trees{'sample_utf8'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[3]{'args'}[0];
 $result_trees{'sample_utf8'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[3];
 $result_trees{'sample_utf8'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'sample_utf8'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'sample_utf8'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'sample_utf8'}{'contents'}[3]{'extra'}{'node_content'};
+$result_trees{'sample_utf8'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'sample_utf8'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'sample_utf8'}{'contents'}[3]{'parent'} = $result_trees{'sample_utf8'};
 $result_trees{'sample_utf8'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[4]{'args'}[0];
 $result_trees{'sample_utf8'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[4];
@@ -1583,7 +1591,7 @@ $result_trees{'sample_utf8'}{'contents'}[4]{'parent'} = $result_trees{'sample_ut
 $result_trees{'sample_utf8'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[5]{'args'}[0];
 $result_trees{'sample_utf8'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[5];
 $result_trees{'sample_utf8'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'sample_utf8'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'sample_utf8'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'sample_utf8'}{'contents'}[5]{'extra'}{'node_content'};
+$result_trees{'sample_utf8'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'sample_utf8'}{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'sample_utf8'}{'contents'}[5]{'parent'} = $result_trees{'sample_utf8'};
 $result_trees{'sample_utf8'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[6]{'args'}[0];
 $result_trees{'sample_utf8'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[6];
@@ -1595,7 +1603,7 @@ $result_trees{'sample_utf8'}{'contents'}[6]{'parent'} = $result_trees{'sample_ut
 $result_trees{'sample_utf8'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[7]{'args'}[0];
 $result_trees{'sample_utf8'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[7];
 $result_trees{'sample_utf8'}{'contents'}[7]{'extra'}{'node_content'}[0] = $result_trees{'sample_utf8'}{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'sample_utf8'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'sample_utf8'}{'contents'}[7]{'extra'}{'node_content'};
+$result_trees{'sample_utf8'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'sample_utf8'}{'contents'}[7]{'args'}[0]{'contents'}[0];
 $result_trees{'sample_utf8'}{'contents'}[7]{'parent'} = $result_trees{'sample_utf8'};
 $result_trees{'sample_utf8'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[8]{'args'}[0];
 $result_trees{'sample_utf8'}{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[8];
@@ -1949,6 +1957,9 @@ $result_menus{'sample_utf8'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_men
 $result_menus{'sample_utf8'}{'menu_child'}{'menu_up'} = $result_menus{'sample_utf8'};
 
 $result_errors{'sample_utf8'} = [];
+
+
+$result_floats{'sample_utf8'} = {};
 
 
 1;

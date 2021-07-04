@@ -66,6 +66,9 @@ $result_texts{'space_in_footnote'} = 'text';
 $result_errors{'space_in_footnote'} = [];
 
 
+$result_floats{'space_in_footnote'} = {};
+
+
 
 $result_converted{'plaintext'}->{'space_in_footnote'} = 'text(1)
 
@@ -80,7 +83,7 @@ $result_converted{'html_text'}->{'space_in_footnote'} = '<p>text<a id="DOCF1" hr
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h5>
 <p>in footnote.</p>
 </div>
 ';

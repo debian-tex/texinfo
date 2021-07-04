@@ -630,7 +630,9 @@ $result_trees{'placed_things_before_node'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -880,7 +882,7 @@ $result_trees{'placed_things_before_node'}{'contents'}[0]{'parent'} = $result_tr
 $result_trees{'placed_things_before_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'placed_things_before_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[1];
 $result_trees{'placed_things_before_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'placed_things_before_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'placed_things_before_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'placed_things_before_node'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'placed_things_before_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'placed_things_before_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'placed_things_before_node'}{'contents'}[1]{'parent'} = $result_trees{'placed_things_before_node'};
 $result_trees{'placed_things_before_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[2]{'args'}[0];
 $result_trees{'placed_things_before_node'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[2];
@@ -1019,24 +1021,6 @@ $result_menus{'placed_things_before_node'} = {
 
 $result_errors{'placed_things_before_node'} = [
   {
-    'error_line' => ':24: @menu seen before first @node
-',
-    'file_name' => '',
-    'line_nr' => 24,
-    'macro' => '',
-    'text' => '@menu seen before first @node',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':24: perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?
-',
-    'file_name' => '',
-    'line_nr' => 24,
-    'macro' => '',
-    'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':28: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
@@ -1168,14 +1152,16 @@ $result_converted{'html'}->{'placed_things_before_node'} = '<!DOCTYPE html PUBLI
 <meta name="keywords" content="top section">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -1184,6 +1170,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -1208,14 +1195,11 @@ ul.no-bullet {list-style: none}
 <p>Ref to float
 <a href="#float-anchor">1</a>.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#An-anchor" accesskey="1">An anchor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">menu entry pointing to the anchor.
-</td></tr>
-</table>
 
 <span id="index-index-entry"></span>
 
-<span id="Top"></span><span id="top-section"></span><h1 class="top">top section</h1>
+<div class="top" id="Top">
+<span id="top-section"></span><h1 class="top">top section</h1>
 
 <p>Ref to anchor
 <a href="#An-anchor">An anchor</a>
@@ -1226,7 +1210,7 @@ ul.no-bullet {list-style: none}
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h5>
 <p>In footnote.
 </p>
 <span id="Anchor-in-footnote"></span>
@@ -1234,7 +1218,7 @@ ul.no-bullet {list-style: none}
 <a href="#An-anchor">An anchor</a>
 </p>
 </div>
-<hr>
+<hr></div>
 
 
 

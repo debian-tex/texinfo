@@ -27,7 +27,7 @@ and now -- yes---now and ``so\'\'.
 
 @end display
 '],
-['text_on_command_line',
+['text_on_example_command_line',
 '@example text on line
 @end example
 
@@ -43,6 +43,23 @@ in example
 @example
 @end example text after end example nested in example
 @end example
+'],
+['text_on_display_command_line',
+'@display text on line
+@end display
+
+@display text on line followed by text
+normal text
+@end display
+
+@display
+in display
+@end display text after end
+
+@display
+@display
+@end display text after end display nested in display
+@end display
 '],
 ['def_in_example',
 '@example

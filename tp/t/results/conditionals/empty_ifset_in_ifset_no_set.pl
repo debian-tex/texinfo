@@ -38,4 +38,7 @@ $result_errors{'empty_ifset_in_ifset_no_set'} = [
 ];
 
 
+$result_floats{'empty_ifset_in_ifset_no_set'} = {};
+
+
 1;

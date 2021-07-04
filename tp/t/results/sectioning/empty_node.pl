@@ -179,4 +179,7 @@ $result_errors{'empty_node'} = [
 ];
 
 
+$result_floats{'empty_node'} = {};
+
+
 1;

@@ -143,4 +143,7 @@ $result_errors{'section_in_footnote'} = [
 ];
 
 
+$result_floats{'section_in_footnote'} = {};
+
+
 1;

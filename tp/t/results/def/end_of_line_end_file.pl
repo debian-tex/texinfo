@@ -39,7 +39,11 @@ $result_trees{'end_of_line_end_file'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -48,7 +52,6 @@ $result_trees{'end_of_line_end_file'} = {
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0];
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_line_end_file'}{'contents'}[0];
-$result_trees{'end_of_line_end_file'}{'contents'}[0]{'line_nr'} = $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'parent'} = $result_trees{'end_of_line_end_file'};
 
 $result_texis{'end_of_line_end_file'} = '@deffn category deffn_name arguments ';
@@ -67,6 +70,9 @@ $result_errors{'end_of_line_end_file'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'end_of_line_end_file'} = {};
 
 
 1;

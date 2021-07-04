@@ -1,5 +1,7 @@
 /* macro.h - declarations for macro.c */
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+#ifndef MACRO_H
+#define MACRO_H
+/* Copyright 2010-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,6 +15,8 @@
 
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
+
+#include "tree_types.h"
 
 typedef struct {
     enum command_id cmd;
@@ -37,8 +41,9 @@ MACRO *lookup_macro (enum command_id cmd);
 void wipe_macros (void);
 
 void store_value (char *name, char *value);
-char *fetch_value (char *name, int len);
-void clear_value (char *name, int len);
+char *fetch_value (char *name);
+void clear_value (char *name);
 INFO_ENCLOSE *lookup_infoenclose (enum command_id cmd);
 void add_infoenclose (enum command_id cmd, char *begin, char *end);
 
+#endif

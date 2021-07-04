@@ -1001,6 +1001,14 @@ X\arg\X
 
 @mytwo{} @mytwo{ } @mytwo{  } @mytwo{  x}'
 ],
+['include_after_empty_line_arg',
+'@macro mymacro{body}
+@code{\body\}
+@end macro
+
+@mymacro
+@include inc_file.texi
+'],
 );
 
 my @todo =(

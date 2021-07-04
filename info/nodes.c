@@ -1,6 +1,6 @@
 /* nodes.c -- how to get an Info file and node.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -303,7 +303,10 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
       for (p = 0; nodedef[p] && nodedef[p] != INFO_TAGSEP; p++)
         ;
       if (nodedef[p] != INFO_TAGSEP)
-        continue;
+        {
+          free (entry);
+          continue;
+        }
 
       entry->nodename = xmalloc (p + 1);
       strncpy (entry->nodename, nodedef, p);
@@ -358,33 +361,33 @@ get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
   /* We have the list of tags in file_buffer->tags.  Get the list of
      subfiles from the indirect table. */
   {
-    char *start, *end, *line;
-    SUBFILE *subfile;
+  char *start, *end, *line;
+  SUBFILE *subfile;
 
-    start = indirect_binding->buffer + indirect_binding->start;
-    end = indirect_binding->buffer + indirect_binding->end;
-    line = start;
+  start = indirect_binding->buffer + indirect_binding->start;
+  end = indirect_binding->buffer + indirect_binding->end;
+  line = start;
 
-    while (line < end)
-      {
-        int colon;
+  while (line < end)
+    {
+      int colon;
 
-        colon = string_in_line (":", line);
+      colon = string_in_line (":", line);
 
-        if (colon == -1)
-          break;
+      if (colon == -1)
+        break;
 
-        subfile = xmalloc (sizeof (SUBFILE));
-        subfile->filename = xmalloc (colon);
-        strncpy (subfile->filename, line, colon - 1);
-        subfile->filename[colon - 1] = 0;
-        subfile->first_byte = (long) atol (line + colon);
+      subfile = xmalloc (sizeof (SUBFILE));
+      subfile->filename = xmalloc (colon);
+      strncpy (subfile->filename, line, colon - 1);
+      subfile->filename[colon - 1] = 0;
+      subfile->first_byte = (long) atol (line + colon);
 
-        add_pointer_to_array (subfile, subfiles_index, subfiles, 
-                              subfiles_slots, 10);
+      add_pointer_to_array (subfile, subfiles_index, subfiles, 
+                            subfiles_slots, 10);
 
-        while (*line++ != '\n');
-      }
+      while (*line++ != '\n');
+    }
   }
 
   /* If we have successfully built the indirect files table, then
@@ -394,102 +397,103 @@ get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
       free_file_buffer_tags (file_buffer);
       return;
     }
-  else
+
+  {
+  int tags_index;
+  long header_length;
+  SEARCH_BINDING binding;
+
+  char *containing_dir;
+  char *temp;
+  int len_containing_dir;
+
+  /* Find the length of the header of the file containing the indirect
+     tags table.  This header appears at the start of every file.  We
+     want the absolute position of each node within each subfile, so
+     we subtract the start of the containing subfile from the logical
+     position of the node, and then add the length of the header in. */
+  binding.buffer = file_buffer->contents;
+  binding.start = 0;
+  binding.end = file_buffer->filesize;
+  binding.flags = S_FoldCase;
+
+  header_length = find_node_separator (&binding);
+  if (header_length == -1)
+    header_length = 0;
+
+  /* Build the file buffer's list of subfiles. */
+  containing_dir = xstrdup (file_buffer->fullpath);
+  temp = filename_non_directory (containing_dir);
+
+  if (temp > containing_dir)
     {
-      int tags_index;
-      long header_length;
-      SEARCH_BINDING binding;
-
-      /* Find the length of the header of the file containing the indirect
-         tags table.  This header appears at the start of every file.  We
-         want the absolute position of each node within each subfile, so
-         we subtract the start of the containing subfile from the logical
-         position of the node, and then add the length of the header in. */
-      binding.buffer = file_buffer->contents;
-      binding.start = 0;
-      binding.end = file_buffer->filesize;
-      binding.flags = S_FoldCase;
-
-      header_length = find_node_separator (&binding);
-      if (header_length == -1)
-        header_length = 0;
-
-      /* Build the file buffer's list of subfiles. */
-      {
-        char *containing_dir = xstrdup (file_buffer->fullpath);
-        char *temp = filename_non_directory (containing_dir);
-        int len_containing_dir;
-
-        if (temp > containing_dir)
-          {
-            if (HAVE_DRIVE (file_buffer->fullpath) &&
-                temp == containing_dir + 2)
-              {
-                /* Avoid converting "d:foo" into "d:/foo" below.  */
-                *temp = '.';
-                temp += 2;
-              }
-            temp[-1] = 0;
-          }
-
-        len_containing_dir = strlen (containing_dir);
-
-        for (i = 0; subfiles[i]; i++);
-
-        file_buffer->subfiles = xmalloc ((1 + i) * sizeof (char *));
-
-        for (i = 0; subfiles[i]; i++)
-          {
-            char *fullpath;
-
-            fullpath = xmalloc
-              (2 + strlen (subfiles[i]->filename) + len_containing_dir);
-
-            sprintf (fullpath, "%s/%s",
-                     containing_dir, subfiles[i]->filename);
-
-            file_buffer->subfiles[i] = fullpath;
-          }
-        file_buffer->subfiles[i] = NULL;
-        free (containing_dir);
-      }
-
-      /* For each node in the file's tags table, remember the starting
-         position. */
-      for (tags_index = 0; (entry = file_buffer->tags[tags_index]);
-           tags_index++)
+      if (HAVE_DRIVE (file_buffer->fullpath) &&
+          temp == containing_dir + 2)
         {
-          for (i = 0;
-               subfiles[i] && entry->nodestart >= subfiles[i]->first_byte;
-               i++);
-
-          /* If the Info file containing the indirect tags table is
-             malformed, then give up. */
-          if (!i)
-            {
-              /* The Info file containing the indirect tags table is
-                 malformed.  Give up. */
-              for (i = 0; subfiles[i]; i++)
-                {
-                  free (subfiles[i]->filename);
-                  free (subfiles[i]);
-                  free (file_buffer->subfiles[i]);
-                }
-              file_buffer->subfiles = NULL;
-              free_file_buffer_tags (file_buffer);
-              return;
-            }
-
-          /* SUBFILES[i] is the index of the first subfile whose logical
-             first byte is greater than the logical offset of this node's
-             starting position.  This means that the subfile directly
-             preceding this one is the one containing the node. */
-
-          entry->filename = file_buffer->subfiles[i - 1];
-          entry->nodestart -= subfiles[i - 1]->first_byte;
-          entry->nodestart += header_length;
+          /* Avoid converting "d:foo" into "d:/foo" below.  */
+          *temp = '.';
+          temp += 2;
         }
+      temp[-1] = 0;
     }
+
+  len_containing_dir = strlen (containing_dir);
+
+  for (i = 0; subfiles[i]; i++);
+  file_buffer->subfiles = xmalloc ((1 + i) * sizeof (char *));
+
+  for (i = 0; subfiles[i]; i++)
+    {
+      char *fullpath;
+      fullpath = xmalloc
+        (2 + strlen (subfiles[i]->filename) + len_containing_dir);
+
+      sprintf (fullpath, "%s/%s",
+               containing_dir, subfiles[i]->filename);
+
+      file_buffer->subfiles[i] = fullpath;
+    }
+  file_buffer->subfiles[i] = NULL;
+  free (containing_dir);
+
+  /* For each node in the file's tags table, remember the starting
+     position. */
+  for (tags_index = 0; (entry = file_buffer->tags[tags_index]);
+       tags_index++)
+    {
+      for (i = 0;
+           subfiles[i] && entry->nodestart >= subfiles[i]->first_byte;
+           i++);
+
+      /* If the Info file containing the indirect tags table is
+         malformed, then give up. */
+      if (!i)
+        {
+          /* The Info file containing the indirect tags table is
+             malformed.  Give up. */
+          for (i = 0; subfiles[i]; i++)
+            {
+              free (subfiles[i]->filename);
+              free (subfiles[i]);
+              free (file_buffer->subfiles[i]);
+            }
+          free (file_buffer->subfiles);
+          file_buffer->subfiles = NULL;
+          free_file_buffer_tags (file_buffer);
+          free (subfiles);
+          return;
+        }
+
+      /* SUBFILES[i] is the index of the first subfile whose logical
+         first byte is greater than the logical offset of this node's
+         starting position.  This means that the subfile directly
+         preceding this one is the one containing the node. */
+
+      entry->filename = file_buffer->subfiles[i - 1];
+      entry->nodestart -= subfiles[i - 1]->first_byte;
+      entry->nodestart += header_length;
+    }
+  }
 
   /* Free the structures assigned to SUBFILES.  Free the names as well
      as the structures themselves, then finally, the array. */

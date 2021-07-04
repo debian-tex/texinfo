@@ -280,4 +280,7 @@ This is ifnottex text.
 $result_errors{'many_conditionals'} = [];
 
 
+$result_floats{'many_conditionals'} = {};
+
+
 1;

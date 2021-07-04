@@ -37,7 +37,9 @@ $result_trees{'no_top_node'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'node-Top-not-Top-node'
           }
         ],
@@ -58,7 +60,7 @@ $result_trees{'no_top_node'}{'contents'}[0]{'parent'} = $result_trees{'no_top_no
 $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'no_top_node'}{'contents'}[1];
 $result_trees{'no_top_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'no_top_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'no_top_node'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'no_top_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'no_top_node'}{'contents'}[1]{'parent'} = $result_trees{'no_top_node'};
 
 $result_texis{'no_top_node'} = '@node node Top not Top node
@@ -86,6 +88,9 @@ $result_menus{'no_top_node'} = {
 };
 
 $result_errors{'no_top_node'} = [];
+
+
+$result_floats{'no_top_node'} = {};
 
 
 

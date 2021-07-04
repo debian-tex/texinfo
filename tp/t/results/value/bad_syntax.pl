@@ -283,4 +283,7 @@ $result_errors{'bad_syntax'} = [
 ];
 
 
+$result_floats{'bad_syntax'} = {};
+
+
 1;

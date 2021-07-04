@@ -1159,26 +1159,10 @@ $result_texts{'menu_entry_name'} = '* a: (f)b
 * a: (f)b3.c. d
 ';
 
-$result_errors{'menu_entry_name'} = [
-  {
-    'error_line' => ':1: @menu seen before first @node
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@menu seen before first @node',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':1: perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error'
-  }
-];
+$result_errors{'menu_entry_name'} = [];
+
+
+$result_floats{'menu_entry_name'} = {};
 
 
 
@@ -1208,13 +1192,15 @@ $result_converted{'html'}->{'menu_entry_name'} = '<!DOCTYPE html PUBLIC "-//W3C/
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -1223,6 +1209,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -1232,24 +1219,24 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="f.html#b" accesskey="1">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b1_002ec" accesskey="2">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="f.html#b" accesskey="1">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b1_002ec" accesskey="2">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b2_002ec" accesskey="3">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="f.html#b2_002ec" accesskey="3">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b3_002ec" accesskey="4">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">d
+<tr><td align="left" valign="top">&bull; <a href="f.html#b3_002ec" accesskey="4">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">d
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b1_002e" accesskey="5">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="f.html#b1_002e" accesskey="5">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b2-_002e" accesskey="6">a </a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="f.html#b2-_002e" accesskey="6">a </a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b3_002e" accesskey="7">a.n</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">d
+<tr><td align="left" valign="top">&bull; <a href="f.html#b3_002e" accesskey="7">a.n</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">d
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b1_002ec" accesskey="8">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="f.html#b1_002ec" accesskey="8">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b2_002ec" accesskey="9">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="f.html#b2_002ec" accesskey="9">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b3_002ec">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">d
+<tr><td align="left" valign="top">&bull; <a href="f.html#b3_002ec">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">d
 </td></tr>
 </table>
 

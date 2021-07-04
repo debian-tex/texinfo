@@ -154,4 +154,7 @@ $result_errors{'indicateurl_end_lines'} = [
 ];
 
 
+$result_floats{'indicateurl_end_lines'} = {};
+
+
 1;

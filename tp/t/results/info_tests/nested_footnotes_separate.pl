@@ -169,7 +169,9 @@ $result_trees{'nested_footnotes_separate'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -209,7 +211,7 @@ $result_trees{'nested_footnotes_separate'}{'contents'}[1]{'contents'}[1]{'conten
 $result_trees{'nested_footnotes_separate'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'nested_footnotes_separate'}{'contents'}[1]{'contents'}[1];
 $result_trees{'nested_footnotes_separate'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'nested_footnotes_separate'}{'contents'}[1];
 $result_trees{'nested_footnotes_separate'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'nested_footnotes_separate'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'nested_footnotes_separate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'nested_footnotes_separate'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'nested_footnotes_separate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'nested_footnotes_separate'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'nested_footnotes_separate'}{'contents'}[1]{'parent'} = $result_trees{'nested_footnotes_separate'};
 
 $result_texis{'nested_footnotes_separate'} = '@footnotestyle separate
@@ -245,6 +247,9 @@ $result_menus{'nested_footnotes_separate'} = {
 };
 
 $result_errors{'nested_footnotes_separate'} = [];
+
+
+$result_floats{'nested_footnotes_separate'} = {};
 
 
 

@@ -313,7 +313,7 @@ static int ref_highlighted;
 static int pl_num; /* Number of printed lines done so far. */
 
 RENDITION ref_rendition = {UNDERLINE_MASK, UNDERLINE_MASK};
-RENDITION hl_ref_rendition = {UNDERLINE_MASK, 0};
+RENDITION hl_ref_rendition = {BOLD_MASK, BOLD_MASK};
 RENDITION match_rendition = {STANDOUT_MASK, STANDOUT_MASK};
 
 

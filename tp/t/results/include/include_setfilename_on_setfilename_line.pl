@@ -62,7 +62,11 @@ $result_trees{'include_setfilename_on_setfilename_line'} = {
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'other file '
               },
-              'line_nr' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -75,7 +79,11 @@ $result_trees{'include_setfilename_on_setfilename_line'} = {
         'spaces_before_argument' => ' ',
         'text_arg' => 'file '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -87,10 +95,8 @@ $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[
 $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0];
-$result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'line_nr'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'};
 
 $result_texis{'include_setfilename_on_setfilename_line'} = '@setfilename file @setfilename other file @include are you joking!
@@ -173,6 +179,9 @@ $result_errors{'include_setfilename_on_setfilename_line'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'include_setfilename_on_setfilename_line'} = {};
 
 
 1;

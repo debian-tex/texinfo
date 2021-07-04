@@ -43,7 +43,7 @@ Locale::Messages::nl_putenv ("LC_MESSAGES=de_AT");
 Locale::Messages::nl_putenv ("OUTPUT_CHARSET");
 
 my $missing_locale = 'locale de_AT missing';
-my $setlocale = POSIX::setlocale (POSIX::LC_ALL() => '');
+my $setlocale = Locale::Messages::setlocale (POSIX::LC_ALL() => '');
 if ($setlocale && $setlocale =~ /(?:austria|at)/i) {
 	$missing_locale = '';
 } else {
@@ -71,7 +71,7 @@ ok defined $bound_codeset;
 ok $bound_codeset, 'ISO-8859-1';
 
 skip $missing_locale, gettext ('January'), 'Jänner';
-ok gettext ('March'), 'März';
+skip $missing_locale, gettext ('March'), 'März';
 
 # This will cause GNU gettext to re-load our catalog.
 $bound_dir = bindtextdomain $textdomain => $locale_dir . '/../LocaleData';

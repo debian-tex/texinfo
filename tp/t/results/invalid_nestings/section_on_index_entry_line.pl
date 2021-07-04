@@ -78,7 +78,11 @@ $result_trees{'section_on_index_entry_line'} = {
         'spaces_before_argument' => ' '
       },
       'level' => 2,
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'number' => 1,
       'parent' => {}
     }
@@ -94,7 +98,6 @@ $result_trees{'section_on_index_entry_line'}{'contents'}[1]{'args'}[0]{'parent'}
 $result_trees{'section_on_index_entry_line'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'section_on_index_entry_line'}{'contents'}[1];
 $result_trees{'section_on_index_entry_line'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'section_on_index_entry_line'}{'contents'}[1]{'contents'}[1];
 $result_trees{'section_on_index_entry_line'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'section_on_index_entry_line'}{'contents'}[1];
-$result_trees{'section_on_index_entry_line'}{'contents'}[1]{'line_nr'} = $result_trees{'section_on_index_entry_line'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'section_on_index_entry_line'}{'contents'}[1]{'parent'} = $result_trees{'section_on_index_entry_line'};
 
 $result_texis{'section_on_index_entry_line'} = '@cindex a @section b
@@ -145,6 +148,9 @@ $result_errors{'section_on_index_entry_line'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'section_on_index_entry_line'} = {};
 
 
 1;

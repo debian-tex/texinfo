@@ -274,4 +274,7 @@ $result_errors{'accents_errors'} = [
 ];
 
 
+$result_floats{'accents_errors'} = {};
+
+
 1;

@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2020 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include <errno.h>
 #include <sys/stat.h>
 
-#include "tree_types.h"
+#include "errors.h"
 #include "input.h"
 #include "text.h"
 #include "commands.h"
@@ -34,8 +34,11 @@ enum input_type { IN_file, IN_text };
 enum character_encoding {
     ce_latin1,
     ce_latin2,
+    ce_latin15,
     ce_utf8,
-    ce_shiftjis
+    ce_shiftjis,
+    ce_koi8r,
+    ce_koi8u
 };
 
 typedef struct {
@@ -49,12 +52,28 @@ typedef struct {
                     into lines. */
 } INPUT;
 
-static char *input_encoding;
+enum character_encoding input_encoding;
 
 void
 set_input_encoding (char *encoding)
 {
-  input_encoding = encoding;
+  if (!strcasecmp (encoding, "utf-8"))
+    input_encoding = ce_utf8;
+  else if (!strcmp (encoding, "iso-8859-1")
+          || !strcmp (encoding, "us-ascii"))
+    input_encoding = ce_latin1;
+  else if (!strcmp (encoding, "iso-8859-2"))
+    input_encoding = ce_latin2;
+  else if (!strcmp (encoding, "iso-8859-15"))
+    input_encoding = ce_latin15;
+  else if (!strcmp (encoding, "shift_jis"))
+    input_encoding = ce_shiftjis;
+  else if (!strcmp (encoding, "koi8-r"))
+    input_encoding = ce_koi8r;
+  else if (!strcmp (encoding, "koi8-u"))
+    input_encoding = ce_koi8u;
+  else
+    fprintf (stderr, "warning: unhandled encoding %s\n", encoding);
 }
 
 
@@ -112,9 +131,13 @@ new_line (void)
 }
 
 
-static iconv_t iconv_from_latin1 = (iconv_t) 0;
+static iconv_t iconv_from_latin1;
 static iconv_t iconv_from_latin2;
+static iconv_t iconv_from_latin15;
 static iconv_t iconv_from_shiftjis;
+static iconv_t iconv_from_koi8u;
+static iconv_t iconv_from_koi8r;
+static iconv_t iconv_validate_utf8;
 
 /* Run iconv using text buffer as output buffer. */
 size_t
@@ -141,70 +164,44 @@ text_buffer_iconv (TEXT *buf, iconv_t iconv_state,
 }
 
 
-
-/* Return conversion of S according to ENCODING.  This function frees S. */
+/* Return conversion of S according to input_encoding.  This function
+   frees S. */
 static char *
-convert_to_utf8 (char *s, char *encoding)
+convert_to_utf8 (char *s)
 {
-  iconv_t our_iconv;
+  iconv_t our_iconv = (iconv_t) -1;
   static TEXT t;
   ICONV_CONST char *inptr; size_t bytes_left;
   size_t iconv_ret;
   enum character_encoding enc;
 
   /* Convert from @documentencoding to UTF-8.
-       It might be possible not to convert to UTF-8 and use an 8-bit encoding
+     It might be possible not to convert to UTF-8 and use an 8-bit encoding
      throughout, but then we'd have to not set the UTF-8 flag on the Perl 
      strings in api.c.  If multiple character encodings were used in a single 
      file, then we'd have to keep track of which strings needed the UTF-8 flag
      and which didn't. */
 
-  /* Could and check for malformed input: see
-     <http://savannah.gnu.org/bugs/?42896>. */
-
+  /* Initialize conversions for the first time. */
+  if (iconv_validate_utf8 == (iconv_t) 0)
+    iconv_validate_utf8 = iconv_open ("UTF-8", "UTF-8");
   if (iconv_from_latin1 == (iconv_t) 0)
-    {
-      /* Initialize the conversion for the first time. */
-      iconv_from_latin1 = iconv_open ("UTF-8", "ISO-8859-1");
-      if (iconv_from_latin1 == (iconv_t) -1)
-        {
-          abort ();
-
-          /* big trouble.  if we do return it unconverted, we will have to
-             remember not to set the UTF-8 flags on the Perl strings, otherwise
-             Perl will choke. */
-          return s;
-        }
-    }
+    iconv_from_latin1 = iconv_open ("UTF-8", "ISO-8859-1");
   if (iconv_from_latin2 == (iconv_t) 0)
-    {
-      /* Initialize the conversion for the first time. */
-      iconv_from_latin2 = iconv_open ("UTF-8", "ISO-8859-2");
-      if (iconv_from_latin2 == (iconv_t) -1)
-        iconv_from_latin2 = iconv_from_latin1;
-    }
+    iconv_from_latin2 = iconv_open ("UTF-8", "ISO-8859-2");
+  if (iconv_from_latin15 == (iconv_t) 0)
+    iconv_from_latin15 = iconv_open ("UTF-8", "ISO-8859-15");
   if (iconv_from_shiftjis == (iconv_t) 0)
-    {
-      /* Initialize the conversion for the first time. */
-      iconv_from_shiftjis = iconv_open ("UTF-8", "SHIFT-JIS");
-      if (iconv_from_shiftjis == (iconv_t) -1)
-        iconv_from_shiftjis = iconv_from_latin1;
-    }
+    iconv_from_shiftjis = iconv_open ("UTF-8", "SHIFT-JIS");
+  if (iconv_from_koi8r == (iconv_t) 0)
+    iconv_from_koi8r = iconv_open ("UTF-8", "KOI8-R");
+  if (iconv_from_koi8u == (iconv_t) 0)
+    iconv_from_koi8u = iconv_open ("UTF-8", "KOI8-U");
 
-  enc = ce_latin1;
-  if (!encoding)
-    ;
-  else if (!strcmp (encoding, "utf-8"))
-    enc = ce_utf8;
-  else if (!strcmp (encoding, "iso-8859-2"))
-    enc = ce_latin2;
-  else if (!strcmp (encoding, "shift_jis"))
-    enc = ce_shiftjis;
-
-  switch (enc)
+  switch (input_encoding)
     {
     case ce_utf8:
-      return s; /* no conversion required. */
+      our_iconv = iconv_validate_utf8;
       break;
     case ce_latin1:
       our_iconv = iconv_from_latin1;
@@ -212,9 +209,26 @@ convert_to_utf8 (char *s, char *encoding)
     case ce_latin2:
       our_iconv = iconv_from_latin2;
       break;
+    case ce_latin15:
+      our_iconv = iconv_from_latin15;
+      break;
     case ce_shiftjis:
       our_iconv = iconv_from_shiftjis;
       break;
+    case ce_koi8r:
+      our_iconv = iconv_from_koi8r;
+      break;
+    case ce_koi8u:
+      our_iconv = iconv_from_koi8u;
+      break;
+    }
+
+  if (our_iconv == (iconv_t) -1)
+    {
+      /* In case the converter couldn't be initialised.
+         Danger: this will cause problems if the input is not in UTF-8 as
+         the Perl strings that are created are flagged as being UTF-8. */
+      return s;
     }
 
   t.end = 0;
@@ -236,20 +250,25 @@ convert_to_utf8 (char *s, char *encoding)
         /* Success: all of input converted. */
         break;
 
+      if (bytes_left == 0)
+        break;
+
       switch (errno)
         {
         case E2BIG:
           text_alloc (&t, t.space + 20);
           break;
+        case EILSEQ:
         default:
-          abort ();
+          fprintf(stderr, "%s:%d: encoding error at byte 0x%2x\n",
+            line_nr.file_name, line_nr.line_nr, *(unsigned char *)inptr);
+          inptr++; bytes_left--;
           break;
         }
     }
 
   free (s);
   t.text[t.end] = '\0';
-  //fprintf (stderr, "CONVERTED STRING IS <<%s>>", t.text);
   return strdup (t.text);
 }
 
@@ -310,7 +329,7 @@ next_text (void)
           return new;
 
           break;
-        case IN_file: // 1911
+        case IN_file:
           input_file = input_stack[input_number - 1].file;
           status = getline (&line, &n, input_file);
           if (status != -1)
@@ -333,12 +352,12 @@ next_text (void)
               i->line_nr.line_nr++;
               line_nr = i->line_nr;
 
-              return convert_to_utf8 (line, input_encoding);
+              return convert_to_utf8 (line);
             }
           free (line); line = 0;
           break;
         default:
-          abort ();
+          fatal ("unknown input source type");
         }
 
       /* Top input source failed.  Pop it and try the next one. */
@@ -369,7 +388,7 @@ input_push (char *text, char *macro, char *filename, int line_number)
       input_space++; input_space *= 1.5;
       input_stack = realloc (input_stack, input_space * sizeof (INPUT));
       if (!input_stack)
-        abort ();
+        fatal ("realloc failed");
     }
 
   input_stack[input_number].type = IN_text;
@@ -405,7 +424,7 @@ save_string (char *string)
           small_strings = realloc (small_strings, small_strings_space
                                    * sizeof (char *));
           if (!small_strings)
-            abort ();
+            fatal ("realloc failed");
         }
       small_strings[small_strings_num++] = ret;
     }
@@ -501,6 +520,7 @@ add_include_directory (char *filename)
     filename[len - 1] = '\0';
 }
 
+/* Return value to be freed by caller. */
 char *
 locate_include_file (char *filename)
 {
@@ -519,7 +539,7 @@ locate_include_file (char *filename)
     {
       status = stat (filename, &dummy);
       if (status == 0)
-        return filename;
+        return strdup (filename);
     }
   else
     {
@@ -550,7 +570,7 @@ input_push_file (char *filename)
     {
       input_stack = realloc (input_stack, (input_space += 5) * sizeof (INPUT));
       if (!input_stack)
-        abort ();
+        fatal ("realloc failed");
     }
 
   /* Strip off a leading directory path. */

@@ -368,7 +368,11 @@ $result_trees{'line_breaks'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 10,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -511,7 +515,6 @@ $result_trees{'line_breaks'}{'contents'}[7]{'contents'}[1]{'args'}[0]{'parent'} 
 $result_trees{'line_breaks'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'line_breaks'}{'contents'}[7];
 $result_trees{'line_breaks'}{'contents'}[7]{'extra'}{'command_as_argument'} = $result_trees{'line_breaks'}{'contents'}[7]{'args'}[0]{'contents'}[0];
 $result_trees{'line_breaks'}{'contents'}[7]{'extra'}{'end_command'} = $result_trees{'line_breaks'}{'contents'}[7]{'contents'}[1];
-$result_trees{'line_breaks'}{'contents'}[7]{'line_nr'} = $result_trees{'line_breaks'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'line_breaks'}{'contents'}[7]{'parent'} = $result_trees{'line_breaks'};
 $result_trees{'line_breaks'}{'contents'}[8]{'parent'} = $result_trees{'line_breaks'};
 $result_trees{'line_breaks'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'line_breaks'}{'contents'}[9]{'args'}[0];
@@ -566,6 +569,9 @@ T
 $result_errors{'line_breaks'} = [];
 
 
+$result_floats{'line_breaks'} = {};
+
+
 
 $result_converted{'plaintext'}->{'line_breaks'} = '                               in center
                               line break
@@ -595,13 +601,15 @@ $result_converted{'html'}->{'line_breaks'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD
  new version">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -610,6 +618,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -625,8 +634,8 @@ ul.no-bullet {list-style: none}
 <div align="center">in center <br> line break
 </div>
 <dl compact="compact">
-<dt><strong>with break <br> after</strong></dt>
-<dt><strong>withx breakx <br> afterx</strong></dt>
+<dt><span><strong>with break <br> after</strong></span></dt>
+<dt><span><strong>withx breakx <br> afterx</strong></span></dt>
 <dd><p>Text
 </p></dd>
 </dl>

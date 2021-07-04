@@ -154,7 +154,9 @@ $result_trees{'unknown_node_in_menu'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -193,7 +195,7 @@ $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'unknown_node_in_menu'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'unknown_node_in_menu'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'parent'} = $result_trees{'unknown_node_in_menu'};
 
 $result_texis{'unknown_node_in_menu'} = '@node Top
@@ -252,6 +254,9 @@ $result_errors{'unknown_node_in_menu'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'unknown_node_in_menu'} = {};
 
 
 1;

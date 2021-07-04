@@ -159,7 +159,7 @@ info ls
 Assuming the normal @code{dir} entry for @code{ls}, this will show the
 @code{ls} documentation, which happens to be within the
 @code{coreutils} manual rather than a separate manual.  The @code{dir}
-entries can point to an any node within a manual, so that users don't
+entries can point to any node within a manual, so that users don't
 have to be concerned with the exact structure used by different
 authors.
 
@@ -1622,8 +1622,7 @@ Accept (or forces completion of) the current input line.
 @kindex C-q, in the echo area
 @findex echo-area-quoted-insert
 Insert the next character verbatim.  This is how you can insert control
-characters into a search string, for example, or the @samp{?} character
-when Info prompts with completion.
+characters into a search string.
 
 @item @kbd{M-TAB} (@code{echo-area-tab-insert})
 @itemx @kbd{Shift-@key{TAB}} (on DOS/Windows only)
@@ -2532,6 +2531,10 @@ Beware: @code{#stop} can be dangerous.  Since it disables all default
 key bindings, you must supply enough new key bindings to enable all
 necessary actions.  Failure to bind any key to the @code{quit} command,
 for example, can lead to frustration.
+
+Note that some keys (such as @key{C-c}) have special meanings
+to terminals, and any bindings for these would not be effective.
+@xref{Special Characters,,, coreutils, GNU Coreutils}.
 
 The order in which key bindings are defined in the @file{.infokey} file is
 not important, except that the command summary produced by the

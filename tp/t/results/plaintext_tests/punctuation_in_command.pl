@@ -70,7 +70,11 @@ $result_trees{'punctuation_in_command'} = {
           ],
           'cmdname' => 'dmn',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -92,7 +96,11 @@ $result_trees{'punctuation_in_command'} = {
           ],
           'cmdname' => 'indicateurl',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -114,7 +122,11 @@ $result_trees{'punctuation_in_command'} = {
           ],
           'cmdname' => 'kbd',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -136,7 +148,11 @@ $result_trees{'punctuation_in_command'} = {
           ],
           'cmdname' => 'math',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -158,7 +174,11 @@ $result_trees{'punctuation_in_command'} = {
           ],
           'cmdname' => 'cite',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -180,7 +200,11 @@ $result_trees{'punctuation_in_command'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -225,7 +249,11 @@ $result_trees{'punctuation_in_command'} = {
           ],
           'cmdname' => 'code',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -250,32 +278,26 @@ $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[1]{'parent'} 
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[3]{'args'}[0];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[3];
-$result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[3]{'line_nr'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[1]{'line_nr'};
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[5]{'args'}[0];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[5];
-$result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[5]{'line_nr'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[1]{'line_nr'};
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[7];
-$result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[7]{'line_nr'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[1]{'line_nr'};
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[9]{'args'}[0];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[9];
-$result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[9]{'line_nr'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[1]{'line_nr'};
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[11]{'args'}[0];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[11];
-$result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[11]{'line_nr'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[1]{'line_nr'};
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[12]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[13]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[13]{'args'}[0];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[13];
-$result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[13]{'line_nr'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[1]{'line_nr'};
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[13]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[14]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[15]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
@@ -283,7 +305,6 @@ $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[16]{'args'}[0
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'contents'}[0];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[16]{'args'}[0];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[16];
-$result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[16]{'line_nr'} = $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[16]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'contents'}[17]{'parent'} = $result_trees{'punctuation_in_command'}{'contents'}[1];
 $result_trees{'punctuation_in_command'}{'contents'}[1]{'parent'} = $result_trees{'punctuation_in_command'};
@@ -300,6 +321,9 @@ asis in code a. c
 ';
 
 $result_errors{'punctuation_in_command'} = [];
+
+
+$result_floats{'punctuation_in_command'} = {};
 
 
 

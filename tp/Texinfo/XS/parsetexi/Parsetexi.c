@@ -588,6 +588,22 @@ XS_EUPXS(XS_Texinfo__Parser_conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME)
 }
 
 
+XS_EUPXS(XS_Texinfo__Parser_set_novalidate); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Parser_set_novalidate)
+{
+    dVAR; dXSARGS;
+    if (items != 1)
+       croak_xs_usage(cv,  "i");
+    {
+	int	i = (int)SvIV(ST(0))
+;
+
+	set_novalidate(i);
+    }
+    XSRETURN_EMPTY;
+}
+
+
 XS_EUPXS(XS_Texinfo__Parser_set_documentlanguage); /* prototype to pass -Wmissing-prototypes */
 XS_EUPXS(XS_Texinfo__Parser_set_documentlanguage)
 {
@@ -671,6 +687,7 @@ XS_EXTERNAL(boot_Texinfo__Parser)
         (void)newXSproto_portable("Texinfo::Parser::conf_set_show_menu", XS_Texinfo__Parser_conf_set_show_menu, file, "$");
         (void)newXSproto_portable("Texinfo::Parser::conf_set_CPP_LINE_DIRECTIVES", XS_Texinfo__Parser_conf_set_CPP_LINE_DIRECTIVES, file, "$");
         (void)newXSproto_portable("Texinfo::Parser::conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME", XS_Texinfo__Parser_conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME, file, "$");
+        (void)newXSproto_portable("Texinfo::Parser::set_novalidate", XS_Texinfo__Parser_set_novalidate, file, "$");
         (void)newXSproto_portable("Texinfo::Parser::set_documentlanguage", XS_Texinfo__Parser_set_documentlanguage, file, "$");
         (void)newXSproto_portable("Texinfo::Parser::set_debug", XS_Texinfo__Parser_set_debug, file, "$");
 #if PERL_VERSION_LE(5, 21, 5)

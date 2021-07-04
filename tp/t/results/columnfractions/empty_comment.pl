@@ -90,7 +90,11 @@ $result_trees{'empty_comment'} = {
         'max_columns' => 0,
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -105,7 +109,6 @@ $result_trees{'empty_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'content
 $result_trees{'empty_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_comment'}{'contents'}[0]{'contents'}[0];
 $result_trees{'empty_comment'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_comment'}{'contents'}[0];
 $result_trees{'empty_comment'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'empty_comment'}{'contents'}[0]{'contents'}[0];
-$result_trees{'empty_comment'}{'contents'}[0]{'line_nr'} = $result_trees{'empty_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_comment'}{'contents'}[0]{'parent'} = $result_trees{'empty_comment'};
 
 $result_texis{'empty_comment'} = '@multitable @columnfractions @c
@@ -125,6 +128,9 @@ $result_errors{'empty_comment'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'empty_comment'} = {};
 
 
 1;

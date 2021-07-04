@@ -1,6 +1,6 @@
 /* install-info -- merge Info directory entries from an Info file.
 
-   Copyright 1996-2019 Free Software Foundation, Inc.
+   Copyright 1996-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -632,7 +632,7 @@ ensure_dirfile_exists (char *dirfile)
   if (desc < 0 && errno == ENOENT)
     {
       FILE *f;
-      char *readerr = strerror (errno);
+      const char *readerr = strerror (errno);
       f = fopen (dirfile, "w");
       if (f)
         {
@@ -668,19 +668,16 @@ The first time you invoke Info you start off looking at this node.\n\
     close (desc); /* It already existed, so fine.  */
 }
 
-
-/* Open FILENAME and return the resulting stream pointer.  If it doesn't
-   exist, try FILENAME.gz.  If that doesn't exist either, call
+ 
+/* Open FILENAME and return the resulting stream pointer.  If it
+   doesn't exist, look for a compressed version and return a pipe reading
+   the output of the compression program.  If still not found, call
    CREATE_CALLBACK (with FILENAME as arg) to create it, if that is
    non-NULL.  If still no luck, return a null pointer.
 
    Return the actual name of the file we tried to open in
    OPENED_FILENAME and the compress program to (de)compress it in
-   COMPRESSION_PROGRAM.  The compression program is determined by the
-   magic number, not the filename.
-   
-   Return either stdin reading the file, or a non-stdin pipe reading
-   the output of the compression program.  */
+   COMPRESSION_PROGRAM. */
 FILE *
 open_possibly_compressed_file (char *filename,
     void (*create_callback) (char *),
@@ -853,12 +850,10 @@ determine_file_type:
   else
     *compression_program = NULL;
 
-  /* Seek back over the magic bytes.  */
-  if (fseek (f, 0, 0) < 0)
-    return 0;
-
   if (*compression_program)
-    { /* It's compressed, so open a pipe.  */
+    {
+      /* Redirect stdin to the file and fork the decompression process
+         reading from stdin.  This allows shell metacharacters in filenames. */
       char *command = concat (*compression_program, " -d", "");
 
       if (fclose (f) < 0)
@@ -882,6 +877,10 @@ determine_file_type:
       f = freopen (*opened_filename, "r", f);
       if (! f)
 	return 0;
+#else
+      /* Seek back over the magic bytes.  */
+      if (fseek (f, 0, 0) < 0)
+        return 0;
 #endif
     }
 
@@ -930,13 +929,13 @@ readfile (char *filename, int *sizep,
         }
     }
 
-  /* We'll end up wasting space if we're not passing the filename back
-     and it is not just FILENAME, but so what.  */
   /* We need to close the stream, since on some systems the pipe created
      by popen is simulated by a temporary file which only gets removed
      inside pclose.  */
-  if (f != stdin)
+  if (compression_program)
     pclose (f);
+  else
+    fclose (f);
 
   *sizep = filled;
   return data;
@@ -2237,7 +2236,7 @@ main (int argc, char *argv[])
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-              "2019");
+              "2021");
           exit (EXIT_SUCCESS);
 
         case 'W':

@@ -451,6 +451,9 @@ End.
 $result_errors{'no_punctuation_commands'} = [];
 
 
+$result_floats{'no_punctuation_commands'} = {};
+
+
 
 $result_converted{'plaintext'}->{'no_punctuation_commands'} = 'Dot. Exclam! Question? Dot. Exclam! Question? GAAA.
 

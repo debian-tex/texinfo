@@ -70,7 +70,9 @@ $result_trees{'node_too_much_args'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           },
           undef,
@@ -104,7 +106,7 @@ $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'contents'}[1]{'pa
 $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'node_too_much_args'}{'contents'}[1];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'contents'}[1];
 $result_trees{'node_too_much_args'}{'contents'}[1]{'parent'} = $result_trees{'node_too_much_args'};
 
@@ -151,6 +153,9 @@ $result_errors{'node_too_much_args'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'node_too_much_args'} = {};
 
 
 1;

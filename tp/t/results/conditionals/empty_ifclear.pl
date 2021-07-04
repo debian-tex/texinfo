@@ -28,4 +28,7 @@ $result_errors{'empty_ifclear'} = [
 ];
 
 
+$result_floats{'empty_ifclear'} = {};
+
+
 1;

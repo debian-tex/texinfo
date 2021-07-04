@@ -631,6 +631,9 @@ quotation after a blank line
 $result_errors{'itemize_long_item'} = [];
 
 
+$result_floats{'itemize_long_item'} = {};
+
+
 
 $result_converted{'plaintext'}->{'itemize_long_item'} = '   youhou itemize very long item aaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbb cccccccccccc 
      first item

@@ -6476,6 +6476,9 @@ gz. aaa
 $result_errors{'enumerate_letters'} = [];
 
 
+$result_floats{'enumerate_letters'} = {};
+
+
 
 $result_converted{'plaintext'}->{'enumerate_letters'} = '  c. aaa
   d. aaa

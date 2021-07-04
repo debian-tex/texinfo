@@ -1,6 +1,6 @@
 /* makedoc.c -- make doc.c and funs.h from input files.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -425,7 +425,11 @@ process_one_file (char *filename, FILE *doc_stream, FILE *funs_stream)
 
       offset++;
       if (offset >= file_size)
-        break;
+        {
+          free (func_name);
+          free (func);
+          break;
+        }
 
       doc = xmalloc (1 + (offset - point));
       strncpy (doc, buffer + point, offset - point);

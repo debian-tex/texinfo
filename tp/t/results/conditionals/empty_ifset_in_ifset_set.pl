@@ -106,4 +106,7 @@ $result_texts{'empty_ifset_in_ifset_set'} = '
 $result_errors{'empty_ifset_in_ifset_set'} = [];
 
 
+$result_floats{'empty_ifset_in_ifset_set'} = {};
+
+
 1;

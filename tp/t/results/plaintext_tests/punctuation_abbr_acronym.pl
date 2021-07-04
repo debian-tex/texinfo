@@ -50,7 +50,11 @@ $result_trees{'punctuation_abbr_acronym'} = {
           ],
           'cmdname' => 'acronym',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -72,7 +76,11 @@ $result_trees{'punctuation_abbr_acronym'} = {
           ],
           'cmdname' => 'abbr',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -94,7 +102,11 @@ $result_trees{'punctuation_abbr_acronym'} = {
           ],
           'cmdname' => 'acronym',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -169,7 +181,11 @@ $result_trees{'punctuation_abbr_acronym'} = {
           ],
           'cmdname' => 'acronym',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -204,7 +220,11 @@ $result_trees{'punctuation_abbr_acronym'} = {
           ],
           'cmdname' => 'abbr',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -265,17 +285,14 @@ $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[0]{'parent'
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[2];
-$result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[4]{'args'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[4];
-$result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[4]{'line_nr'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[6];
-$result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[6]{'line_nr'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[8]{'args'}[0];
@@ -288,14 +305,12 @@ $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[10]{'args'}
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[10];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[10]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[10]{'args'}[1];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[10]{'args'}[1]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[10];
-$result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[10]{'line_nr'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[8]{'line_nr'};
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[10]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[11]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[12]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[12]{'args'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[12];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[12]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[12]{'args'}[1];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[12]{'args'}[1]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[12];
-$result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[12]{'line_nr'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[8]{'line_nr'};
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[12]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[13]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0];
 $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_abbr_acronym'}{'contents'}[0]{'contents'}[14]{'args'}[0];
@@ -318,6 +333,9 @@ bbb (expla). Last.
 ';
 
 $result_errors{'punctuation_abbr_acronym'} = [];
+
+
+$result_floats{'punctuation_abbr_acronym'} = {};
 
 
 

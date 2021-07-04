@@ -118,4 +118,7 @@ $result_errors{'macro_in_invalid_documentencoding'} = [
 ];
 
 
+$result_floats{'macro_in_invalid_documentencoding'} = {};
+
+
 1;

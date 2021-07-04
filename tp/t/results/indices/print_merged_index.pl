@@ -99,7 +99,9 @@ $result_trees{'print_merged_index'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -126,7 +128,7 @@ $result_trees{'print_merged_index'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'co
 $result_trees{'print_merged_index'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'print_merged_index'}{'contents'}[1]{'contents'}[0];
 $result_trees{'print_merged_index'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'print_merged_index'}{'contents'}[1];
 $result_trees{'print_merged_index'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'print_merged_index'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'print_merged_index'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'print_merged_index'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'print_merged_index'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'print_merged_index'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'print_merged_index'}{'contents'}[1]{'parent'} = $result_trees{'print_merged_index'};
 
 $result_texis{'print_merged_index'} = '@syncodeindex fn cp
@@ -214,6 +216,9 @@ $result_indices{'print_merged_index'} = {
     }
   }
 };
+
+
+$result_floats{'print_merged_index'} = {};
 
 
 1;

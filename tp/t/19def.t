@@ -515,6 +515,12 @@ bbb
 & @& @ampchar{} @{ @} @@
 ',
 {'test_formats' => ['plaintext', 'html', 'xml', 'docbook']}],
+['code_in_def',
+'@deftypefn Function int foo (@code{const std::vector<int>@&} bar)
+Documentation of @code{foo}.
+@end deftypefn
+',
+{'test_formats' => ['plaintext']}],
 );
 
 my @test_printindex = ();

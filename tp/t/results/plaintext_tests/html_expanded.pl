@@ -118,6 +118,9 @@ after.
 $result_errors{'html_expanded'} = [];
 
 
+$result_floats{'html_expanded'} = {};
+
+
 
 $result_converted{'plaintext'}->{'html_expanded'} = 'Before 
 html

@@ -87,7 +87,7 @@ $result_trees{'cpp_lines'} = {
               'contents' => [],
               'line_nr' => {
                 'file_name' => 'g_f',
-                'line_nr' => '68',
+                'line_nr' => 68,
                 'macro' => ''
               },
               'parent' => {}
@@ -185,7 +185,7 @@ $result_trees{'cpp_lines'} = {
           ],
           'line_nr' => {
             'file_name' => 'g_f',
-            'line_nr' => '48',
+            'line_nr' => 48,
             'macro' => ''
           },
           'parent' => {}
@@ -230,7 +230,7 @@ $result_trees{'cpp_lines'} = {
           },
           'line_nr' => {
             'file_name' => 'g_f',
-            'line_nr' => '53',
+            'line_nr' => 53,
             'macro' => ''
           },
           'parent' => {}
@@ -266,7 +266,7 @@ $result_trees{'cpp_lines'} = {
               'contents' => [],
               'line_nr' => {
                 'file_name' => 'g_f',
-                'line_nr' => '57',
+                'line_nr' => 57,
                 'macro' => ''
               },
               'parent' => {}
@@ -322,7 +322,7 @@ $result_trees{'cpp_lines'} = {
               'contents' => [],
               'line_nr' => {
                 'file_name' => 'g_f',
-                'line_nr' => '61',
+                'line_nr' => 61,
                 'macro' => ''
               },
               'parent' => {}
@@ -376,7 +376,7 @@ $result_trees{'cpp_lines'} = {
           },
           'line_nr' => {
             'file_name' => 'g_f',
-            'line_nr' => '63',
+            'line_nr' => 63,
             'macro' => ''
           },
           'parent' => {}
@@ -412,7 +412,7 @@ $result_trees{'cpp_lines'} = {
               'contents' => [],
               'line_nr' => {
                 'file_name' => 'g_f',
-                'line_nr' => '68',
+                'line_nr' => 68,
                 'macro' => ''
               },
               'parent' => {}
@@ -473,7 +473,7 @@ $result_trees{'cpp_lines'} = {
               'contents' => [],
               'line_nr' => {
                 'file_name' => 'g_f',
-                'line_nr' => '72',
+                'line_nr' => 72,
                 'macro' => ''
               },
               'parent' => {}
@@ -524,7 +524,7 @@ $result_trees{'cpp_lines'} = {
               'contents' => [],
               'line_nr' => {
                 'file_name' => 'inc',
-                'line_nr' => '10',
+                'line_nr' => 10,
                 'macro' => ''
               },
               'parent' => {}
@@ -563,7 +563,7 @@ $result_trees{'cpp_lines'} = {
               'contents' => [],
               'line_nr' => {
                 'file_name' => 'g_f',
-                'line_nr' => '75',
+                'line_nr' => 75,
                 'macro' => ''
               },
               'parent' => {}
@@ -613,7 +613,7 @@ $result_trees{'cpp_lines'} = {
               },
               'line_nr' => {
                 'file_name' => 'g_f',
-                'line_nr' => '77',
+                'line_nr' => 77,
                 'macro' => ''
               },
               'parent' => {}
@@ -652,7 +652,7 @@ $result_trees{'cpp_lines'} = {
               'contents' => [],
               'line_nr' => {
                 'file_name' => 'g_f',
-                'line_nr' => '81',
+                'line_nr' => 81,
                 'macro' => ''
               },
               'parent' => {}
@@ -679,7 +679,9 @@ $result_trees{'cpp_lines'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -688,7 +690,7 @@ $result_trees{'cpp_lines'} = {
       },
       'line_nr' => {
         'file_name' => 'g_f',
-        'line_nr' => '70',
+        'line_nr' => 70,
         'macro' => ''
       },
       'parent' => {}
@@ -809,7 +811,7 @@ $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[32]{'contents'}[1]{'parent
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[32]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[33]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
 $result_trees{'cpp_lines'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'cpp_lines'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'cpp_lines'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'cpp_lines'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'cpp_lines'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'cpp_lines'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'parent'} = $result_trees{'cpp_lines'};
 $result_trees{'cpp_lines'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[2];
 $result_trees{'cpp_lines'}{'contents'}[2]{'parent'} = $result_trees{'cpp_lines'};
@@ -927,6 +929,9 @@ $result_menus{'cpp_lines'} = {
 };
 
 $result_errors{'cpp_lines'} = [];
+
+
+$result_floats{'cpp_lines'} = {};
 
 
 1;

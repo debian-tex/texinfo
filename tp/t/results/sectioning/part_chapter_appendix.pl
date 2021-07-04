@@ -212,6 +212,9 @@ $result_sectioning{'part_chapter_appendix'}{'section_childs'}[1]{'toplevel_prev'
 $result_errors{'part_chapter_appendix'} = [];
 
 
+$result_floats{'part_chapter_appendix'} = {};
+
+
 
 $result_converted{'xml'}->{'part_chapter_appendix'} = '
 <part spaces=" "><sectiontitle>Part 1</sectiontitle>

@@ -239,7 +239,11 @@ $result_trees{'test_deftypefnnewline'} = {
             'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -375,7 +379,11 @@ $result_trees{'test_deftypefnnewline'} = {
             'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -585,7 +593,11 @@ $result_trees{'test_deftypefnnewline'} = {
             'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 15,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -721,7 +733,11 @@ $result_trees{'test_deftypefnnewline'} = {
             'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 19,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -731,7 +747,9 @@ $result_trees{'test_deftypefnnewline'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -781,7 +799,6 @@ $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'line_nr'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[0];
@@ -803,7 +820,6 @@ $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'line_nr'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'line_nr'};
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[4]{'args'}[0];
@@ -835,7 +851,6 @@ $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'extra'}{'end_command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'line_nr'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'line_nr'};
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0];
@@ -857,10 +872,9 @@ $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'extra'}{'end_command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'line_nr'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'line_nr'};
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'};
 
 $result_texis{'test_deftypefnnewline'} = '
@@ -924,6 +938,9 @@ $result_menus{'test_deftypefnnewline'} = {
 $result_errors{'test_deftypefnnewline'} = [];
 
 
+$result_floats{'test_deftypefnnewline'} = {};
+
+
 
 $result_converted{'plaintext'}->{'test_deftypefnnewline'} = ' -- Function:
           data-type
@@ -944,28 +961,27 @@ $result_converted{'plaintext'}->{'test_deftypefnnewline'} = ' -- Function:
 $result_converted{'html_text'}->{'test_deftypefnnewline'} = '
 
 <span id="Top"></span><h1 class="node-heading">Top</h1>
-<dl>
-<dt id="index-name">Function:<br> <em>data-type</em><br> <strong>name</strong> <em>arguments...</em></dt>
+<dl class="def">
+<dt id="index-name"><span class="category">Function:<br> </span><span><em>data-type</em><br> <strong>name</strong> <em>arguments...</em><a href=\'#index-name\' class=\'copiable-anchor\'> &para;</a></span></dt>
 <dd><p>aaa
 </p></dd></dl>
 
-<dl>
-<dt id="index-arg">fun: <strong>arg</strong></dt>
+<dl class="def">
+<dt id="index-arg"><span class="category">fun: </span><span><strong>arg</strong><a href=\'#index-arg\' class=\'copiable-anchor\'> &para;</a></span></dt>
 <dd><p>fff
 </p></dd></dl>
 
 
-<dl>
-<dt id="index-name2">Function: <em>data-type2</em> <strong>name2</strong> <em>arguments2...</em></dt>
+<dl class="def">
+<dt id="index-name2"><span class="category">Function: </span><span><em>data-type2</em> <strong>name2</strong> <em>arguments2...</em><a href=\'#index-name2\' class=\'copiable-anchor\'> &para;</a></span></dt>
 <dd><p>aaa2
 </p></dd></dl>
 
-<dl>
-<dt id="index-arg2">fun2: <strong>arg2</strong></dt>
+<dl class="def">
+<dt id="index-arg2"><span class="category">fun2: </span><span><strong>arg2</strong><a href=\'#index-arg2\' class=\'copiable-anchor\'> &para;</a></span></dt>
 <dd><p>fff2
 </p></dd></dl>
-<hr>
-';
+<hr>';
 
 
 $result_converted{'xml'}->{'test_deftypefnnewline'} = '

@@ -291,11 +291,10 @@ parse_def (enum command_id command, ELEMENT *current)
           if (def_aliases[i].alias == command)
             goto found;
         }
-      abort (); /* Has CF_def_alias but no alias defined. */
+      fatal ("no alias for CF_def_alias command");
 found:
-      /* Prepended content is stuck into contents, so
-         @defun is converted into
-         @deffn Function */
+      /* Prepended content is inserted into contents, so
+         @defun is converted into @deffn Function */
 
       category = def_aliases[i].category;
       command = def_aliases[i].command;

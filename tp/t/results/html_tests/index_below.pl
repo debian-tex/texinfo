@@ -324,6 +324,9 @@ $result_sectioning{'index_below'}{'section_childs'}[0]{'section_up'} = $result_s
 $result_errors{'index_below'} = [];
 
 
+$result_floats{'index_below'} = {};
+
+
 $result_elements{'index_below'} = [
   {
     'extra' => {
@@ -432,15 +435,17 @@ $result_converted{'html'}->{'index_below'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#top" rel="start" title="top">
 <link href="#chap" rel="index" title="1 chap">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -449,6 +454,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -457,23 +463,32 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="top"></span><div class="header">
+<div class="top" id="top">
+<div class="header">
 <p>
  &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
 <h1 class="top">top</h1>
 
+<ul class="section-toc">
+<li><a href="#chap" accesskey="1">chap</a></li>
+</ul>
 <hr>
-<span id="chap"></span><div class="header">
+<div class="chapter" id="chap">
+<div class="header">
 <p>
- &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
+ Up : <a href="#top" accesskey="u" rel="up">top</a> &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
 <h2 class="chapter">1 chap</h2>
 
+<ul class="section-toc">
+<li><a href="#sec" accesskey="1">sec</a></li>
+</ul>
 <hr>
-<span id="sec"></span><div class="header">
+<div class="section" id="sec">
+<div class="header">
 <p>
- &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
+ Up : <a href="#chap" accesskey="u" rel="up">chap</a> &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
 <h3 class="section">1.1 sec</h3>
 
@@ -491,7 +506,9 @@ ul.no-bullet {list-style: none}
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#sec_cp_letter-E"><b>E</b></a>
  &nbsp; 
 </td></tr></table>
-<hr>
+</div>
+</div>
+</div>
 
 
 

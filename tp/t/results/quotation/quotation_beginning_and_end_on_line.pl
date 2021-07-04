@@ -57,7 +57,11 @@ $result_trees{'quotation_beginning_and_end_on_line'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -69,7 +73,6 @@ $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[
 $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0];
 $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0];
 $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0];
-$result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'line_nr'} = $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'parent'} = $result_trees{'quotation_beginning_and_end_on_line'};
 
 $result_texis{'quotation_beginning_and_end_on_line'} = '@quotation in quotation @end quotation
@@ -90,6 +93,9 @@ $result_errors{'quotation_beginning_and_end_on_line'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'quotation_beginning_and_end_on_line'} = {};
 
 
 

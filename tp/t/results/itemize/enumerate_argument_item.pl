@@ -473,6 +473,9 @@ aa. lower case second
 $result_errors{'enumerate_argument_item'} = [];
 
 
+$result_floats{'enumerate_argument_item'} = {};
+
+
 
 $result_converted{'plaintext'}->{'enumerate_argument_item'} = '  1. numeric first
   2. numeric second

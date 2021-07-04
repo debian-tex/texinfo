@@ -61,4 +61,7 @@ $result_errors{'synindex_too_much_args'} = [
 ];
 
 
+$result_floats{'synindex_too_much_args'} = {};
+
+
 1;

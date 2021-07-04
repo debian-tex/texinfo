@@ -110,7 +110,11 @@ $result_trees{'accent_argument'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -206,7 +210,11 @@ $result_trees{'accent_argument'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -223,7 +231,6 @@ $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'conte
 $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1];
 $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0];
 $result_trees{'accent_argument'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1];
-$result_trees{'accent_argument'}{'contents'}[0]{'line_nr'} = $result_trees{'accent_argument'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'accent_argument'}{'contents'}[0]{'parent'} = $result_trees{'accent_argument'};
 $result_trees{'accent_argument'}{'contents'}[1]{'parent'} = $result_trees{'accent_argument'};
 $result_trees{'accent_argument'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2]{'args'}[0];
@@ -235,7 +242,6 @@ $result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'conte
 $result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1];
 $result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2];
 $result_trees{'accent_argument'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1];
-$result_trees{'accent_argument'}{'contents'}[2]{'line_nr'} = $result_trees{'accent_argument'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'accent_argument'}{'contents'}[2]{'parent'} = $result_trees{'accent_argument'};
 
 $result_texis{'accent_argument'} = '@itemize @~@comment
@@ -273,6 +279,9 @@ $result_errors{'accent_argument'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'accent_argument'} = {};
 
 
 

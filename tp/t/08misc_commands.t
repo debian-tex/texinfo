@@ -316,6 +316,11 @@ Begin para2
 @noindent
 after noindent2.
 '],
+['noindent_empty_para',
+'@noindent
+
+aaa
+'],
 ['empty_center',
 '@center 
 '],

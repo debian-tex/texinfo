@@ -74,4 +74,7 @@ $result_errors{'ignored_text'} = [
 ];
 
 
+$result_floats{'ignored_text'} = {};
+
+
 1;

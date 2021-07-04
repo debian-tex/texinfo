@@ -12,7 +12,9 @@ require 't/test_utils.pl';
 my @test_cases = (
 ['node_footnote_end',
   undef,
-  {'test_file' => 'node_footnote.texi'},
+  # also tests for node with section command nor directions after
+  # a section, and Top without @top and chapter in menu
+  {'test_file' => 'node_footnote.texi', 'CHECK_NORMAL_MENU_STRUCTURE' => 1},
   {'footnotestyle' => 'end'}
 ],
 ['node_footnote_use_node',
@@ -66,8 +68,9 @@ my @test_cases = (
 ],
 ['sectioning_frames',
   undef,
-  {'test_file' => 'sectioning.texi'},
-  {'SPLIT' => 'chapter', 'FRAMES' => 1}
+  # tests for node with directions after section
+  {'test_file' => 'sectioning.texi', 'CHECK_NORMAL_MENU_STRUCTURE' => 1},
+  {'SPLIT' => 'chapter', 'FRAMES' => 1, 'CHECK_NORMAL_MENU_STRUCTURE' => 1}
 ],
 ['placed_things_before_element',
   undef,

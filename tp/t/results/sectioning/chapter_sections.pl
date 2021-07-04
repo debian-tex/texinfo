@@ -594,6 +594,9 @@ $result_sectioning{'chapter_sections'}{'section_childs'}[3]{'toplevel_prev'} = $
 $result_errors{'chapter_sections'} = [];
 
 
+$result_floats{'chapter_sections'} = {};
+
+
 $result_elements{'chapter_sections'} = [
   {
     'extra' => {

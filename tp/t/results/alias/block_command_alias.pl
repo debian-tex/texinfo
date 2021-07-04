@@ -164,4 +164,7 @@ $result_errors{'block_command_alias'} = [
 ];
 
 
+$result_floats{'block_command_alias'} = {};
+
+
 1;

@@ -721,7 +721,7 @@ explanation
 @image{f--ile,,,@:}.
 '],
 ['image_extension',
-'@image{f---ile,,,,gr--a}
+'@image{f---ile,,,,.gr--a}
 '],
 ['image_formatting',
 '@node Top

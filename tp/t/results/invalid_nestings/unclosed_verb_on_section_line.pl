@@ -70,7 +70,11 @@ $result_trees{'unclosed_verb_on_section_line'} = {
         'spaces_before_argument' => ' '
       },
       'level' => 2,
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'number' => 1,
       'parent' => {}
     }
@@ -85,7 +89,6 @@ $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'conten
 $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1];
-$result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'line_nr'} = $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'parent'} = $result_trees{'unclosed_verb_on_section_line'};
 
 $result_texis{'unclosed_verb_on_section_line'} = '@section in section @verb{Truc
@@ -136,6 +139,9 @@ $result_errors{'unclosed_verb_on_section_line'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'unclosed_verb_on_section_line'} = {};
 
 
 1;

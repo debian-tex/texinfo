@@ -1,5 +1,5 @@
-# printf.m4 serial 61
-dnl Copyright (C) 2003, 2007-2019 Free Software Foundation, Inc.
+# printf.m4 serial 72
+dnl Copyright (C) 2003, 2007-2021 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -67,6 +67,7 @@ changequote(,)dnl
                                  # Guess yes on FreeBSD >= 5.
            freebsd[1-4].*)       gl_cv_func_printf_sizes_c99="guessing no";;
            freebsd* | kfreebsd*) gl_cv_func_printf_sizes_c99="guessing yes";;
+           midnightbsd*)         gl_cv_func_printf_sizes_c99="guessing yes";;
                                  # Guess yes on Mac OS X >= 10.3.
            darwin[1-6].*)        gl_cv_func_printf_sizes_c99="guessing no";;
            darwin*)              gl_cv_func_printf_sizes_c99="guessing yes";;
@@ -93,8 +94,8 @@ changequote([,])dnl
                                    [gl_cv_func_printf_sizes_c99="guessing yes"],
                                    [gl_cv_func_printf_sizes_c99="guessing no"])
                                  ;;
-                                 # If we don't know, assume the worst.
-           *)                    gl_cv_func_printf_sizes_c99="guessing no";;
+                                 # If we don't know, obey --enable-cross-guesses.
+           *)                    gl_cv_func_printf_sizes_c99="$gl_cross_guess_normal";;
          esac
         ])
     ])
@@ -247,6 +248,7 @@ changequote(,)dnl
                                  # Guess yes on FreeBSD >= 6.
            freebsd[1-5].*)       gl_cv_func_printf_infinite="guessing no";;
            freebsd* | kfreebsd*) gl_cv_func_printf_infinite="guessing yes";;
+           midnightbsd*)         gl_cv_func_printf_infinite="guessing yes";;
                                  # Guess yes on Mac OS X >= 10.3.
            darwin[1-6].*)        gl_cv_func_printf_infinite="guessing no";;
            darwin*)              gl_cv_func_printf_infinite="guessing yes";;
@@ -257,6 +259,9 @@ changequote(,)dnl
            netbsd[1-2]* | netbsdelf[1-2]* | netbsdaout[1-2]* | netbsdcoff[1-2]*)
                                  gl_cv_func_printf_infinite="guessing no";;
            netbsd*)              gl_cv_func_printf_infinite="guessing yes";;
+                                 # Guess yes on OpenBSD >= 6.0.
+           openbsd[1-5].*)       gl_cv_func_printf_infinite="guessing no";;
+           openbsd*)             gl_cv_func_printf_infinite="guessing yes";;
                                  # Guess yes on BeOS.
            beos*)                gl_cv_func_printf_infinite="guessing yes";;
                                  # Guess no on Android.
@@ -271,8 +276,8 @@ changequote([,])dnl
                                    [gl_cv_func_printf_infinite="guessing yes"],
                                    [gl_cv_func_printf_infinite="guessing no"])
                                  ;;
-                                 # If we don't know, assume the worst.
-           *)                    gl_cv_func_printf_infinite="guessing no";;
+                                 # If we don't know, obey --enable-cross-guesses.
+           *)                    gl_cv_func_printf_infinite="$gl_cross_guess_normal";;
          esac
         ])
     ])
@@ -466,9 +471,13 @@ changequote(,)dnl
                                          # Guess yes on FreeBSD >= 6.
                    freebsd[1-5].*)       gl_cv_func_printf_infinite_long_double="guessing no";;
                    freebsd* | kfreebsd*) gl_cv_func_printf_infinite_long_double="guessing yes";;
+                   midnightbsd*)         gl_cv_func_printf_infinite_long_double="guessing yes";;
                                          # Guess yes on HP-UX >= 11.
                    hpux[7-9]* | hpux10*) gl_cv_func_printf_infinite_long_double="guessing no";;
                    hpux*)                gl_cv_func_printf_infinite_long_double="guessing yes";;
+                                         # Guess yes on OpenBSD >= 6.0.
+                   openbsd[1-5].*)       gl_cv_func_printf_infinite_long_double="guessing no";;
+                   openbsd*)             gl_cv_func_printf_infinite_long_double="guessing yes";;
                                          # Guess no on Android.
                    linux*-android*)      gl_cv_func_printf_infinite_long_double="guessing no";;
 changequote([,])dnl
@@ -481,8 +490,8 @@ changequote([,])dnl
                                            [gl_cv_func_printf_infinite_long_double="guessing yes"],
                                            [gl_cv_func_printf_infinite_long_double="guessing no"])
                                          ;;
-                                         # If we don't know, assume the worst.
-                   *)                    gl_cv_func_printf_infinite_long_double="guessing no";;
+                                         # If we don't know, obey --enable-cross-guesses.
+                   *)                    gl_cv_func_printf_infinite_long_double="$gl_cross_guess_normal";;
                  esac
                  ;;
              esac
@@ -587,8 +596,8 @@ int main ()
            linux*-android*)      gl_cv_func_printf_directive_a="guessing no";;
                                  # Guess no on native Windows.
            mingw*)               gl_cv_func_printf_directive_a="guessing no";;
-                                 # If we don't know, assume the worst.
-           *)                    gl_cv_func_printf_directive_a="guessing no";;
+                                 # If we don't know, obey --enable-cross-guesses.
+           *)                    gl_cv_func_printf_directive_a="$gl_cross_guess_normal";;
          esac
         ])
     ])
@@ -638,9 +647,13 @@ changequote(,)dnl
                                  # Guess yes on FreeBSD >= 6.
            freebsd[1-5].*)       gl_cv_func_printf_directive_f="guessing no";;
            freebsd* | kfreebsd*) gl_cv_func_printf_directive_f="guessing yes";;
+           midnightbsd*)         gl_cv_func_printf_directive_f="guessing yes";;
                                  # Guess yes on Mac OS X >= 10.3.
            darwin[1-6].*)        gl_cv_func_printf_directive_f="guessing no";;
            darwin*)              gl_cv_func_printf_directive_f="guessing yes";;
+                                 # Guess yes on OpenBSD >= 6.0.
+           openbsd[1-5].*)       gl_cv_func_printf_directive_f="guessing no";;
+           openbsd*)             gl_cv_func_printf_directive_f="guessing yes";;
                                  # Guess yes on Solaris >= 2.10.
            solaris2.[1-9][0-9]*) gl_cv_func_printf_directive_f="guessing yes";;
            solaris*)             gl_cv_func_printf_directive_f="guessing no";;
@@ -656,8 +669,8 @@ changequote([,])dnl
                                    [gl_cv_func_printf_directive_f="guessing yes"],
                                    [gl_cv_func_printf_directive_f="guessing no"])
                                  ;;
-                                 # If we don't know, assume the worst.
-           *)                    gl_cv_func_printf_directive_f="guessing no";;
+                                 # If we don't know, obey --enable-cross-guesses.
+           *)                    gl_cv_func_printf_directive_f="$gl_cross_guess_normal";;
          esac
         ])
     ])
@@ -680,7 +693,10 @@ AC_DEFUN([gl_PRINTF_DIRECTIVE_N],
 #include <stdlib.h>
 #include <string.h>
 #ifdef _MSC_VER
-/* See page about "Parameter Validation" on msdn.microsoft.com.  */
+#include <inttypes.h>
+/* See page about "Parameter Validation" on msdn.microsoft.com.
+   <https://docs.microsoft.com/en-us/cpp/c-runtime-library/parameter-validation>
+   <https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/set-invalid-parameter-handler-set-thread-local-invalid-parameter-handler>  */
 static void cdecl
 invalid_parameter_handler (const wchar_t *expression,
                            const wchar_t *function,
@@ -711,6 +727,16 @@ int main ()
         [gl_cv_func_printf_directive_n=yes],
         [gl_cv_func_printf_directive_n=no],
         [case "$host_os" in
+                            # Guess no on glibc when _FORTIFY_SOURCE >= 2.
+           *-gnu* | gnu*)   AC_COMPILE_IFELSE(
+                              [AC_LANG_SOURCE(
+                                 [[#if _FORTIFY_SOURCE >= 2
+                                    error fail
+                                   #endif
+                                 ]])],
+                              [gl_cv_func_printf_directive_n="guessing yes"],
+                              [gl_cv_func_printf_directive_n="guessing no"])
+                            ;;
                             # Guess no on Android.
            linux*-android*) gl_cv_func_printf_directive_n="guessing no";;
                             # Guess no on native Windows.
@@ -737,13 +763,7 @@ AC_DEFUN([gl_PRINTF_DIRECTIVE_LS],
     [
       AC_RUN_IFELSE(
         [AC_LANG_SOURCE([[
-/* Tru64 with Desktop Toolkit C has a bug: <stdio.h> must be included before
-   <wchar.h>.
-   BSD/OS 4.0.1 has a bug: <stddef.h>, <stdio.h> and <time.h> must be
-   included before <wchar.h>.  */
-#include <stddef.h>
 #include <stdio.h>
-#include <time.h>
 #include <wchar.h>
 #include <string.h>
 int main ()
@@ -791,7 +811,9 @@ int main ()
         [
 changequote(,)dnl
          case "$host_os" in
-           openbsd*)        gl_cv_func_printf_directive_ls="guessing no";;
+                            # Guess yes on OpenBSD >= 6.0.
+           openbsd[1-5].*)  gl_cv_func_printf_directive_ls="guessing no";;
+           openbsd*)        gl_cv_func_printf_directive_ls="guessing yes";;
            irix*)           gl_cv_func_printf_directive_ls="guessing no";;
            solaris*)        gl_cv_func_printf_directive_ls="guessing no";;
            cygwin*)         gl_cv_func_printf_directive_ls="guessing no";;
@@ -978,8 +1000,8 @@ changequote(,)dnl
            linux*-android*) gl_cv_func_printf_flag_zero="guessing no";;
                             # Guess no on native Windows.
            mingw*)          gl_cv_func_printf_flag_zero="guessing no";;
-                            # If we don't know, assume the worst.
-           *)               gl_cv_func_printf_flag_zero="guessing no";;
+                            # If we don't know, obey --enable-cross-guesses.
+           *)               gl_cv_func_printf_flag_zero="$gl_cross_guess_normal";;
          esac
 changequote([,])dnl
         ])
@@ -1059,9 +1081,8 @@ AC_DEFUN([gl_PRINTF_ENOMEM],
       gl_cv_func_printf_enomem="guessing no"
       if test "$cross_compiling" = no; then
         if test $APPLE_UNIVERSAL_BUILD = 0; then
-          AC_LANG_CONFTEST([AC_LANG_SOURCE([
+          AC_LANG_CONFTEST([AC_LANG_SOURCE([[
 ]GL_NOCRASH[
-changequote(,)dnl
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/time.h>
@@ -1106,8 +1127,7 @@ int main()
   ret = printf ("%.5000000f", 1.0);
   return !(ret == 5000002 || (ret < 0 && errno == ENOMEM));
 }
-changequote([,])dnl
-          ])])
+          ]])])
           if AC_TRY_EVAL([ac_link]) && test -s conftest$ac_exeext; then
             (./conftest 2>&AS_MESSAGE_LOG_FD
              result=$?
@@ -1156,8 +1176,8 @@ changequote(,)dnl
           haiku*)          gl_cv_func_printf_enomem="guessing yes";;
                            # Guess no on Android.
           linux*-android*) gl_cv_func_printf_enomem="guessing no";;
-                           # If we don't know, assume the worst.
-          *)               gl_cv_func_printf_enomem="guessing no";;
+                           # If we don't know, obey --enable-cross-guesses.
+          *)               gl_cv_func_printf_enomem="$gl_cross_guess_normal";;
         esac
 changequote([,])dnl
       fi
@@ -1176,7 +1196,7 @@ dnl Test whether the string produced by the snprintf function is always NUL
 dnl terminated. (ISO C99, POSIX:2001)
 dnl Result is gl_cv_func_snprintf_truncation_c99.
 
-AC_DEFUN([gl_SNPRINTF_TRUNCATION_C99],
+AC_DEFUN_ONCE([gl_SNPRINTF_TRUNCATION_C99],
 [
   AC_REQUIRE([AC_PROG_CC])
   AC_REQUIRE([AC_CANONICAL_HOST]) dnl for cross-compiles
@@ -1223,6 +1243,7 @@ changequote(,)dnl
                                  # Guess yes on FreeBSD >= 5.
            freebsd[1-4].*)       gl_cv_func_snprintf_truncation_c99="guessing no";;
            freebsd* | kfreebsd*) gl_cv_func_snprintf_truncation_c99="guessing yes";;
+           midnightbsd*)         gl_cv_func_snprintf_truncation_c99="guessing yes";;
                                  # Guess yes on Mac OS X >= 10.3.
            darwin[1-6].*)        gl_cv_func_snprintf_truncation_c99="guessing no";;
            darwin*)              gl_cv_func_snprintf_truncation_c99="guessing yes";;
@@ -1255,8 +1276,8 @@ changequote(,)dnl
            linux*-android*)      gl_cv_func_snprintf_truncation_c99="guessing yes";;
                                  # Guess no on native Windows.
            mingw*)               gl_cv_func_snprintf_truncation_c99="guessing no";;
-                                 # If we don't know, assume the worst.
-           *)                    gl_cv_func_snprintf_truncation_c99="guessing no";;
+                                 # If we don't know, obey --enable-cross-guesses.
+           *)                    gl_cv_func_snprintf_truncation_c99="$gl_cross_guess_normal";;
          esac
 changequote([,])dnl
         ])
@@ -1327,6 +1348,7 @@ changequote(,)dnl
                                  # Guess yes on FreeBSD >= 5.
            freebsd[1-4].*)       gl_cv_func_snprintf_retval_c99="guessing no";;
            freebsd* | kfreebsd*) gl_cv_func_snprintf_retval_c99="guessing yes";;
+           midnightbsd*)         gl_cv_func_snprintf_retval_c99="guessing yes";;
                                  # Guess yes on Mac OS X >= 10.3.
            darwin[1-6].*)        gl_cv_func_snprintf_retval_c99="guessing no";;
            darwin*)              gl_cv_func_snprintf_retval_c99="guessing yes";;
@@ -1358,8 +1380,8 @@ changequote([,])dnl
                                    [gl_cv_func_snprintf_retval_c99="guessing yes"],
                                    [gl_cv_func_snprintf_retval_c99="guessing no"])
                                  ;;
-                                 # If we don't know, assume the worst.
-           *)                    gl_cv_func_snprintf_retval_c99="guessing no";;
+                                 # If we don't know, obey --enable-cross-guesses.
+           *)                    gl_cv_func_snprintf_retval_c99="$gl_cross_guess_normal";;
          esac
         ])
     ])
@@ -1412,15 +1434,24 @@ int main ()
         [gl_cv_func_snprintf_directive_n=yes],
         [gl_cv_func_snprintf_directive_n=no],
         [
-changequote(,)dnl
          case "$host_os" in
-                                 # Guess yes on glibc systems.
-           *-gnu* | gnu*)        gl_cv_func_snprintf_directive_n="guessing yes";;
+                                 # Guess no on glibc when _FORTIFY_SOURCE >= 2.
+           *-gnu* | gnu*)        AC_COMPILE_IFELSE(
+                                   [AC_LANG_SOURCE(
+                                      [[#if _FORTIFY_SOURCE >= 2
+                                         error fail
+                                        #endif
+                                      ]])],
+                                   [gl_cv_func_snprintf_directive_n="guessing yes"],
+                                   [gl_cv_func_snprintf_directive_n="guessing no"])
+                                 ;;
+changequote(,)dnl
                                  # Guess yes on musl systems.
            *-musl*)              gl_cv_func_snprintf_directive_n="guessing yes";;
                                  # Guess yes on FreeBSD >= 5.
            freebsd[1-4].*)       gl_cv_func_snprintf_directive_n="guessing no";;
            freebsd* | kfreebsd*) gl_cv_func_snprintf_directive_n="guessing yes";;
+           midnightbsd*)         gl_cv_func_snprintf_directive_n="guessing yes";;
                                  # Guess yes on Mac OS X >= 10.3.
            darwin[1-6].*)        gl_cv_func_snprintf_directive_n="guessing no";;
            darwin*)              gl_cv_func_snprintf_directive_n="guessing yes";;
@@ -1446,10 +1477,10 @@ changequote(,)dnl
            linux*-android*)      gl_cv_func_snprintf_directive_n="guessing no";;
                                  # Guess no on native Windows.
            mingw*)               gl_cv_func_snprintf_directive_n="guessing no";;
-                                 # If we don't know, assume the worst.
-           *)                    gl_cv_func_snprintf_directive_n="guessing no";;
-         esac
+                                 # If we don't know, obey --enable-cross-guesses.
+           *)                    gl_cv_func_snprintf_directive_n="$gl_cross_guess_normal";;
 changequote([,])dnl
+         esac
         ])
     ])
 ])
@@ -1577,6 +1608,7 @@ changequote(,)dnl
                                  # Guess yes on FreeBSD >= 5.
            freebsd[1-4].*)       gl_cv_func_vsnprintf_zerosize_c99="guessing no";;
            freebsd* | kfreebsd*) gl_cv_func_vsnprintf_zerosize_c99="guessing yes";;
+           midnightbsd*)         gl_cv_func_vsnprintf_zerosize_c99="guessing yes";;
                                  # Guess yes on Mac OS X >= 10.3.
            darwin[1-6].*)        gl_cv_func_vsnprintf_zerosize_c99="guessing no";;
            darwin*)              gl_cv_func_vsnprintf_zerosize_c99="guessing yes";;
@@ -1601,8 +1633,8 @@ changequote(,)dnl
            linux*-android*)      gl_cv_func_vsnprintf_zerosize_c99="guessing yes";;
                                  # Guess yes on native Windows.
            mingw* | pw*)         gl_cv_func_vsnprintf_zerosize_c99="guessing yes";;
-                                 # If we don't know, assume the worst.
-           *)                    gl_cv_func_vsnprintf_zerosize_c99="guessing no";;
+                                 # If we don't know, obey --enable-cross-guesses.
+           *)                    gl_cv_func_vsnprintf_zerosize_c99="$gl_cross_guess_normal";;
          esac
 changequote([,])dnl
         ])
@@ -1659,8 +1691,10 @@ dnl                                  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
 dnl   glibc 2.5                      .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
 dnl   glibc 2.3.6                    .  .  .  .  #  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
 dnl   FreeBSD 5.4, 6.1               .  .  .  .  #  .  .  .  .  .  .  #  .  #  .  .  .  .  .  .
+dnl   Mac OS X 10.13.5               .  .  .  #  #  .  #  .  .  .  .  .  .  .  .  .  .  #  .  .
 dnl   Mac OS X 10.5.8                .  .  .  #  #  .  .  .  .  .  .  #  .  .  .  .  .  .  .  .
 dnl   Mac OS X 10.3.9                .  .  .  .  #  .  .  .  .  .  .  #  .  #  .  .  .  .  .  .
+dnl   OpenBSD 6.0, 6.7               .  .  .  .  #  .  .  .  .  .  .  .  .  #  .  .  .  .  .  .
 dnl   OpenBSD 3.9, 4.0               .  .  #  #  #  #  .  #  .  #  .  #  .  #  .  .  .  .  .  .
 dnl   Cygwin 1.7.0 (2009)            .  .  .  #  .  .  .  ?  .  .  .  .  .  ?  .  .  .  .  .  .
 dnl   Cygwin 1.5.25 (2008)           .  .  .  #  #  .  .  #  .  .  .  .  .  #  .  .  .  .  .  .
@@ -1680,6 +1714,7 @@ dnl   HP-UX 10.20                    #  .  #  .  #  #  .  ?  .  .  #  #  .  .  .
 dnl   IRIX 6.5                       #  .  #  #  #  #  .  #  .  .  .  #  .  .  .  .  #  .  .  .
 dnl   OSF/1 5.1                      #  .  #  #  #  #  .  .  .  .  .  #  .  .  .  .  #  .  .  #
 dnl   OSF/1 4.0d                     #  .  #  #  #  #  .  .  .  .  .  #  .  .  #  #  #  #  #  #
+dnl   NetBSD 9.0                     .  .  .  .  #  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
 dnl   NetBSD 5.0                     .  .  .  #  #  .  .  .  .  .  .  #  .  #  .  .  .  .  .  .
 dnl   NetBSD 4.0                     .  ?  ?  ?  ?  ?  .  ?  .  ?  ?  ?  ?  ?  .  .  .  ?  ?  ?
 dnl   NetBSD 3.0                     .  .  .  .  #  #  .  ?  #  #  ?  #  .  #  .  .  .  .  .  .

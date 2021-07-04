@@ -116,6 +116,9 @@ $result_texts{'insertcopying_in_example'} = 'text
 $result_errors{'insertcopying_in_example'} = [];
 
 
+$result_floats{'insertcopying_in_example'} = {};
+
+
 
 $result_converted{'plaintext'}->{'insertcopying_in_example'} = '     text
 ';

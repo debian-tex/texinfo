@@ -127,7 +127,7 @@ files produced by the @file{texinfo.tex} file.
                                    characters.
 * fatal::                          Printing fatal errors.
 * is@dots{} functions::            Checking character types.
-* make_regexp::                    Make a regexp to match @TeX{ control
+* make_regexp::                    Make a regexp to match @TeX{} control
                                    sequences.
 * escape::                         Escaping backslashes for strings.
 * min::                            Get the minimum of two numbers.
@@ -1878,8 +1878,7 @@ Every program needs a copyright statement.
 
 @<GPL v3 copyright statement@>=
 #
-# Copyright 2014, 2015, 2016, 2017, 2018, 2019 Free Software Foundation,
-# Inc.
+# Copyright 2014-2021 Free Software Foundation, Inc.
 # 
 # This file is part of GNU Texinfo.
 # 
@@ -2193,9 +2192,9 @@ function usage(exit_val)
 	print _" --version    display version information and exit"
 	print _" --           end option processing"
 	print ""
-	print _"Email bug reports to bug-texinfo@gnu.org,\n\
-general questions and discussion to help-texinfo@gnu.org.\n\
-Texinfo home page: https://www.gnu.org/software/texinfo/"
+	print _"Email bug reports to bug-texinfo@gnu.org,"
+	print _"general questions and discussion to help-texinfo@gnu.org."
+	print _"Texinfo home page: https://www.gnu.org/software/texinfo/"
 
 	exit exit_val
 }
@@ -2204,10 +2203,10 @@ function version()
 {
 	print "texindex (GNU texinfo)", Texindex_version
 	print ""
-	printf _"Copyright (C) %s Free Software Foundation, Inc.\n\
-License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>\n\
-This is free software: you are free to change and redistribute it.\n\
-There is NO WARRANTY, to the extent permitted by law.\n", "2019"
+	printf _"Copyright (C) %s Free Software Foundation, Inc.\n", "2019"
+	print _"License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>"
+	print _"This is free software: you are free to change and redistribute it."
+	print _"There is NO WARRANTY, to the extent permitted by law."
 
 	exit EXIT_SUCCESS
 }

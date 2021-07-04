@@ -105,6 +105,9 @@ AA e^ -- - \'` " "';
 $result_errors{'utf8_no_use_entity_enable_encoding_no_use_iso'} = [];
 
 
+$result_floats{'utf8_no_use_entity_enable_encoding_no_use_iso'} = {};
+
+
 
 $result_converted{'html_text'}->{'utf8_no_use_entity_enable_encoding_no_use_iso'} = '
 <p>AA ê — – ’‘ ” “</p>';

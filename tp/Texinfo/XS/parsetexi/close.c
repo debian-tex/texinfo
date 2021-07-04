@@ -324,10 +324,11 @@ close_current (ELEMENT *current,
         case ET_menu_entry_description:
           c = pop_context ();
           if (c != ct_preformatted)
-            abort ();
+            fatal ("preformatted context expected");
 
           /* Remove empty menu_comment */
-          if (current->contents.number == 0)
+          if (current->type == ET_menu_comment
+              && current->contents.number == 0)
             {
               current = current->parent;
               destroy_element (pop_element_from_contents (current));
@@ -342,7 +343,7 @@ close_current (ELEMENT *current,
           if (c != ct_line && c != ct_def)
             {
               /* error */
-              abort ();
+              fatal ("line or def context expected");
             }
           current = current->parent;
           break;
@@ -384,24 +385,30 @@ close_commands (ELEMENT *current, enum command_id closed_command,
 
   if (closed_command && current->cmd == closed_command)
     {
-      /* 1758 - various error messages */
       if (command_data(current->cmd).flags & CF_preformatted)
         {
           if (pop_context () != ct_preformatted)
-            abort ();
+            fatal ("preformatted context expected");
         }
       else if (command_data(current->cmd).flags & CF_format_raw)
         {
           if (pop_context () != ct_rawpreformatted)
-            abort ();
-          // pop expanded formats stack
+            fatal ("rawpreformatted context expected");
+          // TODO: pop expanded formats stack
         }
       else if (command_data(current->cmd).flags & CF_menu)
         {
           enum context c;
           c = pop_context ();
           if (c != ct_menu && c != ct_preformatted)
-            abort ();
+            fatal ("menu or preformatted context expected");
+        }
+      else if (current->cmd == CM_math || current->cmd == CM_displaymath)
+        {
+          enum context c;
+          c = pop_context ();
+          if (c != ct_math)
+            fatal ("math context expected");
         }
 
       if (command_data(current->cmd).data == BLOCK_region)

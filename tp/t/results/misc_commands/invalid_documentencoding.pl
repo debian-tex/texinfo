@@ -64,7 +64,11 @@ $result_trees{'invalid_documentencoding'} = {
         'spaces_before_argument' => ' ',
         'text_arg' => 'us-ascii'
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -117,7 +121,11 @@ $result_trees{'invalid_documentencoding'} = {
         'spaces_before_argument' => ' ',
         'text_arg' => 'latin1'
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -314,7 +322,11 @@ $result_trees{'invalid_documentencoding'} = {
             'spaces_before_argument' => ' ',
             'text_arg' => 'AAA'
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 10,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -361,7 +373,11 @@ $result_trees{'invalid_documentencoding'} = {
             'spaces_before_argument' => ' ',
             'text_arg' => 'BBB'
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 11,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -377,7 +393,6 @@ $result_trees{'invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'contents'}[
 $result_trees{'invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[1]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[1];
-$result_trees{'invalid_documentencoding'}{'contents'}[1]{'line_nr'} = $result_trees{'invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'invalid_documentencoding'}{'contents'}[1]{'parent'} = $result_trees{'invalid_documentencoding'};
 $result_trees{'invalid_documentencoding'}{'contents'}[2]{'parent'} = $result_trees{'invalid_documentencoding'};
 $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0];
@@ -385,7 +400,6 @@ $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0]{'contents'}[
 $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[3];
-$result_trees{'invalid_documentencoding'}{'contents'}[3]{'line_nr'} = $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'invalid_documentencoding'}{'contents'}[3]{'parent'} = $result_trees{'invalid_documentencoding'};
 $result_trees{'invalid_documentencoding'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[4]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[4];
@@ -408,14 +422,12 @@ $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[6]{'args'}[
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[6]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[6]{'args'}[0]{'contents'}[1];
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[6]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[6];
-$result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[6]{'line_nr'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[6]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[6]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5];
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[1];
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7];
-$result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'line_nr'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5];
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'parent'} = $result_trees{'invalid_documentencoding'};
 
@@ -573,6 +585,9 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'invalid_documentencoding'} = {};
 
 
 1;

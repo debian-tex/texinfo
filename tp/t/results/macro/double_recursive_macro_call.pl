@@ -171,4 +171,7 @@ $result_errors{'double_recursive_macro_call'} = [
 ];
 
 
+$result_floats{'double_recursive_macro_call'} = {};
+
+
 1;

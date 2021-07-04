@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "tree_types.h"
+#include "errors.h"
 #include "tree.h"
 
 //int element_counter;
@@ -175,7 +175,7 @@ reallocate_list (ELEMENT_LIST *list)
       list->space += 10;
       list->list = realloc (list->list, list->space * sizeof (ELEMENT *));
       if (!list->list)
-        abort (); /* Out of memory. */
+        fatal ("realloc failed");
     }
 }
 
@@ -188,7 +188,7 @@ reallocate_list_for (int n, ELEMENT_LIST *list)
       list->space += n + 1;
       list->list = realloc (list->list, list->space * sizeof (ELEMENT *));
       if (!list->list)
-        abort (); /* Out of memory. */
+        fatal ("realloc failed");
     }
 }
 
@@ -234,7 +234,7 @@ insert_into_contents (ELEMENT *parent, ELEMENT *e, int where)
     where = list->number + where;
 
   if (where < 0 || where > list->number)
-    abort ();
+    fatal ("contents index out of bounds");
 
   memmove (&list->list[where + 1], &list->list[where],
            (list->number - where) * sizeof (ELEMENT *));
@@ -254,7 +254,7 @@ insert_into_args (ELEMENT *parent, ELEMENT *e, int where)
     where = list->number + where;
 
   if (where < 0 || where > list->number)
-    abort ();
+    fatal ("arguments index out of bounds");
 
   memmove (&list->list[where + 1], &list->list[where],
            (list->number - where) * sizeof (ELEMENT *));
@@ -292,7 +292,7 @@ remove_from_contents (ELEMENT *parent, int where)
     where = list->number + where;
 
   if (where < 0 || where > list->number)
-    abort ();
+    fatal ("contents index out of bounds");
 
   removed = list->list[where];
   memmove (&list->list[where], &list->list[where + 1],

@@ -56,6 +56,9 @@ $result_errors{'empty_center'} = [
 ];
 
 
+$result_floats{'empty_center'} = {};
+
+
 
 $result_converted{'plaintext'}->{'empty_center'} = '';
 

@@ -1,5 +1,7 @@
 /* conf.h - declarations for conf.c */
-/* Copyright 2010-2018 Free Software Foundation, Inc.
+#ifndef CONF_H
+#define CONF_H
+/* Copyright 2010-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -27,3 +29,4 @@ void conf_set_CPP_LINE_DIRECTIVES (int i);
 void conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME (int i);
 void reset_conf (void);
 
+#endif

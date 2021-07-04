@@ -61,7 +61,9 @@ $result_trees{'empty_cindex_entry'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -84,7 +86,7 @@ $result_trees{'empty_cindex_entry'}{'contents'}[1]{'args'}[0]{'parent'} = $resul
 $result_trees{'empty_cindex_entry'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_cindex_entry'}{'contents'}[1]{'contents'}[0];
 $result_trees{'empty_cindex_entry'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_cindex_entry'}{'contents'}[1];
 $result_trees{'empty_cindex_entry'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'empty_cindex_entry'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_cindex_entry'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'empty_cindex_entry'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'empty_cindex_entry'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_cindex_entry'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_cindex_entry'}{'contents'}[1]{'parent'} = $result_trees{'empty_cindex_entry'};
 
 $result_texis{'empty_cindex_entry'} = '@node Top
@@ -125,6 +127,9 @@ $result_errors{'empty_cindex_entry'} = [
 ];
 
 
+$result_floats{'empty_cindex_entry'} = {};
+
+
 
 $result_converted{'info'}->{'empty_cindex_entry'} = 'This is , produced from .
 
@@ -149,7 +154,6 @@ $result_converted{'plaintext'}->{'empty_cindex_entry'} = '';
 
 
 $result_converted{'html_text'}->{'empty_cindex_entry'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
-<hr>
-';
+<hr>';
 
 1;

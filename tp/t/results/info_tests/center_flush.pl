@@ -565,6 +565,9 @@ Second anchor in text after anchor.
 $result_errors{'center_flush'} = [];
 
 
+$result_floats{'center_flush'} = {};
+
+
 
 $result_converted{'info'}->{'center_flush'} = 'This is , produced from .
 

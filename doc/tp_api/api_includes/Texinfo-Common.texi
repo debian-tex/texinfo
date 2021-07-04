@@ -164,6 +164,11 @@ as @code{@@macro}, @code{@@verbatim} or @code{@@ignore}.
 @@-commands associated with raw output format, like @code{@@html}, or
 @code{@@docbook}.
 
+@item %math_commands
+@anchor{Texinfo::Common %math_commands}
+
+@@-commands which contains math, like @code{@@math} or @code{@@displaymath}.
+
 @item %texinfo_output_formats
 @anchor{Texinfo::Common %texinfo_output_formats}
 

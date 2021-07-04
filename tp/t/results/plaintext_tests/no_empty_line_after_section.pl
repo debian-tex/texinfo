@@ -473,6 +473,9 @@ $result_sectioning{'no_empty_line_after_section'}{'section_childs'}[0]{'section_
 $result_errors{'no_empty_line_after_section'} = [];
 
 
+$result_floats{'no_empty_line_after_section'} = {};
+
+
 
 $result_converted{'plaintext'}->{'no_empty_line_after_section'} = 'Text
 

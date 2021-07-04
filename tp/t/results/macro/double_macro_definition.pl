@@ -111,4 +111,7 @@ $result_errors{'double_macro_definition'} = [
 ];
 
 
+$result_floats{'double_macro_definition'} = {};
+
+
 1;

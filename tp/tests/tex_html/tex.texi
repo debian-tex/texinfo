@@ -37,8 +37,17 @@ Maths with code @@-command and braces:
 
 @math{ \underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}}
 
+Maths with @@-sup
+
+@math{\sum_{i} f(x)@sup{2}}
+
 @@\ outside of math
 
 @\
+
+Displaymath
+@displaymath
+-- f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+@end displaymath
 
 @bye

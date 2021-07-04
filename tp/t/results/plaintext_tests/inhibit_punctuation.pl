@@ -159,6 +159,9 @@ but , ,
 $result_errors{'inhibit_punctuation'} = [];
 
 
+$result_floats{'inhibit_punctuation'} = {};
+
+
 
 $result_converted{'plaintext'}->{'inhibit_punctuation'} = 'foo vs. bar.  colon :And something else.  semi colon ;.  And ?  ?.  ?
 Now !  !@ ! but , ,

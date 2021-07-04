@@ -75,4 +75,7 @@ $result_errors{'unknown_macro_on_line_command'} = [
 ];
 
 
+$result_floats{'unknown_macro_on_line_command'} = {};
+
+
 1;

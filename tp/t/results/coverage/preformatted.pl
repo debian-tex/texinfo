@@ -242,7 +242,11 @@ $result_trees{'preformatted'} = {
             'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -323,7 +327,6 @@ $result_trees{'preformatted'}{'contents'}[3]{'contents'}[1]{'contents'}[1]{'args
 $result_trees{'preformatted'}{'contents'}[3]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'preformatted'}{'contents'}[3]{'contents'}[1];
 $result_trees{'preformatted'}{'contents'}[3]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'preformatted'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'preformatted'}{'contents'}[3]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'preformatted'}{'contents'}[3]{'contents'}[1]{'contents'}[1];
-$result_trees{'preformatted'}{'contents'}[3]{'contents'}[1]{'line_nr'} = $result_trees{'preformatted'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'preformatted'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'preformatted'}{'contents'}[3];
 $result_trees{'preformatted'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'preformatted'}{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'preformatted'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'preformatted'}{'contents'}[3]{'contents'}[2];
@@ -371,6 +374,9 @@ $result_errors{'preformatted'} = [
 ];
 
 
+$result_floats{'preformatted'} = {};
+
+
 
 $result_converted{'plaintext'}->{'preformatted'} = '     e--xample  some
 
@@ -391,9 +397,7 @@ $result_converted{'html_text'}->{'preformatted'} = '
 
 <div class="format">
 <dl compact="compact">
-<dt><code>item in table in format</code>
-<span id="index-item-in-table-in-format"></span>
-</dt>
+<dt id=\'index-item-in-table-in-format\'><span><code>item in table in format</code><a href=\'#index-item-in-table-in-format\' class=\'copiable-anchor\'> &para;</a></span></dt>
 <dd><pre class="format">
 
 in table in format

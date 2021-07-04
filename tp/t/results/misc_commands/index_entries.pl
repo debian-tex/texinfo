@@ -240,4 +240,7 @@ $result_indices{'index_entries'} = {
 };
 
 
+$result_floats{'index_entries'} = {};
+
+
 1;

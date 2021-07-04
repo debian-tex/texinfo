@@ -116,6 +116,9 @@ $result_texts{'comment_on_group_line'} = 'in group.
 $result_errors{'comment_on_group_line'} = [];
 
 
+$result_floats{'comment_on_group_line'} = {};
+
+
 
 $result_converted{'plaintext'}->{'comment_on_group_line'} = 'in group.
 ';

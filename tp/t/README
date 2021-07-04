@@ -12,8 +12,8 @@ other copyright notice are hereby placed in the public domain.
 See also the tests in the tp/tests directory.
 
 
-These tests are run by "make check" under tp/.  (The test files are 
-listed in tp/Makefile.tres, which is a generated file.)  A single .t 
+These tests are run by "make check" under tp/.  (The test files are
+listed in tp/Makefile.tres, which is a generated file.)  A single .t
 test file can be run on its own with
 
   perl -w t/03coverage_braces.t
@@ -21,21 +21,21 @@ test file can be run on its own with
 Another way, which works when doing an out-of-source build, is
 
   make check TESTS=t/03coverage_braces.t
- 
+
 Another way to run a test out-source is:
 
   s=../../tp
   srcdir=$s ../pre-inst-env perl -w $s/t/92formatting.t empty
- 
-where s is the path to the srcdir.  This allows you to run a single 
+
+where s is the path to the srcdir.  This allows you to run a single
 sub-test.
 
 Most test files use a testing infrastructure from t/test_utils.pl.
-The run_all function from that file runs the tests that have been 
+The run_all function from that file runs the tests that have been
 specified.
 
-In that case the reference output files for the test of a test category 
-$test_category.t file are in t/results/$test_category/.  For example, if 
+In that case the reference output files for the test of a test category
+$test_category.t file are in t/results/$test_category/.  For example, if
 after running "make check" test-suite.log contains a line like:
 
 FAIL: t/03coverage_braces.t 324 - test_image converted html
@@ -47,31 +47,31 @@ you can see the difference between the expected and actual output with
 (Any number at the start of the name of the test, like "03" in this
 example, is removed.)
 
-When making changes that you expect will change the parse tree but not 
-change any of the output, one way to check this would be to run "make 
+When making changes that you expect will change the parse tree but not
+change any of the output, one way to check this would be to run "make
 check" and then "grep FAIL test-suite.log | grep -v 'tree$'".
 
-Another way to check test results is to regenerate the reference test 
-results (see below), and then run "svn diff t".
+Another way to check test results is to regenerate the reference test
+results (see below), and then run "git diff t".
 
 To review all the differences for one of the *.t test files, you can do:
 
   for f in t/results/coverage_braces/*.pl; do echo --------; echo \
   Differences in $f; diff $f{,.new}; done | less
 
-The reference files are regenerated with the -g option given to the .t 
+The reference files are regenerated with the -g option given to the .t
 file, as in
 
   perl -w t/03coverage_braces.t -g
 
-To regenerate a specific test reference file, the test name should be 
-given as an argument.  For example, to just regenerate the reference 
+To regenerate a specific test reference file, the test name should be
+given as an argument.  For example, to just regenerate the reference
 files for the "test_image" test within t/03.coverage_braces.t, run
 
   perl -w t/03coverage_braces.t -g test_image
 
-Some tests under this directory use input files in the 'input_files' 
-subdirectory.  When adding a test that uses an input file, add its path 
+Some tests under this directory use input files in the 'input_files'
+subdirectory.  When adding a test that uses an input file, add its path
 to tp/Makefile.am.
 
 
@@ -83,13 +83,13 @@ many of the tests whose results are in the 'results/indices' directory
 follow this format.  (The same convention is used by the test suite in
 ../tests.)
 
-Tests can be managed using the script in ../maintain/all_tests.sh.  For
+Tests can be managed using the script in ./maintain/all_tests.sh.  For
 example, "./maintain/all_tests.sh generate" regenerates all of the
 reference test results (run from the upper-level directory), and
 "./maintain/all_tests.sh diff" makes a diff of all resulting files
 against references.
 
-Another way to overwrite the reference test results with the obtained 
+Another way to overwrite the reference test results with the obtained
 results from the last test run is to use a command like
 
   for f in t/results/*/*.pl.new ; do cp ${f%.new} $f ; done
@@ -100,12 +100,12 @@ tests by running something along the lines of:
   perl -w t/60macro.t -c
 
 to create a file for each of the tests in t/60macro.t, or for a specific
-test, here arg_body_expansion_order: 
+test, here arg_body_expansion_order:
 
   perl -w t/60macro.t -c arg_body_expansion_order
 
 The output files will be created with -o, in t/output_files/$test_category/
 
 When adding Perl (sub)tests under t/, also run
-maintain/regenerate_file_lists.pl to regenerate Makefile.tres, or a 
+./maintain/regenerate_file_lists.pl to regenerate Makefile.tres, or a
 "plan" (aka results file) will be missing at distcheck.

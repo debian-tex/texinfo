@@ -182,6 +182,9 @@ $result_errors{'heading_in_footnote'} = [
 ];
 
 
+$result_floats{'heading_in_footnote'} = {};
+
+
 
 $result_converted{'plaintext'}->{'heading_in_footnote'} = 'T(1)
 
@@ -202,7 +205,7 @@ $result_converted{'html_text'}->{'heading_in_footnote'} = '<p>T<a id="DOCF1" hre
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h5>
 <p>AAA
 </p><span id="H1"></span><h3 class="heading">H1</h3>
 <span id="index-ind-e"></span>

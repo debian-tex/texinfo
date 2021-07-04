@@ -1,6 +1,6 @@
 Proposal to replace Debian's install-info with GNU's install-info
 =================================================================
-Nicolas François <nicolas.francois@centraliens.net>
+Nicolas FranÃ§ois <nicolas.francois@centraliens.net>
 Norbert Preining <preining@debian.org>
 Nathanael Nerode <neroden@fastmail.fm>
 debian-dpkg@lists.debian.org

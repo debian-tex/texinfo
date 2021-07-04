@@ -1,5 +1,5 @@
 /* handle_commands.c -- what to do when a command name is first read */
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2020 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -324,7 +324,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
         {
           if (cmd != CM_bye)
             {
-              /* Something to do with document_root and text_root. */
+              /* Use document_root when we have nodes or sections. */
               ELEMENT *new_root = new_element (ET_document_root);
               add_to_element_contents (new_root, current);
               current = new_root;
@@ -334,7 +334,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
         {
           current = current->parent;
           if (!current)
-            abort ();
+            fatal ("no parent element");
         }
     }
 
@@ -500,7 +500,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
         }
       else if (cmd == CM_novalidate)
         {
-          /* do nothing -  novalidate is set in build_global_info */
+          global_info.novalidate = 1;
         }
 
       if (misc) 
@@ -530,7 +530,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
       if (cmd == CM_item_LINE || cmd == CM_itemx)
         {
           ELEMENT *parent;
-          if (parent = item_line_parent (current))
+          if ((parent = item_line_parent (current)))
             {
               debug ("ITEM_LINE");
               current = parent;
@@ -556,7 +556,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
 
           if (cmd == CM_subentry)
             {
-              int level = 1;
+              long level = 1;
               ELEMENT *parent = current->parent;
 
               if (!(command_flags(parent) & CF_index_entry_command)
@@ -571,7 +571,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
                 {
                   KEY_PAIR *k = lookup_extra (parent, "level");
                   if (k && k->value)
-                    level = (int) k->value + 1;
+                    level = (long) k->value + 1;
                 }
               add_extra_integer (misc, "level", level);
               if (level > 2)
@@ -613,11 +613,11 @@ handle_line_command (ELEMENT *current, char **line_inout,
               base_name = strdup (base_name);
               base_len = strlen (base_name);
               if (base_name[base_len - 1] != 'x')
-                abort ();
+                fatal ("no x at end of def command name");
               base_name[base_len - 1] = '\0';
               base_command = lookup_command (base_name);
               if (base_command == CM_NONE)
-                abort ();
+                fatal ("no def base command");
               add_extra_string (misc, "def_command", base_name);
 
               after_paragraph = check_no_text (current);
@@ -804,7 +804,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
             line_error ("@%s requires a name", command_name(cmd));
           else
             {
-              char *flag = read_command_name (&p);
+              char *flag = read_flag_name (&p);
               if (!flag)
                 goto bad_value;
               else
@@ -826,7 +826,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
                 {
                   if (cmd == CM_ifclear || cmd == CM_ifset)
                     {
-                      char *val = fetch_value (flag, strlen (flag));
+                      char *val = fetch_value (flag);
                       if (val)
                         iftrue = 1;
                       if (cmd == CM_ifclear)
@@ -907,7 +907,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
             destroy_element (pop_element_from_contents (menu));
 
           if (pop_context () != ct_preformatted)
-            abort ();
+            fatal ("preformatted context expected");
           if (menu->type == ET_menu_entry)
             menu = menu->parent;
           current = menu;
@@ -944,6 +944,8 @@ handle_block_command (ELEMENT *current, char **line_inout,
         {
           if (command_data(cmd).flags & CF_preformatted)
             push_context (ct_preformatted);
+          else if (cmd == CM_displaymath)
+            push_context (ct_math);
           else if (command_data(cmd).flags & CF_format_raw)
             {
               push_context (ct_rawpreformatted);
@@ -1013,17 +1015,6 @@ handle_block_command (ELEMENT *current, char **line_inout,
                          done in Perl code. */
                     }
                 }
-              else if (cmd != CM_direntry)
-                {
-                  if (conf.show_menu)
-                    {
-                      line_error ("@%s seen before first @node",
-                                  command_name(cmd));
-                      line_error ("perhaps your @top node should be "
-                                  "wrapped in @ifnottex rather than @ifinfo?");
-                    }
-                  // 4810 unassociated menus
-                }
             }
 
           if (cmd == CM_itemize || cmd == CM_enumerate)
@@ -1040,6 +1031,12 @@ handle_block_command (ELEMENT *current, char **line_inout,
                 counter_push (&count_remaining_args,
                               current,
                               command_data (current->cmd).data - 1);
+              }
+            else if (command_data (current->cmd).data == BLOCK_variadic)
+              {
+                /* Unlimited args */
+                counter_push (&count_remaining_args, current,
+                              COUNTER_VARIADIC);
               }
 
             current = bla;

@@ -329,7 +329,17 @@ definfoenclose @infoencl is defined.
 strongalias @alias is defined.
 ';
 
-$result_errors{'command_conditionals_user_defined'} = [];
+$result_errors{'command_conditionals_user_defined'} = [
+  {
+    'error_line' => ':7: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
+    'type' => 'warning'
+  }
+];
 
 
 $result_indices{'command_conditionals_user_defined'} = {
@@ -385,6 +395,9 @@ $result_indices{'command_conditionals_user_defined'} = {
     }
   }
 };
+
+
+$result_floats{'command_conditionals_user_defined'} = {};
 
 
 1;

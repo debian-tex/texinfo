@@ -146,4 +146,7 @@ $result_errors{'section_in_flushright'} = [
 ];
 
 
+$result_floats{'section_in_flushright'} = {};
+
+
 1;

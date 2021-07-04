@@ -92,11 +92,15 @@ $result_trees{'multitable_not_closed_item'} = {
         'max_columns' => 2,
         'prototypes' => [
           {
-            'contents' => [],
+            'contents' => [
+              {}
+            ],
             'type' => 'bracketed_multitable_prototype'
           },
           {
-            'contents' => [],
+            'contents' => [
+              {}
+            ],
             'type' => 'bracketed_multitable_prototype'
           }
         ],
@@ -123,8 +127,8 @@ $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'conte
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0];
-$result_trees{'multitable_not_closed_item'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'};
-$result_trees{'multitable_not_closed_item'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'contents'};
+$result_trees{'multitable_not_closed_item'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'multitable_not_closed_item'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'}[0] = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'contents'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'};
 
 $result_texis{'multitable_not_closed_item'} = '@multitable {r} {t}
@@ -146,6 +150,9 @@ $result_errors{'multitable_not_closed_item'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'multitable_not_closed_item'} = {};
 
 
 1;

@@ -271,7 +271,9 @@ $result_trees{'double_index_entry'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -416,7 +418,9 @@ $result_trees{'double_index_entry'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'other-node'
           },
           undef,
@@ -483,7 +487,7 @@ $result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[7]{'extra'}{'end_
 $result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'double_index_entry'}{'contents'}[1];
 $result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'double_index_entry'}{'contents'}[1];
 $result_trees{'double_index_entry'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'double_index_entry'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'double_index_entry'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'double_index_entry'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'double_index_entry'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_index_entry'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'double_index_entry'}{'contents'}[1]{'parent'} = $result_trees{'double_index_entry'};
 $result_trees{'double_index_entry'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_index_entry'}{'contents'}[2]{'args'}[0];
 $result_trees{'double_index_entry'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'double_index_entry'}{'contents'}[2];
@@ -504,7 +508,7 @@ $result_trees{'double_index_entry'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'co
 $result_trees{'double_index_entry'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'double_index_entry'}{'contents'}[2]{'contents'}[3];
 $result_trees{'double_index_entry'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'double_index_entry'}{'contents'}[2];
 $result_trees{'double_index_entry'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'double_index_entry'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'double_index_entry'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'double_index_entry'}{'contents'}[2]{'extra'}{'node_content'};
+$result_trees{'double_index_entry'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_index_entry'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'double_index_entry'}{'contents'}[2]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'double_index_entry'}{'contents'}[2]{'args'}[3]{'contents'}[0];
 $result_trees{'double_index_entry'}{'contents'}[2]{'parent'} = $result_trees{'double_index_entry'};
 
@@ -602,6 +606,9 @@ $result_menus{'double_index_entry'}{'menu_child'}{'menu_up'} = $result_menus{'do
 $result_errors{'double_index_entry'} = [];
 
 
+$result_floats{'double_index_entry'} = {};
+
+
 
 $result_converted{'info'}->{'double_index_entry'} = 'This is , produced from .
 
@@ -662,10 +669,6 @@ $result_converted{'html_text'}->{'double_index_entry'} = '<span id="Top"></span>
 </p>
 <span id="index-aaa-1"></span>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#other-node" rel="index" accesskey="1">other node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="other-node"></span><div class="header">
@@ -691,7 +694,6 @@ $result_converted{'html_text'}->{'double_index_entry'} = '<span id="Top"></span>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-A"><b>A</b></a>
  &nbsp; 
 </td></tr></table>
-<hr>
 ';
 
 1;

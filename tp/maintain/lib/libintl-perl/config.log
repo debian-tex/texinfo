@@ -1,0 +1,51 @@
+cat >gettext.c <<EOF
+/* The following code only compiles if the interface to gettext is
+   complete.  */
+
+#include <libintl.h>
+/* Handle the case that we link against GNU libintl but include a non
+ * GNU libintl.h.  */
+#ifndef __USE_GNU_GETTEXT
+# error "<libintl.h> is not GNU gettext.  Maybe you have to adjust your include path."
+#endif
+
+#include <locale.h>
+
+int
+main (argc, argv)
+	int argc;
+    char* argv[];
+{
+	/* FIXME: The gettext runtime libraries provided by Solaris 8 and 9
+       are not sufficient.  Those of Solaris 10 *may* work.  To play
+       safe, we currently only compile the XS version for GNU gettext
+       and use some undocumented features, to test for that.  Thanks
+       to Bruno Haible for the hint.  */
+	extern int _nl_msg_cat_cntr;
+#if 0
+        /* This seems to be defined in the GNU libc only, not in standalone
+         * GNU gettext.  */
+        extern int* _nl_domain_bindings;
+#endif
+
+	textdomain ("dummy");
+	bindtextdomain ("dummy", ".");
+	bind_textdomain_codeset ("dummy", "us-ascii");
+
+	gettext ("msgid");
+    	dgettext ("dummy", "msgid");
+    	dcgettext ("dummy", "msgid", LC_MESSAGES);
+	ngettext ("msgid", "msgid_plural", 
+#if 0
+		  _nl_msg_cat_cntr + *_nl_domain_bindings); 
+#else
+                  _nl_msg_cat_cntr);
+#endif
+	dngettext ("dummy", "msgid", "msgid_plural", 1);
+	dcngettext ("dummy", "msgid", "msgid_plural", 1, LC_MESSAGES);
+
+    	return 0;
+}
+
+EOF
+x86_64-linux-gnu-gcc -D_REENTRANT -D_GNU_SOURCE -DDEBIAN -fwrapv -fno-strict-aliasing -pipe -I/usr/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -fstack-protector-strong -L/usr/local/lib -ldl -lm -lpthread -lc -lcrypt -o gettest.exe gettest.c

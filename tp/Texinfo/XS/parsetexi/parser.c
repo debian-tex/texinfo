@@ -24,8 +24,6 @@
 #include "input.h"
 
 
-/* Utility functions */
-
 const char *whitespace_chars = " \t\f\r\n";
 const char *digit_chars = "0123456789";
 
@@ -54,6 +52,27 @@ read_command_name (char **ptr)
     return 0; /* Invalid. */
 
   while (isalnum (*q) || *q == '-' || *q == '_')
+    q++;
+  ret = strndup (p, q - p);
+  p = q;
+
+  *ptr = p;
+  return ret;
+}
+
+/* Read a name used for @set and @value. */
+char *
+read_flag_name (char **ptr)
+{
+  char *p = *ptr, *q;
+  char *ret = 0;
+
+  q = p;
+  if (!isalnum (*q) && *q != '-' && *q != '_')
+    return 0; /* Invalid. */
+
+  while (!strchr (whitespace_chars, *q)
+         && !strchr ("{\\}~`^+\"<>|@", *q))
     q++;
   ret = strndup (p, q - p);
   p = q;
@@ -92,7 +111,7 @@ push_conditional_stack (enum command_id cond)
                                    (conditional_space += 5)
                                    * sizeof (enum command_id));
       if (!conditional_stack)
-        abort ();
+        fatal ("realloc failed");
     }
   conditional_stack[conditional_number++] = cond;
 }
@@ -127,11 +146,19 @@ set_documentlanguage (char *value)
   global_documentlanguage = strdup (value);
 }
 
+void
+set_novalidate (int value)
+{
+  global_info.novalidate = value;
+}
+
 /* Record the information from a command of global effect. */
 int
 register_global_command (ELEMENT *current)
 {
   enum command_id cmd = current->cmd;
+  if (cmd == CM_summarycontents)
+    cmd = CM_shortcontents;
 
   if (command_data(cmd).flags & CF_global)
     {
@@ -187,8 +214,6 @@ register_global_command (ELEMENT *current)
     {
       ELEMENT **where = 0;
 
-      if (cmd == CM_shortcontents)
-        cmd = CM_summarycontents;
       if (!current->line_nr.line_nr)
         current->line_nr = line_nr;
       switch (cmd)
@@ -210,8 +235,6 @@ register_global_command (ELEMENT *current)
         GLOBAL_UNIQUE_CASE(titlepage);
         GLOBAL_UNIQUE_CASE(top);
         GLOBAL_UNIQUE_CASE(documentdescription);
-        GLOBAL_UNIQUE_CASE(novalidate);
-        GLOBAL_UNIQUE_CASE(validatemenus);
         GLOBAL_UNIQUE_CASE(pagesizes);
         GLOBAL_UNIQUE_CASE(fonttextsize);
         GLOBAL_UNIQUE_CASE(footnotestyle);
@@ -518,7 +541,7 @@ merge_text (ELEMENT *current, char *text)
         {
           additional = malloc (leading_spaces + 1);
           if (!additional)
-            abort ();
+            fatal ("malloc failed");
           memcpy (additional, text, leading_spaces);
           additional[leading_spaces] = '\0';
         }
@@ -860,6 +883,7 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
             && outer != CM_center
             && outer != CM_exdent)
       || ((outer_flags & CF_brace)
+           && !(outer_flags & CF_inline)
            && command_data(outer).data > 0)
       || outer == CM_shortcaption
       || outer == CM_math
@@ -1162,7 +1186,7 @@ superfluous_arg:
               ELEMENT *popped;
               popped = pop_element_from_contents (current);
               if (popped->cmd != end_cmd)
-                abort(); //error
+                fatal ("command mismatch for ignored block");
 
               /* Ignore until end of line */
               if (!strchr (line, '\n'))
@@ -1485,22 +1509,17 @@ superfluous_arg:
       if (cmd == CM_value)
         {
           char *arg_start;
+          char *flag;
           line += strspn (line, whitespace_chars);
           if (*line != '{')
             goto value_invalid;
 
           line++;
-          if (!isalnum (*line) && *line != '-' && *line != '_')
-            {
-              line--;
-              goto value_invalid;
-            }
           arg_start = line;
+          flag = read_flag_name (&line);
+          if (!flag)
+            goto value_invalid;
 
-          line++;
-          line = strpbrk (line,
-                   " \t\f\r\n"       /* whitespace */
-                   "{\\}~^+\"<>|@"); /* other bytes that aren't allowed */
           if (*line != '}')
             {
               line = arg_start - 1;
@@ -1511,7 +1530,7 @@ superfluous_arg:
             {
               char *value;
 value_valid:
-              value = fetch_value (arg_start, line - arg_start);
+              value = fetch_value (flag);
               if (!value)
                 {
                   /* Add element for unexpanded @value.
@@ -1520,14 +1539,17 @@ value_valid:
                      in undefined values. */
                   ELEMENT *value_elt;
 
-                  line_warn ("undefined flag: %.*s", line - arg_start, 
-                             arg_start);
+                  line_warn ("undefined flag: %s", flag);
+                  /* Note: In the Perl code, this warning is conditional on 
+                     in_gdt setting, but the only effect that this possibly has 
+                     is on speed, as these warnings would not be printed to the 
+                     user. */
 
                   abort_empty_line (&current, NULL);
                   value_elt = new_element (ET_NONE);
                   value_elt->cmd = CM_value;
-                  text_append_n (&value_elt->text, arg_start,
-                                 line - arg_start);
+                  text_append (&value_elt->text, flag);
+
                   /* In the Perl code, the name of the flag is stored in
                      the "type" field.  We need to store in 'text' instead
                      and then output it as the type in
@@ -1546,6 +1568,7 @@ value_valid:
                   line += strlen (line);
                   retval = STILL_MORE_TO_PROCESS;
                 }
+              free (flag);
               goto funexit;
             }
           else
@@ -1563,14 +1586,7 @@ value_invalid:
           char *msg = 0;
           switch (cmd)
             {
-            case CM_setcontentsaftertitlepage:
-              msg = "move your @contents command if you want the "
-                    "contents after the title page";
-              break;
-            case CM_setshortcontentsaftertitlepage:
-              msg = "move your @shortcontents and @contents command if "
-                    "you want the contents after the title page";
-              break;
+              /* messages for commands could go here. */
             default:
               break;
             }
@@ -1644,6 +1660,7 @@ value_invalid:
 
       if ((cmd == CM_sortas
            || cmd == CM_seeentry
+           || cmd == CM_seealso
            || cmd == CM_subentry)
           && current->contents.number > 0
           && last_contents_child(current)->text.end > 0)

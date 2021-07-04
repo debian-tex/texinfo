@@ -10,13 +10,15 @@
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -25,6 +27,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -33,7 +36,8 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Top"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
+<div class="top" id="Top">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[ &lt; ]</td>
 <td valign="middle" align="left">[<a href="#other-nodes" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -50,25 +54,25 @@ ul.no-bullet {list-style: none}
 
 <span id="Testing-distant-nodes"></span><h3 class="subheading">Testing distant nodes</h3>
 
-<p><tt> a  node </tt> <a href="split-dir-manual/a-node.html#a-node">(manual)a  node</a><br>
+<p><tt> a  node </tt> <a data-manual="manual" href="split-dir-manual/a-node.html#a-node">(manual)a  node</a><br>
 </p><div class="example">
 <pre class="example">mono : manual.html#a-node
 split: ../manual/a-node.html#a-node
 </pre></div>
 
-<p><tt>:</tt> <a href="split-dir-manual/_003a.html#g_t_003a">(manual):</a>
+<p><tt>:</tt> <a data-manual="manual" href="split-dir-manual/_003a.html#g_t_003a">(manual):</a>
 </p><div class="example">
 <pre class="example">mono : manual.html#_003a
 split: ../manual/_003a.html#_003a
 </pre></div>
 
-<p><tt>Top</tt> <a href="split-dir-manual/index.html#Top">(manual)top</a><br> 
+<p><tt>Top</tt> <a data-manual="manual" href="split-dir-manual/index.html#Top">(manual)top</a><br> 
 </p><div class="example">
 <pre class="example">mono : manual.html#Top
 split: ../manual/index.html#Top
 </pre></div>
 
-<p><tt>(mtexinfo)Cross References</tt> <a href="mtexinfo.html#Cross-References">(mtexinfo)Cross References</a>
+<p><tt>(mtexinfo)Cross References</tt> <a data-manual="mtexinfo" href="mtexinfo.html#Cross-References">(mtexinfo)Cross References</a>
 </p><div class="example">
 <pre class="example">mono: mtexinfo.html#Cross-References
 split: ../mtexinfo/Cross-References.html#Cross-References
@@ -76,7 +80,7 @@ split: ../mtexinfo/Cross-References.html#Cross-References
 
 <span id="Testing-manual-name"></span><h3 class="subheading">Testing manual name</h3>
 
-<p><tt>../manual/doc.texi</tt> <a href="doc.html#node">(../manual/doc)node</a><br>
+<p><tt>../manual/doc.texi</tt> <a data-manual="../manual/doc" href="doc.html#node">(../manual/doc)node</a><br>
 </p><div class="example">
 <pre class="example">mono : doc.html#node
 split: ../doc/node.html#node
@@ -105,7 +109,8 @@ split: ../doc/node.html#node
 </pre></div>
 
 <hr size="6">
-<span id="other-nodes"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
+<div class="chapter" id="other-nodes">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
@@ -153,7 +158,9 @@ split: ../doc/node.html#node
 </pre></div>
 
 <hr size="6">
-<span id="SEC_About"></span>
+</div>
+</div>
+<div class="About_element" id="SEC_About">
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[Contents]</td>
@@ -262,7 +269,7 @@ split: ../doc/node.html#node
   </li>
 </ul>
 
-<hr>
+</div><hr>
 <p><font size="-1">
   This document was generated on <em>a sunny day</em> using <a href="http://www.gnu.org/software/texinfo/"><em>texi2any</em></a>.
 </font></p>

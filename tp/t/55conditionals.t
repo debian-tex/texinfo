@@ -473,8 +473,15 @@ strongalias @@alias is wrongly not defined
 ['inlineiffmtifelse_not_closed_three_arg',
 '@inlinefmtifelse{html, hhhhh, ggggg
 '],
+['inlinefmtifelse_nesting',
+'@inlinefmtifelse{info, @footnote{See.}, @emph{text}}
+'],
 ['inlineifset_false_not_closed',
 '@inlineifset{aaa, bbb
+'],
+['ifset_nonalpha',
+'@ifset A/B
+@end ifset
 '],
 );
 

@@ -159,6 +159,9 @@ $result_errors{'part_before_section'} = [
 ];
 
 
+$result_floats{'part_before_section'} = {};
+
+
 $result_elements{'part_before_section'} = [
   {
     'extra' => {
@@ -195,11 +198,17 @@ $result_directions_text{'part_before_section'} = 'element: @section section
 ';
 
 
-$result_converted{'html_text'}->{'part_before_section'} = '<span id="part"></span><h1 class="part">part</h1>
+$result_converted{'html_text'}->{'part_before_section'} = '<div class="part" id="part">
+<h1 class="part">part</h1>
 <hr>
 
-<span id="section"></span><h2 class="chapter">1 section</h2>
-<hr>
+<ul class="section-toc">
+<li><a href="#section" accesskey="1">section</a></li>
+</ul>
+<div class="section" id="section">
+<h2 class="chapter">1 section</h2>
+<hr></div>
+</div>
 ';
 
 

@@ -107,6 +107,9 @@ text 2.
 $result_errors{'anchor_and_empty_lines'} = [];
 
 
+$result_floats{'anchor_and_empty_lines'} = {};
+
+
 
 $result_converted{'plaintext'}->{'anchor_and_empty_lines'} = 'text 1.
 

@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -40,6 +40,7 @@
 
 ELEMENT *Root;
 
+#ifdef ENABLE_NLS
 
 #define LOCALEDIR DATADIR "/locale"
 
@@ -56,7 +57,12 @@ find_locales_dir (char *builddir)
 
   dTHX;
 
-  asprintf (&s, "%s/LocaleData", builddir);
+  /* Can't use asprintf here, because it might come from Gnulib, and
+     will then use malloc that is different from Perl's malloc, whereas
+     free below is redirected to Perl's implementation.  This could
+     cause crashes if the two malloc/free implementations were different.  */
+  s = malloc (strlen (builddir) + strlen ("/LocaleData") + 1);
+  sprintf (s, "%s/LocaleData", builddir);
   dir = opendir (s);
   if (!dir)
     {
@@ -87,6 +93,16 @@ init (int texinfo_uninstalled, char *builddir)
 
   return 1;
 }
+
+#else
+
+int
+init (int texinfo_uninstalled, char *builddir)
+{
+  return 1;
+}
+
+#endif
 
 static void
 reset_floats ()
@@ -267,22 +283,24 @@ element_to_perl_hash (ELEMENT *e)
       /* TODO: Same optimizations as for 'type'. */
     }
 
-  /* TODO sort out all these special cases.
-     Makes no sense to have 'contents' created for glyph commands like
-     @arrow{} or for accent commands. */
+  /* A lot of special cases for when an empty contents array should be
+     created.  Largely by trial and error to match the Perl code.  Some of
+     them don't make sense, like @arrow{}, @image, or for accent commands. */
   if (e->contents.number > 0
       || e->type == ET_text_root
       || e->type == ET_root_line
       || e->type == ET_bracketed
       || e->type == ET_bracketed_def_content
       || e->type == ET_line_arg
-      || e->cmd == CM_image // why image?
+      || e->cmd == CM_image
       || e->cmd == CM_item && e->parent && e->parent->type == ET_row
+      || e->cmd == CM_headitem && e->parent && e->parent->type == ET_row
       || e->cmd == CM_tab && e->parent && e->parent->type == ET_row
       || e->cmd == CM_anchor
       || e->cmd == CM_macro
       || e->cmd == CM_multitable
       || e->type == ET_menu_entry_name
+      || e->type == ET_menu_entry_description
       || e->type == ET_brace_command_arg
       || e->type == ET_brace_command_context
       || e->type == ET_block_line_arg
@@ -292,6 +310,7 @@ element_to_perl_hash (ELEMENT *e)
       || e->type == ET_elided
       || e->type == ET_elided_block
       || e->type == ET_preformatted
+      || e->type == ET_paragraph
       || (command_flags(e) & CF_root)
       || (command_data(e->cmd).flags & CF_brace
           && (command_data(e->cmd).data >= 0
@@ -419,8 +438,10 @@ element_to_perl_hash (ELEMENT *e)
               break;
               }
             case extra_integer:
-              { /* A simple integer. */
-              int value = (int) f;
+              { /* A simple integer.  The intptr_t cast here prevents
+                   a warning on MinGW ("cast from pointer to integer of
+                   different size"). */
+              IV value = (IV) (intptr_t) f;
               STORE(newSViv (value));
               break;
               }
@@ -513,7 +534,7 @@ element_to_perl_hash (ELEMENT *e)
               break;
               }
             default:
-              abort ();
+              fatal ("unknown extra type");
               break;
             }
         }
@@ -750,7 +771,7 @@ build_single_index_data (INDEX *i)
           if (!e->content->hv)
             {
               if (e->content->parent)
-                abort (); /* element should not be in-tree */
+                fatal ("index element should not be in-tree");
               element_to_perl_hash (e->content);
             }
           contents_array = hv_fetch (e->content->hv,
@@ -876,6 +897,17 @@ build_global_info (void)
       hv_store (hv, "novalidate", strlen ("novalidate"),
                 newSVpv ("1", 0), 0);
     }
+
+  char *txi_flags[] = { "txiindexatsignignore", "txiindexbackslashignore",
+    "txiindexhyphenignore", "txiindexlessthanignore", 0};
+  char **p;
+
+  for (p = txi_flags; (*p); p++)
+    {
+      if (fetch_value (*p))
+        hv_store (hv, *p, strlen (*p), newSVpv ("1", 0), 0);
+    }
+
   return hv;
 }
 
@@ -908,10 +940,6 @@ build_global_info2 (void)
   BUILD_GLOBAL_UNIQ(titlepage);
   BUILD_GLOBAL_UNIQ(top);
   BUILD_GLOBAL_UNIQ(documentdescription);
-  BUILD_GLOBAL_UNIQ(setcontentsaftertitlepage);
-  BUILD_GLOBAL_UNIQ(setshortcontentsaftertitlepage);
-  BUILD_GLOBAL_UNIQ(novalidate);
-  BUILD_GLOBAL_UNIQ(validatemenus);
   BUILD_GLOBAL_UNIQ(pagesizes);
   BUILD_GLOBAL_UNIQ(fonttextsize);
   BUILD_GLOBAL_UNIQ(footnotestyle);

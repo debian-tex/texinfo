@@ -34,4 +34,7 @@ $result_texts{'simple'} = 'In included file.
 $result_errors{'simple'} = [];
 
 
+$result_floats{'simple'} = {};
+
+
 1;

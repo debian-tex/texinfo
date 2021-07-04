@@ -211,11 +211,14 @@ convert_to_text (ELEMENT *e, int *superfluous_arg)
       ELEMENT *e1 = contents_child_by_index (e, i);
       if (e1->text.end > 0)
         ADD(e1->text.text);
-      else if (e1->cmd == CM_AT_SIGN)
+      else if (e1->cmd == CM_AT_SIGN
+               || e1->cmd == CM_atchar)
         ADD("@");
-      else if (e1->cmd == CM_OPEN_BRACE)
+      else if (e1->cmd == CM_OPEN_BRACE
+               || e1->cmd == CM_lbracechar)
         ADD("{");
-      else if (e1->cmd == CM_CLOSE_BRACE)
+      else if (e1->cmd == CM_CLOSE_BRACE
+               || e1->cmd == CM_rbracechar)
         ADD("}");
       else
         *superfluous_arg = 1;

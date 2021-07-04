@@ -388,7 +388,20 @@ m1 email.
 
 ';
 
-$result_errors{'paragraph_command'} = [];
+$result_errors{'paragraph_command'} = [
+  {
+    'error_line' => ':11: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 11,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
+    'type' => 'warning'
+  }
+];
+
+
+$result_floats{'paragraph_command'} = {};
 
 
 
@@ -431,7 +444,7 @@ $result_converted{'html_text'}->{'paragraph_command'} = '<p>@
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h5>
 <p>lone footnote</p>
 </div>
 ';

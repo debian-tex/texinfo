@@ -69,4 +69,7 @@ $result_errors{'arg_in_brace_no_arg_command'} = [
 ];
 
 
+$result_floats{'arg_in_brace_no_arg_command'} = {};
+
+
 1;

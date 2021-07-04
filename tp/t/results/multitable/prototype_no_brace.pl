@@ -125,7 +125,11 @@ $result_trees{'prototype_no_brace'} = {
         ],
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -142,7 +146,6 @@ $result_trees{'prototype_no_brace'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'pa
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'prototype_no_brace'}{'contents'}[0];
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'prototype_no_brace'}{'contents'}[0]{'contents'}[0];
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'extra'}{'prototypes_line'}[1] = $result_trees{'prototype_no_brace'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'prototype_no_brace'}{'contents'}[0]{'line_nr'} = $result_trees{'prototype_no_brace'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'parent'} = $result_trees{'prototype_no_brace'};
 
 $result_texis{'prototype_no_brace'} = '@multitable aa@var{FF} b    cc
@@ -163,6 +166,9 @@ $result_errors{'prototype_no_brace'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'prototype_no_brace'} = {};
 
 
 

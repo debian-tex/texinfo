@@ -20,7 +20,7 @@ sub mini_ker_element_type($$$$)
       $result .= $overview;;
       $result .= "</blockquote>\n";
     }
-    $result .= &{$self->default_formatting_function('element_footer')}($self,
+    $result .= &{$self->default_formatting_function('format_element_footer')}($self,
                                                  $cmdname, $command, $content);
     return $result;
   } else {

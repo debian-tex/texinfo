@@ -62,6 +62,9 @@ $result_texts{'verbatiminclude'} = '
 $result_errors{'verbatiminclude'} = [];
 
 
+$result_floats{'verbatiminclude'} = {};
+
+
 
 $result_converted{'plaintext'}->{'verbatiminclude'} = 'This is the @emph{included} file (include-value2.txi) <> ---. 
 ';

@@ -37,7 +37,9 @@ $result_trees{'empty_top_node_up'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -229,7 +231,9 @@ $result_trees{'empty_top_node_up'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'first'
           }
         ],
@@ -250,7 +254,7 @@ $result_trees{'empty_top_node_up'}{'contents'}[0]{'parent'} = $result_trees{'emp
 $result_trees{'empty_top_node_up'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_top_node_up'}{'contents'}[1]{'args'}[0];
 $result_trees{'empty_top_node_up'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_top_node_up'}{'contents'}[1];
 $result_trees{'empty_top_node_up'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'empty_top_node_up'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_top_node_up'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'empty_top_node_up'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'empty_top_node_up'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_top_node_up'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_top_node_up'}{'contents'}[1]{'parent'} = $result_trees{'empty_top_node_up'};
 $result_trees{'empty_top_node_up'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_top_node_up'}{'contents'}[2]{'args'}[0];
 $result_trees{'empty_top_node_up'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_top_node_up'}{'contents'}[2];
@@ -277,7 +281,7 @@ $result_trees{'empty_top_node_up'}{'contents'}[2]{'parent'} = $result_trees{'emp
 $result_trees{'empty_top_node_up'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_top_node_up'}{'contents'}[3]{'args'}[0];
 $result_trees{'empty_top_node_up'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'empty_top_node_up'}{'contents'}[3];
 $result_trees{'empty_top_node_up'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'empty_top_node_up'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_top_node_up'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'empty_top_node_up'}{'contents'}[3]{'extra'}{'node_content'};
+$result_trees{'empty_top_node_up'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_top_node_up'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_top_node_up'}{'contents'}[3]{'parent'} = $result_trees{'empty_top_node_up'};
 
 $result_texis{'empty_top_node_up'} = '@node Top
@@ -386,6 +390,9 @@ $result_menus{'empty_top_node_up'}{'menu_child'}{'menu_up'} = $result_menus{'emp
 $result_errors{'empty_top_node_up'} = [];
 
 
+$result_floats{'empty_top_node_up'} = {};
+
+
 
 $result_converted{'info'}->{'empty_top_node_up'} = 'This is , produced from .
 
@@ -428,14 +435,16 @@ $result_converted{'html'}->{'empty_top_node_up'} = '<!DOCTYPE html PUBLIC "-//W3
 <meta name="keywords" content="empty top node up">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -444,6 +453,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -452,24 +462,21 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Top"></span><div class="header">
+<div class="top" id="Top">
+<div class="header">
 <p>
 Next: <a href="#first" accesskey="n" rel="next">first</a> &nbsp; </p>
 </div>
 <span id="empty-top-node-up"></span><h1 class="top">empty top node up</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#first" accesskey="1">first</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="first"></span><div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#Top" accesskey="p" rel="prev">empty top node up</a>, Up: <a href="#Top" accesskey="u" rel="up">empty top node up</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">first</h4>
-<hr>
+</div>
 
 
 

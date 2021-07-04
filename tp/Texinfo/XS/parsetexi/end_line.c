@@ -160,6 +160,7 @@ parse_special_misc_command (char *line, enum command_id cmd, int *has_comment)
       q = strpbrk (p,
                    " \t\f\r\n"       /* whitespace */
                    "{\\}~^+\"<>|@"); /* other bytes that aren't allowed */
+      /* see also read_flag_name function in end_line.c */
 
       r = skip_comment (p, has_comment);
 
@@ -196,28 +197,29 @@ set_invalid:
       }
     case CM_clear:
       {
-      char *flag;
+      char *flag = 0;
       p = line;
       p += strspn (p, whitespace_chars);
       if (!*p)
         goto clear_no_name;
       q = p;
-      flag = read_command_name (&q);
+      flag = read_flag_name (&q);
       if (!flag)
         goto clear_invalid;
-      free (flag);
       r = q + strspn (q, whitespace_chars);
       if (*r)
         goto clear_invalid; /* Trailing argument. */
 
       ADD_ARG (p, q - p);
-      clear_value (p, q - p);
+      clear_value (flag);
+      free (flag);
       
       break;
 clear_no_name:
       line_error ("@clear requires a name");
       break;
 clear_invalid:
+      free (flag);
       line_error ("bad name for @clear");
       break;
       }
@@ -264,7 +266,7 @@ clickstyle_invalid:
       free (value);
       break;
     default:
-      abort ();
+      fatal ("unknown special line command");
     }
 
   if (remaining)
@@ -494,6 +496,8 @@ parse_line_command_args (ELEMENT *line_command)
            files being overwritten by the files read by texindex. */
         {
           static char *forbidden_index_names[] = {
+            "cp", "fn", "ky", "pg", "tp", "vr",
+            "cps", "fns", "kys", "pgs", "tps", "vrs",
             "info", "ps", "pdf", "htm", "html",
             "log", "aux", "dvi", "texi", "txi",
             "texinfo", "tex", "bib", 0
@@ -504,7 +508,7 @@ parse_line_command_args (ELEMENT *line_command)
               goto defindex_reserved;
 
           if (index_by_name (name))
-            goto defindex_reserved;
+            { free (name); break; }
         }
 
         add_index (name, cmd == CM_defcodeindex ? 1 : 0);
@@ -1001,7 +1005,7 @@ end_line_starting_block (ELEMENT *current)
   enum context c;
   c = pop_context ();
   if (c != ct_line)
-    abort ();
+    fatal ("line context expected");
 
   if (current->parent->cmd == CM_multitable)
     {
@@ -1299,17 +1303,14 @@ end_line_misc_line (ELEMENT *current)
   misc_cmd = current;
   cmd = current->cmd;
   if (!cmd)
-    abort ();
+    fatal ("command name unknown for @end");
 
   arg_type = command_data(cmd).data;
    
   /* Check 'line' is top of the context stack */
   c = pop_context ();
   if (c != ct_line)
-    {
-      /* error */
-      abort ();
-    }
+    fatal ("line context expected");
 
   debug ("MISC END %s", command_name(cmd));
 
@@ -2013,9 +2014,13 @@ end_line (ELEMENT *current)
               if (description)
                 description_or_menu_comment = description;
               else
-                { // 2707
-                  /* Normally this cannot happen. */
-                  abort ();
+                {
+                  ELEMENT *e;
+                  /* "Normally this cannot happen." */
+                  bug ("no description in menu entry");
+                  e = new_element (ET_menu_entry_description);
+                  add_to_element_args (entry, e);
+                  description_or_menu_comment = e;
                 }
             }
           else if (menu->contents.number > 0
@@ -2029,10 +2034,10 @@ end_line (ELEMENT *current)
               if (current->contents.number > 0
                   && last_contents_child(current)->type == ET_preformatted)
                 current = last_contents_child(current);
-              else // 2725
+              else
                 {
                   /* This should not happen */
-                  //abort ();
+                  bug ("description or menu comment not in preformatted");
                   ELEMENT *e;
                   e = new_element (ET_preformatted);
                   add_to_element_contents (current, e);
@@ -2100,14 +2105,13 @@ end_line (ELEMENT *current)
       KEY_PAIR *k;
 
       if (pop_context () != ct_def)
-        abort ();
+        fatal ("def context expected");
 
       k = lookup_extra (current->parent, "original_def_cmdname");
       if (k)
         original_def_command = lookup_command ((char *) k->value);
       else
         original_def_command = current->parent->parent->cmd;
-      // TODO: What if k is not defined?
 
       def_command = original_def_command;
       /* Strip an trailing x from the command, e.g. @deffnx -> @deffn */
@@ -2266,9 +2270,8 @@ end_line (ELEMENT *current)
             }
         }
 
-      /* 3470 Check for infinite loop bugs */
       if (current == current_old)
-        abort ();
+        fatal ("infinite loop when closing commands");
 
       current = end_line (current);
     }

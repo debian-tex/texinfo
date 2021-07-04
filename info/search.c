@@ -715,7 +715,7 @@ find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
   s.end = binding->end;
   s.flags = 0;
 
-  while ((position = find_node_separator (&s)) != -1)
+  while (s.start < s.end && (position = find_node_separator (&s)) != -1)
     {
       char *nodename_start;
       char *read_nodename;

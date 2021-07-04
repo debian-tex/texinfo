@@ -105,6 +105,9 @@ AA e^ -- - \'` " "';
 $result_errors{'utf8_no_use_entity'} = [];
 
 
+$result_floats{'utf8_no_use_entity'} = {};
+
+
 
 $result_converted{'html_text'}->{'utf8_no_use_entity'} = '
 <p>AA &ecirc; &mdash; &ndash; &rsquo;&lsquo; &rdquo; &ldquo;</p>';

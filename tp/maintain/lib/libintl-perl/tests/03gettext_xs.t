@@ -41,7 +41,7 @@ Locale::Messages::nl_putenv ("LC_MESSAGES=de_AT");
 Locale::Messages::nl_putenv ("OUTPUT_CHARSET=iso-8859-1");
 
 my $missing_locale = 'locale de_AT missing';
-my $setlocale = POSIX::setlocale (POSIX::LC_ALL() => '');
+my $setlocale = Locale::Messages::setlocale (POSIX::LC_ALL() => '');
 if ($setlocale && $setlocale =~ /(?:austria|at)/i) {
 	$missing_locale = '';
 } else {
@@ -64,7 +64,7 @@ ok defined $bound_domain;
 ok $bound_domain, $textdomain;
 
 # Default case.
-ok gettext ('December'), 'Dezember';
+skip $missing_locale, gettext ('December'), 'Dezember';
 
 # msgid eq msgstr.
 ok gettext ('September'), 'September';

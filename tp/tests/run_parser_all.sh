@@ -46,7 +46,7 @@ check_latex2html_and_tex4ht ()
       if echo "$remaining" | grep '[-]init mediawiki.pm' >/dev/null; then
        if test "$no_html2wiki" = 'yes' ; then
          echo "S: (no html2wiki) $current"
-         continue 2
+         return 1
        fi
       fi
     fi
@@ -67,8 +67,8 @@ post_process_output ()
     rm -f "${outdir}$dir/$basename.1" ${outdir}$dir/*.png ${outdir}$dir/*.svg \
           ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_l2h_images.pdf ${outdir}$dir/*_tex4ht_*.log \
           ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
-          ${outdir}$dir/*_l2h.html.* \
-          ${outdir}$dir/*_tex4ht_tex.html*
+          ${outdir}$dir/*_l2h.html.*
+          #${outdir}$dir/*_tex4ht_tex.html*
   else
     # Otherwise it's only the standard error that needs to be modified.
     mkdir -p "${raw_outdir}$dir"
@@ -246,6 +246,7 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
         resdir="$srcdir/$testdir/${res_dir}${dir_suffix}/"
         if [ -d "${outdir}$dir" ]; then
           mkdir -p "${resdir}$dir/"
+          rm -rf "${resdir}$dir/"*
           cp -r "${outdir}$dir/"* "${resdir}$dir/"
         else
           echo "$0: No dir ${outdir}$dir" >&2
@@ -341,21 +342,20 @@ while read line; do
       if [ -d "$results_dir/$dir" ]; then
         res_dir_used="$results_dir/$dir"
       fi
+      # store raw output
+      raw_outdir="$testdir/raw_out_parser${dir_suffix}/"
+      mkdir -p "${raw_outdir}"
+      rm -rf "${raw_outdir}$dir"
+
+      post_process_output
+
       if test "z$res_dir_used" != 'z' ; then
-        # store raw output
-        raw_outdir="$testdir/raw_out_parser${dir_suffix}/"
-        mkdir -p "${raw_outdir}"
-        rm -rf "${raw_outdir}$dir"
-
-        post_process_output
-
-        test -d "$raw_outdir$dir" && rm -rf "$raw_outdir$dir"
-        # This directory isn't cleaned anywhere else.
-
         diff $DIFF_A_OPTION $DIFF_U_OPTION -r "$res_dir_used" "${outdir}$dir" 2>>$logfile > "$testdir/$diffs_dir/$diff_base.diff"
         dif_ret=$?
         if [ $dif_ret != 0 ]; then
-          echo "D: $testdir/$diffs_dir/$diff_base.diff"
+          echo "D: $testdir/$diffs_dir/$diff_base.diff (printed below)"
+          cat "$testdir/$diffs_dir/$diff_base.diff"
+          echo "D: $testdir/$diffs_dir/$diff_base.diff (printed above)"
           return_code=1
         else
           rm "$testdir/$diffs_dir/$diff_base.diff"
@@ -365,7 +365,9 @@ while read line; do
       fi
     else
       echo "failed with status $ret" >>$logfile
-      echo "F: ${outdir}$dir/$basename.2"
+      echo "F: ${outdir}$dir/$basename.2 (printed below)"
+      cat "${outdir}$dir/$basename.2"
+      echo "F: ${outdir}$dir/$basename.2 (printed above)"
       return_code=1
     fi
   done

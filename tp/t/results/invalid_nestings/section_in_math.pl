@@ -58,7 +58,11 @@ $result_trees{'section_in_math'} = {
               ],
               'cmdname' => 'math',
               'contents' => [],
-              'line_nr' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -190,7 +194,6 @@ $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'a
 $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[0];
 $result_trees{'section_in_math'}{'contents'}[0]{'parent'} = $result_trees{'section_in_math'};
@@ -299,6 +302,9 @@ $result_errors{'section_in_math'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'section_in_math'} = {};
 
 
 1;

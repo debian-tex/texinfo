@@ -50,4 +50,7 @@ Following
 $result_errors{'no_eol_in_included_file'} = [];
 
 
+$result_floats{'no_eol_in_included_file'} = {};
+
+
 1;

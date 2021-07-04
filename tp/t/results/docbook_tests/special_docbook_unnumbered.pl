@@ -37,7 +37,9 @@ $result_trees{'special_docbook_unnumbered'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -230,7 +232,7 @@ $result_trees{'special_docbook_unnumbered'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => 'glossary'
+                      'text' => 'colophon'
                     }
                   ],
                   'parent' => {},
@@ -265,7 +267,7 @@ $result_trees{'special_docbook_unnumbered'} = {
                   'node_content' => [
                     {}
                   ],
-                  'normalized' => 'glossary'
+                  'normalized' => 'colophon'
                 }
               },
               'line_nr' => {
@@ -417,7 +419,9 @@ $result_trees{'special_docbook_unnumbered'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Dedication'
           }
         ],
@@ -510,7 +514,9 @@ $result_trees{'special_docbook_unnumbered'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'preface'
           }
         ],
@@ -603,7 +609,9 @@ $result_trees{'special_docbook_unnumbered'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'colophon'
           }
         ],
@@ -696,7 +704,9 @@ $result_trees{'special_docbook_unnumbered'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'acknowledgements'
           }
         ],
@@ -766,7 +776,7 @@ $result_trees{'special_docbook_unnumbered'}{'contents'}[0]{'parent'} = $result_t
 $result_trees{'special_docbook_unnumbered'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[1]{'args'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[1];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'special_docbook_unnumbered'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'special_docbook_unnumbered'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'special_docbook_unnumbered'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'special_docbook_unnumbered'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[1]{'parent'} = $result_trees{'special_docbook_unnumbered'};
 $result_trees{'special_docbook_unnumbered'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[2]{'args'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[2];
@@ -826,7 +836,7 @@ $result_trees{'special_docbook_unnumbered'}{'contents'}[2]{'parent'} = $result_t
 $result_trees{'special_docbook_unnumbered'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[3]{'args'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[3];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'special_docbook_unnumbered'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'special_docbook_unnumbered'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[3]{'extra'}{'node_content'};
+$result_trees{'special_docbook_unnumbered'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'special_docbook_unnumbered'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[3]{'parent'} = $result_trees{'special_docbook_unnumbered'};
 $result_trees{'special_docbook_unnumbered'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[4]{'args'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[4];
@@ -838,7 +848,7 @@ $result_trees{'special_docbook_unnumbered'}{'contents'}[4]{'parent'} = $result_t
 $result_trees{'special_docbook_unnumbered'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[5]{'args'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[5];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'special_docbook_unnumbered'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'special_docbook_unnumbered'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[5]{'extra'}{'node_content'};
+$result_trees{'special_docbook_unnumbered'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'special_docbook_unnumbered'}{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[5]{'parent'} = $result_trees{'special_docbook_unnumbered'};
 $result_trees{'special_docbook_unnumbered'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[6]{'args'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[6];
@@ -850,7 +860,7 @@ $result_trees{'special_docbook_unnumbered'}{'contents'}[6]{'parent'} = $result_t
 $result_trees{'special_docbook_unnumbered'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[7]{'args'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[7];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[7]{'extra'}{'node_content'}[0] = $result_trees{'special_docbook_unnumbered'}{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'special_docbook_unnumbered'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[7]{'extra'}{'node_content'};
+$result_trees{'special_docbook_unnumbered'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'special_docbook_unnumbered'}{'contents'}[7]{'args'}[0]{'contents'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[7]{'parent'} = $result_trees{'special_docbook_unnumbered'};
 $result_trees{'special_docbook_unnumbered'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[8]{'args'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[8];
@@ -862,7 +872,7 @@ $result_trees{'special_docbook_unnumbered'}{'contents'}[8]{'parent'} = $result_t
 $result_trees{'special_docbook_unnumbered'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[9]{'args'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[9];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[9]{'extra'}{'node_content'}[0] = $result_trees{'special_docbook_unnumbered'}{'contents'}[9]{'args'}[0]{'contents'}[0];
-$result_trees{'special_docbook_unnumbered'}{'contents'}[9]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[9]{'extra'}{'node_content'};
+$result_trees{'special_docbook_unnumbered'}{'contents'}[9]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'special_docbook_unnumbered'}{'contents'}[9]{'args'}[0]{'contents'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[9]{'parent'} = $result_trees{'special_docbook_unnumbered'};
 $result_trees{'special_docbook_unnumbered'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[10]{'args'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[10];
@@ -879,7 +889,7 @@ This is the top.
 @menu
 * Dedication::
 * preface::
-* glossary::
+* colophon::
 * acknowledgements::
 @end menu
 
@@ -912,7 +922,7 @@ This is the top.
 
 * Dedication::
 * preface::
-* glossary::
+* colophon::
 * acknowledgements::
 
 a dedication
@@ -1173,8 +1183,20 @@ $result_menus{'special_docbook_unnumbered'} = {
       'menu_next' => {
         'cmdname' => 'node',
         'extra' => {
-          'normalized' => 'acknowledgements',
+          'normalized' => 'colophon',
           'spaces_before_argument' => ' '
+        },
+        'menu_next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'acknowledgements',
+            'spaces_before_argument' => ' '
+          },
+          'menu_prev' => {},
+          'menu_up' => {},
+          'menu_up_hash' => {
+            'Top' => 1
+          }
         },
         'menu_prev' => {},
         'menu_up' => {},
@@ -1194,77 +1216,18 @@ $result_menus{'special_docbook_unnumbered'} = {
     }
   }
 };
+$result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_prev'} = $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'}{'menu_next'};
+$result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_up'} = $result_menus{'special_docbook_unnumbered'};
 $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'}{'menu_next'}{'menu_prev'} = $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'};
 $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'}{'menu_next'}{'menu_up'} = $result_menus{'special_docbook_unnumbered'};
 $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'}{'menu_prev'} = $result_menus{'special_docbook_unnumbered'}{'menu_child'};
 $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_menus{'special_docbook_unnumbered'};
 $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_up'} = $result_menus{'special_docbook_unnumbered'};
 
-$result_errors{'special_docbook_unnumbered'} = [
-  {
-    'error_line' => ':9: @menu reference to nonexistent node `glossary\'
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => '@menu reference to nonexistent node `glossary\'',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':18: warning: node next `preface\' in menu `acknowledgements\' and in sectioning `colophon\' differ
-',
-    'file_name' => '',
-    'line_nr' => 18,
-    'macro' => '',
-    'text' => 'node next `preface\' in menu `acknowledgements\' and in sectioning `colophon\' differ',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':23: warning: node `acknowledgements\' is next for `colophon\' in sectioning but not in menu
-',
-    'file_name' => '',
-    'line_nr' => 23,
-    'macro' => '',
-    'text' => 'node `acknowledgements\' is next for `colophon\' in sectioning but not in menu',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':23: warning: node `preface\' is prev for `colophon\' in sectioning but not in menu
-',
-    'file_name' => '',
-    'line_nr' => 23,
-    'macro' => '',
-    'text' => 'node `preface\' is prev for `colophon\' in sectioning but not in menu',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':23: warning: node `Top\' is up for `colophon\' in sectioning but not in menu
-',
-    'file_name' => '',
-    'line_nr' => 23,
-    'macro' => '',
-    'text' => 'node `Top\' is up for `colophon\' in sectioning but not in menu',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':1: node `Top\' lacks menu item for `colophon\' despite being its Up target
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'node `Top\' lacks menu item for `colophon\' despite being its Up target',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':28: warning: node prev `acknowledgements\' in menu `preface\' and in sectioning `colophon\' differ
-',
-    'file_name' => '',
-    'line_nr' => 28,
-    'macro' => '',
-    'text' => 'node prev `acknowledgements\' in menu `preface\' and in sectioning `colophon\' differ',
-    'type' => 'warning'
-  }
-];
+$result_errors{'special_docbook_unnumbered'} = [];
+
+
+$result_floats{'special_docbook_unnumbered'} = {};
 
 
 

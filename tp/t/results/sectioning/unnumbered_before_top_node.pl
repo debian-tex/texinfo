@@ -120,7 +120,9 @@ $result_trees{'unnumbered_before_top_node'} = [
           ],
           'nodes_manuals' => [
             {
-              'node_content' => [],
+              'node_content' => [
+                {}
+              ],
               'normalized' => 'Top'
             }
           ],
@@ -157,7 +159,7 @@ $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'ar
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'extra'}{'node_content'};
+$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'extra'}{'element_command'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1];
 $result_trees{'unnumbered_before_top_node'}[0]{'extra'}{'section'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1];
@@ -211,6 +213,9 @@ $result_menus{'unnumbered_before_top_node'} = {
 };
 
 $result_errors{'unnumbered_before_top_node'} = [];
+
+
+$result_floats{'unnumbered_before_top_node'} = {};
 
 
 $result_elements{'unnumbered_before_top_node'} = [
@@ -278,14 +283,16 @@ $result_converted{'html'}->{'unnumbered_before_top_node'} = '<!DOCTYPE html PUBL
 <meta name="keywords" content="Title titlefont">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -294,6 +301,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -302,13 +310,14 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="before-nodes"></span><h2 class="unnumbered">before nodes</h2>
+<div class="unnumbered" id="before-nodes">
+<h2 class="unnumbered">before nodes</h2>
 
 <span id="Top"></span><h1 class="node-heading">Top</h1>
 <p>Top node
 </p>
 <h1 class="titlefont">Title titlefont</h1>
-<hr>
+<hr></div>
 
 
 

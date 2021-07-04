@@ -49,6 +49,9 @@ $result_texts{'only_documentencoding'} = '';
 $result_errors{'only_documentencoding'} = [];
 
 
+$result_floats{'only_documentencoding'} = {};
+
+
 
 $result_converted{'info'}->{'only_documentencoding'} = 'This is , produced from .
 

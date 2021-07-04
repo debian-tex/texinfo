@@ -77,6 +77,9 @@ bb.
 $result_errors{'multiline_verb_after_space'} = [];
 
 
+$result_floats{'multiline_verb_after_space'} = {};
+
+
 
 $result_converted{'plaintext'}->{'multiline_verb_after_space'} = 'AA aa
 bb.

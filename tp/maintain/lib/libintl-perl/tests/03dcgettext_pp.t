@@ -40,7 +40,7 @@ Locale::Messages::nl_putenv ("LC_MESSAGES=de_AT");
 Locale::Messages::nl_putenv ("OUTPUT_CHARSET=iso-8859-1");
 
 my $missing_locale = 'locale de_AT missing';
-my $setlocale = POSIX::setlocale (POSIX::LC_ALL() => '');
+my $setlocale = Locale::Messages::setlocale (POSIX::LC_ALL() => '');
 if ($setlocale && $setlocale =~ /(?:austria|at)/i) {
 	$missing_locale = '';
 } else {
@@ -60,12 +60,12 @@ $bound_dir = bindtextdomain additional => $locale_dir;
 ok defined $bound_dir;
 ok (File::Spec->catdir ($bound_dir), File::Spec->catdir ($locale_dir));
 
-ok 'Dezember', dcgettext (existing => 'December', LC_MESSAGES);
+skip $missing_locale, 'Dezember', dcgettext (existing => 'December', LC_MESSAGES);
 ok 'September', dcgettext (existing => 'September', LC_MESSAGES);
 ok 'Not translated', dcgettext (existing => 'Not translated', LC_MESSAGES);
 skip $missing_locale, 'Jänner', dcgettext (existing => 'January', LC_MESSAGES);
 
-ok 'Montag', dcgettext (additional => 'Monday', LC_MESSAGES);
+skip $missing_locale, 'Montag', dcgettext (additional => 'Monday', LC_MESSAGES);
 ok 'Not translated', dcgettext (additional => 'Not translated', LC_MESSAGES);
 skip $missing_locale, 
 	dcgettext (additional => 'Saturday', LC_MESSAGES), 'Sonnabend';

@@ -73,6 +73,9 @@ $result_texts{'empty_second_email_argument'} = 'a@b.c';
 $result_errors{'empty_second_email_argument'} = [];
 
 
+$result_floats{'empty_second_email_argument'} = {};
+
+
 
 $result_converted{'plaintext'}->{'empty_second_email_argument'} = '<a@b.c>
 ';

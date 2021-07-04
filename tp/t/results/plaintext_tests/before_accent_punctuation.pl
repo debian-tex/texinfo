@@ -56,6 +56,9 @@ $result_texts{'before_accent_punctuation'} = 'a. a^';
 $result_errors{'before_accent_punctuation'} = [];
 
 
+$result_floats{'before_accent_punctuation'} = {};
+
+
 
 $result_converted{'plaintext'}->{'before_accent_punctuation'} = 'a.  â
 ';

@@ -560,6 +560,9 @@ $result_texts{'inline'} = '
 $result_errors{'inline'} = [];
 
 
+$result_floats{'inline'} = {};
+
+
 
 $result_converted{'plaintext'}->{'inline'} = ', plaintext ", , ,
 

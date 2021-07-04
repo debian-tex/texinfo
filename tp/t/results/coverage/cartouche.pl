@@ -91,6 +91,9 @@ $result_texts{'cartouche'} = 'in cartouche.
 $result_errors{'cartouche'} = [];
 
 
+$result_floats{'cartouche'} = {};
+
+
 
 $result_converted{'plaintext'}->{'cartouche'} = 'in cartouche.
 ';

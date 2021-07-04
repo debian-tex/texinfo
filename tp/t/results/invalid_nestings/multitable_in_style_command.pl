@@ -128,7 +128,11 @@ $result_trees{'multitable_in_style_command'} = {
                     'cell_number' => 2,
                     'spaces_before_argument' => ' '
                   },
-                  'line_nr' => {},
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 4,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 }
               ],
@@ -178,11 +182,15 @@ $result_trees{'multitable_in_style_command'} = {
         'max_columns' => 2,
         'prototypes' => [
           {
-            'contents' => [],
+            'contents' => [
+              {}
+            ],
             'type' => 'bracketed_multitable_prototype'
           },
           {
-            'contents' => [],
+            'contents' => [
+              {}
+            ],
             'type' => 'bracketed_multitable_prototype'
           }
         ],
@@ -214,7 +222,6 @@ $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[0]{'cont
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[0];
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_in_style_command'}{'contents'}[1];
@@ -222,8 +229,8 @@ $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[1]{'args
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[1];
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_in_style_command'}{'contents'}[1];
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'contents'}[1];
-$result_trees{'multitable_in_style_command'}{'contents'}[1]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'};
-$result_trees{'multitable_in_style_command'}{'contents'}[1]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'};
+$result_trees{'multitable_in_style_command'}{'contents'}[1]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'multitable_in_style_command'}{'contents'}[1]{'extra'}{'prototypes'}[1]{'contents'}[0] = $result_trees{'multitable_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[0];
 $result_trees{'multitable_in_style_command'}{'contents'}[1]{'parent'} = $result_trees{'multitable_in_style_command'};
 
 $result_texis{'multitable_in_style_command'} = '@code{
@@ -268,6 +275,9 @@ $result_errors{'multitable_in_style_command'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'multitable_in_style_command'} = {};
 
 
 1;

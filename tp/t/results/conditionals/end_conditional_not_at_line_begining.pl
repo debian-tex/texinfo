@@ -28,4 +28,7 @@ $result_errors{'end_conditional_not_at_line_begining'} = [
 ];
 
 
+$result_floats{'end_conditional_not_at_line_begining'} = {};
+
+
 1;

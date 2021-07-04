@@ -68,6 +68,9 @@ $result_texts{'end_line_in_anchor'} = '';
 $result_errors{'end_line_in_anchor'} = [];
 
 
+$result_floats{'end_line_in_anchor'} = {};
+
+
 
 $result_converted{'plaintext'}->{'end_line_in_anchor'} = '';
 

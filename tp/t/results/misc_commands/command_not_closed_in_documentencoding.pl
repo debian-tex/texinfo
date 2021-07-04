@@ -38,7 +38,11 @@ $result_trees{'command_not_closed_in_documentencoding'} = {
         'missing_argument' => 1,
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -47,7 +51,6 @@ $result_trees{'command_not_closed_in_documentencoding'} = {
 $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0];
 $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0];
-$result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'line_nr'} = $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'parent'} = $result_trees{'command_not_closed_in_documentencoding'};
 
 $result_texis{'command_not_closed_in_documentencoding'} = '@documentencoding @strong{}';
@@ -75,6 +78,9 @@ $result_errors{'command_not_closed_in_documentencoding'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'command_not_closed_in_documentencoding'} = {};
 
 
 1;

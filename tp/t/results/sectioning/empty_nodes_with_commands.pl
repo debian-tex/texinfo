@@ -188,7 +188,11 @@ $result_trees{'empty_nodes_with_commands'} = {
         ],
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 6,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -214,7 +218,6 @@ $result_trees{'empty_nodes_with_commands'}{'contents'}[4]{'args'}[0]{'contents'}
 $result_trees{'empty_nodes_with_commands'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_nodes_with_commands'}{'contents'}[4]{'args'}[0];
 $result_trees{'empty_nodes_with_commands'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'empty_nodes_with_commands'}{'contents'}[4];
 $result_trees{'empty_nodes_with_commands'}{'contents'}[4]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_nodes_with_commands'}{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_nodes_with_commands'}{'contents'}[4]{'line_nr'} = $result_trees{'empty_nodes_with_commands'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_nodes_with_commands'}{'contents'}[4]{'parent'} = $result_trees{'empty_nodes_with_commands'};
 
 $result_texis{'empty_nodes_with_commands'} = '
@@ -272,6 +275,9 @@ $result_errors{'empty_nodes_with_commands'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'empty_nodes_with_commands'} = {};
 
 
 1;

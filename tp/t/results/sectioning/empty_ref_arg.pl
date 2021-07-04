@@ -354,7 +354,9 @@ $result_trees{'empty_ref_arg'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -422,7 +424,7 @@ $result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'par
 $result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1];
 $result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'empty_ref_arg'}{'contents'}[1];
 $result_trees{'empty_ref_arg'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'empty_ref_arg'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_ref_arg'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'empty_ref_arg'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'empty_ref_arg'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_ref_arg'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_ref_arg'}{'contents'}[1]{'parent'} = $result_trees{'empty_ref_arg'};
 
 $result_texis{'empty_ref_arg'} = '@node Top
@@ -524,6 +526,9 @@ $result_errors{'empty_ref_arg'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'empty_ref_arg'} = {};
 
 
 1;

@@ -147,6 +147,9 @@ $result_errors{'section_before_top_no_node'} = [
 ];
 
 
+$result_floats{'section_before_top_no_node'} = {};
+
+
 
 $result_converted{'xml'}->{'section_before_top_no_node'} = '<section spaces=" "><sectiontitle>section </sectiontitle>
 

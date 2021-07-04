@@ -236,4 +236,7 @@ $result_errors{'unknown_command_with_braces'} = [
 ];
 
 
+$result_floats{'unknown_command_with_braces'} = {};
+
+
 1;

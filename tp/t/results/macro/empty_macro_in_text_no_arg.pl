@@ -146,4 +146,7 @@ This 2 see.  A.
 $result_errors{'empty_macro_in_text_no_arg'} = [];
 
 
+$result_floats{'empty_macro_in_text_no_arg'} = {};
+
+
 1;

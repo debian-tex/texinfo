@@ -507,7 +507,11 @@ $result_trees{'table_nested'} = {
             'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 27,
+            'macro' => 'myvtable'
+          },
           'parent' => {}
         },
         {
@@ -703,7 +707,11 @@ $result_trees{'table_nested'} = {
             'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 27,
+            'macro' => 'myvtable'
+          },
           'parent' => {}
         },
         {
@@ -1099,7 +1107,11 @@ $result_trees{'table_nested'} = {
             'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 32,
+            'macro' => 'myvtable'
+          },
           'parent' => {}
         },
         {
@@ -1295,7 +1307,11 @@ $result_trees{'table_nested'} = {
             'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 32,
+            'macro' => 'myvtable'
+          },
           'parent' => {}
         },
         {
@@ -1703,7 +1719,11 @@ $result_trees{'table_nested'} = {
                 'end_command' => {},
                 'spaces_before_argument' => ' '
               },
-              'line_nr' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 38,
+                'macro' => 'myvtable'
+              },
               'parent' => {}
             },
             {
@@ -1899,7 +1919,11 @@ $result_trees{'table_nested'} = {
                 'end_command' => {},
                 'spaces_before_argument' => ' '
               },
-              'line_nr' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 38,
+                'macro' => 'myvtable'
+              },
               'parent' => {}
             },
             {
@@ -2075,7 +2099,6 @@ $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'contents'}[3];
-$result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'table_nested'}{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'table_nested'}{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[3];
@@ -2103,7 +2126,6 @@ $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'contents'}[2]{'args
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'contents'}[2];
-$result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'table_nested'}{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[5];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[5]{'parent'} = $result_trees{'table_nested'}{'contents'}[4];
@@ -2164,7 +2186,6 @@ $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'contents'}[3]{'args
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'contents'}[3];
-$result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'table_nested'}{'contents'}[7];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[2];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[2];
@@ -2192,7 +2213,6 @@ $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'contents'}[2]{'args
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'contents'}[2];
-$result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'parent'} = $result_trees{'table_nested'}{'contents'}[7];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[4]{'parent'} = $result_trees{'table_nested'}{'contents'}[7];
@@ -2255,7 +2275,6 @@ $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'con
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'contents'}[3];
-$result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[3];
@@ -2283,7 +2302,6 @@ $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'con
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'contents'}[2];
-$result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[5];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1];
@@ -2572,6 +2590,9 @@ $result_errors{'table_nested'} = [
 ];
 
 
+$result_floats{'table_nested'} = {};
+
+
 
 $result_converted{'plaintext'}->{'table_nested'} = 'Quotation
      first item
@@ -2636,34 +2657,26 @@ $result_converted{'html_text'}->{'table_nested'} = '
 <p>Quotation
 </p><blockquote>
 <dl compact="compact">
-<dt>first item
-<span id="index-first-item"></span>
-</dt>
-<dt>second itemx
-<span id="index-second-itemx"></span>
-</dt>
+<dt id=\'index-first-item\'><span>first item<a href=\'#index-first-item\' class=\'copiable-anchor\'> &para;</a></span></dt>
+<dt id=\'index-second-itemx\'><span>second itemx<a href=\'#index-second-itemx\' class=\'copiable-anchor\'> &para;</a></span></dt>
 <dd>
 <p>Text.
 </p>
 </dd>
-<dt>second item
-<span id="index-second-item"></span>
-</dt>
+<dt id=\'index-second-item\'><span>second item<a href=\'#index-second-item\' class=\'copiable-anchor\'> &para;</a></span></dt>
 <dd>
 <p>Text 2
 </p>
 </dd>
-<dt>last
-<span id="index-last"></span>
-</dt>
+<dt id=\'index-last\'><span>last<a href=\'#index-last\' class=\'copiable-anchor\'> &para;</a></span></dt>
 </dl>
 
 <p>Something.
 </p><dl compact="compact">
-<dt><em>in item</em></dt>
+<dt><span><em>in item</em></span></dt>
 <dd><p>Text without blank line
 </p></dd>
-<dt><em>second item</em></dt>
+<dt><span><em>second item</em></span></dt>
 <dd><p>Text without blank line 2
 </p></dd>
 </dl>
@@ -2673,37 +2686,29 @@ $result_converted{'html_text'}->{'table_nested'} = '
 <p>Example
 </p><div class="example">
 <dl compact="compact">
-<dt><tt>first item</tt>
-<span id="index-first-item-1"></span>
-</dt>
-<dt><tt>second itemx</tt>
-<span id="index-second-itemx-1"></span>
-</dt>
+<dt id=\'index-first-item-1\'><span><tt>first item</tt><a href=\'#index-first-item-1\' class=\'copiable-anchor\'> &para;</a></span></dt>
+<dt id=\'index-second-itemx-1\'><span><tt>second itemx</tt><a href=\'#index-second-itemx-1\' class=\'copiable-anchor\'> &para;</a></span></dt>
 <dd><pre class="example">
 
 Text.
 
 </pre></dd>
-<dt><tt>second item</tt>
-<span id="index-second-item-1"></span>
-</dt>
+<dt id=\'index-second-item-1\'><span><tt>second item</tt><a href=\'#index-second-item-1\' class=\'copiable-anchor\'> &para;</a></span></dt>
 <dd><pre class="example">
 
 Text 2
 
 </pre></dd>
-<dt><tt>last</tt>
-<span id="index-last-1"></span>
-</dt>
+<dt id=\'index-last-1\'><span><tt>last</tt><a href=\'#index-last-1\' class=\'copiable-anchor\'> &para;</a></span></dt>
 </dl>
 <pre class="example">
 
 Something.
 </pre><dl compact="compact">
-<dt><tt><em>in item</em></tt></dt>
+<dt><span><tt><em>in item</em></tt></span></dt>
 <dd><pre class="example">Text without blank line
 </pre></dd>
-<dt><tt><em>second item</em></tt></dt>
+<dt><span><tt><em>second item</em></tt></span></dt>
 <dd><pre class="example">Text without blank line 2
 </pre></dd>
 </dl>
@@ -2714,34 +2719,26 @@ Something.
 </p><blockquote>
 <blockquote>
 <dl compact="compact">
-<dt>first item
-<span id="index-first-item-2"></span>
-</dt>
-<dt>second itemx
-<span id="index-second-itemx-2"></span>
-</dt>
+<dt id=\'index-first-item-2\'><span>first item<a href=\'#index-first-item-2\' class=\'copiable-anchor\'> &para;</a></span></dt>
+<dt id=\'index-second-itemx-2\'><span>second itemx<a href=\'#index-second-itemx-2\' class=\'copiable-anchor\'> &para;</a></span></dt>
 <dd>
 <p>Text.
 </p>
 </dd>
-<dt>second item
-<span id="index-second-item-2"></span>
-</dt>
+<dt id=\'index-second-item-2\'><span>second item<a href=\'#index-second-item-2\' class=\'copiable-anchor\'> &para;</a></span></dt>
 <dd>
 <p>Text 2
 </p>
 </dd>
-<dt>last
-<span id="index-last-2"></span>
-</dt>
+<dt id=\'index-last-2\'><span>last<a href=\'#index-last-2\' class=\'copiable-anchor\'> &para;</a></span></dt>
 </dl>
 
 <p>Something.
 </p><dl compact="compact">
-<dt><em>in item</em></dt>
+<dt><span><em>in item</em></span></dt>
 <dd><p>Text without blank line
 </p></dd>
-<dt><em>second item</em></dt>
+<dt><span><em>second item</em></span></dt>
 <dd><p>Text without blank line 2
 </p></dd>
 </dl>

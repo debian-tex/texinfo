@@ -11,7 +11,7 @@ BEGIN {
 	eval {
 		require Encode;
 
-		if ($Encode::VERSION < "1.78") {
+		if ($Encode::VERSION =~ /^1\./ && $Encode::VERSION < "1.78") {
 			print "1..0 # Skip: Encode $Encode::VERSION has a " .
 				"bug, please upgrade!\n";
 			exit 0;
@@ -84,7 +84,7 @@ ok $result_int;
 # Check handling of unknown characters.
 my $test_string1 = [ unpack 'c*', ' Supergirl ' ];
 $test_string1->[0] = 0xad0be;
-$test_string1->[-1] = 0xbeefbabe;
+$test_string1->[-1] = 0xad0be;
 my $test_string2 = [ unpack 'c*', 'Supergirl' ];
 
 my $unknown = "\x3f"; # Unknown character!

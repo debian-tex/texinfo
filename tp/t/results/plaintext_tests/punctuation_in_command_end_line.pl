@@ -273,7 +273,11 @@ $result_trees{'punctuation_in_command_end_line'} = {
           ],
           'cmdname' => 'code',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -366,7 +370,6 @@ $result_trees{'punctuation_in_command_end_line'}{'contents'}[0]{'contents'}[22]{
 $result_trees{'punctuation_in_command_end_line'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_in_command_end_line'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'contents'}[0];
 $result_trees{'punctuation_in_command_end_line'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_in_command_end_line'}{'contents'}[0]{'contents'}[22]{'args'}[0];
 $result_trees{'punctuation_in_command_end_line'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'parent'} = $result_trees{'punctuation_in_command_end_line'}{'contents'}[0]{'contents'}[22];
-$result_trees{'punctuation_in_command_end_line'}{'contents'}[0]{'contents'}[22]{'line_nr'} = $result_trees{'punctuation_in_command_end_line'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'punctuation_in_command_end_line'}{'contents'}[0]{'contents'}[22]{'parent'} = $result_trees{'punctuation_in_command_end_line'}{'contents'}[0];
 $result_trees{'punctuation_in_command_end_line'}{'contents'}[0]{'contents'}[23]{'parent'} = $result_trees{'punctuation_in_command_end_line'}{'contents'}[0];
 $result_trees{'punctuation_in_command_end_line'}{'contents'}[0]{'contents'}[24]{'parent'} = $result_trees{'punctuation_in_command_end_line'}{'contents'}[0];
@@ -403,6 +406,9 @@ and in emph.
 ';
 
 $result_errors{'punctuation_in_command_end_line'} = [];
+
+
+$result_floats{'punctuation_in_command_end_line'} = {};
 
 
 

@@ -124,6 +124,13 @@ Title
 @end multitable
 '],
 
+['empty_headitem',
+'@multitable @columnfractions .1 .1 .1
+@headitem @tab Index @tab Value
+@item @tab @code{3} @tab @code{30}
+@end multitable
+'],
+
 # Check xrefs in a multitable are treated as if surrounded in @w { ... }.
 ['ref_in_multitable',
 '@novalidate

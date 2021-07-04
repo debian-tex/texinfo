@@ -217,7 +217,9 @@ $result_trees{'ref_in_preformatted'} = {
                         ],
                         'nodes_manuals' => [
                           {
-                            'node_content' => [],
+                            'node_content' => [
+                              {}
+                            ],
                             'normalized' => 'nnn-the-node-name'
                           }
                         ],
@@ -309,7 +311,9 @@ $result_trees{'ref_in_preformatted'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -358,7 +362,7 @@ $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'args'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'};
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'extra'}{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'extra'}{'node_content'};
+$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'parent'} = $result_trees{'ref_in_preformatted'};
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[1] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
@@ -372,7 +376,7 @@ $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'extra'}{'end
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'ref_in_preformatted'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'parent'} = $result_trees{'ref_in_preformatted'};
 $result_trees{'ref_in_preformatted'}{'contents'}[2] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'};
 
@@ -460,6 +464,9 @@ $result_menus{'ref_in_preformatted'}{'menu_child'}{'menu_up'} = $result_menus{'r
 $result_errors{'ref_in_preformatted'} = [];
 
 
+$result_floats{'ref_in_preformatted'} = {};
+
+
 
 $result_converted{'html_text'}->{'ref_in_preformatted'} = '<span id="Top"></span><div class="header">
 <p>
@@ -467,10 +474,6 @@ $result_converted{'html_text'}->{'ref_in_preformatted'} = '<span id="Top"></span
 </div>
 <h1 class="node-heading">Top</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#nnn-the-node-name" accesskey="1">nnn the node name</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <div class="example">
 <pre class="example">Now <a href="#nnn-the-node-name">nnn the
@@ -483,7 +486,6 @@ node name</a>
  &nbsp; </p>
 </div>
 <h4 class="node-heading">nnn the node name</h4>
-<hr>
 ';
 
 1;

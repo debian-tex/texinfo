@@ -159,4 +159,7 @@ $result_errors{'bad_style_nesting'} = [
 ];
 
 
+$result_floats{'bad_style_nesting'} = {};
+
+
 1;

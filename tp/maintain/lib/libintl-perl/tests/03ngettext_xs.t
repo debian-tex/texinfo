@@ -35,7 +35,7 @@ Locale::Messages::nl_putenv ("LANG=C");
 Locale::Messages::nl_putenv ("LC_MESSAGES=C");
 Locale::Messages::nl_putenv ("OUTPUT_CHARSET=iso-8859-1");
 
-POSIX::setlocale (POSIX::LC_ALL() => '');
+Locale::Messages::setlocale (POSIX::LC_ALL() => '');
 
 my $locale_dir = $0;
 $locale_dir =~ s,[^\\/]+$,, or $locale_dir = '.';
@@ -58,7 +58,7 @@ Locale::Messages::nl_putenv ("LC_ALL=C");
 Locale::Messages::nl_putenv ("LANG=C");
 Locale::Messages::nl_putenv ("LC_MESSAGES=C");
 
-POSIX::setlocale (POSIX::LC_ALL() => '');
+Locale::Messages::setlocale (POSIX::LC_ALL() => '');
 
 my $bound_dir = bindtextdomain $textdomain => $locale_dir;
 
@@ -81,7 +81,7 @@ Locale::Messages::nl_putenv ("LANG=de_AT");
 Locale::Messages::nl_putenv ("LC_MESSAGES=de_AT");
 
 my $missing_locale = 'locale de_AT missing';
-my $setlocale = POSIX::setlocale (POSIX::LC_ALL() => '');
+my $setlocale = Locale::Messages::setlocale (POSIX::LC_ALL() => '');
 if ($setlocale && $setlocale =~ /(?:austria|at)/i) {
 	$missing_locale = '';
 } else {
@@ -96,7 +96,7 @@ if ($setlocale && $setlocale =~ /(?:austria|at)/i) {
 for (0 .. 9) {
 	my $translation = ngettext ($strings[0], $strings[1], $_);
 	my $expected = $_ == 1 ? 'Einzahl' : 'Mehrzahl';
-	ok $translation, $expected;
+	skip $missing_locale, $translation, $expected;
 }
 
 $textdomain = 'additional';
@@ -105,7 +105,7 @@ Locale::Messages::nl_putenv ("LC_ALL=C");
 Locale::Messages::nl_putenv ("LANG=C");
 Locale::Messages::nl_putenv ("LC_MESSAGES=C");
 
-POSIX::setlocale (POSIX::LC_ALL() => '');
+Locale::Messages::setlocale (POSIX::LC_ALL() => '');
 
 $bound_dir = bindtextdomain $textdomain => $locale_dir;
 
@@ -128,14 +128,14 @@ Locale::Messages::nl_putenv ("LC_ALL=de_AT");
 Locale::Messages::nl_putenv ("LANG=de_AT");
 Locale::Messages::nl_putenv ("LC_MESSAGES=de_AT");
 
-POSIX::setlocale (POSIX::LC_ALL() => $setlocale) unless $missing_locale; 
+Locale::Messages::setlocale (POSIX::LC_ALL() => $setlocale) unless $missing_locale; 
 
 for (0 .. 40) {
 	my $translation = ngettext ($strings[0], $strings[1], $_);
 	my $plural = ($_ == 1 ? 0 : 
 				  $_ % 10 == 2 ? 1 : 
 				  $_ % 10 == 3 || $_ %10 == 4 ? 2 : 3);
-	ok $translation, "Numerus $plural";
+	skip $missing_locale, $translation, "Numerus $plural";
 }
 
 __END__

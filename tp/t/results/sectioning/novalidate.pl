@@ -242,7 +242,9 @@ $result_trees{'novalidate'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'first'
           },
           {
@@ -300,7 +302,7 @@ $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3];
 $result_trees{'novalidate'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'novalidate'}{'contents'}[1];
 $result_trees{'novalidate'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'novalidate'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'novalidate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'novalidate'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'novalidate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'novalidate'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'novalidate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'novalidate'}{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'novalidate'}{'contents'}[1]{'parent'} = $result_trees{'novalidate'};
 
@@ -364,6 +366,9 @@ $result_menus{'novalidate'} = {
 };
 
 $result_errors{'novalidate'} = [];
+
+
+$result_floats{'novalidate'} = {};
 
 
 1;

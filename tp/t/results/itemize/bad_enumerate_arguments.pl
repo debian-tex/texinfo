@@ -59,7 +59,7 @@ $result_trees{'bad_enumerate_arguments'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'enumerate_specification' => 1,
+        'enumerate_specification' => '1',
         'spaces_before_argument' => ' '
       },
       'line_nr' => {
@@ -127,7 +127,7 @@ $result_trees{'bad_enumerate_arguments'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'enumerate_specification' => 1,
+        'enumerate_specification' => '1',
         'spaces_before_argument' => ' '
       },
       'line_nr' => {
@@ -213,10 +213,14 @@ $result_trees{'bad_enumerate_arguments'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'enumerate_specification' => 1,
+        'enumerate_specification' => '1',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 7,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -349,7 +353,7 @@ $result_trees{'bad_enumerate_arguments'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'enumerate_specification' => 1,
+        'enumerate_specification' => '1',
         'spaces_before_argument' => ' '
       },
       'line_nr' => {
@@ -386,7 +390,6 @@ $result_trees{'bad_enumerate_arguments'}{'contents'}[4]{'contents'}[0]{'args'}[0
 $result_trees{'bad_enumerate_arguments'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'bad_enumerate_arguments'}{'contents'}[4]{'contents'}[0];
 $result_trees{'bad_enumerate_arguments'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'bad_enumerate_arguments'}{'contents'}[4];
 $result_trees{'bad_enumerate_arguments'}{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'bad_enumerate_arguments'}{'contents'}[4]{'contents'}[0];
-$result_trees{'bad_enumerate_arguments'}{'contents'}[4]{'line_nr'} = $result_trees{'bad_enumerate_arguments'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'bad_enumerate_arguments'}{'contents'}[4]{'parent'} = $result_trees{'bad_enumerate_arguments'};
 $result_trees{'bad_enumerate_arguments'}{'contents'}[5]{'parent'} = $result_trees{'bad_enumerate_arguments'};
 $result_trees{'bad_enumerate_arguments'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_enumerate_arguments'}{'contents'}[6]{'args'}[0];
@@ -476,6 +479,9 @@ $result_errors{'bad_enumerate_arguments'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'bad_enumerate_arguments'} = {};
 
 
 1;

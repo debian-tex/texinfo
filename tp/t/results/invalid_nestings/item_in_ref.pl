@@ -219,7 +219,11 @@ $result_trees{'item_in_ref'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -253,7 +257,6 @@ $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} 
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'item_in_ref'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2];
-$result_trees{'item_in_ref'}{'contents'}[0]{'line_nr'} = $result_trees{'item_in_ref'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'item_in_ref'}{'contents'}[0]{'parent'} = $result_trees{'item_in_ref'};
 
 $result_texis{'item_in_ref'} = '@table @asis
@@ -301,6 +304,9 @@ $result_errors{'item_in_ref'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'item_in_ref'} = {};
 
 
 1;

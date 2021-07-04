@@ -307,7 +307,9 @@ $result_trees{'block_commands'} = {
         'normalized' => 'b-float',
         'spaces_before_argument' => ' ',
         'type' => {
-          'content' => [],
+          'content' => [
+            {}
+          ],
           'normalized' => 'a float'
         }
       },
@@ -366,7 +368,7 @@ $result_trees{'block_commands'}{'contents'}[5]{'contents'}[5]{'parent'} = $resul
 $result_trees{'block_commands'}{'contents'}[5]{'extra'}{'caption'} = $result_trees{'block_commands'}{'contents'}[5]{'contents'}[3];
 $result_trees{'block_commands'}{'contents'}[5]{'extra'}{'end_command'} = $result_trees{'block_commands'}{'contents'}[5]{'contents'}[5];
 $result_trees{'block_commands'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'block_commands'}{'contents'}[5]{'args'}[1]{'contents'}[0];
-$result_trees{'block_commands'}{'contents'}[5]{'extra'}{'type'}{'content'} = $result_trees{'block_commands'}{'contents'}[5]{'args'}[0]{'contents'};
+$result_trees{'block_commands'}{'contents'}[5]{'extra'}{'type'}{'content'}[0] = $result_trees{'block_commands'}{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'block_commands'}{'contents'}[5]{'parent'} = $result_trees{'block_commands'};
 
 $result_texis{'block_commands'} = '
@@ -448,6 +450,7 @@ $result_converted{'plaintext'}->{'block_commands'} = 'in group
      warning: in quotation
 
 In float
+
 
 a float 1: in caption
 

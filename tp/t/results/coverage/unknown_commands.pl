@@ -61,4 +61,7 @@ $result_errors{'unknown_commands'} = [
 ];
 
 
+$result_floats{'unknown_commands'} = {};
+
+
 1;

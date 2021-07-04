@@ -152,4 +152,7 @@ expand some thing macro1
 $result_errors{'macro_name_with_digit'} = [];
 
 
+$result_floats{'macro_name_with_digit'} = {};
+
+
 1;

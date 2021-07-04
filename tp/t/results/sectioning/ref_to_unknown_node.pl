@@ -75,4 +75,7 @@ $result_errors{'ref_to_unknown_node'} = [
 ];
 
 
+$result_floats{'ref_to_unknown_node'} = {};
+
+
 1;

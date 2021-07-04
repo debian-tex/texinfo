@@ -90,6 +90,35 @@ Test of @acronym{ACRONYM}'s.  {ACRONYM}'s.
 
 @ordf{} @ordm{}
 
+@paragraphindent 3
+@chapter Paragraph formatting
+@section Images
+
+
+@image{image}
+
+first first first first first first first first first first first first
+first first first first first first first first first first first first
+first first first first first first first first first first first first
+first first first first first first first first first first first first
+first first first first first first first first first first first first
+
+second second second second second second second second 
+second second second second second second second second 
+second second second second second second second second 
+second second second second second second second second 
+
+@image{image}
+
+third third third third third third third third third third
+third third third third third third third third third third
+third third third third third third third third third third
+third third third third third third third third third third
+third third third third third third third third third third
+
+(check no paragraph indent on first paragraph above, after image)
+
+@paragraphindent 0
 
 @chapter Macros
 @section Backslashes in macro arguments
@@ -370,11 +399,11 @@ Fran@,cois+.
 
 @section Macro in argument to @@math
 
-@macro frac {a,b}
+@macro frak {a,b}
 \a\ @over \b\
 @end macro
 
-exceeds @math{@frac{1,16}} pt
+exceeds @math{@frak{1,16}} pt
 
 
 @section Trim whitespace from macro arguments
@@ -387,11 +416,31 @@ exceeds @math{@frac{1,16}} pt
 <X\a\X\b\X>
 @end macro
 
-No trimming for single-arg macros.
+No trimming for single-arg macros.  Trimming from front of argument only
+for other macros.
 
 @noindent @Mac{b} @Mac{ b} @Mac{b  } @Mac{ b }
 
 @noindent @Mactwo{b,c} @Mactwo{ b, c} @Mactwo{b  ,c  } @Mactwo{ b , c }
+
+
+@section Newline at start of argument
+
+@c Figure with caption
+@macro figure{caption,file,width}
+@float Figure,\file\
+@center image
+@caption{\caption\}
+@end float
+@end macro
+
+@figure{The File List tool@comma{} to install a change set and
+more,ch10-FileListChangeSet,11}
+
+@figure{The File List tool@comma{} to install a change set and more,
+ch10-FileListChangeSetA,11}
+
+
 
 
 @section Multi-line macro argument
@@ -1556,6 +1605,52 @@ List of floats now:
 @listoffloats Figure
 
 
+@chapter Environments
+
+@section @code{@@verbatim}
+
+@verbatim
+                   ‘MENU’
+                   ------
+
+chicken		pizza	beefburger	hotdog
+£0.44		$2.50	€1.50		42¢
+
+“Please come again”
+@end verbatim
+
+@section @code{@@multitable}
+
+Nested in @@quotation:
+
+before before before before before before before before
+before before before before before before before before
+before before before before before before before before
+before before before before before before before before
+
+@quotation
+@multitable @columnfractions 0.5 0.5
+@item
+left left left left left left left left
+left left left left left left left left
+left left left left left left left left
+left left left left left left left left
+@tab
+right right right right right right right right
+right right right right right right right right
+right right right right right right right right
+right right right right right right right right
+@end multitable
+@end quotation
+
+after after after after after after after after
+after after after after after after after after
+after after after after after after after after
+after after after after after after after after
+
+
+
+
 
 
 @chapter Document encoding
@@ -1599,6 +1694,17 @@ For PDF output, check the bookmarks pane in the reader.
 @section @{ @} @@ @{@ @} @arrow{} @atchar{} @lbracechar{}
 
 This section should be called ``@{ @} @@ @{ @} @arrow{} @@ @{''.
+
+
+@node Special characters
+@section ~[]"_|<>$#&%+\
+
+This section should be called @code{~[]"_|<>$#&%+\} (in Roman type).
+
+@xrefautomaticsectiontitle on
+@xref{Special characters} is a cross-reference using
+@code{@@xrefautomaticsectiontitle on}.
+@xrefautomaticsectiontitle off
 
 
 
@@ -1703,12 +1809,71 @@ par
 
 @chapter URL line breaking
 
-Some use of @code{@@url}.
+Some use of @code{@@url}.  Ragged-right output should only be used where
+necessary.
+
+In a different way, the full range of colors defined for
+@uref{https://en.wikipedia.org/wiki/X11_color_names, defined for X11}
+can be accessed by using the Scheme function @code{x11-color}.
+That function takes one argument.
 
 see the 
 @url{https://www.gnu.org/software/libc/manual/html_node/Message-catalogs-with-gettext.html} 
 
 foo foo foo foo foo foo foof see the @url{https://www.gnu.org/software/libc/manual/html_node/}
+
+In case of problem, please read the @file{INSTALL} file carefully
+before reporting a bug, in particular section ``In case of problem''.
+Some problems are due to bad configuration on the user side (not
+specific to MPFR)@. Problems are also mentioned in the FAQ
+@url{https://www.mpfr.org/faq.html}.
+
+Initial text to test the justification of the line containing the
+first part of the URL: blah blah blah blah blah blah blah blah.
+@url{https://www.1234567890123456789012345678901234567890123.invalid}.
+Text to test the justification of the line containing the last part
+of the URL: blah blah blah blah blah blah blah blah.
+
+Initial text to test the justification of the line containing the
+first part of the URL: blah blah blah blah blah blah blah blah.
+@url{https://www.1234567890123456789012345678901234567890.invalid}.
+Text to test the justification of the line containing the last part
+of the URL: blah blah blah blah blah blah blah blah.
+
+Initial text to test the justification of the line containing the
+first part of the URL: blah blah blah blah blah blah blah blah.
+@url{https://www.1234567890123456789012345678901234567.invalid}.
+Text to test the justification of the line containing the last part
+of the URL: blah blah blah blah blah blah blah blah.
+
+Initial text to test the justification of the line containing the
+first part of the URL: blah blah blah blah blah blah blah blah.
+@url{https://www.1234567890123456789012345678901234.invalid}.
+Text to test the justification of the line containing the last part
+of the URL: blah blah blah blah blah blah blah blah.
+
+@chapter Nested URL
+
+In @command{@@lisp}
+
+@lisp
+one
+@url{www.gnu.org}
+three
+four
+
+six
+
+
+nine @url{http://example.com/} nine
+@end lisp
+
+in footnote@footnote{see @url{http://example.com/}.}. after footnote
+
+next para.
+
+next para.
+
 
 
 
@@ -1762,5 +1927,57 @@ test of @samp{@@everyheadingmarks bottom}
 ffffff
 
 @chapter Four
+
+
+@setchapternewpage odd
+@chapter Test of @code{@@*heading}
+
+@headings off
+@oddheading @today{} @| @thispage @| @thischapter{}
+@evenheading @thischapter @| @thispage @| @today{}
+chapter text (date at left)
+
+@page
+next page
+(date at right)
+
+
+@chapter Test of @code{@@*footing}
+@oddfooting @thistitle @| @thispage @| @thissection
+@evenfooting @thissection @| @thispage @| @thistitle
+@everyfootingmarks top
+
+aaa
+
+@section AA
+
+bbb
+
+@page
+
+ccc
+
+@section DD
+
+ee
+
+
+@chapter Test of @code{@@displaymath}
+
+Alignment in @@displaymath:
+
+@displaymath
+\leqalignno{
+   \int v(t)\, dt &= u(t) + C&[3.1]\cr
+   \int v(t)\, dt &= u(t) + H&[3.2]\cr
+}
+@end displaymath
+
+test of \eqno
+@displaymath
+   v(t) = {d \over dt} u(t)\eqno{[3.1]}
+@end displaymath
+
+
 
 @bye

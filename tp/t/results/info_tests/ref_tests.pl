@@ -199,7 +199,11 @@ $result_trees{'ref_tests'} = {
               ],
               'cmdname' => 'code',
               'contents' => [],
-              'line_nr' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -417,7 +421,11 @@ $result_trees{'ref_tests'} = {
               ],
               'cmdname' => 'code',
               'contents' => [],
-              'line_nr' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 11,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -504,7 +512,9 @@ $result_trees{'ref_tests'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -553,7 +563,6 @@ $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[1]{'contents'}[4];
-$result_trees{'ref_tests'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'line_nr'} = $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[1];
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[1];
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_tests'}{'contents'}[1];
@@ -592,7 +601,6 @@ $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'contents'}[4]{'args'}[
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'contents'}[4]{'args'}[0];
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'contents'}[4];
-$result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'contents'}[4]{'line_nr'} = $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4];
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'contents'}[5]{'parent'} = $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4];
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'contents'}[6]{'args'}[0];
@@ -609,7 +617,7 @@ $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'contents'}[7]{'parent'
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'ref_tests'}{'contents'}[1];
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'ref_tests'}{'contents'}[1];
 $result_trees{'ref_tests'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_tests'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_tests'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'ref_tests'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'ref_tests'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ref_tests'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_tests'}{'contents'}[1]{'parent'} = $result_trees{'ref_tests'};
 
 $result_texis{'ref_tests'} = '
@@ -661,6 +669,9 @@ $result_menus{'ref_tests'} = {
 };
 
 $result_errors{'ref_tests'} = [];
+
+
+$result_floats{'ref_tests'} = {};
 
 
 

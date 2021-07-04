@@ -190,7 +190,9 @@ $result_trees{'menu_in_style_command'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -235,7 +237,7 @@ $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'menu_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'menu_in_style_command'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'menu_in_style_command'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'menu_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'parent'} = $result_trees{'menu_in_style_command'};
 
 $result_texis{'menu_in_style_command'} = '@node Top
@@ -334,6 +336,9 @@ $result_errors{'menu_in_style_command'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'menu_in_style_command'} = {};
 
 
 1;

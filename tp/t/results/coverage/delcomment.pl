@@ -182,4 +182,7 @@ This line is the only output.
 $result_errors{'delcomment'} = [];
 
 
+$result_floats{'delcomment'} = {};
+
+
 1;

@@ -271,6 +271,9 @@ lhds
 $result_errors{'flushleft_flushright'} = [];
 
 
+$result_floats{'flushleft_flushright'} = {};
+
+
 
 $result_converted{'plaintext'}->{'flushleft_flushright'} = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
 ldskf dsflj

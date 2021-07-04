@@ -37,6 +37,28 @@ Complex
 The 3@sup{rd}is the I@sub{r}.
 
 '],
+['displaymath',
+'Simple
+@displaymath
+--{x^i}\over{\tan y}
+@end displaymath
+
+Math with @@-command
+@displaymath
+@code{math code} a < b \sum@sub{i} q@sup{2}
+@end displaymath
+
+Complex
+@displaymath
+ \underline{@code{math \hbox{ code }}} @\i \sum_{i}{\underline{f}}
+@end displaymath
+
+With a comment
+@displaymath
+@c comment in displaymath
+a/2
+@end displaymath
+'],
 ['empty_w',
 '@w{} @w{a b}.'
 ],
@@ -543,7 +565,7 @@ In float with caption.
 '],
 ['invalid_U',
 '@U @U{} @U{z} @U{abc} @U{9999999999999} @U{110000} @U{10FFFF}
-@U{ 0023 } @U{ wxyz }
+@U{ 0023 } @U{FFFD} @U{ wxyz }
 '],
 ['test_errormsg',
 'Some text

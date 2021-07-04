@@ -87,7 +87,11 @@ $result_trees{'something_before_columnfractions'} = {
         'max_columns' => 2,
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -103,7 +107,6 @@ $result_trees{'something_before_columnfractions'}{'contents'}[0]{'contents'}[0]{
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0];
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'contents'}[0];
-$result_trees{'something_before_columnfractions'}{'contents'}[0]{'line_nr'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'parent'} = $result_trees{'something_before_columnfractions'};
 
 $result_texis{'something_before_columnfractions'} = '@multitable aaa @columnfractions 0.3 0.7
@@ -113,6 +116,9 @@ $result_texis{'something_before_columnfractions'} = '@multitable aaa @columnfrac
 $result_texts{'something_before_columnfractions'} = '';
 
 $result_errors{'something_before_columnfractions'} = [];
+
+
+$result_floats{'something_before_columnfractions'} = {};
 
 
 1;

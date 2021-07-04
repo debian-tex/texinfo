@@ -38,7 +38,9 @@ $result_trees{'top_node_up_url'} = [
           ],
           'nodes_manuals' => [
             {
-              'node_content' => [],
+              'node_content' => [
+                {}
+              ],
               'normalized' => 'Top'
             }
           ],
@@ -240,7 +242,9 @@ $result_trees{'top_node_up_url'} = [
           ],
           'nodes_manuals' => [
             {
-              'node_content' => [],
+              'node_content' => [
+                {}
+              ],
               'normalized' => 'first'
             }
           ],
@@ -267,7 +271,7 @@ $result_trees{'top_node_up_url'}[0]{'contents'}[0]{'parent'} = $result_trees{'to
 $result_trees{'top_node_up_url'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_url'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'top_node_up_url'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'top_node_up_url'}[0]{'contents'}[1];
 $result_trees{'top_node_up_url'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'top_node_up_url'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'top_node_up_url'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'top_node_up_url'}[0]{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'top_node_up_url'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'top_node_up_url'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'top_node_up_url'}[0]{'contents'}[1]{'parent'} = $result_trees{'top_node_up_url'}[0];
 $result_trees{'top_node_up_url'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_url'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'top_node_up_url'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'top_node_up_url'}[0]{'contents'}[2];
@@ -297,7 +301,7 @@ $result_trees{'top_node_up_url'}[0]{'extra'}{'section'} = $result_trees{'top_nod
 $result_trees{'top_node_up_url'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_url'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'top_node_up_url'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'top_node_up_url'}[1]{'contents'}[0];
 $result_trees{'top_node_up_url'}[1]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_node_up_url'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'top_node_up_url'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'top_node_up_url'}[1]{'contents'}[0]{'extra'}{'node_content'};
+$result_trees{'top_node_up_url'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'top_node_up_url'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'top_node_up_url'}[1]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_url'}[1];
 $result_trees{'top_node_up_url'}[1]{'element_prev'} = $result_trees{'top_node_up_url'}[0];
 $result_trees{'top_node_up_url'}[1]{'extra'}{'element_command'} = $result_trees{'top_node_up_url'}[1]{'contents'}[0];
@@ -407,6 +411,9 @@ $result_menus{'top_node_up_url'} = {
 $result_menus{'top_node_up_url'}{'menu_child'}{'menu_up'} = $result_menus{'top_node_up_url'};
 
 $result_errors{'top_node_up_url'} = [];
+
+
+$result_floats{'top_node_up_url'} = {};
 
 
 $result_elements{'top_node_up_url'} = [
@@ -536,15 +543,17 @@ $result_converted{'html'}->{'top_node_up_url'} = '<!DOCTYPE html PUBLIC "-//W3C/
 <meta name="keywords" content="internal top node up">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <link href="http://www.gnu.org/manual/" rel="up" title="@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -553,6 +562,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -561,24 +571,21 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Top"></span><div class="header">
+<div class="top" id="Top">
+<div class="header">
 <p>
 Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="http://www.gnu.org/manual/" accesskey="u" rel="up">@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals</a> &nbsp; </p>
 </div>
 <span id="internal-top-node-up"></span><h1 class="top">internal top node up</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#first" accesskey="1">first</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="first"></span><div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#Top" accesskey="p" rel="prev">internal top node up</a>, Up: <a href="#Top" accesskey="u" rel="up">internal top node up</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">first</h4>
-<hr>
+</div>
 
 
 

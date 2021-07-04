@@ -102,4 +102,7 @@ $result_errors{'empty_anchor'} = [
 ];
 
 
+$result_floats{'empty_anchor'} = {};
+
+
 1;

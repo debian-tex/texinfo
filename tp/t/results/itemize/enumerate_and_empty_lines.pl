@@ -495,7 +495,7 @@ $result_trees{'enumerate_and_empty_lines'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'enumerate_specification' => 1
+        'enumerate_specification' => '1'
       },
       'line_nr' => {
         'file_name' => '',
@@ -581,7 +581,7 @@ $result_trees{'enumerate_and_empty_lines'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'enumerate_specification' => 1
+        'enumerate_specification' => '1'
       },
       'line_nr' => {
         'file_name' => '',
@@ -725,6 +725,9 @@ quotation after a blank line
 ';
 
 $result_errors{'enumerate_and_empty_lines'} = [];
+
+
+$result_floats{'enumerate_and_empty_lines'} = {};
 
 
 

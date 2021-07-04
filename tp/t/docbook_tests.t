@@ -24,7 +24,7 @@ This is the top.
 @menu
 * Dedication::
 * preface::
-* glossary::
+* colophon::
 * acknowledgements::
 @end menu
 

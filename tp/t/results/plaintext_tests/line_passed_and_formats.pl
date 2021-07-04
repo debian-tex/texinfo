@@ -2350,7 +2350,9 @@ $result_trees{'line_passed_and_formats'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -2711,7 +2713,7 @@ $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'parent'
 $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[51]{'contents'}[0]{'parent'} = $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[51];
 $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[51]{'parent'} = $result_trees{'line_passed_and_formats'}{'contents'}[1];
 $result_trees{'line_passed_and_formats'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'line_passed_and_formats'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'line_passed_and_formats'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'line_passed_and_formats'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'line_passed_and_formats'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'line_passed_and_formats'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'line_passed_and_formats'}{'contents'}[1]{'parent'} = $result_trees{'line_passed_and_formats'};
 
 $result_texis{'line_passed_and_formats'} = '@node Top
@@ -2991,6 +2993,9 @@ $result_menus{'line_passed_and_formats'} = {
 };
 
 $result_errors{'line_passed_and_formats'} = [];
+
+
+$result_floats{'line_passed_and_formats'} = {};
 
 
 

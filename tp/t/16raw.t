@@ -328,6 +328,20 @@ in verbatim
 @end verbatim
 }
 '],
+['displaymath',
+'@displaymath
+\int_D ({\nabla\cdot} F)dV=\int_{\partial D} F\cdot ndS
+@end displaymath
+
+before
+@displaymath
+\int_D ({\nabla\cdot} F)dV=\int_{\partial D} F\cdot ndS
+@end displaymath
+after
+',
+{'test_formats' => ['file_html', 'docbook']},
+{'HTML_MATH' => 'mathjax'}
+],
 );
 
 my @test_invalid = (
@@ -388,7 +402,7 @@ my %html_tests = (
 );
 
 foreach my $test (@test_cases) {
-  $test->[2]->{'test_formats'} = ['plaintext'];
+  push @{$test->[2]->{'test_formats'}}, 'plaintext';
   if ($html_tests{$test->[0]}) {
     push @{$test->[2]->{'test_formats'}}, 'html_text';
   }

@@ -1,6 +1,6 @@
 /* filesys.h -- external declarations for filesys.c.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2020 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -43,6 +43,8 @@ char *info_find_fullpath (char *partial, struct stat *finfo);
    a NULL pointer. */
 char *info_file_find_next_in_path (char *filename, int *diridx,
                                    struct stat *finfo);
+
+char *info_check_compressed (char *try_filename, struct stat *finfo);
 
 char *info_add_extension (char *dirname, char *filename, struct stat *finfo);
 

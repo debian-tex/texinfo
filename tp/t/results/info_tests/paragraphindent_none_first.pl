@@ -153,6 +153,9 @@ after none
 $result_errors{'paragraphindent_none_first'} = [];
 
 
+$result_floats{'paragraphindent_none_first'} = {};
+
+
 
 $result_converted{'info'}->{'paragraphindent_none_first'} = 'This is , produced from .
 

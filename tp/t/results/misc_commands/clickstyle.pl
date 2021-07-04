@@ -96,4 +96,7 @@ A => (result).
 $result_errors{'clickstyle'} = [];
 
 
+$result_floats{'clickstyle'} = {};
+
+
 1;

@@ -138,6 +138,9 @@ $result_sectioning{'footnote_no_node'}{'section_childs'}[0]{'section_up'} = $res
 $result_errors{'footnote_no_node'} = [];
 
 
+$result_floats{'footnote_no_node'} = {};
+
+
 
 $result_converted{'plaintext'}->{'footnote_no_node'} = 'top
 ***
@@ -151,17 +154,18 @@ F(1).
 ';
 
 
-$result_converted{'html_text'}->{'footnote_no_node'} = '<span id="top"></span><h1 class="top">top</h1>
+$result_converted{'html_text'}->{'footnote_no_node'} = '<div class="top" id="top">
+<h1 class="top">top</h1>
 
 <p>F<a id="DOCF1" href="#FOOT1"><sup>1</sup></a>.
 </p><div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h5>
 <p>In footnote</p>
 </div>
-<hr>
+<hr></div>
 ';
 
 1;

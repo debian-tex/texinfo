@@ -196,4 +196,7 @@ $result_errors{'double_top_section'} = [
 ];
 
 
+$result_floats{'double_top_section'} = {};
+
+
 1;

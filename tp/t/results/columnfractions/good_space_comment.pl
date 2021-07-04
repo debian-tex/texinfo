@@ -100,7 +100,11 @@ $result_trees{'good_space_comment'} = {
         'max_columns' => 2,
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -117,7 +121,6 @@ $result_trees{'good_space_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'pa
 $result_trees{'good_space_comment'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0];
 $result_trees{'good_space_comment'}{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'good_space_comment'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'good_space_comment'}{'contents'}[0]{'contents'}[0];
-$result_trees{'good_space_comment'}{'contents'}[0]{'line_nr'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'good_space_comment'}{'contents'}[0]{'parent'} = $result_trees{'good_space_comment'};
 
 $result_texis{'good_space_comment'} = '@multitable @columnfractions 0 1  @c space comment
@@ -127,6 +130,9 @@ $result_texis{'good_space_comment'} = '@multitable @columnfractions 0 1  @c spac
 $result_texts{'good_space_comment'} = '';
 
 $result_errors{'good_space_comment'} = [];
+
+
+$result_floats{'good_space_comment'} = {};
 
 
 1;

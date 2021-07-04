@@ -140,7 +140,11 @@ $result_trees{'punctuation_and_footnotes_frenchspacing'} = {
           ],
           'cmdname' => 'footnote',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -217,7 +221,11 @@ $result_trees{'punctuation_and_footnotes_frenchspacing'} = {
           ],
           'cmdname' => 'footnote',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -558,7 +566,6 @@ $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[2]{'content
 $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[2]{'contents'}[6]{'args'}[0];
 $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[2]{'contents'}[6];
-$result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[2]{'contents'}[6]{'line_nr'} = $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[2]{'contents'}[4]{'line_nr'};
 $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[2]{'contents'}[6]{'parent'} = $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[2];
 $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[2];
 $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[2]{'parent'} = $result_trees{'punctuation_and_footnotes_frenchspacing'};
@@ -572,7 +579,6 @@ $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4]{'content
 $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4]{'contents'}[3]{'args'}[0];
 $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4]{'contents'}[3];
-$result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4]{'contents'}[3]{'line_nr'} = $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4]{'contents'}[1]{'line_nr'};
 $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4];
 $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4];
 $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4]{'contents'}[5]{'parent'} = $result_trees{'punctuation_and_footnotes_frenchspacing'}{'contents'}[4];
@@ -664,6 +670,9 @@ w.   S3.
 ';
 
 $result_errors{'punctuation_and_footnotes_frenchspacing'} = [];
+
+
+$result_floats{'punctuation_and_footnotes_frenchspacing'} = {};
 
 
 

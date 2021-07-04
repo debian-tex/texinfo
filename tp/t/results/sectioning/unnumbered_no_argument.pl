@@ -78,4 +78,7 @@ $result_errors{'unnumbered_no_argument'} = [
 ];
 
 
+$result_floats{'unnumbered_no_argument'} = {};
+
+
 1;

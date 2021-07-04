@@ -36,7 +36,7 @@ Horizontal space
 @node subnode
 '],
 ['simple', $simple_menu_text],
-['simple_no_menu', $simple_menu_text, {'SHOW_MENU' => 0}, {'SHOW_MENU' => 0}],
+['simple_no_menu', $simple_menu_text, {'FORMAT_MENU' => 'nomenu'}, {'FORMAT_MENU' => 'nomenu'}],
 ['menu_entry_node',
 '@menu
 * (f)a1::
@@ -474,11 +474,20 @@ my @test_invalid = (
 @end menu
 
 @node aaa
-']
+'],
+['menu_node_unterminated',
+'@node Top
+
+@menu
+* Example: Examples of Login Verification Functions
+@end menu
+'],
+
+
 );
 
 foreach my $test (@test_cases) {
-  $test->[3]->{'SHOW_MENU'} = 1 if (!defined($test->[3]->{'SHOW_MENU'}));
+  $test->[3]->{'FORMAT_MENU'} = 'menu' if (!defined($test->[3]->{'FORMAT_MENU'}));
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html';
   push @{$test->[2]->{'test_formats'}}, 'xml';

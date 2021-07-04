@@ -52,7 +52,11 @@ $result_trees{'lone_braces_in_inlineraw'} = {
             'expand_index' => 1,
             'format' => 'plaintext'
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -72,7 +76,6 @@ $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[
 $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0];
 $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[1];
 $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0];
-$result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0];
 $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0];
 $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'parent'} = $result_trees{'lone_braces_in_inlineraw'};
@@ -85,6 +88,9 @@ $result_texts{'lone_braces_in_inlineraw'} = '.
 ';
 
 $result_errors{'lone_braces_in_inlineraw'} = [];
+
+
+$result_floats{'lone_braces_in_inlineraw'} = {};
 
 
 

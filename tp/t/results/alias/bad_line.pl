@@ -90,7 +90,11 @@ $result_trees{'bad_line'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -106,7 +110,6 @@ $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'c
 $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_line'}{'contents'}[3]{'args'}[0];
 $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'bad_line'}{'contents'}[3];
-$result_trees{'bad_line'}{'contents'}[3]{'line_nr'} = $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'bad_line'}{'contents'}[3]{'parent'} = $result_trees{'bad_line'};
 
 $result_texis{'bad_line'} = '
@@ -149,6 +152,9 @@ $result_errors{'bad_line'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'bad_line'} = {};
 
 
 1;

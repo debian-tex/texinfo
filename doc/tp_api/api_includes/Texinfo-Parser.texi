@@ -113,10 +113,11 @@ Default on.
 
 Maximal number of nested user-defined macro calls.  Default is 100000.
 
-@item SHOW_MENU
-@anchor{Texinfo::Parser SHOW_MENU}
+@item FORMAT_MENU
+@anchor{Texinfo::Parser FORMAT_MENU}
 
-If false, no menu-related errors are reported.  Default is true.
+Possible values are 'nomenu', 'menu' and 'sectiontoc'.  Only report 
+menu-related errors for 'menu'. 
 
 @end table
 
@@ -133,7 +134,7 @@ For all those functions, if the @emph{$parser} argument is undef, a new
 parser object is generated to parse the line.  Otherwise the parser given 
 as an argument is used to parse into a tree.
 
-When @code{parse_texi_text} is used, the resulting tree is rooted at 
+When @code{parse_texi_line} is used, the resulting tree is rooted at
 a @code{root_line} type container.  Otherwise, the resulting tree should be 
 rooted at a @code{text_root} type container if it does not contain nodes or 
 sections, at a @code{document_root} type container otherwise.

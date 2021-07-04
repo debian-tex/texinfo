@@ -296,4 +296,7 @@ $result_errors{'empty_images'} = [
 ];
 
 
+$result_floats{'empty_images'} = {};
+
+
 1;

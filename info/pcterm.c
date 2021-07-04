@@ -709,17 +709,24 @@ w32_kbd_read (unsigned char *inbuf, size_t n)
 		  {
 		    int rows, cols;
 
-		    /* Note: this event is only sent when the console
-		       window's _screen_buffer_ size is changed via
-		       the Properties->Layout dialog.  */
+		    /* Note: this event is _supposed_ to be sent only
+		       when the console window's _screen_buffer_ size
+		       is changed via the Properties->Layout dialog.
+		       However, Windows 10 seems to send it even when
+		       the properties are not changed.  */
 		    cols = inrec.Event.WindowBufferSizeEvent.dwSize.X;
 		    rows = inrec.Event.WindowBufferSizeEvent.dwSize.Y;
-		    screenwidth = cols;
-		    screenheight = rows;
-		    w32_set_screen_dimensions (cols, rows);
-		    display_initialize_display (screenwidth, screenheight);
-		    window_new_screen_size (screenwidth, screenheight);
-		    redisplay_after_signal ();
+		    /* Avoid needless screen redraws, they produce
+		       annoying flickering.  */
+		    if (cols != screenwidth || rows != screenheight)
+		      {
+			screenwidth = cols;
+			screenheight = rows;
+			w32_set_screen_dimensions (cols, rows);
+			display_initialize_display (screenwidth, screenheight);
+			window_new_screen_size (screenwidth, screenheight);
+			redisplay_after_signal ();
+		      }
 		  }
 		  break;
 		case MOUSE_EVENT:

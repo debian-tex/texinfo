@@ -13,7 +13,7 @@ $result_trees{'spaces_info_lost'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'text on example line'
+              'text' => 'text on display line'
             }
           ],
           'extra' => {
@@ -24,13 +24,13 @@ $result_trees{'spaces_info_lost'} = {
           'type' => 'block_line_arg'
         }
       ],
-      'cmdname' => 'example',
+      'cmdname' => 'display',
       'contents' => [
         {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'in bad example
+              'text' => 'in bad display
 '
             }
           ],
@@ -43,7 +43,7 @@ $result_trees{'spaces_info_lost'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'example'
+                  'text' => 'display'
                 }
               ],
               'extra' => {
@@ -56,9 +56,9 @@ $result_trees{'spaces_info_lost'} = {
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command_argument' => 'example',
+            'command_argument' => 'display',
             'spaces_before_argument' => '  ',
-            'text_arg' => 'example'
+            'text_arg' => 'display'
           },
           'line_nr' => {
             'file_name' => '',
@@ -137,9 +137,9 @@ $result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[1]{'parent'} = $res
 $result_trees{'spaces_info_lost'}{'contents'}[2]{'parent'} = $result_trees{'spaces_info_lost'};
 $result_trees{'spaces_info_lost'}{'contents'}[3]{'parent'} = $result_trees{'spaces_info_lost'};
 
-$result_texis{'spaces_info_lost'} = '@example  text on example line 
-in bad example
-@end  example 
+$result_texis{'spaces_info_lost'} = '@display  text on display line 
+in bad display
+@end  display 
 
 @verbatim  
 in verbatim @g 
@@ -147,7 +147,7 @@ in verbatim @g
 ';
 
 
-$result_texts{'spaces_info_lost'} = 'in bad example
+$result_texts{'spaces_info_lost'} = 'in bad display
 
 in verbatim @g 
 ';
@@ -155,10 +155,13 @@ in verbatim @g
 $result_errors{'spaces_info_lost'} = [];
 
 
+$result_floats{'spaces_info_lost'} = {};
 
-$result_converted{'xml'}->{'spaces_info_lost'} = '<example spaces="  " endspaces="  "> 
-<pre xml:space="preserve">in bad example
-</pre></example> 
+
+
+$result_converted{'xml'}->{'spaces_info_lost'} = '<display spaces="  " endspaces="  "> 
+<pre xml:space="preserve">in bad display
+</pre></display> 
 
 <verbatim xml:space="preserve">  
 in verbatim @g 

@@ -1058,6 +1058,9 @@ in quotation after end verbaatim
 $result_errors{'verbatim_and_verbatiminclude'} = [];
 
 
+$result_floats{'verbatim_and_verbatiminclude'} = {};
+
+
 
 $result_converted{'plaintext'}->{'verbatim_and_verbatiminclude'} = 'In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
 

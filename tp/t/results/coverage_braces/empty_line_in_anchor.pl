@@ -88,4 +88,7 @@ $result_errors{'empty_line_in_anchor'} = [
 ];
 
 
+$result_floats{'empty_line_in_anchor'} = {};
+
+
 1;

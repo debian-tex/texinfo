@@ -121,6 +121,9 @@ $result_texts{'enumerate_above_ten'} = '14. a
 $result_errors{'enumerate_above_ten'} = [];
 
 
+$result_floats{'enumerate_above_ten'} = {};
+
+
 
 $result_converted{'plaintext'}->{'enumerate_above_ten'} = '  14. a
 ';

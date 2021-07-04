@@ -199,4 +199,7 @@ $result_texts{'nested_ignore'} = '
 $result_errors{'nested_ignore'} = [];
 
 
+$result_floats{'nested_ignore'} = {};
+
+
 1;

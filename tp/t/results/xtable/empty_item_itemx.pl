@@ -297,7 +297,11 @@ $result_trees{'empty_item_itemx'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -343,7 +347,6 @@ $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'pare
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'empty_item_itemx'}{'contents'}[0];
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[4];
-$result_trees{'empty_item_itemx'}{'contents'}[0]{'line_nr'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'parent'} = $result_trees{'empty_item_itemx'};
 
 $result_texis{'empty_item_itemx'} = '@vtable @asis
@@ -418,6 +421,9 @@ $result_errors{'empty_item_itemx'} = [
 ];
 
 
+$result_floats{'empty_item_itemx'} = {};
+
+
 
 $result_converted{'plaintext'}->{'empty_item_itemx'} = '     VTable
 
@@ -432,15 +438,9 @@ $result_converted{'html_text'}->{'empty_item_itemx'} = '<dl compact="compact">
 <p>VTable
 </p>
 </dd>
-<dt>first item
-<span id="index-first-item"></span>
-</dt>
-<dt>after an empty itemx, before an empty item
-<span id="index-after-an-empty-itemx_002c-before-an-empty-item"></span>
-</dt>
-<dt>in item before end table
-<span id="index-in-item-before-end-table"></span>
-</dt>
+<dt id=\'index-first-item\'><span>first item<a href=\'#index-first-item\' class=\'copiable-anchor\'> &para;</a></span></dt>
+<dt id=\'index-after-an-empty-itemx_002c-before-an-empty-item\'><span>after an empty itemx, before an empty item<a href=\'#index-after-an-empty-itemx_002c-before-an-empty-item\' class=\'copiable-anchor\'> &para;</a></span></dt>
+<dt id=\'index-in-item-before-end-table\'><span>in item before end table<a href=\'#index-in-item-before-end-table\' class=\'copiable-anchor\'> &para;</a></span></dt>
 </dl>
 ';
 

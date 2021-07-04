@@ -137,4 +137,7 @@ $result_texts{'macro_for_end'} = '
 $result_errors{'macro_for_end'} = [];
 
 
+$result_floats{'macro_for_end'} = {};
+
+
 1;

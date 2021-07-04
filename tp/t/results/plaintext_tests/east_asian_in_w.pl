@@ -182,4 +182,7 @@ This option overrides an include file name section and aaaaa aaaa
 $result_errors{'east_asian_in_w'} = [];
 
 
+$result_floats{'east_asian_in_w'} = {};
+
+
 1;

@@ -49,4 +49,7 @@ $result_texts{'ifclear_in_ifset'} = '
 $result_errors{'ifclear_in_ifset'} = [];
 
 
+$result_floats{'ifclear_in_ifset'} = {};
+
+
 1;

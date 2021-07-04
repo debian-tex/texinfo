@@ -1,5 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018 Free Software
-   Foundation, Inc.
+/* Copyright 2010-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -666,40 +665,6 @@ xspara__add_next (TEXT *result, char *word, int word_len, int transparent)
       disinhibit = 1;
     }
 
-  if (state.word.end == 0 && !state.invisible_pending_word)
-    {
-      /* Check if we are at the end of a sentence and if we need to
-         output two spaces after the full stop.  If so, check if the
-         word we are given begins with whitespace.  If it doesn't,
-         double the pending space.
-
-         We checked above if there was a pending word because if there
-         was, it is due to be output after the end-sentence whitespace,
-         not the string that was passed as an argument to this function.  
-       */
-      state.last_letter = L'\0';
-
-      if (state.counter != 0 && state.space.end > 0
-          && state.end_sentence == 1 && !state.french_spacing)
-        {
-          wchar_t wc;
-          size_t char_len;
-
-          char_len = mbrtowc (&wc, word, word_len, NULL);
-          if ((long) char_len > 0 && !iswspace (wc))
-            {
-              /* Make the pending space up to two spaces. */
-              while (state.space_counter < 2)
-                {
-                  text_append_n (&state.space, " ", 1);
-                  state.space_counter++;
-                }
-            }
-
-          state.end_sentence = -2;
-        }
-    }
-
   text_append_n (&state.word, word, word_len);
   if (word_len == 0 && word)
     state.invisible_pending_word = 1;
@@ -804,7 +769,7 @@ xspara_allow_end_sentence (void)
 }
 
 /* -1 in a parameter means leave that value as it is. */
-char *
+void
 xspara_set_space_protection (int protect_spaces,
                              int ignore_columns,
                              int keep_end_lines,
@@ -867,11 +832,10 @@ xspara_set_space_protection (int protect_spaces,
        }
    }
 
- return ""; /* TODO: Check if we can remove this. */
+ return;
 }
 
 /*****************************************************************/
-
 
 /* Return string to be added to paragraph contents, wrapping text. This 
    function relies on there being a UTF-8 locale in LC_CTYPE for mbrtowc to
@@ -947,117 +911,9 @@ xspara_add_text (char *text)
                       && !state.french_spacing
                       && !state.unfilled)
                     {
-                      wchar_t q_char;
-                      size_t q_len;
-                      int at_least_two = 0;
-
-                      /* Check if the next character is whitespace as well. */
-                      q_len = mbrtowc (&q_char,
-                                       p + char_len, len - char_len,
-                                       NULL);
-                      if ((long) q_len > 0)
-                        {
-                          if (iswspace (q_char))
-                            at_least_two = 1;
-                        }
-
-                      /* If we have an existing pending space, or if we have
-                         at least two whitespace characters in a row, set the
-                         pending space to be two whitespace characters.
-
-                         I don't know why we do it this way. */
-                      if (state.space_counter >= 1 || at_least_two)
-                        {
-                          if (state.space_counter > 0)
-                            {
-                              /* Truncate to at most 2 spaces, and replace any 
-                                 '\n' or '\r' characters with ' '. */
-
-                              static TEXT new_space;
-                              char *pspace;
-                              int pspace_left;
-                              int len;
-                              int i;
-
-                              text_reset (&new_space);
-                              pspace = state.space.text;
-                              pspace_left = state.space.end;
-                              state.space_counter = 0;
-
-                              for (i = 0; i < 2; i++)
-                                {
-                                  if (!*pspace)
-                                    break;
-                                  len = mbrlen (pspace, pspace_left, NULL);
-
-                                  /* Substitute newlines in the pending space
-                                     with spaces. */
-                                  if (*pspace == '\n' || *pspace == '\r')
-                                    text_append_n (&new_space, " ", 1);
-                                  else if (len > 0)
-                                    text_append_n (&new_space, pspace, len);
-                                  else
-                                    /* Skip one character and try again. */
-                                    len = 1;
-
-                                  state.space_counter++;
-
-                                  pspace += len;
-                                  pspace_left -= len;
-                                }
-
-                              state.space.end = 0;
-                              text_append_n (&state.space,
-                                             new_space.text, new_space.end);
-                              text_destroy (&new_space);
-                            }
-
-                          /* Now get characters from the input. */
-                          while (state.space_counter < 2)
-                            {
-                              if (*p == '\n' || *p == '\r')
-                                text_append_n (&state.space, " ", 1);
-                              else
-                                text_append_n (&state.space, p, char_len);
-                              state.space_counter++;
-
-                              p += char_len; len -= char_len;
-                              char_len = mbrtowc (&wc, p, len, NULL);
-                              if ((long) char_len <= 0 || !iswspace (wc))
-                                break;
-                            }
-
-                          /* Skip any more following whitespace. */
-                          while ((long) char_len > 0 && iswspace (wc))
-                            {
-                              p += char_len; len -= char_len;
-                              char_len = mbrtowc (&wc, p, len, NULL);
-                            }
-
-                          /* Make it up to two characters. */
-                          while (state.space_counter < 2)
-                            {
-                              text_append_n (&state.space, " ", 1);
-                              state.space_counter++;
-                            }
-
-                          /* Reset the end_sentence flag. */
-                          state.end_sentence = -2;
-                          continue;
-                        }
-                      else
-                        {
-                          /* Otherwise, an extra space is added
-                             in _add_next. */
-                          state.space.end = 0;
-                          state.space_counter = 0;
-                          if (*p == '\n' || *p == '\r')
-                            text_append_n (&state.space, " ", 1);
-                          else
-                            text_append_n (&state.space, p, char_len);
-                          state.space_counter++;
-                        }
-
+                      state.space.end = 0;
+                      text_append_n (&state.space, "  ", 2);
+                      state.space_counter = 2;
                     }
                   else /* Not at end of sentence. */
                     {
@@ -1100,6 +956,7 @@ xspara_add_text (char *text)
               xspara__end_line ();
               text_append (&result, "\n");
             }
+          p += char_len; len -= char_len;
         }
       else /************** Not a white space character. *****************/
         {
@@ -1186,9 +1043,8 @@ xspara_add_text (char *text)
                  count. */
               text_append_n (&state.word, p, char_len);
             }
+          p += char_len; len -= char_len;
         }
-
-      p += char_len; len -= char_len;
     }
 
   if (result.space > 0)

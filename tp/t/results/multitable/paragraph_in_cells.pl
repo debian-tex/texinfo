@@ -94,7 +94,11 @@ $result_trees{'paragraph_in_cells'} = {
                     'cell_number' => 2,
                     'spaces_before_argument' => ' '
                   },
-                  'line_nr' => {},
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 2,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 }
               ],
@@ -241,11 +245,15 @@ $result_trees{'paragraph_in_cells'} = {
         'max_columns' => 2,
         'prototypes' => [
           {
-            'contents' => [],
+            'contents' => [
+              {}
+            ],
             'type' => 'bracketed_multitable_prototype'
           },
           {
-            'contents' => [],
+            'contents' => [
+              {}
+            ],
             'type' => 'bracketed_multitable_prototype'
           }
         ],
@@ -280,7 +288,6 @@ $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0];
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0];
@@ -302,8 +309,8 @@ $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'co
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[1];
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraph_in_cells'}{'contents'}[0];
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'contents'}[1];
-$result_trees{'paragraph_in_cells'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'};
-$result_trees{'paragraph_in_cells'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'contents'};
+$result_trees{'paragraph_in_cells'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'paragraph_in_cells'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'}[0] = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'contents'}[0];
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'extra'}{'prototypes_line'}[0] = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'extra'}{'prototypes_line'}[2] = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'parent'} = $result_trees{'paragraph_in_cells'};
@@ -331,6 +338,9 @@ new paragraph in tab.
 ';
 
 $result_errors{'paragraph_in_cells'} = [];
+
+
+$result_floats{'paragraph_in_cells'} = {};
 
 
 

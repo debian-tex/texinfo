@@ -133,7 +133,11 @@ $result_trees{'comment_and_itemx_before_item'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -154,7 +158,6 @@ $result_trees{'comment_and_itemx_before_item'}{'contents'}[0]{'contents'}[2]{'ar
 $result_trees{'comment_and_itemx_before_item'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'comment_and_itemx_before_item'}{'contents'}[0];
 $result_trees{'comment_and_itemx_before_item'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'comment_and_itemx_before_item'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'comment_and_itemx_before_item'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'comment_and_itemx_before_item'}{'contents'}[0]{'contents'}[2];
-$result_trees{'comment_and_itemx_before_item'}{'contents'}[0]{'line_nr'} = $result_trees{'comment_and_itemx_before_item'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'comment_and_itemx_before_item'}{'contents'}[0]{'parent'} = $result_trees{'comment_and_itemx_before_item'};
 
 $result_texis{'comment_and_itemx_before_item'} = '@table @code
@@ -180,13 +183,16 @@ $result_errors{'comment_and_itemx_before_item'} = [
 ];
 
 
+$result_floats{'comment_and_itemx_before_item'} = {};
+
+
 
 $result_converted{'plaintext'}->{'comment_and_itemx_before_item'} = '\'in itemx\'
 ';
 
 
 $result_converted{'html_text'}->{'comment_and_itemx_before_item'} = '<dl compact="compact">
-<dt><code>in itemx</code></dt>
+<dt><span><code>in itemx</code></span></dt>
 </dl>
 ';
 

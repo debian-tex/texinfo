@@ -42,7 +42,7 @@ associate_command_to_index (enum command_id cmd, INDEX *idx)
       cmd_to_idx = realloc (cmd_to_idx,
                             sizeof (CMD_TO_IDX) * (cmd_to_idx_space += 10));
       if (!cmd_to_idx)
-        abort ();
+        fatal ("no index for command");
     }
 
   cmd_to_idx[num_index_commands].cmd = cmd;
@@ -284,7 +284,7 @@ enter_index_entry (enum command_id index_type_command,
       idx->index_entries = realloc (idx->index_entries,
                              sizeof (INDEX_ENTRY) * (idx->index_space += 20));
       if (!idx->index_entries)
-        abort ();
+        fatal ("realloc failed");
     }
   entry = &idx->index_entries[idx->index_number++];
   memset (entry, 0, sizeof (INDEX_ENTRY));

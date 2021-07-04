@@ -185,7 +185,9 @@ $result_trees{'japanese_utf8'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -641,7 +643,9 @@ $result_trees{'japanese_utf8'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Preface'
           }
         ],
@@ -741,7 +745,9 @@ $result_trees{'japanese_utf8'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Introduction'
           }
         ],
@@ -846,7 +852,7 @@ $result_trees{'japanese_utf8'}{'contents'}[0]{'parent'} = $result_trees{'japanes
 $result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[1];
 $result_trees{'japanese_utf8'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'japanese_utf8'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'japanese_utf8'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[1]{'parent'} = $result_trees{'japanese_utf8'};
 $result_trees{'japanese_utf8'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[2];
@@ -915,7 +921,7 @@ $result_trees{'japanese_utf8'}{'contents'}[2]{'parent'} = $result_trees{'japanes
 $result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[3];
 $result_trees{'japanese_utf8'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'japanese_utf8'}{'contents'}[3]{'extra'}{'node_content'};
+$result_trees{'japanese_utf8'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[3]{'parent'} = $result_trees{'japanese_utf8'};
 $result_trees{'japanese_utf8'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[4]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[4];
@@ -928,7 +934,7 @@ $result_trees{'japanese_utf8'}{'contents'}[4]{'parent'} = $result_trees{'japanes
 $result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[5];
 $result_trees{'japanese_utf8'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'japanese_utf8'}{'contents'}[5]{'extra'}{'node_content'};
+$result_trees{'japanese_utf8'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[5]{'parent'} = $result_trees{'japanese_utf8'};
 $result_trees{'japanese_utf8'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[6]{'args'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[6];
@@ -1182,6 +1188,9 @@ $result_menus{'japanese_utf8'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_m
 $result_menus{'japanese_utf8'}{'menu_child'}{'menu_up'} = $result_menus{'japanese_utf8'};
 
 $result_errors{'japanese_utf8'} = [];
+
+
+$result_floats{'japanese_utf8'} = {};
 
 
 1;

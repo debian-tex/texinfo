@@ -410,6 +410,9 @@ second line
 $result_errors{'comments_in_example'} = [];
 
 
+$result_floats{'comments_in_example'} = {};
+
+
 
 $result_converted{'plaintext'}->{'comments_in_example'} = 'Example with comments 2 lines
      line second line

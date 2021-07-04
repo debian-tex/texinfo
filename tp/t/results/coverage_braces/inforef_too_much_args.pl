@@ -110,7 +110,9 @@ $result_trees{'inforef_too_much_args'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'chapter'
           }
         ],
@@ -142,7 +144,7 @@ $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'contents'}
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1];
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'inforef_too_much_args'}{'contents'}[1];
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'inforef_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'inforef_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'parent'} = $result_trees{'inforef_too_much_args'};
 
 $result_texis{'inforef_too_much_args'} = '@node chapter
@@ -173,7 +175,20 @@ $result_menus{'inforef_too_much_args'} = {
   }
 };
 
-$result_errors{'inforef_too_much_args'} = [];
+$result_errors{'inforef_too_much_args'} = [
+  {
+    'error_line' => ':3: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  }
+];
+
+
+$result_floats{'inforef_too_much_args'} = {};
 
 
 
@@ -183,8 +198,7 @@ $result_converted{'plaintext'}->{'inforef_too_much_args'} = '*note cross ref nam
 
 $result_converted{'html_text'}->{'inforef_too_much_args'} = '<span id="chapter"></span><h4 class="node-heading">chapter</h4>
 
-<p>See <a href="file name, spurious arg.html#chapter">(file name, spurious arg)cross ref name</a>
-</p><hr>
-';
+<p>See <a data-manual="file name, spurious arg" href="file name, spurious arg.html#chapter">(file name, spurious arg)cross ref name</a>
+</p><hr>';
 
 1;

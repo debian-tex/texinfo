@@ -217,7 +217,9 @@ $result_trees{'index_entry_before_node'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -352,7 +354,9 @@ $result_trees{'index_entry_before_node'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'first'
           },
           {
@@ -468,7 +472,9 @@ $result_trees{'index_entry_before_node'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'second'
           },
           undef,
@@ -531,7 +537,7 @@ $result_trees{'index_entry_before_node'}{'contents'}[1]{'contents'}[1]{'extra'}{
 $result_trees{'index_entry_before_node'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'index_entry_before_node'}{'contents'}[1];
 $result_trees{'index_entry_before_node'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'index_entry_before_node'}{'contents'}[1];
 $result_trees{'index_entry_before_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'index_entry_before_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'index_entry_before_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'index_entry_before_node'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'index_entry_before_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'index_entry_before_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'index_entry_before_node'}{'contents'}[1]{'parent'} = $result_trees{'index_entry_before_node'};
 $result_trees{'index_entry_before_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entry_before_node'}{'contents'}[2]{'args'}[0];
 $result_trees{'index_entry_before_node'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'index_entry_before_node'}{'contents'}[2];
@@ -553,7 +559,7 @@ $result_trees{'index_entry_before_node'}{'contents'}[2]{'contents'}[3]{'extra'}{
 $result_trees{'index_entry_before_node'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'index_entry_before_node'}{'contents'}[2];
 $result_trees{'index_entry_before_node'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'index_entry_before_node'}{'contents'}[2];
 $result_trees{'index_entry_before_node'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'index_entry_before_node'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'index_entry_before_node'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'index_entry_before_node'}{'contents'}[2]{'extra'}{'node_content'};
+$result_trees{'index_entry_before_node'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'index_entry_before_node'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'index_entry_before_node'}{'contents'}[2]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'index_entry_before_node'}{'contents'}[2]{'args'}[1]{'contents'}[0];
 $result_trees{'index_entry_before_node'}{'contents'}[2]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'index_entry_before_node'}{'contents'}[2]{'args'}[3]{'contents'}[0];
 $result_trees{'index_entry_before_node'}{'contents'}[2]{'parent'} = $result_trees{'index_entry_before_node'};
@@ -569,7 +575,7 @@ $result_trees{'index_entry_before_node'}{'contents'}[3]{'contents'}[1]{'args'}[0
 $result_trees{'index_entry_before_node'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'index_entry_before_node'}{'contents'}[3]{'contents'}[1];
 $result_trees{'index_entry_before_node'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'index_entry_before_node'}{'contents'}[3];
 $result_trees{'index_entry_before_node'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'index_entry_before_node'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'index_entry_before_node'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'index_entry_before_node'}{'contents'}[3]{'extra'}{'node_content'};
+$result_trees{'index_entry_before_node'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'index_entry_before_node'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'index_entry_before_node'}{'contents'}[3]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'index_entry_before_node'}{'contents'}[3]{'args'}[2]{'contents'}[0];
 $result_trees{'index_entry_before_node'}{'contents'}[3]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'index_entry_before_node'}{'contents'}[3]{'args'}[3]{'contents'}[0];
 $result_trees{'index_entry_before_node'}{'contents'}[3]{'parent'} = $result_trees{'index_entry_before_node'};
@@ -692,6 +698,9 @@ $result_menus{'index_entry_before_node'}{'menu_child'}{'menu_up'} = $result_menu
 $result_errors{'index_entry_before_node'} = [];
 
 
+$result_floats{'index_entry_before_node'} = {};
+
+
 
 $result_converted{'info'}->{'index_entry_before_node'} = 'This is , produced from .
 
@@ -747,12 +756,6 @@ $result_converted{'html_text'}->{'index_entry_before_node'} = '<span id="Top"></
 </div>
 <h1 class="node-heading">Top</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#first" accesskey="1">first</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#second" rel="index" accesskey="2">second</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="first"></span><div class="header">
@@ -785,7 +788,6 @@ $result_converted{'html_text'}->{'index_entry_before_node'} = '<span id="Top"></
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-L"><b>L</b></a>
  &nbsp; 
 </td></tr></table>
-<hr>
 ';
 
 1;

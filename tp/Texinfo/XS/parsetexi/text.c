@@ -1,4 +1,4 @@
-/* Copyright 2014-2019 Free Software Foundation, Inc.
+/* Copyright 2014-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-#include "tree_types.h"
+#include "errors.h"
 #include "text.h"
 
 /* Make sure there are LEN free bytes. */
@@ -36,7 +36,7 @@ text_alloc (TEXT *t, size_t len)
       t->space *= 2;
       t->text = realloc (t->text, t->space);
       if (!t->text)
-        abort ();
+        fatal ("realloc failed");
     }
 }
 

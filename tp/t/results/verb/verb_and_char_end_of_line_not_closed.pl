@@ -91,4 +91,7 @@ $result_errors{'verb_and_char_end_of_line_not_closed'} = [
 ];
 
 
+$result_floats{'verb_and_char_end_of_line_not_closed'} = {};
+
+
 1;

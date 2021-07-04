@@ -1,4 +1,4 @@
-# Copyright 2005-2019 Free Software Foundation, Inc.
+# Copyright 2005-2021 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -6,6 +6,7 @@
 #  
 # List of source files containing translatable strings.
 
+gnulib/lib/cdefs.h
 gnulib/lib/error.c
 gnulib/lib/getopt.c
 gnulib/lib/regcomp.c
@@ -30,6 +31,7 @@ info/session.c
 info/variables.c
 info/window.c
 install-info/install-info.c
+Pod-Simple-Texinfo/pod2texi.pl
 tp/DebugTexinfo/DebugTree.pm
 tp/Texinfo/Common.pm
 tp/Texinfo/Convert/Converter.pm
@@ -46,28 +48,14 @@ tp/Texinfo/Structuring.pm
 tp/init/chm.pm
 tp/init/latex2html.pm
 tp/init/tex4ht.pm
+tp/init/highlight_syntax.pm
 tp/texi2any.pl
-tp/Texinfo/XS/parsetexi/api.c
 tp/Texinfo/XS/parsetexi/close.c
-tp/Texinfo/XS/parsetexi/commands.c
-tp/Texinfo/XS/parsetexi/conf.c
-tp/Texinfo/XS/parsetexi/context_stack.c
-tp/Texinfo/XS/parsetexi/convert.c
-tp/Texinfo/XS/parsetexi/counter.c
-tp/Texinfo/XS/parsetexi/debug.c
-tp/Texinfo/XS/parsetexi/def.c
-tp/Texinfo/XS/parsetexi/element_types.c
 tp/Texinfo/XS/parsetexi/end_line.c
-tp/Texinfo/XS/parsetexi/errors.c
-tp/Texinfo/XS/parsetexi/extra.c
 tp/Texinfo/XS/parsetexi/handle_commands.c
 tp/Texinfo/XS/parsetexi/indices.c
-tp/Texinfo/XS/parsetexi/input.c
-tp/Texinfo/XS/parsetexi/labels.c
 tp/Texinfo/XS/parsetexi/macro.c
 tp/Texinfo/XS/parsetexi/menus.c
 tp/Texinfo/XS/parsetexi/multitable.c
 tp/Texinfo/XS/parsetexi/parser.c
 tp/Texinfo/XS/parsetexi/separator.c
-tp/Texinfo/XS/parsetexi/text.c
-tp/Texinfo/XS/parsetexi/tree.c

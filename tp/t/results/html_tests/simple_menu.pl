@@ -44,7 +44,9 @@ $result_trees{'simple_menu'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -1698,7 +1700,7 @@ $result_trees{'simple_menu'}{'contents'}[0]{'parent'} = $result_trees{'simple_me
 $result_trees{'simple_menu'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple_menu'}{'contents'}[1]{'args'}[0];
 $result_trees{'simple_menu'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'simple_menu'}{'contents'}[1];
 $result_trees{'simple_menu'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'simple_menu'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'simple_menu'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'simple_menu'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'simple_menu'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'simple_menu'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'simple_menu'}{'contents'}[1]{'parent'} = $result_trees{'simple_menu'};
 $result_trees{'simple_menu'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'simple_menu'}{'contents'}[2];
 $result_trees{'simple_menu'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'simple_menu'}{'contents'}[2];
@@ -2161,6 +2163,9 @@ $result_menus{'simple_menu'} = {
 $result_errors{'simple_menu'} = [];
 
 
+$result_floats{'simple_menu'} = {};
+
+
 
 $result_converted{'info'}->{'simple_menu'} = 'This is , produced from .
 
@@ -2234,14 +2239,16 @@ $result_converted{'html'}->{'simple_menu'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -2250,6 +2257,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -2259,68 +2267,9 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<span id="Top"></span><span id="SEC_Top"></span>
-<div class="menu">
-<pre class="menu-preformatted">&bull; <a href="ggg.html#Top" accesskey="1">(ggg)</a>:: description
-</pre><ul>
-<li> <pre class="menu-preformatted">idescr
-</pre></li></ul>
-<pre class="menu-preformatted">in html
-AAA
-
-CCC
-
-</pre><ul>
-<li> <pre class="menu-preformatted">iaa
-</pre></li></ul>
-<pre class="menu-preformatted">
-
-in html title
-
-BBB
-
-</pre><ul>
-<li> <pre class="menu-preformatted">ibb
-</pre></li></ul>
-<pre class="menu-preformatted">&bull; <a href="manual.html#Top" accesskey="2">(manual)</a>::
-
-comment
-
-&bull; <a href="after_comment.html#Top" accesskey="3">(after_comment)</a>:: description
-in description
-&bull; <a href="after_description.html#Top" accesskey="4">(after_description)</a>::
-
-</pre><pre class="menu-preformatted">&bull; <a href="detailggg.html#Top" accesskey="5">(detailggg)</a>:: detaildescription
-</pre><ul>
-<li> <pre class="menu-preformatted">idetaildescr
-</pre></li></ul>
-<pre class="menu-preformatted">detailin detailhtml
-detailAAA
-
-detailCCC
-
-</pre><ul>
-<li> <pre class="menu-preformatted">detailiaa
-</pre></li></ul>
-<pre class="menu-preformatted">
-
-detailin html detailtitle
-
-detailBBB
-
-</pre><ul>
-<li> <pre class="menu-preformatted">detailibb
-</pre></li></ul>
-<pre class="menu-preformatted">&bull; <a href="detailmanual.html#Top" accesskey="6">(detailmanual)</a>::
-
-detailcomment
-
-&bull; <a href="detailafter_comment.html#Top" accesskey="7">(detailafter_comment)</a>:: detaildescription
-in detaildescription
-&bull; <a href="detailafter_description.html#Top" accesskey="8">(detailafter_description)</a>::
-
-</pre></div>
-<hr>
+<div class="top" id="Top">
+<span id="SEC_Top"></span>
+<hr></div>
 
 
 

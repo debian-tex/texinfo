@@ -217,4 +217,7 @@ $result_errors{'paragraph_in_style_command'} = [
 ];
 
 
+$result_floats{'paragraph_in_style_command'} = {};
+
+
 1;

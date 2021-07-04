@@ -123,6 +123,9 @@ $result_sectioning{'section_below_unnumbered_no_top'}{'section_childs'}[0]{'sect
 $result_errors{'section_below_unnumbered_no_top'} = [];
 
 
+$result_floats{'section_below_unnumbered_no_top'} = {};
+
+
 
 $result_converted{'plaintext'}->{'section_below_unnumbered_no_top'} = 'U
 *
@@ -144,13 +147,15 @@ $result_converted{'html'}->{'section_below_unnumbered_no_top'} = '<!DOCTYPE html
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -159,6 +164,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -167,9 +173,15 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="U"></span><h2 class="unnumbered">U</h2>
-<span id="S"></span><h3 class="section">S</h3>
-<hr>
+<div class="unnumbered" id="U">
+<h2 class="unnumbered">U</h2>
+<ul class="section-toc">
+<li><a href="#S" accesskey="1">S</a></li>
+</ul>
+<div class="section" id="S">
+<h3 class="section">S</h3>
+<hr></div>
+</div>
 
 
 

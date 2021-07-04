@@ -21,7 +21,11 @@ my @test_cases = (
 ],
 ['index_split',
   undef,
-  {'test_file' => 'index_split.texi' },
+  # we use CHECK_NORMAL_MENU_STRUCTURE as this tests
+  # for a case that may only be tested here (Top before node)
+  # It also tests for node with directions after section which is
+  # also in 96moresectioning.t
+  {'test_file' => 'index_split.texi', 'CHECK_NORMAL_MENU_STRUCTURE' => 1},
   {'SPLIT' => 'chapter'}
 ],
 ['index_split_nodes',

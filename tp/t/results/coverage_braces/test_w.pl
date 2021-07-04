@@ -649,7 +649,11 @@ $result_trees{'test_w'} = {
                           ],
                           'cmdname' => 'dots',
                           'contents' => [],
-                          'line_nr' => {},
+                          'line_nr' => {
+                            'file_name' => '',
+                            'line_nr' => 34,
+                            'macro' => ''
+                          },
                           'parent' => {}
                         },
                         {
@@ -666,7 +670,11 @@ $result_trees{'test_w'} = {
                           ],
                           'cmdname' => 'w',
                           'contents' => [],
-                          'line_nr' => {},
+                          'line_nr' => {
+                            'file_name' => '',
+                            'line_nr' => 34,
+                            'macro' => ''
+                          },
                           'parent' => {}
                         },
                         {
@@ -680,7 +688,11 @@ $result_trees{'test_w'} = {
                   ],
                   'cmdname' => 't',
                   'contents' => [],
-                  'line_nr' => {},
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 34,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 }
               ],
@@ -690,7 +702,11 @@ $result_trees{'test_w'} = {
           ],
           'cmdname' => 'w',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 34,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -816,18 +832,14 @@ $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]
 $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
-$result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3]{'line_nr'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[5];
-$result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[5]{'line_nr'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0];
 $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1];
-$result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'line_nr'} = $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'test_w'}{'contents'}[31]{'contents'}[1]{'parent'} = $result_trees{'test_w'}{'contents'}[31];
 $result_trees{'test_w'}{'contents'}[31]{'contents'}[2]{'parent'} = $result_trees{'test_w'}{'contents'}[31];
 $result_trees{'test_w'}{'contents'}[31]{'contents'}[3]{'parent'} = $result_trees{'test_w'}{'contents'}[31];
@@ -912,6 +924,9 @@ two single quotes to left- and right-hand doubled.
 ';
 
 $result_errors{'test_w'} = [];
+
+
+$result_floats{'test_w'} = {};
 
 
 

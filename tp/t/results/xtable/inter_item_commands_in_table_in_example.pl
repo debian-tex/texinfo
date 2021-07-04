@@ -340,7 +340,11 @@ $result_trees{'inter_item_commands_in_table_in_example'} = {
             'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -430,7 +434,6 @@ $result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0]{'content
 $result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0]{'contents'}[1];
 $result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
-$result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0];
 $result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'inter_item_commands_in_table_in_example'}{'contents'}[0]{'contents'}[2];
@@ -475,6 +478,9 @@ $result_errors{'inter_item_commands_in_table_in_example'} = [
 ];
 
 
+$result_floats{'inter_item_commands_in_table_in_example'} = {};
+
+
 
 $result_converted{'plaintext'}->{'inter_item_commands_in_table_in_example'} = '     A
      B
@@ -487,16 +493,16 @@ $result_converted{'plaintext'}->{'inter_item_commands_in_table_in_example'} = ' 
 
 $result_converted{'html_text'}->{'inter_item_commands_in_table_in_example'} = '<div class="example">
 <dl compact="compact">
-<dt><tt><var>a</var></tt></dt>
+<dt><span><tt><var>a</var></tt></span></dt>
 <dd><pre class="example"><span id="index-index-entry-between-item-and-itemx"></span></pre></dd>
-<dt><tt><var>b</var></tt></dt>
+<dt><span><tt><var>b</var></tt></span></dt>
 <dd><pre class="example">
 
 </pre></dd>
-<dt><tt><var>c</var></tt></dt>
+<dt><span><tt><var>c</var></tt></span></dt>
 <dd><pre class="example">l--ine
 </pre></dd>
-<dt><tt><var>d</var></tt></dt>
+<dt><span><tt><var>d</var></tt></span></dt>
 </dl>
 </div>
 ';

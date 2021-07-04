@@ -139,4 +139,7 @@ $result_errors{'item_tab_outside_of_table_lists'} = [
 ];
 
 
+$result_floats{'item_tab_outside_of_table_lists'} = {};
+
+
 1;

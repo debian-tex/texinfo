@@ -265,4 +265,7 @@ $result_errors{'bad_argument'} = [
 ];
 
 
+$result_floats{'bad_argument'} = {};
+
+
 1;

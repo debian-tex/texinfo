@@ -99,4 +99,7 @@ $result_texts{'no_macrobody'} = '
 $result_errors{'no_macrobody'} = [];
 
 
+$result_floats{'no_macrobody'} = {};
+
+
 1;

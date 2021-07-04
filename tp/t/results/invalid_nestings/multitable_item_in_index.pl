@@ -133,11 +133,15 @@ $result_trees{'multitable_item_in_index'} = {
         'max_columns' => 2,
         'prototypes' => [
           {
-            'contents' => [],
+            'contents' => [
+              {}
+            ],
             'type' => 'bracketed_multitable_prototype'
           },
           {
-            'contents' => [],
+            'contents' => [
+              {}
+            ],
             'type' => 'bracketed_multitable_prototype'
           }
         ],
@@ -171,8 +175,8 @@ $result_trees{'multitable_item_in_index'}{'contents'}[0]{'contents'}[1]{'args'}[
 $result_trees{'multitable_item_in_index'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'multitable_item_in_index'}{'contents'}[0]{'contents'}[1];
 $result_trees{'multitable_item_in_index'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_item_in_index'}{'contents'}[0];
 $result_trees{'multitable_item_in_index'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'multitable_item_in_index'}{'contents'}[0]{'contents'}[1];
-$result_trees{'multitable_item_in_index'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'multitable_item_in_index'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'};
-$result_trees{'multitable_item_in_index'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'multitable_item_in_index'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'contents'};
+$result_trees{'multitable_item_in_index'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'multitable_item_in_index'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'multitable_item_in_index'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'}[0] = $result_trees{'multitable_item_in_index'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'contents'}[0];
 $result_trees{'multitable_item_in_index'}{'contents'}[0]{'parent'} = $result_trees{'multitable_item_in_index'};
 
 $result_texis{'multitable_item_in_index'} = '@multitable {aaa} {bbb}
@@ -221,6 +225,9 @@ $result_errors{'multitable_item_in_index'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'multitable_item_in_index'} = {};
 
 
 1;

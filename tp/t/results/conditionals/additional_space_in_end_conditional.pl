@@ -18,4 +18,7 @@ $result_texts{'additional_space_in_end_conditional'} = '';
 $result_errors{'additional_space_in_end_conditional'} = [];
 
 
+$result_floats{'additional_space_in_end_conditional'} = {};
+
+
 1;

@@ -84,7 +84,11 @@ $result_trees{'good'} = {
         'max_columns' => 3,
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -99,7 +103,6 @@ $result_trees{'good'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $resu
 $result_trees{'good'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0];
 $result_trees{'good'}{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'good'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'good'}{'contents'}[0]{'contents'}[0];
-$result_trees{'good'}{'contents'}[0]{'line_nr'} = $result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'good'}{'contents'}[0]{'parent'} = $result_trees{'good'};
 
 $result_texis{'good'} = '@multitable @columnfractions 0.4 .6 5.
@@ -109,6 +112,9 @@ $result_texis{'good'} = '@multitable @columnfractions 0.4 .6 5.
 $result_texts{'good'} = '';
 
 $result_errors{'good'} = [];
+
+
+$result_floats{'good'} = {};
 
 
 1;

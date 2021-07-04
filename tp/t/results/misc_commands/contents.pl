@@ -297,4 +297,7 @@ $result_errors{'contents'} = [
 ];
 
 
+$result_floats{'contents'} = {};
+
+
 1;

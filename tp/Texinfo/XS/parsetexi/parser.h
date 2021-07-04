@@ -2,7 +2,9 @@
    declarations for close.c, end_line.c, debug.c, separator.c, parser.c, 
    multitable.c, extra.c and menu.c. */
 
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+#ifndef PARSER_H
+#define PARSER_H
+/* Copyright 2010-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -33,6 +35,7 @@ typedef struct GLOBAL_INFO {
     char *input_encoding_name;
     char *input_perl_encoding;
     int sections_level;
+    int novalidate;
     ELEMENT dircategory_direntry; /* an array of elements */
 
     /* Elements that should be unique. */
@@ -43,10 +46,6 @@ typedef struct GLOBAL_INFO {
     ELEMENT *top;
     ELEMENT *setfilename;
     ELEMENT *documentdescription;
-    ELEMENT *setcontentsaftertitlepage;
-    ELEMENT *setshortcontentsaftertitlepage;
-    ELEMENT *novalidate;
-    ELEMENT *validatemenus;
     ELEMENT *pagesizes;
     ELEMENT *fonttextsize;
     ELEMENT *footnotestyle;
@@ -149,6 +148,7 @@ ELEMENT *end_preformatted (ELEMENT *current,
                            enum command_id closed_command,
                            enum command_id interrupting_command);
 char *read_command_name (char **ptr);
+char *read_flag_name (char **ptr);
 ELEMENT *merge_text (ELEMENT *current, char *text);
 void start_empty_line_after_command (ELEMENT *current, char **line_inout,
                                      ELEMENT *command);
@@ -157,6 +157,7 @@ int format_expanded_p (char *format);
 int is_end_current_command (ELEMENT *current, char **line,
                             enum command_id *end_cmd);
 void set_documentlanguage (char *);
+void set_novalidate (int value);
 char *element_type_name (ELEMENT *e);
 
 /* Return values */
@@ -203,9 +204,10 @@ void add_extra_def_info (ELEMENT *e, char *key, DEF_INFO *value);
 void add_extra_float_type (ELEMENT *e, char *key, EXTRA_FLOAT_TYPE *value);
 void add_extra_string (ELEMENT *e, char *key, char *value);
 void add_extra_string_dup (ELEMENT *e, char *key, char *value);
-void add_extra_integer (ELEMENT *e, char *key, int value);
+void add_extra_integer (ELEMENT *e, char *key, long value);
 KEY_PAIR *lookup_extra (ELEMENT *e, char *key);
 
 /* In menus.c */
 int handle_menu (ELEMENT **current_inout, char **line_inout);
 ELEMENT *enter_menu_entry_node (ELEMENT *current);
+#endif

@@ -1,5 +1,7 @@
 /* text.h - declarations for text.c */
-/* Copyright 2014, 2015 Free Software Foundation, Inc.
+#ifndef TEXT_H
+#define TEXT_H
+/* Copyright 2014-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,6 +16,12 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
+typedef struct TEXT {
+    char *text;
+    size_t space; /* Allocated bytes in 'text', including terminating null. */
+    size_t end;
+} TEXT;
+
 void text_init (TEXT *t);
 void text_append (TEXT *t, char *s);
 void text_append_n (TEXT *t, char *s, size_t len);
@@ -22,3 +30,4 @@ void text_alloc (TEXT *t, size_t len);
 void text_reset (TEXT *t);
 
 #define text_base(t) ((t)->space ? (t)->text : (char *) 0)
+#endif

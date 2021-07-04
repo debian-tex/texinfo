@@ -486,6 +486,9 @@ End.
 $result_errors{'no_punctuation_commands_frenchspacing'} = [];
 
 
+$result_floats{'no_punctuation_commands_frenchspacing'} = {};
+
+
 
 $result_converted{'plaintext'}->{'no_punctuation_commands_frenchspacing'} = 'Dot. Exclam! Question? Dot. Exclam! Question? GAAA.
 

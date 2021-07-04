@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2019 Free Software Foundation, Inc.
+# Copyright (C) 2002-2021 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -44,6 +44,8 @@ AC_DEFUN([gl_EARLY],
 
   # Code from module absolute-header:
   # Code from module alloca-opt:
+  # Code from module attribute:
+  # Code from module c99:
   # Code from module errno:
   # Code from module extensions:
   # Code from module extern-inline:
@@ -53,6 +55,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module havelib:
   # Code from module iconv:
   # Code from module include_next:
+  # Code from module inttypes-incomplete:
   # Code from module limits-h:
   # Code from module memchr:
   # Code from module multiarch:
@@ -62,6 +65,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module snippet/c++defs:
   # Code from module snippet/warn-on-use:
   # Code from module ssize_t:
+  # Code from module std-gnu11:
   # Code from module stddef:
   # Code from module stdint:
   # Code from module stdio:
@@ -113,12 +117,14 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_GETLINE
   fi
   gl_STDIO_MODULE_INDICATOR([getline])
+  AC_DEFUN([gl_HAVE_MODULE_HAVELIB])
   AM_ICONV
   m4_ifdef([gl_ICONV_MODULE_INDICATOR],
     [gl_ICONV_MODULE_INDICATOR([iconv])])
+  gl_INTTYPES_INCOMPLETE
   gl_LIMITS_H
   gl_FUNC_MEMCHR
-  if test $HAVE_MEMCHR = 0 || test $REPLACE_MEMCHR = 1; then
+  if test $REPLACE_MEMCHR = 1; then
     AC_LIBOBJ([memchr])
     gl_PREREQ_MEMCHR
   fi
@@ -155,6 +161,7 @@ AC_DEFUN([gl_INIT],
   gl_STRING_MODULE_INDICATOR([strnlen])
   gl_SYS_TYPES_H
   AC_PROG_MKDIR_P
+  AC_REQUIRE([AC_C_RESTRICT])
   gl_FUNC_VASNPRINTF
   gl_FUNC_VASPRINTF
   gl_STDIO_MODULE_INDICATOR([vasprintf])
@@ -304,6 +311,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/arg-nonnull.h
   lib/asnprintf.c
   lib/asprintf.c
+  lib/attribute.h
   lib/c++defs.h
   lib/errno.in.h
   lib/float+.h
@@ -311,6 +319,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/float.in.h
   lib/getdelim.c
   lib/getline.c
+  lib/inttypes.in.h
   lib/itold.c
   lib/limits.in.h
   lib/memchr.c
@@ -354,21 +363,23 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/iconv.m4
   m4/include_next.m4
   m4/intmax_t.m4
+  m4/inttypes.m4
   m4/inttypes_h.m4
   m4/lib-ld.m4
   m4/lib-link.m4
   m4/lib-prefix.m4
   m4/limits-h.m4
-  m4/longlong.m4
   m4/math_h.m4
   m4/memchr.m4
   m4/mmap-anon.m4
   m4/multiarch.m4
   m4/off_t.m4
+  m4/pid_t.m4
   m4/printf.m4
   m4/rawmemchr.m4
   m4/size_max.m4
   m4/ssize_t.m4
+  m4/std-gnu11.m4
   m4/stddef_h.m4
   m4/stdint.m4
   m4/stdint_h.m4
@@ -385,4 +396,5 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/wchar_t.m4
   m4/wint_t.m4
   m4/xsize.m4
+  m4/zzgnulib.m4
 ])

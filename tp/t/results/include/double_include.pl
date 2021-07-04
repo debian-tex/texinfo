@@ -70,4 +70,7 @@ $result_errors{'double_include'} = [
 ];
 
 
+$result_floats{'double_include'} = {};
+
+
 1;

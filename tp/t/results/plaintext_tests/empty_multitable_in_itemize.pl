@@ -212,6 +212,9 @@ $result_errors{'empty_multitable_in_itemize'} = [
 ];
 
 
+$result_floats{'empty_multitable_in_itemize'} = {};
+
+
 
 $result_converted{'plaintext'}->{'empty_multitable_in_itemize'} = '   a-n itemize line in macro
 

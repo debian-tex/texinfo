@@ -255,4 +255,7 @@ $result_errors{'inlinefmt_with_empty_line'} = [
 ];
 
 
+$result_floats{'inlinefmt_with_empty_line'} = {};
+
+
 1;

@@ -652,6 +652,9 @@ First line 2 Nested example In first one ';
 $result_errors{'nested_example_and_comment'} = [];
 
 
+$result_floats{'nested_example_and_comment'} = {};
+
+
 
 $result_converted{'plaintext'}->{'nested_example_and_comment'} = '     First line 0
           Nested example

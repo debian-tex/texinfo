@@ -131,4 +131,7 @@ $result_errors{'style_not_closed_in_block_command'} = [
 ];
 
 
+$result_floats{'style_not_closed_in_block_command'} = {};
+
+
 1;

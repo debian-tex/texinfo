@@ -287,7 +287,11 @@ $result_trees{'raw_block_commands_expand_tex'} = {
               ],
               'cmdname' => 'code',
               'contents' => [],
-              'line_nr' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 15,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -389,7 +393,6 @@ $result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1]{'co
 $result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1]{'contents'}[2]{'line_nr'} = $result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1];
 $result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1];
 $result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'raw_block_commands_expand_tex'}{'contents'}[7]{'contents'}[1];
@@ -426,6 +429,9 @@ $result_texts{'raw_block_commands_expand_tex'} = '
 ';
 
 $result_errors{'raw_block_commands_expand_tex'} = [];
+
+
+$result_floats{'raw_block_commands_expand_tex'} = {};
 
 
 

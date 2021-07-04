@@ -108,6 +108,9 @@ $result_errors{'command_in_heading_footing'} = [
 ];
 
 
+$result_floats{'command_in_heading_footing'} = {};
+
+
 
 $result_converted{'plaintext'}->{'command_in_heading_footing'} = 'In text text.
 ';

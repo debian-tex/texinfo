@@ -1,6 +1,6 @@
 /* Compile-time assert-like macros.
 
-   Copyright (C) 2005-2006, 2009-2019 Free Software Foundation, Inc.
+   Copyright (C) 2005-2006, 2009-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,12 +22,10 @@
 
 
 /* Define _GL_HAVE__STATIC_ASSERT to 1 if _Static_assert (R, DIAGNOSTIC)
-   works as per C11.  This is supported by GCC 4.6.0 and later, in C
-   mode.
+   works as per C11.  This is supported by GCC 4.6.0+ and by clang 4+.
 
    Define _GL_HAVE__STATIC_ASSERT1 to 1 if _Static_assert (R) works as
-   per C2X, and define _GL_HAVE_STATIC_ASSERT1 if static_assert (R)
-   works as per C++17.  This is supported by GCC 9.1 and later.
+   per C2X.  This is supported by GCC 9.1+.
 
    Support compilers claiming conformance to the relevant standard,
    and also support GCC when not pedantic.  If we were willing to slow
@@ -35,16 +33,13 @@
    since this affects only the quality of diagnostics, why bother?  */
 #ifndef __cplusplus
 # if (201112L <= __STDC_VERSION__ \
-      || (!defined __STRICT_ANSI__ && 4 < __GNUC__ + (6 <= __GNUC_MINOR__)))
+      || (!defined __STRICT_ANSI__ \
+          && (4 < __GNUC__ + (6 <= __GNUC_MINOR__) || 4 <= __clang_major__)))
 #  define _GL_HAVE__STATIC_ASSERT 1
 # endif
 # if (202000L <= __STDC_VERSION__ \
       || (!defined __STRICT_ANSI__ && 9 <= __GNUC__))
 #  define _GL_HAVE__STATIC_ASSERT1 1
-# endif
-#else
-# if 201703L <= __cplusplus || 9 <= __GNUC__
-#  define _GL_HAVE_STATIC_ASSERT1 1
 # endif
 #endif
 
@@ -212,7 +207,9 @@ template <int w>
    Unfortunately, unlike C11, this implementation must appear as an
    ordinary declaration, and cannot appear inside struct { ... }.  */
 
-#if defined _GL_HAVE__STATIC_ASSERT
+#if 200410 <= __cpp_static_assert
+# define _GL_VERIFY(R, DIAGNOSTIC, ...) static_assert (R, DIAGNOSTIC)
+#elif defined _GL_HAVE__STATIC_ASSERT
 # define _GL_VERIFY(R, DIAGNOSTIC, ...) _Static_assert (R, DIAGNOSTIC)
 #else
 # define _GL_VERIFY(R, DIAGNOSTIC, ...)                                \
@@ -226,12 +223,28 @@ template <int w>
 #  define _Static_assert(...) \
      _GL_VERIFY (__VA_ARGS__, "static assertion failed", -)
 # endif
-# if !defined _GL_HAVE_STATIC_ASSERT1 && !defined static_assert
+# if __cpp_static_assert < 201411 && !defined static_assert
 #  define static_assert _Static_assert /* C11 requires this #define.  */
 # endif
 #endif
 
 /* @assert.h omit start@  */
+
+#if 3 < __GNUC__ + (3 < __GNUC_MINOR__ + (4 <= __GNUC_PATCHLEVEL__))
+# define _GL_HAS_BUILTIN_TRAP 1
+#elif defined __has_builtin
+# define _GL_HAS_BUILTIN_TRAP __has_builtin (__builtin_trap)
+#else
+# define _GL_HAS_BUILTIN_TRAP 0
+#endif
+
+#if 4 < __GNUC__ + (5 <= __GNUC_MINOR__)
+# define _GL_HAS_BUILTIN_UNREACHABLE 1
+#elif defined __has_builtin
+# define _GL_HAS_BUILTIN_UNREACHABLE __has_builtin (__builtin_unreachable)
+#else
+# define _GL_HAS_BUILTIN_UNREACHABLE 0
+#endif
 
 /* Each of these macros verifies that its argument R is nonzero.  To
    be portable, R should be an integer constant expression.  Unlike
@@ -260,24 +273,34 @@ template <int w>
 # define verify(R) _GL_VERIFY (R, "verify (" #R ")", -)
 #endif
 
-#ifndef __has_builtin
-# define __has_builtin(x) 0
-#endif
-
 /* Assume that R always holds.  Behavior is undefined if R is false,
-   fails to evaluate, or has side effects.  Although assuming R can
-   help a compiler generate better code or diagnostics, performance
-   can suffer if R uses hard-to-optimize features such as function
-   calls not inlined by the compiler.  */
+   fails to evaluate, or has side effects.
 
-#if (__has_builtin (__builtin_unreachable) \
-     || 4 < __GNUC__ + (5 <= __GNUC_MINOR__))
+   'assume (R)' is a directive from the programmer telling the
+   compiler that R is true so the compiler needn't generate code to
+   test R.  This is why 'assume' is in verify.h: it's related to
+   static checking (in this case, static checking done by the
+   programmer), not dynamic checking.
+
+   'assume (R)' can affect compilation of all the code, not just code
+   that happens to be executed after the assume (R) is "executed".
+   For example, if the code mistakenly does 'assert (R); assume (R);'
+   the compiler is entitled to optimize away the 'assert (R)'.
+
+   Although assuming R can help a compiler generate better code or
+   diagnostics, performance can suffer if R uses hard-to-optimize
+   features such as function calls not inlined by the compiler.
+
+   Avoid Clang's __builtin_assume, as it breaks GNU Emacs master
+   as of 2020-08-23T21:09:49Z!eggert@cs.ucla.edu; see
+   <https://bugs.gnu.org/43152#71>.  It's not known whether this breakage
+   is a Clang bug or an Emacs bug; play it safe for now.  */
+
+#if _GL_HAS_BUILTIN_UNREACHABLE
 # define assume(R) ((R) ? (void) 0 : __builtin_unreachable ())
 #elif 1200 <= _MSC_VER
 # define assume(R) __assume (R)
-#elif ((defined GCC_LINT || defined lint) \
-       && (__has_builtin (__builtin_trap) \
-           || 3 < __GNUC__ + (3 < __GNUC_MINOR__ + (4 <= __GNUC_PATCHLEVEL__))))
+#elif (defined GCC_LINT || defined lint) && _GL_HAS_BUILTIN_TRAP
   /* Doing it this way helps various packages when configured with
      --enable-gcc-warnings, which compiles with -Dlint.  It's nicer
      when 'assume' silences warnings even with older GCCs.  */

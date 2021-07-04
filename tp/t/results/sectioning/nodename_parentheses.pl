@@ -37,7 +37,9 @@ $result_trees{'nodename_parentheses'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -358,7 +360,9 @@ $result_trees{'nodename_parentheses'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Node-_0028with-parentheses_0029'
           }
         ],
@@ -452,7 +456,9 @@ $result_trees{'nodename_parentheses'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Other-node'
           }
         ],
@@ -661,7 +667,9 @@ $result_trees{'nodename_parentheses'} = {
             'manual_content' => [
               {}
             ],
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'node'
           }
         ],
@@ -794,7 +802,7 @@ $result_trees{'nodename_parentheses'}{'contents'}[0]{'parent'} = $result_trees{'
 $result_trees{'nodename_parentheses'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[1]{'args'}[0];
 $result_trees{'nodename_parentheses'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[1];
 $result_trees{'nodename_parentheses'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'nodename_parentheses'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'nodename_parentheses'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'nodename_parentheses'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'nodename_parentheses'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'nodename_parentheses'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'nodename_parentheses'}{'contents'}[1]{'parent'} = $result_trees{'nodename_parentheses'};
 $result_trees{'nodename_parentheses'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[2]{'args'}[0];
 $result_trees{'nodename_parentheses'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[2];
@@ -845,7 +853,7 @@ $result_trees{'nodename_parentheses'}{'contents'}[2]{'parent'} = $result_trees{'
 $result_trees{'nodename_parentheses'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[3]{'args'}[0];
 $result_trees{'nodename_parentheses'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[3];
 $result_trees{'nodename_parentheses'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'nodename_parentheses'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'nodename_parentheses'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'nodename_parentheses'}{'contents'}[3]{'extra'}{'node_content'};
+$result_trees{'nodename_parentheses'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'nodename_parentheses'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'nodename_parentheses'}{'contents'}[3]{'parent'} = $result_trees{'nodename_parentheses'};
 $result_trees{'nodename_parentheses'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[4]{'args'}[0];
 $result_trees{'nodename_parentheses'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[4];
@@ -857,7 +865,7 @@ $result_trees{'nodename_parentheses'}{'contents'}[4]{'parent'} = $result_trees{'
 $result_trees{'nodename_parentheses'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[5]{'args'}[0];
 $result_trees{'nodename_parentheses'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[5];
 $result_trees{'nodename_parentheses'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'nodename_parentheses'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'nodename_parentheses'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'nodename_parentheses'}{'contents'}[5]{'extra'}{'node_content'};
+$result_trees{'nodename_parentheses'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'nodename_parentheses'}{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'nodename_parentheses'}{'contents'}[5]{'parent'} = $result_trees{'nodename_parentheses'};
 $result_trees{'nodename_parentheses'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[6]{'args'}[0];
 $result_trees{'nodename_parentheses'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[6];
@@ -891,7 +899,7 @@ $result_trees{'nodename_parentheses'}{'contents'}[7]{'args'}[0]{'contents'}[3]{'
 $result_trees{'nodename_parentheses'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[7];
 $result_trees{'nodename_parentheses'}{'contents'}[7]{'extra'}{'node_content'}[0] = $result_trees{'nodename_parentheses'}{'contents'}[7]{'args'}[0]{'contents'}[3];
 $result_trees{'nodename_parentheses'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'manual_content'}[0] = $result_trees{'nodename_parentheses'}{'contents'}[7]{'args'}[0]{'contents'}[1];
-$result_trees{'nodename_parentheses'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'nodename_parentheses'}{'contents'}[7]{'extra'}{'node_content'};
+$result_trees{'nodename_parentheses'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'nodename_parentheses'}{'contents'}[7]{'args'}[0]{'contents'}[3];
 $result_trees{'nodename_parentheses'}{'contents'}[7]{'parent'} = $result_trees{'nodename_parentheses'};
 $result_trees{'nodename_parentheses'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[8]{'args'}[0];
 $result_trees{'nodename_parentheses'}{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[8];
@@ -1214,42 +1222,36 @@ $result_errors{'nodename_parentheses'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':15: warning: node next `Other node\' in menu `(manual)node\' and in sectioning `node\' differ
-',
-    'file_name' => '',
-    'line_nr' => 15,
-    'macro' => '',
-    'text' => 'node next `Other node\' in menu `(manual)node\' and in sectioning `node\' differ',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':22: warning: node `Other node\' is prev for `node\' in sectioning but not in menu
+    'error_line' => ':22: warning: node prev for `node\' is `Other node\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => 'node `Other node\' is prev for `node\' in sectioning but not in menu',
+    'text' => 'node prev for `node\' is `Other node\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: warning: node `Top\' is up for `node\' in sectioning but not in menu
+    'error_line' => ':22: warning: node up for `node\' is `Top\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => 'node `Top\' is up for `node\' in sectioning but not in menu',
+    'text' => 'node up for `node\' is `Top\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: node `Top\' lacks menu item for `node\' despite being its Up target
+    'error_line' => ':1: warning: node `Top\' lacks menu item for `node\' despite being its Up target
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => 'node `Top\' lacks menu item for `node\' despite being its Up target',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
+
+
+$result_floats{'nodename_parentheses'} = {};
 
 
 1;

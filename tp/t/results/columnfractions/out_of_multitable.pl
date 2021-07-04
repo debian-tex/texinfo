@@ -69,4 +69,7 @@ $result_errors{'out_of_multitable'} = [
 ];
 
 
+$result_floats{'out_of_multitable'} = {};
+
+
 1;

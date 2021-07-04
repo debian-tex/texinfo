@@ -28,7 +28,6 @@ if test -z "$LINENO"; then
 fi
 
 MENU_BEGIN='^\*\([ 	]\)\{1,\}Menu:'
-MENU_ITEM='^\* ([^ 	]).*:([ 	])+\('
 MENU_FILTER1='s/^\*\([ 	]\)\{1,\}/* /'
 MENU_FILTER2='s/\([ 	]\)\{1,\}$//g'
 

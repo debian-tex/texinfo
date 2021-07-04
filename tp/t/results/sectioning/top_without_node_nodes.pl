@@ -114,7 +114,9 @@ $result_trees{'top_without_node_nodes'} = [
           ],
           'nodes_manuals' => [
             {
-              'node_content' => [],
+              'node_content' => [
+                {}
+              ],
               'normalized' => 'second'
             },
             undef,
@@ -209,7 +211,7 @@ $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'args'}[3]{'contents'}
 $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'args'}[3];
 $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'args'}[3]{'parent'} = $result_trees{'top_without_node_nodes'}[0]{'contents'}[2];
 $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'extra'}{'node_content'};
+$result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'args'}[3]{'contents'}[1];
 $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'parent'} = $result_trees{'top_without_node_nodes'}[0];
 $result_trees{'top_without_node_nodes'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_without_node_nodes'}[0]{'contents'}[3]{'args'}[0];
@@ -316,6 +318,9 @@ $result_menus{'top_without_node_nodes'} = {
 $result_errors{'top_without_node_nodes'} = [];
 
 
+$result_floats{'top_without_node_nodes'} = {};
+
+
 $result_elements{'top_without_node_nodes'} = [
   {
     'extra' => {
@@ -412,14 +417,16 @@ $result_converted{'html'}->{'top_without_node_nodes'} = '<!DOCTYPE html PUBLIC "
 <meta name="keywords" content="top section">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#second" rel="start" title="second">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -428,6 +435,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -436,13 +444,19 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="top-section"></span><h1 class="top">top section</h1>
+<div class="top" id="top-section">
+<h1 class="top">top section</h1>
 <p>Top section
 </p>
-<span id="second"></span><span id="Chapter"></span><h2 class="chapter">1 Chapter</h2>
+<ul class="section-toc">
+<li><a href="#second" accesskey="1">Chapter</a></li>
+</ul>
+<div class="chapter" id="second">
+<span id="Chapter"></span><h2 class="chapter">1 Chapter</h2>
 
 <p>Text of chapter
-</p><hr>
+</p><hr></div>
+</div>
 
 
 

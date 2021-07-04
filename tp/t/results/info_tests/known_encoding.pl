@@ -88,7 +88,9 @@ $result_trees{'known_encoding'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -115,7 +117,7 @@ $result_trees{'known_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent
 $result_trees{'known_encoding'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'known_encoding'}{'contents'}[1];
 $result_trees{'known_encoding'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'known_encoding'}{'contents'}[1];
 $result_trees{'known_encoding'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'known_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'known_encoding'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'known_encoding'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'known_encoding'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'known_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'known_encoding'}{'contents'}[1]{'parent'} = $result_trees{'known_encoding'};
 
 $result_texis{'known_encoding'} = '
@@ -160,6 +162,9 @@ $result_errors{'known_encoding'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'known_encoding'} = {};
 
 
 

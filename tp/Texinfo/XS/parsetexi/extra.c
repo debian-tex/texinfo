@@ -35,7 +35,7 @@ add_extra_key (ELEMENT *e, char *key, ELEMENT *value,
           e->extra = realloc (e->extra,
                               (e->extra_space += 5) * sizeof (KEY_PAIR));
           if (!e->extra)
-            abort ();
+            fatal ("realloc failed");
         }
       e->extra_number++;
     }
@@ -146,7 +146,7 @@ add_extra_string_dup (ELEMENT *e, char *key, char *value)
 }
 
 void
-add_extra_integer (ELEMENT *e, char *key, int value)
+add_extra_integer (ELEMENT *e, char *key, long value)
 {
   add_extra_key (e, key, (ELEMENT *) value, extra_integer);
 }

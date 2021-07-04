@@ -60,7 +60,11 @@ $result_trees{'commands_and_punctuation'} = {
           ],
           'cmdname' => 'enddots',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -83,7 +87,6 @@ $result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[5]{'args'}[
 $result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0];
 $result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0];
 $result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[7];
-$result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[7]{'line_nr'} = $result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[5]{'line_nr'};
 $result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0];
 $result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0];
 $result_trees{'commands_and_punctuation'}{'contents'}[0]{'parent'} = $result_trees{'commands_and_punctuation'};
@@ -94,6 +97,9 @@ $result_texis{'commands_and_punctuation'} = 'SomthingA@.   and now inhibit.@: No
 $result_texts{'commands_and_punctuation'} = 'SomthingA.   and now inhibit. Now dots ... and enddots ... and';
 
 $result_errors{'commands_and_punctuation'} = [];
+
+
+$result_floats{'commands_and_punctuation'} = {};
 
 
 

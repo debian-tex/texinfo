@@ -128,7 +128,9 @@ $result_trees{'macro_in_misc_commands'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -3303,7 +3305,9 @@ $result_trees{'macro_in_misc_commands'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'node-atext'
           }
         ],
@@ -3516,7 +3520,7 @@ $result_trees{'macro_in_misc_commands'}{'contents'}[0]{'parent'} = $result_trees
 $result_trees{'macro_in_misc_commands'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_misc_commands'}{'contents'}[1]{'args'}[0];
 $result_trees{'macro_in_misc_commands'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'macro_in_misc_commands'}{'contents'}[1];
 $result_trees{'macro_in_misc_commands'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'macro_in_misc_commands'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'macro_in_misc_commands'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'macro_in_misc_commands'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'macro_in_misc_commands'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'macro_in_misc_commands'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'macro_in_misc_commands'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_misc_commands'};
 $result_trees{'macro_in_misc_commands'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_misc_commands'}{'contents'}[2]{'args'}[0];
 $result_trees{'macro_in_misc_commands'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'macro_in_misc_commands'}{'contents'}[2];
@@ -3933,7 +3937,7 @@ $result_trees{'macro_in_misc_commands'}{'contents'}[2]{'parent'} = $result_trees
 $result_trees{'macro_in_misc_commands'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_misc_commands'}{'contents'}[3]{'args'}[0];
 $result_trees{'macro_in_misc_commands'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'macro_in_misc_commands'}{'contents'}[3];
 $result_trees{'macro_in_misc_commands'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'macro_in_misc_commands'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'macro_in_misc_commands'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'macro_in_misc_commands'}{'contents'}[3]{'extra'}{'node_content'};
+$result_trees{'macro_in_misc_commands'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'macro_in_misc_commands'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'macro_in_misc_commands'}{'contents'}[3]{'parent'} = $result_trees{'macro_in_misc_commands'};
 $result_trees{'macro_in_misc_commands'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_misc_commands'}{'contents'}[4]{'args'}[0];
 $result_trees{'macro_in_misc_commands'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'macro_in_misc_commands'}{'contents'}[4];
@@ -4388,12 +4392,39 @@ $result_errors{'macro_in_misc_commands'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':58: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 58,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':58: warning: @definfoenclose should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 58,
     'macro' => '',
     'text' => '@definfoenclose should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':65: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 65,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':78: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 78,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
     'type' => 'warning'
   },
   {
@@ -4415,6 +4446,15 @@ $result_errors{'macro_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':163: warning: @refill is obsolete. (possibly involving @refillmacro)
+',
+    'file_name' => '',
+    'line_nr' => 163,
+    'macro' => 'refillmacro',
+    'text' => '@refill is obsolete.',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':173: warning: @page should only appear at the beginning of a line (possibly involving @pagemacro)
 ',
     'file_name' => '',
@@ -4422,8 +4462,20 @@ $result_errors{'macro_in_misc_commands'} = [
     'macro' => 'pagemacro',
     'text' => '@page should only appear at the beginning of a line',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':174: warning: @refill is obsolete. (possibly involving @refillmacro)
+',
+    'file_name' => '',
+    'line_nr' => 174,
+    'macro' => 'refillmacro',
+    'text' => '@refill is obsolete.',
+    'type' => 'warning'
   }
 ];
+
+
+$result_floats{'macro_in_misc_commands'} = {};
 
 
 1;

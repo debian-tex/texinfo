@@ -104,4 +104,7 @@ $result_indices{'simple'} = {
 };
 
 
+$result_floats{'simple'} = {};
+
+
 1;

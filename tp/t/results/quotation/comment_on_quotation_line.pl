@@ -128,6 +128,9 @@ In quotation
 $result_errors{'comment_on_quotation_line'} = [];
 
 
+$result_floats{'comment_on_quotation_line'} = {};
+
+
 
 $result_converted{'plaintext'}->{'comment_on_quotation_line'} = '     truc : In quotation
 ';

@@ -1,6 +1,6 @@
 /* filesys.c -- filesystem specific functions.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2021 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -153,7 +153,6 @@ info_file_find_next_in_path (char *filename, int *path_index, struct stat *finfo
       if (*dirname == '~')
         {
           char *expanded_dirname = tilde_expand_word (dirname);
-          free (dirname);
           dirname = expanded_dirname;
         }
 
@@ -183,6 +182,45 @@ info_file_in_path (char *filename, struct stat *finfo)
 {
   int i = 0;
   return info_file_find_next_in_path (filename, &i, finfo);
+}
+
+/* Check if TRY_FILENAME exists, possibly compressed.  If so, return
+   filename in TRY_FILENAME. */
+char *
+info_check_compressed (char *try_filename, struct stat *finfo)
+{
+  int statable = (stat (try_filename, finfo) == 0);
+
+  if (statable)
+    {
+      if (S_ISREG (finfo->st_mode))
+        {
+          debug(1, (_("found file %s"), try_filename));
+          return try_filename;
+        }
+    }
+  else
+    {
+      /* Add various compression suffixes to the name to see if
+         the file is present in compressed format. */
+      register int j, pre_compress_suffix_length;
+
+      pre_compress_suffix_length = strlen (try_filename);
+
+      for (j = 0; compress_suffixes[j].suffix; j++)
+        {
+          strcpy (try_filename + pre_compress_suffix_length,
+                  compress_suffixes[j].suffix);
+
+          statable = (stat (try_filename, finfo) == 0);
+          if (statable && (S_ISREG (finfo->st_mode)))
+            {
+              debug(1, (_("found file %s"), try_filename));
+              return try_filename;
+            }
+        }
+    }
+  return 0;
 }
 
 /* Look for a file called FILENAME in a directory called DIRNAME, adding file
@@ -222,57 +260,12 @@ info_add_extension (char *dirname, char *filename, struct stat *finfo)
 
   for (i = 0; info_suffixes[i]; i++)
     {
-      int statable;
-
+      char *result;
       strcpy (try_filename + pre_suffix_length, info_suffixes[i]);
-      statable = (stat (try_filename, finfo) == 0);
 
-      /* If we have found a regular file, then use that.  Else, if we
-         have found a directory, look in that directory for this file. */
-      if (statable)
-        {
-          if (S_ISREG (finfo->st_mode))
-            {
-              debug(1, (_("found file %s"), try_filename));
-              return try_filename;
-            }
-          else if (S_ISDIR (finfo->st_mode))
-            {
-              char *newpath, *new_filename;
-
-              newpath = xstrdup (try_filename);
-              new_filename = info_add_extension (newpath, filename, finfo);
-
-              free (newpath);
-              if (new_filename)
-                {
-                  free (try_filename);
-                  debug(1, (_("found file %s"), new_filename));
-                  return new_filename;
-                }
-            }
-        }
-      else
-        {
-          /* Add various compression suffixes to the name to see if
-             the file is present in compressed format. */
-          register int j, pre_compress_suffix_length;
-
-          pre_compress_suffix_length = strlen (try_filename);
-
-          for (j = 0; compress_suffixes[j].suffix; j++)
-            {
-              strcpy (try_filename + pre_compress_suffix_length,
-                      compress_suffixes[j].suffix);
-
-              statable = (stat (try_filename, finfo) == 0);
-              if (statable && (S_ISREG (finfo->st_mode)))
-                {
-                  debug(1, (_("found file %s"), try_filename));
-                  return try_filename;
-                }
-            }
-        }
+      result = info_check_compressed (try_filename, finfo);
+      if (result)
+        return result;
     }
   /* Nothing was found. */
   free (try_filename);
@@ -539,7 +532,7 @@ char *
 filesys_error_string (char *filename, int error_num)
 {
   int len;
-  char *result;
+  const char *result;
 
   if (error_num == 0)
     return NULL;

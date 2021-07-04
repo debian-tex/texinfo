@@ -116,7 +116,11 @@ $result_trees{'protected_brace'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -137,7 +141,6 @@ $result_trees{'protected_brace'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'conte
 $result_trees{'protected_brace'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'protected_brace'}{'contents'}[0]{'contents'}[1];
 $result_trees{'protected_brace'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'protected_brace'}{'contents'}[0];
 $result_trees{'protected_brace'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'protected_brace'}{'contents'}[0]{'contents'}[1];
-$result_trees{'protected_brace'}{'contents'}[0]{'line_nr'} = $result_trees{'protected_brace'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'protected_brace'}{'contents'}[0]{'parent'} = $result_trees{'protected_brace'};
 
 $result_texis{'protected_brace'} = '@deffn c @{
@@ -159,6 +162,9 @@ $result_errors{'protected_brace'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'protected_brace'} = {};
 
 
 

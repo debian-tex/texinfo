@@ -88,7 +88,9 @@ $result_trees{'encoding_us_ascii'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -115,7 +117,7 @@ $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'par
 $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'encoding_us_ascii'}{'contents'}[1];
 $result_trees{'encoding_us_ascii'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'encoding_us_ascii'}{'contents'}[1];
 $result_trees{'encoding_us_ascii'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'encoding_us_ascii'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'encoding_us_ascii'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'encoding_us_ascii'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'encoding_us_ascii'}{'contents'}[1]{'parent'} = $result_trees{'encoding_us_ascii'};
 
 $result_texis{'encoding_us_ascii'} = '
@@ -150,6 +152,9 @@ $result_menus{'encoding_us_ascii'} = {
 };
 
 $result_errors{'encoding_us_ascii'} = [];
+
+
+$result_floats{'encoding_us_ascii'} = {};
 
 
 

@@ -152,4 +152,7 @@ and a last in another paragraph
 $result_errors{'protect_comma_macro_line'} = [];
 
 
+$result_floats{'protect_comma_macro_line'} = {};
+
+
 1;

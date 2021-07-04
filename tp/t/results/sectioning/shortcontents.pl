@@ -718,6 +718,9 @@ $result_sectioning{'shortcontents'}{'section_childs'}[2]{'toplevel_up'} = $resul
 $result_errors{'shortcontents'} = [];
 
 
+$result_floats{'shortcontents'} = {};
+
+
 
 $result_converted{'plaintext'}->{'shortcontents'} = 'top
 ***
@@ -770,13 +773,15 @@ $result_converted{'html'}->{'shortcontents'} = '<!DOCTYPE html PUBLIC "-//W3C//D
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -785,6 +790,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -793,30 +799,10 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="top"></span><h1 class="top">top</h1>
+<div class="top" id="top">
+<h1 class="top">top</h1>
 
-<span id="chapter"></span><h2 class="chapter">1 chapter</h2>
-
-<span id="section"></span><h3 class="section">1.1 section</h3>
-
-<span id="subsection"></span><h4 class="subsection">1.1.1 subsection</h4>
-
-<span id="subsubsection"></span><h4 class="subsubsection">1.1.1.1 subsubsection</h4>
-
-<span id="part"></span><h1 class="part">part</h1>
-<hr>
-
-<span id="chapter-in-part"></span><h2 class="chapter">2 chapter in part</h2>
-
-<span id="second-chapter-in-part"></span><h2 class="chapter">3 second chapter in part</h2>
-
-<span id="unnumbered"></span><h2 class="unnumbered">unnumbered</h2>
-
-<span id="appendix"></span><h2 class="appendix">Appendix A appendix</h2>
-
-<span id="appendixsec"></span><h3 class="appendixsec">A.1 appendixsec</h3>
-
-<span id="SEC_Overview"></span>
+<div class="Overview_element" id="SEC_Overview">
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
 
 <div class="shortcontents">
@@ -833,8 +819,66 @@ ul.no-bullet {list-style: none}
 
 </ul>
 </div>
+</div>
+<div class="chapter" id="chapter">
+<h2 class="chapter">1 chapter</h2>
 
+<ul class="section-toc">
+<li><a href="#section" accesskey="1">section</a></li>
+</ul>
+<div class="section" id="section">
+<h3 class="section">1.1 section</h3>
+
+<ul class="section-toc">
+<li><a href="#subsection" accesskey="1">subsection</a></li>
+</ul>
+<div class="subsection" id="subsection">
+<h4 class="subsection">1.1.1 subsection</h4>
+
+<ul class="section-toc">
+<li><a href="#subsubsection" accesskey="1">subsubsection</a></li>
+</ul>
+<div class="subsubsection" id="subsubsection">
+<h4 class="subsubsection">1.1.1.1 subsubsection</h4>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="part" id="part">
+<h1 class="part">part</h1>
 <hr>
+
+<ul class="section-toc">
+<li><a href="#chapter-in-part" accesskey="1">chapter in part</a></li>
+<li><a href="#second-chapter-in-part" accesskey="2">second chapter in part</a></li>
+<li><a href="#unnumbered" accesskey="3">unnumbered</a></li>
+</ul>
+<div class="chapter" id="chapter-in-part">
+<h2 class="chapter">2 chapter in part</h2>
+
+</div>
+<div class="chapter" id="second-chapter-in-part">
+<h2 class="chapter">3 second chapter in part</h2>
+
+</div>
+<div class="unnumbered" id="unnumbered">
+<h2 class="unnumbered">unnumbered</h2>
+
+</div>
+<div class="appendix" id="appendix">
+<h2 class="appendix">Appendix A appendix</h2>
+
+<ul class="section-toc">
+<li><a href="#appendixsec" accesskey="1">appendixsec</a></li>
+</ul>
+<div class="appendixsec" id="appendixsec">
+<h3 class="appendixsec">A.1 appendixsec</h3>
+
+<hr></div>
+</div>
+</div>
 
 
 

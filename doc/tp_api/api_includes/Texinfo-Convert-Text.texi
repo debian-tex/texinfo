@@ -100,7 +100,7 @@ translation, as the converter object is also supposed to be a
 @anchor{Texinfo::Convert::Text expanded_formats_hash}
 
 A reference on a hash.  The keys should be format names (like @code{html}, 
-@code{tex}), and if thecorresponding  value is set, the format is expanded.
+@code{tex}), and if the corresponding  value is set, the format is expanded.
 
 @end table
 

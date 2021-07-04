@@ -126,6 +126,9 @@ Text
 $result_errors{'indentedblock'} = [];
 
 
+$result_floats{'indentedblock'} = {};
+
+
 
 $result_converted{'plaintext'}->{'indentedblock'} = '     indented block
 

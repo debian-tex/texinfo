@@ -73,7 +73,9 @@ $result_trees{'command_translated'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -162,7 +164,11 @@ $result_trees{'command_translated'} = {
         'spaces_before_argument' => ' '
       },
       'level' => 0,
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -176,7 +182,7 @@ $result_trees{'command_translated'}{'contents'}[0]{'parent'} = $result_trees{'co
 $result_trees{'command_translated'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'command_translated'}{'contents'}[1]{'args'}[0];
 $result_trees{'command_translated'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'command_translated'}{'contents'}[1];
 $result_trees{'command_translated'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'command_translated'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'command_translated'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'command_translated'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'command_translated'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'command_translated'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'command_translated'}{'contents'}[1]{'parent'} = $result_trees{'command_translated'};
 $result_trees{'command_translated'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'command_translated'}{'contents'}[2]{'args'}[0];
 $result_trees{'command_translated'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'command_translated'}{'contents'}[2]{'args'}[0]{'contents'}[1];
@@ -187,7 +193,6 @@ $result_trees{'command_translated'}{'contents'}[2]{'contents'}[1]{'contents'}[0]
 $result_trees{'command_translated'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'command_translated'}{'contents'}[2]{'contents'}[1];
 $result_trees{'command_translated'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'command_translated'}{'contents'}[2]{'contents'}[1];
 $result_trees{'command_translated'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'command_translated'}{'contents'}[2];
-$result_trees{'command_translated'}{'contents'}[2]{'line_nr'} = $result_trees{'command_translated'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'command_translated'}{'contents'}[2]{'parent'} = $result_trees{'command_translated'};
 
 $result_texis{'command_translated'} = '@documentlanguage fr
@@ -254,6 +259,9 @@ $result_menus{'command_translated'} = {
 $result_errors{'command_translated'} = [];
 
 
+$result_floats{'command_translated'} = {};
+
+
 
 $result_converted{'plaintext'}->{'command_translated'} = 'top erreur->
 ************
@@ -296,14 +304,16 @@ $result_converted{'html'}->{'command_translated'} = '<!DOCTYPE html PUBLIC "-//W
 <meta name="keywords" content="top erreur&rarr;">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -312,6 +322,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -321,10 +332,11 @@ ul.no-bullet {list-style: none}
 
 <body lang="fr">
 
-<span id="Top"></span><span id="top-error_002d_002d_003e"></span><h1 class="top">top erreur&rarr;</h1>
+<div class="top" id="Top">
+<span id="top-error_002d_002d_003e"></span><h1 class="top">top erreur&rarr;</h1>
 
 <p>erreur&rarr;
-</p><hr>
+</p><hr></div>
 
 
 

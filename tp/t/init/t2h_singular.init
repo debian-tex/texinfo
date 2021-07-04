@@ -31,10 +31,6 @@ set_from_init_file('XREF_USE_NODE_NAME_ARG', 1);
 # if set, chatter about what we are doing
 set_from_init_file('VERBOSE', 1);
 
-# print index summary for 'cp' index
-# obsolete
-#set_from_init_file('IDX_SUMMARY', 'cp');
-
 my $T2H_SING_base_images = '../singular_images/';
 
 # inside <BODY ..>
@@ -55,9 +51,9 @@ set_from_init_file('SHOW_TITLE', 0);
 
 # footer
 
-texinfo_register_formatting_function('element_footer' , \&singular_footer);
+texinfo_register_formatting_function('format_element_footer' , \&singular_format_footer);
 
-sub singular_footer($$$$)
+sub singular_format_footer($$$$)
 {
   my $self = shift;
   my $type = shift;
@@ -93,21 +89,22 @@ sub singular_footer($$$$)
     $result .= $self->get_conf('DEFAULT_RULE')."\n"
        if (defined($self->get_conf('DEFAULT_RULE')));
     if ($end_page) {
+      $result .= join('', $self->close_registered_sections_level(0));
       $result .= &{$self->{'format_navigation_header_panel'}}($self, 
                                             $buttons, undef, $element);
     }
     return $result;
   }
 
-  return &{$self->default_formatting_function('element_footer')}($self,
+  return &{$self->default_formatting_function('format_element_footer')}($self,
                                             $type, $element, $content);
 }
 
 
-texinfo_register_formatting_function('end_file' , \&singular_end_file);
+texinfo_register_formatting_function('format_end_file' , \&singular_format_end_file);
 
 # footer of page
-sub singular_end_file($)
+sub singular_format_end_file($)
 {
   my $self = shift;
   my $pre_body_close = $self->get_conf('PRE_BODY_CLOSE');
@@ -137,7 +134,7 @@ sub singular_banner
     src="${T2H_SING_base_images}singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 EOT
-  return $result;
+  return ($result, 0);
 }
 
 # always use bottom navigation

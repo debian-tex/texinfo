@@ -303,7 +303,9 @@ $result_trees{'space_in_node'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -349,7 +351,9 @@ $result_trees{'space_in_node'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Chap-first-here'
           }
         ],
@@ -395,7 +399,9 @@ $result_trees{'space_in_node'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Test-title'
           }
         ],
@@ -434,7 +440,9 @@ $result_trees{'space_in_node'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Last-with-spaces'
           }
         ],
@@ -501,24 +509,24 @@ $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_comma
 $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'space_in_node'}{'contents'}[1];
 $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'space_in_node'}{'contents'}[1];
 $result_trees{'space_in_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'space_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'space_in_node'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'space_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'space_in_node'}{'contents'}[1]{'parent'} = $result_trees{'space_in_node'};
 $result_trees{'space_in_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_node'}{'contents'}[2]{'args'}[0];
 $result_trees{'space_in_node'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'space_in_node'}{'contents'}[2];
 $result_trees{'space_in_node'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'space_in_node'}{'contents'}[2];
 $result_trees{'space_in_node'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'space_in_node'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'space_in_node'}{'contents'}[2]{'extra'}{'node_content'};
+$result_trees{'space_in_node'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'space_in_node'}{'contents'}[2]{'parent'} = $result_trees{'space_in_node'};
 $result_trees{'space_in_node'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_node'}{'contents'}[3]{'args'}[0];
 $result_trees{'space_in_node'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'space_in_node'}{'contents'}[3];
 $result_trees{'space_in_node'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'space_in_node'}{'contents'}[3];
 $result_trees{'space_in_node'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'space_in_node'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'space_in_node'}{'contents'}[3]{'extra'}{'node_content'};
+$result_trees{'space_in_node'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'space_in_node'}{'contents'}[3]{'parent'} = $result_trees{'space_in_node'};
 $result_trees{'space_in_node'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_node'}{'contents'}[4]{'args'}[0];
 $result_trees{'space_in_node'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'space_in_node'}{'contents'}[4];
 $result_trees{'space_in_node'}{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'space_in_node'}{'contents'}[4]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'space_in_node'}{'contents'}[4]{'extra'}{'node_content'};
+$result_trees{'space_in_node'}{'contents'}[4]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'space_in_node'}{'contents'}[4]{'parent'} = $result_trees{'space_in_node'};
 
 $result_texis{'space_in_node'} = '
@@ -659,6 +667,9 @@ $result_menus{'space_in_node'}{'menu_child'}{'menu_up'} = $result_menus{'space_i
 $result_errors{'space_in_node'} = [];
 
 
+$result_floats{'space_in_node'} = {};
+
+
 
 $result_converted{'info'}->{'space_in_node'} = 'This is , produced from .
 
@@ -708,14 +719,16 @@ $result_converted{'html'}->{'space_in_node'} = '<!DOCTYPE html PUBLIC "-//W3C//D
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -724,6 +737,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -739,14 +753,6 @@ Next: <a href="#Chap-first-here" accesskey="n" rel="next">Chap first  here</a> &
 </div>
 <h1 class="node-heading">Top</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Chap-first-here" accesskey="1">Chap    first here</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Test-title" accesskey="2">Test    title   </a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Last-with-spaces" accesskey="3">Last with spaces    </a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="Chap-first-here"></span><div class="header">
@@ -768,7 +774,6 @@ Next: <a href="#Last-with-spaces" accesskey="n" rel="next">Last with spaces</a>,
 Previous: <a href="#Test-title" accesskey="p" rel="prev">Test               title</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">Last with spaces</h4>
-<hr>
 
 
 

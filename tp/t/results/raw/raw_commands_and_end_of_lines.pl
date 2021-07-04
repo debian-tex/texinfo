@@ -1811,6 +1811,9 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
 ];
 
 
+$result_floats{'raw_commands_and_end_of_lines'} = {};
+
+
 
 $result_converted{'plaintext'}->{'raw_commands_and_end_of_lines'} = 'Block commands on a line end commands on a line.
 

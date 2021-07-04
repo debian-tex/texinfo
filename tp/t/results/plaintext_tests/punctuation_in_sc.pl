@@ -54,7 +54,11 @@ $result_trees{'punctuation_in_sc'} = {
           ],
           'cmdname' => 'sc',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -75,7 +79,6 @@ $result_trees{'punctuation_in_sc'}{'contents'}[0]{'contents'}[1]{'parent'} = $re
 $result_trees{'punctuation_in_sc'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'punctuation_in_sc'}{'contents'}[0];
 $result_trees{'punctuation_in_sc'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_in_sc'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'punctuation_in_sc'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'punctuation_in_sc'}{'contents'}[0]{'contents'}[3];
-$result_trees{'punctuation_in_sc'}{'contents'}[0]{'contents'}[3]{'line_nr'} = $result_trees{'punctuation_in_sc'}{'contents'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'punctuation_in_sc'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'punctuation_in_sc'}{'contents'}[0];
 $result_trees{'punctuation_in_sc'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'punctuation_in_sc'}{'contents'}[0];
 $result_trees{'punctuation_in_sc'}{'contents'}[0]{'parent'} = $result_trees{'punctuation_in_sc'};
@@ -86,6 +89,9 @@ $result_texis{'punctuation_in_sc'} = 'one @sc{two.} three @sc{FOUR.} five';
 $result_texts{'punctuation_in_sc'} = 'one TWO. three FOUR. five';
 
 $result_errors{'punctuation_in_sc'} = [];
+
+
+$result_floats{'punctuation_in_sc'} = {};
 
 
 

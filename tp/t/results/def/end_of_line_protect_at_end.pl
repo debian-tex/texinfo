@@ -105,7 +105,11 @@ $result_trees{'end_of_line_protect_at_end'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -125,7 +129,6 @@ $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1];
-$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'line_nr'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'parent'} = $result_trees{'end_of_line_protect_at_end'};
 
 $result_texis{'end_of_line_protect_at_end'} = '
@@ -165,6 +168,9 @@ $result_errors{'end_of_line_protect_at_end'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'end_of_line_protect_at_end'} = {};
 
 
 1;

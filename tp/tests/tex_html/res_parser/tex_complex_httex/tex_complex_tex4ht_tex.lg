@@ -3,10 +3,12 @@ htfcss: cmmib font-style: italic; font-weight: bold;
 File: tex_complex_tex4ht_tex.html
 File: tex_complex_tex4ht_tex.css
 File: tex_complex_tex4ht_tex.tmp
-Css: p.noindent { text-indent: 0em }
-Css: td p.noindent { text-indent: 0em; margin-top:0em; }
-Css: p.nopar { text-indent: 0em; }
-Css: p.indent{ text-indent: 1.5em }
+Css: p{margin-top:0;margin-bottom:0}
+Css: p.indent{text-indent:0;}
+Css: p + p{margin-top:1em;}
+Css: p + div, p + pre {margin-top:1em;}
+Css: div + p, pre + p {margin-top:1em;}
+Css: a { overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; hyphens: auto; }
 Css: @media print {div.crosslinks {visibility:hidden;}}
 Css: a img { border-top: 0; border-left: 0; border-right: 0; }
 Font_Css("4"): .small-caps{font-variant: small-caps; }
@@ -19,6 +21,7 @@ Css: center { margin-top:1em; margin-bottom:1em; }
 Css: td center { margin-top:0em; margin-bottom:0em; }
 Css: .Canvas { position:relative; }
 Css: img.math{vertical-align:middle;}
+Css: div.par-math-display, div.math-display{text-align:center;}
 Css: .obeylines-h,.obeylines-v {white-space: nowrap; }
 Css: div.obeylines-v p { margin-top:0; margin-bottom:0; }
 Css: .overline{ text-decoration:overline; }
@@ -26,9 +29,6 @@ Css: .overline img{ border-top: 1px solid black; }
 Css: td.displaylines {text-align:center; white-space:nowrap;}
 Css: .centerline {text-align:center;}
 Css: .rightline {text-align:right;}
-Css: span.TEX {letter-spacing: -0.125em; }
-Css: span.TEX span.E{ position:relative;top:0.5ex;left:-0.0417em;}
-Css: a span.TEX span.E {text-decoration: none; }
 Css: .underline{ text-decoration:underline; }
 Css: .underline img{ border-bottom: 1px solid black; margin-bottom:1pt; }
 Css: div.proclaim { margin-top: 1em; margin-bottom: 1em; }

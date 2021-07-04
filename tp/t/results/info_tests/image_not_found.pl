@@ -68,7 +68,9 @@ $result_trees{'image_not_found'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -93,7 +95,7 @@ $result_trees{'image_not_found'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'paren
 $result_trees{'image_not_found'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'image_not_found'}{'contents'}[1];
 $result_trees{'image_not_found'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'image_not_found'}{'contents'}[1];
 $result_trees{'image_not_found'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_not_found'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'image_not_found'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'image_not_found'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'image_not_found'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'image_not_found'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_not_found'}{'contents'}[1]{'parent'} = $result_trees{'image_not_found'};
 
 $result_texis{'image_not_found'} = '@node Top
@@ -125,6 +127,9 @@ $result_menus{'image_not_found'} = {
 $result_errors{'image_not_found'} = [];
 
 
+$result_floats{'image_not_found'} = {};
+
+
 
 $result_converted{'info'}->{'image_not_found'} = 'This is , produced from .
 
@@ -132,6 +137,7 @@ $result_converted{'info'}->{'image_not_found'} = 'This is , produced from .
 File: ,  Node: Top,  Up: (dir)
 
 [n_f_image]
+
 
 Tag Table:
 Node: Top27

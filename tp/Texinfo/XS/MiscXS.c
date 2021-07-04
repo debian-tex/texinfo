@@ -166,8 +166,8 @@ S_croak_xs_usage(const CV *const cv, const char *const params)
 
 #line 168 "MiscXS.c"
 
-XS_EUPXS(XS_Texinfo__MiscXSXS_abort_empty_line); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__MiscXSXS_abort_empty_line)
+XS_EUPXS(XS_Texinfo__MiscXS_abort_empty_line); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__MiscXS_abort_empty_line)
 {
     dVAR; dXSARGS;
     if (items < 2)
@@ -189,7 +189,7 @@ XS_EUPXS(XS_Texinfo__MiscXSXS_abort_empty_line)
 		}
 		else{
 		    Perl_croak_nocontext("%s: %s is not a HASH reference",
-				"Texinfo::MiscXSXS::abort_empty_line",
+				"Texinfo::MiscXS::abort_empty_line",
 				"self");
 		}
 	} STMT_END
@@ -203,7 +203,7 @@ XS_EUPXS(XS_Texinfo__MiscXSXS_abort_empty_line)
 		}
 		else{
 		    Perl_croak_nocontext("%s: %s is not a HASH reference",
-				"Texinfo::MiscXSXS::abort_empty_line",
+				"Texinfo::MiscXS::abort_empty_line",
 				"current");
 		}
 	} STMT_END
@@ -222,8 +222,8 @@ XS_EUPXS(XS_Texinfo__MiscXSXS_abort_empty_line)
 }
 
 
-XS_EUPXS(XS_Texinfo__MiscXSXS_merge_text); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__MiscXSXS_merge_text)
+XS_EUPXS(XS_Texinfo__MiscXS_merge_text); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__MiscXS_merge_text)
 {
     dVAR; dXSARGS;
     if (items != 3)
@@ -243,7 +243,7 @@ XS_EUPXS(XS_Texinfo__MiscXSXS_merge_text)
 		}
 		else{
 		    Perl_croak_nocontext("%s: %s is not a HASH reference",
-				"Texinfo::MiscXSXS::merge_text",
+				"Texinfo::MiscXS::merge_text",
 				"self");
 		}
 	} STMT_END
@@ -257,7 +257,7 @@ XS_EUPXS(XS_Texinfo__MiscXSXS_merge_text)
 		}
 		else{
 		    Perl_croak_nocontext("%s: %s is not a HASH reference",
-				"Texinfo::MiscXSXS::merge_text",
+				"Texinfo::MiscXS::merge_text",
 				"current");
 		}
 	} STMT_END
@@ -275,8 +275,8 @@ XS_EUPXS(XS_Texinfo__MiscXSXS_merge_text)
 }
 
 
-XS_EUPXS(XS_Texinfo__MiscXSXS_process_text); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__MiscXSXS_process_text)
+XS_EUPXS(XS_Texinfo__MiscXS_process_text); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__MiscXS_process_text)
 {
     dVAR; dXSARGS;
     if (items != 1)
@@ -308,8 +308,8 @@ XS_EUPXS(XS_Texinfo__MiscXSXS_process_text)
 }
 
 
-XS_EUPXS(XS_Texinfo__MiscXSXS_unicode_text); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__MiscXSXS_unicode_text)
+XS_EUPXS(XS_Texinfo__MiscXS_unicode_text); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__MiscXS_unicode_text)
 {
     dVAR; dXSARGS;
     if (items < 1)
@@ -349,8 +349,8 @@ XS_EUPXS(XS_Texinfo__MiscXSXS_unicode_text)
 }
 
 
-XS_EUPXS(XS_Texinfo__MiscXSXS_parse_texi_regex); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__MiscXSXS_parse_texi_regex)
+XS_EUPXS(XS_Texinfo__MiscXS_parse_texi_regex); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__MiscXS_parse_texi_regex)
 {
     dVAR; dXSARGS;
     if (items != 1)
@@ -399,8 +399,8 @@ XS_EUPXS(XS_Texinfo__MiscXSXS_parse_texi_regex)
 #ifdef __cplusplus
 extern "C"
 #endif
-XS_EXTERNAL(boot_Texinfo__MiscXSXS); /* prototype to pass -Wmissing-prototypes */
-XS_EXTERNAL(boot_Texinfo__MiscXSXS)
+XS_EXTERNAL(boot_Texinfo__MiscXS); /* prototype to pass -Wmissing-prototypes */
+XS_EXTERNAL(boot_Texinfo__MiscXS)
 {
 #if PERL_VERSION_LE(5, 21, 5)
     dVAR; dXSARGS;
@@ -424,11 +424,11 @@ XS_EXTERNAL(boot_Texinfo__MiscXSXS)
 #  endif
 #endif
 
-        newXS_deffile("Texinfo::MiscXSXS::abort_empty_line", XS_Texinfo__MiscXSXS_abort_empty_line);
-        newXS_deffile("Texinfo::MiscXSXS::merge_text", XS_Texinfo__MiscXSXS_merge_text);
-        newXS_deffile("Texinfo::MiscXSXS::process_text", XS_Texinfo__MiscXSXS_process_text);
-        newXS_deffile("Texinfo::MiscXSXS::unicode_text", XS_Texinfo__MiscXSXS_unicode_text);
-        newXS_deffile("Texinfo::MiscXSXS::parse_texi_regex", XS_Texinfo__MiscXSXS_parse_texi_regex);
+        newXS_deffile("Texinfo::MiscXS::abort_empty_line", XS_Texinfo__MiscXS_abort_empty_line);
+        newXS_deffile("Texinfo::MiscXS::merge_text", XS_Texinfo__MiscXS_merge_text);
+        newXS_deffile("Texinfo::MiscXS::process_text", XS_Texinfo__MiscXS_process_text);
+        newXS_deffile("Texinfo::MiscXS::unicode_text", XS_Texinfo__MiscXS_unicode_text);
+        newXS_deffile("Texinfo::MiscXS::parse_texi_regex", XS_Texinfo__MiscXS_parse_texi_regex);
 #if PERL_VERSION_LE(5, 21, 5)
 #  if PERL_VERSION_GE(5, 9, 0)
     if (PL_unitcheckav)

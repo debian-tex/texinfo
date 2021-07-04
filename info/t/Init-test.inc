@@ -177,6 +177,6 @@ run_ginfo ()
     exec $ginfo "$@" 0<>$pts_device 1<&0 ;
   ) &
   ginfo_pid=$!
-  (sleep 3 ; kill $ginfo_pid) &
+  (sleep 5 ; kill $ginfo_pid) &
   killer_pid=$!
 }

@@ -118,6 +118,9 @@ after noindent2.
 $result_errors{'noindent_in_paragraph'} = [];
 
 
+$result_floats{'noindent_in_paragraph'} = {};
+
+
 
 $result_converted{'plaintext'}->{'noindent_in_paragraph'} = 'Begin para after noindent.
 

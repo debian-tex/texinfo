@@ -342,6 +342,9 @@ in example
 $result_errors{'nested_indentedblock'} = [];
 
 
+$result_floats{'nested_indentedblock'} = {};
+
+
 
 $result_converted{'plaintext'}->{'nested_indentedblock'} = '     in example
              f  f  f``g

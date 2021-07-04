@@ -149,4 +149,7 @@ $result_texts{'space_macro_after_end'} = '
 $result_errors{'space_macro_after_end'} = [];
 
 
+$result_floats{'space_macro_after_end'} = {};
+
+
 1;

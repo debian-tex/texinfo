@@ -391,6 +391,9 @@ A Note
 $result_errors{'quotation_and_author'} = [];
 
 
+$result_floats{'quotation_and_author'} = {};
+
+
 
 $result_converted{'plaintext'}->{'quotation_and_author'} = '     A quot--ation
                              -- _Some One_

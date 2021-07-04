@@ -34,4 +34,7 @@ $result_texts{'additional_space_in_end_conditional_expanded'} = 'not html
 $result_errors{'additional_space_in_end_conditional_expanded'} = [];
 
 
+$result_floats{'additional_space_in_end_conditional_expanded'} = {};
+
+
 1;

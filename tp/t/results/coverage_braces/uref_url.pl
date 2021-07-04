@@ -449,6 +449,9 @@ $result_texts{'uref_url'} = '--a (-b)
 $result_errors{'uref_url'} = [];
 
 
+$result_floats{'uref_url'} = {};
+
+
 
 $result_converted{'plaintext'}->{'uref_url'} = '-b (--a) <--c> -d -g -i -k -l -n (--m) -q
 ';

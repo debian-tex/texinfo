@@ -1836,6 +1836,9 @@ az az az az
 $result_errors{'exdent_and_formats'} = [];
 
 
+$result_floats{'exdent_and_formats'} = {};
+
+
 
 $result_converted{'plaintext'}->{'exdent_and_formats'} = '      Example   Hoho. TeX .
       @.

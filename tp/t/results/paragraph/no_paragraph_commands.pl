@@ -89,7 +89,7 @@ $result_trees{'no_paragraph_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'ee'
+              'text' => '.ee'
             }
           ],
           'parent' => {},
@@ -137,7 +137,7 @@ $result_trees{'no_paragraph_commands'}{'contents'}[5]{'parent'} = $result_trees{
 
 $result_texis{'no_paragraph_commands'} = '@*
 @titlefont{title font}
-@image{aa,bb,cc,dd,ee}
+@image{aa,bb,cc,dd,.ee}
 ';
 
 
@@ -150,11 +150,16 @@ aa
 $result_errors{'no_paragraph_commands'} = [];
 
 
+$result_floats{'no_paragraph_commands'} = {};
+
+
 
 $result_converted{'plaintext'}->{'no_paragraph_commands'} = '
+
 title font
 **********
-Text for image out of paragraph.';
+Text for image out of paragraph.
+';
 
 
 $result_converted{'html_text'}->{'no_paragraph_commands'} = '<br>

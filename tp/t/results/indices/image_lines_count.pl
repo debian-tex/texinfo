@@ -159,7 +159,9 @@ $result_trees{'image_lines_count'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -197,7 +199,7 @@ $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'con
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[6];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1];
 $result_trees{'image_lines_count'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_lines_count'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'image_lines_count'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'image_lines_count'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'image_lines_count'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'image_lines_count'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_lines_count'}{'contents'}[1]{'parent'} = $result_trees{'image_lines_count'};
 
 $result_texis{'image_lines_count'} = '@node Top
@@ -239,6 +241,9 @@ $result_menus{'image_lines_count'} = {
 $result_errors{'image_lines_count'} = [];
 
 
+$result_floats{'image_lines_count'} = {};
+
+
 
 $result_converted{'info'}->{'image_lines_count'} = 'This is , produced from .
 
@@ -253,10 +258,11 @@ ff
 
 " ]
 
+
  [index ]
 * Menu:
 
-* index entry:                           Top.                   (line 4)
+* index entry:                           Top.                   (line 5)
 
 
 
@@ -279,9 +285,10 @@ cc
 ff
 
 
+
 * Menu:
 
-* index entry:                           Top.                   (line 7)
+* index entry:                           Top.                   (line 8)
 
 ';
 
@@ -305,7 +312,6 @@ $result_converted{'html_text'}->{'image_lines_count'} = '<span id="Top"></span><
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-I"><b>I</b></a>
  &nbsp; 
 </td></tr></table>
-<hr>
-';
+<hr>';
 
 1;

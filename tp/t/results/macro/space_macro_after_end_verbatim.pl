@@ -124,4 +124,7 @@ $result_errors{'space_macro_after_end_verbatim'} = [
 ];
 
 
+$result_floats{'space_macro_after_end_verbatim'} = {};
+
+
 1;

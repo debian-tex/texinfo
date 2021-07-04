@@ -85,4 +85,7 @@ $result_errors{'tex_not_closed'} = [
 ];
 
 
+$result_floats{'tex_not_closed'} = {};
+
+
 1;

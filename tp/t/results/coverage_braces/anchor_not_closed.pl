@@ -64,4 +64,7 @@ $result_errors{'anchor_not_closed'} = [
 ];
 
 
+$result_floats{'anchor_not_closed'} = {};
+
+
 1;

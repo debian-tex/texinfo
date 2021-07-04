@@ -155,4 +155,7 @@ $result_texts{'comment_on_set_line'} = '
 $result_errors{'comment_on_set_line'} = [];
 
 
+$result_floats{'comment_on_set_line'} = {};
+
+
 1;

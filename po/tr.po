@@ -1,23 +1,23 @@
-# translation of texinfo-6.6.90.po to Turkish
+# translation of texinfo-6.7.91.po to Turkish
 # Copyright (C) 2002, 2004, 2007, 2008, 2012, 2015 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
-# texinfo-6.6.90 Türkçe Çevirisi
+# texinfo-6.7.91 Türkçe Çevirisi
 # Eyüp Hakan Duran <hakan_duran@hotmail.com>, 2002, 2004, 2007, 2008, 2012, 2015.
-# Mehmet Kececi <mkececi@mehmetkececi.com>, 2017, 2019.
+# Mehmet Kececi <mkececi@mehmetkececi.com>, 2017, 2019, 2021.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 6.6.90\n"
+"Project-Id-Version: texinfo 6.7.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-09-17 18:48+0100\n"
-"PO-Revision-Date: 2019-08-26 15:59+0300\n"
+"POT-Creation-Date: 2021-07-03 09:59+0100\n"
+"PO-Revision-Date: 2021-06-22 12:11+0300\n"
 "Last-Translator: Mehmet Kececi <mkececi@mehmetkececi.com>\n"
-"Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
+"Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 3.0\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 
 #: gnulib/lib/error.c:195
@@ -135,11 +135,11 @@ msgstr "Öncesinde düzenli ifade yok"
 msgid "memory exhausted"
 msgstr "bellek tükendi"
 
-#: info/echo-area.c:289 info/session.c:1367
+#: info/echo-area.c:289 info/session.c:1370
 msgid "Move forward a character"
 msgstr "Bir karakter ileri gider"
 
-#: info/echo-area.c:308 info/session.c:1380
+#: info/echo-area.c:308 info/session.c:1383
 msgid "Move backward a character"
 msgstr "Bir karakter geri gider"
 
@@ -151,11 +151,11 @@ msgstr "Satırın başlangıcına gider"
 msgid "Move to the end of this line"
 msgstr "Satırın sonuna gider"
 
-#: info/echo-area.c:347 info/session.c:1395
+#: info/echo-area.c:347 info/session.c:1398
 msgid "Move forward a word"
 msgstr "Bir kelime ileri gider"
 
-#: info/echo-area.c:387 info/session.c:1409
+#: info/echo-area.c:387 info/session.c:1412
 msgid "Move backward a word"
 msgstr "Bir kelime geri gider"
 
@@ -258,9 +258,9 @@ msgstr "dosya \"%s\" aranıyor"
 #: info/filesys.c:150
 #, c-format
 msgid "looking for file %s in %s"
-msgstr "Dosya %s, %s'nin içinde aranıyor"
+msgstr "dosya %s içinde %s aranıyor"
 
-#: info/filesys.c:236 info/filesys.c:250 info/filesys.c:271
+#: info/filesys.c:198 info/filesys.c:218
 #, c-format
 msgid "found file %s"
 msgstr "dosya %s bulundu"
@@ -378,7 +378,7 @@ msgstr "Mevcut bilgi dosyalarından hiçbirisinin indisinde '%s' yok"
 msgid "Error converting file character encoding"
 msgstr "Dosya karakter kodlamasını dönüştürmede hata"
 
-#: info/info.c:277 info/session.c:2786
+#: info/info.c:277 info/session.c:2789
 #, c-format
 msgid "No menu item '%s' in node '%s'"
 msgstr "'%s' düğümünde '%s' menü öğesi yok"
@@ -417,7 +417,8 @@ msgstr "%s değeri %s değişkeni için geçerli değil"
 msgid "Try --help for more information.\n"
 msgstr "Daha fazla bilgi için --help seçeneğini kullanın.\n"
 
-#: info/info.c:859 install-info/install-info.c:2236 tp/texi2any.pl:795
+#: info/info.c:859 install-info/install-info.c:2235
+#: Pod-Simple-Texinfo/pod2texi.pl:151 tp/texi2any.pl:821
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -557,7 +558,8 @@ msgstr ""
 "                               tüm elkitabını out.txt'e çıkartır\n"
 "  info -f ./foo.info           dir aramadan ./foo.info dosyasını gösterir"
 
-#: info/info.c:1147 install-info/install-info.c:613 tp/texi2any.pl:783
+#: info/info.c:1147 install-info/install-info.c:613
+#: Pod-Simple-Texinfo/pod2texi.pl:131 tp/texi2any.pl:810
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -929,19 +931,19 @@ msgstr "Bir Info komut ismini okur ve onu açıklar"
 msgid "Describe command: "
 msgstr "Komut açıklaması: "
 
-#: info/m-x.c:91
+#: info/m-x.c:89
 msgid "Read a command name in the echo area and execute it"
 msgstr "Eko alanından komut ismini okur ve onu çalıştırır"
 
-#: info/m-x.c:134
+#: info/m-x.c:132
 msgid "Cannot execute an 'echo-area' command here"
 msgstr "Bir 'eko-alanı' komutu burada çalıştırılamaz"
 
-#: info/m-x.c:148
+#: info/m-x.c:146
 msgid "Set the height of the displayed window"
 msgstr "Gösterilen pencerenin yüksekliği belirtilir"
 
-#: info/m-x.c:161
+#: info/m-x.c:159
 #, c-format
 msgid "Set screen height to (%d): "
 msgstr "Ekran yüksekliğini (%d) ye ayarlar: "
@@ -956,7 +958,7 @@ msgstr ""
 "dosyalar:\n"
 "\n"
 
-#: info/makedoc.c:464
+#: info/makedoc.c:468
 #, c-format
 msgid "Couldn't manipulate the file %s.\n"
 msgstr "%s dosyası manipüle edilemedi.\n"
@@ -1014,18 +1016,18 @@ msgstr "Terminal ilklendirilemiyor: %s\n"
 msgid "regexp error: %s"
 msgstr "düzenli ifade hatası: %s"
 
-#: info/session.c:59
+#: info/session.c:61
 msgid "Show all matching files"
 msgstr "Eşleşen tüm dosyaları göster"
 
-#: info/session.c:63
+#: info/session.c:65
 msgid "No file index"
 msgstr "Dosya indeksi yok"
 
 #. TRANSLATORS: Try to keep this message (when "expanded") at most 79
 #. characters; anything after the 79th character will not actually be
 #. displayed on an 80-column terminal.
-#: info/session.c:189
+#: info/session.c:191
 #, c-format
 msgid ""
 "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
@@ -1034,545 +1036,547 @@ msgstr ""
 "Info sürüm %s'e hoş geldiniz. Yardım için \\[get-help-window], rehber için "
 "\\[get-info-help-node] yazınız."
 
-#: info/session.c:1254
+#: info/session.c:1257
 msgid "Move down to the next line"
 msgstr "Sonraki satıra (aşağı) gider"
 
-#: info/session.c:1269
+#: info/session.c:1272
 msgid "Move up to the previous line"
 msgstr "Önceki satıra (yukarı) gider"
 
-#: info/session.c:1285
+#: info/session.c:1288
 msgid "Move the cursor to a specific line of the window"
 msgstr "İmleci pencerenin belirli bir satırına taşır"
 
-#: info/session.c:1317
+#: info/session.c:1320
 msgid "Move to the end of the line"
 msgstr "Satır sonuna gider"
 
-#: info/session.c:1342
+#: info/session.c:1345
 msgid "Move to the start of the line"
 msgstr "Satır başına gider"
 
-#: info/session.c:1424
+#: info/session.c:1427
 msgid "Move to the start of this node"
 msgstr "Bu düğümün başlangıcına gider"
 
-#: info/session.c:1431
+#: info/session.c:1434
 msgid "Move to the end of this node"
 msgstr "Bu düğümün sonuna gider"
 
-#: info/session.c:1522
+#: info/session.c:1525
 msgid "Scroll forward in this window"
 msgstr "Bu pencerede ileriye doğru kaydırır"
 
-#: info/session.c:1536
+#: info/session.c:1539
 msgid "Scroll backward in this window"
 msgstr "Bu pencerede geriye doğru kaydırır"
 
-#: info/session.c:1544
+#: info/session.c:1547
 msgid "Scroll forward in this window and set default window size"
 msgstr ""
 "Bu pencerede ileriye doğru kaydırır ve öntanımlı pencere boyutuna ayarlar"
 
-#: info/session.c:1559
+#: info/session.c:1562
 msgid "Scroll backward in this window and set default window size"
 msgstr ""
 "Bu pencerede geriye doğru kaydırır ve öntanımlı pencere boyutunu ayarlar"
 
-#: info/session.c:1565
+#: info/session.c:1568
 msgid "Scroll forward in this window staying within node"
 msgstr "Bu pencerede, düğüm içinde kalarak ileriye doğru kaydırır"
 
-#: info/session.c:1580
+#: info/session.c:1583
 msgid "Scroll backward in this window staying within node"
 msgstr "Bu pencerede, düğüm içinde kalarak geriye doğru kaydırır"
 
-#: info/session.c:1588
+#: info/session.c:1591
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "Bu pencerede, düğüm içinde kalarak ileriye doğru kaydırır ve öntanımlı "
 "pencere boyutunu ayarlar"
 
-#: info/session.c:1615
+#: info/session.c:1618
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
-msgstr "geri ve set ön tanımlı"
+msgstr ""
+"Düğüm içinde kalan bu pencerede geriye doğru ilerleyin ve varsayılan pencere "
+"boyutunu ayarlayın"
 
-#: info/session.c:1621
+#: info/session.c:1624
 msgid "Scroll down by lines"
 msgstr "Aşağıya doğru satır kaydırır"
 
-#: info/session.c:1627
+#: info/session.c:1630
 msgid "Scroll up by lines"
 msgstr "Yukarıya doğru satır kaydırır"
 
-#: info/session.c:1639
+#: info/session.c:1642
 msgid "Scroll down by half screen size"
 msgstr "Aşağıya doğru yarım ekran boyutu kaydırır"
 
-#: info/session.c:1666
+#: info/session.c:1669
 msgid "Scroll up by half screen size"
 msgstr "Yukarıya doğru yarım ekran boyutu kaydırır"
 
-#: info/session.c:1672
+#: info/session.c:1675
 msgid "Scroll the other window"
 msgstr "Diğer pencereyi kaydırır"
 
-#: info/session.c:1693
+#: info/session.c:1696
 msgid "Scroll the other window backward"
 msgstr "Diğer pencereyi geriye doğru kaydırır"
 
-#: info/session.c:1807
+#: info/session.c:1810
 msgid "Select the next window"
 msgstr "Sonraki pencereyi seçer"
 
-#: info/session.c:1844
+#: info/session.c:1847
 msgid "Select the previous window"
 msgstr "Önceki pencereyi seçer"
 
-#: info/session.c:1888
+#: info/session.c:1891
 msgid "Split the current window"
 msgstr "Mevcut pencereyi böler"
 
-#: info/session.c:1933
+#: info/session.c:1936
 msgid "Delete the current window"
 msgstr "Mevcut pencereyi siler"
 
-#: info/session.c:1938
+#: info/session.c:1941
 msgid "Cannot delete a permanent window"
 msgstr "Kalıcı bir pencere silinemez"
 
-#: info/session.c:1969
+#: info/session.c:1972
 msgid "Delete all other windows"
 msgstr "Diğer tüm pencereleri siler"
 
-#: info/session.c:2015
+#: info/session.c:2018
 msgid "Grow (or shrink) this window"
 msgstr "Bu pencereyi büyütür (veya küçültür)"
 
-#: info/session.c:2026
+#: info/session.c:2029
 msgid "Divide the available screen space among the visible windows"
 msgstr "Mevcut ekran boşluğunu görünür pencereler arasında bölüştürür"
 
-#: info/session.c:2033
+#: info/session.c:2036
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "Mevcut penceredeki satır sarma durumunu değiştirir"
 
-#: info/session.c:2187
+#: info/session.c:2190
 msgid "Select this menu item"
 msgstr "Bu menü öğesini seçer"
 
-#: info/session.c:2217
+#: info/session.c:2220
 #, c-format
 msgid "There isn't %d item in this menu"
 msgid_plural "There aren't %d items in this menu"
 msgstr[0] "Bu menüde %d öğesi yok"
-msgstr[1] "Bu menüde %d adet öğe yok."
+msgstr[1] "Bu menüde %d adet öğe yok"
 
-#: info/session.c:2226
+#: info/session.c:2229
 msgid "Select the last item in this node's menu"
 msgstr "Bu düğümün menüsündeki son öğeyi seçer"
 
-#: info/session.c:2332 info/session.c:2333
+#: info/session.c:2335 info/session.c:2336
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Menü öğesi (%s): "
 
-#: info/session.c:2336
+#: info/session.c:2339
 msgid "Menu item: "
 msgstr "Menü öğesi: "
 
-#: info/session.c:2343 info/session.c:2344
+#: info/session.c:2346 info/session.c:2347
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "İzlenecek xref (%s): "
 
-#: info/session.c:2347
+#: info/session.c:2350
 msgid "Follow xref: "
 msgstr "İzlenecek xref: "
 
-#: info/session.c:2424
+#: info/session.c:2427
 #, c-format
 msgid "The reference disappeared! (%s)"
 msgstr "Referans yokoldu! (%s)"
 
-#: info/session.c:2436
+#: info/session.c:2439
 msgid "Read a menu item and select its node"
 msgstr "Bir menü öğesini okur ve düğümünü seçer"
 
-#: info/session.c:2461
+#: info/session.c:2464
 msgid "Read a footnote or cross reference and select its node"
 msgstr "Oku yada ve select"
 
-#: info/session.c:2484
+#: info/session.c:2487
 msgid "Move to the start of this node's menu"
 msgstr "Bu düğüm menüsünün başlangıcına gider"
 
-#: info/session.c:2506
+#: info/session.c:2509
 msgid "Visit as many menu items at once as possible"
 msgstr "Tek seferde mümkün olan en fazla sayıda menü öğesine uğrar"
 
-#: info/session.c:2606
+#: info/session.c:2609
 msgid "Move to the previous cross reference"
 msgstr "Önceki çapraz başvuruya gider"
 
-#: info/session.c:2669
+#: info/session.c:2672
 msgid "Move to the next cross reference"
 msgstr "Sonraki çapraz başvuruya gider"
 
-#: info/session.c:2730
+#: info/session.c:2733
 msgid "Select reference or menu item appearing on this line"
 msgstr "Bu satırdaki referans ya da menü öğesini seçer"
 
-#: info/session.c:2764
+#: info/session.c:2767
 #, c-format
 msgid "No menu in node '%s'"
 msgstr "Menüsü olmayan düğüm '%s'"
 
-#: info/session.c:2811
+#: info/session.c:2814
 #, c-format
 msgid "Unable to find node referenced by '%s' in '%s'"
 msgstr "'%s' de '%s' tarafından başvurulan düğüm bulunamadı"
 
-#: info/session.c:2867
+#: info/session.c:2870
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Dizinden başlayarak bir menü listesini oku ve izle"
 
-#: info/session.c:2869
+#: info/session.c:2872
 msgid "Follow menus: "
 msgstr "Menüleri izle: "
 
-#: info/session.c:2974
+#: info/session.c:2977
 msgid "Select the Next node"
 msgstr "Sonraki düğümü seçer"
 
-#: info/session.c:2981
+#: info/session.c:2984
 msgid "Select the Prev node"
 msgstr "Önceki düğümü seçer"
 
-#: info/session.c:2988
+#: info/session.c:2991
 msgid "Select the Up node"
 msgstr "Üstteki düğümü seçer"
 
-#: info/session.c:2994
+#: info/session.c:2997
 msgid "Select the last node in this file"
 msgstr "Bu dosyadaki son düğümü seçer"
 
-#: info/session.c:3021 info/session.c:3054
+#: info/session.c:3024 info/session.c:3057
 msgid "This window has no additional nodes"
 msgstr "Bu pencerenin başka düğümü yok"
 
-#: info/session.c:3027
+#: info/session.c:3030
 msgid "Select the first node in this file"
 msgstr "Bu dosyadaki ilk düğümü seçer"
 
-#: info/session.c:3161
+#: info/session.c:3164
 msgid "No more nodes within this document"
 msgstr "Bu belge içinde başka düğüm yok"
 
-#: info/session.c:3205 info/session.c:3244
+#: info/session.c:3208 info/session.c:3255
 msgid "No 'Prev' or 'Up' for this node within this document"
 msgstr "Bu belge içinde, bu düğüm için 'Önceki' ya da 'Yukarı' yok"
 
-#: info/session.c:3257
+#: info/session.c:3268
 msgid "Move forwards or down through node structure"
 msgstr "Düğüm yapısı içinde ileriye ya da aşağıya gider"
 
-#: info/session.c:3274
+#: info/session.c:3285
 msgid "Move backwards or up through node structure"
 msgstr "Düğüm yapısı içinde geriye ya da yukarıya gider"
 
-#: info/session.c:3297
+#: info/session.c:3308
 msgid "Read a node name and select it"
 msgstr "Bir düğüm adı okur ve seçer"
 
-#: info/session.c:3351 info/session.c:3355
+#: info/session.c:3362 info/session.c:3366
 msgid "Goto node: "
 msgstr "Düğüme gider: "
 
-#: info/session.c:3534
+#: info/session.c:3545
 msgid "Find the node describing program invocation"
 msgstr "Program çağırmayı açıklayan düğümü bulur"
 
-#: info/session.c:3536
+#: info/session.c:3547
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "[%s] in çağırma düğümünü bulur: "
 
-#: info/session.c:3581
+#: info/session.c:3593
 msgid "Read a manpage reference and select it"
 msgstr "Bir klavuz sayfası başvurusunu okur ve seçer"
 
-#: info/session.c:3585
+#: info/session.c:3597
 msgid "Get Manpage: "
 msgstr "Alınacak klavuz sayfası: "
 
-#: info/session.c:3606
+#: info/session.c:3618
 msgid "Select the node 'Top' in this file"
 msgstr "Bu dosyadaki 'En Üst' düğümü seç"
 
-#: info/session.c:3612
+#: info/session.c:3624
 msgid "Select the node '(dir)'"
 msgstr "'(dizin)' düğümünü seç"
 
-#: info/session.c:3618
+#: info/session.c:3630
 msgid "Show full file name of node being displayed"
 msgstr "Görüntülenen düğümün tam dosya adını göster"
 
-#: info/session.c:3635
+#: info/session.c:3647
 msgid "Select the most recently selected node"
 msgstr "En son seçilen düğümü seçer"
 
-#: info/session.c:3640
+#: info/session.c:3652
 msgid "No earlier node in history"
 msgstr "Geçmişte daha önceki bir düğüm yok"
 
-#: info/session.c:3644
+#: info/session.c:3656
 msgid "Read the name of a file and select it"
 msgstr "Bir dosyanın adını okur ve seçer"
 
-#: info/session.c:3648
+#: info/session.c:3660
 msgid "Find file: "
 msgstr "Dosyayı bul: "
 
-#: info/session.c:3665
+#: info/session.c:3677
 #, c-format
 msgid "Cannot find '%s'"
 msgstr "'%s' bulunamıyor"
 
-#: info/session.c:3713
+#: info/session.c:3725
 #, c-format
 msgid "Could not create output file '%s'"
 msgstr "Çıktı dosyası '%s' oluşturulamıyor"
 
-#: info/session.c:3727
+#: info/session.c:3739
 #, c-format
 msgid "error writing to %s: %s"
 msgstr "%s'e yazma hatası:%s"
 
-#: info/session.c:3736
+#: info/session.c:3748
 #, c-format
 msgid "closing %s"
 msgstr "%s kapatılıyor"
 
-#: info/session.c:3785
+#: info/session.c:3797
 #, c-format
 msgid "writing node %s..."
 msgstr "%s düğümü yazılıyor..."
 
-#: info/session.c:3831
+#: info/session.c:3843
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "Bu düğümün içeriğini INFO_PRINT_COMMAND üzerinden veri yolla"
 
-#: info/session.c:3859
+#: info/session.c:3871
 #, c-format
 msgid "Cannot open pipe to '%s'"
 msgstr "Veri yolu '%s' e açılamıyor"
 
-#: info/session.c:3864
+#: info/session.c:3876
 #, c-format
 msgid "printing node %s..."
 msgstr "%s düğümü yazdırılıyor..."
 
-#: info/session.c:3872
+#: info/session.c:3884
 #, c-format
 msgid "finished printing node %s"
 msgstr "%s düğümünün yazdırılması tamamlandı"
 
-#: info/session.c:3904
+#: info/session.c:3916
 msgid "Toggle the usage of regular expressions in searches"
 msgstr "Aramalarda düzenli ifade kullanımına geç"
 
-#: info/session.c:3908
+#: info/session.c:3920
 msgid "Using regular expressions for searches"
 msgstr "Aramalarda düzenli ifade kullanılıyor"
 
-#: info/session.c:3909
+#: info/session.c:3921
 msgid "Using literal strings for searches"
 msgstr "Aramalarda yazılı dizge kullanılıyor"
 
-#: info/session.c:4112
+#: info/session.c:4124
 msgid "Search continued from the end of the document"
 msgstr "Arama, belgenin sonundan sürdürülüyor"
 
-#: info/session.c:4117
+#: info/session.c:4129
 msgid "Search continued from the beginning of the document"
 msgstr "Arama, belgenin başından sürdürülüyor"
 
-#: info/session.c:4134
+#: info/session.c:4146
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "%s altdosyası aranıyor ..."
 
-#: info/session.c:4175 info/session.c:4441 info/session.c:4554
+#: info/session.c:4187 info/session.c:4453 info/session.c:4566
 msgid "Search failed"
 msgstr "Arama başarısız"
 
-#: info/session.c:4192
+#: info/session.c:4204
 #, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%s%s [%s]: "
 
-#: info/session.c:4193 info/session.c:4199
+#: info/session.c:4205 info/session.c:4211
 msgid "Regexp search"
 msgstr "Düzenli ifade arama"
 
-#: info/session.c:4193 info/session.c:4199
+#: info/session.c:4205 info/session.c:4211
 msgid "Search"
 msgstr "Ara"
 
-#: info/session.c:4194 info/session.c:4200
+#: info/session.c:4206 info/session.c:4212
 msgid " case-sensitively"
 msgstr " büyük/küçük harf duyarlı şekilde"
 
-#: info/session.c:4195 info/session.c:4201
+#: info/session.c:4207 info/session.c:4213
 msgid " backward"
 msgstr " geriye doğru"
 
-#: info/session.c:4198
+#: info/session.c:4210
 #, c-format
 msgid "%s%s%s: "
 msgstr "%s%s%s: "
 
-#: info/session.c:4218
+#: info/session.c:4230
 msgid "Search string too short"
 msgstr "Arama dizgesi çok kısa"
 
-#: info/session.c:4412
+#: info/session.c:4424
 #, c-format
 msgid "Going back to last match from %s"
 msgstr "%s'den son karşılaşmaya geri dönüyor"
 
-#: info/session.c:4441 info/session.c:4554
+#: info/session.c:4453 info/session.c:4566
 msgid "No more matches"
 msgstr "Daha fazla eşleşme yok"
 
-#: info/session.c:4581
+#: info/session.c:4593
 msgid "Search this node and subnodes for a string"
 msgstr "Bu düğümü ve alt düğümleri bir dizi için ara"
 
 #. TRANSLATORS: %s is the title of a node.
-#: info/session.c:4588
+#: info/session.c:4600
 #, c-format
 msgid "Search under %s: "
-msgstr "%s altdosyası aranıyor:"
+msgstr "%s altında ara: "
 
-#: info/session.c:4603
+#: info/session.c:4615
 msgid "Go to next match in Info sub-tree"
 msgstr "Info alt-ağacında bir sonraki eşleşmeye git"
 
-#: info/session.c:4607 info/session.c:4619
+#: info/session.c:4619 info/session.c:4631
 msgid "No active search"
 msgstr "Etkin arama yok"
 
-#: info/session.c:4615
+#: info/session.c:4627
 msgid "Go to previous match in Info sub-tree"
 msgstr "Info alt-ağacındaki önceki eşleşmeye git"
 
-#: info/session.c:4628
+#: info/session.c:4640
 msgid "Read a string and search for it case-sensitively"
 msgstr "Bir dizge okur ve onu büyük/küçük harf duyarlı şekilde arar"
 
-#: info/session.c:4633
+#: info/session.c:4645
 msgid "Read a string and search for it"
 msgstr "Bir dizge okur ve (onu) arar"
 
-#: info/session.c:4639
+#: info/session.c:4651
 msgid "Read a string and search backward for it"
 msgstr "Bir dizge okur ve (onu) geriye doğru arar"
 
-#: info/session.c:4647
+#: info/session.c:4659
 msgid "Repeat last search in the same direction"
 msgstr "Son aramayı aynı yönde yineler"
 
-#: info/session.c:4661 info/session.c:4712
+#: info/session.c:4673 info/session.c:4724
 msgid "No previous search string"
 msgstr "Daha önceden arama dizgesi yok"
 
-#: info/session.c:4698
+#: info/session.c:4710
 msgid "Repeat last search in the reverse direction"
 msgstr "Son aramayı ters yönde yineler"
 
-#: info/session.c:4751
+#: info/session.c:4763
 msgid "Clear displayed search matches"
 msgstr "Görüntülenen eşleşmiş aramaları sil"
 
-#: info/session.c:4767 info/session.c:4773
+#: info/session.c:4779 info/session.c:4785
 msgid "Search interactively for a string as you type it"
 msgstr "Bir dizgeyi siz yazarken etkileşimli şekilde arar"
 
-#: info/session.c:4893
+#: info/session.c:4905
 msgid "Regexp I-search backward: "
 msgstr "Düzenli ifade I-arama, geriye doğru: "
 
-#: info/session.c:4894
+#: info/session.c:4906
 msgid "I-search backward: "
 msgstr "I-arama, geriye doğru: "
 
-#: info/session.c:4896
+#: info/session.c:4908
 msgid "Regexp I-search: "
 msgstr "Düzenli ifade I-arama: "
 
-#: info/session.c:4897
+#: info/session.c:4909
 msgid "I-search: "
 msgstr "I-arama: "
 
-#: info/session.c:4922 info/session.c:4925
+#: info/session.c:4934 info/session.c:4937
 msgid "Failing "
 msgstr "Başarılamıyor "
 
-#: info/session.c:5290
+#: info/session.c:5302
 msgid "Cancel current operation"
 msgstr "Mevcut işlemi iptal eder"
 
-#: info/session.c:5297
+#: info/session.c:5309
 msgid "Quit"
 msgstr "Çık"
 
-#: info/session.c:5302
+#: info/session.c:5314
 msgid "Display version of Info being run"
 msgstr "Çalışan Ino'nun sürüm bilgisini görüntüler"
 
-#: info/session.c:5304
+#: info/session.c:5316
 #, c-format
 msgid "GNU Info version %s"
 msgstr "GNU Info sürüm %s"
 
-#: info/session.c:5309
+#: info/session.c:5321
 msgid "Redraw the display"
 msgstr "Görüntüyü yeniden çizer"
 
-#: info/session.c:5346
+#: info/session.c:5358
 msgid "Quit using Info"
 msgstr "Info'dan çıkar"
 
-#: info/session.c:5362
+#: info/session.c:5374
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Bu tuşun küçük harfine atanmış komutu yürütür"
 
-#: info/session.c:5373
+#: info/session.c:5385
 #, c-format
 msgid "Unknown command (%s)"
 msgstr "Bilinmeyen komut (%s)"
 
-#: info/session.c:5376
+#: info/session.c:5388
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" geçersiz"
 
-#: info/session.c:5377
+#: info/session.c:5389
 #, c-format
 msgid "'%s' is invalid"
 msgstr "'%s' geçersiz"
 
-#: info/session.c:5695
+#: info/session.c:5707
 msgid "Add this digit to the current numeric argument"
 msgstr "Mevcut sayısal argümana bu sayıyı ekle"
 
-#: info/session.c:5702
+#: info/session.c:5714
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Mevcut sayısal argümanı başlat (veya 4'le çarp)"
 
@@ -1925,261 +1929,416 @@ msgstr ""
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: (%s) okunamıyor ve (%s) oluşturulamıyor"
 
-#: install-info/install-info.c:1151 install-info/install-info.c:1191
+#: install-info/install-info.c:1150 install-info/install-info.c:1190
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "Eşleşen END-INFO-DIR-ENTRY'siz START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1186
+#: install-info/install-info.c:1185
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "Eşleşen START-INFO-DIR-ENTRY'siz END-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:2061 install-info/install-info.c:2071
+#: install-info/install-info.c:2060 install-info/install-info.c:2070
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: zaten dir dosyası var: %s\n"
 
-#: install-info/install-info.c:2167
+#: install-info/install-info.c:2166
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Info dosyasını yalnızca bir kez belirtin.\n"
 
-#: install-info/install-info.c:2200
+#: install-info/install-info.c:2199
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "Bir başka düzenli ifade belirlendi, `%s' yok sayılıyor"
 
-#: install-info/install-info.c:2212
+#: install-info/install-info.c:2211
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Düzenli ifadede hata `%s': %s"
 
-#: install-info/install-info.c:2274
+#: install-info/install-info.c:2273
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "fazladan komut satırı argümanı `%s'"
 
-#: install-info/install-info.c:2278
+#: install-info/install-info.c:2277
 msgid "No input file specified; try --help for more information."
 msgstr "Girdi dosyası belirtilmemiş; daha fazla bilgi için --help deneyin."
 
-#: install-info/install-info.c:2280
+#: install-info/install-info.c:2279
 msgid "No dir file specified; try --help for more information."
-msgstr "dizin dosyası belirtilmemiş; daha fazla bilgi için --help deneyin."
+msgstr "Dizin dosyası belirtilmemiş; daha fazla bilgi için --help deneyin."
 
-#: install-info/install-info.c:2301
+#: install-info/install-info.c:2300
 #, c-format
 msgid "Could not read %s."
 msgstr "%s okunamıyor."
 
-#: install-info/install-info.c:2448
+#: install-info/install-info.c:2447
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "`%s' içinde info dizin girdisi yok"
 
-#: install-info/install-info.c:2696
+#: install-info/install-info.c:2695
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "`%s' için girdi bulunamadı; hiçbir şey silinmedi"
 
-#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:796
-#: tp/Texinfo/Convert/Converter.pm:834 tp/Texinfo/Convert/Converter.pm:1109
-#: tp/Texinfo/Convert/DocBook.pm:318 tp/Texinfo/Convert/HTML.pm:6607
-#: tp/Texinfo/Convert/HTML.pm:6631 tp/Texinfo/Convert/HTML.pm:7009
-#: tp/Texinfo/Convert/HTML.pm:7068 tp/Texinfo/Convert/HTML.pm:7146
-#: tp/Texinfo/Convert/IXIN.pm:286 tp/Texinfo/Convert/Info.pm:297
-#: tp/Texinfo/Convert/TexinfoXML.pm:451
+#: Pod-Simple-Texinfo/pod2texi.pl:104
+msgid "Usage: pod2texi [OPTION]... POD..."
+msgstr "Kullanım: %s [SEÇENEK]... TEXINFO-DOSYASI..."
+
+#: Pod-Simple-Texinfo/pod2texi.pl:106
+msgid ""
+"Translate Perl pod documentation file(s) to Texinfo.  There are two\n"
+"basic modes of operation.  First, by default, each pod is translated to\n"
+"a standalone Texinfo manual.\n"
+"\n"
+"Second, if C<--base-level> is set higher than 0, each pod is translated\n"
+"to a file suitable for C<@include>, and one more file with all the\n"
+"C<@include>s is generated, intended to be C<@include>d in turn within\n"
+"a hand-written top-level file."
+msgstr ""
+"Perl pod Dokümantasyon dosyalarını Texinfo'ya çevirin.  İki \n"
+"temel çalışma modları vardır.  İlk olarak, varsayılan olarak, her bölme şu "
+"şekilde çevrilir\n"
+"bağımsız bir Texinfo kılavuzu.\n"
+"\n"
+"İkincisi, C < -- base-level> 0'dan yüksek ayarlanırsa, her bölme çevrilir\n"
+"C < @include> için uygun bir dosyaya ve tüm dosyaları içeren başka bir "
+"dosyaya\n"
+"C<@include>s, sırayla C < @include>d olması amaçlanan oluşturulur\n"
+"elle yazılmış bir üst-düzey dosya."
+
+#: Pod-Simple-Texinfo/pod2texi.pl:115
+msgid ""
+"Options:\n"
+"    --appendix-sections     use appendix-like sections"
+msgstr ""
+"Seçenekler:\n"
+"    --appendix-sections    ek-benzeri bölümleri kullanın"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:117
+msgid "    --base-level=NUM|NAME   level of the head1 commands; default 0"
+msgstr "   --base-level=NUM|NAME   head1 komutlarının seviyesi; varsayılan 0"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:118
+msgid "    --debug=NUM             set debugging level"
+msgstr "   --debug=NUM             hata ayıklama düzeyini ayarlama"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:119
+msgid "    --help                  display this help and exit"
+msgstr "    --help                      bu yardımı göster ve çık"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:120
+msgid "    --no-fill-section-gaps  do not fill sectioning gaps"
+msgstr "    --no-fill-section-gaps  kesit boşluklarını doldurmayın"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:121
+msgid "    --no-section-nodes      use anchors for sections instead of nodes"
+msgstr ""
+"    --no-section-nodes      düğümler yerine bölümler için çapalar kullanın"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:122
+msgid ""
+"    --output=NAME           output to NAME for the first or main manual\n"
+"                            instead of standard output"
+msgstr ""
+"    --output=NAME           ilk veya ana kılavuzun ADINA çıktı\n"
+"                            standart çıktı yerine"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:124
+msgid "    --preamble=STR          insert STR as beginning boilerplate"
+msgstr "    --preamble=STR          STR'yi başlangıç boilerplate olarak ekle"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:125
+msgid ""
+"    --subdir=NAME           put files included in the main manual in NAME"
+msgstr ""
+"    --subdir=NAME           ana kılavuzda yer alan dosyaları NAME içine koyun"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:126
+msgid "    --top                   top for the main manual"
+msgstr "    --top                   ana kullanım kılavuzu için top"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:127
+#, fuzzy
+#| msgid "    --unnumbered-sections   use unumbered sections"
+msgid "    --unnumbered-sections   do not number sections"
+msgstr "    --unnumbered-sections   numaralandırılmamış bölümleri kullanma"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:128
+msgid "    --version               display version information and exit"
+msgstr "    --version               sürüm bilgilerini görüntüleme ve çıkış"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:162
+#, perl-format
+msgid "%s: wrong argument for --base-level\n"
+msgstr "%s: --base-level için yanlış argüman\n"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:182
+#, perl-format
+msgid "%s: could not create directory %s: %s"
+msgstr "%s: %s dizin oluşturulamadı: %s"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:197
+#, fuzzy, perl-format
+#| msgid "%s: missing file argument;\n"
+msgid "%s: missing file argument\n"
+msgstr "%s: dosya argümanı eksik;\n"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:198 tp/texi2any.pl:1149
+#, perl-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Daha fazla bilgi için `%s --help' yazın.\n"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:219
+#, perl-format
+msgid "%s: ignoring %s without content\n"
+msgstr "%s: içerik olmadan %s yoksayılıyor\n"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:354 Pod-Simple-Texinfo/pod2texi.pl:433
+#: tp/texi2any.pl:1385 tp/texi2any.pl:1419
+#, perl-format
+msgid "%s: could not open %s for writing: %s\n"
+msgstr "%s: %s yazmak için açılamıyorı: %s\n"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:382
+#, perl-format
+msgid "%s: could not open %s: %s\n"
+msgstr "%s: %s açılamadı: %s\n"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:395 Pod-Simple-Texinfo/pod2texi.pl:476
+#: tp/texi2any.pl:1356 tp/texi2any.pl:1432
+#, perl-format
+msgid "%s: error on closing %s: %s\n"
+msgstr "%s: %s'i kapatmada hata: %s\n"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:402
+#, perl-format
+msgid "%s: removing %s as input file %s has no content\n"
+msgstr "%s: %s giriş dosyası olarak kaldırılıyor %s içeriği yok\n"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:419
+#, perl-format
+msgid "%s: rename %s failed: %s\n"
+msgstr "%s: %s'in yeniden adlandırması başarısız: %s\n"
+
+#: Pod-Simple-Texinfo/pod2texi.pl:482
+#, perl-format
+msgid "%s: error on closing stdout: %s\n"
+msgstr "%s: stdout'u kapatmada hata: %s\n"
+
+#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:782
+#: tp/Texinfo/Convert/Converter.pm:820 tp/Texinfo/Convert/Converter.pm:1095
+#: tp/Texinfo/Convert/DocBook.pm:318 tp/Texinfo/Convert/HTML.pm:7064
+#: tp/Texinfo/Convert/HTML.pm:7120 tp/Texinfo/Convert/HTML.pm:7144
+#: tp/Texinfo/Convert/HTML.pm:7576 tp/Texinfo/Convert/HTML.pm:7648
+#: tp/Texinfo/Convert/HTML.pm:7755 tp/Texinfo/Convert/IXIN.pm:286
+#: tp/Texinfo/Convert/Info.pm:297 tp/Texinfo/Convert/TexinfoXML.pm:460
 #, perl-format
 msgid "could not open %s for writing: %s"
 msgstr "%s yazmak için açılamıyor: %s"
 
-#: tp/Texinfo/Common.pm:887
-msgid ""
-"move your @contents command if you want the contents after the title page"
-msgstr ""
-"başlık sayfasının ardındaki içeriği istiyorsanız @contents komutunu hareket "
-"ettir"
-
-#: tp/Texinfo/Common.pm:890
-msgid ""
-"move your @shortcontents and @contents commands if you want the contents "
-"after the title page"
-msgstr ""
-"başlık sayfasından sonra içeriği istiyorsanız @shortcontents ve @contents "
-"komutlarınızı hareket ettirin"
-
-#: tp/Texinfo/Common.pm:1149 tp/Texinfo/XS/parsetexi/end_line.c:1607
-#: tp/Texinfo/XS/parsetexi/end_line.c:1617
+#: tp/Texinfo/Common.pm:1217 tp/Texinfo/XS/parsetexi/end_line.c:1608
+#: tp/Texinfo/XS/parsetexi/end_line.c:1618
 #, c-format, perl-format
 msgid "%s is not a valid language code"
 msgstr "%s geçerli bir dil kodu değildir"
 
-#: tp/Texinfo/Common.pm:1154 tp/Texinfo/XS/parsetexi/end_line.c:1634
+#: tp/Texinfo/Common.pm:1222 tp/Texinfo/XS/parsetexi/end_line.c:1635
 #, c-format, perl-format
 msgid "%s is not a valid region code"
 msgstr "%s geçerli bir bölge kodu değildir"
 
-#: tp/Texinfo/Common.pm:1171
+#: tp/Texinfo/Common.pm:1239
 #, perl-format
 msgid "%s is not a valid split possibility"
 msgstr "%s geçerli bir bölme olasılığı değildir"
 
-#: tp/Texinfo/Common.pm:1193
+#: tp/Texinfo/Common.pm:1261
 #, perl-format
 msgid "could not read %s: %s"
 msgstr "%s okunamıyor: %s"
 
-#: tp/Texinfo/Common.pm:1213
+#: tp/Texinfo/Common.pm:1281
 #, perl-format
 msgid "error on closing @verbatiminclude file %s: %s"
 msgstr "%s @verbatiminclude dosyasını kapatmada hata: %s"
 
-#: tp/Texinfo/Common.pm:1219 tp/Texinfo/ParserNonXS.pm:2971
+#: tp/Texinfo/Common.pm:1287 tp/Texinfo/ParserNonXS.pm:3003
 #, perl-format
 msgid "@%s: could not find %s"
 msgstr "@%s: %s bulunamıyor"
 
-#: tp/Texinfo/Common.pm:2198
+#: tp/Texinfo/Common.pm:2267
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr "@%s içindeki sayı karakteri korunamıyor"
 
-#: tp/Texinfo/Common.pm:2580
+#: tp/Texinfo/Common.pm:2706
 #, perl-format
 msgid "empty node name after expansion `%s'"
 msgstr "`%s' açılımından sonra boş düğüm adı"
 
-#: tp/Texinfo/Common.pm:2588
+#: tp/Texinfo/Common.pm:2714
 #, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "@%s `%s' daha önce tanımlanmış"
 
-#: tp/Texinfo/Common.pm:2594
+#: tp/Texinfo/Common.pm:2720
 #, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "işte @%s olarak önceki tanım"
 
-#: tp/Texinfo/Common.pm:2613 tp/Texinfo/ParserNonXS.pm:3258
+#: tp/Texinfo/Common.pm:2739 tp/Texinfo/ParserNonXS.pm:3290
 #: tp/Texinfo/XS/parsetexi/end_line.c:47
 #, c-format, perl-format
 msgid "empty argument in @%s"
 msgstr "@%s'de boş argüman"
 
-#: tp/Texinfo/Convert/Converter.pm:742
+#: tp/Texinfo/Convert/Converter.pm:728
 #, perl-format
 msgid "%s: output incompatible with split"
 msgstr "%s: çıktı bölmeyle uyumsuz"
 
-#: tp/Texinfo/Convert/Converter.pm:817 tp/Texinfo/Convert/Converter.pm:850
-#: tp/Texinfo/Convert/DocBook.pm:354 tp/Texinfo/Convert/HTML.pm:7035
-#: tp/Texinfo/Convert/HTML.pm:7094 tp/Texinfo/Convert/IXIN.pm:909
-#: tp/Texinfo/Convert/Info.pm:160 tp/Texinfo/Convert/Info.pm:186
-#: tp/Texinfo/Convert/Info.pm:214 tp/Texinfo/Convert/Info.pm:277
-#: tp/Texinfo/Convert/TexinfoXML.pm:470 tp/Texinfo/ParserNonXS.pm:1813
+#: tp/Texinfo/Convert/Converter.pm:803 tp/Texinfo/Convert/Converter.pm:836
+#: tp/Texinfo/Convert/DocBook.pm:354 tp/Texinfo/Convert/HTML.pm:7060
+#: tp/Texinfo/Convert/HTML.pm:7604 tp/Texinfo/Convert/HTML.pm:7669
+#: tp/Texinfo/Convert/IXIN.pm:909 tp/Texinfo/Convert/Info.pm:160
+#: tp/Texinfo/Convert/Info.pm:186 tp/Texinfo/Convert/Info.pm:214
+#: tp/Texinfo/Convert/Info.pm:277 tp/Texinfo/Convert/TexinfoXML.pm:479
+#: tp/Texinfo/ParserNonXS.pm:1839
 #, perl-format
 msgid "error on closing %s: %s"
 msgstr "%s'i kapatmada hata: %s"
 
-#: tp/Texinfo/Convert/Converter.pm:928
+#: tp/Texinfo/Convert/Converter.pm:914
 #, perl-format
 msgid "could not create directories `%s' or `%s': %s"
 msgstr "`%s' ya da `%s' dizinleri oluşturulamıyor: %3$s"
 
-#: tp/Texinfo/Convert/Converter.pm:936
+#: tp/Texinfo/Convert/Converter.pm:922
 #, perl-format
 msgid "could not create directory `%s': %s"
 msgstr "`%s' dizini oluşturulamıyor: %s"
 
-#: tp/Texinfo/Convert/DocBook.pm:1022
+#: tp/Texinfo/Convert/DocBook.pm:1021
 #, perl-format
 msgid "@image file `%s' not found, using `%s'"
 msgstr "@image dosyası `%s' bulunamıyor, `%s' kullanılacak"
 
-#: tp/Texinfo/Convert/DocBook.pm:1142 tp/Texinfo/ParserNonXS.pm:5016
+#: tp/Texinfo/Convert/DocBook.pm:1141 tp/Texinfo/ParserNonXS.pm:5058
 #: tp/Texinfo/XS/parsetexi/separator.c:427
 msgid "no argument specified for @U"
 msgstr "@U için argüman belirtlimedi"
 
-#: tp/Texinfo/Convert/HTML.pm:1752
+#: tp/Texinfo/Convert/HTML.pm:1826
 #, perl-format
 msgid "@image file `%s' (for HTML) not found, using `%s'"
 msgstr "@image dosyası `%s' (HTML için) bulunamadı, `%s' kullanılacak"
 
-#: tp/Texinfo/Convert/HTML.pm:2421
+#: tp/Texinfo/Convert/HTML.pm:2639
 #, perl-format
 msgid "raw format %s is not converted"
 msgstr "ham biçem %s dönüştürülmedi"
 
-#: tp/Texinfo/Convert/HTML.pm:4665
+#: tp/Texinfo/Convert/HTML.pm:5001
 #, perl-format
 msgid "could not open html refs config file %s: %s"
 msgstr "%s html başvuru ayar dosyası açılamıyor: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:4693
+#: tp/Texinfo/Convert/HTML.pm:5029
 msgid "missing type"
 msgstr "kayıp tür"
 
-#: tp/Texinfo/Convert/HTML.pm:4696
+#: tp/Texinfo/Convert/HTML.pm:5032
 #, perl-format
 msgid "unrecognized type: %s"
 msgstr "bilinmeyen tür: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:4713
+#: tp/Texinfo/Convert/HTML.pm:5049
 #, perl-format
 msgid "error on closing html refs config file %s: %s"
 msgstr "%s html başvuru ayar dosyasını kapatmada hata: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5034
+#: tp/Texinfo/Convert/HTML.pm:5371
 msgid "string not closed in css file"
 msgstr "css dosyasında dizge kapatılmadı"
 
-#: tp/Texinfo/Convert/HTML.pm:5036
+#: tp/Texinfo/Convert/HTML.pm:5373
 msgid "--css-include ended in comment"
 msgstr "--css-include yorum içinde sonlandı"
 
-#: tp/Texinfo/Convert/HTML.pm:5038
+#: tp/Texinfo/Convert/HTML.pm:5375
 msgid "@import not finished in css file"
 msgstr "css dosyasında @import bitmedi"
 
-#: tp/Texinfo/Convert/HTML.pm:5064
+#: tp/Texinfo/Convert/HTML.pm:5401
 #, perl-format
 msgid "CSS file %s not found"
 msgstr "CSS dosyası %s bulunamadı"
 
-#: tp/Texinfo/Convert/HTML.pm:5070
+#: tp/Texinfo/Convert/HTML.pm:5407
 #, perl-format
 msgid "could not open --include-file %s: %s"
 msgstr "--include-file %s açılamadı: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5080
+#: tp/Texinfo/Convert/HTML.pm:5417
 #, perl-format
 msgid "error on closing CSS file %s: %s"
-msgstr "CSS dosyası %s'i kapatmada hata: %s"
+msgstr "dosya CSS %s'i kapatmada hata: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5867 tp/Texinfo/Convert/HTML.pm:5871
+#: tp/Texinfo/Convert/HTML.pm:6215 tp/Texinfo/Convert/HTML.pm:6219
 #, perl-format
 msgid "no htmlxref.cnf entry found for `%s'"
 msgstr "`%s' için htmlxref.cnf girdisi bulunamadı"
 
-#: tp/Texinfo/Convert/HTML.pm:6602
+#: tp/Texinfo/Convert/HTML.pm:6721
+#, perl-format
+msgid "%s not meaningful for non-split output"
+msgstr "%s bölünmemiş çıktı için anlamlı değil"
+
+#: tp/Texinfo/Convert/HTML.pm:7050
+#, perl-format
+msgid ""
+"cannot use absolute path or URL `%s' for JS_WEBLABELS_FILE when generating "
+"web labels file"
+msgstr ""
+"web etiketleri dosyası oluşturulurkenJS_WEBLABELS_FILE için mutlak yol veya `"
+"%s' URL'si kullanılamaz"
+
+#: tp/Texinfo/Convert/HTML.pm:7115
 #, perl-format
 msgid "error on closing frame file %s: %s"
 msgstr "çerçeve dosyası %s'i kapatmada hata: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:6626
+#: tp/Texinfo/Convert/HTML.pm:7139
 #, perl-format
 msgid "error on closing TOC frame file %s: %s"
-msgstr "TOC çerçeve dosyası %s'i kapatmada hata: %s"
+msgstr "çerçeve dosyası TOC %s'i kapatmada hata: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:6742
+#: tp/Texinfo/Convert/HTML.pm:7266
 #, perl-format
 msgid "handler %s of stage %s priority %s failed"
 msgstr "evre %s öncelik %3$s'in kotarıcısı %s başarısız"
 
-#: tp/Texinfo/Convert/HTML.pm:6943
+#: tp/Texinfo/Convert/HTML.pm:7469
 msgid "must specify a title with a title command or @top"
 msgstr "başlık komutu ya da @top ile bir başlık belirlemelisiniz"
 
-#: tp/Texinfo/Convert/HTML.pm:7153
+#: tp/Texinfo/Convert/HTML.pm:7682
+#, perl-format
+msgid "%s already exists but is not a directory"
+msgstr "%s zaten var fakat bir dizin değil"
+
+#: tp/Texinfo/Convert/HTML.pm:7701
+#, perl-format
+msgid "error on copying %s into %s"
+msgstr "%s içinde %s kopyalama hatası"
+
+#: tp/Texinfo/Convert/HTML.pm:7762
 #, perl-format
 msgid "error on closing redirection node file %s: %s"
 msgstr "yeniden yönlendirme düğüm dosyası %s'i kapatmada hata: %s"
@@ -2190,7 +2349,7 @@ msgstr "düğümsüz belge"
 
 #: tp/Texinfo/Convert/Info.pm:122
 msgid "document without Top node"
-msgstr "Top düğümü olmayan belge"
+msgstr "düğümü olmayan belge Top"
 
 #: tp/Texinfo/Convert/Info.pm:170
 #, perl-format
@@ -2212,33 +2371,33 @@ msgstr "@%s tüm düğümlerin dışında"
 msgid "@node name should not contain `,': %s"
 msgstr "@node adı `,' içermemeli: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1259
+#: tp/Texinfo/Convert/Plaintext.pm:1271
 #, perl-format
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr "Dizin girdisi @%s ile : geçersiz Info üretiyor: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1306 tp/Texinfo/ParserNonXS.pm:2398
+#: tp/Texinfo/Convert/Plaintext.pm:1318 tp/Texinfo/ParserNonXS.pm:2424
 #: tp/Texinfo/XS/parsetexi/indices.c:324
 #, c-format, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "`%s' indeks girdisi tüm düğümlerin dışında"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1419
+#: tp/Texinfo/Convert/Plaintext.pm:1431
 #, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "imge metin dosyası %s'i kapatmada hata: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1424
+#: tp/Texinfo/Convert/Plaintext.pm:1436
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image dosyası `%s' okunamıyor: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1445
+#: tp/Texinfo/Convert/Plaintext.pm:1457
 #, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr "@image dosyası `%s.txt' ya da alternatif metin bulunamadı"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1805
+#: tp/Texinfo/Convert/Plaintext.pm:1818
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -2246,323 +2405,323 @@ msgstr ""
 "@strong{Not...} Info'da sahte bir çapraz-başvuru oluşturur; bundan kaçınmak "
 "için yazımı değiştirin"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2053
+#: tp/Texinfo/Convert/Plaintext.pm:2064
 #, perl-format
 msgid "@%s cross-reference name should not contain `:'"
 msgstr "@%s çapraz-başvuru adı `:' içermemeli"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2091
+#: tp/Texinfo/Convert/Plaintext.pm:2102
 #, perl-format
 msgid "@%s node name should not contain `%s'"
 msgstr "@%s düğüm adı `%s' içermemeli"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2124
+#: tp/Texinfo/Convert/Plaintext.pm:2135
 #, perl-format
 msgid "@%s node name should not contain `:'"
 msgstr "@%s düğüm adı `:' içermemeli"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2171
+#: tp/Texinfo/Convert/Plaintext.pm:2182
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "`.' ya da `,' @xref'i izlemelidir, `%s'i değil"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2174
+#: tp/Texinfo/Convert/Plaintext.pm:2185
 msgid "`.' or `,' must follow @xref"
 msgstr "`.' ya da `,' @xref'i izlemelidir"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2978
+#: tp/Texinfo/Convert/Plaintext.pm:2992
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "menü girdisi düğüm adı `%s' içermemeli"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2989
+#: tp/Texinfo/Convert/Plaintext.pm:3003
 msgid "menu entry node name should not contain `:'"
 msgstr "menü girdisi düğüm adı `:' içermemeli"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3009
+#: tp/Texinfo/Convert/Plaintext.pm:3023
 msgid "menu entry name should not contain `:'"
 msgstr "menü girdi adı `:' içermemeli"
 
-#: tp/Texinfo/ParserNonXS.pm:762
+#: tp/Texinfo/ParserNonXS.pm:769
 #, perl-format
 msgid "could not open %s: %s"
 msgstr "%s açılamıyor: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:983 tp/Texinfo/Structuring.pm:422
-#: tp/Texinfo/XS/parsetexi/parser.c:242
+#: tp/Texinfo/ParserNonXS.pm:988 tp/Texinfo/Structuring.pm:469
+#: tp/Texinfo/XS/parsetexi/parser.c:265
 #, c-format, perl-format
 msgid "multiple @%s"
 msgstr "çok sayıda @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:1021 tp/Texinfo/XS/parsetexi/macro.c:181
+#: tp/Texinfo/ParserNonXS.pm:1026 tp/Texinfo/XS/parsetexi/macro.c:181
 #, c-format, perl-format
 msgid "bad or empty @%s formal argument: %s"
 msgstr "hatalı ya da boş @%s resmi argümanı: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:1031 tp/Texinfo/XS/parsetexi/macro.c:204
+#: tp/Texinfo/ParserNonXS.pm:1036 tp/Texinfo/XS/parsetexi/macro.c:204
 #, c-format, perl-format
 msgid "bad syntax for @%s argument: %s"
 msgstr "@%s argümanı için hatalı sözdizimi: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:1038 tp/Texinfo/ParserNonXS.pm:4493
-#: tp/Texinfo/ParserNonXS.pm:4519 tp/Texinfo/ParserNonXS.pm:5325
-#: tp/Texinfo/ParserNonXS.pm:5338 tp/Texinfo/ParserNonXS.pm:5352
+#: tp/Texinfo/ParserNonXS.pm:1043 tp/Texinfo/ParserNonXS.pm:4530
+#: tp/Texinfo/ParserNonXS.pm:4556 tp/Texinfo/ParserNonXS.pm:5374
+#: tp/Texinfo/ParserNonXS.pm:5387 tp/Texinfo/ParserNonXS.pm:5401
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s bir isim gerektirir"
 
-#: tp/Texinfo/ParserNonXS.pm:1042 tp/Texinfo/ParserNonXS.pm:4496
-#: tp/Texinfo/ParserNonXS.pm:4522 tp/Texinfo/ParserNonXS.pm:5328
-#: tp/Texinfo/ParserNonXS.pm:5341 tp/Texinfo/ParserNonXS.pm:5355
+#: tp/Texinfo/ParserNonXS.pm:1047 tp/Texinfo/ParserNonXS.pm:4533
+#: tp/Texinfo/ParserNonXS.pm:4559 tp/Texinfo/ParserNonXS.pm:5377
+#: tp/Texinfo/ParserNonXS.pm:5390 tp/Texinfo/ParserNonXS.pm:5404
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:848
 #: tp/Texinfo/XS/parsetexi/macro.c:101
 #, c-format, perl-format
 msgid "bad name for @%s"
 msgstr "@%s için kötü isim"
 
-#: tp/Texinfo/ParserNonXS.pm:1156 tp/Texinfo/XS/parsetexi/close.c:42
+#: tp/Texinfo/ParserNonXS.pm:1161 tp/Texinfo/XS/parsetexi/close.c:42
 #, c-format, perl-format
 msgid "@end %s seen before @%s closing brace"
 msgstr "@end %s, @%s'in kapama küme parantezinden önce görüldü"
 
-#: tp/Texinfo/ParserNonXS.pm:1160 tp/Texinfo/XS/parsetexi/close.c:47
+#: tp/Texinfo/ParserNonXS.pm:1165 tp/Texinfo/XS/parsetexi/close.c:47
 #, c-format, perl-format
 msgid "@%s seen before @%s closing brace"
 msgstr "@%s, @%s'in kapama küme parantezinden önce görüldü"
 
-#: tp/Texinfo/ParserNonXS.pm:1165
+#: tp/Texinfo/ParserNonXS.pm:1170
 #, perl-format
 msgid "%c%s missing closing brace"
 msgstr "%c%s Kapanış parantezi eksik"
 
-#: tp/Texinfo/ParserNonXS.pm:1169 tp/Texinfo/XS/parsetexi/close.c:58
+#: tp/Texinfo/ParserNonXS.pm:1174 tp/Texinfo/XS/parsetexi/close.c:58
 #, c-format, perl-format
 msgid "@%s missing closing delimiter sequence: %s}"
 msgstr "@%s kayıp kapanış sınır belirteci sıralı ögeleri: %s}"
 
-#: tp/Texinfo/ParserNonXS.pm:1278 tp/Texinfo/XS/parsetexi/multitable.c:73
+#: tp/Texinfo/ParserNonXS.pm:1283 tp/Texinfo/XS/parsetexi/multitable.c:73
 #, c-format, perl-format
 msgid "@itemx should not begin @%s"
 msgstr "@itemx başlamamalı @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:1344 tp/Texinfo/XS/parsetexi/multitable.c:129
+#: tp/Texinfo/ParserNonXS.pm:1349 tp/Texinfo/XS/parsetexi/multitable.c:129
 msgid "@itemx must follow @item"
 msgstr "@itemx, @item'dan sonra gelmeli"
 
-#: tp/Texinfo/ParserNonXS.pm:1509 tp/Texinfo/XS/parsetexi/close.c:232
+#: tp/Texinfo/ParserNonXS.pm:1514 tp/Texinfo/XS/parsetexi/close.c:232
 #, c-format, perl-format
 msgid "@%s has text but no @item"
 msgstr "@%s'in metni var fakat @item'ı yok"
 
-#: tp/Texinfo/ParserNonXS.pm:1537 tp/Texinfo/XS/parsetexi/close.c:262
+#: tp/Texinfo/ParserNonXS.pm:1542 tp/Texinfo/XS/parsetexi/close.c:262
 #, c-format, perl-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "`@end'  `%s' beklerdi, `%s' gördü"
 
-#: tp/Texinfo/ParserNonXS.pm:1540 tp/Texinfo/XS/parsetexi/close.c:268
+#: tp/Texinfo/ParserNonXS.pm:1545 tp/Texinfo/XS/parsetexi/close.c:268
 #, c-format, perl-format
 msgid "@%s seen before @end %s"
 msgstr "@%s, @end'den önce görüldü %s"
 
-#: tp/Texinfo/ParserNonXS.pm:1544
+#: tp/Texinfo/ParserNonXS.pm:1549
 #, perl-format
 msgid "no matching `%cend %s'"
 msgstr "eşleşen `%cend %s' yok"
 
-#: tp/Texinfo/ParserNonXS.pm:1568 tp/Texinfo/ParserNonXS.pm:4856
-#: tp/Texinfo/ParserNonXS.pm:5107
+#: tp/Texinfo/ParserNonXS.pm:1574 tp/Texinfo/ParserNonXS.pm:4894
+#: tp/Texinfo/ParserNonXS.pm:5156
 #, perl-format
 msgid "misplaced %c"
 msgstr "yanlış yerleştirilmiş %c"
 
-#: tp/Texinfo/ParserNonXS.pm:1669 tp/Texinfo/ParserNonXS.pm:2925
+#: tp/Texinfo/ParserNonXS.pm:1682 tp/Texinfo/ParserNonXS.pm:2958
 #, perl-format
 msgid "unmatched `%c%s'"
 msgstr "eşleşmeyen `%c%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:1886 tp/Texinfo/XS/parsetexi/macro.c:351
+#: tp/Texinfo/ParserNonXS.pm:1912 tp/Texinfo/XS/parsetexi/macro.c:350
 #, c-format, perl-format
 msgid "macro `%s' called with too many args"
 msgstr "makro `%s' çok sayıda arg.la çağrıldı"
 
-#: tp/Texinfo/ParserNonXS.pm:1908 tp/Texinfo/XS/parsetexi/close.c:52
-#: tp/Texinfo/XS/parsetexi/macro.c:277
+#: tp/Texinfo/ParserNonXS.pm:1934 tp/Texinfo/XS/parsetexi/close.c:52
+#: tp/Texinfo/XS/parsetexi/macro.c:276
 #, c-format, perl-format
 msgid "@%s missing closing brace"
 msgstr "@%s kapanış parantezi eksik"
 
-#: tp/Texinfo/ParserNonXS.pm:1916 tp/Texinfo/XS/parsetexi/macro.c:367
+#: tp/Texinfo/ParserNonXS.pm:1942 tp/Texinfo/XS/parsetexi/macro.c:366
 #, c-format, perl-format
 msgid "macro `%s' declared without argument called with an argument"
 msgstr "makro `%s' argümansız tanımlandı, argümanla kullanıldı"
 
-#: tp/Texinfo/ParserNonXS.pm:1949 tp/Texinfo/XS/parsetexi/macro.c:430
+#: tp/Texinfo/ParserNonXS.pm:1975 tp/Texinfo/XS/parsetexi/macro.c:428
 #, c-format, perl-format
 msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
 msgstr "@%s açılımındaki \\ parametre adı veya \\ yerine `%s' i izliyor"
 
-#: tp/Texinfo/ParserNonXS.pm:2643 tp/Texinfo/XS/parsetexi/end_line.c:2182
+#: tp/Texinfo/ParserNonXS.pm:2701 tp/Texinfo/XS/parsetexi/end_line.c:2186
 #, c-format, perl-format
 msgid "missing name for @%s"
 msgstr "@%s için kayıp isim"
 
-#: tp/Texinfo/ParserNonXS.pm:2648 tp/Texinfo/XS/parsetexi/end_line.c:2128
+#: tp/Texinfo/ParserNonXS.pm:2706 tp/Texinfo/XS/parsetexi/end_line.c:2132
 #, c-format, perl-format
 msgid "missing category for @%s"
 msgstr "@%s için kayıp kategori"
 
-#: tp/Texinfo/ParserNonXS.pm:2687 tp/Texinfo/XS/parsetexi/end_line.c:1054
+#: tp/Texinfo/ParserNonXS.pm:2745 tp/Texinfo/XS/parsetexi/end_line.c:1058
 #, c-format, perl-format
 msgid "unexpected argument on @%s line: %s"
 msgstr "@%s satırında beklenmedik argüman: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2698 tp/Texinfo/XS/parsetexi/end_line.c:1066
+#: tp/Texinfo/ParserNonXS.pm:2756 tp/Texinfo/XS/parsetexi/end_line.c:1070
 msgid "empty multitable"
 msgstr "boş çoklutablo"
 
-#: tp/Texinfo/ParserNonXS.pm:2743 tp/Texinfo/ParserNonXS.pm:5422
-#: tp/Texinfo/XS/parsetexi/end_line.c:311
-#: tp/Texinfo/XS/parsetexi/end_line.c:1134
+#: tp/Texinfo/ParserNonXS.pm:2801 tp/Texinfo/ParserNonXS.pm:5471
+#: tp/Texinfo/XS/parsetexi/end_line.c:313
+#: tp/Texinfo/XS/parsetexi/end_line.c:1138
 #, c-format, perl-format
 msgid "superfluous argument to @%s"
 msgstr "@%s'e fazladan argüman"
 
-#: tp/Texinfo/ParserNonXS.pm:2749 tp/Texinfo/ParserNonXS.pm:5443
-#: tp/Texinfo/ParserNonXS.pm:5460 tp/Texinfo/XS/parsetexi/end_line.c:1147
+#: tp/Texinfo/ParserNonXS.pm:2807 tp/Texinfo/ParserNonXS.pm:5492
+#: tp/Texinfo/ParserNonXS.pm:5509 tp/Texinfo/XS/parsetexi/end_line.c:1151
 #, c-format, perl-format
 msgid "bad argument to @%s"
 msgstr "@%s'ye hatalı argüman"
 
-#: tp/Texinfo/ParserNonXS.pm:2760
+#: tp/Texinfo/ParserNonXS.pm:2818
 #, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s bir argüman gerektirir: %c öğesi için biçimlendirici"
 
-#: tp/Texinfo/ParserNonXS.pm:2764 tp/Texinfo/XS/parsetexi/end_line.c:1167
+#: tp/Texinfo/ParserNonXS.pm:2822 tp/Texinfo/XS/parsetexi/end_line.c:1171
 #, c-format, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
 msgstr ""
 "@%s komutu küme parantezi içinde argüman kabul etmiyor @%s satırında olmamalı"
 
-#: tp/Texinfo/ParserNonXS.pm:2798 tp/Texinfo/XS/parsetexi/end_line.c:1225
+#: tp/Texinfo/ParserNonXS.pm:2856 tp/Texinfo/XS/parsetexi/end_line.c:1229
 #, c-format, perl-format
 msgid "accent command `@%s' not allowed as @%s argument"
 msgstr "vurgu komutu `@%s' in @%s argümanı olmasına izin verilmiyor"
 
-#: tp/Texinfo/ParserNonXS.pm:2901 tp/Texinfo/ParserNonXS.pm:3041
-#: tp/Texinfo/ParserNonXS.pm:5415 tp/Texinfo/XS/parsetexi/end_line.c:304
-#: tp/Texinfo/XS/parsetexi/end_line.c:1333
-#: tp/Texinfo/XS/parsetexi/end_line.c:1724
+#: tp/Texinfo/ParserNonXS.pm:2934 tp/Texinfo/ParserNonXS.pm:3073
+#: tp/Texinfo/ParserNonXS.pm:5464 tp/Texinfo/XS/parsetexi/end_line.c:306
+#: tp/Texinfo/XS/parsetexi/end_line.c:1334
+#: tp/Texinfo/XS/parsetexi/end_line.c:1725
 #, c-format, perl-format
 msgid "@%s missing argument"
 msgstr "@%s kayıp argüman"
 
-#: tp/Texinfo/ParserNonXS.pm:2915 tp/Texinfo/XS/parsetexi/end_line.c:1352
+#: tp/Texinfo/ParserNonXS.pm:2948 tp/Texinfo/XS/parsetexi/end_line.c:1353
 #, c-format, perl-format
 msgid "unknown @end %s"
 msgstr "bilinmeyen @end %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2938 tp/Texinfo/ParserNonXS.pm:3555
+#: tp/Texinfo/ParserNonXS.pm:2971 tp/Texinfo/ParserNonXS.pm:3587
 #, perl-format
 msgid "superfluous argument to @%s %s: %s"
 msgstr "@%s %s'e fazladan argüman: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2944 tp/Texinfo/ParserNonXS.pm:3020
-#: tp/Texinfo/ParserNonXS.pm:5510 tp/Texinfo/ParserNonXS.pm:5555
-#: tp/Texinfo/ParserNonXS.pm:5584 tp/Texinfo/ParserNonXS.pm:5625
-#: tp/Texinfo/ParserNonXS.pm:5703 tp/Texinfo/XS/parsetexi/end_line.c:515
-#: tp/Texinfo/XS/parsetexi/end_line.c:583
-#: tp/Texinfo/XS/parsetexi/end_line.c:1662
+#: tp/Texinfo/ParserNonXS.pm:2977 tp/Texinfo/ParserNonXS.pm:3052
+#: tp/Texinfo/ParserNonXS.pm:5559 tp/Texinfo/ParserNonXS.pm:5604
+#: tp/Texinfo/ParserNonXS.pm:5633 tp/Texinfo/ParserNonXS.pm:5674
+#: tp/Texinfo/ParserNonXS.pm:5751 tp/Texinfo/XS/parsetexi/end_line.c:519
+#: tp/Texinfo/XS/parsetexi/end_line.c:587
+#: tp/Texinfo/XS/parsetexi/end_line.c:1663
 #, c-format, perl-format
 msgid "bad argument to @%s: %s"
 msgstr "@%s'e hatalı argüman: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2966
+#: tp/Texinfo/ParserNonXS.pm:2998
 #, perl-format
 msgid "@%s: could not open %s: %s"
 msgstr "@%s: %s açılamıyor: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2982 tp/Texinfo/XS/parsetexi/end_line.c:1485
+#: tp/Texinfo/ParserNonXS.pm:3014 tp/Texinfo/XS/parsetexi/end_line.c:1486
 #, c-format, perl-format
 msgid "encoding `%s' is not a canonical texinfo encoding"
 msgstr "`%s' kodlaması kanonik bir texinfo kodlaması değil"
 
-#: tp/Texinfo/ParserNonXS.pm:2990 tp/Texinfo/XS/parsetexi/end_line.c:1539
+#: tp/Texinfo/ParserNonXS.pm:3022 tp/Texinfo/XS/parsetexi/end_line.c:1540
 #, c-format, perl-format
 msgid "unrecognized encoding name `%s'"
 msgstr "tanınmayan kodlama adı `%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:3106
+#: tp/Texinfo/ParserNonXS.pm:3138
 #, perl-format
 msgid "@%s after the first element"
 msgstr "ilk unsurdan sonra @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:3113
+#: tp/Texinfo/ParserNonXS.pm:3145
 #, perl-format
 msgid "@%s only meaningful on a @multitable line"
 msgstr "@%s yalnızca bir @multitable satırında anlamlıdır"
 
-#: tp/Texinfo/ParserNonXS.pm:3149 tp/Texinfo/XS/parsetexi/end_line.c:1879
+#: tp/Texinfo/ParserNonXS.pm:3181 tp/Texinfo/XS/parsetexi/end_line.c:1880
 msgid "@part should not be associated with @top"
 msgstr "@part @top ile ilintili olmamalı"
 
-#: tp/Texinfo/ParserNonXS.pm:3160
+#: tp/Texinfo/ParserNonXS.pm:3192
 #, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgstr ""
 "@node @%s'den önce geliyor, fakat parçaları düğümlerle ilişkili olmayabilir"
 
-#: tp/Texinfo/ParserNonXS.pm:3271 tp/Texinfo/XS/parsetexi/end_line.c:36
+#: tp/Texinfo/ParserNonXS.pm:3303 tp/Texinfo/XS/parsetexi/end_line.c:36
 #, c-format, perl-format
 msgid "syntax for an external node used for `%s'"
 msgstr "`%s' için kullanılan bir harici düğümün sözdizimi"
 
-#: tp/Texinfo/ParserNonXS.pm:3294 tp/Texinfo/XS/parsetexi/menus.c:43
+#: tp/Texinfo/ParserNonXS.pm:3326 tp/Texinfo/XS/parsetexi/menus.c:43
 #, c-format, perl-format
 msgid "empty menu entry name in `%s'"
 msgstr "`%s' de boş menü girdi adı"
 
-#: tp/Texinfo/ParserNonXS.pm:3302 tp/Texinfo/XS/parsetexi/menus.c:57
+#: tp/Texinfo/ParserNonXS.pm:3334 tp/Texinfo/XS/parsetexi/menus.c:57
 msgid "empty node name in menu entry"
 msgstr "menü girdisinde boş düğüm adı"
 
-#: tp/Texinfo/ParserNonXS.pm:3442 tp/Texinfo/XS/parsetexi/parser.c:979
+#: tp/Texinfo/ParserNonXS.pm:3474 tp/Texinfo/XS/parsetexi/parser.c:1003
 #, c-format, perl-format
 msgid "@%s should not appear in @%s"
 msgstr "@%s @%s'de görülmemeli"
 
-#: tp/Texinfo/ParserNonXS.pm:3549 tp/Texinfo/XS/parsetexi/parser.c:1076
+#: tp/Texinfo/ParserNonXS.pm:3581 tp/Texinfo/XS/parsetexi/parser.c:1100
 #, c-format, perl-format
 msgid "@end %s should only appear at the beginning of a line"
 msgstr "@end %s sadece bir satırın başında görünmelidir"
 
-#: tp/Texinfo/ParserNonXS.pm:3570 tp/Texinfo/XS/parsetexi/parser.c:1137
+#: tp/Texinfo/ParserNonXS.pm:3602 tp/Texinfo/XS/parsetexi/parser.c:1161
 #, c-format, perl-format
 msgid "macro `%s' previously defined"
 msgstr "makro `%s' daha önce tanımlanmış"
 
-#: tp/Texinfo/ParserNonXS.pm:3573 tp/Texinfo/XS/parsetexi/parser.c:1139
+#: tp/Texinfo/ParserNonXS.pm:3605 tp/Texinfo/XS/parsetexi/parser.c:1163
 #, c-format, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "işte `%s' nin önceki tanımı"
 
-#: tp/Texinfo/ParserNonXS.pm:3578 tp/Texinfo/XS/parsetexi/parser.c:1144
+#: tp/Texinfo/ParserNonXS.pm:3610 tp/Texinfo/XS/parsetexi/parser.c:1168
 #, c-format, perl-format
 msgid "redefining Texinfo language command: @%s"
-msgstr "Texinfo dil komutu yeniden tanımlanıyor: @%s"
+msgstr "dil komutu Texinfo yeniden tanımlanıyor: @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:3646
+#: tp/Texinfo/ParserNonXS.pm:3678
 #, perl-format
 msgid "@%s without associated character"
 msgstr "ilişkili karakteri olmayan @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:3716 tp/Texinfo/XS/parsetexi/macro.c:529
+#: tp/Texinfo/ParserNonXS.pm:3748 tp/Texinfo/XS/parsetexi/macro.c:527
 #, c-format, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr "sıfırla tanımlanmış @%s ya da birden çok argüman {} ile çağrılmalı"
 
-#: tp/Texinfo/ParserNonXS.pm:3741 tp/Texinfo/XS/parsetexi/macro.c:568
+#: tp/Texinfo/ParserNonXS.pm:3773 tp/Texinfo/XS/parsetexi/macro.c:566
 #, c-format, perl-format
 msgid ""
 "macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
@@ -2571,498 +2730,479 @@ msgstr ""
 "makro çağrısı çok içiçe (geçersiz kılmak için MAX_NESTED_MACROS'u atayın; "
 "mevcut değer %d)"
 
-#: tp/Texinfo/ParserNonXS.pm:3750 tp/Texinfo/XS/parsetexi/macro.c:578
+#: tp/Texinfo/ParserNonXS.pm:3782 tp/Texinfo/XS/parsetexi/macro.c:576
 #, c-format, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr ""
 "%s makrosunun özyineli çağrısına izin verilmiyor; gerekirse @rmacro kullanın"
 
-#: tp/Texinfo/ParserNonXS.pm:3805 tp/Texinfo/XS/parsetexi/parser.c:1412
+#: tp/Texinfo/ParserNonXS.pm:3837 tp/Texinfo/XS/parsetexi/parser.c:1436
 #, c-format, perl-format
 msgid "accent command `@%s' must not be followed by whitespace"
 msgstr "`@%s' aksan komutundan sonra beyaz boşluk gelmemeli"
 
-#: tp/Texinfo/ParserNonXS.pm:3811 tp/Texinfo/XS/parsetexi/parser.c:1419
+#: tp/Texinfo/ParserNonXS.pm:3843 tp/Texinfo/XS/parsetexi/parser.c:1443
 #, c-format, perl-format
 msgid "use braces to give a command as an argument to @%s"
 msgstr "@%s'e argüman olarak bir komut vermek için küme parantezleri kullanın"
 
-#: tp/Texinfo/ParserNonXS.pm:3824 tp/Texinfo/ParserNonXS.pm:4981
+#: tp/Texinfo/ParserNonXS.pm:3856 tp/Texinfo/ParserNonXS.pm:5023
 #, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s argüman olarak `i' ya da `j' gerektirir, `%s' değil"
 
-#: tp/Texinfo/ParserNonXS.pm:3835 tp/Texinfo/XS/parsetexi/parser.c:1449
+#: tp/Texinfo/ParserNonXS.pm:3867 tp/Texinfo/XS/parsetexi/parser.c:1473
 #, c-format, perl-format
 msgid "accent command `@%s' must not be followed by new line"
 msgstr "`@%s' aksan komutundan sonra yeni satır gelmemelidir"
 
-#: tp/Texinfo/ParserNonXS.pm:3846 tp/Texinfo/XS/parsetexi/parser.c:1467
+#: tp/Texinfo/ParserNonXS.pm:3878 tp/Texinfo/XS/parsetexi/parser.c:1491
 #, c-format, perl-format
 msgid "@%s expected braces"
 msgstr "@%s küme parantezi bekledi"
 
-#: tp/Texinfo/ParserNonXS.pm:3975 tp/Texinfo/XS/parsetexi/parser.c:1328
+#: tp/Texinfo/ParserNonXS.pm:4007 tp/Texinfo/XS/parsetexi/parser.c:1352
 #, c-format, perl-format
 msgid "unknown command `%s'"
 msgstr "bilinmeyen komut `%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:4017
-#, perl-format
+#: tp/Texinfo/ParserNonXS.pm:4049 tp/Texinfo/XS/parsetexi/parser.c:1542
+#, c-format, perl-format
 msgid "undefined flag: %s"
 msgstr "tanımlanmamış bayrak: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:4021 tp/Texinfo/XS/parsetexi/parser.c:1554
+#: tp/Texinfo/ParserNonXS.pm:4053 tp/Texinfo/XS/parsetexi/parser.c:1577
 msgid "bad syntax for @value"
 msgstr "@value için bozuk sözdizimi"
 
-#: tp/Texinfo/ParserNonXS.pm:4028
+#: tp/Texinfo/ParserNonXS.pm:4060
 #, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s kullanımdan kalkmış."
 
-#: tp/Texinfo/ParserNonXS.pm:4031
+#: tp/Texinfo/ParserNonXS.pm:4063
 #, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s kullanımdan kalkmış; %s"
 
-#: tp/Texinfo/ParserNonXS.pm:4046 tp/Texinfo/XS/parsetexi/parser.c:1605
+#: tp/Texinfo/ParserNonXS.pm:4078 tp/Texinfo/XS/parsetexi/parser.c:1621
 #, c-format, perl-format
 msgid "@%s should only appear at the beginning of a line"
 msgstr "@%s sadece bir satırın başında görünmelidir"
 
-#: tp/Texinfo/ParserNonXS.pm:4087 tp/Texinfo/XS/parsetexi/handle_commands.c:97
+#: tp/Texinfo/ParserNonXS.pm:4124 tp/Texinfo/XS/parsetexi/handle_commands.c:97
 #, c-format, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr "@%s yalnızca alt ya da üst kısımda görülmelidir"
 
-#: tp/Texinfo/ParserNonXS.pm:4112 tp/Texinfo/ParserNonXS.pm:4119
-#: tp/Texinfo/ParserNonXS.pm:4168 tp/Texinfo/XS/parsetexi/handle_commands.c:134
+#: tp/Texinfo/ParserNonXS.pm:4149 tp/Texinfo/ParserNonXS.pm:4156
+#: tp/Texinfo/ParserNonXS.pm:4205 tp/Texinfo/XS/parsetexi/handle_commands.c:134
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:143
 #, c-format, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "`@%s' bloğu içinde @%s anlamlı değil"
 
-#: tp/Texinfo/ParserNonXS.pm:4128 tp/Texinfo/XS/parsetexi/handle_commands.c:180
+#: tp/Texinfo/ParserNonXS.pm:4165 tp/Texinfo/XS/parsetexi/handle_commands.c:180
 #, c-format, perl-format
 msgid "@%s in empty multitable"
 msgstr "boş @multitable'de @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:4134 tp/Texinfo/XS/parsetexi/handle_commands.c:188
+#: tp/Texinfo/ParserNonXS.pm:4171 tp/Texinfo/XS/parsetexi/handle_commands.c:188
 msgid "@tab before @item"
 msgstr "@item'den önce @tab"
 
-#: tp/Texinfo/ParserNonXS.pm:4137 tp/Texinfo/XS/parsetexi/handle_commands.c:192
+#: tp/Texinfo/ParserNonXS.pm:4174 tp/Texinfo/XS/parsetexi/handle_commands.c:192
 #, c-format, perl-format
 msgid "too many columns in multitable item (max %d)"
 msgstr "çok-tablolu ögede, çok fazla sütun (maks %d)"
 
-#: tp/Texinfo/ParserNonXS.pm:4174 tp/Texinfo/XS/parsetexi/handle_commands.c:237
+#: tp/Texinfo/ParserNonXS.pm:4211 tp/Texinfo/XS/parsetexi/handle_commands.c:237
 msgid "ignoring @tab outside of multitable"
 msgstr "çok-tablolunun dışındaki @tab yoksayılıyor"
 
-#: tp/Texinfo/ParserNonXS.pm:4178 tp/Texinfo/ParserNonXS.pm:4345
+#: tp/Texinfo/ParserNonXS.pm:4215 tp/Texinfo/ParserNonXS.pm:4382
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:242
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:541
 #, c-format, perl-format
 msgid "@%s outside of table or list"
 msgstr "tablo ya da liste dışında @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:4244
+#: tp/Texinfo/ParserNonXS.pm:4281
 #, perl-format
 msgid "@%s not allowed inside `@%s' block"
 msgstr "`@%s' bloğu içinde @%s'e izin verilmez"
 
-#: tp/Texinfo/ParserNonXS.pm:4357 tp/Texinfo/ParserNonXS.pm:4699
-#: tp/Texinfo/XS/parsetexi/handle_commands.c:1085
+#: tp/Texinfo/ParserNonXS.pm:4394 tp/Texinfo/ParserNonXS.pm:4733
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1082
 #, c-format, perl-format
 msgid "@%s should only appear in an index entry"
 msgstr "@%s yalnızca indeks bağlamında görünmelidir"
 
-#: tp/Texinfo/ParserNonXS.pm:4368 tp/Texinfo/XS/parsetexi/handle_commands.c:580
+#: tp/Texinfo/ParserNonXS.pm:4405 tp/Texinfo/XS/parsetexi/handle_commands.c:580
 msgid "no more than two levels of index subentry are allowed"
 msgstr "ikiden fazla indeks alt seviyesine izin verilmez"
 
-#: tp/Texinfo/ParserNonXS.pm:4409 tp/Texinfo/XS/parsetexi/handle_commands.c:637
+#: tp/Texinfo/ParserNonXS.pm:4446 tp/Texinfo/XS/parsetexi/handle_commands.c:637
 #, c-format, perl-format
 msgid "must be after `@%s' to use `@%s'"
 msgstr "`@%s' kullanmak için `@%s' den sonra ol(un)malıdır"
 
-#: tp/Texinfo/ParserNonXS.pm:4447
+#: tp/Texinfo/ParserNonXS.pm:4484
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "`@titlepage' ve `@quotation' çevreleri dışında @%s anlamlı değil"
 
-#: tp/Texinfo/ParserNonXS.pm:4451 tp/Texinfo/XS/parsetexi/handle_commands.c:694
+#: tp/Texinfo/ParserNonXS.pm:4488 tp/Texinfo/XS/parsetexi/handle_commands.c:694
 msgid "@dircategory after first node"
 msgstr "ilk düğümden sonra @dircategory"
 
-#: tp/Texinfo/ParserNonXS.pm:4633 tp/Texinfo/XS/parsetexi/handle_commands.c:984
+#: tp/Texinfo/ParserNonXS.pm:4672 tp/Texinfo/XS/parsetexi/handle_commands.c:986
 #, c-format, perl-format
 msgid "region %s inside region %s is not allowed"
 msgstr "%s bölgesi içinde %s bölgesine izin verilmez"
 
-#: tp/Texinfo/ParserNonXS.pm:4650
-#: tp/Texinfo/XS/parsetexi/handle_commands.c:1006
+#: tp/Texinfo/ParserNonXS.pm:4689
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1008
 msgid "@direntry after first node"
 msgstr "ilk düğümden sonra @direntry"
 
-#: tp/Texinfo/ParserNonXS.pm:4658
-#: tp/Texinfo/XS/parsetexi/handle_commands.c:1011
+#: tp/Texinfo/ParserNonXS.pm:4697
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1013
 msgid "@menu in invalid context"
 msgstr "@menu geçersiz bağlamda"
 
-#: tp/Texinfo/ParserNonXS.pm:4664
-#: tp/Texinfo/XS/parsetexi/handle_commands.c:1020
-#, c-format, perl-format
-msgid "@%s seen before first @node"
-msgstr "ilk @node öncesinde @%s görüldü"
-
-#: tp/Texinfo/ParserNonXS.pm:4667
-#: tp/Texinfo/XS/parsetexi/handle_commands.c:1022
-msgid ""
-"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
-msgstr ""
-"belki de sizin @top düğümünüz, @ifinfo'dan ziyade @ifnottex içine "
-"sarılmalıdır?"
-
-#: tp/Texinfo/ParserNonXS.pm:4728
+#: tp/Texinfo/ParserNonXS.pm:4762
 #, perl-format
 msgid "@%s should only appear in math context"
 msgstr "@%s yalnızca matematik bağlamında görünmelidir"
 
-#: tp/Texinfo/ParserNonXS.pm:4743 tp/Texinfo/XS/parsetexi/parser.c:1721
+#: tp/Texinfo/ParserNonXS.pm:4777 tp/Texinfo/XS/parsetexi/parser.c:1738
 msgid "unexpected @"
 msgstr "beklenmedik @"
 
-#: tp/Texinfo/ParserNonXS.pm:4772 tp/Texinfo/XS/parsetexi/separator.c:78
+#: tp/Texinfo/ParserNonXS.pm:4806 tp/Texinfo/XS/parsetexi/separator.c:78
 #, c-format, perl-format
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "`@float' çevresi dışında @%s anlamlı değil"
 
-#: tp/Texinfo/ParserNonXS.pm:4777 tp/Texinfo/XS/parsetexi/separator.c:84
+#: tp/Texinfo/ParserNonXS.pm:4811 tp/Texinfo/XS/parsetexi/separator.c:84
 #, c-format, perl-format
 msgid "@%s should be right below `@float'"
 msgstr "@%s, `@float' ın hemen altında olmalıdır"
 
-#: tp/Texinfo/ParserNonXS.pm:4785 tp/Texinfo/XS/parsetexi/separator.c:92
+#: tp/Texinfo/ParserNonXS.pm:4819 tp/Texinfo/XS/parsetexi/separator.c:92
 #, c-format, perl-format
 msgid "ignoring multiple @%s"
 msgstr "çok sayıda @%s yok sayılıyor"
 
-#: tp/Texinfo/ParserNonXS.pm:4896 tp/Texinfo/XS/parsetexi/separator.c:276
+#: tp/Texinfo/ParserNonXS.pm:4938 tp/Texinfo/XS/parsetexi/separator.c:276
 #, c-format, perl-format
 msgid "command @%s does not accept arguments"
 msgstr "@%s komutu argüman kabul etmez"
 
-#: tp/Texinfo/ParserNonXS.pm:4926 tp/Texinfo/XS/parsetexi/separator.c:312
+#: tp/Texinfo/ParserNonXS.pm:4968 tp/Texinfo/XS/parsetexi/separator.c:312
 #, c-format, perl-format
 msgid "command @%s missing a node or external manual argument"
 msgstr "@%s komutunda bir düğüm ya da harici manüel argüman eksik"
 
-#: tp/Texinfo/ParserNonXS.pm:4945 tp/Texinfo/XS/parsetexi/separator.c:350
+#: tp/Texinfo/ParserNonXS.pm:4987 tp/Texinfo/XS/parsetexi/separator.c:350
 #, c-format, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
 msgstr "@%s'de `%s' açılımından sonra boş çapraz başvuru adı"
 
-#: tp/Texinfo/ParserNonXS.pm:4956 tp/Texinfo/XS/parsetexi/separator.c:368
+#: tp/Texinfo/ParserNonXS.pm:4998 tp/Texinfo/XS/parsetexi/separator.c:368
 #, c-format, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
 msgstr "@%s'de `%s' açılımından sonra boş çapraz başvuru başlığı"
 
-#: tp/Texinfo/ParserNonXS.pm:4969 tp/Texinfo/XS/parsetexi/separator.c:383
+#: tp/Texinfo/ParserNonXS.pm:5011 tp/Texinfo/XS/parsetexi/separator.c:383
 msgid "@image missing filename argument"
 msgstr "@image eksik dosyaadı argümanı"
 
-#: tp/Texinfo/ParserNonXS.pm:5003 tp/Texinfo/XS/parsetexi/separator.c:413
+#: tp/Texinfo/ParserNonXS.pm:5045 tp/Texinfo/XS/parsetexi/separator.c:413
 #, c-format, perl-format
 msgid "@%s missing first argument"
 msgstr "@%s'de eksik ilk argüman"
 
-#: tp/Texinfo/ParserNonXS.pm:5021 tp/Texinfo/XS/parsetexi/separator.c:435
+#: tp/Texinfo/ParserNonXS.pm:5063 tp/Texinfo/XS/parsetexi/separator.c:435
 #, c-format, perl-format
 msgid "non-hex digits in argument for @U: %s"
 msgstr "@U için olan argümanda hex olmayan rakamlar: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5026 tp/Texinfo/XS/parsetexi/separator.c:440
+#: tp/Texinfo/ParserNonXS.pm:5068 tp/Texinfo/XS/parsetexi/separator.c:440
 #, c-format, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
 msgstr "@U için olan argümanda dörtten az sayıda hex rakam: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5043 tp/Texinfo/XS/parsetexi/separator.c:455
+#: tp/Texinfo/ParserNonXS.pm:5085 tp/Texinfo/XS/parsetexi/separator.c:455
 #, c-format, perl-format
 msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
 msgstr "@U için olan argüman Unicode maksimumu olan 0x10FFF'yi aşıyor: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5231 tp/Texinfo/XS/parsetexi/separator.c:755
+#: tp/Texinfo/ParserNonXS.pm:5280 tp/Texinfo/XS/parsetexi/separator.c:766
 msgid "superfluous arguments for node"
 msgstr "düğüm için çok fazla argüman"
 
-#: tp/Texinfo/ParserNonXS.pm:5280 tp/Texinfo/XS/parsetexi/parser.c:1915
+#: tp/Texinfo/ParserNonXS.pm:5329 tp/Texinfo/XS/parsetexi/parser.c:1932
 #, c-format, perl-format
 msgid "expected @end %s"
 msgstr "@end beklenirdi %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5367
+#: tp/Texinfo/ParserNonXS.pm:5416
 #, perl-format
 msgid "@%s should only accept an @-command as argument, not `%s'"
 msgstr ""
 "@%s bağımsız değişken olarak yalnızca bir @-command kabul etmelidir, `%s' "
 "değil"
 
-#: tp/Texinfo/ParserNonXS.pm:5377 tp/Texinfo/XS/parsetexi/end_line.c:275
+#: tp/Texinfo/ParserNonXS.pm:5426 tp/Texinfo/XS/parsetexi/end_line.c:277
 #, c-format, perl-format
 msgid "remaining argument on @%s line: %s"
 msgstr "@%s satırında kalan argüman: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5438
+#: tp/Texinfo/ParserNonXS.pm:5487
 #, perl-format
 msgid "environment command %s as argument to @%s"
 msgstr "@%s'e argüman olarak çevre komutu %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5465
+#: tp/Texinfo/ParserNonXS.pm:5514
 #, perl-format
 msgid "empty @%s"
 msgstr "boş @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:5473 tp/Texinfo/XS/parsetexi/end_line.c:456
+#: tp/Texinfo/ParserNonXS.pm:5522 tp/Texinfo/XS/parsetexi/end_line.c:458
 #, c-format, perl-format
 msgid "column fraction not a number: %s"
 msgstr "sütun kesiri numara değil: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5482 tp/Texinfo/XS/parsetexi/end_line.c:478
+#: tp/Texinfo/ParserNonXS.pm:5531 tp/Texinfo/XS/parsetexi/end_line.c:480
 #, c-format, perl-format
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "@sp arg sayısal olmalıdır `%s' değil"
 
-#: tp/Texinfo/ParserNonXS.pm:5491 tp/Texinfo/XS/parsetexi/end_line.c:520
+#: tp/Texinfo/ParserNonXS.pm:5540 tp/Texinfo/XS/parsetexi/end_line.c:524
 #, c-format, perl-format
 msgid "reserved index name %s"
 msgstr "ayrılmış dizin adı %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5517 tp/Texinfo/XS/parsetexi/end_line.c:551
+#: tp/Texinfo/ParserNonXS.pm:5566 tp/Texinfo/XS/parsetexi/end_line.c:555
 #, c-format, perl-format
 msgid "unknown source index in @%s: %s"
 msgstr "@%s'de bilinmeyen kaynak dizini: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5520 tp/Texinfo/XS/parsetexi/end_line.c:554
+#: tp/Texinfo/ParserNonXS.pm:5569 tp/Texinfo/XS/parsetexi/end_line.c:558
 #, c-format, perl-format
 msgid "unknown destination index in @%s: %s"
 msgstr "@%s'de bilinmeyen hedef dizini: %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5550 tp/Texinfo/XS/parsetexi/end_line.c:574
+#: tp/Texinfo/ParserNonXS.pm:5599 tp/Texinfo/XS/parsetexi/end_line.c:578
 #, c-format, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr "@%s, %s'in kendi içine kaynaşmasına yol açar, yok sayılıyor"
 
-#: tp/Texinfo/ParserNonXS.pm:5563 tp/Texinfo/XS/parsetexi/end_line.c:599
+#: tp/Texinfo/ParserNonXS.pm:5612 tp/Texinfo/XS/parsetexi/end_line.c:603
 #, c-format, perl-format
 msgid "unknown index `%s' in @printindex"
 msgstr "@printindex içinde bilinmeyen indeks `%s'"
 
-#: tp/Texinfo/ParserNonXS.pm:5569 tp/Texinfo/XS/parsetexi/end_line.c:608
+#: tp/Texinfo/ParserNonXS.pm:5618 tp/Texinfo/XS/parsetexi/end_line.c:612
 #, c-format, perl-format
 msgid "printing an index `%s' merged in another one, `%s'"
 msgstr "`%s' içine birleştirilmiş bir diğer `%s' dizini yazdırılıyor"
 
-#: tp/Texinfo/ParserNonXS.pm:5577 tp/Texinfo/XS/parsetexi/end_line.c:613
+#: tp/Texinfo/ParserNonXS.pm:5626 tp/Texinfo/XS/parsetexi/end_line.c:617
 #, c-format, perl-format
 msgid "printindex before document beginning: @printindex %s"
-msgstr "Belge başlangıcından önce printindex: @printindex %s"
+msgstr "belge başlangıcından önce printindex: @printindex %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5593 tp/Texinfo/XS/parsetexi/end_line.c:634
+#: tp/Texinfo/ParserNonXS.pm:5642 tp/Texinfo/XS/parsetexi/end_line.c:638
 #, c-format, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr "@%s arg `top' ya da `bottom' olmalıdır, `%s' değil"
 
-#: tp/Texinfo/ParserNonXS.pm:5601
+#: tp/Texinfo/ParserNonXS.pm:5650
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "Yalnızca @%s 10 ya da 11 destekleniyor, `%s' değil"
 
-#: tp/Texinfo/ParserNonXS.pm:5609
+#: tp/Texinfo/ParserNonXS.pm:5658
 #, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr "@%s arg `separate' ya da `end' olmalıdır, `%s' değil"
 
-#: tp/Texinfo/ParserNonXS.pm:5617
+#: tp/Texinfo/ParserNonXS.pm:5666
 #, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr "@%s arg `on', `off' veya `odd' olmalıdır, `%s' değil"
 
-#: tp/Texinfo/ParserNonXS.pm:5635 tp/Texinfo/ParserNonXS.pm:5640
-#: tp/Texinfo/XS/parsetexi/end_line.c:690
+#: tp/Texinfo/ParserNonXS.pm:5684 tp/Texinfo/ParserNonXS.pm:5689
+#: tp/Texinfo/XS/parsetexi/end_line.c:694
 #, c-format, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr "@paragrafindent arg sayısal/'none'/`asis' olmalıdır, `%s' değil"
 
-#: tp/Texinfo/ParserNonXS.pm:5648
+#: tp/Texinfo/ParserNonXS.pm:5697
 #, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr "@firstparagraphindent arg `none' ya da `insert' olmalıdır, `%s' değil"
 
-#: tp/Texinfo/ParserNonXS.pm:5658 tp/Texinfo/XS/parsetexi/end_line.c:711
+#: tp/Texinfo/ParserNonXS.pm:5707 tp/Texinfo/XS/parsetexi/end_line.c:715
 #, c-format, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr "@exampleindent arg sayısal/`asis' olmalıdır, `%s' değil"
 
-#: tp/Texinfo/ParserNonXS.pm:5670 tp/Texinfo/XS/parsetexi/end_line.c:726
+#: tp/Texinfo/ParserNonXS.pm:5718 tp/Texinfo/XS/parsetexi/end_line.c:730
 #, c-format, perl-format
 msgid "expected @%s on or off, not `%s'"
 msgstr "@%s açık ya da kapalı bekleniyordu, `%s' değil"
 
-#: tp/Texinfo/ParserNonXS.pm:5679 tp/Texinfo/XS/parsetexi/end_line.c:746
+#: tp/Texinfo/ParserNonXS.pm:5727 tp/Texinfo/XS/parsetexi/end_line.c:750
 #, c-format, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr "@kbdinputstyle arg `code'/`example'/`distinct' olmalıdır, `%s' değil"
 
-#: tp/Texinfo/ParserNonXS.pm:5687 tp/Texinfo/XS/parsetexi/end_line.c:758
+#: tp/Texinfo/ParserNonXS.pm:5735 tp/Texinfo/XS/parsetexi/end_line.c:762
 #, c-format, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr "@allowcodebreaks arg `true' ya da `false' olmalıdır, `%s' değil"
 
-#: tp/Texinfo/ParserNonXS.pm:5695 tp/Texinfo/XS/parsetexi/end_line.c:770
+#: tp/Texinfo/ParserNonXS.pm:5743 tp/Texinfo/XS/parsetexi/end_line.c:774
 #, c-format, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr "@urefbreakstyle arg `after'/`before'/`none' olmalıdır, `%s' değil"
 
-#: tp/Texinfo/Structuring.pm:175
+#: tp/Texinfo/Structuring.pm:176
 #, perl-format
 msgid "raising the section level of @%s which is too low"
 msgstr "@%s'in çok düşük olan bölüm düzeyi yükseltiliyor"
 
-#: tp/Texinfo/Structuring.pm:207
+#: tp/Texinfo/Structuring.pm:208
 #, perl-format
 msgid "no chapter-level command before @%s"
 msgstr "@%s'den önce kısım düzeyi komutu yok"
 
-#: tp/Texinfo/Structuring.pm:212
+#: tp/Texinfo/Structuring.pm:213
 #, perl-format
 msgid "lowering the section level of @%s appearing after a lower element"
 msgstr ""
 "daha düşük düzeyde bir unsurdan sonra görülen @%s'in bölüm düzeyi düşürülüyor"
 
-#: tp/Texinfo/Structuring.pm:301
+#: tp/Texinfo/Structuring.pm:302
 #, perl-format
 msgid "no sectioning command associated with @%s"
 msgstr "@%s ile ilintili bir bölümleme komutu yok"
 
-#: tp/Texinfo/Structuring.pm:329
+#: tp/Texinfo/Structuring.pm:330
 #, perl-format
 msgid "@%s not empty"
 msgstr "@%s boş değil"
 
-#: tp/Texinfo/Structuring.pm:386 tp/Texinfo/Structuring.pm:1160
+#: tp/Texinfo/Structuring.pm:387 tp/Texinfo/Structuring.pm:1309
 #, perl-format
 msgid "@%s reference to nonexistent node `%s'"
 msgstr "varolmayan düğüm `%s' e @%s referansı"
 
-#: tp/Texinfo/Structuring.pm:393
+#: tp/Texinfo/Structuring.pm:394
 #, perl-format
 msgid "@%s entry node name `%s' different from %s name `%s'"
 msgstr "@%s girdi düğüm adı `%s', %s adından farklı `%s'"
 
-#: tp/Texinfo/Structuring.pm:498
+#: tp/Texinfo/Structuring.pm:442
 #, perl-format
-msgid "unreferenced node `%s'"
-msgstr "başvurulmamış düğüm `%s'"
+msgid "node `%s' unreferenced"
+msgstr "düğüm '%s' başvurulmamış"
 
-#: tp/Texinfo/Structuring.pm:549
+#: tp/Texinfo/Structuring.pm:599
 #, perl-format
-msgid "node `%s' is %s for `%s' in sectioning but not in menu"
-msgstr "düğüm `%s' `%3$s' için bölümlemede %s fakat menüde değil"
+msgid "node %s for `%s' is `%s' in sectioning but not in menu"
+msgstr "`%s' için %s düğümü, bölümlemede `%s' dir fakat menüde değildir"
 
-#: tp/Texinfo/Structuring.pm:558
-#, perl-format
-msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
-msgstr "düğüm %s `%3$s' menüsündeki `%s' ve bölümlemedeki `%4$s' farklı"
-
-#: tp/Texinfo/Structuring.pm:576
+#: tp/Texinfo/Structuring.pm:617
 #, perl-format
 msgid "node `%s' is %s for `%s' in menu but not in sectioning"
 msgstr "düğüm `%s' menüdeki `%s' için %s fakat bölümlemede değil"
 
-#: tp/Texinfo/Structuring.pm:614
+#: tp/Texinfo/Structuring.pm:659
 #, perl-format
-msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
-msgstr "`%s' %s göstergesi (düğüm `%s' için) `%s' %s adından farklı"
+msgid "node %s pointer for `%s' is `%s' but %s is `%s' in menu"
+msgstr "`%s' için düğüm %s işaretçisi `%s', ancak %s menüde `%s' dir"
 
-#: tp/Texinfo/Structuring.pm:627
-#, perl-format
-msgid "%s reference to nonexistent `%s'"
-msgstr "varolmayan düğüm `%s' e %s referansı"
-
-#: tp/Texinfo/Structuring.pm:648
+#: tp/Texinfo/Structuring.pm:680
 #, perl-format
 msgid "node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "düğüm `%s', Yukarı hedefi olmasına karşın, `%s' için eksik menü öğesi "
 "içeriyor"
 
-#: tp/Texinfo/Structuring.pm:656
+#: tp/Texinfo/Structuring.pm:766
 #, perl-format
-msgid "for `%s', up in menu `%s' and up `%s' don't match"
-msgstr "`%s' için, menü `%s' deki yukarı ve `%s' yukarısı eşleşmiyor"
+msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
+msgstr "`%s' %s göstergesi (düğüm `%s' için) `%s' %s adından farklı"
 
-#: tp/Texinfo/Structuring.pm:1170
+#: tp/Texinfo/Structuring.pm:779
+#, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "varolmayan düğüm `%s' e %s referansı"
+
+#: tp/Texinfo/Structuring.pm:1319
 #, perl-format
 msgid "@%s to `%s', different from %s name `%s'"
 msgstr "`%s' e @%s, `%s' %s adından farklı"
 
-#: tp/Texinfo/Structuring.pm:1456
+#: tp/Texinfo/Structuring.pm:1620
 #, perl-format
 msgid "empty index key in @%s"
 msgstr "@%s'de boş dizin anahtarı"
 
-#: tp/init/chm.pm:223 tp/init/chm.pm:279 tp/init/chm.pm:349
+#: tp/init/chm.pm:222 tp/init/chm.pm:278 tp/init/chm.pm:348
 #, perl-format
 msgid "chm.pm: could not open %s for writing: %s\n"
 msgstr "chm.pm %s'i yazmak için açamıyor: %s\n"
 
-#: tp/init/chm.pm:269 tp/init/chm.pm:339 tp/init/chm.pm:400
+#: tp/init/chm.pm:268 tp/init/chm.pm:338 tp/init/chm.pm:399
 #, perl-format
 msgid "chm.pm: error on closing %s: %s"
 msgstr "chm.pm: %s'i kapatmada hata: %s"
 
-#: tp/init/latex2html.pm:197
+#: tp/init/latex2html.pm:198
 #, perl-format
 msgid "l2h: could not open latex file %s for writing: %s"
 msgstr "l2h: latex dosyası %s yazmak için açılamıyor: %s"
 
-#: tp/init/latex2html.pm:343
+#: tp/init/latex2html.pm:346
 msgid "l2h: L2H_TMP directory contains a dot"
 msgstr "l2h: L2H_TMP dizini bir nokta içeriyor"
 
-#: tp/init/latex2html.pm:348
+#: tp/init/latex2html.pm:351
 msgid "l2h: current directory contains a dot"
 msgstr "l2h: mevcut dizin bir nokta içeriyor"
 
-#: tp/init/latex2html.pm:376
+#: tp/init/latex2html.pm:379
 #, perl-format
 msgid "l2h: command did not succeed: %s"
 msgstr "l2h: komut başarılı omadı: %s"
 
-#: tp/init/latex2html.pm:424
+#: tp/init/latex2html.pm:427
 #, perl-format
 msgid "l2h: image has invalid extension: %s"
 msgstr "l2h: resmin geçersiz uzantısı var: %s"
 
-#: tp/init/latex2html.pm:440
+#: tp/init/latex2html.pm:443
 #, perl-format
 msgid "l2h: rename %s as %s failed: %s"
 msgstr "l2h: %s'in %s olarak yeniden adlandırılması başarısız: %s"
 
-#: tp/init/latex2html.pm:462
+#: tp/init/latex2html.pm:465
 #, perl-format
 msgid "l2h: could not open %s: %s"
 msgstr "l2h: %s açılamıyor: %s"
 
-#: tp/init/latex2html.pm:495
+#: tp/init/latex2html.pm:498
 #, perl-format
 msgid "latex2html.pm: end of @%s item %d not found"
 msgstr "latex2html.pm: @%s ögesinin sonu %d bulunamadı"
 
-#: tp/init/latex2html.pm:506
+#: tp/init/latex2html.pm:509
 #, perl-format
 msgid ""
 "latex2html.pm: processing produced %d items in HTML; expected %d, the number "
@@ -3071,59 +3211,64 @@ msgstr ""
 "latex2html.pm: işleme HTML'de %d öğe üretti; %d bekleniyordu, belgede "
 "bulunan öğe sayısı"
 
-#: tp/init/latex2html.pm:536
+#: tp/init/latex2html.pm:539
 #, perl-format
 msgid "l2h: could not determine the fragment %d for @%s"
 msgstr "l2h: %d parçası @%s için belirlenemedi"
 
-#: tp/init/latex2html.pm:562
+#: tp/init/latex2html.pm:565
 #, perl-format
 msgid ""
 "l2h: could not extract the fragment %d for @%s with output counter %d from "
 "HTML"
 msgstr "l2h: %d parçası, @%s için HTML'den çıktı sayacı %d ile  çıkarılamadı"
 
-#: tp/init/latex2html.pm:623
+#: tp/init/latex2html.pm:626
 #, perl-format
 msgid "l2h: could not load %s: %s"
 msgstr "l2h: %s yüklenemedi: %s"
 
-#: tp/init/latex2html.pm:636
+#: tp/init/latex2html.pm:639
 #, perl-format
 msgid "l2h: could not open %s for writing: %s"
 msgstr "l2h: %s yazmak için açılamıyor: %s"
 
-#: tp/init/tex4ht.pm:125 tp/init/tex4ht.pm:270
+#: tp/init/tex4ht.pm:130 tp/init/tex4ht.pm:287
 #, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "tex4ht.pm: %s açılamadı: %s"
 
-#: tp/init/tex4ht.pm:222
+#: tp/init/tex4ht.pm:228
 #, perl-format
 msgid "tex4ht.pm: chdir %s failed: %s"
 msgstr "tex4ht.pm: %s dizinine geçme başarısız: %s"
 
-#: tp/init/tex4ht.pm:235
+#: tp/init/tex4ht.pm:241
 #, perl-format
 msgid "tex4ht.pm: unable to return to initial directory: %s"
 msgstr "tex4ht.pm: başlangıç dizinine dönülemedi: %s"
 
-#: tp/init/tex4ht.pm:247
+#: tp/init/tex4ht.pm:253
 #, perl-format
 msgid "tex4ht.pm: output file missing: %s"
 msgstr "tex4ht.pm: çıktı dosyası kayıp: %s"
 
-#: tp/init/tex4ht.pm:263
+#: tp/init/tex4ht.pm:274
 #, perl-format
 msgid "tex4ht.pm: command failed: %s"
 msgstr "tex4ht.pm: komut başarısız: %s"
 
-#: tp/init/tex4ht.pm:297
+#: tp/init/tex4ht.pm:279
+#, perl-format
+msgid "tex4ht.pm: closing communication failed: %s: %s"
+msgstr "tex4ht.pm: kapanış iletişimi başarısız oldu: %s: %s"
+
+#: tp/init/tex4ht.pm:314
 #, perl-format
 msgid "tex4ht.pm: end of @%s item %d not found"
 msgstr "tex4ht.pm: @%s sonu %d ögesi bulunamadı"
 
-#: tp/init/tex4ht.pm:304
+#: tp/init/tex4ht.pm:321
 #, perl-format
 msgid ""
 "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
@@ -3132,12 +3277,12 @@ msgstr ""
 "tex4ht.pm: işleme HTML'de %d öge üretti; %d bekleniyordu, @%s için belgede "
 "bulunan öge sayısı"
 
-#: tp/init/tex4ht.pm:324
+#: tp/init/tex4ht.pm:341
 #, perl-format
 msgid "tex4ht.pm: output has no HTML item for @%s %s"
 msgstr "tex4ht.pm: çıktıda @%s %s için hiç HTML ögesi yok"
 
-#: tp/init/tex4ht.pm:339
+#: tp/init/tex4ht.pm:356
 #, perl-format
 msgid ""
 "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
@@ -3146,37 +3291,88 @@ msgstr ""
 "tex4ht.pm: işleme HTML'de %d öge toparladı; %d bekleniyordu, @%s için "
 "belgede bulunan öge sayısı"
 
-#: tp/texi2any.pl:348
+#: tp/init/highlight_syntax.pm:58
+#, perl-format
+msgid "highlight_syntax.pm: command failed: %s"
+msgstr "highlight_syntax.pm: komut başarısız oldu: %s"
+
+#: tp/init/highlight_syntax.pm:69
+#, perl-format
+msgid "highlight_syntax.pm: %s: %s: cannot parse language line"
+msgstr "highlight_syntax.pm: %s: %s: dil satırı ayrıştırılamıyor"
+
+#: tp/init/highlight_syntax.pm:170 tp/init/highlight_syntax.pm:227
+#, perl-format
+msgid "highlight_syntax.pm: could not open %s: %s"
+msgstr "highlight_syntax.pm: %s açılamadı: %s"
+
+#: tp/init/highlight_syntax.pm:219
+#, perl-format
+msgid "highlight_syntax.pm: command did not succeed: %s"
+msgstr "highlight_syntax.pm: komut başarılı olamadı: %s"
+
+#: tp/init/highlight_syntax.pm:259
+#, perl-format
+msgid ""
+"highlight_syntax.pm: %s: %d separators; expected %d, the number of fragments "
+"+1"
+msgstr "highlight_syntax.pm: %s: %d ayırıcılar; beklenen %d, parça sayısı +1"
+
+#: tp/init/highlight_syntax.pm:267
+#, perl-format
+msgid "highlight_syntax.pm: %s: end of @%s item %d not found"
+msgstr "highlight_syntax.pm: %s: @%s öğesinin sonu %d bulunamadı"
+
+#: tp/init/highlight_syntax.pm:272
+#, perl-format
+msgid ""
+"highlight_syntax.pm: %s: processing produced %d items in HTML; expected %d, "
+"the number found in the document"
+msgstr ""
+"highlight_syntax.pm: %s: üretilen %d öğelerinin HTML'de işlenmesi; beklenen "
+"%d, belgede bulunan sayı"
+
+#: tp/init/highlight_syntax.pm:292
+#, perl-format
+msgid "highlight_syntax.pm: output has HTML item for @%s but no language %s"
+msgstr "highlight_syntax.pm: çıktıda @%s için HTML öğesi var fakat %s dili yok"
+
+#: tp/init/highlight_syntax.pm:339
+#, perl-format
+msgid "highlight_syntax.pm: output has no HTML item for @%s %s %s"
+msgstr "highlight_syntax.pm: çıktı için HTML öğesi yok @%s %s %s"
+
+#: tp/texi2any.pl:345
 #, perl-format
 msgid "error loading %s: %s\n"
 msgstr "%s yüklenirken hata: %s\n"
 
-#: tp/texi2any.pl:361
+#: tp/texi2any.pl:358
 #, perl-format
 msgid "%s: unknown variable %s"
 msgstr "%s: bilinmeyen değişken %s"
 
-#: tp/texi2any.pl:377
+#: tp/texi2any.pl:374
 #, perl-format
 msgid "%s: unknown variable %s\n"
 msgstr "%sŞ bilinmeyen değişken %s\n"
 
-#: tp/texi2any.pl:413
+#: tp/texi2any.pl:417
 #, perl-format
 msgid "could not read init file %s"
 msgstr "init dosyası %s okunamıyor"
 
-#: tp/texi2any.pl:569
+#: tp/texi2any.pl:574
 #, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "tanınamayan TEXINFO_OUTPUT_FORMAT değeri `%s' yok sayılıyor.\n"
 
-#: tp/texi2any.pl:652
+#: tp/texi2any.pl:660
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Kullanım: %s [SEÇENEK]... TEXINFO-DOSYASI...\n"
 
-#: tp/texi2any.pl:655
+#: tp/texi2any.pl:663
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -3191,7 +3387,7 @@ msgstr ""
 "Bu program genellikle hem `makeinfo', hem de `texi2any' şeklinde kurulur;\n"
 "davranış, kurulum adından bağımsız olarak, özdeştir.\n"
 
-#: tp/texi2any.pl:661
+#: tp/texi2any.pl:671
 #, perl-format
 msgid ""
 "General options:\n"
@@ -3227,7 +3423,7 @@ msgstr ""
 "  -v, --verbose               ne yapılıyor olduğunu açıklar.\n"
 "      --version               sürüm bilgisini görüntüler ve çıkar.\n"
 
-#: tp/texi2any.pl:677
+#: tp/texi2any.pl:689
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3247,7 +3443,7 @@ msgstr ""
 "                                belirtilen çıktıyı oluşturmak için "
 "texi2dvi'ı çağırır.\n"
 
-#: tp/texi2any.pl:685
+#: tp/texi2any.pl:699
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -3299,7 +3495,7 @@ msgstr ""
 "                               Aksi halde, HEDEF çıktı dosyasını "
 "adlandırır.\n"
 
-#: tp/texi2any.pl:705
+#: tp/texi2any.pl:721
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3340,7 +3536,7 @@ msgstr ""
 "      --spilt-size=NUM        Info dosyalarını NUM boyutuna böler (öntanımlı "
 "%d).\n"
 
-#: tp/texi2any.pl:722
+#: tp/texi2any.pl:740
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3366,7 +3562,7 @@ msgstr ""
 "dosyaları üretir;\n"
 "                                öntanımlısı yalnızca bölünmüşse atanır.\n"
 
-#: tp/texi2any.pl:733
+#: tp/texi2any.pl:752
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
@@ -3375,7 +3571,7 @@ msgstr ""
 "      --output-indent=DEĞ     hiçbir şey yapmaz, uyumluluk için "
 "korunmuştur.\n"
 
-#: tp/texi2any.pl:736
+#: tp/texi2any.pl:755
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
@@ -3383,7 +3579,7 @@ msgstr ""
 "DVI/PS/PDF için Seçenekler:\n"
 "      --Xopt=OPT              OPT'i texi2dvi'e aktar; yinelenebilir.\n"
 
-#: tp/texi2any.pl:739
+#: tp/texi2any.pl:760
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3403,7 +3599,7 @@ msgstr ""
 "  -P DIR              \t\tDIR'ı @include arama yolu başına ekler.\n"
 "  -U VAR             \t\tVAR değişkeni tanımsız, @clear ile olduğu gibi.\n"
 
-#: tp/texi2any.pl:747
+#: tp/texi2any.pl:770
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -3439,7 +3635,7 @@ msgstr ""
 "\n"
 "  Ayrıca --no-ifFORMAT seçenekleri için @ifnotFORMAT metnini işler.\n"
 
-#: tp/texi2any.pl:764
+#: tp/texi2any.pl:789
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating Docbook, --ifdocbook is on and the others are off;\n"
@@ -3455,7 +3651,7 @@ msgstr ""
 "  eğer salt metin oluşturuluyorsa, --ifplaintext açık, diğerleri kapalıdır;\n"
 "  eğer XML oluşturuluyorsa, --ifxml açık, deiğerleri kapalıdır.\n"
 
-#: tp/texi2any.pl:771
+#: tp/texi2any.pl:798
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -3485,63 +3681,58 @@ msgstr ""
 "  makeinfo --no-split foo.texi      ne büyüklükte olursa olsun tek Info "
 "dosyası yazar\n"
 
-#: tp/texi2any.pl:818
+#: tp/texi2any.pl:844
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: --footnote-style arg. `separate' ya da `end' olmalıdır, `%s' değil.\n"
 
-#: tp/texi2any.pl:913
+#: tp/texi2any.pl:934
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: --paragraph-indent arg. sayısal/`none'/`asis' olmalıdır, `%s' değil.\n"
 
-#: tp/texi2any.pl:990
+#: tp/texi2any.pl:1044
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 "%s: %s oluşturulurken -o ile yalnızca bir girdi DOSYAsı belirtilebilir\n"
 
-#: tp/texi2any.pl:994
+#: tp/texi2any.pl:1048
 msgid "--Xopt option without printed output"
 msgstr "yazdırılmış çıktı olmadan--Xopt seçeneği"
 
-#: tp/texi2any.pl:1010
+#: tp/texi2any.pl:1064
 #, perl-format
 msgid "unknown tree transformation %s"
 msgstr "bilinmeyen ağaç dönüşümü %s"
 
-#: tp/texi2any.pl:1017
+#: tp/texi2any.pl:1071
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr "%s biçemi için bölme yok sayılıyor"
 
-#: tp/texi2any.pl:1076
+#: tp/texi2any.pl:1148
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: dosya argümanı eksik.\n"
 
-#: tp/texi2any.pl:1077
-#, perl-format
-msgid "Try `%s --help' for more information.\n"
-msgstr "Daha fazla bilgi için `%s --help' yazın.\n"
-
-#: tp/texi2any.pl:1144
+#: tp/texi2any.pl:1216
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr "fill_gaps_in_sectioning dönüşümü sonuç geri döndürmedi. Bölüm yok mu?"
 
-#: tp/texi2any.pl:1166
+#: tp/texi2any.pl:1238
 #, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "%s makro genişletme dosyasını kapatmada hata: %s\n"
 
-#: tp/texi2any.pl:1172
+#: tp/texi2any.pl:1244
 #, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "%s yazmak için açılamıyorı: %s\n"
 
-#: tp/texi2any.pl:1197
+#: tp/texi2any.pl:1274
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
@@ -3549,20 +3740,10 @@ msgstr ""
 "insert_nodes_for_sectioning_commands dönüşümü sonuç geri döndürmüyor. Bölüm "
 "yok mu?"
 
-#: tp/texi2any.pl:1265 tp/texi2any.pl:1341
-#, perl-format
-msgid "%s: error on closing %s: %s\n"
-msgstr "%s: %s'i kapatmada hata: %s\n"
-
-#: tp/texi2any.pl:1288 tp/texi2any.pl:1322
+#: tp/texi2any.pl:1379 tp/texi2any.pl:1413
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "%s: %s dahili bağlantı dosyasını kapatmada hata: %s\n"
-
-#: tp/texi2any.pl:1294 tp/texi2any.pl:1328
-#, perl-format
-msgid "%s: could not open %s for writing: %s\n"
-msgstr "%s: %s yazmak için açılamıyorı: %s\n"
 
 #: tp/Texinfo/XS/parsetexi/close.c:274
 #, c-format
@@ -3573,133 +3754,133 @@ msgstr "eşleşen `@end %s' yok"
 msgid "misplaced {"
 msgstr "yanlış yerleştirilmiş {"
 
-#: tp/Texinfo/XS/parsetexi/close.c:415
+#: tp/Texinfo/XS/parsetexi/close.c:422
 #, c-format
 msgid "unmatched `@end %s'"
 msgstr "eşleşmeyen `@end %s'"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:191
+#: tp/Texinfo/XS/parsetexi/end_line.c:192
 msgid "@set requires a name"
 msgstr "@set bir isim gerektirir"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:194
+#: tp/Texinfo/XS/parsetexi/end_line.c:195
 msgid "bad name for @set"
 msgstr "@set için kötü isim"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:218
+#: tp/Texinfo/XS/parsetexi/end_line.c:219
 msgid "@clear requires a name"
 msgstr "@clear bir isim gerektirir"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:221
+#: tp/Texinfo/XS/parsetexi/end_line.c:223
 msgid "bad name for @clear"
 msgstr "@clear için kötü isim"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:240
+#: tp/Texinfo/XS/parsetexi/end_line.c:242
 msgid "@unmacro requires a name"
 msgstr "@unmacro bir isim gerektirir"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:243
+#: tp/Texinfo/XS/parsetexi/end_line.c:245
 msgid "bad name for @unmacro"
 msgstr "@unmacro için kötü isim"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:262
+#: tp/Texinfo/XS/parsetexi/end_line.c:264
 #, c-format
 msgid "@clickstyle should only accept an @-command as argument, not `%s'"
 msgstr ""
 "@clickstyle bağımsız değişken olarak yalnızca bir @-command kabul etmelidir, "
 "`%s' değil"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:355
+#: tp/Texinfo/XS/parsetexi/end_line.c:357
 #, c-format
 msgid "environment command %s as argument to @alias"
 msgstr "@alias'a argüman olarak çevre komutu %s"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:373
+#: tp/Texinfo/XS/parsetexi/end_line.c:375
 msgid "bad argument to @alias"
 msgstr "@alias'a hatalı argüman"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:424
+#: tp/Texinfo/XS/parsetexi/end_line.c:426
 msgid "bad argument to @definfoenclose"
 msgstr "@definfoenclose'a hatalı argüman"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:436
+#: tp/Texinfo/XS/parsetexi/end_line.c:438
 msgid "empty @columnfractions"
 msgstr "@columnfractions'da boş argüman"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:594
+#: tp/Texinfo/XS/parsetexi/end_line.c:598
 #, c-format
 msgid "bad argument to @printindex: %s"
 msgstr "@printindex'e hatalı argüman: %s"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:646
+#: tp/Texinfo/XS/parsetexi/end_line.c:650
 #, c-format
 msgid "Only @fonttextsize 10 or 11 is supported, not `%s'"
 msgstr "Yalnızca @fonttextsize 10 veya 11 destekleniyor, `%s' değil"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:657
+#: tp/Texinfo/XS/parsetexi/end_line.c:661
 #, c-format
 msgid "@footnotestyle arg must be `separate' or `end', not `%s'"
 msgstr "@footnotestyle arg `separate' veya `end' olmalıdır, `%s' değil"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:669
+#: tp/Texinfo/XS/parsetexi/end_line.c:673
 #, c-format
 msgid "@setchapternewpage arg must be `on', `off' or `odd', not `%s'"
 msgstr "@setchapternewpage arg `on', `off' veya `odd' olmalıdır, `%s' değil"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:680
+#: tp/Texinfo/XS/parsetexi/end_line.c:684
 #, c-format
 msgid "bad argument to @need: %s"
 msgstr "@need'e hatalı argüman: %s"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:701
+#: tp/Texinfo/XS/parsetexi/end_line.c:705
 #, c-format
 msgid "@firstparagraph arg must be `none' or `insert', not `%s'"
 msgstr "@firstparagraph arg `none' veya `insert' olmalıdır, `%s' değil"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:783
+#: tp/Texinfo/XS/parsetexi/end_line.c:787
 #, c-format
 msgid "bad argument to @headings: %s"
 msgstr "@headings'e hatalı argüman: %s"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:1158
+#: tp/Texinfo/XS/parsetexi/end_line.c:1162
 #, c-format
 msgid "%s requires an argument: the formatter for @item"
 msgstr "%s bir argüman gerektirir: @item öğesi için biçimlendirici"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:1379
+#: tp/Texinfo/XS/parsetexi/end_line.c:1380
 msgid "unmatched `@end'"
 msgstr "eşleşmeyen `@end'"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:1399
-#: tp/Texinfo/XS/parsetexi/parser.c:1109
+#: tp/Texinfo/XS/parsetexi/end_line.c:1400
+#: tp/Texinfo/XS/parsetexi/parser.c:1133
 #, c-format
 msgid "superfluous argument to @end %s: %s"
 msgstr "@end %s'e fazladan argüman: %s"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:1409
+#: tp/Texinfo/XS/parsetexi/end_line.c:1410
 #, c-format
 msgid "bad argument to @end: %s"
 msgstr "@end'e kötü argüman: %s"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:1426
+#: tp/Texinfo/XS/parsetexi/end_line.c:1427
 #, c-format
 msgid "@include: could not find %s"
 msgstr "@include: %s bulunamıyor"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:1434
+#: tp/Texinfo/XS/parsetexi/end_line.c:1435
 #, c-format
 msgid "@include: could not open %s:"
 msgstr "@include: %s açılamıyor:"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:1815
+#: tp/Texinfo/XS/parsetexi/end_line.c:1816
 msgid "@setfilename after the first element"
 msgstr "ilk unsurdan sonra @setfilename"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:1825
+#: tp/Texinfo/XS/parsetexi/end_line.c:1826
 msgid "@columnfractions only meaningful on a @multitable line"
 msgstr "@columnfractions yalnızca bir @multitable satırında anlamlıdır"
 
-#: tp/Texinfo/XS/parsetexi/end_line.c:1892
+#: tp/Texinfo/XS/parsetexi/end_line.c:1893
 msgid "@node precedes @part, but parts may not be associated with nodes"
 msgstr ""
 "@node @part'den önce geliyor, fakat parçaları düğümlerle ilişkili olmayabilir"
@@ -3734,27 +3915,22 @@ msgstr "@%s bir isim gerektirir"
 msgid "bad or empty @%s formal argument: "
 msgstr "hatalı ya da boş @%s resmi argümanı: "
 
-#: tp/Texinfo/XS/parsetexi/parser.c:1436
+#: tp/Texinfo/XS/parsetexi/parser.c:1460
 #, c-format
 msgid "@dotless expects `i' or `j' as argument, not `%c'"
 msgstr "@dotless argüman olarak `i' ya da `j' gerektirir, `%c' değil"
 
-#: tp/Texinfo/XS/parsetexi/parser.c:1523
-#, c-format
-msgid "undefined flag: %.*s"
-msgstr "tanımlanmamış bayrak: %.*s"
-
-#: tp/Texinfo/XS/parsetexi/parser.c:1578
+#: tp/Texinfo/XS/parsetexi/parser.c:1594
 #, c-format
 msgid "@%s is obsolete."
 msgstr "@%s kullanımdan kalkmış."
 
-#: tp/Texinfo/XS/parsetexi/parser.c:1580
+#: tp/Texinfo/XS/parsetexi/parser.c:1596
 #, c-format
 msgid "@%s is obsolete; %s"
 msgstr "@%s kullanımdan kalkmış; %s"
 
-#: tp/Texinfo/XS/parsetexi/parser.c:1705
+#: tp/Texinfo/XS/parsetexi/parser.c:1722
 msgid "@\\ should only appear in math context"
 msgstr "@\\ yalnızca matematik bağlamında görünmelidir"
 
@@ -3767,9 +3943,47 @@ msgstr "ilişkili karakteri olmayan @verb"
 msgid "@dotless expects `i' or `j' as argument, not `%s'"
 msgstr "@dotless argüman olarak `i' ya da `j' gerektirir, `%s' değil"
 
-#: tp/Texinfo/XS/parsetexi/separator.c:545
+#: tp/Texinfo/XS/parsetexi/separator.c:555
 msgid "misplaced }"
 msgstr "yanlış yerleştirilmiş }"
+
+#, perl-format
+#~ msgid "try `%s --help' for more information\n"
+#~ msgstr "daha fazla bilgi için `%s --help' deneyin\n"
+
+#~ msgid ""
+#~ "move your @contents command if you want the contents after the title page"
+#~ msgstr ""
+#~ "başlık sayfasının ardındaki içeriği istiyorsanız @contents komutunu "
+#~ "hareket ettir"
+
+#~ msgid ""
+#~ "move your @shortcontents and @contents commands if you want the contents "
+#~ "after the title page"
+#~ msgstr ""
+#~ "başlık sayfasından sonra içeriği istiyorsanız @shortcontents ve @contents "
+#~ "komutlarınızı hareket ettirin"
+
+#~ msgid "@%s seen before first @node"
+#~ msgstr "ilk @node öncesinde @%s görüldü"
+
+#~ msgid ""
+#~ "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+#~ msgstr ""
+#~ "belki de sizin @top düğümünüz, @ifinfo'dan ziyade @ifnottex içine "
+#~ "sarılmalıdır?"
+
+#~ msgid "unreferenced node `%s'"
+#~ msgstr "başvurulmamış düğüm `%s'"
+
+#~ msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
+#~ msgstr "düğüm %s `%3$s' menüsündeki `%s' ve bölümlemedeki `%4$s' farklı"
+
+#~ msgid "for `%s', up in menu `%s' and up `%s' don't match"
+#~ msgstr "`%s' için, menü `%s' deki yukarı ve `%s' yukarısı eşleşmiyor"
+
+#~ msgid "undefined flag: %.*s"
+#~ msgstr "tanımlanmamış bayrak: %.*s"
 
 #~ msgid "no node to be renamed"
 #~ msgstr "yeniden adlandırılacak düğüm yok"
@@ -4164,9 +4378,6 @@ msgstr "yanlış yerleştirilmiş }"
 
 #~ msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "ya da: texi2any [SEÇENEK]... TEXINFO-DOSYASI...\n"
-
-#~ msgid "display this help and exit"
-#~ msgstr "bu yardımı görüntüler ve çıkar"
 
 #~ msgid "send output to FILE"
 #~ msgstr "çıktıyı DOSYA'ya gönderir"

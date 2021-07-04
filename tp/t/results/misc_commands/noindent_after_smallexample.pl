@@ -159,6 +159,9 @@ Less recent versions are also present.
 $result_errors{'noindent_after_smallexample'} = [];
 
 
+$result_floats{'noindent_after_smallexample'} = {};
+
+
 
 $result_converted{'plaintext'}->{'noindent_after_smallexample'} = 'To obtain.
      $ wget \'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.guess?rev=HEAD&content-type=text/plain\'

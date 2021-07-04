@@ -56,6 +56,9 @@ $result_texts{'simple'} = 'in  b.';
 $result_errors{'simple'} = [];
 
 
+$result_floats{'simple'} = {};
+
+
 
 $result_converted{'plaintext'}->{'simple'} = 'in b.
 ';

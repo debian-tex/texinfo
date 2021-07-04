@@ -1,0 +1,30 @@
+---
+abstract: 'High-Level Interface to Uniforum Message Translation'
+author:
+  - 'Guido Flohr <guido.flohr@cantanea.com>'
+build_requires:
+  ExtUtils::MakeMaker: '0'
+configure_requires:
+  ExtUtils::MakeMaker: '0'
+dynamic_config: 0
+generated_by: 'ExtUtils::MakeMaker version 7.44, CPAN::Meta::Converter version 2.150010'
+license: unknown
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: libintl-perl
+no_index:
+  directory:
+    - t
+    - inc
+recommends:
+  File::ShareDir: '0'
+requires:
+  File::Spec: '0'
+  version: '0.77'
+resources:
+  bugtracker: https://github.com/gflohr/libintl-perl/issues
+  homepage: http://www.guido-flohr.net/en/projects/
+  repository: https://github.com/gflohr/libintl-perl.git
+version: '1.32'
+x_serialization_backend: 'CPAN::Meta::YAML version 0.018'

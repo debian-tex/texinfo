@@ -81,4 +81,7 @@ after verb.';
 $result_errors{'multiline'} = [];
 
 
+$result_floats{'multiline'} = {};
+
+
 1;

@@ -43,4 +43,7 @@ this text will appear only in Info and plain text.
 $result_errors{'plaintext_ifinfo'} = [];
 
 
+$result_floats{'plaintext_ifinfo'} = {};
+
+
 1;

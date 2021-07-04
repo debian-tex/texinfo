@@ -11,7 +11,7 @@
 
 #include "miscxs.h"
 
-MODULE = Texinfo::MiscXSXS PACKAGE = Texinfo::MiscXSXS PREFIX = xs_
+MODULE = Texinfo::MiscXS  PACKAGE = Texinfo::MiscXS  PREFIX = xs_
 
 #  Copyright 2016 Free Software Foundation, Inc.
 #

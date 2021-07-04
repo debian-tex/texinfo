@@ -49,7 +49,7 @@ enum context
 pop_context ()
 {
   if (top == 0)
-    abort ();
+    fatal ("context stack empty");
 
   debug (">>>>>>>>>>>>>POPPING STACK AT %d", top - 1);
   return stack[--top];
@@ -96,7 +96,7 @@ ELEMENT *
 pop_region ()
 {
   if (region_top == 0)
-    abort ();
+    fatal ("region stack empty");
 
   debug (">>>>>>>>>>>>>POPPING REGION STACK AT %d", region_top - 1);
   return region_stack[--region_top];

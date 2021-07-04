@@ -86,7 +86,9 @@ $result_trees{'unknown_encoding'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -113,7 +115,7 @@ $result_trees{'unknown_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'pare
 $result_trees{'unknown_encoding'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unknown_encoding'}{'contents'}[1];
 $result_trees{'unknown_encoding'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'unknown_encoding'}{'contents'}[1];
 $result_trees{'unknown_encoding'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'unknown_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'unknown_encoding'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'unknown_encoding'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'unknown_encoding'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'unknown_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_encoding'}{'contents'}[1]{'parent'} = $result_trees{'unknown_encoding'};
 
 $result_texis{'unknown_encoding'} = '
@@ -167,6 +169,9 @@ $result_errors{'unknown_encoding'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'unknown_encoding'} = {};
 
 
 

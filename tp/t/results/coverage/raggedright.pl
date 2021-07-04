@@ -105,6 +105,9 @@ in raggedright
 $result_errors{'raggedright'} = [];
 
 
+$result_floats{'raggedright'} = {};
+
+
 
 $result_converted{'plaintext'}->{'raggedright'} = 'in raggedright
 ';

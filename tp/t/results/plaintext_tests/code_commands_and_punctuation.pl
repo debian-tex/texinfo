@@ -50,7 +50,11 @@ $result_trees{'code_commands_and_punctuation'} = {
           ],
           'cmdname' => 'samp',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -71,7 +75,6 @@ $result_trees{'code_commands_and_punctuation'}{'contents'}[0]{'contents'}[0]{'pa
 $result_trees{'code_commands_and_punctuation'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'code_commands_and_punctuation'}{'contents'}[0];
 $result_trees{'code_commands_and_punctuation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'code_commands_and_punctuation'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'code_commands_and_punctuation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'code_commands_and_punctuation'}{'contents'}[0]{'contents'}[2];
-$result_trees{'code_commands_and_punctuation'}{'contents'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'code_commands_and_punctuation'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'code_commands_and_punctuation'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'code_commands_and_punctuation'}{'contents'}[0];
 $result_trees{'code_commands_and_punctuation'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'code_commands_and_punctuation'}{'contents'}[0];
 $result_trees{'code_commands_and_punctuation'}{'contents'}[0]{'parent'} = $result_trees{'code_commands_and_punctuation'};
@@ -84,6 +87,9 @@ $result_texts{'code_commands_and_punctuation'} = 'AA. aa. After.
 ';
 
 $result_errors{'code_commands_and_punctuation'} = [];
+
+
+$result_floats{'code_commands_and_punctuation'} = {};
 
 
 

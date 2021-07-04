@@ -56,7 +56,11 @@ $result_trees{'form_feed_in_brace_commands'} = {
             ],
             'normalized' => 'aa'
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -110,7 +114,11 @@ $result_trees{'form_feed_in_brace_commands'} = {
           ],
           'cmdname' => 'email',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -148,7 +156,11 @@ $result_trees{'form_feed_in_brace_commands'} = {
             'spaces_before_argument' => ' 
 '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -220,7 +232,6 @@ $result_trees{'form_feed_in_brace_commands'}{'contents'}[0]{'contents'}[1]{'pare
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[0]{'contents'}[2];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[0]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'form_feed_in_brace_commands'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'form_feed_in_brace_commands'}{'contents'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[0];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[0];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[0]{'parent'} = $result_trees{'form_feed_in_brace_commands'};
@@ -230,14 +241,12 @@ $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args'}[1];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1];
-$result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'line_nr'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[2];
-$result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[2]{'line_nr'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0];
@@ -259,6 +268,9 @@ $result_texts{'form_feed_in_brace_commands'} = ' aa something fff .
 ';
 
 $result_errors{'form_feed_in_brace_commands'} = [];
+
+
+$result_floats{'form_feed_in_brace_commands'} = {};
 
 
 
@@ -286,9 +298,9 @@ $result_converted{'html_text'}->{'form_feed_in_brace_commands'} = '<p><samp> &#1
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h5>
 <p>f1 </p>&#12;
-<h5><a id="FOOT2" href="#DOCF2">(2)</a></h3>
+<h5><a id="FOOT2" href="#DOCF2">(2)</a></h5>
 <p>gg</p>&#12;<p>jj</p>
 </div>
 ';

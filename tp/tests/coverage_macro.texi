@@ -78,6 +78,7 @@ but , ,@:
 @@print @print{}
 @@result @result{}
 @@today @today{}
+
 @@aa @aa{}
 @@AA @AA{}
 @@ae @ae{}
@@ -93,6 +94,7 @@ but , ,@:
 @@TH @TH{}
 @@dh @dh{}
 @@th @th{}
+
 @@exclamdown @exclamdown{}
 @@questiondown @questiondown{}
 @@pounds @pounds{}
@@ -181,10 +183,8 @@ but , ,@:
 @code{@@v@{--a@}} @v{--a}
 @code{@@,@{c@}} @,{c}
 @code{@@,@{--c@}} @,{--c}
-@ifset texi2html
 @code{@@ogonek@{a@}} @ogonek{a}
 @code{@@ogonek@{--a@}} @ogonek{--a}
-@end ifset
 @code{@@footnote@{in footnote@}} @footnote{in footnote}
 @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 
@@ -192,10 +192,10 @@ but , ,@:
 @code{@@image@{f--ile,l--i@}} @image{f--ile,l--i}
 @code{@@image@{f--ile,,l--e@}} @image{f--ile,,l--e}
 @code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
-@code{@@image@{f--ile,,,,e-d-xt@}} @image{f--ile,,,,e--xt}
-@code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
+@code{@@image@{f--ile,,,,.e-d-xt@}} @image{f--ile,,,,.e--xt}
+@code{@@image@{f--ile,aze,az,alt,.e--xt@}} @image{f--ile,aze,az,alt,.e--xt}
 @code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
-@code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
+@code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{.file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@}}
 
 @sp 2
 
@@ -261,7 +261,6 @@ Note, the note
 @quotation @*
 @end quotation
 
-@ifset texi2html
 @smallquotation 
 A small quot---ation
 @end smallquotation
@@ -273,7 +272,6 @@ A small Note
 @smallquotation something, other thing
 something, other thing
 @end smallquotation
-@end ifset
 
 @itemize
 @item i--temize
@@ -328,6 +326,42 @@ e--xample  some
    text
 @end example
 
+@example first arg
+example one arg
+@end example
+
+@example first arg, second arg
+example two args
+@end example
+
+@example first arg, second arg, third arg
+example three args
+@end example
+
+@example first arg, second arg, third arg, fourth arg
+example four args
+@end example
+
+@example first arg, second arg, third arg, fourth arg, fifth arg
+example five args
+@end example
+
+@example something @'e @TeX{}
+The something @'e @TeX{} is here.
+@end example
+
+@example @@ at the end of line @
+A @@ at the end of the @@example line.
+@end example
+
+@example ,,,,,,
+example with empty args
+@end example
+
+@example ,,,nonempty,,,
+example with empty and non empty args mix
+@end example
+
 @smallexample
 s--mallexample
 @end smallexample
@@ -355,6 +389,15 @@ f--ormat
 @smallformat
 s--mallformat
 @end smallformat
+
+@ignore
+in the displaymath below, as in math, backslash are doubled because 
+we are in a macro.
+@end ignore
+@displaymath
+disp--laymath
+f(x) = {1 \\over \\sigma \\sqrt{2\\pi}}e@sup{-{1 \\over 2}\\left({x-\\mu \\over \\sigma}\\right)^2}
+@end displaymath
 
 @deffn c--ategory d--effn_name a--rguments...
 d--effn
@@ -609,8 +652,6 @@ docbook ''
 
 @subsubheading subsubheading
 
-@c makeinfo cannot handle that
-@ifset texi2html
 
 @code{@@acronym@{--a,an accronym @@comma@{@} @@enddots@{@}@}} @acronym{--a,an accronym @comma{} @enddots{}}
 @code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude--@@comma@{@} @@b@{Autonome@} @}} @abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }
@@ -622,10 +663,9 @@ docbook ''
 @code{@@image@{f--ile,aze,az,@@verb@{:jk _" %@@:@} @@b@{in b "@},e--xt@}} @image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt}
 @code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
 
+
+
 @set invalid
-@end ifset
-
-
 @c invalid texinfo
 @ifset invalid
 

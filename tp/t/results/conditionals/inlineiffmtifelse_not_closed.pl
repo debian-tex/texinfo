@@ -71,4 +71,7 @@ $result_errors{'inlineiffmtifelse_not_closed'} = [
 ];
 
 
+$result_floats{'inlineiffmtifelse_not_closed'} = {};
+
+
 1;

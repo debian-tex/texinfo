@@ -153,7 +153,9 @@ $result_trees{'index_and_node_same_name'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'index-node'
           }
         ],
@@ -189,7 +191,7 @@ $result_trees{'index_and_node_same_name'}{'contents'}[2]{'contents'}[2]{'args'}[
 $result_trees{'index_and_node_same_name'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'index_and_node_same_name'}{'contents'}[2];
 $result_trees{'index_and_node_same_name'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'index_and_node_same_name'}{'contents'}[2];
 $result_trees{'index_and_node_same_name'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'index_and_node_same_name'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'index_and_node_same_name'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'index_and_node_same_name'}{'contents'}[2]{'extra'}{'node_content'};
+$result_trees{'index_and_node_same_name'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'index_and_node_same_name'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'index_and_node_same_name'}{'contents'}[2]{'parent'} = $result_trees{'index_and_node_same_name'};
 
 $result_texis{'index_and_node_same_name'} = '@top top
@@ -243,6 +245,9 @@ $result_menus{'index_and_node_same_name'} = {
 $result_errors{'index_and_node_same_name'} = [];
 
 
+$result_floats{'index_and_node_same_name'} = {};
+
+
 
 $result_converted{'html'}->{'index_and_node_same_name'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -255,15 +260,17 @@ $result_converted{'html'}->{'index_and_node_same_name'} = '<!DOCTYPE html PUBLIC
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#index-node" rel="start" title="index node">
 <link href="#index-node" rel="index" title="index node">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -272,6 +279,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -280,7 +288,8 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="top"></span><h1 class="top">top</h1>
+<div class="top" id="top">
+<h1 class="top">top</h1>
 <span id="index-node"></span><h4 class="node-heading">index node</h4>
 
 <span id="index-node-1"></span>
@@ -298,7 +307,7 @@ ul.no-bullet {list-style: none}
  &nbsp; 
 </td></tr></table>
 
-<hr>
+<hr></div>
 
 
 

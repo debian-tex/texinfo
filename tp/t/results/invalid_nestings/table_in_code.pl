@@ -160,7 +160,11 @@ $result_trees{'table_in_code'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 3,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -191,7 +195,6 @@ $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'
 $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1];
 $result_trees{'table_in_code'}{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_in_code'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'table_in_code'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1];
-$result_trees{'table_in_code'}{'contents'}[1]{'line_nr'} = $result_trees{'table_in_code'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'table_in_code'}{'contents'}[1]{'parent'} = $result_trees{'table_in_code'};
 $result_trees{'table_in_code'}{'contents'}[2]{'parent'} = $result_trees{'table_in_code'};
 
@@ -243,10 +246,14 @@ $result_errors{'table_in_code'} = [
 ];
 
 
+$result_floats{'table_in_code'} = {};
+
+
 
 $result_converted{'plaintext'}->{'table_in_code'} = '\' in code \'
 _line_
      text
+
 ';
 
 1;

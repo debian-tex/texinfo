@@ -55,4 +55,7 @@ $result_errors{'spaces_no_brace_after_braced_command'} = [
 ];
 
 
+$result_floats{'spaces_no_brace_after_braced_command'} = {};
+
+
 1;

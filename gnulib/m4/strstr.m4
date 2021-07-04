@@ -1,5 +1,5 @@
-# strstr.m4 serial 20
-dnl Copyright (C) 2008-2019 Free Software Foundation, Inc.
+# strstr.m4 serial 22
+dnl Copyright (C) 2008-2021 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -9,7 +9,7 @@ AC_DEFUN([gl_FUNC_STRSTR_SIMPLE],
 [
   AC_REQUIRE([gl_HEADER_STRING_H_DEFAULTS])
   AC_REQUIRE([gl_FUNC_MEMCHR])
-  if test $HAVE_MEMCHR = 0 || test $REPLACE_MEMCHR = 1; then
+  if test $REPLACE_MEMCHR = 1; then
     REPLACE_STRSTR=1
   else
     dnl Detect https://sourceware.org/bugzilla/show_bug.cgi?id=12092
@@ -56,7 +56,7 @@ AC_DEFUN([gl_FUNC_STRSTR_SIMPLE],
 #endif
             ],
             [gl_cv_func_strstr_works_always="guessing yes"],
-            [gl_cv_func_strstr_works_always="guessing no"])
+            [gl_cv_func_strstr_works_always="$gl_cross_guess_normal"])
          ])
       ])
     case "$gl_cv_func_strstr_works_always" in
@@ -135,7 +135,7 @@ static void quit (int sig) { _exit (sig + 128); }
 #endif
            ],
            [gl_cv_func_strstr_linear="guessing yes"],
-           [gl_cv_func_strstr_linear="guessing no"])
+           [gl_cv_func_strstr_linear="$gl_cross_guess_normal"])
         ])
       ])
     case "$gl_cv_func_strstr_linear" in

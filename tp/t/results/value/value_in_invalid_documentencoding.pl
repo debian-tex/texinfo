@@ -99,4 +99,7 @@ $result_errors{'value_in_invalid_documentencoding'} = [
 ];
 
 
+$result_floats{'value_in_invalid_documentencoding'} = {};
+
+
 1;

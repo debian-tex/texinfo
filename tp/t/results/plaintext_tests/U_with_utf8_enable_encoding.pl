@@ -94,6 +94,9 @@ $result_texts{'U_with_utf8_enable_encoding'} = '00FF (should be a real y-dieresi
 $result_errors{'U_with_utf8_enable_encoding'} = [];
 
 
+$result_floats{'U_with_utf8_enable_encoding'} = {};
+
+
 
 $result_converted{'plaintext'}->{'U_with_utf8_enable_encoding'} = 'ÿ (should be a real y-dieresis in UTF-8).
 ';

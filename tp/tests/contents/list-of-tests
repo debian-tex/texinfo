@@ -10,19 +10,24 @@ no_content no_content.texi
 no_content_do_contents no_content.texi -c 'contents 1'
 no_content_setcatpage no_content_setcatpage.texi
 no_content_setcatpage_do_contents no_content_setcatpage.texi -c 'contents 1'
-contents_at_begin_inline contents_at_begin.texi -c 'INLINE_CONTENTS 1'
-contents_at_end_inline contents_at_end.texi -c 'INLINE_CONTENTS 1'
-contents_in_middle_chapter_inline contents_in_middle_chapter.texi -c 'INLINE_CONTENTS 1'
-contents_in_middle_section_inline contents_in_middle_section.texi -c 'INLINE_CONTENTS 1'
-double_contents_inline double_contents.texi -c 'INLINE_CONTENTS 1'
-double_contents_inline_chapter double_contents.texi -c 'INLINE_CONTENTS 1' --split chapter
-double_contents_inline_section double_contents.texi -c 'INLINE_CONTENTS 1' --split section
-double_contents_inline_nodes double_contents.texi -c 'INLINE_CONTENTS 1' --split node
-no_content_inline no_content.texi -c 'INLINE_CONTENTS 1'
-no_content_do_contents_inline no_content.texi -c 'INLINE_CONTENTS 1' -c 'contents 1'
-no_content_setcatpage_inline no_content_setcatpage.texi -c 'INLINE_CONTENTS 1'
-no_content_setcatpage_do_contents_inline no_content_setcatpage.texi -c 'INLINE_CONTENTS 1' -c 'contents 1'
-double_contents_book double_contents.texi --init book.pm
+contents_at_begin_inline contents_at_begin.texi -c 'CONTENTS_OUTPUT_LOCATION inline'
+contents_at_end_inline contents_at_end.texi -c 'CONTENTS_OUTPUT_LOCATION inline'
+contents_in_middle_chapter_inline contents_in_middle_chapter.texi -c 'CONTENTS_OUTPUT_LOCATION inline'
+contents_in_middle_section_inline contents_in_middle_section.texi -c 'CONTENTS_OUTPUT_LOCATION inline'
+double_contents_inline double_contents.texi -c 'CONTENTS_OUTPUT_LOCATION inline'
+double_contents_inline_chapter double_contents.texi -c 'CONTENTS_OUTPUT_LOCATION inline' --split chapter
+double_contents_inline_section double_contents.texi -c 'CONTENTS_OUTPUT_LOCATION inline' --split section
+double_contents_inline_nodes double_contents.texi -c 'CONTENTS_OUTPUT_LOCATION inline' --split node
+double_contents_after_title double_contents.texi -c 'CONTENTS_OUTPUT_LOCATION after_title'
+double_contents_after_title_no_texi2html double_contents.texi --html -c 'CONTENTS_OUTPUT_LOCATION after_title' -c 'TEXI2HTML undef'
+no_content_inline no_content.texi -c 'CONTENTS_OUTPUT_LOCATION inline'
+no_content_do_contents_inline no_content.texi -c 'CONTENTS_OUTPUT_LOCATION inline' -c 'contents 1'
+no_content_setcatpage_inline no_content_setcatpage.texi -c 'CONTENTS_OUTPUT_LOCATION inline'
+no_content_setcatpage_do_contents_inline no_content_setcatpage.texi -c 'CONTENTS_OUTPUT_LOCATION inline' -c 'contents 1'
+double_contents_book double_contents.texi -c FORMAT_MENU=nomenu --init book.pm
+double_contents_after_title_book double_contents.texi --init book.init -c 'CONTENTS_OUTPUT_LOCATION after_title'
+double_contents_after_title_book_chapter double_contents.texi --init book.init --split chapter -c 'CONTENTS_OUTPUT_LOCATION after_title'
+
 contents_and_parts contents_and_parts.texi
 
 contents_at_begin_info contents_at_begin.texi --info

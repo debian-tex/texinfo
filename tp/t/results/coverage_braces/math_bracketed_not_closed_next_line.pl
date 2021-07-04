@@ -46,7 +46,11 @@ $result_trees{'math_bracketed_not_closed_next_line'} = {
           ],
           'cmdname' => 'math',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -61,7 +65,6 @@ $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[
 $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0];
-$result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0];
 $result_trees{'math_bracketed_not_closed_next_line'}{'contents'}[0]{'parent'} = $result_trees{'math_bracketed_not_closed_next_line'};
 
@@ -94,6 +97,9 @@ $result_errors{'math_bracketed_not_closed_next_line'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'math_bracketed_not_closed_next_line'} = {};
 
 
 1;

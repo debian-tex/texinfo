@@ -420,6 +420,9 @@ after exdented
 $result_errors{'exdent_and_commands'} = [];
 
 
+$result_floats{'exdent_and_commands'} = {};
+
+
 
 $result_converted{'plaintext'}->{'exdent_and_commands'} = '     quotation1
 in exdented protected eol  

@@ -141,4 +141,7 @@ $result_errors{'ifset_and_end_isef_in_macro'} = [
 ];
 
 
+$result_floats{'ifset_and_end_isef_in_macro'} = {};
+
+
 1;

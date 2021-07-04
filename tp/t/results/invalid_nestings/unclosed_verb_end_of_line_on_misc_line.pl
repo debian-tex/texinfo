@@ -51,7 +51,11 @@ $result_trees{'unclosed_verb_end_of_line_on_misc_line'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -62,7 +66,6 @@ $result_trees{'unclosed_verb_end_of_line_on_misc_line'}{'contents'}[0]{'args'}[0
 $result_trees{'unclosed_verb_end_of_line_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unclosed_verb_end_of_line_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'unclosed_verb_end_of_line_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unclosed_verb_end_of_line_on_misc_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'unclosed_verb_end_of_line_on_misc_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'unclosed_verb_end_of_line_on_misc_line'}{'contents'}[0];
-$result_trees{'unclosed_verb_end_of_line_on_misc_line'}{'contents'}[0]{'line_nr'} = $result_trees{'unclosed_verb_end_of_line_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'unclosed_verb_end_of_line_on_misc_line'}{'contents'}[0]{'parent'} = $result_trees{'unclosed_verb_end_of_line_on_misc_line'};
 
 $result_texis{'unclosed_verb_end_of_line_on_misc_line'} = '@setfilename name @verb{
@@ -100,6 +103,9 @@ $result_errors{'unclosed_verb_end_of_line_on_misc_line'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'unclosed_verb_end_of_line_on_misc_line'} = {};
 
 
 1;

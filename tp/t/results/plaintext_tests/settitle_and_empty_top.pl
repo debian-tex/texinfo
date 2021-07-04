@@ -114,6 +114,9 @@ $result_sectioning{'settitle_and_empty_top'}{'section_childs'}[0]{'section_up'} 
 $result_errors{'settitle_and_empty_top'} = [];
 
 
+$result_floats{'settitle_and_empty_top'} = {};
+
+
 
 $result_converted{'plaintext'}->{'settitle_and_empty_top'} = 'Title
 *****

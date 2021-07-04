@@ -281,7 +281,11 @@ $result_trees{'table_in_itemize'} = {
                 'end_command' => {},
                 'spaces_before_argument' => ' '
               },
-              'line_nr' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -353,7 +357,11 @@ $result_trees{'table_in_itemize'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -395,7 +403,6 @@ $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'
 $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[2];
-$result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[1];
 $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'table_in_itemize'}{'contents'}[0];
 $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[2]{'contents'}[0];
@@ -406,7 +413,6 @@ $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'pare
 $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'table_in_itemize'}{'contents'}[0];
 $result_trees{'table_in_itemize'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'table_in_itemize'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'table_in_itemize'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'table_in_itemize'}{'contents'}[0]{'contents'}[3];
-$result_trees{'table_in_itemize'}{'contents'}[0]{'line_nr'} = $result_trees{'table_in_itemize'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'table_in_itemize'}{'contents'}[0]{'parent'} = $result_trees{'table_in_itemize'};
 
 $result_texis{'table_in_itemize'} = '@itemize @bullet
@@ -441,6 +447,9 @@ item three
 $result_errors{'table_in_itemize'} = [];
 
 
+$result_floats{'table_in_itemize'} = {};
+
+
 
 $result_converted{'plaintext'}->{'table_in_itemize'} = '   * item one
    * table one
@@ -458,12 +467,12 @@ $result_converted{'plaintext'}->{'table_in_itemize'} = '   * item one
 $result_converted{'html_text'}->{'table_in_itemize'} = '<ul>
 <li> item one
 </li><li> <dl compact="compact">
-<dt>table one</dt>
+<dt><span>table one</span></dt>
 <dd><p>aaaaa
 </p>
 <p>New para.
 </p></dd>
-<dt>table two</dt>
+<dt><span>table two</span></dt>
 <dd><p>Five
 </p>
 <p>New para.

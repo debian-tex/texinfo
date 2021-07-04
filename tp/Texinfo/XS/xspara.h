@@ -5,7 +5,7 @@ int xspara_init (int, char *);
 void xspara_get_state (HV *state);
 char *xspara_add_next (char *, int, int transparent);
 char *xspara_add_text (char *);
-char *xspara_set_space_protection (int space_protection, int ignore_columns,
+void xspara_set_space_protection (int space_protection, int ignore_columns,
        int keep_end_lines, int french_spacing, int double_width_no_break);
 void xspara__end_line (void);
 char *xspara_end_line (void);

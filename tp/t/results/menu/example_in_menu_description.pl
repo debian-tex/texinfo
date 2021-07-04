@@ -37,7 +37,9 @@ $result_trees{'example_in_menu_description'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -305,7 +307,7 @@ $result_trees{'example_in_menu_description'}{'contents'}[0]{'parent'} = $result_
 $result_trees{'example_in_menu_description'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_description'}{'contents'}[1]{'args'}[0];
 $result_trees{'example_in_menu_description'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'example_in_menu_description'}{'contents'}[1];
 $result_trees{'example_in_menu_description'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'example_in_menu_description'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'example_in_menu_description'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'example_in_menu_description'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'example_in_menu_description'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'example_in_menu_description'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'example_in_menu_description'}{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_description'};
 $result_trees{'example_in_menu_description'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_description'}{'contents'}[2]{'args'}[0];
 $result_trees{'example_in_menu_description'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'example_in_menu_description'}{'contents'}[2];
@@ -453,6 +455,9 @@ $result_menus{'example_in_menu_description'} = {
 $result_errors{'example_in_menu_description'} = [];
 
 
+$result_floats{'example_in_menu_description'} = {};
+
+
 
 $result_converted{'plaintext'}->{'example_in_menu_description'} = 'top
 ***
@@ -478,14 +483,16 @@ $result_converted{'html'}->{'example_in_menu_description'} = '<!DOCTYPE html PUB
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -494,6 +501,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -502,10 +510,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Top"></span><span id="top"></span><h1 class="top">top</h1>
+<div class="top" id="Top">
+<span id="top"></span><h1 class="top">top</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="manual.html#Top" accesskey="1">(manual)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="manual.html#Top" accesskey="1">(manual)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 <div class="example">
 <pre class="example">in 
 
@@ -515,7 +524,7 @@ example
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
 </pre></th></tr></table>
-<hr>
+<hr></div>
 
 
 

@@ -233,7 +233,11 @@ $result_trees{'defcondx_Ubar'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => 'defxcond.texi',
+        'line_nr' => 8,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -286,7 +290,6 @@ $result_trees{'defcondx_Ubar'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'content
 $result_trees{'defcondx_Ubar'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'defcondx_Ubar'}{'contents'}[7]{'contents'}[2];
 $result_trees{'defcondx_Ubar'}{'contents'}[7]{'contents'}[2]{'parent'} = $result_trees{'defcondx_Ubar'}{'contents'}[7];
 $result_trees{'defcondx_Ubar'}{'contents'}[7]{'extra'}{'end_command'} = $result_trees{'defcondx_Ubar'}{'contents'}[7]{'contents'}[2];
-$result_trees{'defcondx_Ubar'}{'contents'}[7]{'line_nr'} = $result_trees{'defcondx_Ubar'}{'contents'}[7]{'contents'}[0]{'line_nr'};
 $result_trees{'defcondx_Ubar'}{'contents'}[7]{'parent'} = $result_trees{'defcondx_Ubar'};
 $result_trees{'defcondx_Ubar'}{'contents'}[8]{'parent'} = $result_trees{'defcondx_Ubar'};
 $result_trees{'defcondx_Ubar'}{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'defcondx_Ubar'}{'contents'}[9];
@@ -331,6 +334,9 @@ $result_errors{'defcondx_Ubar'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'defcondx_Ubar'} = {};
 
 
 $result_converted_errors{'file_html'}->{'defcondx_Ubar'} = [

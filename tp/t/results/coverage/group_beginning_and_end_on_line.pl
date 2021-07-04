@@ -57,7 +57,11 @@ $result_trees{'group_beginning_and_end_on_line'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -69,7 +73,6 @@ $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'
 $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0];
 $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0];
 $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0];
-$result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'line_nr'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'parent'} = $result_trees{'group_beginning_and_end_on_line'};
 
 $result_texis{'group_beginning_and_end_on_line'} = '@group within @end group
@@ -89,6 +92,9 @@ $result_errors{'group_beginning_and_end_on_line'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'group_beginning_and_end_on_line'} = {};
 
 
 1;

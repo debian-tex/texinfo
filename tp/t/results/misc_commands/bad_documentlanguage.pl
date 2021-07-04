@@ -105,7 +105,11 @@ $result_trees{'bad_documentlanguage'} = {
         'spaces_before_argument' => '  ',
         'text_arg' => 'en '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -158,7 +162,6 @@ $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'
 $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0];
 $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3];
-$result_trees{'bad_documentlanguage'}{'contents'}[3]{'line_nr'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'bad_documentlanguage'}{'contents'}[3]{'parent'} = $result_trees{'bad_documentlanguage'};
 $result_trees{'bad_documentlanguage'}{'contents'}[4]{'parent'} = $result_trees{'bad_documentlanguage'};
 $result_trees{'bad_documentlanguage'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[5]{'args'}[0];
@@ -226,6 +229,9 @@ $result_errors{'bad_documentlanguage'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'bad_documentlanguage'} = {};
 
 
 1;

@@ -344,7 +344,11 @@ $result_trees{'symbol_after_command'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -481,7 +485,6 @@ $result_trees{'symbol_after_command'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'
 $result_trees{'symbol_after_command'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'symbol_after_command'}{'contents'}[0];
 $result_trees{'symbol_after_command'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'symbol_after_command'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'symbol_after_command'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'symbol_after_command'}{'contents'}[0]{'contents'}[7];
-$result_trees{'symbol_after_command'}{'contents'}[0]{'line_nr'} = $result_trees{'symbol_after_command'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'symbol_after_command'}{'contents'}[0]{'parent'} = $result_trees{'symbol_after_command'};
 $result_trees{'symbol_after_command'}{'contents'}[1]{'parent'} = $result_trees{'symbol_after_command'};
 $result_trees{'symbol_after_command'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'symbol_after_command'}{'contents'}[2];
@@ -532,6 +535,9 @@ $result_texts{'symbol_after_command'} = '. dot
 $result_errors{'symbol_after_command'} = [];
 
 
+$result_floats{'symbol_after_command'} = {};
+
+
 
 $result_converted{'plaintext'}->{'symbol_after_command'} = '. dot
 , comma
@@ -546,13 +552,13 @@ $result_converted{'plaintext'}->{'symbol_after_command'} = '. dot
 
 
 $result_converted{'html_text'}->{'symbol_after_command'} = '<dl compact="compact">
-<dt>. dot</dt>
-<dt>, comma</dt>
-<dt>@ @</dt>
-<dt>{ {</dt>
-<dt>! exclam</dt>
-<dt>&rdquo; quotes</dt>
-<dt>: colon</dt>
+<dt><span>. dot</span></dt>
+<dt><span>, comma</span></dt>
+<dt><span>@ @</span></dt>
+<dt><span>{ {</span></dt>
+<dt><span>! exclam</span></dt>
+<dt><span>&rdquo; quotes</span></dt>
+<dt><span>: colon</span></dt>
 </dl>
 
 <p>@. {, @@ ?, !: @{ @&rdquo; @:

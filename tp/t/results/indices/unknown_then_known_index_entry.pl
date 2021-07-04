@@ -190,4 +190,7 @@ $result_indices{'unknown_then_known_index_entry'} = {
 };
 
 
+$result_floats{'unknown_then_known_index_entry'} = {};
+
+
 1;

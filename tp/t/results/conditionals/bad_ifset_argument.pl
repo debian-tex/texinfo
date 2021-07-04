@@ -28,4 +28,7 @@ $result_errors{'bad_ifset_argument'} = [
 ];
 
 
+$result_floats{'bad_ifset_argument'} = {};
+
+
 1;

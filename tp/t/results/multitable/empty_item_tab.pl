@@ -229,7 +229,11 @@ $result_trees{'empty_item_tab'} = {
         'max_columns' => 1,
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -437,7 +441,11 @@ $result_trees{'empty_item_tab'} = {
                   'extra' => {
                     'cell_number' => 2
                   },
-                  'line_nr' => {},
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 15,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 }
               ],
@@ -543,7 +551,11 @@ $result_trees{'empty_item_tab'} = {
                   'extra' => {
                     'cell_number' => 2
                   },
-                  'line_nr' => {},
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 19,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 }
               ],
@@ -660,7 +672,11 @@ $result_trees{'empty_item_tab'} = {
                     'cell_number' => 2,
                     'spaces_before_argument' => ' '
                   },
-                  'line_nr' => {},
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 23,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 }
               ],
@@ -711,7 +727,11 @@ $result_trees{'empty_item_tab'} = {
         'max_columns' => 2,
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 9,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -744,7 +764,6 @@ $result_trees{'empty_item_tab'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent
 $result_trees{'empty_item_tab'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[0];
 $result_trees{'empty_item_tab'}{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'empty_item_tab'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_item_tab'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'empty_item_tab'}{'contents'}[0]{'contents'}[1];
-$result_trees{'empty_item_tab'}{'contents'}[0]{'line_nr'} = $result_trees{'empty_item_tab'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_item_tab'}{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'};
 $result_trees{'empty_item_tab'}{'contents'}[1]{'parent'} = $result_trees{'empty_item_tab'};
 $result_trees{'empty_item_tab'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'args'}[0];
@@ -770,7 +789,6 @@ $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[3]{'co
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[3];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[3]{'contents'}[1];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[3]{'contents'}[1];
-$result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'line_nr'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[3];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[0];
@@ -784,7 +802,6 @@ $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[4]{'pa
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[5];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[5]{'contents'}[1];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[5]{'contents'}[1];
-$result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[5]{'contents'}[1]{'line_nr'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[5]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[5];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[6]{'contents'}[0];
@@ -800,7 +817,6 @@ $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[7]{'co
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[7];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[7]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[7]{'contents'}[1]{'contents'}[0];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[7]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[7]{'contents'}[1];
-$result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[7]{'contents'}[1]{'line_nr'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[7]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[7];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2];
@@ -809,7 +825,6 @@ $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'extra'}{'columnfractions'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[1];
-$result_trees{'empty_item_tab'}{'contents'}[2]{'line_nr'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_item_tab'}{'contents'}[2]{'parent'} = $result_trees{'empty_item_tab'};
 
 $result_texis{'empty_item_tab'} = '@multitable @columnfractions 1.0
@@ -852,6 +867,9 @@ not empty tab not empty
 ';
 
 $result_errors{'empty_item_tab'} = [];
+
+
+$result_floats{'empty_item_tab'} = {};
 
 
 

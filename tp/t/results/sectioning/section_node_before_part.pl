@@ -44,7 +44,9 @@ $result_trees{'section_node_before_part'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -134,7 +136,7 @@ $result_trees{'section_node_before_part'}{'contents'}[0]{'parent'} = $result_tre
 $result_trees{'section_node_before_part'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_node_before_part'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_node_before_part'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_node_before_part'}{'contents'}[1];
 $result_trees{'section_node_before_part'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'section_node_before_part'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'section_node_before_part'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'section_node_before_part'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'section_node_before_part'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'section_node_before_part'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'section_node_before_part'}{'contents'}[1]{'parent'} = $result_trees{'section_node_before_part'};
 $result_trees{'section_node_before_part'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_node_before_part'}{'contents'}[2]{'args'}[0];
 $result_trees{'section_node_before_part'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'section_node_before_part'}{'contents'}[2];
@@ -238,6 +240,9 @@ $result_errors{'section_node_before_part'} = [
 ];
 
 
+$result_floats{'section_node_before_part'} = {};
+
+
 
 $result_converted{'info'}->{'section_node_before_part'} = 'This is , produced from .
 
@@ -272,14 +277,16 @@ $result_converted{'html'}->{'section_node_before_part'} = '<!DOCTYPE html PUBLIC
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -288,6 +295,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -297,11 +305,14 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<span id="Top"></span><span id="section"></span><h3 class="section">1 section</h3>
+<div class="section" id="Top">
+<span id="section"></span><h3 class="section">1 section</h3>
 
-<span id="part"></span><h1 class="part">part</h1>
+</div>
+<div class="part" id="part">
+<h1 class="part">part</h1>
 <hr>
-<hr>
+<hr></div>
 
 
 

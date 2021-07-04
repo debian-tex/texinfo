@@ -67,6 +67,9 @@ $result_texts{'setfilename_in_paragraph'} = 'Some text
 $result_errors{'setfilename_in_paragraph'} = [];
 
 
+$result_floats{'setfilename_in_paragraph'} = {};
+
+
 
 $result_converted{'plaintext'}->{'setfilename_in_paragraph'} = 'Some text
 ';

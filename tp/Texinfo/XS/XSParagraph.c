@@ -166,8 +166,8 @@ S_croak_xs_usage(const CV *const cv, const char *const params)
 
 #line 168 "XSParagraph.c"
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_init); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_init)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_init); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_init)
 {
     dVAR; dXSARGS;
     if (items != 2)
@@ -187,8 +187,8 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_init)
 }
 
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_set_state); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_set_state)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_set_state); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_set_state)
 {
     dVAR; dXSARGS;
     if (items != 1)
@@ -203,8 +203,8 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_set_state)
 }
 
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_new); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_new)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_new); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_new)
 {
     dVAR; dXSARGS;
     if (items < 1)
@@ -213,12 +213,11 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_new)
 	SV *	class = ST(0)
 ;
 #line 49 "XSParagraph.xs"
-        HV *pkg;
         HV *conf = 0;
         int id;
-#line 220 "XSParagraph.c"
+#line 219 "XSParagraph.c"
 	SV *	RETVAL;
-#line 53 "XSParagraph.xs"
+#line 52 "XSParagraph.xs"
         items--;
         if (items > 0)
           {
@@ -227,11 +226,10 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_new)
           }
         id = xspara_new (conf);
 
-        /* Create a blessed integer, which the other functions
+        /* Create an integer, which the other functions
            need as their first argument. */
-        pkg = gv_stashpv ("Texinfo::Convert::XSParagraph::XSParagraph", 0);
         RETVAL = newSViv (id);
-#line 235 "XSParagraph.c"
+#line 233 "XSParagraph.c"
 	RETVAL = sv_2mortal(RETVAL);
 	ST(0) = RETVAL;
     }
@@ -239,8 +237,8 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_new)
 }
 
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_end_line_count); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_end_line_count)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_end_line_count); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_end_line_count)
 {
     dVAR; dXSARGS;
     if (items != 1)
@@ -250,18 +248,18 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_end_line_count)
 ;
 	int	RETVAL;
 	dXSTARG;
-#line 73 "XSParagraph.xs"
+#line 71 "XSParagraph.xs"
         xspara_set_state (paragraph);
         RETVAL = xspara_end_line_count ();
-#line 257 "XSParagraph.c"
+#line 255 "XSParagraph.c"
 	XSprePUSH; PUSHi((IV)RETVAL);
     }
     XSRETURN(1);
 }
 
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph__end_line); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph__end_line)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph__end_line); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph__end_line)
 {
     dVAR; dXSARGS;
     if (items != 1)
@@ -269,17 +267,17 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph__end_line)
     {
 	SV *	paragraph = ST(0)
 ;
-#line 82 "XSParagraph.xs"
+#line 80 "XSParagraph.xs"
         xspara_set_state (paragraph);
         xspara__end_line ();
-#line 276 "XSParagraph.c"
+#line 274 "XSParagraph.c"
     }
     XSRETURN_EMPTY;
 }
 
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_end_line); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_end_line)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_end_line); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_end_line)
 {
     dVAR; dXSARGS;
     if (items != 1)
@@ -289,18 +287,18 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_end_line)
 ;
 	char *	RETVAL;
 	dXSTARG;
-#line 89 "XSParagraph.xs"
+#line 87 "XSParagraph.xs"
         xspara_set_state (paragraph);
         RETVAL = xspara_end_line ();
-#line 296 "XSParagraph.c"
+#line 294 "XSParagraph.c"
 	sv_setpv(TARG, RETVAL); XSprePUSH; PUSHTARG;
     }
     XSRETURN(1);
 }
 
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_get_pending); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_get_pending)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_get_pending); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_get_pending)
 {
     dVAR; dXSARGS;
     if (items != 1)
@@ -310,18 +308,18 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_get_pending)
 ;
 	char *	RETVAL;
 	dXSTARG;
-#line 98 "XSParagraph.xs"
+#line 96 "XSParagraph.xs"
         xspara_set_state (paragraph);
         RETVAL = xspara_get_pending ();
-#line 317 "XSParagraph.c"
+#line 315 "XSParagraph.c"
 	sv_setpv(TARG, RETVAL); XSprePUSH; PUSHTARG;
     }
     XSRETURN(1);
 }
 
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_pending_word); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_pending_word)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_add_pending_word); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_add_pending_word)
 {
     dVAR; dXSARGS;
     if (items < 1)
@@ -329,12 +327,12 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_pending_word)
     {
 	SV *	paragraph = ST(0)
 ;
-#line 108 "XSParagraph.xs"
+#line 106 "XSParagraph.xs"
         int add_spaces = 0;
         char *retval;
-#line 336 "XSParagraph.c"
+#line 334 "XSParagraph.c"
 	SV *	RETVAL;
-#line 111 "XSParagraph.xs"
+#line 109 "XSParagraph.xs"
         items -= 1;
         if (items > 0)
           {
@@ -348,7 +346,7 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_pending_word)
 
         RETVAL = newSVpv (retval, 0);
         SvUTF8_on (RETVAL);
-#line 352 "XSParagraph.c"
+#line 350 "XSParagraph.c"
 	RETVAL = sv_2mortal(RETVAL);
 	ST(0) = RETVAL;
     }
@@ -356,8 +354,8 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_pending_word)
 }
 
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_end); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_end)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_end); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_end)
 {
     dVAR; dXSARGS;
     if (items != 1)
@@ -365,17 +363,17 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_end)
     {
 	SV *	paragraph = ST(0)
 ;
-#line 131 "XSParagraph.xs"
+#line 129 "XSParagraph.xs"
         char *retval;
-#line 371 "XSParagraph.c"
+#line 369 "XSParagraph.c"
 	SV *	RETVAL;
-#line 133 "XSParagraph.xs"
+#line 131 "XSParagraph.xs"
         xspara_set_state (paragraph);
         retval = xspara_end ();
 
         RETVAL = newSVpv (retval, 0);
         SvUTF8_on (RETVAL);
-#line 379 "XSParagraph.c"
+#line 377 "XSParagraph.c"
 	RETVAL = sv_2mortal(RETVAL);
 	ST(0) = RETVAL;
     }
@@ -383,8 +381,8 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_end)
 }
 
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_text); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_text)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_add_text); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_add_text)
 {
     dVAR; dXSARGS;
     if (items != 2)
@@ -394,12 +392,12 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_text)
 ;
 	SV *	text_in = ST(1)
 ;
-#line 147 "XSParagraph.xs"
+#line 145 "XSParagraph.xs"
         char *text;
         char *retval;
-#line 401 "XSParagraph.c"
+#line 399 "XSParagraph.c"
 	SV *	RETVAL;
-#line 150 "XSParagraph.xs"
+#line 148 "XSParagraph.xs"
         /* Always convert the input to UTF8 with sv_utf8_upgrade, so we can 
            process it properly in xspara_add_next. */
         if (!SvUTF8 (text_in))
@@ -413,7 +411,7 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_text)
         RETVAL = newSVpv (retval, 0);
         SvUTF8_on (RETVAL);
 
-#line 417 "XSParagraph.c"
+#line 415 "XSParagraph.c"
 	RETVAL = sv_2mortal(RETVAL);
 	ST(0) = RETVAL;
     }
@@ -421,8 +419,8 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_text)
 }
 
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_next); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_next)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_add_next); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_add_next)
 {
     dVAR; dXSARGS;
     if (items < 2)
@@ -432,15 +430,15 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_next)
 ;
 	SV *	text_in = ST(1)
 ;
-#line 171 "XSParagraph.xs"
+#line 169 "XSParagraph.xs"
         char *text;
         STRLEN text_len;
         char *retval;
         SV *arg_in;
         int transparent = 0;
-#line 442 "XSParagraph.c"
+#line 440 "XSParagraph.c"
 	SV *	RETVAL;
-#line 177 "XSParagraph.xs"
+#line 175 "XSParagraph.xs"
         items -= 2;
         if (items > 0)
           {
@@ -462,7 +460,7 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_next)
         RETVAL = newSVpv (retval, 0);
         SvUTF8_on (RETVAL);
 
-#line 466 "XSParagraph.c"
+#line 464 "XSParagraph.c"
 	RETVAL = sv_2mortal(RETVAL);
 	ST(0) = RETVAL;
     }
@@ -470,8 +468,8 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_next)
 }
 
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_remove_end_sentence); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_remove_end_sentence)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_remove_end_sentence); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_remove_end_sentence)
 {
     dVAR; dXSARGS;
     if (items != 1)
@@ -479,17 +477,17 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_remove_end_sentence)
     {
 	SV *	paragraph = ST(0)
 ;
-#line 206 "XSParagraph.xs"
+#line 204 "XSParagraph.xs"
         xspara_set_state (paragraph);
         xspara_remove_end_sentence ();
-#line 486 "XSParagraph.c"
+#line 484 "XSParagraph.c"
     }
     XSRETURN_EMPTY;
 }
 
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_end_sentence); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_end_sentence)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_add_end_sentence); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_add_end_sentence)
 {
     dVAR; dXSARGS;
     if (items != 2)
@@ -499,22 +497,22 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_add_end_sentence)
 ;
 	SV *	value = ST(1)
 ;
-#line 214 "XSParagraph.xs"
+#line 212 "XSParagraph.xs"
         int intvalue = 0;
-#line 505 "XSParagraph.c"
-#line 216 "XSParagraph.xs"
+#line 503 "XSParagraph.c"
+#line 214 "XSParagraph.xs"
         if (SvOK(value))
           intvalue = (int)SvIV(value);
         xspara_set_state (paragraph);
         xspara_add_end_sentence (intvalue);
-#line 511 "XSParagraph.c"
+#line 509 "XSParagraph.c"
     }
     XSRETURN_EMPTY;
 }
 
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_allow_end_sentence); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_allow_end_sentence)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_allow_end_sentence); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_allow_end_sentence)
 {
     dVAR; dXSARGS;
     if (items != 1)
@@ -522,17 +520,17 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_allow_end_sentence)
     {
 	SV *	paragraph = ST(0)
 ;
-#line 225 "XSParagraph.xs"
+#line 223 "XSParagraph.xs"
         xspara_set_state (paragraph);
         xspara_allow_end_sentence ();
-#line 529 "XSParagraph.c"
+#line 527 "XSParagraph.c"
     }
     XSRETURN_EMPTY;
 }
 
 
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_set_space_protection); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__XS__XSParagraph_set_space_protection)
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_set_space_protection); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_set_space_protection)
 {
     dVAR; dXSARGS;
     if (items < 2)
@@ -542,17 +540,15 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_set_space_protection)
 ;
 	SV *	space_protection_in = ST(1)
 ;
-#line 236 "XSParagraph.xs"
+#line 234 "XSParagraph.xs"
         int space_protection = -1;
         int ignore_columns = -1;
         int keep_end_lines = -1;
         int french_spacing = -1;
         int double_width_no_break = -1;
         SV *arg_in;
-#line 553 "XSParagraph.c"
-	char *	RETVAL;
-	dXSTARG;
-#line 243 "XSParagraph.xs"
+#line 551 "XSParagraph.c"
+#line 241 "XSParagraph.xs"
         if (SvOK(space_protection_in))
           space_protection = (int)SvIV(space_protection_in);
         /* Get optional arguments from stack. */
@@ -587,20 +583,19 @@ XS_EUPXS(XS_Texinfo__XS__XSParagraph_set_space_protection)
           }
 
         xspara_set_state (paragraph);
-        RETVAL = xspara_set_space_protection
+        xspara_set_space_protection
           (space_protection, ignore_columns, keep_end_lines,
            french_spacing, double_width_no_break);
-#line 594 "XSParagraph.c"
-	sv_setpv(TARG, RETVAL); XSprePUSH; PUSHTARG;
+#line 590 "XSParagraph.c"
     }
-    XSRETURN(1);
+    XSRETURN_EMPTY;
 }
 
 #ifdef __cplusplus
 extern "C"
 #endif
-XS_EXTERNAL(boot_Texinfo__XS__XSParagraph); /* prototype to pass -Wmissing-prototypes */
-XS_EXTERNAL(boot_Texinfo__XS__XSParagraph)
+XS_EXTERNAL(boot_Texinfo__Convert__Paragraph); /* prototype to pass -Wmissing-prototypes */
+XS_EXTERNAL(boot_Texinfo__Convert__Paragraph)
 {
 #if PERL_VERSION_LE(5, 21, 5)
     dVAR; dXSARGS;
@@ -624,21 +619,21 @@ XS_EXTERNAL(boot_Texinfo__XS__XSParagraph)
 #  endif
 #endif
 
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::init", XS_Texinfo__XS__XSParagraph_init, file, "$$");
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::set_state", XS_Texinfo__XS__XSParagraph_set_state, file, "$");
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::new", XS_Texinfo__XS__XSParagraph_new, file, "$;@");
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::end_line_count", XS_Texinfo__XS__XSParagraph_end_line_count, file, "$");
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::_end_line", XS_Texinfo__XS__XSParagraph__end_line, file, "$");
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::end_line", XS_Texinfo__XS__XSParagraph_end_line, file, "$");
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::get_pending", XS_Texinfo__XS__XSParagraph_get_pending, file, "$");
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::add_pending_word", XS_Texinfo__XS__XSParagraph_add_pending_word, file, "$;@");
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::end", XS_Texinfo__XS__XSParagraph_end, file, "$");
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::add_text", XS_Texinfo__XS__XSParagraph_add_text, file, "$$");
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::add_next", XS_Texinfo__XS__XSParagraph_add_next, file, "$$;@");
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::remove_end_sentence", XS_Texinfo__XS__XSParagraph_remove_end_sentence, file, "$");
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::add_end_sentence", XS_Texinfo__XS__XSParagraph_add_end_sentence, file, "$$");
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::allow_end_sentence", XS_Texinfo__XS__XSParagraph_allow_end_sentence, file, "$");
-        (void)newXSproto_portable("Texinfo::XS::XSParagraph::set_space_protection", XS_Texinfo__XS__XSParagraph_set_space_protection, file, "$$;@");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::init", XS_Texinfo__Convert__Paragraph_init, file, "$$");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::set_state", XS_Texinfo__Convert__Paragraph_set_state, file, "$");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::new", XS_Texinfo__Convert__Paragraph_new, file, "$;@");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::end_line_count", XS_Texinfo__Convert__Paragraph_end_line_count, file, "$");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::_end_line", XS_Texinfo__Convert__Paragraph__end_line, file, "$");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::end_line", XS_Texinfo__Convert__Paragraph_end_line, file, "$");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::get_pending", XS_Texinfo__Convert__Paragraph_get_pending, file, "$");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::add_pending_word", XS_Texinfo__Convert__Paragraph_add_pending_word, file, "$;@");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::end", XS_Texinfo__Convert__Paragraph_end, file, "$");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::add_text", XS_Texinfo__Convert__Paragraph_add_text, file, "$$");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::add_next", XS_Texinfo__Convert__Paragraph_add_next, file, "$$;@");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::remove_end_sentence", XS_Texinfo__Convert__Paragraph_remove_end_sentence, file, "$");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::add_end_sentence", XS_Texinfo__Convert__Paragraph_add_end_sentence, file, "$$");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::allow_end_sentence", XS_Texinfo__Convert__Paragraph_allow_end_sentence, file, "$");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::set_space_protection", XS_Texinfo__Convert__Paragraph_set_space_protection, file, "$$;@");
 #if PERL_VERSION_LE(5, 21, 5)
 #  if PERL_VERSION_GE(5, 9, 0)
     if (PL_unitcheckav)

@@ -98,4 +98,7 @@ in themacro
 $result_errors{'macro_definition_in_include'} = [];
 
 
+$result_floats{'macro_definition_in_include'} = {};
+
+
 1;

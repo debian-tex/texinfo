@@ -67,4 +67,7 @@ $result_texts{'value_zero'} = 'Value
 $result_errors{'value_zero'} = [];
 
 
+$result_floats{'value_zero'} = {};
+
+
 1;

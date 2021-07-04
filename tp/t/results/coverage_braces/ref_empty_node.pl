@@ -97,7 +97,11 @@ $result_trees{'ref_empty_node'} = {
           ],
           'cmdname' => 'ref',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -129,7 +133,11 @@ $result_trees{'ref_empty_node'} = {
           ],
           'cmdname' => 'inforef',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -235,14 +243,12 @@ $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'args'}[2]{'parent
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'args'}[3]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2];
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'args'}[4]{'contents'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'args'}[4];
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'args'}[4]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'line_nr'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1];
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1];
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4];
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4]{'args'}[1]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4];
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4]{'args'}[2];
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4]{'args'}[2]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4]{'line_nr'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1];
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1];
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6];
@@ -269,7 +275,20 @@ $result_texts{'ref_empty_node'} = '
 .
 ';
 
-$result_errors{'ref_empty_node'} = [];
+$result_errors{'ref_empty_node'} = [
+  {
+    'error_line' => ':2: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  }
+];
+
+
+$result_floats{'ref_empty_node'} = {};
 
 
 1;

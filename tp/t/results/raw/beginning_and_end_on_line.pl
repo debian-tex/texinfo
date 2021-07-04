@@ -63,7 +63,11 @@ $result_trees{'beginning_and_end_on_line'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -76,7 +80,6 @@ $result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'contents'}[0]{'args'}
 $result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'contents'}[0];
 $result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'beginning_and_end_on_line'}{'contents'}[1];
 $result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'contents'}[0];
-$result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'line_nr'} = $result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'parent'} = $result_trees{'beginning_and_end_on_line'};
 
 $result_texis{'beginning_and_end_on_line'} = '
@@ -98,6 +101,9 @@ $result_errors{'beginning_and_end_on_line'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'beginning_and_end_on_line'} = {};
 
 
 1;

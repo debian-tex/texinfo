@@ -41,7 +41,9 @@ $result_trees{'node_empty_direction'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'name'
           },
           undef
@@ -64,7 +66,7 @@ $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'
 $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node_empty_direction'}{'contents'}[1];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'node_empty_direction'}{'contents'}[1];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'parent'} = $result_trees{'node_empty_direction'};
 
 $result_texis{'node_empty_direction'} = '@node name, ';
@@ -91,6 +93,9 @@ $result_menus{'node_empty_direction'} = {
 };
 
 $result_errors{'node_empty_direction'} = [];
+
+
+$result_floats{'node_empty_direction'} = {};
 
 
 1;

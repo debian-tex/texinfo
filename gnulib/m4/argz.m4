@@ -1,13 +1,13 @@
 # Portability macros for glibc argz.                    -*- Autoconf -*-
 #
-#   Copyright (C) 2004-2019 Free Software Foundation, Inc.
+#   Copyright (C) 2004-2021 Free Software Foundation, Inc.
 #   Written by Gary V. Vaughan <gary@gnu.org>
 #
 # This file is free software; the Free Software Foundation gives
 # unlimited permission to copy and/or distribute it, with or without
 # modifications, as long as this notice is preserved.
 
-# serial 12 argz.m4
+# serial 13 argz.m4
 
 AC_DEFUN([gl_FUNC_ARGZ],
 [gl_PREREQ_ARGZ
@@ -47,7 +47,7 @@ AS_IF([test -z "$ARGZ_H"],
          *cygwin*)
            lt_cv_sys_argz_works=no
            if test "$cross_compiling" != no; then
-             lt_cv_sys_argz_works="guessing no"
+             lt_cv_sys_argz_works="$gl_cross_guess_normal"
            else
              lt_sed_extract_leading_digits='s/^\([0-9\.]*\).*/\1/'
              save_IFS=$IFS

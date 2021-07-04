@@ -26,9 +26,9 @@ TEXI2DVI = $(top_srcdir)/util/texi2dvi
 # INSTALL_INFO = $(top_builddir)/$(native_tools)/util/ginstall-info
 
 TXI_XLATE = txi-ca.tex txi-cs.tex txi-de.tex txi-en.tex txi-es.tex \
-            txi-fr.tex txi-hu.tex txi-is.tex txi-it.tex txi-ja.tex \
-            txi-nb.tex txi-nl.tex txi-nn.tex txi-pl.tex txi-pt.tex \
-            txi-ru.tex txi-sr.tex txi-tr.tex txi-uk.tex
+	    txi-fi.tex txi-fr.tex txi-hu.tex txi-is.tex txi-it.tex \
+	    txi-ja.tex txi-nb.tex txi-nl.tex txi-nn.tex txi-pl.tex \
+	    txi-pt.tex txi-ru.tex txi-sr.tex txi-tr.tex txi-uk.tex
 
 refcard_files = refcard/Makefile refcard/txicmdcheck \
                 refcard/txirefcard-a4.pdf refcard/txirefcard.pdf \
@@ -86,7 +86,7 @@ gendocs_envvars = GENDOCS_TEMPLATE_DIR=$(gendocs_templates)
 gendocs_email = bug-texinfo@gnu.org
 gendocs_dir_url = /manual/
 gendocs_invoke = env $(gendocs_envvars) $(gendocs) --email $(gendocs_email) \
-  --html '-c TOP_NODE_UP_URL=$(gendocs_dir_url)'
+  --html '-c HTML_MATH=mathjax -c MATHJAX_SCRIPT=../../tex-svg.js -c MATHJAX_SOURCE=../../mathjax-instructions.html -c TOP_NODE_UP_URL=$(gendocs_dir_url)'
 # A nice side effect of using --html is to eliminate the fancy css default;
 # otherwise, we could use gendocs_template_min.
 #

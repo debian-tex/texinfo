@@ -1433,9 +1433,12 @@ And end para.
 $result_errors{'star_at_command_formatting'} = [];
 
 
+$result_floats{'star_at_command_formatting'} = {};
+
+
 
 $result_converted{'plaintext'}->{'star_at_command_formatting'} = 'Some text
-more text.  Even more text.
+more text.   Even more text.
 not at eol.
 
    Now followed by @ : followed
@@ -1467,7 +1470,7 @@ And end para.
      And end para.
 
      Quotation Some text
-     more text.  Even more text.
+     more text.   Even more text.
      not at eol.
 
      Now followed by @ : followed

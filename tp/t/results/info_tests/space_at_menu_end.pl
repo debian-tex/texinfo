@@ -196,7 +196,9 @@ $result_trees{'space_at_menu_end'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -243,7 +245,7 @@ $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[2]{'parent'} = $re
 $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[3];
 $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'space_at_menu_end'}{'contents'}[1];
 $result_trees{'space_at_menu_end'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'space_at_menu_end'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'space_at_menu_end'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'space_at_menu_end'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'space_at_menu_end'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'space_at_menu_end'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'space_at_menu_end'}{'contents'}[1]{'parent'} = $result_trees{'space_at_menu_end'};
 
 $result_texis{'space_at_menu_end'} = '@node Top
@@ -318,6 +320,9 @@ $result_menus{'space_at_menu_end'} = {
 };
 
 $result_errors{'space_at_menu_end'} = [];
+
+
+$result_floats{'space_at_menu_end'} = {};
 
 
 

@@ -71,4 +71,7 @@ val
 $result_errors{'spaces_before_value'} = [];
 
 
+$result_floats{'spaces_before_value'} = {};
+
+
 1;

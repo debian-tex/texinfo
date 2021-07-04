@@ -290,7 +290,9 @@ $result_trees{'backslash_in_arg'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -350,7 +352,7 @@ $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'cont
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[8];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'backslash_in_arg'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'backslash_in_arg'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'backslash_in_arg'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'backslash_in_arg'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'parent'} = $result_trees{'backslash_in_arg'};
 
 $result_texis{'backslash_in_arg'} = '@node Top
@@ -392,6 +394,9 @@ $result_menus{'backslash_in_arg'} = {
 };
 
 $result_errors{'backslash_in_arg'} = [];
+
+
+$result_floats{'backslash_in_arg'} = {};
 
 
 1;

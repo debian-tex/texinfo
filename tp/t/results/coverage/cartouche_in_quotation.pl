@@ -188,6 +188,9 @@ end quotation
 $result_errors{'cartouche_in_quotation'} = [];
 
 
+$result_floats{'cartouche_in_quotation'} = {};
+
+
 
 $result_converted{'plaintext'}->{'cartouche_in_quotation'} = '     In quotation
      In cartouche in quotation

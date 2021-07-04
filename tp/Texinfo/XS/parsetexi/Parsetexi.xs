@@ -101,6 +101,9 @@ void
 conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME (int i)
 
 void
+set_novalidate (int i)
+
+void
 set_documentlanguage (value)
      char *value
 

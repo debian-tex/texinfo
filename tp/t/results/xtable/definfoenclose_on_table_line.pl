@@ -253,6 +253,15 @@ table content.
 
 $result_errors{'definfoenclose_on_table_line'} = [
   {
+    'error_line' => ':1: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':3: warning: @phi should not appear in @table
 ',
     'file_name' => '',
@@ -262,6 +271,9 @@ $result_errors{'definfoenclose_on_table_line'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'definfoenclose_on_table_line'} = {};
 
 
 
@@ -274,8 +286,8 @@ $result_converted{'plaintext'}->{'definfoenclose_on_table_line'} = ':item:
 
 $result_converted{'html_text'}->{'definfoenclose_on_table_line'} = '
 <dl compact="compact">
-<dt>:item:</dt>
-<dt>:item x:</dt>
+<dt><span>:item:</span></dt>
+<dt><span>:item x:</span></dt>
 <dd>
 <p>table content.
 </p></dd>

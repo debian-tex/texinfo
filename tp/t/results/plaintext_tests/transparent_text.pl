@@ -60,7 +60,11 @@ $result_trees{'transparent_text'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -83,7 +87,6 @@ $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[1]{'parent'} = $res
 $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'transparent_text'}{'contents'}[0];
 $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[3];
-$result_trees{'transparent_text'}{'contents'}[0]{'contents'}[3]{'line_nr'} = $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'transparent_text'}{'contents'}[0];
 $result_trees{'transparent_text'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'transparent_text'}{'contents'}[0];
 $result_trees{'transparent_text'}{'contents'}[0]{'parent'} = $result_trees{'transparent_text'};
@@ -96,6 +99,9 @@ $result_texts{'transparent_text'} = 'AA). B (C). D.
 ';
 
 $result_errors{'transparent_text'} = [];
+
+
+$result_floats{'transparent_text'} = {};
 
 
 

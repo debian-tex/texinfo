@@ -1,5 +1,4 @@
 % Texinfo reference card.
-% $Id$
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -14,7 +13,7 @@
 \newcount\letterpaper
 \ifx\undefined\afour\letterpaper=1 \else\letterpaper=0 \fi
 
-% Copyright 2008-2019 Free Software Foundation, Inc.
+% Copyright 2008-2021 Free Software Foundation, Inc.
 %
 % This file is part of GNU Texinfo.
 %
@@ -48,8 +47,8 @@
 % Much of the text is based on, and sometimes copied from, the @-Command
 % Summary node in the Texinfo manual, originally written by Bob Chassell.
 
-\def\versionyear{2019}          % year manual was updated
-\def\versionTexinfo{6.7}     % version of Texinfo this manual is for
+\def\versionyear{2021}          % year manual was updated
+\def\versionTexinfo{6.8}     % version of Texinfo this manual is for
 
 \def\copyrightnotice{%
 \vskip 1ex plus 1filll\begingroup\small
@@ -401,7 +400,6 @@ begin with lines like this:
 
 {\advance\baselineskip by -3pt
 \code{\bschar input texinfo}\linebreak
-\code{@setfilename {\sl info-file-name}}\linebreak
 \code{@settitle {\sl name-of-manual}}}
 
 \dots the contents of the Texinfo document,
@@ -417,7 +415,7 @@ The commands in this section are given approximately in the order in
 which they conventionally appear.
 
 \txicmd{@setfilename}{info-file-name}{Provide a name to be used for the 
-output files.  Should be the first command in the input.}
+output files.}
 \txicmd{@settitle}{title}{Specify document \var{title}.}
 \txicmd{@copying}{}{Specify copyright and licensing text. Pair with \code{@end copying}.}
 \txicmd{@insertcopying}{}{Insert text defined by \code{@copying}.}
@@ -475,7 +473,6 @@ enclosed with \code{@ifnottex ... @end ifnottex}.}
 \subsection{Numbered, included in contents}
 
 \txicmd{@chapter}{title}{Begin a numbered chapter; \var{title} appears in the table of contents.}
-\txicmd{@centerchap}{title}{Like \code{@chapter}, with chapter title centered.}
 
 \subsection{Context-dependent, included in contents}
 
@@ -519,7 +516,6 @@ enclosed with \code{@ifnottex ... @end ifnottex}.}
 \txicmd{@xref}{\ttbraced{node, \rmbrack[entry], \rmbrack[node-title], \rmbrack[info-file], \rmbrack[manual]}}{Makes a reference that starts with `See' in a printed manual. Follow command with punctuation. Only the first argument is mandatory.}
 \txicmd{@pxref}{\ttbraced{node, \rmbrack[entry], \rmbrack[node-title], \rmbrack[info-file], \rmbrack[manual]}}{Like \code{@xref}, but starts with `see' instead of `See', and must be used inside parentheses.}
 \txicmd{@ref}{\ttbraced{node, \rmbrack[entry], \rmbrack[node-title], \rmbrack[info-file], \rmbrack[manual]}}{Like \code{@xref}, but produces only the bare reference without `See' or `see'; must be followed by a punctuation mark.}
-\txicmd{@inforef}{\ttbraced{node, \rmbrack[entry-name], info-file}}{Make a cross reference to an Info file for which there is no printed manual.}
 \txicmd{@xrefautomaticsectiontitle}{\code{on|off}}{By default, use the section title instead of the node name in cross references.}
 
 \subsection{Outside of Info}
@@ -565,6 +561,7 @@ enclosed with \code{@ifnottex ... @end ifnottex}.}
 \subsection{Math}
 
 \txicmd{@math}{\ttbraced{math}}{Format the given math (inline); \bschar{} becomes an escape character, and all plain \TeX\ math is available.}
+\txicmd{@displaymath}{}{Create a display math environment. Pair with \code{@end displaymath}.}
 \txicmd{@minus}{\ttbraced{}}{Insert a minus sign, `$-$'.}
 \txicmd{@\bschar}{}{Inside \code{@math}, insert a math backslash, $\backslash$.}
 \txicmd{@geq}{\ttbraced{}}{Insert a greater-than-or-equal sign, $\geq$.}
@@ -764,7 +761,6 @@ exception of \code{@tieaccent}.
 \txicmd{@hyphenation}{\ttbraced{hy-phen-a-ted words}}{Explicitly define hyphenation points.}
 \txicmd{@tie}{\ttbraced{}}{Generate a normal interword space at which a line break is not allowed.}
 \txicmd{@w}{\ttbraced{text}}{Disallow line breaks within \var{text}.}
-\txicmd{@refill}{}{Does nothing (previously refilled and indented the preceding paragraph for Info).}
 
 \subsection{Vertical space}
 
@@ -873,8 +869,6 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 \txicmd{@alias}{new\code{=}existing}{Make the command \code{@new} a synonym for the existing command \code{@existing}.}
 \txicmd{@macro}{macroname \ttbraced{\var{params}} \dots\code{@end macro}}{Define a new Texinfo command \code{@\var{macroname}}.}
 \txicmd{@unmacro}{macroname}{Undefine \code{@\var{macroname}} if it is defined.}
-\txicmd{@definfoenclose}{newcmd\code{,} before\code{,} after}{Can only be used within \code{@ifinfo}; create a new command that encloses its argument in the \var{before} and \var{after} strings.}
-
 
 \section{File inclusion}
 
@@ -893,7 +887,7 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 The default paper size is \acro{US} letter-size, 8x11in.
 
 \txicmd{@smallbook}{}{Format for a 7x9.25in trim size.}
-\txicmd{@afourpaper, @afivepaper}{}{Format for A4 and A5 paper sizes.}
+\txicmd{@afourpaper, @afivepaper, @bsixpaper}{}{Format for A4, A5 and B6 paper sizes.}
 \txicmd{@afourlatex}{}{Variant for A4 with more whitespace.}
 \txicmd{@afourwide}{}{Format for A4 in landscape.}
 \txicmd{@pagesizes}{\rmbrack[{width{\small][}, height}]}{Format for the explicitly given page dimensions, \var{width} by \var{height}.}
@@ -992,5 +986,8 @@ The Texinfo manual is available via \code{info texinfo}\linebreak
 \copyrightnotice
 \bye
 
-For make ccheck - Commands we deliberately haven't documented:
-\txicmd{@validatemenus}{}{}
+not documenting
+\txicmd{@centerchap}{}
+\txicmd{@definfoenclose}{}
+
+\txicmd{@inforef}{\ttbraced{node, \rmbrack[entry-name], info-file}}{Make a cross reference to an Info file for which there is no printed manual.}

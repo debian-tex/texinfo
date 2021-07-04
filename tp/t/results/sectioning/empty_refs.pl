@@ -85,7 +85,11 @@ $result_trees{'empty_refs'} = {
               'normalized' => '-'
             }
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -110,7 +114,6 @@ $result_trees{'empty_refs'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}
 $result_trees{'empty_refs'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_refs'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'empty_refs'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_refs'}{'contents'}[0]{'contents'}[2];
 $result_trees{'empty_refs'}{'contents'}[0]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'empty_refs'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_refs'}{'contents'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'empty_refs'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_refs'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_refs'}{'contents'}[0];
 $result_trees{'empty_refs'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'empty_refs'}{'contents'}[0];
 $result_trees{'empty_refs'}{'contents'}[0]{'parent'} = $result_trees{'empty_refs'};
@@ -144,6 +147,9 @@ $result_errors{'empty_refs'} = [
     'type' => 'error'
   }
 ];
+
+
+$result_floats{'empty_refs'} = {};
 
 
 1;

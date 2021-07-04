@@ -188,6 +188,9 @@ end example
 $result_errors{'cartouche_in_example'} = [];
 
 
+$result_floats{'cartouche_in_example'} = {};
+
+
 
 $result_converted{'plaintext'}->{'cartouche_in_example'} = '     In example
      In cartouche in example

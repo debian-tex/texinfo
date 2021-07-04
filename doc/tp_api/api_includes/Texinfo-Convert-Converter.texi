@@ -245,8 +245,8 @@ Patrice Dumas, <pertusus@@free.fr>
 Hey! @strong{The above document had some coding errors, which are explained below:}
 
 @table @asis
-@item Around line 1727:
-@anchor{Texinfo::Convert::Converter Around line 1727:}
+@item Around line 1713:
+@anchor{Texinfo::Convert::Converter Around line 1713:}
 
 '=item' outside of any '=over'
 

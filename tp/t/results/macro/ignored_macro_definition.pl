@@ -157,4 +157,7 @@ outside.
 $result_errors{'ignored_macro_definition'} = [];
 
 
+$result_floats{'ignored_macro_definition'} = {};
+
+
 1;

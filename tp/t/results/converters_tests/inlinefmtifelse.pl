@@ -619,6 +619,9 @@ else tex.
 $result_errors{'inlinefmtifelse'} = [];
 
 
+$result_floats{'inlinefmtifelse'} = {};
+
+
 
 $result_converted{'plaintext'}->{'inlinefmtifelse'} = 'else html no if.  else html.
 

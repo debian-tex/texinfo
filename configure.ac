@@ -1,6 +1,6 @@
 # Process this file with autoconf to produce a configure script.
 #
-# Copyright 2002-2019 Free Software Foundation, Inc.
+# Copyright 2002-2021 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -10,7 +10,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [6.7], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [6.8], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -33,7 +33,7 @@ AC_CONFIG_SRCDIR([info/info.c])
 # 3. It may be kept as is in case there were no change in the DTD
 #    between releases.  This is rare, but has happened.
 #
-TEXINFO_DTD_VERSION=6.6
+TEXINFO_DTD_VERSION=6.8
 AC_SUBST([TEXINFO_DTD_VERSION])
 
 # Package date.
@@ -73,7 +73,14 @@ fi
 
 
 AC_REQUIRE_AUX_FILE([tap-driver.sh])
-AC_PROG_AWK
+
+# awk for texindex.
+# don't use AC_PROG_AWK because this prefers gawk, which is much slower
+# than mawk for texindex and texi2dvi
+AC_CHECK_PROGS([TI_AWK], [awk mawk gawk], [])
+if test -z "$TI_AWK"; then
+  AC_MSG_ERROR([awk not found])
+fi
 
 # for generating texindex.awk
 AM_MISSING_PROG(GAWK, gawk)
@@ -288,8 +295,7 @@ AM_CONDITIONAL(INSTALL_WARNINGS,
 
 USE_EXTERNAL_EASTASIANWIDTH=no
 AC_ARG_WITH([external-Unicode-EastAsianWidth],
-   AC_HELP_STRING([--with-external-Unicode-EastAsianWidth],
-      [use external Unicode-EastAsianWidth (default: no)]),
+   AS_HELP_STRING([--with-external-Unicode-EastAsianWidth],[use external Unicode-EastAsianWidth (default: no)]),
    [if test $withval = 'yes'; then
       USE_EXTERNAL_EASTASIANWIDTH=yes
    fi]
@@ -299,8 +305,7 @@ AC_SUBST([USE_EXTERNAL_EASTASIANWIDTH])
 
 USE_EXTERNAL_UNIDECODE=no
 AC_ARG_WITH([external-Text-Unidecode],
-    AC_HELP_STRING([--with-external-Text-Unidecode],
-           [use external Text::Unidecode (default: no)]),
+    AS_HELP_STRING([--with-external-Text-Unidecode],[use external Text::Unidecode (default: no)]),
    [if test $withval = 'yes'; then
       USE_EXTERNAL_UNIDECODE=yes
    fi]
@@ -312,13 +317,12 @@ AC_SUBST([USE_EXTERNAL_UNIDECODE])
 # i18n support.  To update to a new version of gettext, run:
 #   gettextize -f --po-dir=po --po-dir=po_document 
 # See http://gnu.org/s/gnulib/manual/html_node/gettextize-and-autopoint.html.
-AM_GNU_GETTEXT_VERSION([0.20])
+AM_GNU_GETTEXT_VERSION([0.21])
 AM_GNU_GETTEXT([external])
 
 USE_EXTERNAL_LIBINTL=no
 AC_ARG_WITH([external-libintl-perl],
-   AC_HELP_STRING([--with-external-libintl-perl],
-      [use external libintl-perl (default: no)]),
+   AS_HELP_STRING([--with-external-libintl-perl],[use external libintl-perl (default: no)]),
    [if test $withval = 'yes'; then
       USE_EXTERNAL_LIBINTL=yes
    fi]
@@ -327,8 +331,7 @@ AC_ARG_WITH([external-libintl-perl],
 AC_SUBST([USE_EXTERNAL_LIBINTL])
 
 AC_ARG_ENABLE([perl-xs],
-    AC_HELP_STRING([--enable-perl-xs],
-              [build Perl XS modules for speed (default: check)]),
+    AS_HELP_STRING([--enable-perl-xs],[build Perl XS modules for speed (default: check)]),
     [ enable_xs=$enableval],
     [ enable_xs=check])
 
@@ -358,6 +361,10 @@ subdirs=tp/Texinfo/XS
 ( _AC_OUTPUT_SUBDIRS ) || enable_xs=no
 subdirs=$save_subdirs
 
+if test $enable_xs = no; then
+  AC_MSG_NOTICE([building Perl extension (XS) modules will be disabled])
+fi
+
 if test $enable_xs = check; then
   AC_MSG_CHECKING([whether we can build Perl extension (XS) modules])
   AC_MSG_RESULT([])
@@ -379,6 +386,21 @@ AC_SUBST([enable_xs])
 
 AM_CONDITIONAL([DISABLE_XS], [test "z$enable_xs" = zno])
 
+# Texinfo JS Interface
+npm_path="${srcdir}/js/node_modules/.bin${PATH_SEPARATOR}$PATH"
+
+AC_PATH_PROG([ESLINT], [eslint], [], [$npm_path])
+AM_CONDITIONAL([HAVE_ESLINT], [test "x$ac_cv_path_ESLINT" != "x"])
+
+AC_PATH_PROG([TSC], [tsc], [], [$npm_path])
+AM_CONDITIONAL([HAVE_TYPESCRIPT], [test "x$ac_cv_path_TSC" != "x"])
+
+AC_PATH_PROG([UGLIFYJS], [uglifyjs], [], [$npm_path])
+AM_CONDITIONAL([HAVE_UGLIFYJS], [test "x$ac_cv_path_UGLIFYJS" != "x"])
+
+AC_PATH_PROG([MODERNIZR], [modernizr], [], [$npm_path])
+AM_CONDITIONAL([HAVE_MODERNIZR], [test "x$ac_cv_path_MODERNIZR" != "x"])
+
 # Tests.
 AC_CONFIG_FILES([install-info/tests/defs])
 dnl We cannot enable the TeX-related tests, so don't waste time
@@ -391,8 +413,7 @@ AC_CHECK_PROGS([PROVE], [prove], [])
 
 tp_tests='no'
 AC_ARG_ENABLE([tp-tests],
-    AC_HELP_STRING([--enable-tp-tests],
-        [run the parser and converters testsuite (default: detected)]),
+    AS_HELP_STRING([--enable-tp-tests],[run the parser and converters testsuite (default: detected)]),
     [if test $enableval = 'no'; then
        tp_tests='no'
      else
@@ -415,8 +436,7 @@ AM_CONDITIONAL([TP_TESTS], [test "z$tp_tests" = 'zyes'])
 
 build_perl_api_texi='no'
 AC_ARG_ENABLE([perl-api-texi-build],
-    AC_HELP_STRING([--enable-perl-api-texi-build],
-        [build the perl api texinfo files (default: detected)]),
+    AS_HELP_STRING([--enable-perl-api-texi-build],[build the perl api texinfo files (default: detected)]),
     [if test $enableval = 'no'; then
        build_perl_api_texi='no'
      else
@@ -437,8 +457,7 @@ AM_CONDITIONAL([BUILD_PERL_API_TEXI], [test "z$build_perl_api_texi" = 'zyes'])
 
 pod_simple_texinfo_tests='no'
 AC_ARG_ENABLE([pod-simple-texinfo-tests],
-    AC_HELP_STRING([--enable-pod-simple-texinfo-tests],
-        [run the parser and converters testsuite (default: detected)]),
+    AS_HELP_STRING([--enable-pod-simple-texinfo-tests],[run the parser and converters testsuite (default: detected)]),
     [if test $enableval = 'no'; then
        pod_simple_texinfo_tests='no'
      else
@@ -490,6 +509,7 @@ AC_CONFIG_FILES([\
   tp/tests/layout/Makefile
   tp/tests/tex_html/Makefile
   tp/defs
+  js/Makefile
   Pod-Simple-Texinfo/Makefile
 ])
 
@@ -501,5 +521,5 @@ AC_OUTPUT
 # Summarize warnings to make them more visible.
 if test $have_termlib = no; then
   AC_MSG_WARN([Could not find a terminal library among ${TERMLIB_VARIANTS}])
-  AC_MSG_WARN([The programs from \`info' directory will not be built.])
+  AC_MSG_WARN([The programs from `info' directory will not be built.])
 fi

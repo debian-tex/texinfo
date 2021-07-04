@@ -68,7 +68,9 @@ $result_trees{'value_in_misc_commands'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -2771,7 +2773,7 @@ $result_trees{'value_in_misc_commands'}{'contents'}[0]{'parent'} = $result_trees
 $result_trees{'value_in_misc_commands'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[1]{'args'}[0];
 $result_trees{'value_in_misc_commands'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[1];
 $result_trees{'value_in_misc_commands'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'value_in_misc_commands'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'value_in_misc_commands'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'value_in_misc_commands'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'value_in_misc_commands'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'value_in_misc_commands'}{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'};
 $result_trees{'value_in_misc_commands'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'args'}[0];
 $result_trees{'value_in_misc_commands'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
@@ -3380,12 +3382,39 @@ $result_errors{'value_in_misc_commands'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':34: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 34,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':34: warning: @definfoenclose should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 34,
     'macro' => '',
     'text' => '@definfoenclose should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':40: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 40,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':49: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 49,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
     'type' => 'warning'
   },
   {
@@ -3434,6 +3463,9 @@ $result_errors{'value_in_misc_commands'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'value_in_misc_commands'} = {};
 
 
 1;

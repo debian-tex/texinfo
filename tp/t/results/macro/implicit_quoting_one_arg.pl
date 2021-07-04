@@ -130,4 +130,7 @@ FIXME: Many arguments, separated by commas, are processed here
 $result_errors{'implicit_quoting_one_arg'} = [];
 
 
+$result_floats{'implicit_quoting_one_arg'} = {};
+
+
 1;

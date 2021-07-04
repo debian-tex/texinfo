@@ -25,7 +25,9 @@ Texinfo::Structuring - information on Texinfo::Parser tree
     elements_file_directions);
   # $tree is a Texinfo document tree.  $parser is a Texinfo::Parser object.
   my $sections_root = sectioning_structure ($parser, $tree);
+  set_menus_node_directions($parser);
   my $top_node = nodes_tree($parser);
+  complete_node_tree_with_menus($parser, $top_node);
   number_floats($parser->floats_information());
   associate_internal_references($parser);
   my $elements;
@@ -59,9 +61,12 @@ Texinfo::Structuring - information on Texinfo::Parser tree
 Texinfo::Structuring first allows to collect informations on a Texinfo tree.
 In most case, it also requires a parser object to do that job.  Thanks to
 @code{sectioning_structure} the hierarchy of sectioning commands is determined.
-The node and menus tree is analysed with @code{nodes_tree}.  Floats get their 
-standard numbering with @code{number_floats} and internal references are matched
-up with nodes, floats or anchors with @code{associate_internal_references}.
+The directions implied by menus are determined with
+@code{set_menus_node_directions}.  The node tree is analysed with @code{nodes_tree}.
+Nodes directions are completed with menu directions with
+@code{complete_node_tree_with_menus}.  Floats get their standard numbering with
+@code{number_floats} and internal references are matched up with nodes, floats or
+anchors with @code{associate_internal_references}.
 
 It is also possible to group the top-level contents of the tree, which consist
 in nodes and sectioning commands into elements that group together a node and
@@ -148,13 +153,10 @@ account @code{@@part} elements.
 
 @end table
 
-@item my $top_node = nodes_tree($parser)
-@anchor{Texinfo::Structuring my $top_node = nodes_tree($parser)}
+@item set_menus_node_directions($parser)
+@anchor{Texinfo::Structuring set_menus_node_directions($parser)}
 
-Goes through menu and nodes and set directions.  Returns the top
-node.
-
-This functions sets:
+Goes through menu and set directions.
 
 @table @asis
 @item menu_child
@@ -176,6 +178,20 @@ Up, next and previous directions as set in menus.
 @item node_up
 @anchor{Texinfo::Structuring node_up}
 
+@end table
+
+@item my $top_node = nodes_tree($parser)
+@anchor{Texinfo::Structuring my $top_node = nodes_tree($parser)}
+
+Goes through nodes and set directions.  Returns the top
+node.
+
+This functions sets:
+
+@table @asis
+@item node_up
+@anchor{Texinfo::Structuring node_up 1}
+
 @item node_prev
 @anchor{Texinfo::Structuring node_prev}
 
@@ -185,6 +201,13 @@ Up, next and previous directions as set in menus.
 Up, next and previous directions for the node.
 
 @end table
+
+@item complete_node_tree_with_menus($parser, $top_node)
+@anchor{Texinfo::Structuring complete_node_tree_with_menus($parser@comma{} $top_node)}
+
+Complete nodes directions with menu directions.  Check consistency
+of menus, sectionning and nodes direction structures.  Check that
+all the nodes are referenced (in menu, @@*ref or node direction).
 
 @item number_floats($float_information)
 @anchor{Texinfo::Structuring number_floats($float_information)}
@@ -367,6 +390,11 @@ The next top level element.
 In the directions reference described above for @code{elements_directions}, sets
 the @emph{PrevFile} and @code{NextFile} directions to the elements in previous and
 following files.  
+
+It also sets @code{FirstInFile*} directions for all the elements by using
+the directions of the first element in file.  So, for example, 
+@code{FirstInFileNodeNext} is the next node of the first element in
+the file of each element.
 
 The API for association of pages/elements to files is not defined yet.
 

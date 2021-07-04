@@ -364,7 +364,9 @@ $result_trees{'index_entry_in_footnote_separate'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -442,7 +444,9 @@ $result_trees{'index_entry_in_footnote_separate'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'First'
           }
         ],
@@ -514,7 +518,7 @@ $result_trees{'index_entry_in_footnote_separate'}{'contents'}[1]{'contents'}[3]{
 $result_trees{'index_entry_in_footnote_separate'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'index_entry_in_footnote_separate'}{'contents'}[1];
 $result_trees{'index_entry_in_footnote_separate'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'index_entry_in_footnote_separate'}{'contents'}[1];
 $result_trees{'index_entry_in_footnote_separate'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'index_entry_in_footnote_separate'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'index_entry_in_footnote_separate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'index_entry_in_footnote_separate'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'index_entry_in_footnote_separate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'index_entry_in_footnote_separate'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'index_entry_in_footnote_separate'}{'contents'}[1]{'parent'} = $result_trees{'index_entry_in_footnote_separate'};
 $result_trees{'index_entry_in_footnote_separate'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entry_in_footnote_separate'}{'contents'}[2]{'args'}[0];
 $result_trees{'index_entry_in_footnote_separate'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'index_entry_in_footnote_separate'}{'contents'}[2];
@@ -523,7 +527,7 @@ $result_trees{'index_entry_in_footnote_separate'}{'contents'}[2]{'contents'}[1]{
 $result_trees{'index_entry_in_footnote_separate'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'index_entry_in_footnote_separate'}{'contents'}[2]{'contents'}[1];
 $result_trees{'index_entry_in_footnote_separate'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'index_entry_in_footnote_separate'}{'contents'}[2];
 $result_trees{'index_entry_in_footnote_separate'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'index_entry_in_footnote_separate'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'index_entry_in_footnote_separate'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'index_entry_in_footnote_separate'}{'contents'}[2]{'extra'}{'node_content'};
+$result_trees{'index_entry_in_footnote_separate'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'index_entry_in_footnote_separate'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'index_entry_in_footnote_separate'}{'contents'}[2]{'parent'} = $result_trees{'index_entry_in_footnote_separate'};
 
 $result_texis{'index_entry_in_footnote_separate'} = '@footnotestyle separate
@@ -620,6 +624,9 @@ $result_menus{'index_entry_in_footnote_separate'}{'menu_child'}{'menu_up'} = $re
 $result_errors{'index_entry_in_footnote_separate'} = [];
 
 
+$result_floats{'index_entry_in_footnote_separate'} = {};
+
+
 
 $result_converted{'info'}->{'index_entry_in_footnote_separate'} = 'This is , produced from .
 
@@ -689,10 +696,6 @@ $result_converted{'html_text'}->{'index_entry_in_footnote_separate'} = '<span id
 </div>
 <h1 class="node-heading">Top</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#First" rel="index" accesskey="1">First</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <p>Top node<a id="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
@@ -723,7 +726,6 @@ $result_converted{'html_text'}->{'index_entry_in_footnote_separate'} = '<span id
 <a class="summary-letter" href="#t_h_cp_letter-I"><b>I</b></a>
  &nbsp; 
 </td></tr></table>
-<hr>
 ';
 
 1;

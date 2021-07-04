@@ -88,4 +88,7 @@ $result_errors{'accent_no_closed_paragraph'} = [
 ];
 
 
+$result_floats{'accent_no_closed_paragraph'} = {};
+
+
 1;

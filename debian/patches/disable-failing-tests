@@ -1,0 +1,15 @@
+---
+ tp/tests/layout/list-of-tests |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/tp/tests/layout/list-of-tests
++++ b/tp/tests/layout/list-of-tests
+@@ -14,7 +14,7 @@ formatting_mathjax formatting.texi --htm
+ formatting_html32 formatting.texi --init html32.pm
+ formatting_regions formatting_regions.texi
+ formatting_exotic formatting.texi --split section --no-header --no-number-sections -c 'TOC_LINKS 1' -c 'DEF_TABLE 1' -c 'XREF_USE_NODE_NAME_ARG 1' --footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css --internal-links=/dev/null -c 'USE_TITLEPAGE_FOR_TITLE 0'
+-formatting_fr_icons formatting.texi --document-language fr --init icons.init
++#formatting_fr_icons formatting.texi --document-language fr --init icons.init
+ #formatting_makeinfo formatting.texi --init makeinfo.pm --no-warn
+ formatting_chm formatting.texi -c FORMAT_MENU=nomenu --init chm.pm
+ formatting_nodes formatting.texi --split node

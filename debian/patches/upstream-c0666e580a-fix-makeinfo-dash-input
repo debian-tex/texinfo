@@ -1,0 +1,27 @@
+---
+ tp/Texinfo/XS/parsetexi/input.c |   13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+--- a/tp/Texinfo/XS/parsetexi/input.c
++++ b/tp/Texinfo/XS/parsetexi/input.c
+@@ -560,11 +560,16 @@ locate_include_file (char *filename)
+ int
+ input_push_file (char *filename)
+ {
+-  FILE *stream;
++  FILE *stream = 0;
+ 
+-  stream = fopen (filename, "r");
+-  if (!stream)
+-    return errno;
++  if (!strcmp (filename, "-"))
++    stream = stdin;
++  else
++    {
++      stream = fopen (filename, "r");
++      if (!stream)
++        return errno;
++    }
+ 
+   if (input_number == input_space)
+     {

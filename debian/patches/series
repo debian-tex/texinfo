@@ -3,3 +3,4 @@ warn_missing_tex
 numerical-signal-names
 #Update-locale-handling-for-Perl-5.28
 #enable-xs-parser
+upstream-c0666e580a-fix-makeinfo-dash-input

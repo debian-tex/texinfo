@@ -1,0 +1,7 @@
+Tests: test-suite
+Depends: build-essential,
+	libncurses-dev,
+	gettext,
+	libtext-unidecode-perl,
+	libperl-dev
+Restrictions: build-needed

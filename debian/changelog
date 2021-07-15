@@ -1,5 +1,9 @@
 texinfo (6.8-2) UNRELEASED; urgency=medium
 
+  [ Hilmar Preusse <hille42@web.de> ]
+  * Stop calling test suite in debian/rules, use the test suite as
+    autopkgtest instead. This should fix build failure on hurd-i386.
+
   * Cherry-pick upstream fix for makeinfo reading from - (stdin).
 
  -- Norbert Preining <norbert@preining.info>  Wed, 07 Jul 2021 04:46:45 +0900

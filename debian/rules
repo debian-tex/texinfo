@@ -33,6 +33,7 @@ build-indep: build-stamp
 build-stamp:
 	dh_testdir
 	dh_update_autotools_config
+	dh_autoreconf
 	AWK=awk ./configure \
 	  --with-external-Text-Unidecode=yes \
 	  --prefix=/usr \
@@ -65,6 +66,7 @@ clean:
 	dh_testdir
 	dh_testroot
 	[ ! -f Makefile ] || $(MAKE) distclean
+	dh_autoreconf_clean
 	dh_clean install-stamp build-stamp check-stamp \
 		intl/libintl.h config.log
 

@@ -1,0 +1,27 @@
+From 13a8894fe2faa45b04033d7122a8fe7939ce6aa2 Mon Sep 17 00:00:00 2001
+From: Gavin Smith <gavinsmith0123@gmail.com>
+Date: Thu, 16 Sep 2021 19:06:28 +0100
+Subject: * tp/Texinfo/XS/parsetexi/end_line.c (parse_line_command_args)
+ <@headings>: Add missing option value 'single'.  Report from Sergei
+ Trofimovich <slyich@gmail.com>.
+
+---
+ ChangeLog                          | 6 ++++++
+ tp/Texinfo/XS/parsetexi/end_line.c | 4 ++--
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+Index: texinfo/tp/Texinfo/XS/parsetexi/end_line.c
+===================================================================
+--- texinfo.orig/tp/Texinfo/XS/parsetexi/end_line.c	2021-09-22 22:13:48.349679902 +0200
++++ texinfo/tp/Texinfo/XS/parsetexi/end_line.c	2021-09-22 22:13:48.333679695 +0200
+@@ -778,8 +778,8 @@
+     case CM_headings:
+       {
+         if (!strcmp (line, "off") || !strcmp (line, "on")
+-            || !strcmp (line, "double") || !strcmp (line, "singleafter")
+-            || !strcmp (line, "doubleafter"))
++            || !strcmp (line, "single") || !strcmp (line, "double")
++            || !strcmp (line, "singleafter") || !strcmp (line, "doubleafter"))
+           {
+             ADD_ARG(line);
+           }

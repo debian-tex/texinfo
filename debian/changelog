@@ -1,9 +1,9 @@
-texinfo (6.8-3) UNRELEASED; urgency=medium
+texinfo (6.8-3) unstable; urgency=high
 
   * Cherry pick patch "Add missing option value 'single'."
     Upstream commit 13a8894fe2 (Closes: #994894).
 
- -- Hilmar Preusse <hille42@web.de>  Wed, 22 Sep 2021 22:15:05 +0200
+ -- Hilmar Preusse <hille42@web.de>  Wed, 22 Sep 2021 23:40:10 +0200
 
 texinfo (6.8-2) unstable; urgency=medium
 

@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh
 # 
 # postinst maintainer script for the Debian install-info package
 #
@@ -21,6 +21,7 @@
 # On Debian GNU/Linux System you can find a copy of the GNU General Public
 # License in "/usr/share/common-licenses/GPL".
 #
+set -e
 
 umask 022
 

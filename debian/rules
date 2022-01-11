@@ -141,6 +141,7 @@ endif
 	dh_compress
 	dh_perl /usr/lib/texinfo
 	dh_fixperms
+	dh_lintian
 	dh_installdeb
 	dh_shlibdeps
 	dh_gencontrol

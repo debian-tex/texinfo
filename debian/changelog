@@ -1,9 +1,9 @@
-texinfo (6.8-4) UNRELEASED; urgency=medium
+texinfo (6.8-4) unstable; urgency=medium
 
   * Add patch texinfo-6.8-undo-gnulib-nonnul.patch to fix build
     failure w/ glibc 2.34 (Closes: #1003483).
 
- -- Hilmar Preusse <hille42@web.de>  Tue, 11 Jan 2022 00:09:37 +0100
+ -- Hilmar Preusse <hille42@web.de>  Tue, 11 Jan 2022 10:49:39 +0100
 
 texinfo (6.8-3) unstable; urgency=high
 

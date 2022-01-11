@@ -66,9 +66,9 @@ case "$1" in
 	# So we have to check for the existence of this file
 	# before we can call update-fmtutil
 	#if [ -r /etc/texmf/fmt.d/00tex.cnf ] ; then
-	    if which update-fmtutil > /dev/null ; then update-fmtutil --quiet ; fi
+	    if command -v update-fmtutil > /dev/null ; then update-fmtutil --quiet ; fi
 	#fi
-	if which mktexlsr >/dev/null; then update_lsr_files; fi
+	if command -v mktexlsr >/dev/null; then update_lsr_files; fi
 	# tetex might be unpacked but not configured, we have to check
 	# whether /etc/texmf/texmf.cnf already exists. The following check
 	# does two things: 1) check whether libkpathsea is configured, and

@@ -7,6 +7,7 @@ Uploaders: Norbert Preining <norbert@preining.info>,
 	   Hilmar Preusse <hille42@web.de>
 Build-Depends: debhelper-compat (= 12), libncurses5-dev | libncurses-dev, gettext, libtext-unidecode-perl, help2man, libperl-dev, desktop-file-utils
 Standards-Version: 4.5.0
+Rules-Requires-Root: no
 Vcs-Git: https://github.com/debian-tex/texinfo.git
 Vcs-Browser: https://github.com/debian-tex/texinfo
 Homepage: https://www.gnu.org/software/texinfo/

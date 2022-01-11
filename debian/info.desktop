@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=TeXInfo
 Comment=The viewer for TexInfo documents
+Keywords=TeXInfo;Documentation
 Exec=info
 Icon=dialog-information
 Type=Application

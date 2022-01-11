@@ -1,3 +1,9 @@
+Description: Fix for makeinfo reading from - (stdin).
+Origin: Gavin Smith <gavinsmith0123@gmail.com>
+Forwarded: No. Comes from upstream.
+Author: Gavin Smith <gavinsmith0123@gmail.com>
+Last-Update: 20210706
+
 ---
  tp/Texinfo/XS/parsetexi/input.c |   13 +++++++++----
  1 file changed, 9 insertions(+), 4 deletions(-)

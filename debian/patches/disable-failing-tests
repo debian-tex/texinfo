@@ -1,3 +1,9 @@
+Description: Disable failing tests in test suite.
+Origin: Norbert Preining <preining@debian.org>
+Forwarded: No. Patch is specific to Debian.
+Author: Norbert Preining <preining@debian.org>
+Last-Update: 20210704
+
 ---
  tp/tests/layout/list-of-tests |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

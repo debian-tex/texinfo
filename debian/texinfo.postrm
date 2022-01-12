@@ -3,7 +3,7 @@
 check_run_without_errors ()
 {
     tempfile=`mktemp -p /tmp checkrun.XXXXXXXX`
-    if which $1  >/dev/null; then
+    if command -v $1  >/dev/null; then
         echo -n "Running $1. This may take some time. ..."
 	set +e
         $* > $tempfile 2>&1

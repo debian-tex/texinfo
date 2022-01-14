@@ -1,6 +1,7 @@
 Description: Texinfo fails to build from source when built against glibc 2.34.
 Origin: Vitezslav Crhonek <vcrhonek@redhat.com>
-Forwarded: Not done, has to be done.
+Forwarded: Solved in upstream, by importing a new checkout of gnulib:
+ https://git.savannah.gnu.org/cgit/texinfo.git/commit/?id=c9ade3f83d4fba7a0fbdca87c21f860cffd5f8a4
 Author: Vitezslav Crhonek <vcrhonek@redhat.com>
 Last-Update: 20210719
 

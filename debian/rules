@@ -94,9 +94,9 @@ install-stamp: build-stamp check-stamp
 	dh_install
 	dh_missing --fail-missing --sourcedir=debian/tmp -X share/info
 	# install html docs
-	mkdir -p $(texinfo)/usr/share/doc/texinfo
+	#mkdir -p $(texinfo)/usr/share/doc/texinfo
 	cp -a doc/texinfo $(texinfo)/usr/share/doc/texinfo/html
-	mkdir -p $(infopkg)/usr/share/doc/info
+	#mkdir -p $(infopkg)/usr/share/doc/info
 	cp -a doc/info-stnd $(infopkg)/usr/share/doc/info/html
 	#
 	# install additional files that are not installed by default
@@ -112,8 +112,8 @@ install-stamp: build-stamp check-stamp
 	#
 	# other scripts to be installed
 	install -m 0755 debian/update-info-dir $(ii)/usr/sbin/update-info-dir
-	mkdir -p $(ii)/usr/share/man/man8
-	install -m 0644 debian/update-info-dir.8 $(ii)/usr/share/man/man8/update-info-dir.8
+	#mkdir -p $(ii)/usr/share/man/man8
+	#install -m 0644 debian/update-info-dir.8 $(ii)/usr/share/man/man8/update-info-dir.8
 	# we don't do the cyrtexinfo dance anymore
 	#cp debian/conf/50cyrtexinfo.cnf $(texinfo)/etc/texmf/fmt.d
 	#echo "50cyrtexinfo" > $(texinfo)/var/lib/tex-common/fmtutil-cnf/texinfo.list
@@ -129,7 +129,7 @@ binary-arch: install
 	dh_installdocs -A AUTHORS README NEWS TODO
 	dh_installdocs -p texinfo debian/README.cyrtexinfo \
 		doc/refcard/txirefcard*.pdf
-		
+	dh_installman
 	#dh_installmenu
 	dh_installmime
 	dh_installchangelogs ChangeLog

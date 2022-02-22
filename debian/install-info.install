@@ -1,2 +1,3 @@
 usr/bin/install-info
 usr/share/man/man1/install-info.1
+debian/update-info-dir usr/sbin

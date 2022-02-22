@@ -20,3 +20,4 @@ usr/share/texinfo
 usr/share/texmf/tex/texinfo/texinfo.tex
 usr/share/texmf/tex/texinfo/texinfo-ja.tex
 usr/share/texmf/tex/texinfo/txi-??.tex
+util/txixml2texi usr/bin/

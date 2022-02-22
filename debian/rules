@@ -100,7 +100,7 @@ install-stamp: build-stamp check-stamp
 	cp -a doc/info-stnd $(infopkg)/usr/share/doc/info/html
 	#
 	# install additional files that are not installed by default
-	install -m 0755 util/txixml2texi $(texinfo)/usr/bin/txixml2texi
+	#install -m 0755 util/txixml2texi $(texinfo)/usr/bin/txixml2texi
 	#
 	# we ship ginstall-info as link to install-info, it is long enough
 	#dh_link
@@ -111,7 +111,7 @@ install-stamp: build-stamp check-stamp
 	#	usr/bin/ginstall-info
 	#
 	# other scripts to be installed
-	install -m 0755 debian/update-info-dir $(ii)/usr/sbin/update-info-dir
+	#install -m 0755 debian/update-info-dir $(ii)/usr/sbin/update-info-dir
 	#mkdir -p $(ii)/usr/share/man/man8
 	#install -m 0644 debian/update-info-dir.8 $(ii)/usr/share/man/man8/update-info-dir.8
 	# we don't do the cyrtexinfo dance anymore

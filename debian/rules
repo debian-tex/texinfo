@@ -127,8 +127,8 @@ binary-arch: install
 	dh_testdir
 	dh_testroot
 	dh_installdocs -A AUTHORS README NEWS TODO
-	dh_installdocs -p texinfo debian/README.cyrtexinfo \
-		doc/refcard/txirefcard*.pdf
+	#dh_installdocs -p texinfo debian/README.cyrtexinfo \
+	#	doc/refcard/txirefcard*.pdf
 	dh_installman
 	dh_link
 	#dh_installmenu

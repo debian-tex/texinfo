@@ -103,12 +103,12 @@ install-stamp: build-stamp check-stamp
 	install -m 0755 util/txixml2texi $(texinfo)/usr/bin/txixml2texi
 	#
 	# we ship ginstall-info as link to install-info, it is long enough
-	dh_link
-	dh_link -p install-info \
-		usr/share/man/man1/install-info.1 	\
-		usr/share/man/man1/ginstall-info.1	\
-		usr/bin/install-info 			\
-		usr/bin/ginstall-info
+	#dh_link
+	#dh_link -p install-info \
+	#	usr/share/man/man1/install-info.1 	\
+	#	usr/share/man/man1/ginstall-info.1	\
+	#	usr/bin/install-info 			\
+	#	usr/bin/ginstall-info
 	#
 	# other scripts to be installed
 	install -m 0755 debian/update-info-dir $(ii)/usr/sbin/update-info-dir
@@ -130,6 +130,7 @@ binary-arch: install
 	dh_installdocs -p texinfo debian/README.cyrtexinfo \
 		doc/refcard/txirefcard*.pdf
 	dh_installman
+	dh_link
 	#dh_installmenu
 	dh_installmime
 	dh_installchangelogs ChangeLog

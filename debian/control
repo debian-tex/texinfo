@@ -16,7 +16,7 @@ Package: texinfo
 Section: text
 Priority: optional
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}, libtext-unidecode-perl, libxml-libxml-perl, tex-common (>= 6)
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}, libtext-unidecode-perl, libxml-libxml-perl, tex-common
 Suggests: texlive-base, texlive-latex-base, texlive-plain-generic, texlive-fonts-recommended
 Breaks: tetex-bin (<< 3.0), tetex-base (<< 3.0), ja-trans (<= 0.7-3.1), texinfo-doc-nonfree
 Replaces: tetex-base (<< 1.0.2+20000804-9), tetex-bin (<< 3.0), texinfo-doc-nonfree
@@ -36,7 +36,7 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, install-info
 Provides: info-browser
 Breaks: texinfo-doc-nonfree
-Replaces: texinfo (<< 4.7-2), texinfo-doc-nonfree
+Replaces: texinfo-doc-nonfree
 Multi-Arch: foreign
 Description: Standalone GNU Info documentation browser
  The Info file format is an easily-parsable representation for online
@@ -49,9 +49,6 @@ Description: Standalone GNU Info documentation browser
 Package: install-info
 Priority: important
 Architecture: any
-Pre-Depends: dpkg (>= 1.16.1)
-Replaces: texinfo (<< 4.13a.dfsg.1-2)
-Breaks: texinfo (<< 4.13a.dfsg.1-2)
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Multi-Arch: foreign
 Description: Manage installed documentation in info format

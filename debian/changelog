@@ -1,8 +1,18 @@
 texinfo (6.8-5) UNRELEASED; urgency=medium
 
+  [ Hilmar Preusse ]
   * Call dh_lintian in d/rules to actually install overrides.
   * Fix a few lintian complains, add overrides.
   * Replace "which" by "command -v" (Closes: #1003577)
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster:
+    + texinfo: Drop versioned constraint on tex-common in Depends.
+    + info: Drop versioned constraint on texinfo in Replaces.
+    + install-info: Drop versioned constraint on dpkg in Pre-Depends.
+    + install-info: Drop versioned constraint on texinfo in Replaces.
+    + install-info: Drop versioned constraint on texinfo in Breaks.
+    + Remove 1 maintscript entries from 1 files.
 
  -- Hilmar Preusse <hille42@web.de>  Tue, 11 Jan 2022 17:17:28 +0100
 

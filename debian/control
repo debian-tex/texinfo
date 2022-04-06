@@ -1,7 +1,7 @@
 Source: texinfo
 Section: doc
 Priority: standard
-Maintainer: Debian TeX maintainers <debian-tex-maint@lists.debian.org>
+Maintainer: Debian TeX Task Force <debian-tex-maint@lists.debian.org>
 Uploaders: Norbert Preining <norbert@preining.info>,
 	   Frank Küster <frank@debian.org>,
 	   Hilmar Preusse <hille42@web.de>

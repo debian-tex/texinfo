@@ -20,26 +20,28 @@ ii := $(CURDIR)/debian/install-info
 infopkg := $(CURDIR)/debian/info
 tmpdir := $(CURDIR)/debian/tmp
 
-build: build-arch build-indep
-build-arch: build-stamp
-build-indep: build-stamp
+#build: build-arch build-indep
+#build-arch: build-stamp
+#build-indep: build-stamp
 
 # The Debian provided libintl-perl breaks several tests and probably
 # also some of the behaviour. Disable it until these problems are fixed
 # on either side.
 #	  --with-external-libintl-perl=yes \
 
+%:
+	dh $@ --without autoreconf
 
-build-stamp:
-	dh_testdir
+override_dh_auto_configure:
 	dh_update_autotools_config
-	dh_autoreconf
 	AWK=awk ./configure \
 	  --with-external-Text-Unidecode=yes \
 	  --prefix=/usr \
 	  --libexecdir='$${prefix}/lib' \
 	  --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man' \
 	  --build=$(DEB_BUILD_GNU_TYPE) --host=$(DEB_HOST_GNU_TYPE)
+
+execute_before_dh_auto_build:
 	# after dh_autotools-dev_updateconfig the man pages would
 	# be rebuild, but we don't have tex installed (and don't want
 	# to add texlive-binaries to build-deps, too big and not used)
@@ -47,38 +49,60 @@ build-stamp:
 	# see BTS#740343
 	# backup the generated man page texi2dvi.1 and restore it
 	cp man/texi2dvi.1 debian
-	$(MAKE)
+
+execute_after_dh_auto_build:
 	# build html docs
 	cd doc && env TEXINFO_DEV_SOURCE=1 ../tp/texi2any --html info-stnd
 	cd doc && env TEXINFO_DEV_SOURCE=1 ../tp/texi2any --html texinfo
 	mv debian/texi2dvi.1 man/
 	touch man/texi2dvi.1
 	# finished
-	touch $@
+	#touch $@
 
-check-stamp: build-stamp
+#build-stamp:
+#	dh_testdir
+#	dh_update_autotools_config
+#	dh_autoreconf
+#	AWK=awk ./configure \
+#	  --with-external-Text-Unidecode=yes \
+#	  --prefix=/usr \
+#	  --libexecdir='$${prefix}/lib' \
+#	  --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man' \
+#	  --build=$(DEB_BUILD_GNU_TYPE) --host=$(DEB_HOST_GNU_TYPE)
+	# after dh_autotools-dev_updateconfig the man pages would
+	# be rebuild, but we don't have tex installed (and don't want
+	# to add texlive-binaries to build-deps, too big and not used)
+	# so the check we patched in would break the man page generation
+	# see BTS#740343
+	# backup the generated man page texi2dvi.1 and restore it
+	#cp man/texi2dvi.1 debian
+	#$(MAKE)
+	# build html docs
+	#cd doc && env TEXINFO_DEV_SOURCE=1 ../tp/texi2any --html info-stnd
+	#cd doc && env TEXINFO_DEV_SOURCE=1 ../tp/texi2any --html texinfo
+	#mv debian/texi2dvi.1 man/
+	#touch man/texi2dvi.1
+	# finished
+	#touch $@
+
+#check-stamp: build-stamp
 #ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 #	$(MAKE) check ALL_TESTS=yes
 #endif
-	touch $@
+#	touch $@
 
-clean:
-	dh_testdir
-	dh_testroot
-	[ ! -f Makefile ] || $(MAKE) distclean
-	dh_autoreconf_clean
-	dh_clean
+#clean:
+#	dh_testdir
+#	dh_testroot
+#	[ ! -f Makefile ] || $(MAKE) distclean
+#	dh_autoreconf_clean
+#	dh_clean
 
-install: install-stamp
-
-install-stamp: DH_OPTIONS=
-install-stamp: build-stamp check-stamp
-	dh_testdir
-	dh_testroot
-	dh_prep
-	dh_installdirs
+override_dh_auto_install:
 	$(MAKE) install install-tex prefix=$(tmpdir)/usr \
                                     TEXMF=$(tmpdir)/usr/share/texmf
+
+override_dh_install:
 	find $(tmpdir) -type f -name dir | xargs rm -f
 	#
 	desktop-file-install --dir=$(tmpdir)/usr/share/applications debian/info.desktop
@@ -92,6 +116,8 @@ install-stamp: build-stamp check-stamp
 	# install all the files
 	dh_install
 	dh_missing --fail-missing --sourcedir=debian/tmp -X share/info
+
+execute_after_dh_install:
 	# install html docs
 	#mkdir -p $(texinfo)/usr/share/doc/texinfo
 	cp -a doc/texinfo $(texinfo)/usr/share/doc/texinfo/html
@@ -116,43 +142,97 @@ install-stamp: build-stamp check-stamp
 	# we don't do the cyrtexinfo dance anymore
 	#cp debian/conf/50cyrtexinfo.cnf $(texinfo)/etc/texmf/fmt.d
 	#echo "50cyrtexinfo" > $(texinfo)/var/lib/tex-common/fmtutil-cnf/texinfo.list
-	touch install-stamp
 
-binary-indep:
+
+#install: install-stamp
+
+#install-stamp: DH_OPTIONS=
+#install-stamp: build-stamp check-stamp
+	#dh_testdir
+	#dh_testroot
+	#dh_prep
+	#dh_installdirs
+	#$(MAKE) install install-tex prefix=$(tmpdir)/usr \
+        #                            TEXMF=$(tmpdir)/usr/share/texmf
+	#find $(tmpdir) -type f -name dir | xargs rm -f
+	#
+	#desktop-file-install --dir=$(tmpdir)/usr/share/applications debian/info.desktop
+	#
+	# clean out .la files as they contain references to libperl
+	# which is not necessary
+	#sed -i "/dependency_libs/ s/'.*'/''/" `find $(tmpdir) -name '*.la'`
+	#
+	# epsf.tex is in texlive
+	#rm -rf $(tmpdir)/usr/share/texmf/tex/generic
+	# install all the files
+	#dh_install
+	#dh_missing --fail-missing --sourcedir=debian/tmp -X share/info
+	# install html docs
+	#mkdir -p $(texinfo)/usr/share/doc/texinfo
+	#cp -a doc/texinfo $(texinfo)/usr/share/doc/texinfo/html
+	#mkdir -p $(infopkg)/usr/share/doc/info
+	#cp -a doc/info-stnd $(infopkg)/usr/share/doc/info/html
+	#
+	# install additional files that are not installed by default
+	#install -m 0755 util/txixml2texi $(texinfo)/usr/bin/txixml2texi
+	#
+	# we ship ginstall-info as link to install-info, it is long enough
+	#dh_link
+	#dh_link -p install-info \
+	#	usr/share/man/man1/install-info.1 	\
+	#	usr/share/man/man1/ginstall-info.1	\
+	#	usr/bin/install-info 			\
+	#	usr/bin/ginstall-info
+	#
+	# other scripts to be installed
+	#install -m 0755 debian/update-info-dir $(ii)/usr/sbin/update-info-dir
+	#mkdir -p $(ii)/usr/share/man/man8
+	#install -m 0644 debian/update-info-dir.8 $(ii)/usr/share/man/man8/update-info-dir.8
+	# we don't do the cyrtexinfo dance anymore
+	#cp debian/conf/50cyrtexinfo.cnf $(texinfo)/etc/texmf/fmt.d
+	#echo "50cyrtexinfo" > $(texinfo)/var/lib/tex-common/fmtutil-cnf/texinfo.list
+	#touch install-stamp
+
+#binary-indep:
 # There aren't any architecture independent packages here.
 
-binary-arch: DH_OPTIONS=-a
-binary-arch: install
-	dh_testdir
-	dh_testroot
-	dh_installdocs
+#binary-arch: DH_OPTIONS=-a
+#binary-arch: install
+	#dh_testdir
+	#dh_testroot
+	#dh_installdocs
 	#dh_installdocs -A AUTHORS README NEWS TODO
 	#dh_installdocs -p texinfo debian/README.cyrtexinfo \
 	#	doc/refcard/txirefcard*.pdf
-	dh_installman
-	dh_link
+	#dh_installman
+	#dh_link
 	#dh_installmenu
-	dh_installmime
-	dh_installchangelogs ChangeLog
-ifeq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
-ifeq "$(findstring nostrip,$(DEB_BUILD_OPTIONS))" ""
-	dh_strip
-endif
-endif
-	dh_compress
-	dh_perl /usr/lib/texinfo
-	dh_fixperms
-	dh_lintian
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
+	#dh_installmime
 
-binary: binary-indep binary-arch
+override_dh_installchangelogs:
+	dh_installchangelogs ChangeLog
+#ifeq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
+#ifeq "$(findstring nostrip,$(DEB_BUILD_OPTIONS))" ""
+#	dh_strip
+#endif
+#endif
+#	dh_compress
+
+override_dh_perl:
+	dh_perl /usr/lib/texinfo
+
+#	dh_fixperms
+#	dh_lintian
+#	dh_installdeb
+#	dh_shlibdeps
+#	dh_gencontrol
+#	dh_md5sums
+#	dh_builddeb
+
+#binary: binary-indep binary-arch
 
 # other targets
 update-texinfo.tex:
 	wget -O $(CURDIR)/debian/texinfo.tex ftp://tug.org/tex/texinfo.tex
 
-.PHONY: build clean binary-indep binary-arch binary install
+#.PHONY: build clean binary-indep binary-arch binary install

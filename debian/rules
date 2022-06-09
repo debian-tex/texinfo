@@ -67,8 +67,7 @@ clean:
 	dh_testroot
 	[ ! -f Makefile ] || $(MAKE) distclean
 	dh_autoreconf_clean
-	dh_clean install-stamp build-stamp check-stamp \
-		intl/libintl.h config.log
+	dh_clean
 
 install: install-stamp
 

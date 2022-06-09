@@ -1,0 +1,5 @@
+install-stamp
+build-stamp
+check-stamp
+intl/libintl.h
+config.log

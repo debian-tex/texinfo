@@ -195,6 +195,9 @@ execute_after_dh_install:
 #binary-indep:
 # There aren't any architecture independent packages here.
 
+override_dh_auto_test:
+	# Skip test suite.
+
 #binary-arch: DH_OPTIONS=-a
 #binary-arch: install
 	#dh_testdir

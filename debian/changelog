@@ -1,10 +1,10 @@
-texinfo (6.8-5) UNRELEASED; urgency=medium
+texinfo (6.8-5) unstable; urgency=medium
 
   [ Hilmar Preusse ]
-  * Call dh_lintian in d/rules to actually install overrides.
+  * Switch to dh sequencer in debian/rules. Old build sequence
+    still commented.
   * Fix a few lintian complains, add overrides.
   * Replace "which" by "command -v" (Closes: #1003577)
-  * Turn debian/rules into a dh sequencer.
 
   [ Debian Janitor ]
   * Remove constraints unnecessary since buster:
@@ -15,7 +15,7 @@ texinfo (6.8-5) UNRELEASED; urgency=medium
     + install-info: Drop versioned constraint on texinfo in Breaks.
     + Remove 1 maintscript entries from 1 files.
 
- -- Hilmar Preusse <hille42@web.de>  Tue, 11 Jan 2022 17:17:28 +0100
+ -- Hilmar Preusse <hille42@web.de>  Fri, 10 Jun 2022 23:26:56 +0200
 
 texinfo (6.8-4) unstable; urgency=medium
 

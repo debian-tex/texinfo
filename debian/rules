@@ -30,10 +30,9 @@ tmpdir := $(CURDIR)/debian/tmp
 #	  --with-external-libintl-perl=yes \
 
 %:
-	dh $@ --without autoreconf
+	dh $@
 
 override_dh_auto_configure:
-	dh_update_autotools_config
 	AWK=awk ./configure \
 	  --with-external-Text-Unidecode=yes \
 	  --prefix=/usr \

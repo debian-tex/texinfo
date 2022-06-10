@@ -4,6 +4,7 @@ texinfo (6.8-5) UNRELEASED; urgency=medium
   * Call dh_lintian in d/rules to actually install overrides.
   * Fix a few lintian complains, add overrides.
   * Replace "which" by "command -v" (Closes: #1003577)
+  * Turn debian/rules into a dh sequencer.
 
   [ Debian Janitor ]
   * Remove constraints unnecessary since buster:

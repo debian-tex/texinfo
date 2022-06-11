@@ -119,9 +119,9 @@ override_dh_install:
 execute_after_dh_install:
 	# install html docs
 	#mkdir -p $(texinfo)/usr/share/doc/texinfo
-	cp -a doc/texinfo $(texinfo)/usr/share/doc/texinfo/html
+	#cp -a doc/texinfo $(texinfo)/usr/share/doc/texinfo/html
 	#mkdir -p $(infopkg)/usr/share/doc/info
-	cp -a doc/info-stnd $(infopkg)/usr/share/doc/info/html
+	#cp -a doc/info-stnd $(infopkg)/usr/share/doc/info/html
 	#
 	# install additional files that are not installed by default
 	#install -m 0755 util/txixml2texi $(texinfo)/usr/bin/txixml2texi

@@ -1,11 +1,11 @@
-texinfo (6.8-6) UNRELEASED; urgency=medium
+texinfo (6.8-6) unstable; urgency=medium
 
   * Stop mentioning texinfo-doc-nonfree in README.Debian.
   * "Fix "info" crashes with "aborted" message, in any attempt to run
     it." Add patch from upstream to solve issue. (Closes: #1013283)
   * Upstream patch: Avoid crashes in 'handle_block_command'.
 
- -- Hilmar Preusse <hille42@web.de>  Sat, 11 Jun 2022 23:56:01 +0200
+ -- Hilmar Preusse <hille42@web.de>  Sun, 26 Jun 2022 23:04:39 +0200
 
 texinfo (6.8-5) unstable; urgency=medium
 

@@ -2,4 +2,4 @@
 # wrong detection, it only gives pointers to RFC
 texinfo source: license-problem-non-free-RFC js/examples/kawa/kawa.texi
 # so what
-texinfo source: configure-generated-file-in-source *config.log
+texinfo source: configure-generated-file-in-source [tp/maintain/lib/libintl-perl/config.log]

@@ -10,17 +10,32 @@
 @xref{blumpty.fump, the::caption and a word}
 @xref{blumpty.fump, the::caption}.mrmrmrmmrmrmr
 
-@xref{blah:blah}
+@xref{blah:blah}.
 
-@xref{@asis{secret,node}}
+@xref{@asis{secret,node}}.
 
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA @xref{blah:blah}.)
+
+@xref{x:y::z,,,man_ual,Book Title}.
+
+@xref{x.y.z,,,man_ual,Book Title}.
+
+@xref{pp:qq::rr,, label, man_ual,Book Title}.
+
+@xref{pp:qq.rr,, label, man_ual,Book Title}.
+
+@xref{ext,, label, man:u.al, Book Title}.
+
+@xref{e:x.t,, label, man:u.al, Book Title}.
+
+@xref{ext,, la:bel, man:u.al, Book Title}.
 
 @menu
 * blah@asis{:}blah::
 * the topic:blumpty@asis{.}fump.
 * normal node::
 * funny@asis{:}label:@asis{secret,node}.
+* (man:u.al)ext::
 
 @end menu
 
@@ -32,7 +47,7 @@ stuff here.
 @node blumpty.fump
 @chapter blumpty.fump
 
-@node normal node
+@node normal node, (man@comma{}u:a.l)direction, (man_ual)direct@comma{}ion, (man_ual)direct::i.on
 @chapter normal node
 
 @node @asis{secret,node}

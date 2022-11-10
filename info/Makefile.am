@@ -1,4 +1,3 @@
-# $Id$
 # Makefile.am for texinfo/info.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012,
@@ -33,11 +32,12 @@ EXTRA_DIST = pcterm.c
 ginfo_SOURCES = dir.c display.c display.h doc.h dribble.c dribble.h \
   echo-area.c echo-area.h \
   filesys.c filesys.h footnotes.c footnotes.h indices.c indices.h \
-  info-utils.c info-utils.h info.c info.h infodoc.c infokey.c \
+  info.c info.h infodoc.c infokey.c \
   infomap.c infomap.h infopath.c m-x.c man.c man.h nodemenu.c \
-  nodes.c nodes.h search.c search.h session.c session.h signals.c signals.h \
+  nodes.c nodes.h scan.c scan.h \
+  search.c search.h session.c session.h signals.c signals.h \
   tag.c tag.h termdep.h terminal.c terminal.h tilde.c tilde.h \
-  variables.c variables.h window.c window.h
+  util.c util.h variables.c variables.h window.c window.h
 nodist_ginfo_SOURCES = doc.c funs.h
 
 # The files `doc.c' and `funs.h' are created by ./makedoc run over the
@@ -143,6 +143,7 @@ TESTS = \
 	t/index-completing.sh \
 	t/split-index.sh \
 	t/index-long-nodeline.sh \
+	t/index-paren.sh \
 	t/empty-infopath.sh \
 	t/menu-sequence.sh \
 	t/relative-reference.sh \

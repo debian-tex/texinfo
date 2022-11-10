@@ -20,7 +20,7 @@ File: multiple_lang_chapters.info,  Node: chapter ja,  Next: chapter en,  Prev: 
 1 ja
 ****
 
-In japanese.  *Note Top::.
+In japanese.  *Note chapter ja::.
  -- Instance Variable of AAA: BBB CCC
 
 
@@ -29,7 +29,7 @@ File: multiple_lang_chapters.info,  Node: chapter en,  Next: chapter fr_FR,  Pre
 2 en
 ****
 
-In english.  *Note Top::.
+In english.  *Note chapter ja::.
  -- Instance Variable of AAA: BBB CCC
 
 
@@ -52,16 +52,16 @@ File: multiple_lang_chapters.info,  Node: chapter pt_BR,  Prev: chapter de,  Up:
 5 pt_bR
 *******
 
-In brazilian.  *Note Top::.
+In brazilian.  *Note chapter ja::.
 
 
 Tag Table:
 Node: Top54
 Node: chapter ja266
-Node: chapter en440
-Node: chapter fr_FR623
-Node: chapter de789
-Node: chapter pt_BR910
+Node: chapter en447
+Node: chapter fr_FR637
+Node: chapter de803
+Node: chapter pt_BR924
 
 End Tag Table
 

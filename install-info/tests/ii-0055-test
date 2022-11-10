@@ -21,7 +21,7 @@ ${install_info} \
   ${testdir}/ii-$testnum-input-info-file $outputdirfile \
 || exit $?
 
-diff ${testdir}/ii-$testnum-expected-dir-file $outputdirfile
+${diff} ${testdir}/ii-$testnum-expected-dir-file $outputdirfile
 retval=$?
 
 rm -f $outputdirfile

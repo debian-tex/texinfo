@@ -51,7 +51,8 @@ register_extra_menu_entry_information (ELEMENT *current)
           isolate_last_space (arg);
 
           parsed_entry_node = parse_node_manual (arg);
-          if (!parsed_entry_node)
+          if (!parsed_entry_node->manual_content
+              && !parsed_entry_node->node_content)
             {
               if (conf.show_menu)
                 line_error ("empty node name in menu entry");
@@ -77,14 +78,13 @@ enter_menu_entry_node (ELEMENT *current)
   description = new_element (ET_menu_entry_description);
   add_to_element_args (current, description);
   register_extra_menu_entry_information (current);
-  current->line_nr = line_nr;
+  current->source_info = current_source_info;
   remember_internal_xref (current);
 
   current = description;
   preformatted = new_element (ET_preformatted);
   add_to_element_contents (current, preformatted);
   current = preformatted;
-  push_context (ct_preformatted);
   return current;
 }
 
@@ -111,16 +111,16 @@ handle_menu (ELEMENT **current_inout, char **line_inout)
       abort_empty_line (&current, 0);
       line++; /* Past the '*'. */
 
-      star = new_element (ET_menu_star);
+      star = new_element (ET_internal_menu_star);
       text_append (&star->text, "*");
       add_to_element_contents (current, star);
 
-      /* The ET_menu_star element won't appear in the final tree. */
+      /* The ET_internal_menu_star element won't appear in the final tree. */
     }
   /* A space after a "*" at the beginning of a line. */
   else if (strchr (whitespace_chars, *line)
            && current->contents.number > 0
-           && last_contents_child(current)->type == ET_menu_star)
+           && last_contents_child(current)->type == ET_internal_menu_star)
     {
       ELEMENT *menu_entry, *leading_text, *entry_name;
       int leading_spaces;
@@ -158,9 +158,6 @@ handle_menu (ELEMENT **current_inout, char **line_inout)
           current = current->parent->parent->parent;
         }
 
-      if (pop_context () != ct_preformatted)
-        fatal ("preformatted context expected");
-
       menu_entry = new_element (ET_menu_entry);
       leading_text = new_element (ET_menu_entry_leading_text);
       entry_name = new_element (ET_menu_entry_name);
@@ -175,7 +172,7 @@ handle_menu (ELEMENT **current_inout, char **line_inout)
     }
   /* A "*" followed by anything other than a space. */
   else if (current->contents.number > 0
-           && last_contents_child(current)->type == ET_menu_star)
+           && last_contents_child(current)->type == ET_internal_menu_star)
     {
       debug ("ABORT MENU STAR");
       last_contents_child(current)->type = ET_NONE;

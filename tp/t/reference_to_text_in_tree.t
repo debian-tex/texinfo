@@ -1,13 +1,13 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 use Test::More;
 
 BEGIN { plan tests => 2; }
 
-use Texinfo::Parser qw(parse_texi_text);
+use Texinfo::Parser;
 use Texinfo::Transformations;
 use Texinfo::Convert::Texinfo;
 
@@ -20,11 +20,11 @@ sub run_test($$$)
   my $name = shift;
 
   my $parser = Texinfo::Parser::parser();
-  my $tree = parse_texi_text($parser, $in);
+  my $tree = $parser->parse_texi_piece($in);
 
   my $corrected_tree 
-    = Texinfo::Transformations::reference_to_arg_in_tree($parser, $tree);
-  my $texi_result = Texinfo::Convert::Texinfo::convert($corrected_tree);
+    = Texinfo::Transformations::reference_to_arg_in_tree($tree);
+  my $texi_result = Texinfo::Convert::Texinfo::convert_to_texinfo($corrected_tree);
 
   if (!defined($out)) {
     print STDERR " --> $name:\n$texi_result";

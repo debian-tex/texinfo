@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,102 +10,138 @@ $result_trees{'paragraphindent_and_preamble'} = {
     {
       'contents' => [
         {
-          'cmdname' => 'copying',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'In copying.
+                  'extra' => {
+                    'spaces_after_argument' => '
 '
+                  },
+                  'type' => 'block_line_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'paragraph'
+              'cmdname' => 'copying',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'In copying.
+'
+                    }
+                  ],
+                  'type' => 'paragraph'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'empty_line'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'Copying second para.
+'
+                    }
+                  ],
+                  'type' => 'paragraph'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'copying'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'copying'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
             },
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'empty_line'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'Copying second para.
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'paragraph'
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'copying'
+                      'text' => '1'
                     }
                   ],
                   'extra' => {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
-              'cmdname' => 'end',
+              'cmdname' => 'paragraphindent',
               'extra' => {
-                'command_argument' => 'copying',
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'copying'
+                'misc_args' => [
+                  '1'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 5,
+                'line_nr' => 7,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
+          'type' => 'preamble_before_content'
         },
         {
-          'parent' => {},
+          'contents' => [
+            {
+              'text' => 'After paragraphindent.
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
           'text' => '
 ',
           'type' => 'empty_line'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -113,12 +149,10 @@ $result_trees{'paragraphindent_and_preamble'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'contents' => [],
       'extra' => {
         'node_content' => [
           {}
@@ -134,42 +168,36 @@ $result_trees{'paragraphindent_and_preamble'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
-        'line_nr' => 7,
+        'line_nr' => 11,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'test '
             },
             {
-              'cmdname' => '@',
-              'parent' => {}
+              'cmdname' => '@'
             },
             {
-              'parent' => {},
-              'text' => 'paragraphindent effect in preamble'
+              'text' => 'paragraphindent in preamble effect in preamble'
             }
           ],
           'extra' => {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -177,16 +205,13 @@ $result_trees{'paragraphindent_and_preamble'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'First para.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -194,70 +219,13 @@ $result_trees{'paragraphindent_and_preamble'} = {
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'Before paragraphindent.
+              'text' => 'Second para.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '1'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'paragraphindent',
-          'extra' => {
-            'misc_args' => [
-              '1'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 14,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'After paragraphindent.
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -266,69 +234,27 @@ $result_trees{'paragraphindent_and_preamble'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 0,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
-        'line_nr' => 8,
+        'line_nr' => 12,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'misc_arg'
         }
       ],
-      'cmdname' => 'bye',
-      'parent' => {}
+      'cmdname' => 'bye'
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[3];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[4];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[4];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'};
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[1]{'args'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[1];
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'paragraphindent_and_preamble'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'paragraphindent_and_preamble'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[1]{'parent'} = $result_trees{'paragraphindent_and_preamble'};
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'args'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'args'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'args'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[1];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[3];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[5]{'args'}[0];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[5];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[6]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[7];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[8]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'parent'} = $result_trees{'paragraphindent_and_preamble'};
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[3];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[3]{'parent'} = $result_trees{'paragraphindent_and_preamble'};
 
 $result_texis{'paragraphindent_and_preamble'} = '@copying
 In copying.
@@ -336,76 +262,74 @@ In copying.
 Copying second para.
 @end copying
 
-@node Top
-@top test @@paragraphindent effect in preamble
-
-First para.
-
-Before paragraphindent.
-
 @paragraphindent 1
 
 After paragraphindent.
+
+@node Top
+@top test @@paragraphindent in preamble effect in preamble
+
+First para.
+
+Second para.
 
 @bye
 ';
 
 
 $result_texts{'paragraphindent_and_preamble'} = '
-test @paragraphindent effect in preamble
-****************************************
+
+After paragraphindent.
+
+test @paragraphindent in preamble effect in preamble
+****************************************************
 
 First para.
 
-Before paragraphindent.
-
-
-After paragraphindent.
+Second para.
 
 ';
 
 $result_sectioning{'paragraphindent_and_preamble'} = {
-  'level' => -1,
-  'section_childs' => [
-    {
-      'cmdname' => 'top',
-      'extra' => {
-        'associated_node' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => 'Top',
-            'spaces_before_argument' => ' '
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'top',
+        'extra' => {
+          'associated_node' => {
+            'cmdname' => 'node',
+            'extra' => {
+              'normalized' => 'Top'
+            }
           }
         },
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0,
-      'section_up' => {}
-    }
-  ]
+        'structure' => {
+          'section_level' => 0,
+          'section_up' => {}
+        }
+      }
+    ],
+    'section_level' => -1
+  }
 };
-$result_sectioning{'paragraphindent_and_preamble'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'paragraphindent_and_preamble'};
+$result_sectioning{'paragraphindent_and_preamble'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'paragraphindent_and_preamble'};
 
 $result_nodes{'paragraphindent_and_preamble'} = {
   'cmdname' => 'node',
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0
+      'extra' => {},
+      'structure' => {}
     },
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
 $result_menus{'paragraphindent_and_preamble'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
@@ -422,22 +346,22 @@ In copying.
 
  Copying second para.
 
+ After paragraphindent.
+
 
 File: ,  Node: Top,  Up: (dir)
 
-test @paragraphindent effect in preamble
-****************************************
+test @paragraphindent in preamble effect in preamble
+****************************************************
 
 First para.
 
-   Before paragraphindent.
-
- After paragraphindent.
+ Second para.
 
 
 
 Tag Table:
-Node: Top63
+Node: Top88
 
 End Tag Table
 

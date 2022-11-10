@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,119 +10,90 @@ $result_trees{'unknown_command_with_braces'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'Unknown thing 
+          'contents' => [
+            {
+              'text' => 'Unknown thing 
 '
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
+            }
+          ],
+          'type' => 'paragraph'
+        },
         {
-          'parent' => {},
-          'text' => 'Unknown macro  first paragraph
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
+          'type' => 'empty_line'
+        },
         {
-          'parent' => {},
-          'text' => 'second paragraph
+          'contents' => [
+            {
+              'text' => 'Unknown macro  first paragraph
 '
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
+          'type' => 'empty_line'
+        },
         {
-          'parent' => {},
-          'text' => ' first paragraph
+          'contents' => [
+            {
+              'text' => 'second paragraph
 '
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
+          'type' => 'empty_line'
+        },
         {
-          'parent' => {},
-          'text' => 'second paragraph
+          'contents' => [
+            {
+              'text' => ' first paragraph
 '
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
+          'type' => 'empty_line'
+        },
         {
-          'parent' => {},
-          'text' => 'third
+          'contents' => [
+            {
+              'text' => 'second paragraph
 '
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'third
+'
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'unknown_command_with_braces'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_command_with_braces'}{'contents'}[0];
-$result_trees{'unknown_command_with_braces'}{'contents'}[0]{'parent'} = $result_trees{'unknown_command_with_braces'};
-$result_trees{'unknown_command_with_braces'}{'contents'}[1]{'parent'} = $result_trees{'unknown_command_with_braces'};
-$result_trees{'unknown_command_with_braces'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'unknown_command_with_braces'}{'contents'}[2];
-$result_trees{'unknown_command_with_braces'}{'contents'}[2]{'parent'} = $result_trees{'unknown_command_with_braces'};
-$result_trees{'unknown_command_with_braces'}{'contents'}[3]{'parent'} = $result_trees{'unknown_command_with_braces'};
-$result_trees{'unknown_command_with_braces'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'unknown_command_with_braces'}{'contents'}[4];
-$result_trees{'unknown_command_with_braces'}{'contents'}[4]{'parent'} = $result_trees{'unknown_command_with_braces'};
-$result_trees{'unknown_command_with_braces'}{'contents'}[5]{'parent'} = $result_trees{'unknown_command_with_braces'};
-$result_trees{'unknown_command_with_braces'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'unknown_command_with_braces'}{'contents'}[6];
-$result_trees{'unknown_command_with_braces'}{'contents'}[6]{'parent'} = $result_trees{'unknown_command_with_braces'};
-$result_trees{'unknown_command_with_braces'}{'contents'}[7]{'parent'} = $result_trees{'unknown_command_with_braces'};
-$result_trees{'unknown_command_with_braces'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'unknown_command_with_braces'}{'contents'}[8];
-$result_trees{'unknown_command_with_braces'}{'contents'}[8]{'parent'} = $result_trees{'unknown_command_with_braces'};
-$result_trees{'unknown_command_with_braces'}{'contents'}[9]{'parent'} = $result_trees{'unknown_command_with_braces'};
-$result_trees{'unknown_command_with_braces'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'unknown_command_with_braces'}{'contents'}[10];
-$result_trees{'unknown_command_with_braces'}{'contents'}[10]{'parent'} = $result_trees{'unknown_command_with_braces'};
 
 $result_texis{'unknown_command_with_braces'} = 'Unknown thing 
 
@@ -153,7 +124,7 @@ third
 
 $result_errors{'unknown_command_with_braces'} = [
   {
-    'error_line' => ':1: unknown command `thing\'
+    'error_line' => 'unknown command `thing\'
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -162,7 +133,7 @@ $result_errors{'unknown_command_with_braces'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: misplaced {
+    'error_line' => 'misplaced {
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -171,7 +142,7 @@ $result_errors{'unknown_command_with_braces'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: misplaced }
+    'error_line' => 'misplaced }
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -180,7 +151,7 @@ $result_errors{'unknown_command_with_braces'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':3: unknown command `unknown\'
+    'error_line' => 'unknown command `unknown\'
 ',
     'file_name' => '',
     'line_nr' => 3,
@@ -189,7 +160,7 @@ $result_errors{'unknown_command_with_braces'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':3: misplaced {
+    'error_line' => 'misplaced {
 ',
     'file_name' => '',
     'line_nr' => 3,
@@ -198,7 +169,7 @@ $result_errors{'unknown_command_with_braces'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':5: misplaced }
+    'error_line' => 'misplaced }
 ',
     'file_name' => '',
     'line_nr' => 5,
@@ -207,7 +178,7 @@ $result_errors{'unknown_command_with_braces'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':7: unknown command `unknown2\'
+    'error_line' => 'unknown command `unknown2\'
 ',
     'file_name' => '',
     'line_nr' => 7,
@@ -216,7 +187,7 @@ $result_errors{'unknown_command_with_braces'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':7: misplaced {
+    'error_line' => 'misplaced {
 ',
     'file_name' => '',
     'line_nr' => 7,
@@ -225,7 +196,7 @@ $result_errors{'unknown_command_with_braces'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':11: misplaced }
+    'error_line' => 'misplaced }
 ',
     'file_name' => '',
     'line_nr' => 11,

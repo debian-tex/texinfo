@@ -1,0 +1,24 @@
+
+@node Top
+@top top
+
+@node    
+@chapter EN QUAD| | EM QUAD| | EN SPACE| |
+
+@node 	
+@chapter CHARACTER TABULATION|	| FORM FEED|| LINE TABULATION||
+
+@node 
+@chapter CARRIAGE RETURN||
+
+@node   
+@chapter NEXT LINE (NEL)|| NO-BREAK SPACE| | OGHAM SPACE MARK| |
+
+@node ᠎ 
+@chapter MONGOLIAN VOWEL SEPARATOR|᠎| EM SPACE| |
+
+@node            　
+
+@chapter THREE-PER-EM SPACE| | FOUR-PER-EM SPACE| | SIX-PER-EM SPACE| | FIGURE SPACE| | PUNCTUATION SPACE| | THIN SPACE| | HAIR SPACE| | LINE SEPARATOR| | PARAGRAPH SEPARATOR| | NARROW NO-BREAK SPACE| | MEDIUM MATHEMATICAL SPACE| | IDEOGRAPHIC SPACE|　|
+
+@bye

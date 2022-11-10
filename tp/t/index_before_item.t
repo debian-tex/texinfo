@@ -1,13 +1,13 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 use Test::More;
 
 BEGIN { plan tests => 6; }
 
-use Texinfo::Parser qw(parse_texi_text);
+use Texinfo::Parser qw(parse_texi_piece);
 use Texinfo::Common qw(move_index_entries_after_items_in_tree);
 use Texinfo::Convert::Texinfo;
 use DebugTexinfo::DebugTree;
@@ -20,12 +20,12 @@ sub run_test($$$)
   my $out = shift;
   my $name = shift;
 
-  my $tree = parse_texi_text(undef, $in);
+  my $tree = parse_texi_piece(undef, $in);
 
 #print STDERR DebugTexinfo::DebugTree::convert(undef, $tree)."\n";
 
   my $corrected_tree = move_index_entries_after_items_in_tree($tree);
-  my $texi_result = Texinfo::Convert::Texinfo::convert($corrected_tree);
+  my $texi_result = Texinfo::Convert::Texinfo::convert_to_texinfo($corrected_tree);
 
   if (!defined($out)) {
     print STDERR " --> $name:\n$texi_result";

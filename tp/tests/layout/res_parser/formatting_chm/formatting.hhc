@@ -11,37 +11,37 @@
 <UL>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Top section">
-<param name="Local" value="formatting.html#Top">
+<param name="Local" value="formatting.html">
 </OBJECT> </LI>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="1 chapter">
-<param name="Local" value="chapter.html#chapter">
+<param name="Local" value="chapter.html">
 </OBJECT> </LI>
 <UL>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="1.1 A section">
-<param name="Local" value="s_002d_002dect_002cion.html#s_002d_002dect_002cion">
+<param name="Local" value="s_002d_002dect_002cion.html">
 </OBJECT> </LI>
 <UL>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="1.1.1 subsection">
-<param name="Local" value="subsection.html#subsection">
+<param name="Local" value="subsection.html">
 </OBJECT> </LI>
 <UL>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="1.1.1.1 subsubsection &quot;simple-double-">
-<param name="Local" value="subsubsection-_0060_0060simple_002ddouble_002d_002d.html#subsubsection-_0060_0060simple_002ddouble_002d_002d">
+<param name="Local" value="subsubsection-_0060_0060simple_002ddouble_002d_002d.html">
 </OBJECT> </LI>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="1.1.1.2 three--four---&quot;">
-<param name="Local" value="subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027.html#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">
+<param name="Local" value="subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027.html">
 </OBJECT> </LI>
 </UL>
 </UL>
 </UL>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="chapter 2">
-<param name="Local" value="chapter2.html#chapter2">
+<param name="Local" value="chapter2.html">
 </OBJECT> </LI>
 </UL>
 </HTML>

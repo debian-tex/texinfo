@@ -53,6 +53,7 @@ TestXS_la_SOURCES = TestXS.c ppport.h
 
 xs_LTLIBRARIES += MiscXS.la
 MiscXS_la_SOURCES = MiscXS.c misc.c miscxs.h ppport.h
+MiscXS_la_LIBADD = $(builddir)/gnulib/lib/libgnu.la
 
 
 # TestXS.la has to be included in xs_LIBRARIES, and not noinst_LIBRARIES, 

@@ -1,9 +1,9 @@
 This is direntry_dircategory.info, produced by texi2any version from
 direntry_dircategory.texi.
 
-INFO-DIR-SECTION "category--TH ERE?"
+INFO-DIR-SECTION “category—TH ERE?”
 START-INFO-DIR-ENTRY
-* foo: (foo).   "hello--THERE?"
+* foo: (foo).   “hello—THERE?”
 END-INFO-DIR-ENTRY
 
 INFO-DIR-SECTION cat2

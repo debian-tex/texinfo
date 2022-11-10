@@ -1,141 +1,137 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'spaces_info_lost'} = {
   'contents' => [
     {
-      'args' => [
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'text on display line'
-            }
-          ],
-          'extra' => {
-            'spaces_after_argument' => ' 
-'
-          },
-          'parent' => {},
-          'type' => 'block_line_arg'
-        }
-      ],
-      'cmdname' => 'display',
       'contents' => [
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'in bad display
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'preformatted'
-        },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'display'
+                  'text' => 'text on display line'
                 }
               ],
               'extra' => {
                 'spaces_after_argument' => ' 
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
+          'cmdname' => 'display',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'in bad display
+'
+                }
+              ],
+              'type' => 'preformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'display'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => ' 
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => '  ',
+                'text_arg' => 'display'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            }
+          ],
           'extra' => {
-            'command_argument' => 'display',
-            'spaces_before_argument' => '  ',
-            'text_arg' => 'display'
+            'spaces_before_argument' => '  '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 3,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {},
-        'spaces_before_argument' => '  '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'verbatim',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '  
-',
-          'type' => 'empty_line_after_command'
+          }
         },
         {
-          'parent' => {},
-          'text' => 'in verbatim @g 
+          'text' => '
 ',
-          'type' => 'raw'
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '  
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'verbatim',
+          'contents' => [
+            {
+              'text' => 'in verbatim @g 
+',
+              'type' => 'raw'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'verbatim'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => ' 
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => '  ',
+                'text_arg' => 'verbatim'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          }
         }
       ],
-      'extra' => {},
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => ' 
-',
-      'type' => 'empty_line_after_command'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'spaces_info_lost'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'args'}[0];
-$result_trees{'spaces_info_lost'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0];
-$result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[0];
-$result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0];
-$result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1];
-$result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0];
-$result_trees{'spaces_info_lost'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1];
-$result_trees{'spaces_info_lost'}{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'};
-$result_trees{'spaces_info_lost'}{'contents'}[1]{'parent'} = $result_trees{'spaces_info_lost'};
-$result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'spaces_info_lost'}{'contents'}[2];
-$result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[2];
-$result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[2];
-$result_trees{'spaces_info_lost'}{'contents'}[2]{'parent'} = $result_trees{'spaces_info_lost'};
-$result_trees{'spaces_info_lost'}{'contents'}[3]{'parent'} = $result_trees{'spaces_info_lost'};
 
 $result_texis{'spaces_info_lost'} = '@display  text on display line 
 in bad display
@@ -143,7 +139,7 @@ in bad display
 
 @verbatim  
 in verbatim @g 
-@end verbatim 
+@end  verbatim 
 ';
 
 
@@ -163,7 +159,7 @@ $result_converted{'xml'}->{'spaces_info_lost'} = '<display spaces="  " endspaces
 <pre xml:space="preserve">in bad display
 </pre></display> 
 
-<verbatim xml:space="preserve">  
+<verbatim xml:space="preserve" endspaces="  ">  
 in verbatim @g 
 </verbatim> 
 ';

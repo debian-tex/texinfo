@@ -1,5 +1,4 @@
 #!/bin/sh
-# $Id$
 # This file is public domain.
 
 # check texindex --help and --version.  We'll just ensure that stdout is

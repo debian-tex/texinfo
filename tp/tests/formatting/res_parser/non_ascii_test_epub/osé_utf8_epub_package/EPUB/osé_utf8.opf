@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="texi-uid">
+   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <dc:identifier id="texi-uid">texinfo:osé_utf8</dc:identifier>
+      <dc:title>Tôp</dc:title>
+      <dc:language>en</dc:language>
+   </metadata>
+   <manifest>
+      <item id="nav" properties="nav" media-type="application/xhtml+xml" href="xhtml/nav_toc.xhtml"/>
+      <item id="unit1" media-type="application/xhtml+xml" href="xhtml/osé_utf8.xhtml"/>
+      <item id="unit2" media-type="application/xhtml+xml" href="xhtml/Chapteur.xhtml"/>
+      <item id="image1" media-type="image/png" href="images/1-an_image.png"/>
+      <item id="image2" media-type="image/png" href="images/2-an_image.png"/>
+   </manifest>
+   <spine>
+      <itemref idref="unit1"/>
+      <itemref idref="unit2"/>
+   </spine>
+</package>

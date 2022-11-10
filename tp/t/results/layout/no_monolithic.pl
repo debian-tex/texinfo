@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -14,70 +14,65 @@ $result_trees{'no_monolithic'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => '\\input texinfo @c -*-texinfo-*-
 ',
-                  'type' => 'preamble_text'
+                  'type' => 'text_before_beginning'
                 },
                 {
-                  'parent' => {},
                   'text' => '
 ',
-                  'type' => 'preamble_text'
+                  'type' => 'text_before_beginning'
                 }
               ],
-              'parent' => {},
-              'type' => 'preamble'
+              'type' => 'preamble_before_beginning'
             }
           ],
-          'parent' => {},
           'type' => 'preamble_before_setfilename'
         },
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'no_monolithic.info'
+                  'contents' => [
+                    {
+                      'text' => 'no_monolithic.info'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'setfilename',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'no_monolithic.info'
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'source_info' => {
+                'file_name' => 'no_monolithic.texi',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
             }
           ],
-          'cmdname' => 'setfilename',
-          'extra' => {
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'no_monolithic.info'
-          },
-          'line_nr' => {
-            'file_name' => 'no_monolithic.texi',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
+          'type' => 'preamble_before_content'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -85,12 +80,10 @@ $result_trees{'no_monolithic'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'contents' => [],
       'extra' => {
         'node_content' => [
           {}
@@ -106,19 +99,17 @@ $result_trees{'no_monolithic'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => 'no_monolithic.texi',
         'line_nr' => 5,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Not monolithic'
             }
           ],
@@ -126,14 +117,12 @@ $result_trees{'no_monolithic'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -141,7 +130,6 @@ $result_trees{'no_monolithic'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Not monolitic manual'
             },
             {
@@ -151,38 +139,30 @@ $result_trees{'no_monolithic'} = {
                     {
                       'contents' => [
                         {
-                          'parent' => {},
                           'text' => 'my footnote'
                         }
                       ],
-                      'parent' => {},
                       'type' => 'paragraph'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'brace_command_context'
                 }
               ],
               'cmdname' => 'footnote',
-              'contents' => [],
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => 'no_monolithic.texi',
                 'line_nr' => 8,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             },
             {
-              'parent' => {},
               'text' => '.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -192,7 +172,6 @@ $result_trees{'no_monolithic'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'top'
                 }
               ],
@@ -200,71 +179,64 @@ $result_trees{'no_monolithic'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
             'index_entry' => {
-              'command' => {},
-              'content' => [],
               'content_normalized' => [],
+              'entry_content' => [],
+              'entry_element' => {},
+              'entry_node' => {},
+              'entry_number' => 1,
               'in_code' => 0,
               'index_at_command' => 'cindex',
+              'index_ignore_chars' => {},
               'index_name' => 'cp',
-              'index_type_command' => 'cindex',
-              'key' => 'top',
-              'node' => {},
-              'number' => 1
+              'index_type_command' => 'cindex'
             },
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => 'no_monolithic.texi',
             'line_nr' => 10,
             'macro' => ''
           },
-          'parent' => {},
           'type' => 'index_entry_command'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
           'cmdname' => 'menu',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
               'args' => [
                 {
-                  'parent' => {},
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
                 },
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'chapter'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'menu_entry_node'
                 },
                 {
-                  'parent' => {},
                   'text' => '::',
                   'type' => 'menu_entry_separator'
                 },
@@ -273,16 +245,13 @@ $result_trees{'no_monolithic'} = {
                     {
                       'contents' => [
                         {
-                          'parent' => {},
                           'text' => '
 '
                         }
                       ],
-                      'parent' => {},
                       'type' => 'preformatted'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'menu_entry_description'
                 }
               ],
@@ -295,12 +264,11 @@ $result_trees{'no_monolithic'} = {
                   'normalized' => 'chapter'
                 }
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => 'no_monolithic.texi',
                 'line_nr' => 13,
                 'macro' => ''
               },
-              'parent' => {},
               'type' => 'menu_entry'
             },
             {
@@ -308,7 +276,6 @@ $result_trees{'no_monolithic'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'menu'
                     }
                   ],
@@ -316,36 +283,28 @@ $result_trees{'no_monolithic'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'menu',
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => 'no_monolithic.texi',
                 'line_nr' => 14,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => 'no_monolithic.texi',
             'line_nr' => 12,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -354,20 +313,17 @@ $result_trees{'no_monolithic'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 0,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => 'no_monolithic.texi',
         'line_nr' => 6,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'chapter'
             }
           ],
@@ -375,12 +331,10 @@ $result_trees{'no_monolithic'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'contents' => [],
       'extra' => {
         'isindex' => 1,
         'node_content' => [
@@ -397,19 +351,17 @@ $result_trees{'no_monolithic'} = {
         'normalized' => 'chapter',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => 'no_monolithic.texi',
         'line_nr' => 16,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Chapter'
             }
           ],
@@ -417,14 +369,12 @@ $result_trees{'no_monolithic'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -432,16 +382,13 @@ $result_trees{'no_monolithic'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Chapter.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -449,39 +396,34 @@ $result_trees{'no_monolithic'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
           'cmdname' => 'contents',
-          'line_nr' => {
+          'source_info' => {
             'file_name' => 'no_monolithic.texi',
             'line_nr' => 21,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
           'cmdname' => 'shortcontents',
-          'line_nr' => {
+          'source_info' => {
             'file_name' => 'no_monolithic.texi',
             'line_nr' => 22,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -491,7 +433,6 @@ $result_trees{'no_monolithic'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'cp'
                 }
               ],
@@ -499,7 +440,6 @@ $result_trees{'no_monolithic'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -510,115 +450,45 @@ $result_trees{'no_monolithic'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => 'no_monolithic.texi',
             'line_nr' => 24,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 1,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => 'no_monolithic.texi',
         'line_nr' => 17,
         'macro' => ''
-      },
-      'number' => 1,
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'misc_arg'
         }
       ],
-      'cmdname' => 'bye',
-      'parent' => {}
+      'cmdname' => 'bye'
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'no_monolithic'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[0]{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'no_monolithic'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[0]{'contents'}[1];
-$result_trees{'no_monolithic'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'};
-$result_trees{'no_monolithic'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[1]{'args'}[0];
-$result_trees{'no_monolithic'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[1];
 $result_trees{'no_monolithic'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'no_monolithic'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'no_monolithic'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'no_monolithic'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[1]{'parent'} = $result_trees{'no_monolithic'};
-$result_trees{'no_monolithic'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'args'}[0];
-$result_trees{'no_monolithic'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[1];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[1];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[1];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'args'}[0];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'command'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'content'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'};
 $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'};
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'node'} = $result_trees{'no_monolithic'}{'contents'}[1];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'command'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[1];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[3]{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[3];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[3];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'args'}[0];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[2];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'extra'}{'end_command'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[2];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[6]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[2];
-$result_trees{'no_monolithic'}{'contents'}[2]{'parent'} = $result_trees{'no_monolithic'};
-$result_trees{'no_monolithic'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[3]{'args'}[0];
-$result_trees{'no_monolithic'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[3];
+$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'};
+$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3];
+$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'no_monolithic'}{'contents'}[1];
+$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[3];
+$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[1]{'contents'}[0];
 $result_trees{'no_monolithic'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'no_monolithic'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'no_monolithic'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'no_monolithic'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[3]{'parent'} = $result_trees{'no_monolithic'};
-$result_trees{'no_monolithic'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[4]{'args'}[0];
-$result_trees{'no_monolithic'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[4];
-$result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[4];
-$result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[1];
-$result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[4];
-$result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[4];
-$result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[3];
-$result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[4];
-$result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[4];
-$result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[4];
-$result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[5]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[4];
-$result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[6]{'args'}[0];
-$result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[6];
-$result_trees{'no_monolithic'}{'contents'}[4]{'contents'}[6]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[4];
-$result_trees{'no_monolithic'}{'contents'}[4]{'parent'} = $result_trees{'no_monolithic'};
-$result_trees{'no_monolithic'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'no_monolithic'}{'contents'}[5];
-$result_trees{'no_monolithic'}{'contents'}[5]{'parent'} = $result_trees{'no_monolithic'};
 
 $result_texis{'no_monolithic'} = '\\input texinfo @c -*-texinfo-*-
 
@@ -666,128 +536,130 @@ Chapter.
 ';
 
 $result_sectioning{'no_monolithic'} = {
-  'level' => -1,
-  'section_childs' => [
-    {
-      'cmdname' => 'top',
-      'extra' => {
-        'associated_node' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => 'Top',
-            'spaces_before_argument' => ' '
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'top',
+        'extra' => {
+          'associated_node' => {
+            'cmdname' => 'node',
+            'extra' => {
+              'normalized' => 'Top'
+            },
+            'structure' => {}
           }
         },
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0,
-      'section_childs' => [
-        {
-          'cmdname' => 'chapter',
-          'extra' => {
-            'associated_node' => {
-              'cmdname' => 'node',
+        'structure' => {
+          'section_childs' => [
+            {
+              'cmdname' => 'chapter',
               'extra' => {
-                'isindex' => 1,
-                'normalized' => 'chapter',
-                'spaces_before_argument' => ' '
+                'associated_node' => {
+                  'cmdname' => 'node',
+                  'extra' => {
+                    'isindex' => 1,
+                    'normalized' => 'chapter'
+                  },
+                  'structure' => {}
+                }
+              },
+              'structure' => {
+                'section_level' => 1,
+                'section_number' => 1,
+                'section_up' => {},
+                'toplevel_prev' => {},
+                'toplevel_up' => {}
               }
-            },
-            'spaces_before_argument' => ' '
-          },
-          'level' => 1,
-          'number' => 1,
-          'section_up' => {},
-          'toplevel_prev' => {},
-          'toplevel_up' => {}
+            }
+          ],
+          'section_level' => 0,
+          'section_up' => {}
         }
-      ],
-      'section_up' => {}
-    }
-  ]
+      }
+    ],
+    'section_level' => -1
+  }
 };
-$result_sectioning{'no_monolithic'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'no_monolithic'}{'section_childs'}[0];
-$result_sectioning{'no_monolithic'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'no_monolithic'}{'section_childs'}[0];
-$result_sectioning{'no_monolithic'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'no_monolithic'}{'section_childs'}[0];
-$result_sectioning{'no_monolithic'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'no_monolithic'};
+$result_sectioning{'no_monolithic'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'no_monolithic'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'no_monolithic'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'no_monolithic'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'no_monolithic'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'no_monolithic'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'no_monolithic'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'no_monolithic'};
 
 $result_nodes{'no_monolithic'} = {
   'cmdname' => 'node',
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0
+      'extra' => {},
+      'structure' => {}
     },
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
-  },
-  'menu_child' => {
-    'cmdname' => 'node',
-    'extra' => {
-      'associated_section' => {
-        'cmdname' => 'chapter',
-        'extra' => {
-          'spaces_before_argument' => ' '
-        },
-        'level' => 1,
-        'number' => 1
-      },
-      'isindex' => 1,
-      'normalized' => 'chapter',
-      'spaces_before_argument' => ' '
-    },
-    'node_prev' => {},
-    'node_up' => {}
-  },
-  'menus' => [
-    {
-      'cmdname' => 'menu',
-      'extra' => {
-        'end_command' => {
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'menu',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'menu'
-          }
-        }
+    'menus' => [
+      {
+        'cmdname' => 'menu'
       }
-    }
-  ],
-  'node_next' => {}
+    ],
+    'normalized' => 'Top'
+  },
+  'structure' => {
+    'menu_child' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'associated_section' => {
+          'cmdname' => 'chapter',
+          'extra' => {},
+          'structure' => {
+            'section_number' => 1
+          }
+        },
+        'isindex' => 1,
+        'normalized' => 'chapter'
+      },
+      'structure' => {
+        'node_prev' => {},
+        'node_up' => {}
+      }
+    },
+    'node_next' => {}
+  }
 };
-$result_nodes{'no_monolithic'}{'menu_child'}{'node_prev'} = $result_nodes{'no_monolithic'};
-$result_nodes{'no_monolithic'}{'menu_child'}{'node_up'} = $result_nodes{'no_monolithic'};
-$result_nodes{'no_monolithic'}{'node_next'} = $result_nodes{'no_monolithic'}{'menu_child'};
+$result_nodes{'no_monolithic'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'no_monolithic'};
+$result_nodes{'no_monolithic'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'no_monolithic'};
+$result_nodes{'no_monolithic'}{'structure'}{'node_next'} = $result_nodes{'no_monolithic'}{'structure'}{'menu_child'};
 
 $result_menus{'no_monolithic'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   },
-  'menu_child' => {
-    'cmdname' => 'node',
-    'extra' => {
-      'isindex' => 1,
-      'normalized' => 'chapter',
-      'spaces_before_argument' => ' '
-    },
-    'menu_up' => {},
-    'menu_up_hash' => {
-      'Top' => 1
+  'structure' => {
+    'menu_child' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'isindex' => 1,
+        'normalized' => 'chapter'
+      },
+      'structure' => {
+        'menu_up' => {},
+        'menu_up_hash' => {
+          'Top' => 1
+        }
+      }
     }
   }
 };
-$result_menus{'no_monolithic'}{'menu_child'}{'menu_up'} = $result_menus{'no_monolithic'};
+$result_menus{'no_monolithic'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'no_monolithic'};
 
 $result_errors{'no_monolithic'} = [];
 
 
 $result_floats{'no_monolithic'} = {};
+
+
+$result_indices_sort_strings{'no_monolithic'} = {
+  'cp' => [
+    'top'
+  ]
+};
 
 
 1;

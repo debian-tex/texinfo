@@ -7,6 +7,34 @@
 # are permitted in any medium without royalty provided the copyright
 # notice and this notice are preserved.
 
+check_need_recoded_file_names ()
+{
+   if echo "$remaining" | grep 'Need recoded file names' >/dev/null; then
+     if [ "$no_recoded_file_names" = 'yes' ]; then
+       echo "S: (no recoded file names) $current"
+       return 1
+     fi
+   fi
+   return 0
+}
+
+# Some tests use non-ASCII characters on their command line,
+# using UTF-8 to encode those characters in the source files.
+# Shell on Windows may consider those characters to be
+# encoded in the current codeset, passing them incorrectly to
+# the programs, and even if the shell passed them unchanged, native
+# Windows perl in most cases cannot cope with non-ASCII arguments
+# encoded in a different encoding than the current user codepage.
+check_need_command_line_unicode ()
+{
+  if echo "$remaining" | grep 'Need command-line unicode' >/dev/null; then
+    if test "z$HOST_IS_WINDOWS_VARIABLE" = 'zyes' ; then
+      echo "S: (no reliable command-line Unicode) $current"
+       return 1
+    fi
+  fi
+  return 0
+}
 
 check_latex2html_and_tex4ht ()
 {
@@ -17,7 +45,7 @@ check_latex2html_and_tex4ht ()
     if echo "$remaining" | grep '[-]l2h' >/dev/null; then
       maybe_use_latex2html=yes
     fi
-    if echo "$remaining" | grep 'L2H 1' >/dev/null; then
+    if echo "$remaining" | grep 'HTML_MATH l2h' >/dev/null; then
       maybe_use_latex2html=yes
     fi
     if [ $maybe_use_latex2html = 'yes' ]; then
@@ -33,14 +61,22 @@ check_latex2html_and_tex4ht ()
            exit 1
          fi
       fi
-      l2h_tmp_dir="-c 'L2H_TMP $tmp_dir'"
       l2h_flags="-c L2H_CLEAN=0 -c 'L2H_TMP $tmp_dir' -c L2H_FILE=$srcdir/../t/init/l2h.init"
-    elif echo "$remaining" | grep '[-]init tex4ht.pm' >/dev/null; then
-      if test "$no_tex4ht" = 'yes' ; then
-        echo "S: (no tex4ht) $current"
-        return 1
+    else
+      maybe_use_tex4ht=no
+      if echo "$remaining" | grep '[-]init tex4ht.pm' >/dev/null; then
+        maybe_use_tex4ht=yes
       fi
-      use_tex4ht=yes
+      if echo "$remaining" | grep 'HTML_MATH t4h' >/dev/null; then
+        maybe_use_tex4ht=yes
+      fi
+      if [ $maybe_use_tex4ht = 'yes' ]; then
+        if test "$no_tex4ht" = 'yes' ; then
+          echo "S: (no tex4ht) $current"
+          return 1
+        fi
+        use_tex4ht=yes
+      fi
     fi
     if test $use_tex4ht = 'yes' || test $use_latex2html = 'yes' ; then
       if echo "$remaining" | grep '[-]init mediawiki.pm' >/dev/null; then
@@ -118,6 +154,7 @@ post_process_output ()
 }
 
 LC_ALL=C; export LC_ALL
+LANGUAGE=en; export LANGUAGE
 
 prepended_command=
 #prepended_command=time
@@ -185,6 +222,27 @@ if which html2wiki > /dev/null 2>&1; then
   no_html2wiki=no
 fi
 
+no_recoded_file_names=yes
+if sed 1q input_file_names_recoded_stamp.txt | grep 'OK' >/dev/null; then
+  no_recoded_file_names=no
+fi
+
+# In Windows the recoding of file name is not reliable, as the file name may
+# be stored as UTF-16 using the user codepage to determine which codepage
+# the non-ASCII character comes from, and not the codepage that would have been
+# expected from the Perl code when creating the file, in
+# maintain/copy_change_file_name_encoding.pl and when determining the file name
+# to read in the tests (Latin1 in the current case).  Note that if the user
+# codepage is an encoding in which the character exists and is converted to and
+# from UTF-16 as the byte expected in Latin1, some tests may succeed even if
+# the characters shown and the locales used are not the ones expected.
+# However, if the character does not exist in the encoding, for instance in
+# case of multibyte encoding the character may not reliably be be converted to
+# a file name and read, so we skip the tests.
+if test "z$HOST_IS_WINDOWS_VARIABLE" = 'zyes' ; then
+  no_recoded_file_names=yes
+fi
+
 one_test=no
 if test -n "$1"; then
   one_test=yes
@@ -211,7 +269,7 @@ fi
 first_line=`head -1 "$driving_file"`
 if echo $first_line |grep '^# formats' >/dev/null; then
   formats=`echo $first_line |sed 's/^# formats //'`
-  commands="$commands $formats"
+  commands="$formats"
   echo "found special first line, commands now: $commands" >>$logfile
 fi
 
@@ -229,7 +287,8 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
 # there are better ways
     dir=`echo $line | awk '{print $1}'`
     file=`echo $line | awk '{print $2}'`
-    remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]*  *[a-zA-Z0-9_./-]* *//'`
+    #remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]*  *[a-zA-Z0-9_./-]* *//'`
+    remaining=`echo $line | sed 's/[a-zA-Z0-9_é./-]*  *[a-zA-Z0-9_é./-]* *//'`
     [ "z$dir" = 'z' -o "z$file" = 'z' ] && continue
     if [ "z$clean" = 'zyes' ]; then
       for command_dir in $commands; do
@@ -285,7 +344,8 @@ while read line; do
   fi
 
   basename=`basename $file .texi`
-  remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]*  *[a-zA-Z0-9_./-]* *//'`
+  #remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]*  *[a-zA-Z0-9_./-]* *//'`
+  remaining=`echo $line | sed 's/[a-zA-Z0-9_é./-]*  *[a-zA-Z0-9_é./-]* *//'`
   src_file="$srcdir/$testdir/$file"
   
   for command_dir in $commands; do
@@ -323,14 +383,23 @@ while read line; do
     results_dir="$srcdir/$testdir/${res_dir}${dir_suffix}"
     one_test_done=yes
 
-    check_latex2html_and_tex4ht || continue 2
+    skipped_test=no
+    check_need_recoded_file_names || skipped_test=yes
+    check_need_command_line_unicode || skipped_test=yes
+    check_latex2html_and_tex4ht || skipped_test=yes
+    if [ "$skipped_test" = 'yes' ] ; then
+      if test $one_test = 'yes' ; then
+        return_code=77
+      fi
+      continue 2
+    fi
 
     dir=$current
     test -d "${outdir}$dir" && rm -rf "${outdir}$dir"
     mkdir "${outdir}$dir"
     remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
     echo "$command $dir -> ${outdir}$dir" >> $logfile
-    cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init -I $srcdir/$testdir -I $testdir/ -I $srcdir/ -I .  --error-limit=1000 -c TEST=1 $l2h_flags --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
+    cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init --conf-dir $srcdir/../ext -I $srcdir/$testdir -I $testdir/ -I $srcdir/ -I .  --error-limit=1000 -c TEST=1 $l2h_flags --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
     echo "$cmd" >>$logfile
     eval $cmd
     ret=$?

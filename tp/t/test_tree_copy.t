@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 use Test::More;
 
@@ -63,6 +63,9 @@ Something
 
 @cindex cindex
 
+@set txiindexlessthanignore
+@vindex v<index
+
 @printindex cp
 
 @quotation trc
@@ -73,15 +76,15 @@ T
 
 ';
 
-my $tree = Texinfo::Parser::parse_texi_text(undef, $text);
+my $tree = Texinfo::Parser::parse_texi_piece(undef, $text);
 my $reference_associations = {};
 my $copy = Texinfo::Common::copy_tree($tree, undef);
 
-# my $texi_tree = Texinfo::Convert::Texinfo::convert($tree);
+# my $texi_tree = Texinfo::Convert::Texinfo::convert_to_texinfo($tree);
 # 
 # is ($text, $texi_tree, "tree to texi and original match");
 # 
-# my $texi_copy = Texinfo::Convert::Texinfo::convert($copy);
+# my $texi_copy = Texinfo::Convert::Texinfo::convert_to_texinfo($copy);
 # is ($texi_copy, $texi_tree, "tree and copy to texi match");
 
 #{

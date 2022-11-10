@@ -15,6 +15,14 @@ $$ \chi^2 = \sum_{i=1}^N
 Some text one the line following @@end tex
 @end ifhtml
 
+LaTeX block
+@latex
+\begin{eqnarray}
+\frac{@var{a}^b}{\xi} &=& @code{@'e} \\
+X &=& Y
+\end{eqnarray}
+@end latex
+
 Now tex on the following line, valid fot tex (with @@end tex on a line).
 @tex some
 
@@ -35,7 +43,7 @@ Maths with code @@-command:
 
 Maths with code @@-command and braces:
 
-@math{ \underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}}
+@math{ \underline{@code{math \hbox{ code }}} \sum_{i}{\underline{@var{eff}}}}
 
 Maths with @@-sup
 

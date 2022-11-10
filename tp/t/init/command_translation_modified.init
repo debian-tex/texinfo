@@ -1,0 +1,6 @@
+
+# modified with an existing translated string for interesting results
+# depending on the @documentlanguage
+texinfo_register_no_arg_command_formatting('error', undef, undef, undef,
+                                           "Special Form");
+1;

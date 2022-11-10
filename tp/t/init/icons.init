@@ -1,5 +1,5 @@
 
-set_from_init_file('ICONS', 1);
+texinfo_set_from_init_file('ICONS', 1);
 
 
 # insert here name of icon images for buttons
@@ -54,7 +54,7 @@ set_from_init_file('ICONS', 1);
      'Last',        '',
     );
 
-set_from_init_file('ACTIVE_ICONS', \%ACTIVE_ICONS);
-set_from_init_file('PASSIVE_ICONS', \%PASSIVE_ICONS);
+texinfo_set_from_init_file('ACTIVE_ICONS', \%ACTIVE_ICONS);
+texinfo_set_from_init_file('PASSIVE_ICONS', \%PASSIVE_ICONS);
 
 1;

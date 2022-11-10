@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,8 +12,6 @@
 
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
-
-#define _GNU_SOURCE
 
 #include <config.h>
 #include <stdlib.h>
@@ -87,7 +85,7 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
 
   macro = new_element (ET_NONE);
   macro->cmd = cmd;
-  macro->line_nr = line_nr;
+  macro->source_info = current_source_info;
 
   add_extra_string (macro, "arg_line", strdup (line));
   /* Note this extra value isn't used much, so it might be possible
@@ -659,6 +657,23 @@ store_value (char *name, char *value)
 
   v->name = strdup (name);
   v->value = strdup (value);
+
+  /* Internal Texinfo flag */
+  if (!strncmp (name, "txi", 3))
+    {
+      int val = (strcmp(value, "0") != 0);
+      if (!strcmp (name, "txiindexbackslashignore"))
+        global_info.ignored_chars.backslash = val;
+      else if (!strcmp (name, "txiindexhyphenignore"))
+        global_info.ignored_chars.hyphen = val;
+      else if (!strcmp (name, "txiindexlessthanignore"))
+        global_info.ignored_chars.lessthan = val;
+      else if (!strcmp (name, "txiindexatsignignore"))
+        global_info.ignored_chars.atsign = val;
+
+      /* also: txicodequotebacktick, txicodequoteundirected,
+         txicommandconditionals.  Deal with them here? */
+    }
 }
 
 void
@@ -673,6 +688,21 @@ clear_value (char *name)
           value_list[i].value[0] = '\0';
         }
     }
+  /* Internal Texinfo flag */
+  if (!strncmp (name, "txi", 3))
+    {
+      if (!strcmp (name, "txiindexbackslashignore"))
+        global_info.ignored_chars.backslash = 0;
+      else if (!strcmp (name, "txiindexhyphenignore"))
+        global_info.ignored_chars.hyphen = 0;
+      else if (!strcmp (name, "txiindexlessthanignore"))
+        global_info.ignored_chars.lessthan = 0;
+      else if (!strcmp (name, "txiindexatsignignore"))
+        global_info.ignored_chars.atsign = 0;
+
+      /* also: txicodequotebacktick, txicodequoteundirected,
+         txicommandconditionals.  Deal with them here? */
+    }
 }
 
 char *
@@ -685,6 +715,9 @@ fetch_value (char *name)
         return value_list[i].value;
     }
 
+  /* special value always returned as 1 to mark that @ifcommandnotdefined
+      is implemented.  Note that in most cases it is also set from perl
+      using the configuration passed to the parser */
   if (!strcmp (name, "txicommandconditionals"))
     return "1";
   return 0;

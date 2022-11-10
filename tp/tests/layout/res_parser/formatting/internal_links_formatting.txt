@@ -5,6 +5,7 @@ formatting.html#subsection	toc	1.1.1 subsection
 formatting.html#subsubsection-_0060_0060simple_002ddouble_002d_002d	toc	1.1.1.1 subsubsection "simple-double-
 formatting.html#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027	toc	1.1.1.2 three--four---"
 formatting.html#chapter2	toc	chapter 2
+formatting.html#index-a-index_002d_002d_002dentry-te-_002d_002d_002d-i	codeidx	a index---entry tẽ --- î
 formatting.html#index-copying-_0060_0060	cp	"
 formatting.html#index-titlepage-_0060_0060	cp	"
 formatting.html#index-_0060_0060	cp	"
@@ -16,10 +17,85 @@ formatting.html#index-_002d_002doption-1	cp	-option
 formatting.html#index-_002e	cp	.
 formatting.html#index-_003f	cp	?
 formatting.html#index-a	cp	a
+formatting.html#index-aaa	cp	aaa
+formatting.html#index-a_002d_002d_002da	cp	a--a
+formatting.html#index-copying-a_002d_002dasis	cp	a--asis
+formatting.html#index-titlepage-a_002d_002dasis	cp	a--asis
+formatting.html#index-a_002d_002dasis	cp	a--asis
+formatting.html#index-a_002d_002dasis-1	cp	a--asis
+formatting.html#index-copying-b-2	cp	b
+formatting.html#index-titlepage-b-2	cp	b
+formatting.html#index-b-4	cp	b
+formatting.html#index-b-5	cp	b
+formatting.html#index-b_002d_002d_002db	cp	b--b
+formatting.html#index-counting-entry	cp	counting entry
+formatting.html#index-d_002d_002d_002ddd	cp	d--dd
+formatting.html#index-copying-d_002d_002defcv_005fname	cp	d--efcv_name
+formatting.html#index-copying-d_002d_002defcv_005fname-1	cp	d--efcv_name
+formatting.html#index-titlepage-d_002d_002defcv_005fname	cp	d--efcv_name
+formatting.html#index-titlepage-d_002d_002defcv_005fname-1	cp	d--efcv_name
+formatting.html#index-d_002d_002defcv_005fname	cp	d--efcv_name
+formatting.html#index-d_002d_002defcv_005fname-1	cp	d--efcv_name
+formatting.html#index-d_002d_002defcv_005fname-2	cp	d--efcv_name
+formatting.html#index-d_002d_002defcv_005fname-3	cp	d--efcv_name
+formatting.html#index-copying-d_002d_002defivar_005fname-of-c_002d_002dlass	cp	d--efivar_name of c--lass
+formatting.html#index-titlepage-d_002d_002defivar_005fname-of-c_002d_002dlass	cp	d--efivar_name of c--lass
+formatting.html#index-d_002d_002defivar_005fname-of-c_002d_002dlass	cp	d--efivar_name of c--lass
+formatting.html#index-d_002d_002defivar_005fname-of-c_002d_002dlass-1	cp	d--efivar_name of c--lass
+formatting.html#index-copying-d_002d_002defopt_005fname	cp	d--efopt_name
+formatting.html#index-titlepage-d_002d_002defopt_005fname	cp	d--efopt_name
+formatting.html#index-d_002d_002defopt_005fname	cp	d--efopt_name
+formatting.html#index-d_002d_002defopt_005fname-1	cp	d--efopt_name
+formatting.html#index-copying-d_002d_002deftypecv_005fname-of-c_002d_002dlass	cp	d--eftypecv_name of c--lass
+formatting.html#index-copying-d_002d_002deftypecv_005fname-of-c_002d_002dlass-1	cp	d--eftypecv_name of c--lass
+formatting.html#index-titlepage-d_002d_002deftypecv_005fname-of-c_002d_002dlass	cp	d--eftypecv_name of c--lass
+formatting.html#index-titlepage-d_002d_002deftypecv_005fname-of-c_002d_002dlass-1	cp	d--eftypecv_name of c--lass
+formatting.html#index-d_002d_002deftypecv_005fname-of-c_002d_002dlass	cp	d--eftypecv_name of c--lass
+formatting.html#index-d_002d_002deftypecv_005fname-of-c_002d_002dlass-1	cp	d--eftypecv_name of c--lass
+formatting.html#index-d_002d_002deftypecv_005fname-of-c_002d_002dlass-2	cp	d--eftypecv_name of c--lass
+formatting.html#index-d_002d_002deftypecv_005fname-of-c_002d_002dlass-3	cp	d--eftypecv_name of c--lass
+formatting.html#index-copying-d_002d_002deftypecv_005fname2-of-c_002d_002dlass2	cp	d--eftypecv_name2 of c--lass2
+formatting.html#index-copying-d_002d_002deftypecv_005fname2-of-c_002d_002dlass2-1	cp	d--eftypecv_name2 of c--lass2
+formatting.html#index-titlepage-d_002d_002deftypecv_005fname2-of-c_002d_002dlass2	cp	d--eftypecv_name2 of c--lass2
+formatting.html#index-titlepage-d_002d_002deftypecv_005fname2-of-c_002d_002dlass2-1	cp	d--eftypecv_name2 of c--lass2
+formatting.html#index-d_002d_002deftypecv_005fname2-of-c_002d_002dlass2	cp	d--eftypecv_name2 of c--lass2
+formatting.html#index-d_002d_002deftypecv_005fname2-of-c_002d_002dlass2-1	cp	d--eftypecv_name2 of c--lass2
+formatting.html#index-d_002d_002deftypecv_005fname2-of-c_002d_002dlass2-2	cp	d--eftypecv_name2 of c--lass2
+formatting.html#index-d_002d_002deftypecv_005fname2-of-c_002d_002dlass2-3	cp	d--eftypecv_name2 of c--lass2
+formatting.html#index-copying-d_002d_002deftypeivar_005fname-of-c_002d_002dlass	cp	d--eftypeivar_name of c--lass
+formatting.html#index-titlepage-d_002d_002deftypeivar_005fname-of-c_002d_002dlass	cp	d--eftypeivar_name of c--lass
+formatting.html#index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass	cp	d--eftypeivar_name of c--lass
+formatting.html#index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass-1	cp	d--eftypeivar_name of c--lass
+formatting.html#index-copying-d_002d_002deftypevar_005fname	cp	d--eftypevar_name
+formatting.html#index-titlepage-d_002d_002deftypevar_005fname	cp	d--eftypevar_name
+formatting.html#index-d_002d_002deftypevar_005fname	cp	d--eftypevar_name
+formatting.html#index-d_002d_002deftypevar_005fname-1	cp	d--eftypevar_name
+formatting.html#index-copying-d_002d_002deftypevr_005fname	cp	d--eftypevr_name
+formatting.html#index-titlepage-d_002d_002deftypevr_005fname	cp	d--eftypevr_name
+formatting.html#index-d_002d_002deftypevr_005fname	cp	d--eftypevr_name
+formatting.html#index-d_002d_002deftypevr_005fname-1	cp	d--eftypevr_name
+formatting.html#index-copying-d_002d_002defvar_005fname	cp	d--efvar_name
+formatting.html#index-copying-d_002d_002defvar_005fname-1	cp	d--efvar_name
+formatting.html#index-titlepage-d_002d_002defvar_005fname	cp	d--efvar_name
+formatting.html#index-titlepage-d_002d_002defvar_005fname-1	cp	d--efvar_name
+formatting.html#index-d_002d_002defvar_005fname	cp	d--efvar_name
+formatting.html#index-d_002d_002defvar_005fname-1	cp	d--efvar_name
+formatting.html#index-d_002d_002defvar_005fname-2	cp	d--efvar_name
+formatting.html#index-d_002d_002defvar_005fname-3	cp	d--efvar_name
+formatting.html#index-copying-d_002d_002defvr_005fname	cp	d--efvr_name
+formatting.html#index-titlepage-d_002d_002defvr_005fname	cp	d--efvr_name
+formatting.html#index-d_002d_002defvr_005fname	cp	d--efvr_name
+formatting.html#index-d_002d_002defvr_005fname-1	cp	d--efvr_name
+formatting.html#index-g_002d_002d_002dgg	cp	g--gg
 formatting.html#index-copying-index-entry-between-item-and-itemx	cp	index entry between item and itemx
+formatting.html#index-copying-index-entry-between-item-and-itemx-1	cp	index entry between item and itemx
 formatting.html#index-titlepage-index-entry-between-item-and-itemx	cp	index entry between item and itemx
+formatting.html#index-titlepage-index-entry-between-item-and-itemx-1	cp	index entry between item and itemx
 formatting.html#index-index-entry-between-item-and-itemx	cp	index entry between item and itemx
 formatting.html#index-index-entry-between-item-and-itemx-1	cp	index entry between item and itemx
+formatting.html#index-index-entry-between-item-and-itemx-2	cp	index entry between item and itemx
+formatting.html#index-index-entry-between-item-and-itemx-3	cp	index entry between item and itemx
+formatting.html#index-index-entry-in-footnote	cp	index entry in footnote
 formatting.html#index-copying-index-entry-within-deffn	cp	index entry within deffn
 formatting.html#index-titlepage-index-entry-within-deffn	cp	index entry within deffn
 formatting.html#index-index-entry-within-deffn	cp	index entry within deffn
@@ -34,6 +110,38 @@ formatting.html#index-index-entry-within-multitable	cp	index entry within multit
 formatting.html#index-index-entry-within-multitable-1	cp	index entry within multitable
 formatting.html#index-t_002d_002druc	cp	t-ruc
 formatting.html#index-T_002d_002druc	cp	T-ruc
+formatting.html#index-copying-vtable-i_002d_002dtem-code-kbdinputstyle	cp	vtable i--tem code kbdinputstyle
+formatting.html#index-titlepage-vtable-i_002d_002dtem-code-kbdinputstyle	cp	vtable i--tem code kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-code-kbdinputstyle	cp	vtable i--tem code kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-code-kbdinputstyle-1	cp	vtable i--tem code kbdinputstyle
+formatting.html#index-copying-vtable-i_002d_002dtem-default-kbdinputstyle	cp	vtable i--tem default kbdinputstyle
+formatting.html#index-titlepage-vtable-i_002d_002dtem-default-kbdinputstyle	cp	vtable i--tem default kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-default-kbdinputstyle	cp	vtable i--tem default kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-default-kbdinputstyle-1	cp	vtable i--tem default kbdinputstyle
+formatting.html#index-copying-vtable-i_002d_002dtem-distinct-kbdinputstyle	cp	vtable i--tem distinct kbdinputstyle
+formatting.html#index-titlepage-vtable-i_002d_002dtem-distinct-kbdinputstyle	cp	vtable i--tem distinct kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-distinct-kbdinputstyle	cp	vtable i--tem distinct kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-distinct-kbdinputstyle-1	cp	vtable i--tem distinct kbdinputstyle
+formatting.html#index-copying-vtable-i_002d_002dtem-example-kbdinputstyle	cp	vtable i--tem example kbdinputstyle
+formatting.html#index-titlepage-vtable-i_002d_002dtem-example-kbdinputstyle	cp	vtable i--tem example kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-example-kbdinputstyle	cp	vtable i--tem example kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-example-kbdinputstyle-1	cp	vtable i--tem example kbdinputstyle
+formatting.html#index-copying-vtable-i_002d_002dtem-in-example-code-kbdinputstyle	cp	vtable i--tem in example code kbdinputstyle
+formatting.html#index-titlepage-vtable-i_002d_002dtem-in-example-code-kbdinputstyle	cp	vtable i--tem in example code kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-in-example-code-kbdinputstyle	cp	vtable i--tem in example code kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-in-example-code-kbdinputstyle-1	cp	vtable i--tem in example code kbdinputstyle
+formatting.html#index-copying-vtable-i_002d_002dtem-in-example-default-kbdinputstyle	cp	vtable i--tem in example default kbdinputstyle
+formatting.html#index-titlepage-vtable-i_002d_002dtem-in-example-default-kbdinputstyle	cp	vtable i--tem in example default kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-in-example-default-kbdinputstyle	cp	vtable i--tem in example default kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-in-example-default-kbdinputstyle-1	cp	vtable i--tem in example default kbdinputstyle
+formatting.html#index-copying-vtable-i_002d_002dtem-in-example-distinct-kbdinputstyle	cp	vtable i--tem in example distinct kbdinputstyle
+formatting.html#index-titlepage-vtable-i_002d_002dtem-in-example-distinct-kbdinputstyle	cp	vtable i--tem in example distinct kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-in-example-distinct-kbdinputstyle	cp	vtable i--tem in example distinct kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-in-example-distinct-kbdinputstyle-1	cp	vtable i--tem in example distinct kbdinputstyle
+formatting.html#index-copying-vtable-i_002d_002dtem-in-example-example-kbdinputstyle	cp	vtable i--tem in example example kbdinputstyle
+formatting.html#index-titlepage-vtable-i_002d_002dtem-in-example-example-kbdinputstyle	cp	vtable i--tem in example example kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-in-example-example-kbdinputstyle	cp	vtable i--tem in example example kbdinputstyle
+formatting.html#index-vtable-i_002d_002dtem-in-example-example-kbdinputstyle-1	cp	vtable i--tem in example example kbdinputstyle
 formatting.html#index-copying-_002d_002dfoption	fn	--foption
 formatting.html#index-titlepage-_002d_002dfoption	fn	--foption
 formatting.html#index-_002d_002dfoption	fn	--foption
@@ -46,21 +154,33 @@ formatting.html#index-_0060_0060-2	fn	``
 formatting.html#index-_0060_0060-3	fn	``
 formatting.html#index-copying-a	fn	a
 formatting.html#index-copying-a-1	fn	a
+formatting.html#index-copying-a-2	fn	a
 formatting.html#index-titlepage-a	fn	a
 formatting.html#index-titlepage-a-1	fn	a
+formatting.html#index-titlepage-a-2	fn	a
 formatting.html#index-a-1	fn	a
 formatting.html#index-a-2	fn	a
 formatting.html#index-a-3	fn	a
 formatting.html#index-a-4	fn	a
 formatting.html#index-a-5	fn	a
+formatting.html#index-a-6	fn	a
+formatting.html#index-a-7	fn	a
 formatting.html#index-copying-after	fn	after
 formatting.html#index-titlepage-after	fn	after
 formatting.html#index-after	fn	after
 formatting.html#index-after-1	fn	after
+formatting.html#index-copying-arg2	fn	arg2
+formatting.html#index-titlepage-arg2	fn	arg2
+formatting.html#index-arg2	fn	arg2
+formatting.html#index-arg2-1	fn	arg2
 formatting.html#index-copying-b	fn	b
+formatting.html#index-copying-b-1	fn	b
 formatting.html#index-titlepage-b	fn	b
+formatting.html#index-titlepage-b-1	fn	b
 formatting.html#index-b	fn	b
 formatting.html#index-b-1	fn	b
+formatting.html#index-b-2	fn	b
+formatting.html#index-b-3	fn	b
 formatting.html#index-copying-bidule-machin	fn	bidule machin
 formatting.html#index-titlepage-bidule-machin	fn	bidule machin
 formatting.html#index-bidule-machin	fn	bidule machin
@@ -78,17 +198,29 @@ formatting.html#index-titlepage-d_002d_002defmethod_005fname-on-c_002d_002dlass	
 formatting.html#index-d_002d_002defmethod_005fname-on-c_002d_002dlass	fn	d--efmethod_name on c--lass
 formatting.html#index-d_002d_002defmethod_005fname-on-c_002d_002dlass-1	fn	d--efmethod_name on c--lass
 formatting.html#index-copying-d_002d_002defop_005fname-on-c_002d_002dlass	fn	d--efop_name on c--lass
+formatting.html#index-copying-d_002d_002defop_005fname-on-c_002d_002dlass-1	fn	d--efop_name on c--lass
 formatting.html#index-titlepage-d_002d_002defop_005fname-on-c_002d_002dlass	fn	d--efop_name on c--lass
+formatting.html#index-titlepage-d_002d_002defop_005fname-on-c_002d_002dlass-1	fn	d--efop_name on c--lass
 formatting.html#index-d_002d_002defop_005fname-on-c_002d_002dlass	fn	d--efop_name on c--lass
 formatting.html#index-d_002d_002defop_005fname-on-c_002d_002dlass-1	fn	d--efop_name on c--lass
+formatting.html#index-d_002d_002defop_005fname-on-c_002d_002dlass-2	fn	d--efop_name on c--lass
+formatting.html#index-d_002d_002defop_005fname-on-c_002d_002dlass-3	fn	d--efop_name on c--lass
 formatting.html#index-copying-d_002d_002defspec_005fname	fn	d--efspec_name
 formatting.html#index-titlepage-d_002d_002defspec_005fname	fn	d--efspec_name
 formatting.html#index-d_002d_002defspec_005fname	fn	d--efspec_name
 formatting.html#index-d_002d_002defspec_005fname-1	fn	d--efspec_name
 formatting.html#index-copying-d_002d_002deftypefn_005fname	fn	d--eftypefn_name
+formatting.html#index-copying-d_002d_002deftypefn_005fname-1	fn	d--eftypefn_name
 formatting.html#index-titlepage-d_002d_002deftypefn_005fname	fn	d--eftypefn_name
+formatting.html#index-titlepage-d_002d_002deftypefn_005fname-1	fn	d--eftypefn_name
 formatting.html#index-d_002d_002deftypefn_005fname	fn	d--eftypefn_name
 formatting.html#index-d_002d_002deftypefn_005fname-1	fn	d--eftypefn_name
+formatting.html#index-d_002d_002deftypefn_005fname-2	fn	d--eftypefn_name
+formatting.html#index-d_002d_002deftypefn_005fname-3	fn	d--eftypefn_name
+formatting.html#index-copying-d_002d_002deftypefn_005fname2	fn	d--eftypefn_name2
+formatting.html#index-titlepage-d_002d_002deftypefn_005fname2	fn	d--eftypefn_name2
+formatting.html#index-d_002d_002deftypefn_005fname2	fn	d--eftypefn_name2
+formatting.html#index-d_002d_002deftypefn_005fname2-1	fn	d--eftypefn_name2
 formatting.html#index-copying-d_002d_002deftypefun_005fname	fn	d--eftypefun_name
 formatting.html#index-titlepage-d_002d_002deftypefun_005fname	fn	d--eftypefun_name
 formatting.html#index-d_002d_002deftypefun_005fname	fn	d--eftypefun_name
@@ -98,9 +230,21 @@ formatting.html#index-titlepage-d_002d_002deftypemethod_005fname-on-c_002d_002dl
 formatting.html#index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass	fn	d--eftypemethod_name on c--lass
 formatting.html#index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass-1	fn	d--eftypemethod_name on c--lass
 formatting.html#index-copying-d_002d_002deftypeop_005fname-on-c_002d_002dlass	fn	d--eftypeop_name on c--lass
+formatting.html#index-copying-d_002d_002deftypeop_005fname-on-c_002d_002dlass-1	fn	d--eftypeop_name on c--lass
 formatting.html#index-titlepage-d_002d_002deftypeop_005fname-on-c_002d_002dlass	fn	d--eftypeop_name on c--lass
+formatting.html#index-titlepage-d_002d_002deftypeop_005fname-on-c_002d_002dlass-1	fn	d--eftypeop_name on c--lass
 formatting.html#index-d_002d_002deftypeop_005fname-on-c_002d_002dlass	fn	d--eftypeop_name on c--lass
 formatting.html#index-d_002d_002deftypeop_005fname-on-c_002d_002dlass-1	fn	d--eftypeop_name on c--lass
+formatting.html#index-d_002d_002deftypeop_005fname-on-c_002d_002dlass-2	fn	d--eftypeop_name on c--lass
+formatting.html#index-d_002d_002deftypeop_005fname-on-c_002d_002dlass-3	fn	d--eftypeop_name on c--lass
+formatting.html#index-copying-d_002d_002deftypeop_005fname2-on-c_002d_002dlass2	fn	d--eftypeop_name2 on c--lass2
+formatting.html#index-copying-d_002d_002deftypeop_005fname2-on-c_002d_002dlass2-1	fn	d--eftypeop_name2 on c--lass2
+formatting.html#index-titlepage-d_002d_002deftypeop_005fname2-on-c_002d_002dlass2	fn	d--eftypeop_name2 on c--lass2
+formatting.html#index-titlepage-d_002d_002deftypeop_005fname2-on-c_002d_002dlass2-1	fn	d--eftypeop_name2 on c--lass2
+formatting.html#index-d_002d_002deftypeop_005fname2-on-c_002d_002dlass2	fn	d--eftypeop_name2 on c--lass2
+formatting.html#index-d_002d_002deftypeop_005fname2-on-c_002d_002dlass2-1	fn	d--eftypeop_name2 on c--lass2
+formatting.html#index-d_002d_002deftypeop_005fname2-on-c_002d_002dlass2-2	fn	d--eftypeop_name2 on c--lass2
+formatting.html#index-d_002d_002deftypeop_005fname2-on-c_002d_002dlass2-3	fn	d--eftypeop_name2 on c--lass2
 formatting.html#index-copying-d_002d_002defun_005fname	fn	d--efun_name
 formatting.html#index-titlepage-d_002d_002defun_005fname	fn	d--efun_name
 formatting.html#index-d_002d_002defun_005fname	fn	d--efun_name
@@ -125,6 +269,10 @@ formatting.html#index-deffnx	fn	deffnx
 formatting.html#index-deffnx-1	fn	deffnx
 formatting.html#index-deffnx-2	fn	deffnx
 formatting.html#index-deffnx-3	fn	deffnx
+formatting.html#index-f_002d_002d_002daa	fn	f---aa
+formatting.html#index-f_002d_002d_002dbb	fn	f---bb
+formatting.html#index-f_002d_002d_002dddd	fn	f---ddd
+formatting.html#index-f_002d_002d_002dggg	fn	f---ggg
 formatting.html#index-copying-followed	fn	followed
 formatting.html#index-copying-followed-1	fn	followed
 formatting.html#index-titlepage-followed	fn	followed
@@ -149,6 +297,10 @@ formatting.html#index-copying-id-ule	fn	id ule
 formatting.html#index-titlepage-id-ule	fn	id ule
 formatting.html#index-id-ule	fn	id ule
 formatting.html#index-id-ule-1	fn	id ule
+formatting.html#index-copying-invalid	fn	invalid
+formatting.html#index-titlepage-invalid	fn	invalid
+formatting.html#index-invalid	fn	invalid
+formatting.html#index-invalid-1	fn	invalid
 formatting.html#index-copying-log-trap	fn	log trap
 formatting.html#index-titlepage-log-trap	fn	log trap
 formatting.html#index-log-trap	fn	log trap
@@ -185,6 +337,18 @@ formatting.html#index-machin-8	fn	machin
 formatting.html#index-machin-9	fn	machin
 formatting.html#index-machin-10	fn	machin
 formatting.html#index-machin-11	fn	machin
+formatting.html#index-copying-n_002d_002dame	fn	n--ame
+formatting.html#index-copying-n_002d_002dame-1	fn	n--ame
+formatting.html#index-titlepage-n_002d_002dame	fn	n--ame
+formatting.html#index-titlepage-n_002d_002dame-1	fn	n--ame
+formatting.html#index-n_002d_002dame	fn	n--ame
+formatting.html#index-n_002d_002dame-1	fn	n--ame
+formatting.html#index-n_002d_002dame-2	fn	n--ame
+formatting.html#index-n_002d_002dame-3	fn	n--ame
+formatting.html#index-copying-name2	fn	name2
+formatting.html#index-titlepage-name2	fn	name2
+formatting.html#index-name2	fn	name2
+formatting.html#index-name2-1	fn	name2
 formatting.html#index-t_002d_002druc-1	fn	t--ruc
 formatting.html#index-T_002d_002druc-1	fn	T--ruc
 formatting.html#index-copying-truc	fn	truc
@@ -195,47 +359,9 @@ formatting.html#index-truc	fn	truc
 formatting.html#index-truc-1	fn	truc
 formatting.html#index-truc-2	fn	truc
 formatting.html#index-truc-3	fn	truc
+formatting.html#index-xxx	fn	xxx
 formatting.html#index-copying-d_002d_002deftp_005fname	tp	d--eftp_name
 formatting.html#index-titlepage-d_002d_002deftp_005fname	tp	d--eftp_name
 formatting.html#index-d_002d_002deftp_005fname	tp	d--eftp_name
 formatting.html#index-d_002d_002deftp_005fname-1	tp	d--eftp_name
-formatting.html#index-copying-a-2	vr	a
-formatting.html#index-titlepage-a-2	vr	a
-formatting.html#index-a-6	vr	a
-formatting.html#index-a-7	vr	a
-formatting.html#index-copying-b-1	vr	b
-formatting.html#index-titlepage-b-1	vr	b
-formatting.html#index-b-2	vr	b
-formatting.html#index-b-3	vr	b
-formatting.html#index-copying-d_002d_002defcv_005fname	vr	d--efcv_name
-formatting.html#index-titlepage-d_002d_002defcv_005fname	vr	d--efcv_name
-formatting.html#index-d_002d_002defcv_005fname	vr	d--efcv_name
-formatting.html#index-d_002d_002defcv_005fname-1	vr	d--efcv_name
-formatting.html#index-copying-d_002d_002defivar_005fname-of-c_002d_002dlass	vr	d--efivar_name of c--lass
-formatting.html#index-titlepage-d_002d_002defivar_005fname-of-c_002d_002dlass	vr	d--efivar_name of c--lass
-formatting.html#index-d_002d_002defivar_005fname-of-c_002d_002dlass	vr	d--efivar_name of c--lass
-formatting.html#index-d_002d_002defivar_005fname-of-c_002d_002dlass-1	vr	d--efivar_name of c--lass
-formatting.html#index-copying-d_002d_002defopt_005fname	vr	d--efopt_name
-formatting.html#index-titlepage-d_002d_002defopt_005fname	vr	d--efopt_name
-formatting.html#index-d_002d_002defopt_005fname	vr	d--efopt_name
-formatting.html#index-d_002d_002defopt_005fname-1	vr	d--efopt_name
-formatting.html#index-copying-d_002d_002deftypeivar_005fname-of-c_002d_002dlass	vr	d--eftypeivar_name of c--lass
-formatting.html#index-titlepage-d_002d_002deftypeivar_005fname-of-c_002d_002dlass	vr	d--eftypeivar_name of c--lass
-formatting.html#index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass	vr	d--eftypeivar_name of c--lass
-formatting.html#index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass-1	vr	d--eftypeivar_name of c--lass
-formatting.html#index-copying-d_002d_002deftypevar_005fname	vr	d--eftypevar_name
-formatting.html#index-titlepage-d_002d_002deftypevar_005fname	vr	d--eftypevar_name
-formatting.html#index-d_002d_002deftypevar_005fname	vr	d--eftypevar_name
-formatting.html#index-d_002d_002deftypevar_005fname-1	vr	d--eftypevar_name
-formatting.html#index-copying-d_002d_002deftypevr_005fname	vr	d--eftypevr_name
-formatting.html#index-titlepage-d_002d_002deftypevr_005fname	vr	d--eftypevr_name
-formatting.html#index-d_002d_002deftypevr_005fname	vr	d--eftypevr_name
-formatting.html#index-d_002d_002deftypevr_005fname-1	vr	d--eftypevr_name
-formatting.html#index-copying-d_002d_002defvar_005fname	vr	d--efvar_name
-formatting.html#index-titlepage-d_002d_002defvar_005fname	vr	d--efvar_name
-formatting.html#index-d_002d_002defvar_005fname	vr	d--efvar_name
-formatting.html#index-d_002d_002defvar_005fname-1	vr	d--efvar_name
-formatting.html#index-copying-d_002d_002defvr_005fname	vr	d--efvr_name
-formatting.html#index-titlepage-d_002d_002defvr_005fname	vr	d--efvr_name
-formatting.html#index-d_002d_002defvr_005fname	vr	d--efvr_name
-formatting.html#index-d_002d_002defvr_005fname-1	vr	d--efvr_name
+formatting.html#index-truc-4	truc	truc

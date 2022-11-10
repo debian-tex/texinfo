@@ -5,6 +5,8 @@ See https://www.gnu.org/software/soc-projects/ideas-2017.html#texinfo
 and http://mathieu.lirzin.emi.u-bordeaux.fr/categories/gsoc/ for some
 background information.
 
+The example manuals are in the git repository.
+
 Running "make examples" used to build the provided examples, but
 now you can use INFO_JS_DIR instead - see the Texinfo manual.
 

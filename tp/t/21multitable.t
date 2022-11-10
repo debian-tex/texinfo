@@ -3,7 +3,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -151,6 +151,15 @@ second column
 @ref{XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XX XXX XXX XXX XXX 
 XXX XXX XXX XXX XXX XXX XXX XXX XX}.
 '],
+['multitable_figure_space',
+'@multitable {999999999} {xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx}
+@item '."\x{2007}\x{2007}\x{2007}55".' @tab explanation
+@item '."\x{2007}\x{2007}535".' @tab explanation
+@item 49303 @tab explanation
+@end multitable
+',
+{'skip' => ($] < 5.014) ? 'Perl too old: /a regex flag needed' : undef, },
+],
 );
 
 my @test_invalid = (
@@ -196,6 +205,51 @@ my @test_invalid = (
 @item it
 @end multitable
 '],
+['multitable_empty_bracketed_prototype',
+'
+@multitable {} {a}
+@end multitable
+'],
+['multitable_bracketed_no_inter_space_prototype',
+'
+@multitable {a}{b}
+@end multitable
+'],
+['multitable_bracketed_prototype_empty_not_closed',
+'
+@multitable {
+@end multitable
+'],
+['multitable_bracketed_prototype_empty_not_closed_comment',
+'
+@multitable {@comment comment
+@end multitable
+'],
+['multitable_bracketed_prototype_empty_spaces_not_closed',
+'
+@multitable { 
+@end multitable
+'],
+['multitable_bracketed_prototype_empty_spaces_not_closed_comment',
+'
+@multitable { @comment comment
+@end multitable
+'],
+['multitable_bracketed_prototype_not_closed',
+'
+@multitable { a
+@end multitable
+'],
+['multitable_bracketed_prototype_not_closed_comment',
+'
+@multitable {a@c comment
+@end multitable
+'],
+['multitable_bracketed_prototype_not_closed_space_comment',
+'
+@multitable {a @c comment
+@end multitable
+'],
 );
 
 foreach my $test (@test_cases) {
@@ -204,8 +258,4 @@ foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'xml';
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('multitable', [@test_cases, @test_invalid], $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('multitable', [@test_cases, @test_invalid]);

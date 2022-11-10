@@ -26,26 +26,21 @@ definfoenclose_command
 # For text elements
 empty_line
 raw
-last_raw_newline
-empty_line_after_command
-empty_spaces_after_command
+ignorable_spaces_after_command
 spaces_at_end
-empty_space_at_end_def_bracketed
-space_at_end_block_command
-empty_spaces_before_argument
-empty_spaces_after_close_brace
-empty_spaces_before_paragraph
-preamble_text
+spaces_after_close_brace
+spaces_before_paragraph
+text_before_beginning
 space_at_end_menu_node
-after_description_line
+after_menu_description_line
 spaces
 spaces_inserted
 
 # Other special types
-text_root
 document_root
 root_line
-preamble
+before_node_section
+preamble_before_beginning
 preamble_before_setfilename
 paragraph
 preformatted
@@ -64,7 +59,10 @@ menu_entry_node
 menu_entry_description
 menu_comment
 # Used internally
-menu_star
+internal_menu_star
+internal_spaces_after_command
+internal_spaces_before_argument
+internal_spaces_before_brace_in_index
 
 macro_name
 macro_arg

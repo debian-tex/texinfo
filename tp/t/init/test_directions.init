@@ -6,7 +6,7 @@ my @directions = ('Up', 'Forward', 'Back', 'Next',
 
 my @all_directions = @directions;
 
-if (Texinfo::Config::get_conf('SPLIT')) {
+if (texinfo_get_conf('SPLIT')) {
   foreach my $direction (@directions) {
     push @all_directions, 'FirstInFile'.$direction;
   }
@@ -22,9 +22,9 @@ foreach my $direction (@all_directions) {
 @MISC_BUTTONS = @SECTION_BUTTONS;
 @TOP_BUTTONS = @SECTION_BUTTONS;
 
-set_from_init_file('MISC_BUTTONS', \@MISC_BUTTONS);
-set_from_init_file('SECTION_BUTTONS', \@SECTION_BUTTONS);
-set_from_init_file('TOP_BUTTONS', \@TOP_BUTTONS);
+texinfo_set_from_init_file('MISC_BUTTONS', \@MISC_BUTTONS);
+texinfo_set_from_init_file('SECTION_BUTTONS', \@SECTION_BUTTONS);
+texinfo_set_from_init_file('TOP_BUTTONS', \@TOP_BUTTONS);
 
 1;
 

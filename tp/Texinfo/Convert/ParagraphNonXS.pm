@@ -1,6 +1,6 @@
 # ParagraphNonXS.pm: handle paragraph text.
 #
-# Copyright 2010-2019 Free Software Foundation, Inc.
+# Copyright 2010-2022 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,7 +26,13 @@ package Texinfo::Convert::Paragraph;
 use 5.006;
 use strict;
 
+use if $] >= 5.014, re => '/a';  # ASCII-only character classes in regexes
+
+# To check if there is no erroneous autovivification
+#no autovivification qw(fetch delete exists store strict);
+
 use Unicode::EastAsianWidth;
+use Texinfo::Convert::Unicode;
 use Carp qw(cluck);
 
 # initialize a paragraph object.
@@ -220,13 +226,8 @@ sub _add_next($;$$$)
       $paragraph->{'word'} = undef;
       $paragraph->{'last_char'} = undef;
     } else {
-      my $word2;
-      $word2 = $word;
-      $word2 =~ s/[\177]//g;
-      $paragraph->{'word_counter'} += length($word2);
-      # We don't count DEL bytes here for INFO_SPECIAL_CHARS_QUOTE.  We 
-      # shouldn't count combining characters for accents either: see the
-      # t/converters_tests.t (at_commands_in_refs_utf8) test.
+      $paragraph->{'word_counter'}
+        += Texinfo::Convert::Unicode::string_width($word);
     }
     if ($paragraph->{'DEBUG'}) {
       my $para_word = 'UNDEF';;
@@ -279,14 +280,6 @@ sub set_space_protection($$;$$$$)
     if defined($ignore_columns);
   $paragraph->{'keep_end_lines'} = $keep_end_lines
     if defined($keep_end_lines);
-  if (!$paragraph->{'frenchspacing'} and $frenchspacing
-    and $paragraph->{'end_sentence'} and $paragraph->{'counter'} != 0 
-    and $paragraph->{'space'} and !defined($paragraph->{'word'})) {
-    $paragraph->{'space'} .= ' ' x (2 - length($paragraph->{'space'}));
-    print STDERR "SWITCH frenchspacing end sentence space\n" 
-       if ($paragraph->{'DEBUG'});
-    delete $paragraph->{'end_sentence'};
-  }
   $paragraph->{'frenchspacing'} = $frenchspacing
     if defined($frenchspacing);
   $paragraph->{'double_width_no_break'} = $double_width_no_break
@@ -311,7 +304,7 @@ sub add_text($$)
   my $protect_spaces_flag = $paragraph->{'protect_spaces'};
 
   my @segments = split
-/([^\S\x{202f}\x{00a0}]+)|(\p{InFullwidth})|((?:[^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)/,
+    /(\s+)|(\p{InFullwidth})|((?:[^\s\p{InFullwidth}])+)/,
     $text;
 
   # Check now if a newline exists anywhere in the string to
@@ -321,19 +314,21 @@ sub add_text($$)
   my $debug_flag = $paragraph->{'DEBUG'};
   while (@segments) {
     # $empty_segment should be an empty string; the other variables
-    # here were recognized as field separators by splice.
+    # here were recognized as field separators by split, the separator
+    # set to something else than undef for the separator matching.
     my ($empty_segment, $spaces, $fullwidth_segment, $added_word)
      = splice (@segments, 0, 4);
 
     if ($debug_flag) {
       my $word = 'UNDEF';
       $word = $paragraph->{'word'} if (defined($paragraph->{'word'}));
-      print STDERR "p ($paragraph->{'counter'}+$paragraph->{'word_counter'}) s `"._print_escaped_spaces($paragraph->{'space'})."', w `$word'\n";
+      print STDERR "p ($paragraph->{'counter'}+$paragraph->{'word_counter'}) s `"
+          ._print_escaped_spaces($paragraph->{'space'})."', w `$word'\n";
       #print STDERR "TEXT: "._print_escaped_spaces($text)."|\n"
     }
-    # \x{202f}\x{00a0} are non breaking spaces
     if (defined $spaces) {
-      print STDERR "SPACES($paragraph->{'counter'}) `"._print_escaped_spaces($spaces)."'\n" if $debug_flag;
+      print STDERR "SPACES($paragraph->{'counter'}) `"
+          ._print_escaped_spaces($spaces)."'\n" if $debug_flag;
       if ($protect_spaces_flag) {
         $paragraph->{'word'} .= $spaces;
         $paragraph->{'last_char'} = substr($spaces, -1);
@@ -365,13 +360,12 @@ sub add_text($$)
               if ($spaces =~ /\n/) {
                 if (!$paragraph->{'unfilled'}) {
                   $paragraph->{'space'} = ' ';
-                } elsif ($spaces =~ /\n/) {
+                } else {
                   $result .= _add_pending_word ($paragraph);
                   $result .= _end_line ($paragraph);
                 }
               } else {
                 if (!$paragraph->{'unfilled'}) {
-                  $spaces =~ s/\r/ /g;
                   $paragraph->{'space'} .= substr ($spaces, 0, 1);
                 } else {
                   $paragraph->{'space'} .= $spaces;
@@ -410,7 +404,7 @@ sub add_text($$)
         # do nothing in the case of a continuation of after_punctuation_characters
       } elsif (!$paragraph->{'unfilled'}
           and $tmp =~
-        /(^|[^[:upper:]$after_punctuation_characters$end_sentence_character])
+        /(^|[^\p{Upper}$after_punctuation_characters$end_sentence_character])
          [$after_punctuation_characters]*[$end_sentence_character]
          [$end_sentence_character\x08$after_punctuation_characters]*$/x) {
         if ($paragraph->{'frenchspacing'}) {

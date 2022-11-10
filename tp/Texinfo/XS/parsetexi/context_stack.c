@@ -19,6 +19,7 @@
 #include "parser.h"
 
 static enum context *stack;
+static enum command_id *commands_stack;
 static size_t top; /* One above last pushed context. */
 static size_t space;
 
@@ -29,20 +30,24 @@ reset_context_stack (void)
 }
 
 void
-push_context (enum context c)
+push_context (enum context c, enum command_id cmd)
 {
   if (top >= space)
     {
       stack = realloc (stack, (space += 5) * sizeof (enum context));
+      commands_stack
+        = realloc (commands_stack, (space += 5) * sizeof (enum command_id));
     }
 
-  debug (">>>>>>>>>>>>>>>>>PUSHING STACK AT %d  -- %s", top,
+  debug (">>>>>>>>>>>>>>>>>PUSHING STACK AT %d  -- %s @%s", top,
          c == ct_preformatted ? "preformatted"
          : c == ct_line ? "line"
          : c == ct_def ? "def"
-         : c == ct_menu ? "menu"
-         : "");
-  stack[top++] = c;
+         : c == ct_brace_command ? "brace_command"
+         : "", command_name(cmd));
+  stack[top] = c;
+  commands_stack[top] = cmd;
+  top++;
 }
 
 enum context
@@ -62,6 +67,21 @@ current_context (void)
     return ct_NONE;
 
   return stack[top - 1];
+}
+
+enum command_id
+current_context_command (void)
+{
+  int i;
+
+  if (top == 0)
+    return CM_NONE;
+  for (i = top -1; i >= 0; i--)
+    {
+      if (commands_stack[i] != CM_NONE)
+        return commands_stack[i];
+    }
+  return CM_NONE;
 }
 
 
@@ -118,4 +138,29 @@ current_region (void)
     return 0;
 
   return region_stack[region_top - 1];
+}
+
+
+/* used for @kbd */
+int
+in_preformatted_context_not_menu()
+{
+  int i;
+
+  if (top == 0)
+    return 0;
+  for (i = top -1; i >= 0; i--)
+    {
+      enum context ct;
+      enum command_id cmd;
+      ct = stack[i];
+      if (ct != ct_line && ct != ct_preformatted)
+        return 0;
+      cmd = commands_stack[i];
+      if (command_data(cmd).flags & CF_block
+          && command_data(cmd).data != BLOCK_menu
+          && ct == ct_preformatted)
+        return 1;
+    }
+  return 0;
 }

@@ -19,14 +19,14 @@ double_contents_inline_chapter double_contents.texi -c 'CONTENTS_OUTPUT_LOCATION
 double_contents_inline_section double_contents.texi -c 'CONTENTS_OUTPUT_LOCATION inline' --split section
 double_contents_inline_nodes double_contents.texi -c 'CONTENTS_OUTPUT_LOCATION inline' --split node
 double_contents_after_title double_contents.texi -c 'CONTENTS_OUTPUT_LOCATION after_title'
-double_contents_after_title_no_texi2html double_contents.texi --html -c 'CONTENTS_OUTPUT_LOCATION after_title' -c 'TEXI2HTML undef'
+double_contents_after_title_no_texi2html double_contents.texi --html -c 'CONTENTS_OUTPUT_LOCATION after_title' -c 'TEXI2HTML undef' -c 'SHOW_TITLE 1'
 no_content_inline no_content.texi -c 'CONTENTS_OUTPUT_LOCATION inline'
 no_content_do_contents_inline no_content.texi -c 'CONTENTS_OUTPUT_LOCATION inline' -c 'contents 1'
 no_content_setcatpage_inline no_content_setcatpage.texi -c 'CONTENTS_OUTPUT_LOCATION inline'
 no_content_setcatpage_do_contents_inline no_content_setcatpage.texi -c 'CONTENTS_OUTPUT_LOCATION inline' -c 'contents 1'
 double_contents_book double_contents.texi -c FORMAT_MENU=nomenu --init book.pm
-double_contents_after_title_book double_contents.texi --init book.init -c 'CONTENTS_OUTPUT_LOCATION after_title'
-double_contents_after_title_book_chapter double_contents.texi --init book.init --split chapter -c 'CONTENTS_OUTPUT_LOCATION after_title'
+double_contents_after_title_book double_contents.texi --init book.pm -c 'CONTENTS_OUTPUT_LOCATION after_title'
+double_contents_after_title_book_chapter double_contents.texi --init book.pm --split chapter -c 'CONTENTS_OUTPUT_LOCATION after_title'
 
 contents_and_parts contents_and_parts.texi
 

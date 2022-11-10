@@ -1,0 +1,110 @@
+@node Texinfo@asis{::}Translations
+@chapter Texinfo::Translations
+
+@node Texinfo@asis{::}Translations NAME
+@section Texinfo::Translations NAME
+
+Texinfo::Translations - Translations of output documents strings for Texinfo modules
+
+@node Texinfo@asis{::}Translations SYNOPSIS
+@section Texinfo::Translations SYNOPSIS
+
+@verbatim
+  @ISA = qw(Texinfo::Translations);
+
+  my $tree_translated = $converter->gdt('See {reference} in @cite{{book}}',
+                       {'reference' => $tree_reference,
+                        'book'  => {'text' => $book_name}});
+@end verbatim
+
+@node Texinfo@asis{::}Translations NOTES
+@section Texinfo::Translations NOTES
+
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
+
+@node Texinfo@asis{::}Translations DESCRIPTION
+@section Texinfo::Translations DESCRIPTION
+
+The @code{Texinfo::Translations} module helps with translations
+in output documents.
+
+Translation of error messages uses another interface, which
+is the classical gettext based perl interface.  It is not
+described as it is described in details elsewhere, some
+elements are in @ref{Texinfo@asis{::}Common $translated_string = __($msgid),, Texinfo::Common @code{__} and @code{__p}}.
+
+@node Texinfo@asis{::}Translations METHODS
+@section Texinfo::Translations METHODS
+
+No method is exported.
+
+The @code{gdt} method is used to translate strings to be output in
+converted documents, and returns, in general, a texinfo tree.
+
+@table @asis
+@item $tree = $object->gdt($string, $replaced_substrings, $mode, $lang)
+@anchor{Texinfo@asis{::}Translations $tree = $object->gdt($string@comma{} $replaced_substrings@comma{} $mode@comma{} $lang)}
+@cindex @code{gdt}
+
+The @emph{$string} is a string to be translated.  In the default case,
+the function returns a Texinfo tree, as the string is interpreted
+as Texinfo code after translation.  @emph{$replaced_substrings} is an
+optional hash reference specifying some substitution to be done
+after the translation.  The key of the @emph{$replaced_substrings} hash
+reference identifies what is to be substituted, and the value is
+some string, texinfo tree or array content that is substituted in
+the resulting texinfo tree.  In the string to be translated word
+in brace matching keys of @emph{$replaced_substrings} are replaced.
+The @emph{$object} is typically a converter, but can be any object that implements
+@code{get_conf}, or undefined (@code{undef}).  If not undefined, the information in the
+@emph{$object} is used to determine the encoding, the documentlanguage and get some
+customization information. @emph{$lang} is optional. If set, it overrides the
+documentlanguage.
+
+For example, in the following call, the string
+@code{See @{reference@} in @@cite@{@{book@}@}} is translated, then
+parsed as a Texinfo string, with @emph{@{reference@}} substituted by
+@emph{$tree_reference} in the resulting tree, and @emph{@{book@}}
+replaced by the associated texinfo tree text element:
+
+@verbatim
+  $tree = $converter->gdt('See {reference} in @cite{{book}}',
+                       {'reference' => $tree_reference,
+                        'book'  => {'text' => $book_name}});
+@end verbatim
+
+@code{gdt} uses a gettext-like infrastructure to retrieve the
+translated strings, using the @emph{texinfo_document} domain.
+
+@emph{$mode} is an optional string which may modify how the function
+behaves.  The possible values are:
+
+@table @asis
+@item translated_text
+@anchor{Texinfo@asis{::}Translations translated_text}
+
+In that case the string is not considered to be Texinfo, a plain string
+that is returned after translation and substitution.  The substitutions
+may only be strings in that case.
+
+@end table
+
+@end table
+
+@node Texinfo@asis{::}Translations AUTHOR
+@section Texinfo::Translations AUTHOR
+
+Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo@asis{::}Translations COPYRIGHT AND LICENSE
+@section Texinfo::Translations COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
+

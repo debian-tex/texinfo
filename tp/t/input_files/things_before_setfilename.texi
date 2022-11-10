@@ -46,6 +46,9 @@ In float
 @node Top
 @top top section
 
+@node chap
+@chapter Chapter
+
 Ref to anchor
 @ref{An anchor}
 

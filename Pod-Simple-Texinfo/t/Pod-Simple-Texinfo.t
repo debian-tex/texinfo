@@ -6,11 +6,14 @@
 # change 'tests => 1' to 'tests => last_test_to_print';
 
 use Test::More;
-BEGIN { plan tests => 17 };
+BEGIN { plan tests => 21 };
 use Pod::Simple::Texinfo;
 ok(1); # If we made it this far, we're ok.
 
 #########################
+
+# to run a specific test:
+my $arg_test_case = shift @ARGV;
 
 sub run_test($$$;$$)
 {
@@ -19,6 +22,8 @@ sub run_test($$$;$$)
   my $name = shift;
   my $test_nodes = shift;
   my $sectioning_base_level = shift;
+
+  return if (defined($arg_test_case) and $name ne $arg_test_case);
 
   my $parser = Pod::Simple::Texinfo->new();
   $parser->set_source(\$in);
@@ -52,16 +57,18 @@ X<aaa>
 
 TODO: {
 
+# fixed in 3.24 2013-02-14
 local $TODO = 'Pod::Simple not ignoring correctly X<>';
 
 run_test ('=head1 NAME
 X<aaa>
 ',
-'@node NAME aaa NAME
-@section NAME
+'@node NAME
+@chapter NAME
 @cindex aaa
 
-', 'index in head node', 1, 2);
+',
+, 'index in head node', 1);
 
 }
 
@@ -70,14 +77,19 @@ run_test ('=head1 NAME
 T@c
 
 =head1 @{}
+
+=head2 @,
 ',
 '@node T@@c NAME
-@section NAME
+@section T@@c NAME
 
 T@@c
 
 @node T@@c @@@{@}
 @section @@@{@}
+
+@node T@@c @@@comma{}
+@subsection @@,
 
 ', 'protected characters', 1, 2);
 
@@ -186,10 +198,10 @@ run_test('=over
 
 =back
 ', '@table @asis
-@item a @ref{, pod2text,, pod2text}
+@item a @ref{,, pod2text, pod2text}
 @anchor{a pod2text}
 
-@item a @ref{, pod2latex,, pod2latex}
+@item a @ref{,, pod2latex, pod2latex}
 @anchor{a pod2latex}
 
 @end table
@@ -231,6 +243,50 @@ L</(man) t>', '@chapter (man) t
 @ref{@asis{(}man) t,, (man) t}
 
 ', 'node beginning with a parenthesis');
+
+run_test('=head1 A::b. c
+
+=over
+
+=item D::E. f
+
+=back
+
+L</A::b. c> L</D::E. f>
+','@chapter A::b. c
+@anchor{A@asis{::}b. c}
+
+@table @asis
+@item D::E. f
+@anchor{D@asis{::}E. f}
+
+@end table
+
+@ref{A@asis{::}b. c,, A::b. c} @ref{D@asis{::}E. f,, D::E. f}
+
+',
+'colon and dot in node name');
+
+run_test('=head1 head C<extra>
+
+L</head C<extra>>
+', '@chapter head @code{extra}
+@anchor{head @code{extra}}
+
+@ref{head @code{extra}}
+
+', 'code in reference');
+
+run_test('=head1 head
+
+L<Pod::deC<code>>
+
+', '@chapter head
+@anchor{head}
+
+@ref{,,, Pod-decode}
+
+', 'link to external module');
 
 run_test('=head1 head
 
@@ -308,6 +364,21 @@ run_test('=head1 head
 
 @end html
 ','cpp lines in formats');
+
+run_test('=head1 ---- -- C<--->
+
+C<--- L<---|--/--->>
+
+L<F<--->|F<-->/C<--->>
+
+','@chapter @asis{}-@asis{}-@asis{}-@asis{}- @asis{}-@asis{}-@asis{} @code{---}
+@anchor{@asis{}-@asis{}-@asis{}-@asis{}- @asis{}-@asis{}-@asis{} @code{---}}
+
+@code{--- @ref{---,, @asis{}-@asis{}-@asis{}-@asis{}, --}}
+
+@ref{@code{---},, @file{---}, --}
+
+', 'protected -');
 
 1;
 

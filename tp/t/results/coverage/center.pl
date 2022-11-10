@@ -1,85 +1,73 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'center'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
+      'contents' => [
         {
-          'contents' => [
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
             {
-              'parent' => {},
-              'text' => 'in center '
-            },
-            {
-              'args' => [
+              'contents' => [
                 {
-                  'contents' => [
+                  'text' => 'in center '
+                },
+                {
+                  'args' => [
                     {
-                      'parent' => {},
-                      'text' => 'in code'
+                      'contents' => [
+                        {
+                          'text' => 'in code'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
+                  'cmdname' => 'code',
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 2,
+                    'macro' => ''
+                  }
                 }
               ],
-              'cmdname' => 'code',
-              'contents' => [],
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+              'extra' => {
+                'spaces_after_argument' => '
+'
               },
-              'parent' => {}
+              'type' => 'line_arg'
             }
           ],
+          'cmdname' => 'center',
           'extra' => {
-            'spaces_after_argument' => '
-'
+            'spaces_before_argument' => '  '
           },
-          'parent' => {},
-          'type' => 'line_arg'
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
         }
       ],
-      'cmdname' => 'center',
-      'extra' => {
-        'spaces_before_argument' => '  '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'center'}{'contents'}[0]{'parent'} = $result_trees{'center'};
-$result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[1]{'args'}[0];
-$result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[1]{'args'}[0];
-$result_trees{'center'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[1];
-$result_trees{'center'}{'contents'}[1]{'parent'} = $result_trees{'center'};
-$result_trees{'center'}{'contents'}[2]{'parent'} = $result_trees{'center'};
 
 $result_texis{'center'} = '
 @center  in center @code{in code}
@@ -99,13 +87,13 @@ $result_floats{'center'} = {};
 
 
 
-$result_converted{'plaintext'}->{'center'} = '                          in center \'in code\'
+$result_converted{'plaintext'}->{'center'} = '                          in center ‘in code’
 
 ';
 
 
 $result_converted{'html_text'}->{'center'} = '
-<div align="center">in center <code>in code</code>
+<div class="center">in center <code class="code">in code</code>
 </div>
 ';
 
@@ -116,8 +104,16 @@ $result_converted{'xml'}->{'center'} = '
 ';
 
 
+$result_converted{'latex_text'}->{'center'} = '
+\\begin{center}
+in center \\texttt{in code}
+\\end{center}
+
+';
+
+
 $result_converted{'docbook'}->{'center'} = '
-in center <literal>in code</literal>
+<simpara role="center">in center <literal>in code</literal></simpara>
 
 ';
 

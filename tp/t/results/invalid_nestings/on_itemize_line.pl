@@ -1,339 +1,266 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'on_itemize_line'} = {
   'contents' => [
     {
-      'args' => [
+      'contents' => [
         {
-          'contents' => [
+          'args' => [
             {
-              'cmdname' => 'indent',
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'args' => [
+              'contents' => [
                 {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'in titlefont'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'titlefont',
-              'contents' => [],
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => ' '
-            },
-            {
-              'args' => [
+                  'cmdname' => 'indent',
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 1,
+                    'macro' => ''
+                  }
+                },
                 {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'in anchor'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'anchor',
-              'contents' => [],
-              'extra' => {
-                'node_content' => [
-                  {}
-                ],
-                'normalized' => 'in-anchor'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'args' => [
+                  'text' => ' ',
+                  'type' => 'ignorable_spaces_after_command'
+                },
                 {
-                  'contents' => [
+                  'args' => [
                     {
                       'contents' => [
                         {
-                          'parent' => {},
-                          'text' => 'footnote'
+                          'text' => 'in titlefont'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'paragraph'
+                      'type' => 'brace_command_arg'
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'brace_command_context'
+                  'cmdname' => 'titlefont',
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 1,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => ' '
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'in anchor'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'anchor',
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'in-anchor'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 1,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'footnote'
+                            }
+                          ],
+                          'type' => 'paragraph'
+                        }
+                      ],
+                      'type' => 'brace_command_context'
+                    }
+                  ],
+                  'cmdname' => 'footnote',
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 1,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => ' '
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'exdent'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'exdent',
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 1,
+                    'macro' => ''
+                  }
                 }
               ],
-              'cmdname' => 'footnote',
-              'contents' => [],
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'itemize',
+          'contents' => [
             {
-              'parent' => {},
-              'text' => ' '
+              'cmdname' => 'item',
+              'contents' => [
+                {
+                  'text' => ' ',
+                  'type' => 'ignorable_spaces_after_command'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in item.
+'
+                    }
+                  ],
+                  'type' => 'paragraph'
+                }
+              ],
+              'extra' => {
+                'item_number' => 1
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'exdent'
+                      'text' => 'itemize'
                     }
                   ],
                   'extra' => {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
-              'cmdname' => 'exdent',
+              'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' '
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'itemize'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 1,
+                'line_nr' => 3,
                 'macro' => ''
-              },
-              'parent' => {}
-            }
-          ],
-          'parent' => {},
-          'type' => 'block_line_arg'
-        }
-      ],
-      'cmdname' => 'itemize',
-      'contents' => [
-        {
-          'cmdname' => 'item',
-          'contents' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in item.
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'paragraph'
+              }
             }
           ],
           'extra' => {
-            'item_number' => 1,
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 2,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'itemize'
+                  'text' => 'on line '
+                },
+                {
+                  'text' => ' ',
+                  'type' => 'ignorable_spaces_after_command'
+                },
+                {
+                  'text' => 'in item'
                 }
               ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'itemize',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'itemize'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {},
-        'spaces_before_argument' => ' '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
-        {
+          'cmdname' => 'itemize',
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'on line '
-            },
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
-              'text' => 'in item'
-            }
-          ],
-          'extra' => {
-            'spaces_after_argument' => '
-'
-          },
-          'parent' => {},
-          'type' => 'block_line_arg'
-        }
-      ],
-      'cmdname' => 'itemize',
-      'contents' => [
-        {
-          'args' => [
-            {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'itemize'
+                  'contents' => [
+                    {
+                      'text' => 'itemize'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'end',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'itemize'
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              }
             }
           ],
-          'cmdname' => 'end',
           'extra' => {
-            'command_argument' => 'itemize',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'itemize'
+            'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 6,
+            'line_nr' => 5,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {},
-        'spaces_before_argument' => ' '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[5]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[5];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[7];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'};
-$result_trees{'on_itemize_line'}{'contents'}[1]{'parent'} = $result_trees{'on_itemize_line'};
-$result_trees{'on_itemize_line'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[2]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[2]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[2]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[2];
-$result_trees{'on_itemize_line'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[2]{'contents'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[2];
-$result_trees{'on_itemize_line'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'on_itemize_line'}{'contents'}[2]{'contents'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[2]{'parent'} = $result_trees{'on_itemize_line'};
+$result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
 
 $result_texis{'on_itemize_line'} = '@itemize @indent @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
 @item in item.
@@ -350,7 +277,7 @@ $result_texts{'on_itemize_line'} = 'in item.
 
 $result_errors{'on_itemize_line'} = [
   {
-    'error_line' => ':1: warning: @indent should not appear in @itemize
+    'error_line' => 'warning: @indent should not appear in @itemize
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -359,7 +286,7 @@ $result_errors{'on_itemize_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @titlefont should not appear in @itemize
+    'error_line' => 'warning: @titlefont should not appear in @itemize
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -368,7 +295,7 @@ $result_errors{'on_itemize_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @anchor should not appear in @itemize
+    'error_line' => 'warning: @anchor should not appear in @itemize
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -377,7 +304,7 @@ $result_errors{'on_itemize_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @footnote should not appear in @itemize
+    'error_line' => 'warning: @footnote should not appear in @itemize
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -386,7 +313,7 @@ $result_errors{'on_itemize_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @exdent should only appear at the beginning of a line
+    'error_line' => 'warning: @exdent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -395,7 +322,7 @@ $result_errors{'on_itemize_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @exdent should not appear in @itemize
+    'error_line' => 'warning: @exdent should not appear in @itemize
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -404,7 +331,7 @@ $result_errors{'on_itemize_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: @item should not appear in @itemize
+    'error_line' => 'warning: @item should not appear in @itemize
 ',
     'file_name' => '',
     'line_nr' => 5,
@@ -413,7 +340,7 @@ $result_errors{'on_itemize_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: @item outside of table or list
+    'error_line' => '@item outside of table or list
 ',
     'file_name' => '',
     'line_nr' => 5,

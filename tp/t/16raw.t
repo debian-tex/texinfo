@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -27,7 +27,7 @@ in  v---erbatim`` <>
 in verbatim2
 @end verbatim
 ',
-{'expanded_formats' => ['tex', 'html']}
+{'EXPANDED_FORMATS' => ['tex', 'html']}
 ],
 ['misc_raw_comments','
 @html @c comment space
@@ -41,7 +41,7 @@ in verbatim @c in verbatim
 in verbatim2
 @end verbatim
 ',
-{'expanded_formats' => ['tex', 'html']}
+{'EXPANDED_FORMATS' => ['tex', 'html']}
 ],
 ['raw_in_para',
 'para
@@ -64,7 +64,7 @@ in tex2
 
 End.
 ',
-{'expanded_formats' => ['tex', 'html']}
+{'EXPANDED_FORMATS' => ['tex', 'html']}
 ],
 ['raw_in_example',
 '@example
@@ -94,7 +94,7 @@ $$
 @end example
 
 ',
-{'expanded_formats' => ['tex', 'html']}
+{'EXPANDED_FORMATS' => ['tex', 'html']}
 ],
 ['braces_in_tex',
 '
@@ -118,7 +118,7 @@ $$
 @end example
 
 ',
-{'expanded_formats' => ['tex']}
+{'EXPANDED_FORMATS' => ['tex']}
 ],
 ['lone_braces_in_html',
 '@html
@@ -129,7 +129,7 @@ $$
 {
 @end html
 ',
-{'expanded_formats' => ['html']}
+{'EXPANDED_FORMATS' => ['html']}
 ],
 ['verbatim_and_verbatiminclude',
 '@verbatim
@@ -283,7 +283,7 @@ Before the opening command @verbatim
 in block
 @end verbatim. A symbol after the closing command.
 ',
-{'expanded_formats' => ['tex', 'html']}
+{'EXPANDED_FORMATS' => ['tex', 'html']}
 ],
 ['inlinefmt',
 'A @inlinefmt{plaintext, plaintext `` @lbracechar{} } a.  Now html
@@ -306,7 +306,7 @@ A @inlineraw{plaintext, plaintext
 in <i>@acronym{HTML}</i>}.
 @end example
 ',
-{'expanded_formats' => ['plaintext', 'html']}
+{'EXPANDED_FORMATS' => ['plaintext', 'html']}
 ],
 ['raw_in_style',
 '@code{
@@ -319,7 +319,7 @@ in html
 @html
 in html
 @end html
-}',{'expanded_formats' => ['html']}, {'expanded_formats' => ['html']}
+}',{'EXPANDED_FORMATS' => ['html']}, {'EXPANDED_FORMATS' => ['html']}
 ],
 ['verbatim_in_brace_command',
 '@samp{
@@ -339,7 +339,7 @@ before
 @end displaymath
 after
 ',
-{'test_formats' => ['file_html', 'docbook']},
+{'test_formats' => ['html', 'docbook']},
 {'HTML_MATH' => 'mathjax'}
 ],
 );
@@ -356,7 +356,7 @@ This is some html
 
 This is some \LaTeX{}
 ',
-{'expanded_formats' => ['tex']}
+{'EXPANDED_FORMATS' => ['tex']}
 ],
 ['verbatim_not_closed',
 '@verbatim
@@ -365,6 +365,10 @@ some verbatim @
 
 @macro
 
+'],
+['displaymath_not_closed',
+'@displaymath
+in displaymath
 '],
 ['inlineraw_with_empty_line',
 'A @inlineraw{plaintext, plaintext ``
@@ -385,11 +389,46 @@ some verbatim @
 ['inline_missing_first_arg',
 '@inlinefmt{ , aaa}. @inlineraw{, bbb}.
 '],
+['spurious_arg_on_line',
+'
+@tex argt
+in tex
+@end tex
+
+@verbatim argverbatim
+in verbatim
+@end verbatim
+
+@html argh
+in html
+@end html
+',
+{'EXPANDED_FORMATS' => ['tex']}
+],
 ['beginning_and_end_on_line',
 '
 @tex in tex @end tex
+
+@verbatim in verbatim @end verbatim
+
+@html in html @end html
 ',
-{'expanded_formats' => ['tex']}
+{'EXPANDED_FORMATS' => ['tex']}
+],
+['space_before_end',
+'@tex
+in tex
+    @end  tex
+
+@verbatim
+in verbatim
+    @end  verbatim
+
+@html
+in html
+   @end html
+',
+{'EXPANDED_FORMATS' => ['tex']}
 ],
 );
 
@@ -408,8 +447,4 @@ foreach my $test (@test_cases) {
   }
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('raw', [@test_cases, @test_invalid], $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('raw', [@test_cases, @test_invalid]);

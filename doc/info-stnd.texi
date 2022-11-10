@@ -16,9 +16,8 @@ This manual is for Stand-alone GNU Info (version @value{VERSION},
 @value{UPDATED}), a program for viewing documents in Info format
 (usually created from Texinfo source files).
 
-Copyright @copyright{} 1992, 1993, 1996, 1997, 1998, 1999, 2001,
-2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
-2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software Foundation, Inc.
+Copyright @copyright{} 1992, 1993, 1996, 1997, 1998, 1999,
+2001-2022 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -99,8 +98,8 @@ that you read in Info.
 
 @cindex Emacs Info reader
 @cindex Info files, reading in Emacs
-GNU Emacs also provides an Info reader (just type @kbd{M-x info} in
-Emacs).  Emacs Info and stand-alone Info have nearly identical user
+GNU Emacs also provides an Info reader (just type @code{@kbd{M-x} info}
+in Emacs).  Emacs Info and stand-alone Info have nearly identical user
 interfaces, although customization and other details are different
 (this manual explains the stand-alone Info reader).  The Emacs Info
 reader supports the X Window System and other such bitmapped
@@ -451,9 +450,10 @@ By default, Info passes SGR terminal control sequences (also known as
 ANSI escape sequences) found in documents directly through to the
 terminal.  If you use the @code{--no-raw-escapes} options, these
 sequences are displayed as other control characters are; for example, an
-@kbd{ESC} byte is displayed as @samp{^[}.  The @code{--raw-escapes} and
+@key{ESC} byte is displayed as @samp{^[}.  The @code{--raw-escapes} and
 @code{-R} options do not do anything, but are included for completeness.
 
+@ignore
 @cindex man pages, bold and underline
 @vindex GROFF_SGR
 Some versions of Groff (@pxref{Top,,,groff,Groff}) produce man pages
@@ -464,6 +464,7 @@ your terminal supports these sequences, Info will display any bold or
 underlined text in man pages.  Some distributions have modified Groff
 to require setting the @code{GROFF_SGR} environment variable to get
 these sequences.  @xref{Invoking grotty,,, groff, Groff}.
+@end ignore
 
 @item --restore=@var{dribble-file}
 @cindex @code{--restore} command line option
@@ -487,11 +488,14 @@ sequences are dropped.
 @cindex @code{--show-options} (@code{--usage}, @code{-O}) command line option
 @cindex command-line options, how to find
 @cindex invocation description, how to find
-Tell Info to look for the node that describes how to invoke the
-program and its command-line options, and begin the session by
-displaying that node.  It is provided to make it easier to find the
+Look for the node that describes how to invoke the
+program.  The name of the program is taken from the other non-option
+arguments on the command line.  For example, @samp{info emacs -O} loads
+the @code{Emacs Invocation} node of the @code{emacs} manual.
+
+This option is provided to make it easier to find the
 most important usage information in a manual without navigating
-through menu hierarchies.  The effect is similar to the @code{M-x
+through menu hierarchies.  The effect is similar to the @code{@kbd{M-x}
 goto-invocation} command (@pxref{goto-invocation}) from inside Info.
 
 @item --speech-friendly
@@ -572,17 +576,17 @@ the screen.
 The notation used in this manual to describe keystrokes
 is the same as the notation used within the Emacs manual
 (@pxref{User Input,,, emacs, The GNU Emacs Manual}).
-@kbd{C-@var{x}} means press the @kbd{CTRL} key and the
-key @var{x}.  @kbd{M-@var{x}} means press the @kbd{META} key and
-the key @var{x}.  On many terminals the @kbd{META} key is known as
-the @kbd{ALT} key.  @kbd{SPC} is the space bar.  The other keys are
+@kbd{C-@var{x}} means press the @key{CTRL} key and the
+key @var{x}.  @kbd{M-@var{x}} means press the @key{META} key and
+the key @var{x}.  On many terminals the @key{META} key is known as
+the @key{ALT} key.  @key{SPC} is the space bar.  The other keys are
 usually called by the names printed on them.
 
 The following table lists the basic cursor movement commands in Info.
 Each entry consists of the key sequence you should type to execute the
-cursor movement, the @code{M-x} command name (displayed
+cursor movement, the @kbd{M-x} command name (displayed
 in parentheses), and a short description of what the command
-does.@footnote{@code{M-x} is also a command;
+does.@footnote{@kbd{M-x} is also a command;
 it invokes @code{execute-extended-command}, letting you run a command
 by name.  @xref{M-x, , Executing an extended command, emacs, The GNU
 Emacs Manual}, for more detailed information.}
@@ -717,7 +721,7 @@ Shift the text in this window up.  This is identical to the @key{SPC}
 operation above, except that it never scrolls beyond the end of the
 current node.
 
-@item @code{M-x scroll-forward-page-only-set-window}
+@item @code{@kbd{M-x} scroll-forward-page-only-set-window}
 @findex scroll-forward-page-only-set-window
 Scroll forward, like with @kbd{C-v}, but if a numeric argument is
 specified, it becomes the default scroll size for subsequent
@@ -755,30 +759,30 @@ the current node.  The default scroll size can be changed by invoking
 the @code{scroll-backward-page-only-set-window} command with a numeric
 argument.
 
-@item @code{M-x scroll-backward-page-only-set-window}
+@item @code{@kbd{M-x} scroll-backward-page-only-set-window}
 @findex scroll-backward-page-only-set-window
 Scroll backward, like with @kbd{M-v}, but if a numeric argument is
 specified, it becomes the default scroll size for subsequent
 @code{scroll-forward} and @code{scroll-backward} commands.
 
-@item @code{M-x down-line}
+@item @code{@kbd{M-x} down-line}
 @findex down-line
 Scroll forward by one line.  With a numeric argument, scroll forward
 that many lines.
 
-@item @code{M-x up-line}
+@item @code{@kbd{M-x} up-line}
 @findex up-line
 Scroll backward one line.  With a numeric argument, scroll backward that
 many lines.
 
-@item @code{M-x scroll-half-screen-down}
+@item @code{@kbd{M-x} scroll-half-screen-down}
 @findex scroll-half-screen-down
 Scroll forward by half of the screen size.  With a numeric argument,
 scroll that many lines.  If an argument is specified, it becomes the new
 default number of lines to scroll for subsequent
 @code{scroll-half-screen-down} and @code{scroll-half-screen-up} commands.
 
-@item @code{M-x scroll-half-screen-up}
+@item @code{@kbd{M-x} scroll-half-screen-up}
 @findex scroll-half-screen-up
 Scroll back by half of the screen size.  With a numeric argument,
 scroll that many lines.  If an argument is specified, it becomes the new
@@ -815,7 +819,7 @@ lines which are longer than the screen width @dfn{wrap}, i.e., they are
 continued on the next line.  Lines which wrap have a @samp{\} appearing
 in the rightmost column of the screen.  You can cause such lines to be
 terminated at the rightmost column by changing the state of line
-wrapping in the window with @code{C-x w}.  When a line which needs more
+wrapping in the window with @kbd{C-x w}.  When a line which needs more
 space than one screen width to display is displayed, a @samp{$} appears
 in the rightmost column of the screen, and the remainder of the line is
 invisible.  When long lines are truncated, the mode line displays the
@@ -1045,12 +1049,12 @@ Select a node which has been previously visited in a visible window.
 This is similar to @samp{C-x C-b} followed by @samp{m}, but no window is
 created.
 
-@item @code{M-x man}
+@item @code{@kbd{M-x} man}
 @findex man
 @cindex man pages, displaying
 Read the name of a man page to load and display.  This uses the @command{man}
 command on your system to retrieve the contents of the requested man page.
-See also @pxref{--raw-escapes}.
+See also @ref{--raw-escapes}.
 
 @end table
 
@@ -1182,7 +1186,7 @@ matches in other chapters.
 @findex clear-search
 If the @code{highlight-searches} variable is set, matches from search
 commands will be highlighted.  @xref{Variables,, @code{highlight-searches}}.
-Use the @kbd{M-x clear-search} command to clear any search highlights.
+Use the @code{@kbd{M-x} clear-search} command to clear any search highlights.
 
 @cindex search, and case-sensitivity
 @cindex case-sensitivity, and search
@@ -1232,7 +1236,7 @@ matches in a new virtual node, synthesized on the fly.
 Move to the node containing the next matching index item from the last
 @samp{i} command.
 
-@item @kbd{M-x index-apropos}
+@item @code{@kbd{M-x} index-apropos}
 @findex index-apropos
 Grovel the indices of all the known Info files on your system for a
 string, and build a menu of the possible matches.
@@ -1354,7 +1358,7 @@ Reads the name of a menu item in the echo area and selects its node.
 Completion is available while reading the menu label.  @xref{The Echo
 Area, completion}.
 
-@item @kbd{M-x find-menu}
+@item @code{@kbd{M-x} find-menu}
 @findex find-menu
 Move the cursor to the start of this node's menu.
 @end table
@@ -1382,7 +1386,7 @@ Move the cursor to the start of the next nearest menu item or note
 reference in this node.  You can then use @key{RET}
 (@code{select-reference-this-line}) to select the menu or note reference.
 
-@item @kbd{M-TAB} (@code{move-to-prev-xref})
+@item @kbd{M-@key{TAB}} (@code{move-to-prev-xref})
 @itemx @kbd{BackTab}
 @itemx @kbd{Shift-@key{TAB}} (on DOS/Windows only)
 @kindex M-TAB, in Info windows
@@ -1482,7 +1486,7 @@ window on the screen.  Given a numeric argument, @samp{C-x o} moves over
 that many windows.  A negative argument causes @samp{C-x o} to select
 the previous window on the screen.
 
-@item @kbd{M-x prev-window}
+@item @code{@kbd{M-x} prev-window}
 @findex prev-window
 Select the previous window on the screen.  This is identical to
 @samp{C-x o} with a negative argument.
@@ -1511,7 +1515,7 @@ some of them.
 @findex keep-one-window
 Delete all of the windows excepting the current one.
 
-@item @kbd{ESC @kbd{C-v}} (@code{scroll-other-window})
+@item @kbd{@key{ESC} @kbd{C-v}} (@code{scroll-other-window})
 @kindex ESC C-v, in Info windows
 @findex scroll-other-window
 Scroll the other window, in the same fashion that @samp{C-v} might
@@ -1624,12 +1628,12 @@ Accept (or forces completion of) the current input line.
 Insert the next character verbatim.  This is how you can insert control
 characters into a search string.
 
-@item @kbd{M-TAB} (@code{echo-area-tab-insert})
+@item @kbd{M-@key{TAB}} (@code{echo-area-tab-insert})
 @itemx @kbd{Shift-@key{TAB}} (on DOS/Windows only)
 @kindex M-TAB, in the echo area
 @kindex Shift-TAB, in the echo area
 @findex echo-area-tab-insert
-Insert a TAB character.
+Insert a @key{TAB} character.
 
 @kindex Shift-TAB, in the echo area
 @kindex BackTab, in the echo area
@@ -1743,7 +1747,7 @@ Now, typing @samp{l} followed by @samp{TAB} results in @samp{foliate}
 appearing in the echo area, since that is the only choice which begins
 with @samp{fol}.
 
-@item @key{ESC C-v} (@code{echo-area-scroll-completions-window})
+@item @kbd{@key{ESC} C-v} (@code{echo-area-scroll-completions-window})
 @kindex ESC C-v, in the echo area
 @findex echo-area-scroll-completions-window
 Scroll the completions window, if that is visible, or the ``other''
@@ -1762,7 +1766,7 @@ reference document for later use, or if you don't have @TeX{} installed.
 Info provides you with a command for doing this.
 
 @table @asis
-@item @kbd{M-x print-node}
+@item @code{@kbd{M-x} print-node}
 @findex print-node
 @cindex @env{INFO_PRINT_COMMAND}, environment variable
 Pipe the contents of the current node through the command in the
@@ -1787,24 +1791,24 @@ the underlying OS.
 GNU Info contains several commands which self-document GNU Info:
 
 @table @asis
-@item @kbd{M-x describe-command}
+@item @code{@kbd{M-x} describe-command}
 @cindex functions, describing
 @cindex commands, describing
 @findex describe-command
 Read the name of an Info command in the echo area and then display a
 brief description of what that command does.
 
-@item @kbd{M-x describe-key}
+@item @code{@kbd{M-x} describe-key}
 @cindex keys, describing
 @findex describe-key
 Read a key sequence in the echo area, and then display the name and
 documentation of the Info command that the key sequence invokes.
 
-@item @kbd{M-x describe-variable}
+@item @code{@kbd{M-x} describe-variable}
 Read the name of a variable in the echo area and then display a brief
 description of what the variable affects.
 
-@item @kbd{M-x where-is}
+@item @code{@kbd{M-x} where-is}
 @findex where-is
 Read the name of an Info command in the echo area, and then display
 a key sequence which can be typed in order to invoke that command.
@@ -1835,7 +1839,7 @@ Show information about what's currently being viewed in the echo area:
 the Info file name, and current line number and percentage within the
 current node.
 
-@item @kbd{M-x info-version}
+@item @code{@kbd{M-x} info-version}
 @findex info-version
 Display the name and version of the currently running Info program.
 
@@ -1927,7 +1931,7 @@ and it is actually only 40 lines tall, here is a way to tell Info that
 the operating system is correct.
 
 @table @asis
-@item @kbd{M-x set-screen-height}
+@item @code{@kbd{M-x} set-screen-height}
 @findex set-screen-height
 @cindex screen, changing the height of
 Read a height value in the echo area and set the height of the
@@ -1942,7 +1946,7 @@ Finally, Info provides a convenient way to display footnotes which might
 be associated with the current node that you are viewing:
 
 @table @asis
-@item @kbd{ESC C-f} (@code{show-footnotes})
+@item @kbd{@key{ESC} C-f} (@code{show-footnotes})
 @kindex ESC C-f
 @findex show-footnotes
 @cindex footnotes, displaying
@@ -1976,7 +1980,7 @@ Key Bindings}).
 @end enumerate
 
 @table @asis
-@item @kbd{M-x set-variable}
+@item @code{@kbd{M-x} set-variable}
 @cindex variables, setting
 @findex set-variable
 Read the name of a variable, and the value for it, in the echo area
@@ -1984,7 +1988,7 @@ and then set the variable to that value.  Completion is available when
 reading the variable name (@pxref{The Echo Area}); completion is also
 available when reading the value when that makes sense. 
 
-@item @kbd{M-x describe-variable}
+@item @code{@kbd{M-x} describe-variable}
 @cindex variables, describing
 @findex describe-variable
 Read the name of a variable in the echo area and display its value and

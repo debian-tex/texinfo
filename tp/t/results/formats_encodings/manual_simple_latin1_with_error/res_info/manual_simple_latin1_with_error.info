@@ -1,0 +1,37 @@
+This is manual_simple_latin1_with_error.info, produced from
+manual_simple_latin1_with_error.texi.
+
+
+File: manual_simple_latin1_with_error.info,  Node: Top,  Next: Chapitré,  Up: (dir)
+
+Testé
+*****
+
+* Menu:
+
+* Chapitré::
+
+
+File: manual_simple_latin1_with_error.info,  Node: ésseulé
+
+
+File: manual_simple_latin1_with_error.info,  Node: Chapitré,  Prev: Top,  Up: Top
+
+1 Chapitré
+**********
+
+{No value for 'non_connùe'}
+
+
+
+Tag Table:
+Node: Top99
+Node: ésseulé222
+Node: Chapitré284
+
+End Tag Table
+
+
+Local Variables:
+coding: iso-8859-1
+End:

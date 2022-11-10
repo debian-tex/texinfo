@@ -1,103 +1,148 @@
-@node Texinfo::Convert::Unicode
+@node Texinfo@asis{::}Convert@asis{::}Unicode
 @chapter Texinfo::Convert::Unicode
 
-@menu
-* Texinfo@asis{::}Convert@asis{::}Unicode NAME::
-* Texinfo@asis{::}Convert@asis{::}Unicode SYNOPSIS::
-* Texinfo@asis{::}Convert@asis{::}Unicode DESCRIPTION::
-* Texinfo@asis{::}Convert@asis{::}Unicode METHODS::
-* Texinfo@asis{::}Convert@asis{::}Unicode AUTHOR::
-@end menu
+@node Texinfo@asis{::}Convert@asis{::}Unicode NAME
+@section Texinfo::Convert::Unicode NAME
 
-@node Texinfo::Convert::Unicode NAME
-@section NAME
+Texinfo::Convert::Unicode - Representation as Unicode characters
 
-Texinfo::Convert::Unicode - Handle conversion to Unicode
-
-@node Texinfo::Convert::Unicode SYNOPSIS
-@section SYNOPSIS
+@node Texinfo@asis{::}Convert@asis{::}Unicode SYNOPSIS
+@section Texinfo::Convert::Unicode SYNOPSIS
 
 @verbatim
-  use Texinfo::Convert::Unicode qw(unicode_accent encoded_accents 
+  use Texinfo::Convert::Unicode qw(unicode_accent encoded_accents
                                    unicode_text);
 
   my ($innermost_contents, $stack)
-      = Texinfo::Common::find_innermost_accent_contents($accent);
+      = Texinfo::Convert::Utils::find_innermost_accent_contents($accent);
   
-  my $formatted_accents = encoded_accents ($converter, 
-                        convert($innermost_contents), $stack, $encoding, 
+  my $formatted_accents = encoded_accents ($converter,
+                 convert_to_text($innermost_contents), $stack, $encoding,
                         \&Texinfo::Text::ascii_accent_fallback);
 
   my $accent_text = unicode_accent('e', $accent_command);
 @end verbatim
 
-@node Texinfo::Convert::Unicode DESCRIPTION
-@section DESCRIPTION
+@node Texinfo@asis{::}Convert@asis{::}Unicode NOTES
+@section Texinfo::Convert::Unicode NOTES
 
-Texinfo::Convert::Unicode provides methods that deals with unicode for
-converters. Unicode is important, because it is used internally in perl 
-for strings, therefore if converted to Unicode, a string could be output
-in other encodings as well when writting out the converted documents.
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
 
-When an encoding is given as argument of a method of the module, the 
-accented letters should only be converted to unicode if it is known that
-it will be possible to convert the unicode points to encoded charactes
-in the encoding character set.
+@node Texinfo@asis{::}Convert@asis{::}Unicode DESCRIPTION
+@section Texinfo::Convert::Unicode DESCRIPTION
 
-@node Texinfo::Convert::Unicode METHODS
-@section METHODS
+@code{Texinfo::Convert::Unicode} provides methods dealing with Unicode representation
+and conversion of Unicode code points, to be used in converters.
+
+When an encoding supported in Texinfo is given as argument of a method of the
+module, the accented letters or characters should only be represented by Unicode
+code points if it is known that Perl should manage to convert the Unicode code
+points to encoded characters in the encoding character set.  Note that the
+actual conversion is done by Perl, not by the module.
+
+@node Texinfo@asis{::}Convert@asis{::}Unicode METHODS
+@section Texinfo::Convert::Unicode METHODS
 
 @table @asis
-@item $result = unicode_accent($text, $accent_command)
-@anchor{Texinfo::Convert::Unicode $result = unicode_accent($text@comma{} $accent_command)}
+@item $result = brace_no_arg_command($command_name, $encoding)
+@anchor{Texinfo@asis{::}Convert@asis{::}Unicode $result = brace_no_arg_command($command_name@comma{} $encoding)}
+@cindex @code{brace_no_arg_command}
 
-@emph{$text} is the text appearing within an accent command.  @emph{$accent_command}
-should be a Texinfo tree element corresponding to an accent command taking
-an argument.  The function returns the unicode representation of the accented
-character.
+Return the Unicode representation of a command with brace and no argument
+@emph{$command_name} (like @code{@@bullet@{@}}, @code{@@aa@{@}} or @code{@@guilsinglleft@{@}}),
+or @code{undef} if the Unicode representation cannot be converted to encoding
+@emph{$encoding}.
 
-@item $result = encoded_accents ($converter, $text, $stack, $encoding, $format_accent, $set_case)
-@anchor{Texinfo::Convert::Unicode $result = encoded_accents ($converter@comma{} $text@comma{} $stack@comma{} $encoding@comma{} $format_accent@comma{} $set_case)}
+@item $possible_conversion = check_unicode_point_conversion($arg, $output_debug)
+@anchor{Texinfo@asis{::}Convert@asis{::}Unicode $possible_conversion = check_unicode_point_conversion($arg@comma{} $output_debug)}
+@cindex @code{check_unicode_point_conversion}
 
-@emph{$converter} is a converter object.  It may be undef if there is no need of
-converter object in @emph{$format_accent} (@emph{$format_accent} described below).
-@emph{$text} is the text appearing within nested accent commands.  @emph{$stack} is
-an array reference holding the nested accents texinfo element trees.  For
-example, @emph{$text} could be the formatted content and @emph{$stack} the stack 
-returned by @code{Texinfo::Common::find_innermost_accent_contents}.  @emph{$encoding} 
-is the encoding the accented characters should be encoded to.  If 
-@emph{$encoding} not set the @emph{$result} is set to undef.  @emph{$format_accent} 
-is a function reference that is used to format the accent commands if 
-there is no encoded character available for the encoding @emph{$encoding}
-at some point of the conversion of the @emph{$stack}.  Last, if 
-@emph{$set_case} is positive, the result is upper-cased, while if it is negative, 
+Check that it is possible to output actual UTF-8 binary bytes
+corresponding to the Unicode code point string @emph{$arg} (such as
+@code{201D}).  Perl gives a warning and will not output UTF-8 for
+Unicode non-characters such as U+10FFFF.  If the optional
+@emph{$output_debug} argument is set, a debugging output warning
+is emitted if the test of the conversion failed.
+Returns 1 if the conversion is possible and can be attempted,
+0 otherwise.
+
+@item $result = encoded_accents($converter, $text, $stack, $encoding, $format_accent, $set_case)
+@anchor{Texinfo@asis{::}Convert@asis{::}Unicode $result = encoded_accents($converter@comma{} $text@comma{} $stack@comma{} $encoding@comma{} $format_accent@comma{} $set_case)}
+@cindex @code{encoded_accents}
+
+@emph{$encoding} is the encoding the accented characters should be encoded to.  If
+@emph{$encoding} not set, @emph{$result} is set to @code{undef}.  Nested accents and
+their content are passed with @emph{$text} and @emph{$stack}.  @emph{$text} is the text
+appearing within nested accent commands.  @emph{$stack} is an array reference
+holding the nested accents texinfo tree elements.  In general, @emph{$text} is
+the formatted contents and @emph{$stack} the stack returned by
+@ref{Texinfo@asis{::}Convert@asis{::}Utils (\@@contents@comma{}
+\@@accent_commands) = find_innermost_accent_contents($element),, Texinfo::Convert::Utils::find_innermost_accent_contents}.  The function
+tries to convert as much as possible the accents to @emph{$encoding} starting from the
+innermost accent.
+
+@emph{$format_accent} is a function reference that is used to format the accent
+commands if there is no encoded character available at some point of the
+conversion of the @emph{$stack}.  @emph{$converter} is a converter object optionaly
+used by @emph{$format_accent}.  It may be @code{undef} if there is no need of
+converter object in @emph{$format_accent}.
+
+If @emph{$set_case} is positive, the result is upper-cased, while if it is negative,
 the result is lower-cased.
 
-@item $result = unicode_text ($text, $in_code)
-@anchor{Texinfo::Convert::Unicode $result = unicode_text ($text@comma{} $in_code)}
-
-Return @emph{$text} with characters encoded in unicode.  If @emph{$in_code} 
-is set, the text is considered to be in code style.
-
-@item $result = unicode_for_brace_no_arg_command($command_name, $encoding)
-@anchor{Texinfo::Convert::Unicode $result = unicode_for_brace_no_arg_command($command_name@comma{} $encoding)}
-
-Return the unicode representing a command with brace and no argument
-@emph{$command_name} (like @code{@@bullet@{@}}, @code{@@aa@{@}} or @code{@@guilsinglleft@{@}}), 
-or undef if there is no available encoded character for encoding 
-@emph{$encoding}. 
-
 @item $width = string_width($string)
-@anchor{Texinfo::Convert::Unicode $width = string_width($string)}
+@anchor{Texinfo@asis{::}Convert@asis{::}Unicode $width = string_width($string)}
+@cindex @code{string_width}
 
 Return the string width, taking into account the fact that some characters
 have a zero width (like composing accents) while some have a width of 2
 (most chinese characters, for example).
 
+@item $result = unicode_accent($text, $accent_command)
+@anchor{Texinfo@asis{::}Convert@asis{::}Unicode $result = unicode_accent($text@comma{} $accent_command)}
+@cindex @code{unicode_accent}
+
+@emph{$text} is the text appearing within an accent command.  @emph{$accent_command}
+should be a Texinfo tree element corresponding to an accent command taking
+an argument.  The function returns the Unicode representation of the accented
+character.
+
+@item $is_decoded = unicode_point_decoded_in_encoding($encoding, $unicode_point)
+@anchor{Texinfo@asis{::}Convert@asis{::}Unicode $is_decoded = unicode_point_decoded_in_encoding($encoding@comma{} $unicode_point)}
+@cindex @code{unicode_point_decoded_in_encoding}
+
+Return true if the @emph{$unicode_point} will be encoded in the encoding
+@emph{$encoding}.  The @emph{$unicode_point} should be specified as a four letter
+string describing an hexadecimal number with letters in upper case
+(such as @code{201D}).  Tables are used to determine if the @emph{$unicode_point}
+will be encoded, when the encoding does not cover the whole Unicode range.
+
+If the encoding is not supported in Texinfo, the result will always be false.
+
+@item $result = unicode_text($text, $in_code)
+@anchor{Texinfo@asis{::}Convert@asis{::}Unicode $result = unicode_text($text@comma{} $in_code)}
+@cindex @code{unicode_text}
+
+Return @emph{$text} with dashes and quotes corresponding, for example to @code{---} or
+@code{'}, represented as Unicode code points.  If @emph{$in_code} is set, the text is
+considered to be in code style.
+
 @end table
 
-@node Texinfo::Convert::Unicode AUTHOR
-@section AUTHOR
+@node Texinfo@asis{::}Convert@asis{::}Unicode AUTHOR
+@section Texinfo::Convert::Unicode AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo@asis{::}Convert@asis{::}Unicode COPYRIGHT AND LICENSE
+@section Texinfo::Convert::Unicode COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
 

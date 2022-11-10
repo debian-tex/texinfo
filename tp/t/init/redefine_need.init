@@ -1,5 +1,7 @@
 use strict;
 
+use Texinfo::Convert::Text;
+
 texinfo_register_command_formatting('need', \&my_need_formatting);
 
 sub my_need_formatting($$$)
@@ -10,17 +12,19 @@ sub my_need_formatting($$$)
 
   if ($command->{'extra'} and $command->{'extra'}->{'misc_args'}
       and @{$command->{'extra'}->{'misc_args'}}) {
-    $converter->line_warn ("need has the right arg: $command->{'extra'}->{'misc_args'}->[0]",
-                           $command->{'line_nr'});
+    $converter->line_warn($converter,
+            "need has the right arg: $command->{'extra'}->{'misc_args'}->[0]",
+                           $command->{'source_info'});
   } else {
-    $converter->line_warn ("Bad arg for $cmdname",
-                           $command->{'line_nr'});
+    $converter->line_warn($converter, "Bad arg for $cmdname",
+                          $command->{'source_info'});
   }
   my $arg_text;
   if ($command->{'args'} and $command->{'args'}->[0]) {
-    $arg_text = Texinfo::Convert::Text::convert($command->{'args'}->[0]);
+    $arg_text = Texinfo::Convert::Text::convert_to_text($command->{'args'}->[0]);
   } else {
     $arg_text = '';
   }
-  return (&{$converter->{'format_comment'}}($converter, "$cmdname: $arg_text"));
+  return (&{$converter->formatting_function('format_comment')}($converter,
+                                                      "$cmdname: $arg_text"));
 }

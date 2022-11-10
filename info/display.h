@@ -1,6 +1,6 @@
 /* display.h -- How the display in Info is done.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 #ifndef INFO_DISPLAY_H
 #define INFO_DISPLAY_H
 
-#include "info-utils.h"
+#include "scan.h"
 #include "terminal.h"
 
 typedef struct {

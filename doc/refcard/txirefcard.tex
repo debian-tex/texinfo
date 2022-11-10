@@ -13,7 +13,7 @@
 \newcount\letterpaper
 \ifx\undefined\afour\letterpaper=1 \else\letterpaper=0 \fi
 
-% Copyright 2008-2021 Free Software Foundation, Inc.
+% Copyright 2008-2022 Free Software Foundation, Inc.
 %
 % This file is part of GNU Texinfo.
 %
@@ -47,8 +47,8 @@
 % Much of the text is based on, and sometimes copied from, the @-Command
 % Summary node in the Texinfo manual, originally written by Bob Chassell.
 
-\def\versionyear{2021}          % year manual was updated
-\def\versionTexinfo{6.8}     % version of Texinfo this manual is for
+\def\versionyear{2022}          % year manual was updated
+\def\versionTexinfo{7.0}     % version of Texinfo this manual is for
 
 \def\copyrightnotice{%
 \vskip 1ex plus 1filll\begingroup\small
@@ -394,15 +394,16 @@ http://www.gnupress.org} or write to the Free Software Foundation, Inc.,
 
 \chapter{Texinfo document skeleton}
 
-Texinfo source files are plain text; standard extensions are
-\samp{.texinfo}, \samp{.texi}, and \samp{.txi}.  A Texinfo file must
-begin with lines like this:
+Texinfo source files are plain text; extensions are
+\samp{.texinfo}, \samp{.texi} (recommended), and \samp{.txi}.
+In the default case, the output file name is based on the
+input file name.
+
+A Texinfo file must begin with:
 
 {\advance\baselineskip by -3pt
-\code{\bschar input texinfo}\linebreak
-\code{@settitle {\sl name-of-manual}}}
-
-\dots the contents of the Texinfo document,
+\code{\bschar input texinfo.tex}\linebreak
+\dots followed by the contents of the Texinfo document,
 ending with:\linebreak
 \code{@bye}
 
@@ -414,21 +415,22 @@ ending with:\linebreak
 The commands in this section are given approximately in the order in
 which they conventionally appear.
 
-\txicmd{@setfilename}{info-file-name}{Provide a name to be used for the 
+\txicmd{@setfilename}{info-file-name}{Specify a different name to be used for the
 output files.}
-\txicmd{@settitle}{title}{Specify document \var{title}.}
+\txicmd{@settitle}{title}{Specify document \var{title} for page headers and
+document description.}
 \txicmd{@copying}{}{Specify copyright and licensing text. Pair with \code{@end copying}.}
 \txicmd{@insertcopying}{}{Insert text defined by \code{@copying}.}
 
 \subsection{Internationalization}
 
-\txicmd{@documentencoding}{enc}{Declare the input encoding to be \var{enc}; use right after \code{@setfilename}.  Default is \code{US-ASCII}; other possibilities: \code{UTF-8}, \code{ISO-8859-1}, \code{koi8-r}, \dots}
-\txicmd{@documentlanguage}{LL\rmbrack[\code{_}CC]}{Declare the current language as the two-character \acro{ISO}-639 abbreviation \var{LL}, optionally followed by an underscore and a two-letter \acro{ISO} 3166 two-letter country code (\var{CC}). Default is \code{en_US}.}
+\txicmd{@documentencoding}{enc}{Declare the input encoding to be \var{enc}; use right after \code{@setfilename}.  Default is \code{UTF-8}; other possibilities: \code{US-ASCII}, \code{ISO-8859-1}, \code{koi8-r}, \dots}
+\txicmd{@documentlanguage}{ll\rmbrack[\code{_}cc]}{Declare the current language as the two-character \acro{ISO}-639 abbreviation \var{ll}, optionally followed by an underscore and a two-letter \acro{ISO} 3166 two-letter country code (\var{cc}). Default is \code{en_US}.}
 \txicmd{@frenchspacing}{\code{on|off}}{Control spacing after punctuation.}
 
-\subsection{Info directory specifications}
+\subsection{Category specifications}
 
-\txicmd{@dircategory}{category name}{Specify an Info directory section for this file's entries.  Can be repeated.  We try to follow the categories in the Free Software Directory.}
+\txicmd{@dircategory}{category name}{Specify a category for the manual.  Can be repeated.  We try to follow the categories in the Free Software Directory.}
 \txicmd{@direntry}{}{Begin the Info directory menu entries for this file. Pair with \tt @end direntry.}
 
 \subsection{\acro{HTML} document description}
@@ -439,29 +441,28 @@ output files.}
 
 \txicmd{@shorttitlepage}{title}{Generate a minimal title page, generally for the first page of output in a long printed manual.}
 \txicmd{@center}{line-of-text}{Center \var{line-of-text}, usually for titles.}
-\txicmd{@titlefont}{\ttbraced{\var{text}}}{In a printed manual, print \var{text} in a larger than normal font. Ignored in Info.}
-\txicmd{@titlepage}{}{Begin the title page. Write the command on a line of its own, paired with \code{@end titlepage}. Ignored in Info.}
+\txicmd{@titlefont}{\ttbraced{\var{text}}}{Print \var{text} in a larger than normal font.}
+\txicmd{@titlepage}{}{Begin the title page. Write the command on a line of its own, paired with \code{@end titlepage}. For printed manuals only in the default case.}
 \txicmd{@title}{title}{Within \code{@titlepage}, display \var{title} appropriately.}
 \txicmd{@subtitle}{subtitle}{Within \code{@titlepage}, display \var{subtitle}.}
 \txicmd{@author}{author}{Within \code{@titlepage}, display \var{author}.}
 
 \subsection{Tables of contents}
 
-\txicmd{@shortcontents}{}{Print a short table of contents (chapter-level entries only). Not relevant to Info.}
+\txicmd{@shortcontents}{}{Print a short table of contents (chapter-level entries only). Not relevant to Info, not implemented in \LaTeX{}.}
 \txicmd{@summarycontents}{}{Synonym for \code{@shortcontents}.}
-\txicmd{@contents}{}{Print a complete table of contents. Has no effect in Info, which uses menus instead.}
+\txicmd{@contents}{}{Print a complete table of contents. Not relevant to Info.}
 
 
 \section{Nodes}
 
 \txicmd{@node}{name}{Begin a new node.}
-\txicmd{@top}{title}{Mark the topmost \code{@node} in the file, which 
-must be defined on the line immediately preceding \code{@top}. The 
-\var{title} is formatted as a chapter-level heading.  The entire top 
-node, including the \code{@node} and \code{@top} lines, are normally 
-enclosed with \code{@ifnottex ... @end ifnottex}.}
+\txicmd{@top}{title}{Mark the topmost \code{@node} in the file, which
+must be defined on the line immediately preceding \code{@top}. The
+\var{title} is formatted as a chapter-level heading.  The contents
+of the Top node do not appear in printed output nor in DocBook output.}
 \txicmd{@anchor}{\ttbraced{\var{name}}}{Define \var{name} as the current location, for use as a cross-reference target.}
-\txicmd{@novalidate}{}{Suppress validation of node references and omit creation of auxiliary files with \TeX. Use before \code{@setfilename}.}
+\txicmd{@novalidate}{}{Suppress validation of node references and omit creation of auxiliary files with \TeX.}
 
 
 \section{Chapter structuring}
@@ -505,20 +506,23 @@ enclosed with \code{@ifnottex ... @end ifnottex}.}
 
 \section{Menus}
 
-\txicmd{@menu}{}{Mark the beginning of a menu of nodes in Info. No effect in a printed manual. Pair with \code{@end menu}.}
+\txicmd{@menu}{}{Mark the beginning of a menu of nodes. No effect in a printed manual and in DocBook. Not used in the default case in HTML output. Pair with \code{@end menu}.}
 \txicmd{@detailmenu}{}{Mark the (optional) detailed node listing in a master menu.}
 
 
 \section{Cross references}
 
-\subsection{Within the Info system}
+\subsection{To Texinfo manuals}
 
 \txicmd{@xref}{\ttbraced{node, \rmbrack[entry], \rmbrack[node-title], \rmbrack[info-file], \rmbrack[manual]}}{Makes a reference that starts with `See' in a printed manual. Follow command with punctuation. Only the first argument is mandatory.}
 \txicmd{@pxref}{\ttbraced{node, \rmbrack[entry], \rmbrack[node-title], \rmbrack[info-file], \rmbrack[manual]}}{Like \code{@xref}, but starts with `see' instead of `See', and must be used inside parentheses.}
 \txicmd{@ref}{\ttbraced{node, \rmbrack[entry], \rmbrack[node-title], \rmbrack[info-file], \rmbrack[manual]}}{Like \code{@xref}, but produces only the bare reference without `See' or `see'; must be followed by a punctuation mark.}
+
+References outside of the current manual, to a different Texinfo file have an \rmbrack[info-file] and/or a \rmbrack[manual] argument. The \txicmdarg{node} argument can be omitted in that case to refer to a manual as a whole.
+
 \txicmd{@xrefautomaticsectiontitle}{\code{on|off}}{By default, use the section title instead of the node name in cross references.}
 
-\subsection{Outside of Info}
+\subsection{Outside of the Texinfo system}
 
 \txicmd{@url}{\ttbraced{url, \rmbrack[displayed-text], \rmbrack[replacement]}}{Make a hyperlink reference to a uniform resource locator.  \code{@uref} is a synonym.}
 \txicmd{@cite}{\ttbraced{title}}{Indicate the name of a book or other reference that has no Info file; no hyperlink.}
@@ -528,18 +532,18 @@ enclosed with \code{@ifnottex ... @end ifnottex}.}
 
 \subsection{Markup for regular text}
 
-\txicmd{@abbr}{\ttbraced{abbreviation}}{Indicate a general abbreviation, such as `Comput.'}
-\txicmd{@acronym}{\ttbraced{acronym}}{Indicate an acronym written in all capital letters, such as `\acro{NASA}'.}
+\txicmd{@abbr}{\ttbraced{abbreviation, \rmbrack[meaning]}}{Indicate a general abbreviation, such as `Comput.'}
+\txicmd{@acronym}{\ttbraced{acronym, \rmbrack[meaning]}}{Indicate an acronym written in all capital letters, such as `\acro{NASA}'.}
 \txicmd{@dfn}{\ttbraced{term}}{Indicate the introductory or defining use of a technical term.}
-\txicmd{@emph}{\ttbraced{text}}{Emphasize \var{text}, by using italics where possible, and enclosing in asterisks in Info.}
-\txicmd{@strong}{\ttbraced{text}}{Emphasize \var{text} even more strongly, by using bold where possible; still enclosed in asterisks in Info.}
+\txicmd{@emph}{\ttbraced{text}}{Emphasize \var{text}.}
+\txicmd{@strong}{\ttbraced{text}}{Emphasize \var{text} even more strongly.}
 \txicmd{@sub}{\ttbraced{text}}{Set \var{text} as a subscript.}
 \txicmd{@sup}{\ttbraced{text}}{Set \var{text} as a superscript.}
 \txicmd{@var}{\ttbraced{metasyntactic-variable}}{Indicate a meta variable (a name that stands for another piece of text).}
 
 \subsection{Markup for literal text}
 
-\txicmd{@code}{\ttbraced{sample-code}}{Indicate an expression, a syntactically complete token, or a program name. Unquoted in Info output.}
+\txicmd{@code}{\ttbraced{sample-code}}{Indicate an expression, a syntactically complete token, or a program name.}
 \txicmd{@command}{\ttbraced{command-name}}{Indicate a system command name, such as \code{ls}.}
 \txicmd{@email}{\ttbraced{address, \rmbrack[displayed-text]}}{Indicate an email address.}
 \txicmd{@env}{\ttbraced{environment-variable}}{Indicate an environment variable name, such as \code{PATH}.}
@@ -548,7 +552,7 @@ enclosed with \code{@ifnottex ... @end ifnottex}.}
 \txicmd{@kbd}{\ttbraced{keyboard-characters}}{Indicate characters of input to be typed by users.}
 \txicmd{@key}{\ttbraced{key-name}}{Indicate the name of a key on a keyboard.}
 \txicmd{@option}{\ttbraced{option-name}}{Indicate a command-line option, such as \code{-v} and \code{--help}.}
-\txicmd{@samp}{\ttbraced{text}}{Indicate a sequence of literal characters, in general. Quoted in Info output.}
+\txicmd{@samp}{\ttbraced{text}}{Indicate a sequence of literal characters, in general.}
 \txicmd{@verb}{\ttbraced{delimchar literal-text delimchar}}{Output \var{literal-text}, delimited by the single character \var{delimchar}, exactly as is, including any whitespace or Texinfo special characters. Example: \code{@verb\ttbraced{|@ @\rbracechar|}}.}
 
 \subsection{GUI sequences}
@@ -584,26 +588,24 @@ enclosed with \code{@ifnottex ... @end ifnottex}.}
 its own and continue through the following lines of input until the
 corresponding \code{@end \var{envname}} is seen.
 
-\txicmd{@cartouche}{}{Highlight a block of text by drawing a box with rounded corners around it. Pair with \code{@end cartouche}. No effect in Info.}
+\txicmd{@cartouche}{}{Highlight a block of text by drawing a box with rounded corners around it. Pair with \code{@end cartouche}. In HTML, a normal rectangle is drawn.}
 \txicmd{@exdent}{line-of-text}{Output \var{line-of-text} without any indentation.}
 \txicmd{@indent}{}{Insert normal paragraph indentation.}
 \txicmd{@noindent}{}{Omit the normal indentation when starting a new paragraph; often used after environments.}
 
 \subsection{Normally-filled displays using regular text fonts}
 
-In these environments, the input is automatically rebroken into lines of
-output as usual.
+The text of those environments is processed like normal text (regular font, text is filled).
 
-\txicmd{@quotation}{}{Fill text, indent on both left and right, retain
-normal text font.  Often used for quoting text.  Pair with \code{@end quotation}.}
-\txicmd{@smallquotation}{}{Like \code{@quotation}, but select a smaller (text) font where possible.  Pair with \code{@end quotation}.}
-\txicmd{@indentedblock}{}{Fill text, indent on left (but not right), retain normal text font.  Pair with \code{@end indentedblock}.}
+\txicmd{@quotation}{\rmbrack[leading-text]}{Indent on left. May also be indented on right.  Often used for quoting text.  The author of the quotation may be specified with the \code{@author} command.  Pair with \code{@end quotation}.}
+\txicmd{@smallquotation}{\rmbrack[leading-text]}{Like \code{@quotation}, but select a smaller (text) font where possible.  Pair with \code{@end quotation}.}
+\txicmd{@indentedblock}{}{Indent on left (but not right).  Pair with \code{@end indentedblock}.}
 \txicmd{@smallindentedblock}{}{Like \code{@indentedblock}, but select a smaller (text) font where possible.  Pair with \code{@end smallindentedblock}.}
 \txicmd{@raggedright}{}{Leave right end ragged, but otherwise fill text; retain normal text font. Pair with \code{@end raggedright}.}
 
 \subsection{Line-for-line displays using regular text fonts}
 
-In these environments, each line of input is a line of output.
+In these environments, each line of input is a line of output; that is, the text is not filled.
 
 \txicmd{@display}{}{Begin displayed text: do not fill, but indent text on left; retain normal text font. Pair with \code{@end display}.}
 \txicmd{@smalldisplay}{}{Like \code{@display}, but select a smaller (text) font where possible.  Pair with \code{@end smalldisplay}.}
@@ -614,9 +616,9 @@ In these environments, each line of input is a line of output.
 
 \subsection{Displays using fixed-width fonts}
 
-In these environments also, each line of input is a line of output.
+In these environments also, each line of input is a line of output; that is, the text is not filled.
 
-\txicmd{@example}{}{Begin an example. Indent text, do not fill, and select fixed-width font. Pair with \code{@end example}.}
+\txicmd{@example}{\rmbrack[arg]*}{Begin an example. Indent text, do not fill, and select fixed-width font.  It is recommended that the first argument, if given, specifies the language of the example code.  Pair with \code{@end example}.}
 \txicmd{@smallexample}{}{Like \code{@example}, but where possible, print text in a smaller font. Pair with \code{@end smallexample}.}
 \txicmd{@lisp}{}{Like \code{@example}, but specifically for an example of Lisp code. Pair with \code{@end lisp}.}
 \txicmd{@smalllisp}{}{Begin an example specifically of Lisp code; same effects as \code{@smallexample}. Pair with \code{@end smalllisp}.}
@@ -641,14 +643,14 @@ In these environments also, each line of input is a line of output.
 
 \section{Floating displays}
 
-\txicmd{@float}{}{Environment enclosing material which can float. Pair with \code{@end float}.}
-\txicmd{@listoffloats}{}{Generate a list of floats for a given float type.}
+\txicmd{@float}{\rmbrack[label], \rmbrack[type]}{Environment enclosing material which can float. Pair with \code{@end float}.}
+\txicmd{@listoffloats}{\rmbrack[type]}{Generate a list of floats for a given float type.}
 \txicmd{@caption}{}{Define the full caption for a \code{@float} anywhere in the float environment.}
 \txicmd{@shortcaption}{}{Define the short caption for a \code{@float}, used in the list of floats.}
 \txicmd{@image}{\ttbraced{filename, \rmbrack[width], \rmbrack[height], \rmbrack[alt], \rmbrack[ext]}}{Include graphics image in external \var{filename} scaled to the given width and/or height, using alt text and looking for \samp{\var{filename}.\var{ext}} first.  Can occur inline or by itself on the page.}
 
 \subsection{Footnotes}
-\txicmd{@footnote}{\ttbraced{text-of-footnote}}{Insert a footnote: \var{text-of-footnote} is printed at the bottom of the page by \TeX, while Info and others may format at either (by default) the end of the current node, or in a separate node.}
+\txicmd{@footnote}{\ttbraced{text-of-footnote}}{Insert a footnote: \var{text-of-footnote} appears at the bottom of the page in printed output formats. In online formats (HTML and Info), the footnote text is located at either (by default) the end of the current node, or in a separate node.}
 \txicmd{@footnotestyle}{style}{Specify footnote style: \samp{end} or \samp{separate}.}
 
 
@@ -660,13 +662,16 @@ In these environments also, each line of input is a line of output.
 \txicmd{@pindex}{entry}{Add entry to the index of programs.}
 \txicmd{@tindex}{entry}{Add entry to the index of data types.}
 \txicmd{@vindex}{entry}{Add entry to the index of variables.}
+\txicmd{@subentry}{entry}{Separate parts of a multilevel index entry.}
 \txicmd{@defindex}{newidx}{Define a new index and its indexing command. Format entries as regular text.}
 \txicmd{@defcodeindex}{newidx}{Define a new index and its indexing command (namely, \code{@\var{newidx}index}). Format entries in this index with \code{@code}.}
 \txicmd{@syncodeindex}{from-index to-index}{Merge the contents of \var{from-index} into \code{to-index}, formatting the entries in \var{from-index} with \code{@code}.}
 \txicmd{@synindex}{from-index to-index}{Merge the contents of \var{from-index} into \var{to-index}; no special formatting.}
-\txicmd{@printindex}{index-name}{Generate an alphabetized index (using two columns in a printed manual).}
-\txicmd{@sortas}{\ttbraced{key}}{Specify a string by which to sort an 
+\txicmd{@printindex}{index-name}{Generate an alphabetized index.}
+\txicmd{@sortas}{\ttbraced{key}}{Specify a string by which to sort an
 index entry.}
+\txicmd{@seealso}{\ttbraced{entry}}{Refer to another relevant index entry.}
+\txicmd{@seeentry}{\ttbraced{entry}}{Redirect to another index entry.}
 
 
 \section{Insertions within a paragraph}
@@ -684,11 +689,11 @@ index entry.}
 
 \subsection{Spacing refinements}
 
-\txicmd{@:}{}{Tell \TeX\  to refrain from inserting extra whitespace after an immediately preceding period, question mark, exclamation mark, or colon, as \TeX\  normally would.}
+\txicmd{@:}{}{Tell printed output processors to refrain from inserting extra whitespace after an immediately preceding period, question mark, exclamation mark, or colon.}
 \txicmd{@.}{}{Insert a period that ends a sentence; typically needed after an end-of-sentence capital letter.}
 \txicmd{@?}{}{Insert a question mark that ends a sentence.}
 \txicmd{@!}{}{Insert an exclamation point that ends a sentence.}
-\txicmd{@dmn}{\ttbraced{dimension}}{Format a unit of measure, as in `12\thinspace{}pt'. Causes \TeX\  to insert a thin space before \var{dimension}. No effect in Info.}
+\txicmd{@dmn}{\ttbraced{dimension}}{Format a unit of measure, as in `12\thinspace{}pt'. Insert a thin space before \var{dimension} in printed output, and no space in other output formats.}
 
 \subsection{Accents}
 
@@ -734,7 +739,7 @@ exception of \code{@tieaccent}.
 \txicmd{@bullet}{\ttbraced{}}{Insert a large round dot, $\bullet$ (\samp{*} in Info).}
 \txicmd{@copyright}{\ttbraced{}}{Insert the copyright symbol, \copyright.}
 \txicmd{@dots}{\ttbraced{}}{Insert an ellipsis, `\dots'.}
-\txicmd{@enddots}{\ttbraced{}}{Insert an end-of-sentence ellipsis, `\dots' (more following space in \TeX.)}
+\txicmd{@enddots}{\ttbraced{}}{Insert an end-of-sentence ellipsis, `\dots' (more following space.)}
 \txicmd{@euro}{\ttbraced{}}{Insert the Euro currency sign, \euro.}
 \txicmd{@guillemetleft\ttbraced{} @guillemetright\ttbraced{} @guillemotleft\ttbraced{} @guillemotright @guilsinglleft\ttbraced{} @guilsinglright\ttbraced{} @quotedblbase\ttbraced{} @quotedblleft @quotedblright\ttbraced{} @quoteleft\ttbraced{} @quoteright\ttbraced{} @quotesinglbase\ttbraced{}}{}{Insert various quotation marks: \guillemetleft\ \guillemetright\ \guillemotleft\ \guillemotright\ \guilsinglleft\ \guilsinglright\ \quotedblbase\ \quotedblleft\ \quotedblright\ \quoteleft\ \quoteright\ \quotesinglbase.}
 \txicmd{@pounds}{\ttbraced{}}{Insert the pounds sterling currency sign, {\it\$}.}
@@ -774,21 +779,20 @@ exception of \code{@tieaccent}.
 \section{Definition commands}
 
 The \code{...x} variant of each command is analogous to \code{@itemx},
-leaving no extra space above.  All definition commands must be written
-entirely on one line.  Multiword arguments must be enclosed in braces.
+leaving no extra space above.  All definition commands must be written entirely on one line, a lone \samp{@} at the end of each line allowing definition lines to be continued (only in this context).  Multiword arguments must be enclosed in braces.
 Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 
-\subsection{Function-like definitions, untyped}
+\subsection{Function-like definitions with simple arguments}
 
 \txicmdx{@deffn}{category name arguments}{Format a description for a function, interactive command, or similar entity that may take arguments. Its arguments are the \var{category} of entity being described, the \var{name} of this particular entity, and the entity's \var{arguments}, if any.}
 \txicmdx{@defun}{name arguments}{Format a description for a function; equivalent to \samp{@deffn Function \dots}.}
 \txicmdx{@defmac}{name arguments}{Format a description for a macro; equivalent to \samp{@deffn Macro \dots}.}
 \txicmdx{@defspec}{name arguments}{Format a description for a special form; equivalent to \samp{@deffn \ttbraced{Special Form} \dots}.}
 
-\subsection{Function-like definitions, typed}
+\subsection{Function-like definitions, generic case}
 
-\txicmdx{@deftypefn}{category data-type name arguments}{Like \code{@deffn}, but for typed entities.}
-\txicmdx{@deftypefun}{data-type name arguments}{Like \code{@defun}, but for typed entities; equivalent to \samp{@deftypefn Function \dots}.}
+\txicmdx{@deftypefn}{category data-type name arguments}{Like \code{@deffn}, but with return information.  The return information can be empty as \samp{\ttbraced{}}.  Suitable for typed entities and complex arguments.}
+\txicmdx{@deftypefun}{data-type name arguments}{Like \code{@defun}, but with return information; equivalent to \samp{@deftypefn Function \dots}.}
 
 \subsection{Variable-like definitions, untyped}
 
@@ -805,19 +809,19 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 
 \txicmdx{@deftp}{category name attributes}{Format a description for a data type.  Its arguments are the \var{category}, the \var{name} of the type (e.g., \samp{int}), and then the \var{attributes} of objects of that type.}
 
-\subsection{Object-oriented entities, untyped}
+\subsection{Object-oriented entities with simple arguments}
 
 \txicmdx{@defcv}{category class name}{Format a description for a variable associated with a class in object-oriented programming.}
 \txicmdx{@defivar}{class name}{Format a description for an instance variable \var{name} in object-oriented programming; equivalent to  \samp{@defcv \ttbraced{Instance Variable of} \dots}.}
 \txicmdx{@defmethod}{class name arguments}{Format a description for method \var{name}; equivalent to \samp{@defop \ttbraced{Method on} \dots}.}
 \txicmdx{@defop}{category class name arguments}{Format a description for an operation in object-oriented programming.   Its arguments are the \var{category} of the variable, the \var{class} to which it belongs, its \var{name}, and any \var{arguments}.}
 
-\subsection{Object-oriented entities, typed}
+\subsection{Object-oriented entities, generic case}
 
-\txicmdx{@deftypecv}{category class datatype name}{Like \code{@defcv}, but for typed class variables.}
-\txicmdx{@deftypeivar}{class data-type name}{Like \code{@defivar}, but for typed instance variables.}
-\txicmdx{@deftypemethod}{class data-type name arguments}{Format a description for a typed method in object-oriented programming; equivalent to \samp{@deftypeop \ttbraced{Method on} \dots}.}
-\txicmdx{@deftypeop}{category class data-type name arguments}{Format a description for a typed operation in object-oriented programming.}
+\txicmdx{@deftypecv}{category class datatype name}{Like \code{@defcv}, but with return information. Suitable for typed entities and complex arguments.}
+\txicmdx{@deftypeivar}{class data-type name}{Like \code{@defivar}, but with return information.}
+\txicmdx{@deftypemethod}{class data-type name arguments}{Format a description for method with a return information in object-oriented programming; equivalent to \samp{@deftypeop \ttbraced{Method on} \dots}.}
+\txicmdx{@deftypeop}{category class data-type name arguments}{Format a description for an operation with return information in object-oriented programming.}
 
 
 \section{Conditionally (in)visible text}
@@ -833,14 +837,16 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 \txicmd{@ifinfo}{\dots\code{@end ifinfo}}{Text to appear in both Info and (for historical compatibility) plain text output.}
 \txicmd{@ifplaintext}{\dots\code{@end ifplaintext}}{Text to appear only in plain text output.}
 \txicmd{@iftex}{\dots\code{@end iftex}}{Text to appear only in the \TeX\ output.}
+\txicmd{@iflatex}{\dots\code{@end iflatex}}{Text to appear only in the La\TeX\ output.}
 \txicmd{@ifxml}{\dots\code{@end ifxml}}{Text to appear only in \acro{XML} output.}
-\txicmd{@ifnotdocbook @ifnothtml @ifnotplaintext @ifnottex @ifnotxml}{\dots\code{@end ifnot\var{format}}}{Begin text to be ignored in one output format but no others: \code{@ifnothtml} text is omitted from \acro{HTML} output, etc.}
+\txicmd{@ifnotdocbook @ifnothtml @ifnotplaintext @ifnottex @ifnotlatex @ifnotxml}{\dots\code{@end ifnot\var{format}}}{Begin text to be ignored in one output format but no others: \code{@ifnothtml} text is omitted from \acro{HTML} output, etc.}
 \txicmd{@ifnotinfo}{\dots\code{@end ifnotinfo}}{Like the other \code{@ifnot\dots} commands, but omit from plain text output as well as Info.}
 \txicmd{@inlinefmt}{\ttbraced{format, text}}{Include Texinfo \var{text} only in \var{format} output.}
 \txicmd{@inlinefmtifelse}{\ttbraced{format, then-text, else-text}}{Include either \var{then-text} or \var{else-text} according to whether \var{format} is output.}
 
 \subsection{Raw formatter text}
 
+\txicmd{@latex}{\dots\code{@end latex}}{Enter La\TeX\ completely.}
 \txicmd{@docbook}{\dots\code{@end docbook}}{Enter Docbook completely.}
 \txicmd{@html}{\dots\code{@end html}}{Enter \acro{HTML} completely.}
 \txicmd{@tex}{\dots\code{@end tex}}{Enter \TeX\  completely (e.g., \bschar\ becomes an escape character).}
@@ -873,14 +879,15 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 \section{File inclusion}
 
 \txicmd{@include}{filename}{Read the contents of Texinfo source file \var{filename}.}
-\txicmd{@verbatiminclude}{filename}{Incorporate the contents of \var{filename} in the output, exactly as is (in the fixed-width font).}
+\txicmd{@verbatiminclude}{filename}{Incorporate the contents of \var{filename} in the output, as is, as if in a \samp{@verbatim} block.}
 
 
-\section{Formatting and headers/footers for \TeX}
+\section{Formatting printed output}
 
 \txicmd{@allowcodebreaks}{\code{true|false}}{Control breaks at \code{-} and \code{_} in \TeX; default true.}
 \txicmd{@finalout}{}{Omit large black rectangles at overfull lines in \TeX\ output.}
-\txicmd{@fonttextsize}{\code{10|11}}{Change size of main body font in \TeX.}
+\txicmd{@fonttextsize}{\code{10|11}}{Change size of main body font in printed output.}
+\txicmd{@microtype}{\code{on|off}}{Turn microtypography on or off in printed output.}
 
 \subsection{Paper sizes}
 
@@ -905,7 +912,7 @@ The default paper size is \acro{US} letter-size, 8x11in.
 \footingheading{even}{even-numbered (left-hand) pages}
 \footingheading{every}{every page}
 
-\txicmd{@thischapter, @thischaptername, @thischapternum, @thisfile, @thispage, @thistitle}{}{These commands are only allowed in a heading or footing. They stand for, respectively, the number and name of the current chapter (in the format `Chapter~1: Title'), the current chapter name only (`Title'), the current chapter number only (`1'), the filename, the current page number, and the title of the document.}
+\txicmd{@thischapter, @thischaptername, @thischapternum, @thissection, @thissectionname, @thissectionnum, @thisfile, @thispage, @thistitle}{}{These commands are only allowed in a heading or footing. They stand for, respectively, the number and name of the current chapter (in the format `Chapter~1: Title'), the current chapter name only, the current chapter number only, the number and name of the current section, the current section name only, the current section number only, the filename, the current page number, and the title of the document.}
 
 
 \section{Document preferences}

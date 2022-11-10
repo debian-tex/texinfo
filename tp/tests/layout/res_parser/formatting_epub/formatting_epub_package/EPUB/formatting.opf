@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="texi-uid">
+   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <dc:identifier id="texi-uid">texinfo:formatting</dc:identifier>
+      <dc:title>title -a</dc:title>
+      <dc:language>en</dc:language>
+      <dc:creator>author1 -a with accents in name Téça</dc:creator>
+      <dc:creator>author2 -a</dc:creator>
+      <dc:creator>author</dc:creator>
+   </metadata>
+   <manifest>
+      <item id="nav" properties="nav" media-type="application/xhtml+xml" href="xhtml/nav_toc.xhtml"/>
+      <item id="unit1" media-type="application/xhtml+xml" href="xhtml/formatting.xhtml"/>
+      <item id="unit2" media-type="application/xhtml+xml" href="xhtml/chapter.xhtml"/>
+      <item id="unit3" media-type="application/xhtml+xml" href="xhtml/chapter2.xhtml"/>
+      <item id="image1" media-type="e--xt/image" href="images/10-f--ile.e--xt"/>
+      <item id="image2" media-type="image/png" href="images/14-f--ile.png"/>
+      <item id="image3" media-type="image/png" href="images/15-f--ile.png"/>
+      <item id="image4" media-type="e--xt/image" href="images/16-f--ile.e--xt"/>
+      <item id="image5" media-type="image/png" href="images/17-f--ile.png"/>
+      <item id="image6" media-type="image/png" href="images/18-f--ile.png"/>
+      <item id="image7" media-type="e--xt/image" href="images/19-f--ile.e--xt"/>
+      <item id="image8" media-type="e--xt/image" href="images/21-f--ile.e--xt"/>
+      <item id="image9" media-type="image/png" href="images/25-f--ile.png"/>
+      <item id="image10" media-type="image/png" href="images/26-f--ile.png"/>
+      <item id="image11" media-type="e--xt/image" href="images/27-f--ile.e--xt"/>
+      <item id="image12" media-type="image/png" href="images/28-f--ile.png"/>
+      <item id="image13" media-type="image/png" href="images/29-f--ile.png"/>
+      <item id="image14" media-type="image/png" href="images/3-f--ile.png"/>
+      <item id="image15" media-type="e--xt/image" href="images/30-f--ile.e--xt"/>
+      <item id="image16" media-type="e--xt/image" href="images/32-f--ile.e--xt"/>
+      <item id="image17" media-type="image/png" href="images/36-f--ile.png"/>
+      <item id="image18" media-type="image/png" href="images/37-f--ile.png"/>
+      <item id="image19" media-type="e--xt/image" href="images/38-f--ile.e--xt"/>
+      <item id="image20" media-type="image/png" href="images/39-f--ile.png"/>
+      <item id="image21" media-type="image/png" href="images/4-f--ile.png"/>
+      <item id="image22" media-type="image/png" href="images/40-f--ile.png"/>
+      <item id="image23" media-type="e--xt/image" href="images/41-f--ile.e--xt"/>
+      <item id="image24" media-type="e--xt/image" href="images/43-f--ile.e--xt"/>
+      <item id="image25" media-type="image/png" href="images/47-f--ile.png"/>
+      <item id="image26" media-type="image/png" href="images/48-f--ile.png"/>
+      <item id="image27" media-type="e--xt/image" href="images/49-f--ile.e--xt"/>
+      <item id="image28" media-type="e--xt/image" href="images/5-f--ile.e--xt"/>
+      <item id="image29" media-type="image/png" href="images/50-f--ile.png"/>
+      <item id="image30" media-type="image/png" href="images/51-f--ile.png"/>
+      <item id="image31" media-type="e--xt/image" href="images/52-f--ile.e--xt"/>
+      <item id="image32" media-type="e--xt/image" href="images/54-f--ile.e--xt"/>
+      <item id="image33" media-type="image/png" href="images/6-f--ile.png"/>
+      <item id="image34" media-type="image/png" href="images/7-f--ile.png"/>
+      <item id="image35" media-type="e--xt/image" href="images/8-f--ile.e--xt"/>
+   </manifest>
+   <spine>
+      <itemref idref="unit1"/>
+      <itemref idref="unit2"/>
+      <itemref idref="unit3"/>
+   </spine>
+</package>

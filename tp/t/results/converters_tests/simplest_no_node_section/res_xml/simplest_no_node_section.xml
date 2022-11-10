@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V6.8//EN" "http://www.gnu.org/software/texinfo/dtd/6.8/texinfo.dtd">
+<texinfo>
+<filename file="simplest_no_node_section.xml"></filename>
+<preamblebeforebeginning>\input texinfo @c -*-texinfo-*-
+
+</preamblebeforebeginning><setfilename file="simplest_no_node_section.info" spaces=" ">simplest_no_node_section.info</setfilename>
+
+<para>This is a very simple texi manual <spacecmd type="spc"/> &lt;&gt;.
+</para>
+<bye></bye>
+</texinfo>

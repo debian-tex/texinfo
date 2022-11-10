@@ -1,7 +1,6 @@
 # PlainTexinfo.pm: convert the Texinfo tree as Texinfo
 #
-# Copyright 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software Foundation, 
-# Inc.
+# Copyright 2012-2022 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,22 +17,27 @@
 # 
 # Original author: Patrice Dumas <pertusus@free.fr>
 
-# This calls Texinfo::Convert::Texinfo::convert while inheriting standard
-# functions from Texinfo::Convert::Converter.
+# This calls Texinfo::Convert::Texinfo::convert_to_texinfo while
+# inheriting standard functions from Texinfo::Convert::Converter.
 
 package Texinfo::Convert::PlainTexinfo;
 
 use 5.00405;
 use strict;
 
+use Texinfo::Convert::Texinfo;
 use Texinfo::Convert::Converter;
 
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::Converter);
 
+$VERSION = '7.0';
+
+
 my %defaults = (
+  'EXTENSION'            => 'texi',
+  # different from the default, which is undef
   'OUTFILE'              => '-',
-  'EXTENSION'            => '.txi',
 );
 
 sub converter_defaults($$)
@@ -64,7 +68,7 @@ sub _convert($$)
   my $self = shift;
   my $root = shift;
   
-  return Texinfo::Convert::Texinfo::convert($root);
+  return Texinfo::Convert::Texinfo::convert_to_texinfo($root);
 }
 
 1;

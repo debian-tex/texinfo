@@ -1,13 +1,13 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 use Test::More;
 
-BEGIN { plan tests => 12; }
+BEGIN { plan tests => 23; }
 
-use Texinfo::Parser qw(parse_texi_text);
+use Texinfo::Parser qw(parse_texi_piece parse_texi_line);
 #use Texinfo::Convert::Texinfo;
 use Texinfo::Common;
 use Data::Dumper;
@@ -20,12 +20,17 @@ sub test_is_empty($$$;$)
   my $is_empty = shift;
   my $in = shift;
   my $do_not_ignore_index_entries = shift;
-  my $tree = parse_texi_text(undef, $in);
-  my $result = Texinfo::Common::is_content_empty($tree, $do_not_ignore_index_entries);
+  my $tree_as_text = parse_texi_piece(undef, $in);
+  my $tree_as_line = parse_texi_line(undef, $in);
+  my $result_as_text = Texinfo::Common::is_content_empty($tree_as_text,
+                                               $do_not_ignore_index_entries);
+  my $result_as_line = Texinfo::Common::is_content_empty($tree_as_line,
+                                               $do_not_ignore_index_entries);
   if (not defined($is_empty)) {
-    print STDERR " --> $name: $result\n";
+    print STDERR " --> $name: $result_as_text, $result_as_line\n";
   } else {
-    is($result, $is_empty, $name);
+    is($result_as_text, $is_empty, "text $name");
+    is($result_as_line, $is_empty, "line $name");
   }
 }
 

@@ -4,48 +4,67 @@
 @menu
 * Texinfo@asis{::}Encoding NAME::
 * Texinfo@asis{::}Encoding SYNOPSIS::
+* Texinfo@asis{::}Encoding NOTES::
 * Texinfo@asis{::}Encoding DESCRIPTION::
 * Texinfo@asis{::}Encoding METHODS::
 * Texinfo@asis{::}Encoding AUTHOR::
+* Texinfo@asis{::}Encoding COPYRIGHT AND LICENSE::
 @end menu
 
 @node Texinfo::Encoding NAME
-@section NAME
+@section Texinfo::Encoding NAME
 
 Texinfo::Encoding - Encodings and encoding aliases
 
 @node Texinfo::Encoding SYNOPSIS
-@section SYNOPSIS
+@section Texinfo::Encoding SYNOPSIS
 
 @verbatim
   use Texinfo::Encoding qw(encoding_alias);
 
-  my ($canonical_texinfo_encoding, $perl_encoding, 
+  my ($canonical_texinfo_encoding, $perl_encoding,
       $canonical_output_encoding) = encoding_alias($encoding);
 @end verbatim
 
+@node Texinfo::Encoding NOTES
+@section Texinfo::Encoding NOTES
+
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
+
 @node Texinfo::Encoding DESCRIPTION
-@section DESCRIPTION
+@section Texinfo::Encoding DESCRIPTION
 
 Texinfo::Encoding takes care of encoding definition and aliasing.
 
 @node Texinfo::Encoding METHODS
-@section METHODS
+@section Texinfo::Encoding METHODS
 
 @table @asis
 @item ($canonical_texinfo_encoding, $perl_encoding, $canonical_output_encoding) = encoding_alias($encoding)
 @anchor{Texinfo::Encoding ($canonical_texinfo_encoding@comma{} $perl_encoding@comma{} $canonical_output_encoding) = encoding_alias($encoding)}
 
-Taking an encoding name as argument, the function returns the 
-corresponding canonical Texinfo encoding @emph{$canonical_texinfo_encoding} 
-as described in the Texinfo manual (or undef), an encoding name suitable 
-for perl @emph{$perl_encoding}, and an encoding name suitable for most 
-output formaats, especially HTML, @emph{$canonical_output_encoding}. 
+Taking an encoding name as argument, the function returns the
+corresponding canonical Texinfo encoding @emph{$canonical_texinfo_encoding}
+as described in the Texinfo manual (or @code{undef}), an encoding name suitable
+for perl @emph{$perl_encoding}, and an encoding name suitable for most
+output formats, especially HTML, @emph{$canonical_output_encoding}.
 
 @end table
 
 @node Texinfo::Encoding AUTHOR
-@section AUTHOR
+@section Texinfo::Encoding AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo::Encoding COPYRIGHT AND LICENSE
+@section Texinfo::Encoding COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
 

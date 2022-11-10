@@ -1,4 +1,4 @@
-# Copyright 2014-2020 Free Software Foundation, Inc.
+# Copyright 2014-2022 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +13,35 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Since there are different parser implementation, XS and NonXS, it is
+# better to have the Texinfo::Parser packages define only the parser
+# API functions.  Constants, functions useful in both parsers, and other
+# functions useful in other codes are better defined in other Texinfo
+# modules.
+
 # File to be loaded in conjunction with Parsetexi.xs module
+#
+# FIXME two customization keys are duplicated from the main parser in
+# gdt(), which are set and used by the NonXS parser, 'kbdinputstyle'
+# and 'clickstyle'.  The XS parser does not set nor use those keys, so
+# their values are not passed to gdt().
+# As long as there is no other code that sets those keys to another value than
+# their default value, and that there are no translated strings containing the
+# @-commands whose output is modified by those customization keys, however,
+# the difference between the parsers won't have any visible effect.
+
+# In general, the Parser works with character strings decoded from the
+# command line, from input files or from the parsed document and returns
+# character strings.  There are exceptions for the following files and
+# directory names that are binary strings:
+# * the input file name passed through parse_texi_file is a binary string
+# * the 'file_name' values in 'source_info' from convert_errors and in
+#   the tree elements 'source_info' are returned as binary strings
+#
+# The following parser information is directly determined from the
+# input file name as binary strings
+# ->{'info'}->{'input_file_name'}
+# ->{'info'}->{'input_directory'}
 
 package Texinfo::Parser;
 
@@ -21,26 +49,32 @@ use 5.00405;
 use strict;
 use warnings;
 
-require Exporter;
+# To check if there is no erroneous autovivification
+#no autovivification qw(fetch delete exists store strict);
+
+use Storable qw(dclone); # standard in 5.007003
+use Encode qw(decode);
 
 use Texinfo::Common;
-use Texinfo::Encoding;
-use Texinfo::Convert::NodeNameNormalization;
 use Texinfo::Report;
+use Texinfo::Convert::NodeNameNormalization;
+use Texinfo::Translations;
 
-our @ISA = qw(Exporter DynaLoader Texinfo::Report);
+require Exporter;
+
+our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ( 'all' => [ qw(
     parser
-    parse_texi_text
-    parse_texi_line
     parse_texi_file
+    parse_texi_line
+    parse_texi_piece
+    parse_texi_text
 ) ] );
 
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-our @EXPORT = qw(
-	
-);
+my %parser_default_configuration =
+  (%Texinfo::Common::default_parser_customization_values);
 
 sub get_conf($$)
 {
@@ -49,17 +83,11 @@ sub get_conf($$)
   return $self->{$var};
 }
 
-my %parser_default_configuration =
-  (%Texinfo::Common::default_parser_state_configuration,
-   %Texinfo::Common::default_parser_customization_values);
-
-use Storable qw(dclone); # standard in 5.007003
-
 sub simple_parser {
   goto &parser;
 }
 
-# Stub for Texinfo::Parser::parser
+# Initialize the parser
 sub parser (;$$)
 {
   my $conf = shift;
@@ -69,33 +97,27 @@ sub parser (;$$)
   reset_parser ();
   if (defined($conf)) {
     foreach my $key (keys (%$conf)) {
-      # Copy conf to parser object.  Not used in parser module itself
-      # but some settings may be used elsewhere, especially in
-      # Structuring.pm.
-      if ($key ne 'values' and ref($conf->{$key})) {
+      # Copy conf to parser object.
+      # we keep registrar instead of copying on purpose, to reuse the object
+      if ($key ne 'values' and $key ne 'registrar' and ref($conf->{$key})) {
         $parser->{$key} = dclone($conf->{$key});
       } else {
         $parser->{$key} = $conf->{$key};
       }
 
-      if ($key eq 'include_directories') {
-        foreach my $d (@{$conf->{'include_directories'}}) {
+      if ($key eq 'INCLUDE_DIRECTORIES') {
+        foreach my $d (@{$conf->{'INCLUDE_DIRECTORIES'}}) {
           add_include_directory ($d);
         }
       } elsif ($key eq 'values') {
-	# This is used by Texinfo::Report::gdt for substituted values
-	for my $v (keys %{$conf->{'values'}}) {
-	  if (!ref($conf->{'values'}->{$v})) {
-	    store_value ($v, $conf->{'values'}->{$v});
-          } elsif (ref($conf->{'values'}->{$v}) eq 'HASH') {
-            store_value ($v, "<<HASH VALUE>>");
-	  } elsif (ref($conf->{'values'}->{$v}) eq 'ARRAY') {
-	    store_value ($v, "<<ARRAY VALUE>>");
-	  } else {
-	    store_value ($v, "<<UNKNOWN VALUE>>");
-	  }
-	}
-      } elsif ($key eq 'expanded_formats') {
+        for my $v (keys %{$conf->{'values'}}) {
+          if (ref($conf->{'values'}->{$v}) eq '') {
+            store_value ($v, $conf->{'values'}->{$v});
+          } else {
+            warn "bug: non-scalar \@value\n";
+          }
+        }
+      } elsif ($key eq 'EXPANDED_FORMATS') {
         clear_expanded_formats ();
 
         for my $f (@{$conf->{$key}}) {
@@ -103,11 +125,7 @@ sub parser (;$$)
         }
       } elsif ($key eq 'documentlanguage') {
         if (defined ($conf->{$key})) {
-          set_documentlanguage ($conf->{$key});
-        }
-      } elsif ($key eq 'info') {
-        if (defined($conf->{$key}->{'novalidate'})) { 
-          set_novalidate($conf->{$key}->{'novalidate'});
+          conf_set_documentlanguage_override ($conf->{$key});
         }
       } elsif ($key eq 'FORMAT_MENU') {
         if ($conf->{$key} eq 'menu') {
@@ -120,11 +138,17 @@ sub parser (;$$)
       } elsif ($key eq 'CPP_LINE_DIRECTIVES') {
         conf_set_CPP_LINE_DIRECTIVES($conf->{$key});
       } elsif ($key eq 'DEBUG') {
-        set_debug($conf->{$key}) if $conf->{'key'};
-      } elsif ($key eq 'in_gdt'
-               or $key eq 'ENABLE_ENCODING'
-               or defined($Texinfo::Common::default_structure_customization_values{$key})) {
-        # no action needed
+        set_debug($conf->{$key}) if $conf->{$key};
+      } elsif ($key eq 'DOC_ENCODING_FOR_INPUT_FILE_NAME') {
+        set_DOC_ENCODING_FOR_INPUT_FILE_NAME ($conf->{$key});
+      } elsif ($key eq 'INPUT_FILE_NAME_ENCODING' and defined($conf->{$key})) {
+        conf_set_input_file_name_encoding ($conf->{$key});
+      } elsif ($key eq 'LOCALE_ENCODING' and defined($conf->{$key})) {
+        conf_set_locale_encoding ($conf->{$key});
+      } elsif ($key eq 'accept_internalvalue') {
+        set_accept_internalvalue();
+      } elsif ($key eq 'registrar' or $key eq 'COMMAND_LINE_ENCODING') {
+        # no action needed, only used in perl code
       } else {
         warn "ignoring parser configuration value \"$key\"\n";
       }
@@ -133,12 +157,10 @@ sub parser (;$$)
 
   bless $parser;
 
-  $parser->Texinfo::Report::new;
-
   return $parser;
 }
 
-# Record any @menu elements under $root in the 'menus' array of $node.
+# Record any @menu elements under $root in the extra 'menus' array of $node.
 sub _find_menus_of_node {
   my $node = shift;
   my $root = shift;
@@ -147,7 +169,7 @@ sub _find_menus_of_node {
     my $contents = $root->{'contents'};
     foreach my $child (@{$contents}) {
       if ($child->{'cmdname'} and $child->{'cmdname'} eq 'menu') {
-        push @{$node->{'menus'}}, $child;
+        push @{$node->{'extra'}->{'menus'}}, $child;
       }
     }
   }
@@ -155,13 +177,10 @@ sub _find_menus_of_node {
 
 # Set 'menus' array for each node.  This accounts for malformed input where
 # the number of sectioning commands between @node and @menu is not exactly 1.
-sub _complete_node_menus {
+sub _associate_node_menus {
   my $self = shift;
   my $root = shift;
 
-  if (!defined $self->{'nodes'}) {
-    $self->{'nodes'} = [];
-  }
   my $node;
   foreach my $child (@{$root->{'contents'}}) {
     if ($child->{'cmdname'} and $child->{'cmdname'} eq 'node') {
@@ -171,106 +190,88 @@ sub _complete_node_menus {
   }
 }
 
+sub _get_error_registrar($)
+{
+  my $self = shift;
+  if (not $self->{'registrar'}) {
+    $self->{'registrar'} = Texinfo::Report::new();
+  }
+  my $registrar = $self->{'registrar'};
+  my $configuration_information = $self;
+  return $registrar, $configuration_information;
+}
+
+# done after all the parsings.  Part may not make much sense for parse_texi_line,
+# we nevertheless do it in any case to do the same as in ParserNonXS
+sub _set_errors_node_lists_labels_indices($)
+{
+  my $self = shift;
+
+  my $TARGETS = build_label_list ();
+  $self->{'targets'} = $TARGETS;
+
+  _get_errors ($self);
+  # Setup labels info and nodes list based on 'targets'
+  Texinfo::Convert::NodeNameNormalization::set_nodes_list_labels($self,
+                                           $self->{'registrar'}, $self);
+
+  my $INDEX_NAMES = build_index_data ();
+  $self->{'index_names'} = $INDEX_NAMES;
+  Texinfo::Translations::complete_indices ($self);
+}
+
 sub get_parser_info {
   my $self = shift;
 
-  my ($TARGETS, $INTL_XREFS, $FLOATS,
-      $INDEX_NAMES, $ERRORS, $GLOBAL_INFO, $GLOBAL_INFO2);
+  my ($INTL_XREFS, $FLOATS, $ERRORS, $GLOBAL_INFO, $GLOBAL_INFO2);
 
-  $TARGETS = build_label_list ();
   $INTL_XREFS = build_internal_xref_list ();
   $FLOATS = build_float_list ();
-
-  $INDEX_NAMES = build_index_data ();
-  $self->{'index_names'} = $INDEX_NAMES;
-
   $GLOBAL_INFO = build_global_info ();
   $GLOBAL_INFO2 = build_global_info2 ();
 
-  $self->{'targets'} = $TARGETS;
-  $self->{'labels'} = {};
   $self->{'internal_references'} = $INTL_XREFS;
   $self->{'floats'} = $FLOATS;
   $self->{'info'} = $GLOBAL_INFO;
-  $self->{'extra'} = $GLOBAL_INFO2;
+  $self->{'commands_info'} = $GLOBAL_INFO2;
 
-  # Propagate these settings from 'info' hash to 'values' hash.
-  # The 'values' hash is not otherwise used.  Maybe we should use
-  # the 'info' hash for this instead in the pure Perl code.
-  for my $txi_flag ('txiindexatsignignore', 'txiindexbackslashignore',
-                    'txiindexhyphenignore', 'txiindexlessthanignore') {
-    if ($self->{'info'}->{$txi_flag}) {
-      $self->{'values'}->{$txi_flag} = 1;
-    }
-  }
-
-  _get_errors ($self);
-  Texinfo::Common::complete_indices ($self);
+  _set_errors_node_lists_labels_indices($self);
 }
 
 use File::Basename; # for fileparse
-
-# Handle 'IGNORE_BEFORE_SETFILENAME' conf value.
-# Put everything before @setfilename in a special type.  This allows
-# ignoring everything before @setfilename.
-sub _maybe_ignore_before_setfilename {
-  my ($self, $text_root) = @_;
-
-  if ($self->{'IGNORE_BEFORE_SETFILENAME'} and $text_root
-      and $self->{'extra'}->{'setfilename'}
-      and $self->{'extra'}->{'setfilename'}->{'parent'} eq $text_root) {
-    my $before_setfilename = {'type' => 'preamble_before_setfilename',
-      'parent' => $text_root,
-      'contents' => []};
-    while (@{$text_root->{'contents'}}
-        and (!$text_root->{'contents'}->[0]->{'cmdname'}
-          or $text_root->{'contents'}->[0]->{'cmdname'} ne 'setfilename')) {
-      my $content = shift @{$text_root->{'contents'}};
-      $content->{'parent'} = $before_setfilename;
-      push @{$before_setfilename->{'contents'}}, $content;
-    }
-    if (!@{$text_root->{'contents'}}) {
-      # not found
-      #splice @{$text_root->{'contents'}}, 0, 0, @$before_setfilename;
-      $text_root->{'contents'} = $before_setfilename->{'contents'};
-    } else {
-      unshift (@{$text_root->{'contents'}}, $before_setfilename)
-        if (@{$before_setfilename->{'contents'}});
-    }
-  }
-}
 
 # Replacement for Texinfo::Parser::parse_texi_file
 sub parse_texi_file ($$)
 {
   my $self = shift;
-  my $file_name = shift;
+  my $input_file_path = shift;
   my $tree_stream;
 
-  my $status = parse_file ($file_name);
+  my $status = parse_file ($input_file_path);
   if ($status) {
-    # TODO: internationalise this message?
-    $self->document_error(sprintf("could not open %s: %s", $file_name, $!));
+    my ($registrar, $configuration_information) = _get_error_registrar($self);
+    my $input_file_name = $input_file_path;
+    my $encoding = $self->get_conf('COMMAND_LINE_ENCODING');
+    if (defined($encoding)) {
+      $input_file_name = decode($encoding, $input_file_path);
+    }
+    $registrar->document_error($configuration_information,
+       sprintf(__("could not open %s: %s"), $input_file_name, $!));
     return undef;
   }
 
   my $TREE = build_texinfo_tree ();
   get_parser_info ($self);
-  _complete_node_menus ($self, $TREE);
 
-  my $text_root;
-  if ($TREE->{'type'} eq 'text_root') {
-    $text_root = $TREE;
-  } elsif ($TREE->{'contents'} and $TREE->{'contents'}->[0]
-      and $TREE->{'contents'}->[0]->{'type'} eq 'text_root') {
-    $text_root = $TREE->{'contents'}->[0];
-  }
+  _associate_node_menus ($self, $TREE);
 
-  _maybe_ignore_before_setfilename($self, $text_root);
+  my $before_node_section = $TREE->{'contents'}->[0];
+
+  Texinfo::Common::rearrange_tree_beginning($self, $before_node_section);
 
   ############################################################
 
-  my ($basename, $directories, $suffix) = fileparse($file_name);
+  my ($basename, $directories, $suffix) = fileparse($input_file_path);
   $self->{'info'}->{'input_file_name'} = $basename;
   $self->{'info'}->{'input_directory'} = $directories;
 
@@ -278,21 +279,54 @@ sub parse_texi_file ($$)
 }
 
 # Copy the errors into the error list in Texinfo::Report.
-# TODO: Could we just access the error list directly instead of going
-# through Texinfo::Report line_error?
 sub _get_errors($)
 {
   my $self = shift;
-  my $ERRORS;
-  my $tree_stream = dump_errors();
-  eval $tree_stream;
+  my ($registrar, $configuration_information) = _get_error_registrar($self);
+
+  my $ERRORS = get_errors ();
+
   for my $error (@{$ERRORS}) {
     if ($error->{'type'} eq 'error') {
-      $self->line_error ($error->{'message'}, $error->{'line_nr'});
+      $registrar->line_error ($configuration_information,
+                              $error->{'message'}, $error->{'source_info'});
     } else {
-      $self->line_warn ($error->{'message'}, $error->{'line_nr'});
+      $registrar->line_warn ($configuration_information,
+                             $error->{'message'}, $error->{'source_info'});
     }
   }
+}
+
+
+# Replacement for Texinfo::Parser::parse_texi_piece
+#
+# Used in tests under tp/t.
+sub parse_texi_piece($$;$$$$)
+{
+  my $self = shift;
+  my $text = shift;
+  my $lines_nr = shift;
+  my $file = shift;
+  my $macro = shift;
+  my $fixed_line_number = shift;
+
+  return undef if (!defined($text));
+
+  $lines_nr = 1 if (not defined($lines_nr));
+
+  $self = parser() if (!defined($self));
+
+  # make sure that internal byte buffer is in UTF-8 before we pass
+  # it in to the XS code.
+  utf8::upgrade($text);
+
+  parse_piece($text, $lines_nr);
+  my $tree = build_texinfo_tree ();
+
+  get_parser_info($self);
+  _associate_node_menus ($self, $tree);
+
+  return $tree;
 }
 
 # Replacement for Texinfo::Parser::parse_texi_text
@@ -300,55 +334,58 @@ sub _get_errors($)
 # Used in tests under tp/t.
 sub parse_texi_text($$;$$$$)
 {
-    my $self = shift;
-    my $text = shift;
-    my $lines_nr = shift;
-    my $file = shift;
-    my $macro = shift;
-    my $fixed_line_number = shift;
+  my $self = shift;
+  my $text = shift;
+  my $lines_nr = shift;
+  my $file = shift;
+  my $macro = shift;
+  my $fixed_line_number = shift;
 
-    return undef if (!defined($text));
+  return undef if (!defined($text));
 
-    $self = parser() if (!defined($self));
+  $lines_nr = 1 if (not defined($lines_nr));
 
-    # make sure that internal byte buffer is in UTF-8 before we pass
-    # it in to the XS code.
-    utf8::upgrade($text);
+  $self = parser() if (!defined($self));
 
-    parse_text($text);
-    my $tree = build_texinfo_tree ();
-    my $INDEX_NAMES = build_index_data ();
-    $self->{'index_names'} = $INDEX_NAMES;
+  # make sure that internal byte buffer is in UTF-8 before we pass
+  # it in to the XS code.
+  utf8::upgrade($text);
 
-    for my $index (keys %$INDEX_NAMES) {
-      if ($INDEX_NAMES->{$index}->{'merged_in'}) {
-        $self->{'merged_indices'}-> {$index}
-          = $INDEX_NAMES->{$index}->{'merged_in'};
-      }
-    }
+  parse_text($text, $lines_nr);
+  my $tree = build_texinfo_tree ();
 
-    get_parser_info($self);
-    _complete_node_menus ($self, $tree);
-    return $tree;
+  get_parser_info($self);
+
+  _associate_node_menus ($self, $tree);
+
+  my $before_node_section = $tree->{'contents'}->[0];
+
+  Texinfo::Common::rearrange_tree_beginning($self, $before_node_section);
+  return $tree;
 }
 
 # Replacement for Texinfo::Parser::parse_texi_line
 sub parse_texi_line($$;$$$$)
 {
-    my $self = shift;
-    my $text = shift;
-    my $lines_nr = shift;
-    my $file = shift;
-    my $macro = shift;
-    my $fixed_line_number = shift;
+  my $self = shift;
+  my $text = shift;
+  my $lines_nr = shift;
+  my $file = shift;
+  my $macro = shift;
+  my $fixed_line_number = shift;
 
-    return undef if (!defined($text));
+  return undef if (!defined($text));
 
-    $self = parser() if (!defined($self));
-    utf8::upgrade($text);
-    parse_string($text);
-    my $tree = build_texinfo_tree ();
-    return $tree;
+  $lines_nr = 1 if (not defined($lines_nr));
+
+  $self = parser() if (!defined($self));
+  utf8::upgrade($text);
+  parse_string($text, $lines_nr);
+  my $tree = build_texinfo_tree ();
+
+  _set_errors_node_lists_labels_indices($self);
+
+  return $tree;
 }
 
 # Public interfaces of Texinfo::Parser
@@ -356,11 +393,6 @@ sub indices_information($)
 {
   my $self = shift;
 
-  my $INDEX_NAMES;
-  if (!$self->{'index_names'}) {
-    $INDEX_NAMES = build_index_data ();
-    $self->{'index_names'} = $INDEX_NAMES;
-  }
   return $self->{'index_names'};
 }
 
@@ -379,20 +411,28 @@ sub internal_references_information($)
 sub global_commands_information($)
 {
   my $self = shift;
-  return $self->{'extra'};
+  return $self->{'commands_info'};
 }
 
-sub global_informations($)
+sub global_information($)
 {
   my $self = shift;
   return $self->{'info'};
 }
 
-# Setup labels and nodes info and return labels
 sub labels_information($)
 {
-  goto &Texinfo::Common::labels_information;
+  my $self = shift;
+  return $self->{'labels'}, $self->{'targets'}, $self->{'nodes'};
+}
+
+sub registered_errors($)
+{
+  my $self = shift;
+  return $self->{'registrar'};
 }
 
 1;
 __END__
+
+The POD documentation of Texinfo::Parser is in Texinfo::ParserNonXS.

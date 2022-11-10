@@ -1,0 +1,28 @@
+
+texinfo_register_command_formatting('sp', \&my_sp_formatting);
+
+sub my_sp_formatting($$$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+  my $content = shift;
+
+  if (defined($command->{'extra'}->{'misc_args'}->[0])) {
+    my $sp_nr = $command->{'extra'}->{'misc_args'}->[0];
+    my $translated_tree = $self->gdt('@macro txiinternalvalue
+user internalvalue
+@end macro
+{myarg} @TeX{}', {'myarg' => {'contents' => [{'text' => $sp_nr}]}});
+    #print STDERR "T ".Texinfo::Common::debug_print_tree($translated_tree)."\n";
+    $result = $self->convert_tree($translated_tree);
+    return $result;
+  }
+
+  return &{$self->default_command_conversion($cmdname)}($self,
+        $cmdname, $command, $args, $content);
+}
+
+
+1;

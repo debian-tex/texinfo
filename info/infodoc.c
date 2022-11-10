@@ -1,6 +1,6 @@
 /* infodoc.c -- functions which build documentation nodes.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +18,8 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
-#include "info-utils.h"
+#include "scan.h"
+#include "util.h"
 #include "filesys.h"
 #include "session.h"
 #include "doc.h"
@@ -713,18 +714,24 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
 
               /* Find a key which invokes this function in the info_keymap. */
               command = named_function (fun_name);
-              free (rep_name);
 
               /* If the internal documentation string fails, there is a
-                 serious problem with the associated command's documentation.
-                 We croak so that it can be fixed immediately. */
+                 problem with the associated command's documentation (probably
+                 in the translation). */
               if (!command)
-                abort ();
-
-              rep = where_is (info_keymap, command);
-              if (!rep)
-                rep = "N/A";
+                {
+                  info_error ("bug: no command <%s>\n", rep_name);
+                  sleep (1);
+                  rep = "BUG";
+                }
+              else
+                {
+                  rep = where_is (info_keymap, command);
+                  if (!rep)
+                    rep = "N/A";
+                }
               replen = strlen (rep);
+              free (rep_name);
 
               if (fmt)
                 text_buffer_printf (&txtresult, fmt, rep);

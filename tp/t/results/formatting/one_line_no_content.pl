@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,20 +10,25 @@ $result_trees{'one_line_no_content'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => '\\input texinfo.tex
+          'contents' => [
+            {
+              'text' => '\\input texinfo.tex
 ',
-          'type' => 'preamble_text'
+              'type' => 'text_before_beginning'
+            }
+          ],
+          'type' => 'preamble_before_beginning'
+        },
+        {
+          'contents' => [],
+          'type' => 'preamble_before_content'
         }
       ],
-      'parent' => {},
-      'type' => 'preamble'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'one_line_no_content'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'one_line_no_content'}{'contents'}[0];
-$result_trees{'one_line_no_content'}{'contents'}[0]{'parent'} = $result_trees{'one_line_no_content'};
 
 $result_texis{'one_line_no_content'} = '\\input texinfo.tex
 ';
@@ -38,7 +43,7 @@ $result_floats{'one_line_no_content'} = {};
 
 
 
-$result_converted{'html'}->{'one_line_no_content'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+$result_converted{'html'}->{'one_line_no_content'} = '<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -54,21 +59,7 @@ $result_converted{'html'}->{'one_line_no_content'} = '<!DOCTYPE html PUBLIC "-//
 
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+span.program-in-footer {font-size: smaller}
 -->
 </style>
 
@@ -77,9 +68,9 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <hr>
-<p><font size="-1">
-  This document was generated on <em>a sunny day</em> using <a href="http://www.gnu.org/software/texinfo/"><em>texi2any</em></a>.
-</font></p>
+<p>
+  <span class="program-in-footer">This document was generated on <em class="emph">a sunny day</em> using <a class="uref" href="http://www.gnu.org/software/texinfo/"><em class="emph">texi2any</em></a>.</span>
+</p>
 
 
 </body>
@@ -88,8 +79,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'one_line_no_content'} = [
   {
-    'error_line' => 'one_line_no_content.texi: warning: must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
+    'file_name' => 'one_line_no_content.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

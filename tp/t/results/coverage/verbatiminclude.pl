@@ -1,55 +1,52 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'verbatiminclude'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
+      'contents' => [
         {
-          'contents' => [
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
             {
-              'parent' => {},
-              'text' => 'incl-incl.txi'
+              'contents' => [
+                {
+                  'text' => 'incl-incl.txi'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'line_arg'
             }
           ],
+          'cmdname' => 'verbatiminclude',
           'extra' => {
-            'spaces_after_argument' => '
-'
+            'input_perl_encoding' => 'utf-8',
+            'spaces_before_argument' => ' ',
+            'text_arg' => 'incl-incl.txi'
           },
-          'parent' => {},
-          'type' => 'line_arg'
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          }
         }
       ],
-      'cmdname' => 'verbatiminclude',
-      'extra' => {
-        'input_perl_encoding' => 'utf-8',
-        'spaces_before_argument' => ' ',
-        'text_arg' => 'incl-incl.txi'
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'verbatiminclude'}{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude'};
-$result_trees{'verbatiminclude'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude'}{'contents'}[1]{'args'}[0];
-$result_trees{'verbatiminclude'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'verbatiminclude'}{'contents'}[1];
-$result_trees{'verbatiminclude'}{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude'};
 
 $result_texis{'verbatiminclude'} = '
 @verbatiminclude incl-incl.txi
@@ -77,6 +74,13 @@ $result_converted{'html_text'}->{'verbatiminclude'} = '
 
 $result_converted{'xml'}->{'verbatiminclude'} = '
 <verbatiminclude file="incl-incl.txi" spaces=" ">incl-incl.txi</verbatiminclude>
+';
+
+
+$result_converted{'latex_text'}->{'verbatiminclude'} = '
+\\begin{verbatim}
+This is the @emph{included} file (include-value2.txi) <> ---. 
+\\end{verbatim}
 ';
 
 

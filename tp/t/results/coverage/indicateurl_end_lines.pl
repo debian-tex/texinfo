@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,110 +10,85 @@ $result_trees{'indicateurl_end_lines'} = {
     {
       'contents' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'http://begin
+                  'contents' => [
+                    {
+                      'text' => 'http://begin
 '
-                },
-                {
-                  'parent' => {},
-                  'text' => 'continue on other line'
+                    },
+                    {
+                      'text' => 'continue on other line'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'indicateurl',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+'
             }
           ],
-          'cmdname' => 'indicateurl',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
+          'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
+          'type' => 'empty_line'
+        },
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'http://begin2
+                  'contents' => [
+                    {
+                      'text' => 'http://begin2
 '
-                },
-                {
-                  'parent' => {},
-                  'text' => '
+                    },
+                    {
+                      'text' => '
 ',
-                  'type' => 'empty_line'
+                      'type' => 'empty_line'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'indicateurl',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
             }
           ],
-          'cmdname' => 'indicateurl',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'contents' => [
+          'type' => 'paragraph'
+        },
         {
-          'parent' => {},
-          'text' => 'cut by blank line
+          'contents' => [
+            {
+              'text' => 'cut by blank line
 '
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0];
-$result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[0];
-$result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[0];
-$result_trees{'indicateurl_end_lines'}{'contents'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'};
-$result_trees{'indicateurl_end_lines'}{'contents'}[1]{'parent'} = $result_trees{'indicateurl_end_lines'};
-$result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0];
-$result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[2];
-$result_trees{'indicateurl_end_lines'}{'contents'}[2]{'parent'} = $result_trees{'indicateurl_end_lines'};
-$result_trees{'indicateurl_end_lines'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[3];
-$result_trees{'indicateurl_end_lines'}{'contents'}[3]{'parent'} = $result_trees{'indicateurl_end_lines'};
 
 $result_texis{'indicateurl_end_lines'} = '@indicateurl{http://begin
 continue on other line}
@@ -134,7 +109,7 @@ cut by blank line
 
 $result_errors{'indicateurl_end_lines'} = [
   {
-    'error_line' => ':4: @indicateurl missing closing brace
+    'error_line' => '@indicateurl missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 4,
@@ -143,7 +118,7 @@ $result_errors{'indicateurl_end_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':6: misplaced }
+    'error_line' => 'misplaced }
 ',
     'file_name' => '',
     'line_nr' => 6,

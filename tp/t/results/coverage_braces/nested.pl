@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,73 +10,58 @@ $result_trees{'nested'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'type the characters '
-        },
-        {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'text' => 'type the characters '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'l o g o u t '
-                },
-                {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
+                      'text' => 'l o g o u t '
+                    },
+                    {
+                      'args' => [
                         {
-                          'parent' => {},
-                          'text' => 'RET'
+                          'contents' => [
+                            {
+                              'text' => 'RET'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'cmdname' => 'key',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 1,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => 'key',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'kbd',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.'
             }
           ],
-          'cmdname' => 'kbd',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.'
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'nested'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested'}{'contents'}[0];
-$result_trees{'nested'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'nested'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'nested'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'nested'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'nested'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'nested'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'nested'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'nested'}{'contents'}[0]{'contents'}[1];
-$result_trees{'nested'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'nested'}{'contents'}[0];
-$result_trees{'nested'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'nested'}{'contents'}[0];
-$result_trees{'nested'}{'contents'}[0]{'parent'} = $result_trees{'nested'};
 
 $result_texis{'nested'} = 'type the characters @kbd{l o g o u t @key{RET}}.';
 
@@ -90,10 +75,13 @@ $result_floats{'nested'} = {};
 
 
 
-$result_converted{'plaintext'}->{'nested'} = 'type the characters \'l o g o u t <RET>\'.
+$result_converted{'plaintext'}->{'nested'} = 'type the characters ‘l o g o u t <RET>’.
 ';
 
 
-$result_converted{'html_text'}->{'nested'} = '<p>type the characters <kbd>l o g o u t <span class="key">RET</span></kbd>.</p>';
+$result_converted{'html_text'}->{'nested'} = '<p>type the characters <kbd class="kbd">l o g o u t <kbd class="key">RET</kbd></kbd>.</p>';
+
+
+$result_converted{'latex_text'}->{'nested'} = 'type the characters \\Texinfocommandstyletextkbd{l o g o u t \\texttt{RET}}.';
 
 1;

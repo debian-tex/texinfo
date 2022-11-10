@@ -1,91 +1,97 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'macro_in_invalid_documentencoding'} = {
   'contents' => [
     {
-      'args' => [
-        {
-          'parent' => {},
-          'text' => 'badmacro',
-          'type' => 'macro_name'
-        }
-      ],
-      'cmdname' => 'macro',
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'badm',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'last_raw_newline'
-        }
-      ],
-      'extra' => {
-        'arg_line' => ' badmacro
-'
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
-    {
-      'args' => [
-        {
+          'args' => [
+            {
+              'text' => 'badmacro',
+              'type' => 'macro_name'
+            }
+          ],
+          'cmdname' => 'macro',
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'badm'
+              'text' => 'badm
+',
+              'type' => 'raw'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'macro'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'macro'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
             }
           ],
           'extra' => {
-            'spaces_after_argument' => '
+            'arg_line' => ' badmacro
 '
           },
-          'parent' => {},
-          'type' => 'line_arg'
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'badm'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'line_arg'
+            }
+          ],
+          'cmdname' => 'documentencoding',
+          'extra' => {
+            'spaces_before_argument' => ' ',
+            'text_arg' => 'badm'
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          }
         }
       ],
-      'cmdname' => 'documentencoding',
-      'extra' => {
-        'spaces_before_argument' => ' ',
-        'text_arg' => 'badm'
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0];
-$result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0];
-$result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0];
-$result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'};
-$result_trees{'macro_in_invalid_documentencoding'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'};
-$result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2]{'args'}[0];
-$result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2];
-$result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'};
 
 $result_texis{'macro_in_invalid_documentencoding'} = '@macro badmacro
 badm
@@ -98,7 +104,7 @@ $result_texts{'macro_in_invalid_documentencoding'} = '';
 
 $result_errors{'macro_in_invalid_documentencoding'} = [
   {
-    'error_line' => ':4: warning: encoding `badm\' is not a canonical texinfo encoding
+    'error_line' => 'warning: encoding `badm\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 4,
@@ -107,7 +113,7 @@ $result_errors{'macro_in_invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: unrecognized encoding name `badm\'
+    'error_line' => 'warning: unrecognized encoding name `badm\'
 ',
     'file_name' => '',
     'line_nr' => 4,

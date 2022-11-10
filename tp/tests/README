@@ -1,8 +1,6 @@
-$Id$
 texinfo/tp/tests/README
 
-  Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
-  Free Software Foundation, Inc.
+  Copyright 2010-2022 Free Software Foundation, Inc.
 
   Copying and distribution of this README file, with or without
   modification, are permitted in any medium without royalty provided the
@@ -26,7 +24,7 @@ Running the testsuite
 =====================
 This testsuite can be run one of the following ways:
 
-* Using the makefile rules: "make check" (in this directory)
+* Using the makefile rules: "make -k check" (in this directory)
 These tests use the scripts under the test_scripts directory.
 
 * Using ./run_parser_all.sh with the directories one want to run the 
@@ -78,9 +76,14 @@ out_parser/a_test/a_test.2, stdout output is in
 out_parser/a_test/a_test.1.  All the commands called are output in 
 tests.log.
 
+Note that "make all-checks" also runs the testsuite, but also runs
+TeX4ht and LaTeX2HTML tests and other tests that are not as portable
+as the main testsuite and may require additional softwares.  See
+below for more.
+
+
 Regenerating test results
 =========================
-
 To update the test results, first the tests must be run as above.
 
 Giving -copy as the first argument to ../run_parser_all.sh or
@@ -99,7 +102,6 @@ copy-tex-html targets do it directly.
 
 Testsuite and document strings translations
 ===========================================
-
 At least one test, layout/formatting_fr_icons, depends heavily on
 the translation of strings that can be translated and incorporated in
 output documents.  The translations are in the po_document directory.
@@ -112,6 +114,20 @@ for the test results, a filter script should be used instead.  An
 example of such a script can be seen in po_document/fix-translations.sh.
 
 
+Test requiring recoded file names
+=================================
+
+Some test require the possibility to recode file names, in general from
+UTF-8 to a non UTF-8 encoding whan the test require a file name in a
+non UTF-8 encoding.  The recoding of file names required by these
+tests are done by make check, and it is possible to do it manually
+with make input_file_names_recoded_stamp.txt.  If the recoding fails,
+for instance if the recoding leads to invalid UTF-8 and the file system does
+not accept invalid UTF-8, input_file_names_recoded_stamp.txt will contain
+FAILED, and the test requiring the files with recoded file names will
+be skipped.
+
+
 TeX4ht and LaTeX2HTML tests
 ===========================
 The tex4ht and latex2HTML related tests are not run automatically, as
@@ -120,21 +136,43 @@ version of these tools.
 
 These tests may be run by
   make tex-html-checks
+or, together with all the other tests by
+  make all-checks
 
 For the tests that use latex2html, to avoid the test failing if there is 
 a dot in the cwd, mktemp is used to create a temporary directory, and 
 the directory is passed through on the command line.
 
 
+Other tests requiring specific softwares
+========================================
+Other tests requiring specific software are not run automatically, as
+they may depend on the version of these specific software and require
+these software to be present.  The required software is source-highlight.
+
+These tests may be run by
+  make other-checks
+or, together with all the other tests by
+  make all-checks
+
+
 Tests specification
 ===================
 Test runs are driven by the contents of the list-of-tests file in
 each subdirectory. This is a line-oriented file. A # starts a
-comment, except that the very first line of the file can be, e.g.,
-# formats :html
-which says which formats to generate.  If no format is specified
-on the first line, -c TEXI2HTML is passed, which sets html
-to be output and some formatting options.
+comment.
+The very first comment line of the file can be special, with
+# formats :_html
+which says which formats to generate.  If no format is specified, like
+# formats :
+texi2html style is assumed, -c TEXI2HTML is passed, which sets html
+to be output and some formatting options.  Multiple formats can be
+specified, like
+# formats : :_info
+in which texi2html html style and info are both generated.  If no format is
+specified on the first line, the default formats specification which is
+# formats :
+is used, which means a texi2html style html format generation.
 
 Otherwise, each non-empty non-comment line describes a test.  The first
 word on the line is the test name which corresponds also with the
@@ -156,11 +194,15 @@ specifies that the results of the processing of manual.texi with additional
 command line arguments --split chapter will be in the a_test_split_chapter
 directory.
 
+"Need recoded file names" should appear on a line for a test requiring
+recoded file names. for example
+
+manual_include_accented_file_name_latin1 manual_include_accented_file_name_latin1.texi -D 'needrecodedfilenames Need recoded file names'
+
 Common .texi
 ------------
 A common .texi file should be in the top-level directory (there is such an
 example with coverage_macro.texi).
-
 
 Init files
 ----------
@@ -197,6 +239,7 @@ Of course commit all the files and try a make check afterward to verify
 it gets run, and passes.
 
 See tp/t/README for info about those tests.
+
 
 Deleting a test
 ===============

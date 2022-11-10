@@ -27,23 +27,23 @@ Call macro in macro
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
 subheading
 ----------
 
 in verbatim
 
-   * i-tem 1
-   * i-tem 2
+   • i–tem 1
+   • i–tem 2
 
-  1. e-numerate
+  1. e–numerate
 
-mu-ltitable headitem                        another tab
+mu–ltitable headitem                        another tab
 -----------------------------------------------------------------------------------------------
-mu-ltitable item                            multitable tab
-mu-ltitable item 2                          multitable tab 2
-lone mu-ltitable item
+mu–ltitable item                            multitable tab
+mu–ltitable item 2                          multitable tab 2
+lone mu–ltitable item
 
      e--xample  some
         text
@@ -51,30 +51,30 @@ lone mu-ltitable item
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-     d-effn
+     d–effn
 
 a
-     l-ine
+     l–ine
 
-   c-artouche
+   c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-   *                                                                 i-tem 1
-   *                                                                 i-tem 2
+   •                                                                 i–tem 1
+   •                                                                 i–tem 2
 
-  1.                                                              e-numerate
+  1.                                                              e–numerate
 
-                    mu-ltitable headitem                                        another tab
+                    mu–ltitable headitem                                        another tab
 -----------------------------------------------------------------------------------------------
-                        mu-ltitable item                                     multitable tab
-                      mu-ltitable item 2                                   multitable tab 2
-                   lone mu-ltitable item
+                        mu–ltitable item                                     multitable tab
+                      mu–ltitable item 2                                   multitable tab 2
+                   lone mu–ltitable item
 
      e--xample  some
         text
@@ -82,18 +82,18 @@ f-lushleft
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
 a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
    Call macro in format_command
                                                                in macro
@@ -116,23 +116,23 @@ f-lushleft
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
 subheading
 ----------
 
 in verbatim
 
-   *                                                                 i-tem 1
-   *                                                                 i-tem 2
+   •                                                                 i–tem 1
+   •                                                                 i–tem 2
 
-  1.                                                              e-numerate
+  1.                                                              e–numerate
 
-                    mu-ltitable headitem                                        another tab
+                    mu–ltitable headitem                                        another tab
 -----------------------------------------------------------------------------------------------
-                        mu-ltitable item                                     multitable tab
-                      mu-ltitable item 2                                   multitable tab 2
-                   lone mu-ltitable item
+                        mu–ltitable item                                     multitable tab
+                      mu–ltitable item 2                                   multitable tab 2
+                   lone mu–ltitable item
 
      e--xample  some
         text
@@ -140,30 +140,30 @@ in verbatim
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
 a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-   *                                                                 i-tem 1
-   *                                                                 i-tem 2
+   •                                                                 i–tem 1
+   •                                                                 i–tem 2
 
-  1.                                                              e-numerate
+  1.                                                              e–numerate
 
-                    mu-ltitable headitem                                        another tab
+                    mu–ltitable headitem                                        another tab
 -----------------------------------------------------------------------------------------------
-                        mu-ltitable item                                     multitable tab
-                      mu-ltitable item 2                                   multitable tab 2
-                   lone mu-ltitable item
+                        mu–ltitable item                                     multitable tab
+                      mu–ltitable item 2                                   multitable tab 2
+                   lone mu–ltitable item
 
      e--xample  some
         text
@@ -171,21 +171,21 @@ f-lushleft
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
 a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
    Call macro in itemize at the beginning of an item
-   a-n itemize line in macro
+   a–n itemize line in macro
 
                                                       in format_command
 
@@ -205,23 +205,23 @@ f-lushleft
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
      subheading
      ----------
 
      in verbatim
 
-        * i-tem 1
-        * i-tem 2
+        • i–tem 1
+        • i–tem 2
 
-       1. e-numerate
+       1. e–numerate
 
-     mu-ltitable headitem                        another tab
+     mu–ltitable headitem                        another tab
      -----------------------------------------------------------------------------------------------
-     mu-ltitable item                            multitable tab
-     mu-ltitable item 2                          multitable tab 2
-     lone mu-ltitable item
+     mu–ltitable item                            multitable tab
+     mu–ltitable item 2                          multitable tab 2
+     lone mu–ltitable item
 
           e--xample  some
              text
@@ -229,30 +229,30 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-          d-effn
+          d–effn
 
      a
-          l-ine
+          l–ine
 
-     c-artouche
+     c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -260,20 +260,20 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
-   a-n itemize line item 1 Call macro in itemize in macro
+   a–n itemize line item 1 Call macro in itemize in macro
 
                                                       in format_command
 
@@ -293,23 +293,23 @@ f-lushleft
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
      subheading
      ----------
 
      in verbatim
 
-        * i-tem 1
-        * i-tem 2
+        • i–tem 1
+        • i–tem 2
 
-       1. e-numerate
+       1. e–numerate
 
-     mu-ltitable headitem                        another tab
+     mu–ltitable headitem                        another tab
      -----------------------------------------------------------------------------------------------
-     mu-ltitable item                            multitable tab
-     mu-ltitable item 2                          multitable tab 2
-     lone mu-ltitable item
+     mu–ltitable item                            multitable tab
+     mu–ltitable item 2                          multitable tab 2
+     lone mu–ltitable item
 
           e--xample  some
              text
@@ -317,30 +317,30 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-          d-effn
+          d–effn
 
      a
-          l-ine
+          l–ine
 
-     c-artouche
+     c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -348,20 +348,20 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
-   a-n itemize line item 2 Call macro in itemize in format_command
+   a–n itemize line item 2 Call macro in itemize in format_command
                                                                in macro
 
                                                       in format_command
@@ -382,23 +382,23 @@ f-lushleft
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
      subheading
      ----------
 
      in verbatim
 
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -406,30 +406,30 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -437,18 +437,18 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
    Call macro in enumerate at the beginning of enumerate
   1. in macro
@@ -471,23 +471,23 @@ f-lushleft
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
      subheading
      ----------
 
      in verbatim
 
-        * i-tem 1
-        * i-tem 2
+        • i–tem 1
+        • i–tem 2
 
-       1. e-numerate
+       1. e–numerate
 
-     mu-ltitable headitem                        another tab
+     mu–ltitable headitem                        another tab
      -----------------------------------------------------------------------------------------------
-     mu-ltitable item                            multitable tab
-     mu-ltitable item 2                          multitable tab 2
-     lone mu-ltitable item
+     mu–ltitable item                            multitable tab
+     mu–ltitable item 2                          multitable tab 2
+     lone mu–ltitable item
 
           e--xample  some
              text
@@ -495,30 +495,30 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-          d-effn
+          d–effn
 
      a
-          l-ine
+          l–ine
 
-     c-artouche
+     c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -526,18 +526,18 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
   2. enumerate Call macro in enumerate in macro
 
@@ -559,23 +559,23 @@ f-lushleft
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
      subheading
      ----------
 
      in verbatim
 
-        * i-tem 1
-        * i-tem 2
+        • i–tem 1
+        • i–tem 2
 
-       1. e-numerate
+       1. e–numerate
 
-     mu-ltitable headitem                        another tab
+     mu–ltitable headitem                        another tab
      -----------------------------------------------------------------------------------------------
-     mu-ltitable item                            multitable tab
-     mu-ltitable item 2                          multitable tab 2
-     lone mu-ltitable item
+     mu–ltitable item                            multitable tab
+     mu–ltitable item 2                          multitable tab 2
+     lone mu–ltitable item
 
           e--xample  some
              text
@@ -583,30 +583,30 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-          d-effn
+          d–effn
 
      a
-          l-ine
+          l–ine
 
-     c-artouche
+     c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -614,18 +614,18 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
   3. enumerate2 Call macro in enumerate in format_command
                                                                in macro
@@ -648,23 +648,23 @@ f-lushleft
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
      subheading
      ----------
 
      in verbatim
 
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -672,30 +672,30 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -703,20 +703,20 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
-mu-ltitable headitem                        another tab
+mu–ltitable headitem                        another tab
 -----------------------------------------------------------------------------------------------
 multitable item                             multitable tab.  And after Call macro in
                                             mutitable after item
@@ -740,23 +740,23 @@ After
 
                                 in group
 
-                           A quot--ation
+                            A quot—ation
 
 subheading
 ----------
 
 in verbatim
 
-   * i-tem 1
-   * i-tem 2
+   • i–tem 1
+   • i–tem 2
 
-  1. e-numerate
+  1. e–numerate
 
-mu-ltitable headitem      another tab
+mu–ltitable headitem      another tab
 --------------------------------------------------------
-mu-ltitable item          multitable tab
-mu-ltitable item 2        multitable tab 2
-lone mu-ltitable item
+mu–ltitable item          multitable tab
+mu–ltitable item 2        multitable tab 2
+lone mu–ltitable item
 
      e--xample  some
         text
@@ -765,30 +765,30 @@ lone mu-ltitable item
 
  -- c--ategory: d--effn_name
           a--rguments...
-     d-effn
+     d–effn
 
 a
-     l-ine
+     l–ine
 
-c-artouche
+c–artouche
 
-f-lushleft
+f–lushleft
 
-                             f-lushright
+                             f–lushright
 
-             ce-ntered line
+             ce–ntered line
 
 in macro, a format_command containing some other commands.
-   *                                  i-tem 1
-   *                                  i-tem 2
+   •                                  i–tem 1
+   •                                  i–tem 2
 
-  1.                               e-numerate
+  1.                               e–numerate
 
-  mu-ltitable headitem                   another tab
+  mu–ltitable headitem                   another tab
 --------------------------------------------------------
-      mu-ltitable item                multitable tab
-    mu-ltitable item 2              multitable tab 2
- lone mu-ltitable item
+      mu–ltitable item                multitable tab
+    mu–ltitable item 2              multitable tab 2
+ lone mu–ltitable item
 
      e--xample  some
         text
@@ -796,18 +796,18 @@ in macro, a format_command containing some other commands.
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                  d-effn
+                                  d–effn
 
 a
-                                   l-ine
+                                   l–ine
 
-                              c-artouche
+                              c–artouche
 
-f-lushleft
+f–lushleft
 
-                             f-lushright
+                             f–lushright
 
-             ce-ntered line
+             ce–ntered line
 
 multitable item 2                           multitable tab 2 Call macro in mutitable in
                                             macro
@@ -830,23 +830,23 @@ multitable item 2                           multitable tab 2 Call macro in mutit
                                             
                                                                                    in group
                                             
-                                                                              A quot--ation
+                                                                               A quot—ation
                                             
                                             subheading
                                             ----------
                                             
                                             in verbatim
                                             
-                                               * i-tem 1
-                                               * i-tem 2
+                                               • i–tem 1
+                                               • i–tem 2
                                             
-                                              1. e-numerate
+                                              1. e–numerate
                                             
-                                            mu-ltitable headitem          another tab
+                                            mu–ltitable headitem          another tab
                                             -----------------------------------------------------------------
-                                            mu-ltitable item              multitable tab
-                                            mu-ltitable item 2            multitable tab 2
-                                            lone mu-ltitable item
+                                            mu–ltitable item              multitable tab
+                                            mu–ltitable item 2            multitable tab 2
+                                            lone mu–ltitable item
                                             
                                                  e--xample  some
                                                     text
@@ -854,30 +854,30 @@ multitable item 2                           multitable tab 2 Call macro in mutit
                                                  s--mallexample
                                             
                                              -- c--ategory: d--effn_name a--rguments...
-                                                 d-effn
+                                                 d–effn
                                             
                                             a
-                                                 l-ine
+                                                 l–ine
                                             
-                                            c-artouche
+                                            c–artouche
                                             
-                                            f-lushleft
+                                            f–lushleft
                                             
-                                                                                f-lushright
+                                                                                f–lushright
                                             
-                                                            ce-ntered line
+                                                            ce–ntered line
                                             
                                             in macro, a format_command containing some other commands.
-                                               *                                         i-tem 1
-                                               *                                         i-tem 2
+                                               •                                         i–tem 1
+                                               •                                         i–tem 2
                                             
-                                              1.                                      e-numerate
+                                              1.                                      e–numerate
                                             
-                                                  mu-ltitable headitem                        another tab
+                                                  mu–ltitable headitem                        another tab
                                             -----------------------------------------------------------------
-                                                      mu-ltitable item                     multitable tab
-                                                    mu-ltitable item 2                   multitable tab 2
-                                                 lone mu-ltitable item
+                                                      mu–ltitable item                     multitable tab
+                                                    mu–ltitable item 2                   multitable tab 2
+                                                 lone mu–ltitable item
                                             
                                                  e--xample  some
                                                     text
@@ -885,18 +885,18 @@ multitable item 2                           multitable tab 2 Call macro in mutit
                                                  s--mallexample
                                             
                                              -- c--ategory: d--effn_name a--rguments...
-                                                                                     d-effn
+                                                                                     d–effn
                                             
                                             a
-                                                                                      l-ine
+                                                                                      l–ine
                                             
-                                                                                 c-artouche
+                                                                                 c–artouche
                                             
-                                            f-lushleft
+                                            f–lushleft
                                             
-                                                                                f-lushright
+                                                                                f–lushright
                                             
-                                                            ce-ntered line
+                                                            ce–ntered line
                                             
 lone multitable item Call macro in
 mutitable in format_command
@@ -920,23 +920,23 @@ mutitable in format_command
 
                                 in group
 
-                           A quot--ation
+                            A quot—ation
 
 subheading
 ----------
 
 in verbatim
 
-   *                                  i-tem 1
-   *                                  i-tem 2
+   •                                  i–tem 1
+   •                                  i–tem 2
 
-  1.                               e-numerate
+  1.                               e–numerate
 
-  mu-ltitable headitem                   another tab
+  mu–ltitable headitem                   another tab
 --------------------------------------------------------
-      mu-ltitable item                multitable tab
-    mu-ltitable item 2              multitable tab 2
- lone mu-ltitable item
+      mu–ltitable item                multitable tab
+    mu–ltitable item 2              multitable tab 2
+ lone mu–ltitable item
 
      e--xample  some
         text
@@ -944,30 +944,30 @@ in verbatim
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                  d-effn
+                                  d–effn
 
 a
-                                   l-ine
+                                   l–ine
 
-                              c-artouche
+                              c–artouche
 
-f-lushleft
+f–lushleft
 
-                             f-lushright
+                             f–lushright
 
-             ce-ntered line
+             ce–ntered line
 
 in macro, a format_command containing some other commands.
-   *                                  i-tem 1
-   *                                  i-tem 2
+   •                                  i–tem 1
+   •                                  i–tem 2
 
-  1.                               e-numerate
+  1.                               e–numerate
 
-  mu-ltitable headitem                   another tab
+  mu–ltitable headitem                   another tab
 --------------------------------------------------------
-      mu-ltitable item                multitable tab
-    mu-ltitable item 2              multitable tab 2
- lone mu-ltitable item
+      mu–ltitable item                multitable tab
+    mu–ltitable item 2              multitable tab 2
+ lone mu–ltitable item
 
      e--xample  some
         text
@@ -975,18 +975,18 @@ in macro, a format_command containing some other commands.
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                  d-effn
+                                  d–effn
 
 a
-                                   l-ine
+                                   l–ine
 
-                              c-artouche
+                              c–artouche
 
-f-lushleft
+f–lushleft
 
-                             f-lushright
+                             f–lushright
 
-             ce-ntered line
+             ce–ntered line
 
    call macro at the example beginning
      in macro
@@ -1022,8 +1022,8 @@ f-lushleft
 
 
 
-        * i--tem 1
-        * i--tem 2
+        • i--tem 1
+        • i--tem 2
 
        1. e--numerate
 
@@ -1050,11 +1050,11 @@ f-lushleft
 
                                                            f--lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                i--tem 1
-        *                                                                i--tem 2
+        •                                                                i--tem 1
+        •                                                                i--tem 2
 
        1.                                                             e--numerate
 
@@ -1081,7 +1081,7 @@ f-lushleft
 
                                                            f--lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
      example  some
         text
@@ -1119,8 +1119,8 @@ f-lushleft
 
 
 
-        * i--tem 1
-        * i--tem 2
+        • i--tem 1
+        • i--tem 2
 
        1. e--numerate
 
@@ -1147,11 +1147,11 @@ f-lushleft
 
                                                            f--lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                i--tem 1
-        *                                                                i--tem 2
+        •                                                                i--tem 1
+        •                                                                i--tem 2
 
        1.                                                             e--numerate
 
@@ -1178,7 +1178,7 @@ f-lushleft
 
                                                            f--lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
 
      more example text
@@ -1210,8 +1210,8 @@ f-lushleft
 
      in verbatim
 
-        *                                                                i--tem 1
-        *                                                                i--tem 2
+        •                                                                i--tem 1
+        •                                                                i--tem 2
 
        1.                                                             e--numerate
 
@@ -1238,11 +1238,11 @@ f-lushleft
 
                                                            f--lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                i--tem 1
-        *                                                                i--tem 2
+        •                                                                i--tem 1
+        •                                                                i--tem 2
 
        1.                                                             e--numerate
 
@@ -1269,7 +1269,7 @@ f-lushleft
 
                                                            f--lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
 
      s--mallexample
@@ -1295,23 +1295,23 @@ f-lushleft
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
      subheading
      ----------
 
      in verbatim
 
-        * i-tem 1
-        * i-tem 2
+        • i–tem 1
+        • i–tem 2
 
-       1. e-numerate
+       1. e–numerate
 
-     mu-ltitable headitem                        another tab
+     mu–ltitable headitem                        another tab
      -----------------------------------------------------------------------------------------------
-     mu-ltitable item                            multitable tab
-     mu-ltitable item 2                          multitable tab 2
-     lone mu-ltitable item
+     mu–ltitable item                            multitable tab
+     mu–ltitable item 2                          multitable tab 2
+     lone mu–ltitable item
 
           e--xample  some
              text
@@ -1319,30 +1319,30 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-          d-effn
+          d–effn
 
      a
-          l-ine
+          l–ine
 
-     c-artouche
+     c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -1350,18 +1350,18 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
      deffn continues call macro in deffn in format_command
                                                                in macro
@@ -1384,23 +1384,23 @@ f-lushleft
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
      subheading
      ----------
 
      in verbatim
 
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -1408,30 +1408,30 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -1439,18 +1439,18 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
    call macro in deffn at the beginning
  -- c--ategory2: d--effn_name2 a--rguments2...
@@ -1474,23 +1474,23 @@ f-lushleft
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
      subheading
      ----------
 
      in verbatim
 
-        * i-tem 1
-        * i-tem 2
+        • i–tem 1
+        • i–tem 2
 
-       1. e-numerate
+       1. e–numerate
 
-     mu-ltitable headitem                        another tab
+     mu–ltitable headitem                        another tab
      -----------------------------------------------------------------------------------------------
-     mu-ltitable item                            multitable tab
-     mu-ltitable item 2                          multitable tab 2
-     lone mu-ltitable item
+     mu–ltitable item                            multitable tab
+     mu–ltitable item 2                          multitable tab 2
+     lone mu–ltitable item
 
           e--xample  some
              text
@@ -1498,30 +1498,30 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-          d-effn
+          d–effn
 
      a
-          l-ine
+          l–ine
 
-     c-artouche
+     c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -1529,18 +1529,18 @@ f-lushleft
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
 a line
      call macro in table in macro
@@ -1563,23 +1563,23 @@ a line
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
      subheading
      ----------
 
      in verbatim
 
-        * i-tem 1
-        * i-tem 2
+        • i–tem 1
+        • i–tem 2
 
-       1. e-numerate
+       1. e–numerate
 
-     mu-ltitable headitem                        another tab
+     mu–ltitable headitem                        another tab
      -----------------------------------------------------------------------------------------------
-     mu-ltitable item                            multitable tab
-     mu-ltitable item 2                          multitable tab 2
-     lone mu-ltitable item
+     mu–ltitable item                            multitable tab
+     mu–ltitable item 2                          multitable tab 2
+     lone mu–ltitable item
 
           e--xample  some
              text
@@ -1587,30 +1587,30 @@ a line
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-          d-effn
+          d–effn
 
      a
-          l-ine
+          l–ine
 
-     c-artouche
+     c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -1618,18 +1618,18 @@ a line
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
      call macro in table at an item beginning
 a line
@@ -1653,23 +1653,23 @@ a line
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
      subheading
      ----------
 
      in verbatim
 
-        * i-tem 1
-        * i-tem 2
+        • i–tem 1
+        • i–tem 2
 
-       1. e-numerate
+       1. e–numerate
 
-     mu-ltitable headitem                        another tab
+     mu–ltitable headitem                        another tab
      -----------------------------------------------------------------------------------------------
-     mu-ltitable item                            multitable tab
-     mu-ltitable item 2                          multitable tab 2
-     lone mu-ltitable item
+     mu–ltitable item                            multitable tab
+     mu–ltitable item 2                          multitable tab 2
+     lone mu–ltitable item
 
           e--xample  some
              text
@@ -1677,30 +1677,30 @@ a line
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-          d-effn
+          d–effn
 
      a
-          l-ine
+          l–ine
 
-     c-artouche
+     c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -1708,18 +1708,18 @@ a line
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
 a line2
      call macro in table in format_command
@@ -1743,23 +1743,23 @@ a line2
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
      subheading
      ----------
 
      in verbatim
 
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -1767,30 +1767,30 @@ a line2
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-        *                                                                 i-tem 1
-        *                                                                 i-tem 2
+        •                                                                 i–tem 1
+        •                                                                 i–tem 2
 
-       1.                                                              e-numerate
+       1.                                                              e–numerate
 
-                         mu-ltitable headitem                                        another tab
+                         mu–ltitable headitem                                        another tab
      -----------------------------------------------------------------------------------------------
-                             mu-ltitable item                                     multitable tab
-                           mu-ltitable item 2                                   multitable tab 2
-                        lone mu-ltitable item
+                             mu–ltitable item                                     multitable tab
+                           mu–ltitable item 2                                   multitable tab 2
+                        lone mu–ltitable item
 
           e--xample  some
              text
@@ -1798,18 +1798,18 @@ a line2
           s--mallexample
 
       -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
      a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-     f-lushleft
+     f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
    call macro at cartouche begin
    in macro
@@ -1832,23 +1832,23 @@ a line2
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
 subheading
 ----------
 
 in verbatim
 
-   * i-tem 1
-   * i-tem 2
+   • i–tem 1
+   • i–tem 2
 
-  1. e-numerate
+  1. e–numerate
 
-mu-ltitable headitem                        another tab
+mu–ltitable headitem                        another tab
 -----------------------------------------------------------------------------------------------
-mu-ltitable item                            multitable tab
-mu-ltitable item 2                          multitable tab 2
-lone mu-ltitable item
+mu–ltitable item                            multitable tab
+mu–ltitable item 2                          multitable tab 2
+lone mu–ltitable item
 
      e--xample  some
         text
@@ -1856,30 +1856,30 @@ lone mu-ltitable item
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-     d-effn
+     d–effn
 
 a
-     l-ine
+     l–ine
 
-   c-artouche
+   c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-   *                                                                 i-tem 1
-   *                                                                 i-tem 2
+   •                                                                 i–tem 1
+   •                                                                 i–tem 2
 
-  1.                                                              e-numerate
+  1.                                                              e–numerate
 
-                    mu-ltitable headitem                                        another tab
+                    mu–ltitable headitem                                        another tab
 -----------------------------------------------------------------------------------------------
-                        mu-ltitable item                                     multitable tab
-                      mu-ltitable item 2                                   multitable tab 2
-                   lone mu-ltitable item
+                        mu–ltitable item                                     multitable tab
+                      mu–ltitable item 2                                   multitable tab 2
+                   lone mu–ltitable item
 
      e--xample  some
         text
@@ -1887,18 +1887,18 @@ f-lushleft
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
 a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
    cartouche call macro in cartouche in macro
 
@@ -1920,23 +1920,23 @@ f-lushleft
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
 subheading
 ----------
 
 in verbatim
 
-   * i-tem 1
-   * i-tem 2
+   • i–tem 1
+   • i–tem 2
 
-  1. e-numerate
+  1. e–numerate
 
-mu-ltitable headitem                        another tab
+mu–ltitable headitem                        another tab
 -----------------------------------------------------------------------------------------------
-mu-ltitable item                            multitable tab
-mu-ltitable item 2                          multitable tab 2
-lone mu-ltitable item
+mu–ltitable item                            multitable tab
+mu–ltitable item 2                          multitable tab 2
+lone mu–ltitable item
 
      e--xample  some
         text
@@ -1944,30 +1944,30 @@ lone mu-ltitable item
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-     d-effn
+     d–effn
 
 a
-     l-ine
+     l–ine
 
-   c-artouche
+   c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-   *                                                                 i-tem 1
-   *                                                                 i-tem 2
+   •                                                                 i–tem 1
+   •                                                                 i–tem 2
 
-  1.                                                              e-numerate
+  1.                                                              e–numerate
 
-                    mu-ltitable headitem                                        another tab
+                    mu–ltitable headitem                                        another tab
 -----------------------------------------------------------------------------------------------
-                        mu-ltitable item                                     multitable tab
-                      mu-ltitable item 2                                   multitable tab 2
-                   lone mu-ltitable item
+                        mu–ltitable item                                     multitable tab
+                      mu–ltitable item 2                                   multitable tab 2
+                   lone mu–ltitable item
 
      e--xample  some
         text
@@ -1975,18 +1975,18 @@ f-lushleft
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
 a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
    call macro in cartouche in format_command
                                                                in macro
@@ -2009,23 +2009,23 @@ f-lushleft
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
 subheading
 ----------
 
 in verbatim
 
-   *                                                                 i-tem 1
-   *                                                                 i-tem 2
+   •                                                                 i–tem 1
+   •                                                                 i–tem 2
 
-  1.                                                              e-numerate
+  1.                                                              e–numerate
 
-                    mu-ltitable headitem                                        another tab
+                    mu–ltitable headitem                                        another tab
 -----------------------------------------------------------------------------------------------
-                        mu-ltitable item                                     multitable tab
-                      mu-ltitable item 2                                   multitable tab 2
-                   lone mu-ltitable item
+                        mu–ltitable item                                     multitable tab
+                      mu–ltitable item 2                                   multitable tab 2
+                   lone mu–ltitable item
 
      e--xample  some
         text
@@ -2033,30 +2033,30 @@ in verbatim
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
 a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-   *                                                                 i-tem 1
-   *                                                                 i-tem 2
+   •                                                                 i–tem 1
+   •                                                                 i–tem 2
 
-  1.                                                              e-numerate
+  1.                                                              e–numerate
 
-                    mu-ltitable headitem                                        another tab
+                    mu–ltitable headitem                                        another tab
 -----------------------------------------------------------------------------------------------
-                        mu-ltitable item                                     multitable tab
-                      mu-ltitable item 2                                   multitable tab 2
-                   lone mu-ltitable item
+                        mu–ltitable item                                     multitable tab
+                      mu–ltitable item 2                                   multitable tab 2
+                   lone mu–ltitable item
 
      e--xample  some
         text
@@ -2064,18 +2064,18 @@ f-lushleft
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
 a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
 call macro in flushleft
 in macro
@@ -2098,23 +2098,23 @@ After
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
 subheading
 ----------
 
 in verbatim
 
-   * i-tem 1
-   * i-tem 2
+   • i–tem 1
+   • i–tem 2
 
-  1. e-numerate
+  1. e–numerate
 
-mu-ltitable headitem                        another tab
+mu–ltitable headitem                        another tab
 -----------------------------------------------------------------------------------------------
-mu-ltitable item                            multitable tab
-mu-ltitable item 2                          multitable tab 2
-lone mu-ltitable item
+mu–ltitable item                            multitable tab
+mu–ltitable item 2                          multitable tab 2
+lone mu–ltitable item
 
      e--xample  some
         text
@@ -2122,30 +2122,30 @@ lone mu-ltitable item
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-     d-effn
+     d–effn
 
 a
-     l-ine
+     l–ine
 
-c-artouche
+c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-   *                                                                 i-tem 1
-   *                                                                 i-tem 2
+   •                                                                 i–tem 1
+   •                                                                 i–tem 2
 
-  1.                                                              e-numerate
+  1.                                                              e–numerate
 
-                    mu-ltitable headitem                                        another tab
+                    mu–ltitable headitem                                        another tab
 -----------------------------------------------------------------------------------------------
-                        mu-ltitable item                                     multitable tab
-                      mu-ltitable item 2                                   multitable tab 2
-                   lone mu-ltitable item
+                        mu–ltitable item                                     multitable tab
+                      mu–ltitable item 2                                   multitable tab 2
+                   lone mu–ltitable item
 
      e--xample  some
         text
@@ -2153,18 +2153,18 @@ f-lushleft
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
 a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
 flushleft
 call macro in flushleft in format_command
@@ -2188,23 +2188,23 @@ call macro in flushleft in format_command
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
 subheading
 ----------
 
 in verbatim
 
-   *                                                                 i-tem 1
-   *                                                                 i-tem 2
+   •                                                                 i–tem 1
+   •                                                                 i–tem 2
 
-  1.                                                              e-numerate
+  1.                                                              e–numerate
 
-                    mu-ltitable headitem                                        another tab
+                    mu–ltitable headitem                                        another tab
 -----------------------------------------------------------------------------------------------
-                        mu-ltitable item                                     multitable tab
-                      mu-ltitable item 2                                   multitable tab 2
-                   lone mu-ltitable item
+                        mu–ltitable item                                     multitable tab
+                      mu–ltitable item 2                                   multitable tab 2
+                   lone mu–ltitable item
 
      e--xample  some
         text
@@ -2212,30 +2212,30 @@ in verbatim
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
 a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-   *                                                                 i-tem 1
-   *                                                                 i-tem 2
+   •                                                                 i–tem 1
+   •                                                                 i–tem 2
 
-  1.                                                              e-numerate
+  1.                                                              e–numerate
 
-                    mu-ltitable headitem                                        another tab
+                    mu–ltitable headitem                                        another tab
 -----------------------------------------------------------------------------------------------
-                        mu-ltitable item                                     multitable tab
-                      mu-ltitable item 2                                   multitable tab 2
-                   lone mu-ltitable item
+                        mu–ltitable item                                     multitable tab
+                      mu–ltitable item 2                                   multitable tab 2
+                   lone mu–ltitable item
 
      e--xample  some
         text
@@ -2243,18 +2243,18 @@ f-lushleft
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
 a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
                                                                in macro
 
@@ -2276,23 +2276,23 @@ f-lushleft
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
 subheading
 ----------
 
 in verbatim
 
-   *                                                                 i-tem 1
-   *                                                                 i-tem 2
+   •                                                                 i–tem 1
+   •                                                                 i–tem 2
 
-  1.                                                              e-numerate
+  1.                                                              e–numerate
 
-                    mu-ltitable headitem                                        another tab
+                    mu–ltitable headitem                                        another tab
 -----------------------------------------------------------------------------------------------
-                        mu-ltitable item                                     multitable tab
-                      mu-ltitable item 2                                   multitable tab 2
-                   lone mu-ltitable item
+                        mu–ltitable item                                     multitable tab
+                      mu–ltitable item 2                                   multitable tab 2
+                   lone mu–ltitable item
 
      e--xample  some
         text
@@ -2300,30 +2300,30 @@ in verbatim
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
 a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-   *                                                                 i-tem 1
-   *                                                                 i-tem 2
+   •                                                                 i–tem 1
+   •                                                                 i–tem 2
 
-  1.                                                              e-numerate
+  1.                                                              e–numerate
 
-                    mu-ltitable headitem                                        another tab
+                    mu–ltitable headitem                                        another tab
 -----------------------------------------------------------------------------------------------
-                        mu-ltitable item                                     multitable tab
-                      mu-ltitable item 2                                   multitable tab 2
-                   lone mu-ltitable item
+                        mu–ltitable item                                     multitable tab
+                      mu–ltitable item 2                                   multitable tab 2
+                   lone mu–ltitable item
 
      e--xample  some
         text
@@ -2331,18 +2331,18 @@ f-lushleft
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
 a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
                                                              flushright
                                                                in macro
@@ -2365,23 +2365,23 @@ f-lushleft
 
                                                                in group
 
-                                                          A quot--ation
+                                                           A quot—ation
 
 subheading
 ----------
 
 in verbatim
 
-   *                                                                 i-tem 1
-   *                                                                 i-tem 2
+   •                                                                 i–tem 1
+   •                                                                 i–tem 2
 
-  1.                                                              e-numerate
+  1.                                                              e–numerate
 
-                    mu-ltitable headitem                                        another tab
+                    mu–ltitable headitem                                        another tab
 -----------------------------------------------------------------------------------------------
-                        mu-ltitable item                                     multitable tab
-                      mu-ltitable item 2                                   multitable tab 2
-                   lone mu-ltitable item
+                        mu–ltitable item                                     multitable tab
+                      mu–ltitable item 2                                   multitable tab 2
+                   lone mu–ltitable item
 
      e--xample  some
         text
@@ -2389,30 +2389,30 @@ in verbatim
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
 a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
              in macro, a format_command containing some other commands.
-   *                                                                 i-tem 1
-   *                                                                 i-tem 2
+   •                                                                 i–tem 1
+   •                                                                 i–tem 2
 
-  1.                                                              e-numerate
+  1.                                                              e–numerate
 
-                    mu-ltitable headitem                                        another tab
+                    mu–ltitable headitem                                        another tab
 -----------------------------------------------------------------------------------------------
-                        mu-ltitable item                                     multitable tab
-                      mu-ltitable item 2                                   multitable tab 2
-                   lone mu-ltitable item
+                        mu–ltitable item                                     multitable tab
+                      mu–ltitable item 2                                   multitable tab 2
+                   lone mu–ltitable item
 
      e--xample  some
         text
@@ -2420,18 +2420,18 @@ f-lushleft
      s--mallexample
 
  -- c--ategory: d--effn_name a--rguments...
-                                                                 d-effn
+                                                                 d–effn
 
 a
-                                                                  l-ine
+                                                                  l–ine
 
-                                                             c-artouche
+                                                             c–artouche
 
-f-lushleft
+f–lushleft
 
-                                                            f-lushright
+                                                            f–lushright
 
-                            ce-ntered line
+                            ce–ntered line
 
 
 

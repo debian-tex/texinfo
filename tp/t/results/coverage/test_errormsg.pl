@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,140 +10,107 @@ $result_trees{'test_errormsg'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'Some text
-'
-        },
-        {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'text' => 'Some text
+'
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'Text '
-                },
-                {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
+                      'text' => 'Text '
+                    },
+                    {
+                      'args' => [
                         {
-                          'parent' => {},
-                          'text' => 'e'
+                          'contents' => [
+                            {
+                              'text' => 'e'
+                            }
+                          ],
+                          'type' => 'following_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'following_arg'
-                    }
-                  ],
-                  'cmdname' => '~',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => ' '
-                },
-                {
-                  'args' => [
+                      'cmdname' => '~',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 2,
+                        'macro' => ''
+                      }
+                    },
                     {
-                      'contents' => [
+                      'text' => ' '
+                    },
+                    {
+                      'args' => [
                         {
-                          'parent' => {},
-                          'text' => 'code'
+                          'contents' => [
+                            {
+                              'text' => 'code'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'cmdname' => 'code',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 2,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => 'code',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'errormsg',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
-        },
-        {
-          'args' => [
+              'cmdname' => 'errormsg',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => '
+'
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'with surrounding spaces'
+                  'contents' => [
+                    {
+                      'text' => 'with surrounding spaces'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '   ',
+                    'spaces_before_argument' => '  '
+                  },
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '   ',
-                'spaces_before_argument' => '  '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'errormsg',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+'
             }
           ],
-          'cmdname' => 'errormsg',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[3];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0];
-$result_trees{'test_errormsg'}{'contents'}[0]{'parent'} = $result_trees{'test_errormsg'};
 
 $result_texis{'test_errormsg'} = 'Some text
 @errormsg{Text @~e @code{code}}
@@ -158,7 +125,7 @@ $result_texts{'test_errormsg'} = 'Some text
 
 $result_errors{'test_errormsg'} = [
   {
-    'error_line' => ':2: Text 
+    'error_line' => 'Text 
 ',
     'file_name' => '',
     'line_nr' => 2,
@@ -167,7 +134,7 @@ $result_errors{'test_errormsg'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':3: with surrounding spaces
+    'error_line' => 'with surrounding spaces
 ',
     'file_name' => '',
     'line_nr' => 3,
@@ -196,6 +163,12 @@ $result_converted{'xml'}->{'test_errormsg'} = '<para>Some text
 <errormsg>Text <accent type="tilde" bracketed="off">e</accent> <code>code</code></errormsg>
 <errormsg spaces="  ">with surrounding spaces   </errormsg>
 </para>';
+
+
+$result_converted{'latex_text'}->{'test_errormsg'} = 'Some text
+
+
+';
 
 
 $result_converted{'docbook'}->{'test_errormsg'} = '<para>Some text

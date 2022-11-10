@@ -1,6 +1,6 @@
 /* variables.c -- how to manipulate user visible variables in Info.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -229,7 +229,7 @@ DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
     return;
 
   if (var->choices)
-    asprintf (&description, "%s (%s): %s.",
+    xasprintf (&description, "%s (%s): %s.",
              var->name,
              var->value == &highlight_searches
              ? on_off_choices[match_rendition.mask != 0]
@@ -237,7 +237,7 @@ DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
              ? rendition_to_string (var->value)
              : var->choices[*(int *)var->value], _(var->doc));
   else
-    asprintf (&description, "%s (%d): %s.",
+    xasprintf (&description, "%s (%d): %s.",
              var->name, *(int *)var->value, _(var->doc));
 
   window_message_in_echo_area ("%s", description);

@@ -18,22 +18,7 @@ info_with_space='ii54 input.info.gz'
 cp ${testdir}/ii-0054-input-info-file.gz "$info_with_space"
 ${install_info} "$info_with_space" $outputdirfile || exit $?
 
-diff ${testdir}/ii-0054-expected-dir-file $outputdirfile || exit $?
+${diff} ${testdir}/ii-0054-expected-dir-file $outputdirfile || exit $?
 
 rm -f "$info_with_space" $outputdirfile
 exit $retval
-
-
-#output_dir=`mktemp 'ii 54'-XXXXXXXX`
-#outputdirfile=`mktemp ii53-XXXXXXXX`
-#
-## Test for spaces in target directory name.
-#${install_info} --info-dir="${output_dir}" ${testdir}/ii-0054-input-info-file 
-#test $? = 0 || exit 2
-#
-#diff ${testdir}/ii-0053-expected-dir-file $outputdirfile
-#test $? = 0 || exit 3
-#
-#rm -f $outputdirfile
-#exit 0
-#

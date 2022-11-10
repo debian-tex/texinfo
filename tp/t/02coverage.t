@@ -1,13 +1,14 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
 my @test_cases = (
 ['commands','@@ @TeX{} @
 @"e @^{@dotless{i}} @~{a} @ringaccent a
+
 @clicksequence{File @click{} Open}@.
 @email{a, b} @code{code --- -- \'\' ``}
 --- -- \'\' ``. @sc{small caps}.
@@ -18,6 +19,27 @@ my @test_cases = (
 '],
 ['lettered_accent_and_spaces',
 '@ringaccent    a
+
+@ringaccent
+{a}
+
+@ringaccent
+a
+
+@ringaccent
+  a
+
+@^ a
+
+@^
+a
+
+@^
+ a
+
+@^ {a
+}
+
 '],
 ['accent_and_dash',
 '@^{a--}'],
@@ -122,6 +144,10 @@ In table
 @itemx itemx vtable @comment comment in itemx line
 
 @end vtable
+
+@table @strong@unknown
+@item unknown command after indicating command
+@end table
 '],
 ['table_command_comment',
 '@table @code@c in comment
@@ -587,6 +613,39 @@ In float with caption.
 
 @~Z @~s
 '],
+['commands_in_math',
+'
+@displaymath
+@strong{``simple-double--three---four----\'\'} @w{aa}
+`@w{}`simple-double-@w{}-three---four----\'@w{}\'@*
+@end displaymath
+
+@displaymath
+@"u @"{U} @~n @^a @\'e @=o @`i @\'{e} @dotless{i} @dotless{j} @`{@=E}
+@l{} @,{@\'C} @,{@\'C} @,c @H{a} @dotaccent{a} @ringaccent{a} @tieaccent{a}
+@u{a} @ubaraccent{a} @udotaccent{a} @v{a} @ogonek{a} a@sup{h}@sub{l}
+@* @ @  @
+@- @| @: @! @? @. @@ @} @{ @/
+@today{}
+@end displaymath
+
+@displaymath
+@click{}
+@U{0075}
+@TeX{} @LaTeX{} @bullet{} @copyright{} @dots{} @enddots{} @equiv{}
+@error{} @expansion{} @minus{} @point{} @print{} @result{}
+@aa{} @AA{} @ae{} @oe{} @AE{} @OE{} @o{} @O{} @ss{} @l{} @L{} @DH{}
+@TH{} @dh{} @th{} @exclamdown{} @questiondown{} @pounds{}
+@registeredsymbol{} @ordf{} @ordm{} @comma{} 
+@end displaymath
+
+@displaymath
+@quotedblleft{} @quotedblright{} 
+@quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{} @guillemetleft{}
+@guillemetright{} @guillemotleft{} @guillemotright{} @guilsinglleft{}
+@guilsinglright{} @textdegree{} @euro{} @arrow{} @leq{} @geq{}
+@end displaymath
+'],
 );
 
 my @test_tree = (
@@ -631,9 +690,26 @@ cut by blank line}
 
 @samp
 {v}
+
+@AA
+ {}
+
+@email
+{a, b 
+ }
+
+@TeX
+
+{}
 '],
 ['spaces_no_brace_after_braced_command',
 '@code b
+'],
+['spaces_unknown_command_after_braced_command',
+'@code @unknown 
+
+@~ @notexisting
+ e
 '],
 ['flushright_not_closed',
 '@flushright
@@ -648,6 +724,109 @@ text in group
 ['unknown_commands',
 '@unknwon
 @#
+'],
+['command_in_end_ignored_raw_in_command',
+'@html
+In html
+@end @code{html}
+', { 'EXPANDED_FORMATS' => ['tex'] }],
+['command_in_end_ignored_raw_one_char_not_in_command',
+'@html
+In html
+@end h@asis{tml}
+', { 'EXPANDED_FORMATS' => ['tex'] }],
+['command_in_end_ignored_raw_two_char_not_in_command',
+'@html
+In html
+@end ht@asis{ml}
+', { 'EXPANDED_FORMATS' => ['tex'] }],
+['command_in_end_ignored_raw_command_after',
+'@html
+In html
+@end html@asis{asis}
+', { 'EXPANDED_FORMATS' => ['tex'] }],
+['command_in_end_ignored_raw_one_char_before_command',
+'@html
+In html
+@end h@asis{}tml
+', { 'EXPANDED_FORMATS' => ['tex'] }],
+['command_in_end_ignored_raw_two_char_before_command',
+'@html
+In html
+@end ht@asis{}ml
+', { 'EXPANDED_FORMATS' => ['tex'] }],
+['command_in_end_expanded_raw_in_command',
+'@tex
+In TeX
+@end @code{tex}
+', { 'EXPANDED_FORMATS' => ['tex'] }],
+['command_in_end_expanded_raw_one_char_not_in_command',
+'@tex
+In TeX
+@end t@asis{ex}
+', { 'EXPANDED_FORMATS' => ['tex'] }],
+['command_in_end_expanded_raw_two_char_not_in_command',
+'@tex
+In TeX
+@end te@asis{x}
+', { 'EXPANDED_FORMATS' => ['tex'] }],
+['command_in_end_expanded_raw_command_after',
+'@tex
+In TeX
+@end tex@asis{asis}
+', { 'EXPANDED_FORMATS' => ['tex'] }],
+['command_in_end_expanded_raw_command_empty_after',
+'@tex
+In TeX
+@end tex@asis{}
+', { 'EXPANDED_FORMATS' => ['tex'] }],
+['command_in_end_expanded_raw_one_char_before_command',
+'@tex
+In TeX
+@end t@asis{}ex
+', { 'EXPANDED_FORMATS' => ['tex'] }],
+['command_in_end_expanded_raw_two_char_before_command',
+'@tex
+In TeX
+@end te@asis{}x
+', { 'EXPANDED_FORMATS' => ['tex'] }],
+['command_in_end',
+'@quotation
+In quotation
+@end @code{quotation}
+
+@quotation
+In quotation
+@end q@code{uotation}
+
+@quotation
+In quotation
+@end qu@code{otation}
+
+@quotation
+In quotation
+@end quot@asis{atio}n
+
+@quotation
+In quotation
+@end q@asis{}uotation
+
+@quotation
+In quotation
+@end qu@asis{}otation
+
+@quotation
+In quotation
+@end quot@asis{}ation
+
+@verbatim
+In verbatim
+@end verb@code{a}tim
+'],
+['end_bad_end_argument_and_superfluous_arg',
+'@quotation
+In quotation
+@end : @code{in c}
 '],
 ['symbol_after_block',
 '@html
@@ -801,14 +980,20 @@ before first multitable
 '],
 );
 
+my %docbooc_doc_tests = (
+  'insertcopying' => 1,
+);
+
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html_text';
   push @{$test->[2]->{'test_formats'}}, 'xml';
-  push @{$test->[2]->{'test_formats'}}, 'docbook';
+  push @{$test->[2]->{'test_formats'}}, 'latex_text';
+  if ($docbooc_doc_tests{$test->[0]}) {
+    push @{$test->[2]->{'test_formats'}}, 'docbook_doc';
+  } else {
+    push @{$test->[2]->{'test_formats'}}, 'docbook';
+  }
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('coverage', [@test_cases, @test_tree], $arg_test_case,
-   $arg_generate, $arg_debug);
+run_all('coverage', [@test_cases, @test_tree]);

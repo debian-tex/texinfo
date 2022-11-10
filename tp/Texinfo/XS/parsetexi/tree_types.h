@@ -52,11 +52,11 @@ typedef struct ELEMENT_LIST {
     size_t space;
 } ELEMENT_LIST;
 
-typedef struct LINE_NR {
+typedef struct SOURCE_INFO {
     int line_nr;
     char *file_name;
     char *macro;
-} LINE_NR;
+} SOURCE_INFO;
 
 typedef struct ELEMENT {
     enum command_id cmd;
@@ -65,7 +65,7 @@ typedef struct ELEMENT {
     ELEMENT_LIST args;
     ELEMENT_LIST contents;
     struct ELEMENT *parent;
-    LINE_NR line_nr;
+    SOURCE_INFO source_info;
 
     KEY_PAIR *extra;
     size_t extra_number;
@@ -76,6 +76,13 @@ typedef struct ELEMENT {
     /* This should be HV *hv, but we don't want to include the Perl headers 
        everywhere; */
 } ELEMENT;
+
+typedef struct IGNORED_CHARS {
+    int backslash;
+    int hyphen;
+    int lessthan;
+    int atsign;
+} IGNORED_CHARS;
 
 typedef struct {
     char *index_name;
@@ -90,6 +97,7 @@ typedef struct {
     int number; /* Index of entry in containing index, 1-based. */
     ELEMENT *region;
     char *sortas; /* the sort key for the index */
+    IGNORED_CHARS ignored_chars;
 } INDEX_ENTRY;
 
 typedef struct INDEX {

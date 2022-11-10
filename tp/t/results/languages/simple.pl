@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,50 +10,49 @@ $result_trees{'simple'} = {
     {
       'contents' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'fr'
+                  'contents' => [
+                    {
+                      'text' => 'fr'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'documentlanguage',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'fr'
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
             }
           ],
-          'cmdname' => 'documentlanguage',
-          'extra' => {
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'fr'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
+          'type' => 'preamble_before_content'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -61,14 +60,12 @@ $result_trees{'simple'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -86,7 +83,6 @@ $result_trees{'simple'} = {
                           'extra' => {
                             'documentlanguage' => 'fr'
                           },
-                          'parent' => {},
                           'text' => 'Instance Variable',
                           'type' => 'untranslated'
                         }
@@ -94,14 +90,12 @@ $result_trees{'simple'} = {
                       'extra' => {
                         'def_role' => 'category'
                       },
-                      'parent' => {},
                       'type' => 'bracketed_inserted'
                     },
                     {
                       'extra' => {
                         'def_role' => 'spaces'
                       },
-                      'parent' => {},
                       'text' => ' ',
                       'type' => 'spaces_inserted'
                     },
@@ -115,7 +109,6 @@ $result_trees{'simple'} = {
                       'extra' => {
                         'def_role' => 'spaces'
                       },
-                      'parent' => {},
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -129,7 +122,6 @@ $result_trees{'simple'} = {
                       'extra' => {
                         'def_role' => 'spaces'
                       },
-                      'parent' => {},
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -137,20 +129,17 @@ $result_trees{'simple'} = {
                       'extra' => {
                         'def_role' => 'arg'
                       },
-                      'parent' => {},
                       'text' => 'CCC'
                     },
                     {
                       'extra' => {
                         'def_role' => 'spaces'
                       },
-                      'parent' => {},
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'block_line_arg'
                 }
               ],
@@ -161,15 +150,8 @@ $result_trees{'simple'} = {
                   'class' => {},
                   'name' => {}
                 },
+                'documentlanguage' => 'fr',
                 'index_entry' => {
-                  'command' => {},
-                  'content' => [
-                    {},
-                    {
-                      'text' => ' de '
-                    },
-                    {}
-                  ],
                   'content_normalized' => [
                     {},
                     {
@@ -177,22 +159,29 @@ $result_trees{'simple'} = {
                     },
                     {}
                   ],
+                  'entry_content' => [
+                    {},
+                    {
+                      'text' => ' de '
+                    },
+                    {}
+                  ],
+                  'entry_element' => {},
+                  'entry_node' => {},
+                  'entry_number' => 1,
                   'in_code' => 1,
                   'index_at_command' => 'defivar',
+                  'index_ignore_chars' => {},
                   'index_name' => 'vr',
-                  'index_type_command' => 'defivar',
-                  'key' => 'BBB de AAA',
-                  'node' => {},
-                  'number' => 1
+                  'index_type_command' => 'defivar'
                 },
                 'original_def_cmdname' => 'defivar'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 5,
                 'macro' => ''
               },
-              'parent' => {},
               'type' => 'def_line'
             },
             {
@@ -200,7 +189,6 @@ $result_trees{'simple'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'defivar'
                     }
                   ],
@@ -208,34 +196,29 @@ $result_trees{'simple'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'defivar',
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'defivar'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 6,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
           'extra' => {
-            'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 5,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
       'extra' => {
@@ -253,50 +236,26 @@ $result_trees{'simple'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 3,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'parent'} = $result_trees{'simple'};
-$result_trees{'simple'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'args'}[0];
-$result_trees{'simple'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[1];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[1];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[2] = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
 $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[2] = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'node'} = $result_trees{'simple'}{'contents'}[1];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[1];
+$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[2] = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'simple'}{'contents'}[1];
 $result_trees{'simple'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'simple'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'simple'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'simple'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'simple'}{'contents'}[1]{'parent'} = $result_trees{'simple'};
 
 $result_texis{'simple'} = '@documentlanguage fr
 
@@ -312,21 +271,17 @@ $result_texts{'simple'} = '
 Instance Variable of AAA: BBB CCC
 ';
 
-$result_sectioning{'simple'} = {};
-
 $result_nodes{'simple'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
 $result_menus{'simple'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
@@ -334,6 +289,13 @@ $result_errors{'simple'} = [];
 
 
 $result_floats{'simple'} = {};
+
+
+$result_indices_sort_strings{'simple'} = {
+  'vr' => [
+    'BBB de AAA'
+  ]
+};
 
 
 

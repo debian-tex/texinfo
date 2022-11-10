@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -11,12 +11,28 @@ my @test_cases = (
 d--efvr
 @end defvr
 
+@deffn c--ategory n--ame a--rguments...
+d--effn
+@end deffn
+
+@deffn c--ategory n--ame
+d--effn no arg
+@end deffn
+
 @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
 d--eftypefn
 @end deftypefn
 
+@deftypefn c--ategory t--ype d--eftypefn_name
+d--eftypefn no arg
+@end deftypefn
+
 @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
 d--eftypeop
+@end deftypeop
+
+@deftypeop c--ategory c--lass t--ype d--eftypeop_name
+d--eftypeop no arg
 @end deftypeop
 
 @deftypevr c--ategory t--ype d--eftypevr_name
@@ -27,8 +43,24 @@ d--eftypevr
 d--efcv
 @end defcv
 
+@defcv c--ategory c--lass d--efcv_name a--rguments...
+d--efcv with arguments
+@end defcv
+
+@deftypecv c--ategory c--lass t--ype d--eftypecv_name
+d--eftypecv
+@end deftypecv
+
+@deftypecv c--ategory c--lass t--ype d--eftypecv_name a--rguments...
+d--eftypecv with arguments
+@end deftypecv
+
 @defop c--ategory c--lass d--efop_name a--rguments...
 d--efop
+@end defop
+
+@defop c--ategory c--lass d--efop_name
+d--efop no arg
 @end defop
 
 @deftp c--ategory d--eftp_name a--ttributes...
@@ -49,6 +81,10 @@ d--efspec
 
 @defvar d--efvar_name
 d--efvar
+@end defvar
+
+@defvar d--efvar_name arg--var arg--var1
+d--efvar with args
 @end defvar
 
 @defopt d--efopt_name
@@ -521,6 +557,19 @@ Documentation of @code{foo}.
 @end deftypefn
 ',
 {'test_formats' => ['plaintext']}],
+['omit_def_space',
+'@node Top
+
+@node first
+
+@set txidefnamenospace
+
+@defun function (arg1, arg2)
+@defunx another (aarg)
+explain
+@end defun
+',
+{'test_formats' => ['plaintext', 'html', 'latex_text']}],
 );
 
 my @test_printindex = ();
@@ -554,8 +603,4 @@ foreach my $test (@test_info) {
   $test->[2]->{'test_formats'} = ['info', 'html'];
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('def', [@test_cases, @test_info, @test_invalid, @test_printindex], $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('def', [@test_cases, @test_info, @test_invalid, @test_printindex]);

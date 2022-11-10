@@ -1,4 +1,4 @@
-/* Copyright 2010-2021 Free Software Foundation, Inc.
+/* Copyright 2010-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,6 +21,11 @@
 #define PERL_NO_GET_CONTEXT
 #include "EXTERN.h"
 #include "perl.h"
+/* Avoid warnings about Perl headers redefining symbols that gnulib
+   redefined already. */
+#if defined _WIN32 && !defined __CYGWIN__
+  #undef free
+#endif
 #include "XSUB.h"
 
 #undef context
@@ -44,11 +49,9 @@ ELEMENT *Root;
 
 #define LOCALEDIR DATADIR "/locale"
 
-/* Use the uninstalled locales dir.
-   NB the texinfo.mo files are not actually created here, only the
-   texinfo_document.mo files, which aren't used by parsetexi.
-   Hence, error messages will be translated only when the program is 
-   installed. */
+/* Use the uninstalled locales dir.  Currently unused.
+   The texinfo.mo files are not actually created here, only the
+   texinfo_document.mo files, which aren't used by parsetexi. */
 static void
 find_locales_dir (char *builddir)
 {
@@ -83,11 +86,9 @@ init (int texinfo_uninstalled, char *builddir)
 {
   setlocale (LC_ALL, "");
 
-  /* Use installed or uninstalled translation files for gettext. */
-  if (texinfo_uninstalled)
-    find_locales_dir (builddir);
-  else
-    bindtextdomain (PACKAGE, LOCALEDIR);
+  /* Note: this uses the installed translations even when running an
+     uninstalled program. */
+  bindtextdomain (PACKAGE, LOCALEDIR);
 
   textdomain (PACKAGE);
 
@@ -141,42 +142,102 @@ reset_parser_except_conf (void)
 void
 reset_parser (void)
 {
+  /* NOTE: Do not call 'malloc' or 'free' in this function or in any function
+     called in this file.  Since this file (api.c) includes the Perl headers,
+     we get the Perl redefinitions, which we do not want, as we don't use
+     them throughout the rest of the program. */
+
   debug ("!!!!!!!!!!!!!!!! RESETTING THE PARSER !!!!!!!!!!!!!!!!!!!!!");
 
   reset_parser_except_conf ();
   wipe_values ();
   clear_expanded_formats ();
+  clear_include_directories ();
   reset_conf ();
+
+  global_documentlanguage_fixed = 0;
+  set_documentlanguage (0);
+
+  doc_encoding_for_input_file_name = 1;
+  set_input_file_name_encoding (0);
+  set_locale_encoding (0);
+
+  global_accept_internalvalue = 0;
 }
 
-/* Set ROOT to root of tree obtained by parsing FILENAME. */
+/* Determine directory path based on file name.
+   Set ROOT to root of tree obtained by parsing FILENAME.
+   Used for parse_texi_file. */
 int
 parse_file (char *filename)
 {
+  /*
   debug_output = 0;
-  Root = parse_texi_file (filename);
+  */
+  char *p, *q;
+  char c;
+
+  int status;
+  
+  status = input_push_file (filename);
+  if (status)
+    return status;
+
+  /* Strip off a leading directory path, by looking for the last
+     '/' in filename. */
+  p = 0;
+  q = strchr (filename, '/');
+  while (q)
+    {
+      p = q;
+      q = strchr (q + 1, '/');
+    }
+
+  if (p)
+    {
+      c = *p;
+      *p = '\0';
+      add_include_directory (filename);
+      *p = c;
+    }
+
+  Root = parse_texi_document ();
   if (Root)
     return 0;
   return 1;
 }
 
+/* Used for parse_texi_text.  STRING should be a UTF-8 buffer. */
+void
+parse_text (char *string, int line_nr)
+{
+  reset_parser_except_conf ();
+  input_push_text_with_line_nos (strdup (string), line_nr);
+  Root = parse_texi_document ();
+}
+
 /* Set ROOT to root of tree obtained by parsing the Texinfo code in STRING.
    STRING should be a UTF-8 buffer.  Used for parse_texi_line. */
 void
-parse_string (char *string)
+parse_string (char *string, int line_nr)
 {
+  ELEMENT *root_elt = new_element (ET_root_line);
+
   reset_parser_except_conf ();
-  input_push_text (strdup (string), 0);
-  Root = parse_texi (new_element (ET_root_line));
+  input_push_text_with_line_nos (strdup (string), line_nr);
+  Root = parse_texi (root_elt, root_elt);
 }
 
-/* Used for parse_texi_text.  STRING should be a UTF-8 buffer. */
+/* Used for parse_texi_piece.  STRING should be a UTF-8 buffer. */
 void
-parse_text (char *string)
+parse_piece (char *string, int line_nr)
 {
+  ELEMENT *before_node_section = setup_document_root_and_before_node_section ();
+  ELEMENT *document_root = before_node_section->parent;
+
   reset_parser_except_conf ();
-  input_push_text_with_line_nos (strdup (string), 1);
-  Root = parse_texi (new_element (ET_text_root));
+  input_push_text_with_line_nos (strdup (string), line_nr);
+  Root = parse_texi (document_root, before_node_section);
 }
 
 
@@ -245,6 +306,19 @@ build_node_spec (NODE_SPEC_EXTRA *value)
   return newRV_inc ((SV *)hv);
 }
 
+/* Used to create a "Perl-internal" string that represents a sequence
+   of Unicode codepoints with no specific encoding. */
+static SV *
+newSVpv_utf8 (char *str, STRLEN len)
+{
+  SV *sv;
+  dTHX;
+
+  sv = newSVpv (str, len);
+  SvUTF8_on (sv);
+  return sv;
+}
+
 /* Set E->hv and 'hv' on E's descendants.  e->parent->hv is assumed
    to already exist. */
 static void
@@ -280,46 +354,11 @@ element_to_perl_hash (ELEMENT *e)
       sv = newSVpv (command_name(e->cmd), 0);
       hv_store (e->hv, "cmdname", strlen ("cmdname"), sv, 0);
 
-      /* TODO: Same optimizations as for 'type'. */
+      /* Note we could optimize the call to newSVpv here and
+         elsewhere by passing an appropriate second argument. */
     }
 
-  /* A lot of special cases for when an empty contents array should be
-     created.  Largely by trial and error to match the Perl code.  Some of
-     them don't make sense, like @arrow{}, @image, or for accent commands. */
-  if (e->contents.number > 0
-      || e->type == ET_text_root
-      || e->type == ET_root_line
-      || e->type == ET_bracketed
-      || e->type == ET_bracketed_def_content
-      || e->type == ET_line_arg
-      || e->cmd == CM_image
-      || e->cmd == CM_item && e->parent && e->parent->type == ET_row
-      || e->cmd == CM_headitem && e->parent && e->parent->type == ET_row
-      || e->cmd == CM_tab && e->parent && e->parent->type == ET_row
-      || e->cmd == CM_anchor
-      || e->cmd == CM_macro
-      || e->cmd == CM_multitable
-      || e->type == ET_menu_entry_name
-      || e->type == ET_menu_entry_description
-      || e->type == ET_brace_command_arg
-      || e->type == ET_brace_command_context
-      || e->type == ET_block_line_arg
-      || e->type == ET_before_item
-      || e->type == ET_inter_item
-      || e->cmd == CM_TeX
-      || e->type == ET_elided
-      || e->type == ET_elided_block
-      || e->type == ET_preformatted
-      || e->type == ET_paragraph
-      || (command_flags(e) & CF_root)
-      || (command_data(e->cmd).flags & CF_brace
-          && (command_data(e->cmd).data >= 0
-              || command_data(e->cmd).data == BRACE_style
-              || command_data(e->cmd).data == BRACE_context
-              || command_data(e->cmd).data == BRACE_other
-              || command_data(e->cmd).data == BRACE_accent
-              ))
-      || e->cmd == CM_node)
+  if (e->contents.number > 0)
     {
       AV *av;
       int i;
@@ -353,22 +392,8 @@ element_to_perl_hash (ELEMENT *e)
 
   if (e->text.space > 0)
     {
-      sv = newSVpv (e->text.text, e->text.end);
-      if (e->cmd != CM_value)
-        hv_store (e->hv, "text", strlen ("text"), sv, 0);
-      else
-        hv_store (e->hv, "type", strlen ("type"), sv, 0);
-
-      SvUTF8_on (sv);
-      /* The strings here have to be in UTF-8 to start with.
-         This leads to an unnecessary round trip with "@documentencoding 
-         ISO-8859-1" for Info and plain text output, when we first convert the 
-         characters in the input file to UTF-8, and convert them back again for 
-         the output.
-      
-         The alternative is to leave the UTF-8 flag off, and hope that Perl 
-         interprets 8-bit encodings like ISO-8859-1 correctly.  See
-         "How does Perl store UTF-8 strings?" in "man perlguts". */
+      sv = newSVpv_utf8 (e->text.text, e->text.end);
+      hv_store (e->hv, "text", strlen ("text"), sv, 0);
     }
 
   if (e->extra_number > 0)
@@ -434,7 +459,7 @@ element_to_perl_hash (ELEMENT *e)
             case extra_string:
               { /* A simple string. */
               char *value = (char *) f;
-              STORE(newSVpv (value, 0));
+              STORE(newSVpv_utf8 (value, 0));
               break;
               }
             case extra_integer:
@@ -456,15 +481,14 @@ element_to_perl_hash (ELEMENT *e)
                 {
                   if (f->contents.list[j]->text.end > 0)
                     {
-                      av_push (av,
-                               newSVpv (f->contents.list[j]->text.text,
-                                        f->contents.list[j]->text.end));
+                      SV *sv = newSVpv_utf8 (f->contents.list[j]->text.text,
+                                             f->contents.list[j]->text.end);
+                      av_push (av, sv);
                     }
                   else
                     {
                       /* Empty strings permitted. */
-                      av_push (av,
-                               newSVpv ("", 0));
+                      av_push (av, newSVpv ("", 0));
                     }
                 }
               break;
@@ -528,8 +552,10 @@ element_to_perl_hash (ELEMENT *e)
                 hv_store (type, "content", strlen ("content"),
                           build_perl_array (&eft->content->contents), 0);
               if (eft->normalized)
-                hv_store (type, "normalized", strlen ("normalized"),
-                          newSVpv (eft->normalized, 0), 0);
+                {
+                  SV *sv = newSVpv_utf8 (eft->normalized, 0);
+                  hv_store (type, "normalized", strlen ("normalized"), sv, 0);
+                }
               STORE(newRV_inc ((SV *)type));
               break;
               }
@@ -545,30 +571,29 @@ element_to_perl_hash (ELEMENT *e)
                   newRV_inc((SV *)extra), 0);
     }
 
-  if (e->line_nr.line_nr
-      && !(command_flags(e) & CF_INFOENCLOSE))
+  if (e->source_info.line_nr)
     {
 #define STORE(key, sv) hv_store (hv, key, strlen (key), sv, 0)
-      LINE_NR *line_nr = &e->line_nr;
+      SOURCE_INFO *source_info = &e->source_info;
       HV *hv = newHV ();
-      hv_store (e->hv, "line_nr", strlen ("line_nr"),
+      hv_store (e->hv, "source_info", strlen ("source_info"),
                 newRV_inc((SV *)hv), 0);
 
-      if (line_nr->file_name)
+      if (source_info->file_name)
         {
-          STORE("file_name", newSVpv (line_nr->file_name, 0));
+          STORE("file_name", newSVpv (source_info->file_name, 0));
         }
       else
         STORE("file_name", newSVpv ("", 0));
 
-      if (line_nr->line_nr)
+      if (source_info->line_nr)
         {
-          STORE("line_nr", newSViv (line_nr->line_nr));
+          STORE("line_nr", newSViv (source_info->line_nr));
         }
 
-      if (line_nr->macro)
+      if (source_info->macro)
         {
-          STORE("macro", newSVpv (line_nr->macro, 0));
+          STORE("macro", newSVpv_utf8 (source_info->macro, 0));
         }
       else
         STORE("macro", newSVpv ("", 0));
@@ -579,6 +604,13 @@ element_to_perl_hash (ELEMENT *e)
 HV *
 build_texinfo_tree (void)
 {
+  if (! Root)
+      /* use an empty element with contents if there is nothing.
+         This should only happen if the input file was not opened
+         or no parse_* function was called after initialization
+         and should not happen with the current calling code.
+      */
+      Root = new_element (ET_NONE);
   element_to_perl_hash (Root);
   return Root->hv;
 }
@@ -689,7 +721,7 @@ build_single_index_data (INDEX *i)
       hv = (HV *) i->hv;
     }
 
-  STORE("name", newSVpv (i->name, 0));
+  STORE("name", newSVpv_utf8 (i->name, 0));
   STORE("in_code", i->in_code ? newSViv(1) : newSViv(0));
 
   if (i->merged_in)
@@ -711,7 +743,7 @@ build_single_index_data (INDEX *i)
       hv_store (ultimate->contained_hv, i->name, strlen (i->name),
                 newSViv (1), 0);
 
-      STORE("merged_in", newSVpv (ultimate->name, 0));
+      STORE("merged_in", newSVpv_utf8 (ultimate->name, 0));
 
       if (i->contained_hv)
         {
@@ -753,17 +785,17 @@ build_single_index_data (INDEX *i)
       e = &i->index_entries[j];
       entry = newHV ();
 
-      STORE2("index_name", newSVpv (i->name, 0));
+      STORE2("index_name", newSVpv_utf8 (i->name, 0));
       STORE2("index_at_command",
              newSVpv (command_name(e->index_at_command), 0));
       STORE2("index_type_command",
              newSVpv (command_name(e->index_type_command), 0));
-      STORE2("command",
+      STORE2("entry_element",
              newRV_inc ((SV *)e->command->hv));
-      STORE2("number", newSViv (entry_number));
+      STORE2("entry_number", newSViv (entry_number));
       if (e->region)
         {
-          STORE2("region", newRV_inc ((SV *)e->region->hv));
+          STORE2("entry_region", newRV_inc ((SV *)e->region->hv));
         }
       if (e->content)
         {
@@ -787,14 +819,14 @@ build_single_index_data (INDEX *i)
           if (contents_array)
             {
               /* Copy the reference to the array. */
-              STORE2("content", newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
+              STORE2("entry_content", newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
 
               STORE2("content_normalized",
                      newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
             }
           else
             {
-              STORE2("content", newRV_inc ((SV *)newAV ()));
+              STORE2("entry_content", newRV_inc ((SV *)newAV ()));
               STORE2("content_normalized", newRV_inc ((SV *)newAV ()));
             }
         }
@@ -802,18 +834,29 @@ build_single_index_data (INDEX *i)
         ; /* will be set in Texinfo::Common::complete_indices */
 
       if (e->node)
-        STORE2("node", newRV_inc ((SV *)e->node->hv));
+        STORE2("entry_node", newRV_inc ((SV *)e->node->hv));
       if (e->sortas)
-        STORE2("sortas", newSVpv (e->sortas, 0));
+        STORE2("sortas", newSVpv_utf8 (e->sortas, 0));
 
-      /* Skip these as these entries do not refer to the place in the document 
-         where the index commands occurred. */
-      if (!lookup_extra (e->command, "seeentry")
-          && !lookup_extra (e->command, "seealso"))
-        {
-          av_push (entries, newRV_inc ((SV *)entry));
-          entry_number++;
-        }
+      /* Create ignored_chars hash. */
+      {
+#define STORE3(key) hv_store (hv, key, strlen (key), newSViv(1), 0)
+        HV *hv = newHV ();
+        if (e->ignored_chars.backslash)
+          STORE3("\\");
+        if (e->ignored_chars.hyphen)
+          STORE3("-");
+        if (e->ignored_chars.lessthan)
+          STORE3("<");
+        if (e->ignored_chars.atsign)
+          STORE3("@");
+#undef STORE3
+
+        STORE2("index_ignore_chars", newRV_inc ((SV *)hv));
+      }
+
+      av_push (entries, newRV_inc ((SV *)entry));
+      entry_number++;
 
       /* We set this now because the index data structures don't
          exist at the time that the main tree is built. */
@@ -861,7 +904,7 @@ build_index_data (void)
 
 
 /* Return object to be used as $self->{'info'} in the Perl code, retrievable
-   with the 'global_informations' function. */
+   with the 'global_information' function. */
 HV *
 build_global_info (void)
 {
@@ -890,22 +933,6 @@ build_global_info (void)
           if (e->hv)
             av_push (av, newRV_inc ((SV *) e->hv));
         }
-    }
-
-  if (global_info.novalidate)
-    {
-      hv_store (hv, "novalidate", strlen ("novalidate"),
-                newSVpv ("1", 0), 0);
-    }
-
-  char *txi_flags[] = { "txiindexatsignignore", "txiindexbackslashignore",
-    "txiindexhyphenignore", "txiindexlessthanignore", 0};
-  char **p;
-
-  for (p = txi_flags; (*p); p++)
-    {
-      if (fetch_value (*p))
-        hv_store (hv, *p, strlen (*p), newSVpv ("1", 0), 0);
     }
 
   return hv;
@@ -958,6 +985,7 @@ build_global_info2 (void)
   BUILD_GLOBAL_UNIQ(oddfootingmarks);
   BUILD_GLOBAL_UNIQ(shorttitlepage);
   BUILD_GLOBAL_UNIQ(title);
+  BUILD_GLOBAL_UNIQ(novalidate);
 #undef BUILD_GLOBAL_UNIQ
 
   /* NOTE: Same list in handle_commands.c:register_global_command. */
@@ -1001,7 +1029,7 @@ build_global_info2 (void)
   BUILD_GLOBAL_ARRAY(detailmenu);
   BUILD_GLOBAL_ARRAY(part);
 
-  /* from Common.pm %document_settable_at_commands */
+  /* from Common.pm %document_settable_multiple_at_commands */
   BUILD_GLOBAL_ARRAY(allowcodebreaks);
   BUILD_GLOBAL_ARRAY(clickstyle);
   BUILD_GLOBAL_ARRAY(codequotebacktick);
@@ -1029,3 +1057,114 @@ set_debug (int value)
   debug_output = value;
 }
 
+void
+conf_set_documentlanguage_override (char *value)
+{
+  set_documentlanguage_override (value);
+}
+
+
+void
+set_DOC_ENCODING_FOR_INPUT_FILE_NAME (int i)
+{
+  doc_encoding_for_input_file_name = i;
+}
+
+void
+conf_set_input_file_name_encoding (char *value)
+{
+  set_input_file_name_encoding (value);
+}
+
+void
+conf_set_locale_encoding (char *value)
+{
+  set_locale_encoding (value);
+}
+
+
+static SV *
+build_source_info_hash (SOURCE_INFO source_info)
+{
+  HV *hv;
+
+  dTHX;
+
+  hv = newHV ();
+
+  if (source_info.file_name)
+    {
+      hv_store (hv, "file_name", strlen ("file_name"),
+                newSVpv (source_info.file_name, 0), 0);
+    }
+  else
+    {
+      hv_store (hv, "file_name", strlen ("file_name"),
+                newSVpv ("", 0), 0);
+    }
+  if (source_info.line_nr)
+    {
+      hv_store (hv, "line_nr", strlen ("line_nr"),
+                newSViv (source_info.line_nr), 0);
+    }
+  if (source_info.macro)
+    {
+      hv_store (hv, "macro", strlen ("macro"),
+                newSVpv_utf8 (source_info.macro, 0), 0);
+    }
+  else
+    {
+      hv_store (hv, "macro", strlen ("macro"),
+                newSVpv_utf8 ("", 0), 0);
+    }
+
+  return newRV_inc ((SV *) hv);
+}
+
+static SV *
+convert_error (int i)
+{
+  ERROR_MESSAGE e;
+  HV *hv;
+  SV *msg;
+
+  dTHX;
+
+  e = error_list[i];
+  hv = newHV ();
+
+  msg = newSVpv_utf8 (e.message, 0);
+
+  hv_store (hv, "message", strlen ("message"), msg, 0);
+  hv_store (hv, "type", strlen ("type"),
+              e.type == error ? newSVpv("error", strlen("error"))
+                              : newSVpv("warning", strlen("warning")),
+            0);
+
+  hv_store (hv, "source_info", strlen ("source_info"),
+            build_source_info_hash(e.source_info), 0);
+
+  return newRV_inc ((SV *) hv);
+
+}
+
+/* Errors */
+AV *
+get_errors (void)
+{
+  AV *av;
+  int i;
+
+  dTHX;
+
+  av = newAV ();
+
+  for (i = 0; i < error_number; i++)
+    {
+      SV *sv = convert_error (i);
+      av_push (av, sv);
+    }
+
+  return av;
+
+}

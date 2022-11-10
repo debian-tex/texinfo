@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,53 +10,52 @@ $result_trees{'syncode_index_print_both'} = {
     {
       'contents' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'fn cp'
+                  'contents' => [
+                    {
+                      'text' => 'fn cp'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'syncodeindex',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'misc_args' => [
+                  'fn',
+                  'cp'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
             }
           ],
-          'cmdname' => 'syncodeindex',
-          'extra' => {
-            'misc_args' => [
-              'fn',
-              'cp'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
+          'type' => 'preamble_before_content'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -64,223 +63,11 @@ $result_trees{'syncode_index_print_both'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'c---oncept'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'cindex',
-          'extra' => {
-            'index_entry' => {
-              'command' => {},
-              'content' => [],
-              'content_normalized' => [],
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex',
-              'key' => 'c--oncept',
-              'node' => {},
-              'number' => 1
-            },
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
-          },
-          'parent' => {},
-          'type' => 'index_entry_command'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'f---un'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'findex',
-          'extra' => {
-            'index_entry' => {
-              'command' => {},
-              'content' => [],
-              'content_normalized' => [],
-              'in_code' => 1,
-              'index_at_command' => 'findex',
-              'index_name' => 'fn',
-              'index_type_command' => 'findex',
-              'key' => 'f---un',
-              'node' => {},
-              'number' => 1
-            },
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
-          },
-          'parent' => {},
-          'type' => 'index_entry_command'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'Print fn
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'fn'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'printindex',
-          'extra' => {
-            'misc_args' => [
-              'fn'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'Print vr
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'cp'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'printindex',
-          'extra' => {
-            'misc_args' => [
-              'cp'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 15,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        }
-      ],
       'extra' => {
-        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -295,61 +82,317 @@ $result_trees{'syncode_index_print_both'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 3,
         'macro' => ''
+      }
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'top'
+            }
+          ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'top',
+      'contents' => [
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        }
+      ],
+      'extra' => {
+        'spaces_before_argument' => ' '
       },
-      'parent' => {}
+      'source_info' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      }
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'chapter index'
+            }
+          ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'node',
+      'extra' => {
+        'isindex' => 1,
+        'node_content' => [
+          {}
+        ],
+        'nodes_manuals' => [
+          {
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'chapter-index'
+          }
+        ],
+        'normalized' => 'chapter-index',
+        'spaces_before_argument' => ' '
+      },
+      'source_info' => {
+        'file_name' => '',
+        'line_nr' => 6,
+        'macro' => ''
+      }
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'index'
+            }
+          ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'chapter',
+      'contents' => [
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'c---oncept'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'line_arg'
+            }
+          ],
+          'cmdname' => 'cindex',
+          'extra' => {
+            'index_entry' => {
+              'content_normalized' => [],
+              'entry_content' => [],
+              'entry_element' => {},
+              'entry_node' => {},
+              'entry_number' => 1,
+              'in_code' => 0,
+              'index_at_command' => 'cindex',
+              'index_ignore_chars' => {},
+              'index_name' => 'cp',
+              'index_type_command' => 'cindex'
+            },
+            'spaces_before_argument' => ' '
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
+          },
+          'type' => 'index_entry_command'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'f---un'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'line_arg'
+            }
+          ],
+          'cmdname' => 'findex',
+          'extra' => {
+            'index_entry' => {
+              'content_normalized' => [],
+              'entry_content' => [],
+              'entry_element' => {},
+              'entry_node' => {},
+              'entry_number' => 1,
+              'in_code' => 1,
+              'index_at_command' => 'findex',
+              'index_ignore_chars' => {},
+              'index_name' => 'fn',
+              'index_type_command' => 'findex'
+            },
+            'spaces_before_argument' => ' '
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 10,
+            'macro' => ''
+          },
+          'type' => 'index_entry_command'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Print fn
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'fn'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'line_arg'
+            }
+          ],
+          'cmdname' => 'printindex',
+          'extra' => {
+            'misc_args' => [
+              'fn'
+            ],
+            'spaces_before_argument' => ' '
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 15,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Print cp
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'cp'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'line_arg'
+            }
+          ],
+          'cmdname' => 'printindex',
+          'extra' => {
+            'misc_args' => [
+              'cp'
+            ],
+            'spaces_before_argument' => ' '
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 19,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        }
+      ],
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
+      'source_info' => {
+        'file_name' => '',
+        'line_nr' => 7,
+        'macro' => ''
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'syncode_index_print_both'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'syncode_index_print_both'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[0]{'contents'}[0];
-$result_trees{'syncode_index_print_both'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[0];
-$result_trees{'syncode_index_print_both'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[0];
-$result_trees{'syncode_index_print_both'}{'contents'}[0]{'parent'} = $result_trees{'syncode_index_print_both'};
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'args'}[0];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'command'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'node'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[2];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'command'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[2];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'};
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'};
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'node'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[5];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[7]{'args'}[0];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[7];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[9];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[11]{'args'}[0];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[11];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'contents'}[12]{'parent'} = $result_trees{'syncode_index_print_both'}{'contents'}[1];
 $result_trees{'syncode_index_print_both'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'syncode_index_print_both'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'parent'} = $result_trees{'syncode_index_print_both'};
+$result_trees{'syncode_index_print_both'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'syncode_index_print_both'}{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'syncode_index_print_both'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'syncode_index_print_both'}{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'};
+$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'};
+$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1];
+$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'syncode_index_print_both'}{'contents'}[3];
+$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'};
+$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'};
+$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2];
+$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'syncode_index_print_both'}{'contents'}[3];
 
 $result_texis{'syncode_index_print_both'} = '@syncodeindex fn cp
 
 @node Top
+@top top
+
+@node chapter index
+@chapter index
 
 @cindex c---oncept
 @findex f---un
@@ -359,7 +402,7 @@ Print fn
 
 @printindex fn
 
-Print vr
+Print cp
 
 @printindex cp
 
@@ -367,43 +410,120 @@ Print vr
 
 
 $result_texts{'syncode_index_print_both'} = '
+top
+***
+
+1 index
+*******
 
 
 
 Print fn
 
 
-Print vr
+Print cp
 
 
 ';
 
-$result_sectioning{'syncode_index_print_both'} = {};
+$result_sectioning{'syncode_index_print_both'} = {
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'top',
+        'extra' => {
+          'associated_node' => {
+            'cmdname' => 'node',
+            'extra' => {
+              'normalized' => 'Top'
+            },
+            'structure' => {}
+          }
+        },
+        'structure' => {
+          'section_childs' => [
+            {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'associated_node' => {
+                  'cmdname' => 'node',
+                  'extra' => {
+                    'isindex' => 1,
+                    'normalized' => 'chapter-index'
+                  },
+                  'structure' => {}
+                }
+              },
+              'structure' => {
+                'section_level' => 1,
+                'section_number' => 1,
+                'section_up' => {},
+                'toplevel_prev' => {},
+                'toplevel_up' => {}
+              }
+            }
+          ],
+          'section_level' => 0,
+          'section_up' => {}
+        }
+      }
+    ],
+    'section_level' => -1
+  }
+};
+$result_sectioning{'syncode_index_print_both'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'syncode_index_print_both'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'syncode_index_print_both'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'syncode_index_print_both'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'syncode_index_print_both'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'syncode_index_print_both'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'syncode_index_print_both'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'syncode_index_print_both'};
 
 $result_nodes{'syncode_index_print_both'} = {
   'cmdname' => 'node',
   'extra' => {
-    'isindex' => 1,
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'associated_section' => {
+      'cmdname' => 'top',
+      'extra' => {},
+      'structure' => {}
+    },
+    'normalized' => 'Top'
+  },
+  'structure' => {
+    'node_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'associated_section' => {
+          'cmdname' => 'chapter',
+          'extra' => {},
+          'structure' => {
+            'section_number' => 1
+          }
+        },
+        'isindex' => 1,
+        'normalized' => 'chapter-index'
+      },
+      'structure' => {
+        'node_prev' => {},
+        'node_up' => {}
+      }
+    }
   }
 };
+$result_nodes{'syncode_index_print_both'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'syncode_index_print_both'};
+$result_nodes{'syncode_index_print_both'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'syncode_index_print_both'};
 
 $result_menus{'syncode_index_print_both'} = {
   'cmdname' => 'node',
   'extra' => {
-    'isindex' => 1,
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
-  }
+    'normalized' => 'Top'
+  },
+  'structure' => {}
 };
 
 $result_errors{'syncode_index_print_both'} = [
   {
-    'error_line' => ':11: warning: printing an index `fn\' merged in another one, `cp\'
+    'error_line' => 'warning: printing an index `fn\' merged in another one, `cp\'
 ',
     'file_name' => '',
-    'line_nr' => 11,
+    'line_nr' => 15,
     'macro' => '',
     'text' => 'printing an index `fn\' merged in another one, `cp\'',
     'type' => 'warning'
@@ -461,26 +581,48 @@ $result_indices{'syncode_index_print_both'} = {
 $result_floats{'syncode_index_print_both'} = {};
 
 
+$result_indices_sort_strings{'syncode_index_print_both'} = {
+  'cp' => [
+    'c--oncept',
+    'f---un'
+  ]
+};
+
+
 
 $result_converted{'info'}->{'syncode_index_print_both'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Up: (dir)
+File: ,  Node: Top,  Next: chapter index,  Up: (dir)
+
+top
+***
+
+* Menu:
+
+* chapter index::
+
+
+File: ,  Node: chapter index,  Prev: Top,  Up: Top
+
+1 index
+*******
 
 Print fn
 
-   Print vr
+   Print cp
 
  [index ]
 * Menu:
 
-* c--oncept:                             Top.                   (line 3)
-* f---un:                                Top.                   (line 3)
+* c—oncept:                              chapter index.         (line 6)
+* f---un:                                chapter index.         (line 6)
 
 
 
 Tag Table:
 Node: Top27
+Node: chapter index120
 
 End Tag Table
 
@@ -491,51 +633,171 @@ End:
 ';
 
 
-$result_converted{'plaintext'}->{'syncode_index_print_both'} = 'Print fn
+$result_converted{'plaintext'}->{'syncode_index_print_both'} = 'top
+***
 
-   Print vr
+1 index
+*******
+
+Print fn
+
+   Print cp
 
 * Menu:
 
-* c--oncept:                             Top.                   (line 0)
-* f---un:                                Top.                   (line 0)
+* c—oncept:                              chapter index.         (line 6)
+* f---un:                                chapter index.         (line 6)
 
 ';
 
 
 $result_converted{'html_text'}->{'syncode_index_print_both'} = '
-<span id="Top"></span><h1 class="node-heading">Top</h1>
+<div class="top-level-extent" id="Top">
+<div class="nav-panel">
+<p>
+ &nbsp; [<a href="#chapter-index" title="Index" rel="index">Index</a>]</p>
+</div>
+<h1 class="top" id="top">top</h1>
 
-<span id="index-c_002d_002d_002doncept"></span>
-<span id="index-f_002d_002d_002dun"></span>
+<ul class="mini-toc">
+<li><a href="#chapter-index" accesskey="1">index</a></li>
+</ul>
+<hr>
+<div class="chapter-level-extent" id="chapter-index">
+<div class="nav-panel">
+<p>
+ &nbsp; [<a href="#chapter-index" title="Index" rel="index">Index</a>]</p>
+</div>
+<h2 class="chapter" id="index">1 index</h2>
+
+<a class="index-entry-id" id="index-c_002d_002d_002doncept"></a>
+<a class="index-entry-id" id="index-f_002d_002d_002dun"></a>
 
 
 <p>Print fn
 </p>
 
-<p>Print vr
+<p>Print cp
 </p>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-C"><b>C</b></a>
+<div class="printindex cp-printindex">
+<table class="cp-letters-header-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#t_i_cp_letter-C"><b>C</b></a>
  &nbsp; 
-<a class="summary-letter" href="#t_h_cp_letter-F"><b>F</b></a>
+<a class="summary-letter-printindex" href="#t_i_cp_letter-F"><b>F</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="index-cp" border="0">
-<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<table class="cp-entries-printindex" border="0">
+<tr><td></td><th class="entries-header-printindex">Index Entry</th><td>&nbsp;</td><th class="sections-header-printindex"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_h_cp_letter-C">C</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-c_002d_002d_002doncept">c&mdash;oncept</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><th id="t_i_cp_letter-C">C</th><td></td><td></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-c_002d_002d_002doncept">c&mdash;oncept</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chapter-index">chapter index</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_h_cp_letter-F">F</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-f_002d_002d_002dun"><code>f---un</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><th id="t_i_cp_letter-F">F</th><td></td><td></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-f_002d_002d_002dun"><code>f---un</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chapter-index">chapter index</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-C"><b>C</b></a>
+<table class="cp-letters-footer-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#t_i_cp_letter-C"><b>C</b></a>
  &nbsp; 
-<a class="summary-letter" href="#t_h_cp_letter-F"><b>F</b></a>
+<a class="summary-letter-printindex" href="#t_i_cp_letter-F"><b>F</b></a>
  &nbsp; 
 </td></tr></table>
+</div>
 
-<hr>';
+</div>
+</div>
+';
+
+
+$result_converted{'xml'}->{'syncode_index_print_both'} = '<syncodeindex spaces=" " from="fn" to="cp" line="fn cp"></syncodeindex>
+
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter index</nodenext></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
+
+</top>
+<node name="chapter-index" spaces=" "><nodename>chapter index</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>index</sectiontitle>
+
+<cindex index="cp" spaces=" "><indexterm index="cp" number="1">c&textmdash;oncept</indexterm></cindex>
+<findex index="fn" spaces=" "><indexterm index="fn" number="1" mergedindex="cp">f---un</indexterm></findex>
+
+
+<para>Print fn
+</para>
+<printindex spaces=" " value="fn" line="fn"></printindex>
+
+<para>Print cp
+</para>
+<printindex spaces=" " value="cp" line="cp"></printindex>
+
+</chapter>
+';
+
+
+$result_converted{'latex'}->{'syncode_index_print_both'} = '\\documentclass{book}
+\\usepackage{imakeidx}
+\\usepackage{amsfonts}
+\\usepackage{amsmath}
+\\usepackage[gen]{eurosym}
+\\usepackage[T1]{fontenc}
+\\usepackage{textcomp}
+\\usepackage{graphicx}
+\\usepackage{etoolbox}
+\\usepackage{titleps}
+\\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\\usepackage[hidelinks]{hyperref}
+\\usepackage[utf8]{inputenc}
+
+\\makeatletter
+\\newcommand{\\Texinfosettitle}{No Title}%
+
+% no index headers or page break
+\\indexsetup{level=\\relax,toclevel=section,noclearpage}%
+\\makeindex[name=cp,title=]%
+
+% redefine the \\mainmatter command such that it does not clear page
+% as if in double page
+\\renewcommand\\mainmatter{\\clearpage\\@mainmattertrue\\pagenumbering{arabic}}
+\\newenvironment{Texinfopreformatted}{%
+  \\par\\GNUTobeylines\\obeyspaces\\frenchspacing\\parskip=\\z@\\parindent=\\z@}{}
+{\\catcode`\\^^M=13 \\gdef\\GNUTobeylines{\\catcode`\\^^M=13 \\def^^M{\\null\\par}}}
+\\newenvironment{Texinfoindented}{\\begin{list}{}{}\\item\\relax}{\\end{list}}
+
+% used for substitutions in commands
+\\newcommand{\\Texinfoplaceholder}[1]{}
+
+\\newpagestyle{single}{\\sethead[\\chaptername{} \\thechapter{} \\chaptertitle{}][][\\thepage]
+                              {\\chaptername{} \\thechapter{} \\chaptertitle{}}{}{\\thepage}}
+
+% allow line breaking at underscore
+\\let\\Texinfounderscore\\_
+\\renewcommand{\\_}{\\Texinfounderscore\\discretionary{}{}{}}
+\\renewcommand{\\includegraphics}[1]{\\fbox{FIG \\detokenize{#1}}}
+
+\\makeatother
+% set default for @setchapternewpage
+\\makeatletter
+\\patchcmd{\\chapter}{\\if@openright\\cleardoublepage\\else\\clearpage\\fi}{\\Texinfoplaceholder{setchapternewpage placeholder}\\clearpage}{}{}
+\\makeatother
+\\pagestyle{single}%
+
+
+\\begin{document}
+\\label{anchor:Top}%
+\\chapter{{index}}
+\\label{anchor:chapter-index}%
+
+\\index[cp]{c--oncept@c---oncept}%
+\\index[cp]{f---un@\\texttt{f{-}{-}{-}un}}%
+
+
+Print fn
+
+
+Print cp
+
+\\printindex[cp]
+
+\\end{document}
+';
 
 1;

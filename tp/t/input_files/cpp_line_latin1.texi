@@ -1,0 +1,14 @@
+\input texinfo
+
+@documentencoding ISO-8859-1
+
+@node Top
+@top
+
+#line 100 "foo.ptèxi"
+
+@gggg
+
+aaa
+
+@bye

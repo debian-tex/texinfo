@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,11 +24,11 @@
 #include "input.h"
 
 
-const char *whitespace_chars = " \t\f\r\n";
+const char *whitespace_chars = " \t\v\f\r\n";
 const char *digit_chars = "0123456789";
 
 // [^\S\r\n] in Perl
-const char *whitespace_chars_except_newline = " \t\f";
+const char *whitespace_chars_except_newline = " \t\v\f";
 
 /* Check if the contents of S2 appear at S1). */
 int
@@ -48,10 +48,10 @@ read_command_name (char **ptr)
   char *ret = 0;
 
   q = p;
-  if (!isalnum (*q))
+  if (!isalnum ((unsigned char) *q))
     return 0; /* Invalid. */
 
-  while (isalnum (*q) || *q == '-' || *q == '_')
+  while (isalnum ((unsigned char) *q) || *q == '-' || *q == '_')
     q++;
   ret = strndup (p, q - p);
   p = q;
@@ -68,7 +68,7 @@ read_flag_name (char **ptr)
   char *ret = 0;
 
   q = p;
-  if (!isalnum (*q) && *q != '-' && *q != '_')
+  if (!isalnum ((unsigned char) *q) && *q != '-' && *q != '_')
     return 0; /* Invalid. */
 
   while (!strchr (whitespace_chars, *q)
@@ -85,6 +85,27 @@ char *
 element_type_name (ELEMENT *e)
 {
   return element_type_names[(e)->type];
+}
+
+/* Return 1 if the element expansion is all whitespace */
+int
+check_space_element (ELEMENT *e)
+{
+  if (!(
+          e->cmd == CM_SPACE
+        || e->cmd == CM_TAB
+        || e->cmd == CM_NEWLINE
+        || e->cmd == CM_c
+        || e->cmd == CM_comment
+        || e->cmd == CM_COLON
+        || (!e->cmd && !e->type && e->text.end == 0)
+        || (e->text.end > 0
+            && !*(e->text.text + strspn (e->text.text, whitespace_chars)))
+     ))
+    {
+      return 0;
+    }
+  return 1;
 }
 
 
@@ -136,20 +157,35 @@ COUNTER count_cells;
 GLOBAL_INFO global_info;
 char *global_clickstyle = 0;
 char *global_documentlanguage = 0;
+int global_documentlanguage_fixed = 0;
+int global_accept_internalvalue = 0;
 
 enum kbd_enum global_kbdinputstyle = kbd_distinct;
 
+/* Set the document language unless it was set on the texi2any command line. */
 void
 set_documentlanguage (char *value)
 {
-  free (global_documentlanguage);
-  global_documentlanguage = strdup (value);
+  if (!global_documentlanguage_fixed)
+    {
+      free (global_documentlanguage);
+      global_documentlanguage = value ? strdup (value) : 0;
+    }
 }
 
 void
-set_novalidate (int value)
+set_documentlanguage_override (char *value)
 {
-  global_info.novalidate = value;
+  free (global_documentlanguage);
+  global_documentlanguage = value ? strdup (value) : 0;
+  global_documentlanguage_fixed = 1;
+}
+
+
+void
+set_accept_internalvalue()
+{
+  global_accept_internalvalue = 1;
 }
 
 /* Record the information from a command of global effect. */
@@ -162,8 +198,8 @@ register_global_command (ELEMENT *current)
 
   if (command_data(cmd).flags & CF_global)
     {
-      if (!current->line_nr.line_nr)
-        current->line_nr = line_nr;
+      if (!current->source_info.line_nr)
+        current->source_info = current_source_info;
       switch (cmd)
         {
 #define GLOBAL_CASE(cmx) \
@@ -184,7 +220,7 @@ register_global_command (ELEMENT *current)
         GLOBAL_CASE(detailmenu);
         GLOBAL_CASE(part);
 
-        /* from Common.pm %document_settable_at_commands */
+        /* from Common.pm %document_settable_multiple_at_commands */
         GLOBAL_CASE(allowcodebreaks);
         GLOBAL_CASE(clickstyle);
         GLOBAL_CASE(codequotebacktick);
@@ -198,6 +234,7 @@ register_global_command (ELEMENT *current)
         GLOBAL_CASE(frenchspacing);
         GLOBAL_CASE(headings);
         GLOBAL_CASE(kbdinputstyle);
+        GLOBAL_CASE(microtype);
         GLOBAL_CASE(paragraphindent);
         GLOBAL_CASE(shortcontents);
         GLOBAL_CASE(urefbreakstyle);
@@ -214,8 +251,8 @@ register_global_command (ELEMENT *current)
     {
       ELEMENT **where = 0;
 
-      if (!current->line_nr.line_nr)
-        current->line_nr = line_nr;
+      if (!current->source_info.line_nr)
+        current->source_info = current_source_info;
       switch (cmd)
         {
         case CM_setfilename:
@@ -253,6 +290,13 @@ register_global_command (ELEMENT *current)
         GLOBAL_UNIQUE_CASE(oddfootingmarks);
         GLOBAL_UNIQUE_CASE(shorttitlepage);
         GLOBAL_UNIQUE_CASE(title);
+        GLOBAL_UNIQUE_CASE(novalidate);
+        GLOBAL_UNIQUE_CASE(afourpaper);
+        GLOBAL_UNIQUE_CASE(afourlatex);
+        GLOBAL_UNIQUE_CASE(afourwide);
+        GLOBAL_UNIQUE_CASE(afivepaper);
+        GLOBAL_UNIQUE_CASE(bsixpaper);
+        GLOBAL_UNIQUE_CASE(smallbook);
 #undef GLOBAL_UNIQUE_CASE
         /* NOTE: Same list in api.c:build_global_info2 and wipe_global_info. */
         default:
@@ -277,9 +321,12 @@ void
 wipe_global_info (void)
 {
   free (global_clickstyle);
-  free (global_documentlanguage);
   global_clickstyle = strdup ("arrow");
-  global_documentlanguage = strdup ("");
+  if (!global_documentlanguage_fixed)
+    {
+      free (global_documentlanguage);
+      global_documentlanguage = 0;
+    }
   global_kbdinputstyle = kbd_distinct;
 
   free (global_info.input_perl_encoding);
@@ -312,54 +359,41 @@ wipe_global_info (void)
   GLOBAL_CASE(frenchspacing);
   GLOBAL_CASE(headings);
   GLOBAL_CASE(kbdinputstyle);
+  GLOBAL_CASE(microtype);
   GLOBAL_CASE(paragraphindent);
   GLOBAL_CASE(shortcontents);
   GLOBAL_CASE(urefbreakstyle);
   GLOBAL_CASE(xrefautomaticsectiontitle);
 
 #undef GLOBAL_CASE
+
+  /* clear the rest of the fields */
   memset (&global_info, 0, sizeof (global_info));
 
   global_info.input_perl_encoding = strdup ("utf-8");
   global_info.input_encoding_name = strdup ("utf-8");
 }
 
+ELEMENT *
+setup_document_root_and_before_node_section ()
+{
+  ELEMENT *before_node_section = new_element (ET_before_node_section);
+  ELEMENT *document_root = new_element (ET_document_root);
+  add_to_element_contents (document_root, before_node_section);
+  return before_node_section;
+}
+
 
 ELEMENT *
-parse_texi_file (char *filename)
+parse_texi_document (void)
 {
-  char *p, *q;
   char *linep, *line = 0;
-  ELEMENT *root = new_element (ET_text_root);
-  ELEMENT *preamble = 0;
-  char c;
+  ELEMENT *before_node_section = setup_document_root_and_before_node_section ();
+  ELEMENT *preamble_before_beginning = 0;
+  ELEMENT *document_root = before_node_section->parent;
 
-  int status;
-  
-  status = input_push_file (filename);
-  if (status)
-    return 0;
-
-  /* Strip off a leading directory path, by looking for the last
-     '/' in filename. */
-  p = 0;
-  q = strchr (filename, '/');
-  while (q)
-    {
-      p = q;
-      q = strchr (q + 1, '/');
-    }
-
-  if (p)
-    {
-      c = *p;
-      *p = '\0';
-      add_include_directory (filename);
-      *p = c;
-    }
-
-  /* Put all lines up to a line starting "\input" inside a "preamble"
-     element. */
+  /* Put all the empty lines up to a line starting "\input" inside a
+     "preamble_before_beginning" element. */
   while (1)
     {
       ELEMENT *l;
@@ -369,28 +403,28 @@ parse_texi_file (char *filename)
       if (!line)
         break;
 
-      linep = line; 
+      linep = line;
       linep += strspn (linep, whitespace_chars);
       if (*linep && !looking_at (linep, "\\input"))
         {
-          /* This line is not part of the preamble.  Shove back
-             into input stream. */
-          input_push (line, 0, line_nr.file_name, line_nr.line_nr);
+          /* This line is not part of the preamble_before_beginning.
+             Push back into input stream. */
+          input_pushback (line);
           break;
         }
 
-      if (!preamble)
-        preamble = new_element (ET_preamble);
+      if (!preamble_before_beginning)
+        preamble_before_beginning = new_element (ET_preamble_before_beginning);
 
-      l = new_element (ET_preamble_text);
+      l = new_element (ET_text_before_beginning);
       text_append (&l->text, line);
-      add_to_element_contents (preamble, l);
+      add_to_element_contents (preamble_before_beginning, l);
     }
 
-  if (preamble)
-    add_to_element_contents (root, preamble);
+  if (preamble_before_beginning)
+    add_to_element_contents (before_node_section, preamble_before_beginning);
 
-  return parse_texi (root);
+  return parse_texi (document_root, before_node_section);
 }
 
 
@@ -399,7 +433,7 @@ begin_paragraph_p (ELEMENT *current)
 {
   return (current->type == ET_NONE /* "True for @-commands" */
            || current->type == ET_before_item
-           || current->type == ET_text_root
+           || current->type == ET_before_node_section
            || current->type == ET_document_root
            || current->type == ET_brace_command_context)
          && in_paragraph_context (current_context ());
@@ -426,7 +460,7 @@ begin_paragraph (ELEMENT *current)
               if (child->type == ET_empty_line
                   || child->type == ET_paragraph)
                 break;
-              if (close_paragraph_command(child->cmd))
+              if (command_data(child->cmd).flags & CF_close_paragraph)
                 break;
               if (child->cmd == CM_indent
                   || child->cmd == CM_noindent)
@@ -455,32 +489,23 @@ begin_paragraph (ELEMENT *current)
 ELEMENT *
 begin_preformatted (ELEMENT *current)
 {
-  if (current_context() == ct_preformatted
-      || current_context() == ct_rawpreformatted)
+  if (current_context() == ct_preformatted)
     {
-      ELEMENT *e;
-      enum element_type et;
-
-      if (current_context() == ct_preformatted)
-        et = ET_preformatted;
-      else
-        et = ET_rawpreformatted;
-      e = new_element (et);
-      add_to_element_contents (current, e);
-      current = e;
-      debug ("PREFORMATTED %s", et == ET_preformatted ? "preformatted"
-                                                      : "rawpreformatted");
+      ELEMENT *preformatted = new_element (ET_preformatted);
+      add_to_element_contents (current, preformatted);
+      current = preformatted;
+      debug ("PREFORMATTED");
     }
   return current;
 }
 
 ELEMENT *
 end_paragraph (ELEMENT *current,
-               enum command_id closed_command,
+               enum command_id closed_block_command,
                enum command_id interrupting_command)
 {
-  current = close_all_style_commands (current,
-                                      closed_command, interrupting_command);
+  current = close_all_style_commands (current, closed_block_command,
+                                      interrupting_command);
   if (current->type == ET_paragraph)
     {
       debug ("CLOSE PARA");
@@ -492,17 +517,14 @@ end_paragraph (ELEMENT *current,
 
 ELEMENT *
 end_preformatted (ELEMENT *current,
-                  enum command_id closed_command,
+                  enum command_id closed_block_command,
                   enum command_id interrupting_command)
 {
-  current = close_all_style_commands (current,
-                                      closed_command, interrupting_command);
-  if (current->type == ET_preformatted
-      || current->type == ET_rawpreformatted)
+  current = close_all_style_commands (current, closed_block_command,
+                                      interrupting_command);
+  if (current->type == ET_preformatted)
     {
-      debug ("CLOSE PREFORMATTED %s",
-             current->type == ET_preformatted ? "preformatted"
-                                              : "rawpreformatted");
+      debug ("CLOSE PREFORMATTED");
       if (current->contents.number == 0)
         {
           current = current->parent;
@@ -529,10 +551,10 @@ merge_text (ELEMENT *current, char *text)
       char *additional = 0;
 
       if (last_child
-          && (last_child->type == ET_empty_line_after_command
-              || last_child->type == ET_empty_spaces_after_command
-              || last_child->type == ET_empty_spaces_before_argument
-              || last_child->type == ET_empty_spaces_after_close_brace))
+          && (last_child->type == ET_ignorable_spaces_after_command
+              || last_child->type == ET_internal_spaces_after_command
+              || last_child->type == ET_internal_spaces_before_argument
+              || last_child->type == ET_spaces_after_close_brace))
         {
           no_merge_with_following_text = 1;
         }
@@ -558,16 +580,11 @@ merge_text (ELEMENT *current, char *text)
   if (last_child
       /* There is a difference between the text being defined and empty,
          and not defined at all.  The latter is true for 'brace_command_arg'
-         elements.  We need either to make sure that we initialize all elements 
+         elements.  We need either to make sure that we initialize all elements
          with text_append (&e->text, "") where we want merging with following
-         text, or treat as a special case here.
-         Unfortunately we can't make a special case for 
-         ET_empty_spaces_before_argument, because abort_empty_line above 
-         produces such an element that shouldn't be merged with. */
+         text, or treat as a special case here. */
       && (last_child->text.space > 0
-            && !strchr (last_child->text.text, '\n')
-             ) /* || last_child->type == ET_empty_spaces_before_argument) */
-      && last_child->cmd != CM_value
+            && !strchr (last_child->text.text, '\n'))
       && !no_merge_with_following_text)
     {
       /* Append text to contents */
@@ -600,18 +617,12 @@ abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
 
   if (last_child
       && (last_child->type == ET_empty_line
-          || last_child->type == ET_empty_line_after_command
-          || last_child->type == ET_empty_spaces_before_argument
-          || last_child->type == ET_empty_spaces_after_close_brace))
+          || last_child->type == ET_ignorable_spaces_after_command
+          || last_child->type == ET_internal_spaces_after_command
+          || last_child->type == ET_internal_spaces_before_argument
+          || last_child->type == ET_spaces_after_close_brace))
     {
-      ELEMENT *owning_element = 0, *e;
-      KEY_PAIR *k;
-
       retval = 1;
-
-      k = lookup_extra (last_child, "command");
-      if (k)
-        owning_element = (ELEMENT *) k->value;
 
       debug ("ABORT EMPTY %s additional text |%s| "
              "current |%s|",
@@ -623,29 +634,28 @@ abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
       /* Remove element altogether if it's empty. */
       if (last_child->text.end == 0)
         {
-          e = pop_element_from_contents (current);
+          ELEMENT *e = pop_element_from_contents (current);
           destroy_element (e);
         }
       else if (last_child->type == ET_empty_line)
         {
           last_child->type = begin_paragraph_p (current)
-                             ? ET_empty_spaces_before_paragraph : ET_NONE;
+                             ? ET_spaces_before_paragraph : ET_NONE;
         }
-      else if (last_child->type == ET_empty_line_after_command
-               || last_child->type == ET_empty_spaces_before_argument)
+      else if (last_child->type == ET_internal_spaces_after_command
+               || last_child->type == ET_internal_spaces_before_argument)
         {
-          if (owning_element)
-            {
-              /* Remove element from main tree. */
-              ELEMENT *e = pop_element_from_contents (current);
-              add_extra_string_dup (owning_element, "spaces_before_argument",
-                                    e->text.text);
-              destroy_element (e);
-            }
-          else
-            {
-              last_child->type = ET_empty_spaces_after_command;
-            }
+          /* Remove element from main tree. It will still be referenced in
+             the 'extra' hash as 'spaces_before_argument'. */
+          ELEMENT *owning_element;
+          KEY_PAIR *k;
+          ELEMENT *e = pop_element_from_contents (current);
+
+          k = lookup_extra (last_child, "spaces_associated_command");
+          owning_element = (ELEMENT *) k->value;
+          add_extra_string_dup (owning_element, "spaces_before_argument",
+                                e->text.text);
+          destroy_element (e);
         }
     }
   else
@@ -659,11 +669,13 @@ static void
 isolate_last_space_internal (ELEMENT *current)
 {
   ELEMENT *last_elt;
+  char *text;
+  int text_len;
 
   last_elt = last_contents_child (current);
-  char *text = element_text (last_elt);
+  text = element_text (last_elt);
 
-  int text_len = last_elt->text.end;
+  text_len = last_elt->text.end;
 
   /* If text all whitespace */
   if (text[strspn (text, whitespace_chars)] == '\0')
@@ -725,14 +737,17 @@ isolate_trailing_space (ELEMENT *current, enum element_type spaces_type)
            i--)
         trailing_spaces++;
 
-      new_spaces = new_element (spaces_type);
-      text_append_n (&new_spaces->text,
-                     text + text_len - trailing_spaces,
-                     trailing_spaces);
-      text[text_len - trailing_spaces] = '\0';
-      last_elt->text.end -= trailing_spaces;
+      if (trailing_spaces)
+        {
+          new_spaces = new_element (spaces_type);
+          text_append_n (&new_spaces->text,
+                         text + text_len - trailing_spaces,
+                         trailing_spaces);
+          text[text_len - trailing_spaces] = '\0';
+          last_elt->text.end -= trailing_spaces;
 
-      add_to_element_contents (current, new_spaces);
+          add_to_element_contents (current, new_spaces);
+        }
     }
 }
 
@@ -760,7 +775,8 @@ isolate_last_space (ELEMENT *current)
   text = element_text (last_elt);
   if (!text || !*text
       || (last_elt->type && (!current->type
-                             || current->type != ET_line_arg)))
+                             || (current->type != ET_line_arg
+                                 && current->type != ET_block_line_arg))))
     return;
 
   text_len = last_elt->text.end;
@@ -775,11 +791,12 @@ isolate_last_space (ELEMENT *current)
 }
 
 
-/* Add an "ET_empty_line_after_command" element containing the whitespace at 
-   the beginning of the rest of the line.  This element can be later changed to 
-   a "ET_empty_spaces_after_command" element in 'abort_empty_line' if more
-   text follows on the line.  Used after line commands or commands starting
-   a block. */
+/* Add an "ET_ignorable_spaces_after_command" element containing the
+   whitespace at the beginning of the rest of the line after skipspaces
+   commands, if COMMAND is 0.  Otherwise add an
+   "ET_internal_spaces_after_command",  container, after line commands
+   or commands starting a block, that will end up in COMMAND extra spaces
+   value. */
 void
 start_empty_line_after_command (ELEMENT *current, char **line_inout,
                                 ELEMENT *command)
@@ -789,27 +806,68 @@ start_empty_line_after_command (ELEMENT *current, char **line_inout,
   int len;
 
   len = strspn (line, whitespace_chars_except_newline);
-  e = new_element (ET_empty_line_after_command);
+  e = new_element (ET_ignorable_spaces_after_command);
   add_to_element_contents (current, e);
   text_append_n (&e->text, line, len);
   line += len;
 
   if (command)
-    add_extra_element (e, "command", command);
+    {
+      add_extra_element (e, "spaces_associated_command", command);
+      e->type = ET_internal_spaces_after_command;
+    }
 
   *line_inout = line;
 }
 
 
-/* If the parent element takes a command as an argument, like
-   @itemize @bullet. */
+/* if kbd should be formatted as code */
 int
-command_with_command_as_argument (ELEMENT *current)
+kbd_formatted_as_code (ELEMENT *current)
+{
+  if (global_kbdinputstyle == kbd_code)
+    {
+       return 1;
+    }
+  else if (global_kbdinputstyle == kbd_example)
+    {
+      if (in_preformatted_context_not_menu ())
+        return 0;
+      else
+        return 1;
+    }
+  return 0;
+}
+
+
+/* If the container can hold a command as an argument, determined as
+   parent element taking a command as an argument, like
+   @itemize @bullet, and the command as argument being the only content. */
+int
+parent_of_command_as_argument (ELEMENT *current)
 {
   return current->type == ET_block_line_arg
     && (current->parent->cmd == CM_itemize
         || item_line_command (current->parent->cmd))
     && (current->contents.number == 1);
+}
+
+/* register a command like @bullet with @itemize, or @asis with @table */
+void
+register_command_as_argument (ELEMENT *cmd_as_arg)
+{
+  debug ("FOR PARENT @%s command_as_argument @%s",
+         command_name(cmd_as_arg->parent->parent->cmd),
+         command_name(cmd_as_arg->cmd));
+  if (!cmd_as_arg->type)
+    cmd_as_arg->type = ET_command_as_argument;
+  add_extra_element (cmd_as_arg->parent->parent,
+                     "command_as_argument", cmd_as_arg);
+  if (cmd_as_arg->cmd == CM_kbd
+      && kbd_formatted_as_code(cmd_as_arg->parent->parent)) {
+    add_extra_integer (cmd_as_arg->parent->parent,
+                       "command_as_argument_kbd_code", 1);
+  }
 }
 
 /* Check if line is "@end ..." for current command.  If so, advance LINE. */
@@ -855,7 +913,7 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
   /* Check whether outer command can contain cmd.  Commands are
      classified according to what commands they can contain:
 
-     accents
+     plain text
      full text
      simple text
      full line
@@ -865,8 +923,7 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
 
   int ok = 0; /* Whether nesting is allowed. */
 
-  /* Whether command is a "simple text" command.  Use a variable
-     to avoid repeating a complex conditional. */
+  /* Whether command is a "simple text" command */
   int simple_text_command = 0;
 
   enum command_id outer = current->parent->cmd;
@@ -875,27 +932,16 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
 
   // much TODO here.
 
-  if ((outer_flags & CF_line
-            && (command_data(outer).data >= 0
-                || (command_data(outer).data == LINE_line
-                    && !(outer_flags & (CF_def | CF_sectioning)))
-                || command_data(outer).data == LINE_text)
-            && outer != CM_center
-            && outer != CM_exdent)
-      || ((outer_flags & CF_brace)
-           && !(outer_flags & CF_inline)
-           && command_data(outer).data > 0)
-      || outer == CM_shortcaption
-      || outer == CM_math
-      || (outer_flags & CF_index_entry_command)
-      || (outer_flags & CF_block
-          && !(outer_flags & CF_def)
-          && command_data(outer).data != BLOCK_raw
-          && command_data(outer).data != BLOCK_conditional))
+  if (outer_flags & CF_contain_simple_text
+      /* not in CF_contain_simple_text since index entry flags are not set
+         in command_data.txt, and also index commands are dynamically added */
+      || outer_flags & CF_index_entry_command)
     {
       simple_text_command = 1;
     }
 
+  /* first three conditions check if in the main contents of the commands
+     or in the arguments where there is checking of nesting */
   if (outer_flags & CF_root && current->type != ET_line_arg)
     ok = 1;
   else if (outer_flags & CF_block
@@ -905,12 +951,14 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
            || outer == CM_itemx)
            && current->type != ET_line_arg)
     ok = 1;
-  else if (outer_flags & CF_accent)
+  else if (outer_flags & CF_contain_plain_text)
     {
-      if (cmd_flags & (CF_nobrace | CF_accent))
+      if ((cmd_flags & CF_accent)
+          || (cmd_flags & CF_nobrace
+              && command_data(cmd).data == NOBRACE_symbol))
         ok = 1;
       else if (cmd_flags & CF_brace
-               && command_data(cmd).data == 0)
+               && command_data(cmd).data == BRACE_noarg)
         ok = 1; /* glyph command */
       if (cmd == CM_c || cmd == CM_comment)
         ok = 1;
@@ -918,7 +966,9 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
   else if (simple_text_command
            /* "full text commands" */
            || (outer_flags & CF_brace)
-                 && command_data(outer).data == BRACE_style
+                 && (command_data(outer).data == BRACE_style_other
+                      || command_data(outer).data == BRACE_style_code
+                      || command_data(outer).data == BRACE_style_no_code)
            /* "full line commands" */
            || outer == CM_center
            || outer == CM_exdent
@@ -928,15 +978,20 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
            || (!current->parent->cmd && current_context () == ct_def)
 
            /* "full line no refs commands" */
-           || (outer_flags & (CF_sectioning | CF_def))
+           || (outer_flags & (CF_sectioning_heading | CF_def))
            || (!current->parent->cmd && current_context () == ct_def))
     {
       /* Start by checking if the command is allowed inside a "full text 
          command" - this is the most permissive. */
-      if (cmd_flags & CF_nobrace)
-        ok = 1;
+      /* in the perl parser the checks are not dynamic as in this function,
+         a hash is used and modified when defining the definfoencose command */
+      /* all the brace commands, not the definfoenclose commands, which
+         should be consistent with the perl parser */
       if (cmd_flags & CF_brace && !(cmd_flags & CF_INFOENCLOSE))
         ok = 1;
+      if (cmd_flags & CF_nobrace && command_data(cmd).data == NOBRACE_symbol)
+        ok = 1;
+      /* selected line commands */
       else if (cmd == CM_c
                || cmd == CM_comment
                || cmd == CM_refill
@@ -946,17 +1001,30 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
                || cmd == CM_clear
                || cmd == CM_end)
         ok = 1;
-      else if (cmd_flags & CF_format_raw)
+      /* selected block commands */
+      else if (cmd_flags & CF_block
+               && (command_data(cmd).data == BLOCK_format_raw
+                    || command_data(cmd).data == BLOCK_conditional))
         ok = 1;
+      /* not valid in these commands, only right in @float */
       if (cmd == CM_caption || cmd == CM_shortcaption)
         ok = 0;
-      if (cmd_flags & CF_block
-          && command_data(cmd).data == BLOCK_conditional)
-        ok = 1;
+
+      if (cmd_flags & CF_in_heading_spec)
+        { /* in heading commands can only appear in headings and style
+             brace commands */
+          ok = 0;
+          if (outer_flags & CF_heading_spec
+              || (outer_flags & CF_brace
+                  && (command_data(outer).data == BRACE_style_other
+                      || command_data(outer).data == BRACE_style_code
+                      || command_data(outer).data == BRACE_style_no_code)))
+              ok = 1;
+        }
 
       /* Now add more restrictions for "full line no refs" commands and "simple 
-         text" commands. */
-      if (outer_flags & (CF_sectioning | CF_def)
+         text" commands on valid brace commands. */
+      if (outer_flags & (CF_sectioning_heading | CF_def)
           || (!current->parent->cmd && current_context () == ct_def)
           || simple_text_command)
         {
@@ -968,7 +1036,7 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
             ok = 0;
         }
 
-      /* Exceptions for "simple text commands" only. */
+      /* Exceptions for "simple text commands" only for brace commands. */
       if (simple_text_command)
         {
           if (cmd == CM_xref
@@ -1007,7 +1075,10 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
 }
 
 /* *LINEP is a pointer into the line being processed.  It is advanced past any
-   bytes processed.  Return 0 when we need to read a new line. */
+   bytes processed.
+   Return STILL_MORE_TO_PROCESS when there is more to process on the line
+          GET_A_NEW_LINE when we need to read a new line
+          FINISHED_TOTALLY when @bye was found */
 int
 process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
 {
@@ -1016,21 +1087,20 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
   char *line_after_command;
   int retval = STILL_MORE_TO_PROCESS;
   enum command_id end_cmd;
-  char *p;
 
   enum command_id cmd = CM_NONE;
+  /* remains set only if command is unknown, otherwise cmd is used */
+  char *command = 0;
 
-  /********* BLOCK_raw or (ignored) BLOCK_conditional ******************/
-  /* If in raw block, or ignored conditional block. */
+  /********* BLOCK_raw ******************/
   if (command_flags(current) & CF_block
-      && (command_data(current->cmd).data == BLOCK_raw
-          || command_data(current->cmd).data == BLOCK_conditional))
+      && (command_data(current->cmd).data == BLOCK_raw))
     {
+      char *p = line;
       /* Check if we are using a macro within a macro. */
       if (current->cmd == CM_macro || current->cmd == CM_rmacro)
         {
           enum command_id cmd = 0;
-          char *p = line;
           p += strspn (p, whitespace_chars);
           if (!strncmp (p, "@macro", strlen ("@macro")))
             {
@@ -1054,42 +1124,12 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
               goto funexit;
             }
         }
-
-      /* Else check for nested @ifset (so that @end ifset doesn't
-         end the outermost @ifset). */
-      if (current->cmd == CM_ifclear || current->cmd == CM_ifset
-          || current->cmd == CM_ifcommanddefined
-          || current->cmd == CM_ifcommandnotdefined)
+      /* Else check if line is "@end ..." for current command. */
+      if (is_end_current_command (current, &p, &end_cmd))
         {
           ELEMENT *e;
-          char *p = line;
-          p += strspn (p, whitespace_chars);
-          if (*p == '@'
-              && !strncmp (p + 1, command_name(current->cmd),
-                           strlen (command_name(current->cmd))))
-            {
-              line = p + 1;
-              p += strlen (command_name(current->cmd));
-              e = new_element (ET_NONE);
-              e->cmd = current->cmd;
-              add_extra_string (e, "line", strdup (line));
-              add_to_element_contents (current, e);
-              current = e;
-              retval = GET_A_NEW_LINE;
-              goto funexit;
-            }
-        }
 
-      /* Else check if line is "@end ..." for current command. */
-      p = line;
-      if (is_end_current_command (current, &line, &end_cmd))
-        {
-          ELEMENT *last_child;
-          char *tmp = 0;
-
-          last_child = last_contents_child (current);
-           
-          if (strchr (whitespace_chars, *p))
+          if (strchr (whitespace_chars, *line))
             {
               ELEMENT *e;
               int n = strspn (line, whitespace_chars);
@@ -1100,42 +1140,6 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
               line_warn ("@end %s should only appear at the "
                          "beginning of a line", command_name(end_cmd));
             }
-          else if (last_child
-                   && last_child->type == ET_raw
-                   && current->cmd != CM_verbatim)
-            {
-              if (last_child->text.end > 0
-                  && last_child->text.text[last_child->text.end - 1] == '\n')
-                {
-                  ELEMENT *lrn;
-                  last_child->text.text[--last_child->text.end] = '\0';
-                  lrn = new_element (ET_last_raw_newline);
-                  text_append (&lrn->text, "\n");
-                  add_to_element_contents (current, lrn);
-                }
-            }
-
-          /* 'line' is now advanced past the "@end ...".  Check if
-             there's anything after it. */
-          p = line + strspn (line, whitespace_chars);
-          if (*p && *p != '@')
-            goto superfluous_arg;
-          if (*p)
-            {
-              p++;
-              tmp = read_command_name (&p);
-              if (tmp && (!strcmp (tmp, "c") || !strcmp (tmp, "comment")))
-                {
-                }
-              else if (*p && p[strspn (p, whitespace_chars)])
-                {
-superfluous_arg:
-                  line_warn ("superfluous argument to @end %s: %s",
-                             command_name (current->cmd), line);
-                }
-              free (tmp);
-            }
-          
 
           /* For macros, define a new macro (unless we are in a nested
              macro definition). */
@@ -1157,14 +1161,14 @@ superfluous_arg:
                       macro = lookup_macro (existing);
                       if (macro)
                         {
-                          line_error_ext (1, &current->line_nr,
+                          line_error_ext (1, &current->source_info,
                              "macro `%s' previously defined", name);
-                          line_error_ext (1, &macro->element->line_nr,
+                          line_error_ext (1, &macro->element->source_info,
                              "here is the previous definition of `%s'", name);
                         }
                       else if (!(existing & USER_COMMAND_BIT))
                         {
-                          line_error_ext (1, &current->line_nr,
+                          line_error_ext (1, &current->source_info,
                             "redefining Texinfo language command: @%s",
                             name);
                         }
@@ -1176,66 +1180,111 @@ superfluous_arg:
                 }
             }
 
-          current = current->parent;
 
-          /* Check for conditionals. */
-          if (command_data(end_cmd).flags & CF_block
-              && command_data(end_cmd).data == BLOCK_conditional)
-            {
-              /* Remove an ignored block. */
-              ELEMENT *popped;
-              popped = pop_element_from_contents (current);
-              if (popped->cmd != end_cmd)
-                fatal ("command mismatch for ignored block");
-
-              /* Ignore until end of line */
-              if (!strchr (line, '\n'))
-                {
-                  line = new_line ();
-                  debug ("IGNORE CLOSE LINE");
-                }
-              destroy_element_and_children (popped);
-
-              debug ("CLOSED conditional %s", command_name(end_cmd));
-              retval = GET_A_NEW_LINE;
-              goto funexit;
-            }
-          else
-            {
-              ELEMENT *e;
-              int n;
-
-              debug ("CLOSED raw %s", command_name(end_cmd));
-              e = new_element (ET_empty_line_after_command);
-              n = strspn (line, whitespace_chars_except_newline);
-              text_append_n (&e->text, line, n);
-              line += n;
-              add_to_element_contents (current, e);
-            }
+          debug ("CLOSED raw %s", command_name(end_cmd));
+         /* start a new line for the @end line (without the first spaces on
+            the line that have already been put in a raw container).
+            This is normally done at the beginning of a line, but not here,
+            as we directly got the line.  As the @end is processed just below,
+            an empty line will not appear in the output, but it is needed to
+            avoid a duplicate warning on @end not appearing at the beginning
+            of the line */
+          e = new_element (ET_empty_line);
+          add_to_element_contents (current, e);
         }
       else /* save the line verbatim */
         {
-          ELEMENT *last = last_contents_child (current);
-          /* Append to existing element only if the text is all
-             whitespace.  */
-          if (last && last->type == ET_empty_line_after_command
-              && line[strspn (line, whitespace_chars)] == '\0'
-              && !strchr (last->text.text, '\n'))
-            {
-              text_append (&last->text, line);
-            }
-          else
-            {
-              ELEMENT *e;
-              e = new_element (ET_raw);
-              text_append (&e->text, line);
-              add_to_element_contents (current, e);
-            }
+          ELEMENT *e;
+          e = new_element (ET_raw);
+          text_append (&e->text, line);
+          add_to_element_contents (current, e);
 
           retval = GET_A_NEW_LINE;
           goto funexit;
         }
-    } /********* BLOCK_raw or (ignored) BLOCK_conditional *************/
+    } /********* BLOCK_raw *************/
+  /********* (ignored) BLOCK_conditional ******************/
+  else if (command_flags(current) & CF_block
+      && (command_data(current->cmd).data == BLOCK_conditional))
+    {
+      char *p = line;
+
+      /* check for nested @ifset (so that @end ifset doesn't end the
+         the outermost @ifset).  It is discarded when the outermost is.*/
+      if (current->cmd == CM_ifclear || current->cmd == CM_ifset
+          || current->cmd == CM_ifcommanddefined
+          || current->cmd == CM_ifcommandnotdefined)
+        {
+          ELEMENT *e;
+          p += strspn (p, whitespace_chars);
+          if (*p == '@'
+              && !strncmp (p + 1, command_name(current->cmd),
+                           strlen (command_name(current->cmd))))
+            {
+              e = new_element (ET_NONE);
+              e->cmd = current->cmd;
+              add_to_element_contents (current, e);
+              current = e;
+              retval = GET_A_NEW_LINE;
+              goto funexit;
+            }
+        }
+
+      /* Else check if line is "@end ..." for current command. */
+      if (is_end_current_command (current, &line, &end_cmd))
+        {
+          char *tmp = 0;
+          ELEMENT *popped;
+
+          /* check whitespaces at the beginning of the line */
+          if (strchr (whitespace_chars, *p))
+            {
+              line_warn ("@end %s should only appear at the "
+                         "beginning of a line", command_name(end_cmd));
+            }
+
+          current = current->parent;
+
+          /* Remove an ignored block. */
+          popped = pop_element_from_contents (current);
+          if (popped->cmd != end_cmd)
+            fatal ("command mismatch for ignored block");
+
+          /* 'line' is now advanced past the "@end ...".  Check if
+             there's anything after it. */
+          p = line + strspn (line, whitespace_chars);
+          if (*p && *p != '@')
+            goto superfluous_arg;
+          if (*p)
+            {
+              p++;
+              tmp = read_command_name (&p);
+              if (tmp && (!strcmp (tmp, "c") || !strcmp (tmp, "comment")))
+                {
+                }
+              else if (*p && p[strspn (p, whitespace_chars)])
+                {
+superfluous_arg:
+                  line_warn ("superfluous argument to @end %s: %s",
+                             command_name(end_cmd), line);
+                }
+              free (tmp);
+            }
+
+          /* Ignore until end of line */
+          if (!strchr (line, '\n'))
+            {
+              line = new_line ();
+              debug ("IGNORE CLOSE LINE");
+            }
+          destroy_element_and_children (popped);
+
+          debug ("CLOSED conditional %s", command_name(end_cmd));
+        }
+      /* anything remaining on the line and any other line is ignored here */
+      retval = GET_A_NEW_LINE;
+      goto funexit;
+    } /********* (ignored) BLOCK_conditional *************/
 
   /* Check if parent element is 'verb' */
   else if (current->parent && current->parent->cmd == CM_verb)
@@ -1294,6 +1343,42 @@ superfluous_arg:
           retval = GET_A_NEW_LINE; goto funexit;  /* Get next line. */
         }
     } /* CM_verb */
+  else if (command_flags(current) & CF_block
+           && command_data(current->cmd).data == BLOCK_format_raw
+           && !format_expanded_p (command_name(current->cmd)))
+    {
+      ELEMENT *e;
+      enum command_id dummy;
+      char *line_dummy;
+      int n;
+
+      e = new_element (ET_elided_block);
+      add_to_element_contents (current, e);
+      line_dummy = line;
+      while (!is_end_current_command (current, &line_dummy,
+                                      &dummy))
+        {
+          line = new_line ();
+          if (!line)
+            {
+              line = "";
+              break;
+            }
+          line_dummy = line;
+        }
+
+      /* start a new line for the @end line, this is normally done
+         at the beginning of a line, but not here, as we directly
+         got the lines. */
+      e = new_element (ET_empty_line);
+      add_to_element_contents (current, e);
+
+      n = strspn (line, whitespace_chars_except_newline);
+      text_append_n (&e->text, line, n);
+      line += n;
+      /* It is important to let the processing continue from here, such that
+         the @end is catched and handled below, as the condition has not changed */
+    } /* ignored raw format */
 
   /* Skip empty lines.  If we reach the end of input, continue in case there
      is an @include. */
@@ -1339,30 +1424,18 @@ superfluous_arg:
         }
       else
         {
-          char *command = read_command_name (&line_after_command);
+          command = read_command_name (&line_after_command);
 
           cmd = 0;
           if (command)
             {
-              ELEMENT *paragraph;
-
               cmd = lookup_command (command);
-              if (!cmd)
+              /* known command */
+              if (cmd)
                 {
-                  line_error ("unknown command `%s'", command);
-                  debug ("COMMAND (UNKNOWN) %s", command);
                   free (command);
-
-                  abort_empty_line (&current, 0);
-                  paragraph = begin_paragraph (current);
-                  if (paragraph)
-                    current = paragraph;
-
-                  line = line_after_command;
-                  retval = STILL_MORE_TO_PROCESS;
-                  goto funexit;
                 }
-              free (command);
+              /* command holds the unknown command name if !cmd && command */
             }
           else
             {
@@ -1374,7 +1447,7 @@ superfluous_arg:
         cmd = command_data(cmd).data;
     }
 
-  /* Handle user-defined macros before anything else because their expansion 
+  /* Handle user-defined macros before anything else because their expansion
      may lead to changes in the line. */
   if (cmd && (command_data(cmd).flags & CF_MACRO))
     {
@@ -1384,112 +1457,188 @@ superfluous_arg:
       free (allocated_line);
       allocated_line = next_text ();
       line = allocated_line;
+      retval = STILL_MORE_TO_PROCESS;
+      goto funexit;
+    }
+  /* expand value if it actually expands and changes the line.  It is
+     considered again together with other commands below for all the other cases
+     which may need a well formed tree, which is not needed nor available here,
+     and early value expansion may be needed to provide with an argument. */
+  else if (cmd == CM_value)
+    {
+      char *expanded_line = line_after_command;
+      if (conf.ignore_space_after_braced_command_name)
+        expanded_line += strspn (expanded_line, whitespace_chars);
+      if (*expanded_line == '{')
+        {
+          char *flag;
+
+          expanded_line++;
+          flag = read_flag_name (&expanded_line);
+          if (flag)
+            {
+              if (*expanded_line == '}')
+                {
+                  char *value;
+                  value = fetch_value (flag);
+
+                  if (value)
+                    {
+                      expanded_line++; /* past '}' */
+                      input_push_text (strdup (expanded_line), current_source_info.macro);
+                      input_push_text (strdup (value), current_source_info.macro);
+
+                      /* Move 'line' to end of string so next input to
+                         be processed is taken from input stack. */
+                      line = expanded_line + strlen (expanded_line);
+                      retval = STILL_MORE_TO_PROCESS;
+                    }
+                  free (flag);
+                  if (value)
+                    goto funexit;
+                }
+            }
+        }
     }
 
-  /* Cases that may "lead to command closing": brace commands that don't 
-     need a brace: accent commands.
-     @definfoenclose. */
-  /* This condition is only checked immediately after the command opening, 
-     otherwise the current element is in the 'args' and not right in the 
-     command container. */
-  else if (command_flags(current) & CF_brace && *line != '{')
-    {
-      if (command_with_command_as_argument (current->parent))
-        {
-          debug ("FOR PARENT @%s command_as_argument @%s",
-                 command_name(current->parent->parent->cmd),
-                 command_name(current->cmd));
-          if (!current->type)
-            current->type = ET_command_as_argument;
-          add_extra_element (current->parent->parent, 
-                                 "command_as_argument", current);
-          current = current->parent;
-        }
-      else if (command_flags(current) & CF_accent)
-        {
-          if (strchr (whitespace_chars_except_newline, *line))
-            {
-              if (isalpha (command_name(current->cmd)[0]))
-              /* e.g. @dotaccent */
-                {
-                  char *p; char *s;
-                  KEY_PAIR *k;
-                  p = line + strspn (line, whitespace_chars_except_newline);
-                  k = lookup_extra (current, "spaces");
-                  if (!k)
-                    {
-                      asprintf (&s, "%.*s", (int) (p - line), line);
-                      add_extra_string (current, "spaces", s);
-                    }
-                  else
-                    {
-                      asprintf (&s, "%s%.*s",
-                                (char *) k->value,
-                                (int) (p - line), p);
-                      free (k->value);
-                      k->value = (ELEMENT *) s;
-                    }
-                  line = p;
-                }
-              else
-                {
-                  line_warn ("accent command `@%s' must not be followed "
-                             "by whitespace", command_name(current->cmd));
-                  current = current->parent;
-                }
-            }
-          else if (*line == '@')
-            {
-              line_error ("use braces to give a command as an argument "
-                          "to @%s", command_name(current->cmd));
-              current = current->parent;
-            }
-          else if (*line != '\0' && *line != '\n' && *line != '\r')
-            {
-              ELEMENT *e, *e2;
-              debug ("ACCENT");
-              e = new_element (ET_following_arg);
-              add_to_element_args (current, e);
-              e2 = new_element (ET_NONE);
-              text_append_n (&e2->text, line, 1);
-              add_to_element_contents (e, e2);
+  /* special case for @-command as argument of @itemize or @*table.
+     The normal case for those are to be identifier only, not a true command
+     with argument, so can be followed by anything.  If followed by
+     braces, will be handled as a normal brace command.
 
-              if (current->cmd == CM_dotless
-                  && *line != 'i' && *line != 'j')
-                {
-                  line_error ("@dotless expects `i' or `j' as argument, "
-                              "not `%c'", *line);
-                }
-              if (isalpha (command_name(current->cmd)[0]))
-                e->type = ET_space_command_arg;
-              while (current->contents.number > 0)
-                destroy_element (pop_element_from_contents (current));
-              line++;
-              current = current->parent;
-            }
-          else
+     Need to be done as early as possible such that no other condition
+     prevail and lead to a missed command */
+  if (command_flags(current) & CF_brace && *line != '{'
+      && parent_of_command_as_argument (current->parent))
+    {
+      register_command_as_argument (current);
+      current = current->parent;
+    }
+
+  /* command but before an opening brace, otherwise current
+     would be an argument type and not the command, and a new
+     @-command was found.  This means that the current->cmd
+     argument (an opening brace, or a character after spaces for
+     accent commands) was not found and there is already a new command.
+
+     It would have been nice to allow for comments, but there is no
+     container in the tree to put them when after command and before brace
+     or argument for accent commands. */
+
+  if (command_flags(current) & CF_brace && (cmd || command))
+    {
+      line_error ("@%s expected braces",
+                  command_name(current->cmd));
+      current = current->parent;
+    }
+
+  /* Handle unknown command. */
+  if (!cmd && command)
+    {
+      ELEMENT *paragraph;
+
+      line_error ("unknown command `%s'", command);
+      debug ("COMMAND (UNKNOWN) %s", command);
+      free (command);
+      abort_empty_line (&current, 0);
+      paragraph = begin_paragraph (current);
+      if (paragraph)
+        current = paragraph;
+
+      line = line_after_command;
+      retval = STILL_MORE_TO_PROCESS;
+      goto funexit;
+    }
+   
+  /* Brace commands not followed immediately by a brace
+     opening.  In particular cases that may lead to "command closing"
+     or following character association with an @-command, for accent
+     commands */
+  /* This condition can only happen immediately after the command opening,
+     otherwise the current element is in the 'args' and not right in the
+     command container. */
+  if (command_flags(current) & CF_brace && *line != '{')
+    {
+      if (strchr (whitespace_chars, *line)
+               && ((command_flags(current) & CF_accent)
+                   || conf.ignore_space_after_braced_command_name))
+        {
+           char *p; char *s;
+           int whitespaces_len;
+           int additional_newline = 0;
+           KEY_PAIR *k;
+           whitespaces_len = strspn (line, whitespace_chars);
+
+           for (int i = 0; i < whitespaces_len; i++)
+             {
+               if (*(line + i) == '\n')
+                 {
+                   line_warn ("command `@%s' must not be followed by new line",
+                              command_name(current->cmd));
+                   additional_newline = 1;
+                   break;
+                 }
+             }
+
+           k = lookup_extra (current, "spaces");
+           if (!k)
+             {
+               p = line + whitespaces_len;
+               xasprintf (&s, "%.*s", (int) (p - line), line);
+               add_extra_string (current, "spaces", s);
+               line = p;
+             }
+           else
+             {
+            /* only ignore spaces and one newline, two newlines lead to
+               an empty line before the brace or argument which is incorrect. */
+               char *previous_value = (char *) k->value;
+               if (additional_newline && strchr ("\n", *previous_value))
+                 {
+                   line_error ("@%s expected braces",
+                               command_name(current->cmd));
+                   current = current->parent;
+                 }
+               else
+                 {
+                   p = line + whitespaces_len;
+                   xasprintf (&s, "%s%.*s",
+                              previous_value,
+                             (int) (p - line), line);
+                   free (k->value);
+                   k->value = (ELEMENT *) s;
+                   line = p;
+                 }
+             }
+        }
+    /* special case for accent commands, use following character except @
+     * as argument */
+      else if ((command_flags(current) & CF_accent)
+               && *line != '\0' && *line != '@')
+        {
+          ELEMENT *e, *e2;
+          debug ("ACCENT");
+          e = new_element (ET_following_arg);
+          add_to_element_args (current, e);
+          e2 = new_element (ET_NONE);
+          text_append_n (&e2->text, line, 1);
+          add_to_element_contents (e, e2);
+
+          if (current->cmd == CM_dotless
+              && *line != 'i' && *line != 'j')
             {
-              debug ("STRANGE ACC");
-              line_warn ("accent command `@%s' must not be followed by "
-                         "new line", command_name(current->cmd));
-              current = current->parent;
+              line_error ("@dotless expects `i' or `j' as argument, "
+                          "not `%c'", *line);
             }
-          goto funexit;
+          while (current->contents.number > 0)
+            destroy_element (pop_element_from_contents (current));
+          line++;
+          current = current->parent;
         }
       else
         {
-          if (conf.ignore_space_after_braced_command_name)
-            {
-              char *p;
-              p = line + strspn (line, whitespace_chars);
-              if (p != line)
-                {
-                  line = p;
-                  goto funexit;
-                }
-            }
           line_error ("@%s expected braces",
-                       command_name(current->cmd));
+                      command_name(current->cmd));
           current = current->parent;
         }
     }
@@ -1505,12 +1654,13 @@ superfluous_arg:
       line = line_after_command;
       debug ("COMMAND %s", command_name(cmd));
 
-      /* @value */
-      if (cmd == CM_value)
+      /* @value not expanded (expansion is done above), and @txiinternalvalue */
+      if ((cmd == CM_value) || (cmd == CM_txiinternalvalue))
         {
           char *arg_start;
           char *flag;
-          line += strspn (line, whitespace_chars);
+          if (conf.ignore_space_after_braced_command_name)
+            line += strspn (line, whitespace_chars);
           if (*line != '{')
             goto value_invalid;
 
@@ -1530,51 +1680,64 @@ superfluous_arg:
             {
               char *value;
 value_valid:
-              value = fetch_value (flag);
-              if (!value)
+              if (cmd == CM_value)
                 {
-                  /* Add element for unexpanded @value.
-                     This is not necessarily an error - in
-                     Texinfo::Report::gdt we deliberately pass
-                     in undefined values. */
-                  ELEMENT *value_elt;
+                  value = fetch_value (flag);
+                  if (!value)
+                    {
+                    /* Add element for unexpanded @value.
+                       This should be an error, but still leave a tree element 
+                       for the converters to handle */
+                      ELEMENT *value_elt;
 
-                  line_warn ("undefined flag: %s", flag);
-                  /* Note: In the Perl code, this warning is conditional on 
-                     in_gdt setting, but the only effect that this possibly has 
-                     is on speed, as these warnings would not be printed to the 
-                     user. */
+                      line_warn ("undefined flag: %s", flag);
 
-                  abort_empty_line (&current, NULL);
-                  value_elt = new_element (ET_NONE);
-                  value_elt->cmd = CM_value;
-                  text_append (&value_elt->text, flag);
+                      abort_empty_line (&current, NULL);
+                      value_elt = new_element (ET_NONE);
+                      value_elt->cmd = CM_value;
+                      add_extra_string_dup (value_elt, "flag", flag);
 
-                  /* In the Perl code, the name of the flag is stored in
-                     the "type" field.  We need to store in 'text' instead
-                     and then output it as the type in
-                     dump_perl.c / api.c. */
+                      add_to_element_contents (current, value_elt);
 
-                  add_to_element_contents (current, value_elt);
-
-                  line++; /* past '}' */
-                  retval = STILL_MORE_TO_PROCESS;
+                      line++; /* past '}' */
+                      retval = STILL_MORE_TO_PROCESS;
+                    }
+                   /* expansion of value already done above
+                  else
+                    {
+                      value is set
+                    }
+                    */
+                  free (flag);
+                  goto funexit;
                 }
               else
-                {
+                { /* CM_txiinternalvalue */
+                  ELEMENT *txiinternalvalue_elt, *txiinternalvalue_arg;
+
+                  abort_empty_line (&current, NULL);
+                  txiinternalvalue_elt = new_element (ET_NONE);
+                  txiinternalvalue_elt->cmd = CM_txiinternalvalue;
+
+                  /* FIXME or ET_misc_arg? */
+                  txiinternalvalue_arg = new_element (ET_NONE);
+
+                  text_append (&txiinternalvalue_arg->text, flag);
+                  add_to_element_args (txiinternalvalue_elt, txiinternalvalue_arg);
+
+                  add_to_element_contents (current, txiinternalvalue_elt);
+
                   line++; /* past '}' */
-                  input_push_text (strdup (line), line_nr.macro);
-                  input_push_text (strdup (value), line_nr.macro);
-                  line += strlen (line);
                   retval = STILL_MORE_TO_PROCESS;
+
+                  free (flag);
+                  goto funexit;
                 }
-              free (flag);
-              goto funexit;
             }
           else
             {
 value_invalid:
-              line_error ("bad syntax for @value");
+              line_error ("bad syntax for @%s", command_name(cmd));
               retval = STILL_MORE_TO_PROCESS;
               goto funexit;
             }
@@ -1591,7 +1754,7 @@ value_invalid:
               break;
             }
           if (!msg)
-            line_warn ("@%s is obsolete.", command_name(cmd));
+            line_warn ("@%s is obsolete", command_name(cmd));
           else
             line_warn ("@%s is obsolete; %s", command_name(cmd), msg);
           /* note: will have to translate msg if string translation with
@@ -1633,7 +1796,12 @@ value_invalid:
 
       /* check command doesn't start a paragraph */
       /* TODO store this in cmd->flags. */
-      if (!(command_data(cmd).flags & (CF_line | CF_other | CF_block)
+      if (!((command_data(cmd).flags & (CF_line | CF_block))
+            || (command_data(cmd).flags & CF_nobrace
+                && (command_data(cmd).data == NOBRACE_skipspace
+           /* FIXME NOBRACE_other should probably start a paragraph
+              except for refill */
+                    || command_data(cmd).data == NOBRACE_other))
             || cmd == CM_titlefont
             || cmd == CM_caption
             || cmd == CM_shortcaption
@@ -1652,7 +1820,7 @@ value_invalid:
 
       if (cmd)
         {
-          if (close_paragraph_command (cmd))
+          if (command_data(cmd).flags & CF_close_paragraph)
             current = end_paragraph (current, 0, 0);
           if (close_preformatted_command (cmd))
             current = end_preformatted (current, 0, 0);
@@ -1663,16 +1831,33 @@ value_invalid:
            || cmd == CM_seealso
            || cmd == CM_subentry)
           && current->contents.number > 0
-          && last_contents_child(current)->text.end > 0)
+          && last_contents_child(current)->text.end > 0
+       /* it is important to check if in an index command, as otherwise
+          the internal space type is not processed and remains as is in
+          the final tree. */
+          && (command_flags(current->parent) & CF_index_entry_command
+               || current->parent->cmd == CM_subentry))
         {
-          isolate_trailing_space (current, ET_empty_spaces_before_argument);
+          if (cmd == CM_subentry)
+            {
+              isolate_trailing_space (current, ET_spaces_at_end);
+            }
+          else
+           /* an internal and temporary space type that is converted to
+              a normal space without type if followed by text or a
+              "spaces_at_end" if followed by spaces only when the
+              index or subentry command is done. */
+            {
+              isolate_trailing_space (current, ET_internal_spaces_before_brace_in_index);
+            }
         }
 
       if (cmd == CM_item && item_line_parent (current))
         cmd = CM_item_LINE;
       /* We could possibly have done this before check_valid_nesting. */
 
-      if (command_data(cmd).flags & CF_other)
+      /* No-brace command */
+      if (command_data(cmd).flags & CF_nobrace)
         {
           int status;
           current = handle_other_command (current, &line, cmd, &status);
@@ -1707,26 +1892,6 @@ value_invalid:
       else if (command_data(cmd).flags & (CF_brace | CF_accent))
         {
           current = handle_brace_command (current, &line, cmd);
-        }
-      /* No-brace command */
-      else if (command_data(cmd).flags & CF_nobrace)
-        {
-          ELEMENT *nobrace;
-
-          nobrace = new_element (ET_NONE);
-          nobrace->cmd = cmd;
-          add_to_element_contents (current, nobrace);
-
-          if (cmd == CM_BACKSLASH && current_context () != ct_math)
-            {
-              line_warn ("@\\ should only appear in math context");
-            }
-          if (cmd == CM_NEWLINE)
-            {
-              current = end_line (current);
-              retval = GET_A_NEW_LINE;
-              goto funexit;
-            }
         }
     }
   /* "Separator" character */
@@ -1811,8 +1976,8 @@ check_line_directive (char *line)
     return 0;
 
   /* Check input is coming directly from a file. */
-  if (!line_nr.file_name || !line_nr.file_name
-      || (line_nr.macro && *line_nr.macro))
+  if (!current_source_info.file_name || !current_source_info.file_name
+      || (current_source_info.macro && *current_source_info.macro))
     return 0;
 
   p += strspn (p, " \t");
@@ -1859,11 +2024,12 @@ check_line_directive (char *line)
   return 1;
 }
 
-/* Pass in and return root of a "Texinfo tree". */
+/* Pass in and return root of a "Texinfo tree".  Starting point for adding
+   to the tree is current_elt */
 ELEMENT *
-parse_texi (ELEMENT *root_elt)
+parse_texi (ELEMENT *root_elt, ELEMENT *current_elt)
 {
-  ELEMENT *current = root_elt;
+  ELEMENT *current = current_elt;
   static char *allocated_line;
   char *line;
 
@@ -1877,13 +2043,16 @@ parse_texi (ELEMENT *root_elt)
 
       debug_nonl ("NEW LINE %s", line);
 
-      /* If not in 'raw' or 'conditional' and parent isn't a 'verb', collect
+      /* If not in 'raw' or 'conditional' and parent isn't a 'verb',
+         and not an ignored raw format, collect
          leading whitespace and save as an "ET_empty_line" element.  This
          element type can be changed in 'abort_empty_line' when more text is
          read. */
-      if (!((command_flags(current) & CF_block)
-             && (command_data(current->cmd).data == BLOCK_raw
-                 || command_data(current->cmd).data == BLOCK_conditional)
+      if (!(((command_flags(current) & CF_block)
+             && ((command_data(current->cmd).data == BLOCK_raw
+                  || command_data(current->cmd).data == BLOCK_conditional)
+                 || (command_data(current->cmd).data == BLOCK_format_raw
+                     && !format_expanded_p (command_name(current->cmd)))))
             || current->parent && current->parent->cmd == CM_verb)
           && current_context () != ct_def)
         {
@@ -1897,7 +2066,7 @@ parse_texi (ELEMENT *root_elt)
 
           if (current->contents.number > 0
               && last_contents_child(current)->type
-                 == ET_empty_spaces_before_argument)
+                 == ET_internal_spaces_before_argument)
             {
               /* Remove this element and update 'extra' values. */
               abort_empty_line (&current, 0);
@@ -1921,7 +2090,10 @@ parse_texi (ELEMENT *root_elt)
           if (status == FINISHED_TOTALLY)
             goto finished_totally;
           if (!line)
-            break;
+            {
+              current = end_line (current);
+              break;
+            }
         }
     }
 finished_totally:

@@ -1,6 +1,6 @@
 /* session.c -- user windowing interface to Info.
 
-   Copyright 1993-2021 Free Software Foundation, Inc.
+   Copyright 1993-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 #include "info.h"
 #include "display.h"
 #include "session.h"
+#include "util.h"
 #include "echo-area.h"
 #include "search.h"
 #include "footnotes.h"
@@ -2211,7 +2212,7 @@ menu_digit (WINDOW *window, int key)
   return;
 has_menu:
 
-  if (entry = select_menu_digit (window, key))
+  if ((entry = select_menu_digit (window, key)))
     info_select_reference (window, entry);
   else if (key == '0')
     /* Don't print "There aren't 0 items in this menu" */
@@ -2764,7 +2765,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
           if (error)
             {
               free (*error);
-              asprintf (error, _("No menu in node '%s'"),
+              xasprintf (error, _("No menu in node '%s'"),
                         node_printed_rep (initial_node));
             }
           debug (3, ("no menu found"));
@@ -2786,7 +2787,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
           if (error)
             {
               free (*error);
-              asprintf (error, _("No menu item '%s' in node '%s'"),
+              xasprintf (error, _("No menu item '%s' in node '%s'"),
                         arg, node_printed_rep (initial_node));
             }
           debug (3, ("no entry found"));
@@ -2810,7 +2811,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
 	  if (error)
             {
               free (*error);
-              asprintf (error,
+              xasprintf (error,
                         _("Unable to find node referenced by '%s' in '%s'"),
                         entry->label,
                         node_printed_rep (initial_node));
@@ -3092,7 +3093,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
           {
             REFERENCE *entry;
 
-            if (entry = select_menu_digit (window, '1'))
+            if ((entry = select_menu_digit (window, '1')))
               {
                 info_select_reference (window, entry);
                 return 0;
@@ -3391,8 +3392,8 @@ find_invocation_node_by_nodename (FILE_BUFFER *fb, char *program)
   if (!n)
     return 0;
 
-  asprintf (&try1, "Invoking %s", program);
-  asprintf (&try2, "%s invocation", program);
+  xasprintf (&try1, "Invoking %s", program);
+  xasprintf (&try2, "%s invocation", program);
   for (; *n; n++)
     {
       if ((*n)->nodename
@@ -3631,7 +3632,7 @@ DECLARE_INFO_COMMAND (info_display_file_info,
 {
   if (window->node->fullpath && *window->node->fullpath)
     {
-      int line = window_line_of_point (window);
+      int line = window_line_of_point (window) + 1;
       window_message_in_echo_area ("File name: %s, line %d of %ld (%ld%%)",
                                    window->node->subfile
                                    ? window->node->subfile
@@ -3689,6 +3690,39 @@ DECLARE_INFO_COMMAND (info_view_file, _("Read the name of a file and select it")
 /*                                                                  */
 /* **************************************************************** */
 
+struct info_namelist_entry
+{
+  struct info_namelist_entry *next;
+  char name[1];
+};
+
+static int
+info_namelist_add (struct info_namelist_entry **ptop, const char *name)
+{
+  struct info_namelist_entry *p;
+
+  for (p = *ptop; p; p = p->next)
+    if (fncmp (p->name, name) == 0)
+      return 1;
+
+  p = xmalloc (sizeof (*p) + strlen (name));
+  strcpy (p->name, name);
+  p->next = *ptop;
+  *ptop = p;
+  return 0;
+}
+
+static void
+info_namelist_free (struct info_namelist_entry *top)
+{
+  while (top)
+    {
+      struct info_namelist_entry *next = top->next;
+      free (top);
+      top = next;
+    }
+}
+
 enum
   {
     DUMP_SUCCESS,
@@ -3696,8 +3730,8 @@ enum
     DUMP_SYS_ERROR
   };
 
-static int dump_node_to_stream (char *filename, char *nodename,
-				FILE *stream, int dump_subnodes);
+static int dump_node_to_stream (FILE_BUFFER *file_buffer,
+                          char *nodename, FILE *stream, int dump_subnodes);
 static void initialize_dumping (void);
 
 /* Dump the nodes specified with REFERENCES to the file named
@@ -3731,10 +3765,22 @@ dump_nodes_to_file (REFERENCE **references,
   /* Print each node to stream. */
   for (i = 0; references[i]; i++)
     {
-      if (dump_node_to_stream (references[i]->filename,
-                               references[i]->nodename,
-                               output_stream,
-                               dump_subnodes) == DUMP_SYS_ERROR)
+      FILE_BUFFER *file_buffer;
+      char *nodename;
+
+      file_buffer = info_find_file (references[i]->filename);
+      if (!file_buffer)
+        {
+          if (info_recent_file_error)
+            info_error ("%s", info_recent_file_error);
+          continue;
+        }
+      if (references[i]->nodename && *references[i]->nodename)
+        nodename = references[i]->nodename;
+      else
+        nodename = "Top";
+      if (dump_node_to_stream (file_buffer, nodename,
+                               output_stream, dump_subnodes) == DUMP_SYS_ERROR)
 	{
 	  info_error (_("error writing to %s: %s"), output_filename,
                       strerror (errno));
@@ -3762,34 +3808,25 @@ initialize_dumping (void)
    If DUMP_SUBNODES is non-zero, recursively dump the nodes which appear
    in the menu of each node dumped. */
 static int
-dump_node_to_stream (char *filename, char *nodename,
+dump_node_to_stream (FILE_BUFFER *file_buffer,
+                     char *nodename,
 		     FILE *stream, int dump_subnodes)
 {
   register int i;
   NODE *node;
 
-  node = info_get_node (filename, nodename);
+  node = info_get_node_of_file_buffer (file_buffer, nodename);
 
   if (!node)
     {
-      if (info_recent_file_error)
-        info_error ("%s", info_recent_file_error);
-      else
-        {
-          if (filename && *nodename != '(')
-            info_error (msg_cant_file_node,
-                        filename_non_directory (filename),
-                        nodename);
-          else
-            info_error (msg_cant_find_node, nodename);
-        }
+      info_error (msg_cant_find_node, nodename);
       return DUMP_INFO_ERROR;
     }
 
   /* If we have already dumped this node, don't dump it again. */
   if (info_namelist_add (&dumped_already, node->nodename))
     {
-      free_history_node (node);
+      free (node);
       return DUMP_SUCCESS;
     }
 
@@ -3798,7 +3835,7 @@ dump_node_to_stream (char *filename, char *nodename,
 
   if (write_node_to_stream (node, stream))
     {
-      free_history_node (node);
+      free (node);
       return DUMP_SYS_ERROR;
     }
 
@@ -3821,17 +3858,17 @@ dump_node_to_stream (char *filename, char *nodename,
               /* We don't dump Info files which are different than the
                  current one. */
               if (!menu[i]->filename)
-                if (dump_node_to_stream (filename, menu[i]->nodename,
+                if (dump_node_to_stream (file_buffer, menu[i]->nodename,
                       stream, dump_subnodes) == DUMP_SYS_ERROR)
                   {
-                    free_history_node (node);
+                    free (node);
                     return DUMP_SYS_ERROR;
                   }
             }
         }
     }
 
-  free_history_node (node);
+  free (node);
   return DUMP_SUCCESS;
 }
 
@@ -4201,13 +4238,13 @@ ask_for_search_string (int case_sensitive, int use_regex, int direction)
   char *line, *prompt;
 
   if (search_string)
-    asprintf (&prompt, _("%s%s%s [%s]: "),
+    xasprintf (&prompt, _("%s%s%s [%s]: "),
              use_regex ? _("Regexp search") : _("Search"),
              case_sensitive ? _(" case-sensitively") : "",
              direction < 0 ? _(" backward") : "",
              search_string);
   else
-    asprintf (&prompt, _("%s%s%s: "),
+    xasprintf (&prompt, _("%s%s%s: "),
              use_regex ? _("Regexp search") : _("Search"),
              case_sensitive ? _(" case-sensitively") : "",
              direction < 0 ? _(" backward") : "");
@@ -4597,7 +4634,7 @@ DECLARE_INFO_COMMAND (info_tree_search,
 
   /* TODO: Display manual name */
   /* TRANSLATORS: %s is the title of a node. */
-  asprintf (&prompt, _("Search under %s: "),
+  xasprintf (&prompt, _("Search under %s: "),
             window->node->nodename);
   line = info_read_in_echo_area (prompt); free (prompt);
   if (!line)

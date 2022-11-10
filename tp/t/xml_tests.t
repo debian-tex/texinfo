@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -53,6 +53,12 @@ AA @image{in_table_def_para}
 
 T@footnote{
 @image{in_footnote}
+}
+
+U@footnote{
+Some t
+@image{in text in_footnote}
+
 }
 
 @float F,g
@@ -206,7 +212,7 @@ Para
 <in />
 @end xml
 ',
-{'expanded_formats' => ['tex', 'xml']}
+{'EXPANDED_FORMATS' => ['tex', 'xml']}
 ],
 ['raw_and_comments',
 '@tex  @c comment
@@ -218,7 +224,7 @@ Para
 <in />
 @end xml  @comment end xml comment
 ',
-{'expanded_formats' => ['tex', 'xml']}
+{'EXPANDED_FORMATS' => ['tex', 'xml']}
 ],
 ['node_no_section',
 '@node Top
@@ -299,7 +305,7 @@ T
 @end deffn
 
 ',
-{'expanded_formats' => ['tex'] }
+{'EXPANDED_FORMATS' => ['tex'] }
 ],
 ['spaces_info_lost',
 '@display  text on display line 
@@ -343,10 +349,4 @@ foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['xml'];
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('xml_tests', [@test_cases], $arg_test_case,
-   $arg_generate, $arg_debug);
-
-1;
-
+run_all('xml_tests', [@test_cases]);

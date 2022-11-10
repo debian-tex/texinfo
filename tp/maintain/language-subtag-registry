@@ -1,4 +1,4 @@
-File-Date: 2021-05-11
+File-Date: 2021-12-29
 %%
 Type: language
 Subtag: aa
@@ -44793,6 +44793,11 @@ Description: Katakana
 Added: 2005-10-16
 %%
 Type: script
+Subtag: Kawi
+Description: Kawi
+Added: 2021-12-24
+%%
+Type: script
 Subtag: Khar
 Description: Kharoshthi
 Added: 2005-10-16
@@ -45010,6 +45015,11 @@ Subtag: Mymr
 Description: Myanmar
 Description: Burmese
 Added: 2005-10-16
+%%
+Type: script
+Subtag: Nagm
+Description: Nag Mundari
+Added: 2021-12-24
 %%
 Type: script
 Subtag: Nand
@@ -45288,6 +45298,11 @@ Type: script
 Subtag: Sund
 Description: Sundanese
 Added: 2006-07-21
+%%
+Type: script
+Subtag: Sunu
+Description: Sunuwar
+Added: 2021-12-24
 %%
 Type: script
 Subtag: Sylo
@@ -47357,6 +47372,12 @@ Added: 2010-10-23
 Comments: Indicates that the content is transcribed according to X-SAMPA
 %%
 Type: variant
+Subtag: gallo
+Description: Gallo
+Added: 2021-08-05
+Prefix: fr
+%%
+Type: variant
 Subtag: gascon
 Description: Gascon
 Added: 2018-04-22
@@ -47777,6 +47798,13 @@ Added: 2010-06-29
 Prefix: rm
 Comments: Sutsilvan is one of the five traditional written standards or
   "idioms" of the Romansh language.
+%%
+Type: variant
+Subtag: synnejyl
+Description: Synnejysk
+Description: South Jutish
+Added: 2021-07-17
+Prefix: da
 %%
 Type: variant
 Subtag: tarask

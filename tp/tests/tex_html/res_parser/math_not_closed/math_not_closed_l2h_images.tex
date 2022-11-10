@@ -33,7 +33,6 @@
 \addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
 \addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
 \addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
-\setlength{\textwidth}{451pt}
 \setlength{\textheight}{554pt}
 \newwrite\lthtmlwrite
 \makeatletter
@@ -52,6 +51,7 @@
  \def\phantompar{\csname par\endcsname}\normalsize}%
 \def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
 \usepackage[tightpage,active]{preview}
+\PreviewBorder=0.5bp
 \newbox\lthtmlPageBox
 \newdimen\lthtmlCropMarkHeight
 \newdimen\lthtmlCropMarkDepth
@@ -64,10 +64,10 @@
     \lthtmltypeout{^^J:\lthtmllabel:lthtmlCropMarkDepth:=\the\lthtmlCropMarkDepth:1ex:=\the \dimexpr 1ex}%
     \begin{preview}\copy\lthtmlPageBox\end{preview}}%
 \long\def\lthtmlTightFBoxA#1{\def\lthtmllabel{#1}%
-    \adjustnormalsize\setbox\lthtmlPageBox=\vbox\bgroup %
+    \adjustnormalsize\setbox\lthtmlPageBox=\vbox\bgroup\hbox\bgroup %
     \let\ifinner=\iffalse \let\)\liih@math %
     \bgroup\catcode`\_=8 }%
-\long\def\lthtmlTightFBoxZ{\egroup
+\long\def\lthtmlTightFBoxZ{\egroup\egroup
     \@next\next\@currlist{}{\def\next{\voidb@x}}%
     \expandafter\box\next\egroup %
     \lthtmlCropMarkHeight=\ht\lthtmlPageBox \advance \lthtmlCropMarkHeight 6pt

@@ -1,6 +1,6 @@
 /* indices.c -- deal with an Info file index.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +18,8 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
-#include "info-utils.h"
+#include "scan.h"
+#include "util.h"
 #include "session.h"
 #include "echo-area.h"
 #include "indices.h"
@@ -32,7 +33,7 @@ int show_index_match = 1;
 static REFERENCE **index_index = NULL;
 
 /* The offset of the most recently selected index element. */
-static int index_offset = 0;
+static int index_offset = -1;
 
 /* Whether we are doing initial index search. */
 static int index_initial = 0;
@@ -263,7 +264,7 @@ DECLARE_INFO_COMMAND (info_index_search,
 
   /* If the search failed, return the index offset to where it belongs. */
   if (index_offset == old_offset)
-    index_offset = 0;
+    index_offset = -1;
 }
 
 /* Return true if ENT->label matches "S( <[0-9]+>)?", where S stands
@@ -338,7 +339,7 @@ next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
 
       if (i < 0 || !index_index[i])
 	{
-          offset = 0;
+          offset = -1;
           index_initial = 1;
 	}
     }
@@ -355,7 +356,7 @@ next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
 
       if (i < 0 || !index_index[i])
 	{
-          offset = 0;
+          offset = -1;
           index_initial = 0;
           index_partial = 1;
 	}
@@ -471,11 +472,11 @@ DECLARE_INFO_COMMAND (info_next_index_match,
   /* If that failed, print an error. */
   if (!result)
     {
-      info_error (index_offset > 0 ?
+      info_error (index_offset >= 0 ?
                   _("No more index entries containing '%s'") :
                   _("No index entries containing '%s'"),
                   index_search);
-      index_offset = 0;
+      index_offset = -1;
       return;
     }
 
@@ -651,9 +652,9 @@ DECLARE_INFO_COMMAND (info_index_apropos,
   struct text_buffer message;
 
   if (index_search)
-    asprintf (&prompt, "%s [%s]: ", _("Index apropos"), index_search);
+    xasprintf (&prompt, "%s [%s]: ", _("Index apropos"), index_search);
   else
-    asprintf (&prompt, "%s: ", _("Index apropos"));
+    xasprintf (&prompt, "%s: ", _("Index apropos"));
   line = info_read_in_echo_area (prompt);
   free (prompt);
 
@@ -824,7 +825,7 @@ create_virtual_index (FILE_BUFFER *file_buffer, char *index_search)
 
   cnt = 0;
 
-  index_offset = 0;
+  index_offset = -1;
   index_initial = 0;
   index_partial = 0;
   while (1)
@@ -849,7 +850,7 @@ create_virtual_index (FILE_BUFFER *file_buffer, char *index_search)
     }
 
   node = info_create_node ();
-  asprintf (&node->nodename, "Index for '%s'", index_search);
+  xasprintf (&node->nodename, "Index for '%s'", index_search);
   node->fullpath = file_buffer->filename;
   node->contents = text_buffer_base (&text);
   node->nodelen = text_buffer_off (&text) - 1;
@@ -886,9 +887,9 @@ DECLARE_INFO_COMMAND (info_virtual_index,
     
   /* Default to last search if there is one. */
   if (index_search)
-    asprintf (&prompt, "%s [%s]: ", _("Index topic"), index_search);
+    xasprintf (&prompt, "%s [%s]: ", _("Index topic"), index_search);
   else
-    asprintf (&prompt, "%s: ", _("Index topic"));
+    xasprintf (&prompt, "%s: ", _("Index topic"));
   line = info_read_maybe_completing (prompt, index_index);
   free (prompt);
 

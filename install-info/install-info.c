@@ -1,6 +1,6 @@
 /* install-info -- merge Info directory entries from an Info file.
 
-   Copyright 1996-2021 Free Software Foundation, Inc.
+   Copyright 1996-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -363,48 +363,6 @@ extract_menu_item_name (char *item_text)
   return copy_string (item_text, p - item_text);
 }
 
-/* Given the full text of a menu entry, terminated by null or newline,
-   return just the menu item file (copied).  */
-
-char *
-extract_menu_file_name (char *item_text)
-{
-  char *p = item_text;
-
-  /* If we have text that looks like * ITEM: (FILE)NODE...,
-     extract just FILE.  Otherwise return "(none)".  */
-
-  if (*p == '*')
-    p++;
-  while (*p == ' ')
-    p++;
-
-  /* Skip to and past the colon.  */
-  while (*p && *p != '\n' && *p != ':') p++;
-  if (*p == ':') p++;
-
-  /* Skip past the open-paren.  */
-  while (1)
-    {
-      if (*p == '(')
-        break;
-      else if (*p == ' ' || *p == '\t')
-        p++;
-      else
-        return "(none)";
-    }
-  p++;
-
-  item_text = p;
-
-  /* File name ends just before the close-paren.  */
-  while (*p && *p != '\n' && *p != ')') p++;
-  if (*p != ')')
-    return "(none)";
-
-  return copy_string (item_text, p - item_text);
-}
-
 
 
 /* Return FNAME with any [.info][.gz] suffix removed.  */
@@ -426,6 +384,11 @@ strip_info_suffix (char *fname)
       ret[len] = 0;
     }
   else if (len > 4 && FILENAME_CMP (ret + len - 4, ".bz2") == 0)
+    {
+      len -= 4;
+      ret[len] = 0;
+    }
+  else if (len > 4 && FILENAME_CMP (ret + len - 4, ".zst") == 0)
     {
       len -= 4;
       ret[len] = 0;
@@ -710,6 +673,12 @@ open_possibly_compressed_file (char *filename,
     {
       free (*opened_filename);
       *opened_filename = concat (filename, ".bz2", "");
+      f = fopen (*opened_filename, FOPEN_RBIN);
+    }
+  if (!f)
+    {
+      free (*opened_filename);
+      *opened_filename = concat (filename, ".zst", "");
       f = fopen (*opened_filename, FOPEN_RBIN);
     }
   if (!f)
@@ -1169,6 +1138,8 @@ parse_input (const struct line_data *lines, int nlines,
                   next->entry_sections = head;
                   next->entry_sections_tail = tail;
                   next->missing_basename = 0;
+                  next->missing_name = 0;
+                  next->missing_description = 0;
                   next->next = *entries;
                   *entries = next;
                   n_entries++;
@@ -1542,6 +1513,7 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
   if (offset_out)
     strncat (outstr, line_out, offset_out);
 
+  free (*outstr_out);
   *outstr_out = outstr;
   *outstr_len = strlen (outstr);
   return 1;
@@ -1657,7 +1629,6 @@ reformat_new_entries (struct spec_entry *entries, int calign_cli, int align_cli,
       char *name = NULL, *desc = NULL;
       size_t name_len = 0, desc_len = 0;
       split_entry (entry->text, &name, &name_len, &desc, &desc_len);
-      free (entry->text);
 
       /* Specify sane defaults if we need to */
       if (calign_cli == -1 || align_cli == -1)
@@ -2236,7 +2207,7 @@ main (int argc, char *argv[])
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-              "2021");
+              "2022");
           exit (EXIT_SUCCESS);
 
         case 'W':

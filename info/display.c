@@ -1,6 +1,6 @@
 /* display.c -- How to display Info windows.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 #include "info.h"
 #include "display.h"
 #include "session.h"
+#include "util.h"
 #include "tag.h"
 #include "signals.h"
 #include "variables.h"

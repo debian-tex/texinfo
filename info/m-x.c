@@ -1,6 +1,6 @@
 /* m-x.c -- Meta-x minibuffer reader.
 
-   Copyright 1993-2021 Free Software Foundation, Inc.
+   Copyright 1993-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -99,9 +99,9 @@ DECLARE_INFO_COMMAND (info_execute_command,
     abort();
 
   if (info_explicit_arg || count != 1)
-    asprintf (&prompt, "%d %s ", count, keys);
+    xasprintf (&prompt, "%d %s ", count, keys);
   else
-    asprintf (&prompt, "%s ", keys);
+    xasprintf (&prompt, "%s ", keys);
 
   /* Ask the completer to read a reference for us. */
   line = read_function_name (prompt, window);

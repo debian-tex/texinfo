@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -104,6 +104,14 @@ Horizontal space
 * a
 @end menu
 '],
+['empty_menu_description',
+'@node Top
+
+@menu
+* a:(f)b
+
+@end menu
+'],
 ['detailmenu',
 '
 @menu
@@ -196,6 +204,48 @@ Chap 2
 * unknown::
 @end detailmenu
 @end menu
+'],
+['missing_detailmenu_on_subnodes', # same as above, but without detailmenu
+                                   # such that subnode menu entries appear
+                                   # in the Top node menu
+'@node Top
+@top top
+
+@menu
+* chapter::
+* chapter 2::
+
+* section::
+
+Chap 2
+
+* section chap 2::
+* unnumberedsec::
+@end menu
+
+@node chapter
+@chapter chapter
+
+@menu
+* section::
+@end menu
+
+@node section
+@section section
+
+@node chapter 2
+@chapter chapter 2
+
+@menu
+* section chap 2::
+* unnumberedsec::
+@end menu
+
+@node section chap 2
+@section section chap 2
+
+@node unnumberedsec
+@unnumberedsec unnumberedsec
 '],
 ['reference_to_external_manual',
 '
@@ -391,6 +441,38 @@ in cartouche in menu comment in menu in example
 @end menu
 @end example
 '],
+['submenu_in_example',
+'@node Top
+
+@example
+
+in example
+
+@menu
+in submenu
+
+@menu
+@end menu
+
+@menu
+in submenu
+@end menu
+
+@menu
+@quotation
+A quot---ation in submenu
+@end quotation
+@end menu
+
+@subheading subheading in menu
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@end menu
+@end example
+'],
 ['menu_pointing_to_anchor',
 '@node Top
 @top top
@@ -402,7 +484,26 @@ Text
 @menu
 * An anchor::                menu entry pointing to the anchor.
 @end menu
-']
+'],
+['space_and_commands_in_menu_node',
+'@node Top
+@top top
+
+@menu
+* chap  b::
+* chap @: b::
+* chap b::
+* chap@ @ b::
+* chap@  b::
+* chap @ b::
+* label: chap @: b.
+* label: chap b.
+* label: chap @ @ b.
+@end menu
+
+@node chap @: b
+@chapter Chap
+'],
 );
 
 my @test_invalid = (
@@ -493,7 +594,4 @@ foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'xml';
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('menu', [@test_cases, @test_invalid], $arg_test_case,
-   $arg_generate, $arg_debug);
+run_all('menu', [@test_cases, @test_invalid]);

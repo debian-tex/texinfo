@@ -10,7 +10,7 @@
 . ./defs || exit 1
 
 # test of --defsection, when its value is not used.
-testnum=0055
+testnum=0056
 
 outputdirfile=`mktemp ii$testnum-XXXXXXXX`
 cp ${testdir}/ii-$testnum-input-dir-file $outputdirfile || exit 1
@@ -21,7 +21,7 @@ ${install_info} \
   ${testdir}/ii-$testnum-input-info-file $outputdirfile \
 || exit $?
 
-diff ${testdir}/ii-$testnum-expected-dir-file $outputdirfile
+${diff} ${testdir}/ii-$testnum-expected-dir-file $outputdirfile
 retval=$?
 
 rm -f $outputdirfile

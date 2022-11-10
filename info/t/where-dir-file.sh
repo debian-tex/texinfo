@@ -19,5 +19,5 @@ srcdir=${srcdir:-.}
 
 # Follow a reference to file1 in dir and print location
 $ginfo --where file1 \
-  | grep 't/infodir/file1.info$'
+  | grep 't/infodir/file1.info'
 

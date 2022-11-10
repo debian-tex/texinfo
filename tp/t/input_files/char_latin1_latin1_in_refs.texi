@@ -1,13 +1,11 @@
 \input texinfo
 
-@setfilename char_latin1_utf8_in_refs.info
+@setfilename char_latin1_latin1_in_refs.info
 
 @documentencoding iso-8859-1
 
 @node Top
 @top top
-
-@printindex cp
 
 @menu
 * ä ë ï ö ü ÿ Ä Ë Ï Ö Ü::
@@ -19,6 +17,8 @@
 
 @node ä ë ï ö ü ÿ Ä Ë Ï Ö Ü
 @chapter ä ë ï ö ü ÿ Ä Ë Ï Ö Ü
+
+@printindex cp
 
 @node é
 @chapter é

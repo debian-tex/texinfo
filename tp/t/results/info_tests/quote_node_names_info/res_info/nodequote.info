@@ -1,0 +1,89 @@
+This is nodequote.info, produced from nodequote.texi.
+
+
+File: nodequote.info,  Node: Top,  Next: blah:blah,  Up: (dir)
+
+*Note the::caption and a word: normal node. *Note the::caption: normal
+node.
+
+   *Note the::caption and a word: blah:blah. *Note the::caption:
+blah:blah.
+
+   *Note the::caption and a word: blumpty.fump. *Note the::caption:
+blumpty.fump.mrmrmrmmrmrmr
+
+   *Note blah:blah::.
+
+   *Note secret,node::.
+
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA *Note
+blah:blah::.)
+
+   *Note (man_ual)x:y::z::.
+
+   *Note (man_ual)x.y.z::.
+
+   *Note label: (man_ual)pp:qq::rr.
+
+   *Note label: (man_ual)pp:qq.rr.
+
+   *Note label: (man:u.al)ext.
+
+   *Note label: (man:u.al)e:x.t.
+
+   *Note la:bel: (man:u.al)ext.
+
+* Menu:
+
+* blah:blah::
+* the topic:blumpty.fump.
+* normal node::
+* funny:label:secret,node.
+* (man:u.al)ext::
+
+
+File: nodequote.info,  Node: blah:blah,  Next: blumpty.fump,  Prev: Top,  Up: Top
+
+1 blah:blah
+***********
+
+stuff here.
+
+
+File: nodequote.info,  Node: blumpty.fump,  Next: normal node,  Prev: blah:blah,  Up: Top
+
+2 blumpty.fump
+**************
+
+
+File: nodequote.info,  Node: normal node,  Next: (man,u:a.l)direction,  Prev: (man_ual)direct,ion,  Up: (man_ual)direct::i.on
+
+3 normal node
+*************
+
+
+File: nodequote.info,  Node: secret,node,  Prev: normal node,  Up: Top
+
+4 secret,node
+*************
+
+
+File: nodequote.info,  Node: top secret node
+
+stuff here.
+
+
+Tag Table:
+Node: Top55
+Node: blah:blah863
+Node: blumpty.fump986
+Node: normal node1110
+Node: secret,node1270
+Node: top secret node1375
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

@@ -1,214 +1,179 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'enumerate_in_example'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'example',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
           'text' => '
 ',
-          'type' => 'empty_line_after_command'
+          'type' => 'empty_line'
         },
         {
-          'cmdname' => 'enumerate',
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'example',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'cmdname' => 'item',
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'enumerate',
               'contents' => [
                 {
+                  'cmdname' => 'item',
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'first item
+                      'contents' => [
+                        {
+                          'text' => ' ',
+                          'type' => 'ignorable_spaces_after_command'
+                        },
+                        {
+                          'text' => 'first item
 '
+                        }
+                      ],
+                      'type' => 'preformatted'
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'preformatted'
+                  'extra' => {
+                    'item_number' => 1
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 4,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'cmdname' => 'item',
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => ' ',
+                          'type' => 'ignorable_spaces_after_command'
+                        },
+                        {
+                          'text' => 'second  item
+'
+                        },
+                        {
+                          'text' => '
+',
+                          'type' => 'empty_line'
+                        },
+                        {
+                          'text' => 'still second
+'
+                        }
+                      ],
+                      'type' => 'preformatted'
+                    }
+                  ],
+                  'extra' => {
+                    'item_number' => 2
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'enumerate'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'enumerate'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 8,
+                    'macro' => ''
+                  }
                 }
               ],
               'extra' => {
-                'item_number' => 1,
-                'spaces_before_argument' => ' '
+                'enumerate_specification' => '1'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 4,
+                'line_nr' => 3,
                 'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'cmdname' => 'item',
-              'contents' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'second  item
-'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'empty_line'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => 'still second
-'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'preformatted'
-                }
-              ],
-              'extra' => {
-                'item_number' => 2,
-                'spaces_before_argument' => ' '
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
-              },
-              'parent' => {}
+              }
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'enumerate'
+                      'text' => 'example'
                     }
                   ],
                   'extra' => {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'enumerate',
                 'spaces_before_argument' => ' ',
-                'text_arg' => 'enumerate'
+                'text_arg' => 'example'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 8,
+                'line_nr' => 9,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'end_command' => {},
-            'enumerate_specification' => '1'
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 3,
+            'line_nr' => 2,
             'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'example'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'enumerate_in_example'}{'contents'}[0]{'parent'} = $result_trees{'enumerate_in_example'};
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'enumerate_in_example'}{'contents'}[1];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[3];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[3];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[2];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'enumerate_in_example'}{'contents'}[1];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'enumerate_in_example'}{'contents'}[1]{'contents'}[2];
-$result_trees{'enumerate_in_example'}{'contents'}[1]{'parent'} = $result_trees{'enumerate_in_example'};
 
 $result_texis{'enumerate_in_example'} = '
 @example
@@ -245,13 +210,29 @@ $result_converted{'plaintext'}->{'enumerate_in_example'} = '       1. first item
 
 $result_converted{'html_text'}->{'enumerate_in_example'} = '
 <div class="example">
-<ol>
-<li> <pre class="example">first item
-</pre></li><li> <pre class="example">second  item
+<ol class="enumerate">
+<li> <pre class="example-preformatted">first item
+</pre></li><li> <pre class="example-preformatted">second  item
 
 still second
 </pre></li></ol>
 </div>
+';
+
+
+$result_converted{'latex_text'}->{'enumerate_in_example'} = '
+\\begin{Texinfoindented}
+\\begin{enumerate}[start=1]
+\\item \\begin{Texinfopreformatted}%
+\\ttfamily first item
+\\end{Texinfopreformatted}
+\\item \\begin{Texinfopreformatted}%
+\\ttfamily second  item
+
+still second
+\\end{Texinfopreformatted}
+\\end{enumerate}
+\\end{Texinfoindented}
 ';
 
 1;

@@ -1,3 +1,5 @@
+#include <config.h>
+
 /* Avoid namespace conflicts. */
 #define context perl_context
 
@@ -24,9 +26,6 @@ init (texinfo_uninstalled, srcdir)
      int texinfo_uninstalled
      char *srcdir
 
-char *
-dump_errors ()
-
 void
 wipe_errors ()
 
@@ -35,12 +34,19 @@ parse_file(filename)
         char * filename
 
 void
-parse_string(string)
+parse_piece(string, line_nr)
         char * string
+        int line_nr
 
 void
-parse_text(string)
+parse_string(string, line_nr)
         char * string
+        int line_nr
+
+void
+parse_text(string, line_nr)
+        char * string
+        int line_nr
 
 void
 store_value (name, value)
@@ -101,11 +107,25 @@ void
 conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME (int i)
 
 void
-set_novalidate (int i)
+set_DOC_ENCODING_FOR_INPUT_FILE_NAME (int i)
 
 void
-set_documentlanguage (value)
+conf_set_input_file_name_encoding (value)
+     char *value
+
+void
+conf_set_locale_encoding (value)
+     char *value
+
+void
+conf_set_documentlanguage_override (value)
      char *value
 
 void
 set_debug (int i)
+
+void
+set_accept_internalvalue()
+
+AV *
+get_errors ()

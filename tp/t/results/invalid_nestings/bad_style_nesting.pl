@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,112 +10,89 @@ $result_trees{'bad_style_nesting'} = {
     {
       'contents' => [
         {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'code',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'cmdname' => 'quotation',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'in quotation
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '
 '
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'code',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'quotation'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'quotation',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'quotation'
-          },
-          'line_nr' => {
+          'cmdname' => 'quotation',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'in quotation
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'quotation'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'quotation'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 4,
+            'line_nr' => 2,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'bad_style_nesting'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'bad_style_nesting'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[0]{'contents'}[0];
-$result_trees{'bad_style_nesting'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[0];
-$result_trees{'bad_style_nesting'}{'contents'}[0]{'parent'} = $result_trees{'bad_style_nesting'};
-$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'bad_style_nesting'}{'contents'}[1];
-$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1];
-$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[1];
-$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1];
-$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2];
-$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1];
-$result_trees{'bad_style_nesting'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2];
-$result_trees{'bad_style_nesting'}{'contents'}[1]{'parent'} = $result_trees{'bad_style_nesting'};
 
 $result_texis{'bad_style_nesting'} = '@code{
 }@quotation
@@ -130,7 +107,7 @@ in quotation
 
 $result_errors{'bad_style_nesting'} = [
   {
-    'error_line' => ':2: warning: @quotation should not appear in @code
+    'error_line' => 'warning: @quotation should not appear in @code
 ',
     'file_name' => '',
     'line_nr' => 2,
@@ -139,7 +116,7 @@ $result_errors{'bad_style_nesting'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: @code missing closing brace
+    'error_line' => '@code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -148,7 +125,7 @@ $result_errors{'bad_style_nesting'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':3: misplaced }
+    'error_line' => 'misplaced }
 ',
     'file_name' => '',
     'line_nr' => 3,

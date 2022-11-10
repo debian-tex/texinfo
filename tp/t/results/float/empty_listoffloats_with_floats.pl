@@ -1,511 +1,408 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'empty_listoffloats_with_floats'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
-        {
-          'contents' => [],
-          'parent' => {},
-          'type' => 'block_line_arg'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'label1'
-            }
-          ],
-          'extra' => {
-            'spaces_after_argument' => '
-',
-            'spaces_before_argument' => ' '
-          },
-          'parent' => {},
-          'type' => 'block_line_arg'
-        }
-      ],
-      'cmdname' => 'float',
       'contents' => [
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'Label no caption.
-'
+              'text' => '
+',
+              'type' => 'text_before_beginning'
             }
           ],
-          'parent' => {},
-          'type' => 'paragraph'
+          'type' => 'preamble_before_beginning'
+        },
+        {
+          'contents' => [],
+          'type' => 'preamble_before_content'
         },
         {
           'args' => [
             {
+              'type' => 'block_line_arg'
+            },
+            {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'float'
+                  'text' => 'label1'
                 }
               ],
               'extra' => {
                 'spaces_after_argument' => '
-'
+',
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'float',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'float'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {},
-        'node_content' => [
-          {}
-        ],
-        'normalized' => 'label1',
-        'spaces_before_argument' => ' ',
-        'type' => {
-          'normalized' => ''
-        }
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'number' => 1,
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
-        {
-          'contents' => [],
-          'parent' => {},
-          'type' => 'block_line_arg'
-        },
-        {
+          'cmdname' => 'float',
           'contents' => [
-            {
-              'parent' => {},
-              'text' => 'label2'
-            }
-          ],
-          'extra' => {
-            'spaces_after_argument' => '
-',
-            'spaces_before_argument' => ' '
-          },
-          'parent' => {},
-          'type' => 'block_line_arg'
-        }
-      ],
-      'cmdname' => 'float',
-      'contents' => [
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'Label and caption.
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'args' => [
             {
               'contents' => [
+                {
+                  'text' => 'Label no caption.
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'caption with label'
+                      'text' => 'float'
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'paragraph'
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_context'
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'float'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
             }
           ],
-          'cmdname' => 'caption',
-          'contents' => [],
           'extra' => {
-            'float' => {}
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'label1',
+            'spaces_before_argument' => ' ',
+            'type' => {
+              'normalized' => ''
+            }
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 8,
+            'line_nr' => 2,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
-'
+',
+          'type' => 'empty_line'
         },
         {
           'args' => [
             {
+              'type' => 'block_line_arg'
+            },
+            {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'float'
+                  'text' => 'label2'
                 }
               ],
               'extra' => {
                 'spaces_after_argument' => '
-'
+',
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'float',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'float'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'caption' => {},
-        'end_command' => {},
-        'node_content' => [
-          {}
-        ],
-        'normalized' => 'label2',
-        'spaces_before_argument' => ' ',
-        'type' => {
-          'normalized' => ''
-        }
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 6,
-        'macro' => ''
-      },
-      'number' => 2,
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'float',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
+          'cmdname' => 'float',
           'contents' => [
-            {
-              'parent' => {},
-              'text' => 'no label no caption
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'float'
+                  'text' => 'Label and caption.
+'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'float',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'float'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {},
-        'type' => {
-          'normalized' => ''
-        }
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 11,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'float',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'contents' => [
+              'type' => 'paragraph'
+            },
             {
-              'parent' => {},
-              'text' => 'no label caption
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
+              'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'caption no label'
+                      'contents' => [
+                        {
+                          'text' => 'caption with label'
+                        }
+                      ],
+                      'type' => 'paragraph'
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'paragraph'
+                  'type' => 'brace_command_context'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_context'
+              'cmdname' => 'caption',
+              'extra' => {
+                'float' => {}
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 8,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'float'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'float'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 9,
+                'macro' => ''
+              }
             }
           ],
-          'cmdname' => 'caption',
-          'contents' => [],
           'extra' => {
-            'float' => {}
+            'caption' => {},
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'label2',
+            'spaces_before_argument' => ' ',
+            'type' => {
+              'normalized' => ''
+            }
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 17,
+            'line_nr' => 6,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
-'
+',
+          'type' => 'empty_line'
         },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'float'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'float',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'no label no caption
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'float'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'float'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 13,
+                'macro' => ''
+              }
+            }
+          ],
+          'extra' => {
+            'type' => {
+              'normalized' => ''
+            }
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 11,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'float',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'no label caption
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'caption no label'
+                        }
+                      ],
+                      'type' => 'paragraph'
+                    }
+                  ],
+                  'type' => 'brace_command_context'
+                }
+              ],
+              'cmdname' => 'caption',
+              'extra' => {
+                'float' => {}
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 17,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'float'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'float'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 18,
+                'macro' => ''
+              }
+            }
+          ],
+          'extra' => {
+            'caption' => {},
+            'type' => {
+              'normalized' => ''
+            }
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 15,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'type' => 'line_arg'
             }
           ],
-          'cmdname' => 'end',
+          'cmdname' => 'listoffloats',
           'extra' => {
-            'command_argument' => 'float',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'float'
+            'type' => {
+              'normalized' => ''
+            }
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 18,
+            'line_nr' => 20,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'caption' => {},
-        'end_command' => {},
-        'type' => {
-          'normalized' => ''
-        }
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 15,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
-        {
-          'contents' => [],
-          'extra' => {
-            'spaces_after_argument' => '
-'
-          },
-          'parent' => {},
-          'type' => 'line_arg'
-        }
-      ],
-      'cmdname' => 'listoffloats',
-      'extra' => {
-        'type' => {
-          'normalized' => ''
-        }
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 20,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[1];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'args'}[1];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[1];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'contents'}[0];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[1];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'contents'}[1];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[1];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'contents'}[1];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[1]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[2]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'args'}[1];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'args'}[1]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[0];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'args'}[0];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'extra'}{'float'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[3]{'args'}[0];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[3];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'extra'}{'caption'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[3];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'args'}[1]{'contents'}[0];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[4]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[1];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[2]{'args'}[0];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[2];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'extra'}{'end_command'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[2];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[6]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[1];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'args'}[0];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'extra'}{'float'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[3]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[4]{'args'}[0];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[4];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[4]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'extra'}{'caption'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'extra'}{'end_command'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[4];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[8]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[9];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[9]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
+$result_trees{'empty_listoffloats_with_floats'}{'contents'}[0]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[0]{'contents'}[2]{'args'}[1]{'contents'}[0];
+$result_trees{'empty_listoffloats_with_floats'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'extra'}{'float'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[0]{'contents'}[4];
+$result_trees{'empty_listoffloats_with_floats'}{'contents'}[0]{'contents'}[4]{'extra'}{'caption'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[0]{'contents'}[4]{'contents'}[1];
+$result_trees{'empty_listoffloats_with_floats'}{'contents'}[0]{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[0]{'contents'}[4]{'args'}[1]{'contents'}[0];
+$result_trees{'empty_listoffloats_with_floats'}{'contents'}[0]{'contents'}[8]{'contents'}[1]{'extra'}{'float'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[0]{'contents'}[8];
+$result_trees{'empty_listoffloats_with_floats'}{'contents'}[0]{'contents'}[8]{'extra'}{'caption'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[0]{'contents'}[8]{'contents'}[1];
 
 $result_texis{'empty_listoffloats_with_floats'} = '
 @float , label1
@@ -530,8 +427,7 @@ no label caption
 ';
 
 
-$result_texts{'empty_listoffloats_with_floats'} = '
-label1
+$result_texts{'empty_listoffloats_with_floats'} = 'label1
 Label no caption.
 
 label2
@@ -553,21 +449,14 @@ $result_floats{'empty_listoffloats_with_floats'} = {
     {
       'cmdname' => 'float',
       'extra' => {
-        'end_command' => {
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'float',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'float'
-          }
-        },
         'normalized' => 'label1',
-        'spaces_before_argument' => ' ',
         'type' => {
           'normalized' => ''
         }
       },
-      'number' => 1
+      'structure' => {
+        'float_number' => 1
+      }
     },
     {
       'cmdname' => 'float',
@@ -578,33 +467,18 @@ $result_floats{'empty_listoffloats_with_floats'} = {
             'float' => {}
           }
         },
-        'end_command' => {
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'float',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'float'
-          }
-        },
         'normalized' => 'label2',
-        'spaces_before_argument' => ' ',
         'type' => {
           'normalized' => ''
         }
       },
-      'number' => 2
+      'structure' => {
+        'float_number' => 2
+      }
     },
     {
       'cmdname' => 'float',
       'extra' => {
-        'end_command' => {
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'float',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'float'
-          }
-        },
         'type' => {
           'normalized' => ''
         }
@@ -617,14 +491,6 @@ $result_floats{'empty_listoffloats_with_floats'} = {
           'cmdname' => 'caption',
           'extra' => {
             'float' => {}
-          }
-        },
-        'end_command' => {
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'float',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'float'
           }
         },
         'type' => {
@@ -663,7 +529,7 @@ caption no label
 ';
 
 
-$result_converted{'html'}->{'empty_listoffloats_with_floats'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+$result_converted{'html'}->{'empty_listoffloats_with_floats'} = '<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -676,49 +542,29 @@ $result_converted{'html'}->{'empty_listoffloats_with_floats'} = '<!DOCTYPE html 
 <meta name="distribution" content="global">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<style type="text/css">
-<!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
--->
-</style>
 
 
 </head>
 
 <body lang="en">
-
-<div class="float"><span id="label1"></span>
+<div class="float" id="label1">
 <p>Label no caption.
-</p><div class="float-caption"><p><strong>1
+</p><div class="type-number-float"><p><strong class="strong">1
 </strong></p></div></div>
-<div class="float"><span id="label2"></span>
+<div class="float" id="label2">
 <p>Label and caption.
 </p>
-<div class="float-caption"><p><strong>2: </strong>caption with label</p></div></div>
+<div class="caption"><p><strong class="strong">2: </strong>caption with label</p></div></div>
 <div class="float">
 <p>no label no caption
 </p></div>
 <div class="float">
 <p>no label caption
 </p>
-<div class="float-caption"><p>caption no label</p></div></div>
+<div class="caption"><p>caption no label</p></div></div>
 <dl class="listoffloats">
 <dt><a href="#label1">1</a></dt><dd></dd>
-<dt><a href="#label2">2</a></dt><dd><p>caption with label</p></dd>
+<dt><a href="#label2">2</a></dt><dd class="caption-in-listoffloats"><p>caption with label</p></dd>
 </dl>
 
 

@@ -1,19 +1,19 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 use Test::More;
 
 BEGIN { plan tests => 8; }
 
 use Texinfo::Transformations;
-use Texinfo::Parser qw(parse_texi_text);
+use Texinfo::Parser qw(parse_texi_piece);
 use Texinfo::Convert::Texinfo;
 
 ok(1, "modules loading");
 
-my $tree = parse_texi_text(undef, '@raisesections
+my $tree = parse_texi_piece(undef, '@raisesections
 @section truc
 ');
 
@@ -26,7 +26,7 @@ ok (scalar(@correct_level_offset_commands) == 2,"one lowersection");
 ok ($correct_level_offset_commands[0]->{'cmdname'} eq 'lowersection' ,
     "command is lowersection");
 
-$tree = parse_texi_text(undef, '@lowersections
+$tree = parse_texi_piece(undef, '@lowersections
 @lowersections
 @chapter truc
 ');
@@ -42,7 +42,7 @@ sub test_correction($$$)
   my $in = shift;
   my $out = shift;
   my $name = shift;
-  my $tree = parse_texi_text(undef, $in);
+  my $tree = parse_texi_piece(undef, $in);
   my ($corrected_content, $added_sections) 
       = Texinfo::Transformations::fill_gaps_in_sectioning($tree);
   $tree->{'contents'} = $corrected_content;
@@ -53,7 +53,7 @@ sub test_correction($$$)
   #print STDERR Data::Dumper->Dump([$tree]);
   #print STDERR Data::Dumper->Dump([$corrected_content]);
   }
-  my $texi_result = Texinfo::Convert::Texinfo::convert({'contents' => $corrected_content});
+  my $texi_result = Texinfo::Convert::Texinfo::convert_to_texinfo({'contents' => $corrected_content});
   if (!defined($out)) {
     print STDERR " --> $name:\n$texi_result";
   } else {

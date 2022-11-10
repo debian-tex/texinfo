@@ -1,226 +1,251 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'bad_formal_arg'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
-        {
-          'parent' => {},
-          'text' => 'bad',
-          'type' => 'macro_name'
-        },
-        {
-          'parent' => {},
-          'text' => '',
-          'type' => 'macro_arg'
-        },
-        {
-          'parent' => {},
-          'text' => 'not_empty',
-          'type' => 'macro_arg'
-        }
-      ],
-      'cmdname' => 'macro',
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'in bad macro',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
           'text' => '
 ',
-          'type' => 'last_raw_newline'
-        }
-      ],
-      'extra' => {
-        'arg_line' => ' bad  { , not_empty}
-',
-        'invalid_syntax' => 1
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
-        {
-          'parent' => {},
-          'text' => 'badspace',
-          'type' => 'macro_name'
+          'type' => 'empty_line'
         },
         {
-          'parent' => {},
-          'text' => 'first',
-          'type' => 'macro_arg'
-        },
-        {
-          'parent' => {},
-          'text' => 'in 2arg',
-          'type' => 'macro_arg'
-        }
-      ],
-      'cmdname' => 'macro',
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'bad space',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'last_raw_newline'
-        }
-      ],
-      'extra' => {
-        'arg_line' => ' badspace{first, in 2arg}
-',
-        'invalid_syntax' => 1
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 6,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
-        {
-          'parent' => {},
-          'text' => 'abar',
-          'type' => 'macro_name'
-        },
-        {
-          'parent' => {},
-          'text' => ':::',
-          'type' => 'macro_arg'
-        }
-      ],
-      'cmdname' => 'macro',
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'in bar
-',
-          'type' => 'raw'
-        },
-        {
+          'args' => [
+            {
+              'text' => 'bad',
+              'type' => 'macro_name'
+            },
+            {
+              'text' => '',
+              'type' => 'macro_arg'
+            },
+            {
+              'text' => 'not_empty',
+              'type' => 'macro_arg'
+            }
+          ],
           'cmdname' => 'macro',
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'in macro foo',
+              'text' => 'in bad macro
+',
               'type' => 'raw'
             },
             {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'last_raw_newline'
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'macro'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'macro'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
             }
           ],
           'extra' => {
-            'arg_line' => ' foo {? aaa}
-'
+            'arg_line' => ' bad  { , not_empty}
+',
+            'invalid_syntax' => 1
           },
-          'parent' => {}
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
-          'type' => 'empty_line_after_command'
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'text' => 'badspace',
+              'type' => 'macro_name'
+            },
+            {
+              'text' => 'first',
+              'type' => 'macro_arg'
+            },
+            {
+              'text' => 'in 2arg',
+              'type' => 'macro_arg'
+            }
+          ],
+          'cmdname' => 'macro',
+          'contents' => [
+            {
+              'text' => 'bad space
+',
+              'type' => 'raw'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'macro'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'macro'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 8,
+                'macro' => ''
+              }
+            }
+          ],
+          'extra' => {
+            'arg_line' => ' badspace{first, in 2arg}
+',
+            'invalid_syntax' => 1
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'text' => 'abar',
+              'type' => 'macro_name'
+            },
+            {
+              'text' => ':::',
+              'type' => 'macro_arg'
+            }
+          ],
+          'cmdname' => 'macro',
+          'contents' => [
+            {
+              'text' => 'in bar
+',
+              'type' => 'raw'
+            },
+            {
+              'cmdname' => 'macro',
+              'contents' => [
+                {
+                  'text' => 'in macro foo
+',
+                  'type' => 'raw'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'macro'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'macro'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 14,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'extra' => {
+                'arg_line' => ' foo {? aaa}
+'
+              }
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'macro'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'macro'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 15,
+                'macro' => ''
+              }
+            }
+          ],
+          'extra' => {
+            'arg_line' => ' abar {:::}
+',
+            'invalid_syntax' => 1
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 10,
+            'macro' => ''
+          }
         }
       ],
-      'extra' => {
-        'arg_line' => ' abar {:::}
-',
-        'invalid_syntax' => 1
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 10,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'bad_formal_arg'}{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'};
-$result_trees{'bad_formal_arg'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
-$result_trees{'bad_formal_arg'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
-$result_trees{'bad_formal_arg'}{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
-$result_trees{'bad_formal_arg'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
-$result_trees{'bad_formal_arg'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
-$result_trees{'bad_formal_arg'}{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'};
-$result_trees{'bad_formal_arg'}{'contents'}[2]{'parent'} = $result_trees{'bad_formal_arg'};
-$result_trees{'bad_formal_arg'}{'contents'}[3]{'parent'} = $result_trees{'bad_formal_arg'};
-$result_trees{'bad_formal_arg'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
-$result_trees{'bad_formal_arg'}{'contents'}[4]{'args'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
-$result_trees{'bad_formal_arg'}{'contents'}[4]{'args'}[2]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
-$result_trees{'bad_formal_arg'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
-$result_trees{'bad_formal_arg'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
-$result_trees{'bad_formal_arg'}{'contents'}[4]{'parent'} = $result_trees{'bad_formal_arg'};
-$result_trees{'bad_formal_arg'}{'contents'}[5]{'parent'} = $result_trees{'bad_formal_arg'};
-$result_trees{'bad_formal_arg'}{'contents'}[6]{'parent'} = $result_trees{'bad_formal_arg'};
-$result_trees{'bad_formal_arg'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
-$result_trees{'bad_formal_arg'}{'contents'}[7]{'args'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
-$result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
-$result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1];
-$result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1];
-$result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
-$result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[2]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
-$result_trees{'bad_formal_arg'}{'contents'}[7]{'parent'} = $result_trees{'bad_formal_arg'};
-$result_trees{'bad_formal_arg'}{'contents'}[8]{'parent'} = $result_trees{'bad_formal_arg'};
 
 $result_texis{'bad_formal_arg'} = '
 @macro bad  { , not_empty}
@@ -247,7 +272,7 @@ $result_texts{'bad_formal_arg'} = '
 
 $result_errors{'bad_formal_arg'} = [
   {
-    'error_line' => ':2: bad or empty @macro formal argument: 
+    'error_line' => 'bad or empty @macro formal argument: 
 ',
     'file_name' => '',
     'line_nr' => 2,
@@ -256,7 +281,7 @@ $result_errors{'bad_formal_arg'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':6: bad or empty @macro formal argument: in 2arg
+    'error_line' => 'bad or empty @macro formal argument: in 2arg
 ',
     'file_name' => '',
     'line_nr' => 6,
@@ -265,7 +290,7 @@ $result_errors{'bad_formal_arg'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':10: bad or empty @macro formal argument: :::
+    'error_line' => 'bad or empty @macro formal argument: :::
 ',
     'file_name' => '',
     'line_nr' => 10,

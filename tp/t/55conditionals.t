@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -126,7 +126,7 @@ This is iftex text.
 @ifnottex
 This is ifnottex text.
 @end ifnottex
-', { 'expanded_formats' => ['info', 'html'] }],
+', { 'EXPANDED_FORMATS' => ['info', 'html'] }],
 ['commands_in_ifset',
 '
 @ifset notset
@@ -331,20 +331,20 @@ This is ignored
 @ifplaintext
 this text will only appear in plain text.
 @end ifplaintext
-', {'expanded_formats' => ['info']}
+', {'EXPANDED_FORMATS' => ['info']}
 ],
 ['plaintext_ifinfo',
 '
 @ifinfo
 this text will appear only in Info and plain text.
 @end ifinfo
-', {'expanded_formats' => ['plaintext']}
+', {'EXPANDED_FORMATS' => ['plaintext']}
 ],
 ['ifnotinfo_exception',
 '@ifnotinfo
 in ifnotinfo
 @end ifnotinfo
-', {'expanded_formats' => ['plaintext']}
+', {'EXPANDED_FORMATS' => ['plaintext']}
 ],
 ['info_ifinfo_ifnotplaintext',
 '@ifinfo
@@ -352,7 +352,7 @@ in ifnotinfo
 This will be in Info, but not plain text.
 @end ifnotplaintext
 @end ifinfo
-', {'expanded_formats' => ['info']}
+', {'EXPANDED_FORMATS' => ['info']}
 ],
 ['plaintext_ifinfo_ifnotplaintext',
 '@ifinfo
@@ -360,7 +360,7 @@ This will be in Info, but not plain text.
 This will be in Info, but not plain text.
 @end ifnotplaintext
 @end ifinfo
-', {'expanded_formats' => ['plaintext']}
+', {'EXPANDED_FORMATS' => ['plaintext']}
 ],
 ['text_on_conditional_line_expanded',
 '@ifnothtml text following ifnothtml,
@@ -372,13 +372,13 @@ a
 '@ifnothtml text following ifnothtml,
 a
 @end ifnothtml
-', {'expanded_formats' => ['html']}
+', {'EXPANDED_FORMATS' => ['html']}
 ],
 ['additional_space_in_end_conditional',
 '@ifnothtml
 not html
 @end  ifnothtml
-', {'expanded_formats' => ['html']}
+', {'EXPANDED_FORMATS' => ['html']}
 ],
 ['additional_space_in_end_conditional_expanded',
 '@ifnothtml
@@ -464,6 +464,18 @@ strongalias @@alias is defined.
 strongalias @@alias is wrongly not defined
 @end ifcommandnotdefined
 '],
+['txiinternalvalue',
+'@txiinternalvalue
+'],
+# currently this is not an error, it is only an error
+# to redefine @txiinternalvalue if in_gdt
+['user_defined_txiinternalvalue',
+'@macro txiinternalvalue
+user internalvalue
+@end macro
+
+@txiinternalvalue
+'],
 ['inlineiffmtifelse_not_closed',
 '@inlinefmtifelse{html,
 '],
@@ -486,13 +498,9 @@ strongalias @@alias is wrongly not defined
 );
 
 for my $test (@test_cases) {
-  if (!defined $test->[2]->{'expanded_formats'}) {
-    $test->[2]->{'expanded_formats'} = [];
+  if (!defined $test->[2]->{'EXPANDED_FORMATS'}) {
+    $test->[2]->{'EXPANDED_FORMATS'} = [];
   }
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('conditionals', \@test_cases, $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('conditionals', \@test_cases);

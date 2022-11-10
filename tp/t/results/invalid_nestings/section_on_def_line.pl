@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -17,11 +17,9 @@ $result_trees{'section_on_def_line'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'a b '
                     }
                   ],
-                  'parent' => {},
                   'type' => 'block_line_arg'
                 }
               ],
@@ -29,35 +27,31 @@ $result_trees{'section_on_def_line'} = {
                 'def_command' => 'deffn',
                 'original_def_cmdname' => 'deffn'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 1,
                 'macro' => ''
               },
-              'parent' => {},
               'type' => 'def_line'
             }
           ],
           'extra' => {
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 's'
             }
           ],
@@ -65,14 +59,12 @@ $result_trees{'section_on_def_line'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -80,16 +72,13 @@ $result_trees{'section_on_def_line'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Something
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -98,30 +87,15 @@ $result_trees{'section_on_def_line'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 2,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 1,
         'macro' => ''
-      },
-      'number' => 1,
-      'parent' => {}
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0];
-$result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[0];
-$result_trees{'section_on_def_line'}{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'};
-$result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0];
-$result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1];
-$result_trees{'section_on_def_line'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1];
-$result_trees{'section_on_def_line'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1]{'contents'}[1];
-$result_trees{'section_on_def_line'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1];
-$result_trees{'section_on_def_line'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1];
-$result_trees{'section_on_def_line'}{'contents'}[1]{'parent'} = $result_trees{'section_on_def_line'};
 
 $result_texis{'section_on_def_line'} = '@deffn a b @section s
 
@@ -138,24 +112,26 @@ Something
 ';
 
 $result_sectioning{'section_on_def_line'} = {
-  'level' => 1,
-  'section_childs' => [
-    {
-      'cmdname' => 'section',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'level' => 2,
-      'number' => 1,
-      'section_up' => {}
-    }
-  ]
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'section',
+        'extra' => {},
+        'structure' => {
+          'section_level' => 2,
+          'section_number' => 1,
+          'section_up' => {}
+        }
+      }
+    ],
+    'section_level' => 1
+  }
 };
-$result_sectioning{'section_on_def_line'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'section_on_def_line'};
+$result_sectioning{'section_on_def_line'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'section_on_def_line'};
 
 $result_errors{'section_on_def_line'} = [
   {
-    'error_line' => ':1: warning: @section should only appear at the beginning of a line
+    'error_line' => 'warning: @section should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -164,7 +140,7 @@ $result_errors{'section_on_def_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @section should not appear in @deffn
+    'error_line' => 'warning: @section should not appear in @deffn
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -173,7 +149,7 @@ $result_errors{'section_on_def_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: @section seen before @end deffn
+    'error_line' => '@section seen before @end deffn
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -182,7 +158,7 @@ $result_errors{'section_on_def_line'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':5: unmatched `@end deffn\'
+    'error_line' => 'unmatched `@end deffn\'
 ',
     'file_name' => '',
     'line_nr' => 5,

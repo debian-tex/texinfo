@@ -1,6 +1,6 @@
 # Process this file with autoconf to produce a configure script.
 #
-# Copyright 2002-2021 Free Software Foundation, Inc.
+# Copyright 2002-2022 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -10,7 +10,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [6.8], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [7.0], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -33,7 +33,7 @@ AC_CONFIG_SRCDIR([info/info.c])
 # 3. It may be kept as is in case there were no change in the DTD
 #    between releases.  This is rare, but has happened.
 #
-TEXINFO_DTD_VERSION=6.8
+TEXINFO_DTD_VERSION=7.0
 AC_SUBST([TEXINFO_DTD_VERSION])
 
 # Package date.
@@ -61,26 +61,30 @@ AC_ARG_VAR([PERL_EXT_LDFLAGS], [Linker flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_CC], [Compiler for a Perl extension])
 
 AC_MSG_CHECKING([Perl version and modules])
-if $PERL -e "use 5.007_003; use Encode; use Data::Dumper" >/dev/null 2>&1; then
+if $PERL -e "use 5.008_001; use Encode; use Data::Dumper" >/dev/null 2>&1; then
   perl_version_requirement='yes'
 else
   perl_version_requirement='no'
 fi
 AC_MSG_RESULT($perl_version_requirement)
 if test z"$perl_version_requirement" = 'zno' ; then
-  AC_MSG_ERROR([perl >= 5.7.3 with Encode and Data::Dumper required by Texinfo.])
+  AC_MSG_ERROR([perl >= 5.8.1 with Encode and Data::Dumper required by Texinfo.])
 fi
 
 
 AC_REQUIRE_AUX_FILE([tap-driver.sh])
 
-# awk for texindex.
-# don't use AC_PROG_AWK because this prefers gawk, which is much slower
-# than mawk for texindex and texi2dvi
-AC_CHECK_PROGS([TI_AWK], [awk mawk gawk], [])
-if test -z "$TI_AWK"; then
-  AC_MSG_ERROR([awk not found])
-fi
+# Find awk for running texindex.
+# Don't use AC_PROG_AWK because this prefers gawk, which may be much
+# slower than the awk that the user has in their path (e.g. mawk).
+# We use AC_PATH_PROGS_FEATURE_CHECK to eliminate archaic versions of
+# awk that don't support user-defined functions.
+AC_CACHE_CHECK([for awk], [ac_cv_path_TI_AWK],
+    [AC_PATH_PROGS_FEATURE_CHECK([TI_AWK], [awk gawk mawk nawk],
+      [[$ac_path_TI_AWK 'function foo () {}' 2>/dev/null \
+           && ac_cv_path_TI_AWK=$ac_path_TI_AWK ac_path_TI_AWK_found=:]],
+      [AC_MSG_ERROR([awk not found])])])
+AC_SUBST([TI_AWK], [$ac_cv_path_TI_AWK])
 
 # for generating texindex.awk
 AM_MISSING_PROG(GAWK, gawk)
@@ -483,6 +487,11 @@ case "$host" in
    *-mingw32 | *-mingw64 | *-msdosdjgpp )  host_is_windows=yes ;;
 esac     
 AM_CONDITIONAL([HOST_IS_WINDOWS], [test "x$host_is_windows" = "xyes"])
+HOST_IS_WINDOWS_VARIABLE=
+if test "x$host_is_windows" = "xyes" ; then
+  HOST_IS_WINDOWS_VARIABLE=yes
+fi
+AC_SUBST([HOST_IS_WINDOWS_VARIABLE])
 
 # The config files to generate.
 AC_CONFIG_FILES([\
@@ -508,6 +517,7 @@ AC_CONFIG_FILES([\
   tp/tests/nested_formats/Makefile
   tp/tests/layout/Makefile
   tp/tests/tex_html/Makefile
+  tp/tests/other/Makefile
   tp/defs
   js/Makefile
   Pod-Simple-Texinfo/Makefile

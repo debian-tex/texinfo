@@ -46,7 +46,8 @@ text_printf (TEXT *t, char *format, ...)
   char *s;
 
   va_start (v, format);
-  vasprintf (&s, format, v);
+  if (vasprintf (&s, format, v) < 0)
+    abort ();  /* out of memory */
   text_append (t, s);
   free (s);
   va_end (v);

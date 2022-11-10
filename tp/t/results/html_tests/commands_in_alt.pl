@@ -1,255 +1,189 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'commands_in_alt'} = {
   'contents' => [
     {
-      'args' => [
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'f--ile'
-            }
-          ],
-          'parent' => {},
-          'type' => 'brace_command_arg'
-        },
-        {
-          'contents' => [],
-          'parent' => {},
-          'type' => 'brace_command_arg'
-        },
-        {
-          'contents' => [],
-          'parent' => {},
-          'type' => 'brace_command_arg'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'alt -- '
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'in b'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'b',
-              'contents' => [],
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
-              },
-              'parent' => {}
-            }
-          ],
-          'parent' => {},
-          'type' => 'brace_command_arg'
-        }
-      ],
-      'cmdname' => 'image',
-      'contents' => [],
-      'extra' => {
-        'input_perl_encoding' => 'utf-8'
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'example',
       'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'contents' => [
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'f--ile'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                },
-                {
-                  'contents' => [],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                },
-                {
-                  'contents' => [],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                },
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'alt -- '
-                    },
-                    {
-                      'args' => [
-                        {
-                          'contents' => [
-                            {
-                              'parent' => {},
-                              'text' => 'in b'
-                            }
-                          ],
-                          'parent' => {},
-                          'type' => 'brace_command_arg'
-                        }
-                      ],
-                      'cmdname' => 'b',
-                      'contents' => [],
-                      'line_nr' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
-                      },
-                      'parent' => {}
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'image',
-              'contents' => [],
-              'extra' => {
-                'input_perl_encoding' => 'utf-8'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => '
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'preformatted'
-        },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'example'
+                  'text' => 'f--ile'
                 }
               ],
+              'type' => 'brace_command_arg'
+            },
+            {
+              'type' => 'brace_command_arg'
+            },
+            {
+              'type' => 'brace_command_arg'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'alt -- '
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'in b'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'b',
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 1,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'type' => 'brace_command_arg'
+            }
+          ],
+          'cmdname' => 'image',
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
+          'cmdname' => 'example',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'f--ile'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    },
+                    {
+                      'type' => 'brace_command_arg'
+                    },
+                    {
+                      'type' => 'brace_command_arg'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'alt -- '
+                        },
+                        {
+                          'args' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'in b'
+                                }
+                              ],
+                              'type' => 'brace_command_arg'
+                            }
+                          ],
+                          'cmdname' => 'b',
+                          'source_info' => {
+                            'file_name' => '',
+                            'line_nr' => 4,
+                            'macro' => ''
+                          }
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'image',
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 4,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => '
+'
+                }
+              ],
+              'type' => 'preformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'example'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'example'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 5,
+            'line_nr' => 3,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3];
-$result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3]{'contents'}[1];
-$result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3];
-$result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[0]{'parent'} = $result_trees{'commands_in_alt'};
-$result_trees{'commands_in_alt'}{'contents'}[1]{'parent'} = $result_trees{'commands_in_alt'};
-$result_trees{'commands_in_alt'}{'contents'}[2]{'parent'} = $result_trees{'commands_in_alt'};
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'commands_in_alt'}{'contents'}[3];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[2];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[2];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'parent'} = $result_trees{'commands_in_alt'};
 
 $result_texis{'commands_in_alt'} = '@image{f--ile,,,alt -- @b{in b}}
 
@@ -271,7 +205,7 @@ $result_floats{'commands_in_alt'} = {};
 
 
 
-$result_converted{'html'}->{'commands_in_alt'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+$result_converted{'html'}->{'commands_in_alt'} = '<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -286,21 +220,7 @@ $result_converted{'html'}->{'commands_in_alt'} = '<!DOCTYPE html PUBLIC "-//W3C/
 
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 
@@ -308,10 +228,10 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<img src="f--ile.png" alt="alt &ndash; in b">
+<img class="image" src="f--ile.png" alt="alt &ndash; in b">
 
 <div class="example">
-<pre class="example"><img src="f--ile.png" alt="alt &ndash; in b">
+<pre class="example-preformatted"><img class="image" src="f--ile.png" alt="alt &ndash; in b">
 </pre></div>
 
 
@@ -324,6 +244,7 @@ $result_converted_errors{'html'}->{'commands_in_alt'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
+    'file_name' => 'commands_in_alt.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

@@ -4,15 +4,29 @@ node.
    *Note the::caption and a word: blah:blah. *Note the::caption:
 blah:blah.
 
-   *Note the::caption and a word: blumpty.fump. *Note the::caption:
+   *Note the::caption and a word: blumpty.fump. *Note the::caption:
 blumpty.fump.mrmrmrmmrmrmr
 
-   *Note blah:blah::
+   *Note blah:blah::.
 
-   *Note secret,node::
+   *Note secret,node::.
 
    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA *Note
 blah:blah::.)
+
+   *Note (man_ual)x:y::z::.
+
+   *Note (man_ual)x.y.z::.
+
+   *Note label: (man_ual)pp:qq::rr.
+
+   *Note label: (man_ual)pp:qq.rr.
+
+   *Note label: (man:u.al)ext.
+
+   *Note label: (man:u.al)e:x.t.
+
+   *Note la:bel: (man:u.al)ext.
 
 1 blah:blah
 ***********

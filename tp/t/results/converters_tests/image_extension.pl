@@ -1,79 +1,62 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'image_extension'} = {
   'contents' => [
     {
-      'args' => [
+      'contents' => [
         {
-          'contents' => [
+          'args' => [
             {
-              'parent' => {},
-              'text' => 'f---ile'
+              'contents' => [
+                {
+                  'text' => 'f---ile'
+                }
+              ],
+              'type' => 'brace_command_arg'
+            },
+            {
+              'type' => 'brace_command_arg'
+            },
+            {
+              'type' => 'brace_command_arg'
+            },
+            {
+              'type' => 'brace_command_arg'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => '.gr--a'
+                }
+              ],
+              'type' => 'brace_command_arg'
             }
           ],
-          'parent' => {},
-          'type' => 'brace_command_arg'
+          'cmdname' => 'image',
+          'extra' => {
+            'input_perl_encoding' => 'utf-8'
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
         },
         {
-          'contents' => [],
-          'parent' => {},
-          'type' => 'brace_command_arg'
-        },
-        {
-          'contents' => [],
-          'parent' => {},
-          'type' => 'brace_command_arg'
-        },
-        {
-          'contents' => [],
-          'parent' => {},
-          'type' => 'brace_command_arg'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => '.gr--a'
-            }
-          ],
-          'parent' => {},
-          'type' => 'brace_command_arg'
+          'text' => '
+'
         }
       ],
-      'cmdname' => 'image',
-      'contents' => [],
-      'extra' => {
-        'input_perl_encoding' => 'utf-8'
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'image_extension'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_extension'}{'contents'}[0]{'args'}[0];
-$result_trees{'image_extension'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'image_extension'}{'contents'}[0];
-$result_trees{'image_extension'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'image_extension'}{'contents'}[0];
-$result_trees{'image_extension'}{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'image_extension'}{'contents'}[0];
-$result_trees{'image_extension'}{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'image_extension'}{'contents'}[0];
-$result_trees{'image_extension'}{'contents'}[0]{'args'}[4]{'contents'}[0]{'parent'} = $result_trees{'image_extension'}{'contents'}[0]{'args'}[4];
-$result_trees{'image_extension'}{'contents'}[0]{'args'}[4]{'parent'} = $result_trees{'image_extension'}{'contents'}[0];
-$result_trees{'image_extension'}{'contents'}[0]{'parent'} = $result_trees{'image_extension'};
-$result_trees{'image_extension'}{'contents'}[1]{'parent'} = $result_trees{'image_extension'};
 
 $result_texis{'image_extension'} = '@image{f---ile,,,,.gr--a}
 ';
@@ -94,7 +77,7 @@ $result_converted{'plaintext'}->{'image_extension'} = '[f---ile]
 
 $result_converted_errors{'plaintext'}->{'image_extension'} = [
   {
-    'error_line' => ':1: warning: could not find @image file `f---ile.txt\' nor alternate text
+    'error_line' => 'warning: could not find @image file `f---ile.txt\' nor alternate text
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -106,12 +89,12 @@ $result_converted_errors{'plaintext'}->{'image_extension'} = [
 
 
 
-$result_converted{'html_text'}->{'image_extension'} = '<img src="f---ile.gr--a" alt="f---ile">
+$result_converted{'html_text'}->{'image_extension'} = '<img class="image" src="f---ile.gr--a" alt="f---ile">
 ';
 
 $result_converted_errors{'html_text'}->{'image_extension'} = [
   {
-    'error_line' => ':1: warning: @image file `f---ile\' (for HTML) not found, using `f---ile.gr--a\'
+    'error_line' => 'warning: @image file `f---ile\' (for HTML) not found, using `f---ile.gr--a\'
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -132,12 +115,29 @@ $result_converted{'docbook'}->{'image_extension'} = '<informalfigure><mediaobjec
 
 $result_converted_errors{'docbook'}->{'image_extension'} = [
   {
-    'error_line' => ':1: warning: @image file `f---ile\' not found, using `f---ile.jpg\'
+    'error_line' => 'warning: @image file `f---ile\' not found, using `f---ile.jpg\'
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => '@image file `f---ile\' not found, using `f---ile.jpg\'',
+    'type' => 'warning'
+  }
+];
+
+
+
+$result_converted{'latex_text'}->{'image_extension'} = '\\includegraphics{f---ile}
+';
+
+$result_converted_errors{'latex_text'}->{'image_extension'} = [
+  {
+    'error_line' => 'warning: @image file `f---ile\' (for LaTeX) not found
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@image file `f---ile\' (for LaTeX) not found',
     'type' => 'warning'
   }
 ];
@@ -167,7 +167,7 @@ $result_converted_errors{'info'}->{'image_extension'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: could not find @image file `f---ile.txt\' nor alternate text
+    'error_line' => 'warning: could not find @image file `f---ile.txt\' nor alternate text
 ',
     'file_name' => '',
     'line_nr' => 1,

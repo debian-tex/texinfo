@@ -1,321 +1,258 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'ampchar'} = {
   'contents' => [
     {
-      'cmdname' => 'defop',
       'contents' => [
         {
-          'args' => [
+          'cmdname' => 'defop',
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'Constructor'
-                    }
-                  ],
-                  'extra' => {
-                    'def_role' => 'category'
-                  },
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'parent' => {},
-                  'type' => 'bracketed_def_content'
-                },
-                {
-                  'extra' => {
-                    'def_role' => 'spaces'
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'spaces'
-                },
-                {
-                  'extra' => {
-                    'def_role' => 'class'
-                  },
-                  'text' => 'a'
-                },
-                {
-                  'extra' => {
-                    'def_role' => 'spaces'
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'spaces'
-                },
-                {
-                  'extra' => {
-                    'def_role' => 'name'
-                  },
-                  'text' => 'b'
-                },
-                {
-                  'extra' => {
-                    'def_role' => 'spaces'
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'spaces'
-                },
-                {
-                  'extra' => {
-                    'def_role' => 'delimiter'
-                  },
-                  'parent' => {},
-                  'text' => '(',
-                  'type' => 'delimiter'
-                },
-                {
-                  'args' => [
-                    {
                       'contents' => [
                         {
-                          'parent' => {},
-                          'text' => 'const std::vector<int>'
-                        },
-                        {
-                          'cmdname' => '&',
-                          'parent' => {}
+                          'text' => 'Constructor'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 1,
+                        'macro' => ''
+                      },
+                      'type' => 'bracketed_def_content'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'class'
+                      },
+                      'text' => 'a'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
+                      'text' => 'b'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'delimiter'
+                      },
+                      'text' => '(',
+                      'type' => 'delimiter'
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'const std::vector<int>'
+                            },
+                            {
+                              'cmdname' => '&'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'code',
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 1,
+                        'macro' => ''
+                      }
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'delimiter'
+                      },
+                      'text' => ')',
+                      'type' => 'delimiter'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ],
-                  'cmdname' => 'code',
-                  'contents' => [],
-                  'extra' => {
-                    'def_role' => 'arg'
-                  },
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                },
-                {
-                  'extra' => {
-                    'def_role' => 'delimiter'
-                  },
-                  'parent' => {},
-                  'text' => ')',
-                  'type' => 'delimiter'
-                },
-                {
-                  'extra' => {
-                    'def_role' => 'spaces'
-                  },
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
-                }
-              ],
-              'parent' => {},
-              'type' => 'block_line_arg'
-            }
-          ],
-          'extra' => {
-            'def_command' => 'defop',
-            'def_parsed_hash' => {
-              'category' => {},
-              'class' => {},
-              'name' => {}
-            },
-            'index_entry' => {
-              'command' => {},
-              'content' => [
-                {},
-                {
-                  'text' => ' on '
-                },
-                {}
-              ],
-              'content_normalized' => [
-                {},
-                {
-                  'text' => ' on '
-                },
-                {}
-              ],
-              'in_code' => 1,
-              'index_at_command' => 'defop',
-              'index_name' => 'fn',
-              'index_type_command' => 'defop',
-              'key' => 'b on a',
-              'number' => 1
-            },
-            'original_def_cmdname' => 'defop'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {},
-          'type' => 'def_line'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'defop'
+                  'type' => 'block_line_arg'
                 }
               ],
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'def_command' => 'defop',
+                'def_parsed_hash' => {
+                  'category' => {},
+                  'class' => {},
+                  'name' => {}
+                },
+                'index_entry' => {
+                  'content_normalized' => [
+                    {},
+                    {
+                      'text' => ' on '
+                    },
+                    {}
+                  ],
+                  'entry_content' => [
+                    {},
+                    {
+                      'text' => ' on '
+                    },
+                    {}
+                  ],
+                  'entry_element' => {},
+                  'entry_number' => 1,
+                  'in_code' => 1,
+                  'index_at_command' => 'defop',
+                  'index_ignore_chars' => {},
+                  'index_name' => 'fn',
+                  'index_type_command' => 'defop'
+                },
+                'original_def_cmdname' => 'defop'
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'defop',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'defop'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {},
-        'spaces_before_argument' => ' '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => '& '
-        },
-        {
-          'cmdname' => '&',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
+              'type' => 'def_line'
+            },
             {
-              'contents' => [],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'defop'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'defop'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
             }
           ],
-          'cmdname' => 'ampchar',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+          'extra' => {
+            'spaces_before_argument' => ' '
           },
-          'parent' => {}
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
         },
         {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'cmdname' => '{',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'cmdname' => '}',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'cmdname' => '@',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
+          'contents' => [
+            {
+              'text' => '& '
+            },
+            {
+              'cmdname' => '&'
+            },
+            {
+              'text' => ' '
+            },
+            {
+              'args' => [
+                {
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'ampchar',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' '
+            },
+            {
+              'cmdname' => '{'
+            },
+            {
+              'text' => ' '
+            },
+            {
+              'cmdname' => '}'
+            },
+            {
+              'text' => ' '
+            },
+            {
+              'cmdname' => '@'
+            },
+            {
+              'text' => '
 '
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[9]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[2] = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[2] = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[1];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'ampchar'}{'contents'}[0];
-$result_trees{'ampchar'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[1];
-$result_trees{'ampchar'}{'contents'}[0]{'parent'} = $result_trees{'ampchar'};
-$result_trees{'ampchar'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[1];
-$result_trees{'ampchar'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ampchar'}{'contents'}[1];
-$result_trees{'ampchar'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'ampchar'}{'contents'}[1];
-$result_trees{'ampchar'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[1]{'contents'}[3];
-$result_trees{'ampchar'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'ampchar'}{'contents'}[1];
-$result_trees{'ampchar'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'ampchar'}{'contents'}[1];
-$result_trees{'ampchar'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'ampchar'}{'contents'}[1];
-$result_trees{'ampchar'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'ampchar'}{'contents'}[1];
-$result_trees{'ampchar'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'ampchar'}{'contents'}[1];
-$result_trees{'ampchar'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'ampchar'}{'contents'}[1];
-$result_trees{'ampchar'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'ampchar'}{'contents'}[1];
-$result_trees{'ampchar'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'ampchar'}{'contents'}[1];
-$result_trees{'ampchar'}{'contents'}[1]{'parent'} = $result_trees{'ampchar'};
+$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[2] = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[2] = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 
 $result_texis{'ampchar'} = '@defop {Constructor} a b (@code{const std::vector<int>@&})
 @end defop
@@ -329,7 +266,7 @@ $result_texts{'ampchar'} = 'Constructor on a: b (const std::vector<int>&)
 
 $result_errors{'ampchar'} = [
   {
-    'error_line' => ':1: warning: entry for index `fn\' outside of any node
+    'error_line' => 'warning: entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -343,13 +280,20 @@ $result_errors{'ampchar'} = [
 $result_floats{'ampchar'} = {};
 
 
+$result_indices_sort_strings{'ampchar'} = {
+  'fn' => [
+    'b on a'
+  ]
+};
+
+
 
 $result_converted{'plaintext'}->{'ampchar'} = ' -- Constructor on a: b (const std::vector<int>&)
    & & & { } @
 ';
 
 
-$result_converted{'html'}->{'ampchar'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+$result_converted{'html'}->{'ampchar'} = '<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -364,21 +308,9 @@ $result_converted{'html'}->{'ampchar'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTM
 
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 -->
 </style>
 
@@ -386,8 +318,8 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<dl class="def">
-<dt id="index-b-on-a"><span>Constructor on a: <strong>b</strong> <em>(<code>const std::vector&lt;int&gt;&amp;</code>)</em><a href=\'#index-b-on-a\' class=\'copiable-anchor\'> &para;</a></span></dt>
+<dl class="first-defop">
+<dt class="defop" id="index-b-on-a"><span class="category-def">Constructor on <code class="code">a</code>: </span><span><strong class="def-name">b</strong> <var class="def-var-arguments">(<code class="code">const std::vector&lt;int&gt;&amp;</code>)</var><a class="copiable-link" href=\'#index-b-on-a\'> &para;</a></span></dt>
 </dl>
 <p>&amp; &amp; &amp; { } @
 </p>
@@ -414,7 +346,7 @@ $result_converted{'xml'}->{'ampchar'} = '<defop spaces=" " endspaces=" "><defini
 </para>';
 
 
-$result_converted{'docbook'}->{'ampchar'} = '<synopsis><indexterm role="fn"><primary>b on a</primary></indexterm><phrase role="category"><emphasis role="bold">Constructor</emphasis>:</phrase> <ooclass><classname>a</classname></ooclass> <methodname>b</methodname> (<replaceable>const std::vector&lt;int&gt;&amp;</replaceable>)</synopsis>
+$result_converted{'docbook'}->{'ampchar'} = '<synopsis><indexterm role="fn"><primary>b on a</primary></indexterm><phrase role="category"><emphasis role="bold">Constructor</emphasis>:</phrase> <ooclass><classname>a</classname></ooclass> <methodname>b</methodname> (<emphasis role="arg">const std::vector&lt;int&gt;&amp;</emphasis>)</synopsis>
 <para>&amp; &amp; &#38; { } @
 </para>';
 

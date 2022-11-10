@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,222 +10,167 @@ $result_trees{'accents'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'Valid
-'
-        },
-        {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'text' => 'Valid
+'
+            },
+            {
+              'args' => [
                 {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'args' => [
+                        {
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'TeX',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 2,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => 'TeX',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => '~',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '. '
-        },
-        {
-          'args' => [
+              'cmdname' => '~',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => '. '
+            },
+            {
+              'args' => [
                 {
-                  'cmdname' => '@',
-                  'parent' => {}
+                  'contents' => [
+                    {
+                      'cmdname' => '@'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => '~',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.
+'
             }
           ],
-          'cmdname' => '~',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
+          'type' => 'paragraph'
         },
         {
-          'parent' => {},
-          'text' => '.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Invalid
-'
+          'type' => 'empty_line'
         },
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'text' => 'Invalid
+'
+            },
+            {
+              'args' => [
                 {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
+                      'args' => [
                         {
-                          'parent' => {},
-                          'text' => 'a'
+                          'contents' => [
+                            {
+                              'text' => 'a'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'cmdname' => 'code',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 5,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => 'code',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => '~',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.  '
-        },
-        {
-          'args' => [
+              'cmdname' => '~',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => '.  '
+            },
+            {
+              'args' => [
                 {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
+                      'args' => [
                         {
-                          'parent' => {},
-                          'text' => 'truc'
+                          'contents' => [
+                            {
+                              'text' => 'truc'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'cmdname' => 'anchor',
+                      'extra' => {
+                        'node_content' => [
+                          {}
+                        ],
+                        'normalized' => 'truc'
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 5,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => 'anchor',
-                  'contents' => [],
-                  'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
-                    'normalized' => 'truc'
-                  },
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => '^',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.
+'
             }
           ],
-          'cmdname' => '^',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.
-'
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'accents'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[0];
-$result_trees{'accents'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'accents'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'accents'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[0]{'contents'}[1];
-$result_trees{'accents'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'accents'}{'contents'}[0];
-$result_trees{'accents'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'accents'}{'contents'}[0];
-$result_trees{'accents'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'accents'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[0]{'contents'}[3];
-$result_trees{'accents'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'accents'}{'contents'}[0];
-$result_trees{'accents'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'accents'}{'contents'}[0];
-$result_trees{'accents'}{'contents'}[0]{'parent'} = $result_trees{'accents'};
-$result_trees{'accents'}{'contents'}[1]{'parent'} = $result_trees{'accents'};
-$result_trees{'accents'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2];
-$result_trees{'accents'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'accents'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'accents'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[1]{'args'}[0];
-$result_trees{'accents'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[1];
-$result_trees{'accents'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'accents'}{'contents'}[2];
-$result_trees{'accents'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'accents'}{'contents'}[2];
-$result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0];
-$result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[3];
-$result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'accents'}{'contents'}[2];
-$result_trees{'accents'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'accents'}{'contents'}[2];
-$result_trees{'accents'}{'contents'}[2]{'parent'} = $result_trees{'accents'};
+$result_trees{'accents'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'accents'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'accents'} = 'Valid
 @~{@TeX{}}. @~{@@}.
@@ -244,7 +189,7 @@ a~.  ^.
 
 $result_errors{'accents'} = [
   {
-    'error_line' => ':5: warning: @code should not appear in @~
+    'error_line' => 'warning: @code should not appear in @~
 ',
     'file_name' => '',
     'line_nr' => 5,
@@ -253,7 +198,7 @@ $result_errors{'accents'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: @anchor should not appear in @^
+    'error_line' => 'warning: @anchor should not appear in @^
 ',
     'file_name' => '',
     'line_nr' => 5,

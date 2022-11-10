@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,135 +10,103 @@ $result_trees{'noindent_after_smallexample'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'To obtain.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'cmdname' => 'smallexample',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
           'contents' => [
             {
-              'parent' => {},
-              'text' => '$ wget \'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.guess?rev=HEAD&content-type=text/plain\'
-'
-            },
-            {
-              'parent' => {},
-              'text' => '$ wget \'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.sub?rev=HEAD&content-type=text/plain\'
+              'text' => 'To obtain.
 '
             }
           ],
-          'parent' => {},
-          'type' => 'preformatted'
+          'type' => 'paragraph'
         },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'smallexample'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'smallexample',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'smallexample'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'cmdname' => 'noindent',
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 6,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Less recent versions are also present.
+          'cmdname' => 'smallexample',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => '$ wget \'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.guess?rev=HEAD&content-type=text/plain\'
 '
+                },
+                {
+                  'text' => '$ wget \'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.sub?rev=HEAD&content-type=text/plain\'
+'
+                }
+              ],
+              'type' => 'preformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'smallexample'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'smallexample'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          }
+        },
+        {
+          'cmdname' => 'noindent',
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'ignorable_spaces_after_command'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Less recent versions are also present.
+'
+            }
+          ],
+          'extra' => {
+            'noindent' => 1
+          },
+          'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'noindent' => 1
-      },
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'noindent_after_smallexample'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'noindent_after_smallexample'}{'contents'}[0];
-$result_trees{'noindent_after_smallexample'}{'contents'}[0]{'parent'} = $result_trees{'noindent_after_smallexample'};
-$result_trees{'noindent_after_smallexample'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'noindent_after_smallexample'}{'contents'}[1];
-$result_trees{'noindent_after_smallexample'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'noindent_after_smallexample'}{'contents'}[1];
-$result_trees{'noindent_after_smallexample'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'noindent_after_smallexample'}{'contents'}[1]{'contents'}[1];
-$result_trees{'noindent_after_smallexample'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'noindent_after_smallexample'}{'contents'}[1]{'contents'}[1];
-$result_trees{'noindent_after_smallexample'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'noindent_after_smallexample'}{'contents'}[1];
-$result_trees{'noindent_after_smallexample'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'noindent_after_smallexample'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'noindent_after_smallexample'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'noindent_after_smallexample'}{'contents'}[1]{'contents'}[2];
-$result_trees{'noindent_after_smallexample'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'noindent_after_smallexample'}{'contents'}[1];
-$result_trees{'noindent_after_smallexample'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'noindent_after_smallexample'}{'contents'}[1]{'contents'}[2];
-$result_trees{'noindent_after_smallexample'}{'contents'}[1]{'parent'} = $result_trees{'noindent_after_smallexample'};
-$result_trees{'noindent_after_smallexample'}{'contents'}[2]{'parent'} = $result_trees{'noindent_after_smallexample'};
-$result_trees{'noindent_after_smallexample'}{'contents'}[3]{'extra'}{'command'} = $result_trees{'noindent_after_smallexample'}{'contents'}[2];
-$result_trees{'noindent_after_smallexample'}{'contents'}[3]{'parent'} = $result_trees{'noindent_after_smallexample'};
-$result_trees{'noindent_after_smallexample'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'noindent_after_smallexample'}{'contents'}[4];
-$result_trees{'noindent_after_smallexample'}{'contents'}[4]{'parent'} = $result_trees{'noindent_after_smallexample'};
 
 $result_texis{'noindent_after_smallexample'} = 'To obtain.
 @smallexample
@@ -171,11 +139,65 @@ Less recent versions are also present.
 
 
 $result_converted{'html_text'}->{'noindent_after_smallexample'} = '<p>To obtain.
-</p><div class="example">
-<pre class="example">$ wget \'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.guess?rev=HEAD&amp;content-type=text/plain\'
+</p><div class="example smallexample">
+<pre class="example-preformatted">$ wget \'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.guess?rev=HEAD&amp;content-type=text/plain\'
 $ wget \'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.sub?rev=HEAD&amp;content-type=text/plain\'
 </pre></div>
 <p>Less recent versions are also present.
 </p>';
+
+
+$result_converted{'latex'}->{'noindent_after_smallexample'} = '\\documentclass{book}
+\\usepackage{amsfonts}
+\\usepackage{amsmath}
+\\usepackage[gen]{eurosym}
+\\usepackage[T1]{fontenc}
+\\usepackage{textcomp}
+\\usepackage{graphicx}
+\\usepackage{etoolbox}
+\\usepackage{titleps}
+\\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\\usepackage[hidelinks]{hyperref}
+\\usepackage[utf8]{inputenc}
+
+\\makeatletter
+\\newcommand{\\Texinfosettitle}{No Title}%
+
+% redefine the \\mainmatter command such that it does not clear page
+% as if in double page
+\\renewcommand\\mainmatter{\\clearpage\\@mainmattertrue\\pagenumbering{arabic}}
+\\newenvironment{Texinfopreformatted}{%
+  \\par\\GNUTobeylines\\obeyspaces\\frenchspacing\\parskip=\\z@\\parindent=\\z@}{}
+{\\catcode`\\^^M=13 \\gdef\\GNUTobeylines{\\catcode`\\^^M=13 \\def^^M{\\null\\par}}}
+\\newenvironment{Texinfoindented}{\\begin{list}{}{}\\item\\relax}{\\end{list}}
+
+
+% used for substitutions in commands
+\\newcommand{\\Texinfoplaceholder}[1]{}
+
+\\newpagestyle{single}{\\sethead[\\chaptername{} \\thechapter{} \\chaptertitle{}][][\\thepage]
+                              {\\chaptername{} \\thechapter{} \\chaptertitle{}}{}{\\thepage}}
+
+% allow line breaking at underscore
+\\let\\Texinfounderscore\\_
+\\renewcommand{\\_}{\\Texinfounderscore\\discretionary{}{}{}}
+\\renewcommand{\\includegraphics}[1]{\\fbox{FIG \\detokenize{#1}}}
+
+\\makeatother
+% set default for @setchapternewpage
+\\makeatletter
+\\patchcmd{\\chapter}{\\if@openright\\cleardoublepage\\else\\clearpage\\fi}{\\Texinfoplaceholder{setchapternewpage placeholder}\\clearpage}{}{}
+\\makeatother
+\\pagestyle{single}%
+
+To obtain.
+\\begin{Texinfopreformatted}%
+\\ttfamily \\footnotesize \\$ wget \'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.guess?rev=HEAD\\&content-type=text/plain\'
+\\$ wget \'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.sub?rev=HEAD\\&content-type=text/plain\'
+\\end{Texinfopreformatted}
+\\noindent{}Less recent versions are also present.
+\\end{document}
+';
 
 1;

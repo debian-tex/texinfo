@@ -1,0 +1,11 @@
+\input texinfo.tex
+
+@node Top
+@top Testé
+
+@node ésseulé
+
+@node Chapitré
+@chapter Chapitré
+
+@value{non_connùe}

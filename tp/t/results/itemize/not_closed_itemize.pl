@@ -1,51 +1,47 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'not_closed_itemize'} = {
   'contents' => [
     {
-      'args' => [
-        {
-          'cmdname' => 'bullet',
-          'contents' => [],
-          'parent' => {},
-          'type' => 'command_as_argument_inserted'
-        }
-      ],
-      'cmdname' => 'itemize',
       'contents' => [
         {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'cmdname' => 'bullet',
+                  'type' => 'command_as_argument_inserted'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'itemize',
           'extra' => {
-            'command' => {}
+            'command_as_argument' => {}
           },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
         }
       ],
-      'extra' => {
-        'command_as_argument' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'not_closed_itemize'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_closed_itemize'}{'contents'}[0];
-$result_trees{'not_closed_itemize'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'not_closed_itemize'}{'contents'}[0];
-$result_trees{'not_closed_itemize'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_closed_itemize'}{'contents'}[0];
-$result_trees{'not_closed_itemize'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'not_closed_itemize'}{'contents'}[0]{'args'}[0];
-$result_trees{'not_closed_itemize'}{'contents'}[0]{'parent'} = $result_trees{'not_closed_itemize'};
+$result_trees{'not_closed_itemize'}{'contents'}[0]{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'not_closed_itemize'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'not_closed_itemize'} = '@itemize
 ';
@@ -55,7 +51,7 @@ $result_texts{'not_closed_itemize'} = '';
 
 $result_errors{'not_closed_itemize'} = [
   {
-    'error_line' => ':1: no matching `@end itemize\'
+    'error_line' => 'no matching `@end itemize\'
 ',
     'file_name' => '',
     'line_nr' => 1,

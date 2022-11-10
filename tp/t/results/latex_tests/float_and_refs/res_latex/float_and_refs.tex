@@ -1,0 +1,105 @@
+\documentclass{book}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[gen]{eurosym}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{etoolbox}
+\usepackage{titleps}
+\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+
+\makeatletter
+\newcommand{\Texinfosettitle}{No Title}%
+
+% new float for type `'
+\newfloat{TexinfoFloat}{htb}{tfl}[chapter]
+\floatname{TexinfoFloat}{}
+% new float for type `Thing'
+\newfloat{TexinfoFloatThing}{htb}{tfl}[chapter]
+\floatname{TexinfoFloatThing}{}
+% redefine the \mainmatter command such that it does not clear page
+% as if in double page
+\renewcommand\mainmatter{\clearpage\@mainmattertrue\pagenumbering{arabic}}
+\newenvironment{Texinfopreformatted}{%
+  \par\GNUTobeylines\obeyspaces\frenchspacing\parskip=\z@\parindent=\z@}{}
+{\catcode`\^^M=13 \gdef\GNUTobeylines{\catcode`\^^M=13 \def^^M{\null\par}}}
+\newenvironment{Texinfoindented}{\begin{list}{}{}\item\relax}{\end{list}}
+
+% used for substitutions in commands
+\newcommand{\Texinfoplaceholder}[1]{}
+
+\newpagestyle{single}{\sethead[\chaptername{} \thechapter{} \chaptertitle{}][][\thepage]
+                              {\chaptername{} \thechapter{} \chaptertitle{}}{}{\thepage}}
+
+% allow line breaking at underscore
+\let\Texinfounderscore\_
+\renewcommand{\_}{\Texinfounderscore\discretionary{}{}{}}
+\renewcommand{\includegraphics}[1]{\fbox{FIG \detokenize{#1}}}
+
+\makeatother
+% set default for @setchapternewpage
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\Texinfoplaceholder{setchapternewpage placeholder}\clearpage}{}{}
+\makeatother
+\pagestyle{single}%
+
+\begin{document}
+\label{anchor:Top}%
+\chapter{{chapter}}
+\label{anchor:chapter}%
+
+\begin{TexinfoFloat}
+no type
+\caption[short no type float]{no type float}
+
+
+\label{anchor:no-type}%
+\end{TexinfoFloat}
+
+\begin{TexinfoFloatThing}
+Something with
+\caption[short with type float]{with type float}
+
+
+\label{anchor:with-type}%
+\end{TexinfoFloatThing}
+
+\begin{figure}
+In figure
+\caption[short caption for figure]{caption for figure}
+
+
+\label{anchor:my-figure}%
+\end{figure}
+
+\chapter{{refs}}
+
+See \hyperref[anchor:no-type]{\ref*{anchor:no-type}}.
+See \hyperref[anchor:no-type]{\ref*{anchor:no-type}}.
+See \hyperref[anchor:no-type]{three}.
+See Section ``three'' in \texttt{four}.
+See Section ``three'' in \textsl{five}.
+
+See \hyperref[anchor:with-type]{Thing~\ref*{anchor:with-type}}.
+See \hyperref[anchor:with-type]{Thing~\ref*{anchor:with-type}}.
+See \hyperref[anchor:with-type]{three}.
+See Section ``three'' in \texttt{four}.
+See Section ``three'' in \textsl{five}.
+
+See \hyperref[anchor:my-figure]{Figure~\ref*{anchor:my-figure}}.
+See \hyperref[anchor:my-figure]{Figure~\ref*{anchor:my-figure}}.
+See \hyperref[anchor:my-figure]{three}.
+See Section ``three'' in \texttt{four}.
+See Section ``three'' in \textsl{five}.
+
+\chapter{{lists}}
+
+\listof{TexinfoFloat}{}
+\listoffigures
+\listof{TexinfoFloatThing}{}
+
+\end{document}

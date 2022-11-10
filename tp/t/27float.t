@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -18,6 +18,24 @@ my @test_cases = (
 In float.
 @caption{Caption.}
 @end float'],
+['empty_label_with_space',
+'@float Type, 
+@end float
+'],
+# FIXME no error 'empty node name after expansion'
+['empty_label_with_space_comment',
+'@float Type, @c comment
+@end float
+'],
+['empty_label_no_space',
+'@float Type,
+@end float
+'],
+# FIXME no error 'empty node name after expansion'
+['empty_label_no_space_comment',
+'@float Type,@c comment
+@end float
+'],
 ['ref_to_float',
 '@float Text, Label1
 Float
@@ -86,6 +104,23 @@ In float.
 
 @printindex cp
 
+'],
+['empty_caption',
+'@float a, b
+In float A, B
+@caption{}
+@end float
+
+@float , c
+In float , C
+@shortcaption{}
+@end float
+
+@float
+In float
+@shortcaption{}
+@caption{}
+@end float
 '],
 ['complex_float',
 '@node Top
@@ -521,10 +556,7 @@ foreach my $test (@test_cases) {
     push @{$test->[2]->{'test_formats'}}, 'info';
   }
   push @{$test->[2]->{'test_formats'}}, 'html';
+  $test->[2]->{'full_document'} = 1 unless (exists($test->[2]->{'full_document'}));
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('float', \@test_cases, $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('float', \@test_cases);

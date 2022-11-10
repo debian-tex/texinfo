@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -14,45 +14,38 @@ $result_trees{'space_in_setfilename'} = {
             {
               'contents' => [
                 {
-                  'cmdname' => ' ',
-                  'parent' => {}
+                  'cmdname' => ' '
                 },
                 {
                   'args' => [
                     {
                       'contents' => [
                         {
-                          'parent' => {},
                           'text' => ' name ',
                           'type' => 'raw'
                         }
                       ],
-                      'parent' => {},
                       'type' => 'brace_command_arg'
                     }
                   ],
                   'cmdname' => 'verb',
-                  'contents' => [],
                   'extra' => {
                     'delimiter' => ':'
                   },
-                  'line_nr' => {
+                  'source_info' => {
                     'file_name' => '',
                     'line_nr' => 1,
                     'macro' => ''
-                  },
-                  'parent' => {}
+                  }
                 },
                 {
-                  'cmdname' => ' ',
-                  'parent' => {}
+                  'cmdname' => ' '
                 }
               ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -61,29 +54,25 @@ $result_trees{'space_in_setfilename'} = {
             'missing_argument' => 1,
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -91,12 +80,10 @@ $result_trees{'space_in_setfilename'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'contents' => [],
       'extra' => {
         'node_content' => [
           {}
@@ -112,30 +99,17 @@ $result_trees{'space_in_setfilename'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 3,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0];
-$result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[0];
-$result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[0];
-$result_trees{'space_in_setfilename'}{'contents'}[0]{'parent'} = $result_trees{'space_in_setfilename'};
-$result_trees{'space_in_setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[1]{'args'}[0];
-$result_trees{'space_in_setfilename'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[1];
 $result_trees{'space_in_setfilename'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'space_in_setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'space_in_setfilename'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'space_in_setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'space_in_setfilename'}{'contents'}[1]{'parent'} = $result_trees{'space_in_setfilename'};
 
 $result_texis{'space_in_setfilename'} = '@setfilename @ @verb{: name :}@ 
 
@@ -146,27 +120,23 @@ $result_texis{'space_in_setfilename'} = '@setfilename @ @verb{: name :}@
 $result_texts{'space_in_setfilename'} = '
 ';
 
-$result_sectioning{'space_in_setfilename'} = {};
-
 $result_nodes{'space_in_setfilename'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
 $result_menus{'space_in_setfilename'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
 $result_errors{'space_in_setfilename'} = [
   {
-    'error_line' => ':1: warning: @verb should not appear in @setfilename
+    'error_line' => 'warning: @verb should not appear in @setfilename
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -175,7 +145,7 @@ $result_errors{'space_in_setfilename'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: bad argument to @setfilename: @ @verb{: name :}@
+    'error_line' => 'bad argument to @setfilename: @ @verb{: name :}@
 ',
     'file_name' => '',
     'line_nr' => 1,

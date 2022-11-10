@@ -1,7 +1,7 @@
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
-# Copyright 2002-2019 Free Software Foundation, Inc.
+# Copyright 2002-2022 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -20,12 +20,7 @@ noinst_SCRIPTS = pre-inst-env
 # Additional files to distribute.
 EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
   system.h gnulib/m4/gnulib-cache.m4 \
-  contrib djgpp
-
-# include contrib perl manual, exclude .git.
-dist-hook:
-	cd $(top_distdir)/contrib/perldoc-all && $(MAKE) dist-hook
-	rm -rf `find $(distdir) -type d -name .git`
+  djgpp
 
 # This is to prevent texinfo.tex from being included in the top-level
 # distribution directory.

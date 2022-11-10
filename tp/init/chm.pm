@@ -24,35 +24,48 @@
 #
 #-##############################################################################
 
+# loading with -d:TraceUse leads to an error like
+# texi2any: warning: error loading ../init/chm.pm: Undefined subroutine &Devel::TraceUse::texinfo_set_format_from_init_file called at ../init/chm.pm line 43.
+# defining the package here avoids this error.
+package Texinfo::Config;
+
 use strict;
+
+# To check if there is no erroneous autovivification
+#no autovivification qw(fetch delete exists store strict);
 
 use File::Spec;
 
-# For __(
+# Also for __(
 use Texinfo::Common;
 
-main::set_global_format('html');
+# load modules to make sure that they are loaded before use
+use Texinfo::Convert::Unicode;
+use Texinfo::Convert::Utils;
+use Texinfo::Convert::Text;
+use Texinfo::Structuring;
 
-set_from_init_file('TOP_FILE', undef);
+texinfo_set_format_from_init_file('html');
 
-#$SECTION_NAVIGATION = 0; # to avoid headers in normal elements
-set_from_init_file('FORMAT_MENU', 'nomenu');
-set_from_init_file('SPLIT', 'node');
-set_from_init_file('contents', 1);
+texinfo_set_from_init_file('TOP_FILE', undef);
 
-set_from_init_file('DEFAULT_RULE', '');
-set_from_init_file('BIG_RULE', '');
-set_from_init_file('HEADERS', 0);
+texinfo_set_from_init_file('contents', 1);
 
-set_from_init_file('footnotestyle', 'end');
+# remove navigation information, it is done by the viewer, and remove
+# anything that gets in the way of the navigation.
+texinfo_set_from_init_file('FORMAT_MENU', 'nomenu');
+texinfo_set_from_init_file('SPLIT', 'node');
 
-#FIXME remove that later?
-set_from_init_file('USE_NODES', 0);
+texinfo_set_from_init_file('DEFAULT_RULE', '');
+texinfo_set_from_init_file('BIG_RULE', '');
+texinfo_set_from_init_file('HEADERS', 0);
 
-use vars qw(%commands_formatting);
-texinfo_register_formatting_function('format_end_file', \&chm_format_end_file);
+texinfo_set_from_init_file('footnotestyle', 'end');
+
+texinfo_set_from_init_file('PROGRAM_NAME_IN_FOOTER', 0);
+
 texinfo_register_formatting_function('format_navigation_header', \&chm_noop);
-texinfo_register_formatting_function('format_navigation_header_panel', \&chm_noop);
+texinfo_register_formatting_function('format_navigation_panel', \&chm_noop);
 
 my %chm_languages = (
     'en'         => '0x409 English (United States)',
@@ -170,21 +183,8 @@ my %hhc_global_property = (
 
 # at least kchmviewer has trouble with the corresponding textual entities
 foreach my $thing ('OE', 'oe', 'euro') {
-  $commands_formatting{'normal'}->{$thing} 
-    = $Texinfo::Convert::Unicode::unicode_entities{$thing};
-}
-
-sub chm_format_end_file($)
-{
-  my $self = shift;
-  my $pre_body_close = $self->get_conf('PRE_BODY_CLOSE');
-  $pre_body_close = '' if (!defined($pre_body_close));
-  return "<p>
-$pre_body_close
-</p>
-</body>
-</html>
-";
+  texinfo_register_no_arg_command_formatting($thing, undef,
+                   $Texinfo::Convert::Unicode::unicode_entities{$thing});
 }
 
 sub chm_noop($$)
@@ -192,7 +192,7 @@ sub chm_noop($$)
   return '';
 }
 
-sub convert_tree ($$;$)
+sub _chm_convert_tree_to_text($$;$)
 {
   my $converter = shift;
   my $tree = shift;
@@ -200,31 +200,40 @@ sub convert_tree ($$;$)
 
   $options = {} if (!defined($options));
 
-  return $converter->protect_text(
-    Texinfo::Convert::Text::convert($tree,
-   {Texinfo::Common::_convert_text_options($converter),
+  return &{$converter->formatting_function('format_protect_text')}($converter,
+    Texinfo::Convert::Text::convert_to_text($tree,
+   {Texinfo::Convert::Text::copy_options_for_convert_text($converter),
      %$options}));
 }
 
 sub chm_init($)
 {
   my $self = shift;
-  return if (defined($self->get_conf('OUTFILE'))
+
+  return 0 if (defined($self->get_conf('OUTFILE'))
         and $Texinfo::Common::null_device_file{$self->get_conf('OUTFILE')});
-  my $document_name = $self->{'document_name'};
-  my $outdir = $self->{'destination_directory'};
+
+  my $verbose = $self->get_conf('VERBOSE');
+
+  my $document_name = $self->get_info('document_name');
+  my $outdir = $self->get_info('destination_directory');
   $outdir = File::Spec->curdir() if ($outdir eq '');
 
   my $hhk_filename = $document_name . ".hhk";
-  my $hhk_file = File::Spec->catfile($outdir, $hhk_filename);
-  my $hhk_fh = Texinfo::Common::open_out($self, $hhk_file);
+  my $hhk_file_path_name = File::Spec->catfile($outdir, $hhk_filename);
+  my ($encoded_hhk_file_path_name, $hhk_path_encoding)
+    = $self->encoded_output_file_name($hhk_file_path_name);
+  my ($hhk_fh, $hhk_error_message) = Texinfo::Common::output_files_open_out(
+                      $self->output_files_information(), $self,
+                      $encoded_hhk_file_path_name);
   if (!defined($hhk_fh)) {
-    $self->document_error(sprintf(__("chm.pm: could not open %s for writing: %s\n"), 
-                  $hhk_file, $!));
-    return 0;
+    $self->document_error($self,
+         sprintf(__("chm.pm: could not open %s for writing: %s\n"),
+                  $hhk_file_path_name, $hhk_error_message));
+    return 1;
   }
-  print STDERR "# writing HTML Help index in $hhk_file...\n" 
-     if ($self->get_conf('VERBOSE'));
+  print STDERR "# chm: writing HTML Help index in $hhk_file_path_name...\n"
+     if ($verbose);
   print $hhk_fh "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n";
   print $hhk_fh "<HEAD>\n<meta name=\"GENERATOR\" content=\""
    .$self->get_conf('PROGRAM') ."\">\n";
@@ -235,54 +244,56 @@ sub chm_init($)
   }
   print $hhk_fh "</OBJECT>\n";
 
-  my $index_entries = Texinfo::Structuring::sort_indices($self, 
-                                          $self->{'index_entries'},
-                                          $self->{'index_names'});
+  my ($index_entries, $index_entries_sort_strings)
+       = Texinfo::Structuring::sort_indices($self, $self,
+                             $self->get_info('index_entries'));
   if ($index_entries) {
     foreach my $index_name (sort(keys(%$index_entries))) {
       foreach my $index_entry_ref (@{$index_entries->{$index_name}}) {
-        my $file = $self->command_filename($index_entry_ref->{'command'});
-        # happens for things in @titlepage when it is not output
-        if (!defined($file)) {
-          if ($self->{'elements'} and $self->{'elements'}->[0]
-             and defined($self->{'elements'}->[0]->{'filename'})) {
-            # In that case use the first page.
-            $file = $self->{'elements'}->[0]->{'filename'};
-          } else {
-            $file = '';
-          }
-        }
-        my $anchor = $self->command_target($index_entry_ref->{'command'});
-        my $origin_href = "$file#$anchor";
-        my $entry = convert_tree($self, 
-                               {'contents' => $index_entry_ref->{'content'}},
-                               {'code' => $index_entry_ref->{'in_code'}});
-        print $hhk_fh "<LI> <OBJECT type=\"text/sitemap\">\n<param name=\"Name\" value=\"$entry\">\n<param name=\"Local\" value=\"$origin_href\">\n</OBJECT> </LI>\n" 
+        # do not register index entries that do not point to the document
+        next if ($index_entry_ref->{'entry_element'}->{'extra'}
+                 and ($index_entry_ref->{'entry_element'}->{'extra'}->{'seeentry'}
+                      or $index_entry_ref->{'entry_element'}->{'extra'}->{'seealso'}));
+        my $origin_href
+            = $self->command_href($index_entry_ref->{'entry_element'}, '');
+        my $entry = _chm_convert_tree_to_text($self,
+                         {'contents' => $index_entry_ref->{'entry_content'}},
+                         {'code' => $index_entry_ref->{'in_code'}});
+        print $hhk_fh "<LI> <OBJECT type=\"text/sitemap\">\n"
+                      ."<param name=\"Name\" value=\"$entry\">\n"
+                      ."<param name=\"Local\" value=\"$origin_href\">\n"
+                      ."</OBJECT> </LI>\n"
          if ($entry =~ /\S/);
       }
     }
   }
   print $hhk_fh "</BODY>\n</HTML>\n";
-  delete $self->{'unclosed_files'}->{$hhk_file};
+  Texinfo::Common::output_files_register_closed(
+    $self->output_files_information(), $encoded_hhk_file_path_name);
   if (!close ($hhk_fh)) {
-    $self->document_error(sprintf(__("chm.pm: error on closing %s: %s"),
-                          $hhk_file, $!));
-    return 0;                  
+    $self->document_error($self,
+           sprintf(__("chm.pm: error on closing %s: %s"),
+                          $hhk_file_path_name, $!));
+    return 1;
   }
 
   my $hhc_filename = $document_name . ".hhc";
-  my $hhc_file = File::Spec->catfile($outdir, $hhc_filename);
-  my $hhc_fh = Texinfo::Common::open_out($self, $hhc_file);
-  # Not sure $! is still valid
+  my $hhc_file_path_name = File::Spec->catfile($outdir, $hhc_filename);
+  my ($encoded_hhc_file_path_name, $hhc_path_encoding)
+    = $self->encoded_output_file_name($hhc_file_path_name);
+  my ($hhc_fh, $hhc_error_message) = Texinfo::Common::output_files_open_out(
+                      $self->output_files_information(), $self,
+                      $encoded_hhc_file_path_name);
   if (!defined($hhc_fh)) {
-    $self->document_error(sprintf(__("chm.pm: could not open %s for writing: %s\n"), 
-                  $hhc_file, $!));
-    return 0;
+    $self->document_error($self,
+         sprintf(__("chm.pm: could not open %s for writing: %s\n"),
+                  $hhc_file_path_name, $hhc_error_message));
+    return 1;
   }
 
-  print STDERR "# writing HTML Help project in $hhc_file...\n" 
-     if ($self->get_conf('VERBOSE'));
-  
+  print STDERR "# chm: writing HTML Help project in $hhc_file_path_name...\n"
+     if ($verbose);
+
   print $hhc_fh "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n";
   print $hhc_fh "<HEAD>\n<meta name=\"GENERATOR\" content=\""
    .$self->get_conf('PROGRAM') ."\">\n";
@@ -290,41 +301,45 @@ sub chm_init($)
   print $hhc_fh "<OBJECT type=\"text/site properties\">\n";
   foreach my $property (sort(keys(%hhc_global_property))) {
     print $hhc_fh "<param name=\"$property\" value=\"$hhc_global_property{$property}\">\n";
-      
   }
   print $hhc_fh "</OBJECT>\n";
 
   if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
     my $section_root = $self->{'structuring'}->{'sectioning_root'};
-    my $upper_level = $section_root->{'section_childs'}->[0]->{'level'};
-    foreach my $top_section(@{$section_root->{'section_childs'}}) {
-      $upper_level = $top_section->{'level'}
-      if ($top_section->{'level'} < $upper_level);
+    my $upper_level = $section_root->{'structure'}->{'section_childs'}->[0]
+                                               ->{'structure'}->{'section_level'};
+    foreach my $top_section (@{$section_root->{'structure'}->{'section_childs'}}) {
+      $upper_level = $top_section->{'structure'}->{'section_level'}
+      if ($top_section->{'structure'}->{'section_level'} < $upper_level);
     }
     $upper_level = 1 if ($upper_level <= 0);
     my $root_level = $upper_level - 1;
     my $level = $root_level;
     foreach my $section (@{$self->{'structuring'}->{'sections_list'}}) {
       next if ($section->{'cmdname'} eq 'part');
-      my $section_level = $section->{'level'};
+      my $section_level = $section->{'structure'}->{'section_level'};
       $section_level = 1 if ($section_level == 0);
       if ($level < $section_level) {
         while ($level < $section_level) {
           print $hhc_fh "<UL>\n";
           $level++;
         }
-      } elsif ($level > $section->{'level'}) {
+      } elsif ($level > $section->{'structure'}->{'section_level'}) {
         while ($level > $section_level) {
           print $hhc_fh "</UL>\n";
           $level--;
         }
       }
-      my $text = convert_tree($self, $section->{'args'}->[0]);
-      $text = $self->Texinfo::Common::numbered_heading($section, $text,
-                          $self->get_conf('NUMBER_SECTIONS')); 
-      my $file = $self->command_filename($section);
-      my $anchor = $self->command_target($section);
-      my $origin_href = "$file#$anchor";
+      my $text = _chm_convert_tree_to_text($self, $section->{'args'}->[0]);
+      # should not be needed as end of lines are not converted, end of line
+      # can be added with invalid nestings.
+      chomp($text);
+      $text
+        = Texinfo::Convert::Utils::add_heading_number($self,$section, $text,
+                                         $self->get_conf('NUMBER_SECTIONS'));
+      # the empty string as second argument makes sure that the
+      # source file is different from the target file.
+      my $origin_href = $self->command_href($section, '');
       print $hhc_fh "<LI> <OBJECT type=\"text/sitemap\">\n<param name=\"Name\" value=\"$text\">\n<param name=\"Local\" value=\"$origin_href\">\n</OBJECT> </LI>\n";
     }
     while ($level > $root_level) {
@@ -333,36 +348,41 @@ sub chm_init($)
     }
   }
   print $hhc_fh "</HTML>\n</BODY>\n";
-  delete $self->{'unclosed_files'}->{$hhc_file};
+  Texinfo::Common::output_files_register_closed(
+    $self->output_files_information(), $encoded_hhc_file_path_name);
   if (!close ($hhc_fh)) {
-    $self->document_error(sprintf(__("chm.pm: error on closing %s: %s"),
-                          $hhc_file, $!));
-    return 0;                  
+    $self->document_error($self,
+           sprintf(__("chm.pm: error on closing %s: %s"),
+                          $hhc_file_path_name, $!));
+    return 1;
   }
 
   my $hhp_filename = $document_name . ".hhp";
-  my $hhp_file = File::Spec->catfile($outdir, $hhp_filename);
-  my $hhp_fh = Texinfo::Common::open_out($self, $hhp_file);
-  # Not sure $! is still valid
+  my $hhp_file_path_name = File::Spec->catfile($outdir, $hhp_filename);
+  my ($encoded_hhp_file_path_name, $hhp_path_encoding)
+    = $self->encoded_output_file_name($hhp_file_path_name);
+  my ($hhp_fh, $hhp_error_message) = Texinfo::Common::output_files_open_out(
+                      $self->output_files_information(), $self,
+                      $encoded_hhp_file_path_name);
   if (!defined($hhp_fh)) {
-    $self->document_error(sprintf(__("chm.pm: could not open %s for writing: %s\n"), 
-                  $hhp_file, $!));
-    return 0;
+    $self->document_error(
+           $self, sprintf(__("chm.pm: could not open %s for writing: %s\n"),
+                  $hhp_file_path_name, $hhp_error_message));
+    return 1;
   }
-  print STDERR "# writing HTML Help project in $hhp_file...\n" 
-     if ($self->get_conf('VERBOSE'));
+  print STDERR "# chm: writing HTML Help project in $hhp_file_path_name...\n"
+     if ($verbose);
   my $language = $chm_languages{'en'};
   my $documentlanguage = $self->get_conf('documentlanguage');
   $documentlanguage =~ s/_.*//;
   if (exists ($chm_languages{$documentlanguage})) {
     $language = $chm_languages{$documentlanguage};
   }
-  my $title = convert_tree($self, $self->{'title_tree'});
+  my $title = _chm_convert_tree_to_text($self, $self->get_info('title_tree'));
   my $top_file = '';
-  my $top_element = $self->global_element('Top');
-  if ($top_element and $top_element->{'extra'}->{'element_command'}) {
-    $top_file 
-     = $self->command_filename($top_element->{'extra'}->{'element_command'});
+  my $top_element = $self->global_direction_element('Top');
+  if ($top_element) {
+    $top_file = $top_element->{'structure'}->{'unit_filename'};
   }
 
   print $hhp_fh <<EOT;
@@ -385,23 +405,25 @@ Default=,"$hhc_filename","$hhk_filename","$top_file","$top_file",,,,,0x22520,,0x
 EOT
 
   my %chm_files;
-  if ($self->{'elements'}) {
-    foreach my $element (@{$self->{'elements'}}) {
-      if (!$chm_files{$element->{'filename'}}) {
-        print $hhp_fh "$element->{'filename'}\n";
-        $chm_files{$element->{'filename'}} = 1;
+  if ($self->{'tree_units'}) {
+    foreach my $element (@{$self->{'tree_units'}}) {
+      if (!$chm_files{$element->{'structure'}->{'unit_filename'}}) {
+        print $hhp_fh "$element->{'structure'}->{'unit_filename'}\n";
+        $chm_files{$element->{'structure'}->{'unit_filename'}} = 1;
       }
     }
   }
 
-  delete $self->{'unclosed_files'}->{$hhp_file};
+  Texinfo::Common::output_files_register_closed(
+    $self->output_files_information(), $encoded_hhp_file_path_name);
   if (!close ($hhp_fh)) {
-    $self->document_error(sprintf(__("chm.pm: error on closing %s: %s"),
-                          $hhp_file, $!));
-    return 0;                  
+    $self->document_error($self,
+         sprintf(__("chm.pm: error on closing %s: %s"),
+                          $hhp_file_path_name, $!));
+    return 1;
   }
 
-  return 1;
+  return 0;
 }
 texinfo_register_handler('init', \&chm_init);
 

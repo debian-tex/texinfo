@@ -1,348 +1,284 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'definfoenclose'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'definfoenclose phoo,//,\\  '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'phoo,//,\\'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'definfoenclose',
-          'extra' => {
-            'misc_args' => [
-              'phoo',
-              '//',
-              '\\'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'bar'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'phoo',
-          'contents' => [],
-          'extra' => {
-            'begin' => '//',
-            'end' => '\\'
-          },
-          'parent' => {},
-          'type' => 'definfoenclose_command'
-        },
-        {
-          'parent' => {},
           'text' => '
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'definfoenclose phi,:,:  '
+          'type' => 'empty_line'
         },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'phi,:,:'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'definfoenclose',
-          'extra' => {
-            'misc_args' => [
-              'phi',
-              ':',
-              ':'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'bar'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'phi',
-          'contents' => [],
-          'extra' => {
-            'begin' => ':',
-            'end' => ':'
-          },
-          'parent' => {},
-          'type' => 'definfoenclose_command'
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'very strong'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'strong',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'strong,(strong:,:)'
+              'text' => 'definfoenclose phoo,//,\\  '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'phoo,//,\\'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'definfoenclose',
+              'extra' => {
+                'misc_args' => [
+                  'phoo',
+                  '//',
+                  '\\'
+                ],
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
-'
-          },
-          'parent' => {},
-          'type' => 'line_arg'
-        }
-      ],
-      'cmdname' => 'definfoenclose',
-      'extra' => {
-        'misc_args' => [
-          'strong',
-          '(strong:',
-          ':)'
-        ],
-        'spaces_before_argument' => ' '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 12,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'bar'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'phoo',
+              'extra' => {
+                'begin' => '//',
+                'end' => '\\'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
+              'type' => 'definfoenclose_command'
+            },
+            {
+              'text' => '
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'definfoenclose phi,:,:  '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'phi,:,:'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'definfoenclose',
+              'extra' => {
+                'misc_args' => [
+                  'phi',
+                  ':',
+                  ':'
+                ],
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              }
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'bar'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'phi',
+              'extra' => {
+                'begin' => ':',
+                'end' => ':'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 8,
+                'macro' => ''
+              },
+              'type' => 'definfoenclose_command'
+            },
+            {
+              'text' => '
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'very strong'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'strong',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 10,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => ' is it really strong? '
+                  'text' => 'strong,(strong:,:)'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'line_arg'
             }
           ],
-          'cmdname' => 'strong',
-          'contents' => [],
+          'cmdname' => 'definfoenclose',
           'extra' => {
-            'begin' => '(strong:',
-            'end' => ':)'
+            'misc_args' => [
+              'strong',
+              '(strong:',
+              ':)'
+            ],
+            'spaces_before_argument' => ' '
           },
-          'parent' => {},
-          'type' => 'definfoenclose_command'
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 12,
+            'macro' => ''
+          }
         },
         {
-          'parent' => {},
           'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => ' is it really strong? '
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'strong',
+              'extra' => {
+                'begin' => '(strong:',
+                'end' => ':)'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 14,
+                'macro' => ''
+              },
+              'type' => 'definfoenclose_command'
+            },
+            {
+              'text' => '
 '
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'definfoenclose'}{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'};
-$result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[1];
-$result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1];
-$result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[1];
-$result_trees{'definfoenclose'}{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'};
-$result_trees{'definfoenclose'}{'contents'}[2]{'parent'} = $result_trees{'definfoenclose'};
-$result_trees{'definfoenclose'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[3]{'contents'}[0]{'args'}[0];
-$result_trees{'definfoenclose'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[3]{'contents'}[0];
-$result_trees{'definfoenclose'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[3];
-$result_trees{'definfoenclose'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[3];
-$result_trees{'definfoenclose'}{'contents'}[3]{'parent'} = $result_trees{'definfoenclose'};
-$result_trees{'definfoenclose'}{'contents'}[4]{'parent'} = $result_trees{'definfoenclose'};
-$result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[5];
-$result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'args'}[0];
-$result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1];
-$result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[5];
-$result_trees{'definfoenclose'}{'contents'}[5]{'parent'} = $result_trees{'definfoenclose'};
-$result_trees{'definfoenclose'}{'contents'}[6]{'parent'} = $result_trees{'definfoenclose'};
-$result_trees{'definfoenclose'}{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[7]{'contents'}[0]{'args'}[0];
-$result_trees{'definfoenclose'}{'contents'}[7]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[7]{'contents'}[0];
-$result_trees{'definfoenclose'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[7];
-$result_trees{'definfoenclose'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[7];
-$result_trees{'definfoenclose'}{'contents'}[7]{'parent'} = $result_trees{'definfoenclose'};
-$result_trees{'definfoenclose'}{'contents'}[8]{'parent'} = $result_trees{'definfoenclose'};
-$result_trees{'definfoenclose'}{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[9]{'contents'}[0]{'args'}[0];
-$result_trees{'definfoenclose'}{'contents'}[9]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[9]{'contents'}[0];
-$result_trees{'definfoenclose'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[9];
-$result_trees{'definfoenclose'}{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[9];
-$result_trees{'definfoenclose'}{'contents'}[9]{'parent'} = $result_trees{'definfoenclose'};
-$result_trees{'definfoenclose'}{'contents'}[10]{'parent'} = $result_trees{'definfoenclose'};
-$result_trees{'definfoenclose'}{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[11]{'args'}[0];
-$result_trees{'definfoenclose'}{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[11];
-$result_trees{'definfoenclose'}{'contents'}[11]{'parent'} = $result_trees{'definfoenclose'};
-$result_trees{'definfoenclose'}{'contents'}[12]{'parent'} = $result_trees{'definfoenclose'};
-$result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[0]{'args'}[0];
-$result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[0];
-$result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[13];
-$result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[13];
-$result_trees{'definfoenclose'}{'contents'}[13]{'parent'} = $result_trees{'definfoenclose'};
 
 $result_texis{'definfoenclose'} = '
 definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
@@ -376,16 +312,16 @@ very strong
 
 $result_errors{'definfoenclose'} = [
   {
-    'error_line' => ':2: warning: @definfoenclose is obsolete.
+    'error_line' => 'warning: @definfoenclose is obsolete
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@definfoenclose is obsolete.',
+    'text' => '@definfoenclose is obsolete',
     'type' => 'warning'
   },
   {
-    'error_line' => ':2: warning: @definfoenclose should only appear at the beginning of a line
+    'error_line' => 'warning: @definfoenclose should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 2,
@@ -394,16 +330,16 @@ $result_errors{'definfoenclose'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: @definfoenclose is obsolete.
+    'error_line' => 'warning: @definfoenclose is obsolete
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => '@definfoenclose is obsolete.',
+    'text' => '@definfoenclose is obsolete',
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: @definfoenclose should only appear at the beginning of a line
+    'error_line' => 'warning: @definfoenclose should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 6,
@@ -412,12 +348,12 @@ $result_errors{'definfoenclose'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':12: warning: @definfoenclose is obsolete.
+    'error_line' => 'warning: @definfoenclose is obsolete
 ',
     'file_name' => '',
     'line_nr' => 12,
     'macro' => '',
-    'text' => '@definfoenclose is obsolete.',
+    'text' => '@definfoenclose is obsolete',
     'type' => 'warning'
   }
 ];
@@ -448,24 +384,82 @@ $result_converted{'html_text'}->{'definfoenclose'} = '
 <p>definfoenclose phi,:,:  </p>
 <p>:bar:
 </p>
-<p><strong>very strong</strong>
+<p><strong class="strong">very strong</strong>
 </p>
 
 <p>(strong: is it really strong? :)
 </p>';
 
 
+$result_converted{'latex'}->{'definfoenclose'} = '\\documentclass{book}
+\\usepackage{amsfonts}
+\\usepackage{amsmath}
+\\usepackage[gen]{eurosym}
+\\usepackage[T1]{fontenc}
+\\usepackage{textcomp}
+\\usepackage{graphicx}
+\\usepackage{etoolbox}
+\\usepackage{titleps}
+\\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\\usepackage[hidelinks]{hyperref}
+\\usepackage[utf8]{inputenc}
+
+\\makeatletter
+\\newcommand{\\Texinfosettitle}{No Title}%
+
+% redefine the \\mainmatter command such that it does not clear page
+% as if in double page
+\\renewcommand\\mainmatter{\\clearpage\\@mainmattertrue\\pagenumbering{arabic}}
+\\newenvironment{Texinfopreformatted}{%
+  \\par\\GNUTobeylines\\obeyspaces\\frenchspacing\\parskip=\\z@\\parindent=\\z@}{}
+{\\catcode`\\^^M=13 \\gdef\\GNUTobeylines{\\catcode`\\^^M=13 \\def^^M{\\null\\par}}}
+\\newenvironment{Texinfoindented}{\\begin{list}{}{}\\item\\relax}{\\end{list}}
+
+% used for substitutions in commands
+\\newcommand{\\Texinfoplaceholder}[1]{}
+
+\\newpagestyle{single}{\\sethead[\\chaptername{} \\thechapter{} \\chaptertitle{}][][\\thepage]
+                              {\\chaptername{} \\thechapter{} \\chaptertitle{}}{}{\\thepage}}
+
+% allow line breaking at underscore
+\\let\\Texinfounderscore\\_
+\\renewcommand{\\_}{\\Texinfounderscore\\discretionary{}{}{}}
+\\renewcommand{\\includegraphics}[1]{\\fbox{FIG \\detokenize{#1}}}
+
+\\makeatother
+% set default for @setchapternewpage
+\\makeatletter
+\\patchcmd{\\chapter}{\\if@openright\\cleardoublepage\\else\\clearpage\\fi}{\\Texinfoplaceholder{setchapternewpage placeholder}\\clearpage}{}{}
+\\makeatother
+\\pagestyle{single}%
+
+
+definfoenclose phoo,//,\\textbackslash{}  
+bar
+
+definfoenclose phi,:,:  
+bar
+
+\\textbf{very strong}
+
+
+\\textbf{ is it really strong? }
+\\end{document}
+';
+
+
 $result_converted{'docbook'}->{'definfoenclose'} = '
 <para>definfoenclose phoo,//,\\  </para>
-<para>//bar\\
+<para>bar
 </para>
 <para>definfoenclose phi,:,:  </para>
-<para>:bar:
+<para>bar
 </para>
 <para><emphasis role="bold">very strong</emphasis>
 </para>
 
-<para>(strong: is it really strong? :)
+<para> is it really strong? 
 </para>';
 
 1;

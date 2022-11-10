@@ -1,0 +1,8 @@
+\input texinfo
+
+@node Top
+@top top section
+
+@include included_file.texi
+
+@image{file_image}

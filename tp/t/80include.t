@@ -1,14 +1,14 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
 my @test_cases = (
 [ 'simple',
 '@include inc_file.texi
-'],
+',{'test_formats' => ['info', 'plaintext', 'html', 'xml', 'docbook', 'latex_text']}],
 ['simple_no_eol',
 '@include inc_file.texi'
 ],
@@ -147,12 +147,14 @@ After.'],
 @verbatiminclude verbatim_encoded_latin1.texi
 ', {'test_formats' => ['plaintext']}],
 ['cpp_lines',
-undef, {'test_file' => 'cpp_lines.texi'}
+undef, {'test_file' => 'cpp_lines.texi'},
+],
+['cpp_line_before_first_node',
+undef, {'test_file' => 'cpp_line_before_first_node.texi'},
+],
+['cpp_line_latin1',
+undef, {'test_file' => 'cpp_line_latin1.texi'},
 ],
 );
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('include', \@test_cases, $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('include', \@test_cases);

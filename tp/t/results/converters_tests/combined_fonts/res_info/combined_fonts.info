@@ -1,0 +1,46 @@
+This is combined_fonts.info, produced from .
+
+
+File: combined_fonts.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+top section
+***********
+
+* Menu:
+
+* chapter::
+
+
+File: combined_fonts.info,  Node: chapter,  Prev: Top,  Up: Top
+
+1 chapter
+*********
+
+‘c--ode’, “d–fn”, V–AR, *s–trong*, ‘k--bd’, ‘s--amp’.
+
+   ‘“d--fn in code”’ ‘C--ODE IN VAR’ ‘V--AR IN CODE’ *‘k--bd in strong’*
+‘*s--trong in samp*’ *‘s--amp in strong’*
+
+   ‘c–ite’
+
+   ‘‘c--ite in code’’ ‘‘c--ode in cite’’
+
+   ‘c--ode’ s–lanted b– t--
+
+   ‘s--lanted in code’ ‘c--ode in slanted’ s–lanted in b b– in slanted
+s--lanted in t t-- in slanted V--AR IN T T-- IN VAR
+
+     V--AR IN EXAMPLE
+     ‘c--ite in example’
+
+
+Tag Table:
+Node: Top46
+Node: chapter162
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

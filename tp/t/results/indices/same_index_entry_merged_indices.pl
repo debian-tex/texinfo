@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,53 +10,52 @@ $result_trees{'same_index_entry_merged_indices'} = {
     {
       'contents' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'vr fn'
+                  'contents' => [
+                    {
+                      'text' => 'vr fn'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'syncodeindex',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'misc_args' => [
+                  'vr',
+                  'fn'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
             }
           ],
-          'cmdname' => 'syncodeindex',
-          'extra' => {
-            'misc_args' => [
-              'vr',
-              'fn'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
+          'type' => 'preamble_before_content'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -64,12 +63,10 @@ $result_trees{'same_index_entry_merged_indices'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'contents' => [],
       'extra' => {
         'isindex' => 1,
         'node_content' => [
@@ -86,29 +83,25 @@ $result_trees{'same_index_entry_merged_indices'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 3,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
-          'contents' => [],
           'extra' => {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -116,16 +109,13 @@ $result_trees{'same_index_entry_merged_indices'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Text.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -141,14 +131,12 @@ $result_trees{'same_index_entry_merged_indices'} = {
                       'extra' => {
                         'def_role' => 'category'
                       },
-                      'parent' => {},
                       'text' => 'Command'
                     },
                     {
                       'extra' => {
                         'def_role' => 'spaces'
                       },
-                      'parent' => {},
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -156,14 +144,12 @@ $result_trees{'same_index_entry_merged_indices'} = {
                       'extra' => {
                         'def_role' => 'name'
                       },
-                      'parent' => {},
                       'text' => 'mmm-mode'
                     },
                     {
                       'extra' => {
                         'def_role' => 'spaces'
                       },
-                      'parent' => {},
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -172,37 +158,31 @@ $result_trees{'same_index_entry_merged_indices'} = {
                         {
                           'contents' => [
                             {
-                              'parent' => {},
                               'text' => 'arg'
                             }
                           ],
-                          'parent' => {},
                           'type' => 'brace_command_arg'
                         }
                       ],
                       'cmdname' => 'var',
-                      'contents' => [],
                       'extra' => {
                         'def_role' => 'arg'
                       },
-                      'line_nr' => {
+                      'source_info' => {
                         'file_name' => '',
                         'line_nr' => 8,
                         'macro' => ''
-                      },
-                      'parent' => {}
+                      }
                     },
                     {
                       'extra' => {
                         'def_role' => 'spaces'
                       },
-                      'parent' => {},
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'block_line_arg'
                 }
               ],
@@ -213,29 +193,28 @@ $result_trees{'same_index_entry_merged_indices'} = {
                   'name' => {}
                 },
                 'index_entry' => {
-                  'command' => {},
-                  'content' => [
-                    {}
-                  ],
                   'content_normalized' => [
                     {}
                   ],
+                  'entry_content' => [
+                    {}
+                  ],
+                  'entry_element' => {},
+                  'entry_node' => {},
+                  'entry_number' => 1,
                   'in_code' => 1,
                   'index_at_command' => 'deffn',
+                  'index_ignore_chars' => {},
                   'index_name' => 'fn',
-                  'index_type_command' => 'deffn',
-                  'key' => 'mmm-mode',
-                  'node' => {},
-                  'number' => 1
+                  'index_type_command' => 'deffn'
                 },
                 'original_def_cmdname' => 'deffn'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 8,
                 'macro' => ''
               },
-              'parent' => {},
               'type' => 'def_line'
             },
             {
@@ -243,16 +222,13 @@ $result_trees{'same_index_entry_merged_indices'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'Toggle the state of MMM Mode.
 '
                     }
                   ],
-                  'parent' => {},
                   'type' => 'paragraph'
                 }
               ],
-              'parent' => {},
               'type' => 'def_item'
             },
             {
@@ -260,7 +236,6 @@ $result_trees{'same_index_entry_merged_indices'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'deffn'
                     }
                   ],
@@ -268,37 +243,31 @@ $result_trees{'same_index_entry_merged_indices'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'deffn',
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'deffn'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 10,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
           'extra' => {
-            'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 8,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -313,21 +282,18 @@ $result_trees{'same_index_entry_merged_indices'} = {
                     {
                       'contents' => [
                         {
-                          'parent' => {},
                           'text' => 'Variable'
                         }
                       ],
                       'extra' => {
                         'def_role' => 'category'
                       },
-                      'parent' => {},
                       'type' => 'bracketed_inserted'
                     },
                     {
                       'extra' => {
                         'def_role' => 'spaces'
                       },
-                      'parent' => {},
                       'text' => ' ',
                       'type' => 'spaces_inserted'
                     },
@@ -335,20 +301,17 @@ $result_trees{'same_index_entry_merged_indices'} = {
                       'extra' => {
                         'def_role' => 'name'
                       },
-                      'parent' => {},
                       'text' => 'mmm-mode'
                     },
                     {
                       'extra' => {
                         'def_role' => 'spaces'
                       },
-                      'parent' => {},
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'block_line_arg'
                 }
               ],
@@ -359,29 +322,28 @@ $result_trees{'same_index_entry_merged_indices'} = {
                   'name' => {}
                 },
                 'index_entry' => {
-                  'command' => {},
-                  'content' => [
-                    {}
-                  ],
                   'content_normalized' => [
                     {}
                   ],
+                  'entry_content' => [
+                    {}
+                  ],
+                  'entry_element' => {},
+                  'entry_node' => {},
+                  'entry_number' => 1,
                   'in_code' => 1,
                   'index_at_command' => 'defvar',
+                  'index_ignore_chars' => {},
                   'index_name' => 'vr',
-                  'index_type_command' => 'defvar',
-                  'key' => 'mmm-mode',
-                  'node' => {},
-                  'number' => 1
+                  'index_type_command' => 'defvar'
                 },
                 'original_def_cmdname' => 'defvar'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 12,
                 'macro' => ''
               },
-              'parent' => {},
               'type' => 'def_line'
             },
             {
@@ -389,16 +351,13 @@ $result_trees{'same_index_entry_merged_indices'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'This variable represents MMM Mode.
 '
                     }
                   ],
-                  'parent' => {},
                   'type' => 'paragraph'
                 }
               ],
-              'parent' => {},
               'type' => 'def_item'
             },
             {
@@ -406,7 +365,6 @@ $result_trees{'same_index_entry_merged_indices'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'defvar'
                     }
                   ],
@@ -414,37 +372,31 @@ $result_trees{'same_index_entry_merged_indices'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'defvar',
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'defvar'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 14,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
           'extra' => {
-            'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 12,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -454,7 +406,6 @@ $result_trees{'same_index_entry_merged_indices'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'fn'
                 }
               ],
@@ -462,7 +413,6 @@ $result_trees{'same_index_entry_merged_indices'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -473,92 +423,37 @@ $result_trees{'same_index_entry_merged_indices'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 16,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
       'extra' => {},
-      'level' => 0,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 4,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[0]{'contents'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'};
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[1]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[1];
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'same_index_entry_merged_indices'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'same_index_entry_merged_indices'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[1]{'parent'} = $result_trees{'same_index_entry_merged_indices'};
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[1];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0];
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'node'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[1];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'contents'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0];
+$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0];
+$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[1];
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'index_entry'}{'node'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[1];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'contents'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[1];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'extra'}{'end_command'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[6]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7]{'args'}[0];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'parent'} = $result_trees{'same_index_entry_merged_indices'};
+$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0];
+$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[1];
 
 $result_texis{'same_index_entry_merged_indices'} = '@syncodeindex vr fn
 
@@ -592,26 +487,29 @@ This variable represents MMM Mode.
 ';
 
 $result_sectioning{'same_index_entry_merged_indices'} = {
-  'level' => -1,
-  'section_childs' => [
-    {
-      'cmdname' => 'top',
-      'extra' => {
-        'associated_node' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'isindex' => 1,
-            'normalized' => 'Top',
-            'spaces_before_argument' => ' '
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'top',
+        'extra' => {
+          'associated_node' => {
+            'cmdname' => 'node',
+            'extra' => {
+              'isindex' => 1,
+              'normalized' => 'Top'
+            }
           }
+        },
+        'structure' => {
+          'section_level' => 0,
+          'section_up' => {}
         }
-      },
-      'level' => 0,
-      'section_up' => {}
-    }
-  ]
+      }
+    ],
+    'section_level' => -1
+  }
 };
-$result_sectioning{'same_index_entry_merged_indices'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'same_index_entry_merged_indices'};
+$result_sectioning{'same_index_entry_merged_indices'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'same_index_entry_merged_indices'};
 
 $result_nodes{'same_index_entry_merged_indices'} = {
   'cmdname' => 'node',
@@ -619,11 +517,10 @@ $result_nodes{'same_index_entry_merged_indices'} = {
     'associated_section' => {
       'cmdname' => 'top',
       'extra' => {},
-      'level' => 0
+      'structure' => {}
     },
     'isindex' => 1,
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
@@ -631,8 +528,7 @@ $result_menus{'same_index_entry_merged_indices'} = {
   'cmdname' => 'node',
   'extra' => {
     'isindex' => 1,
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
@@ -689,6 +585,14 @@ $result_indices{'same_index_entry_merged_indices'} = {
 $result_floats{'same_index_entry_merged_indices'} = {};
 
 
+$result_indices_sort_strings{'same_index_entry_merged_indices'} = {
+  'fn' => [
+    'mmm-mode',
+    'mmm-mode'
+  ]
+};
+
+
 
 $result_converted{'info'}->{'same_index_entry_merged_indices'} = 'This is , produced from .
 
@@ -740,35 +644,51 @@ $result_converted{'plaintext'}->{'same_index_entry_merged_indices'} = 'Text.
 
 
 $result_converted{'html_text'}->{'same_index_entry_merged_indices'} = '
-<div class="top" id="Top">
-<span id="SEC_Top"></span>
+<div class="top-level-extent" id="Top">
+<a class="top" id="SEC_Top"></a>
 <p>Text.
 </p>
-<dl class="def">
-<dt id="index-mmm_002dmode"><span class="category">Command: </span><span><strong>mmm-mode</strong> <em><var>arg</var></em><a href=\'#index-mmm_002dmode\' class=\'copiable-anchor\'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-mmm_002dmode"><span class="category-def">Command: </span><span><strong class="def-name">mmm-mode</strong> <var class="def-var-arguments"><var class="var">arg</var></var><a class="copiable-link" href=\'#index-mmm_002dmode\'> &para;</a></span></dt>
 <dd><p>Toggle the state of MMM Mode.
 </p></dd></dl>
 
-<dl class="def">
-<dt id="index-mmm_002dmode-1"><span class="category">Variable: </span><span><strong>mmm-mode</strong><a href=\'#index-mmm_002dmode-1\' class=\'copiable-anchor\'> &para;</a></span></dt>
+<dl class="first-defvr first-defvar-alias-first-defvr">
+<dt class="defvr defvar-alias-defvr" id="index-mmm_002dmode-1"><span class="category-def">Variable: </span><span><strong class="def-name">mmm-mode</strong><a class="copiable-link" href=\'#index-mmm_002dmode-1\'> &para;</a></span></dt>
 <dd><p>This variable represents MMM Mode.
 </p></dd></dl>
 
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_fn_letter-M"><b>M</b></a>
- &nbsp; 
-</td></tr></table>
-<table class="index-fn" border="0">
-<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<div class="printindex fn-printindex">
+<table class="fn-entries-printindex" border="0">
+<tr><td></td><th class="entries-header-printindex">Index Entry</th><td>&nbsp;</td><th class="sections-header-printindex"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_h_fn_letter-M">M</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-mmm_002dmode"><code>mmm-mode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-mmm_002dmode-1"><code>mmm-mode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><th id="t_i_fn_letter-M">M</th><td></td><td></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-mmm_002dmode"><code>mmm-mode</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-mmm_002dmode-1"><code>mmm-mode</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_fn_letter-M"><b>M</b></a>
- &nbsp; 
-</td></tr></table>
-<hr></div>
+</div>
+</div>
+';
+
+
+$result_converted{'xml'}->{'same_index_entry_merged_indices'} = '<syncodeindex spaces=" " from="vr" to="fn" line="vr fn"></syncodeindex>
+
+<node name="Top" spaces=" "><nodename>Top</nodename></node>
+<top><sectiontitle></sectiontitle>
+
+<para>Text.
+</para>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="1">mmm-mode</indexterm><defcategory>Command</defcategory> <deffunction>mmm-mode</deffunction> <defparam><var>arg</var></defparam></definitionterm>
+<definitionitem><para>Toggle the state of MMM Mode.
+</para></definitionitem></deffn>
+
+<defvar spaces=" " endspaces=" "><definitionterm><indexterm index="vr" number="1" mergedindex="fn">mmm-mode</indexterm><defcategory automatic="on" bracketed="on">Variable</defcategory> <defvariable>mmm-mode</defvariable></definitionterm>
+<definitionitem><para>This variable represents MMM Mode.
+</para></definitionitem></defvar>
+
+<printindex spaces=" " value="fn" line="fn"></printindex>
+</top>
 ';
 
 1;

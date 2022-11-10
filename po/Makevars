@@ -10,6 +10,7 @@ top_builddir = ..
 # These options get passed to xgettext.  "$" is escaped as "$$" here.
 XGETTEXT_OPTIONS = \
  -cTRANSLATORS\
+ --from-code=UTF-8\
  --keyword=_\
  --keyword=N_\
  --keyword=__\
@@ -20,6 +21,7 @@ XGETTEXT_OPTIONS = \
  -k__n:1,2\
  -k__nx:1,2\
  -k__xn:1,2\
+ -k__p:1c,2\
  -kN__\
  -kline_error:1 \
  -kline_warn:1 \

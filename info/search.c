@@ -1,6 +1,6 @@
 /* search.c -- searching large bodies of text.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 #include <regex.h>
 
 #include "session.h"
-#include "info-utils.h"
+#include "scan.h"
 #include "search.h"
 
 

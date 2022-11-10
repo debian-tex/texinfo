@@ -64,13 +64,15 @@ makeinfo: texi2any
 
 modulesdir = $(pkgdatadir)/Texinfo
 dist_modules_DATA = \
+ Texinfo/Config.pm \
  Texinfo/Parser.pm \
  Texinfo/ParserNonXS.pm \
  Texinfo/Report.pm \
  Texinfo/Common.pm \
- Texinfo/Encoding.pm \
+ Texinfo/Commands.pod \
  Texinfo/Structuring.pm \
  Texinfo/Transformations.pm \
+ Texinfo/Translations.pm \
  Texinfo/MiscXS.pm \
  Texinfo/XSLoader.pm \
  Texinfo/Documentlanguages.pm
@@ -79,7 +81,8 @@ dist_noinst_DATA = \
  Texinfo/ModulePath.pm.in
 
 modules_DATA = \
- Texinfo/ModulePath.pm
+ Texinfo/ModulePath.pm \
+ Texinfo/Commands.pm
 
 convertersdir = $(pkgdatadir)/Texinfo/Convert
 dist_converters_DATA = \
@@ -89,31 +92,38 @@ dist_converters_DATA = \
  Texinfo/Convert/IXIN.pm \
  Texinfo/Convert/IXINSXML.pm \
  Texinfo/Convert/Info.pm \
- Texinfo/Convert/Line.pm \
+ Texinfo/Convert/LaTeX.pm \
  Texinfo/Convert/NodeNameNormalization.pm \
  Texinfo/Convert/Paragraph.pm \
  Texinfo/Convert/ParagraphNonXS.pm \
  Texinfo/Convert/PlainTexinfo.pm \
  Texinfo/Convert/Plaintext.pm \
  Texinfo/Convert/Texinfo.pm \
+ Texinfo/Convert/TexinfoMarkup.pm \
  Texinfo/Convert/TexinfoSXML.pm \
  Texinfo/Convert/TexinfoXML.pm \
  Texinfo/Convert/Text.pm \
  Texinfo/Convert/TextContent.pm \
- Texinfo/Convert/UnFilled.pm \
- Texinfo/Convert/Unicode.pm
+ Texinfo/Convert/Unicode.pm \
+ Texinfo/Convert/Utils.pm
 
 debugmodulesdir = $(pkgdatadir)/DebugTexinfo
 dist_debugmodules_DATA = \
  DebugTexinfo/DebugTree.pm
 
+# extensions used in main program
+extensionsdir = $(datadir)/texinfo/ext
+dist_extensions_DATA = \
+ ext/epub3.pm \
+ ext/tex4ht.pm \
+ ext/latex2html.pm
+
 initdir = $(datadir)/texinfo/init
 dist_init_DATA = \
  init/book.pm \
  init/chm.pm \
+ init/documentation_examples.pm \
  init/html32.pm \
- init/tex4ht.pm \
- init/latex2html.pm \
  init/highlight_syntax.pm
 
 test_files = \
@@ -150,32 +160,36 @@ test_files = \
  t/include/incl-incl.txi \
  t/include/macro_included.texi \
  t/include/section_file.texi \
- t/init/only_toc_out.init \
+ t/init/command_translation_modified.init \
  t/init/cvs.init \
- t/init/redefine_need.init \
  t/init/icons.init \
- t/init/t2h_singular.init \
  t/init/ignore_and_comments_output.init \
- t/init/test_directions.init \
- t/init/mini_ker_t2h.init \
- t/init/test_renamed_nodes.init \
- t/init/misc_file_collision.init \
  t/init/l2h.init \
+ t/init/mini_ker_t2h.init \
+ t/init/misc_file_collision.init \
+ t/init/only_toc_out.init \
+ t/init/redefine_need.init \
+ t/init/t2h_singular.init \
+ t/init/test_directions.init \
+ t/init/test_renamed_nodes.init \
+ t/init/translate_txiinternalvalue_macro.init \
+ t/init/undef_node_file_name.init \
  t/test_utils.pl \
  t/input_files/all_spaces.texi \
- t/input_files/at_commands_in_refs.texi \
  t/input_files/bib-example.texi \
- t/input_files/cond.texi \
  t/input_files/char_latin1_utf8_in_refs.texi \
  t/input_files/char_latin1_latin1_in_refs.texi \
  t/input_files/char_latin2_latin2_in_refs.texi \
  t/input_files/chinese_mixed_with_en.texi \
+ t/input_files/cond.texi \
  t/input_files/contents_at_document_begin.texi \
  t/input_files/contents_at_end_document_after_node.texi \
  t/input_files/contents_at_end_document.texi \
  t/input_files/contents_in_document.texi \
  t/input_files/contents_no_section.texi \
+ t/input_files/cpp_line_before_first_node.texi \
  t/input_files/cpp_lines.texi \
+ t/input_files/cpp_line_latin1.texi \
  t/input_files/defxcond.texi \
  t/input_files/delcomment.texi \
  t/input_files/direntry_dircategory.texi \
@@ -191,10 +205,17 @@ test_files = \
  t/input_files/float_copying.texi \
  t/input_files/formatting.texi \
  t/input_files/glossary.texi \
+ t/input_files/in_menu_only_special_spaces_node.texi \
+ t/input_files/in_menu_only_special_ascii_spaces_node.texi \
  t/input_files/index_no_node.texi \
  t/input_files/index_split.texi \
  t/input_files/japanese_utf8.texi \
  t/input_files/japanese_shift_jis.texi \
+ t/input_files/manual_simple_utf8_with_error.texi \
+ t/input_files/manual_simple_latin1_with_error.texi \
+ t/input_files/minimal_empty_empty.texi \
+ t/input_files/minimal_empty_with_bye.texi \
+ t/input_files/minimal_empty_with_input.texi \
  t/input_files/more_sections_than_nodes.texi \
  t/input_files/navigation.texi \
  t/input_files/nodequote.texi \
@@ -208,16 +229,24 @@ test_files = \
  t/input_files/non_break_spaces.texi \
  t/input_files/one_line.texi \
  t/input_files/one_line_no_content.texi \
+ t/input_files/only_special_spaces_node.texi \
  t/input_files/placed_things_before_element.texi \
+ t/input_files/punctuation_small_case_accents_latin1.texi \
+ t/input_files/punctuation_small_case_accents_us_ascii.texi \
+ t/input_files/punctuation_small_case_accents_utf8.texi \
+ t/input_files/reference_to_only_special_spaces_node.texi \
  t/input_files/sample_utf8.texi \
  t/input_files/sectioning.texi \
  t/input_files/simplest.texi \
  t/input_files/split_chapter_index.texi \
  t/input_files/split_nocopying.texi \
+ t/input_files/simplest_no_node_section.texi \
+ t/input_files/special_spaces_in_nodes.texi \
  t/input_files/test_refs.texi \
  t/input_files/test_two_include.texi \
  t/input_files/top_node_up_explicit.texi \
  t/input_files/top_node_up_implicit.texi \
+ t/input_files/topic_guide.texi \
  t/input_files/two_footnotes_in_nodes.texi \
  t/input_files/things_before_setfilename_no_element.texi \
  t/input_files/things_before_setfilename.texi \
@@ -251,12 +280,15 @@ AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcd
 maintenance_files = \
   maintain/all_tests.sh \
   maintain/change_perl_modules_version.sh \
+  maintain/copy_change_file_name_encoding.pl \
   maintain/language-subtag-registry \
   maintain/regenerate_cmd_tests.sh \
   maintain/regenerate_converters_documentation.sh \
   maintain/regenerate_docstr.sh \
-  maintain/regenerate_documentlanguages.pl \
+  maintain/regenerate_documentlanguages-iana.pl \
+  maintain/regenerate_documentlanguages-loc.pl \
   maintain/regenerate_file_lists.pl \
+  maintain/regenerate_commands_perl_info.pl \
   maintain/template.pod \
   maintain/catalog.xml.in
 
@@ -288,6 +320,10 @@ Texinfo/ModulePath.pm: Texinfo/ModulePath.pm.in Makefile
 	    -e 's|[@]USE_EXTERNAL_EASTASIANWIDTH[@]|$(USE_EXTERNAL_EASTASIANWIDTH)|' \
 	    -e 's|[@]USE_EXTERNAL_UNIDECODE[@]|$(USE_EXTERNAL_UNIDECODE)|' \
 	  $(srcdir)/Texinfo/ModulePath.pm.in >$@
+
+Texinfo/Commands.pm: Texinfo/XS/parsetexi/command_data.txt
+	$(MKDIR_P) Texinfo
+	$(srcdir)/maintain/regenerate_commands_perl_info.pl < $(srcdir)/Texinfo/XS/parsetexi/command_data.txt
 
 libsrcdir = $(srcdir)/maintain/lib
 
@@ -330,7 +366,7 @@ distclean-local:
 	rm -f t/results/*/*.pl.new
 	rm -rf t/results/*/*/out_*/
 	rm -rf t/include_dir
-	rm -rf blib po po_document
+	rm -rf po po_document
 
-CLEANFILES = texi2any makeinfo texi2any-perl Texinfo/ModulePath.pm
-DISTCLEANFILES = maintain/catalog.xml pm_to_blib Makefile.old
+CLEANFILES = texi2any makeinfo Texinfo/ModulePath.pm
+DISTCLEANFILES = maintain/catalog.xml Texinfo/Commands.pm

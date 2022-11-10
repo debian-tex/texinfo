@@ -15,15 +15,25 @@
 
 package Texinfo::XSLoader;
 
-use DynaLoader;
-
 use 5.00405;
 use strict;
 use warnings;
 
+use DynaLoader;
+
+BEGIN {
+  eval 'require Texinfo::ModulePath';
+  if ($@ ne '') {
+    # For configure test in TestXS.pm where Texinfo/ModulePath.pm may
+    # not exist yet.
+    $Texinfo::ModulePath::texinfo_uninstalled = 1;
+    $Texinfo::ModulePath::builddir = '';
+  }
+}
+
 our $TEXINFO_XS;
 
-our $VERSION = '6.8';
+our $VERSION = '7.0';
 
 our $disable_XS;
 
@@ -205,6 +215,10 @@ sub init {
   
   if ($perl_extra_file) {
     eval "require $perl_extra_file";
+    if ($@) {
+      warn();
+      die "Error loading $perl_extra_file\n";
+    }
   }
   
   return $module;

@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -90,14 +90,14 @@ Before samp. @samp{a}. after samp, w @w{in   w. after dot}  afterw
 html
 @end html
 after.
-',{'expanded_formats' => ['html']}, {'expanded_formats' => ['html']}
+',{'EXPANDED_FORMATS' => ['html']}, {'EXPANDED_FORMATS' => ['html']}
 ],
 ['isolated_html_expanded',
 '
 @html
 html
 @end html
-',{'expanded_formats' => ['html']}, {'expanded_formats' => ['html']}
+',{'EXPANDED_FORMATS' => ['html']}, {'EXPANDED_FORMATS' => ['html']}
 ],
 ['star_at_command_formatting',
 '@macro mymacro
@@ -477,7 +477,7 @@ GGG
 HHH
 @end tex
 bbbbbbbbb1 bbbbbbbbbbb2 bbbbbbbbbb3 bbbbbbbbbbbbbb4.
-', {'expanded_formats' => ['tex']}, {'expanded_formats' => ['tex']}
+', {'EXPANDED_FORMATS' => ['tex']}, {'EXPANDED_FORMATS' => ['tex']}
 ],
 ['paragraphindent',
 'First
@@ -624,6 +624,38 @@ HHH
 @image{figure} JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
 @end flushright
 '],
+['del_quote_linebreaking',
+'first para
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx @xref{noxde,,, manual,Manual}
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx @xref{noxde,,, manual,Manual}
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx @xref{noxde,,, manual,Manual}
+
+%
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx @xref{no:de,,, manual,Manual}
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx @xref{no:de,,, manual,Manual}
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx @xref{no:de,,, manual,Manual}
+
+', undef,
+{'INFO_SPECIAL_CHARS_QUOTE' => 1,
+ 'INFO_SPECIAL_CHARS_WARNING' => 0,}
+],
+['xref_quote_long_item',
+'@table @asis
+
+@item @code{@@verbatiminclude}
+@xref{Texinfo::Convert::Utils $tree = expand_verbatiminclude($registrar@comma{} $configuration_information@comma{} $verbatiminclude),,
+Texinfo::Convert::Utils::expand_verbatiminclude, tp_api}.
+
+@end table
+',{},
+{'INFO_SPECIAL_CHARS_QUOTE' => 1,
+ 'INFO_SPECIAL_CHARS_WARNING' => 0,}],
 );
 
 my $insert_copying_and_paragraph = 
@@ -967,12 +999,14 @@ undef, {'test_file' => 'japanese_utf8.texi'}
 undef, {'test_file' => 'chinese_mixed_with_en.texi'}
 ],
 ['non_break_spaces',
-undef, {'test_file' => 'non_break_spaces.texi'}
+undef,
+{'test_file' => 'non_break_spaces.texi',
+ 'skip' => ($] < 5.014) ? 'Perl too old: /a regex flag needed' : undef, },
 ],
 ['all_spaces',
-undef, {'test_file' => 'all_spaces.texi', 
-        'todo' => {'file_plaintext' => 
-                          'NEL handled differently between perl versions'}}
+undef,
+{'test_file' => 'all_spaces.texi',
+ 'skip' => ($] < 5.014) ? 'Perl too old: LINE TABULATION in /a needed' : undef, },
 ],
 ['east_asian_in_w',
 undef, {'test_file' => 'east_asian_in_w.texi'}
@@ -982,6 +1016,42 @@ undef, {'test_file' => 'nodequote.texi',},
 {'INFO_SPECIAL_CHARS_QUOTE' => 1,
  'INFO_SPECIAL_CHARS_WARNING' => 0,}
 ],
+['punctuation_sc_accents_default',
+undef, {'test_file' => 'punctuation_small_case_accents_utf8.texi'}],
+['punctuation_sc_accents_disable_encoding',
+undef, {'test_file' => 'punctuation_small_case_accents_utf8.texi',
+        'ENABLE_ENCODING' => 0}],
+['punctuation_sc_accents_ascii_punct',
+undef, {'test_file' => 'punctuation_small_case_accents_utf8.texi'},
+        {'ASCII_PUNCTUATION' => 1}],
+['punctuation_sc_accents_default_latin1',
+undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi'}],
+['punctuation_sc_accents_disable_encoding_latin1',
+undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi',
+        'ENABLE_ENCODING' => 0}],
+['punctuation_sc_accents_ascii_punct_latin1',
+undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi'},
+        {'ASCII_PUNCTUATION' => 1}],
+['punctuation_sc_accents_default_usascii',
+undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi'}],
+['punctuation_sc_accents_disable_encoding_usascii',
+undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi',
+        'ENABLE_ENCODING' => 0}],
+['punctuation_sc_accents_ascii_punct_usascii',
+undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi'},
+        {'ASCII_PUNCTUATION' => 1}],
+['punctuation_sc_accents_to_utf8_latin1',
+undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi'},
+        {'OUTPUT_ENCODING_NAME' => 'utf-8'}],
+['punctuation_sc_accents_to_utf8_usascii',
+undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi'},
+        {'OUTPUT_ENCODING_NAME' => 'utf-8'}],
+['punctuation_sc_accents_to_utf8_ascii_punct_latin1',
+undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi'},
+        {'ASCII_PUNCTUATION' => 1, 'OUTPUT_ENCODING_NAME' => 'utf-8'}],
+['punctuation_sc_accents_to_utf8_ascii_punct_usascii',
+undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi'},
+        {'ASCII_PUNCTUATION' => 1, 'OUTPUT_ENCODING_NAME' => 'utf-8'}],
 );
 
 foreach my $test (@test_cases) {
@@ -992,9 +1062,4 @@ foreach my $test (@file_tests) {
   $test->[2]->{'test_formats'} = ['file_plaintext'];
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('plaintext_tests', [@test_cases, @file_tests], $arg_test_case,
-   $arg_generate, $arg_debug);
-
-1;
+run_all('plaintext_tests', [@test_cases, @file_tests]);

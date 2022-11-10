@@ -1,4 +1,4 @@
-/* Copyright 2010-2021 Free Software Foundation, Inc.
+/* Copyright 2010-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -185,6 +185,7 @@ mbrtowc (wchar_t * __restrict__ pwc, const char * __restrict__ mbs, size_t n,
     }
 }
 
+/* NOTE - not used at present */
 int
 iswspace (wint_t wc)
 {
@@ -203,13 +204,6 @@ iswspace (wint_t wc)
     return 1;
 
   return 0;
-}
-
-/* FIXME: Provide a real implementation.  */
-int
-wcwidth (const wchar_t wc)
-{
-  return wc == 0 ? 0 : 1;
 }
 
 int
@@ -715,10 +709,15 @@ xspara__add_next (TEXT *result, char *word, int word_len, int transparent)
 
       while (left > 0)
         {
+          int columns;
           int char_len = mbrtowc (&w, p, left, NULL);
           left -= char_len;
+
+          columns = wcwidth (w);
+          if (columns > 0)
+            len += columns;
+
           p += char_len;
-          len++;
         }
 
       state.word_counter += len;
@@ -784,41 +783,14 @@ xspara_set_space_protection (int protect_spaces,
     state.keep_end_lines = keep_end_lines;
   if (double_width_no_break != -1)
     state.double_width_no_break = double_width_no_break;
+  if (french_spacing != -1)
+    state.french_spacing = french_spacing;
 
   /*fprintf (stderr, "SETTING SPACE (%d, %d, %d, %d)\n",
                                    protect_spaces,
                                    ignore_columns,
                                    keep_end_lines,
                                    french_spacing);*/
-
-  /* If at the end of a sentence, and due to output the end of sentence
-     space, and we switch to French spacing, then make the space up to
-     two spaces.
-
-     FIXME: This seems back-to-front: We want two spaces if we switch FROM
-     French spacing. */
-
-  if (state.french_spacing == 0
-      && french_spacing != -1 && french_spacing != 0
-      && state.end_sentence != -2 && state.end_sentence != 0
-      && state.counter != 0
-      && state.space.end > 0
-      && state.word.end == 0 && !state.invisible_pending_word)
-    {
-      while (state.space_counter < 2)
-        {
-          text_append_n (&state.space, " ", 1);
-          state.space_counter++;
-        }
-
-      /* End of sentence done. */
-      state.end_sentence = -2;
-    }
-
-  if (french_spacing != -1)
-    {
-      state.french_spacing = french_spacing;
-    }
 
  if (protect_spaces != -1 && state.protect_spaces)
    {
@@ -866,8 +838,7 @@ xspara_add_text (char *text)
           continue;
         }
 
-      /* 00A0 and 202F are non-breaking spaces in Unicode. */
-      if (iswspace (wc) && wc != L'\x00a0' && wc != L'\x202f')
+      if (isspace ((unsigned char) *p))
         {
           state.last_letter = L'\0';
 
@@ -920,14 +891,14 @@ xspara_add_text (char *text)
                       /* Only save the first space. */
                       if (state.unfilled || state.space_counter < 1)
                         {
-                          if (*p == '\n' || *p == '\r')
+                          if (*p == '\n')
                             {
                               if (!state.unfilled)
                                 {
                                   text_append_n (&state.space, " ", 1);
                                   state.space_counter++;
                                 }
-                              else if (*p == '\n')
+                              else
                                 {
                                   xspara__add_pending_word (&result, 0);
                                   xspara__end_line ();

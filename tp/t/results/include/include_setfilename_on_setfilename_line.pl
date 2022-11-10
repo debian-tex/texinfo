@@ -1,103 +1,90 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'include_setfilename_on_setfilename_line'} = {
   'contents' => [
     {
-      'args' => [
+      'contents' => [
         {
-          'contents' => [
+          'args' => [
             {
-              'parent' => {},
-              'text' => 'file '
-            },
-            {
-              'args' => [
+              'contents' => [
                 {
-                  'contents' => [
+                  'text' => 'file '
+                },
+                {
+                  'args' => [
                     {
-                      'parent' => {},
-                      'text' => 'other file '
-                    },
-                    {
-                      'args' => [
+                      'contents' => [
                         {
-                          'contents' => [
+                          'text' => 'other file '
+                        },
+                        {
+                          'args' => [
                             {
-                              'parent' => {},
-                              'text' => 'are you joking!'
+                              'contents' => [
+                                {
+                                  'text' => 'are you joking!'
+                                }
+                              ],
+                              'extra' => {
+                                'spaces_after_argument' => '
+'
+                              },
+                              'type' => 'line_arg'
                             }
                           ],
+                          'cmdname' => 'include',
                           'extra' => {
-                            'spaces_after_argument' => '
-'
+                            'spaces_before_argument' => ' ',
+                            'text_arg' => 'are you joking!'
                           },
-                          'parent' => {},
-                          'type' => 'line_arg'
+                          'source_info' => {
+                            'file_name' => '',
+                            'line_nr' => 1,
+                            'macro' => ''
+                          }
                         }
                       ],
-                      'cmdname' => 'include',
-                      'extra' => {
-                        'spaces_before_argument' => ' ',
-                        'text_arg' => 'are you joking!'
-                      },
-                      'line_nr' => {
-                        'file_name' => '',
-                        'line_nr' => 1,
-                        'macro' => ''
-                      },
-                      'parent' => {}
+                      'type' => 'line_arg'
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'line_arg'
+                  'cmdname' => 'setfilename',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'other file '
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 1,
+                    'macro' => ''
+                  }
                 }
               ],
-              'cmdname' => 'setfilename',
-              'extra' => {
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'other file '
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
-              },
-              'parent' => {}
+              'type' => 'line_arg'
             }
           ],
-          'parent' => {},
-          'type' => 'line_arg'
+          'cmdname' => 'setfilename',
+          'extra' => {
+            'spaces_before_argument' => ' ',
+            'text_arg' => 'file '
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
         }
       ],
-      'cmdname' => 'setfilename',
-      'extra' => {
-        'spaces_before_argument' => ' ',
-        'text_arg' => 'file '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0];
-$result_trees{'include_setfilename_on_setfilename_line'}{'contents'}[0]{'parent'} = $result_trees{'include_setfilename_on_setfilename_line'};
 
 $result_texis{'include_setfilename_on_setfilename_line'} = '@setfilename file @setfilename other file @include are you joking!
 ';
@@ -107,7 +94,7 @@ $result_texts{'include_setfilename_on_setfilename_line'} = '';
 
 $result_errors{'include_setfilename_on_setfilename_line'} = [
   {
-    'error_line' => ':1: warning: @setfilename should only appear at the beginning of a line
+    'error_line' => 'warning: @setfilename should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -116,7 +103,7 @@ $result_errors{'include_setfilename_on_setfilename_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @setfilename should not appear in @setfilename
+    'error_line' => 'warning: @setfilename should not appear in @setfilename
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -125,7 +112,7 @@ $result_errors{'include_setfilename_on_setfilename_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: multiple @setfilename
+    'error_line' => 'warning: multiple @setfilename
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -134,7 +121,7 @@ $result_errors{'include_setfilename_on_setfilename_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @include should only appear at the beginning of a line
+    'error_line' => 'warning: @include should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -143,7 +130,7 @@ $result_errors{'include_setfilename_on_setfilename_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @include should not appear in @setfilename
+    'error_line' => 'warning: @include should not appear in @setfilename
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -152,7 +139,7 @@ $result_errors{'include_setfilename_on_setfilename_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: @include: could not find are you joking!
+    'error_line' => '@include: could not find are you joking!
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -161,7 +148,7 @@ $result_errors{'include_setfilename_on_setfilename_line'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: bad argument to @setfilename: other file @include are you joking!
+    'error_line' => 'bad argument to @setfilename: other file @include are you joking!
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -170,7 +157,7 @@ $result_errors{'include_setfilename_on_setfilename_line'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: bad argument to @setfilename: file @setfilename other file @include are you joking!
+    'error_line' => 'bad argument to @setfilename: file @setfilename other file @include are you joking!
 ',
     'file_name' => '',
     'line_nr' => 1,

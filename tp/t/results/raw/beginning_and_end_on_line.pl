@@ -1,101 +1,221 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'beginning_and_end_on_line'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'in tex '
-            }
-          ],
-          'parent' => {},
-          'type' => 'block_line_arg'
-        }
-      ],
-      'cmdname' => 'tex',
       'contents' => [
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'tex'
+                  'text' => 'in tex '
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
+          'cmdname' => 'tex',
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'tex'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'tex'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            }
+          ],
           'extra' => {
-            'command_argument' => 'tex',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'tex'
+            'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 2,
             'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'in verbatim '
+                }
+              ],
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'verbatim',
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'verbatim'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'verbatim'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
+            }
+          ],
+          'extra' => {
+            'spaces_before_argument' => ' '
           },
-          'parent' => {}
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'in html '
+                }
+              ],
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'html',
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'html'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'html'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              }
+            }
+          ],
+          'extra' => {
+            'spaces_before_argument' => ' '
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {},
-        'spaces_before_argument' => ' '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'beginning_and_end_on_line'}{'contents'}[0]{'parent'} = $result_trees{'beginning_and_end_on_line'};
-$result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'args'}[0];
-$result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'beginning_and_end_on_line'}{'contents'}[1];
-$result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'contents'}[0];
-$result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'beginning_and_end_on_line'}{'contents'}[1];
-$result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'contents'}[0];
-$result_trees{'beginning_and_end_on_line'}{'contents'}[1]{'parent'} = $result_trees{'beginning_and_end_on_line'};
 
 $result_texis{'beginning_and_end_on_line'} = '
 @tex in tex @end tex
+
+@verbatim in verbatim @end verbatim
+
+@html in html @end html
 ';
 
 
 $result_texts{'beginning_and_end_on_line'} = '
+
+
 ';
 
 $result_errors{'beginning_and_end_on_line'} = [
   {
-    'error_line' => ':2: warning: @end should only appear at the beginning of a line
+    'error_line' => 'warning: @end should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 2,
+    'macro' => '',
+    'text' => '@end should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @end should only appear at the beginning of a line
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => '@end should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @end should only appear at the beginning of a line
+',
+    'file_name' => '',
+    'line_nr' => 6,
     'macro' => '',
     'text' => '@end should only appear at the beginning of a line',
     'type' => 'warning'

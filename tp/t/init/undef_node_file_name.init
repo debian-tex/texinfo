@@ -1,0 +1,22 @@
+use strict;
+
+sub _undef_node_file_name($$$)
+{
+  my $self = shift;
+  my $element = shift;
+  my $filename = shift;
+
+  if ($element->{'extra'}
+      and $element->{'extra'}->{'normalized'}) {
+    my $normalized_node_name
+       = $element->{'extra'}->{'normalized'};
+    if ($normalized_node_name eq 'Other') {
+      return undef;
+    }
+  }
+  return $filename;
+}
+
+texinfo_register_file_id_setting_function('node_file_name', \&_undef_node_file_name);
+
+1;

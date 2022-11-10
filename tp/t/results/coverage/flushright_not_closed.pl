@@ -1,58 +1,53 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'flushright_not_closed'} = {
   'contents' => [
     {
-      'cmdname' => 'flushright',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'contents' => [
+          'args' => [
             {
-              'parent' => {},
-              'text' => 'text flushed right
+              'extra' => {
+                'spaces_after_argument' => '
 '
+              },
+              'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'type' => 'paragraph'
+          'cmdname' => 'flushright',
+          'contents' => [
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'text flushed right
+'
+                }
+              ],
+              'type' => 'paragraph'
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
         }
       ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'flushright_not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright_not_closed'}{'contents'}[0];
-$result_trees{'flushright_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed'}{'contents'}[0];
-$result_trees{'flushright_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'flushright_not_closed'}{'contents'}[0];
-$result_trees{'flushright_not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed'}{'contents'}[0]{'contents'}[2];
-$result_trees{'flushright_not_closed'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'flushright_not_closed'}{'contents'}[0];
-$result_trees{'flushright_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed'};
 
 $result_texis{'flushright_not_closed'} = '@flushright
 
@@ -66,7 +61,7 @@ text flushed right
 
 $result_errors{'flushright_not_closed'} = [
   {
-    'error_line' => ':3: no matching `@end flushright\'
+    'error_line' => 'no matching `@end flushright\'
 ',
     'file_name' => '',
     'line_nr' => 3,

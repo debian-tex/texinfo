@@ -1,153 +1,122 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'space_in_image'} = {
   'contents' => [
     {
-      'args' => [
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'a'
-            }
-          ],
-          'extra' => {
-            'spaces_after_argument' => ' ',
-            'spaces_before_argument' => ' '
-          },
-          'parent' => {},
-          'type' => 'brace_command_arg'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'bb'
-            }
-          ],
-          'parent' => {},
-          'type' => 'brace_command_arg'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'cc'
-            }
-          ],
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'parent' => {},
-          'type' => 'brace_command_arg'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'dd'
-            }
-          ],
-          'extra' => {
-            'spaces_after_argument' => ' '
-          },
-          'parent' => {},
-          'type' => 'brace_command_arg'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => '.e'
-            }
-          ],
-          'extra' => {
-            'spaces_after_argument' => ' '
-          },
-          'parent' => {},
-          'type' => 'brace_command_arg'
-        }
-      ],
-      'cmdname' => 'image',
-      'contents' => [],
-      'extra' => {
-        'input_perl_encoding' => 'utf-8'
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
       'contents' => [
-        {
-          'parent' => {},
-          'text' => '. '
-        },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'f'
+                  'text' => 'a'
                 }
               ],
               'extra' => {
                 'spaces_after_argument' => ' ',
                 'spaces_before_argument' => ' '
               },
-              'parent' => {},
+              'type' => 'brace_command_arg'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'bb'
+                }
+              ],
+              'type' => 'brace_command_arg'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'cc'
+                }
+              ],
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
+              'type' => 'brace_command_arg'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'dd'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => ' '
+              },
+              'type' => 'brace_command_arg'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => '.e'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => ' '
+              },
               'type' => 'brace_command_arg'
             }
           ],
           'cmdname' => 'image',
-          'contents' => [],
           'extra' => {
             'input_perl_encoding' => 'utf-8'
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
-          'text' => '.'
+          'contents' => [
+            {
+              'text' => '. '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'f'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => ' ',
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'image',
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.'
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'space_in_image'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[0];
-$result_trees{'space_in_image'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0];
-$result_trees{'space_in_image'}{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[1];
-$result_trees{'space_in_image'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0];
-$result_trees{'space_in_image'}{'contents'}[0]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[2];
-$result_trees{'space_in_image'}{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0];
-$result_trees{'space_in_image'}{'contents'}[0]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[3];
-$result_trees{'space_in_image'}{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0];
-$result_trees{'space_in_image'}{'contents'}[0]{'args'}[4]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[4];
-$result_trees{'space_in_image'}{'contents'}[0]{'args'}[4]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0];
-$result_trees{'space_in_image'}{'contents'}[0]{'parent'} = $result_trees{'space_in_image'};
-$result_trees{'space_in_image'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1];
-$result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1];
-$result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1];
-$result_trees{'space_in_image'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1];
-$result_trees{'space_in_image'}{'contents'}[1]{'parent'} = $result_trees{'space_in_image'};
 
 $result_texis{'space_in_image'} = '@image{ a ,bb, cc,dd ,.e }. @image{ f }.';
 
@@ -165,11 +134,11 @@ $result_converted{'plaintext'}->{'space_in_image'} = 'An image text before parag
 ';
 
 
-$result_converted{'html_text'}->{'space_in_image'} = '<img src="a.e" alt="dd"><p>. <img src="f.jpg" alt="f">.</p>';
+$result_converted{'html_text'}->{'space_in_image'} = '<img class="image" src="a.e" alt="dd"><p>. <img class="image" src="f.jpg" alt="f">.</p>';
 
 $result_converted_errors{'html_text'}->{'space_in_image'} = [
   {
-    'error_line' => ':1: warning: @image file `a\' (for HTML) not found, using `a.e\'
+    'error_line' => 'warning: @image file `a\' (for HTML) not found, using `a.e\'
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -178,12 +147,37 @@ $result_converted_errors{'html_text'}->{'space_in_image'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @image file `f\' (for HTML) not found, using `f.jpg\'
+    'error_line' => 'warning: @image file `f\' (for HTML) not found, using `f.jpg\'
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => '@image file `f\' (for HTML) not found, using `f.jpg\'',
+    'type' => 'warning'
+  }
+];
+
+
+
+$result_converted{'latex_text'}->{'space_in_image'} = '\\includegraphics[width=bb,height=cc]{a}. \\includegraphics{f}.';
+
+$result_converted_errors{'latex_text'}->{'space_in_image'} = [
+  {
+    'error_line' => 'warning: @image file `a\' (for LaTeX) not found
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@image file `a\' (for LaTeX) not found',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @image file `f\' (for LaTeX) not found
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@image file `f\' (for LaTeX) not found',
     'type' => 'warning'
   }
 ];

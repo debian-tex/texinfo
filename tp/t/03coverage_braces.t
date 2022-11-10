@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -46,11 +46,15 @@ my @test_cases = (
 '@acronym{--a,an accronym}
 @acronym{--a}
 @acronym{--a,an accronym @comma{} @enddots{}}
+
 @abbr{@\'E--a. @comma{}A., @\'Etude--@comma{} @b{Autonome} }
 @abbr{@\'E--a. @comma{}A.}
 '],
 ['recursive_acronym',
 '@acronym{GNU, @acronym{GNU}\'s Not Unix}
+'],
+['recursive_acronym_definition',
+'@acronym{GNU, @acronym{GNU, @acronym{GNU, is something}\'s Not Unix}\'s Not Unix}
 '],
 ['uref_url',
 '@uref{--a,--b}
@@ -63,6 +67,9 @@ my @test_cases = (
 @url{--m,--n}
 @url{--o,--p,--q}
 '],
+['uref_with_commands_characters',
+'@uref{http://my-host.com/~@strong{toto}%5Cs\'q"a&e?b@}b@{ba@@s\s p+h#aaa, see that @strong{@LaTeX{}}}
+'],
 ['empty_commands',
 '@titlefont{}
 
@@ -71,6 +78,11 @@ my @test_cases = (
 ['nested', 'type the characters @kbd{l o g o u t @key{RET}}.'],
 ['nested_args', '@xref{@@ @samp{in samp}, descr @b{in b}, S@~{e}ction, 
 @cite{manual}}.'],
+['one_argument_leading_trailing_spaces',
+'@code{ in code } @slanted{ in slanted } @var{ var } @sub{ sub }
+@hyphenation{ a-b c-d }
+@indicateurl{ http://example.com } @U{ 1234 } @w{ w } @verb{: verb :}.
+'],
 ['verb_in_xref',
 '@node Top
 
@@ -229,12 +241,20 @@ in format
 '],
 ['two_footnotes_in_nodes',
 $two_footnotes_in_nodes_text,
-, {'test_formats' => ['html', 'info']} ],
-# FIXME no footnotes text in HTML...
+, {'test_formats' => ['html', 'info'], 'full_document' => 1} ],
 ['two_footnotes_in_nodes_separate',
 '@footnotestyle separate
 '.$two_footnotes_in_nodes_text,
-, {'test_formats' => ['html', 'info']} ],
+, {'test_formats' => ['html', 'info'], 'full_document' => 1} ],
+# could be in @test_invalid too, but also allows to test what happens
+# to formatting with empty first email first argument
+['empty_line_in_email',
+'@email{ 
+
+mail,
+
+text
+}'],
 ['form_feed_in_brace_commands',
 '@option{ aa} @anchor{aa}something @email{aaa,  fff}@footnote{ 
  f1 } @footnote{  ggjj}.
@@ -293,6 +313,7 @@ b}'],
 '@math{aa {
 
 '],
+['math_leading_trailing_spaces','@math{ a = b }'],
 ['unknown_command_with_braces',
 'Unknown thing @thing{}
 
@@ -328,14 +349,10 @@ third}
 ']
 );
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html_text';
+  push @{$test->[2]->{'test_formats'}}, 'latex_text';
 }
 
-run_all ('coverage_braces', [@test_cases, @test_invalid], $arg_test_case,
-   $arg_generate, $arg_debug);
-
-1;
+run_all('coverage_braces', [@test_cases, @test_invalid]);

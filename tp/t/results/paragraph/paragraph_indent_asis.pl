@@ -1,174 +1,138 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'paragraph_indent_asis'} = {
   'contents' => [
     {
-      'args' => [
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'asis'
-            }
-          ],
-          'extra' => {
-            'spaces_after_argument' => '
-'
-          },
-          'parent' => {},
-          'type' => 'line_arg'
-        }
-      ],
-      'cmdname' => 'paragraphindent',
-      'extra' => {
-        'misc_args' => [
-          'asis'
-        ],
-        'spaces_before_argument' => ' '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'parent' => {},
-      'text' => '  ',
-      'type' => 'empty_spaces_before_paragraph'
-    },
-    {
       'contents' => [
-        {
-          'parent' => {},
-          'text' => 'para
-'
-        },
-        {
-          'parent' => {},
-          'text' => '  fff
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'quotation',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'parent' => {},
-          'text' => '  ',
-          'type' => 'empty_spaces_before_paragraph'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'in quotation
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'quotation'
+                  'text' => 'asis'
                 }
               ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
-          'cmdname' => 'end',
+          'cmdname' => 'paragraphindent',
           'extra' => {
-            'command_argument' => 'quotation',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'quotation'
+            'misc_args' => [
+              'asis'
+            ],
+            'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 8,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'text' => '  ',
+          'type' => 'spaces_before_paragraph'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'para
+'
+            },
+            {
+              'text' => '  fff
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'quotation',
+          'contents' => [
+            {
+              'text' => '  ',
+              'type' => 'spaces_before_paragraph'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'in quotation
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'quotation'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'quotation'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 8,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 6,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'paragraph_indent_asis'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraph_indent_asis'}{'contents'}[0]{'args'}[0];
-$result_trees{'paragraph_indent_asis'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'paragraph_indent_asis'}{'contents'}[0];
-$result_trees{'paragraph_indent_asis'}{'contents'}[0]{'parent'} = $result_trees{'paragraph_indent_asis'};
-$result_trees{'paragraph_indent_asis'}{'contents'}[1]{'parent'} = $result_trees{'paragraph_indent_asis'};
-$result_trees{'paragraph_indent_asis'}{'contents'}[2]{'parent'} = $result_trees{'paragraph_indent_asis'};
-$result_trees{'paragraph_indent_asis'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'paragraph_indent_asis'}{'contents'}[3];
-$result_trees{'paragraph_indent_asis'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'paragraph_indent_asis'}{'contents'}[3];
-$result_trees{'paragraph_indent_asis'}{'contents'}[3]{'parent'} = $result_trees{'paragraph_indent_asis'};
-$result_trees{'paragraph_indent_asis'}{'contents'}[4]{'parent'} = $result_trees{'paragraph_indent_asis'};
-$result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[0]{'extra'}{'command'} = $result_trees{'paragraph_indent_asis'}{'contents'}[5];
-$result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'paragraph_indent_asis'}{'contents'}[5];
-$result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'paragraph_indent_asis'}{'contents'}[5];
-$result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[2];
-$result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'paragraph_indent_asis'}{'contents'}[5];
-$result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[3]{'args'}[0];
-$result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[3];
-$result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[3]{'parent'} = $result_trees{'paragraph_indent_asis'}{'contents'}[5];
-$result_trees{'paragraph_indent_asis'}{'contents'}[5]{'extra'}{'end_command'} = $result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[3];
-$result_trees{'paragraph_indent_asis'}{'contents'}[5]{'parent'} = $result_trees{'paragraph_indent_asis'};
-$result_trees{'paragraph_indent_asis'}{'contents'}[6]{'parent'} = $result_trees{'paragraph_indent_asis'};
 
 $result_texis{'paragraph_indent_asis'} = '@paragraphindent asis
 
@@ -208,7 +172,7 @@ $result_converted{'html_text'}->{'paragraph_indent_asis'} = '
 <p>para
   fff
 </p>
-<blockquote>
+<blockquote class="quotation">
 <p>in quotation
 </p></blockquote>
 

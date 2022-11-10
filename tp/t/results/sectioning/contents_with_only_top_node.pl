@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,21 +10,27 @@ $result_trees{'contents_with_only_top_node'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => '
+          'contents' => [
+            {
+              'text' => '
 ',
-          'type' => 'empty_line'
+              'type' => 'text_before_beginning'
+            }
+          ],
+          'type' => 'preamble_before_beginning'
+        },
+        {
+          'contents' => [],
+          'type' => 'preamble_before_content'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -32,14 +38,12 @@ $result_trees{'contents_with_only_top_node'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -47,19 +51,17 @@ $result_trees{'contents_with_only_top_node'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
           'cmdname' => 'contents',
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 4,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
       'extra' => {
@@ -77,26 +79,17 @@ $result_trees{'contents_with_only_top_node'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 2,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'contents_with_only_top_node'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_with_only_top_node'}{'contents'}[0];
-$result_trees{'contents_with_only_top_node'}{'contents'}[0]{'parent'} = $result_trees{'contents_with_only_top_node'};
-$result_trees{'contents_with_only_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'args'}[0];
-$result_trees{'contents_with_only_top_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_with_only_top_node'}{'contents'}[1];
-$result_trees{'contents_with_only_top_node'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'contents_with_only_top_node'}{'contents'}[1];
-$result_trees{'contents_with_only_top_node'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'contents'}[1];
-$result_trees{'contents_with_only_top_node'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'contents_with_only_top_node'}{'contents'}[1];
 $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'contents_with_only_top_node'}{'contents'}[1]{'parent'} = $result_trees{'contents_with_only_top_node'};
 
 $result_texis{'contents_with_only_top_node'} = '
 @node Top
@@ -106,24 +99,19 @@ $result_texis{'contents_with_only_top_node'} = '
 
 
 $result_texts{'contents_with_only_top_node'} = '
-
 ';
-
-$result_sectioning{'contents_with_only_top_node'} = {};
 
 $result_nodes{'contents_with_only_top_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
 $result_menus{'contents_with_only_top_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
@@ -137,7 +125,7 @@ $result_floats{'contents_with_only_top_node'} = {};
 $result_converted{'plaintext'}->{'contents_with_only_top_node'} = '';
 
 
-$result_converted{'html'}->{'contents_with_only_top_node'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+$result_converted{'html'}->{'contents_with_only_top_node'} = '<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -151,34 +139,14 @@ $result_converted{'html'}->{'contents_with_only_top_node'} = '<!DOCTYPE html PUB
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
-<style type="text/css">
-<!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
--->
-</style>
 
 
 </head>
 
 <body lang="en">
+<h1 class="node" id="Top">Top</h1>
 
-<span id="Top"></span><h1 class="node-heading">Top</h1>
 
-<hr>
 
 
 </body>

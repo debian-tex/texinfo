@@ -36,7 +36,7 @@ elif [ "$command" = 'diff' ]; then
     done
     for result in t/results/*/*/res*/; do
       out=`echo $result | sed 's;res\([^/]*/\)$;out\1;'`
-      diff -a -u --exclude=CVS --exclude=.svn -r $result $out
+      diff -a -u -r $result $out
     done
   else
     for result in t/results/$test_name/*.pl; do
@@ -44,7 +44,7 @@ elif [ "$command" = 'diff' ]; then
     done
     for result in t/results/$test_name/*/res*/; do
       out=`echo $result | sed 's;res\([^/]*/\)$;out\1;'`
-      diff -a -u --exclude=CVS --exclude=.svn -r $result $out
+      diff -a -u -r $result $out
     done
   fi 
 else
@@ -54,6 +54,7 @@ else
   if [ "$command" = 'generate' ]; then
     for file in $srcdir/t/*.t; do
       set -e
+      echo "$file" >&2
       $PERL -w $file -g
     done
   elif [ "$command" = 'output' ]; then

@@ -1,23 +1,20 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'section_chapter_before_top'} = {
   'contents' => [
     {
-      'contents' => [],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'section'
             }
           ],
@@ -25,14 +22,12 @@ $result_trees{'section_chapter_before_top'} = {
             'spaces_after_argument' => ' 
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -41,21 +36,17 @@ $result_trees{'section_chapter_before_top'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 2,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 1,
         'macro' => ''
-      },
-      'number' => 1,
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'chapter'
             }
           ],
@@ -63,14 +54,12 @@ $result_trees{'section_chapter_before_top'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -79,21 +68,17 @@ $result_trees{'section_chapter_before_top'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 2,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 3,
         'macro' => ''
-      },
-      'number' => 2,
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'top'
             }
           ],
@@ -101,38 +86,22 @@ $result_trees{'section_chapter_before_top'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
-      'contents' => [],
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 2,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 5,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'section_chapter_before_top'}{'contents'}[0]{'parent'} = $result_trees{'section_chapter_before_top'};
-$result_trees{'section_chapter_before_top'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_chapter_before_top'}{'contents'}[1]{'args'}[0];
-$result_trees{'section_chapter_before_top'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_chapter_before_top'}{'contents'}[1];
-$result_trees{'section_chapter_before_top'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'section_chapter_before_top'}{'contents'}[1];
-$result_trees{'section_chapter_before_top'}{'contents'}[1]{'parent'} = $result_trees{'section_chapter_before_top'};
-$result_trees{'section_chapter_before_top'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_chapter_before_top'}{'contents'}[2]{'args'}[0];
-$result_trees{'section_chapter_before_top'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'section_chapter_before_top'}{'contents'}[2];
-$result_trees{'section_chapter_before_top'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'section_chapter_before_top'}{'contents'}[2];
-$result_trees{'section_chapter_before_top'}{'contents'}[2]{'parent'} = $result_trees{'section_chapter_before_top'};
-$result_trees{'section_chapter_before_top'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_chapter_before_top'}{'contents'}[3]{'args'}[0];
-$result_trees{'section_chapter_before_top'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'section_chapter_before_top'}{'contents'}[3];
-$result_trees{'section_chapter_before_top'}{'contents'}[3]{'parent'} = $result_trees{'section_chapter_before_top'};
 
 $result_texis{'section_chapter_before_top'} = '@section section 
 
@@ -153,51 +122,53 @@ top
 ';
 
 $result_sectioning{'section_chapter_before_top'} = {
-  'level' => 1,
-  'section_childs' => [
-    {
-      'cmdname' => 'section',
-      'extra' => {
-        'spaces_before_argument' => ' '
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'section',
+        'extra' => {},
+        'structure' => {
+          'section_level' => 2,
+          'section_number' => 1,
+          'section_up' => {}
+        }
       },
-      'level' => 2,
-      'number' => 1,
-      'section_up' => {}
-    },
-    {
-      'cmdname' => 'chapter',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      {
+        'cmdname' => 'chapter',
+        'extra' => {},
+        'structure' => {
+          'section_level' => 2,
+          'section_number' => 2,
+          'section_prev' => {},
+          'section_up' => {},
+          'toplevel_prev' => {}
+        }
       },
-      'level' => 2,
-      'number' => 2,
-      'section_prev' => {},
-      'section_up' => {},
-      'toplevel_prev' => {}
-    },
-    {
-      'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'level' => 2,
-      'section_prev' => {},
-      'section_up' => {},
-      'toplevel_prev' => {}
-    }
-  ]
+      {
+        'cmdname' => 'top',
+        'extra' => {},
+        'structure' => {
+          'section_level' => 2,
+          'section_prev' => {},
+          'section_up' => {},
+          'toplevel_prev' => {}
+        }
+      }
+    ],
+    'section_level' => 1
+  }
 };
-$result_sectioning{'section_chapter_before_top'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'section_chapter_before_top'};
-$result_sectioning{'section_chapter_before_top'}{'section_childs'}[1]{'section_prev'} = $result_sectioning{'section_chapter_before_top'}{'section_childs'}[0];
-$result_sectioning{'section_chapter_before_top'}{'section_childs'}[1]{'section_up'} = $result_sectioning{'section_chapter_before_top'};
-$result_sectioning{'section_chapter_before_top'}{'section_childs'}[1]{'toplevel_prev'} = $result_sectioning{'section_chapter_before_top'}{'section_childs'}[0];
-$result_sectioning{'section_chapter_before_top'}{'section_childs'}[2]{'section_prev'} = $result_sectioning{'section_chapter_before_top'}{'section_childs'}[1];
-$result_sectioning{'section_chapter_before_top'}{'section_childs'}[2]{'section_up'} = $result_sectioning{'section_chapter_before_top'};
-$result_sectioning{'section_chapter_before_top'}{'section_childs'}[2]{'toplevel_prev'} = $result_sectioning{'section_chapter_before_top'}{'section_childs'}[1];
+$result_sectioning{'section_chapter_before_top'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'section_chapter_before_top'};
+$result_sectioning{'section_chapter_before_top'}{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'section_chapter_before_top'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'section_chapter_before_top'}{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'section_chapter_before_top'};
+$result_sectioning{'section_chapter_before_top'}{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'section_chapter_before_top'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'section_chapter_before_top'}{'structure'}{'section_childs'}[2]{'structure'}{'section_prev'} = $result_sectioning{'section_chapter_before_top'}{'structure'}{'section_childs'}[1];
+$result_sectioning{'section_chapter_before_top'}{'structure'}{'section_childs'}[2]{'structure'}{'section_up'} = $result_sectioning{'section_chapter_before_top'};
+$result_sectioning{'section_chapter_before_top'}{'structure'}{'section_childs'}[2]{'structure'}{'toplevel_prev'} = $result_sectioning{'section_chapter_before_top'}{'structure'}{'section_childs'}[1];
 
 $result_errors{'section_chapter_before_top'} = [
   {
-    'error_line' => ':3: warning: lowering the section level of @chapter appearing after a lower element
+    'error_line' => 'warning: lowering the section level of @chapter appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 3,
@@ -206,7 +177,7 @@ $result_errors{'section_chapter_before_top'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: lowering the section level of @top appearing after a lower element
+    'error_line' => 'warning: lowering the section level of @top appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 5,

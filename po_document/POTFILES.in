@@ -8,11 +8,13 @@
 # the output from processing Texinfo documents.
 
 tp/Texinfo/Common.pm
-tp/Texinfo/Parser.pm
-tp/Texinfo/Structuring.pm
+tp/Texinfo/Transformations.pm
+tp/Texinfo/Translations.pm
 tp/Texinfo/Convert/Converter.pm
 tp/Texinfo/Convert/DocBook.pm
 tp/Texinfo/Convert/IXIN.pm
 tp/Texinfo/Convert/Info.pm
+tp/Texinfo/Convert/LaTeX.pm
 tp/Texinfo/Convert/Plaintext.pm
 tp/Texinfo/Convert/HTML.pm
+tp/Texinfo/Convert/Utils.pm

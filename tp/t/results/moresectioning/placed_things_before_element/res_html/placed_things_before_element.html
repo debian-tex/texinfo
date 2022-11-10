@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -14,21 +14,10 @@
 
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+h1.settitle {text-align:center}
+span.program-in-footer {font-size: smaller}
+td.menu-entry-description {vertical-align: top}
+td.menu-entry-destination {vertical-align: top}
 -->
 </style>
 
@@ -36,58 +25,59 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">before element test</h1>
+<h1 class="settitle">before element test</h1>
 <hr>
 
 
-<span id="An-anchor"></span>
+<a class="anchor" id="An-anchor"></a>
 <p>Ref to the anchor:
-<a href="#An-anchor">An anchor</a>
+<a class="ref" href="#An-anchor">An anchor</a>
 </p>
 <p>Ref to the anchor in footnote:
-<a href="#Anchor-in-footnote">Anchor in footnote</a>.
+<a class="ref" href="#Anchor-in-footnote">Anchor in footnote</a>.
 </p>
-<p><a id="DOCF1" href="#FOOT1"><sup>1</sup></a>
+<p><a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
-<div class="float"><span id="float-anchor"></span>
+<div class="float" id="float-anchor">
 <p>In float
-</p><div class="float-caption"><p><strong>1
+</p><div class="type-number-float"><p><strong class="strong">1
 </strong></p></div></div>
 <p>Ref to float
-<a href="#float-anchor">1</a>.
+<a class="ref" href="#float-anchor">1</a>.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#An-anchor">An anchor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">menu entry pointing to the anchor.
+<tr><td class="menu-entry-destination">&bull; <a href="#An-anchor">An anchor</a></td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">menu entry pointing to the anchor.
 </td></tr>
 </table>
 
-<span id="index-index-entry"></span>
+<a class="index-entry-id" id="index-index-entry"></a>
 
-<div class="section" id="section">
+<div class="section-level-extent" id="section">
 <h2 class="section">1 section</h2>
 
 <p>Ref to anchor
-<a href="#An-anchor">An anchor</a>
+<a class="ref" href="#An-anchor">An anchor</a>
 </p>
 <p>Ref to footnote anchor
-<a href="#Anchor-in-footnote">Anchor in footnote</a>
+<a class="ref" href="#Anchor-in-footnote">Anchor in footnote</a>
 </p>
-<div class="footnote">
+<div class="footnotes-segment">
 <hr>
 <h3 class="footnotes-heading">Footnotes</h3>
 
-<h5><a id="FOOT1" href="#DOCF1">(1)</a></h5>
+<h5 class="footnote-body-heading"><a id="FOOT1" href="#DOCF1">(1)</a></h5>
 <p>In footnote.
 </p>
-<span id="Anchor-in-footnote"></span>
+<a class="anchor" id="Anchor-in-footnote"></a>
 <p>Ref to main text anchor
-<a href="#An-anchor">An anchor</a>
+<a class="ref" href="#An-anchor">An anchor</a>
 </p>
 </div>
-<hr></div>
-<p><font size="-1">
-  This document was generated on <em>a sunny day</em> using <a href="http://www.gnu.org/software/texinfo/"><em>texi2any</em></a>.
-</font></p>
+<hr>
+</div>
+<p>
+  <span class="program-in-footer">This document was generated on <em class="emph">a sunny day</em> using <a class="uref" href="http://www.gnu.org/software/texinfo/"><em class="emph">texi2any</em></a>.</span>
+</p>
 
 
 </body>

@@ -1,0 +1,20 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top Tests
+
+@displaymath
+\leqalignno{
+   \int v(t)\, dt &= u(t) + C&[3.1]\cr
+   \int v(t)\, dt &= u(t) + H&[3.2]\cr
+}
+@end displaymath
+
+@tex
+$$\leqalignno{
+   \int v(t)\, dt &= u(t) + C&[3.1]\cr
+   \int v(t)\, dt &= u(t) + H&[3.2]\cr
+}$$
+@end tex
+
+@bye

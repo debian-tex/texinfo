@@ -1,607 +1,449 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'raw_commands_and_end_of_lines'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'html',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
           'text' => '
 ',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'Surrounded by empty lines.
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'rawpreformatted'
+          'type' => 'empty_line'
         },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'html'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'html',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'html'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Block commands on a line
-'
-        },
-        {
           'cmdname' => 'html',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'in block
+                  'text' => 'Surrounded by empty lines.
 '
+                }
+              ],
+              'type' => 'rawpreformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'html'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'html'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Block commands on a line
+'
+            },
+            {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'html',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in block
+'
+                    },
+                    {
+                      'text' => 'in block l2
+'
+                    }
+                  ],
+                  'type' => 'rawpreformatted'
                 },
                 {
-                  'parent' => {},
-                  'text' => 'in block l2
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'rawpreformatted'
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
+                  'args' => [
                     {
-                      'parent' => {},
-                      'text' => 'html'
+                      'contents' => [
+                        {
+                          'text' => 'html'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
                     }
                   ],
+                  'cmdname' => 'end',
                   'extra' => {
-                    'spaces_after_argument' => '
-'
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'html'
                   },
-                  'parent' => {},
-                  'type' => 'line_arg'
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 10,
+                    'macro' => ''
+                  }
                 }
               ],
-              'cmdname' => 'end',
-              'extra' => {
-                'command_argument' => 'html',
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'html'
-              },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 10,
+                'line_nr' => 7,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
+            },
+            {
+              'text' => 'end commands on a line.
+'
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
-          },
-          'parent' => {}
+          'type' => 'paragraph'
         },
         {
-          'parent' => {},
-          'text' => 'end commands on a line.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Before the opening command '
-        },
-        {
-          'cmdname' => 'html',
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in block
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'rawpreformatted'
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'html'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'parent' => {},
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'end',
-              'extra' => {
-                'command_argument' => 'html',
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'html'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 15,
-                'macro' => ''
-              },
-              'parent' => {}
-            }
-          ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'end commands on a line.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Before the opening command '
-        },
-        {
-          'cmdname' => 'html',
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in block
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'rawpreformatted'
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'html after the closing command.'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'parent' => {},
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'end',
-              'extra' => {
-                'command_argument' => 'html',
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'html after the closing command.'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 20,
-                'macro' => ''
-              },
-              'parent' => {}
-            }
-          ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 18,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Before the opening command '
-        },
-        {
-          'cmdname' => 'html',
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in block
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'rawpreformatted'
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'html'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'parent' => {},
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'end',
-              'extra' => {
-                'command_argument' => 'html',
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'html'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 24,
-                'macro' => ''
-              },
-              'parent' => {}
-            }
-          ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 22,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '. A symbol on a line.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Before the opening command '
-        },
-        {
-          'cmdname' => 'html',
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in block
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'rawpreformatted'
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'html. A symbol after the closing command.'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'parent' => {},
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'end',
-              'extra' => {
-                'command_argument' => 'html',
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'html. A symbol after the closing command.'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 29,
-                'macro' => ''
-              },
-              'parent' => {}
-            }
-          ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 27,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'tex',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
           'text' => '
 ',
-          'type' => 'empty_line_after_command'
+          'type' => 'empty_line'
         },
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'Surrounded by empty lines.
+              'text' => 'Before the opening command '
+            },
+            {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'html',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in block
+'
+                    }
+                  ],
+                  'type' => 'rawpreformatted'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'html'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'html'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 15,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 13,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'end commands on a line.
 '
             }
           ],
-          'parent' => {},
-          'type' => 'rawpreformatted'
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Before the opening command '
+            },
+            {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'html',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in block
+'
+                    }
+                  ],
+                  'type' => 'rawpreformatted'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'html after the closing command.'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'html after the closing command.'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 20,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 18,
+                'macro' => ''
+              }
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Before the opening command '
+            },
+            {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'html',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in block
+'
+                    }
+                  ],
+                  'type' => 'rawpreformatted'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'html'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'html'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 24,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 22,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '. A symbol on a line.
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Before the opening command '
+            },
+            {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'html',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in block
+'
+                    }
+                  ],
+                  'type' => 'rawpreformatted'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'html. A symbol after the closing command.'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'html. A symbol after the closing command.'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 29,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 27,
+                'macro' => ''
+              }
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
         },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'tex'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'tex',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'tex'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 33,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 31,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Block commands on a line
-'
-        },
-        {
           'cmdname' => 'tex',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'in block
+                  'text' => 'Surrounded by empty lines.
 '
                 }
               ],
-              'parent' => {},
               'type' => 'rawpreformatted'
             },
             {
@@ -609,7 +451,6 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'tex'
                     }
                   ],
@@ -617,905 +458,779 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'tex',
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'tex'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 38,
+                'line_nr' => 33,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 36,
+            'line_nr' => 31,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
-          'text' => 'end commands on a line.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Before the opening command '
+          'type' => 'empty_line'
         },
         {
-          'cmdname' => 'tex',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
+              'text' => 'Block commands on a line
+'
             },
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'in block
+                  'extra' => {
+                    'spaces_after_argument' => '
 '
+                  },
+                  'type' => 'block_line_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'rawpreformatted'
+              'cmdname' => 'tex',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in block
+'
+                    }
+                  ],
+                  'type' => 'rawpreformatted'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'tex'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'tex'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 38,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 36,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'end commands on a line.
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Before the opening command '
+            },
+            {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'tex',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in block
+'
+                    }
+                  ],
+                  'type' => 'rawpreformatted'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'tex'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'tex'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 43,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 41,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'end commands on a line.
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Before the opening command '
+            },
+            {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'tex',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in block
+'
+                    }
+                  ],
+                  'type' => 'rawpreformatted'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'tex after the closing command.'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'tex after the closing command.'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 48,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 46,
+                'macro' => ''
+              }
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Before the opening command '
+            },
+            {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'tex',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in block
+'
+                    }
+                  ],
+                  'type' => 'rawpreformatted'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'tex'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'tex'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 52,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 50,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '. A symbol on a line.
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Before the opening command '
+            },
+            {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'tex',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in block
+'
+                    }
+                  ],
+                  'type' => 'rawpreformatted'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'tex. A symbol after the closing command.'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'tex. A symbol after the closing command.'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 57,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 55,
+                'macro' => ''
+              }
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'verbatim',
+          'contents' => [
+            {
+              'text' => 'Surrounded by empty lines.
+',
+              'type' => 'raw'
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'tex'
+                      'text' => 'verbatim'
                     }
                   ],
                   'extra' => {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'tex',
                 'spaces_before_argument' => ' ',
-                'text_arg' => 'tex'
+                'text_arg' => 'verbatim'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 43,
+                'line_nr' => 61,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 41,
+            'line_nr' => 59,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
-          'text' => 'end commands on a line.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Before the opening command '
+          'type' => 'empty_line'
         },
         {
-          'cmdname' => 'tex',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in block
+              'text' => 'Block commands on a line
 '
-                }
-              ],
-              'parent' => {},
-              'type' => 'rawpreformatted'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'verbatim',
+          'contents' => [
+            {
+              'text' => 'in block
+',
+              'type' => 'raw'
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'tex after the closing command.'
+                      'text' => 'verbatim'
                     }
                   ],
                   'extra' => {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'tex',
                 'spaces_before_argument' => ' ',
-                'text_arg' => 'tex after the closing command.'
+                'text_arg' => 'verbatim'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 48,
+                'line_nr' => 66,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 46,
+            'line_nr' => 64,
             'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Before the opening command '
+          }
         },
         {
-          'cmdname' => 'tex',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in block
+              'text' => 'end commands on a line.
 '
-                }
-              ],
-              'parent' => {},
-              'type' => 'rawpreformatted'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Before the opening command '
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'verbatim',
+          'contents' => [
+            {
+              'text' => 'in block
+',
+              'type' => 'raw'
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'tex'
+                      'text' => 'verbatim'
                     }
                   ],
                   'extra' => {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'tex',
                 'spaces_before_argument' => ' ',
-                'text_arg' => 'tex'
+                'text_arg' => 'verbatim'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 52,
+                'line_nr' => 71,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 50,
+            'line_nr' => 69,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
-          'text' => '. A symbol on a line.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Before the opening command '
-        },
-        {
-          'cmdname' => 'tex',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in block
+              'text' => 'end commands on a line.
 '
-                }
-              ],
-              'parent' => {},
-              'type' => 'rawpreformatted'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Before the opening command '
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'verbatim',
+          'contents' => [
+            {
+              'text' => 'in block
+',
+              'type' => 'raw'
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'tex. A symbol after the closing command.'
+                      'text' => 'verbatim after the closing command.'
                     }
                   ],
                   'extra' => {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'tex',
                 'spaces_before_argument' => ' ',
-                'text_arg' => 'tex. A symbol after the closing command.'
+                'text_arg' => 'verbatim after the closing command.'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 57,
+                'line_nr' => 76,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 55,
+            'line_nr' => 74,
             'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'verbatim',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
+          }
         },
         {
-          'parent' => {},
-          'text' => 'Surrounded by empty lines.
-',
-          'type' => 'raw'
-        }
-      ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 59,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Block commands on a line
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'cmdname' => 'verbatim',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
           'text' => '
 ',
-          'type' => 'empty_line_after_command'
+          'type' => 'empty_line'
         },
         {
-          'parent' => {},
-          'text' => 'in block
-',
-          'type' => 'raw'
-        }
-      ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 64,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
-    {
-      'contents' => [
+          'contents' => [
+            {
+              'text' => 'Before the opening command '
+            }
+          ],
+          'type' => 'paragraph'
+        },
         {
-          'parent' => {},
-          'text' => 'end commands on a line.
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
 '
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'verbatim',
+          'contents' => [
+            {
+              'text' => 'in block
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
+              'type' => 'raw'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'verbatim'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'verbatim'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 80,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 78,
+            'macro' => ''
+          }
+        },
         {
-          'parent' => {},
-          'text' => 'Before the opening command '
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'cmdname' => 'verbatim',
-      'contents' => [
+          'contents' => [
+            {
+              'text' => '. A symbol on a line.
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
           'text' => '
 ',
-          'type' => 'empty_line_after_command'
+          'type' => 'empty_line'
         },
         {
-          'parent' => {},
-          'text' => 'in block
-',
-          'type' => 'raw'
-        }
-      ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 69,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'end commands on a line.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Before the opening command '
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'cmdname' => 'verbatim',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
+          'contents' => [
+            {
+              'text' => 'Before the opening command '
+            }
+          ],
+          'type' => 'paragraph'
         },
         {
-          'parent' => {},
-          'text' => 'in block
-',
-          'type' => 'raw'
-        }
-      ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 74,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => ' ',
-      'type' => 'empty_spaces_after_command'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'after the closing command.
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
 '
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'verbatim',
+          'contents' => [
+            {
+              'text' => 'in block
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Before the opening command '
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'cmdname' => 'verbatim',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'parent' => {},
-          'text' => 'in block
-',
-          'type' => 'raw'
-        }
-      ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 78,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => '. A symbol on a line.
+              'type' => 'raw'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'verbatim. A symbol after the closing command.'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
 '
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'verbatim. A symbol after the closing command.'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 85,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 83,
+            'macro' => ''
+          }
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Before the opening command '
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'cmdname' => 'verbatim',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'parent' => {},
-          'text' => 'in block
-',
-          'type' => 'raw'
-        }
-      ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 83,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => '. A symbol after the closing command.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[3]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[4]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[5]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[6]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[7]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[8]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[9]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[10]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[11]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[12]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13]{'extra'}{'end_command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[13]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[14]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[15]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[16]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[17]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[18]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[19]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[20]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[21]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[22]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[23]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[24]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[25]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[25];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[25]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[25];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[25]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[25];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[25]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[26]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[27]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[28]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[28];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[28]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[29]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[29];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[29]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[29];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[29]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[29];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[29]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[30]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[31]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[31];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[31]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[32]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[33]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[33];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[33]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[34]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[34];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[34]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[34];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[34]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[34];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[34]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[35]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[36]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[36];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[36]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[37]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[38]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[38];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[38]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[39]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[39];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[39]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[39];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[39]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[39];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[39]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[40]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[41]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[41];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[41]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[42]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[43]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[43];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[43]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[44]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[44];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[44]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[44];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[44]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[44];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[44]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[45]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[46]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[46];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[46]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[47]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[48]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[48];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[48]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[49]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[49];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[49]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[49];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[49]{'contents'}[1]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[49];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[49]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[50]{'contents'}[0]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'}{'contents'}[50];
-$result_trees{'raw_commands_and_end_of_lines'}{'contents'}[50]{'parent'} = $result_trees{'raw_commands_and_end_of_lines'};
 
 $result_texis{'raw_commands_and_end_of_lines'} = '
 @html
@@ -1636,18 +1351,16 @@ Before the opening command in block
 end commands on a line.
 
 Before the opening command in block
-after the closing command.
 
 Before the opening command in block
 . A symbol on a line.
 
 Before the opening command in block
-. A symbol after the closing command.
 ';
 
 $result_errors{'raw_commands_and_end_of_lines'} = [
   {
-    'error_line' => ':13: warning: @html should only appear at the beginning of a line
+    'error_line' => 'warning: @html should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 13,
@@ -1656,7 +1369,7 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':18: warning: @html should only appear at the beginning of a line
+    'error_line' => 'warning: @html should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 18,
@@ -1665,16 +1378,16 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':20: superfluous argument to @end html:  after the closing command.
+    'error_line' => 'bad argument to @end: html after the closing command.
 ',
     'file_name' => '',
     'line_nr' => 20,
     'macro' => '',
-    'text' => 'superfluous argument to @end html:  after the closing command.',
+    'text' => 'bad argument to @end: html after the closing command.',
     'type' => 'error'
   },
   {
-    'error_line' => ':22: warning: @html should only appear at the beginning of a line
+    'error_line' => 'warning: @html should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 22,
@@ -1683,7 +1396,7 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':27: warning: @html should only appear at the beginning of a line
+    'error_line' => 'warning: @html should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 27,
@@ -1692,16 +1405,16 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':29: superfluous argument to @end html: . A symbol after the closing command.
+    'error_line' => 'bad argument to @end: html. A symbol after the closing command.
 ',
     'file_name' => '',
     'line_nr' => 29,
     'macro' => '',
-    'text' => 'superfluous argument to @end html: . A symbol after the closing command.',
+    'text' => 'bad argument to @end: html. A symbol after the closing command.',
     'type' => 'error'
   },
   {
-    'error_line' => ':41: warning: @tex should only appear at the beginning of a line
+    'error_line' => 'warning: @tex should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 41,
@@ -1710,7 +1423,7 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':46: warning: @tex should only appear at the beginning of a line
+    'error_line' => 'warning: @tex should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 46,
@@ -1719,16 +1432,16 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':48: superfluous argument to @end tex:  after the closing command.
+    'error_line' => 'bad argument to @end: tex after the closing command.
 ',
     'file_name' => '',
     'line_nr' => 48,
     'macro' => '',
-    'text' => 'superfluous argument to @end tex:  after the closing command.',
+    'text' => 'bad argument to @end: tex after the closing command.',
     'type' => 'error'
   },
   {
-    'error_line' => ':50: warning: @tex should only appear at the beginning of a line
+    'error_line' => 'warning: @tex should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 50,
@@ -1737,7 +1450,7 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':55: warning: @tex should only appear at the beginning of a line
+    'error_line' => 'warning: @tex should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 55,
@@ -1746,16 +1459,16 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':57: superfluous argument to @end tex: . A symbol after the closing command.
+    'error_line' => 'bad argument to @end: tex. A symbol after the closing command.
 ',
     'file_name' => '',
     'line_nr' => 57,
     'macro' => '',
-    'text' => 'superfluous argument to @end tex: . A symbol after the closing command.',
+    'text' => 'bad argument to @end: tex. A symbol after the closing command.',
     'type' => 'error'
   },
   {
-    'error_line' => ':69: warning: @verbatim should only appear at the beginning of a line
+    'error_line' => 'warning: @verbatim should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 69,
@@ -1764,7 +1477,7 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':74: warning: @verbatim should only appear at the beginning of a line
+    'error_line' => 'warning: @verbatim should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 74,
@@ -1773,16 +1486,16 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':76: warning: superfluous argument to @end verbatim:  after the closing command.
+    'error_line' => 'bad argument to @end: verbatim after the closing command.
 ',
     'file_name' => '',
     'line_nr' => 76,
     'macro' => '',
-    'text' => 'superfluous argument to @end verbatim:  after the closing command.',
-    'type' => 'warning'
+    'text' => 'bad argument to @end: verbatim after the closing command.',
+    'type' => 'error'
   },
   {
-    'error_line' => ':78: warning: @verbatim should only appear at the beginning of a line
+    'error_line' => 'warning: @verbatim should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 78,
@@ -1791,7 +1504,7 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':83: warning: @verbatim should only appear at the beginning of a line
+    'error_line' => 'warning: @verbatim should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 83,
@@ -1800,13 +1513,13 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':85: warning: superfluous argument to @end verbatim: . A symbol after the closing command.
+    'error_line' => 'bad argument to @end: verbatim. A symbol after the closing command.
 ',
     'file_name' => '',
     'line_nr' => 85,
     'macro' => '',
-    'text' => 'superfluous argument to @end verbatim: . A symbol after the closing command.',
-    'type' => 'warning'
+    'text' => 'bad argument to @end: verbatim. A symbol after the closing command.',
+    'type' => 'error'
   }
 ];
 
@@ -1847,7 +1560,6 @@ in block
 
    Before the opening command
 in block
-   after the closing command.
 
    Before the opening command
 in block
@@ -1855,7 +1567,6 @@ in block
 
    Before the opening command
 in block
-   .  A symbol after the closing command.
 ';
 
 1;

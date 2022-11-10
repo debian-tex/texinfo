@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,75 +10,63 @@ $result_trees{'lone_braces_in_inlineraw'} = {
     {
       'contents' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'plaintext'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [
+              'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'truc'
+                      'text' => 'plaintext'
                     }
                   ],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'truc'
+                        }
+                      ],
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 1,
+                        'macro' => ''
+                      },
+                      'type' => 'bracketed'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_before_argument' => ' '
                   },
-                  'parent' => {},
-                  'type' => 'bracketed'
+                  'type' => 'brace_command_arg'
                 }
               ],
+              'cmdname' => 'inlineraw',
               'extra' => {
-                'spaces_before_argument' => ' '
+                'expand_index' => 1,
+                'format' => 'plaintext'
               },
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.
+'
             }
           ],
-          'cmdname' => 'inlineraw',
-          'contents' => [],
-          'extra' => {
-            'expand_index' => 1,
-            'format' => 'plaintext'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.
-'
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0];
-$result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[1];
-$result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0];
-$result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0];
-$result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'lone_braces_in_inlineraw'}{'contents'}[0];
-$result_trees{'lone_braces_in_inlineraw'}{'contents'}[0]{'parent'} = $result_trees{'lone_braces_in_inlineraw'};
 
 $result_texis{'lone_braces_in_inlineraw'} = '@inlineraw{plaintext, {truc}}.
 ';

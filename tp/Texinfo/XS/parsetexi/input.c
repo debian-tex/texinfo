@@ -1,4 +1,4 @@
-/* Copyright 2010-2020 Free Software Foundation, Inc.
+/* Copyright 2010-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,8 +12,6 @@
 
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
-
-#define _GNU_SOURCE
 
 #include <config.h>
 
@@ -45,18 +43,30 @@ typedef struct {
     enum input_type type;
 
     FILE *file;
-    LINE_NR line_nr;
+    SOURCE_INFO source_info;
 
     char *text;  /* Input text to be parsed as Texinfo. */
     char *ptext; /* How far we are through 'text'.  Used to split 'text'
                     into lines. */
 } INPUT;
 
+static char *input_pushback_string;
+
 enum character_encoding input_encoding;
+
+static char *input_encoding_name;
+static iconv_t reverse_iconv; /* used in encode_file_name */
 
 void
 set_input_encoding (char *encoding)
 {
+  free (input_encoding_name); input_encoding_name = strdup (encoding);
+  if (reverse_iconv)
+    {
+      iconv_close (reverse_iconv);
+      reverse_iconv = (iconv_t) 0;
+    }
+
   if (!strcasecmp (encoding, "utf-8"))
     input_encoding = ce_utf8;
   else if (!strcmp (encoding, "iso-8859-1")
@@ -82,20 +92,7 @@ int input_number = 0;
 int input_space = 0;
 
 /* Current filename and line number.  Used for reporting. */
-LINE_NR line_nr;
-
-/* Change the line number of filename of the top input source.  Used to
-   record a #line directive.  If FILENAME is non-null, it should hbae
-   been returned from save_string. */
-void
-save_line_directive (int line_nr, char *filename)
-{
-  INPUT *top = &input_stack[input_number - 1];
-  if (line_nr)
-    top->line_nr.line_nr = line_nr;
-  if (filename)
-    top->line_nr.file_name = filename;
-}
+SOURCE_INFO current_source_info;
 
 /* Collect text from the input sources until a newline is found.  This is used 
    instead of next_text when we need to be sure we get an entire line of 
@@ -164,16 +161,61 @@ text_buffer_iconv (TEXT *buf, iconv_t iconv_state,
 }
 
 
+static char *
+encode_with_iconv (iconv_t our_iconv,  char *s)
+{
+  static TEXT t;
+  ICONV_CONST char *inptr; size_t bytes_left;
+  size_t iconv_ret;
+
+  t.end = 0;
+  inptr = s;
+  bytes_left = strlen (s);
+  text_alloc (&t, 10);
+
+  while (1)
+    {
+      iconv_ret = text_buffer_iconv (&t, our_iconv,
+                                     &inptr, &bytes_left);
+
+      /* Make sure libiconv flushes out the last converted character.
+         This is required when the conversion is stateful, in which
+         case libiconv might not output the last character, waiting to
+         see whether it should be combined with the next one.  */
+      if (iconv_ret != (size_t) -1
+          && text_buffer_iconv (&t, our_iconv, 0, 0) != (size_t) -1)
+        /* Success: all of input converted. */
+        break;
+
+      if (bytes_left == 0)
+        break;
+
+      switch (errno)
+        {
+        case E2BIG:
+          text_alloc (&t, t.space + 20);
+          break;
+        case EILSEQ:
+        default:
+          fprintf(stderr, "%s:%d: encoding error at byte 0x%2x\n",
+            current_source_info.file_name, current_source_info.line_nr,
+                                                 *(unsigned char *)inptr);
+          inptr++; bytes_left--;
+          break;
+        }
+    }
+
+  t.text[t.end] = '\0';
+  return strdup (t.text);
+}
+
 /* Return conversion of S according to input_encoding.  This function
    frees S. */
 static char *
 convert_to_utf8 (char *s)
 {
   iconv_t our_iconv = (iconv_t) -1;
-  static TEXT t;
-  ICONV_CONST char *inptr; size_t bytes_left;
-  size_t iconv_ret;
-  enum character_encoding enc;
+  char *ret;
 
   /* Convert from @documentencoding to UTF-8.
      It might be possible not to convert to UTF-8 and use an 8-bit encoding
@@ -182,7 +224,8 @@ convert_to_utf8 (char *s)
      file, then we'd have to keep track of which strings needed the UTF-8 flag
      and which didn't. */
 
-  /* Initialize conversions for the first time. */
+  /* Initialize conversions for the first time.  iconv_open returns
+     (iconv_t) -1 on failure so these should only be called once. */
   if (iconv_validate_utf8 == (iconv_t) 0)
     iconv_validate_utf8 = iconv_open ("UTF-8", "UTF-8");
   if (iconv_from_latin1 == (iconv_t) 0)
@@ -231,46 +274,87 @@ convert_to_utf8 (char *s)
       return s;
     }
 
-  t.end = 0;
-  inptr = s;
-  bytes_left = strlen (s);
-  text_alloc (&t, 10);
+  ret = encode_with_iconv (our_iconv, s);
+  free (s);
+  return ret;
+}
 
-  while (1)
+
+int doc_encoding_for_input_file_name = 1;
+char *input_file_name_encoding = 0;
+char *locale_encoding = 0;
+
+void
+set_input_file_name_encoding (char *value)
+{
+  free (input_file_name_encoding);
+  input_file_name_encoding = value ? strdup (value) : 0;
+}
+
+void
+set_locale_encoding (char *value)
+{
+  free (locale_encoding);
+  locale_encoding =  value ? strdup (value) : 0;
+}
+
+/* Reverse the decoding of the filename to the input encoding, to retrieve
+   the bytes that were present in the original Texinfo file.  Return
+   value is freed by free_small_strings. */
+char *
+encode_file_name (char *filename)
+{
+  if (!reverse_iconv)
     {
-      iconv_ret = text_buffer_iconv (&t, our_iconv,
-                                     &inptr, &bytes_left);
-
-      /* Make sure libiconv flushes out the last converted character.
-         This is required when the conversion is stateful, in which
-         case libiconv might not output the last character, waiting to
-         see whether it should be combined with the next one.  */
-      if (iconv_ret != (size_t) -1
-          && text_buffer_iconv (&t, our_iconv, 0, 0) != (size_t) -1)
-        /* Success: all of input converted. */
-        break;
-
-      if (bytes_left == 0)
-        break;
-
-      switch (errno)
+      if (input_file_name_encoding)
         {
-        case E2BIG:
-          text_alloc (&t, t.space + 20);
-          break;
-        case EILSEQ:
-        default:
-          fprintf(stderr, "%s:%d: encoding error at byte 0x%2x\n",
-            line_nr.file_name, line_nr.line_nr, *(unsigned char *)inptr);
-          inptr++; bytes_left--;
-          break;
+          reverse_iconv = iconv_open (input_file_name_encoding, "UTF-8");
+        }
+      else if (doc_encoding_for_input_file_name)
+        {
+          if (input_encoding != ce_utf8 && input_encoding_name)
+            {
+              reverse_iconv = iconv_open (input_encoding_name, "UTF-8");
+            }
+        }
+      else if (locale_encoding)
+        {
+          reverse_iconv = iconv_open (locale_encoding, "UTF-8");
         }
     }
-
-  free (s);
-  t.text[t.end] = '\0';
-  return strdup (t.text);
+  if (reverse_iconv && reverse_iconv != (iconv_t) -1)
+    {
+      char *s, *conv;
+      conv = encode_with_iconv (reverse_iconv, filename);
+      s = save_string (conv);
+      free (conv);
+      return s;
+    }
+  else
+    {
+      return save_string (filename);
+    }
 }
+
+/* Change the line number of filename of the top input source.  Used to
+   record a #line directive. */
+void
+save_line_directive (int line_nr, char *filename)
+{
+  char *f = 0;
+  INPUT *top;
+
+  if (filename)
+    f = encode_file_name (filename);
+
+  top = &input_stack[input_number - 1];
+  if (line_nr)
+    top->source_info.line_nr = line_nr;
+  if (filename)
+    top->source_info.file_name = f;
+}
+
+
 
 int
 expanding_macro (char *macro)
@@ -278,8 +362,8 @@ expanding_macro (char *macro)
   int i;
   for (i = 0; i < input_number; i++)
     {
-      if (input_stack[i].line_nr.macro
-          && !strcmp (input_stack[i].line_nr.macro, macro))
+      if (input_stack[i].source_info.macro
+          && !strcmp (input_stack[i].source_info.macro, macro))
         {
           return 1;
         }
@@ -289,6 +373,15 @@ expanding_macro (char *macro)
 
 char *save_string (char *string);
 
+void
+input_pushback (char *string)
+{
+  if (input_pushback_string)
+    fprintf (stderr,
+             "texi2any (XS module): bug: input_pushback called twice\n");
+  input_pushback_string = string;
+}
+
 /* Return value to be freed by caller.  Return null if we are out of input. */
 char *
 next_text (void)
@@ -297,6 +390,14 @@ next_text (void)
   char *line = 0;
   size_t n;
   FILE *input_file;
+
+  if (input_pushback_string)
+    {
+      char *s;
+      s = input_pushback_string;
+      input_pushback_string = 0;
+      return s;
+    }
 
   while (input_number > 0)
     {
@@ -321,10 +422,10 @@ next_text (void)
           else
             i->ptext = p; /* The next time, we will pop the input source. */
 
-          if (!i->line_nr.macro)
-            i->line_nr.line_nr++;
+          if (!i->source_info.macro)
+            i->source_info.line_nr++;
 
-          line_nr = i->line_nr;
+          current_source_info = i->source_info;
 
           return new;
 
@@ -339,7 +440,7 @@ next_text (void)
                 {
                   /* Add a newline at the end of the file if one is missing. */
                   char *line2;
-                  asprintf (&line2, "%s\n", line);
+                  xasprintf (&line2, "%s\n", line);
                   free (line);
                   line = line2;
                 }
@@ -349,8 +450,8 @@ next_text (void)
               if (comment)
                 *comment = '\0';
 
-              i->line_nr.line_nr++;
-              line_nr = i->line_nr;
+              i->source_info.line_nr++;
+              current_source_info = i->source_info;
 
               return convert_to_utf8 (line);
             }
@@ -370,7 +471,7 @@ next_text (void)
             {
               if (fclose (input_stack[input_number - 1].file) == EOF)
                 fprintf (stderr, "error on closing %s: %s",
-                        input_stack[input_number - 1].line_nr.file_name,
+                        input_stack[input_number - 1].source_info.file_name,
                         strerror (errno));
             }
         }
@@ -398,9 +499,9 @@ input_push (char *text, char *macro, char *filename, int line_number)
 
   if (!macro)
     line_number--;
-  input_stack[input_number].line_nr.line_nr = line_number;
-  input_stack[input_number].line_nr.file_name = save_string (filename);
-  input_stack[input_number].line_nr.macro = save_string (macro);
+  input_stack[input_number].source_info.line_nr = line_number;
+  input_stack[input_number].source_info.file_name = save_string (filename);
+  input_stack[input_number].source_info.macro = save_string (macro);
   input_number++;
 }
 
@@ -455,9 +556,9 @@ input_push_text (char *text, char *macro)
       char *filename = 0;
       if (input_number > 0)
         {
-          filename = input_stack[input_number - 1].line_nr.file_name;
+          filename = input_stack[input_number - 1].source_info.file_name;
         }
-      input_push (text, macro, filename, line_nr.line_nr);
+      input_push (text, macro, filename, current_source_info.line_nr);
     }
 }
 
@@ -520,6 +621,17 @@ add_include_directory (char *filename)
     filename[len - 1] = '\0';
 }
 
+void
+clear_include_directories (void)
+{
+  int i;
+  for (i = 0; i < include_dirs_number; i++)
+    {
+      free (include_dirs[i]);
+    }
+  include_dirs_number = 0;
+}
+
 /* Return value to be freed by caller. */
 char *
 locate_include_file (char *filename)
@@ -528,11 +640,9 @@ locate_include_file (char *filename)
   struct stat dummy;
   int i, status;
 
-  /* Checks if filename is absolute or relative to current directory.
-     TODO: Could use macros in top-level config.h for this. */
-  /* TODO: The Perl code (in Common.pm, 'locate_include_file') handles 
-     a volume in a path (like "A:"), possibly more general treatment 
-     with File::Spec module. */
+  /* Checks if filename is absolute or relative to current directory. */
+  /* Note: the Perl code (in Common.pm, 'locate_include_file') handles 
+     a volume in a path (like "A:") using the File::Spec module. */
   if (!memcmp (filename, "/", 1)
       || !memcmp (filename, "../", 3)
       || !memcmp (filename, "./", 2))
@@ -545,7 +655,7 @@ locate_include_file (char *filename)
     {
       for (i = 0; i < include_dirs_number; i++)
         {
-          asprintf (&fullpath, "%s/%s", include_dirs[i], filename);
+          xasprintf (&fullpath, "%s/%s", include_dirs[i], filename);
           status = stat (fullpath, &dummy);
           if (status == 0)
             return fullpath;
@@ -560,11 +670,17 @@ locate_include_file (char *filename)
 int
 input_push_file (char *filename)
 {
-  FILE *stream;
+  FILE *stream = 0;
+  char *p, *q;
 
-  stream = fopen (filename, "r");
-  if (!stream)
-    return errno;
+  if (!strcmp (filename, "-"))
+    stream = stdin;
+  else
+    {
+      stream = fopen (filename, "r");
+      if (!stream)
+        return errno;
+    }
 
   if (input_number == input_space)
     {
@@ -574,7 +690,6 @@ input_push_file (char *filename)
     }
 
   /* Strip off a leading directory path. */
-  char *p, *q;
   p = 0;
   q = strchr (filename, '/');
   while (q)
@@ -589,9 +704,9 @@ input_push_file (char *filename)
 
   input_stack[input_number].type = IN_file;
   input_stack[input_number].file = stream;
-  input_stack[input_number].line_nr.file_name = filename;
-  input_stack[input_number].line_nr.line_nr = 0;
-  input_stack[input_number].line_nr.macro = 0;
+  input_stack[input_number].source_info.file_name = filename;
+  input_stack[input_number].source_info.line_nr = 0;
+  input_stack[input_number].source_info.macro = 0;
   input_stack[input_number].text = 0;
   input_stack[input_number].ptext = 0;
   input_number++;

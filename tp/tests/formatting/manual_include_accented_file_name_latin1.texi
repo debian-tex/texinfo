@@ -1,0 +1,11 @@
+\input texinfo @c -*-texinfo-*-
+@documentencoding ISO-8859-1
+
+@top top
+@node Top
+
+This is a very simple texi manual @  <>.
+
+@include included_lat§n1.texi
+
+@bye

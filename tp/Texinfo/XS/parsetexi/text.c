@@ -1,4 +1,4 @@
-/* Copyright 2014-2021 Free Software Foundation, Inc.
+/* Copyright 2014-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -31,8 +31,6 @@ text_alloc (TEXT *t, size_t len)
       t->space = t->end + len;
       if (t->space < 10)
         t->space = 10;
-      /* This makes a huge difference under Valgrind, is not noticable
-         otherwise. */
       t->space *= 2;
       t->text = realloc (t->text, t->space);
       if (!t->text)
@@ -47,7 +45,7 @@ text_printf (TEXT *t, char *format, ...)
   char *s;
 
   va_start (v, format);
-  vasprintf (&s, format, v);
+  xvasprintf (&s, format, v);
   text_append (t, s);
   free (s);
   va_end (v);

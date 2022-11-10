@@ -37,7 +37,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
 
       command = current->cmd;
       counter_push (&count_remaining_args, current,
-                    command_data(current->cmd).data);
+                    command_data(current->cmd).args_number);
       counter_dec (&count_remaining_args);
 
       arg = new_element (ET_NONE);
@@ -105,16 +105,16 @@ handle_open_brace (ELEMENT *current, char **line_inout)
           switch (command)
             {
             case CM_footnote:
-              push_context (ct_footnote);
+              push_context (ct_brace_command, command);
               break;
             case CM_caption:
-              push_context (ct_caption);
+              push_context (ct_brace_command, command);
               break;
             case CM_shortcaption:
-              push_context (ct_shortcaption);
+              push_context (ct_brace_command, command);
               break;
             case CM_math:
-              push_context (ct_math);
+              push_context (ct_math, command);
               break;
             default:
               fatal ("no context for command");
@@ -124,10 +124,10 @@ handle_open_brace (ELEMENT *current, char **line_inout)
             ELEMENT *e;
             int n;
             n = strspn (line, whitespace_chars_except_newline);
-            e = new_element (ET_empty_spaces_before_argument);
+            e = new_element (ET_internal_spaces_before_argument);
             text_append_n (&e->text, line, n);
             add_to_element_contents (current, e);
-            add_extra_element (e, "command", current->parent);
+            add_extra_element (e, "spaces_associated_command", current->parent);
             line += n;
           }
           current->type = ET_brace_command_context;
@@ -136,19 +136,19 @@ handle_open_brace (ELEMENT *current, char **line_inout)
         {
           current->type = ET_brace_command_arg;
 
-          /* Commands which are said to take a positive number of arguments
-             disregard leading and trailing whitespace. */
-          if (command_data(command).data > 0)
+          /* Commands that disregard leading whitespace. */
+          if (command_data(command).data == BRACE_arguments
+              || command_data(command).data == BRACE_inline)
             {
               ELEMENT *e;
-              e = new_element (ET_empty_spaces_before_argument);
+              e = new_element (ET_internal_spaces_before_argument);
               /* See comment in parser.c:merge_text */
               text_append (&e->text, "");
               add_to_element_contents (current, e);
-              add_extra_element (e, "command", current);
+              add_extra_element (e, "spaces_associated_command", current);
 
               if (command == CM_inlineraw)
-                push_context (ct_inlineraw);
+                push_context (ct_inlineraw, command);
             }
         }
       debug ("OPENED");
@@ -164,13 +164,13 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       /* We need the line number here in case @ protects the
          end of the line.  */
       if (current->parent->parent->type == ET_def_line)
-        current->line_nr = line_nr;
+        current->source_info = current_source_info;
 
-      e = new_element (ET_empty_spaces_before_argument);
+      e = new_element (ET_internal_spaces_before_argument);
       text_append (&e->text, ""); /* See comment in parser.c:merge_text */
       add_to_element_contents (current, e);
       debug ("BRACKETED in def/multitable");
-      add_extra_element (e, "command", current);
+      add_extra_element (e, "spaces_associated_command", current);
     }
   else if (current->type == ET_rawpreformatted)
     {
@@ -183,7 +183,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
            || current_context() == ct_inlineraw)
     {
       ELEMENT *b = new_element (ET_bracketed);
-      b->line_nr = line_nr;
+      b->source_info = current_source_info;
       add_to_element_contents (current, b);
       current = b;
       debug ("BRACKETED in math");
@@ -193,7 +193,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       line_error ("misplaced {");
       if (current->contents.number > 0
           && last_contents_child(current)->type
-               == ET_empty_spaces_before_argument)
+               == ET_internal_spaces_before_argument)
         {
           /* FIXME: Is this right? */
           remove_from_contents (current, 0);
@@ -207,9 +207,6 @@ handle_open_brace (ELEMENT *current, char **line_inout)
 /* Return 1 if an element is all whitespace.
    Note that this function isn't completely reliable because it
    doesn't look deep into the element tree.
-   In the perl code it calls 
-   Texinfo::Convert::NodeNameNormalization::normalize_node,
-   and checks that the result isn't all hyphens.
  */
 int
 check_empty_expansion (ELEMENT *e)
@@ -218,19 +215,7 @@ check_empty_expansion (ELEMENT *e)
   for (i = 0; i < e->contents.number; i++)
     {
       ELEMENT *f = e->contents.list[i];
-      if (!(
-               f->cmd == CM_SPACE
-            || f->cmd == CM_TAB
-            || f->cmd == CM_NEWLINE
-            || f->cmd == CM_c
-            || f->cmd == CM_comment
-            || f->cmd == CM_COLON
-            || f->type == ET_empty_spaces_before_argument
-            || f->type == ET_spaces_at_end
-            || (!f->cmd && !f->type && f->text.end == 0)
-            || (f->text.end > 0
-                && !*(f->text.text + strspn (f->text.text, whitespace_chars)))
-         ))
+      if (!check_space_element(f))
         {
           return 0;
         }
@@ -256,15 +241,18 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       enum command_id closed_command;
       if (command_data(current->parent->cmd).data == BRACE_context)
         {
-          (void) pop_context ();
-          /* The Perl code here checks that the popped context and the
-             parent command match as strings. */
+          if (current->parent->cmd == CM_math)
+            {
+              if (pop_context () != ct_math)
+                fatal ("math context expected");
+            }
+          else if (pop_context () != ct_brace_command)
+            fatal ("context brace command context expected");
         }
-      else if (command_data(current->parent->cmd).data > 0)
+      /* determine if trailing spaces are ignored */
+      else if (command_data(current->parent->cmd).data == BRACE_arguments)
         {
-          /* @inline* always have end spaces considered as normal text */
-          if (!(command_flags(current->parent) & CF_inline))
-            isolate_last_space (current);
+          isolate_last_space (current);
         }
 
       closed_command = current->parent->cmd;
@@ -272,14 +260,14 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       counter_pop (&count_remaining_args);
 
       if (current->contents.number > 0
-          && command_data(closed_command).data == 0)
+          && command_data(closed_command).data == BRACE_noarg)
         line_warn ("command @%s does not accept arguments",
                    command_name(closed_command));
 
       if (closed_command == CM_anchor)
         {
           NODE_SPEC_EXTRA *parsed_anchor;
-          current->parent->line_nr = line_nr;
+          current->parent->source_info = current_source_info;
           parsed_anchor = parse_node_manual (current);
           if (check_node_label (parsed_anchor, CM_anchor))
             {
@@ -398,14 +386,14 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                 }
             }
         }
-      else if ((command_data(closed_command).flags & CF_inline)
+      else if ((command_data(closed_command).data == BRACE_inline)
                || closed_command == CM_abbr
                || closed_command == CM_acronym)
         {
           if (current->parent->cmd == CM_inlineraw)
             {
               if (ct_inlineraw != pop_context ())
-                fatal ("expected inlineraw context");
+                fatal ("inlineraw context expected");
             }
           if (current->parent->args.number == 0
               || current->parent->args.list[0]->contents.number == 0)
@@ -459,14 +447,10 @@ handle_close_brace (ELEMENT *current, char **line_inout)
 
             }
         }
-      else if (command_with_command_as_argument (current->parent->parent)
+      else if (parent_of_command_as_argument (current->parent->parent)
                && current->contents.number == 0)
         {
-          debug ("FOR PARENT ... command_as_argument_braces ...");
-          if (!current->parent->type)
-            current->parent->type = ET_command_as_argument;
-          add_extra_element (current->parent->parent->parent,
-                             "command_as_argument", current->parent);
+          register_command_as_argument (current->parent);
         }
       else if (current->parent->cmd == CM_sortas
                || current->parent->cmd == CM_seeentry
@@ -510,7 +494,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           || current->parent->cmd == CM_seealso)
         {
           ELEMENT *e;
-          e = new_element (ET_empty_spaces_after_close_brace);
+          e = new_element (ET_spaces_after_close_brace);
           text_append (&e->text, "");
           add_to_element_contents (current->parent->parent, e);
         }
@@ -528,10 +512,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       goto funexit;
     }
   /* context brace command (e.g. @footnote) when there is a paragraph inside */
-  else if (current_context() == ct_footnote
-           || current_context() == ct_caption
-           || current_context() == ct_shortcaption
-           || current_context() == ct_math)
+  else if (current_context() == ct_brace_command)
     {
       current = end_paragraph (current, 0, 0);
       if (current->parent
@@ -539,7 +520,8 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           && (command_data(current->parent->cmd).data == BRACE_context))
         {
           enum command_id closed_command;
-          (void) pop_context ();
+          if (pop_context () != ct_brace_command)
+            fatal ("context brace command context expected");
           debug ("CLOSING(context command)");
           closed_command = current->parent->cmd;
           counter_pop (&count_remaining_args);
@@ -576,7 +558,7 @@ handle_comma (ELEMENT *current, char **line_inout)
   type = current->type;
   current = current->parent;
 
-  if (command_flags(current) & CF_inline)
+  if (command_data(current->cmd).data == BRACE_inline)
     {
       KEY_PAIR *k;
       int expandp = 0;
@@ -729,10 +711,10 @@ inlinefmtifelse_done:
   new_arg = new_element (type);
   add_to_element_args (current, new_arg);
   current = new_arg;
-  e = new_element (ET_empty_spaces_before_argument);
+  e = new_element (ET_internal_spaces_before_argument);
   text_append (&e->text, ""); /* See comment in parser.c:merge_text */
   add_to_element_contents (current, e);
-  add_extra_element (e, "command", current);
+  add_extra_element (e, "spaces_associated_command", current);
   
 funexit:
   *line_inout = line;

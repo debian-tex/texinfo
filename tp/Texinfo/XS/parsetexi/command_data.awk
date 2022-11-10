@@ -118,12 +118,13 @@ BEGIN {
     }
     commands[c] = $2
     data[c] = $3
+    args_nr[c] = $4
 }
 
 END {
     print "COMMAND builtin_command_data[] = {" > CD
 
-    print "0, 0, 0," > CD
+    print "0, 0, 0, 0," > CD
 
     # We want the output sorted so we can use bsearch
     PROCINFO["sorted_in"]="@ind_str_asc"
@@ -152,7 +153,30 @@ END {
         } else {
             command_data = "0"
         }
-        print "\"" c2 "\", " flags ", " command_data "," > CD
+
+        if (args_nr[c] != "") {
+            args_nr_data = args_nr[c]
+        } else {
+            # backward compatibility, remove when updated
+            where_digit = match(data[c], /^[0-9]$/)
+            if (where_digit != 0) {
+              args_nr_data = data[c]
+            } else {
+              where = 0
+              if (commands[c] != "") {
+                where = match(commands[c], /block/)
+                if (where == 0) {
+                  where = match(commands[c], /^nobrace$/)
+                }
+              }
+              if (where != 0 || command_data == "BRACE_noarg") {
+                args_nr_data = "0"
+              } else {
+                args_nr_data = "1"
+              }
+            }
+        }
+        print "\"" c2 "\", " flags ", " command_data ", " args_nr_data "," > CD
     }
     print "};" > CD
     print "};" > CI

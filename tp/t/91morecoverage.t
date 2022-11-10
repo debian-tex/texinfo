@@ -1,8 +1,7 @@
-# $Id: 02coverage.t 8055 2018-08-13 11:41:21Z gavin $
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -24,10 +23,7 @@ my @test_cases = (
 );
 
 foreach my $test (@test_cases) {
-  push @{$test->[2]->{'test_formats'}}, 'info', 'html';
+  push @{$test->[2]->{'test_formats'}}, ('info', 'html', 'html_text');
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('morecoverage', [@test_cases], $arg_test_case,
-   $arg_generate, $arg_debug);
+run_all('morecoverage', [@test_cases]);

@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,50 +10,49 @@ $result_trees{'appendix_translated'} = {
     {
       'contents' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'fr'
+                  'contents' => [
+                    {
+                      'text' => 'fr'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'documentlanguage',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'fr'
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
             }
           ],
-          'cmdname' => 'documentlanguage',
-          'extra' => {
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'fr'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
+          'type' => 'preamble_before_content'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -61,12 +60,10 @@ $result_trees{'appendix_translated'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'contents' => [],
       'extra' => {
         'node_content' => [
           {}
@@ -82,19 +79,17 @@ $result_trees{'appendix_translated'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 3,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'top'
             }
           ],
@@ -102,14 +97,12 @@ $result_trees{'appendix_translated'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -118,20 +111,17 @@ $result_trees{'appendix_translated'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 0,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 4,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'dernier'
             }
           ],
@@ -139,14 +129,12 @@ $result_trees{'appendix_translated'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'appendix',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -154,56 +142,33 @@ $result_trees{'appendix_translated'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
           'cmdname' => 'contents',
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 8,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 1,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 6,
         'macro' => ''
-      },
-      'number' => 'A',
-      'parent' => {}
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'appendix_translated'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'appendix_translated'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[0]{'contents'}[0];
-$result_trees{'appendix_translated'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[0];
-$result_trees{'appendix_translated'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[0];
-$result_trees{'appendix_translated'}{'contents'}[0]{'parent'} = $result_trees{'appendix_translated'};
-$result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0];
-$result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[1];
 $result_trees{'appendix_translated'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'appendix_translated'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'appendix_translated'}{'contents'}[1]{'parent'} = $result_trees{'appendix_translated'};
-$result_trees{'appendix_translated'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[2]{'args'}[0];
-$result_trees{'appendix_translated'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[2];
-$result_trees{'appendix_translated'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[2];
-$result_trees{'appendix_translated'}{'contents'}[2]{'parent'} = $result_trees{'appendix_translated'};
-$result_trees{'appendix_translated'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[3]{'args'}[0];
-$result_trees{'appendix_translated'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[3];
-$result_trees{'appendix_translated'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[3];
-$result_trees{'appendix_translated'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[3]{'contents'}[1];
-$result_trees{'appendix_translated'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[3];
-$result_trees{'appendix_translated'}{'contents'}[3]{'parent'} = $result_trees{'appendix_translated'};
 
 $result_texis{'appendix_translated'} = '@documentlanguage fr
 
@@ -226,63 +191,61 @@ Appendix A dernier
 ';
 
 $result_sectioning{'appendix_translated'} = {
-  'level' => -1,
-  'section_childs' => [
-    {
-      'cmdname' => 'top',
-      'extra' => {
-        'associated_node' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => 'Top',
-            'spaces_before_argument' => ' '
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'top',
+        'extra' => {
+          'associated_node' => {
+            'cmdname' => 'node',
+            'extra' => {
+              'normalized' => 'Top'
+            }
           }
         },
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0,
-      'section_childs' => [
-        {
-          'cmdname' => 'appendix',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'level' => 1,
-          'number' => 'A',
-          'section_up' => {},
-          'toplevel_prev' => {},
-          'toplevel_up' => {}
+        'structure' => {
+          'section_childs' => [
+            {
+              'cmdname' => 'appendix',
+              'extra' => {},
+              'structure' => {
+                'section_level' => 1,
+                'section_number' => 'A',
+                'section_up' => {},
+                'toplevel_prev' => {},
+                'toplevel_up' => {}
+              }
+            }
+          ],
+          'section_level' => 0,
+          'section_up' => {}
         }
-      ],
-      'section_up' => {}
-    }
-  ]
+      }
+    ],
+    'section_level' => -1
+  }
 };
-$result_sectioning{'appendix_translated'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'appendix_translated'}{'section_childs'}[0];
-$result_sectioning{'appendix_translated'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'appendix_translated'}{'section_childs'}[0];
-$result_sectioning{'appendix_translated'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'appendix_translated'}{'section_childs'}[0];
-$result_sectioning{'appendix_translated'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'appendix_translated'};
+$result_sectioning{'appendix_translated'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'appendix_translated'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'appendix_translated'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'appendix_translated'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'appendix_translated'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'appendix_translated'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'appendix_translated'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'appendix_translated'};
 
 $result_nodes{'appendix_translated'} = {
   'cmdname' => 'node',
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0
+      'extra' => {},
+      'structure' => {}
     },
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
 $result_menus{'appendix_translated'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
@@ -329,7 +292,7 @@ End:
 ';
 
 
-$result_converted{'html'}->{'appendix_translated'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+$result_converted{'html'}->{'appendix_translated'} = '<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -346,21 +309,7 @@ $result_converted{'html'}->{'appendix_translated'} = '<!DOCTYPE html PUBLIC "-//
 <link href="#SEC_Contents" rel="contents" title="Table des mati&egrave;res">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+ul.toc-numbered-mark {list-style: none}
 -->
 </style>
 
@@ -369,23 +318,23 @@ ul.no-bullet {list-style: none}
 
 <body lang="fr">
 
-<div class="top" id="Top">
-<span id="top"></span><h1 class="top">top</h1>
+<div class="top-level-extent" id="Top">
+<h1 class="top" id="top">top</h1>
 
-<div class="Contents_element" id="SEC_Contents">
+<div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table des mati&egrave;res</h2>
 
 <div class="contents">
 
-<ul class="no-bullet">
+<ul class="toc-numbered-mark">
   <li><a id="toc-dernier" href="#dernier">Annexe A dernier</a></li>
 </ul>
 </div>
 </div>
-<div class="appendix" id="dernier">
+<div class="appendix-level-extent" id="dernier">
 <h2 class="appendix">Annexe A dernier</h2>
 
-<hr></div>
+</div>
 </div>
 
 

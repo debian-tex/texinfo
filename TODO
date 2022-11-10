@@ -1,7 +1,7 @@
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
-  Copyright 1992-2021 Free Software Foundation.
+  Copyright 1992-2022 Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -10,9 +10,13 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
 * Language:
   - generalize @deffn/etc. with variants that don't make index entries.
     - could use "@deffn @index{IX} ..." to use index IX instead of default
-  - Better def... command syntax, explicitly marking variables, etc.
+  - tagging system for definitions - (Robert Dodier for Maxima,
+    https://lists.gnu.org/archive/html/help-texinfo/2021-12/msg00012.html)
   - generalize @vtable/@ftable to any defined index.
     - maybe "@ftable @asis @index{IX}"
+  - user-defined macros cannot be used as argument to @table or @itemize.
+    Add specific macro commands, @highlightingmacro and @glyphmacro? Or
+    accept one arg macro on @table line and no arg macro on @itemize line?
   - @mergeindex to do @syn*index without changing fonts.
   - multicolumn * width to take up `the rest'.
   - Allow @hsep/@vsep at @item, instead of just in template.
@@ -21,23 +25,43 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - support bibliographies with BibTeX (see web2c/doc for kludge prototype).
   - Support automatic line numbering of examples.
   - Glossary/general definition support (dumas msg 28 Nov 2003 17:09:57 +0100).
+  - Improve recommendations for @dircategory.  We used to recommend the
+    Free Software Directory categories but these have changed.
+  - use a different command than @titlepage for the page after the title:
+    https://lists.gnu.org/archive/html/bug-texinfo/2019-03/msg00029.html
+  - related to the previous entry, add more metadata, in particular for books
+    but not only
+     * add metadata on last modification date (needed in EPUB)
+     * make it easier to gather author metadata
+     * short information on licence
+  - unique identifiers/way to disambiguate manuals with the same name?
+  - reflection on guide/topic document structure and pluggable content
+    for extensible documents (Mallard format ideas)
 
 * texi2any:
   - give a warning for "makeinfo FOO.info" when "makeinfo FOO.texi" was meant
-  - Improve the HTML customization API.
+  - Improve the HTML customization API.  Missing from the API is a possibility
+    to customize the translated strings and the translations.
   - HTML: support thumbnails.
   - HTML: have a library of different CSS styles.
     http://mail.gnu.org/archive/html/bug-texinfo/2004-01/msg00025.html
   - Support output formats retaining the tree structure of Texinfo documents
     as parsed by the Parser.  A lisp-like format for GUILE? Maybe JSON?
-  - Support LaTeX as a backend.
   - Support other graphical documentation browsers like GNOME DevHelp
-    (https://lists.gnu.org/archive/html/bug-texinfo/2015-03/msg00041.html)
-  - Support the epub output format, http://en.wikipedia.org/wiki/OEBPS.
-    Suggested by Sean Young, 30 Nov 2008 20:13:11 (Savannah bug tracker)
+    - DevHelp support could need to wait for a specification of the DevHelp
+      XML file format, which was not documented in 2022. Fromn DevHelp help:
+      "Unfortunately the *.devhelp2 XML file format is not well documented.
+      There is still some hope that it will be fixed in the near future."
+      There was an early discussion in 2015. The *.devhelp format at that time
+      was the first devhelp file format, now obsolete:
+      (https://lists.gnu.org/archive/html/bug-texinfo/2015-03/msg00041.html)
   - Support the MediaWiki output format.
+  - HTML: format better @seealso, @subentry and @seeentry.
+    https://lists.gnu.org/archive/html/bug-texinfo/2022-08/msg00103.html
+  - LaTeX: customization and internationalization.
 
 * TeX:
+  - turn off @set txicodevaristt after next release
   - Index above @item allows page break.
   - Table of contents is misaligned if there are 10 or more [sub]sections.
   - @float captions should be typeset in a smaller font?
@@ -57,12 +81,10 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
 * Doc:
   - Use/distribute pod2texi generated documentation of the perl modules in 
-    tp generated in doc/tp_api -- when api is stable.
-  - Documentation of the HTML customization is missing.
+    tp generated in doc/tp_api.
+  - Verify/proofread Documentation of the HTML customization.
 
 * Info:
-  - For 'u' command, position cursor on the menu entry for the node
-    we just came from
   - If K is describe-key, K M-left changes the node as M-left is
     analysed as multiple keys
   - unnecessary screen redrawing when scroll-last-node=Stop and you
@@ -71,23 +93,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Perhaps comply with LANGUAGE setting on a per-node basis, to allow
     incremental translation of Texinfo files.
   - Display images when running under X, as Emacs 22+ can.
-  - Search all nodes of dir file at startup, then can have
-    INFO-DIR-SEPARATE-GROUPS and other such.  I.e., we could have
-    programs (what is now "Individual utilities") in one node, library
-    functions, in another, etc.  And how about supporting other languages?
-  - Better dir file merging.
-  - Global dir file (as in /etc/conf/dir) and texinfo config file
-    specifying which info directories to search.  From Dale Mellor.
-    http://mail.gnu.org/mailman/private/gnu-prog-discuss/2003q4/000439.html
-  - Incorporate an X-based viewer, perhaps the old GNU xinfo widget
-     (http://www.gnu.org/software/xinfo) or saxinfo
-     or tkinfo (http://www.math.ucsb.edu/~boldt/tkinfo/).
   - Handle M-n, C-u m, and C-u g like Emacs Info (opening new windows).
-  - A running view mode, to display the next node after the end of the
-    last one, and be able to toggle display of a node's subnodes.  
-    (Could be hard to implement though, because of how much code assumes 
-    that only one node is in a window at once.)
-
 
 * install-info:
   - replace dir file atomically in case install-info is interrupted
@@ -97,36 +103,40 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     from the misformatted --entry (and no entries from foo.info).
   - support info dir entries for other than the current info file name;
     see comments in menu_item_equal.
-  - Monitor and improve the dir categories in existing manuals,
-    following the Free Software Directory categories.  Much mail to
-    developers has already been sent, what's needed now is to check new
-    releases and make sure they are using the right categories.
-    See the util/dir-example in the Texinfo distribution for our current
-    recommended categories.
-    For background, see the thread (which discusses a lot of other
-    issues too) at
-    http://lists.gnu.org/archive/html/emacs-devel/2002-10/msg00011.html
-    especially 
-      http://lists.gnu.org/archive/html/emacs-devel/2002-10/msg00090.html
-      http://lists.gnu.org/archive/html/emacs-devel/2002-10/msg00137.html
+
+* texi2dvi
+  - replace sed substitutions in comment_iftex by a call of makeinfo:
+     makeinfo -c TEXINFO_OUTPUT_FORMAT=plaintexinfo --iftex --no-ifinfo
 
 * Distribution:
   - generate txi-??.tex from .po's to make translators' jobs easier.
     From Akim and Karl E.
 
+* Other
+  - Info format - Get Emacs to support : in index entries by changing
+    the interpretation of index nodes slightly.  See
+    https://lists.gnu.org/archive/html/bug-gnu-emacs/2019-01/msg00235.html
+    Get Emacs to support node name quoting. See
+    https://lists.gnu.org/archive/html/bug-gnu-emacs/2022-08/msg01756.html
+  - Process Texinfo files directly instead of converting to other formats.
+    It should be possible to turn the C XS parser to a library, probably
+    needing a bit more more perl postprocessing rewritten in C and a
+    public C API.
+    
+    There is no plan to use such a library to process Texinfo files directly
+    in the Texinfo project, as it will always be easier to convert Texinfo
+    to a format with the same information and easier to process such as
+    TexinfoXML, or to a format corresponding to the tree structure of Texinfo
+    documents as parsed by the Parser.
+
+    If others are interested in processing Texinfo files directly,
+    however, it could be possible to work on providing a practical API
+    for the C parser in the Texinfo project, and maybe bindings for
+    other languages than C or Perl.
+
 ***********************************************************************
 
 * Ideas that will not be implemented:
-
-- Allow : in node names for info files, for names such as
-  `class::method'.  Likewise index entries.  A quoting mechanism
-  with DEL characters was implemented, but it is simpler to avoid : 
-  altogether in node names and support : in index entries by changing
-  the interpretation of index nodes slightly.  See
-  https://lists.gnu.org/archive/html/bug-gnu-emacs/2019-01/msg00235.html
-
-- Support general reference card creation.
-  [Reference cards are too different from normal Texinfo.]
 
 - Support installation of manuals in different languages, along these lines:
   . support a LINGUAS file or variable saying which subdirs LL in the
@@ -148,24 +158,21 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   aren't that many manuals even in English, let alone other languages,
   and there are almost no manuals in multiple languages.
 
-- Process Texinfo files directly instead of converting to Info:
-  ftp://ftp.cs.berkeley.edu/ucb/people/phelps/tcltk/tkman.tar.Z, which
-  uses Tcl/Tk 8.0 from ftp.smli.com in the /pub/tcl directory.
-  From: Tom Phelps @ berkeley
-  [This has the disadvantage of needing to be updated when the
-  Texinfo language changes, so don't.]
-
 - Call Ghostscript to get ASCII/jpg output for the @image command.
   [makeinfo should not try to be make, or assume it knows how the user
    wants to generate images.  Too many different methods are possible.]
 
-- Get Info declared as a MIME Content-Type, and
-  an `info:' URI scheme; a library consortium has proposed a
-  completely different purpose for the URI scheme, but I don't know
-  how to send comments, despite it being a "request for comments".  Sigh.
+- Get Info declared as a MIME Content-Type, and an `info:' URI scheme;
+  A library consortium had an URI scheme for a completely different
+  purpose than info documentation accepted:
+    https://datatracker.ietf.org/doc/html/rfc4452
   There is mail about this in the bug-texinfo archives:
     http://mail.gnu.org/archive/html/bug-texinfo/2003-09/msg00086.html
-  [I suppose it is too late, and it doesn't seem to matter in practice.]
+  However, the registration of those URI and the use of those URI is
+  discontinued since 2010:
+    https://en.wikipedia.org/wiki/Info_URI_scheme
+  Meanwhile the use of info: in free softwares is still documented in
+  man uri.
 
 - Change bars.  This is difficult or impossible in TeX,
   unfortunately.  To do it right requires device driver support.
@@ -175,3 +182,10 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
 - @else for the @if... conditionals.  Using (for example) an @iftex block
   followed by an @ifnottex block is good enough.
+
+- A running view mode in Info, to display the next node after the end of the
+  last one, and be able to toggle display of a node's subnodes.  
+  [Too hard to implement because of how much code assumes 
+   that only one node is in a window at once.]
+
+

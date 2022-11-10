@@ -33,7 +33,6 @@
 \addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
 \addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
 \addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
-\setlength{\textwidth}{451pt}
 \setlength{\textheight}{554pt}
 \newwrite\lthtmlwrite
 \makeatletter
@@ -52,6 +51,7 @@
  \def\phantompar{\csname par\endcsname}\normalsize}%
 \def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
 \usepackage[tightpage,active]{preview}
+\PreviewBorder=0.5bp
 \newbox\lthtmlPageBox
 \newdimen\lthtmlCropMarkHeight
 \newdimen\lthtmlCropMarkDepth
@@ -64,10 +64,10 @@
     \lthtmltypeout{^^J:\lthtmllabel:lthtmlCropMarkDepth:=\the\lthtmlCropMarkDepth:1ex:=\the \dimexpr 1ex}%
     \begin{preview}\copy\lthtmlPageBox\end{preview}}%
 \long\def\lthtmlTightFBoxA#1{\def\lthtmllabel{#1}%
-    \adjustnormalsize\setbox\lthtmlPageBox=\vbox\bgroup %
+    \adjustnormalsize\setbox\lthtmlPageBox=\vbox\bgroup\hbox\bgroup %
     \let\ifinner=\iffalse \let\)\liih@math %
     \bgroup\catcode`\_=8 }%
-\long\def\lthtmlTightFBoxZ{\egroup
+\long\def\lthtmlTightFBoxZ{\egroup\egroup
     \@next\next\@currlist{}{\def\next{\voidb@x}}%
     \expandafter\box\next\egroup %
     \lthtmlCropMarkHeight=\ht\lthtmlPageBox \advance \lthtmlCropMarkHeight 6pt
@@ -118,7 +118,7 @@
 % !!! IMAGES START HERE !!!
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_indisplay43}%
+\lthtmlinlinemathA{tex2html_wrap_indisplay45}%
 $\displaystyle \chi^2 = \sum_{i=1}^N
           \left(y_i - (a + b x_i)
 	  \over \sigma_i\right)^2 $%
@@ -126,38 +126,38 @@ $\displaystyle \chi^2 = \sum_{i=1}^N
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline24}%
+\lthtmlinlinemathA{tex2html_wrap_inline28}%
 ${x^i}\over{\tan y}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline26}%
-$a @\ b$%
-\lthtmlindisplaymathZ
-\lthtmlcheckvsize\clearpage}
-
-{\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline28}%
-$@code{math code} a < b$%
-\lthtmlindisplaymathZ
-\lthtmlcheckvsize\clearpage}
-
-{\newpage\clearpage
 \lthtmlinlinemathA{tex2html_wrap_inline30}%
-$\underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}$%
+$a \backslash{} b$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
 \lthtmlinlinemathA{tex2html_wrap_inline32}%
-$\sum_{i} f(x)@sup{2}$%
+$\mathtt{math code} a < b$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_indisplay50}%
-$\displaystyle -- f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+\lthtmlinlinemathA{tex2html_wrap_inline34}%
+$\underline{\mathtt{math \hbox{ code }}} \sum_{i}{\underline{\mathit{eff}}}$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline36}%
+$\sum_{i} f(x)^{2}$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay52}%
+$\displaystyle -- f(x) = {1 \over \sigma \sqrt{2\pi}}e^{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
 $%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}

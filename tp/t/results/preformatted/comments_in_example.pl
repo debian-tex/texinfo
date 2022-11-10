@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,373 +10,283 @@ $result_trees{'comments_in_example'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'Example with comments 2 lines
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'cmdname' => 'example',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => ' 
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'line '
-            },
-            {
-              'args' => [
-                {
-                  'parent' => {},
-                  'text' => ' comment
-',
-                  'type' => 'misc_arg'
-                }
-              ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment
+              'text' => 'Example with comments 2 lines
 '
-                ]
-              },
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => 'second line '
-            },
-            {
-              'args' => [
-                {
-                  'parent' => {},
-                  'text' => ' comment
-',
-                  'type' => 'misc_arg'
-                }
-              ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment
-'
-                ]
-              },
-              'parent' => {}
             }
           ],
-          'parent' => {},
-          'type' => 'preformatted'
+          'type' => 'paragraph'
         },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'example'
-                }
-              ],
               'extra' => {
-                'spaces_after_argument' => '
+                'spaces_after_argument' => ' 
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
+          'cmdname' => 'example',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'line '
+                },
+                {
+                  'args' => [
+                    {
+                      'text' => ' comment
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Example with comments 1 line
+                      'type' => 'misc_arg'
+                    }
+                  ],
+                  'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comment
 '
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'cmdname' => 'example',
-      'contents' => [
+                    ]
+                  }
+                },
+                {
+                  'text' => 'second line '
+                },
+                {
+                  'args' => [
+                    {
+                      'text' => ' comment
+',
+                      'type' => 'misc_arg'
+                    }
+                  ],
+                  'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comment
+'
+                    ]
+                  }
+                }
+              ],
+              'type' => 'preformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'example'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'example'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          }
+        },
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
           'text' => '
 ',
-          'type' => 'empty_line_after_command'
+          'type' => 'empty_line'
         },
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'line '
-            },
-            {
-              'args' => [
-                {
-                  'parent' => {},
-                  'text' => ' comment
-',
-                  'type' => 'misc_arg'
-                }
-              ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment
+              'text' => 'Example with comments 1 line
 '
-                ]
-              },
-              'parent' => {}
             }
           ],
-          'parent' => {},
-          'type' => 'preformatted'
+          'type' => 'paragraph'
         },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'example'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 8,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
+          'cmdname' => 'example',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'line '
+                },
+                {
+                  'args' => [
+                    {
+                      'text' => ' comment
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Example with newline after comment
+                      'type' => 'misc_arg'
+                    }
+                  ],
+                  'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comment
 '
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'cmdname' => 'example',
-      'contents' => [
+                    ]
+                  }
+                }
+              ],
+              'type' => 'preformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'example'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'example'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 10,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
+          }
+        },
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
           'text' => '
 ',
-          'type' => 'empty_line_after_command'
+          'type' => 'empty_line'
         },
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'line '
-            },
-            {
-              'args' => [
-                {
-                  'parent' => {},
-                  'text' => ' comment
-',
-                  'type' => 'misc_arg'
-                }
-              ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment
-'
-                ]
-              },
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line'
-            },
-            {
-              'parent' => {},
-              'text' => 'second line
+              'text' => 'Example with newline after comment
 '
             }
           ],
-          'parent' => {},
-          'type' => 'preformatted'
+          'type' => 'paragraph'
         },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'example'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
+          'cmdname' => 'example',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'line '
+                },
+                {
+                  'args' => [
+                    {
+                      'text' => ' comment
+',
+                      'type' => 'misc_arg'
+                    }
+                  ],
+                  'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comment
+'
+                    ]
+                  }
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'empty_line'
+                },
+                {
+                  'text' => 'second line
+'
+                }
+              ],
+              'type' => 'preformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'example'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'example'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 17,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 17,
+            'line_nr' => 13,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 13,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'comments_in_example'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[0];
-$result_trees{'comments_in_example'}{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'};
-$result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comments_in_example'}{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[3];
-$result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[2];
-$result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'comments_in_example'}{'contents'}[1]{'contents'}[2];
-$result_trees{'comments_in_example'}{'contents'}[1]{'parent'} = $result_trees{'comments_in_example'};
-$result_trees{'comments_in_example'}{'contents'}[2]{'parent'} = $result_trees{'comments_in_example'};
-$result_trees{'comments_in_example'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[3];
-$result_trees{'comments_in_example'}{'contents'}[3]{'parent'} = $result_trees{'comments_in_example'};
-$result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comments_in_example'}{'contents'}[4];
-$result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[4];
-$result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[1]{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[4];
-$result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[2]{'args'}[0];
-$result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[2];
-$result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[4];
-$result_trees{'comments_in_example'}{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'comments_in_example'}{'contents'}[4]{'contents'}[2];
-$result_trees{'comments_in_example'}{'contents'}[4]{'parent'} = $result_trees{'comments_in_example'};
-$result_trees{'comments_in_example'}{'contents'}[5]{'parent'} = $result_trees{'comments_in_example'};
-$result_trees{'comments_in_example'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[6];
-$result_trees{'comments_in_example'}{'contents'}[6]{'parent'} = $result_trees{'comments_in_example'};
-$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comments_in_example'}{'contents'}[7];
-$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7];
-$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1]{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1];
-$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7];
-$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'args'}[0];
-$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2];
-$result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2]{'parent'} = $result_trees{'comments_in_example'}{'contents'}[7];
-$result_trees{'comments_in_example'}{'contents'}[7]{'extra'}{'end_command'} = $result_trees{'comments_in_example'}{'contents'}[7]{'contents'}[2];
-$result_trees{'comments_in_example'}{'contents'}[7]{'parent'} = $result_trees{'comments_in_example'};
 
 $result_texis{'comments_in_example'} = 'Example with comments 2 lines
 @example 
@@ -426,20 +336,59 @@ $result_converted{'plaintext'}->{'comments_in_example'} = 'Example with comments
 ';
 
 
-$result_converted{'html_text'}->{'comments_in_example'} = '<p>Example with comments 2 lines
+$result_converted{'html'}->{'comments_in_example'} = '<!DOCTYPE html>
+<html>
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<meta name="description" content="Untitled Document">
+<meta name="keywords" content="Untitled Document">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<style type="text/css">
+<!--
+div.example {margin-left: 3.2em}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<p>Example with comments 2 lines
 </p><div class="example">
-<pre class="example">line second line </pre></div>
+<pre class="example-preformatted">line second line </pre></div>
 
 <p>Example with comments 1 line
 </p><div class="example">
-<pre class="example">line </pre></div>
+<pre class="example-preformatted">line </pre></div>
 
 <p>Example with newline after comment
 </p><div class="example">
-<pre class="example">line 
+<pre class="example-preformatted">line 
 second line
 </pre></div>
+
+
+
+</body>
+</html>
 ';
+
+$result_converted_errors{'html'}->{'comments_in_example'} = [
+  {
+    'error_line' => 'warning: must specify a title with a title command or @top
+',
+    'file_name' => 'comments_in_example.texi',
+    'text' => 'must specify a title with a title command or @top',
+    'type' => 'warning'
+  }
+];
+
 
 
 $result_converted{'docbook'}->{'comments_in_example'} = '<para>Example with comments 2 lines
@@ -473,6 +422,28 @@ second line <!-- c comment -->
 
 second line
 </pre></example>
+';
+
+
+$result_converted{'latex_text'}->{'comments_in_example'} = 'Example with comments 2 lines
+\\begin{Texinfoindented}
+\\begin{Texinfopreformatted}%
+\\ttfamily line second line \\end{Texinfopreformatted}
+\\end{Texinfoindented}
+
+Example with comments 1 line
+\\begin{Texinfoindented}
+\\begin{Texinfopreformatted}%
+\\ttfamily line \\end{Texinfopreformatted}
+\\end{Texinfoindented}
+
+Example with newline after comment
+\\begin{Texinfoindented}
+\\begin{Texinfopreformatted}%
+\\ttfamily line 
+second line
+\\end{Texinfopreformatted}
+\\end{Texinfoindented}
 ';
 
 1;

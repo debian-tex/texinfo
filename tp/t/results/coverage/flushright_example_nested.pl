@@ -1,193 +1,90 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'flushright_example_nested'} = {
   'contents' => [
     {
-      'cmdname' => 'example',
       'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'cmdname' => 'flushright',
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in   --- flushright
-'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line'
-                }
-              ],
-              'parent' => {},
-              'type' => 'preformatted'
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'flushright'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'parent' => {},
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'end',
-              'extra' => {
-                'command_argument' => 'flushright',
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'flushright'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
-              },
-              'parent' => {}
-            }
-          ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'example'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'flushright',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
           'cmdname' => 'example',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'in   --- example
+                  'extra' => {
+                    'spaces_after_argument' => '
 '
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'flush then example
-'
+                  },
+                  'type' => 'block_line_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'preformatted'
+              'cmdname' => 'flushright',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in   --- flushright
+'
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'empty_line'
+                    }
+                  ],
+                  'type' => 'preformatted'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'flushright'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'flushright'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'example'
                     }
                   ],
@@ -195,114 +92,146 @@ $result_trees{'flushright_example_nested'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'example',
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 13,
+                'line_nr' => 6,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 9,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
         },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'flushright'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'flushright',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'flushright'
-          },
-          'line_nr' => {
+          'cmdname' => 'flushright',
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'example',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in   --- example
+'
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'empty_line'
+                    },
+                    {
+                      'text' => 'flush then example
+'
+                    }
+                  ],
+                  'type' => 'preformatted'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'example'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'example'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 13,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 9,
+                'macro' => ''
+              }
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'flushright'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'flushright'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 14,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 14,
+            'line_nr' => 8,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 8,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright_example_nested'}{'contents'}[0];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[2];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[2];
-$result_trees{'flushright_example_nested'}{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'};
-$result_trees{'flushright_example_nested'}{'contents'}[1]{'parent'} = $result_trees{'flushright_example_nested'};
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright_example_nested'}{'contents'}[2];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[2]{'args'}[0];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[2];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[2];
-$result_trees{'flushright_example_nested'}{'contents'}[2]{'parent'} = $result_trees{'flushright_example_nested'};
 
 $result_texis{'flushright_example_nested'} = '@example
 @flushright
@@ -346,16 +275,16 @@ $result_converted{'plaintext'}->{'flushright_example_nested'} = '               
 
 
 $result_converted{'html_text'}->{'flushright_example_nested'} = '<div class="example">
-<pre class="example">in   --- flushright
+<div class="flushright"><pre class="example-preformatted">in   --- flushright
 
-</pre></div>
+</pre></div></div>
 
-<div class="example">
-<pre class="example">in   --- example
+<div class="flushright"><div class="example">
+<pre class="example-preformatted">in   --- example
 
 flush then example
 </pre></div>
-';
+</div>';
 
 
 $result_converted{'xml'}->{'flushright_example_nested'} = '<example endspaces=" ">
@@ -372,6 +301,31 @@ $result_converted{'xml'}->{'flushright_example_nested'} = '<example endspaces=" 
 flush then example
 </pre></example>
 </flushright>
+';
+
+
+$result_converted{'latex_text'}->{'flushright_example_nested'} = '\\begin{Texinfoindented}
+\\begin{flushright}
+\\begin{Texinfopreformatted}%
+\\begin{Texinfopreformatted}%
+\\ttfamily in   {-}{-}{-} flushright
+
+\\end{Texinfopreformatted}
+\\end{Texinfopreformatted}
+\\end{flushright}
+\\end{Texinfoindented}
+
+\\begin{flushright}
+\\begin{Texinfopreformatted}%
+\\begin{Texinfoindented}
+\\begin{Texinfopreformatted}%
+\\ttfamily in   {-}{-}{-} example
+
+flush then example
+\\end{Texinfopreformatted}
+\\end{Texinfoindented}
+\\end{Texinfopreformatted}
+\\end{flushright}
 ';
 
 

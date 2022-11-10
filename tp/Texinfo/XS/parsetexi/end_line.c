@@ -1,5 +1,5 @@
 /* end_line.c -- what to do at the end of a whole line of input */
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -364,6 +364,8 @@ parse_line_command_args (ELEMENT *line_command)
         user_defined_command_data[new_cmd].flags |= CF_ALIAS;
 
         user_defined_command_data[new_cmd].data = existing_cmd;
+        user_defined_command_data[new_cmd].args_number
+                  = command_data(existing_cmd).args_number;
         /* Note the data field is an int, existing_cmd is
            enum command_id, so would have problems if enum command_id
            were wider than an int. */
@@ -415,7 +417,8 @@ parse_line_command_args (ELEMENT *line_command)
 
         user_defined_command_data[new_cmd].flags
           |= (CF_INFOENCLOSE | CF_brace);
-        user_defined_command_data[new_cmd].data = BRACE_style;
+        user_defined_command_data[new_cmd].data = BRACE_style_other;
+        user_defined_command_data[new_cmd].args_number = 1;
 
         ADD_ARG(new_command); free (new_command);
         ADD_ARG(start); free (start);
@@ -721,6 +724,7 @@ parse_line_command_args (ELEMENT *line_command)
     case CM_codequoteundirected:
     case CM_codequotebacktick:
     case CM_deftypefnnewline:
+    case CM_microtype:
       {
         if (!strcmp (line, "on") || !strcmp (line, "off"))
           {
@@ -778,8 +782,8 @@ kdbinputstyle_invalid:
     case CM_headings:
       {
         if (!strcmp (line, "off") || !strcmp (line, "on")
-            || !strcmp (line, "double") || !strcmp (line, "singleafter")
-            || !strcmp (line, "doubleafter"))
+            || !strcmp (line, "single") || !strcmp (line, "double")
+            || !strcmp (line, "singleafter") || !strcmp (line, "doubleafter"))
           {
             ADD_ARG(line);
           }
@@ -802,13 +806,11 @@ kdbinputstyle_invalid:
 }
 
 /* NODE->contents is the Texinfo for the specification of a node.  This
-   function sets three fields on the returned object:
+   function sets two fields on the returned object:
 
      manual_content - Texinfo tree for a manual name extracted from the
                       node specification.
      node_content - Texinfo tree for the node name on its own
-     normalized - a string with the node name after HTML node name
-                  normalization is applied
 
    Objects returned from this function are used as an 'extra' key in a
    few places: the elements of a 'nodes_manuals' array (itself an extra key),
@@ -1002,9 +1004,7 @@ parse_float_type (ELEMENT *current)
 ELEMENT *
 end_line_starting_block (ELEMENT *current)
 {
-  enum context c;
-  c = pop_context ();
-  if (c != ct_line)
+  if (pop_context () != ct_line)
     fatal ("line context expected");
 
   if (current->parent->cmd == CM_multitable)
@@ -1078,23 +1078,12 @@ end_line_starting_block (ELEMENT *current)
   if (counter_value (&count_remaining_args, current) != -1)
     counter_pop (&count_remaining_args);
 
-  /* Don't consider empty argument of block @-command as argument,
-     reparent them as contents. */
-  if (current->args.list[0]->contents.number > 0
-      && current->args.list[0]->contents.list[0]->type
-         == ET_empty_line_after_command)
-    {
-      ELEMENT *e = remove_from_contents (current->args.list[0], 0);
-      insert_into_contents (current, e, 0);
-      destroy_element (pop_element_from_args (current));
-    }
-
   if (current->cmd == CM_float)
     {
       char *type = "";
       KEY_PAIR *k;
       EXTRA_FLOAT_TYPE *eft;
-      current->line_nr = line_nr;
+      current->source_info = current_source_info;
       if (current->args.number >= 2)
         {
           NODE_SPEC_EXTRA *float_label;
@@ -1134,13 +1123,15 @@ end_line_starting_block (ELEMENT *current)
           if (current->args.number > 0
               && current->args.list[0]->contents.number > 0)
             {
+              ELEMENT *g;
               if (current->args.list[0]->contents.number > 1)
                 command_error (current, "superfluous argument to @%s",
                                command_name(current->cmd));
-              ELEMENT *g = current->args.list[0]->contents.list[0];
+              g = current->args.list[0]->contents.list[0];
               /* Check if @enumerate specification is either a single
                  letter or a string of digits. */
-              if (g->text.end == 1 && isalpha (g->text.text[0])
+              if (g->text.end == 1
+                    && isalpha ((unsigned char) g->text.text[0])
                   || (g->text.end > 0
                       && !*(g->text.text
                             + strspn (g->text.text, "0123456789"))))
@@ -1165,7 +1156,7 @@ end_line_starting_block (ELEMENT *current)
             {
               ELEMENT *e = k->value;
               if (!(command_flags(e) & CF_brace)
-                  || (command_data(e->cmd).data == 0))
+                  || (command_data(e->cmd).data == BRACE_noarg))
                 {
                   command_error (current,
                                  "command @%s not accepting argument in brace "
@@ -1244,10 +1235,21 @@ end_line_starting_block (ELEMENT *current)
               || current->args.list[0]->contents.number == 0))
         {
           ELEMENT *e;
+          ELEMENT *block_line_arg;
+          if (last_args_child(current)
+              && last_args_child(current)->type == ET_block_line_arg)
+            {
+              block_line_arg = last_args_child(current);
+            }
+          else
+            {
+              block_line_arg = new_element (ET_block_line_arg);
+              insert_into_args (current, block_line_arg, 0);
+            }
 
           e = new_element (ET_command_as_argument_inserted);
           e->cmd = CM_bullet;
-          insert_into_args (current, e, 0);
+          insert_into_contents (block_line_arg, e, 0);
           add_extra_element (current, "command_as_argument", e);
         }
       else if (item_line_command (current->cmd)
@@ -1268,7 +1270,7 @@ end_line_starting_block (ELEMENT *current)
       }
     } /* CF_blockitem */
 
-  if (command_flags(current) & CF_menu)
+  if (command_data(current->cmd).data == BLOCK_menu)
     {
       /* Start reading a menu.  Processing will continue in
          handle_menu in menus.c. */
@@ -1277,9 +1279,16 @@ end_line_starting_block (ELEMENT *current)
       add_to_element_contents (current, menu_comment);
       current = menu_comment;
       debug ("MENU_COMMENT OPEN");
-      push_context (ct_preformatted);
     }
-  current = begin_preformatted (current);
+  if (command_data(current->cmd).data == BLOCK_format_raw
+      && format_expanded_p (command_name(current->cmd)))
+    {
+      ELEMENT *rawpreformatted = new_element (ET_rawpreformatted);
+      add_to_element_contents (current, rawpreformatted);
+      current = rawpreformatted;
+    }
+  if (command_data(current->cmd).data != BLOCK_raw)
+    current = begin_preformatted (current);
 
   return current;
 }
@@ -1291,10 +1300,9 @@ end_line_misc_line (ELEMENT *current)
 {
   enum command_id cmd;
   int arg_type;
-  enum context c;
   ELEMENT *misc_cmd;
   char *end_command = 0;
-  enum command_id end_id;
+  enum command_id end_id = CM_NONE;
   int included_file = 0;
 
   isolate_last_space (current);
@@ -1307,14 +1315,12 @@ end_line_misc_line (ELEMENT *current)
 
   arg_type = command_data(cmd).data;
    
-  /* Check 'line' is top of the context stack */
-  c = pop_context ();
-  if (c != ct_line)
+  if (pop_context () != ct_line)
     fatal ("line context expected");
 
   debug ("MISC END %s", command_name(cmd));
 
-  if (arg_type > 0)
+  if (arg_type == LINE_specific)
     {
       ELEMENT *args = parse_line_command_args (current);
       if (args)
@@ -1381,31 +1387,18 @@ end_line_misc_line (ELEMENT *current)
                               free (end_command); end_command = 0;
                             }
                         }
-                      if (end_command)
-                        {
-                          add_extra_string (current, "command_argument",
-                                            end_command);
-                        }
+                      /* If there is superfluous text after @end argument, set
+                         superfluous_arg such that the error message triggered by an
+                         unexpected @-command on the @end line is issued below.  Note
+                         that superfluous_arg may also be true if it was set above. */
                       if (end_command
-                          && (superfluous_arg
-                             || line[strspn (line, whitespace_chars)] != '\0'))
-                        {
-                          char *line, *line2;
-                          line = convert_to_texinfo (current->args.list[0]);
-
-                          line2 = line;
-                          line2 += strspn (line2, whitespace_chars);
-                          free (read_command_name (&line2));
-                          command_error (current,
-                                         "superfluous argument to @end %s: "
-                                         "%s", end_command, line2);
-                          superfluous_arg = 0; /* Don't issue another error
-                                                 message below. */
-                          free (line);
-                        }
+                          && line[strspn (line, whitespace_chars)] != '\0')
+                          superfluous_arg = 1;
                     }
                 }
-              else
+              /* if superfluous_arg is set there is a similar and somewhat
+                 better error message below */
+              else if (!superfluous_arg)
                 {
                   command_error (current, "bad argument to @end: %s", line);
                 }
@@ -1417,10 +1410,12 @@ end_line_misc_line (ELEMENT *current)
           else if (current->cmd == CM_include)
             {
               int status;
-              char *fullpath;
+              char *fullpath, *sys_filename;
               debug ("Include %s", text);
 
-              fullpath = locate_include_file (text);
+              sys_filename = encode_file_name (text);
+              fullpath = locate_include_file (sys_filename);
+
               if (!fullpath)
                 {
                   command_error (current,
@@ -1438,7 +1433,6 @@ end_line_misc_line (ELEMENT *current)
                     }
                   else
                     included_file = 1;
-                  free (fullpath);
                 }
             }
           else if (current->cmd == CM_verbatiminclude)
@@ -1498,6 +1492,8 @@ end_line_misc_line (ELEMENT *current)
                   static char *known_encodings[] = {
                       "shift_jis",
                       "latin1",
+                      "latin-1",
+                      "utf8",
                       0
                   };
                   for (i = 0; (known_encodings[i]); i++)
@@ -1516,11 +1512,16 @@ end_line_misc_line (ELEMENT *current)
                   struct encoding_map {
                       char *from; char *to;
                   };
+                  /* The map mimics Encode::find_encoding()->name() result.
+                     Even when the alias is not good, such as 'utf-8-strict'
+                     for 'utf-8', use the same mapping for consistency with the
+                     perl Parser */
                   static struct encoding_map map[] = {
                       "utf-8", "utf-8-strict",
                       "us-ascii", "ascii",
                       "shift_jis", "shiftjis",
-                      "latin1", "iso-8859-1"
+                      "latin1", "iso-8859-1",
+                      "latin-1", "iso-8859-1"
                   };
                   for (i = 0; i < sizeof map / sizeof *map; i++)
                     {
@@ -1539,7 +1540,7 @@ end_line_misc_line (ELEMENT *current)
                 {
                   command_warn (current, "unrecognized encoding name `%s'",
                                 text);
-                  /* Texinfo::Encoding calls Encode::Alias, so knows
+                  /* the Perl Parser calls Encode::find_encoding, so knows
                      about more encodings than what we know about here.
                      TODO: Check when perl_encoding could be defined when 
                      texinfo_encoding isn't.
@@ -1548,7 +1549,8 @@ end_line_misc_line (ELEMENT *current)
 
                 }
 
-              /* Set input_encoding from perl_encoding */
+              /* Set input_encoding from perl_encoding.  In the perl parser,
+                 lc(Encode::find_encoding()->mime_name()) is used */
               input_encoding = 0;
               if (perl_encoding)
                 {
@@ -1560,12 +1562,11 @@ end_line_misc_line (ELEMENT *current)
                       "utf-8-strict","utf-8",
                       "ascii",       "us-ascii",
                       "shiftjis",    "shift_jis",
-                      "latin-1",     "iso-8859-1",
                       "iso-8859-1",  "iso-8859-1",
                       "iso-8859-2",  "iso-8859-2",
                       "iso-8859-15", "iso-8859-15",
-                      "koi8-r",      "koi8",
-                      "koi8-u",      "koi8",
+                      "koi8-r",      "koi8-r",
+                      "koi8-u",      "koi8-u",
                   };
                   input_encoding = perl_encoding;
                   for (i = 0; i < sizeof map / sizeof *map; i++)
@@ -1600,7 +1601,7 @@ end_line_misc_line (ELEMENT *current)
                  just check if the language code looks right. */
 
               p = text;
-              while (isalpha (*p))
+              while (isalpha ((unsigned char) *p))
                 p++;
               if (*p && *p != '_')
                 {
@@ -1625,7 +1626,7 @@ end_line_misc_line (ELEMENT *current)
                       p = q;
                       /* Language code should be of the form LL_CC,
                          language code followed by country code. */
-                      while (isalpha (*p))
+                      while (isalpha ((unsigned char) *p))
                         p++;
                       if (*p || p - q > 4)
                         {
@@ -1636,10 +1637,7 @@ end_line_misc_line (ELEMENT *current)
                         }
                     }
                 }
-
-              free (global_documentlanguage);
-              global_documentlanguage = strdup (text);
-              /* FIXME: check customization variable */
+              set_documentlanguage (text);
             }
         }
       if (superfluous_arg)
@@ -1648,16 +1646,15 @@ end_line_misc_line (ELEMENT *current)
           p = convert_to_texinfo (args_child_by_index(current, 0));
 
           texi_line = p;
-          while (isspace (*texi_line))
+          while (isspace ((unsigned char) *texi_line))
             texi_line++;
 
           /* Trim leading and trailing whitespace. */
           p1 = strchr (texi_line, '\0');
           if (p1 > texi_line)
             {
-              while (p1 > texi_line && isspace (p1[-1]))
+              while (p1 > texi_line && isspace ((unsigned char) p1[-1]))
                 p1--;
-              c = *p1;
               *p1 = '\0';
             }
           command_error (current, "bad argument to @%s: %s", 
@@ -1695,9 +1692,9 @@ end_line_misc_line (ELEMENT *current)
               /* Copy the first 'node_content' array, to avoid the complication
                  of it being referenced in two different places.
                  This might be better with a separate function. */
+              int i;
 
               label = new_element (0);
-              int i;
 
               for (i = 0; i<nodes_manuals[0]->node_content->contents.number;
                    i++)
@@ -1708,7 +1705,17 @@ end_line_misc_line (ELEMENT *current)
             }
           register_label (current, label);
         }
-
+      if (current_part
+          && !lookup_extra (current_part, "part_associated_section"))
+        {
+         /* we only associate a part to the following node if the
+            part is not already associate to a sectioning command,
+            but the part can be associated to the sectioning command later
+            if a sectioning command follows the node. */
+          add_extra_element (current, "node_preceding_part", current_part);
+          add_extra_element (current_part, "part_following_node",
+                                 current);
+        }
       current_node = current;
     }
   else if (current->cmd == CM_listoffloats)
@@ -1750,6 +1757,18 @@ end_line_misc_line (ELEMENT *current)
                                  current->args.list[0]);
               current->type = ET_index_entry_command;
             }
+          /* if there is a brace command interrupting an index or subentry
+             command, replace the internal internal_spaces_before_brace_in_index
+             text type with its final type depending on whether there is
+             text after the brace command. */
+          if ((command_flags(current) & CF_index_entry_command
+                || current->cmd == CM_subentry))
+            {
+              if (lookup_extra (current, "sortas")
+                   || lookup_extra (current, "seealso")
+                   || lookup_extra (current, "seeentry"))
+                set_non_ignored_space_in_index_before_command(current->args.list[0]);
+            }
         }
     }
 
@@ -1768,6 +1787,17 @@ end_line_misc_line (ELEMENT *current)
       if (command_data(end_id).data != BLOCK_conditional)
         {
           ELEMENT *closed_command;
+          /* here close some empty types.  Typically empty preformatted
+             that would have been closed anyway in _close_commands, but
+             also other types (rawpreformatted, before_item), some which
+             may also have been closed anyway. */
+          if (!current->cmd && current->type != ET_NONE
+              && (current->contents.number == 0) && current->parent)
+             {
+               current = current->parent;
+               destroy_element (pop_element_from_contents (current));
+               debug ("popping at end command");
+             }
           /* This closes tree elements (e.g. paragraphs) until we reach
              end_command.  It can print an error if another block command
              is found first. */
@@ -1776,20 +1806,18 @@ end_line_misc_line (ELEMENT *current)
             destroy_element_and_children (end_elt);
           else
             {
-              add_extra_element (closed_command, "end_command", end_elt);
               close_command_cleanup (closed_command);
 
               add_to_element_contents (closed_command, end_elt);
 
-              if (command_flags(closed_command) & CF_menu
-                  && current_context () == ct_menu)
+              if (command_data(closed_command->cmd).data == BLOCK_menu
+                  && command_data(current_context_command()).data == BLOCK_menu)
                 {
                   ELEMENT *e;
                   debug ("CLOSE menu but still in menu context");
                   e = new_element (ET_menu_comment);
                   add_to_element_contents (current, e);
                   current = e;
-                  push_context (ct_preformatted);
                 }
             }
           if (close_preformatted_command (end_id))
@@ -1827,7 +1855,8 @@ end_line_misc_line (ELEMENT *current)
         }
       else
         {
-          pop_context (); /* ct_line */;
+          if (pop_context () != ct_line)
+            fatal ("line context expected");
 
           current = current->parent;
 
@@ -1876,7 +1905,7 @@ end_line_misc_line (ELEMENT *current)
                                  current);
               if (current->cmd == CM_top)
                 {
-                  line_error_ext (1, &current_part->line_nr,
+                  line_error_ext (1, &current_part->source_info,
                          "@part should not be associated with @top");
                 }
               current_part = 0;
@@ -1934,8 +1963,6 @@ end_line (ELEMENT *current)
           else
             current = current->parent;
 
-          pop_context (); //ct_preformatted
-
           current = current->parent->parent;
           e = new_element (ET_menu_comment);
           add_to_element_contents (current, e);
@@ -1945,12 +1972,11 @@ end_line (ELEMENT *current)
           add_to_element_contents (current, e);
 
           current = e;
-          e = new_element (ET_after_description_line);
+          e = new_element (ET_after_menu_description_line);
           text_append (&e->text, empty_line->text.text);
           destroy_element (empty_line);
           add_to_element_contents (current, e);
 
-          push_context (ct_preformatted);
           debug ("MENU: END DESCRIPTION, OPEN COMMENT");
         }
       else if (in_paragraph_context (current_context ()))
@@ -2036,14 +2062,13 @@ end_line (ELEMENT *current)
                 current = last_contents_child(current);
               else
                 {
+                  ELEMENT *e;
                   /* This should not happen */
                   bug ("description or menu comment not in preformatted");
-                  ELEMENT *e;
                   e = new_element (ET_preformatted);
                   add_to_element_contents (current, e);
                   current = e;
                 }
-              push_context (ct_preformatted);
             }
           else
             {
@@ -2054,7 +2079,6 @@ end_line (ELEMENT *current)
               e = new_element (ET_preformatted);
               add_to_element_contents (current, e);
               current = e;
-              push_context (ct_preformatted);
               debug ("THEN MENU_COMMENT OPEN");
             }
           {
@@ -2123,6 +2147,9 @@ end_line (ELEMENT *current)
           free (stripped);
         }
 
+      /* in case there are no arguments at all, it needs to be called here. */
+      abort_empty_line (&current, NULL);
+
       def_info = parse_def (def_command, current);
 
       /* Record the index entry if def_info is not empty. */
@@ -2166,8 +2193,9 @@ end_line (ELEMENT *current)
                       || def_command == CM_deftypeivar
                       || def_command == CM_deftypecv))
                 {
-                  add_extra_string_dup (current->parent, "documentlanguage",
-                                        global_documentlanguage);
+                  if (global_documentlanguage)
+                    add_extra_string_dup (current->parent, "documentlanguage",
+                                          global_documentlanguage);
                 }
               else
                 {
@@ -2197,54 +2225,9 @@ end_line (ELEMENT *current)
       current = end_line_starting_block (current);
     }
 
-  /* after an "@end verbatim" */
-  else if (current->contents.number
-           && last_contents_child(current)->type == ET_empty_line_after_command
-           && contents_child_by_index(current, -2)
-           && contents_child_by_index(current, -2)->cmd == CM_verbatim)
-    {
-      /*
-     if we are after a @end verbatim, we must restart a preformatted if needed,
-     since there is no @end command explicitly associated to raw commands
-     it won't be done elsewhere.
-      */
-
-      current = begin_preformatted (current);
-    }
   else if (current->type == ET_line_arg)
     {
       current = end_line_misc_line (current);
-    }
-  else if (current->contents.number == 1
-           && current->contents.list[0]->type == ET_empty_line_after_command
-           || current->contents.number == 2
-           && current->contents.list[0]->type == ET_empty_line_after_command
-           && (current->contents.list[1]->cmd == CM_c
-               || current->contents.list[1]->cmd == CM_comment))
-    {
-      if (current->type == ET_preformatted
-          || current->type == ET_rawpreformatted)
-        {
-          /* Empty line after a @menu, or before a preformatted.  Reparent
-             to the menu or other format. */
-          ELEMENT *parent, *to_reparent;
-
-          parent = current->parent;
-          if (parent->type == ET_menu_comment
-              && parent->contents.number == 1)
-            {
-              parent = parent->parent;
-            }
-          to_reparent = pop_element_from_contents (parent);
-          debug ("LINE AFTER COMMAND IN PREFORMATTED");
-          while (current->contents.number > 0)
-            {
-              ELEMENT *e;
-              e = remove_from_contents (current, 0);
-              add_to_element_contents (parent, e);
-            }
-          add_to_element_contents (parent, to_reparent);
-        }
     }
 
   /* 'line' or 'def' at top of "context stack" - this happens when

@@ -1,0 +1,158 @@
+@node Texinfo@asis{::}Transformations
+@chapter Texinfo::Transformations
+
+@node Texinfo@asis{::}Transformations NAME
+@section Texinfo::Transformations NAME
+
+Texinfo::Transformations - transformations of Texinfo Perl tree
+
+@node Texinfo@asis{::}Transformations NOTES
+@section Texinfo::Transformations NOTES
+
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
+
+@node Texinfo@asis{::}Transformations DESCRIPTION
+@section Texinfo::Transformations DESCRIPTION
+
+Includes miscellaneous methods @code{set_menus_to_simple_menu} and
+@code{menu_to_simple_menu} to change the menu texinfo tree, as well
+as @code{insert_nodes_for_sectioning_commands} that adds nodes for
+sectioning commands without nodes and @code{complete_tree_nodes_menus}
+and @code{complete_tree_nodes_missing_menu} that completes the
+node menus based on the sectioning tree.
+
+@node Texinfo@asis{::}Transformations METHODS
+@section Texinfo::Transformations METHODS
+
+No method is exported in the default case.
+
+@table @asis
+@item complete_tree_nodes_menus($tree, $add_section_names_in_entries)
+@anchor{Texinfo@asis{::}Transformations complete_tree_nodes_menus($tree@comma{} $add_section_names_in_entries)}
+@cindex @code{complete_tree_nodes_menus}
+
+Add menu entries or whole menus for nodes associated with sections,
+based on the sectioning tree.  If the optional
+@code{$add_section_names_in_entries} argument is set, a menu entry
+name is added using the section name.  This function should be
+called after @ref{Texinfo@asis{::}Structuring $sections_root@comma{} $sections_list = sectioning_structure($registrar@comma{} $customization_information@comma{} $tree),, sectioning_structure}.
+
+@item complete_tree_nodes_missing_menu($tree, $use_section_names_in_entries)
+@anchor{Texinfo@asis{::}Transformations complete_tree_nodes_missing_menu($tree@comma{} $use_section_names_in_entries)}
+@cindex @code{complete_tree_nodes_missing_menu}
+
+Add whole menus for nodes associated with sections and without menu,
+based on the sectioning tree.  If the optional
+@code{$add_section_names_in_entries} argument is set, a menu entry
+name is added using the section name.  This function should be
+called after @ref{Texinfo@asis{::}Structuring $sections_root@comma{} $sections_list = sectioning_structure($registrar@comma{} $customization_information@comma{} $tree),, sectioning_structure}.
+
+@item ($root_content, $added_sections) = fill_gaps_in_sectioning($tree)
+@anchor{Texinfo@asis{::}Transformations ($root_content@comma{} $added_sections) = fill_gaps_in_sectioning($tree)}
+@cindex @code{fill_gaps_in_sectioning}
+
+This function adds empty @code{@@unnumbered} and similar commands in a tree
+to fill gaps in sectioning.  This may be used, for example, when converting
+from a format that can handle gaps in sectioning.  @emph{$tree} is the tree
+root.  An array reference is returned, containing the root contents
+with added sectioning commands, as well as an array reference containing
+the added sectioning commands.
+
+If the sectioning commands are lowered or raised (with @code{@@raisesections},
+@code{@@lowersection}) the tree may be modified with @code{@@raisesections} or
+@code{@@lowersection} added to some tree elements.
+
+@item ($root_content, $added_nodes) = insert_nodes_for_sectioning_commands($tree, $nodes_list, $targets_list, $labels)
+@anchor{Texinfo@asis{::}Transformations ($root_content@comma{} $added_nodes) = insert_nodes_for_sectioning_commands($tree@comma{} $nodes_list@comma{} $targets_list@comma{} $labels)}
+@cindex @code{insert_nodes_for_sectioning_commands}
+
+Insert nodes for sectioning commands without node in @code{$tree}.
+Add nodes to the labels used as targets for references @code{$labels}
+and @code{$targets_list} and to @code{$nodes_list}.
+
+An array reference is returned, containing the root contents
+with added nodes, as well as an array reference containing the
+added nodes.
+
+@item menu_to_simple_menu($menu)
+@anchor{Texinfo@asis{::}Transformations menu_to_simple_menu($menu)}
+
+@item set_menus_to_simple_menu($nodes_list)
+@anchor{Texinfo@asis{::}Transformations set_menus_to_simple_menu($nodes_list)}
+@cindex @code{menu_to_simple_menu}
+@cindex @code{set_menus_to_simple_menu}
+
+@code{menu_to_simple_menu} transforms the tree of a menu tree element.
+@code{set_menus_to_simple_menu} calls @code{menu_to_simple_menu} for all the
+menus of the nodes in @code{$nodes_list}.
+
+A simple menu has no @emph{menu_comment}, @emph{menu_entry} or @emph{menu_entry_description}
+container anymore, their content are merged directly in the menu in
+@emph{preformatted} container.
+
+@item $detailmenu = new_master_menu($translations, $labels)
+@anchor{Texinfo@asis{::}Transformations $detailmenu = new_master_menu($translations@comma{} $labels)}
+@cindex @code{new_master_menu}
+
+Returns a detailmenu tree element formatted as a master node.
+@emph{$translations}, if defined, should be a @ref{Texinfo@asis{::}Translations NAME,, Texinfo::Translations} object and
+should also hold customization information.
+
+@item protect_hashchar_at_line_beginning($registrar, $customization_information, $tree)
+@anchor{Texinfo@asis{::}Transformations protect_hashchar_at_line_beginning($registrar@comma{} $customization_information@comma{} $tree)}
+@cindex @code{protect_hashchar_at_line_beginning}
+
+Protect hash (#) character at the beginning of line such that they would not be
+considered as lines to be processed by the CPP processor.  The @emph{$registrar}
+and @emph{$customization_information} arguments may be undef.  If defined, the
+@emph{$registrar} argument should be a @ref{Texinfo@asis{::}Report NAME,, Texinfo::Report} object in which the
+errors and warnings encountered while parsing are registered.  If defined,
+@emph{$customization_information} should give access to customization through
+@code{get_conf}.  If both @emph{$registrar} and @emph{$customization_information} are
+defined they are used for error reporting in case an hash character could not
+be protected because it appeared in a raw environment.
+
+@item $modified_tree = reference_to_arg_in_tree($tree)
+@anchor{Texinfo@asis{::}Transformations $modified_tree = reference_to_arg_in_tree($tree)}
+@cindex @code{reference_to_arg_in_tree}
+
+Modify @emph{$tree} by converting reference @@-commands to simple text using one of
+the arguments.  This transformation can be used, for example, to remove
+reference @@-command from constructed node names trees, as node names cannot
+contain reference @@-command while there could be some in the tree used in input
+for the node name tree.
+
+@item regenerate_master_menu($translations, $labels)
+@anchor{Texinfo@asis{::}Transformations regenerate_master_menu($translations@comma{} $labels)}
+@cindex @code{regenerate_master_menu}
+
+Regenerate the Top node master menu, replacing the first detailmenu
+in Top node menus or appending at the end of the Top node menu.
+@emph{$translations}, if defined, should be a @ref{Texinfo@asis{::}Translations NAME,, Texinfo::Translations} object and
+should also hold customization information.
+
+@end table
+
+@node Texinfo@asis{::}Transformations SEE ALSO
+@section Texinfo::Transformations SEE ALSO
+
+@url{http://www.gnu.org/s/texinfo/manual/texinfo/, Texinfo manual},
+@ref{Texinfo@asis{::}Parser NAME,, Texinfo::Parser}.
+
+@node Texinfo@asis{::}Transformations AUTHOR
+@section Texinfo::Transformations AUTHOR
+
+Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo@asis{::}Transformations COPYRIGHT AND LICENSE
+@section Texinfo::Transformations COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
+

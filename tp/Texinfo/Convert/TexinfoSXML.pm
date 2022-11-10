@@ -17,45 +17,30 @@
 # 
 # Original author: Patrice Dumas <pertusus@free.fr>
 #
-# This is a simple subclass of Texinfo::Convert::TexinfoXML that overrides
-# format specific functions.
+# A simple subclass of the Texinfo::Convert::TexinfoMarkup abstract
+# class.  Defines format specific functions.
 
 package Texinfo::Convert::TexinfoSXML;
 
 use 5.00405;
 use strict;
 
-use Texinfo::Convert::TexinfoXML;
+use Texinfo::Convert::TexinfoMarkup;
 use Carp qw(cluck);
 
-require Exporter;
-use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-@ISA = qw(Exporter Texinfo::Convert::TexinfoXML);
+use vars qw($VERSION @ISA);
+@ISA = qw(Texinfo::Convert::TexinfoMarkup);
 
-%EXPORT_TAGS = ( 'all' => [ qw(
-  convert
-  convert_tree
-  output
-) ] );
+$VERSION = '7.0';
 
-@EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-@EXPORT = qw(
-);
-
-$VERSION = '6.8';
 
 # SXML specific
 my %defaults = (
   'ENABLE_ENCODING'      => 0,
   'FORMAT_MENU'          => 'menu',
   'EXTENSION'            => 'sxml',
-  #'output_perl_encoding' => 'utf8',
   'OUTPUT_ENCODING_NAME' => 'utf-8',
-  'TEXINFO_DTD_VERSION'  => '5.0',
-  'OUTFILE'              => undef,
-  'SUBDIR'               => undef,
-  'output_format'        => 'texinfosxml',
+  'converted_format'     => 'texinfosxml',
   'SPLIT'                => 0,
   'documentlanguage'     => 'en',
 );
@@ -65,9 +50,8 @@ sub converter_defaults($$)
   return %defaults;
 }
 
-# format specific.  Used in few places where plain text is used outside
-# of attributes.
-sub protect_text($$)
+
+sub txi_markup_protect_text($$)
 {
   my $self = shift;
   my $string = shift;
@@ -76,7 +60,7 @@ sub protect_text($$)
   return $string;
 }
 
-sub sxml_attributes($$)
+sub _sxml_attributes($$)
 {
   my $self = shift;
   my $attributes = shift;
@@ -84,40 +68,42 @@ sub sxml_attributes($$)
     cluck "attributes not an array($attributes).";
   }
   my $result = '(@';
-  for (my $i = 0; $i < scalar(@$attributes); $i += 2) {
-    $result .= " ($attributes->[$i] \"".$self->protect_text($attributes->[$i+1])."\")";
+  foreach my $attribute_spec (@$attributes) {
+    if (ref($attribute_spec) ne 'ARRAY') {
+      cluck "attribute_spec not an array($attribute_spec).";
+    }
+
+    $result .= " ($attribute_spec->[0] \"".
+          $self->txi_markup_protect_text($attribute_spec->[1])."\")";
   }
   return $result . ')';
 }
 
-# format specific
-sub element($$$)
+sub txi_markup_element($$$)
 {
   my $self = shift;
   my $element_name = shift;
   my $attributes = shift;
   my $result = '('.$element_name." ";
   $attributes = [] if (!defined($attributes));
-  $result .= $self->sxml_attributes($attributes);
+  $result .= $self->_sxml_attributes($attributes);
   $result .= ')';
   return $result;
 }
 
-# format specific
-sub open_element($$$)
+sub txi_markup_open_element($$$)
 {
   my $self = shift;
   my $element_name = shift;
   my $attributes = shift;
   my $result = '('.$element_name." ";
   $attributes = [] if (!defined($attributes));
-  $result .= $self->sxml_attributes($attributes);
+  $result .= $self->_sxml_attributes($attributes);
   $result .= " ";
   return $result;
 }
 
-# format specific
-sub close_element($$)
+sub txi_markup_close_element($$)
 {
   my $self = shift;
   my $element_name = shift;
@@ -125,23 +111,23 @@ sub close_element($$)
   return $result;
 }
 
-my %commands_formatting = %Texinfo::Convert::TexinfoXML::commands_formatting;
+my %no_arg_commands_formatting
+  = %Texinfo::Convert::TexinfoMarkup::no_arg_commands_formatting;
 
 # format specific
-sub format_atom($$)
+sub txi_markup_atom($$)
 {
   my $self = shift;
   my $atom = shift;
-  if ($commands_formatting{$atom} ne '') {
-    return '('.$commands_formatting{$atom}.' (@))';
+  if ($no_arg_commands_formatting{$atom} ne '') {
+    return '('.$no_arg_commands_formatting{$atom}.' (@))';
   } else {
     return '';
   }
 }
 
-# format specific
-#FIXME
-sub format_comment($$)
+# TODO is there a way to mark comments in SXML?
+sub txi_markup_comment($$)
 {
   my $self = shift;
   my $string = shift;
@@ -149,14 +135,13 @@ sub format_comment($$)
   return '';
 }
 
-# format specific
-sub format_text($$)
+sub txi_markup_convert_text($$)
 {
   my $self = shift;
-  my $root = shift;
-  my $result = $self->protect_text($root->{'text'});
-  if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
-    if (!$self->{'document_context'}->[-1]->{'monospace'}->[-1]) {
+  my $element = shift;
+  my $result = $self->txi_markup_protect_text($element->{'text'});
+  if (! defined($element->{'type'}) or $element->{'type'} ne 'raw') {
+    if (!$self->in_monospace()) {
       $result =~ s/``/" (textldquo (@)) "/g;
       $result =~ s/\'\'/" (textrdquo (@)) "/g;
       $result =~ s/---/" (textmdash (@)) "/g;
@@ -168,18 +153,19 @@ sub format_text($$)
   return '"'.$result.'" ';
 }
 
-# output format specific
-sub format_header($)
+sub txi_markup_header($)
 {
   my $self = shift;
+  my $output_file = shift;
+  my $output_filename = shift;
+
   my $header = '';
-  my $encoding = '';
-  if ($self->get_conf('OUTPUT_ENCODING_NAME')
-      and $self->get_conf('OUTPUT_ENCODING_NAME') ne 'utf-8') {
-    $encoding = $self->get_conf('OUTPUT_ENCODING_NAME');
-  }
-  if ($self->{'output_file'} ne '') {
-    my $output_filename = $self->{'output_filename'};
-  }
+  #my $encoding = '';
+  #if ($self->get_conf('OUTPUT_ENCODING_NAME')
+  #    and $self->get_conf('OUTPUT_ENCODING_NAME') ne 'utf-8') {
+  #  $encoding = $self->get_conf('OUTPUT_ENCODING_NAME');
+  #}
   return $header;
 }
+
+1;

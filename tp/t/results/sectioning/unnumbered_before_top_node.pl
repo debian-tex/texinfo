@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -9,16 +9,13 @@ $result_trees{'unnumbered_before_top_node'} = [
   {
     'contents' => [
       {
-        'contents' => [],
-        'parent' => {},
-        'type' => 'text_root'
+        'type' => 'before_node_section'
       },
       {
         'args' => [
           {
             'contents' => [
               {
-                'parent' => {},
                 'text' => 'before nodes'
               }
             ],
@@ -26,14 +23,12 @@ $result_trees{'unnumbered_before_top_node'} = [
               'spaces_after_argument' => '
 '
             },
-            'parent' => {},
             'type' => 'line_arg'
           }
         ],
         'cmdname' => 'unnumbered',
         'contents' => [
           {
-            'parent' => {},
             'text' => '
 ',
             'type' => 'empty_line'
@@ -42,20 +37,17 @@ $result_trees{'unnumbered_before_top_node'} = [
         'extra' => {
           'spaces_before_argument' => ' '
         },
-        'level' => 1,
-        'line_nr' => {
+        'source_info' => {
           'file_name' => '',
           'line_nr' => 1,
           'macro' => ''
-        },
-        'parent' => {}
+        }
       },
       {
         'args' => [
           {
             'contents' => [
               {
-                'parent' => {},
                 'text' => 'Top'
               }
             ],
@@ -63,7 +55,6 @@ $result_trees{'unnumbered_before_top_node'} = [
               'spaces_after_argument' => '
 '
             },
-            'parent' => {},
             'type' => 'line_arg'
           }
         ],
@@ -72,16 +63,13 @@ $result_trees{'unnumbered_before_top_node'} = [
           {
             'contents' => [
               {
-                'parent' => {},
                 'text' => 'Top node
 '
               }
             ],
-            'parent' => {},
             'type' => 'paragraph'
           },
           {
-            'parent' => {},
             'text' => '
 ',
             'type' => 'empty_line'
@@ -91,25 +79,20 @@ $result_trees{'unnumbered_before_top_node'} = [
               {
                 'contents' => [
                   {
-                    'parent' => {},
                     'text' => 'Title titlefont'
                   }
                 ],
-                'parent' => {},
                 'type' => 'brace_command_arg'
               }
             ],
             'cmdname' => 'titlefont',
-            'contents' => [],
-            'line_nr' => {
+            'source_info' => {
               'file_name' => '',
               'line_nr' => 6,
               'macro' => ''
-            },
-            'parent' => {}
+            }
           },
           {
-            'parent' => {},
             'text' => '
 '
           }
@@ -129,40 +112,22 @@ $result_trees{'unnumbered_before_top_node'} = [
           'normalized' => 'Top',
           'spaces_before_argument' => ' '
         },
-        'line_nr' => {
+        'source_info' => {
           'file_name' => '',
           'line_nr' => 3,
           'macro' => ''
-        },
-        'parent' => {}
+        }
       }
     ],
     'extra' => {
-      'element_command' => {},
-      'section' => {}
+      'unit_command' => {}
     },
-    'type' => 'element'
+    'type' => 'unit'
   }
 ];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[0];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0];
-$result_trees{'unnumbered_before_top_node'}[0]{'extra'}{'element_command'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1];
-$result_trees{'unnumbered_before_top_node'}[0]{'extra'}{'section'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1];
+$result_trees{'unnumbered_before_top_node'}[0]{'extra'}{'unit_command'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1];
 
 $result_texis{'unnumbered_before_top_node'} = '@unnumbered before nodes
 
@@ -182,35 +147,90 @@ Title titlefont
 ';
 
 $result_sectioning{'unnumbered_before_top_node'} = {
-  'level' => 0,
-  'section_childs' => [
-    {
-      'cmdname' => 'unnumbered',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'level' => 1,
-      'section_up' => {}
-    }
-  ]
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'unnumbered',
+        'extra' => {},
+        'structure' => {
+          'associated_unit' => {
+            'extra' => {
+              'unit_command' => {}
+            },
+            'structure' => {
+              'directions' => {
+                'This' => {}
+              }
+            },
+            'type' => 'unit'
+          },
+          'section_level' => 1,
+          'section_up' => {}
+        }
+      }
+    ],
+    'section_level' => 0
+  }
 };
-$result_sectioning{'unnumbered_before_top_node'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'unnumbered_before_top_node'};
+$result_sectioning{'unnumbered_before_top_node'}{'structure'}{'section_childs'}[0]{'structure'}{'associated_unit'}{'extra'}{'unit_command'} = $result_sectioning{'unnumbered_before_top_node'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'unnumbered_before_top_node'}{'structure'}{'section_childs'}[0]{'structure'}{'associated_unit'}{'structure'}{'directions'}{'This'} = $result_sectioning{'unnumbered_before_top_node'}{'structure'}{'section_childs'}[0]{'structure'}{'associated_unit'};
+$result_sectioning{'unnumbered_before_top_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'unnumbered_before_top_node'};
 
 $result_nodes{'unnumbered_before_top_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
+  },
+  'structure' => {
+    'associated_unit' => {
+      'extra' => {
+        'unit_command' => {
+          'cmdname' => 'unnumbered',
+          'extra' => {},
+          'structure' => {
+            'associated_unit' => {}
+          }
+        }
+      },
+      'structure' => {
+        'directions' => {
+          'This' => {}
+        }
+      },
+      'type' => 'unit'
+    }
   }
 };
+$result_nodes{'unnumbered_before_top_node'}{'structure'}{'associated_unit'}{'extra'}{'unit_command'}{'structure'}{'associated_unit'} = $result_nodes{'unnumbered_before_top_node'}{'structure'}{'associated_unit'};
+$result_nodes{'unnumbered_before_top_node'}{'structure'}{'associated_unit'}{'structure'}{'directions'}{'This'} = $result_nodes{'unnumbered_before_top_node'}{'structure'}{'associated_unit'};
 
 $result_menus{'unnumbered_before_top_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
+  },
+  'structure' => {
+    'associated_unit' => {
+      'extra' => {
+        'unit_command' => {
+          'cmdname' => 'unnumbered',
+          'extra' => {},
+          'structure' => {
+            'associated_unit' => {}
+          }
+        }
+      },
+      'structure' => {
+        'directions' => {
+          'This' => {}
+        }
+      },
+      'type' => 'unit'
+    }
   }
 };
+$result_menus{'unnumbered_before_top_node'}{'structure'}{'associated_unit'}{'extra'}{'unit_command'}{'structure'}{'associated_unit'} = $result_menus{'unnumbered_before_top_node'}{'structure'}{'associated_unit'};
+$result_menus{'unnumbered_before_top_node'}{'structure'}{'associated_unit'}{'structure'}{'directions'}{'This'} = $result_menus{'unnumbered_before_top_node'}{'structure'}{'associated_unit'};
 
 $result_errors{'unnumbered_before_top_node'} = [];
 
@@ -221,23 +241,24 @@ $result_floats{'unnumbered_before_top_node'} = {};
 $result_elements{'unnumbered_before_top_node'} = [
   {
     'extra' => {
+      'unit_command' => {
+        'cmdname' => 'unnumbered',
+        'extra' => {},
+        'structure' => {
+          'associated_unit' => {}
+        }
+      }
+    },
+    'structure' => {
       'directions' => {
         'This' => {}
-      },
-      'element_command' => {
-        'cmdname' => 'unnumbered',
-        'extra' => {
-          'spaces_before_argument' => ' '
-        },
-        'level' => 1
-      },
-      'section' => {}
+      }
     },
-    'type' => 'element'
+    'type' => 'unit'
   }
 ];
-$result_elements{'unnumbered_before_top_node'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'unnumbered_before_top_node'}[0];
-$result_elements{'unnumbered_before_top_node'}[0]{'extra'}{'section'} = $result_elements{'unnumbered_before_top_node'}[0]{'extra'}{'element_command'};
+$result_elements{'unnumbered_before_top_node'}[0]{'extra'}{'unit_command'}{'structure'}{'associated_unit'} = $result_elements{'unnumbered_before_top_node'}[0];
+$result_elements{'unnumbered_before_top_node'}[0]{'structure'}{'directions'}{'This'} = $result_elements{'unnumbered_before_top_node'}[0];
 
 
 
@@ -272,7 +293,7 @@ End:
 ';
 
 
-$result_converted{'html'}->{'unnumbered_before_top_node'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+$result_converted{'html'}->{'unnumbered_before_top_node'} = '<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -286,43 +307,31 @@ $result_converted{'html'}->{'unnumbered_before_top_node'} = '<!DOCTYPE html PUBL
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
-<style type="text/css">
-<!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
--->
-</style>
 
 
 </head>
 
 <body lang="en">
-<div class="unnumbered" id="before-nodes">
+<div class="unnumbered-level-extent" id="before-nodes">
 <h2 class="unnumbered">before nodes</h2>
 
-<span id="Top"></span><h1 class="node-heading">Top</h1>
+<h1 class="node" id="Top">Top</h1>
 <p>Top node
 </p>
 <h1 class="titlefont">Title titlefont</h1>
-<hr></div>
+</div>
 
 
 
 </body>
 </html>
+';
+
+
+$result_converted{'docbook'}->{'unnumbered_before_top_node'} = '<chapter label="">
+<title>before nodes</title>
+
+</chapter>
 ';
 
 1;

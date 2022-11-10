@@ -1,4 +1,4 @@
-# formats :_info
+# formats : :_info
 texi_nested_formats nested_formats.texi -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
 # no macros, generated in all_texi by generate_all_texi.pl
 #multitable-nested_formats multitable-nested_formats.texi

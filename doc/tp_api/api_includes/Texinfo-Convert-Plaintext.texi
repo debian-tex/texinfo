@@ -1,24 +1,16 @@
-@node Texinfo::Convert::Plaintext
+@node Texinfo@asis{::}Convert@asis{::}Plaintext
 @chapter Texinfo::Convert::Plaintext
 
-@menu
-* Texinfo@asis{::}Convert@asis{::}Plaintext NAME::
-* Texinfo@asis{::}Convert@asis{::}Plaintext SYNOPSIS::
-* Texinfo@asis{::}Convert@asis{::}Plaintext DESCRIPTION::
-* Texinfo@asis{::}Convert@asis{::}Plaintext METHODS::
-* Texinfo@asis{::}Convert@asis{::}Plaintext AUTHOR::
-@end menu
-
-@node Texinfo::Convert::Plaintext NAME
-@section NAME
+@node Texinfo@asis{::}Convert@asis{::}Plaintext NAME
+@section Texinfo::Convert::Plaintext NAME
 
 Texinfo::Convert::Plaintext - Convert Texinfo tree to Plaintext
 
-@node Texinfo::Convert::Plaintext SYNOPSIS
-@section SYNOPSIS
+@node Texinfo@asis{::}Convert@asis{::}Plaintext SYNOPSIS
+@section Texinfo::Convert::Plaintext SYNOPSIS
 
 @verbatim
-  my $converter 
+  my $converter
     = Texinfo::Convert::Plaintext->converter({'parser' => $parser});
 
   $converter->output($tree);
@@ -26,51 +18,70 @@ Texinfo::Convert::Plaintext - Convert Texinfo tree to Plaintext
   $converter->convert_tree($tree);
 @end verbatim
 
-@node Texinfo::Convert::Plaintext DESCRIPTION
-@section DESCRIPTION
+@node Texinfo@asis{::}Convert@asis{::}Plaintext NOTES
+@section Texinfo::Convert::Plaintext NOTES
+
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
+
+@node Texinfo@asis{::}Convert@asis{::}Plaintext DESCRIPTION
+@section Texinfo::Convert::Plaintext DESCRIPTION
 
 Texinfo::Convert::Plaintext converts a Texinfo tree to Plaintext.
 
-@node Texinfo::Convert::Plaintext METHODS
-@section METHODS
+@node Texinfo@asis{::}Convert@asis{::}Plaintext METHODS
+@section Texinfo::Convert::Plaintext METHODS
 
 @table @asis
 @item $converter = Texinfo::Convert::Plaintext->converter($options)
-@anchor{Texinfo::Convert::Plaintext $converter = Texinfo::Convert::Plaintext->converter($options)}
+@anchor{Texinfo@asis{::}Convert@asis{::}Plaintext $converter = Texinfo@asis{::}Convert@asis{::}Plaintext->converter($options)}
 
-Initialize converter from Texinfo to Plaintext.  
+Initialize converter from Texinfo to Plaintext.
 
 The @emph{$options} hash reference holds options for the converter.  In
-this option hash reference a parser object may be associated with the 
-@emph{parser} key.  The other options should be configuration options
-described in the Texinfo manual.  Those options, when appropriate,
-override the document content.
+this option hash reference a @ref{Texinfo@asis{::}Parser NAME,, parser object}
+may be associated with the @emph{parser} key.  The other options
+are Texinfo customization options and a few other options that can
+be passed to the converter. Most of the customization options are described in
+the Texinfo manual.  Those customization options, when appropriate, override
+the document content.  The parser should not be available directly anymore
+after getting the associated information.
 
-See @ref{Texinfo::Convert::Converter NAME} for more informations.
+See @ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter} for more information.
 
 @item $converter->output($tree)
-@anchor{Texinfo::Convert::Plaintext $converter->output($tree)}
+@anchor{Texinfo@asis{::}Convert@asis{::}Plaintext $converter->output($tree)}
 
 Convert a Texinfo tree @emph{$tree} and output the result in files as
 described in the Texinfo manual.
 
 @item $result = $converter->convert($tree)
-@anchor{Texinfo::Convert::Plaintext $result = $converter->convert($tree)}
+@anchor{Texinfo@asis{::}Convert@asis{::}Plaintext $result = $converter->convert($tree)}
 
-Convert a Texinfo tree @emph{$tree} or tree portion and return 
-the resulting output.
+Convert a Texinfo tree @emph{$tree} and return the resulting output.
 
 @item $result = $converter->convert_tree($tree)
-@anchor{Texinfo::Convert::Plaintext $result = $converter->convert_tree($tree)}
+@anchor{Texinfo@asis{::}Convert@asis{::}Plaintext $result = $converter->convert_tree($tree)}
 
-Convert a Texinfo tree portion @emph{$tree} and return the resulting 
+Convert a Texinfo tree portion @emph{$tree} and return the resulting
 output.  This function does not try to output a full document but only
 portions.  For a full document use @code{convert}.
 
 @end table
 
-@node Texinfo::Convert::Plaintext AUTHOR
-@section AUTHOR
+@node Texinfo@asis{::}Convert@asis{::}Plaintext AUTHOR
+@section Texinfo::Convert::Plaintext AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo@asis{::}Convert@asis{::}Plaintext COPYRIGHT AND LICENSE
+@section Texinfo::Convert::Plaintext COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
 

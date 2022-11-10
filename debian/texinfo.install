@@ -1,19 +1,16 @@
 usr/bin/makeinfo
 usr/bin/texindex
-usr/bin/texi2dvi
+usr/bin/texi2*
 usr/bin/pdftexi2dvi
 usr/bin/pod2texi
-usr/bin/texi2any
-usr/bin/texi2pdf
 usr/lib/texinfo
 usr/share/info/texinfo.*
+usr/share/info/texi2any_*
 usr/share/locale/*/LC_MESSAGES/texinfo*.mo
 usr/share/man/man1/makeinfo.1
 usr/share/man/man1/pod2texi.1
 usr/share/man/man1/texindex.1
-usr/share/man/man1/texi2dvi.1
-usr/share/man/man1/texi2pdf.1
-usr/share/man/man1/texi2any.1
+usr/share/man/man1/texi2*.1
 usr/share/man/man1/pdftexi2dvi.1
 usr/share/man/man5/texinfo.5
 usr/share/texinfo
@@ -21,4 +18,4 @@ usr/share/texmf/tex/texinfo/texinfo.tex
 usr/share/texmf/tex/texinfo/texinfo-ja.tex
 usr/share/texmf/tex/texinfo/txi-??.tex
 util/txixml2texi usr/bin/
-doc/texinfo/* usr/share/doc/texinfo/html
+#doc/texinfo/* usr/share/doc/texinfo/html
